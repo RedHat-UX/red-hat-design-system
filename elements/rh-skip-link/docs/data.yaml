@@ -1,0 +1,14 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-skip-link
+name: Skip link
+type: element
+overallStatus: ready
+libraries:
+  figma: planned
+  rhds: ready
+  shared: planned
+  docs: planned
+relatedItems:
+  - rh-navigation
+  - rh-navigation-secondary
+  - rh-subnav

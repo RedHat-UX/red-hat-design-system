@@ -1,6 +1,6 @@
 {
   "name": "@rhds/elements",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Red Hat Design System Elements",
   "type": "module",
   "license": "MIT",
@@ -85,7 +85,8 @@
     "⚙️--UTIL": "❓ Manages the repo",
     "clean": "git clean -dfx -e node_modules -e .husky",
     "clean:nuke": "git clean -fX",
-    "lint": "wireit"
+    "lint": "wireit",
+    "validate-element-data": "wireit"
   },
   "wireit": {
     "patch": {
@@ -106,7 +107,7 @@
     },
     "11ty-dev": {
       "service": true,
-      "command": "NODE_OPTIONS='--import tsx/esm' eleventy --serve --incremental --config=eleventy.config.ts"
+      "command": "cross-env NODE_OPTIONS='--import tsx/esm' eleventy --serve --incremental --config=eleventy.config.ts"
     },
     "dev": {
       "service": true,
@@ -118,7 +119,7 @@
     },
     "serve": {
       "service": true,
-      "command": "TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --incremental --serve",
+      "command": "cross-env TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --incremental --serve",
       "dependencies": [
         "patch"
       ]
@@ -214,7 +215,7 @@
       ]
     },
     "docs": {
-      "command": "TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --incremental",
+      "command": "cross-env TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --incremental",
       "dependencies": [
         "patch"
       ],
@@ -230,7 +231,8 @@
         "patch",
         "eslint",
         "stylelint",
-        "markdownlint"
+        "markdownlint",
+        "validate-element-data"
       ]
     },
     "eslint": {
@@ -268,6 +270,14 @@
       "dependencies": [
         "build"
       ]
+    },
+    "validate-element-data": {
+      "command": "npx tsx scripts/validate-element-data.ts --errors-only",
+      "files": [
+        "elements/*/docs/data.yaml",
+        "docs/schemas/element-data.schema.json",
+        "scripts/validate-element-data.ts"
+      ]
     }
   },
   "dependencies": {
@@ -296,9 +306,9 @@
     "@patternfly/eslint-config-elements": "^4.0.0",
     "@patternfly/eslint-plugin-elements": "^2.0.0",
     "@patternfly/icons": "^1.0.3",
-    "@patternfly/pfe-tools": "^5.0.3",
+    "@patternfly/pfe-tools": "^5.0.4",
     "@playwright/test": "^1.54.1",
-    "@pwrs/cem": "^0.3.0",
+    "@pwrs/cem": "^0.4.6",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@stylistic/eslint-plugin-js": "^2.13.0",
     "@stylistic/stylelint-config": "^2.0.0",
@@ -312,6 +322,7 @@
     "@webcomponents/template-shadowroot": "^0.2.1",
     "async-csv": "^2.1.3",
     "autoprefixer": "^10.4.21",
+    "cross-env": "^10.0.0",
     "cssnano": "^7.0.6",
     "custom-elements-manifest": "^2.1.0",
     "element-internals-polyfill": "^1.3.13",
