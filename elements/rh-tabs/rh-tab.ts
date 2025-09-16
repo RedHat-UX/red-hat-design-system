@@ -68,13 +68,14 @@ export class RhTab extends LitElement {
 
   @consume({ context: rhTabsLastTabContext, subscribe: true })
   @state() private lastTab: RhTab | null = null;
-  
+
   @state() private hasIconSlot = false;
   #onIconSlotChange(e: Event) {
-  const slot = e.currentTarget as HTMLSlotElement;
-  this.hasIconSlot = slot.assignedNodes({ flatten: true })
-      .some(n => n.nodeType === Node.ELEMENT_NODE);
-}
+    const slot = e.currentTarget as HTMLSlotElement;
+    this.hasIconSlot = slot.assignedNodes({ flatten: true })
+        .some(n => n.nodeType === Node.ELEMENT_NODE);
+  }
+
   #internals = InternalsController.of(this, { role: 'tab' });
 
   override connectedCallback() {
