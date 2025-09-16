@@ -3,7 +3,7 @@ title: Overview
 heading: Accordion
 sidenavTitle: Accordion
 layout: layouts/pages/pattern.njk
-order: 120
+order: 5
 tags:
   - pattern
   - accordionPatterns
