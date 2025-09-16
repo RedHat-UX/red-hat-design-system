@@ -13,6 +13,11 @@ import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-button-group/rh-button-group.js';
 
+/**
+ * description
+ * 
+ * @alias Button Group
+ */
 @customElement('rh-button-group')
 export class RhButtonGroup extends themable(LitElement) {
   static readonly styles = [styles];
@@ -24,7 +29,9 @@ export class RhButtonGroup extends themable(LitElement) {
   private _rovingController?: RovingTabindexController<HTMLButtonElement | RhButton>;
 
   protected override firstUpdated() {
-    if (typeof window === 'undefined') return; // SSR-safe
+    if (typeof window === 'undefined') {
+      return;
+    } // SSR-safe
 
     const setupToolbar = () => {
       if (!this._buttons?.length) {

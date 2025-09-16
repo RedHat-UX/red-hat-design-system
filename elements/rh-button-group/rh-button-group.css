@@ -32,6 +32,6 @@
 :host([role="group"]) ::slotted(rh-button:last-child),
 :host([role="group"]) ::slotted(button:last-child),
 :host([role="toolbar"]) ::slotted(rh-button[icon]:last-child),
-:host([role="toolbar"]) ::slotted(button[icon-only]) {
+:host([role="toolbar"]) ::slotted(button[icon-only]:last-child) {
   margin-right: 0;
 }
