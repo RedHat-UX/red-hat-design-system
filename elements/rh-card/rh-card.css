@@ -2,6 +2,7 @@
   display: block;
   container-name: card;
   container-type: inline-size;
+  width: 100%;
   height: max-content;
 }
 
