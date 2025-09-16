@@ -4,6 +4,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
@@ -137,6 +138,9 @@ export class RhCodeBlock extends LitElement {
   /** When set to `hidden`, the code block's line numbers are hidden */
   @property({ reflect: true, attribute: 'line-numbers' }) lineNumbers?: 'hidden';
 
+  /** Internal state to track if copy button is in "copied" state */
+  @state() private copyActive = false;
+
   #slots = new SlotController(
     this,
     null,
@@ -205,20 +209,22 @@ export class RhCodeBlock extends LitElement {
         <div id="actions"
              @click="${this.#onActionsClick}"
              @keyup="${this.#onActionsKeyup}">
-        ${this.actions.map(x => html`
-          <rh-tooltip>
+        ${this.actions.map((task, index) => html`
+          <rh-tooltip silent>
             <!-- tooltip content for the copy action button -->
-            <slot id="label" slot="content" name="action-label-${x}">${x === 'copy' ? html`
-              <span>Copy to Clipboard</span>
-              <span hidden data-code-block-state="active">Copied!</span>` : html`
+            <slot slot="content" name="action-label-${task}">${task === 'copy' ? html`
+              <span id="label-${index}-default">Copy to Clipboard</span>
+              <span id="label-${index}-active" hidden data-code-block-state="active">Copied!</span>` : html`
               <!-- tooltip content for the wrap action button -->
-              <span>Toggle word wrap</span>
-              <span hidden data-code-block-state="active">Toggle overflow</span>`}
+              <span id="label-${index}-default">Toggle word wrap</span>
+              <span id="label-${index}-active" hidden data-code-block-state="active">Toggle overflow</span>`}
             </slot>
-            <button id="action-${x}"
+            <button id="action-${task}"
                     class="shadow-fab"
-                    data-code-block-action="${x}">
-              ${RhCodeBlock.actionIcons.get(this.wrap && x === 'wrap' ? 'wrap-active' : x) ?? ''}
+                    type="button"
+                    data-code-block-action="${task}"
+                    aria-labelledby="${this.#getAriaLabelledBy(task, index)}">
+              ${RhCodeBlock.actionIcons.get(this.wrap && task === 'wrap' ? 'wrap-active' : task) ?? ''}
             </button>
           </rh-tooltip>`)}
         </div>
@@ -226,6 +232,7 @@ export class RhCodeBlock extends LitElement {
         <button id="expand"
                 ?hidden="${!expandable}"
                 aria-controls="content-lines"
+                type="button"
                 aria-expanded="${String(!!fullHeight) as 'true' | 'false'}"
                 @click="${this.#onClickExpand}">
           <!-- text content for the expandable toggle button when the code block is collapsed. -->
@@ -390,6 +397,20 @@ export class RhCodeBlock extends LitElement {
     this.requestUpdate('#linesNumbers', 0);
   }
 
+  /**
+   * Computes the correct aria-labelledby value based on the current state
+   * @param task - The action task ('copy' or 'wrap')
+   * @param index - The button index
+   */
+  #getAriaLabelledBy(task: string, index: number): string {
+    if (task === 'copy') {
+      return this.copyActive ? `label-${index}-active` : `label-${index}-default`;
+    } else if (task === 'wrap') {
+      return this.wrap ? `label-${index}-active` : `label-${index}-default`;
+    }
+    return `label-${index}-default`;
+  }
+
   #onActionsClick(event: Event) {
     this.#onCodeAction(event);
   }
@@ -442,6 +463,7 @@ export class RhCodeBlock extends LitElement {
     const tooltip = slot?.closest('rh-tooltip');
     tooltip?.hide();
     const assignedElements = this.#getFabContentElements(slot);
+    this.copyActive = true;
     for (const el of assignedElements) {
       if (el instanceof HTMLElement) {
         el.hidden = el.dataset.codeBlockState !== 'active';
@@ -451,6 +473,7 @@ export class RhCodeBlock extends LitElement {
     tooltip?.show();
     await new Promise(r => setTimeout(r, 5_000));
     tooltip?.hide();
+    this.copyActive = false;
     for (const el of assignedElements) {
       if (el instanceof HTMLElement) {
         el.hidden = el.dataset.codeBlockState === 'active';
