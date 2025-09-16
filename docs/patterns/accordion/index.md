@@ -14,7 +14,7 @@ subnav:
 
 ## Overview
 
-A pattern for direct linking using a fragment identifier (hash). 
+A pattern that automatically expands accordion panels when users navigate to URLs with hash fragments (like `#panel-id`). 
 This pattern is useful when linking to a specific accordion header or content within a panel.
 
 
