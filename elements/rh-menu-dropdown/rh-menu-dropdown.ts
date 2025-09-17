@@ -19,10 +19,8 @@ export class RhMenuDropdown extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
   private static instances = new Set<RhMenuDropdown>();
   @property({ type: Boolean, reflect: true }) open = false;
-  @property({ attribute: 'action-icon-name', reflect: true }) actionIconName = 'caret-down';
-  @property({ attribute: 'info-icon-name', reflect: true }) infoIconName!: string;
-  @property({ attribute: 'variant', reflect: true }) variant: 'open' | 'closed' = 'closed';
-  @property({ attribute: 'text', type: String, reflect: true }) text!: string;
+  @property({ attribute: 'variant', reflect: true }) variant: 'open' | null = null;
+  @property({ attribute: 'layout', reflect: true }) layout: 'compact' | null = null;
   @query('#menu-toggle') menuToggleButton!: HTMLElement;
   @query('#menu-list') menuList!: HTMLElement;
   @query('slot') slotElement!: HTMLSlotElement;
@@ -108,14 +106,21 @@ export class RhMenuDropdown extends LitElement {
           aria-expanded="${this.open}"
           @click="${this.toggleMenu}"
           @keydown="${this.onToggleKeydown}"
-          class=${this.variant === 'closed' ? 'closed' : ''}>
-            <span class="info-section"> 
-              ${this.infoIconName && html`<rh-icon set="ui" icon=${this.infoIconName}></rh-icon>`}
-              ${this.text} 
-            </span>
-            <span class="action-icon"> 
-              <rh-icon set="ui" icon=${this.actionIconName}></rh-icon>
-            </span>
+          class=${this.variant !== 'open' ? 'boxed' : ''}>
+            ${ this.layout === 'compact' ? 
+              html`<rh-icon set="ui" icon="ellipsis-vertical-fill"></rh-icon>`: 
+              html` 
+              <span class="info-section"> 
+                <slot name="label"></slot>
+              </span>
+              <span class="action-icon"> 
+                ${ this.open ? 
+                  html`<rh-icon set="ui" icon="caret-up"></rh-icon>` 
+                  : html`<rh-icon set="ui" icon="caret-down"></rh-icon>`
+                }
+              </span>
+              `
+            }
         </button>
         <rh-menu
           id="menu-list"
