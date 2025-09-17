@@ -51,14 +51,10 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-
-    rh-icon {
-      margin-inline-end: 0.5rem;
-    }
   }
 }
 
-#menu-toggle.closed {
+#menu-toggle.boxed {
   border: 1px solid #c7c7c7;
 }
 
@@ -71,6 +67,19 @@
   border: 0;
   border-top: 1px solid #c7c7c7;
   width: 100%;
+}
+
+::slotted(rh-icon) {
+  margin-inline-end: 0.5rem;
+}
+
+::slotted([slot="label"]) {
+  color: #151515;
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  font-size: 16px !important;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
 }
 
 rh-menu::part(menu) {
