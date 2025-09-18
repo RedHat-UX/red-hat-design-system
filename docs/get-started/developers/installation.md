@@ -10,10 +10,18 @@ subnav:
   order: 10
 ---
 
+<style data-helmet>
+  .code-tabs rh-tab-panel {
+    padding-block-end: 0;
+    padding-inline: 0;
+  }
+</style>
+
 <script type="module" data-helmet>
   import '@uxdot/elements/uxdot-example.js';
   import '@rhds/elements/rh-code-block/rh-code-block.js';
   import '@rhds/elements/rh-alert/rh-alert.js';
+  import '@rhds/elements/rh-tabs/rh-tabs.js';
 </script>
 
 <rh-alert state="info">
@@ -205,23 +213,32 @@ some [Cumulative Layout Shift (CLS)][cls] experience before the element has full
 initialized, but are not intended to be used without initializing the element or by
 themselves to prevent CLS.
 
+<rh-tabs class="code-tabs">
+  <rh-tab slot="tab" active>Red Hat CDN</rh-tab>
+  <rh-tab-panel>
+
 ```html rhcodeblock
 <link rel="stylesheet"
       href="https://www.redhatstatic.com/dssf-001/v2/@rhds/elements@{{ pkg.version }}/rh-footer/rh-footer-lightdom.css">
 ```
 
-<rh-alert>Note: a future version of RHDS will remove the requirement to manually
-load these stylesheets</rh-alert>
-
-### Lightdom CSS on third party CDNs
-
-If you're looking for lightdom stylesheets on a third party CDN, the URL patterns follow a similar
-convention:
+  </rh-tab-panel>
+  <rh-tab slot="tab">Third party CDN</rh-tab>
+  <rh-tab-panel>
 
 ```html rhcodeblock
 <link rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@rhds/elements@{{ pkg.version }}/elements/rh-footer/rh-footer-lightdom.css">
 ```
+
+If you're looking for lightdom stylesheets on a third party CDN, the URL patterns follow a similar
+convention.
+
+  </rh-tab-panel>
+</rh-tabs>
+
+<rh-alert>Note: a future version of RHDS will remove the requirement to manually
+load these stylesheets</rh-alert>
 
 ## Lightdom CSS shims
 

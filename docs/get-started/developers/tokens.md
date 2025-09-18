@@ -10,9 +10,17 @@ subnav:
   order: 30
 ---
 
+<style data-helmet>
+  .code-tabs rh-tab-panel {
+    padding-block-end: 0;
+    padding-inline: 0;
+  }
+</style>
+
 <script type="module" data-helmet>
   import '@uxdot/elements/uxdot-example.js';
   import '@rhds/elements/rh-code-block/rh-code-block.js';
+  import '@rhds/elements/rh-tabs/rh-tabs.js';
 </script>
 
 Design tokens are the source of truth for our design decisions. They provide the values
@@ -23,34 +31,39 @@ Developers are strongly encouraged to use our design [tokens](/tokens/) when wri
 
 ## How to install tokens
 
-Add **one** of the following `<link>` tags to your document's `<head>`:
+Add one of the following `<link>` tags to your document's `<head>`:
 
-### Red Hat CDN
+<rh-tabs class="code-tabs">
+  <rh-tab slot="tab" active>Red Hat CDN</rh-tab>
+  <rh-tab-panel>
 
-```js rhcodeblock
+```html rhcodeblock
 <link rel="stylesheet"
       href="https://www.redhatstatic.com/dssf-001/v2/@rhds/tokens@{{ packageinfo.packages["node_modules/@rhds/tokens"].version }}/css/global.css">
 ```
 
-### Third party CDN
+  </rh-tab-panel>
+  <rh-tab slot="tab">Third party CDN</rh-tab>
+  <rh-tab-panel>
 
-<rh-alert state="warning">
-  <h4 slot="header">Public CDNs</h4>
-  <p>jsDelivr and other public CDNs should not be used on corporate domains. Use 
-    them for <strong>development purposes only</strong>!</p>
-</rh-alert>
+  <rh-alert state="warning">
+    <h4 slot="header">Public CDNs</h4>
+    <p>jsDelivr and other public CDNs should not be used on corporate domains. Use 
+      them for <strong>development purposes only</strong>!</p>
+  </rh-alert>
 
-```js rhcodeblock
+```html rhcodeblock
 <link rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@rhds/tokens@{{ packageinfo.packages["node_modules/@rhds/tokens"].version }}/css/global.min.css">
 ```
 
-### NPM
+  </rh-tab-panel>
+  <rh-tab slot="tab">NPM</rh-tab>
+  <rh-tab-panel>
 
-Alternatively, if your project uses a bundler, run the following command in your terminal to install
-RHDS tokens:
+If your project uses a bundler, run the following command in your terminal to install RHDS tokens:
 
-```js rhcodeblock
+```bash rhcodeblock
 npm install @rhds/tokens
 ```
 
@@ -59,6 +72,9 @@ Then reference the Tokens CSS file:
 ```js rhcodeblock
 @import '@rhds/tokens@{{ packageinfo.packages["node_modules/@rhds/tokens"].version }}/css/global.css';
 ```
+
+  </rh-tab-panel>
+</rh-tabs>
 
 ## Usage
 
