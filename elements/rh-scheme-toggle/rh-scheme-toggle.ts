@@ -18,7 +18,7 @@ type Scheme = 'light' | 'dark' | 'light dark';
 /**
  * A switch toggles the state of the color scheme (between light, dark and system default).
  *
- * @summary  A switch toggles the state of the color scheme (between light, dark and system default).
+ * @summary  Switches between a variety of color schemes
  *
  * @alias Scheme toggle
  */
