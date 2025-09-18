@@ -4,15 +4,18 @@ import { RhTimestamp } from '@rhds/elements/rh-timestamp/rh-timestamp.js';
 
 describe('<rh-timestamp>', function() {
   it('imperatively instantiates', function() {
-    expect(document.createElement('rh-timestamp')).to.be.an.instanceof(RhTimestamp);
+    expect(document.createElement('rh-timestamp')).to.be.an.instanceof(
+      RhTimestamp
+    );
   });
 
   it('should upgrade', async function() {
-    const element = await createFixture<RhTimestamp>(html`<rh-timestamp></rh-timestamp>`);
+    const element = await createFixture<RhTimestamp>(
+      html`<rh-timestamp></rh-timestamp>`
+    );
     expect(element, 'the <rh-timestamp> should be an instance of RhTimestamp')
         .to.be.an.instanceof(customElements.get('rh-timestamp'))
-        .and
-        .to.be.an.instanceof(RhTimestamp);
+        .and.to.be.an.instanceof(RhTimestamp);
   });
 
   it('should show the current date by default with default formatting', async function() {
@@ -47,9 +50,16 @@ describe('<rh-timestamp>', function() {
 
   it('should show custom formatting when date-format and time-format are passed in', async function() {
     const dateString = 'Sat Jan 01 2022 00:00:00';
-    const expected = new Date(dateString).toLocaleString('en-US', { dateStyle: 'full', timeStyle: 'short' });
+    const expected = new Date(dateString).toLocaleString('en-US', {
+      dateStyle: 'full',
+      timeStyle: 'short',
+    });
     const element = await createFixture<RhTimestamp>(html`
-      <rh-timestamp date="${dateString}" date-format="full" time-format="short"></rh-timestamp>
+      <rh-timestamp
+        date="${dateString}"
+        date-format="full"
+        time-format="short"
+      ></rh-timestamp>
     `);
 
     expect(element.time).to.equal(expected);
@@ -57,7 +67,9 @@ describe('<rh-timestamp>', function() {
 
   it('should show only a date when date-format is passed in', async function() {
     const dateString = 'Sat Jan 01 2022 00:00:00';
-    const expected = new Date(dateString).toLocaleString('en-US', { dateStyle: 'full' });
+    const expected = new Date(dateString).toLocaleString('en-US', {
+      dateStyle: 'full',
+    });
     const element = await createFixture<RhTimestamp>(html`
       <rh-timestamp date="${dateString}" date-format="full"></rh-timestamp>
     `);
@@ -67,7 +79,9 @@ describe('<rh-timestamp>', function() {
 
   it('should show only time when time-format is passed in', async function() {
     const dateString = 'Sat Jan 01 2022 00:00:00';
-    const expected = new Date(dateString).toLocaleString('en-US', { timeStyle: 'short' });
+    const expected = new Date(dateString).toLocaleString('en-US', {
+      timeStyle: 'short',
+    });
     const element = await createFixture<RhTimestamp>(html`
       <rh-timestamp date="${dateString}" time-format="short"></rh-timestamp>
     `);
@@ -86,7 +100,10 @@ describe('<rh-timestamp>', function() {
     };
     const expected = new Date(dateString).toLocaleString('en-US', options);
     const element = await createFixture<RhTimestamp>(html`
-      <rh-timestamp date="Sat Jan 01 2022 00:00:00" .customFormat=${options}></rh-timestamp>
+      <rh-timestamp
+        date="Sat Jan 01 2022 00:00:00"
+        .customFormat=${options}
+      ></rh-timestamp>
     `);
     expect(element.time).to.equal(expected);
   });
@@ -94,9 +111,14 @@ describe('<rh-timestamp>', function() {
   it('should show a custom suffix when display-suffix is passed in', async function() {
     const dateString = 'Sat Jan 01 2022 00:00:00';
     const suffix = 'US Eastern';
-    const expected = `${new Date(dateString).toLocaleString('en-US')} ${suffix}`;
+    const expected = `${new Date(dateString).toLocaleString(
+      'en-US'
+    )} ${suffix}`;
     const element = await createFixture<RhTimestamp>(html`
-      <rh-timestamp date="${dateString}" display-suffix="${suffix}"></rh-timestamp>
+      <rh-timestamp
+        date="${dateString}"
+        display-suffix="${suffix}"
+      ></rh-timestamp>
     `);
 
     expect(element.time).to.equal(expected);
@@ -114,7 +136,9 @@ describe('<rh-timestamp>', function() {
 
   it('should show a 24 hour time when hour-12 is set to false', async function() {
     const dateString = 'Sat Jan 01 2022 13:00:00';
-    const expected = new Date(dateString).toLocaleString('en-US', { hour12: false });
+    const expected = new Date(dateString).toLocaleString('en-US', {
+      hour12: false,
+    });
     const element = await createFixture<RhTimestamp>(html`
       <rh-timestamp date="${dateString}" hour-12="false"></rh-timestamp>
     `);
@@ -146,7 +170,11 @@ describe('<rh-timestamp>', function() {
     const date = new Date(2022, 1, 1, 13, 0).toString();
     const expected = new Date(date).toLocaleString('en-US', { hour12: false });
     const element = await createFixture<RhTimestamp>(html`
-      <rh-timestamp date="${date}" locale="en-US" hour-12="false"></rh-timestamp>
+      <rh-timestamp
+        date="${date}"
+        locale="en-US"
+        hour-12="false"
+      ></rh-timestamp>
     `);
 
     expect(element.time).to.equal(expected);

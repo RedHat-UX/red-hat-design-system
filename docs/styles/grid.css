@@ -12,21 +12,39 @@
   }
 
   @container container (min-width: 576px) {
-    &.xs-two-columns { --uxdot-grid-repeat: 2; }
-    &.xs-three-columns { --uxdot-grid-repeat: 3; }
-    &.xs-four-columns { --uxdot-grid-repeat: 4; }
+    &.xs-two-columns {
+      --uxdot-grid-repeat: 2;
+    }
+    &.xs-three-columns {
+      --uxdot-grid-repeat: 3;
+    }
+    &.xs-four-columns {
+      --uxdot-grid-repeat: 4;
+    }
   }
 
   @container container (min-width: 768px) {
-    &.sm-two-columns { --uxdot-grid-repeat: 2; }
-    &.sm-three-columns { --uxdot-grid-repeat: 3; }
-    &.sm-four-columns { --uxdot-grid-repeat: 4; }
+    &.sm-two-columns {
+      --uxdot-grid-repeat: 2;
+    }
+    &.sm-three-columns {
+      --uxdot-grid-repeat: 3;
+    }
+    &.sm-four-columns {
+      --uxdot-grid-repeat: 4;
+    }
   }
 
   @container container (min-width: 992px) {
-    &.md-two-columns { --uxdot-grid-repeat: 2; }
-    &.md-three-columns { --uxdot-grid-repeat: 3; }
-    &.md-four-columns { --uxdot-grid-repeat: 4; }
+    &.md-two-columns {
+      --uxdot-grid-repeat: 2;
+    }
+    &.md-three-columns {
+      --uxdot-grid-repeat: 3;
+    }
+    &.md-four-columns {
+      --uxdot-grid-repeat: 4;
+    }
   }
 }
 
@@ -35,7 +53,7 @@
 /* TODO: possibly a separate layout pattern */
 .layout-content-image {
   grid-template-rows: auto;
-  grid-template-areas: 'image' 'content';
+  grid-template-areas: "image" "content";
 }
 
 .layout-content-image > .content-block {
@@ -49,11 +67,11 @@
 @container container (min-width: 768px) {
   .layout-content-image {
     grid-template-columns: 2fr 1fr;
-    grid-template-areas: 'content image';
+    grid-template-areas: "content image";
   }
 
   .layout-content-image.reversed {
     grid-template-columns: 1fr 2fr;
-    grid-template-areas: 'image content';
+    grid-template-areas: "image content";
   }
 }

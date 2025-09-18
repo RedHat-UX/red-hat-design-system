@@ -13,7 +13,10 @@ import type { IconNameFor, IconSetName } from '@rhds/icons';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
-import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import {
+  colorPalettes,
+  type ColorPalette,
+} from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-tile.css';
@@ -59,7 +62,6 @@ export class RhTile extends LitElement {
    * Reduces tile padding for more compact spaces
    */
   @property({ type: Boolean }) compact = false;
-
 
   /**
    * The icon to display in the tile
@@ -123,7 +125,8 @@ export class RhTile extends LitElement {
    *
    * Tile always resets its context to `base`, unless explicitly provided with a `color-palette`.
    */
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+  @property({ reflect: true, attribute: 'color-palette' })
+  colorPalette?: ColorPalette;
 
   /** When set to "private", the icon representing the link changes from an arrow to a padlock */
   @property() link?: 'private' | 'public' | 'external';
@@ -138,7 +141,15 @@ export class RhTile extends LitElement {
 
   #logger = new Logger(this);
 
-  #slots = new SlotController(this, 'image', 'icon', 'title', 'headline', null, 'footer');
+  #slots = new SlotController(
+    this,
+    'image',
+    'icon',
+    'title',
+    'headline',
+    null,
+    'footer'
+  );
 
   get #isCheckable() {
     return !!this.radioGroup || this.checkable;
@@ -160,13 +171,23 @@ export class RhTile extends LitElement {
    * @param changed - the reactive properties which changed this cycle, and their old values
    */
   override async willUpdate(changed: PropertyValues<this>) {
-    this.#internals.role = this.radioGroup ? 'radio' : this.checkable ? 'checkbox' : null;
-    this.#internals.ariaChecked = !this.#isCheckable ? null : String(!!this.checked);
-    this.#internals.ariaDisabled = !this.#isCheckable ? null : String(!!this.disabled);
-    this.#internals.ariaLabel =
-      !(this.#isCheckable && this.accessibleLabel) ? null : this.accessibleLabel;
+    this.#internals.role = this.radioGroup ?
+      'radio'
+      : this.checkable ?
+      'checkbox'
+      : null;
+    this.#internals.ariaChecked = !this.#isCheckable ?
+      null
+      : String(!!this.checked);
+    this.#internals.ariaDisabled = !this.#isCheckable ?
+      null
+      : String(!!this.disabled);
+    this.#internals.ariaLabel = !(this.#isCheckable && this.accessibleLabel) ?
+      null
+      : this.accessibleLabel;
     if (changed.has('value') || changed.has('checked')) {
-      const formValue = this.#isCheckable && this.checked ? this.value ?? null : null;
+      const formValue =
+        this.#isCheckable && this.checked ? this.value ?? null : null;
       this.#internals.setFormValue(formValue);
     }
     if (this.checkable && !this.radioGroup) {
@@ -178,16 +199,27 @@ export class RhTile extends LitElement {
 
   render() {
     const { bleed, compact, checkable, checked, desaturated } = this;
-    const disabled = this.disabledGroup || this.disabled || this.#internals.formDisabled;
+    const disabled =
+      this.disabledGroup || this.disabled || this.#internals.formDisabled;
     const hasSlottedIcon = this.#slots.hasSlotted('icon');
-    const linkIcon =
-        this.checkable ? ''
-      : this.disabled ? 'ban'
-      : this.link === 'private' ? 'lock'
-      : this.link === 'external' ? 'external-link'
-                                 : 'arrow-right';
+    const linkIcon = this.checkable ?
+      ''
+      : this.disabled ?
+      'ban'
+      : this.link === 'private' ?
+      'lock'
+      : this.link === 'external' ?
+      'external-link'
+      : 'arrow-right';
     return html`
-      <div id="outer" class="${classMap({ bleed, checkable, compact, checked, desaturated, disabled })}">
+      <div id="outer" class="${classMap({
+        bleed,
+        checkable,
+        compact,
+        checked,
+        desaturated,
+        disabled,
+      })}">
         <!-- optional image on top of tile -->
         <slot id="image"
               name="image"
@@ -198,8 +230,14 @@ export class RhTile extends LitElement {
           <slot id="icon"
                 class="${classMap({ compact, checkable })}"
                 name="icon"
-                ?hidden="${this.icon === undefined && !hasSlottedIcon}">${this.icon === undefined ? ''
-      : html`<rh-icon icon="${ifDefined(this.icon)}" set="${this.iconSet}"></rh-icon>`}
+                ?hidden="${this.icon === undefined && !hasSlottedIcon}">${
+      this.icon === undefined ?
+        ''
+        : html`<rh-icon
+            icon="${ifDefined(this.icon)}"
+            set="${this.iconSet}"
+          ></rh-icon>`
+                }
           </slot>
           <div id="content">
             <div id="header">
@@ -209,7 +247,8 @@ export class RhTile extends LitElement {
                     ?hidden="${this.checkable || this.compact}"></slot>
               <!-- In a link tile, the heading should indicate what clicking on the tile will do. In a selectable tile, the heading labels the radio button or checkbox. -->
               <slot id="headline" name="headline"></slot>
-              <div id="input-outer" aria-hidden="true" ?hidden="${!this.#isCheckable}" ?inert="${!this.#isCheckable}">
+              <div id="input-outer" aria-hidden="true" ?hidden="${!this
+                  .#isCheckable}" ?inert="${!this.#isCheckable}">
                 <input id="input"
                        type="${this.radioGroup ? 'radio' : 'checkbox'}"
                        tabindex="-1"
@@ -218,8 +257,12 @@ export class RhTile extends LitElement {
               </div>
             </div>
             <!-- The body text expands on heading content and gives the user more information. -->
-            <slot id="body" class="${classMap({ empty: this.#slots.isEmpty() })}"></slot>
-            <div id="footer" class="${classMap({ empty: this.#slots.isEmpty('footer') })}">
+            <slot id="body" class="${classMap({
+              empty: this.#slots.isEmpty(),
+            })}"></slot>
+            <div id="footer" class="${classMap({
+              empty: this.#slots.isEmpty('footer'),
+            })}">
               <!-- Footer text should be brief and be used for supplementary information only. -->
               <slot id="footer-text" name="footer"></slot><rh-icon set="ui" icon="${linkIcon}"></rh-icon>
             </div>
@@ -249,7 +292,7 @@ export class RhTile extends LitElement {
     } else {
       this.#internals.setValidity(
         this.#input.validity,
-        this.#input.validationMessage,
+        this.#input.validationMessage
       );
     }
   }
@@ -279,9 +322,7 @@ export class RhTile extends LitElement {
   }
 
   #requestSelect(force?: boolean) {
-    if (this.checkable
-        && !this.disabled
-        && !this.disabledGroup) {
+    if (this.checkable && !this.disabled && !this.disabledGroup) {
       if (this.radioGroup) {
         this.dispatchEvent(new TileSelectEvent(force));
       } else {

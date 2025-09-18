@@ -8,7 +8,7 @@ A secondary navigation is divided into three slots. It is not required to use al
 
 - Logo (`logo`) - includes primary elements, like a linked logo or a product name
 - Navigation (`nav`) - includes navigation elements, such as inline links, menus, and external links
-- Call to action (`cta`)  - includes a call to action, typically the default variant (optional)
+- Call to action (`cta`) - includes a call to action, typically the default variant (optional)
 
 <uxdot-example color-palette="lightest" width-adjustment="992px">
   <img alt="A secondary navigation featuring a logo, menu nav item, link, an external link, and a default call to action"
@@ -34,13 +34,12 @@ The expandable menu is an area where content can be placed like text, links, cal
 
 <rh-table>
 
-| Property             | Current value |
-|----------------------|---------------|
-| Color - backdrop     | `--rh-color-gray-90`      |
-| Opacity - background | `--rh-opacity-80`           |
+| Property             | Current value        |
+| -------------------- | -------------------- |
+| Color - backdrop     | `--rh-color-gray-90` |
+| Opacity - background | `--rh-opacity-80`    |
 
 </rh-table>
-
 
 ## Color scheme
 
@@ -103,7 +102,6 @@ The amount of space in a secondary navigation remains about the same on all brea
        height="416">
 </uxdot-example>
 
-
 ### Small breakpoints
 
 <uxdot-example color-palette="lightest" width-adjustment="984px">
@@ -150,7 +148,6 @@ Interaction states are visual representations used to communicate the status of 
        width="992"
        height="245">
 </uxdot-example>
-
 
 ### Active
 

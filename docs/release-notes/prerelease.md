@@ -23,7 +23,7 @@ permalink: "/prerelease-notes/index.html"
   <rh-table>
 
 | Page name                              | Notes                                                                                                                                                                              |
-|----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Icon libraries<br>Product logo library | Rewrote the content of the Icon libraries and Product logo library pages to better explain the updated process for accessing brand assets directly from Adobe Creative Cloud apps. |
 
   <rh-table>
@@ -33,7 +33,7 @@ permalink: "/prerelease-notes/index.html"
   <rh-table>
 
 | Component name | Notes                              |
-|----------------|------------------------------------|
+| -------------- | ---------------------------------- |
 | Button         | Removed large version from library |
 
   </rh-table>
@@ -81,7 +81,7 @@ permalink: "/prerelease-notes/index.html"
   <rh-table>
 
 | Component name     | Notes                                                                        |
-|--------------------|------------------------------------------------------------------------------|
+| ------------------ | ---------------------------------------------------------------------------- |
 | Blockquote         | Changed component name from `Quote` to `Blockquote` for improved consistency |
 | Primary navigation | Updated page with better UX writing and better image examples                |
 
@@ -97,7 +97,7 @@ permalink: "/prerelease-notes/index.html"
   <rh-table>
 
 | Page name                              | Notes                                                                                                                                                                                                                                   |
-|----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | How we build                           | Added a [How we build](../about/how-we-build) page to the About section, it includes details about how to build branded experiences using the various repos.                                                                            |
 | Overview                               | Added an [Overview](../get-started) page to the Get started section, it includes details about available libraries, how to access libraries, and includes a video of how to use libraries.                                              |
 | Design system kit                      | Added a Design system kit page to the Get started section, it includes details about how to get started, how to access the library, working in XD, best practices, contributing, and frequently asked questions.                        |
@@ -116,7 +116,7 @@ permalink: "/prerelease-notes/index.html"
   <rh-table>
 
 | Component name    | Notes                                                                                                                                                          |
-|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Button            | Added large version of component to [library](https://xd.adobe.com/view/d20a1c17-375c-4c7f-6827-5fe2f8c2d92f-a43b/screen/ab2fd16c-2d1d-49a4-8805-ff2c118e2f83) |
 | Header navigation | Added component to [library](https://xd.adobe.com/view/d20a1c17-375c-4c7f-6827-5fe2f8c2d92f-a43b/screen/0bbf201e-36f9-48e3-bfb1-701ad73866a7/)                 |
 | Link              | Added component to website                                                                                                                                     |
@@ -129,7 +129,7 @@ permalink: "/prerelease-notes/index.html"
   <rh-table>
 
 | Component name           | Notes                                                                                                                                               |
-|--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Alert                    | Updated page with better UX writing, better image examples, and cross-links to related component pages                                              |
 | Call to action           | Updated page with better UX writing, better image examples, cross-links to related components, accessibility best practices, and interaction states |
 | Form                     | Updated page with better UX writing, better image examples, cross-links to related components, accessibility best practices, and interaction states |
@@ -148,7 +148,7 @@ permalink: "/prerelease-notes/index.html"
   <rh-table>
 
 | Component name | Notes                                                                                                                                                                                                                                                                                                               |
-|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Form           | Added dark theme components [with container](https://xd.adobe.com/view/d20a1c17-375c-4c7f-6827-5fe2f8c2d92f-a43b/screen/24aeec5a-e499-4cc5-a172-e8d16d736e4a/) and [without container](https://xd.adobe.com/view/d20a1c17-375c-4c7f-6827-5fe2f8c2d92f-a43b/screen/817e121f-1226-47df-8e3a-89147bfc7425/) to library |
 | Progress steps | Added component to website                                                                                                                                                                                                                                                                                          |
 
@@ -164,7 +164,7 @@ permalink: "/prerelease-notes/index.html"
   <rh-table>
 
 | Component name     | Notes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-|--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Breadcrumb         | Added [light theme](https://xd.adobe.com/view/d20a1c17-375c-4c7f-6827-5fe2f8c2d92f-a43b/screen/4258979a-9123-4567-98e6-5b5406e58cca/) and [dark theme](https://xd.adobe.com/view/d20a1c17-375c-4c7f-6827-5fe2f8c2d92f-a43b/screen/f3488c16-522f-4cd2-a987-357feec0d8a9/) components to library                                                                                                                                                                                                                                                                                                                             |
 | External link icon | Added [light theme](https://xd.adobe.com/view/d20a1c17-375c-4c7f-6827-5fe2f8c2d92f-a43b/screen/6854705a-0b13-4be2-8c86-55b5dfcef818/) and [dark theme](https://xd.adobe.com/view/d20a1c17-375c-4c7f-6827-5fe2f8c2d92f-a43b/screen/36ac6d65-31b9-46d5-b445-c182a9975dc8/) icons to library                                                                                                                                                                                                                                                                                                                                  |
 | Jump links         | Added horizontal [light theme](https://xd.adobe.com/view/d20a1c17-375c-4c7f-6827-5fe2f8c2d92f-a43b/screen/6ca27f98-95d9-492d-a511-bf6729460bfb/) and [dark theme](https://xd.adobe.com/view/d20a1c17-375c-4c7f-6827-5fe2f8c2d92f-a43b/screen/eae7f769-916b-4a4d-8c8c-0f82c82f1128/) components to library                                                                                                                                                                                                                                                                                                                  |
@@ -187,7 +187,7 @@ permalink: "/prerelease-notes/index.html"
   <rh-table>
 
 | Component name | Notes                                                                                                                                                                                                                                                                                                                |
-|----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Avatar         | Added a [dark theme](https://xd.adobe.com/view/d20a1c17-375c-4c7f-6827-5fe2f8c2d92f-a43b/screen/d59009c8-65fb-44af-b70a-8d74f2922db8/) component to library                                                                                                                                                          |
 | Label          | Added [filled and outlined](https://xd.adobe.com/view/d20a1c17-375c-4c7f-6827-5fe2f8c2d92f-a43b/screen/6a1953ee-4519-43d3-b02e-13453611c015/) components to library                                                                                                                                                  |
 | Sticky card    | Added [light theme](https://xd.adobe.com/view/d20a1c17-375c-4c7f-6827-5fe2f8c2d92f-a43b/screen/ab37d0fd-94c5-423a-ac5e-fe69951d492c/) and [dark theme](https://xd.adobe.com/view/d20a1c17-375c-4c7f-6827-5fe2f8c2d92f-a43b/screen/49d8b24d-de69-46ca-b099-d8a62b4ef7bd/) components to Personalization patterns page |

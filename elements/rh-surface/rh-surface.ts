@@ -2,7 +2,10 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import {
+  colorPalettes,
+  type ColorPalette,
+} from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-surface.css';
@@ -36,7 +39,8 @@ export class RhSurface extends LitElement {
    * Your theme will influence these colors so check there first if you are seeing inconsistencies.
    * See [CSS Custom Properties](#css-custom-properties) for default values
    */
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+  @property({ reflect: true, attribute: 'color-palette' })
+  colorPalette?: ColorPalette;
 
   render() {
     return html`<!--

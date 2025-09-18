@@ -1,5 +1,5 @@
-
 ## Keyboard interactions
+
 Each tab is a focus stop. Pressing the <code>Arrow</code> keys moves the focus and activates the next or previous tab. Pressing <code>Tab</code> when a tab has focus moves the focus out of the list and onto the next interactive element.
 
 <rh-alert state="info">
@@ -27,7 +27,6 @@ Each tab is a focus stop. Pressing the <code>Arrow</code> keys moves the focus a
 
 </rh-table>
 
-
 ## Focus order
 
 A logical focus order helps keyboard users operate our websites. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly. For both sizes and orientations, the focus order is from left to right and top to bottom. Disabled buttons are not included in the focus order.
@@ -38,7 +37,6 @@ A logical focus order helps keyboard users operate our websites. Elements need t
        width="872"
        height="994">
 </uxdot-example>
-
 
 ### Touch targets
 
@@ -51,8 +49,8 @@ Tabs are adequately spaced for optimal touch targets.
        height="420">
 </uxdot-example>
 
-
 ## Additional guidelines
+
 - Tabs must communicate to users which tab in the list is currently selected and the total number of tabs available
 - There should only be one active tab
 - Inactive tabs can inherit hover, focus, and active states

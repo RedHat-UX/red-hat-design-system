@@ -36,7 +36,6 @@ Code block is available for both light and dark color schemes.
        height="192">
 </uxdot-example>
 
-
 ### Dark scheme
 
 <uxdot-example color-palette="darkest" width-adjustment="503px">
@@ -62,7 +61,7 @@ A code block may or may not show line numbers.
 <rh-table>
 
 | Property                | Light scheme                | Dark scheme                 |
-|-------------------------|-----------------------------|-----------------------------|
+| ----------------------- | --------------------------- | --------------------------- |
 | Line numbers text color | `--rh-color-text-secondary` | `--rh-color-text-secondary` |
 | Line numbers border     | `--rh-color-border-subtle`  | `--rh-color-border-subtle`  |
 
@@ -84,7 +83,7 @@ A code block may or may not show line numbers.
 <rh-table>
 
 | Property                | Light Scheme                | Dark Scheme                 |
-|-------------------------|-----------------------------|-----------------------------|
+| ----------------------- | --------------------------- | --------------------------- |
 | Line numbers text color | `--rh-color-text-secondary` | `--rh-color-text-secondary` |
 | Line numbers border     | `--rh-color-border-subtle`  | `--rh-color-border-subtle`  |
 

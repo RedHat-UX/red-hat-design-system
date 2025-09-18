@@ -1,15 +1,22 @@
 <rh-card class="example-image-card">
-  <img src="../kitten-900x300.avif" slot="image" alt="adorable kitten">
+  <img src="../kitten-900x300.avif" slot="image" alt="adorable kitten" />
   <h4 slot="header">Heading, sm</h4>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit
+  libero, a pharetra augue.
   <rh-cta slot="footer" href="#">Call to action</rh-cta>
 </rh-card>
 
 <style>
   .example-image-card {
     inline-size: 360px;
-    &::part(image) { order: 0; }
-    &::part(header) { order: 1; }
-    &::part(footer) { order: 2; }
+    &::part(image) {
+      order: 0;
+    }
+    &::part(header) {
+      order: 1;
+    }
+    &::part(footer) {
+      order: 2;
+    }
   }
 </style>

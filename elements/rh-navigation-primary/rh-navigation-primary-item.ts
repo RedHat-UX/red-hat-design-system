@@ -64,7 +64,6 @@ export class RhNavigationPrimaryItem extends LitElement {
   /** Icon set for the `icon` property - 'ui' by default */
   @property({ attribute: 'icon-set' }) iconSet?: IconSetName;
 
-
   protected firstUpdated(): void {
     // ensure we update initially on client hydration
     const _isHydrated = isServer && !this.hasUpdated;
@@ -89,29 +88,45 @@ export class RhNavigationPrimaryItem extends LitElement {
   render() {
     const { variant = '' } = this;
     const compact = this.compact ?? true;
-    const hamburger = (!this.getAttribute('slot'));
+    const hamburger = !this.getAttribute('slot');
     return html`
-      <div id="container" class="${classMap({
-      [variant]: true,
-      highlight: !!this.#highlight,
-      compact,
-      standalone: !hamburger,
-      hamburger: hamburger,
-      dehydrated: !this.#hydrated,
-    })}">${this.variant === 'dropdown' ? html`
-        <details @toggle="${this.#detailsToggle}" ?open="${this.open}">
-          <summary>${hamburger ? '' : html`
-            <slot name="icon">${!this.icon ? '' : html`
-              <rh-icon icon="${ifDefined(this.icon)}" set="${ifDefined(this.iconSet)}"></rh-icon>`}
-            </slot>`}
-            <div id="summary-text"><slot name="summary">${this.summary}</slot></div>
-            <rh-icon icon="caret-down" set="microns"></rh-icon>
-          </summary>
-          <rh-navigation-primary-item-menu id="details-content">
-            <slot></slot>
-          </rh-navigation-primary-item-menu>
-        </details>` : html`
-        <slot></slot>`}
+      <div
+        id="container"
+        class="${classMap({
+          [variant]: true,
+          highlight: !!this.#highlight,
+          compact,
+          standalone: !hamburger,
+          hamburger: hamburger,
+          dehydrated: !this.#hydrated,
+        })}"
+      >
+        ${this.variant === 'dropdown' ?
+          html` <details
+              @toggle="${this.#detailsToggle}"
+              ?open="${this.open}"
+            >
+              <summary>
+                ${hamburger ?
+                  ''
+                  : html` <slot name="icon"
+                      >${!this.icon ?
+                        ''
+                        : html` <rh-icon
+                            icon="${ifDefined(this.icon)}"
+                            set="${ifDefined(this.iconSet)}"
+                          ></rh-icon>`}
+                    </slot>`}
+                <div id="summary-text">
+                  <slot name="summary">${this.summary}</slot>
+                </div>
+                <rh-icon icon="caret-down" set="microns"></rh-icon>
+              </summary>
+              <rh-navigation-primary-item-menu id="details-content">
+                <slot></slot>
+              </rh-navigation-primary-item-menu>
+            </details>`
+          : html` <slot></slot>`}
       </div>
     `;
   }

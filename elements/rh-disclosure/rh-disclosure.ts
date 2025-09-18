@@ -8,7 +8,10 @@ import { classMap } from 'lit-html/directives/class-map.js';
 import { observes } from '@patternfly/pfe-core/decorators.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
-import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import {
+  colorPalettes,
+  type ColorPalette,
+} from '@rhds/elements/lib/color-palettes.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
@@ -45,7 +48,10 @@ export class RhDisclosure extends LitElement {
       'textarea',
       'rh-audio-player',
       'rh-dialog',
-    ].map(selector => `${selector}:not([inert]):not([inert] *):not([tabindex^='-']):not(:disabled)`),
+    ].map(
+      selector =>
+        `${selector}:not([inert]):not([inert] *):not([tabindex^='-']):not(:disabled)`
+    ),
 
     // Elements that don't need the :disabled selector:
     ...[
@@ -53,7 +59,10 @@ export class RhDisclosure extends LitElement {
       'audio[controls]',
       'video[controls]',
       '[contenteditable]',
-    ].map(selector => `${selector}:not([inert]):not([inert] *):not([tabindex^='-'])`),
+    ].map(
+      selector =>
+        `${selector}:not([inert]):not([inert] *):not([tabindex^='-'])`
+    ),
   ].join(',');
 
   /**
@@ -65,7 +74,8 @@ export class RhDisclosure extends LitElement {
    * - `darker`
    * - `darkest`
    */
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+  @property({ reflect: true, attribute: 'color-palette' })
+  colorPalette?: ColorPalette;
 
   /**
    * Sets the disclosure to be in its open state
@@ -85,10 +95,11 @@ export class RhDisclosure extends LitElement {
   render() {
     return html`
       <details
-          ?open="${this.open}"
-          class=${classMap({ 'has-jump-links': this.hasJumpLinks })}
-          @keydown="${this.#onKeydown}"
-          @toggle="${this.#onToggle}">
+        ?open="${this.open}"
+        class=${classMap({ 'has-jump-links': this.hasJumpLinks })}
+        @keydown="${this.#onKeydown}"
+        @toggle="${this.#onToggle}"
+      >
         <summary>
           <!-- The caret icon in the shadow DOM -->
           <rh-icon id="caret" set="ui" icon="caret-down"></rh-icon>
@@ -113,10 +124,15 @@ export class RhDisclosure extends LitElement {
     if (event.code === 'Escape') {
       event.stopPropagation();
 
-      const escapeGuardElement =
-        event.composedPath().reverse().find((element: EventTarget | null) => {
-          return (element instanceof Element && element.matches(RhDisclosure.preventEscElements));
-        });
+      const escapeGuardElement = event
+          .composedPath()
+          .reverse()
+          .find((element: EventTarget | null) => {
+            return (
+              element instanceof Element
+            && element.matches(RhDisclosure.preventEscElements)
+            );
+          });
 
       if (!escapeGuardElement) {
         this.#closeDisclosure();

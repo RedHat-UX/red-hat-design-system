@@ -1,9 +1,8 @@
 ## Usage
 
-Use a dialog to communicate critical information that requires input or action. A dialog can be used to validate user decisions, confirm non-destructive or destructive actions, report errors, share task results and statuses, and prompt required user input. 
+Use a dialog to communicate critical information that requires input or action. A dialog can be used to validate user decisions, confirm non-destructive or destructive actions, report errors, share task results and statuses, and prompt required user input.
 
 A dialog is also interruptive by design. When active, users are blocked from viewing page content and cannot return to their workflow until the dialog task is complete or the dialog is dismissed. A dialog can be effective when used correctly, but it should be used sparingly to limit disruption.
-
 
 ### When to use a dialog
 
@@ -24,8 +23,8 @@ A video dialog should have the same aspect ratio as the video and include a clos
 
 ## Writing content
 
-Dialog content should be descriptive and specific so users can scan, understand 
-the context of an action, and make a quick decision. A dialog includes three 
+Dialog content should be descriptive and specific so users can scan, understand
+the context of an action, and make a quick decision. A dialog includes three
 main content sections.
 
 ### Headline
@@ -34,16 +33,16 @@ A headline introduces the purpose of a dialog, sometimes as a question. Use impo
 
 ### Body text
 
-Body text provides additional information about the consequence of an action in 
-three lines or less, typically concerning changes to a workflow or access to 
-information. Be mindful of adding interactive elements that would navigate users 
-away from a dialog, unless they are crucial yet helpful resources like 
+Body text provides additional information about the consequence of an action in
+three lines or less, typically concerning changes to a workflow or access to
+information. Be mindful of adding interactive elements that would navigate users
+away from a dialog, unless they are crucial yet helpful resources like
 documentation.
 
 ### Buttons
 
-Buttons allow users to answer the headline prompt. Write button text labels as 
-verbs to communicate their function and consequence. Button verbs can be pulled 
+Buttons allow users to answer the headline prompt. Write button text labels as
+verbs to communicate their function and consequence. Button verbs can be pulled
 from the headline for better scannability.
 
 ### Character and line counts
@@ -54,17 +53,16 @@ The recommended maximum character and line counts for the elements of a dialog a
 <rh-table class="char-count-table">
 
 | Element     | Character count | Line count |
-|-------------|-----------------|------------|
+| ----------- | --------------- | ---------- |
 | Title text  | 40              | 1          |
 | Body text   | 175             | 2          |
 | Button text | 30              | 1          |
 
 </rh-table>
 
-
 ### Overflow content
 
-When dialog content is taller than the dialog container height, the default behavior keeps the header fixed while  the body and footer sections scroll vertically. To make both the header and footer fixed, refer to the <a href="../code/">“Code” subpage</a>. 
+When dialog content is taller than the dialog container height, the default behavior keeps the header fixed while the body and footer sections scroll vertically. To make both the header and footer fixed, refer to the <a href="../code/">“Code” subpage</a>.
 
 The content will visibly fade at the end of the scrolling section to indicate there is additional content out of view. Dialog content should never scroll horizontally.
 
@@ -74,7 +72,6 @@ The content will visibly fade at the end of the scrolling section to indicate th
         width="1000"
         height="565">
 </uxdot-example>
-
 
 ## Layout
 
@@ -154,7 +151,6 @@ As breakpoints get smaller, the fixed-width dialog container will change to full
         width="1000"
         height="528">
 </uxdot-example>
-
 
 ## Best practices
 

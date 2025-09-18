@@ -1,15 +1,18 @@
 :host {
   position: fixed;
-  background-color: rgb(from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-80, 80%));
+  background-color: rgb(
+    from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-80, 80%)
+  );
   top: 0;
   width: 100vw;
   height: 100vh;
   /* stylelint-disable rhds/no-unknown-token-name */
   z-index:
-    /** z-index of the navigation-secondary-overlay */
-    var(--rh-navigation-secondary-overlay-z-index,
-      /** @deprecated use --rh-navigation-secondary-overlay-z-index */
-      var(--rh-secondary-nav-overlay-z-index, -1));
+    /** z-index of the navigation-secondary-overlay */ var(
+    --rh-navigation-secondary-overlay-z-index,
+    /** @deprecated use --rh-navigation-secondary-overlay-z-index */
+      var(--rh-secondary-nav-overlay-z-index, -1)
+  );
   /* stylelint-enable rhds/no-unknown-token-name */
 }
 

@@ -27,7 +27,9 @@ describe('<rh-navigation-secondary>', async function() {
   beforeEach(async function() {
     element = await fixture<RhNavigationSecondary>(NAV);
     mobileButton = element.shadowRoot?.querySelector('button');
-    overlay = element.shadowRoot?.querySelector('rh-navigation-secondary-overlay');
+    overlay = element.shadowRoot?.querySelector(
+      'rh-navigation-secondary-overlay'
+    );
     dropdown = element.querySelector('rh-navigation-secondary-dropdown a');
   });
 
@@ -35,8 +37,7 @@ describe('<rh-navigation-secondary>', async function() {
     const klass = customElements.get('rh-navigation-secondary');
     expect(element)
         .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhNavigationSecondary);
+        .and.to.be.an.instanceOf(RhNavigationSecondary);
   });
 
   it('should remove role="navigation" after upgrade', async function() {
@@ -48,7 +49,8 @@ describe('<rh-navigation-secondary>', async function() {
   });
 
   it('should have an overlay set to hidden after upgrade', async function() {
-    const overlay: RhNavigationSecondaryOverlay | null | undefined = element.shadowRoot?.querySelector('rh-navigation-secondary-overlay');
+    const overlay: RhNavigationSecondaryOverlay | null | undefined =
+      element.shadowRoot?.querySelector('rh-navigation-secondary-overlay');
     expect(overlay?.hasAttribute('open')).to.be.false;
   });
 
@@ -88,7 +90,11 @@ describe('<rh-navigation-secondary>', async function() {
       });
 
       it('should not have class compact on shadow root nav', async function() {
-        await expect(element.shadowRoot?.querySelector('[part="nav"]')?.classList.contains('compact')).to.be.false;
+        await expect(
+          element.shadowRoot
+              ?.querySelector('[part="nav"]')
+              ?.classList.contains('compact')
+        ).to.be.false;
       });
 
       it('lightdom passes the a11y audit', async function() {
@@ -104,7 +110,10 @@ describe('<rh-navigation-secondary>', async function() {
           setTimeout(function() {
             dropdown?.click();
           });
-          await oneEvent(element, 'expand-request') as SecondaryNavDropdownExpandEvent;
+          (await oneEvent(
+            element,
+            'expand-request'
+          )) as SecondaryNavDropdownExpandEvent;
         });
 
         it('overlay should remove hidden attribute after a dropdown is clicked', async function() {
@@ -138,7 +147,11 @@ describe('<rh-navigation-secondary>', async function() {
       });
 
       it('should have class compact on shadow root nav', function() {
-        expect(element.shadowRoot?.querySelector('[part="nav"]')?.classList.contains('compact')).to.be.true;
+        expect(
+          element.shadowRoot
+              ?.querySelector('[part="nav"]')
+              ?.classList.contains('compact')
+        ).to.be.true;
       });
 
       it('lightdom passes the a11y audit', async function() {
@@ -174,7 +187,10 @@ describe('<rh-navigation-secondary>', async function() {
             setTimeout(function() {
               dropdown?.click();
             });
-            await oneEvent(element, 'expand-request') as SecondaryNavDropdownExpandEvent;
+            (await oneEvent(
+              element,
+              'expand-request'
+            )) as SecondaryNavDropdownExpandEvent;
           });
 
           it('overlay should not remove hidden attribute after dropdown is clicked with mobile menu open', async function() {
@@ -185,7 +201,10 @@ describe('<rh-navigation-secondary>', async function() {
             setTimeout(function() {
               dropdown?.click();
             });
-            await oneEvent(element, 'expand-request') as SecondaryNavDropdownExpandEvent;
+            (await oneEvent(
+              element,
+              'expand-request'
+            )) as SecondaryNavDropdownExpandEvent;
             expect(overlay?.hasAttribute('hidden')).to.be.false;
           });
 
@@ -202,7 +221,9 @@ describe('<rh-navigation-secondary>', async function() {
               overlay?.click();
             });
             await aTimeout(50);
-            expect(mobileButton?.getAttribute('aria-expanded')).to.be.equal('false');
+            expect(mobileButton?.getAttribute('aria-expanded')).to.be.equal(
+              'false'
+            );
             expect(dropdown?.hasAttribute('expanded')).to.be.false;
           });
         });
@@ -221,9 +242,15 @@ describe('<rh-navigation-secondary>', async function() {
       expect(element.getAttribute('color-palette') === 'dark').to.be.true;
       const container = element.shadowRoot?.querySelector('#container');
       if (container) {
-        expect(getComputedStyle(container).getPropertyValue('background-color')).to.be.equal('rgb(56, 56, 56)');
+        expect(
+          getComputedStyle(container).getPropertyValue('background-color')
+        ).to.be.equal('rgb(56, 56, 56)');
       } else {
-        assert.fail('container', 'null', 'No container found, did element upgrade?');
+        assert.fail(
+          'container',
+          'null',
+          'No container found, did element upgrade?'
+        );
       }
     });
   });
@@ -234,7 +261,9 @@ describe('<rh-navigation-secondary>', async function() {
     beforeEach(async function() {
       element = await fixture<RhNavigationSecondary>(NAV);
       await element.updateComplete;
-      dropdown = element.querySelector('rh-navigation-secondary-dropdown') as RhNavigationSecondaryDropdown;
+      dropdown = element.querySelector(
+        'rh-navigation-secondary-dropdown'
+      ) as RhNavigationSecondaryDropdown;
     });
 
     it('should have a current page indicator on a dropdown that contains a link set to current page', async function() {

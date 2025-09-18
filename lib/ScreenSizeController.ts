@@ -1,4 +1,8 @@
-import { type ReactiveControllerHost, type ReactiveController, isServer } from 'lit';
+import {
+  type ReactiveControllerHost,
+  type ReactiveController,
+  isServer,
+} from 'lit';
 
 import {
   Breakpoint2xsMax,
@@ -10,14 +14,7 @@ import {
   MediaXs,
 } from '@rhds/tokens/media.js';
 
-type BreakpointKey =
-  | '2xs'
-  | 'xs'
-  | 'sm'
-  | 'md'
-  | 'lg'
-  | 'xl'
-  | '2xl';
+type BreakpointKey = '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
 type MediaToken =
   | typeof Media2xl
@@ -29,8 +26,11 @@ type MediaToken =
 
 function getMediaQueryListForToken(token: MediaToken | string) {
   const media =
-      typeof token === 'string' ? `(max-width: ${token})`
-    : Object.entries(token).map(x => `(${x.join(':')})`).join(' and ');
+    typeof token === 'string' ?
+      `(max-width: ${token})`
+      : Object.entries(token)
+          .map(x => `(${x.join(':')})`)
+          .join(' and ');
   return matchMedia(`screen and ${media}`);
 }
 
@@ -47,10 +47,14 @@ const BREAKPOINTS: Record<BreakpointKey, string | MediaToken> = {
 export class ScreenSizeController implements ReactiveController {
   static instances = new Set<ScreenSizeController>();
 
-  static queries: Map<BreakpointKey, MediaQueryList> =
-      isServer ? new Map()
-    : new Map(Object.entries(BREAKPOINTS).map(([k, v]) =>
-      [k as BreakpointKey, getMediaQueryListForToken(v)]));
+  static queries: Map<BreakpointKey, MediaQueryList> = isServer ?
+    new Map()
+    : new Map(
+      Object.entries(BREAKPOINTS).map(([k, v]) => [
+        k as BreakpointKey,
+        getMediaQueryListForToken(v),
+      ])
+    );
 
   public mobile = ScreenSizeController.queries.get('2xs')?.matches ?? false;
 

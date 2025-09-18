@@ -9,7 +9,10 @@ import { SSRFailureRecoverableElement } from './ssr-failure-recoverable.js';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
-import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import {
+  colorPalettes,
+  type ColorPalette,
+} from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import {
@@ -52,7 +55,8 @@ export class UxdotPattern extends SSRFailureRecoverableElement {
   @property({ reflect: true, attribute: 'js-src' }) jsSrc?: string;
 
   /** Should the color picker be hidden? */
-  @property({ type: Boolean, attribute: 'no-color-picker' }) noColorPicker = false;
+  @property({ type: Boolean, attribute: 'no-color-picker' }) noColorPicker =
+    false;
 
   /** Should the code tabs be hidden? */
   @property({ type: Boolean, attribute: 'no-code-tabs' }) noCodeTabs = false;
@@ -61,7 +65,10 @@ export class UxdotPattern extends SSRFailureRecoverableElement {
   @property({ type: Boolean, attribute: 'full-height' }) fullHeight = false;
 
   /** Should the code blocks be expanded? */
-  @property({ reflect: true, attribute: 'active-tab' }) activeTab?: 'html' | 'css' | 'js';
+  @property({ reflect: true, attribute: 'active-tab' }) activeTab?:
+    | 'html'
+    | 'css'
+    | 'js';
 
   /** Which color palettes should be allowed in the picker? (default: all) */
   @property({ converter: ColorPaletteListConverter }) allow = paletteNames;
@@ -74,11 +81,14 @@ export class UxdotPattern extends SSRFailureRecoverableElement {
 
   render() {
     const { activeTab = 'html' } = this;
-    const { allContent, htmlContent, cssContent, jsContent, hasJs, hasCss } = this.ssr;
+    const { allContent, htmlContent, cssContent, jsContent, hasJs, hasCss } =
+      this.ssr;
 
     const actionsLabels = html`
       <span slot="action-label-copy">Copy to Clipboard</span>
-      <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>
+      <span slot="action-label-copy" hidden data-code-block-state="active"
+        >Copied!</span
+      >
       <span slot="action-label-wrap">Toggle line wrap</span>
     `;
 
@@ -86,53 +96,67 @@ export class UxdotPattern extends SSRFailureRecoverableElement {
       <div id="container">
         <div id="heading"><slot name="heading"></slot></div>
 
-        <form id="color-picker"
-              ?hidden="${this.noColorPicker}"
-              @submit="${(e: Event) => e.preventDefault()}">
+        <form
+          id="color-picker"
+          ?hidden="${this.noColorPicker}"
+          @submit="${(e: Event) => e.preventDefault()}"
+        >
           <label for="picker">Color palette</label>
-          <rh-context-picker id="picker"
-                             @change="${this.#onChange}"
-                             value="${this.colorPalette}"
-                             target="${this.target}"
-                             allow="${this.allow}"></rh-context-picker>
+          <rh-context-picker
+            id="picker"
+            @change="${this.#onChange}"
+            value="${this.colorPalette}"
+            target="${this.target}"
+            allow="${this.allow}"
+          ></rh-context-picker>
         </form>
 
-        <div id="description" class="${classMap({ empty: this.#slots.isEmpty(null) })}">
+        <div
+          id="description"
+          class="${classMap({ empty: this.#slots.isEmpty(null) })}"
+        >
           <slot></slot>
         </div>
 
         <rh-surface id="content">${allContent}</rh-surface>
 
-        <rh-tabs id="code-tabs"
-                 class="code-tabs"
-                 active-index="${ifDefined(!this.#picked ? ['html', 'css', 'js'].indexOf(activeTab) : undefined)}"
-                 ?hidden="${this.noCodeTabs}"
-                 @expand="${this.#onExpand}">
-          <rh-tab id="html-tab" slot="tab" >HTML</rh-tab>
+        <rh-tabs
+          id="code-tabs"
+          class="code-tabs"
+          active-index="${ifDefined(
+            !this.#picked ? ['html', 'css', 'js'].indexOf(activeTab) : undefined
+          )}"
+          ?hidden="${this.noCodeTabs}"
+          @expand="${this.#onExpand}"
+        >
+          <rh-tab id="html-tab" slot="tab">HTML</rh-tab>
           <rh-tab-panel id="html-panel">
-            <rh-code-block highlighting="prerendered"
-                           actions="copy wrap"
-                           ?full-height="${this.fullHeight}">
-              ${htmlContent}
-              ${actionsLabels}
+            <rh-code-block
+              highlighting="prerendered"
+              actions="copy wrap"
+              ?full-height="${this.fullHeight}"
+            >
+              ${htmlContent} ${actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
-          <rh-tab id="css-tab" slot="tab" .disabled="${!hasCss}" >CSS</rh-tab>
+          <rh-tab id="css-tab" slot="tab" .disabled="${!hasCss}">CSS</rh-tab>
           <rh-tab-panel id="css-panel">
-            <rh-code-block highlighting="prerendered"
-                           actions="copy wrap"
-                           ?full-height="${this.fullHeight}">
-              ${cssContent}
-              ${actionsLabels}
+            <rh-code-block
+              highlighting="prerendered"
+              actions="copy wrap"
+              ?full-height="${this.fullHeight}"
+            >
+              ${cssContent} ${actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
-          <rh-tab id="js-tab" slot="tab" .disabled="${!hasJs}" >JS</rh-tab>
+          <rh-tab id="js-tab" slot="tab" .disabled="${!hasJs}">JS</rh-tab>
           <rh-tab-panel id="js-panel">
-            <rh-code-block highlighting="prerendered"
-                           actions="copy wrap"
-                           ?full-height="${this.fullHeight}">
-              ${jsContent}
-              ${actionsLabels}
+            <rh-code-block
+              highlighting="prerendered"
+              actions="copy wrap"
+              ?full-height="${this.fullHeight}"
+            >
+              ${jsContent} ${actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
         </rh-tabs>

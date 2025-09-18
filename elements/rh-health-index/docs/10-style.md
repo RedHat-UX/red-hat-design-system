@@ -31,7 +31,6 @@ Health index is a combination of letter grades and severity colors. Severity col
   </figcaption>
 </figure>
 
-
 ### Variants
 
 There are four available variants: `Small`, `Default`, `Large`, and `Extra large`. The only difference between the Large and Extra large variants is the size.
@@ -43,8 +42,8 @@ There are four available variants: `Small`, `Default`, `Large`, and `Extra large
        height="334">
 </uxdot-example>
 
-
 ## Color schemes
+
 <a id="theme"></a>
 
 Health index is available in both light and dark color schemes.
@@ -72,7 +71,6 @@ Health index is available in both light and dark color schemes.
        height="38">
 </uxdot-example>
 
-
 ### Dark scheme
 
 <uxdot-example color-palette="dark" width-adjustment="752px">
@@ -96,7 +94,6 @@ Health index is available in both light and dark color schemes.
        height="38">
 </uxdot-example>
 
-
 ## Configuration
 
 Squares in the Default, Large, and Extra large variants are aligned horizontally.
@@ -108,7 +105,6 @@ Squares in the Default, Large, and Extra large variants are aligned horizontally
        height="90">
 </uxdot-example>
 
-
 ## Space
 
 The spacer in the Default variant is the same for all viewport sizes.
@@ -119,7 +115,6 @@ The spacer in the Default variant is the same for all viewport sizes.
        width="170"
        height="24">
 </uxdot-example>
-
 
 ## States
 
@@ -194,7 +189,6 @@ Depending on the theme and chosen variant, each severity level can have differen
   </table>
 </rh-table>
 
-
 <uxdot-example color-palette="darkest" width-adjustment="715px">
   <img alt="Multiple dark theme health index components at different sizes. Annotations 1 through 4 are pointing to various styling details as well as letter grades that have been enlarged.."
        src="../style-severity-level-dark.svg"
@@ -261,7 +255,6 @@ Depending on the theme and chosen variant, each severity level can have differen
     </tbody>
   </table>
 </rh-table>
-
 
 ## Interactive
 

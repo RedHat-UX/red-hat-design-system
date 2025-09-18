@@ -23,9 +23,9 @@ Title text should be simple so users know what to expect when they expand a disc
 
 <rh-table>
 
-| Element      | Character Count |
-|--------------|-----------------|
-| Title Text   | 50              |
+| Element    | Character Count |
+| ---------- | --------------- |
+| Title Text | 50              |
 
 </rh-table>
 

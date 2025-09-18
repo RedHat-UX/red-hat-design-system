@@ -1,22 +1,25 @@
 ## Usage
-Use an accordion to organize a large amount of content into sections. This 
-allows users to scan through critical information first and then access 
-additional information when needed. Users can also compare information by 
+
+Use an accordion to organize a large amount of content into sections. This
+allows users to scan through critical information first and then access
+additional information when needed. Users can also compare information by
 expanding multiple panels simultaneously.
 
 ### When to use an accordion
-Using an accordion provides an easy way to organize content while reducing page 
-scrolling, but at the expense of hiding information or burdening users with more 
-clicks. There is a chance that important information will be missed or not 
-immediately noticed by users. Therefore, if reading important information is 
-critical to the user experience or if important information requires more focus 
+
+Using an accordion provides an easy way to organize content while reducing page
+scrolling, but at the expense of hiding information or burdening users with more
+clicks. There is a chance that important information will be missed or not
+immediately noticed by users. Therefore, if reading important information is
+critical to the user experience or if important information requires more focus
 and less clicking, it is advised to not use an accordion.
 
 ### Accordion vs. disclosure
-An accordion is used to organize important information whereas a 
-[Disclosure](/patterns/disclosure/) can be used to organize secondary 
-information that might not be critical to read or impact the experience. An 
-accordion can also accommodate multiple sections of content, whereas a 
+
+An accordion is used to organize important information whereas a
+[Disclosure](/patterns/disclosure/) can be used to organize secondary
+information that might not be critical to read or impact the experience. An
+accordion can also accommodate multiple sections of content, whereas a
 disclosure can only accommodate one.
 
 <uxdot-example color-palette="lightest" width-adjustment="872px">
@@ -27,7 +30,8 @@ disclosure can only accommodate one.
 </uxdot-example>
 
 ### Sizes
-It is acceptable to use the Small size on large breakpoints, but do not use the 
+
+It is acceptable to use the Small size on large breakpoints, but do not use the
 Large size on small breakpoints.
 
 <uxdot-example color-palette="lightest" width-adjustment="872px">
@@ -40,10 +44,11 @@ Large size on small breakpoints.
 ## Writing content
 
 ### Title text
-Title text should be written concisely so users know what to expect when they 
-expand a panel. Beware of long character counts especially on small breakpoints 
-or when translated. If title text is too long, create another section. Do not 
-write title text to sound like a call to action, make it as easy as possible for 
+
+Title text should be written concisely so users know what to expect when they
+expand a panel. Beware of long character counts especially on small breakpoints
+or when translated. If title text is too long, create another section. Do not
+write title text to sound like a call to action, make it as easy as possible for
 users to understand the content within.
 
 <figure>
@@ -64,21 +69,21 @@ users to understand the content within.
 
 ### Character count
 
-Title text should have fewer characters to help users make sense of what the 
+Title text should have fewer characters to help users make sense of what the
 content will be when they expand a panel.
 
 <rh-table>
 
 | Title text | Character count |
-|------------|-----------------|
+| ---------- | --------------- |
 | Title text | 65              |
 
 </rh-table>
 
 ### Panel content
 
-When a panel is expanded, some content must appear below the title text and 
-chevron icon. Content can include text, cards, images, etc. Text blocks should 
+When a panel is expanded, some content must appear below the title text and
+chevron icon. Content can include text, cards, images, etc. Text blocks should
 not exceed `750px` to maintain optimal readability.
 
 <uxdot-example color-palette="lightest" width-adjustment="872px">
@@ -101,7 +106,7 @@ Title text can be two lines on small breakpoints, but no more.
 
 ## Layout
 
-The width of an accordion can be adjusted on large breakpoints to fit fewer 
+The width of an accordion can be adjusted on large breakpoints to fit fewer
 columns if necessary.
 
 <uxdot-example color-palette="lightest" width-adjustment="872px">
@@ -114,13 +119,15 @@ columns if necessary.
 ## Behavior
 
 ### Expanding and collapsing panels
-Users can expand and collapse panels one at a time by default. More than one or 
-all panels cannot be expanded at once unless that functionality is added along 
-with an **Expand all** button. When a panel is collapsed, the caret points down. 
+
+Users can expand and collapse panels one at a time by default. More than one or
+all panels cannot be expanded at once unless that functionality is added along
+with an **Expand all** button. When a panel is collapsed, the caret points down.
 When a panel is expanded, the caret animates to point up.
 
 ### Expanding multiple panels
-Users can expand multiple panels simultaneously either stacked on top of each 
+
+Users can expand multiple panels simultaneously either stacked on top of each
 other or not. Expanding one panel does not collapse another.
 
 <uxdot-example color-palette="lightest" width-adjustment="872px">
@@ -154,7 +161,7 @@ smaller.
 <rh-table>
 
 | Breakpoint      | Range           | Size            |
-|-----------------|-----------------|-----------------|
+| --------------- | --------------- | --------------- |
 | Desktop, large  | &gt; 1680px     | Small and Large |
 | Desktop, medium | 1440px - 1679px | Small and Large |
 | Desktop, small  | 1200px - 1439px | Small and Large |
@@ -243,4 +250,3 @@ smaller.
     <p>Do not use a light accordion in a dark environment and vice versa because it may cause accessibility and usability issues.</p>
   </uxdot-best-practice>
 </div>
-

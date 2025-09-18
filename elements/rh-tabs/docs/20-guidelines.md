@@ -2,11 +2,9 @@
 
 Use tabs to help users navigate information while staying on the same page. Text labels and content in the panel should be related so users know what to expect when they select each tab. Never force users to switch back and forth between tabs to complete a task.
 
-
 ### When to use tabs
 
 Use tabs to organize lots of information into logical sections. Consider using an accordion if that information needs to be viewed simultaneously because using tabs is not suitable as it forces users to rely on short-term memory when switching back and forth. Using an accordion can also accommodate more sections with longer text labels whereas tabs should only display three or four sections with short text labels. Therefore, if viewing lots of sections of content simultaneously is critical to the user experience or if important information requires more focus and less clicking, use an accordion instead.
-
 
 ### Tabs vs. accordion
 
@@ -19,7 +17,6 @@ Tabs allow users to click through content one section at a time whereas an accor
        height="998">
 </uxdot-example>
 
-
 ### Number of tabs
 
 To reduce cognitive load and a cluttered user interface, avoid using more than three or four tabs.
@@ -30,7 +27,6 @@ To reduce cognitive load and a cluttered user interface, avoid using more than t
        width="872"
        height="242">
 </uxdot-example>
-
 
 ## Variants
 
@@ -45,10 +41,10 @@ When choosing one variation over the other, consider where it is being used. If 
        height="246">
 </uxdot-example>
 
-
 ### Orientation
 
 When choosing one orientation over the other, consider the content in the panel, other elements in the layout, and how you want users to read the content:
+
 - Horizontal tabs are placed in the middle of a container and offer users a <strong>top-to-bottom</strong> reading experience
 - Vertical tabs are placed on the left side of a container and offer users a <strong>left-to-right</strong> reading experience
 
@@ -58,7 +54,6 @@ When choosing one orientation over the other, consider the content in the panel,
        width="872"
        height="712">
 </uxdot-example>
-
 
 ### Alignment
 
@@ -70,7 +65,6 @@ If using horizontal tabs, the default orientation is left aligned, but center al
        width="872"
        height="420">
 </uxdot-example>
-
 
 ### Inset and tab panel spacing
 
@@ -115,7 +109,6 @@ In certain edge cases, logos can be used instead of text labels.
        height="273">
 </uxdot-example>
 
-
 ## Tab panel
 
 The panel is below or to the right of tabs. Use this area to place other elements or content like text, links, calls to action, and more. Text blocks should not exceed <code>750px</code> to maintain optimal readability.
@@ -146,7 +139,6 @@ The panel is below or to the right of tabs. Use this area to place other element
        height="429">
 </uxdot-example>
 
-
 ## Writing content
 
 ### Text labels
@@ -160,7 +152,6 @@ Text labels should be concise, scannable, and descriptive of content in the pane
        height="395">
 </uxdot-example>
 
-
 ### Character count
 
 In general, tabs should have three or four text labels maximum. Text labels should be short but descriptive.
@@ -170,11 +161,10 @@ Text labels should be short but descriptive.
 <rh-table>
 
 | Column count | Character count |
-|--------------|-----------------|
+| ------------ | --------------- |
 | 3 to 4       | 20 to 30        |
 
 </rh-table>
-
 
 ## Layout
 
@@ -189,7 +179,6 @@ The divider line can be set to any width or be the same width as the list of tab
        height="424">
 </uxdot-example>
 
-
 ### Vertical tabs height
 
 The divider line will become taller if the height of content in the panel exceeds the height of vertical tabs.
@@ -201,7 +190,6 @@ The divider line will become taller if the height of content in the panel exceed
        height="692">
 </uxdot-example>
 
-
 ### Card
 
 Tabs can be used in a card if the layout is wide enough and there are fewer tabs.
@@ -212,7 +200,6 @@ Tabs can be used in a card if the layout is wide enough and there are fewer tabs
        width="480"
        height="384">
 </uxdot-example>
-
 
 ## Behavior
 
@@ -232,7 +219,6 @@ If the number of tabs exceeds the container width or breakpoint, overflow button
        height="602">
 </uxdot-example>
 
-
 ### Navigating overflow tabs
 
 When the first tab is active, the left overflow button is disabled. When the last tab is active, the right overflow button is disabled. When a tab that is cut off is selected, the list of tabs shifts so the selected tab is in full view.
@@ -243,7 +229,6 @@ When the first tab is active, the left overflow button is disabled. When the las
        width="544"
        height="178">
 </uxdot-example>
-
 
 ## Responsive design
 
@@ -256,7 +241,6 @@ When the first tab is active, the left overflow button is disabled. When the las
        height="578">
 </uxdot-example>
 
-
 ### Small breakpoints
 
 Vertical tabs switch to horizontal tabs with overflow buttons on small breakpoints.
@@ -267,7 +251,6 @@ Vertical tabs switch to horizontal tabs with overflow buttons on small breakpoin
        width="576"
        height="146">
 </uxdot-example>
-
 
 ## Best practices
 

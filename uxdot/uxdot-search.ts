@@ -57,7 +57,10 @@ export class UxdotSearch extends LitElement {
   }
 
   get #input() {
-    return this.shadowRoot?.getElementById('input') as HTMLInputElement | null ?? null;
+    return (
+      (this.shadowRoot?.getElementById('input') as HTMLInputElement | null)
+      ?? null
+    );
   }
 
   get #firstLink(): HTMLAnchorElement | null {
@@ -86,32 +89,44 @@ export class UxdotSearch extends LitElement {
 
   render() {
     return html`
-      <input id="input"
-             placeholder="${ifDefined(this.placeholder)}"
-             role="combobox"
-             aria-label="${ifDefined(this.#ariaLabel)}"
-             aria-autocomplete="list"
-             aria-controls="listbox"
-             aria-expanded="${String(this.expanded)}"
-             @input="${this.#onInput}">
+      <input
+        id="input"
+        placeholder="${ifDefined(this.placeholder)}"
+        role="combobox"
+        aria-label="${ifDefined(this.#ariaLabel)}"
+        aria-autocomplete="list"
+        aria-controls="listbox"
+        aria-expanded="${String(this.expanded)}"
+        @input="${this.#onInput}"
+      />
       <div id="container" tabindex="-1" ?hidden="${!this.expanded}">
-        <ol id="listbox"
-            role="listbox"
-            aria-labelledby="input">${this.items.map((item, i) => !item ? '' : html`
-          <li role="option"
-              data-i="${i}"
-              aria-selected="${this.activeIndex === i}">
-            <a id="i-${i}"
-               tabindex="${this.activeIndex === i ? 0 : -1}"
-               href="${item.value}"
-               @blur="${this.#onBlur}">${item.label}</a>
-          </li>`)}
+        <ol id="listbox" role="listbox" aria-labelledby="input">
+          ${this.items.map((item, i) =>
+            !item ?
+              ''
+              : html` <li
+                  role="option"
+                  data-i="${i}"
+                  aria-selected="${this.activeIndex === i}"
+                >
+                  <a
+                    id="i-${i}"
+                    tabindex="${this.activeIndex === i ? 0 : -1}"
+                    href="${item.value}"
+                    @blur="${this.#onBlur}"
+                    >${item.label}</a
+                  >
+                </li>`
+          )}
         </ol>
       </div>
-      <rh-button id="button"
-                 aria-controls="listbox"
-                 aria-expanded="${String(this.expanded)}"
-                 @click="${this.#onClickSearch}">Search</rh-button>
+      <rh-button
+        id="button"
+        aria-controls="listbox"
+        aria-expanded="${String(this.expanded)}"
+        @click="${this.#onClickSearch}"
+        >Search</rh-button
+      >
     `;
   }
 
@@ -153,26 +168,31 @@ export class UxdotSearch extends LitElement {
         this.expanded = true;
         return this.#focus(event);
       }
-      case 'Escape': this.expanded = false; break;
-      case 'Enter': this.form?.requestSubmit();
+      case 'Escape':
+        this.expanded = false;
+        break;
+      case 'Enter':
+        this.form?.requestSubmit();
     }
   }
 
   #focus(event: KeyboardEvent) {
     event.preventDefault();
     this.activeIndex ??= -1;
-    const d = ({ ArrowDown: 1, ArrowUp: -1 })[event.key]!;
+    const d = { ArrowDown: 1, ArrowUp: -1 }[event.key]!;
     const activeElement = this.shadowRoot?.activeElement;
     if (activeElement === this.#input) {
-      ({ ArrowUp: this.#lastLink, ArrowDown: this.#firstLink })[event.key]?.focus();
+      ({ ArrowUp: this.#lastLink, ArrowDown: this.#firstLink })[
+          event.key
+      ]?.focus();
       this.activeIndex = d > 0 ? 0 : this.items.length - 1;
     } else if (activeElement instanceof HTMLAnchorElement) {
       const nextIndex = this.activeIndex + d;
       const nextItem = this.items[nextIndex];
-      const nextFocus = this.shadowRoot?.getElementById(`i-${nextIndex}`) ?? this.#input;
+      const nextFocus =
+        this.shadowRoot?.getElementById(`i-${nextIndex}`) ?? this.#input;
       this.activeIndex = nextItem ? nextIndex : -1;
       nextFocus?.focus();
     }
   }
 }
-

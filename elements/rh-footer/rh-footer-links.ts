@@ -18,7 +18,8 @@ export class RhFooterLinks extends LitElement {
     type: Boolean,
     attribute: 'header-hidden',
     reflect: true,
-  }) headerHidden = false;
+  })
+  headerHidden = false;
 
   #mo = new MutationObserver(() => this.updateAccessibility());
 

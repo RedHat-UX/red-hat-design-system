@@ -69,7 +69,12 @@ export class RhFooter extends LitElement {
     return html`
       <!-- main footer element, containing all footer content -->
       <footer class="base ${classMap({ isMobile: this.#compact })}" part="base">
-        <h2 id="heading"><!-- text that describes the footer section to assistive technology. Contains default text "Red Hat footer". --><slot name="heading">Red Hat footer</slot></h2>
+        <h2 id="heading">
+          <!-- text that describes the footer section to assistive technology. Contains default text "Red Hat footer". --><slot
+            name="heading"
+            >Red Hat footer</slot
+          >
+        </h2>
         <!-- Overrides everything. Do not use. -->
         <slot name="base">
           <!-- footer header, typically containing main logo and social links -->
@@ -85,7 +90,10 @@ export class RhFooter extends LitElement {
                     <!-- main page or product logo. Defaults to Red Hat corporate logo -->
                     <slot name="logo">
                       <a href="/">
-                        <img alt="Red Hat" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg"/>
+                        <img
+                          alt="Red Hat"
+                          src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg"
+                        />
                       </a>
                     </slot>
                   </div>
@@ -97,10 +105,12 @@ export class RhFooter extends LitElement {
                 <slot name="header-secondary">
                   <div class="social-links">
                     <!-- social links container \`<rh-footer-links>\` -->
-                    <rh-footer-links class="social-links-item"
-                                     part="social-links"
-                                     role="list"
-                                     aria-label="Red Hat social media links">
+                    <rh-footer-links
+                      class="social-links-item"
+                      part="social-links"
+                      role="list"
+                      aria-label="Red Hat social media links"
+                    >
                       <!-- social media links (icons). Contains a default set of links -->
                       <slot name="social-links"></slot>
                     </rh-footer-links>
@@ -140,34 +150,40 @@ export class RhFooter extends LitElement {
   #renderLinksTemplate(isMobile = false) {
     // gather all of the links that need to be wrapped into the accordion
     // give them a designation of either 'header' or 'panel'
-    const children = Array.from(this.querySelectorAll?.(':scope > [slot^=links]') ?? []);
+    const children = Array.from(
+      this.querySelectorAll?.(':scope > [slot^=links]') ?? []
+    );
 
     // Update the dynamic slot names if on mobile
-    children.forEach((child, i) => child.setAttribute('slot', isMobile ? `links-${i}` : 'links'));
+    children.forEach((child, i) =>
+      child.setAttribute('slot', isMobile ? `links-${i}` : 'links')
+    );
 
-    return !(isMobile && children) ? html`
-      <!-- main footer links -->
-      <slot name="links"></slot>
-      ` : html`
-
-      <rh-accordion on="dark" color-palette="darkest">${children.map((child, i) => {
-          const type = isHeaderTagName(child.tagName) ? 'header' : 'panel';
-          // SEE https://github.com/asyncLiz/minify-html-literals/issues/37
-          switch (type) {
-            case 'header': return html`
-              <!-- mobile links accordion header element -->
-              <rh-accordion-header part="links-accordion-header">
-                <slot name="links-${i}"></slot>
-              </rh-accordion-header>`;
-            case 'panel': return html`
-              <!-- mobile links panel container element -->
-              <rh-accordion-panel part="links-accordion-panel">
-                <slot name="links-${i}"></slot>
-              </rh-accordion-panel>`;
-          }
-        })}
-      </rh-accordion>
-    `;
+    return !(isMobile && children) ?
+      html`
+          <!-- main footer links -->
+          <slot name="links"></slot>
+        `
+      : html`
+          <rh-accordion on="dark" color-palette="darkest"
+            >${children.map((child, i) => {
+              const type = isHeaderTagName(child.tagName) ? 'header' : 'panel';
+              // SEE https://github.com/asyncLiz/minify-html-literals/issues/37
+              switch (type) {
+                case 'header':
+                  return html` <!-- mobile links accordion header element -->
+                    <rh-accordion-header part="links-accordion-header">
+                      <slot name="links-${i}"></slot>
+                    </rh-accordion-header>`;
+                case 'panel':
+                  return html` <!-- mobile links panel container element -->
+                    <rh-accordion-panel part="links-accordion-panel">
+                      <slot name="links-${i}"></slot>
+                    </rh-accordion-panel>`;
+              }
+            })}
+          </rh-accordion>
+        `;
   }
 
   private static LISTS_SELECTOR =
@@ -183,10 +199,11 @@ export class RhFooter extends LitElement {
       // has wired this up themselves.
       if (!list.hasAttribute('aria-labelledby')) {
         // get the corresponding header that should be the previous sibling
-        const header =
-          isHeaderTagName(list.previousElementSibling?.tagName ?? '') ?
-            list.previousElementSibling
-            : null;
+        const header = isHeaderTagName(
+          list.previousElementSibling?.tagName ?? ''
+        ) ?
+          list.previousElementSibling
+          : null;
         if (!header) {
           return;
         } else {

@@ -4,12 +4,11 @@ Primary navigation for top level site navigation.
 
 ## Usage
 
-
 ```html
 <rh-navigation-primary>
   <rh-navigation-primary-item variant="dropdown">
     <span slot="summary">Item 1</span>
-    Item 1 Content 
+    Item 1 Content
   </rh-navigation-primary-item>
 
   <rh-navigation-primary-item variant="dropdown">
@@ -49,6 +48,6 @@ Primary navigation for top level site navigation.
   <rh-navigation-primary-item slot="dropdowns" variant="dropdown">
     <span slot="summary">Item 8</span>
     Item 8 Content
-  </rh-navigation-primary-item>  
+  </rh-navigation-primary-item>
 </rh-navigation-primary>
 ```

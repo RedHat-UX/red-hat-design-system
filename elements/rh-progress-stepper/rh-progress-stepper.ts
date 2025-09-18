@@ -20,7 +20,10 @@ import {
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 import { compactContext, currentStepContext } from './context.js';
-import { RhProgressStep, RhProgressStepChangeEvent } from './rh-progress-step.js';
+import {
+  RhProgressStep,
+  RhProgressStepChangeEvent,
+} from './rh-progress-step.js';
 
 export * from './rh-progress-step.js';
 
@@ -28,15 +31,17 @@ import styles from './rh-progress-stepper.css';
 
 type ProgressStepsOrientation = 'horizontal' | 'vertical';
 
-const BREAKPOINTS = new Map(Object.entries({
-  '2xs': '320px',
-  'xs': BreakpointXs,
-  'sm': BreakpointSm,
-  'md': BreakpointMd,
-  'lg': BreakpointLg,
-  'xl': BreakpointXl,
-  '2xl': Breakpoint2xl,
-}));
+const BREAKPOINTS = new Map(
+  Object.entries({
+    '2xs': '320px',
+    'xs': BreakpointXs,
+    'sm': BreakpointSm,
+    'md': BreakpointMd,
+    'lg': BreakpointLg,
+    'xl': BreakpointXl,
+    '2xl': Breakpoint2xl,
+  })
+);
 
 /**
  * A progress stepper conveys the steps necessary to complete a process or task, and the status of
@@ -68,20 +73,23 @@ export class RhProgressStepper extends LitElement {
    * - `horizontal` - Steps are displayed in a horizontal row
    * - `vertical` - Steps are displayed in a vertical column
    */
-  @property({ reflect: true }) orientation: ProgressStepsOrientation = 'horizontal';
+  @property({ reflect: true }) orientation: ProgressStepsOrientation =
+    'horizontal';
 
   /**
    * Makes element display as `compact`
    */
   @provide({ context: compactContext })
-  @property({ reflect: true, type: Boolean }) compact = false;
+  @property({ reflect: true, type: Boolean })
+  compact = false;
 
   /**
    * Defines the current step, so it can be marked as such with ARIA,
    * and so its label can be displayed in compact layouts.
    */
   @provide({ context: currentStepContext })
-  @state() private currentStep: RhProgressStep | null = null;
+  @state()
+  private currentStep: RhProgressStep | null = null;
 
   /**
    * Set when ResizeObserver detects width is less than the breakpoint (default: `--rh-breakpoint-sm`)
@@ -146,10 +154,13 @@ export class RhProgressStepper extends LitElement {
     const currentState = this.currentState || '';
 
     return html`
-      <div id="container" class="${classMap({ compact, vertical, [currentState]: true })}">
-        <strong id="current-step"
-                class="visually-hidden"
-                ?hidden="${!compact}">${this.#contentString}</strong>
+      <div
+        id="container"
+        class="${classMap({ compact, vertical, [currentState]: true })}"
+      >
+        <strong id="current-step" class="visually-hidden" ?hidden="${!compact}"
+          >${this.#contentString}</strong
+        >
         <!-- Use this slot for \`<rh-progress-step>\` items -->
         <slot id="step-list" @change="${this.#onChange}"></slot>
       </div>
@@ -165,8 +176,7 @@ export class RhProgressStepper extends LitElement {
   #updateState() {
     // all steps with `[state=active]`, `fail` or `warn`
     // `[state=complete]` is not a stateful step, since `complete` is always a past step
-    const statefulSteps =
-      this.querySelectorAll(/* css */`
+    const statefulSteps = this.querySelectorAll(/* css */ `
         rh-progress-step:is([state="active"], [state="fail"], [state="warn"], [icon]),
         rh-progress-step:has(> [slot=icon])
       `);
@@ -185,7 +195,7 @@ export class RhProgressStepper extends LitElement {
         } else if (node instanceof Text) {
           this.#contentString += node.data.trim();
         }
-      };
+      }
     }
   }
 

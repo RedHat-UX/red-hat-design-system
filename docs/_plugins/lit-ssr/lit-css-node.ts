@@ -11,7 +11,11 @@ type LoadFunction = (url: string, context: HookContext) => Promise<HookContext>;
 
 const cache = new Map<string, string>();
 
-export async function load(url: string, context: HookContext, nextLoad: LoadFunction) {
+export async function load(
+  url: string,
+  context: HookContext,
+  nextLoad: LoadFunction
+) {
   if (url.endsWith('.css')) {
     if (!cache.has(url)) {
       const filePath = fileURLToPath(new URL(url));

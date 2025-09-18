@@ -19,13 +19,12 @@ A dialog can be opened by pressing `Enter` when the dialog trigger has focus. Wh
 
 </rh-table>
 
-
 ## Focus order
 
 When a dialog opens, the close dialog button receives focus by default. Users have the ability to tab through each focusable element in the dialog. Depending on the browser, reaching the last focusable element may either:
 
-  1. Loop focus back to the close button.
-  1. Move to focusable elements within the browser’s chrome.
+1. Loop focus back to the close button.
+1. Move to focusable elements within the browser’s chrome.
 
 While the dialog is open, interactive elements on the underlying page cannot be focused.
 
@@ -50,11 +49,9 @@ Only the close button and any interactive elements are selectable.
         height="327">
 </uxdot-example>
 
-
 ### Backdrop
 
 A dialog will close by users clicking or tapping the backdrop or outside of the container.
-
 
 ## Accessible labels
 
@@ -70,7 +67,6 @@ If there is no slotted heading, users should provide an `accessible-label` attri
 
 If neither an `accessible-label` nor any headings exist, the accessible name of the dialog will fall back to the text of the dialog's trigger.
 
-
 ## Additional guidelines
 
 - Content outside of a dialog cannot be interacted with or navigated to while the dialog is open.
@@ -79,7 +75,6 @@ If neither an `accessible-label` nor any headings exist, the accessible name of 
 - Long dialog content can still receive focus via keyboard if it overflows and a scrollbar appears.
 - When a dialog closes, focus should return to the last focused item before the dialog was opened.
 
-
 {% include 'partials/accessibility/ariaguide.md' %}
 
 {% include 'partials/accessibility/wcag.md' %}
@@ -87,4 +82,3 @@ If neither an `accessible-label` nor any headings exist, the accessible name of 
 {% include 'partials/accessibility/2.1.3-AAA.md' %}
 {% include 'partials/accessibility/2.4.3-A.md' %}
 {% include 'partials/accessibility/2.5.5-AAA.md' %}
-

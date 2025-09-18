@@ -6,7 +6,6 @@
   import '@rhds/elements/rh-tile/rh-tile.js';
 </script>
 
-
 ## Usage
 
 Cards are used to display basic content or long paragraphs of text. Secondary and
@@ -26,7 +25,6 @@ The main difference between a card and a [tile](/elements/tile/) is that cards m
 Tiles, on the other hand, must perform exactly one action. No more or less.
 
 Cards can be grouped together with other cards, and tiles can be grouped together with other tiles.
-
 
 ### Patterns
 
@@ -137,12 +135,14 @@ The recommended maximum character count for the elements of a card are listed be
 
 <rh-table>
 
-  Element     Character count
-  ----------- -----------------
-  Title       20
-  Headline    50
-  Body text   165
-  Footer      55
+Element Character count
+
+---
+
+Title 20
+Headline 50
+Body text 165
+Footer 55
 
 </rh-table>
 

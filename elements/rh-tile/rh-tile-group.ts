@@ -9,7 +9,10 @@ import { RovingTabindexController } from '@patternfly/pfe-core/controllers/rovin
 
 import { RhTile, TileSelectEvent } from './rh-tile.js';
 
-import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import {
+  colorPalettes,
+  type ColorPalette,
+} from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-tile-group.css';
@@ -41,7 +44,8 @@ export class RhTileGroup extends LitElement {
    *
    * Tile group always resets its context to `base`, unless explicitly provided with a `color-palette`.
    */
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+  @property({ reflect: true, attribute: 'color-palette' })
+  colorPalette?: ColorPalette;
 
   #tiles: RhTile[] = [];
 
@@ -62,7 +66,7 @@ export class RhTileGroup extends LitElement {
    * All selected tiles
    */
   get selected() {
-    const selected = this.#tiles?.filter(tile=> tile.checked);
+    const selected = this.#tiles?.filter(tile => tile.checked);
     const [first] = selected;
     return this.radio ? first : selected;
   }

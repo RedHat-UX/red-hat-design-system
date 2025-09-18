@@ -31,8 +31,8 @@ preview of information or provide secondary content in relation to the content
 it's near. Several cards can be used together to group related information.
 
 <rh-alert state="info">These Card patterns document different design-approved
-  uses of the `<rh-card>` element. Consult the [`<rh-card>` element documentation][element]
-  for more information on how to use the card element.</rh-alert>
+uses of the `<rh-card>` element. Consult the [`<rh-card>` element documentation][element]
+for more information on how to use the card element.</rh-alert>
 
 ## Customizing cards
 

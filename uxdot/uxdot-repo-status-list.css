@@ -29,16 +29,23 @@
 
 a {
   color: var(--rh-color-interactive-primary-default);
-  &:hover { color: var(--rh-color-interactive-primary-hover); }
+  &:hover {
+    color: var(--rh-color-interactive-primary-hover);
+  }
 
   &:focus-within {
     color: var(--rh-color-interactive-primary-focus);
-    &:hover { color: var(--rh-color-interactive-primary-focus); }
+    &:hover {
+      color: var(--rh-color-interactive-primary-focus);
+    }
   }
 
-  &:visited { /* stylelint-disable-line no-descending-specificity */
+  &:visited {
+    /* stylelint-disable-line no-descending-specificity */
     color: var(--rh-color-interactive-primary-visited-default);
-    &:hover { color: var(--rh-color-interactive-primary-visited-hover); }
+    &:hover {
+      color: var(--rh-color-interactive-primary-visited-hover);
+    }
   }
 }
 

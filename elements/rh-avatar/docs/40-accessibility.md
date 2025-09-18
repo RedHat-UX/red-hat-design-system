@@ -1,16 +1,16 @@
 ## Implementation
 
 - If you are using an SVG for the avatar, make sure it is accessible
-  - See [How to create accessible SVGs][svg] and reference the different SVG 
+  - See [How to create accessible SVGs][svg] and reference the different SVG
     patterns
-- If you are combining an avatar with another element, check accessibility 
+- If you are combining an avatar with another element, check accessibility
   guidelines for that element as well
 
 ## Additional guidelines
 
 - Ensure users can navigate to the avatar via screen reader
 - Ensure the avatar image has alternative text
-- Ensure keyboard users should not be able to interact with the avatar on its 
+- Ensure keyboard users should not be able to interact with the avatar on its
   own via `Tab` and `Shift+Tab`
 
 {% include 'partials/accessibility/ariaguide.md' %}

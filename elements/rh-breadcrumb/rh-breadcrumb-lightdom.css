@@ -4,18 +4,24 @@
  */
 
 rh-breadcrumb {
-  --_breadcrumb-caret-image-default:
-    var(--rh-breadcrumb-caret-image,
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='15' viewBox='0 0 10 15' fill='none'%3E%3Cg clip-path='url(%23clip0_232_19576)'%3E%3Cpath d='M2.5 14.5L0.5 12.5L5.5 7.5L0.5 2.5L2.5 0.5L9.5 7.5L2.5 14.5Z'  fill='red' /%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_232_19576'%3E%3Crect width='10' height='14' fill='white' transform='matrix(-1 0 0 1 10 0.5)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E")); /* stylelint-disable-line @stylistic/declaration-colon-newline-after */
+  --_breadcrumb-caret-image-default: var(
+    --rh-breadcrumb-caret-image,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='15' viewBox='0 0 10 15' fill='none'%3E%3Cg clip-path='url(%23clip0_232_19576)'%3E%3Cpath d='M2.5 14.5L0.5 12.5L5.5 7.5L0.5 2.5L2.5 0.5L9.5 7.5L2.5 14.5Z'  fill='red' /%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_232_19576'%3E%3Crect width='10' height='14' fill='white' transform='matrix(-1 0 0 1 10 0.5)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E")
+  ); /* stylelint-disable-line @stylistic/declaration-colon-newline-after */
 
-  --_breadcrumb-link-color:
-    var(--rh-breadcrumb-link-color,
-      var(--rh-color-interactive-primary-default));
+  --_breadcrumb-link-color: var(
+    --rh-breadcrumb-link-color,
+    var(--rh-color-interactive-primary-default)
+  );
   --_breadcrumb-link-color-current-page: var(--rh-color-text-primary);
   --_breadcrumb-link-color-current-page-subtle: var(--rh-color-text-secondary);
   --_breadcrumb-link-color-hover: var(--rh-color-interactive-primary-hover);
-  --_breadcrumb-link-color-visited: var(--rh-color-interactive-primary-visited-hover);
-  --_breadcrumb-link-color-visited-hover: var(--rh-color-interactive-primary-visited-hover);
+  --_breadcrumb-link-color-visited: var(
+    --rh-color-interactive-primary-visited-hover
+  );
+  --_breadcrumb-link-color-visited-hover: var(
+    --rh-color-interactive-primary-visited-hover
+  );
   --_breadcrumb-link-focus-outline-color: var(--rh-color-border-interactive);
 
   display: block;
@@ -35,9 +41,10 @@ rh-breadcrumb {
     & > li {
       display: inline-flex;
       margin-block-end: var(--rh-space-md, 8px);
-      padding-inline-end:
-        var(--rh-breadcrumb-li-padding-inline-end,
-          var(--rh-space-lg, 16px));
+      padding-inline-end: var(
+        --rh-breadcrumb-li-padding-inline-end,
+        var(--rh-space-lg, 16px)
+      );
       vertical-align: bottom;
       align-items: center;
       gap: var(--rh-space-lg, 16px);
@@ -50,7 +57,7 @@ rh-breadcrumb {
         mask-repeat: no-repeat;
         block-size: var(--rh-font-size-body-text-sm, 0.875rem);
         inline-size: var(--rh-font-size-body-text-sm, 0.875rem);
-        content: '';
+        content: "";
       }
 
       &:first-child {
@@ -75,7 +82,8 @@ rh-breadcrumb {
           text-decoration-color: inherit;
           text-underline-offset: max(5px, 0.28em);
           transition-timing-function: ease;
-          transition-property: text-underline-offset, color, text-decoration-color;
+          transition-property: text-underline-offset, color,
+            text-decoration-color;
           transition-duration: 0.3s;
         }
 
@@ -94,18 +102,19 @@ rh-breadcrumb {
           text-decoration-color: inherit;
           text-underline-offset: max(5px, 0.28em);
           transition-timing-function: ease;
-          transition-property: text-underline-offset, color, text-decoration-color;
+          transition-property: text-underline-offset, color,
+            text-decoration-color;
           transition-duration: 0.3s;
         }
 
-        &[aria-current='page'] {
+        &[aria-current="page"] {
           cursor: default;
           pointer-events: none;
         }
       }
 
       &:last-child,
-      & > a[aria-current='page'] {
+      & > a[aria-current="page"] {
         color: var(--_breadcrumb-link-color-current-page);
         text-decoration: none;
       }
@@ -117,13 +126,13 @@ rh-breadcrumb {
     }
   }
 
-  &[variant='subtle'] > ol > li {
+  &[variant="subtle"] > ol > li {
     &:not(:first-of-type):before {
       background-color: var(--rh-color-icon-subtle, #707070);
     }
 
     &:last-child,
-    & > a[aria-current='page'] {
+    & > a[aria-current="page"] {
       color: var(--_breadcrumb-link-color-current-page-subtle);
     }
   }

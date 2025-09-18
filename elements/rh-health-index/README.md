@@ -1,12 +1,15 @@
 # Health Index
+
 Health index grades the health or security level of something.
 
 ## Usage
+
 Use the Health Index element to display a health or security grade (A–F) of something.
 
 At a minimum an `rh-health-index` element should have a `grade=""` attribute with a value of A–F along with a matching grade letter in the slot.
 
 ### Default
+
 ```html
 <rh-health-index grade="A">A</rh-health-index>
 ```

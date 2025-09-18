@@ -22,15 +22,29 @@ a {
   display: inline-flex;
   gap: var(--rh-space-lg);
   align-items: first baseline;
-  svg { min-width: 16px; }
-  &:hover { color: var(--rh-color-interactive-primary-hover); }
-  &:focus-within { color: var(--rh-color-interactive-primary-focus); }
-  &:active { color: var(--rh-color-interactive-primary-active); }
+  svg {
+    min-width: 16px;
+  }
+  &:hover {
+    color: var(--rh-color-interactive-primary-hover);
+  }
+  &:focus-within {
+    color: var(--rh-color-interactive-primary-focus);
+  }
+  &:active {
+    color: var(--rh-color-interactive-primary-active);
+  }
 
   &:visited {
     color: var(--rh-color-interactive-primary-visited-default);
-    &:hover { color: var(--rh-color-interactive-primary-visited-hover); }
-    &:focus-within { color: var(--rh-color-interactive-primary-visited-focus); }
-    &:active { color: var(--rh-color-interactive-primary-visited-active); }
+    &:hover {
+      color: var(--rh-color-interactive-primary-visited-hover);
+    }
+    &:focus-within {
+      color: var(--rh-color-interactive-primary-visited-focus);
+    }
+    &:active {
+      color: var(--rh-color-interactive-primary-visited-active);
+    }
   }
 }

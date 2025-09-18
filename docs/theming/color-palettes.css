@@ -21,7 +21,7 @@ rh-alert + rh-card {
 }
 
 .card-snippet-grid {
-  & h4[slot='heading'] {
+  & h4[slot="heading"] {
     margin: 0;
   }
 

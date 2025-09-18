@@ -20,16 +20,19 @@ describe('<rh-tile-group>', function() {
 
   describe('simply instantiating', function() {
     it('imperatively instantiates', function() {
-      expect(document.createElement('rh-tile-group')).to.be.an.instanceof(RhTileGroup);
+      expect(document.createElement('rh-tile-group')).to.be.an.instanceof(
+        RhTileGroup
+      );
     });
 
     it('should upgrade', async function() {
-      element = await createFixture<RhTileGroup>(html`<rh-tile-group></rh-tile-group>`);
+      element = await createFixture<RhTileGroup>(
+        html`<rh-tile-group></rh-tile-group>`
+      );
       const klass = customElements.get('rh-tile-group');
       expect(element)
           .to.be.an.instanceOf(klass)
-          .and
-          .to.be.an.instanceOf(RhTileGroup);
+          .and.to.be.an.instanceOf(RhTileGroup);
     });
   });
 
@@ -53,9 +56,22 @@ describe('<rh-tile-group>', function() {
     it('exposes radio roles to the ax tree', async function() {
       const snapshot = await a11ySnapshot();
       expect(snapshot)
-          .to.axContainQuery({ role: 'radio', name: 'Tile 1', focused: true, checked: false }).and
-          .to.axContainQuery({ role: 'radio', name: 'Tile 2', checked: false }).and
-          .to.axContainQuery({ role: 'radio', name: 'Tile 3', checked: false });
+          .to.axContainQuery({
+            role: 'radio',
+            name: 'Tile 1',
+            focused: true,
+            checked: false,
+          })
+          .and.to.axContainQuery({
+            role: 'radio',
+            name: 'Tile 2',
+            checked: false,
+          })
+          .and.to.axContainQuery({
+            role: 'radio',
+            name: 'Tile 3',
+            checked: false,
+          });
     });
 
     it('sets focus', function() {
@@ -63,39 +79,48 @@ describe('<rh-tile-group>', function() {
     });
 
     it('has no selected element', function() {
-      expect(element.selected)
-          .to.be.undefined;
+      expect(element.selected).to.be.undefined;
     });
 
     describe('space on first tile', async function() {
       beforeEach(press('Space'));
       beforeEach(() => element.updateComplete);
       it('selects the first tile', function() {
-        expect(element.selected)
-            .to.equal(tile1);
+        expect(element.selected).to.equal(tile1);
       });
     });
 
     describe('arrow down', async function() {
       beforeEach(press('ArrowDown'));
       it('sets focus on second tile', function() {
-        expect(document.activeElement)
-            .to.equal(tile2);
+        expect(document.activeElement).to.equal(tile2);
       });
 
       describe('clicking second tile', async function() {
         beforeEach(press('Space'));
         beforeEach(() => element.updateComplete);
         it('selects the second tile only', function() {
-          expect(element.selected)
-              .to.equal(tile2);
+          expect(element.selected).to.equal(tile2);
         });
         it('has only one checked radio button', async function() {
           const snapshot = await a11ySnapshot();
           expect(snapshot)
-              .to.axContainQuery({ role: 'radio', name: 'Tile 1', checked: false }).and
-              .to.axContainQuery({ role: 'radio', name: 'Tile 2', checked: true, focused: true }).and
-              .to.axContainQuery({ role: 'radio', name: 'Tile 3', checked: false });
+              .to.axContainQuery({
+                role: 'radio',
+                name: 'Tile 1',
+                checked: false,
+              })
+              .and.to.axContainQuery({
+                role: 'radio',
+                name: 'Tile 2',
+                checked: true,
+                focused: true,
+              })
+              .and.to.axContainQuery({
+                role: 'radio',
+                name: 'Tile 3',
+                checked: false,
+              });
         });
       });
     });
@@ -103,8 +128,7 @@ describe('<rh-tile-group>', function() {
     describe('arrow up', async function() {
       beforeEach(press('ArrowUp'));
       it('sets focus on last tile', function() {
-        expect(document.activeElement)
-            .to.equal(tile3);
+        expect(document.activeElement).to.equal(tile3);
       });
     });
 
@@ -117,9 +141,22 @@ describe('<rh-tile-group>', function() {
       it('has radio roles', async function() {
         const snapshot = await a11ySnapshot();
         expect(snapshot)
-            .to.axContainQuery({ role: 'radio', name: 'Tile 1', focused: true, checked: false }).and
-            .to.axContainQuery({ role: 'radio', name: 'carreau numéro 2', checked: false }).and
-            .to.axContainQuery({ role: 'radio', name: 'Tile 3', checked: false });
+            .to.axContainQuery({
+              role: 'radio',
+              name: 'Tile 1',
+              focused: true,
+              checked: false,
+            })
+            .and.to.axContainQuery({
+              role: 'radio',
+              name: 'carreau numéro 2',
+              checked: false,
+            })
+            .and.to.axContainQuery({
+              role: 'radio',
+              name: 'Tile 3',
+              checked: false,
+            });
       });
     });
   });
@@ -143,8 +180,12 @@ describe('<rh-tile-group>', function() {
           </form>
         `);
         // because `createFixture` will only wait on the first element.
-        await Promise.all(Array.from(form.querySelectorAll('*'), x =>
-          (x as RhTile).updateComplete));
+        await Promise.all(
+          Array.from(
+            form.querySelectorAll('*'),
+            x => (x as RhTile).updateComplete
+          )
+        );
       });
 
       it('includes the radio in the form\'s elements list', function() {

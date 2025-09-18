@@ -20,7 +20,11 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import styles from './rh-site-status.css';
 
 type Impact = 'none' | 'minor' | 'major' | 'critical';
-type StatusKey = 'operational' | 'degraded_performance' | 'partial_outage' | 'major_outage';
+type StatusKey =
+  | 'operational'
+  | 'degraded_performance'
+  | 'partial_outage'
+  | 'major_outage';
 
 interface Page {
   id?: string;
@@ -60,7 +64,12 @@ interface Incident {
   impact: Impact;
   name: string;
   page_id: string;
-  status: 'investigating' | 'identified' | 'monitoring' | 'resolved' | 'postmortem';
+  status:
+    | 'investigating'
+    | 'identified'
+    | 'monitoring'
+    | 'resolved'
+    | 'postmortem';
   resolved_at: string | null;
   updated_at: string | null;
   shortlink: string;
@@ -98,9 +107,7 @@ const getSummaryOrThrow = async (response: Response) => {
 const byISO8601Property =
   <T extends object>(key: keyof T) =>
     (a: T, b: T) =>
-      a[key] > b[key] ? 1
-    : a[key] < b[key] ? -1
-    : 0;
+    a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0;
 
 const isStatusPageResponse = (data: unknown): data is SummaryResponse => {
   return (
@@ -141,7 +148,6 @@ export class RhSiteStatus extends LitElement {
     },
   };
 
-
   #status: Status | null = null;
 
   #component: Component | null = null;
@@ -178,7 +184,7 @@ export class RhSiteStatus extends LitElement {
     } else {
       return 'Error loading status';
     }
-  };
+  }
 
   override connectedCallback() {
     super.connectedCallback();
@@ -190,13 +196,25 @@ export class RhSiteStatus extends LitElement {
     const { icon, status } = this.#icon;
     return html`
       <div id="container" class="${classMap({ loading })}">
-        <a href="https://status.redhat.com/"
-           aria-busy="${String(this.#loading) as 'true' | 'false'}"
-           aria-live="polite">${this.#loading ? html`
-          <rh-spinner size="sm"></rh-spinner>
-          <span><!-- Text to display while loading the status defaults to "Loading" --><slot name="loading-text">Loading</slot></span>` : html`
-          <rh-icon loading="eager" set="ui" icon="${icon}" class="${status}"></rh-icon>
-          <span>${this.#text}</span>`}
+        <a
+          href="https://status.redhat.com/"
+          aria-busy="${String(this.#loading) as 'true' | 'false'}"
+          aria-live="polite"
+          >${this.#loading ?
+            html` <rh-spinner size="sm"></rh-spinner>
+                <span
+                  ><!-- Text to display while loading the status defaults to "Loading" --><slot
+                    name="loading-text"
+                    >Loading</slot
+                  ></span
+                >`
+            : html` <rh-icon
+                  loading="eager"
+                  set="ui"
+                  icon="${icon}"
+                  class="${status}"
+                ></rh-icon>
+                <span>${this.#text}</span>`}
         </a>
       </div>
     `;
@@ -205,8 +223,7 @@ export class RhSiteStatus extends LitElement {
   async #fetch() {
     try {
       const { dataURI, fetchOptions } = RhSiteStatus;
-      const data = await fetch(dataURI, fetchOptions)
-          .then(getSummaryOrThrow);
+      const data = await fetch(dataURI, fetchOptions).then(getSummaryOrThrow);
       const [component] = data.components
           .filter(x => x.name === this.#domain)
           .sort(byISO8601Property('updated_at'));

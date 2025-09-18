@@ -56,4 +56,3 @@ jobs:
         run: npm run build
       - name: Print manifest
         run: jq --color-output . custom-elements.json
-

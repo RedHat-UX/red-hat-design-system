@@ -50,7 +50,7 @@ Expressive type allows for the <strong>extremely limited</strong> use of extra l
 - Maintain a consistent size if extra large headings are used more than once per page or experience
 - Use red or other colors that are part of a theme like Summit
 - Use the bold weight sparingly
-- Line height reduces to 110% or 1.1x the font size 
+- Line height reduces to 110% or 1.1x the font size
 
 <uxdot-example width-adjustment="1012px" color-palette="lightest">
   <img src="./choosing-type-extra-large-headings.svg"
@@ -70,7 +70,7 @@ Editorial type includes the following styles:
 - Lists
 - Titles
 - Quotes
-- Call to action text 
+- Call to action text
 
 <uxdot-example width-adjustment="1012px" color-palette="lightest">
   <img src="./choosing-type-editorial.svg"

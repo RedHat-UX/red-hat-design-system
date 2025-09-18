@@ -10,7 +10,6 @@ links.
        height="252">
 </uxdot-example>
 
-
 ### Variants
 
 **Black and white** are the two popover variants available for use depending
@@ -94,14 +93,13 @@ on the content and color of the background.
   </figure>
 </div>
 
-
 ## Color scheme
+
 <a id="theme"></a>
 
-
 For popovers and [tooltips](/elements/tooltip),
-the themes are inverted. For example, light scheme popovers are **black* and
-should be used on light backgrounds; dark scheme popovers are **white** and
+the themes are inverted. For example, light scheme popovers are **black\* and
+should be used on light backgrounds; dark scheme popovers are **white\*\* and
 should be used on dark backgrounds.
 
 ### Black (light backgrounds)
@@ -113,7 +111,6 @@ should be used on dark backgrounds.
        height="214">
 </uxdot-example>
 
-
 ### White (dark backgrounds)
 
 <uxdot-example color-palette="darkest" width-adjustment="392px">
@@ -122,7 +119,6 @@ should be used on dark backgrounds.
        width="392"
        height="214">
 </uxdot-example>
-
 
 ## Responsive design
 
@@ -138,7 +134,6 @@ screens.
        height="268">
 </uxdot-example>
 
-
 ### Small screens
 
 <uxdot-example width-adjustment="360px" variant="full" no-border alignment="left" color-palette="lightest">
@@ -147,7 +142,6 @@ screens.
        width="373"
        height="268">
 </uxdot-example>
-
 
 ## Spacing
 

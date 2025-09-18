@@ -1,19 +1,19 @@
 ## General usage
 
-Use a progress stepper to communicate to users how many steps are required to 
-complete a process or task. This reduces uncertainty for users as they complete 
+Use a progress stepper to communicate to users how many steps are required to
+complete a process or task. This reduces uncertainty for users as they complete
 each screen.
 
 ### Number of steps
 
-A progress stepper should have as few steps as possible in order to reduce 
+A progress stepper should have as few steps as possible in order to reduce
 cognitive load. A best practice is displaying 3 - 5 steps maximum.
 
 ## Behavior
 
 ### Progression
 
-A progress stepper is designed to complement standard previous/next navigation 
+A progress stepper is designed to complement standard previous/next navigation
 in a linear sequence, not to be a navigation of its own.
 
 <uxdot-example color-palette="lightest">
@@ -25,7 +25,7 @@ in a linear sequence, not to be a navigation of its own.
 
 ### Error validation
 
-If a user attempts to move to another step without resolving any errors first, 
+If a user attempts to move to another step without resolving any errors first,
 an inline alert will appear.
 
 <uxdot-example color-palette="lightest">
@@ -37,7 +37,7 @@ an inline alert will appear.
 
 ### Completion
 
-When a process or task is completed, users are **not** able to go back. They must 
+When a process or task is completed, users are **not** able to go back. They must
 start the process all over again.
 
 <uxdot-example color-palette="lightest">
@@ -51,10 +51,10 @@ start the process all over again.
 
 When writing text, include minimal content by doing the following:
 
-  - Keep the title and description short and specific
-  - Use between 1 - 3 words for the title and a few words for the description
-  - Use verbs that clearly communicate each step of the process
-  - Do not punctuate the title or description because they are fragments and not full sentences
+- Keep the title and description short and specific
+- Use between 1 - 3 words for the title and a few words for the description
+- Use verbs that clearly communicate each step of the process
+- Do not punctuate the title or description because they are fragments and not full sentences
 
 <rh-table>
   <table>
@@ -111,7 +111,7 @@ A horizontal progress stepper can be a fixed width or stretch to fill a containe
         height="188">  
 </uxdot-example>
 
-If space becomes an issue with the horizontal size, switch to the compact size or 
+If space becomes an issue with the horizontal size, switch to the compact size or
 the vertical orientation.
 
 <uxdot-example variant="full" color-palette="lightest" no-border>

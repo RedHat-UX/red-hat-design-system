@@ -30,7 +30,16 @@
     },
     "overallStatus": {
       "type": "string",
-      "enum": ["planned", "inProgress", "ready", "deprecated", "na", "beta", "experimental", "new"],
+      "enum": [
+        "planned",
+        "inProgress",
+        "ready",
+        "deprecated",
+        "na",
+        "beta",
+        "experimental",
+        "new"
+      ],
       "description": "Overall status of the component"
     },
     "libraries": {
@@ -39,22 +48,58 @@
       "properties": {
         "figma": {
           "type": "string",
-          "enum": ["planned", "inProgress", "ready", "deprecated", "na", "beta", "experimental", "new"],
+          "enum": [
+            "planned",
+            "inProgress",
+            "ready",
+            "deprecated",
+            "na",
+            "beta",
+            "experimental",
+            "new"
+          ],
           "description": "Status in the Figma library"
         },
         "rhds": {
           "type": "string",
-          "enum": ["planned", "inProgress", "ready", "deprecated", "na", "beta", "experimental", "new"],
+          "enum": [
+            "planned",
+            "inProgress",
+            "ready",
+            "deprecated",
+            "na",
+            "beta",
+            "experimental",
+            "new"
+          ],
           "description": "Status in RH Elements"
         },
         "shared": {
           "type": "string",
-          "enum": ["planned", "inProgress", "ready", "deprecated", "na", "beta", "experimental", "new"],
+          "enum": [
+            "planned",
+            "inProgress",
+            "ready",
+            "deprecated",
+            "na",
+            "beta",
+            "experimental",
+            "new"
+          ],
           "description": "Status in RH Shared Libs"
         },
         "docs": {
           "type": "string",
-          "enum": ["planned", "inProgress", "ready", "deprecated", "na", "beta", "experimental", "new"],
+          "enum": [
+            "planned",
+            "inProgress",
+            "ready",
+            "deprecated",
+            "na",
+            "beta",
+            "experimental",
+            "new"
+          ],
           "description": "Status of documentation"
         }
       },

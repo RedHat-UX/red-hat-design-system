@@ -40,7 +40,7 @@ order: 10
 
 ## Introduction
 
-Welcome to the **Red Hat Design System** (RHDS). Follow the steps below to get 
+Welcome to the **Red Hat Design System** (RHDS). Follow the steps below to get
 started and let us know if you have any questions along the way.
 
 ## Start here
@@ -48,23 +48,23 @@ started and let us know if you have any questions along the way.
 ### Brand Standards
 
 Brand standards are the starting point for all projects, they ensure that every
-interaction our audiences have with Red Hat reflects our brand personality, 
+interaction our audiences have with Red Hat reflects our brand personality,
 aligns to our brand strategy, and uses a consistent visual language.
 
-Why does that matter? Because it helps us create an authentic relationship 
+Why does that matter? Because it helps us create an authentic relationship
 and credibility with our customers, partners, and contributors.
 
 <rh-cta><a href="https://www.redhat.com/en/about/brand/standards">Explore brand standards</a></rh-cta>
 
 ### Hybrid Style
 
-Hybrid style allows us to add expressive storytelling to our brand, but 
-the essentials of our brand stay the same. Knowing when to and how to 
+Hybrid style allows us to add expressive storytelling to our brand, but
+the essentials of our brand stay the same. Knowing when to and how to
 balance the two is key.
 
-Consider the goal of each project, the message we want to communicate, 
-and where our customer is in their journey. Each piece of every project 
-falls on a spectrum from the most essential to the most expressive, 
+Consider the goal of each project, the message we want to communicate,
+and where our customer is in their journey. Each piece of every project
+falls on a spectrum from the most essential to the most expressive,
 playful storytelling.
 
 <rh-cta><a href="https://www.redhat.com/en/about/brand/standards/hybrid-style-handbook">Explore hybrid style</a></rh-cta>
@@ -108,24 +108,24 @@ playful storytelling.
 
 Use these additional resources to stay aligned and informed while working.
 
-  - [Accessibility tools](/accessibility/accessibility-tools/)
-  - [Design system GitHub repo](https://github.com/RedHat-UX/red-hat-design-system)
-  - [Design system roadmap](https://github.com/orgs/RedHat-UX/projects/7)
-  - [Red Hat fonts](https://github.com/RedHatOfficial/RedHatFont)
-  - [rha11y tools repo](https://github.com/hellogreg/rha11y-tools)
+- [Accessibility tools](/accessibility/accessibility-tools/)
+- [Design system GitHub repo](https://github.com/RedHat-UX/red-hat-design-system)
+- [Design system roadmap](https://github.com/orgs/RedHat-UX/projects/7)
+- [Red Hat fonts](https://github.com/RedHatOfficial/RedHatFont)
+- [rha11y tools repo](https://github.com/hellogreg/rha11y-tools)
 
 You can also reference these pages to see how our brand and design system work together.
 
-  - [Catalog page](https://catalog.redhat.com/en)
-  - [redhat.com home page](https://www.redhat.com/en)
-  - [Product page](https://www.redhat.com/en/technologies/cloud-computing/openshift)
-  - [Topic page](https://www.redhat.com/en/topics/ai/what-is-generative-ai)
-  - [Trial page](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux/server/trial)
+- [Catalog page](https://catalog.redhat.com/en)
+- [redhat.com home page](https://www.redhat.com/en)
+- [Product page](https://www.redhat.com/en/technologies/cloud-computing/openshift)
+- [Topic page](https://www.redhat.com/en/topics/ai/what-is-generative-ai)
+- [Trial page](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux/server/trial)
 
 ## Connect with us
 
-For questions, additional support, or training, 
-[email](mailto:design-system@redhat.com) us or connect with us on 
+For questions, additional support, or training,
+[email](mailto:design-system@redhat.com) us or connect with us on
 [Slack](/support/#contact-us).
 
 <uxdot-feedback>

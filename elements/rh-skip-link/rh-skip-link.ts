@@ -16,7 +16,10 @@ import styles from './rh-skip-link.css';
  */
 @customElement('rh-skip-link')
 export class RhSkipLink extends LitElement {
-  static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+  static shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+  };
 
   static readonly styles = [styles];
 
@@ -26,9 +29,10 @@ export class RhSkipLink extends LitElement {
     const slot = html`<!--
         An anchor tag targeting the main page content by id hash.
         Or, if the \`href\` attribute is set, the text of the link.
-    --><slot></slot>`;
+    --><slot
+      ></slot>`;
     return this.href ?
-        html`<a id="container" href="${this.href}">${slot}</a>`
+      html`<a id="container" href="${this.href}">${slot}</a>`
       : html`<div id="container">${slot}</div>`;
   }
 }

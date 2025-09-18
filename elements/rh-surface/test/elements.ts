@@ -6,24 +6,33 @@ import TinyColor from 'tinycolor2';
 
 import { tokens } from '@rhds/tokens';
 
-import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import {
+  colorPalettes,
+  type ColorPalette,
+} from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 const dark = tokens.get('--rh-color-text-primary-on-dark');
 const light = tokens.get('--rh-color-text-primary-on-light');
 
 class RendersText extends LitElement {
-  static styles = [css`:host {
-    display: block;
-    padding: 24px;
-    color: var(--rh-color-text-primary);
-  }`];
+  static styles = [
+    css`
+      :host {
+        display: block;
+        padding: 24px;
+        color: var(--rh-color-text-primary);
+      }
+    `,
+  ];
 
   get on() {
     const color = this.#style.getPropertyValue('color');
-    return TinyColor.equals(color, dark) ? 'dark'
-         : TinyColor.equals(color, light) ? 'light'
-         : 'nothing';
+    return TinyColor.equals(color, dark) ?
+      'dark'
+      : TinyColor.equals(color, light) ?
+      'light'
+      : 'nothing';
   }
 
   #style = getComputedStyle(this);
@@ -35,18 +44,20 @@ class RendersText extends LitElement {
 
 @customElement('test-context-consumer')
 @themable
-export class ContextConsumer extends RendersText { }
+export class ContextConsumer extends RendersText {}
 
 @customElement('test-context-consumer-provider')
 @themable
 @colorPalettes
 export class ContextConsumerProvider extends RendersText {
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+  @property({ reflect: true, attribute: 'color-palette' })
+  colorPalette?: ColorPalette;
 }
 
 @customElement('test-context-provider-consumer')
 @colorPalettes
 @themable
 export class ContextProviderConsumer extends RendersText {
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+  @property({ reflect: true, attribute: 'color-palette' })
+  colorPalette?: ColorPalette;
 }

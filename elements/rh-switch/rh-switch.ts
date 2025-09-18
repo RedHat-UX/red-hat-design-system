@@ -28,7 +28,8 @@ export class RhSwitch extends LitElement {
   static readonly formAssociated = true;
 
   /** invisible, accessible label for screen readers */
-  @property({ reflect: true, attribute: 'accessible-label' }) accessibleLabel?: string;
+  @property({ reflect: true, attribute: 'accessible-label' })
+  accessibleLabel?: string;
 
   /** Message to display when the switch is on (i.e. checked) */
   @property({ reflect: true, attribute: 'message-on' }) messageOn?: string;
@@ -37,7 +38,8 @@ export class RhSwitch extends LitElement {
   @property({ reflect: true, attribute: 'message-off' }) messageOff?: string;
 
   /** If the checkmark icon should be displayed when the switch is on */
-  @property({ reflect: true, type: Boolean, attribute: 'show-check-icon' }) showCheckIcon = false;
+  @property({ reflect: true, type: Boolean, attribute: 'show-check-icon' })
+  showCheckIcon = false;
 
   /** If the switch is on */
   @property({ reflect: true, type: Boolean }) checked = false;
@@ -94,29 +96,34 @@ export class RhSwitch extends LitElement {
         // see https://w3c.github.io/aria/#dom-ariamixin
         this.#internals.ariaDescribedByElements = stateEls;
       } else {
-        this.setAttribute('aria-describedby', stateEls.map(x => x.id).join(' '));
+        this.setAttribute(
+          'aria-describedby',
+          stateEls.map(x => x.id).join(' ')
+        );
       }
     }
   }
 
   render() {
     const { reversed, checked } = this;
-    const slots = html`
-      <!-- message content when checked. Overrides the \`message-on\` attribute. -->
-      <slot class="message" name="message-on" ?hidden="${!this.checked}"><span aria-hidden="true">${this.messageOn}</span></slot>
+    const slots = html` <!-- message content when checked. Overrides the \`message-on\` attribute. -->
+      <slot class="message" name="message-on" ?hidden="${!this.checked}"
+        ><span aria-hidden="true">${this.messageOn}</span></slot
+      >
       <!-- message content when unchecked. Overrides the \`message-off\` attribute. -->
-      <slot class="message" name="message-off" ?hidden="${this.checked}"><span aria-hidden="true">${this.messageOff}</span></slot>`;
+      <slot class="message" name="message-off" ?hidden="${this.checked}"
+        ><span aria-hidden="true">${this.messageOff}</span></slot
+      >`;
     return html`
-      <div id="container"
-           part="container"
-           class="${classMap({ checked })}">
+      <div id="container" part="container" class="${classMap({ checked })}">
         ${reversed ? slots : ''}
-        <div id="switch"
-             part="switch">
-          <rh-icon id="toggle"
-                   icon="checkmark"
-                   set="microns"
-                   ?hidden="${!this.showCheckIcon}"></rh-icon>
+        <div id="switch" part="switch">
+          <rh-icon
+            id="toggle"
+            icon="checkmark"
+            set="microns"
+            ?hidden="${!this.showCheckIcon}"
+          ></rh-icon>
         </div>
         ${reversed ? '' : slots}
       </div>

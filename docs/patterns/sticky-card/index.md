@@ -36,6 +36,7 @@ A sticky card acts as a small container for a limited amount of content.
 </uxdot-example>
 
 ### Color scheme
+
 <a id="theme"></a>
 
 The required elements in a sticky card are a close button, a title or a
@@ -138,7 +139,7 @@ listed below and include spaces.
 <rh-table>
 
 | Element   | Character count |
-|-----------|-----------------|
+| --------- | --------------- |
 | Title     | 20              |
 | Headline  | 50              |
 | Body text | 120             |

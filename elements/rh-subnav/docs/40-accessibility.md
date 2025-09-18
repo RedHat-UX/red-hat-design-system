@@ -1,6 +1,6 @@
 ## Keyboard interactions
 
-All links within a subnavigation are focus stops. Pressing Enter when a link has 
+All links within a subnavigation are focus stops. Pressing Enter when a link has
 focus will directed users to a new page.
 
 <rh-alert state="info">
@@ -25,13 +25,12 @@ focus will directed users to a new page.
 
 </rh-table>
 
-
 ## Focus order
 
-A logical focus order helps keyboard users operate our websites. Elements need 
-to receive focus in an order that preserves meaning, therefore the focus order 
-should make sense and not jump around randomly. When a link has focus, it can 
-move horizontally within the list of links or be moved to another interactive 
+A logical focus order helps keyboard users operate our websites. Elements need
+to receive focus in an order that preserves meaning, therefore the focus order
+should make sense and not jump around randomly. When a link has focus, it can
+move horizontally within the list of links or be moved to another interactive
 element.
 
 <uxdot-example color-palette="lightest" width-adjustment="872px">
@@ -40,7 +39,6 @@ element.
        width="872"
        height="322">
 </uxdot-example>
-
 
 ## Touch targets
 
@@ -60,4 +58,3 @@ Links are adequately spaced for optimal touch targets.
 {% include 'partials/accessibility/2.1.3-AAA.md' %}
 {% include 'partials/accessibility/2.4.3-A.md' %}
 {% include 'partials/accessibility/2.5.5-AAA.md' %}
-

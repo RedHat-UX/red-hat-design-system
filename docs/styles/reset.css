@@ -6,20 +6,22 @@
 }
 
 /* Remove default margin */
-:where(body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-li,
-figure,
-figcaption,
-blockquote,
-dl,
-dd) {
+:where(
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    li,
+    figure,
+    figcaption,
+    blockquote,
+    dl,
+    dd
+  ) {
   margin: 0;
 }
 
@@ -29,10 +31,7 @@ html:focus-within {
 }
 
 /* Inherit fonts for inputs and buttons */
-:where(input,
-button,
-textarea,
-select) {
+:where(input, button, textarea, select) {
   font: inherit;
 }
 

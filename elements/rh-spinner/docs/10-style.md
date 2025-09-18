@@ -1,6 +1,6 @@
 ## Style
 
-A spinner is an animated line segment that follows a track and may include an 
+A spinner is an animated line segment that follows a track and may include an
 optional text label.
 
 ### Anatomy
@@ -21,10 +21,9 @@ optional text label.
   </figcaption>
 </figure>
 
-
 ## Sizes
 
-A spinner comes in large, medium, and small sizes. Each size includes an 
+A spinner comes in large, medium, and small sizes. Each size includes an
 optional text label on the bottom.
 
 <uxdot-example color-palette="lightest" width-adjustment="472px">
@@ -34,25 +33,24 @@ optional text label on the bottom.
        height="103">
 </uxdot-example>
 
-
-
 <rh-table>
 
 | Size   | Element         | Current value        |
-|--------|-----------------|----------------------|
+| ------ | --------------- | -------------------- |
 | Small  | Text label size | `14px`<br>`0.875rem` |
 | Medium | Text label size | `16px`<br>`1.0rem`   |
 | Large  | Text label size | `18px`<br>`1.125rem` |
 
 </rh-table>
 
-
 ## Color scheme
+
 <a id="theme"></a>
 
 A spinner is available in both light and dark color schemes.
 
 ### Light scheme
+
 <a id="light-theme"></a>
 
 <uxdot-example color-palette="lightest" width-adjustment="251px">
@@ -62,8 +60,8 @@ A spinner is available in both light and dark color schemes.
        height="103">
 </uxdot-example>
 
-
 ### Dark scheme
+
 <a id="dark-theme"></a>
 
 <uxdot-example color-palette="darkest" width-adjustment="251px">
@@ -73,13 +71,12 @@ A spinner is available in both light and dark color schemes.
        height="103">
 </uxdot-example>
 
-
 ## Configuration
 
 ### Container
 
-A spinner is centered horizontally and vertically within a container and the 
-viewport by default. This demonstrates that the whole container is loading 
+A spinner is centered horizontally and vertically within a container and the
+viewport by default. This demonstrates that the whole container is loading
 rather than one specific area.
 
 <uxdot-example width-adjustment="872px" color-palette="lightest">
@@ -89,10 +86,9 @@ rather than one specific area.
        height="359">
 </uxdot-example>
 
-
 ### Button
 
-If a small size spinner is used within a button, it can be positioned to the 
+If a small size spinner is used within a button, it can be positioned to the
 left of the text as if it were an icon.
 
 <uxdot-example color-palette="lightest" width-adjustment="107px">
@@ -101,7 +97,6 @@ left of the text as if it were an icon.
        width="107"
        height="36">
 </uxdot-example>
-
 
 ## Space
 
@@ -116,5 +111,5 @@ left of the text as if it were an icon.
 
 ## Interaction states
 
-A spinner is intentionally not operable or navigable and has no interaction 
+A spinner is intentionally not operable or navigable and has no interaction
 states.

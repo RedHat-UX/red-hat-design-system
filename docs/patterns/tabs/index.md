@@ -12,9 +12,6 @@ subnav:
   order: 1
 ---
 
-
-
-
 <script type="module" data-helmet>
   import '@rhds/elements/rh-tabs/rh-tabs.js';
   import '@rhds/elements/rh-code-block/rh-code-block.js';

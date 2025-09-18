@@ -27,6 +27,7 @@ helps users focus on the dialog content.
 </figure>
 
 ## Color scheme
+
 <a id="theme"></a>
 
 Dialog is available for both light and dark color schemes.
@@ -37,7 +38,7 @@ Dialog is available for both light and dark color schemes.
                variant="full"
                alignment="left"
                no-border>
-  <img src="../dialog-theme-light.svg"
+<img src="../dialog-theme-light.svg"
        alt="Light theme dialog"
        width="1000"
        height="327">
@@ -50,7 +51,7 @@ Dialog is available for both light and dark color schemes.
                variant="full"
                alignment="left"
                no-border>
-  <img alt="Dark theme badges"
+<img alt="Dark theme badges"
        src="../dialog-dark.svg"
        width="1000"
        height="327">
@@ -61,50 +62,43 @@ uses the light scheme, the dialog should match the page scheme.
 
 <uxdot-best-practice variant="do">
 
-  ```html rhcodeblock
+```html rhcodeblock
+<body>
+  <rh-surface color-palette="darkest" role="main">
+    ... dark content
+    <rh-card color-palette="lightest"> ... light content </rh-card>
+    <rh-dialog>
+      This dialog inherits its color scheme from the main element.
+    </rh-dialog>
+  </rh-surface>
+</body>
+```
 
-  <body>
-    <rh-surface color-palette="darkest"
-                role="main">
-      ... dark content
-      <rh-card color-palette="lightest">
-        ... light content
-      </rh-card>
-      <rh-dialog>
-        This dialog inherits its color scheme from the main element.
-      </rh-dialog>
-    </rh-surface>
-  </body>
-  ```
-
-  Place dialog elements in the root themable container to ensure they match
-  the overall page color scheme.
+Place dialog elements in the root themable container to ensure they match
+the overall page color scheme.
 
 </uxdot-best-practice>
 <uxdot-best-practice variant="dont">
 
-  ```html rhcodeblock
+```html rhcodeblock
+<body style="color-scheme: dark only">
+  <main>
+    ... dark content
+    <rh-card color-palette="lightest">
+      ... light content
+      <rh-dialog>
+        Even though the whole page uses the dark color scheme, this dialog will
+        always use the light color scheme, since it's a child of a themable
+        container with the lightest color palette.
+      </rh-dialog>
+    </rh-card>
+  </main>
+</body>
+```
 
-  <body style="color-scheme: dark only">
-    <main>
-      ... dark content
-      <rh-card color-palette="lightest">
-        ... light content
-        <rh-dialog>
-          Even though the whole page uses the dark color scheme,
-          this dialog will always use the light color scheme,
-          since it's a child of a themable container with the lightest
-          color palette.
-        </rh-dialog>
-      </rh-card>
-    </main>
-  </body>
-  ```
-
-  Avoid placing dialogs in themable containers which don't match the page scheme
+Avoid placing dialogs in themable containers which don't match the page scheme
 
 </uxdot-best-practice>
-
 
 ## Space
 
@@ -116,7 +110,7 @@ The amount of space in a dialog reduces as breakpoints get smaller.
                variant="full"
                alignment="left"
                no-border>
-  <img src="../dialog-space-breakpoint-large.svg"
+<img src="../dialog-space-breakpoint-large.svg"
        alt="A dialog container on a large breakpoint with spacing between all elements"
        width="1000"
        height="327">
@@ -128,7 +122,7 @@ The amount of space in a dialog reduces as breakpoints get smaller.
                variant="full"
                alignment="left"
                no-border>
-  <img src="../dialog-space-breakpoint-small.svg"
+<img src="../dialog-space-breakpoint-small.svg"
        alt="A dialog container on a small breakpoint with spacing between all elements"
        width="360"
        height="640">
@@ -150,7 +144,7 @@ interaction states.
                variant="full"
                alignment="left"
                no-border>
-  <img src="../dialog-interaction-state-hover.svg"
+<img src="../dialog-interaction-state-hover.svg"
        alt="Light theme dialog hover state example"
        width="1000"
        height="327">
@@ -162,7 +156,7 @@ interaction states.
                variant="full"
                alignment="left"
                no-border>
-  <img src="../dialog-interaction-state-focus.svg"
+<img src="../dialog-interaction-state-focus.svg"
        alt="Light theme dialog focus state example"
        width="1000"
        height="327">
@@ -174,7 +168,7 @@ interaction states.
                variant="full"
                alignment="left"
                no-border>
-  <img src="../dialog-interaction-state-active.svg"
+<img src="../dialog-interaction-state-active.svg"
        alt="Light theme dialog active state example"
        width="1000"
        height="327">

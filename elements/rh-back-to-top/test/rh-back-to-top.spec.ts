@@ -1,7 +1,10 @@
 import { expect, html, nextFrame } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { setViewport, sendKeys } from '@web/test-runner-commands';
-import { type A11yTreeSnapshot, a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
+import {
+  type A11yTreeSnapshot,
+  a11ySnapshot,
+} from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 
 import { allUpdates } from '@patternfly/pfe-tools/test/utils.js';
 
@@ -14,12 +17,13 @@ describe('<rh-back-to-top>', function() {
   describe('simply instantiating', function() {
     let element: RhBackToTop;
     it('should upgrade', async function() {
-      element = await createFixture<RhBackToTop>(html`<rh-back-to-top></rh-back-to-top>`);
+      element = await createFixture<RhBackToTop>(
+        html`<rh-back-to-top></rh-back-to-top>`
+      );
       const klass = customElements.get('rh-back-to-top');
       expect(element)
           .to.be.an.instanceOf(klass)
-          .and
-          .to.be.an.instanceOf(RhBackToTop);
+          .and.to.be.an.instanceOf(RhBackToTop);
     });
   });
 
@@ -64,7 +68,9 @@ describe('<rh-back-to-top>', function() {
       });
 
       it('should be visible', function() {
-        expect(snapshot.children?.map(takeProps(['name', 'role']))).to.deep.equal([{ role: 'link', name: 'Back to top' }]);
+        expect(
+          snapshot.children?.map(takeProps(['name', 'role']))
+        ).to.deep.equal([{ role: 'link', name: 'Back to top' }]);
       });
 
       describe('pressing the tab key', function() {
@@ -90,7 +96,9 @@ describe('<rh-back-to-top>', function() {
       });
 
       it('should be visible', function() {
-        expect(snapshot.children?.map(takeProps(['name', 'role']))).to.deep.equal([{ role: 'link', name: 'Back to top' }]);
+        expect(
+          snapshot.children?.map(takeProps(['name', 'role']))
+        ).to.deep.equal([{ role: 'link', name: 'Back to top' }]);
       });
 
       it('should be accessible', async function() {
@@ -129,7 +137,9 @@ describe('<rh-back-to-top>', function() {
         });
 
         it('should be visible', function() {
-          expect(snapshot.children?.map(takeProps(['name', 'role']))).to.deep.equal([{ role: 'link', name: 'Back to top' }]);
+          expect(
+            snapshot.children?.map(takeProps(['name', 'role']))
+          ).to.deep.equal([{ role: 'link', name: 'Back to top' }]);
         });
       });
     });
@@ -144,7 +154,9 @@ describe('<rh-back-to-top>', function() {
       const container = await createFixture<RhBackToTop>(html`
         <div id="top" style="height: 500px; overflow-y: scroll;">
           <div style="height: 2000px;"></div>
-          <rh-back-to-top href="#top" scrollable-selector="#top">Back to top</rh-back-to-top>
+          <rh-back-to-top href="#top" scrollable-selector="#top"
+            >Back to top</rh-back-to-top
+          >
         </div>
       `);
       element = container.querySelector('rh-back-to-top')!;
@@ -201,7 +213,9 @@ describe('<rh-back-to-top>', function() {
         });
 
         it('should have a label of "Back to top"', function() {
-          expect(snapshot.children?.map(takeProps(['name', 'role']))).to.deep.equal([{ role: 'link', name: 'Back to top' }]);
+          expect(
+            snapshot.children?.map(takeProps(['name', 'role']))
+          ).to.deep.equal([{ role: 'link', name: 'Back to top' }]);
         });
       });
     });

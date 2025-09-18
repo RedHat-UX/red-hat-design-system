@@ -6,16 +6,19 @@ describe('<rh-chip-group>', function() {
   describe('simply instantiating', function() {
     let element: RhChipGroup;
     it('imperatively instantiates', function() {
-      expect(document.createElement('rh-chip-group')).to.be.an.instanceof(RhChipGroup);
+      expect(document.createElement('rh-chip-group')).to.be.an.instanceof(
+        RhChipGroup
+      );
     });
 
     it('should upgrade', async function() {
-      element = await createFixture<RhChipGroup>(html`<rh-chip-group></rh-chip-group>`);
+      element = await createFixture<RhChipGroup>(
+        html`<rh-chip-group></rh-chip-group>`
+      );
       const klass = customElements.get('rh-chip-group');
       expect(element)
           .to.be.an.instanceOf(klass)
-          .and
-          .to.be.an.instanceOf(RhChipGroup);
+          .and.to.be.an.instanceOf(RhChipGroup);
     });
   });
 
@@ -23,18 +26,17 @@ describe('<rh-chip-group>', function() {
     let element: RhChipGroup;
     beforeEach(async function() {
       element = await createFixture<RhChipGroup>(html`
-         <rh-chip-group>
-           <rh-chip>Option 1</rh-chip>
-           <rh-chip>Option 2</rh-chip>
-           <rh-chip>Option 3</rh-chip>
-         </rh-chip-group>
+        <rh-chip-group>
+          <rh-chip>Option 1</rh-chip>
+          <rh-chip>Option 2</rh-chip>
+          <rh-chip>Option 3</rh-chip>
+        </rh-chip-group>
       `);
       await element.updateComplete;
     });
 
     it('should be accessible', async function() {
-      await expect(element)
-          .to.be.accessible();
+      await expect(element).to.be.accessible();
     });
   });
 });

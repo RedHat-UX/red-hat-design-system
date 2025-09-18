@@ -1,4 +1,5 @@
 # Progress Stepper
+
 A progress stepper represents a sequence of steps and their details, in a horizontal or vertical layout. Use progress steppers to show users their progress through a multi-step process or workflow.
 
 ## Installation
@@ -12,8 +13,8 @@ npm install @rhds/elements
 Then once installed, import it to your application:
 
 ```js
-import '@rhds/elements/rh-progress-stepper/rh-progress-stepper.js';
-import '@rhds/elements/rh-progress-stepper/rh-progress-step.js';
+import "@rhds/elements/rh-progress-stepper/rh-progress-stepper.js";
+import "@rhds/elements/rh-progress-stepper/rh-progress-step.js";
 ```
 
 ## Usage
@@ -24,17 +25,13 @@ A progress stepper consists of multiple `<rh-progress-step>` elements placed ins
 
 ```html
 <rh-progress-stepper>
-  <rh-progress-step state="complete">
-    Complete Step
-  </rh-progress-step>
-  
+  <rh-progress-step state="complete"> Complete Step </rh-progress-step>
+
   <rh-progress-step state="active" aria-current="step">
     Active Step
   </rh-progress-step>
-  
-  <rh-progress-step state="inactive">
-    Inactive Step
-  </rh-progress-step>
+
+  <rh-progress-step state="inactive"> Inactive Step </rh-progress-step>
 </rh-progress-stepper>
 ```
 
@@ -42,23 +39,26 @@ A progress stepper consists of multiple `<rh-progress-step>` elements placed ins
 
 ```html
 <rh-progress-stepper orientation="vertical">
-  <rh-progress-step 
-    state="complete" 
+  <rh-progress-step
+    state="complete"
     label="Setup Account"
-    description="Create your user account and verify email">
+    description="Create your user account and verify email"
+  >
   </rh-progress-step>
-  
-  <rh-progress-step 
-    state="active" 
+
+  <rh-progress-step
+    state="active"
     label="Configure Settings"
     description="Set up your preferences and notifications"
-    aria-current="step">
+    aria-current="step"
+  >
   </rh-progress-step>
-  
-  <rh-progress-step 
-    state="inactive" 
+
+  <rh-progress-step
+    state="inactive"
     label="Complete Profile"
-    description="Add additional profile information">
+    description="Add additional profile information"
+  >
   </rh-progress-step>
 </rh-progress-stepper>
 ```
@@ -67,17 +67,15 @@ A progress stepper consists of multiple `<rh-progress-step>` elements placed ins
 
 ```html
 <rh-progress-stepper>
-  <rh-progress-step 
-    state="complete" 
+  <rh-progress-step
+    state="complete"
     href="/step1"
     label="Completed Step"
-    description="Click to review this step">
+    description="Click to review this step"
+  >
   </rh-progress-step>
-  
-  <rh-progress-step 
-    state="active" 
-    label="Current Step">
-  </rh-progress-step>
+
+  <rh-progress-step state="active" label="Current Step"> </rh-progress-step>
 </rh-progress-stepper>
 ```
 
@@ -97,10 +95,11 @@ A progress stepper consists of multiple `<rh-progress-step>` elements placed ins
 
 ```html
 <rh-progress-stepper>
-  <rh-progress-step 
-    state="custom" 
-    custom-icon="user-check" 
-    custom-icon-set="ui">
+  <rh-progress-step
+    state="custom"
+    custom-icon="user-check"
+    custom-icon-set="ui"
+  >
     Custom Step
   </rh-progress-step>
 </rh-progress-stepper>

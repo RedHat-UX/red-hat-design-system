@@ -1,6 +1,6 @@
 ## Style
 
-A progress stepper is a group of at least 3 sequential steps placed in the 
+A progress stepper is a group of at least 3 sequential steps placed in the
 middle of a horizontal or vertical line.
 
 <figure>
@@ -21,7 +21,7 @@ middle of a horizontal or vertical line.
 
 ### Status icons
 
-A progress stepper uses icons to indicate the status of a process or task. These 
+A progress stepper uses icons to indicate the status of a process or task. These
 icons change as users move through each step.
 
 <uxdot-example color-palette="lightest">
@@ -30,7 +30,6 @@ icons change as users move through each step.
         width="560"
         height="64">  
 </uxdot-example>
-
 
 ## Color Scheme
 

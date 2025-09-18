@@ -154,11 +154,11 @@ pattern.
   <uxdot-example slot="image" alignment="left" variant="full" no-border>
 
 ```js rhcodeblock
-import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
+import { RhAlert } from "@rhds/elements/rh-alert/rh-alert.js";
 
 RhAlert.toast({
-  state: 'caution',
-  message: 'Toast alerts using JavaScript',
+  state: "caution",
+  message: "Toast alerts using JavaScript",
 });
 ```
 
@@ -218,7 +218,6 @@ On large screens, inline alert height is determined by the amount of content inc
        width="1440"
        height="802">
 </uxdot-example>
-
 
 <uxdot-example color-palette="lightest"  alignment="left" variant="full" no-border>
   <img alt="Example of a toast alert at content width"

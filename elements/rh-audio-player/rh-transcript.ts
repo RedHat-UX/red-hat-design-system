@@ -48,7 +48,10 @@ export class RhTranscript extends LitElement {
   #headings = new HeadingLevelContextConsumer(this);
 
   get downloadText() {
-    return this.#slots.getSlotted<RhCue>('cues').map(cue =>cue.downloadText).join('\n\n');
+    return this.#slots
+        .getSlotted<RhCue>('cues')
+        .map(cue => cue.downloadText)
+        .join('\n\n');
   }
 
   constructor() {
@@ -64,20 +67,28 @@ export class RhTranscript extends LitElement {
         <slot name="heading">${this.#headings.wrap(this.menuLabel)}</slot>
       </rh-audio-player-scrolling-text-overflow>
       <!-- toolbar area above cues list -->
-      <div class="panel-toolbar" part="toolbar">${this.#slots.isEmpty('cues') ? '' : html`
-        <label>
-          <input id="autoscroll"
-                 type="checkbox"
-                 ?checked="${this.#autoscroll}"
-                 @click="${this.#onScrollClick}">
-            ${this.autoscrollLabel}
-        </label>
-        <rh-tooltip id="download-tooltip">
-          <button id="download" @click="${this.#onDownloadClick}" aria-label="${this.downloadLabel}">
-            <rh-icon set="ui" icon="download"></rh-icon>
-          </button>
-          <span slot="content">${this.downloadLabel}</span>
-        </rh-tooltip>`}
+      <div class="panel-toolbar" part="toolbar">
+        ${this.#slots.isEmpty('cues') ?
+          ''
+          : html` <label>
+                <input
+                  id="autoscroll"
+                  type="checkbox"
+                  ?checked="${this.#autoscroll}"
+                  @click="${this.#onScrollClick}"
+                />
+                ${this.autoscrollLabel}
+              </label>
+              <rh-tooltip id="download-tooltip">
+                <button
+                  id="download"
+                  @click="${this.#onDownloadClick}"
+                  aria-label="${this.downloadLabel}"
+                >
+                  <rh-icon set="ui" icon="download"></rh-icon>
+                </button>
+                <span slot="content">${this.downloadLabel}</span>
+              </rh-tooltip>`}
       </div>
       <!-- \`rh-cue\` elements -->
       <slot id="cues"></slot>
@@ -86,7 +97,7 @@ export class RhTranscript extends LitElement {
 
   #updateCues(currentTime?: number) {
     let activeCue: RhCue;
-    this.#slots.getSlotted<RhCue>('cues').forEach((cue, index, a)=>{
+    this.#slots.getSlotted<RhCue>('cues').forEach((cue, index, a) => {
       if (!cue.start) {
         const prevCue = a[index - 1];
         const prevEnd = prevCue?.end;
@@ -103,12 +114,14 @@ export class RhTranscript extends LitElement {
         }
       }
       if (currentTime) {
-        const started = !!cue.startTime
-          && Math.round(cue.startTime) < Math.round(currentTime) ?
-          true : false;
-        const ended = !!cue.endTime
-          && Math.round(cue.endTime) < Math.round(currentTime) ?
-          true : false;
+        const started =
+          !!cue.startTime && Math.round(cue.startTime) < Math.round(currentTime) ?
+            true
+            : false;
+        const ended =
+          !!cue.endTime && Math.round(cue.endTime) < Math.round(currentTime) ?
+            true
+            : false;
         const active = started && !ended;
         cue.active = active;
         if (active) {
@@ -119,8 +132,9 @@ export class RhTranscript extends LitElement {
       const cuesContainer = this.shadowRoot?.getElementById('cues');
 
       if (activeCue && this.#autoscroll && !!cuesContainer) {
-        const anchor = activeCue.offsetTop + (0.5 * activeCue.offsetHeight);
-        const scroll = anchor - cuesContainer.offsetTop - (0.5 * cuesContainer?.offsetHeight);
+        const anchor = activeCue.offsetTop + 0.5 * activeCue.offsetHeight;
+        const scroll =
+          anchor - cuesContainer.offsetTop - 0.5 * cuesContainer?.offsetHeight;
 
         setTimeout(() => {
           if (cuesContainer) {
@@ -153,7 +167,9 @@ export class RhTranscript extends LitElement {
   }
 
   scrollText() {
-    this.shadowRoot?.querySelector('rh-audio-player-scrolling-text-overflow')?.startScrolling();
+    this.shadowRoot
+        ?.querySelector('rh-audio-player-scrolling-text-overflow')
+        ?.startScrolling();
   }
 }
 

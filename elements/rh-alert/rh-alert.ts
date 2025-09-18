@@ -1,4 +1,11 @@
-import { type CSSResult, LitElement, type TemplateResult, html, isServer, render } from 'lit';
+import {
+  type CSSResult,
+  LitElement,
+  type TemplateResult,
+  html,
+  isServer,
+  render,
+} from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { repeat } from 'lit/directives/repeat.js';
@@ -35,14 +42,16 @@ interface ToastOptions {
   actions?: [] | [AlertAction] | [AlertAction, AlertAction];
 }
 
-const ICONS = new Map(Object.entries({
-  neutral: 'minus-circle-fill',
-  info: 'information-fill',
-  success: 'check-circle-fill',
-  caution: 'error-fill',
-  warning: 'warning-fill',
-  danger: 'ban-fill',
-}));
+const ICONS = new Map(
+  Object.entries({
+    neutral: 'minus-circle-fill',
+    info: 'information-fill',
+    success: 'check-circle-fill',
+    caution: 'error-fill',
+    warning: 'warning-fill',
+    danger: 'ban-fill',
+  })
+);
 
 export class AlertCloseEvent extends Event {
   constructor(public action: 'close' | 'confirm' | 'dismiss' | string) {
@@ -91,7 +100,9 @@ export class RhAlert extends LitElement {
     const id = getRandomId();
     const toast = { actions, heading, message, state, id, persistent };
     toasts.add(toast);
-    const { matches: motionOK } = window.matchMedia('(prefers-reduced-motion: no-preference)');
+    const { matches: motionOK } = window.matchMedia(
+      '(prefers-reduced-motion: no-preference)'
+    );
     renderToasts();
     const alert = toaster.querySelector(`#${id}`);
     if (toaster.children.length && motionOK) {
@@ -103,18 +114,22 @@ export class RhAlert extends LitElement {
       toasts.delete(toast);
     }
     renderToasts();
-  };
+  }
 
   get #icon() {
     const state = this.state.toLowerCase() as this['state'];
     switch (state) {
       // @ts-expect-error: support for deprecated props
-      case 'note': return ICONS.get('info');
+      case 'note':
+        return ICONS.get('info');
       // @ts-expect-error: support for deprecated props
-      case 'default': return ICONS.get('neutral');
+      case 'default':
+        return ICONS.get('neutral');
       // @ts-expect-error: support for deprecated props
-      case 'error': return ICONS.get('danger');
-      default: return ICONS.get(state);
+      case 'error':
+        return ICONS.get('danger');
+      default:
+        return ICONS.get(state);
     }
   }
 
@@ -131,14 +146,8 @@ export class RhAlert extends LitElement {
    *  Note: 'note', 'default', and 'error' will also work, but are deprecated
    */
   @property({ reflect: true })
-  state:
-    | 'danger'
-    | 'warning'
-    | 'caution'
-    | 'neutral'
-    | 'info'
-    | 'success' =
-      'neutral';
+  state: 'danger' | 'warning' | 'caution' | 'neutral' | 'info' | 'success' =
+    'neutral';
 
   /**
    * The alternate Inline alert style includes a border instead of a line which
@@ -169,9 +178,12 @@ export class RhAlert extends LitElement {
   #aliasState(state: string) {
     switch (state.toLowerCase()) {
       // the first three are deprecated pre-DPO status names
-      case 'note': return 'info';
-      case 'default': return 'neutral';
-      case 'error': return 'danger';
+      case 'note':
+        return 'info';
+      case 'default':
+        return 'neutral';
+      case 'error':
+        return 'danger';
       // the following are DPO-approved status names
       case 'danger':
       case 'warning':
@@ -196,27 +208,32 @@ export class RhAlert extends LitElement {
     const _isServer = isServer && !this.hasUpdated;
     const hasActions = _isServer || this.#slots.hasSlotted('actions');
     const hasBody =
-      _isServer || this.#slots.hasSlotted(SlotController.default as unknown as string);
+      _isServer
+      || this.#slots.hasSlotted(SlotController.default as unknown as string);
     const { variant = 'inline' } = this;
     const state = this.#aliasState(this.state);
     // this click listener delegates events from the footer slot
     // as such it doest not require a key listener.
     // eslint-disable-next-line lit-a11y/click-events-have-key-events
-    const footer = html`<footer class="${classMap({ hasActions })}"
-                  @click="${this.#onActionsClick}">
-            <!-- Provide actions that the user can take for the alert -->
-            <slot name="actions"></slot>
-          </footer>`;
+    const footer = html`<footer
+      class="${classMap({ hasActions })}"
+      @click="${this.#onActionsClick}"
+    >
+      <!-- Provide actions that the user can take for the alert -->
+      <slot name="actions"></slot>
+    </footer>`;
     return html`
-      <rh-surface id="container"
-                  class="${classMap({
-                    hasBody,
-                    light: true,
-                    [state]: true,
-                    [variant]: !!variant,
-                  })}"
-                  role="alert"
-                  aria-hidden="false">
+      <rh-surface
+        id="container"
+        class="${classMap({
+          hasBody,
+          light: true,
+          [state]: true,
+          [variant]: !!variant,
+        })}"
+        role="alert"
+        aria-hidden="false"
+      >
         <div id="left-column">
           <rh-icon id="icon" set="ui" icon="${this.#icon}"></rh-icon>
         </div>
@@ -225,14 +242,18 @@ export class RhAlert extends LitElement {
             <div id="header">
               <!-- Provide a header for the alert message. -->
               <slot name="header"></slot>
-            </div>${!this.dismissable && this.variant !== 'toast' ? '' : html`
-            <div id="header-actions">
-              <rh-button id="close-button"
-                         variant="close"
-                         accessible-label="Close"
-                         confirm
-                         @click="${this.#onClose}"></rh-button>
-            </div>`}
+            </div>
+            ${!this.dismissable && this.variant !== 'toast' ?
+              ''
+              : html` <div id="header-actions">
+                  <rh-button
+                    id="close-button"
+                    variant="close"
+                    accessible-label="Close"
+                    confirm
+                    @click="${this.#onClose}"
+                  ></rh-button>
+                </div>`}
           </header>
           <div id="description">
             <!-- Provide a description for the alert message -->
@@ -246,20 +267,24 @@ export class RhAlert extends LitElement {
 
   async #close() {
     await this.updateComplete;
-    await Promise.all(this.getAnimations().map(x => {
-      x.finish();
-      return x.finished;
-    }));
+    await Promise.all(
+      this.getAnimations().map(x => {
+        x.finish();
+        return x.finished;
+      })
+    );
     this.remove();
   }
 
   async #onActionsClick(event: MouseEvent) {
-    if (event.target instanceof HTMLElement
+    if (
+      event.target instanceof HTMLElement
       && event.target?.slot === 'actions'
       && typeof event.target.dataset.action === 'string'
       && this.dispatchEvent(
-        new AlertCloseEvent(event.target?.dataset.action.toLowerCase()),
-      )) {
+        new AlertCloseEvent(event.target?.dataset.action.toLowerCase())
+      )
+    ) {
       this.#close();
     }
   }
@@ -270,7 +295,7 @@ function initToaster() {
   node.classList.add('rh-alert-toast-group');
   // TODO: possibly allow other roots
   document.adoptedStyleSheets = [
-    ...document.adoptedStyleSheets ?? [],
+    ...(document.adoptedStyleSheets ?? []),
     (toastStyles as unknown as CSSResult).styleSheet!,
   ];
   document.body.append(node);
@@ -278,44 +303,58 @@ function initToaster() {
 }
 
 function renderToasts() {
-  render(repeat(toasts, x => x.id, ({
-    actions,
-    id,
-    state,
-    heading,
-    message,
-    persistent,
-  }) => {
-    const [firstAction, secondAction] = actions ?? [];
-    return html`
-    <rh-alert id="${id}"
-              state="${state}"
-              class="${classMap({ persistent })}"
-              variant="toast"
-              role="status"
-              aria-live="polite"
-              @focusin="${manageAlertAnimation}"
-              @focusout="${manageAlertAnimation}"
-              @mouseenter="${manageAlertAnimation}"
-              @mouseleave="${manageAlertAnimation}">
-      <h3 slot="header">${heading}</h3>
-      ${!message ? '' : typeof message !== 'string' ? message : html`
-      <p class="text" ?hidden="${!message}">${message}</p>`}
-      ${[firstAction, secondAction].filter(x => !!x).map(action => html`
-      <rh-button slot="actions"
-                 variant="${action === firstAction ? 'secondary' : 'link'}"
-                 data-action="${action.action}">${action.text}</rh-button>
-      `) ?? []}
-    </rh-alert>
-  `;
-  }), toaster);
+  render(
+    repeat(
+      toasts,
+      x => x.id,
+      ({ actions, id, state, heading, message, persistent }) => {
+        const [firstAction, secondAction] = actions ?? [];
+        return html`
+          <rh-alert
+            id="${id}"
+            state="${state}"
+            class="${classMap({ persistent })}"
+            variant="toast"
+            role="status"
+            aria-live="polite"
+            @focusin="${manageAlertAnimation}"
+            @focusout="${manageAlertAnimation}"
+            @mouseenter="${manageAlertAnimation}"
+            @mouseleave="${manageAlertAnimation}"
+          >
+            <h3 slot="header">${heading}</h3>
+            ${!message ?
+              ''
+              : typeof message !== 'string' ?
+              message
+              : html` <p class="text" ?hidden="${!message}">${message}</p>`}
+            ${[firstAction, secondAction]
+                .filter(x => !!x)
+                .map(
+                  action => html`
+                  <rh-button
+                    slot="actions"
+                    variant="${action === firstAction ? 'secondary' : 'link'}"
+                    data-action="${action.action}"
+                    >${action.text}</rh-button
+                  >
+                `
+                ) ?? []}
+          </rh-alert>
+        `;
+      }
+    ),
+    toaster
+  );
 }
 
 async function manageAlertAnimation(event: Event) {
   const alert =
-      event.target instanceof RhAlert ? event.target
-    : event.target instanceof Element ? event.target.closest('rh-alert')
-    : null;
+    event.target instanceof RhAlert ?
+      event.target
+      : event.target instanceof Element ?
+      event.target.closest('rh-alert')
+      : null;
   if (!alert) {
     return;
   }
@@ -341,13 +380,13 @@ function flip(toaster: HTMLElement) {
   const first = toaster.offsetHeight;
   const last = toaster.offsetHeight;
   const invert = last - first;
-  const animation = toaster.animate([
-    { transform: `translateY(${invert}px)` },
-    { transform: 'translateY(0)' },
-  ], {
-    duration: 150,
-    easing: 'ease-out',
-  });
+  const animation = toaster.animate(
+    [{ transform: `translateY(${invert}px)` }, { transform: 'translateY(0)' }],
+    {
+      duration: 150,
+      easing: 'ease-out',
+    }
+  );
   animation.startTime = document.timeline.currentTime;
 }
 

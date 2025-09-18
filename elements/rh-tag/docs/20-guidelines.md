@@ -24,7 +24,7 @@ Although these elements look very similar, the following guidance should help cl
 
 ### Desaturated style
 
-Use a desaturated tag to reduce visual prominence or to better fit a specific 
+Use a desaturated tag to reduce visual prominence or to better fit a specific
 theme or visual style.
 
 <uxdot-example color-palette="darkest">
@@ -36,7 +36,7 @@ theme or visual style.
 
 ### Default vs. Compact sizes
 
-When you need to use a tag, use the Default size first. If there are space 
+When you need to use a tag, use the Default size first. If there are space
 limitations and using a tag is required, use the Compact size instead.
 
 ### Tag groups
@@ -66,8 +66,8 @@ To learn more about color as a status, go to the Color section.
 <rh-alert state="warning">
   <h4 slot="header">Warning</h4>
 
-  Relying on color alone to communicate information causes barriers to access for 
-  many users. Learn more in the [accessibility](/accessibility) section.
+Relying on color alone to communicate information causes barriers to access for
+many users. Learn more in the [accessibility](/accessibility) section.
 
 </rh-alert>
 
@@ -78,7 +78,7 @@ To learn more about color as a status, go to the Color section.
        height="90">
 </uxdot-example>
 
-### Text 
+### Text
 
 If text is descriptive or generic enough, most colors can be used. However, do not use red or red orange, those colors are always reserved for failure or error states.
 
@@ -111,8 +111,8 @@ Include an icon where additional visual information is helpful and ensure that i
 
 ## Writing content
 
-Text in tags should add clarity or context **using as few words as possible.** 
-If text needs to be longer, add text somewhere else or use another element 
+Text in tags should add clarity or context **using as few words as possible.**
+If text needs to be longer, add text somewhere else or use another element
 instead.
 
 <uxdot-example color-palette="lightest" width-adjustment="724px">
@@ -127,7 +127,7 @@ instead.
 <rh-table>
 
 | Element | Character count |
-|---------|-----------------|
+| ------- | --------------- |
 | Text    | 25              |
 
 </rh-table>
@@ -155,7 +155,6 @@ Tags in one row will break to two or more rows as viewport sizes get smaller.
        width="1140"
        height="616">
 </uxdot-example>
-
 
 ## Best practices
 

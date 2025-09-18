@@ -11,8 +11,7 @@ describe('<rh-avatar>', function() {
     it('should upgrade', async function() {
       expect(element)
           .to.be.an.instanceOf(customElements.get('rh-avatar'))
-          .and
-          .to.be.an.instanceOf(RhAvatar);
+          .and.to.be.an.instanceOf(RhAvatar);
     });
   });
 });

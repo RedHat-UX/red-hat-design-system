@@ -2,8 +2,7 @@
 
 A back to top is a pill-shaped button that is anchored to the bottom right corner of a page.
 
-
-###  Anatomy
+### Anatomy
 
 <figure>
   <uxdot-example color-palette="lightest" width-adjustment="140px">
@@ -21,8 +20,8 @@ A back to top is a pill-shaped button that is anchored to the bottom right corne
   </figcaption>
 </figure>
 
-
 ## Color scheme
+
 <a id="theme"></a>
 
 The back to top button looks the same on light and dark color schemes.
@@ -45,7 +44,6 @@ The back to top button looks the same on light and dark color schemes.
 
 </div>
 
-
 ## Space
 
 A back to top button has 4px of padding on the left and right, 8px of padding on the top and bottom, and a 4px gap between text and icon. The amount of space remains the same on all breakpoints.
@@ -57,11 +55,9 @@ A back to top button has 4px of padding on the left and right, 8px of padding on
        height="47">
 </uxdot-example>
 
-
 ## Interaction states
 
 Interaction states are visual representations used to communicate the status of an element or pattern.
-
 
 ### Hover
 
@@ -73,7 +69,6 @@ The background color of the button turns to a darker blue on hover. It also has 
        width="94"
        height="30">
 </uxdot-example>
-
 
 ### Focus
 
@@ -89,7 +84,6 @@ The background color of the button turns to a darker blue on hover. It also has 
        height="30">
 </uxdot-example>
 
-
 ### Active
 
 <rh-alert state="info">
@@ -103,4 +97,3 @@ The background color of the button turns to a darker blue on hover. It also has 
        width="94"
        height="30">
 </uxdot-example>
-

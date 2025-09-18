@@ -1,6 +1,7 @@
 ## ARIA Authoring Practices Guide (APG)
-Learn to use the accessibility semantics defined by the 
-[Accessible Rich Internet Application](https://www.w3.org/WAI/) 
+
+Learn to use the accessibility semantics defined by the
+[Accessible Rich Internet Application](https://www.w3.org/WAI/)
 (ARIA) specification to create accessible web experiences.
 
 <rh-cta>

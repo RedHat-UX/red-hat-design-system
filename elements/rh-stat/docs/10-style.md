@@ -1,10 +1,9 @@
 ## Style
 
-A statistic is a stacked combination of elements used to visualize a data point. 
-By default, a statistic includes data text and body text **at a minimum**. 
-Optional elements include an icon, title text, and a call to action for 
+A statistic is a stacked combination of elements used to visualize a data point.
+By default, a statistic includes data text and body text **at a minimum**.
+Optional elements include an icon, title text, and a call to action for
 additional emphasis or context.
-
 
 ### Anatomy
 
@@ -26,9 +25,9 @@ additional emphasis or context.
   </figcaption>
 </figure>
 
-
 ## Sizes
-There are two available sizes and the only difference is the size of some 
+
+There are two available sizes and the only difference is the size of some
 elements.
 
 <uxdot-example color-palette="lightest" width-adjustment="772px">
@@ -41,21 +40,20 @@ elements.
 <rh-table>
 
 | Size    | Element | Current value   |
-|---------|---------|-----------------|
+| ------- | ------- | --------------- |
 | Default | 40px    | 36px<br>2.25rem |
 | Large   | 64px    | 48px<br>3.0rem  |
 
 </rh-table>
 
-
 ## Color scheme
+
 <a id="theme"></a>
 
-A statistic is available in both light and dark color schemes. The icon, title text, 
-and data text for light scheme are red whereas elements and text for dark scheme 
-(not including the call to action) are white to meet accessibility contrast 
+A statistic is available in both light and dark color schemes. The icon, title text,
+and data text for light scheme are red whereas elements and text for dark scheme
+(not including the call to action) are white to meet accessibility contrast
 requirements.
-
 
 ### Light scheme
 
@@ -66,7 +64,6 @@ requirements.
        height="154">
 </uxdot-example>
 
-
 ### Dark scheme
 
 <uxdot-example color-palette="darkest" width-adjustment="346px">
@@ -76,14 +73,13 @@ requirements.
        height="154">
 </uxdot-example>
 
-
 ## Configuration
 
 ### Container
 
-By default, all elements in a statistic, no matter how many, are all stacked and 
-vertically aligned. In some situations, it is acceptable to align elements to 
-the left, for example if grouped statistics are used in several rows or if 
+By default, all elements in a statistic, no matter how many, are all stacked and
+vertically aligned. In some situations, it is acceptable to align elements to
+the left, for example if grouped statistics are used in several rows or if
 surrounding content is all left aligned.
 
 <uxdot-example color-palette="lightest" width-adjustment="346px">
@@ -93,9 +89,9 @@ surrounding content is all left aligned.
        height="154">
 </uxdot-example>
 
-
 ### Order
-A statistic was designed to be read from top to bottom. If certain optional 
+
+A statistic was designed to be read from top to bottom. If certain optional
 elements are included, the order will change.
 
 <figure>
@@ -114,7 +110,6 @@ elements are included, the order will change.
     </ol>
   </figcaption>
 </figure>
-
 
 ## Space
 
@@ -136,4 +131,3 @@ go to the [Guidelines](/elements/statistic/guidelines/) page.
 The optional call to action is the only interactive element. Go to the
 [Call to action](/elements/call-to-action/) page to view the interaction
 states.
-

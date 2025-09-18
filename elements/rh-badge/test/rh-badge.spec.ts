@@ -6,18 +6,17 @@ import { RhSurface } from '@rhds/elements/rh-surface/rh-surface.js';
 
 describe('<rh-badge>', function() {
   it('should upgrade', async function() {
-    const el = await createFixture <RhBadge>(html`<rh-badge></rh-badge>`);
+    const el = await createFixture<RhBadge>(html`<rh-badge></rh-badge>`);
     const klass = customElements.get('rh-badge');
-    expect(el)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhBadge);
+    expect(el).to.be.an.instanceOf(klass).and.to.be.an.instanceOf(RhBadge);
   });
   it(`should have a background color '--rh-color-status-neutral-on-light'`, async function() {
-    const element = await createFixture <RhBadge>(html`<rh-badge></rh-badge>`);
+    const element = await createFixture<RhBadge>(html`<rh-badge></rh-badge>`);
     // NB: querying shadow root in tests is bad, mmkay?
     const styles = getComputedStyle(element.shadowRoot!.querySelector('span')!);
-    expect(styles.backgroundColor).to.be.colored(tokens.get('--rh-color-status-neutral-on-light'));
+    expect(styles.backgroundColor).to.be.colored(
+      tokens.get('--rh-color-status-neutral-on-light')
+    );
   });
 });
 
@@ -62,7 +61,9 @@ for (const [state, token] of Object.entries({
       styles = getComputedStyle(element.shadowRoot!.querySelector('span')!);
     });
     it(`should have a background color '${token}-on-light'`, async function() {
-      expect(styles.backgroundColor).to.be.colored(tokens.get(`${token}-on-light`));
+      expect(styles.backgroundColor).to.be.colored(
+        tokens.get(`${token}-on-light`)
+      );
     });
     describe('on a dark background', function() {
       beforeEach(async function() {
@@ -71,7 +72,9 @@ for (const [state, token] of Object.entries({
         `);
       });
       it(`should have a background color '${token}-on-dark'`, async function() {
-        expect(styles.backgroundColor).to.be.colored(tokens.get(`${token}-on-dark`));
+        expect(styles.backgroundColor).to.be.colored(
+          tokens.get(`${token}-on-dark`)
+        );
       });
     });
   });

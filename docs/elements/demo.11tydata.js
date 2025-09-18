@@ -10,10 +10,7 @@ export default {
     // because cem generate includes *all* demos that use a given tag name,
     // even if it doesn't live in that tag's directory
     before: demos =>
-      demos.filter(demo =>
-        demo.filePath?.split('/').includes(demo.tagName)),
+      demos.filter(demo => demo.filePath?.split('/').includes(demo.tagName)),
   },
-  tags: [
-    'demo',
-  ],
+  tags: ['demo'],
 };

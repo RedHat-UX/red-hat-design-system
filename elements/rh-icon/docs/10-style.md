@@ -3,6 +3,7 @@
 Our icons were designed to be simple, clean, and open. Four icon sets are available: standard, UI, microns, and social media.
 
 ## Color schemes
+
 <a id="theme"></a>
 
 Icons can be used in Red Hat’s brand red, black, and two shades of gray. In dark color scheme uses white instead of black.
@@ -46,7 +47,7 @@ square container to make each icon a standard size.
 <rh-table>
 
 | Icon Set           | Size range        |
-|--------------------|-------------------|
+| ------------------ | ----------------- |
 | Standard (default) | 24px - 100 pixels |
 | UI                 | 14px - 24 pixels  |
 | Micron             | 8px - 12 pixels   |
@@ -55,4 +56,3 @@ square container to make each icon a standard size.
 </rh-table>
 
 <rh-cta href="/tokens/icon/">View our design tokens for icon sizes</rh-cta>
-

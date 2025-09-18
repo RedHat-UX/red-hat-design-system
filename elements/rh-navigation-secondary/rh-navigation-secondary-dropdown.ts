@@ -15,7 +15,7 @@ import { RhNavigationSecondaryMenu } from './rh-navigation-secondary-menu.js';
 export class SecondaryNavDropdownExpandEvent extends ComposedEvent {
   constructor(
     public expanded: boolean,
-    public toggle: RhNavigationSecondaryDropdown,
+    public toggle: RhNavigationSecondaryDropdown
   ) {
     super('expand-request');
   }
@@ -55,7 +55,11 @@ export class RhNavigationSecondaryDropdown extends LitElement {
 
     this.id ||= getRandomId('rh-navigation-secondary-dropdown');
 
-    this.#mo.observe(this, { attributeFilter: ['aria-current'], childList: true, subtree: true });
+    this.#mo.observe(this, {
+      attributeFilter: ['aria-current'],
+      childList: true,
+      subtree: true,
+    });
     if (!isServer) {
       this.#upgradeAccessibility();
       this.#mutationsCallback();
@@ -63,7 +67,7 @@ export class RhNavigationSecondaryDropdown extends LitElement {
   }
 
   render() {
-    const classes = { 'expanded': this.expanded, 'highlight': this.#highlight };
+    const classes = { expanded: this.expanded, highlight: this.#highlight };
 
     return html`
       <div id="container" part="container" class="${classMap(classes)}">
@@ -82,7 +86,10 @@ export class RhNavigationSecondaryDropdown extends LitElement {
    * @param newVal {string} - Boolean value in string form
    */
   @observes('expanded')
-  protected _expandedChanged(oldVal?: 'false' | 'true', newVal?: 'false' | 'true'): void {
+  protected _expandedChanged(
+    oldVal?: 'false' | 'true',
+    newVal?: 'false' | 'true'
+  ): void {
     if (newVal === oldVal) {
       return;
     }
@@ -99,33 +106,44 @@ export class RhNavigationSecondaryDropdown extends LitElement {
     event.preventDefault();
     this.expanded = !this.expanded;
     // trigger change event which evokes the mutation on this.expanded
-    this.dispatchEvent(new SecondaryNavDropdownExpandEvent(this.expanded, this));
+    this.dispatchEvent(
+      new SecondaryNavDropdownExpandEvent(this.expanded, this)
+    );
   }
 
   /**
    * Sets or removes attributes needed to open a dropdown menu
    */
   #open(): void {
-    const link = this.#slots.getSlotted('link').find(child => child instanceof HTMLAnchorElement);
+    const link = this.#slots
+        .getSlotted('link')
+        .find(child => child instanceof HTMLAnchorElement);
     link?.setAttribute('aria-expanded', 'true');
     // menu as a RhNavigationSecondaryMenu in the slotted child is specific to rh-navigation-secondary.
     // If this component is abstracted to a standalone component. The RhNavigationSecondaryMenu
     // could possibly become a sub component of the abstraction instead.
-    const menu = this.#slots.getSlotted('menu').find(child =>
-      child instanceof RhNavigationSecondaryMenu
-    ) as RhNavigationSecondaryMenu;
+    const menu = this.#slots
+        .getSlotted('menu')
+        .find(
+          child => child instanceof RhNavigationSecondaryMenu
+        ) as RhNavigationSecondaryMenu;
     menu.visible = true;
   }
 
   /** Sets or removes attributes needed to close a dropdown menu */
   #close() {
-    const link = this.#slots.getSlotted('link').find(child => child instanceof HTMLAnchorElement);
+    const link = this.#slots
+        .getSlotted('link')
+        .find(child => child instanceof HTMLAnchorElement);
     link?.setAttribute('aria-expanded', 'false');
     // Same as comment in #open()
     // The RhNavigationSecondaryMenu could possibly become a sub component of the abstraction instead.
-    const menu = this.#slots.getSlotted('menu').find(
-      (child: Node): child is RhNavigationSecondaryMenu =>
-        child instanceof RhNavigationSecondaryMenu);
+    const menu = this.#slots
+        .getSlotted('menu')
+        .find(
+          (child: Node): child is RhNavigationSecondaryMenu =>
+            child instanceof RhNavigationSecondaryMenu
+        );
     if (menu) {
       menu.visible = false;
     }
@@ -136,7 +154,9 @@ export class RhNavigationSecondaryDropdown extends LitElement {
     // TODO(bennypowers) slotcontroller intrigue...
     await this.updateComplete;
     const [menu] = this.#slots.getSlotted<HTMLElement>('menu');
-    this.#highlight = menu?.querySelector('[aria-current="page"]') ? true : false;
+    this.#highlight = menu?.querySelector('[aria-current="page"]') ?
+      true
+      : false;
     this.#upgradeAccessibility();
     this.requestUpdate();
   }
@@ -151,7 +171,9 @@ export class RhNavigationSecondaryDropdown extends LitElement {
       return;
     }
     if (menu === undefined) {
-      this.#logger.warn(`[rh-navigation-secondary-dropdown][slot="menu"] expects a slotted <rh-navigation-secondary-menu> tag`);
+      this.#logger.warn(
+        `[rh-navigation-secondary-dropdown][slot="menu"] expects a slotted <rh-navigation-secondary-menu> tag`
+      );
       return;
     }
 

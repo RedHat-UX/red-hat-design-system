@@ -8,14 +8,18 @@ interface Options {
 export default function(eleventyConfig: UserConfig, opts?: Options) {
   // Iterate over tags to sort
 
-  if (!Array.isArray(opts?.tagsToAlphabetize) || opts?.tagsToAlphabetize?.length <= 0) {
+  if (
+    !Array.isArray(opts?.tagsToAlphabetize)
+    || opts?.tagsToAlphabetize?.length <= 0
+  ) {
     return;
   }
 
   for (const tag of opts.tagsToAlphabetize) {
     eleventyConfig.addCollection(tag, function(collection) {
-      const currentCollection = [...collection.getFilteredByTag(tag)]
-          .sort((a, b) => (a.data.order ?? Infinity) - (b.data.order ?? Infinity));
+      const currentCollection = [...collection.getFilteredByTag(tag)].sort(
+        (a, b) => (a.data.order ?? Infinity) - (b.data.order ?? Infinity)
+      );
 
       // Final sorted array of collection items
       const sorted = new Set<CollectionItem>();
@@ -41,7 +45,9 @@ export default function(eleventyConfig: UserConfig, opts?: Options) {
 
       // Iterate over weights with multiple items and sort by title alphabetically
       // @note The .sort() may need a sort handler that uses parseInt, but seems to be working?
-      for (const currentWeight of Object.keys(weights).sort() as unknown as number[]) {
+      for (const currentWeight of Object.keys(
+        weights
+      ).sort() as unknown as number[]) {
         // Sort by title alphabetically
         weights[currentWeight].sort(function(a, b) {
           if ((a.data?.title ?? 0) < (b.data?.title ?? 0)) {
@@ -62,4 +68,4 @@ export default function(eleventyConfig: UserConfig, opts?: Options) {
       return [...sorted];
     });
   }
-};
+}

@@ -20,11 +20,12 @@ A tooltip will appear when the trigger receives focus and disappear when moving 
 </rh-table>
 
 ## Additional guidelines
- - Do not use a tooltip on static elements
- - A tooltip should persist while hovering over the trigger and tooltip
- - A tooltip should persist as long as the trigger has focus
- - Users navigating via screen reader must have tooltip text announced to them when it is triggered
- - If a tooltip is added to a disabled trigger, that trigger must be able to receive focus
+
+- Do not use a tooltip on static elements
+- A tooltip should persist while hovering over the trigger and tooltip
+- A tooltip should persist as long as the trigger has focus
+- Users navigating via screen reader must have tooltip text announced to them when it is triggered
+- If a tooltip is added to a disabled trigger, that trigger must be able to receive focus
 
 {% include 'partials/accessibility/ariaguide.md' %}
 {% include 'partials/accessibility/wcag.md' %}

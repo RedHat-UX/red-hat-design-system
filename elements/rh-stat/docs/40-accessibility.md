@@ -11,13 +11,12 @@ Only the call to action can receive focus if included.
 
 <rh-table>
 
- | Key                               | Result                                          |
- | --------------------------------- | ----------------------------------------------- |
- | <kbd>Tab</kbd>                    | Moves focus to the call to action (if included) |
- | <kbd>Enter</kbd>/<kbd>Space</kbd> | Selects the call to action (if included)        |
+| Key                               | Result                                          |
+| --------------------------------- | ----------------------------------------------- |
+| <kbd>Tab</kbd>                    | Moves focus to the call to action (if included) |
+| <kbd>Enter</kbd>/<kbd>Space</kbd> | Selects the call to action (if included)        |
 
 </rh-table>
-
 
 ## Touch targets
 
@@ -37,4 +36,3 @@ Only the call to action is selectable if included.
 {% include 'partials/accessibility/2.1.3-AAA.md' %}
 {% include 'partials/accessibility/2.4.3-A.md' %}
 {% include 'partials/accessibility/2.5.5-AAA.md' %}
-

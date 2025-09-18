@@ -1,16 +1,15 @@
-@layer
-  reset,
+@layer reset,
   fonts,
   tokens,
   typography,
   base,
   layout;
 
-@import url('/node_modules/@rhds/tokens/css/global.css') layer(tokens);
-@import url('/node_modules/@rhds/tokens/css/default-theme.css') layer(tokens);
-@import url('../reset.css') layer(reset);
-@import url('../fonts.css') layer(fonts);
-@import url('../typography.css') layer(typography);
+@import url("/node_modules/@rhds/tokens/css/global.css") layer(tokens);
+@import url("/node_modules/@rhds/tokens/css/default-theme.css") layer(tokens);
+@import url("../reset.css") layer(reset);
+@import url("../fonts.css") layer(fonts);
+@import url("../typography.css") layer(typography);
 
 @layer base {
   /**
@@ -26,7 +25,9 @@
 @layer layout {
   html,
   body,
-  #main { height: 100%; }
+  #main {
+    height: 100%;
+  }
 
   [data-demo] {
     display: contents;

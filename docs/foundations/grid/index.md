@@ -37,7 +37,7 @@ We use [space tokens][space tokens] to define grid margins and gutters.
 <rh-table>
 
 | Grid name | Breakpoint | Margins and gutters | Max width   | Columns |
-|-----------|------------|---------------------|-------------|---------|
+| --------- | ---------- | ------------------- | ----------- | ------- |
 | xs        | &lt;575px  | `--rh-space-lg`     | 100% - 32px | 2       |
 | sm        | 576px      | `--rh-space-lg`     | 544px       | 2       |
 | md        | 768px      | `--rh-space-2xl`    | 704px       | 12      |
@@ -52,7 +52,7 @@ We use [space tokens][space tokens] to define grid margins and gutters.
 <rh-table>
 
 | Grid name | Device             | Margins and gutters | Max width | Columns |
-|-----------|--------------------|---------------------|-----------|---------|
+| --------- | ------------------ | ------------------- | --------- | ------- |
 | Fluid     | Desktop and tablet | `--rh-space-2xl`    | 100%      | 12      |
 | Fluid     | Mobile             | `--rh-space-lg`     | 100%      | 2       |
 
@@ -84,8 +84,6 @@ We use [space tokens][space tokens] to define grid margins and gutters.
   <p>Do not allow the width of body text to span more than 789px.</p>
 </uxdot-best-practice>
 
-
-
 <uxdot-feedback>
   <h2>Foundations</h2>
   <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
@@ -94,7 +92,6 @@ We use [space tokens][space tokens] to define grid margins and gutters.
 <!-- Links -->
 
 [space tokens]: /tokens/space/
-
 
 <!-----OLD---->
 <!--
@@ -270,4 +267,3 @@ We use [space tokens][space tokens] to define grid margins and gutters.
 
 </section>
 -->
-

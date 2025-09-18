@@ -37,7 +37,7 @@ function isUnslottedElement(node: Node): node is Element {
 export function injectSSRHintAttributes(
   this: TransformContext | RHDSSSRController,
   node: Node,
-  options?: Pick<Options, 'slotControllerElements'>,
+  options?: Pick<Options, 'slotControllerElements'>
 ): void {
   const tagSet = new Set(options?.slotControllerElements ?? []);
 
@@ -48,10 +48,12 @@ export function injectSSRHintAttributes(
     const slots = new Set();
     let foundDefault: Node | null = null;
     for (const node of element.childNodes) {
-      if (isDocument(node)
-          || isDocumentFragment(node)
-          || isCommentNode(node)
-          || isDocumentTypeNode(node)) {
+      if (
+        isDocument(node)
+        || isDocumentFragment(node)
+        || isCommentNode(node)
+        || isDocumentTypeNode(node)
+      ) {
         continue;
       } else if (isLengthyTextNode(node) || isUnslottedElement(node)) {
         foundDefault = node;
@@ -73,16 +75,15 @@ export function injectSSRHintAttributes(
  * @param eleventyConfig
  * @param pluginOpts
  */
-export default function(
-  eleventyConfig: UserConfig,
-  pluginOpts?: Options,
-) {
-  eleventyConfig.addTransform('rhds-ssr-hints', function(this: TransformContext, content: string) {
-    const document = parse(content);
+export default function(eleventyConfig: UserConfig, pluginOpts?: Options) {
+  eleventyConfig.addTransform(
+    'rhds-ssr-hints',
+    function(this: TransformContext, content: string) {
+      const document = parse(content);
 
-    injectSSRHintAttributes.call(this, document, pluginOpts);
+      injectSSRHintAttributes.call(this, document, pluginOpts);
 
-    return serialize(document);
-  });
-};
-;
+      return serialize(document);
+    }
+  );
+}

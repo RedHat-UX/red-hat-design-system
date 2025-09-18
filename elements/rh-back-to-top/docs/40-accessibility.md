@@ -34,7 +34,6 @@ Users should have the ability to navigate to and interact with the back to top b
   </table>
 </rh-table>
 
-
 ## Focus order
 
 As long as the back to top button is only at the bottom of the page, it should be the last interactive element on the page to receive focus.

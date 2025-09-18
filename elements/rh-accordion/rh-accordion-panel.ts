@@ -37,10 +37,12 @@ export class RhAccordionPanel extends LitElement {
     const { expanded } = this;
     const { large = false } = this.ctx ?? {};
     return html`
-      <div id="container"
-           class="${classMap({ large, expanded, content: true })}"
-           part="container"
-           tabindex="-1">
+      <div
+        id="container"
+        class="${classMap({ large, expanded, content: true })}"
+        part="container"
+        tabindex="-1"
+      >
         <!-- The content of the accordion panel can be any basic markup including but not limited
              to div, paragraph, or nested accordion panels. -->
         <slot class="body"></slot>

@@ -9,9 +9,7 @@ export default class IconsPage {
       title: 'Iconography',
       order: 25,
       icons: await import('@rhds/icons'),
-      tags: [
-        'foundations',
-      ],
+      tags: ['foundations'],
     };
   }
 
@@ -47,37 +45,53 @@ export default class IconsPage {
       </style>
 
       <h2 id="overview">Overview</h2>
-      <p>Click the names of icons to copy their HTML code to your clipboard. To learn more about
-         how to use icons in each set, visit <a href="/elements/icon/guidelines/">Guidelines for the
-         icon element</a>. The icon element's page also has more information about
-         <a href="/elements/icon/code/">implementing icons</a>.</p>
+      <p>
+        Click the names of icons to copy their HTML code to your clipboard. To
+        learn more about how to use icons in each set, visit
+        <a href="/elements/icon/guidelines/">Guidelines for the icon element</a
+        >. The icon element's page also has more information about
+        <a href="/elements/icon/code/">implementing icons</a>.
+      </p>
 
       <section>
         <h2 id="standard-icons">Standard icons</h2>
-        <ul class="icon-set">${this.#renderIcons('standard', icons)}</ul>
+        <ul class="icon-set">
+          ${this.#renderIcons('standard', icons)}
+        </ul>
       </section>
 
       <section>
         <h2 id="ui-icons">UI icons</h2>
-        <ul class="icon-set">${this.#renderIcons('ui', icons)}</ul>
+        <ul class="icon-set">
+          ${this.#renderIcons('ui', icons)}
+        </ul>
       </section>
 
       <section>
         <h2 id="micron-icons">Microns</h2>
-        <ul class="icon-set">${this.#renderIcons('microns', icons)}</ul>
+        <ul class="icon-set">
+          ${this.#renderIcons('microns', icons)}
+        </ul>
       </section>
 
       <section>
         <h2 id="social-icons">Social icons</h2>
-        <ul class="icon-set">${this.#renderIcons('social', icons)}</ul>
+        <ul class="icon-set">
+          ${this.#renderIcons('social', icons)}
+        </ul>
       </section>
 
-      ${await this.renderFile('./docs/_includes/partials/component/feedback.11ty.ts', ctx)}
+      ${await this.renderFile(
+        './docs/_includes/partials/component/feedback.11ty.ts',
+        ctx
+      )}
     `;
   }
 
   #renderIcons(set, icons) {
-    return Array.from(icons[set].keys(), icon => this.#renderIcon({ icon, set })).join('');
+    return Array.from(icons[set].keys(), icon =>
+      this.#renderIcon({ icon, set })
+    ).join('');
   }
 
   #renderIcon({ set, icon }) {
@@ -85,9 +99,10 @@ export default class IconsPage {
     return html`
       <li>
         <rh-icon set="${set}" icon="${icon}"></rh-icon>
-        <rh-button accessible-label="${label}" variant="link">${icon}</rh-button>
+        <rh-button accessible-label="${label}" variant="link"
+          >${icon}</rh-button
+        >
       </li>
     `;
   }
-};
-
+}

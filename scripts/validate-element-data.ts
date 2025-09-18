@@ -50,7 +50,9 @@ async function getElementDirectories(): Promise<string[]> {
 /**
  * Load YAML data for an element if it exists
  */
-async function loadElementYamlData(tagName: string): Promise<RepoStatusRecord | null> {
+async function loadElementYamlData(
+  tagName: string
+): Promise<RepoStatusRecord | null> {
   const yamlPath = join(cwd, 'elements', tagName, 'docs', 'data.yaml');
 
   try {
@@ -70,7 +72,9 @@ async function hasImplementationFiles(tagName: string): Promise<boolean> {
 
   try {
     const files = await readdir(elementDir);
-    return files.some(file => file.endsWith('.ts') && file.startsWith(tagName));
+    return files.some(
+      file => file.endsWith('.ts') && file.startsWith(tagName)
+    );
   } catch {
     return false;
   }
@@ -117,14 +121,16 @@ async function validateElementData(): Promise<ValidationResult> {
       if (yamlData.tagName !== undefined) {
         result.warnings.push({
           tagName,
-          message: 'tagName field found in YAML but should be derived from directory structure',
+          message:
+            'tagName field found in YAML but should be derived from directory structure',
         });
       }
 
       if (yamlData.name !== undefined) {
         result.warnings.push({
           tagName,
-          message: 'name field found in YAML but should be derived from directory structure',
+          message:
+            'name field found in YAML but should be derived from directory structure',
         });
       }
 
@@ -132,7 +138,8 @@ async function validateElementData(): Promise<ValidationResult> {
       if (!hasImpl && yamlData.libraries.rhds === 'ready') {
         result.warnings.push({
           tagName,
-          message: 'Element marked as ready in RHDS but has no implementation files',
+          message:
+            'Element marked as ready in RHDS but has no implementation files',
         });
       }
 
@@ -140,7 +147,8 @@ async function validateElementData(): Promise<ValidationResult> {
       if (hasImpl && yamlData.libraries.rhds === 'planned') {
         result.warnings.push({
           tagName,
-          message: 'Element has implementation files but is marked as planned in RHDS',
+          message:
+            'Element has implementation files but is marked as planned in RHDS',
         });
       }
     } else {
@@ -177,7 +185,9 @@ async function main() {
       for (const error of result.errors) {
         console.log(`   ${error.tagName}: ${error.message}`);
         if (verbose && error.details) {
-          console.log(`      Details: ${JSON.stringify(error.details, null, 2)}`);
+          console.log(
+            `      Details: ${JSON.stringify(error.details, null, 2)}`
+          );
         }
       }
       console.log('');
@@ -197,13 +207,17 @@ async function main() {
     if (result.valid) {
       console.log('✅ All element data is valid!');
       if (result.warnings.length > 0 && !onlyErrors) {
-        console.log(`   Note: ${result.warnings.length} warning(s) found but validation passed`);
+        console.log(
+          `   Note: ${result.warnings.length} warning(s) found but validation passed`
+        );
       }
     } else {
       console.log('❌ Element data validation failed!');
       console.log(`   ${result.errors.length} error(s) need to be fixed`);
       if (result.warnings.length > 0 && !onlyErrors) {
-        console.log(`   ${result.warnings.length} warning(s) should be reviewed`);
+        console.log(
+          `   ${result.warnings.length} warning(s) should be reviewed`
+        );
       }
     }
 

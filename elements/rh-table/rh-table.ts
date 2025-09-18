@@ -24,24 +24,30 @@ export class RhTable extends LitElement {
 
   private static getNodeContentForSort(
     columnIndexToSort: number,
-    node: Element,
+    node: Element
   ) {
-    const content = node.querySelector(`
+    const content =
+      node
+          .querySelector(
+            `
       :is(th, td):nth-child(${columnIndexToSort + 1}),
       tr > :is(th, td):nth-child(${columnIndexToSort + 1})
-    `.trim())?.textContent?.trim()?.toLowerCase() ?? '';
+    `.trim()
+          )
+          ?.textContent?.trim()
+          ?.toLowerCase() ?? '';
     return { node, content };
   }
 
   private static sortByContent(
     direction: 'asc' | 'desc',
     a: { content: string },
-    b: { content: string },
+    b: { content: string }
   ) {
     if (direction === 'asc') {
-      return (a.content < b.content ? -1 : a.content > b.content ? 1 : 0);
+      return a.content < b.content ? -1 : a.content > b.content ? 1 : 0;
     } else {
-      return (b.content < a.content ? -1 : b.content > a.content ? 1 : 0);
+      return b.content < a.content ? -1 : b.content > a.content ? 1 : 0;
     }
   }
 
@@ -50,11 +56,15 @@ export class RhTable extends LitElement {
   }
 
   get #cols(): NodeListOf<HTMLTableColElement> | undefined {
-    return this.querySelectorAll?.('col') as NodeListOf<HTMLTableColElement> | undefined;
+    return this.querySelectorAll?.('col') as
+      | NodeListOf<HTMLTableColElement>
+      | undefined;
   }
 
   get #rows(): NodeListOf<HTMLTableRowElement> | undefined {
-    return this.querySelectorAll?.('tbody > tr') as NodeListOf<HTMLTableRowElement> | undefined;
+    return this.querySelectorAll?.('tbody > tr') as
+      | NodeListOf<HTMLTableRowElement>
+      | undefined;
   }
 
   get #colHeaders(): NodeListOf<HTMLTableCellElement> | undefined {
@@ -79,10 +89,12 @@ export class RhTable extends LitElement {
     return html`
       <div id="container" part="container">
         <!-- an HTML table -->
-        <slot @pointerleave="${this.#onPointerleave}"
-              @pointerover="${this.#onPointerover}"
-              @request-sort="${this.#onRequestSort}"
-              @slotchange="${this.#onSlotChange}"></slot>
+        <slot
+          @pointerleave="${this.#onPointerleave}"
+          @pointerover="${this.#onPointerover}"
+          @request-sort="${this.#onRequestSort}"
+          @slotchange="${this.#onSlotChange}"
+        ></slot>
         <!-- description of the data -->
         <slot id="summary" name="summary"></slot>
       </div>
@@ -150,7 +162,8 @@ export class RhTable extends LitElement {
     /* If responsive attribute set, auto-assign `data-label` attributes based on column headers */
     if (this.#table?.tHead && this.#colHeaders?.length && this.#rows) {
       for (const row of this.#rows) {
-        row?.querySelectorAll<HTMLElement>(':is(td, th)')
+        row
+            ?.querySelectorAll<HTMLElement>(':is(td, th)')
             .forEach((cell, index) => {
               cell.dataset.label ||= this.#colHeaders?.[index]?.innerText || '';
             });
@@ -192,8 +205,9 @@ export class RhTable extends LitElement {
         return;
       }
 
-      Array
-          .from(this.#rows, node => RhTable.getNodeContentForSort(columnIndexToSort, node))
+      Array.from(this.#rows, node =>
+        RhTable.getNodeContentForSort(columnIndexToSort, node)
+      )
           .sort((a, b) => RhTable.sortByContent(direction, a, b))
           .forEach(({ node }, index) => {
             if (!this.#rows) {
@@ -202,7 +216,7 @@ export class RhTable extends LitElement {
             const target = this.#rows[index];
             if (this.#rows[index] !== node) {
               const position: InsertPosition =
-                direction === 'desc' ? 'afterend' : 'beforebegin';
+              direction === 'desc' ? 'afterend' : 'beforebegin';
               target.insertAdjacentElement(position, node);
             }
           });

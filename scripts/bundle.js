@@ -24,12 +24,7 @@ export async function bundle({ outfile = 'rhds.min.js', external = [] } = {}) {
     minify: true,
     minifyWhitespace: true,
 
-    external: external ?? [
-      '@*',
-      'prism*',
-      'lit*',
-      'tslib',
-    ],
+    external: external ?? ['@*', 'prism*', 'lit*', 'tslib'],
 
     plugins: [
       minifyHTMLLiteralsPlugin(),
@@ -44,7 +39,7 @@ export async function bundle({ outfile = 'rhds.min.js', external = [] } = {}) {
 if (import.meta.url.endsWith(process.argv.at(1))) {
   try {
     await bundle();
-  } catch ( e ) {
+  } catch (e) {
     // it is necessary to log this error in case the script needs debugging
     // eslint-disable-next-line no-console
     console.error(e);

@@ -96,7 +96,7 @@ The entire trigger button surface changes color on hover.
 <rh-table>
 
 | Property                     | Light Scheme                 | Dark Scheme               |
-|------------------------------|------------------------------|---------------------------|
+| ---------------------------- | ---------------------------- | ------------------------- |
 | Trigger button surface color | `--rh-color-surface-lighter` | `--rh-color-surface-dark` |
 
 </rh-table>

@@ -20,11 +20,16 @@
   overflow-y: visible;
 
   /** color of fade effect (should match background) */
-  --_fade-color:
-    light-dark(var(--rh-audio-player-scrolling-text-overflow-background-color,
-      var(--rh-color-surface-lightest, #ffffff)),
-      var(--rh-audio-player-scrolling-text-overflow-background-color,
-      var(--rh-color-surface-darkest, #151515)));
+  --_fade-color: light-dark(
+    var(
+      --rh-audio-player-scrolling-text-overflow-background-color,
+      var(--rh-color-surface-lightest, #ffffff)
+    ),
+    var(
+      --rh-audio-player-scrolling-text-overflow-background-color,
+      var(--rh-color-surface-darkest, #151515)
+    )
+  );
 
   &:dir(rtl) {
     text-align: right;
@@ -52,7 +57,7 @@ slot {
 #fade {
   position: absolute;
   height: 150%;
-  content: ' ';
+  content: " ";
   top: -25%;
   right: 0;
   width: 3em;

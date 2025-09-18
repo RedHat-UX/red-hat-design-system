@@ -58,26 +58,32 @@ export class RhSchemeToggle extends LitElement {
         <div id="button-group">
           <label title="${this.lightText}">
             <span class="visually-hidden">${this.lightText}</span>
-            <input type="radio"
-                   name="scheme"
-                   value="light"
-                   ?checked="${this.#isLight}">
+            <input
+              type="radio"
+              name="scheme"
+              value="light"
+              ?checked="${this.#isLight}"
+            />
             <rh-icon set="ui" icon="light-mode"></rh-icon>
           </label>
           <label title="${this.darkText}">
             <span class="visually-hidden">${this.darkText}</span>
-            <input type="radio"
-                   name="scheme"
-                   value="dark"
-                   ?checked="${this.#isDark}">
+            <input
+              type="radio"
+              name="scheme"
+              value="dark"
+              ?checked="${this.#isDark}"
+            />
             <rh-icon set="ui" icon="dark-mode"></rh-icon>
           </label>
           <label title="${this.systemText}">
             <span class="visually-hidden">${this.systemText}</span>
-            <input type="radio"
-                   name="scheme"
-                   value="light dark"
-                   ?checked="${this.#isSystem}">
+            <input
+              type="radio"
+              name="scheme"
+              value="light dark"
+              ?checked="${this.#isSystem}"
+            />
             <rh-icon set="ui" icon="auto-light-dark-mode"></rh-icon>
           </label>
         </div>
@@ -96,9 +102,9 @@ export class RhSchemeToggle extends LitElement {
     if (!isServer) {
       this.#isLight = this.scheme === 'light';
       this.#isDark = this.scheme === 'dark';
-      this.#isSystem = (this.scheme?.includes('light')
-        && this.scheme?.includes('dark'))
-        || (this.scheme === undefined);
+      this.#isSystem =
+        (this.scheme?.includes('light') && this.scheme?.includes('dark'))
+        || this.scheme === undefined;
       this.requestUpdate();
     }
   }

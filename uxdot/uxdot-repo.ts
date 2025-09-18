@@ -4,11 +4,7 @@ type Color = 'purple' | 'green' | 'orange' | 'gray' | 'cyan';
 type Variant = 'filled' | 'outline';
 type Icon = string;
 
-type LibraryKey =
-| 'figma'
-| 'rhds'
-| 'shared'
-| 'docs';
+type LibraryKey = 'figma' | 'rhds' | 'shared' | 'docs';
 
 interface Status {
   pretty: string;

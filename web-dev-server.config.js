@@ -26,7 +26,9 @@ async function resolveLocal(pattern, relativeTo = './') {
   // eslint-disable-next-line jsdoc/check-tag-names
   /** @type [string, string][] */
   const files = [];
-  for await (const file of glob(pattern, { cwd: join(process.cwd(), relativeTo) })) {
+  for await (const file of glob(pattern, {
+    cwd: join(process.cwd(), relativeTo),
+  })) {
     if (!TEST_RE.test(file)) {
       files.push([
         `@rhds/elements/${file.replace('.ts', '.js')}`,
@@ -43,12 +45,15 @@ async function resolveLocal(pattern, relativeTo = './') {
  * @param {import('@parse5/tools').Document} document
  */
 function injectManuallyResolvedModulesToImportMap(document) {
-  const importMapNode = query(document, node =>
-    isElementNode(node)
+  const importMapNode = query(
+    document,
+    node =>
+      isElementNode(node)
       && node.tagName === 'script'
-      && node.attrs.some(attr =>
-        attr.name === 'type'
-          && attr.value === 'importmap'));
+      && node.attrs.some(
+        attr => attr.name === 'type' && attr.value === 'importmap'
+      )
+  );
   if (importMapNode && isElementNode(importMapNode)) {
     const json = JSON.parse(getTextContent(importMapNode));
     Object.assign(json.imports, {
@@ -60,11 +65,14 @@ function injectManuallyResolvedModulesToImportMap(document) {
       '@rhds/icons/': '/node_modules/@rhds/icons/',
       '@rhds/tokens/': '/node_modules/@rhds/tokens/js/',
       '@rhds/tokens/css/': '/node_modules/@rhds/tokens/css/',
-      '@floating-ui/dom': '/node_modules/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs',
-      '@floating-ui/core': '/node_modules/@floating-ui/core/dist/floating-ui.core.browser.min.mjs',
+      '@floating-ui/dom':
+        '/node_modules/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs',
+      '@floating-ui/core':
+        '/node_modules/@floating-ui/core/dist/floating-ui.core.browser.min.mjs',
     });
     for (const key of Object.keys(json.scopes ?? {})) {
-      json.scopes[key]['@patternfly/pfe-core'] = '/node_modules/@patternfly/pfe-core/core.js';
+      json.scopes[key]['@patternfly/pfe-core'] =
+        '/node_modules/@patternfly/pfe-core/core.js';
     }
     setTextContent(importMapNode, JSON.stringify(json, null, 2));
   }
@@ -77,9 +85,7 @@ function injectManuallyResolvedModulesToImportMap(document) {
 function transformDevServerHTML(document) {
   const surfaceId = 'rhds-dev-server-main';
   // replace the <main> element with a surface
-  const main = query(document, x =>
-    isElementNode(x)
-    && x.tagName === 'main');
+  const main = query(document, x => isElementNode(x) && x.tagName === 'main');
   if (main && isElementNode(main)) {
     main.tagName = 'rh-surface';
     removeAttribute(main, 'color-palette');
@@ -87,40 +93,45 @@ function transformDevServerHTML(document) {
     setAttribute(main, 'role', 'main');
   }
   // add a context picker to header, targeting main
-  const header = query(document, x =>
-    isElementNode(x)
-      && getAttribute(x, 'id') === 'main-header');
+  const header = query(
+    document,
+    x => isElementNode(x) && getAttribute(x, 'id') === 'main-header'
+  );
   if (header && isElementNode(header)) {
     const picker = createElement('rh-context-picker');
     setAttribute(picker, 'target', surfaceId);
     setAttribute(picker, 'value', '');
-    const logoBar = query(header, node =>
-      isElementNode(node)
-        && getAttribute(node, 'class') === 'logo-bar');
+    const logoBar = query(
+      header,
+      node =>
+        isElementNode(node) && getAttribute(node, 'class') === 'logo-bar'
+    );
     if (logoBar) {
       spliceChildren(logoBar, 4, 0, picker);
     }
   }
   // import surface and picker
-  const module = query(document, x =>
-    isElementNode(x)
+  const module = query(
+    document,
+    x =>
+      isElementNode(x)
       && x.tagName === 'script'
-      && getAttribute(x, 'type') === 'module');
+      && getAttribute(x, 'type') === 'module'
+  );
   if (module) {
-    setTextContent(module, /* js */`${getTextContent(module)}
+    setTextContent(
+      module,
+      /* js */ `${getTextContent(module)}
     import '@rhds/elements/rh-surface/rh-surface.js';
     import '@rhds/elements/rh-tooltip/rh-tooltip.js';
     import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
-  `);
+  `
+    );
   }
 }
 
-
 export const litcssOptions = {
-  exclude: [
-    /(lightdom)/,
-    /node_modules\/@rhds\/tokens\/css\/.*\.css/,
-  ],
+  exclude: [/(lightdom)/, /node_modules\/@rhds\/tokens\/css\/.*\.css/],
   include: [
     /elements\/rh-[\w-]+\/[\w-]+\.css$/,
     /@rhds\/tokens\/css\/.*\.css$/,
@@ -129,8 +140,8 @@ export const litcssOptions = {
 };
 
 const imports = {
-  ...await resolveLocal('./lib/**/*.ts'),
-  ...await resolveLocal('./**/*.ts', './elements'),
+  ...(await resolveLocal('./lib/**/*.ts')),
+  ...(await resolveLocal('./**/*.ts', './elements')),
 };
 
 export default pfeDevServerConfig({
@@ -138,10 +149,7 @@ export default pfeDevServerConfig({
   litcssOptions,
   importMapOptions: {
     typeScript: true,
-    ignore: [
-      /^\./,
-      /^@rhds\/icons/,
-    ],
+    ignore: [/^\./, /^@rhds\/icons/],
     inputMap: { imports },
   },
   middleware: [
@@ -185,7 +193,10 @@ export default pfeDevServerConfig({
     {
       name: 'watch-demos',
       serverStart(args) {
-        const fsDemoFilesGlob = new URL('./elements/*/demo/**/*.html', import.meta.url).pathname;
+        const fsDemoFilesGlob = new URL(
+          './elements/*/demo/**/*.html',
+          import.meta.url
+        ).pathname;
         args.fileWatcher.add(fsDemoFilesGlob);
         args.app.use(function(ctx, next) {
           if (ctx.path.match(/\/|\.css|\.html|\.js$/)) {

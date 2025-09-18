@@ -1,14 +1,22 @@
 <rh-card class="example-asset-title-and-link">
-  <svg slot="header"
-       viewBox="0 0 296 171"
-       style="border: 1px dashed var(--rh-color-border-interactive-on-light, #0066cc);">
+  <svg
+    slot="header"
+    viewBox="0 0 296 171"
+    style="
+      border: 1px dashed var(--rh-color-border-interactive-on-light, #0066cc);
+    "
+  >
     <rect fill="rgba(0 102 204 / 0.10)" width="296" height="171"></rect>
   </svg>
   <h4>
-    <svg class="fpo-icon"
-         viewBox="0 0 16 16"
-         style="width: 1.5em;
-                border: 1px dashed var(--rh-color-border-interactive-on-light, #0066cc);">
+    <svg
+      class="fpo-icon"
+      viewBox="0 0 16 16"
+      style="
+        width: 1.5em;
+        border: 1px dashed var(--rh-color-border-interactive-on-light, #0066cc);
+      "
+    >
       <rect fill="rgba(0 102 204 / 0.10)" width="16" height="16"></rect>
     </svg>
     <span>Title, Lg</span>
@@ -19,12 +27,14 @@
 <style>
   .example-asset-title-and-link {
     inline-size: 360px;
-    --rh-card-header-background-on-light:
-      var(--rh-color-surface-lighter,
-        var(--rh-color-gray-10,#f2f2f2));
-    --rh-card-header-background-on-dark:
-      var(--rh-color-surface-dark,
-        var(--rh-color-gray-70, #383838));
+    --rh-card-header-background-on-light: var(
+      --rh-color-surface-lighter,
+      var(--rh-color-gray-10, #f2f2f2)
+    );
+    --rh-card-header-background-on-dark: var(
+      --rh-color-surface-dark,
+      var(--rh-color-gray-70, #383838)
+    );
 
     &::part(header) {
       margin: 0;

@@ -5,7 +5,10 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
-import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import {
+  colorPalettes,
+  type ColorPalette,
+} from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-blockquote.css';
@@ -31,14 +34,16 @@ export class RhBlockquote extends LitElement {
    * - `lightest` (default)
    * - `darkest`
    */
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+  @property({ reflect: true, attribute: 'color-palette' })
+  colorPalette?: ColorPalette;
 
   /**
    * Set the alignment of the blockquote. Possible values are:
    * - `left` (default)
    * - `center`
    */
-  @property({ reflect: true }) align: 'center' | 'inline-start' = 'inline-start';
+  @property({ reflect: true }) align: 'center' | 'inline-start' =
+    'inline-start';
 
   /** Optional highlight attribute that, when present, shows a highlight on side of blockquote. */
   @property({ reflect: true, type: Boolean }) highlight = false;
@@ -60,8 +65,16 @@ export class RhBlockquote extends LitElement {
           <slot></slot>
         </blockquote>
         <figcaption>
-          <p id="author"><!-- Provide an author for the blockquote --><slot name="author"></slot></p>
-          <p id="title"><!-- Provide an author title for the blockquote --><slot name="title"></slot></p>
+          <p id="author">
+            <!-- Provide an author for the blockquote --><slot
+              name="author"
+            ></slot>
+          </p>
+          <p id="title">
+            <!-- Provide an author title for the blockquote --><slot
+              name="title"
+            ></slot>
+          </p>
         </figcaption>
       </figure>
     `;

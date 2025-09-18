@@ -19,11 +19,11 @@ Every call to action style and variant must be able to receive focus and be navi
 
 <rh-table id="kbd-interactions">
 
-| Key                  | Result                                                            |
-| -------------------- | ----------------------------------------------------------------- |
-| <kbd>Tab</kbd>       | Moves focus to the next call to action or interactive element     |
-| <kbd>Shift+Tab</kbd> | Moves focus to the previous call to action or interactive element |
-| <kbd>Enter</kbd>/<kbd>Return</kbd>     | Activates a link                                |
+| Key                                | Result                                                            |
+| ---------------------------------- | ----------------------------------------------------------------- |
+| <kbd>Tab</kbd>                     | Moves focus to the next call to action or interactive element     |
+| <kbd>Shift+Tab</kbd>               | Moves focus to the previous call to action or interactive element |
+| <kbd>Enter</kbd>/<kbd>Return</kbd> | Activates a link                                                  |
 
 </rh-table>
 

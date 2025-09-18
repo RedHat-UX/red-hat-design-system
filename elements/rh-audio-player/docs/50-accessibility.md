@@ -1,5 +1,5 @@
-
 ## Keyboard interactions
+
 Every interactive element is a focus stop and controls are operated using different keyboard inputs. Users should be able to open and close menus while navigating other controls without losing focus. Audio playback and the volume level are expected to respond to keyboard inputs as well.
 
 <uxdot-example color-palette="lightest" width-adjustment="800px">
@@ -24,6 +24,7 @@ Every interactive element is a focus stop and controls are operated using differ
 </rh-table>
 
 ## Focus order
+
 A logical focus order helps keyboard users operate our websites. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly. The focus moves across the audio player from left to right and top to bottom. When the focus is moved outside of the contextual menu, the menu closes.
 
 <uxdot-example color-palette="lightest" width-adjustment="800px">
@@ -34,6 +35,7 @@ A logical focus order helps keyboard users operate our websites. Elements need t
 </uxdot-example>
 
 ### Toggling a feature
+
 When a user closes a feature by pressing <kbd>Space</kbd> or <kbd>Esc</kbd>, focus returns to the contextual menu button so users can easily open the menu again to return to that feature or select a new one.
 
 <uxdot-example color-palette="lightest" width-adjustment="738px">

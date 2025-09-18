@@ -23,7 +23,10 @@ describe('<rh-card>', function() {
       element = await fixture<RhCard>(html`
         <rh-card>
           <h3 slot="header">Default</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est</p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+            eleifend elit sed est
+          </p>
           <a href="#" slot="footer">Link</a>
         </rh-card>
       `);
@@ -35,15 +38,21 @@ describe('<rh-card>', function() {
 
     describe('heading', function() {
       it('should have font-size --rh-font-size-heading-sm', async function() {
-        expect(getComputedStyle(element.querySelector('h3')!).getPropertyValue('font-size'))
-            .to.equal(remToPx(tokens.get('--rh-font-size-heading-sm')?.$value));
+        expect(
+          getComputedStyle(element.querySelector('h3')!).getPropertyValue(
+            'font-size'
+          )
+        ).to.equal(remToPx(tokens.get('--rh-font-size-heading-sm')?.$value));
       });
     });
 
     describe('body', function() {
       it('should have font-size --rh-font-size-body-text-md', async function() {
-        expect(getComputedStyle(element.querySelector('p')!).getPropertyValue('font-size'))
-            .to.equal(remToPx(tokens.get('--rh-font-size-body-text-md')?.$value));
+        expect(
+          getComputedStyle(element.querySelector('p')!).getPropertyValue(
+            'font-size'
+          )
+        ).to.equal(remToPx(tokens.get('--rh-font-size-body-text-md')?.$value));
       });
     });
   });
@@ -55,7 +64,10 @@ describe('<rh-card>', function() {
       element = await fixture<RhCard>(html`
         <rh-card>
           <h3>Default</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est</p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+            eleifend elit sed est
+          </p>
           <a href="#" slot="footer">Link</a>
         </rh-card>
       `);
@@ -67,15 +79,21 @@ describe('<rh-card>', function() {
 
     describe('heading', function() {
       it('should have initial font-size', function() {
-        expect(getComputedStyle(element.querySelector('h3')!).getPropertyValue('font-size'))
-            .to.equal(remToPx(tokens.get('--rh-font-size-heading-sm')?.$value));
+        expect(
+          getComputedStyle(element.querySelector('h3')!).getPropertyValue(
+            'font-size'
+          )
+        ).to.equal(remToPx(tokens.get('--rh-font-size-heading-sm')?.$value));
       });
     });
 
     describe('body', function() {
       it('should have font-size --rh-font-size-body-text-md', function() {
-        expect(getComputedStyle(element.querySelector('p')!).getPropertyValue('font-size'))
-            .to.equal(remToPx(tokens.get('--rh-font-size-body-text-md')?.$value));
+        expect(
+          getComputedStyle(element.querySelector('p')!).getPropertyValue(
+            'font-size'
+          )
+        ).to.equal(remToPx(tokens.get('--rh-font-size-body-text-md')?.$value));
       });
     });
   });

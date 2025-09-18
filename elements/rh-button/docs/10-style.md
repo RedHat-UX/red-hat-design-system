@@ -1,7 +1,7 @@
 ## Style
 
-A button is clickable text or an icon that triggers an action on the page or in 
-the background. Depending on the action, content, and hierarchy, a button can be 
+A button is clickable text or an icon that triggers an action on the page or in
+the background. Depending on the action, content, and hierarchy, a button can be
 used on its own or grouped with other buttons.
 
 ### Anatomy
@@ -27,6 +27,7 @@ used on its own or grouped with other buttons.
 </figure>
 
 ## Color scheme
+
 <a id="theme"></a>
 
 Buttons are available for both light and dark color schemes.
@@ -50,7 +51,7 @@ Buttons are available for both light and dark color schemes.
 <rh-table>
 
 | Property                                 | Light theme | Dark theme |
-|------------------------------------------|-------------|------------|
+| ---------------------------------------- | ----------- | ---------- |
 | Color - Danger button text               | `#FFFFFF`   | `#151515`  |
 | Color - Danger button surface            | `#C9190B`   | `#FF542E`  |
 | Color - Primary button text              | `#FFFFFF`   | `#FFFFFF`  |
@@ -68,10 +69,10 @@ Buttons are available for both light and dark color schemes.
 
 ## Configuration
 
-All buttons with a container have the same height and border radius, but the 
-width varies based on the amount of content. Buttons in a row are all 
-horizontally centered. When a Play button is placed on an image, it is both 
-horizontally and vertically centered and stays the same size no matter how big 
+All buttons with a container have the same height and border radius, but the
+width varies based on the amount of content. Buttons in a row are all
+horizontally centered. When a Play button is placed on an image, it is both
+horizontally and vertically centered and stays the same size no matter how big
 or small the image gets.
 
 <uxdot-example color-palette="lightest" width-adjustment="818px">
@@ -83,7 +84,7 @@ or small the image gets.
 
 ## Space
 
-Space values are the same on all breakpoints for the following buttons. To see 
+Space values are the same on all breakpoints for the following buttons. To see
 space values when buttons are grouped, go to the [Guidelines](./guidelines) page.
 
 <rh-alert state="info">
@@ -102,7 +103,7 @@ space values when buttons are grouped, go to the [Guidelines](./guidelines) page
 
 ## Interaction states
 
-Interaction states are visual representations used to communicate the status of 
+Interaction states are visual representations used to communicate the status of
 an element or pattern.
 
 ### Hover
@@ -124,7 +125,7 @@ an element or pattern.
 <rh-table>
 
 | Property                           | Light theme | Dark theme  |
-|------------------------------------|-------------|-------------|
+| ---------------------------------- | ----------- | ----------- |
 | Color - Danger button surface      | `#A30000`   | `#FF8266`   |
 | Color - Primary button surface     | `#004080`   | `#004080`   |
 | Border width - Secondary button    | `2px`       | `2px`       |
@@ -157,11 +158,10 @@ an element or pattern.
        height="128">
 </uxdot-example>
 
-
 <rh-table>
 
 | Property           | Light theme | Dark theme |
-|--------------------|-------------|------------|
+| ------------------ | ----------- | ---------- |
 | Color - focus ring | `#0066CC`   | `#73BCF7`  |
 
 </rh-table>
@@ -190,7 +190,7 @@ an element or pattern.
 <rh-table>
 
 | Property           | Light theme | Dark theme |
-|--------------------|-------------|------------|
+| ------------------ | ----------- | ---------- |
 | Color - focus ring | `#0066CC`   | `#73BCF7`  |
 
 </rh-table>

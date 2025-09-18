@@ -13,10 +13,11 @@ npm install @rhds/elements
 Then once installed, import it to your application:
 
 ```js
-import '@rhds/elements/rh-surface/rh-surface.js';
+import "@rhds/elements/rh-surface/rh-surface.js";
 ```
 
 ## Usage
+
 Use the `<rh-surface>` element when you have child elements that need their background colors or text colors set by the parent context. Use surface only when other container elements like `<rh-card>` would
 be inappropriate.
 
@@ -26,11 +27,11 @@ be inappropriate.
 </rh-surface>
 ```
 
-An example would be a hero element or band which contain other elements such as headings, paragraphs, and call-to-action links.  `<rh-surface>` will automatically set the correct text color and alert child context consuming elements to update their colors to ensure accessibility. 
-
+An example would be a hero element or band which contain other elements such as headings, paragraphs, and call-to-action links. `<rh-surface>` will automatically set the correct text color and alert child context consuming elements to update their colors to ensure accessibility.
 
 ## Color Palette
-The color palette attribute can be set to `darkest`, `darker`, `dark`, `light`, `lighter`, or `lightest` (default).  This will set the background color of the surface element as well as the text color
+
+The color palette attribute can be set to `darkest`, `darker`, `dark`, `light`, `lighter`, or `lightest` (default). This will set the background color of the surface element as well as the text color
 
 The `<rh-surface>` element has a single anonymous slot which accepts any content and does not provide additional layout styling.
 

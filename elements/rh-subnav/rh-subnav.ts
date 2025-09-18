@@ -7,12 +7,14 @@ import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-co
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
-import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import {
+  colorPalettes,
+  type ColorPalette,
+} from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-subnav.css';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
-
 
 /**
  * A subnavigation allows users to navigate between a small number of page links.
@@ -32,14 +34,18 @@ export class RhSubnav extends LitElement {
   static {
     // on resize check for overflows to add or remove scroll buttons
     if (!isServer) {
-      globalThis.addEventListener('resize', () => {
-      // this appears to be an eslint bug.
-      // `this` should refer to the class, but in the minified bundle, it is void
-        const { instances } = RhSubnav;
-        for (const instance of instances) {
-          instance.#overflow.onScroll();
-        }
-      }, { capture: false });
+      globalThis.addEventListener(
+        'resize',
+        () => {
+          // this appears to be an eslint bug.
+          // `this` should refer to the class, but in the minified bundle, it is void
+          const { instances } = RhSubnav;
+          for (const instance of instances) {
+            instance.#overflow.onScroll();
+          }
+        },
+        { capture: false }
+      );
     }
   }
 
@@ -55,23 +61,26 @@ export class RhSubnav extends LitElement {
    * Your theme will influence these colors so check there first if you are seeing inconsistencies.
    * See [CSS Custom Properties](#css-custom-properties) for default values
    */
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+  @property({ reflect: true, attribute: 'color-palette' })
+  colorPalette?: ColorPalette;
 
   /**
    * Customize the default `aria-label` on the `<nav>` container.
    * Defaults to "subnavigation" if no attribute/property is set.
    */
-  @property({ attribute: 'accessible-label' }) accessibleLabel = 'subnavigation';
+  @property({ attribute: 'accessible-label' }) accessibleLabel =
+    'subnavigation';
 
   @query('[part="links"]') private linkList!: HTMLElement;
-
 
   get #allLinks() {
     return this.#allLinkElements;
   }
 
   set #allLinks(links: HTMLAnchorElement[]) {
-    this.#allLinkElements = links.filter(link => link instanceof HTMLAnchorElement);
+    this.#allLinkElements = links.filter(
+      link => link instanceof HTMLAnchorElement
+    );
   }
 
   get #firstLink(): HTMLAnchorElement {
@@ -94,7 +103,10 @@ export class RhSubnav extends LitElement {
   }
 
   protected override firstUpdated() {
-    this.linkList.addEventListener('scroll', this.#overflow.onScroll.bind(this));
+    this.linkList.addEventListener(
+      'scroll',
+      this.#overflow.onScroll.bind(this)
+    );
     this.#onSlotchange();
   }
 
@@ -102,15 +114,19 @@ export class RhSubnav extends LitElement {
     return html`
       <!-- container, \`<div>\` element -->
       <nav part="container" aria-label="${this.accessibleLabel}">
-        ${!this.#overflow.showScrollButtons ? '' : html`
-          <button id="previous"
-                  tabindex="-1"
-                  data-direction="start"
-                  aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll back'}"
-                  ?disabled="${!this.#overflow.overflowLeft}"
-                  @click="${this.#onClickScroll}">
-            <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
-          </button>`}
+        ${!this.#overflow.showScrollButtons ?
+          ''
+          : html` <button
+              id="previous"
+              tabindex="-1"
+              data-direction="start"
+              aria-label="${this.getAttribute('label-scroll-left')
+              ?? 'Scroll back'}"
+              ?disabled="${!this.#overflow.overflowLeft}"
+              @click="${this.#onClickScroll}"
+            >
+              <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
+            </button>`}
         <!--
           slot:
             description: Navigation links, expects collection of \`<a>\` elements
@@ -118,15 +134,19 @@ export class RhSubnav extends LitElement {
             description: the anonymous slot
         -->
         <slot part="links" @slotchange="${this.#onSlotchange}"></slot>
-        ${!this.#overflow.showScrollButtons ? '' : html`
-          <button id="next"
-                  tabindex="-1"
-                  data-direction="end"
-                  aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll forward'}"
-                  ?disabled="${!this.#overflow.overflowRight}"
-                  @click="${this.#onClickScroll}">
-            <rh-icon set="ui" icon="caret-right" loading="eager"></rh-icon>
-          </button>`}
+        ${!this.#overflow.showScrollButtons ?
+          ''
+          : html` <button
+              id="next"
+              tabindex="-1"
+              data-direction="end"
+              aria-label="${this.getAttribute('label-scroll-right')
+              ?? 'Scroll forward'}"
+              ?disabled="${!this.#overflow.overflowRight}"
+              @click="${this.#onClickScroll}"
+            >
+              <rh-icon set="ui" icon="caret-right" loading="eager"></rh-icon>
+            </button>`}
       </nav>
     `;
   }

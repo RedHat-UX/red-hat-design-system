@@ -1,7 +1,9 @@
 # Menu
+
 A menu container with keyboard accessibility.
 
 ## Usage
+
 Menu items slot directly into the element. They can be buttons or links
 
 ```html

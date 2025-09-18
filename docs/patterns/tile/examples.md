@@ -10,6 +10,7 @@ subnav:
   collection: tilePatterns
   order: 3
 ---
+
 <script type="module" data-helmet>
   import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
   import '@rhds/elements/rh-card/rh-card.js';
@@ -34,4 +35,3 @@ subnav:
 <uxdot-pattern src="./patterns/tile-with-tag.html">
   <h2 id="accented-tile" slot="heading">Tile with tag</h2>
 </uxdot-pattern>
-

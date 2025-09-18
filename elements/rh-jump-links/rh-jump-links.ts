@@ -32,7 +32,8 @@ export class RhJumpLinks extends LitElement {
 
   /** Whether the layout of children is vertical or horizontal. */
   @provide({ context: rhJumpLinksOrientationContext })
-  @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'vertical';
+  @property({ reflect: true })
+  orientation: 'horizontal' | 'vertical' = 'vertical';
 
   /** Accessible label for nav */
   @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
@@ -60,7 +61,9 @@ export class RhJumpLinks extends LitElement {
   }
 
   override firstUpdated(): void {
-    const active: RhJumpLink | null = this.querySelector('rh-jump-link[active]');
+    const active: RhJumpLink | null = this.querySelector(
+      'rh-jump-link[active]'
+    );
     if (active) {
       this.#setActiveItem(active);
     }
@@ -74,34 +77,43 @@ export class RhJumpLinks extends LitElement {
   }
 
   render(): TemplateResult<1> {
-    const { overflowLeft, overflowRight, showScrollButtons: overflow } = this.#overflow;
+    const {
+      overflowLeft,
+      overflowRight,
+      showScrollButtons: overflow,
+    } = this.#overflow;
     return html`
-        <button id="scroll-start"
-                class="overflow-button"
-                ?hidden="${!overflow}"
-                tabindex="-1"
-                data-direction="start"
-                aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll back'}"
-                ?disabled="${!overflowLeft}"
-                @click="${this.#onClickScroll}">
-          <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
-        </button>
+      <button
+        id="scroll-start"
+        class="overflow-button"
+        ?hidden="${!overflow}"
+        tabindex="-1"
+        data-direction="start"
+        aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll back'}"
+        ?disabled="${!overflowLeft}"
+        @click="${this.#onClickScroll}"
+      >
+        <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
+      </button>
 
-        <div id="container" role="list">
-          <!-- Place \`<rh-jump-link>\` or \`<rh-jump-links-list>\` elements here -->
-          <slot></slot>
-        </div>
+      <div id="container" role="list">
+        <!-- Place \`<rh-jump-link>\` or \`<rh-jump-links-list>\` elements here -->
+        <slot></slot>
+      </div>
 
-        <button id="scroll-end"
-                class="overflow-button"
-                ?hidden="${!overflow}"
-                tabindex="-1"
-                data-direction="end"
-                aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll forward'}"
-                ?disabled="${!overflowRight}"
-                @click="${this.#onClickScroll}">
-           <rh-icon set="ui" icon="caret-right" loading="eager"></rh-icon>
-        </button>
+      <button
+        id="scroll-end"
+        class="overflow-button"
+        ?hidden="${!overflow}"
+        tabindex="-1"
+        data-direction="end"
+        aria-label="${this.getAttribute('label-scroll-right')
+        ?? 'Scroll forward'}"
+        ?disabled="${!overflowRight}"
+        @click="${this.#onClickScroll}"
+      >
+        <rh-icon set="ui" icon="caret-right" loading="eager"></rh-icon>
+      </button>
     `;
   }
 
@@ -114,7 +126,9 @@ export class RhJumpLinks extends LitElement {
       await this.updateComplete;
     }
     const container = this.shadowRoot!.getElementById('container')!;
-    const items = Array.from(this.querySelectorAll(':scope > *')) as HTMLElement[];
+    const items = Array.from(
+      this.querySelectorAll(':scope > *')
+    ) as HTMLElement[];
     switch (this.orientation) {
       case 'horizontal':
         this.#overflow.init(container, items);

@@ -16,9 +16,7 @@ test.describe(tagName, () => {
       tagName,
       browser,
       demoDir: new URL('../demo/', import.meta.url),
-      importSpecifiers: [
-        `@rhds/elements/${tagName}/${tagName}.js`,
-      ],
+      importSpecifiers: [`@rhds/elements/${tagName}/${tagName}.js`],
     });
     await fixture.snapshots();
   });

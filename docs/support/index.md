@@ -30,7 +30,7 @@ Find the best method for getting your question to the team.
 
 ## Connect on GitHub
 
-The best way to get help or feedback is through GitHub. This allows us to pull 
+The best way to get help or feedback is through GitHub. This allows us to pull
 your GitHub issue or discussion into our workflow more easily.
 
 ### Design system help
@@ -50,7 +50,6 @@ your GitHub issue or discussion into our workflow more easily.
   </rh-tile>
 </div>
 
-
 ### Documentation and Figma help
 
 <div id="docs-help-grid" class="grid sm-three-columns">
@@ -67,7 +66,6 @@ your GitHub issue or discussion into our workflow more easily.
     Create a discussion to request new features or fixes for the Red Hat Design System’s Figma library.
   </rh-tile>
 </div>
-
 
 ## Contact us
 

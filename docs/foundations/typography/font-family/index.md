@@ -4,13 +4,12 @@ heading: Typography
 sidenavTitle: Typography
 layout: layouts/pages/has-toc.njk
 permalink: /foundations/typography/font-family/index.html
-tags: 
+tags:
   - typography
 subnav:
   collection: sortedTypography
   order: 2
 ---
-
 
 <link rel="stylesheet"
       href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"
@@ -87,6 +86,7 @@ Noto is a set of international fonts developed by Google, Monotype, Adobe, and l
 ## Download fonts
 
 ### Red Hat
+
 <div class="grid sm-three-columns">
   <rh-card>
     <img slot="header" src="./google-fonts-icon.svg" width="64px" alt="Google Fonts icon">
@@ -103,6 +103,7 @@ Noto is a set of international fonts developed by Google, Monotype, Adobe, and l
 </div>
 
 ### Noto Sans
+
 <div class="grid sm-three-columns">
   <rh-card>
     <img slot="header" src="./google-fonts-icon.svg" width="64px" alt="Google Fonts icon">
@@ -124,4 +125,3 @@ Noto is a set of international fonts developed by Google, Monotype, Adobe, and l
 [typographytokens]: /tokens/font/
 [tone]: https://www.redhat.com/en/about/brand/standards/personality#how-we-sound
 [expressivetype]: /foundations/typography/choosing-type/#expressive-type
-

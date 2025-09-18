@@ -17,7 +17,7 @@ async function allUpdates(element: ReactiveElement) {
     }
     await element.updateComplete;
     count++;
-  } while (!await element.updateComplete);
+  } while (!(await element.updateComplete));
 }
 
 describe('<rh-tabs>', function() {
@@ -31,7 +31,9 @@ describe('<rh-tabs>', function() {
         <rh-tab id="users" slot="tab" active>Users</rh-tab>
         <rh-tab-panel>Users</rh-tab-panel>
         <rh-tab slot="tab">Containers</rh-tab>
-        <rh-tab-panel>Containers <a href="#">Focusable element</a></rh-tab-panel>
+        <rh-tab-panel
+          >Containers <a href="#">Focusable element</a></rh-tab-panel
+        >
         <rh-tab slot="tab">Database</rh-tab>
         <rh-tab-panel>Database</rh-tab-panel>
         <rh-tab slot="tab">Servers</rh-tab>
@@ -47,10 +49,7 @@ describe('<rh-tabs>', function() {
 
   it('should upgrade', async function() {
     const klass = customElements.get('rh-tabs');
-    expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhTabs);
+    expect(element).to.be.an.instanceOf(klass).and.to.be.an.instanceOf(RhTabs);
   });
 
   describe('vertical tabs', function() {
@@ -119,7 +118,9 @@ describe('<rh-tabs>', function() {
 
       it('should specify the selected tab to assistive technology', async function() {
         const snapshot = await a11ySnapshot();
-        expect(snapshot.children?.find(x => x.selected)?.name).to.equal(secondItem.textContent);
+        expect(snapshot.children?.find(x => x.selected)?.name).to.equal(
+          secondItem.textContent
+        );
       });
 
       it('should change focus when keyboard navigation is used', function() {
@@ -153,7 +154,9 @@ describe('<rh-tabs>', function() {
 
       it('should specify the selected tab to assistive technology as last item', async function() {
         const snapshot = await a11ySnapshot();
-        expect(snapshot.children?.find(x => x.selected)?.name).to.equal(lastItem.textContent);
+        expect(snapshot.children?.find(x => x.selected)?.name).to.equal(
+          lastItem.textContent
+        );
       });
     });
   });
@@ -191,12 +194,16 @@ describe('<rh-tabs>', function() {
 
       it('should specify the focused tab to assistive technology as second tab', async function() {
         const snapshot = await a11ySnapshot();
-        expect(snapshot.children?.find(x => x.focused)?.name).to.equal(secondItem.textContent);
+        expect(snapshot.children?.find(x => x.focused)?.name).to.equal(
+          secondItem.textContent
+        );
       });
 
       it('should specify the selected tab to assistive technology as first tab', async function() {
         const snapshot = await a11ySnapshot();
-        expect(snapshot.children?.find(x => x.selected)?.name).to.equal(firstItem.textContent);
+        expect(snapshot.children?.find(x => x.selected)?.name).to.equal(
+          firstItem.textContent
+        );
       });
 
       it('should change focus when keyboard navigation is used', function() {
@@ -217,8 +224,12 @@ describe('<rh-tabs>', function() {
 
         it('should activate second item', async function() {
           const snapshot = await a11ySnapshot();
-          expect(snapshot.children?.find(x => x.focused)?.name).to.equal(secondItem.textContent);
-          expect(snapshot.children?.find(x => x.selected)?.name).to.equal(secondItem.textContent);
+          expect(snapshot.children?.find(x => x.focused)?.name).to.equal(
+            secondItem.textContent
+          );
+          expect(snapshot.children?.find(x => x.selected)?.name).to.equal(
+            secondItem.textContent
+          );
         });
       });
     });
@@ -245,12 +256,16 @@ describe('<rh-tabs>', function() {
 
       it('should specify the focused tab to assistive technology as last tab', async function() {
         const snapshot = await a11ySnapshot();
-        expect(snapshot.children?.find(x => x.focused)?.name).to.equal(lastItem.textContent);
+        expect(snapshot.children?.find(x => x.focused)?.name).to.equal(
+          lastItem.textContent
+        );
       });
 
       it('should specify the selected tab to assistive technology as first tab', async function() {
         const snapshot = await a11ySnapshot();
-        expect(snapshot.children?.find(x => x.selected)?.name).to.equal(firstItem.textContent);
+        expect(snapshot.children?.find(x => x.selected)?.name).to.equal(
+          firstItem.textContent
+        );
       });
 
       describe('pressing enter key', function() {
@@ -263,8 +278,12 @@ describe('<rh-tabs>', function() {
 
         it('should activate last item', async function() {
           const snapshot = await a11ySnapshot();
-          expect(snapshot.children?.find(x => x.focused)?.name).to.equal(lastItem.textContent);
-          expect(snapshot.children?.find(x => x.selected)?.name).to.equal(lastItem.textContent);
+          expect(snapshot.children?.find(x => x.focused)?.name).to.equal(
+            lastItem.textContent
+          );
+          expect(snapshot.children?.find(x => x.selected)?.name).to.equal(
+            lastItem.textContent
+          );
         });
       });
     });
@@ -297,12 +316,14 @@ describe('<rh-tabs>', function() {
       beforeEach(nextFrame);
 
       it('previousTab should be disabled', async function() {
-        const previousTab: HTMLButtonElement = element.shadowRoot!.querySelector('#previous-tab')!;
+        const previousTab: HTMLButtonElement =
+          element.shadowRoot!.querySelector('#previous-tab')!;
         expect(previousTab.disabled).to.be.equal(true);
       });
 
       it('click on nextTab should scroll Left', async function() {
-        const nextTab: HTMLButtonElement = element.shadowRoot!.querySelector('#next-tab')!;
+        const nextTab: HTMLButtonElement =
+          element.shadowRoot!.querySelector('#next-tab')!;
         const firstTab = element.querySelector('rh-tab')!;
         const preClickPosition = firstTab.getBoundingClientRect().x;
         nextTab?.click();

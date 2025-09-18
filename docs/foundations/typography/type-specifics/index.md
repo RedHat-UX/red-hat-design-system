@@ -11,7 +11,6 @@ subnav:
   order: 4
 ---
 
-
 ## Overview
 
 Following these typography specifics ensures that we create websites and experiences that are unmistakably Red Hat.
@@ -99,7 +98,7 @@ To see line height values for specific text styles, go to the [Scale and rhythm]
 
 - Line heights that are too tight or too loose make text difficult to read
 - The maximum line height for all text styles is 150% or 1.5x the font size
-- The minimum line height is 130% or 1.3x the font size, but [Expressive type][expressivetype] may use a 1.1x line height 
+- The minimum line height is 130% or 1.3x the font size, but [Expressive type][expressivetype] may use a 1.1x line height
 
 <uxdot-example width-adjustment="940px" color-palette="lightest">
   <img src="./type-specifics-line-height.svg"

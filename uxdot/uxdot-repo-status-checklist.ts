@@ -41,14 +41,17 @@ export class UxdotRepoStatusChecklist extends LitElement {
 
     return html`
       <!-- TODO: remove lightdom after implementing auto-load-->
-      <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+      <link
+        rel="stylesheet"
+        href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"
+      />
       <div id="container">
         <rh-table>
           <table>
             <colgroup>
-              <col>
-              <col>
-              <col>
+              <col />
+              <col />
+              <col />
             </colgroup>
             <thead>
               <tr>
@@ -57,22 +60,30 @@ export class UxdotRepoStatusChecklist extends LitElement {
                 <th scope="col" width="60%">Meaning</th>
               </tr>
             </thead>
-            <tbody>${libraries.map(lib => {
-              const statusInfo = this.getStatusInfo(lib.status);
-              const description = this.getStatusDescription(lib.key, lib.status);
-              return statusInfo ? html`
-                <tr>
-                  <td data-label="Property">${lib.name}</td>
-                  <td data-label="Status">
-                    <span>
-                      <rh-tag color="${statusInfo.color}"
-                              variant="${statusInfo.variant}"
-                              icon="${statusInfo.icon}">${statusInfo.pretty}</rh-tag>
-                    </span>
-                  </td>
-                  <td>${description}</td>
-                </tr>` : '';
-            })}
+            <tbody>
+              ${libraries.map(lib => {
+                const statusInfo = this.getStatusInfo(lib.status);
+                const description = this.getStatusDescription(
+                  lib.key,
+                  lib.status
+                );
+                return statusInfo ?
+                  html` <tr>
+                      <td data-label="Property">${lib.name}</td>
+                      <td data-label="Status">
+                        <span>
+                          <rh-tag
+                            color="${statusInfo.color}"
+                            variant="${statusInfo.variant}"
+                            icon="${statusInfo.icon}"
+                            >${statusInfo.pretty}</rh-tag
+                          >
+                        </span>
+                      </td>
+                      <td>${description}</td>
+                    </tr>`
+                  : '';
+              })}
             </tbody>
           </table>
         </rh-table>

@@ -2,8 +2,8 @@
 
 A blockquote is a combination of elements used to give emphasis to a quote. A blockquote includes a quote icon, quotation text, and attribution text <strong>at a minimum</strong>. A blockquote may also include the following optional elements:
 
- - Logo or image
- - Emphasis border
+- Logo or image
+- Emphasis border
 
 <figure>
   <uxdot-example color-palette="lightest" width-adjustment="774px">

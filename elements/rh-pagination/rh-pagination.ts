@@ -13,15 +13,17 @@ import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-pagination.css';
 
-const L1 = html`
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 14">
-    <path d="M.3 6.26 6.24.3C6.63-.1 7.3-.1 7.7.3l.99.99c.4.4.4 1.07 0 1.48L4.49 7l4.2 4.22c.41.4.41 1.07 0 1.48l-.98 1c-.41.4-1.07.4-1.48 0L.31 7.73a1.05 1.05 0 0 1 0-1.48Z"/>
-  </svg>`;
+const L1 = html` <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 14">
+  <path
+    d="M.3 6.26 6.24.3C6.63-.1 7.3-.1 7.7.3l.99.99c.4.4.4 1.07 0 1.48L4.49 7l4.2 4.22c.41.4.41 1.07 0 1.48l-.98 1c-.41.4-1.07.4-1.48 0L.31 7.73a1.05 1.05 0 0 1 0-1.48Z"
+  />
+</svg>`;
 
-const L2 = html`
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.44 14">
-    <path d="M8.7 6.26 14.66.3a1.05 1.05 0 0 1 1.49 0l.98.99c.42.4.42 1.07 0 1.48L12.92 7l4.2 4.22c.42.4.42 1.07 0 1.48l-.98 1c-.41.4-1.08.4-1.48 0L8.7 7.73a1.05 1.05 0 0 1 0-1.48zM.3 7.74l5.96 5.95c.4.41 1.07.41 1.48 0l.99-.99c.4-.4.4-1.07 0-1.48L4.52 7l4.21-4.22c.41-.4.41-1.07 0-1.48l-.99-1a1.05 1.05 0 0 0-1.48 0L.31 6.27a1.05 1.05 0 0 0 0 1.48z"/>
-  </svg>`;
+const L2 = html` <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.44 14">
+  <path
+    d="M8.7 6.26 14.66.3a1.05 1.05 0 0 1 1.49 0l.98.99c.42.4.42 1.07 0 1.48L12.92 7l4.2 4.22c.42.4.42 1.07 0 1.48l-.98 1c-.41.4-1.08.4-1.48 0L8.7 7.73a1.05 1.05 0 0 1 0-1.48zM.3 7.74l5.96 5.95c.4.41 1.07.41 1.48 0l.99-.99c.4-.4.4-1.07 0-1.48L4.52 7l4.21-4.22c.41-.4.41-1.07 0-1.48l-.99-1a1.05 1.05 0 0 0-1.48 0L.31 6.27a1.05 1.05 0 0 0 0 1.48z"
+  />
+</svg>`;
 
 /**
  * A paginator allows users to navigate between pages of related content.
@@ -124,7 +126,9 @@ export class RhPagination extends LitElement {
 
   override update(changed: PropertyValues<this>): void {
     if (!isServer) {
-      this.querySelector('[aria-current="page"]')?.removeAttribute('aria-current');
+      this.querySelector('[aria-current="page"]')?.removeAttribute(
+        'aria-current'
+      );
       this.#updateLightDOMRefs();
       this.overflow = this.#getOverflow();
     }
@@ -161,59 +165,71 @@ export class RhPagination extends LitElement {
       <div id="numeric" part="numeric">
         <span id="go-to-page" class="xxs-visually-hidden sm-visually-visible">
           <!-- "Go to page" text, defaults to "Page" -->
-          <slot name="go-to-page">
-            Page
-          </slot>
+          <slot name="go-to-page"> Page </slot>
         </span>
-        <input inputmode="numeric"
-               required
-               min=1
-               max="${this.total}"
-               aria-labelledby="go-to-page"
-               @change="${this.#onChange}"
-               @keyup="${this.#onKeyup}"
-               .value="${currentPage}">
+        <input
+          inputmode="numeric"
+          required
+          min="1"
+          max="${this.total}"
+          aria-labelledby="go-to-page"
+          @change="${this.#onChange}"
+          @keyup="${this.#onKeyup}"
+          .value="${currentPage}"
+        />
         <!-- "of" text -->
         <slot ?hidden="${!this.total}" name="out-of">of</slot>
-        <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
+        <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}"
+          >${this.total}</a
+        >
       </div>
     `;
 
     return html`
       <!-- pagination container -->
       <div id="container" part="container">
-        <a id="first"
-           class="stepper"
-           href="${ifDefined(firstHref)}"
-           .inert="${this.#currentLink === this.#firstLink}"
-           aria-label="${labelFirst}">${L2}</a>
-        <a id="prev"
-           class="stepper"
-           href="${ifDefined(prevHref)}"
-           .inert="${this.#currentLink === this.#prevLink || this.#currentLink === this.#firstLink}"
-           aria-label="${labelPrevious}">${L1}</a>
+        <a
+          id="first"
+          class="stepper"
+          href="${ifDefined(firstHref)}"
+          .inert="${this.#currentLink === this.#firstLink}"
+          aria-label="${labelFirst}"
+          >${L2}</a
+        >
+        <a
+          id="prev"
+          class="stepper"
+          href="${ifDefined(prevHref)}"
+          .inert="${this.#currentLink === this.#prevLink
+          || this.#currentLink === this.#firstLink}"
+          aria-label="${labelPrevious}"
+          >${L1}</a
+        >
         <nav aria-label="${label}">
           <!-- An ordered list of links -->
           <slot></slot>
         </nav>
         <!-- container for the numeric control at medium screen widths -->
-        <div id="numeric-middle" part="numeric-middle">
-          ${numericContent}
-        </div>
-        <a id="next"
-           class="stepper"
-           href="${ifDefined(nextHref)}"
-           .inert="${this.#currentLink === this.#nextLink || this.#currentLink === this.#lastLink}"
-           aria-label="${labelNext}">${L1}</a>
-        <a id="last"
-           class="stepper"
-           href="${ifDefined(lastHref)}"
-           .inert="${this.#currentLink === this.#lastLink}"
-           aria-label="${labelLast}">${L2}</a>
+        <div id="numeric-middle" part="numeric-middle">${numericContent}</div>
+        <a
+          id="next"
+          class="stepper"
+          href="${ifDefined(nextHref)}"
+          .inert="${this.#currentLink === this.#nextLink
+          || this.#currentLink === this.#lastLink}"
+          aria-label="${labelNext}"
+          >${L1}</a
+        >
+        <a
+          id="last"
+          class="stepper"
+          href="${ifDefined(lastHref)}"
+          .inert="${this.#currentLink === this.#lastLink}"
+          aria-label="${labelLast}"
+          >${L2}</a
+        >
         <!-- container for the numeric control at small and large screen widths -->
-        <div id="numeric-end" part="numeric-end">
-          ${numericContent}
-        </div>
+        <div id="numeric-end" part="numeric-end">${numericContent}</div>
       </div>
     `;
   }
@@ -227,9 +243,9 @@ export class RhPagination extends LitElement {
 
     const current = this.#currentIndex + 1;
 
-    if (current > (overflowAt - 4) && current < (length - 4)) {
+    if (current > overflowAt - 4 && current < length - 4) {
       return 'both';
-    } else if (current <= (overflowAt - 4)) {
+    } else if (current <= overflowAt - 4) {
       return 'end';
     } else {
       return 'start';
@@ -240,15 +256,19 @@ export class RhPagination extends LitElement {
     if (isServer) {
       return null;
     }
-    const ariaCurrent = this.querySelector<HTMLAnchorElement>('li a[aria-current="page"]');
+    const ariaCurrent = this.querySelector<HTMLAnchorElement>(
+      'li a[aria-current="page"]'
+    );
     if (ariaCurrent) {
       return ariaCurrent;
     }
     for (const link of this.#links ?? []) {
       const url = new URL(link.href);
-      if (url.pathname === location.pathname
+      if (
+        url.pathname === location.pathname
         && url.search === location.search
-        && url.hash === location.hash) {
+        && url.hash === location.hash
+      ) {
         return link;
       }
     }

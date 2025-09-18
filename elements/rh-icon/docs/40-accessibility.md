@@ -14,7 +14,7 @@ If an icon is interactive or otherwise not merely decorative, it will need to be
   </rh-code-block>
 </div>
 
-However, when an icon is accompanied by text, the icon does not need to use accessible-label. 
+However, when an icon is accompanied by text, the icon does not need to use accessible-label.
 
 <div class="grid sm-two-columns">
   <uxdot-example color-palette="lightest" width-adjustment="114px">
@@ -51,7 +51,6 @@ icon.
     <p>There is no need to add the additional <code>aria-hidden="true"</code></p>
   </uxdot-best-practice>
 </div>
-
 
 <!-- Add example and code block-->
 

@@ -8,21 +8,24 @@ import 'element-internals-polyfill';
 
 describe('<rh-health-index>', function() {
   it('imperatively instantiates', function() {
-    expect(document.createElement('rh-health-index')).to.be.an.instanceof(RhHealthIndex);
+    expect(document.createElement('rh-health-index')).to.be.an.instanceof(
+      RhHealthIndex
+    );
   });
 
   describe('simply instantiating', function() {
     let element: RhHealthIndex;
     beforeEach(async function() {
-      element = await createFixture<RhHealthIndex>(html`<rh-health-index></rh-health-index>`);
+      element = await createFixture<RhHealthIndex>(
+        html`<rh-health-index></rh-health-index>`
+      );
     });
 
     it('should upgrade', async function() {
       const klass = customElements.get('rh-health-index');
       expect(element)
           .to.be.an.instanceOf(klass)
-          .and
-          .to.be.an.instanceOf(RhHealthIndex);
+          .and.to.be.an.instanceOf(RhHealthIndex);
     });
 
     it('should be accessible', async function() {

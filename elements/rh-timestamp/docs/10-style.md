@@ -1,7 +1,8 @@
-## Style 
+## Style
+
 A timestamp is a simple line of text that displays date and time values.
 
-### Anatomy 
+### Anatomy
 
 <figure>
   <uxdot-example color-palette="lightest" width-adjustment="496px">
@@ -18,8 +19,8 @@ A timestamp is a simple line of text that displays date and time values.
   </figcaption>
 </figure>
 
+## Size
 
-## Size 
 The size of a timestamp is determined by the text size it is applied to.
 
 <uxdot-example color-palette="lightest" width-adjustment="661px">
@@ -29,8 +30,8 @@ The size of a timestamp is determined by the text size it is applied to.
        height="200">
 </uxdot-example>
 
-
 ## Tooltip
+
 Two lines of text with timestamps applied, one is showing no styling and the other is showing a dashed underline.
 
 <uxdot-example color-palette="lightest" width-adjustment="496px">
@@ -40,19 +41,17 @@ Two lines of text with timestamps applied, one is showing no styling and the oth
        height="194">
 </uxdot-example>
 
-
 ## Color scheme
+
 <a id="theme"></a>
 
 A timestamp can be used in the same themes as body text.
-
 
 ### Light theme
 
 <uxdot-example color-palette="lightest">
   <rh-timestamp></rh-timestamp>
 </uxdot-example>
-
 
 ### Dark theme
 

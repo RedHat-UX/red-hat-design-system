@@ -1,7 +1,9 @@
-## Features 
+## Features
+
 Three features are included and are accessible within the contextual menu.
 
-## Contextual menu 
+## Contextual menu
+
 Pressing the `More options` button opens the contextual menu. The description and title are visible in the Full player but not in the Compact player, so there is an extra option in the contextual menu so users can access that information.
 
 <uxdot-example color-palette="lightest" width-adjustment="800px">
@@ -11,7 +13,8 @@ Pressing the `More options` button opens the contextual menu. The description an
        height="736">
 </uxdot-example>
 
-## Content panel 
+## Content panel
+
 When a feature is selected, the audio player expands and reveals the content panel. In the Full player, some interface elements get smaller, rearrange, or become hidden. In the Compact and Mini players, the content panel is below the controls. The `More options` button changes to a `Close` button as well which allows users to close the panel and return to the audio player at any time.
 
 <uxdot-example color-palette="lightest" width-adjustment="712px">
@@ -21,7 +24,8 @@ When a feature is selected, the audio player expands and reveals the content pan
        height="1388">
 </uxdot-example>
 
-## Audio info 
+## Audio info
+
 Displays the description and title in the Compact player only.
 
 <uxdot-example color-palette="lightest" width-adjustment="712px">
@@ -31,7 +35,8 @@ Displays the description and title in the Compact player only.
        height="276">
 </uxdot-example>
 
-## Audio summary 
+## Audio summary
+
 Provides users with a short summary of the audio clip. Optional attribution may be included if available.
 
 <rh-alert state="info">
@@ -46,7 +51,8 @@ Provides users with a short summary of the audio clip. Optional attribution may 
        height="760">
 </uxdot-example>
 
-## Subscribe 
+## Subscribe
+
 Provides users with links to various audio websites so they can subscribe.
 
 <uxdot-example color-palette="lightest" width-adjustment="712px">
@@ -56,7 +62,8 @@ Provides users with links to various audio websites so they can subscribe.
        height="576">
 </uxdot-example>
 
-## Transcript 
+## Transcript
+
 A transcript is an accessible alternative for users who are hard of hearing, deaf, or just want to read along.
 
 <uxdot-example color-palette="lightest" width-adjustment="712px">
@@ -66,7 +73,8 @@ A transcript is an accessible alternative for users who are hard of hearing, dea
        height="576">
 </uxdot-example>
 
-### Highlighting 
+### Highlighting
+
 When audio is playing, the transcript scrolls automatically and words are highlighted as they are spoken. Users also have the option to scroll on their own or download the entire transcript.
 
 <uxdot-example color-palette="lightest" width-adjustment="712px">
@@ -75,4 +83,3 @@ When audio is playing, the transcript scrolls automatically and words are highli
        width="712"
        height="1000">
 </uxdot-example>
-

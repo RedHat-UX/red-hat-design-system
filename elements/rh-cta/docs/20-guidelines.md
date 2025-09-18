@@ -21,9 +21,9 @@ Here is guidance on when to use a call to action vs. button.
 
 <rh-table id="cta-vs-btn">
 
-| Element        | Intended action                            | Frequency              |
-|----------------|--------------------------------------------|-------------------------|
-| Call to action | Direct users to another page when selected | Always                 |
+| Element        | Intended action                            | Frequency                                                                                             |
+| -------------- | ------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| Call to action | Direct users to another page when selected | Always                                                                                                |
 | Button         | Perform an action when selected            | Depending on the action, users may or may not be directed to another page as the result of the action |
 
 </rh-table>
@@ -34,13 +34,13 @@ Some calls to action can be used more than once per page depending on their mess
 
 <rh-table id="styles-variants">
 
-| Style or variant | How to use |
-|------------------|------------------------------------------------------------------|
-| Primary          | Try to use only once per page for the most important link        |
-| Secondary        | Use several times on the same page for important links           |
-| Tertiary         | Use several times on the same page for less important links      |
-| Brick            | Use to group several links together in a grid                    |
-| Video            | Use to trigger a video within a [dialog](/elements/dialog/)      |
+| Style or variant | How to use                                                                                      |
+| ---------------- | ----------------------------------------------------------------------------------------------- |
+| Primary          | Try to use only once per page for the most important link                                       |
+| Secondary        | Use several times on the same page for important links                                          |
+| Tertiary         | Use several times on the same page for less important links                                     |
+| Brick            | Use to group several links together in a grid                                                   |
+| Video            | Use to trigger a video within a [dialog](/elements/dialog/)                                     |
 | Desaturated      | Use only in the dark scheme if other styles are duplicative or violate accessibility guidelines |
 
 </rh-table>

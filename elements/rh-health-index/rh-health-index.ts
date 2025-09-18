@@ -49,7 +49,7 @@ export class RhHealthIndex extends LitElement {
     this.grade = this.grade.toUpperCase() as this['grade'];
     if (changed.has('grade')) {
       const { grade } = this;
-      const gradeNumeral = (RhHealthIndex.grades.indexOf(grade) + 1);
+      const gradeNumeral = RhHealthIndex.grades.indexOf(grade) + 1;
       this.#internals.ariaValueNow = gradeNumeral.toString();
       this.#internals.ariaValueText = `Grade ${grade}`;
     }
@@ -60,14 +60,27 @@ export class RhHealthIndex extends LitElement {
     const grades = [...RhHealthIndex.grades].map(x => x.toLowerCase());
     const grade = this.grade.toLowerCase();
     return html`
-      <div id="container"
-           aria-hidden="true"
-           class="${classMap({ [size]: true })}">
-        <div id="grade" ?hidden="${size !== 'md'}">${grade}</div>${size === 'sm' ? html`
-        <div class="box ${classMap({ [grade]: true, [size]: true })}">${grade}</div>` : grades.map(letter => html`
-        <div class="box ${classMap({ [letter]: true, [size]: true, active: letter === grade })}">
-          ${!(size === 'lg' || size === 'xl') ? '' : letter}
-        </div>`)}
+      <div
+        id="container"
+        aria-hidden="true"
+        class="${classMap({ [size]: true })}"
+      >
+        <div id="grade" ?hidden="${size !== 'md'}">${grade}</div>
+        ${size === 'sm' ?
+          html` <div class="box ${classMap({ [grade]: true, [size]: true })}">
+              ${grade}
+            </div>`
+          : grades.map(
+            letter => html` <div
+                class="box ${classMap({
+                  [letter]: true,
+                  [size]: true,
+                  active: letter === grade,
+                })}"
+              >
+                ${!(size === 'lg' || size === 'xl') ? '' : letter}
+              </div>`
+          )}
       </div>
     `;
   }

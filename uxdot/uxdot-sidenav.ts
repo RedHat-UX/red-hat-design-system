@@ -17,7 +17,10 @@ import dropdownMenuItemStyles from './uxdot-sidenav-dropdown-menu-item.css';
 @customElement('uxdot-sidenav')
 @themable
 export class UxdotSideNav extends LitElement {
-  static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+  static shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+  };
 
   static styles = [styles];
 
@@ -37,7 +40,10 @@ export class UxdotSideNav extends LitElement {
       if (this.trigger) {
         this.#triggerElement = root.getElementById(this.trigger);
       }
-      this.#triggerElement?.addEventListener('click', this.#onTriggerClick.bind(this));
+      this.#triggerElement?.addEventListener(
+        'click',
+        this.#onTriggerClick.bind(this)
+      );
       this.addEventListener('click', this.#onClick.bind(this));
       this.addEventListener('keydown', this.#onKeydown.bind(this));
       window.addEventListener('keyup', this.#onKeyup.bind(this));
@@ -46,7 +52,10 @@ export class UxdotSideNav extends LitElement {
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.#triggerElement?.removeEventListener('click', this.#onTriggerClick.bind(this));
+    this.#triggerElement?.removeEventListener(
+      'click',
+      this.#onTriggerClick.bind(this)
+    );
     window.removeEventListener('keyup', this.#onKeyup);
   }
 
@@ -54,16 +63,20 @@ export class UxdotSideNav extends LitElement {
     return html`
       <div id="container" part="container">
         <div id="close-button-container">
-          <button id="close-button"
-              part="close-button"
-              aria-label="Close dialog"
-              @keydown=${this.#onKeydownCloseButton}
-              @click=${this.toggle}>
+          <button
+            id="close-button"
+            part="close-button"
+            aria-label="Close dialog"
+            @keydown=${this.#onKeydownCloseButton}
+            @click=${this.toggle}
+          >
             <rh-icon set="ui" icon="close" size="lg"></rh-icon>
           </button>
         </div>
         <nav part="nav" aria-labelledby="aria__uxdot-nav-header">
-          <h2 id="aria__uxdot-nav-header" class="visually-hidden">Main navigation</h2>
+          <h2 id="aria__uxdot-nav-header" class="visually-hidden">
+            Main navigation
+          </h2>
           <slot></slot>
         </nav>
       </div>
@@ -181,25 +194,27 @@ export class UxdotSideNavDropdown extends LitElement {
   }
 
   render() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot> `;
   }
 
   async #onClick(event: Event) {
-    if (!event.composedPath().some(node => node instanceof HTMLAnchorElement)) {
+    if (
+      !event.composedPath().some(node => node instanceof HTMLAnchorElement)
+    ) {
       event.preventDefault();
       this.expanded = !this.expanded;
       this.querySelector('details')?.toggleAttribute('open', this.expanded);
       // trigger change event which evokes the mutation on this.expanded
-      this.dispatchEvent(new CustomEvent('expand', {
-        bubbles: true,
-        composed: true,
-        detail: {
-          expanded: this.expanded,
-          toggle: this,
-        },
-      }));
+      this.dispatchEvent(
+        new CustomEvent('expand', {
+          bubbles: true,
+          composed: true,
+          detail: {
+            expanded: this.expanded,
+            toggle: this,
+          },
+        })
+      );
     }
   }
 }
@@ -209,9 +224,7 @@ export class UxdotSideNavDropdownMenu extends LitElement {
   static styles = [dropdownMenuStyles];
 
   render() {
-    return html`
-      <slot></slot>
-    `;
+    return html` <slot></slot> `;
   }
 }
 

@@ -30,8 +30,7 @@ iframe {
   &::part(header),
   &::part(body) {
     margin: 0;
-    border-block-end:
-      var(--rh-border-width-sm) solid
+    border-block-end: var(--rh-border-width-sm) solid
       var(--rh-color-border-subtle);
   }
 
@@ -40,11 +39,11 @@ iframe {
     justify-content: start;
   }
 
-  & rh-button[slot='footer'] {
+  & rh-button[slot="footer"] {
     display: inline-block;
   }
 
-  & a[slot='footer'] {
+  & a[slot="footer"] {
     display: inline-flex;
     gap: var(--rh-space-sm);
     padding-inline: calc(var(--rh-space-lg) * 0.75) var(--rh-space-lg);
@@ -116,9 +115,10 @@ iframe {
     border-radius: var(--rh-border-radius-default);
 
     &::part(tabs-container) {
-      background:
-        light-dark(var(--rh-color-surface-lightest),
-          var(--rh-color-surface-darker));
+      background: light-dark(
+        var(--rh-color-surface-lightest),
+        var(--rh-color-surface-darker)
+      );
     }
 
     & rh-tab-panel {

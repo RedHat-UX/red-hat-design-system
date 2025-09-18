@@ -1,4 +1,7 @@
-import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import {
+  colorPalettes,
+  type ColorPalette,
+} from '@rhds/elements/lib/color-palettes.js';
 
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -19,7 +22,8 @@ export class RhContextDemo extends LitElement {
 
   @property() label = 'Color Palette';
 
-  @property({ attribute: 'color-palette', reflect: true }) colorPalette: ColorPalette = 'darkest';
+  @property({ attribute: 'color-palette', reflect: true })
+  colorPalette: ColorPalette = 'darkest';
 
   #internals = InternalsController.of(this);
 
@@ -27,13 +31,15 @@ export class RhContextDemo extends LitElement {
     const { colorPalette } = this;
     return html`
       <div id="provider" @change="${this.#onChange}">
-          <div id="picker-container">
-            <rh-context-picker id="picker"
-                               .value="${colorPalette}"
-                               .target="${this}"></rh-context-picker>
-            <label for="picker">${this.label}</label>
-            <slot name="controls"></slot>
-          </div>
+        <div id="picker-container">
+          <rh-context-picker
+            id="picker"
+            .value="${colorPalette}"
+            .target="${this}"
+          ></rh-context-picker>
+          <label for="picker">${this.label}</label>
+          <slot name="controls"></slot>
+        </div>
         <slot part="demo"></slot>
       </div>
     `;
@@ -51,7 +57,11 @@ export class RhContextDemo extends LitElement {
   #onChange(event: Event) {
     const picker = this.shadowRoot?.getElementById('picker');
     if (event instanceof ContextChangeEvent) {
-      if (event.target !== picker && event.provider && (event.provider !== this)) {
+      if (
+        event.target !== picker
+        && event.provider
+        && event.provider !== this
+      ) {
         return;
       }
       this.#setValue(event.colorPalette);

@@ -1,24 +1,24 @@
 ## Usage
 
-Use a popover to answer a question, explain something, or provide a user with 
+Use a popover to answer a question, explain something, or provide a user with
 guidance to help them complete a task.
 
 ### Popover vs. tooltip
 
-Both popovers and [tooltips]({{ 
-'/elements/tooltip' | url }}){target="_blank"} provide more information in 
+Both popovers and [tooltips]({{
+'/elements/tooltip' | url }}){target="\_blank"} provide more information in
 context for a user. However, they are different in a few ways:
 
-- Popovers are used for added description or information in context whereas 
+- Popovers are used for added description or information in context whereas
   tooltips are used for identification purposes.
-- Popovers contain longer descriptions and optional links whereas tooltips 
+- Popovers contain longer descriptions and optional links whereas tooltips
   only contain short descriptions or labels.
 - On large screens, popovers appear on click whereas tooltips appear on hover.
 
 ### Content
 
-Content in a popover should include text and interactive elements like a close 
-button and links. If more explanation is needed, a heading can be included as 
+Content in a popover should include text and interactive elements like a close
+button and links. If more explanation is needed, a heading can be included as
 well.
 
 <rh-alert state="warning">
@@ -34,10 +34,9 @@ well.
         height="242">
 </uxdot-example>
 
-
 ### Character count
 
-A popover heading and body text can have more characters if the overall 
+A popover heading and body text can have more characters if the overall
 message creates a more helpful user experience.
 
 <rh-alert state="warning">
@@ -75,12 +74,11 @@ message creates a more helpful user experience.
   </table>
 </rh-table>
 
-
 ### Orientation
 
-A popover has four orientations depending on where it needs to be located, 
-**top**, **right**, **bottom**, or **left**. If a popover overlaps critical 
-content or is cut off by the edge of the screen when triggered, change the 
+A popover has four orientations depending on where it needs to be located,
+**top**, **right**, **bottom**, or **left**. If a popover overlaps critical
+content or is cut off by the edge of the screen when triggered, change the
 orientation.
 
 <uxdot-example width-adjustment="844px">
@@ -90,10 +88,9 @@ orientation.
         height="519">
 </uxdot-example>
 
-
 ### Black on black
 
-Avoid using a black popover on dark backgrounds, it will completely disappear 
+Avoid using a black popover on dark backgrounds, it will completely disappear
 into the background.
 
 <uxdot-example color-palette="darkest" width-adjustment="392px" danger>
@@ -103,10 +100,9 @@ into the background.
         height="258">
 </uxdot-example>
 
-
 ### White on white
 
-Avoid using a white popover on light backgrounds, there is not enough contrast 
+Avoid using a white popover on light backgrounds, there is not enough contrast
 even with the subtle drop shadow.
 
 <uxdot-example width-adjustment="392px" danger>
@@ -116,14 +112,13 @@ even with the subtle drop shadow.
         height="258">
 </uxdot-example>
 
-
 ## Behavior
 
 ### Trigger
 
-A popover requires a **trigger** to be displayed. A trigger can be an icon, 
-text, or another element that encourages a user to interact with it. To close 
-a popover, a user must select the close button, make a selection outside of 
+A popover requires a **trigger** to be displayed. A trigger can be an icon,
+text, or another element that encourages a user to interact with it. To close
+a popover, a user must select the close button, make a selection outside of
 the popover, or press the **Escape (esc)** key.
 
 <uxdot-example width-adjustment="832px">
@@ -133,11 +128,10 @@ the popover, or press the **Escape (esc)** key.
         height="251">
 </uxdot-example>
 
-
 ### Form
 
-If you need to place a popover above a form field, you may use an icon as a 
-trigger. However, an icon is not the only visual element that can trigger a 
+If you need to place a popover above a form field, you may use an icon as a
+trigger. However, an icon is not the only visual element that can trigger a
 popover.
 
 <uxdot-example width-adjustment="406px">
@@ -147,10 +141,9 @@ popover.
         height="282">
 </uxdot-example>
 
-
 ### Mobile
 
-A popover and tooltip are triggered the same way on mobile, by a tap, but 
+A popover and tooltip are triggered the same way on mobile, by a tap, but
 still have different use cases (see **Usage**).
 
 <uxdot-example width-adjustment="772px">
@@ -159,7 +152,6 @@ still have different use cases (see **Usage**).
         width="779"
         height="253">
 </uxdot-example>
-
 
 ## Interaction states
 
@@ -225,7 +217,6 @@ Both popover variants have interaction states.
   </table>
 </rh-table>
 
-
 <div class="grid">
   <figure>
     <figcaption><h4>Hover/Active (black)</h4></figcaption>
@@ -286,11 +277,10 @@ Both popover variants have interaction states.
   </table>
 </rh-table>
 
-
 ## Accessibility
 
-When a popover is triggered by a user pressing the **Enter** key, 
-the close button must have focus in order for a user to have control over the 
+When a popover is triggered by a user pressing the **Enter** key,
+the close button must have focus in order for a user to have control over the
 popover and be able to interact with the links or close it.
 
 <uxdot-example width-adjustment="392px">
@@ -329,7 +319,6 @@ popover and be able to interact with the links or close it.
   </table>
 </rh-table>
 
-
 ## Best practices
 
 ### Embedding
@@ -343,7 +332,6 @@ Do not embed a popover or tooltip within another popover.
         height="246">
 </uxdot-example>
 
-
 ### Too much content
 
 Do not overload a popover with too much content.
@@ -354,7 +342,6 @@ Do not overload a popover with too much content.
         width="445"
         height="370">
 </uxdot-example>
-
 
 ### No close button
 

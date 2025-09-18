@@ -10,7 +10,6 @@ import './rh-audio-player-scrolling-text-overflow.js';
 import panelStyles from './rh-audio-player-panel.css';
 import styles from './rh-audio-player-subscribe.css';
 
-
 /**
  * Audio Player Subscribe Panel
  */
@@ -29,8 +28,7 @@ export class RhAudioPlayerSubscribe extends LitElement {
   #label?: string;
 
   override render() {
-    return html`
-      <!-- scrolling text overflow -->
+    return html` <!-- scrolling text overflow -->
       <rh-audio-player-scrolling-text-overflow part="heading">
         <!-- custom heading for panel -->
         <slot name="heading">${this.#headings.wrap(this.menuLabel)}</slot>
@@ -54,7 +52,9 @@ export class RhAudioPlayerSubscribe extends LitElement {
   }
 
   scrollText() {
-    this.shadowRoot?.querySelector('rh-audio-player-scrolling-text-overflow')?.startScrolling();
+    this.shadowRoot
+        ?.querySelector('rh-audio-player-scrolling-text-overflow')
+        ?.startScrolling();
   }
 }
 

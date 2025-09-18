@@ -40,7 +40,7 @@ A tooltip's body text should be short and descriptive.
 <rh-table>
 
 | Element | Character count |
-|---------|-----------------|
+| ------- | --------------- |
 | Body    | 60              |
 
 </rh-table>

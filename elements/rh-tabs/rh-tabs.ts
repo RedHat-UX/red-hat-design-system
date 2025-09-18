@@ -27,7 +27,10 @@ import {
   rhTabsFirstTabContext,
 } from './context.js';
 
-import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import {
+  colorPalettes,
+  type ColorPalette,
+} from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-tabs.css';
@@ -53,19 +56,22 @@ export class RhTabs extends LitElement {
   /**
    * Label for the scroll left button
    */
-  @property({ reflect: true, attribute: 'label-scroll-left' }) labelScrollLeft = 'Scroll left';
+  @property({ reflect: true, attribute: 'label-scroll-left' }) labelScrollLeft =
+    'Scroll left';
 
   /**
    * Label for the scroll right button
    */
-  @property({ reflect: true, attribute: 'label-scroll-right' }) labelScrollRight = 'Scroll right';
+  @property({ reflect: true, attribute: 'label-scroll-right' })
+  labelScrollRight = 'Scroll right';
 
   /**
    * Tabs can be either [automatic](https://w3c.github.io/aria-practices/examples/tabs/tabs-automatic.html) activated
    * or [manual](https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html)
    */
   @provide({ context: rhTabsManualContext })
-  @property({ reflect: true, type: Boolean }) manual = false;
+  @property({ reflect: true, type: Boolean })
+  manual = false;
 
   /**
    * Index of the active tab
@@ -88,27 +94,33 @@ export class RhTabs extends LitElement {
   }
 
   @provide({ context: rhTabsActiveTabContext })
-  @property({ attribute: false }) activeTab?: RhTab;
+  @property({ attribute: false })
+  activeTab?: RhTab;
 
   /** Sets color context for child components, overrides parent context */
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+  @property({ reflect: true, attribute: 'color-palette' })
+  colorPalette?: ColorPalette;
 
   /** Aligns tabs to the center */
   @property({ reflect: true, type: Boolean }) centered? = false;
 
   /** Sets tabs to a boxed style with or without an inset */
   @provide({ context: rhTabsBoxContext })
-  @property({ reflect: true }) box?: 'box' | 'inset';
+  @property({ reflect: true })
+  box?: 'box' | 'inset';
 
   /** Sets the alignment of the tabs vertical */
   @provide({ context: rhTabsVerticalContext })
-  @property({ reflect: true, type: Boolean }) vertical = false;
+  @property({ reflect: true, type: Boolean })
+  vertical = false;
 
   @provide({ context: rhTabsFirstTabContext })
-  @state() private firstTab: RhTab | null = null;
+  @state()
+  private firstTab: RhTab | null = null;
 
   @provide({ context: rhTabsLastTabContext })
-  @state() private lastTab: RhTab | null = null;
+  @state()
+  private lastTab: RhTab | null = null;
 
   @query('[part="tabs"]') private tabList!: HTMLElement;
 
@@ -122,7 +134,8 @@ export class RhTabs extends LitElement {
 
   #tabs = new TabsAriaController<RhTab, RhTabPanel>(this, {
     isTab: (x): x is RhTab => (x as HTMLElement).localName === 'rh-tab',
-    isPanel: (x): x is RhTabPanel => (x as HTMLElement).localName === 'rh-tab-panel',
+    isPanel: (x): x is RhTabPanel =>
+      (x as HTMLElement).localName === 'rh-tab-panel',
     isActiveTab: x => x.active,
   });
 
@@ -147,7 +160,10 @@ export class RhTabs extends LitElement {
   }
 
   override willUpdate(): void {
-    if (!this.manual && this.activeIndex !== this.#tabindex.atFocusedItemIndex) {
+    if (
+      !this.manual
+      && this.activeIndex !== this.#tabindex.atFocusedItemIndex
+    ) {
       this.activeIndex = this.#tabindex.atFocusedItemIndex;
     }
     this.firstTab = this.tabs.at(0) ?? null;
@@ -167,15 +183,34 @@ export class RhTabs extends LitElement {
     const inset = this.box === 'inset' ? 'inset' : '';
     return html`
       <!-- outer container -->
-      <div id="container" part="container" class="${classMap({ vertical, box, inset, centered, overflow: this.#overflow.showScrollButtons })}">
+      <div
+        id="container"
+        part="container"
+        class="${classMap({
+          vertical,
+          box,
+          inset,
+          centered,
+          overflow: this.#overflow.showScrollButtons,
+        })}"
+      >
         <!-- tabs container -->
-        <div part="tabs-container">${!this.#overflow.showScrollButtons ? '' : html`
-          <button id="previous-tab" tabindex="-1"
-                  aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll left'}"
-                  ?disabled="${!this.#overflow.overflowLeft}"
-                  @click="${() => !this.matches(':dir(rtl)') ? this.#overflow.scrollLeft() : this.#overflow.scrollRight()}">
-            <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
-          </button>`}
+        <div part="tabs-container">
+          ${!this.#overflow.showScrollButtons ?
+            ''
+            : html` <button
+                id="previous-tab"
+                tabindex="-1"
+                aria-label="${this.getAttribute('label-scroll-left')
+                ?? 'Scroll left'}"
+                ?disabled="${!this.#overflow.overflowLeft}"
+                @click="${() =>
+                  !this.matches(':dir(rtl)') ?
+                    this.#overflow.scrollLeft()
+                    : this.#overflow.scrollRight()}"
+              >
+                <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
+              </button>`}
           <div id="tablist" role="tablist">
             <!--
               slot:
@@ -183,17 +218,27 @@ export class RhTabs extends LitElement {
               part:
                 description: tablist
             -->
-            <slot name="tab"
-                  part="tabs"
-                  @slotchange="${this.#onSlotchange}"></slot>
-          </div>${!this.#overflow.showScrollButtons ? '' : html`
-          <button id="next-tab"
-                  tabindex="-1"
-                  aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll right'}"
-                  ?disabled="${!this.#overflow.overflowRight}"
-                  @click="${() => !this.matches(':dir(rtl)') ? this.#overflow.scrollRight() : this.#overflow.scrollLeft()}">
-             <rh-icon set="ui" icon="caret-right" loading="eager"></rh-icon>
-          </button>`}
+            <slot
+              name="tab"
+              part="tabs"
+              @slotchange="${this.#onSlotchange}"
+            ></slot>
+          </div>
+          ${!this.#overflow.showScrollButtons ?
+            ''
+            : html` <button
+                id="next-tab"
+                tabindex="-1"
+                aria-label="${this.getAttribute('label-scroll-right')
+                ?? 'Scroll right'}"
+                ?disabled="${!this.#overflow.overflowRight}"
+                @click="${() =>
+                  !this.matches(':dir(rtl)') ?
+                    this.#overflow.scrollRight()
+                    : this.#overflow.scrollLeft()}"
+              >
+                <rh-icon set="ui" icon="caret-right" loading="eager"></rh-icon>
+              </button>`}
         </div>
         <!--
           slot:
@@ -210,7 +255,8 @@ export class RhTabs extends LitElement {
   protected activeTabChanged(old?: RhTab, activeTab?: RhTab): void {
     if (activeTab?.disabled) {
       this.activeIndex = 0;
-    } if (activeTab) {
+    }
+    if (activeTab) {
       this.activeIndex = this.tabs.indexOf(activeTab);
     }
   }
@@ -220,8 +266,11 @@ export class RhTabs extends LitElement {
   }
 
   #onExpand(event: Event) {
-    if (event instanceof TabExpandEvent
-      && !event.defaultPrevented && this.tabs.includes(event.tab)) {
+    if (
+      event instanceof TabExpandEvent
+      && !event.defaultPrevented
+      && this.tabs.includes(event.tab)
+    ) {
       this.select(event.tab);
     }
   }

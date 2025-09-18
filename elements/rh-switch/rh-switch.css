@@ -18,18 +18,21 @@
   --_switch-width: 40px;
   --_switch-height: 24px;
   --_switch-handle-size: 14px;
-  --_switch-track-background-color:
-    light-dark(
-        /** The background color of the switch when it is unchecked. */
-        var(--rh-switch-unchecked, var(--rh-color-gray-60, #4d4d4d)),
-        var(--rh-switch-unchecked, var(--rh-color-gray-40, #a3a3a3))
-      );
-  --_switch-handle-color:
-    light-dark(var(--rh-color-surface-lightest, #ffffff),
-      oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h));
+  --_switch-track-background-color: light-dark(
+    /** The background color of the switch when it is unchecked. */
+      var(--rh-switch-unchecked, var(--rh-color-gray-60, #4d4d4d)),
+    var(--rh-switch-unchecked, var(--rh-color-gray-40, #a3a3a3))
+  );
+  --_switch-handle-color: light-dark(
+    var(--rh-color-surface-lightest, #ffffff),
+    oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h)
+  );
 
   &:after {
-    box-shadow: light-dark(none, var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2)));
+    box-shadow: light-dark(
+      none,
+      var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2))
+    );
   }
 
   #switch {
@@ -43,7 +46,7 @@
 
     /* track */
     &:before {
-      content: '';
+      content: "";
       display: flex;
       position: absolute;
       width: 100%;
@@ -56,7 +59,7 @@
 
     /* handle */
     &:after {
-      content: '';
+      content: "";
       height: var(--_switch-handle-size);
       width: var(--_switch-handle-size);
       border-radius: var(--rh-border-radius-pill, 64px);
@@ -74,25 +77,27 @@
   }
 
   &.checked {
-    --_switch-track-background-color: /** The background color of the switch when it is checked. */
-      var(--rh-switch-checked, var(--rh-color-accent-base));
+    --_switch-track-background-color: /** The background color of the switch when it is checked. */ var(
+      --rh-switch-checked,
+      var(--rh-color-accent-base)
+    );
 
     & .message {
       color: var(--rh-color-text-primary);
     }
 
     & #switch:after {
-      translate:
-        calc(var(--_switch-width) - (var(--_switch-handle-size) +
-          (var(--_margin-inline) * 2)));
+      translate: calc(
+        var(--_switch-width) -
+          (var(--_switch-handle-size) + (var(--_margin-inline) * 2))
+      );
     }
 
     & #switch:dir(rtl):after {
-      translate:
-        calc(-1 * (
-            var(--_switch-width) - (var(--_switch-handle-size) +
-            (var(--_margin-inline) * 2))
-          ));
+      translate: calc(
+        -1 * (var(--_switch-width) -
+              (var(--_switch-handle-size) + (var(--_margin-inline) * 2)))
+      );
     }
   }
 }
@@ -105,7 +110,8 @@ rh-icon {
 }
 
 :host(:is(:focus, :focus-within)) #container #switch {
-  outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
+  outline: var(--rh-border-width-md, 2px) solid
+    var(--rh-color-border-interactive);
   outline-offset: var(--rh-space-sm, 6px);
 }
 
@@ -120,17 +126,19 @@ rh-icon {
 
     & ::slotted(*),
     & span {
-      color: light-dark(var(--rh-color-gray-60, #4d4d4d), var(--rh-color-gray-40, #a3a3a3));
+      color: light-dark(
+        var(--rh-color-gray-60, #4d4d4d),
+        var(--rh-color-gray-40, #a3a3a3)
+      );
     }
 
     &.checked,
     &:not(.checked) {
-      --_switch-track-background-color:
-        light-dark(
-            /** The background color of the switch when it is disabled. */
-            var(--rh-switch-disabled, var(--rh-color-gray-30, #c7c7c7)),
-            var(--rh-switch-disabled, var(--rh-color-gray-60, #4d4d4d))
-          );
+      --_switch-track-background-color: light-dark(
+        /** The background color of the switch when it is disabled. */
+          var(--rh-switch-disabled, var(--rh-color-gray-30, #c7c7c7)),
+        var(--rh-switch-disabled, var(--rh-color-gray-60, #4d4d4d))
+      );
     }
   }
 }

@@ -2,8 +2,7 @@
 
 A skip link is designed to be easily seen once a user navigates to it.
 
-
-###  Anatomy
+### Anatomy
 
 <figure>
   <uxdot-example width-adjustment="264px">
@@ -21,8 +20,8 @@ A skip link is designed to be easily seen once a user navigates to it.
   </figcaption>
 </figure>
 
-
 ## Color scheme
+
 <a id="theme"></a>
 
 A skip link appears the same in both light and dark color schemes.
@@ -43,11 +42,9 @@ A skip link appears the same in both light and dark color schemes.
   </uxdot-example>
 </div>
 
-
 ## Configuration
 
 A skip link’s bottom corners have a border radius of 4px, which matches the border radius of the <a href="/elements/call-to-action/">call to action</a> element. The top corners have a border radius of 0px to keep the top edge flush with the top of the page.
-
 
 ## Placement
 
@@ -59,7 +56,6 @@ A skip link should be centered and aligned with the top edge at all viewport siz
        width="1000"
        height="174">
 </uxdot-example>
-
 
 ## Space
 
@@ -87,7 +83,6 @@ Because a skip link is in focus once it appears on the screen, the default and f
        height="56">
 </uxdot-example>
 
-
 ### Hover
 
 <uxdot-example width-adjustment="220px">
@@ -96,7 +91,6 @@ Because a skip link is in focus once it appears on the screen, the default and f
        width="220"
        height="56">
 </uxdot-example>
-
 
 ### Active
 

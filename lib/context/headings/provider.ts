@@ -13,7 +13,8 @@ export interface HeadingContext {
   offset: number;
 }
 
-export const context = createContextWithRoot<HeadingContext>('rh-heading-context');
+export const context =
+  createContextWithRoot<HeadingContext>('rh-heading-context');
 
 export interface HeadingLevelContextOptions extends HeadingContext {
   /**
@@ -44,13 +45,16 @@ function canQuery(node: Node): node is Document | ShadowRoot {
  * Determines which heading level immediately precedes the host element,
  * and provides templates for shadow headings.
  */
-export class HeadingLevelContextProvider extends ContextProvider<typeof context, LitElement> {
+export class HeadingLevelContextProvider extends ContextProvider<
+  typeof context,
+  LitElement
+> {
   /** Heading level preceding component document, as in 1 for <h1>, 2 for <h2> etc. */
   #options?: HeadingLevelContextOptions;
 
   constructor(
     public host: LitElement,
-    options?: Partial<HeadingLevelContextOptions>,
+    options?: Partial<HeadingLevelContextOptions>
   ) {
     super(host, { context });
     this.#options = { level: 1, offset: 1, ...options };
@@ -72,7 +76,8 @@ export class HeadingLevelContextProvider extends ContextProvider<typeof context,
   }
 
   #getLevel() {
-    const level = this.host.getAttribute(this.#options?.attribute ?? '')
+    const level =
+      this.host.getAttribute(this.#options?.attribute ?? '')
       ?? (isServer ? null : this.#computeLevelFromChildren())
       ?? 1;
     const val = typeof level === 'string' ? parseInt(level) : level;

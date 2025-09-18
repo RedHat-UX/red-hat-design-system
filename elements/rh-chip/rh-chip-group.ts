@@ -51,7 +51,11 @@ export class RhChipGroup extends LitElement {
         </legend>
         <!-- Place individual \`rh-chips\` inside \`rh-chip-group\` -->
         <slot></slot>
-        <button class="btn-link" type="button" @click="${this.#uncheckAllChips}">
+        <button
+          class="btn-link"
+          type="button"
+          @click="${this.#uncheckAllChips}"
+        >
           <!-- Customized text for the "Clear all" button -->
           <slot name="clear-all">Clear all</slot>
         </button>
@@ -79,8 +83,8 @@ export class RhChipGroup extends LitElement {
     }
 
     const assignedElements = this.defaultSlot.assignedElements();
-    return assignedElements.filter((element): element is RhChip =>
-      element instanceof RhChip
+    return assignedElements.filter(
+      (element): element is RhChip => element instanceof RhChip
     );
   }
 }

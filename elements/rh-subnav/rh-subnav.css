@@ -2,11 +2,11 @@
   display: block;
 }
 
-[part='container'] {
+[part="container"] {
   display: flex;
 }
 
-[part='links'] {
+[part="links"] {
   display: flex;
   position: relative;
   bottom: 0;
@@ -25,7 +25,7 @@
 }
 
 ::slotted(a):after {
-  content: '' !important;
+  content: "" !important;
   position: absolute !important;
   inset: 0 !important;
   width: 100% !important;
@@ -49,9 +49,7 @@
 }
 
 ::slotted(a:focus-visible) {
-  outline:
-    var(--rh-border-width-md, 2px)
-    solid
+  outline: var(--rh-border-width-md, 2px) solid
     var(--rh-color-border-interactive) !important;
   outline-offset: -2px !important;
   border-radius: 10px !important;
@@ -81,7 +79,7 @@ button {
   &:before {
     position: absolute;
     inset: 0;
-    content: '';
+    content: "";
     border-block-end: var(--rh-border-width-lg, 3px) solid transparent;
 
     &:hover {
@@ -91,11 +89,13 @@ button {
 }
 
 #previous {
-  border-inline-end: var(--rh-border-width-sm, 1px)  solid  var(--rh-color-border-subtle);
+  border-inline-end: var(--rh-border-width-sm, 1px) solid
+    var(--rh-color-border-subtle);
 }
 
 #next {
-  border-inline-start: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+  border-inline-start: var(--rh-border-width-sm, 1px) solid
+    var(--rh-color-border-subtle);
 }
 
 #next,

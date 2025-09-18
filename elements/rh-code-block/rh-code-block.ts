@@ -1,5 +1,11 @@
 import type { DirectiveResult } from 'lit-html/directive.js';
-import { CSSResult, LitElement, html, isServer, type PropertyValues } from 'lit';
+import {
+  CSSResult,
+  LitElement,
+  html,
+  isServer,
+  type PropertyValues,
+} from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -19,7 +25,9 @@ import style from './rh-code-block.css';
 function dedent(str: string) {
   const stripped = str.replace(/^\n/, '');
   const match = stripped.match(/^\s+/);
-  const out = match ? stripped.replace(new RegExp(`^${match[0]}`, 'gm'), '') : str;
+  const out = match ?
+    stripped.replace(new RegExp(`^${match[0]}`, 'gm'), '')
+    : str;
   return out.trim();
 }
 
@@ -41,31 +49,52 @@ interface CodeLineHeightsInfo {
 @themable
 export class RhCodeBlock extends LitElement {
   private static actionIcons = new Map([
-    ['wrap', html`
-      <svg xmlns="http://www.w3.org/2000/svg"
+    [
+      'wrap',
+      html`
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"
-          viewBox="0 0 20 20">
-        <path d="M19 0c.313.039.781-.077 1 .057V20c-.313-.039-.781.077-1-.057V0ZM10.82 4.992C9.877 4.996 8.31 5.57 8.174 6c1.21.03 2.432-.073 3.635.08 2.181.383 3.677 2.796 3.066 4.922-.41 1.753-2.108 2.995-3.877 3.014L11 14H5.207l2.682-2.682-.707-.707L3.293 14.5l3.889 3.889.707-.707L5.207 15h5.736l.004-.008c1.444.005 2.896-.59 3.832-1.722 1.65-1.82 1.612-4.85-.08-6.63A5 5 0 0 0 11 5a1.948 1.948 0 0 0-.18-.008z"/>
-        <path d="M4 5h7c-.039.313.077.781-.057 1H4V5ZM0 0c.313.039.781-.077 1 .057V20c-.313-.039-.781.077-1-.057V0Z"/>
-      </svg>
-    `],
-    ['wrap-active', html`
-      <svg xmlns="http://www.w3.org/2000/svg"
-           fill="none"
-           viewBox="0 0 21 20">
-        <path fill="currentColor" d="M12 13h1v7h-1zM12 0h1v7h-1z"/>
-        <path stroke="currentColor" d="M16.465 6.464 20 10l-3.535 3.536"/>
-        <path fill="currentColor" d="M3 9.5h17v1H3zM0 0h1v20H0z"/>
-      </svg>
-    `],
-    ['copy', html`
-      <svg xmlns="http://www.w3.org/2000/svg"
-           version="1.1"
-           viewBox="0 0 20 20">
-        <path fill="currentColor" d="M12 0H2C.9 0 0 .9 0 2v10h1V2c0-.6.4-1 1-1h10V0z"/>
-        <path fill="currentColor" d="M18 20H8c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2zM8 7c-.6 0-1 .4-1 1v10c0 .6.4 1 1 1h10c.6 0 1-.4 1-1V8c0-.6-.4-1-1-1H8z"/>
-      </svg>
-    `],
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M19 0c.313.039.781-.077 1 .057V20c-.313-.039-.781.077-1-.057V0ZM10.82 4.992C9.877 4.996 8.31 5.57 8.174 6c1.21.03 2.432-.073 3.635.08 2.181.383 3.677 2.796 3.066 4.922-.41 1.753-2.108 2.995-3.877 3.014L11 14H5.207l2.682-2.682-.707-.707L3.293 14.5l3.889 3.889.707-.707L5.207 15h5.736l.004-.008c1.444.005 2.896-.59 3.832-1.722 1.65-1.82 1.612-4.85-.08-6.63A5 5 0 0 0 11 5a1.948 1.948 0 0 0-.18-.008z"
+          />
+          <path
+            d="M4 5h7c-.039.313.077.781-.057 1H4V5ZM0 0c.313.039.781-.077 1 .057V20c-.313-.039-.781.077-1-.057V0Z"
+          />
+        </svg>
+      `,
+    ],
+    [
+      'wrap-active',
+      html`
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 20">
+          <path fill="currentColor" d="M12 13h1v7h-1zM12 0h1v7h-1z" />
+          <path stroke="currentColor" d="M16.465 6.464 20 10l-3.535 3.536" />
+          <path fill="currentColor" d="M3 9.5h17v1H3zM0 0h1v20H0z" />
+        </svg>
+      `,
+    ],
+    [
+      'copy',
+      html`
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          version="1.1"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fill="currentColor"
+            d="M12 0H2C.9 0 0 .9 0 2v10h1V2c0-.6.4-1 1-1h10V0z"
+          />
+          <path
+            fill="currentColor"
+            d="M18 20H8c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2zM8 7c-.6 0-1 .4-1 1v10c0 .6.4 1 1 1h10c.6 0 1-.4 1-1V8c0-.6-.4-1-1-1H8z"
+          />
+        </svg>
+      `,
+    ],
   ]);
 
   static styles = [style];
@@ -93,13 +122,16 @@ export class RhCodeBlock extends LitElement {
     reflect: true,
     converter: {
       fromAttribute(value) {
-        return ((value ?? '').split(/\s+|,/) ?? []).map(x => x.trim()).filter(Boolean);
+        return ((value ?? '').split(/\s+|,/) ?? [])
+            .map(x => x.trim())
+            .filter(Boolean);
       },
       toAttribute(value) {
         return Array.isArray(value) ? value.join(' ') : '';
       },
     },
-  }) actions: ('copy' | 'wrap')[] = [];
+  })
+  actions: ('copy' | 'wrap')[] = [];
 
   /**
    * When set to "client", `<rh-code-block>` will automatically highlight the source using Prism.js
@@ -129,13 +161,15 @@ export class RhCodeBlock extends LitElement {
   @property({ type: Boolean, reflect: true }) resizable = false;
 
   /** When set, the code block occupies it's full height, without scrolling */
-  @property({ type: Boolean, reflect: true, attribute: 'full-height' }) fullHeight = false;
+  @property({ type: Boolean, reflect: true, attribute: 'full-height' })
+  fullHeight = false;
 
   /** When set, lines in the code snippet wrap */
   @property({ type: Boolean }) wrap = false;
 
   /** When set to `hidden`, the code block's line numbers are hidden */
-  @property({ reflect: true, attribute: 'line-numbers' }) lineNumbers?: 'hidden';
+  @property({ reflect: true, attribute: 'line-numbers' })
+  lineNumbers?: 'hidden';
 
   #slots = new SlotController(
     this,
@@ -144,16 +178,19 @@ export class RhCodeBlock extends LitElement {
     'action-label-wrap',
     'show-more',
     'show-less',
-    'legend',
+    'legend'
   );
 
   #prismOutput?: DirectiveResult;
 
   #isIntersecting = false;
-  #io = new IntersectionObserver(rs => {
-    this.#isIntersecting = rs.some(r => r.isIntersecting);
-    this.#computeLineNumbers();
-  }, { rootMargin: '50% 0px' });
+  #io = new IntersectionObserver(
+    rs => {
+      this.#isIntersecting = rs.some(r => r.isIntersecting);
+      this.#computeLineNumbers();
+    },
+    { rootMargin: '50% 0px' }
+  );
 
   #ro = new ResizeObserver(() => this.#computeLineNumbers());
 
@@ -180,62 +217,103 @@ export class RhCodeBlock extends LitElement {
     const truncated = expandable && !fullHeight;
     const actions = !!this.actions.length;
     return html`
-      <div id="container"
-           class="${classMap({ actions, compact, expandable, fullHeight, resizable, truncated, wrap })}"
-           @code-action="${this.#onCodeAction}">
-        <div id="content-lines" tabindex="${ifDefined((!fullHeight || undefined) && 0)}">
+      <div
+        id="container"
+        class="${classMap({
+          actions,
+          compact,
+          expandable,
+          fullHeight,
+          resizable,
+          truncated,
+          wrap,
+        })}"
+        @code-action="${this.#onCodeAction}"
+      >
+        <div
+          id="content-lines"
+          tabindex="${ifDefined((!fullHeight || undefined) && 0)}"
+        >
           <div id="sizers" aria-hidden="true"></div>
-          <ol id="line-numbers" inert aria-hidden="true">${this.#lineHeights.map((height, i) => html`
-            <li style="${styleMap({ height })}">${i + 1}</li>`)}
+          <ol id="line-numbers" inert aria-hidden="true">
+            ${this.#lineHeights.map(
+              (height, i) => html` <li style="${styleMap({ height })}">
+                ${i + 1}
+              </li>`
+            )}
           </ol>
-          <pre id="prism-output"
-               class="language-${this.language}"
-               ?hidden="${!this.#prismOutput}">${this.#prismOutput}</pre>
+          <pre
+            id="prism-output"
+            class="language-${this.language}"
+            ?hidden="${!this.#prismOutput}"
+          >
+${this.#prismOutput}</pre
+          >
           <!--
             A non-executable script tag containing the sample content. JavaScript
             samples should use the type \`text/sample-javascript\`. HTML samples
             containing script tags must escape the closing \`</script>\` tag. Can
             also be a \`<pre>\` tag.
           -->
-          <slot id="content"
-                ?hidden="${!!this.#prismOutput}"
-                @slotchange="${this.#onSlotChange}"></slot>
+          <slot
+            id="content"
+            ?hidden="${!!this.#prismOutput}"
+            @slotchange="${this.#onSlotChange}"
+          ></slot>
         </div>
 
-        <div id="actions"
-             @click="${this.#onActionsClick}"
-             @keyup="${this.#onActionsKeyup}">
-        ${this.actions.map(x => html`
-          <rh-tooltip>
-            <!-- tooltip content for the copy action button -->
-            <slot id="label" slot="content" name="action-label-${x}">${x === 'copy' ? html`
-              <span>Copy to Clipboard</span>
-              <span hidden data-code-block-state="active">Copied!</span>` : html`
-              <!-- tooltip content for the wrap action button -->
-              <span>Toggle word wrap</span>
-              <span hidden data-code-block-state="active">Toggle overflow</span>`}
-            </slot>
-            <button id="action-${x}"
-                    class="shadow-fab"
-                    data-code-block-action="${x}">
-              ${RhCodeBlock.actionIcons.get(this.wrap && x === 'wrap' ? 'wrap-active' : x) ?? ''}
-            </button>
-          </rh-tooltip>`)}
+        <div
+          id="actions"
+          @click="${this.#onActionsClick}"
+          @keyup="${this.#onActionsKeyup}"
+        >
+          ${this.actions.map(
+            x => html` <rh-tooltip>
+              <!-- tooltip content for the copy action button -->
+              <slot id="label" slot="content" name="action-label-${x}"
+                >${x === 'copy' ?
+                  html` <span>Copy to Clipboard</span>
+                      <span hidden data-code-block-state="active"
+                        >Copied!</span
+                      >`
+                  : html` <!-- tooltip content for the wrap action button -->
+                      <span>Toggle word wrap</span>
+                      <span hidden data-code-block-state="active"
+                        >Toggle overflow</span
+                      >`}
+              </slot>
+              <button
+                id="action-${x}"
+                class="shadow-fab"
+                data-code-block-action="${x}"
+              >
+                ${RhCodeBlock.actionIcons.get(
+                  this.wrap && x === 'wrap' ? 'wrap-active' : x
+                ) ?? ''}
+              </button>
+            </rh-tooltip>`
+          )}
         </div>
 
-        <button id="expand"
-                ?hidden="${!expandable}"
-                aria-controls="content-lines"
-                aria-expanded="${String(!!fullHeight) as 'true' | 'false'}"
-                @click="${this.#onClickExpand}">
+        <button
+          id="expand"
+          ?hidden="${!expandable}"
+          aria-controls="content-lines"
+          aria-expanded="${String(!!fullHeight) as 'true' | 'false'}"
+          @click="${this.#onClickExpand}"
+        >
           <!-- text content for the expandable toggle button when the code block is collapsed. -->
           <slot name="show-more" ?hidden="${this.fullHeight}">Show more</slot>
           <!-- text content for the expandable toggle button when the code block is expanded. -->
           <slot name="show-less" ?hidden="${!this.fullHeight}">Show less</slot>
-          <svg xmlns="http://www.w3.org/2000/svg"
-               fill="currentColor"
-               viewBox="0 0 11 7">
-            <path d="M4.919.239.242 4.847a.801.801 0 0 0 0 1.148l.778.766a.83.83 0 0 0 1.165 0L5.5 3.495 8.815 6.76a.83.83 0 0 0 1.165 0l.778-.766a.802.802 0 0 0 0-1.148L6.08.239a.826.826 0 0 0-1.162 0Z"/>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 11 7"
+          >
+            <path
+              d="M4.919.239.242 4.847a.801.801 0 0 0 0 1.148l.778.766a.83.83 0 0 0 1.165 0L5.5 3.495 8.815 6.76a.83.83 0 0 0 1.165 0l.778-.766a.802.802 0 0 0 0-1.148L6.08.239a.826.826 0 0 0-1.162 0Z"
+            />
           </svg>
         </button>
       </div>
@@ -260,19 +338,28 @@ export class RhCodeBlock extends LitElement {
 
   async #onSlotChange() {
     switch (this.highlighting) {
-      case 'client': await this.#highlightWithPrism(); break;
+      case 'client':
+        await this.#highlightWithPrism();
+        break;
       // TODO: if we ever support other tokenizers e.g. highlightjs,
       // dispatch here off of some supplemental attribute like `tokenizer="highlightjs"`
-      case 'prerendered': await this.#applyPrismPrerenderedStyles(); break;
+      case 'prerendered':
+        await this.#applyPrismPrerenderedStyles();
+        break;
     }
     this.#computeLineNumbers();
   }
 
   async #applyPrismPrerenderedStyles() {
-    if (!isServer && getComputedStyle(this).getPropertyValue('--_styles-applied') !== 'true') {
+    if (
+      !isServer
+      && getComputedStyle(this).getPropertyValue('--_styles-applied') !== 'true'
+    ) {
       const root = this.getRootNode();
       if (root instanceof Document || root instanceof ShadowRoot) {
-        const { preRenderedLightDomStyles: { styleSheet } } = await import('./prism.css.js');
+        const {
+          preRenderedLightDomStyles: { styleSheet },
+        } = await import('./prism.css.js');
         root.adoptedStyleSheets = [...root.adoptedStyleSheets, styleSheet!];
       }
     }
@@ -282,17 +369,22 @@ export class RhCodeBlock extends LitElement {
     if (!isServer) {
       const { highlight, prismStyles } = await import('./prism.js');
       const styleSheet =
-          prismStyles instanceof CSSStyleSheet ? prismStyles
-        : (prismStyles as CSSResult).styleSheet;
+        prismStyles instanceof CSSStyleSheet ?
+          prismStyles
+          : (prismStyles as CSSResult).styleSheet;
       if (!this.shadowRoot!.adoptedStyleSheets.includes(styleSheet!)) {
         this.shadowRoot!.adoptedStyleSheets = [
-          ...this.shadowRoot!.adoptedStyleSheets as CSSStyleSheet[],
+          ...(this.shadowRoot!.adoptedStyleSheets as CSSStyleSheet[]),
           styleSheet!,
         ];
       }
-      const scripts = this.querySelectorAll('script[type]:not([type="javascript"])');
+      const scripts = this.querySelectorAll(
+        'script[type]:not([type="javascript"])'
+      );
       const preprocess = this.dedent ? dedent : (x: string) => x;
-      const textContent = preprocess(Array.from(scripts, x => x.textContent).join(''));
+      const textContent = preprocess(
+        Array.from(scripts, x => x.textContent).join('')
+      );
       this.#prismOutput = await highlight(textContent, this.language);
       this.requestUpdate('#prismOutput', {});
       await this.updateComplete;
@@ -303,8 +395,9 @@ export class RhCodeBlock extends LitElement {
     await this.updateComplete;
     this.#computeLineNumbers();
     // TODO: handle slotted fabs
-    const assignedElements =
-      this.#getFabContentElements(this.shadowRoot?.querySelector('slot[name="action-label-wrap"]'));
+    const assignedElements = this.#getFabContentElements(
+      this.shadowRoot?.querySelector('slot[name="action-label-wrap"]')
+    );
     for (const el of assignedElements) {
       if (el instanceof HTMLElement) {
         el.hidden = (el.dataset.codeBlockState !== 'active') === this.wrap;
@@ -315,16 +408,17 @@ export class RhCodeBlock extends LitElement {
 
   #getSlottedCodeElements() {
     const slot = this.shadowRoot?.getElementById('content') as HTMLSlotElement;
-    return slot.assignedElements().flatMap(x =>
-        x instanceof HTMLScriptElement
-        || x instanceof HTMLPreElement ? [x]
-      : []);
+    return slot
+        .assignedElements()
+        .flatMap(x =>
+        x instanceof HTMLScriptElement || x instanceof HTMLPreElement ? [x] : []
+        );
   }
 
   #getFabContentElements(slot?: HTMLSlotElement | null) {
     const assignedElements = slot?.assignedElements() ?? [];
     if (!assignedElements.length) {
-      return [...slot?.querySelectorAll('*') ?? []];
+      return [...(slot?.querySelectorAll('*') ?? [])];
     }
     return assignedElements;
   }
@@ -339,26 +433,30 @@ export class RhCodeBlock extends LitElement {
       return;
     }
     await this.updateComplete;
-    const codes =
-        this.#prismOutput ? [this.shadowRoot?.getElementById('prism-output')].filter(x => !!x)
+    const codes = this.#prismOutput ?
+      [this.shadowRoot?.getElementById('prism-output')].filter(x => !!x)
       : this.#getSlottedCodeElements();
 
-    const infos: CodeLineHeightsInfo[] = codes.map(element => {
-      const codeElement = this.#prismOutput ? element.querySelector('code') : element;
-      if (codeElement) {
-        const sizer = document.createElement('span');
-        sizer.className = 'sizer';
-        sizer.innerText = '0';
-        sizer.style.display = 'block';
-        this.shadowRoot?.getElementById('sizers')?.appendChild(sizer);
-        return {
-          lines: element.textContent?.split(/\n(?!$)/g) ?? [],
-          lineHeights: [],
-          sizer,
-          oneLinerHeight: sizer.getBoundingClientRect().height,
-        };
-      }
-    }).filter(x => !!x);
+    const infos: CodeLineHeightsInfo[] = codes
+        .map(element => {
+          const codeElement = this.#prismOutput ?
+          element.querySelector('code')
+          : element;
+          if (codeElement) {
+            const sizer = document.createElement('span');
+            sizer.className = 'sizer';
+            sizer.innerText = '0';
+            sizer.style.display = 'block';
+            this.shadowRoot?.getElementById('sizers')?.appendChild(sizer);
+            return {
+              lines: element.textContent?.split(/\n(?!$)/g) ?? [],
+              lineHeights: [],
+              sizer,
+              oneLinerHeight: sizer.getBoundingClientRect().height,
+            };
+          }
+        })
+        .filter(x => !!x);
 
     for (const { lines, lineHeights, sizer, oneLinerHeight } of infos) {
       lineHeights[lines.length - 1] = undefined; // why?
@@ -377,15 +475,16 @@ export class RhCodeBlock extends LitElement {
       let childIndex = 0;
       for (let i = 0; i < lineHeights.length; i++) {
         if (lineHeights[i] === undefined) {
-          lineHeights[i] = sizer.children[childIndex++].getBoundingClientRect()?.height ?? 0;
+          lineHeights[i] =
+            sizer.children[childIndex++].getBoundingClientRect()?.height ?? 0;
         }
       }
       sizer.remove();
     }
 
     this.#lineHeights = infos.flatMap(x =>
-      x.lineHeights?.map(y =>
-        `${y ?? x.oneLinerHeight}px` as const));
+      x.lineHeights?.map(y => `${y ?? x.oneLinerHeight}px` as const)
+    );
 
     this.requestUpdate('#linesNumbers', 0);
   }
@@ -404,8 +503,12 @@ export class RhCodeBlock extends LitElement {
   }
 
   #onCodeAction(event: Event) {
-    const el = event.composedPath().find((x: EventTarget): x is HTMLElement =>
-      x instanceof HTMLElement && !!x.dataset.codeBlockAction);
+    const el = event
+        .composedPath()
+        .find(
+          (x: EventTarget): x is HTMLElement =>
+            x instanceof HTMLElement && !!x.dataset.codeBlockAction
+        );
     if (el) {
       switch (el.dataset.codeBlockAction) {
         case 'copy':
@@ -425,20 +528,21 @@ export class RhCodeBlock extends LitElement {
   async #copy() {
     let content: string;
     if (this.highlighting === 'prerendered') {
-      content =
-        Array.from(
-          this.querySelectorAll('pre'),
-          x => x?.textContent ?? '',
-        ).join('');
+      content = Array.from(
+        this.querySelectorAll('pre'),
+        x => x?.textContent ?? ''
+      ).join('');
     } else {
       content = Array.from(
         this.querySelectorAll('script'),
-        x => x.textContent,
+        x => x.textContent
       ).join('');
     }
     await navigator.clipboard.writeText(content);
     // TODO: handle slotted fabs
-    const slot = this.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="action-label-copy"]');
+    const slot = this.shadowRoot?.querySelector<HTMLSlotElement>(
+      'slot[name="action-label-copy"]'
+    );
     const tooltip = slot?.closest('rh-tooltip');
     tooltip?.hide();
     const assignedElements = this.#getFabContentElements(slot);

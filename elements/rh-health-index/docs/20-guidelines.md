@@ -18,7 +18,6 @@ Use health index to communicate the health or security of something using letter
 
 There are four available variants: `Small`, `Default`, `Large`, and `Extra large`. Each variant has an associated level of emphasis.
 
-
 <uxdot-example color-palette="lightest" width-adjustment="752px">
   <img alt="A row of health index components with emphasis descriptions under each size. Small is low, default is medium, large is high, and extra large is highest."
        src="../guidelines-variants.svg"
@@ -29,7 +28,7 @@ There are four available variants: `Small`, `Default`, `Large`, and `Extra large
 <rh-table>
 
 | Variant     | Emphasis | Use case                                                                                          |
-|-------------|----------|---------------------------------------------------------------------------------------------------|
+| ----------- | -------- | ------------------------------------------------------------------------------------------------- |
 | Small       | Low      | Use to quickly and simply display a health grade if there is lots of text or other content nearby |
 | Default     | Medium   | Use to display a health grade **without showing** other possible colors and grades                |
 | Large       | High     | Use to display a health grade **while showing** other possible colors and grades                  |
@@ -38,7 +37,6 @@ There are four available variants: `Small`, `Default`, `Large`, and `Extra large
 Table: When to use each variant of health index
 
 </rh-table>
-
 
 ### Severity levels
 
@@ -49,14 +47,12 @@ When health index shows a grade of “A” and the severity level color is green
   <p>The Ecosystem Catalog team is using a health index to grade the security of their container images. <a href="https://catalog.redhat.com/software/containers/openshift3/ose-pod/57ea8d029c624c035f96f424?architecture=amd64&image=630e82fc80cc9b32912f31e7&container-tabs=security">Read their documentation</a> to learn more about how they are calculating grades.</p>
 </rh-alert>
 
-
 <uxdot-example color-palette="lightest" width-adjustment="640px">
   <img alt="A 3 by 3 grid of small size health index components. Each row has letter grades A, C, and F. Under each letter grade is text that describes a safe, at risk, or vulnerable state."
        src="../guidelines-severity-levels.svg"
        width="596"
        height="343">
 </uxdot-example>
-
 
 ## Layout
 
@@ -78,7 +74,6 @@ Health index can be stacked with other content. In such cases, we recommend usin
        height="340">
 </uxdot-example>
 
-
 ### Inline
 
 Health index can also be inserted inline with text and components. In such cases, we recommend using the Large or Extra large variants to maintain equal hierarchy among elements.
@@ -89,7 +84,6 @@ Health index can also be inserted inline with text and components. In such cases
        width="856"
        height="224">
 </uxdot-example>
-
 
 ## Best practices
 
@@ -119,7 +113,6 @@ Letter grades and severity level colors are designed to work together. Mixing th
   </uxdot-best-practice>
 </div>
 
-
 ### Theming
 
 Light scheme components are designed only to work in the light scheme, and dark scheme components are designed to work only in the dark scheme.
@@ -146,7 +139,6 @@ Color scheme mismatches can occur when manually styling containers' background c
     <p>Do not use components from one theme in another theme.</p>
   </uxdot-best-practice>
 </div>
-
 
 ### Mixing variants
 

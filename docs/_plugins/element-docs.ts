@@ -67,7 +67,8 @@ export interface ElementDocsPageData extends ElementDocsPageFileSystemData {
 
 const cwd = process.cwd();
 const pfeconfig = getPfeConfig();
-const isElementSource = (x: string) => x && x.startsWith('rh-') && !x.endsWith('.d.ts');
+const isElementSource = (x: string) =>
+  x && x.startsWith('rh-') && !x.endsWith('.d.ts');
 const stripExtension = (x: string) => x?.split('.').shift();
 
 async function exists(path: string) {
@@ -77,13 +78,15 @@ async function exists(path: string) {
   } catch {
     return false;
   }
-};
+}
 
 /**
  * Load complete element data from colocated YAML file including relatedItems
  * @param tagName
  */
-async function loadElementData(tagName: string): Promise<RepoStatusRecord | undefined> {
+async function loadElementData(
+  tagName: string
+): Promise<RepoStatusRecord | undefined> {
   const yamlPath = join(cwd, 'elements', tagName, 'docs', 'data.yaml');
 
   if (await exists(yamlPath)) {
@@ -94,7 +97,9 @@ async function loadElementData(tagName: string): Promise<RepoStatusRecord | unde
       // Validate that the tagName matches
       if (data.tagName !== tagName) {
         // eslint-disable-next-line no-console
-        console.warn(`Warning: tagName mismatch in ${yamlPath}. Expected ${tagName}, got ${data.tagName}`);
+        console.warn(
+          `Warning: tagName mismatch in ${yamlPath}. Expected ${tagName}, got ${data.tagName}`
+        );
       }
 
       return data;
@@ -109,7 +114,10 @@ async function loadElementData(tagName: string): Promise<RepoStatusRecord | unde
 }
 
 function getTagNameSlug(tagName: string) {
-  const name = (pfeconfig?.aliases?.[tagName] ?? tagName).replace(`${pfeconfig?.tagPrefix ?? 'rh'}-`, '');
+  const name = (pfeconfig?.aliases?.[tagName] ?? tagName).replace(
+    `${pfeconfig?.tagPrefix ?? 'rh'}-`,
+    ''
+  );
   return slugify.default(name, {
     strict: true,
     lower: true,
@@ -124,18 +132,28 @@ export default function(eleventyConfig: UserConfig): void {
     performance.mark('analyze-start');
     await $`npm run analyze`;
     performance.mark('analyze-end');
-    const TOTAL = performance.measure('analyze-total', 'analyze-start', 'analyze-end');
+    const TOTAL = performance.measure(
+      'analyze-total',
+      'analyze-start',
+      'analyze-end'
+    );
     // eslint-disable-next-line no-console
-    console.log(`⏲️  Custom elements manifest generated in ${chalk.blue(TOTAL.duration)}ms\n`);
+    console.log(
+      `⏲️  Custom elements manifest generated in ${chalk.blue(
+        TOTAL.duration
+      )}ms\n`
+    );
   });
   eleventyConfig.addCollection('elementDocs', async function() {
     try {
       const [manifest] = getAllManifests();
 
-      const _docsPages =
-        eleventyConfig.globalData.elements as DocsPage[] | (() => Promise<DocsPage[]>);
+      const _docsPages = eleventyConfig.globalData.elements as
+        | DocsPage[]
+        | (() => Promise<DocsPage[]>);
 
-      const docsPages = typeof _docsPages === 'function' ? await _docsPages() : _docsPages;
+      const docsPages =
+        typeof _docsPages === 'function' ? await _docsPages() : _docsPages;
 
       // 1. compile a list of all sibling element names by scanning the filesystem
       // 2. compile a list of all output files
@@ -149,7 +167,11 @@ export default function(eleventyConfig: UserConfig): void {
         const tagName = path.replace('elements/', '').split('/').shift()!;
         const filebasename = basename(path);
         const siblingTagName = stripExtension(filebasename);
-        if (siblingTagName && isElementSource(filebasename) && siblingTagName !== tagName) {
+        if (
+          siblingTagName
+          && isElementSource(filebasename)
+          && siblingTagName !== tagName
+        ) {
           if (!siblingElementsByTagName.has(tagName)) {
             siblingElementsByTagName.set(tagName, []);
           }
@@ -157,33 +179,37 @@ export default function(eleventyConfig: UserConfig): void {
         }
       }
 
-      const filePaths = Array.from(new Set([
-        // docs file paths that exist on disk
-        ...await Array.fromAsync(glob(`elements/*/docs/*.md`, { cwd })),
-        // ensure that code and demos pages are generated, should there not be any content for them
-        // in elements/*/docs/*-code.md or elements/*/docs/*-demos.md. Duplicates are avoided with
-        // the new Set constructor
-        ...(await Array.fromAsync(glob('elements/*', { cwd }), x =>
-            x.includes('.') ? [] : [
-              `${x}/docs/30-code.md`,
-              `${x}/docs/90-demos.md`,
-            ])).flat(),
-      ])).sort();
+      const filePaths = Array.from(
+        new Set([
+          // docs file paths that exist on disk
+          ...(await Array.fromAsync(glob(`elements/*/docs/*.md`, { cwd }))),
+          // ensure that code and demos pages are generated, should there not be any content for them
+          // in elements/*/docs/*-code.md or elements/*/docs/*-demos.md. Duplicates are avoided with
+          // the new Set constructor
+          ...(
+            await Array.fromAsync(glob('elements/*', { cwd }), x =>
+              x.includes('.') ?
+                []
+                : [`${x}/docs/30-code.md`, `${x}/docs/90-demos.md`]
+            )
+          ).flat(),
+        ])
+      ).sort();
 
       const basicDataPromises = filePaths.map(async filePath => {
-        const tagName = filePath
-            .split(sep)
-            .find(x => x.startsWith('rh-'))!;
-        const pageSlug = filePath
-            .split(sep)
-            .pop()
-            ?.split('.')
-            ?.shift()
-            ?.replace(/^(\d+|rh)-/, '') ?? '';
+        const tagName = filePath.split(sep).find(x => x.startsWith('rh-'))!;
+        const pageSlug =
+          filePath
+              .split(sep)
+              .pop()
+              ?.split('.')
+              ?.shift()
+              ?.replace(/^(\d+|rh)-/, '') ?? '';
         const slug = getTagNameSlug(tagName);
         const collection = `${tagName}-tabs`;
         const permalink =
-              pageSlug === 'overview' ? `/elements/${slug}/index.html`
+          pageSlug === 'overview' ?
+            `/elements/${slug}/index.html`
             : `/elements/${slug}/${pageSlug}/index.html`;
         const elementData = await loadElementData(tagName);
         return {
@@ -196,7 +222,9 @@ export default function(eleventyConfig: UserConfig): void {
           subnav: { collection },
           slug,
           pageTitle: capitalize(pageSlug),
-          docsPage: docsPages.find(x => x.tagName === tagName) ?? new DocsPage(manifest),
+          docsPage:
+            docsPages.find(x => x.tagName === tagName)
+            ?? new DocsPage(manifest),
           permalink,
           tags: [collection],
           url: permalink.replace('index.html', ''),
@@ -214,26 +242,27 @@ export default function(eleventyConfig: UserConfig): void {
       const dataWithTabs = basicData.map((data, _, a) => ({
         ...data,
         tabs: a
-            .filter(x =>
-              x.tagName === data.tagName
-              && (
-                !data.planned
-                || (
-                  x.pageSlug !== 'code'
-                  && x.pageSlug !== 'demos'
-                )
-              ))
-            .map(tab => !data.planned || tab.pageSlug !== 'demo' ? tab : ({
-            // Add 'virtual' demos page, it's generated by demos.11ty.cjs
-              ...tab,
-              url: `/elements/${data.slug}/demos/`,
-              pageSlug: 'demos',
-              permalink: `/elements/${data.slug}/demos/index.html`,
-              filePath: `${dirname(data.filePath)}/40-demos.md`,
-              slug: data.slug,
-              tagName: data.tagName,
-            }))
-            .sort((a, b) => a.filePath > b.filePath ? 1 : -1),
+            .filter(
+              x =>
+                x.tagName === data.tagName
+              && (!data.planned
+                || (x.pageSlug !== 'code' && x.pageSlug !== 'demos'))
+            )
+            .map(tab =>
+            !data.planned || tab.pageSlug !== 'demo' ?
+              tab
+              : {
+                // Add 'virtual' demos page, it's generated by demos.11ty.cjs
+                ...tab,
+                url: `/elements/${data.slug}/demos/`,
+                pageSlug: 'demos',
+                permalink: `/elements/${data.slug}/demos/index.html`,
+                filePath: `${dirname(data.filePath)}/40-demos.md`,
+                slug: data.slug,
+                tagName: data.tagName,
+              }
+            )
+            .sort((a, b) => (a.filePath > b.filePath ? 1 : -1)),
       }));
 
       return await Promise.all(
@@ -243,16 +272,26 @@ export default function(eleventyConfig: UserConfig): void {
           const demoPath = join(elDir, 'demo', `${data.tagName}.html`);
           const hasDocs = await exists(docsDir);
           const docsDirLs = hasDocs ? await readdir(docsDir) : null;
-          const _overviewImageHref = docsDirLs?.find(x => x.match(/overview.(png|svg)/));
+          const _overviewImageHref = docsDirLs?.find(x =>
+            x.match(/overview.(png|svg)/)
+          );
           const overviewImageHref =
-            _overviewImageHref && await exists(join(docsDir, _overviewImageHref)) ?
-              _overviewImageHref : undefined;
+            _overviewImageHref
+            && (await exists(join(docsDir, _overviewImageHref))) ?
+              _overviewImageHref
+              : undefined;
           return {
             ...data,
             fileExists: await exists(data.absPath),
-            hasLightdom: await exists(join(elDir, `${data.tagName}-lightdom.css`)),
-            hasLightdomShim: await exists(join(elDir, `${data.tagName}-lightdom-shim.css`)),
-            mainDemoContent: await exists(demoPath) ? await readFile(demoPath, 'utf8') : '',
+            hasLightdom: await exists(
+              join(elDir, `${data.tagName}-lightdom.css`)
+            ),
+            hasLightdomShim: await exists(
+              join(elDir, `${data.tagName}-lightdom-shim.css`)
+            ),
+            mainDemoContent: (await exists(demoPath)) ?
+              await readFile(demoPath, 'utf8')
+              : '',
             overviewImageHref,
             siblingElements: siblingElementsByTagName.get(data.tagName) ?? [],
           };
@@ -265,4 +304,4 @@ export default function(eleventyConfig: UserConfig): void {
       throw e;
     }
   });
-};
+}

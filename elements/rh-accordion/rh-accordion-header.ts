@@ -21,10 +21,7 @@ import styles from './rh-accordion-header.css';
 
 export class AccordionHeaderChangeEvent extends Event {
   declare target: RhAccordionHeader;
-  constructor(
-    public expanded: boolean,
-    public toggle: RhAccordionHeader,
-  ) {
+  constructor(public expanded: boolean, public toggle: RhAccordionHeader) {
     super('change', { bubbles: true, cancelable: true });
   }
 }
@@ -79,10 +76,15 @@ export class RhAccordionHeader extends LitElement {
     const { expanded } = this;
     const { accents, large = false } = this.ctx ?? {};
     return html`
-      <button id="button"
-              class="${classMap({ toggle: true, large, expanded })}"
-              @click="${this.#onClick}">
-        <span id="header-container" class="${classMap({ [accents ?? '']: !!accents })}">
+      <button
+        id="button"
+        class="${classMap({ toggle: true, large, expanded })}"
+        @click="${this.#onClick}"
+      >
+        <span
+          id="header-container"
+          class="${classMap({ [accents ?? '']: !!accents })}"
+        >
           <!-- summary: inline element containing the heading text or slotted heading content -->
           <span id="header-text" part="text">
             <!-- summary: accordion toggle content -->
@@ -90,18 +92,22 @@ export class RhAccordionHeader extends LitElement {
           </span>
           <!-- summary: container for accents within the header -->
           <span part="accents">
-           <!-- summary: decorations like icons or tags
+            <!-- summary: decorations like icons or tags
                 description: |
                  These elements will appear inline by default with the header title, between the header and the chevron
                  (or after the chevron and header in disclosure mode). There is an option to set the accents placement to bottom -->
             <slot name="accents"></slot>
           </span>
         </span>
-        <svg id="icon"
-             role="presentation"
-             xmlns="http://www.w3.org/2000/svg"
-             viewBox="0 0 448 512">
-          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        <svg
+          id="icon"
+          role="presentation"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 448 512"
+        >
+          <path
+            d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
+          />
         </svg>
       </button>
     `;

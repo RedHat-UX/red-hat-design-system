@@ -1,4 +1,3 @@
-
 ## Usage
 
 Use a secondary navigation to propagate important or related content across a series of pages. Users can better orient themselves if they see content that is organized around a specific topic at the top of a page.
@@ -18,10 +17,9 @@ The [primary navigation](../../navigation-primary) includes links to the most im
        height="286">
 </uxdot-example>
 
-
 ## Writing content
 
-### `logo` slot text 
+### `logo` slot text
 
 If a secondary navigation is used on a product page, the `logo` slot should display the product name as linked text. When writing content, consider the following:
 
@@ -36,11 +34,10 @@ If a secondary navigation is used on a product page, the `logo` slot should disp
        height="440">
 </uxdot-example>
 
-
 ### `nav` slot text
 
 The `nav` slot includes inline links, menus, and sometimes external links. The order of elements is decided by content strategists. When writing content, consider the following:
-  
+
 - A secondary navigation can become cluttered quickly if there are too many items
 - Try to be short and concise when writing
 - At least one menu or link should be included, but no more than five total
@@ -53,11 +50,10 @@ The `nav` slot includes inline links, menus, and sometimes external links. The o
        height="212">
 </uxdot-example>
 
-
 ### `cta` slot text
 
 The `cta` slot is optional, but it can include interactive elements like a call to action. When writing content, consider the following:
-  
+
 - Try to be short and concise when writing
 - Including a call to action will reduce the amount of space for `nav` slot elements
 - A call to action <strong>does not</strong> stack to increase the amount of space
@@ -70,7 +66,6 @@ The `cta` slot is optional, but it can include interactive elements like a call 
        height="212">
 </uxdot-example>
 
-
 ### Maximum uses and character count
 
 If there are fewer links and menus in the `nav` slot, text labels can be longer. If there are more links and menus, text labels need to be shorter to avoid cluttering.
@@ -78,7 +73,7 @@ If there are fewer links and menus in the `nav` slot, text labels can be longer.
 <rh-table>
 
 | Element           |           | Maximum character count |
-|-------------------|-----------|-------------------------|
+| ----------------- | --------- | ----------------------- |
 | Product name text | 1         | 55                      |
 | Links and menus   | 5 (total) | 25                      |
 | Call to action    | 1         | 20                      |
@@ -110,8 +105,7 @@ If content is organized in two columns, they will stretch to fill the empty spac
        height="453">
 </uxdot-example>
 
-
-### Expandable menu content 
+### Expandable menu content
 
 The expandable menu includes content like text, links, calls to action, and more. When adding content to an expandable menu, follow these guidelines:
 
@@ -121,12 +115,11 @@ The expandable menu includes content like text, links, calls to action, and more
 - Put the most important content in the upper left corner because when content stacks, it will be on top
 - Be mindful of how text changes size when translated to some languages
 
-
 ## Behavior
 
-### Current page indicator 
+### Current page indicator
 
-When a user is viewing a page that is part of the secondary navigation information architecture, a red top border is visible. In the example below, a user is viewing both the *Overview* page and a page within the *Product variants* menu. External links do not display the red top border (except on hover) because they open links in a new tab or window instead.
+When a user is viewing a page that is part of the secondary navigation information architecture, a red top border is visible. In the example below, a user is viewing both the _Overview_ page and a page within the _Product variants_ menu. External links do not display the red top border (except on hover) because they open links in a new tab or window instead.
 
 <uxdot-example color-palette="lightest" width-adjustment="872px" variant="full" alignment="left" no-border>
   <img alt="Image of two secondary navigations with red bars on top of different menus"
@@ -134,7 +127,6 @@ When a user is viewing a page that is part of the secondary navigation informati
        width="872"
        height="212">
 </uxdot-example>
-
 
 ### Scrolling with primary navigation
 
@@ -163,8 +155,7 @@ Only one menu can be expanded at a time and there is no animation when navigatin
        height="326">
 </uxdot-example>
 
-
-### Scrolling with menu expanded 
+### Scrolling with menu expanded
 
 If the height of the menu is **shorter** than the viewport height, content should scroll underneath the backdrop.
 
@@ -184,11 +175,9 @@ If the height of the menu is **taller** than the viewport height, scroll is trap
        height="760">
 </uxdot-example>
 
-
 ## Responsive design
 
 As breakpoints get smaller, the nav slot will collapse into an accordion within a menu instead.
-
 
 ### `nav` slot visible
 
@@ -199,8 +188,7 @@ As breakpoints get smaller, the nav slot will collapse into an accordion within 
        height="550">
 </uxdot-example>
 
-
-### `nav` slot hidden 
+### `nav` slot hidden
 
 <uxdot-example color-palette="lightest" width-adjustment="781px" variant="full" alignment="left" no-border>
   <img alt="Image of secondary navigations; the nav slot on small breakpoints is not visible unless the menu is expanded"
@@ -209,26 +197,24 @@ As breakpoints get smaller, the nav slot will collapse into an accordion within 
        height="725">
 </uxdot-example>
 
-
 ### Breakpoints
 
 <rh-table>
 
-| Breakpoint      | Range           | `nav` slot visibility         | Left and right padding |
-|-----------------|-----------------|-------------------------------|------------------------|
-| Desktop, large  | &gt; 1680px     | Visible                       | 64px                   |
-| Desktop, medium | 1440px - 1679px | Visible                       | 64px                   |
-| Desktop, small  | 1200px - 1439px | Visible                       | 32px                   |
-| Tablet, large   | 992px - 1199px  | Hidden, one menu only         | 32px                   |
-| Tablet, small   | 768px - 991px   | Hidden, one menu only         | 32px                   |
-| Mobile, large   | 576px - 767px   | Hidden, one menu only         | 16px                   |
-| Mobile, small   | &lt; 575px      | Hidden, one menu only         | 16px                   |
+| Breakpoint      | Range           | `nav` slot visibility | Left and right padding |
+| --------------- | --------------- | --------------------- | ---------------------- |
+| Desktop, large  | &gt; 1680px     | Visible               | 64px                   |
+| Desktop, medium | 1440px - 1679px | Visible               | 64px                   |
+| Desktop, small  | 1200px - 1439px | Visible               | 32px                   |
+| Tablet, large   | 992px - 1199px  | Hidden, one menu only | 32px                   |
+| Tablet, small   | 768px - 991px   | Hidden, one menu only | 32px                   |
+| Mobile, large   | 576px - 767px   | Hidden, one menu only | 16px                   |
+| Mobile, small   | &lt; 575px      | Hidden, one menu only | 16px                   |
 
 </rh-table>
 
-
 ## Best practices
-  
+
 ### Navigation order
 
 <div class="grid sm-two-columns">

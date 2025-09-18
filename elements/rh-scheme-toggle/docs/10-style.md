@@ -22,6 +22,7 @@ The scheme toggle consists of three radio button options presented as an icon bu
 ### Customization
 
 The toggle supports customizable label text through attributes:
+
 - `legend-text`: Text for the fieldset legend (default: "Color scheme")
 - `light-text`: Label for light mode option (default: "Light")
 - `dark-text`: Label for dark mode option (default: "Dark")

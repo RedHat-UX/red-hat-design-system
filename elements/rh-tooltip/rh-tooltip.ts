@@ -4,7 +4,6 @@ import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
 
-
 import {
   FloatingDOMController,
   type Placement,
@@ -79,10 +78,11 @@ export class RhTooltip extends LitElement {
   }
 
   private static initAnnouncer() {
-    document.body.append((this.announcer = Object.assign(document.createElement('div'), {
-      role: 'status',
-      // apply `.visually-hidden` styles
-      style: /* css */`
+    document.body.append(
+      (this.announcer = Object.assign(document.createElement('div'), {
+        role: 'status',
+        // apply `.visually-hidden` styles
+        style: /* css */ `
         position: fixed;
         inset-block-start: 0;
         inset-inline-start: 0;
@@ -90,7 +90,8 @@ export class RhTooltip extends LitElement {
         clip: rect(0,0,0,0);
         white-space: nowrap;
         border: 0;`,
-    })));
+      }))
+    );
   }
 
   /** The position of the tooltip, relative to the invoking content */
@@ -100,7 +101,8 @@ export class RhTooltip extends LitElement {
   @property() content?: string;
 
   #float = new FloatingDOMController(this, {
-    content: (): HTMLElement | undefined | null => this.shadowRoot?.querySelector('#tooltip'),
+    content: (): HTMLElement | undefined | null =>
+      this.shadowRoot?.querySelector('#tooltip'),
   });
 
   #initialized = false;
@@ -113,14 +115,12 @@ export class RhTooltip extends LitElement {
       return this.content;
     } else {
       const contentSlot =
-        (this.shadowRoot?.getElementById('content') as HTMLSlotElement | null) ?? null;
-      const nodes = contentSlot
-          ?.assignedNodes()
-          ?.flatMap(flattenSlottedNodes) ?? [];
-      return nodes
-          .map(getBestGuessAccessibleContent)
-          .join(' ')
-          .trim();
+        (this.shadowRoot?.getElementById(
+          'content'
+        ) as HTMLSlotElement | null) ?? null;
+      const nodes =
+        contentSlot?.assignedNodes()?.flatMap(flattenSlottedNodes) ?? [];
+      return nodes.map(getBestGuessAccessibleContent).join(' ').trim();
     }
   }
 
@@ -139,12 +139,16 @@ export class RhTooltip extends LitElement {
     const light = !!scheme.match(/^dark( only)?/);
 
     return html`
-      <div id="container"
-           style="${styleMap(styles)}"
-           class="${classMap({ open,
-                               initialized: !!this.#initialized,
-                               [anchor]: !!anchor,
-                               [alignment]: !!alignment })}">
+      <div
+        id="container"
+        style="${styleMap(styles)}"
+        class="${classMap({
+          open,
+          initialized: !!this.#initialized,
+          [anchor]: !!anchor,
+          [alignment]: !!alignment,
+        })}"
+      >
         <div id="invoker">
           <!--
             Place invoking element here,
@@ -166,8 +170,8 @@ export class RhTooltip extends LitElement {
     this.#style ??= getComputedStyle(this);
     await this.updateComplete;
     const placement = this.position;
-    const offset =
-        !placement?.match(/top|bottom/) ? 15
+    const offset = !placement?.match(/top|bottom/) ?
+      15
       : { mainAxis: 15, alignmentAxis: -4 };
     await this.#float.show({ offset, placement });
     this.#initialized ||= true;

@@ -1,31 +1,41 @@
 <h2>Heading with an <a href="#">inline link</a></h2>
-<p>This is body text with another <a href="#">inline link</a>. Hover over, tab to, or click the inline links in this demo. Use the color palette picker to see what inline links look like in dark contexts.</p>
+<p>
+  This is body text with another <a href="#">inline link</a>. Hover over, tab
+  to, or click the inline links in this demo. Use the color palette picker to
+  see what inline links look like in dark contexts.
+</p>
 
 <style>
   :is(p, ul, ol, dl, h1, h2, h3, h4, h5, h6) a {
-        text-decoration-color: var(--rh-color-gray-50);
-        text-decoration-line: underline;
-        text-decoration-style: dashed;
-        text-decoration-thickness: 1px;
-        text-underline-offset: max(5px, 0.28em);
-        transition: ease all 0.3s;
-        &:hover {
-          text-decoration-color: inherit;
-          text-underline-offset: max(6px, 0.33em);
-        }
-      }
+    text-decoration-color: var(--rh-color-gray-50);
+    text-decoration-line: underline;
+    text-decoration-style: dashed;
+    text-decoration-thickness: 1px;
+    text-underline-offset: max(5px, 0.28em);
+    transition: ease all 0.3s;
+    &:hover {
+      text-decoration-color: inherit;
+      text-underline-offset: max(6px, 0.33em);
+    }
+  }
   a {
     color: var(--rh-color-interactive-primary-default);
-    &:hover { color: var(--rh-color-interactive-primary-hover); }
+    &:hover {
+      color: var(--rh-color-interactive-primary-hover);
+    }
 
     &:focus-within {
       color: var(--rh-color-interactive-primary-focus);
-      &:hover { color: var(--rh-color-interactive-primary-focus); }
+      &:hover {
+        color: var(--rh-color-interactive-primary-focus);
+      }
     }
 
     &:visited {
       color: var(--rh-color-interactive-primary-visited-default);
-      &:hover { color: var(--rh-color-interactive-primary-visited-hover); }
+      &:hover {
+        color: var(--rh-color-interactive-primary-visited-hover);
+      }
     }
   }
 

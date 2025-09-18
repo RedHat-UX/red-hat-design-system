@@ -6,7 +6,6 @@ Use pagination to allow users to navigate through large amounts of data or conte
 
 If you need to use a more simple pagination element within a table or toolbar, the [PatternFly](https://www.patternfly.org/v4/components/pagination/design-guidelines/) pagination component has a less prominent design.
 
-
 ## Sizes and style variants
 
 ### Sizes
@@ -91,7 +90,6 @@ If there are more than seven pages, single or double truncation is displayed bas
        height="496">
 </uxdot-example>
 
-
 ## Layout
 
 ### Alignment
@@ -172,7 +170,6 @@ Container widths of 375px - 768px
        height="116">
 </uxdot-example>
 
-
 ## Best practices
 
 ### No input field
@@ -221,7 +218,6 @@ Container widths of 375px - 768px
   </uxdot-best-practice>
 </div>
 
-
 ### Order or alignment
 
 <div class="grid sm-two-columns">
@@ -244,7 +240,6 @@ Container widths of 375px - 768px
     <p>Do not change the order or alignment of the page input field.</p>
   </uxdot-best-practice>
 </div>
-
 
 ### Compact vs. mobile
 

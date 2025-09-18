@@ -36,13 +36,14 @@ more.
 ### Visual elements
 
 There are a variety of form elements available for use depending on what information needs to be collected from or displayed to a user.
- - **Title and body text** - Title and body text styles explaining why a user should fill out a form.
- - **Text label** - Small text describing what a user needs to input into a form element.
- - **Popover** - Small card with helpful content that appears near a popover icon when triggered.
- - **Form field or Select list** - Text box or dropdown allowing a user to input text or make a selection.
- - **Data inputs** - Alternate components allowing a user to input other kinds of information.
- - **Buttons** - Actions used to submit or clear a form.
- - **Privacy link** - Text linking to privacy documentation (included when a form is used on marketing websites).
+
+- **Title and body text** - Title and body text styles explaining why a user should fill out a form.
+- **Text label** - Small text describing what a user needs to input into a form element.
+- **Popover** - Small card with helpful content that appears near a popover icon when triggered.
+- **Form field or Select list** - Text box or dropdown allowing a user to input text or make a selection.
+- **Data inputs** - Alternate components allowing a user to input other kinds of information.
+- **Buttons** - Actions used to submit or clear a form.
+- **Privacy link** - Text linking to privacy documentation (included when a form is used on marketing websites).
 
 <rh-alert state="info">
   <h4 slot="header">Learn more</h4>
@@ -59,8 +60,9 @@ There are a variety of form elements available for use depending on what informa
 ### Variants
 
 There are two form variants available for use.
- - **Container** - Form elements are contained in a card and the title and body text sizes are slightly smaller.
- - **Floating** - Form elements float in a group and the title and body text sizes are slightly larger.
+
+- **Container** - Form elements are contained in a card and the title and body text sizes are slightly smaller.
+- **Floating** - Form elements float in a group and the title and body text sizes are slightly larger.
 
 <uxdot-example width-adjustment="736px" color-palette="lightest">
   <img src="./form-variants.svg"
@@ -70,6 +72,7 @@ There are two form variants available for use.
 </uxdot-example>
 
 ## Color scheme
+
 <a id="theme"></a>
 <a id="light-theme"></a>
 <a id="dark-theme"></a>
@@ -211,11 +214,12 @@ page.
 ### Form content
 
 A user will have a better experience with submitting a form if the elements are easy for them to identify and move between.
- - **Text label** - Use to identify form elements that are required or recommended.
- - **Popover** - Use to display helpful information near form elements that may need more explanation beyond text labels.
- - **Form field or Select list** - Use to write text or make a selection from a list.
- - **Placeholder text** - Use within a form field or select list as an example of how to correctly provide an input.
- - **Helper text** - Use underneath a form element as an example of how to correctly provide an input.
+
+- **Text label** - Use to identify form elements that are required or recommended.
+- **Popover** - Use to display helpful information near form elements that may need more explanation beyond text labels.
+- **Form field or Select list** - Use to write text or make a selection from a list.
+- **Placeholder text** - Use within a form field or select list as an example of how to correctly provide an input.
+- **Helper text** - Use underneath a form element as an example of how to correctly provide an input.
 
 <uxdot-example width-adjustment="296px" color-palette="lightest">
   <img src="./form-content.svg"
@@ -228,7 +232,7 @@ A user will have a better experience with submitting a form if the elements are 
 
 If a user is required to input information when submitting a form, indicate
 exactly where by adding a required asterisk (<span style="color:
-  #c9190b;">*</span>) to the right of a text label. If all inputs are required,
+  #c9190b;">\*</span>) to the right of a text label. If all inputs are required,
 **do not** add an asterisk next to every text label. Instead, add text below the
 title stating **All fields are required**. If all inputs are optional, the text
 should state **All fields are optional** instead.
@@ -290,8 +294,9 @@ more information.
 ### Arranging data inputs
 
 Radio buttons and checkboxes can be stacked horizontally or vertically depending on the amount of characters and space.
- - If there are fewer than three options, arrange data inputs horizontally.
- - If there are more than three options, arrange data inputs vertically.
+
+- If there are fewer than three options, arrange data inputs horizontally.
+- If there are more than three options, arrange data inputs vertically.
 
 <uxdot-example width-adjustment="462px" color-palette="lightest">
   <img src="./form-arranging-data-inputs.svg"

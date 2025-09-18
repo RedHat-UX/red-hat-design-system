@@ -3,7 +3,7 @@ title: Search bar
 layout: layouts/pages/has-toc.njk
 order: 80
 tags:
-    - pattern
+  - pattern
 ---
 
 <link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
@@ -56,6 +56,7 @@ search, so a button must be used instead.
 </uxdot-example>
 
 ## Color scheme
+
 <a id="theme"></a>
 
 The light search bar includes a light theme form field and red button.
@@ -96,8 +97,8 @@ boundaries of whatever container or grid it is placed in.
 #### Content
 
 The text within a search bar indicates how wide or narrow a search will be. If
-the text is <em>*generic*</em> (Enter your search term), a user might expect to
-search through an entire website. If the text is *specific* (Search all
+the text is <em>_generic_</em> (Enter your search term), a user might expect to
+search through an entire website. If the text is _specific_ (Search all
 resources), a user might expect to search through an individual page.
 
 <uxdot-example width-adjustment="872px">
@@ -301,7 +302,7 @@ Do not replace the button with a call to action.
 #### Different style or color
 
 Do not use a different button color or style when using a search bar on Red Hat
-*marketing* websites.
+_marketing_ websites.
 
 <uxdot-example width-adjustment="872px" danger>
   <img src="./search-bar-best-practice-3.svg"

@@ -49,17 +49,19 @@ label {
   &:focus-within,
   &:hover {
     background-color: var(--rh-color-interactive-secondary-focus);
-    color:
-      light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
-        var(--rh-color-text-primary-on-light, #151515));
+    color: light-dark(
+      var(--rh-color-text-primary-on-dark, #ffffff),
+      var(--rh-color-text-primary-on-light, #151515)
+    );
   }
 
   &:has(input:checked) {
     background-color: var(--rh-color-interactive-primary-active);
     border-color: var(--rh-color-border-interactive);
-    color:
-      light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
-        var(--rh-color-text-primary-on-light, #151515));
+    color: light-dark(
+      var(--rh-color-text-primary-on-dark, #ffffff),
+      var(--rh-color-text-primary-on-light, #151515)
+    );
     z-index: 1;
 
     &:focus-within,
@@ -78,7 +80,8 @@ input {
   position: absolute;
 
   &:focus-visible {
-    outline: var(--rh-border-width-sm, 1px) solid var(--rh-color-interactive-primary-focus);
+    outline: var(--rh-border-width-sm, 1px) solid
+      var(--rh-color-interactive-primary-focus);
   }
 }
 

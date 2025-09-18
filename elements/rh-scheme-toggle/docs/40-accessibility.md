@@ -18,6 +18,7 @@ The scheme toggle receives focus as a single group. Once focused, arrow keys sel
 ## Touch targets
 
 All interactive elements meet minimum touch target requirements:
+
 - Each radio button option provides adequate touch area
 - Icons labels are sized appropriately for touch interaction
 
@@ -26,18 +27,21 @@ All interactive elements meet minimum touch target requirements:
 The scheme toggle communicates clearly to assistive technology:
 
 ### Semantic structure
+
 - Uses `<fieldset>` and `<legend>` for proper grouping
 - Radio buttons provide standard form control semantics
-- Each option has both visible tooltips and visually-hidden labels, in addition 
+- Each option has both visible tooltips and visually-hidden labels, in addition
   to the icon labels
 
 ### Information conveyed
+
 - The purpose of the control (color scheme selection)
 - Available options (light, dark, system)
 - Current selection state
 - Changes when selection is made
 
 ### Implementation details
+
 - `legend-text` attribute provides the fieldset legend (default: "Color scheme")
 - Each radio button has a `title` attribute for tooltips
 - Visually-hidden spans provide accessible labels for each option

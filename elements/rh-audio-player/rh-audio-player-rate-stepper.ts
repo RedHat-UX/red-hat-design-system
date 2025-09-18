@@ -22,7 +22,8 @@ export class RhAudioPlayerRateStepper extends LitElement {
   private static pbrFixed = 2;
 
   /** Playback rate */
-  @property({ reflect: true, type: Number, attribute: 'playback-rate' }) playbackRate = 1;
+  @property({ reflect: true, type: Number, attribute: 'playback-rate' })
+  playbackRate = 1;
 
   /** Playback rate */
   @property({ reflect: true, type: Boolean }) disabled = false;
@@ -35,12 +36,10 @@ export class RhAudioPlayerRateStepper extends LitElement {
    */
   get #playbackRates() {
     const { pbrMax, pbrStep, pbrMin } = RhAudioPlayerRateStepper;
-    return [
-      ...Array(Math.round(pbrMax / pbrStep)).keys()].map(k =>
-      k * pbrStep + pbrMin
+    return [...Array(Math.round(pbrMax / pbrStep)).keys()].map(
+      k => k * pbrStep + pbrMin
     );
   }
-
 
   /** template for playback rate controls */
   render() {
@@ -49,32 +48,43 @@ export class RhAudioPlayerRateStepper extends LitElement {
     return html`
       <rh-tooltip>
         <div>
-          <button id="stepdown"
-                  class="tabbable playback-rate-step"
-                  tabindex="-1"
-                  aria-label="<"
-                  ?disabled="${this.disabled || this.playbackRate < 0.5}"
-                  @click="${this.#dec}">
+          <button
+            id="stepdown"
+            class="tabbable playback-rate-step"
+            tabindex="-1"
+            aria-label="<"
+            ?disabled="${this.disabled || this.playbackRate < 0.5}"
+            @click="${this.#dec}"
+          >
             <rh-icon icon="caret-left" set="microns"></rh-icon>
           </button>
-          <select id="playback-rate"
-                  class="tabbable"
-                  aria-label="${ifDefined(this.label)}"
-                  ?disabled="${this.disabled}"
-                  @click="${this.#onPlaybackRateSelect}"
-                  @change="${this.#onPlaybackRateSelect}"
-                  .value="${this.playbackRate?.toFixed(pbrFixed)}">${this.#playbackRates.map(step => html`
-            <option .value="${step.toFixed(pbrFixed)}"
-                    ?selected=${this.playbackRate.toFixed(pbrFixed) === step.toFixed(pbrFixed)}>
-              ${step.toFixed(pbrFixed)}x
-            </option>`)}
+          <select
+            id="playback-rate"
+            class="tabbable"
+            aria-label="${ifDefined(this.label)}"
+            ?disabled="${this.disabled}"
+            @click="${this.#onPlaybackRateSelect}"
+            @change="${this.#onPlaybackRateSelect}"
+            .value="${this.playbackRate?.toFixed(pbrFixed)}"
+          >
+            ${this.#playbackRates.map(
+              step => html` <option
+                .value="${step.toFixed(pbrFixed)}"
+                ?selected=${this.playbackRate.toFixed(pbrFixed)
+                === step.toFixed(pbrFixed)}
+              >
+                ${step.toFixed(pbrFixed)}x
+              </option>`
+            )}
           </select>
-          <button id="stepup"
-                  class="tabbable playback-rate-step"
-                  tabindex="-1"
-                  aria-label=">"
-                  ?disabled="${this.disabled || this.playbackRate > 1.75}"
-                  @click="${this.#inc}">
+          <button
+            id="stepup"
+            class="tabbable playback-rate-step"
+            tabindex="-1"
+            aria-label=">"
+            ?disabled="${this.disabled || this.playbackRate > 1.75}"
+            @click="${this.#inc}"
+          >
             <rh-icon icon="caret-right" set="microns"></rh-icon>
           </button>
         </div>
@@ -85,7 +95,7 @@ export class RhAudioPlayerRateStepper extends LitElement {
 
   #onPlaybackRateSelect(event: Event) {
     if (!this.disabled && event.target instanceof HTMLSelectElement) {
-      const val = !event.target.value ? 1.00 : parseFloat(event.target.value);
+      const val = !event.target.value ? 1.0 : parseFloat(event.target.value);
       this.dispatchEvent(new RhAudioPlayerRateSelectEvent(val));
     }
   }

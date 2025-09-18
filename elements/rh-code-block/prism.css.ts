@@ -16,36 +16,94 @@ const styles = css`
     }
   }
 
-  & .token.atrule { color: var(--_at-rule-color); }
-  & .token.attr-name { color: var(--_attr-name-color); }
-  & .token.attr-value { color: var(--_attr-value-color); }
-  & .token.bold { font-weight: var(--_important-color); }
-  & .token.boolean { color: var(--_boolean-color); }
-  & .token.builtin { color: var(--_built-in-color); }
-  & .token.cdata { color: var(--_cdata-color); }
-  & .token.char { color: var(--_character-color); }
-  & .token.class-name { color: var(--_class-name-color); }
-  & .token.comment { color: var(--_comment-color); }
-  & .token.constant { color: var(--_constant-color); }
-  & .token.deleted { color: var(--_deleted-color); }
-  & .token.function { color: var(--_function-name-color); }
-  & .token.important { color: var(--_important-color); }
-  & .token.inserted { color: var(--_inserted-color); }
-  & .token.keyword { color: var(--_keyword-color); }
-  & .token.namespace { color: var(--_namespace-color); }
-  & .token.number { color: var(--_number-color); }
-  & .token.operator { color: var(--_operator-color); }
-  & .token.property { color: var(--_property-color); }
-  & .token.punctuation { color: var(--_punctuation-color); }
-  & .token.regex { color: var(--_regex-color); }
-  & .token.selector { color: var(--_selector-color); }
-  & .token.string { color: var(--_string-color); }
-  & .token.symbol { color: var(--_symbol-color); }
-  & .token.tag { color: var(--_tag-color); }
-  & .token.url { color: var(--_url-color); }
-  & .token.variable { color: var(--_variable-color); }
+  & .token.atrule {
+    color: var(--_at-rule-color);
+  }
+  & .token.attr-name {
+    color: var(--_attr-name-color);
+  }
+  & .token.attr-value {
+    color: var(--_attr-value-color);
+  }
+  & .token.bold {
+    font-weight: var(--_important-color);
+  }
+  & .token.boolean {
+    color: var(--_boolean-color);
+  }
+  & .token.builtin {
+    color: var(--_built-in-color);
+  }
+  & .token.cdata {
+    color: var(--_cdata-color);
+  }
+  & .token.char {
+    color: var(--_character-color);
+  }
+  & .token.class-name {
+    color: var(--_class-name-color);
+  }
+  & .token.comment {
+    color: var(--_comment-color);
+  }
+  & .token.constant {
+    color: var(--_constant-color);
+  }
+  & .token.deleted {
+    color: var(--_deleted-color);
+  }
+  & .token.function {
+    color: var(--_function-name-color);
+  }
+  & .token.important {
+    color: var(--_important-color);
+  }
+  & .token.inserted {
+    color: var(--_inserted-color);
+  }
+  & .token.keyword {
+    color: var(--_keyword-color);
+  }
+  & .token.namespace {
+    color: var(--_namespace-color);
+  }
+  & .token.number {
+    color: var(--_number-color);
+  }
+  & .token.operator {
+    color: var(--_operator-color);
+  }
+  & .token.property {
+    color: var(--_property-color);
+  }
+  & .token.punctuation {
+    color: var(--_punctuation-color);
+  }
+  & .token.regex {
+    color: var(--_regex-color);
+  }
+  & .token.selector {
+    color: var(--_selector-color);
+  }
+  & .token.string {
+    color: var(--_string-color);
+  }
+  & .token.symbol {
+    color: var(--_symbol-color);
+  }
+  & .token.tag {
+    color: var(--_tag-color);
+  }
+  & .token.url {
+    color: var(--_url-color);
+  }
+  & .token.variable {
+    color: var(--_variable-color);
+  }
 
-  & .token.italic { font-style: italic; }
+  & .token.italic {
+    font-style: italic;
+  }
 
   & .token.entity {
     color: var(--_entity-color);
@@ -53,15 +111,27 @@ const styles = css`
   }
 
   & .token.prolog,
-  & .token.doctype { color: var(--_doctype-color); }
+  & .token.doctype {
+    color: var(--_doctype-color);
+  }
 
   & .language-css .token.string,
-  & .style .token.string { color: var(--_operator-color); }
+  & .style .token.string {
+    color: var(--_operator-color);
+  }
 `;
 
-export const prismStyles = css`#prism-output {${styles}}`;
-export const preRenderedLightDomStyles = css`rh-code-block {
---_styles-applied: true;
-${styles}
-& > pre { opacity: 1; }
-}`;
+export const prismStyles = css`
+  #prism-output {
+    ${styles}
+  }
+`;
+export const preRenderedLightDomStyles = css`
+  rh-code-block {
+    --_styles-applied: true;
+    ${styles}
+    & > pre {
+      opacity: 1;
+    }
+  }
+`;

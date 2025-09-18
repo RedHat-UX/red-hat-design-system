@@ -23,10 +23,7 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import styles from './rh-tab.css';
 
 export class TabExpandEvent extends Event {
-  constructor(
-    public active: boolean,
-    public tab: RhTab,
-  ) {
+  constructor(public active: boolean, public tab: RhTab) {
     super('expand', { bubbles: true, cancelable: true });
   }
 }
@@ -47,22 +44,28 @@ export class RhTab extends LitElement {
   @property({ reflect: true, type: Boolean }) disabled = false;
 
   @consume({ context: rhTabsBoxContext, subscribe: true })
-  @state() private box = false;
+  @state()
+  private box = false;
 
   @consume({ context: rhTabsVerticalContext, subscribe: true })
-  @state() private vertical = false;
+  @state()
+  private vertical = false;
 
   @consume({ context: rhTabsManualContext, subscribe: true })
-  @state() private manual = false;
+  @state()
+  private manual = false;
 
   @consume({ context: rhTabsActiveTabContext, subscribe: true })
-  @state() private activeTab: RhTab | null = null;
+  @state()
+  private activeTab: RhTab | null = null;
 
   @consume({ context: rhTabsFirstTabContext, subscribe: true })
-  @state() private firstTab: RhTab | null = null;
+  @state()
+  private firstTab: RhTab | null = null;
 
   @consume({ context: rhTabsLastTabContext, subscribe: true })
-  @state() private lastTab: RhTab | null = null;
+  @state()
+  private lastTab: RhTab | null = null;
 
   #internals = InternalsController.of(this, { role: 'tab' });
 
@@ -75,19 +78,26 @@ export class RhTab extends LitElement {
   }
 
   render() {
-    const { box = false, vertical = false, activeTab, firstTab, lastTab } = this;
+    const {
+      box = false,
+      vertical = false,
+      activeTab,
+      firstTab,
+      lastTab,
+    } = this;
     const active = isServer ? this.active : activeTab === this;
     const first = firstTab === this;
     const last = lastTab === this;
     return html`
       <!-- element that contains the interactive part of a tab -->
-      <div id="button"
-           part="button"
-           ?disabled="${this.disabled}"
-           class="${classMap({ active, box, vertical, first, last })}">
+      <div
+        id="button"
+        part="button"
+        ?disabled="${this.disabled}"
+        class="${classMap({ active, box, vertical, first, last })}"
+      >
         <!-- Can contain an \`<svg>\` or \`<rh-icon>\` -->
-        <slot name="icon"
-              part="icon"></slot>
+        <slot name="icon" part="icon"></slot>
         <!-- Tab title text -->
         <slot part="text"></slot>
       </div>
@@ -95,7 +105,11 @@ export class RhTab extends LitElement {
   }
 
   #onClick() {
-    if (!this.disabled && this.#internals.ariaDisabled !== 'true' && this.ariaDisabled !== 'true') {
+    if (
+      !this.disabled
+      && this.#internals.ariaDisabled !== 'true'
+      && this.ariaDisabled !== 'true'
+    ) {
       this.#activate();
       if (InternalsController.isSafari) {
         this.focus();

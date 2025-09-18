@@ -1,6 +1,6 @@
 ## When to use
 
-- When you need to reflect counts like number of objects, events, or unread 
+- When you need to reflect counts like number of objects, events, or unread
   items
 
 <div id="overview-image-description" class="visually-hidden">

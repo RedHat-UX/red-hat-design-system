@@ -1,7 +1,9 @@
 # Audio Player
+
 A user interface for playing audio files.
 
 ## Usage
+
 Within the player and its panel sections, make sure to use proper heading hierarchy.
 
 ```html

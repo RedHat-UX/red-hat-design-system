@@ -17,15 +17,17 @@
   padding: var(--rh-space-xl, 24px);
 }
 
-:host(:not([type='fixed-width'])) #sections {
+:host(:not([type="fixed-width"])) #sections {
   display: grid;
-  grid-template-columns: /** grid-template-columns for menu sections */
-    var(--rh-navigation-secondary-menu-section-grid,
-      repeat(auto-fit,
-      minmax(15.5rem, 1fr)));
+  grid-template-columns: /** grid-template-columns for menu sections */ var(
+    --rh-navigation-secondary-menu-section-grid,
+    repeat(auto-fit, minmax(15.5rem, 1fr))
+  );
   grid-template-rows: auto;
-  gap: /** grid-gap for menu sections */
-    var(--rh-navigation-secondary-menu-section-grid-gap, var(--rh-space-2xl, 32px));
+  gap: /** grid-gap for menu sections */ var(
+    --rh-navigation-secondary-menu-section-grid-gap,
+    var(--rh-space-2xl, 32px)
+  );
 }
 
 ::slotted(:is(ul, ol)) {
@@ -42,17 +44,17 @@
     position: absolute;
     left: 0;
     right: 0;
-    padding:
-      var(--rh-space-4xl, 64px)
-      var(--rh-space-2xl, 32px)
+    padding: var(--rh-space-4xl, 64px) var(--rh-space-2xl, 32px)
       var(--rh-space-3xl, 48px);
     box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
     z-index: -1;
-    max-height: calc(100vh - (var(--rh-space-4xl, 64px)) - var(--_nav-min-height));
+    max-height: calc(
+      100vh - (var(--rh-space-4xl, 64px)) - var(--_nav-min-height)
+    );
     overflow-y: auto;
   }
 
-  :host([layout='fixed-width']) #container {
+  :host([layout="fixed-width"]) #container {
     position: absolute;
     inset: var(--_nav-height) auto auto auto;
     margin-top: 0;
@@ -67,7 +69,7 @@
     margin: auto;
   }
 
-  :host([layout='fixed-width']) #sections {
+  :host([layout="fixed-width"]) #sections {
     padding: var(--rh-space-2xl, 32px);
   }
 }

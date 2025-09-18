@@ -5,4 +5,6 @@ export interface RhAccordionContext {
   large: boolean;
 }
 
-export const context = createContextWithRoot<RhAccordionContext>(Symbol('rh-accordion-context'));
+export const context = createContextWithRoot<RhAccordionContext>(
+  Symbol('rh-accordion-context')
+);

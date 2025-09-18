@@ -31,13 +31,13 @@ subnav:
 
 Our Figma library can be accessed by following these steps.
 
-  - In a design file, select the **Assets** tab in the left sidebar next to File
-  - Select the **Libraries** icon to open the libraries window
-  - Under Browse libraries, select **Your organization**
-  - In the search field, type `rhds`
-  - Select the **Add to file** button next to `RHDS component library - vX.X.X` to enable the library
-  - Close the window and you should see our library under **All libraries** in the Assets tab
-  - You are now ready to use RHDS components, patterns, and more
+- In a design file, select the **Assets** tab in the left sidebar next to File
+- Select the **Libraries** icon to open the libraries window
+- Under Browse libraries, select **Your organization**
+- In the search field, type `rhds`
+- Select the **Add to file** button next to `RHDS component library - vX.X.X` to enable the library
+- Close the window and you should see our library under **All libraries** in the Assets tab
+- You are now ready to use RHDS components, patterns, and more
 
 <rh-alert state="warning">
   <h4 slot="header">Warning</h4>
@@ -54,39 +54,39 @@ Our Figma library can be accessed by following these steps.
 
 ### Access for agencies
 
-If you work for an agency, but do not have a `redhat.com` email address, 
+If you work for an agency, but do not have a `redhat.com` email address,
 [email us](mailto:design-system@redhat.com).
 
 ### Accessing other libraries
 
-There are other Figma libraries available to use. The process of 
+There are other Figma libraries available to use. The process of
 enabling them is the same as above.
 
 <rh-table>
 
-  | Library name             | Use case                                                                             |
-  | ------------------------ | ------------------------------------------------------------------------------------ |
-  | Red Hat Design System    | Use this library if you are creating digital experiences for Red Hat web properties. |
-  | Red Hat brand library    | Use this library if you need access to Red Hat icons and logos.                      |
-  | [PatternFly][patternfly] | Use this library if you are creating product user interfaces.                        |
+| Library name             | Use case                                                                             |
+| ------------------------ | ------------------------------------------------------------------------------------ |
+| Red Hat Design System    | Use this library if you are creating digital experiences for Red Hat web properties. |
+| Red Hat brand library    | Use this library if you need access to Red Hat icons and logos.                      |
+| [PatternFly][patternfly] | Use this library if you are creating product user interfaces.                        |
 
 </rh-table>
 
 ### Subsystems
 
-Subsystems are small Figma libraries that include only patterns. They are 
+Subsystems are small Figma libraries that include only patterns. They are
 purpose-built and tailored to support specific projects or teams.
 
 [Contact us](/support/) if you think you need a new subsystem created.
 
 ## Detaching and library updates
 
-Be careful about detaching components and patterns because you will 
-**not** receive notifications about updates when the main library is 
+Be careful about detaching components and patterns because you will
+**not** receive notifications about updates when the main library is
 published. They are technically out of date as soon as you detach them.
 
-If you think any part of a component or pattern needs something added 
-or edited, create a 
+If you think any part of a component or pattern needs something added
+or edited, create a
 [GitHub discussion](https://github.com/orgs/RedHat-UX/discussions/new/choose).
 
 <uxdot-feedback>

@@ -80,14 +80,19 @@ export class RhTag extends LitElement {
       <slot id="text"></slot>
     `;
     return html`
-      <span id="container"
-            class="${classMap({
-              disabled,
-              hasIcon,
-              compact: size === 'compact',
-              teal: color === ('cyan' as 'blue' /* cyan deprecated */) || color === 'teal',
-              [variant]: true,
-              [color]: true })}">
+      <span
+        id="container"
+        class="${classMap({
+          disabled,
+          hasIcon,
+          compact: size === 'compact',
+          teal:
+            color === ('cyan' as 'blue')
+            || /* cyan deprecated */ color === 'teal',
+          [variant]: true,
+          [color]: true,
+        })}"
+      >
         <!--
           slot:
             summary: Contains the labels's icon, e.g. web-icon-alert-success.
@@ -95,11 +100,19 @@ export class RhTag extends LitElement {
             summary: container for the label icon
         -->
         <slot name="icon" part="icon">
-          <rh-icon ?hidden="${!icon}" icon="${ifDefined(icon)}" set="${this.iconSet}"></rh-icon>
-        </slot>${!this.href ? textSlot : html`
-        <a href="${this.href}"
-           aria-disabled="${String(this.disabled) as 'true' | 'false'}"
-           @keydown="${this.#onKeyDown}">${textSlot}</a>`}
+          <rh-icon
+            ?hidden="${!icon}"
+            icon="${ifDefined(icon)}"
+            set="${this.iconSet}"
+          ></rh-icon> </slot
+        >${!this.href ?
+          textSlot
+          : html` <a
+              href="${this.href}"
+              aria-disabled="${String(this.disabled) as 'true' | 'false'}"
+              @keydown="${this.#onKeyDown}"
+              >${textSlot}</a
+            >`}
       </span>
     `;
   }

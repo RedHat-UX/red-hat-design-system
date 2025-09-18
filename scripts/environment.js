@@ -8,7 +8,7 @@ let iconSetsMap;
  */
 export async function getIconSetsMap() {
   if (!iconSetsMap) {
-  // because the icon package exports DOM nodes, but this file runs in nodejs
+    // because the icon package exports DOM nodes, but this file runs in nodejs
     await import('@patternfly/pfe-core/ssr-shims.js');
     const { standard, social, ui, microns } = await import('@rhds/icons');
     iconSetsMap = new Map([
@@ -27,9 +27,12 @@ export async function getIconSetsMap() {
 export async function makeDemoEnv() {
   iconSetsMap ??= await getIconSetsMap();
   const javascript = String.raw; // for editor highlighting
-  const allElements = (await readdir(join(process.cwd(), 'elements')))
-      .filter(path => !path.includes('.'));
+  const allElements = (await readdir(join(process.cwd(), 'elements'))).filter(
+    path => !path.includes('.')
+  );
   return javascript`
 export const elements = ${JSON.stringify(allElements)};
-export const iconSets = new Map(${JSON.stringify(Object.fromEntries(iconSetsMap.entries()))});`;
+export const iconSets = new Map(${JSON.stringify(
+  Object.fromEntries(iconSetsMap.entries())
+)});`;
 }

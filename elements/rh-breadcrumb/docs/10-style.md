@@ -21,6 +21,7 @@ Breadcrumb navigation is composed of links, text, and caret icons as separators.
 </figure>
 
 ## Color scheme
+
 <a id="theme"></a>
 
 Breadcrumbs are available for both light and dark color schemes.
@@ -129,6 +130,3 @@ The focus state of a breadcrumb link looks similar to the hover state, but it ad
          height="25">
   </uxdot-example>
 </div>
-
-
-

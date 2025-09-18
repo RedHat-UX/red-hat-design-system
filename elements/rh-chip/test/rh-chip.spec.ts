@@ -16,8 +16,7 @@ describe('<rh-chip>', function() {
       const klass = customElements.get('rh-chip');
       expect(element)
           .to.be.an.instanceOf(klass)
-          .and
-          .to.be.an.instanceOf(RhChip);
+          .and.to.be.an.instanceOf(RhChip);
     });
   });
 
@@ -31,8 +30,7 @@ describe('<rh-chip>', function() {
     });
 
     it('should be accessible', async function() {
-      await expect(element)
-          .to.be.accessible();
+      await expect(element).to.be.accessible();
     });
   });
 
@@ -67,7 +65,9 @@ describe('<rh-chip>', function() {
     let checkbox: HTMLInputElement;
 
     beforeEach(async function() {
-      element = await createFixture<RhChip>(html`<rh-chip disabled>Disabled Chip</rh-chip>`);
+      element = await createFixture<RhChip>(
+        html`<rh-chip disabled>Disabled Chip</rh-chip>`
+      );
       await element.updateComplete;
       checkbox = getCheckbox(element);
     });
@@ -100,7 +100,9 @@ describe('<rh-chip>', function() {
     let checkbox: HTMLInputElement;
 
     beforeEach(async function() {
-      element = await createFixture<RhChip>(html`<rh-chip checked disabled>Disabled Chip</rh-chip>`);
+      element = await createFixture<RhChip>(
+        html`<rh-chip checked disabled>Disabled Chip</rh-chip>`
+      );
       await element.updateComplete;
       checkbox = getCheckbox(element);
     });

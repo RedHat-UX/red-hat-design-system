@@ -24,7 +24,7 @@ body:
       description: >-
         If applicable, add screenshots to help explain
       placeholder: >-
-        Copy/paste or drag screenshots into this textarea 
+        Copy/paste or drag screenshots into this textarea
     validations:
       required: false
 
@@ -60,7 +60,7 @@ body:
 
   - type: markdown
     attributes:
-      value:  |
+      value: |
         ---
         ## Browser and System Info
 

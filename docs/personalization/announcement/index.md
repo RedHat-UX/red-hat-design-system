@@ -5,15 +5,14 @@ sidenavTitle: Announcement
 layout: layouts/pages/pattern.njk
 order: 30
 pattern-info:
-    thumbnail: /assets/patterns/all-patterns-announcement.svg
-    thumbnail-alt: Announcement pattern
-    summary: Displays an important message across pages
-    status: ready
+  thumbnail: /assets/patterns/all-patterns-announcement.svg
+  thumbnail-alt: Announcement pattern
+  summary: Displays an important message across pages
+  status: ready
 tags:
   - personalization
   - personalization-pattern
 ---
-
 
 ## Overview
 
@@ -38,21 +37,21 @@ styles][alertstyles].
 
 ## How to use
 
--   If a logo is associated with an announcement, it should have a max
-    width of 80px.
--   Headline or body text should be 60 characters or fewer.
--   Call to action text should be 20 characters or fewer.
--   Provide a link to the announcement if applicable.
+- If a logo is associated with an announcement, it should have a max
+  width of 80px.
+- Headline or body text should be 60 characters or fewer.
+- Call to action text should be 20 characters or fewer.
+- Provide a link to the announcement if applicable.
 
 ## The audience
 
 Alert styles can be used for the following kinds of announcement content.
 
--   **Important cross-website announcements** &#8212; For top-tier press
-    releases, company announcements, and important product launches, use
-    a red or yellow background.
--   Single-page announcements &#8212; For global updates or important in-page
-    content, use a green or blue background.
+- **Important cross-website announcements** &#8212; For top-tier press
+  releases, company announcements, and important product launches, use
+  a red or yellow background.
+- Single-page announcements &#8212; For global updates or important in-page
+  content, use a green or blue background.
 
 [alertstyles]: /elements/alert/style/
 

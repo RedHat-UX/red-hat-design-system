@@ -1,10 +1,10 @@
 ## Style
 
-A footer is a stack of two containers that include a variety of elements or 
-content, mostly links and text blocks. Elements in a footer are high in contrast 
-so they grab the attention of users and meet accessibility guidelines. A footer 
-is designed to look similar in style to the [primary 
-navigation](/elements/navigation) to ensure a consistent user experience across 
+A footer is a stack of two containers that include a variety of elements or
+content, mostly links and text blocks. Elements in a footer are high in contrast
+so they grab the attention of users and meet accessibility guidelines. A footer
+is designed to look similar in style to the [primary
+navigation](/elements/navigation) to ensure a consistent user experience across
 websites.
 
 ### Anatomy
@@ -35,8 +35,8 @@ websites.
 
 ### Grays
 
-The website-specific footer background color is a slightly lighter gray than the 
-universal footer background color. This variant creates separation and helps 
+The website-specific footer background color is a slightly lighter gray than the
+universal footer background color. This variant creates separation and helps
 distinguish both footers from each other.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
@@ -46,8 +46,8 @@ distinguish both footers from each other.
        height="480">
 </uxdot-example>
 
-
 ## Color scheme
+
 <a id="theme"></a>
 
 Footer only has one available color-palette, and renders in the dark color scheme.
@@ -59,8 +59,7 @@ Footer only has one available color-palette, and renders in the dark color schem
        height="796">
 </uxdot-example>
 
-
-### Website-specific footer 
+### Website-specific footer
 
 <rh-table>
 
@@ -77,8 +76,7 @@ Footer only has one available color-palette, and renders in the dark color schem
 
 </rh-table>
 
-
-### Universal footer 
+### Universal footer
 
 <rh-table>
 
@@ -91,8 +89,7 @@ Footer only has one available color-palette, and renders in the dark color schem
 
 </rh-table>
 
-
-### Language selector 
+### Language selector
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
   <img alt="Image of a footer with the language selector menu open"
@@ -112,11 +109,10 @@ Footer only has one available color-palette, and renders in the dark color schem
 
 </rh-table>
 
-
 ## Configuration
 
-A footer is a group of regions where various types of content can be organized. 
-Within these regions, position and alignment are somewhat rigid in order to 
+A footer is a group of regions where various types of content can be organized.
+Within these regions, position and alignment are somewhat rigid in order to
 maintain consistency.
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
@@ -126,8 +122,7 @@ maintain consistency.
        height="796">
 </uxdot-example>
 
-
-## Space 
+## Space
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
   <img src="../footer-space-desktop.png"
@@ -161,9 +156,9 @@ maintain consistency.
 
 <uxdot-spacer-tokens-table tokens="md, lg, xl, 2xl, 3xl"></uxdot-spacer-tokens-table>
 
-## Interaction states 
+## Interaction states
 
-### Hover 
+### Hover
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
   <img alt="Hover state examples within a footer"
@@ -184,8 +179,7 @@ maintain consistency.
 
 </rh-table>
 
-
-### Hover - language selector 
+### Hover - language selector
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
   <img alt="Hover state example within the language selector menu"
@@ -197,13 +191,12 @@ maintain consistency.
 <rh-table>
 
 | Property                    | Light theme |
-|-----------------------------|-------------|
+| --------------------------- | ----------- |
 | Text decoration - link text | Underline   |
 
 </rh-table>
 
-
-### Focus 
+### Focus
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
@@ -220,12 +213,12 @@ maintain consistency.
 <rh-table>
 
 | Property           | Light theme |
-|--------------------|-------------|
+| ------------------ | ----------- |
 | Color - focus ring | \#73BCF7    |
 
 </rh-table>
 
-### Focus - language selector 
+### Focus - language selector
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
@@ -242,13 +235,12 @@ maintain consistency.
 <rh-table>
 
 | Property           | Light theme |
-|--------------------|-------------|
+| ------------------ | ----------- |
 | Color - focus ring | \#73BCF7    |
 
 </rh-table>
 
-
-### Active 
+### Active
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
@@ -265,12 +257,12 @@ maintain consistency.
 <rh-table>
 
 | Property           | Light theme |
-|--------------------|-------------|
+| ------------------ | ----------- |
 | Color - focus ring | \#73BCF7    |
 
 </rh-table>
 
-### Active - language selector 
+### Active - language selector
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
@@ -287,7 +279,7 @@ maintain consistency.
 <rh-table>
 
 | Property           | Light theme |
-|--------------------|-------------|
+| ------------------ | ----------- |
 | Color - focus ring | \#73BCF7    |
 
 </rh-table>

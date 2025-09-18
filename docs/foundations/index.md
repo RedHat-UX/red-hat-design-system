@@ -15,7 +15,6 @@ tags:
   import '@rhds/elements/rh-tile/rh-tile.js';
 </script>
 
-
 <style data-helmet>
   rh-tile img[slot="image"] {
     height: auto;
@@ -24,12 +23,12 @@ tags:
 
 <section aria-labelledby="overview">
 
-  ## Overview
+## Overview
 
-  Foundations are the visual and structural elements of our design system.
-  Foundations were created as the building blocks of all user interface elements.
-  Foundations should be used as blueprints that all components and layouts are
-  created from.
+Foundations are the visual and structural elements of our design system.
+Foundations were created as the building blocks of all user interface elements.
+Foundations should be used as blueprints that all components and layouts are
+created from.
 
   <div class="grid sm-two-columns">
     <rh-tile>

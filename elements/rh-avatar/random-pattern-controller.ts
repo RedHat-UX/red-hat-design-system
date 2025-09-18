@@ -23,7 +23,7 @@ type HSLTriple = [H: number, S: number, L: number];
  *
  * @see http://www.cse.yorku.ca/~oz/hash.html
  * @param  str the string to hash.
- * @return  a positive integer
+ * @returns  a positive integer
  */
 
 function hash(str: string): number {
@@ -66,7 +66,9 @@ function h2rgb(v1: number, v2: number, vH: number): number {
  * @see https://www.easyrgb.com/en/math.php
  */
 function hsl2rgb(h: number, s: number, l: number): RGBTriple {
-  let R; let G; let B;
+  let R;
+  let G;
+  let B;
 
   const H = Math.max(0, Math.min(1, h));
   const S = Math.max(0, Math.min(1, s));
@@ -77,7 +79,7 @@ function hsl2rgb(h: number, s: number, l: number): RGBTriple {
     G = L * 255;
     B = L * 255;
   } else {
-    const b = (L < 0.5) ? L * (1 + S) : L + S - S * L;
+    const b = L < 0.5 ? L * (1 + S) : L + S - S * L;
     const a = 2 * L - b;
     R = Math.floor(255 * h2rgb(a, b, H + 1 / 3));
     G = Math.floor(255 * h2rgb(a, b, H));
@@ -97,7 +99,8 @@ function hsl2rgb(h: number, s: number, l: number): RGBTriple {
  * @see https://www.easyrgb.com/en/math.php
  */
 function rgb2hsl(_R: number, _G: number, _B: number): HSLTriple {
-  let H; let S;
+  let H;
+  let S;
 
   const R = Math.max(0, Math.min(255, _R));
   const G = Math.max(0, Math.min(255, _G));
@@ -122,7 +125,6 @@ function rgb2hsl(_R: number, _G: number, _B: number): HSLTriple {
     } else {
       S = delMax / (2 - varMax - varMin);
     }
-
 
     const delR = ((varMax - r) / 6 + delMax / 2) / delMax;
     const delG = ((varMax - g) / 6 + delMax / 2) / delMax;
@@ -216,7 +218,9 @@ export class RandomPatternController implements ReactiveController {
     }
     const bitPattern = hash(this.#name ?? '').toString(2);
     const arrPattern = bitPattern.split('').map(n => Number(n)) as Vector2D;
-    const index = Math.floor((this.#colorTuples.length * parseInt(bitPattern, 2)) / (2 ** 32));
+    const index = Math.floor(
+      (this.#colorTuples.length * parseInt(bitPattern, 2)) / 2 ** 32
+    );
     [this.#color1, this.#color2] = this.#colorTuples[index] ?? [];
     this.#squareSize = this.#canvas.width / 8;
     this.#triangleSize = this.#canvas.width / 4;
@@ -345,7 +349,11 @@ export class RandomPatternController implements ReactiveController {
   #drawMirroredTriangle(p1: Vector2D, p2: Vector2D, p3: Vector2D) {
     if (this.#ctx) {
       this.#drawTriangle(p1, p2, p3);
-      this.#drawTriangle([4 - p1[0], p1[1]], [4 - p2[0], p2[1]], [4 - p3[0], p3[1]]);
+      this.#drawTriangle(
+        [4 - p1[0], p1[1]],
+        [4 - p2[0], p2[1]],
+        [4 - p3[0], p3[1]]
+      );
     }
   }
 
@@ -353,9 +361,9 @@ export class RandomPatternController implements ReactiveController {
     const mult = (c: number) => c * this.#triangleSize;
     if (this.#ctx) {
       this.#ctx.beginPath();
-      this.#ctx.moveTo(...p1.map(mult) as Vector2D);
-      this.#ctx.lineTo(...p2.map(mult) as Vector2D);
-      this.#ctx.lineTo(...p3.map(mult) as Vector2D);
+      this.#ctx.moveTo(...(p1.map(mult) as Vector2D));
+      this.#ctx.lineTo(...(p2.map(mult) as Vector2D));
+      this.#ctx.lineTo(...(p3.map(mult) as Vector2D));
       this.#ctx.closePath();
       this.#ctx.fill();
       this.#ctx.fill();

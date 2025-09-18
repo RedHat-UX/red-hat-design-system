@@ -17,26 +17,30 @@ import './uxdot-copy-button.js';
 import styles from './uxdot-spacer-tokens-table.css';
 
 type SpaceTokenName =
- | '--rh-space-xs'
- | '--rh-space-sm'
- | '--rh-space-md'
- | '--rh-space-lg'
- | '--rh-space-xl'
- | '--rh-space-2xl'
- | '--rh-space-3xl'
- | '--rh-space-4xl'
- | '--rh-space-5xl'
- | '--rh-space-6xl'
- | '--rh-space-7xl';
+  | '--rh-space-xs'
+  | '--rh-space-sm'
+  | '--rh-space-md'
+  | '--rh-space-lg'
+  | '--rh-space-xl'
+  | '--rh-space-2xl'
+  | '--rh-space-3xl'
+  | '--rh-space-4xl'
+  | '--rh-space-5xl'
+  | '--rh-space-6xl'
+  | '--rh-space-7xl';
 
-
-const assignBasename = (token: DesignToken) => !token.name ? token : ({
-  ...token,
-  baseName: token.name.replace(/^(--)?rh-space-/, ''),
-});
+const assignBasename = (token: DesignToken) =>
+  !token.name ?
+    token
+    : {
+      ...token,
+      baseName: token.name.replace(/^(--)?rh-space-/, ''),
+    };
 
 const getToken = (name: string) => {
-  const tokenName = `--rh-space-${name.trim().replace('--rh-space-', '') as '7xl'}` as const;
+  const tokenName = `--rh-space-${
+    name.trim().replace('--rh-space-', '') as '7xl'
+  }` as const;
   return metaTokens.get(tokenName);
 };
 
@@ -50,23 +54,26 @@ export class UxdotSpacerTokensTable extends LitElement {
 
   @property({ attribute: 'color-palette' }) colorPalette = 'light';
 
-  @property({ converter: StringListConverter }) tokens: string[] =
-    Array.from(allTokens.keys())
-        .filter((x): x is SpaceTokenName => x.startsWith('--rh-space'));
+  @property({ converter: StringListConverter }) tokens: string[] = Array.from(
+    allTokens.keys()
+  ).filter((x): x is SpaceTokenName => x.startsWith('--rh-space'));
 
   @state() metaData: DesignToken[] = [];
 
   render() {
-    const metaData = this.tokens
-        .map(getToken)
-        .filter(x => !!x);
+    const metaData = this.tokens.map(getToken).filter(x => !!x);
 
     return html`
       <!-- TODO: remove lightdom after implementing auto-load-->
-      <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+      <link
+        rel="stylesheet"
+        href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"
+      />
       <rh-table color-palette="${this.colorPalette}">
         <table>
-          <caption>${this.caption}</caption>
+          <caption>
+            ${this.caption}
+          </caption>
           <thead>
             <tr>
               <th scope="col" data-label="Example">Example</th>
@@ -75,34 +82,43 @@ export class UxdotSpacerTokensTable extends LitElement {
               <th scope="col"></th>
             </tr>
           </thead>
-          <tbody>${metaData
-              .map(assignBasename)
-              .map(token => html`
-            <tr>
-              <td data-label="Example">
-                <samp class="${classMap({ space: true, [token.baseName]: true })}"
-                  style="${styleMap({
-                    '--samp-space-size': token.$value,
-                    '--samp-space-color': token.$extensions['com.redhat.ux'].color,
-                  })}">
-                  <span class="${classMap({ offset: parseInt(token.$value) < 16 })}">
-                    ${token.baseName}
-                  </span>
-                </samp>
-              </td>
-              <td data-label="Token">
-                <uxdot-copy-button>--${token.name}</uxdot-copy-button>
-              </td>
-              <td data-label="Description">${token.$description}</td>
-              <td data-label="Copy">
-                <div>
-                  <uxdot-copy-button copy="var(--${token.name}, ${token.$value})"></uxdot-copy-button>
-                  <a href="/tokens/space/#${token.name}">
-                    <rh-icon icon="link" set="ui" aria-label="link"></rh-icon>
-                  </a>
-                </div>
-              </td>
-            </tr>`)}
+          <tbody>
+            ${metaData.map(assignBasename).map(
+              token => html` <tr>
+                <td data-label="Example">
+                  <samp
+                    class="${classMap({ space: true, [token.baseName]: true })}"
+                    style="${styleMap({
+                      '--samp-space-size': token.$value,
+                      '--samp-space-color':
+                        token.$extensions['com.redhat.ux'].color,
+                    })}"
+                  >
+                    <span
+                      class="${classMap({
+                        offset: parseInt(token.$value) < 16,
+                      })}"
+                    >
+                      ${token.baseName}
+                    </span>
+                  </samp>
+                </td>
+                <td data-label="Token">
+                  <uxdot-copy-button>--${token.name}</uxdot-copy-button>
+                </td>
+                <td data-label="Description">${token.$description}</td>
+                <td data-label="Copy">
+                  <div>
+                    <uxdot-copy-button
+                      copy="var(--${token.name}, ${token.$value})"
+                    ></uxdot-copy-button>
+                    <a href="/tokens/space/#${token.name}">
+                      <rh-icon icon="link" set="ui" aria-label="link"></rh-icon>
+                    </a>
+                  </div>
+                </td>
+              </tr>`
+            )}
           </tbody>
         </table>
       </rh-table>

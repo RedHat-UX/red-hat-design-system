@@ -14,16 +14,19 @@ describe('<rh-disclosure>', function() {
   describe('simply instantiating', function() {
     let element: RhDisclosure;
     it('imperatively instantiates', function() {
-      expect(document.createElement('rh-disclosure')).to.be.an.instanceof(RhDisclosure);
+      expect(document.createElement('rh-disclosure')).to.be.an.instanceof(
+        RhDisclosure
+      );
     });
 
     it('should upgrade', async function() {
-      element = await createFixture<RhDisclosure>(html`<rh-disclosure></rh-disclosure>`);
+      element = await createFixture<RhDisclosure>(
+        html`<rh-disclosure></rh-disclosure>`
+      );
       const klass = customElements.get('rh-disclosure');
       expect(element)
           .to.be.an.instanceOf(klass)
-          .and
-          .to.be.an.instanceOf(RhDisclosure);
+          .and.to.be.an.instanceOf(RhDisclosure);
     });
   });
 
@@ -46,7 +49,10 @@ describe('<rh-disclosure>', function() {
 
     it('exposes the summary to AT', async function() {
       const snapshot = await a11ySnapshot();
-      expect(snapshot).to.axContainQuery({ role: 'DisclosureTriangle', name: SUMMARY });
+      expect(snapshot).to.axContainQuery({
+        role: 'DisclosureTriangle',
+        name: SUMMARY,
+      });
     });
   });
 
@@ -74,12 +80,16 @@ describe('<rh-disclosure>', function() {
 
     it('exposes the summary to AT', async function() {
       const snapshot = await a11ySnapshot();
-      expect(snapshot).to.axContainQuery({ role: 'DisclosureTriangle', name: SUMMARY });
+      expect(snapshot).to.axContainQuery({
+        role: 'DisclosureTriangle',
+        name: SUMMARY,
+      });
     });
 
     it('should be closed by default', function() {
       expect(element.open).to.be.false;
-      const details = element.shadowRoot!.querySelector<HTMLDetailsElement>('details');
+      const details =
+        element.shadowRoot!.querySelector<HTMLDetailsElement>('details');
       expect(details?.open).to.be.false;
     });
 

@@ -6,20 +6,22 @@ import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer
 
 import styles from './rh-cue.css';
 
-export type Seconds = (number | null | undefined);
-export type TimeString = (string | null | undefined);
+export type Seconds = number | null | undefined;
+export type TimeString = string | null | undefined;
 
 /**
  * formats time in seconds as `mm:ss.ms` string
  */
 export const getFormattedTime = (seconds: Seconds): string => {
   const ss = seconds ?? 0;
-  return (
-      typeof seconds === 'undefined' ? ''
-    : `${Math.floor(ss % 3600 / 60).toString().padStart(2, '0')}:${Math.floor(ss % 60).toString().padStart(2, '0')}`
-  );
+  return typeof seconds === 'undefined' ?
+    ''
+    : `${Math.floor((ss % 3600) / 60)
+        .toString()
+        .padStart(2, '0')}:${Math.floor(ss % 60)
+        .toString()
+        .padStart(2, '0')}`;
 };
-
 
 /**
  * non-capturing group (_optional_):
@@ -37,7 +39,8 @@ export const getFormattedTime = (seconds: Seconds): string => {
  * > named capture group 4 `ms`:
  * > > **0-9** (_>= 1x_)
  */
-const SECONDS_RE = /(?:(?<hh>\d{2}):)?(?:(?<mm>\d{2}):)(?<ss>\d{2})(?:\.(?<ms>\d+))?/;
+const SECONDS_RE =
+  /(?:(?<hh>\d{2}):)?(?:(?<mm>\d{2}):)(?<ss>\d{2})(?:\.(?<ms>\d+))?/;
 
 /**
  * gets seconds from a string formatted as `mm:ss.mss` or `hh:mm:ss.mss`
@@ -51,7 +54,12 @@ export const getSeconds = (str: TimeString): Seconds => {
     return undefined;
   } else {
     const { hh = 0, mm = 0, ss = 0, ms = 0 } = match.groups ?? {};
-    return (hh as number * 3600) + (mm as number * 60) + (ss as number * 1) + (ms as number / 1000);
+    return (
+      (hh as number) * 3600
+      + (mm as number) * 60
+      + (ss as number) * 1
+      + (ms as number) / 1000
+    );
   }
 };
 
@@ -104,8 +112,15 @@ export class RhCue extends LitElement {
 
   render() {
     const { start, voice } = this;
-    return html`${!this.#hasVoice ? nothing : this.#headings.wrap(this.#linkTemplate(html`
-      <span id="start">${start}</span> - <span id="voice">${voice}</span>`, true))}${this.#linkTemplate(html`
+    return html`${!this.#hasVoice ?
+      nothing
+      : this.#headings.wrap(
+        this.#linkTemplate(
+          html` <span id="start">${start}</span> -
+              <span id="voice">${voice}</span>`,
+          true
+        )
+      )}${this.#linkTemplate(html`
       <!-- text of cue -->
       <slot></slot>
     `)}`;
@@ -117,12 +132,16 @@ export class RhCue extends LitElement {
       this.startTime && `t${this.startTime}-`,
       this.endTime,
       heading ? 'heading' : 'text',
-    ].filter(Boolean).join('');
-    return html`
-      <a id="${id}"
-         href="#${id}"
-         ?active="${this.active && !heading}"
-         @click=${this.#onClick}>${content}</a>`;
+    ]
+        .filter(Boolean)
+        .join('');
+    return html` <a
+      id="${id}"
+      href="#${id}"
+      ?active="${this.active && !heading}"
+      @click=${this.#onClick}
+      >${content}</a
+    >`;
   }
 
   #onClick() {

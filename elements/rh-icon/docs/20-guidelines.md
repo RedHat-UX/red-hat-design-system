@@ -52,7 +52,7 @@ These icons are used to represent social media platforms and are often linked.
 
 ## Icons as metaphors
 
-Icons can convey abstract concepts quickly and help users navigate a new interface. For example, a folder icon helps users understand the concept of organizing and storing files in their computer because it provides a connection to file organization in real life. 
+Icons can convey abstract concepts quickly and help users navigate a new interface. For example, a folder icon helps users understand the concept of organizing and storing files in their computer because it provides a connection to file organization in real life.
 
 The association between an icon and a certain meaning can be strengthened by how frequently it is used in that context. A magnifying glass, for example, is frequently used to denote <strong>Search</strong>, so it is easily recognized by users. This is especially helpful when an icon appears without supporting text nearby.
 

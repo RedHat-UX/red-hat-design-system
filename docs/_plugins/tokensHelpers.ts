@@ -1,11 +1,16 @@
 import type { CssCustomProperty } from 'custom-elements-manifest';
-import { tokens as tokensMeta, type DesignToken, type TokenName } from '@rhds/tokens/meta.js';
+import {
+  tokens as tokensMeta,
+  type DesignToken,
+  type TokenName,
+} from '@rhds/tokens/meta.js';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
 const tokensJSON = require('@rhds/tokens/json/rhds.tokens.json');
 
-export const capitalize = (x: string): string => `${x.at(0)?.toUpperCase() ?? ''}${x.slice(1)}`;
+export const capitalize = (x: string): string =>
+  `${x.at(0)?.toUpperCase() ?? ''}${x.slice(1)}`;
 
 /* eslint-disable jsdoc/require-param */
 
@@ -19,16 +24,21 @@ function escapeDoubleQuotes(x: string) {
 /**
  * When recursing over the token categories, it's helpful to get the containing category for things like docs and key names
  */
-export function getParentCollection(options: {
-  parent: string;
-  path: string;
-}, tokens: DesignToken[]) {
+export function getParentCollection(
+  options: {
+    parent: string;
+    path: string;
+  },
+  tokens: DesignToken[]
+) {
   const parent = options.parent ?? tokens;
   const key = options.path.split('.').pop();
   return { parent, key };
 }
 
-function isDesignToken(token: DesignToken | CssCustomProperty): token is DesignToken {
+function isDesignToken(
+  token: DesignToken | CssCustomProperty
+): token is DesignToken {
   return '$value' in token;
 }
 
@@ -43,7 +53,7 @@ export function getVariableSyntax(token: DesignToken | CssCustomProperty) {
 
 /** generate string of copy cell for 11ty templates */
 export function copyCell(token: DesignToken) {
-  return /* html */`
+  return /* html */ `
     <td data-label="Copy">
       <div>
         <uxdot-copy-button class="icon-only" copy="${getVariableSyntax(token)}">
@@ -51,7 +61,9 @@ export function copyCell(token: DesignToken) {
             Full CSS Variable
           </span>
         </uxdot-copy-button>
-        <uxdot-copy-button class="icon-only" copy="${getTokenHref(token)}" icon="link">
+        <uxdot-copy-button class="icon-only" copy="${getTokenHref(
+          token
+        )}" icon="link">
           <span slot="extra-content" class="visually-hidden">
             Permalink to this token
           </span>
@@ -80,7 +92,9 @@ function getTokenCategorySlug(token: DesignToken) {
 
 /** generate fully qualified URL to a token's docs */
 export function getTokenHref(token: DesignToken) {
-  return `https://ux.redhat.com/tokens/${getTokenCategorySlug(token)}/#${token.name}`;
+  return `https://ux.redhat.com/tokens/${getTokenCategorySlug(token)}/#${
+    token.name
+  }`;
 }
 
 /** get the tokens at a given json path */

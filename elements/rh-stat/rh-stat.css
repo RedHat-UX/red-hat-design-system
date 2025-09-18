@@ -7,9 +7,10 @@ div {
   height: 100%;
   display: flex;
 
-  --_accent-color:
-    light-dark(var(--rh-color-text-brand-on-light, #ee0000),
-      var(--rh-color-text-primary-on-dark, #ffffff));
+  --_accent-color: light-dark(
+    var(--rh-color-text-brand-on-light, #ee0000),
+    var(--rh-color-text-primary-on-dark, #ffffff)
+  );
 
   flex-direction: column;
   align-items: center;
@@ -34,17 +35,17 @@ span,
   --rh-icon-size: var(--rh-size-icon-06, 64px);
 }
 
-.md ::slotted([slot='icon']) {
+.md ::slotted([slot="icon"]) {
   width: var(--rh-size-icon-04, 40px);
   aspect-ratio: 1;
 }
 
-.lg ::slotted([slot='icon']) {
+.lg ::slotted([slot="icon"]) {
   width: var(--rh-size-icon-06, 64px);
   aspect-ratio: 1;
 }
 
-.hasIcon ::slotted([slot='icon']),
+.hasIcon ::slotted([slot="icon"]),
 .hasIcon rh-icon {
   order: 1;
   display: block;
@@ -57,7 +58,14 @@ span,
   order: 1;
   color: var(--_accent-color);
   font-size: var(--rh-font-size-body-text-xl, 1.25rem);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+  font-family: var(
+    --rh-font-family-heading,
+    RedHatDisplay,
+    "Red Hat Display",
+    Helvetica,
+    Arial,
+    sans-serif
+  );
   font-weight: var(--rh-font-weight-body-text-regular, 400);
 }
 
@@ -66,20 +74,41 @@ span,
   color: var(--_accent-color);
   font-size: var(--rh-font-size-heading-lg, 2.25rem);
   font-weight: var(--rh-font-weight-heading-regular, 400);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+  font-family: var(
+    --rh-font-family-heading,
+    RedHatDisplay,
+    "Red Hat Display",
+    Helvetica,
+    Arial,
+    sans-serif
+  );
 }
 
 #content {
   order: 3;
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  font-family: var(
+    --rh-font-family-body-text,
+    RedHatText,
+    "Red Hat Text",
+    Helvetica,
+    Arial,
+    sans-serif
+  );
   margin-top: var(--rh-space-sm, 6px);
 }
 
 #cta {
   order: 4;
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+  font-family: var(
+    --rh-font-family-heading,
+    RedHatDisplay,
+    "Red Hat Display",
+    Helvetica,
+    Arial,
+    sans-serif
+  );
   margin-top: var(--rh-space-lg, 16px);
 }
 
@@ -98,14 +127,14 @@ div:not(.hasCta) #cta {
   font-size: 32px;
 }
 
-:host([size='large']) #statistic {
+:host([size="large"]) #statistic {
   font-size: var(--rh-font-size-heading-2xl, 3rem);
 }
 
-:host([top='statistic']) #statistic {
+:host([top="statistic"]) #statistic {
   order: 1;
 }
 
-:host([top='statistic']) #title {
+:host([top="statistic"]) #title {
   order: 2;
 }

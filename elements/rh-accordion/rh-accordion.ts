@@ -6,13 +6,19 @@ import { property } from 'lit/decorators/property.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { provide } from '@lit/context';
 
-import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import {
+  colorPalettes,
+  type ColorPalette,
+} from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import { NumberListConverter, ComposedEvent } from '@patternfly/pfe-core';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import { RhAccordionHeader, AccordionHeaderChangeEvent } from './rh-accordion-header.js';
+import {
+  RhAccordionHeader,
+  AccordionHeaderChangeEvent,
+} from './rh-accordion-header.js';
 import { RhAccordionPanel } from './rh-accordion-panel.js';
 
 import { context, type RhAccordionContext } from './context.js';
@@ -25,7 +31,7 @@ import styles from './rh-accordion.css';
 export class AccordionExpandEvent extends ComposedEvent {
   constructor(
     public toggle: RhAccordionHeader,
-    public panel: RhAccordionPanel,
+    public panel: RhAccordionPanel
   ) {
     super('expand');
   }
@@ -34,7 +40,7 @@ export class AccordionExpandEvent extends ComposedEvent {
 export class AccordionCollapseEvent extends ComposedEvent {
   constructor(
     public toggle: RhAccordionHeader,
-    public panel: RhAccordionPanel,
+    public panel: RhAccordionPanel
   ) {
     super('collapse');
   }
@@ -71,7 +77,9 @@ export class RhAccordion extends LitElement {
     return target instanceof RhAccordionPanel;
   }
 
-  static isAccordionChangeEvent(event: Event): event is AccordionHeaderChangeEvent {
+  static isAccordionChangeEvent(
+    event: Event
+  ): event is AccordionHeaderChangeEvent {
     return event instanceof AccordionHeaderChangeEvent;
   }
 
@@ -89,7 +97,8 @@ export class RhAccordion extends LitElement {
    * Color Palette for this accordion.
    * @see https://ux.redhat.com/theming/color-palettes/
    */
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+  @property({ reflect: true, attribute: 'color-palette' })
+  colorPalette?: ColorPalette;
 
   /**
    * Sets and reflects the currently expanded accordion 0-based indexes.
@@ -148,10 +157,12 @@ export class RhAccordion extends LitElement {
     const { large } = this;
     const expanded = this.#expanded;
     return html`
-      <div id="container"
-           class="${classMap({ large, expanded })}"><!--
+      <div id="container" class="${classMap({ large, expanded })}">
+        <!--
         Place the \`rh-accordion-header\` and \`rh-accordion-panel\` elements here.
-        --><slot></slot></div>
+        --><slot
+        ></slot>
+      </div>
     `;
   }
 
@@ -244,15 +255,14 @@ export class RhAccordion extends LitElement {
   }
 
   #allHeaders(accordion: RhAccordion = this): RhAccordionHeader[] {
-    return Array.from(accordion.children ?? []).filter((x): x is RhAccordionHeader =>
-      x instanceof RhAccordionHeader
+    return Array.from(accordion.children ?? []).filter(
+      (x): x is RhAccordionHeader => x instanceof RhAccordionHeader
     );
   }
 
   #allPanels(accordion: RhAccordion = this): RhAccordionPanel[] {
     return Array.from(accordion.children).filter((x =>
-      RhAccordion.isPanel(x)) as typeof RhAccordion.isPanel
-    );
+      RhAccordion.isPanel(x)) as typeof RhAccordion.isPanel);
   }
 
   #getIndex(el: Element | null) {
@@ -264,7 +274,9 @@ export class RhAccordion extends LitElement {
       return this.panels.findIndex(panel => panel.id === el.id);
     }
 
-    this.#logger.warn('The #getIndex method expects to receive a header or panel element.');
+    this.#logger.warn(
+      'The #getIndex method expects to receive a header or panel element.'
+    );
     return -1;
   }
 
@@ -372,7 +384,7 @@ declare global {
   }
 
   interface HTMLElementEventMap {
-    'expand': AccordionExpandEvent;
-    'collapse': AccordionCollapseEvent;
+    expand: AccordionExpandEvent;
+    collapse: AccordionCollapseEvent;
   }
 }

@@ -17,11 +17,16 @@ export class RhSkeleton extends LitElement {
   static readonly styles = [styles];
 
   /** What shape the skeleton should be. Defaults to `body-copy`. */
-  @property({ reflect: true }) type?: 'body-copy' | 'heading' | 'circle' | 'square' | 'rectangle';
+  @property({ reflect: true }) type?:
+    | 'body-copy'
+    | 'heading'
+    | 'circle'
+    | 'square'
+    | 'rectangle';
 
   /** What size the skeleton should be. Defaults to `md`.
    * The `size` attribute is not valid on circle, square, or rectangle skeletons.
-  */
+   */
   @property({ reflect: true }) size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
   render() {

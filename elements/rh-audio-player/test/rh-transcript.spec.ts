@@ -4,29 +4,28 @@ import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { RhAudioPlayer } from '../rh-audio-player.js';
 import { RhTranscript } from '../rh-transcript.js';
 
-
 describe('<rh-transcript>', function() {
   let element: RhAudioPlayer;
   let transcript: RhTranscript | null;
 
   it('instantiates imperatively', function() {
-    expect(document.createElement('rh-transcript')).to.be.an.instanceof(RhTranscript);
+    expect(document.createElement('rh-transcript')).to.be.an.instanceof(
+      RhTranscript
+    );
   });
 
   describe('simply instantiating', function() {
     beforeEach(async function() {
       transcript = await createFixture<RhTranscript>(html`
-        <rh-transcript>
-        </rh-transcript>
-    `);
+        <rh-transcript> </rh-transcript>
+      `);
     });
 
     it('should upgrade', function() {
       const klass = customElements.get('rh-transcript');
       expect(transcript)
           .to.be.an.instanceOf(klass)
-          .and
-          .to.be.an.instanceOf(RhTranscript);
+          .and.to.be.an.instanceOf(RhTranscript);
     });
   });
 

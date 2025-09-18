@@ -4,40 +4,36 @@
 
 ## Style
 
-Accordion panels include title text, a chevron icon, body text, and other 
-content. When a panel is collapsed, only the top and bottom borders are visible. 
-When a panel is expanded, all borders are visible including a thicker left 
+Accordion panels include title text, a chevron icon, body text, and other
+content. When a panel is collapsed, only the top and bottom borders are visible.
+When a panel is expanded, all borders are visible including a thicker left
 border for emphasis.
 
 ### Anatomy
 
-<figure>
-  <uxdot-example color-palette="lightest">
-    <img alt="Anatomy of an accordion with lots of annotations pointing to various parts"
-         src="../accordion-anatomy.png"
-         width="872"
-         height="755">
-  </uxdot-example>
-  <figcaption>
-    <ol>
-      <li>Collapsed panel</li>
-      <li>Expanded panel</li>
-      <li>Title</li>
-      <li>Panel header region</li>
-      <li>Caret</li>
-      <li>Emphasis</li>
-      <li>Content</li>
-      <li>Panel body region</li>
-      <li>Accent slot</li>
-    </ol>
-  </figcaption>
-</figure>
+<uxdot-example color-palette="lightest" width-adjustment="872px">
+  <img alt="Anatomy of an accordion with lots of annotations pointing to various parts"
+       src="../accordion-anatomy.png"
+       width="872"
+       height="755">
+</uxdot-example>
+
+1. Collapsed panel
+2. Expanded panel
+3. Title
+4. Panel header region
+5. Caret
+6. Emphasis
+7. Content
+8. Panel body region
+9. Accent slot
+   {.example-notes}
 
 ### Sizes
 
-There are two available sizes and the only difference is the title text size. 
-You can use the Small size on large breakpoints, but not the Large size on small 
-breakpoints due to the potential of long title text wrapping to more than two 
+There are two available sizes and the only difference is the title text size.
+You can use the Small size on large breakpoints, but not the Large size on small
+breakpoints due to the potential of long title text wrapping to more than two
 lines.
 
 <uxdot-example color-palette="lightest" width-adjustment="872px">
@@ -48,9 +44,10 @@ lines.
 </uxdot-example>
 
 ## Color scheme
+
 <a id="theme"></a>
 
-An accordion is available for both light and dark schemes. The light scheme 
+An accordion is available for both light and dark schemes. The light scheme
 expanded panel includes a box shadow, but the dark scheme does not.
 
 ### Light theme
@@ -73,8 +70,8 @@ expanded panel includes a box shadow, but the dark scheme does not.
 
 ## Configuration
 
-An expanded panel does not have a maximum height, but it may scroll if 
-constrained by vertical space. The width of an accordion varies based on content 
+An expanded panel does not have a maximum height, but it may scroll if
+constrained by vertical space. The width of an accordion varies based on content
 and page layout. Title text and icons are horizontally aligned.
 
 <uxdot-example color-palette="lightest" width-adjustment="872px">
@@ -86,7 +83,7 @@ and page layout. Title text and icons are horizontally aligned.
 
 ### Accent slot
 
-The accent slot can be positioned inline or below the panel's title. This can 
+The accent slot can be positioned inline or below the panel's title. This can
 contain tags, badges, or other small elements with secondary information.
 
 <uxdot-example color-palette="lightest" width-adjustment="872px">
@@ -131,7 +128,7 @@ Multiple panels can be expanded simultaneously even when nested.
 
 ## Interaction states
 
-Interaction states are visual representations used to communicate the status of 
+Interaction states are visual representations used to communicate the status of
 an element or pattern.
 
 ### Hover
@@ -149,7 +146,6 @@ an element or pattern.
        width="872"
        height="213">
 </uxdot-example>
-
 
 <rh-table>
 

@@ -17,7 +17,11 @@ describe('<rh-video-embed>', function() {
   }
 
   function isVisuallyHidden(el?: HTMLElement | null) {
-    return !el || el?.hidden || window.getComputedStyle(el)?.getPropertyValue('opacity') === '0';
+    return (
+      !el
+      || el?.hidden
+      || window.getComputedStyle(el)?.getPropertyValue('opacity') === '0'
+    );
   }
 
   function isA11yHidden(el?: HTMLElement | null) {
@@ -38,16 +42,19 @@ describe('<rh-video-embed>', function() {
 
   describe('simply instantiating', function() {
     it('imperatively instantiates', function() {
-      expect(document.createElement('rh-video-embed')).to.be.an.instanceof(RhVideoEmbed);
+      expect(document.createElement('rh-video-embed')).to.be.an.instanceof(
+        RhVideoEmbed
+      );
     });
 
     it('should upgrade', async function() {
-      element = await createFixture<RhVideoEmbed>(html`<rh-video-embed></rh-video-embed>`);
+      element = await createFixture<RhVideoEmbed>(
+        html`<rh-video-embed></rh-video-embed>`
+      );
       const klass = customElements.get('rh-video-embed');
       expect(element)
           .to.be.an.instanceOf(klass)
-          .and
-          .to.be.an.instanceOf(RhVideoEmbed);
+          .and.to.be.an.instanceOf(RhVideoEmbed);
     });
   });
 
@@ -71,8 +78,7 @@ describe('<rh-video-embed>', function() {
     });
 
     it('is accessible', async function() {
-      await expect(element)
-          .to.be.accessible();
+      await expect(element).to.be.accessible();
     });
 
     it('consent button is not in a11y tree', async function() {
@@ -107,11 +113,23 @@ describe('<rh-video-embed>', function() {
 
   describe('using a keyboard to play', function() {
     beforeEach(async function() {
-      element = await createFixture<RhVideoEmbed>(html`
-      <rh-video-embed>
-        <img slot="thumbnail" src="https://fakeimg.pl/900x499/282828/eae0d0" alt="fakethumb"/>
+      element = await createFixture<RhVideoEmbed>(html` <rh-video-embed>
+        <img
+          slot="thumbnail"
+          src="https://fakeimg.pl/900x499/282828/eae0d0"
+          alt="fakethumb"
+        />
         <template>
-          <iframe title="videotitle" width="900" height="499" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <iframe
+            title="videotitle"
+            width="900"
+            height="499"
+            src="https://www.youtube.com/embed/Hc8emNr2igU"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
         </template>
       </rh-video-embed>`);
       element?.focusableElement?.focus();
@@ -123,19 +141,30 @@ describe('<rh-video-embed>', function() {
     it('prepares to play', async function() {
       const snapshot = await a11ySnapshot();
       expect(snapshot)
-          .axTreeFocusedNode
-          .to.have.axRole('Iframe')
+          .axTreeFocusedNode.to.have.axRole('Iframe')
           .and.to.have.axName('videotitle');
     });
   });
 
   describe('using a mouse to play', function() {
     beforeEach(async function() {
-      element = await createFixture<RhVideoEmbed>(html`
-      <rh-video-embed>
-        <img slot="thumbnail" src="https://fakeimg.pl/900x499/282828/eae0d0" alt="fakethumb"/>
+      element = await createFixture<RhVideoEmbed>(html` <rh-video-embed>
+        <img
+          slot="thumbnail"
+          src="https://fakeimg.pl/900x499/282828/eae0d0"
+          alt="fakethumb"
+        />
         <template>
-          <iframe title="videotitle" width="900" height="499" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <iframe
+            title="videotitle"
+            width="900"
+            height="499"
+            src="https://www.youtube.com/embed/Hc8emNr2igU"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
         </template>
       </rh-video-embed>`);
       await clickElementAtCenter(element.focusableElement);
@@ -146,8 +175,7 @@ describe('<rh-video-embed>', function() {
     it('prepares to play', async function() {
       const snapshot = await a11ySnapshot();
       expect(snapshot)
-          .axTreeFocusedNode
-          .to.have.axRole('Iframe')
+          .axTreeFocusedNode.to.have.axRole('Iframe')
           .and.to.have.axName('videotitle');
     });
   });
@@ -165,8 +193,7 @@ describe('<rh-video-embed>', function() {
     });
 
     it('is accessible', async function() {
-      await expect(element)
-          .to.be.accessible();
+      await expect(element).to.be.accessible();
     });
 
     it('has consent button', function() {
@@ -197,11 +224,25 @@ describe('<rh-video-embed>', function() {
 
   describe('using a keyboard to update consent', function() {
     beforeEach(async function() {
-      element = await createFixture<RhVideoEmbed>(html`
-      <rh-video-embed require-consent>
-        <img slot="thumbnail" src="https://fakeimg.pl/900x499/282828/eae0d0" alt="fakethumb"/>
+      element = await createFixture<RhVideoEmbed>(html` <rh-video-embed
+        require-consent
+      >
+        <img
+          slot="thumbnail"
+          src="https://fakeimg.pl/900x499/282828/eae0d0"
+          alt="fakethumb"
+        />
         <template>
-          <iframe title="videotitle" width="900" height="499" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <iframe
+            title="videotitle"
+            width="900"
+            height="499"
+            src="https://www.youtube.com/embed/Hc8emNr2igU"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
         </template>
       </rh-video-embed>`);
       element.consentButton?.focus();
@@ -216,21 +257,41 @@ describe('<rh-video-embed>', function() {
 
     it('shows play button and thumbnail', async function() {
       const snapshot = await a11ySnapshot();
-      expect(snapshot).to.axContainQuery({ role: 'image', name: 'fakethumb' })
-          .and.to.axContainQuery({ role: 'button', name: 'videotitle (play video)' });
+      expect(snapshot)
+          .to.axContainQuery({ role: 'image', name: 'fakethumb' })
+          .and.to.axContainQuery({
+            role: 'button',
+            name: 'videotitle (play video)',
+          });
     });
   });
 
   describe('using a mouse to update consent', function() {
     beforeEach(async function() {
-      element = await createFixture<RhVideoEmbed>(html`
-      <rh-video-embed require-consent>
-        <img slot="thumbnail" src="https://fakeimg.pl/900x499/282828/eae0d0" alt="fakethumb"/>
+      element = await createFixture<RhVideoEmbed>(html` <rh-video-embed
+        require-consent
+      >
+        <img
+          slot="thumbnail"
+          src="https://fakeimg.pl/900x499/282828/eae0d0"
+          alt="fakethumb"
+        />
         <template>
-          <iframe title="videotitle" width="900" height="499" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <iframe
+            title="videotitle"
+            width="900"
+            height="499"
+            src="https://www.youtube.com/embed/Hc8emNr2igU"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
         </template>
       </rh-video-embed>`);
-      await clickElementAtCenter(element.focusableElement.shadowRoot!.querySelector('button')!);
+      await clickElementAtCenter(
+        element.focusableElement.shadowRoot!.querySelector('button')!
+      );
       await eventFired('consent-click', 'consentClicked');
       element.consented = true;
     });
@@ -241,8 +302,12 @@ describe('<rh-video-embed>', function() {
 
     it('shows play button and thumbnail', async function() {
       const snapshot = await a11ySnapshot();
-      expect(snapshot).to.axContainQuery({ role: 'image', name: 'fakethumb' })
-          .and.to.axContainQuery({ role: 'button', name: 'videotitle (play video)' });
+      expect(snapshot)
+          .to.axContainQuery({ role: 'image', name: 'fakethumb' })
+          .and.to.axContainQuery({
+            role: 'button',
+            name: 'videotitle (play video)',
+          });
     });
   });
 });

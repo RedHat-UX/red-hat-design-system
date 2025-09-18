@@ -5,10 +5,10 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import styles from '@rhds/tokens/css/color-palette.css.js';
 import type { Constructor } from '@lit/reactive-element/decorators/base.js';
 
-type ColorPaletteConstructor = Constructor<ColorPaletteElement> & typeof ReactiveElement;
+type ColorPaletteConstructor = Constructor<ColorPaletteElement> &
+  typeof ReactiveElement;
 
-type ColorPaletteDecorator =
-  (target: ColorPaletteConstructor) => void;
+type ColorPaletteDecorator = (target: ColorPaletteConstructor) => void;
 
 interface ColorPaletteElement extends ReactiveElement {
   colorPalette?: ColorPalette | undefined;
@@ -22,7 +22,7 @@ interface ColorPaletteElement extends ReactiveElement {
  *
  * `ColorPalette` must be associated with the `color-palette` attribute
  */
-export type ColorPalette = typeof Palettes[number];
+export type ColorPalette = (typeof Palettes)[number];
 
 const Palettes = Object.freeze([
   'light',
@@ -57,26 +57,26 @@ class PaletteController implements ReactiveController {
   }
 }
 
-
 function impl(
   klass: Constructor<ColorPaletteElement> & typeof ReactiveElement,
-  supportedPalettes = Palettes,
+  supportedPalettes = Palettes
 ) {
-  const { attribute, reflect } = klass.properties?.colorPalette
-      ?? klass.getPropertyOptions('colorPalette')
-      ?? {};
+  const { attribute, reflect } =
+    klass.properties?.colorPalette
+    ?? klass.getPropertyOptions('colorPalette')
+    ?? {};
   if (attribute !== 'color-palette' || !reflect) {
     throw new Error('@colorPalettes requires the `color-palette` attribute.');
   }
-  klass.addInitializer(instance => new PaletteController(instance, [...supportedPalettes]));
-  const elementStyles =
-      Array.isArray(klass.styles) ? klass.styles
-    : klass.styles ? [klass.styles]
+  klass.addInitializer(
+    instance => new PaletteController(instance, [...supportedPalettes])
+  );
+  const elementStyles = Array.isArray(klass.styles) ?
+    klass.styles
+    : klass.styles ?
+    [klass.styles]
     : [];
-  klass.styles = [
-    styles,
-    ...elementStyles,
-  ];
+  klass.styles = [styles, ...elementStyles];
 }
 
 /**
@@ -86,13 +86,17 @@ function impl(
  * @param supportedPalettes list of supported color palettes
  * @see https://ux.redhat.com/themeing/color-palettes
  */
-export function colorPalettes(...supportedPalettes: ColorPalette[]): ClassDecorator;
+export function colorPalettes(
+  ...supportedPalettes: ColorPalette[]
+): ClassDecorator;
 export function colorPalettes(klass: ColorPaletteConstructor): void;
 export function colorPalettes(
   ...args: ColorPalette[] | [klass: ColorPaletteConstructor]
 ): ColorPaletteDecorator | void {
   if (args.every(x => typeof x === 'string')) {
-    return function(klass: Constructor<ColorPaletteElement> & typeof ReactiveElement) {
+    return function(
+      klass: Constructor<ColorPaletteElement> & typeof ReactiveElement
+    ) {
       return impl(klass, args as unknown as typeof Palettes);
     };
   } else {

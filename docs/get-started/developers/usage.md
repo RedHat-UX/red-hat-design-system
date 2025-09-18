@@ -94,8 +94,8 @@ import "@rhds/elements/rh-card/rh-card.js";
 export default {
   name: "HelloWorld",
   props: {
-    msg: String
-  }
+    msg: String,
+  },
 };
 ```
 

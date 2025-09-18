@@ -1,10 +1,13 @@
-## Usage 
+## Usage
+
 Use an audio player to allow users to play short-form audio clips or long-form audio files like podcasts.
 
-### Features 
+### Features
+
 Playing and controlling audio are not the only functions of the audio player. There are [features](../features) included where users can read the audio summary, view subscription options, and follow along with or even download the embedded transcript. These features help users listen to audio while staying within the same experience on the same page.
 
-## Sizes 
+## Sizes
+
 When choosing one size over the other, consider where it is being used and what controls should be visible to users. Some audio player sizes have limited controls due to space constraints and some sizes occupy more space in a layout than others. Also take into account how an audio player changes size when users expand certain features.
 
 <uxdot-example color-palette="lightest" width-adjustment="712px">
@@ -17,14 +20,15 @@ When choosing one size over the other, consider where it is being used and what 
 <rh-table>
 
 | Size    | Use case                                                                                           |
-|---------|----------------------------------------------------------------------------------------------------|
+| ------- | -------------------------------------------------------------------------------------------------- |
 | Full    | Use when the audio player is the primary focus and if users need access to all controls            |
 | Compact | Use when there are other elements nearby and if users need access to some controls                 |
 | Mini    | Use on small breakpoints or stretch to fit large breakpoints and if limited controls is acceptable |
 
 </rh-table>
 
-### Removing elements 
+### Removing elements
+
 It is acceptable to remove optional elements, but doing so will change the height or width of the audio player.
 
 <uxdot-example color-palette="lightest" width-adjustment="504px">
@@ -34,7 +38,8 @@ It is acceptable to remove optional elements, but doing so will change the heigh
        height="570">
 </uxdot-example>
 
-### Mini player 
+### Mini player
+
 In certain edge cases, the Mini player can hide the volume and contextual menu buttons.
 
 <uxdot-example color-palette="lightest" width-adjustment="712px">
@@ -44,9 +49,10 @@ In certain edge cases, the Mini player can hide the volume and contextual menu b
        height="276">
 </uxdot-example>
 
-## Writing content 
+## Writing content
 
-### Description and title 
+### Description and title
+
 The description and title help add context to an audio clip. The description is optional, but the title is mandatory.
 
 <rh-alert state="warning">
@@ -61,22 +67,23 @@ The description and title help add context to an audio clip. The description is 
        height="504">
 </uxdot-example>
 
+### Character count
 
-### Character count 
 Using too many characters will cause the description and title to scroll outside of the visible area. The recommended maximum character count for the elements of an audio player are listed below and include spaces.
 
 <rh-table>
 
 | Element     | Character count |
-|-------------|-----------------|
+| ----------- | --------------- |
 | Description | 80              |
 | Title       | 40              |
 
 </rh-table>
 
-## Layout 
+## Layout
 
-### Inline 
+### Inline
+
 Compact and Mini players can be used inline with titles, headings, and a call to action.
 
 <uxdot-example color-palette="lightest" width-adjustment="712px">
@@ -86,7 +93,8 @@ Compact and Mini players can be used inline with titles, headings, and a call to
        height="508">
 </uxdot-example>
 
-### Stacking 
+### Stacking
+
 Compact players can be stacked with headings, text, and horizontal rules.
 
 <uxdot-example color-palette="lightest" width-adjustment="712px">
@@ -96,7 +104,8 @@ Compact players can be stacked with headings, text, and horizontal rules.
        height="670">
 </uxdot-example>
 
-### Full-width 
+### Full-width
+
 The Compact size can span the width of a browser window and be anchored to the top or bottom of a page.
 
 <rh-alert state="warning">
@@ -118,9 +127,10 @@ The Compact size can span the width of a browser window and be anchored to the t
        height="670">
 </uxdot-example>
 
-## Behavior 
+## Behavior
 
-### Autoplay 
+### Autoplay
+
 When a page loads, audio should **never** start playing automatically without receiving input from a user first.
 
 <uxdot-example color-palette="lightest" width-adjustment="712px">
@@ -130,7 +140,8 @@ When a page loads, audio should **never** start playing automatically without re
        height="266">
 </uxdot-example>
 
-### Scrolling text 
+### Scrolling text
+
 If the description or title is long, it scrolls from left to right while audio is playing.
 
 <uxdot-example color-palette="lightest" width-adjustment="712px">
@@ -140,10 +151,12 @@ If the description or title is long, it scrolls from left to right while audio i
        height="926">
 </uxdot-example>
 
-## Playback 
+## Playback
+
 To see a list of all keystroke controls, go to the [Accessibility](../accessibility) page.
 
-### Seek 
+### Seek
+
 Dragging the current time indicator will jump to a specific time. Arrow keys will rewind or advance audio by 15 seconds.
 
 <uxdot-example color-palette="lightest" width-adjustment="712px">
@@ -153,7 +166,8 @@ Dragging the current time indicator will jump to a specific time. Arrow keys wil
        height="528">
 </uxdot-example>
 
-### Unmute/mute 
+### Unmute/mute
+
 Audio can be toggled on or off by pressing the unmute/mute button.
 
 <uxdot-example color-palette="lightest" width-adjustment="712px">
@@ -163,7 +177,8 @@ Audio can be toggled on or off by pressing the unmute/mute button.
        height="528">
 </uxdot-example>
 
-### Volume 
+### Volume
+
 Dragging the slider will adjust the volume. Arrow keys will increase or decrease the volume by 25% intervals.
 
 <uxdot-example color-palette="lightest" width-adjustment="712px">
@@ -173,7 +188,8 @@ Dragging the slider will adjust the volume. Arrow keys will increase or decrease
        height="528">
 </uxdot-example>
 
-### Speed 
+### Speed
+
 The rate of speed can be adjusted by clicking the carets or selecting the speed button and choosing a speed in the menu.
 
 <uxdot-example color-palette="lightest" width-adjustment="712px">
@@ -183,7 +199,8 @@ The rate of speed can be adjusted by clicking the carets or selecting the speed 
        height="613">
 </uxdot-example>
 
-### Rewind/forward 
+### Rewind/forward
+
 Audio rewinds or advances by 15 seconds if either button is pressed.
 
 <uxdot-example color-palette="lightest" width-adjustment="712px">
@@ -193,7 +210,8 @@ Audio rewinds or advances by 15 seconds if either button is pressed.
        height="532">
 </uxdot-example>
 
-### Play/pause 
+### Play/pause
+
 Audio playback can be resumed/stopped by pressing the play/pause button.
 
 <uxdot-example color-palette="lightest" width-adjustment="712px">
@@ -203,9 +221,10 @@ Audio playback can be resumed/stopped by pressing the play/pause button.
        height="544">
 </uxdot-example>
 
-## Responsive design 
+## Responsive design
 
-### Large breakpoints 
+### Large breakpoints
+
 All audio players can be used on large breakpoints. The Mini player can be stretched to fit any grid or container size.
 
 <uxdot-example color-palette="lightest" variant="full" no-border alignment="left" width-adjustment="1000px">
@@ -223,7 +242,7 @@ The Full player will change to the Compact player and the Compact player will ch
        width="768px">
 </uxdot-example>
 
-### Small breakpoints 
+### Small breakpoints
 
 <uxdot-example color-palette="lightest" variant="full" no-border alignment="left" width-adjustment="576px">
   <img alt="Image of the Full, Full without image, and Compact players as well as a stretched Mini player on small breakpoints"
@@ -232,7 +251,7 @@ The Full player will change to the Compact player and the Compact player will ch
        height="176">
 </uxdot-example>
 
-## Best practices 
+## Best practices
 
 ### Full player
 

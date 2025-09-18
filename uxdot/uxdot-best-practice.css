@@ -30,7 +30,10 @@ span {
 
 #caution {
   span {
-    color: light-dark(var(--rh-color-yellow-60), var(--rh-color-status-warning-on-dark));
+    color: light-dark(
+      var(--rh-color-yellow-60),
+      var(--rh-color-status-warning-on-dark)
+    );
   }
 
   rh-icon {

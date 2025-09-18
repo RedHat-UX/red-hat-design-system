@@ -30,8 +30,7 @@
   position: relative;
   overflow: hidden;
   display: block;
-  padding:
-    var(--_panel-body-padding-block-start, var(--rh-space-md, 8px))
+  padding: var(--_panel-body-padding-block-start, var(--rh-space-md, 8px))
     var(--_panel-body-padding-inline-end, var(--rh-space-lg, 16px))
     var(--_panel-body-padding-block-end, var(--rh-space-md, 8px))
     var(--_panel-body-padding-inline-start, var(--rh-space-lg, 16px));
@@ -54,7 +53,7 @@
 }
 
 .body:after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   bottom: 0;

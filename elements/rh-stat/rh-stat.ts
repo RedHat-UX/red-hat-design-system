@@ -36,13 +36,16 @@ export class RhStat extends LitElement {
   @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'standard';
 
   /** Whether the title or statistic should be displayed on top in the statistic */
-  @property({ reflect: true, type: String }) top: 'default' | 'statistic' = 'default';
+  @property({ reflect: true, type: String }) top: 'default' | 'statistic' =
+    'default';
 
   /** The size of the statistic */
-  @property({ reflect: true, type: String }) size: 'default' | 'large' = 'default';
+  @property({ reflect: true, type: String }) size: 'default' | 'large' =
+    'default';
 
   /** Whether the statistic is in a mobile view or not for styling */
-  @property({ type: Boolean, reflect: true, attribute: 'is-mobile' }) isMobile = false;
+  @property({ type: Boolean, reflect: true, attribute: 'is-mobile' }) isMobile =
+    false;
 
   #screenSize = new ScreenSizeController(this);
 
@@ -74,18 +77,35 @@ export class RhStat extends LitElement {
     const isMobile = !this.#screenSize.matches.has('sm');
     const iconSize = this.size === 'default' ? 'md' : 'lg';
     return html`
-      <div class="${classMap({ isMobile, hasIcon, hasTitle, hasStatistic, hasCta })}">
+      <div
+        class="${classMap({
+          isMobile,
+          hasIcon,
+          hasTitle,
+          hasStatistic,
+          hasCta,
+        })}"
+      >
         <span id="icon" class="${classMap({ [iconSize]: !!iconSize })}">
           <!-- Optional icon -->
           <slot name="icon">
-            ${!this.icon ? '' : html`
-              <rh-icon icon="${this.icon}" set="${this.iconSet}"></rh-icon>
-            `}
+            ${!this.icon ?
+              ''
+              : html`
+                  <rh-icon icon="${this.icon}" set="${this.iconSet}"></rh-icon>
+                `}
           </slot>
         </span>
-        <span id="title"><!-- Statistic title --><slot name="title"></slot></span>
-        <span id="statistic"><!-- Statistic data --><slot name="statistic"></slot></span>
-        <span id="content"><!-- Description of the stat --><slot></slot></span>
+        <span id="title"
+          ><!-- Statistic title --><slot name="title"></slot
+        ></span>
+        <span id="statistic"
+          ><!-- Statistic data --><slot name="statistic"></slot
+        ></span>
+        <span id="content"
+          ><!-- Description of the stat --><slot
+          ></slot
+        ></span>
         <span id="cta"><!-- Call to action --><slot name="cta"></slot></span>
       </div>
     `;

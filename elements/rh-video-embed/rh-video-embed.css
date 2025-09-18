@@ -20,12 +20,12 @@
 }
 
 figure,
-::slotted([slot='thumbnail']),
+::slotted([slot="thumbnail"]),
 ::slotted(iframe) {
   max-width: 100%;
 }
 
-::slotted([slot='thumbnail']) {
+::slotted([slot="thumbnail"]) {
   display: block;
 }
 
@@ -40,12 +40,14 @@ figure,
 
 figure {
   --_video-focus-border-color: var(--rh-color-border-interactive);
-  --_video-play-btn-bkg-color:
-    light-dark(rgb(31 31 31 / var(--rh-opacity-50, 50%)),
-      rgb(255 255 255 / var(--rh-opacity-20, 20%)));
-  --_video-play-btn-interactive-bkg-color:
-    light-dark(rgb(21 21 21 / var(--rh-opacity-80, 80%)),
-      rgb(255 255 255 / var(--rh-opacity-50, 50%)));
+  --_video-play-btn-bkg-color: light-dark(
+    rgb(31 31 31 / var(--rh-opacity-50, 50%)),
+    rgb(255 255 255 / var(--rh-opacity-20, 20%))
+  );
+  --_video-play-btn-interactive-bkg-color: light-dark(
+    rgb(21 21 21 / var(--rh-opacity-80, 80%)),
+    rgb(255 255 255 / var(--rh-opacity-50, 50%))
+  );
 
   display: flex;
   flex-direction: column;
@@ -60,7 +62,7 @@ figcaption ::slotted(p) {
   margin-block-start: 0 !important;
 }
 
-::slotted([slot='caption']) {
+::slotted([slot="caption"]) {
   color: var(--rh-color-text-secondary);
   font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -87,20 +89,27 @@ figcaption ::slotted(p) {
 }
 
 #consent-message,
-::slotted([slot='consent-message']) {
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+::slotted([slot="consent-message"]) {
+  font-family: var(
+    --rh-font-family-heading,
+    RedHatDisplay,
+    "Red Hat Display",
+    Helvetica,
+    Arial,
+    sans-serif
+  );
   font-size: var(--rh-font-size-heading-xs, 1.25rem);
   line-height: var(--rh-line-height-heading, 1.3);
 }
 
 #consent-message,
-::slotted([slot='consent-message']:last-of-type) {
+::slotted([slot="consent-message"]:last-of-type) {
   margin-block-end: var(--rh-space-lg, 16px);
 }
 
 @container consent (min-width: 576px) {
   #consent-message,
-  ::slotted([slot='consent-message']:last-of-type) {
+  ::slotted([slot="consent-message"]:last-of-type) {
     margin-block-end: var(--rh-space-xl, 24px);
   }
 
@@ -129,7 +138,10 @@ figcaption ::slotted(p) {
 }
 
 #play::part(button) {
-  background-color: var(--_video-play-btn-bkg-color, var(--rh-color-surface-darkest, #151515));
+  background-color: var(
+    --_video-play-btn-bkg-color,
+    var(--rh-color-surface-darkest, #151515)
+  );
   inset-block: calc(50% - var(--rh-length-2xl, 32px)) 0; /* NOTE: 32px = 1/2 play btn width */
   inset-inline: 50% 0;
   position: absolute;
@@ -149,7 +161,7 @@ figcaption ::slotted(p) {
 }
 
 #play[hidden],
-:is(.video, .consent) ::slotted([slot='thumbnail']) {
+:is(.video, .consent) ::slotted([slot="thumbnail"]) {
   opacity: 0;
   pointer-events: none;
 }

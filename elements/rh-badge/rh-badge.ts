@@ -38,8 +38,7 @@ export class RhBadge extends LitElement {
     | 'caution'
     | 'neutral'
     | 'success'
-    | 'info' =
-      'neutral';
+    | 'info' = 'neutral';
 
   /**
    * Sets a numeric value for a badge.
@@ -61,10 +60,18 @@ export class RhBadge extends LitElement {
     const state = this.state.toLowerCase();
     switch (state) {
       // the first four are deprecated pre-DPO status names
-      case 'moderate': this.state = 'warning'; break;
-      case 'important': this.state = 'caution'; break;
-      case 'critical': this.state = 'danger'; break;
-      case 'note': this.state = 'info'; break;
+      case 'moderate':
+        this.state = 'warning';
+        break;
+      case 'important':
+        this.state = 'caution';
+        break;
+      case 'critical':
+        this.state = 'danger';
+        break;
+      case 'note':
+        this.state = 'info';
+        break;
       // the following are DPO-approved status names
       case 'danger':
       case 'warning':
@@ -80,8 +87,10 @@ export class RhBadge extends LitElement {
 
   override render() {
     const { state, threshold, number } = this;
-    const isLarge = !!threshold && number != null && (threshold < number);
-    const computedContent = isLarge ? `${threshold}+` : number?.toString() ?? null;
+    const isLarge = !!threshold && number != null && threshold < number;
+    const computedContent = isLarge ?
+      `${threshold}+`
+      : number?.toString() ?? null;
     return html`
       <span class="${classMap({ [state]: true })}">${computedContent}</span>
       <slot class="${classMap({ [state]: true })}"></slot>

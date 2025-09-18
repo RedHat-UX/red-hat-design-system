@@ -14,7 +14,14 @@ rh-pagination {
       border: var(--rh-border-width-sm, 1px) solid transparent;
       color: var(--_list-a-text-color);
       display: grid;
-      font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+      font-family: var(
+        --rh-font-family-heading,
+        RedHatDisplay,
+        "Red Hat Display",
+        Helvetica,
+        Arial,
+        sans-serif
+      );
       font-size: var(--rh-font-size-body-text-xl, 1.25rem);
       height: var(--_link-size);
       place-content: center;
@@ -26,9 +33,10 @@ rh-pagination {
         border-radius: var(--rh-border-radius-default, 3px);
         outline-offset: -2px;
         outline: var(--rh-border-width-md, 2px) solid transparent;
-        outline-color:
-          var(--rh-pagination-accent-color,
-            var(--rh-color-interactive-primary-default));
+        outline-color: var(
+          --rh-pagination-accent-color,
+          var(--rh-color-interactive-primary-default)
+        );
       }
 
       &:hover:after,
@@ -36,7 +44,7 @@ rh-pagination {
       &:focus:after,
       &[aria-current]:after {
         border-block-start-style: solid;
-        content: '';
+        content: "";
         inset-inline-start: -1px;
         position: absolute;
         inset-block-start: -1px;
@@ -66,38 +74,44 @@ rh-pagination {
 
       &:focus:after,
       &[aria-current]:after {
-        border-block-color: var(--rh-pagination-accent-color, var(--rh-color-border-interactive));
+        border-block-color: var(
+          --rh-pagination-accent-color,
+          var(--rh-color-border-interactive)
+        );
       }
     }
   }
 
-  &[size='sm'] {
-    li > a { font-size: var(--rh-font-size-body-text-md, 1rem); }
+  &[size="sm"] {
+    li > a {
+      font-size: var(--rh-font-size-body-text-md, 1rem);
+    }
 
     --_link-size: calc(var(--_stepper-size) + 2px);
   }
 
-  &[overflow='start'] li:nth-last-child(n+6):not(:first-child),
-  &[overflow='end'] li:nth-child(n+6):not(:last-child),
-  &[overflow='both'] li:nth-last-child(n+6):not(:first-child),
-  &[overflow='both'] li:nth-child(n+6):not(:last-child) {
+  &[overflow="start"] li:nth-last-child(n + 6):not(:first-child),
+  &[overflow="end"] li:nth-child(n + 6):not(:last-child),
+  &[overflow="both"] li:nth-last-child(n + 6):not(:first-child),
+  &[overflow="both"] li:nth-child(n + 6):not(:last-child) {
     display: none;
   }
 
-  &[overflow='both'] li:is([data-page='current'], [data-page='previous'], [data-page='next']) {
+  &[overflow="both"]
+    li:is([data-page="current"], [data-page="previous"], [data-page="next"]) {
     display: contents !important;
   }
 
-  &:is([overflow='end'], [overflow='both']) li:last-child,
-  &:is([overflow='start'], [overflow='both']) li:first-child {
+  &:is([overflow="end"], [overflow="both"]) li:last-child,
+  &:is([overflow="start"], [overflow="both"]) li:first-child {
     display: grid;
     grid-template-columns: var(--_link-size) var(--_link-size);
     gap: 4px;
   }
 
-  &:is([overflow='end'], [overflow='both']) li:last-child:before,
-  &:is([overflow='start'], [overflow='both']) li:first-child:after {
-    content: '…';
+  &:is([overflow="end"], [overflow="both"]) li:last-child:before,
+  &:is([overflow="start"], [overflow="both"]) li:first-child:after {
+    content: "…";
     width: var(--_link-size);
     height: var(--_link-size);
     padding-inline-end: 4px;
@@ -109,7 +123,7 @@ rh-pagination {
     align-self: start;
   }
 
-  &[variant|='open'] {
+  &[variant|="open"] {
     --_list-a-bg-color: transparent;
 
     li > a {

@@ -14,8 +14,7 @@ import '@rhds/elements/rh-tabs/rh-tabs.js';
 import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
 import { observes } from '@patternfly/pfe-core/decorators.js';
 
-const dequote = (x: string) =>
-  x.replace(/^\s*['"]([^'"]+)['"].*$/m, '$1');
+const dequote = (x: string) => x.replace(/^\s*['"]([^'"]+)['"].*$/m, '$1');
 
 const ARRAY_OF_PAREN_TYPE_RE = /^\((.*)\)\[\]$/;
 
@@ -33,7 +32,7 @@ export class UxdotKnobAttribute extends LitElement {
 
   @property() default?: string;
 
-  #values = new Map<string, string | boolean | null>;
+  #values = new Map<string, string | boolean | null>();
 
   #iconSet: IconSetName | null = null;
 
@@ -66,14 +65,15 @@ export class UxdotKnobAttribute extends LitElement {
 
   render() {
     const options = this.#typeMembers;
-    const isIconSet = this.name === 'icon-set' || (this.tag === 'rh-icon' && this.name === 'set');
+    const isIconSet =
+      this.name === 'icon-set'
+      || (this.tag === 'rh-icon' && this.name === 'set');
     const isUnionType =
-         options.length > 1
-         // case: `variant?: 'subtle'`
+      options.length > 1
+      // case: `variant?: 'subtle'`
       || (options.length === 1 && !!options.at(0)?.match(/^'.*'$/));
     // case: rh-code-block action field: `actions?: ('code'|'wrap')[]`
-    const [, listAttrEnum] =
-      this.type?.match(ARRAY_OF_PAREN_TYPE_RE) ?? [];
+    const [, listAttrEnum] = this.type?.match(ARRAY_OF_PAREN_TYPE_RE) ?? [];
     const listAttrEnumMembers = listAttrEnum?.split('|') ?? [];
 
     // TODO: replace tooltip with popover for toggletips
@@ -82,91 +82,136 @@ export class UxdotKnobAttribute extends LitElement {
         <label for="knob">
           <code id="knob-title">${this.name}</code>
           <rh-tooltip>
-            <button class="toggletip" aria-labelledby="knob-title"><rh-icon icon="information" set="ui"></rh-icon></button>
+            <button class="toggletip" aria-labelledby="knob-title">
+              <rh-icon icon="information" set="ui"></rh-icon>
+            </button>
             <div slot="content"><slot name="description"></slot></div>
-          </rh-tooltip>
-        </label>${this.type === 'boolean' ? html`
-        <rh-switch id="knob"
-                   ?checked="${this.#values.get(this.name)}"
-                   message-on="Attribute is present"
-                   message-off="Attribute is absent"></rh-switch>` : listAttrEnumMembers.length ? listAttrEnumMembers.map(member => html`
-        <div class="checkbox-group">
-          <input id="${this.name}-${dequote(member)}"
-                 type="checkbox"
-                 name="${this.name}"
-                 value="${dequote(member)}">
-          <label for="${this.name}-${dequote(member)}">${dequote(member)}</label>
-        </div>`) : isIconSet ? html`
-        <pf-select id="knob"
-                   data-kind="iconSet"
-                   value="${ifDefined(this.#values.get(this.name)) ?? this.default}">
-          <pf-option value="">Choose an Icon Set</pf-option>
-          <pf-option>ui</pf-option>
-          <pf-option>standard</pf-option>
-          <pf-option>microns</pf-option>
-          <pf-option>social</pf-option>
-        </pf-select>` : this.name === 'icon' ? html`
-        <pf-select id="knob"
-                   data-kind="icon"
-                   variant="typeahead"
-                   value="${ifDefined(this.#values.get(this.name))}">
-          <pf-option value="">Choose an Icon</pf-option>${this.#icons.map(option => html`
-          <pf-option>
-            ${option}
-            <rh-icon slot="icon"
-                     icon="${option}"
-                     set="${this.#iconSet}"></rh-icon>
-          </pf-option>`)}
-        </pf-select>` : isUnionType ? html`
-        <pf-select id="knob"
-                   data-kind="enum"
-                   value="${ifDefined(this.#values.get(this.name))}">
-          <pf-option value="">Choose a Value</pf-option>${options.map(option => html`
-          <pf-option>${dequote(option)}</pf-option>`)}
-        </pf-select>` : this.name === 'color-palette' ? html`
-        <rh-context-picker id="knob"
-                           allowed="${ifDefined(options.at(0) === 'ColorPalette' ? undefined : options.map(dequote).join(','))}"
-                           value="${this.#values.get(this.name) ?? 'lightest'}"></rh-context-picker>` : html`
-        <input type="text"
-               id="knob"
-               inputmode="${ifDefined(this.type === 'number' ? 'numeric' : undefined)}"
-               value="${ifDefined(this.#values.get(this.name))}">`}
+          </rh-tooltip> </label
+        >${this.type === 'boolean' ?
+          html` <rh-switch
+              id="knob"
+              ?checked="${this.#values.get(this.name)}"
+              message-on="Attribute is present"
+              message-off="Attribute is absent"
+            ></rh-switch>`
+          : listAttrEnumMembers.length ?
+          listAttrEnumMembers.map(
+            member => html` <div class="checkbox-group">
+                <input
+                  id="${this.name}-${dequote(member)}"
+                  type="checkbox"
+                  name="${this.name}"
+                  value="${dequote(member)}"
+                />
+                <label for="${this.name}-${dequote(member)}"
+                  >${dequote(member)}</label
+                >
+              </div>`
+          )
+          : isIconSet ?
+          html` <pf-select
+              id="knob"
+              data-kind="iconSet"
+              value="${ifDefined(this.#values.get(this.name)) ?? this.default}"
+            >
+              <pf-option value="">Choose an Icon Set</pf-option>
+              <pf-option>ui</pf-option>
+              <pf-option>standard</pf-option>
+              <pf-option>microns</pf-option>
+              <pf-option>social</pf-option>
+            </pf-select>`
+          : this.name === 'icon' ?
+          html` <pf-select
+              id="knob"
+              data-kind="icon"
+              variant="typeahead"
+              value="${ifDefined(this.#values.get(this.name))}"
+            >
+              <pf-option value="">Choose an Icon</pf-option>${this.#icons.map(
+            option => html` <pf-option>
+                  ${option}
+                  <rh-icon
+                    slot="icon"
+                    icon="${option}"
+                    set="${this.#iconSet}"
+                  ></rh-icon>
+                </pf-option>`
+          )}
+            </pf-select>`
+          : isUnionType ?
+          html` <pf-select
+              id="knob"
+              data-kind="enum"
+              value="${ifDefined(this.#values.get(this.name))}"
+            >
+              <pf-option value="">Choose a Value</pf-option>${options.map(
+            option => html` <pf-option>${dequote(option)}</pf-option>`
+          )}
+            </pf-select>`
+          : this.name === 'color-palette' ?
+          html` <rh-context-picker
+              id="knob"
+              allowed="${ifDefined(
+                options.at(0) === 'ColorPalette' ?
+                  undefined
+                  : options.map(dequote).join(',')
+          )}"
+              value="${this.#values.get(this.name) ?? 'lightest'}"
+            ></rh-context-picker>`
+          : html` <input
+              type="text"
+              id="knob"
+              inputmode="${ifDefined(
+                this.type === 'number' ? 'numeric' : undefined
+          )}"
+              value="${ifDefined(this.#values.get(this.name))}"
+            />`}
       </li>
     `;
   }
 
   async #computeValues() {
     if (isServer) {
-      /* eslint-disable @stylistic/max-len */
       const { readFile } = await import('node:fs/promises');
       const { parseFragment } = await import('parse5');
       const Tools = await import('@parse5/tools');
       const { getPfeConfig } = await import('@patternfly/pfe-tools/config.js');
-      const { getAllManifests } = await import('@patternfly/pfe-tools/custom-elements-manifest/custom-elements-manifest.js');
-      /* eslint-enable @stylistic/max-len */
+      const { getAllManifests } = await import(
+        '@patternfly/pfe-tools/custom-elements-manifest/custom-elements-manifest.js'
+      );
+
       const manifests = getAllManifests();
       const [manifest] = manifests;
-      const [demo] = Object.groupBy(manifests
-          .flatMap(manifest => manifest.getTagNames()
-              .flatMap(tagName => manifest.getDemoMetadata(tagName, getPfeConfig()))),
-                                    x => x.primaryElementName)[this.tag] ?? [];
+      const [demo] =
+        Object.groupBy(
+          manifests.flatMap(manifest =>
+            manifest
+                .getTagNames()
+                .flatMap(tagName =>
+                  manifest.getDemoMetadata(tagName, getPfeConfig())
+                )
+          ),
+          x => x.primaryElementName
+        )[this.tag] ?? [];
       if (!demo?.filePath) {
-        return new Map;
-      };
+        return new Map();
+      }
       const attributes = manifest.getAttributes(this.tag) ?? [];
       const content = await readFile(demo.filePath, 'utf-8');
       const fragment = parseFragment(content);
-      const elementNode: Tools.Element | null =
-        Tools.query(fragment, node => Tools.isElementNode(node) && node.tagName === this.tag);
+      const elementNode: Tools.Element | null = Tools.query(
+        fragment,
+        node => Tools.isElementNode(node) && node.tagName === this.tag
+      );
       if (!elementNode) {
         throw new Error('demo does not contain element');
       }
       for (const attr of attributes) {
         this.#values.set(
           attr.name,
-          (attr.type?.text === 'boolean' ?
-              Tools.hasAttribute(elementNode, attr.name)
-            : Tools.getAttribute(elementNode, attr.name)),
+          attr.type?.text === 'boolean' ?
+            Tools.hasAttribute(elementNode, attr.name)
+            : Tools.getAttribute(elementNode, attr.name)
         );
       }
     } else {
@@ -184,24 +229,24 @@ export class UxdotKnobAttribute extends LitElement {
   }
 
   async #computeIcons() {
-    if (!isServer
-      && this.hasUpdated
-      && this.name === 'icon') {
+    if (!isServer && this.hasUpdated && this.name === 'icon') {
       const demo = this.closest('uxdot-demo');
       if (demo) {
         await demo.updateComplete;
         let iconSet: string | IconSetName | null = null;
         if (this.tag === 'rh-icon') {
-          iconSet = await demo.getDemoElementAttribute('set') ?? 'standard';
+          iconSet = (await demo.getDemoElementAttribute('set')) ?? 'standard';
         } else {
           const liveValue = await demo.getDemoElementAttribute('icon-set');
           if (liveValue) {
             iconSet = liveValue;
           } else {
-            const setKnob =
-              demo.querySelector<UxdotKnobAttribute>('uxdot-knob-attribute[name="icon-set"]');
+            const setKnob = demo.querySelector<UxdotKnobAttribute>(
+              'uxdot-knob-attribute[name="icon-set"]'
+            );
             await setKnob?.updateComplete;
-            iconSet = setKnob?.value || this.tagName === 'rh-icon' ? 'standard' : 'ui';
+            iconSet =
+              setKnob?.value || this.tagName === 'rh-icon' ? 'standard' : 'ui';
           }
         }
         switch (iconSet) {
@@ -210,7 +255,7 @@ export class UxdotKnobAttribute extends LitElement {
           case 'social':
           case 'standard': {
             this.#iconSet = iconSet;
-            this.#icons = [...icons.get(iconSet) ?? []];
+            this.#icons = [...(icons.get(iconSet) ?? [])];
             break;
           }
           default:
@@ -221,7 +266,9 @@ export class UxdotKnobAttribute extends LitElement {
   }
 
   #getValueForCheckboxes() {
-    const checkboxes = this.shadowRoot?.querySelectorAll<HTMLInputElement>(`[type="checkbox"][name="${this.name}"]`);
+    const checkboxes = this.shadowRoot?.querySelectorAll<HTMLInputElement>(
+      `[type="checkbox"][name="${this.name}"]`
+    );
     return Array.from(checkboxes ?? [])
         .filter(x => x.checked)
         .map(x => x.value)
@@ -233,9 +280,11 @@ export class UxdotKnobAttribute extends LitElement {
     const demo = this.closest('uxdot-demo');
     await target.updateComplete;
     const value: string | boolean | null =
-        target.type === 'checkbox' ? this.#getValueForCheckboxes()
-      : this.type === 'boolean' ? target.checked
-      : target.value;
+      target.type === 'checkbox' ?
+        this.#getValueForCheckboxes()
+        : this.type === 'boolean' ?
+        target.checked
+        : target.value;
     if (demo && this.name) {
       demo.setDemoElementAttribute(this.name, value);
     }

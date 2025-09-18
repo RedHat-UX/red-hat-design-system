@@ -1,7 +1,7 @@
 ## Style
 
-A subnavigation is visually similar to tabs, but the text labels are links 
-instead. They are arranged horizontally on a thin bar with no other styling 
+A subnavigation is visually similar to tabs, but the text labels are links
+instead. They are arranged horizontally on a thin bar with no other styling
 except for the active page accent.
 
 ### Anatomy
@@ -25,8 +25,8 @@ except for the active page accent.
   </figcaption>
 </figure>
 
-
 ## Color scheme
+
 <a id="theme"></a>
 
 A subnavigation is available for both light and dark color schemes.
@@ -38,7 +38,6 @@ A subnavigation is available for both light and dark color schemes.
        height="178">
 </uxdot-example>
 
-
 ## Configuration
 
 Each link container is the same height as the bar.
@@ -49,7 +48,6 @@ Each link container is the same height as the bar.
        width="872"
        height="203">
 </uxdot-example>
-
 
 ## Space
 
@@ -71,7 +69,6 @@ Each link container is the same height as the bar.
 
 Interactive elements include inactive links and overflow buttons.
 
-
 ### Hover
 
 Inactive links and overflow buttons have the same hover state.
@@ -82,7 +79,6 @@ Inactive links and overflow buttons have the same hover state.
        width="872"
        height="176">
 </uxdot-example>
-
 
 ### Focus
 
@@ -97,7 +93,6 @@ Inactive links and overflow buttons have the same hover state.
        width="872"
        height="176">
 </uxdot-example>
-
 
 ### Active
 

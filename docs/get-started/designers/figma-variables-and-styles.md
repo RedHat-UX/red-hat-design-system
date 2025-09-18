@@ -34,15 +34,15 @@ Figma variables and styles have established new best practices around how design
 
 <rh-table>
 
-  | Benefit           | Impact                                                                                                                                                                                 |
-  | ------------------| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | Adaptability      | <ul><li>Existing components and patterns can scale across platforms, devices, etc. without being rebuilt</li></ul>                                                                     |
-  | Consistency       | <ul><li>Centralizing values ensures that every component and pattern adheres to the same rules</li></ul>                                                                               |
-  | Developer handoff | <ul><li>Clear and consistent language is created between designers and developers as variable and style names correspond to design tokens used in code</li></ul>                       |
-  | Efficiency        | <ul><li>Speeds up the design process by providing a predefined set of styles</li></ul>                                                                                                 |
-  | Governance        | <ul><li>A tiered system (primitive, semantic, etc.) controls which decisions are locked down and which are flexible</li></ul>                                                          |
-  | Scalability       | <ul><li>Easy to update and maintain designs across projects of any size</li></ul>                                                                                                      |
-  | Theming           | <ul><li>New themes, brands, or densities can be added as modes with minimal effort</li><li>Modes ensure that components and patterns automatically adopt the correct styling</li></ul> |
+| Benefit           | Impact                                                                                                                                                                                 |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Adaptability      | <ul><li>Existing components and patterns can scale across platforms, devices, etc. without being rebuilt</li></ul>                                                                     |
+| Consistency       | <ul><li>Centralizing values ensures that every component and pattern adheres to the same rules</li></ul>                                                                               |
+| Developer handoff | <ul><li>Clear and consistent language is created between designers and developers as variable and style names correspond to design tokens used in code</li></ul>                       |
+| Efficiency        | <ul><li>Speeds up the design process by providing a predefined set of styles</li></ul>                                                                                                 |
+| Governance        | <ul><li>A tiered system (primitive, semantic, etc.) controls which decisions are locked down and which are flexible</li></ul>                                                          |
+| Scalability       | <ul><li>Easy to update and maintain designs across projects of any size</li></ul>                                                                                                      |
+| Theming           | <ul><li>New themes, brands, or densities can be added as modes with minimal effort</li><li>Modes ensure that components and patterns automatically adopt the correct styling</li></ul> |
 
 </rh-table>
 
@@ -103,10 +103,10 @@ Figma styles are reusable bundles of tokens created for specific properties. Thi
 
 The following style types are included in the RHDS library.
 
-  - Colors (like gradients)
-  - Text (bundled tokens like font family, line height, size, weight, and more)
-  - Effects (like drop shadows)
-  - Layout grids
+- Colors (like gradients)
+- Text (bundled tokens like font family, line height, size, weight, and more)
+- Effects (like drop shadows)
+- Layout grids
 
 <uxdot-example no-border color-palette="lighter">
   <img alt="Two figma panes showing a set of variables that make up a text and drop shadow style"
@@ -126,21 +126,20 @@ Figma variables and styles usher in a new era of **systems thinking**. Instead o
 
 Here are some key workflow shifts for designers:
 
-  - Abstracting decisions with tokens
-  - Designing for themes and modes
-  - A deeper connection to code and development
+- Abstracting decisions with tokens
+- Designing for themes and modes
+- A deeper connection to code and development
 
-### Theming 
+### Theming
 
 Figma variables and styles create a powerful and efficient system for [theming](/theming/). This capability allows teams to manage multiple design language modes from a single unified source of truth.
 
 The power of theming extends far beyond color schemes. Here are other ways we might leverage modes for advanced theming in the future:
 
-  - Accessibility
-  - Multi-brand systems
-  - Spacing and density
-  - Platform- or product-specific
-
+- Accessibility
+- Multi-brand systems
+- Spacing and density
+- Platform- or product-specific
 
 <uxdot-example variant="full" no-border color-palette="lightest">
   <img alt="Two alerts, one light scheme, one dark scheme side by side."
@@ -157,7 +156,7 @@ The power of theming extends far beyond color schemes. Here are other ways we mi
   <p>All RHDS components and patterns are preloaded with variables and styles that connect to our design tokens.</p>
 </rh-alert>
 
-#### Fill 
+#### Fill
 
 To apply a Fill variable, when an element is selected, select the four dots icon next to the Fill title. From here, browse the list of fill variables or search for something specific.
 

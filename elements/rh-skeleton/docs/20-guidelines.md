@@ -19,14 +19,14 @@ Body text skeleton sizes match the amount of space occupied by a line of text, w
 
 <rh-table>
 
-| Body text skeleton size | Token names                                                                                            |
-|-------------------------|--------------------------------------------------------------------------------------------------------|
-| xs                      | `--rh-font-size-body-text-xs` <br> `--rh-font-size-body-code-xs`                                       |
-| sm                      | `--rh-font-size-body-text-sm` <br> `--rh-font-size-body-code-sm`                                       |
-| md                      | `--rh-font-size-body-text-md` <br> `--rh-font-size-body-code-md`                                       |
-| lg                      | `--rh-font-size-body-text-lg` <br> `--rh-font-size-body-code-lg`                                       |
-| xl                      | `--rh-font-size-body-text-xl` <br> `--rh-font-size-body-code-xl`                                       |
-| 2xl                     | `--rh-font-size-body-text-2xl` <br> `--rh-font-size-code-2xl`                                          |
+| Body text skeleton size | Token names                                                      |
+| ----------------------- | ---------------------------------------------------------------- |
+| xs                      | `--rh-font-size-body-text-xs` <br> `--rh-font-size-body-code-xs` |
+| sm                      | `--rh-font-size-body-text-sm` <br> `--rh-font-size-body-code-sm` |
+| md                      | `--rh-font-size-body-text-md` <br> `--rh-font-size-body-code-md` |
+| lg                      | `--rh-font-size-body-text-lg` <br> `--rh-font-size-body-code-lg` |
+| xl                      | `--rh-font-size-body-text-xl` <br> `--rh-font-size-body-code-xl` |
+| 2xl                     | `--rh-font-size-body-text-2xl` <br> `--rh-font-size-code-2xl`    |
 
 </rh-table>
 
@@ -36,17 +36,16 @@ Heading skeleton sizes work similarly to body text skeletons, and the widths of 
 
 <rh-table>
 
-| Body text skeleton size | Token names                                                       |
-|-------------------------|-------------------------------------------------------------------|
-| xs                      | `--rh-font-size-heading-xs`                                       |
-| sm                      | `--rh-font-size-heading-sm`                                       |
-| md                      | `--rh-font-size-heading-md`                                       |
-| lg                      | `--rh-font-size-heading-lg`                                       |
-| xl                      | `--rh-font-size-heading-xl`                                       |
-| 2xl                     | `--rh-font-size-heading-2xl`                                      |
+| Body text skeleton size | Token names                  |
+| ----------------------- | ---------------------------- |
+| xs                      | `--rh-font-size-heading-xs`  |
+| sm                      | `--rh-font-size-heading-sm`  |
+| md                      | `--rh-font-size-heading-md`  |
+| lg                      | `--rh-font-size-heading-lg`  |
+| xl                      | `--rh-font-size-heading-xl`  |
+| 2xl                     | `--rh-font-size-heading-2xl` |
 
 </rh-table>
-
 
 ### Shape skeleton sizes
 
@@ -54,7 +53,7 @@ While the default size for a shape skeleton uses `--rh-length-4xl` for its heigh
 
 ## Animation
 
-The skeleton’s gradient animation will loop until the data is retrieved and disappears when it loads. 
+The skeleton’s gradient animation will loop until the data is retrieved and disappears when it loads.
 
 Each group of skeletons should have their gradients moving at the same speed to avoid the animation from being too distracting. It’s also recommended to avoid speeding up the animation for the same reason.
 

@@ -19,15 +19,17 @@ if (isServer) {
 
 type Renderable = unknown;
 
-export type IconResolverFunction = (set: string, icon: string) =>
-  Renderable | Promise<Renderable>;
+export type IconResolverFunction = (
+  set: string,
+  icon: string
+) => Renderable | Promise<Renderable>;
 
 /**
  * requestIdleCallback when available, requestAnimationFrame when not
  * @param f callback
  */
 const ric: typeof globalThis.requestIdleCallback =
-     globalThis.requestIdleCallback
+  globalThis.requestIdleCallback
   ?? globalThis.requestAnimationFrame
   ?? (async (f: () => void) => Promise.resolve().then(f));
 
@@ -39,7 +41,9 @@ export class IconResolveErrorEvent extends ErrorEvent {
     /** The original error when importing the icon module */
     public originalError: Error
   ) {
-    super('error', { message: `Could not load icon "${icon}" from set "${set}".` });
+    super('error', {
+      message: `Could not load icon "${icon}" from set "${set}".`,
+    });
   }
 }
 
@@ -71,10 +75,10 @@ export class RhIcon extends LitElement {
 
   private static instances = new Set<RhIcon>();
 
-  public static resolve: IconResolverFunction =
-    (set, icon) =>
-      import(`@rhds/icons/${set}/${icon}.js`)
-          .then(mod => mod.default.cloneNode(true));
+  public static resolve: IconResolverFunction = (set, icon) =>
+    import(`@rhds/icons/${set}/${icon}.js`).then(mod =>
+      mod.default.cloneNode(true)
+    );
 
   /** Icon set */
   @property({ type: String, reflect: true }) set: IconSetName = 'standard';
@@ -114,21 +118,27 @@ export class RhIcon extends LitElement {
     const { set } = this;
     const content = this.#getContent();
     return html`
-      <div id="container"
-           aria-hidden="${String(!!content)}"
-           class="${classMap({ [set]: true })}">${!isServer ? content
-        : unsafeHTML(content as unknown as string)}<!--
+      <div
+        id="container"
+        aria-hidden="${String(!!content)}"
+        class="${classMap({ [set]: true })}"
+      >
+        ${!isServer ? content : unsafeHTML(content as unknown as string)}<!--
            Container for the fallback (i.e. slotted) content
-        --><span part="fallback" ?hidden="${content}"><!--
+        --><span part="fallback" ?hidden="${content}"
+          ><!--
           Slotted content is used as a fallback in case the icon doesn't load
-        --><slot></slot></span>
+        --><slot
+          ></slot
+        ></span>
       </div>
     `;
   }
 
   updated() {
     // this is a workaround for an apparent webkit / lit-ssr bug
-    const [, ...duplicateContainers] = this.shadowRoot?.querySelectorAll('#container') ?? [];
+    const [, ...duplicateContainers] =
+      this.shadowRoot?.querySelectorAll('#container') ?? [];
     for (const dupe of duplicateContainers) {
       dupe.remove();
     }
@@ -139,7 +149,7 @@ export class RhIcon extends LitElement {
       const { set = 'standard', icon } = this;
       return globalThis.RH_ICONS.get(set)?.get(icon as never) ?? '';
     } else {
-      return this.content as string ?? '';
+      return (this.content as string) ?? '';
     }
   }
 
@@ -184,9 +194,12 @@ export class RhIcon extends LitElement {
 
   #dispatchLoad(shouldObserve = true) {
     switch (this.loading) {
-      case 'idle': return void ric(() => this.#load());
-      case 'lazy': return void this.#lazyLoad(shouldObserve);
-      case 'eager': return void this.#load();
+      case 'idle':
+        return void ric(() => this.#load());
+      case 'lazy':
+        return void this.#lazyLoad(shouldObserve);
+      case 'eager':
+        return void this.#load();
     }
   }
 

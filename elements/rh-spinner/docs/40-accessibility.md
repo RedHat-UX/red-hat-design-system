@@ -1,4 +1,3 @@
-
 ## Implementation
 
 <rh-alert state="warning">

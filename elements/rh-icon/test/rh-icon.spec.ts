@@ -18,8 +18,7 @@ describe('<rh-icon>', function() {
       const klass = customElements.get('rh-icon');
       expect(element)
           .to.be.an.instanceOf(klass)
-          .and
-          .to.be.an.instanceOf(RhIcon);
+          .and.to.be.an.instanceOf(RhIcon);
     });
   });
 
@@ -30,8 +29,8 @@ describe('<rh-icon>', function() {
         <rh-icon icon="hat">fallback</rh-icon>
       `);
     });
-    beforeEach(() => event = oneEvent(element, 'load'));
-    afterEach(() => event = undefined);
+    beforeEach(() => (event = oneEvent(element, 'load')));
+    afterEach(() => (event = undefined));
     it('does not display fallback content', async function() {
       expect(await a11ySnapshot()).to.not.axContainName('fallback');
     });
@@ -47,8 +46,8 @@ describe('<rh-icon>', function() {
         <rh-icon icon="invalid-icon-name">fallback</rh-icon>
       `);
     });
-    afterEach(() => event = undefined);
-    beforeEach(() => event = oneEvent(element, 'error'));
+    afterEach(() => (event = undefined));
+    beforeEach(() => (event = oneEvent(element, 'error')));
     it('fires "error"', async function() {
       expect((await event)?.type).to.equal('error');
     });

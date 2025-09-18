@@ -14,7 +14,14 @@ div {
 
 select {
   font-size: var(--rh-font-size-code-md, 1rem);
-  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  font-family: var(
+    --rh-font-family-code,
+    RedHatMono,
+    "Red Hat Mono",
+    "Courier New",
+    Courier,
+    monospace
+  );
   appearance: none;
   line-height: 36px;
   padding: 2px 0;

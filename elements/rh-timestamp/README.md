@@ -15,7 +15,9 @@ Use a timestamp to display date and time values.
 ### Basic withh fallback
 
 ```html
-<rh-timestamp date="Tue Aug 09 2006 14:57:00 GMT-0400">Tue Aug 09 2006 14:57:00 GMT-0400</rh-timestamp>
+<rh-timestamp date="Tue Aug 09 2006 14:57:00 GMT-0400"
+  >Tue Aug 09 2006 14:57:00 GMT-0400</rh-timestamp
+>
 ```
 
 ### Basic formats
@@ -35,7 +37,11 @@ Use a timestamp to display date and time values.
 ```html
 <rh-tooltip>
   <rh-timestamp date="Tue Aug 09 2006 14:57:00 GMT-0400"></rh-timestamp>
-  <rh-timestamp slot="content" date="Tue Aug 09 2006 14:57:00 GMT-0400" relative></rh-timestamp>
+  <rh-timestamp
+    slot="content"
+    date="Tue Aug 09 2006 14:57:00 GMT-0400"
+    relative
+  ></rh-timestamp>
 </rh-tooltip>
 ```
 

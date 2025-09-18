@@ -5,7 +5,7 @@
 }
 
 #sort-button:after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   cursor: pointer;

@@ -20,10 +20,9 @@
   import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 </script>
 
-## Usage 
+## Usage
 
 Use a timestamp to display date and time values.
-
 
 ### Default
 
@@ -32,7 +31,6 @@ By default, a timestamp will display the current date and time based on the curr
 <uxdot-example>
   <rh-timestamp></rh-timestamp>
 </uxdot-example>
-
 
 ## Basic formats
 
@@ -78,7 +76,6 @@ You can also set the `display-suffix` attribute to display a custom suffix at th
   </uxdot-example>
 </div>
 
-
 ## Behavior
 
 ### Custom format
@@ -102,7 +99,6 @@ The format of the displayed content can be further customized by setting the cus
     </script>
   </rh-code-block>
 </uxdot-example>
-
 
 ### Adding a tooltip
 
@@ -132,10 +128,13 @@ To add a tooltip that displays the timestamp content as a UTC time, you can wrap
 ```html rhcodeblock
 <rh-tooltip>
   <rh-timestamp></rh-timestamp>
-  <rh-timestamp slot="content" utc display-suffix="Coordinated Universal Time"></rh-timestamp>
+  <rh-timestamp
+    slot="content"
+    utc
+    display-suffix="Coordinated Universal Time"
+  ></rh-timestamp>
 </rh-tooltip>
 ```
-
 
 ### Relative time
 
@@ -160,7 +159,6 @@ To display relative time, set the `relative` attribute on `rh-timestamp`.
   </uxdot-example>
 </div>
 
-
 ### Relative time with tooltip
 
 To display relative time, set the `relative` attribute on `rh-timestamp`.
@@ -174,8 +172,14 @@ To display relative time, set the `relative` attribute on `rh-timestamp`.
 
 ```html rhcodeblock
 <rh-tooltip>
-  <rh-timestamp relative date="Tue Aug 09 2022 14:57:00 GMT-0400 (Eastern Daylight Time)"></rh-timestamp>
-  <rh-timestamp slot="content" date="Tue Aug 09 2022 14:57:00 GMT-0400 (Eastern Daylight Time)"></rh-timestamp>
+  <rh-timestamp
+    relative
+    date="Tue Aug 09 2022 14:57:00 GMT-0400 (Eastern Daylight Time)"
+  ></rh-timestamp>
+  <rh-timestamp
+    slot="content"
+    date="Tue Aug 09 2022 14:57:00 GMT-0400 (Eastern Daylight Time)"
+  ></rh-timestamp>
 </rh-tooltip>
 ```
 
@@ -188,11 +192,16 @@ To display relative time, set the `relative` attribute on `rh-timestamp`.
 
 ```html rhcodeblock
 <rh-tooltip>
-  <rh-timestamp relative date="Aug 09 2024 14:57:00 GMT-0400 (Eastern Daylight Time)"></rh-timestamp>
-  <rh-timestamp slot="content" date="Aug 09 2024 14:57:00 GMT-0400 (Eastern Daylight Time)"></rh-timestamp>
+  <rh-timestamp
+    relative
+    date="Aug 09 2024 14:57:00 GMT-0400 (Eastern Daylight Time)"
+  ></rh-timestamp>
+  <rh-timestamp
+    slot="content"
+    date="Aug 09 2024 14:57:00 GMT-0400 (Eastern Daylight Time)"
+  ></rh-timestamp>
 </rh-tooltip>
 ```
-
 
 ### Set a locale other than default
 
@@ -222,8 +231,8 @@ The default locale is inferred by the browser. To set the locale to something el
   </uxdot-example>
 </div>
 
-
 ### UTC timestamp
+
 Set the `UTC` attribute.
 
 <uxdot-example>
@@ -235,11 +244,9 @@ Set the `UTC` attribute.
   </rh-code-block>
 </uxdot-example>
 
-
 ## Responsive design
 
 Just like text, a timestamp will break to two lines as breakpoints get smaller.
-
 
 ### Large breakpoints
 
@@ -250,7 +257,6 @@ Just like text, a timestamp will break to two lines as breakpoints get smaller.
        height="142">
 </uxdot-example>
 
-
 ### Small breakpoints
 
 <uxdot-example color-palette="lightest" width-adjustment="568px" variant="full" alignment="left" no-border>
@@ -259,7 +265,6 @@ Just like text, a timestamp will break to two lines as breakpoints get smaller.
        width="576"
        height="162">
 </uxdot-example>
-
 
 ## Best practices
 

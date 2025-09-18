@@ -22,22 +22,25 @@ subnav:
 
 <uxdot-pattern src="./patterns/1x1-grid.html"
                target="example-1x1-grid">
+
   <h2 slot="heading">Within a promo band (bordered)</h2>
 </uxdot-pattern>
 
-
 <uxdot-pattern src="./patterns/1x1-grid-flat.html"
                target="example-1x1-grid-flat">
+
   <h2 slot="heading">Within a promo band (borderless)</h2>
 </uxdot-pattern>
 
 <uxdot-pattern src="./patterns/2x2-grid.html"
                target="example-2x2-grid">
+
   <h2 slot="heading">With 2x2 grid</h2>
 </uxdot-pattern>
 
 <uxdot-pattern src="./patterns/2x3-grid.html"
                target="example-2x3-grid">
+
   <h2 slot="heading">With 2x3 grid</h2>
 </uxdot-pattern>
 

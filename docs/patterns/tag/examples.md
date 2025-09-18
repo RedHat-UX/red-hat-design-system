@@ -60,4 +60,3 @@ A focus ring wraps around the text and icon in both focus and active states. Hov
         height="33">
   </uxdot-example>
 </div>
-

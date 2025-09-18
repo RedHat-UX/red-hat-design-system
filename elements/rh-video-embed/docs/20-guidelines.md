@@ -1,4 +1,4 @@
-## Usage 
+## Usage
 
 The video embed element shows a static preview of the video, and this allows the user to control what image is seen before the video is played. It also ensures that the video does not start playing automatically.
 
@@ -24,7 +24,7 @@ An optional descriptor caption can be placed underneath the video embed element.
 <rh-table>
 
 | Element | Character count |
-|---------|-----------------|
+| ------- | --------------- |
 | Caption | 150             |
 
 </rh-table>

@@ -67,7 +67,9 @@ Import tokens as JavaScript objects:
 
 ```js rhcodeblock
 import { tokens } from "@rhds/tokens";
-const template = html` <span style="color: ${tokens.get("--rh-color-blue-300")}">I'm blue</span> `;
+const template = html`
+  <span style="color: ${tokens.get("--rh-color-blue-300")}">I'm blue</span>
+`;
 ```
 
 Or tree-shakable imports:

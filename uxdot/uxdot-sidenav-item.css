@@ -12,11 +12,17 @@ a {
 }
 
 a:hover {
-  background: light-dark(var(--rh-color-surface-lighter), var(--rh-color-surface-darker));
+  background: light-dark(
+    var(--rh-color-surface-lighter),
+    var(--rh-color-surface-darker)
+  );
   border-inline-start-color: var(--rh-color-border-subtle);
 }
 
 a.active {
-  background: light-dark(var(--rh-color-surface-lighter), var(--rh-color-surface-darker));
+  background: light-dark(
+    var(--rh-color-surface-lighter),
+    var(--rh-color-surface-darker)
+  );
   border-inline-start-color: var(--rh-color-accent-brand);
 }

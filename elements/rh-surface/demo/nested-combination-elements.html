@@ -1,11 +1,19 @@
 <rh-surface color-palette="darkest">
   <rh-card>
-    <p>The card has no color-palette. It's nested CTA should therefore inherit
-       context from the grandparent, rh-surface.</p>
+    <p>
+      The card has no color-palette. It's nested CTA should therefore inherit
+      context from the grandparent, rh-surface.
+    </p>
     <rh-surface color-palette="light">
-      <p>The nested surface should have lighter color <a href="#">even for links</a></p>
+      <p>
+        The nested surface should have lighter color
+        <a href="#">even for links</a>
+      </p>
       <rh-card color-palette="dark">
-        <p>and the nested card should likewise set it's own <a href="#">scheme</a></p>
+        <p>
+          and the nested card should likewise set it's own
+          <a href="#">scheme</a>
+        </p>
       </rh-card>
       <rh-cta href="#">light</rh-cta>
     </rh-surface>
@@ -14,26 +22,34 @@
 </rh-surface>
 
 <script type="module">
-  import '@rhds/elements/rh-surface/rh-surface.js';
-  import '@rhds/elements/rh-card/rh-card.js';
-  import '@rhds/elements/rh-cta/rh-cta.js';
+  import "@rhds/elements/rh-surface/rh-surface.js";
+  import "@rhds/elements/rh-card/rh-card.js";
+  import "@rhds/elements/rh-cta/rh-cta.js";
 </script>
 
 <style>
   a {
     color: var(--rh-color-interactive-primary-default);
-    &:hover { color: var(--rh-color-interactive-primary-hover); }
-    &:active { color: var(--rh-color-interactive-primary-active); }
+    &:hover {
+      color: var(--rh-color-interactive-primary-hover);
+    }
+    &:active {
+      color: var(--rh-color-interactive-primary-active);
+    }
 
     &:focus-within {
       color: var(--rh-color-interactive-primary-focus);
-      &:hover { color: var(--rh-color-interactive-primary-focus); }
+      &:hover {
+        color: var(--rh-color-interactive-primary-focus);
+      }
     }
 
-    &:visited { /* stylelint-disable-line no-descending-specificity */
+    &:visited {
+      /* stylelint-disable-line no-descending-specificity */
       color: var(--rh-color-interactive-primary-visited-default);
-      &:hover { color: var(--rh-color-interactive-primary-visited-hover); }
+      &:hover {
+        color: var(--rh-color-interactive-primary-visited-hover);
+      }
     }
   }
 </style>
-

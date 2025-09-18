@@ -101,11 +101,11 @@ hover.
 
 <rh-table>
 
- | Property                                | Light scheme                 | Dark scheme               |
- | --------------------------------------- | ---------------------------- | ------------------------- |
- | Thick border color                      | `--rh-color-gray-60`         | `--rh-color-gray-30`      |
- | Jump link text color                    | `--rh-color-text-primary`    | `--rh-color-text-primary` |
- | Disclosure trigger button surface color | `--rh-color-surface-lighter` | `--rh-color-surface-dark` |
+| Property                                | Light scheme                 | Dark scheme               |
+| --------------------------------------- | ---------------------------- | ------------------------- |
+| Thick border color                      | `--rh-color-gray-60`         | `--rh-color-gray-30`      |
+| Jump link text color                    | `--rh-color-text-primary`    | `--rh-color-text-primary` |
+| Disclosure trigger button surface color | `--rh-color-surface-lighter` | `--rh-color-surface-dark` |
 
 </rh-table>
 
@@ -129,10 +129,10 @@ The active section jump link can receive focus, but the styling does not change.
 
 <rh-table>
 
- | Property                                | Light scheme                 | Dark scheme               |
- | --------------------------------------- | ---------------------------- | ------------------------- |
- | Thick border color                      | `--rh-color-gray-60`         | `--rh-color-gray-30`      |
- | Jump link text color                    | `--rh-color-text-primary`    | `--rh-color-text-primary` |
- | Disclosure trigger button surface color | `--rh-color-surface-lighter` | `--rh-color-surface-dark` |
+| Property                                | Light scheme                 | Dark scheme               |
+| --------------------------------------- | ---------------------------- | ------------------------- |
+| Thick border color                      | `--rh-color-gray-60`         | `--rh-color-gray-30`      |
+| Jump link text color                    | `--rh-color-text-primary`    | `--rh-color-text-primary` |
+| Disclosure trigger button surface color | `--rh-color-surface-lighter` | `--rh-color-surface-dark` |
 
 </rh-table>

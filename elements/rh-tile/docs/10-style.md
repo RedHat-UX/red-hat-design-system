@@ -4,7 +4,6 @@ A tile is available as a <strong>Link tile</strong> or <strong>Selectable tile</
 
 ### Anatomy
 
-
 <figure>
   <uxdot-example width-adjustment="360px">
     <img alt="Default link tile with numbers pointing to locations of an image, an icon, text, and a footer"
@@ -41,7 +40,6 @@ A tile is available as a <strong>Link tile</strong> or <strong>Selectable tile</
   </figcaption>
 </figure>
 
-
 ### Sizes
 
 A link tile is available in Default and Compact sizes. A selectable tile has only one size which is based on the size of a compact tile.
@@ -53,8 +51,8 @@ A link tile is available in Default and Compact sizes. A selectable tile has onl
        height="408">
 </uxdot-example>
 
-
 ## Color scheme
+
 <a id="theme"></a>
 
 Both the link tile and the selectable tile are available for dark and light schemes.
@@ -72,7 +70,6 @@ Both the link tile and the selectable tile are available for dark and light sche
        width="752"
        height="511">
 </uxdot-example>
-
 
 ## Heading color
 
@@ -92,11 +89,9 @@ A link tile has a blue heading by default, but a desaturated variant exists for 
        height="511">
 </uxdot-example>
 
-
 ## Space
 
 Space values remain the same at all breakpoints.
-
 
 ### Link tile without image
 
@@ -107,7 +102,6 @@ Space values remain the same at all breakpoints.
        height="371">
 </uxdot-example>
 
-
 ### Link tile with an image
 
 <uxdot-example width-adjustment="752px">
@@ -116,7 +110,6 @@ Space values remain the same at all breakpoints.
        width="752"
        height="925">
 </uxdot-example>
-
 
 ### Selectable tile
 
@@ -127,12 +120,11 @@ Space values remain the same at all breakpoints.
        height="188">
 </uxdot-example>
 
-
 ## Interaction states
 
 Interaction states are visual representations used to communicate the status of an element or pattern. The interaction states of a default link tile are the same for a compact link tile as long as they use the same heading color. A selectable tile does not have an underlined heading to avoid users thinking it contains a link.
 
-### Hover 
+### Hover
 
 The hover state of a link tile also includes the arrow icon moving 3px to the right.
 
@@ -149,7 +141,6 @@ The hover state of a link tile also includes the arrow icon moving 3px to the ri
        width="752"
        height="511">
 </uxdot-example>
-
 
 ### Focus
 
@@ -172,8 +163,7 @@ The hover state of a link tile also includes the arrow icon moving 3px to the ri
        height="523">
 </uxdot-example>
 
-
-### Active 
+### Active
 
 Only link tiles have an active state. Selectable tiles have a selected state instead.
 
@@ -196,8 +186,7 @@ Only link tiles have an active state. Selectable tiles have a selected state ins
        height="299">
 </uxdot-example>
 
-
-### Selected 
+### Selected
 
 Only a selectable tile has a selected state. A link tile has an active state instead.
 
@@ -214,7 +203,6 @@ Only a selectable tile has a selected state. A link tile has an active state ins
        width="752"
        height="188">
 </uxdot-example>
-
 
 ### Disabled
 

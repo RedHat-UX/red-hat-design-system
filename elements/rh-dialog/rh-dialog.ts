@@ -4,7 +4,11 @@ import { property } from 'lit/decorators/property.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { bound, initializer, observes } from '@patternfly/pfe-core/decorators.js';
+import {
+  bound,
+  initializer,
+  observes,
+} from '@patternfly/pfe-core/decorators.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 import { themable } from '@rhds/elements/lib/themable.js';
@@ -118,21 +122,36 @@ export class RhDialog extends LitElement {
   }
 
   render() {
-    const headerId = (this.#header || this.#headings.length) ? this.#headerId : undefined;
-    const triggerLabel = this.#triggerElement ? this.#triggerElement.innerText : undefined;
+    const headerId =
+      this.#header || this.#headings.length ? this.#headerId : undefined;
+    const triggerLabel = this.#triggerElement ?
+      this.#triggerElement.innerText
+      : undefined;
     const hasHeader = this.#slots.hasSlotted('header');
     const hasDescription = this.#slots.hasSlotted('description');
     const hasFooter = this.#slots.hasSlotted('footer');
     const { mobile } = this.#screenSize;
     return html`
       <div id="rhds-wrapper" class="${classMap({ mobile })}">
-        <rh-surface class="${classMap({ hasHeader, hasDescription, hasFooter })}"
+        <rh-surface class="${classMap({
+          hasHeader,
+          hasDescription,
+          hasFooter,
+        })}"
                     ?hidden="${!this.open}">
           <!-- The dialog element -->
           <dialog id="dialog"
                   part="dialog"
-                  aria-labelledby=${ifDefined(this.accessibleLabel ? undefined : headerId)}
-                  aria-label=${ifDefined(this.accessibleLabel ? this.accessibleLabel : (!headerId ? triggerLabel : undefined))}
+                  aria-labelledby=${ifDefined(
+                    this.accessibleLabel ? undefined : headerId
+                  )}
+                  aria-label=${ifDefined(
+                    this.accessibleLabel ?
+                      this.accessibleLabel
+                      : !headerId ?
+                      triggerLabel
+                      : undefined
+                  )}
                   @cancel=${this.#onNativeDialogCancel}>
             <!-- The dialog's close button -->
             <rh-button variant="close"
@@ -203,11 +222,13 @@ export class RhDialog extends LitElement {
           pauseYoutube(iframe);
         }
       }
-    } else if (oldValue == null
-               || open == null
-               // loosening types to prevent running these effects in unexpected circumstances
-               // eslint-disable-next-line eqeqeq
-               || oldValue == open) {
+    } else if (
+      oldValue == null
+      || open == null
+      // loosening types to prevent running these effects in unexpected circumstances
+      // eslint-disable-next-line eqeqeq
+      || oldValue == open
+    ) {
       return;
     } else if (open) {
       // This prevents background scroll
@@ -218,7 +239,9 @@ export class RhDialog extends LitElement {
       // Return scrollability
       document.body.style.overflow = 'auto';
 
-      const event = this.#cancelling ? new DialogCancelEvent() : new DialogCloseEvent();
+      const event = this.#cancelling ?
+        new DialogCancelEvent()
+        : new DialogCloseEvent();
 
       await this.updateComplete;
 
@@ -229,8 +252,9 @@ export class RhDialog extends LitElement {
   @observes('trigger')
   protected _triggerChanged() {
     if (this.trigger) {
-      this.#triggerElement =
-        (this.getRootNode() as Document | ShadowRoot).getElementById(this.trigger);
+      this.#triggerElement = (
+        this.getRootNode() as Document | ShadowRoot
+      ).getElementById(this.trigger);
       this.#triggerElement?.addEventListener('click', this.onTriggerClick);
     }
   }

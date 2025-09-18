@@ -5,12 +5,14 @@ const config: PlaywrightTestConfig = {
   testIgnore: /node_modules|_site/,
   timeout: 120 * 1000,
   workers: process.env.CI ? 2 : 8,
-  webServer: process.env.CI ? undefined : {
-    command: 'npx @web/dev-server --port 8080',
-    port: 8080,
-    timeout: 120 * 1000,
-    reuseExistingServer: !process.env.CI,
-  },
+  webServer: process.env.CI ?
+    undefined
+    : {
+      command: 'npx @web/dev-server --port 8080',
+      port: 8080,
+      timeout: 120 * 1000,
+      reuseExistingServer: !process.env.CI,
+    },
 
   use: {
     viewport: { width: 1920, height: 1080 },

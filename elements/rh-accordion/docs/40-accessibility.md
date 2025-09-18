@@ -1,4 +1,5 @@
 ## Keyboard interactions
+
 Each panel is a focus stop where `Enter` or `Space` expands or collapses each panel.
 
 <uxdot-example color-palette="lightest" width-adjustment="872px">
@@ -30,6 +31,7 @@ Each panel is a focus stop where `Enter` or `Space` expands or collapses each pa
 </uxdot-example>
 
 ## Touch targets
+
 Each panel is selectable instead of only title text or the chevrons.
 
 <uxdot-example color-palette="lightest" width-adjustment="872px">

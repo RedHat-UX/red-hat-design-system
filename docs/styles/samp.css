@@ -14,7 +14,7 @@ samp:not(.swatch) {
 
     &:before,
     &:after {
-      content: ' ';
+      content: " ";
       position: absolute;
       display: block;
       height: var(--rh-length-xs);
@@ -46,7 +46,10 @@ samp:not(.swatch) {
   &.font {
     font-size: var(--samp-font-size, var(--rh-font-size-body-text-md));
     font-family: var(--samp-font-family, var(--rh-font-family-body-text));
-    font-weight: var(--samp-font-weight, var(--rh-font-weight-body-text-regular));
+    font-weight: var(
+      --samp-font-weight,
+      var(--rh-font-weight-body-text-regular)
+    );
 
     &.heading {
       font-size: var(--samp-font-size, var(--rh-font-size-heading-md));

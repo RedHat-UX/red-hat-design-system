@@ -14,19 +14,27 @@
   --_scrollbar-thumb-color: var(--rh-color-gray-50, #707070);
   --_scrollbar-track-color: var(--rh-color-border-subtle);
   --_row-border:
-    /** row border */
-    var(--rh-table-row-border,
-      var(--rh-border-width-sm, 1px)
-      solid
-      var(--rh-color-border-subtle-on-light, #c7c7c7));
-  --_row-background-hover-color:
-    light-dark(/** row hover background color */var(--rh-table-row-background-hover-color,
-      rgba(from var(--rh-color-gray-40, #a3a3a3) r g b / 0.1)),
-      rgba(from var(--rh-color-white, #ffffff) r g b / 0.1));
-  --_column-background-hover-color:
-    light-dark(/** column hover background color */var(--rh-table-column-background-hover-color,
-      rgba(from var(--rh-color-blue-50, #0066cc) r g b / 0.1)),
-      rgba(from var(--rh-color-blue-70, #003366) r g b / 0.3));
+    /** row border */ var(
+    --rh-table-row-border,
+    var(--rh-border-width-sm, 1px) solid
+      var(--rh-color-border-subtle-on-light, #c7c7c7)
+  );
+  --_row-background-hover-color: light-dark(
+    /** row hover background color */
+      var(
+        --rh-table-row-background-hover-color,
+        rgba(from var(--rh-color-gray-40, #a3a3a3) r g b / 0.1)
+      ),
+    rgba(from var(--rh-color-white, #ffffff) r g b / 0.1)
+  );
+  --_column-background-hover-color: light-dark(
+    /** column hover background color */
+      var(
+        --rh-table-column-background-hover-color,
+        rgba(from var(--rh-color-blue-50, #0066cc) r g b / 0.1)
+      ),
+    rgba(from var(--rh-color-blue-70, #003366) r g b / 0.3)
+  );
 }
 
 :host::-webkit-scrollbar {
@@ -48,11 +56,19 @@
 }
 
 /* @todo: should I move these styles to light dom css file? */
-::slotted([slot='summary']) {
+::slotted([slot="summary"]) {
   display: block;
-  padding: var(--rh-space-xl, 24px) var(--rh-space-lg, 16px) 0 var(--rh-space-lg, 16px);
+  padding: var(--rh-space-xl, 24px) var(--rh-space-lg, 16px) 0
+    var(--rh-space-lg, 16px);
   color: var(--rh-color-text-secondary);
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  font-family: var(
+    --rh-font-family-body-text,
+    RedHatText,
+    "Red Hat Text",
+    Helvetica,
+    Arial,
+    sans-serif
+  );
   font-size: var(--rh-font-size-body-text-md, 1rem);
   font-style: italic;
   font-weight: var(--rh-font-weight-body-text-regular, 400);

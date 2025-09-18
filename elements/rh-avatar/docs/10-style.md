@@ -1,7 +1,7 @@
 ## Style
 
-An avatar is a placeholder graphic, custom photo, or generated image. It can 
-be used by itself, but it is often paired with detailed text about the user 
+An avatar is a placeholder graphic, custom photo, or generated image. It can
+be used by itself, but it is often paired with detailed text about the user
 including their full name, job title, and company.
 
 ### Anatomy
@@ -23,10 +23,10 @@ including their full name, job title, and company.
 
 ## Variants
 
-The Default variant is visible when a user has not uploaded a **custom image** 
-(like a photo). Once they do, what they provided replaces the gray thumbnail. 
-If they choose not to, a colored pattern will be generated instead based on 
-their name. A specific name is linked to the same pattern, so thumbnails can 
+The Default variant is visible when a user has not uploaded a **custom image**
+(like a photo). Once they do, what they provided replaces the gray thumbnail.
+If they choose not to, a colored pattern will be generated instead based on
+their name. A specific name is linked to the same pattern, so thumbnails can
 stay static without storing lots of generated images.
 
 <uxdot-example color-palette="lightest" width-adjustment="651px">
@@ -38,8 +38,8 @@ stay static without storing lots of generated images.
 
 ### Plain
 
-The avatar thumbnail can be used on its own in places like 
-[accordions](https://ux.redhat.com/elements/accordion/), 
+The avatar thumbnail can be used on its own in places like
+[accordions](https://ux.redhat.com/elements/accordion/),
 [cards](https://ux.redhat.com/elements/card/), navigations, tables, and more.
 
 <uxdot-example color-palette="lightest" width-adjustment="576px">
@@ -66,6 +66,7 @@ Links can be applied to full name or job details text.
 </uxdot-example>
 
 ## Color scheme
+
 <a id="theme"></a>
 
 All avatar variants are available for both light and dark color schemes.
@@ -89,16 +90,16 @@ All avatar variants are available for both light and dark color schemes.
 <rh-table>
 
 | Element                  | Light theme | Dark theme |
-|--------------------------|-------------|------------|
+| ------------------------ | ----------- | ---------- |
 | Color - job details text | \#4D4D4D    | \#C7C7C7   |
 
 </rh-table>
 
 ## Configuration
 
-The default size of the avatar thumbnail is `64px x 64px` and the avatar 
-thumbnail and job details text are horizontally centered. To see alignment 
-examples, go to the 
+The default size of the avatar thumbnail is `64px x 64px` and the avatar
+thumbnail and job details text are horizontally centered. To see alignment
+examples, go to the
 [Guidelines](https://ux.redhat.com/elements/avatar/guidelines/) page.
 
 <uxdot-example color-palette="lightest" width-adjustment="463px">
@@ -122,7 +123,7 @@ Job details text has specific styles applied to it.
 <rh-table>
 
 | Property                                 | Current Value |
-|------------------------------------------|---------------|
+| ---------------------------------------- | ------------- |
 | Font weight - full name                  | Medium        |
 | Font weight - job title and company name | Regular       |
 | Font style - company name                | Italic        |
@@ -130,7 +131,7 @@ Job details text has specific styles applied to it.
 </rh-table>
 
 ## Space
- 
+
 Space values are the same for all variants and on all breakpoints.
 
 <uxdot-example color-palette="lightest" width-adjustment="570px">
@@ -165,7 +166,7 @@ Interaction states are visual representations used to communicate the status of 
 <rh-table>
 
 | Property                         | Light theme | Dark theme |
-|----------------------------------|-------------|------------|
+| -------------------------------- | ----------- | ---------- |
 | Color - full name text           | \#004080    | \#BEE1FA   |
 | Text decoration - full name text | Underline   | Underline  |
 
@@ -176,11 +177,10 @@ Interaction states are visual representations used to communicate the status of 
 <rh-table>
 
 | Property           | Light theme | Dark theme |
-|--------------------|-------------|------------|
+| ------------------ | ----------- | ---------- |
 | Color - focus ring | \#0066CC    | \#73BCF7   |
 
 </rh-table>
-
 
 <uxdot-example color-palette="lightest" width-adjustment="289px">
   <img alt="Image of light theme avatar group focus states"
@@ -199,11 +199,10 @@ Interaction states are visual representations used to communicate the status of 
 <rh-table>
 
 | Property           | Light theme | Dark theme |
-|--------------------|-------------|------------|
+| ------------------ | ----------- | ---------- |
 | Color - focus ring | \#0066CC    | \#73BCF7   |
 
 </rh-table>
-
 
 ### Active
 
@@ -229,10 +228,8 @@ Interaction states are visual representations used to communicate the status of 
 <rh-table>
 
 | Property                         | Light theme | Dark theme |
-|----------------------------------|-------------|------------|
+| -------------------------------- | ----------- | ---------- |
 | Color - full name text           | \#004080    | \#BEE1FA   |
 | Text decoration - full name text | Underline   | Underline  |
 
 </rh-table>
-
-

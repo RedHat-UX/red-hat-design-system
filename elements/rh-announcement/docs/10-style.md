@@ -1,4 +1,4 @@
-## Style 
+## Style
 
 An announcement is a layout with various slots for content and images. Inline or background images may be included depending on the message or campaign.
 
@@ -54,7 +54,7 @@ An announcement uses our [Icon](/elements/icon/) element and one icon from our r
 <rh-table>
 
 | Icon preview | Icon name | HTML code                                        |
-|--------------|-----------|--------------------------------------------------|
+| ------------ | --------- | ------------------------------------------------ |
 |              | close     | `<rh-icon set="microns" icon="close"></rh-icon>` |
 
 </rh-table>
@@ -63,8 +63,8 @@ An announcement uses our [Icon](/elements/icon/) element and one icon from our r
 
 You may use the inline image slot two different ways within an announcement.
 
-  - If you are using an inline image like a logo or icon, it has a max height of 48px
-  - If you are using a more horizontal text logo, it should be around 20px - 25px tall
+- If you are using an inline image like a logo or icon, it has a max height of 48px
+- If you are using a more horizontal text logo, it should be around 20px - 25px tall
 
   <uxdot-example variant="full" no-border>
     <img alt="Two light announcements on a gray background. One has a 48px image and the other has a 20-25px textd logo."
@@ -78,10 +78,9 @@ You may use the inline image slot two different ways within an announcement.
        src="../announcement-style-space.svg">
 </uxdot-example>
 
-
 ## Interaction states
 
 Refer to these documentation pages for interaction states.
 
-  - [Button](/elements/button/)
-  - [Call to action](elements/call-to-action/)
+- [Button](/elements/button/)
+- [Call to action](elements/call-to-action/)

@@ -4,7 +4,7 @@ A skip link is used to make navigation easier for keyboard and screen reader use
 
 ## Behavior
 
-A skip link is hidden off-screen by default. When users navigate to it, it will appear to drop down from the top of the viewport, making it visible for sighted users. 
+A skip link is hidden off-screen by default. When users navigate to it, it will appear to drop down from the top of the viewport, making it visible for sighted users.
 
 Activating the skip link will hide it again and move the keyboard or screen reader focus to the main content area.
 
@@ -19,11 +19,10 @@ The recommended maximum character count is listed below and includes spaces.
 <rh-table>
 
 | Element    | Character count |
-|------------|-----------------|
+| ---------- | --------------- |
 | Text label | 20              |
 
 </rh-table>
-
 
 ## Best practices
 
@@ -79,7 +78,7 @@ The vast majority of pages will need only one skip link, unless it is a very com
   </uxdot-best-practice>
 </div>
 
-### Visibility 
+### Visibility
 
 To prevent the skip link from being visually distracting, hide a skip link until users navigate to it. The most accessible way to hide it is to position the skip link outside of the viewport, rather than using `display: none` or the `hidden` attribute in CSS.
 

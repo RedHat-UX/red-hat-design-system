@@ -15,13 +15,13 @@ Specify the title of the table using a `<caption>` element.
 
 ### Responsive tables
 
-`<rh-table>` will automatically reformat to a "stacked" presentation in narrow 
-containers such as on small screens and mobile devices or in page sidebars. For 
-simple table structures, each table cell heading will be auto-generated for its 
+`<rh-table>` will automatically reformat to a "stacked" presentation in narrow
+containers such as on small screens and mobile devices or in page sidebars. For
+simple table structures, each table cell heading will be auto-generated for its
 responsive layout.
 
-For complex tables (i.e., including `colspan` or `rowspan` attributes), or to 
-customize or override individual table cell headings on mobile devices, use a 
+For complex tables (i.e., including `colspan` or `rowspan` attributes), or to
+customize or override individual table cell headings on mobile devices, use a
 `data-label` attribute on the `<td>` elements to label them.
 
 ```html rh-code-block
@@ -31,15 +31,19 @@ customize or override individual table cell headings on mobile devices, use a
       Concerts
     </caption>
     <colgroup>
-      <col>
-      <col>
-      <col>
+      <col />
+      <col />
+      <col />
     </colgroup>
     <thead>
       <tr>
         <th id="concerts-date" scope="col">Date</th>
-        <th id="concerts-event" scope="col">Event<rh-sort-button></rh-sort-button></th>
-        <th id="concerts-venue" scope="col">Venue<rh-sort-button></rh-sort-button></th>
+        <th id="concerts-event" scope="col">
+          Event<rh-sort-button></rh-sort-button>
+        </th>
+        <th id="concerts-venue" scope="col">
+          Venue<rh-sort-button></rh-sort-button>
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -56,7 +60,9 @@ customize or override individual table cell headings on mobile devices, use a
       <tr>
         <td headers="concerts-date" data-label="Custom heading 1">14 April</td>
         <td headers="concerts-event" data-label="Custom heading 2">The What</td>
-        <td headers="concerts-venue" data-label="Custom heading 3">Main Hall</td>
+        <td headers="concerts-venue" data-label="Custom heading 3">
+          Main Hall
+        </td>
       </tr>
     </tbody>
   </table>
@@ -66,7 +72,7 @@ customize or override individual table cell headings on mobile devices, use a
 
 ### Column highlighting
 
-To enable column highlighting, the `<table>` element must also include a `<col>` 
+To enable column highlighting, the `<table>` element must also include a `<col>`
 element for each column in the table, typically wrapped with a `<colgroup>`.
 
 ```html rh-code-block
@@ -76,9 +82,9 @@ element for each column in the table, typically wrapped with a `<colgroup>`.
       Concerts
     </caption>
     <colgroup>
-      <col>
-      <col>
-      <col>
+      <col />
+      <col />
+      <col />
     </colgroup>
     <!-- ...table with three columns -->
   </table>
@@ -87,7 +93,7 @@ element for each column in the table, typically wrapped with a `<colgroup>`.
 
 ### Sorting
 
-To enable sorting on a column, add an `<rh-sort-button>` as the last child of 
+To enable sorting on a column, add an `<rh-sort-button>` as the last child of
 the `<th>` cell.
 
 ```html rh-code-block
@@ -97,15 +103,19 @@ the `<th>` cell.
       Concerts
     </caption>
     <colgroup>
-      <col>
-      <col>
-      <col>
+      <col />
+      <col />
+      <col />
     </colgroup>
     <thead>
       <tr>
         <th id="concerts-date" scope="col">Date</th>
-        <th id="concerts-event" scope="col">Event<rh-sort-button></rh-sort-button></th>
-        <th id="concerts-venue" scope="col">Venue<rh-sort-button></rh-sort-button></th>
+        <th id="concerts-event" scope="col">
+          Event<rh-sort-button></rh-sort-button>
+        </th>
+        <th id="concerts-venue" scope="col">
+          Venue<rh-sort-button></rh-sort-button>
+        </th>
       </tr>
     </thead>
     <!-- ...table data sortable by Event and Venue -->
@@ -115,7 +125,7 @@ the `<th>` cell.
 
 ### Summary
 
-Additional information about the data in the table should be slotted into the 
+Additional information about the data in the table should be slotted into the
 `summary` slot after the `table` element.
 
 ```html rh-code-block
@@ -125,15 +135,19 @@ Additional information about the data in the table should be slotted into the
       Concerts
     </caption>
     <colgroup>
-      <col>
-      <col>
-      <col>
+      <col />
+      <col />
+      <col />
     </colgroup>
     <thead>
       <tr>
         <th id="concerts-date" scope="col">Date</th>
-        <th id="concerts-event" scope="col">Event<rh-sort-button></rh-sort-button></th>
-        <th id="concerts-venue" scope="col">Venue<rh-sort-button></rh-sort-button></th>
+        <th id="concerts-event" scope="col">
+          Event<rh-sort-button></rh-sort-button>
+        </th>
+        <th id="concerts-venue" scope="col">
+          Venue<rh-sort-button></rh-sort-button>
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -157,4 +171,3 @@ Additional information about the data in the table should be slotted into the
   <small slot="summary">Dates and venues subject to change.</small>
 </rh-table>
 ```
-

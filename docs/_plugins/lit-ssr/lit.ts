@@ -36,10 +36,7 @@ register('./lit-css-node.ts', import.meta.url);
  * @param eleventyConfig
  * @param opts
  */
-export default async function(
-  eleventyConfig: UserConfig,
-  opts?: Options,
-) {
+export default async function(eleventyConfig: UserConfig, opts?: Options) {
   const imports = opts?.componentModules ?? [];
   const tsconfig = opts?.tsconfig ?? './tsconfig.json';
 
@@ -77,12 +74,19 @@ export default async function(
         const { durationMs, rendered, page } = message;
         if (durationMs > 1000) {
           const color =
-            durationMs > 5000 ? chalk.red
-          : durationMs > 1000 ? chalk.yellow
-          : durationMs > 100 ? chalk.blue
-          : chalk.green;
+            durationMs > 5000 ?
+              chalk.red
+              : durationMs > 1000 ?
+              chalk.yellow
+              : durationMs > 100 ?
+              chalk.blue
+              : chalk.green;
           // eslint-disable-next-line no-console
-          console.log(`${color(durationMs.toFixed(2).padEnd(8))} Rendered ${page.outputPath} in`);
+          console.log(
+            `${color(durationMs.toFixed(2).padEnd(8))} Rendered ${
+              page.outputPath
+            } in`
+          );
         }
         return trimOuterMarkers(rendered);
       } else {

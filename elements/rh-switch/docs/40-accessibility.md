@@ -47,12 +47,12 @@ Like other form elements, switches require labels that are available to assistiv
 ### Visible labels
 
 If you’re using a visible label, associate it with your switch:
+
 1. Ensure your `<rh-switch>` element has an id value.
 2. Add a `<label>` element before `<rh-switch>` with a `for` attribute pointing to the switch’s `id`.
 
 ```html rhcodeblock
-<label for="my-switch">Switcheroo</label>
-<rh-switch id="my-switch"></rh-switch>
+<label for="my-switch">Switcheroo</label> <rh-switch id="my-switch"></rh-switch>
 ```
 
 ### Visually-hidden labels

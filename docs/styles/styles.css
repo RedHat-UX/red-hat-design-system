@@ -1,5 +1,4 @@
-@layer
-  reset,
+@layer reset,
   fonts,
   tokens,
   typography,
@@ -14,15 +13,15 @@
   page,
   overrides;
 
-@import url('not-defined.css') layer(not-defined);
-@import url('reset.css') layer(reset);
-@import url('fonts.css') layer(fonts);
-@import url('/assets/packages/@rhds/tokens/css/global.css') layer(tokens);
-@import url('/assets/packages/@rhds/tokens/css/default-theme.css') layer(tokens);
-@import url('typography.css') layer(typography);
-@import url('grid.css') layer(grid);
-@import url('lightdom.css') layer(lightdom);
-@import url('third-party/prism-rhds.css') layer(third-party);
+@import url("not-defined.css") layer(not-defined);
+@import url("reset.css") layer(reset);
+@import url("fonts.css") layer(fonts);
+@import url("/assets/packages/@rhds/tokens/css/global.css") layer(tokens);
+@import url("/assets/packages/@rhds/tokens/css/default-theme.css") layer(tokens);
+@import url("typography.css") layer(typography);
+@import url("grid.css") layer(grid);
+@import url("lightdom.css") layer(lightdom);
+@import url("third-party/prism-rhds.css") layer(third-party);
 
 @layer base {
   body {
@@ -32,7 +31,10 @@
   a {
     color: var(--rh-color-interactive-primary-default);
     text-decoration: underline dashed 1px;
-    text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40));
+    text-decoration-color: light-dark(
+      var(--rh-color-gray-50),
+      var(--rh-color-gray-40)
+    );
     text-underline-offset: max(5px, 0.28em);
     transition: ease text-underline-offset 0.3s;
 
@@ -46,17 +48,23 @@
       color: var(--rh-color-interactive-primary-focus);
       text-decoration-color: inherit;
       text-underline-offset: max(6px, 0.33em);
-      &:hover { color: var(--rh-color-interactive-primary-focus); }
+      &:hover {
+        color: var(--rh-color-interactive-primary-focus);
+      }
     }
 
-    &:visited { /* stylelint-disable-line no-descending-specificity */
+    &:visited {
+      /* stylelint-disable-line no-descending-specificity */
       color: var(--rh-color-interactive-primary-visited-default);
-      &:hover { color: var(--rh-color-interactive-primary-visited-hover); }
+      &:hover {
+        color: var(--rh-color-interactive-primary-visited-hover);
+      }
     }
   }
 
   hr {
-    border-block-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+    border-block-start: var(--rh-border-width-sm) solid
+      var(--rh-color-border-subtle);
     border-inline: none;
     border-block-end: none;
     margin-block-end: var(--rh-space-2xl);
@@ -91,32 +99,36 @@
 
   :target {
     /* Set padding for #hash links */
-    scroll-margin-top: calc(var(--uxdot-masthead-max-height) + var(--rh-space-5xl));
+    scroll-margin-top: calc(
+      var(--uxdot-masthead-max-height) + var(--rh-space-5xl)
+    );
   }
 
   body {
     display: grid;
     grid-template-rows: max-content 1fr max-content;
-    grid-template-areas: 'header' 'main' 'footer';
+    grid-template-areas: "header" "main" "footer";
     position: relative;
     min-height: 100dvh;
   }
 
   body:has(uxdot-sidenav:not(:defined)) {
     grid-template-rows: max-content max-content 1fr max-content;
-    grid-template-areas: 'header' 'nav' 'main' 'footer';
+    grid-template-areas: "header" "nav" "main" "footer";
   }
 
   #main,
   uxdot-sidenav {
-    --rh-color-surface:
-      light-dark(var(--rh-color-surface-lightest),
-        var(--rh-color-surface-darker));
+    --rh-color-surface: light-dark(
+      var(--rh-color-surface-lightest),
+      var(--rh-color-surface-darker)
+    );
   }
 
   #main {
     grid-area: main;
-    border-inline-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+    border-inline-start: var(--rh-border-width-sm) solid
+      var(--rh-color-border-subtle);
     container-type: inline-size;
     container-name: main;
     padding-block-start: var(--uxdot-masthead-max-height);
@@ -144,17 +156,17 @@
       grid-template-rows: max-content 1fr max-content;
       grid-template-columns: minmax(300px, 320px) max-content 1fr;
       grid-template-areas:
-        'header header header'
-        'nav main main'
-        'nav footer footer';
+        "header header header"
+        "nav main main"
+        "nav footer footer";
     }
 
     body:has(uxdot-sidenav:not(:defined)) {
       grid-template-rows: max-content 1fr max-content;
       grid-template-areas:
-        'header header header'
-        'nav main main'
-        'nav footer footer';
+        "header header header"
+        "nav main main"
+        "nav footer footer";
     }
   }
 
@@ -199,7 +211,7 @@
     margin-block-start: var(--rh-space-2xl);
   }
 
-  :where(uxdot-copy-permalink, h1, h2, h3 ,h4, h5 ,h6) + uxdot-example {
+  :where(uxdot-copy-permalink, h1, h2, h3, h4, h5, h6) + uxdot-example {
     margin-block-start: var(--rh-space-lg);
   }
 
@@ -266,11 +278,12 @@ rh-alert code {
      * KBD and code pattern
      */
 
-  :where(code:not([class^='language-'])) {
+  :where(code:not([class^="language-"])) {
     padding-inline: var(--rh-space-xs);
-    background:
-      light-dark(oklch(from var(--rh-color-surface) calc(l - 0.05) c h),
-        oklch(from var(--rh-color-surface) calc(l + 0.1) c h));
+    background: light-dark(
+      oklch(from var(--rh-color-surface) calc(l - 0.05) c h),
+      oklch(from var(--rh-color-surface) calc(l + 0.1) c h)
+    );
     border-radius: var(--rh-border-radius-default);
     font-size: var(--rh-font-size-code-md);
     font-weight: var(--rh-font-weight-code-regular);
@@ -288,10 +301,10 @@ rh-alert code {
   :where(kbd) {
     --_uxdot-kbd-color-border: var(--rh-color-border-subtle);
 
-    background-color:
-      light-dark(
-          var(--rh-color-surface-lightest),
-          var(--rh-color-surface-darkest));
+    background-color: light-dark(
+      var(--rh-color-surface-lightest),
+      var(--rh-color-surface-darkest)
+    );
     color: var(--rh-color-text-primary);
     border-radius: var(--rh-border-radius-default);
     border: var(--rh-border-width-sm) solid var(--_uxdot-kbd-color-border);
@@ -357,7 +370,8 @@ rh-alert code {
   }
 
   #edit-this-page {
-    border-block-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+    border-block-start: var(--rh-border-width-sm) solid
+      var(--rh-color-border-subtle);
     margin-block-start: var(--rh-space-6xl);
     padding-block-start: var(--rh-space-lg);
   }

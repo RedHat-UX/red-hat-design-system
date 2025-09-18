@@ -7,7 +7,7 @@
   display: none !important;
 }
 
-[part='icon'] {
+[part="icon"] {
   display: none;
   pointer-events: none;
 }
@@ -41,7 +41,7 @@ button {
   &:after {
     position: absolute;
     inset: 0;
-    content: '';
+    content: "";
     border-style: solid;
     border-color: var(--_border-color);
     border-width: var(--_border-width);
@@ -53,9 +53,7 @@ button {
     --_background-color: var(--_focus-background-color);
     --_border-width: var(--_focus-border-width);
 
-    outline:
-      var(--rh-border-width-md, 2px)
-      solid
+    outline: var(--rh-border-width-md, 2px) solid
       var(--rh-color-interactive-primary-default);
 
     &:after {
@@ -70,49 +68,77 @@ button {
     align-items: center;
     padding-inline-start: calc(var(--rh-space-lg, 16px) * 0.75);
 
-    & [part='icon'] {
+    & [part="icon"] {
       display: contents;
     }
   }
 
   &.primary {
     --_color: var(--rh-color-text-primary-on-dark, #ffffff);
-    --_background-color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
+    --_background-color: var(
+      --rh-color-interactive-primary-default-on-light,
+      #0066cc
+    );
     --_border-color: transparent;
     --_border-width: var(--rh-border-width-sm, 1px);
     --_active-color: var(--rh-color-text-primary-on-dark, #ffffff);
-    --_active-background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
+    --_active-background-color: var(
+      --rh-color-interactive-primary-hover-on-light,
+      #003366
+    );
     --_active-border-width: var(--rh-border-width-sm, 1px);
     --_focus-color: var(--rh-color-text-primary-on-dark, #ffffff);
-    --_focus-background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
+    --_focus-background-color: var(
+      --rh-color-interactive-primary-hover-on-light,
+      #003366
+    );
     --_focus-border-width: var(--rh-border-width-md, 2px);
     --_hover-color: var(--rh-color-text-primary-on-dark, #ffffff);
-    --_hover-background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
+    --_hover-background-color: var(
+      --rh-color-interactive-primary-hover-on-light,
+      #003366
+    );
     --_hover-border-width: var(--rh-border-width-sm, 1px);
   }
 
   &.danger {
-    --_color:
-      light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
-        var(--rh-color-text-primary-on-light, #151515));
-    --_background-color: light-dark(#c9190b, #fe5142); /* WARNING: non-token value */
+    --_color: light-dark(
+      var(--rh-color-text-primary-on-dark, #ffffff),
+      var(--rh-color-text-primary-on-light, #151515)
+    );
+    --_background-color: light-dark(
+      #c9190b,
+      #fe5142
+    ); /* WARNING: non-token value */
     --_border-color: transparent;
     --_border-width: var(--rh-border-width-sm, 1px);
-    --_active-color:
-      light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
-        var(--rh-color-text-primary-on-light, #151515));
-    --_active-background-color: light-dark(#a30000, #ff7468); /* WARNING: non-token value */
+    --_active-color: light-dark(
+      var(--rh-color-text-primary-on-dark, #ffffff),
+      var(--rh-color-text-primary-on-light, #151515)
+    );
+    --_active-background-color: light-dark(
+      #a30000,
+      #ff7468
+    ); /* WARNING: non-token value */
     --_active-border-color: transparent;
-    --_focus-color:
-      light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
-        var(--rh-color-text-primary-on-light, #151515));
-    --_focus-background-color: light-dark(#a30000, #ff7468);  /* WARNING: non-token value */
+    --_focus-color: light-dark(
+      var(--rh-color-text-primary-on-dark, #ffffff),
+      var(--rh-color-text-primary-on-light, #151515)
+    );
+    --_focus-background-color: light-dark(
+      #a30000,
+      #ff7468
+    ); /* WARNING: non-token value */
     --_focus-border-color: transparent;
     --_focus-border-width: var(--rh-border-width-md, 2px);
-    --_hover-color:
-      light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
-        var(--rh-color-text-primary-on-light, #151515));
-    --_hover-background-color: light-dark(#a30000, #ff7468); /* WARNING: non-token value */
+    --_hover-color: light-dark(
+      var(--rh-color-text-primary-on-dark, #ffffff),
+      var(--rh-color-text-primary-on-light, #151515)
+    );
+    --_hover-background-color: light-dark(
+      #a30000,
+      #ff7468
+    ); /* WARNING: non-token value */
     --_hover-border-color: transparent;
   }
 
@@ -135,13 +161,19 @@ button {
     --_hover-border-width: var(--rh-border-width-md, 2px);
 
     &.danger {
-      --_color: light-dark(var(--rh-color-red-60, #a60000), var(--rh-color-red-30, #f9a8a8));
+      --_color: light-dark(
+        var(--rh-color-red-60, #a60000),
+        var(--rh-color-red-30, #f9a8a8)
+      );
       --_background-color: transparent;
       --_border-color: light-dark(#c9190b, #fe5142);
       --_active-color: light-dark(#c9190b, #fe5142);
       --_active-background-color: transparent;
       --_active-border-color: transparent;
-      --_focus-color: light-dark(var(--rh-color-red-60, #a60000), var(--rh-color-red-30, #f9a8a8));
+      --_focus-color: light-dark(
+        var(--rh-color-red-60, #a60000),
+        var(--rh-color-red-30, #f9a8a8)
+      );
       --_focus-background-color: transparent;
       --_focus-border-color: transparent;
       --_hover-color: light-dark(#c9190b, #fe5142);
@@ -173,18 +205,21 @@ button {
     --_color: var(--rh-color-interactive-primary-default);
     --_background-color: transparent;
     --_border-color: transparent;
-    --_active-color:
-      light-dark(var(--rh-color-blue-70, #003366),
-        var(--rh-color-interactive-primary-hover-on-dark, #b9dafc));
+    --_active-color: light-dark(
+      var(--rh-color-blue-70, #003366),
+      var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
+    );
     --_active-background-color: transparent;
-    --_focus-color:
-      light-dark(var(--rh-color-blue-70, #003366),
-        var(--rh-color-interactive-primary-hover-on-dark, #b9dafc));
+    --_focus-color: light-dark(
+      var(--rh-color-blue-70, #003366),
+      var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
+    );
     --_focus-background-color: transparent;
     --_focus-outline-color: var(--rh-color-interactive-primary-default);
-    --_hover-color:
-      light-dark(var(--rh-color-blue-70, #003366),
-        var(--rh-color-interactive-primary-hover-on-dark, #b9dafc));
+    --_hover-color: light-dark(
+      var(--rh-color-blue-70, #003366),
+      var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
+    );
     --_hover-background-color: transparent;
 
     display: inline-flex;
@@ -215,24 +250,36 @@ button {
 
   &.play {
     --_color: var(--rh-color-icon-secondary-on-dark);
-    --_background-color:
-      light-dark(rgba(from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-50, 50%)),
-        rgba(from white r g b / var(--rh-opacity-50, 50%)));
-    --_active-background-color:
-      light-dark(rgba(from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-80, 80%)),
-        rgba(from white r g b / var(--rh-opacity-80, 80%)));
-    --_focus-background-color:
-      light-dark(rgba(from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-80, 80%)),
-        rgba(from white r g b / var(--rh-opacity-80, 80%)));
+    --_background-color: light-dark(
+      rgba(
+        from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-50, 50%)
+      ),
+      rgba(from white r g b / var(--rh-opacity-50, 50%))
+    );
+    --_active-background-color: light-dark(
+      rgba(
+        from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-80, 80%)
+      ),
+      rgba(from white r g b / var(--rh-opacity-80, 80%))
+    );
+    --_focus-background-color: light-dark(
+      rgba(
+        from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-80, 80%)
+      ),
+      rgba(from white r g b / var(--rh-opacity-80, 80%))
+    );
     --_focus-outline-color: var(--rh-color-interactive-primary-default);
-    --_hover-background-color:
-      light-dark(rgba(from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-80, 80%)),
-        rgba(from white r g b / var(--rh-opacity-80, 80%)));
+    --_hover-background-color: light-dark(
+      rgba(
+        from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-80, 80%)
+      ),
+      rgba(from white r g b / var(--rh-opacity-80, 80%))
+    );
 
     border-radius: 100%;
     width: var(--rh-length-4xl, 64px);
 
-    & [part='icon'] {
+    & [part="icon"] {
       display: contents;
     }
 
@@ -242,7 +289,7 @@ button {
     }
   }
 
-  &:is(.play,.close) {
+  &:is(.play, .close) {
     --_border-color: transparent;
 
     aspect-ratio: 1;
@@ -277,23 +324,23 @@ button {
   }
 }
 
-:host(:is(:disabled, [aria-disabled='true'])),
-:host(:is(:disabled, [aria-disabled='true'])) #container,
-:host(:is(:disabled, [aria-disabled='true'])) button,
-:host(:is(:disabled, [aria-disabled='true'])[danger]) button,
-:host(:is(:disabled, [aria-disabled='true'])[variant='link']) button {
+:host(:is(:disabled, [aria-disabled="true"])),
+:host(:is(:disabled, [aria-disabled="true"])) #container,
+:host(:is(:disabled, [aria-disabled="true"])) button,
+:host(:is(:disabled, [aria-disabled="true"])[danger]) button,
+:host(:is(:disabled, [aria-disabled="true"])[variant="link"]) button {
   pointer-events: none;
   cursor: default;
 }
 
-[part='icon'] ::slotted(*) {
+[part="icon"] ::slotted(*) {
   width: 16px;
   max-width: 16px;
   height: 16px;
   max-height: 16px;
 }
 
-:host(:is([variant='play' i], [variant='close' i])) {
+:host(:is([variant="play" i], [variant="close" i])) {
   line-height: 0;
 }
 
@@ -305,23 +352,25 @@ button {
 
 :host(:disabled) button,
 :host(:disabled[danger]) button,
-:host(:disabled[variant='link']) button,
+:host(:disabled[variant="link"]) button,
 button[disabled] {
   pointer-events: none;
   cursor: default;
 
-  --_color:
-    light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d),
-      var(--rh-color-gray-40, #a3a3a3));
-  --_background-color:
-    light-dark(var(--rh-color-surface-light, #e0e0e0),
-      var(--rh-color-surface-dark, #383838));
+  --_color: light-dark(
+    var(--rh-color-text-secondary-on-light, #4d4d4d),
+    var(--rh-color-gray-40, #a3a3a3)
+  );
+  --_background-color: light-dark(
+    var(--rh-color-surface-light, #e0e0e0),
+    var(--rh-color-surface-dark, #383838)
+  );
 }
 
 :host(:disabled) button:after {
   --_border-color: transparent;
 }
 
-:host(:not([disabled])) .hasIcon [part='icon'] {
+:host(:not([disabled])) .hasIcon [part="icon"] {
   cursor: pointer;
 }

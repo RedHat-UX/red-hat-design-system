@@ -33,7 +33,8 @@ export class UxdotDemo extends LitElement {
         return str?.split(/,|\s/) ?? [];
       },
     },
-  }) attributeKnobs: string[] = [];
+  })
+  attributeKnobs: string[] = [];
 
   @property({ attribute: 'demo-title' }) demoTitle!: string;
 
@@ -79,14 +80,20 @@ export class UxdotDemo extends LitElement {
                      variant="link"
                      icon="expand"
                      icon-set="ui"
-                     @click="${this.#toggleFullscreen}">View fullscreen</rh-button>
+                     @click="${
+                        this.#toggleFullscreen
+                      }">View fullscreen</rh-button>
           <rh-button slot="footer"
                      variant="link"
                      icon="refresh"
                      icon-set="ui"
                      @click="${this.#reloadIframe}">Reload</rh-button>
-          <a slot="footer" href="${this.demoSourceUrl}">View source on GitHub <rh-icon set="ui" icon="code"></rh-icon></a></rh-cta>
-          <a slot="footer" href="${this.demoUrl}" target="_blank">View in new window <rh-icon set="ui" icon="duplicate"></rh-icon></a></rh-cta>
+          <a slot="footer" href="${
+            this.demoSourceUrl
+          }">View source on GitHub <rh-icon set="ui" icon="code"></rh-icon></a></rh-cta>
+          <a slot="footer" href="${
+            this.demoUrl
+          }" target="_blank">View in new window <rh-icon set="ui" icon="duplicate"></rh-icon></a></rh-cta>
         </rh-card>
       </div>
     `;
@@ -111,15 +118,25 @@ export class UxdotDemo extends LitElement {
 
   async #initIframe() {
     if (!this.#loadedPromises.has(this.#iframe.contentWindow!)) {
-      this.#loadedPromises.set(this.#iframe.contentWindow!, new Promise(resolve =>
-        this.#iframe.contentWindow?.addEventListener('DOMContentLoaded', () => resolve())));
+      this.#loadedPromises.set(
+        this.#iframe.contentWindow!,
+        new Promise(resolve =>
+          this.#iframe.contentWindow?.addEventListener('DOMContentLoaded', () =>
+            resolve()
+          )
+        )
+      );
     }
     await this.#loadedPromises.get(this.#iframe.contentWindow!);
-    if (!isServer && this.demo === this.tag && !UxdotDemo.tagsWithFullWidthDemos.has(this.tag)) {
+    if (
+      !isServer
+      && this.demo === this.tag
+      && !UxdotDemo.tagsWithFullWidthDemos.has(this.tag)
+    ) {
       const { contentDocument } = this.#iframe;
       if (contentDocument) {
         const style = contentDocument.createElement('style');
-        style.textContent = /* css */`
+        style.textContent = /* css */ `
           body {
             padding: var(--rh-space-3xl, 48px);
           }
@@ -134,7 +151,7 @@ export class UxdotDemo extends LitElement {
   async #getDemoElement() {
     await this.#loadedPromises.get(this.#iframe.contentWindow!);
     const element: LitElement | null | undefined =
-        this.#iframe.contentWindow?.document.querySelector(this.tag);
+      this.#iframe.contentWindow?.document.querySelector(this.tag);
     if (element) {
       return element;
     } else {
@@ -153,7 +170,8 @@ export class UxdotDemo extends LitElement {
       element.setAttribute(name, value);
     }
     await element.updateComplete;
-    const htmlSlot: HTMLSlotElement | null = this.shadowRoot!.querySelector('slot[name=html]')!;
+    const htmlSlot: HTMLSlotElement | null =
+      this.shadowRoot!.querySelector('slot[name=html]')!;
     const [htmlBlock] = htmlSlot.assignedElements() as RhCodeBlock[];
     htmlBlock.setAttribute('highlighting', 'client');
     htmlBlock.setAttribute('language', 'html');

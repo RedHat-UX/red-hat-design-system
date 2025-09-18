@@ -6,12 +6,15 @@ export default {
     litcssOptions,
     tsconfig: 'tsconfig.settings.json',
     files: ['elements/**/*.spec.ts'],
-    importMapOptions: { },
+    importMapOptions: {},
   }),
   middleware: [
     /** redirect requests for /(lib|elements)/*.js to *.ts */
     function(ctx, next) {
-      if (!ctx.path.includes('node_modules') && ctx.path.match(/(lib|elements)\/.*\.js$/)) {
+      if (
+        !ctx.path.includes('node_modules')
+        && ctx.path.match(/(lib|elements)\/.*\.js$/)
+      ) {
         ctx.redirect(ctx.path.replace('.js', '.ts'));
       } else {
         return next();
@@ -19,4 +22,3 @@ export default {
     },
   ],
 };
-

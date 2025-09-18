@@ -6,7 +6,9 @@
   position: relative;
 }
 
-[hidden] { display: none !important; }
+[hidden] {
+  display: none !important;
+}
 
 input {
   border: var(--rh-border-width-sm);
@@ -61,7 +63,7 @@ li {
   padding: var(--rh-space-md);
 }
 
-li[aria-selected='true'],
+li[aria-selected="true"],
 li:focus-within {
   outline: var(--rh-border-width-md);
 }

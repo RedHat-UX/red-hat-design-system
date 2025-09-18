@@ -4,17 +4,17 @@ Use a spinner to show that something is loading after a user takes action.
 
 ### When to use a spinner
 
-When users advance to a new page and the structure is unknown both in quantity 
-and shape, use a spinner. If users expect to see components on a new screen 
-after they perform an action, a Skeleton should be used instead in order to 
-reflect the structure. If the wait time after performing an action is less than 
-a few seconds, a spinner should be used. For experiences that need longer than a 
-few seconds to load, use a Progress bar instead. Lastly, when the result of an 
+When users advance to a new page and the structure is unknown both in quantity
+and shape, use a spinner. If users expect to see components on a new screen
+after they perform an action, a Skeleton should be used instead in order to
+reflect the structure. If the wait time after performing an action is less than
+a few seconds, a spinner should be used. For experiences that need longer than a
+few seconds to load, use a Progress bar instead. Lastly, when the result of an
 experience has no data or the screen is empty, use an Empty state instead.
 
 ### Character count
 
-The text label should be as brief and general as possible in order to give users 
+The text label should be as brief and general as possible in order to give users
 enough time to read it.
 
 <uxdot-example color-palette="lightest" width-adjustment="721px">
@@ -27,15 +27,14 @@ enough time to read it.
 <rh-table>
 
 | Element    | Character count |
-|------------|-----------------|
+| ---------- | --------------- |
 | Text label | 30              |
 
 </rh-table>
 
-
 ## Sizes
 
-Depending on what data is being retrieved and loaded and how much space it 
+Depending on what data is being retrieved and loaded and how much space it
 occupies, use a spinner size that matches.
 
 - The large size is the default, it can be used for whole pages or large containers
@@ -50,7 +49,6 @@ occupies, use a spinner size that matches.
        height="992">
 </uxdot-example>
 
-
 ## Orientation
 
 A spinner is always oriented above the optional text label, if visible.
@@ -62,10 +60,9 @@ A spinner is always oriented above the optional text label, if visible.
        height="133">
 </uxdot-example>
 
-
 ## Animation
 
-The spinner animation will loop until the data is retrieved and disappears when 
+The spinner animation will loop until the data is retrieved and disappears when
 it loads.
 
 ## Best practices

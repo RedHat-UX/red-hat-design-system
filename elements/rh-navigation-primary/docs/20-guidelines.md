@@ -58,11 +58,11 @@ Menus need to quickly describe to users what content they can expect to see when
 
 <rh-table id="char-count">
 
-  | Element            | Max number      | Character count |
-  |--------------------|-----------------|-----------------|
-  | Primary Menu       | 6               | 20              |
-  | Cross-domain link  | 3               | 15              |
-  | Utility menu       | 3               | 10              |
+| Element           | Max number | Character count |
+| ----------------- | ---------- | --------------- |
+| Primary Menu      | 6          | 20              |
+| Cross-domain link | 3          | 15              |
+| Utility menu      | 3          | 10              |
 
 </rh-table>
 
@@ -148,14 +148,14 @@ Some elements collapse or disappear as the primary navigation gets smaller.
 
 <rh-table>
 
-  | Viewport range | Result                                               |
-  | -------------- | -----------------------------------------------------|
-  | <1920px        | Utility menu text labels disappear                   |
-  | <1680px        | Cross-domain links disappear                         |
-  | <1440px        | Red Hat logo becomes the hat                         |
-  | <1200px        | Primary menus collapse into mega menu with accordion |
-  | <992px         | Mega menu text label disappears                      |
-  | <576px         | For you utility menu disappears                      |
+| Viewport range | Result                                               |
+| -------------- | ---------------------------------------------------- |
+| <1920px        | Utility menu text labels disappear                   |
+| <1680px        | Cross-domain links disappear                         |
+| <1440px        | Red Hat logo becomes the hat                         |
+| <1200px        | Primary menus collapse into mega menu with accordion |
+| <992px         | Mega menu text label disappears                      |
+| <576px         | For you utility menu disappears                      |
 
 </rh-table>
 

@@ -21,7 +21,7 @@ footer.hasActions {
   margin-block-start: var(--rh-space-lg, 16px);
 }
 
-footer ::slotted([slot='actions']:not(rh-button[variant='link' i])) {
+footer ::slotted([slot="actions"]:not(rh-button[variant="link" i])) {
   margin-inline-end: var(--rh-space-xl, 24px) !important;
   padding: 0 !important;
   border: none !important;
@@ -32,18 +32,18 @@ footer ::slotted([slot='actions']:not(rh-button[variant='link' i])) {
 }
 
 /* TODO: separate focus and hover styles */
-footer ::slotted([slot='actions']:focus) {
+footer ::slotted([slot="actions"]:focus) {
   text-decoration: underline !important;
   color: var(--rh-color-interactive-primary-hover) !important;
 }
 
-footer ::slotted([slot='actions']:hover) {
+footer ::slotted([slot="actions"]:hover) {
   cursor: pointer !important;
   text-decoration: underline !important;
   color: var(--rh-color-interactive-primary-hover) !important;
 }
 
-footer ::slotted(rh-button[variant='link' i]) {
+footer ::slotted(rh-button[variant="link" i]) {
   display: inline-block;
   translate: calc(-1 * var(--rh-space-lg, 16px));
 }
@@ -59,27 +59,44 @@ footer ::slotted(rh-button[variant='link' i]) {
   border-inline-start-color: transparent;
   border-block-end-color: transparent;
   border-inline-end-color: transparent;
-  background-color: light-dark(var(--_background-color), var(--rh-color-surface-dark, #383838));
+  background-color: light-dark(
+    var(--_background-color),
+    var(--rh-color-surface-dark, #383838)
+  );
   box-shadow: var(--_box-shadow, none);
   padding: var(--rh-space-lg, 16px);
   display: grid;
   grid-template-columns: min-content 1fr;
   gap: var(--rh-space-xs, 4px);
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  font-family: var(
+    --rh-font-family-body-text,
+    RedHatText,
+    "Red Hat Text",
+    Helvetica,
+    Arial,
+    sans-serif
+  );
   font-weight: var(--rh-font-weight-body-text-regular, 400);
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   line-height: var(--rh-line-height-body-text, 1.5);
 
   & header ::slotted(*) {
-    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif) !important;
+    font-family: var(
+      --rh-font-family-body-text,
+      RedHatText,
+      "Red Hat Text",
+      Helvetica,
+      Arial,
+      sans-serif
+    ) !important;
     font-weight: var(--rh-font-weight-body-text-medium, 500) !important;
     font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
     line-height: var(--rh-line-height-body-text, 1.5) !important;
     margin: 0 !important;
   }
 
-  & header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-    padding-block: 2px var(--rh-space-xs, 4px) !important;  /* 2px is a non standard value */
+  & header ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+    padding-block: 2px var(--rh-space-xs, 4px) !important; /* 2px is a non standard value */
   }
 
   & #description {

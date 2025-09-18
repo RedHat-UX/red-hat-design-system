@@ -1,16 +1,15 @@
 ## Usage
 
-Use a statistic to represent a data point that users can consume quickly. 
-Statistics help users trust our page content, so use them strategically because 
-there is a balance between using some and too many. If a layout has lots of 
-content in different arrangements, using a statistic should offer users a visual 
+Use a statistic to represent a data point that users can consume quickly.
+Statistics help users trust our page content, so use them strategically because
+there is a balance between using some and too many. If a layout has lots of
+content in different arrangements, using a statistic should offer users a visual
 break or respite.
-
 
 ## Footnote
 
-Include a footnote on every page especially if a statistic comes from an 
-external source. Doing this increases the credibility of the statistic and 
+Include a footnote on every page especially if a statistic comes from an
+external source. Doing this increases the credibility of the statistic and
 better integrates the data with the rest of the page content.
 
 <uxdot-example width-adjustment="369px" color-palette="lightest">
@@ -20,10 +19,9 @@ better integrates the data with the rest of the page content.
         height="215">
 </uxdot-example>
 
-
 ## Icons
 
-Use an icon to add visual context and emphasis while helping to explain a 
+Use an icon to add visual context and emphasis while helping to explain a
 statistic further.
 
 <uxdot-example color-palette="lightest" width-adjustment="800px">
@@ -33,12 +31,11 @@ statistic further.
        height="194">
 </uxdot-example>
 
-
 ### Large icon
 
-There are situations where a large icon is used in place of data text and the 
-data point is written into the body text. This is an edge case, so work with a 
-content strategist to write short data text and body text or use another element 
+There are situations where a large icon is used in place of data text and the
+data point is written into the body text. This is an edge case, so work with a
+content strategist to write short data text and body text or use another element
 instead.
 
 <uxdot-example color-palette="lightest" width-adjustment="872px">
@@ -48,11 +45,10 @@ instead.
        height="208">
 </uxdot-example>
 
-
 ## Writing content
 
-Statistic text is meant to be short so it can have impact especially when 
-statistics are grouped together. It is recommended to write as few words as 
+Statistic text is meant to be short so it can have impact especially when
+statistics are grouped together. It is recommended to write as few words as
 possible for text styles.
 
 - **Title text** - do not allow title text to break to two lines in any environment
@@ -60,14 +56,13 @@ possible for text styles.
 - **Body text** - be mindful of using too many words considering how statistics look when grouped
 - **Call to action text** - use fewer words to avoid taking away impact and focus when reading
 
-
 ### Character and line counts
 
 <style data-helmet>.char-count-table thead th:first-of-type {width: 50%;}</style>
 <rh-table class="char-count-table">
 
 | Element             | Character count | Line count |
-|---------------------|-----------------|------------|
+| ------------------- | --------------- | ---------- |
 | Title text          | 20              | 1          |
 | Data text           | 7               | 1          |
 | Body text           | 100             | 2          |
@@ -75,13 +70,12 @@ possible for text styles.
 
 </rh-table>
 
-
 ### Title text
 
-Title text is used to add quantitative emphasis or help explain data text. 
-Include title text if using data text alone does not make sense. In the example 
-below, if the data text **40** was by itself, then text title would 
-be needed to describe what 40 pertains to or else the statistic would not make 
+Title text is used to add quantitative emphasis or help explain data text.
+Include title text if using data text alone does not make sense. In the example
+below, if the data text **40** was by itself, then text title would
+be needed to describe what 40 pertains to or else the statistic would not make
 sense.
 
 <rh-alert state="info">
@@ -96,7 +90,6 @@ sense.
        height="132">
 </uxdot-example>
 
-
 ### Data text
 
 Data text is the number or percent that represents data.
@@ -108,10 +101,9 @@ Data text is the number or percent that represents data.
        height="95">
 </uxdot-example>
 
-
 ### Body text
 
-Body text explains data text. A percent or number means nothing without 
+Body text explains data text. A percent or number means nothing without
 something that explains the rest of the statistic.
 
 <uxdot-example color-palette="lightest" width-adjustment="760px">
@@ -121,11 +113,10 @@ something that explains the rest of the statistic.
        height="95">
 </uxdot-example>
 
-
 ### Call to action text
 
-Use a call to action to entice users to learn more after they read a statistic. 
-If statistics are grouped, it is not mandatory for each statistic to include a 
+Use a call to action to entice users to learn more after they read a statistic.
+If statistics are grouped, it is not mandatory for each statistic to include a
 call to action.
 
 <uxdot-example color-palette="lightest" width-adjustment="340px">
@@ -135,13 +126,12 @@ call to action.
        height="199">
 </uxdot-example>
 
-
 ### Internationalization
 
-Translated text can increase or decrease character counts, line length, and the 
-number of lines. Be mindful when writing body text that might get translated. 
-This is important for statistics used in groups as more words will cause them to 
-be arranged closer to each other therefore reducing any comfortable spacing 
+Translated text can increase or decrease character counts, line length, and the
+number of lines. Be mindful when writing body text that might get translated.
+This is important for statistics used in groups as more words will cause them to
+be arranged closer to each other therefore reducing any comfortable spacing
 around them.
 
 <uxdot-example color-palette="lightest" width-adjustment="348px">
@@ -158,12 +148,11 @@ around them.
        height="225">
 </uxdot-example>
 
-
 ## Layout
 
 ### Grouping
 
-The minimum number of statistics per row is one and the maximum is four 
+The minimum number of statistics per row is one and the maximum is four
 regardless if they are in a container or not.
 
 <uxdot-example color-palette="lightest" width-adjustment="1000px">
@@ -173,10 +162,9 @@ regardless if they are in a container or not.
        height="133">
 </uxdot-example>
 
-
 ### Card
 
-A statistic can be placed in a card if the body text or other text styles are 
+A statistic can be placed in a card if the body text or other text styles are
 short enough. Otherwise, keep them on the page to avoid readability issues.
 
 <uxdot-example color-palette="lightest" width-adjustment="1000px">
@@ -186,10 +174,9 @@ short enough. Otherwise, keep them on the page to avoid readability issues.
        height="170">
 </uxdot-example>
 
-
 ### Alignment
 
-By default, a statistic is always center aligned. However, a statistic may be 
+By default, a statistic is always center aligned. However, a statistic may be
 left aligned if grouped and if the surrounding content is also left aligned.
 
 <uxdot-example color-palette="lightest" width-adjustment="926px">
@@ -199,11 +186,10 @@ left aligned if grouped and if the surrounding content is also left aligned.
        height="194">
 </uxdot-example>
 
-
 ### Padding
 
-The page grid usually determines the space between blocks or containers of 
-content, but in most situations, it is 32px on large breakpoints. On small 
+The page grid usually determines the space between blocks or containers of
+content, but in most situations, it is 32px on large breakpoints. On small
 breakpoints, the padding is 48px for better vertical rhythm.
 
 <uxdot-example color-palette="lightest" width-adjustment="1000px">
@@ -212,7 +198,6 @@ breakpoints, the padding is 48px for better vertical rhythm.
        width="1000"
        height="282">
 </uxdot-example>
-
 
 ## Responsive design
 
@@ -227,7 +212,6 @@ If only one statistic is used, it can span a maximum of six columns.
        height="244">
 </uxdot-example>
 
-
 ### Small breakpoints
 
 Statistics arranged in a row on large breakpoints will stack on small
@@ -240,7 +224,6 @@ typography scale](https://ux.redhat.com/foundations/typography/).
        width="360"
        height="357">
 </uxdot-example>
-
 
 ## Best practices
 
@@ -255,7 +238,6 @@ Do not duplicate or rearrange any element to create a custom statistic.
        height="201">
 </uxdot-example>
 
-
 ### Unrelated icon
 
 Do not use an icon that is unrelated to the rest of the statistic content.
@@ -267,11 +249,11 @@ Do not use an icon that is unrelated to the rest of the statistic content.
        height="193">
 </uxdot-example>
 
-
 ### Inconsistent elements
-Keep statistics consistent when grouping. Either use the same number of elements 
-for all statistics or do not use them at all. For example, if a statistic has an 
-icon and the others do not, either remove the icon or ensure they all have an 
+
+Keep statistics consistent when grouping. Either use the same number of elements
+for all statistics or do not use them at all. For example, if a statistic has an
+icon and the others do not, either remove the icon or ensure they all have an
 icon.
 
 <uxdot-example color-palette="lightest" width-adjustment="872px" danger>
@@ -281,9 +263,9 @@ icon.
        height="199">
 </uxdot-example>
 
-
 ### Too much text
-Do not include too much body text, a statistic should clarify a single data 
+
+Do not include too much body text, a statistic should clarify a single data
 point quickly and with impact, not tell a long story.
 
 <uxdot-example color-palette="lightest" width-adjustment="476px" danger>

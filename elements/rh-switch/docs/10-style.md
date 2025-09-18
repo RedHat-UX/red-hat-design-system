@@ -2,7 +2,6 @@
 
 A Switch resembles a slider and includes a status message. When activated, the track background changes color and the handle changes position. If a user needs to toggle multiple Switches, they can be stacked on top of each other.
 
-
 ### Anatomy
 
 <figure>
@@ -21,8 +20,8 @@ A Switch resembles a slider and includes a status message. When activated, the t
   </figcaption>
 </figure>
 
-
 ## Color scheme
+
 <a id="theme"></a>
 
 A Switch is available for both light and dark color schemes.
@@ -63,7 +62,6 @@ A Switch is the same height as the status message and both are horizontally alig
   </uxdot-example>
 </div>
 
-
 ### Status messages
 
 A status message can be positioned to the right or left of a Switch.
@@ -74,7 +72,6 @@ A status message can be positioned to the right or left of a Switch.
        width="500"
        height="24">
 </uxdot-example>
-
 
 ## Space
 
@@ -94,7 +91,6 @@ Space values remain the same at all viewport sizes.
        height="168">
 </uxdot-example>
 
-
 ## States
 
 A Switch and the status message cx count as the same selectable object.
@@ -102,7 +98,6 @@ A Switch and the status message cx count as the same selectable object.
 <rh-alert state="info">
  <p>The visual appearance of a Switch does not change unless toggled.</p>
 </rh-alert>
-
 
 <figure>
   <uxdot-example color-palette="lightest" width-adjustment="872px">

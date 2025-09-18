@@ -31,5 +31,3 @@ Avoid using surface inside of other containers. Use the appropriate `color-palet
 import '@rhds/elements/rh-surface/rh-surface.js';
 import '@rhds/elements/rh-card/rh-card.js';
 </script>
-
-

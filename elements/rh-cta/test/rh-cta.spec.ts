@@ -1,7 +1,10 @@
 import { expect, html } from '@open-wc/testing';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
-import { clickElementAtCenter, clickElementAtOffset } from '@patternfly/pfe-tools/test/utils.js';
+import {
+  clickElementAtCenter,
+  clickElementAtOffset,
+} from '@patternfly/pfe-tools/test/utils.js';
 import { RhCta } from '../rh-cta.js';
 
 import { tokens } from '@rhds/tokens';
@@ -12,26 +15,19 @@ describe('<rh-cta>', function() {
   it('should upgrade', async function() {
     const element = await createFixture<RhCta>(html`<rh-cta></rh-cta>`);
     const klass = customElements.get('rh-cta');
-    expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhCta);
+    expect(element).to.be.an.instanceOf(klass).and.to.be.an.instanceOf(RhCta);
   });
 
   it('instanciates imperatively', function() {
-    expect(document.createElement('rh-cta'))
-        .to.be.an.instanceof(RhCta);
+    expect(document.createElement('rh-cta')).to.be.an.instanceof(RhCta);
   });
 
   describe('on default context', function() {
     let element: RhCta;
-    for (const variant of [
-      undefined,
-      'primary',
-      'secondary',
-      'brick',
-    ]) {
-      describe(`${variant ?? 'default'} variant with slotted link`, function() {
+    for (const variant of [undefined, 'primary', 'secondary', 'brick']) {
+      describe(`${
+        variant ?? 'default'
+      } variant with slotted link`, function() {
         beforeEach(async function() {
           element = await createFixture<RhCta>(html`
             <rh-cta variant="${ifDefined(variant)}">
@@ -63,7 +59,10 @@ describe('<rh-cta>', function() {
               if (Number.isNaN(rhSpaceLg) || Number.isNaN(rhSpace2xl)) {
                 throw new Error('space tokens not found');
               }
-              await clickElementAtOffset(element, [rhSpace2xl / 2, rhSpaceLg / 2]);
+              await clickElementAtOffset(element, [
+                rhSpace2xl / 2,
+                rhSpaceLg / 2,
+              ]);
             } else {
               await clickElementAtOffset(element, [-5, 10]);
             }

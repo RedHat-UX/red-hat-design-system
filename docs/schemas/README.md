@@ -28,6 +28,7 @@ libraries:
 #### IDE Integration
 
 Most modern editors with YAML support will automatically provide:
+
 - **Auto-completion** for property names and enum values
 - **Validation** highlighting schema violations
 - **Documentation** via hover tooltips
@@ -45,6 +46,7 @@ Most modern editors with YAML support will automatically provide:
 #### Valid Status Values
 
 All status fields support these values:
+
 - `planned`: Planned for development
 - `inProgress`: Currently being developed
 - `ready`: Available and stable

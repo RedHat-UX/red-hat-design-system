@@ -17,12 +17,12 @@ Use skeleton when you want to show users the structure of content that's loading
 `<rh-skeleton>` has two different attributes with specific values:
 
 - `size`
-    - Values are `xs` through `6xl`.
-        - The `size` attribute does not apply to non-text skeletons.
-    - Eg: `<rh-skeleton size="lg"></rh-skeleton>`
+  - Values are `xs` through `6xl`.
+    - The `size` attribute does not apply to non-text skeletons.
+  - Eg: `<rh-skeleton size="lg"></rh-skeleton>`
 - `type`
-    - Values are: `text`, `circle`, `square`, `rectangle`
-    - Eg: `<rh-skeleton type="circle"></rh-skeleton>`
+  - Values are: `text`, `circle`, `square`, `rectangle`
+  - Eg: `<rh-skeleton type="circle"></rh-skeleton>`
 
 ### Customizing the loading text placeholder
 
@@ -31,15 +31,11 @@ By default, `<rh-skeleton>` places some visually hidden text, "Loading...", into
 If you want to customize this text, you can slot in alternate content. You may want to do this if you have multiple skeletons on a page to denote which content is loading where.
 
 ```html
-<rh-skeleton>
-  Loading card content...
-</rh-skeleton>
+<rh-skeleton> Loading card content... </rh-skeleton>
 
 ...
 
-<rh-skeleton>
-  Loading disclosure content...
-</rh-skeleton>
+<rh-skeleton> Loading disclosure content... </rh-skeleton>
 ```
 
 Read the [official documentation](https://ux.redhat.com/elements/skeleton/) for `<rh-skeleton>`.

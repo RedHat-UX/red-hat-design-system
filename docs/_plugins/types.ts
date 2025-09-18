@@ -22,9 +22,9 @@ export interface RepoStatusRecord {
 
 // Status values for individual elements
 export type RepoStatus =
-| LibraryStatus
-| 'inProgress'
-| 'beta'
-| 'experimental'
-| 'new'
-| 'na';
+  | LibraryStatus
+  | 'inProgress'
+  | 'beta'
+  | 'experimental'
+  | 'new'
+  | 'na';

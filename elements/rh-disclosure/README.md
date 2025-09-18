@@ -9,7 +9,10 @@ Place the following markup on your page:
 
 ```html
 <rh-disclosure summary="Collapsed panel title">
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Velit distinctio, nesciunt nobis sit.</p>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing, elit. Velit distinctio,
+    nesciunt nobis sit.
+  </p>
 </rh-disclosure>
 ```
 
@@ -19,9 +22,10 @@ When summary content should be rich HTML, use the `summary` slot instead of the 
 
 ```html
 <rh-disclosure>
-  <span slot="summary">
-    <strong>Rich</strong> summary <em>content</em>
-  </span>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Velit distinctio, nesciunt nobis sit.</p>
+  <span slot="summary"> <strong>Rich</strong> summary <em>content</em> </span>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing, elit. Velit distinctio,
+    nesciunt nobis sit.
+  </p>
 </rh-disclosure>
 ```

@@ -1,9 +1,8 @@
 ## Usage
 
-The avatar thumbnail is commonly used to represent a user in a masthead or 
-navigation. However, depending on other use cases and needs, there is more 
+The avatar thumbnail is commonly used to represent a user in a masthead or
+navigation. However, depending on other use cases and needs, there is more
 room for customization.
-
 
 ## Sizes
 
@@ -19,7 +18,7 @@ The avatar thumbnail can be used at different sizes based on our design tokens. 
 <rh-table>
 
 | Variation and range  | Use case                                                  |
-|----------------------|-----------------------------------------------------------|
+| -------------------- | --------------------------------------------------------- |
 | Small (16px - 32px)  | Use these sizes in accordions, data lists, or tables      |
 | Medium (40px - 80px) | Use these sizes in layouts, bands, or cards               |
 | Large (96px - 128px) | Use these sizes in profile displays or account interfaces |
@@ -27,7 +26,7 @@ The avatar thumbnail can be used at different sizes based on our design tokens. 
 </rh-table>
 
 ## Writing content
-  
+
 Separate each part of the job title and company name with a comma.
 
 <uxdot-example color-palette="lightest" width-adjustment="611px">
@@ -41,7 +40,7 @@ Separate each part of the job title and company name with a comma.
 
 ### Alignment
 
-The avatar thumbnail and job details text can be horizontally or vertically 
+The avatar thumbnail and job details text can be horizontally or vertically
 centered.
 
 <uxdot-example color-palette="lightest" width-adjustment="625px">
@@ -50,7 +49,6 @@ centered.
        width="625"
        height="119">
 </uxdot-example>
-
 
 ### Stacking
 
@@ -85,7 +83,7 @@ There should be a spacing of `--rh-space-3xl` between avatar groups that are sta
 
 ### Line breaks
 
-As breakpoints or containers get smaller, regardless if job details text will 
+As breakpoints or containers get smaller, regardless if job details text will
 break to more lines, it is still anchored at the top.
 
 <uxdot-example color-palette="lightest" width-adjustment="498px">

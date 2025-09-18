@@ -48,7 +48,14 @@
   color: var(--rh-color-text-primary);
   container: announcement / inline-size;
   display: grid;
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  font-family: var(
+    --rh-font-family-body-text,
+    RedHatText,
+    "Red Hat Text",
+    Helvetica,
+    Arial,
+    sans-serif
+  );
   grid-template-columns: 1fr auto 1fr;
   inline-size: 100%;
   line-height: var(--rh-line-height-body-text, 1.5);

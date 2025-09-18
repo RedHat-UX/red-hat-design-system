@@ -1,7 +1,8 @@
-## Style 
+## Style
+
 A badge is number text on a pill background used to reflect the count of something.
 
-### Anatomy 
+### Anatomy
 
 <figure>
   <uxdot-example color-palette="lightest" width-adjustment="102px">
@@ -18,7 +19,8 @@ A badge is number text on a pill background used to reflect the count of somethi
   </figcaption>
 </figure>
 
-## Color scheme 
+## Color scheme
+
 <a id="theme"></a>
 
 Badge is available for light and dark color schemes.
@@ -41,7 +43,7 @@ Badge is available for light and dark color schemes.
        height="18">
 </uxdot-example>
 
-## Configuration 
+## Configuration
 
 All badges have the same height and border radius.
 
@@ -52,8 +54,7 @@ All badges have the same height and border radius.
        height="35">
 </uxdot-example>
 
-
-## Space and width 
+## Space and width
 
 <uxdot-example color-palette="lightest" width-adjustment="238px">
   <img alt="Badge spacing and minimum width"
@@ -67,7 +68,7 @@ All badges have the same height and border radius.
 <rh-table>
 
 | Property      | Current value     |
-|---------------|-------------------|
+| ------------- | ----------------- |
 | Minimum width | `--rh-length-2xl` |
 
 </rh-table>

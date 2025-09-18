@@ -3,11 +3,11 @@
 <script>
   window.fetch = new Proxy(window.fetch, {
     apply: (target, thisArg, [url, ...args]) => {
-      if (url === 'https://status.redhat.com/index.json') {
+      if (url === "https://status.redhat.com/index.json") {
         return Promise.resolve({
           ok: false,
           status: 404,
-          statusText: 'Error: 404 Not Found',
+          statusText: "Error: 404 Not Found",
         });
       } else {
         return target.apply(thisArg, [url, ...args]);
@@ -17,5 +17,5 @@
 </script>
 
 <script type="module">
-  import '@rhds/elements/rh-site-status/rh-site-status.js';
+  import "@rhds/elements/rh-site-status/rh-site-status.js";
 </script>

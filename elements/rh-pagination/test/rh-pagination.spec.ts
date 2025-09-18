@@ -15,12 +15,13 @@ describe('<rh-pagination>', function() {
   });
 
   it('should upgrade', async function() {
-    const element = await createFixture<RhPagination>(html`<rh-pagination></rh-pagination>`);
+    const element = await createFixture<RhPagination>(
+      html`<rh-pagination></rh-pagination>`
+    );
     const klass = customElements.get('rh-pagination');
     expect(element)
         .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhPagination);
+        .and.to.be.an.instanceOf(RhPagination);
   });
 
   describe('with slotted i18n content', function() {
@@ -71,7 +72,9 @@ describe('<rh-pagination>', function() {
       `);
     });
     it('logs a content validation warning', function() {
-      expect(Logger.prototype.warn).to.have.been.calledWith('must have a single <ol> element as it\'s only child');
+      expect(Logger.prototype.warn).to.have.been.calledWith(
+        'must have a single <ol> element as it\'s only child'
+      );
     });
   });
 
@@ -127,15 +130,19 @@ describe('<rh-pagination>', function() {
     describe('appending 5 new pages with javascript', function() {
       let nodelist: NodeListOf<HTMLLIElement>;
       beforeEach(async function() {
-        element.querySelector('ol')!.innerHTML = Array.from({ length: 10 }, (_, i) =>
-          `<li><a href="#${i + 1}">${i + 1}</a></li>`).join('\n');
+        element.querySelector('ol')!.innerHTML = Array.from(
+          { length: 10 },
+          (_, i) => `<li><a href="#${i + 1}">${i + 1}</a></li>`
+        ).join('\n');
         await element.updateComplete;
         await element.updateComplete;
         nodelist = element.querySelectorAll('li')!;
       });
 
       it('should overflow', function() {
-        expect(element.getAttribute('overflow'), 'overflow attr').to.equal('end');
+        expect(element.getAttribute('overflow'), 'overflow attr').to.equal(
+          'end'
+        );
       });
 
       it('should show first 5 items', function() {
@@ -148,7 +155,9 @@ describe('<rh-pagination>', function() {
       it('should hide items 6-9', function() {
         for (const i of [6, 7, 8, 9]) {
           const item = nodelist[i - 1];
-          expect(getComputedStyle(item).display, item.innerHTML).to.equal('none');
+          expect(getComputedStyle(item).display, item.innerHTML).to.equal(
+            'none'
+          );
         }
       });
 
@@ -173,14 +182,18 @@ describe('<rh-pagination>', function() {
         });
 
         it('activates page 2', function() {
-          const current = document.querySelector<HTMLAnchorElement>('[aria-current=page]');
+          const current = document.querySelector<HTMLAnchorElement>(
+            '[aria-current=page]'
+          );
           expect(new URL(current!.href).hash).to.equal('#2');
         });
 
         describe('then advancing to page 3', function() {
           before(() => element.next());
           it('activates page 3', function() {
-            const current = document.querySelector<HTMLAnchorElement>('[aria-current=page]');
+            const current = document.querySelector<HTMLAnchorElement>(
+              '[aria-current=page]'
+            );
             expect(new URL(current!.href).hash).to.equal('#3');
           });
         });
@@ -200,10 +213,12 @@ describe('<rh-pagination>', function() {
           let i: Element;
           let j: Element;
           beforeEach(function() {
-            ([a, b, c, d, e, f, g, h, i, j] = nodelist);
+            [a, b, c, d, e, f, g, h, i, j] = nodelist;
           });
           it('activates page 6', function() {
-            const current = document.querySelector<HTMLAnchorElement>('[aria-current=page]');
+            const current = document.querySelector<HTMLAnchorElement>(
+              '[aria-current=page]'
+            );
             expect(current).to.equal(f.firstElementChild);
           });
           it('shows link 1', function() {
@@ -225,7 +240,9 @@ describe('<rh-pagination>', function() {
           describe('then advancing to page 10', function() {
             before(() => element.last());
             it('activates page 10', function() {
-              const current = document.querySelector<HTMLAnchorElement>('[aria-current=page]');
+              const current = document.querySelector<HTMLAnchorElement>(
+                '[aria-current=page]'
+              );
               expect(current).to.equal(j.firstElementChild);
             });
             it('shows link 1', function() {

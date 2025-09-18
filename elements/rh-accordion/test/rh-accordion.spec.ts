@@ -1,10 +1,17 @@
 import { expect, fixture, html, nextFrame, aTimeout } from '@open-wc/testing';
 import { sendKeys } from '@web/test-runner-commands';
 
-import { allUpdates, clickElementAtCenter } from '@patternfly/pfe-tools/test/utils.js';
+import {
+  allUpdates,
+  clickElementAtCenter,
+} from '@patternfly/pfe-tools/test/utils.js';
 import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 
-import { RhAccordion, RhAccordionHeader, RhAccordionPanel } from '@rhds/elements/rh-accordion/rh-accordion.js';
+import {
+  RhAccordion,
+  RhAccordionHeader,
+  RhAccordionPanel,
+} from '@rhds/elements/rh-accordion/rh-accordion.js';
 
 describe('<rh-accordion>', function() {
   let element: RhAccordion;
@@ -23,14 +30,19 @@ describe('<rh-accordion>', function() {
     const klass = customElements.get('rh-accordion');
     expect(element)
         .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhAccordion);
+        .and.to.be.an.instanceOf(RhAccordion);
   });
 
   it('imperatively instantiates', function() {
-    expect(document.createElement('rh-accordion')).to.be.an.instanceof(RhAccordion);
-    expect(document.createElement('rh-accordion-header')).to.be.an.instanceof(RhAccordionHeader);
-    expect(document.createElement('rh-accordion-panel')).to.be.an.instanceof(RhAccordionPanel);
+    expect(document.createElement('rh-accordion')).to.be.an.instanceof(
+      RhAccordion
+    );
+    expect(document.createElement('rh-accordion-header')).to.be.an.instanceof(
+      RhAccordionHeader
+    );
+    expect(document.createElement('rh-accordion-panel')).to.be.an.instanceof(
+      RhAccordionPanel
+    );
   });
 
   describe('in typical usage', function() {
@@ -49,27 +61,36 @@ describe('<rh-accordion>', function() {
             <h3>Header1 Consetetur sadipscing elitr?</h3>
           </rh-accordion-header>
           <rh-accordion-panel id="panel1">
-            <p>Panel1 <a href="#">Panel1 link Lorem ipsum dolor</a>, sit amet consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-              ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-              rebum.</p>
+            <p>
+              Panel1 <a href="#">Panel1 link Lorem ipsum dolor</a>, sit amet
+              consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+              invidunt ut labore et dolore magna aliquyam erat, sed diam
+              voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+            </p>
           </rh-accordion-panel>
           <rh-accordion-header>
             <h3>Header2 Labore et dolore magna aliquyam erat?</h3>
           </rh-accordion-header>
           <rh-accordion-panel>
-            <p>Panel2 <a href="#">Panel2 link Lorem ipsum dolor</a> sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-              ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-              rebum.</p>
+            <p>
+              Panel2 <a href="#">Panel2 link Lorem ipsum dolor</a> sit amet,
+              consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+              invidunt ut labore et dolore magna aliquyam erat, sed diam
+              voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+            </p>
           </rh-accordion-panel>
           <rh-accordion-header>
             <h3>Header3 Incididunt in Lorem voluptate eiusmod dolor?</h3>
           </rh-accordion-header>
           <rh-accordion-panel>
-            <p>Panel3<a href="#">Panel3 link Lorem ipsum dolor</a> sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-              ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-              rebum.</p>
+            <p>
+              Panel3<a href="#">Panel3 link Lorem ipsum dolor</a> sit amet,
+              consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+              invidunt ut labore et dolore magna aliquyam erat, sed diam
+              voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+            </p>
           </rh-accordion-panel>
-        </rh-accordion>          
+        </rh-accordion>
       `);
       headers = Array.from(element.querySelectorAll('rh-accordion-header'));
       panels = Array.from(element.querySelectorAll('rh-accordion-panel'));
@@ -237,13 +258,19 @@ describe('<rh-accordion>', function() {
         const newHeader = headers.at(-1);
         const newPanel = panels.at(-1);
         expect(newHeader?.hasAttribute('id'), 'header has an id').to.be.true;
-        expect(newHeader?.getAttribute('aria-controls'), 'header has aria-controls')
-            .to.equal(newPanel?.getAttribute('id'));
+        expect(
+          newHeader?.getAttribute('aria-controls'),
+          'header has aria-controls'
+        ).to.equal(newPanel?.getAttribute('id'));
 
-        expect(newPanel?.getAttribute('role'), 'panel has role').to.equal('region');
+        expect(newPanel?.getAttribute('role'), 'panel has role').to.equal(
+          'region'
+        );
         expect(newPanel?.hasAttribute('id'), 'panel has id').to.be.true;
-        expect(newPanel?.getAttribute('aria-labelledby'), 'panel has aria-labelledby')
-            .to.equal(newHeader?.getAttribute('id'));
+        expect(
+          newPanel?.getAttribute('aria-labelledby'),
+          'panel has aria-labelledby'
+        ).to.equal(newHeader?.getAttribute('id'));
       });
     });
   });
@@ -265,7 +292,8 @@ describe('<rh-accordion>', function() {
     beforeEach(() => element.updateComplete);
 
     it('removes the h5', function() {
-      expect(element.querySelector('h5')?.shadowRoot?.querySelector('h5')).to.not.be.ok;
+      expect(element.querySelector('h5')?.shadowRoot?.querySelector('h5')).to
+          .not.be.ok;
     });
 
     // playwright doesn't expose aria-level from internals
@@ -297,8 +325,11 @@ describe('<rh-accordion>', function() {
     });
 
     beforeEach(function() {
-      [header1, header2, header3] = element.querySelectorAll<RhAccordionHeader>('rh-accordion-header');
-      [panel1, panel2, panel3] = element.querySelectorAll<RhAccordionPanel>('rh-accordion-panel');
+      [header1, header2, header3] = element.querySelectorAll<RhAccordionHeader>(
+        'rh-accordion-header'
+      );
+      [panel1, panel2, panel3] =
+        element.querySelectorAll<RhAccordionPanel>('rh-accordion-panel');
     });
 
     it('applies hidden attribute to all panels', function() {
@@ -496,16 +527,32 @@ describe('<rh-accordion>', function() {
     beforeEach(async function() {
       element = await fixture<RhAccordion>(html`
         <rh-accordion>
-          <h2><rh-accordion-header expanded id="attribute-header-1">h1</rh-accordion-header></h2>
-          <rh-accordion-panel id="attribute-panel-1"><p>p1</p></rh-accordion-panel>
-          <h2><rh-accordion-header expanded id="attribute-header-2">h2</rh-accordion-header></h2>
-          <rh-accordion-panel id="attribute-panel-2"><p>p2</p></rh-accordion-panel>
+          <h2>
+            <rh-accordion-header expanded id="attribute-header-1"
+              >h1</rh-accordion-header
+            >
+          </h2>
+          <rh-accordion-panel id="attribute-panel-1"
+            ><p>p1</p></rh-accordion-panel
+          >
+          <h2>
+            <rh-accordion-header expanded id="attribute-header-2"
+              >h2</rh-accordion-header
+            >
+          </h2>
+          <rh-accordion-panel id="attribute-panel-2"
+            ><p>p2</p></rh-accordion-panel
+          >
           <h2><rh-accordion-header>h3</rh-accordion-header></h2>
           <rh-accordion-panel><p>p3</p></rh-accordion-panel>
         </rh-accordion>
       `);
-      headers = Array.from(element.querySelectorAll<RhAccordionHeader>('rh-accordion-header'));
-      panels = Array.from(element.querySelectorAll<RhAccordionPanel>('rh-accordion-panel'));
+      headers = Array.from(
+        element.querySelectorAll<RhAccordionHeader>('rh-accordion-header')
+      );
+      panels = Array.from(
+        element.querySelectorAll<RhAccordionPanel>('rh-accordion-panel')
+      );
       [header1, header2, header3] = headers;
       [panel1, panel2, panel3] = panels;
       await element.updateComplete;

@@ -1,10 +1,10 @@
 extends:
   - stylelint-config-standard
-  - '@stylistic/stylelint-config'
+  - "@stylistic/stylelint-config"
 
 plugins:
   - ./node_modules/@rhds/tokens/plugins/stylelint.js
-  - '@stylistic/stylelint-plugin'
+  - "@stylistic/stylelint-plugin"
 
 ignoreFiles:
   - node_modules/**/*
@@ -29,7 +29,7 @@ rules:
   no-descending-specificity:
     - true
     - ignore:
-      - selectors-within-list
+        - selectors-within-list
   selector-class-pattern: null
   selector-pseudo-element-colon-notation: single
   shorthand-property-no-redundant-values: true
@@ -46,17 +46,17 @@ rules:
   selector-pseudo-element-no-unknown:
     - true
     - ignorePseudoElements:
-      - /part(.*)/
+        - /part(.*)/
 
-  '@stylistic/string-quotes': single
-  '@stylistic/selector-combinator-space-after': always
-  '@stylistic/selector-combinator-space-before': always
-  '@stylistic/function-parentheses-newline-inside': null
-  '@stylistic/function-comma-newline-after': always-multi-line
-  '@stylistic/indentation':
+  "@stylistic/string-quotes": single
+  "@stylistic/selector-combinator-space-after": always
+  "@stylistic/selector-combinator-space-before": always
+  "@stylistic/function-parentheses-newline-inside": null
+  "@stylistic/function-comma-newline-after": always-multi-line
+  "@stylistic/indentation":
     - 2
-    - indentInsideParens: 'once-at-root-twice-in-block'
-  '@stylistic/max-line-length':
+    - indentInsideParens: "once-at-root-twice-in-block"
+  "@stylistic/max-line-length":
     - 100
     - ignorePattern: /(--rh-font-family-|https:\/\/)/
 
@@ -66,9 +66,9 @@ rules:
   rhds/no-unknown-token-name:
     - true
     - allowed:
-      - --rh-icon-size
-      - --rh-navigation-active-item-color
-      - --rh-jump-link-max-width
+        - --rh-icon-size
+        - --rh-navigation-active-item-color
+        - --rh-jump-link-max-width
 
 overrides:
   - files:
@@ -76,9 +76,8 @@ overrides:
     defaultSeverity: warning
     extends: stylelint-config-standard-scss
     rules:
-      '@stylistic/block-closing-brace-newline-after': null
+      "@stylistic/block-closing-brace-newline-after": null
       scss/at-if-closing-brace-newline-after: always-last-in-chain
-      '@stylistic/max-line-length':
+      "@stylistic/max-line-length":
         - 120
         - ignorePattern: /--rh-font-family-/
-

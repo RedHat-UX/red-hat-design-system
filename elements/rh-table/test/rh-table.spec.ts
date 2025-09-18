@@ -1,5 +1,8 @@
 import { expect, html, fixture } from '@open-wc/testing';
-import { a11ySnapshot, type A11yTreeSnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
+import {
+  a11ySnapshot,
+  type A11yTreeSnapshot,
+} from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { RhTable } from '@rhds/elements/rh-table/rh-table.js';
 import { sendKeys } from '@web/test-runner-commands';
 
@@ -72,10 +75,14 @@ describe('<rh-table>', async function() {
    * If the expected children snapshot is undefined, then assistive technology
    * reports nothing at all
    */
-  function expectA11ySnapshot(expected?: Pick<A11yTreeSnapshot, 'name' | 'role'>[]) {
+  function expectA11ySnapshot(
+    expected?: Pick<A11yTreeSnapshot, 'name' | 'role'>[]
+  ) {
     return async function() {
       const snapshot = await a11ySnapshot();
-      expect(snapshot.children?.map(takeProps(['name', 'role']))).to.deep.equal(expected);
+      expect(snapshot.children?.map(takeProps(['name', 'role']))).to.deep.equal(
+        expected
+      );
     };
   }
 
@@ -83,20 +90,29 @@ describe('<rh-table>', async function() {
    * Catch request sort event and prevent default
    */
   function preventDefaultOnSort() {
-    element.querySelector('table').addEventListener('request-sort', (event: Event) => event.preventDefault());
+    element
+        .querySelector('table')
+        .addEventListener('request-sort', (event: Event) =>
+          event.preventDefault()
+        );
   }
 
   describe('simply instantiating', function() {
     beforeEach(setupSimpleInstance);
     it('should upgrade', async function() {
       const klass = customElements.get('rh-table');
-      expect(element).to.be.an.instanceOf(klass).and.to.be.an.instanceOf(RhTable);
+      expect(element)
+          .to.be.an.instanceOf(klass)
+          .and.to.be.an.instanceOf(RhTable);
     });
     it('should be accessible', expectA11yAxe);
     it('imperatively instantiates', function() {
       expect(document.createElement('rh-table')).to.be.an.instanceof(RhTable);
     });
-    it('should not report anything to assistive technology', expectA11ySnapshot());
+    it(
+      'should not report anything to assistive technology',
+      expectA11ySnapshot()
+    );
   });
 
   describe('with sortable columns', async () => {
@@ -301,10 +317,16 @@ describe('<rh-table>', async function() {
           beforeEach(updateComplete);
           beforeEach(press('Enter'));
           beforeEach(updateComplete);
-          it('should sort by ascending order by default', expectA11ySnapshot(snapshots['sort-by-words-asc']));
+          it(
+            'should sort by ascending order by default',
+            expectA11ySnapshot(snapshots['sort-by-words-asc'])
+          );
           describe('and pressing Enter again', function() {
             beforeEach(press('Enter'));
-            it('should sort by descending order', expectA11ySnapshot(snapshots['sort-by-words-desc']));
+            it(
+              'should sort by descending order',
+              expectA11ySnapshot(snapshots['sort-by-words-desc'])
+            );
           });
         });
       });

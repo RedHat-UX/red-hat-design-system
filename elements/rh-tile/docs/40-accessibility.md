@@ -2,14 +2,12 @@
 
 A user should have the ability to use the Tab key to navigate to a tile or into a tile group. When tiles are in a group, a user will need to use arrow keys to navigate from one tile to another. Pressing the `Enter`/`Return` key will activate a link tile or select a selectable tile.
 
-
 <uxdot-example color-palette="lightest" width-adjustment="880px">
   <img alt="Tile groups with labels showing which key to use for navigating"
        src="../tile-keyboard-interactions.png"
        width="880"
        height="756">
 </uxdot-example>
-
 
 <rh-table>
 
@@ -25,7 +23,6 @@ A user should have the ability to use the Tab key to navigate to a tile or into 
 
 </rh-table>
 
-
 ## Focus order
 
 A logical focus order helps keyboard users operate our websites. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly. In tile groups, focus moves from left to right and top to bottom.
@@ -37,11 +34,9 @@ A logical focus order helps keyboard users operate our websites. Elements need t
        height="597">
 </uxdot-example>
 
-
 ## Touch targets
 
 The whole tile is selectable, and the required heading or image would make each tile a large enough touch target.
-
 
 ## Additional guidelines
 

@@ -1,29 +1,40 @@
 <form id="form">
   <rh-tile-group radio>
-    <rh-tile name="radio" value="1"><span slot="headline">Radio 1</span></rh-tile>
-    <rh-tile name="radio" value="2"><span slot="headline">Radio 2</span></rh-tile>
+    <rh-tile name="radio" value="1"
+      ><span slot="headline">Radio 1</span></rh-tile
+    >
+    <rh-tile name="radio" value="2"
+      ><span slot="headline">Radio 2</span></rh-tile
+    >
   </rh-tile-group>
   <rh-tile-group checkable>
-    <rh-tile name="check" value="1"><span slot="headline">Check 1</span></rh-tile>
-    <rh-tile name="check" value="2"><span slot="headline">Check 2</span></rh-tile>
+    <rh-tile name="check" value="1"
+      ><span slot="headline">Check 1</span></rh-tile
+    >
+    <rh-tile name="check" value="2"
+      ><span slot="headline">Check 2</span></rh-tile
+    >
   </rh-tile-group>
   <rh-button type="submit">Submit</rh-button>
   <output name="output"></output>
 </form>
 
 <script type="module">
-  import '@rhds/elements/rh-button/rh-button.js';
-  import '@rhds/elements/rh-tile/rh-tile-group.js';
-  const form = document.getElementById('form');
-  form.addEventListener('submit', function(event) {
+  import "@rhds/elements/rh-button/rh-button.js";
+  import "@rhds/elements/rh-tile/rh-tile-group.js";
+  const form = document.getElementById("form");
+  form.addEventListener("submit", function (event) {
     event.preventDefault();
     const data = new FormData(form);
-    const mergedFormData = Array.from(data.entries())
-      .reduce((acc, [k, v]) => ({
-        ...acc, [k]: k in acc ? [acc[k], v].flat() : v,
-      }), {});
+    const mergedFormData = Array.from(data.entries()).reduce(
+      (acc, [k, v]) => ({
+        ...acc,
+        [k]: k in acc ? [acc[k], v].flat() : v,
+      }),
+      {}
+    );
     form.output.value = JSON.stringify(mergedFormData, null, 2);
   });
 </script>
 
-<link rel="stylesheet" href="../rh-tile-lightdom.css">
+<link rel="stylesheet" href="../rh-tile-lightdom.css" />

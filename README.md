@@ -13,7 +13,10 @@ RHDS provides a collection of ready-made, framework-agnostic Web Components with
 ```html
 <rh-card>
   <h2 slot="heading">Red Hat Branded Web Components</h2>
-  <p>So you can focus more on your content or app, and less on implementation details.</p>
+  <p>
+    So you can focus more on your content or app, and less on implementation
+    details.
+  </p>
   <rh-cta slot="footer">
     <a href="https://ux.redhat.com">Read the Docs</a>
   </rh-cta>

@@ -1,3 +1,31 @@
+<style data-helmet>
+  figure {
+    margin: 0;
+  }
+  figcaption ol {
+    font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+    font-weight: var(--rh-font-weight-body-text-regular, 400);
+    line-height: var(--rh-line-height-heading, 1.3);
+    padding-inline-start: var(--rh-space-lg, 16px);
+  }
+  figure .example {
+    margin-bottom: var(--rh-space-lg, 16px);
+  }
+
+  figure .example + figcaption {
+    margin-bottom: var(--rh-space-4xl, 64px);
+  }
+
+  .example {
+    width: 100%;
+  }
+
+  .example + .example {
+    margin-top: unset;
+    margin-block-start: unset;
+  }
+</style>
+
 ## Styles
 
 Website status is a combination of an icon and link within a very small card. It is designed to be understood immediately. Otherwise, a user can click on the link to learn more.
@@ -20,8 +48,8 @@ Website status is a combination of an icon and link within a very small card. It
   </figcaption>
 </figure>
 
-
 ## Color scheme
+
 <a id="theme"></a>
 
 Website status is available for both light and dark color schemes.
@@ -42,7 +70,6 @@ Website status is available for both light and dark color schemes.
   </uxdot-example>
 </div>
 
-
 ## Configuration
 
 Website status has a fixed height and its width changes depending on the amount of link text. The icon and link are horizontally aligned to the card as well.
@@ -54,7 +81,6 @@ Website status has a fixed height and its width changes depending on the amount 
         height="80">
 </uxdot-example>
 
-
 ## Icons
 
 Website status includes three icons that also indicate the severity of the status.
@@ -65,7 +91,6 @@ Website status includes three icons that also indicate the severity of the statu
         width="707"
         height="53">
 </uxdot-example>
-
 
 ## Space
 

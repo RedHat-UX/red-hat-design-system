@@ -1,16 +1,16 @@
 ## Usage
 
-Use a footer to provide users with additional supporting content and show them 
-they are using an official Red Hat website. The footer is the last or lowest 
-element in a layout or user interface and is persistently displayed across all 
+Use a footer to provide users with additional supporting content and show them
+they are using an official Red Hat website. The footer is the last or lowest
+element in a layout or user interface and is persistently displayed across all
 screens of the user experience.
 
 ## Variants
 
-A footer is divided into two parts, the **Website-specific** footer and the 
+A footer is divided into two parts, the **Website-specific** footer and the
 **Universal** footer.
 
-### Website-specific footer 
+### Website-specific footer
 
 Most of the content in the website-specific footer can be customized.
 
@@ -70,7 +70,6 @@ Most of the content in the website-specific footer can be customized.
   </table>
 </rh-table>
 
-
 ### Universal footer
 
 Content in the universal footer is always the same across all websites.
@@ -114,11 +113,10 @@ A footer spans the entire width of the browser window at all breakpoints.
         height="1036">
 </uxdot-example>
 
-
 ### Universal footer
 
-The universal footer can be used by itself on orphan pages or pages that do not 
-fit a specific information architecture like landing pages, minisites, etc. The 
+The universal footer can be used by itself on orphan pages or pages that do not
+fit a specific information architecture like landing pages, minisites, etc. The
 Red Hat fedora always links to redhat.com.
 
 <rh-alert state="warning">
@@ -135,7 +133,7 @@ Red Hat fedora always links to redhat.com.
 
 ### Other web properties
 
-The footer was designed to be applied to all Red Hat web properties. The layout 
+The footer was designed to be applied to all Red Hat web properties. The layout
 is flexible enough to accommodate grids, elements, text, and more.
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
@@ -163,12 +161,11 @@ is flexible enough to accommodate grids, elements, text, and more.
         height="833">
 </uxdot-example>
 
-
 ## Behavior
 
 ### Columns
 
-If the website-specific footer includes a lot of content, columns can be added 
+If the website-specific footer includes a lot of content, columns can be added
 below the first row of columns.
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
@@ -178,7 +175,7 @@ below the first row of columns.
         height="796">
 </uxdot-example>
 
-If the website-specific footer includes less content, columns will stretch to 
+If the website-specific footer includes less content, columns will stretch to
 fill the empty space.
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
@@ -188,8 +185,7 @@ fill the empty space.
         height="796">
 </uxdot-example>
 
-
-If the number of columns changes, social media links will shift position to 
+If the number of columns changes, social media links will shift position to
 remain aligned to the left edge of the last column.
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
@@ -210,10 +206,9 @@ remain aligned to the left edge of the last column.
         height="796">
 </uxdot-example>
 
-
 ### Small breakpoints
 
-Columns will collapse to an accordion as breakpoints get smaller and other 
+Columns will collapse to an accordion as breakpoints get smaller and other
 content will also get rearranged.
 
 <rh-alert state="info">

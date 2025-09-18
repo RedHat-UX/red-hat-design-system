@@ -57,7 +57,7 @@ The four content slots within a tile are **title**, **heading**, **body**, and *
 <rh-table>
 
 | Slot    | Content                                                                                                                                               |
-|---------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Title   | A title provides secondary descriptive context. A selectable tile does not have title slots.                                                          |
 | Heading | In a link tile, the heading should indicate what clicking on the tile will do. In a selectable tile, the heading labels the radio button or checkbox. |
 | Body    | The body text expands on heading content and gives the user more information.                                                                         |
@@ -72,7 +72,7 @@ The recommended character counts below include spaces. Line counts are based on 
 <rh-table>
 
 | Element      | Character count | Line count |
-|--------------|-----------------|------------|
+| ------------ | --------------- | ---------- |
 | Title text   | 20              | 1          |
 | Heading text | 64              | 3          |
 | Body text    | 160             | 7          |

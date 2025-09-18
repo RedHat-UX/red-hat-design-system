@@ -279,7 +279,6 @@ tab order before the focus indicator reaches the next panel.
 A filter uses [space tokens](/tokens/space/) to define spacing
 values between elements.
 
-
 <uxdot-example width-adjustment="664px">
   <img src="./filter-spacing-1.svg"
        alt="A filter with spacers"

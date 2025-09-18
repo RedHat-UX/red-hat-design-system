@@ -9,22 +9,25 @@ import styles from './rh-breadcrumb.css';
 const truncateBtnClass = 'truncate-btn';
 const truncateBtnContainerClass = `${truncateBtnClass}-container`;
 
-function isTruncateButtonDescendant(target: EventTarget | null): target is HTMLElement {
-  return !!target
+function isTruncateButtonDescendant(
+  target: EventTarget | null
+): target is HTMLElement {
+  return (
+    !!target
     && target instanceof HTMLElement
-    && !!target.closest(`.${truncateBtnClass}`);
+    && !!target.closest(`.${truncateBtnClass}`)
+  );
 }
 
-const truncationBtn = html`
-  <button class="${truncateBtnClass}"
-          aria-expanded="false"
-          title="Show middle breadcrumb items"
-          type="button">
-    <span aria-hidden="true">&#8230;</span>
-    <span class="visually-hidden">
-      Show middle breadcrumb items
-    </span>
-  </button>`;
+const truncationBtn = html` <button
+  class="${truncateBtnClass}"
+  aria-expanded="false"
+  title="Show middle breadcrumb items"
+  type="button"
+>
+  <span aria-hidden="true">&#8230;</span>
+  <span class="visually-hidden"> Show middle breadcrumb items </span>
+</button>`;
 
 /**
  * A breadcrumb navigation is a secondary navigation element consisting of a list
@@ -57,10 +60,9 @@ export class RhBreadcrumb extends LitElement {
   @property({ reflect: true }) variant?: 'subtle';
 
   /**
- * Breadcrumbs over four items will be truncated and include a button to expand the middle breadcrumb items
- */
+   * Breadcrumbs over four items will be truncated and include a button to expand the middle breadcrumb items
+   */
   @property({ reflect: true, type: Boolean }) truncate? = false;
-
 
   render() {
     const label = this.accessibleLabel ? this.accessibleLabel : 'Breadcrumb';
@@ -68,10 +70,12 @@ export class RhBreadcrumb extends LitElement {
     /* eslint-disable lit-a11y/click-events-have-key-events */
     return html`
       <!-- container element for slotted breadcrumb -->
-      <nav id="container"
-           part="container"
-           aria-label="${label}"
-           @click="${this.#onTruncationClick}">
+      <nav
+        id="container"
+        part="container"
+        aria-label="${label}"
+        @click="${this.#onTruncationClick}"
+      >
         <!-- Place an ordered list (\`<ol>\`) of your breadcrumbs into the slot -->
         <slot></slot>
       </nav>
@@ -93,7 +97,9 @@ export class RhBreadcrumb extends LitElement {
       return;
     }
 
-    const middleItems = list.querySelectorAll('li:nth-child(n+2):nth-last-child(n+3)');
+    const middleItems = list.querySelectorAll(
+      'li:nth-child(n+2):nth-last-child(n+3)'
+    );
     for (const item of middleItems) {
       item.setAttribute('hidden', 'true');
     }
@@ -106,10 +112,12 @@ export class RhBreadcrumb extends LitElement {
 
   #onTruncationClick(event: Event): void {
     let listItems: NodeListOf<Element>;
-    if (!isServer
+    if (
+      !isServer
       && this.truncate
       && isTruncateButtonDescendant(event.target)
-      && (listItems = this.querySelectorAll(':scope > ol > li'))) {
+      && (listItems = this.querySelectorAll(':scope > ol > li'))
+    ) {
       for (const item of listItems) {
         item.removeAttribute('hidden');
       }

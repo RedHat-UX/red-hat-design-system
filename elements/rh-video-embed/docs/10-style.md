@@ -1,4 +1,4 @@
-## Style 
+## Style
 
 The video embed element consists of a semitransparent play button with a video thumbnail that overlays the embedded video when it is not playing. There is also an optional slot for a caption that describes the video.
 
@@ -21,6 +21,7 @@ The video embed element consists of a semitransparent play button with a video t
 </figure>
 
 ## Color scheme
+
 <a id="theme"></a>
 
 The video embed element is available for both light and dark color schemes. It can include either a light or a dark play button, depending on the thumbnail image underneath.
@@ -72,7 +73,6 @@ The caption can be left-, right-, or center-aligned, depending on how the video 
   </uxdot-example>
 </div>
 
-
 ## Space
 
 Space values remain the same at all viewport sizes.
@@ -83,7 +83,6 @@ Space values remain the same at all viewport sizes.
       width="556"
       height="350">
 </uxdot-example>
-
 
 ## States
 

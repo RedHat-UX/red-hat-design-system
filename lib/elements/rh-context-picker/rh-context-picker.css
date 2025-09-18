@@ -13,12 +13,24 @@
   --thumb-color: var(--rh-color-interactive-primary-default);
 }
 
-.darkest { --c: var(--rh-color-surface-darkest, #151515); }
-.darker { --c: var(--rh-color-surface-darker, #1f1f1f); }
-.dark { --c: var(--rh-color-surface-dark, #383838); }
-.light { --c: var(--rh-color-surface-light, #e0e0e0); }
-.lighter { --c: var(--rh-color-surface-lighter, #f2f2f2); }
-.lightest { --c: var(--rh-color-surface-lightest, #ffffff); }
+.darkest {
+  --c: var(--rh-color-surface-darkest, #151515);
+}
+.darker {
+  --c: var(--rh-color-surface-darker, #1f1f1f);
+}
+.dark {
+  --c: var(--rh-color-surface-dark, #383838);
+}
+.light {
+  --c: var(--rh-color-surface-light, #e0e0e0);
+}
+.lighter {
+  --c: var(--rh-color-surface-lighter, #f2f2f2);
+}
+.lightest {
+  --c: var(--rh-color-surface-lightest, #ffffff);
+}
 
 :is(.dark, .darker, .darkest) {
   --alt-color: var(--rh-color-surface-light, #e0e0e0);
@@ -28,7 +40,7 @@
   --alt-color: var(--rh-color-surface-dark, #383838);
 }
 
-:is(:focus,:hover) {
+:is(:focus, :hover) {
   --alt-color: var(--thumb-color);
 }
 
@@ -45,7 +57,7 @@ input {
 
 input:before {
   display: block;
-  content: '';
+  content: "";
   background: var(--c);
   border-radius: 50%;
   position: absolute;
@@ -55,7 +67,7 @@ input:before {
 
 input:checked:after {
   display: block;
-  content: '';
+  content: "";
   background: var(--alt-color);
   border-radius: 50%;
   position: absolute;

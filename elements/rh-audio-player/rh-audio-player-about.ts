@@ -35,25 +35,34 @@ export class RhAudioPlayerAbout extends LitElement {
 
   override render() {
     const { label, mediaseries, mediatitle } = this;
-    const hasContent = isServer || ((this.content?.length ?? 0) >= 1);
+    const hasContent = isServer || (this.content?.length ?? 0) >= 1;
     const heading = this.#headings.wrap(mediatitle ?? '');
 
-    return html`
-      <!-- panel heading -->
+    return html` <!-- panel heading -->
       <rh-audio-player-scrolling-text-overflow id="title" part="heading">
         <!-- custom heading for panel -->
-        <slot name="heading">${label}</slot>
-      </rh-audio-player-scrolling-text-overflow>${!mediatitle ? `` : !mediaseries ? heading : html`
-      <hgroup class="media-info" part="heading">${!mediaseries ? '' : html`
-        <rh-audio-player-scrolling-text-overflow id="mediaseries">
-          ${mediaseries}
-        </rh-audio-player-scrolling-text-overflow>`}
-        <rh-audio-player-scrolling-text-overflow id="mediatitle">
-          ${heading}
-        </rh-audio-player-scrolling-text-overflow>
-      </hgroup>`}
+        <slot name="heading"
+          >${label}</slot
+        > </rh-audio-player-scrolling-text-overflow
+      >${!mediatitle ?
+        ``
+        : !mediaseries ?
+        heading
+        : html` <hgroup class="media-info" part="heading">
+            ${!mediaseries ?
+              ''
+              : html` <rh-audio-player-scrolling-text-overflow id="mediaseries">
+                  ${mediaseries}
+                </rh-audio-player-scrolling-text-overflow>`}
+            <rh-audio-player-scrolling-text-overflow id="mediatitle">
+              ${heading}
+            </rh-audio-player-scrolling-text-overflow>
+          </hgroup>`}
       <!-- panel body -->
-      <div part="body" ?hidden="${!hasContent}" tabindex=0><!-- panel content --><slot></slot></div>
+      <div part="body" ?hidden="${!hasContent}" tabindex="0">
+        <!-- panel content --><slot
+        ></slot>
+      </div>
       <!--
         part:
           description: |
@@ -75,7 +84,9 @@ export class RhAudioPlayerAbout extends LitElement {
   }
 
   scrollText() {
-    const scrollers = this.shadowRoot?.querySelectorAll('rh-audio-player-scrolling-text-overflow');
+    const scrollers = this.shadowRoot?.querySelectorAll(
+      'rh-audio-player-scrolling-text-overflow'
+    );
     for (const scroller of scrollers ?? []) {
       scroller?.startScrolling();
     }

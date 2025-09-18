@@ -12,14 +12,18 @@ rh-card.swatches {
 
   display: block;
 
-  &[color-palette^='light'] {
+  &[color-palette^="light"] {
     --_offset: -0.3;
-    .on-dark { display: none; }
+    .on-dark {
+      display: none;
+    }
   }
 
-  &[color-palette^='dark'] {
+  &[color-palette^="dark"] {
     --_offset: 0.3;
-    .on-light { display: none; }
+    .on-light {
+      display: none;
+    }
   }
 
   &::part(header) {

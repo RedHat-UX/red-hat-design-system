@@ -19,37 +19,38 @@ rh-tile a:is(:focus, :hover, :active) {
   transition-duration: 0.3s !important;
 }
 
-rh-tile a:not([slot='image'], [slot='headline']) {
+rh-tile a:not([slot="image"], [slot="headline"]) {
   z-index: 2 !important;
   position: relative !important;
 }
 
-rh-tile[aria-disabled='true'] a {
-  color:
-    var(--_text-color-secondary,
-      var(--rh-color-text-secondary)) !important;
+rh-tile[aria-disabled="true"] a {
+  color: var(
+    --_text-color-secondary,
+    var(--rh-color-text-secondary)
+  ) !important;
 }
 
-rh-tile *:is([slot='image'], [slot='headline']) a {
+rh-tile *:is([slot="image"], [slot="headline"]) a {
   z-index: 1 !important;
   position: static !important;
   color: var(--_link-color) !important;
 }
 
-rh-tile *:is([slot='image'], [slot='headline']) a:after,
-rh-tile a:is([slot='image'], [slot='headline']):after {
-  content: '';
+rh-tile *:is([slot="image"], [slot="headline"]) a:after,
+rh-tile a:is([slot="image"], [slot="headline"]):after {
+  content: "";
   position: absolute;
   inset: 0;
   display: var(--_link-after-display);
 }
 
-rh-tile [slot='headline'] a:after,
-rh-tile a[slot='headline']:after {
+rh-tile [slot="headline"] a:after,
+rh-tile a[slot="headline"]:after {
   z-index: 3;
 }
 
-rh-tile a[slot='image'] > :is(img, svg) {
+rh-tile a[slot="image"] > :is(img, svg) {
   width: 100%;
 }
 
@@ -57,6 +58,6 @@ rh-tile:defined a:is(:focus, :hover, :active) {
   outline: var(--_link-outline) !important;
 }
 
-rh-tile:defined :is([slot='image'], [slot='headline']) a {
+rh-tile:defined :is([slot="image"], [slot="headline"]) a {
   --_link-outline: none;
 }

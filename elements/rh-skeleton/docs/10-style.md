@@ -1,6 +1,6 @@
 ## Style
 
-A skeleton uses basic shapes to provide a low-fidelity representation of loading content. A gradient animation overlays the shapes to  indicate activity.
+A skeleton uses basic shapes to provide a low-fidelity representation of loading content. A gradient animation overlays the shapes to indicate activity.
 
 ### Anatomy
 

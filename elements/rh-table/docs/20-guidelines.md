@@ -13,7 +13,6 @@ There is no maximum number of columns or rows. To reduce cognitive load and a cl
        height="488">
 </uxdot-example>
 
-
 ### Padding
 
 In some edge cases, table rows can have double padding if there are more element types than just text.
@@ -24,7 +23,6 @@ In some edge cases, table rows can have double padding if there are more element
        width="872"
        height="652">
 </uxdot-example>
-
 
 ## Writing content
 
@@ -39,7 +37,6 @@ Titles should be concise, scannable, and descriptive of content in the column or
        height="392">
 </uxdot-example>
 
-
 ## Character count
 
 In general, header labels should be as short as possible. However, if columns have more width, more words can be added.
@@ -48,13 +45,12 @@ In general, header labels should be as short as possible. However, if columns ha
 <rh-table class="char-count-table">
 
 | Column count   | Character count (including spaces) |
-|----------------|------------------------------------|
+| -------------- | ---------------------------------- |
 | Two            | 40 - 50                            |
 | Four           | 20 - 30                            |
 | More than four | 10 - 20                            |
 
 </rh-table>
-
 
 ## Layout
 
@@ -80,7 +76,6 @@ A table will scroll horizontally or vertically if content exceeds the max-width 
        height="706">
 </uxdot-example>
 
-
 ### Logos
 
 Logos can be used in cells along with text if necessary.
@@ -91,7 +86,6 @@ Logos can be used in cells along with text if necessary.
        width="872"
        height="774">
 </uxdot-example>
-
 
 ## Behavior
 
@@ -110,10 +104,9 @@ Columns can be sorted in ascending or descending order. Sorting controls are loc
        height="800">
 </uxdot-example>
 
+## Responsive design
 
-## Responsive design 
-
-### Large viewport sizes 
+### Large viewport sizes
 
 <uxdot-example color-palette="lightest" width-adjustment="1000px" variant="full" alignment="left" no-border>
   <img alt="Image of table on large viewport sizes"
@@ -122,8 +115,7 @@ Columns can be sorted in ascending or descending order. Sorting controls are loc
        height="368">
 </uxdot-example>
 
-
-### Small viewport sizes 
+### Small viewport sizes
 
 <uxdot-example color-palette="lightest" width-adjustment="576px" variant="full" alignment="left" no-border>
   <img alt="Image of table on small viewport sizes"
@@ -131,7 +123,6 @@ Columns can be sorted in ascending or descending order. Sorting controls are loc
        width="576"
        height="928">
 </uxdot-example>
-
 
 ## Best practices
 

@@ -1,4 +1,5 @@
 ## Toasting Alerts
+
 The `toast` variant of alert is intended specifically and only to be used when
 toasting alerts. To toast an alert, use the static `toast()` method on the
 `RhAlert` constructor. [Avoid](../guidelines/#toast) writing your own
@@ -6,9 +7,9 @@ toasting alerts. To toast an alert, use the static `toast()` method on the
 with at least a `message` property, and several other options.
 
 ```js rhcodeblock
-import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
+import { RhAlert } from "@rhds/elements/rh-alert/rh-alert.js";
 
-RhAlert.toast({ state: 'success', message: 'Saved!' });
+RhAlert.toast({ state: "success", message: "Saved!" });
 ```
 
 The full list of options for the `toast` method is:
@@ -21,14 +22,14 @@ The full list of options for the `toast` method is:
 | `heading`            | `string`                            | Alert heading content. Must be a simple string.                                               |
 | `state`              | See alert's `state` attribute       | Alert `state` attribute                                                                       |
 | `persistent`         | `boolean`                           | Whether the alert should remain on screen until the user explicitly dismisses it              |
-| `actions`            | Array of one or two actions objects | One or more optional body actions. See [actions options](#toast-action-options) info below. |
+| `actions`            | Array of one or two actions objects | One or more optional body actions. See [actions options](#toast-action-options) info below.   |
 
 </rh-table>
 
 ### Toast action options
 
-Actions objects have two keys, `text` for the action button text, and `action` 
-e.g. `dismiss` or `confirm`, which is applied to the `close` event as the 
+Actions objects have two keys, `text` for the action button text, and `action`
+e.g. `dismiss` or `confirm`, which is applied to the `close` event as the
 `action` property.
 
 <rh-table>
@@ -50,22 +51,22 @@ same.
 
 ```js rhcodeblock
 await RhAlert.toast({
-  message: 'Your request was submitted',
+  message: "Your request was submitted",
 });
 ```
 
 #### Toasting a DOM Node
 
 ```js rhcodeblock
-const message = document.createElement('strong');
-      message.textContent = 'Your request was submitted';
+const message = document.createElement("strong");
+message.textContent = "Your request was submitted";
 await RhAlert.toast({ message });
 ```
 
 #### Toasting a lit-html template:
 
 ```js rhcodeblock
-import { html } from 'lit';
+import { html } from "lit";
 await RhAlert.toast({
   message: html`Your request was <em>submitted</em>`,
 });
@@ -74,12 +75,12 @@ await RhAlert.toast({
 #### Toasting an array of renderables
 
 ```js rhcodeblock
-import { html } from 'lit';
+import { html } from "lit";
 await RhAlert.toast({
   message: [
-    'Your request was',
+    "Your request was",
     html`<em>successfully</em>`,
-    new Text('submitted'),
+    new Text("submitted"),
   ],
 });
 ```
@@ -94,23 +95,24 @@ You may, for example, use the `<template>` element to define alert content
 ```
 
 ```js rhcodeblock
-const template = document.getElementById('success-alert-content-template')
+const template = document.getElementById("success-alert-content-template");
 const { childNodes } = template.content.cloneNode(true);
 const message = Array.from(childNodes);
 await RhAlert.toast({ message });
 ```
 
 #### Alert headings
+
 You can provide an optional string for the alert's heading, which will
 become the text content of the alert's slotted heading (`h3`).
 
 ```js rhcodeblock
-import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
+import { RhAlert } from "@rhds/elements/rh-alert/rh-alert.js";
 
 await RhAlert.toast({
-  state: 'success',
-  heading: 'Subscription renewed',
-  message: 'Your subscription was successfully renewed',
+  state: "success",
+  heading: "Subscription renewed",
+  message: "Your subscription was successfully renewed",
 });
 ```
 
@@ -122,10 +124,10 @@ user explicitly dismisses them. To make your toasted alert persistent, use the
 `persistent: true` option.
 
 ```js rhcodeblock
-import { html } from 'lit';
+import { html } from "lit";
 
 await RhAlert.toast({
-  state: 'warning',
+  state: "warning",
   persistent: true,
   message: html`Your subscription will expire in <time>two days</time>`,
 });
@@ -144,12 +146,12 @@ was pressed. You can listen for the `close` event, and if it is an
 `AlertCloseEvent` object, it will have an `action` property.
 
 ```js rhcodeblock
-import { AlertCloseEvent } from '@rhds/elements/rh-alert/rh-alert.js';
+import { AlertCloseEvent } from "@rhds/elements/rh-alert/rh-alert.js";
 
-document.addEventListener('close', function(event) {
+document.addEventListener("close", function (event) {
   if (event instanceof AlertCloseEvent) {
     switch (event.action) {
-      case 'renew':
+      case "renew":
         // renew subscription
         break;
     }
@@ -157,12 +159,12 @@ document.addEventListener('close', function(event) {
 });
 
 await RhAlert({
-  state: 'warning',
-  message: 'Your subscription is about to expire',
+  state: "warning",
+  message: "Your subscription is about to expire",
   actions: [
-    { text: 'Renew', action: 'renew' },
-    { text: 'Dismiss', action: 'dismiss' },
-  ]
+    { text: "Renew", action: "renew" },
+    { text: "Dismiss", action: "dismiss" },
+  ],
 });
 ```
 
@@ -170,10 +172,10 @@ By default, clicking on an action button will remove the alert. If you would
 like to keep the alert on screen, prevent the default action:
 
 ```js rhcodeblock
-document.addEventListener('close', function(event) {
+document.addEventListener("close", function (event) {
   if (event instanceof AlertCloseEvent) {
     switch (event.action) {
-      case 'prevent':
+      case "prevent":
         // prevent alert from closing
         event.preventDefault();
         // ... do something with event

@@ -33,7 +33,7 @@ body:
       description: >-
         If applicable, add screenshots of examples in the wild
       placeholder: >-
-        Copy/paste or drag screenshots into this textarea 
+        Copy/paste or drag screenshots into this textarea
     validations:
       required: false
 

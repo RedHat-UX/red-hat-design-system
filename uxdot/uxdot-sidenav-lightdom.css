@@ -4,10 +4,7 @@ uxdot-sidenav-dropdown > details > summary {
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  border-inline-start:
-    var(--rh-border-width-lg, 3px)
-    solid
-    transparent;
+  border-inline-start: var(--rh-border-width-lg, 3px) solid transparent;
   text-decoration: none;
   color: var(--rh-color-text-primary);
   font-size: var(--rh-font-size-body-text-lg);
@@ -26,7 +23,7 @@ uxdot-sidenav-dropdown > details[open] > summary:hover {
 }
 
 uxdot-sidenav-dropdown > details > summary:after {
-  content: '';
+  content: "";
   color: var(--rh-color-text-primary);
   width: 9px;
   height: 9px;

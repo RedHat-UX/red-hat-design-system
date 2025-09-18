@@ -4,7 +4,9 @@ import { isServer, ReactiveElement } from 'lit';
 let initialized: boolean;
 
 async function load() {
-  const { default: { cssText } } = await import('@rhds/tokens/css/default-theme.css.js');
+  const {
+    default: { cssText },
+  } = await import('@rhds/tokens/css/default-theme.css.js');
   const sheet = new CSSStyleSheet();
   sheet.replaceSync(cssText);
   document.adoptedStyleSheets = [...(document.adoptedStyleSheets ?? []), sheet];
@@ -24,8 +26,12 @@ export function themable<T extends Constructor<ReactiveElement>>(klass: T) {
     return klass;
   }
   initialized
-    ??= (document.documentElement.computedStyleMap?.().has('--rh-color-accent-base')
-    ?? !!getComputedStyle(document.documentElement).getPropertyValue('--rh-color-accent-base'));
+    ??= document.documentElement
+        .computedStyleMap?.()
+        .has('--rh-color-accent-base')
+    ?? !!getComputedStyle(document.documentElement).getPropertyValue(
+      '--rh-color-accent-base'
+    );
   if (!initialized) {
     p ??= load();
     return class ThemableElement extends klass {

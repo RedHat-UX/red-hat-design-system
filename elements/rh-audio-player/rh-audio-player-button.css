@@ -4,9 +4,7 @@
 }
 
 #container {
-  --_outline:
-    var(--rh-border-width-md, 2px)
-    solid
+  --_outline: var(--rh-border-width-md, 2px) solid
     var(--rh-color-border-interactive);
 }
 

@@ -16,7 +16,6 @@ import { RhAudioPlayerSubscribe } from '../rh-audio-player-subscribe.js';
 import { RhCue } from '../rh-cue.js';
 import { RhTranscript } from '../rh-transcript.js';
 
-
 function press(key: string) {
   return async function() {
     await sendKeys({ press: key });
@@ -31,27 +30,32 @@ describe('<rh-audio-player>', function() {
   // ACTIONS
 
   function setupForLayout(layout?: RhAudioPlayer['layout']) {
-    return (async function() {
-      element = await createFixture <RhAudioPlayer>(html`
-        <rh-audio-player layout="${ifDefined(layout)}" poster="/elements/rh-audio-player/test/poster.png">
+    return async function() {
+      element = await createFixture<RhAudioPlayer>(html`
+        <rh-audio-player
+          layout="${ifDefined(layout)}"
+          poster="/elements/rh-audio-player/test/poster.png"
+        >
           <p slot="series">Code Comments</p>
-          <h3 slot="title">Bringing Deep Learning to Enterprise Applications</h3>
+          <h3 slot="title">
+            Bringing Deep Learning to Enterprise Applications
+          </h3>
           <audio crossorigin="anonymous" slot="media" controls preload="auto">
-            <source type="audio/mp3" srclang="en" src="/elements/rh-audio-player/test/test.1mb.mp3">
+            <source
+              type="audio/mp3"
+              srclang="en"
+              src="/elements/rh-audio-player/test/test.1mb.mp3"
+            />
           </audio>
           <rh-transcript slot="transcript">
-              <rh-cue start="00:01" voice="Burr Sutter"></rh-cue>
-              <rh-cue start="00:01">
-                  I'm Burr Sutter.
-              </rh-cue>
-              <rh-cue start="00:02">
-                  I'm Burr Sutter.
-              </rh-cue>
+            <rh-cue start="00:01" voice="Burr Sutter"></rh-cue>
+            <rh-cue start="00:01"> I'm Burr Sutter. </rh-cue>
+            <rh-cue start="00:02"> I'm Burr Sutter. </rh-cue>
           </rh-transcript>
         </rh-audio-player>
       `);
       await aTimeout(50);
-    });
+    };
   }
 
   async function waitForCanplaythrough(this: Mocha.Context, player = element) {
@@ -89,9 +93,14 @@ describe('<rh-audio-player>', function() {
 
   async function clickPlay(player = element) {
     await player.updateComplete;
-    const button = player.shadowRoot!.querySelector('[id$="play"]') as HTMLButtonElement;
+    const button = player.shadowRoot!.querySelector(
+      '[id$="play"]'
+    ) as HTMLButtonElement;
     const { x, y, width, height } = button.getBoundingClientRect();
-    const position = [x + width / 2, y + height / 2].map(Math.round) as [number, number];
+    const position = [x + width / 2, y + height / 2].map(Math.round) as [
+      number,
+      number
+    ];
     await sendMouse({ type: 'click', position });
     await player.updateComplete;
   }
@@ -105,7 +114,9 @@ describe('<rh-audio-player>', function() {
   }
 
   async function clickTranscript() {
-    const button = getShadowElementByAriaLabel('Transcript') as HTMLButtonElement;
+    const button = getShadowElementByAriaLabel(
+      'Transcript'
+    ) as HTMLButtonElement;
     const x = button.offsetLeft + 5;
     const y = button.offsetTop + 5;
     await sendMouse({ type: 'click', position: [x, y] });
@@ -147,10 +158,14 @@ describe('<rh-audio-player>', function() {
    * seeks via setting the time range slider input
    * @param percent how much
    */
-  function seekViaSlider(percent: 0 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100) {
+  function seekViaSlider(
+    percent: 0 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90 | 100
+  ) {
     return async function() {
       const range = querySelectorDeep('#time') as HTMLInputElement;
-      const x = Math.floor(range.offsetLeft + range.offsetWidth * (percent / 100));
+      const x = Math.floor(
+        range.offsetLeft + range.offsetWidth * (percent / 100)
+      );
       const y = Math.floor(range.offsetTop + range.offsetHeight / 2);
       await sendMouse({ type: 'click', position: [x, y] });
     };
@@ -182,24 +197,35 @@ describe('<rh-audio-player>', function() {
   });
 
   it('instantiates imperatively', function() {
-    expect(document.createElement('rh-audio-player')).to.be.an.instanceof(RhAudioPlayer);
-    expect(document.createElement('rh-audio-player-about')).to.be.an.instanceof(RhAudioPlayerAbout);
-    expect(document.createElement('rh-audio-player-scrolling-text-overflow')).to.be.an.instanceof(RhAudioPlayerScrollingTextOverflow);
-    expect(document.createElement('rh-audio-player-subscribe')).to.be.an.instanceof(RhAudioPlayerSubscribe);
+    expect(document.createElement('rh-audio-player')).to.be.an.instanceof(
+      RhAudioPlayer
+    );
+    expect(document.createElement('rh-audio-player-about')).to.be.an.instanceof(
+      RhAudioPlayerAbout
+    );
+    expect(
+      document.createElement('rh-audio-player-scrolling-text-overflow')
+    ).to.be.an.instanceof(RhAudioPlayerScrollingTextOverflow);
+    expect(
+      document.createElement('rh-audio-player-subscribe')
+    ).to.be.an.instanceof(RhAudioPlayerSubscribe);
     expect(document.createElement('rh-cue')).to.be.an.instanceof(RhCue);
-    expect(document.createElement('rh-transcript')).to.be.an.instanceof(RhTranscript);
+    expect(document.createElement('rh-transcript')).to.be.an.instanceof(
+      RhTranscript
+    );
   });
 
   describe('simply instantiating', function() {
     beforeEach(async function() {
-      element = await createFixture<RhAudioPlayer>(html`<rh-audio-player></rh-audio-player>`);
+      element = await createFixture<RhAudioPlayer>(
+        html`<rh-audio-player></rh-audio-player>`
+      );
     });
     it('should upgrade', function() {
       const klass = customElements.get('rh-audio-player');
       expect(element)
           .to.be.an.instanceOf(klass)
-          .and
-          .to.be.an.instanceOf(RhAudioPlayer);
+          .and.to.be.an.instanceOf(RhAudioPlayer);
     });
   });
 
@@ -212,7 +238,10 @@ describe('<rh-audio-player>', function() {
     beforeEach(sleep(100));
     beforeEach(() => element.updateComplete);
     it('has spanish-language buttons', function() {
-      expect(querySelectorDeep('#time')?.getAttribute('aria-label'), 'time slider label').to.equal('Buscar');
+      expect(
+        querySelectorDeep('#time')?.getAttribute('aria-label'),
+        'time slider label'
+      ).to.equal('Buscar');
     });
   });
 
@@ -223,20 +252,24 @@ describe('<rh-audio-player>', function() {
       await createFixture<RhAudioPlayer>(html`
         <div>
           <rh-audio-player id="a">
-            <audio src="/elements/rh-audio-player/test/test.100k.mp3"
-                   slot="media"
-                   crossorigin="anonymous"
-                   preload="auto"
-                   controls
-                   loop></audio>
+            <audio
+              src="/elements/rh-audio-player/test/test.100k.mp3"
+              slot="media"
+              crossorigin="anonymous"
+              preload="auto"
+              controls
+              loop
+            ></audio>
           </rh-audio-player>
           <rh-audio-player id="b">
-            <audio src="/elements/rh-audio-player/test/test.100k.mp3"
-                   slot="media"
-                   crossorigin="anonymous"
-                   preload="auto"
-                   controls
-                   loop></audio>
+            <audio
+              src="/elements/rh-audio-player/test/test.100k.mp3"
+              slot="media"
+              crossorigin="anonymous"
+              preload="auto"
+              controls
+              loop
+            ></audio>
           </rh-audio-player>
         </div>
       `);
@@ -376,7 +409,11 @@ describe('<rh-audio-player>', function() {
       describe('clicking playback rate select', function() {
         beforeEach(waitForCanplaythrough);
         beforeEach(async function() {
-          await clickElementAtCenter(querySelectorDeep('rh-audio-player-rate-stepper:not([hidden]) select')!);
+          await clickElementAtCenter(
+            querySelectorDeep(
+              'rh-audio-player-rate-stepper:not([hidden]) select'
+            )!
+          );
         });
         describe('ArrowUp, Enter', function() {
           beforeEach(press('ArrowUp'));
@@ -427,63 +464,66 @@ describe('<rh-audio-player>', function() {
           it('has width', assertHasWidth);
 
           it('focuses seek range', async function() {
-            expect(await a11ySnapshot())
-                .axTreeFocusedNode
-                .to.have.axName('Seek');
+            expect(await a11ySnapshot()).axTreeFocusedNode.to.have.axName(
+              'Seek'
+            );
           });
           describe('Tab (2)', function() {
             beforeEach(press('Tab'));
             it('focuses mute button', async function() {
-              expect(await a11ySnapshot())
-                  .axTreeFocusedNode
-                  .to.have.axName('Mute');
+              expect(await a11ySnapshot()).axTreeFocusedNode.to.have.axName(
+                'Mute'
+              );
             });
             describe('Tab (3)', function() {
               beforeEach(press('Tab'));
               it('focuses volume slider', async function() {
-                expect(await a11ySnapshot())
-                    .axTreeFocusedNode
-                    .to.have.axName('Volume');
+                expect(await a11ySnapshot()).axTreeFocusedNode.to.have.axName(
+                  'Volume'
+                );
               });
               describe('Tab (4)', function() {
                 beforeEach(press('Tab'));
                 it('focuses speed select', async function() {
-                  expect(await a11ySnapshot())
-                      .axTreeFocusedNode
-                      .to.have.axName('Speed');
+                  expect(await a11ySnapshot()).axTreeFocusedNode.to.have.axName(
+                    'Speed'
+                  );
                 });
                 describe('Tab (5)', function() {
                   beforeEach(press('Tab'));
                   it('focuses rewind button', async function() {
-                    expect(await a11ySnapshot())
-                        .axTreeFocusedNode
-                        .to.have.axName('Rewind 15 seconds');
+                    expect(
+                      await a11ySnapshot()
+                    ).axTreeFocusedNode.to.have.axName('Rewind 15 seconds');
                   });
                   describe('Tab (6)', function() {
                     beforeEach(press('Tab'));
                     it('focuses play button', async function() {
-                      expect(await a11ySnapshot())
-                          .axTreeFocusedNode
-                          .to.have.axName('Play');
+                      expect(
+                        await a11ySnapshot()
+                      ).axTreeFocusedNode.to.have.axName('Play');
                     });
                     describe('Tab (7)', function() {
                       beforeEach(press('Tab'));
                       it('focuses advance button', async function() {
-                        expect(await a11ySnapshot())
-                            .axTreeFocusedNode
-                            .to.have.axName('Advance 15 seconds');
+                        expect(
+                          await a11ySnapshot()
+                        ).axTreeFocusedNode.to.have.axName(
+                          'Advance 15 seconds'
+                        );
                       });
                       describe('Tab (8)', function() {
                         beforeEach(press('Tab'));
                         it('focuses menu button', async function() {
-                          expect(await a11ySnapshot())
-                              .axTreeFocusedNode
-                              .to.have.axName('More options');
+                          expect(
+                            await a11ySnapshot()
+                          ).axTreeFocusedNode.to.have.axName('More options');
                         });
                         describe('Tab (9)', function() {
                           beforeEach(press('Tab'));
                           it('reaches the end of focusable elements', function() {
-                            expect(element.shadowRoot?.activeElement).to.be.null;
+                            expect(element.shadowRoot?.activeElement).to.be
+                                .null;
                           });
                         });
                       });
@@ -556,7 +596,11 @@ describe('<rh-audio-player>', function() {
         describe('clicking playback rate select', function() {
           beforeEach(waitForCanplaythrough);
           beforeEach(async function() {
-            await clickElementAtCenter(querySelectorDeep('rh-audio-player-rate-stepper:not([hidden]) select')!);
+            await clickElementAtCenter(
+              querySelectorDeep(
+                'rh-audio-player-rate-stepper:not([hidden]) select'
+              )!
+            );
           });
           describe('ArrowUp, Enter', function() {
             beforeEach(press('ArrowUp'));
@@ -570,7 +614,11 @@ describe('<rh-audio-player>', function() {
         describe('clicking rate stepdown', function() {
           beforeEach(waitForCanplaythrough);
           beforeEach(async function() {
-            await clickElementAtCenter(querySelectorDeep('rh-audio-player-rate-stepper:not([hidden]) #stepdown')!);
+            await clickElementAtCenter(
+              querySelectorDeep(
+                'rh-audio-player-rate-stepper:not([hidden]) #stepdown'
+              )!
+            );
           });
           it('sets playback rate', function() {
             expect(element?.playbackRate).to.equal(0.75);
@@ -580,7 +628,11 @@ describe('<rh-audio-player>', function() {
         describe('clicking rate stepup', function() {
           beforeEach(waitForCanplaythrough);
           beforeEach(async function() {
-            await clickElementAtCenter(querySelectorDeep('rh-audio-player-rate-stepper:not([hidden]) #stepup')!);
+            await clickElementAtCenter(
+              querySelectorDeep(
+                'rh-audio-player-rate-stepper:not([hidden]) #stepup'
+              )!
+            );
           });
           it('sets playback rate', function() {
             expect(element?.playbackRate).to.equal(1.25);
@@ -629,9 +681,12 @@ describe('<rh-audio-player>', function() {
       beforeEach(setupForLayout('compact'));
       it('has width', assertHasWidth);
       it('displays the correct elements', function() {
-        expect(getShadowElementByAriaLabel('Play'), 'Play').to.exist.and.to.be.visible;
-        expect(getShadowElementByAriaLabel('Seek'), 'Seek').to.exist.and.to.be.visible;
-        expect(getShadowElementByAriaLabel('Mute'), 'Mute').to.exist.and.to.be.visible;
+        expect(getShadowElementByAriaLabel('Play'), 'Play').to.exist.and.to.be
+            .visible;
+        expect(getShadowElementByAriaLabel('Seek'), 'Seek').to.exist.and.to.be
+            .visible;
+        expect(getShadowElementByAriaLabel('Mute'), 'Mute').to.exist.and.to.be
+            .visible;
       });
     });
 
@@ -639,9 +694,12 @@ describe('<rh-audio-player>', function() {
       beforeEach(setupForLayout('compact-wide'));
       it('has width', assertHasWidth);
       it('displays the correct elements', function() {
-        expect(getShadowElementByAriaLabel('Play'), 'Play').to.exist.and.to.be.visible;
-        expect(getShadowElementByAriaLabel('Seek'), 'Seek').to.exist.and.to.be.visible;
-        expect(getShadowElementByAriaLabel('Mute'), 'Mute').to.exist.and.to.be.visible;
+        expect(getShadowElementByAriaLabel('Play'), 'Play').to.exist.and.to.be
+            .visible;
+        expect(getShadowElementByAriaLabel('Seek'), 'Seek').to.exist.and.to.be
+            .visible;
+        expect(getShadowElementByAriaLabel('Mute'), 'Mute').to.exist.and.to.be
+            .visible;
       });
       it('has mute button enabled', function() {
         const button = querySelectorDeep('#mute') as HTMLButtonElement;
@@ -654,8 +712,10 @@ describe('<rh-audio-player>', function() {
       it('has width', assertHasWidth);
       it('displays the correct elements', function() {
         expect(querySelectorDeep('#play'), 'Play').to.exist.and.to.be.visible;
-        expect(getShadowElementByAriaLabel('Seek'), 'Seek').to.exist.and.to.be.visible;
-        expect(getShadowElementByAriaLabel('Mute'), 'Mute').to.exist.and.to.be.visible;
+        expect(getShadowElementByAriaLabel('Seek'), 'Seek').to.exist.and.to.be
+            .visible;
+        expect(getShadowElementByAriaLabel('Mute'), 'Mute').to.exist.and.to.be
+            .visible;
       });
     });
   });

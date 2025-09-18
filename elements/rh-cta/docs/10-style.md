@@ -21,6 +21,7 @@ A call to action is text in a container or paired with an icon that directs user
 </figure>
 
 ## Color scheme
+
 <a id="theme"></a>
 
 Calls to action are available in both light and dark color schemes.

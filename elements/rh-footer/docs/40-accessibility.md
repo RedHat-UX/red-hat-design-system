@@ -31,7 +31,7 @@ Most elements in a footer are links, so users can press `Tab` to navigate from r
   </table>
 </rh-table>
 
-## Focus order 
+## Focus order
 
 A logical focus order helps keyboard users operate our websites. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly. The focus moves across regions of a footer from left to right and top to bottom.
 
@@ -47,8 +47,8 @@ A logical focus order helps keyboard users operate our websites. Elements need t
         height="796">
 </uxdot-example>
 
-
 ### Language selector
+
 Users can open the language selector menu by pressing `Enter` if the trigger has focus. If they do, they can press `Tab` to move focus to the first language. Each language can receive focus from left to right and top to bottom.
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
@@ -67,8 +67,8 @@ When the focus is moved outside of the menu, the menu closes.
         height="796">
 </uxdot-example>
 
-
 ## Additional guidelines
+
 - Content outside of a dialog cannot be interacted with or navigated to while the dialog is open
 - The `Escape` key should close the dialog
 - There should be at least one clickable button that closes the dialog

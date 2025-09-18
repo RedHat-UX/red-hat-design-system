@@ -44,7 +44,10 @@ export class RhNavigationPrimaryItemMenu extends LitElement {
   render() {
     const compact = !this.#hydrated ? true : this.compact ?? true;
     return html`
-      <div id="container" class="${classMap({ compact: compact, dehydrated: !this.#hydrated })}">
+      <div
+        id="container"
+        class="${classMap({ compact: compact, dehydrated: !this.#hydrated })}"
+      >
         <!-- Place element content here -->
         <slot></slot>
       </div>

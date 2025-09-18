@@ -2,10 +2,10 @@
 
 A progress stepper should communicate the following to screen reader users:
 
-  - That the step items compose a list
-  - Labels for each step even when there is no visible text label
-  - The state of each step
-  - When a step is marked as the current step
+- That the step items compose a list
+- Labels for each step even when there is no visible text label
+- The state of each step
+- When a step is marked as the current step
 
 {% include 'partials/accessibility/ariaguide.md' %}
 

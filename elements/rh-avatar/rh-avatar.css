@@ -12,33 +12,41 @@
   color: var(--rh-color-text-secondary);
 
   /** List of colors to use when generating avatars */
-  --_colors:
-    light-dark(var(--rh-avatar-colors,
-      var(--rh-color-blue-30, #92c5f9)
-      var(--rh-color-teal-50, #37a3a3)
-      var(--rh-color-green-60, #3d7317)
-      var(--rh-color-red-40, #f56e6e)
-      var(--rh-color-purple-60, #3d2785)),
-      var(--rh-avatar-colors,
-      var(--rh-color-blue-50, #0066cc)
-      var(--rh-color-teal-70, #004d4d)
-      var(--rh-color-green-70, #204d00)
-      var(--rh-color-red-50, #ee0000)
-      var(--rh-color-purple-70, #21134d)));
+  --_colors: light-dark(
+    var(
+      --rh-avatar-colors,
+      var(--rh-color-blue-30, #92c5f9) var(--rh-color-teal-50, #37a3a3)
+        var(--rh-color-green-60, #3d7317) var(--rh-color-red-40, #f56e6e)
+        var(--rh-color-purple-60, #3d2785)
+    ),
+    var(
+      --rh-avatar-colors,
+      var(--rh-color-blue-50, #0066cc) var(--rh-color-teal-70, #004d4d)
+        var(--rh-color-green-70, #204d00) var(--rh-color-red-50, #ee0000)
+        var(--rh-color-purple-70, #21134d)
+    )
+  );
 
   column-gap: var(--rh-space-lg, 16px);
   width: min-content;
   grid-template-columns: min-content minmax(max-content, 250px);
   grid-template-rows: min-content min-content;
   grid-template-areas:
-    'a t'
-    'a s';
+    "a t"
+    "a s";
 }
 
 #title {
   grid-area: t;
   align-self: end;
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+  font-family: var(
+    --rh-font-family-heading,
+    RedHatDisplay,
+    "Red Hat Display",
+    Helvetica,
+    Arial,
+    sans-serif
+  );
   font-weight: var(--rh-font-weight-heading-medium, 500);
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
@@ -50,20 +58,23 @@
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
 
-:host([layout='block']) #container,
+:host([layout="block"]) #container,
 :host(:not([plain])) #container.mobile {
   text-align: center;
   place-items: center;
   gap: 0;
   grid-template-columns: minmax(max-content, 250px);
-  grid-template-areas: 'a' 't' 's';
+  grid-template-areas: "a" "t" "s";
   grid-template-rows:
-    minmax(var(--rh-avatar-size, var(--rh-size-icon-06, 64px)), var(--rh-size-icon-06, 64px))
+    minmax(
+      var(--rh-avatar-size, var(--rh-size-icon-06, 64px)),
+      var(--rh-size-icon-06, 64px)
+    )
     min-content
     auto;
 }
 
-:host([layout='block']) :is(img, canvas, svg),
+:host([layout="block"]) :is(img, canvas, svg),
 :host(:not([plain])) #container.mobile :is(img, canvas, svg) {
   margin-block-end: var(--rh-space-lg, 16px);
 }

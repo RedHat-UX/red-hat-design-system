@@ -11,8 +11,13 @@ interface PluginOptions {
   assetsPath?: string;
 }
 
-export default function RHDSPlugin(eleventyConfig: UserConfig, pluginOptions?: PluginOptions) {
-  eleventyConfig.addPassthroughCopy('docs/tokens/**/*.{svg,jpe?g,png,webp,avif}');
+export default function RHDSPlugin(
+  eleventyConfig: UserConfig,
+  pluginOptions?: PluginOptions
+) {
+  eleventyConfig.addPassthroughCopy(
+    'docs/tokens/**/*.{svg,jpe?g,png,webp,avif}'
+  );
 
   eleventyConfig.addGlobalData('tokens', tokensJSON);
 
@@ -44,5 +49,4 @@ export default function RHDSPlugin(eleventyConfig: UserConfig, pluginOptions?: P
   eleventyConfig.addPassthroughCopy({
     [join(__dirname, '11ty', '*')]: pluginOptions?.assetsPath ?? '/assets/',
   });
-};
-
+}

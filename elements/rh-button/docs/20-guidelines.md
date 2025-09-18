@@ -1,25 +1,25 @@
 ## Usage
 
-Use buttons to communicate and trigger actions like submitting a form, canceling 
+Use buttons to communicate and trigger actions like submitting a form, canceling
 a process, or creating a new object.
 
 ### When to use a button
 
-Use buttons to communicate actions users can take. Each page should have only 
-one Primary button and any remaining buttons should be represented as lower 
+Use buttons to communicate actions users can take. Each page should have only
+one Primary button and any remaining buttons should be represented as lower
 emphasis.
 
 ### Button vs. call to action
 
-Do not use buttons as navigational elements. Instead, use a 
-[link](/patterns/link/) or [call to action](/elements/call-to-action/) when the 
-desired action is to take users to a new page. Consider using a checkbox, 
+Do not use buttons as navigational elements. Instead, use a
+[link](/patterns/link/) or [call to action](/elements/call-to-action/) when the
+desired action is to take users to a new page. Consider using a checkbox,
 switch, or control when you need to capture two togglable states.
 
 ## Variants
 
-Each button has a specific function and the design of each variant signals that 
-function to users. Therefore, it is important that each variant is implemented 
+Each button has a specific function and the design of each variant signals that
+function to users. Therefore, it is important that each variant is implemented
 consistently so they communicate the correct actions.
 
 <uxdot-example color-palette="lightest" width-adjustment="494px">
@@ -32,7 +32,7 @@ consistently so they communicate the correct actions.
 <rh-table>
 
 | Variant   | Use case                                                                                                                                                                                                 |
-|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Danger    | The most prominent of all the button options. Use them for actions that are potentially destructive like deleting or removing data. These are mostly found in dialogs to emphasize a destructive action. |
 | Primary   | The most prominent button, use them for the most important action on a page. Try to limit their usage to one per page.                                                                                   |
 | Secondary | Buttons with less visual prominence than Primary buttons. Use them for general actions that do not require as much emphasis as Primary button actions.                                                   |
@@ -78,8 +78,8 @@ the button layout better.
 
 ### Disabled
 
-To indicate that an action is currently unavailable or if a task needs to be 
-completed first, most buttons can become disabled. However, the Play and Close 
+To indicate that an action is currently unavailable or if a task needs to be
+completed first, most buttons can become disabled. However, the Play and Close
 buttons do not include a disabled state.
 
 <uxdot-example color-palette="lightest" width-adjustment="494px">
@@ -93,23 +93,24 @@ buttons do not include a disabled state.
 
 ### Button text labels
 
-Button text labels express what action will occur when users interact with it. 
-When writing button labels, be specific and clearly communicate the action by 
+Button text labels express what action will occur when users interact with it.
+When writing button labels, be specific and clearly communicate the action by
 doing the following:
-- Make sure button text is unique and easily understood for when screen readers 
-announce button text to users
+
+- Make sure button text is unique and easily understood for when screen readers
+  announce button text to users
 - Use simple verbs or verb phrases
 - Aim for short labels when possible
-- Try not to use articles (for example, write *Add source* instead of 
-*Add a source*)
+- Try not to use articles (for example, write _Add source_ instead of
+  _Add a source_)
 - Do not use punctuation
 - Use an icon within a button to add attention or clarify the action
-- Do not create icons within buttons by using typed symbols (for example, a 
-plus)
+- Do not create icons within buttons by using typed symbols (for example, a
+  plus)
 
 ### Link button text labels
 
-When writing link button text labels, use specific and action-focused language 
+When writing link button text labels, use specific and action-focused language
 that matches what users will see when they arrive at their location.
 
 <uxdot-example color-palette="lightest" width-adjustment="525px">
@@ -121,7 +122,7 @@ that matches what users will see when they arrive at their location.
 
 ### Button vs. call to action text labels
 
-Button text labels are written to be short and communicate an action whereas 
+Button text labels are written to be short and communicate an action whereas
 call to action text labels are written to entice users to select a link.
 
 <uxdot-example color-palette="lightest" width-adjustment="696px">
@@ -138,7 +139,7 @@ call to action text labels are written to entice users to select a link.
 <rh-table class="char-count">
 
 | Element            | Character count | Word count |
-|--------------------|-----------------|------------|
+| ------------------ | --------------- | ---------- |
 | Button text labels | 30              | 3          |
 | Link text labels   | 45              | 10         |
 
@@ -148,16 +149,17 @@ call to action text labels are written to entice users to select a link.
 
 ### Placement
 
-Buttons in dialogs, forms, etc. should always be left aligned in the container. 
+Buttons in dialogs, forms, etc. should always be left aligned in the container.
 This solves for the following:
-- **Modularity and flexibility** - a standard alignment creates consistency in 
-how objects appear
-- **Accessibility** - buttons in a form are on the same scan line as the fields 
-which benefits low vision users
-Users who are blind can easily navigate form submit buttons because the order is 
-consistent across all contexts
-- **Responsiveness** - the most important actions are encountered first when 
-elements are stacked vertically
+
+- **Modularity and flexibility** - a standard alignment creates consistency in
+  how objects appear
+- **Accessibility** - buttons in a form are on the same scan line as the fields
+  which benefits low vision users
+  Users who are blind can easily navigate form submit buttons because the order is
+  consistent across all contexts
+- **Responsiveness** - the most important actions are encountered first when
+  elements are stacked vertically
 
 <uxdot-example color-palette="lightest" width-adjustment="1000px" variant="full" no-border alignment="left">
   <img alt="Image of buttons used in a dialog and a form"
@@ -168,7 +170,7 @@ elements are stacked vertically
 
 ### Hierarchy
 
-Buttons are ordered by hierarchy from left to right. Do not use multiple Danger, 
+Buttons are ordered by hierarchy from left to right. Do not use multiple Danger,
 Primary, or Close buttons in the same area.
 
 <uxdot-example color-palette="lightest" width-adjustment="797px">
@@ -180,7 +182,7 @@ Primary, or Close buttons in the same area.
 
 ### Grouping
 
-Grouping buttons is a useful way of aligning buttons that have a relationship. 
+Grouping buttons is a useful way of aligning buttons that have a relationship.
 Group buttons logically into sets based on hierarchy and usage.
 
 <uxdot-example color-palette="lightest" width-adjustment="740px">
@@ -192,8 +194,8 @@ Group buttons logically into sets based on hierarchy and usage.
 
 ### Space in groups
 
-The standard spacing between each button is `--rh-space-lg`, even for Danger 
-buttons. If buttons are stacked vertically, the spacing between each button should be 
+The standard spacing between each button is `--rh-space-lg`, even for Danger
+buttons. If buttons are stacked vertically, the spacing between each button should be
 `--rh-space-md`.
 
 <uxdot-example color-palette="lightest" width-adjustment="508px">

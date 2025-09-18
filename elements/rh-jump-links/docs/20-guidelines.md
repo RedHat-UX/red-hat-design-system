@@ -131,7 +131,6 @@ one level max is recommended.
         height="360">
 </uxdot-example>
 
-
 ### Scrolling on backgrounds
 
 If jump links are scrolling on top of different background or surface colors,
@@ -140,7 +139,7 @@ contrast issues. If jump links are scrolling on top of a uniform color, no
 background is needed. Follow these specs as well:
 
 - Use a background color that generally matches the color scheme of the rest of
-the page
+  the page
 - The border radius must use `--rh-border-radius-default` token
 - Padding on all sides must use the `--rh-space-lg` token
 
@@ -185,10 +184,10 @@ Learn more about the [Disclosure](/elements/disclosure/) element.
 
 <rh-table>
 
- | Orientation | Collapse into disclosure |
- | ----------- | ------------------------ |
- | Vertical    | `991px` and below        |
- | Horizontal  | `767px` and below        |
+| Orientation | Collapse into disclosure |
+| ----------- | ------------------------ |
+| Vertical    | `991px` and below        |
+| Horizontal  | `767px` and below        |
 
 </rh-table>
 

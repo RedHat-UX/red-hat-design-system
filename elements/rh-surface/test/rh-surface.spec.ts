@@ -23,7 +23,8 @@ describe('<rh-surface>', function() {
   describe('simply instantiating', function() {
     let element: RhSurface;
     let consumer: ContextConsumer;
-    const updateComplete = () => Promise.all([element.updateComplete, consumer?.updateComplete]);
+    const updateComplete = () =>
+      Promise.all([element.updateComplete, consumer?.updateComplete]);
     beforeEach(async function() {
       element = await createFixture<RhSurface>(html`<rh-surface></rh-surface>`);
     });
@@ -31,8 +32,7 @@ describe('<rh-surface>', function() {
       const klass = customElements.get('rh-surface');
       expect(element)
           .to.be.an.instanceOf(klass)
-          .and
-          .to.be.an.instanceOf(RhSurface);
+          .and.to.be.an.instanceOf(RhSurface);
     });
     describe('setting darkest color palette', function() {
       beforeEach(function() {
@@ -55,7 +55,8 @@ describe('<rh-surface>', function() {
   describe('with child', function() {
     let element: RhSurface;
     let consumer: ContextConsumer;
-    const updateComplete = () => Promise.all([element.updateComplete, consumer?.updateComplete]);
+    const updateComplete = () =>
+      Promise.all([element.updateComplete, consumer?.updateComplete]);
     beforeEach(async function() {
       await fixture(html`
         <rh-surface id="p" color-palette="darkest">
@@ -82,12 +83,18 @@ describe('<rh-surface>', function() {
 
   describe('with grandparent value', function() {
     describe('and no parent value', function() {
-      function describeNestedNoParentValue(title: string, template: TemplateResult) {
+      function describeNestedNoParentValue(
+        title: string,
+        template: TemplateResult
+      ) {
         describe(`and nested ${title}`, function() {
           let grandparent: RhSurface;
           let parent: RhSurface;
           let child: ContextConsumer;
-          const updateComplete = () => Promise.all([grandparent, parent, child].map(x => x.updateComplete));
+          const updateComplete = () =>
+            Promise.all(
+              [grandparent, parent, child].map(x => x.updateComplete)
+            );
           beforeEach(async function() {
             await fixture(template);
             grandparent = document.getElementById('gp') as RhSurface;
@@ -129,37 +136,56 @@ describe('<rh-surface>', function() {
         });
       }
 
-      describeNestedNoParentValue('consumer', html`
-        <rh-surface id="gp" color-palette="darkest">
-          <rh-surface id="p">
-            <test-context-consumer id="c"></test-context-consumer>
+      describeNestedNoParentValue(
+        'consumer',
+        html`
+          <rh-surface id="gp" color-palette="darkest">
+            <rh-surface id="p">
+              <test-context-consumer id="c"></test-context-consumer>
+            </rh-surface>
           </rh-surface>
-        </rh-surface>
-      `);
+        `
+      );
 
-      describeNestedNoParentValue('consumer/provider', html`
-        <rh-surface id="gp" color-palette="darkest">
-          <rh-surface id="p">
-            <test-context-consumer-provider id="c"></test-context-consumer-provider>
+      describeNestedNoParentValue(
+        'consumer/provider',
+        html`
+          <rh-surface id="gp" color-palette="darkest">
+            <rh-surface id="p">
+              <test-context-consumer-provider
+                id="c"
+              ></test-context-consumer-provider>
+            </rh-surface>
           </rh-surface>
-        </rh-surface>
-      `);
+        `
+      );
 
-      describeNestedNoParentValue('provider/consumer', html`
-        <rh-surface id="gp" color-palette="darkest">
-          <rh-surface id="p">
-            <test-context-provider-consumer id="c"></test-context-provider-consumer>
+      describeNestedNoParentValue(
+        'provider/consumer',
+        html`
+          <rh-surface id="gp" color-palette="darkest">
+            <rh-surface id="p">
+              <test-context-provider-consumer
+                id="c"
+              ></test-context-provider-consumer>
+            </rh-surface>
           </rh-surface>
-        </rh-surface>
-      `);
+        `
+      );
     });
     describe('and parent value is set', function() {
-      function describeNestedWithParentValue(title: string, template: TemplateResult) {
+      function describeNestedWithParentValue(
+        title: string,
+        template: TemplateResult
+      ) {
         describe(`nested ${title}`, function() {
           let grandparent: RhSurface;
           let parent: RhSurface;
           let child: ContextConsumer;
-          const updateComplete = () => Promise.all([grandparent, parent, child].map(x => x.updateComplete));
+          const updateComplete = () =>
+            Promise.all(
+              [grandparent, parent, child].map(x => x.updateComplete)
+            );
           beforeEach(async function() {
             await fixture(template);
             grandparent = document.getElementById('gp') as RhSurface;
@@ -193,29 +219,38 @@ describe('<rh-surface>', function() {
         });
       }
 
-      describeNestedWithParentValue('consumer', html`
-        <rh-surface id="gp" color-palette="darkest">
-          <rh-surface id="p" color-palette="lightest">
-            <test-context-consumer id="c"></test-context-consumer>
+      describeNestedWithParentValue(
+        'consumer',
+        html`
+          <rh-surface id="gp" color-palette="darkest">
+            <rh-surface id="p" color-palette="lightest">
+              <test-context-consumer id="c"></test-context-consumer>
+            </rh-surface>
           </rh-surface>
-        </rh-surface>
-      `);
+        `
+      );
 
-      describeNestedWithParentValue('consumer/provider', html`
-        <rh-surface id="gp" color-palette="darkest">
-          <rh-surface id="p" color-palette="lightest">
-            <test-context-consumer id="c"></test-context-consumer>
+      describeNestedWithParentValue(
+        'consumer/provider',
+        html`
+          <rh-surface id="gp" color-palette="darkest">
+            <rh-surface id="p" color-palette="lightest">
+              <test-context-consumer id="c"></test-context-consumer>
+            </rh-surface>
           </rh-surface>
-        </rh-surface>
-      `);
+        `
+      );
 
-      describeNestedWithParentValue('provider/consumer', html`
-        <rh-surface id="gp" color-palette="darkest">
-          <rh-surface id="p" color-palette="lightest">
-            <test-context-consumer id="c"></test-context-consumer>
+      describeNestedWithParentValue(
+        'provider/consumer',
+        html`
+          <rh-surface id="gp" color-palette="darkest">
+            <rh-surface id="p" color-palette="lightest">
+              <test-context-consumer id="c"></test-context-consumer>
+            </rh-surface>
           </rh-surface>
-        </rh-surface>
-      `);
+        `
+      );
     });
   });
 });

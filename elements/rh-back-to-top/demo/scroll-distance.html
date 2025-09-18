@@ -5,7 +5,7 @@
   <rh-back-to-top scroll-distance="50" href="#top">Back to top</rh-back-to-top>
 </div>
 <script type="module">
-  import '@rhds/elements/rh-back-to-top/rh-back-to-top.js';
+  import "@rhds/elements/rh-back-to-top/rh-back-to-top.js";
 </script>
 
 <style>
@@ -16,7 +16,9 @@
   }
 
   #nav {
-    block-size: calc(100dvh - var(--pf-demo-header-height, 4.375rem)) !important;
+    block-size: calc(
+      100dvh - var(--pf-demo-header-height, 4.375rem)
+    ) !important;
   }
 
   #overflow {
@@ -37,13 +39,12 @@
   }
 </style>
 
-
 <script type="module">
   /* add support for demo/fullscreen and dev server */
-  const b2t = document.querySelector('rh-back-to-top');
+  const b2t = document.querySelector("rh-back-to-top");
   const main = document.querySelector('main, [role="main"]');
   // if main isn't scrollable use window
-  if (window.getComputedStyle(main).overflow === 'scroll') {
-    b2t.scrollableSelector = 'main';
+  if (window.getComputedStyle(main).overflow === "scroll") {
+    b2t.scrollableSelector = "main";
   }
 </script>

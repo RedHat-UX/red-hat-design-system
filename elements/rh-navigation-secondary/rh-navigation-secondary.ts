@@ -8,7 +8,10 @@ import { ComposedEvent } from '@patternfly/pfe-core';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import {
+  colorPalettes,
+  type ColorPalette,
+} from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import '@rhds/elements/rh-surface/rh-surface.js';
@@ -24,10 +27,7 @@ import {
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 export class SecondaryNavOverlayChangeEvent extends ComposedEvent {
-  constructor(
-    public open: boolean,
-    public toggle: HTMLElement
-  ) {
+  constructor(public open: boolean, public toggle: HTMLElement) {
     super('overlay-change');
   }
 }
@@ -68,15 +68,18 @@ export class RhNavigationSecondary extends LitElement {
 
   static {
     if (!isServer) {
-      document.addEventListener('keyup', (event: KeyboardEvent) => {
-        const { instances } = RhNavigationSecondary;
-        for (const instance of instances) {
-          instance.#onKeyup(event);
-        }
-      }, { capture: false });
+      document.addEventListener(
+        'keyup',
+        (event: KeyboardEvent) => {
+          const { instances } = RhNavigationSecondary;
+          for (const instance of instances) {
+            instance.#onKeyup(event);
+          }
+        },
+        { capture: false }
+      );
     }
   }
-
 
   #logger = new Logger(this);
   #logoCopy: HTMLElement | null = null;
@@ -105,7 +108,8 @@ export class RhNavigationSecondary extends LitElement {
   /**
    * Color palette dark | lighter (default: lighter)
    */
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'lighter';
+  @property({ reflect: true, attribute: 'color-palette' })
+  colorPalette: ColorPalette = 'lighter';
 
   /**
    * Customize the default `aria-label` on the `<nav>` container.
@@ -141,7 +145,9 @@ export class RhNavigationSecondary extends LitElement {
    * Checks if passed in element is a RhNavigationSecondaryDropdown
    * @param element possibly an rh-navigation-secondary-dropdown
    */
-  static isDropdown(element: Element | null): element is RhNavigationSecondaryDropdown {
+  static isDropdown(
+    element: Element | null
+  ): element is RhNavigationSecondaryDropdown {
     return element instanceof RhNavigationSecondaryDropdown;
   }
 
@@ -175,18 +181,21 @@ export class RhNavigationSecondary extends LitElement {
     const dropdownPalette = this.#compact ? 'lightest' : this.#computedPalette;
     return html`
       <!-- container, \`<nav>\` element -->
-      <div part="nav"
-           class="${classMap({ compact: this.#compact })}">
+      <div part="nav" class="${classMap({ compact: this.#compact })}">
         ${this.#logoCopy}
         <!-- container, \`<div>\` element -->
         <div id="container" part="container" class="${classMap({ expanded })}">
           <!-- Logo added to the main nav bar, expects \`<a>Text</a> | <a><svg/></a> | <a><img/></a>\` element -->
           <slot name="logo" id="logo"></slot>
-          <button aria-controls="container"
-                  aria-expanded="${String(expanded) as 'true' | 'false'}"
-                  @click="${this.#toggleMobileMenu}"><!--
+          <button
+            aria-controls="container"
+            aria-expanded="${String(expanded) as 'true' | 'false'}"
+            @click="${this.#toggleMobileMenu}"
+          >
+            <!--
             Text label for the mobile menu button, for l10n. Defaults to "Menu"
-          --><slot name="mobile-menu">Menu</slot></button>
+          --><slot name="mobile-menu">Menu</slot>
+          </button>
           <rh-surface color-palette="${dropdownPalette}">
             <!-- Navigation list added to the main nav bar, expects \`<ul>\` element -->
             <slot name="nav"></slot>
@@ -199,8 +208,8 @@ export class RhNavigationSecondary extends LitElement {
         </div>
       </div>
       <rh-navigation-secondary-overlay
-          .open="${this.overlayOpen}"
-          @click="${this.#onOverlayClick}"
+        .open="${this.overlayOpen}"
+        @click="${this.#onOverlayClick}"
       ></rh-navigation-secondary-overlay>
     `;
   }
@@ -224,7 +233,9 @@ export class RhNavigationSecondary extends LitElement {
         this.#expand(index);
       }
       if (this.#screenSize.matches.has('md')) {
-        this.dispatchEvent(new SecondaryNavOverlayChangeEvent(event.expanded, event.toggle));
+        this.dispatchEvent(
+          new SecondaryNavOverlayChangeEvent(event.expanded, event.toggle)
+        );
       }
     }
   }
@@ -237,7 +248,10 @@ export class RhNavigationSecondary extends LitElement {
    */
   #onFocusout(event: FocusEvent) {
     const target = event.relatedTarget as HTMLElement;
-    if (target?.closest('rh-navigation-secondary') === this || target === null) {
+    if (
+      target?.closest('rh-navigation-secondary') === this
+      || target === null
+    ) {
       // if the focus is still inside the rh-navigation-secondary exit
       return;
     } else {
@@ -312,7 +326,9 @@ export class RhNavigationSecondary extends LitElement {
     const target = event.target as HTMLElement;
     // get target parent dropdown
     const dropdowns = this.#allDropdowns();
-    const dropdownParent = dropdowns.find(dropdown => dropdown.contains(target));
+    const dropdownParent = dropdowns.find(dropdown =>
+      dropdown.contains(target)
+    );
     if (!dropdownParent) {
       return;
     }
@@ -332,7 +348,8 @@ export class RhNavigationSecondary extends LitElement {
       }
     } else {
       // is the target the last focusableChildren element in the dropdown
-      const lastFocusable = focusableChildren[focusableChildren.length - 1] === target;
+      const lastFocusable =
+        focusableChildren[focusableChildren.length - 1] === target;
       if (!lastFocusable) {
         return;
       }
@@ -349,7 +366,9 @@ export class RhNavigationSecondary extends LitElement {
    */
   #getDropdownIndex(element: Element | null): void | number {
     if (!RhNavigationSecondary.isDropdown(element)) {
-      this.#logger.warn('The getDropdownIndex method expects to receive a dropdown element.');
+      this.#logger.warn(
+        'The getDropdownIndex method expects to receive a dropdown element.'
+      );
       return;
     }
     const dropdowns = this.#allDropdowns();
@@ -434,7 +453,9 @@ export class RhNavigationSecondary extends LitElement {
     // remove role="navigation" from host on upgrade
     this.removeAttribute('role');
     // remove aria-labelledby from slotted `<ul>` on upgrade
-    this.querySelector(':is([slot="nav"]):is(ul)')?.removeAttribute('aria-labelledby');
+    this.querySelector(':is([slot="nav"]):is(ul)')?.removeAttribute(
+      'aria-labelledby'
+    );
     this.#internals.ariaLabel = this.accessibleLabel;
   }
 
@@ -443,7 +464,9 @@ export class RhNavigationSecondary extends LitElement {
    */
   #toggleMobileMenu() {
     this.mobileMenuExpanded = !this.mobileMenuExpanded;
-    this.dispatchEvent(new SecondaryNavOverlayChangeEvent(this.mobileMenuExpanded, this));
+    this.dispatchEvent(
+      new SecondaryNavOverlayChangeEvent(this.mobileMenuExpanded, this)
+    );
   }
 
   /**
@@ -468,9 +491,7 @@ export class RhNavigationSecondary extends LitElement {
    * Closes all open dropdowns
    */
   public close(): void {
-    this.#allDropdowns()
-        .forEach(dropdown =>
-          this.#closeDropdown(dropdown));
+    this.#allDropdowns().forEach(dropdown => this.#closeDropdown(dropdown));
   }
 }
 

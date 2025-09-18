@@ -15,7 +15,14 @@ fieldset {
 
 legend {
   float: left;
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  font-family: var(
+    --rh-font-family-body-text,
+    RedHatText,
+    "Red Hat Text",
+    Helvetica,
+    Arial,
+    sans-serif
+  );
   font-size: var(--rh-font-size-body-text-md, 1rem);
   margin-inline-end: var(--rh-space-md, 8px);
 }
@@ -26,7 +33,14 @@ legend {
   border-radius: var(--rh-border-radius-pill, 64px);
   color: var(--rh-color-interactive-primary-default);
   cursor: pointer;
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  font-family: var(
+    --rh-font-family-body-text,
+    RedHatText,
+    "Red Hat Text",
+    Helvetica,
+    Arial,
+    sans-serif
+  );
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   line-height: var(--rh-line-height-body-text, 1.5);
   margin-block-start: 1px;
@@ -45,10 +59,11 @@ legend {
   }
 
   &:focus:after {
-    content: '';
+    content: "";
     border-radius: var(--rh-border-radius-default, 3px);
     inset: var(--rh-length-4xs, 1px) var(--rh-length-md, 8px);
-    outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
+    outline: var(--rh-border-width-md, 2px) solid
+      var(--rh-color-border-interactive);
     position: absolute;
   }
 }
@@ -58,7 +73,7 @@ legend,
   margin-block-end: var(--_spacer);
 }
 
-:host([size='sm']) {
+:host([size="sm"]) {
   legend {
     font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   }

@@ -1,4 +1,4 @@
-## Usage 
+## Usage
 
 Use an announcement to display an important message across pages.
 
@@ -26,15 +26,15 @@ Use an announcement to display an important message across pages.
 
 An announcement displays content to audiences depending on a set of qualifications.
 
-  - **Experience A** - users who have not registered for the event will see this announcement
-  - **Experience B** - users who have registered for the event will see this announcement on the day of the event or after the event
+- **Experience A** - users who have not registered for the event will see this announcement
+- **Experience B** - users who have registered for the event will see this announcement on the day of the event or after the event
 
 <uxdot-example variant="full" no-border>
   <img alt="Two announcements, one showing what it looks like for users who have registered and one showing what it looks like for users that have not registered"
        src="../announcement-guidelines-experience-types.svg">
 </uxdot-example>
 
-## Layout 
+## Layout
 
 ### Minimum elements
 
@@ -58,9 +58,9 @@ An announcement is usually placed at the top of a page above the navigation. In 
 
 The following is a list of things you can do to customize an announcement.
 
-  - Add an inline or background image
-  - Change text or call to action content
-  - Remove the close button
+- Add an inline or background image
+- Change text or call to action content
+- Remove the close button
 
 ### Inline image
 

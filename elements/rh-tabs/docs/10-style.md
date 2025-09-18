@@ -1,4 +1,3 @@
-
 ## Style
 
 Tabs are used to group related content allowing users to navigate a view without leaving the page) Each tab is a text label placed in a visible or invisible container. There are two variants in two orientations and some of the styles and padding shift slightly depending on which variant is used.
@@ -35,7 +34,6 @@ There are two available variants. Open tabs has a more understated style whereas
        src="../tabs-variations.png">
 </uxdot-example>
 
-
 ### Orientations
 
 There are two available orientations and the only difference is padding.
@@ -47,8 +45,8 @@ There are two available orientations and the only difference is padding.
        height="712">
 </uxdot-example>
 
-
 ## Color scheme
+
 <a id="theme"></a>
 
 Both variants and orientations are available for both light and dark schemes.
@@ -65,7 +63,7 @@ Both variants and orientations are available for both light and dark schemes.
 <rh-table>
 
 | Property                                            | Light theme |
-|-----------------------------------------------------|-------------|
+| --------------------------------------------------- | ----------- |
 | Color - active tab text                             | \#151515    |
 | Color - active tab accent                           | \#EE0000    |
 | Color - active tab surface (Box tabs only)          | \#FFFFFF    |
@@ -79,7 +77,6 @@ Both variants and orientations are available for both light and dark schemes.
 
 </rh-table>
 
-
 ### Dark theme
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
@@ -92,7 +89,7 @@ Both variants and orientations are available for both light and dark schemes.
 <rh-table>
 
 | Property                                            | Dark theme |
-|-----------------------------------------------------|------------|
+| --------------------------------------------------- | ---------- |
 | Color - active tab text                             | \#FFFFFF   |
 | Color - active tab accent                           | \#FF542E   |
 | Color - active tab surface (Box tabs only)          | \#151515   |
@@ -106,7 +103,6 @@ Both variants and orientations are available for both light and dark schemes.
 
 </rh-table>
 
-
 ## Configuration
 
 The panel for both orientations of tabs does not have a maximum height and should not scroll.
@@ -118,7 +114,6 @@ The panel for both orientations of tabs does not have a maximum height and shoul
        height="668">
 </uxdot-example>
 
-
 ### Overflow buttons
 
 Overflow buttons are containers with chevron icons that are added to tabs on small breakpoints.
@@ -129,7 +124,6 @@ Overflow buttons are containers with chevron icons that are added to tabs on sma
        width="544"
        height="232">
 </uxdot-example>
-
 
 ## Space
 
@@ -155,7 +149,6 @@ Box tabs are separated by a 1px divider.
 
 Interactive elements include inactive tabs and overflow buttons.
 
-
 ### Hover - Open tabs
 
 Inactive tabs and overflow buttons have the same hover state.
@@ -173,7 +166,6 @@ Inactive tabs and overflow buttons have the same hover state.
        width="872"
        height="289">
 </uxdot-example>
-
 
 ### Hover - Box tabs
 
@@ -194,12 +186,11 @@ Inactive tabs and overflow buttons have the same hover state.
 <rh-table>
 
 | Property                      | Light theme | Dark theme |
-|-------------------------------|-------------|------------|
+| ----------------------------- | ----------- | ---------- |
 | Color - accent                | \#707070    | \#C7C7C7   |
 | Color - text and chevron icon | \#FFFFFF    | \#151515   |
 
 </rh-table>
-
 
 ### Focus - Open tabs
 
@@ -221,7 +212,6 @@ Inactive tabs and overflow buttons have the same hover state.
        width="872"
        height="289">
 </uxdot-example>
-
 
 ### Focus - Box tabs
 
@@ -247,13 +237,13 @@ Inactive tabs and overflow buttons have the same hover state.
 <rh-table>
 
 | Property           | Light theme | Dark theme |
-|--------------------|-------------|------------|
+| ------------------ | ----------- | ---------- |
 | Color - focus ring | \#0066CC    | \#73BCF7   |
 
 </rh-table>
 
-
 ### Active - Open tabs
+
 <rh-alert state="info">
   <h4 slot="header">Helpful Tip</h4>
   <p>The Active state has the same styles as the Hover state.</p>
@@ -272,7 +262,6 @@ Inactive tabs and overflow buttons have the same hover state.
        width="872"
        height="289">
 </uxdot-example>
-
 
 ### Active - Box tabs
 
@@ -298,7 +287,7 @@ Inactive tabs and overflow buttons have the same hover state.
 <rh-table>
 
 | Property           | Light theme | Dark theme |
-|--------------------|-------------|------------|
+| ------------------ | ----------- | ---------- |
 | Color - focus ring | \#0066CC    | \#73BCF7   |
 
 </rh-table>

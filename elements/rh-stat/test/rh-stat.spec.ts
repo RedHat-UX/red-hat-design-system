@@ -19,8 +19,7 @@ describe('<rh-stat>', function() {
       const klass = customElements.get('rh-stat');
       expect(element)
           .to.be.an.instanceof(klass)
-          .and
-          .to.be.an.instanceOf(RhStat);
+          .and.to.be.an.instanceOf(RhStat);
     });
 
     it('passes the a11y audit', async function() {
@@ -39,7 +38,10 @@ describe('<rh-stat>', function() {
       element.connectedCallback();
     });
     it('warns', function() {
-      expect(Logger.warn).to.have.been.calledWith('[rh-stat]', 'Must contain stat content');
+      expect(Logger.warn).to.have.been.calledWith(
+        '[rh-stat]',
+        'Must contain stat content'
+      );
     });
   });
 
@@ -52,7 +54,10 @@ describe('<rh-stat>', function() {
       `);
     });
     it('warns', function() {
-      expect(Logger.warn).to.have.been.calledWith('[rh-stat]', 'Must contain description content');
+      expect(Logger.warn).to.have.been.calledWith(
+        '[rh-stat]',
+        'Must contain description content'
+      );
     });
   });
 
@@ -60,10 +65,10 @@ describe('<rh-stat>', function() {
     beforeEach(async function() {
       element = await fixture<RhStat>(html`
         <rh-stat titleplacement="below" size="large" top="statistic">
-            <rh-icon slot="icon" set="standard" icon="atom"></rh-icon>
-            <span slot="title">Overwrite Title</span>
-            <p>Stat body that includes two lines and a footnote.</p>
-            <span slot="statistic">Overwrite Statistic</span>
+          <rh-icon slot="icon" set="standard" icon="atom"></rh-icon>
+          <span slot="title">Overwrite Title</span>
+          <p>Stat body that includes two lines and a footnote.</p>
+          <span slot="statistic">Overwrite Statistic</span>
         </rh-stat>
       `);
     });
@@ -76,22 +81,32 @@ describe('<rh-stat>', function() {
       });
 
       it('has correct font size for statistic slot', function() {
-        const slot = element.shadowRoot?.querySelectorAll('slot[name="statistic"]');
+        const slot = element.shadowRoot?.querySelectorAll(
+          'slot[name="statistic"]'
+        );
         expect(slot?.length).to.equal(1);
-        const fontSize = window.getComputedStyle(slot![0]).getPropertyValue('font-size');
+        const fontSize = window
+            .getComputedStyle(slot![0])
+            .getPropertyValue('font-size');
         expect(fontSize).to.equal('48px');
       });
 
       it('has correct font size for description slot', function() {
         const slot = element.shadowRoot?.querySelectorAll('slot:not([name])');
         expect(slot?.length).to.equal(1);
-        const fontSize = window.getComputedStyle(slot![0]).getPropertyValue('font-size');
+        const fontSize = window
+            .getComputedStyle(slot![0])
+            .getPropertyValue('font-size');
         expect(fontSize).to.equal('18px');
       });
 
       it('displays icon', function() {
-        const rect = element.querySelector('[slot="icon"]')?.getBoundingClientRect();
-        expect(rect?.width).to.equal(parseInt(tokens.get('--rh-size-icon-06')!));
+        const rect = element
+            .querySelector('[slot="icon"]')
+            ?.getBoundingClientRect();
+        expect(rect?.width).to.equal(
+          parseInt(tokens.get('--rh-size-icon-06')!)
+        );
       });
     });
 
@@ -105,21 +120,27 @@ describe('<rh-stat>', function() {
       it('has correct font size for title slot', function() {
         const slot = element.querySelectorAll('[slot="title"]');
         expect(slot?.length).to.equal(1);
-        const fontSize = window.getComputedStyle(slot![0]).getPropertyValue('font-size');
+        const fontSize = window
+            .getComputedStyle(slot![0])
+            .getPropertyValue('font-size');
         expect(fontSize).to.equal('20px');
       });
 
       it('has correct font size for statistic slot', function() {
         const slot = element.querySelectorAll('[slot="statistic"]');
         expect(slot?.length).to.equal(1);
-        const fontSize = window.getComputedStyle(slot![0]).getPropertyValue('font-size');
+        const fontSize = window
+            .getComputedStyle(slot![0])
+            .getPropertyValue('font-size');
         expect(fontSize).to.equal('48px');
       });
 
       it('has correct font size for description slot', function() {
         const slot = element.shadowRoot?.querySelectorAll('slot:not([name])');
         expect(slot?.length).to.equal(1);
-        const fontSize = window.getComputedStyle(slot![0]).getPropertyValue('font-size');
+        const fontSize = window
+            .getComputedStyle(slot![0])
+            .getPropertyValue('font-size');
         expect(fontSize).to.equal('18px');
       });
     });

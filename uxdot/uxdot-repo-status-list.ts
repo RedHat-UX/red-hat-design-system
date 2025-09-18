@@ -31,22 +31,30 @@ export class UxdotRepoStatusList extends LitElement {
 
     return html`
       <!-- TODO: remove lightdom after implementing auto-load-->
-      <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+      <link
+        rel="stylesheet"
+        href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"
+      />
       <div id="container">
         <a href="#status-checklist" class="checklist">What do these mean?</a>
         <div id="inner-container">
-          <dl>${libraries.map(lib => {
-            const statusInfo = this.getStatusInfo(lib.status);
-            return statusInfo ? html`
-              <div>
-                <dt>${lib.name}:</dt>
-                <dd>
-                  <rh-tag color="${statusInfo.color}"
-                          variant="${statusInfo.variant}"
-                          icon="${statusInfo.icon}">${statusInfo.pretty}</rh-tag>
-                </dd>
-              </div>` : '';
-          })}
+          <dl>
+            ${libraries.map(lib => {
+              const statusInfo = this.getStatusInfo(lib.status);
+              return statusInfo ?
+                html` <div>
+                    <dt>${lib.name}:</dt>
+                    <dd>
+                      <rh-tag
+                        color="${statusInfo.color}"
+                        variant="${statusInfo.variant}"
+                        icon="${statusInfo.icon}"
+                        >${statusInfo.pretty}</rh-tag
+                      >
+                    </dd>
+                  </div>`
+                : '';
+            })}
           </dl>
         </div>
       </div>

@@ -21,7 +21,6 @@
   }
 </style>
 
-
 ## Usage
 
 Use Website status to inform users about the operational status of a website or domain and provide them with a link to a status page where they can learn more.
@@ -30,7 +29,6 @@ Use Website status to inform users about the operational status of a website or 
 
 The severity of a status should be communicated in as few words as possible. Remove extra words if necessary so the component does not become too wide.
 
-
 ## Character count
 
 The recommended maximum character count is listed below and includes spaces.
@@ -38,7 +36,7 @@ The recommended maximum character count is listed below and includes spaces.
 <rh-table>
 
 | Element   | Character count |
-|-----------|-----------------|
+| --------- | --------------- |
 | Link Text | 30              |
 
 </rh-table>
@@ -59,7 +57,6 @@ Website status is usually placed in the [Footer](../../footer/) component, but i
         width="992"
         height="789">
 </uxdot-example>
-
 
 ## Best Practices
 

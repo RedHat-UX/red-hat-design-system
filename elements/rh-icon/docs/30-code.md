@@ -11,4 +11,3 @@ You might choose to enable eager rendering for "above-the-fold" content, but kee
 ```html rh-code-block
 <rh-icon icon="alert" loading="eager"></rh-icon>
 ```
-

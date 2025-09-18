@@ -27,7 +27,7 @@ export class ContextChangeEvent extends Event {
   constructor(
     public colorPalette: ColorPalette,
     /** the context provider targeted by this element */
-    public provider: HTMLElement | null,
+    public provider: HTMLElement | null
   ) {
     super('change', { bubbles: true, cancelable: true });
   }
@@ -35,23 +35,28 @@ export class ContextChangeEvent extends Event {
 
 export const ColorPaletteListConverter: ComplexAttributeConverter = {
   fromAttribute(list: string) {
-    return list?.split(',')
-        ?.map(x => x.trim())
-        ?.filter(x => paletteNames.includes(x as ColorPalette)) ?? [];
+    return (
+      list
+          ?.split(',')
+          ?.map(x => x.trim())
+          ?.filter(x => paletteNames.includes(x as ColorPalette)) ?? []
+    );
   },
   toAttribute(list: ColorPalette[]) {
     return list.join(',');
   },
 };
 
-export const paletteMap = new Map<ColorPalette, Color>(Object.entries({
-  lightest,
-  lighter,
-  light,
-  dark,
-  darker,
-  darkest,
-}) as [ColorPalette, Color][]);
+export const paletteMap = new Map<ColorPalette, Color>(
+  Object.entries({
+    lightest,
+    lighter,
+    light,
+    dark,
+    darker,
+    darkest,
+  }) as [ColorPalette, Color][]
+);
 
 export const paletteNames = Array.from(paletteMap, ([name]) => name);
 
@@ -79,22 +84,29 @@ export class RhContextPicker extends LitElement {
   render() {
     const { allow, value } = this;
     return html`
-      <div id="host-label"
-           class="visually-hidden">${this.#internals.computedLabelText}</div>
-      <div id="container"
-           @input="${this.#onInput}">
-        ${allow.map(palette => html`
-        <label for="radio-${palette}" class="visually-hidden">${palette}</label>
-        <rh-tooltip>
-          <span slot="content">${palette}</span>
-          <input id="radio-${palette}"
-                 class="${classMap({ [palette]: true })}"
-                 name="palette"
-                 type="radio"
-                 value="${palette}"
-                 aria-describedby="host-label"
-                 ?checked="${value === palette}">
-        </rh-tooltip>`)}
+      <div id="host-label" class="visually-hidden">
+        ${this.#internals.computedLabelText}
+      </div>
+      <div id="container" @input="${this.#onInput}">
+        ${allow.map(
+          palette => html` <label
+              for="radio-${palette}"
+              class="visually-hidden"
+              >${palette}</label
+            >
+            <rh-tooltip>
+              <span slot="content">${palette}</span>
+              <input
+                id="radio-${palette}"
+                class="${classMap({ [palette]: true })}"
+                name="palette"
+                type="radio"
+                value="${palette}"
+                aria-describedby="host-label"
+                ?checked="${value === palette}"
+              />
+            </rh-tooltip>`
+        )}
       </div>
     `;
   }
@@ -135,7 +147,10 @@ export class RhContextPicker extends LitElement {
 
   #setValue(value: this['value']) {
     this.#internals.setFormValue(value);
-    if (value !== this.value && this.dispatchEvent(new ContextChangeEvent(value, this.#target))) {
+    if (
+      value !== this.value
+      && this.dispatchEvent(new ContextChangeEvent(value, this.#target))
+    ) {
       this.value = value;
       this.sync();
     }
@@ -143,7 +158,7 @@ export class RhContextPicker extends LitElement {
 
   override focus() {
     const input: HTMLInputElement | null =
-         this.shadowRoot.querySelector('input[checked]')
+      this.shadowRoot.querySelector('input[checked]')
       ?? this.shadowRoot.querySelector('input');
     input?.focus();
   }

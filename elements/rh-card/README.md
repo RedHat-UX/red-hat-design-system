@@ -15,22 +15,25 @@ npm install @rhds/elements
 Then once installed, import it to your application:
 
 ```js
-import '@rhds/elements/rh-card/rh-card.js';
+import "@rhds/elements/rh-card/rh-card.js";
 ```
 
 ## Usage
 
-Add `<rh-card>` to the page. 
+Add `<rh-card>` to the page.
 
 A card consists of the following slots:
 
 `header`
-- If this slot is used, we expect a heading level tag (h1, h2, h3, h4, h5, h6).  An icon, svg, or use of the icon component are also valid in this region.
+
+- If this slot is used, we expect a heading level tag (h1, h2, h3, h4, h5, h6). An icon, svg, or use of the icon component are also valid in this region.
 
 `footer`
+
 - Use this slot for anything that you want to be stuck to the base of the card.
 
 `Anonymous Slot`
+
 - Any content that is not designated for the header or footer slot, will go to this slot.
 
 ### Basic Card
@@ -47,13 +50,18 @@ A card consists of the following slots:
 
 ```html
 <rh-card>
-    <img slot="header" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="icon" />
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a
-        sollicitudin mauris tincidunt. Pellentesque vel dapibus risus. Nullam aliquam felis orci, eget 
-        cursus mi lacinia quis. Vivamus at felis sem.
-    </p>
-    <a href="#" slot="footer">Call to Action</a>
+  <img
+    slot="header"
+    src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg"
+    alt="icon"
+  />
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend
+    elit sed est egestas, a sollicitudin mauris tincidunt. Pellentesque vel
+    dapibus risus. Nullam aliquam felis orci, eget cursus mi lacinia quis.
+    Vivamus at felis sem.
+  </p>
+  <a href="#" slot="footer">Call to Action</a>
 </rh-card>
 ```
 
@@ -61,13 +69,14 @@ A card consists of the following slots:
 
 ```html
 <rh-card bar>
-    <h2 slot="header">Card Title</h2>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas, a
-        sollicitudin mauris tincidunt. Pellentesque vel dapibus risus. Nullam aliquam felis orci, eget 
-        cursus mi lacinia quis. Vivamus at felis sem.
-    </p>
-    <a href="#" slot="footer">Call to Action</a>
+  <h2 slot="header">Card Title</h2>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend
+    elit sed est egestas, a sollicitudin mauris tincidunt. Pellentesque vel
+    dapibus risus. Nullam aliquam felis orci, eget cursus mi lacinia quis.
+    Vivamus at felis sem.
+  </p>
+  <a href="#" slot="footer">Call to Action</a>
 </rh-card>
 ```
 

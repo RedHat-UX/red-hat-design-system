@@ -66,7 +66,6 @@ The default pagination button size is `--rh-size-icon-4.1`.
        height="116">
 </uxdot-example>
 
-
 ### Small
 
 The small pagination button size is `--rh-size-icon-03`. The page input field size does not change.
@@ -79,6 +78,7 @@ The small pagination button size is `--rh-size-icon-03`. The page input field si
 </uxdot-example>
 
 ## Color scheme
+
 <a id="theme"></a>
 
 Pagination is available in both light and dark color schemes.
@@ -190,7 +190,6 @@ The examples below show active page styles for page 4.
        width="1140"
        height="272">
 </uxdot-example>
-
 
 ## Space
 

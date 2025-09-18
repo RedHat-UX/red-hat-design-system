@@ -1,9 +1,9 @@
-## Style 
+## Style
 
 A tooltip is a container with text that includes an arrow and sometimes a drop shadow. It can be anchored to various elements like buttons, icons, etc.
 
+### Anatomy
 
-### Anatomy 
 <figure>
   <uxdot-example color-palette="lightest" width-adjustment="274px">
     <img alt="Anatomy of a tooltip with annotations; number 1 is pointing to the container, number 2 is pointing to the text, number 3 is pointing to the arrow, and number 4 is pointing to the trigger"
@@ -21,14 +21,13 @@ A tooltip is a container with text that includes an arrow and sometimes a drop s
   </figcaption>
 </figure>
 
+## Color scheme
 
-## Color scheme 
 <a id="theme"></a>
 <a id="light-theme"></a>
 <a id="dark-theme"></a>
 
 A tooltip is available for both light and dark schemes. The dark scheme tooltip container does not include a drop shadow.
-
 
 <uxdot-example color-palette="lightest" width-adjustment="230px">
   <img alt="Light theme tooltip which is black"
@@ -37,7 +36,6 @@ A tooltip is available for both light and dark schemes. The dark scheme tooltip 
        height="131">
 </uxdot-example>
 
-
 <uxdot-example color-palette="darkest" width-adjustment="230px">
   <img alt="Dark theme tooltip which is white"
        src="../tooltip-theme-dark.png"
@@ -45,8 +43,7 @@ A tooltip is available for both light and dark schemes. The dark scheme tooltip 
        height="131">
 </uxdot-example>
 
-
-## Configuration 
+## Configuration
 
 All badges have the same height and border radius.
 
@@ -57,8 +54,7 @@ All badges have the same height and border radius.
        height="128">
 </uxdot-example>
 
-
-## Space 
+## Space
 
 <uxdot-example color-palette="lightest" width-adjustment="230px">
   <img alt="Tooltip spacing both within the element and in between the element and trigger"
@@ -69,12 +65,11 @@ All badges have the same height and border radius.
 
 <uxdot-spacer-tokens-table tokens="md, lg"></uxdot-spacer-tokens-table>
 
-## Animation 
+## Animation
 
 A tooltip has a `300ms` entry delay on hover by default, but this can be customized. For example, if you would like it to appear immediately, set the delay to `0ms`.
 
-
-## Interaction states 
+## Interaction states
 
 A tooltip appears near an icon or element on hover, focus, or when tapped. A tooltip contains only text and is not interactive.
 

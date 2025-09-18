@@ -3,12 +3,14 @@
 The Red Hat Digital Design System site is built with [Eleventy](https://www.11ty.io/).
 
 ## Installation
+
 To work on the site on your local machine, follow the setup instructions in the [developers'
 contributing guide](./CONTRIBUTING_DEV.md#prerequisites)
 
 ## Running Local Server
 
 Once set up, run the 11ty development server with the following command:
+
 ```bash
 npm run serve
 ```
@@ -28,13 +30,14 @@ member of the development team. Shortly after your PR is opened, netlify will bu
 and leave a comment in the PR discussion with a link to preview your changes.
 
 When the PR is approved, and all required checks pass, it can be merged into main. All commits to
-main trigger a redeploy in Netlify. If you are a member of the RedHat-UX netlify team, you can track 
-the progress of the deploy on the Netlify dashboard. Assuming nothing unexpected happens, your 
+main trigger a redeploy in Netlify. If you are a member of the RedHat-UX netlify team, you can track
+the progress of the deploy on the Netlify dashboard. Assuming nothing unexpected happens, your
 changes should be live within a few minutes of merging.
 
 ## Folders
 
 ### `docs/`
+
 The pages dir contains files that will be turned into web pages, in an identical folder structure. These files can be `.njk` or `.md`.
 
 See the [PAGES-11ty-documentation.md](PAGES-11ty-documentation.md) for more information.
@@ -65,10 +68,10 @@ tags:
 ---
 ```
 
-* `layout`: decides what the page template will be used
-* `title`: What the page title is, this is used for the title that shows in the tab of the browser and the `h1` on most page templates.
-* `order`: Helps effect how items are sorted. See Sorting below.
-* `tags`: Tags can be used for all sorts of things, at time of writing, they are used to help build the navigation. `tags` is multivalue, so a page could have multiple tags if we wanted.
+- `layout`: decides what the page template will be used
+- `title`: What the page title is, this is used for the title that shows in the tab of the browser and the `h1` on most page templates.
+- `order`: Helps effect how items are sorted. See Sorting below.
+- `tags`: Tags can be used for all sorts of things, at time of writing, they are used to help build the navigation. `tags` is multivalue, so a page could have multiple tags if we wanted.
 
 ### Getting pages into the navigation
 
@@ -90,34 +93,39 @@ New tags can be added by adding them to a pages front matter, there is nothing e
 If the new tag needs to be sorted in any special way it needs to be handled in: `.eleventy.js`.
 
 #### Sorting
+
 There is an existing sort function that we're using on tags that show up in the navigation. To add a new tag to the existing sort, add it to the `tagsToAlphabetize` array in `.eleventy.js`.
 
 The sort logic we have is as follows:
-* It sorts by `order`, and then alphabetically by `title`, those values both coming from the front matter of the pages.
-* If `order` isn't in the frontmatter, it's assumed the `order` is `0`.
-* `order` is sorted like weight: the larger the number, the more it sinks; the lower the number, the higher it floats.
-* If all files have no `order` value, or the same `order` value, they will simply be listed alphabetically by `title`.
+
+- It sorts by `order`, and then alphabetically by `title`, those values both coming from the front matter of the pages.
+- If `order` isn't in the frontmatter, it's assumed the `order` is `0`.
+- `order` is sorted like weight: the larger the number, the more it sinks; the lower the number, the higher it floats.
+- If all files have no `order` value, or the same `order` value, they will simply be listed alphabetically by `title`.
 
 Let's say we have the following page title's and orders:
-* `Dang that was a Great Title`
-  * `order: 0`
-* `A Cool Title`
-  * No `order` set
-* `Being a Witty Title`
-  * `order: 10`
-* `Can We Make a Better Title`
-  * `order: -10`
+
+- `Dang that was a Great Title`
+  - `order: 0`
+- `A Cool Title`
+  - No `order` set
+- `Being a Witty Title`
+  - `order: 10`
+- `Can We Make a Better Title`
+  - `order: -10`
 
 The result would be:
-* `Can We Make a Better Title`
-* `A Cool Title`
-* `Dang that was a Great Title`
-* `Being a Witty Title`
+
+- `Can We Make a Better Title`
+- `A Cool Title`
+- `Dang that was a Great Title`
+- `Being a Witty Title`
 
 Because:
-* `Can We Make a Better Title` has the lowest `order`, and then floats to the top
-* `Being a Witty Title` has the largest `order` and sinks to the bottom
-* `A Cool Title` and `Dang that was a Great Title` both have the same `order` value of 0, so are ordered alphabetically, `A` coming before `D`
+
+- `Can We Make a Better Title` has the lowest `order`, and then floats to the top
+- `Being a Witty Title` has the largest `order` and sinks to the bottom
+- `A Cool Title` and `Dang that was a Great Title` both have the same `order` value of 0, so are ordered alphabetically, `A` coming before `D`
 
 11ty is an unopinionated static site generator. It gives us a lot of basic features that are handy when templating, organizing, and building a site, but mostly tries to stay out of our way.
 
@@ -144,6 +152,7 @@ title: Home
 This tells 11ty what the page template should be (relative to the `pages` folder), and what the page title is. Which may be used as part of the page template as an h1, but is also used as part of the `<title>` attribute in the `<head>`.l
 
 Here's an example including tags, which is a multi-value piece of data.
+
 ```jinja
 ---
 layout: layouts/pages/basic.njk
@@ -159,6 +168,7 @@ coding, although there are some values that are
 [predefined by 11ty](https://www.11ty.dev/docs/data-configuration/).
 
 ### Adding Component JS to a page
+
 To add a Patternfly Element's JS, add an entry to the front-matter `includeComponent` and a list of
 the components to be used on the page:
 
@@ -206,10 +216,10 @@ So to print it in a page we'd use:
 
 If the macro took parameters we can include them in the parentheses.
 
-Files with macros can have all sorts of other content, which won't print if it's 
-pulled in with `import`. This means the file with a macro can detail a component 
-in our library and show multiple variants of the component, and if we want to 
-include it in another file we can call the file and only pull in the macro with 
+Files with macros can have all sorts of other content, which won't print if it's
+pulled in with `import`. This means the file with a macro can detail a component
+in our library and show multiple variants of the component, and if we want to
+include it in another file we can call the file and only pull in the macro with
 params of our choosing if we want.
 
 If you would like to pull in an entire file's display, use [`include`](https://mozilla.github.io/nunjucks/templating.html#include).

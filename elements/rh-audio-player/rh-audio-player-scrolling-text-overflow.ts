@@ -41,19 +41,20 @@ export class RhAudioPlayerScrollingTextOverflow extends LitElement {
     const direction = this.#style?.direction ?? 'auto';
     const scrolling = this.#scrolling;
     const scrollable = this.#isScrollable;
-    return html`
-      <div id="outer"
-           class="${classMap({ [direction]: true })}"
-           @mouseover=${this.startScrolling}
-           @mouseout=${this.stopScrolling}
-           @focus=${this.startScrolling}
-           @blur=${this.stopScrolling}>
-        <div id="inner">
-          <!-- inline text to scroll if wider than host -->
-          <slot class="${classMap({ scrolling, scrollable })}"></slot>
-        </div>${!scrollable ? '' : html`
-        <span id="fade"></span>`}
-      </div>`;
+    return html` <div
+      id="outer"
+      class="${classMap({ [direction]: true })}"
+      @mouseover=${this.startScrolling}
+      @mouseout=${this.stopScrolling}
+      @focus=${this.startScrolling}
+      @blur=${this.stopScrolling}
+    >
+      <div id="inner">
+        <!-- inline text to scroll if wider than host -->
+        <slot class="${classMap({ scrolling, scrollable })}"></slot>
+      </div>
+      ${!scrollable ? '' : html` <span id="fade"></span>`}
+    </div>`;
   }
 
   stopScrolling() {

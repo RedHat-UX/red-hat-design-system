@@ -9,4 +9,3 @@
 <div id="overview-image-description" class="visually-hidden">
   Example of a default link tile and a selectable tile
 </div>
-

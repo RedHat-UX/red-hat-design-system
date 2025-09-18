@@ -4,23 +4,23 @@
 </rh-tile>
 
 <style>
-@import url('/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css');
+  @import url("/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css");
 
-rh-tile.accented-tile {
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--rh-border-radius-default);
-  &::before {
-    content: '';
-    position: absolute;
-    z-index: 2;
-    display: block;
-    inset-block-start: 0;
-    inset-inline: 0;
-    border-block-start-color: var(--rh-color-brand-red);
-    border-block-start-width: var(--rh-border-width-lg);
-    border-block-start-style: solid;
-    pointer-events: none;
+  rh-tile.accented-tile {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--rh-border-radius-default);
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      display: block;
+      inset-block-start: 0;
+      inset-inline: 0;
+      border-block-start-color: var(--rh-color-brand-red);
+      border-block-start-width: var(--rh-border-width-lg);
+      border-block-start-style: solid;
+      pointer-events: none;
+    }
   }
-}
 </style>

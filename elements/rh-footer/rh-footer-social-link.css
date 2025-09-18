@@ -1,7 +1,10 @@
 :host {
   display: block;
 
-  --rh-icon-size: var(--rh-footer--social-icon--size, var(--rh-size-icon-02, 24px));
+  --rh-icon-size: var(
+    --rh-footer--social-icon--size,
+    var(--rh-size-icon-02, 24px)
+  );
 }
 
 [hidden] {

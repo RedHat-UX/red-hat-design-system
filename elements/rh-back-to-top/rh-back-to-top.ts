@@ -7,7 +7,6 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './rh-back-to-top.css';
 
-
 /**
  * Back to top component is a fragment link that allows users to quickly navigate
  * to the top of a lengthy content page.
@@ -21,13 +20,17 @@ export class RhBackToTop extends LitElement {
   static readonly styles = [styles];
 
   /** Flag to always show back to top button, defaults to false. */
-  @property({ reflect: true, attribute: 'visible' }) visible?: 'always' | undefined;
+  @property({ reflect: true, attribute: 'visible' }) visible?:
+    | 'always'
+    | undefined;
 
   /** Element selector to spy on for scrolling. Not passing a selector defaults to spying on window scroll events */
-  @property({ reflect: true, attribute: 'scrollable-selector' }) scrollableSelector?: string;
+  @property({ reflect: true, attribute: 'scrollable-selector' })
+  scrollableSelector?: string;
 
   /** Distance from the top of the scrollable element to trigger the visibility of the back to top button */
-  @property({ type: Number, attribute: 'scroll-distance' }) scrollDistance = 400;
+  @property({ type: Number, attribute: 'scroll-distance' })
+  scrollDistance = 400;
 
   /** Page fragment link to target element, must include hash ex: #top */
   @property({ reflect: true }) href?: string;
@@ -75,7 +78,11 @@ export class RhBackToTop extends LitElement {
   render() {
     return html`
       <!-- back to top link anchor element -->
-      <a href="${ifDefined(this.href)}" ?hidden="${!this.#visible}" part="trigger">
+      <a
+        href="${ifDefined(this.href)}"
+        ?hidden="${!this.#visible}"
+        part="trigger"
+      >
         <!-- Text for the back to top link -->
         <slot>Back to top</slot>
         <rh-icon set="ui" icon="caret-up"></rh-icon>
@@ -97,7 +104,9 @@ export class RhBackToTop extends LitElement {
 
     this.#scrollSpy = !!this.scrollableSelector;
     if (this.#scrollSpy && this.scrollableSelector) {
-      const scrollableElement = this.#rootNode.querySelector(this.scrollableSelector);
+      const scrollableElement = this.#rootNode.querySelector(
+        this.scrollableSelector
+      );
       if (!scrollableElement) {
         return;
       }
@@ -106,7 +115,9 @@ export class RhBackToTop extends LitElement {
       this.#scrollElement = window;
     }
 
-    this.#scrollElement.addEventListener('scroll', this.#toggleVisibility, { passive: true });
+    this.#scrollElement.addEventListener('scroll', this.#toggleVisibility, {
+      passive: true,
+    });
     this.#toggleVisibility();
   }
 
@@ -119,10 +130,10 @@ export class RhBackToTop extends LitElement {
     const previousVisibility = this.#visible;
     if (this.#scrollElement) {
       const scrolled =
-          (this.#scrollElement instanceof Window) ?
+        this.#scrollElement instanceof Window ?
           this.#scrollElement.scrollY
-        : this.#scrollElement.scrollTop;
-      this.#visible = (scrolled > this.scrollDistance);
+          : this.#scrollElement.scrollTop;
+      this.#visible = scrolled > this.scrollDistance;
       if (previousVisibility !== this.#visible) {
         this.requestUpdate();
       }

@@ -12,7 +12,8 @@ import styles from './uxdot-copy-permalink.css';
 export class UxdotCopyPermalink extends LitElement {
   static styles = [styles];
 
-  @property({ attribute: 'copy-button-label' }) copyButtonLabel = 'Copy link to clipboard';
+  @property({ attribute: 'copy-button-label' }) copyButtonLabel =
+    'Copy link to clipboard';
 
   @property({ attribute: 'copied-text' }) copiedText = 'Link copied';
 
@@ -22,9 +23,11 @@ export class UxdotCopyPermalink extends LitElement {
     return html`
       <slot></slot>
       <span id="signifier">(permalink)</span>
-      <button @click="${this.#copyLink}"
-              id="button"
-              aria-label="${this.copyButtonLabel}">
+      <button
+        @click="${this.#copyLink}"
+        id="button"
+        aria-label="${this.copyButtonLabel}"
+      >
         <rh-icon set="ui" icon="link"></rh-icon>
       </button>
     `;
@@ -35,11 +38,12 @@ export class UxdotCopyPermalink extends LitElement {
   }
 
   async #copyLink() {
-    const [link] = this.shadowRoot
-        ?.querySelector('slot')
-        ?.assignedElements({ flatten: true })
-        ?.map(child => child.querySelector('a'))
-        ?.filter(x => !!x) ?? [];
+    const [link] =
+      this.shadowRoot
+          ?.querySelector('slot')
+          ?.assignedElements({ flatten: true })
+          ?.map(child => child.querySelector('a'))
+          ?.filter(x => !!x) ?? [];
     if (link) {
       await navigator.clipboard.writeText(link.href);
       RhAlert.toast({ message: this.copiedText });

@@ -30,9 +30,9 @@ To enable column highlighting, the `table` element must also include a `col` ele
       Concerts
     </caption>
     <colgroup>
-      <col>
-      <col>
-      <col>
+      <col />
+      <col />
+      <col />
     </colgroup>
     <!-- ...table with three columns -->
   </table>
@@ -50,15 +50,19 @@ To enable sorting on a column, add an `rh-sort-button` as the last child of the 
       Concerts
     </caption>
     <colgroup>
-      <col>
-      <col>
-      <col>
+      <col />
+      <col />
+      <col />
     </colgroup>
     <thead>
       <tr>
         <th scope="col" data-label="Date">Date</th>
-        <th scope="col" data-label="Event">Event<rh-sort-button></rh-sort-button></th>
-        <th scope="col" data-label="Venue">Venue<rh-sort-button></rh-sort-button></th>
+        <th scope="col" data-label="Event">
+          Event<rh-sort-button></rh-sort-button>
+        </th>
+        <th scope="col" data-label="Venue">
+          Venue<rh-sort-button></rh-sort-button>
+        </th>
       </tr>
     </thead>
     <!-- ...table data sortable by Event and Venue -->
@@ -77,15 +81,19 @@ Additional information about the data in the table should be slotted into the `s
       Concerts
     </caption>
     <colgroup>
-      <col>
-      <col>
-      <col>
+      <col />
+      <col />
+      <col />
     </colgroup>
     <thead>
       <tr>
         <th scope="col" data-label="Date">Date</th>
-        <th scope="col" data-label="Event">Event<rh-sort-button></rh-sort-button></th>
-        <th scope="col" data-label="Venue">Venue<rh-sort-button></rh-sort-button></th>
+        <th scope="col" data-label="Event">
+          Event<rh-sort-button></rh-sort-button>
+        </th>
+        <th scope="col" data-label="Venue">
+          Venue<rh-sort-button></rh-sort-button>
+        </th>
       </tr>
     </thead>
     <tbody>

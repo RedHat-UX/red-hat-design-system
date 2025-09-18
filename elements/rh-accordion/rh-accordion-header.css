@@ -20,9 +20,7 @@ a {
 }
 
 :host([expanded]) {
-  border-inline-end:
-    var(--rh-border-width-sm, 1px)
-    solid
+  border-inline-end: var(--rh-border-width-sm, 1px) solid
     var(--rh-color-border-subtle);
 }
 
@@ -49,22 +47,27 @@ span {
   background-color: var(--_accordion-background);
   font-weight: var(--rh-font-weight-body-text-medium, 500);
   width: 100%;
-  padding:
-    var(--_padding-block-start)
-    var(--_padding-inline-end)
-    var(--_padding-block-end)
-    var(--_padding-inline-start);
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  padding: var(--_padding-block-start) var(--_padding-inline-end)
+    var(--_padding-block-end) var(--_padding-inline-start);
+  font-family: var(
+    --rh-font-family-body-text,
+    RedHatText,
+    "Red Hat Text",
+    Helvetica,
+    Arial,
+    sans-serif
+  );
   font-size: var(--_header-font-size);
 
   & #icon {
     fill: currentcolor;
   }
 
-  &:is(:hover,:active,:focus) {
-    background-color:
-      light-dark(var(--rh-color-surface-lighter),
-        oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h));
+  &:is(:hover, :active, :focus) {
+    background-color: light-dark(
+      var(--rh-color-surface-lighter),
+      oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h)
+    );
 
     & span {
       color: var(--rh-color-text-primary);
@@ -107,7 +110,7 @@ span {
   font-weight: var(--rh-font-weight-body-text-medium, 500);
 }
 
-[part='accents'] {
+[part="accents"] {
   display: flex;
   flex-wrap: wrap;
   gap: var(--rh-space-md, 8px);
@@ -128,7 +131,7 @@ span {
   }
 
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     inset-block: 0;
     inset-inline-start: 0;

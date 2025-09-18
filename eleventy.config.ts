@@ -60,7 +60,9 @@ export default async function(eleventyConfig: UserConfig) {
   eleventyConfig.watchIgnores?.add('lib/elements/*/test/');
   eleventyConfig.watchIgnores?.add('**/*.tsbuildinfo');
   eleventyConfig.addPassthroughCopy('docs/**/*.{svg,jpg,jpeg,png,webp,avif}');
-  eleventyConfig.addPassthroughCopy('elements/*/demo/**/*.{svg,jpg,jpeg,png,webp,avif}');
+  eleventyConfig.addPassthroughCopy(
+    'elements/*/demo/**/*.{svg,jpg,jpeg,png,webp,avif}'
+  );
   eleventyConfig.addPassthroughCopy('docs/CNAME');
   eleventyConfig.addPassthroughCopy('docs/.nojekyll');
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
@@ -88,7 +90,8 @@ export default async function(eleventyConfig: UserConfig) {
 
   /** Bespoke import map for ux-dot pages and demos */
   eleventyConfig.addPassthroughCopy({
-    'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element',
+    'node_modules/@lit/reactive-element':
+      '/assets/packages/@lit/reactive-element',
   });
 
   eleventyConfig.addPlugin(ImportMapPlugin, {
@@ -176,15 +179,16 @@ export default async function(eleventyConfig: UserConfig) {
     formatter($, existingids) {
       if (
         !existingids.includes($.attr('id')!)
-          && $.attr('slot')
-          && $.closest('pf-card')
+        && $.attr('slot')
+        && $.closest('pf-card')
       ) {
         return null;
       } else {
-        const slug = eleventyConfig.getFilter('slug') as (str: string) => string;
+        const slug = eleventyConfig.getFilter('slug') as (
+          str: string
+        ) => string;
         const text = $.text();
-        return slug(text)
-            .replace(/[&,+()$~%.'":*?!<>{}]/g, '');
+        return slug(text).replace(/[&,+()$~%.'":*?!<>{}]/g, '');
       }
     },
   });
@@ -281,11 +285,7 @@ export default async function(eleventyConfig: UserConfig) {
       'rh-video-embed',
       'uxdot-pattern',
     ],
-    tagsToAlphabetize: [
-      'component',
-      'foundations',
-      'getstarted',
-    ],
+    tagsToAlphabetize: ['component', 'foundations', 'getstarted'],
   });
 
   return {
@@ -296,4 +296,4 @@ export default async function(eleventyConfig: UserConfig) {
       input: './docs',
     },
   };
-};
+}

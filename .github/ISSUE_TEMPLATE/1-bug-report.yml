@@ -24,7 +24,7 @@ body:
       description: >-
         If applicable, add screenshots to help explain your problem
       placeholder: >-
-        Copy/paste or drag screenshots into this textarea 
+        Copy/paste or drag screenshots into this textarea
     validations:
       required: false
 
@@ -44,7 +44,7 @@ body:
         3.0.3
     validations:
       required: true
-      
+
   - type: textarea
     id: repro
     attributes:
@@ -75,7 +75,7 @@ body:
     attributes:
       label: Element HTML
       description: >-
-       If applicable, enter the outer HTML of the element in question at the time the bug was observed
+        If applicable, enter the outer HTML of the element in question at the time the bug was observed
       placeholder: >-
         <rh-cta varient="secondary">
           <a href="#">Back</a>
@@ -86,10 +86,10 @@ body:
 
   - type: markdown
     attributes:
-      value:  |
+      value: |
         ---
         ## Browser and System Info
-        
+
         Please fill out more information, including the versions of each browser in which
         the bug was observed, or in the case of Safari iOS, the **device name**, and **OS version**
 

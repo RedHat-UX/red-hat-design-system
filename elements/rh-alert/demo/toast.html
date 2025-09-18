@@ -1,22 +1,27 @@
 <form id="alert-variant-toast">
   <fieldset>
     <legend>Alert State</legend>
-    <label><input type="radio" name="state" value="neutral">Neutral</label>
-    <label><input type="radio" name="state" value="info">Info</label>
-    <label><input type="radio" name="state" value="success">Success</label>
-    <label><input type="radio" name="state" value="caution">Caution</label>
-    <label><input type="radio" name="state" value="warning">Warning</label>
-    <label><input type="radio" name="state" value="danger">Danger</label>
+    <label><input type="radio" name="state" value="neutral" />Neutral</label>
+    <label><input type="radio" name="state" value="info" />Info</label>
+    <label><input type="radio" name="state" value="success" />Success</label>
+    <label><input type="radio" name="state" value="caution" />Caution</label>
+    <label><input type="radio" name="state" value="warning" />Warning</label>
+    <label><input type="radio" name="state" value="danger" />Danger</label>
   </fieldset>
   <fieldset>
     <legend>Persistence</legend>
-    <label><input type="checkbox" name="persistent">Persistent</label>
+    <label><input type="checkbox" name="persistent" />Persistent</label>
   </fieldset>
   <fieldset>
     <legend>Actions</legend>
-    <label><input type="radio" name="actions" value="none">No actions</label>
-    <label><input type="radio" name="actions" value="primary">Single action</label>
-    <label><input type="radio" name="actions" value="secondary">Secondary action</label>
+    <label><input type="radio" name="actions" value="none" />No actions</label>
+    <label
+      ><input type="radio" name="actions" value="primary" />Single action</label
+    >
+    <label
+      ><input type="radio" name="actions" value="secondary" />Secondary
+      action</label
+    >
   </fieldset>
   <rh-button>Toast alert</rh-button>
 </form>
@@ -31,27 +36,34 @@
 </style>
 
 <script type="module">
-  import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
-  import '@rhds/elements/rh-button/rh-button.js';
+  import { RhAlert } from "@rhds/elements/rh-alert/rh-alert.js";
+  import "@rhds/elements/rh-button/rh-button.js";
   let i = 0;
-  document.addEventListener('close', e => console.log(e.action));
-  document.getElementById('alert-variant-toast').addEventListener('submit', async function(event) {
-    event.preventDefault();
-    const data = new FormData(event.target);
-    const persistent = data.has('persistent');
-    const state = data.get('state') ?? 'info';
-    const [a, ...rest] = state;
-    await RhAlert.toast({
-      state,
-      persistent,
-      message: `${++i}: Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
-      heading: `${a.toUpperCase()}${rest.join('')}${persistent ? ` - persistent`:''}`,
-      actions: data.get('actions') === 'primary' ? [
-          { action: 'dismiss', text: 'Dismiss' },
-        ] : data.get('actions') === 'secondary' ? [
-          { action: 'confirm', text: 'Confirm' },
-          { action: 'dismiss', text: 'Dismiss' },
-        ] : undefined,
+  document.addEventListener("close", (e) => console.log(e.action));
+  document
+    .getElementById("alert-variant-toast")
+    .addEventListener("submit", async function (event) {
+      event.preventDefault();
+      const data = new FormData(event.target);
+      const persistent = data.has("persistent");
+      const state = data.get("state") ?? "info";
+      const [a, ...rest] = state;
+      await RhAlert.toast({
+        state,
+        persistent,
+        message: `${++i}: Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
+        heading: `${a.toUpperCase()}${rest.join("")}${
+          persistent ? ` - persistent` : ""
+        }`,
+        actions:
+          data.get("actions") === "primary"
+            ? [{ action: "dismiss", text: "Dismiss" }]
+            : data.get("actions") === "secondary"
+            ? [
+                { action: "confirm", text: "Confirm" },
+                { action: "dismiss", text: "Dismiss" },
+              ]
+            : undefined,
+      });
     });
-  });
 </script>

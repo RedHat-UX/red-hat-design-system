@@ -1,6 +1,7 @@
 ## Style
 
 The audio player is a collection of elements used to play audio clips and browse [features](../features). There are also optional slots for an image and description text. The audio player must include the following elements **at a minimum**:
+
 - Audio clip title
 - Seek bar and clip times
 - Unmute/mute button and volume control
@@ -9,36 +10,30 @@ The audio player is a collection of elements used to play audio clips and browse
 
 ### Anatomy
 
-<figure>
-  <uxdot-example color-palette="lightest">
-    <img alt="Image of audio player anatomy showing all players with lots of annotations"
-         src="../audio-player-anatomy.png"
-         width="712"
-         height="504">
-  </uxdot-example>
-  <figcaption>
-    <ol>
-      <li>Image</li>
-      <li>Description</li>
-      <li>Title
-        <ol>
-          <li>Elapsed time</li>
-          <li>Total time</li>
-        </ol>
-      </li>
-      <li>Current time/seek bar</li>
-      <li>Unmute/mute button</li>
-      <li>Volume level</li>
-      <li>Playback speed</li>
-      <li>Rewind</li>
-      <li>Play/pause</li>
-      <li>Forward</li>
-      <li>Contextual menu</li>
-    </ol>
-  </figcaption>
-</figure>
+<uxdot-example color-palette="lightest" width-adjustment="712px">
+  <img alt="Image of audio player anatomy showing all players with lots of annotations"
+       src="../audio-player-anatomy.png"
+       width="712"
+       height="504">
+</uxdot-example>
+
+1. Image
+2. Description
+3. Title
+   1. Elapsed time
+   2. Total time
+4. Current time/seek bar
+5. Unmute/mute button
+6. Volume level
+7. Playback speed
+8. Rewind
+9. Play/pause
+10. Forward
+11. Contextual menu
+    {.example-notes}
 
 ## Sizes
+
 There are three available sizes and the only difference is the amount of interface elements. The Compact and Mini players can be used on large breakpoints, but the Full player cannot be used on small breakpoints due to space constraints.
 
 <uxdot-example color-palette="lightest" width-adjustment="712px">
@@ -49,6 +44,7 @@ There are three available sizes and the only difference is the amount of interfa
 </uxdot-example>
 
 ## Color scheme
+
 <a id="theme"></a>
 
 The audio player is available for both light and dark color schemes.
@@ -86,6 +82,7 @@ The audio player is available for both light and dark color schemes.
 </uxdot-example>
 
 ## Configuration
+
 The size of audio players change if an image is included or not.
 
 <uxdot-example color-palette="lightest" width-adjustment="872px">
@@ -96,6 +93,7 @@ The size of audio players change if an image is included or not.
 </uxdot-example>
 
 ## Space
+
 The amount of space in all audio players remains the same on all breakpoints.
 
 <uxdot-example color-palette="lightest" width-adjustment="712px">
@@ -108,6 +106,7 @@ The amount of space in all audio players remains the same on all breakpoints.
 <uxdot-spacer-tokens-table tokens="md, lg, xl, 2xl"></uxdot-spacer-tokens-table>
 
 ## Interaction states
+
 Interaction states are visual representations used to communicate the status of an element or pattern.
 
 ### Hover
@@ -130,7 +129,6 @@ Interaction states are visual representations used to communicate the status of 
        width="712"
        height="504">
 </uxdot-example>
-
 
 ### Focus
 

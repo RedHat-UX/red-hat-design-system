@@ -9,7 +9,6 @@ Users should have the ability to move focus to the Website status link if it is 
         height="789">
 </uxdot-example>
 
-
 ## Screen reader guidelines
 
 Website status should communicate the following to users.
@@ -19,7 +18,6 @@ Website status should communicate the following to users.
 - That the text is also a link
 - Where the link will take them if selected
 - If the status is still loading
-
 
 {% include 'partials/accessibility/ariaguide.md' %}
 {% include 'partials/accessibility/wcag.md' %}

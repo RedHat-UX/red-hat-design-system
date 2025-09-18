@@ -25,17 +25,25 @@ import styles from './rh-progress-step.css';
  * - `fail` - The step has failed
  * - `custom` - The step uses a custom icon
  */
-export type ProgressStepState = 'inactive' | 'active' | 'complete' | 'warn' | 'fail' | 'custom';
+export type ProgressStepState =
+  | 'inactive'
+  | 'active'
+  | 'complete'
+  | 'warn'
+  | 'fail'
+  | 'custom';
 
 /**
  * Map of state names to their corresponding icon names
  */
-const ICONS = new Map(Object.entries({
-  active: 'resources-full',
-  complete: 'check-circle-fill',
-  warn: 'error-fill',
-  fail: 'ban-fill',
-} as const));
+const ICONS = new Map(
+  Object.entries({
+    active: 'resources-full',
+    complete: 'check-circle-fill',
+    warn: 'error-fill',
+    fail: 'ban-fill',
+  } as const)
+);
 
 /**
  * Fired when a step becomes active
@@ -122,13 +130,20 @@ export class RhProgressStep extends LitElement {
                Avoid slotting content here if the step is in the \`warn\` or \`fail\` state,
                Since those states should always show their prescribed icons. -->
         <slot name="icon">
-          <rh-icon icon="${ifDefined(this.#icon)}" set="${ifDefined(this.#iconSet)}"></rh-icon>
-        </slot>${this.href ? html`
-          <a id="label"
-             href="${this.href}"
-             aria-current="${ifDefined(ariaCurrent)}">${labelSlot}</a>` : html`
-          <strong id="label"
-                  aria-current="${ifDefined(ariaCurrent)}">${labelSlot}</strong>`}
+          <rh-icon
+            icon="${ifDefined(this.#icon)}"
+            set="${ifDefined(this.#iconSet)}"
+          ></rh-icon> </slot
+        >${this.href ?
+          html` <a
+              id="label"
+              href="${this.href}"
+              aria-current="${ifDefined(ariaCurrent)}"
+              >${labelSlot}</a
+            >`
+          : html` <strong id="label" aria-current="${ifDefined(ariaCurrent)}"
+              >${labelSlot}</strong
+            >`}
         <!-- summary: Elaborative description for the step
              description: |
                Rich HTML content can be slotted here , to override the (plain text) \`description\` attribute.

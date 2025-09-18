@@ -1,6 +1,5 @@
 /** @license adapted from code (c) Jordan Shermer MIT license*/
 
-
 import type { UserConfig } from '@11ty/eleventy';
 import * as Parse5 from 'parse5';
 import * as Tools from '@parse5/tools';
@@ -50,7 +49,9 @@ class Item {
 
   getNode() {
     const { appendChild, createElement, setAttribute, setTextContent } = Tools;
-    const container = createElement(this.slug && this.text ? 'uxdot-toc-item' : 'span');
+    const container = createElement(
+      this.slug && this.text ? 'uxdot-toc-item' : 'span'
+    );
     if (this.slug && this.text) {
       setAttribute(container, 'href', `#${this.slug}`);
       setTextContent(container, this.text);
@@ -69,38 +70,47 @@ class Item {
   }
 }
 
-export default function(eleventyConfig: UserConfig, pluginOpts: Partial<Options> = {}) {
-  eleventyConfig.addFilter('toc', async function toc(content: string, opts?: Partial<Options>) {
-    const { tags = ['h2'], ignoredElements = [] } = {
-      ...pluginOpts,
-      ...opts,
-      tags: opts?.tags || pluginOpts?.tags,
-    };
+export default function(
+  eleventyConfig: UserConfig,
+  pluginOpts: Partial<Options> = {}
+) {
+  eleventyConfig.addFilter(
+    'toc',
+    async function toc(content: string, opts?: Partial<Options>) {
+      const { tags = ['h2'], ignoredElements = [] } = {
+        ...pluginOpts,
+        ...opts,
+        tags: opts?.tags || pluginOpts?.tags,
+      };
 
-    const root = new Item();
+      const root = new Item();
 
-    root.parent = root;
+      root.parent = root;
 
-    const document = Parse5.parse(content);
+      const document = Parse5.parse(content);
 
-    const tagSet = new Set(tags).difference(new Set(ignoredElements));
+      const tagSet = new Set(tags).difference(new Set(ignoredElements));
 
-    const headings = Tools.queryAll<Tools.Element>(document, (node): node is Tools.Element =>
-      Tools.isElementNode(node)
-       && tagSet.has(node.tagName)
-       && Tools.hasAttribute(node, 'id')
-       && !Tools.hasAttribute(node, ignoreAttribute));
+      const headings = Tools.queryAll<Tools.Element>(
+        document,
+        (node): node is Tools.Element =>
+          Tools.isElementNode(node)
+          && tagSet.has(node.tagName)
+          && Tools.hasAttribute(node, 'id')
+          && !Tools.hasAttribute(node, ignoreAttribute)
+      );
 
-    let previous = root;
+      let previous = root;
 
-    for (const heading of headings) {
-      const current = new Item(heading);
-      const parent = getParent(previous, current);
-      current.parent = parent;
-      parent.children.push(current);
-      previous = current;
+      for (const heading of headings) {
+        const current = new Item(heading);
+        const parent = getParent(previous, current);
+        current.parent = parent;
+        parent.children.push(current);
+        previous = current;
+      }
+
+      return Parse5.serialize(root.getNode());
     }
-
-    return Parse5.serialize(root.getNode());
-  });
-};
+  );
+}

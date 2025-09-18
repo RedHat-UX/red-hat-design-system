@@ -1,5 +1,5 @@
 files:
-  include: '**/*.s+(a|c)ss'
+  include: "**/*.s+(a|c)ss"
 options:
   formatter: stylish
   merge-default-rules: false
@@ -7,7 +7,7 @@ rules:
   border-zero: 2
   brace-style:
     - 2
-    - style: 'stroustrup'
+    - style: "stroustrup"
     - allow-single-line: false
   class-name-format:
     - 0
@@ -52,7 +52,7 @@ rules:
       convention: hyphenatedlowercase
   mixins-before-declarations:
     - 2
-    - exclude: ['breakpoint', 'no-grid', 'no-object-fit', 'ie11']
+    - exclude: ["breakpoint", "no-grid", "no-object-fit", "ie11"]
   nesting-depth:
     - 2
     - max-depth: 4

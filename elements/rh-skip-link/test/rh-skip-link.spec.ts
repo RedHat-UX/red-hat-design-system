@@ -20,12 +20,13 @@ describe('<rh-skip-link>', function() {
   describe('simply instantiating', function() {
     let element: RhSkipLink;
     it('should upgrade', async function() {
-      element = await createFixture<RhSkipLink>(html`<rh-skip-link></rh-skip-link>`);
+      element = await createFixture<RhSkipLink>(
+        html`<rh-skip-link></rh-skip-link>`
+      );
       const klass = customElements.get('rh-skip-link');
       expect(element)
           .to.be.an.instanceOf(klass)
-          .and
-          .to.be.an.instanceOf(RhSkipLink);
+          .and.to.be.an.instanceOf(RhSkipLink);
     });
   });
 
@@ -34,9 +35,7 @@ describe('<rh-skip-link>', function() {
     beforeEach(async function() {
       element = await createFixture<RhSkipLink>(html`
         <rh-skip-link>
-          <a href="#main-content">
-            Skip to main content
-          </a>
+          <a href="#main-content"> Skip to main content </a>
         </rh-skip-link>
       `);
       await element.updateComplete;
@@ -55,7 +54,9 @@ describe('<rh-skip-link>', function() {
       it('should be visible', async function() {
         const elStyles = getComputedStyle(element.querySelector('a'));
         // Calculate transition duration. Focus applies after the transition finishes.
-        const transitionValue = parseTransitionDuration(elStyles.getPropertyValue('transition-duration'));
+        const transitionValue = parseTransitionDuration(
+          elStyles.getPropertyValue('transition-duration')
+        );
         element.focus();
         await aTimeout(transitionValue);
         expect(element).to.be.visible;

@@ -18,9 +18,15 @@ function getUrlWithHash(tokenName) {
   return `/tokens/${category}/#${tokenName.replace('--', '')}`;
 }
 
-const tokenUrls = Array.from(tokens.keys(), label => ({ label, value: getUrlWithHash(label) }));
+const tokenUrls = Array.from(tokens.keys(), label => ({
+  label,
+  value: getUrlWithHash(label),
+}));
 
-export const fuse = new Fuse(tokenUrls, { threshold: 0.4, keys: ['label', 'value'] });
+export const fuse = new Fuse(tokenUrls, {
+  threshold: 0.4,
+  keys: ['label', 'value'],
+});
 
 /** @param {HTMLFormElement} form */
 export async function init(form) {

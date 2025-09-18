@@ -38,6 +38,7 @@ on or tap the link. It acts as a functional addition instead of only visual.
 </uxdot-example>
 
 ### Color scheme
+
 <a id="theme"></a>
 
 <uxdot-example width-adjustment="484px">

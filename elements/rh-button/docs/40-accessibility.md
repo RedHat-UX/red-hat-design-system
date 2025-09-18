@@ -1,12 +1,12 @@
 ## Implementation
 
- - Ensure a button can be navigated to and interacted with via keyboard and other 
-assistive technologies
- - Provide unique and descriptive text content for a button or an aria-label if the 
-button does not contain visible text
- - Provide context that a link will open in a new tab or window when using a button 
-link
- - Do not place other interactive elements within a button
+- Ensure a button can be navigated to and interacted with via keyboard and other
+  assistive technologies
+- Provide unique and descriptive text content for a button or an aria-label if the
+  button does not contain visible text
+- Provide context that a link will open in a new tab or window when using a button
+  link
+- Do not place other interactive elements within a button
 
 ## Keyboard interactions
 
@@ -43,6 +43,7 @@ Users should have the ability to navigate to and interact with buttons using the
 </uxdot-example>
 
 ## Touch targets
+
 Buttons in groups are adequately spaced for optimal touch targets.
 
 <uxdot-example color-palette="lightest" width-adjustment="298px">
@@ -55,9 +56,10 @@ Buttons in groups are adequately spaced for optimal touch targets.
 ## Screen reader guidelines
 
 Buttons should communicate the following to users:
- - Their intended purpose or function
- - The toggle state if it has two states
- - An instruction that a menu will open
+
+- Their intended purpose or function
+- The toggle state if it has two states
+- An instruction that a menu will open
 
 {% include 'partials/accessibility/ariaguide.md' %}
 {% include 'partials/accessibility/wcag.md' %}

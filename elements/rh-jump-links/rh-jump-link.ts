@@ -27,7 +27,8 @@ export class RhJumpLink extends LitElement {
 
   /** Whether the layout of children is vertical or horizontal. */
   @consume({ context: rhJumpLinksOrientationContext, subscribe: true })
-  @state() private orientation?: 'horizontal' | 'vertical';
+  @state()
+  private orientation?: 'horizontal' | 'vertical';
 
   /** Whether this item is active. */
   @property({ type: Boolean, reflect: true }) active = false;
@@ -45,10 +46,12 @@ export class RhJumpLink extends LitElement {
   render(): TemplateResult<1> {
     const { active, orientation = 'vertical' } = this;
     return html`
-      <a class="${classMap({ active, [orientation]: true })}"
-         aria-current="${ifDefined(this.active ? 'location' : undefined)}"
-         href="${ifDefined(this.href)}"
-         @click="${this.#onClick}">
+      <a
+        class="${classMap({ active, [orientation]: true })}"
+        aria-current="${ifDefined(this.active ? 'location' : undefined)}"
+        href="${ifDefined(this.href)}"
+        @click="${this.#onClick}"
+      >
         <slot></slot>
       </a>
     `;

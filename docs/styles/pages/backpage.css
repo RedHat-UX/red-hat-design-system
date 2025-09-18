@@ -4,15 +4,15 @@
     width: 100%;
     grid-template-columns: 1fr;
     grid-template-areas:
-      'header'
-      'content';
+      "header"
+      "content";
     row-gap: var(--rh-space-4xl);
 
     &.has-toc {
       grid-template-areas:
-        'header'
-        'aside'
-        'content';
+        "header"
+        "aside"
+        "content";
     }
 
     & .aside {
@@ -39,27 +39,33 @@
 
       & h2,
       uxdot-copy-permalink h2 {
-        font-size: var(--rh-font-size-heading-md);  /* RHDS h4 heading font size */
+        font-size: var(
+          --rh-font-size-heading-md
+        ); /* RHDS h4 heading font size */
       }
 
       & h3,
       uxdot-copy-permalink h3 {
-        font-size: var(--rh-font-size-heading-sm);  /* RHDS h5 heading font size */
+        font-size: var(
+          --rh-font-size-heading-sm
+        ); /* RHDS h5 heading font size */
       }
 
       & h4,
       uxdot-copy-permalink h4 {
-        font-size: var(--rh-font-size-heading-xs);  /* RHDS h6 heading font size */
+        font-size: var(
+          --rh-font-size-heading-xs
+        ); /* RHDS h6 heading font size */
       }
 
       & h5,
       uxdot-copy-permalink h5 {
-        font-size: 1.125rem;  /* Not a RHDS token */
+        font-size: 1.125rem; /* Not a RHDS token */
       }
 
       & h6,
       uxdot-copy-permalink h6 {
-        font-size: 1rem;  /* Not a RHDS token */
+        font-size: 1rem; /* Not a RHDS token */
       }
 
       /**
@@ -68,7 +74,9 @@
        * as a section break (no landmark)
        */
       & > :where(uxdot-copy-permalink.h2, h2),
-      & > :not(section, uxdot-copy-permalink) > :where(uxdot-copy-permalink.h2, h2),
+      &
+        > :not(section, uxdot-copy-permalink)
+        > :where(uxdot-copy-permalink.h2, h2),
       & > section > :where(uxdot-copy-permalink.h2, h2) {
         margin-block-start: var(--rh-space-6xl);
       }
@@ -78,12 +86,18 @@
        * if a section, h2 or uxdot-copy-permalink is the first child of an article container
        */
       & :where(uxdot-copy-permalink.h2, h2, section):first-child,
-      & :where(style, link, script):first-child + :where(uxdot-copy-permalink.h2, h2, section),
-      & :where(style, link, script):first-child + :where(
-          style, link) + :where(uxdot-copy-permalink.h2, h2, section),
-      & :where(style, link, script):first-child + :where(
-            style, link, script) + :where(style, link, script) + :where(
-              uxdot-copy-permalink.h2, h2, section) {
+      &
+        :where(style, link, script):first-child
+        + :where(uxdot-copy-permalink.h2, h2, section),
+      &
+        :where(style, link, script):first-child
+        + :where(style, link)
+        + :where(uxdot-copy-permalink.h2, h2, section),
+      &
+        :where(style, link, script):first-child
+        + :where(style, link, script)
+        + :where(style, link, script)
+        + :where(uxdot-copy-permalink.h2, h2, section) {
         margin-block-start: 0;
       }
 
@@ -93,7 +107,9 @@
        * as a section break (no landmark)
        */
       & > :where(uxdot-copy-permalink.h3, h3),
-      & > :not(section, uxdot-copy-permalink) > :where(uxdot-copy-permalink.h3, h3),
+      &
+        > :not(section, uxdot-copy-permalink)
+        > :where(uxdot-copy-permalink.h3, h3),
       & > section > :where(uxdot-copy-permalink.h3, h3) {
         margin-block-start: var(--rh-space-4xl);
       }
@@ -104,7 +120,9 @@
        * as a section break (no landmark)
        */
       & > :where(uxdot-copy-permalink.h4, h4),
-      & > :not(section, uxdot-copy-permalink) > :where(uxdot-copy-permalink.h4, h4),
+      &
+        > :not(section, uxdot-copy-permalink)
+        > :where(uxdot-copy-permalink.h4, h4),
       & > section > :where(uxdot-copy-permalink.h4, h4) {
         margin-block-start: var(--rh-space-3xl);
       }
@@ -151,17 +169,16 @@
   @container main (width >= 1440px) {
     article {
       grid-template-columns:
-        minmax(var(--container-min-width),
-          var(--container-max-width))
+        minmax(var(--container-min-width), var(--container-max-width))
         minmax(14rem, 1fr);
       grid-template-areas:
-        'header header'
-        'content content';
+        "header header"
+        "content content";
 
       &.has-toc {
         grid-template-areas:
-          'header header'
-          'content aside';
+          "header header"
+          "content aside";
 
         & uxdot-toc {
           max-width: 320px;

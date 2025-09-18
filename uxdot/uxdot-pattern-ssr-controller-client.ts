@@ -22,7 +22,9 @@ export class UxdotPatternSSRControllerClient extends RHDSSSRController {
       for (const bad of rest) {
         bad.remove();
       }
-      for (const sigh of this.host.shadowRoot!.querySelectorAll('[defer-hydration]')) {
+      for (const sigh of this.host.shadowRoot!.querySelectorAll(
+        '[defer-hydration]'
+      )) {
         sigh.removeAttribute('defer-hydration');
         (sigh as LitElement).requestUpdate?.();
       }

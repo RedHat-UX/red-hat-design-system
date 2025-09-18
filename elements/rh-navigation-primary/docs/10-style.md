@@ -61,7 +61,6 @@ Primary menus organize high-level topics into sections. When expanded, all menu 
        height="478">
 </uxdot-example>
 
-
 ### Utility menus
 
 Utility menus organize secondary content like important user actions. The height and width of each menu is determined by the content inside. Some menus may have a different size than others.

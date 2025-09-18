@@ -2,11 +2,14 @@
   <form id="nested-label">
     <fieldset>
       <legend>Nested in a label</legend>
-      <label> Dark Mode
-        <rh-switch name="status"
-                   message-on="On"
-                   message-off="Off"
-                   checked></rh-switch>
+      <label>
+        Dark Mode
+        <rh-switch
+          name="status"
+          message-on="On"
+          message-off="Off"
+          checked
+        ></rh-switch>
       </label>
       <rh-button type="submit">Submit</rh-button>
       <output>Submit to read status</output>
@@ -15,13 +18,18 @@
 </section>
 
 <script type="module">
-  import '@rhds/elements/rh-switch/rh-switch.js';
-  import '@rhds/elements/rh-button/rh-button.js';
+  import "@rhds/elements/rh-switch/rh-switch.js";
+  import "@rhds/elements/rh-button/rh-button.js";
 
-  document.getElementById('nested-label').addEventListener('submit', /** @this {HTMLFormElement} */function(event) {
-    event.preventDefault();
-    this.querySelector('output').textContent = `Dark mode ${this.elements.status.checked ? 'On' : 'Off'}`;
-  });
+  document.getElementById("nested-label").addEventListener(
+    "submit",
+    /** @this {HTMLFormElement} */ function (event) {
+      event.preventDefault();
+      this.querySelector("output").textContent = `Dark mode ${
+        this.elements.status.checked ? "On" : "Off"
+      }`;
+    }
+  );
 </script>
 
 <style>
@@ -32,7 +40,10 @@
   fieldset {
     display: grid;
     grid-template-columns: min-content max-content;
-    gap: var(--rh-c-switch--ColumnGap, var(--rh-c-switch__label--PaddingLeft, 1rem));
+    gap: var(
+      --rh-c-switch--ColumnGap,
+      var(--rh-c-switch__label--PaddingLeft, 1rem)
+    );
     &:has(#reversed) {
       grid-template-columns: max-content min-content;
     }

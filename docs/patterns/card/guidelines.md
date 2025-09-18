@@ -32,17 +32,19 @@ subnav:
 
 ### Character count
 
-The recommended maximum character count for the elements of a card are listed 
+The recommended maximum character count for the elements of a card are listed
 below and include spaces.
 
 <rh-table>
 
-  Element     Character count
-  ----------- -----------------
-  Title       20
-  Headline    50
-  Body text   165
-  Footer      55
+Element Character count
+
+---
+
+Title 20
+Headline 50
+Body text 165
+Footer 55
 
 </rh-table>
 

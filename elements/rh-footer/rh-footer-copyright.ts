@@ -19,4 +19,3 @@ declare global {
     'rh-footer-copyright': RhFooterCopyright;
   }
 }
-

@@ -7,10 +7,12 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
-import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import {
+  colorPalettes,
+  type ColorPalette,
+} from '@rhds/elements/lib/color-palettes.js';
 
 import styles from './rh-navigation-secondary-menu.css';
-
 
 /**
  * Dropdown menu for secondary nav, available in full-width and fixed-with sizes
@@ -25,13 +27,15 @@ export class RhNavigationSecondaryMenu extends LitElement {
    * Color palette (default: lightest)
    * Secondary nav menus are always represented on the lightest color palette.
    */
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'lightest';
+  @property({ reflect: true, attribute: 'color-palette' })
+  colorPalette: ColorPalette = 'lightest';
 
   /**
    * Layout (default: full-width)
    * Secondary nav menus by default are always full-width, but can be set to fixed-width for special cases.
    */
-  @property({ reflect: true }) layout: 'fixed-width' | 'full-width' = 'full-width';
+  @property({ reflect: true }) layout: 'fixed-width' | 'full-width' =
+    'full-width';
 
   #screenSize = new ScreenSizeController(this);
 
@@ -51,21 +55,22 @@ export class RhNavigationSecondaryMenu extends LitElement {
 
     return html`
       <!-- container - \`<div>\` element, wrapper for menus -->
-      <div id="container" class="${classMap({ compact, visible })}">${this.layout === 'full-width' ? html`
-        <!-- container - \`<div>\` element, wrapper for full-width menus -->
-        <div id="full-width" part="full-width">
-          <!-- container - \`<div>\` element, wrapper for menu sections -->
-          <div id="sections" part="sections">
-            <!-- Optional \`<rh-navigation-secondary-menu-section>\` elements or content following [design guidelines](../guidelines/#expandable-tray) -->
-            <slot></slot>
-          </div>
-        </div>` : html`
-        <!-- container - \`<div>\` element, wrapper for fixed-width menus -->
-        <div id="fixed-width" part="fixed-width">
-          <div id="sections" part="sections">
-            <slot></slot>
-          </div>
-        </div>`}
+      <div id="container" class="${classMap({ compact, visible })}">
+        ${this.layout === 'full-width' ?
+          html` <!-- container - \`<div>\` element, wrapper for full-width menus -->
+              <div id="full-width" part="full-width">
+                <!-- container - \`<div>\` element, wrapper for menu sections -->
+                <div id="sections" part="sections">
+                  <!-- Optional \`<rh-navigation-secondary-menu-section>\` elements or content following [design guidelines](../guidelines/#expandable-tray) -->
+                  <slot></slot>
+                </div>
+              </div>`
+          : html` <!-- container - \`<div>\` element, wrapper for fixed-width menus -->
+              <div id="fixed-width" part="fixed-width">
+                <div id="sections" part="sections">
+                  <slot></slot>
+                </div>
+              </div>`}
       </div>
     `;
   }

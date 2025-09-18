@@ -34,7 +34,6 @@ Column and row titles should be a few words that describe the data in that colum
        height="976">
 </uxdot-example>
 
-
 ## Table title and caption
 
 The table title should make it clear to a user what the data is and what purpose it serves. A caption can be added under the table to provide more information about the data or its source.
@@ -46,8 +45,8 @@ The table title should make it clear to a user what the data is and what purpose
        height="319">
 </uxdot-example>
 
-
 ## Color scheme
+
 <a id="theme"></a>
 
 A table is available in both light and dark color schemes.
@@ -61,7 +60,6 @@ A table is available in both light and dark color schemes.
        height="224">
 </uxdot-example>
 
-
 ### Dark scheme
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
@@ -70,7 +68,6 @@ A table is available in both light and dark color schemes.
        width="928"
        height="224">
 </uxdot-example>
-
 
 ## Scrolling
 
@@ -82,7 +79,6 @@ A scrollbar is visible if content exceeds the width or height of a table. Conten
        width="872"
        height="1044">
 </uxdot-example>
-
 
 ## Space
 
@@ -103,7 +99,7 @@ Interaction states are visual representations used to communicate the status of 
 
 ### Hover
 
-On hover, cell rows and columns are highlighted with a semitransparent background color to make content easier to view. 
+On hover, cell rows and columns are highlighted with a semitransparent background color to make content easier to view.
 
 In light scheme, a row is highlighted in light gray on white surface colors. The column highlight is light blue.
 
@@ -122,7 +118,6 @@ On all dark color palettes, the row highlight is white, and the column highlight
        width="872"
        height="512">
 </uxdot-example>
-
 
 ### Focus
 

@@ -6,7 +6,7 @@
   container-type: inline-size;
 }
 
-[part='tabs-container'] {
+[part="tabs-container"] {
   --_tab-max-width: 200px;
 
   @container host (min-width: 768px) {
@@ -27,11 +27,11 @@
   }
 }
 
-:is([part='tabs'], [part='panels']) {
+:is([part="tabs"], [part="panels"]) {
   display: block;
 }
 
-[part='tabs'] {
+[part="tabs"] {
   scrollbar-width: none;
   position: relative;
   max-width: 100%;
@@ -43,17 +43,17 @@
   font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
-:is([part='tabs-container'], [part='tabs'], button) {
+:is([part="tabs-container"], [part="tabs"], button) {
   &:before {
     position: absolute;
     inset-block-end: 0;
     inset-inline: 0;
-    content: '';
+    content: "";
     border-style: solid;
   }
 }
 
-:is([part='tabs'], button) {
+:is([part="tabs"], button) {
   &:before {
     top: 0;
   }
@@ -64,7 +64,7 @@
 }
 
 button,
-[part='tabs']:before {
+[part="tabs"]:before {
   border: 0;
 }
 
@@ -97,9 +97,10 @@ button {
   --_overflow-button-text-color: var(--rh-color-text-secondary);
 
   /* Non Standard usage of crayon token */
-  --_overflow-button-disabled-text-color:
-    light-dark(var(--rh-color-gray-40, #a3a3a3),
-      var(--rh-color-gray-50, #707070));
+  --_overflow-button-disabled-text-color: light-dark(
+    var(--rh-color-gray-40, #a3a3a3),
+    var(--rh-color-gray-50, #707070)
+  );
   --_overflow-button-hover-text-color: var(--rh-color-text-primary);
 
   color: var(--rh-color-text-primary);
@@ -112,9 +113,9 @@ button {
     @container host (min-width: 768px) {
       display: grid;
       grid-template-columns: max-content 1fr;
-      grid-template-areas: 'tabs panels';
+      grid-template-areas: "tabs panels";
 
-      [part='tabs-container'] {
+      [part="tabs-container"] {
         grid-area: tabs;
         display: inline-flex;
         flex-direction: column;
@@ -129,11 +130,11 @@ button {
         }
       }
 
-      [part='panels'] {
+      [part="panels"] {
         grid-area: panels;
       }
 
-      [part='tabs'] {
+      [part="tabs"] {
         flex-direction: column;
         flex-grow: 1;
         max-width: 15.625rem;
@@ -144,7 +145,7 @@ button {
       @container host (min-width: 768px) {
         --_panel-padding: var(--rh-space-3xl, 48px);
 
-        [part='tabs-container'] {
+        [part="tabs-container"] {
           &:before {
             border-inline-start-width: 0;
             border-inline-end-width: var(--rh-border-width-sm, 1px);
@@ -157,7 +158,7 @@ button {
   &.overflow {
     --_panel-padding: var(--rh-space-lg, 16px);
 
-    & [part='tabs'] {
+    & [part="tabs"] {
       --_inset-inline-margin: 0;
 
       position: relative;
@@ -165,7 +166,7 @@ button {
       z-index: 1;
     }
 
-    & [part='panels'] {
+    & [part="panels"] {
       --_panels-overflow-padding: var(--rh-space-2xl, 32px);
     }
   }
@@ -173,7 +174,7 @@ button {
   &:not(.vertical) {
     &.box {
       &.inset {
-        & [part='container']:not(.overflow) {
+        & [part="container"]:not(.overflow) {
           --_panel-padding: var(--rh-space-2xl, 32px) var(--rh-space-4xl, 64px);
         }
       }
@@ -181,11 +182,11 @@ button {
   }
 }
 
-:host([box='inset']:not([vertical])) #container [part='tabs'] {
+:host([box="inset"]:not([vertical])) #container [part="tabs"] {
   --_inset-inline-margin: var(--rh-space-2xl, 32px);
 }
 
-:host(:is([centered], [box='inset'])) #container:not(.overflow) [part='tabs'] {
+:host(:is([centered], [box="inset"])) #container:not(.overflow) [part="tabs"] {
   /** Tabs inset */
   margin-inline: var(--rh-tabs-inset, var(--_inset-inline-margin, auto));
 }
@@ -201,15 +202,21 @@ button {
 
   &:before {
     border-block-start: var(--rh-border-width-sm, 1px) solid transparent;
-    border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
-    border-inline: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+    border-block-end: var(--rh-border-width-sm, 1px) solid
+      var(--rh-color-border-subtle);
+    border-inline: var(--rh-border-width-sm, 1px) solid
+      var(--rh-color-border-subtle);
   }
 
   &:hover {
-    color: var(--_overflow-button-hover-text-color, var(--rh-color-text-primary));
+    color: var(
+      --_overflow-button-hover-text-color,
+      var(--rh-color-text-primary)
+    );
 
     &:before {
-      border-block-end: var(--rh-border-width-lg, 3px) solid var(--rh-color-border-subtle);
+      border-block-end: var(--rh-border-width-lg, 3px) solid
+        var(--rh-color-border-subtle);
     }
   }
 

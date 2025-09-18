@@ -25,7 +25,11 @@ export class I18nController implements ReactiveController {
   }
 
   hostConnected(): void {
-    this.#mo.observe(this.host, { childList: true, attributes: true, attributeFilter: ['lang'] });
+    this.#mo.observe(this.host, {
+      childList: true,
+      attributes: true,
+      attributeFilter: ['lang'],
+    });
     this.update();
   }
 
@@ -39,7 +43,7 @@ export class I18nController implements ReactiveController {
     }
     let lang =
       this.host.getAttribute('lang')
-        || this.host.closest('[lang]')?.getAttribute('lang');
+      || this.host.closest('[lang]')?.getAttribute('lang');
     let root = this.host.getRootNode();
     while (!lang && root instanceof ShadowRoot) {
       lang = root.host.closest('[lang]')?.getAttribute('lang') as string;
@@ -88,7 +92,11 @@ export class I18nController implements ReactiveController {
     this.host.requestUpdate();
   }
 
-  async loadTranslation(url: URL, lang: LanguageCode = this.language, force = false) {
+  async loadTranslation(
+    url: URL,
+    lang: LanguageCode = this.language,
+    force = false
+  ) {
     if (!!url && (!!force || !this.#microcopy.has(lang))) {
       try {
         const file = await fetch(url).then(result => result.json());

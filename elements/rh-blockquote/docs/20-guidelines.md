@@ -16,6 +16,7 @@ Use the Default size for large amounts of text and the Large size for small amou
 ## Layout
 
 ### Alignment
+
 A blockquote should be aligned left by default, but sometimes they can be centered.
 
 <rh-alert state="warning">
@@ -40,7 +41,6 @@ An acceptable minimum blockquote width is 4 desktop grid columns. If a blockquot
       width="1132" 
       height="560">
 </uxdot-example>
-
 
 ### Maximum width
 

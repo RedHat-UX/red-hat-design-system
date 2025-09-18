@@ -36,7 +36,6 @@ export default tseslint.config(
       '!elements/*/demo/*.js',
 
       '.cache/*',
-
     ],
   },
   {

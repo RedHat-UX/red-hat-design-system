@@ -24,7 +24,6 @@
   }
 </style>
 
-
 ## Style
 
 Cards can be used in light and dark themes. They act as a blank canvas where
@@ -38,6 +37,7 @@ elements and styles can be placed inside.
 </uxdot-example>
 
 ## Color scheme
+
 <a id="theme"></a>
 
 All card variants are available for light and dark color schemes.
@@ -60,20 +60,20 @@ All card variants are available for light and dark color schemes.
         height="507">
 </uxdot-example>
 
-Cards can also set any of the six [color palettes](/theming/color-palettes/) to 
-create an emphasized or contrasting section of the page. If a card inherits one 
-of the six color palettes from a parent component, it will have either a 
-`Lightest` or `Darkest` background. 
+Cards can also set any of the six [color palettes](/theming/color-palettes/) to
+create an emphasized or contrasting section of the page. If a card inherits one
+of the six color palettes from a parent component, it will have either a
+`Lightest` or `Darkest` background.
 
-[Promo](#promo) cards can only use the `Lightest` or `Darkest` color palettes, 
-while [standard promo](#standard-promo) cards can only use the `Lighter` or 
+[Promo](#promo) cards can only use the `Lightest` or `Darkest` color palettes,
+while [standard promo](#standard-promo) cards can only use the `Lighter` or
 `Darker` color palettes.
 
 ### Color
 
-Cards are secondary layouts that shouldn’t command too much attention. Instead 
-they should blend in with whatever background they’re placed on. The card 
-container is the only required element and it consists of a background color, 
+Cards are secondary layouts that shouldn’t command too much attention. Instead
+they should blend in with whatever background they’re placed on. The card
+container is the only required element and it consists of a background color,
 rounded corners, and a thin border.
 
 <div class="grid">
@@ -216,15 +216,15 @@ become thinner, the container padding decreases.
 
 ## Promo
 
-Promo cards are available in four different configurations: standard, featured, 
+Promo cards are available in four different configurations: standard, featured,
 full-width, and narrow.
 
 ### Configurations
 
 #### Standard promo
 
-A standard promo has a subtle border, but it uses the `Lighter` or `Darker` 
-surface color. It does not have an image slot and the call to action appears 
+A standard promo has a subtle border, but it uses the `Lighter` or `Darker`
+surface color. It does not have an image slot and the call to action appears
 either to the left or right of the text.
 
 <uxdot-example color-palette="lightest" width-adjustment="1012px">
@@ -236,7 +236,7 @@ either to the left or right of the text.
 
 #### Featured promo
 
-A featured promo uses the `Lightest` or `Darkest` surface color with a subtle 
+A featured promo uses the `Lightest` or `Darkest` surface color with a subtle
 border. An image can optionally appear on the left or right side of a promo.
 
 <uxdot-example color-palette="lightest" width-adjustment="1012px">
@@ -248,9 +248,9 @@ border. An image can optionally appear on the left or right side of a promo.
 
 #### Full-width promo
 
-A full-width promo bleeds to the left and right edges of the screen. It does not 
-have a border. Similarly to a featured promo, a full-width promo can use either 
-the `Lightest` or `Darkest` surface color, and it can have no image or an image 
+A full-width promo bleeds to the left and right edges of the screen. It does not
+have a border. Similarly to a featured promo, a full-width promo can use either
+the `Lightest` or `Darkest` surface color, and it can have no image or an image
 positioned to the left or right of the text.
 
 <uxdot-example color-palette="lightest" width-adjustment="1012px" variant="full">
@@ -262,9 +262,9 @@ positioned to the left or right of the text.
 
 #### Narrow promo
 
-A Narrow promo can fit into a section or container smaller than 296 pixels. It 
-moves an image in any type of promo below the body text and call to action. This 
-is also the configuration used on phone viewports for a featured, standard 
+A Narrow promo can fit into a section or container smaller than 296 pixels. It
+moves an image in any type of promo below the body text and call to action. This
+is also the configuration used on phone viewports for a featured, standard
 promo, or full-width promo.
 
 <uxdot-example color-palette="lightest" width-adjustment="752px">
@@ -275,6 +275,7 @@ promo, or full-width promo.
 </uxdot-example>
 
 ### Color scheme
+
 <a id="theme-1"></a>
 
 The standard promo can set the `Lighter` or `Darker` color palettes. It can
@@ -287,7 +288,7 @@ appear on either light or dark backgrounds.
        height="294">
 </uxdot-example>
 
-The featured and full-width promos can set the `Lightest` and `Darkest` color 
+The featured and full-width promos can set the `Lightest` and `Darkest` color
 palettes, and can appear on either light or dark backgrounds.
 
 <uxdot-example color-palette="lightest" width-adjustment="1140" no-border variant="full">
@@ -299,12 +300,12 @@ palettes, and can appear on either light or dark backgrounds.
 
 ### Responsive Design
 
-When promos are viewed on phone viewports or added to small containers, they 
+When promos are viewed on phone viewports or added to small containers, they
 will use the [Narrow promo](/elements/card/style/#narrow-promo) configuration.
 
 ### Spacing
 
-Except for narrow promos, spacing within the other promo configurations is a 
+Except for narrow promos, spacing within the other promo configurations is a
 little different from Card.
 
 <uxdot-example color-palette="lightest" class="promo-spacing" alignment="left">

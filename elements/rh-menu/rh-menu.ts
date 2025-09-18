@@ -10,10 +10,7 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import styles from './rh-menu.css';
 
 export class MenuToggleEvent extends Event {
-  constructor(
-    public open: boolean,
-    public menu: HTMLElement
-  ) {
+  constructor(public open: boolean, public menu: HTMLElement) {
     super('toggle', { bubbles: true });
   }
 }
@@ -28,7 +25,10 @@ export class MenuToggleEvent extends Event {
 export class RhMenu extends LitElement {
   static readonly styles = [styles];
 
-  static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
+  static shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+  };
 
   @queryAssignedElements() private _menuItems!: HTMLElement[];
 
@@ -60,8 +60,7 @@ export class RhMenu extends LitElement {
   render() {
     return html`
       <!-- menu items -->
-      <slot part="menu"
-            @slotchange="${this.#onSlotchange}"></slot>
+      <slot part="menu" @slotchange="${this.#onSlotchange}"></slot>
     `;
   }
 

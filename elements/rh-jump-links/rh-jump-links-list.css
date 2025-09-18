@@ -14,13 +14,15 @@
     border-inline-start: var(--_bdr);
 
     ::slotted(rh-jump-link[slot][active]),
-    ::slotted(rh-jump-link[slot]) { /* hide border for parent item */
+    ::slotted(rh-jump-link[slot]) {
+      /* hide border for parent item */
       --_bdr-c: none;
 
       margin-left: -1px;
     }
 
-    ::slotted(rh-jump-link:not([slot])) { /* exclude parent item */
+    ::slotted(rh-jump-link:not([slot])) {
+      /* exclude parent item */
       --_padding-inline-start: var(--rh-space-lg, 16px);
       --_bdr: none;
       --_active_bdr: none;
@@ -38,20 +40,22 @@
 
   &.active {
     &:before {
-      content: '';
+      content: "";
       display: block;
       position: absolute;
     }
 
     &.vertical:before {
-      border-inline-start: var(--rh-length-xs, 4px) solid var(--rh-color-brand-red);
+      border-inline-start: var(--rh-length-xs, 4px) solid
+        var(--rh-color-brand-red);
       height: 100%;
       inset-inline-start: 0;
       inset-block: 0;
     }
 
     &.horizontal:before {
-      border-block-start: var(--rh-length-xs, 4px) solid var(--rh-color-brand-red);
+      border-block-start: var(--rh-length-xs, 4px) solid
+        var(--rh-color-brand-red);
       width: 100%;
       inset-block-start: 0;
       inset-inline: 0;

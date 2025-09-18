@@ -9,7 +9,6 @@ Users will interact with the skip link using a keyboard primarily.
        height="651">
 </uxdot-example>
 
-
 <rh-table>
 
 | <kbd>Key</kbd>         | Result                                                                                     |
@@ -19,7 +18,6 @@ Users will interact with the skip link using a keyboard primarily.
 | <kbd>Enter</kbd>       | Activates the skip link and shifts focus to the main content                               |
 
 </rh-table>
-
 
 ## Focus order
 
@@ -32,10 +30,9 @@ The skip link should be the first item on a page to receive focus. After the ski
        height="628">
 </uxdot-example>
 
-
 ## Hiding a skip link
 
-In order to hide the skip link until it’s called by the user, positioning it outside the viewport is recommended. Using `display: none` or the `hidden` attribute in CSS removes it from keyboard navigation and makes it unusable. Other methods, like making its size equal to 0px, can also prevent screen readers from accessing the element. 
+In order to hide the skip link until it’s called by the user, positioning it outside the viewport is recommended. Using `display: none` or the `hidden` attribute in CSS removes it from keyboard navigation and makes it unusable. Other methods, like making its size equal to 0px, can also prevent screen readers from accessing the element.
 
 Learn more about [making invisible content
 accessible](https://webaim.org/techniques/css/invisiblecontent/) for

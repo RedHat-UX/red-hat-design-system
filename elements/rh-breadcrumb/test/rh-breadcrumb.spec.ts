@@ -9,12 +9,13 @@ describe('<rh-breadcrumb>', function() {
   describe('simply instantiating', function() {
     let element: RhBreadcrumb;
     it('should upgrade', async function() {
-      element = await createFixture<RhBreadcrumb>(html`<rh-breadcrumb></rh-breadcrumb>`);
+      element = await createFixture<RhBreadcrumb>(
+        html`<rh-breadcrumb></rh-breadcrumb>`
+      );
       const klass = customElements.get('rh-breadcrumb');
       expect(element)
           .to.be.an.instanceOf(klass)
-          .and
-          .to.be.an.instanceOf(RhBreadcrumb);
+          .and.to.be.an.instanceOf(RhBreadcrumb);
     });
   });
 
@@ -37,8 +38,7 @@ describe('<rh-breadcrumb>', function() {
     });
 
     it('should be accessible', async function() {
-      await expect(element)
-          .to.be.accessible();
+      await expect(element).to.be.accessible();
     });
 
     it('should have nav element with aria-label "Breadcrumb"', async function() {
@@ -105,7 +105,9 @@ describe('<rh-breadcrumb>', function() {
       const { shadowRoot } = element;
       const navElement = shadowRoot?.querySelector('nav');
       expect(navElement).to.exist;
-      expect(navElement?.getAttribute('aria-label')).to.equal(customAccessibleLabel);
+      expect(navElement?.getAttribute('aria-label')).to.equal(
+        customAccessibleLabel
+      );
     });
   });
 

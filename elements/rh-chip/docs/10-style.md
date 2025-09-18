@@ -68,7 +68,6 @@ Chips and chip groups are available in both light and dark color schemes.
         height="29">
 </uxdot-example>
 
-
 ## Space
 
 The space in each chip is the same for both sizes. The `--rh-space-md` token is used after the legend as well as in between each subsequent chip.

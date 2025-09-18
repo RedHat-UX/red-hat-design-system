@@ -31,12 +31,14 @@ export class RhTimestamp extends LitElement {
   /**
    * Custom date formatting style. See [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle) for options.
    */
-  @property({ reflect: true, attribute: 'date-format' }) dateFormat?: DateTimeFormat;
+  @property({ reflect: true, attribute: 'date-format' })
+  dateFormat?: DateTimeFormat;
 
   /**
    * Custom time formatting style. See [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#timestyle) for options.
    */
-  @property({ reflect: true, attribute: 'time-format' }) timeFormat?: DateTimeFormat;
+  @property({ reflect: true, attribute: 'time-format' })
+  timeFormat?: DateTimeFormat;
 
   /**
    * Custom date and time formatting options. See [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options) for a list of options.
@@ -46,7 +48,8 @@ export class RhTimestamp extends LitElement {
   /**
    * Text to display after the timestamp
    */
-  @property({ reflect: true, attribute: 'display-suffix' }) displaySuffix?: string;
+  @property({ reflect: true, attribute: 'display-suffix' })
+  displaySuffix?: string;
 
   /**
    * Overrides the runtime's default locale
@@ -70,7 +73,8 @@ export class RhTimestamp extends LitElement {
     reflect: true,
     attribute: 'hour-12',
     converter: BooleanStringConverter,
-  }) hour12?: boolean;
+  })
+  hour12?: boolean;
 
   /**
    * A string value representing a date
@@ -110,7 +114,9 @@ export class RhTimestamp extends LitElement {
 
   override render() {
     return html`
-      <time datetime="${this.#timestamp.isoString}">${this.#timestamp.time}</time>
+      <time datetime="${this.#timestamp.isoString}"
+        >${this.#timestamp.time}</time
+      >
     `;
   }
 }

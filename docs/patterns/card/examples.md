@@ -49,40 +49,41 @@ text may be used to describe the asset.
 
 ## Avatars card
 
-  Use to highlight a group of people who engage in an event. A label
-  should be included, but including text is optional.
+Use to highlight a group of people who engage in an event. A label
+should be included, but including text is optional.
 
-  Use the [`<rh-avatar>`](/elements/avatar/) element to element to present
-  the list of users.
+Use the [`<rh-avatar>`](/elements/avatar/) element to element to present
+the list of users.
 
 <uxdot-pattern src="./patterns/avatars.html">
 </uxdot-pattern>
 
 ## Fast facts card
 
-  Use to display quick facts or short data points under a label. A Secondary
-  call to action may be used or not.
+Use to display quick facts or short data points under a label. A Secondary
+call to action may be used or not.
 
 <uxdot-pattern src="./patterns/fast-facts.html">
 </uxdot-pattern>
 
 ## Icon card
 
-  Use to add an icon to the basic style above the text. Secondary and Default
-  calls to action may be used.
+Use to add an icon to the basic style above the text. Secondary and Default
+calls to action may be used.
 
 <uxdot-pattern src="./patterns/icon.html">
 </uxdot-pattern>
 
 ## Image card
 
-  Use to add an image to the basic style above the text.
-  Secondary and Default calls to action may be used.
+Use to add an image to the basic style above the text.
+Secondary and Default calls to action may be used.
 
 <uxdot-pattern src="./patterns/image.html">
 </uxdot-pattern>
 
 ## List cards
+
 Use to display a short amount of content using various list styles.
 Secondary and Default calls to action may be used.
 
@@ -111,6 +112,7 @@ Secondary and Default calls to action may be used.
 </uxdot-pattern>
 
 ## Logo cards
+
 Use to display a customer logo in a variety of arrangements. A call to
 action is required, otherwise use a logo wall.
 
@@ -119,15 +121,17 @@ action is required, otherwise use a logo wall.
 </uxdot-pattern>
 
 ### Text and CTA
+
 <uxdot-pattern src="./patterns/logo-text-and-cta.html">
 </uxdot-pattern>
 
 ## Title bar card
-  Use to add a small icon and a label group to the header section. A larger
-  icon or a logo may be used.
 
-  Alternative title bar styles can be achieved by selecting [card's `header`
-  CSS Shadow Part](/elements/card/code/#parts).
+Use to add a small icon and a label group to the header section. A larger
+icon or a logo may be used.
+
+Alternative title bar styles can be achieved by selecting [card's `header`
+CSS Shadow Part](/elements/card/code/#parts).
 <uxdot-pattern src="./patterns/title-bar.html">
 </uxdot-pattern>
 

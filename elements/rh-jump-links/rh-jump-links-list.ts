@@ -26,7 +26,8 @@ export class RhJumpLinksList extends LitElement {
 
   /** Whether the layout of children is vertical or horizontal. */
   @consume({ context: rhJumpLinksOrientationContext, subscribe: true })
-  @state() private orientation?: 'horizontal' | 'vertical';
+  @state()
+  private orientation?: 'horizontal' | 'vertical';
 
   /** Whether this item is active. */
   @property({ type: Boolean, reflect: true }) active = false;
@@ -41,16 +42,17 @@ export class RhJumpLinksList extends LitElement {
     return html`
       <div id="container" class="${classMap({ active, [orientation]: true })}">
         <slot name="parent"></slot>
-        <div id="list"
-             ?hidden="${this.orientation === 'horizontal' || !active}"
-             role="list">
+        <div
+          id="list"
+          ?hidden="${this.orientation === 'horizontal' || !active}"
+          role="list"
+        >
           <slot></slot>
         </div>
       </div>
     `;
   }
 }
-
 
 declare global {
   interface HTMLElementTagNameMap {

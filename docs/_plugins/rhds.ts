@@ -1,7 +1,15 @@
 import type { UserConfig } from '@11ty/eleventy';
 import type { RepoStatusRecord } from './types.js';
 import { join, dirname, relative } from 'node:path';
-import { cp, glob, readdir, writeFile, mkdir, readFile, stat } from 'node:fs/promises';
+import {
+  cp,
+  glob,
+  readdir,
+  writeFile,
+  mkdir,
+  readFile,
+  stat,
+} from 'node:fs/promises';
 import { makeDemoEnv } from '#scripts/environment.js';
 
 import { $ } from 'execa';
@@ -30,7 +38,9 @@ const pfeconfig = getPfeConfig();
  * @param  tagName e.g. pf-jazz-hands
  */
 function getTagNameSlug(tagName: string) {
-  const name = pfeconfig?.aliases?.[tagName] ?? tagName.replace(`${pfeconfig?.tagPrefix ?? 'rh'}-`, '');
+  const name =
+    pfeconfig?.aliases?.[tagName]
+    ?? tagName.replace(`${pfeconfig?.tagPrefix ?? 'rh'}-`, '');
   return slugify.default(name, {
     strict: true,
     lower: true,
@@ -62,7 +72,9 @@ const cwd = process.cwd();
  * Load and aggregate element data from colocated YAML files
  */
 async function loadAggregatedElementData(): Promise<RepoStatusRecord[]> {
-  const elementDirs = (await readdir(join(cwd, 'elements'), { withFileTypes: true }))
+  const elementDirs = (
+    await readdir(join(cwd, 'elements'), { withFileTypes: true })
+  )
       .filter(ent => ent.isDirectory() && ent.name.startsWith('rh-'))
       .map(ent => ent.name);
 
@@ -78,7 +90,9 @@ async function loadAggregatedElementData(): Promise<RepoStatusRecord[]> {
       const data = yaml.load(yamlContent) as Partial<RepoStatusRecord>;
 
       // Derive name from aliases or tag name
-      const name = pfeconfig?.aliases?.[tagName] ?? capitalize(tagName.replace(`${pfeconfig?.tagPrefix ?? 'rh'}-`, ''));
+      const name =
+        pfeconfig?.aliases?.[tagName]
+        ?? capitalize(tagName.replace(`${pfeconfig?.tagPrefix ?? 'rh'}-`, ''));
 
       // Merge derived data with YAML data
       const record: RepoStatusRecord = {
@@ -103,18 +117,24 @@ async function loadAggregatedElementData(): Promise<RepoStatusRecord[]> {
 async function getFilesToCopy() {
   // Copy element demo files
   const repoRoot = cwd;
-  const tagNames = (await readdir(join(repoRoot, 'elements'), { withFileTypes: true }))
+  const tagNames = (
+    await readdir(join(repoRoot, 'elements'), { withFileTypes: true })
+  )
       .filter(ent => ent.isDirectory())
       .map(ent => ent.name);
 
   // Copy all component and core files to _site
-  return Object.fromEntries(tagNames.flatMap(tagName => {
-    const slug = getTagNameSlug(tagName);
-    return Object.entries({
-      [`elements/${tagName}/demo/`]: `elements/${slug}/demo`,
-      [`elements/${tagName}/docs/**/*.{${COPY_CONTENT_EXTENSIONS.join(',')}}`]: `elements/${slug}`,
-    });
-  }));
+  return Object.fromEntries(
+    tagNames.flatMap(tagName => {
+      const slug = getTagNameSlug(tagName);
+      return Object.entries({
+        [`elements/${tagName}/demo/`]: `elements/${slug}/demo`,
+        [`elements/${tagName}/docs/**/*.{${COPY_CONTENT_EXTENSIONS.join(
+          ','
+        )}}`]: `elements/${slug}`,
+      });
+    })
+  );
 }
 
 export interface Options {
@@ -125,16 +145,12 @@ export interface Options {
   tsconfig: string;
 }
 
-
 async function clean() {
   await $`npx tspc -b elements --clean`;
   await $`npx tspc -b lib --clean`;
 }
 
-export default async function(
-  eleventyConfig: UserConfig,
-  options?: Options,
-) {
+export default async function(eleventyConfig: UserConfig, options?: Options) {
   /** add the normalized pfe-tools config to global data */
   eleventyConfig.addGlobalData('pfeconfig', getPfeConfig());
 
@@ -148,20 +164,31 @@ export default async function(
     { title: 'Elements', url: '/elements', collection: 'elementDocs' },
     { title: 'Theming', url: '/theming', collection: 'theming' },
     { title: 'Patterns', url: '/patterns', collection: 'pattern' },
-    { title: 'Personalization', url: '/personalization', collection: 'personalization' },
-    { title: 'Accessibility', url: '/accessibility', collection: 'accessibility' },
+    {
+      title: 'Personalization',
+      url: '/personalization',
+      collection: 'personalization',
+    },
+    {
+      title: 'Accessibility',
+      url: '/accessibility',
+      collection: 'accessibility',
+    },
   ]);
 
   // Add repo status data as global data for components
   eleventyConfig.addGlobalData('repoStatusData', loadAggregatedElementData);
 
-  eleventyConfig.addDataExtension('yml, yaml', (contents: string) => yaml.load(contents));
+  eleventyConfig.addDataExtension('yml, yaml', (contents: string) =>
+    yaml.load(contents)
+  );
 
   eleventyConfig.addPassthroughCopy('docs/demo.{js,map,ts}');
   eleventyConfig.addPassthroughCopy('docs/theming/**/*.css');
 
   eleventyConfig.addPassthroughCopy({
-    'node_modules/element-internals-polyfill': '/assets/packages/element-internals-polyfill',
+    'node_modules/element-internals-polyfill':
+      '/assets/packages/element-internals-polyfill',
     // ensure icons are copied to the assets dir.
     'node_modules/@patternfly/icons/': '/assets/packages/@patternfly/icons/',
   });
@@ -169,7 +196,6 @@ export default async function(
   eleventyConfig.addPassthroughCopy(await getFilesToCopy(), {
     filter: (path: string) => !path.endsWith('.html'),
   });
-
 
   let hasCleanedSinceWatchStarted = false;
   eleventyConfig.on('eleventy.before', async function({ runMode }) {
@@ -203,9 +229,13 @@ export default async function(
     switch (runMode) {
       case 'build':
         await $`npx tspc -b elements`;
-        await mkdir(join(pkgsDir, '@rhds/elements/elements'), { recursive: true });
+        await mkdir(join(pkgsDir, '@rhds/elements/elements'), {
+          recursive: true,
+        });
         await mkdir(join(pkgsDir, '@rhds/elements/lib'), { recursive: true });
-        for await (const file of glob('./{elements,lib}/**/*.{js,d.ts,map,css}')) {
+        for await (const file of glob(
+          './{elements,lib}/**/*.{js,d.ts,map,css}'
+        )) {
           const rel = relative(cwd, file);
           const outDir = join(pkgsDir, '@rhds/elements');
           const out = join(outDir, dirname(rel));
@@ -263,57 +293,72 @@ export default async function(
     });
   });
 
-  eleventyConfig.addCollection('sortedInteractions', async function(collectionApi) {
-    const interactionsCollection = collectionApi.getFilteredByTags('interactions');
-    return interactionsCollection.sort((a, b) => {
-      if (a.data.order > b.data.order) {
-        return 1;
-      } else if (a.data.order < b.data.order) {
-        return -1;
-      } else {
-        return 0;
-      }
-    });
-  });
+  eleventyConfig.addCollection(
+    'sortedInteractions',
+    async function(collectionApi) {
+      const interactionsCollection =
+        collectionApi.getFilteredByTags('interactions');
+      return interactionsCollection.sort((a, b) => {
+        if (a.data.order > b.data.order) {
+          return 1;
+        } else if (a.data.order < b.data.order) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
+    }
+  );
 
-  eleventyConfig.addCollection('sortedTypography', async function(collectionApi) {
-    const typographyCollection = collectionApi.getFilteredByTags('typography');
-    return typographyCollection.sort((a, b) => {
-      if (a.data.order > b.data.order) {
-        return 1;
-      } else if (a.data.order < b.data.order) {
-        return -1;
-      } else {
-        return 0;
-      }
-    });
-  });
+  eleventyConfig.addCollection(
+    'sortedTypography',
+    async function(collectionApi) {
+      const typographyCollection =
+        collectionApi.getFilteredByTags('typography');
+      return typographyCollection.sort((a, b) => {
+        if (a.data.order > b.data.order) {
+          return 1;
+        } else if (a.data.order < b.data.order) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
+    }
+  );
 
-  eleventyConfig.addCollection('sortedDevelopers', async function(collectionApi) {
-    const developersCollection = collectionApi.getFilteredByTags('developers');
-    return developersCollection.sort((a, b) => {
-      if (a.data.order > b.data.order) {
-        return 1;
-      } else if (a.data.order < b.data.order) {
-        return -1;
-      } else {
-        return 0;
-      }
-    });
-  });
+  eleventyConfig.addCollection(
+    'sortedDevelopers',
+    async function(collectionApi) {
+      const developersCollection =
+        collectionApi.getFilteredByTags('developers');
+      return developersCollection.sort((a, b) => {
+        if (a.data.order > b.data.order) {
+          return 1;
+        } else if (a.data.order < b.data.order) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
+    }
+  );
 
-  eleventyConfig.addCollection('sortedDesigners', async function(collectionApi) {
-    const developersCollection = collectionApi.getFilteredByTags('designers');
-    return developersCollection.sort((a, b) => {
-      if (a.data.order > b.data.order) {
-        return 1;
-      } else if (a.data.order < b.data.order) {
-        return -1;
-      } else {
-        return 0;
-      }
-    });
-  });
+  eleventyConfig.addCollection(
+    'sortedDesigners',
+    async function(collectionApi) {
+      const developersCollection = collectionApi.getFilteredByTags('designers');
+      return developersCollection.sort((a, b) => {
+        if (a.data.order > b.data.order) {
+          return 1;
+        } else if (a.data.order < b.data.order) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
+    }
+  );
 
   eleventyConfig.addWatchTarget('docs/patterns/**/patterns/*.html');
   eleventyConfig.addWatchTarget('docs/theming/**/patterns/*.html');
@@ -330,4 +375,4 @@ export default async function(
   eleventyConfig.addPlugin(RHDSElementDemosPlugin);
   eleventyConfig.addPlugin(RHDSSSRHintHasSlottedPlugin, options);
   eleventyConfig.addPlugin(LitSSRPlugin, options);
-};
+}

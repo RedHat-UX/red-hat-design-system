@@ -25,7 +25,7 @@ let HighlightPairedShortcode: (
     alwaysWrapLineHighlights: boolean;
     preAttributes: Record<string, string>;
     codeAttributes: Record<string, string>;
-  },
+  }
 ) => string;
 
 function dedent(str: string) {
@@ -72,15 +72,21 @@ export class UxdotPatternSSRControllerServer extends RHDSSSRController {
   hasCss = false;
   hasJs = false;
 
-  async #extractInlineContent(kind: 'js' | 'css', partial: Tools.Node, baseUrl: URL) {
-    const prop = kind === 'js' ? 'jsSrc' as const : 'cssSrc' as const;
-    const nodePred = kind === 'js' ? isScript
-                   : kind === 'css' ? isStyle
-                   : () => false;
-    let content = !this.host[prop] ? ''
-                  : await readFile(new URL(this.host[prop], baseUrl.href), 'utf-8');
-    for (const scriptTag of Tools.queryAll(partial, node =>
-      Tools.isElementNode(node) && nodePred(node))) {
+  async #extractInlineContent(
+    kind: 'js' | 'css',
+    partial: Tools.Node,
+    baseUrl: URL
+  ) {
+    const prop = kind === 'js' ? ('jsSrc' as const) : ('cssSrc' as const);
+    const nodePred =
+      kind === 'js' ? isScript : kind === 'css' ? isStyle : () => false;
+    let content = !this.host[prop] ?
+      ''
+      : await readFile(new URL(this.host[prop], baseUrl.href), 'utf-8');
+    for (const scriptTag of Tools.queryAll(
+      partial,
+      node => Tools.isElementNode(node) && nodePred(node)
+    )) {
       content += `\n${dedent(Tools.getTextContent(scriptTag))}`;
       Tools.removeNode(scriptTag);
     }
@@ -97,13 +103,14 @@ export class UxdotPatternSSRControllerServer extends RHDSSSRController {
   }
 
   #highlight(language: string, content: string) {
-    const result = HighlightPairedShortcode(content, language, '', {
-      lineSeparator: '\n',
-      errorOnInvalidLanguage: false,
-      alwaysWrapLineHighlights: false,
-      preAttributes: {},
-      codeAttributes: {},
-    }) ?? '';
+    const result =
+      HighlightPairedShortcode(content, language, '', {
+        lineSeparator: '\n',
+        errorOnInvalidLanguage: false,
+        alwaysWrapLineHighlights: false,
+        preAttributes: {},
+        codeAttributes: {},
+      }) ?? '';
     return result;
   }
 
@@ -114,7 +121,9 @@ export class UxdotPatternSSRControllerServer extends RHDSSSRController {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     delete globalThis.document;
-    const { pairedShortcode } = await import('@11ty/eleventy-plugin-syntaxhighlight');
+    const { pairedShortcode } = await import(
+      '@11ty/eleventy-plugin-syntaxhighlight'
+    );
     // END workaround
     globalThis.document = shim;
     return pairedShortcode;
@@ -135,7 +144,11 @@ export class UxdotPatternSSRControllerServer extends RHDSSSRController {
     // NB: the css and js content functions *mutate* the partial,
     //     so it's important that the HTML content is serialized last, and that
     //     the entire content is printed as the runtime portion of the pattern.
-    const cssContent = await this.#extractInlineContent('css', partial, baseUrl);
+    const cssContent = await this.#extractInlineContent(
+      'css',
+      partial,
+      baseUrl
+    );
     const jsContent = await this.#extractInlineContent('js', partial, baseUrl);
 
     const htmlContent = serialize(partial).trim();

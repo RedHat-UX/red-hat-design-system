@@ -16,31 +16,31 @@
 }
 
 @container (min-width: 320px) {
-  :host([hide-at='xs']) {
+  :host([hide-at="xs"]) {
     display: block;
   }
 }
 
 @container (min-width: 567px) {
-  :host([hide-at='sm']) {
+  :host([hide-at="sm"]) {
     display: block;
   }
 }
 
 @container (min-width: 768px) {
-  :host([hide-at='md']) {
+  :host([hide-at="md"]) {
     display: block;
   }
 }
 
 @container (min-width: 992px) {
-  :host([hide-at='lg']) {
+  :host([hide-at="lg"]) {
     display: block;
   }
 }
 
 @container (min-width: 1200px) {
-  :host([hide-at='xl']) {
+  :host([hide-at="xl"]) {
     display: block;
   }
 }
@@ -51,9 +51,10 @@
 }
 
 #container {
-  --_background-color:
-    light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-      var(--rh-color-surface-darker, #1f1f1f));
+  --_background-color: light-dark(
+    var(--rh-color-surface-lighter, #f2f2f2),
+    var(--rh-color-surface-darker, #1f1f1f)
+  );
   --_box-shadow-color: light-dark(rgba(21, 21, 21, 0.2), rgba(0, 0, 0, 0.6));
 
   display: block;
@@ -89,11 +90,14 @@
       & rh-icon {
         aspect-ratio: unset;
 
-        &[icon='caret-down'] {
+        &[icon="caret-down"] {
           /* non standard, this wont take effect though as microns hard stops at 12px */
           --rh-icon-size: 10px;
 
-          color: light-dark(var(--rh-color-gray-40, #a3a3a3), var(--rh-color-icon-subtle));
+          color: light-dark(
+            var(--rh-color-gray-40, #a3a3a3),
+            var(--rh-color-icon-subtle)
+          );
           transition: rotate 0.2s;
         }
       }
@@ -117,7 +121,7 @@
       }
 
       & summary {
-        & rh-icon[icon='caret-down'] {
+        & rh-icon[icon="caret-down"] {
           rotate: 180deg;
         }
       }
@@ -159,20 +163,20 @@
           &:focus-visible,
           &:hover:focus-visible {
             outline-offset: -2px;
-            outline:
-              var(--rh-border-width-md, 2px)
-              solid
+            outline: var(--rh-border-width-md, 2px) solid
               var(--rh-color-interactive-primary-default);
             border-radius: var(--rh-border-radius-default, 3px);
           }
         }
 
         &[open] {
-          border-inline-start: var(--rh-border-width-lg, 3px) solid var(--rh-color-accent-brand);
-          border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+          border-inline-start: var(--rh-border-width-lg, 3px) solid
+            var(--rh-color-accent-brand);
+          border-inline-end: var(--rh-border-width-sm, 1px) solid
+            var(--rh-color-border-subtle);
 
           & summary {
-            & rh-icon[icon='caret-down'] {
+            & rh-icon[icon="caret-down"] {
               rotate: 180deg;
             }
           }
@@ -217,13 +221,14 @@
           inline-size: max-content;
           align-items: center;
           padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
-          border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+          border: var(--rh-border-width-sm, 1px) solid
+            var(--rh-color-border-subtle);
           border-radius: var(--rh-border-radius-pill, 64px);
           font-size: var(--rh-font-size-body-text-sm, 0.875rem);
           cursor: pointer;
 
           &:before {
-            content: '';
+            content: "";
             position: absolute;
             inset: -1px;
             z-index: -1;
@@ -232,9 +237,10 @@
           }
 
           &:is(:hover, :focus-visible) {
-            background-color:
-              light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-                var(--rh-color-surface-darker, #1f1f1f));
+            background-color: light-dark(
+              var(--rh-color-surface-lighter, #f2f2f2),
+              var(--rh-color-surface-darker, #1f1f1f)
+            );
 
             &:before {
               border: var(--rh-border-width-sm, 1px) solid transparent;
@@ -249,17 +255,24 @@
 
           &:is(:active, :active:hover, :hover, :focus-visible) {
             &:before {
-              background:
-                linear-gradient(light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-                  var(--rh-color-surface-darker, #1f1f1f)) 0 0) padding-box,
-                conic-gradient(from var(--_gradient-direction), var(--_conic-gradient)) border-box;
+              background: linear-gradient(
+                    light-dark(
+                        var(--rh-color-surface-lighter, #f2f2f2),
+                        var(--rh-color-surface-darker, #1f1f1f)
+                      )
+                      0 0
+                  )
+                  padding-box,
+                conic-gradient(
+                    from var(--_gradient-direction),
+                    var(--_conic-gradient)
+                  )
+                  border-box;
             }
           }
 
           &:is(:focus-visible, :hover:focus-visible) {
-            outline:
-              var(--rh-border-width-md, 2px)
-              solid
+            outline: var(--rh-border-width-md, 2px) solid
               var(--rh-color-interactive-primary-default);
             outline-offset: 3px;
           }
@@ -291,8 +304,12 @@
 
           @container (min-width: 1200px) {
             inline-size: fit-content;
-            border-end-end-radius: calc(var(--rh-border-radius-default, 3px) * 2);
-            border-end-start-radius: calc(var(--rh-border-radius-default, 3px) * 2);
+            border-end-end-radius: calc(
+              var(--rh-border-radius-default, 3px) * 2
+            );
+            border-end-start-radius: calc(
+              var(--rh-border-radius-default, 3px) * 2
+            );
           }
         }
 
@@ -301,13 +318,22 @@
             /* stylelint-disable-next-line no-descending-specificity */
             &:before {
               border: var(--rh-border-width-md, 2px) solid transparent;
-              background:
-                linear-gradient(light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-                  var(--rh-color-surface-darker, #1f1f1f)) 0 0) padding-box,
-                conic-gradient(from var(--_gradient-direction), var(--_conic-gradient)) border-box;
+              background: linear-gradient(
+                    light-dark(
+                        var(--rh-color-surface-lighter, #f2f2f2),
+                        var(--rh-color-surface-darker, #1f1f1f)
+                      )
+                      0 0
+                  )
+                  padding-box,
+                conic-gradient(
+                    from var(--_gradient-direction),
+                    var(--_conic-gradient)
+                  )
+                  border-box;
             }
 
-            & rh-icon[icon='caret-down'] {
+            & rh-icon[icon="caret-down"] {
               rotate: 180deg;
             }
           }
@@ -327,9 +353,10 @@
 
     & ::slotted(:is(a:hover, a:focus-visible, :active)) {
       text-underline-offset: 4px !important;
-      text-decoration-color:
-        light-dark(var(--rh-color-gray-50, #707070),
-          var(--rh-color-gray-40, #a3a3a3)) !important;
+      text-decoration-color: light-dark(
+        var(--rh-color-gray-50, #707070),
+        var(--rh-color-gray-40, #a3a3a3)
+      ) !important;
       text-decoration-line: underline !important;
       text-decoration-style: dashed !important;
       text-decoration-skip-ink: auto !important;
@@ -353,7 +380,8 @@
 
       & ::slotted(a:is(:focus-visible, :hover:focus-visible, :active)) {
         outline-offset: 0;
-        outline: var(--rh-border-width-md, 2px) solid var(--rh-color-interactive-primary-default);
+        outline: var(--rh-border-width-md, 2px) solid
+          var(--rh-color-interactive-primary-default);
         border-radius: var(--rh-border-radius-default, 3px);
       }
 
@@ -370,8 +398,7 @@
     }
 
     &.standalone {
-      padding-inline:
-        var(--_padding-inline-start, var(--rh-space-md, 8px))
+      padding-inline: var(--_padding-inline-start, var(--rh-space-md, 8px))
         var(--_padding-inline-end, var(--rh-space-md, 8px));
 
       & ::slotted(a) {
@@ -384,9 +411,7 @@
 
       & ::slotted(a:is(:focus-visible, :hover:focus-visible, :active)) {
         outline-offset: -2px;
-        outline:
-          var(--rh-border-width-md, 2px)
-          solid
+        outline: var(--rh-border-width-md, 2px) solid
           var(--rh-color-interactive-primary-default);
         border-radius: var(--rh-border-radius-default, 3px);
       }

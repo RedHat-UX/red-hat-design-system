@@ -68,108 +68,138 @@
 }
 
 #container {
-  --_code-background-color:
-    light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-      oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h));
+  --_code-background-color: light-dark(
+    var(--rh-color-surface-lighter, #f2f2f2),
+    oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h)
+  );
   --_code-main-spacer: var(--rh-space-xl, 24px);
   --_cdata-color: var(--rh-color-text-secondary);
   --_comment-color: var(--rh-color-text-secondary);
   --_comment-block-color: var(--rh-color-text-secondary);
   --_doctype-color: var(--rh-color-text-secondary);
-  --_default-color:
-    light-dark(var(--rh-color-gray-95, #151515),
-      var(--rh-color-gray-20, #e0e0e0));
-  --_selected-text-background:
-    light-dark(var(--rh-color-blue-10, #e0f0ff),
-      var(--rh-color-gray-95, #151515));
-  --_punctuation-color:
-    light-dark(var(--rh-color-gray-40, #a3a3a3),
-      var(--rh-color-gray-20, #e0e0e0));
-  --_namespace-color:
-    light-dark(var(--rh-color-gray-95, #151515),
-      var(--rh-color-red-40, #f56e6e));
-  --_property-color:
-    light-dark(var(--rh-color-purple-50, #5e40be),
-      var(--rh-color-yellow-40, #dca614));
-  --_tag-color:
-    light-dark(var(--rh-color-purple-50, #5e40be),
-      var(--rh-color-red-10, #fce3e3));
-  --_boolean-color:
-    light-dark(var(--rh-color-purple-50, #5e40be),
-      var(--rh-color-orange-40, #f5921b));
-  --_number-color:
-    light-dark(var(--rh-color-purple-50, #5e40be),
-      var(--rh-color-orange-40, #f5921b));
-  --_constant-color:
-    light-dark(var(--rh-color-purple-50, #5e40be),
-      var(--rh-color-yellow-40, #dca614));
-  --_symbol-color:
-    light-dark(var(--rh-color-purple-50, #5e40be),
-      var(--rh-color-yellow-40, #dca614));
-  --_deleted-color:
-    light-dark(var(--rh-color-purple-50, #5e40be),
-      var(--rh-color-red-40, #f56e6e));
-  --_function-name-color:
-    light-dark(var(--rh-color-purple-50, #5e40be),
-      var(--rh-color-teal-20, #b9e5e5));
-  --_selector-color:
-    light-dark(var(--rh-color-teal-60, #147878),
-      var(--rh-color-purple-30, #b6a6e9));
-  --_attr-name-color:
-    light-dark(var(--rh-color-teal-60, #147878),
-      var(--rh-color-red-40, #f56e6e));
-  --_string-color:
-    light-dark(var(--rh-color-teal-60, #147878),
-      var(--rh-color-green-40, #87bb62));
-  --_character-color:
-    light-dark(var(--rh-color-teal-60, #147878),
-      var(--rh-color-green-40, #87bb62));
-  --_built-in-color:
-    light-dark(var(--rh-color-teal-60, #147878),
-      var(--rh-color-purple-30, #b6a6e9));
-  --_inserted-color:
-    light-dark(var(--rh-color-teal-60, #147878),
-      var(--rh-color-green-40, #87bb62));
-  --_operator-color:
-    light-dark(var(--rh-color-yellow-60, #96640f),
-      var(--rh-color-blue-40, #4394e5));
-  --_entity-color:
-    light-dark(var(--rh-color-yellow-60, #96640f),
-      var(--rh-color-blue-40, #4394e5));
-  --_url-color:
-    light-dark(var(--rh-color-yellow-60, #96640f),
-      var(--rh-color-blue-40, #4394e5));
-  --_at-rule-color:
-    light-dark(var(--rh-color-blue-60, #004d99),
-      var(--rh-color-purple-30, #b6a6e9));
-  --_attr-value-color:
-    light-dark(var(--rh-color-blue-60, #004d99),
-      var(--rh-color-green-40, #87bb62));
-  --_keyword-color:
-    light-dark(var(--rh-color-blue-60, #004d99),
-      var(--rh-color-purple-30, #b6a6e9));
-  --_function-color:
-    light-dark(var(--rh-color-red-60, #a60000),
-      var(--rh-color-orange-40, #f5921b));
-  --_class-name-color:
-    light-dark(var(--rh-color-red-60, #a60000),
-      var(--rh-color-yellow-40, #dca614));
-  --_regex-color:
-    light-dark(var(--rh-color-orange-60, #9e4a06),
-      var(--rh-color-green-40, #87bb62));
-  --_important-color:
-    light-dark(var(--rh-color-orange-60, #9e4a06),
-      var(--rh-color-purple-30, #b6a6e9));
-  --_variable-color:
-    light-dark(var(--rh-color-orange-60, #9e4a06),
-      var(--rh-color-green-40, #87bb62));
+  --_default-color: light-dark(
+    var(--rh-color-gray-95, #151515),
+    var(--rh-color-gray-20, #e0e0e0)
+  );
+  --_selected-text-background: light-dark(
+    var(--rh-color-blue-10, #e0f0ff),
+    var(--rh-color-gray-95, #151515)
+  );
+  --_punctuation-color: light-dark(
+    var(--rh-color-gray-40, #a3a3a3),
+    var(--rh-color-gray-20, #e0e0e0)
+  );
+  --_namespace-color: light-dark(
+    var(--rh-color-gray-95, #151515),
+    var(--rh-color-red-40, #f56e6e)
+  );
+  --_property-color: light-dark(
+    var(--rh-color-purple-50, #5e40be),
+    var(--rh-color-yellow-40, #dca614)
+  );
+  --_tag-color: light-dark(
+    var(--rh-color-purple-50, #5e40be),
+    var(--rh-color-red-10, #fce3e3)
+  );
+  --_boolean-color: light-dark(
+    var(--rh-color-purple-50, #5e40be),
+    var(--rh-color-orange-40, #f5921b)
+  );
+  --_number-color: light-dark(
+    var(--rh-color-purple-50, #5e40be),
+    var(--rh-color-orange-40, #f5921b)
+  );
+  --_constant-color: light-dark(
+    var(--rh-color-purple-50, #5e40be),
+    var(--rh-color-yellow-40, #dca614)
+  );
+  --_symbol-color: light-dark(
+    var(--rh-color-purple-50, #5e40be),
+    var(--rh-color-yellow-40, #dca614)
+  );
+  --_deleted-color: light-dark(
+    var(--rh-color-purple-50, #5e40be),
+    var(--rh-color-red-40, #f56e6e)
+  );
+  --_function-name-color: light-dark(
+    var(--rh-color-purple-50, #5e40be),
+    var(--rh-color-teal-20, #b9e5e5)
+  );
+  --_selector-color: light-dark(
+    var(--rh-color-teal-60, #147878),
+    var(--rh-color-purple-30, #b6a6e9)
+  );
+  --_attr-name-color: light-dark(
+    var(--rh-color-teal-60, #147878),
+    var(--rh-color-red-40, #f56e6e)
+  );
+  --_string-color: light-dark(
+    var(--rh-color-teal-60, #147878),
+    var(--rh-color-green-40, #87bb62)
+  );
+  --_character-color: light-dark(
+    var(--rh-color-teal-60, #147878),
+    var(--rh-color-green-40, #87bb62)
+  );
+  --_built-in-color: light-dark(
+    var(--rh-color-teal-60, #147878),
+    var(--rh-color-purple-30, #b6a6e9)
+  );
+  --_inserted-color: light-dark(
+    var(--rh-color-teal-60, #147878),
+    var(--rh-color-green-40, #87bb62)
+  );
+  --_operator-color: light-dark(
+    var(--rh-color-yellow-60, #96640f),
+    var(--rh-color-blue-40, #4394e5)
+  );
+  --_entity-color: light-dark(
+    var(--rh-color-yellow-60, #96640f),
+    var(--rh-color-blue-40, #4394e5)
+  );
+  --_url-color: light-dark(
+    var(--rh-color-yellow-60, #96640f),
+    var(--rh-color-blue-40, #4394e5)
+  );
+  --_at-rule-color: light-dark(
+    var(--rh-color-blue-60, #004d99),
+    var(--rh-color-purple-30, #b6a6e9)
+  );
+  --_attr-value-color: light-dark(
+    var(--rh-color-blue-60, #004d99),
+    var(--rh-color-green-40, #87bb62)
+  );
+  --_keyword-color: light-dark(
+    var(--rh-color-blue-60, #004d99),
+    var(--rh-color-purple-30, #b6a6e9)
+  );
+  --_function-color: light-dark(
+    var(--rh-color-red-60, #a60000),
+    var(--rh-color-orange-40, #f5921b)
+  );
+  --_class-name-color: light-dark(
+    var(--rh-color-red-60, #a60000),
+    var(--rh-color-yellow-40, #dca614)
+  );
+  --_regex-color: light-dark(
+    var(--rh-color-orange-60, #9e4a06),
+    var(--rh-color-green-40, #87bb62)
+  );
+  --_important-color: light-dark(
+    var(--rh-color-orange-60, #9e4a06),
+    var(--rh-color-purple-30, #b6a6e9)
+  );
+  --_variable-color: light-dark(
+    var(--rh-color-orange-60, #9e4a06),
+    var(--rh-color-green-40, #87bb62)
+  );
 
   display: grid;
   place-items: center;
   grid-template-columns: auto min-content;
   grid-template-areas:
-    'code actions'
-    'expand expand';
+    "code actions"
+    "expand expand";
   column-gap: var(--_code-main-spacer);
   padding-inline-start: var(--_code-main-spacer);
   padding-block-end: var(--_code-main-spacer);
@@ -177,14 +207,16 @@
   background-color: var(--_code-background-color);
   color: var(--rh-color-text-primary);
   border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
-  border-block-start-width:
-    var(--rh-code-block-border-block-start-width,
-      var(--rh-border-width-sm, 1px));
+  border-block-start-width: var(
+    --rh-code-block-border-block-start-width,
+    var(--rh-border-width-sm, 1px)
+  );
 
-  --_gradient:
-    linear-gradient(var(--_gradient-angle, 0deg),
-      var(--_code-background-color) 0%,
-      transparent 100%);
+  --_gradient: linear-gradient(
+    var(--_gradient-angle, 0deg),
+    var(--_code-background-color) 0%,
+    transparent 100%
+  );
 }
 
 #container.expandable {
@@ -195,7 +227,14 @@
 #prism-output,
 #content {
   display: block;
-  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  font-family: var(
+    --rh-font-family-code,
+    RedHatMono,
+    "Red Hat Mono",
+    "Courier New",
+    Courier,
+    monospace
+  );
   z-index: 1;
   place-self: start;
   grid-area: code;
@@ -210,9 +249,16 @@
   color: inherit;
 }
 
-#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+#content::slotted(:is(code[class*="language-"], pre[class*="language-"])) {
   color: var(--_code-color);
-  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  font-family: var(
+    --rh-font-family-code,
+    RedHatMono,
+    "Red Hat Mono",
+    "Courier New",
+    Courier,
+    monospace
+  );
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -224,9 +270,9 @@
   background: transparent;
 }
 
-:host([highlighting='prerendered']) {
+:host([highlighting="prerendered"]) {
   .wrap {
-    #content::slotted(pre[class*='language-']) {
+    #content::slotted(pre[class*="language-"]) {
       white-space: pre-wrap;
     }
   }
@@ -240,7 +286,7 @@
   display: grid;
   column-gap: var(--rh-space-lg, 16px);
   grid-area: code;
-  grid-template-areas: 'lines code';
+  grid-template-areas: "lines code";
   grid-template-columns: min-content 1fr;
   grid-template-rows: 1fr;
   position: relative;
@@ -267,10 +313,18 @@
   list-style-type: none;
   padding-inline: 0 var(--rh-space-md, 8px);
   text-align: end;
-  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  font-family: var(
+    --rh-font-family-code,
+    RedHatMono,
+    "Red Hat Mono",
+    "Courier New",
+    Courier,
+    monospace
+  );
   color: var(--rh-color-text-secondary);
   font-weight: var(--rh-font-weight-code-regular, 400);
-  border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+  border-inline-end: var(--rh-border-width-sm, 1px) solid
+    var(--rh-color-border-subtle);
 
   li {
     line-height: var(--rh-line-height-code, 1.5);
@@ -309,7 +363,14 @@
   inset-block-end: var(--_code-secondary-spacer);
   margin-block: var(--_code-secondary-spacer);
   color: var(--rh-color-text-primary);
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  font-family: var(
+    --rh-font-family-body-text,
+    RedHatText,
+    "Red Hat Text",
+    Helvetica,
+    Arial,
+    sans-serif
+  );
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   font-weight: var(--rh-font-weight-body-text-regular, 400);
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -338,7 +399,7 @@
 }
 
 .truncated #content-lines:before {
-  content: '';
+  content: "";
   display: block;
   position: sticky;
   z-index: 2;
@@ -350,17 +411,17 @@
   background: var(--_gradient);
 }
 
-:host([line-numbers='hidden']) #content-lines {
-  grid-template-areas: 'code';
+:host([line-numbers="hidden"]) #content-lines {
+  grid-template-areas: "code";
   grid-template-columns: 1fr;
 }
 
-:host([line-numbers='hidden']) #line-numbers {
+:host([line-numbers="hidden"]) #line-numbers {
   display: none;
 }
 
 :not(.wrap) #actions:before {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   z-index: 2;
@@ -380,13 +441,13 @@
   --_code-word-wrap: anywhere;
 }
 
-[name='legend']::slotted(dl) {
+[name="legend"]::slotted(dl) {
   display: grid;
   grid-template-columns: max-content auto;
   margin-block: var(--rh-space-lg, 16px);
   gap: var(--rh-space-md, 8px);
 }
 
-:host([highlighting='client']) #content::slotted(:is(script, pre)) {
+:host([highlighting="client"]) #content::slotted(:is(script, pre)) {
   display: none;
 }

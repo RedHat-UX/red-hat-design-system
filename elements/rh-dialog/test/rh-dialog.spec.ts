@@ -2,7 +2,12 @@ import { expect, html, nextFrame } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { clickElementAtOffset } from '@patternfly/pfe-tools/test/utils.js';
 import { sendKeys } from '@web/test-runner-commands';
-import { DialogCancelEvent, DialogCloseEvent, DialogOpenEvent, RhDialog } from '@rhds/elements/rh-dialog/rh-dialog.js';
+import {
+  DialogCancelEvent,
+  DialogCloseEvent,
+  DialogOpenEvent,
+  RhDialog,
+} from '@rhds/elements/rh-dialog/rh-dialog.js';
 import { RhButton } from '@rhds/elements/rh-button/rh-button.js';
 
 function press(key: string) {
@@ -13,14 +18,9 @@ function press(key: string) {
 
 describe('<rh-dialog>', function() {
   it('should upgrade', async function() {
-    const el = await createFixture<RhDialog>(html`
-      <rh-dialog></rh-dialog>
-    `);
+    const el = await createFixture<RhDialog>(html` <rh-dialog></rh-dialog> `);
     const klass = customElements.get('rh-dialog');
-    expect(el)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhDialog);
+    expect(el).to.be.an.instanceOf(klass).and.to.be.an.instanceOf(RhDialog);
   });
 
   describe('with a trigger', function() {
@@ -34,10 +34,12 @@ describe('<rh-dialog>', function() {
     beforeEach(async function() {
       const storeEvent = (event: DialogEvent) => events.set(event.type, event);
       element = await createFixture(html`
-        <rh-dialog trigger="trigger"
-                   @cancel="${storeEvent}"
-                   @open="${storeEvent}"
-                   @close="${storeEvent}">
+        <rh-dialog
+          trigger="trigger"
+          @cancel="${storeEvent}"
+          @open="${storeEvent}"
+          @close="${storeEvent}"
+        >
           <h2 slot="header">Header</h2>
           <p>Body</p>
           <rh-button slot="footer">Footer Action</rh-button>
@@ -96,7 +98,11 @@ describe('<rh-dialog>', function() {
         // in this case, we feel justified in making an exception, because the "close-button"
         // css part is already included in the element's public API.
         // NOTE: we query specifically for the element with that part, not by shadow class or id
-        beforeEach(() => element.shadowRoot?.querySelector<HTMLElement>('[part="close-button"]')?.click());
+        beforeEach(() =>
+          element.shadowRoot
+              ?.querySelector<HTMLElement>('[part="close-button"]')
+              ?.click()
+        );
         beforeEach(updateComplete);
         beforeEach(nextFrame);
 
@@ -123,7 +129,8 @@ describe('<rh-dialog>', function() {
       triggerButton.click();
       await element.updateComplete;
       await nextFrame();
-      expect(element.open, 'Dialog should be open after trigger click').to.be.true;
+      expect(element.open, 'Dialog should be open after trigger click').to.be
+          .true;
     }
 
     beforeEach(async function() {
@@ -136,15 +143,21 @@ describe('<rh-dialog>', function() {
                   Favorite RHDS Token Value:
                   <select id="selectElement">
                     <option value="default">Choose…</option>
-                    <option value="--rh-color-brand-red">--rh-color-brand-red</option>
+                    <option value="--rh-color-brand-red">
+                      --rh-color-brand-red
+                    </option>
                     <option value="--rh-color-red-50">--rh-color-red-50</option>
-                    <option value="--rh-color-status-note">--rh-color-status-note</option>
+                    <option value="--rh-color-status-note">
+                      --rh-color-status-note
+                    </option>
                   </select>
                 </label>
               </p>
               <div>
                 <button id="cancellationButton" value="cancel">Cancel</button>
-                <button type="submit" id="confirmation-button" value="default">Submit</button>
+                <button type="submit" id="confirmation-button" value="default">
+                  Submit
+                </button>
               </div>
             </form>
           </rh-dialog>
@@ -154,9 +167,14 @@ describe('<rh-dialog>', function() {
       element = fixture.querySelector<RhDialog>('#dialog-element-form')!;
       triggerButton = fixture.querySelector<RhButton>('#trigger-form')!;
       formElement = fixture.querySelector<HTMLFormElement>('#form-element')!;
-      selectElement = fixture.querySelector<HTMLSelectElement>('#selectElement')!;
-      confirmationButton = fixture.querySelector<HTMLButtonElement>('#confirmation-button')!;
-      cancellationButton = fixture.querySelector<HTMLButtonElement>('#cancellationButton')!;
+      selectElement =
+        fixture.querySelector<HTMLSelectElement>('#selectElement')!;
+      confirmationButton = fixture.querySelector<HTMLButtonElement>(
+        '#confirmation-button'
+      )!;
+      cancellationButton = fixture.querySelector<HTMLButtonElement>(
+        '#cancellationButton'
+      )!;
 
       formElement.addEventListener('submit', e => e.preventDefault());
 
@@ -183,8 +201,14 @@ describe('<rh-dialog>', function() {
       await element.updateComplete;
       await nextFrame();
 
-      expect(element.open, `Dialog should be closed after submit with selection`).to.be.false;
-      expect(element.returnValue, `returnValue after submit with selection`).to.equal(selectElement.value);
+      expect(
+        element.open,
+        `Dialog should be closed after submit with selection`
+      ).to.be.false;
+      expect(
+        element.returnValue,
+        `returnValue after submit with selection`
+      ).to.equal(selectElement.value);
     });
 
     it('should set returnValue correctly when submitting with default option', async function() {
@@ -195,8 +219,12 @@ describe('<rh-dialog>', function() {
       await element.updateComplete;
       await nextFrame();
 
-      expect(element.open, `Dialog should be closed after submit with default`).to.be.false;
-      expect(element.returnValue, `returnValue after submit with default`).to.equal(selectElement.value);
+      expect(element.open, `Dialog should be closed after submit with default`)
+          .to.be.false;
+      expect(
+        element.returnValue,
+        `returnValue after submit with default`
+      ).to.equal(selectElement.value);
     });
 
     it('should set returnValue correctly when the forms "Cancel" button is clicked', async function() {
@@ -206,8 +234,12 @@ describe('<rh-dialog>', function() {
       await element.updateComplete;
       await nextFrame();
 
-      expect(element.open, `Dialog should be closed after form cancel button`).to.be.false;
-      expect(element.returnValue, `returnValue after form cancel button`).to.equal('cancelled');
+      expect(element.open, `Dialog should be closed after form cancel button`)
+          .to.be.false;
+      expect(
+        element.returnValue,
+        `returnValue after form cancel button`
+      ).to.equal('cancelled');
     });
 
     it('should set empty returnValue when closed via ESC key', async function() {
@@ -224,12 +256,16 @@ describe('<rh-dialog>', function() {
     it('should set empty returnValue when closed by clicking outside', async function() {
       await openDialog();
 
-      await clickElementAtOffset(document.body, [10, 10]); ;
+      await clickElementAtOffset(document.body, [10, 10]);
       await element.updateComplete;
       await nextFrame();
 
-      expect(element.open, `Dialog should be closed after clicking outside`).to.be.false;
-      expect(element.returnValue, `returnValue after clicking outside`).to.equal('');
+      expect(element.open, `Dialog should be closed after clicking outside`).to
+          .be.false;
+      expect(
+        element.returnValue,
+        `returnValue after clicking outside`
+      ).to.equal('');
     });
   });
 });

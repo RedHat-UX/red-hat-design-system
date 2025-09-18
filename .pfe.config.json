@@ -16,8 +16,6 @@
     "favicon": "/docs/assets/logo-red-hat.svg",
     "description": "Red Hat Design System",
     "componentSubpath": "elements",
-    "stylesheets": [
-      "/docs/styles/demo/dev-server.css"
-    ]
+    "stylesheets": ["/docs/styles/demo/dev-server.css"]
   }
 }

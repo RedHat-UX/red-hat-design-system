@@ -1,6 +1,6 @@
 # Switch
-A switch toggles the state of a setting (between on and off).
 
+A switch toggles the state of a setting (between on and off).
 
 ## Installation
 
@@ -13,12 +13,12 @@ npm install @rhds/elements
 Then once installed, import it to your application:
 
 ```js
-import '@rhds/elements/rh-button/rh-button.js';
+import "@rhds/elements/rh-button/rh-button.js";
 ```
 
 ## Usage
-A switch toggles the state of a setting (between on and off). Switches provide a more explicit, visible representation on a setting.
 
+A switch toggles the state of a setting (between on and off). Switches provide a more explicit, visible representation on a setting.
 
 ```html
 <rh-switch id="a" checked></rh-switch>

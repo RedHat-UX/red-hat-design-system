@@ -1,7 +1,10 @@
 import { LitElement, html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import {
+  colorPalettes,
+  type ColorPalette,
+} from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import { property } from 'lit/decorators/property.js';
@@ -47,10 +50,12 @@ export class UxdotExample extends LitElement {
   render() {
     const { widthAdjustment, alignment } = this;
     return html`
-      <div id="container"
-           part="container"
-           class="${classMap({ widthAdjustment: widthAdjustment !== '100%' })}"
-           style="--_width: ${widthAdjustment}; --_alignment: ${alignment}">
+      <div
+        id="container"
+        part="container"
+        class="${classMap({ widthAdjustment: widthAdjustment !== '100%' })}"
+        style="--_width: ${widthAdjustment}; --_alignment: ${alignment}"
+      >
         <slot></slot>
       </div>
     `;

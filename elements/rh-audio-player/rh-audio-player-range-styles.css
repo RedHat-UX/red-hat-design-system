@@ -26,7 +26,7 @@
   display: none !important;
 }
 
-input[type='range'] {
+input[type="range"] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -44,13 +44,21 @@ input[type='range'] {
   --_clip-edges: 0.125em;
   --_track-height: var(--rh-length-xs, 4px);
   --_thumb-disabled-color: light-dark(rgb(0 0 0 / 0.5), rgb(255 255 255 / 0.5));
-  --_track-color: light-dark(var(--rh-color-gray-30, #c7c7c7), var(--rh-color-gray-50, #707070));
+  --_track-color: light-dark(
+    var(--rh-color-gray-30, #c7c7c7),
+    var(--rh-color-gray-50, #707070)
+  );
   --_interactive-color: var(--rh-color-border-interactive);
   --_accent-color: var(--rh-color-accent-brand);
   --_outline: var(--rh-border-width-md, 2px) solid var(--_interactive-color);
-  --_thumb-color: /** color of time and volume range slider thumb */
-    var(--rh-audio-player-range-thumb-color, var(--_accent-color));
-  --_progress-color: var(--rh-audio-player-range-progress-color, var(--_accent-color));
+  --_thumb-color: /** color of time and volume range slider thumb */ var(
+    --rh-audio-player-range-thumb-color,
+    var(--_accent-color)
+  );
+  --_progress-color: var(
+    --rh-audio-player-range-progress-color,
+    var(--_accent-color)
+  );
 
   &:focus {
     outline: var(--_outline);
@@ -75,25 +83,24 @@ input[type='range'] {
     box-shadow: var(--box-fill);
     border-radius: var(--_thumb-width, var(--_thumb-height));
 
-    --_clip-top: calc((var(--_thumb-height) - var(--_track-height)) * 0.5 - 0.5px);
+    --_clip-top: calc(
+      (var(--_thumb-height) - var(--_track-height)) * 0.5 - 0.5px
+    );
     --_clip-bottom: calc(var(--_thumb-height) - var(--_clip-top));
     --_clip-further: calc(100% + 1px);
-    --box-fill:
-      calc(-100vmax - var(--_thumb-width, var(--_thumb-height)))
-      0
-      0
-      100vmax
-      var(--_box-fill-color, currentcolor);
+    --box-fill: calc(-100vmax - var(--_thumb-width, var(--_thumb-height))) 0 0
+      100vmax var(--_box-fill-color, currentcolor);
 
-    clip-path:
-      polygon(100% -1px,
-        var(--_clip-edges) -1px,
-        0 var(--_clip-top),
-        -100vmax var(--_clip-top),
-        -100vmax var(--_clip-bottom),
-        0 var(--_clip-bottom),
-        var(--_clip-edges) 100%,
-        var(--_clip-further) var(--_clip-further));
+    clip-path: polygon(
+      100% -1px,
+      var(--_clip-edges) -1px,
+      0 var(--_clip-top),
+      -100vmax var(--_clip-top),
+      -100vmax var(--_clip-bottom),
+      0 var(--_clip-bottom),
+      var(--_clip-edges) 100%,
+      var(--_clip-further) var(--_clip-further)
+    );
   }
 
   &:disabled::-webkit-slider-thumb {
@@ -102,10 +109,7 @@ input[type='range'] {
 
   &::-webkit-slider-runnable-track {
     border-radius: 3px;
-    background:
-      linear-gradient(var(--_track-fill-color) 0 0)
-      scroll
-      no-repeat
+    background: linear-gradient(var(--_track-fill-color) 0 0) scroll no-repeat
       center / 100% calc(var(--_track-height) + 1px);
   }
 
@@ -150,13 +154,13 @@ input[type='range'] {
   }
 }
 
-input[type='range']:dir(rtl) {
+input[type="range"]:dir(rtl) {
   --_box-fill-color: var(--_track-color);
   --_track-fill-color: var(--_progress-color);
 }
 
 input[disabled],
-input[type='range']:disabled {
+input[type="range"]:disabled {
   filter: grayscale(1);
   opacity: 0.5;
   cursor: not-allowed;

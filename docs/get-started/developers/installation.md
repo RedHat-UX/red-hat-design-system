@@ -24,8 +24,8 @@ subnav:
 
 ## How to install
 
-There are three ways you can install the Red Hat Design System's Web Components: 
-CDN, NPM, or JSPM. Each element's "Code" page includes the same installation 
+There are three ways you can install the Red Hat Design System's Web Components:
+CDN, NPM, or JSPM. Each element's "Code" page includes the same installation
 information with code snippets that are specific to that element.
 
 - [Red Hat CDN](#red-hat-cdn)
@@ -34,16 +34,16 @@ information with code snippets that are specific to that element.
 
 ## Red Hat CDN
 
-The recommended way to load the Red Hat Design System (RHDS) on Red Hat websites and applications is through the [Red Hat Digital Experience CDN](https://www.redhatstatic.com/dssf-001) using an [import map][importmap]. 
+The recommended way to load the Red Hat Design System (RHDS) on Red Hat websites and applications is through the [Red Hat Digital Experience CDN](https://www.redhatstatic.com/dssf-001) using an [import map][importmap].
 
 **Note:** Due to current information security standards regarding access to the CDN, the CDN only allows requests from `*.redhat.com` domains. This means for local development an `/etc/hosts` change to forward `localhost` to something like `dev.foo.redhat.com` and navigating to that instead of `localhost` is required. If you need help setting this up for your project please reach out on [Slack](/support/#contact-us).
 
 ### Using import maps
 
-- If you have full control over the page you are using, add an import map to the 
-`<head>` pointing to the CDN or update any existing import map.
-- If you are not responsible for the page's `<head>`, request that the page owner makes the 
-change on your behalf.
+- If you have full control over the page you are using, add an import map to the
+  `<head>` pointing to the CDN or update any existing import map.
+- If you are not responsible for the page's `<head>`, request that the page owner makes the
+  change on your behalf.
 
 #### Base import map
 
@@ -97,8 +97,8 @@ For example, you can load `<rh-button>` using the following:
 </script>
 ```
 
-Note that modules may be placed in the `<head>`. Since they are deferred by 
-default, they will not block rendering. Multiple import statements on the same page to the same 
+Note that modules may be placed in the `<head>`. Since they are deferred by
+default, they will not block rendering. Multiple import statements on the same page to the same
 script in this manner are completely safe, and will be deduplicated, so the browser
 won't make any additional calls as long as they use the same bare module specifier.
 
@@ -129,7 +129,6 @@ scope of this page; read more about bundlers on their websites:
 - [esbuild][esbuild]
 - [Parcel][parcel]
 - [Webpack][webpack]
-
 
 ## JSPM
 
@@ -175,8 +174,10 @@ initialized, but are not intended to be used without initializing the element or
 themselves to prevent CLS.
 
 ```html rhcodeblock
-<link rel="stylesheet"
-      href="https://www.redhatstatic.com/dssf-001/v2/@rhds/elements@{{ pkg.version }}/rh-footer/rh-footer-lightdom.css">
+<link
+  rel="stylesheet"
+  href="https://www.redhatstatic.com/dssf-001/v2/@rhds/elements@{{ pkg.version }}/rh-footer/rh-footer-lightdom.css"
+/>
 ```
 
 <rh-alert>Note: a future version of RHDS will remove the requirement to manually
@@ -192,8 +193,10 @@ required "Lightdom CSS" mentioned above, and are only a temporary stop-gap until
 no longer be needed and will become deprecated.
 
 ```html rhcodeblock
-<link rel="stylesheet"
-      href="https://www.redhatstatic.com/dssf-001/v2/@rhds/elements@{{ pkg.version }}/rh-cta/rh-cta-lightdom-shim.css">
+<link
+  rel="stylesheet"
+  href="https://www.redhatstatic.com/dssf-001/v2/@rhds/elements@{{ pkg.version }}/rh-cta/rh-cta-lightdom-shim.css"
+/>
 ```
 
 <uxdot-feedback>

@@ -35,7 +35,7 @@ There are three available tag styles: `Filled`, `Outlined`, and `Desaturated`.
 
 ### Color
 
-There are nine available tag colors. The Desaturated style uses only one color 
+There are nine available tag colors. The Desaturated style uses only one color
 for both the border and text.
 
 <uxdot-example color-palette="lightest" width-adjustment="558px">
@@ -47,7 +47,7 @@ for both the border and text.
 
 ### Size
 
-There are two available tag sizes. Each style and color has `Default` and 
+There are two available tag sizes. Each style and color has `Default` and
 `Compact` sizes.
 
 <uxdot-example color-palette="lightest" width-adjustment="539px">
@@ -83,11 +83,13 @@ Each tag style, color, and size includes an optional decorative icon.
 </uxdot-example>
 
 ## Color scheme
+
 <a id="theme"></a>
 
 Each tag style, color, and size is available for both light and dark color schemes.
 
 ### Light scheme
+
 <a id="light-theme"></a>
 
 <uxdot-example color-palette="lightest" width-adjustment="738px">
@@ -98,6 +100,7 @@ Each tag style, color, and size is available for both light and dark color schem
 </uxdot-example>
 
 ### Dark scheme
+
 <a id="dark-theme"></a>
 
 <uxdot-example color-palette="darkest" width-adjustment="738px">
@@ -106,7 +109,6 @@ Each tag style, color, and size is available for both light and dark color schem
        width="738"
        height="253">
 </uxdot-example>
-
 
 ## Space
 
@@ -125,9 +127,9 @@ Tags have 8px of space in between each other in a row or when stacked.
 
 Styles will change on hover depending on how a tag is used.
 
-  - The dashed underline is the same color as the text it is applied to
-  - If a tag has linked text, the underline will disappear on hover
-  - A disabled tag has no states
+- The dashed underline is the same color as the text it is applied to
+- If a tag has linked text, the underline will disappear on hover
+- A disabled tag has no states
 
 <uxdot-example color-palette="lightest" width-adjustment="438px">
   <img alt="A collection of six light scheme tags, two to each group. There are two variants: linked and disabled. The linked tag shows the underline disapearing on hover. The disabled tag has no hover state."

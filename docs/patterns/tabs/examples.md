@@ -10,7 +10,6 @@ subnav:
   order: 2
 ---
 
-
 <rh-alert state="warning">
   Use this pattern sparingly. If your tabs serve only as page navigation,
   use the <a href="/elements/subnavigation">Subnav</a> element instead.
@@ -53,4 +52,3 @@ subnav:
      languages, for example: the HTML, CSS, and JavaScript needed to implement a
      pattern.</p>
 </uxdot-pattern>
-

@@ -4,9 +4,9 @@
 
 ## Style
 
-An alert is a layout including an icon, title, text, actions, and a close 
-button. It comes in a variety of colors depending on status. A toast is a 
-variant of alert. Instead of having a background color, it has a white 
+An alert is a layout including an icon, title, text, actions, and a close
+button. It comes in a variety of colors depending on status. A toast is a
+variant of alert. Instead of having a background color, it has a white
 background with a drop shadow.
 
 ### Anatomy
@@ -32,6 +32,7 @@ background with a drop shadow.
 </figure>
 
 ## Color scheme
+
 <a id="theme"></a>
 
 Alerts are available for both light and dark color schemes.
@@ -116,7 +117,7 @@ Same as the inline alert, at minimum, the status icon and title need to be visib
                alignment="left"
                variant="full"
                no-border>
-  <img alt="Diagram of spacing for alerts on mobile"
+<img alt="Diagram of spacing for alerts on mobile"
        src="../alert-style-spacing-3.svg"
        width="752"
        height="640">

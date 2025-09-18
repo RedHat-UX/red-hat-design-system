@@ -2,7 +2,7 @@
 
 - When you need to confirm user decisions
 - When you need an immediate response from users
-- When you need to notify users of urgent information concerning their current 
+- When you need to notify users of urgent information concerning their current
   workflow
 
 <div id="overview-image-description" class="visually-hidden">

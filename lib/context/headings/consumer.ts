@@ -20,7 +20,10 @@ export interface HeadingLevelTemplateOptions {
  * Determines which heading level immediately precedes the host element,
  * and provides templates for shadow headings.
  */
-export class HeadingLevelContextConsumer extends ContextConsumer<typeof context, LitElement> {
+export class HeadingLevelContextConsumer extends ContextConsumer<
+  typeof context,
+  LitElement
+> {
   offset = 0;
 
   constructor(host: LitElement) {
@@ -36,19 +39,40 @@ export class HeadingLevelContextConsumer extends ContextConsumer<typeof context,
    * @param content DOM content to wrap in a header
    * @param options id, hidden
    */
-  wrap(content: unknown, options?: HeadingLevelTemplateOptions): TemplateResult {
+  wrap(
+    content: unknown,
+    options?: HeadingLevelTemplateOptions
+  ): TemplateResult {
     const level = this.value?.level ?? 0;
     const offset = this.value?.offset ?? 0;
     const offsetLevel = Math.max(1, level + offset);
     const id = options?.id;
     const hidden = options?.hidden ?? false;
     switch (offsetLevel) {
-      case 1: return html`<h1 ?hidden=${hidden} id="${ifDefined(id)}">${content}</h1>`;
-      case 2: return html`<h2 ?hidden=${hidden} id="${ifDefined(id)}">${content}</h2>`;
-      case 3: return html`<h3 ?hidden=${hidden} id="${ifDefined(id)}">${content}</h3>`;
-      case 4: return html`<h4 ?hidden=${hidden} id="${ifDefined(id)}">${content}</h4>`;
-      case 5: return html`<h5 ?hidden=${hidden} id="${ifDefined(id)}">${content}</h5>`;
-      default: return html`<h6 ?hidden=${hidden} id="${ifDefined(id)}">${content}</h6>`;
+      case 1:
+        return html`<h1 ?hidden=${hidden} id="${ifDefined(id)}">
+          ${content}
+        </h1>`;
+      case 2:
+        return html`<h2 ?hidden=${hidden} id="${ifDefined(id)}">
+          ${content}
+        </h2>`;
+      case 3:
+        return html`<h3 ?hidden=${hidden} id="${ifDefined(id)}">
+          ${content}
+        </h3>`;
+      case 4:
+        return html`<h4 ?hidden=${hidden} id="${ifDefined(id)}">
+          ${content}
+        </h4>`;
+      case 5:
+        return html`<h5 ?hidden=${hidden} id="${ifDefined(id)}">
+          ${content}
+        </h5>`;
+      default:
+        return html`<h6 ?hidden=${hidden} id="${ifDefined(id)}">
+          ${content}
+        </h6>`;
     }
   }
 }

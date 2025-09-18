@@ -15,7 +15,7 @@ describe('<rh-menu>', function() {
   }
 
   beforeEach(async function() {
-    element = await createFixture <RhMenu>(html`
+    element = await createFixture<RhMenu>(html`
       <rh-menu>
         <button id="item1">Menuitem1</button>
         <button id="item2">Menuitem2</button>
@@ -26,10 +26,7 @@ describe('<rh-menu>', function() {
 
   it('should upgrade', function() {
     const klass = customElements.get('rh-menu');
-    expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhMenu);
+    expect(element).to.be.an.instanceOf(klass).and.to.be.an.instanceOf(RhMenu);
   });
 
   it('instantiates imperatively', function() {
@@ -37,10 +34,12 @@ describe('<rh-menu>', function() {
   });
 
   it('is accessible', async function() {
-    await Promise.resolve(expect(element).to.be.accessible({
-      // the host should have the right semantics and delegates to the shadow root.
-      // ignoredRules: ['aria-hidden-focus'],
-    }));
+    await Promise.resolve(
+      expect(element).to.be.accessible({
+        // the host should have the right semantics and delegates to the shadow root.
+        // ignoredRules: ['aria-hidden-focus'],
+      })
+    );
   });
 
   describe('tabbing to the element', function() {

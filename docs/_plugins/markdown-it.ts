@@ -11,13 +11,15 @@ import captions from 'markdown-it-table-captions';
 /* eslint-disable lit-a11y/accessible-name */
 
 const { makePermalink } = anchor.permalink as unknown as {
-  makePermalink(callback: (
-    slug: string,
-    opts: anchor.PermalinkOptions,
-    anchorOptions: anchor.AnchorOptions,
-    state: State,
-    idx: number,
-  ) => void): () => anchor.PermalinkGenerator;
+  makePermalink(
+    callback: (
+      slug: string,
+      opts: anchor.PermalinkOptions,
+      anchorOptions: anchor.AnchorOptions,
+      state: State,
+      idx: number
+    ) => void
+  ): () => anchor.PermalinkGenerator;
 };
 
 // for editor highlighting
@@ -34,23 +36,33 @@ const html = String.raw;
  * </uxdot-copy-permalink>
  */
 const rhdsPermalink = makePermalink((_slug, _opts, _anchorOpts, state, idx) => {
-  const headerOpen = state.tokens[idx] as { tag: string; attrs: [string, string][] };
+  const headerOpen = state.tokens[idx] as {
+    tag: string;
+    attrs: [string, string][];
+  };
   const inline = state.tokens[idx + 1];
   const id = headerOpen.attrs.find(([k]) => k === 'id')?.at(1);
 
-  state.tokens.splice(idx, 2, Object.assign(new state.Token('html_block', '', 0), {
-    content: html`
-<uxdot-copy-permalink class="${headerOpen.tag}">
-  <${headerOpen.tag} ${headerOpen.attrs.map(([key, value]) => `${key}="${value}"`).join(' ')}>
-    <a href="#${id}">`.trim(),
-  }),
-                      inline,
-                      Object.assign(new state.Token('html_block', '', 0), {
-                        content: html`
+  state.tokens.splice(
+    idx,
+    2,
+    Object.assign(new state.Token('html_block', '', 0), {
+      content: html` <uxdot-copy-permalink class="${headerOpen.tag}">
+        <${headerOpen.tag}
+          ${headerOpen.attrs
+              .map(([key, value]) => `${key}="${value}"`)
+              .join(' ')}
+        >
+          <a href="#${id}"></a></${headerOpen.tag}
+      ></uxdot-copy-permalink>`.trim(),
+    }),
+    inline,
+    Object.assign(new state.Token('html_block', '', 0), {
+      content: html`
 <a>
   </${headerOpen.tag}>
 </uxdot-copy-permalink>`.trim(),
-                      })
+    })
   );
 });
 
@@ -58,21 +70,28 @@ function rhdsCodeBlock(md: MarkdownIt) {
   const orig = md.renderer.rules.fence;
   // custom renderer for fences
   md.renderer.rules.fence = function(tokens, idx, options, env, slf) {
-    const rendered: string = orig?.call(this, tokens, idx, options, env, slf) ?? '';
+    const rendered: string =
+      orig?.call(this, tokens, idx, options, env, slf) ?? '';
     const token = tokens[idx];
-    const hasMoreThan1Line = rendered.split('\n').map(x => x.trim()).filter(Boolean).length > 1;
+    const hasMoreThan1Line =
+      rendered
+          .split('\n')
+          .map(x => x.trim())
+          .filter(Boolean).length > 1;
     const actions = ['copy', hasMoreThan1Line && 'wrap'].filter(x => !!x);
     const [lang, block, ...rest] = token.info.split(/\s+/);
     const info = `${lang} ${rest.join(' ')}`;
     const normalized = block?.replaceAll('-', '');
     if (normalized?.endsWith('codeblock')) {
       const redactedToken = Object.assign(token, { info });
-      return html`
-        <rh-code-block ${normalized.startsWith('rh' ) ? 'full-height' : ''}
-                       dedent
-                       actions="${actions.join(' ')}"
-                       highlighting="prerendered"
-                       ${slf.renderAttrs(redactedToken)}>${rendered}</rh-code-block>`.trim();
+      return html` <rh-code-block
+        ${normalized.startsWith('rh') ? 'full-height' : ''}
+        dedent
+        actions="${actions.join(' ')}"
+        highlighting="prerendered"
+        ${slf.renderAttrs(redactedToken)}
+        >${rendered}</rh-code-block
+      >`.trim();
     } else {
       return rendered;
     }
@@ -80,12 +99,14 @@ function rhdsCodeBlock(md: MarkdownIt) {
 }
 
 export default function(eleventyConfig: UserConfig) {
-  eleventyConfig.amendLibrary('md', md => md
-      .set({ html: true, breaks: false })
-      .use(anchor, { permalink: rhdsPermalink() })
-      .use(footnote)
-      .use(deflist)
-      .use(captions)
-      .use(attrs)
-      .use(rhdsCodeBlock));
-};
+  eleventyConfig.amendLibrary('md', md =>
+    md
+        .set({ html: true, breaks: false })
+        .use(anchor, { permalink: rhdsPermalink() })
+        .use(footnote)
+        .use(deflist)
+        .use(captions)
+        .use(attrs)
+        .use(rhdsCodeBlock)
+  );
+}

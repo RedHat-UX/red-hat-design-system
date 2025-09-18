@@ -54,7 +54,7 @@ Wherever meaningful images or other non-text elements are used on a page, you mu
 Images loaded via the `<img>` element typically use the alt attribute for their alternative text:
 
 ```html rhcodeblock
-<img src="imagesource.jpg" alt="Description of image">
+<img src="imagesource.jpg" alt="Description of image" />
 ```
 
 Inline SVGs that compose simple images commonly use a combination of the `role="img"` attribute and a `<title>` element as the first child of the `<svg>` element:
@@ -157,7 +157,10 @@ Though the techniques may vary, meaningful embedded media objects require text a
 A common technique is labeling objects with ARIA attributes:
 
 ```html rhcodeblock
-<video src="video.mp4" aria-label="Deploying applications with OpenShift"></video>
+<video
+  src="video.mp4"
+  aria-label="Deploying applications with OpenShift"
+></video>
 ```
 
 ## Writing microcopy
@@ -348,7 +351,10 @@ As mentioned in the Headings section, page titles and `<h1>` elements often rela
 Non-hidden, non-empty `<iframe>` elements are required to have titles describing their meaning or purpose, similar to alternative text for images.
 
 ```html rhcodeblock
-<iframe src="video.html" title="Video: Network automation with Ansible"></iframe>
+<iframe
+  src="video.html"
+  title="Video: Network automation with Ansible"
+></iframe>
 ```
 
 Note that, as opposed to a page’s `<title>` element, `<iframe>` tags include title attributes to label them. (Yes, it can be confusing, especially when you consider that there are still more `<title>` elements and title attributes used in other contexts!)
@@ -583,10 +589,11 @@ For pages with multilingual content, each element containing a different languag
   </head>
   <body>
     <p>
-      Colombian author Gabriel García Márquez wrote that we each live three lives: one public, one
-      private, and one secret. (Full original quote:
+      Colombian author Gabriel García Márquez wrote that we each live three
+      lives: one public, one private, and one secret. (Full original quote:
       <span lang="es"
-        >“Todos los seres humanos tenemos tres vidas: pública, privada y secreta.”</span
+        >“Todos los seres humanos tenemos tres vidas: pública, privada y
+        secreta.”</span
       >)
     </p>
   </body>

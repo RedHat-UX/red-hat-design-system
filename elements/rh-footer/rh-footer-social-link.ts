@@ -7,7 +7,6 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 import style from './rh-footer-social-link.css';
 
-
 /**
  * Social media links for Red Hat Footer
  */
@@ -31,9 +30,16 @@ export class RhFooterSocialLink extends LitElement {
 
   render() {
     return html`
-      <a href="${ifDefined(this.href)}" aria-label="${ifDefined(this.accessibleLabel)}">
+      <a
+        href="${ifDefined(this.href)}"
+        aria-label="${ifDefined(this.accessibleLabel)}"
+      >
         <!-- Optional icon for social link. Use only when suitable icon is unavailable with \`<rh-icon>\` -->
-        <slot>${this.icon ? html`<rh-icon set="social" icon="${this.icon}"></rh-icon>` : ''}</slot>
+        <slot
+          >${this.icon ?
+            html`<rh-icon set="social" icon="${this.icon}"></rh-icon>`
+            : ''}</slot
+        >
       </a>
     `;
   }
@@ -46,8 +52,9 @@ export class RhFooterSocialLink extends LitElement {
       newDiv.querySelectorAll('[_rendered]').forEach(i => i.remove());
       // NB: icons are restricted to social set, so as not to require a minor release
       // rh-icon is slated to deal with this problem in-house
-      newDiv.innerHTML =
-        `<rh-icon icon="${this.icon ?? ''}" set="social" loading="eager">${newDiv.innerHTML}</rh-icon>`;
+      newDiv.innerHTML = `<rh-icon icon="${
+        this.icon ?? ''
+      }" set="social" loading="eager">${newDiv.innerHTML}</rh-icon>`;
       // add a11y settings
       newDiv.setAttribute('aria-label', newDiv.textContent || '');
       oldDiv.parentNode?.replaceChild(newDiv, oldDiv);

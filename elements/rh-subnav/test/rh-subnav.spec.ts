@@ -16,11 +16,8 @@ const element = html`
 
 describe('<rh-subnav>', function() {
   it('should upgrade', async function() {
-    const el = await createFixture <RhSubnav>(element);
+    const el = await createFixture<RhSubnav>(element);
     const klass = customElements.get('rh-subnav');
-    expect(el)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhSubnav);
+    expect(el).to.be.an.instanceOf(klass).and.to.be.an.instanceOf(RhSubnav);
   });
 });

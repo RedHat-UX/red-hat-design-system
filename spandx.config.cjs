@@ -18,15 +18,19 @@ async function injectLocalSources(_req, res, next) {
   try {
     const elementsPath = path.join(__dirname, 'elements');
     const elements = await fs.readdir(elementsPath);
-    const proxyContents = await fs.readFile(path.join(elementsPath, element, 'demo', 'proxy.html'));
+    const proxyContents = await fs.readFile(
+      path.join(elementsPath, element, 'demo', 'proxy.html')
+    );
 
     const importMapJson = JSON.stringify({
       imports: {
         '@rhds/elements': 'http://localhost:8000/elements.js',
-        ...Object.fromEntries(elements.map(dir => [
-          `@rhds/elements/${dir}/${dir}.js`,
-          `http://localhost:8000/elements/${dir}/${dir}.ts`,
-        ])),
+        ...Object.fromEntries(
+          elements.map(dir => [
+            `@rhds/elements/${dir}/${dir}.js`,
+            `http://localhost:8000/elements/${dir}/${dir}.ts`,
+          ])
+        ),
       },
     });
 
@@ -39,7 +43,10 @@ async function injectLocalSources(_req, res, next) {
         }
 
         chunk = chunk
-            .replace('</head>', `<script type="importmap">${importMapJson}</script><script async src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js" crossorigin="anonymous"></script>\n</head>`)
+            .replace(
+              '</head>',
+              `<script type="importmap">${importMapJson}</script><script async src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js" crossorigin="anonymous"></script>\n</head>`
+            )
             .replace('</body>', `${proxyContents}\n\n</body>`);
 
         // res.setHeader('Content-Length', chunk.length);
@@ -106,9 +113,7 @@ module.exports = {
   bs: {
     proxy: {
       target: 'https://www.redhat.com',
-      middleware: [
-        injectLocalSources,
-      ],
+      middleware: [injectLocalSources],
     },
   },
 };

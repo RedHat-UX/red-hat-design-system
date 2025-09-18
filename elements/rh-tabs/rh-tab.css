@@ -3,23 +3,22 @@
   flex: none;
 
   /** Tab active border color */
-  --_active-tab-border:
-    var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color,
-      var(--rh-tabs-active-border-color,
-      var(--rh-color-accent-brand)));
-  --_active-tab-border-open:
-    var(--rh-border-width-sm, 1px)
-    solid
+  --_active-tab-border: var(--rh-border-width-lg, 3px) solid
+    var(
+      --_active-tab-border-color,
+      var(--rh-tabs-active-border-color, var(--rh-color-accent-brand))
+    );
+  --_active-tab-border-open: var(--rh-border-width-sm, 1px) solid
     var(--rh-color-surface);
 }
 
-[part='text'] {
+[part="text"] {
   display: inline;
   line-height: var(--rh-line-height-heading, 1.3);
   text-wrap: balance;
 }
 
-.vertical [part='text'] {
+.vertical [part="text"] {
   max-width: 100%;
   overflow-wrap: break-word;
 }
@@ -48,8 +47,10 @@
   max-width: var(--_tab-max-width, 200px);
   max-height: 100%;
   line-height: 0;
-  padding: /** Tab padding block start */
-    var(--rh-tabs-link-padding-block-start, var(--rh-space-lg, 16px))
+  padding: /** Tab padding block start */ var(
+      --rh-tabs-link-padding-block-start,
+      var(--rh-space-lg, 16px)
+    )
     /** Tab padding inline end */
     var(--rh-tabs-link-padding-inline-end, var(--rh-space-2xl, 32px))
     /** Tab padding block end */
@@ -61,7 +62,7 @@
   &:after {
     position: absolute;
     inset: 0;
-    content: '';
+    content: "";
     border-style: solid;
     padding: 0;
     margin: 0;
@@ -77,14 +78,16 @@
     background-color: transparent;
     border-inline: 0 solid transparent;
     border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
-    border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+    border-block-end: var(--rh-border-width-sm, 1px) solid
+      var(--rh-color-border-subtle);
   }
 
   /* When button is box */
   &.box {
-    background-color:
-      light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-        oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h));
+    background-color: light-dark(
+      var(--rh-color-surface-lighter, #f2f2f2),
+      oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h)
+    );
   }
 
   /* When button is vertical format */
@@ -112,8 +115,10 @@
       }
 
       @container (min-width: 768px) {
-        padding-block:
-          var(--rh-tabs-link-padding-block-start, var(--rh-space-md, 8px))
+        padding-block: var(
+            --rh-tabs-link-padding-block-start,
+            var(--rh-space-md, 8px)
+          )
           var(--rh-tabs-link-padding-block-end, var(--rh-space-md, 8px));
 
         &:after {
@@ -170,9 +175,7 @@
           }
 
           &:after {
-            border-block-start:
-              var(--rh-border-width-sm, 1px)
-              solid
+            border-block-start: var(--rh-border-width-sm, 1px) solid
               var(--rh-color-border-subtle);
           }
         }
@@ -194,9 +197,7 @@
             }
 
             &:after {
-              border-block-end:
-                var(--rh-border-width-sm, 1px)
-                solid
+              border-block-end: var(--rh-border-width-sm, 1px) solid
                 var(--rh-color-border-subtle);
             }
           }
@@ -273,9 +274,7 @@
       &.vertical {
         &:hover {
           &:before {
-            border-block-start:
-              var(--rh-border-width-lg, 3px)
-              solid
+            border-block-start: var(--rh-border-width-lg, 3px) solid
               var(--rh-color-interactive-secondary-default);
           }
         }
@@ -283,13 +282,9 @@
         @container (min-width: 768px) {
           &:before {
             border-inline-start-color: transparent;
-            border-inline-end:
-              var(--rh-border-width-sm, 1px)
-              solid
+            border-inline-end: var(--rh-border-width-sm, 1px) solid
               var(--rh-color-border-subtle);
-            border-block-start:
-              var(--rh-border-width-sm, 1px)
-              solid
+            border-block-start: var(--rh-border-width-sm, 1px) solid
               var(--rh-color-border-subtle);
           }
 
@@ -299,17 +294,13 @@
 
           &:hover {
             &:before {
-              border-inline-start:
-                var(--rh-border-width-lg, 3px)
-                solid
+              border-inline-start: var(--rh-border-width-lg, 3px) solid
                 var(--rh-color-interactive-secondary-default);
               border-block-start: 0;
             }
 
             &:after {
-              border-block-start:
-                var(--rh-border-width-sm, 1px)
-                solid
+              border-block-start: var(--rh-border-width-sm, 1px) solid
                 var(--rh-color-border-subtle);
             }
           }
@@ -336,9 +327,7 @@
       &:not(.vertical) {
         &:hover {
           &:after {
-            border-block-start:
-              var(--rh-border-width-lg, 3px)
-              solid
+            border-block-start: var(--rh-border-width-lg, 3px) solid
               var(--rh-color-interactive-secondary-default);
           }
         }
@@ -362,18 +351,14 @@
         &:hover {
           @container (max-width: 767px) {
             &:after {
-              border-block-end:
-                var(--rh-border-width-lg, 3px)
-                solid
+              border-block-end: var(--rh-border-width-lg, 3px) solid
                 var(--rh-color-interactive-secondary-default);
             }
           }
 
           @container (min-width: 768px) {
             &:after {
-              border-inline-start:
-                var(--rh-border-width-lg, 3px)
-                solid
+              border-inline-start: var(--rh-border-width-lg, 3px) solid
                 var(--rh-color-interactive-secondary-default);
               border-block-start: transparent;
               border-block-end: transparent;
@@ -386,9 +371,7 @@
     &:not(.vertical, .box) {
       &:hover {
         &:before {
-          border-block-end:
-            var(--rh-border-width-lg, 3px)
-            solid
+          border-block-end: var(--rh-border-width-lg, 3px) solid
             var(--rh-color-interactive-secondary-default);
         }
       }
@@ -402,7 +385,7 @@
   }
 }
 
-:host([aria-disabled='true']) {
+:host([aria-disabled="true"]) {
   & #button {
     cursor: default;
   }

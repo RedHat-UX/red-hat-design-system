@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>rh-button-group Demo</title>
+
+    <!-- Red Hat tokens CSS -->
+    <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" href="default-theme.css" />
+
+    <!-- Component-specific CSS -->
+    <link rel="stylesheet" href="rh-button-group.css" />
+
+    <style>
+      body {
+        font-family: RedHatText, Arial, sans-serif;
+        padding: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Normal button group -->
+    <rh-button-group role="group">
+      <rh-button variant="primary">Save</rh-button>
+      <rh-button variant="secondary">Cancel</rh-button>
+      <rh-button variant="tertiary">More</rh-button>
+    </rh-button-group>
+
+    <!-- Toolbar with icon-only buttons -->
+    <rh-button-group role="toolbar">
+      <rh-button variant="secondary" icon="edit"></rh-button>
+      <rh-button variant="secondary" icon="copy"></rh-button>
+      <rh-button variant="secondary" icon="undo"></rh-button>
+      <rh-button variant="secondary" icon="trash"></rh-button>
+    </rh-button-group>
+
+    <!-- Import components using package paths -->
+    <script type="module">
+      import "@rhds/elements/rh-button/rh-button.js";
+      import "@rhds/elements/rh-button-group/rh-button-group.js";
+    </script>
+  </body>
+</html>

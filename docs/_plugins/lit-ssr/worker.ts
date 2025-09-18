@@ -41,11 +41,16 @@ for (const bareSpec of imports) {
     throw new Error(`${bareSpec} does not appear to be an element module`);
   }
   if (!customElements.get(conventionalTagName)) {
-    const spec = pathToFileURL(resolve(process.cwd(), bareSpec)).href.replace('.js', '.ts');
+    const spec = pathToFileURL(resolve(process.cwd(), bareSpec)).href.replace(
+      '.js',
+      '.ts'
+    );
     try {
       await import(spec);
       if (!customElements.get(conventionalTagName)) {
-        throw new Error(`${conventionalTagName} declaration loaded, but not defined!`);
+        throw new Error(
+          `${conventionalTagName} declaration loaded, but not defined!`
+        );
       }
     } catch (e) {
       console.warn((e as Error)?.message?.trim() || e);
@@ -58,14 +63,19 @@ for (const bareSpec of imports) {
 class RHDSSSRableRenderer extends LitElementRenderer {
   static styleCache = new Map<string, Promise<string>>();
 
-  static isRHDSSSRController(ctrl: ReactiveController): ctrl is RHDSSSRController {
+  static isRHDSSSRController(
+    ctrl: ReactiveController
+  ): ctrl is RHDSSSRController {
     return !!(ctrl as RHDSSSRController).isRHDSSSRController;
   }
 
   getControllers() {
-    const element = (this.element as LitElement & { _$EO: Set<ReactiveController> });
-    return Array.from(element._$EO ?? new Set())
-        .filter(RHDSSSRableRenderer.isRHDSSSRController);
+    const element = this.element as LitElement & {
+      _$EO: Set<ReactiveController>;
+    };
+    return Array.from(element._$EO ?? new Set()).filter(
+      RHDSSSRableRenderer.isRHDSSSRController
+    );
   }
 
   async setupController(controller: RHDSSSRController, renderInfo: RenderInfo) {
@@ -80,7 +90,8 @@ class RHDSSSRableRenderer extends LitElementRenderer {
       yield this.setupController(controller, renderInfo);
     }
     // Render styles.
-    const styles = (this.element.constructor as typeof LitElement).elementStyles;
+    const styles = (this.element.constructor as typeof LitElement)
+        .elementStyles;
     if (styles !== undefined && styles.length > 0) {
       yield '<style>';
       for (const style of styles) {
@@ -101,14 +112,12 @@ class RHDSSSRableRenderer extends LitElementRenderer {
     yield* renderValue(
       // @ts-expect-error: if upstream can do it, so can we
       this.element.render(),
-      renderInfo,
+      renderInfo
     );
   }
 }
 
-const elementRenderers = [
-  RHDSSSRableRenderer,
-];
+const elementRenderers = [RHDSSSRableRenderer];
 
 class UnsafeHTMLStringsArray extends Array {
   public raw: readonly string[];

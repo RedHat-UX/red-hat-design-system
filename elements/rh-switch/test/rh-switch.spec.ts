@@ -22,8 +22,7 @@ describe('<rh-switch>', function() {
       const klass = customElements.get('rh-switch');
       expect(element)
           .to.be.an.instanceOf(klass)
-          .and
-          .to.be.an.instanceOf(RhSwitch);
+          .and.to.be.an.instanceOf(RhSwitch);
     });
     it('has accessible role', async function() {
       snapshot = await a11ySnapshot({ selector: 'rh-switch' });
@@ -45,7 +44,11 @@ describe('<rh-switch>', function() {
     let snapshot: A11yTreeSnapshot;
     beforeEach(async function() {
       element = await createFixture<RhSwitch>(html`
-        <rh-switch accessible-label="Dark Mode" message-on="Message when on" message-off="Message when off"></rh-switch>
+        <rh-switch
+          accessible-label="Dark Mode"
+          message-on="Message when on"
+          message-off="Message when off"
+        ></rh-switch>
       `);
       await element.updateComplete;
     });
@@ -128,7 +131,12 @@ describe('<rh-switch>', function() {
     let snapshot: A11yTreeSnapshot;
     beforeEach(async function() {
       element = await createFixture<RhSwitch>(html`
-        <rh-switch checked accessible-label="Change Message" message-on="Message when on" message-off="Message when off"></rh-switch>
+        <rh-switch
+          checked
+          accessible-label="Change Message"
+          message-on="Message when on"
+          message-off="Message when off"
+        ></rh-switch>
       `);
 
       await element.updateComplete;
@@ -147,7 +155,11 @@ describe('<rh-switch>', function() {
     let snapshot: A11yTreeSnapshot;
     beforeEach(async function() {
       element = await createFixture<RhSwitch>(html`
-        <rh-switch accessible-label="Change Message" message-on="Message when on" message-off="Message when off"></rh-switch>
+        <rh-switch
+          accessible-label="Change Message"
+          message-on="Message when on"
+          message-off="Message when off"
+        ></rh-switch>
       `);
 
       await element.updateComplete;
@@ -161,12 +173,17 @@ describe('<rh-switch>', function() {
     });
   });
 
-
   describe('when checked and show-check-icon attrs are present', function() {
     let element: RhSwitch;
     beforeEach(async function() {
       element = await createFixture<RhSwitch>(html`
-        <rh-switch checked show-check-icon accessible-label="Change Message" message-on="Message when on" message-off="Message when off"></rh-switch>
+        <rh-switch
+          checked
+          show-check-icon
+          accessible-label="Change Message"
+          message-on="Message when on"
+          message-off="Message when off"
+        ></rh-switch>
       `);
     });
     it('should display a check icon', async function() {
@@ -177,7 +194,6 @@ describe('<rh-switch>', function() {
     });
   });
 
-
   describe('when used with a sibling label element', function() {
     let label: HTMLLabelElement;
     let element: RhSwitch;
@@ -186,7 +202,11 @@ describe('<rh-switch>', function() {
       const container = await createFixture<HTMLLabelElement>(html`
         <fieldset>
           <label for="with-label">Dark Mode</label>
-          <rh-switch id="with-label" message-on="Message when on" message-off="Message when off"></rh-switch>
+          <rh-switch
+            id="with-label"
+            message-on="Message when on"
+            message-off="Message when off"
+          ></rh-switch>
         </fieldset>
       `);
       label = container.querySelector('label')!;
@@ -225,8 +245,13 @@ describe('<rh-switch>', function() {
     beforeEach(async function() {
       const container = await createFixture<HTMLLabelElement>(html`
         <fieldset>
-          <label>Dark Mode
-            <rh-switch aria-describedby="switch-messages" message-on="Message when on" message-off="Message when off"></rh-switch>
+          <label
+            >Dark Mode
+            <rh-switch
+              aria-describedby="switch-messages"
+              message-on="Message when on"
+              message-off="Message when off"
+            ></rh-switch>
           </label>
         </fieldset>
       `);

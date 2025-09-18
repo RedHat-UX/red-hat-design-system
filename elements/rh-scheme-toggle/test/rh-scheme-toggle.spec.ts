@@ -53,7 +53,11 @@ describe('<rh-scheme-toggle>', function() {
 
       it('should focus and check the System radio input', async function() {
         const snapshot = await a11ySnapshot();
-        expect(snapshot).to.have.axQuery({ name: 'System', focused: true, checked: true });
+        expect(snapshot).to.have.axQuery({
+          name: 'System',
+          focused: true,
+          checked: true,
+        });
       });
 
       describe('Right Arrow', function() {
@@ -61,7 +65,11 @@ describe('<rh-scheme-toggle>', function() {
 
         it('should focus and check the light mode radio input', async function() {
           const snapshot = await a11ySnapshot();
-          expect(snapshot).to.have.axQuery({ name: 'Light', focused: true, checked: true });
+          expect(snapshot).to.have.axQuery({
+            name: 'Light',
+            focused: true,
+            checked: true,
+          });
         });
       });
 
@@ -70,7 +78,11 @@ describe('<rh-scheme-toggle>', function() {
 
         it('should focus and check the dark mode radio input', async function() {
           const snapshot = await a11ySnapshot();
-          expect(snapshot).to.have.axQuery({ name: 'Dark', focused: true, checked: true });
+          expect(snapshot).to.have.axQuery({
+            name: 'Dark',
+            focused: true,
+            checked: true,
+          });
         });
       });
     });
@@ -89,7 +101,9 @@ describe('<rh-scheme-toggle>', function() {
           describe('adding basic toggle element', function() {
             let element: RhSchemeToggle;
             beforeEach(async function() {
-              element = await createFixture<RhSchemeToggle>(html`<rh-scheme-toggle></rh-scheme-toggle>`);
+              element = await createFixture<RhSchemeToggle>(
+                html`<rh-scheme-toggle></rh-scheme-toggle>`
+              );
             });
             it('uses the stored scheme', async function() {
               expect(element.scheme).to.equal('light dark');
@@ -105,7 +119,9 @@ describe('<rh-scheme-toggle>', function() {
           describe('adding basic toggle element', function() {
             let element: RhSchemeToggle;
             beforeEach(async function() {
-              element = await createFixture<RhSchemeToggle>(html`<rh-scheme-toggle></rh-scheme-toggle>`);
+              element = await createFixture<RhSchemeToggle>(
+                html`<rh-scheme-toggle></rh-scheme-toggle>`
+              );
             });
             it('uses the stored scheme', async function() {
               expect(element.scheme).to.equal('light');
@@ -122,7 +138,9 @@ describe('<rh-scheme-toggle>', function() {
         describe('adding basic toggle element', function() {
           let element: RhSchemeToggle;
           beforeEach(async function() {
-            element = await createFixture<RhSchemeToggle>(html`<rh-scheme-toggle></rh-scheme-toggle>`);
+            element = await createFixture<RhSchemeToggle>(
+              html`<rh-scheme-toggle></rh-scheme-toggle>`
+            );
           });
           it('uses the stored scheme', async function() {
             expect(element.scheme).to.equal('dark');

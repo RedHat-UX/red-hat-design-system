@@ -12,7 +12,9 @@ import { themable } from '@rhds/elements/lib/themable.js';
 
 import style from './rh-cta.css';
 
-function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLButtonElement {
+function isSupportedContent(
+  el: Element | null
+): el is HTMLAnchorElement | HTMLButtonElement {
   return el instanceof HTMLAnchorElement || el instanceof HTMLButtonElement;
 }
 
@@ -66,7 +68,7 @@ export class RhCta extends LitElement {
   @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'ui';
 
   override async scheduleUpdate() {
-    if (this.icon || !this.variant && !customElements.get('rh-icon')) {
+    if (this.icon || (!this.variant && !customElements.get('rh-icon'))) {
       await import('@rhds/elements/rh-icon/rh-icon.js');
     }
     super.scheduleUpdate();
@@ -76,18 +78,26 @@ export class RhCta extends LitElement {
 
   override render() {
     const {
-      download, href, referrerpolicy, rel, target,
-      icon, iconSet,
+      download,
+      href,
+      referrerpolicy,
+      rel,
+      target,
+      icon,
+      iconSet,
       variant,
     } = this;
     const isDefault = !variant;
     const svg = isDefault;
     const follower =
-        (variant !== 'brick' && icon) ? html`<rh-icon icon=${icon} set=${iconSet ?? 'ui'}></rh-icon>`
-      : (variant === undefined) ? html`<rh-icon icon="arrow-right" set="ui"></rh-icon>`
-      : '';
-    const iconContent =
-      !(variant === 'brick' && icon) ? '' : html`<rh-icon .icon=${icon} set="${iconSet ?? 'ui'}"></rh-icon>`;
+      variant !== 'brick' && icon ?
+        html`<rh-icon icon=${icon} set=${iconSet ?? 'ui'}></rh-icon>`
+        : variant === undefined ?
+        html`<rh-icon icon="arrow-right" set="ui"></rh-icon>`
+        : '';
+    const iconContent = !(variant === 'brick' && icon) ?
+      ''
+      : html`<rh-icon .icon=${icon} set="${iconSet ?? 'ui'}"></rh-icon>`;
     const slot = html`<!--
           The default slot contains the link text when the \`href\`
           attribute is set. In case there is no href attribute, an anchor
@@ -95,27 +105,34 @@ export class RhCta extends LitElement {
           element. Less preferred but allowed for specific use-cases
           include: \`<button>\` (note however that the \`button\` tag is not
           supported for the default CTA styles).
-    --><slot></slot>${follower}`;
-    const linkContent =
-        !href ? slot
-      : html`<a href=${href}
-                download="${ifDefined(download)}"
-                rel="${ifDefined(rel)}"
-                referrerpolicy="${ifDefined(referrerpolicy)}"
-                target="${ifDefined(target)}">${slot}</a>`;
-    return html`
-      <!-- container element for slotted CTA -->
-      <span id="container"
-            part="container"
-            class=${classMap({ icon: !!icon, svg })}
-            @slotchange=${this.firstUpdated}>${iconContent}${linkContent}</span>`;
+    --><slot
+      ></slot>${follower}`;
+    const linkContent = !href ?
+      slot
+      : html`<a
+          href=${href}
+          download="${ifDefined(download)}"
+          rel="${ifDefined(rel)}"
+          referrerpolicy="${ifDefined(referrerpolicy)}"
+          target="${ifDefined(target)}"
+          >${slot}</a
+        >`;
+    return html` <!-- container element for slotted CTA -->
+      <span
+        id="container"
+        part="container"
+        class=${classMap({ icon: !!icon, svg })}
+        @slotchange=${this.firstUpdated}
+        >${iconContent}${linkContent}</span
+      >`;
   }
 
   override firstUpdated() {
     // workaround for lit-ssr bugs
     if (!isServer) {
       this.removeAttribute('defer-hydration');
-      const [, ...duplicateContainers] = this.shadowRoot?.querySelectorAll('#container') ?? [];
+      const [, ...duplicateContainers] =
+        this.shadowRoot?.querySelectorAll('#container') ?? [];
       for (const dupe of duplicateContainers) {
         dupe.remove();
       }
@@ -123,16 +140,25 @@ export class RhCta extends LitElement {
     // TODO: remove in next major version, recommend static HTML audits instead
     const { href, variant } = this;
     const cta =
-         this.shadowRoot?.querySelector('a')
-      ?? this.shadowRoot?.querySelector('slot')?.assignedElements().find(isSupportedContent)
+      this.shadowRoot?.querySelector('a')
+      ?? this.shadowRoot
+          ?.querySelector('slot')
+          ?.assignedElements()
+          .find(isSupportedContent)
       ?? null;
 
     if (href && cta !== this.shadowRoot?.querySelector('a')) {
-      return this.#logger.warn(`When the href attribute is used, slotted content must not be a link`);
+      return this.#logger.warn(
+        `When the href attribute is used, slotted content must not be a link`
+      );
     } else if (!href && !cta) {
-      return this.#logger.warn(`The first child in the light DOM must be a supported call-to-action tag (<a>, <button>)`);
+      return this.#logger.warn(
+        `The first child in the light DOM must be a supported call-to-action tag (<a>, <button>)`
+      );
     } else if (!href && cta instanceof HTMLButtonElement && !variant) {
-      return this.#logger.warn(`Button tag is not supported semantically by the default link styles`);
+      return this.#logger.warn(
+        `Button tag is not supported semantically by the default link styles`
+      );
     }
   }
 }
