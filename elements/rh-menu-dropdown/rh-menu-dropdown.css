@@ -55,6 +55,27 @@
 
   &.boxed {
     border: 1px solid #c7c7c7;
+
+    &:not(.open) {
+      &:hover,
+      &:active {
+        border: 2px solid #0066cc;
+      }
+
+      &:focus {
+        outline: 2px solid #0066cc;
+        outline-offset: 2px;
+      }
+    }
+
+    &.open {
+      border: 2px solid #0066cc;
+
+      &:focus {
+        outline: 2px solid #0066cc;
+        outline-offset: 2px;
+      }
+    }
   }
 
   &.compact {
@@ -77,29 +98,6 @@
 
       &:focus {
         border: 2px solid #0066cc;
-      }
-    }
-
-    &.boxed {
-      &:not(.open) {
-        &:hover,
-        &:active {
-          border: 2px solid #0066cc;
-        }
-
-        &:focus {
-          outline: 2px solid #0066cc;
-          outline-offset: 2px;
-        }
-      }
-
-      &.open {
-        border: 2px solid #0066cc;
-
-        &:focus {
-          outline: 2px solid #0066cc;
-          outline-offset: 2px;
-        }
       }
     }
   }
