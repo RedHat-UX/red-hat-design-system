@@ -10,7 +10,7 @@ const styles = css `:host{display:block}fieldset{align-items:center;border:0;dis
 /**
  * A switch toggles the state of the color scheme (between light, dark and system default).
  *
- * @summary  A switch toggles the state of the color scheme (between light, dark and system default).
+ * @summary  Switches between a variety of color schemes
  *
  * @alias Scheme toggle
  */
