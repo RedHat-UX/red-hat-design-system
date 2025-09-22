@@ -70,7 +70,9 @@ export class RhAccordionHeader extends LitElement {
         this.#internals.ariaLevel = heading.localName.replace('h', '');
         heading.replaceWith(this);
       } else {
-        this.#internals.ariaLevel = Math.max(2, this.#heading.level).toString();
+        if (!this.#internals.ariaLevel) {
+          this.#internals.ariaLevel = Math.max(2, this.#heading.level).toString();
+        }
       }
       this.removeAttribute('role');
     }
