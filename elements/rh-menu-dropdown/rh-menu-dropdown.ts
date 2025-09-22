@@ -4,6 +4,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import styles from './rh-menu-dropdown.css';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
+import { queryAll } from 'lit/decorators/query-all.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
@@ -23,7 +24,7 @@ export class RhMenuDropdown extends LitElement {
   @property({ attribute: 'layout', reflect: true }) layout: 'compact' | null = null;
   @query('#menu-toggle') menuToggleButton!: HTMLElement;
   @query('#menu-list') menuList!: HTMLElement;
-  @query('slot') slotElement!: HTMLSlotElement;
+  @queryAll('slot') slotElement!: NodeListOf<HTMLSlotElement>;
 
   static {
     if (!isServer) {
@@ -45,8 +46,9 @@ export class RhMenuDropdown extends LitElement {
   }
 
   firstUpdated() {
-    this.validateSlotContent();
-    this.slotElement.addEventListener('slotchange', () => this.validateSlotContent());
+    this.updateComplete.then(() => {
+      this.#validateSlotContent();
+    });
   }
 
   get #items() {
@@ -62,23 +64,15 @@ export class RhMenuDropdown extends LitElement {
     }
   }
 
-  private validateSlotContent() {
-    const assignedElements = this.slotElement.assignedElements({ flatten: true });
-
-    assignedElements.forEach(el => {
-      if (!this.isValidMenuDropdownChild(el)) {
-        // eslint-disable-next-line no-console
-        console.error(`Invalid slotted element:`, el);
-        // el.remove();
-      }
+  #validateSlotContent() {
+    this.slotElement?.forEach((slot: HTMLSlotElement) => {
+      const assignedElements = slot.assignedElements({ flatten: true });
+      assignedElements.forEach(el => {
+        if ( el instanceof HTMLHRElement) {
+          el.inert = true;
+        }
+      });
     });
-  }
-
-  private isValidMenuDropdownChild(el: Element): boolean {
-    if ( el instanceof HTMLHRElement) {
-      el.inert = true;
-    }
-    return el instanceof RhMenuItem || el instanceof HTMLHRElement;
   }
 
   #tabindex = RovingTabindexController.of(this, {
@@ -104,8 +98,8 @@ export class RhMenuDropdown extends LitElement {
           id="menu-toggle"
           aria-haspopup="true"
           aria-expanded="${this.open}"
-          @click="${this.toggleMenu}"
-          @keydown="${this.onToggleKeydown}"
+          @click="${this.#toggleMenu}"
+          @keydown="${this.#onToggleKeydown}"
           class="${this.variant !== 'open' ? 'boxed' : ''}
            ${this.layout === 'compact' ? 'compact' : ''} 
            ${this.open ? 'open' : ''}">
@@ -127,7 +121,8 @@ export class RhMenuDropdown extends LitElement {
         <rh-menu
           id="menu-list"
           role="menu"
-          @click=${this.onSelect}
+          @click=${this.#onSelect}
+          @keydown=${this.#onKeyDown}
         >
           <slot></slot>
         </rh-menu>
@@ -135,18 +130,18 @@ export class RhMenuDropdown extends LitElement {
     `;
   }
 
-  toggleMenu() {
+  #toggleMenu() {
     this.open = !this.open;
 
     if (this.open) {
       this.updateComplete.then(() => {
-        this.focusFirstItem();
-        this.positionPopover();
+        this.#focusFirstItem();
+        this.#positionPopover();
       });
     }
   }
 
-  positionPopover() {
+  #positionPopover() {
     const {
       top: toggleTop,
       bottom: toggleBottom,
@@ -192,27 +187,45 @@ export class RhMenuDropdown extends LitElement {
     return Array.from(this.querySelectorAll('rh-menu-item'));
   }
 
-  focusFirstItem() {
+  #focusFirstItem() {
     this.items[0]?.focus();
   }
 
-  onToggleKeydown(e: KeyboardEvent) {
+  #onToggleKeydown(e: KeyboardEvent) {
     if (['Enter', ' ', 'ArrowDown'].includes(e.key)) {
       e.preventDefault();
       this.open = true;
-      this.updateComplete.then(() => this.focusFirstItem());
+      this.updateComplete.then(() => {
+        this.#focusFirstItem();
+        this.#positionPopover();
+      });
     }
   }
 
-  onSelect(event: KeyboardEvent | Event & { target: RhMenuItem }) {
+  #handleSelection(target: RhMenuItem) {
+    this.open = false;
+    this.menuToggleButton.focus();
+    this.dispatchEvent(new CustomEvent('select', {
+      detail: { text: target.textContent },
+      bubbles: true,
+      composed: true,
+    }));
+  }
+
+  #onSelect(event: KeyboardEvent & { target: RhMenuItem }) {
     if (event.target instanceof RhMenuItem) {
-      this.open = false;
-      this.menuToggleButton.focus();
-      this.dispatchEvent(new CustomEvent('select', {
-        detail: { text: event.target.textContent },
-        bubbles: true,
-        composed: true,
-      }));
+      this.#handleSelection(event.target);
+    }
+  }
+
+  #onKeyDown(event: KeyboardEvent & { target: RhMenuItem }) {
+    if (
+      event.target instanceof RhMenuItem
+      && (event.key === 'Enter' || event.key === ' ')
+      && !event.target.disabled
+    ) {
+      event.preventDefault();
+      this.#handleSelection(event.target);
     }
   }
 }
