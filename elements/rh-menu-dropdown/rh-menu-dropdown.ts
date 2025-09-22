@@ -52,6 +52,10 @@ export class RhMenuDropdown extends LitElement {
   }
 
   get #items() {
+    this.items.forEach((item, index) => {
+      item?.setAttribute('aria-setsize', this.items.length.toString());
+      item?.setAttribute('aria-posinset', (index + 1).toString());
+    });
     return this.items;
   }
 
@@ -99,6 +103,7 @@ export class RhMenuDropdown extends LitElement {
           aria-haspopup="true"
           aria-expanded="${this.open}"
           @click="${this.#toggleMenu}"
+          aria-controls="menu-list"
           @keydown="${this.#onToggleKeydown}"
           class="${this.variant !== 'open' ? 'boxed' : ''}
            ${this.layout === 'compact' ? 'compact' : ''} 
