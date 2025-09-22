@@ -14,11 +14,20 @@ export class RhMenuItem extends LitElement {
   @property({ type: String }) href = '';
 
   render(): TemplateResult<1> {
-    if (this.href && !this.disabled) {
-      return html`<a class="menu-item" href="${this.href}" role="menuitem" tabindex="-1"><slot></slot></a>`;
-    }
+    const content = this.href && !this.disabled ?
+    html`<a class="menu-item" href="${this.href}" role="menuitem" tabindex="-1">
+      <slot name="icon"></slot>
+      <slot></slot>
+    </a>`
+    : html`<div aria-disabled="${this.disabled}" class="menu-item" role="menuitem" tabindex="-1">
+      <slot name="icon"></slot>
+      <slot></slot>
+    </div>`;
 
-    return html`<div class="menu-item" role="menuitem" tabindex="-1"><slot></slot></div>`;
+    return html`
+      ${content}
+      <slot id="description" name="description"></slot>
+    `;
   }
 
   focus() {
