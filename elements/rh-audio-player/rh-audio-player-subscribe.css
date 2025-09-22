@@ -7,7 +7,7 @@
   display: block;
 }
 
-@media (min-width: 576px) {
+@container (min-width: 576px) {
   slot[part='links'] {
     display: flex;
     align-items: stretch;

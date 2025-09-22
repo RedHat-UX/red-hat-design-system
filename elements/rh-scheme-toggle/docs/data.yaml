@@ -3,8 +3,13 @@ tagName: rh-scheme-toggle
 name: Scheme toggle
 type: element
 overallStatus: ready
+description: >-
+  A scheme toggle switches between light, dark, and system default color schemes.
 libraries:
-  figma: planned
+  figma: ready
   rhds: ready
   shared: planned
-  docs: planned
+  docs: ready
+relatedItems:
+  - rh-button
+  - rh-switch
