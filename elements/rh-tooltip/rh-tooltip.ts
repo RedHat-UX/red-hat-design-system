@@ -99,6 +99,9 @@ export class RhTooltip extends LitElement {
   /** Tooltip content. Overridden by the content slot */
   @property() content?: string;
 
+  /** When true, disables screen reader announcements for tooltip content. Only use when another accessible label is provided. */
+  @property({ type: Boolean, reflect: true }) silent = false;
+
   #float = new FloatingDOMController(this, {
     content: (): HTMLElement | undefined | null => this.shadowRoot?.querySelector('#tooltip'),
   });
@@ -171,13 +174,17 @@ export class RhTooltip extends LitElement {
       : { mainAxis: 15, alignmentAxis: -4 };
     await this.#float.show({ offset, placement });
     this.#initialized ||= true;
-    RhTooltip.announce(this.#content);
+    if (!this.silent) {
+      RhTooltip.announce(this.#content);
+    }
   }
 
   /** Hide the tooltip */
   async hide() {
     await this.#float.hide();
-    RhTooltip.announcer.innerText = '';
+    if (!this.silent) {
+      RhTooltip.announcer.innerText = '';
+    }
   }
 
   #onKeydown = (event: KeyboardEvent): void => {

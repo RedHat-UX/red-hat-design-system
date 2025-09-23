@@ -1,0 +1,24 @@
+<p>Adding the <code>silent</code> attribute makes <code>&lt;rh-tooltip&gt;</code>&rsquo;s tooltip content inaccessible. Only use when providing another means of accessibility for content in the <code>content</code> slot.</p>
+
+<rh-tooltip silent>
+  <rh-button variant="secondary">
+    <rh-icon set="ui" icon="copy" accessible-label="Copy to Clipboard"></rh-icon>
+  </rh-button>
+  <span slot="content">Copy to Clipboard</span>
+</rh-tooltip>
+
+<script type="module">
+  import '@rhds/elements/rh-button/rh-button.js';
+  import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+  import '@rhds/elements/rh-icon/rh-icon.js';
+</script>
+
+<style>
+  rh-button {
+    margin-inline-start: var(--rh-space-3xl, 48px);
+  }
+
+  p {
+    margin-block-end: var(--rh-space-2xl, 32px);
+  }
+</style>
