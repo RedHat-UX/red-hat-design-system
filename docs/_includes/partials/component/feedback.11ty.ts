@@ -6,14 +6,14 @@ const html = String.raw; // for editor highlighting
 
 interface Data {
   title: string;
-  relatedItems: Record<string, string[]>;
   doc: ElementDocsPageData;
 }
 
 export default class Feedback extends Renderer<Data> {
-  async render({ doc, title, relatedItems, pfeconfig }: Data & GlobalData) {
+  async render({ doc, title, pfeconfig }: Data & GlobalData) {
     const name = doc?.tagName ?? this.slugify(title);
-    const related = [...new Set((relatedItems?.[name] ?? []) as string[])].map(x => {
+    const relatedItems = doc?.elementData?.relatedItems ?? [];
+    const related = [...new Set(relatedItems)].map(x => {
       const slug = this.getTagNameSlug(x);
       return {
         name: x,

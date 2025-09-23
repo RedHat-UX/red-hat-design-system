@@ -50,6 +50,18 @@
   padding-block: var(--rh-space-lg, 16px);
 }
 
+.visually-hidden {
+  block-size: 1px;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  inline-size: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+}
+
 [part='overlay'] {
   display: none;
   background-color: rgb(from var(---rh-color-gray-90) / var(--rh-opacity-60));

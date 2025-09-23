@@ -12,7 +12,7 @@ A disclosure is a container that includes a caret icon and a text label, similar
          height="341">
   </uxdot-example>
   <figcaption>
-    <ol style="font-size: var(--rh-font-size-body-text-sm, 0.875rem);">
+    <ol>
       <li>Caret icon</li>
       <li>Title text</li>
       <li>Container</li>
