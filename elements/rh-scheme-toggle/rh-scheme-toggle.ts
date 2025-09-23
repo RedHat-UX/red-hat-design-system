@@ -16,7 +16,7 @@ declare global {
 type Scheme = 'light' | 'dark' | 'light dark';
 
 /**
- * A switch toggles the state of the color scheme (between light, dark and system default).
+ * A scheme toggle switches between light, dark, and system default color schemes.
  *
  * @summary  Switches between a variety of color schemes
  *
