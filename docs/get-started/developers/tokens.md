@@ -10,33 +10,88 @@ subnav:
   order: 30
 ---
 
+<style data-helmet>
+  .code-tabs rh-tab-panel {
+    padding-block-end: 0;
+    padding-inline: 0;
+  }
+</style>
+
 <script type="module" data-helmet>
   import '@uxdot/elements/uxdot-example.js';
   import '@rhds/elements/rh-code-block/rh-code-block.js';
+  import '@rhds/elements/rh-tabs/rh-tabs.js';
 </script>
+
+Design tokens are the source of truth for our design decisions. They provide the values
+needed to maintain our design system and are integral to consistently branded Red Hat digital 
+experiences.
+
+Developers are strongly encouraged to use our design [tokens](/tokens/) when writing CSS.
 
 ## How to install tokens
 
-Run the following git command to install RHDS tokens:
+Add one of the following `<link>` tags to your document's `<head>`:
+
+<rh-tabs class="code-tabs">
+  <rh-tab slot="tab" active>Red Hat CDN</rh-tab>
+  <rh-tab-panel>
+
+```html rhcodeblock
+<link rel="stylesheet"
+      href="https://www.redhatstatic.com/dssf-001/v2/@rhds/tokens@{{ packageinfo.packages["node_modules/@rhds/tokens"].version }}/css/global.css">
+```
+
+  </rh-tab-panel>
+  <rh-tab slot="tab">Third party CDN</rh-tab>
+  <rh-tab-panel>
+
+  <rh-alert state="warning">
+    <h4 slot="header">Public CDNs</h4>
+    <p>jsDelivr and other public CDNs should not be used on corporate domains. Use 
+      them for <strong>development purposes only</strong>!</p>
+  </rh-alert>
+
+```html rhcodeblock
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@rhds/tokens@{{ packageinfo.packages["node_modules/@rhds/tokens"].version }}/css/global.min.css">
+```
+
+  </rh-tab-panel>
+  <rh-tab slot="tab">NPM</rh-tab>
+  <rh-tab-panel>
+
+If your project uses a bundler, run the following command in your terminal to install RHDS tokens:
+
+```bash rhcodeblock
+npm install @rhds/tokens
+```
+
+Then reference the Tokens CSS file:
 
 ```js rhcodeblock
-npm i @rhds/tokens
+@import '@rhds/tokens@{{ packageinfo.packages["node_modules/@rhds/tokens"].version }}/css/global.css';
 ```
+
+  </rh-tab-panel>
+</rh-tabs>
 
 ## Usage
 
 We use [style-dictionary][styledictionary] to transform our tokens into multiple
 formats and helpers.
 
-### Import global CSS
+### Use tokens in CSS
 
-Apply defaults to the document root by importing the global stylesheet:
+Apply defaults to the document root by importing the global stylesheet as seen above, then use our
+tokens in your CSS:
 
 ```html rhcodeblock
-<link rel="stylesheet" href="/url/to/@rhds/tokens/css/global.css" />
 <style>
   :is(h1, h2, h3, h4, h5, h6) {
+    color: var(--rh-color-text-primary);
     font-family: var(--rh-font-family-heading);
+    margin-block-end: var(--rh-space-xl);
   }
 </style>
 ```
