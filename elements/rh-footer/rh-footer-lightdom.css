@@ -196,6 +196,19 @@ rh-footer-universal:not(:defined) {
     padding: 0;
   }
 
+  /* No JS + DSD: */
+  &[ssr-hint-has-slotted] :is(h2, h3, h4)[hidden] {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    block-size: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    inline-size: 1px;
+  }
+
   & rh-footer-copyright:not(:defined) {
     grid-column: -1/1;
     padding-block: var(--rh-space-2xl, 32px) var(--rh-space-md, 8px);
@@ -321,6 +334,10 @@ rh-footer:not(:defined) rh-footer-universal:not(:defined) {
   rh-footer-universal:not(:defined) {
     padding-block: var(--rh-space-2xl, 32px);
     padding-inline: var(--rh-space-7xl, 128px) var(--rh-space-4xl, 64px);
+
+    &[ssr-hint-has-slotted] {
+      padding-inline: 0;
+    }
 
     & ul[slot='links-primary'],
     & ul[slot='links-secondary'] {
