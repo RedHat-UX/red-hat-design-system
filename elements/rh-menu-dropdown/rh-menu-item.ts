@@ -4,8 +4,8 @@ import { property } from 'lit/decorators/property.js';
 import styles from './rh-menu-item.css';
 
 /**
- * Menu Dropdown
- * @alias Menu Dropdown
+ * Menu Dropdown Item
+ * @alias Menu Dropdown Item
  */
 @customElement('rh-menu-item')
 export class RhMenuItem extends LitElement {
