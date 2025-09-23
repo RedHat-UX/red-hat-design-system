@@ -5,18 +5,17 @@
   <p>Tables are strictly intended for tabular data, and should never be used for layout purposes.</p>
 </rh-alert>
 
-
 Since tables are inherently complex HTML structures, they can create barriers for users and assistive technologies ([View WCAG guidelines](#web-content-accessibility-guidelines)) if their markup does not clearly define the relationships within the tabular data. Therefore, it is essential for tables to contain as much context as possible through the application of appropriate structural markup.
 
 ### Minimum requirements
 
-- Column titles (or headers) must use `<th>` elements with `scope="col"` attributes ([WCAG technique H63](https://www.w3.org/WAI/WCAG21/Techniques/html/H63))
-- Row titles (or headers) must use `<th>` elements with `scope="row"` attributes ([WCAG technique H63](https://www.w3.org/WAI/WCAG21/Techniques/html/H63))
-- Add a `<caption>` element to title a table and help users identify its purpose ([WCAG technique H39](https://www.w3.org/WAI/WCAG21/Techniques/html/H39))
+- Column titles (or headers) must use `<th>` elements with `scope="col"` attributes ([WCAG technique H63](https://www.w3.org/WAI/WCAG22/Techniques/html/H63))
+- Row titles (or headers) must use `<th>` elements with `scope="row"` attributes ([WCAG technique H63](https://www.w3.org/WAI/WCAG22/Techniques/html/H63))
+- Add a `<caption>` element to title a table and help users identify its purpose ([WCAG technique H39](https://www.w3.org/WAI/WCAG22/Techniques/html/H39))
 
 ### Further guidance
 
-- Use `id` and `headers` attributes to associate data cells with their table headers in complex tables ([WCAG technique H43](https://www.w3.org/WAI/WCAG21/Techniques/html/H43))
+- Use `id` and `headers` attributes to associate data cells with their table headers in complex tables ([WCAG technique H43](https://www.w3.org/WAI/WCAG22/Techniques/html/H43))
 - Define sections with `<thead>` and `<tbody>` (and optionally `<tfoot>` for larger tables)
 
 ### Example markup
@@ -98,7 +97,6 @@ A logical focus order helps keyboard users operate our websites and apps. Elemen
        height="280">
 </uxdot-example>
 
-
 ## Touch targets
 
 Each cell includes enough spacing for selecting interactive elements.
@@ -109,7 +107,6 @@ Each cell includes enough spacing for selecting interactive elements.
        width="872"
        height="280">
 </uxdot-example>
-
 
 ## Additional guidelines
 
