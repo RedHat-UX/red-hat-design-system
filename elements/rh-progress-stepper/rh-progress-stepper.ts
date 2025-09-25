@@ -54,7 +54,7 @@ const BREAKPOINTS = new Map(Object.entries({
  *
  * ## Usage guidelines
  * - Use 3-5 steps maximum to reduce cognitive load
- * - Designed to complement standard previous/next navigation, not as navigation itself
+ * - Designed to complement standard previous/next navigation. Avoid using as the only navigation.
  * - When process is completed, users cannot go back and must start over
  *
  * ## Accessibility
@@ -202,8 +202,8 @@ export class RhProgressStepper extends LitElement {
         <strong id="current-step"
                 class="visually-hidden"
                 ?hidden="${!compact}">${this.#contentString}</strong>
-        <!-- Use this slot for \`<rh-progress-step>\` items -->
-        <!-- Each step should include title and optional description -->
+        <!-- Use this slot for \`<rh-progress-step>\` items
+             Each step should include title and optional description
         <slot id="step-list" @change="${this.#onChange}"></slot>
       </div>
     `;

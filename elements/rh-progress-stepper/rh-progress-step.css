@@ -9,7 +9,6 @@
   --_step-line-style:
     linear-gradient(
         var(--_step-line-angle),
-        /* @summary Sets the angle direction for connecting line gradient */
         transparent 13px,
         var(--_step-line-color) 13px,
         /* @summary Controls connecting lines' color */
