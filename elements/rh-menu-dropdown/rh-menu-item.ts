@@ -13,13 +13,18 @@ export class RhMenuItem extends LitElement {
   @property({ type: Boolean, reflect: true }) disabled = false;
   @property({ type: String }) href = '';
 
+  connectedCallback() {
+    super.connectedCallback();
+    this.setAttribute('role', 'menuitem');
+  }
+
   render(): TemplateResult<1> {
     const content = this.href && !this.disabled ?
-    html`<a class="menu-item" href="${this.href}" role="menuitem" tabindex="-1">
+    html`<a class="menu-item" href="${this.href}" tabindex="-1">
       <slot name="icon"></slot>
       <slot></slot>
     </a>`
-    : html`<div aria-disabled="${this.disabled}" class="menu-item" role="menuitem" tabindex="-1">
+    : html`<div aria-disabled="${this.disabled}" class="menu-item" tabindex="-1">
       <slot name="icon"></slot>
       <slot></slot>
     </div>`;

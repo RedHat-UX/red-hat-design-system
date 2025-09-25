@@ -1,4 +1,4 @@
-import { LitElement, html, isServer } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 
@@ -33,10 +33,20 @@ export class RhMenu extends LitElement {
   @queryAssignedElements() private _menuItems!: Element[];
 
   #tabindex: RovingTabindexController<HTMLElement> = RovingTabindexController.of(this, {
-    getItems: (): HTMLElement[] =>
-      this._menuItems.flatMap((element: Element) =>
-        element instanceof HTMLSlotElement ? element.assignedElements() : [element]
-      ) as HTMLElement[],
+    getItems: (): HTMLElement[] => {
+      return this._menuItems.flatMap((element: Element) => {
+        if (element instanceof HTMLSlotElement) {
+          // Handle slotted elements
+          return element.assignedElements() as HTMLElement[];
+        } else {
+          // Set role="menuitem" if not already set
+          if (element instanceof HTMLElement && !element.hasAttribute('role')) {
+            element.setAttribute('role', 'menuitem');
+          }
+          return [element as HTMLElement];
+        }
+      });
+    },
   });
 
   get activeItem() {
