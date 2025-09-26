@@ -1,0 +1,42 @@
+<div id="menu-dropdown-container">
+  <rh-menu-dropdown>
+    <p slot='label'>Basic toggle</p>
+    <rh-menu>
+    <rh-menu-item>Action</rh-menu-item>
+    <rh-menu-item href="#">Link</rh-menu-item>
+    <rh-menu-item disabled>Disabled Action</rh-menu-item>
+    <rh-menu-item disabled href="#">Disabled link</rh-menu-item>
+    <rh-menu-item disabled>Aria-disabled link</rh-menu-item>
+    <hr/>
+    <rh-menu-item>Separated action</rh-menu-item>
+    <rh-menu-item href="#">Separated link</rh-menu-item>
+  </rh-menu>
+    <rh-menu>
+      <a href="#">Link1</a>
+      <a href="#">Link2</a>
+      <a href="#">Link3</a>
+      <a href="#">Link4</a>
+    </rh-menu>
+  </rh-menu-dropdown>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-menu-dropdown/rh-menu-dropdown.js';
+  import '@rhds/elements/rh-menu-dropdown/rh-menu-item.js';
+  import '@rhds/elements/rh-menu/rh-menu.js';
+
+  const dropdown = document.querySelector('rh-menu-dropdown');
+  dropdown.addEventListener('select', e => {
+    console.log('Selected:', e.detail.text);
+  });
+</script>
+
+<style>
+#menu-dropdown-container {
+  padding: 1rem;
+
+  rh-menu-dropdown{
+    width: 296px;
+  }
+}
+</style>
