@@ -97,7 +97,17 @@ details[open] {
 }
 
 /* Variants */
-:host([variant='open']) {
+:host([variant~='compact']) {
+  summary {
+    padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+  }
+
+  #details-content {
+    padding-inline: var(--rh-space-lg, 16px);
+  }
+}
+
+:host([variant~='open']) {
   border: 0;
 
   details[open] {

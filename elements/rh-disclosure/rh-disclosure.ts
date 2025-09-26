@@ -72,10 +72,11 @@ export class RhDisclosure extends LitElement {
    */
   @property({ type: Boolean, reflect: true }) open = false;
 
-  /** Removes the outer and left border from the disclosure.
+  /** **Open:** Removes the outer and left border from the disclosure.
    * The background is `surface-light`/`surface-dark` when expanded.
+   * **Compact:** decreases disclosure padding.
    */
-  @property({ reflect: true }) variant?: 'open';
+  @property({ reflect: true }) variant?: 'open' | 'compact';
 
   /**
    * Sets the disclosure title via an attribute
