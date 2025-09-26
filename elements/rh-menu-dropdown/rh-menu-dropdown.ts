@@ -13,6 +13,7 @@ import { RhMenuItem } from './rh-menu-item.js';
 
 /**
  * Menu Dropdown
+ * @alias menu-dropdown
  * @slot - Place element content here
  */
 @customElement('rh-menu-dropdown')
