@@ -1,4 +1,4 @@
-import { LitElement, html, isServer } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 
@@ -30,19 +30,24 @@ export class RhMenu extends LitElement {
 
   static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 
-  @queryAssignedElements() private _menuItems!: HTMLElement[];
+  @queryAssignedElements() private _menuItems!: Element[];
 
-  #tabindex = RovingTabindexController.of<HTMLElement>(this, {
-    getItems: () => this.getItems(this._menuItems),
+  #tabindex: RovingTabindexController<HTMLElement> = RovingTabindexController.of(this, {
+    getItems: (): HTMLElement[] => {
+      return this._menuItems.flatMap((element: Element) => {
+        if (element instanceof HTMLSlotElement) {
+          // Handle slotted elements
+          return element.assignedElements() as HTMLElement[];
+        } else {
+          // Set role="menuitem" if not already set
+          if (element instanceof HTMLElement && !element.hasAttribute('role')) {
+            element.setAttribute('role', 'menuitem');
+          }
+          return [element as HTMLElement];
+        }
+      });
+    },
   });
-
-  /**
-   * override or set to add items to the roving tab index controller
-   * @param items original list of items
-   */
-  getItems(items: HTMLElement[]): HTMLElement[] {
-    return items;
-  }
 
   get activeItem() {
     return this.#tabindex.items.at(this.#tabindex.atFocusedItemIndex);
@@ -52,23 +57,13 @@ export class RhMenu extends LitElement {
     super.connectedCallback();
     this.id ||= getRandomId('menu');
     this.setAttribute('role', 'menu'); // TODO: use InternalsController.role when support/polyfill is better
-    if (!isServer) {
-      this.#onSlotchange();
-    }
   }
 
   render() {
     return html`
       <!-- menu items -->
-      <slot part="menu"
-            @slotchange="${this.#onSlotchange}"></slot>
+      <slot part="menu"></slot>
     `;
-  }
-
-  #onSlotchange() {
-    for (const item of this._menuItems ?? []) {
-      item.setAttribute('role', 'menuitem');
-    }
   }
 
   activateItem(item: HTMLElement) {

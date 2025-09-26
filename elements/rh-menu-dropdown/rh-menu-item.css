@@ -1,0 +1,58 @@
+:host {
+  display: block;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+
+  a {
+    text-decoration: none;
+    color: #151515;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  ::slotted([slot='icon']) {
+    padding-inline-end: 8px;
+  }
+}
+
+:host(:hover) {
+  background: #f2f2f2;
+}
+
+:host(:focus) {
+  background: #f2f2f2;
+  border: 2px solid #0066cc;
+  border-radius: 2px;
+  box-sizing: border-box;
+
+  .menu-item {
+    outline: none;
+  }
+}
+
+:host([disabled]) {
+  color: #888888;
+  cursor: default;
+  pointer-events: none;
+}
+
+::slotted([slot='description']) {
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  font-size: 14px !important;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+}
