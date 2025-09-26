@@ -95,3 +95,42 @@ details[open] {
     border-inline-start-color: transparent;
   }
 }
+
+/* Variants */
+:host([variant='open']) {
+  border: 0;
+
+  details[open] {
+    background-color:
+      light-dark(
+          var(--rh-color-surface-lighter, #f2f2f2),
+          var(--rh-color-surface-darker, #1f1f1f)
+        );
+    box-shadow: none;
+
+    &:before {
+      border-inline-start: 0;
+    }
+
+    summary {
+      background-color:
+        light-dark(
+            var(--rh-color-surface-lighter, #f2f2f2),
+            var(--rh-color-surface-darker, #1f1f1f)
+          );
+
+      &:hover,
+      &:focus {
+        background-color:
+          light-dark(
+              var(--rh-color-surface-light, #e0e0e0),
+              var(--rh-color-surface-dark, #383838)
+            );
+      }
+    }
+
+    #details-content {
+      background-color: transparent;
+    }
+  }
+}
