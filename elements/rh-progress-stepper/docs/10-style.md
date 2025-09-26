@@ -31,8 +31,18 @@ icons change as users move through each step.
         height="64">  
 </uxdot-example>
 
+### Custom icons
 
-## Color Scheme
+A progress stepper can also include custom icons. When a custom icon is used for a completed or a current step, the color will change, like a default status icon, but the custom icon will remain visible. If the step fails or has a warning, the custom icon will be replaced by the warning or error status icon.
+
+<uxdot-example color-palette="lightest">
+  <img src="../progress-stepper-style-custom-icons.svg"
+        alt="Horizontal progress stepper showing two green completed steps with default icons, a current step with a purple custom gear icon, and a not yet completed step without an icon."
+        width="643"
+        height="80">  
+</uxdot-example>
+
+## Color scheme
 
 A progress stepper is available in both light and dark color schemes.
 
@@ -100,4 +110,26 @@ If more description is needed, a progress stepper with descriptions can be used 
 
 ## Interaction states
 
-Coming soon
+When the titles in a progress stepper are linked, the interaction states use our <a href="/foundations/interactions/links/#inline-links">inline link</a> styling. Only the completed or current steps will be linked.
+
+### Hover
+
+The dashed underline offset value increases by 1 pixel on hover.
+
+<uxdot-example color-palette="lightest">
+  <img src="../progress-stepper-style-interaction-state-hover.svg"
+        alt="A progress stepper with dashed underlines below two completed steps and one current step to indicate that they're linked. A cursor hovers over the first completed step."
+        width="562"
+        height="66">
+</uxdot-example>
+
+### Focus and active
+
+The focus and active states of linked progress steps look similar to the hover state, but a focus ring is added around the link.
+
+<uxdot-example color-palette="lightest">
+  <img src="../progress-stepper-style-interaction-state-focus-active.svg"
+        alt="A progress stepper with dashed underlines below two completed steps and one current step to indicate that they're linked. A focus ring appears around the linked current step."
+        width="562"
+        height="66">
+</uxdot-example>
