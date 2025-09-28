@@ -1,37 +1,9 @@
 :host {
   display: inline-flex;
   flex-wrap: wrap;
-  gap: 0;
+  gap: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
   margin-bottom: var(
     --rh-space-md,
     16px
   ); /* space between button groups */
-}
-
-/* Normal button groups: primary/secondary/tertiary */
-:host([role="group"]) ::slotted(rh-button),
-:host([role="group"]) ::slotted(button) {
-  margin: 0;
-  margin-right: var(
-    --rh-space-sm,
-    8px
-  ); /* spacing between buttons */
-}
-
-/* Icon buttons inside toolbars */
-:host([role="toolbar"]) ::slotted(rh-button[icon]),
-:host([role="toolbar"]) ::slotted(button[icon-only]) {
-  margin: 0;
-  margin-right: var(
-    --rh-space-xs,
-    4px
-  ); /* spacing between icon buttons */
-}
-
-/* Remove right margin from last button in any group */
-:host([role="group"]) ::slotted(rh-button:last-child),
-:host([role="group"]) ::slotted(button:last-child),
-:host([role="toolbar"]) ::slotted(rh-button[icon]:last-child),
-:host([role="toolbar"]) ::slotted(button[icon-only]:last-child) {
-  margin-right: 0;
 }
