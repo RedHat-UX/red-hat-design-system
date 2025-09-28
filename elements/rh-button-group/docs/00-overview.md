@@ -10,6 +10,10 @@ demo: true
 
 Use `<rh-button-group>` to group multiple `<rh-button>` elements together.
 
+## When to use
+
+Use a button group to group a series of related buttons together.
+
 ## Example
 
 ```html preview
@@ -25,3 +29,4 @@ Use `<rh-button-group>` to group multiple `<rh-button>` elements together.
   <rh-button variant="secondary" icon="trash"></rh-button>
   <rh-button variant="secondary" icon="undo"></rh-button>
 </rh-button-group>
+```

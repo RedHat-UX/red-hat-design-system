@@ -15,7 +15,7 @@ import '@rhds/elements/rh-button-group/rh-button-group.js';
 
 /**
  * description
- * 
+ *
  * @alias Button Group
  */
 @customElement('rh-button-group')
