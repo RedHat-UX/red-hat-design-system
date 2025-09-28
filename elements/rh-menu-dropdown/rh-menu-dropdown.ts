@@ -27,6 +27,11 @@ export class RhMenuDropdown extends LitElement {
   @query('#menu-list') menuList!: HTMLElement;
   @queryAll('slot') slotElement!: NodeListOf<HTMLSlotElement>;
 
+  static override readonly shadowRootOptions: ShadowRootInit = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+  };
+
   static {
     if (!isServer) {
       document.addEventListener('click', function(event) {
@@ -53,10 +58,6 @@ export class RhMenuDropdown extends LitElement {
   }
 
   get #items() {
-    this.items.forEach((item, index) => {
-      item?.setAttribute('aria-setsize', this.items.length.toString());
-      item?.setAttribute('aria-posinset', (index + 1).toString());
-    });
     return this.items;
   }
 
@@ -189,12 +190,18 @@ export class RhMenuDropdown extends LitElement {
     this.menuList.style.left = `${left + scrollX}px`;
   }
 
-  get items(): RhMenuItem[] {
-    return Array.from(this.querySelectorAll('rh-menu-item'));
+  get items(): HTMLElement[] {
+    const menuItems = Array.from(this.querySelectorAll('rh-menu-item'))
+        .map(item => item.shadowRoot?.querySelector('[role="menuitem"]'))
+        .filter((el): el is HTMLElement => el instanceof HTMLElement);
+
+    return menuItems;
   }
 
   #focusFirstItem() {
-    this.items[0]?.focus();
+    setTimeout(() => {
+      this.items[0]?.focus();
+    }, 200);
   }
 
   #onToggleKeydown(e: KeyboardEvent) {

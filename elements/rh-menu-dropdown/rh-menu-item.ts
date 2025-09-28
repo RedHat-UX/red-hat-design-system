@@ -13,25 +13,34 @@ export class RhMenuItem extends LitElement {
   @property({ type: Boolean, reflect: true }) disabled = false;
   @property({ type: String }) href = '';
 
+  static override readonly shadowRootOptions: ShadowRootInit = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+  };
+
   connectedCallback() {
     super.connectedCallback();
     // this.setAttribute('role', 'menuitem');
   }
 
   render(): TemplateResult<1> {
+    const label = html`
+      <slot name="icon"></slot>
+      <slot></slot>
+    `;
     const content = this.href && !this.disabled ?
-    html`<a class="menu-item" href="${this.href}" tabindex="-1" role="menuitem">
-      <slot name="icon"></slot>
-      <slot></slot>
+      html`<a class="menu-item" href="${this.href}">
+      ${label}
     </a>`
-    : html`<div aria-disabled="${this.disabled}" class="menu-item" tabindex="-1" role="menuitem">
-      <slot name="icon"></slot>
-      <slot></slot>
+      : html`<div aria-disabled="${this.disabled}" class="menu-item">
+      ${label}
     </div>`;
 
     return html`
-      ${content}
-      <slot id="description" name="description"></slot>
+      <div tabindex="-1" role="menuitem" class="menu-item-content">
+        ${content}
+        <slot id="description" name="description"></slot>
+      </div>
     `;
   }
 
