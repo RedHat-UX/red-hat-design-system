@@ -115,12 +115,33 @@ details[open] {
 :host([variant~='open']) {
   border: 0;
 
+  summary {
+    color: var(--rh-color-interactive-primary-default);
+    border-radius: var(--rh-border-radius-default, 3px);
+
+    &:hover,
+    &:focus {
+      background-color:
+        light-dark(
+            var(--rh-color-surface-lighter, #f2f2f2),
+            var(--rh-color-surface-darker, #1f1f1f)
+          );
+      color: var(--rh-color-interactive-primary-hover);
+    }
+
+    &:focus {
+      outline-offset: var(--rh-length-3xs, 2px);
+    }
+  }
+
   details[open] {
     background-color:
       light-dark(
           var(--rh-color-surface-lighter, #f2f2f2),
           var(--rh-color-surface-darker, #1f1f1f)
         );
+    border-end-start-radius: var(--rh-border-radius-default, 3px);
+    border-end-end-radius: var(--rh-border-radius-default, 3px);
     box-shadow: none;
 
     &:before {
