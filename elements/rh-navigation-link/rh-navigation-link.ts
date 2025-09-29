@@ -13,6 +13,7 @@ import styles from './rh-navigation-link.css';
 
 /**
  * Navigation Link
+ * @alias navigation-link
  * @slot - Place element content here
  */
 @themable
