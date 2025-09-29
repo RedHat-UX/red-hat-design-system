@@ -99,7 +99,12 @@ details[open] {
 /* Variants */
 :host([variant~='compact']) {
   summary {
+    font-size: var(--rh-font-size-body-text-sm, 0.875rem);
     padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+
+    rh-icon {
+      --rh-icon-size: 14px;
+    }
   }
 
   #details-content {
