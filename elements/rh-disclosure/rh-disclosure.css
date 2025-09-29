@@ -96,7 +96,9 @@ details[open] {
   }
 }
 
-/* Variants */
+/*****************************************************************************
+ * COMPACT VARIANT
+ *****************************************************************************/
 :host([variant~='compact']) {
   summary {
     font-size: var(--rh-font-size-body-text-sm, 0.875rem);
@@ -112,7 +114,17 @@ details[open] {
   }
 }
 
+/*****************************************************************************
+ * OPEN VARIANT
+ *****************************************************************************/
 :host([variant~='open']) {
+  --_hover-background-color:
+    light-dark(
+        var(--rh-color-surface-lighter, #f2f2f2),
+        var(--rh-color-surface-darker, #1f1f1f)
+      );
+  --_open-background-color: var(--_hover-background-color);
+
   border: 0;
 
   summary {
@@ -121,11 +133,7 @@ details[open] {
 
     &:hover,
     &:focus {
-      background-color:
-        light-dark(
-            var(--rh-color-surface-lighter, #f2f2f2),
-            var(--rh-color-surface-darker, #1f1f1f)
-          );
+      background-color: var(--_hover-background-color);
       color: var(--rh-color-interactive-primary-hover);
     }
 
@@ -135,13 +143,9 @@ details[open] {
   }
 
   details[open] {
-    background-color:
-      light-dark(
-          var(--rh-color-surface-lighter, #f2f2f2),
-          var(--rh-color-surface-darker, #1f1f1f)
-        );
-    border-end-start-radius: var(--rh-border-radius-default, 3px);
+    background-color: var(--_open-background-color);
     border-end-end-radius: var(--rh-border-radius-default, 3px);
+    border-end-start-radius: var(--rh-border-radius-default, 3px);
     box-shadow: none;
 
     &:before {
@@ -149,11 +153,7 @@ details[open] {
     }
 
     summary {
-      background-color:
-        light-dark(
-            var(--rh-color-surface-lighter, #f2f2f2),
-            var(--rh-color-surface-darker, #1f1f1f)
-          );
+      background-color: var(--_open-background-color);
 
       &:hover,
       &:focus {
