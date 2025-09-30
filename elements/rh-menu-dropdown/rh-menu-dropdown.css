@@ -1,20 +1,25 @@
 :host {
+  --_border: var(--rh-border-width-sm, 1px) solid light-dark(var(--rh-color-gray-30, #c7c7c7),
+      var(--rh-color-gray-50, #707070));
+  --_color: light-dark(var(--rh-color-text-primary-default-on-light, #151515),
+      var(--rh-color-text-primary-default-on-dark, #ffffff));
+
   position: relative;
   display: inline-block;
 }
 
 #menu-list {
   position: fixed;
-  padding: 8px 0;
-  margin: 0.25rem 0;
+  padding: var(--rh-space-md, 8px) 0;
+  margin: var(--rh-space-xs, 4px) 0;
   display: none;
   z-index: 1000;
-  min-width: 296px;
+  min-width: 18.5rem;
   max-width: 100%;
-  border-radius: 3px;
-  border: 1px solid #c7c7c7;
-  background: #ffffff;
-  box-shadow: 0 4px 6px 1px rgba(21, 21, 21, 0.25);
+  border-radius: var(--rh-border-width-lg, 3px);
+  border: var(--_border);
+  background: var(--rh-color-surface);
+  box-shadow: var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25));
 }
 
 :host([open]) #menu-list {
@@ -26,25 +31,28 @@
 }
 
 #menu-toggle {
-  color: #151515;
+  --_interactive-border-color: var(--rh-color-accent-base, light-dark(var(--rh-color-accent-base-on-light, #0066cc),
+        var(--rh-color-accent-base-on-dark, #92c5f9)));
+
+  color: var(--_color);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: 16px;
+  font-size: var(--rh-font-size-body-text-md, 1rem);
   font-style: normal;
-  font-weight: 400;
-  line-height: 24px;
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
+  line-height: var(--rh-line-height-code, 1.5);
   width: 100%;
-  padding: 6px 16px;
+  padding: var(--rh-space-sm, 6px) var(--rh-space-lg, 16px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
   max-height: 36px;
-  border-radius: 3px;
-  background: #ffffff;
+  border-radius: var(--rh-border-width-lg, 3px);
+  background: var(--rh-color-surface);
   border: none;
 
   .action-icon rh-icon {
-    --rh-icon-size: 10px;
+    --rh-icon-size: 12px;
   }
 
   .info-section {
@@ -54,56 +62,56 @@
   }
 
   &.boxed {
-    border: 1px solid #c7c7c7;
+    border: var(--_border);
 
     &:not(.open) {
-      &:hover,
+      &:hover {
+        border-color: var(--_interactive-border-color);
+      }
+
       &:active {
         border-color: transparent;
-        box-shadow: 0 0 0 2px #0066cc;
+        box-shadow: inset 0 0 0 var(--rh-length-3xs, 2px) var(--_interactive-border-color);
       }
 
       &:focus {
-        outline: 2px solid #0066cc;
-        outline-offset: 4px;
+        outline: var(--rh-length-3xs, 2px) solid var(--_interactive-border-color);
+        outline-offset: var(--rh-length-3xs, 2px);
       }
     }
 
     &.open {
       border-color: transparent;
-      box-shadow: 0 0 0 2px #0066cc;
+      box-shadow: inset 0 0 0 var(--rh-length-3xs, 2px) var(--_interactive-border-color);
 
       &:focus {
-        outline: 2px solid #0066cc;
-        outline-offset: 4px;
+        outline: var(--rh-length-3xs, 2px) solid var(--_interactive-border-color);
+        outline-offset: var(--rh-length-3xs, 2px);
       }
     }
   }
 
   &.compact {
-    padding: 8px;
+    padding: var(--rh-space-md, 8px);
 
-    &:not(.boxed, .open) {
-      &:hover {
-        background-color: #f2f2f2;
-      }
+    &:not(.boxed) {
 
+      &.open,
+      &:hover,
       &:active,
       &:focus {
-        background-color: #f2f2f2;
-        border-color: transparent;
-        box-shadow: 0 0 0 2px #0066cc;
+        background-color: light-dark(var(--rh-color-surface-lighter, #f2f2f2),
+            var(--rh-color-surface-darker, #1f1f1f));
       }
-    }
 
-    &.open:not(.boxed) {
-      background-color: #f2f2f2;
-
-      &:focus {
-        box-shadow: 0 0 0 2px #0066cc;
+      &:focus,
+      &:active {
+        border-color: transparent;
+        box-shadow: inset 0 0 0 var(--rh-length-3xs, 2px) var(--_interactive-border-color);
       }
     }
   }
+
 }
 
 .menu-dropdown-container {
@@ -113,21 +121,21 @@
 
 ::slotted(hr) {
   border: 0;
-  border-top: 1px solid #c7c7c7;
+  border-top: var(--_border);
   width: 100%;
 }
 
 ::slotted(rh-icon) {
-  margin-inline-end: 0.5rem;
+  margin-inline-end: var(--rh-space-md, 8px);
 }
 
 ::slotted([slot='label']) {
-  color: #151515;
+  color: var(--_color);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: 16px !important;
+  font-size: var(--rh-font-size-body-text-md, 1rem) !important;
   font-style: normal;
-  font-weight: 400;
-  line-height: 24px;
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
+  line-height: var(--rh-line-height-code, 1.5);
 }
 
 rh-menu::part(menu) {

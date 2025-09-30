@@ -44,7 +44,7 @@
 }
 
 :host([disabled]) {
-  color: #888888;
+  color: var(--rh-color-gray-50);
   cursor: default;
   pointer-events: none;
 }

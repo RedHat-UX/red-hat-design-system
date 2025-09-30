@@ -118,8 +118,8 @@ export class RhMenuDropdown extends LitElement {
               </span>
               <span class="action-icon"> 
                 ${this.open ?
-                  html`<rh-icon set="ui" icon="caret-up"></rh-icon>`
-                  : html`<rh-icon set="ui" icon="caret-down"></rh-icon>`
+                  html`<rh-icon set="microns" icon="caret-up"></rh-icon>`
+                  : html`<rh-icon set="microns" icon="caret-down"></rh-icon>`
                 }
               </span>
               `
