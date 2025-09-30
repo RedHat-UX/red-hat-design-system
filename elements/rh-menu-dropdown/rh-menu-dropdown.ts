@@ -214,7 +214,6 @@ export class RhMenuDropdown extends LitElement {
   }
 
   #handleSelection(target: RhMenuItem) {
-    debugger;
     this.open = false;
     this.menuToggleButton.focus();
     this.dispatchEvent(new CustomEvent('select', {
