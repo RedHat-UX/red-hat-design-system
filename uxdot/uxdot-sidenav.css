@@ -2,6 +2,7 @@
   --_padding-start: var(--uxdot-sidenav-padding-start, var(--rh-space-2xl));
   --_padding-end: var(--uxdot-sidenav-padding-end, var(--rh-space-2xl));
   --_max-height: 100dvh;
+  --_sidenav_width: var(--uxdot-sidenav-width, 320px);
 
   width: 100%;
   height: var(--_max-height);
@@ -92,14 +93,8 @@
 
 @media (min-width: 320px) {
   :host {
-    --uxdot-sidenav-width: 320px;
-
-    width: var(--uxdot-sidenav-width);
+    width: var(--_sidenav_width);
     box-shadow: var(--rh-box-shadow-lg);
-  }
-
-  #container {
-    width: var(--uxdot-sidenav-width, 320px);
   }
 }
 
@@ -116,6 +111,7 @@
     position: fixed;
     top: var(--uxdot-masthead-max-height, 72px);
     height: calc(var(--_max-height) - var(--uxdot-masthead-max-height, 72px));
+    border-inline-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
     box-shadow: unset;
   }
 
