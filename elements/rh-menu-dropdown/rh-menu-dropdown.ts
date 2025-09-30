@@ -199,9 +199,7 @@ export class RhMenuDropdown extends LitElement {
   }
 
   #focusFirstItem() {
-    setTimeout(() => {
-      this.items[0]?.focus();
-    }, 200);
+    this.items[0]?.focus();
   }
 
   #onToggleKeydown(e: KeyboardEvent) {
@@ -216,6 +214,7 @@ export class RhMenuDropdown extends LitElement {
   }
 
   #handleSelection(target: RhMenuItem) {
+    debugger;
     this.open = false;
     this.menuToggleButton.focus();
     this.dispatchEvent(new CustomEvent('select', {
