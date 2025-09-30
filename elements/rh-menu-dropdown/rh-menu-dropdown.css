@@ -1,8 +1,12 @@
 :host {
-  --_border: var(--rh-border-width-sm, 1px) solid light-dark(var(--rh-color-gray-30, #c7c7c7),
-      var(--rh-color-gray-50, #707070));
-  --_color: light-dark(var(--rh-color-text-primary-default-on-light, #151515),
-      var(--rh-color-text-primary-default-on-dark, #ffffff));
+  --_border:
+    var(--rh-border-width-sm, 1px) solid light-dark(
+        var(--rh-color-gray-30, #c7c7c7),
+        var(--rh-color-gray-50, #707070)
+      );
+  --_color:
+    light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
+      var(--rh-color-text-primary-on-light, #151515));
 
   position: relative;
   display: inline-block;
@@ -31,8 +35,9 @@
 }
 
 #menu-toggle {
-  --_interactive-border-color: var(--rh-color-accent-base, light-dark(var(--rh-color-accent-base-on-light, #0066cc),
-        var(--rh-color-accent-base-on-dark, #92c5f9)));
+  --_interactive-border-color:
+    light-dark(var(--rh-color-accent-base-on-light, #0066cc),
+      var(--rh-color-accent-base-on-dark, #92c5f9));
 
   color: var(--_color);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
@@ -95,12 +100,12 @@
     padding: var(--rh-space-md, 8px);
 
     &:not(.boxed) {
-
       &.open,
       &:hover,
       &:active,
       &:focus {
-        background-color: light-dark(var(--rh-color-surface-lighter, #f2f2f2),
+        background-color:
+          light-dark(var(--rh-color-surface-lighter, #f2f2f2),
             var(--rh-color-surface-darker, #1f1f1f));
       }
 
@@ -111,7 +116,6 @@
       }
     }
   }
-
 }
 
 .menu-dropdown-container {
