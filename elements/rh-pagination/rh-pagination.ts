@@ -113,6 +113,7 @@ export class RhPagination extends LitElement {
       if (!this.#ol || [...this.children].filter(x => !x.slot).length > 1) {
         this.#logger.warn('must have a single <ol> element as it\'s only child');
       }
+      this.#getCurrentLink();
     }
   }
 
@@ -124,7 +125,6 @@ export class RhPagination extends LitElement {
 
   override update(changed: PropertyValues<this>): void {
     if (!isServer) {
-      this.querySelector('[aria-current="page"]')?.removeAttribute('aria-current');
       this.#updateLightDOMRefs();
       this.overflow = this.#getOverflow();
     }
@@ -165,7 +165,8 @@ export class RhPagination extends LitElement {
             Page
           </slot>
         </span>
-        <input inputmode="numeric"
+        <input type="number"
+               inputmode="numeric" 
                required
                min=1
                max="${this.total}"
@@ -240,10 +241,12 @@ export class RhPagination extends LitElement {
     if (isServer) {
       return null;
     }
+    // if there is an aria-current="page" attribute, use that
     const ariaCurrent = this.querySelector<HTMLAnchorElement>('li a[aria-current="page"]');
     if (ariaCurrent) {
       return ariaCurrent;
     }
+    // otherwise, use the href to determine the current link
     for (const link of this.#links ?? []) {
       const url = new URL(link.href);
       if (url.pathname === location.pathname
@@ -265,6 +268,16 @@ export class RhPagination extends LitElement {
     this.#currentLink = this.#getCurrentLink();
     if (this.#currentLink) {
       const links = Array.from(this.#links);
+      // if any other links have aria-current="page", remove it unless it is the current link
+      for (const link of links) {
+        if (link === this.#currentLink) {
+          continue;
+        }
+        if (link.getAttribute('aria-current') === 'page') {
+          link.removeAttribute('aria-current');
+        }
+      }
+
       this.#currentIndex = links.indexOf(this.#currentLink);
       this.#prevLink = this.#links[this.#currentIndex - 1];
       this.#nextLink = this.#links[this.#currentIndex + 1];
@@ -328,12 +341,17 @@ export class RhPagination extends LitElement {
     }
   }
 
-  #onChange() {
+  #onChange(event: Event) {
     if (!this.input || !this.#links) {
       return;
     }
+    const newValue = parseInt((event.target as HTMLInputElement).value);
     const inputNum = parseInt(this.input.value);
-    this.#currentIndex = inputNum - 1;
+    if (newValue === inputNum) {
+      return;
+    }
+    this.input.value = newValue.toString();
+    this.#currentIndex = parseInt(this.input.value) - 1;
     if (this.#checkValidity()) {
       this.#go(this.#currentPage);
     }

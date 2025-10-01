@@ -1,0 +1,39 @@
+<rh-pagination>
+  <ol>
+    <li><a href="#1">1</a></li>
+    <li><a href="#2">2</a></li>
+    <li><a href="#3" aria-current="page">3</a></li>
+    <li><a href="#4">4</a></li>
+    <li><a href="#5">5</a></li>
+  </ol>
+</rh-pagination>
+
+<p><strong>Note:</strong> The third page is set statically to <code>aria-current="page"</code>. If you refresh the page no matter the query parameters or hash in the URL, the third page will be set to the third page as the current page.</p>
+<p>This is by design, as aria-current="page" will take precedence over the href in the URL.</p>
+<p><strong>Note:</strong> For this demo the <code>hashchange</code> event is triggered when the hash in the URL changes moving the <code>aria-current="page"</code> attribute on the correct link.</p>
+<p>In a real world example the <code>aria-current="page"</code> would be moved to the correct link at page request render or application logic.</p>
+
+<link rel="stylesheet" href="../rh-pagination-lightdom.css">
+
+<script type="module">
+  import '@rhds/elements/rh-pagination/rh-pagination.js';
+</script>
+
+<script type="module">
+  window.addEventListener('hashchange', () => {
+    const hash = window.location.hash;
+    const links = document.querySelectorAll('rh-pagination li a');
+    const hashLink = document.querySelector(`rh-pagination li a[href="${hash}"]`);
+    for (const link of links) {
+      if (link === hashLink) {
+        continue;
+      }
+      link.removeAttribute('aria-current');
+    }
+    hashLink.setAttribute('aria-current', 'page');
+    // slotted content changed lets request an update
+    const pagination = document.querySelector('rh-pagination');
+    pagination.requestUpdate();
+  });
+</script>
+
