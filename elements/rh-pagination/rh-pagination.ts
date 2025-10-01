@@ -113,7 +113,7 @@ export class RhPagination extends LitElement {
       if (!this.#ol || [...this.children].filter(x => !x.slot).length > 1) {
         this.#logger.warn('must have a single <ol> element as it\'s only child');
       }
-      this.#getCurrentLink();
+      this.#currentLink = this.#getCurrentLink();
     }
   }
 
