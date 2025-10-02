@@ -31,7 +31,7 @@ rh-disclosure[variant~='compact']:not(:defined) {
   padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
 }
 
-rh-disclosure[variant~='open']:not(:defined) {
+rh-disclosure[variant~='borderless']:not(:defined) {
   background-color:
     light-dark(
         var(--rh-color-surface-lighter, #f2f2f2),
