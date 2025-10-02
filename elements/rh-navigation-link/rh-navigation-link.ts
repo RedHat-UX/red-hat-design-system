@@ -16,8 +16,8 @@ import styles from './rh-navigation-link.css';
  * @alias navigation-link
  * @slot - Place element content here
  */
-@themable
 @customElement('rh-navigation-link')
+@themable
 export class RhNavigationLink extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
 
