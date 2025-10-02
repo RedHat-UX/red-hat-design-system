@@ -115,9 +115,9 @@ details[open] {
 }
 
 /*****************************************************************************
- * OPEN VARIANT
+ * BORDERLESS VARIANT
  *****************************************************************************/
-:host([variant~='open']) {
+:host([variant~='borderless']) {
   --_hover-background-color:
     light-dark(
         var(--rh-color-surface-lighter, #f2f2f2),
@@ -128,8 +128,8 @@ details[open] {
   border: 0;
 
   summary {
-    color: var(--rh-color-interactive-primary-default);
     border-radius: var(--rh-border-radius-default, 3px);
+    color: var(--rh-color-interactive-primary-default);
 
     &:hover,
     &:focus {
