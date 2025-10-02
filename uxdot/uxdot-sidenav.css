@@ -30,9 +30,9 @@
 #container {
   position: relative;
   background-color: var(--rh-color-surface);
-  overflow-y: scroll;
+  overflow-y: auto;
   width: auto;
-  height: 100dvh;
+  height: 100%;
 }
 
 #close-button-container {
