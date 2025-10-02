@@ -26,6 +26,7 @@ export class RhNavigationLink extends LitElement {
   // TODO: Is it always the case that we assume the link is part of a list?
   // If not, we'll need to remove the role from the internals.  How could we determine the context
   // maybe use @lit/context to determine the context? More research needed.
+  // eslint-disable-next-line no-unused-private-class-members
   #internals = InternalsController.of(this, { role: 'listitem' });
 
   /** Shorthand for the `icon` slot, the value is icon name */
