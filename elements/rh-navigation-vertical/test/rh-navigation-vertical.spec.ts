@@ -4,6 +4,9 @@ import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 
 import { RhNavigationVertical } from '@rhds/elements/rh-navigation-vertical/rh-navigation-vertical.js';
+import { RhNavigationVerticalList } from '../rh-navigation-vertical-list.js';
+
+import '@rhds/elements/rh-navigation-link/rh-navigation-link.js';
 
 function press(key: string) {
   return async function() {
@@ -13,18 +16,18 @@ function press(key: string) {
 
 const NAV = html`
   <rh-navigation-vertical>
-    <rh-navigation-vertical-item href="/">Home</rh-navigation-vertical-item>
-    <rh-navigation-vertical-group summary="Group 1">
-      <rh-navigation-vertical-item href="/group-1/">Group 1 Index</rh-navigation-vertical-item>
-      <rh-navigation-vertical-item href="/group-1/item-1/">Group 1 Item 1</rh-navigation-vertical-item>
-      <rh-navigation-vertical-item href="/group-1/item-2/">Group 1 Item 2</rh-navigation-vertical-item> 
-    </rh-navigation-vertical-group>
+    <rh-navigation-link href="/">Home</rh-navigation-link>
+    <rh-navigation-vertical-list summary="Group 1">
+      <rh-navigation-link href="/group-1/">Group 1 Index</rh-navigation-link>
+      <rh-navigation-link href="/group-1/item-1/">Group 1 Item 1</rh-navigation-link>
+      <rh-navigation-link href="/group-1/item-2/">Group 1 Item 2</rh-navigation-link> 
+    </rh-navigation-vertical-list>
 
-    <rh-navigation-vertical-group summary="Group 2">
-      <rh-navigation-vertical-item href="/group-2/">Group 2 Index</rh-navigation-vertical-item>
-      <rh-navigation-vertical-item href="/group-2/item-1/">Group 2 Item 1</rh-navigation-vertical-item>
-      <rh-navigation-vertical-item href="/group-2/item-2/">Group 2 Item 2</rh-navigation-vertical-item>
-    </rh-navigation-vertical-group>
+    <rh-navigation-vertical-list summary="Group 2">
+      <rh-navigation-link href="/group-2/">Group 2 Index</rh-navigation-link>
+      <rh-navigation-link href="/group-2/item-1/">Group 2 Item 1</rh-navigation-link>
+      <rh-navigation-link href="/group-2/item-2/">Group 2 Item 2</rh-navigation-link>
+    </rh-navigation-vertical-list>
   </rh-navigation-vertical>
 `;
 
@@ -67,7 +70,6 @@ describe('<rh-navigation-vertical>', function() {
       element = await createFixture<RhNavigationVertical>(NAV);
     });
     beforeEach(async () => await element.updateComplete);
-    beforeEach(async () => await nextFrame());
 
     it('should initialize with all dropdowns closed', async function() {
       const snapshot = await a11ySnapshot();
@@ -76,9 +78,11 @@ describe('<rh-navigation-vertical>', function() {
 
     describe('Tab', function() {
       beforeEach(press('Tab'));
+      beforeEach(async () => await element.updateComplete);
 
       it('should have focus on the first item', async function() {
         const snapshot = await a11ySnapshot();
+
         expect(snapshot).to.have.axQuery({ role: 'link', name: 'Home', focused: true });
       });
 
@@ -114,7 +118,7 @@ describe('<rh-navigation-vertical>', function() {
             });
 
             it('should not have open attribute on the first group', async function() {
-              const [firstGroup] = element.querySelectorAll('rh-navigation-vertical-group');
+              const [firstGroup] = element.querySelectorAll<RhNavigationVerticalList>('rh-navigation-vertical-list');
               expect(firstGroup.open).to.be.false;
             });
 
@@ -142,7 +146,7 @@ describe('<rh-navigation-vertical>', function() {
                 });
 
                 it('should have open attribute on the second group', async function() {
-                  const secondGroup = Array.from(element.querySelectorAll('rh-navigation-vertical-group')).at(-1);
+                  const secondGroup = Array.from(element.querySelectorAll<RhNavigationVerticalList>('rh-navigation-vertical-list')).at(-1);
                   expect(secondGroup!.open).to.be.true;
                 });
 
@@ -170,7 +174,7 @@ describe('<rh-navigation-vertical>', function() {
                     });
 
                     it('should not have open attribute on the second group', async function() {
-                      const secondGroup = Array.from(element.querySelectorAll('rh-navigation-vertical-group')).at(-1);
+                      const secondGroup = Array.from(element.querySelectorAll<RhNavigationVerticalList>('rh-navigation-vertical-list')).at(-1);
                       expect(secondGroup!.open).to.be.false;
                     });
 
