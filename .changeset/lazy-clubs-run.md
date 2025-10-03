@@ -19,3 +19,5 @@ When the `variant="borderless"` attribute is present, disclosures will not have 
   <p>Lorem ipsum dolor sit amet.</p>
 </rh-disclosure>
 ```
+
+Additionally, all disclosures now have subtle rounded borders.
