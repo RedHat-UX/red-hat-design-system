@@ -32,6 +32,7 @@
   position: relative;
   background-color: var(--rh-color-surface);
   overflow-y: auto;
+  scrollbar-gutter: stable;
   width: auto;
   height: 100%;
 }
