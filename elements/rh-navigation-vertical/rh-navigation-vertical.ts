@@ -12,12 +12,11 @@ import { provide } from '@lit/context';
 import { context, type RhNavigationVerticalContext } from './context.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
+import '@rhds/elements/rh-navigation-link/rh-navigation-link.js';
 
 import './rh-navigation-vertical-list.js';
-import './rh-navigation-vertical-item.js';
 
 import styles from './rh-navigation-vertical.css';
-
 
 /**
  * A vertical navigation list of top-level and grouped navigation items, typically used in a side navigation pattern.
