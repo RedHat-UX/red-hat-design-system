@@ -189,7 +189,7 @@ export class RhSiteStatus extends LitElement {
     const loading = this.#loading;
     const { icon, status } = this.#icon;
     return html`
-      <div id="container" class="${classMap({ loading })}">
+      <div id="container" class="${classMap({ loading, [status]: true })}">
         <a href="https://status.redhat.com/"
            aria-busy="${String(this.#loading) as 'true' | 'false'}"
            aria-live="polite">${this.#loading ? html`
