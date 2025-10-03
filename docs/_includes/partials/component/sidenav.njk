@@ -1,70 +1,67 @@
 <uxdot-sidenav trigger="hamburger">
-  <uxdot-sidenav-item href="/" {{ 'active' if page.url ===  '/'}}>Home</uxdot-sidenav-item>
-  {#
-  Loop through nav dropdowns
-  This uses data passed in via the eleventy.config.cjs file in the root
-  TODO: more this data to a global data, ideally this data would be normalized
-  prior to getting to the component template level.
-  #}
-  {%- for link in sideNavDropdowns -%}
-  {%- set active = link.url === page.url -%}
-  {%- set open = page.url and link.url in page.url -%}
-  <uxdot-sidenav-dropdown {{ 'open' if open }}>
-    <details {{ 'open' if open }}>
-      <summary>{{ link.title }}</summary>
-      <uxdot-sidenav-dropdown-menu>
-        {% if link.collection === "elementDocs" %}
-        {%- set active = '/elements/' === page.url -%}
-        <uxdot-sidenav-dropdown-menu-item href="/elements/" {{ 'active' if active }}>All elements</uxdot-sidenav-dropdown-menu-item>
-        {%- for tagName, docs in collections.elementDocs | groupby('tagName') -%}
-        {%- set doc = docs[0] -%}
-        {%- set slug = doc.slug -%}
-        {%- set href = '/elements/' + doc.slug + '/' -%}
-        {%- set active = page.url.startsWith(href) -%}
-        {%- set name = (doc.alias) or (doc.slug | deslugify) %}
-        {%- set comingSoon = (tagName in comingSoonItems) -%}
-        {%- set hiddenComponent = doc.hidden -%}
-        {% if not comingSoon and not hiddenComponent %}
-        <uxdot-sidenav-dropdown-menu-item data-slug="{{ slug }}"
-                                          data-doc-slug="{{ doc.slug }}"
-                                          data-page-url="{{ page.url }}"
-                                          href="{{ href }}"
-                                          {{ 'active' if active }}>
-          {{- doc.alias or (doc.slug | deslugify) -}}
-          {%- if doc.planned -%}<rh-tag icon="notification-fill" color="purple" size="compact">Planned</rh-tag>{%- endif -%}
-        </uxdot-sidenav-dropdown-menu-item>
-        {% endif %}
-        {%- endfor -%}
-        {% else %}
-        {% if link.collection == 'tokenCategory' %}
-        {%- set active = page.url == "/tokens/" %}
-        <uxdot-sidenav-dropdown-menu-item href="/tokens/" {{ 'active' if active }}>Overview</uxdot-sidenav-dropdown-menu-item>
-        {% endif -%}
+  <rh-navigation-vertical>
+    <rh-navigation-link href="/" {{ 'current-page' if page.url ===  '/'}}>Home</rh-navigation-link>
+    {#
+    Loop through nav dropdowns
+    This uses data passed in via the eleventy.config.cjs file in the root
+    TODO: more this data to a global data, ideally this data would be normalized
+    prior to getting to the component template level.
+    #}
+    {%- for link in sideNavDropdowns -%}
+    {%- set active = link.url === page.url -%}
+    {%- set open = page.url and link.url in page.url -%}
+    <rh-navigation-vertical-list summary="{{ link.title }}" {{ 'open' if open }}>
+          {% if link.collection === "elementDocs" %}
+          {%- set active = '/elements/' === page.url -%}
+          <rh-navigation-link href="/elements/" {{ 'current-page' if active }}>All elements</rh-navigation-link>
+          {%- for tagName, docs in collections.elementDocs | groupby('tagName') -%}
+          {%- set doc = docs[0] -%}
+          {%- set slug = doc.slug -%}
+          {%- set href = '/elements/' + doc.slug + '/' -%}
+          {%- set active = page.url.startsWith(href) -%}
+          {%- set name = (doc.alias) or (doc.slug | deslugify) %}
+          {%- set comingSoon = (tagName in comingSoonItems) -%}
+          {%- set hiddenComponent = doc.hidden -%}
+          {% if not comingSoon and not hiddenComponent %}
+          <rh-navigation-link data-slug="{{ slug }}"
+                              data-doc-slug="{{ doc.slug }}"
+                              data-page-url="{{ page.url }}"
+                              href="{{ href }}"
+                              {{ 'current-page' if active }}>
+            {{- doc.alias or (doc.slug | deslugify) -}}
+            {%- if doc.planned -%}<rh-tag icon="notification-fill" color="purple" size="compact">Planned</rh-tag>{%- endif -%}
+          </rh-navigation-link>
+          {% endif %}
+          {%- endfor -%}
+          {% else %}
+          {% if link.collection == 'tokenCategory' %}
+          {%- set active = page.url == "/tokens/" %}
+          <rh-navigation-link href="/tokens/" {{ 'current-page' if active }}>Overview</rh-navigation-link>
+          {% endif -%}
 
-        {%- if (link.collection !== 'elementDocs') and (link.collection !== 'tokenCategory') -%}
-        {%- set sortedOn = "data.order" %}
-        {%- set sideNavCollection = collections[link.collection] | sort(attribute=sortedOn, case_sensitive=true) %}
-        {% else %}
-        {%- set sideNavCollection = collections[link.collection] %}
-        {%- endif -%}
+          {%- if (link.collection !== 'elementDocs') and (link.collection !== 'tokenCategory') -%}
+          {%- set sortedOn = "data.order" %}
+          {%- set sideNavCollection = collections[link.collection] | sort(attribute=sortedOn, case_sensitive=true) %}
+          {% else %}
+          {%- set sideNavCollection = collections[link.collection] %}
+          {%- endif -%}
 
-        {%- for sublink in sideNavCollection -%}
-        {%- set active = sublink.url === page.url -%}
-        <uxdot-sidenav-dropdown-menu-item href="{{ sublink.url }}" {{ 'active' if active }}>
-          {{- (sublink.data.sidenavTitle or sublink.data.title or sublink.title) -}}
-        </uxdot-sidenav-dropdown-menu-item>
-        {%- endfor -%}
-        {% endif %}
-      </uxdot-sidenav-dropdown-menu>
-    </details>
-  </uxdot-sidenav-dropdown>
+          {%- for sublink in sideNavCollection -%}
+          {%- set active = sublink.url === page.url -%}
+          <rh-navigation-link href="{{ sublink.url }}" {{ 'current-page' if active }}>
+            {{- (sublink.data.sidenavTitle or sublink.data.title or sublink.title) -}}
+          </rh-navigation-link>
+          {%- endfor -%}
+          {% endif %}
+    </rh-navigation-vertical-list>
 
-  {% endfor %}
+    {% endfor %}
 
-  <uxdot-sidenav-item href="/design-code-status/">Design/code status</uxdot-sidenav-item>
-  <uxdot-sidenav-item href="/release-notes/">Release notes</uxdot-sidenav-item>
-  <uxdot-sidenav-item href="/support/">Get support</uxdot-sidenav-item>
-  {%- if runMode == 'watch' -%}
-  <uxdot-sidenav-item class="link" href="/cheatsheet">Cheat sheet!</uxdot-sidenav-item>
-  {%- endif -%}
+    <rh-navigation-link href="/design-code-status/">Design/code status</rh-navigation-link>
+    <rh-navigation-link href="/release-notes/">Release notes</rh-navigation-link>
+    <rh-navigation-link href="/support/">Get support</rh-navigation-link>
+    {%- if runMode == 'watch' -%}
+    <rh-navigation-link href="/cheatsheet">Cheat sheet!</rh-navigation-link>
+    {%- endif -%}
+  </rh-navigation-vertical>
 </uxdot-sidenav>
