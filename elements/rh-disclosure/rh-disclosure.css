@@ -1,11 +1,13 @@
 :host {
   border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default, 3px);
   display: block;
   font-family: var(--rh-font-family-body-text);
 }
 
 summary {
   background-color: var(--rh-color-surface);
+  border-radius: var(--rh-border-radius-default, 3px);
   color: var(--rh-color-text-primary);
   cursor: pointer;
   font-size: var(--rh-font-size-body-text-md, 1rem);
@@ -59,6 +61,7 @@ summary {
 
 #details-content {
   background-color: var(--rh-color-surface);
+  border-radius: var(--rh-border-radius-default, 3px);
   color: var(--rh-color-text-primary);
   font-size: var(--rh-font-size-body-text-md, 1rem);
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -85,6 +88,8 @@ details[open] {
   &:before {
     content: '';
     border-inline-start: 3px solid var(--rh-color-brand-red);
+    border-start-start-radius: var(--rh-border-radius-default, 3px);
+    border-end-start-radius: var(--rh-border-radius-default, 3px);
     position: absolute;
     z-index: 1;
     inset-inline-start: -1px;
@@ -128,7 +133,6 @@ details[open] {
   border: 0;
 
   summary {
-    border-radius: var(--rh-border-radius-default, 3px);
     color: var(--rh-color-interactive-primary-default);
 
     &:hover,
@@ -144,8 +148,7 @@ details[open] {
 
   details[open] {
     background-color: var(--_open-background-color);
-    border-end-end-radius: var(--rh-border-radius-default, 3px);
-    border-end-start-radius: var(--rh-border-radius-default, 3px);
+    border-radius: var(--rh-border-radius-default, 3px);
     box-shadow: none;
 
     &:before {
