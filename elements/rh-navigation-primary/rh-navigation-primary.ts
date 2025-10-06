@@ -158,6 +158,10 @@ export class RhNavigationPrimary extends LitElement {
       compact,
       dehydrated: !this.#hydrated,
     };
+    const hasEvent = this.#slots.hasSlotted('event');
+    const hasLinks = this.#slots.hasSlotted('links');
+    const hasDropdowns = this.#slots.hasSlotted('dropdowns');
+
     return html`
       <div id="container" class="${classMap(classes)}">
         <div id="bar">
@@ -185,25 +189,24 @@ export class RhNavigationPrimary extends LitElement {
               <!-- Use this slot for \`<rh-primary-navigation-item>\` hamburger menu links and dropdowns -->
               <slot></slot>
             </div>
-
           </details>
           <div id="secondary">
             <!--
               Use this slot for event promotion.  Images such as SVGs and links are most often slotted here.
               Slot these items using the \`<rh-navigation-primary-item slot="event">\` element.
             -->
-            <div id="event" role="list"><slot name="event"></slot></div>
+            <div id="event" role="list" ?hidden=${!hasEvent}><slot name="event"></slot></div>
             <!--
               Use this slot for quick links to other sites not directly associated with the page the
               navigation is on.  Common use cases are developers docs and support. Slot these items using
               the \`<rh-navigation-primary-item slot="links">\` element.
             -->
-            <div id="links" role="list"><slot name="links"></slot></div>
+            <div id="links" role="list" ?hidden=${!hasLinks}><slot name="links"></slot></div>
             <!--
               Use this slot for search, for you, and account dropdowns. Slot these items using the
               \`<rh-navigation-primary-item slot="dropdown" variant="dropdown">\` element.
             -->
-            <div id="dropdowns" role="list"><slot name="dropdowns"></slot></div>
+            <div id="dropdowns" role="list" ?hidden=${!hasDropdowns}><slot name="dropdowns"></slot></div>
           </div>
         </div>
       </div>
