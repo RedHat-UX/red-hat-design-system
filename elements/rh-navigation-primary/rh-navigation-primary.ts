@@ -94,7 +94,7 @@ export class RhNavigationPrimary extends LitElement {
 
   /**
    * Customize the default label for the navigation.
-   * Defaults to "Navigation" if no attribute/property is set.
+   * Defaults to "Navigation" if no value is set.
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel = 'Navigation';
 
