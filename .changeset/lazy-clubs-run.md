@@ -2,7 +2,7 @@
 "@rhds/elements": minor
 ---
 
-`<rh-disclosure>`: add the `open` and `compact` variants.
+`<rh-disclosure>`: add the `borderless` and `compact` variants.
 
 When the `variant="compact"` attribute is present, disclosures will have less padding around the trigger and disclosure content:
 
