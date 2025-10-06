@@ -230,7 +230,12 @@ export class RhMenuDropdown extends LitElement {
   }
 
   #onKeyDown(event: KeyboardEvent & { target: RhMenuItem }) {
-    if (
+    if (event.key === 'Escape') {
+      if (this.open) {
+        this.open = false;
+        this.menuToggleButton.focus();
+      }
+    } else if (
       event.target instanceof RhMenuItem
       && (event.key === 'Enter' || event.key === ' ')
       && !event.target.disabled
