@@ -80,6 +80,10 @@ export class RhNavigationPrimary extends LitElement {
   @query('summary')
   private _hamburgerSummary!: HTMLElement;
 
+  @query('#title')
+  private _title!: HTMLElement;
+
+
   /**
    * Sets the mobile toggle (hamburger) text, used for translations, defaults to 'Menu'
    */
@@ -89,10 +93,10 @@ export class RhNavigationPrimary extends LitElement {
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: NavigationPrimaryPalette;
 
   /**
-   * Customize the default `aria-label` on the `<nav>` container.
-   * Defaults to "main" if no attribute/property is set.
+   * Customize the default label for the navigation.
+   * Defaults to "Navigation" if no attribute/property is set.
    */
-  @property({ attribute: 'accessible-label' }) accessibleLabel = 'main';
+  @property({ attribute: 'accessible-label' }) accessibleLabel = 'Navigation';
 
   static focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
     return parent.querySelectorAll(`a,
@@ -135,6 +139,11 @@ export class RhNavigationPrimary extends LitElement {
       this.#hydrated = true;
       this.compact = this.offsetWidth < 1200;
     }
+    if (!isServer) {
+      if (this._title) {
+        this.#internals.ariaLabelledByElements = [this._title];
+      }
+    }
   }
 
   async connectedCallback() {
@@ -148,7 +157,6 @@ export class RhNavigationPrimary extends LitElement {
       this.addEventListener('keydown', this.#onKeydown);
       this.addEventListener('keyup', this.#onKeyup);
       this.#upgradeAccessibility();
-      this.#internals.ariaLabel = this.accessibleLabel;
     }
   }
 
@@ -175,6 +183,7 @@ export class RhNavigationPrimary extends LitElement {
               </a>
             </slot>
           </div>
+          <h2 id="title" class="visually-hidden">${this.accessibleLabel}</h2>
           <details id="hamburger" ?open="${this._hamburgerOpen}" @toggle="${this.#hamburgerToggle}" @focusout="${this.#onHamburgerFocusOut}">
             <summary @blur="${this.#onHamburgerSummaryBlur}">
               <rh-icon icon="menu-bars" set="ui"></rh-icon>
