@@ -99,7 +99,7 @@ export class RhMenuDropdown extends LitElement {
 
   render(): TemplateResult<1> {
     return html`
-      <div class="menu-dropdown-container">
+      <div @focusout=${this.#onFocusOut} class="menu-dropdown-container">
         <button
           id="menu-toggle"
           aria-haspopup="true"
@@ -242,6 +242,26 @@ export class RhMenuDropdown extends LitElement {
     ) {
       event.preventDefault();
       this.#handleSelection(event.target);
+    }
+  }
+
+  #onFocusOut(event: FocusEvent) {
+    const relatedTarget = event.relatedTarget as Node | null;
+
+    // If the next focused element is outside this component, close the dropdown
+    if (
+      relatedTarget !== this.menuToggleButton
+      && relatedTarget !== this.menuList
+      && relatedTarget && !this.contains(relatedTarget)
+    ) {
+      if (this.open) {
+        this.open = false;
+      }
+    }
+
+    // Also close if nothing is focused (focus left the document)
+    if (!relatedTarget) {
+      this.open = false;
     }
   }
 }
