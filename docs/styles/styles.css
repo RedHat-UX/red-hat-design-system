@@ -198,7 +198,8 @@
     margin-block-start: var(--rh-space-2xl);
   }
 
-  :where(uxdot-copy-permalink, h1, h2, h3 ,h4, h5 ,h6) + uxdot-example {
+  :where(uxdot-copy-permalink, h1, h2, h3 ,h4, h5 ,h6) + uxdot-example,
+  :where(rh-alert) + uxdot-demo {
     margin-block-start: var(--rh-space-lg);
   }
 
