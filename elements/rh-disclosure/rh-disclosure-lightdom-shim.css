@@ -25,3 +25,22 @@ rh-disclosure:not(:defined) {
     padding-block-end: var(--rh-space-2xl, 32px);
   }
 }
+
+/* Variants */
+rh-disclosure[variant~='compact']:not(:defined) {
+  padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+}
+
+rh-disclosure[variant~='borderless']:not(:defined) {
+  background-color:
+    light-dark(
+        var(--rh-color-surface-lighter, #f2f2f2),
+        var(--rh-color-surface-darker, #1f1f1f)
+      );
+  border: 0;
+  box-shadow: none;
+
+  &:before {
+    border-inline-start: 0;
+  }
+}
