@@ -116,7 +116,6 @@
 
   #main {
     grid-area: main;
-    border-inline-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
     container-type: inline-size;
     container-name: main;
     padding-block-start: var(--uxdot-masthead-max-height);
