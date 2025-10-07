@@ -54,6 +54,7 @@ export class RhNavigationPrimary extends LitElement {
   #slots = new SlotController(this,
                               'logo',
                               'summary',
+                              'event',
                               'links',
                               'dropdowns',
                               null,
