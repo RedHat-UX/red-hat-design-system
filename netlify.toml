@@ -1,12 +1,7 @@
 [build]
   command = "npm run docs"
 [build.environment]
-  NODE_VERSION = "24.4.1"
   NODE_OPTIONS = "--max_old_space_size=8192"
-  # Increase build timeout for large sites
-  NETLIFY_BUILD_TIMEOUT = "900"
-  # Disable telemetry to speed up build
-  NETLIFY_TELEMETRY_DISABLED = "1"
 
 [[redirects]]
   from = '/components/get-started/*'
