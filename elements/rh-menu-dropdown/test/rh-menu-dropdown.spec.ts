@@ -1,9 +1,9 @@
 import { aTimeout, expect, html } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
-import { sendKeys, resetMouse } from '@web/test-runner-commands';
+import { sendKeys } from '@web/test-runner-commands';
 import { RhMenuDropdown } from '@rhds/elements/rh-menu-dropdown/rh-menu-dropdown.js';
 import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
-import { clickElementAtCenter } from '@patternfly/pfe-tools/test/utils.js';
+import { clickElementAtCenter, clickElementAtOffset } from '@patternfly/pfe-tools/test/utils.js';
 
 function press(key: string) {
   return async function() {
@@ -230,6 +230,55 @@ describe('<rh-menu-dropdown>', function() {
             expect(element.open).to.be.false;
           });
         });
+      });
+    });
+  });
+
+  describe('with `disabled` attribute', function() {
+    let element: RhMenuDropdown;
+    const updateComplete = () => element.updateComplete;
+
+    beforeEach(async function() {
+      element = await createFixture<RhMenuDropdown>(html`
+        <rh-menu-dropdown disabled>
+          <p slot="label">Basic toggle</p>
+          <rh-menu-item>Action</rh-menu-item>
+          <rh-menu-item href="#">Link</rh-menu-item>
+          <rh-menu-item disabled>Disabled Action</rh-menu-item>
+          <rh-menu-item disabled href="#">Disabled link</rh-menu-item>
+          <rh-menu-item disabled aria-disabled="true">Aria-disabled link</rh-menu-item>
+          <hr />
+          <rh-menu-item>Separated action</rh-menu-item>
+          <rh-menu-item href="#">Separated link</rh-menu-item>
+        </rh-menu-dropdown>
+      `);
+      await updateComplete();
+    });
+
+    it('passes aXe audit', async function() {
+      await expect(element).to.be.accessible();
+    });
+
+    describe('focus', function() {
+      beforeEach(press('Tab'));
+      beforeEach(updateComplete);
+      describe('ArrowDown', function() {
+        beforeEach(press('ArrowDown'));
+        beforeEach(updateComplete);
+
+        it('does not open on focus and keyboard interaction', async function() {
+          // Should remain closed
+          expect(element.open).to.be.false;
+        });
+      });
+    });
+
+    describe('clicking the element', function() {
+      beforeEach(async function() {
+        await clickElementAtOffset(element, [10, 10]);
+      });
+      it('cannot be interacted with via click', async function() {
+        expect(element.open).to.be.false;
       });
     });
   });

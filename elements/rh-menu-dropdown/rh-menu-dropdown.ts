@@ -23,6 +23,7 @@ export class RhMenuDropdown extends LitElement {
   @property({ type: Boolean, reflect: true }) open = false;
   @property({ attribute: 'variant', reflect: true }) variant: 'open' | null = null;
   @property({ attribute: 'layout', reflect: true }) layout: 'compact' | null = null;
+  @property({ type: Boolean, reflect: true }) disabled = false;
   @query('#menu-toggle') menuToggleButton!: HTMLElement;
   @query('#menu-list') menuList!: HTMLElement;
   @queryAll('slot') slotElement!: NodeListOf<HTMLSlotElement>;
@@ -106,9 +107,11 @@ export class RhMenuDropdown extends LitElement {
           aria-expanded="${this.open}"
           @click="${this.#toggleMenu}"
           aria-controls="menu-list"
+          aria-disabled="${this.disabled}"
           @keydown="${this.#onToggleKeydown}"
           class="${this.variant !== 'open' ? 'boxed' : ''}
            ${this.layout === 'compact' ? 'compact' : ''} 
+           ${this.disabled ? 'disabled' : ''}
            ${this.open ? 'open' : ''}">
             ${this.layout === 'compact' ?
               html`<rh-icon set="ui" icon="ellipsis-vertical-fill"></rh-icon>`
@@ -203,13 +206,15 @@ export class RhMenuDropdown extends LitElement {
   }
 
   #onToggleKeydown(e: KeyboardEvent) {
-    if (['Enter', ' ', 'ArrowDown'].includes(e.key)) {
-      e.preventDefault();
-      this.open = true;
-      this.updateComplete.then(() => {
-        this.#focusFirstItem();
-        this.#positionPopover();
-      });
+    if (!this.disabled) {
+      if (['Enter', ' ', 'ArrowDown'].includes(e.key)) {
+        e.preventDefault();
+        this.open = true;
+        this.updateComplete.then(() => {
+          this.#focusFirstItem();
+          this.#positionPopover();
+        });
+      }
     }
   }
 
