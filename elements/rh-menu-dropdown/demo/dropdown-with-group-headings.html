@@ -1,22 +1,25 @@
 <div id="menu-dropdown-container">
   <rh-menu-dropdown text="Basic toggle" info-icon-name="auto-light-dark-mode">
     <p slot='label'>Basic toggle</p>
-    <rh-menu-item-group group-heading="Group heading">
-      <rh-menu-item>Action <p slot='description'>This is a description.</p></rh-menu-item>
-      <rh-menu-item href="#">Link <p slot='description'>This is a description.</p></rh-menu-item>
-    </rh-menu-item-group>
-    <hr/>
-    <rh-menu-item-group group-heading="Group heading">
-      <rh-menu-item>Separated action</rh-menu-item>
-      <rh-menu-item href="#">Separated link</rh-menu-item>
-    </rrh-menu-item-group>
+    <rh-menu>
+      <rh-menu-item-group group-heading="Group heading">
+        <rh-menu-item>Action <p slot='description'>This is a description.</p></rh-menu-item>
+        <rh-menu-item href="#">Link <p slot='description'>This is a description.</p></rh-menu-item>
+      </rh-menu-item-group>
+      <hr/>
+      <rh-menu-item-group group-heading="Group heading">
+        <rh-menu-item>Separated action</rh-menu-item>
+        <rh-menu-item href="#">Separated link</rh-menu-item>
+      </rrh-menu-item-group>
+    </rh-menu>
   </rh-menu-dropdown>
 </div>
 
 <script type="module">
   import '@rhds/elements/rh-menu-dropdown/rh-menu-dropdown.js';
-  import '@rhds/elements/rh-menu-dropdown/rh-menu-item.js';
-  import '@rhds/elements/rh-menu-dropdown/rh-menu-item-group.js';
+  import '@rhds/elements/rh-menu/rh-menu-item.js';
+  import '@rhds/elements/rh-menu/rh-menu-item-group.js';
+  import '@rhds/elements/rh-menu/rh-menu.js';
 
   const dropdown = document.querySelector('rh-menu-dropdown');
   dropdown.addEventListener('select', e => {
