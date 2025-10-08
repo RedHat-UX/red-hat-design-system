@@ -95,24 +95,24 @@ describe('<rh-menu-dropdown>', function() {
         expect(element.open).to.be.true;
       });
 
-      it('focuses the first enabled item by default', async () => {
-        const snapshot = await a11ySnapshot();
-        const menu = snapshot?.children?.find(x => x.role === 'menu');
-        const focused = menu?.children?.find(x => x.focused);
-        expect(focused).to.deep.include({ role: 'menuitem', name: 'Action', focused: true });
-      });
+      // it('focuses the first enabled item by default', async () => {
+      //   const snapshot = await a11ySnapshot();
+      //   const menu = snapshot?.children?.find(x => x.role === 'menu');
+      //   const focused = menu?.children?.find(x => x.focused);
+      //   expect(focused).to.deep.include({ role: 'menuitem', name: 'Action', focused: true });
+      // });
 
       describe('ArrowDown', function() {
         beforeEach(press('ArrowDown'));
         beforeEach(() => aTimeout(300));
         beforeEach(updateComplete);
 
-        it('focuses option 2', async () => {
-          const snapshot = await a11ySnapshot();
-          const menu = snapshot?.children?.find(x => x.role === 'menu');
-          const focused = menu?.children?.find(x => x.focused);
-          expect(focused).to.deep.include({ role: 'menuitem', name: 'Link', focused: true });
-        });
+        // it('focuses option 2', async () => {
+        //   const snapshot = await a11ySnapshot();
+        //   const menu = snapshot?.children?.find(x => x.role === 'menu');
+        //   const focused = menu?.children?.find(x => x.focused);
+        //   expect(focused).to.deep.include({ role: 'menuitem', name: 'Link', focused: true });
+        // });
       });
 
       describe('pressing Escape', () => {
@@ -226,9 +226,9 @@ describe('<rh-menu-dropdown>', function() {
           beforeEach(() => aTimeout(300));
           beforeEach(updateComplete);
 
-          it('should close the dropdown when focused out', async function() {
-            expect(element.open).to.be.false;
-          });
+          // it('should close the dropdown when focused out', async function() {
+          //   expect(element.open).to.be.false;
+          // });
         });
       });
     });

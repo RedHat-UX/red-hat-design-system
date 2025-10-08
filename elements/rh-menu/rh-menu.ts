@@ -33,30 +33,6 @@ export class RhMenu extends LitElement {
   static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 
   @queryAssignedElements() private _menuItems!: Element[];
-  //   getItems: (): HTMLElement[] => {
-  //     return this._menuItems.flatMap((element: Element) => {
-  //       if (element instanceof HTMLSlotElement) {
-  //         // Handle slotted elements
-  //         console.log(" element.assignedElements()",  element.assignedElements())
-  //         return element.assignedElements() as HTMLElement[];
-  //       } else {
-  //         // Set role="menuitem" if not already set
-  //         if(element instanceof RhMenuItem) {
-  //           const menuitem = element.shadowRoot?.querySelector('[role="menuitem"]')
-  //           console.log(" element.assignedElements()",  element.shadowRoot?.querySelector('[role="menuitem"]'));
-  //           return [menuitem as HTMLElement];
-  //         }
-  //         else if (element instanceof HTMLElement && !element.hasAttribute('role')) {
-  //           element.setAttribute('role', 'menuitem');
-  //           return [element as HTMLElement];
-  //         }
-  //         else {
-  //           return [element as HTMLElement];
-  //         }
-  //       }
-  //     });
-  //   },
-  // });
 
   #tabindex: RovingTabindexController<HTMLElement> = RovingTabindexController.of(this, {
     getItems: (): HTMLElement[] => {
