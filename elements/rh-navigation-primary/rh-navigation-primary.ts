@@ -187,26 +187,35 @@ export class RhNavigationPrimary extends LitElement {
               <rh-icon icon="caret-down" set="microns"></rh-icon>
             </summary>
             <div id="details-content" role="list" >
-              <!-- Use this slot for \`<rh-primary-navigation-item>\` hamburger menu links and dropdowns -->
+              <!-- 
+                Use this slot for \`<rh-primary-navigation-item>\` hamburger menu links and dropdowns.
+                If left empty will result in accessibility issues.
+              -->
               <slot></slot>
             </div>
           </details>
           <div id="secondary">
             <!--
               Use this slot for event promotion.  Images such as SVGs and links are most often slotted here.
-              Slot these items using the \`<rh-navigation-primary-item slot="event">\` element.
+              Slot these items using the \`<rh-navigation-primary-item slot="event">\` element. If any 
+              other element is slotted here, it will need to be a role="listitem" to avoid accessibility 
+              issues.  Other slotted elements will also likely have other rendering issues.
             -->
             <div id="event" role="list" ?hidden=${!hasEvent}><slot name="event"></slot></div>
             <!--
               Use this slot for quick links to other sites not directly associated with the page the
               navigation is on.  Common use cases are developers docs and support. Slot these items using
-              the \`<rh-navigation-primary-item slot="links">\` element.
+              the \`<rh-navigation-primary-item slot="links">\` element. If any other element is slotted 
+              here, it will need to be a role="listitem" to avoid accessibility issues.  Other slotted 
+              elements will also likely have other rendering issues.
             -->
             <div id="links" role="list" ?hidden=${!hasLinks}><slot name="links"></slot></div>
             <!--
               Use this slot for search, for you, and account dropdowns. Slot these items using the
-              \`<rh-navigation-primary-item slot="dropdown" variant="dropdown">\` element.
-            -->
+              \`<rh-navigation-primary-item slot="dropdown" variant="dropdown">\` element. If any 
+              other element is slotted here, it will need to be a role="listitem" to avoid accessibility 
+              issues.  Other slotted elements will also likely have other rendering issues.
+            -->              
             <div id="dropdowns" role="list" ?hidden=${!hasDropdowns}><slot name="dropdowns"></slot></div>
           </div>
         </div>
