@@ -23,34 +23,13 @@
   padding-block-start: var(--_uxdot-header-padding,);
   padding-inline: var(--_uxdot-header-padding);
 
-  &.hasSearch {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas: 'heading' 'search';
-    gap: var(--rh-space-2xl);
-  }
-
   &:not(.hasSubnav) {
     padding-block-end: var(--_uxdot-header-padding);
-  }
-
-  @container header (min-width: 992px) {
-    &.hasSearch {
-      grid-template-columns: 1fr 1fr;
-      grid-template-areas: 'heading search';
-    }
   }
 }
 
 [part='heading'] {
   grid-area: heading;
-}
-
-::slotted([slot='search']) {
-  grid-area: search;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
 }
 
 ::slotted(h1) {

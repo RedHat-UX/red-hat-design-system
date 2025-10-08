@@ -253,7 +253,6 @@ export default async function(eleventyConfig: UserConfig) {
       'uxdot/uxdot-pattern.ts',
       'uxdot/uxdot-repo-status-checklist.ts',
       'uxdot/uxdot-repo-status-list.ts',
-      'uxdot/uxdot-search.ts',
       'uxdot/uxdot-sidenav.ts',
       'uxdot/uxdot-spacer-tokens-table.ts',
       'uxdot/uxdot-toc.ts',
