@@ -29,7 +29,7 @@ export async function init(form) {
   form.addEventListener('submit', event => {
     event.preventDefault();
     const url = new URL('/tokens/search/', location.origin);
-    url.searchParams.set('s', search.value);
+    url.searchParams.set('search', search.value);
     location.href = url.href;
   });
   search.addEventListener('input', async function() {

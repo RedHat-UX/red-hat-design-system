@@ -4,9 +4,9 @@ import { tokens } from '@rhds/tokens/meta.js';
 import '@rhds/elements/rh-badge/rh-badge.js';
 
 const params = new URLSearchParams(location.search);
-const searchTerm = params.get('s');
+const searchTerm = params.get('search');
 // since this is the results page, just search for the query param immediately
-const searchResults = fuse.search(searchTerm)?.map(x => x.item);
+const searchResults = searchTerm ? fuse.search(searchTerm)?.map(x => x.item) : [];
 const results = document.getElementById('results');
 const resultsList = document.getElementById('results-list');
 const categoryCtas = document.querySelectorAll('.token-category');
