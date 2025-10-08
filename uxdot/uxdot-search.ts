@@ -164,8 +164,6 @@ export class UxdotSearch extends LitElement {
     this.activeIndex ??= -1;
     const d = ({ ArrowDown: 1, ArrowUp: -1 })[event.key]!;
     const activeElement = this.shadowRoot?.activeElement;
-
-    console.log('activeElement', activeElement);
     if (activeElement === this.#input) {
       ({ ArrowUp: this.#lastLink, ArrowDown: this.#firstLink })[event.key]?.focus();
       this.activeIndex = d > 0 ? 0 : this.items.length - 1;
