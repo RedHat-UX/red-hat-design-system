@@ -81,7 +81,7 @@ export class RhNavigationPrimary extends LitElement {
   private _hamburgerSummary!: HTMLElement;
 
   @query('#title')
-  private _title!: HTMLElement;
+  private _title!: HTMLHeadingElement;
 
 
   /**
@@ -94,9 +94,9 @@ export class RhNavigationPrimary extends LitElement {
 
   /**
    * Customize the default label for the navigation.
-   * Defaults to "Navigation" if no value is set.
+   * Defaults to "Main navigation" if no value is set.
    */
-  @property({ attribute: 'accessible-label' }) accessibleLabel = 'Navigation';
+  @property({ attribute: 'accessible-label' }) accessibleLabel = 'Main navigation';
 
   static focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
     return parent.querySelectorAll(`a,
@@ -167,6 +167,7 @@ export class RhNavigationPrimary extends LitElement {
       dehydrated: !this.#hydrated,
     };
     return html`
+      <h2 id="title" class="visually-hidden">${this.accessibleLabel}</h2>
       <div id="container" class="${classMap(classes)}">
         <div id="bar">
           <div id="logo">
@@ -183,7 +184,6 @@ export class RhNavigationPrimary extends LitElement {
               </a>
             </slot>
           </div>
-          <h2 id="title" class="visually-hidden">${this.accessibleLabel}</h2>
           <details id="hamburger" ?open="${this._hamburgerOpen}" @toggle="${this.#hamburgerToggle}" @focusout="${this.#onHamburgerFocusOut}">
             <summary @blur="${this.#onHamburgerSummaryBlur}">
               <rh-icon icon="menu-bars" set="ui"></rh-icon>

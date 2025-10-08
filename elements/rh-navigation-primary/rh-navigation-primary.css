@@ -42,6 +42,19 @@
   color-scheme: only dark;
 }
 
+.visually-hidden {
+  position: absolute !important;
+  block-size: 1px;
+  inline-size: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+  padding: 0 !important;
+  margin: -1px !important;
+}
+
 #bar {
   position: relative;
   display: grid;
@@ -105,19 +118,6 @@
       var(--rh-color-interactive-primary-default);
     border-radius: var(--rh-border-radius-default, 3px);
   }
-}
-
-.visually-hidden {
-  position: absolute !important;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px); /* Fallback for older browsers */
-  clip-path: inset(50%); /* Modern clipping method */
-  white-space: nowrap;
-  border: 0;
-  padding: 0;
-  margin: -1px;
 }
 
 #hamburger {
