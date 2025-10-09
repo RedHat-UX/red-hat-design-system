@@ -89,6 +89,7 @@ export class UxdotSearch extends LitElement {
       <input id="input"
              placeholder="${ifDefined(this.placeholder)}"
              role="combobox"
+             autocomplete="off"
              aria-label="${ifDefined(this.#ariaLabel)}"
              aria-autocomplete="list"
              aria-controls="listbox"
