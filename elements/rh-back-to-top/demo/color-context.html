@@ -4,9 +4,10 @@
     <p>Scroll down or press tab to see the back to top button</p>
     <a id="bottom" href="#top">Go to top</a>
   <div>
+
+  <rh-back-to-top href="#top">Back to top</rh-back-to-top>
 </rh-context-demo>
 
-<rh-back-to-top href="#top">Back to top</rh-back-to-top>
 
 <script type="module">
   import '@rhds/elements/rh-back-to-top/rh-back-to-top.js';
@@ -14,22 +15,6 @@
 </script>
 
 <style>
-  a {
-    color: var(--rh-color-interactive-blue-darker, #0066cc);
-  }
-
-  a:is(:hover,:focus) {
-    color: var(--rh-color-interactive-blue-darkest, #003366);
-  }
-
-  [color-palette^="dark"] a {
-    color: var(--rh-color-accent-base-on-dark, #92c5f9);
-  }
-
-  [color-palette^="dark"] a:is(:hover,:focus) {
-    color: var(--rh-color-interactive-blue-lightest, #b9dafc);
-  }
-
   main {
     display: block;
     scroll-behavior: smooth;
