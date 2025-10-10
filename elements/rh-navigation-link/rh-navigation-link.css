@@ -1,0 +1,70 @@
+/**
+Requirements:
+- The link should be able to restyle itself based off the container (.compact) mode,
+this is needed so that the link can be used in a hamburger menu if included in the
+navigation's main content region.
+- The link style should be able to be customized when used in a secondary content region.
+**/
+
+:host {
+  display: contents;
+}
+
+#container {
+  display: var(--_navigation-link-container-display, block);
+  inline-size: var(--_navigation-link-container-inline-size, fit-content);
+  block-size: var(--_navigation-link-container-block-size, auto);
+  padding: var(--_navigation-link-container-padding, initial);
+  align-items: var(--_navigation-link-container-align-items, initial);
+  position: var(--_navigation-link-container-position, initial);
+}
+
+a,
+::slotted(a) {
+  position: relative;
+  display: var(--_navigation-link-display, inline);
+  color: var(--_navigation-link-color, var(--rh-color-text-primary)) !important;
+  font-size: var(--_navigation-link-font-size, 1rem) !important;
+  font-weight: var(--_navigation-link-font-weight, initial) !important;
+  block-size: var(--_navigation-link-block-size, auto);
+  inline-size: var(--_navigation-link-inline-size, auto);
+  align-items: var(--_navigation-link-align-items, initial);
+  align-content: var(--_navigation-link-align-content, initial);
+  padding: var(--_navigation-link-padding, 0);
+  text-decoration: var(--_navigation-link-text-decoration, none) !important;
+  gap: var(--_navigation-link-gap, initial);
+}
+
+a:before,
+::slotted(a):before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-inline-start:
+    var(--_navigation-link-before-border-inline-start-width, 0)
+    solid
+    var(--_navigation-link-before-border-inline-start-color, transparent);
+}
+
+a:is(:hover, :hover:focus-visible, :focus-visible, :active),
+::slotted(:is(a:hover, a:hover:focus-visible, :focus-visible, :active)) {
+  text-underline-offset: var(--_navigation-link-text-underline-offset, 4px) !important;
+  text-decoration-color:
+    var(--_navigation-link-text-decoration-color,
+      light-dark(var(--rh-color-gray-50, #707070),
+      var(--rh-color-gray-40, #a3a3a3))) !important;
+  text-decoration-line: var(--_navigation-link-text-decoration-line, underline) !important;
+  text-decoration-style: var(--_navigation-link-text-decoration-style, dashed) !important;
+  text-decoration-skip-ink: auto !important;
+  color: var(--_navigation-link-color-hover, var(--rh-color-interactive-primary-hover)) !important;
+  background-color:
+    var(--_navigation-link-hover-background-color,
+      light-dark(transparent, transparent)) !important;
+}
+
+a:is(:focus-visible, :hover:focus-visible, :focus-visible, :active),
+::slotted(a:is(:focus-visible, :hover:focus-visible, :focus-visible, :active)) {
+  outline-offset: var(--_navigation-link-focus-outline-offset, 0);
+  outline: var(--rh-border-width-md, 2px) solid var(--rh-color-interactive-primary-default);
+  border-radius: var(--rh-border-radius-default, 3px);
+}
