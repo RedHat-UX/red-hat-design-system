@@ -55,138 +55,139 @@
 </script>
 
 <style>
-rh-pagination {
-  --_link-size: calc(var(--_stepper-size) + 2px);
-
-  > ol {
-    list-style-type: none;
-    display: contents;
-  }
-
-  li {
-    display: contents;
-
-    > a {
-      background-color: var(--_list-a-bg-color);
-      border: var(--rh-border-width-sm, 1px) solid transparent;
-      color: var(--_list-a-text-color);
-      display: grid;
-      font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
-      font-size: var(--rh-font-size-body-text-xl, 1.25rem);
-      height: var(--_link-size);
-      place-content: center;
-      position: relative;
-      text-decoration: none;
-      width: var(--_link-size);
-
-      &:focus {
-        border-radius: var(--rh-border-radius-default, 3px);
-        outline-offset: -2px;
-        outline: var(--rh-border-width-md, 2px) solid transparent;
-        outline-color:
-          var(--rh-pagination-accent-color,
-            var(--rh-color-interactive-primary-default));
-      }
-
-      &:hover:after,
-      &:focus:before,
-      &:focus:after,
-      &[aria-current='page']:after {
-        border-block-start-style: solid;
-        content: '';
-        inset-inline-start: -1px;
-        position: absolute;
-        inset-block-start: -1px;
-        width: 104%;
-      }
-
-      &:hover:after,
-      &:focus:before,
-      &[aria-current='page']:after {
-        border-block-width: var(--rh-border-width-lg, 3px);
-      }
-
-      &:focus:before,
-      &:hover:after {
-        border-block-color: var(--_border-top-hover-color);
-      }
-
-      &:focus:after {
-        border-block-width: var(--rh-border-width-md, 2px);
-      }
-
-      &[aria-current='page'] {
-        background-color: var(--_list-a-current-page-bg-color);
-        border-color: var(--_list-a-current-page-border-color);
-        border-block-start: 0;
-      }
-
-      &:focus:after,
-      &[aria-current='page']:after {
-        border-block-color: var(--rh-pagination-accent-color, var(--rh-color-border-interactive));
-      }
-    }
-  }
-
-  &[size='sm'] {
-    li > a { font-size: var(--rh-font-size-body-text-md, 1rem); }
-
+  /* TODO: lightdom styles are currently broken in dev, once fixed, remove this and favor the link */
+  rh-pagination {
     --_link-size: calc(var(--_stepper-size) + 2px);
-  }
 
-  &[overflow='start'] li:nth-last-child(n+6):not(:first-child),
-  &[overflow='end'] li:nth-child(n+6):not(:last-child),
-  &[overflow='both'] li:nth-last-child(n+6):not(:first-child),
-  &[overflow='both'] li:nth-child(n+6):not(:last-child) {
-    display: none;
-  }
+    > ol {
+      list-style-type: none;
+      display: contents;
+    }
 
-  &[overflow='both'] li:is([data-page='current'], [data-page='previous'], [data-page='next']) {
-    display: contents !important;
-  }
+    li {
+      display: contents;
 
-  &:is([overflow='end'], [overflow='both']) li:last-child,
-  &:is([overflow='start'], [overflow='both']) li:first-child {
-    display: grid;
-    grid-template-columns: var(--_link-size) var(--_link-size);
-    gap: 4px;
-  }
+      > a {
+        background-color: var(--_list-a-bg-color);
+        border: var(--rh-border-width-sm, 1px) solid transparent;
+        color: var(--_list-a-text-color);
+        display: grid;
+        font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+        font-size: var(--rh-font-size-body-text-xl, 1.25rem);
+        height: var(--_link-size);
+        place-content: center;
+        position: relative;
+        text-decoration: none;
+        width: var(--_link-size);
 
-  &:is([overflow='end'], [overflow='both']) li:last-child:before,
-  &:is([overflow='start'], [overflow='both']) li:first-child:after {
-    content: '…';
-    width: var(--_link-size);
-    height: var(--_link-size);
-    padding-inline-end: 4px;
-    display: flex;
-    align-items: center;
-    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-    color: var(--rh-color-gray-40, #a3a3a3);
-    justify-content: center;
-    align-self: start;
-  }
+        &:focus {
+          border-radius: var(--rh-border-radius-default, 3px);
+          outline-offset: -2px;
+          outline: var(--rh-border-width-md, 2px) solid transparent;
+          outline-color:
+            var(--rh-pagination-accent-color,
+              var(--rh-color-interactive-primary-default));
+        }
 
-  &[variant|='open'] {
-    --_list-a-bg-color: transparent;
+        &:hover:after,
+        &:focus:before,
+        &:focus:after,
+        &[aria-current='page']:after {
+          border-block-start-style: solid;
+          content: '';
+          inset-inline-start: -1px;
+          position: absolute;
+          inset-block-start: -1px;
+          width: 104%;
+        }
 
-    li > a {
-      background-color: transparent;
+        &:hover:after,
+        &:focus:before,
+        &[aria-current='page']:after {
+          border-block-width: var(--rh-border-width-lg, 3px);
+        }
 
-      &:hover:after,
-      &:focus:before,
-      &:focus:after,
-      &[aria-current='page']:after {
-        border-block-start-style: none;
-        border-block-end-style: solid;
-        inset-block-end: -1px;
+        &:focus:before,
+        &:hover:after {
+          border-block-color: var(--_border-top-hover-color);
+        }
+
+        &:focus:after {
+          border-block-width: var(--rh-border-width-md, 2px);
+        }
+
+        &[aria-current='page'] {
+          background-color: var(--_list-a-current-page-bg-color);
+          border-color: var(--_list-a-current-page-border-color);
+          border-block-start: 0;
+        }
+
+        &:focus:after,
+        &[aria-current='page']:after {
+          border-block-color: var(--rh-pagination-accent-color, var(--rh-color-border-interactive));
+        }
       }
+    }
 
-      &[aria-current='page'] {
-        border-color: transparent; /* NOTE: Keep active/hover borders in-line */
+    &[size='sm'] {
+      li > a { font-size: var(--rh-font-size-body-text-md, 1rem); }
+
+      --_link-size: calc(var(--_stepper-size) + 2px);
+    }
+
+    &[overflow='start'] li:nth-last-child(n+6):not(:first-child),
+    &[overflow='end'] li:nth-child(n+6):not(:last-child),
+    &[overflow='both'] li:nth-last-child(n+6):not(:first-child),
+    &[overflow='both'] li:nth-child(n+6):not(:last-child) {
+      display: none;
+    }
+
+    &[overflow='both'] li:is([data-page='current'], [data-page='previous'], [data-page='next']) {
+      display: contents !important;
+    }
+
+    &:is([overflow='end'], [overflow='both']) li:last-child,
+    &:is([overflow='start'], [overflow='both']) li:first-child {
+      display: grid;
+      grid-template-columns: var(--_link-size) var(--_link-size);
+      gap: 4px;
+    }
+
+    &:is([overflow='end'], [overflow='both']) li:last-child:before,
+    &:is([overflow='start'], [overflow='both']) li:first-child:after {
+      content: '…';
+      width: var(--_link-size);
+      height: var(--_link-size);
+      padding-inline-end: 4px;
+      display: flex;
+      align-items: center;
+      font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+      color: var(--rh-color-gray-40, #a3a3a3);
+      justify-content: center;
+      align-self: start;
+    }
+
+    &[variant|='open'] {
+      --_list-a-bg-color: transparent;
+
+      li > a {
+        background-color: transparent;
+
+        &:hover:after,
+        &:focus:before,
+        &:focus:after,
+        &[aria-current='page']:after {
+          border-block-start-style: none;
+          border-block-end-style: solid;
+          inset-block-end: -1px;
+        }
+
+        &[aria-current='page'] {
+          border-color: transparent; /* NOTE: Keep active/hover borders in-line */
+        }
       }
     }
   }
-}
 </style>
 
 <script type="module">
