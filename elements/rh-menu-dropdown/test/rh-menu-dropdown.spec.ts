@@ -36,14 +36,16 @@ describe('<rh-menu-dropdown>', function() {
       element = await createFixture(html`
         <rh-menu-dropdown>
           <p slot="label">Basic toggle</p>
-          <rh-menu-item>Action</rh-menu-item>
-          <rh-menu-item href="#">Link</rh-menu-item>
-          <rh-menu-item disabled>Disabled Action</rh-menu-item>
-          <rh-menu-item disabled href="#">Disabled link</rh-menu-item>
-          <rh-menu-item disabled aria-disabled="true">Aria-disabled link</rh-menu-item>
-          <hr />
-          <rh-menu-item>Separated action</rh-menu-item>
-          <rh-menu-item href="#">Separated link</rh-menu-item>
+          <rh-menu>
+            <rh-menu-item>Action</rh-menu-item>
+            <rh-menu-item href="#">Link</rh-menu-item>
+            <rh-menu-item disabled>Disabled Action</rh-menu-item>
+            <rh-menu-item disabled href="#">Disabled link</rh-menu-item>
+            <rh-menu-item disabled>Aria-disabled link</rh-menu-item>
+            <hr/>
+            <rh-menu-item>Separated action</rh-menu-item>
+            <rh-menu-item href="#">Separated link</rh-menu-item>
+          </rh-menu>
         </rh-menu-dropdown>
       `);
       await updateComplete();
@@ -73,14 +75,17 @@ describe('<rh-menu-dropdown>', function() {
     beforeEach(async () => {
       element = await createFixture(html`
         <rh-menu-dropdown>
-          <rh-menu-item>Action</rh-menu-item>
-          <rh-menu-item href="#">Link</rh-menu-item>
-          <rh-menu-item disabled>Disabled Action</rh-menu-item>
-          <rh-menu-item disabled href="#">Disabled link</rh-menu-item>
-          <rh-menu-item disabled aria-disabled="true">Aria-disabled link</rh-menu-item>
-          <hr />
-          <rh-menu-item>Separated action</rh-menu-item>
-          <rh-menu-item href="#">Separated link</rh-menu-item>
+          <p slot="label">Basic toggle</p>
+          <rh-menu>
+            <rh-menu-item>Action</rh-menu-item>
+            <rh-menu-item href="#">Link</rh-menu-item>
+            <rh-menu-item disabled>Disabled Action</rh-menu-item>
+            <rh-menu-item disabled href="#">Disabled link</rh-menu-item>
+            <rh-menu-item disabled>Aria-disabled link</rh-menu-item>
+            <hr/>
+            <rh-menu-item>Separated action</rh-menu-item>
+            <rh-menu-item href="#">Separated link</rh-menu-item>
+          </rh-menu>
         </rh-menu-dropdown>
       `);
       await updateComplete();
@@ -95,24 +100,24 @@ describe('<rh-menu-dropdown>', function() {
         expect(element.open).to.be.true;
       });
 
-      // it('focuses the first enabled item by default', async () => {
-      //   const snapshot = await a11ySnapshot();
-      //   const menu = snapshot?.children?.find(x => x.role === 'menu');
-      //   const focused = menu?.children?.find(x => x.focused);
-      //   expect(focused).to.deep.include({ role: 'menuitem', name: 'Action', focused: true });
-      // });
+      it('focuses the first enabled item by default', async () => {
+        const snapshot = await a11ySnapshot();
+        const menu = snapshot?.children?.find(x => x.role === 'menu');
+        const focused = menu?.children?.find(x => x.focused);
+        expect(focused).to.deep.include({ role: 'menuitem', name: 'Action', focused: true });
+      });
 
       describe('ArrowDown', function() {
         beforeEach(press('ArrowDown'));
         beforeEach(() => aTimeout(300));
         beforeEach(updateComplete);
 
-        // it('focuses option 2', async () => {
-        //   const snapshot = await a11ySnapshot();
-        //   const menu = snapshot?.children?.find(x => x.role === 'menu');
-        //   const focused = menu?.children?.find(x => x.focused);
-        //   expect(focused).to.deep.include({ role: 'menuitem', name: 'Link', focused: true });
-        // });
+        it('focuses option 2', async () => {
+          const snapshot = await a11ySnapshot();
+          const menu = snapshot?.children?.find(x => x.role === 'menu');
+          const focused = menu?.children?.find(x => x.focused);
+          expect(focused).to.deep.include({ role: 'menuitem', name: 'Link', focused: true });
+        });
       });
 
       describe('pressing Escape', () => {
@@ -136,14 +141,17 @@ describe('<rh-menu-dropdown>', function() {
     beforeEach(async function() {
       element = await createFixture<RhMenuDropdown>(html`
         <rh-menu-dropdown>
-          <rh-menu-item>Action</rh-menu-item>
-          <rh-menu-item href="#">Link</rh-menu-item>
-          <rh-menu-item disabled>Disabled Action</rh-menu-item>
-          <rh-menu-item disabled href="#">Disabled link</rh-menu-item>
-          <rh-menu-item disabled aria-disabled="true">Aria-disabled link</rh-menu-item>
-          <hr />
-          <rh-menu-item>Separated action</rh-menu-item>
-          <rh-menu-item href="#">Separated link</rh-menu-item>
+          <p slot="label">Basic toggle</p>
+          <rh-menu>
+            <rh-menu-item>Action</rh-menu-item>
+            <rh-menu-item href="#">Link</rh-menu-item>
+            <rh-menu-item disabled>Disabled Action</rh-menu-item>
+            <rh-menu-item disabled href="#">Disabled link</rh-menu-item>
+            <rh-menu-item disabled>Aria-disabled link</rh-menu-item>
+            <hr/>
+            <rh-menu-item>Separated action</rh-menu-item>
+            <rh-menu-item href="#">Separated link</rh-menu-item>
+          </rh-menu>
         </rh-menu-dropdown>
       `);
 
@@ -193,14 +201,16 @@ describe('<rh-menu-dropdown>', function() {
       element = await createFixture<RhMenuDropdown>(html`
         <rh-menu-dropdown>
           <p slot="label">Basic toggle</p>
-          <rh-menu-item>Action</rh-menu-item>
-          <rh-menu-item href="#">Link</rh-menu-item>
-          <rh-menu-item disabled>Disabled Action</rh-menu-item>
-          <rh-menu-item disabled href="#">Disabled link</rh-menu-item>
-          <rh-menu-item disabled aria-disabled="true">Aria-disabled link</rh-menu-item>
-          <hr />
-          <rh-menu-item>Separated action</rh-menu-item>
-          <rh-menu-item href="#">Separated link</rh-menu-item>
+          <rh-menu>
+            <rh-menu-item>Action</rh-menu-item>
+            <rh-menu-item href="#">Link</rh-menu-item>
+            <rh-menu-item disabled>Disabled Action</rh-menu-item>
+            <rh-menu-item disabled href="#">Disabled link</rh-menu-item>
+            <rh-menu-item disabled>Aria-disabled link</rh-menu-item>
+            <hr/>
+            <rh-menu-item>Separated action</rh-menu-item>
+            <rh-menu-item href="#">Separated link</rh-menu-item>
+          </rh-menu>
         </rh-menu-dropdown>
       `);
 
@@ -226,9 +236,9 @@ describe('<rh-menu-dropdown>', function() {
           beforeEach(() => aTimeout(300));
           beforeEach(updateComplete);
 
-          // it('should close the dropdown when focused out', async function() {
-          //   expect(element.open).to.be.false;
-          // });
+          it('should close the dropdown when focused out', async function() {
+            expect(element.open).to.be.false;
+          });
         });
       });
     });
@@ -242,14 +252,16 @@ describe('<rh-menu-dropdown>', function() {
       element = await createFixture<RhMenuDropdown>(html`
         <rh-menu-dropdown disabled>
           <p slot="label">Basic toggle</p>
-          <rh-menu-item>Action</rh-menu-item>
-          <rh-menu-item href="#">Link</rh-menu-item>
-          <rh-menu-item disabled>Disabled Action</rh-menu-item>
-          <rh-menu-item disabled href="#">Disabled link</rh-menu-item>
-          <rh-menu-item disabled aria-disabled="true">Aria-disabled link</rh-menu-item>
-          <hr />
-          <rh-menu-item>Separated action</rh-menu-item>
-          <rh-menu-item href="#">Separated link</rh-menu-item>
+          <rh-menu>
+            <rh-menu-item>Action</rh-menu-item>
+            <rh-menu-item href="#">Link</rh-menu-item>
+            <rh-menu-item disabled>Disabled Action</rh-menu-item>
+            <rh-menu-item disabled href="#">Disabled link</rh-menu-item>
+            <rh-menu-item disabled>Aria-disabled link</rh-menu-item>
+            <hr/>
+            <rh-menu-item>Separated action</rh-menu-item>
+            <rh-menu-item href="#">Separated link</rh-menu-item>
+          </rh-menu>
         </rh-menu-dropdown>
       `);
       await updateComplete();
