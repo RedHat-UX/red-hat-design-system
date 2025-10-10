@@ -8,11 +8,6 @@
   </ol>
 </rh-pagination>
 
-<p><strong>Note:</strong> The third page is set statically to <code>aria-current="page"</code>. If you refresh the page no matter the query parameters or hash in the URL, the third page will be set to the third page as the current page.</p>
-<p>This is by design, as aria-current="page" will take precedence over the href in the URL.</p>
-<p><strong>Note:</strong> For this demo the <code>hashchange</code> event is triggered when the hash in the URL changes moving the <code>aria-current="page"</code> attribute on the correct link.</p>
-<p>In a real world example the <code>aria-current="page"</code> would be moved to the correct link at page request render or application logic.</p>
-
 <link rel="stylesheet" href="../rh-pagination-lightdom.css">
 
 <script type="module">
