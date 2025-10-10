@@ -21,7 +21,7 @@ export class RhMenuDropdown extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
   private static instances = new Set<RhMenuDropdown>();
   @property({ type: Boolean, reflect: true }) open = false;
-  @property({ attribute: 'variant', reflect: true }) variant: 'open' | null = null;
+  @property({ attribute: 'variant', reflect: true }) variant: 'borderless' | null = null;
   @property({ attribute: 'layout', reflect: true }) layout: 'compact' | null = null;
   @property({ type: Boolean, reflect: true }) disabled = false;
   @query('#menu-toggle') menuToggleButton!: HTMLElement;
@@ -109,7 +109,7 @@ export class RhMenuDropdown extends LitElement {
           aria-controls="menu-list"
           aria-disabled="${this.disabled}"
           @keydown="${this.#onToggleKeydown}"
-          class="${this.variant !== 'open' ? 'boxed' : ''}
+          class="${this.variant !== 'borderless' ? 'boxed' : ''}
            ${this.layout === 'compact' ? 'compact' : ''} 
            ${this.disabled ? 'disabled' : ''}
            ${this.open ? 'open' : ''}">

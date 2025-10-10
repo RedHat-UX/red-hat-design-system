@@ -53,7 +53,7 @@
     border:
       var(--rh-border-width-md, 2px) solid light-dark(var(--rh-color-accent-base-on-light, #0066cc),
         var(--rh-color-accent-base-on-dark, #92c5f9));
-    border-radius: 3px;
+    border-radius: var(--rh-border-width-lg, 3px);
   }
 
   .menu-item {
