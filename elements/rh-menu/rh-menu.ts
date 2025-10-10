@@ -1,4 +1,4 @@
-import { LitElement, html, isServer } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 
@@ -8,6 +8,8 @@ import { RovingTabindexController } from '@patternfly/pfe-core/controllers/rovin
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-menu.css';
+import { RhMenuItem } from './rh-menu-item.js';
+import { RhMenuItemGroup } from './rh-menu-item-group.js';
 
 export class MenuToggleEvent extends Event {
   constructor(
@@ -30,19 +32,35 @@ export class RhMenu extends LitElement {
 
   static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 
-  @queryAssignedElements() private _menuItems!: HTMLElement[];
+  @queryAssignedElements() private _menuItems!: Element[];
 
-  #tabindex = RovingTabindexController.of<HTMLElement>(this, {
-    getItems: () => this.getItems(this._menuItems),
+  #tabindex: RovingTabindexController<HTMLElement> = RovingTabindexController.of(this, {
+    getItems: (): HTMLElement[] => {
+      return this._menuItems.flatMap((element: Element) => {
+        if (element instanceof HTMLSlotElement) {
+          const assigned = element.assignedElements().filter(
+            (el): el is HTMLElement => !(el instanceof HTMLHRElement)
+          );
+          return assigned;
+        } else {
+          if (element instanceof HTMLHRElement) {
+            // Skip <hr> elements
+            return [];
+          }
+
+          if (element instanceof RhMenuItem || element instanceof RhMenuItemGroup) {
+            const menuitem = element.shadowRoot?.querySelector('[role="menuitem"]');
+            return menuitem ? [menuitem as HTMLElement] : [];
+          } else if (element instanceof HTMLElement && !element.hasAttribute('role')) {
+            element.setAttribute('role', 'menuitem');
+            return [element];
+          } else {
+            return [element as HTMLElement];
+          }
+        }
+      });
+    },
   });
-
-  /**
-   * override or set to add items to the roving tab index controller
-   * @param items original list of items
-   */
-  getItems(items: HTMLElement[]): HTMLElement[] {
-    return items;
-  }
 
   get activeItem() {
     return this.#tabindex.items.at(this.#tabindex.atFocusedItemIndex);
@@ -52,23 +70,13 @@ export class RhMenu extends LitElement {
     super.connectedCallback();
     this.id ||= getRandomId('menu');
     this.setAttribute('role', 'menu'); // TODO: use InternalsController.role when support/polyfill is better
-    if (!isServer) {
-      this.#onSlotchange();
-    }
   }
 
   render() {
     return html`
       <!-- menu items -->
-      <slot part="menu"
-            @slotchange="${this.#onSlotchange}"></slot>
+      <slot part="menu"></slot>
     `;
-  }
-
-  #onSlotchange() {
-    for (const item of this._menuItems ?? []) {
-      item.setAttribute('role', 'menuitem');
-    }
   }
 
   activateItem(item: HTMLElement) {

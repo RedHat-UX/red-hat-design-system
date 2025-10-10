@@ -1,0 +1,171 @@
+:host {
+  --_border:
+    var(--rh-border-width-sm, 1px) solid light-dark(
+        var(--rh-color-gray-30, #c7c7c7),
+        var(--rh-color-gray-50, #707070)
+      );
+  --_color: var(--rh-color-text-primary);
+
+  position: relative;
+  display: inline-block;
+}
+
+#menu-list {
+  position: fixed;
+  padding: var(--rh-space-md, 8px) 0;
+  margin: var(--rh-space-xs, 4px) 0;
+  display: none;
+  z-index: 1000;
+  min-width: 18.5rem;
+  max-width: 100%;
+  border-radius: var(--rh-border-width-lg, 3px);
+  border: var(--_border);
+  background: var(--rh-color-surface);
+  box-shadow: var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25));
+}
+
+:host([open]) #menu-list {
+  display: block;
+}
+
+.visible {
+  display: block;
+}
+
+::slotted([slot='label']) {
+  color: var(--_color);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-body-text-md, 1rem) !important;
+  font-style: normal;
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
+  line-height: var(--rh-line-height-code, 1.5);
+}
+
+#menu-toggle {
+  --_interactive-border-color:
+    light-dark(var(--rh-color-accent-base-on-light, #0066cc),
+      var(--rh-color-accent-base-on-dark, #92c5f9));
+
+  color: var(--_color);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+  font-style: normal;
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
+  line-height: var(--rh-line-height-code, 1.5);
+  width: 100%;
+  padding: var(--rh-space-sm, 6px) var(--rh-space-lg, 16px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  max-height: 36px;
+  border-radius: var(--rh-border-width-lg, 3px);
+  background: var(--rh-color-surface);
+  border: none;
+
+  .action-icon rh-icon {
+    --rh-icon-size: 12px;
+  }
+
+  .info-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &.boxed {
+    border: var(--_border);
+
+    &:not(.open) {
+      &:hover {
+        border-color: var(--_interactive-border-color);
+      }
+
+      &:active {
+        border-color: transparent;
+        box-shadow: inset 0 0 0 var(--rh-length-3xs, 2px) var(--_interactive-border-color);
+      }
+
+      &:focus {
+        outline: var(--rh-length-3xs, 2px) solid var(--_interactive-border-color);
+        outline-offset: var(--rh-length-3xs, 2px);
+      }
+    }
+
+    &.open {
+      border-color: transparent;
+      box-shadow: inset 0 0 0 var(--rh-length-3xs, 2px) var(--_interactive-border-color);
+
+      &:focus {
+        outline: var(--rh-length-3xs, 2px) solid var(--_interactive-border-color);
+        outline-offset: var(--rh-length-3xs, 2px);
+      }
+    }
+  }
+
+  &.compact {
+    padding: var(--rh-space-md, 8px);
+
+    &:not(.boxed) {
+      &.open,
+      &:hover,
+      &:active,
+      &:focus {
+        background-color:
+          light-dark(var(--rh-color-surface-lighter, #f2f2f2),
+            var(--rh-color-surface-darker, #1f1f1f));
+      }
+
+      &:focus,
+      &:active {
+        border-color: transparent;
+        box-shadow: inset 0 0 0 var(--rh-length-3xs, 2px) var(--_interactive-border-color);
+      }
+    }
+  }
+
+  &.disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    background: light-dark(var(--rh-color-gray-30, #c7c7c7), var(--rh-color-gray-40, #a3a3a3));
+
+    &:focus,
+    &:active,
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}
+
+.menu-dropdown-container {
+  width: 100%;
+  position: relative;
+}
+
+::slotted(hr) {
+  border: 0;
+  border-top: var(--_border);
+  width: 100%;
+}
+
+::slotted(rh-icon) {
+  margin-inline-end: var(--rh-space-md, 8px);
+}
+
+rh-menu::part(menu) {
+  width: 100%;
+}
+
+:host([aria-disabled='true']) {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+:host([disabled]) {
+  ::slotted([slot='label']),
+  .action-icon rh-icon {
+    color:
+      light-dark(var(--rh-color-gray-50, #707070),
+        var(--rh-color-gray-60, #4d4d4d));
+  }
+}
