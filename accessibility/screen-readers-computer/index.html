@@ -103,6 +103,8 @@
       import '@uxdot/elements/uxdot-example.js';
     </script><script type="module">import '@rhds/elements/rh-alert/rh-alert.js';</script><script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
   <script type="module">
+  import '@rhds/elements/rh-alert/rh-alert.js';
+</script><script type="module">
   import '@uxdot/elements/uxdot-header.js';
 </script><link rel="stylesheet" href="/styles/pages/backpage.css"><script type="module">
   // although we load these ssr support modules elsewhere, we still
@@ -872,7 +874,8 @@
   </div>
   
   <div class="container">
-    <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+    
+<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1303,10 +1306,47 @@
   </a></h3>
 </uxdot-copy-permalink>
 <p>To start Orca for the first time and open its settings dialog, type <code>orca -s</code> in your terminal program.</p>
+<p><rh-alert   state="info" ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;max-width:var(--_max-width,initial)}[hidden]{display:none!important}header{align-items:center;display:flex;justify-content:flex-start}.hasBody header{margin-block-end:var(--rh-space-xs,4px)}footer.hasActions{margin-block-start:var(--rh-space-lg,16px)}footer ::slotted([slot=actions]:not(rh-button[variant=link i])){background-color:initial!important;border:none!important;color:var(--rh-color-interactive-primary-default)!important;font-family:var(--_font-family)!important;font-size:var(--rh-font-size-body-text-sm,.875rem)!important;margin-inline-end:var(--rh-space-xl,24px)!important;padding:0!important}footer ::slotted([slot=actions]:focus){color:var(--rh-color-interactive-primary-hover)!important;text-decoration:underline!important}footer ::slotted([slot=actions]:hover){color:var(--rh-color-interactive-primary-hover)!important;cursor:pointer!important;text-decoration:underline!important}footer ::slotted(rh-button[variant=link i]){display:inline-block;translate:calc(var(--rh-space-lg, 16px)*-1)}#container{--_background-color:var(--rh-color-teal-10,#daf2f2);--_border-color:var(--rh-color-teal-50,#37a3a3);--_icon-color:var(--rh-color-teal-50,#37a3a3);background-color:light-dark(var(--_background-color),var(--rh-color-surface-dark,#383838));border-color:var(--_border-color);border-block-end-color:#0000;border-inline-end-color:#0000;border-inline-start-color:#0000;border-style:solid;border-width:var(--rh-border-width-md,2px);box-shadow:var(--_box-shadow,none);display:grid;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-sm,.875rem);font-weight:var(--rh-font-weight-body-text-regular,400);gap:var(--rh-space-xs,4px);grid-template-columns:min-content 1fr;line-height:var(--rh-line-height-body-text,1.5);padding:var(--rh-space-lg,16px);& header ::slotted(*){font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif)!important;font-size:var(--rh-font-size-body-text-sm,.875rem)!important;font-weight:var(--rh-font-weight-body-text-medium,500)!important;line-height:var(--rh-line-height-body-text,1.5)!important;margin:0!important}& header ::slotted(:is(h1,h2,h3,h4,h5,h6)){padding-block:2px var(--rh-space-xs,4px)!important}& #description{&>::slotted(*){font-size:var(--rh-font-size-body-text-sm,.875rem)!important;margin-block:0!important;padding:0!important}}}#container.neutral{--_border-color:var(--rh-color-status-neutral);--_icon-color:var(--rh-color-icon-status-neutral);--_background-color:var(--rh-color-surface-status-neutral)}#container.info{--_border-color:var(--rh-color-status-info);--_icon-color:var(--rh-color-icon-status-info);--_background-color:var(--rh-color-surface-status-info)}#container.success{--_border-color:var(--rh-color-status-success);--_icon-color:var(--rh-color-icon-status-success);--_background-color:var(--rh-color-surface-status-success)}#container.caution{--_border-color:var(--rh-color-status-caution);--_icon-color:var(--rh-color-icon-status-caution);--_background-color:var(--rh-color-surface-status-caution)}#container.warning{--_border-color:var(--rh-color-status-warning);--_icon-color:var(--rh-color-icon-status-warning);--_background-color:var(--rh-color-surface-status-warning)}#container.danger{--_border-color:var(--rh-color-status-danger);--_icon-color:var(--rh-color-icon-status-danger);--_background-color:var(--rh-color-surface-status-danger)}#container.toast{--_background-color:var(--rh-color-surface-lightest,#fff);--_max-width:550px;--_box-shadow:var(--rh-box-shadow-xl,0 8px 24px 3px #15151559)}#container.alternate{border-block-end-color:var(--_border-color);border-inline-end-color:var(--_border-color);border-inline-start-color:var(--_border-color)}#left-column,#middle-column{display:inline-block;vertical-align:top}#header-actions{margin-inline-end:var(--rh-space-xs,4px)}#header{color:var(--rh-color-text-primary);flex:1 1 auto}#icon{align-items:center;color:var(--_icon-color);display:flex;height:var(--rh-size-icon-02,24px);justify-content:center;width:var(--rh-size-icon-02,24px)}#close-button{background-color:initial;border:none;color:var(--rh-color-text-secondary);cursor:pointer;height:var(--rh-length-xl,24px);width:var(--rh-length-xl,24px)}#close-button:hover{color:var(--rh-color-text-primary)}</style><!--lit-part XtecelWQdf0=-->
+      <!--lit-node 0--><rh-surface 
+                  
+                  
+                   id="container" role="alert" aria-hidden="false" class=" hasBody light info inline " defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{background-color:var(--rh-color-surface);color:var(--rh-color-text-primary);display:block}</style><!--lit-part rmWB4uiS0UM=--><!--
+      The `<rh-surface>` element has a single anonymous slot which accepts any content and does not provide additional layout styling
+    --><!--lit-node 1--><slot id="slot" ></slot><!--/lit-part--></template>
+        <div id="left-column">
+          <!--lit-node 2--><rh-icon    id="icon" set="ui" icon="information-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part biCFxPE5L4Y=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm1.25 23a1.25 1.25 0 1 1-2.5 0v-8a1.25 1.25 0 1 1 2.5 0v8ZM16 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        </div>
+        <div id="middle-column">
+          <!--lit-node 4--><header >
+            <div id="header">
+              <!-- Provide a header for the alert message. -->
+              <slot name="header"></slot>
+            </div><!--lit-part--><!--/lit-part-->
+          </header>
+          <div id="description">
+            <!-- Provide a description for the alert message -->
+            <slot></slot>
+          </div>
+          <!--lit-part 0c3PeeHD68k=--><!--lit-node 0--><footer class=" hasActions "
+                  >
+            <!-- Provide actions that the user can take for the alert -->
+            <slot name="actions"></slot>
+          </footer><!--/lit-part-->
+        </div>
+      </rh-surface>
+    <!--/lit-part--></template><strong>Note:</strong> If you have a web browser running when you start Orca, you <em>must completely restart the browser</em> before the screen reader will work properly with it. Simply opening a new tab/window is not enough.</rh-alert></p>
 <p>Within the settings app, you can indicate whether you are using a full or laptop keyboard, change voice options, etc. As with Windows screen readers, <kbd>Insert</kbd> is the default <kbd>Orca</kbd> modifier key used in keyboard shortcuts, but switching to laptop mode assigns <kbd>CapsLock</kbd> to <kbd>Orca</kbd>.</p>
 <p>Once you have the settings how you like them, you can just type <code>orca</code> in a terminal to start the screen reader in subsequent sessions.</p>
 <p>To stop Orca, press <kbd>Ctrl-C</kbd> in the same terminal window in which you started it. Or you can use the keyboard shortcut <kbd>Windows-Alt-S</kbd> (or the equivalent keys on your keyboard, like <kbd>Command-Opt-S</kbd> on a Mac) to toggle Orca on and off.</p>
-<p><strong>Note:</strong> If you have a web browser running when you start Orca, you <em>must</em> restart it before the screen reader will work properly with it.</p>
 
     <div id="edit-this-page">
   
