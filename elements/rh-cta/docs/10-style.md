@@ -69,7 +69,7 @@ Calls to action may include a video icon.
 
 ### Desaturated
 
-Desaturated calls to action are white and are only available in the dark scheme. Secondary is not included because it looks exactly the same. The desaturated variant is a [pattern](/patterns/call-to-action/#desaturated) and can be implemented through [theming](/theming/).
+Desaturated calls to action are white and are only available in the dark scheme. The desaturated variant is a [pattern](/patterns/call-to-action/#desaturated) and can be implemented through [theming](/theming/).
 
 <uxdot-example color-palette="darkest" width-adjustment="257px">
   <img alt="A primary and tertiary CTA. The primary has black text and a white background. The tertiary is reversed."
