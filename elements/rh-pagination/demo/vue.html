@@ -1,4 +1,7 @@
-<script src="https://cdn.jsdelivr.net/npm/vue@3.5.22/dist/vue.global.min.js"></script>
+<script type="module">
+  import '@rhds/elements/rh-pagination/rh-pagination.js';
+</script>
+<script src="https://cdn.jsdelivr.net/npm/vue@3.5.22/dist/vue.global.js"></script>
 
 <div id="app">
   <rh-pagination>
@@ -11,21 +14,31 @@
     </ol>
   </rh-pagination>
 
-  {{ message }} {{ page }}
+  <span v-text="message"></span> <span v-text="page"></span>
 </div>
 
 <script>
   // eslint-disable-next-line no-undef
   const { createApp, ref } = Vue;
 
-  createApp({
-    setup() {
-      const message = ref('You are currently on page');
-      const page = ref(null);
+  const app = createApp({
+    data() {
+      return {
+        message: 'You are currently on page',
+        page: null
+      }
+    },
+    mounted() {
+      // get current Page by using the aria-current attribute
+      const currentPage = document.querySelector('rh-pagination li a[aria-current="page"]');
+      if (currentPage) {
+        this.page = new URL(currentPage.href).hash.slice(1);
+      }
 
+      // Add hash change listener
       window.addEventListener('hashchange', () => {
         const hash = window.location.hash;
-        page.value = hash.slice(1);
+        this.page = hash.slice(1);
         const links = document.querySelectorAll('rh-pagination li a');
         const hashLink = document.querySelector(`rh-pagination li a[href="${hash}"]`);
         for (const link of links) {
@@ -38,20 +51,13 @@
         const pagination = document.querySelector('rh-pagination');
         pagination.requestUpdate();
       });
+    },
+  });
 
-      return {
-        message,
-        page,
-      }
-    },
-    mounted() {
-      // get current Page by using the aria-current attribute
-      const currentPage = document.querySelector('rh-pagination li a[aria-current="page"]');
-      if (currentPage) {
-        this.page = new URL(currentPage.href).hash.slice(1);
-      }
-    },
-  }).mount('#app');
+  // Note: Custom elements should work automatically in Vue 3
+  // The rh-pagination element is already defined as a web component
+
+  app.mount('#app');
 </script>
 
 <style>
@@ -189,7 +195,3 @@
     }
   }
 </style>
-
-<script type="module">
-  import '@rhds/elements/rh-pagination/rh-pagination.js';
-</script>
