@@ -48,7 +48,6 @@
       // get current Page by using the aria-current attribute
       const currentPage = document.querySelector('rh-pagination li a[aria-current="page"]');
       if (currentPage) {
-        // Change the value of the page ref using .value
         this.page = new URL(currentPage.href).hash.slice(1);
       }
     },
