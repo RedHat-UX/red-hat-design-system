@@ -8,6 +8,8 @@ import { RovingTabindexController } from '@patternfly/pfe-core/controllers/rovin
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-menu.css';
+import { RhMenuItem } from './rh-menu-item.js';
+import { RhMenuItemGroup } from './rh-menu-item-group.js';
 
 export class MenuToggleEvent extends Event {
   constructor(
@@ -36,14 +38,25 @@ export class RhMenu extends LitElement {
     getItems: (): HTMLElement[] => {
       return this._menuItems.flatMap((element: Element) => {
         if (element instanceof HTMLSlotElement) {
-          // Handle slotted elements
-          return element.assignedElements() as HTMLElement[];
+          const assigned = element.assignedElements().filter(
+            (el): el is HTMLElement => !(el instanceof HTMLHRElement)
+          );
+          return assigned;
         } else {
-          // Set role="menuitem" if not already set
-          if (element instanceof HTMLElement && !element.hasAttribute('role')) {
-            element.setAttribute('role', 'menuitem');
+          if (element instanceof HTMLHRElement) {
+            // Skip <hr> elements
+            return [];
           }
-          return [element as HTMLElement];
+
+          if (element instanceof RhMenuItem || element instanceof RhMenuItemGroup) {
+            const menuitem = element.shadowRoot?.querySelector('[role="menuitem"]');
+            return menuitem ? [menuitem as HTMLElement] : [];
+          } else if (element instanceof HTMLElement && !element.hasAttribute('role')) {
+            element.setAttribute('role', 'menuitem');
+            return [element];
+          } else {
+            return [element as HTMLElement];
+          }
         }
       });
     },

@@ -20,7 +20,7 @@ export class RhMenuItem extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    // this.setAttribute('role', 'menuitem');
+    this.setAttribute('tabindex', '-1');
   }
 
   render(): TemplateResult<1> {

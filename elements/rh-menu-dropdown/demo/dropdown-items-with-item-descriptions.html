@@ -1,17 +1,20 @@
 <div id="menu-dropdown-container">
   <rh-menu-dropdown text="Basic toggle" info-icon-name="auto-light-dark-mode">
     <p slot='label'>Basic toggle</p>
-    <rh-menu-item>Action <p slot='description'>This is a description.</p></rh-menu-item>
-    <rh-menu-item href="#">Link <p slot='description'>This is a description.</p></rh-menu-item>
-    <rh-menu-item disabled>Disabled Action <p slot='description'>This is a description for a disabled action.</p></rh-menu-item>
-    <rh-menu-item disabled href="#">Disabled link <p slot='description'>This is a description for a disabled link.</p></rh-menu-item>
-    <rh-menu-item disabled>Aria-disabled link <p slot='description'>This is a description for a disabled link.</p></rh-menu-item>
+    <rh-menu>
+      <rh-menu-item>Action <p slot='description'>This is a description.</p></rh-menu-item>
+      <rh-menu-item href="#">Link <p slot='description'>This is a description.</p></rh-menu-item>
+      <rh-menu-item disabled>Disabled Action <p slot='description'>This is a description for a disabled action.</p></rh-menu-item>
+      <rh-menu-item disabled href="#">Disabled link <p slot='description'>This is a description for a disabled link.</p></rh-menu-item>
+      <rh-menu-item disabled>Aria-disabled link <p slot='description'>This is a description for a disabled link.</p></rh-menu-item>
+    </rh-menu>
   </rh-menu-dropdown>
 </div>
 
 <script type="module">
   import '@rhds/elements/rh-menu-dropdown/rh-menu-dropdown.js';
-  import '@rhds/elements/rh-menu-dropdown/rh-menu-item.js';
+  import '@rhds/elements/rh-menu/rh-menu-item.js';
+  import '@rhds/elements/rh-menu/rh-menu.js';
 
   const dropdown = document.querySelector('rh-menu-dropdown');
   dropdown.addEventListener('select', e => {

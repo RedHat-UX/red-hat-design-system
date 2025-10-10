@@ -8,7 +8,7 @@ import styles from './rh-menu-item-group.css';
  * @alias Menu Dropdown
  */
 @customElement('rh-menu-item-group')
-export class RhMenuItem extends LitElement {
+export class RhMenuItemGroup extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
   @property({ attribute: 'group-heading', reflect: true }) groupHeading?: string;
 
@@ -22,6 +22,6 @@ export class RhMenuItem extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-menu-item-group': RhMenuItem;
+    'rh-menu-item-group': RhMenuItemGroup;
   }
 }

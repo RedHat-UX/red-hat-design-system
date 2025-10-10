@@ -9,7 +9,7 @@ import { RovingTabindexController } from '@patternfly/pfe-core/controllers/rovin
 import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 import '@rhds/elements/rh-menu/rh-menu.js';
-import { RhMenuItem } from './rh-menu-item.js';
+import { RhMenuItem } from '../rh-menu/rh-menu-item.js';
 
 /**
  * Menu Dropdown
@@ -128,14 +128,13 @@ export class RhMenuDropdown extends LitElement {
               `
             }
         </button>
-        <rh-menu
+        <div
           id="menu-list"
-          role="menu"
           @click=${this.#onSelect}
           @keydown=${this.#onKeyDown}
         >
           <slot></slot>
-        </rh-menu>
+        </div>
       </div>
     `;
   }
