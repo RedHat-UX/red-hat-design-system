@@ -1,0 +1,308 @@
+<rh-navigation-primary role="navigation">
+  <rh-navigation-primary-item variant="dropdown">
+    <span slot="summary">AI</span>
+    <h2>AI Content</h2>
+    <div class="grid">
+      <div class="column">
+        <ul>
+          <li>
+            <a href="#">Link 1</a>
+          </li>
+          <li>
+            <a href="#">Link 2</a>
+          </li>
+          <li>
+            <a href="#">Link 3</a>
+          </li>
+          <li>
+            <a href="#">Link 4</a>
+          </li>
+          <li>
+            <a href="#">Link 5</a>
+          </li>
+        </ul>
+      </div>
+      <div class="column">
+        <ul>
+          <li>
+            <a href="#">Link 1a</a>
+          </li>
+          <li>
+            <a href="#">Link 2a</a>
+          </li>
+          <li>
+            <a href="#">Link 3a</a>
+          </li>
+          <li>
+            <a href="#">Link 4a</a>
+          </li>
+          <li>
+            <a href="#">Link 5a</a>
+          </li>
+        </ul>
+      </div>
+      <div class="column">
+        <ul>
+          <li>
+            <a href="#">Link 1b</a>
+          </li>
+          <li>
+            <a href="#">Link 2b</a>
+          </li>
+          <li>
+            <a href="#">Link 3b</a>
+          </li>
+          <li>
+            <a href="#">Link 4b</a>
+          </li>
+          <li>
+            <a href="#">Link 5b</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </rh-navigation-primary-item>
+
+  <rh-navigation-primary-item variant="dropdown">
+    <span slot="summary">Hybrid Cloud</span>
+    <h2>Hybrid Cloud Content</h2>
+    <div class="grid">
+      <div class="column">
+        <ul>
+          <li>
+            <a href="#">Link 1</a>
+          </li>
+          <li>
+            <a href="#">Link 2</a>
+          </li>
+          <li>
+            <a href="#">Link 3</a>
+          </li>
+          <li>
+            <a href="#">Link 4</a>
+          </li>
+          <li>
+            <a href="#">Link 5</a>
+          </li>
+        </ul>
+      </div>
+      <div class="column">
+        <ul>
+          <li>
+            <a href="#">Link 1a</a>
+          </li>
+          <li>
+            <a href="#">Link 2a</a>
+          </li>
+          <li>
+            <a href="#">Link 3a</a>
+          </li>
+          <li>
+            <a href="#">Link 4a</a>
+          </li>
+          <li>
+            <a href="#">Link 5a</a>
+          </li>
+        </ul>
+      </div>
+      <div class="column">
+        <ul>
+          <li>
+            <a href="#">Link 1b</a>
+          </li>
+          <li>
+            <a href="#">Link 2b</a>
+          </li>
+          <li>
+            <a href="#">Link 3b</a>
+          </li>
+          <li>
+            <a href="#">Link 4b</a>
+          </li>
+          <li>
+            <a href="#">Link 5b</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </rh-navigation-primary-item>
+
+  <rh-navigation-primary-item variant="dropdown">
+    <span slot="summary">Products</span>
+    <h2>Products Content</h2>
+    <div class="grid">
+      <div class="column">
+        <ul>
+          <li>
+            <a href="#">Link 1</a>
+          </li>
+          <li>
+            <a href="#">Link 2</a>
+          </li>
+          <li>
+            <a href="#">Link 3</a>
+          </li>
+          <li>
+            <a href="#">Link 4</a>
+          </li>
+          <li>
+            <a href="#">Link 5</a>
+          </li>
+        </ul>
+      </div>
+      <div class="column">
+        <ul>
+          <li>
+            <a href="#">Link 1a</a>
+          </li>
+          <li>
+            <a href="#">Link 2a</a>
+          </li>
+          <li>
+            <a href="#">Link 3a</a>
+          </li>
+          <li>
+            <a href="#">Link 4a</a>
+          </li>
+          <li>
+            <a href="#">Link 5a</a>
+          </li>
+        </ul>
+      </div>
+      <div class="column">
+        <ul>
+          <li>
+            <a href="#">Link 1b</a>
+          </li>
+          <li>
+            <a href="#">Link 2b</a>
+          </li>
+          <li>
+            <a href="#">Link 3b</a>
+          </li>
+          <li>
+            <a href="#">Link 4b</a>
+          </li>
+          <li>
+            <a href="#">Link 5b</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </rh-navigation-primary-item>
+
+  <rh-navigation-primary-item variant="dropdown">
+    <span slot="summary">Learn</span>
+    Learn Content
+  </rh-navigation-primary-item>
+
+  <rh-navigation-primary-item variant="dropdown">
+    <span slot="summary">Partners</span>
+    Partners Content
+  </rh-navigation-primary-item>
+</rh-navigation-primary>
+
+<div id="mock">
+  <p>Mock Page content <a href="#">Link outside</a></p>
+</div>
+
+<link rel="stylesheet" href="../rh-navigation-primary-lightdom.css">
+
+<style>
+  /* styles for mock content */
+  #mock {
+    p {
+      margin-block-start: var(--rh-space-4xl, 64px);
+      padding-inline: var(--rh-space-lg, 16px);
+      @media (min-width: 768px) {
+        padding-inline: var(--rh-space-2xl, 32px);
+      }
+    }
+  }
+
+  /* panel grid */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--rh-space-4xl);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+    fon-size: var(--rh-font-size-body-text-md, 1rem);
+
+    @container (min-width: 768px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    #profile {
+      margin-inline-start: var(--rh-space-4xl);
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      grid-template-areas: 'avatar content';
+      grid-template-rows: fit-content;
+      column-gap: var(--rh-space-lg, 16px);
+
+      & rh-avatar {
+        --rh-size-icon-06: 72px;
+
+        grid-area: avatar;
+        display: block;
+      }
+
+      & .lockup {
+        display: contents;
+
+        & .account {
+          grid-area: content;
+
+          & .name {
+            font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+            font-size: var(--rh-font-size-heading-sm, 1.5rem);
+          }
+        }
+
+        & .info {
+          grid-area: content;
+          grid-row: 2;
+        }
+
+        & .language {
+          grid-area: content;
+          grid-row: 3;
+        }
+
+        & .logout {
+          grid-area: content;
+          grid-row: 4;
+        }
+      }
+    }
+
+    .content-column {
+      max-width: 320px;
+      margin-block: var(--rh-space-md);
+      line-height: var(--rh-line-height-body-text);
+    }
+
+    & select {
+      width: 100%;
+    }
+
+    & ul {
+      display: flex;
+      flex-direction: column;
+      gap: var(--rh-space-2xl);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      & p {
+        font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+      }
+    }
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-navigation-primary/rh-navigation-primary.js';
+  import '@rhds/elements/rh-avatar/rh-avatar.js';
+  import '@rhds/elements/rh-button/rh-button.js';
+</script>
