@@ -34,7 +34,6 @@
           link.removeAttribute('aria-current');
         }
         hashLink.setAttribute('aria-current', 'page');
-        // slotted content changed lets request an update
         const pagination = document.querySelector('rh-pagination');
         pagination.requestUpdate();
       });
