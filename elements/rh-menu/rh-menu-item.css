@@ -38,11 +38,23 @@
   background:
     light-dark(var(--rh-color-surface-lighter, #f2f2f2),
       var(--rh-color-surface-darker, #1f1f1f));
-  border:
-    var(--rh-border-width-md, 2px) solid light-dark(var(--rh-color-accent-base-on-light, #0066cc),
-      var(--rh-color-accent-base-on-dark, #92c5f9));
-  border-radius: var(--rh-border-width-md, 2px);
+  position: relative;
   box-sizing: border-box;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    transform: translateY(-50%);
+    width: calc(100% - 8px);
+    height: calc(100% - 6px);
+    background-color: transparent;
+    border:
+      var(--rh-border-width-md, 2px) solid light-dark(var(--rh-color-accent-base-on-light, #0066cc),
+        var(--rh-color-accent-base-on-dark, #92c5f9));
+    border-radius: 3px;
+  }
 
   .menu-item {
     outline: none;
