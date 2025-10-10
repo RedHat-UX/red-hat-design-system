@@ -1,27 +1,119 @@
 <rh-card color-palette="darkest">
   <h2 slot="header">Desaturated Calls to Action</h2>
-  <p>Desaturated is a theme (i.e. a pattern) applied to default and primary dark schemed CTAs</p>
+  <p>Desaturated is a theme (i.e. a pattern) applied to dark schemed CTAs</p>
   <rh-cta class="desaturated" href="#">Default</rh-cta>
   <rh-cta class="desaturated" icon="play-circle" href="#">Default Video</rh-cta>
+  <br>
   <rh-cta class="desaturated" variant="primary" href="#">Primary</rh-cta>
   <rh-cta class="desaturated" variant="primary" icon="play-circle" href="#">Video</rh-cta>
+  <br>
+  <rh-cta class="desaturated" variant="secondary" href="#">Secondary</rh-cta>
+  <br>
+  <rh-cta class="desaturated" variant="brick" href="#">Brick</rh-cta>
 </rh-card>
 
 <style>
   rh-cta {
     margin-inline-end: 1rem;
     margin-block: 1rem;
+
     &.desaturated {
-      --rh-cta-color: var(--rh-color-text-primary-on-dark, #ffffff);
-      --rh-cta-hover-color: var(--rh-color-gray-40, #a3a3a3);
-      --rh-cta-focus-color: var(--rh-color-text-primary-on-light, #151515);
-      --rh-cta-focus-container-background-color: var(--rh-color-gray-40, #a3a3a3);
-    }
-    &[variant='primary'] {
-      --rh-cta-color: var(--rh-color-text-primary-on-light, #151515);
-      --rh-cta-hover-color: var(--rh-color-text-primary-on-light, #151515);
-      --rh-color-brand-red: var(--rh-color-surface-lightest, #ffffff);
-      --rh-color-brand-red-dark: var(--rh-color-gray-40, #a3a3a3);
+      --rh-cta-color: var(--rh-color-text-primary);
+      --rh-cta-hover-color: var(--rh-color-text-primary);
+      --rh-cta-focus-border-color: var(--rh-color-border-interactive);
+      --rh-cta-hover-text-underline-offset: 5px; /* NOTE: new property that needs added via doduo! */
+      --desaturated-cta-text-decoration: underline dashed 1px;
+      --desaturated-cta-text-color:
+        light-dark(
+            var(--rh-color-text-primary-on-dark, #ffffff),
+            var(--rh-color-text-primary-on-light, #151515)
+          );
+      --desaturated-cta-bg-color:
+        light-dark(
+            var(--rh-color-surface-darkest, #151515),
+            var(--rh-color-surface-lightest, #ffffff)
+          );
+      --desaturated-cta-hover-bg-color:
+        light-dark(
+            var(--rh-color-surface-darker, #1f1f1f),
+            var(--rh-color-surface-lighter, #f2f2f2)
+          );
+
+      border: var(--rh-border-width-sm, 1px) solid transparent;
+
+      &:hover,
+      &:focus-within {
+        --rh-cta-hover-text-decoration: var(--desaturated-cta-text-decoration);
+        --rh-cta-focus-text-decoration: var(--desaturated-cta-text-decoration); /* NOTE: property added to primary and secondary ctas in rh-cta.css, needs added via doduo */
+      }
+
+      &:focus-within {
+        border-color: var(--rh-color-border-interactive) !important;
+        border-radius: var(--rh-border-radius-default, 3px);
+      }
+
+      &:not([variant]) {
+        --rh-cta-focus-container-background-color: transparent;
+
+        border-width: var(--rh-border-width-md, 2px);
+      }
+
+      &[variant='primary'] {
+        --rh-cta-color: var(--desaturated-cta-text-color);
+        --rh-cta-hover-color: var(--desaturated-cta-text-color);
+        --rh-cta-background-color: var(--desaturated-cta-bg-color);
+        --rh-cta-hover-background-color: var(--desaturated-cta-hover-bg-color);
+        --rh-cta-focus-background-color: var(--desaturated-cta-hover-bg-color);
+        --rh-cta-border-color: var(--rh-color-border-strong);
+        --rh-cta-hover-border-color:
+          light-dark(
+              var(--rh-color-surface-darker, #1f1f1f),
+              var(--rh-color-surface-lighter, #f2f2f2)
+            );
+        --rh-cta-focus-border-color: transparent;
+        --rh-cta-focus-inner-border-color: var(--desaturated-cta-bg-color);
+        --rh-cta-active-inner-border-color: var(--desaturated-cta-bg-color);
+
+        position: relative;
+
+        &:focus-within {
+          border-color: transparent !important;
+        }
+
+        &:focus-within:before {
+          border: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
+          border-radius: var(--rh-border-radius-default, 3px);
+          content: '';
+          inset: -3px;
+          position: absolute;
+        }
+      }
+
+      &[variant='secondary'] {
+        --rh-cta-background-color: var(--rh-color-surface);
+        --rh-cta-hover-background-color: var(--rh-color-surface);
+        --rh-cta-focus-background-color: var(--rh-color-surface);
+        --rh-cta-focus-inner-border-color: var(--rh-color-border-subtle);
+        --rh-cta-active-inner-border-color: var(--rh-color-border-subtle);
+
+        &:hover,
+        &:focus-within {
+          --rh-cta-hover-border-color: var(--rh-color-border-subtle);
+        }
+      }
+
+      &[variant='brick'] {
+        --rh-cta-background-color: var(--rh-color-surface);
+        --rh-cta-hover-background-color: var(--rh-color-surface);
+        --rh-cta-hover-border-color: var(--rh-color-border-strong);
+        --rh-cta-focus-inner-border-color: var(--rh-color-border-strong);
+        --rh-cta-active-inner-border-color: var(--rh-color-border-strong);
+
+        &:focus-within {
+          text-decoration: var(--rh-cta-focus-text-decoration);
+          text-underline-offset: var(--rh-cta-hover-text-underline-offset);
+        }
+      }
     }
   }
 </style>
@@ -30,4 +122,3 @@
   import "@rhds/elements/rh-card/rh-card.js";
   import "@rhds/elements/rh-cta/rh-cta.js";
 </script>
-
