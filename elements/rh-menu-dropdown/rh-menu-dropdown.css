@@ -145,7 +145,7 @@
 ::slotted(hr) {
   border: 0;
   border-top: var(--_border);
-  width: 100%;
+  inline-size: 100%;
 }
 
 ::slotted(rh-icon) {
