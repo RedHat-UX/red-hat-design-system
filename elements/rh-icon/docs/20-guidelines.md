@@ -13,7 +13,7 @@ Standard icons are pictograms that represent general technology concepts in mark
        height="48">
 </uxdot-example>
 
-<rh-cta href="https://www.redhat.com/en/about/brand/standards/icons/standard-icons">Learn more bout standard icons</rh-cta>
+<rh-cta href="https://www.redhat.com/en/about/brand/standards/icons/standard-icons">Learn more about standard icons</rh-cta>
 
 ### UI Icons
 
