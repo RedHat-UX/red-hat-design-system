@@ -41,7 +41,7 @@ Our Figma library can be accessed by following these steps.
 
 <rh-alert state="warning">
   <h4 slot="header">Warning</h4>
-  <p>You need a Figma license and a <code>redhat.com</code> email address in order to access our Figma library.</p>
+  <p>You need a Figma license and a <code>@redhat.com</code> email address in order to access our Figma library.</p>
 </rh-alert>
 
 <uxdot-example variant="full" color-palette="lightest" no-border>
