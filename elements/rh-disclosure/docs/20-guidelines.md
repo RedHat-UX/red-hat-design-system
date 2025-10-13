@@ -1,8 +1,8 @@
 ## Guidelines
 
-Use a disclosure to reveal more information or details about an element or content on a page.
+In general, use a disclosure to reveal more information or details about an element or content on a page.
 
-### Disclosure vs. Accordion
+### Disclosure vs. accordion
 
 Use a disclosure to organize information that is either not critical for users to read or no longer fits on the page due to small screens. A disclosure displays a single section of content whereas an [Accordion](/elements/accordion/) displays multiple sections that can be expanded simultaneously.
 
@@ -12,6 +12,16 @@ Use a disclosure to organize information that is either not critical for users t
        width="1012"
        height="690">
 </uxdot-example>
+
+## Sizes and style variants
+
+### Sizes
+
+While the [default size](/elements/disclosure/style/#default) works well in most contexts, the [compact size](/elements/disclosure/style/#compact) can be used for areas with more densely packed content. The compact disclosure can be used in sections where the body copy also uses a font size smaller than `--rh-font-size-body-text-md`.
+
+### Box vs. borderless
+
+The [box variant](/elements/disclosure/style/#box), which is the default, should be used when there needs to be clear visual separation from surrounding content. Use the [borderless variant](/elements/disclosure/style/#borderless) where a cleaner, less visually disruptive style is preferred.
 
 ## Writing content
 
@@ -31,7 +41,7 @@ Title text should be simple so users know what to expect when they expand a disc
 
 ### Panel content
 
-When a disclosure is expanded, content appears below the title text and caret icon. Try and limit panel content to text and simple components only like calls to action.
+When a disclosure is expanded, content appears below the title text and caret icon. Try and limit panel content to text and simple elements only like calls to action.
 
 ## Behavior
 
@@ -91,7 +101,7 @@ A disclosure does not change much as screens get smaller.
            width="418"
            height="232">
     </uxdot-example>
-    <p>Do not stack disclosures, use an [Accordion](/elements/accordion/) instead if more than one section is needed.</p>
+    <p>Do not stack disclosures, use an <a href="/elements/accordion/">Accordion</a> instead if more than one section is needed.</p>
   </uxdot-best-practice>
 </div>
 
@@ -117,7 +127,7 @@ A disclosure does not change much as screens get smaller.
   <p>Do not allow the max width of body text to exceed 789px otherwise it is hard to read.</p>
 </uxdot-best-practice>
 
-### Nesting components
+### Nesting elements
 
 <uxdot-best-practice variant="do">
   <uxdot-example color-palette="lightest" slot="image">
@@ -126,7 +136,7 @@ A disclosure does not change much as screens get smaller.
          width="1012"
          height="203">
   </uxdot-example>
-  <p>Only a disclosure and other simple components like calls to action can be nested within a disclosure.</p>
+  <p>Only a disclosure and other simple elements, like calls to action, can be nested within a disclosure.</p>
 </uxdot-best-practice>
 
 <uxdot-best-practice variant="dont">
@@ -136,5 +146,5 @@ A disclosure does not change much as screens get smaller.
          width="1012"
          height="203">
   </uxdot-example>
-  <p>Do not embed other complex components in a disclosure.</p>
+  <p>Do not embed other complex elements in a disclosure.</p>
 </uxdot-best-practice>
