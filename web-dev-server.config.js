@@ -1,7 +1,6 @@
 // @ts-check
 import { pfeDevServerConfig } from '@patternfly/pfe-tools/dev-server/config.js';
-import { glob } from 'node:fs/promises';
-import { readFile } from 'node:fs/promises';
+import { glob, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { makeDemoEnv } from './scripts/environment.js';
 import { parse, serialize } from 'parse5';
