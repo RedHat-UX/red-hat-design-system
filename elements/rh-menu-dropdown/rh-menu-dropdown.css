@@ -16,8 +16,8 @@
   margin: var(--rh-space-xs, 4px) 0;
   display: none;
   z-index: 1000;
-  min-width: 18.5rem;
-  max-width: 100%;
+  min-inline-size: 18.5rem;
+  max-inline-size: 100%;
   border-radius: var(--rh-border-width-lg, 3px);
   border: var(--_border);
   background: var(--rh-color-surface);
