@@ -5,6 +5,10 @@ permalink: /accessibility/screen-readers-computer/index.html
 order: 101
 ---
 
+<script type="module" data-helmet>
+  import '@rhds/elements/rh-alert/rh-alert.js';
+</script>
+
 ## VoiceOver (macOS)
 
 - VoiceOver is included with MacOS.
@@ -152,10 +156,10 @@ To start and stop Narrator, press <kbd>Windows-Ctrl-Enter</kbd> on your keyboard
 
 To start Orca for the first time and open its settings dialog, type `orca -s` in your terminal program.
 
+<rh-alert state="info">**Note:** If you have a web browser running when you start Orca, you _must completely restart the browser_ before the screen reader will work properly with it. Simply opening a new tab/window is not enough.</rh-alert>
+
 Within the settings app, you can indicate whether you are using a full or laptop keyboard, change voice options, etc. As with Windows screen readers, <kbd>Insert</kbd> is the default <kbd>Orca</kbd> modifier key used in keyboard shortcuts, but switching to laptop mode assigns <kbd>CapsLock</kbd> to <kbd>Orca</kbd>.
 
 Once you have the settings how you like them, you can just type `orca` in a terminal to start the screen reader in subsequent sessions.
 
 To stop Orca, press <kbd>Ctrl-C</kbd> in the same terminal window in which you started it. Or you can use the keyboard shortcut <kbd>Windows-Alt-S</kbd> (or the equivalent keys on your keyboard, like <kbd>Command-Opt-S</kbd> on a Mac) to toggle Orca on and off.
-
-**Note:** If you have a web browser running when you start Orca, you _must_ restart it before the screen reader will work properly with it.
