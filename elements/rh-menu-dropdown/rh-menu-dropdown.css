@@ -138,7 +138,7 @@
 }
 
 .menu-dropdown-container {
-  width: 100%;
+  inline-size: 100%;
   position: relative;
 }
 
