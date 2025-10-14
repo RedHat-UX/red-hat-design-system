@@ -55,7 +55,7 @@ A logical focus order helps keyboard users operate our websites. Elements need t
 
 <uxdot-example color-palette="lightest" variant="full" no-border>
   <img alt="A diagram of an open disclosure (1) with a CTA (2) and a closed nested disclosure (3) highlighting the three focusable areas."
-       src="../disclosure-a11y-focus-order.svg"
+       src="../disclosure-accessibility-focus-order.svg"
        width="1140"
        height="1004">
 </uxdot-example>
@@ -66,7 +66,7 @@ The large disclosure trigger buttons make them easy to select.
 
 <uxdot-example color-palette="lightest" variant="full" no-border>
   <img alt="A diagram of an open disclosure with a CTA and a closed nested disclosure highlighting the three available touch targets."
-       src="../disclosure-a11y-touch-targets.svg"
+       src="../disclosure-accessibility-touch-targets.svg"
        width="1140"
        height="1004">
 </uxdot-example>
