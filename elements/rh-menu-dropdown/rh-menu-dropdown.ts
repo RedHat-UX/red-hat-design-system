@@ -123,14 +123,9 @@ export class RhMenuDropdown extends LitElement {
     getItems: () => this.#items,
   });
 
-  get activeItem() {
-    return this.#tabindex.items.at(this.#tabindex.atFocusedItemIndex);
-  }
-
-  activateItem(item: RhMenuItem) {
-    this.#tabindex.atFocusedItemIndex = this.#tabindex.items.indexOf(item);
-  }
-
+  /**
+  * Moves focus to the currently active (focused) item.
+  */
   focus() {
     this.#tabindex.items[this.#tabindex.atFocusedItemIndex]?.focus();
   }
@@ -263,7 +258,10 @@ export class RhMenuDropdown extends LitElement {
   #handleSelection(target: RhMenuItem) {
     this.open = false;
     this.menuToggleButton.focus();
-    this.dispatchEvent(new MenuDropdownSelectEvent(target, target.textContent ? target.textContent : ''));
+    this.dispatchEvent(new MenuDropdownSelectEvent(
+      target,
+      target.textContent ? target.textContent : ''
+    ));
   }
 
   #onSelect(event: KeyboardEvent & { target: RhMenuItem }) {
