@@ -11,7 +11,17 @@ import styles from './rh-menu-item.css';
 @customElement('rh-menu-item')
 export class RhMenuItem extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
+
+  /**
+   * Whether the menu item is disabled.
+   * Disabled items are not interactive and are visually indicated as such.
+   */
   @property({ type: Boolean, reflect: true }) disabled = false;
+
+  /**
+   * Specifies the destination URL for the menu item.
+   * If specified, the menu item behaves as a hyperlink.
+   */
   @property({ type: String }) href = '';
 
   #internals = InternalsController.of(this);
@@ -29,7 +39,14 @@ export class RhMenuItem extends LitElement {
 
   render(): TemplateResult<1> {
     const label = html`
+      <!-- 
+        Slot for an icon displayed alongside the menu item.
+        The icon will appear to the left of the menu item text in left-to-right (LTR) layouts.
+      -->
       <slot name="icon"></slot>
+      <!-- 
+        Use this slot to provide the text content inside menu item.
+      -->
       <slot></slot>
     `;
     const content = this.href && !this.disabled ?
@@ -43,6 +60,9 @@ export class RhMenuItem extends LitElement {
     return html`
       <div tabindex="-1" role="menuitem" class="menu-item-content">
         ${content}
+        <!-- 
+          Use this slot to provide the description inside menu item.
+        -->
         <slot id="description" name="description"></slot>
       </div>
     `;
