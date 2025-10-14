@@ -11,6 +11,17 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 import '@rhds/elements/rh-menu/rh-menu.js';
 import { RhMenuItem } from '../rh-menu/rh-menu-item.js';
 
+/** Fired when a user selects an action or link from the menu */
+export class MenuDropdownSelectEvent extends Event {
+  constructor(
+    public selectedItem: RhMenuItem,
+    public text: string
+  ) {
+    super('select', { bubbles: true, composed: true });
+  }
+}
+
+
 /**
  * The menu dropdown is a UI component made up of two parts: a menu toggle and a menu list.
  * The toggle is the element users interact with to open or close the dropdown.
@@ -252,11 +263,7 @@ export class RhMenuDropdown extends LitElement {
   #handleSelection(target: RhMenuItem) {
     this.open = false;
     this.menuToggleButton.focus();
-    this.dispatchEvent(new CustomEvent('select', {
-      detail: { text: target.textContent },
-      bubbles: true,
-      composed: true,
-    }));
+    this.dispatchEvent(new MenuDropdownSelectEvent(target, target.textContent ? target.textContent : ''));
   }
 
   #onSelect(event: KeyboardEvent & { target: RhMenuItem }) {
