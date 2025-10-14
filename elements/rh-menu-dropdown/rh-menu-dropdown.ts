@@ -12,7 +12,14 @@ import '@rhds/elements/rh-menu/rh-menu.js';
 import { RhMenuItem } from '../rh-menu/rh-menu-item.js';
 
 /**
- * Menu Dropdown
+ * The menu dropdown is a UI component made up of two parts: a menu toggle and a menu list.
+ * The toggle is the element users interact with to open or close the dropdown.
+ * When opened, it reveals the menu list, a compact set of options
+ * that can trigger actions or navigate to different pages. It's a clean and efficient way
+ * to present multiple choices without taking up much space on the screen.
+ *
+ * @summary A collapsible menu for presenting a list of options or actions
+ *
  * @alias menu-dropdown
  * @slot - Place element content here
  */
@@ -20,10 +27,29 @@ import { RhMenuItem } from '../rh-menu/rh-menu-item.js';
 export class RhMenuDropdown extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
   private static instances = new Set<RhMenuDropdown>();
+
+  /**
+   * whether the dropdown is currently open.
+   */
   @property({ type: Boolean, reflect: true }) open = false;
+
+  /**
+   * Defines the visual style of the dropdown.
+   * Setting it to 'borderless' removes the default border styling.
+   */
   @property({ attribute: 'variant', reflect: true }) variant: 'borderless' | null = null;
+
+  /**
+   * The 'compact' layout reduces spacing and add the rh-icon `ellipsis-vertical-fill`.
+   */
   @property({ attribute: 'layout', reflect: true }) layout: 'compact' | null = null;
+
+  /**
+   * Disables user interaction with the dropdown. When true, the dropdown cannot
+   * be opened or interacted with, and appears visually disabled.
+   */
   @property({ type: Boolean, reflect: true }) disabled = false;
+
   @query('#menu-toggle') menuToggleButton!: HTMLElement;
   @query('#menu-list') menuList!: HTMLElement;
   @queryAll('slot') slotElement!: NodeListOf<HTMLSlotElement>;
@@ -117,6 +143,7 @@ export class RhMenuDropdown extends LitElement {
               html`<rh-icon set="ui" icon="ellipsis-vertical-fill"></rh-icon>`
               : html` 
               <span class="info-section"> 
+                <!-- Use this slot for the toggle label. Keep toggle labels short and succinct. -->
                 <slot name="label"></slot>
               </span>
               <span class="action-icon"> 
@@ -133,6 +160,11 @@ export class RhMenuDropdown extends LitElement {
           @click=${this.#onSelect}
           @keydown=${this.#onKeyDown}
         >
+          <!-- 
+            Use this slot to provide the menu content. Use the "rh-menu" component 
+            for the menu panel, and use "rh-menu-items" to define the individual menu items.
+            To organize menu items into groups, use the "rh-menu-item-group" component.
+          -->
           <slot></slot>
         </div>
       </div>
