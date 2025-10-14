@@ -1,6 +1,7 @@
 import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import styles from './rh-menu-item.css';
 
 /**
@@ -13,6 +14,8 @@ export class RhMenuItem extends LitElement {
   @property({ type: Boolean, reflect: true }) disabled = false;
   @property({ type: String }) href = '';
 
+  #internals = InternalsController.of(this);
+
   static override readonly shadowRootOptions: ShadowRootInit = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
@@ -20,7 +23,8 @@ export class RhMenuItem extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.setAttribute('tabindex', '-1');
+    this.#internals.role = 'none';
+    this.tabIndex = -1;
   }
 
   render(): TemplateResult<1> {
