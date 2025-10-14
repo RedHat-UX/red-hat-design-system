@@ -118,7 +118,7 @@ A disclosure’s spacing is affected by whether they are the default or compact 
 
 <figure>
   <uxdot-example color-palette="lightest">
-    <img alt="TODO"
+    <img alt="A closed default-sized and a closed compact disclosure, each showing the spacing tokens within the disclosure element. The default-sized has 24px spacing on the left and right side and 16px on the top and bottom. The compact version has 16px and 8px respectively."
          src="../disclosure-style-space-collapsed.svg"
          width="1012"
          height="341">
@@ -130,7 +130,7 @@ A disclosure’s spacing is affected by whether they are the default or compact 
 
 <figure>
   <uxdot-example color-palette="lightest">
-    <img alt="TODO"
+    <img alt="An open default-sized and an open compact disclosure, each showing the spacing tokens inside the disclosure panel. The default-sized has 24px spacing on the left, right and bottom with 16px between the summary and the panel. The compact version has 16px on the left, right and top, but keeps the 24px on the bottom."
          src="../disclosure-style-space-expanded.svg"
          width="1012"
          height="341">
@@ -142,7 +142,7 @@ A disclosure’s spacing is affected by whether they are the default or compact 
 
 <figure>
   <uxdot-example color-palette="lightest">
-    <img alt="TODO"
+    <img alt="An open default-sized and an open compact disclosure, each showing the spacing tokens around the nested disclosure inside the panel. The default-sized has 24px on the left, right and bottom. The compact has 16px on the left and right with 24px on the bottom."
          src="../disclosure-style-space-expanded.svg"
          width="1012"
          height="341">
@@ -151,13 +151,6 @@ A disclosure’s spacing is affected by whether they are the default or compact 
     <p>Spacing when disclosures are nested</p>
   </figcaption>
 </figure>
-
-<!--<uxdot-example color-palette="lightest">
-  <img alt="Three disclosures. The top one is closed, the middle one is open, and the bottom one is open with a nested disclosure. There's 16px on the top and bottom of the trigger, 24px on the left and right. There's 24px padding on the open disclosure content."
-       src="../disclosure-style-space.svg"
-       width="1012"
-       height="809">
-</uxdot-example>-->
 
 ## Interaction states
 
