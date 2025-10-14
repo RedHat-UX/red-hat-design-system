@@ -107,7 +107,7 @@ Only one additional disclosure can be nested to help organize content better. If
 
 <uxdot-example color-palette="lightest">
   <img alt="Two open disclosures, each with a nested disclosure. The top nested disclosure is closed while the bottom is open."
-       src="../disclosure-style-configuration-nested-disclosure.svg"
+       src="../disclosure-style-configuration-nested.svg"
        width="1012"
        height="769">
 </uxdot-example>

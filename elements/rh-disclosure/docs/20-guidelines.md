@@ -78,7 +78,7 @@ A disclosure does not change much as screens get smaller.
 <uxdot-example color-palette="lightest" variant="full" no-border>
   <img alt="Four disclosures at various viewports, mobile to desktop."
        src="../disclosure-guidelines-responsive-design.svg"
-       width="1140"
+       width="1124"
        height="1004">
 </uxdot-example>
 
