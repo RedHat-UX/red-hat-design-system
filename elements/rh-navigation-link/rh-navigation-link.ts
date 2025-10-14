@@ -68,7 +68,7 @@ export class RhNavigationLink extends LitElement {
       <div id="container">
         ${this.href ? html`
           <a href="${ifDefined(this.href)}" aria-current="${ifDefined(isCurrentPage)}">
-            <--
+            <!--
               Use this slot when the \`icon\` and \`icon-set\` attributes are not set. 
               Can contain a rh-icon, svg, or img tag.
             -->
@@ -78,7 +78,7 @@ export class RhNavigationLink extends LitElement {
                 : html``
               }
             </slot>
-            <--
+            <!--
               The default slot should contain the link text when the \`href\` attribute is set. 
               Alternatively, an anchor tag (\`<a href="...">\`) should be the first child inside
               the slot. Slot should never contain a button tag.
