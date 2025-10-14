@@ -12,9 +12,12 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 import styles from './rh-navigation-link.css';
 
 /**
- * Navigation Link
+ * Navigation Link is a link that is used as a child of the primary, secondary, subnav, and vertical navigation elements.
+ * The link is intrinsically an list item and should not be used outside of navigation elements that define the parent
+ * list element.
+ *
+ * @summary A link that can be used as a child of navigation elements.
  * @alias navigation-link
- * @slot - Place element content here
  */
 @customElement('rh-navigation-link')
 @themable
@@ -23,9 +26,6 @@ export class RhNavigationLink extends LitElement {
 
   static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 
-  // TODO: Is it always the case that we assume the link is part of a list?
-  // If not, we'll need to remove the role from the internals.  How could we determine the context
-  // maybe use @lit/context to determine the context? More research needed.
   // eslint-disable-next-line no-unused-private-class-members
   #internals = InternalsController.of(this, { role: 'listitem' });
 
@@ -68,12 +68,21 @@ export class RhNavigationLink extends LitElement {
       <div id="container">
         ${this.href ? html`
           <a href="${ifDefined(this.href)}" aria-current="${ifDefined(isCurrentPage)}">
+            <--
+              Use this slot when the \`icon\` and \`icon-set\` attributes are not set. 
+              Can contain a rh-icon, svg, or img tag.
+            -->
             <slot name="icon">
               ${this.icon ?
                 html`<rh-icon icon="${ifDefined(this.icon)}" set="${ifDefined(this.iconSet)}"></rh-icon>`
                 : html``
               }
             </slot>
+            <--
+              The default slot should contain the link text when the \`href\` attribute is set. 
+              Alternatively, an anchor tag (\`<a href="...">\`) should be the first child inside
+              the slot. Slot should never contain a button tag.
+            -->
             <slot></slot>
           </a>`
           : html`
