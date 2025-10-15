@@ -4,7 +4,7 @@ The disclosure trigger button and content within the panel can be navigated with
 
 <uxdot-example color-palette="lightest" variant="full" no-border>
   <img alt="An open disclosure with a CTA and a closed nested disclosure highlighting the three focusable areas."
-       src="../disclosure-guidelines-responsive-design.svg"
+       src="../disclosure-accessibility-keyboard-interactions.svg"
        width="1140"
        height="1004">
 </uxdot-example>
