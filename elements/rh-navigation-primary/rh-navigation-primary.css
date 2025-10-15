@@ -42,6 +42,10 @@
   color-scheme: only dark;
 }
 
+[hidden] {
+  display: none;
+}
+
 #bar {
   position: relative;
   display: grid;
