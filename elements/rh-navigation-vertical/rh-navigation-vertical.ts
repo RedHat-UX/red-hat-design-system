@@ -2,6 +2,7 @@ import { LitElement, html, isServer, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit-html/directives/class-map.js';
+import { query } from 'lit/decorators/query.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
@@ -28,10 +29,12 @@ import styles from './rh-navigation-vertical.css';
 export class RhNavigationVertical extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
 
-  // eslint-disable-next-line no-unused-private-class-members
   #internals = InternalsController.of(this, { role: 'navigation' });
 
   private _depth = 0; // Internal state for depth, initially 0
+
+  @query('#title')
+  private _title!: HTMLHeadingElement;
 
   /**
    * Optional bordered attribute that adds a border to the inline-start
@@ -52,6 +55,15 @@ export class RhNavigationVertical extends LitElement {
    */
   @provide({ context: context })
   private _ctx = this.#makeContext();
+
+  protected firstUpdated(): void {
+    // ensure we update initially on client hydration
+    if (!isServer) {
+      if (this._title) {
+        this.#internals.ariaLabelledByElements = [this._title];
+      }
+    }
+  }
 
   render(): TemplateResult<1> {
     const { bordered = '' } = this;
