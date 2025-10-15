@@ -41,10 +41,11 @@ export class RhNavigationVertical extends LitElement {
   @property({ reflect: true }) bordered?: 'inline-start';
 
   /**
-   * Optional accessible-label attribute that sets the aria-label for the navigation.
-   * Defaults to 'main'
+   * The accessible-label attribute labels the navigation using a visually hidden heading.
+   * Defaults to 'Navigation'. This label should be changed if other navigation elements
+   * are present or when translations are needed.
    */
-  @property({ attribute: 'accessible-label' }) accessibleLabel = 'main';
+  @property({ attribute: 'accessible-label' }) accessibleLabel = 'Navigation';
 
   /**
    * Provide our own parent information, depth = 0
@@ -52,44 +53,17 @@ export class RhNavigationVertical extends LitElement {
   @provide({ context: context })
   private _ctx = this.#makeContext();
 
-  connectedCallback() {
-    super.connectedCallback();
-    if (!isServer) {
-      this.#upgradeAccessibility();
-    }
-  }
-
-  protected firstUpdated(): void {
-    // ensure we update initially on client hydration
-    const _isHydrated = isServer && !this.hasUpdated;
-    if (!_isHydrated) {
-      /**
-       * SSR Adds the role, but then removes when ElementInternals is hydrated
-       * However, axe-dev tools then complains as it doesn't handle Internals correctly
-       * So.... lets readd it for brevity, then when axe decides to fix their stuff,
-       * we can remove at a later date.
-       */
-      this.role = 'navigation';
-    }
-  }
-
   render(): TemplateResult<1> {
     const { bordered = '' } = this;
     const classes = {
       [bordered]: !!bordered,
     };
     return html`
+      <h2 class="visually-hidden">${this.accessibleLabel}</h2>
       <div id="container" class="${classMap(classes)}" role="list">
         <slot></slot>
       </div>
     `;
-  }
-
-  /**
-   * Upgrades the aria attributes on upgrade
-   */
-  #upgradeAccessibility(): void {
-    this.#internals.ariaLabel = this.accessibleLabel;
   }
 
   #makeContext(): RhNavigationVerticalContext {
