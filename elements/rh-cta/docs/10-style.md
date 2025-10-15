@@ -4,6 +4,8 @@
   }
 </style>
 
+A call to action is text in a container or paired with an icon that directs users to new pages. Depending on the link, content, and hierarchy, a call to action can be used on its own or grouped with other calls to action.
+
 ## Style
 
 ### Anatomy
@@ -25,6 +27,8 @@
 </figure>
 
 ## Color scheme
+
+Calls to action are available in both light and dark color schemes.
 
 ### Light scheme
 
@@ -48,6 +52,8 @@
 
 ### Brick
 
+The Brick variant may display an icon positioned to the left or on top of text.
+
 <uxdot-example color-palette="lightest" width-adjustment="396px">
   <img alt="Three bricks. Blue text with a gray border surrounding the text. The right two bricks show where an icon would go—on top or to the left."
        src="../cta-style-variants-bricks.svg"
@@ -56,6 +62,8 @@
 </uxdot-example>
 
 ### Video
+
+Calls to action may include a video icon.
 
 <uxdot-example color-palette="lightest" width-adjustment="496px">
   <img alt="Primary, Secondary, and Default variants with video icons to the right of text"
@@ -83,6 +91,8 @@ Desaturated calls to action are white and should only be used on dark or very sa
 </uxdot-example>
 
 ## Space
+
+Space values in calls to action do not change even if viewport sizes change. To see space values when calls to action are grouped, go to the [Guidelines](/elements/call-to-action/guidelines/#space-when-grouped) page.
 
 <uxdot-example color-palette="lightest" width-adjustment="432px">
   <img alt="Primary, Secondary, and a Default CTA. Each has 32px inline padding and 16px block padding. There's 8px gap between the text and optional arrow."
