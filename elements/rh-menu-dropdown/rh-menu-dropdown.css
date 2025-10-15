@@ -18,7 +18,7 @@
   z-index: 1000;
   min-inline-size: 18.5rem;
   max-inline-size: 100%;
-  border-radius: var(--rh-border-width-lg, 3px);
+  border-radius: var(--rh-border-radius-default, 3px);
   border: var(--_border);
   background: var(--rh-color-surface);
   box-shadow: var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25));
@@ -58,8 +58,7 @@
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  max-height: 36px;
-  border-radius: var(--rh-border-width-lg, 3px);
+  border-radius: var(--rh-border-radius-default, 3px);
   background: var(--rh-color-surface);
   border: none;
 
@@ -74,15 +73,18 @@
   }
 
   &.boxed {
-    border: var(--_border);
+    box-shadow:
+      inset 0 0 0 1px light-dark(
+          var(--rh-color-gray-30, #c7c7c7),
+          var(--rh-color-gray-50, #707070)
+        );
 
     &:not(.open) {
       &:hover {
-        border-color: var(--_interactive-border-color);
+        box-shadow: inset 0 0 0 1px var(--_interactive-border-color);
       }
 
       &:active {
-        border-color: transparent;
         box-shadow: inset 0 0 0 var(--rh-length-3xs, 2px) var(--_interactive-border-color);
       }
 
@@ -93,7 +95,6 @@
     }
 
     &.open {
-      border-color: transparent;
       box-shadow: inset 0 0 0 var(--rh-length-3xs, 2px) var(--_interactive-border-color);
 
       &:focus {
@@ -118,7 +119,6 @@
 
       &:focus,
       &:active {
-        border-color: transparent;
         box-shadow: inset 0 0 0 var(--rh-length-3xs, 2px) var(--_interactive-border-color);
       }
     }
