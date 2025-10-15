@@ -64,6 +64,7 @@
 
   .action-icon rh-icon {
     --rh-icon-size: 12px;
+
     padding-inline-start: var(--rh-space-md, 8px);
   }
 
