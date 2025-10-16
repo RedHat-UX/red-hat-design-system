@@ -3,7 +3,7 @@ import type * as CEM from 'custom-elements-manifest';
 
 import { tokens } from '@rhds/tokens/meta.js';
 import { join } from 'node:path';
-import { readFile } from 'node:fs/promises';
+import { readFile, access } from 'node:fs/promises';
 import { capitalize, copyCell, dedent, getTokenHref } from '#11ty-plugins/tokensHelpers.js';
 import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
 import { AssetCache } from '@11ty/eleventy-fetch';
@@ -781,18 +781,20 @@ export default class ElementsPage extends Renderer<Context> {
               <thead>
                 <tr>
                   <th>Token</th>
+                  <th>Summary</th>
                   <th>Copy</th>
                 </tr>
               </thead>
-              <tbody>${designTokens.map(token => html`
+              <tbody>${(await Promise.all(designTokens.map(async token => html`
                 <tr>
                   <td>
                     <a href="${getTokenHref(token)}">
                       <code>${token.name}</code>
                     </a>
                   </td>
+                  <td>${await this.#innerMD(token.summary ?? '')}</td>
                   ${copyCell(token)}
-                </tr>`).join('')}
+                </tr>`))).join('')}
               </tbody>
             </table>
           </rh-table>`}
@@ -823,9 +825,24 @@ export default class ElementsPage extends Renderer<Context> {
       ${(await Promise.all(demos.map(async demo => `
       ${this.#header(demo.filePath?.match(/\/index(\.html|\/)/) ? this.#getPrettyTagName(ctx)
                    : demo.title, 2, `demo-${this.slugify(demo.title)}`)}
+      ${await this.#renderDemoDescription(demo, ctx)}
       ${await this.#renderDemo(demo, ctx)}
       `))).filter(Boolean).join('')}
     `;
+  }
+
+  async #renderDemoDescription(demo: DemoRecord, ctx: Context) {
+    // Use the same logic as the header to determine the demo name
+    const demoName = demo.filePath?.match(/\/index(\.html|\/)/) ? 'index' : demo.title;
+    const demoDescriptionPath = join(process.cwd(), 'elements', ctx.tagName, 'demo', `${this.slugify(demoName)}.md`);
+    // check if the file exists, if it does return the html
+    try {
+      await access(demoDescriptionPath);
+      const demoDescriptionContent = await this.renderFile(demoDescriptionPath, ctx);
+      return html`${demoDescriptionContent}`;
+    } catch {
+      return '';
+    }
   }
 
   async #renderDemo(demo: DemoRecord, ctx: Context, knobs?: string) {
