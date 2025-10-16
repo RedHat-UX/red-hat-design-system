@@ -233,7 +233,7 @@ export class RhNavigationPrimary extends LitElement {
   #primaryItems(): RhNavigationPrimaryItem[] {
     return Array.from(
       this.querySelectorAll(
-        'rh-navigation-primary-item:not([slot])',
+        'rh-navigation-primary-item:not([slot]), rh-navigation-link:not([slot])'
       )
     );
   }
