@@ -24,10 +24,10 @@ subnav:
 
 Design system consumers can theme `<rh-cta>` to create desaturated CTAs.
 
-<uxdot-example color-palette="darkest" width-adjustment="257px">
+<uxdot-example color-palette="darkest" width-adjustment="564px">
   <img alt="A primary and tertiary CTA. The primary has black text and a white background. The tertiary is reversed."
        src="./cta-style-variants-desaturated.svg"
-       width="257"
+       width="564"
        height="56">
 </uxdot-example>
 
