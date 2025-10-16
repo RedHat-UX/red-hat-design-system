@@ -308,7 +308,7 @@
     "@patternfly/icons": "^1.0.3",
     "@patternfly/pfe-tools": "^5.0.4",
     "@playwright/test": "^1.54.1",
-    "@pwrs/cem": "^0.4.6",
+    "@pwrs/cem": "^0.6.4",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@stylistic/eslint-plugin-js": "^2.13.0",
     "@stylistic/stylelint-config": "^2.0.0",
