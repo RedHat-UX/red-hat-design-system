@@ -11,14 +11,16 @@
         var(--_step-line-angle),
         transparent 13px,
         var(--_step-line-color) 13px,
-        /* @summary Controls connecting lines' color */
         var(--_step-line-color) 15px,
         transparent 15px);
-  --_step-color: var(--rh-color-text-primary);
-  --_step-label-color: var(--rh-color-text-primary);
+  --_step-color: /** @summary Icon color (default state) */
+    var(--rh-color-text-primary);
+  --_step-label-color: /** @summary Label text color (default state) */
+    var(--rh-color-text-primary);
 
   @container (width > 992px) {
-    --_step-compact-horizontal-padding: var(--rh-length-5xl, 80px);
+    --_step-compact-horizontal-padding: /** @summary Horizontal padding in compact mode at wide viewports */
+      var(--rh-length-5xl, 80px);
   }
 }
 
@@ -26,42 +28,34 @@
   position: relative;
   display: grid;
   grid-template-columns: var(--_step-template-columns);
+  grid-template-rows: var(--_step-template-rows, 24px) auto;
+  grid-template-areas: var(--_step-template-areas);
+  gap: var(--_step-row-gap, 16px) var(--_step-column-gap, 16px);
 
-  /* @summary Grid column layout */
-  grid-template-rows: var(--_step-template-rows, 24px) auto; /* @summary Grid row layout */
-  grid-template-areas: var(--_step-template-areas); /* @summary Grid area mapping */
-  gap:
-    var(--_step-row-gap, 16px) /* @summary Vertical spacing between grid rows */
-    var(--_step-column-gap, 16px); /* @summary Horizontal spacing between grid columns */
-
-  justify-self: var(--_step-justify-self, start); /* @summary Horizontal step alignment */
-  align-items: var(--_step-align-items); /* @summary Vertical content alignment */
-  padding-block-end: /* @summary Bottom padding for compact variant in vertical layout */
-    var(--_step-compact-vertical-padding);
-  padding-inline-end: /* @summary Horizontal padding for compact variant */
-    var(--_step-compact-horizontal-padding);
+  justify-self: var(--_step-justify-self, start);
+  align-items: var(--_step-align-items);
+  padding-block-end: var(--_step-compact-vertical-padding);
+  padding-inline-end: var(--_step-compact-horizontal-padding);
   inline-size: 100%;
   block-size: 100%;
-  color: /* @summary A step's description color */
+  color: /** @summary A step's description color */
     var(--rh-color-text-secondary);
 
   /* Body text/md */
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--rh-font-size-body-text-md, 1rem);
+  font-family: /** @summary Font family for step labels and descriptions */
+    var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  font-size: /** @summary Font size for step labels */
+    var(--rh-font-size-body-text-md, 1rem);
   font-style: normal;
   line-height: 1.5;
 
   &:before {
     position: absolute;
     content: '';
-    inset-block: /* @summary Connecting line's vertical position */
-      var(--_step-line-position-block);
-    inset-inline: /* @summary Connecting line's horizontal position */
-      var(--_step-line-position-inline);
-    inline-size: /* @summary Connecting line's width */
-      var(--_step-line-size-inline);
-    block-size: /* @summary Connecting line's height */
-      var(--_step-line-size-block);
+    inset-block: var(--_step-line-position-block);
+    inset-inline: var(--_step-line-position-inline);
+    inline-size: var(--_step-line-size-inline);
+    block-size: var(--_step-line-size-block);
     background: var(--_step-line-style);
     pointer-events: none;
   }
@@ -70,17 +64,20 @@
 /* Icon styling */
 :is(rh-icon, .no-icon) {
   grid-area: icon;
-  place-self: /* @summary Icon alignment */
-    center var(--_step-icon-justify-self);
-  block-size: /* @summary Sets width of the icon */
-    var(--_step-icon-width);
-  inline-size: /* @summary Sets width of the icon */
-    var(--_step-icon-width);
-  border: var(--rh-border-width-md) solid var(--_step-line-color);
+  place-self: center var(--_step-icon-justify-self);
+  block-size: var(--_step-icon-width);
+  inline-size: var(--_step-icon-width);
+  border: /** @summary Icon border width */
+    var(--rh-border-width-md) solid var(--_step-line-color);
   border-radius: 50%;
-  color: /* @summary Sets color of the icon */
-    var(--_step-color);
-  background-color: light-dark(var(--rh-color-surface-lightest), var(--rh-color-surface-darkest));
+  color: var(--_step-color);
+  background-color:
+    light-dark(
+        /** @summary Icon background in light mode */
+        var(--rh-color-surface-lightest),
+        /** @summary Icon background in dark mode */
+        var(--rh-color-surface-darkest)
+      );
 }
 
 #label {
@@ -88,18 +85,30 @@
   grid-area: label;
   align-self: center;
   color: var(--_step-label-color);
-  font-weight: /* @summary Font weight for labels of steps */
-    var(--_current-step-weight, var(--rh-font-weight-body-text-regular, 400));
+  font-weight:
+    var(
+        --_current-step-weight,
+        /** @summary Font weight for labels of steps */
+        var(--rh-font-weight-body-text-regular, 400)
+      );
 
   &:is(a[href]) {
     text-decoration: underline dashed 1px;
-    text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40));
+    text-decoration-color:
+      light-dark(
+          /** @summary Link underline color in light mode */
+          var(--rh-color-gray-50),
+          /** @summary Link underline color in dark mode */
+          var(--rh-color-gray-40)
+        );
     text-underline-offset: max(5px, 0.28em);
     transition: ease text-underline-offset 0.3s;
 
     &:hover {
-      color: var(--rh-color-interactive-primary-hover);
-      text-decoration-color: var(--rh-color-interactive-primary-hover);
+      color: /** @summary Link text color on hover */
+        var(--rh-color-interactive-primary-hover);
+      text-decoration-color: /** @summary Link underline color on hover */
+        var(--rh-color-interactive-primary-hover);
       text-underline-offset: max(6px, 0.33em);
     }
   }
@@ -110,10 +119,11 @@
   display: grid;
   align-self: start;
   margin: 0;
-  grid-column: /* @summary Description grid placement */
-  var(--_step-description-grid-column, 1);
-  font-weight: var(--rh-font-weight-body-text-regular, 400);
-  font-size: var(--rh-font-size-body-text-xs, 0.75rem);
+  grid-column: var(--_step-description-grid-column, 1);
+  font-weight: /** @summary Font weight for step descriptions */
+    var(--rh-font-weight-body-text-regular, 400);
+  font-size: /** @summary Font size for step descriptions */
+    var(--rh-font-size-body-text-xs, 0.75rem);
 }
 
 /* Compact view - hide text content */
@@ -136,32 +146,40 @@
 
 /* Active state styling */
 :host([state='active']) {
-  --_step-color: var(--rh-color-status-note);
+  --_step-color: /** @summary Icon color when step is active */
+    var(--rh-color-status-note);
 }
 
 /* Complete state styling */
 :host([state='complete']) {
-  --_step-color: var(--rh-color-status-success);
+  --_step-color: /** @summary Icon color when step is complete */
+    var(--rh-color-status-success);
 }
 
 /* Warning state styling */
 :host([state='warn']) {
   --_step-color:
     light-dark(
+        /** @summary Warning icon color in light mode */
         var(--rh-color-yellow-50, #b98412),
+        /** @summary Warning icon color in dark mode */
         var(--rh-color-yellow-30, #ffcc17)
       );
   --_step-label-color:
     light-dark(
+        /** @summary Warning label color in light mode */
         var(--rh-color-yellow-60, #96640f),
+        /** @summary Warning label color in dark mode */
         var(--rh-color-yellow-20, #ffe072)
       );
 }
 
 /* Fail state styling */
 :host([state='fail']) {
-  --_step-color: var(--rh-color-status-danger);
-  --_step-label-color: var(--rh-color-status-danger);
+  --_step-color: /** @summary Icon color when step has failed */
+    var(--rh-color-status-danger);
+  --_step-label-color: /** @summary Label color when step has failed */
+    var(--rh-color-status-danger);
 }
 
 /* State-based color and weight variations for display of individual progress steps */
@@ -170,5 +188,6 @@
 :host([state='active']),
 :host([icon]),
 :host([aria-current='step']) {
-  --_current-step-weight: var(--rh-font-weight-body-text-medium, 500);
+  --_current-step-weight: /** @summary Font weight for current/active/warn/fail step labels */
+    var(--rh-font-weight-body-text-medium, 500);
 }
