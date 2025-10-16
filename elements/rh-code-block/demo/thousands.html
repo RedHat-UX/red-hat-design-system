@@ -15415,7 +15415,7 @@ spec:
     rules:
     - alert: OADPBackupFailing
       annotations:
-        description: 'OADP had {{$value | humanize}} backup failures over the last 2 hours.'
+        description: 'OADP had {{#123;{{#123;$value | humanize}} backup failures over the last 2 hours.'
         summary: OADP has issues creating backups
       expr: |
         increase(velero_backup_failure_total{job="openshift-adp-velero-metrics-svc"}[2h]) &gt; 0
@@ -15433,7 +15433,7 @@ spec:
     <span class="token key atrule"><span class="token key atrule">rules</span></span><span class="token punctuation"><span class="token punctuation">:</span></span>
     <span class="token punctuation"><span class="token punctuation">-</span></span> <span class="token key atrule"><span class="token key atrule">alert</span></span><span class="token punctuation"><span class="token punctuation">:</span></span> OADPBackupFailing
       <span class="token key atrule"><span class="token key atrule">annotations</span></span><span class="token punctuation"><span class="token punctuation">:</span></span>
-        <span class="token key atrule"><span class="token key atrule">description</span></span><span class="token punctuation"><span class="token punctuation">:</span></span> <span class="token string"><span class="token string">'OADP had {{$value | humanize}} backup failures over the last 2 hours.'</span></span>
+        <span class="token key atrule"><span class="token key atrule">description</span></span><span class="token punctuation"><span class="token punctuation">:</span></span> <span class="token string"><span class="token string">'OADP had {{#123;{{#123;$value | humanize}} backup failures over the last 2 hours.'</span></span>
         <span class="token key atrule"><span class="token key atrule">summary</span></span><span class="token punctuation"><span class="token punctuation">:</span></span> OADP has issues creating backups
       <span class="token key atrule"><span class="token key atrule">expr</span></span><span class="token punctuation"><span class="token punctuation">:</span></span> <span class="token punctuation"><span class="token punctuation">|</span></span><span class="token scalar string"><span class="token scalar string">
         increase(velero_backup_failure_total{job="openshift-adp-velero-metrics-svc"}[2h]) &gt; 0</span></span>
