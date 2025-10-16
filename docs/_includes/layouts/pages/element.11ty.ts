@@ -781,20 +781,18 @@ export default class ElementsPage extends Renderer<Context> {
               <thead>
                 <tr>
                   <th>Token</th>
-                  <th>Summary</th>
                   <th>Copy</th>
                 </tr>
               </thead>
-              <tbody>${(await Promise.all(designTokens.map(async token => html`
+              <tbody>${designTokens.map(token => html`
                 <tr>
                   <td>
                     <a href="${getTokenHref(token)}">
                       <code>${token.name}</code>
                     </a>
                   </td>
-                  <td>${await this.#innerMD(token.summary ?? '')}</td>
                   ${copyCell(token)}
-                </tr>`))).join('')}
+                </tr>`).join('')}
               </tbody>
             </table>
           </rh-table>`}
