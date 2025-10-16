@@ -228,6 +228,7 @@
     
 
 
+
 <uxdot-sidenav  trigger="hamburger"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_padding-start:var(--uxdot-sidenav-padding-start,var(--rh-space-2xl));--_padding-end:var(--uxdot-sidenav-padding-end,var(--rh-space-2xl));--_max-height:100dvh;--_sidenav_width:var(--uxdot-sidenav-width,320px);height:var(--_max-height);top:0;width:100%;z-index:var(--uxdot-sidenav-z-index,5)}:host([open]){display:block!important;position:fixed!important}:host(:not([open])){display:none}[part=close-button]{background-color:initial;border:none;color:var(--rh-color-text-primary);line-height:0!important;margin:0;padding:var(--rh-space-md)}#container{background-color:var(--rh-color-surface);height:100%;overflow-y:auto;position:relative;scrollbar-gutter:stable;width:auto}#close-button-container{max-height:var(--uxdot-masthead-max-height,72px);padding-block:var(--rh-space-lg);padding-inline:var(--rh-space-md)}#close-button:focus{border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive)}[part=nav]{padding-block:var(--rh-space-lg,16px)}.visually-hidden{block-size:1px;border:0;clip:rect(0,0,0,0);inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}[part=overlay]{background-color:rgb(from var(---rh-color-gray-90)/var(--rh-opacity-60));display:none;height:100dvh;position:fixed;top:0;width:100dvw;z-index:-1}::slotted(ul){background-color:var(--rh-color-surface);height:var(--_max-height);list-style:none;margin-block:0!important;overflow-y:scroll;padding-block:var(--_padding-start) calc(var(--_padding-end) + var(--rh-font-size-body-text-lg)*1.5 + var(--rh-space-lg)*2);padding-inline:0}:host([open]) [part=overlay]{display:block}@media (min-width:320px){:host{box-shadow:var(--rh-box-shadow-lg);width:var(--_sidenav_width)}}@media (min-width:576px){#close-button-container{padding:var(--rh-space-lg)}}@media (min-width:992px){:host{--uxdot-sidenav-z-index:1;border-inline-end:var(--rh-border-width-sm) solid var(--rh-color-border-subtle);box-shadow:unset;height:calc(var(--_max-height) - var(--uxdot-masthead-max-height, 72px));position:fixed;top:var(--uxdot-masthead-max-height,72px)}:host(:not([open])){display:block}#close-button-container{display:none}:host([open]) [part=overlay]{display:none}}</style><!--lit-part S8cx5qBqoD4=-->
       <div id="container" part="container">
         <div id="close-button-container">
@@ -706,19 +707,18 @@
 
 
 
-<uxdot-header><template shadowroot="open" shadowrootmode="open"><style>:host{--_uxdot-header-padding:var(--rh-space-2xl);background-color:light-dark(var(--rh-color-surface-lighter),oklch(from var(--rh-color-surface-dark) calc(l * .82) c h));container-name:header;container-type:inline-size;display:block;@container (min-width: 768px){--_uxdot-header-padding:var(--rh-space-3xl)}@container (min-width: 992px){--_uxdot-header-padding:var(--rh-space-6xl)}}#container{display:block;max-width:1140px;padding-block-start:var(--_uxdot-header-padding,);padding-inline:var(--_uxdot-header-padding);&.hasSearch{display:grid;gap:var(--rh-space-2xl);grid-template-areas:"heading" "search";grid-template-columns:1fr}&:not(.hasSubnav){padding-block-end:var(--_uxdot-header-padding)}@container header (min-width: 992px){&.hasSearch{grid-template-areas:"heading search";grid-template-columns:1fr 1fr}}}[part=heading]{grid-area:heading}::slotted([slot=search]){display:flex;flex-direction:column;grid-area:search;justify-content:space-around}::slotted(h1){font-family:var(--uxdot-heading-font-family,var(--rh-font-family-heading))!important;font-size:var(--uxdot-heading-heading-size,var(--rh-font-size-heading-2xl))!important;font-weight:var(--uxdot-heading-font-weight,var(--rh-font-weight-heading-regular))!important;line-height:var(--uxdot-heading-line-height,var(--rh-line-height-heading))!important;margin:0!important}::slotted([slot=subnav]){margin-block-start:var(--rh-space-2xl);padding-inline:calc(var(--_uxdot-header-padding) - var(--rh-space-2xl))}</style><!--lit-part 65SaaoC+s1Q=-->
+<uxdot-header><template shadowroot="open" shadowrootmode="open"><style>:host{--_uxdot-header-padding:var(--rh-space-2xl);background-color:light-dark(var(--rh-color-surface-lighter),oklch(from var(--rh-color-surface-dark) calc(l * .82) c h));container-name:header;container-type:inline-size;display:block;@container (min-width: 768px){--_uxdot-header-padding:var(--rh-space-3xl)}@container (min-width: 992px){--_uxdot-header-padding:var(--rh-space-6xl)}}#container{display:block;max-width:1140px;padding-block-start:var(--_uxdot-header-padding,);padding-inline:var(--_uxdot-header-padding);&:not(.hasSubnav){padding-block-end:var(--_uxdot-header-padding)}}[part=heading]{grid-area:heading}::slotted(h1){font-family:var(--uxdot-heading-font-family,var(--rh-font-family-heading))!important;font-size:var(--uxdot-heading-heading-size,var(--rh-font-size-heading-2xl))!important;font-weight:var(--uxdot-heading-font-weight,var(--rh-font-weight-heading-regular))!important;line-height:var(--uxdot-heading-line-height,var(--rh-line-height-heading))!important;margin:0!important}::slotted([slot=subnav]){margin-block-start:var(--rh-space-2xl);padding-inline:calc(var(--_uxdot-header-padding) - var(--rh-space-2xl))}</style><!--lit-part pRps39tCOrM=-->
       <!--lit-node 0--><div id="container"
            part="container"
            class="  ">
         <slot part="heading"></slot>
-        <slot name="search" part="search"></slot>
       </div>
       <slot name="subnav" part="subnav"></slot>
     <!--/lit-part--></template><h1 id="page-not-found-(404-error)" class="page-title">
     Page not found (404 error)
     
   </h1>
-  
+
   
 </uxdot-header>
 

@@ -711,19 +711,18 @@
 
 
 
-<uxdot-header><template shadowroot="open" shadowrootmode="open"><style>:host{--_uxdot-header-padding:var(--rh-space-2xl);background-color:light-dark(var(--rh-color-surface-lighter),oklch(from var(--rh-color-surface-dark) calc(l * .82) c h));container-name:header;container-type:inline-size;display:block;@container (min-width: 768px){--_uxdot-header-padding:var(--rh-space-3xl)}@container (min-width: 992px){--_uxdot-header-padding:var(--rh-space-6xl)}}#container{display:block;max-width:1140px;padding-block-start:var(--_uxdot-header-padding,);padding-inline:var(--_uxdot-header-padding);&.hasSearch{display:grid;gap:var(--rh-space-2xl);grid-template-areas:"heading" "search";grid-template-columns:1fr}&:not(.hasSubnav){padding-block-end:var(--_uxdot-header-padding)}@container header (min-width: 992px){&.hasSearch{grid-template-areas:"heading search";grid-template-columns:1fr 1fr}}}[part=heading]{grid-area:heading}::slotted([slot=search]){display:flex;flex-direction:column;grid-area:search;justify-content:space-around}::slotted(h1){font-family:var(--uxdot-heading-font-family,var(--rh-font-family-heading))!important;font-size:var(--uxdot-heading-heading-size,var(--rh-font-size-heading-2xl))!important;font-weight:var(--uxdot-heading-font-weight,var(--rh-font-weight-heading-regular))!important;line-height:var(--uxdot-heading-line-height,var(--rh-line-height-heading))!important;margin:0!important}::slotted([slot=subnav]){margin-block-start:var(--rh-space-2xl);padding-inline:calc(var(--_uxdot-header-padding) - var(--rh-space-2xl))}</style><!--lit-part 65SaaoC+s1Q=-->
+<uxdot-header><template shadowroot="open" shadowrootmode="open"><style>:host{--_uxdot-header-padding:var(--rh-space-2xl);background-color:light-dark(var(--rh-color-surface-lighter),oklch(from var(--rh-color-surface-dark) calc(l * .82) c h));container-name:header;container-type:inline-size;display:block;@container (min-width: 768px){--_uxdot-header-padding:var(--rh-space-3xl)}@container (min-width: 992px){--_uxdot-header-padding:var(--rh-space-6xl)}}#container{display:block;max-width:1140px;padding-block-start:var(--_uxdot-header-padding,);padding-inline:var(--_uxdot-header-padding);&:not(.hasSubnav){padding-block-end:var(--_uxdot-header-padding)}}[part=heading]{grid-area:heading}::slotted(h1){font-family:var(--uxdot-heading-font-family,var(--rh-font-family-heading))!important;font-size:var(--uxdot-heading-heading-size,var(--rh-font-size-heading-2xl))!important;font-weight:var(--uxdot-heading-font-weight,var(--rh-font-weight-heading-regular))!important;line-height:var(--uxdot-heading-line-height,var(--rh-line-height-heading))!important;margin:0!important}::slotted([slot=subnav]){margin-block-start:var(--rh-space-2xl);padding-inline:calc(var(--_uxdot-header-padding) - var(--rh-space-2xl))}</style><!--lit-part pRps39tCOrM=-->
       <!--lit-node 0--><div id="container"
            part="container"
            class="  ">
         <slot part="heading"></slot>
-        <slot name="search" part="search"></slot>
       </div>
       <slot name="subnav" part="subnav"></slot>
     <!--/lit-part--></template><h1 id="manual-testing" class="page-title">
     Manual testing
     
   </h1>
-  
+
   
 </uxdot-header>
 
