@@ -1579,7 +1579,23 @@
                   <td><code>accessible-label</code></td>
                   <td><code>accessibleLabel</code></td>
                   <td><p>When checkable, the accessible (visually hidden) label for the form control
-If not set, the text content of the tile element will be used instead.</p></td>
+If not set, the text content of the tile element will be used instead.</p>
+<figure>
+<figcaption>Setting an accessible label when there is no text content</figcaption>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tile-group</span> <span class="token attr-name">radio</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tile</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Tile 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tile</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tile</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Tile 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tile</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tile</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span>
+<span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>3<span class="token punctuation">"</span></span>
+<span class="token attr-name">accessible-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Tile 3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>image<span class="token punctuation">"</span></span>
+<span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>presentation<span class="token punctuation">"</span></span>
+<span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tile-3.webp<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tile</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tile-group</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span></code></pre>
+</figure></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -1618,9 +1634,7 @@ If not set, the text content of the tile element will be used instead.</p></td>
 Overrides parent color context.
 Your theme will influence these colors so check there first if you are seeing inconsistencies.
 See <a href="#css-custom-properties">CSS Custom Properties</a> for default values</p>
-<ul>
-<li>Tile always resets its context to <code>base</code>, unless explicitly provided with a <code>color-palette</code>.</li>
-</ul></td>
+<p>Tile always resets its context to <code>base</code>, unless explicitly provided with a <code>color-palette</code>.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts">ColorPalette</code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -2054,6 +2068,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
               <thead>
                 <tr>
                   <th>Token</th>
+                  <th>Summary</th>
                   <th>Copy</th>
                 </tr>
               </thead>
@@ -2064,6 +2079,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-font-family-body-text</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-font-family-body-text, RedHatText, &#39;Red Hat Text&#39;, Helvetica, Arial, sans-serif)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -2159,6 +2175,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-font-weight-heading-regular</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-font-weight-heading-regular, 400)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -2254,6 +2271,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-line-height-body-text</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-line-height-body-text, 1.5)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -2349,6 +2367,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-color-border-interactive</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-color-border-interactive, undefined)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -2444,6 +2463,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-color-interactive-primary-hover</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-color-interactive-primary-hover, undefined)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -2539,6 +2559,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-color-text-secondary</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-color-text-secondary, undefined)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -2634,6 +2655,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-color-surface-lighter</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-color-surface-lighter, #f2f2f2)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -2729,6 +2751,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-color-surface-darker</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-color-surface-darker, #1f1f1f)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -2824,6 +2847,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-color-surface-light</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-color-surface-light, #e0e0e0)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -2919,6 +2943,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-color-surface-dark</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-color-surface-dark, #383838)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -3014,6 +3039,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-color-border-subtle</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-color-border-subtle, undefined)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -3109,6 +3135,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-border-radius-default</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-border-radius-default, 3px)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -3204,6 +3231,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-border-width-sm</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-border-width-sm, 1px)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -3299,6 +3327,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-color-surface-lightest</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-color-surface-lightest, #ffffff)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -3394,6 +3423,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-color-surface-darkest</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-color-surface-darkest, #151515)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -3489,6 +3519,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-size-icon-05</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-size-icon-05, 48px)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -3584,6 +3615,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-size-icon-03</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-size-icon-03, 32px)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -3679,6 +3711,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-font-size-heading-xs</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-font-size-heading-xs, 1.25rem)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -3774,6 +3807,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-font-weight-body-text-medium</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-font-weight-body-text-medium, 500)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -3869,6 +3903,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-color-text-primary</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-color-text-primary, undefined)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -3964,6 +3999,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-font-size-body-text-lg</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-font-size-body-text-lg, 1.125rem)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -4059,6 +4095,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-font-size-body-text-sm</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-font-size-body-text-sm, 0.875rem)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -4154,6 +4191,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-font-size-body-text-xs</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-font-size-body-text-xs, 0.75rem)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -4249,6 +4287,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-space-2xl</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-space-2xl, 32px)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -4344,6 +4383,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-space-lg</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-space-lg, 16px)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -4439,6 +4479,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-animation-speed</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-animation-speed, 0.3s)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -4534,6 +4575,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-animation-timing</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-animation-timing, cubic-bezier(0.465, 0.183, 0.153, 0.946))"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -4629,6 +4671,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-space-xl</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-space-xl, 24px)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -4724,6 +4767,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                       <code>--rh-font-size-body-text-md</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-font-size-body-text-md, 1rem)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->
@@ -5020,9 +5064,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
 Overrides parent color context.
 Your theme will influence these colors so check there first if you are seeing inconsistencies.
 See <a href="#css-custom-properties">CSS Custom Properties</a> for default values</p>
-<ul>
-<li>Tile group always resets its context to <code>base</code>, unless explicitly provided with a <code>color-palette</code>.</li>
-</ul></td>
+<p>Tile group always resets its context to <code>base</code>, unless explicitly provided with a <code>color-palette</code>.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts">ColorPalette</code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -5335,6 +5377,7 @@ See <a href="#css-custom-properties">CSS Custom Properties</a> for default value
               <thead>
                 <tr>
                   <th>Token</th>
+                  <th>Summary</th>
                   <th>Copy</th>
                 </tr>
               </thead>
@@ -5345,6 +5388,7 @@ See <a href="#css-custom-properties">CSS Custom Properties</a> for default value
                       <code>--rh-space-2xl</code>
                     </a>
                   </td>
+                  <td></td>
                   <td data-label="Copy">
       <div>
         <uxdot-copy-button   class="icon-only" copy="var(--rh-space-2xl, 32px)"><template shadowroot="open" shadowrootmode="open"><style>button{align-items:center;background:none;border-radius:var(--rh-border-radius-default);border-width:0;color:inherit;display:inline-flex;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs)}code{background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-family:var(--rh-font-family-code);font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);line-height:var(--rh-line-height-code);padding:var(--rh-space-xs) var(--rh-space-md)}:host(.icon-only) code,:host(:empty) code{display:none}:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));color:var(--rh-color-text-primary);opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}</style><!--lit-part zk+fFwx/8Tw=-->

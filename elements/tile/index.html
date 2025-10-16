@@ -1554,7 +1554,22 @@
           <uxdot-knob-attribute slot="knobs" tag="rh-tile" name="accessible-label" type="string">
             <div slot="description"><p>When checkable, the accessible (visually hidden) label for the form control
 If not set, the text content of the tile element will be used instead.</p>
-</div>
+<figure>
+<figcaption>Setting an accessible label when there is no text content</figcaption>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tile-group</span> <span class="token attr-name">radio</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tile</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Tile 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tile</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tile</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Tile 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tile</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tile</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>radio<span class="token punctuation">"</span></span>
+<span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>3<span class="token punctuation">"</span></span>
+<span class="token attr-name">accessible-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Tile 3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>image<span class="token punctuation">"</span></span>
+<span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>presentation<span class="token punctuation">"</span></span>
+<span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tile-3.webp<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tile</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-tile-group</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span></code></pre>
+</figure></div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-tile" name="name" type="string">
             <div slot="description"><p>Form name</p>
@@ -1577,9 +1592,7 @@ If not set, the text content of the tile element will be used instead.</p>
 Overrides parent color context.
 Your theme will influence these colors so check there first if you are seeing inconsistencies.
 See <a href="#css-custom-properties">CSS Custom Properties</a> for default values</p>
-<ul>
-<li>Tile always resets its context to <code>base</code>, unless explicitly provided with a <code>color-palette</code>.</li>
-</ul>
+<p>Tile always resets its context to <code>base</code>, unless explicitly provided with a <code>color-palette</code>.</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-tile" name="link" type="'private' | 'public' | 'external'">
