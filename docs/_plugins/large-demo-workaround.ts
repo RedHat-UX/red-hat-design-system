@@ -17,8 +17,8 @@ export default function(eleventyConfig: UserConfig) {
 
     // Only apply to the specific problematic demo file
     if (
-      inputPath === './docs/elements/demo.html' &&
-      outputPath.includes('/elements/code-block/demo/thousands/index.html')
+      inputPath === './docs/elements/demo.html'
+      && outputPath.includes('/elements/code-block/demo/thousands/index.html')
     ) {
       const document = Parse5.parse(content);
       const body = Tools.query(document, node =>
@@ -28,8 +28,8 @@ export default function(eleventyConfig: UserConfig) {
       if (body && Tools.isElementNode(body)) {
         // Check if body is empty (Nunjucks include failed)
         const hasContent = body.childNodes.some(node =>
-          Tools.isElementNode(node) ||
-          (Tools.isTextNode(node) && Tools.getTextContent(node).trim())
+          Tools.isElementNode(node)
+          || (Tools.isTextNode(node) && Tools.getTextContent(node).trim())
         );
 
         if (!hasContent) {
