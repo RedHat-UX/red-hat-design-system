@@ -179,9 +179,10 @@ export class RhCodeBlock extends LitElement {
     const expandable = this.#lineHeights.length > 5;
     const truncated = expandable && !fullHeight;
     const actions = !!this.actions.length;
+    const isIntersecting = this.#isIntersecting;
     return html`
       <div id="container"
-           class="${classMap({ actions, compact, expandable, fullHeight, resizable, truncated, wrap })}"
+           class="${classMap({ actions, compact, expandable, fullHeight, isIntersecting, resizable, truncated, wrap })}"
            @code-action="${this.#onCodeAction}">
         <div id="content-lines" tabindex="${ifDefined((!fullHeight || undefined) && 0)}">
           <div id="sizers" aria-hidden="true"></div>
