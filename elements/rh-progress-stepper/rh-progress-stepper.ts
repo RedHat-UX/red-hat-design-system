@@ -203,7 +203,7 @@ export class RhProgressStepper extends LitElement {
                 class="visually-hidden"
                 ?hidden="${!compact}">${this.#contentString}</strong>
         <!-- Use this slot for \`<rh-progress-step>\` items
-             Each step should include title and optional description
+             Each step should include title and optional description -->
         <slot id="step-list" @change="${this.#onChange}"></slot>
       </div>
     `;
