@@ -40,6 +40,7 @@
       var(--rh-color-surface-darker, #1f1f1f));
   position: relative;
   box-sizing: border-box;
+  outline: none;
 
   &:after {
     content: '';

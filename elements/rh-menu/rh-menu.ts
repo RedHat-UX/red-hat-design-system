@@ -32,35 +32,16 @@ export class RhMenu extends LitElement {
 
   static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 
-  @queryAssignedElements() private _menuItems!: Element[];
+  @queryAssignedElements() private _menuItems!: HTMLElement[];
+  #items!: HTMLElement[];
 
   #tabindex: RovingTabindexController<HTMLElement> = RovingTabindexController.of(this, {
-    getItems: (): HTMLElement[] => {
-      return this._menuItems.flatMap((element: Element) => {
-        if (element instanceof HTMLSlotElement) {
-          const assigned = element.assignedElements().filter(
-            (el): el is HTMLElement => !(el instanceof HTMLHRElement)
-          );
-          return assigned;
-        } else {
-          if (element instanceof HTMLHRElement) {
-            // Skip <hr> elements
-            return [];
-          }
-
-          if (element instanceof RhMenuItem || element instanceof RhMenuItemGroup) {
-            const menuitem = element.shadowRoot?.querySelector('[role="menuitem"]');
-            return menuitem ? [menuitem as HTMLElement] : [];
-          } else if (element instanceof HTMLElement && !element.hasAttribute('role')) {
-            element.setAttribute('role', 'menuitem');
-            return [element];
-          } else {
-            return [element as HTMLElement];
-          }
-        }
-      });
-    },
+    getItems: () => this.getItems(this.#items ? this.#items : this._menuItems),
   });
+
+  getItems(items: HTMLElement[]): HTMLElement[] {
+    return items;
+  }
 
   get activeItem() {
     return this.#tabindex.items.at(this.#tabindex.atFocusedItemIndex);
@@ -75,8 +56,37 @@ export class RhMenu extends LitElement {
   render() {
     return html`
       <!-- menu items -->
-      <slot part="menu"></slot>
+      <slot @slotchange="${this.#onSlotchange}" part="menu"></slot>
     `;
+  }
+
+  #onSlotchange() {
+    this.#items = this._menuItems.flatMap((element: Element) => {
+      if (element instanceof HTMLSlotElement) {
+        const assigned = element.assignedElements().filter(
+          (el): el is HTMLElement => !(el instanceof HTMLHRElement)
+        );
+        return assigned;
+      } else {
+        if (element instanceof HTMLHRElement) {
+          // Skip <hr> elements
+          return [];
+        }
+
+        if (element instanceof RhMenuItem) {
+          return [element];
+        } else if (element instanceof RhMenuItemGroup) {
+          return Array.from(element.querySelectorAll('rh-menu-item'));
+        } else if (element instanceof HTMLElement && !element.hasAttribute('role')) {
+          element.setAttribute('role', 'menuitem');
+          return [element];
+        } else {
+          return [];
+        }
+      }
+    });
+
+    this.#tabindex.hostUpdate();
   }
 
   activateItem(item: HTMLElement) {

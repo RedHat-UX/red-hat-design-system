@@ -28,13 +28,11 @@ export class RhMenuItem extends LitElement {
 
   static override readonly shadowRootOptions: ShadowRootInit = {
     ...LitElement.shadowRootOptions,
-    delegatesFocus: true,
   };
 
   connectedCallback() {
     super.connectedCallback();
-    this.#internals.role = 'none';
-    this.tabIndex = -1;
+    this.#internals.role = 'menuitem';
   }
 
   render(): TemplateResult<1> {
@@ -58,7 +56,7 @@ export class RhMenuItem extends LitElement {
     </div>`;
 
     return html`
-      <div tabindex="-1" role="menuitem" class="menu-item-content">
+      <div class="menu-item-content">
         ${content}
         <!-- 
           Use this slot to provide the description inside menu item.
@@ -66,11 +64,6 @@ export class RhMenuItem extends LitElement {
         <slot id="description" name="description"></slot>
       </div>
     `;
-  }
-
-  focus() {
-    const el = this.shadowRoot?.querySelector('[role="menuitem"]') as HTMLElement | null;
-    el?.focus();
   }
 }
 
