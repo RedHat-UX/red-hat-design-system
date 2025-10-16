@@ -19,8 +19,12 @@
     var(--rh-color-text-primary);
 
   @container (width > 992px) {
-    --_step-compact-horizontal-padding: /** @summary Horizontal padding in compact mode at wide viewports */
-      var(--rh-length-5xl, 80px);
+    --_step-compact-horizontal-padding:
+      /** @summary Horizontal padding in compact mode at wide viewports */
+      var(
+          --rh-length-5xl,
+          80px
+        );
   }
 }
 
@@ -31,7 +35,6 @@
   grid-template-rows: var(--_step-template-rows, 24px) auto;
   grid-template-areas: var(--_step-template-areas);
   gap: var(--_step-row-gap, 16px) var(--_step-column-gap, 16px);
-
   justify-self: var(--_step-justify-self, start);
   align-items: var(--_step-align-items);
   padding-block-end: var(--_step-compact-vertical-padding);
@@ -105,10 +108,11 @@
     transition: ease text-underline-offset 0.3s;
 
     &:hover {
-      color: /** @summary Link text color on hover */
-        var(--rh-color-interactive-primary-hover);
-      text-decoration-color: /** @summary Link underline color on hover */
-        var(--rh-color-interactive-primary-hover);
+      /** @summary Link text color on hover */
+      color: var(--rh-color-interactive-primary-hover);
+
+      /** @summary Link underline color on hover */
+      text-decoration-color: var(--rh-color-interactive-primary-hover);
       text-underline-offset: max(6px, 0.33em);
     }
   }

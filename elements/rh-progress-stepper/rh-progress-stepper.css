@@ -28,12 +28,24 @@
       ) auto 1fr;
   --_step-justify-self: baseline;
   --_step-compact-vertical-padding: 0;
-  --_step-compact-horizontal-padding: /** @summary Horizontal padding between steps in compact mode */
-    var(--rh-length-2xl, 32px);
-  --_step-column-gap: /** @summary Horizontal gap between step elements */
-    var(--rh-length-lg, 16px);
-  --_step-row-gap: /** @summary Vertical spacing between rows in step grid */
-    var(--rh-length-xs, 4px);
+  --_step-compact-horizontal-padding:
+    /** @summary Horizontal padding between steps in compact mode */
+    var(
+        --rh-length-2xl,
+        32px
+      );
+  --_step-column-gap:
+    /** @summary Horizontal gap between step elements */
+    var(
+        --rh-length-lg,
+        16px
+      );
+  --_step-row-gap:
+    /** @summary Vertical spacing between rows in step grid */
+    var(
+        --rh-length-xs,
+        4px
+      );
   --_step-compact-grid-row: 2;
   --_step-description-margin: inherit;
   --_step-align-items: center;
@@ -50,8 +62,9 @@
 #container {
   display: flex;
   flex-direction: column;
-  gap: /** @summary Vertical spacing between stepper elements */
-    var(--rh-length-lg, 16px);
+
+  /** @summary Vertical spacing between stepper elements */
+  gap: var(--rh-length-lg, 16px);
 }
 
 #step-list {
@@ -108,8 +121,9 @@
   --_step-justify-self: start;
   --_step-icon-justify-self: center;
   --_step-description-grid-column: 2;
-  --_step-compact-vertical-padding: /** @summary Vertical padding between steps in compact vertical mode */
-    var(--rh-length-2xl, 32px);
+
+  /** @summary Vertical padding between steps in compact vertical mode */
+  --_step-compact-vertical-padding: var(--rh-length-2xl, 32px);
   --_step-column-gap: /** @summary Horizontal gap between icon and label in vertical mode */
     var(--rh-length-lg, 16px);
   --_step-row-gap: /** @summary Vertical spacing between step elements */
@@ -146,14 +160,22 @@
   &.vertical {
     --_step-template-areas: 'icon' 'line';
     --_step-compact-horizontal-padding: 0;
-    --_step-compact-vertical-padding: /** @summary Vertical padding in compact vertical mode */
-      var(--rh-length-lg, 16px);
+    --_step-compact-vertical-padding:
+      /** @summary Vertical padding in compact vertical mode */
+      var(
+          --rh-length-lg,
+          16px
+        );
   }
 
   & ::slotted(rh-progress-step) {
     /* set again to override container query in rh-progress-step */
-    --_step-compact-horizontal-padding: /** @summary Horizontal padding override for compact steps */
-      var(--rh-length-lg, 16px);
+    --_step-compact-horizontal-padding:
+      /** @summary Horizontal padding override for compact steps */
+      var(
+          --rh-length-lg,
+          16px
+        );
   }
 
   & #current-step {
