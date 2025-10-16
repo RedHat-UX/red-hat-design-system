@@ -30,6 +30,8 @@ interface CodeLineHeightsInfo {
   oneLinerHeight: number;
 }
 
+const prismApplyPromises = new WeakMap();
+
 /**
  * A code block applies special formatting to sections of code.
  *
@@ -270,11 +272,13 @@ export class RhCodeBlock extends LitElement {
   }
 
   async #applyPrismPrerenderedStyles() {
-    if (!isServer && getComputedStyle(this).getPropertyValue('--_styles-applied') !== 'true') {
-      const root = this.getRootNode();
+    let root: Node;
+    if (!isServer && !prismApplyPromises.has((root = this.getRootNode()))) {
       if (root instanceof Document || root instanceof ShadowRoot) {
-        const { preRenderedLightDomStyles: { styleSheet } } = await import('./prism.css.js');
-        root.adoptedStyleSheets = [...root.adoptedStyleSheets, styleSheet!];
+        prismApplyPromises.set(root, (async function() {
+          const { preRenderedLightDomStyles: { styleSheet } } = await import('./prism.css.js');
+          root.adoptedStyleSheets = [...root.adoptedStyleSheets, styleSheet!];
+        })());
       }
     }
   }
