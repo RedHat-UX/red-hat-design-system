@@ -53,7 +53,7 @@ export class RhProgressStepChangeEvent extends Event {
  *
  * @summary Single step in a progress stepper
  *
- * @fires { RhProgressStepChangeEvent } fired when this step becomes active
+ * @event { RhProgressStepChangeEvent } change fired when this step becomes active
  */
 @customElement('rh-progress-step')
 @themable
