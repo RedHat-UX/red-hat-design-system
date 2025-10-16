@@ -62,8 +62,12 @@
   position: absolute;
   white-space: nowrap;
   color: var(--_current-step-label-color);
-  font-weight: /* @summary Font weight for current step text */
-    var(--_current-step-weight, var(--rh-font-weight-body-text-medium, 500));
+  font-weight:
+    var(
+        --_current-step-weight,
+        /* @summary Font weight for current step text */
+        var(--rh-font-weight-body-text-medium, 500)
+      );
 }
 
 ::slotted(rh-progress-step:first-of-type) {
