@@ -30,6 +30,8 @@ interface CodeLineHeightsInfo {
   oneLinerHeight: number;
 }
 
+const prismApplyPromises = new WeakMap();
+
 /**
  * A code block applies special formatting to sections of code.
  *
@@ -179,9 +181,10 @@ export class RhCodeBlock extends LitElement {
     const expandable = this.#lineHeights.length > 5;
     const truncated = expandable && !fullHeight;
     const actions = !!this.actions.length;
+    const isIntersecting = this.#isIntersecting;
     return html`
       <div id="container"
-           class="${classMap({ actions, compact, expandable, fullHeight, resizable, truncated, wrap })}"
+           class="${classMap({ actions, compact, expandable, fullHeight, isIntersecting, resizable, truncated, wrap })}"
            @code-action="${this.#onCodeAction}">
         <div id="content-lines" tabindex="${ifDefined((!fullHeight || undefined) && 0)}">
           <div id="sizers" aria-hidden="true"></div>
@@ -269,11 +272,13 @@ export class RhCodeBlock extends LitElement {
   }
 
   async #applyPrismPrerenderedStyles() {
-    if (!isServer && getComputedStyle(this).getPropertyValue('--_styles-applied') !== 'true') {
-      const root = this.getRootNode();
+    let root: Node;
+    if (!isServer && !prismApplyPromises.has((root = this.getRootNode()))) {
       if (root instanceof Document || root instanceof ShadowRoot) {
-        const { preRenderedLightDomStyles: { styleSheet } } = await import('./prism.css.js');
-        root.adoptedStyleSheets = [...root.adoptedStyleSheets, styleSheet!];
+        prismApplyPromises.set(root, (async function() {
+          const { preRenderedLightDomStyles: { styleSheet } } = await import('./prism.css.js');
+          root.adoptedStyleSheets = [...root.adoptedStyleSheets, styleSheet!];
+        })());
       }
     }
   }
