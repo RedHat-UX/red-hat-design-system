@@ -153,12 +153,18 @@ export class RhCodeBlock extends LitElement {
 
   #isIntersecting = false;
   #io = new IntersectionObserver(rs => {
-    this.#isIntersecting = rs.some(r => r.isIntersecting);
+    const old = this.#isIntersecting;
+    const isIntersecting = rs.some(r => r.isIntersecting);
+    this.#isIntersecting = isIntersecting;
+    if (old !== isIntersecting) {
+      this.requestUpdate();
+    }
     this.#computeLineNumbers();
   }, { rootMargin: '50% 0px' });
 
   #ro = new ResizeObserver(() => this.#computeLineNumbers());
 
+  #lines: string[] = [];
   #lineHeights: `${string}px`[] = [];
 
   override connectedCallback() {
@@ -178,7 +184,7 @@ export class RhCodeBlock extends LitElement {
 
   render() {
     const { fullHeight, wrap, resizable, compact } = this;
-    const expandable = this.#lineHeights.length > 5;
+    const expandable = this.#lines.length > 5;
     const truncated = expandable && !fullHeight;
     const actions = !!this.actions.length;
     const isIntersecting = this.#isIntersecting;
@@ -343,10 +349,18 @@ export class RhCodeBlock extends LitElement {
     if (!this.#isIntersecting) {
       return;
     }
+
     await this.updateComplete;
     const codes =
         this.#prismOutput ? [this.shadowRoot?.getElementById('prism-output')].filter(x => !!x)
       : this.#getSlottedCodeElements();
+
+    this.#lines = codes.flatMap(element =>
+      element.textContent?.split(/\n(?!$)/g) ?? []);
+
+    if (this.lineNumbers === 'hidden') {
+      return;
+    }
 
     const infos: CodeLineHeightsInfo[] = codes.map(element => {
       const codeElement = this.#prismOutput ? element.querySelector('code') : element;
