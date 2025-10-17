@@ -2,5 +2,5 @@
 "@rhds/elements": patch
 ---
 
-`<rh-code-block>`: fixed ability to expand hide/show when hiding line numbers'
+`<rh-code-block>`: show expand button ("Show more") even when line numbers are hidden
   
