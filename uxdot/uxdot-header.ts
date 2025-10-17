@@ -17,16 +17,13 @@ export class UxdotHeader extends LitElement {
 
   @property({ type: Boolean, attribute: 'has-subnav' }) hasSubnav = false;
 
-  @property({ type: Boolean, attribute: 'has-search' }) hasSearch = false;
-
   render() {
-    const { hasSubnav, hasSearch } = this;
+    const { hasSubnav } = this;
     return html`
       <div id="container"
            part="container"
-           class=${classMap({ hasSubnav, hasSearch })}>
+           class=${classMap({ hasSubnav })}>
         <slot part="heading"></slot>
-        <slot name="search" part="search"></slot>
       </div>
       <slot name="subnav" part="subnav"></slot>
     `;
