@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 
@@ -6,10 +6,9 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
-
-import styles from './rh-menu.css';
 import { RhMenuItem } from './rh-menu-item.js';
 import { RhMenuItemGroup } from './rh-menu-item-group.js';
+import styles from './rh-menu.css';
 
 export class MenuToggleEvent extends Event {
   constructor(
@@ -39,6 +38,10 @@ export class RhMenu extends LitElement {
     getItems: () => this.getItems(this.#items ? this.#items : this._menuItems),
   });
 
+  /**
+   * override or set to add items to the roving tab index controller
+   * @param items original list of items
+   */
   getItems(items: HTMLElement[]): HTMLElement[] {
     return items;
   }
@@ -51,6 +54,9 @@ export class RhMenu extends LitElement {
     super.connectedCallback();
     this.id ||= getRandomId('menu');
     this.setAttribute('role', 'menu'); // TODO: use InternalsController.role when support/polyfill is better
+    if (!isServer) {
+      this.#onSlotchange();
+    }
   }
 
   render() {
@@ -77,8 +83,10 @@ export class RhMenu extends LitElement {
           return [element];
         } else if (element instanceof RhMenuItemGroup) {
           return Array.from(element.querySelectorAll('rh-menu-item'));
-        } else if (element instanceof HTMLElement && !element.hasAttribute('role')) {
-          element.setAttribute('role', 'menuitem');
+        } else if (element instanceof HTMLElement) {
+          if (!element.hasAttribute('role')) {
+            element.setAttribute('role', 'menuitem');
+          }
           return [element];
         } else {
           return [];
