@@ -238,6 +238,13 @@
   & #details-content {
     display: none;
   }
+
+  &:not([open]) {
+    & #details-content {
+      /* ensures the content is not visible to cmd+f unless the details are open */
+      visibility: hidden;
+    }
+  }
 }
 
 #secondary {
