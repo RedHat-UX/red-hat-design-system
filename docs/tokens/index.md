@@ -1,7 +1,7 @@
 ---
 layout: layouts/pages/has-toc.njk
 title: Overview
-tokenSearch: true
+tokenPage: true
 ---
 
 <link rel="stylesheet"
