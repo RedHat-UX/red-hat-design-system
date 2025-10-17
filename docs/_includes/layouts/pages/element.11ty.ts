@@ -410,7 +410,13 @@ export default class ElementsPage extends Renderer<Context> {
               <tbody>
                 ${(await Promise.all(slots.map(async slot => html`
                 <tr>
-                  <td><code>${slot.name}</code></td>
+                  <td><uxdot-copy-permalink>
+                    <span id="${tagName}-slots-${this.slugify(slot.name)}">
+                      <a href="#${tagName}-slots-${this.slugify(slot.name)}">
+                        <code>${slot.name}</code>
+                      </a>
+                    </span>
+                  </uxdot-copy-permalink></td>
                   <td>${await this.#innerMD(slot.summary)}</td>
                   <td>${await this.#innerMD(slot.description)}</td>
                 </tr>`))).join('')}
@@ -474,7 +480,15 @@ export default class ElementsPage extends Renderer<Context> {
               <tbody>
                 ${(await Promise.all(attributes.map(async attribute => html`
                 <tr>
-                  <td><code>${attribute.name}</code></td>
+                  <td>
+                    <uxdot-copy-permalink>
+                      <span id="${tagName}-attributes-${this.slugify(attribute.name)}">
+                        <a href="#${tagName}-attributes-${this.slugify(attribute.name)}">
+                          <code>${attribute.name}</code>
+                        </a>
+                      </span>
+                    </uxdot-copy-permalink>
+                  </td>
                   <td><code>${attribute.fieldName}</code></td>
                   <td>${await this.#innerMD(attribute.description)}</td>
                   <td class="type">${this.highlight('ts', attribute?.type?.text ?? 'unknown').replace(/\s+/g, ' ')}</td>
@@ -543,7 +557,15 @@ export default class ElementsPage extends Renderer<Context> {
               <tbody>
                 ${(await Promise.all(methods.map(async method => html`
                 <tr>
-                  <td><code>${method.name}(${stringifyParams(method)})</code></td>
+                  <td>
+                    <uxdot-copy-permalink>
+                      <span id="${tagName}-methods-${this.slugify(method.name)}">
+                        <a href="#${tagName}-methods-${this.slugify(method.name)}">
+                          <code>${method.name}(${stringifyParams(method)})</code>
+                        </a>
+                      </span>
+                    </uxdot-copy-permalink>
+                  </td>
                   <td>${await this.#innerMD(method.description)}</td>
                 </tr>`))).join('')}
               </tbody>
@@ -603,7 +625,15 @@ export default class ElementsPage extends Renderer<Context> {
               <tbody>
                 ${(await Promise.all(events.map(async event => html`
                 <tr>
-                  <td><code>${event.name}</code></td>
+                  <td>
+                    <uxdot-copy-permalink></uxdot-copy-permalink>
+                      <span id="${tagName}-events-${this.slugify(event.name)}">
+                        <a href="#${tagName}-events-${this.slugify(event.name)}">
+                          <code>${event.name}</code>
+                        </a>
+                      </span>
+                    </uxdot-copy-permalink>
+                  </td>
                   <td>${await this.#innerMD(event.description)}</td>
                 </tr>`))).join('')}
               </tbody>
@@ -664,7 +694,15 @@ export default class ElementsPage extends Renderer<Context> {
               <tbody>
                 ${(await Promise.all(parts.map(async part => html`
                 <tr>
-                  <td><code>${part.name}</code></td>
+                  <td>
+                    <uxdot-copy-permalink>
+                      <span id="${tagName}-css-parts-${this.slugify(part.name)}">
+                        <a href="#${tagName}-css-parts-${this.slugify(part.name)}">
+                          <code>${part.name}</code>
+                        </a>
+                      </span>
+                    </uxdot-copy-permalink>
+                  </td>
                   <td>${await this.#innerMD(part.summary)}</td>
                   <td>${await this.#innerMD(part.description)}</td>
                 </tr>`))).join('')}
