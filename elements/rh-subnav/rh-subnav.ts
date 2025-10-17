@@ -11,8 +11,6 @@ import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palet
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-subnav.css';
-import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
-
 
 /**
  * A subnavigation allows users to navigate between a small number of page links.
@@ -44,8 +42,6 @@ export class RhSubnav extends LitElement {
   }
 
   #allLinkElements: HTMLAnchorElement[] = [];
-
-  #slots = new SlotController(this, null);
 
   #overflow = new OverflowController(this);
 
@@ -133,7 +129,8 @@ export class RhSubnav extends LitElement {
 
   async #onSlotchange() {
     if (!isServer) {
-      this.#allLinks = this.#slots.getSlotted();
+      const slot = this.shadowRoot?.querySelector('slot');
+      this.#allLinks = slot?.assignedElements() as HTMLAnchorElement[];
       this.#overflow.init(this.linkList, this.#allLinks);
       await this.updateComplete;
       this.#firstLink?.classList.add('first');
