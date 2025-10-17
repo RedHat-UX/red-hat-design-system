@@ -1,4 +1,4 @@
-var _RhCodeBlock_instances, _RhCodeBlock_slots, _RhCodeBlock_prismOutput, _RhCodeBlock_isIntersecting, _RhCodeBlock_io, _RhCodeBlock_ro, _RhCodeBlock_lineHeights, _RhCodeBlock_onSlotChange, _RhCodeBlock_applyPrismPrerenderedStyles, _RhCodeBlock_highlightWithPrism, _RhCodeBlock_wrapChanged, _RhCodeBlock_getSlottedCodeElements, _RhCodeBlock_getFabContentElements, _RhCodeBlock_computeLineNumbers, _RhCodeBlock_onActionsClick, _RhCodeBlock_onActionsKeyup, _RhCodeBlock_onCodeAction, _RhCodeBlock_onClickExpand, _RhCodeBlock_copy;
+var _RhCodeBlock_instances, _RhCodeBlock_slots, _RhCodeBlock_prismOutput, _RhCodeBlock_isIntersecting, _RhCodeBlock_io, _RhCodeBlock_ro, _RhCodeBlock_lines, _RhCodeBlock_lineHeights, _RhCodeBlock_onSlotChange, _RhCodeBlock_applyPrismPrerenderedStyles, _RhCodeBlock_highlightWithPrism, _RhCodeBlock_wrapChanged, _RhCodeBlock_getSlottedCodeElements, _RhCodeBlock_getFabContentElements, _RhCodeBlock_computeLineNumbers, _RhCodeBlock_onActionsClick, _RhCodeBlock_onActionsKeyup, _RhCodeBlock_onCodeAction, _RhCodeBlock_onClickExpand, _RhCodeBlock_copy;
 var RhCodeBlock_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { CSSResult, LitElement, html, isServer } from 'lit';
@@ -67,10 +67,16 @@ let RhCodeBlock = RhCodeBlock_1 = class RhCodeBlock extends LitElement {
         _RhCodeBlock_prismOutput.set(this, void 0);
         _RhCodeBlock_isIntersecting.set(this, false);
         _RhCodeBlock_io.set(this, new IntersectionObserver(rs => {
-            __classPrivateFieldSet(this, _RhCodeBlock_isIntersecting, rs.some(r => r.isIntersecting), "f");
+            const old = __classPrivateFieldGet(this, _RhCodeBlock_isIntersecting, "f");
+            const isIntersecting = rs.some(r => r.isIntersecting);
+            __classPrivateFieldSet(this, _RhCodeBlock_isIntersecting, isIntersecting, "f");
+            if (old !== isIntersecting) {
+                this.requestUpdate();
+            }
             __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_computeLineNumbers).call(this);
         }, { rootMargin: '50% 0px' }));
         _RhCodeBlock_ro.set(this, new ResizeObserver(() => __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_computeLineNumbers).call(this)));
+        _RhCodeBlock_lines.set(this, []);
         _RhCodeBlock_lineHeights.set(this, []);
     }
     connectedCallback() {
@@ -88,7 +94,7 @@ let RhCodeBlock = RhCodeBlock_1 = class RhCodeBlock extends LitElement {
     }
     render() {
         const { fullHeight, wrap, resizable, compact } = this;
-        const expandable = __classPrivateFieldGet(this, _RhCodeBlock_lineHeights, "f").length > 5;
+        const expandable = __classPrivateFieldGet(this, _RhCodeBlock_lines, "f").length > 5;
         const truncated = expandable && !fullHeight;
         const actions = !!this.actions.length;
         const isIntersecting = __classPrivateFieldGet(this, _RhCodeBlock_isIntersecting, "f");
@@ -174,6 +180,7 @@ _RhCodeBlock_prismOutput = new WeakMap();
 _RhCodeBlock_isIntersecting = new WeakMap();
 _RhCodeBlock_io = new WeakMap();
 _RhCodeBlock_ro = new WeakMap();
+_RhCodeBlock_lines = new WeakMap();
 _RhCodeBlock_lineHeights = new WeakMap();
 _RhCodeBlock_instances = new WeakSet();
 _RhCodeBlock_onSlotChange = async function _RhCodeBlock_onSlotChange() {
@@ -251,12 +258,16 @@ _RhCodeBlock_computeLineNumbers =
  * Portions copyright prism.js authors (MIT license)
  */
 async function _RhCodeBlock_computeLineNumbers() {
-    if (this.lineNumbers === 'hidden' || !__classPrivateFieldGet(this, _RhCodeBlock_isIntersecting, "f")) {
+    if (!__classPrivateFieldGet(this, _RhCodeBlock_isIntersecting, "f")) {
         return;
     }
     await this.updateComplete;
     const codes = __classPrivateFieldGet(this, _RhCodeBlock_prismOutput, "f") ? [this.shadowRoot?.getElementById('prism-output')].filter(x => !!x)
         : __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_getSlottedCodeElements).call(this);
+    __classPrivateFieldSet(this, _RhCodeBlock_lines, codes.flatMap(element => element.textContent?.split(/\n(?!$)/g) ?? []), "f");
+    if (this.lineNumbers === 'hidden') {
+        return;
+    }
     const infos = codes.map(element => {
         const codeElement = __classPrivateFieldGet(this, _RhCodeBlock_prismOutput, "f") ? element.querySelector('code') : element;
         if (codeElement) {
