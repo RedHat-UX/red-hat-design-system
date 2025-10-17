@@ -1,5 +1,10 @@
 # @rhds/elements
 
+## 3.1.2
+### Patch Changes
+
+- c73539a: `<rh-code-block>`: set content-visibility for improved performance on large pages with many codeblocks.
+
 ## 3.1.1
 ### Patch Changes
 
