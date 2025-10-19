@@ -1,0 +1,16 @@
+<rh-code-block highlighting="prerendered" language="bash" actions="copy">
+  <pre class="language-shell-session" tabindex="0"><code class="language-shell-session"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token keyword">for</span> <span class="token for-or-select variable">node</span> <span class="token keyword">in</span> <span class="token variable"><span class="token variable">$(</span>oc get nodes <span class="token parameter variable">-o</span> <span class="token assign-left variable">jsonpath</span><span class="token operator">=</span><span class="token string">'{.items[*].metadata.name}'</span><span class="token variable">)</span></span><span class="token punctuation">;</span> <span class="token keyword">do</span> <span class="token builtin class-name">echo</span> <span class="token variable">${node}</span> <span class="token punctuation">;</span> oc adm cordon <span class="token variable">${node}</span> <span class="token punctuation">;</span> <span class="token keyword">done</span></span></span></code></pre>
+</rh-code-block>
+
+<label>Paste your results here:<br><textarea></textarea></label>
+
+<script type="module">
+  import {RhCodeBlockCopyEvent} from '@rhds/elements/rh-code-block/rh-code-block.js';
+
+  document.body.addEventListener('copy', function(event) {
+    if (event instanceof RhCodeBlockCopyEvent) {
+      // remove prompt and surrounding whitespace from the start of the string
+      event.content = event.content.replace(/^\s*\$|#\s*/, '');
+    }
+  });
+</script>

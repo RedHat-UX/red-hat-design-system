@@ -32,12 +32,24 @@ interface CodeLineHeightsInfo {
 
 const prismApplyPromises = new WeakMap();
 
+export class RhCodeBlockCopyEvent extends Event {
+  constructor(
+    /** Text content to copy */
+    public content: string
+  ) {
+    super('copy', { bubbles: true, cancelable: true });
+  }
+}
+
 /**
  * A code block applies special formatting to sections of code.
  *
- * @summary Formats code strings within a container
- *
  * @alias code-block
+ *
+ * @summary Formats code strings within a container
+ * @event {RhCodeBlockCopyEvent} copy - fired when the user requests to copy the code block text.
+ *                                      Modify the `event.content` field to change the copied text
+ *                                      (e.g. to remove a prompt from a shell command)
  */
 @customElement('rh-code-block')
 @themable
@@ -455,28 +467,33 @@ export class RhCodeBlock extends LitElement {
         x => x.textContent,
       ).join('');
     }
-    await navigator.clipboard.writeText(content);
-    // TODO: handle slotted fabs
-    const slot = this.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="action-label-copy"]');
-    const tooltip = slot?.closest('rh-tooltip');
-    tooltip?.hide();
-    const assignedElements = this.#getFabContentElements(slot);
-    for (const el of assignedElements) {
-      if (el instanceof HTMLElement) {
-        el.hidden = el.dataset.codeBlockState !== 'active';
+    const event = new RhCodeBlockCopyEvent(content);
+    if (this.dispatchEvent(event) && !event.defaultPrevented) {
+      console.log('#copy', event);
+      await navigator.clipboard.writeText(event.content);
+      // TODO: handle slotted fabs
+      const slot =
+        this.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="action-label-copy"]');
+      const tooltip = slot?.closest('rh-tooltip');
+      tooltip?.hide();
+      const assignedElements = this.#getFabContentElements(slot);
+      for (const el of assignedElements) {
+        if (el instanceof HTMLElement) {
+          el.hidden = el.dataset.codeBlockState !== 'active';
+        }
       }
-    }
-    this.requestUpdate();
-    tooltip?.show();
-    await new Promise(r => setTimeout(r, 5_000));
-    tooltip?.hide();
-    for (const el of assignedElements) {
-      if (el instanceof HTMLElement) {
-        el.hidden = el.dataset.codeBlockState === 'active';
+      this.requestUpdate();
+      tooltip?.show();
+      await new Promise(r => setTimeout(r, 5_000));
+      tooltip?.hide();
+      for (const el of assignedElements) {
+        if (el instanceof HTMLElement) {
+          el.hidden = el.dataset.codeBlockState === 'active';
+        }
       }
+      this.requestUpdate();
+      tooltip?.show();
     }
-    this.requestUpdate();
-    tooltip?.show();
   }
 }
 
