@@ -469,7 +469,6 @@ export class RhCodeBlock extends LitElement {
     }
     const event = new RhCodeBlockCopyEvent(content);
     if (this.dispatchEvent(event) && !event.defaultPrevented) {
-      console.log('#copy', event);
       await navigator.clipboard.writeText(event.content);
       // TODO: handle slotted fabs
       const slot =
