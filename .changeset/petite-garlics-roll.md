@@ -2,5 +2,5 @@
 "@rhds/elements": minor
 ---
 
-Add support for icons in rh-tab component, with a new demo page
+<rh-tab>: added support for `icon` and `icon-set` attributes
   

@@ -11,6 +11,13 @@
     var(--rh-border-width-sm, 1px)
     solid
     var(--rh-color-surface);
+  --rh-icon-size: var(--rh-size-icon-01, 16px);
+}
+
+slot[name='icon'] > rh-icon {
+  inline-size: var(--rh-icon-size);
+  block-size: var(--rh-icon-size);
+  flex: none;
 }
 
 [part='text'] {
@@ -416,3 +423,4 @@
     outline-offset: -3px;
   }
 }
+
