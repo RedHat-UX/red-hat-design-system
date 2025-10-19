@@ -298,6 +298,14 @@
   --_gradient-angle: 270deg;
 }
 
+:host(.copy-error) rh-tooltip {
+  --rh-tooltip-content-background-color: var(--rh-color-surface-status-danger);
+  --rh-tooltip-content-color: var(--rh-color-status-danger);
+  --_rh-tooltip-shake-x: 0;
+
+  animation: shake 0.613s ease-in-out;
+}
+
 #actions rh-tooltip {
   display: block;
 }
@@ -394,4 +402,26 @@
 
 :host([highlighting='client']) #content::slotted(:is(script, pre)) {
   display: none;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    --_rh-tooltip-shake-x: 0;
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    --_rh-tooltip-shake-x: -10px;
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    --_rh-tooltip-shake-x: 10px;
+  }
 }

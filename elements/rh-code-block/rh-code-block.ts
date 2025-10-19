@@ -468,12 +468,12 @@ export class RhCodeBlock extends LitElement {
       ).join('');
     }
     const event = new RhCodeBlockCopyEvent(content);
+    const slot =
+      this.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="action-label-copy"]');
+    const tooltip = slot?.closest('rh-tooltip');
     if (this.dispatchEvent(event) && !event.defaultPrevented) {
       await navigator.clipboard.writeText(event.content);
       // TODO: handle slotted fabs
-      const slot =
-        this.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="action-label-copy"]');
-      const tooltip = slot?.closest('rh-tooltip');
       tooltip?.hide();
       const assignedElements = this.#getFabContentElements(slot);
       for (const el of assignedElements) {
@@ -492,6 +492,11 @@ export class RhCodeBlock extends LitElement {
       }
       this.requestUpdate();
       tooltip?.show();
+    } else if (tooltip) {
+      this.classList.add('copy-error');
+      this.addEventListener('animationend', () => {
+        this.classList.remove('copy-error');
+      }, { once: true });
     }
   }
 }
