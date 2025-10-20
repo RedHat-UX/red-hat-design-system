@@ -94,16 +94,6 @@ export class RhNavigationPrimary extends LitElement {
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel = 'main';
 
-  static focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
-    return parent.querySelectorAll(`a,
-                                    button:not([disabled]),
-                                    input:not([disabled]),
-                                    select:not([disabled]),
-                                    textarea:not([disabled]),
-                                    [tabindex]:not([tabindex="-1"]):not([disabled]),
-                                    details:not([disabled]),
-                                    summary:not(:disabled)`);
-  }
 
   constructor() {
     super();
@@ -243,7 +233,7 @@ export class RhNavigationPrimary extends LitElement {
   #primaryItems(): RhNavigationPrimaryItem[] {
     return Array.from(
       this.querySelectorAll(
-        'rh-navigation-primary-item:not([slot])',
+        'rh-navigation-primary-item:not([slot]), rh-navigation-link:not([slot])'
       )
     );
   }

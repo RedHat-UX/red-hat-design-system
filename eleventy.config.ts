@@ -16,6 +16,7 @@ import RHDSPlugin from '#11ty-plugins/rhds.js';
 import DesignTokensPlugin from '#11ty-plugins/tokens.js';
 import RHDSMarkdownItPlugin from '#11ty-plugins/markdown-it.js';
 import ImportMapPlugin from '#11ty-plugins/importMap.js';
+import LargeDemoWorkaroundPlugin from '#11ty-plugins/large-demo-workaround.js';
 
 export interface GlobalData {
   runMode: 'build' | 'watch' | 'serve';
@@ -256,7 +257,6 @@ export default async function(eleventyConfig: UserConfig) {
       'uxdot/uxdot-pattern.ts',
       'uxdot/uxdot-repo-status-checklist.ts',
       'uxdot/uxdot-repo-status-list.ts',
-      'uxdot/uxdot-search.ts',
       'uxdot/uxdot-sidenav.ts',
       'uxdot/uxdot-spacer-tokens-table.ts',
       'uxdot/uxdot-toc.ts',
@@ -290,6 +290,10 @@ export default async function(eleventyConfig: UserConfig) {
       'getstarted',
     ],
   });
+
+  // Workaround for large demo files that break Nunjucks includes
+  // Can be removed once the underlying issue is resolved
+  eleventyConfig.addPlugin(LargeDemoWorkaroundPlugin);
 
   return {
     templateFormats: ['html', 'md', 'njk', '11ty.js', '11ty.cjs'],

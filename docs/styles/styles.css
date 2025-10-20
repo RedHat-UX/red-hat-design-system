@@ -233,10 +233,14 @@
     margin-block: var(--rh-space-lg);
   }
 
-  uxdot-example + figcaption ol {
+  uxdot-example + figcaption ol,
+  uxdot-example + figcaption p {
     color: var(--rh-color-text-secondary);
     font-size: var(--rh-font-size-body-text-sm, 0.875rem);
     line-height: var(--rh-line-height-body-text, 1.5);
+  }
+
+  uxdot-example + figcaption ol {
     list-style-position: inside;
   }
 

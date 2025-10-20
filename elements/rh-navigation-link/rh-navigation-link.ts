@@ -39,20 +39,10 @@ export class RhNavigationLink extends LitElement {
   @property({ reflect: true }) href?: string;
 
   /**
-   * Optional current-page attribute that, highlights the item as the current page.
-   * Used to pass the aria-current attribute to the anchor element when the <a> is not slotted.
+   * Indicates that this link refers to the current page for accessibility; used with the `href` attribute.
+   * Sets the `aria-current` attribute to 'page' on the anchor element internally in the shadow DOM.
    */
   @property({ attribute: 'current-page', type: Boolean }) currentPage? = false;
-
-  firstUpdated(): void {
-    /**
-     * SSR Adds the role, but then removes when ElementInternals is hydrated
-     * However, axe-dev tools then complains as it doesn't handle Internals correctly
-     * So.... lets readd it for brevity, then when axe decides to fix their stuff,
-     * we can remove at a later date.
-     */
-    this.role = 'listitem';
-  }
 
   override async scheduleUpdate() {
     if (this.icon) {
@@ -73,9 +63,8 @@ export class RhNavigationLink extends LitElement {
               Can contain a rh-icon, svg, or img tag.
             -->
             <slot name="icon">
-              ${this.icon ?
-                html`<rh-icon icon="${ifDefined(this.icon)}" set="${ifDefined(this.iconSet)}"></rh-icon>`
-                : html``
+              ${!this.icon ? html``
+                : html`<rh-icon icon="${ifDefined(this.icon)}" set="${ifDefined(this.iconSet)}"></rh-icon>`
               }
             </slot>
             <!--
@@ -85,8 +74,7 @@ export class RhNavigationLink extends LitElement {
             -->
             <slot></slot>
           </a>`
-          : html`
-          <slot></slot>`
+          : html`<slot></slot>`
         }
       </div>
     `;

@@ -373,14 +373,7 @@ describe('<rh-audio-player>', function() {
         });
       });
 
-      /** WARNING:
-       * Skipping this due to errors currently in runing tests.
-       * Likely caused by a timing issue, but nothing has changed in the component.
-       * or in the tests recently.
-       * It was deemed it was better to skip this test then try and rewrite the
-       * tests or fix the component at this time.
-       */
-      describe.skip('clicking playback rate select', function() {
+      describe('clicking playback rate select', function() {
         beforeEach(waitForCanplaythrough);
         beforeEach(async function() {
           await clickElementAtCenter(querySelectorDeep('rh-audio-player-rate-stepper:not([hidden]) select')!);
@@ -559,15 +552,7 @@ describe('<rh-audio-player>', function() {
         beforeEach(seek(60));
       });
 
-
-      /** WARNING:
-       * Skipping this due to errors currently in runing tests.
-       * Likely caused by a timing issue, but nothing has changed in the component.
-       * or in the tests recently.
-       * It was deemed it was better to skip this test then try and rewrite the
-       * tests or fix the component at this time.
-       */
-      describe.skip('testing playback rate', function() {
+      describe('testing playback rate', function() {
         beforeEach(waitForCanplaythrough);
         describe('clicking playback rate select', function() {
           beforeEach(waitForCanplaythrough);
