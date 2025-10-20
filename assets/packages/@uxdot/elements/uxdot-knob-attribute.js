@@ -1,4 +1,4 @@
-var _UxdotKnobAttribute_instances, _UxdotKnobAttribute_values, _UxdotKnobAttribute_iconSet, _UxdotKnobAttribute_icons, _UxdotKnobAttribute_typeMembers, _UxdotKnobAttribute_computeValues, _UxdotKnobAttribute_computeIcons, _UxdotKnobAttribute_getValueForCheckboxes, _UxdotKnobAttribute_onChange;
+var _UxdotKnobAttribute_instances, _UxdotKnobAttribute_values, _UxdotKnobAttribute_iconSet, _UxdotKnobAttribute_icons, _UxdotKnobAttribute_typeMembers, _UxdotKnobAttribute_computeValues, _UxdotKnobAttribute_computeIcons, _UxdotKnobAttribute_getValueForCheckboxes, _UxdotKnobAttribute_firstChange, _UxdotKnobAttribute_onChange;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -21,6 +21,8 @@ let UxdotKnobAttribute = class UxdotKnobAttribute extends LitElement {
         _UxdotKnobAttribute_iconSet.set(this, null);
         _UxdotKnobAttribute_icons.set(this, []);
         _UxdotKnobAttribute_typeMembers.set(this, []);
+        // guards against the initial pf-select change event
+        _UxdotKnobAttribute_firstChange.set(this, false);
     }
     get value() {
         const el = this.shadowRoot?.getElementById('knob');
@@ -112,6 +114,7 @@ _UxdotKnobAttribute_values = new WeakMap();
 _UxdotKnobAttribute_iconSet = new WeakMap();
 _UxdotKnobAttribute_icons = new WeakMap();
 _UxdotKnobAttribute_typeMembers = new WeakMap();
+_UxdotKnobAttribute_firstChange = new WeakMap();
 _UxdotKnobAttribute_instances = new WeakSet();
 _UxdotKnobAttribute_computeValues = async function _UxdotKnobAttribute_computeValues() {
     if (isServer) {
@@ -202,14 +205,19 @@ _UxdotKnobAttribute_getValueForCheckboxes = function _UxdotKnobAttribute_getValu
         .join(' ');
 };
 _UxdotKnobAttribute_onChange = async function _UxdotKnobAttribute_onChange(event) {
-    const target = event.target;
-    const demo = this.closest('uxdot-demo');
-    await target.updateComplete;
-    const value = target.type === 'checkbox' ? __classPrivateFieldGet(this, _UxdotKnobAttribute_instances, "m", _UxdotKnobAttribute_getValueForCheckboxes).call(this)
-        : this.type === 'boolean' ? target.checked
-            : target.value;
-    if (demo && this.name) {
-        demo.setDemoElementAttribute(this.name, value);
+    if (__classPrivateFieldGet(this, _UxdotKnobAttribute_firstChange, "f") || event.target?.localName !== 'pf-select') {
+        const target = event.target;
+        const demo = this.closest('uxdot-demo');
+        await target.updateComplete;
+        const value = target.type === 'checkbox' ? __classPrivateFieldGet(this, _UxdotKnobAttribute_instances, "m", _UxdotKnobAttribute_getValueForCheckboxes).call(this)
+            : this.type === 'boolean' ? target.checked
+                : target.value;
+        if (demo && this.name) {
+            demo.setDemoElementAttribute(this.name, value);
+        }
+    }
+    else {
+        __classPrivateFieldSet(this, _UxdotKnobAttribute_firstChange, true, "f");
     }
 };
 UxdotKnobAttribute.styles = [styles];
