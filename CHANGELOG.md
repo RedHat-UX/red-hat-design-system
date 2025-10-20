@@ -1,5 +1,10 @@
 # @rhds/elements
 
+## 3.1.3
+### Patch Changes
+
+- 2c54b9a: `<rh-code-block>`: show expand button ("Show more") even when line numbers are hidden
+
 ## 3.1.2
 ### Patch Changes
 
