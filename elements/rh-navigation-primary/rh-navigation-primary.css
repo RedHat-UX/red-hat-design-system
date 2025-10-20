@@ -46,6 +46,19 @@
   display: none !important;
 }
 
+.visually-hidden {
+  position: absolute !important;
+  block-size: 1px;
+  inline-size: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+  padding: 0 !important;
+  margin: -1px !important;
+}
+
 #bar {
   position: relative;
   display: grid;
@@ -241,6 +254,13 @@
 
   & #details-content {
     display: none;
+  }
+
+  &:not([open]) {
+    & #details-content {
+      /* ensures the content is not visible to cmd+f unless the details are open */
+      visibility: hidden;
+    }
   }
 }
 
