@@ -16,7 +16,8 @@ import '@rhds/elements/rh-button/rh-button.js';
  * @alias Button Group
  */
 @customElement('rh-button-group')
-export class RhButtonGroup extends themable(LitElement) {
+@themable
+export class RhButtonGroup extends LitElement {
   static readonly styles = [styles];
   #logger = new Logger(this);
 
@@ -29,39 +30,37 @@ export class RhButtonGroup extends themable(LitElement) {
     if (typeof window === 'undefined') {
       return;
     }
+    this.#setupButtons();
+  }
 
-    const setupToolbar = () => {
-      if (!this._buttons?.length) {
-        this.#logger.warn('rh-button-group has no slotted buttons');
-        return;
+  #setupButtons() {
+    if (!this._buttons?.length) {
+      this.#logger.warn('rh-button-group has no slotted buttons');
+      return;
+    }
+
+    if (this.getAttribute('role') === 'toolbar') {
+      this._buttons.forEach(b =>
+        b.setAttribute('tabindex', b === this._buttons[0] ? '0' : '-1')
+      );
+
+      if (!this._rovingController) {
+        this._rovingController = RovingTabindexController.of(this, {
+          getItems: () => this._buttons,
+        });
+        this.addController(this._rovingController);
       }
+    } else {
+      this._buttons.forEach(btn => btn.setAttribute('tabindex', '0'));
+    }
+  }
 
-      if (this.getAttribute('role') === 'toolbar') {
-        this._buttons.forEach(b =>
-          b.setAttribute('tabindex', b === this._buttons[0] ? '0' : '-1')
-        );
-
-        if (!this._rovingController) {
-          this._rovingController = RovingTabindexController.of(this, {
-            getItems: () => this._buttons,
-          });
-          this.addController(this._rovingController);
-        }
-      } else {
-        this._buttons.forEach(btn => btn.setAttribute('tabindex', '0'));
-      }
-    };
-
-    setupToolbar();
-
-    const slot = this.shadowRoot!.querySelector('slot');
-    slot?.addEventListener('slotchange', () => {
-      setupToolbar();
-    });
+  #onSlotchange() {
+    this.#setupButtons();
   }
 
   override render() {
-    return html`<slot></slot>`;
+    return html`<slot @slotchange="${this.#onSlotchange}"></slot>`;
   }
 }
 
