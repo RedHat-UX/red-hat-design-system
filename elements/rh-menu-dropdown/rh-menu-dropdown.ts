@@ -1,15 +1,18 @@
 import { LitElement, html, isServer, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
-
-import styles from './rh-menu-dropdown.css';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
 import { queryAll } from 'lit/decorators/query-all.js';
+
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
+
 import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 import '@rhds/elements/rh-menu/rh-menu.js';
+
 import { RhMenuItem } from '../rh-menu/rh-menu-item.js';
+
+import styles from './rh-menu-dropdown.css';
 
 /** Fired when a user selects an action or link from the menu */
 export class MenuDropdownSelectEvent extends Event {
@@ -132,6 +135,7 @@ export class RhMenuDropdown extends LitElement {
 
   render(): TemplateResult<1> {
     return html`
+    
       <div @focusout=${this.#onFocusOut} class="menu-dropdown-container">
         <button
           id="menu-toggle"
@@ -166,14 +170,17 @@ export class RhMenuDropdown extends LitElement {
           @click=${this.#onSelect}
           @keydown=${this.#onKeyDown}
         >
-          <!-- 
-            Use this slot to provide the menu content. Use the "rh-menu" component 
-            for the menu panel, and use "rh-menu-items" to define the individual menu items.
-            To organize menu items into groups, use the "rh-menu-item-group" component.
-          -->
-          <slot></slot>
+          <rh-menu role="menu" aria-labelledby="menu-toggle">
+            <!-- 
+              Use this slot to provide the menu content. Use the "rh-menu" component 
+              for the menu panel, and use "rh-menu-items" to define the individual menu items.
+              To organize menu items into groups, use the "rh-menu-item-group" component.
+            -->
+            <slot></slot>
+          </rh-menu>
         </div>
       </div>
+    
     `;
   }
 
@@ -284,7 +291,7 @@ export class RhMenuDropdown extends LitElement {
 
   #onFocusOut(event: FocusEvent) {
     const relatedTarget = event.relatedTarget as Node | null;
-
+    console.log('relatedTarget', relatedTarget);
     // If the next focused element is outside this component, close the dropdown
     if (
       relatedTarget !== this.menuToggleButton
