@@ -291,7 +291,6 @@ export class RhMenuDropdown extends LitElement {
 
   #onFocusOut(event: FocusEvent) {
     const relatedTarget = event.relatedTarget as Node | null;
-    console.log('relatedTarget', relatedTarget);
     // If the next focused element is outside this component, close the dropdown
     if (
       relatedTarget !== this.menuToggleButton
