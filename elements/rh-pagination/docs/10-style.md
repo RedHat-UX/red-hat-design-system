@@ -40,12 +40,16 @@ The box variant shows a background color for each page number and navigation con
        height="48">
 </uxdot-example>
 
-### Open variant
+### Borderless variant
 
-The open variant has transparent backgrounds for all buttons. The active state for a page number shows a blue border on the bottom.
+The borderless variant has transparent backgrounds for all buttons. The active state for a page number shows a blue border on the bottom.
+
+{% alert "info" %}
+**Note:** Use `variant="borderless"` in your code. The old `variant="open"` is deprecated but still works for backward compatibility.
+{% endalert %}
 
 <uxdot-example color-palette="lightest" width-adjustment="736px">
-  <img alt="Truncated pagination with 50 pages and an input on the right hand side. This version is 'open' where there is no background color to denote a box to click on."
+  <img alt="Truncated pagination with 50 pages and an input on the right hand side. This version is 'borderless' where there is no background color to denote a box to click on."
        src="../pagination-style-open-variant.svg"
        width="736"
        height="48">
@@ -96,7 +100,7 @@ colors to prevent background colors of the box variant from bleeding into the su
   </uxdot-example>
 
   <uxdot-example color-palette="lightest" width-adjustment="348px">
-    <img alt="Light theme pagination open variant"
+    <img alt="Light theme pagination borderless variant"
          src="../pagination-style-theme-lightest-open.svg"
          width="348"
          height="116">
@@ -114,7 +118,7 @@ colors to prevent background colors of the box variant from bleeding into the su
   </uxdot-example>
 
   <uxdot-example color-palette="darkest" width-adjustment="348px">
-    <img alt="Darkest theme pagination open variant"
+    <img alt="Darkest theme pagination borderless variant"
          src="../pagination-style-theme-darkest-open.svg"
          width="348"
          height="116">
@@ -150,10 +154,10 @@ Compact pagination omits the page numbers and moves the page input field between
   <p>If you have enough space, the <a href="/elements/pagination/guidelines/#responsive-design">mobile version</a>, which has the full page input field to the right or below, is preferred.</p>
 </rh-alert>
 
-The compact configuration comes in both the box and open variant styles. It’s also available in the default and small sizes.
+The compact configuration comes in both the box and borderless variant styles. It's also available in the default and small sizes.
 
 <uxdot-example color-palette="lightest" width-adjustment="720px">
-  <img alt="Four paginations. All compact. Two normal sized and two small sized. Box and open."
+  <img alt="Four paginations. All compact. Two normal sized and two small sized. Box and borderless."
        src="../pagination-style-compact-light.svg"
        width="720"
        height="148">
@@ -168,7 +172,7 @@ The compact configuration comes in both the box and open variant styles. It’s 
 
 ### Active page
 
-Styles for the active page are different from inactive pages so users can see their location. In the box and open variants, active pages show a blue border either at the top or bottom. Active page styles do not apply to control buttons because they are not page numbers.
+Styles for the active page are different from inactive pages so users can see their location. In the box and borderless variants, active pages show a blue border either at the top or bottom. Active page styles do not apply to control buttons because they are not page numbers.
 
 <rh-alert state="info">
   <h3 slot="header">Helpful tip</h3>
@@ -178,14 +182,14 @@ Styles for the active page are different from inactive pages so users can see th
 The examples below show active page styles for page 4.
 
 <uxdot-example color-palette="lightest" width-adjustment="548px">
-  <img alt="Two light theme paginations; both are showing an active page of 4. Normal and open variants."
+  <img alt="Two light theme paginations; both are showing an active page of 4. Normal and borderless variants."
        src="../pagination-active-page-theme-light.svg"
        width="548"
        height="144">
 </uxdot-example>
 
 <uxdot-example no-border variant="full">
-  <img alt="Two dark theme paginations; both are showing an active page of 4. Normal and open variants."
+  <img alt="Two dark theme paginations; both are showing an active page of 4. Normal and borderless variants."
        src="../pagination-active-page-theme-dark.svg"
        width="1140"
        height="272">
