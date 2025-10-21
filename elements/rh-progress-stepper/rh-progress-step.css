@@ -60,10 +60,13 @@
   place-self: center var(--_step-icon-justify-self);
   block-size: var(--_step-icon-width);
   inline-size: var(--_step-icon-width);
-  border: var(--rh-border-width-md) solid var(--_step-line-color);
+  border: var(--rh-border-width-md, 2px) solid var(--_step-line-color);
   border-radius: 50%;
   color: var(--_step-color);
-  background-color: light-dark(var(--rh-color-surface-lightest), var(--rh-color-surface-darkest));
+  background-color:
+    light-dark(
+        var(--rh-color-surface-lightest, #ffffff),
+        var(--rh-color-surface-darkest, #151515));
 }
 
 #label {
@@ -75,7 +78,10 @@
 
   &:is(a[href]) {
     text-decoration: underline dashed 1px;
-    text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40));
+    text-decoration-color:
+      light-dark(
+          var(--rh-color-gray-50, #707070),
+          var(--rh-color-gray-40, #a3a3a3));
     text-underline-offset: max(5px, 0.28em);
     transition: ease text-underline-offset 0.3s;
 
