@@ -1,3 +1,5 @@
+import type { IconNameFor, IconSetName } from '@rhds/icons';
+
 import { html, isServer, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -22,7 +24,6 @@ import {
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-tab.css';
-import type { IconNameFor, IconSetName } from '@rhds/icons';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 export class TabExpandEvent extends Event {
@@ -49,7 +50,10 @@ export class RhTab extends LitElement {
   /** True when the tab is disabled */
   @property({ reflect: true, type: Boolean }) disabled = false;
 
+  /** Icon name to display in the tab */
   @property({ reflect: true }) icon?: IconNameFor<IconSetName>;
+
+  /** Icon set used for displaying the icon */
   @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'ui';
 
   @consume({ context: rhTabsBoxContext, subscribe: true })
@@ -91,7 +95,7 @@ export class RhTab extends LitElement {
            part="button"
            ?disabled="${this.disabled}"
            class="${classMap({ active, box, vertical, first, last })}">
-  <slot name="icon"
+        <slot name="icon"
               part="icon">
           <rh-icon ?hidden="${!this.icon}" icon="${ifDefined(this.icon)}" set="${ifDefined(this.iconSet)}"></rh-icon>
         </slot>    
