@@ -386,14 +386,4 @@
       font-size: inherit;
     }
   }
-
-  /**
-   * Theme subnav background color to match the header background color
-   */
-  uxdot-header rh-subnav {
-    background-color:
-      light-dark(
-          var(--rh-color-surface-lighter),
-          oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h));
-  }
 }
