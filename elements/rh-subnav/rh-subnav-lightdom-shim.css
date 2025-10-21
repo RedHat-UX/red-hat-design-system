@@ -1,0 +1,6 @@
+rh-subnav {
+  &:not(:defined) {
+    display: block;
+    background-color: var(--rh-color-surface);
+  }
+}

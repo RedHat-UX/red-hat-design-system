@@ -5,10 +5,11 @@ import { property } from 'lit/decorators/property.js';
 
 import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-controller.js';
 
-import '@rhds/elements/rh-icon/rh-icon.js';
-
-import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
+
+import { RhNavigationLink } from '@rhds/elements/rh-navigation-link/rh-navigation-link.js';
+
+import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './rh-subnav.css';
 
@@ -20,7 +21,6 @@ import styles from './rh-subnav.css';
  * @alias subnavigation
  */
 @customElement('rh-subnav')
-@colorPalettes
 @themable
 export class RhSubnav extends LitElement {
   static readonly styles = [styles];
@@ -41,23 +41,29 @@ export class RhSubnav extends LitElement {
     }
   }
 
-  #allLinkElements: HTMLAnchorElement[] = [];
+  #allLinkElements: RhNavigationLink[] = [];
 
   #overflow = new OverflowController(this);
 
-  /**
-   * Sets color palette, which affects the element's styles as well as descendants' color theme.
-   * Overrides parent color context.
-   * Your theme will influence these colors so check there first if you are seeing inconsistencies.
-   * See [CSS Custom Properties](#css-custom-properties) for default values
-   */
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
    * Customize the default `aria-label` on the `<nav>` container.
    * Defaults to "subnavigation" if no attribute/property is set.
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel = 'subnavigation';
+
+  /**
+   * Label for the scroll back button
+   */
+  @property({ reflect: true, attribute: 'label-scroll-back' })
+  labelScrollBack = 'Scroll back';
+
+  /**
+   * Label for the scroll forward button
+   */
+  @property({ reflect: true, attribute: 'label-scroll-forward' })
+  labelScrollForward = 'Scroll forward';
+
 
   @query('[part="links"]') private linkList!: HTMLElement;
 
@@ -66,18 +72,10 @@ export class RhSubnav extends LitElement {
     return this.#allLinkElements;
   }
 
-  set #allLinks(links: HTMLAnchorElement[]) {
-    this.#allLinkElements = links.filter(link => link instanceof HTMLAnchorElement);
+  set #allLinks(links: RhNavigationLink[]) {
+    this.#allLinkElements = links.filter(link => link instanceof RhNavigationLink);
   }
 
-  get #firstLink(): HTMLAnchorElement {
-    const [link] = this.#allLinks;
-    return link;
-  }
-
-  get #lastLink(): HTMLAnchorElement {
-    return this.#allLinks.at(-1) as HTMLAnchorElement;
-  }
 
   override connectedCallback() {
     super.connectedCallback();
@@ -97,28 +95,29 @@ export class RhSubnav extends LitElement {
   override render() {
     return html`
       <!-- container, \`<div>\` element -->
-      <nav part="container" aria-label="${this.accessibleLabel}">
+      <nav part="container" 
+           aria-label="${this.accessibleLabel}">
         ${!this.#overflow.showScrollButtons ? '' : html`
           <button id="previous"
                   tabindex="-1"
                   data-direction="start"
-                  aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll back'}"
+                  aria-label="${this.labelScrollBack}"
                   ?disabled="${!this.#overflow.overflowLeft}"
                   @click="${this.#onClickScroll}">
             <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
           </button>`}
         <!--
           slot:
-            description: Navigation links, expects collection of \`<a>\` elements
+            description: Sub navigation links, expects collection of \`<rh-navigation-link>\` elements
           part:
             description: the anonymous slot
         -->
-        <slot part="links" @slotchange="${this.#onSlotchange}"></slot>
+        <div role="list" part="links"><slot @slotchange="${this.#onSlotchange}"></slot></div>
         ${!this.#overflow.showScrollButtons ? '' : html`
           <button id="next"
                   tabindex="-1"
                   data-direction="end"
-                  aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll forward'}"
+                  aria-label="${this.labelScrollForward}"
                   ?disabled="${!this.#overflow.overflowRight}"
                   @click="${this.#onClickScroll}">
             <rh-icon set="ui" icon="caret-right" loading="eager"></rh-icon>
@@ -130,11 +129,9 @@ export class RhSubnav extends LitElement {
   async #onSlotchange() {
     if (!isServer) {
       const slot = this.shadowRoot?.querySelector('slot');
-      this.#allLinks = slot?.assignedElements() as HTMLAnchorElement[];
+      this.#allLinks = slot?.assignedElements() as RhNavigationLink[];
       this.#overflow.init(this.linkList, this.#allLinks);
       await this.updateComplete;
-      this.#firstLink?.classList.add('first');
-      this.#lastLink?.classList.add('last');
     }
   }
 
