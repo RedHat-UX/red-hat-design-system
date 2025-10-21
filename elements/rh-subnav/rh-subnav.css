@@ -1,9 +1,5 @@
 :host {
   display: block;
-  background-color:
-    light-dark(
-        var(--rh-color-surface-lighter, #f2f2f2),
-        var(--rh-color-surface-darker, #1f1f1f));
 }
 
 [part='container'] {
@@ -99,6 +95,8 @@ button {
 
 #next,
 #previous {
+  border-block-end: var(--rh-border-width-sm, 1px)  solid  var(--rh-color-border-subtle);
+
   & rh-icon {
     pointer-events: none;
 
