@@ -68,7 +68,7 @@ export default class TokensPage extends Renderer<Data> {
         alias: 'tokenCategory',
         data: 'collections.tokenCategory',
       },
-      tokenSearch: true,
+      tokenPage: true,
     };
   }
 
