@@ -355,6 +355,7 @@
     "tsx": "^4.19.3",
     "typescript": "^5.8.2",
     "typescript-transform-lit-css": "^2.0.2",
+    "vue": "^3.5.22",
     "web-dev-server-plugin-lit-css": "^3.0.2",
     "wireit": "^0.14.12"
   },

@@ -2,8 +2,6 @@
   import '@rhds/elements/rh-pagination/rh-pagination.js';
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/vue@3.5.22/dist/vue.global.js"></script>
-
 <div id="app">
   <rh-pagination>
     <ol>
@@ -16,9 +14,8 @@
   <span v-text="message"></span> <span v-text="currentPage"></span>
 </div>
 
-<script>
-  // eslint-disable-next-line no-undef
-  const { createApp } = Vue;
+<script type="module">
+  import { createApp } from 'vue/dist/vue.esm-browser.js';
 
   const app = createApp({
     data() {
