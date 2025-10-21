@@ -37,7 +37,7 @@
     {%- set title = tab.pageTitle or tab.data.title -%}
     {%- set active = tab.url == pageUrl -%}
     <rh-navigation-link href="{{ tab.url }}"
-       {{- ' active' if active -}}
+       {{- ' current-page' if active -}}
        {{- ' hidden' if hidden -}}>{{ title }}</rh-navigation-link>
   {%- endfor -%}
   </rh-subnav>
