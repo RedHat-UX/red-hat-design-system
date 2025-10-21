@@ -10,10 +10,10 @@
 
 Every call to action style and variant must be able to receive focus and be navigated with a keyboard.
 
-<uxdot-example color-palette="lightest" width-adjustment="574px">
+<uxdot-example color-palette="lightest" width-adjustment="570px">
   <img src="../cta-a11y-keyboard-interactions.svg"
         alt="The four different CTAs, each showing a blue focus ring around it and the words 'Tab' underneath."
-        width="574"
+        width="570"
         height="103">
 </uxdot-example>
 
@@ -42,10 +42,10 @@ A logical focus order helps keyboard users operate our websites. Elements need t
 
 The large containers and large text size make calls to action easy to select.
 
-<uxdot-example color-palette="lightest" width-adjustment="568px">
+<uxdot-example color-palette="lightest" width-adjustment="564px">
   <img src="../cta-a11y-touch-targets.svg"
         alt="Groups of variants with touch targets centered on top of each"
-        width="568"
+        width="564"
         height="56">
 </uxdot-example>
 

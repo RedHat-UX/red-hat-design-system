@@ -68,9 +68,15 @@ export class RhDisclosure extends LitElement {
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
-   * Sets the disclosure to be in its open state
+   * Sets the disclosure to be in its open (expanded) state
    */
   @property({ type: Boolean, reflect: true }) open = false;
+
+  /** Borderless: Removes the outer and left border from the disclosure.
+   * The background is `surface-light`/`surface-dark` when expanded.
+   * Compact: decreases disclosure padding.
+   */
+  @property({ reflect: true }) variant?: 'borderless' | 'compact';
 
   /**
    * Sets the disclosure title via an attribute

@@ -1,14 +1,13 @@
 ## Keyboard navigation
 
-Users should have the ability to move focus to the Website status link if it is used in the Footer component or anywhere else.
+Users should have the ability to move focus to the site status link in the footer or anywhere else.
 
-<uxdot-example>
+<uxdot-example variant="full" no-border>
   <img src="../site-status-accessibility-footer.svg"
-        alt="Image of a site status element with a green checkmark and the text 'All systems operational' in a footer element with focus indicators."
-        width="992"
-        height="789">
+        alt="A site status element with a green checkmark and the text 'All systems operational' in a footer element with focus indicators letting users know that a site status component is a focusable element."
+        width="1140"
+        height="915">
 </uxdot-example>
-
 
 ## Screen reader guidelines
 
