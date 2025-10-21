@@ -419,7 +419,7 @@ export default class ElementsPage extends Renderer<Context> {
                   </uxdot-copy-permalink></td>
                   <td>${await this.#innerMD(slot.summary)}</td>
                   <td>
-                   ${slot.name === '' ? await this.#innerMD(`<strong>Note: [default] slots do not have a slot="name" attribute.</strong> ${slot.description}`) : await this.#innerMD(slot.description)}
+                   ${slot.name === '' ? await this.#innerMD(`<strong>Note:</strong> [default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute. ${slot.description}`) : await this.#innerMD(slot.description)}
                   </td>
                 </tr>`))).join('')}
               </tbody>
