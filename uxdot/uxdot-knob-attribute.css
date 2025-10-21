@@ -1,3 +1,32 @@
+pf-select {
+  /* pf-select toggle theming */
+
+  /* --pf-c-select__toggle--BackgroundColor doesn't actually take effect */
+  --pf-theme--color--surface--lightest: var(--rh-color-surface);
+
+  /* --pf-c-select__toggle--Color doesn't actually take effect */
+  --pf-theme--color--text: var(--rh-color-text-primary);
+
+  /* --pf-theme--color--text doesn't actually take effect */
+  --pf-global--Color--100: var(--rh-color-text-primary);
+  --pf-c-select__toggle--BackgroundColor: var(--rh-color-surface);
+  --pf-c-select__toggle--Color: var(--rh-color-text-primary);
+  --pf-c-select__toggle--before--BorderTopColor: var(--rh-color-border-subtle);
+  --pf-c-select__toggle--before--BorderRightColor: var(--rh-color-border-subtle);
+  --pf-c-select__toggle--before--BorderBottomColor: var(--rh-color-border-strong);
+  --pf-c-select__toggle--before--BorderLeftColor: var(--rh-color-border-subtle);
+
+  /* pf-select menu theming */
+  --pf-c-select__menu--BackgroundColor: var(--rh-color-surface);
+  --pf-c-select__menu-item--Color: var(--rh-color-text-primary);
+
+  /* doesn't work */
+  --pf-c-select__menu-item--hover--BackgroundColor: var(--rh-color-surface-lighter);
+
+  /* doesn't work */
+  --pf-c-select__menu-item--focus--BackgroundColor: var(--rh-color-surface-lighter);
+}
+
 li {
   list-style-type: none;
   padding: 0;
