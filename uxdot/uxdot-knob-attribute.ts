@@ -228,16 +228,23 @@ export class UxdotKnobAttribute extends LitElement {
         .join(' ');
   }
 
+  // guards against the initial pf-select change event
+  #firstChange = false;
+
   async #onChange(event: Event) {
-    const target = event.target as LitElement & HTMLInputElement;
-    const demo = this.closest('uxdot-demo');
-    await target.updateComplete;
-    const value: string | boolean | null =
-        target.type === 'checkbox' ? this.#getValueForCheckboxes()
-      : this.type === 'boolean' ? target.checked
-      : target.value;
-    if (demo && this.name) {
-      demo.setDemoElementAttribute(this.name, value);
+    if (this.#firstChange || (event.target as HTMLElement)?.localName !== 'pf-select') {
+      const target = event.target as LitElement & HTMLInputElement;
+      const demo = this.closest('uxdot-demo');
+      await target.updateComplete;
+      const value: string | boolean | null =
+          target.type === 'checkbox' ? this.#getValueForCheckboxes()
+        : this.type === 'boolean' ? target.checked
+        : target.value;
+      if (demo && this.name) {
+        demo.setDemoElementAttribute(this.name, value);
+      }
+    } else {
+      this.#firstChange = true;
     }
   }
 }
