@@ -413,12 +413,14 @@ export default class ElementsPage extends Renderer<Context> {
                   <td><uxdot-copy-permalink>
                     <span id="${tagName}-slots-${this.slugify(slot.name)}">
                       <a href="#${tagName}-slots-${this.slugify(slot.name)}">
-                        <code>${slot.name}</code>
+                        <code>${slot.name === '' ? '[default]' : slot.name}</code>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
                   <td>${await this.#innerMD(slot.summary)}</td>
-                  <td>${await this.#innerMD(slot.description)}</td>
+                  <td>
+                   ${slot.name === '' ? await this.#innerMD(`<strong>Note: [default] slots do not have a slot="name" attribute.</strong> ${slot.description}`) : await this.#innerMD(slot.description)}
+                  </td>
                 </tr>`))).join('')}
               </tbody>
             </table>
