@@ -1,4 +1,5 @@
-<rh-subnav id="demo" accessible-label="dynamic">
+<div class="resizable">
+<rh-subnav>
   <rh-navigation-link href="#">Users</rh-navigation-link>
   <rh-navigation-link href="#">Containers</rh-navigation-link>
   <rh-navigation-link href="#">Databases</rh-navigation-link>
@@ -7,17 +8,18 @@
   <rh-navigation-link href="#">Network</rh-navigation-link>
   <rh-navigation-link href="#">Cloud</rh-navigation-link>
 </rh-subnav>
+</div>
 
 <link rel="stylesheet" href="../rh-subnav-lightdom.css">
-
 <script type="module">
   import '@rhds/elements/rh-subnav/rh-subnav.js';
-
-  const demo = document.getElementById('demo');
-  demo.addEventListener('click', e => {
-    for (const link of demo.querySelectorAll('a')) {
-      if (e.target === link) { e.preventDefault(); }
-      link.toggleAttribute('active', (e.target === link));
-    }
-  });
 </script>
+
+<style>
+  .resizable {
+    width: 320px;
+    overflow: hidden;
+    resize: horizontal;
+    padding-block-end: var(--rh-space-md, 8px);
+  }
+</style>
