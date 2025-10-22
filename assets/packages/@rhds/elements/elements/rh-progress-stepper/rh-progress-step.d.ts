@@ -23,7 +23,7 @@ export declare class RhProgressStepChangeEvent extends Event {
  *
  * @summary Single step in a progress stepper
  *
- * @fires { RhProgressStepChangeEvent } fired when this step becomes active
+ * @event { RhProgressStepChangeEvent } change - fired when this step becomes active
  */
 export declare class RhProgressStep extends LitElement {
     #private;
@@ -39,20 +39,26 @@ export declare class RhProgressStep extends LitElement {
      */
     state?: ProgressStepState;
     /**
-     * Sets the description text for the progress step
-     * Overridden by the `description` slot.
+     * Sets the description text for the progress step when more context is needed.
+     * Descriptions are secondary to titles.
+     *
+     * It is overridden by the `description` slot.
      */
     description?: string;
     /**
-     * Custom icon for the step. Overridden by the `icon` slot.
-     * When the step is in the `warn` or `fail` state, it should not have a custom
-     * icon.
+     * Can be used to set a custom icon for the step.
+     * When the step is in the `warn` or `fail` state, it should not have a custom icon.
+     * If there's no custom icon, the default active or inactive icon will appear.
+     *
+     * It can be overridden by the `icon` slot.
      */
     icon?: IconNameFor<IconSetName>;
     /** Icon set for the `icon` property - 'ui' by default */
     iconSet: IconSetName;
     /**
-     * Sets a URL to make the step clickable
+     * Sets a URL to make the step's title clickable.
+     * Only completed or current steps will appear linked.
+     * The linked title will use our inline link styling, with gray, dashed underlines.
      */
     href?: string;
     private compact?;
@@ -60,10 +66,10 @@ export declare class RhProgressStep extends LitElement {
     connectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
     /**
+     * Icons for each step indicates the status of a process or task.
+     * Icons change as users progress.
+     *
      * Computes the icon for the step:
-     * always use the prescribed warn or fail icons
-     * otherwise, use the custom user icon,
-     * or fall back to the default active/inactive icon
      */
     protected computeIcon(): void;
     protected stateChanged(): void;
