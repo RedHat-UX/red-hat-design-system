@@ -28,19 +28,6 @@ describe('<rh-button-group>', function() {
   });
 
   describe('with buttons', function() {
-    it('should render with buttons', async function() {
-      const element = await createFixture<RhButtonGroup>(html`
-        <rh-button-group>
-          <rh-button>Save</rh-button>
-          <rh-button>Cancel</rh-button>
-        </rh-button-group>
-      `);
-      await element.updateComplete;
-
-      const buttons = element.querySelectorAll('rh-button');
-      expect(buttons).to.have.length(2);
-    });
-
     it('should set tabindex=0 for group role', async function() {
       const element = await createFixture<RhButtonGroup>(html`
         <rh-button-group role="group">

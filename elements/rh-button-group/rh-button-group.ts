@@ -1,3 +1,5 @@
+import type { RhButton } from '@rhds/elements/rh-button/rh-button.js';
+
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
@@ -7,11 +9,9 @@ import styles from './rh-button-group.css';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 
-import type { RhButton } from '@rhds/elements/rh-button/rh-button.js';
-import '@rhds/elements/rh-button/rh-button.js';
-
 /**
- * A button group visually organizes multiple related buttons into a single collection.
+ * A button group organizes multiple related buttons into a single collection,
+ * providing visual grouping and coordinated keyboard navigation behavior.
  *
  * @alias Button Group
  */
@@ -24,7 +24,16 @@ export class RhButtonGroup extends LitElement {
   @queryAssignedElements({ flatten: true })
   private _buttons!: (HTMLButtonElement | RhButton)[];
 
-  private _rovingController?: RovingTabindexController<HTMLButtonElement | RhButton>;
+  // eslint-disable-next-line no-unused-private-class-members
+  #rtic = RovingTabindexController.of(this, {
+    getItems: () => {
+      if (this.role !== 'toolbar') {
+        return [];
+      } else {
+        return this._buttons;
+      }
+    },
+  });
 
   protected override firstUpdated() {
     if (typeof window === 'undefined') {
@@ -39,18 +48,8 @@ export class RhButtonGroup extends LitElement {
       return;
     }
 
-    if (this.getAttribute('role') === 'toolbar') {
-      this._buttons.forEach(b =>
-        b.setAttribute('tabindex', b === this._buttons[0] ? '0' : '-1')
-      );
-
-      if (!this._rovingController) {
-        this._rovingController = RovingTabindexController.of(this, {
-          getItems: () => this._buttons,
-        });
-        this.addController(this._rovingController);
-      }
-    } else {
+    // Set tabindex="0" for non-toolbar roles (group role needs individual focus)
+    if (this.getAttribute('role') !== 'toolbar') {
       this._buttons.forEach(btn => btn.setAttribute('tabindex', '0'));
     }
   }
@@ -67,6 +66,5 @@ export class RhButtonGroup extends LitElement {
 declare global {
   interface HTMLElementTagNameMap {
     'rh-button-group': RhButtonGroup;
-    'rh-button': RhButton;
   }
 }
