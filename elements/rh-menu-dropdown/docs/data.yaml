@@ -1,0 +1,12 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-menu-dropdown
+name: Menu Dropdown
+type: element
+overallStatus: ready
+libraries:
+  figma: ready
+  rhds: ready
+  shared: inProgress
+  docs: ready
+relatedItems:
+  - rh-menu
