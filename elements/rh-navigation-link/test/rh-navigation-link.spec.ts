@@ -46,10 +46,9 @@ describe('<rh-navigation-link>', function() {
       beforeEach(async function() {
         element.currentPage = true;
         await element.updateComplete;
-        console.log(element.shadowRoot?.innerHTML);
       });
 
-      it('should set the aria-current attribute to page on the anchor element', async function() {;
+      it('should set the aria-current attribute to page on the anchor element', async function() {
         const currentpage = element.shadowRoot?.querySelector('a')?.getAttribute('aria-current');
         expect(currentpage).to.equal('page');
       });

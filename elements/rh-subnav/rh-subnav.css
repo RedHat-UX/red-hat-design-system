@@ -17,6 +17,7 @@
 
 ::slotted(rh-navigation-link) {
   --_navigation-link-display: flex;
+  --_navigation-link-gap: var(--rh-space-xs, 4px);
   --_navigation-link-align-items: center;
   --_navigation-link-inline-size: 100%;
   --_navigation-link-padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);

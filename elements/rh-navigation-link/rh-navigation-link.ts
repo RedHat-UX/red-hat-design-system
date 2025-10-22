@@ -60,6 +60,7 @@ export class RhNavigationLink extends LitElement {
           <a href="${ifDefined(this.href)}" aria-current="${ifDefined(isCurrentPage)}">
             <!--
               Use this slot when the \`icon\` and \`icon-set\` attributes are not set. 
+              Must be used in conjunction with the \`href\` attribute.  
               Can contain a rh-icon, svg, or img tag.
             -->
             <slot name="icon">
