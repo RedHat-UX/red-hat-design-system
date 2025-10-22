@@ -1,0 +1,6 @@
+rh-subnav {
+  &:not(:defined) {
+    display: block;
+    height: 56px;
+  }
+}
