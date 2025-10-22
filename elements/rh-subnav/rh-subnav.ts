@@ -55,14 +55,14 @@ export class RhSubnav extends LitElement {
   /**
    * Label for the scroll back button
    */
-  @property({ reflect: true, attribute: 'label-scroll-back' })
-  labelScrollBack = 'Scroll back';
+  @property({ reflect: true, attribute: 'label-scroll-left' })
+  labelScrollLeft = 'Scroll left';
 
   /**
    * Label for the scroll forward button
    */
-  @property({ reflect: true, attribute: 'label-scroll-forward' })
-  labelScrollForward = 'Scroll forward';
+  @property({ reflect: true, attribute: 'label-scroll-right' })
+  labelScrollRight = 'Scroll right';
 
 
   @query('[part="links"]') private linkList!: HTMLElement;
@@ -101,7 +101,7 @@ export class RhSubnav extends LitElement {
           <button id="previous"
                   tabindex="-1"
                   data-direction="start"
-                  aria-label="${this.labelScrollBack}"
+                  aria-label="${this.labelScrollLeft}"
                   ?disabled="${!this.#overflow.overflowLeft}"
                   @click="${this.#onClickScroll}">
             <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
@@ -117,7 +117,7 @@ export class RhSubnav extends LitElement {
           <button id="next"
                   tabindex="-1"
                   data-direction="end"
-                  aria-label="${this.labelScrollForward}"
+                  aria-label="${this.labelScrollRight}"
                   ?disabled="${!this.#overflow.overflowRight}"
                   @click="${this.#onClickScroll}">
             <rh-icon set="ui" icon="caret-right" loading="eager"></rh-icon>
