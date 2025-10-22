@@ -116,7 +116,6 @@
 
   #main {
     grid-area: main;
-    border-inline-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
     container-type: inline-size;
     container-name: main;
     padding-block-start: var(--uxdot-masthead-max-height);
@@ -199,7 +198,8 @@
     margin-block-start: var(--rh-space-2xl);
   }
 
-  :where(uxdot-copy-permalink, h1, h2, h3 ,h4, h5 ,h6) + uxdot-example {
+  :where(uxdot-copy-permalink, h1, h2, h3 ,h4, h5 ,h6) + uxdot-example,
+  :where(rh-alert) + uxdot-demo {
     margin-block-start: var(--rh-space-lg);
   }
 
@@ -233,10 +233,14 @@
     margin-block: var(--rh-space-lg);
   }
 
-  uxdot-example + figcaption ol {
+  uxdot-example + figcaption ol,
+  uxdot-example + figcaption p {
     color: var(--rh-color-text-secondary);
     font-size: var(--rh-font-size-body-text-sm, 0.875rem);
     line-height: var(--rh-line-height-body-text, 1.5);
+  }
+
+  uxdot-example + figcaption ol {
     list-style-position: inside;
   }
 

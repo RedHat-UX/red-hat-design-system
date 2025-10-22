@@ -2,16 +2,11 @@
 
 Use pagination to allow users to navigate through large amounts of data or content divided across multiple pages. Pagination should be used if there are 10 - 20 items in one view. However, the default number varies depending on context.
 
-### Other options
-
-If you need to use a more simple pagination element within a table or toolbar, the [PatternFly](https://www.patternfly.org/v4/components/pagination/design-guidelines/) pagination component has a less prominent design.
-
-
 ## Sizes and style variants
 
 ### Sizes
 
-While the [default size](/elements/pagination/style/#default/) works better in most contexts, the [small size](/elements/pagination/style/#small/) can be used for areas with more densely packed content. Include the page input field according to these guidelines:
+While the [default size](/elements/pagination/style/#default) works better in most contexts, the [small size](/elements/pagination/style/#small) can be used for areas with more densely packed content. Include the page input field according to these guidelines:
 
 - If there are more than seven pages
 - If the page amount is not known or cannot be determined
