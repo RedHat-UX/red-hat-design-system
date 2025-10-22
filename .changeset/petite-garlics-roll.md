@@ -2,5 +2,5 @@
 "@rhds/elements": minor
 ---
 
-<rh-tab>: added support for `icon` and `icon-set` attributes
+`<rh-tabs>`: added support for `icon` and `icon-set` attributes to the `<rh-tab>` element
   
