@@ -22,7 +22,6 @@ import styles from './rh-navigation-vertical.css';
 /**
  * A vertical navigation list of top-level and grouped navigation items, typically used in a side navigation pattern.
  * @summary Vertical navigation
- * @slot - Default slot for navigation items and groups
  */
 @customElement('rh-navigation-vertical')
 @themable
@@ -73,6 +72,10 @@ export class RhNavigationVertical extends LitElement {
     return html`
       <h2 class="visually-hidden">${this.accessibleLabel}</h2>
       <div id="container" class="${classMap(classes)}" role="list">
+          <!--
+            Use this slot for \`<rh-navigation-link>\` elements to provide a list of navigation links  
+            and \`<rh-navigation-vertical-list>\` when providing a grouped list of navigation links. 
+          -->
         <slot></slot>
       </div>
     `;
