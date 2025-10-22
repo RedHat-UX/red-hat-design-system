@@ -2,10 +2,14 @@
 "@rhds/elements": minor
 ---
 
-Add new rh-button-group component
+✨ Added `<rh-button-group>`
 
-- Add new `rh-button-group` component for grouping related buttons
-- Supports horizontal button layouts with consistent spacing
-- Includes comprehensive documentation with style guidelines, usage examples, and accessibility notes
-- Provides demo examples showing different button group configurations
-- Fully tested with unit and end-to-end tests
+A button group organizes multiple related buttons with appropriate keyboard navigation and accessibility behavior.
+
+```html
+<rh-button-group role="group">
+  <rh-button>Save</rh-button>
+  <rh-button>Cancel</rh-button>
+  <rh-button>Delete</rh-button>
+</rh-button-group>
+```
