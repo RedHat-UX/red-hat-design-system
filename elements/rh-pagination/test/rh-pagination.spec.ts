@@ -81,7 +81,7 @@ describe('<rh-pagination>', function() {
       element = await createFixture<RhPagination>(html`
         <rh-pagination>
           <ol>
-            <li><a href="#">1</a></li>
+            <li><a href="#1">1</a></li>
             <li><a href="#2">2</a></li>
             <li><a href="#3">3</a></li>
             <li><a href="#4">4</a></li>
@@ -129,7 +129,7 @@ describe('<rh-pagination>', function() {
       beforeEach(async function() {
         element.querySelector('ol')!.innerHTML = Array.from({ length: 10 }, (_, i) =>
           `<li><a href="#${i + 1}">${i + 1}</a></li>`).join('\n');
-        await element.updateComplete;
+        element.requestUpdate();
         await element.updateComplete;
         nodelist = element.querySelectorAll('li')!;
       });
@@ -158,7 +158,10 @@ describe('<rh-pagination>', function() {
       });
 
       describe('then advancing to page 2', function() {
-        before(() => element.next());
+        before(async () => {
+          element.next();
+          await element.updateComplete;
+        });
 
         it('enables first page stepper', function() {
           const [first] = element.shadowRoot!.querySelectorAll('a');
@@ -178,17 +181,39 @@ describe('<rh-pagination>', function() {
         });
 
         describe('then advancing to page 3', function() {
-          before(() => element.next());
+          before(async () => {
+            element.next();
+            await element.updateComplete;
+          });
           it('activates page 3', function() {
             const current = document.querySelector<HTMLAnchorElement>('[aria-current=page]');
             expect(new URL(current!.href).hash).to.equal('#3');
           });
         });
 
+        describe('then advancing to page 4', function() {
+          before(async () => {
+            element.next();
+            await element.updateComplete;
+          });
+          it('activates page 4', function() {
+            const current = document.querySelector<HTMLAnchorElement>('[aria-current=page]');
+            expect(new URL(current!.href).hash).to.equal('#4');
+          });
+        });
+
+        describe('then advancing to page 5', function() {
+          before(async () => {
+            element.next();
+            await element.updateComplete;
+          });
+          it('activates page 5', function() {
+            const current = document.querySelector<HTMLAnchorElement>('[aria-current=page]');
+            expect(new URL(current!.href).hash).to.equal('#5');
+          });
+        });
+
         describe('then advancing to page 6', function() {
-          before(() => element.next());
-          before(() => element.next());
-          before(() => element.next());
           let a: Element;
           let b: Element;
           let c: Element;
@@ -199,22 +224,32 @@ describe('<rh-pagination>', function() {
           let h: Element;
           let i: Element;
           let j: Element;
-          beforeEach(function() {
-            ([a, b, c, d, e, f, g, h, i, j] = nodelist);
+
+          before(async () => {
+            element.next();
+            await element.updateComplete;
           });
+
+          beforeEach(function() {
+            ([a, b, c, d, e, f, g, h, i, j] = element.querySelectorAll('li')!);
+          });
+
           it('activates page 6', function() {
             const current = document.querySelector<HTMLAnchorElement>('[aria-current=page]');
-            expect(current).to.equal(f.firstElementChild);
+            expect(new URL(current!.href).hash).to.equal('#6');
           });
+
           it('shows link 1', function() {
             expect(a, a.innerHTML).to.be.visible;
           });
+
           it('hides links 2-5', function() {
             expect(getComputedStyle(b).display, b.innerHTML).to.equal('none');
             expect(getComputedStyle(c).display, c.innerHTML).to.equal('none');
             expect(getComputedStyle(d).display, d.innerHTML).to.equal('none');
             expect(getComputedStyle(e).display, e.innerHTML).to.equal('none');
           });
+
           it('shows links 6-10', function() {
             expect(f, f.innerHTML).to.be.visible;
             expect(g, g.innerHTML).to.be.visible;
@@ -222,21 +257,29 @@ describe('<rh-pagination>', function() {
             expect(i, i.innerHTML).to.be.visible;
             expect(j, j.innerHTML).to.be.visible;
           });
+
           describe('then advancing to page 10', function() {
-            before(() => element.last());
+            before(async () => {
+              element.last();
+              await element.updateComplete;
+            });
+
             it('activates page 10', function() {
               const current = document.querySelector<HTMLAnchorElement>('[aria-current=page]');
               expect(current).to.equal(j.firstElementChild);
             });
+
             it('shows link 1', function() {
               expect(a, a.innerHTML).to.be.visible;
             });
+
             it('hides links 2-5', function() {
               expect(getComputedStyle(b).display, b.innerHTML).to.equal('none');
               expect(getComputedStyle(c).display, c.innerHTML).to.equal('none');
               expect(getComputedStyle(d).display, d.innerHTML).to.equal('none');
               expect(getComputedStyle(e).display, e.innerHTML).to.equal('none');
             });
+
             it('shows links 6-10', function() {
               expect(f, f.innerHTML).to.be.visible;
               expect(g, g.innerHTML).to.be.visible;

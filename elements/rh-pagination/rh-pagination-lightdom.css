@@ -34,7 +34,7 @@ rh-pagination {
       &:hover:after,
       &:focus:before,
       &:focus:after,
-      &[aria-current]:after {
+      &[aria-current='page']:after {
         border-block-start-style: solid;
         content: '';
         inset-inline-start: -1px;
@@ -45,7 +45,7 @@ rh-pagination {
 
       &:hover:after,
       &:focus:before,
-      &[aria-current]:after {
+      &[aria-current='page']:after {
         border-block-width: var(--rh-border-width-lg, 3px);
       }
 
@@ -58,14 +58,14 @@ rh-pagination {
         border-block-width: var(--rh-border-width-md, 2px);
       }
 
-      &[aria-current] {
+      &[aria-current='page'] {
         background-color: var(--_list-a-current-page-bg-color);
         border-color: var(--_list-a-current-page-border-color);
         border-block-start: 0;
       }
 
       &:focus:after,
-      &[aria-current]:after {
+      &[aria-current='page']:after {
         border-block-color: var(--rh-pagination-accent-color, var(--rh-color-border-interactive));
       }
     }
@@ -118,13 +118,13 @@ rh-pagination {
       &:hover:after,
       &:focus:before,
       &:focus:after,
-      &[aria-current]:after {
+      &[aria-current='page']:after {
         border-block-start-style: none;
         border-block-end-style: solid;
         inset-block-end: -1px;
       }
 
-      &[aria-current] {
+      &[aria-current='page'] {
         border-color: transparent; /* NOTE: Keep active/hover borders in-line */
       }
     }

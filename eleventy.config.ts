@@ -121,6 +121,7 @@ export default async function(eleventyConfig: UserConfig) {
       'fuse.js',
       'tinycolor2',
       'element-internals-polyfill',
+      'vue/dist/vue.esm-browser.js',
 
       // RHDS dependencies
       // `manualImportMap` is not traced, so we need to manually specify these

@@ -1,0 +1,58 @@
+<script type="module">
+  import '@rhds/elements/rh-pagination/rh-pagination.js';
+</script>
+
+<div id="app">
+  <rh-pagination>
+    <ol>
+      <li v-for="pageNum in pages" :key="pageNum">
+        <a :href="`#${pageNum}`" :aria-current="pageNum == currentPage ? 'page' : null" v-text="pageNum"></a>
+      </li>
+    </ol>
+  </rh-pagination>
+
+  <span v-text="message"></span> <span v-text="currentPage"></span>
+</div>
+
+<script type="module">
+  import { createApp } from 'vue/dist/vue.esm-browser.js';
+
+  const app = createApp({
+    data() {
+      return {
+        message: 'You are currently on page',
+        pages: [1, 2, 3, 4, 5],
+        currentPage: 3
+      }
+    },
+    mounted() {
+      const pagination = document.querySelector('rh-pagination');
+
+      // get current Page by using the aria-current attribute
+      const currentPage = pagination.querySelector('li a[aria-current="page"]');
+      if (currentPage) {
+        this.currentPage = new URL(currentPage.href).hash.slice(1);
+      }
+
+      // Add hash change listener
+      window.addEventListener('hashchange', () => {
+        const hash = window.location.hash;
+        this.currentPage = hash.slice(1);
+        const links = pagination.querySelectorAll('li a');
+        const hashLink = pagination.querySelector(`li a[href="${hash}"]`);
+        for (const link of links) {
+          if (link === hashLink) {
+            continue;
+          }
+          link.removeAttribute('aria-current');
+        }
+        hashLink.setAttribute('aria-current', 'page');
+        pagination.requestUpdate();
+      });
+    },
+  });
+  app.mount('#app');
+</script>
+
+<link rel="stylesheet" href="../rh-pagination-lightdom.css">
+
