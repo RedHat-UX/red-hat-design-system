@@ -56,13 +56,13 @@ export class RhSubnav extends LitElement {
    * Label for the scroll back button
    */
   @property({ reflect: true, attribute: 'label-scroll-left' })
-  labelScrollLeft = 'Scroll left';
+  labelScrollLeft = 'Scroll back';
 
   /**
    * Label for the scroll forward button
    */
   @property({ reflect: true, attribute: 'label-scroll-right' })
-  labelScrollRight = 'Scroll right';
+  labelScrollRight = 'Scroll forward';
 
 
   @query('[part="links"]') private linkList!: HTMLElement;
