@@ -15,12 +15,10 @@ layout: layouts/base.njk
   import '@rhds/elements/rh-surface/rh-surface.js';
 </script>
 
-{%- if tokenSearch %}
-<script type="module" data-helmet>
-  import "@uxdot/elements/uxdot-search.js";
-</script>
+{%- if tokenPage %}
 <script type="module" src="/assets/javascript/tokens.js" data-helmet></script>
 {%- endif %}
+
 {% include 'partials/component/sidenav.njk' %}
 
 <main id="main">
