@@ -173,6 +173,10 @@ export class UxdotSideNavDropdown extends LitElement {
   @property({ type: Boolean, reflect: true })
   expanded = false;
 
+  get #details(): HTMLDetailsElement | null {
+    return this.querySelector('details');
+  }
+
   #hasActiveChild(): boolean {
     const items = this.querySelectorAll('uxdot-sidenav-dropdown-menu-item');
     return Array.from(items).some(item => item.active);
@@ -194,10 +198,6 @@ export class UxdotSideNavDropdown extends LitElement {
     return html`
       <slot></slot>
     `;
-  }
-
-  get #details(): HTMLDetailsElement | null {
-    return this.querySelector('details');
   }
 
   async #onClick(event: Event) {
