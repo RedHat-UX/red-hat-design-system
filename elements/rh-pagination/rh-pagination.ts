@@ -75,8 +75,10 @@ export class RhPagination extends LitElement {
   /** Change pagination size to small */
   @property({ reflect: true }) size: 'sm' | null = null;
 
-  /** "Open" variant */
-  @property({ reflect: true }) variant?: 'open' | null = null;
+  /** Use `borderless` for transparent backgrounds.
+    * Note: `open` will also work, but is deprecated.
+    */
+  @property({ reflect: true }) variant?: 'borderless' | 'open' | null = null;
 
   @query('input') private input?: HTMLInputElement;
 
@@ -107,6 +109,12 @@ export class RhPagination extends LitElement {
   override connectedCallback(): void {
     super.connectedCallback();
     RhPagination.instances.add(this);
+
+    // TODO: Remove alias "open" in the next major release
+    if (this.variant === 'open') {
+      this.#logger.warn('variant="open" is deprecated; use "borderless" instead.');
+    }
+
     // Validate DOM
     if (!isServer) {
       this.#mo.observe(this, { childList: true, subtree: true });

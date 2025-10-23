@@ -249,4 +249,70 @@ describe('<rh-pagination>', function() {
       });
     });
   });
+
+  describe('variants', function() {
+    it('should support borderless variant', async function() {
+      const element = await createFixture<RhPagination>(html`
+        <rh-pagination variant="borderless">
+          <ol>
+            <li><a href="#">1</a></li>
+            <li><a href="#2">2</a></li>
+          </ol>
+        </rh-pagination>
+      `);
+      expect(element.variant).to.equal('borderless');
+      expect(element.hasAttribute('variant')).to.be.true;
+      expect(element.getAttribute('variant')).to.equal('borderless');
+    });
+
+    it('should support open variant for backward compatibility', async function() {
+      const element = await createFixture<RhPagination>(html`
+        <rh-pagination variant="open">
+          <ol>
+            <li><a href="#">1</a></li>
+            <li><a href="#2">2</a></li>
+          </ol>
+        </rh-pagination>
+      `);
+      expect(element.variant).to.equal('open');
+      expect(element.hasAttribute('variant')).to.be.true;
+      expect(element.getAttribute('variant')).to.equal('open');
+    });
+
+    describe('deprecation warnings', function() {
+      let warnStub: SinonStub;
+
+      beforeEach(function() {
+        warnStub = stub(Logger.prototype, 'warn');
+      });
+
+      afterEach(function() {
+        warnStub.restore();
+      });
+
+      it('should show deprecation warning when using open variant', async function() {
+        await createFixture<RhPagination>(html`
+          <rh-pagination variant="open">
+            <ol>
+              <li><a href="#">1</a></li>
+              <li><a href="#2">2</a></li>
+            </ol>
+          </rh-pagination>
+        `);
+        expect(warnStub).to.have.been.calledWith('variant="open" is deprecated; use "borderless" instead.');
+      });
+
+      it('should not show deprecation warning when using borderless variant', async function() {
+        await createFixture<RhPagination>(html`
+          <rh-pagination variant="borderless">
+            <ol>
+              <li><a href="#">1</a></li>
+              <li><a href="#2">2</a></li>
+            </ol>
+          </rh-pagination>
+        `);
+        expect(warnStub).to.not.have.been.calledWith('variant="open" is deprecated; use "borderless" instead.');
+      });
+    });
+  });
 });

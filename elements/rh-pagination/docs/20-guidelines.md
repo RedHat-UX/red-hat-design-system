@@ -12,9 +12,9 @@ While the [default size](/elements/pagination/style/#default) works better in mo
 - If the page amount is not known or cannot be determined
 - If pagination is used on mobile to ensure that users can access every page without page numbers
 
-### Box vs. open
+### Box vs. borderless
 
-The [box variant](/elements/pagination/style/#box-variant) is the default and button backgrounds help users see the touch targets clearly. The [open variant](/elements/pagination/style/#open-variant) can be used for situations that require a more minimal design.
+The [box variant](/elements/pagination/style/#box-variant) is the default and button backgrounds help users see the touch targets clearly. The [borderless variant](/elements/pagination/style/#borderless-variant) can be used for situations that require a more minimal design.
 
 ## Behavior
 
@@ -109,7 +109,7 @@ All of the pagination variants are horizontally centered below content by defaul
 
 ### With page input field
 
-As viewport sizes get smaller, pagination will switch sizes to accommodate the page input field if used on the right. All of the variants behave similarly. If the page input field is used below, pagination will not switch sizes as quickly. This works similarly for the box and open variants at both sizes.
+As viewport sizes get smaller, pagination will switch sizes to accommodate the page input field if used on the right. All of the variants behave similarly. If the page input field is used below, pagination will not switch sizes as quickly. This works similarly for the box and borderless variants at both sizes.
 
 <uxdot-example color-palette="lightest" width-adjustment="1140px" variant="full" alignment="left" no-border>
   <img alt="Pagination with the page input field on the right"
@@ -140,7 +140,7 @@ Container widths less than 375px
 
 ### Without page input field
 
-When the page input field is not visible, the field will become visible when the default size switches to the mobile version. This works the same for the box and open variants.
+When the page input field is not visible, the field will become visible when the default size switches to the mobile version. This works the same for the box and borderless variants.
 
 <uxdot-example color-palette="lightest" width-adjustment="1140px" variant="full" alignment="left" no-border>
   <img alt="Pagination on desktop without the page input field"
