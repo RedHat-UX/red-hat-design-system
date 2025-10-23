@@ -628,7 +628,7 @@ export default class ElementsPage extends Renderer<Context> {
                 ${(await Promise.all(events.map(async event => html`
                 <tr>
                   <td>
-                    <uxdot-copy-permalink></uxdot-copy-permalink>
+                    <uxdot-copy-permalink>
                       <span id="${tagName}-events-${this.slugify(event.name)}">
                         <a href="#${tagName}-events-${this.slugify(event.name)}">
                           <code>${event.name}</code>
