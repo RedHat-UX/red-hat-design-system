@@ -419,7 +419,7 @@ export default class ElementsPage extends Renderer<Context> {
                   </uxdot-copy-permalink></td>
                   <td>${await this.#innerMD(slot.summary)}</td>
                   <td>
-                   ${slot.name === '' ? await this.#innerMD(`${slot.description} <br><span style="font-size: var(--rh-font-size-body-text-md);"><strong>Note: </strong>[default] <a href="https://github.com/RedHat-UX/red-hat-design-system/wiki/Shadow-DOM-Style-Guide#slot-names">unnamed slots</a> do not have a slot="name" attribute.</span>`) : await this.#innerMD(slot.description)}
+                   ${slot.name === '' ? await this.#innerMD(`${slot.description} <br><span style="font-size: var(--rh-font-size-body-text-md);"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span>`) : await this.#innerMD(slot.description)}
                   </td>
                 </tr>`))).join('')}
               </tbody>
