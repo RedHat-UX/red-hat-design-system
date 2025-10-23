@@ -387,6 +387,7 @@ describe('<rh-audio-player>', function() {
         });
       });
 
+
       describe('clicking rate stepdown', function() {
         beforeEach(waitForCanplaythrough);
         beforeEach(async function() {
