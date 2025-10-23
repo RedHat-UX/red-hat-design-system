@@ -18,4 +18,4 @@ After:
 </rh-pagination>
 ```
 
-NOTE: Even though deprecated, variant="open" will continue to work until the next major release.
+NOTE: Even though deprecated, `variant="open"` will continue to work until the next major release.
