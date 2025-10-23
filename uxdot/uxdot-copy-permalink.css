@@ -18,7 +18,13 @@
 }
 
 #button:is(:hover, :focus) {
-  background: light-dark(var(--rh-color-surface-light), var(--rh-color-surface-darker));
+  background:
+    var(--uxdot-copy-permalink-button-background,
+      light-dark(
+        var(--rh-color-surface-light),
+        var(--rh-color-surface-dark)
+      )
+    );
   color: var(--rh-color-text-primary);
 }
 
