@@ -98,6 +98,7 @@ export class RhCodeBlock extends LitElement {
    *          <rh-code-block actions="copy wrap">
    *            <span slot="action-label-copy">Copy to Clipboard</span>
    *            <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>
+   *            <span slot="action-label-copy" hidden data-code-block-state="failed">Copy failed!</span>
    *            <span slot="action-label-wrap">Toggle word wrap</span>
    *            <span slot="action-label-wrap" hidden data-code-block-state="active">Toggle overflow</span>
    *          </rh-code-block>
@@ -155,6 +156,7 @@ export class RhCodeBlock extends LitElement {
     this,
     null,
     'action-label-copy',
+    'copy-failed',
     'action-label-wrap',
     'show-more',
     'show-less',
@@ -231,7 +233,8 @@ export class RhCodeBlock extends LitElement {
             <!-- tooltip content for the copy action button -->
             <slot id="label" slot="content" name="action-label-${x}">${x === 'copy' ? html`
               <span>Copy to Clipboard</span>
-              <span hidden data-code-block-state="active">Copied!</span>` : html`
+              <span hidden data-code-block-state="active">Copied!</span>
+              <span hidden data-code-block-state="failed">Copy failed!</span>` : html`
               <!-- tooltip content for the wrap action button -->
               <span>Toggle word wrap</span>
               <span hidden data-code-block-state="active">Toggle overflow</span>`}
@@ -344,12 +347,12 @@ export class RhCodeBlock extends LitElement {
       : []);
   }
 
-  #getFabContentElements(slot?: HTMLSlotElement | null) {
+  #getFabContentElements(slot?: HTMLSlotElement | null): HTMLElement[] {
     const assignedElements = slot?.assignedElements() ?? [];
     if (!assignedElements.length) {
-      return [...slot?.querySelectorAll('*') ?? []];
+      return [...slot?.querySelectorAll<HTMLElement>('*') ?? []];
     }
-    return assignedElements;
+    return assignedElements as HTMLElement[];
   }
 
   /**
@@ -453,7 +456,7 @@ export class RhCodeBlock extends LitElement {
     this.fullHeight = !this.fullHeight;
   }
 
-  async #copy() {
+  #preCopy() {
     let content: string;
     if (this.highlighting === 'prerendered') {
       content =
@@ -468,36 +471,43 @@ export class RhCodeBlock extends LitElement {
       ).join('');
     }
     const event = new RhCodeBlockCopyEvent(content);
+    if (!this.dispatchEvent(event) || event.defaultPrevented) {
+      throw new Error('copy cancelled');
+    }
+    return event.content;
+  }
+
+  async #copy() {
     const slot =
       this.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="action-label-copy"]');
-    const tooltip = slot?.closest('rh-tooltip');
-    if (this.dispatchEvent(event) && !event.defaultPrevented) {
-      await navigator.clipboard.writeText(event.content);
-      // TODO: handle slotted fabs
-      tooltip?.hide();
-      const assignedElements = this.#getFabContentElements(slot);
-      for (const el of assignedElements) {
-        if (el instanceof HTMLElement) {
-          el.hidden = el.dataset.codeBlockState !== 'active';
-        }
-      }
-      this.requestUpdate();
-      tooltip?.show();
-      await new Promise(r => setTimeout(r, 5_000));
-      tooltip?.hide();
-      for (const el of assignedElements) {
-        if (el instanceof HTMLElement) {
-          el.hidden = el.dataset.codeBlockState === 'active';
-        }
-      }
-      this.requestUpdate();
-      tooltip?.show();
-    } else if (tooltip) {
-      this.classList.add('copy-error');
-      this.addEventListener('animationend', () => {
-        this.classList.remove('copy-error');
-      }, { once: true });
+    const tooltip =
+      slot?.closest('rh-tooltip');
+    if (!tooltip) {
+      return;
     }
+    const assignedElements = this.#getFabContentElements(slot);
+    try {
+      // TODO: handle slotted fabs
+      tooltip.hide();
+      const content = this.#preCopy();
+      await navigator.clipboard.writeText(content);
+      for (const el of assignedElements) {
+        el.hidden = el.dataset.codeBlockState !== 'active';
+      }
+    } catch {
+      for (const el of assignedElements) {
+        el.hidden = el.dataset.codeBlockState !== 'failed';
+      }
+    }
+    this.requestUpdate();
+    tooltip.show();
+    await new Promise(r => setTimeout(r, 5_000));
+    tooltip.hide();
+    for (const el of assignedElements) {
+      el.hidden = el.dataset.codeBlockState !== undefined;
+    }
+    this.requestUpdate();
+    tooltip.show();
   }
 }
 
