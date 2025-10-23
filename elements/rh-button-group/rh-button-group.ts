@@ -13,6 +13,8 @@ import { RovingTabindexController } from '@patternfly/pfe-core/controllers/rovin
  * A button group organizes multiple related buttons into a single collection,
  * providing visual grouping and coordinated keyboard navigation behavior.
  *
+ * @summary Organize multiple related buttons into a single collection
+ *
  * @alias Button Group
  */
 @customElement('rh-button-group')
