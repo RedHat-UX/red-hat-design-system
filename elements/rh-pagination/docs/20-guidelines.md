@@ -12,7 +12,7 @@ While the [default size](/elements/pagination/style/#default) works better in mo
 - If the page amount is not known or cannot be determined
 - If pagination is used on mobile to ensure that users can access every page without page numbers
 
-### Box vs. open
+### Box vs. borderless
 
 The [box variant](/elements/pagination/style/#box-variant) is the default and button backgrounds help users see the touch targets clearly. The [borderless variant](/elements/pagination/style/#borderless-variant) can be used for situations that require a more minimal design.
 

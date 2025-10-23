@@ -75,7 +75,9 @@ export class RhPagination extends LitElement {
   /** Change pagination size to small */
   @property({ reflect: true }) size: 'sm' | null = null;
 
-  /** Variant style. Use "borderless" for transparent backgrounds. "open" is deprecated, use "borderless" instead. */
+  /** Use `borderless` for transparent backgrounds.
+    * Note: `open` will also work, but is deprecated.
+    */
   @property({ reflect: true }) variant?: 'borderless' | 'open' | null = null;
 
   @query('input') private input?: HTMLInputElement;
