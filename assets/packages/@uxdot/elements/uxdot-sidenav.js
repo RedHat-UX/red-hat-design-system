@@ -1,4 +1,4 @@
-var _UxdotSideNav_instances, _UxdotSideNav_triggerElement, _UxdotSideNav_closeButton, _UxdotSideNav_onTriggerClick, _UxdotSideNav_onClick, _UxdotSideNav_onKeydownCloseButton, _UxdotSideNav_onKeydown, _UxdotSideNav_onKeyup, _UxdotSideNav_onTabKeyup, _UxdotSideNavDropdown_instances, _UxdotSideNavDropdown_onClick;
+var _UxdotSideNav_instances, _UxdotSideNav_triggerElement, _UxdotSideNav_closeButton, _UxdotSideNav_onTriggerClick, _UxdotSideNav_onClick, _UxdotSideNav_onKeydownCloseButton, _UxdotSideNav_onKeydown, _UxdotSideNav_onKeyup, _UxdotSideNav_onTabKeyup, _UxdotSideNavDropdown_instances, _UxdotSideNavDropdown_details_get, _UxdotSideNavDropdown_hasActiveChild, _UxdotSideNavDropdown_onClick;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html, isServer } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
@@ -175,6 +175,11 @@ let UxdotSideNavDropdown = class UxdotSideNavDropdown extends LitElement {
         super.connectedCallback();
         if (!isServer) {
             this.addEventListener('click', __classPrivateFieldGet(this, _UxdotSideNavDropdown_instances, "m", _UxdotSideNavDropdown_onClick));
+            const details = __classPrivateFieldGet(this, _UxdotSideNavDropdown_instances, "a", _UxdotSideNavDropdown_details_get);
+            if (details) {
+                this.expanded = details.hasAttribute('open') || __classPrivateFieldGet(this, _UxdotSideNavDropdown_instances, "m", _UxdotSideNavDropdown_hasActiveChild).call(this);
+                details.toggleAttribute('open', this.expanded);
+            }
         }
     }
     render() {
@@ -184,12 +189,18 @@ let UxdotSideNavDropdown = class UxdotSideNavDropdown extends LitElement {
     }
 };
 _UxdotSideNavDropdown_instances = new WeakSet();
+_UxdotSideNavDropdown_details_get = function _UxdotSideNavDropdown_details_get() {
+    return this.querySelector('details');
+};
+_UxdotSideNavDropdown_hasActiveChild = function _UxdotSideNavDropdown_hasActiveChild() {
+    const items = this.querySelectorAll('uxdot-sidenav-dropdown-menu-item');
+    return Array.from(items).some(item => item.active);
+};
 _UxdotSideNavDropdown_onClick = async function _UxdotSideNavDropdown_onClick(event) {
     if (!event.composedPath().some(node => node instanceof HTMLAnchorElement)) {
         event.preventDefault();
         this.expanded = !this.expanded;
-        this.querySelector('details')?.toggleAttribute('open', this.expanded);
-        // trigger change event which evokes the mutation on this.expanded
+        __classPrivateFieldGet(this, _UxdotSideNavDropdown_instances, "a", _UxdotSideNavDropdown_details_get)?.toggleAttribute('open', this.expanded);
         this.dispatchEvent(new CustomEvent('expand', {
             bubbles: true,
             composed: true,
