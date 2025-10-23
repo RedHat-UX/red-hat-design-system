@@ -1,0 +1,40 @@
+rh-navigation-secondary:not(:defined) {
+  --_max-height: max-content;
+  --_min-height: 80px;
+
+  display: grid;
+  position: relative;
+  gap: 0 var(--rh-space-2xl, 32px);
+  grid-template-rows: minmax(var(--_min-height), var(--_max-height)) max-content max-content;
+  grid-template-columns: 1fr max-content;
+  grid-template-areas:
+    'logo logo'
+    'nav nav'
+    'cta cta';
+
+  & > [slot='nav'],
+  & > [slot='cta'] {
+    display: flex;
+  }
+
+  @media screen and (min-width: 992px) {
+    display: grid;
+    grid-template-areas: 'logo nav cta';
+    grid-template-rows: minmax(var(--_min-height), var(--_max-height)) max-content max-content;
+    grid-template-columns: max-content 1fr max-content;
+  }
+
+  @media screen and (min-width: 1440px) {
+    & > [slot='logo'] {
+      margin-inline-start: var(--rh-space-4xl, 64px);
+    }
+
+    & > [slot='cta'] {
+      margin-inline-end: var(--rh-space-4xl, 64px);
+    }
+  }
+}
+
+rh-navigation-secondary-menu:not(:defined) {
+  display: none;
+}
