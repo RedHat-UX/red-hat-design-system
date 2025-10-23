@@ -133,6 +133,13 @@ export class RhTab extends LitElement {
     this.dispatchEvent(new TabExpandEvent(this.active, this));
   }
 
+  @observes('icon')
+  protected iconChanged() {
+    if (this.icon) {
+      import('@rhds/elements/rh-icon/rh-icon.js');
+    }
+  }
+
   @observes('active')
   private activeChanged(old: boolean) {
     this.#internals.ariaSelected = String(!!this.active);
