@@ -237,7 +237,7 @@ export class RhCodeBlock extends LitElement {
              @click="${this.#onActionsClick}"
              @keyup="${this.#onActionsKeyup}">
         ${!this.actions.includes('copy') ? '' : html`
-          <rh-tooltip>
+          <rh-tooltip silent>
             <!-- Tooltip content for the copy action button -->
             <slot id="label-copy" slot="content" name="action-label-copy">
               <span ?hidden="${this.copyButtonState !== 'default'}">Copy to Clipboard</span>
@@ -245,25 +245,28 @@ export class RhCodeBlock extends LitElement {
               <span ?hidden="${this.copyButtonState !== 'failed'}">Copy failed!</span>
             </slot>
             <button id="action-copy"
-                    class="shadow-fab"
-                    data-code-block-action="copy">
-              ${RhCodeBlock.actionIcons.get('copy')}
+                   class="shadow-fab"
+                   data-code-block-action="copy"
+                   aria-labelledby="label-copy">
+             ${RhCodeBlock.actionIcons.get('copy')}
             </button>
           </rh-tooltip>`}
-        ${!this.actions.includes('wrap') ? '' : html`
-          <rh-tooltip>
-            <!-- Tooltip content for the wrap action button -->
-            <slot id="label-wrap" slot="content" name="action-label-wrap">
-              <span ?hidden="${this.wrap}">Toggle word wrap</span>
-              <span ?hidden="${!this.wrap}"
-                    data-code-block-state="active">Toggle overflow</span>
-            </slot>
-            <button id="action-wrap"
-                    class="shadow-fab"
-                    data-code-block-action="wrap">
-              ${RhCodeBlock.actionIcons.get(this.wrap ? 'wrap-active' : 'wrap')}
-            </button>
-          </rh-tooltip>`}
+          ${!this.actions.includes('wrap') ? '' : html`
+            <rh-tooltip silent>
+             <!-- Tooltip content for the wrap action button -->
+             <slot id="label-wrap" slot="content" name="action-label-wrap">
+               <span ?hidden="${this.wrap}">Toggle word wrap</span>
+               <span ?hidden="${!this.wrap}"
+                     data-code-block-state="active">Toggle overflow</span>
+             </slot>
+             <button id="action-wrap"
+                     class="shadow-fab"
+                     data-code-block-action="wrap"
+                     aria-labelledby="label-wrap">
+               ${RhCodeBlock.actionIcons.get(this.wrap ? 'wrap-active' : 'wrap')}
+             </button>
+            </rh-tooltip>
+          `}
         </div>
 
         <button id="expand"
