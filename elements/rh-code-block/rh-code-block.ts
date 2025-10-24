@@ -58,14 +58,16 @@ export class RhCodeBlock extends LitElement {
   private static actionIcons = new Map([
     ['wrap', html`
       <svg xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          viewBox="0 0 20 20">
+           role="presentation"
+           fill="currentColor"
+           viewBox="0 0 20 20">
         <path d="M19 0c.313.039.781-.077 1 .057V20c-.313-.039-.781.077-1-.057V0ZM10.82 4.992C9.877 4.996 8.31 5.57 8.174 6c1.21.03 2.432-.073 3.635.08 2.181.383 3.677 2.796 3.066 4.922-.41 1.753-2.108 2.995-3.877 3.014L11 14H5.207l2.682-2.682-.707-.707L3.293 14.5l3.889 3.889.707-.707L5.207 15h5.736l.004-.008c1.444.005 2.896-.59 3.832-1.722 1.65-1.82 1.612-4.85-.08-6.63A5 5 0 0 0 11 5a1.948 1.948 0 0 0-.18-.008z"/>
         <path d="M4 5h7c-.039.313.077.781-.057 1H4V5ZM0 0c.313.039.781-.077 1 .057V20c-.313-.039-.781.077-1-.057V0Z"/>
       </svg>
     `],
     ['wrap-active', html`
       <svg xmlns="http://www.w3.org/2000/svg"
+           role="presentation"
            fill="none"
            viewBox="0 0 21 20">
         <path fill="currentColor" d="M12 13h1v7h-1zM12 0h1v7h-1z"/>
@@ -241,8 +243,7 @@ export class RhCodeBlock extends LitElement {
             </slot>
             <button id="action-copy"
                     class="shadow-fab"
-                    data-code-block-action="copy"
-                    aria-labelledby="label-copy">
+                    data-code-block-action="copy">
               ${RhCodeBlock.actionIcons.get('copy')}
             </button>
           </rh-tooltip>`}
@@ -251,12 +252,12 @@ export class RhCodeBlock extends LitElement {
             <!-- Tooltip content for the wrap action button -->
             <slot id="label-wrap" slot="content" name="action-label-wrap">
               <span ?hidden="${this.wrap}">Toggle word wrap</span>
-              <span ?hidden="${!this.wrap}">Toggle overflow</span>
+              <span ?hidden="${!this.wrap}"
+                    data-code-block-state="active">Toggle overflow</span>
             </slot>
             <button id="action-wrap"
                     class="shadow-fab"
-                    data-code-block-action="wrap"
-                    aria-labelledby="label-wrap">
+                    data-code-block-action="wrap">
               ${RhCodeBlock.actionIcons.get(this.wrap ? 'wrap-active' : 'wrap')}
             </button>
           </rh-tooltip>`}
