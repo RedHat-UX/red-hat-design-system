@@ -273,11 +273,12 @@ export class RhCodeBlock extends LitElement {
                 ?hidden="${!expandable}"
                 aria-controls="content-lines"
                 aria-expanded="${String(!!fullHeight) as 'true' | 'false'}"
-                @click="${this.#onClickExpand}">
+                @click="${this.#onClickExpand}"
+                aria-labelledby="${this.fullHeight ? 'show-less-label' : 'show-more-label'}">
           <!-- text content for the expandable toggle button when the code block is collapsed. -->
-          <slot name="show-more" ?hidden="${this.fullHeight}">Show more</slot>
+          <slot name="show-more" ?hidden="${this.fullHeight}" id="show-more-label">Show more</slot>
           <!-- text content for the expandable toggle button when the code block is expanded. -->
-          <slot name="show-less" ?hidden="${!this.fullHeight}">Show less</slot>
+          <slot name="show-less" ?hidden="${!this.fullHeight}" id="show-less-label">Show less</slot>
           <svg xmlns="http://www.w3.org/2000/svg"
                fill="currentColor"
                viewBox="0 0 11 7">
@@ -447,6 +448,7 @@ export class RhCodeBlock extends LitElement {
   #onActionsKeyup(event: KeyboardEvent) {
     switch (event.key) {
       case 'Enter':
+        return;
       case ' ':
         event.preventDefault();
         this.#onCodeAction(event);
