@@ -4,6 +4,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
@@ -152,6 +153,8 @@ export class RhCodeBlock extends LitElement {
   /** When set to `hidden`, the code block's line numbers are hidden */
   @property({ reflect: true, attribute: 'line-numbers' }) lineNumbers?: 'hidden';
 
+  @state() private copyButtonState: 'default' | 'active' | 'failed' = 'default';
+
   #slots = new SlotController(
     this,
     null,
@@ -228,24 +231,35 @@ export class RhCodeBlock extends LitElement {
         <div id="actions"
              @click="${this.#onActionsClick}"
              @keyup="${this.#onActionsKeyup}">
-        ${this.actions.map(x => html`
+        ${!this.actions.includes('copy') ? '' : html`
           <rh-tooltip>
-            <!-- tooltip content for the copy action button -->
-            <slot id="label-${x}" slot="content" name="action-label-${x}">${x === 'copy' ? html`
-              <span>Copy to Clipboard</span>
-              <span hidden data-code-block-state="active">Copied!</span>
-              <span hidden data-code-block-state="failed">Copy failed!</span>` : html`
-              <!-- tooltip content for the wrap action button -->
-              <span>Toggle word wrap</span>
-              <span hidden data-code-block-state="active">Toggle overflow</span>`}
+            <!-- Tooltip content for the copy action button -->
+            <slot id="label-copy" slot="content" name="action-label-copy">
+              <span ?hidden="${this.copyButtonState !== 'default'}">Copy to Clipboard</span>
+              <span ?hidden="${this.copyButtonState !== 'active'}">Copied!</span>
+              <span ?hidden="${this.copyButtonState !== 'failed'}">Copy failed!</span>
             </slot>
-            <button id="action-${x}"
+            <button id="action-copy"
                     class="shadow-fab"
-                    data-code-block-action="${x}"
-                    aria-labelledby="label-${x}">
-              ${RhCodeBlock.actionIcons.get(this.wrap && x === 'wrap' ? 'wrap-active' : x) ?? ''}
+                    data-code-block-action="copy"
+                    aria-labelledby="label-copy">
+              ${RhCodeBlock.actionIcons.get('copy')}
             </button>
-          </rh-tooltip>`)}
+          </rh-tooltip>`}
+        ${!this.actions.includes('wrap') ? '' : html`
+          <rh-tooltip>
+            <!-- Tooltip content for the wrap action button -->
+            <slot id="label-wrap" slot="content" name="action-label-wrap">
+              <span ?hidden="${this.wrap}">Toggle word wrap</span>
+              <span ?hidden="${!this.wrap}">Toggle overflow</span>
+            </slot>
+            <button id="action-wrap"
+                    class="shadow-fab"
+                    data-code-block-action="wrap"
+                    aria-labelledby="label-wrap">
+              ${RhCodeBlock.actionIcons.get(this.wrap ? 'wrap-active' : 'wrap')}
+            </button>
+          </rh-tooltip>`}
         </div>
 
         <button id="expand"
@@ -329,15 +343,17 @@ export class RhCodeBlock extends LitElement {
   async #wrapChanged() {
     await this.updateComplete;
     this.#computeLineNumbers();
-    // TODO: handle slotted fabs
-    const assignedElements =
-      this.#getFabContentElements(this.shadowRoot?.querySelector('slot[name="action-label-wrap"]'));
-    for (const el of assignedElements) {
-      if (el instanceof HTMLElement) {
-        el.hidden = (el.dataset.codeBlockState !== 'active') === this.wrap;
+    this.#setSlottedLabelState('action-label-wrap', this.wrap ? 'active' : undefined);
+  }
+
+  #setSlottedLabelState(slotName: 'action-label-copy' | 'action-label-wrap', state?: string) {
+    if (this.#slots.hasSlotted(slotName)) {
+      for (const el of this.#slots.getSlotted(slotName)) {
+        if (el instanceof HTMLElement) {
+          el.hidden = el.dataset.codeBlockState !== state;
+        }
       }
     }
-    this.requestUpdate();
   }
 
   #getSlottedCodeElements() {
@@ -346,14 +362,6 @@ export class RhCodeBlock extends LitElement {
         x instanceof HTMLScriptElement
         || x instanceof HTMLPreElement ? [x]
       : []);
-  }
-
-  #getFabContentElements(slot?: HTMLSlotElement | null): HTMLElement[] {
-    const assignedElements = slot?.assignedElements() ?? [];
-    if (!assignedElements.length) {
-      return [...slot?.querySelectorAll<HTMLElement>('*') ?? []];
-    }
-    return assignedElements as HTMLElement[];
   }
 
   /**
@@ -486,28 +494,22 @@ export class RhCodeBlock extends LitElement {
     if (!tooltip) {
       return;
     }
-    const assignedElements = this.#getFabContentElements(slot);
+
     try {
-      // TODO: handle slotted fabs
       tooltip.hide();
       const content = this.#preCopy();
       await navigator.clipboard.writeText(content);
-      for (const el of assignedElements) {
-        el.hidden = el.dataset.codeBlockState !== 'active';
-      }
+      this.copyButtonState = 'active';
+      this.#setSlottedLabelState('action-label-copy', 'active');
     } catch {
-      for (const el of assignedElements) {
-        el.hidden = el.dataset.codeBlockState !== 'failed';
-      }
+      this.copyButtonState = 'failed';
+      this.#setSlottedLabelState('action-label-copy', 'failed');
     }
-    this.requestUpdate();
     tooltip.show();
     await new Promise(r => setTimeout(r, 5_000));
     tooltip.hide();
-    for (const el of assignedElements) {
-      el.hidden = el.dataset.codeBlockState !== undefined;
-    }
-    this.requestUpdate();
+    this.copyButtonState = 'default';
+    this.#setSlottedLabelState('action-label-copy', undefined);
     tooltip.show();
   }
 }
