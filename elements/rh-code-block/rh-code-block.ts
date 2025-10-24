@@ -8,6 +8,7 @@ import { state } from 'lit/decorators/state.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
+import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
@@ -156,6 +157,8 @@ export class RhCodeBlock extends LitElement {
   @property({ reflect: true, attribute: 'line-numbers' }) lineNumbers?: 'hidden';
 
   @state() private copyButtonState: 'default' | 'active' | 'failed' = 'default';
+
+  #logger = new Logger(this);
 
   #slots = new SlotController(
     this,
@@ -502,7 +505,8 @@ export class RhCodeBlock extends LitElement {
       await navigator.clipboard.writeText(content);
       this.copyButtonState = 'active';
       this.#setSlottedLabelState('action-label-copy', 'active');
-    } catch {
+    } catch (error) {
+      this.#logger.error(error);
       this.copyButtonState = 'failed';
       this.#setSlottedLabelState('action-label-copy', 'failed');
     }
