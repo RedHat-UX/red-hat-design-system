@@ -25,8 +25,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
@@ -808,7 +808,8 @@
 <p>Making accessibility testing part of your pre-launch QA allows designers, developers, and content writers to revisit their work before they’ve moved on to the next project. Better still, you can incorporate role-based testing in each phase of your project, so issues can be avoided before handoffs between creators.</p>
 <p>Designers can evaluate their designs for things like color contrast, honest affordance of interactive items, visually-meaningful reading/focus order of elements, etc. Writers can check their source documentation for a logical content outline, clearly-written labels and instructions for forms, appropriate alternative text for images, and so on. And developers can test their work (and the content that was handed off to them) right in the browser.</p>
 <p>Keep in mind that testing isn’t easy. With many accessibility checks being judgment calls (what constitutes good alt text or clear form instructions?), even <a href="https://www.w3.org/TR/accessibility-conformance-challenges/#themes-from-research">experts disagree on accessibility</a>. Seek perfection, but accept progress along the way. Fix obvious errors, and use your best judgment with other potential issues—asking other subject matter experts as you go, if you have access to them.</p>
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--uxdot-copy-permalink-button-background,light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark))
+    );color:var(--rh-color-text-primary)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -839,7 +840,8 @@ invaluable:</p>
 <li>The <a href="/accessibility/accessibility-tools/#browser-inspectors">browser inspector</a></li>
 <li>Accessibility tools for <a href="/accessibility/ci-cd/">CI/CD pipelines</a></li>
 </ul>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--uxdot-copy-permalink-button-background,light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark))
+    );color:var(--rh-color-text-primary)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -868,7 +870,8 @@ experience with your keyboard, via the following keys:</p>
 <li><em>Arrow keys (<kbd>↑ → ↓ ←</kbd>)</em> to scroll windows, to operate form controls and tab interfaces, and to navigate through groups of focusable items (like sections of an accordion or options in a menu).</li>
 <li><em><kbd>Enter</kbd> and/or <kbd>Space</kbd></em> to follow links, activate buttons, select list items, and trigger other interactive items, as appropriate.</li>
 </ul>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--uxdot-copy-permalink-button-background,light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark))
+    );color:var(--rh-color-text-primary)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -892,7 +895,8 @@ experience with your keyboard, via the following keys:</p>
 </uxdot-copy-permalink>
 <p>If you’re feeling ambitious and want to combine testing tasks, perform your keyboard testing with a screen reader turned on.</p>
 <p>We have a <a href="/accessibility/screen-readers/">page covering the basics of screen reader testing</a> on Mac, Windows, Linux, iOS, and Android platforms.</p>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--uxdot-copy-permalink-button-background,light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark))
+    );color:var(--rh-color-text-primary)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 

@@ -365,13 +365,8 @@ rh-alert code {
 
 @layer overrides {
   /**
-     * Overrides layer for overriding component and site styles
-     */
-
-  /* TODO: Document this bug table overflows vertically causing a scrollbar when it shouldn't */
-  rh-table {
-    overflow-y: unset;
-  }
+   * Overrides layer for overriding component and site styles
+   */
 
   /* Compact tile + Uxdot Example reduce overall spacing */
   rh-tile[compact] uxdot-example::part(container) {
@@ -382,5 +377,21 @@ rh-alert code {
     /* TODO: Document this bug shouldn't have to force the font size
                the component is trying to set internally on #description */
     font-size: var(--rh-font-size-body-text-md) !important;
+  }
+
+  rh-table {
+    /* TODO: Document this bug table overflows vertically causing a scrollbar when it shouldn't */
+    overflow-y: unset;
+
+    /* Hover state for copy permalink button when in a table row */
+    & tr {
+      &:hover {
+        --uxdot-copy-permalink-button-background:
+          light-dark(
+              var(--rh-color-surface-light),
+              var(--rh-color-surface-darker)
+            );
+      }
+    }
   }
 }
