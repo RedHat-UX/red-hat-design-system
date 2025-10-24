@@ -210,6 +210,12 @@ export class RhCodeBlock extends LitElement {
     const truncated = expandable && !fullHeight;
     const actions = !!this.actions.length;
     const isIntersecting = this.#isIntersecting;
+    const actionCopyLabelledBy =
+       this.copyButtonState === 'default' ?
+         'copy-to-clipboard-label'
+         : this.copyButtonState === 'active' ?
+           'copied-label'
+           : 'copy-failed-label';
     return html`
       <div id="container"
            class="${classMap({ actions, compact, expandable, fullHeight, isIntersecting, resizable, truncated, wrap })}"
@@ -239,15 +245,15 @@ export class RhCodeBlock extends LitElement {
         ${!this.actions.includes('copy') ? '' : html`
           <rh-tooltip silent>
             <!-- Tooltip content for the copy action button -->
-            <slot id="label-copy" slot="content" name="action-label-copy">
-              <span ?hidden="${this.copyButtonState !== 'default'}">Copy to Clipboard</span>
-              <span ?hidden="${this.copyButtonState !== 'active'}">Copied!</span>
-              <span ?hidden="${this.copyButtonState !== 'failed'}">Copy failed!</span>
+            <slot slot="content" name="action-label-copy">
+              <span ?hidden="${this.copyButtonState !== 'default'}" id="copy-to-clipboard-label">Copy to Clipboard</span>
+              <span ?hidden="${this.copyButtonState !== 'active'}" id="copied-label">Copied!</span>
+              <span ?hidden="${this.copyButtonState !== 'failed'}" id="copy-failed-label">Copy failed!</span>
             </slot>
             <button id="action-copy"
                    class="shadow-fab"
                    data-code-block-action="copy"
-                   aria-labelledby="label-copy">
+                   aria-labelledby="${actionCopyLabelledBy}">
              ${RhCodeBlock.actionIcons.get('copy')}
             </button>
           </rh-tooltip>`}
@@ -274,11 +280,15 @@ export class RhCodeBlock extends LitElement {
                 aria-controls="content-lines"
                 aria-expanded="${String(!!fullHeight) as 'true' | 'false'}"
                 @click="${this.#onClickExpand}"
-                aria-labelledby="${this.fullHeight ? 'show-less-label' : 'show-more-label'}">
-          <!-- text content for the expandable toggle button when the code block is collapsed. -->
-          <slot name="show-more" ?hidden="${this.fullHeight}" id="show-more-label">Show more</slot>
+                aria-labelledby="${this.fullHeight === true ? 'show-less-label' : 'show-more-label'}">
+          <span ?hidden="${this.fullHeight}" id="show-more-label">
+            <!-- text content for the expandable toggle button when the code block is collapsed. -->
+            <slot name="show-more">Show more</slot>
+          </span>
+          <span ?hidden="${!this.fullHeight}" id="show-less-label">
           <!-- text content for the expandable toggle button when the code block is expanded. -->
-          <slot name="show-less" ?hidden="${!this.fullHeight}" id="show-less-label">Show less</slot>
+            <slot name="show-less">Show less</slot>
+          </span>
           <svg xmlns="http://www.w3.org/2000/svg"
                fill="currentColor"
                viewBox="0 0 11 7">
