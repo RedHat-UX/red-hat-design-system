@@ -1,10 +1,20 @@
 import { LitElement, type PropertyValues } from 'lit';
+export declare class RhCodeBlockCopyEvent extends Event {
+    /** Text content to copy */
+    content: string;
+    constructor(
+    /** Text content to copy */
+    content: string);
+}
 /**
  * A code block applies special formatting to sections of code.
  *
- * @summary Formats code strings within a container
- *
  * @alias code-block
+ *
+ * @summary Formats code strings within a container
+ * @event {RhCodeBlockCopyEvent} copy - fired when the user requests to copy the code block text.
+ *                                      Modify the `event.content` field to change the copied text
+ *                                      (e.g. to remove a prompt from a shell command)
  */
 export declare class RhCodeBlock extends LitElement {
     #private;
@@ -24,6 +34,7 @@ export declare class RhCodeBlock extends LitElement {
      *          <rh-code-block actions="copy wrap">
      *            <span slot="action-label-copy">Copy to Clipboard</span>
      *            <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>
+     *            <span slot="action-label-copy" hidden data-code-block-state="failed">Copy failed!</span>
      *            <span slot="action-label-wrap">Toggle word wrap</span>
      *            <span slot="action-label-wrap" hidden data-code-block-state="active">Toggle overflow</span>
      *          </rh-code-block>
@@ -50,6 +61,7 @@ export declare class RhCodeBlock extends LitElement {
     wrap: boolean;
     /** When set to `hidden`, the code block's line numbers are hidden */
     lineNumbers?: 'hidden';
+    private copyButtonState;
     connectedCallback(): void;
     disconnectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;

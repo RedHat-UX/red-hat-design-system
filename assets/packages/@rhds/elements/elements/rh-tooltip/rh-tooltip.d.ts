@@ -21,6 +21,8 @@ export declare class RhTooltip extends LitElement {
     position: Placement;
     /** Tooltip content. Overridden by the content slot */
     content?: string;
+    /** When true, disables screen reader announcements for tooltip content. Only use when another accessible label is provided. */
+    silent: boolean;
     connectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
     /** Show the tooltip */
