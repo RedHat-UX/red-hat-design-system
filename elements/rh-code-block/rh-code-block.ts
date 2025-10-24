@@ -231,7 +231,7 @@ export class RhCodeBlock extends LitElement {
         ${this.actions.map(x => html`
           <rh-tooltip>
             <!-- tooltip content for the copy action button -->
-            <slot id="label" slot="content" name="action-label-${x}">${x === 'copy' ? html`
+            <slot id="label-${x}" slot="content" name="action-label-${x}">${x === 'copy' ? html`
               <span>Copy to Clipboard</span>
               <span hidden data-code-block-state="active">Copied!</span>
               <span hidden data-code-block-state="failed">Copy failed!</span>` : html`
@@ -241,7 +241,8 @@ export class RhCodeBlock extends LitElement {
             </slot>
             <button id="action-${x}"
                     class="shadow-fab"
-                    data-code-block-action="${x}">
+                    data-code-block-action="${x}"
+                    aria-labelledby="label-${x}">
               ${RhCodeBlock.actionIcons.get(this.wrap && x === 'wrap' ? 'wrap-active' : x) ?? ''}
             </button>
           </rh-tooltip>`)}
