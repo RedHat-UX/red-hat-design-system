@@ -185,13 +185,15 @@ export class RhMenuDropdown extends LitElement {
   }
 
   #toggleMenu() {
-    this.open = !this.open;
+    if (!this.disabled) {
+      this.open = !this.open;
 
-    if (this.open) {
-      this.updateComplete.then(() => {
-        this.#focusFirstItem();
-        this.#positionPopover();
-      });
+      if (this.open) {
+        this.updateComplete.then(() => {
+          this.#focusFirstItem();
+          this.#positionPopover();
+        });
+      }
     }
   }
 

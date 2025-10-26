@@ -14,7 +14,7 @@ export class RhMenuItemGroup extends LitElement {
 
   render(): TemplateResult<1> {
     return html`
-      <p class="group-heading" ?hidden="${!this.groupHeading}" role="presentation">${this.groupHeading}</p>
+      <span class="group-heading" ?hidden="${!this.groupHeading}" role="presentation">${this.groupHeading}</span>
       <slot></slot>
     `;
   }
