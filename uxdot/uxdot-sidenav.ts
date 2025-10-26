@@ -173,10 +173,24 @@ export class UxdotSideNavDropdown extends LitElement {
   @property({ type: Boolean, reflect: true })
   expanded = false;
 
+  get #details(): HTMLDetailsElement | null {
+    return this.querySelector('details');
+  }
+
+  #hasActiveChild(): boolean {
+    const items = this.querySelectorAll('uxdot-sidenav-dropdown-menu-item');
+    return Array.from(items).some(item => item.active);
+  }
+
   connectedCallback() {
     super.connectedCallback();
     if (!isServer) {
       this.addEventListener('click', this.#onClick);
+      const details = this.#details;
+      if (details) {
+        this.expanded = details.hasAttribute('open') || this.#hasActiveChild();
+        details.toggleAttribute('open', this.expanded);
+      }
     }
   }
 
@@ -190,8 +204,7 @@ export class UxdotSideNavDropdown extends LitElement {
     if (!event.composedPath().some(node => node instanceof HTMLAnchorElement)) {
       event.preventDefault();
       this.expanded = !this.expanded;
-      this.querySelector('details')?.toggleAttribute('open', this.expanded);
-      // trigger change event which evokes the mutation on this.expanded
+      this.#details?.toggleAttribute('open', this.expanded);
       this.dispatchEvent(new CustomEvent('expand', {
         bubbles: true,
         composed: true,

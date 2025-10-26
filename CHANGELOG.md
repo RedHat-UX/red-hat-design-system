@@ -1,5 +1,35 @@
 # @rhds/elements
 
+## 3.2.0
+### Minor Changes
+
+- 07310da: `<rh-code-block>`: Added `copy` event. Modify the `event.content` field to change the text to be copied.
+  
+  ```js
+  import {RhCodeBlockCopyEvent} from '@rhds/elements/rh-code-block/rh-code-block.js';
+  
+  document.body.addEventListener('copy', function(event) {
+    if (event instanceof RhCodeBlockCopyEvent) {
+      // remove prompt and surrounding whitespace from the start of the string
+      event.content = event.content.replace(/^\s*\$|#\s*/, '');
+    }
+  });
+  ```
+- 07310da: `<rh-tooltip>`: add the `silent` attribute to hide tooltip content from screen readers.
+  
+  ```html
+  <rh-tooltip silent>
+    <rh-button variant="secondary">
+      <rh-icon set="ui" icon="copy" accessible-label="Copy to Clipboard"></rh-icon>
+    </rh-button>
+    <span slot="content">Copy to Clipboard</span>
+  </rh-tooltip>
+  ```
+
+### Patch Changes
+
+- 59dde97: `<rh-progress-stepper>`: improved online documentation
+
 ## 3.1.3
 ### Patch Changes
 
