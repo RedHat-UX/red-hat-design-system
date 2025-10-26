@@ -77,7 +77,15 @@ export class RhMenu extends LitElement {
         const assigned = element.assignedElements().filter(
           (el): el is HTMLElement => !(el instanceof HTMLHRElement)
         );
-        return assigned;
+
+        const items = assigned.flatMap(el => {
+          if (el instanceof RhMenuItemGroup) {
+            return Array.from(el.querySelectorAll('rh-menu-item'));
+          }
+          return [el];
+        });
+
+        return items;
       } else {
         if (element instanceof HTMLHRElement) {
           // Skip <hr> elements
