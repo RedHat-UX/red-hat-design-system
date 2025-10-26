@@ -33,6 +33,7 @@ export class RhMenuItem extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.#internals.role = 'menuitem';
+    this.#internals.ariaDisabled = this.disabled.toString();
   }
 
   render(): TemplateResult<1> {
@@ -51,12 +52,12 @@ export class RhMenuItem extends LitElement {
       html`<a class="menu-item" href="${this.href}">
       ${label}
     </a>`
-      : html`<div aria-disabled="${this.disabled}" class="menu-item">
+      : html`<div class="menu-item">
       ${label}
     </div>`;
 
     return html`
-      <div class="menu-item-content">
+      <div aria-disabled="${this.disabled}" class="menu-item-content">
         ${content}
         <!-- 
           Use this slot to provide the description inside menu item.
