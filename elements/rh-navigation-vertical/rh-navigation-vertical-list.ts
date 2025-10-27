@@ -18,8 +18,7 @@ import styles from './rh-navigation-vertical-list.css';
 /**
  * A disclosure menu of grouped navigation items in a vertical navigation list.
  * @summary Vertical navigation group
- * @slot - Default slot for navigation items or additional sub groups.
- * @slot summary - A summary slot for the group title, overrides the summary attribute.
+ * @alias navigation-vertical-list
  */
 @customElement('rh-navigation-vertical-list')
 export class RhNavigationVerticalList extends LitElement {
@@ -116,10 +115,14 @@ export class RhNavigationVerticalList extends LitElement {
         data-depth="${this._depth}"
         class="${classMap(classes)}">
         <summary>
+          <!-- A summary slot for the group title, overrides the summary attribute -->
           <slot name="summary">${this.summary}</slot>
           <rh-icon set="ui" icon="caret-down"></rh-icon>
         </summary>
         <div id="subtree" role="list">
+          <!-- 
+            Use this slot for \`<rh-navigation-link>\` or \`<rh-navigation-vertical-list>\` elements.
+          -->
           <slot></slot>
         </div>
       </details>
