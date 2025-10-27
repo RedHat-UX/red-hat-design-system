@@ -1,9 +1,9 @@
 ---
-title: Focus indicator styles
+title: Focus indicators
 heading: Interactions
 sidenavTitle: Interactions
 layout: layouts/pages/has-toc.njk
-permalink: /foundations/interactions/focus-indicator-styles/index.html
+permalink: /foundations/interactions/focus-indicators/index.html
 tags:
   - interactions
 subnav:
@@ -35,7 +35,7 @@ Focus styles visually indicate when interactive elements like links and buttons 
 
 To view keyboard focus states on a computer, open a web page in your browser and start pressing the <kbd>Tab</kbd> key. You will likely see the interactive elements on that page display some sort of indicator (e.g. an outline) as you navigate each of them.
 
-TODO: IMAGE
+ <img src="./focus-indicator-demo.svg" alt="In-context paragraph demo of our focus indicator style">
 
 
 ## How we style focus
@@ -55,14 +55,16 @@ When focus is applied to an interactive element, we apply an outline that:
 
 In CSS terms, here is some minimal code that meets these requirements:
 
-<rh-code-block>
-  <script type="text/css">:is(*, :hover):focus-visible {
-  outline-color: light-dark(--rh-color-blue-50, --rh-color-blue-30);
-  outline-offset: 3px;
-  outline-style: solid;
-  outline-width: 3px;
-  transition: none; 
-}</script>
+<rh-code-block dedent language="css" highlighting="client">
+  <script type="text/css">
+    :is(*, :hover):focus-visible {
+      outline-color: light-dark(--rh-color-blue-50, --rh-color-blue-30);
+      outline-offset: 3px;
+      outline-style: solid;
+      outline-width: 3px;
+      transition: none; 
+    }
+  </script>
 </rh-code-block>
 
 
@@ -101,43 +103,45 @@ We have designated focus ring colors that align with our brand standards for bot
 
 Note that there may be cases where a focus ring appears against a light background in dark mode and vice versa. For example, an inset focus ring for a text field may appear against a white background, even in dark mode. In these cases, you may need to manually override the default dark scheme ring color (<code>--rh-color-blue-30</code>) with the light scheme color (<code>--rh-color-blue-50</code>).
 
-TODO: IMAGE
+<img src="./focus-styling-considerations-demo.svg" alt="Demo of how inset ring colors should be set based on their background color and not the page theme">
 
 
 ## Example CSS
 
-<rh-code-block>
-  <script type="text/css">:is(*, :hover):focus-visible {
-  outline-color: light-dark(--rh-color-blue-50, --rh-color-blue-30);
-  outline-offset: 3px;
-  outline-style: solid;
-  outline-width: 3px;
-  transition: none; 
-}
-
-/* Placeholder `.inset` class for inset focus. */
-.inset:is(*, :hover):focus-visible {
-  outline-offset: -7px;
-}
-
-/* Placeholder `.no-offset` class for focus on element border. */
-.no-offset:is(*, :hover):focus-visible {
-  outline-offset: 0;
-}
-
-/* Placeholder `.light-bg` class for focus against light backgrounds. */
-.light-bg:is(*, :hover):focus-visible {
-  outline-color: --rh-color-blue-50; (CV)
-}
-
-/* Placeholder `.dark-bg` class for focus against dark backgrounds. */
-.dark-bg:is(*, :hover):focus-visible {
-  outline-color: --rh-color-blue-30; (CV)
-}
-
-:focus:not(:focus-visible) {
-  outline: none;
-}</script>
+<rh-code-block dedent language="css">
+  <script type="text/css">
+    :is(*, :hover):focus-visible {
+      outline-color: light-dark(--rh-color-blue-50, --rh-color-blue-30);
+      outline-offset: 3px;
+      outline-style: solid;
+      outline-width: 3px;
+      transition: none; 
+    }
+    
+    /* Placeholder `.inset` class for inset focus. */
+    .inset:is(*, :hover):focus-visible {
+      outline-offset: -7px;
+    }
+    
+    /* Placeholder `.no-offset` class for focus on element border. */
+    .no-offset:is(*, :hover):focus-visible {
+      outline-offset: 0;
+    }
+    
+    /* Placeholder `.light-bg` class for focus against light backgrounds. */
+    .light-bg:is(*, :hover):focus-visible {
+      outline-color: --rh-color-blue-50;
+    }
+    
+    /* Placeholder `.dark-bg` class for focus against dark backgrounds. */
+    .dark-bg:is(*, :hover):focus-visible {
+      outline-color: --rh-color-blue-30;
+    }
+    
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+  </script>
 </rh-code-block>
 
 
@@ -159,7 +163,7 @@ TODO: IMAGE
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
-      <img src="./links-best-practice-3-do.svg"
+      <img src="./focus-do.svg"
             alt="Several examples of acceptable focus outlines"
             width="482"
             height="100">
@@ -169,7 +173,7 @@ TODO: IMAGE
 
   <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
-      <img src="./links-best-practice-3-dont.svg"
+      <img src="./focus-dont.svg"
             alt="A selection of unacceptable focus styles: outlines not matching our standard, background color changes, etc."
             width="482"
             height="100">
