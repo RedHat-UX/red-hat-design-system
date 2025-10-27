@@ -55,18 +55,15 @@ When focus is applied to an interactive element, we apply an outline that:
 
 In CSS terms, here is some minimal code that meets these requirements:
 
-<rh-code-block dedent language="css" highlighting="client">
-  <script type="text/css">
-    :is(*, :hover):focus-visible {
-      outline-color: light-dark(--rh-color-blue-50, --rh-color-blue-30);
-      outline-offset: 3px;
-      outline-style: solid;
-      outline-width: 3px;
-      transition: none; 
-    }
-  </script>
-</rh-code-block>
-
+```css rh-code-block
+:is(*, :hover):focus-visible {
+  outline-color: light-dark(--rh-color-blue-50, --rh-color-blue-30);
+  outline-offset: 3px;
+  outline-style: solid;
+  outline-width: 3px;
+  transition: none; 
+}
+```
 
 ### Styling options
 
@@ -107,43 +104,39 @@ Note that there may be cases where a focus ring appears against a light backgrou
 
 
 ## Example CSS
+```css rh-code-block
+:is(*, :hover):focus-visible {
+  outline-color: light-dark(--rh-color-blue-50, --rh-color-blue-30);
+  outline-offset: 3px;
+  outline-style: solid;
+  outline-width: 3px;
+  transition: none; 
+}
 
-<rh-code-block dedent language="css">
-  <script type="text/css">
-    :is(*, :hover):focus-visible {
-      outline-color: light-dark(--rh-color-blue-50, --rh-color-blue-30);
-      outline-offset: 3px;
-      outline-style: solid;
-      outline-width: 3px;
-      transition: none; 
-    }
-    
-    /* Placeholder `.inset` class for inset focus. */
-    .inset:is(*, :hover):focus-visible {
-      outline-offset: -7px;
-    }
-    
-    /* Placeholder `.no-offset` class for focus on element border. */
-    .no-offset:is(*, :hover):focus-visible {
-      outline-offset: 0;
-    }
-    
-    /* Placeholder `.light-bg` class for focus against light backgrounds. */
-    .light-bg:is(*, :hover):focus-visible {
-      outline-color: --rh-color-blue-50;
-    }
-    
-    /* Placeholder `.dark-bg` class for focus against dark backgrounds. */
-    .dark-bg:is(*, :hover):focus-visible {
-      outline-color: --rh-color-blue-30;
-    }
-    
-    :focus:not(:focus-visible) {
-      outline: none;
-    }
-  </script>
-</rh-code-block>
+/* Placeholder `.inset` class for inset focus. */
+.inset:is(*, :hover):focus-visible {
+  outline-offset: -7px;
+}
 
+/* Placeholder `.no-offset` class for focus on element border. */
+.no-offset:is(*, :hover):focus-visible {
+  outline-offset: 0;
+}
+
+/* Placeholder `.light-bg` class for focus against light backgrounds. */
+.light-bg:is(*, :hover):focus-visible {
+  outline-color: --rh-color-blue-50;
+}
+
+/* Placeholder `.dark-bg` class for focus against dark backgrounds. */
+.dark-bg:is(*, :hover):focus-visible {
+  outline-color: --rh-color-blue-30;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+```
 
 ### Technical notes on the CSS
 
@@ -162,22 +155,11 @@ Note that there may be cases where a focus ring appears against a light backgrou
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
-      <img src="./focus-do.svg"
-            alt="Several examples of acceptable focus outlines"
-            width="482"
-            height="100">
-    </uxdot-example>
+    <img src="./focus-do.svg" slot="image" alt="Several examples of acceptable focus outlines">
     <p>Always use the default focus indicator styles.</p>
   </uxdot-best-practice>
-
   <uxdot-best-practice variant="dont">
-    <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
-      <img src="./focus-dont.svg"
-            alt="A selection of unacceptable focus styles: outlines not matching our standard, background color changes, etc."
-            width="482"
-            height="100">
-    </uxdot-example>
+    <img src="./focus-dont.svg" slot="image" alt="A selection of unacceptable focus styles: outlines not matching our standard, background color changes, etc.">
     <p>Do not create custom focus styles.</p>
   </uxdot-best-practice>
 </div>
