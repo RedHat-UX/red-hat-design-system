@@ -33,6 +33,7 @@ a,
   padding: var(--_navigation-link-padding, 0);
   text-decoration: var(--_navigation-link-text-decoration, none) !important;
   gap: var(--_navigation-link-gap, initial);
+  background-color: var(--_navigation-link-background-color, transparent);
 }
 
 a:before,
@@ -48,6 +49,13 @@ a:before,
 
 a:is(:hover, :hover:focus-visible, :focus-visible, :active),
 ::slotted(:is(a:hover, a:hover:focus-visible, :focus-visible, :active)) {
+  --_navigation-link-background-color:
+    var(--_navigation-link-hover-background-color,
+      light-dark(transparent, transparent)) !important;
+  --_navigation-link-color:
+    var(--_navigation-link-color-hover,
+      var(--rh-color-interactive-primary-hover)) !important;
+
   text-underline-offset: var(--_navigation-link-text-underline-offset, 4px) !important;
   text-decoration-color:
     var(--_navigation-link-text-decoration-color,
@@ -56,10 +64,6 @@ a:is(:hover, :hover:focus-visible, :focus-visible, :active),
   text-decoration-line: var(--_navigation-link-text-decoration-line, underline) !important;
   text-decoration-style: var(--_navigation-link-text-decoration-style, dashed) !important;
   text-decoration-skip-ink: auto !important;
-  color: var(--_navigation-link-color-hover, var(--rh-color-interactive-primary-hover)) !important;
-  background-color:
-    var(--_navigation-link-hover-background-color,
-      light-dark(transparent, transparent)) !important;
 }
 
 a:is(:focus-visible, :hover:focus-visible, :focus-visible, :active),
