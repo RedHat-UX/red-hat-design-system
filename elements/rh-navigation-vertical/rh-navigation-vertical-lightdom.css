@@ -1,0 +1,7 @@
+rh-navigation-vertical {
+  & rh-navigation-link:has(a[aria-current='page']) {
+    --_navigation-link-background-color: var(--rh-color-surface-lighter, #f2f2f2);
+    --_navigation-link-before-border-inline-start-width: var(--rh-border-width-lg, 3px);
+    --_navigation-link-before-border-inline-start-color: var(--rh-color-brand-red);
+  }
+}
