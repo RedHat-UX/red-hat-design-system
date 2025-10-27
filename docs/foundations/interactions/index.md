@@ -37,7 +37,7 @@ subnav:
 
 They help ensure that anything interactive is accessible, communicative, and intuitive.
 
-## Types of interactions
+## Interaction topics
 
 Interactions are foundational to how our users engage with Red Hat digital experiences.
 
@@ -53,5 +53,15 @@ Interactions are foundational to how our users engage with Red Hat digital exper
            style="background-color: var(--rh-color-surface-lightest);">
       <h3 slot="headline"><a href="/foundations/interactions/links">Links</a></h3>
       Text that sends users to another destination
+    </rh-tile>
+    <rh-tile compact>
+      <img alt="abstract representation of a paragraph with an inline link and a call to action"
+           src="./types-of-interactions-links.svg"
+           slot="image"
+           width="295"
+           height="176"
+           style="background-color: var(--rh-color-surface-lightest);">
+      <h3 slot="headline"><a href="/foundations/interactions/focus-indicator-styles">Focus indicator styles</a></h3>
+      Outlines for elements with keyboard focus
     </rh-tile>
 </nav>
