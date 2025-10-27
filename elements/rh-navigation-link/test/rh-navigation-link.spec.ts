@@ -1,11 +1,22 @@
 import { expect, fixture } from '@open-wc/testing';
-import { html } from 'lit';
+import { html, LitElement } from 'lit';
 import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 
 import { RhNavigationLink } from '@rhds/elements/rh-navigation-link/rh-navigation-link.js';
 
+class MockNav extends LitElement {
+  render() {
+    return `
+      <div role="list">
+        <slot></slot>
+      </div>
+    `;
+  }
+}
+customElements.define('mock-nav', MockNav);
+
 let element: RhNavigationLink;
-let list: HTMLElement;
+let list: MockNav;
 
 describe('<rh-navigation-link>', function() {
   describe('simply instantiating', function() {
@@ -25,21 +36,19 @@ describe('<rh-navigation-link>', function() {
 
   describe('accessibility', function() {
     beforeEach(async function() {
-      /* navigation links must be part of a list to be accessible, as of 2025-10-02 */
       element = await fixture<RhNavigationLink>(`<rh-navigation-link href="#link">Link</rh-navigation-link>`);
-      list = await fixture(html`<ul>${element}</ul>`);
+      list = await fixture<MockNav>(`<mock-nav>${element}</mock-nav>`);
     });
-    beforeEach(async () => await element.updateComplete);
-
-    /* Unfortunately snapshot does not include element internals set role, so this test is skipped */
-    /* It does not accept a ul with a child of a navigation link which has a role of listitem */
-    it.skip('is accessible', async function() {
-      await expect(list).to.be.accessible();
+    beforeEach(async () => {
+      await list.updateComplete;
+      await element.updateComplete;
     });
 
-    /* Unfortunately snapshot does not include element internals set role, so this test is skipped */
-    it.skip('should have internals role of listitem', async function() {
-      expect(element.role).to.equal('listitem');
+    it('is accessible', async function() {
+      /* we ignore the aria-allowed-role as the rh-navigation-link applies listitem role in element internals */
+      await Promise.resolve(expect(element).to.be.accessible({
+        ignoredRules: ['aria-allowed-role'],
+      }));
     });
 
     describe('adding the current-page attribute', function() {
