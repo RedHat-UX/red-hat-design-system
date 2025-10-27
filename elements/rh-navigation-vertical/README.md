@@ -5,14 +5,14 @@ A vertical navigation list containing top-level navigation items and grouped nav
 
 ```html
 <rh-navigation-vertical>
-  <rh-navigation-item href="/">Home</rh-navigation-item>
+  <rh-navigation-link href="/">Home</rh-navigation-link>
   <rh-navigation-vertical-list summary="Products">
-    <rh-navigation-item href="/products/1">Product 1</rh-navigation-item>
-    <rh-navigation-item href="/products/2">Product 2</rh-navigation-item>
-    <rh-navigation-item href="/products/3">Product 3</rh-navigation-item>
-    <rh-navigation-item href="/products/4">Product 4</rh-navigation-item>
+    <rh-navigation-link href="/products/1">Product 1</rh-navigation-link>
+    <rh-navigation-link href="/products/2">Product 2</rh-navigation-link>
+    <rh-navigation-link href="/products/3">Product 3</rh-navigation-link>
+    <rh-navigation-link href="/products/4">Product 4</rh-navigation-link>
   </rh-navigation-vertical-list>
-  <rh-navigation-item href="/about">About</rh-navigation-item>
-  <rh-navigation-item href="/contact">Contact</rh-navigation-item>
+  <rh-navigation-link href="/about">About</rh-navigation-link>
+  <rh-navigation-link href="/contact">Contact</rh-navigation-link>
 </rh-navigation-vertical>
 ```
