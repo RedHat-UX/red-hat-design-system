@@ -154,7 +154,7 @@ export class RhMenuDropdown extends LitElement {
               : html` 
               <span class="info-section"> 
                 <!-- Use this slot for the toggle label. Keep toggle labels short and succinct. -->
-                <slot name="label"></slot>
+                <slot name="toggle-label"></slot>
               </span>
               <span class="action-icon"> 
                 ${this.open ?
