@@ -2,5 +2,5 @@
 "@rhds/elements": minor
 ---
 
-fix: The `<rh-tile>` component now correctly displays all six color palettes.
+`<rh-tile>`:  allows tile to accept all six color palettes
   
