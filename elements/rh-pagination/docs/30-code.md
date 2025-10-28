@@ -20,7 +20,7 @@ You can implement pagination URLs using any of these approaches:
 
 #### Option 4: Manual control with `aria-current`
   * Set `aria-current="page"` on the current page's `<a>` element
-  * Useful when URLs don't change or for server-side rendered pagination
+  * Useful for server-side rendered pagination
 
 ### How the Current Page is Determined
 The component determines the active page in this order:
