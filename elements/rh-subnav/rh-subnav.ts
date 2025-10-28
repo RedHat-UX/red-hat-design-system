@@ -2,9 +2,10 @@ import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { query } from 'lit/decorators/query.js';
 import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-controller.js';
-
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import { RhNavigationLink } from '@rhds/elements/rh-navigation-link/rh-navigation-link.js';
@@ -45,6 +46,7 @@ export class RhSubnav extends LitElement {
 
   #overflow = new OverflowController(this);
 
+  @state() private hasNavigationLinks = false;
 
   /**
    * Customize the default `aria-label` on the `<nav>` container.
@@ -72,10 +74,9 @@ export class RhSubnav extends LitElement {
     return this.#allLinkElements;
   }
 
-  set #allLinks(links: RhNavigationLink[]) {
+  set #allLinks(links: HTMLElement[]) {
     this.#allLinkElements = links.filter(link => link instanceof RhNavigationLink);
   }
-
 
   override connectedCallback() {
     super.connectedCallback();
@@ -108,11 +109,11 @@ export class RhSubnav extends LitElement {
           </button>`}
         <!--
           slot:
-            description: Sub navigation links, expects collection of \`<rh-navigation-link>\` elements
+            description: Sub navigation links, expects collection of \`<a>\` or \`<rh-navigation-link>\` elements
           part:
             description: the anonymous slot
         -->
-        <div role="list" part="links"><slot @slotchange="${this.#onSlotchange}"></slot></div>
+        <div role="${ifDefined(this.hasNavigationLinks ? 'list' : undefined)}" part="links"><slot @slotchange="${this.#onSlotchange}"></slot></div>
         ${!this.#overflow.showScrollButtons ? '' : html`
           <button id="next"
                   tabindex="-1"
@@ -129,7 +130,12 @@ export class RhSubnav extends LitElement {
   async #onSlotchange() {
     if (!isServer) {
       const slot = this.shadowRoot?.querySelector('slot');
-      this.#allLinks = slot?.assignedElements() as RhNavigationLink[];
+      const assignedElements = (slot?.assignedElements() || []) as HTMLElement[];
+
+      // Only use role="list" if we have rh-navigation-link elements
+      this.hasNavigationLinks = assignedElements.some(el => el instanceof RhNavigationLink);
+
+      this.#allLinks = assignedElements;
       this.#overflow.init(this.linkList, this.#allLinks);
       await this.updateComplete;
     }

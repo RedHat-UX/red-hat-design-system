@@ -15,6 +15,52 @@
   max-width: 100%;
 }
 
+::slotted(a) {
+  display: block !important;
+  white-space: nowrap !important;
+  padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px) !important;
+  text-decoration: none !important;
+  color: var(--rh-color-text-secondary) !important;
+  position: relative !important;
+}
+
+::slotted(a):after {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  border-block-end: var(--rh-border-width-lg, 3px) solid transparent !important;
+}
+
+::slotted(a:hover),
+::slotted(a:active),
+::slotted(a[active]) {
+  color: var(--rh-color-text-primary) !important;
+}
+
+::slotted(a:focus-visible):after,
+::slotted(a:hover):after {
+  border-block-end-color: var(--rh-color-border-subtle) !important;
+}
+
+::slotted(a:active):after,
+::slotted(a[active]):after {
+  border-block-end-color: var(--rh-color-accent-brand) !important;
+}
+
+::slotted(a:focus-visible) {
+  outline:
+    var(--rh-border-width-md, 2px)
+    solid
+    var(--rh-color-border-interactive) !important;
+  outline-offset: -2px !important;
+  border-radius: 10px !important;
+}
+
+::slotted(a:visited) {
+  color: var(--rh-color-text-primary) !important;
+}
+
 ::slotted(rh-navigation-link) {
   --_navigation-link-display: flex;
   --_navigation-link-gap: var(--rh-space-xs, 4px);
