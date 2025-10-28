@@ -48,7 +48,7 @@ export class RhMenuItem extends LitElement {
       -->
       <slot></slot>
     `;
-    const content = this.href && !this.disabled ?
+    const content = this.href ?
       html`<a class="menu-item" href="${this.href}">
       ${label}
     </a>`
