@@ -50,6 +50,24 @@ To add javascript content, use the `text/sample-javascript` type.
 </rh-code-block>
 ```
 
+### Copy Button
+
+Add the value `copy` to the `actions` attribute, and a helpful copy button will
+appear next to the code content. You may listen for the `copy` event and modify
+its `content` property to change the text copied to the clipboard. For example,
+to remove a shell prompt (`$ `) from the copied text, use this listener function:
+
+```js
+import {RhCodeBlockCopyEvent} from '@rhds/elements/rh-code-block/rh-code-block.js';
+
+document.body.addEventListener('copy', function(event) {
+  if (event instanceof RhCodeBlockCopyEvent) {
+    // remove prompt and surrounding whitespace from the start of the string
+    event.content = event.content.replace(/^\s*\$|#\s*/, '');
+  }
+});
+```
+
 [mime]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#textjavascript
 [zwj]: https://www.wikiwand.com/en/Zero-width_joiner
 
