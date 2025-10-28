@@ -2,7 +2,7 @@
 
 ### Basic Structure
   * `<rh-pagination>` must have a nested `<ol>` element with at least one nested `<li>` and `<a>` element.
-  * Each `<a>` element should have an `href` attribute that links to the corresponding page.
+  * Each `<a>` element must have an `href` attribute that links to the corresponding page.
 
 ### URL Structure Options
 You can implement pagination URLs using any of these approaches:
