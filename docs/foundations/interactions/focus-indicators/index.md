@@ -35,8 +35,7 @@ Focus styles visually indicate when interactive elements like links and buttons 
 
 To view keyboard focus states on a computer, open a web page in your browser and start pressing the <kbd>Tab</kbd> key. You will likely see the interactive elements on that page display some sort of indicator (e.g. an outline) as you navigate each of them.
 
- <img src="./focus-indicator-demo.svg" alt="In-context paragraph demo of our focus indicator style">
-
+ <img src="./focus-indicator-demo.svg" alt="In-context paragraph demo of our focus indicator style" style="max-width: 100%;">
 
 ## How we style focus
 
@@ -100,7 +99,7 @@ We have designated focus ring colors that align with our brand standards for bot
 
 Note that there may be cases where a focus ring appears against a light background in dark mode and vice versa. For example, an inset focus ring for a text field may appear against a white background, even in dark mode. In these cases, you may need to manually override the default dark scheme ring color (<code>--rh-color-blue-30</code>) with the light scheme color (<code>--rh-color-blue-50</code>).
 
-<img src="./focus-styling-considerations-demo.svg" alt="Demo of how inset ring colors should be set based on their background color and not the page theme">
+<img src="./focus-styling-considerations-demo.png" alt="Demo of how inset ring colors should be set based on their background color and not the page theme" style="max-width: 100%;">
 
 
 ## Example CSS
@@ -155,11 +154,11 @@ Note that there may be cases where a focus ring appears against a light backgrou
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <img src="./focus-do.svg" slot="image" alt="Several examples of acceptable focus outlines">
+    <img src="./focus-do.svg" slot="image" alt="Several examples of acceptable focus outlines"  style="max-width: 100%;">
     <p>Always use the default focus indicator styles.</p>
   </uxdot-best-practice>
   <uxdot-best-practice variant="dont">
-    <img src="./focus-dont.svg" slot="image" alt="A selection of unacceptable focus styles: outlines not matching our standard, background color changes, etc.">
+    <img src="./focus-dont.svg" slot="image" alt="A selection of unacceptable focus styles: outlines not matching our standard, background color changes, etc."  style="max-width: 100%;">
     <p>Do not create custom focus styles.</p>
   </uxdot-best-practice>
 </div>
