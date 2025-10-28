@@ -1,25 +1,9 @@
 ---
-"@rhds/elements": major
+"@rhds/elements": minor
 ---
 
-`<rh-subnav>`: replaced slotted anchor elements with `<rh-navigation-link>` elements for improved accessibility.
+`<rh-subnav>`: adds support for `<rh-navigation-link>` elements
 
-
-Before:
-
-```html
-<rh-subnav>
-  <a href="#">Users</a>
-  <a href="#">Containers</a>
-  <a href="#">Databases</a>
-  <a href="#" active>Servers</a>
-  <a href="#">System</a>
-  <a href="#">Network</a>
-  <a href="#">Cloud</a>
-</rh-subnav>
-```
-
-After:
 
 ```html
 <rh-subnav>
