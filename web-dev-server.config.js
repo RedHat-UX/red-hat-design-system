@@ -62,6 +62,7 @@ function injectManuallyResolvedModulesToImportMap(document) {
       '@rhds/tokens/css/': '/node_modules/@rhds/tokens/css/',
       '@floating-ui/dom': '/node_modules/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs',
       '@floating-ui/core': '/node_modules/@floating-ui/core/dist/floating-ui.core.browser.min.mjs',
+      'vue/dist/vue.esm-browser.js': 'https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js',
     });
     for (const key of Object.keys(json.scopes ?? {})) {
       json.scopes[key]['@patternfly/pfe-core'] = '/node_modules/@patternfly/pfe-core/core.js';
@@ -141,6 +142,7 @@ export default pfeDevServerConfig({
     ignore: [
       /^\./,
       /^@rhds\/icons/,
+      /^vue/,
     ],
     inputMap: { imports },
   },
