@@ -2,6 +2,10 @@
   display: block;
 }
 
+:host([color-palette]) {
+  background-color: var(--rh-color-surface);
+}
+
 [part='container'] {
   display: flex;
 }

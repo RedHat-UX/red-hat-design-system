@@ -6,6 +6,7 @@ import { state } from 'lit/decorators/state.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-controller.js';
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import { RhNavigationLink } from '@rhds/elements/rh-navigation-link/rh-navigation-link.js';
@@ -22,6 +23,7 @@ import styles from './rh-subnav.css';
  * @alias subnavigation
  */
 @customElement('rh-subnav')
+@colorPalettes
 @themable
 export class RhSubnav extends LitElement {
   static readonly styles = [styles];
@@ -47,6 +49,16 @@ export class RhSubnav extends LitElement {
   #overflow = new OverflowController(this);
 
   @state() private hasNavigationLinks = false;
+
+  /**
+   * Sets color palette, which affects the element's styles as well as descendants' color theme.
+   * Overrides parent color context.
+   * Your theme will influence these colors so check there first if you are seeing inconsistencies.
+   * See [CSS Custom Properties](#css-custom-properties) for default values
+   * @deprecated `<rh-subnav>` reacts to the parent set color-scheme and should not set its own color-palette. 
+   * The color-palette attribute will be removed in a future release.
+   */
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
    * Customize the default `aria-label` on the `<nav>` container.
@@ -110,6 +122,7 @@ export class RhSubnav extends LitElement {
         <!--
           slot:
             description: Sub navigation links, expects collection of \`<a>\` or \`<rh-navigation-link>\` elements
+            Slotting a \`<a>\` element is deprecated and will be removed in a future release. Use \`<rh-navigation-link>\` instead.
           part:
             description: the anonymous slot
         -->
