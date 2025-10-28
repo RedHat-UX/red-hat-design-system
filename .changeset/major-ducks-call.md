@@ -2,8 +2,7 @@
 "@rhds/elements": minor
 ---
 
-`<rh-subnav>`: adds support for `<rh-navigation-link>` elements
-
+`<rh-subnav>`: adds support for `<rh-navigation-link>` elements, deprecated slotting `<a>` elements
 
 ```html
 <rh-subnav>
