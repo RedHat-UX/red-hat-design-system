@@ -2,6 +2,7 @@ import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
 import styles from './rh-menu-item.css';
 
 /**
@@ -24,6 +25,14 @@ export class RhMenuItem extends LitElement {
    */
   @property({ type: String }) href = '';
 
+  /**
+   * Whether the link should open externally.
+   * When true, the link opens in a new browser tab or window
+   * and includes appropriate security attributes (`target="_blank"` and `rel="noopener noreferrer"`).
+  */
+  @property({ type: Boolean }) external = false;
+
+
   #internals = InternalsController.of(this);
 
   static override readonly shadowRootOptions: ShadowRootInit = {
@@ -37,28 +46,44 @@ export class RhMenuItem extends LitElement {
   }
 
   render(): TemplateResult<1> {
+    const target = this.external ? '_blank' : '_self';
+    const rel = this.external ? 'noopener noreferrer' : null;
+
+    const srLabel = this.external ?
+      'Menu link, opens in a new tab'
+      : 'Menu link, opens in the same tab';
+
     const label = html`
-      <!-- 
-        Slot for an icon displayed alongside the menu item.
-        The icon will appear to the left of the menu item text in left-to-right (LTR) layouts.
-      -->
-      <slot name="icon"></slot>
       <!-- 
         Use this slot to provide the text content inside menu item.
       -->
       <slot></slot>
     `;
     const content = this.href ?
-      html`<a class="menu-item" href="${this.href}">
-      ${label}
-    </a>`
-      : html`<div class="menu-item">
-      ${label}
-    </div>`;
+      html`
+        <div class="menu-link">
+          <a class="menu-item" href="${this.href}" target=${target} rel=${ifDefined(rel)}>
+            ${label}
+            ${!this.disabled ? html`<span class="visually-hidden">${srLabel}</span>` : ''}
+          </a>
+          ${this.external && !this.disabled ? html`<rh-icon set="ui" icon="external-link"></rh-icon>` : ''}
+        </div>`
+      : html`
+        <div class="menu-item">
+        ${label}
+        </div>
+      `;
 
     return html`
       <div aria-disabled="${this.disabled}" class="menu-item-content">
-        ${content}
+        <div class="menu-item-label">
+          <!-- 
+            Slot for an icon displayed alongside the menu item.
+            The icon will appear to the left of the menu item text in left-to-right (LTR) layouts.
+          -->
+          <slot name="icon"></slot>
+          ${content}
+        </div>
         <!-- 
           Use this slot to provide the description inside menu item.
         -->
