@@ -139,6 +139,7 @@ export class RhMenuDropdown extends LitElement {
       <div @focusout=${this.#onFocusOut} class="menu-dropdown-container">
         <button
           id="menu-toggle"
+          type="button"
           aria-haspopup="menu"
           aria-expanded="${this.open}"
           @click="${this.#toggleMenu}"
