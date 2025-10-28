@@ -35,7 +35,7 @@ describe('<rh-menu-dropdown>', function() {
     beforeEach(async () => {
       element = await createFixture(html`
         <rh-menu-dropdown>
-          <span slot="label">Basic toggle</span>
+          <span slot="toggle-label">Basic toggle</span>
           <rh-menu-item>Action</rh-menu-item>
           <rh-menu-item href="#">Link</rh-menu-item>
           <rh-menu-item disabled>Disabled Action</rh-menu-item>
@@ -50,7 +50,7 @@ describe('<rh-menu-dropdown>', function() {
     });
 
     it('renders the toggle label from the slot', () => {
-      const label = element.querySelector('[slot="label"]');
+      const label = element.querySelector('[slot="toggle-label"]');
       expect(label?.textContent?.trim()).to.equal('Basic toggle');
     });
 
@@ -73,7 +73,7 @@ describe('<rh-menu-dropdown>', function() {
     beforeEach(async () => {
       element = await createFixture(html`
         <rh-menu-dropdown>
-          <span slot="label">Basic toggle</span>
+          <span slot="toggle-label">Basic toggle</span>
           <rh-menu-item>Action</rh-menu-item>
           <rh-menu-item href="#">Link</rh-menu-item>
           <rh-menu-item disabled>Disabled Action</rh-menu-item>
@@ -137,7 +137,7 @@ describe('<rh-menu-dropdown>', function() {
     beforeEach(async function() {
       element = await createFixture<RhMenuDropdown>(html`
         <rh-menu-dropdown>
-          <span slot="label">Basic toggle</span>
+          <span slot="toggle-label">Basic toggle</span>
           <rh-menu-item>Action</rh-menu-item>
           <rh-menu-item href="#">Link</rh-menu-item>
           <rh-menu-item disabled>Disabled Action</rh-menu-item>
@@ -194,7 +194,7 @@ describe('<rh-menu-dropdown>', function() {
     beforeEach(async function() {
       element = await createFixture<RhMenuDropdown>(html`
         <rh-menu-dropdown>
-          <span slot="label">Basic toggle</span>
+          <span slot="toggle-label">Basic toggle</span>
           <rh-menu-item>Action</rh-menu-item>
           <rh-menu-item href="#">Link</rh-menu-item>
           <rh-menu-item disabled>Disabled Action</rh-menu-item>
@@ -243,7 +243,7 @@ describe('<rh-menu-dropdown>', function() {
     beforeEach(async function() {
       element = await createFixture<RhMenuDropdown>(html`
         <rh-menu-dropdown disabled>
-          <span slot="label">Basic toggle</span>
+          <span slot="toggle-label">Basic toggle</span>
           <rh-menu-item>Action</rh-menu-item>
           <rh-menu-item href="#">Link</rh-menu-item>
           <rh-menu-item disabled>Disabled Action</rh-menu-item>
