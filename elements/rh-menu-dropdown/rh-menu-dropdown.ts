@@ -267,6 +267,13 @@ export class RhMenuDropdown extends LitElement {
       target,
       target.textContent ? target.textContent : ''
     ));
+    if (target.href) {
+      if (target.external) {
+        window.open(target.href, '_blank', 'noopener,noreferrer');
+      } else {
+        window.location.href = target.href;
+      }
+    }
   }
 
   #onSelect(event: KeyboardEvent & { target: RhMenuItem }) {
