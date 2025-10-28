@@ -114,6 +114,7 @@ export default async function(eleventyConfig: UserConfig) {
         '@patternfly/icons/': '/assets/packages/@patternfly/icons/',
         '@patternfly/pfe-core/': '/assets/packages/@patternfly/pfe-core/',
         '@uxdot/elements/': '/assets/packages/@uxdot/elements/',
+        'vue/dist/vue.esm-browser.js': 'https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js',
       },
     },
     localPackages: [
