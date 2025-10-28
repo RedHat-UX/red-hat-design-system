@@ -99,7 +99,7 @@ We have designated focus ring colors that align with our brand standards for bot
 
 Note that there may be cases where a focus ring appears against a light background in dark mode and vice versa. For example, an inset focus ring for a text field may appear against a white background, even in dark mode. In these cases, you may need to manually override the default dark scheme ring color (<code>--rh-color-blue-30</code>) with the light scheme color (<code>--rh-color-blue-50</code>).
 
-<img src="./focus-styling-considerations-demo.png" alt="Demo of how inset ring colors should be set based on their background color and not the page theme" style="max-width: 100%;">
+<img src="./focus-styling-considerations-demo.svg" alt="Demo of how inset ring colors should be set based on their background color and not the page theme" style="max-width: 100%;">
 
 
 ## Example CSS
