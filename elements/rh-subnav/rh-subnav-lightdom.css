@@ -12,18 +12,3 @@ rh-subnav {
     border-block-end-color: var(--rh-color-brand-red) !important;
   }
 }
-
-rh-subnav {
-  & rh-navigation-link:focus-visible:after,
-  & rh-navigation-link:has(a:focus-visible):after {
-    border-block-end-color: var(--rh-color-border-subtle) !important;
-  }
-
-  & rh-navigation-link:focus-within:after {
-    border-block-end-color: var(--rh-color-border-subtle) !important;
-  }
-
-  & rh-navigation-link:active:after {
-    border-block-end-color: var(--rh-color-brand-red) !important;
-  }
-}
