@@ -10,7 +10,7 @@
   display: flex;
 }
 
-[part='links'] {
+#link-container {
   display: flex;
   position: relative;
   bottom: 0;

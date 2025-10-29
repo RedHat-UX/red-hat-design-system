@@ -15,6 +15,9 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './rh-subnav.css';
 
+
+type LinkElement = HTMLAnchorElement | RhNavigationLink;
+
 /**
  * A subnavigation allows users to navigate between a small number of page links.
  *
@@ -44,7 +47,7 @@ export class RhSubnav extends LitElement {
     }
   }
 
-  #allLinkElements: RhNavigationLink[] = [];
+  #allLinkElements: LinkElement[] = [];
 
   #overflow = new OverflowController(this);
 
@@ -79,15 +82,15 @@ export class RhSubnav extends LitElement {
   labelScrollRight = 'Scroll forward';
 
 
-  @query('[part="links"]') private linkList!: HTMLElement;
+  @query('#link-container') private linkList!: LinkElement;
 
 
   get #allLinks() {
     return this.#allLinkElements;
   }
 
-  set #allLinks(links: HTMLElement[]) {
-    this.#allLinkElements = links.filter(link => link instanceof RhNavigationLink);
+  set #allLinks(links: LinkElement[]) {
+    this.#allLinkElements = links.filter(link => link);
   }
 
   override connectedCallback() {
@@ -126,7 +129,7 @@ export class RhSubnav extends LitElement {
           part:
             description: the anonymous slot
         -->
-        <div role="${ifDefined(this.hasNavigationLinks ? 'list' : undefined)}" >
+        <div id="link-container" role="${ifDefined(this.hasNavigationLinks ? 'list' : undefined)}" >
           <slot @slotchange="${this.#onSlotchange}" part="links"></slot>
         </div>
         ${!this.#overflow.showScrollButtons ? '' : html`
@@ -145,7 +148,7 @@ export class RhSubnav extends LitElement {
   async #onSlotchange() {
     if (!isServer) {
       const slot = this.shadowRoot?.querySelector('slot');
-      const assignedElements = (slot?.assignedElements() || []) as HTMLElement[];
+      const assignedElements = (slot?.assignedElements() || []) as LinkElement[];
 
       // if slotted a elements remove active attribute replace it with aria-current="page"
       for (const element of assignedElements) {
@@ -162,7 +165,9 @@ export class RhSubnav extends LitElement {
       this.hasNavigationLinks = assignedElements.some(el => el instanceof RhNavigationLink);
 
       this.#allLinks = assignedElements;
+
       this.#overflow.init(this.linkList, this.#allLinks);
+
       await this.updateComplete;
     }
   }
