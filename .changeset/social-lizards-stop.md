@@ -4,7 +4,7 @@
 
 ✨ Added `<rh-menu-dropdown>`.
 
-The menu dropdown is a UI component made up of two parts: a menu toggle and a menu list. The toggle is the element users interact with to open or close the dropdown. When opened, it reveals the menu list, a compact set of options that can trigger actions or navigate to different pages. It's a clean and efficient way to present multiple choices without taking up much space on the screen.
+`<rh-menu-dropdown>` is a UI component designed for presenting a set of related actions or commands. It consists of two parts: a menu toggle, which users interact with to open or close the menu, and a menu list that contains actionable items. When opened, it behaves similarly to menus found in desktop applications—offering users a compact, keyboard-accessible way to perform tasks or invoke functions without occupying significant screen space.
 
 ```html
 <rh-menu-dropdown>
