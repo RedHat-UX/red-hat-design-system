@@ -1,13 +1,29 @@
 ## Implementation guidelines
 
+### Basic Structure
   * `<rh-pagination>` must have a nested `<ol>` element with at least one nested `<li>` and `<a>` element.
-  * Pagination URLs must start with a hash, eg `#2`.
-    * We recommend structuring your pagination URL as follows:
-      * `example.redhat.com/search/#2`
-    * If your URL contains query parameters (eg: `?search=test`), ensure the hash comes after the query parameter.
-    * Ensure the hash for the `href` in the first page of the pagination is `#` and not `#1`.
-  * The active page is set in this order:
-    1. Looking for an `aria-current="page"` attribute on a `<a>` tag
-    1. Looking in the URL for a hash, eg `/search/#2`
-    1. If neither of these are set and no hashes exist in the URL, `<rh-pagination>` sets the current page to the first `<a>` in the list
-    1. If `<rh-pagination>` cannot determine the current link from these conditions, it will log a message to the console saying, "Could not determine current link."
+  * Each `<a>` element must have an `href` attribute that links to the corresponding page.
+
+### URL Structure Options
+You can implement pagination URLs using any of these approaches:
+
+#### Option 1: Hash fragments (recommended for client-side routing)
+  * Example: `example.redhat.com/search/#2`, `example.redhat.com/search/#3`
+  * If using query parameters, ensure the hash comes after: `example.redhat.com/search/?q=test#2`
+
+#### Option 2: Query parameters
+  * Example: `example.redhat.com/search?page=2`, `example.redhat.com/search?page=3`
+  * Can be combined with other query parameters: `example.redhat.com/search?q=test&page=2`
+
+#### Option 3: Path-based URLs
+  * Example: `example.redhat.com/search/page/2`, `example.redhat.com/search/page/3`
+
+#### Option 4: Manual control with `aria-current`
+  * Set `aria-current="page"` on the current page's `<a>` element
+  * Useful for server-side rendered pagination
+
+### How the Current Page is Determined
+The component determines the active page in this order:
+  1. Looking for an `aria-current="page"` attribute on an `<a>` tag
+  2. Matching the full URL (pathname, search parameters, and hash) against each link's `href`
+  3. If no match is found, the component logs a warning: "could not determine current link"

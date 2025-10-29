@@ -129,6 +129,11 @@ rh-navigation-secondary [slot='nav'] > li > a[aria-current='page'] {
   border-block-start-color: var(--rh-color-brand-red);
 }
 
+rh-navigation-secondary [slot='nav'] > li > rh-navigation-link[current-page],
+rh-navigation-secondary [slot='nav'] > li > rh-navigation-link:has(a[aria-current='page']) {
+  border-block-start-color: var(--rh-color-brand-red);
+}
+
 rh-navigation-secondary > [slot='nav'] > li > a:hover,
 rh-navigation-secondary-dropdown > a:hover {
   text-decoration: none !important;
@@ -164,6 +169,37 @@ rh-navigation-secondary-menu-section > [slot='header'] {
   font-size: var(--rh-font-size-body-text-md, 1rem);
   font-weight: 500;
   margin: 0 0 var(--rh-space-lg, 16px);
+}
+
+rh-navigation-secondary > [slot='nav'] > li > rh-navigation-link {
+  --_navigation-link-container-align-items: center;
+  --_navigation-link-container-display: flex;
+  --_navigation-link-container-block-size: 100%;
+  --_navigation-link-container-inline-size: 100%;
+  --_navigation-link-display: flex;
+  --_navigation-link-inline-size: 100%;
+  --_navigation-link-align-items: start;
+  --_navigation-link-padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
+  --_navigation-link-font-weight: 500;
+  --_navigation-link-text-decoration-line: none;
+  --_navigation-link-color-hover: var(--rh-color-text-primary);
+
+  display: flex;
+  block-size: 100%;
+  align-items: center;
+
+  @media screen and (min-width: 992px) {
+    --_navigation-link-font-weight: 400;
+    --_navigation-link-block-size: 100%;
+    --_navigation-link-align-items: center;
+    --_navigation-link-padding: 0 var(--rh-space-lg, 16px);
+
+    border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
+
+    &:hover {
+      border-block-start-color: var(--rh-color-text-brand);
+    }
+  }
 }
 
 @media screen and (min-width: 768px) {

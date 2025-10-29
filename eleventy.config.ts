@@ -114,6 +114,7 @@ export default async function(eleventyConfig: UserConfig) {
         '@patternfly/icons/': '/assets/packages/@patternfly/icons/',
         '@patternfly/pfe-core/': '/assets/packages/@patternfly/pfe-core/',
         '@uxdot/elements/': '/assets/packages/@uxdot/elements/',
+        'vue/dist/vue.esm-browser.js': 'https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js',
       },
     },
     localPackages: [
@@ -121,6 +122,7 @@ export default async function(eleventyConfig: UserConfig) {
       'fuse.js',
       'tinycolor2',
       'element-internals-polyfill',
+      'vue/dist/vue.esm-browser.js',
 
       // RHDS dependencies
       // `manualImportMap` is not traced, so we need to manually specify these
@@ -219,6 +221,7 @@ export default async function(eleventyConfig: UserConfig) {
       'elements/rh-jump-links/rh-jump-link.ts',
       'elements/rh-jump-links/rh-jump-links-list.ts',
       'elements/rh-jump-links/rh-jump-links.ts',
+      'elements/rh-navigation-link/rh-navigation-link.ts',
       'elements/rh-navigation-primary/rh-navigation-primary-item-menu.ts',
       'elements/rh-navigation-primary/rh-navigation-primary-item.ts',
       'elements/rh-navigation-primary/rh-navigation-primary-overlay.ts',
