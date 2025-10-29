@@ -9,4 +9,5 @@ libraries:
   shared: inProgress
   docs: ready
 relatedItems:
-  - rh-menu
+  - rh-button
+  - rh-icon
