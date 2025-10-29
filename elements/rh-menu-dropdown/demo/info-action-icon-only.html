@@ -1,23 +1,20 @@
 <div id="menu-dropdown-container">
   <rh-menu-dropdown>
     <rh-icon slot="toggle-label" set="ui" icon="auto-light-dark-mode"></rh-icon>
-    <rh-menu>
-      <rh-menu-item>Action</rh-menu-item>
-      <rh-menu-item href="#">Link</rh-menu-item>
-      <rh-menu-item disabled>Disabled Action</rh-menu-item>
-      <rh-menu-item disabled href="#">Disabled link</rh-menu-item>
-      <rh-menu-item disabled href="#">Aria-disabled link</rh-menu-item>
-      <hr/>
-      <rh-menu-item>Separated action</rh-menu-item>
-      <rh-menu-item href="#" external>Separated, external link</rh-menu-item>
-    </rh-menu>
+    <rh-menu-item>Action</rh-menu-item>
+    <rh-menu-item href="#">Link</rh-menu-item>
+    <rh-menu-item disabled>Disabled Action</rh-menu-item>
+    <rh-menu-item disabled href="#">Disabled link</rh-menu-item>
+    <rh-menu-item disabled href="#">Aria-disabled link</rh-menu-item>
+    <hr/>
+    <rh-menu-item>Separated action</rh-menu-item>
+    <rh-menu-item href="#" external>Separated, external link</rh-menu-item>
   </rh-menu-dropdown>
 </div>
 
 <script type="module">
   import '@rhds/elements/rh-menu-dropdown/rh-menu-dropdown.js';
   import '@rhds/elements/rh-menu/rh-menu-item.js';
-  import '@rhds/elements/rh-menu/rh-menu.js';
 
   const dropdown = document.querySelector('rh-menu-dropdown');
   dropdown.addEventListener('select', e => {

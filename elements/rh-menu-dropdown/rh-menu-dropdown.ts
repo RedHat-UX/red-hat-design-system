@@ -64,6 +64,13 @@ export class RhMenuDropdown extends LitElement {
    */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
+  /**
+   * Provides an accessible name for the dropdown, improving screen reader support.
+   * This label is announced to assistive technologies to describe the purpose of
+   * the compact menu dropdown.
+  */
+  @property({ attribute: 'accessible-label', reflect: true }) accessibleLabel = 'Toggle menu';
+
   @query('#menu-toggle') menuToggleButton!: HTMLElement;
   @query('#menu-list') menuList!: HTMLElement;
   @queryAll('slot') slotElement!: NodeListOf<HTMLSlotElement>;
@@ -151,7 +158,7 @@ export class RhMenuDropdown extends LitElement {
            ${this.disabled ? 'disabled' : ''}
            ${this.open ? 'open' : ''}">
             ${this.layout === 'compact' ?
-              html`<rh-icon set="ui" icon="ellipsis-vertical-fill"></rh-icon>`
+              html`<rh-icon set="ui" accessible-label=${this.accessibleLabel} icon="ellipsis-vertical-fill"></rh-icon>`
               : html` 
               <span class="info-section"> 
                 <!-- Use this slot for the toggle label. Keep toggle labels short and succinct. -->

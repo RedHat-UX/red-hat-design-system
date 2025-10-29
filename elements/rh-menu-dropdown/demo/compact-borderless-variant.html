@@ -1,5 +1,5 @@
 <div id="menu-dropdown-container">
-  <rh-menu-dropdown variant="borderless" layout="compact">
+  <rh-menu-dropdown variant="borderless" layout="compact" accessible-label="Toggle menu">
     <rh-menu-item>Action</rh-menu-item>
     <rh-menu-item href="#">Link</rh-menu-item>
     <rh-menu-item disabled>Disabled Action</rh-menu-item>
@@ -14,7 +14,6 @@
 <script type="module">
   import '@rhds/elements/rh-menu-dropdown/rh-menu-dropdown.js';
   import '@rhds/elements/rh-menu/rh-menu-item.js';
-  import '@rhds/elements/rh-menu/rh-menu.js';
 
   const dropdown = document.querySelector('rh-menu-dropdown');
   dropdown.addEventListener('select', e => {
