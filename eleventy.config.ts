@@ -16,6 +16,7 @@ import RHDSPlugin from '#11ty-plugins/rhds.js';
 import DesignTokensPlugin from '#11ty-plugins/tokens.js';
 import RHDSMarkdownItPlugin from '#11ty-plugins/markdown-it.js';
 import ImportMapPlugin from '#11ty-plugins/importMap.js';
+import LargeDemoWorkaroundPlugin from '#11ty-plugins/large-demo-workaround.js';
 
 export interface GlobalData {
   runMode: 'build' | 'watch' | 'serve';
@@ -113,6 +114,7 @@ export default async function(eleventyConfig: UserConfig) {
         '@patternfly/icons/': '/assets/packages/@patternfly/icons/',
         '@patternfly/pfe-core/': '/assets/packages/@patternfly/pfe-core/',
         '@uxdot/elements/': '/assets/packages/@uxdot/elements/',
+        'vue/dist/vue.esm-browser.js': 'https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js',
       },
     },
     localPackages: [
@@ -120,6 +122,7 @@ export default async function(eleventyConfig: UserConfig) {
       'fuse.js',
       'tinycolor2',
       'element-internals-polyfill',
+      'vue/dist/vue.esm-browser.js',
 
       // RHDS dependencies
       // `manualImportMap` is not traced, so we need to manually specify these
@@ -218,6 +221,7 @@ export default async function(eleventyConfig: UserConfig) {
       'elements/rh-jump-links/rh-jump-link.ts',
       'elements/rh-jump-links/rh-jump-links-list.ts',
       'elements/rh-jump-links/rh-jump-links.ts',
+      'elements/rh-navigation-link/rh-navigation-link.ts',
       'elements/rh-navigation-primary/rh-navigation-primary-item-menu.ts',
       'elements/rh-navigation-primary/rh-navigation-primary-item.ts',
       'elements/rh-navigation-primary/rh-navigation-primary-overlay.ts',
@@ -253,7 +257,6 @@ export default async function(eleventyConfig: UserConfig) {
       'uxdot/uxdot-pattern.ts',
       'uxdot/uxdot-repo-status-checklist.ts',
       'uxdot/uxdot-repo-status-list.ts',
-      'uxdot/uxdot-search.ts',
       'uxdot/uxdot-sidenav.ts',
       'uxdot/uxdot-spacer-tokens-table.ts',
       'uxdot/uxdot-toc.ts',
@@ -287,6 +290,10 @@ export default async function(eleventyConfig: UserConfig) {
       'getstarted',
     ],
   });
+
+  // Workaround for large demo files that break Nunjucks includes
+  // Can be removed once the underlying issue is resolved
+  eleventyConfig.addPlugin(LargeDemoWorkaroundPlugin);
 
   return {
     templateFormats: ['html', 'md', 'njk', '11ty.js', '11ty.cjs'],
