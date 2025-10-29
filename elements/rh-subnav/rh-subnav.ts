@@ -126,7 +126,9 @@ export class RhSubnav extends LitElement {
           part:
             description: the anonymous slot
         -->
-        <div role="${ifDefined(this.hasNavigationLinks ? 'list' : undefined)}" part="links"><slot @slotchange="${this.#onSlotchange}"></slot></div>
+        <div role="${ifDefined(this.hasNavigationLinks ? 'list' : undefined)}" >
+          <slot @slotchange="${this.#onSlotchange}" part="links"></slot>
+        </div>
         ${!this.#overflow.showScrollButtons ? '' : html`
           <button id="next"
                   tabindex="-1"
