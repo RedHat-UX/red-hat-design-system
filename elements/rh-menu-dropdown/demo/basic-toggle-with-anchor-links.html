@@ -1,14 +1,12 @@
 <div id="menu-dropdown-container">
   <rh-menu-dropdown>
-    <rh-icon slot="toggle-label" set="ui" icon="auto-light-dark-mode"></rh-icon>
-    <span slot="toggle-label">Basic toggle</span>
-    <rh-menu-item>Action</rh-menu-item>
-    <rh-menu-item href="#">Link</rh-menu-item>
-    <rh-menu-item disabled>Disabled Action</rh-menu-item>
+    <span slot="toggle-label">Basic toggle with links</span>
+    <rh-menu-item href="#">Link one</rh-menu-item>
+    <rh-menu-item href="#">Link two</rh-menu-item>
+    <rh-menu-item href="#">Link three</rh-menu-item>
     <rh-menu-item disabled href="#">Disabled link</rh-menu-item>
-    <rh-menu-item disabled href="#">Aria-disabled link</rh-menu-item>
     <hr/>
-    <rh-menu-item>Separated action</rh-menu-item>
+    <rh-menu-item href="#">Separated link</rh-menu-item>
     <rh-menu-item href="#" external>Separated, external link</rh-menu-item>
   </rh-menu-dropdown>
 </div>
@@ -26,5 +24,10 @@
 <style>
 #menu-dropdown-container {
   padding: 1rem;
+
+  rh-menu-dropdown{
+    width: 296px;
+  }
 }
 </style>
+
