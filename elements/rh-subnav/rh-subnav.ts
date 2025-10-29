@@ -55,7 +55,7 @@ export class RhSubnav extends LitElement {
    * Overrides parent color context.
    * Your theme will influence these colors so check there first if you are seeing inconsistencies.
    * See [CSS Custom Properties](#css-custom-properties) for default values
-   * @deprecated `<rh-subnav>` reacts to the parent set color-scheme and should not set its own color-palette. 
+   * @deprecated `<rh-subnav>` reacts to the parent set color-scheme and should not set its own color-palette.
    * The color-palette attribute will be removed in a future release.
    */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
