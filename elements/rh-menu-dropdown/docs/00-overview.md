@@ -1,6 +1,6 @@
 ## When to use
 
-- When users need a list of choices that doesn’t require persistent visibility
-- When users need context-specific actions
-- When there is limited space for multiple actions
+- When users need a list of actions or links that doesn’t require persistent visibility
+- When users need context-specific actions or links
+- When there is limited space for multiple actions or links
 

@@ -50,8 +50,8 @@ export class RhMenuItem extends LitElement {
     const rel = this.external ? 'noopener noreferrer' : null;
 
     const srLabel = this.external ?
-      'Menu link, opens in a new tab'
-      : 'Menu link, opens in the same tab';
+      'Link, opens in a new tab'
+      : 'Link';
 
     const label = html`
       <!-- 

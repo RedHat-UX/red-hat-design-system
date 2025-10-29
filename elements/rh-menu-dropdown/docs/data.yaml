@@ -10,4 +10,5 @@ libraries:
   docs: ready
 relatedItems:
   - rh-button
-  - rh-icon
+  - rh-disclosure
+  - rh-navigation-primary

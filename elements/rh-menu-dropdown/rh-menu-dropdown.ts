@@ -26,8 +26,8 @@ export class MenuDropdownSelectEvent extends Event {
 
 
 /**
- * A menu dropdown presents a list of choices in a vertically stacked menu, appearing when
-   a user interacts with a toggle button.
+ * A menu dropdown presents a list of actions or links in a vertically stacked menu,
+ * appearing when a user interacts with a toggle button.
  *
  * @summary A collapsible menu for presenting a list of options or actions
  *
