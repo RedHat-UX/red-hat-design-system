@@ -5,6 +5,3 @@
 - When it’s important to keep the interface clean while still offering access to multiple choices
 - When grouping related items improves usability and reduces visual clutter
 
-<div id="overview-image-description" class="visually-hidden">
-
-</div>
