@@ -1,25 +1,27 @@
-rh-subnav:not(:defined) {
-  display: flex;
-  background-color: var(--rh-color-surface);
-}
+rh-subnav {
+  &:not(:defined) {
+    display: flex;
+    background-color: var(--rh-color-surface);
 
-rh-subnav:not(:defined) a {
-  display: block !important;
-  white-space: nowrap !important;
-  padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px) !important;
-  text-decoration: none !important;
-  color: var(--rh-color-text-secondary) !important;
-  position: relative !important;
-}
+    & a {
+      display: block !important;
+      white-space: nowrap !important;
+      padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px) !important;
+      text-decoration: none !important;
+      color: var(--rh-color-text-secondary) !important;
+      position: relative !important;
 
-rh-subnav:not(:defined) a:after {
-  content: '' !important;
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  border-block-end: var(--rh-border-width-lg, 3px) solid transparent !important;
-}
+      &:after {
+        content: '' !important;
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        border-block-end: var(--rh-border-width-lg, 3px) solid transparent !important;
+      }
 
-rh-subnav:not(:defined) a[active]:after {
-  border-block-end-color: var(--rh-color-accent-brand) !important;
+      &[active]:after {
+        border-block-end-color: var(--rh-color-accent-brand) !important;
+      }
+    }
+  }
 }
