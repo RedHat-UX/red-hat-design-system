@@ -34,7 +34,7 @@ rh-subnav {
         border-block-end: var(--rh-border-width-lg, 3px) solid transparent !important;
       }
 
-      &[active]:after {
+      &:is([active], [aria-current='page']):after {
         border-block-end-color: var(--rh-color-accent-brand) !important;
       }
     }
