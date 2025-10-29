@@ -16,8 +16,12 @@
   const demo = document.getElementById('demo');
   demo.addEventListener('click', e => {
     for (const link of demo.querySelectorAll('a')) {
-      if (e.target === link) { e.preventDefault(); }
-      link.toggleAttribute('active', (e.target === link));
+      if (e.target === link) {
+        e.preventDefault();
+        link.setAttribute('aria-current', 'page');
+      } else {
+        link.removeAttribute('aria-current');
+      }
     }
   });
 </script>

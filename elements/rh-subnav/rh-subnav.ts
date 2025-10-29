@@ -147,6 +147,17 @@ export class RhSubnav extends LitElement {
       const slot = this.shadowRoot?.querySelector('slot');
       const assignedElements = (slot?.assignedElements() || []) as HTMLElement[];
 
+      // if slotted a elements remove active attribute replace it with aria-current="page"
+      for (const element of assignedElements) {
+        if (element instanceof HTMLAnchorElement) {
+          // if has active attribute remove it and set aria-current="page"
+          if (element.hasAttribute('active')) {
+            element.removeAttribute('active');
+            element.setAttribute('aria-current', 'page');
+          }
+        }
+      }
+
       // Only use role="list" if we have rh-navigation-link elements
       this.hasNavigationLinks = assignedElements.some(el => el instanceof RhNavigationLink);
 
