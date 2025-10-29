@@ -112,7 +112,7 @@ describe('<rh-menu-dropdown>', function() {
           const snapshot = await a11ySnapshot();
           const menu = snapshot?.children?.find(x => x.role === 'menu');
           const focused = menu?.children?.find(x => x.focused);
-          expect(focused).to.deep.include({ role: 'menuitem', name: 'Link Menu link, opens in the same tab', focused: true });
+          expect(focused).to.deep.include({ role: 'menuitem', name: 'Link Link', focused: true });
         });
       });
 
