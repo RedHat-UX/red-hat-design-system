@@ -38,7 +38,7 @@
 
 ::slotted(a:hover),
 ::slotted(a:active),
-::slotted(a[aria-current='page']) {
+::slotted(a:is([active], [aria-current='page'])) {
   color: var(--rh-color-text-primary) !important;
 }
 
@@ -48,7 +48,7 @@
 }
 
 ::slotted(a:active):after,
-::slotted(a[aria-current='page'])):after {
+::slotted(a:is([active], [aria-current='page'])):after {
   border-block-end-color: var(--rh-color-accent-brand) !important;
 }
 
