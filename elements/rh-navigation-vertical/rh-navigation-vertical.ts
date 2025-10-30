@@ -31,13 +31,6 @@ export class RhNavigationVertical extends LitElement {
   private _title!: HTMLHeadingElement;
 
   /**
-   * Optional bordered attribute that adds a border to the inline-start
-   * of the navigation items and groups that are greater then a depth of 1.
-   * Defaults to undefined.
-   */
-  @property({ reflect: true }) bordered?: 'inline-start';
-
-  /**
    * The accessible-label attribute labels the navigation using a visually hidden heading.
    * Defaults to 'Navigation'. This label should be changed if other navigation elements
    * are present or when translations are needed.
@@ -55,13 +48,9 @@ export class RhNavigationVertical extends LitElement {
   }
 
   render(): TemplateResult<1> {
-    const { bordered = '' } = this;
-    const classes = {
-      [bordered]: !!bordered,
-    };
     return html`
       <h2 class="visually-hidden">${this.accessibleLabel}</h2>
-      <div id="container" class="${classMap(classes)}" role="list">
+      <div id="container" role="list">
           <!--
             Use this slot for \`<rh-navigation-link>\` elements to provide a list of navigation links  
             and \`<rh-navigation-vertical-list>\` when providing a grouped list of navigation links. 
