@@ -27,55 +27,55 @@ Menu dropdowns, including the different types of toggles, are available for both
 ### Light scheme
 
 <div class="grid sm-two-columns">
-    <figure>
-        <uxdot-example color-palette="lightest">
-            <img alt="A collapsed menu dropdown that says, 'View,' next to the same menu dropdown expanded in light scheme."
-                src="../menu-dropdown-style-light-scheme-default-toggle.svg"
-                width="482"
-                height="176">
-        </uxdot-example>
-        <figcaption>
-            <p>Basic (default) toggle - collapsed and expanded</p>
-        </figcaption>
-    </figure>
-    <figure>
-        <uxdot-example color-palette="lightest">
-            <img alt="Collapsed menu dropdown toggles with the ellipsis-vertical-fill icon in light scheme. One is borderless, and the other has a subtle border."
-                src="../menu-dropdown-style-light-scheme-icon-toggle.svg"
-                width="482"
-                height="176">
-        </uxdot-example>
-        <figcaption>
-            <p>Compact toggle - borderless and box variants in the collapsed state</p>
-        </figcaption>
-    </figure>
+  <figure>
+    <uxdot-example color-palette="lightest">
+      <img alt="A collapsed menu dropdown that says, 'View,' next to the same menu dropdown expanded in light scheme."
+        src="../menu-dropdown-style-light-scheme-default-toggle.svg"
+        width="482"
+        height="176">
+    </uxdot-example>
+    <figcaption>
+      <p>Basic (default) toggle - collapsed and expanded</p>
+    </figcaption>
+  </figure>
+  <figure>
+    <uxdot-example color-palette="lightest">
+    <img alt="Collapsed menu dropdown toggles with the ellipsis-vertical-fill icon in light scheme. One is borderless, and the other has a subtle border."
+        src="../menu-dropdown-style-light-scheme-icon-toggle.svg"
+        width="482"
+        height="176">
+    </uxdot-example>
+    <figcaption>
+    <p>Compact toggle - borderless and box variants in the collapsed state</p>
+    </figcaption>
+  </figure>
 </div>
 
 ### Dark scheme
 
 <div class="grid sm-two-columns">
-    <figure>
-        <uxdot-example color-palette="darkest">
-            <img alt="A collapsed menu dropdown that says, 'View,' next to the same menu dropdown expanded in dark scheme."
-                src="../menu-dropdown-style-dark-scheme-default-toggle.svg"
-                width="482"
-                height="176">
-        </uxdot-example>
-        <figcaption>
-            <p>Basic (default) toggle - collapsed and expanded</p>
-        </figcaption>
-    </figure>
-    <figure>
-        <uxdot-example color-palette="darkest">
-            <img alt="Collapsed menu dropdown toggles with the ellipsis-vertical-fill icon in dark scheme. One is borderless, and the other has a subtle border."
-                src="../menu-dropdown-style-dark-scheme-icon-toggle.svg"
-                width="482"
-                height="176">
-        </uxdot-example>
-        <figcaption>
-            <p>Compact toggle - borderless and box variants in the collapsed state</p>
-        </figcaption>
-    </figure>
+  <figure>
+    <uxdot-example color-palette="darkest">
+      <img alt="A collapsed menu dropdown that says, 'View,' next to the same menu dropdown expanded in dark scheme."
+        src="../menu-dropdown-style-dark-scheme-default-toggle.svg"
+        width="482"
+        height="176">
+    </uxdot-example>
+    <figcaption>
+      <p>Basic (default) toggle - collapsed and expanded</p>
+    </figcaption>
+  </figure>
+  <figure>
+    <uxdot-example color-palette="darkest">
+      <img alt="Collapsed menu dropdown toggles with the ellipsis-vertical-fill icon in dark scheme. One is borderless, and the other has a subtle border."
+        src="../menu-dropdown-style-dark-scheme-icon-toggle.svg"
+        width="482"
+        height="176">
+    </uxdot-example>
+    <figcaption>
+      <p>Compact toggle - borderless and box variants in the collapsed state</p>
+    </figcaption>
+  </figure>
 </div>
 
 ## Configuration

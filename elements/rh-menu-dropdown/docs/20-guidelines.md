@@ -11,33 +11,33 @@ An action in a menu dropdown performs a command, and its toggle functions like a
 A select list is a form control that allows a user to choose one or more options as inputs. The value in a select list’s toggle does change to show a user’s selection(s).
 
 <rh-alert state="info">
-    <h4 slot="header">Note</h4>
-    <p>Red Hat Design System does not yet include a select list element. <a href="/support/">Contact the team</a> with any questions.</p>
+  <h4 slot="header">Note</h4>
+  <p>Red Hat Design System does not yet include a select list element. <a href="/support/">Contact the team</a> with any questions.</p>
 </rh-alert>
 
 <div class="grid sm-two-columns">
-    <figure>
-        <uxdot-example color-palette="lightest">
-            <img alt="A menu toggle labeled, 'Share,' with menu items showing related actions."
-                src="../menu-dropdown-guidelines-dropdown-example.svg"
-                width="482"
-                height="176">
-        </uxdot-example>
-        <figcaption>
-            <p>Menu dropdown</p>
-        </figcaption>
-    </figure>
-    <figure>
-        <uxdot-example color-palette="lightest">
-            <img alt="A select list labeled 'Select a state' that includes related choices."
-                src="../menu-dropdown-guidelines-select-example.svg"
-                width="482"
-                height="176">
-        </uxdot-example>
-        <figcaption>
-            <p>Select list (example only)</p>
-        </figcaption>
-    </figure>
+  <figure>
+    <uxdot-example color-palette="lightest">
+      <img alt="A menu toggle labeled, 'Share,' with menu items showing related actions."
+        src="../menu-dropdown-guidelines-dropdown-example.svg"
+        width="482"
+        height="176">
+    </uxdot-example>
+    <figcaption>
+      <p>Menu dropdown</p>
+    </figcaption>
+  </figure>
+  <figure>
+    <uxdot-example color-palette="lightest">
+      <img alt="A select list labeled 'Select a state' that includes related choices."
+        src="../menu-dropdown-guidelines-select-example.svg"
+        width="482"
+        height="176">
+    </uxdot-example>
+    <figcaption>
+      <p>Select list (example only)</p>
+    </figcaption>
+  </figure>
 </div>
 
 ### Using menu item types
@@ -45,8 +45,8 @@ A select list is a form control that allows a user to choose one or more options
 Menu dropdowns can show actions or links. If possible, avoid mixing the two types.
 
 <rh-alert state="warning">
-    <h4 slot="header">Warning</h4>
-    <p>Do not change the style of a linked menu item. Doing so may  remove the affordances that help 
+  <h4 slot="header">Warning</h4>
+  <p>Do not change the style of a linked menu item. Doing so may  remove the affordances that help 
 users know they will be navigating away from their current view.</p>
 </rh-alert>
 
