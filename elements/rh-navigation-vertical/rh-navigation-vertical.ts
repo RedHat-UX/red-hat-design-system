@@ -7,10 +7,6 @@ import { query } from 'lit/decorators/query.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
-import { observes } from '@patternfly/pfe-core/decorators/observes.js';
-
-import { provide } from '@lit/context';
-import { context, type RhNavigationVerticalContext } from './context.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 import '@rhds/elements/rh-navigation-link/rh-navigation-link.js';
@@ -31,8 +27,6 @@ export class RhNavigationVertical extends LitElement {
 
   #internals = InternalsController.of(this, { role: 'navigation' });
 
-  private _depth = 0; // Internal state for depth, initially 0
-
   @query('#title')
   private _title!: HTMLHeadingElement;
 
@@ -50,11 +44,6 @@ export class RhNavigationVertical extends LitElement {
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel = 'Navigation';
 
-  /**
-   * Provide our own parent information, depth = 0
-   */
-  @provide({ context: context })
-  private _ctx = this.#makeContext();
 
   protected firstUpdated(): void {
     // ensure we update initially on client hydration
@@ -81,20 +70,7 @@ export class RhNavigationVertical extends LitElement {
       </div>
     `;
   }
-
-  #makeContext(): RhNavigationVerticalContext {
-    return {
-      depth: this._depth,
-      bordered: this.bordered,
-    };
-  }
-
-  @observes('bordered')
-  protected _openChanged() {
-    this._ctx = this.#makeContext();
-  }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
     'rh-navigation-vertical': RhNavigationVertical;
