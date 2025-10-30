@@ -2,7 +2,9 @@
 "@rhds/elements": minor
 ---
 
-`<rh-navigation-vertical>`: A vertical navigation list containing top-level navigation items and grouped navigation items, typically used in a side navigation pattern.
+✨ Added `<rh-navigation-vertical>`
+
+A vertical navigation list containing top-level navigation items and grouped navigation items, typically used in a side navigation pattern.
 
 ## Usage
 
