@@ -29,7 +29,7 @@ details {
     flex-direction: column;
     gap: var(--rh-space-xs, 4px);
     margin-inline-start: var(--rh-space-lg, 16px);
-    margin-block: 2px var(--_subtree-margin-block-end, var(--rh-space-md, 8px));
+    margin-block: var(--rh-space-xs, 4px) var(--_subtree-margin-block-end, var(--rh-space-md, 8px));
   }
 }
 
