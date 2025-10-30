@@ -169,11 +169,9 @@ export class RhMenuDropdown extends LitElement {
               `
             }
         </button>
-        <div
-          id="menu-list"
-          @click=${this.#onSelect}
-          @keydown=${this.#onKeyDown}
-        >
+        <div id="menu-list"
+             @click=${this.#onSelect}
+             @keydown=${this.#onKeyDown}>
           <rh-menu role="menu" aria-labelledby="menu-toggle">
             <!-- 
               Use this slot to provide the menu content. Use the "rh-menu" component 
