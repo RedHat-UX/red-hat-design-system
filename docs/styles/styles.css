@@ -126,8 +126,15 @@
     padding-block-end: var(--rh-space-lg);
   }
 
+  /**
+    * position masthead as fixed
+    * z-index: to float above scroll page content
+    */
   uxdot-masthead {
     grid-area: header;
+    position: fixed;
+    inset: 0;
+    z-index: var(--uxdot-masthead-z-index);
   }
 
   uxdot-sidenav {
@@ -257,10 +264,6 @@
   }
 }
 
-rh-alert code {
-  font-size: inherit;
-}
-
 @layer patterns {
   /**
      * Patterns layer for defining component and site patterns
@@ -330,20 +333,10 @@ rh-alert code {
   }
 
   /**
-     * position masthead as fixed
-     * z-index: to float above scroll page content
-     */
-  uxdot-masthead {
-    position: fixed;
-    inset: 0;
-    z-index: var(--uxdot-masthead-z-index);
-  }
-
-  /**
-     * Sticky header pattern
-     * progressive enhancement sticky, using :has()
-     * z-index: of masthead + 1
-     */
+    * Sticky header pattern
+    * progressive enhancement sticky, using :has()
+    * z-index: of masthead + 1
+    */
   uxdot-header:has(rh-subnav) {
     position: sticky;
     top: -54px; /* masthead height (72px) + subnav height (56px) - header mobile height (182px) */
@@ -369,8 +362,8 @@ rh-alert code {
 
 @layer overrides {
   /**
-     * Overrides layer for overriding component and site styles
-     */
+   * Overrides layer for overriding component and site styles
+  **/
 
   /* TODO: Document this bug table overflows vertically causing a scrollbar when it shouldn't */
   rh-table {
@@ -382,9 +375,15 @@ rh-alert code {
     margin-block-end: 0;
   }
 
-  rh-alert p {
-    /* TODO: Document this bug shouldn't have to force the font size
-               the component is trying to set internally on #description */
-    font-size: var(--rh-font-size-body-text-md) !important;
+  rh-alert {
+    & p {
+      /* TODO: Document this bug shouldn't have to force the font size
+      the component is trying to set internally on #description */
+      font-size: var(--rh-font-size-body-text-md) !important;
+    }
+
+    & code {
+      font-size: inherit;
+    }
   }
 }
