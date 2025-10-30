@@ -33,7 +33,6 @@ export class MenuDropdownSelectEvent extends Event {
  * @summary A collapsible menu for presenting a list of options or actions
  *
  * @alias menu-dropdown
- * @slot - Place element content here
  */
 @customElement('rh-menu-dropdown')
 export class RhMenuDropdown extends LitElement {
