@@ -17,17 +17,17 @@ function press(key: string) {
 /* Explict role of listitem is added to the rh-navigation-link elements because element internals is ignored by axe-core */
 const NAV = html`
   <rh-navigation-vertical>
-    <rh-navigation-link role="listitem" href="/">Home</rh-navigation-link>
+    <rh-navigation-link href="/">Home</rh-navigation-link>
     <rh-navigation-vertical-list summary="Group 1">
-      <rh-navigation-link role="listitem" href="/group-1/">Group 1 Index</rh-navigation-link>
-      <rh-navigation-link role="listitem" href="/group-1/item-1/">Group 1 Item 1</rh-navigation-link>
-      <rh-navigation-link role="listitem" href="/group-1/item-2/">Group 1 Item 2</rh-navigation-link> 
+      <rh-navigation-link href="/group-1/">Group 1 Index</rh-navigation-link>
+      <rh-navigation-link href="/group-1/item-1/">Group 1 Item 1</rh-navigation-link>
+      <rh-navigation-link href="/group-1/item-2/">Group 1 Item 2</rh-navigation-link> 
     </rh-navigation-vertical-list>
 
     <rh-navigation-vertical-list summary="Group 2">
-      <rh-navigation-link role="listitem" href="/group-2/">Group 2 Index</rh-navigation-link>
-      <rh-navigation-link role="listitem" href="/group-2/item-1/">Group 2 Item 1</rh-navigation-link>
-      <rh-navigation-link role="listitem" href="/group-2/item-2/">Group 2 Item 2</rh-navigation-link>
+      <rh-navigation-link href="/group-2/">Group 2 Index</rh-navigation-link>
+      <rh-navigation-link href="/group-2/item-1/">Group 2 Item 1</rh-navigation-link>
+      <rh-navigation-link href="/group-2/item-2/">Group 2 Item 2</rh-navigation-link>
     </rh-navigation-vertical-list>
   </rh-navigation-vertical>
 `;
@@ -56,8 +56,11 @@ describe('<rh-navigation-vertical>', function() {
     });
     beforeEach(async () => await element.updateComplete);
 
+    /* We ignore the aria-required-children as the rh-navigation-link applies listitem role in element internals */
     it('is accessible', async function() {
-      await expect(element).to.be.accessible();
+      await Promise.resolve(expect(element).to.be.accessible({
+        ignoredRules: ['aria-required-children'],
+      }));
     });
 
     /* Unfortunately snapshot does not include element internals set role, so this test is skipped */
