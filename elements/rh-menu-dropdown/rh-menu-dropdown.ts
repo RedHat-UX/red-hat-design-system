@@ -141,19 +141,20 @@ export class RhMenuDropdown extends LitElement {
     return html`
     
       <div @focusout=${this.#onFocusOut} class="menu-dropdown-container">
-        <button
-          id="menu-toggle"
-          type="button"
-          aria-haspopup="menu"
-          aria-expanded="${this.open}"
-          @click="${this.#toggleMenu}"
-          aria-controls="menu-list"
-          aria-disabled="${this.disabled}"
-          @keydown="${this.#onToggleKeydown}"
-          class="${this.variant !== 'borderless' ? 'boxed' : ''}
-           ${this.layout === 'compact' ? 'compact' : ''} 
-           ${this.disabled ? 'disabled' : ''}
-           ${this.open ? 'open' : ''}">
+        <button id="menu-toggle"
+                type="button"
+                aria-haspopup="menu"
+                aria-expanded="${this.open}"
+                @click="${this.#toggleMenu}"
+                aria-controls="menu-list"
+                aria-disabled="${this.disabled}"
+                @keydown="${this.#onToggleKeydown}"
+                class="${classMap({
+                  boxed: this.variant !== 'borderless',
+                  compact: this.layout === 'compact',
+                  disabled: this.disabled,
+                  open: this.open,
+                })}">
             ${this.layout === 'compact' ?
               html`<rh-icon set="ui" accessible-label=${this.accessibleLabel} icon="ellipsis-vertical-fill"></rh-icon>`
               : html` 
@@ -161,11 +162,8 @@ export class RhMenuDropdown extends LitElement {
                 <!-- Use this slot for the toggle label. Keep toggle labels short and succinct. -->
                 <slot name="toggle-label"></slot>
               </span>
-              <span class="action-icon"> 
-                ${this.open ?
-                  html`<rh-icon set="microns" icon="caret-up"></rh-icon>`
-                  : html`<rh-icon set="microns" icon="caret-down"></rh-icon>`
-                }
+              <span class="action-icon">
+                <rh-icon set="microns" icon="${this.open ? 'caret-up' : 'caret-down'}"></rh-icon>
               </span>
               `
             }
