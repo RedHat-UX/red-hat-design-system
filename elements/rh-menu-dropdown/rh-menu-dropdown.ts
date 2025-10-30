@@ -62,7 +62,7 @@ export class RhMenuDropdown extends LitElement {
   @property({ type: Boolean, reflect: true }) disabled = false;
 
   /**
-   * Provides an accessible name for the dropdown, improving screen reader support.
+   * Provides an accessible name for the dropdown's trigger, improving screen reader support.
    * This label is announced to assistive technologies to describe the purpose of
    * the compact menu dropdown.
   */
