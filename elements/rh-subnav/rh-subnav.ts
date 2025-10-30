@@ -2,15 +2,21 @@ import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { query } from 'lit/decorators/query.js';
 import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-controller.js';
-
-import '@rhds/elements/rh-icon/rh-icon.js';
-
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
+import { RhNavigationLink } from '@rhds/elements/rh-navigation-link/rh-navigation-link.js';
+
+import '@rhds/elements/rh-icon/rh-icon.js';
+
 import styles from './rh-subnav.css';
+
+
+type LinkElement = HTMLAnchorElement | RhNavigationLink;
 
 /**
  * A subnavigation allows users to navigate between a small number of page links.
@@ -41,15 +47,19 @@ export class RhSubnav extends LitElement {
     }
   }
 
-  #allLinkElements: HTMLAnchorElement[] = [];
+  #allLinkElements: LinkElement[] = [];
 
   #overflow = new OverflowController(this);
+
+  @state() private hasNavigationLinks = false;
 
   /**
    * Sets color palette, which affects the element's styles as well as descendants' color theme.
    * Overrides parent color context.
    * Your theme will influence these colors so check there first if you are seeing inconsistencies.
    * See [CSS Custom Properties](#css-custom-properties) for default values
+   * @deprecated `<rh-subnav>` reacts to the parent set color-scheme and should not set its own color-palette.
+   * The color-palette attribute will be removed in a future release.
    */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
@@ -59,24 +69,28 @@ export class RhSubnav extends LitElement {
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel = 'subnavigation';
 
-  @query('[part="links"]') private linkList!: HTMLElement;
+  /**
+   * Label for the scroll back button
+   */
+  @property({ reflect: true, attribute: 'label-scroll-left' })
+  labelScrollLeft = 'Scroll back';
+
+  /**
+   * Label for the scroll forward button
+   */
+  @property({ reflect: true, attribute: 'label-scroll-right' })
+  labelScrollRight = 'Scroll forward';
+
+
+  @query('#link-container') private linkList!: LinkElement;
 
 
   get #allLinks() {
     return this.#allLinkElements;
   }
 
-  set #allLinks(links: HTMLAnchorElement[]) {
-    this.#allLinkElements = links.filter(link => link instanceof HTMLAnchorElement);
-  }
-
-  get #firstLink(): HTMLAnchorElement {
-    const [link] = this.#allLinks;
-    return link;
-  }
-
-  get #lastLink(): HTMLAnchorElement {
-    return this.#allLinks.at(-1) as HTMLAnchorElement;
+  set #allLinks(links: LinkElement[]) {
+    this.#allLinkElements = links.filter(link => link);
   }
 
   override connectedCallback() {
@@ -97,28 +111,32 @@ export class RhSubnav extends LitElement {
   override render() {
     return html`
       <!-- container, \`<div>\` element -->
-      <nav part="container" aria-label="${this.accessibleLabel}">
+      <nav part="container" 
+           aria-label="${this.accessibleLabel}">
         ${!this.#overflow.showScrollButtons ? '' : html`
           <button id="previous"
                   tabindex="-1"
                   data-direction="start"
-                  aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll back'}"
+                  aria-label="${this.labelScrollLeft}"
                   ?disabled="${!this.#overflow.overflowLeft}"
                   @click="${this.#onClickScroll}">
             <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
           </button>`}
         <!--
           slot:
-            description: Navigation links, expects collection of \`<a>\` elements
+            description: Sub navigation links, expects collection of \`<a>\` or \`<rh-navigation-link>\` elements
+            Slotting a \`<a>\` element is deprecated and will be removed in a future release. Use \`<rh-navigation-link>\` instead.
           part:
             description: the anonymous slot
         -->
-        <slot part="links" @slotchange="${this.#onSlotchange}"></slot>
+        <div id="link-container" role="${ifDefined(this.hasNavigationLinks ? 'list' : undefined)}" >
+          <slot @slotchange="${this.#onSlotchange}" part="links"></slot>
+        </div>
         ${!this.#overflow.showScrollButtons ? '' : html`
           <button id="next"
                   tabindex="-1"
                   data-direction="end"
-                  aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll forward'}"
+                  aria-label="${this.labelScrollRight}"
                   ?disabled="${!this.#overflow.overflowRight}"
                   @click="${this.#onClickScroll}">
             <rh-icon set="ui" icon="caret-right" loading="eager"></rh-icon>
@@ -130,11 +148,27 @@ export class RhSubnav extends LitElement {
   async #onSlotchange() {
     if (!isServer) {
       const slot = this.shadowRoot?.querySelector('slot');
-      this.#allLinks = slot?.assignedElements() as HTMLAnchorElement[];
+      const assignedElements = (slot?.assignedElements() || []) as LinkElement[];
+
+      // if slotted a elements remove active attribute replace it with aria-current="page"
+      for (const element of assignedElements) {
+        if (element instanceof HTMLAnchorElement) {
+          // if has active attribute remove it and set aria-current="page"
+          if (element.hasAttribute('active')) {
+            element.removeAttribute('active');
+            element.setAttribute('aria-current', 'page');
+          }
+        }
+      }
+
+      // Only use role="list" if we have rh-navigation-link elements
+      this.hasNavigationLinks = assignedElements.some(el => el instanceof RhNavigationLink);
+
+      this.#allLinks = assignedElements;
+
       this.#overflow.init(this.linkList, this.#allLinks);
+
       await this.updateComplete;
-      this.#firstLink?.classList.add('first');
-      this.#lastLink?.classList.add('last');
     }
   }
 
