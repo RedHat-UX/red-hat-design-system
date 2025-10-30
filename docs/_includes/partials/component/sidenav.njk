@@ -57,9 +57,9 @@
 
     {% endfor %}
 
-    <rh-navigation-link href="/design-code-status/">Design/code status</rh-navigation-link>
-    <rh-navigation-link href="/release-notes/">Release notes</rh-navigation-link>
-    <rh-navigation-link href="/support/">Get support</rh-navigation-link>
+    <rh-navigation-link {{ 'current-page' if page.url == '/design-code-status/' }} href="/design-code-status/">Design/code status</rh-navigation-link>
+    <rh-navigation-link {{ 'current-page' if page.url == '/release-notes/' }} href="/release-notes/">Release notes</rh-navigation-link>
+    <rh-navigation-link {{ 'current-page' if page.url == '/support/' }} href="/support/">Get support</rh-navigation-link>
     {%- if runMode == 'watch' -%}
     <rh-navigation-link href="/cheatsheet">Cheat sheet!</rh-navigation-link>
     {%- endif -%}
