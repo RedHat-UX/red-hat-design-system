@@ -1,7 +1,6 @@
 import { LitElement, html, isServer, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { state } from 'lit/decorators/state.js';
 import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit-html/directives/class-map.js';
 
@@ -57,26 +56,23 @@ export class RhNavigationVerticalList extends LitElement {
    */
   @property({ type: String }) summary?: string;
 
+  /**
+   * Bolds the first `<rh-navigation-link>` of the group. Should not be used if the first child is a `<rh-navigation-vertical-list>`.
+   * Defaults to false.
+   */
+  @property({ type: Boolean, reflect: true }) highlight = false;
+
   @query('details') private detailsEl!: HTMLDetailsElement;
   @query('summary') private summaryEl!: HTMLElement;
 
-  protected firstUpdated(): void {
-    // ensure we update initially on client hydration
-    const _isHydrated = isServer && !this.hasUpdated;
-    if (!_isHydrated) {
-      /**
-       * SSR Adds the role, but then removes when ElementInternals is hydrated
-       * However, axe-dev tools then complains as it doesn't handle Internals correctly
-       * So.... lets readd it for brevity, then when axe decides to fix their stuff,
-       * we can remove at a later date.
-       */
-      this.role = 'listitem';
-    }
-  }
-
   render(): TemplateResult<1> {
+    const { highlight = false } = this;
+    const classes = {
+      highlight: !!highlight,
+    };
     return html`
       <details 
+        class="${classMap(classes)}"
         @toggle="${this.#toggle}" 
         ?open="${this.open}"
         @keydown="${this.#onKeydown}">
@@ -94,7 +90,6 @@ export class RhNavigationVerticalList extends LitElement {
       </details>
       `;
   }
-
 
   #onKeydown(event: KeyboardEvent): void {
     if (event.code === 'Escape') {

@@ -76,3 +76,9 @@ details {
   --_navigation-link-before-border-inline-start-width: var(--rh-border-width-md, 2px);
   --_navigation-link-before-border-inline-start-color: var(--rh-color-brand-red);
 }
+
+.highlight {
+  & ::slotted(rh-navigation-link:first-child) {
+    --_navigation-link-font-weight: var(--rh-font-weight-body-text-medium, 500);
+  }
+}
