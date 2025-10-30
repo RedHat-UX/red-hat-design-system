@@ -48,7 +48,7 @@ export class RhMenuDropdown extends LitElement {
    * Defines the visual style of the dropdown.
    * Setting it to 'borderless' removes the default border styling.
    */
-  @property({ attribute: 'variant', reflect: true }) variant: 'borderless' | null = null;
+  @property({ reflect: true }) variant: 'borderless' | null = null;
 
   /**
    * The 'compact' layout reduces spacing and add the rh-icon `ellipsis-vertical-fill`.
