@@ -71,6 +71,8 @@
   margin-inline: var(--rh-space-xl, 24px);
 }
 
+/* Default heading font-family for header and body slots.
+   Patterns can override with body-text tokens as needed. */
 #header ::slotted(:is(h1, h2, h3, h4, h5, h6)),
 #body ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
@@ -115,16 +117,18 @@
   margin-block: auto var(--rh-space-xl, 24px);
 }
 
+/* Header slot headings inherit container styles but can be overridden by patterns.
+   For title-bar and asset cards, override with body-text tokens. */
 #container #header ::slotted(:is(h1, h2, h3, h4, h5, h6)),
 #container #body ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  line-height: var(--rh-line-height-heading, 1.3) !important;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: var(--rh-line-height-heading, 1.3);
 }
 
 #header ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-  font-size: inherit !important;
-  margin: unset !important;
+  font-size: inherit;
+  margin: unset;
 }
 
 #body ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
