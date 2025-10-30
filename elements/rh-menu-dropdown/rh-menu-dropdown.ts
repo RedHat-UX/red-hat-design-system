@@ -9,6 +9,7 @@ import { RovingTabindexController } from '@patternfly/pfe-core/controllers/rovin
 import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 import '@rhds/elements/rh-menu/rh-menu.js';
+import { classMap } from 'lit-html/directives/class-map.js';
 
 import { RhMenuItem } from '../rh-menu/rh-menu-item.js';
 
