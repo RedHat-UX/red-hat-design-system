@@ -61,15 +61,15 @@ export class RhMenuItem extends LitElement {
     `;
     const content = this.href ?
       html`
-        <div class="menu-link">
-          <a class="menu-item" href="${this.href}" target=${target} rel=${ifDefined(rel)}>
+        <div id="menu-link">
+          <a id="item" href="${this.href}" target=${target} rel=${ifDefined(rel)}>
             ${label}
             ${!this.disabled ? html`<span class="visually-hidden">${srLabel}</span>` : ''}
           </a>
           ${this.external && !this.disabled ? html`<rh-icon set="ui" icon="external-link"></rh-icon>` : ''}
         </div>`
       : html`
-        <div class="menu-item">
+        <div id="item">
         ${label}
         </div>
       `;

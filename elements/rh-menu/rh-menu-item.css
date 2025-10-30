@@ -34,7 +34,7 @@
   }
 }
 
-.menu-item {
+#item {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -79,7 +79,7 @@
     border-radius: var(--rh-border-radius-default, 3px);
   }
 
-  .menu-item {
+  #item {
     outline: none;
   }
 }
@@ -134,7 +134,7 @@
     padding-inline-end: var(--rh-space-md, 8px);
   }
 
-  .menu-link {
+  #menu-link {
     inline-size: 100%;
     display: flex;
     align-items: center;
