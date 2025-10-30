@@ -1,7 +1,6 @@
 import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
-import { property } from 'lit/decorators/property.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
@@ -59,9 +58,7 @@ export class RhMenu extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.id ||= getRandomId('menu');
-    if (!isServer) {
-      this.#onSlotchange();
-    }
+    this.#onSlotchange();
   }
 
   render() {
@@ -72,42 +69,44 @@ export class RhMenu extends LitElement {
   }
 
   #onSlotchange() {
-    this.#items = this._menuItems.flatMap((element: Element) => {
-      if (element instanceof HTMLSlotElement) {
-        const assigned = element.assignedElements().filter(
-          (el): el is HTMLElement => !(el instanceof HTMLHRElement)
-        );
+    if (!isServer) {
+      this.#items = this._menuItems.flatMap((element: Element) => {
+        if (element instanceof HTMLSlotElement) {
+          const assigned = element.assignedElements().filter(
+            (el): el is HTMLElement => !(el instanceof HTMLHRElement)
+          );
 
-        const items = assigned.flatMap(el => {
-          if (el instanceof RhMenuItemGroup) {
-            return Array.from(el.querySelectorAll('rh-menu-item'));
-          }
-          return [el];
-        });
+          const items = assigned.flatMap(el => {
+            if (el instanceof RhMenuItemGroup) {
+              return Array.from(el.querySelectorAll('rh-menu-item'));
+            }
+            return [el];
+          });
 
-        return items;
-      } else {
-        if (element instanceof HTMLHRElement) {
-          // Skip <hr> elements
-          return [];
-        }
-
-        if (element instanceof RhMenuItem) {
-          return [element];
-        } else if (element instanceof RhMenuItemGroup) {
-          return Array.from(element.querySelectorAll('rh-menu-item'));
-        } else if (element instanceof HTMLElement) {
-          if (!element.hasAttribute('role')) {
-            element.setAttribute('role', 'menuitem');
-          }
-          return [element];
+          return items;
         } else {
-          return [];
-        }
-      }
-    });
+          if (element instanceof HTMLHRElement) {
+            // Skip <hr> elements
+            return [];
+          }
 
-    this.#tabindex.hostUpdate();
+          if (element instanceof RhMenuItem) {
+            return [element];
+          } else if (element instanceof RhMenuItemGroup) {
+            return Array.from(element.querySelectorAll('rh-menu-item'));
+          } else if (element instanceof HTMLElement) {
+            if (!element.hasAttribute('role')) {
+              element.setAttribute('role', 'menuitem');
+            }
+            return [element];
+          } else {
+            return [];
+          }
+        }
+      });
+
+      this.#tabindex.hostUpdate();
+    }
   }
 
   activateItem(item: HTMLElement) {
