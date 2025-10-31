@@ -209,7 +209,11 @@ export class RhMenuDropdown extends LitElement {
   }
 
   get items(): HTMLElement[] {
-    return Array.from(this.querySelectorAll('rh-menu-item')) as HTMLElement[];
+    if (!isServer) {
+      return Array.from(this.querySelectorAll('rh-menu-item')) as HTMLElement[];
+    } else {
+      return [];
+    }
   }
 
   #focusFirstItem() {
