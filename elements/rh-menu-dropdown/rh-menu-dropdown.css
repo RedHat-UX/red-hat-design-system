@@ -141,7 +141,7 @@
   }
 }
 
-.menu-dropdown-container {
+#menu-dropdown-container {
   inline-size: 100%;
   position: relative;
 }
