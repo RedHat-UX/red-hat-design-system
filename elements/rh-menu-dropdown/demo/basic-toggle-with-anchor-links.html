@@ -1,0 +1,33 @@
+<div id="menu-dropdown-container">
+  <rh-menu-dropdown>
+    <span slot="toggle-label">Basic toggle with links</span>
+    <rh-menu-item href="#">Link one</rh-menu-item>
+    <rh-menu-item href="#">Link two</rh-menu-item>
+    <rh-menu-item href="#">Link three</rh-menu-item>
+    <rh-menu-item disabled href="#">Disabled link</rh-menu-item>
+    <hr/>
+    <rh-menu-item href="#">Separated link</rh-menu-item>
+    <rh-menu-item href="#" external>Separated, external link</rh-menu-item>
+  </rh-menu-dropdown>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-menu-dropdown/rh-menu-dropdown.js';
+  import '@rhds/elements/rh-menu/rh-menu-item.js';
+
+  const dropdown = document.querySelector('rh-menu-dropdown');
+  dropdown.addEventListener('select', e => {
+    console.log('Selected:', e.text);
+  });
+</script>
+
+<style>
+#menu-dropdown-container {
+  padding: 1rem;
+
+  rh-menu-dropdown {
+    width: 296px;
+  }
+}
+</style>
+
