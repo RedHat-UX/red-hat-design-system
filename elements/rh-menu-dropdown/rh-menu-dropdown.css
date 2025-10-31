@@ -11,10 +11,11 @@
 }
 
 #menu-list {
-  position: fixed;
+  position: absolute;
   padding: var(--rh-space-md, 8px) 0;
   margin: var(--rh-space-xs, 4px) 0;
-  display: none;
+  left: 0;
+  top: 0;
   z-index: 1000;
   min-inline-size: 18.5rem;
   max-inline-size: 100%;
@@ -22,10 +23,8 @@
   border: var(--_border);
   background: var(--rh-color-surface);
   box-shadow: var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25));
-}
-
-:host([open]) #menu-list {
-  display: block;
+  transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
+  translate: var(--_floating-content-translate);
 }
 
 .visible {

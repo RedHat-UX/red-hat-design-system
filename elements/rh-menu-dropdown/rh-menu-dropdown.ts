@@ -5,12 +5,12 @@ import { query } from 'lit/decorators/query.js';
 import { queryAll } from 'lit/decorators/query-all.js';
 
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
-
+import { FloatingDOMController } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
 import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 import '@rhds/elements/rh-menu/rh-menu.js';
 import { classMap } from 'lit-html/directives/class-map.js';
-
+import { styleMap } from 'lit-html/directives/style-map.js';
 import { RhMenuItem } from '../rh-menu/rh-menu-item.js';
 
 import styles from './rh-menu-dropdown.css';
@@ -130,6 +130,11 @@ export class RhMenuDropdown extends LitElement {
     getItems: () => this.#items,
   });
 
+  #float = new FloatingDOMController(this, {
+    content: () => this.menuList,
+    invoker: () => this.menuToggleButton,
+  });
+
   /**
   * Moves focus to the currently active (focused) item.
   */
@@ -138,8 +143,9 @@ export class RhMenuDropdown extends LitElement {
   }
 
   render(): TemplateResult<1> {
+    const { alignment, anchor, styles, open } = this.#float;
+
     return html`
-    
       <div @focusout=${this.#onFocusOut} class="menu-dropdown-container">
         <button id="menu-toggle"
                 type="button"
@@ -169,7 +175,10 @@ export class RhMenuDropdown extends LitElement {
             }
         </button>
         <div id="menu-list"
+             ?hidden=${!this.open}
              @click=${this.#onSelect}
+             style="${styleMap(styles)}"
+             class="${classMap({ [anchor]: !!anchor, [alignment]: !!alignment, open })}"
              @keydown=${this.#onKeyDown}>
           <rh-menu role="menu" aria-labelledby="menu-toggle">
             <!-- 
@@ -190,54 +199,14 @@ export class RhMenuDropdown extends LitElement {
       this.open = !this.open;
 
       if (this.open) {
-        this.updateComplete.then(() => {
+        this.updateComplete.then(async () => {
+          await this.#positionMenu();
           this.#focusFirstItem();
-          this.#positionPopover();
         });
+      } else {
+        this.#float.hide();
       }
     }
-  }
-
-  #positionPopover() {
-    const {
-      top: toggleTop,
-      bottom: toggleBottom,
-      left: toggleLeft,
-      right: toggleRight,
-    } = this.menuToggleButton.getBoundingClientRect();
-
-    const { offsetWidth: menuWidth, offsetHeight: menuHeight } = this.menuList;
-    const { innerWidth: viewportWidth, innerHeight: viewportHeight, scrollX, scrollY } = window;
-    const spacing = 2;
-
-    let top: number;
-    let left: number;
-
-    // ----------- Vertical positioning -----------
-    if (toggleBottom + menuHeight + spacing > viewportHeight) {
-      // Position the menulist above the toggle if there isn't enough space below
-      top = toggleTop - menuHeight - spacing;
-    } else {
-      // Position below the toggle
-      top = toggleBottom + spacing;
-    }
-
-    // ----------- Horizontal positioning -----------
-    if (toggleLeft + menuWidth <= viewportWidth) {
-      // Enough space to the right, position the menu starting from the left edge of the button.
-      left = toggleLeft;
-    } else {
-      // Not enough space to the right, align right edge of popover to button's right
-      left = toggleRight - menuWidth;
-
-      // Prevent menu from going off-screen left
-      if (left < 0) {
-        left = spacing;
-      }
-    }
-
-    this.menuList.style.top = `${top + scrollY}px`;
-    this.menuList.style.left = `${left + scrollX}px`;
   }
 
   get items(): HTMLElement[] {
@@ -253,9 +222,9 @@ export class RhMenuDropdown extends LitElement {
       if (['Enter', ' ', 'ArrowDown'].includes(e.key)) {
         e.preventDefault();
         this.open = true;
-        this.updateComplete.then(() => {
+        this.updateComplete.then(async () => {
+          await this.#positionMenu();
           this.#focusFirstItem();
-          this.#positionPopover();
         });
       }
     }
@@ -316,6 +285,14 @@ export class RhMenuDropdown extends LitElement {
     if (!relatedTarget) {
       this.open = false;
     }
+  }
+
+  async #positionMenu() {
+    await this.updateComplete;
+    const placement = 'bottom-start';
+    const mainAxis = this.#float.anchor === 'top' ? 8 : 0;
+    const offset = { mainAxis: mainAxis, alignmentAxis: 0 };
+    await this.#float.show({ offset: offset, placement: placement });
   }
 }
 
