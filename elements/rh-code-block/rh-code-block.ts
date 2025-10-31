@@ -4,9 +4,11 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
+import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
@@ -32,12 +34,24 @@ interface CodeLineHeightsInfo {
 
 const prismApplyPromises = new WeakMap();
 
+export class RhCodeBlockCopyEvent extends Event {
+  constructor(
+    /** Text content to copy */
+    public content: string
+  ) {
+    super('copy', { bubbles: true, cancelable: true });
+  }
+}
+
 /**
  * A code block applies special formatting to sections of code.
  *
- * @summary Formats code strings within a container
- *
  * @alias code-block
+ *
+ * @summary Formats code strings within a container
+ * @event {RhCodeBlockCopyEvent} copy - fired when the user requests to copy the code block text.
+ *                                      Modify the `event.content` field to change the copied text
+ *                                      (e.g. to remove a prompt from a shell command)
  */
 @customElement('rh-code-block')
 @themable
@@ -45,14 +59,16 @@ export class RhCodeBlock extends LitElement {
   private static actionIcons = new Map([
     ['wrap', html`
       <svg xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          viewBox="0 0 20 20">
+           role="presentation"
+           fill="currentColor"
+           viewBox="0 0 20 20">
         <path d="M19 0c.313.039.781-.077 1 .057V20c-.313-.039-.781.077-1-.057V0ZM10.82 4.992C9.877 4.996 8.31 5.57 8.174 6c1.21.03 2.432-.073 3.635.08 2.181.383 3.677 2.796 3.066 4.922-.41 1.753-2.108 2.995-3.877 3.014L11 14H5.207l2.682-2.682-.707-.707L3.293 14.5l3.889 3.889.707-.707L5.207 15h5.736l.004-.008c1.444.005 2.896-.59 3.832-1.722 1.65-1.82 1.612-4.85-.08-6.63A5 5 0 0 0 11 5a1.948 1.948 0 0 0-.18-.008z"/>
         <path d="M4 5h7c-.039.313.077.781-.057 1H4V5ZM0 0c.313.039.781-.077 1 .057V20c-.313-.039-.781.077-1-.057V0Z"/>
       </svg>
     `],
     ['wrap-active', html`
       <svg xmlns="http://www.w3.org/2000/svg"
+           role="presentation"
            fill="none"
            viewBox="0 0 21 20">
         <path fill="currentColor" d="M12 13h1v7h-1zM12 0h1v7h-1z"/>
@@ -86,6 +102,7 @@ export class RhCodeBlock extends LitElement {
    *          <rh-code-block actions="copy wrap">
    *            <span slot="action-label-copy">Copy to Clipboard</span>
    *            <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>
+   *            <span slot="action-label-copy" hidden data-code-block-state="failed">Copy failed!</span>
    *            <span slot="action-label-wrap">Toggle word wrap</span>
    *            <span slot="action-label-wrap" hidden data-code-block-state="active">Toggle overflow</span>
    *          </rh-code-block>
@@ -139,10 +156,15 @@ export class RhCodeBlock extends LitElement {
   /** When set to `hidden`, the code block's line numbers are hidden */
   @property({ reflect: true, attribute: 'line-numbers' }) lineNumbers?: 'hidden';
 
+  @state() private copyButtonState: 'default' | 'active' | 'failed' = 'default';
+
+  #logger = new Logger(this);
+
   #slots = new SlotController(
     this,
     null,
     'action-label-copy',
+    'copy-failed',
     'action-label-wrap',
     'show-more',
     'show-less',
@@ -188,6 +210,12 @@ export class RhCodeBlock extends LitElement {
     const truncated = expandable && !fullHeight;
     const actions = !!this.actions.length;
     const isIntersecting = this.#isIntersecting;
+    const actionCopyLabelledBy =
+       this.copyButtonState === 'default' ?
+         'copy-to-clipboard-label'
+         : this.copyButtonState === 'active' ?
+           'copied-label'
+           : 'copy-failed-label';
     return html`
       <div id="container"
            class="${classMap({ actions, compact, expandable, fullHeight, isIntersecting, resizable, truncated, wrap })}"
@@ -214,33 +242,53 @@ export class RhCodeBlock extends LitElement {
         <div id="actions"
              @click="${this.#onActionsClick}"
              @keyup="${this.#onActionsKeyup}">
-        ${this.actions.map(x => html`
-          <rh-tooltip>
-            <!-- tooltip content for the copy action button -->
-            <slot id="label" slot="content" name="action-label-${x}">${x === 'copy' ? html`
-              <span>Copy to Clipboard</span>
-              <span hidden data-code-block-state="active">Copied!</span>` : html`
-              <!-- tooltip content for the wrap action button -->
-              <span>Toggle word wrap</span>
-              <span hidden data-code-block-state="active">Toggle overflow</span>`}
+        ${!this.actions.includes('copy') ? '' : html`
+          <rh-tooltip silent>
+            <!-- Tooltip content for the copy action button -->
+            <slot slot="content" name="action-label-copy">
+              <span ?hidden="${this.copyButtonState !== 'default'}" id="copy-to-clipboard-label">Copy to Clipboard</span>
+              <span ?hidden="${this.copyButtonState !== 'active'}" id="copied-label">Copied!</span>
+              <span ?hidden="${this.copyButtonState !== 'failed'}" id="copy-failed-label">Copy failed!</span>
             </slot>
-            <button id="action-${x}"
-                    class="shadow-fab"
-                    data-code-block-action="${x}">
-              ${RhCodeBlock.actionIcons.get(this.wrap && x === 'wrap' ? 'wrap-active' : x) ?? ''}
+            <button id="action-copy"
+                   class="shadow-fab"
+                   data-code-block-action="copy"
+                   aria-labelledby="${actionCopyLabelledBy}">
+             ${RhCodeBlock.actionIcons.get('copy')}
             </button>
-          </rh-tooltip>`)}
+          </rh-tooltip>`}
+          ${!this.actions.includes('wrap') ? '' : html`
+            <rh-tooltip silent>
+             <!-- Tooltip content for the wrap action button -->
+             <slot id="label-wrap" slot="content" name="action-label-wrap">
+               <span ?hidden="${this.wrap}">Toggle word wrap</span>
+               <span ?hidden="${!this.wrap}"
+                     data-code-block-state="active">Toggle overflow</span>
+             </slot>
+             <button id="action-wrap"
+                     class="shadow-fab"
+                     data-code-block-action="wrap"
+                     aria-labelledby="label-wrap">
+               ${RhCodeBlock.actionIcons.get(this.wrap ? 'wrap-active' : 'wrap')}
+             </button>
+            </rh-tooltip>
+          `}
         </div>
 
         <button id="expand"
                 ?hidden="${!expandable}"
                 aria-controls="content-lines"
                 aria-expanded="${String(!!fullHeight) as 'true' | 'false'}"
-                @click="${this.#onClickExpand}">
-          <!-- text content for the expandable toggle button when the code block is collapsed. -->
-          <slot name="show-more" ?hidden="${this.fullHeight}">Show more</slot>
+                @click="${this.#onClickExpand}"
+                aria-labelledby="${this.fullHeight === true ? 'show-less-label' : 'show-more-label'}">
+          <span ?hidden="${this.fullHeight}" id="show-more-label">
+            <!-- text content for the expandable toggle button when the code block is collapsed. -->
+            <slot name="show-more">Show more</slot>
+          </span>
+          <span ?hidden="${!this.fullHeight}" id="show-less-label">
           <!-- text content for the expandable toggle button when the code block is expanded. -->
-          <slot name="show-less" ?hidden="${!this.fullHeight}">Show less</slot>
+            <slot name="show-less">Show less</slot>
+          </span>
           <svg xmlns="http://www.w3.org/2000/svg"
                fill="currentColor"
                viewBox="0 0 11 7">
@@ -313,15 +361,17 @@ export class RhCodeBlock extends LitElement {
   async #wrapChanged() {
     await this.updateComplete;
     this.#computeLineNumbers();
-    // TODO: handle slotted fabs
-    const assignedElements =
-      this.#getFabContentElements(this.shadowRoot?.querySelector('slot[name="action-label-wrap"]'));
-    for (const el of assignedElements) {
-      if (el instanceof HTMLElement) {
-        el.hidden = (el.dataset.codeBlockState !== 'active') === this.wrap;
+    this.#setSlottedLabelState('action-label-wrap', this.wrap ? 'active' : undefined);
+  }
+
+  #setSlottedLabelState(slotName: 'action-label-copy' | 'action-label-wrap', state?: string) {
+    if (this.#slots.hasSlotted(slotName)) {
+      for (const el of this.#slots.getSlotted(slotName)) {
+        if (el instanceof HTMLElement) {
+          el.hidden = el.dataset.codeBlockState !== state;
+        }
       }
     }
-    this.requestUpdate();
   }
 
   #getSlottedCodeElements() {
@@ -330,14 +380,6 @@ export class RhCodeBlock extends LitElement {
         x instanceof HTMLScriptElement
         || x instanceof HTMLPreElement ? [x]
       : []);
-  }
-
-  #getFabContentElements(slot?: HTMLSlotElement | null) {
-    const assignedElements = slot?.assignedElements() ?? [];
-    if (!assignedElements.length) {
-      return [...slot?.querySelectorAll('*') ?? []];
-    }
-    return assignedElements;
   }
 
   /**
@@ -416,6 +458,7 @@ export class RhCodeBlock extends LitElement {
   #onActionsKeyup(event: KeyboardEvent) {
     switch (event.key) {
       case 'Enter':
+        return;
       case ' ':
         event.preventDefault();
         this.#onCodeAction(event);
@@ -441,7 +484,7 @@ export class RhCodeBlock extends LitElement {
     this.fullHeight = !this.fullHeight;
   }
 
-  async #copy() {
+  #preCopy() {
     let content: string;
     if (this.highlighting === 'prerendered') {
       content =
@@ -455,28 +498,39 @@ export class RhCodeBlock extends LitElement {
         x => x.textContent,
       ).join('');
     }
-    await navigator.clipboard.writeText(content);
-    // TODO: handle slotted fabs
-    const slot = this.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="action-label-copy"]');
-    const tooltip = slot?.closest('rh-tooltip');
-    tooltip?.hide();
-    const assignedElements = this.#getFabContentElements(slot);
-    for (const el of assignedElements) {
-      if (el instanceof HTMLElement) {
-        el.hidden = el.dataset.codeBlockState !== 'active';
-      }
+    const event = new RhCodeBlockCopyEvent(content);
+    if (!this.dispatchEvent(event) || event.defaultPrevented) {
+      throw new Error('copy cancelled');
     }
-    this.requestUpdate();
-    tooltip?.show();
+    return event.content;
+  }
+
+  async #copy() {
+    const slot =
+      this.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="action-label-copy"]');
+    const tooltip =
+      slot?.closest('rh-tooltip');
+    if (!tooltip) {
+      return;
+    }
+
+    try {
+      tooltip.hide();
+      const content = this.#preCopy();
+      await navigator.clipboard.writeText(content);
+      this.copyButtonState = 'active';
+      this.#setSlottedLabelState('action-label-copy', 'active');
+    } catch (error) {
+      this.#logger.error(error);
+      this.copyButtonState = 'failed';
+      this.#setSlottedLabelState('action-label-copy', 'failed');
+    }
+    tooltip.show();
     await new Promise(r => setTimeout(r, 5_000));
-    tooltip?.hide();
-    for (const el of assignedElements) {
-      if (el instanceof HTMLElement) {
-        el.hidden = el.dataset.codeBlockState === 'active';
-      }
-    }
-    this.requestUpdate();
-    tooltip?.show();
+    tooltip.hide();
+    this.copyButtonState = 'default';
+    this.#setSlottedLabelState('action-label-copy', undefined);
+    tooltip.show();
   }
 }
 

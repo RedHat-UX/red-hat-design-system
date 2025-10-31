@@ -18,7 +18,14 @@
 }
 
 #button:is(:hover, :focus) {
-  background: var(--rh-color-surface-light);
+  background:
+    var(--uxdot-copy-permalink-button-background,
+      light-dark(
+        var(--rh-color-surface-light),
+        var(--rh-color-surface-dark)
+      )
+    );
+  color: var(--rh-color-text-primary);
 }
 
 :host(:state(--rendered)) #button {
