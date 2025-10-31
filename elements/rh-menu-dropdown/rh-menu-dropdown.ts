@@ -53,7 +53,7 @@ export class RhMenuDropdown extends LitElement {
   /**
    * The 'compact' layout reduces spacing and add the rh-icon `ellipsis-vertical-fill`.
    */
-  @property({ attribute: 'layout', reflect: true }) layout: 'compact' | null = null;
+  @property({ attribute: 'layout', reflect: true }) layout?: 'compact';
 
   /**
    * Disables user interaction with the dropdown. When true, the dropdown cannot
