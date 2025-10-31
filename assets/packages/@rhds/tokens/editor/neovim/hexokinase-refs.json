@@ -126,7 +126,7 @@
     "{color.status.warning._}": "light-dark(var(--rh-color-status-warning-on-light, #dca614), var(--rh-color-status-warning-on-dark, #ffcc17))",
     "{color.status.warning.on-dark}": "#ffcc17",
     "{color.status.warning.on-light}": "#dca614",
-    "{color.surface._}": "light-dark(var(--rh-color-surface-lightest, #ffffff), var(--rh-color-surface-lighter, #f2f2f2))",
+    "{color.surface._}": "light-dark(var(--rh-color-surface-lightest, #ffffff), var(--rh-color-surface-darkest, #151515))",
     "{color.surface.dark-alt}": "oklch(from(--rh-color-surface-dark) calc(l * 0.82) c h)",
     "{color.surface.status.caution._}": "light-dark(var(--rh-color-surface-status-caution-on-light, #ffe8cc), var(--rh-color-surface-status-caution-on-dark, #ffe8cc))",
     "{color.surface.status.danger._}": "light-dark(var(--rh-color-surface-status-danger-on-light, #ffe3d9), var(--rh-color-surface-status-danger-on-dark, #ffe3d9))",

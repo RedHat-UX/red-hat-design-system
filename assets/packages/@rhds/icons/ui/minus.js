@@ -1,1 +1,1 @@
-const t = document.createElement('template');t.innerHTML=`<!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30 15H2a1 1 0 1 0 0 2h28a1 1 0 1 0 0-2Z"/></svg>`;export default t.content.cloneNode(true);
+const t = document.createElement('template');t.innerHTML=`<!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29 17H3a1 1 0 0 1 0-2h26a1 1 0 0 1 0 2Z"/></svg>`;export default t.content.cloneNode(true);

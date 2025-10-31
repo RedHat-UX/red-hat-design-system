@@ -1,0 +1,179 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
+    <title>Menu Item | Red Hat Design System</title>
+
+    <link rel="preconnect" href="https://ga.jspm.io">
+
+    <link rel="stylesheet" href="/styles/demo/styles.css" media="all">
+
+    <script type="importmap">{
+  "imports": {
+    "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
+    "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
+    "lit-html": "/assets/packages/lit-html/lit-html.js",
+    "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
+    "lit-element": "/assets/packages/lit-element/index.js",
+    "prism-esm": "/assets/packages/prism-esm/prism.js",
+    "lit": "/assets/packages/lit/index.js",
+    "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
+    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
+    "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
+    "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "@lit/context": "/assets/packages/@lit/context/index.js",
+    "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.4/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
+    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
+    "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
+    "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
+    "lit/": "/assets/packages/lit/",
+    "lit-html/": "/assets/packages/lit-html/",
+    "prism-esm/": "/assets/packages/prism-esm/",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js",
+    "@rhds/tokens/css/": "/assets/packages/@rhds/tokens/css/",
+    "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
+    "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
+    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons": "/assets/packages/@rhds/icons/icons.js",
+    "@rhds/icons/": "/assets/packages/@rhds/icons/",
+    "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
+    "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
+    "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
+    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "@uxdot/elements/": "/assets/packages/@uxdot/elements/"
+  },
+  "scopes": {
+    "/assets/packages/": {
+      "@floating-ui/utils": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.10/dist/floating-ui.utils.mjs",
+      "@floating-ui/utils/dom": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.10/dist/floating-ui.utils.dom.mjs",
+      "@lit/reactive-element/decorators/": "/assets/packages/@lit/reactive-element/decorators/",
+      "lit-element/lit-element.js": "/assets/packages/lit-element/lit-element.js",
+      "lit-html/": "/assets/packages/lit-html/",
+      "lit/": "/assets/packages/lit/"
+    }
+  }
+}</script>
+
+    
+      <script type="module">
+    // although we load these ssr support modules elsewhere, we still
+    // need them here to ensure no double-rendering on webkit
+    import '/assets/javascript/ssr-support.js';
+    // include these, which are often internal to elements,
+    // and are definitely required by context-picker and context-demo
+    // to avoid SSR defer-hydration bugs and SSR double-rendering bugs
+    import '@rhds/elements/rh-icon/rh-icon.js';
+    import '@rhds/elements/rh-surface/rh-surface.js';
+    import '@rhds/elements/rh-button/rh-button.js';
+    import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+    import '@rhds/elements/rh-tag/rh-tag.js';
+  </script>
+
+
+    <script type="module">
+      // load up the demo and picker
+      import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+      import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+    </script>
+
+    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
+  </head>
+  <body><rh-menu  role="menubar" hydrate-internals-role="menubar" ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}slot{align-items:stretch;display:inline-flex;flex-direction:column;width:100%}::slotted(a){color:var(--rh-color-interactive-primary-default);padding:5px!important}::slotted(a:hover){color:var(--rh-color-interactive-primary-hover)!important}::slotted(a:visited){color:var(--rh-color-interactive-primary-visited-default)!important}::slotted(a:visited:hover){color:var(--rh-color-interactive-primary-visited-default)!important}::slotted(hr){border:0;border-top:var(--rh-border-width-sm,1px) solid light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-gray-50,#707070));width:100%}</style><!--lit-part JOu7AhF52+o=-->
+      <!-- menu items -->
+      <!--lit-node 1--><slot  part="menu"></slot>
+    <!--/lit-part--></template>
+  <rh-menu-item  ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open"><style>:host{background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));cursor:pointer;display:block;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);a{color:light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));display:inline-block;position:relative;text-decoration:none;&:after{border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3));bottom:0;content:"";inline-size:100%;height:2px;left:0;position:absolute}&:focus{outline:none}}}.menu-item-label{align-items:center;display:flex;justify-content:flex-start;::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}#menu-link{align-items:center;display:flex;inline-size:100%;justify-content:space-between;rh-icon{color:var(--rh-color-interactive-secondary-default);fill:var(--rh-color-interactive-secondary-default);padding-inline-start:var(--rh-space-md,8px)}}}#item{align-items:center;display:flex;justify-content:flex-start;::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}}:host(:focus),:host(:hover){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f));a{color:var(--rh-color-interactive-primary-hover);&:after{border-bottom-color:var(--rh-color-interactive-primary-hover)}}}:host(:focus){box-sizing:border-box;outline:none;position:relative;&:after{background-color:initial;border:var(--rh-border-width-md,2px) solid light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));border-radius:var(--rh-border-radius-default,3px);content:"";height:calc(100% - 6px);left:4px;position:absolute;top:50%;transform:translateY(-50%);width:calc(100% - 8px)}#item{outline:none}}:host([disabled]),:host([disabled]) a{color:light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d));cursor:default;pointer-events:none}:host([disabled]){a{&:after{border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d))}}}::slotted([slot=description]){font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-sm,.875rem)!important;font-style:normal;font-weight:var(--rh-font-weight-heading-regular,400);line-height:21px}.menu-item-content:focus-visible{outline:none}.visually-hidden{height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;clip:rect(0 0 0 0);border:0;white-space:nowrap}</style><!--lit-part 6KMTwcz/0/E=-->
+      <!--lit-node 0--><div aria-disabled="false" class="menu-item-content">
+        <div class="menu-item-label">
+          <!-- 
+            Slot for an icon displayed alongside the menu item.
+            The icon will appear to the left of the menu item text in left-to-right (LTR) layouts.
+          -->
+          <slot name="icon"></slot>
+          <!--lit-part X2r1wtWE6RE=-->
+        <div id="item">
+        <!--lit-part 4w1upbXSbY0=-->
+      <!-- 
+        Use this slot to provide the text content inside menu item.
+      -->
+      <slot></slot>
+    <!--/lit-part-->
+        </div>
+      <!--/lit-part-->
+        </div>
+        <!-- 
+          Use this slot to provide the description inside menu item.
+        -->
+        <slot id="description" name="description"></slot>
+      </div>
+    <!--/lit-part--></template>Menuitem1</rh-menu-item>
+  <rh-menu-item  ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open"><style>:host{background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));cursor:pointer;display:block;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);a{color:light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));display:inline-block;position:relative;text-decoration:none;&:after{border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3));bottom:0;content:"";inline-size:100%;height:2px;left:0;position:absolute}&:focus{outline:none}}}.menu-item-label{align-items:center;display:flex;justify-content:flex-start;::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}#menu-link{align-items:center;display:flex;inline-size:100%;justify-content:space-between;rh-icon{color:var(--rh-color-interactive-secondary-default);fill:var(--rh-color-interactive-secondary-default);padding-inline-start:var(--rh-space-md,8px)}}}#item{align-items:center;display:flex;justify-content:flex-start;::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}}:host(:focus),:host(:hover){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f));a{color:var(--rh-color-interactive-primary-hover);&:after{border-bottom-color:var(--rh-color-interactive-primary-hover)}}}:host(:focus){box-sizing:border-box;outline:none;position:relative;&:after{background-color:initial;border:var(--rh-border-width-md,2px) solid light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));border-radius:var(--rh-border-radius-default,3px);content:"";height:calc(100% - 6px);left:4px;position:absolute;top:50%;transform:translateY(-50%);width:calc(100% - 8px)}#item{outline:none}}:host([disabled]),:host([disabled]) a{color:light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d));cursor:default;pointer-events:none}:host([disabled]){a{&:after{border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d))}}}::slotted([slot=description]){font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-sm,.875rem)!important;font-style:normal;font-weight:var(--rh-font-weight-heading-regular,400);line-height:21px}.menu-item-content:focus-visible{outline:none}.visually-hidden{height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;clip:rect(0 0 0 0);border:0;white-space:nowrap}</style><!--lit-part 6KMTwcz/0/E=-->
+      <!--lit-node 0--><div aria-disabled="false" class="menu-item-content">
+        <div class="menu-item-label">
+          <!-- 
+            Slot for an icon displayed alongside the menu item.
+            The icon will appear to the left of the menu item text in left-to-right (LTR) layouts.
+          -->
+          <slot name="icon"></slot>
+          <!--lit-part X2r1wtWE6RE=-->
+        <div id="item">
+        <!--lit-part 4w1upbXSbY0=-->
+      <!-- 
+        Use this slot to provide the text content inside menu item.
+      -->
+      <slot></slot>
+    <!--/lit-part-->
+        </div>
+      <!--/lit-part-->
+        </div>
+        <!-- 
+          Use this slot to provide the description inside menu item.
+        -->
+        <slot id="description" name="description"></slot>
+      </div>
+    <!--/lit-part--></template>Menuitem2</rh-menu-item>
+  <rh-menu-item  ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open"><style>:host{background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));cursor:pointer;display:block;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);a{color:light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));display:inline-block;position:relative;text-decoration:none;&:after{border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3));bottom:0;content:"";inline-size:100%;height:2px;left:0;position:absolute}&:focus{outline:none}}}.menu-item-label{align-items:center;display:flex;justify-content:flex-start;::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}#menu-link{align-items:center;display:flex;inline-size:100%;justify-content:space-between;rh-icon{color:var(--rh-color-interactive-secondary-default);fill:var(--rh-color-interactive-secondary-default);padding-inline-start:var(--rh-space-md,8px)}}}#item{align-items:center;display:flex;justify-content:flex-start;::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}}:host(:focus),:host(:hover){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f));a{color:var(--rh-color-interactive-primary-hover);&:after{border-bottom-color:var(--rh-color-interactive-primary-hover)}}}:host(:focus){box-sizing:border-box;outline:none;position:relative;&:after{background-color:initial;border:var(--rh-border-width-md,2px) solid light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));border-radius:var(--rh-border-radius-default,3px);content:"";height:calc(100% - 6px);left:4px;position:absolute;top:50%;transform:translateY(-50%);width:calc(100% - 8px)}#item{outline:none}}:host([disabled]),:host([disabled]) a{color:light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d));cursor:default;pointer-events:none}:host([disabled]){a{&:after{border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d))}}}::slotted([slot=description]){font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-sm,.875rem)!important;font-style:normal;font-weight:var(--rh-font-weight-heading-regular,400);line-height:21px}.menu-item-content:focus-visible{outline:none}.visually-hidden{height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;clip:rect(0 0 0 0);border:0;white-space:nowrap}</style><!--lit-part 6KMTwcz/0/E=-->
+      <!--lit-node 0--><div aria-disabled="false" class="menu-item-content">
+        <div class="menu-item-label">
+          <!-- 
+            Slot for an icon displayed alongside the menu item.
+            The icon will appear to the left of the menu item text in left-to-right (LTR) layouts.
+          -->
+          <slot name="icon"></slot>
+          <!--lit-part X2r1wtWE6RE=-->
+        <div id="item">
+        <!--lit-part 4w1upbXSbY0=-->
+      <!-- 
+        Use this slot to provide the text content inside menu item.
+      -->
+      <slot></slot>
+    <!--/lit-part-->
+        </div>
+      <!--/lit-part-->
+        </div>
+        <!-- 
+          Use this slot to provide the description inside menu item.
+        -->
+        <slot id="description" name="description"></slot>
+      </div>
+    <!--/lit-part--></template>Menuitem3</rh-menu-item>
+</rh-menu>
+
+<script type="module">
+  import '@rhds/elements/rh-menu/rh-menu.js';
+  import '@rhds/elements/rh-menu/rh-menu-item.js';
+</script>
+
+
+</body></html>

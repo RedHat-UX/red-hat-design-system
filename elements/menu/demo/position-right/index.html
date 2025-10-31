@@ -32,6 +32,7 @@
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.4/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -88,7 +89,10 @@
 
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
-  <body><rh-menu position="right">
+  <body><rh-menu   role="menubar" hydrate-internals-role="menubar" position="right" ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}slot{align-items:stretch;display:inline-flex;flex-direction:column;width:100%}::slotted(a){color:var(--rh-color-interactive-primary-default);padding:5px!important}::slotted(a:hover){color:var(--rh-color-interactive-primary-hover)!important}::slotted(a:visited){color:var(--rh-color-interactive-primary-visited-default)!important}::slotted(a:visited:hover){color:var(--rh-color-interactive-primary-visited-default)!important}::slotted(hr){border:0;border-top:var(--rh-border-width-sm,1px) solid light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-gray-50,#707070));width:100%}</style><!--lit-part JOu7AhF52+o=-->
+      <!-- menu items -->
+      <!--lit-node 1--><slot  part="menu"></slot>
+    <!--/lit-part--></template>
   <a href="#">Link1</a>
   <a href="#">Link2</a>
   <a href="#">Link3</a>

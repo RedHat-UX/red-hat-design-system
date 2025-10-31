@@ -1,0 +1,511 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
+    <title>Color Context | Red Hat Design System</title>
+
+    <link rel="preconnect" href="https://ga.jspm.io">
+
+    <link rel="stylesheet" href="/styles/demo/styles.css" media="all">
+
+    <script type="importmap">{
+  "imports": {
+    "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
+    "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
+    "lit-html": "/assets/packages/lit-html/lit-html.js",
+    "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
+    "lit-element": "/assets/packages/lit-element/index.js",
+    "prism-esm": "/assets/packages/prism-esm/prism.js",
+    "lit": "/assets/packages/lit/index.js",
+    "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
+    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
+    "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
+    "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "@lit/context": "/assets/packages/@lit/context/index.js",
+    "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.4/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
+    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
+    "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
+    "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
+    "lit/": "/assets/packages/lit/",
+    "lit-html/": "/assets/packages/lit-html/",
+    "prism-esm/": "/assets/packages/prism-esm/",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js",
+    "@rhds/tokens/css/": "/assets/packages/@rhds/tokens/css/",
+    "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
+    "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
+    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons": "/assets/packages/@rhds/icons/icons.js",
+    "@rhds/icons/": "/assets/packages/@rhds/icons/",
+    "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
+    "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
+    "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
+    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "@uxdot/elements/": "/assets/packages/@uxdot/elements/"
+  },
+  "scopes": {
+    "/assets/packages/": {
+      "@floating-ui/utils": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.10/dist/floating-ui.utils.mjs",
+      "@floating-ui/utils/dom": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.10/dist/floating-ui.utils.dom.mjs",
+      "@lit/reactive-element/decorators/": "/assets/packages/@lit/reactive-element/decorators/",
+      "lit-element/lit-element.js": "/assets/packages/lit-element/lit-element.js",
+      "lit-html/": "/assets/packages/lit-html/",
+      "lit/": "/assets/packages/lit/"
+    }
+  }
+}</script>
+
+    
+      <script type="module">
+    // although we load these ssr support modules elsewhere, we still
+    // need them here to ensure no double-rendering on webkit
+    import '/assets/javascript/ssr-support.js';
+    // include these, which are often internal to elements,
+    // and are definitely required by context-picker and context-demo
+    // to avoid SSR defer-hydration bugs and SSR double-rendering bugs
+    import '@rhds/elements/rh-icon/rh-icon.js';
+    import '@rhds/elements/rh-surface/rh-surface.js';
+    import '@rhds/elements/rh-button/rh-button.js';
+    import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+    import '@rhds/elements/rh-tag/rh-tag.js';
+  </script>
+
+
+    <script type="module">
+      // load up the demo and picker
+      import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+      import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+    </script>
+
+    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
+  </head>
+  <body><rh-context-demo>
+  <rh-navigation-vertical  role="navigation" hydrate-internals-role="navigation" bordered="inline-start"><template shadowroot="open" shadowrootmode="open"><style>:host{background:light-dark(var(--rh-color-surface-lightest),var(--rh-color-surface-darker,#1f1f1f));display:block}.visually-hidden{block-size:1px;inline-size:1px;overflow:hidden;position:absolute!important;clip:rect(1px,1px,1px,1px);border:0;clip-path:inset(50%);margin:-1px!important;padding:0!important;white-space:nowrap}#container{display:flex;flex-direction:column;gap:var(--rh-space-xs,4px);line-height:var(--rh-line-height-body-text,1.5)}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-md,1rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-lg,3px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-lg,3px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-lg,3px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}</style><!--lit-part Vo680MIq9uY=-->
+      <h2 class="visually-hidden"><!--lit-part-->Navigation<!--/lit-part--></h2>
+      <div id="container" role="list">
+          <!--
+            Use this slot for `<rh-navigation-link>` elements to provide a list of navigation links  
+            and `<rh-navigation-vertical-list>` when providing a grouped list of navigation links. 
+          -->
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+    <rh-navigation-link   role="listitem" hydrate-internals-role="listitem" href="#manage-applications" current-page><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}#container{align-items:var(--_navigation-link-container-align-items,initial);block-size:var(--_navigation-link-container-block-size,auto);display:var(--_navigation-link-container-display,block);inline-size:var(--_navigation-link-container-inline-size,fit-content);padding:var(--_navigation-link-container-padding,initial);position:var(--_navigation-link-container-position,initial)}::slotted(a),a{align-content:var(--_navigation-link-align-content,initial);align-items:var(--_navigation-link-align-items,initial);background-color:var(--_navigation-link-background-color,#0000);block-size:var(--_navigation-link-block-size,auto);color:var(--_navigation-link-color,var(--rh-color-text-primary))!important;display:var(--_navigation-link-display,inline);font-size:var(--_navigation-link-font-size,1rem)!important;font-weight:var(--_navigation-link-font-weight,initial)!important;gap:var(--_navigation-link-gap,initial);inline-size:var(--_navigation-link-inline-size,auto);padding:var(--_navigation-link-padding,0);position:relative;text-decoration:var(--_navigation-link-text-decoration,none)!important}::slotted(a):before,a:before{border-inline-start:var(--_navigation-link-before-border-inline-start-width,0) solid var(--_navigation-link-before-border-inline-start-color,#0000);content:"";inset:0;position:absolute}::slotted(:is(a:hover,a:hover:focus-visible,:focus-visible,:active)),a:is(:hover,:hover:focus-visible,:focus-visible,:active){--_navigation-link-background-color:var(--_navigation-link-hover-background-color,light-dark(#0000,#0000))!important;--_navigation-link-color:var(--_navigation-link-color-hover,var(--rh-color-interactive-primary-hover))!important;text-decoration-color:var(--_navigation-link-text-decoration-color,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3)))!important;text-decoration-line:var(--_navigation-link-text-decoration-line,underline)!important;text-decoration-skip-ink:auto!important;text-decoration-style:var(--_navigation-link-text-decoration-style,dashed)!important;text-underline-offset:var(--_navigation-link-text-underline-offset,4px)!important}::slotted(a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active)),a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active){border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-interactive-primary-default);outline-offset:var(--_navigation-link-focus-outline-offset,0)}</style><!--lit-part VSLkVO1xlKQ=-->
+      <div id="container">
+        <!--lit-part cpkRDPxmW6E=-->
+          <!--lit-node 0--><a href="#manage-applications" aria-current="page">
+            <!--
+              Use this slot when the `icon` and `icon-set` attributes are not set. 
+              Must be used in conjunction with the `href` attribute.  
+              Can contain a rh-icon, svg, or img tag.
+            -->
+            <slot name="icon">
+              <!--lit-part BRUAAAUVAAA=--><?><!--/lit-part-->
+            </slot>
+            <!--
+              The default slot should contain the link text when the `href` attribute is set. 
+              Alternatively, an anchor tag (`<a href="...">`) should be the first child inside
+              the slot. Slot should never contain a button tag.
+            -->
+            <slot></slot>
+          </a><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template>Manage applications</rh-navigation-link>
+    <rh-navigation-vertical-list  role="listitem" hydrate-internals-role="listitem" summary="1. Managing applications"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}details{& summary{cursor:pointer;display:flex;flex-direction:row;gap:var(--rh-space-lg,16px);justify-content:space-between;list-style:none;padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);position:relative;&::-webkit-details-marker,&::marker{display:none}&:is(:hover,:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}& ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-size:var(--rh-font-size-body-text-md,1rem)!important;font-weight:var(--rh-font-weight-body-text-regular,400)}& rh-icon{position:relative;transition:.2s;will-change:rotate}}&[open]{& rh-icon{transform:rotate(-180deg)}}& #subtree{display:flex;flex-direction:column;gap:var(--rh-space-xs,4px);margin-block:var(--rh-space-xs,4px) var(--_subtree-margin-block-end,var(--rh-space-md,8px));margin-inline-start:var(--rh-space-lg,16px)}}::slotted(rh-navigation-vertical-list){font-size:var(--rh-font-size-body-text-sm,.875rem);--_subtree-margin-block-end:0}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-sm,0.875rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}.highlight{& ::slotted(rh-navigation-link:first-child){--_navigation-link-font-weight:var(--rh-font-weight-body-text-medium,500)}}</style><!--lit-part u3Rqd3n54AE=-->
+      <!--lit-node 0--><details 
+        class="  "
+         
+        
+        >
+        <summary>
+          <!-- A summary slot for the group title, overrides the summary attribute -->
+          <slot name="summary"><!--lit-part-->1. Managing applications<!--/lit-part--></slot>
+          <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" microns "><!--lit-part vJ13JnWXULs=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 5.29a.996.996 0 0 0-1.41 0l-7.29 7.29-7.3-7.29a.987.987 0 0 0-1.41-.02.987.987 0 0 0-.02 1.41l.02.02 7.65 7.65c.29.29.68.44 1.06.44s.77-.15 1.06-.44l7.65-7.65a.996.996 0 0 0 0-1.41Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        </summary>
+        <div id="subtree" role="list">
+          <!-- 
+            Use this slot for `<rh-navigation-link>` or `<rh-navigation-vertical-list>` elements.
+          -->
+          <slot></slot>
+        </div>
+      </details>
+      <!--/lit-part--></template>
+      <rh-navigation-link role="listitem" hydrate-internals-role="listitem"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}#container{align-items:var(--_navigation-link-container-align-items,initial);block-size:var(--_navigation-link-container-block-size,auto);display:var(--_navigation-link-container-display,block);inline-size:var(--_navigation-link-container-inline-size,fit-content);padding:var(--_navigation-link-container-padding,initial);position:var(--_navigation-link-container-position,initial)}::slotted(a),a{align-content:var(--_navigation-link-align-content,initial);align-items:var(--_navigation-link-align-items,initial);background-color:var(--_navigation-link-background-color,#0000);block-size:var(--_navigation-link-block-size,auto);color:var(--_navigation-link-color,var(--rh-color-text-primary))!important;display:var(--_navigation-link-display,inline);font-size:var(--_navigation-link-font-size,1rem)!important;font-weight:var(--_navigation-link-font-weight,initial)!important;gap:var(--_navigation-link-gap,initial);inline-size:var(--_navigation-link-inline-size,auto);padding:var(--_navigation-link-padding,0);position:relative;text-decoration:var(--_navigation-link-text-decoration,none)!important}::slotted(a):before,a:before{border-inline-start:var(--_navigation-link-before-border-inline-start-width,0) solid var(--_navigation-link-before-border-inline-start-color,#0000);content:"";inset:0;position:absolute}::slotted(:is(a:hover,a:hover:focus-visible,:focus-visible,:active)),a:is(:hover,:hover:focus-visible,:focus-visible,:active){--_navigation-link-background-color:var(--_navigation-link-hover-background-color,light-dark(#0000,#0000))!important;--_navigation-link-color:var(--_navigation-link-color-hover,var(--rh-color-interactive-primary-hover))!important;text-decoration-color:var(--_navigation-link-text-decoration-color,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3)))!important;text-decoration-line:var(--_navigation-link-text-decoration-line,underline)!important;text-decoration-skip-ink:auto!important;text-decoration-style:var(--_navigation-link-text-decoration-style,dashed)!important;text-underline-offset:var(--_navigation-link-text-underline-offset,4px)!important}::slotted(a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active)),a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active){border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-interactive-primary-default);outline-offset:var(--_navigation-link-focus-outline-offset,0)}</style><!--lit-part VSLkVO1xlKQ=-->
+      <div id="container">
+        <!--lit-part Pz0gobCCM4E=--><slot></slot><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template>
+        <a class="index-link" href="#managing-applications">Managing applications</a>
+      </rh-navigation-link>
+      <rh-navigation-vertical-list  role="listitem" hydrate-internals-role="listitem" summary="1.1 Application management lifecycle"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}details{& summary{cursor:pointer;display:flex;flex-direction:row;gap:var(--rh-space-lg,16px);justify-content:space-between;list-style:none;padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);position:relative;&::-webkit-details-marker,&::marker{display:none}&:is(:hover,:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}& ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-size:var(--rh-font-size-body-text-md,1rem)!important;font-weight:var(--rh-font-weight-body-text-regular,400)}& rh-icon{position:relative;transition:.2s;will-change:rotate}}&[open]{& rh-icon{transform:rotate(-180deg)}}& #subtree{display:flex;flex-direction:column;gap:var(--rh-space-xs,4px);margin-block:var(--rh-space-xs,4px) var(--_subtree-margin-block-end,var(--rh-space-md,8px));margin-inline-start:var(--rh-space-lg,16px)}}::slotted(rh-navigation-vertical-list){font-size:var(--rh-font-size-body-text-sm,.875rem);--_subtree-margin-block-end:0}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-sm,0.875rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}.highlight{& ::slotted(rh-navigation-link:first-child){--_navigation-link-font-weight:var(--rh-font-weight-body-text-medium,500)}}</style><!--lit-part u3Rqd3n54AE=-->
+      <!--lit-node 0--><details 
+        class="  "
+         
+        
+        >
+        <summary>
+          <!-- A summary slot for the group title, overrides the summary attribute -->
+          <slot name="summary"><!--lit-part-->1.1 Application management lifecycle<!--/lit-part--></slot>
+          <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" microns "><!--lit-part vJ13JnWXULs=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 5.29a.996.996 0 0 0-1.41 0l-7.29 7.29-7.3-7.29a.987.987 0 0 0-1.41-.02.987.987 0 0 0-.02 1.41l.02.02 7.65 7.65c.29.29.68.44 1.06.44s.77-.15 1.06-.44l7.65-7.65a.996.996 0 0 0 0-1.41Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        </summary>
+        <div id="subtree" role="list">
+          <!-- 
+            Use this slot for `<rh-navigation-link>` or `<rh-navigation-vertical-list>` elements.
+          -->
+          <slot></slot>
+        </div>
+      </details>
+      <!--/lit-part--></template>
+        <rh-navigation-link role="listitem" hydrate-internals-role="listitem"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}#container{align-items:var(--_navigation-link-container-align-items,initial);block-size:var(--_navigation-link-container-block-size,auto);display:var(--_navigation-link-container-display,block);inline-size:var(--_navigation-link-container-inline-size,fit-content);padding:var(--_navigation-link-container-padding,initial);position:var(--_navigation-link-container-position,initial)}::slotted(a),a{align-content:var(--_navigation-link-align-content,initial);align-items:var(--_navigation-link-align-items,initial);background-color:var(--_navigation-link-background-color,#0000);block-size:var(--_navigation-link-block-size,auto);color:var(--_navigation-link-color,var(--rh-color-text-primary))!important;display:var(--_navigation-link-display,inline);font-size:var(--_navigation-link-font-size,1rem)!important;font-weight:var(--_navigation-link-font-weight,initial)!important;gap:var(--_navigation-link-gap,initial);inline-size:var(--_navigation-link-inline-size,auto);padding:var(--_navigation-link-padding,0);position:relative;text-decoration:var(--_navigation-link-text-decoration,none)!important}::slotted(a):before,a:before{border-inline-start:var(--_navigation-link-before-border-inline-start-width,0) solid var(--_navigation-link-before-border-inline-start-color,#0000);content:"";inset:0;position:absolute}::slotted(:is(a:hover,a:hover:focus-visible,:focus-visible,:active)),a:is(:hover,:hover:focus-visible,:focus-visible,:active){--_navigation-link-background-color:var(--_navigation-link-hover-background-color,light-dark(#0000,#0000))!important;--_navigation-link-color:var(--_navigation-link-color-hover,var(--rh-color-interactive-primary-hover))!important;text-decoration-color:var(--_navigation-link-text-decoration-color,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3)))!important;text-decoration-line:var(--_navigation-link-text-decoration-line,underline)!important;text-decoration-skip-ink:auto!important;text-decoration-style:var(--_navigation-link-text-decoration-style,dashed)!important;text-underline-offset:var(--_navigation-link-text-underline-offset,4px)!important}::slotted(a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active)),a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active){border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-interactive-primary-default);outline-offset:var(--_navigation-link-focus-outline-offset,0)}</style><!--lit-part VSLkVO1xlKQ=-->
+      <div id="container">
+        <!--lit-part Pz0gobCCM4E=--><slot></slot><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template>
+          <a class="index-link" href="#application-management-lifecycle">Application Management Lifecycle</a>
+        </rh-navigation-link>
+        <rh-navigation-link  role="listitem" hydrate-internals-role="listitem" href="#application-model-definitions"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}#container{align-items:var(--_navigation-link-container-align-items,initial);block-size:var(--_navigation-link-container-block-size,auto);display:var(--_navigation-link-container-display,block);inline-size:var(--_navigation-link-container-inline-size,fit-content);padding:var(--_navigation-link-container-padding,initial);position:var(--_navigation-link-container-position,initial)}::slotted(a),a{align-content:var(--_navigation-link-align-content,initial);align-items:var(--_navigation-link-align-items,initial);background-color:var(--_navigation-link-background-color,#0000);block-size:var(--_navigation-link-block-size,auto);color:var(--_navigation-link-color,var(--rh-color-text-primary))!important;display:var(--_navigation-link-display,inline);font-size:var(--_navigation-link-font-size,1rem)!important;font-weight:var(--_navigation-link-font-weight,initial)!important;gap:var(--_navigation-link-gap,initial);inline-size:var(--_navigation-link-inline-size,auto);padding:var(--_navigation-link-padding,0);position:relative;text-decoration:var(--_navigation-link-text-decoration,none)!important}::slotted(a):before,a:before{border-inline-start:var(--_navigation-link-before-border-inline-start-width,0) solid var(--_navigation-link-before-border-inline-start-color,#0000);content:"";inset:0;position:absolute}::slotted(:is(a:hover,a:hover:focus-visible,:focus-visible,:active)),a:is(:hover,:hover:focus-visible,:focus-visible,:active){--_navigation-link-background-color:var(--_navigation-link-hover-background-color,light-dark(#0000,#0000))!important;--_navigation-link-color:var(--_navigation-link-color-hover,var(--rh-color-interactive-primary-hover))!important;text-decoration-color:var(--_navigation-link-text-decoration-color,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3)))!important;text-decoration-line:var(--_navigation-link-text-decoration-line,underline)!important;text-decoration-skip-ink:auto!important;text-decoration-style:var(--_navigation-link-text-decoration-style,dashed)!important;text-underline-offset:var(--_navigation-link-text-underline-offset,4px)!important}::slotted(a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active)),a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active){border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-interactive-primary-default);outline-offset:var(--_navigation-link-focus-outline-offset,0)}</style><!--lit-part VSLkVO1xlKQ=-->
+      <div id="container">
+        <!--lit-part cpkRDPxmW6E=-->
+          <!--lit-node 0--><a href="#application-model-definitions" >
+            <!--
+              Use this slot when the `icon` and `icon-set` attributes are not set. 
+              Must be used in conjunction with the `href` attribute.  
+              Can contain a rh-icon, svg, or img tag.
+            -->
+            <slot name="icon">
+              <!--lit-part BRUAAAUVAAA=--><?><!--/lit-part-->
+            </slot>
+            <!--
+              The default slot should contain the link text when the `href` attribute is set. 
+              Alternatively, an anchor tag (`<a href="...">`) should be the first child inside
+              the slot. Slot should never contain a button tag.
+            -->
+            <slot></slot>
+          </a><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template>1.1.1 Application Model Definitions</rh-navigation-link>
+        <rh-navigation-link  role="listitem" hydrate-internals-role="listitem" href="#managing-applications-with-the-console"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}#container{align-items:var(--_navigation-link-container-align-items,initial);block-size:var(--_navigation-link-container-block-size,auto);display:var(--_navigation-link-container-display,block);inline-size:var(--_navigation-link-container-inline-size,fit-content);padding:var(--_navigation-link-container-padding,initial);position:var(--_navigation-link-container-position,initial)}::slotted(a),a{align-content:var(--_navigation-link-align-content,initial);align-items:var(--_navigation-link-align-items,initial);background-color:var(--_navigation-link-background-color,#0000);block-size:var(--_navigation-link-block-size,auto);color:var(--_navigation-link-color,var(--rh-color-text-primary))!important;display:var(--_navigation-link-display,inline);font-size:var(--_navigation-link-font-size,1rem)!important;font-weight:var(--_navigation-link-font-weight,initial)!important;gap:var(--_navigation-link-gap,initial);inline-size:var(--_navigation-link-inline-size,auto);padding:var(--_navigation-link-padding,0);position:relative;text-decoration:var(--_navigation-link-text-decoration,none)!important}::slotted(a):before,a:before{border-inline-start:var(--_navigation-link-before-border-inline-start-width,0) solid var(--_navigation-link-before-border-inline-start-color,#0000);content:"";inset:0;position:absolute}::slotted(:is(a:hover,a:hover:focus-visible,:focus-visible,:active)),a:is(:hover,:hover:focus-visible,:focus-visible,:active){--_navigation-link-background-color:var(--_navigation-link-hover-background-color,light-dark(#0000,#0000))!important;--_navigation-link-color:var(--_navigation-link-color-hover,var(--rh-color-interactive-primary-hover))!important;text-decoration-color:var(--_navigation-link-text-decoration-color,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3)))!important;text-decoration-line:var(--_navigation-link-text-decoration-line,underline)!important;text-decoration-skip-ink:auto!important;text-decoration-style:var(--_navigation-link-text-decoration-style,dashed)!important;text-underline-offset:var(--_navigation-link-text-underline-offset,4px)!important}::slotted(a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active)),a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active){border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-interactive-primary-default);outline-offset:var(--_navigation-link-focus-outline-offset,0)}</style><!--lit-part VSLkVO1xlKQ=-->
+      <div id="container">
+        <!--lit-part cpkRDPxmW6E=-->
+          <!--lit-node 0--><a href="#managing-applications-with-the-console" >
+            <!--
+              Use this slot when the `icon` and `icon-set` attributes are not set. 
+              Must be used in conjunction with the `href` attribute.  
+              Can contain a rh-icon, svg, or img tag.
+            -->
+            <slot name="icon">
+              <!--lit-part BRUAAAUVAAA=--><?><!--/lit-part-->
+            </slot>
+            <!--
+              The default slot should contain the link text when the `href` attribute is set. 
+              Alternatively, an anchor tag (`<a href="...">`) should be the first child inside
+              the slot. Slot should never contain a button tag.
+            -->
+            <slot></slot>
+          </a><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template>1.1.2 Managing applications with the console</rh-navigation-link>
+        <rh-navigation-link  role="listitem" hydrate-internals-role="listitem" href="#channels"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}#container{align-items:var(--_navigation-link-container-align-items,initial);block-size:var(--_navigation-link-container-block-size,auto);display:var(--_navigation-link-container-display,block);inline-size:var(--_navigation-link-container-inline-size,fit-content);padding:var(--_navigation-link-container-padding,initial);position:var(--_navigation-link-container-position,initial)}::slotted(a),a{align-content:var(--_navigation-link-align-content,initial);align-items:var(--_navigation-link-align-items,initial);background-color:var(--_navigation-link-background-color,#0000);block-size:var(--_navigation-link-block-size,auto);color:var(--_navigation-link-color,var(--rh-color-text-primary))!important;display:var(--_navigation-link-display,inline);font-size:var(--_navigation-link-font-size,1rem)!important;font-weight:var(--_navigation-link-font-weight,initial)!important;gap:var(--_navigation-link-gap,initial);inline-size:var(--_navigation-link-inline-size,auto);padding:var(--_navigation-link-padding,0);position:relative;text-decoration:var(--_navigation-link-text-decoration,none)!important}::slotted(a):before,a:before{border-inline-start:var(--_navigation-link-before-border-inline-start-width,0) solid var(--_navigation-link-before-border-inline-start-color,#0000);content:"";inset:0;position:absolute}::slotted(:is(a:hover,a:hover:focus-visible,:focus-visible,:active)),a:is(:hover,:hover:focus-visible,:focus-visible,:active){--_navigation-link-background-color:var(--_navigation-link-hover-background-color,light-dark(#0000,#0000))!important;--_navigation-link-color:var(--_navigation-link-color-hover,var(--rh-color-interactive-primary-hover))!important;text-decoration-color:var(--_navigation-link-text-decoration-color,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3)))!important;text-decoration-line:var(--_navigation-link-text-decoration-line,underline)!important;text-decoration-skip-ink:auto!important;text-decoration-style:var(--_navigation-link-text-decoration-style,dashed)!important;text-underline-offset:var(--_navigation-link-text-underline-offset,4px)!important}::slotted(a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active)),a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active){border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-interactive-primary-default);outline-offset:var(--_navigation-link-focus-outline-offset,0)}</style><!--lit-part VSLkVO1xlKQ=-->
+      <div id="container">
+        <!--lit-part cpkRDPxmW6E=-->
+          <!--lit-node 0--><a href="#channels" >
+            <!--
+              Use this slot when the `icon` and `icon-set` attributes are not set. 
+              Must be used in conjunction with the `href` attribute.  
+              Can contain a rh-icon, svg, or img tag.
+            -->
+            <slot name="icon">
+              <!--lit-part BRUAAAUVAAA=--><?><!--/lit-part-->
+            </slot>
+            <!--
+              The default slot should contain the link text when the `href` attribute is set. 
+              Alternatively, an anchor tag (`<a href="...">`) should be the first child inside
+              the slot. Slot should never contain a button tag.
+            -->
+            <slot></slot>
+          </a><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template>1.1.3 Channels</rh-navigation-link>
+        <rh-navigation-link  role="listitem" hydrate-internals-role="listitem" href="#subscriptions"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}#container{align-items:var(--_navigation-link-container-align-items,initial);block-size:var(--_navigation-link-container-block-size,auto);display:var(--_navigation-link-container-display,block);inline-size:var(--_navigation-link-container-inline-size,fit-content);padding:var(--_navigation-link-container-padding,initial);position:var(--_navigation-link-container-position,initial)}::slotted(a),a{align-content:var(--_navigation-link-align-content,initial);align-items:var(--_navigation-link-align-items,initial);background-color:var(--_navigation-link-background-color,#0000);block-size:var(--_navigation-link-block-size,auto);color:var(--_navigation-link-color,var(--rh-color-text-primary))!important;display:var(--_navigation-link-display,inline);font-size:var(--_navigation-link-font-size,1rem)!important;font-weight:var(--_navigation-link-font-weight,initial)!important;gap:var(--_navigation-link-gap,initial);inline-size:var(--_navigation-link-inline-size,auto);padding:var(--_navigation-link-padding,0);position:relative;text-decoration:var(--_navigation-link-text-decoration,none)!important}::slotted(a):before,a:before{border-inline-start:var(--_navigation-link-before-border-inline-start-width,0) solid var(--_navigation-link-before-border-inline-start-color,#0000);content:"";inset:0;position:absolute}::slotted(:is(a:hover,a:hover:focus-visible,:focus-visible,:active)),a:is(:hover,:hover:focus-visible,:focus-visible,:active){--_navigation-link-background-color:var(--_navigation-link-hover-background-color,light-dark(#0000,#0000))!important;--_navigation-link-color:var(--_navigation-link-color-hover,var(--rh-color-interactive-primary-hover))!important;text-decoration-color:var(--_navigation-link-text-decoration-color,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3)))!important;text-decoration-line:var(--_navigation-link-text-decoration-line,underline)!important;text-decoration-skip-ink:auto!important;text-decoration-style:var(--_navigation-link-text-decoration-style,dashed)!important;text-underline-offset:var(--_navigation-link-text-underline-offset,4px)!important}::slotted(a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active)),a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active){border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-interactive-primary-default);outline-offset:var(--_navigation-link-focus-outline-offset,0)}</style><!--lit-part VSLkVO1xlKQ=-->
+      <div id="container">
+        <!--lit-part cpkRDPxmW6E=-->
+          <!--lit-node 0--><a href="#subscriptions" >
+            <!--
+              Use this slot when the `icon` and `icon-set` attributes are not set. 
+              Must be used in conjunction with the `href` attribute.  
+              Can contain a rh-icon, svg, or img tag.
+            -->
+            <slot name="icon">
+              <!--lit-part BRUAAAUVAAA=--><?><!--/lit-part-->
+            </slot>
+            <!--
+              The default slot should contain the link text when the `href` attribute is set. 
+              Alternatively, an anchor tag (`<a href="...">`) should be the first child inside
+              the slot. Slot should never contain a button tag.
+            -->
+            <slot></slot>
+          </a><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template>1.1.4 Subscriptions</rh-navigation-link>
+        <rh-navigation-link  role="listitem" hydrate-internals-role="listitem" href="#placement-rules"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}#container{align-items:var(--_navigation-link-container-align-items,initial);block-size:var(--_navigation-link-container-block-size,auto);display:var(--_navigation-link-container-display,block);inline-size:var(--_navigation-link-container-inline-size,fit-content);padding:var(--_navigation-link-container-padding,initial);position:var(--_navigation-link-container-position,initial)}::slotted(a),a{align-content:var(--_navigation-link-align-content,initial);align-items:var(--_navigation-link-align-items,initial);background-color:var(--_navigation-link-background-color,#0000);block-size:var(--_navigation-link-block-size,auto);color:var(--_navigation-link-color,var(--rh-color-text-primary))!important;display:var(--_navigation-link-display,inline);font-size:var(--_navigation-link-font-size,1rem)!important;font-weight:var(--_navigation-link-font-weight,initial)!important;gap:var(--_navigation-link-gap,initial);inline-size:var(--_navigation-link-inline-size,auto);padding:var(--_navigation-link-padding,0);position:relative;text-decoration:var(--_navigation-link-text-decoration,none)!important}::slotted(a):before,a:before{border-inline-start:var(--_navigation-link-before-border-inline-start-width,0) solid var(--_navigation-link-before-border-inline-start-color,#0000);content:"";inset:0;position:absolute}::slotted(:is(a:hover,a:hover:focus-visible,:focus-visible,:active)),a:is(:hover,:hover:focus-visible,:focus-visible,:active){--_navigation-link-background-color:var(--_navigation-link-hover-background-color,light-dark(#0000,#0000))!important;--_navigation-link-color:var(--_navigation-link-color-hover,var(--rh-color-interactive-primary-hover))!important;text-decoration-color:var(--_navigation-link-text-decoration-color,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3)))!important;text-decoration-line:var(--_navigation-link-text-decoration-line,underline)!important;text-decoration-skip-ink:auto!important;text-decoration-style:var(--_navigation-link-text-decoration-style,dashed)!important;text-underline-offset:var(--_navigation-link-text-underline-offset,4px)!important}::slotted(a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active)),a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active){border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-interactive-primary-default);outline-offset:var(--_navigation-link-focus-outline-offset,0)}</style><!--lit-part VSLkVO1xlKQ=-->
+      <div id="container">
+        <!--lit-part cpkRDPxmW6E=-->
+          <!--lit-node 0--><a href="#placement-rules" >
+            <!--
+              Use this slot when the `icon` and `icon-set` attributes are not set. 
+              Must be used in conjunction with the `href` attribute.  
+              Can contain a rh-icon, svg, or img tag.
+            -->
+            <slot name="icon">
+              <!--lit-part BRUAAAUVAAA=--><?><!--/lit-part-->
+            </slot>
+            <!--
+              The default slot should contain the link text when the `href` attribute is set. 
+              Alternatively, an anchor tag (`<a href="...">`) should be the first child inside
+              the slot. Slot should never contain a button tag.
+            -->
+            <slot></slot>
+          </a><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template>1.1.5 Placement rules</rh-navigation-link>
+        <rh-navigation-vertical-list  role="listitem" hydrate-internals-role="listitem" summary="1.1.6 Application"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}details{& summary{cursor:pointer;display:flex;flex-direction:row;gap:var(--rh-space-lg,16px);justify-content:space-between;list-style:none;padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);position:relative;&::-webkit-details-marker,&::marker{display:none}&:is(:hover,:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}& ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-size:var(--rh-font-size-body-text-md,1rem)!important;font-weight:var(--rh-font-weight-body-text-regular,400)}& rh-icon{position:relative;transition:.2s;will-change:rotate}}&[open]{& rh-icon{transform:rotate(-180deg)}}& #subtree{display:flex;flex-direction:column;gap:var(--rh-space-xs,4px);margin-block:var(--rh-space-xs,4px) var(--_subtree-margin-block-end,var(--rh-space-md,8px));margin-inline-start:var(--rh-space-lg,16px)}}::slotted(rh-navigation-vertical-list){font-size:var(--rh-font-size-body-text-sm,.875rem);--_subtree-margin-block-end:0}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-sm,0.875rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}.highlight{& ::slotted(rh-navigation-link:first-child){--_navigation-link-font-weight:var(--rh-font-weight-body-text-medium,500)}}</style><!--lit-part u3Rqd3n54AE=-->
+      <!--lit-node 0--><details 
+        class="  "
+         
+        
+        >
+        <summary>
+          <!-- A summary slot for the group title, overrides the summary attribute -->
+          <slot name="summary"><!--lit-part-->1.1.6 Application<!--/lit-part--></slot>
+          <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" microns "><!--lit-part vJ13JnWXULs=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 5.29a.996.996 0 0 0-1.41 0l-7.29 7.29-7.3-7.29a.987.987 0 0 0-1.41-.02.987.987 0 0 0-.02 1.41l.02.02 7.65 7.65c.29.29.68.44 1.06.44s.77-.15 1.06-.44l7.65-7.65a.996.996 0 0 0 0-1.41Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        </summary>
+        <div id="subtree" role="list">
+          <!-- 
+            Use this slot for `<rh-navigation-link>` or `<rh-navigation-vertical-list>` elements.
+          -->
+          <slot></slot>
+        </div>
+      </details>
+      <!--/lit-part--></template>
+          <rh-navigation-link role="listitem" hydrate-internals-role="listitem"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}#container{align-items:var(--_navigation-link-container-align-items,initial);block-size:var(--_navigation-link-container-block-size,auto);display:var(--_navigation-link-container-display,block);inline-size:var(--_navigation-link-container-inline-size,fit-content);padding:var(--_navigation-link-container-padding,initial);position:var(--_navigation-link-container-position,initial)}::slotted(a),a{align-content:var(--_navigation-link-align-content,initial);align-items:var(--_navigation-link-align-items,initial);background-color:var(--_navigation-link-background-color,#0000);block-size:var(--_navigation-link-block-size,auto);color:var(--_navigation-link-color,var(--rh-color-text-primary))!important;display:var(--_navigation-link-display,inline);font-size:var(--_navigation-link-font-size,1rem)!important;font-weight:var(--_navigation-link-font-weight,initial)!important;gap:var(--_navigation-link-gap,initial);inline-size:var(--_navigation-link-inline-size,auto);padding:var(--_navigation-link-padding,0);position:relative;text-decoration:var(--_navigation-link-text-decoration,none)!important}::slotted(a):before,a:before{border-inline-start:var(--_navigation-link-before-border-inline-start-width,0) solid var(--_navigation-link-before-border-inline-start-color,#0000);content:"";inset:0;position:absolute}::slotted(:is(a:hover,a:hover:focus-visible,:focus-visible,:active)),a:is(:hover,:hover:focus-visible,:focus-visible,:active){--_navigation-link-background-color:var(--_navigation-link-hover-background-color,light-dark(#0000,#0000))!important;--_navigation-link-color:var(--_navigation-link-color-hover,var(--rh-color-interactive-primary-hover))!important;text-decoration-color:var(--_navigation-link-text-decoration-color,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3)))!important;text-decoration-line:var(--_navigation-link-text-decoration-line,underline)!important;text-decoration-skip-ink:auto!important;text-decoration-style:var(--_navigation-link-text-decoration-style,dashed)!important;text-underline-offset:var(--_navigation-link-text-underline-offset,4px)!important}::slotted(a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active)),a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active){border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-interactive-primary-default);outline-offset:var(--_navigation-link-focus-outline-offset,0)}</style><!--lit-part VSLkVO1xlKQ=-->
+      <div id="container">
+        <!--lit-part Pz0gobCCM4E=--><slot></slot><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template>
+            <a class="index-link" href="#application">Application</a>
+          </rh-navigation-link>
+          <rh-navigation-vertical-list  role="listitem" hydrate-internals-role="listitem" summary="1.1.6.1 Creating and managing channels"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}details{& summary{cursor:pointer;display:flex;flex-direction:row;gap:var(--rh-space-lg,16px);justify-content:space-between;list-style:none;padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);position:relative;&::-webkit-details-marker,&::marker{display:none}&:is(:hover,:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}& ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-size:var(--rh-font-size-body-text-md,1rem)!important;font-weight:var(--rh-font-weight-body-text-regular,400)}& rh-icon{position:relative;transition:.2s;will-change:rotate}}&[open]{& rh-icon{transform:rotate(-180deg)}}& #subtree{display:flex;flex-direction:column;gap:var(--rh-space-xs,4px);margin-block:var(--rh-space-xs,4px) var(--_subtree-margin-block-end,var(--rh-space-md,8px));margin-inline-start:var(--rh-space-lg,16px)}}::slotted(rh-navigation-vertical-list){font-size:var(--rh-font-size-body-text-sm,.875rem);--_subtree-margin-block-end:0}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-sm,0.875rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}.highlight{& ::slotted(rh-navigation-link:first-child){--_navigation-link-font-weight:var(--rh-font-weight-body-text-medium,500)}}</style><!--lit-part u3Rqd3n54AE=-->
+      <!--lit-node 0--><details 
+        class="  "
+         
+        
+        >
+        <summary>
+          <!-- A summary slot for the group title, overrides the summary attribute -->
+          <slot name="summary"><!--lit-part-->1.1.6.1 Creating and managing channels<!--/lit-part--></slot>
+          <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" microns "><!--lit-part vJ13JnWXULs=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 5.29a.996.996 0 0 0-1.41 0l-7.29 7.29-7.3-7.29a.987.987 0 0 0-1.41-.02.987.987 0 0 0-.02 1.41l.02.02 7.65 7.65c.29.29.68.44 1.06.44s.77-.15 1.06-.44l7.65-7.65a.996.996 0 0 0 0-1.41Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        </summary>
+        <div id="subtree" role="list">
+          <!-- 
+            Use this slot for `<rh-navigation-link>` or `<rh-navigation-vertical-list>` elements.
+          -->
+          <slot></slot>
+        </div>
+      </details>
+      <!--/lit-part--></template>
+            <rh-navigation-link role="listitem" hydrate-internals-role="listitem"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}#container{align-items:var(--_navigation-link-container-align-items,initial);block-size:var(--_navigation-link-container-block-size,auto);display:var(--_navigation-link-container-display,block);inline-size:var(--_navigation-link-container-inline-size,fit-content);padding:var(--_navigation-link-container-padding,initial);position:var(--_navigation-link-container-position,initial)}::slotted(a),a{align-content:var(--_navigation-link-align-content,initial);align-items:var(--_navigation-link-align-items,initial);background-color:var(--_navigation-link-background-color,#0000);block-size:var(--_navigation-link-block-size,auto);color:var(--_navigation-link-color,var(--rh-color-text-primary))!important;display:var(--_navigation-link-display,inline);font-size:var(--_navigation-link-font-size,1rem)!important;font-weight:var(--_navigation-link-font-weight,initial)!important;gap:var(--_navigation-link-gap,initial);inline-size:var(--_navigation-link-inline-size,auto);padding:var(--_navigation-link-padding,0);position:relative;text-decoration:var(--_navigation-link-text-decoration,none)!important}::slotted(a):before,a:before{border-inline-start:var(--_navigation-link-before-border-inline-start-width,0) solid var(--_navigation-link-before-border-inline-start-color,#0000);content:"";inset:0;position:absolute}::slotted(:is(a:hover,a:hover:focus-visible,:focus-visible,:active)),a:is(:hover,:hover:focus-visible,:focus-visible,:active){--_navigation-link-background-color:var(--_navigation-link-hover-background-color,light-dark(#0000,#0000))!important;--_navigation-link-color:var(--_navigation-link-color-hover,var(--rh-color-interactive-primary-hover))!important;text-decoration-color:var(--_navigation-link-text-decoration-color,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3)))!important;text-decoration-line:var(--_navigation-link-text-decoration-line,underline)!important;text-decoration-skip-ink:auto!important;text-decoration-style:var(--_navigation-link-text-decoration-style,dashed)!important;text-underline-offset:var(--_navigation-link-text-underline-offset,4px)!important}::slotted(a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active)),a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active){border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-interactive-primary-default);outline-offset:var(--_navigation-link-focus-outline-offset,0)}</style><!--lit-part VSLkVO1xlKQ=-->
+      <div id="container">
+        <!--lit-part Pz0gobCCM4E=--><slot></slot><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template>
+              <a class="index-link" href="#creating-and-managing-channels">Creating and managing channels</a>
+            </rh-navigation-link>
+            <rh-navigation-link  role="listitem" hydrate-internals-role="listitem" href="#creating-channels"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}#container{align-items:var(--_navigation-link-container-align-items,initial);block-size:var(--_navigation-link-container-block-size,auto);display:var(--_navigation-link-container-display,block);inline-size:var(--_navigation-link-container-inline-size,fit-content);padding:var(--_navigation-link-container-padding,initial);position:var(--_navigation-link-container-position,initial)}::slotted(a),a{align-content:var(--_navigation-link-align-content,initial);align-items:var(--_navigation-link-align-items,initial);background-color:var(--_navigation-link-background-color,#0000);block-size:var(--_navigation-link-block-size,auto);color:var(--_navigation-link-color,var(--rh-color-text-primary))!important;display:var(--_navigation-link-display,inline);font-size:var(--_navigation-link-font-size,1rem)!important;font-weight:var(--_navigation-link-font-weight,initial)!important;gap:var(--_navigation-link-gap,initial);inline-size:var(--_navigation-link-inline-size,auto);padding:var(--_navigation-link-padding,0);position:relative;text-decoration:var(--_navigation-link-text-decoration,none)!important}::slotted(a):before,a:before{border-inline-start:var(--_navigation-link-before-border-inline-start-width,0) solid var(--_navigation-link-before-border-inline-start-color,#0000);content:"";inset:0;position:absolute}::slotted(:is(a:hover,a:hover:focus-visible,:focus-visible,:active)),a:is(:hover,:hover:focus-visible,:focus-visible,:active){--_navigation-link-background-color:var(--_navigation-link-hover-background-color,light-dark(#0000,#0000))!important;--_navigation-link-color:var(--_navigation-link-color-hover,var(--rh-color-interactive-primary-hover))!important;text-decoration-color:var(--_navigation-link-text-decoration-color,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3)))!important;text-decoration-line:var(--_navigation-link-text-decoration-line,underline)!important;text-decoration-skip-ink:auto!important;text-decoration-style:var(--_navigation-link-text-decoration-style,dashed)!important;text-underline-offset:var(--_navigation-link-text-underline-offset,4px)!important}::slotted(a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active)),a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active){border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-interactive-primary-default);outline-offset:var(--_navigation-link-focus-outline-offset,0)}</style><!--lit-part VSLkVO1xlKQ=-->
+      <div id="container">
+        <!--lit-part cpkRDPxmW6E=-->
+          <!--lit-node 0--><a href="#creating-channels" >
+            <!--
+              Use this slot when the `icon` and `icon-set` attributes are not set. 
+              Must be used in conjunction with the `href` attribute.  
+              Can contain a rh-icon, svg, or img tag.
+            -->
+            <slot name="icon">
+              <!--lit-part BRUAAAUVAAA=--><?><!--/lit-part-->
+            </slot>
+            <!--
+              The default slot should contain the link text when the `href` attribute is set. 
+              Alternatively, an anchor tag (`<a href="...">`) should be the first child inside
+              the slot. Slot should never contain a button tag.
+            -->
+            <slot></slot>
+          </a><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template>1.1.6.1.1 Creating and managing channels</rh-navigation-link>
+            <rh-navigation-vertical-list  role="listitem" hydrate-internals-role="listitem" summary="1.1.6.1.2 Updating channel"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}details{& summary{cursor:pointer;display:flex;flex-direction:row;gap:var(--rh-space-lg,16px);justify-content:space-between;list-style:none;padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);position:relative;&::-webkit-details-marker,&::marker{display:none}&:is(:hover,:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}& ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-size:var(--rh-font-size-body-text-md,1rem)!important;font-weight:var(--rh-font-weight-body-text-regular,400)}& rh-icon{position:relative;transition:.2s;will-change:rotate}}&[open]{& rh-icon{transform:rotate(-180deg)}}& #subtree{display:flex;flex-direction:column;gap:var(--rh-space-xs,4px);margin-block:var(--rh-space-xs,4px) var(--_subtree-margin-block-end,var(--rh-space-md,8px));margin-inline-start:var(--rh-space-lg,16px)}}::slotted(rh-navigation-vertical-list){font-size:var(--rh-font-size-body-text-sm,.875rem);--_subtree-margin-block-end:0}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-sm,0.875rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}.highlight{& ::slotted(rh-navigation-link:first-child){--_navigation-link-font-weight:var(--rh-font-weight-body-text-medium,500)}}</style><!--lit-part u3Rqd3n54AE=-->
+      <!--lit-node 0--><details 
+        class="  "
+         
+        
+        >
+        <summary>
+          <!-- A summary slot for the group title, overrides the summary attribute -->
+          <slot name="summary"><!--lit-part-->1.1.6.1.2 Updating channel<!--/lit-part--></slot>
+          <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" microns "><!--lit-part vJ13JnWXULs=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 5.29a.996.996 0 0 0-1.41 0l-7.29 7.29-7.3-7.29a.987.987 0 0 0-1.41-.02.987.987 0 0 0-.02 1.41l.02.02 7.65 7.65c.29.29.68.44 1.06.44s.77-.15 1.06-.44l7.65-7.65a.996.996 0 0 0 0-1.41Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        </summary>
+        <div id="subtree" role="list">
+          <!-- 
+            Use this slot for `<rh-navigation-link>` or `<rh-navigation-vertical-list>` elements.
+          -->
+          <slot></slot>
+        </div>
+      </details>
+      <!--/lit-part--></template>
+              <rh-navigation-link role="listitem" hydrate-internals-role="listitem"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}#container{align-items:var(--_navigation-link-container-align-items,initial);block-size:var(--_navigation-link-container-block-size,auto);display:var(--_navigation-link-container-display,block);inline-size:var(--_navigation-link-container-inline-size,fit-content);padding:var(--_navigation-link-container-padding,initial);position:var(--_navigation-link-container-position,initial)}::slotted(a),a{align-content:var(--_navigation-link-align-content,initial);align-items:var(--_navigation-link-align-items,initial);background-color:var(--_navigation-link-background-color,#0000);block-size:var(--_navigation-link-block-size,auto);color:var(--_navigation-link-color,var(--rh-color-text-primary))!important;display:var(--_navigation-link-display,inline);font-size:var(--_navigation-link-font-size,1rem)!important;font-weight:var(--_navigation-link-font-weight,initial)!important;gap:var(--_navigation-link-gap,initial);inline-size:var(--_navigation-link-inline-size,auto);padding:var(--_navigation-link-padding,0);position:relative;text-decoration:var(--_navigation-link-text-decoration,none)!important}::slotted(a):before,a:before{border-inline-start:var(--_navigation-link-before-border-inline-start-width,0) solid var(--_navigation-link-before-border-inline-start-color,#0000);content:"";inset:0;position:absolute}::slotted(:is(a:hover,a:hover:focus-visible,:focus-visible,:active)),a:is(:hover,:hover:focus-visible,:focus-visible,:active){--_navigation-link-background-color:var(--_navigation-link-hover-background-color,light-dark(#0000,#0000))!important;--_navigation-link-color:var(--_navigation-link-color-hover,var(--rh-color-interactive-primary-hover))!important;text-decoration-color:var(--_navigation-link-text-decoration-color,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3)))!important;text-decoration-line:var(--_navigation-link-text-decoration-line,underline)!important;text-decoration-skip-ink:auto!important;text-decoration-style:var(--_navigation-link-text-decoration-style,dashed)!important;text-underline-offset:var(--_navigation-link-text-underline-offset,4px)!important}::slotted(a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active)),a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active){border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-interactive-primary-default);outline-offset:var(--_navigation-link-focus-outline-offset,0)}</style><!--lit-part VSLkVO1xlKQ=-->
+      <div id="container">
+        <!--lit-part Pz0gobCCM4E=--><slot></slot><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template>
+                <a class="index-link" href="#updating-channel">Updating channel</a>
+              </rh-navigation-link>
+              <rh-navigation-link  role="listitem" hydrate-internals-role="listitem" href="#deleting-channel"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}#container{align-items:var(--_navigation-link-container-align-items,initial);block-size:var(--_navigation-link-container-block-size,auto);display:var(--_navigation-link-container-display,block);inline-size:var(--_navigation-link-container-inline-size,fit-content);padding:var(--_navigation-link-container-padding,initial);position:var(--_navigation-link-container-position,initial)}::slotted(a),a{align-content:var(--_navigation-link-align-content,initial);align-items:var(--_navigation-link-align-items,initial);background-color:var(--_navigation-link-background-color,#0000);block-size:var(--_navigation-link-block-size,auto);color:var(--_navigation-link-color,var(--rh-color-text-primary))!important;display:var(--_navigation-link-display,inline);font-size:var(--_navigation-link-font-size,1rem)!important;font-weight:var(--_navigation-link-font-weight,initial)!important;gap:var(--_navigation-link-gap,initial);inline-size:var(--_navigation-link-inline-size,auto);padding:var(--_navigation-link-padding,0);position:relative;text-decoration:var(--_navigation-link-text-decoration,none)!important}::slotted(a):before,a:before{border-inline-start:var(--_navigation-link-before-border-inline-start-width,0) solid var(--_navigation-link-before-border-inline-start-color,#0000);content:"";inset:0;position:absolute}::slotted(:is(a:hover,a:hover:focus-visible,:focus-visible,:active)),a:is(:hover,:hover:focus-visible,:focus-visible,:active){--_navigation-link-background-color:var(--_navigation-link-hover-background-color,light-dark(#0000,#0000))!important;--_navigation-link-color:var(--_navigation-link-color-hover,var(--rh-color-interactive-primary-hover))!important;text-decoration-color:var(--_navigation-link-text-decoration-color,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3)))!important;text-decoration-line:var(--_navigation-link-text-decoration-line,underline)!important;text-decoration-skip-ink:auto!important;text-decoration-style:var(--_navigation-link-text-decoration-style,dashed)!important;text-underline-offset:var(--_navigation-link-text-underline-offset,4px)!important}::slotted(a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active)),a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active){border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-interactive-primary-default);outline-offset:var(--_navigation-link-focus-outline-offset,0)}</style><!--lit-part VSLkVO1xlKQ=-->
+      <div id="container">
+        <!--lit-part cpkRDPxmW6E=-->
+          <!--lit-node 0--><a href="#deleting-channel" >
+            <!--
+              Use this slot when the `icon` and `icon-set` attributes are not set. 
+              Must be used in conjunction with the `href` attribute.  
+              Can contain a rh-icon, svg, or img tag.
+            -->
+            <slot name="icon">
+              <!--lit-part BRUAAAUVAAA=--><?><!--/lit-part-->
+            </slot>
+            <!--
+              The default slot should contain the link text when the `href` attribute is set. 
+              Alternatively, an anchor tag (`<a href="...">`) should be the first child inside
+              the slot. Slot should never contain a button tag.
+            -->
+            <slot></slot>
+          </a><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template>1.1.6.1.2.1 Deleting channel</rh-navigation-link>
+            </rh-navigation-vertical-list>
+            <rh-navigation-link  role="listitem" hydrate-internals-role="listitem" href="#managing-deployments-with-channels"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}#container{align-items:var(--_navigation-link-container-align-items,initial);block-size:var(--_navigation-link-container-block-size,auto);display:var(--_navigation-link-container-display,block);inline-size:var(--_navigation-link-container-inline-size,fit-content);padding:var(--_navigation-link-container-padding,initial);position:var(--_navigation-link-container-position,initial)}::slotted(a),a{align-content:var(--_navigation-link-align-content,initial);align-items:var(--_navigation-link-align-items,initial);background-color:var(--_navigation-link-background-color,#0000);block-size:var(--_navigation-link-block-size,auto);color:var(--_navigation-link-color,var(--rh-color-text-primary))!important;display:var(--_navigation-link-display,inline);font-size:var(--_navigation-link-font-size,1rem)!important;font-weight:var(--_navigation-link-font-weight,initial)!important;gap:var(--_navigation-link-gap,initial);inline-size:var(--_navigation-link-inline-size,auto);padding:var(--_navigation-link-padding,0);position:relative;text-decoration:var(--_navigation-link-text-decoration,none)!important}::slotted(a):before,a:before{border-inline-start:var(--_navigation-link-before-border-inline-start-width,0) solid var(--_navigation-link-before-border-inline-start-color,#0000);content:"";inset:0;position:absolute}::slotted(:is(a:hover,a:hover:focus-visible,:focus-visible,:active)),a:is(:hover,:hover:focus-visible,:focus-visible,:active){--_navigation-link-background-color:var(--_navigation-link-hover-background-color,light-dark(#0000,#0000))!important;--_navigation-link-color:var(--_navigation-link-color-hover,var(--rh-color-interactive-primary-hover))!important;text-decoration-color:var(--_navigation-link-text-decoration-color,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3)))!important;text-decoration-line:var(--_navigation-link-text-decoration-line,underline)!important;text-decoration-skip-ink:auto!important;text-decoration-style:var(--_navigation-link-text-decoration-style,dashed)!important;text-underline-offset:var(--_navigation-link-text-underline-offset,4px)!important}::slotted(a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active)),a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active){border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-interactive-primary-default);outline-offset:var(--_navigation-link-focus-outline-offset,0)}</style><!--lit-part VSLkVO1xlKQ=-->
+      <div id="container">
+        <!--lit-part cpkRDPxmW6E=-->
+          <!--lit-node 0--><a href="#managing-deployments-with-channels" >
+            <!--
+              Use this slot when the `icon` and `icon-set` attributes are not set. 
+              Must be used in conjunction with the `href` attribute.  
+              Can contain a rh-icon, svg, or img tag.
+            -->
+            <slot name="icon">
+              <!--lit-part BRUAAAUVAAA=--><?><!--/lit-part-->
+            </slot>
+            <!--
+              The default slot should contain the link text when the `href` attribute is set. 
+              Alternatively, an anchor tag (`<a href="...">`) should be the first child inside
+              the slot. Slot should never contain a button tag.
+            -->
+            <slot></slot>
+          </a><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template>1.1.6.1.3 Managing deployments with channels</rh-navigation-link>
+          </rh-navigation-vertical-list>
+        </rh-navigation-vertical-list>
+      </rh-navigation-vertical-list>
+    </rh-navigation-vertical-list>
+    <rh-navigation-link  role="listitem" hydrate-internals-role="listitem" href="#legal-notice"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}#container{align-items:var(--_navigation-link-container-align-items,initial);block-size:var(--_navigation-link-container-block-size,auto);display:var(--_navigation-link-container-display,block);inline-size:var(--_navigation-link-container-inline-size,fit-content);padding:var(--_navigation-link-container-padding,initial);position:var(--_navigation-link-container-position,initial)}::slotted(a),a{align-content:var(--_navigation-link-align-content,initial);align-items:var(--_navigation-link-align-items,initial);background-color:var(--_navigation-link-background-color,#0000);block-size:var(--_navigation-link-block-size,auto);color:var(--_navigation-link-color,var(--rh-color-text-primary))!important;display:var(--_navigation-link-display,inline);font-size:var(--_navigation-link-font-size,1rem)!important;font-weight:var(--_navigation-link-font-weight,initial)!important;gap:var(--_navigation-link-gap,initial);inline-size:var(--_navigation-link-inline-size,auto);padding:var(--_navigation-link-padding,0);position:relative;text-decoration:var(--_navigation-link-text-decoration,none)!important}::slotted(a):before,a:before{border-inline-start:var(--_navigation-link-before-border-inline-start-width,0) solid var(--_navigation-link-before-border-inline-start-color,#0000);content:"";inset:0;position:absolute}::slotted(:is(a:hover,a:hover:focus-visible,:focus-visible,:active)),a:is(:hover,:hover:focus-visible,:focus-visible,:active){--_navigation-link-background-color:var(--_navigation-link-hover-background-color,light-dark(#0000,#0000))!important;--_navigation-link-color:var(--_navigation-link-color-hover,var(--rh-color-interactive-primary-hover))!important;text-decoration-color:var(--_navigation-link-text-decoration-color,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3)))!important;text-decoration-line:var(--_navigation-link-text-decoration-line,underline)!important;text-decoration-skip-ink:auto!important;text-decoration-style:var(--_navigation-link-text-decoration-style,dashed)!important;text-underline-offset:var(--_navigation-link-text-underline-offset,4px)!important}::slotted(a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active)),a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active){border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-interactive-primary-default);outline-offset:var(--_navigation-link-focus-outline-offset,0)}</style><!--lit-part VSLkVO1xlKQ=-->
+      <div id="container">
+        <!--lit-part cpkRDPxmW6E=-->
+          <!--lit-node 0--><a href="#legal-notice" >
+            <!--
+              Use this slot when the `icon` and `icon-set` attributes are not set. 
+              Must be used in conjunction with the `href` attribute.  
+              Can contain a rh-icon, svg, or img tag.
+            -->
+            <slot name="icon">
+              <!--lit-part BRUAAAUVAAA=--><?><!--/lit-part-->
+            </slot>
+            <!--
+              The default slot should contain the link text when the `href` attribute is set. 
+              Alternatively, an anchor tag (`<a href="...">`) should be the first child inside
+              the slot. Slot should never contain a button tag.
+            -->
+            <slot></slot>
+          </a><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template>Legal Notice</rh-navigation-link>
+  </rh-navigation-vertical>
+</rh-context-demo>
+
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-navigation-vertical/rh-navigation-vertical-lightdom.css">
+
+
+<style>
+  .index-link {
+    font-weight: 600;
+  }
+</style>
+
+<script type="module">
+    import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+    import '@rhds/elements/rh-navigation-vertical/rh-navigation-vertical.js';
+</script>
+
+
+</body></html>

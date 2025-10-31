@@ -32,6 +32,7 @@
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.4/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -94,9 +95,8 @@
     <p>Scroll down or press tab to see the back to top button</p>
     <a id="bottom" href="#top">Go to top</a>
   <div>
-</div></div></rh-context-demo>
 
-<rh-back-to-top  href="#top"><template shadowroot="open" shadowrootmode="open"><style>:host{inset-block-end:var(--rh-space-xl,24px);inset-inline-end:var(--rh-space-xl,24px);position:fixed;z-index:1000}[part=trigger]{align-items:center;background-color:var(--rh-back-to-top-background-color,var(--rh-color-accent-base-on-light,#06c));border:var(--rh-border-width-md,2px) solid #0000;border-radius:var(--rh-border-radius-pill,64px);color:var(--rh-color-text-primary-on-dark,#fff);display:inline-flex;font-size:var(--rh-font-size-body-text-xs,.75rem);gap:var(--rh-space-xs,4px);justify-content:center;line-height:var(--rh-line-height-body-text,1.5);outline:var(--rh-border-width-md,2px) solid #0000;padding-block:var(--rh-space-xs,4px);padding-inline:var(--rh-space-md,8px);pointer-events:all;text-decoration:none}[part=trigger]:is(:hover,:focus){background-color:var(--rh-color-interactive-primary-hover-on-light,#036);border:var(--rh-border-width-md,2px) solid var(--rh-color-border-strong-on-dark,#fff);outline:var(--rh-border-width-md,2px) solid var(--rh-color-interactive-primary-hover-on-light,#036)}[part=trigger][hidden]{display:none}rh-icon{--rh-icon-size:var(--rh-font-size-body-text-xs,0.75rem);vertical-align:-.125rem}span{align-items:center;display:inline-flex;gap:var(--rh-space-xs,4px);justify-content:center}@media (min-width:768px){:host{inset-block-end:var(--rh-space-3xl,48px);inset-inline-end:var(--rh-space-3xl,48px)}}</style><!--lit-part Jvo8EGLpPPY=-->
+  <rh-back-to-top  href="#top"><template shadowroot="open" shadowrootmode="open"><style>:host{inset-block-end:var(--rh-space-xl,24px);inset-inline-end:var(--rh-space-xl,24px);position:fixed;z-index:1000}[part=trigger]{align-items:center;background-color:var(--rh-back-to-top-background-color,var(--rh-color-accent-base));border:var(--rh-border-width-md,2px) solid #0000;border-radius:var(--rh-border-radius-pill,64px);color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));display:inline-flex;font-size:var(--rh-font-size-body-text-xs,.75rem);gap:var(--rh-space-xs,4px);justify-content:center;line-height:var(--rh-line-height-body-text,1.5);outline:var(--rh-border-width-md,2px) solid #0000;padding-block:var(--rh-space-xs,4px);padding-inline:var(--rh-space-md,8px);pointer-events:all;text-decoration:none}[part=trigger]:is(:hover,:focus){background-color:var(--rh-color-interactive-primary-hover);border:var(--rh-border-width-md,2px) solid light-dark(var(--rh-color-border-strong-on-dark,#fff),var(--rh-color-border-strong-on-light,#151515));outline:var(--rh-border-width-md,2px) solid var(--rh-color-interactive-primary-hover)}[part=trigger][hidden]{display:none}rh-icon{--rh-icon-size:var(--rh-font-size-body-text-xs,0.75rem);vertical-align:-.125rem}span{align-items:center;display:inline-flex;gap:var(--rh-space-xs,4px);justify-content:center}@media (min-width:768px){:host{inset-block-end:var(--rh-space-3xl,48px);inset-inline-end:var(--rh-space-3xl,48px)}}</style><!--lit-part Jvo8EGLpPPY=-->
       <!-- back to top link anchor element -->
       <!--lit-node 1--><a href="#top" hidden part="trigger">
         <!-- Text for the back to top link -->
@@ -104,7 +104,7 @@
         <!--lit-node 4--><rh-icon   set="ui" icon="caret-up" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
-           class=" ui "><!--lit-part YhnjOOcYIfc=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30 23a.997.997 0 0 1-.707-.293L16 9.414 2.707 22.707a1 1 0 1 1-1.414-1.414L14.939 7.647a1.501 1.501 0 0 1 2.122 0l13.646 13.646A1 1 0 0 1 30 23Z"/></svg><!--/lit-part--><!--
+           class=" ui "><!--lit-part W69xz2nd3h4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29 22a.997.997 0 0 1-.707-.293L16 9.414 3.707 21.707a.999.999 0 1 1-1.414-1.414L14.939 7.646a1.501 1.501 0 0 1 2.121 0l12.646 12.646a.999.999 0 0 1-.707 1.707Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
           Slotted content is used as a fallback in case the icon doesn't load
@@ -113,6 +113,8 @@
     <!--/lit-part--></template></rh-icon>
       </a>
     <!--/lit-part--></template>Back to top</rh-back-to-top>
+</div></div></rh-context-demo>
+
 
 <script type="module">
   import '@rhds/elements/rh-back-to-top/rh-back-to-top.js';
@@ -120,22 +122,6 @@
 </script>
 
 <style>
-  a {
-    color: var(--rh-color-interactive-blue-darker, #0066cc);
-  }
-
-  a:is(:hover,:focus) {
-    color: var(--rh-color-interactive-blue-darkest, #003366);
-  }
-
-  [color-palette^="dark"] a {
-    color: var(--rh-color-accent-base-on-dark, #92c5f9);
-  }
-
-  [color-palette^="dark"] a:is(:hover,:focus) {
-    color: var(--rh-color-interactive-blue-lightest, #b9dafc);
-  }
-
   main {
     display: block;
     scroll-behavior: smooth;

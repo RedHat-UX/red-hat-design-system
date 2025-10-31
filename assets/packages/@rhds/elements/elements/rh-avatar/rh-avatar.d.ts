@@ -23,12 +23,14 @@ export declare class RhAvatar extends LitElement {
     name?: string;
     /** The auxiliary information about the user, e.g. job title */
     subtitle?: string;
-    /** The type of pattern to display. */
+    /** Places avatar on the left or on top of the text. */
     layout?: 'inline' | 'block';
     /** The type of pattern to display. */
     pattern?: 'squares' | 'triangles';
     /** When true, hides the title and subtitle */
     plain: boolean;
+    /** Adds a subtle border to the avatar image */
+    variant?: 'bordered';
     connectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
     updated(changed: PropertyValues<this>): Promise<void>;

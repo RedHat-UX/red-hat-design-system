@@ -408,7 +408,7 @@ export const tokens = new TokenMap({
     "--rh-color-status-success": "light-dark(var(--rh-color-status-success-on-light, #3d7317), var(--rh-color-status-success-on-dark, #87bb62))",
     "--rh-color-status-success-on-light": "#3d7317",
     "--rh-color-status-success-on-dark": "#87bb62",
-    "--rh-color-surface": "light-dark(var(--rh-color-surface-lightest, #ffffff), var(--rh-color-surface-lighter, #f2f2f2))",
+    "--rh-color-surface": "light-dark(var(--rh-color-surface-lightest, #ffffff), var(--rh-color-surface-darkest, #151515))",
     "--rh-color-surface-lightest": "#ffffff",
     "--rh-color-surface-lighter": "#f2f2f2",
     "--rh-color-surface-light": "#e0e0e0",

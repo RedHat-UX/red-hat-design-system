@@ -1,0 +1,232 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
+    <title>In Nav Secondary | Red Hat Design System</title>
+
+    <link rel="preconnect" href="https://ga.jspm.io">
+
+    <link rel="stylesheet" href="/styles/demo/styles.css" media="all">
+
+    <script type="importmap">{
+  "imports": {
+    "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
+    "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
+    "lit-html": "/assets/packages/lit-html/lit-html.js",
+    "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
+    "lit-element": "/assets/packages/lit-element/index.js",
+    "prism-esm": "/assets/packages/prism-esm/prism.js",
+    "lit": "/assets/packages/lit/index.js",
+    "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
+    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
+    "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
+    "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "@lit/context": "/assets/packages/@lit/context/index.js",
+    "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.4/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
+    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
+    "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
+    "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
+    "lit/": "/assets/packages/lit/",
+    "lit-html/": "/assets/packages/lit-html/",
+    "prism-esm/": "/assets/packages/prism-esm/",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js",
+    "@rhds/tokens/css/": "/assets/packages/@rhds/tokens/css/",
+    "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
+    "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
+    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons": "/assets/packages/@rhds/icons/icons.js",
+    "@rhds/icons/": "/assets/packages/@rhds/icons/",
+    "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
+    "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
+    "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
+    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "@uxdot/elements/": "/assets/packages/@uxdot/elements/"
+  },
+  "scopes": {
+    "/assets/packages/": {
+      "@floating-ui/utils": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.10/dist/floating-ui.utils.mjs",
+      "@floating-ui/utils/dom": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.10/dist/floating-ui.utils.dom.mjs",
+      "@lit/reactive-element/decorators/": "/assets/packages/@lit/reactive-element/decorators/",
+      "lit-element/lit-element.js": "/assets/packages/lit-element/lit-element.js",
+      "lit-html/": "/assets/packages/lit-html/",
+      "lit/": "/assets/packages/lit/"
+    }
+  }
+}</script>
+
+    
+      <script type="module">
+    // although we load these ssr support modules elsewhere, we still
+    // need them here to ensure no double-rendering on webkit
+    import '/assets/javascript/ssr-support.js';
+    // include these, which are often internal to elements,
+    // and are definitely required by context-picker and context-demo
+    // to avoid SSR defer-hydration bugs and SSR double-rendering bugs
+    import '@rhds/elements/rh-icon/rh-icon.js';
+    import '@rhds/elements/rh-surface/rh-surface.js';
+    import '@rhds/elements/rh-button/rh-button.js';
+    import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+    import '@rhds/elements/rh-tag/rh-tag.js';
+  </script>
+
+
+    <script type="module">
+      // load up the demo and picker
+      import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+      import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+    </script>
+
+    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
+  </head>
+  <body><rh-navigation-secondary role="navigation" hydrate-internals-role="navigation" color-palette="lighter"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{--_chevron-size:calc(var(--rh-font-size-body-text-md, 1rem)*0.35);--_chevron-thickness:calc(var(--rh-font-size-body-text-md, 1rem)*0.125);--_chevron-up:45deg;--_chevron-down:-135deg;--_chevron-correction-x:calc(var(--rh-font-size-body-text-md, 1rem)*-1/16);--_chevron-correction-y:calc(var(--rh-font-size-body-text-md, 1rem)*-1/16);--_chevron-color:var(--rh-color-text-primary);--_chevron-transform-collapsed:rotate(var(--_chevron-up)) translate(var(--_chevron-correction-x),var(--_chevron-correction-x));--_chevron-transform-expanded:rotate(var(--_chevron-down)) translate(var(--_chevron-correction-y),var(--_chevron-correction-y));--_button-font-color:var(--rh-color-text-primary);--_nav-max-height:var(--_max-height,max-content);--_nav-min-height:var(--_min-height,80px);--_current-active-child-border-color:var(--rh-color-brand-red);--_border-color:light-dark(#0000,var(--rh-color-border-subtle));z-index:var(--rh-navigation-secondary-z-index,102)}:host(:dir(rtl)){--_chevron-transform-collapsed:rotate(calc(var(--_chevron-up)*-1)) translate(calc(var(--_chevron-correction-y)*1),var(--_chevron-correction-y));--_chevron-transform-expanded:rotate(calc(var(--_chevron-down)*-1)) translate(calc(var(--_chevron-correction-x)*1),var(--_chevron-correction-x))}#container,nav{z-index:var(--rh-navigation-secondary-z-index,102)}#container{background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));border-block-end:var(--rh-border-width-sm,1px) solid var(--_border-color);display:grid;gap:0 var(--rh-space-lg,16px);grid-template-areas:"logo menu" "main main";grid-template-columns:1fr max-content;grid-template-rows:minmax(var(--_nav-min-height),var(--_nav-max-height)) max-content max-content;height:fit-content;max-height:100vh;min-height:100%;overflow-y:auto;position:absolute;width:100%}rh-surface{display:flex;flex-direction:column;grid-area:main;height:100%;width:100%}::slotted([slot=cta]),::slotted([slot=nav]){grid-area:unset!important}#container.expanded ::slotted([slot=cta]),#container.expanded ::slotted([slot=nav]){display:flex!important}#container.expanded ::slotted([slot=nav]){flex-direction:column;list-style:none;margin:0!important;padding:2rem 1rem 0;padding:var(--rh-space-2xl,32px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px)}#container.expanded ::slotted([slot=cta]){padding:2rem 1rem}button{align-items:center;background-color:var(--rh-color-surface);border:none;border-block-start:var(--rh-border-width-lg,3px) solid #0000;color:var(--_button-font-color);display:flex;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);gap:var(--rh-space-md,8px);grid-area:menu;height:100%;margin-inline-end:var(--rh-space-lg,16px);padding:var(--rh-space-lg,16px)}button:hover{border-block-start-color:var(--rh-color-text-brand-on-light,#e00)}button:after{border-block-end:var(--_chevron-thickness) solid var(--_chevron-color);border-inline-end:var(--_chevron-thickness) solid var(--_chevron-color);box-sizing:initial!important;content:"";display:block;height:var(--_chevron-size);transform:var(--_chevron-transform-collapsed);width:var(--_chevron-size)}button[aria-expanded=true]:after{transform:var(--_chevron-transform-expanded)}button:focus{border-block-start-color:var(--rh-color-text-brand-on-light,#e00)}:host([color-palette=dark]) button{background-color:var(--rh-color-surface)}:host([color-palette=dark]) button[aria-expanded=true],button:active,button[aria-expanded=true]{--_chevron-color:var(--rh-color-text-primary-on-light,#151515);background-color:var(--rh-color-surface-lightest,#fff);border-block-end:none;border-block-start-color:var(--rh-color-text-brand-on-light,#e00);color:var(--rh-color-text-primary-on-light,#151515)}:host([color-palette=dark]) button:active{color:var(--rh-color-text-primary-on-dark,#fff)}:host([color-palette=dark]) button[aria-expanded=true]:active{color:var(--rh-color-text-primary-on-light,#151515)}@media screen and (min-width:768px){button{margin-inline-end:var(--rh-space-2xl,32px)}#container.expanded ::slotted([slot=nav]){padding:var(--rh-space-2xl,32px) var(--rh-space-2xl,32px) 0!important}#container.expanded ::slotted([slot=cta]){padding:var(--rh-space-2xl,32px)!important}}@media screen and (min-width:992px){:host{--_min-height:86px}#container{grid-template-areas:"logo main";grid-template-columns:max-content 1fr;grid-template-rows:auto;height:100%;max-height:none;overflow-y:initial}rh-surface{flex-direction:row;justify-content:space-between}#container.expanded ::slotted([slot=nav]){max-height:calc(100vh - var(--_nav-min-height))}button{display:none}}</style><!--lit-part /zCyLxLp3Bc=-->
+      <!-- container, `<nav>` element -->
+      <!--lit-node 1--><div part="nav"
+           class="  ">
+        <!--lit-part--><!--/lit-part-->
+        <!-- container, `<div>` element -->
+        <!--lit-node 4--><div id="container" part="container" class="  ">
+          <!-- Logo added to the main nav bar, expects `<a>Text</a> | <a><svg/></a> | <a><img/></a>` element -->
+          <slot name="logo" id="logo"></slot>
+          <!--lit-node 7--><button aria-controls="container"
+                  aria-expanded="false"
+                  ><!--
+            Text label for the mobile menu button, for l10n. Defaults to "Menu"
+          --><slot name="mobile-menu">Menu</slot></button>
+          <!--lit-node 10--><rh-surface  color-palette="lighter" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{background-color:var(--rh-color-surface);color:var(--rh-color-text-primary);display:block}</style><!--lit-part rmWB4uiS0UM=--><!--
+      The `<rh-surface>` element has a single anonymous slot which accepts any content and does not provide additional layout styling
+    --><!--lit-node 1--><slot id="slot" ></slot><!--/lit-part--></template>
+            <!-- Navigation list added to the main nav bar, expects `<ul>` element -->
+            <slot name="nav"></slot>
+            <!-- container, `<div>` element -->
+            <div id="cta" part="cta">
+              <!-- Nav bar level CTA, expects `<rh-cta>` element -->
+              <slot name="cta"></slot>
+            </div>
+          </rh-surface>
+        </div>
+      </div>
+      <!--lit-node 17--><rh-navigation-secondary-overlay
+          
+          
+       defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{background-color:rgb(from var(--rh-color-gray-90,#1f1f1f) r g b/var(--rh-opacity-80,80%));height:100vh;position:fixed;top:0;width:100vw;z-index:var(--rh-navigation-secondary-overlay-z-index,var(--rh-secondary-nav-overlay-z-index,-1))}:host([open]){display:block}:host(:not([open])){display:none}</style><!--lit-part--><!--/lit-part--></template></rh-navigation-secondary-overlay>
+    <!--/lit-part--></template>
+   <ul slot="nav" aria-labelledby="logo-id">
+    <li><rh-navigation-link   role="listitem" hydrate-internals-role="listitem" href="#link" slot="links"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}#container{align-items:var(--_navigation-link-container-align-items,initial);block-size:var(--_navigation-link-container-block-size,auto);display:var(--_navigation-link-container-display,block);inline-size:var(--_navigation-link-container-inline-size,fit-content);padding:var(--_navigation-link-container-padding,initial);position:var(--_navigation-link-container-position,initial)}::slotted(a),a{align-content:var(--_navigation-link-align-content,initial);align-items:var(--_navigation-link-align-items,initial);background-color:var(--_navigation-link-background-color,#0000);block-size:var(--_navigation-link-block-size,auto);color:var(--_navigation-link-color,var(--rh-color-text-primary))!important;display:var(--_navigation-link-display,inline);font-size:var(--_navigation-link-font-size,1rem)!important;font-weight:var(--_navigation-link-font-weight,initial)!important;gap:var(--_navigation-link-gap,initial);inline-size:var(--_navigation-link-inline-size,auto);padding:var(--_navigation-link-padding,0);position:relative;text-decoration:var(--_navigation-link-text-decoration,none)!important}::slotted(a):before,a:before{border-inline-start:var(--_navigation-link-before-border-inline-start-width,0) solid var(--_navigation-link-before-border-inline-start-color,#0000);content:"";inset:0;position:absolute}::slotted(:is(a:hover,a:hover:focus-visible,:focus-visible,:active)),a:is(:hover,:hover:focus-visible,:focus-visible,:active){--_navigation-link-background-color:var(--_navigation-link-hover-background-color,light-dark(#0000,#0000))!important;--_navigation-link-color:var(--_navigation-link-color-hover,var(--rh-color-interactive-primary-hover))!important;text-decoration-color:var(--_navigation-link-text-decoration-color,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3)))!important;text-decoration-line:var(--_navigation-link-text-decoration-line,underline)!important;text-decoration-skip-ink:auto!important;text-decoration-style:var(--_navigation-link-text-decoration-style,dashed)!important;text-underline-offset:var(--_navigation-link-text-underline-offset,4px)!important}::slotted(a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active)),a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active){border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-interactive-primary-default);outline-offset:var(--_navigation-link-focus-outline-offset,0)}</style><!--lit-part VSLkVO1xlKQ=-->
+      <div id="container">
+        <!--lit-part cpkRDPxmW6E=-->
+          <!--lit-node 0--><a href="#link" >
+            <!--
+              Use this slot when the `icon` and `icon-set` attributes are not set. 
+              Must be used in conjunction with the `href` attribute.  
+              Can contain a rh-icon, svg, or img tag.
+            -->
+            <slot name="icon">
+              <!--lit-part BRUAAAUVAAA=--><?><!--/lit-part-->
+            </slot>
+            <!--
+              The default slot should contain the link text when the `href` attribute is set. 
+              Alternatively, an anchor tag (`<a href="...">`) should be the first child inside
+              the slot. Slot should never contain a button tag.
+            -->
+            <slot></slot>
+          </a><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template>AI</rh-navigation-link></li>
+    <li><rh-navigation-link   role="listitem" hydrate-internals-role="listitem" href="#link-2" slot="links"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}#container{align-items:var(--_navigation-link-container-align-items,initial);block-size:var(--_navigation-link-container-block-size,auto);display:var(--_navigation-link-container-display,block);inline-size:var(--_navigation-link-container-inline-size,fit-content);padding:var(--_navigation-link-container-padding,initial);position:var(--_navigation-link-container-position,initial)}::slotted(a),a{align-content:var(--_navigation-link-align-content,initial);align-items:var(--_navigation-link-align-items,initial);background-color:var(--_navigation-link-background-color,#0000);block-size:var(--_navigation-link-block-size,auto);color:var(--_navigation-link-color,var(--rh-color-text-primary))!important;display:var(--_navigation-link-display,inline);font-size:var(--_navigation-link-font-size,1rem)!important;font-weight:var(--_navigation-link-font-weight,initial)!important;gap:var(--_navigation-link-gap,initial);inline-size:var(--_navigation-link-inline-size,auto);padding:var(--_navigation-link-padding,0);position:relative;text-decoration:var(--_navigation-link-text-decoration,none)!important}::slotted(a):before,a:before{border-inline-start:var(--_navigation-link-before-border-inline-start-width,0) solid var(--_navigation-link-before-border-inline-start-color,#0000);content:"";inset:0;position:absolute}::slotted(:is(a:hover,a:hover:focus-visible,:focus-visible,:active)),a:is(:hover,:hover:focus-visible,:focus-visible,:active){--_navigation-link-background-color:var(--_navigation-link-hover-background-color,light-dark(#0000,#0000))!important;--_navigation-link-color:var(--_navigation-link-color-hover,var(--rh-color-interactive-primary-hover))!important;text-decoration-color:var(--_navigation-link-text-decoration-color,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3)))!important;text-decoration-line:var(--_navigation-link-text-decoration-line,underline)!important;text-decoration-skip-ink:auto!important;text-decoration-style:var(--_navigation-link-text-decoration-style,dashed)!important;text-underline-offset:var(--_navigation-link-text-underline-offset,4px)!important}::slotted(a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active)),a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active){border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-interactive-primary-default);outline-offset:var(--_navigation-link-focus-outline-offset,0)}</style><!--lit-part VSLkVO1xlKQ=-->
+      <div id="container">
+        <!--lit-part cpkRDPxmW6E=-->
+          <!--lit-node 0--><a href="#link-2" >
+            <!--
+              Use this slot when the `icon` and `icon-set` attributes are not set. 
+              Must be used in conjunction with the `href` attribute.  
+              Can contain a rh-icon, svg, or img tag.
+            -->
+            <slot name="icon">
+              <!--lit-part BRUAAAUVAAA=--><?><!--/lit-part-->
+            </slot>
+            <!--
+              The default slot should contain the link text when the `href` attribute is set. 
+              Alternatively, an anchor tag (`<a href="...">`) should be the first child inside
+              the slot. Slot should never contain a button tag.
+            -->
+            <slot></slot>
+          </a><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template>Hybrid Cloud</rh-navigation-link></li>
+    <li><rh-navigation-link   role="listitem" hydrate-internals-role="listitem" href="#link-3" slot="links"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}#container{align-items:var(--_navigation-link-container-align-items,initial);block-size:var(--_navigation-link-container-block-size,auto);display:var(--_navigation-link-container-display,block);inline-size:var(--_navigation-link-container-inline-size,fit-content);padding:var(--_navigation-link-container-padding,initial);position:var(--_navigation-link-container-position,initial)}::slotted(a),a{align-content:var(--_navigation-link-align-content,initial);align-items:var(--_navigation-link-align-items,initial);background-color:var(--_navigation-link-background-color,#0000);block-size:var(--_navigation-link-block-size,auto);color:var(--_navigation-link-color,var(--rh-color-text-primary))!important;display:var(--_navigation-link-display,inline);font-size:var(--_navigation-link-font-size,1rem)!important;font-weight:var(--_navigation-link-font-weight,initial)!important;gap:var(--_navigation-link-gap,initial);inline-size:var(--_navigation-link-inline-size,auto);padding:var(--_navigation-link-padding,0);position:relative;text-decoration:var(--_navigation-link-text-decoration,none)!important}::slotted(a):before,a:before{border-inline-start:var(--_navigation-link-before-border-inline-start-width,0) solid var(--_navigation-link-before-border-inline-start-color,#0000);content:"";inset:0;position:absolute}::slotted(:is(a:hover,a:hover:focus-visible,:focus-visible,:active)),a:is(:hover,:hover:focus-visible,:focus-visible,:active){--_navigation-link-background-color:var(--_navigation-link-hover-background-color,light-dark(#0000,#0000))!important;--_navigation-link-color:var(--_navigation-link-color-hover,var(--rh-color-interactive-primary-hover))!important;text-decoration-color:var(--_navigation-link-text-decoration-color,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3)))!important;text-decoration-line:var(--_navigation-link-text-decoration-line,underline)!important;text-decoration-skip-ink:auto!important;text-decoration-style:var(--_navigation-link-text-decoration-style,dashed)!important;text-underline-offset:var(--_navigation-link-text-underline-offset,4px)!important}::slotted(a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active)),a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active){border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-interactive-primary-default);outline-offset:var(--_navigation-link-focus-outline-offset,0)}</style><!--lit-part VSLkVO1xlKQ=-->
+      <div id="container">
+        <!--lit-part cpkRDPxmW6E=-->
+          <!--lit-node 0--><a href="#link-3" >
+            <!--
+              Use this slot when the `icon` and `icon-set` attributes are not set. 
+              Must be used in conjunction with the `href` attribute.  
+              Can contain a rh-icon, svg, or img tag.
+            -->
+            <slot name="icon">
+              <!--lit-part BRUAAAUVAAA=--><?><!--/lit-part-->
+            </slot>
+            <!--
+              The default slot should contain the link text when the `href` attribute is set. 
+              Alternatively, an anchor tag (`<a href="...">`) should be the first child inside
+              the slot. Slot should never contain a button tag.
+            -->
+            <slot></slot>
+          </a><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template>Products</rh-navigation-link></li>
+    <li><rh-navigation-link  role="listitem" hydrate-internals-role="listitem" slot="links"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}#container{align-items:var(--_navigation-link-container-align-items,initial);block-size:var(--_navigation-link-container-block-size,auto);display:var(--_navigation-link-container-display,block);inline-size:var(--_navigation-link-container-inline-size,fit-content);padding:var(--_navigation-link-container-padding,initial);position:var(--_navigation-link-container-position,initial)}::slotted(a),a{align-content:var(--_navigation-link-align-content,initial);align-items:var(--_navigation-link-align-items,initial);background-color:var(--_navigation-link-background-color,#0000);block-size:var(--_navigation-link-block-size,auto);color:var(--_navigation-link-color,var(--rh-color-text-primary))!important;display:var(--_navigation-link-display,inline);font-size:var(--_navigation-link-font-size,1rem)!important;font-weight:var(--_navigation-link-font-weight,initial)!important;gap:var(--_navigation-link-gap,initial);inline-size:var(--_navigation-link-inline-size,auto);padding:var(--_navigation-link-padding,0);position:relative;text-decoration:var(--_navigation-link-text-decoration,none)!important}::slotted(a):before,a:before{border-inline-start:var(--_navigation-link-before-border-inline-start-width,0) solid var(--_navigation-link-before-border-inline-start-color,#0000);content:"";inset:0;position:absolute}::slotted(:is(a:hover,a:hover:focus-visible,:focus-visible,:active)),a:is(:hover,:hover:focus-visible,:focus-visible,:active){--_navigation-link-background-color:var(--_navigation-link-hover-background-color,light-dark(#0000,#0000))!important;--_navigation-link-color:var(--_navigation-link-color-hover,var(--rh-color-interactive-primary-hover))!important;text-decoration-color:var(--_navigation-link-text-decoration-color,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3)))!important;text-decoration-line:var(--_navigation-link-text-decoration-line,underline)!important;text-decoration-skip-ink:auto!important;text-decoration-style:var(--_navigation-link-text-decoration-style,dashed)!important;text-underline-offset:var(--_navigation-link-text-underline-offset,4px)!important}::slotted(a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active)),a:is(:focus-visible,:hover:focus-visible,:focus-visible,:active){border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-interactive-primary-default);outline-offset:var(--_navigation-link-focus-outline-offset,0)}</style><!--lit-part VSLkVO1xlKQ=-->
+      <div id="container">
+        <!--lit-part Pz0gobCCM4E=--><slot></slot><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template><a href="#link-4" aria-current="page">Learn</a></rh-navigation-link></li>
+    <li><a href="#">Link</a></li>
+  </ul>
+  <rh-cta   slot="cta" href="#"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:inline-flex;max-width:max-content;position:relative;z-index:0}::slotted(:is(a,button,input)),a{color:inherit!important;display:inline!important;font-family:inherit!important;font-size:inherit!important;font-weight:inherit!important;line-height:inherit!important;text-decoration:var(--_text-decoration)!important;text-underline-offset:var(--_text-underline-offset)!important;vertical-align:middle!important;word-break:break-word!important;z-index:2!important}::slotted(:is(a,button,input)){white-space:break-spaces!important}::slotted(a):after,a:after{content:"";display:block;inset:0;position:absolute;z-index:3}::slotted(button),::slotted(input){background-color:initial;border:none;margin:0;padding:0;text-align:left}#container{background-color:var(--_background-color);border-color:var(--_border-color,#0000);border-radius:var(--rh-border-radius-default,3px);border-width:var(--rh-border-width-sm,1px);color:var(--_color);font-family:var(--rh-font-family-heading,RedHatDisplay,"Red Hat Display",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-lg,1.125rem);font-weight:600;line-height:var(--rh-line-height-body-text,1.5);position:relative;white-space:var(--_rh-cta-white-space,nowrap);--rh-color-surface:var(--_background-color)!important;--_arrow-size:13px;--rh-icon-size:var(--rh-font-size-body-text-lg,1.125rem);--_rh-icon-plus-padding:calc(5px + var(--rh-icon-size))}:dir(rtl){text-align:right}#container:after{--_offset:2px;border-radius:2px;border-width:var(--rh-border-width-sm,1px);box-sizing:border-box;content:"";display:block;height:calc(100% - var(--_offset)*2);left:var(--_offset);outline:none;pointer-events:none;position:absolute;top:var(--_offset);width:calc(100% - var(--_offset)*2)}rh-icon{display:inline-block;margin-inline-start:var(--rh-space-md,8px);vertical-align:middle;fill:currentcolor;transition:translate var(--_trans);translate:0 0;--_trans:var(--rh-animation-speed,0.3s) var(--rh-animation-timing,cubic-bezier(0.465,0.183,0.153,0.946))}#container:dir(rtl) rh-icon{rotate:180deg}::slotted(:focus),:host(:is(:focus,:focus-within)),:host(:is(:focus,:focus-within)) ::slotted(:is(a,button,input)),a:focus,a:focus-within{outline:none!important}:host(:is(:focus,:focus-within)) #container{--_background-color:var(--rh-cta-focus-background-color);--_color:var(--_focus-color);--_text-decoration:var(--_focus-text-decoration);--_text-underline-offset:var(--rh-cta-focus-text-underline-offset,var(--rh-cta-hover-text-underline-offset));background-color:var(--_focus-container-background-color,var(--_focus-background-color));border-color:var(--_focus-border-color);color:var(--rh-cta-focus-color,var(--_color));outline:var(--rh-border-width-md,2px) solid var(--rh-cta-focus-container-outline-color,var(--rh-cta-focus-outline-color));outline-offset:2px}:host(:is(:focus,:focus-within)) #container:after{border-color:var(--_focus-inner-border-color);border-style:solid}:host(:hover) #container{background-color:var(--_hover-background-color);border-color:var(--_hover-border-color);color:var(--_hover-color);--_text-decoration:var(--rh-cta-hover-text-decoration,var(--_hover-text-decoration));--_text-underline-offset:var(--rh-cta-hover-text-underline-offset)}:host(:hover) #container rh-icon{translate:3px 0}:host(:hover) #container:dir(rtl) rh-icon{translate:-3px 0}:host(:active) #container{background-color:var(--_background-color);color:var(--_active-color);--_background-color:var(--rh-cta-background-color,var(--rh-cta-active-container-background-color,var(--rh-cta-active-background-color)))}:host(:active) #container:after{border-color:var(--_active-inner-border-color)!important;border-style:solid}:host([variant]) #container{border-radius:var(--rh-border-radius-default,3px);border-width:var(--rh-border-width-sm,1px);font-size:var(--rh-font-size-body-text-md,1rem);padding-block:var(--rh-space-lg,16px);padding-inline:var(--rh-space-2xl,32px);& ::slotted(:is(a,button,input)),& a{display:inline-flex!important;text-align:center!important}&.icon{& ::slotted(:is(a,button,input)),& a{display:inline!important}& rh-icon{margin-inline-start:var(--rh-space-md,8px)}}&.svg{& ::slotted(:is(a,button,input)),& a{--_arrow-plus-padding:calc(var(--rh-space-md, 8px) + var(--_arrow-size));padding-inline-end:calc(var(--_arrow-plus-padding) + var(--rh-space-xl, 24px))!important}}}:host([variant$=ary]) #container{& ::slotted(:is(a,button,input)),& a{font-size:var(--rh-cta-font-size-priority,var(--rh-font-size-body-text-md,1rem))}}:host(:not([variant])) #container{--_background-color:var(--rh-cta-background-color,#0000);--_border-color:var(--rh-cta-border-color,#0000);--_color:var(--rh-cta-color,var(--rh-color-interactive-primary-default));--_hover-background-color:var(--rh-cta-hover-background-color,#0000);--_hover-border-color:var(--rh-cta-hover-border-color,#0000);--_hover-color:var(--rh-cta-hover-color,var(--rh-color-interactive-primary-hover));--_hover-text-decoration:var(--rh-cta-hover-text-decoration,none);--_focus-background-color:var(--rh-cta-focus-background-color,#0000);--_focus-container-background-color:light-dark(var(--rh-cta-focus-container-background-color,#0066cc1a),var(--rh-cta-focus-container-background-color,#73bcf740));--_focus-border-color:var(--rh-cta-focus-border-color,#0000);--_focus-color:var(--rh-cta-focus-color,var(--rh-color-interactive-primary-default));--_focus-inner-border-color:var(--rh-cta-focus-inner-border-color,#0000);--_focus-text-decoration:var(--rh-cta-focus-text-decoration,none);--_active-container-background-color:light-dark(var(--rh-cta-active-container-background-color,#0066cc1a),var(--rh-cta-active-container-background-color,#73bcf740));--_active-inner-border-color:var(--rh-cta-active-inner-border-color,#0000);--_active-text-decoration:var(--rh-cta-active-text-decoration,none)}:host([variant=primary]) #container{border-style:solid;--_background-color:var(--rh-cta-background-color,var(--rh-color-brand-red));--_border-color:var(--rh-cta-border-color,var(--rh-color-brand-red));--_color:var(--rh-cta-color,var(--rh-color-text-primary-on-dark,#fff));--_active-color:var(--rh-cta-color,var(--rh-color-text-primary-on-dark,#fff));--_hover-background-color:var(--rh-cta-hover-background-color,var(--rh-color-brand-red-dark,#a60000));--_hover-border-color:var(--rh-cta-hover-border-color,var(--rh-color-brand-red-dark,#a60000));--_hover-color:var(--rh-cta-hover-color,var(--rh-color-text-primary-on-dark,#fff));--_focus-background-color:var(--rh-cta-focus-background-color,var(--rh-color-brand-red-dark,#a60000));--_focus-border-color:var(--rh-cta-focus-border-color,var(--rh-color-brand-red-dark,#a60000));--_focus-color:var(--rh-cta-focus-color,var(--rh-color-text-primary-on-dark,#fff))!important;--_focus-inner-border-color:var(--rh-cta-focus-inner-border-color,var(--rh-color-text-primary-on-dark,#fff));--_focus-text-decoration:var(--rh-cta-focus-text-decoration,none);--_active-background-color:var(--rh-cta-active-background-color,var(--rh-color-brand-red-dark,#a60000));--_active-inner-border-color:var(--rh-cta-active-inner-border-color,var(--rh-color-text-primary-on-dark,#fff))}:host([variant=secondary]) #container{border-style:solid;--_background-color:var(--rh-cta-background-color,#0000);--_border-color:var(--rh-cta-border-color,var(--rh-color-border-strong));--_color:light-dark(var(--rh-cta-color,var(--rh-color-text-primary-on-light,#151515)),var(--rh-cta-color,var(--rh-color-text-primary-on-dark,#fff)));--_hover-background-color:light-dark(var(--rh-cta-hover-background-color,var(--rh-color-surface-darkest,#151515)),var(--rh-cta-hover-background-color,var(--rh-color-surface-lightest,#fff)));--_hover-border-color:var(--rh-cta-hover-border-color,var(--rh-color-border-strong));--_hover-color:light-dark(var(--rh-cta-hover-color,var(--rh-color-text-primary-on-dark,#fff)),var(--rh-cta-hover-color,var(--rh-color-text-primary-on-light,#151515)));--_focus-background-color:light-dark(var(--rh-cta-focus-background-color,var(--rh-color-surface-lighter,#f2f2f2)),var(--rh-cta-focus-background-color,var(--rh-color-surface-dark,#383838)));--_focus-border-color:var(--rh-cta-focus-border-color,var(--rh-color-border-strong));--_focus-color:var(--rh-color-text-primary);--_focus-inner-border-color:var(--rh-cta-focus-inner-border-color,var(--rh-color-border-strong));--_focus-text-decoration:var(--rh-cta-focus-text-decoration,none);--_active-color:var(--rh-cta-active-color,var(--rh-color-text-primary));--_active-background-color:light-dark(var(--rh-cta-active-background-color,var(--rh-color-border-strong)),var(--rh-cta-active-background-color,var(--rh-color-surface-lightest,#fff)));--_active-inner-border-color:light-dark(var(--rh-cta-active-inner-border-color,var(--rh-color-surface-light,#e0e0e0)),var(--rh-cta-active-inner-border-color,var(--rh-color-border-strong-on-light,#151515)))}:host([variant=brick]){display:inline-block!important;max-width:100%;width:100%;& #container{align-items:center;border-style:solid;display:flex;flex-flow:row wrap;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-weight:var(--rh-font-weight-body-text-regular,400);gap:var(--rh-space-md,8px);justify-content:center;--_background-color:var(--rh-cta-background-color,#0000);--_border-color:var(--rh-cta-border-color,var(--rh-color-border-subtle));--_color:var(--rh-cta-color,var(--rh-color-interactive-primary-default));--_hover-background-color:light-dark(var(--rh-cta-hover-background-color,var(--rh-color-surface-lighter,#f2f2f2)),var(--rh-cta-hover-background-color,var(--rh-color-surface-darker,#1f1f1f)));--_hover-border-color:var(--rh-cta-hover-border-color,var(--rh-color-border-subtle));--_hover-color:var(--rh-cta-hover-color,var(--rh-color-interactive-primary-hover));--_hover-text-decoration:light-dark(var(--rh-cta-hover-text-decoration,none),var(--rh-cta-hover-text-decoration,underline));--_focus-color:var(--rh-cta-focus-color,var(--rh-color-interactive-primary-default));--_focus-border-color:var(--rh-cta-focus-border-color,var(--rh-color-border-subtle));--_focus-inner-border-color:var(--rh-cta-focus-inner-border-color,var(--rh-color-border-subtle));--_focus-text-decoration:light-dark(var(--rh-cta-focus-text-decoration,none),var(--rh-cta-focus-text-decoration,none));--_active-background-color:light-dark(var(--rh-cta-active-background-color,var(--rh-color-surface-lighter,#f2f2f2)),var(--rh-cta-active-background-color,var(--rh-color-surface-darker,#1f1f1f)));--_active-inner-border-color:var(--rh-cta-active-inner-border-color,var(--rh-color-border-subtle));--_active-text-decoration:light-dark(var(--rh-cta-active-text-decoration,none),var(--rh-cta-active-text-decoration,underline));&.icon rh-icon{margin-inline:0}}}@supports not (translate:0 0){rh-icon{transform:translate(0);transition:transform var(--_trans)}#container:dir(rtl) rh-icon{transform:translate(0) rotate(180deg)}:host(:hover) #container rh-icon{transform:translate(3px)}:host(:hover) #container:dir(rtl) rh-icon{transform:translate(-3px) rotate(180deg)}}</style><!--lit-part 9No+EeFv+w8=-->
+      <!-- container element for slotted CTA -->
+      <!--lit-node 1--><span id="container"
+            part="container"
+            class=" svg "
+            ><!--lit-part--><!--/lit-part--><!--lit-part sWYx4EdbCD4=--><!--lit-node 0--><a href="#"
+                
+                
+                
+                ><!--lit-part ozyod5GE7Wc=--><!--
+          The default slot contains the link text when the `href`
+          attribute is set. In case there is no href attribute, an anchor
+          tag (`<a href="...">`) should be the first child inside `rh-cta`
+          element. Less preferred but allowed for specific use-cases
+          include: `<button>` (note however that the `button` tag is not
+          supported for the default CTA styles).
+    --><slot></slot><!--lit-part Rpn9RahanC4=--><!--lit-node 0--><rh-icon   icon="arrow-right" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part en+ux32c1VQ=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.354 14.939 19.708 4.293a.999.999 0 1 0-1.414 1.414L27.587 15H2a1 1 0 0 0 0 2h25.586l-9.293 9.293a.999.999 0 1 0 1.414 1.414l10.646-10.646c.283-.283.439-.66.439-1.061s-.156-.777-.439-1.061Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--/lit-part--><?><!--/lit-part--></a><!--/lit-part--></span><!--/lit-part--></template>Call to Action</rh-cta>
+</rh-navigation-secondary>
+
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-navigation-secondary/rh-navigation-secondary-lightdom.css">
+
+<script type="module">
+  import '@rhds/elements/rh-navigation-secondary/rh-navigation-secondary.js';
+  import '@rhds/elements/rh-navigation-link/rh-navigation-link.js';
+  import '@rhds/elements/rh-cta/rh-cta.js';
+</script>
+
+
+</body></html>

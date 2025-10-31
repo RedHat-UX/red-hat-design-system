@@ -17493,7 +17493,7 @@ export const tokens = new TokenMetaMap({
         "key": "{color.status.success.on-dark}"
     },
     "--rh-color-surface": {
-        "$value": "light-dark(var(--rh-color-surface-lightest, #ffffff), var(--rh-color-surface-lighter, #f2f2f2))",
+        "$value": "light-dark(var(--rh-color-surface-lightest, #ffffff), var(--rh-color-surface-darkest, #151515))",
         "$description": "Responsive `surface` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to the surface color corresponding to the surface' color palette.",
         "filePath": "tokens/color/surface.yaml",
         "isSource": true,

@@ -3926,7 +3926,7 @@
       "rhcolorsurface"
     ],
     "body": [
-      "var(--rh-color-surface${1:, light-dark(var(--rh-color-surface-lightest, #ffffff), var(--rh-color-surface-lighter, #f2f2f2))})$2"
+      "var(--rh-color-surface${1:, light-dark(var(--rh-color-surface-lightest, #ffffff), var(--rh-color-surface-darkest, #151515))})$2"
     ],
     "description": "Responsive `surface` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to the surface color corresponding to the surface' color palette."
   },

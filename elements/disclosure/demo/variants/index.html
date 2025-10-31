@@ -1,0 +1,199 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
+    <title>Variants | Red Hat Design System</title>
+
+    <link rel="preconnect" href="https://ga.jspm.io">
+
+    <link rel="stylesheet" href="/styles/demo/styles.css" media="all">
+
+    <script type="importmap">{
+  "imports": {
+    "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
+    "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
+    "lit-html": "/assets/packages/lit-html/lit-html.js",
+    "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
+    "lit-element": "/assets/packages/lit-element/index.js",
+    "prism-esm": "/assets/packages/prism-esm/prism.js",
+    "lit": "/assets/packages/lit/index.js",
+    "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
+    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
+    "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
+    "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "@lit/context": "/assets/packages/@lit/context/index.js",
+    "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.4/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
+    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
+    "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
+    "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
+    "lit/": "/assets/packages/lit/",
+    "lit-html/": "/assets/packages/lit-html/",
+    "prism-esm/": "/assets/packages/prism-esm/",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js",
+    "@rhds/tokens/css/": "/assets/packages/@rhds/tokens/css/",
+    "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
+    "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
+    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons": "/assets/packages/@rhds/icons/icons.js",
+    "@rhds/icons/": "/assets/packages/@rhds/icons/",
+    "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
+    "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
+    "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
+    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "@uxdot/elements/": "/assets/packages/@uxdot/elements/"
+  },
+  "scopes": {
+    "/assets/packages/": {
+      "@floating-ui/utils": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.10/dist/floating-ui.utils.mjs",
+      "@floating-ui/utils/dom": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.10/dist/floating-ui.utils.dom.mjs",
+      "@lit/reactive-element/decorators/": "/assets/packages/@lit/reactive-element/decorators/",
+      "lit-element/lit-element.js": "/assets/packages/lit-element/lit-element.js",
+      "lit-html/": "/assets/packages/lit-html/",
+      "lit/": "/assets/packages/lit/"
+    }
+  }
+}</script>
+
+    
+      <script type="module">
+    // although we load these ssr support modules elsewhere, we still
+    // need them here to ensure no double-rendering on webkit
+    import '/assets/javascript/ssr-support.js';
+    // include these, which are often internal to elements,
+    // and are definitely required by context-picker and context-demo
+    // to avoid SSR defer-hydration bugs and SSR double-rendering bugs
+    import '@rhds/elements/rh-icon/rh-icon.js';
+    import '@rhds/elements/rh-surface/rh-surface.js';
+    import '@rhds/elements/rh-button/rh-button.js';
+    import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+    import '@rhds/elements/rh-tag/rh-tag.js';
+  </script>
+
+
+    <script type="module">
+      // load up the demo and picker
+      import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+      import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+    </script>
+
+    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
+  </head>
+  <body><div class="container">
+  <rh-disclosure   summary="Compact variant disclosure" variant="compact"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{border:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default,3px);display:block;font-family:var(--rh-font-family-body-text)}summary{background-color:var(--rh-color-surface);border-radius:var(--rh-border-radius-default,3px);color:var(--rh-color-text-primary);cursor:pointer;font-size:var(--rh-font-size-body-text-md,1rem);font-weight:var(--rh-font-weight-body-text-medium,500);list-style:none;padding-block:var(--rh-space-lg,16px);padding-inline:var(--rh-space-xl,24px);&::-webkit-details-marker,&::marker{display:none}&:active,&:focus,&:hover{background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}&:active,&:focus{outline:var(--rh-border-width-md,2px) solid;outline-color:var(--rh-color-interactive-primary-default);outline-offset:-2px;position:relative;z-index:2}& ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-size:var(--rh-font-size-body-text-md,1rem)!important;font-weight:var(--rh-font-weight-body-text-medium,500)}& ::slotted([slot=summary]:is(h1,h2,h3,h4,h5,h6)){display:inline}}#caret{block-size:var(--rh-space-lg,16px);inline-size:var(--rh-space-lg,16px);inset-block-start:3px;margin-inline-end:var(--rh-space-md,8px);position:relative;transition:.2s;will-change:rotate}#details-content{background-color:var(--rh-color-surface);border-radius:var(--rh-border-radius-default,3px);color:var(--rh-color-text-primary);font-size:var(--rh-font-size-body-text-md,1rem);line-height:var(--rh-line-height-body-text,1.5);padding-block:var(--rh-space-lg,16px) var(--rh-space-xl,24px);padding-inline:var(--rh-space-xl,24px)}::slotted(:is(p,h1,h2,h3,h4,h5,h6):first-of-type){margin-block-start:0}::slotted(:is(p,li,dd):last-of-type){margin-block-end:0!important}details[open]{box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);position:relative;& #caret{transform:rotate(-180deg)}&:before{border-end-start-radius:var(--rh-border-radius-default,3px);border-inline-start:3px solid var(--rh-color-brand-red);border-start-start-radius:var(--rh-border-radius-default,3px);content:"";inset-block:-1px;inset-inline-start:-1px;position:absolute;z-index:1}&.has-jump-links:before{border-inline-start-color:#0000}}:host([variant~=compact]){summary{font-size:var(--rh-font-size-body-text-sm,.875rem);padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);rh-icon{--rh-icon-size:14px}}#details-content{padding-inline:var(--rh-space-lg,16px)}}:host([variant~=borderless]){--_hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f));--_open-background-color:var(--_hover-background-color);border:0;summary{color:var(--rh-color-interactive-primary-default);&:focus,&:hover{background-color:var(--_hover-background-color);color:var(--rh-color-interactive-primary-hover)}&:focus{outline-offset:var(--rh-length-3xs,2px)}}details[open]{background-color:var(--_open-background-color);border-radius:var(--rh-border-radius-default,3px);box-shadow:none;&:before{border-inline-start:0}summary{background-color:var(--_open-background-color);&:focus,&:hover{background-color:light-dark(var(--rh-color-surface-light,#e0e0e0),var(--rh-color-surface-dark,#383838))}}#details-content{background-color:initial}}}</style><!--lit-part LhP/3O22o00=-->
+      <!--lit-node 0--><details
+          
+          class="  "
+          
+          >
+        <summary>
+          <!-- The caret icon in the shadow DOM -->
+          <!--lit-node 3--><rh-icon    id="caret" set="ui" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part yJXr4tKetXA=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 24.792c-.384 0-.769-.146-1.061-.438L2.293 11.707a.999.999 0 1 1 1.414-1.414L16 22.586l12.293-12.293a.999.999 0 1 1 1.414 1.414L17.061 24.353a1.497 1.497 0 0 1-1.061.438Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+          <!-- The title of the disclosure -->
+          <slot name="summary"><!--lit-part-->Compact variant disclosure<!--/lit-part--></slot>
+        </summary>
+        <div id="details-content">
+          <!-- Place the content you want to disclose in the default slot. This content is hidden by default. -->
+          <slot></slot>
+        </div>
+      </details>
+    <!--/lit-part--></template>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Velit distinctio, nesciunt nobis sit, a dolor, non numquam rerum recusandae, deserunt enim assumenda quidem. Id impedit necessitatibus obcaecati ratione reprehenderit laborum?</p>
+  </rh-disclosure>
+
+  <rh-disclosure   summary="Borderless variant disclosure" variant="borderless"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{border:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default,3px);display:block;font-family:var(--rh-font-family-body-text)}summary{background-color:var(--rh-color-surface);border-radius:var(--rh-border-radius-default,3px);color:var(--rh-color-text-primary);cursor:pointer;font-size:var(--rh-font-size-body-text-md,1rem);font-weight:var(--rh-font-weight-body-text-medium,500);list-style:none;padding-block:var(--rh-space-lg,16px);padding-inline:var(--rh-space-xl,24px);&::-webkit-details-marker,&::marker{display:none}&:active,&:focus,&:hover{background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}&:active,&:focus{outline:var(--rh-border-width-md,2px) solid;outline-color:var(--rh-color-interactive-primary-default);outline-offset:-2px;position:relative;z-index:2}& ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-size:var(--rh-font-size-body-text-md,1rem)!important;font-weight:var(--rh-font-weight-body-text-medium,500)}& ::slotted([slot=summary]:is(h1,h2,h3,h4,h5,h6)){display:inline}}#caret{block-size:var(--rh-space-lg,16px);inline-size:var(--rh-space-lg,16px);inset-block-start:3px;margin-inline-end:var(--rh-space-md,8px);position:relative;transition:.2s;will-change:rotate}#details-content{background-color:var(--rh-color-surface);border-radius:var(--rh-border-radius-default,3px);color:var(--rh-color-text-primary);font-size:var(--rh-font-size-body-text-md,1rem);line-height:var(--rh-line-height-body-text,1.5);padding-block:var(--rh-space-lg,16px) var(--rh-space-xl,24px);padding-inline:var(--rh-space-xl,24px)}::slotted(:is(p,h1,h2,h3,h4,h5,h6):first-of-type){margin-block-start:0}::slotted(:is(p,li,dd):last-of-type){margin-block-end:0!important}details[open]{box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);position:relative;& #caret{transform:rotate(-180deg)}&:before{border-end-start-radius:var(--rh-border-radius-default,3px);border-inline-start:3px solid var(--rh-color-brand-red);border-start-start-radius:var(--rh-border-radius-default,3px);content:"";inset-block:-1px;inset-inline-start:-1px;position:absolute;z-index:1}&.has-jump-links:before{border-inline-start-color:#0000}}:host([variant~=compact]){summary{font-size:var(--rh-font-size-body-text-sm,.875rem);padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);rh-icon{--rh-icon-size:14px}}#details-content{padding-inline:var(--rh-space-lg,16px)}}:host([variant~=borderless]){--_hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f));--_open-background-color:var(--_hover-background-color);border:0;summary{color:var(--rh-color-interactive-primary-default);&:focus,&:hover{background-color:var(--_hover-background-color);color:var(--rh-color-interactive-primary-hover)}&:focus{outline-offset:var(--rh-length-3xs,2px)}}details[open]{background-color:var(--_open-background-color);border-radius:var(--rh-border-radius-default,3px);box-shadow:none;&:before{border-inline-start:0}summary{background-color:var(--_open-background-color);&:focus,&:hover{background-color:light-dark(var(--rh-color-surface-light,#e0e0e0),var(--rh-color-surface-dark,#383838))}}#details-content{background-color:initial}}}</style><!--lit-part LhP/3O22o00=-->
+      <!--lit-node 0--><details
+          
+          class="  "
+          
+          >
+        <summary>
+          <!-- The caret icon in the shadow DOM -->
+          <!--lit-node 3--><rh-icon    id="caret" set="ui" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part yJXr4tKetXA=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 24.792c-.384 0-.769-.146-1.061-.438L2.293 11.707a.999.999 0 1 1 1.414-1.414L16 22.586l12.293-12.293a.999.999 0 1 1 1.414 1.414L17.061 24.353a1.497 1.497 0 0 1-1.061.438Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+          <!-- The title of the disclosure -->
+          <slot name="summary"><!--lit-part-->Borderless variant disclosure<!--/lit-part--></slot>
+        </summary>
+        <div id="details-content">
+          <!-- Place the content you want to disclose in the default slot. This content is hidden by default. -->
+          <slot></slot>
+        </div>
+      </details>
+    <!--/lit-part--></template>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Velit distinctio, nesciunt nobis sit, a dolor, non numquam rerum recusandae, deserunt enim assumenda quidem. Id impedit necessitatibus obcaecati ratione reprehenderit laborum?</p>
+  </rh-disclosure>
+
+  <rh-disclosure   summary="Borderless compact disclosure" variant="borderless compact"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{border:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default,3px);display:block;font-family:var(--rh-font-family-body-text)}summary{background-color:var(--rh-color-surface);border-radius:var(--rh-border-radius-default,3px);color:var(--rh-color-text-primary);cursor:pointer;font-size:var(--rh-font-size-body-text-md,1rem);font-weight:var(--rh-font-weight-body-text-medium,500);list-style:none;padding-block:var(--rh-space-lg,16px);padding-inline:var(--rh-space-xl,24px);&::-webkit-details-marker,&::marker{display:none}&:active,&:focus,&:hover{background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}&:active,&:focus{outline:var(--rh-border-width-md,2px) solid;outline-color:var(--rh-color-interactive-primary-default);outline-offset:-2px;position:relative;z-index:2}& ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-size:var(--rh-font-size-body-text-md,1rem)!important;font-weight:var(--rh-font-weight-body-text-medium,500)}& ::slotted([slot=summary]:is(h1,h2,h3,h4,h5,h6)){display:inline}}#caret{block-size:var(--rh-space-lg,16px);inline-size:var(--rh-space-lg,16px);inset-block-start:3px;margin-inline-end:var(--rh-space-md,8px);position:relative;transition:.2s;will-change:rotate}#details-content{background-color:var(--rh-color-surface);border-radius:var(--rh-border-radius-default,3px);color:var(--rh-color-text-primary);font-size:var(--rh-font-size-body-text-md,1rem);line-height:var(--rh-line-height-body-text,1.5);padding-block:var(--rh-space-lg,16px) var(--rh-space-xl,24px);padding-inline:var(--rh-space-xl,24px)}::slotted(:is(p,h1,h2,h3,h4,h5,h6):first-of-type){margin-block-start:0}::slotted(:is(p,li,dd):last-of-type){margin-block-end:0!important}details[open]{box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);position:relative;& #caret{transform:rotate(-180deg)}&:before{border-end-start-radius:var(--rh-border-radius-default,3px);border-inline-start:3px solid var(--rh-color-brand-red);border-start-start-radius:var(--rh-border-radius-default,3px);content:"";inset-block:-1px;inset-inline-start:-1px;position:absolute;z-index:1}&.has-jump-links:before{border-inline-start-color:#0000}}:host([variant~=compact]){summary{font-size:var(--rh-font-size-body-text-sm,.875rem);padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);rh-icon{--rh-icon-size:14px}}#details-content{padding-inline:var(--rh-space-lg,16px)}}:host([variant~=borderless]){--_hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f));--_open-background-color:var(--_hover-background-color);border:0;summary{color:var(--rh-color-interactive-primary-default);&:focus,&:hover{background-color:var(--_hover-background-color);color:var(--rh-color-interactive-primary-hover)}&:focus{outline-offset:var(--rh-length-3xs,2px)}}details[open]{background-color:var(--_open-background-color);border-radius:var(--rh-border-radius-default,3px);box-shadow:none;&:before{border-inline-start:0}summary{background-color:var(--_open-background-color);&:focus,&:hover{background-color:light-dark(var(--rh-color-surface-light,#e0e0e0),var(--rh-color-surface-dark,#383838))}}#details-content{background-color:initial}}}</style><!--lit-part LhP/3O22o00=-->
+      <!--lit-node 0--><details
+          
+          class="  "
+          
+          >
+        <summary>
+          <!-- The caret icon in the shadow DOM -->
+          <!--lit-node 3--><rh-icon    id="caret" set="ui" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part yJXr4tKetXA=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 24.792c-.384 0-.769-.146-1.061-.438L2.293 11.707a.999.999 0 1 1 1.414-1.414L16 22.586l12.293-12.293a.999.999 0 1 1 1.414 1.414L17.061 24.353a1.497 1.497 0 0 1-1.061.438Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+          <!-- The title of the disclosure -->
+          <slot name="summary"><!--lit-part-->Borderless compact disclosure<!--/lit-part--></slot>
+        </summary>
+        <div id="details-content">
+          <!-- Place the content you want to disclose in the default slot. This content is hidden by default. -->
+          <slot></slot>
+        </div>
+      </details>
+    <!--/lit-part--></template>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Velit distinctio, nesciunt nobis sit, a dolor, non numquam rerum recusandae, deserunt enim assumenda quidem. Id impedit necessitatibus obcaecati ratione reprehenderit laborum?</p>
+  </rh-disclosure>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-disclosure/rh-disclosure.js';
+</script>
+
+<style>
+  .container {
+    max-width: var(--rh-breakpoint-md, 992px);
+    margin-inline: auto;
+  }
+  rh-disclosure {
+    margin-block-end: var(--rh-space-lg, 16px);
+  }
+</style>
+
+
+</body></html>

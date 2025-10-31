@@ -25,6 +25,7 @@ export declare class RhNavigationPrimary extends LitElement {
     private _hamburgerOpen;
     private _hamburger;
     private _hamburgerSummary;
+    private _title;
     /**
      * Sets the mobile toggle (hamburger) text, used for translations, defaults to 'Menu'
      */
@@ -32,11 +33,10 @@ export declare class RhNavigationPrimary extends LitElement {
     /** Sets color context for child components, overrides parent context */
     colorPalette?: NavigationPrimaryPalette;
     /**
-     * Customize the default `aria-label` on the `<nav>` container.
-     * Defaults to "main" if no attribute/property is set.
+     * Customize the default label for the navigation.
+     * Defaults to "Main navigation" if no value is set.
      */
     accessibleLabel: string;
-    static focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement>;
     constructor();
     protected firstUpdated(): void;
     connectedCallback(): Promise<void>;

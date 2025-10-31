@@ -48,8 +48,11 @@ let RhAccordionHeader = class RhAccordionHeader extends LitElement {
                 heading.replaceWith(this);
             }
             else {
-                __classPrivateFieldGet(this, _RhAccordionHeader_internals, "f").ariaLevel = Math.max(2, __classPrivateFieldGet(this, _RhAccordionHeader_heading, "f").level).toString();
+                if (!__classPrivateFieldGet(this, _RhAccordionHeader_internals, "f").ariaLevel) {
+                    __classPrivateFieldGet(this, _RhAccordionHeader_internals, "f").ariaLevel = Math.max(2, __classPrivateFieldGet(this, _RhAccordionHeader_heading, "f").level).toString();
+                }
             }
+            this.removeAttribute('role');
         }
     }
     render() {
