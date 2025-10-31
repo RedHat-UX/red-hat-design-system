@@ -1,8 +1,7 @@
 # Menu Dropdown
-Add a description of the component here.
+A menu dropdown presents a list of actions or links in a vertically stacked menu, appearing when a user interacts with a toggle button.
 
 ## Usage
-Describe how best to use this web component along with best practices.
 
 ```html
 <rh-menu-dropdown>
