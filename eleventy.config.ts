@@ -114,6 +114,7 @@ export default async function(eleventyConfig: UserConfig) {
         '@patternfly/icons/': '/assets/packages/@patternfly/icons/',
         '@patternfly/pfe-core/': '/assets/packages/@patternfly/pfe-core/',
         '@uxdot/elements/': '/assets/packages/@uxdot/elements/',
+        'vue/dist/vue.esm-browser.js': 'https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js',
       },
     },
     localPackages: [
@@ -121,6 +122,7 @@ export default async function(eleventyConfig: UserConfig) {
       'fuse.js',
       'tinycolor2',
       'element-internals-polyfill',
+      'vue/dist/vue.esm-browser.js',
 
       // RHDS dependencies
       // `manualImportMap` is not traced, so we need to manually specify these
@@ -219,11 +221,14 @@ export default async function(eleventyConfig: UserConfig) {
       'elements/rh-jump-links/rh-jump-link.ts',
       'elements/rh-jump-links/rh-jump-links-list.ts',
       'elements/rh-jump-links/rh-jump-links.ts',
+      'elements/rh-navigation-link/rh-navigation-link.ts',
       'elements/rh-navigation-primary/rh-navigation-primary-item-menu.ts',
       'elements/rh-navigation-primary/rh-navigation-primary-item.ts',
       'elements/rh-navigation-primary/rh-navigation-primary-overlay.ts',
       'elements/rh-navigation-primary/rh-navigation-primary.ts',
       'elements/rh-navigation-secondary/rh-navigation-secondary.ts',
+      'elements/rh-navigation-vertical/rh-navigation-vertical.ts',
+      'elements/rh-navigation-vertical/rh-navigation-vertical-list.ts',
       'elements/rh-pagination/rh-pagination.ts',
       'elements/rh-scheme-toggle/rh-scheme-toggle.ts',
       'elements/rh-site-status/rh-site-status.ts',
@@ -242,6 +247,10 @@ export default async function(eleventyConfig: UserConfig) {
       'elements/rh-tile/rh-tile.ts',
       'elements/rh-tooltip/rh-tooltip.ts',
       'elements/rh-video-embed/rh-video-embed.ts',
+      'elements/rh-menu-dropdown/rh-menu-dropdown.ts',
+      'elements/rh-menu/rh-menu.ts',
+      'elements/rh-menu/rh-menu-item.ts',
+      'elements/rh-menu/rh-menu-item-group.ts',
       'lib/elements/rh-context-picker/rh-context-picker.ts',
       'uxdot/uxdot-best-practice.ts',
       'uxdot/uxdot-copy-button.ts',
@@ -279,6 +288,10 @@ export default async function(eleventyConfig: UserConfig) {
       'rh-tag',
       'rh-tile',
       'rh-video-embed',
+      'rh-menu-dropdown',
+      'rh-menu',
+      'rh-menu-item',
+      'rh-menu-item-group',
       'uxdot-pattern',
     ],
     tagsToAlphabetize: [
