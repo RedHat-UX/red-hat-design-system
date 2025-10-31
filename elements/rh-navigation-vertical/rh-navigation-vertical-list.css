@@ -11,7 +11,8 @@ details {
     list-style: none;
     cursor: pointer;
     position: relative;
-gap: var(--rh-space-lg, 16px);
+    gap: var(--rh-space-lg, 16px);
+
     &::-webkit-details-marker,
     &::marker {
       display: none;
