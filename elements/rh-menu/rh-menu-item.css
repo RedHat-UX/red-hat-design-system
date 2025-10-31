@@ -7,6 +7,9 @@
   font-style: normal;
   font-weight: var(--rh-font-weight-body-text-regular, 400);
   line-height: var(--rh-line-height-code, 1.5);
+  background:
+    light-dark(var(--rh-color-surface-lightest, #ffffff),
+      var(--rh-color-surface-darkest, #151515));
 
   a {
     text-decoration: none;

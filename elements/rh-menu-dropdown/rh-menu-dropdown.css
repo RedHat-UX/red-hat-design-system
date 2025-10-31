@@ -20,7 +20,9 @@
   max-inline-size: 100%;
   border-radius: var(--rh-border-radius-default, 3px);
   border: var(--_border);
-  background: var(--rh-color-surface);
+  background:
+    light-dark(var(--rh-color-surface-lightest, #ffffff),
+      var(--rh-color-surface-darkest, #151515));
   box-shadow: var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25));
   transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
   translate: var(--_floating-content-translate);
@@ -57,7 +59,9 @@
   justify-content: space-between;
   box-sizing: border-box;
   border-radius: var(--rh-border-radius-default, 3px);
-  background: var(--rh-color-surface);
+  background:
+    light-dark(var(--rh-color-surface-lightest, #ffffff),
+      var(--rh-color-surface-darkest, #151515));
   border: none;
 
   .action-icon rh-icon {
