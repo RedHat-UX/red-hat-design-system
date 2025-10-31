@@ -290,7 +290,7 @@ export class RhMenuDropdown extends LitElement {
   async #positionMenu() {
     await this.updateComplete;
     const placement = 'bottom-start';
-    const mainAxis = this.#float.anchor === 'top' ? 8 : 0;
+    const mainAxis = 4;
     const offset = { mainAxis: mainAxis, alignmentAxis: 0 };
     await this.#float.show({ offset: offset, placement: placement });
   }
