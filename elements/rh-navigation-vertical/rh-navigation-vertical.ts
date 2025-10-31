@@ -18,7 +18,7 @@ import styles from './rh-navigation-vertical.css';
 /**
  * A vertical navigation list of top-level and grouped navigation items, typically used in a side navigation pattern.
  * @summary Vertical navigation
- * @alias navigation-vertical
+ * @alias Navigation (vertical)
  */
 @customElement('rh-navigation-vertical')
 @themable

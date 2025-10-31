@@ -1,6 +1,6 @@
 $schema: ../../../docs/schemas/element-data.schema.json
 tagName: rh-navigation-vertical
-name: Navigation Vertical
+name: Navigation (vertical)
 type: element
 overallStatus: ready
 libraries:
