@@ -261,4 +261,50 @@ describe('<rh-menu>', function() {
       });
     });
   });
+
+  describe('on focus-out behavior', function() {
+    describe('menu items', async function() {
+      beforeEach(async function() {
+        element = await createFixture<RhMenu>(html`
+          <rh-menu role="menubar">
+            <rh-menu-item role="menuitem">Menuitem1</rh-menu-item>
+            <rh-menu-item role="menuitem">Menuitem2</rh-menu-item>
+            <rh-menu-item role="menuitem">Menuitem3</rh-menu-item>
+          </rh-menu>
+        `);
+      });
+
+      beforeEach(async function() {
+        await element.updateComplete;
+      });
+
+      it('should be accessible', async function() {
+        expect(element).to.be.accessible();
+      });
+
+      describe('tabbing to the element', function() {
+        beforeEach(press('Tab'));
+
+        it('focuses the first item', async function() {
+          const snapshot = await a11ySnapshot();
+          const menu = snapshot?.children?.find(x => x.role === 'menubar');
+          const focused = menu?.children?.find(x => x.focused);
+          expect(focused).to.deep.include({ role: 'menuitem', name: 'Menuitem1', focused: true });
+        });
+
+        describe('move the focus out of the element', function() {
+          beforeEach(async function() {
+            await press('Tab');
+            await aTimeout(300);
+            await element.updateComplete;
+          });
+
+          it('should close the dropdown when focused out', async function() {
+            await aTimeout(100);
+            expect(document.activeElement).to.not.equal(element);
+          });
+        });
+      });
+    });
+  });
 });
