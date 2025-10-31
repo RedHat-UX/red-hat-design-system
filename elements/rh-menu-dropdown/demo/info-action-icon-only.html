@@ -1,0 +1,27 @@
+<div id="menu-dropdown-container">
+  <rh-menu-dropdown>
+    <rh-icon accessible-label="Toggle menu" slot="toggle-label" set="ui" icon="auto-light-dark-mode"></rh-icon>
+    <rh-menu-item>Action one</rh-menu-item>
+    <rh-menu-item>Action two</rh-menu-item>
+    <rh-menu-item>Action three</rh-menu-item>
+    <rh-menu-item disabled>Disabled Action</rh-menu-item>
+    <hr/>
+    <rh-menu-item>Separated action</rh-menu-item>
+  </rh-menu-dropdown>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-menu-dropdown/rh-menu-dropdown.js';
+  import '@rhds/elements/rh-menu/rh-menu-item.js';
+
+  const dropdown = document.querySelector('rh-menu-dropdown');
+  dropdown.addEventListener('select', e => {
+    console.log('Selected:', e.text);
+  });
+</script>
+
+<style>
+#menu-dropdown-container {
+  padding: 1rem;
+}
+</style>

@@ -141,6 +141,7 @@ export class UxdotSideNav extends LitElement {
     }
   }
 }
+
 declare global {
   interface HTMLElementTagNameMap {
     'uxdot-sidenav': UxdotSideNav;
