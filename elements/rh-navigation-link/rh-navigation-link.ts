@@ -12,9 +12,9 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 import styles from './rh-navigation-link.css';
 
 /**
- * Navigation Link is a link that is used as a child of the primary, secondary, subnav, and vertical navigation elements.
- * The link is intrinsically an list item and should not be used outside of navigation elements that define the parent
- * list element.
+ * Navigation Link is a link element that is used as a child of the primary, secondary,
+ * subnav, and vertical navigation elements. Intrinsically, the Navigation Link is a list
+ * item and should not be used outside of navigation elements that define the parent list element.
  *
  * @summary A link that can be used as a child of navigation elements.
  * @alias navigation-link
