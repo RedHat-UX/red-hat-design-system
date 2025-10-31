@@ -18,18 +18,6 @@ rh-navigation-secondary {
   min-height: var(--_min-height);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
 
-  &:not(:defined) {
-    display: grid;
-    position: relative;
-    gap: 0 var(--rh-space-2xl, 32px);
-    grid-template-rows: minmax(var(--_min-height), var(--_max-height)) max-content max-content;
-    grid-template-columns: 1fr max-content;
-    grid-template-areas:
-      'logo logo'
-      'nav nav'
-      'cta cta';
-  }
-
   & > [slot='logo'] {
     grid-area: logo;
     display: flex;
@@ -118,19 +106,8 @@ rh-navigation-secondary-menu a:hover {
   color: var(--rh-color-interactive-primary-hover-on-light, #003366) !important;
 }
 
-/* If the component isn't defined display top level links */
-rh-navigation-secondary:not(:defined) > [slot='nav'],
-rh-navigation-secondary:not(:defined) > [slot='cta'] {
-  display: flex;
-}
-
 rh-navigation-secondary-menu {
   color: var(--rh-color-text-primary-on-light, #151515);
-}
-
-/* If the component isn't defined hide any sub menus */
-rh-navigation-secondary-menu:not(:defined) {
-  display: none;
 }
 
 /* Top level links, styles are owned by lightdom elements */
@@ -236,13 +213,6 @@ rh-navigation-secondary > [slot='nav'] > li > rh-navigation-link {
     --_min-height: 86px;
   }
 
-  rh-navigation-secondary:not(:defined) {
-    display: grid;
-    grid-template-areas: 'logo nav cta';
-    grid-template-rows: minmax(var(--_min-height), var(--_max-height)) max-content max-content;
-    grid-template-columns: max-content 1fr max-content;
-  }
-
   rh-navigation-secondary-dropdown > a[aria-expanded='true'] {
     color-scheme: only light;
   }
@@ -305,12 +275,10 @@ rh-navigation-secondary > [slot='nav'] > li > rh-navigation-link {
   }
 
   @media screen and (min-width: 1440px) {
-    rh-navigation-secondary:not(:defined) > [slot='logo'],
     rh-navigation-secondary > [slot='logo'] {
       margin-inline-start: var(--rh-space-4xl, 64px);
     }
 
-    rh-navigation-secondary:not(:defined) > [slot='cta'],
     rh-navigation-secondary > [slot='cta'] {
       margin-inline-end: var(--rh-space-4xl, 64px);
     }
