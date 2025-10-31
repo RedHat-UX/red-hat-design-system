@@ -40,10 +40,10 @@ describe('<rh-menu>', function() {
     expect(document.createElement('rh-menu')).to.be.an.instanceof(RhMenu);
   });
 
-  it('is accessible', async function() {
+  it('should be accessible', async function() {
+    /* we ignore the aria-allowed-role as the rh-menu applies menubar role in element internals */
     await Promise.resolve(expect(element).to.be.accessible({
-      // the host should have the right semantics and delegates to the shadow root.
-      // ignoredRules: ['aria-hidden-focus'],
+      ignoredRules: ['aria-allowed-role'],
     }));
   });
 
