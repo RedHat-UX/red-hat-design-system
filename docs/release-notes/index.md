@@ -52,7 +52,81 @@ or anything else, please submit a [GitHub issue][issues].
   <a slot="headline" href="https://github.com/RedHat-UX/red-hat-design-system/releases">Changelog</a>
 </rh-tile>
 
+<section aria-labelledby="version-4.0">
+
+## Version 4.0
+Released October 31, 2025 🎃
+
+### Highlights
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| 🎨 Icons: Updated @rhds/icons to version 2.0 | {{j()}} | Added 191 new UI icons, including new `ai-experience` icons and many `-fill` variations, and removed `auto-light-dark-mode-fill` icon. Please see [official 4.0 release notes](https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.0.0) for details on breaking changes. |
+| ✨ Added `<rh-menu-dropdown>` | {{i()}} | A UI component designed for presenting a set of related actions or commands. It consists of two parts: a menu toggle, which users interact with to open or close the menu, and a menu list that contains actionable items. |
+| ✨ Added `<rh-navigation-vertical>` | {{i()}} | A vertical navigation list containing top-level navigation items and grouped navigation items, typically used in a side navigation pattern. |
+| ✨ Added `<rh-navigation-link>` | {{i()}} | A styled link that is used as a slotted child of navigation elements. Can be used in the primary, secondary, subnav, and vertical navigation elements. |
+| `<rh-navigation-primary>`: Added support for `<rh-navigation-link>` | {{i()}} | `<rh-navigation-primary>` can now use `<rh-navigation-link>`. |
+| `<rh-navigation-secondary>`: Added support for `<rh-navigation-link>` | {{i()}} | `<rh-navigation-secondary>` can now use `<rh-navigation-link>`. |
+| `<rh-subnav>`: Added support for `<rh-navigation-link>` | {{i()}} | `<rh-subnav>` can now use `<rh-navigation-link>` elements, deprecating slotting `<a>` elements. |
+| `<rh-avatar>`: Added `bordered` variant | {{i()}} | Added a variant that adds a subtle border around the avatar image. |
+| `<rh-cta>`: Added new CSS tokens | {{i()}} | Added CSS APIs for `text-underline-offset` and `text-decoration` on focus. |
+| `<rh-disclosure>`: Added the `borderless` and `compact` variants | {{i()}} | `<rh-disclosure>` now has a `borderless` and a `compact` variant. |
+| `<rh-tile>`: Added support for all 6 color palettes | {{i()}} | Tile now accepts all six color palettes. |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.0.0">View all version 4.0 release notes</rh-cta>
+
+</section>
+
+<section aria-labelledby="version-3.2">
+
+## Version 3.2
+Released October 24, 2025
+
+### Highlights
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| `<rh-code-block>`: Added `copy` event | {{i()}} | Modify the `event.content` field to change the text to be copied |
+| `<rh-tooltip>`: Add `silent` attribute | {{i()}} | Add the `silent` attribute to hide tooltip content from screen readers |
+| `<rh-progress-stepper>`: Documentation improvements | {{p()}} | Improved online documentation |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.2.0">View all version 3.2 release notes</rh-cta>
+
+</section>
+
 <section aria-labelledby="version-3.1.0">
+
+### Patches from version 3.1.3
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| `<rh-code-block>`: fix expand button | {{p()}} | show expand button ("Show more") even when line numbers are hidden |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.1.3">View all version 3.1.3 release notes</rh-cta>
+
+### Patches from version 3.1.2
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| `<rh-code-block>`: performance improvements | {{p()}} | set content-visibility for improved performance on large pages with many codeblocks |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.1.2">View all version 3.1.2 release notes</rh-cta>
 
 ### Patches from version 3.1.1
 
