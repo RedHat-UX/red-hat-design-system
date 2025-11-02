@@ -320,8 +320,8 @@ input:invalid:focus {
  * BORDERLESS VARIANT
  *****************************************************************************/
 
- /* NOTE: the `open` variant is deprecated but aliased until the next major release. */
- 
+/* NOTE: the `open` variant is deprecated but aliased until the next major release. */
+
 :host([variant|='borderless']) .stepper,
 :host([variant|='open']) .stepper {
   --_stepper-bg-color: transparent;
