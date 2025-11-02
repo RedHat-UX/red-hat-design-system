@@ -1,11 +1,13 @@
 :host {
   border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default, 3px);
   display: block;
   font-family: var(--rh-font-family-body-text);
 }
 
 summary {
   background-color: var(--rh-color-surface);
+  border-radius: var(--rh-border-radius-default, 3px);
   color: var(--rh-color-text-primary);
   cursor: pointer;
   font-size: var(--rh-font-size-body-text-md, 1rem);
@@ -59,6 +61,7 @@ summary {
 
 #details-content {
   background-color: var(--rh-color-surface);
+  border-radius: var(--rh-border-radius-default, 3px);
   color: var(--rh-color-text-primary);
   font-size: var(--rh-font-size-body-text-md, 1rem);
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -85,6 +88,8 @@ details[open] {
   &:before {
     content: '';
     border-inline-start: 3px solid var(--rh-color-brand-red);
+    border-start-start-radius: var(--rh-border-radius-default, 3px);
+    border-end-start-radius: var(--rh-border-radius-default, 3px);
     position: absolute;
     z-index: 1;
     inset-inline-start: -1px;
@@ -93,5 +98,78 @@ details[open] {
 
   &.has-jump-links:before {
     border-inline-start-color: transparent;
+  }
+}
+
+/*****************************************************************************
+ * COMPACT VARIANT
+ *****************************************************************************/
+:host([variant~='compact']) {
+  summary {
+    font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+    padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+
+    rh-icon {
+      --rh-icon-size: 14px;
+    }
+  }
+
+  #details-content {
+    padding-inline: var(--rh-space-lg, 16px);
+  }
+}
+
+/*****************************************************************************
+ * BORDERLESS VARIANT
+ *****************************************************************************/
+:host([variant~='borderless']) {
+  --_hover-background-color:
+    light-dark(
+        var(--rh-color-surface-lighter, #f2f2f2),
+        var(--rh-color-surface-darker, #1f1f1f)
+      );
+  --_open-background-color: var(--_hover-background-color);
+
+  border: 0;
+
+  summary {
+    color: var(--rh-color-interactive-primary-default);
+
+    &:hover,
+    &:focus {
+      background-color: var(--_hover-background-color);
+      color: var(--rh-color-interactive-primary-hover);
+    }
+
+    &:focus {
+      outline-offset: var(--rh-length-3xs, 2px);
+    }
+  }
+
+  details[open] {
+    background-color: var(--_open-background-color);
+    border-radius: var(--rh-border-radius-default, 3px);
+    box-shadow: none;
+
+    &:before {
+      border-inline-start: 0;
+    }
+
+    summary {
+      background-color: var(--_open-background-color);
+
+      &:hover,
+      &:focus {
+        background-color:
+          light-dark(
+              var(--rh-color-surface-light, #e0e0e0),
+              var(--rh-color-surface-dark, #383838)
+            );
+      }
+    }
+
+    #details-content {
+      background-color: transparent;
+    }
   }
 }

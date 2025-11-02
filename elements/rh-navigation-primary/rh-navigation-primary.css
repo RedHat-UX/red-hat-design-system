@@ -42,6 +42,23 @@
   color-scheme: only dark;
 }
 
+[hidden] {
+  display: none !important;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  block-size: 1px;
+  inline-size: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+  padding: 0 !important;
+  margin: -1px !important;
+}
+
 #bar {
   position: relative;
   display: grid;
@@ -238,6 +255,22 @@
   & #details-content {
     display: none;
   }
+
+  &:not([open]) {
+    & #details-content {
+      /* ensures the content is not visible to cmd+f unless the details are open */
+      visibility: hidden;
+    }
+  }
+
+  & ::slotted(rh-navigation-link) {
+    --_navigation-link-container-align-items: start;
+    --_navigation-link-container-display: flex;
+    --_navigation-link-container-block-size: 100%;
+    --_navigation-link-padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
+    --_navigation-link-display: flex;
+    --_navigation-link-inline-size: 100%;
+  }
 }
 
 #secondary {
@@ -268,6 +301,11 @@
     @container navigation-primary (min-width: 1440px) {
       display: flex;
       flex-direction: row;
+
+      & ::slotted(rh-navigation-link) {
+        --_navigation-link-padding: var(--rh-space-md, 8px);
+        --_navigation-link-font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+      }
     }
   }
 
@@ -307,6 +345,28 @@
           & > * {
             box-sizing: border-box;
           }
+        }
+
+        & ::slotted(rh-navigation-link) {
+          --_navigation-link-container-align-items: center;
+          --_navigation-link-container-display: flex;
+          --_navigation-link-container-block-size: 100%;
+          --_navigation-link-container-position: relative;
+          --_navigation-link-align-items: center;
+          --_navigation-link-block-size: 100%;
+          --_navigation-link-inline-size: fit-content;
+
+          /* something weird happens here editor isn't satisfied
+           *  with the line breaks and value of the token
+           */
+          /* stylelint-disable-next-line rhds/token-values */
+          --_navigation-link-color-hover:
+            var(--rh-color-text-primary,
+              light-dark(
+                var(--rh-color-text-primary-on-light, #151515),
+                var(--rh-color-text-primary-on-dark, #ffffff))
+              );
+          --_navigation-link-padding: 0 var(--rh-space-lg, 16px);
         }
       }
 

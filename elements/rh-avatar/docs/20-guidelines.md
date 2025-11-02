@@ -9,32 +9,22 @@ room for customization.
 
 The avatar thumbnail can be used at different sizes based on our design tokens. The default size is <code>64px</code>.
 
-<uxdot-example color-palette="lightest" width-adjustment="823px">
-  <img alt="Image of all avatar thumbnail sizes and their pixel values underneath"
-       src="../avatar-usage-sizes.png"
-       width="823"
-       height="152">
+<uxdot-example color-palette="lightest">
+  <img alt="Nine different avatar thumbnail sizes ranging from very small to large."
+       src="../avatar-guidelines-sizes.svg"
+       width="784"
+       height="128">
 </uxdot-example>
-
-<rh-table>
-
-| Variation and range  | Use case                                                  |
-|----------------------|-----------------------------------------------------------|
-| Small (16px - 32px)  | Use these sizes in accordions, data lists, or tables      |
-| Medium (40px - 80px) | Use these sizes in layouts, bands, or cards               |
-| Large (96px - 128px) | Use these sizes in profile displays or account interfaces |
-
-</rh-table>
 
 ## Writing content
   
 Separate each part of the job title and company name with a comma.
 
-<uxdot-example color-palette="lightest" width-adjustment="611px">
-  <img alt="Image of three job details text, ranging from short to long"
-       src="../avatar-writing-content.png"
-       width="611"
-       height="181"> 
+<uxdot-example color-palette="lightest">
+  <img alt="Three avatars with profile images and description text ranging from short to long."
+       src="../avatar-guidelines-writing-content.svg"
+       width="678"
+       height="256"> 
 </uxdot-example>
 
 ## Layout
@@ -44,55 +34,42 @@ Separate each part of the job title and company name with a comma.
 The avatar thumbnail and job details text can be horizontally or vertically 
 centered.
 
-<uxdot-example color-palette="lightest" width-adjustment="625px">
-  <img alt="Image of two avatar groups; one is horizontally centered and the other is vertically centered"
-       src="../avatar-usage-alignment.png"
-       width="625"
-       height="119">
-</uxdot-example>
-
-
-### Stacking
-
-There should be a spacing of `--rh-space-3xl` between avatar groups that are stacked vertically.
-
-<uxdot-example color-palette="lightest" width-adjustment="385px">
-  <img alt="Image of three avatar groups stacked vertically"
-       src="../avatar-usage-stacking.png"
-       width="385"
-       height="288">
+<uxdot-example color-palette="lightest">
+  <img alt="Two avatar groups; one is horizontally centered and the other is vertically centered"
+       src="../avatar-guidelines-layout-alignment.svg"
+       width="504"
+       height="122">
 </uxdot-example>
 
 ## Responsive design
 
-### Large breakpoints
+### Large screens
 
-<uxdot-example color-palette="lightest" variant="full" no-border alignment="left" width-adjustment="1000px">
-  <img alt="Image of two avatar groups used on large breakpoints; one is aligned left and the other is aligned in the center"
-       src="../avatar-breakpoints-large.png"
+<uxdot-example color-palette="lightest" variant="full" no-border alignment="left">
+  <img alt="Two avatar groups used on large breakpoints; one is aligned left and the other is aligned in the center"
+       src="../avatar-guidelines-responsive-design-large.svg"
        width="1000"
        height="215">
 </uxdot-example>
 
 ### Small breakpoints
 
-<uxdot-example color-palette="lightest" variant="full" no-border alignment="left" width-adjustment="576px">
-  <img alt="Image of four avatar groups used on small breakpoints; two are aligned left and the other two are aligned in the center"
-       src="../avatar-breakpoints-small.png"
-       width="576"
-       height="492">
+<uxdot-example color-palette="lightest" variant="full" no-border alignment="left">
+  <img alt="Two avatars on small breakpoints; One is left aligned and one is center aligned (image and description)."
+       src="../avatar-guidelines-responsive-design-small.svg"
+       width="360"
+       height="239">
 </uxdot-example>
 
 ### Line breaks
 
-As breakpoints or containers get smaller, regardless if job details text will 
-break to more lines, it is still anchored at the top.
+As screens or containers get smaller, text is still anchored to the top.
 
-<uxdot-example color-palette="lightest" width-adjustment="498px">
-  <img alt="Image of two avatar groups with specs on top; one has two lines and the other has five lines"
-       src="../avatar-line-breaks.png"
-       width="498"
-       height="96">
+<uxdot-example color-palette="lightest">
+  <img alt="Two avatar groups with design specs overlayed; one has two lines and the other has five lines"
+       src="../avatar-guidelines-line-breaks.svg"
+       width="710"
+       height="244">
 </uxdot-example>
 
 ## Best practices
@@ -101,7 +78,7 @@ break to more lines, it is still anchored at the top.
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example color-palette="lightest" width-adjustment="226px" slot="image">
+    <uxdot-example color-palette="lightest" width-adjustment="226" slot="image">
       <img alt="Default avatar thumbnail in a circle next to 'Ada Lovelace, Computer programmer' text"
            src="../avatar-best-practices-shape-do.svg"
            width="226"
@@ -111,7 +88,7 @@ break to more lines, it is still anchored at the top.
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example color-palette="lightest" width-adjustment="226px" slot="image">
+    <uxdot-example color-palette="lightest" width-adjustment="226" slot="image">
       <img alt="Default avatar thumbnail in a square next to 'Ada Lovelace, Computer programmer' text"
            src="../avatar-best-practices-shape-dont.svg"
            width="226"

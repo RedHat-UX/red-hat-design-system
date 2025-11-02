@@ -1,0 +1,26 @@
+<div class="resizable">
+  <rh-subnav label-scroll-left="Scroll back" label-scroll-right="Scroll forward">
+    <a href="#">Users</a>
+    <a href="#">Containers</a>
+    <a href="#">Databases</a>
+    <a href="#" aria-current="page">Servers</a>
+    <a href="#">System</a>
+    <a href="#">Network</a>
+    <a href="#">Cloud</a>
+  </rh-subnav>
+</div>
+
+
+<link rel="stylesheet" href="../rh-subnav-lightdom.css">
+<script type="module">
+  import '@rhds/elements/rh-subnav/rh-subnav.js';
+</script>
+
+<style>
+  .resizable {
+    width: 320px;
+    overflow: hidden;
+    resize: horizontal;
+    padding-block-end: var(--rh-space-md, 8px);
+  }
+</style>

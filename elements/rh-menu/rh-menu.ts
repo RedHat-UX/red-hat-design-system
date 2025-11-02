@@ -4,8 +4,11 @@ import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
+import { RhMenuItem } from './rh-menu-item.js';
+import { RhMenuItemGroup } from './rh-menu-item-group.js';
 
 import styles from './rh-menu.css';
 
@@ -31,10 +34,14 @@ export class RhMenu extends LitElement {
   static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 
   @queryAssignedElements() private _menuItems!: HTMLElement[];
+  #items!: HTMLElement[];
 
-  #tabindex = RovingTabindexController.of<HTMLElement>(this, {
-    getItems: () => this.getItems(this._menuItems),
+  #tabindex: RovingTabindexController<HTMLElement> = RovingTabindexController.of(this, {
+    getItems: () => this.getItems(this.#items ? this.#items : this._menuItems),
   });
+
+  // eslint-disable-next-line no-unused-private-class-members
+  #internals = InternalsController.of(this, { role: 'menubar' });
 
   /**
    * override or set to add items to the roving tab index controller
@@ -51,23 +58,54 @@ export class RhMenu extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.id ||= getRandomId('menu');
-    this.setAttribute('role', 'menu'); // TODO: use InternalsController.role when support/polyfill is better
-    if (!isServer) {
-      this.#onSlotchange();
-    }
+    this.#onSlotchange();
   }
 
   render() {
     return html`
       <!-- menu items -->
-      <slot part="menu"
-            @slotchange="${this.#onSlotchange}"></slot>
+      <slot @slotchange="${this.#onSlotchange}" part="menu"></slot>
     `;
   }
 
   #onSlotchange() {
-    for (const item of this._menuItems ?? []) {
-      item.setAttribute('role', 'menuitem');
+    if (!isServer) {
+      this.#items = this._menuItems.flatMap((element: Element) => {
+        if (element instanceof HTMLSlotElement) {
+          const assigned = element.assignedElements().filter(
+            (el): el is HTMLElement => !(el instanceof HTMLHRElement)
+          );
+
+          const items = assigned.flatMap(el => {
+            if (el instanceof RhMenuItemGroup) {
+              return Array.from(el.querySelectorAll('rh-menu-item'));
+            }
+            return [el];
+          });
+
+          return items;
+        } else {
+          if (element instanceof HTMLHRElement) {
+            // Skip <hr> elements
+            return [];
+          }
+
+          if (element instanceof RhMenuItem) {
+            return [element];
+          } else if (element instanceof RhMenuItemGroup) {
+            return Array.from(element.querySelectorAll('rh-menu-item'));
+          } else if (element instanceof HTMLElement) {
+            if (!element.hasAttribute('role')) {
+              element.setAttribute('role', 'menuitem');
+            }
+            return [element];
+          } else {
+            return [];
+          }
+        }
+      });
+
+      this.#tabindex.hostUpdate();
     }
   }
 

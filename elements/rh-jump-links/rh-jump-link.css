@@ -1,7 +1,7 @@
 :host {
   display: block;
   position: relative;
-  width: max-content;
+  width: 100%;
 }
 
 a {
