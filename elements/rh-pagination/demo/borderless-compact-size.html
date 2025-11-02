@@ -1,4 +1,4 @@
-<rh-pagination variant="open">
+<rh-pagination id="constrain" variant="borderless" size="sm">
   <ol>
     <li><a href="#">1</a></li>
     <li><a href="#2">2</a></li>
@@ -9,6 +9,12 @@
 </rh-pagination>
 
 <link rel="stylesheet" href="../rh-pagination-lightdom.css">
+
+<style>
+  #constrain {
+    max-width: var(--rh-breakpoint-xs-max, 767px);
+  }
+</style>
 
 <script type="module">
   import '@rhds/elements/rh-pagination/rh-pagination.js';

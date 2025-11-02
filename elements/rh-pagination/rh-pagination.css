@@ -317,16 +317,16 @@ input:invalid:focus {
 }
 
 /*****************************************************************************
- * OPEN VARIANT
+ * BORDERLESS VARIANT
  *****************************************************************************/
 
-:host([variant|='open']) .stepper {
+:host([variant|='borderless']) .stepper {
   --_stepper-bg-color: transparent;
 }
 
-:host([variant|='open']) .stepper:hover:after,
-:host([variant|='open']) .stepper:focus:before,
-:host([variant|='open']) .stepper:focus:after {
+:host([variant|='borderless']) .stepper:hover:after,
+:host([variant|='borderless']) .stepper:focus:before,
+:host([variant|='borderless']) .stepper:focus:after {
   border-block-start-style: none;
   border-block-end-style: solid;
   inset-block-end: -1px;
