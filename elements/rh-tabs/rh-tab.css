@@ -14,7 +14,8 @@
   --rh-icon-size: var(--rh-size-icon-01, 16px);
 }
 
-::slotted(rh-icon) {
+rh-icon,
+::slotted(rh-icon[slot='icon']) {
   inline-size: var(--rh-icon-size);
   block-size: var(--rh-icon-size);
   flex: none;
