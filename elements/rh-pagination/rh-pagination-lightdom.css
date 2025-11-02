@@ -109,7 +109,8 @@ rh-pagination {
     align-self: start;
   }
 
-  &[variant|='borderless'] {
+  &[variant|='borderless'],
+  &[variant|='open'] {
     --_list-a-bg-color: transparent;
 
     li > a {

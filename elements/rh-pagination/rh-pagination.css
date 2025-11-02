@@ -320,13 +320,19 @@ input:invalid:focus {
  * BORDERLESS VARIANT
  *****************************************************************************/
 
-:host([variant|='borderless']) .stepper {
+ /* NOTE: the `open` variant is deprecated but aliased until the next major release. */
+ 
+:host([variant|='borderless']) .stepper,
+:host([variant|='open']) .stepper {
   --_stepper-bg-color: transparent;
 }
 
 :host([variant|='borderless']) .stepper:hover:after,
 :host([variant|='borderless']) .stepper:focus:before,
-:host([variant|='borderless']) .stepper:focus:after {
+:host([variant|='borderless']) .stepper:focus:after,
+:host([variant|='open']) .stepper:hover:after,
+:host([variant|='open']) .stepper:focus:before,
+:host([variant|='open']) .stepper:focus:after {
   border-block-start-style: none;
   border-block-end-style: solid;
   inset-block-end: -1px;
