@@ -74,6 +74,26 @@ Released October 31, 2025 🎃
 | `<rh-cta>`: Added new CSS tokens | {{i()}} | Added CSS APIs for `text-underline-offset` and `text-decoration` on focus. |
 | `<rh-disclosure>`: Added the `borderless` and `compact` variants | {{i()}} | `<rh-disclosure>` now has a `borderless` and a `compact` variant. |
 | `<rh-tile>`: Added support for all 6 color palettes | {{i()}} | Tile now accepts all six color palettes. |
+| `<rh-accordion>`: Accessibility fix | {{p()}} | Fixed axe accessibility error flagged in `<rh-accordion-header>`. |
+| `<rh-card>`: Fixed `flex` layout issue | {{p()}} | Corrected layout when contained in a `flex` parent. |
+| `<rh-tabs>`: Updated inactive background color | {{p()}} | Updated the background color of inactive box variant tabs. |
+| `<rh-jump-links>`: Fixed text wrapping | {{p()}} | Corrected text wrap for long links; allow wrapping to a new line. |
+| `<rh-footer>`: Reduced CLS issues | {{p()}} | Reduced Cumulative Layout Shift (CLS) before component upgrades or if JavaScript fails to load. |
+| `<rh-site-status>`: Updated background colors | {{p()}} | Updated light scheme background colors. |
+| `<rh-button>`: Updated dark scheme colors | {{p()}} | Updated colors and background colors on dark color schemes. |
+| `<rh-navigation-primary>`: Improved empty slot accessibility | {{p()}} | Improved accessibility when slots are empty. |
+| `<rh-navigation-primary>`: Improved navigtation label accessibility | {{p()}} | Improved accessibility of navigation label for screen readers. |
+| `<rh-navigation-primary>`: Fixed content search issues | {{p()}} | Corrected content menus opening during `command/ctrl` + `F` searches. |
+| `<rh-audio-player>`: Improved responsiveness | {{p()}} | Better responsiveness when inside non-full width containers. |
+| `<rh-back-to-top>`: Added dark color scheme support | {{p()}} | Back to Top now has dark color scheme support. |
+| `<rh-subnav>`: Deprecated `color-palette` attribute | {{p()}} | Corrected the implementation of and deprecated the `color-palette` attribute. |
+| `<rh-subnav>`: Fixed active page styling | {{p()}} | Corrected styling to reflect proper `aria-current="page"` usage for the active page. |
+| `<rh-subnav>`: Fixed overflow arrow display | {{p()}} | Fixed regression in overflow arrow display. |
+| `<rh-progress-stepper>`: Fixed fallback styles | {{p()}} | Corrected missing fallback styles. |
+| `<rh-pagination>`: Fixed paging behavior | {{p()}} | Corrected behavior using `aria-current="page"` attributes or fragment identifier URLs. |
+| `<rh-pagination>`: Added a token for disabled icon color | {{p()}} | Added a customizable token for disabled stepper icon color. |
+| `<rh-pagination>`: Updated dark scheme colors | {{p()}} | Updated dark scheme disabled button background color. |
+| `<rh-health-index>`: Fixed status tokens usage | {{p()}} | Fixed usage of status tokens for border, background, and text colors. |
 
 </rh-table>
 
