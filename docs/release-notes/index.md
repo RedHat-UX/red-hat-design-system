@@ -130,7 +130,7 @@ Released October 24, 2025
 
 | Change        | Type        | Notes        |
 | ------------- | ----------- | ------------ |
-| `<rh-code-block>`: fix expand button | {{p()}} | show expand button ("Show more") even when line numbers are hidden |
+| `<rh-code-block>`: fix expand button | {{p()}} | Show expand button ("Show more") even when line numbers are hidden |
 
 </rh-table>
 
