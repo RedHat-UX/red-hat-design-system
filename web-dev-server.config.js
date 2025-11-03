@@ -154,7 +154,7 @@ export default pfeDevServerConfig({
       }
     },
     /**
-     * redirect requests for /assets/ css to /docs/assets/
+     * redirect requests for /styles/ css to /docs/styles/
      * @param ctx koa context
      * @param next next koa middleware
      */
@@ -167,7 +167,10 @@ export default pfeDevServerConfig({
     },
     /**
      * serve lightdom CSS files directly from filesystem
-     * Handles: /elements/rh-foo-lightdom.css or /rh-foo/rh-foo-lightdom-*.css
+     * Handles multiple path patterns:
+     * 1. /elements/rh-foo/demo/../rh-foo-lightdom.css (relative from demo, resolves to /elements/rh-foo-lightdom.css)
+     * 2. /assets/packages/@rhds/elements/elements/rh-foo/rh-foo-lightdom.css (docs import map path)
+     * 3. Any other path ending with /rh-foo-lightdom.css
      * @param ctx koa context
      * @param next next koa middleware
      */
@@ -176,6 +179,7 @@ export default pfeDevServerConfig({
         return next();
       }
 
+      // Match lightdom CSS filename pattern anywhere in the path
       const match = ctx.path.match(/\/(rh-[\w-]+)-(lightdom(?:-[\w-]*)?)\.css$/);
       if (!match) {
         return next();
@@ -192,8 +196,9 @@ export default pfeDevServerConfig({
         console.error(`Lightdom CSS not found: ${filePath}`);
         // eslint-disable-next-line no-console
         console.error(e);
+        // File not found, continue to next middleware
+        return next();
       }
-      return;
     },
     /**
      * @param ctx koa context

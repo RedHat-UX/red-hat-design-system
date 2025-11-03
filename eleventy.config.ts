@@ -46,6 +46,10 @@ const isWatch =
 
 const isLocal = !(process.env.CI || process.env.DEPLOY_URL);
 
+/**
+ * Eleventy configuration
+ * @param eleventyConfig - Eleventy configuration object
+ */
 export default async function(eleventyConfig: UserConfig) {
   eleventyConfig.setQuietMode(true);
 
@@ -68,6 +72,15 @@ export default async function(eleventyConfig: UserConfig) {
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
   eleventyConfig.addPassthroughCopy('docs/styles/**/*');
   eleventyConfig.addPassthroughCopy('docs/**/*.{css,js}');
+
+  // Copy CSS files (including lightdom CSS) for production builds
+  // During dev, TypescriptAssetsPlugin serves these on-demand
+  // For production, we need static files at /assets/packages/@rhds/elements/elements/{element}/{element}-lightdom*.css
+  // Only copy CSS files to avoid bloating the build with TS source files and tests
+  eleventyConfig.addPassthroughCopy({
+    'elements/**/*.css': '/assets/packages/@rhds/elements/elements',
+    'lib/**/*.css': '/assets/packages/@rhds/elements/lib',
+  });
 
   eleventyConfig.addWatchTarget('docs/styles/');
   eleventyConfig.addWatchTarget('docs/**/*.md');

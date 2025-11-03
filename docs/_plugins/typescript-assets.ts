@@ -47,6 +47,10 @@ async function transformTypescriptSource(sourcefile: string) {
   }
 }
 
+/**
+ * Eleventy plugin for handling TypeScript assets and on-demand transformation
+ * @param eleventyConfig - Eleventy configuration object
+ */
 export default function(eleventyConfig: UserConfig) {
   eleventyConfig.addExtension('11ty.ts', {
     key: '11ty.js',
