@@ -142,7 +142,7 @@ Released October 24, 2025
 
 | Change        | Type        | Notes        |
 | ------------- | ----------- | ------------ |
-| `<rh-code-block>`: performance improvements | {{p()}} | set content-visibility for improved performance on large pages with many codeblocks |
+| `<rh-code-block>`: performance improvements | {{p()}} | Set content-visibility for improved performance on large pages with many codeblocks |
 
 </rh-table>
 
