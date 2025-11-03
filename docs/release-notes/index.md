@@ -82,13 +82,13 @@ Released October 31, 2025 🎃
 | `<rh-health-index>`: fixed status tokens usage | {{p()}} | Fixed usage of status tokens for border, background, and text colors. |
 | `<rh-footer>`: reduced CLS issues | {{p()}} | Reduced Cumulative Layout Shift (CLS) before component upgrades or if JavaScript fails to load. |
 | `<rh-jump-links>`: fixed text wrapping | {{p()}} | Corrected text wrap for long links; allow wrapping to a new line. |
+| `<rh-navigation-primary>`: improved empty slot accessibility | {{p()}} | Improved accessibility when slots are empty. |
+| `<rh-navigation-primary>`: improved navigtation label accessibility | {{p()}} | Improved accessibility of navigation label for screen readers. |
+| `<rh-navigation-primary>`: fixed content search issues | {{p()}} | Corrected content menus opening during `command/ctrl` + `F` searches. |
 | `<rh-pagination>`: fixed paging behavior | {{p()}} | Corrected behavior using `aria-current="page"` attributes or fragment identifier URLs. |
 | `<rh-pagination>`: added a token for disabled icon color | {{p()}} | Added a customizable token for disabled stepper icon color. |
 | `<rh-pagination>`: updated dark scheme colors | {{p()}} | Updated dark scheme disabled button background color. |
 | `<rh-progress-stepper>`: fixed fallback styles | {{p()}} | Corrected missing fallback styles. |
-| `<rh-navigation-primary>`: improved empty slot accessibility | {{p()}} | Improved accessibility when slots are empty. |
-| `<rh-navigation-primary>`: improved navigtation label accessibility | {{p()}} | Improved accessibility of navigation label for screen readers. |
-| `<rh-navigation-primary>`: fixed content search issues | {{p()}} | Corrected content menus opening during `command/ctrl` + `F` searches. |
 | `<rh-site-status>`: updated background colors | {{p()}} | Updated light scheme background colors. |
 | `<rh-subnav>`: deprecated `color-palette` attribute | {{p()}} | Corrected the implementation of and deprecated the `color-palette` attribute. |
 | `<rh-subnav>`: fixed active page styling | {{p()}} | Corrected styling to reflect proper `aria-current="page"` usage for the active page. |
