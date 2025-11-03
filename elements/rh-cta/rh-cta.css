@@ -19,6 +19,7 @@ a,
 
   /** Sets the cta text decoration */
   text-decoration: var(--_text-decoration) !important;
+  text-underline-offset: var(--_text-underline-offset) !important;
   z-index: 2 !important;
 }
 
@@ -121,6 +122,10 @@ a:focus-within,
 
   /** Sets the cta text decoration on focus */
   --_text-decoration: var(--_focus-text-decoration);
+  --_text-underline-offset:
+    /* Sets the `text-underline-offset` for the cta text on focus */
+    var(--rh-cta-focus-text-underline-offset,
+      var(--rh-cta-hover-text-underline-offset));
 
   border-color: var(--_focus-border-color);
   background-color:
@@ -150,6 +155,9 @@ a:focus-within,
 
   /** Sets the cta text decoration on hover */
   --_text-decoration: var(--rh-cta-hover-text-decoration, var(--_hover-text-decoration));
+
+  /* Sets the `text-underline-offset` for the cta text on hover */
+  --_text-underline-offset: var(--rh-cta-hover-text-underline-offset);
 }
 
 :host(:hover) #container rh-icon {
@@ -312,6 +320,7 @@ a:focus-within,
   --_focus-inner-border-color:
     var(--rh-cta-focus-inner-border-color,
       var(--rh-color-text-primary-on-dark, #ffffff));
+  --_focus-text-decoration: var(--rh-cta-focus-text-decoration, none);
 
   /** Sets the cta background color on active */
   --_active-background-color:
@@ -349,6 +358,7 @@ a:focus-within,
   --_focus-inner-border-color:
     var(--rh-cta-focus-inner-border-color,
       var(--rh-color-border-strong));
+  --_focus-text-decoration: var(--rh-cta-focus-text-decoration, none);
   --_active-color: /** Sets the cta color on active. Applicable only for secondary variant */
     var(--rh-cta-active-color, var(--rh-color-text-primary));
   --_active-background-color:

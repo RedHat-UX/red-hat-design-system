@@ -1,0 +1,9 @@
+span {
+  margin-block: var(--rh-space-md, 8px);
+  padding-inline: var(--rh-space-lg, 16px);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-body-text-xs, 0.75rem);
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
+  line-height: 18px;
+  color: var(--rh-color-interactive-secondary-default);
+}

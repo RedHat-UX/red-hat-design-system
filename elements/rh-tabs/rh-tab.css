@@ -11,6 +11,14 @@
     var(--rh-border-width-sm, 1px)
     solid
     var(--rh-color-surface);
+  --rh-icon-size: var(--rh-size-icon-01, 16px);
+}
+
+rh-icon,
+::slotted(rh-icon[slot='icon']) {
+  inline-size: var(--rh-icon-size);
+  block-size: var(--rh-icon-size);
+  flex: none;
 }
 
 [part='text'] {
@@ -84,7 +92,7 @@
   &.box {
     background-color:
       light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-        oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h));
+        var(--rh-color-surface-darker, #1f1f1f));
   }
 
   /* When button is vertical format */

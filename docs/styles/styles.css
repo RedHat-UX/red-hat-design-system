@@ -126,8 +126,15 @@
     padding-block-end: var(--rh-space-lg);
   }
 
+  /**
+    * position masthead as fixed
+    * z-index: to float above scroll page content
+    */
   uxdot-masthead {
     grid-area: header;
+    position: fixed;
+    inset: 0;
+    z-index: var(--uxdot-masthead-z-index);
   }
 
   uxdot-sidenav {
@@ -233,10 +240,14 @@
     margin-block: var(--rh-space-lg);
   }
 
-  uxdot-example + figcaption ol {
+  uxdot-example + figcaption ol,
+  uxdot-example + figcaption p {
     color: var(--rh-color-text-secondary);
     font-size: var(--rh-font-size-body-text-sm, 0.875rem);
     line-height: var(--rh-line-height-body-text, 1.5);
+  }
+
+  uxdot-example + figcaption ol {
     list-style-position: inside;
   }
 
@@ -251,10 +262,6 @@
   uxdot-example + figcaption > ol ol {
     margin: 0;
   }
-}
-
-rh-alert code {
-  font-size: inherit;
 }
 
 @layer patterns {
@@ -326,20 +333,10 @@ rh-alert code {
   }
 
   /**
-     * position masthead as fixed
-     * z-index: to float above scroll page content
-     */
-  uxdot-masthead {
-    position: fixed;
-    inset: 0;
-    z-index: var(--uxdot-masthead-z-index);
-  }
-
-  /**
-     * Sticky header pattern
-     * progressive enhancement sticky, using :has()
-     * z-index: of masthead + 1
-     */
+    * Sticky header pattern
+    * progressive enhancement sticky, using :has()
+    * z-index: of masthead + 1
+    */
   uxdot-header:has(rh-subnav) {
     position: sticky;
     top: -54px; /* masthead height (72px) + subnav height (56px) - header mobile height (182px) */
@@ -365,22 +362,39 @@ rh-alert code {
 
 @layer overrides {
   /**
-     * Overrides layer for overriding component and site styles
-     */
-
-  /* TODO: Document this bug table overflows vertically causing a scrollbar when it shouldn't */
-  rh-table {
-    overflow-y: unset;
-  }
+   * Overrides layer for overriding component and site styles
+   */
 
   /* Compact tile + Uxdot Example reduce overall spacing */
   rh-tile[compact] uxdot-example::part(container) {
     margin-block-end: 0;
   }
 
-  rh-alert p {
-    /* TODO: Document this bug shouldn't have to force the font size
-               the component is trying to set internally on #description */
-    font-size: var(--rh-font-size-body-text-md) !important;
+  rh-alert {
+    & p {
+      /* TODO: Document this bug shouldn't have to force the font size
+      the component is trying to set internally on #description */
+      font-size: var(--rh-font-size-body-text-md) !important;
+    }
+
+    & code {
+      font-size: inherit;
+    }
+  }
+
+  rh-table {
+    /* TODO: Document this bug table overflows vertically causing a scrollbar when it shouldn't */
+    overflow-y: unset;
+
+    /* Hover state for copy permalink button when in a table row */
+    & tr {
+      &:hover {
+        --uxdot-copy-permalink-button-background:
+          light-dark(
+              var(--rh-color-surface-light),
+              var(--rh-color-surface-darker)
+            );
+      }
+    }
   }
 }

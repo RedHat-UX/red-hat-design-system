@@ -28,6 +28,11 @@ import styles from './rh-progress-stepper.css';
 
 type ProgressStepsOrientation = 'horizontal' | 'vertical';
 
+/**
+ * Breakpoint mappings for responsive behavior.
+ * Used to determine when to switch to vertical orientation
+ * based on container width rather than viewport width.
+ */
 const BREAKPOINTS = new Map(Object.entries({
   '2xs': '320px',
   'xs': BreakpointXs,
@@ -47,6 +52,17 @@ const BREAKPOINTS = new Map(Object.entries({
  * - fail (failed to occur)
  * Or a custom state, set using the `icon` attribute.
  *
+ * ## Usage guidelines
+ * - Use 3-5 steps maximum to reduce cognitive load
+ * - Designed to complement standard previous/next navigation. Avoid using as the only navigation.
+ * - When process is completed, users cannot go back and must start over
+ *
+ * ## Accessibility
+ * - Communicates list structure and step states to screen readers
+ * - Supports keyboard navigation for linked step titles
+ * - Maintains logical focus order (left to right, top to bottom)
+ * - Provides aria-current for the active step
+ *
  * @summary Communicate how many steps are required to complete a process
  *
  * @alias Progress stepper
@@ -59,19 +75,36 @@ export class RhProgressStepper extends LitElement {
   /**
    * Makes the element `vertical` at various container query based breakpoints.
    * Breakpoints available 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+   *
+   * Use when horizontal space becomes limited. The element automatically
+   * changes to vertical orientation at screen sizes of <768px.
    */
   @property({ reflect: true, attribute: 'vertical-at' })
   verticalAt?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' = undefined;
 
   /**
-   * Sets the orientation of the progress stepper
-   * - `horizontal` - Steps are displayed in a horizontal row
+   * Sets the orientation of the progress stepper.
+   * - `horizontal` - Steps are displayed in a horizontal row (default)
    * - `vertical` - Steps are displayed in a vertical column
+   *
+   * ## Responsive behavior
+   * - >992px: Padding between steps is set to --rh-space-5xl
+   * - ≤992px: Padding reduces to --rh-space-2xl
+   * - <768px: Orientation automatically changes to vertical
+   *
+   * Use vertical orientation when horizontal space is limited or when
+   * you need to display more detailed step information.
    */
   @property({ reflect: true }) orientation: ProgressStepsOrientation = 'horizontal';
 
   /**
-   * Makes element display as `compact`
+   * Makes element display as `compact`.
+   *
+   * ## Usage guidelines
+   * - Use when there is limited space and less visual prominence is needed
+   * - Maintain the compact size as designed - do not stretch spacing between steps
+   * - Switch to default size or different orientation instead of stretching compact
+   * - Always include step titles even in compact mode for accessibility
    */
   @provide({ context: compactContext })
   @property({ reflect: true, type: Boolean }) compact = false;
@@ -79,12 +112,18 @@ export class RhProgressStepper extends LitElement {
   /**
    * Defines the current step, so it can be marked as such with ARIA,
    * and so its label can be displayed in compact layouts.
+   *
+   * ## Accessibility
+   * This property ensures only one step is marked with aria-current="step"
+   * as required by ARIA specification. Screen readers announce this step
+   * as the current location in the process.
    */
   @provide({ context: currentStepContext })
   @state() private currentStep: RhProgressStep | null = null;
 
   /**
    * Set when ResizeObserver detects width is less than the breakpoint (default: `--rh-breakpoint-sm`)
+   * When true, the stepper switches to vertical orientation automatically.
    */
   @state() private mobile = true;
 
@@ -95,14 +134,19 @@ export class RhProgressStepper extends LitElement {
 
   #maxWidth = 768;
 
-  /** normalized string content of the current step */
+  /**
+   * Normalized string content of the current step
+   * Extracts text content from the current step's title and description
+   * for screen reader accessibility and visual display.
+   */
   #contentString = '';
 
   #resizeTimeoutId?: number;
 
   /**
+   * ResizeObserver for responsive behavior.
+   * This callback is debounced with a simple timeout to prevent excessive updates.
    *
-   * This callback is debounced with a simple timeout.
    * In the future, we should consider StyleObserver:
    * @see https://www.bram.us/2025/02/24/solved-by-styleobserver-element-matchcontainer/
    * @see https://github.com/LeaVerou/style-observer/
@@ -122,6 +166,11 @@ export class RhProgressStepper extends LitElement {
     }, 100);
   });
 
+  /**
+   * Initializes responsive behavior on first update.
+   * Sets mobile state based on element width,
+   * ensuring the stepper displays correctly on initial load.
+   */
   protected override firstUpdated(): void {
     // ensure we update initially on client hydration
     const isHydrated = isServer && !this.hasUpdated;
@@ -132,6 +181,7 @@ export class RhProgressStepper extends LitElement {
 
   override connectedCallback(): void {
     super.connectedCallback();
+    // Set ARIA role="list" to communicate list structure to screen reader
     this.role = 'list';
     if (!isServer) {
       this.#ro?.observe(this);
@@ -147,23 +197,35 @@ export class RhProgressStepper extends LitElement {
 
     return html`
       <div id="container" class="${classMap({ compact, vertical, [currentState]: true })}">
+        <!-- "Current step" label for screen readers and compact display -->
+        <!-- Visually hidden except in compact mode -->
         <strong id="current-step"
                 class="visually-hidden"
                 ?hidden="${!compact}">${this.#contentString}</strong>
-        <!-- Use this slot for \`<rh-progress-step>\` items -->
+        <!-- Use this slot for \`<rh-progress-step>\` items
+             Each step should include title and optional description -->
         <slot id="step-list" @change="${this.#onChange}"></slot>
       </div>
     `;
   }
 
+  /**
+   * Handles change events from progress steps.
+   * Updates the current step state for accessibility and visual feedback.
+   *
+   * @param event - The change event from a progress step
+   */
   #onChange(event: Event) {
     if (event instanceof RhProgressStepChangeEvent) {
       this.#updateState();
     }
   }
 
+  /**
+   * Updates the current step state and content
+   */
   #updateState() {
-    // all steps with `[state=active]`, `fail` or `warn`
+    // Identifies all steps with `[state=active]`, `fail` or `warn`
     // `[state=complete]` is not a stateful step, since `complete` is always a past step
     const statefulSteps =
       this.querySelectorAll(/* css */`
@@ -179,6 +241,7 @@ export class RhProgressStepper extends LitElement {
       this.currentState = this.currentStep.state || '';
       this.#contentString = '';
       // Use childNodes instead of children to access both Element and Text nodes
+      // This ensures we capture all text content for accessibility
       for (const node of this.currentStep.childNodes) {
         if (node instanceof Element && !node.hasAttribute('slot')) {
           this.#contentString += node.textContent?.trim();
@@ -189,6 +252,10 @@ export class RhProgressStepper extends LitElement {
     }
   }
 
+  /**
+   * Handles changes to the verticalAt property.
+   * Updates the breakpoint threshold for responsive vertical orientation switching.
+   */
   @observes('verticalAt')
   protected verticalAtChanged() {
     const breakpoint = BREAKPOINTS.get(this.verticalAt!);

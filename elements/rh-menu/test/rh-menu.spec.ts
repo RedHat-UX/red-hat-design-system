@@ -1,7 +1,10 @@
 import { expect, html, aTimeout } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { sendKeys } from '@web/test-runner-commands';
+import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
+
 import { RhMenu } from '@rhds/elements/rh-menu/rh-menu.js';
+
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 
 describe('<rh-menu>', function() {
@@ -15,8 +18,9 @@ describe('<rh-menu>', function() {
   }
 
   beforeEach(async function() {
+    /* Explict Role of menubar is added to the element to because element internals is ignored */
     element = await createFixture <RhMenu>(html`
-      <rh-menu>
+      <rh-menu role="menubar">
         <button id="item1">Menuitem1</button>
         <button id="item2">Menuitem2</button>
         <button id="item3">Menuitem3</button>
@@ -36,10 +40,10 @@ describe('<rh-menu>', function() {
     expect(document.createElement('rh-menu')).to.be.an.instanceof(RhMenu);
   });
 
-  it('is accessible', async function() {
+  it('should be accessible', async function() {
+    /* we ignore the aria-allowed-role as the rh-menu applies menubar role in element internals */
     await Promise.resolve(expect(element).to.be.accessible({
-      // the host should have the right semantics and delegates to the shadow root.
-      // ignoredRules: ['aria-hidden-focus'],
+      ignoredRules: ['aria-allowed-role'],
     }));
   });
 
@@ -221,6 +225,84 @@ describe('<rh-menu>', function() {
 
         it('should focus on item1', function() {
           expect(document.activeElement).and.to.have.id('item1');
+        });
+      });
+    });
+  });
+
+  describe('menu items', async function() {
+    beforeEach(async function() {
+      /* Explict Role of menubar and menuitem are added to the elements to because element internals is ignored */
+      element = await createFixture <RhMenu>(html`
+        <rh-menu role="menubar">
+          <rh-menu-item role="menuitem">Menuitem1</rh-menu-item>
+          <rh-menu-item role="menuitem">Menuitem2</rh-menu-item>
+          <rh-menu-item role="menuitem">Menuitem3</rh-menu-item>
+        </rh-menu>
+      `);
+    });
+
+    beforeEach(async function() {
+      await element.updateComplete;
+    });
+
+    it('should be accessible', async function() {
+      expect(element).to.be.accessible();
+    });
+
+    describe('tabbing to the element', function() {
+      beforeEach(press('Tab'));
+
+      it('focuses the first item', async function() {
+        const snapshot = await a11ySnapshot();
+        const menu = snapshot?.children?.find(x => x.role === 'menubar');
+        const focused = menu?.children?.find(x => x.focused);
+        expect(focused).to.deep.include({ role: 'menuitem', name: 'Menuitem1', focused: true });
+      });
+    });
+  });
+
+  describe('on focus-out behavior', function() {
+    describe('menu items', async function() {
+      beforeEach(async function() {
+        element = await createFixture<RhMenu>(html`
+          <rh-menu role="menubar">
+            <rh-menu-item role="menuitem">Menuitem1</rh-menu-item>
+            <rh-menu-item role="menuitem">Menuitem2</rh-menu-item>
+            <rh-menu-item role="menuitem">Menuitem3</rh-menu-item>
+          </rh-menu>
+        `);
+      });
+
+      beforeEach(async function() {
+        await element.updateComplete;
+      });
+
+      it('should be accessible', async function() {
+        expect(element).to.be.accessible();
+      });
+
+      describe('tabbing to the element', function() {
+        beforeEach(press('Tab'));
+
+        it('focuses the first item', async function() {
+          const snapshot = await a11ySnapshot();
+          const menu = snapshot?.children?.find(x => x.role === 'menubar');
+          const focused = menu?.children?.find(x => x.focused);
+          expect(focused).to.deep.include({ role: 'menuitem', name: 'Menuitem1', focused: true });
+        });
+
+        describe('move the focus out of the element', function() {
+          beforeEach(async function() {
+            await press('Tab');
+            await aTimeout(300);
+            await element.updateComplete;
+          });
+
+          it('should close the dropdown when focused out', async function() {
+            await aTimeout(100);
+            expect(document.activeElement).to.not.equal(element);
+          });
         });
       });
     });
