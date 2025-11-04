@@ -22,7 +22,7 @@ Here is guidance on when to use a call to action vs. button.
 <rh-table id="cta-vs-btn">
 
 | Element        | Intended action                            | Frequency              |
-|----------------|--------------------------------------------|-------------------------|
+|----------------|--------------------------------------------|------------------------|
 | Call to action | Direct users to another page when selected | Always                 |
 | Button         | Perform an action when selected            | Depending on the action, users may or may not be directed to another page as the result of the action |
 
@@ -38,9 +38,9 @@ Some calls to action can be used more than once per page depending on their mess
 |------------------|------------------------------------------------------------------|
 | Primary          | Try to use only once per page for the most important link        |
 | Secondary        | Use several times on the same page for important links           |
-| Tertiary         | Use several times on the same page for less important links      |
+| Default          | Use several times on the same page for less important links      |
 | Brick            | Use to group several links together in a grid                    |
-| Video            | Use to trigger a video within a [dialog](/elements/dialog/)      |
+| Video            | Use to trigger a video within a [dialog](/elements/dialog/)      |
 | Desaturated      | Use only in the dark scheme if other styles are duplicative or violate accessibility guidelines |
 
 </rh-table>
@@ -103,17 +103,17 @@ Most users do not want to spend more time reading than necessary, so keep text a
 
 ### Placement
 
-Calls to action can be placed in just about any layout or interface. For normal environments, using any style is acceptable. For small environments, use the Tertiary style.
+Calls to action can be placed in just about any layout or interface. For normal environments, using any style is acceptable. For small environments, use the Default style.
 
 ### Hierarchy
 
 Calls to action follow a hierarchy with the Primary style being the most important.
 
-<uxdot-example color-palette="lightest" width-adjustment="720px">
+<uxdot-example color-palette="lightest" width-adjustment="890px">
   <img src="../cta-guidelines-layout-hierarchy.svg"
-        alt="Use Primary CTA's once or twice per page. Secondary CTA's can be used several times. Tertiary and Brick can be used many times."
-        width="720"
-        height="245">
+        alt="Use Primary CTA's once or twice per page. Secondary CTA's can be used several times. Default and Brick can be used many times."
+        width="890"
+        height="236">
 </uxdot-example>
 
 ### Bricks
@@ -135,7 +135,7 @@ Calls to action are grouped by hierarchy with the Primary style always being fir
   <img src="../cta-guidelines-layout-grouping.svg"
         alt="Four sets of CTAs. In each, the hierarchy cascades from most important to least important, left to right."
         width="796"
-        height="210">
+        height="226">
 </uxdot-example>
 
 ### Space when grouped
@@ -151,11 +151,11 @@ Spacing between Brick variants is flexible and should be the same as [grid gutte
         height="264">
 </uxdot-example>
 
-<uxdot-example color-palette="lightest" width-adjustment="396px">
+<uxdot-example color-palette="lightest" width-adjustment="400px">
   <img src="../cta-guidelines-layout-space-b.svg"
-        alt="Four tertiary CTAs with 32px of margin between each one."
-        width="396"
-        height="86">
+        alt="Four Default CTAs with 32px of margin between each one."
+        width="400"
+        height="88">
 </uxdot-example>
 
 <uxdot-example color-palette="lightest" width-adjustment="936px">

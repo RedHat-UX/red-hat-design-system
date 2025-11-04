@@ -8,6 +8,7 @@
     "rh-stat": "Statistic",
     "rh-navigation-primary": "Navigation (primary)",
     "rh-navigation-secondary": "Navigation (secondary)",
+    "rh-navigation-vertical": "Navigation (vertical)",
     "rh-subnav": "Subnavigation"
   },
   "site": {

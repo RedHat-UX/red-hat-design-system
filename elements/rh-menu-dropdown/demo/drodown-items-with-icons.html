@@ -1,0 +1,32 @@
+<div id="menu-dropdown-container">
+  <rh-menu-dropdown>
+    <span slot="toggle-label">Basic toggle</span>
+    <rh-menu-item><rh-icon slot="icon" set="ui" icon="profile"></rh-icon> Action one</rh-menu-item>
+    <rh-menu-item><rh-icon slot="icon" set="ui" icon="profile"></rh-icon> Action two</rh-menu-item>
+    <rh-menu-item><rh-icon slot="icon" set="ui" icon="profile"></rh-icon> Action three</rh-menu-item>
+    <rh-menu-item disabled><rh-icon slot="icon" set="ui" icon="profile"></rh-icon> Disabled Action</rh-menu-item>
+    <hr/>
+    <rh-menu-item><rh-icon slot="icon" set="ui" icon="document"></rh-icon> Separated action</rh-menu-item>
+  
+  </rh-menu-dropdown>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-menu-dropdown/rh-menu-dropdown.js';
+  import '@rhds/elements/rh-menu/rh-menu-item.js';
+
+  const dropdown = document.querySelector('rh-menu-dropdown');
+  dropdown.addEventListener('select', e => {
+    console.log('Selected:', e.text);
+  });
+</script>
+
+<style>
+#menu-dropdown-container {
+  padding: 1rem;
+
+  rh-menu-dropdown {
+    width: 296px;
+  }
+}
+</style>
