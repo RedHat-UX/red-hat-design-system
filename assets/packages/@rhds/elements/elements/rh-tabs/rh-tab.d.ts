@@ -1,4 +1,3 @@
-import type { IconNameFor, IconSetName } from '@rhds/icons';
 import { LitElement } from 'lit';
 export declare class TabExpandEvent extends Event {
     active: boolean;
@@ -16,10 +15,6 @@ export declare class RhTab extends LitElement {
     active: boolean;
     /** True when the tab is disabled */
     disabled: boolean;
-    /** Icon name to display in the tab */
-    icon?: IconNameFor<IconSetName>;
-    /** Icon set used for displaying the icon */
-    iconSet: IconSetName;
     private box;
     private vertical;
     private manual;
@@ -28,7 +23,6 @@ export declare class RhTab extends LitElement {
     private lastTab;
     connectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
-    protected iconChanged(): void;
     private activeChanged;
     /**
      * if a tab is disabled, then it is also aria-disabled
