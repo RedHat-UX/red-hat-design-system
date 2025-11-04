@@ -8,10 +8,13 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-// Rewrite DEMO lightdom css relative URLs
-const LIGHTDOM_HREF_RE = /href="\.(?<pathname>.*-lightdom.*\.css)"/g;
-const LIGHTDOM_PATH_RE = /href="\.(.*)"/;
+// Rewrite DEMO lightdom css URLs - matches both relative (../rh-foo-lightdom.css) and absolute (/rh-foo/rh-foo-lightdom.css) paths
+const LIGHTDOM_HREF_RE = /href="([./].*-lightdom.*\.css)"/g;
 
+/**
+ * Eleventy plugin to handle demo page transformations
+ * @param eleventyConfig - The Eleventy configuration object
+ */
 export default function(eleventyConfig: UserConfig) {
   eleventyConfig.addPassthroughCopy('docs/demo.{js,map,ts}');
 
@@ -58,11 +61,27 @@ export default function(eleventyConfig: UserConfig) {
         const matches = content.match(LIGHTDOM_HREF_RE);
         if (matches) {
           for (const match of matches) {
-            const [, path] = match.match(LIGHTDOM_PATH_RE) ?? [];
-            const { pathname } = new URL(path, `file:///${outputPath}`);
-            const filename = pathname.split('/').pop();
+            // Extract the path from the match (group 1)
+            const [, path] = match.match(/href="([^"]+)"/) ?? [];
+            if (!path) {
+              continue;
+            }
+
+            // Extract the filename and tag name from the path
+            // Handles both "../rh-foo-lightdom.css" and "/rh-foo/rh-foo-lightdom.css"
+            const pathParts = path.split('/');
+            const filename = pathParts.pop() ?? '';
+
+            // For paths like "/rh-foo/rh-foo-lightdom.css", the tag name is the second-to-last part
+            // For paths like "../rh-foo-lightdom.css", extract tag name from filename
+            let elementName = pathParts.pop();
+            if (!elementName || elementName === '..' || elementName === '.') {
+              // Extract from filename: "rh-foo-lightdom.css" -> "rh-foo"
+              elementName = filename.replace(/-lightdom.*\.css$/, '');
+            }
+
             const replacement = `/assets/packages/@rhds/elements/elements/${prefixedTagName}/${filename}`;
-            content = content.replace(`.${path}`, replacement);
+            content = content.replace(match, `href="${replacement}"`);
           }
         }
       }

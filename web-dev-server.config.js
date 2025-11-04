@@ -167,7 +167,7 @@ export default pfeDevServerConfig({
     },
     /**
      * serve lightdom CSS files directly from filesystem
-     * Handles: /elements/rh-foo-lightdom.css or /rh-foo/rh-foo-lightdom-*.css
+     * Handles: /rh-foo/rh-foo-lightdom.css or /rh-foo/rh-foo-lightdom-*.css
      * @param ctx koa context
      * @param next next koa middleware
      */
