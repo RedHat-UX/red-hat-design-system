@@ -79,6 +79,11 @@
     white-space: nowrap;
     border: 0;
   }
+
+  ::selection {
+    background-color: var(--rh-color-text-selection, currentColor);
+    color: var(--rh-color-text-selection-foreground, inherit);
+  }
 }
 
 @layer layout {
