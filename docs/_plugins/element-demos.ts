@@ -2,8 +2,9 @@ import type { UserConfig } from '@11ty/eleventy';
 import * as Parse5 from 'parse5';
 import * as Tools from '@parse5/tools';
 
-// Rewrite DEMO lightdom css URLs - matches both relative (../rh-foo-lightdom.css) and absolute (/rh-foo/rh-foo-lightdom.css) paths
-const LIGHTDOM_HREF_RE = /href="([./].*-lightdom.*\.css)"/g;
+// Match relative lightdom CSS paths (../rh-foo-lightdom.css),
+// but skip already-transformed asset paths (/assets/packages/...)
+const LIGHTDOM_HREF_RE = /href="((?!\/assets)[./].*-lightdom.*\.css)"/g;
 
 /**
  * Eleventy plugin to handle demo page transformations
