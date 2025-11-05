@@ -1,17 +1,18 @@
-@layer reset,
-fonts,
-tokens,
-typography,
-base,
-grid,
-layout,
-flow,
-third-party,
-not-defined,
-lightdom,
-patterns,
-page,
-overrides;
+@layer
+  reset,
+  fonts,
+  tokens,
+  typography,
+  base,
+  grid,
+  layout,
+  flow,
+  third-party,
+  not-defined,
+  lightdom,
+  patterns,
+  page,
+  overrides;
 
 @import url('not-defined.css') layer(not-defined);
 @import url('reset.css') layer(reset);
@@ -45,19 +46,12 @@ overrides;
       color: var(--rh-color-interactive-primary-focus);
       text-decoration-color: inherit;
       text-underline-offset: max(6px, 0.33em);
-
-      &:hover {
-        color: var(--rh-color-interactive-primary-focus);
-      }
+      &:hover { color: var(--rh-color-interactive-primary-focus); }
     }
 
-    &:visited {
-      /* stylelint-disable-line no-descending-specificity */
+    &:visited { /* stylelint-disable-line no-descending-specificity */
       color: var(--rh-color-interactive-primary-visited-default);
-
-      &:hover {
-        color: var(--rh-color-interactive-primary-visited-hover);
-      }
+      &:hover { color: var(--rh-color-interactive-primary-visited-hover); }
     }
   }
 
@@ -68,7 +62,7 @@ overrides;
     margin-block-end: var(--rh-space-2xl);
   }
 
-  figure>img {
+  figure > img {
     max-width: 100%;
   }
 
@@ -84,11 +78,6 @@ overrides;
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
-  }
-
-  ::selection {
-    background-color: var(--rh-color-text-selection, currentColor);
-    color: var(--rh-color-text-selection-foreground, inherit);
   }
 }
 
@@ -211,13 +200,13 @@ overrides;
     margin-block-end: var(--rh-space-lg);
   }
 
-  :where(h1, h2, h3, h4, h5, h6)+ :where(h2, h3, h4, h5, h6),
+  :where(h1, h2, h3, h4, h5, h6) + :where(h2, h3, h4, h5, h6),
   :where(uxdot-copy-permalink + uxdot-copy-permalink) {
     margin-block-start: var(--rh-space-2xl);
   }
 
-  :where(uxdot-copy-permalink, h1, h2, h3, h4, h5, h6)+uxdot-example,
-  :where(rh-alert)+uxdot-demo {
+  :where(uxdot-copy-permalink, h1, h2, h3 ,h4, h5 ,h6) + uxdot-example,
+  :where(rh-alert) + uxdot-demo {
     margin-block-start: var(--rh-space-lg);
   }
 
@@ -225,11 +214,11 @@ overrides;
     margin-block-end: 0;
   }
 
-  rh-alert+.grid,
-  rh-alert+uxdot-example,
-  rh-alert+rh-code-block,
-  rh-code-block+rh-alert,
-  rh-cta+uxdot-example {
+  rh-alert + .grid,
+  rh-alert + uxdot-example,
+  rh-alert + rh-code-block,
+  rh-code-block + rh-alert,
+  rh-cta + uxdot-example {
     margin-block-start: var(--rh-space-2xl);
   }
 
@@ -238,39 +227,39 @@ overrides;
   }
 
   /* TODO: look into this do we need this rule? */
-  uxdot-copy-permalink.h2+uxdot-copy-permalink.h3 {
+  uxdot-copy-permalink.h2 + uxdot-copy-permalink.h3 {
     --uxdot-copy-permalink-margin-block-start: 0;
   }
 
-  rh-alert+rh-alert {
+  rh-alert + rh-alert {
     margin-block-start: var(--rh-space-xl);
   }
 
-  uxdot-example+figcaption,
-  figcaption+uxdot-example {
+  uxdot-example + figcaption,
+  figcaption + uxdot-example {
     margin-block: var(--rh-space-lg);
   }
 
-  uxdot-example+figcaption ol,
-  uxdot-example+figcaption p {
+  uxdot-example + figcaption ol,
+  uxdot-example + figcaption p {
     color: var(--rh-color-text-secondary);
     font-size: var(--rh-font-size-body-text-sm, 0.875rem);
     line-height: var(--rh-line-height-body-text, 1.5);
   }
 
-  uxdot-example+figcaption ol {
+  uxdot-example + figcaption ol {
     list-style-position: inside;
   }
 
-  uxdot-example+figcaption>ol {
+  uxdot-example + figcaption > ol {
     padding-inline-start: 0;
   }
 
-  uxdot-example+figcaption>ol li {
+  uxdot-example + figcaption > ol li {
     margin-block: 0;
   }
 
-  uxdot-example+figcaption>ol ol {
+  uxdot-example + figcaption > ol ol {
     margin: 0;
   }
 }
@@ -307,8 +296,9 @@ overrides;
     --_uxdot-kbd-color-border: var(--rh-color-border-subtle);
 
     background-color:
-      light-dark(var(--rh-color-surface-lightest),
-        var(--rh-color-surface-darkest));
+      light-dark(
+          var(--rh-color-surface-lightest),
+          var(--rh-color-surface-darkest));
     color: var(--rh-color-text-primary);
     border-radius: var(--rh-border-radius-default);
     border: var(--rh-border-width-sm) solid var(--_uxdot-kbd-color-border);
@@ -349,20 +339,17 @@ overrides;
     */
   uxdot-header:has(rh-subnav) {
     position: sticky;
-    top: -54px;
-    /* masthead height (72px) + subnav height (56px) - header mobile height (182px) */
+    top: -54px; /* masthead height (72px) + subnav height (56px) - header mobile height (182px) */
 
     /* z-index 1 under masthead to allow content to scroll under */
     z-index: calc(var(--uxdot-masthead-z-index) - 1);
 
     @container main (min-width: 768px) {
-      top: -70px;
-      /* masthead (72px) + subnav (56px) - header tablet (198px) */
+      top: -70px; /* masthead (72px) + subnav (56px) - header tablet (198px) */
     }
 
     @container main (min-width: 992px) {
-      top: -118px;
-      /* masthead (72px) + subnav (56px) - header desktop (246px) */
+      top: -118px; /* masthead (72px) + subnav (56px) - header desktop (246px) */
     }
   }
 
@@ -403,10 +390,11 @@ overrides;
     & tr {
       &:hover {
         --uxdot-copy-permalink-button-background:
-          light-dark(var(--rh-color-surface-light),
-            var(--rh-color-surface-darker));
+          light-dark(
+              var(--rh-color-surface-light),
+              var(--rh-color-surface-darker)
+            );
       }
     }
   }
-
 }
