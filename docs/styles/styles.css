@@ -1,4 +1,5 @@
-@layer reset,
+@layer
+  reset,
   fonts,
   tokens,
   typography,
@@ -45,19 +46,12 @@
       color: var(--rh-color-interactive-primary-focus);
       text-decoration-color: inherit;
       text-underline-offset: max(6px, 0.33em);
-
-      &:hover {
-        color: var(--rh-color-interactive-primary-focus);
-      }
+      &:hover { color: var(--rh-color-interactive-primary-focus); }
     }
 
-    &:visited {
-      /* stylelint-disable-line no-descending-specificity */
+    &:visited { /* stylelint-disable-line no-descending-specificity */
       color: var(--rh-color-interactive-primary-visited-default);
-
-      &:hover {
-        color: var(--rh-color-interactive-primary-visited-hover);
-      }
+      &:hover { color: var(--rh-color-interactive-primary-visited-hover); }
     }
   }
 
@@ -88,8 +82,10 @@
 
   ::selection {
     background-color:
-      light-dark(var(--rh-color-blue-20, #b9dafc),
-        rgba(from var(--rh-color-blue-40, #4394e5) r g b / 0.005));
+      light-dark(
+          var(--rh-color-blue-20, #b9dafc),
+          rgba(from var(--rh-color-blue-40, #4394e5) r g b / 0.5)
+        );
   }
 }
 
@@ -217,7 +213,7 @@
     margin-block-start: var(--rh-space-2xl);
   }
 
-  :where(uxdot-copy-permalink, h1, h2, h3, h4, h5, h6) + uxdot-example,
+  :where(uxdot-copy-permalink, h1, h2, h3 ,h4, h5 ,h6) + uxdot-example,
   :where(rh-alert) + uxdot-demo {
     margin-block-start: var(--rh-space-lg);
   }
@@ -308,8 +304,9 @@
     --_uxdot-kbd-color-border: var(--rh-color-border-subtle);
 
     background-color:
-      light-dark(var(--rh-color-surface-lightest),
-        var(--rh-color-surface-darkest));
+      light-dark(
+          var(--rh-color-surface-lightest),
+          var(--rh-color-surface-darkest));
     color: var(--rh-color-text-primary);
     border-radius: var(--rh-border-radius-default);
     border: var(--rh-border-width-sm) solid var(--_uxdot-kbd-color-border);
@@ -350,23 +347,17 @@
     */
   uxdot-header:has(rh-subnav) {
     position: sticky;
-    top: -54px;
-
-    /* masthead height (72px) + subnav height (56px) - header mobile height (182px) */
+    top: -54px; /* masthead height (72px) + subnav height (56px) - header mobile height (182px) */
 
     /* z-index 1 under masthead to allow content to scroll under */
     z-index: calc(var(--uxdot-masthead-z-index) - 1);
 
     @container main (min-width: 768px) {
-      top: -70px;
-
-      /* masthead (72px) + subnav (56px) - header tablet (198px) */
+      top: -70px; /* masthead (72px) + subnav (56px) - header tablet (198px) */
     }
 
     @container main (min-width: 992px) {
-      top: -118px;
-
-      /* masthead (72px) + subnav (56px) - header desktop (246px) */
+      top: -118px; /* masthead (72px) + subnav (56px) - header desktop (246px) */
     }
   }
 
@@ -407,8 +398,10 @@
     & tr {
       &:hover {
         --uxdot-copy-permalink-button-background:
-          light-dark(var(--rh-color-surface-light),
-            var(--rh-color-surface-darker));
+          light-dark(
+              var(--rh-color-surface-light),
+              var(--rh-color-surface-darker)
+            );
       }
     }
   }
