@@ -7,7 +7,7 @@ A button group is two or more [Buttons](/elements/button/) grouped together. A b
 <figure>
   <uxdot-example color-palette="lightest" width-adjustment="680px">
     <img alt="Anatomy of a button group showing different combinations of buttons."
-      src="../button-group-anatomy.png"
+      src="../button-group-anatomy.svg"
       width="680"
       height="211" />
   </uxdot-example>
@@ -23,9 +23,11 @@ A button group is two or more [Buttons](/elements/button/) grouped together. A b
 
 ### Orientation
 
+Button groups are available in both horizontal and vertical orientations.
+
 <uxdot-example color-palette="lightest" width-adjustment="680px">
   <img alt="Diagram showing horizontal and vertical button group orientations." 
-    src="../button-group-orientation.png" 
+    src="../button-group-orientation.svg" 
     width="680" 
     height="211" />
 </uxdot-example>
@@ -38,7 +40,7 @@ Button groups are available in both light and dark color schemes.
 
 <uxdot-example color-palette="lightest"  width-adjustment="680px">
   <img alt="Button groups in a light color scheme."
-    src="../button-group-scheme-light.png" 
+    src="../button-group-scheme-light.svg" 
     width="680" 
     height="211" />
 </uxdot-example>
@@ -47,7 +49,7 @@ Button groups are available in both light and dark color schemes.
 
 <uxdot-example color-palette="darkest"  width-adjustment="680px">
   <img alt="Button groups in a dark color scheme."
-    src="../button-group-scheme-dark.png" 
+    src="../button-group-scheme-dark.svg" 
     width="680" 
     height="211" />
 </uxdot-example>
@@ -57,8 +59,8 @@ Button groups are available in both light and dark color schemes.
 When button groups are vertical, there is less padding.
 
 <uxdot-example color-palette="lightest" width-adjustment="680px">
-  <img alt="Diagram showing spacing for vertical and horizontal button groups." 
-    src="../button-group-space.png" 
+  <img alt="Button spacing between Primary and Secondary buttons, Primary and Link buttons, and between icon buttons is 16px horizontally and 8px vertically; Link buttons separated from other buttons use 48px horizontally and 32px vertically." 
+    src="../button-group-space.svg" 
     width="680" 
     height="211" />
 </uxdot-example>

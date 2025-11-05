@@ -10,8 +10,8 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 
 /**
- * A button group organizes multiple related buttons into a single collection,
- * providing visual grouping and coordinated keyboard navigation behavior.
+ * A button group visually organizes multiple related buttons into a single
+ * collection.
  *
  * @summary Organize multiple related buttons into a single collection
  *

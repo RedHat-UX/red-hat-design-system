@@ -7,7 +7,7 @@ To reduce [cognitive load](https://www.nngroup.com/articles/minimize-cognitive-l
 
 <uxdot-example color-palette="lightest" width-adjustment="680px">
   <img alt="Examples of button group usage showing correct and incorrect number of buttons." 
-    src="../button-group-usage-number-of-buttons.png" width="680" 
+    src="../button-group-usage-number-of-buttons.svg" width="680" 
     height="211" />
 </uxdot-example>
 
@@ -25,7 +25,7 @@ It is important to establish visual hierarchy between buttons in your designs. B
 
 <uxdot-example color-palette="lightest" width-adjustment="680px">
   <img alt="Diagram showing button hierarchy in groups." 
-    src="../button-group-layout-hierarchy-1.png" width="680" 
+    src="../button-group-layout-hierarchy-1.svg" width="680" 
     height="211" />
 </uxdot-example>
 
@@ -33,7 +33,7 @@ When it comes to wizards and other similar elements, the primary action is the *
 
 <uxdot-example color-palette="lightest" width-adjustment="680px">
   <img alt="Example of a button group in a wizard."
-    src="../button-group-layout-hierarchy-2.png" width="680" 
+    src="../button-group-layout-hierarchy-2.svg" width="680" 
     height="211" />
 </uxdot-example>
 
@@ -45,7 +45,7 @@ When it comes to wizards and other similar elements, the primary action is the *
   <uxdot-best-practice variant="do">
     <uxdot-example color-palette="lightest" width-adjustment="454px" slot="image">
       <img alt="A group with three buttons." 
-        src="../button-group-best-practice-1-do.png"
+        src="../button-group-best-practice-1-do.svg"
         width="454"
         height="135">
     </uxdot-example>
@@ -54,7 +54,7 @@ When it comes to wizards and other similar elements, the primary action is the *
   <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="454px" slot="image">
       <img alt="A group with six buttons, which is too many." 
-        src="../button-group-best-practice-1-dont.png"
+        src="../button-group-best-practice-1-dont.svg"
         width="454"
         height="135">
     </uxdot-example>
@@ -68,7 +68,7 @@ When it comes to wizards and other similar elements, the primary action is the *
   <uxdot-best-practice variant="do">
     <uxdot-example color-palette="lightest" width-adjustment="454px" slot="image">
       <img alt="A button group with one primary button and two secondary buttons." 
-        src="../button-group-best-practice-2-do.png"
+        src="../button-group-best-practice-2-do.svg"
         width="454"
         height="135">
     </uxdot-example>
@@ -77,7 +77,7 @@ When it comes to wizards and other similar elements, the primary action is the *
   <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="454px" slot="image">
       <img alt="A button group with two primary buttons, which is incorrect." 
-        src="../button-group-best-practice-2-dont.png"
+        src="../button-group-best-practice-2-dont.svg"
         width="454"
         height="135">
     </uxdot-example>
