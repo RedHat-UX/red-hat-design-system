@@ -56,26 +56,28 @@ Some of our elements may receive errors or warnings that are false positives fro
           width="680"
           height="485">
     </uxdot-example>
-    <figcaption>Axe Dev Tools report showing a critical false positive on a certain ARIA role not having the required child elements.</figcaption>
+    <figcaption>Axe Dev Tools report showing a false positive on a certain ARIA role not having the required child elements.</figcaption>
   </figure>
   <figure>
     <uxdot-example color-palette="lightest" width-adjustment="872px">
       <img src="/assets/accessibility/lighthouse-false-positive.avif"  
-          alt="Lighthouse report with critical issue on 'Elements with an ARIA [role] that require children to contain a specific [role] are missing some or all of those required children.'"
+          alt="Screenshot of Lighthouse reports 'Elements with an ARIA [role] that require children to contain a specific [role] are missing some or all of those required children.'"
           width="680"
           height="485">
     </uxdot-example>
-    <figcaption>Lighthouse report showing a critical false positive on a missing ARIA role.</figcaption>
+    <figcaption>Lighthouse report showing a false positive about a missing ARIA role.</figcaption>
   </figure>
 </div>
 
-In many of these instances, these false positives could be due to an expectation, like an ARIA `role`, on a Custom Element where that role is already being set using the [ElementInternals API](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals).
+In many cases, these false positives occur because automated tools expect to see an ARIA `role` or `aria-*` attribute explicitly defined on a Custom Element, even though that `role` or attribute is already being applied through the [ElementInternals API](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals).
 
-Through the use of the ElementInternals API, we can apply a `role` directly to the Custom Element as if it was a native HTML element, which will show in the Custom Element's [accessibility tree](#accessibility-tools-built-into-the-browser-inspector) and be read by [screen readers](/accessibility/screen-readers/) properly. This is one of many reasons why it's important to also do [manual testing](/accessibility/manual-testing/) instead of relying on automated tools.
+By using the ElementInternals API, we can assign roles and other accessibility properties directly to a Custom Element, just like a native HTML element. These roles appear correctly in the [accessibility tree](#accessibility-tools-built-into-the-browser-inspector) and are interpreted properly by [screen readers](/accessibility/screen-readers/).
+
+Note: at the time of this writing, automated accessibility tooling cannot detect accessibility features added via the ElementInternals API. This highlights why [manual testing](/accessibility/manual-testing/) is essential—automated tools can miss or misinterpret accessibility implementations that rely on newer APIs.
 
 <rh-alert state="info">
   <h3 slot="header">Note</h3>
-  <p>Our team is currently working with Deque and others to update their automated tools to recognize the ElementInternals API among other modern Web Platform technologies that our design system uses.</p>
+  <p>Our team is working with Deque and others to improve automated accessibility tools, ensuring they correctly detect the ElementInternals API and other modern Web Platform features implemented in our design system.</p>
 </rh-alert>
 
 ## Browser inspectors
