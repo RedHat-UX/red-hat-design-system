@@ -2,5 +2,5 @@
 "@rhds/elements": patch
 ---
 
-Fixed border-radius in <rh-card> to use the correct token
+`<rh-card>`: improved theming of card border radiuses
   
