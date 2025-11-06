@@ -61,7 +61,10 @@ export class RhButtonGroup extends LitElement {
   }
 
   override render() {
-    return html`<slot @slotchange="${this.#onSlotchange}"></slot>`;
+    return html`
+      <!-- Place \`<rh-button>\` elements or native \`<button>\` elements here to organize them into a button group. -->
+      <slot @slotchange="${this.#onSlotchange}"></slot>
+    `;
   }
 }
 
