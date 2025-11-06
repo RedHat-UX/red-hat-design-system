@@ -29,7 +29,10 @@
       margin-block: 0 var(--rh-space-lg, 16px);
       display: flex;
       gap: var(--rh-space-lg, 16px);
-      color: var(--rh-color-text-brand-on-light, #ee0000);
+      color: light-dark(
+        var(--rh-color-text-brand-on-light, #ee0000),
+        var(--rh-color-text-primary-on-dark, #ffffff)
+      );
       line-height: var(--rh-line-height-body-text, 1.5);
     }
   }
