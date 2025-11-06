@@ -44,6 +44,40 @@ In addition to WCAG versions 2.0, 2.1, and 2.2, Equal Access Checker can run sca
 
 [Equal Access Checker](https://www.ibm.com/able/toolkit/tools/#develop) can be installed as a browser extension in Chrome, Firefox, and Edge. It’s also available as CI/CD Node packages.
 
+### False positives in automated tools
+
+Some of our elements may receive errors or warnings that are false positives from automated testing tools, like the following:
+
+<div class="grid sm-two-columns">
+  <figure>
+    <uxdot-example color-palette="lightest" width-adjustment="872px">
+      <img src="/assets/accessibility/axe-dev-tools-false-positive.avif"  
+          alt="Axe Dev Tools showing a critical issue on 'Certain ARIA roles must contain particular children.'"
+          width="680"
+          height="485">
+    </uxdot-example>
+    <figcaption>Axe Dev Tools report showing a critical false positive on a certain ARIA role not having the required child elements.</figcaption>
+  </figure>
+  <figure>
+    <uxdot-example color-palette="lightest" width-adjustment="872px">
+      <img src="/assets/accessibility/lighthouse-false-positive.avif"  
+          alt="Lighthouse report with critical issue on 'Elements with an ARIA [role] that require children to contain a specific [role] are missing some or all of those required children.'"
+          width="680"
+          height="485">
+    </uxdot-example>
+    <figcaption>Lighthouse report showing a critical false positive on a missing ARIA role.</figcaption>
+  </figure>
+</div>
+
+In many of these instances, these false positives could be due to an expectation, like an ARIA `role`, on a Custom Element where that role is already being set using the [ElementInternals API](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals).
+
+Through the use of the ElementInternals API, we can apply a `role` directly to the Custom Element as if it was a native HTML element, which will show in the Custom Element's [accessibility tree](#accessibility-tools-built-into-the-browser-inspector) and be read by [screen readers](/accessibility/screen-readers/) properly. This is one of many reasons why it's important to also do [manual testing](/accessibility/manual-testing/) instead of relying on automated tools.
+
+<rh-alert state="info">
+  <h3 slot="header">Note</h3>
+  <p>Our team is currently working with Deque and others to update their automated tools to recognize the ElementInternals API among other modern Web Platform technologies that our design system uses.</p>
+</rh-alert>
+
 ## Browser inspectors
 
 You can’t just view a page’s source and trust that the code you’re seeing there reflects what the browser is interpreting. Inspecting elements shows what’s really going on with them—after they’ve been inserted, modified, or deleted by JavaScript.
