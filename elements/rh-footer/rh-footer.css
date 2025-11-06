@@ -27,7 +27,7 @@
   overflow-y: initial;
 }
 
-footer,
+.footer,
 .global-base {
   --_icon-color: var(--rh-footer-icon-color, var(--rh-color-gray-40, #a3a3a3));
   --_icon-color-hover: var(--rh-footer-icon-color-hover, var(--rh-color-gray-30, #c7c7c7));
