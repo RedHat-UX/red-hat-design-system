@@ -44,7 +44,7 @@ In addition to WCAG versions 2.0, 2.1, and 2.2, Equal Access Checker can run sca
 
 [Equal Access Checker](https://www.ibm.com/able/toolkit/tools/#develop) can be installed as a browser extension in Chrome, Firefox, and Edge. It’s also available as CI/CD Node packages.
 
-### False positives in automated tools
+### False positives on Custom Elements in automated tools
 
 Some of our elements may receive errors or warnings that are false positives from automated testing tools, like the following:
 
