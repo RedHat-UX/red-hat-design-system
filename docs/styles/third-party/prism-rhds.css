@@ -10,11 +10,15 @@
  * Based off prism.css
  **/
 
-pre[class*='language-'] {
+pre[class*='language-'],
+:not(pre) > code[class*='language-'] {
   color: var(--rh-color-text-primary);
+  background:
+    light-dark(var(--rh-color-surface-lighter),
+      var(--rh-color-surface-dark));
   background: none;
   font-size: 1em;
-  text-align: left;
+  text-align: start;
   white-space: pre;
   word-spacing: normal;
   word-break: normal;
@@ -44,13 +48,6 @@ pre[class*='language-'] {
   padding: 1em;
   margin: 0.5em 0;
   overflow: auto;
-}
-
-:not(pre) > code[class*='language-'],
-pre[class*='language-'] {
-  background:
-    light-dark(var(--rh-color-surface-lighter),
-      var(--rh-color-surface-dark));
 }
 
 /* Inline code */
