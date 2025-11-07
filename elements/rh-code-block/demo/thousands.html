@@ -1197,7 +1197,7 @@ Previous version restored: 2.4.9</code></pre>
   </code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="yaml" actions="wrapine-numbers="hidden"> <pre class="language-yaml"><code class="language-yaml">apiVersion: apps/v1kind: Deployment
+<rh-code-block highlighting="prerendered" compact language="yaml" actions="copy" line-numbers="hidden"> <pre class="language-yaml"><code class="language-yaml">apiVersion: apps/v1kind: Deployment
 metadata:
   name: web-app
 spec:
@@ -1442,7 +1442,7 @@ end</code></pre>
 }</code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="plaintext" actions="wrapine-numbers="hidden"> <pre class="language-plaintext"><code class="language-plaintext">Deployment successful!Application version: 2.5.0
+<rh-code-block highlighting="prerendered" compact language="plaintext" actions="copy" line-numbers="hidden"> <pre class="language-plaintext"><code class="language-plaintext">Deployment successful!Application version: 2.5.0
 Environment: production
 Replicas: 5
 Health check: PASSED
@@ -1916,7 +1916,7 @@ createServer(app).listen(PORT, () =&gt; {
   </code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="bash" actions="wrapine-numbers="hidden"> <pre class="language-bash"><code class="language-bash">#!/bin/bash
+<rh-code-block highlighting="prerendered" compact language="bash" actions="copy" line-numbers="hidden"> <pre class="language-bash"><code class="language-bash">#!/bin/bash
 for node in $(oc get nodes -o jsonpath='{.items[*].metadata.name}'); do
   echo "Processing node: $node"
   oc adm cordon "$node"
@@ -3026,7 +3026,7 @@ Deployment time: 2m 34s</code></pre>
   </code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="bash" actions="wrapine-numbers="hidden"> <pre class="language-bash"><code class="language-bash">    <span class="token comment">#!/bin/bash</span>
+<rh-code-block highlighting="prerendered" compact language="bash" actions="copy" line-numbers="hidden"> <pre class="language-bash"><code class="language-bash">    <span class="token comment">#!/bin/bash</span>
 
     <span class="token builtin class-name">set</span> <span class="token parameter variable">-euo</span> pipefail
 
@@ -3794,7 +3794,7 @@ spec:
           value: postgres://db:5432</code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="plaintext" actions="wrapine-numbers="hidden"> <pre class="language-plaintext"><code class="language-plaintext">Error: Connection timeoutRetrying... (attempt 1/3)
+<rh-code-block highlighting="prerendered" compact language="plaintext" actions="copy" line-numbers="hidden"> <pre class="language-plaintext"><code class="language-plaintext">Error: Connection timeoutRetrying... (attempt 1/3)
 Retrying... (attempt 2/3)
 Retrying... (attempt 3/3)
 Failed to connect to database
@@ -4636,7 +4636,7 @@ done
 echo "All nodes processed"</code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="yaml" actions="wrapine-numbers="hidden"> <pre class="language-yaml"><code class="language-yaml">    <span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<rh-code-block highlighting="prerendered" compact language="yaml" actions="copy" line-numbers="hidden"> <pre class="language-yaml"><code class="language-yaml">    <span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
     <span class="token key atrule">kind</span><span class="token punctuation">:</span> Pod
     <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
       <span class="token key atrule">name</span><span class="token punctuation">:</span> example<span class="token punctuation">-</span>pod
@@ -4983,7 +4983,7 @@ echo "All nodes processed"</code></pre>
 end</code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="json" actions="wrapine-numbers="hidden"> <pre class="language-json"><code class="language-json">{  "apiVersion": "v1",
+<rh-code-block highlighting="prerendered" compact language="json" actions="copy" line-numbers="hidden"> <pre class="language-json"><code class="language-json">{  "apiVersion": "v1",
   "kind": "Config",
   "clusters": [{
     "name": "my-cluster",
@@ -5891,7 +5891,7 @@ curl -f http://localhost:3000/health || exit 1
 echo "Deployment completed successfully"</code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="json" actions="wrapine-numbers="hidden"> <pre class="language-json"><code class="language-json">    <span class="token punctuation">{</span>
+<rh-code-block highlighting="prerendered" compact language="json" actions="copy" line-numbers="hidden"> <pre class="language-json"><code class="language-json">    <span class="token punctuation">{</span>
       <span class="token property">"users"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
         <span class="token punctuation">{</span>
           <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
@@ -6019,7 +6019,7 @@ createServer(app).listen(PORT, () =&gt; {
 }</code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="ruby" actions="wrapine-numbers="hidden"> <pre class="language-ruby"><code class="language-ruby">    <span class="token keyword">module</span> <span class="token class-name">ApiClient</span>
+<rh-code-block highlighting="prerendered" compact language="ruby" actions="copy" line-numbers="hidden"> <pre class="language-ruby"><code class="language-ruby">    <span class="token keyword">module</span> <span class="token class-name">ApiClient</span>
       <span class="token keyword">class</span> <span class="token class-name">Base</span>
         <span class="token keyword">include</span> HTTParty
         base_uri <span class="token constant">ENV</span><span class="token punctuation">[</span><span class="token string-literal"><span class="token string">'API_BASE_URL'</span></span><span class="token punctuation">]</span>
@@ -6305,7 +6305,7 @@ spec:
     - containerPort: 80</code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="plaintext" actions="wrapine-numbers="hidden"> <pre class="language-plaintext"><code class="language-plaintext">    Deployment successful!
+<rh-code-block highlighting="prerendered" compact language="plaintext" actions="copy" line-numbers="hidden"> <pre class="language-plaintext"><code class="language-plaintext">    Deployment successful!
     Application version: 2.5.0
     Environment: production
     Replicas: 5
@@ -6429,7 +6429,7 @@ spec:
     targetPort: 9376</code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="bash" actions="wrapine-numbers="hidden"> <pre class="language-bash"><code class="language-bash">    <span class="token comment">#!/bin/bash</span>
+<rh-code-block highlighting="prerendered" compact language="bash" actions="copy" line-numbers="hidden"> <pre class="language-bash"><code class="language-bash">    <span class="token comment">#!/bin/bash</span>
 
     <span class="token keyword">for</span> <span class="token for-or-select variable">node</span> <span class="token keyword">in</span> <span class="token variable"><span class="token variable">$(</span>oc get nodes <span class="token parameter variable">-o</span> <span class="token assign-left variable">jsonpath</span><span class="token operator">=</span><span class="token string">'{.items[*].metadata.name}'</span><span class="token variable">)</span></span><span class="token punctuation">;</span> <span class="token keyword">do</span>
       <span class="token builtin class-name">echo</span> <span class="token string">"Processing node: <span class="token variable">$node</span>"</span>
@@ -7272,7 +7272,7 @@ const debounce = (func, wait) =&gt; {
   </code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="plaintext" actions="wrapine-numbers="hidden"> <pre class="language-plaintext"><code class="language-plaintext">    Deployment successful!
+<rh-code-block highlighting="prerendered" compact language="plaintext" actions="copy" line-numbers="hidden"> <pre class="language-plaintext"><code class="language-plaintext">    Deployment successful!
     Application version: 2.5.0
     Environment: production
     Replicas: 5
@@ -8113,7 +8113,7 @@ const debounce = (func, wait) =&gt; {
 }</code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="bash" actions="wrapine-numbers="hidden"> <pre class="language-bash"><code class="language-bash">#!/bin/bash
+<rh-code-block highlighting="prerendered" compact language="bash" actions="copy" line-numbers="hidden"> <pre class="language-bash"><code class="language-bash">#!/bin/bash
 set -euo pipefail
 
 BACKUP_DIR="/var/backups"
@@ -8617,7 +8617,7 @@ spec:
   </code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="ruby" actions="wrapine-numbers="hidden"> <pre class="language-ruby"><code class="language-ruby">require 'sinatra'require 'json'
+<rh-code-block highlighting="prerendered" compact language="ruby" actions="copy" line-numbers="hidden"> <pre class="language-ruby"><code class="language-ruby">require 'sinatra'require 'json'
 
 set :port, 4567
 set :bind, '0.0.0.0'
@@ -9764,7 +9764,7 @@ const debounce = (func, wait) =&gt; {
   </code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="plaintext" actions="wrapine-numbers="hidden"> <pre class="language-plaintext"><code class="language-plaintext">Deployment successful!Application version: 2.5.0
+<rh-code-block highlighting="prerendered" compact language="plaintext" actions="copy" line-numbers="hidden"> <pre class="language-plaintext"><code class="language-plaintext">Deployment successful!Application version: 2.5.0
 Environment: production
 Replicas: 5
 Health check: PASSED
@@ -11661,7 +11661,7 @@ control-plane-3                Ready    master   15d   v1.28.2</code></pre>
 export default DataService;</code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="ruby" actions="wrapine-numbers="hidden"> <pre class="language-ruby"><code class="language-ruby">require 'sinatra'require 'json'
+<rh-code-block highlighting="prerendered" compact language="ruby" actions="copy" line-numbers="hidden"> <pre class="language-ruby"><code class="language-ruby">require 'sinatra'require 'json'
 
 set :port, 4567
 set :bind, '0.0.0.0'
@@ -11744,7 +11744,7 @@ curl -f http://localhost:3000/health || exit 1
 echo "Deployment completed successfully"</code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="plaintext" actions="wrapine-numbers="hidden"> <pre    class="language-plaintext"
+<rh-code-block highlighting="prerendered" compact language="plaintext" actions="copy" line-numbers="hidden"> <pre    class="language-plaintext"
   ><code class="language-plaintext">NAME                           STATUS   ROLES    AGE   VERSION
 worker-node-1                  Ready    worker   15d   v1.28.2
 worker-node-2                  Ready    worker   15d   v1.28.2
@@ -13019,7 +13019,7 @@ const debounce = (func, wait) =&gt; {
   </code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="plaintext" actions="wrapine-numbers="hidden"> <pre class="language-plaintext"><code class="language-plaintext">    Deployment successful!
+<rh-code-block highlighting="prerendered" compact language="plaintext" actions="copy" line-numbers="hidden"> <pre class="language-plaintext"><code class="language-plaintext">    Deployment successful!
     Application version: 2.5.0
     Environment: production
     Replicas: 5
@@ -16815,7 +16815,7 @@ spec:
   </code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="plaintext" actions="wrapine-numbers="hidden"> <pre class="language-plaintext"><code class="language-plaintext">    Error: Connection timeout
+<rh-code-block highlighting="prerendered" compact language="plaintext" actions="copy" line-numbers="hidden"> <pre class="language-plaintext"><code class="language-plaintext">    Error: Connection timeout
     Retrying... (attempt 1/3)
     Retrying... (attempt 2/3)
     Retrying... (attempt 3/3)
@@ -17915,7 +17915,7 @@ find "$BACKUP_DIR" -name "db_backup_*.sql.gz" -mtime +7 -delete
 echo "Backup completed successfully"</code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="yaml" actions="wrapine-numbers="hidden"> <pre class="language-yaml"><code class="language-yaml">    <span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<rh-code-block highlighting="prerendered" compact language="yaml" actions="copy" line-numbers="hidden"> <pre class="language-yaml"><code class="language-yaml">    <span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
     <span class="token key atrule">kind</span><span class="token punctuation">:</span> Service
     <span class="token key atrule">metadata</span><span class="token punctuation">:</span>
       <span class="token key atrule">name</span><span class="token punctuation">:</span> my<span class="token punctuation">-</span>service
@@ -18584,7 +18584,7 @@ spec:
           value: postgres://db:5432</code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="yaml" actions="wrapine-numbers="hidden"> <pre class="language-yaml"><code class="language-yaml">apiVersion: apps/v1kind: Deployment
+<rh-code-block highlighting="prerendered" compact language="yaml" actions="copy" line-numbers="hidden"> <pre class="language-yaml"><code class="language-yaml">apiVersion: apps/v1kind: Deployment
 metadata:
   name: web-app
 spec:
@@ -19214,7 +19214,7 @@ spec:
   </code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="ruby" actions="wrapine-numbers="hidden"> <pre class="language-ruby"><code class="language-ruby">    <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token operator">&lt;</span> ApplicationRecord
+<rh-code-block highlighting="prerendered" compact language="ruby" actions="copy" line-numbers="hidden"> <pre class="language-ruby"><code class="language-ruby">    <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token operator">&lt;</span> ApplicationRecord
       has_many <span class="token symbol">:posts</span><span class="token punctuation">,</span> <span class="token symbol">dependent</span><span class="token operator">:</span> <span class="token symbol">:destroy</span>
       has_many <span class="token symbol">:comments</span>
 
@@ -19275,7 +19275,7 @@ createServer(app).listen(PORT, () =&gt; {
 });</code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="json" actions="wrapine-numbers="hidden"> <pre class="language-json"><code class="language-json">{  "users": [
+<rh-code-block highlighting="prerendered" compact language="json" actions="copy" line-numbers="hidden"> <pre class="language-json"><code class="language-json">{  "users": [
     {
       "id": 1,
       "name": "John Doe",
@@ -20561,7 +20561,7 @@ export default DataService;</code></pre>
   </code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="ruby" actions="wrapine-numbers="hidden"> <pre class="language-ruby"><code class="language-ruby">    <span class="token keyword">require</span> <span class="token string-literal"><span class="token string">'sinatra'</span></span>
+<rh-code-block highlighting="prerendered" compact language="ruby" actions="copy" line-numbers="hidden"> <pre class="language-ruby"><code class="language-ruby">    <span class="token keyword">require</span> <span class="token string-literal"><span class="token string">'sinatra'</span></span>
     <span class="token keyword">require</span> <span class="token string-literal"><span class="token string">'json'</span></span>
 
     set <span class="token symbol">:port</span><span class="token punctuation">,</span> <span class="token number">4567</span>
@@ -20734,7 +20734,7 @@ echo "All nodes processed"</code></pre>
 }</code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="yaml" actions="wrapine-numbers="hidden"> <pre class="language-yaml"><code class="language-yaml">apiVersion: v1kind: Pod
+<rh-code-block highlighting="prerendered" compact language="yaml" actions="copy" line-numbers="hidden"> <pre class="language-yaml"><code class="language-yaml">apiVersion: v1kind: Pod
 metadata:
   name: example-pod
   namespace: default
@@ -21024,7 +21024,7 @@ error 404 do
 end</code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="ruby" actions="wrapine-numbers="hidden"> <pre class="language-ruby"><code class="language-ruby">module ApiClient  class Base
+<rh-code-block highlighting="prerendered" compact language="ruby" actions="copy" line-numbers="hidden"> <pre class="language-ruby"><code class="language-ruby">module ApiClient  class Base
     include HTTParty
     base_uri ENV['API_BASE_URL']
 
@@ -21155,7 +21155,7 @@ error 404 do
 end</code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="plaintext" actions="wrapine-numbers="hidden"> <pre class="language-plaintext"><code class="language-plaintext">    Error: Connection timeout
+<rh-code-block highlighting="prerendered" compact language="plaintext" actions="copy" line-numbers="hidden"> <pre class="language-plaintext"><code class="language-plaintext">    Error: Connection timeout
     Retrying... (attempt 1/3)
     Retrying... (attempt 2/3)
     Retrying... (attempt 3/3)
