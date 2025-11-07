@@ -46,6 +46,8 @@ In addition to WCAG versions 2.0, 2.1, and 2.2, Equal Access Checker can run sca
 
 ### False positives on Custom Elements in automated tools
 
+At the time of this writing, automated accessibility tooling cannot detect accessibility features added via the ElementInternals API. This highlights why [manual testing](/accessibility/manual-testing/) is essential—automated tools can miss or misinterpret accessibility implementations that rely on newer APIs.
+
 Some of our elements may receive errors or warnings that are false positives from automated testing tools, like the following:
 
 <div class="grid sm-two-columns">
@@ -72,8 +74,6 @@ Some of our elements may receive errors or warnings that are false positives fro
 In many cases, these false positives occur because automated tools expect to see an ARIA `role` or `aria-*` attribute explicitly defined on a Custom Element, even though that `role` or attribute is already being applied through the [ElementInternals API](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals).
 
 By using the ElementInternals API, we can assign roles and other accessibility properties directly to a Custom Element, just like a native HTML element. These roles appear correctly in the [accessibility tree](#accessibility-tools-built-into-the-browser-inspector) and are interpreted properly by [screen readers](/accessibility/screen-readers/).
-
-Note: at the time of this writing, automated accessibility tooling cannot detect accessibility features added via the ElementInternals API. This highlights why [manual testing](/accessibility/manual-testing/) is essential—automated tools can miss or misinterpret accessibility implementations that rely on newer APIs.
 
 <rh-alert state="info">
   <h3 slot="header">Note</h3>
