@@ -15,8 +15,22 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import style from './rh-code-block.css';
 
 /**
- * Returns a string with common indent stripped from each line. Useful for templating HTML
- * @param str indented string
+ * Returns a string with common indent stripped from each line. Useful for templating HTML.
+ * This function removes leading whitespace that is common to all lines, making code samples
+ * more readable when they are indented in template literals.
+ *
+ * @param str - The indented string to process
+ * @returns The dedented string with common leading whitespace removed and trimmed
+ *
+ * @example
+ * ```ts
+ * const code = dedent(`
+ *     function hello() {
+ *       console.log('world');
+ *     }
+ *   `);
+ * // Returns: "function hello() {\n  console.log('world');\n}"
+ * ```
  */
 function dedent(str: string) {
   const stripped = str.replace(/^\n/, '');
@@ -25,16 +39,56 @@ function dedent(str: string) {
   return out.trim();
 }
 
+/**
+ * Information about code line heights used for calculating line number positioning.
+ * This interface is used internally to track the computed heights of individual lines
+ * in the code block for proper alignment with line numbers.
+ */
 interface CodeLineHeightsInfo {
+  /** Array of text content for each line */
   lines: string[];
+  /** Array of computed heights for each line in pixels (undefined if not yet calculated) */
   lineHeights: (number | undefined)[];
+  /** Temporary DOM element used to measure line heights */
   sizer: HTMLElement;
+  /** The height of a single line of text in pixels */
   oneLinerHeight: number;
 }
 
+/**
+ * WeakMap to track which document/shadow roots have already had Prism styles applied.
+ * This prevents duplicate style injection when multiple code blocks use prerendered highlighting.
+ * @internal
+ */
 const prismApplyPromises = new WeakMap();
 
+/**
+ * requestIdleCallback when available, requestAnimationFrame when not
+ * @param f callback
+ */
+const ric: typeof globalThis.requestIdleCallback =
+     globalThis.requestIdleCallback
+  ?? globalThis.requestAnimationFrame
+  ?? (async (f: () => void) => Promise.resolve().then(f));
+
+/**
+ * Custom event fired when the user requests to copy the code block content.
+ * The event is cancelable and allows modification of the copied content before
+ * it is written to the clipboard.
+ *
+ * @example
+ * ```ts
+ * codeBlock.addEventListener('copy', (event) => {
+ *   // Remove shell prompts from the copied text
+ *   event.content = event.content.replace(/^\$ /gm, '');
+ * });
+ * ```
+ */
 export class RhCodeBlockCopyEvent extends Event {
+  /**
+   * Creates a new RhCodeBlockCopyEvent
+   * @param content - The text content to copy to clipboard
+   */
   constructor(
     /** Text content to copy */
     public content: string
@@ -156,10 +210,21 @@ export class RhCodeBlock extends LitElement {
   /** When set to `hidden`, the code block's line numbers are hidden */
   @property({ reflect: true, attribute: 'line-numbers' }) lineNumbers?: 'hidden';
 
+  /**
+   * Controls when the component performs expensive calculations like line number height computation.
+   * - `lazy` (default): Uses intersection observer. Only calculates after the component has intersected at least once.
+   * - `immediate`: Load immediately, no intersection observer. Performs all calculations as the browser renders.
+   * - `deferred`: Uses requestIdleCallback to load when the main thread is available.
+   */
+  @property() load: 'lazy' | 'immediate' | 'deferred' = 'lazy';
+
+  /** Current state of the copy action button (default, active after copy, or failed) */
   @state() private copyButtonState: 'default' | 'active' | 'failed' = 'default';
 
+  /** Logger instance for error and debug messages */
   #logger = new Logger(this);
 
+  /** Slot controller for managing named slots and their content */
   #slots = new SlotController(
     this,
     null,
@@ -171,37 +236,112 @@ export class RhCodeBlock extends LitElement {
     'legend',
   );
 
+  /** Directive result from Prism.js highlighting (when highlighting="client") */
   #prismOutput?: DirectiveResult;
 
+  /** Whether the code block is currently intersecting the viewport (for lazy mode) */
   #isIntersecting = false;
-  #io = new IntersectionObserver(rs => {
-    const old = this.#isIntersecting;
-    const isIntersecting = rs.some(r => r.isIntersecting);
-    this.#isIntersecting = isIntersecting;
-    if (old !== isIntersecting) {
-      this.requestUpdate();
-    }
-    this.#computeLineNumbers();
-  }, { rootMargin: '50% 0px' });
 
-  #ro = new ResizeObserver(() => this.#computeLineNumbers());
+  /** Whether line number calculations have been completed (for lazy mode cleanup) */
+  #hasComputedLineNumbers = false;
 
+  /**
+   * Intersection observer to track visibility and optimize line number calculations.
+   * Only used in lazy mode. Uses a 50% root margin to precompute before the element enters the viewport.
+   */
+  #io: IntersectionObserver | null = null;
+
+  /** Array of text content for each line in the code block */
   #lines: string[] = [];
+
+  /** Array of computed heights for each line, used for positioning line numbers */
   #lineHeights: `${string}px`[] = [];
 
   override connectedCallback() {
     super.connectedCallback();
     if (!isServer) {
-      this.#ro.observe(this);
-      this.#io.observe(this);
+      this.#setupObservers();
     }
     this.#onSlotChange();
   }
 
   override disconnectedCallback() {
     super.disconnectedCallback();
-    this.#ro.disconnect();
-    this.#io.disconnect();
+    this.#cleanupIntersectionObserver();
+  }
+
+  /**
+   * Sets up IntersectionObserver for lazy mode.
+   * Only creates observer if load mode is 'lazy'.
+   */
+  #setupObservers() {
+    // Only create IntersectionObserver for lazy mode
+    if (this.load === 'lazy' && !this.#io) {
+      // Create a new IntersectionObserver instance for THIS component only
+      // Each component has its own observer, so cleanup only affects this instance
+      this.#io = new IntersectionObserver(entries => {
+        // IntersectionObserver callback receives entries for all observed elements
+        // Since each component has its own observer instance that only observes 'this',
+        // entries will always contain exactly one entry for this element
+        const [entry] = entries;
+        if (entry && entry.target === this) {
+          const wasIntersecting = this.#isIntersecting;
+          const { isIntersecting } = entry;
+
+          // Update intersection state
+          this.#isIntersecting = isIntersecting;
+
+          // Handle intersection when entering viewport (including initial intersection)
+          // If element is intersecting and we haven't computed yet, handle it
+          // The !wasIntersecting check ensures we only handle when entering, not leaving
+          if (isIntersecting && !wasIntersecting && !this.#hasComputedLineNumbers) {
+            this.#handleIntersection();
+          }
+        }
+      }, { rootMargin: '50% 0px' });
+
+      // Observe ONLY this element - each component has its own observer instance
+      // When we cleanup, we only unobserve this element from this observer
+      this.#io.observe(this);
+    }
+  }
+
+  /**
+   * Handles intersection - computes line numbers once
+   */
+  #handleIntersection() {
+    // Prevent duplicate calls
+    if (this.#hasComputedLineNumbers) {
+      return;
+    }
+
+    this.requestUpdate();
+    // Compute line numbers, which will set #hasComputedLineNumbers internally
+    this.#computeLineNumbers().then(() => {
+      // Clean up intersection observer after first calculation completes
+      // Only clean up if we successfully computed (prevents cleanup if calculation failed)
+      if (this.#hasComputedLineNumbers && this.#io) {
+        this.#cleanupIntersectionObserver();
+      }
+    });
+  }
+
+  /**
+   * Cleans up intersection observer for THIS component instance only.
+   * Each component has its own IntersectionObserver, so this only affects this element.
+   * Called after first calculation completes in lazy mode.
+   */
+  #cleanupIntersectionObserver() {
+    if (this.#io) {
+      // Since each component has its own observer instance (this.#io),
+      // unobserve only removes this element from this specific observer
+      // Other components' observers are unaffected
+      this.#io.unobserve(this);
+      // Disconnect this observer instance since it's no longer needed
+      // (it only observed this one element anyway)
+      this.#io.disconnect();
+      this.#io = null;
+    }
   }
 
   render() {
@@ -303,7 +443,18 @@ export class RhCodeBlock extends LitElement {
   }
 
   protected override firstUpdated(): void {
-    this.#computeLineNumbers();
+    switch (this.load) {
+      case 'immediate':
+        this.#computeLineNumbers();
+        break;
+      case 'lazy':
+        // IntersectionObserver will fire when element enters viewport
+        // or immediately if element is already in viewport
+        break;
+      case 'deferred':
+        ric(() => this.#computeLineNumbers());
+        break;
+    }
   }
 
   protected override updated(changed: PropertyValues<this>): void {
@@ -315,6 +466,50 @@ export class RhCodeBlock extends LitElement {
     }
   }
 
+  /**
+   * Extracts lines from code content. Used to populate #lines for expandable check.
+   * This is a lightweight operation that doesn't compute line heights.
+   * Can be called before Prism highlighting completes - will extract from raw slot content.
+   */
+  #extractLines() {
+    if (isServer) {
+      return;
+    }
+    // Try to get codes from Prism output first, fall back to slot content
+    let codes: (HTMLElement | null)[] = [];
+
+    if (this.#prismOutput) {
+      const prismEl = this.shadowRoot?.getElementById('prism-output');
+      if (prismEl) {
+        codes = [prismEl];
+      }
+    }
+
+    // If no Prism output yet, use slot content
+    if (codes.length === 0) {
+      codes = this.#getSlottedCodeElements();
+    }
+
+    if (codes.length === 0) {
+      this.#lines = [];
+      return;
+    }
+
+    // Extract lines from code content
+    const lineArrays: string[][] = [];
+    for (const code of codes) {
+      const text = code?.textContent;
+      if (text) {
+        lineArrays.push(text.split(/\n(?!$)/g));
+      }
+    }
+    this.#lines = lineArrays.flat();
+  }
+
+  /**
+   * Handles slot content changes by applying appropriate syntax highlighting
+   * and recalculating line numbers based on load mode.
+   */
   async #onSlotChange() {
     switch (this.highlighting) {
       case 'client': await this.#highlightWithPrism(); break;
@@ -322,9 +517,35 @@ export class RhCodeBlock extends LitElement {
       // dispatch here off of some supplemental attribute like `tokenizer="highlightjs"`
       case 'prerendered': await this.#applyPrismPrerenderedStyles(); break;
     }
-    this.#computeLineNumbers();
+
+    // Always extract lines to determine expandable state, even in lazy mode
+    // This is lightweight and doesn't compute line heights
+    this.#extractLines();
+    this.requestUpdate();
+
+    // Compute line numbers based on load mode
+    switch (this.load) {
+      case 'immediate':
+        this.#computeLineNumbers();
+        break;
+      case 'lazy':
+        // Only compute line heights if already intersected
+        // But #lines is already populated above for expandable check
+        if (this.#isIntersecting || this.#hasComputedLineNumbers) {
+          this.#computeLineNumbers();
+        }
+        break;
+      case 'deferred':
+        ric(() => this.#computeLineNumbers());
+        break;
+    }
   }
 
+  /**
+   * Applies Prism.js styles to the document or shadow root for prerendered code highlighting.
+   * This method ensures styles are only applied once per root node using a WeakMap cache.
+   * Used when `highlighting="prerendered"` attribute is set.
+   */
   async #applyPrismPrerenderedStyles() {
     let root: Node;
     if (!isServer && !prismApplyPromises.has((root = this.getRootNode()))) {
@@ -337,6 +558,11 @@ export class RhCodeBlock extends LitElement {
     }
   }
 
+  /**
+   * Performs client-side syntax highlighting using Prism.js.
+   * Dynamically imports Prism, applies styles to shadow root, extracts code from script elements,
+   * and generates highlighted output. Used when `highlighting="client"` attribute is set.
+   */
   async #highlightWithPrism() {
     if (!isServer) {
       const { highlight, prismStyles } = await import('./prism.js');
@@ -355,15 +581,30 @@ export class RhCodeBlock extends LitElement {
       this.#prismOutput = await highlight(textContent, this.language);
       this.requestUpdate('#prismOutput', {});
       await this.updateComplete;
+      // Re-extract lines now that Prism output is available
+      this.#extractLines();
+      this.requestUpdate();
     }
   }
 
+  /**
+   * Handles changes to the wrap property by recalculating line numbers
+   * and updating the wrap action button label state.
+   */
   async #wrapChanged() {
     await this.updateComplete;
+    // Reset computed flag to force recalculation
+    this.#hasComputedLineNumbers = false;
     this.#computeLineNumbers();
     this.#setSlottedLabelState('action-label-wrap', this.wrap ? 'active' : undefined);
   }
 
+  /**
+   * Updates the visibility of slotted label elements based on the current state.
+   * Shows/hides elements with matching data-code-block-state attributes.
+   * @param slotName - The name of the slot containing label elements
+   * @param state - The current state ('active', 'failed', or undefined for default)
+   */
   #setSlottedLabelState(slotName: 'action-label-copy' | 'action-label-wrap', state?: string) {
     if (this.#slots.hasSlotted(slotName)) {
       for (const el of this.#slots.getSlotted(slotName)) {
@@ -374,87 +615,188 @@ export class RhCodeBlock extends LitElement {
     }
   }
 
-  #getSlottedCodeElements() {
-    const slot = this.shadowRoot?.getElementById('content') as HTMLSlotElement;
-    return slot.assignedElements().flatMap(x =>
-        x instanceof HTMLScriptElement
-        || x instanceof HTMLPreElement ? [x]
-      : []);
+  /**
+   * Retrieves code elements (script or pre tags) and text nodes from the default slot.
+   * Handles both element nodes and text nodes for prerendered content.
+   * @returns Array of HTMLScriptElement, HTMLPreElement, or Text node containers
+   */
+  #getSlottedCodeElements(): (HTMLScriptElement | HTMLPreElement | HTMLElement)[] {
+    if (isServer) {
+      return [];
+    }
+    const slot = this.shadowRoot?.getElementById('content') as HTMLSlotElement | null;
+    if (!slot) {
+      return [];
+    }
+
+    const assigned = slot.assignedNodes();
+    const result: (HTMLScriptElement | HTMLPreElement | HTMLElement)[] = [];
+
+    // Collect pre/script elements and text nodes (but skip whitespace-only text nodes)
+    for (const node of assigned) {
+      if (node instanceof HTMLScriptElement || node instanceof HTMLPreElement) {
+        result.push(node);
+      } else if (node instanceof Text) {
+        const text = node.textContent;
+        // Only include text nodes that have non-whitespace content
+        // This filters out newlines/spaces between elements in the HTML
+        if (text && text.trim()) {
+          // Wrap text nodes in a temporary element for processing
+          const wrapper = document.createElement('pre');
+          wrapper.textContent = text;
+          result.push(wrapper);
+        }
+      }
+    }
+
+    return result;
   }
 
   /**
-   * Clone the text content and connect it to the document, in order to calculate the number of lines
+   * Calculates the heights of individual code lines for proper line number alignment.
+   * This method creates temporary DOM elements to measure the actual rendered height of each line,
+   * accounting for wrapped text and variable-height content. Optimized for performance with
+   * efficient DOM manipulation and minimal reflows.
+   *
    * @license MIT
    * Portions copyright prism.js authors (MIT license)
    */
   async #computeLineNumbers() {
-    if (!this.#isIntersecting) {
+    if (isServer) {
+      return;
+    }
+    // For lazy mode, only compute if intersecting or already computed
+    if (this.load === 'lazy' && !this.#isIntersecting && !this.#hasComputedLineNumbers) {
       return;
     }
 
     await this.updateComplete;
+
+    const sizersContainer = this.shadowRoot?.getElementById('sizers');
+    if (!sizersContainer) {
+      return;
+    }
+
     const codes =
         this.#prismOutput ? [this.shadowRoot?.getElementById('prism-output')].filter(x => !!x)
       : this.#getSlottedCodeElements();
 
-    this.#lines = codes.flatMap(element =>
-      element.textContent?.split(/\n(?!$)/g) ?? []);
+    if (codes.length === 0) {
+      return;
+    }
+
+    // Extract lines if not already populated (for expandable check)
+    // This ensures #lines is available even if #extractLines() wasn't called yet
+    if (this.#lines.length === 0) {
+      this.#extractLines();
+    }
 
     if (this.lineNumbers === 'hidden') {
       return;
     }
 
-    const infos: CodeLineHeightsInfo[] = codes.map(element => {
+    // Optimize: Pre-allocate arrays and batch DOM operations
+    const infos: CodeLineHeightsInfo[] = [];
+    for (const element of codes) {
+      if (!element) {
+        continue;
+      }
+
       const codeElement = this.#prismOutput ? element.querySelector('code') : element;
       if (codeElement) {
         const sizer = document.createElement('span');
         sizer.className = 'sizer';
         sizer.innerText = '0';
         sizer.style.display = 'block';
-        this.shadowRoot?.getElementById('sizers')?.appendChild(sizer);
-        return {
-          lines: element.textContent?.split(/\n(?!$)/g) ?? [],
-          lineHeights: [],
-          sizer,
-          oneLinerHeight: sizer.getBoundingClientRect().height,
-        };
-      }
-    }).filter(x => !!x);
+        sizersContainer.appendChild(sizer);
 
-    for (const { lines, lineHeights, sizer, oneLinerHeight } of infos) {
-      lineHeights[lines.length - 1] = undefined; // why?
-      lines.forEach((line, i) => {
-        if (line.length > 1) {
-          const e = sizer.appendChild(document.createElement('span'));
-          e.style.display = 'block';
-          e.textContent = line;
-        } else {
-          lineHeights[i] = oneLinerHeight;
-        }
-      });
+        const text = element.textContent;
+        const lines = text ? text.split(/\n(?!$)/g) : [];
+        const lineHeights: (number | undefined)[] = new Array(lines.length);
+
+        // Get one-liner height once
+        const oneLinerHeight = sizer.getBoundingClientRect().height;
+
+        infos.push({
+          lines,
+          lineHeights,
+          sizer,
+          oneLinerHeight,
+        });
+      }
     }
 
-    for (const { sizer, lineHeights } of infos) {
-      let childIndex = 0;
-      for (let i = 0; i < lineHeights.length; i++) {
-        if (lineHeights[i] === undefined) {
-          lineHeights[i] = sizer.children[childIndex++].getBoundingClientRect()?.height ?? 0;
+    // Optimize: Batch DOM reads and writes to minimize reflows
+    // First pass: create DOM elements for lines that need measurement
+    for (const info of infos) {
+      const { lines, lineHeights, sizer, oneLinerHeight } = info;
+      const lastIdx = lines.length - 1;
+      lineHeights[lastIdx] = undefined; // Last line needs measurement
+
+      // Pre-allocate for single-character lines
+      for (const [i, line] of lines.entries()) {
+        if (line.length <= 1) {
+          lineHeights[i] = oneLinerHeight;
         }
       }
+
+      // Create elements for lines that need measurement
+      for (const [i, line] of lines.entries()) {
+        if (lineHeights[i] === undefined && line.length > 1) {
+          const e = document.createElement('span');
+          e.style.display = 'block';
+          e.textContent = line;
+          sizer.appendChild(e);
+        }
+      }
+    }
+
+    // Second pass: batch read all measurements
+    for (const info of infos) {
+      const { sizer, lineHeights } = info;
+      let childIndex = 0;
+
+      for (const [i] of lineHeights.entries()) {
+        if (lineHeights[i] === undefined) {
+          const rect = sizer.children[childIndex]?.getBoundingClientRect();
+          lineHeights[i] = rect?.height ?? 0;
+          childIndex++;
+        }
+      }
+
+      // Clean up sizer
       sizer.remove();
     }
 
-    this.#lineHeights = infos.flatMap(x =>
-      x.lineHeights?.map(y =>
-        `${y ?? x.oneLinerHeight}px` as const));
+    // Optimize: Use pre-allocated array and direct assignment
+    const totalLines = infos.reduce((sum, { lines }) => sum + lines.length, 0);
+    this.#lineHeights = new Array(totalLines) as `${string}px`[];
+    let outputIdx = 0;
 
+    for (const { lineHeights, oneLinerHeight } of infos) {
+      for (const [, height] of lineHeights.entries()) {
+        this.#lineHeights[outputIdx++] = `${height ?? oneLinerHeight}px` as const;
+      }
+    }
+
+    this.#hasComputedLineNumbers = true;
     this.requestUpdate('#linesNumbers', 0);
   }
 
+  /**
+   * Handles click events on action buttons (copy, wrap).
+   * Delegates to #onCodeAction for processing.
+   * @param event - The click event
+   */
   #onActionsClick(event: Event) {
     this.#onCodeAction(event);
   }
 
+  /**
+   * Handles keyboard events on action buttons.
+   * Responds to Space key to trigger actions (Enter is handled natively by buttons).
+   * @param event - The keyboard event
+   */
   #onActionsKeyup(event: KeyboardEvent) {
     switch (event.key) {
       case 'Enter':
@@ -465,6 +807,11 @@ export class RhCodeBlock extends LitElement {
     }
   }
 
+  /**
+   * Routes action events to the appropriate handler based on data-code-block-action attribute.
+   * Supports 'copy' (copy code to clipboard) and 'wrap' (toggle line wrapping) actions.
+   * @param event - The triggering event
+   */
   #onCodeAction(event: Event) {
     const el = event.composedPath().find((x: EventTarget): x is HTMLElement =>
       x instanceof HTMLElement && !!x.dataset.codeBlockAction);
@@ -480,10 +827,21 @@ export class RhCodeBlock extends LitElement {
     }
   }
 
+  /**
+   * Handles clicks on the expand/collapse button, toggling the fullHeight property.
+   */
   #onClickExpand() {
     this.fullHeight = !this.fullHeight;
   }
 
+  /**
+   * Prepares the code content for copying and dispatches a cancelable copy event.
+   * Extracts text from either pre elements (prerendered mode) or script elements (client mode).
+   * Fires the RhCodeBlockCopyEvent which allows listeners to modify the content before copying.
+   *
+   * @returns The content to copy (potentially modified by event listeners)
+   * @throws {Error} If the copy event is cancelled or prevented
+   */
   #preCopy() {
     let content: string;
     if (this.highlighting === 'prerendered') {
@@ -505,6 +863,11 @@ export class RhCodeBlock extends LitElement {
     return event.content;
   }
 
+  /**
+   * Copies the code block content to the clipboard and manages the copy button state.
+   * Shows appropriate tooltip feedback (success or failure) for 5 seconds after the operation.
+   * Updates the button state and tooltip content to reflect the copy operation result.
+   */
   async #copy() {
     const slot =
       this.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="action-label-copy"]');
