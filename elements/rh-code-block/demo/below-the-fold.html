@@ -57,8 +57,8 @@
   const [fstP, sndP] = document.querySelectorAll('rh-alert dd em');
 
   addEventListener('scroll', function() {
-    fstP.textContent = fst.shadowRoot.querySelectorAll('#line-numbers li').length ? 'Computed' : 'Pending'
-    sndP.textContent = snd.shadowRoot.querySelectorAll('#line-numbers li').length ? 'Computed' : 'Pending'
+    fstP.textContent = fst.shadowRoot.querySelectorAll('#code-with-line-numbers .line').length ? 'Computed' : 'Pending'
+    sndP.textContent = snd.shadowRoot.querySelectorAll('#code-with-line-numbers .line').length ? 'Computed' : 'Pending'
   }, { passive: true });
 </script>
 
