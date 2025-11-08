@@ -249,6 +249,7 @@ export class RhCodeBlock extends LitElement {
   /**
    * Sets up IntersectionObserver for lazy mode.
    * Only creates observer if load mode is 'lazy'.
+   * Observer tracks both entry and exit to manage memory by unwrapping when off-screen.
    */
   #setupObservers() {
     // Only create IntersectionObserver for lazy mode
@@ -267,23 +268,24 @@ export class RhCodeBlock extends LitElement {
           // Update intersection state
           this.#isIntersecting = isIntersecting;
 
-          // Handle intersection when entering viewport (including initial intersection)
-          // If element is intersecting and we haven't computed yet, handle it
-          // The !wasIntersecting check ensures we only handle when entering, not leaving
+          // Handle entering viewport - wrap lines for display
           if (isIntersecting && !wasIntersecting && !this.#hasComputedLineNumbers) {
             this.#handleIntersection();
+          } else if (!isIntersecting && wasIntersecting && this.#hasComputedLineNumbers) {
+            // Handle exiting viewport - unwrap to save memory
+            this.#unwrapLines();
           }
         }
       }, { rootMargin: '50% 0px' });
 
       // Observe ONLY this element - each component has its own observer instance
-      // When we cleanup, we only unobserve this element from this observer
+      // Observer stays active throughout component lifecycle to manage memory
       this.#io.observe(this);
     }
   }
 
   /**
-   * Handles intersection - computes line numbers once
+   * Handles intersection - wraps lines when entering viewport
    */
   #handleIntersection() {
     // Prevent duplicate calls
@@ -293,18 +295,24 @@ export class RhCodeBlock extends LitElement {
 
     this.requestUpdate();
     // Wrap lines with CSS counters for line numbers
-    this.#wrapLinesInSpans().then(() => {
-      // Clean up intersection observer after wrapping completes
-      if (this.#hasComputedLineNumbers && this.#io) {
-        this.#cleanupIntersectionObserver();
-      }
-    });
+    // Observer stays active to unwrap when element exits viewport
+    this.#wrapLinesInSpans();
+  }
+
+  /**
+   * Unwraps lines when element exits viewport to save memory.
+   * Resets wrapped lines and computation flag so element can be re-wrapped on re-entry.
+   */
+  #unwrapLines() {
+    this.#wrappedLines = [];
+    this.#hasComputedLineNumbers = false;
+    this.requestUpdate();
   }
 
   /**
    * Cleans up intersection observer for THIS component instance only.
    * Each component has its own IntersectionObserver, so this only affects this element.
-   * Called after first calculation completes in lazy mode.
+   * Called when component is disconnected from DOM.
    */
   #cleanupIntersectionObserver() {
     if (this.#io) {
@@ -312,8 +320,7 @@ export class RhCodeBlock extends LitElement {
       // unobserve only removes this element from this specific observer
       // Other components' observers are unaffected
       this.#io.unobserve(this);
-      // Disconnect this observer instance since it's no longer needed
-      // (it only observed this one element anyway)
+      // Disconnect this observer instance as component is being removed
       this.#io.disconnect();
       this.#io = null;
     }
