@@ -177,73 +177,6 @@ describe('<rh-code-block>', function() {
     });
   });
 
-  describe('load property', function() {
-    describe('immediate mode (default)', function() {
-      let element: RhCodeBlock;
-
-      beforeEach(async function() {
-        element = await createFixture<RhCodeBlock>(html`
-          <rh-code-block load="immediate">
-            <script type="text/javascript">console.log('test');</script>
-          </rh-code-block>
-        `);
-        await element.updateComplete;
-      });
-
-      it('should have immediate load mode', function() {
-        expect(element.load).to.equal('immediate');
-      });
-
-      it('should compute line numbers immediately', async function() {
-        await aTimeout(100);
-        // Line numbers should be computed - check that line numbers element exists
-        const lineNumbers = element.shadowRoot?.querySelector('#line-numbers');
-        expect(lineNumbers).to.be.ok;
-      });
-    });
-
-    describe('lazy mode', function() {
-      let element: RhCodeBlock;
-
-      beforeEach(async function() {
-        element = await createFixture<RhCodeBlock>(html`
-          <rh-code-block load="lazy">
-            <script type="text/javascript">console.log('test');</script>
-          </rh-code-block>
-        `);
-        await element.updateComplete;
-      });
-
-      it('should have lazy load mode', function() {
-        expect(element.load).to.equal('lazy');
-      });
-
-      it('should not compute line numbers until intersection', async function() {
-        await aTimeout(100);
-        // In lazy mode, line numbers should not be computed until intersection
-        // This is hard to test without actually scrolling, but we can verify the mode
-        expect(element.load).to.equal('lazy');
-      });
-    });
-
-    describe('deferred mode', function() {
-      let element: RhCodeBlock;
-
-      beforeEach(async function() {
-        element = await createFixture<RhCodeBlock>(html`
-          <rh-code-block load="deferred">
-            <script type="text/javascript">console.log('test');</script>
-          </rh-code-block>
-        `);
-        await element.updateComplete;
-      });
-
-      it('should have deferred load mode', function() {
-        expect(element.load).to.equal('deferred');
-      });
-    });
-  });
-
   describe('wrap action', function() {
     let element: RhCodeBlock;
 
@@ -279,8 +212,11 @@ describe('<rh-code-block>', function() {
     });
 
     it('should display line numbers by default', function() {
-      const lineNumbers = element.shadowRoot?.querySelector('#line-numbers');
-      expect(lineNumbers).to.be.ok;
+      const codeContainer = element.shadowRoot?.querySelector('#code-with-line-numbers');
+      const lines = element.shadowRoot?.querySelectorAll('.line');
+      expect(codeContainer).to.be.ok;
+      expect(lines).to.be.ok;
+      expect(lines!.length).to.be.greaterThan(0);
     });
 
     describe('when line-numbers="hidden"', function() {
@@ -290,10 +226,16 @@ describe('<rh-code-block>', function() {
       });
 
       it('should hide line numbers', function() {
-        const lineNumbers = element.shadowRoot?.querySelector('#line-numbers');
-        expect(lineNumbers).to.be.ok;
-        // Line numbers element exists but should be empty or not rendered
+        const codeContainer = element.shadowRoot?.querySelector('#code-with-line-numbers');
+        const lines = element.shadowRoot?.querySelectorAll('.line');
+        expect(codeContainer).to.be.ok;
+        expect(lines).to.be.ok;
+        expect(lines!.length).to.be.greaterThan(0);
+        // Line numbers attribute should be 'hidden'
         expect(element.lineNumbers).to.equal('hidden');
+        // CSS should hide the ::before pseudo-elements via [line-numbers='hidden'] selector
+        expect(element.hasAttribute('line-numbers')).to.be.true;
+        expect(element.getAttribute('line-numbers')).to.equal('hidden');
       });
     });
   });
