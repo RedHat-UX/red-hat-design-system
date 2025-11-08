@@ -59,9 +59,5 @@ const styles = css`
   & .style .token.string { color: var(--_operator-color); }
 `;
 
-export const prismStyles = css`#prism-output {${styles}}`;
-export const preRenderedLightDomStyles = css`rh-code-block {
---_styles-applied: true;
-${styles}
-& > pre { opacity: 1; }
-}`;
+export const prismStyles = css`.prism-styles {${styles}}`;
+

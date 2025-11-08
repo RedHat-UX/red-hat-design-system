@@ -1,11 +1,10 @@
-import type { DirectiveResult } from 'lit-html/directive.js';
 import { CSSResult, LitElement, html, isServer, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { styleMap } from 'lit/directives/style-map.js';
 import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -38,29 +37,6 @@ function dedent(str: string) {
   const out = match ? stripped.replace(new RegExp(`^${match[0]}`, 'gm'), '') : str;
   return out.trim();
 }
-
-/**
- * Information about code line heights used for calculating line number positioning.
- * This interface is used internally to track the computed heights of individual lines
- * in the code block for proper alignment with line numbers.
- */
-interface CodeLineHeightsInfo {
-  /** Array of text content for each line */
-  lines: string[];
-  /** Array of computed heights for each line in pixels (undefined if not yet calculated) */
-  lineHeights: (number | undefined)[];
-  /** Temporary DOM element used to measure line heights */
-  sizer: HTMLElement;
-  /** The height of a single line of text in pixels */
-  oneLinerHeight: number;
-}
-
-/**
- * WeakMap to track which document/shadow roots have already had Prism styles applied.
- * This prevents duplicate style injection when multiple code blocks use prerendered highlighting.
- * @internal
- */
-const prismApplyPromises = new WeakMap();
 
 /**
  * requestIdleCallback when available, requestAnimationFrame when not
@@ -236,8 +212,8 @@ export class RhCodeBlock extends LitElement {
     'legend',
   );
 
-  /** Directive result from Prism.js highlighting (when highlighting="client") */
-  #prismOutput?: DirectiveResult;
+  /** Raw HTML string from Prism highlighting (for client-side and prerendered modes) */
+  #prismHighlightedHtml?: string;
 
   /** Whether the code block is currently intersecting the viewport (for lazy mode) */
   #isIntersecting = false;
@@ -254,8 +230,8 @@ export class RhCodeBlock extends LitElement {
   /** Array of text content for each line in the code block */
   #lines: string[] = [];
 
-  /** Array of computed heights for each line, used for positioning line numbers */
-  #lineHeights: `${string}px`[] = [];
+  /** Wrapped lines with CSS counters for line numbering */
+  #wrappedLines: unknown[] = [];
 
   override connectedCallback() {
     super.connectedCallback();
@@ -316,10 +292,9 @@ export class RhCodeBlock extends LitElement {
     }
 
     this.requestUpdate();
-    // Compute line numbers, which will set #hasComputedLineNumbers internally
-    this.#computeLineNumbers().then(() => {
-      // Clean up intersection observer after first calculation completes
-      // Only clean up if we successfully computed (prevents cleanup if calculation failed)
+    // Wrap lines with CSS counters for line numbers
+    this.#wrapLinesInSpans().then(() => {
+      // Clean up intersection observer after wrapping completes
       if (this.#hasComputedLineNumbers && this.#io) {
         this.#cleanupIntersectionObserver();
       }
@@ -361,13 +336,13 @@ export class RhCodeBlock extends LitElement {
            class="${classMap({ actions, compact, expandable, fullHeight, isIntersecting, resizable, truncated, wrap })}"
            @code-action="${this.#onCodeAction}">
         <div id="content-lines" tabindex="${ifDefined((!fullHeight || undefined) && 0)}">
-          <div id="sizers" aria-hidden="true"></div>
-          <ol id="line-numbers" inert aria-hidden="true">${this.#lineHeights.map((height, i) => html`
-            <li style="${styleMap({ height })}">${i + 1}</li>`)}
-          </ol>
-          <pre id="prism-output"
-               class="language-${this.language}"
-               ?hidden="${!this.#prismOutput}">${this.#prismOutput}</pre>
+          <!-- CSS counter-based line numbers with wrapped content -->
+          ${this.#wrappedLines.length > 0 ? html`
+            <div id="code-with-line-numbers" class="prism-styles language-${this.language}">
+              ${this.#wrappedLines}
+            </div>
+          ` : ''}
+          
           <!--
             A non-executable script tag containing the sample content. JavaScript
             samples should use the type \`text/sample-javascript\`. HTML samples
@@ -375,7 +350,7 @@ export class RhCodeBlock extends LitElement {
             also be a \`<pre>\` tag.
           -->
           <slot id="content"
-                ?hidden="${!!this.#prismOutput}"
+                ?hidden="${this.#wrappedLines.length > 0}"
                 @slotchange="${this.#onSlotChange}"></slot>
         </div>
 
@@ -445,14 +420,14 @@ export class RhCodeBlock extends LitElement {
   protected override firstUpdated(): void {
     switch (this.load) {
       case 'immediate':
-        this.#computeLineNumbers();
+        this.#wrapLinesInSpans();
         break;
       case 'lazy':
         // IntersectionObserver will fire when element enters viewport
         // or immediately if element is already in viewport
         break;
       case 'deferred':
-        ric(() => this.#computeLineNumbers());
+        ric(() => this.#wrapLinesInSpans());
         break;
     }
   }
@@ -475,35 +450,26 @@ export class RhCodeBlock extends LitElement {
     if (isServer) {
       return;
     }
-    // Try to get codes from Prism output first, fall back to slot content
-    let codes: (HTMLElement | null)[] = [];
 
-    if (this.#prismOutput) {
-      const prismEl = this.shadowRoot?.getElementById('prism-output');
-      if (prismEl) {
-        codes = [prismEl];
+    let textContent = '';
+
+    // If we have Prism HTML, extract text from it
+    if (this.#prismHighlightedHtml) {
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = this.#prismHighlightedHtml;
+      textContent = tempDiv.textContent || '';
+    } else {
+      // Otherwise, get from slotted content
+      const codes = this.#getSlottedCodeElements();
+      if (codes.length === 0) {
+        this.#lines = [];
+        return;
       }
+      textContent = codes.map(code => code?.textContent || '').join('\n');
     }
 
-    // If no Prism output yet, use slot content
-    if (codes.length === 0) {
-      codes = this.#getSlottedCodeElements();
-    }
-
-    if (codes.length === 0) {
-      this.#lines = [];
-      return;
-    }
-
-    // Extract lines from code content
-    const lineArrays: string[][] = [];
-    for (const code of codes) {
-      const text = code?.textContent;
-      if (text) {
-        lineArrays.push(text.split(/\n(?!$)/g));
-      }
-    }
-    this.#lines = lineArrays.flat();
+    // Split into lines
+    this.#lines = textContent.split(/\n(?!$)/g);
   }
 
   /**
@@ -523,39 +489,53 @@ export class RhCodeBlock extends LitElement {
     this.#extractLines();
     this.requestUpdate();
 
-    // Compute line numbers based on load mode
+    // Wrap lines based on load mode
     switch (this.load) {
       case 'immediate':
-        this.#computeLineNumbers();
+        this.#wrapLinesInSpans();
         break;
       case 'lazy':
-        // Only compute line heights if already intersected
+        // Only wrap if already intersected
         // But #lines is already populated above for expandable check
         if (this.#isIntersecting || this.#hasComputedLineNumbers) {
-          this.#computeLineNumbers();
+          this.#wrapLinesInSpans();
         }
         break;
       case 'deferred':
-        ric(() => this.#computeLineNumbers());
+        ric(() => this.#wrapLinesInSpans());
         break;
     }
   }
 
   /**
-   * Applies Prism.js styles to the document or shadow root for prerendered code highlighting.
-   * This method ensures styles are only applied once per root node using a WeakMap cache.
+   * Loads Prism.js styles into the component's shadow DOM.
+   * Ensures styles are only added once to avoid duplication.
+   * Used by both client-side and prerendered highlighting modes.
+   */
+  async #loadPrismStyles() {
+    if (isServer) {
+      return;
+    }
+
+    const { prismStyles } = await import('./prism.css.js');
+    const styleSheet = ('styleSheet' in prismStyles) ?
+      (prismStyles.styleSheet as CSSStyleSheet)
+      : ((prismStyles as CSSResult).styleSheet);
+
+    if (!this.shadowRoot!.adoptedStyleSheets.includes(styleSheet!)) {
+      this.shadowRoot!.adoptedStyleSheets = [
+        ...this.shadowRoot!.adoptedStyleSheets as CSSStyleSheet[],
+        styleSheet!,
+      ];
+    }
+  }
+
+  /**
+   * Applies Prism.js styles for prerendered code highlighting.
    * Used when `highlighting="prerendered"` attribute is set.
    */
   async #applyPrismPrerenderedStyles() {
-    let root: Node;
-    if (!isServer && !prismApplyPromises.has((root = this.getRootNode()))) {
-      if (root instanceof Document || root instanceof ShadowRoot) {
-        prismApplyPromises.set(root, (async function() {
-          const { preRenderedLightDomStyles: { styleSheet } } = await import('./prism.css.js');
-          root.adoptedStyleSheets = [...root.adoptedStyleSheets, styleSheet!];
-        })());
-      }
-    }
+    await this.#loadPrismStyles();
   }
 
   /**
@@ -564,27 +544,23 @@ export class RhCodeBlock extends LitElement {
    * and generates highlighted output. Used when `highlighting="client"` attribute is set.
    */
   async #highlightWithPrism() {
-    if (!isServer) {
-      const { highlight, prismStyles } = await import('./prism.js');
-      const styleSheet =
-          prismStyles instanceof CSSStyleSheet ? prismStyles
-        : (prismStyles as CSSResult).styleSheet;
-      if (!this.shadowRoot!.adoptedStyleSheets.includes(styleSheet!)) {
-        this.shadowRoot!.adoptedStyleSheets = [
-          ...this.shadowRoot!.adoptedStyleSheets as CSSStyleSheet[],
-          styleSheet!,
-        ];
-      }
-      const scripts = this.querySelectorAll('script[type]:not([type="javascript"])');
-      const preprocess = this.dedent ? dedent : (x: string) => x;
-      const textContent = preprocess(Array.from(scripts, x => x.textContent).join(''));
-      this.#prismOutput = await highlight(textContent, this.language);
-      this.requestUpdate('#prismOutput', {});
-      await this.updateComplete;
-      // Re-extract lines now that Prism output is available
-      this.#extractLines();
-      this.requestUpdate();
+    if (isServer) {
+      return;
     }
+
+    await this.#loadPrismStyles();
+    const { highlight } = await import('./prism.js');
+
+    const scripts = this.querySelectorAll('script[type]:not([type="javascript"])');
+    const preprocess = this.dedent ? dedent : (x: string) => x;
+    const textContent = preprocess(Array.from(scripts, x => x.textContent).join(''));
+    this.#prismHighlightedHtml = await highlight(textContent, this.language);
+
+    // Extract lines for expandable check
+    this.#extractLines();
+
+    // Immediately wrap the Prism output into line spans
+    await this.#wrapLinesInSpans();
   }
 
   /**
@@ -595,7 +571,7 @@ export class RhCodeBlock extends LitElement {
     await this.updateComplete;
     // Reset computed flag to force recalculation
     this.#hasComputedLineNumbers = false;
-    this.#computeLineNumbers();
+    this.#wrapLinesInSpans();
     this.#setSlottedLabelState('action-label-wrap', this.wrap ? 'active' : undefined);
   }
 
@@ -653,134 +629,72 @@ export class RhCodeBlock extends LitElement {
   }
 
   /**
-   * Calculates the heights of individual code lines for proper line number alignment.
-   * This method creates temporary DOM elements to measure the actual rendered height of each line,
-   * accounting for wrapped text and variable-height content. Optimized for performance with
-   * efficient DOM manipulation and minimal reflows.
-   *
-   * @license MIT
-   * Portions copyright prism.js authors (MIT license)
+   * Wraps each line of code in span elements with CSS counters.
+   * This provides proper alignment even with wrapped lines.
+   * Works with both Prism-highlighted and plain text content.
    */
-  async #computeLineNumbers() {
+  async #wrapLinesInSpans() {
+    // Server-side rendering doesn't need line wrapping
     if (isServer) {
       return;
     }
-    // For lazy mode, only compute if intersecting or already computed
+
+    // For lazy mode, only wrap if intersecting or already computed
     if (this.load === 'lazy' && !this.#isIntersecting && !this.#hasComputedLineNumbers) {
       return;
     }
 
     await this.updateComplete;
 
-    const sizersContainer = this.shadowRoot?.getElementById('sizers');
-    if (!sizersContainer) {
-      return;
-    }
-
-    const codes =
-        this.#prismOutput ? [this.shadowRoot?.getElementById('prism-output')].filter(x => !!x)
-      : this.#getSlottedCodeElements();
-
-    if (codes.length === 0) {
-      return;
-    }
-
-    // Extract lines if not already populated (for expandable check)
-    // This ensures #lines is available even if #extractLines() wasn't called yet
+    // Extract lines if not already populated (needed for expandable calculation)
     if (this.#lines.length === 0) {
       this.#extractLines();
     }
 
-    if (this.lineNumbers === 'hidden') {
+    // Skip wrapping if no line numbers and no Prism highlighting
+    const needsWrapping = this.lineNumbers !== 'hidden'
+      || !!this.#prismHighlightedHtml;
+    if (!needsWrapping) {
+      this.#wrappedLines = [];
       return;
     }
 
-    // Optimize: Pre-allocate arrays and batch DOM operations
-    const infos: CodeLineHeightsInfo[] = [];
-    for (const element of codes) {
-      if (!element) {
-        continue;
-      }
-
-      const codeElement = this.#prismOutput ? element.querySelector('code') : element;
-      if (codeElement) {
-        const sizer = document.createElement('span');
-        sizer.className = 'sizer';
-        sizer.innerText = '0';
-        sizer.style.display = 'block';
-        sizersContainer.appendChild(sizer);
-
-        const text = element.textContent;
-        const lines = text ? text.split(/\n(?!$)/g) : [];
-        const lineHeights: (number | undefined)[] = new Array(lines.length);
-
-        // Get one-liner height once
-        const oneLinerHeight = sizer.getBoundingClientRect().height;
-
-        infos.push({
-          lines,
-          lineHeights,
-          sizer,
-          oneLinerHeight,
-        });
+    // Get content - either from Prism or slotted elements
+    let htmlContent = '';
+    if (this.#prismHighlightedHtml) {
+      // Client-side Prism output is already HTML with syntax highlighting
+      htmlContent = this.#prismHighlightedHtml;
+    } else {
+      // Get content from slotted elements
+      const codes = this.#getSlottedCodeElements();
+      if (codes.length > 0) {
+        htmlContent = (this.highlighting === 'prerendered') ?
+          // Prerendered content already has Prism HTML - preserve it
+          codes.map(el => el?.innerHTML || '').join('\n')
+          // Plain text content - escape HTML to prevent XSS
+          : (() => {
+            const textContent = codes.map(el => el?.textContent || '').join('\n');
+            const div = document.createElement('div');
+            div.textContent = textContent;
+            return div.innerHTML;
+          })();
       }
     }
 
-    // Optimize: Batch DOM reads and writes to minimize reflows
-    // First pass: create DOM elements for lines that need measurement
-    for (const info of infos) {
-      const { lines, lineHeights, sizer, oneLinerHeight } = info;
-      const lastIdx = lines.length - 1;
-      lineHeights[lastIdx] = undefined; // Last line needs measurement
-
-      // Pre-allocate for single-character lines
-      for (const [i, line] of lines.entries()) {
-        if (line.length <= 1) {
-          lineHeights[i] = oneLinerHeight;
-        }
-      }
-
-      // Create elements for lines that need measurement
-      for (const [i, line] of lines.entries()) {
-        if (lineHeights[i] === undefined && line.length > 1) {
-          const e = document.createElement('span');
-          e.style.display = 'block';
-          e.textContent = line;
-          sizer.appendChild(e);
-        }
-      }
+    // Nothing to render
+    if (!htmlContent) {
+      this.#wrappedLines = [];
+      return;
     }
 
-    // Second pass: batch read all measurements
-    for (const info of infos) {
-      const { sizer, lineHeights } = info;
-      let childIndex = 0;
-
-      for (const [i] of lineHeights.entries()) {
-        if (lineHeights[i] === undefined) {
-          const rect = sizer.children[childIndex]?.getBoundingClientRect();
-          lineHeights[i] = rect?.height ?? 0;
-          childIndex++;
-        }
-      }
-
-      // Clean up sizer
-      sizer.remove();
-    }
-
-    // Optimize: Use pre-allocated array and direct assignment
-    const totalLines = infos.reduce((sum, { lines }) => sum + lines.length, 0);
-    this.#lineHeights = new Array(totalLines) as `${string}px`[];
-    let outputIdx = 0;
-
-    for (const { lineHeights, oneLinerHeight } of infos) {
-      for (const [, height] of lineHeights.entries()) {
-        this.#lineHeights[outputIdx++] = `${height ?? oneLinerHeight}px` as const;
-      }
-    }
+    // Split by newlines and wrap each line in span elements for CSS counter
+    const lines = htmlContent.split('\n');
+    this.#wrappedLines = lines.map(line =>
+      html`<span class="line"><span class="line-content">${unsafeHTML(line || ' ')}</span></span>`
+    );
 
     this.#hasComputedLineNumbers = true;
-    this.requestUpdate('#linesNumbers', 0);
+    this.requestUpdate();
   }
 
   /**
