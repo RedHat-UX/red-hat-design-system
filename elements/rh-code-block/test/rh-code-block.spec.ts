@@ -108,9 +108,8 @@ describe('<rh-code-block>', function() {
       });
 
       describe('Space on copy button', function() {
+        const originalClipboard = navigator.clipboard;
         beforeEach(async function() {
-          // Mock clipboard API using Object.defineProperty
-          const originalClipboard = navigator.clipboard;
           Object.defineProperty(navigator, 'clipboard', {
             value: {
               writeText: async () => Promise.resolve(),
@@ -118,18 +117,14 @@ describe('<rh-code-block>', function() {
             writable: true,
             configurable: true,
           });
-          // Restore after test
-          this.originalClipboard = originalClipboard;
         });
 
         afterEach(function() {
-          if (this.originalClipboard) {
-            Object.defineProperty(navigator, 'clipboard', {
-              value: this.originalClipboard,
-              writable: true,
-              configurable: true,
-            });
-          }
+          Object.defineProperty(navigator, 'clipboard', {
+            value: originalClipboard,
+            writable: true,
+            configurable: true,
+          });
         });
 
         beforeEach(press('Tab')); // Focus copy button
@@ -150,9 +145,8 @@ describe('<rh-code-block>', function() {
       });
 
       describe('Enter on copy button', function() {
+        const originalClipboard = navigator.clipboard;
         beforeEach(async function() {
-          // Mock clipboard API using Object.defineProperty
-          const originalClipboard = navigator.clipboard;
           Object.defineProperty(navigator, 'clipboard', {
             value: {
               writeText: async () => Promise.resolve(),
@@ -160,17 +154,14 @@ describe('<rh-code-block>', function() {
             writable: true,
             configurable: true,
           });
-          this.originalClipboard = originalClipboard;
         });
 
         afterEach(function() {
-          if (this.originalClipboard) {
-            Object.defineProperty(navigator, 'clipboard', {
-              value: this.originalClipboard,
-              writable: true,
-              configurable: true,
-            });
-          }
+          Object.defineProperty(navigator, 'clipboard', {
+            value: originalClipboard,
+            writable: true,
+            configurable: true,
+          });
         });
 
         beforeEach(press('Tab')); // Focus copy button
