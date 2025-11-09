@@ -1,0 +1,15 @@
+<rh-icon icon="hat"></rh-icon>
+<button id="remove">Remove Icon</button>
+
+<script type="module">
+  import "@rhds/elements/rh-icon/rh-icon.js";
+
+  const icon = document.querySelector('rh-icon');
+  const btn = document.getElementById('remove');
+
+  btn.addEventListener('click', () => {
+    icon.removeAttribute('icon');
+
+
+  });
+</script>
