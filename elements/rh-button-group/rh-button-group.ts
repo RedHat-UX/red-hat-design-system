@@ -2,12 +2,13 @@ import type { RhButton } from '@rhds/elements/rh-button/rh-button.js';
 
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 import styles from './rh-button-group.css';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 /**
  * A button group visually organizes multiple related buttons into a single
@@ -23,19 +24,14 @@ export class RhButtonGroup extends LitElement {
   static readonly styles = [styles];
   #logger = new Logger(this);
 
+  // eslint-disable-next-line no-unused-private-class-members
+  #internals = InternalsController.of(this, { role: 'group' });
+
+  /** Sets the orientation of the button group */
+  @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
+
   @queryAssignedElements({ flatten: true })
   private _buttons!: (HTMLButtonElement | RhButton)[];
-
-  // eslint-disable-next-line no-unused-private-class-members
-  #rtic = RovingTabindexController.of(this, {
-    getItems: () => {
-      if (this.role !== 'toolbar') {
-        return [];
-      } else {
-        return this._buttons;
-      }
-    },
-  });
 
   protected override firstUpdated() {
     if (typeof window === 'undefined') {
@@ -48,11 +44,6 @@ export class RhButtonGroup extends LitElement {
     if (!this._buttons?.length) {
       this.#logger.warn('rh-button-group has no slotted buttons');
       return;
-    }
-
-    // Set tabindex="0" for non-toolbar roles (group role needs individual focus)
-    if (this.getAttribute('role') !== 'toolbar') {
-      this._buttons.forEach(btn => btn.setAttribute('tabindex', '0'));
     }
   }
 

@@ -5,3 +5,8 @@
   margin-inline-end: var(--rh-space-lg, 16px);
   margin-block-end: var(--rh-space-md, 8px);
 }
+
+:host([orientation="vertical"]) {
+  flex-direction: column;
+  align-items: flex-start;
+}

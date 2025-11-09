@@ -5,7 +5,7 @@ The Button Group component groups related buttons together so that users underst
 Use a Button Group when multiple buttons perform related tasks, such as navigation, form actions, or filter options. Keep groups concise for clarity and consistency.
 
 ```html
-<rh-button-group role="group">
+<rh-button-group>
   <button type="button">Save</button>
   <button type="button">Cancel</button>
   <button type="button">Delete</button>

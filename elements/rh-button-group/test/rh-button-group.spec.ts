@@ -1,62 +1,58 @@
-import { expect, html } from '@open-wc/testing';
-import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
+import { expect, fixture } from '@open-wc/testing';
 import { RhButtonGroup } from '@rhds/elements/rh-button-group/rh-button-group.js';
 
 import '@rhds/elements/rh-button/rh-button.js';
 
+let element: RhButtonGroup;
+
 describe('<rh-button-group>', function() {
   describe('simply instantiating', function() {
-    let element: RhButtonGroup;
     it('imperatively instantiates', function() {
       expect(document.createElement('rh-button-group')).to.be.an.instanceof(RhButtonGroup);
     });
 
     it('should upgrade', async function() {
-      element = await createFixture<RhButtonGroup>(html`<rh-button-group></rh-button-group>`);
+      element = await fixture<RhButtonGroup>(`<rh-button-group></rh-button-group>`);
       const klass = customElements.get('rh-button-group');
       expect(element)
           .to.be.an.instanceOf(klass)
           .and
           .to.be.an.instanceOf(RhButtonGroup);
     });
-
-    it('renders slot correctly', async function() {
-      element = await createFixture<RhButtonGroup>(html`<rh-button-group></rh-button-group>`);
-      const slot = element.shadowRoot?.querySelector('slot');
-      expect(slot).to.exist;
-    });
   });
 
-  describe('with buttons', function() {
-    it('should set tabindex=0 for group role', async function() {
-      const element = await createFixture<RhButtonGroup>(html`
-        <rh-button-group role="group">
+  describe('accessibility', function() {
+    beforeEach(async function() {
+      element = await fixture<RhButtonGroup>(`
+        <rh-button-group>
           <rh-button>Save</rh-button>
           <rh-button>Cancel</rh-button>
         </rh-button-group>
       `);
-      await element.updateComplete;
-
-      const buttons = element.querySelectorAll('rh-button');
-      buttons.forEach(button => {
-        expect(button.getAttribute('tabindex')).to.equal('0');
-      });
     });
+    beforeEach(async () => await element.updateComplete);
 
-    it('should handle role="toolbar" with roving tabindex', async function() {
-      const element = await createFixture<RhButtonGroup>(html`
-        <rh-button-group role="toolbar">
-          <rh-button>Edit</rh-button>
-          <rh-button>Copy</rh-button>
-          <rh-button>Delete</rh-button>
+    it('is accessible', async function() {
+      await expect(element).to.be.accessible();
+    });
+  });
+
+  describe('with buttons', function() {
+    beforeEach(async function() {
+      element = await fixture<RhButtonGroup>(`
+        <rh-button-group>
+          <rh-button>Save</rh-button>
+          <rh-button>Cancel</rh-button>
         </rh-button-group>
       `);
-      await element.updateComplete;
+    });
+    beforeEach(async () => await element.updateComplete);
 
+    it('should slot buttons correctly', function() {
       const buttons = element.querySelectorAll('rh-button');
-      expect(buttons[0].getAttribute('tabindex')).to.equal('0');
-      expect(buttons[1].getAttribute('tabindex')).to.equal('-1');
-      expect(buttons[2].getAttribute('tabindex')).to.equal('-1');
+      expect(buttons).to.have.length(2);
+      expect(buttons[0].textContent?.trim()).to.equal('Save');
+      expect(buttons[1].textContent?.trim()).to.equal('Cancel');
     });
   });
 });
