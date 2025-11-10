@@ -82,10 +82,10 @@
   }
 
   :is(*, :hover):focus-visible {
-    outline-color: light-dark(--rh-color-blue-50, --rh-color-blue-30);
-    outline-offset: 3px;
+    outline-color: light-dark(--rh-color-border-interactive-on-light, --rh-color-border-interactive-on-dark);
+    outline-offset: var(--rh-border-width-lg, 3px);
     outline-style: solid;
-    outline-width: 3px;
+    outline-width: var(--rh-border-width-lg, 3px);
     transition: none;
   }
 
