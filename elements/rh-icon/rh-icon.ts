@@ -27,7 +27,7 @@ export type IconResolverFunction = (set: string, icon: string) =>
  * @param f callback
  */
 const ric: typeof globalThis.requestIdleCallback =
-  globalThis.requestIdleCallback
+globalThis.requestIdleCallback
   ?? globalThis.requestAnimationFrame
   ?? (async (f: () => void) => Promise.resolve().then(f));
 
