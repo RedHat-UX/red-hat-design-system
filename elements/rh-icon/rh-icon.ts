@@ -27,7 +27,7 @@ export type IconResolverFunction = (set: string, icon: string) =>
  * @param f callback
  */
 const ric: typeof globalThis.requestIdleCallback =
-globalThis.requestIdleCallback
+  globalThis.requestIdleCallback
   ?? globalThis.requestAnimationFrame
   ?? (async (f: () => void) => Promise.resolve().then(f));
 
@@ -74,7 +74,7 @@ export class RhIcon extends LitElement {
   public static resolve: IconResolverFunction =
     (set, icon) =>
       import(`@rhds/icons/${set}/${icon}.js`)
-          .then(mod => mod.default.cloneNode(true));
+        .then(mod => mod.default.cloneNode(true));
 
   /** Icon set */
   @property({ type: String, reflect: true }) set: IconSetName = 'standard';
@@ -137,6 +137,9 @@ export class RhIcon extends LitElement {
   #getContent() {
     if (isServer) {
       const { set = 'standard', icon } = this;
+      if (!icon) {
+        return '';
+      }
       return globalThis.RH_ICONS.get(set)?.get(icon as never) ?? '';
     } else {
       return this.content as string ?? '';
