@@ -74,7 +74,7 @@ export class RhIcon extends LitElement {
   public static resolve: IconResolverFunction =
     (set, icon) =>
       import(`@rhds/icons/${set}/${icon}.js`)
-        .then(mod => mod.default.cloneNode(true));
+          .then(mod => mod.default.cloneNode(true));
 
   /** Icon set */
   @property({ type: String, reflect: true }) set: IconSetName = 'standard';
