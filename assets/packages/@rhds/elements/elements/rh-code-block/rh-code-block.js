@@ -302,6 +302,7 @@ async function _RhCodeBlock_computeLineNumbers() {
     const codes = __classPrivateFieldGet(this, _RhCodeBlock_prismOutput, "f") ? [this.shadowRoot?.getElementById('prism-output')].filter(x => !!x)
         : __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_getSlottedCodeElements).call(this);
     __classPrivateFieldSet(this, _RhCodeBlock_lines, codes.flatMap(element => element.textContent?.split(/\n(?!$)/g) ?? []), "f");
+    this.requestUpdate();
     if (this.lineNumbers === 'hidden') {
         return;
     }
