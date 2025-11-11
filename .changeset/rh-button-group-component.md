@@ -4,7 +4,7 @@
 
 ✨ Added `<rh-button-group>`
 
-A button group organizes multiple related buttons with appropriate keyboard navigation and accessibility behavior.
+A button group visually organizes multiple related buttons into a single collection.
 
 ```html
 <rh-button-group>

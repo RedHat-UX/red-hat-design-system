@@ -22,6 +22,7 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 @themable
 export class RhButtonGroup extends LitElement {
   static readonly styles = [styles];
+
   #logger = new Logger(this);
 
   // eslint-disable-next-line no-unused-private-class-members
