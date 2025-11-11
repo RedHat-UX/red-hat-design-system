@@ -50,7 +50,7 @@ In some edge cases, pagination may need to display a very low page count like on
        height="320">
 </uxdot-example>
 
-### Disabled butons
+### Disabled buttons
 
 When the beginning or end of the pagination range is reached, certain control buttons are disabled.
 
