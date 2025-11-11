@@ -395,6 +395,7 @@ export class RhCodeBlock extends LitElement {
 
     this.#lines = codes.flatMap(element =>
       element.textContent?.split(/\n(?!$)/g) ?? []);
+    this.requestUpdate();
 
     if (!this.#isIntersecting) {
       return;
