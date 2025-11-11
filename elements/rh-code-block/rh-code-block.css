@@ -165,7 +165,7 @@
       var(--rh-color-green-40, #87bb62));
 
   display: grid;
-  content-visibility: auto;
+  contain-intrinsic-size: auto none;
   place-items: center;
   grid-template-columns: auto min-content;
   grid-template-areas:
@@ -186,6 +186,14 @@
     linear-gradient(var(--_gradient-angle, 0deg),
       var(--_code-background-color) 0%,
       transparent 100%);
+
+  &:not(.line-numbers) {
+    content-visibility: auto;
+
+    &:not(.isIntersecting) {
+      content-visibility: visible;
+    }
+  }
 
   &.isIntersecting {
     content-visibility: visible;
