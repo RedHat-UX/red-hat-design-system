@@ -195,24 +195,6 @@ export class RhCodeBlock extends LitElement {
     this.#io?.disconnect();
   }
 
-  #updateIntersectionObserver() {
-    if (this.lineNumbers === 'hidden') {
-      this.#io?.disconnect();
-      this.#io = undefined;
-    } else if (!this.#io) {
-      this.#io = new IntersectionObserver(rs => {
-        const old = this.#isIntersecting;
-        const isIntersecting = rs.some(r => r.isIntersecting);
-        this.#isIntersecting = isIntersecting;
-        if (old !== isIntersecting) {
-          this.requestUpdate();
-        }
-        this.#computeLineNumbers();
-      }, { rootMargin: '50% 0px' });
-      this.#io.observe(this);
-    }
-  }
-
   render() {
     const { fullHeight, wrap, resizable, compact } = this;
     const lineNumbers = this.lineNumbers !== 'hidden';
@@ -373,6 +355,24 @@ export class RhCodeBlock extends LitElement {
       this.#prismOutput = await highlight(textContent, this.language);
       this.requestUpdate('#prismOutput', {});
       await this.updateComplete;
+    }
+  }
+
+  #updateIntersectionObserver() {
+    if (this.lineNumbers === 'hidden') {
+      this.#io?.disconnect();
+      this.#io = undefined;
+    } else if (!this.#io) {
+      this.#io = new IntersectionObserver(rs => {
+        const old = this.#isIntersecting;
+        const isIntersecting = rs.some(r => r.isIntersecting);
+        this.#isIntersecting = isIntersecting;
+        if (old !== isIntersecting) {
+          this.requestUpdate();
+        }
+        this.#computeLineNumbers();
+      }, { rootMargin: '50% 0px' });
+      this.#io.observe(this);
     }
   }
 
