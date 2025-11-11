@@ -1,0 +1,1 @@
+This demo loads 1000+ code blocks as full height and with line numbers and wrap action.  It will load a intersection observer to load the code blocks as they come into view and calculate the line numbers.
