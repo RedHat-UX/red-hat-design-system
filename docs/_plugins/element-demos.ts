@@ -1,17 +1,15 @@
 import type { UserConfig } from '@11ty/eleventy';
 import * as Parse5 from 'parse5';
 import * as Tools from '@parse5/tools';
-import { deslugify } from '@patternfly/pfe-tools/config.js';
 
-import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
+// Match relative lightdom CSS paths (../rh-foo-lightdom.css),
+// but skip already-transformed asset paths (/assets/packages/...)
+const LIGHTDOM_HREF_RE = /href="((?!\/assets)[./].*-lightdom.*\.css)"/g;
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-// Rewrite DEMO lightdom css relative URLs
-const LIGHTDOM_HREF_RE = /href="\.(?<pathname>.*-lightdom.*\.css)"/g;
-const LIGHTDOM_PATH_RE = /href="\.(.*)"/;
-
+/**
+ * Eleventy plugin to handle demo page transformations
+ * @param eleventyConfig - The Eleventy configuration object
+ */
 export default function(eleventyConfig: UserConfig) {
   eleventyConfig.addPassthroughCopy('docs/demo.{js,map,ts}');
 
@@ -45,25 +43,33 @@ export default function(eleventyConfig: UserConfig) {
   });
 
   eleventyConfig.addTransform('demo-lightdom-css', async function(this, content) {
-    const { outputPath, inputPath } = this.page;
+    const { inputPath } = this.page;
 
     if (inputPath === './docs/elements/demo.html' ) {
-      const tagNameMatch = outputPath.match(/\/elements\/(?<tagName>[-\w]+)\/demo\//);
-      if (tagNameMatch) {
-        const { tagName } = tagNameMatch.groups ?? {};
-
-        // does the tagName exist in the aliases object?
-        const prefixedTagName =
-          deslugify(tagName, join(__dirname, '../..'));
-        const matches = content.match(LIGHTDOM_HREF_RE);
-        if (matches) {
-          for (const match of matches) {
-            const [, path] = match.match(LIGHTDOM_PATH_RE) ?? [];
-            const { pathname } = new URL(path, `file:///${outputPath}`);
-            const filename = pathname.split('/').pop();
-            const replacement = `/assets/packages/@rhds/elements/elements/${prefixedTagName}/${filename}`;
-            content = content.replace(`.${path}`, replacement);
+      const matches = content.match(LIGHTDOM_HREF_RE);
+      if (matches) {
+        for (const match of matches) {
+          // Extract the path from the match (group 1)
+          const [, path] = match.match(/href="([^"]+)"/) ?? [];
+          if (!path) {
+            continue;
           }
+
+          // Extract the filename and tag name from the path
+          // Handles both "../rh-foo-lightdom.css" and "../../rh-foo/rh-foo-lightdom.css"
+          const pathParts = path.split('/');
+          const filename = pathParts.pop() ?? '';
+
+          // For paths like "/rh-foo/rh-foo-lightdom.css", the tag name is the second-to-last part
+          // For paths like "../../rh-foo-lightdom.css", extract tag name from filename
+          let elementName = pathParts.pop();
+          if (!elementName || elementName === '..' || elementName === '.') {
+            // Extract from filename: "rh-foo-lightdom.css" -> "rh-foo"
+            elementName = filename.replace(/-lightdom.*\.css$/, '');
+          }
+
+          const replacement = `/assets/packages/@rhds/elements/elements/${elementName}/${filename}`;
+          content = content.replace(match, `href="${replacement}"`);
         }
       }
     }
