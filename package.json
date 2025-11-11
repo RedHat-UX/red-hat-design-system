@@ -31,6 +31,8 @@
     "Corey Vickery <cvickery@redhat.com>",
     "Diwanshi Gadgil <dpandey@redhat.com>",
     "Em Nouveau <enouveau@redhat.com>",
+    "Gili Greenberger (https://github.com/Gili-Greenberger)",
+    "Hadassah Yelenik",
     "Ivana Rodriguez <ivana@redhat.com>",
     "Kelsey Swanson <kswanson@redhat.com>",
     "Luke Dary <ldary@redhat.com>",
@@ -38,8 +40,7 @@
     "Michael Potter <mpotter@redhat.com",
     "Nikki Massaro Kauffman <nmassaro@redhat.com>",
     "Steven Spriggs <sspriggs@redhat.com>",
-    "Wes Ruvalcaba <wruvalcaba@redhat.com>",
-    "Hadassah Yelenik"
+    "Wes Ruvalcaba <wruvalcaba@redhat.com>"
   ],
   "publishConfig": {
     "access": "public",
