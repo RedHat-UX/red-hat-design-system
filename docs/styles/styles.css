@@ -79,6 +79,14 @@
     white-space: nowrap;
     border: 0;
   }
+
+  ::selection {
+    background-color:
+      light-dark(
+          var(--rh-color-blue-20, #b9dafc),
+          rgba(from var(--rh-color-blue-40, #4394e5) r g b / 0.5)
+        );
+  }
 }
 
 @layer layout {
