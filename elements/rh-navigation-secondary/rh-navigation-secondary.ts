@@ -174,11 +174,34 @@ export class RhNavigationSecondary extends LitElement {
     // CTA must always be 'lightest' on mobile screens
     const dropdownPalette = this.#compact ? 'lightest' : this.#computedPalette;
     return html`
-      <!-- container, \`<nav>\` element -->
+      <!-- summary: main navigation wrapper element
+           description: |
+             The outermost container for the secondary navigation, wrapping all navigation content
+             including logo, menu, and CTA. This part corresponds to a \`<div>\` element that provides
+             the primary structure and styling for the navigation bar.
+
+             **Styling:**
+             - Use this part to customize the overall navigation appearance
+             - Applies compact mode styles when viewport is mobile-sized
+             - Controls positioning and z-index of navigation elements
+
+             @see [Navigation](https://ux.redhat.com/elements/navigation/) documentation -->
       <div part="nav"
            class="${classMap({ compact: this.#compact })}">
         ${this.#logoCopy}
-        <!-- container, \`<div>\` element -->
+        <!-- summary: navigation content container
+             description: |
+               The primary container for navigation links, logo, mobile menu button, and CTA.
+               This part corresponds to a \`<div>\` element that manages the layout and expansion
+               states of the navigation content.
+
+               **Styling:**
+               - Use this part to customize the navigation content layout
+               - Controls expanded/collapsed states for mobile menu
+               - Manages positioning of navigation items and dropdowns
+               - Contains grid layout for organizing navigation elements
+
+               @see [Navigation](https://ux.redhat.com/elements/navigation/) documentation -->
         <div id="container" part="container" class="${classMap({ expanded })}">
           <!-- Logo added to the main nav bar, expects \`<a>Text</a> | <a><svg/></a> | <a><img/></a>\` element -->
           <slot name="logo" id="logo"></slot>
@@ -190,7 +213,18 @@ export class RhNavigationSecondary extends LitElement {
           <rh-surface color-palette="${dropdownPalette}">
             <!-- Navigation list added to the main nav bar, expects \`<ul>\` element -->
             <slot name="nav"></slot>
-            <!-- container, \`<div>\` element -->
+            <!-- summary: call-to-action container
+                 description: |
+                   Container for the navigation-level call-to-action button. This part corresponds
+                   to a \`<div>\` element positioned at the end of the navigation bar.
+
+                   **Styling:**
+                   - Use this part to customize the CTA positioning and spacing
+                   - Appears at the rightmost position in desktop view
+                   - Typically contains a single \`<rh-cta>\` element
+                   - Automatically adjusts color palette in mobile vs desktop views
+
+                   @see [Navigation](https://ux.redhat.com/elements/navigation/) documentation -->
             <div id="cta" part="cta">
               <!-- Nav bar level CTA, expects \`<rh-cta>\` element -->
               <slot name="cta"></slot>
