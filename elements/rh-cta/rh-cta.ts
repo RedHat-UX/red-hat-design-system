@@ -22,6 +22,24 @@ function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLB
  *
  * @alias call-to-action
  *
+ * @cssprop --rh-icon-size
+ * Size of the icon displayed within the CTA. Controls both width and height of icon elements.
+ *
+ * @cssprop --rh-cta-focus-container-outline-color
+ * Color of the focus outline for the CTA container. Used to indicate keyboard focus state
+ * for accessibility.
+ *
+ * @cssprop --rh-cta-focus-outline-color
+ * Color of the focus outline for the CTA link/button element. Should provide adequate
+ * contrast against background for visibility.
+ *
+ * @cssprop --rh-cta-font-size-priority
+ * Font size for priority/primary CTA variants. Used to emphasize important calls to action
+ * with larger text.
+ *
+ * @cssprop --rh-cta-active-background-color
+ * Background color when the CTA is in active/pressed state. Provides visual feedback
+ * during user interaction.
  */
 @customElement('rh-cta')
 @themable
