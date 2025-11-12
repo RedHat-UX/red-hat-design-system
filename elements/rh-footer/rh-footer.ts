@@ -27,6 +27,15 @@ function isHeaderTagName(tagName: string) {
  * @summary Displays secondary information at the bottom of a page
  *
  * @alias footer
+ *
+ * @cssprop --rh-footer-nojs-min-height - Minimum height for footer when JavaScript is disabled
+ * @cssprop --rh-footer-icon-color - Default color for icons in the footer
+ * @cssprop --rh-footer-icon-color-hover - Icon color on hover state
+ * @cssprop --rh-footer-border-color - Border color for footer sections
+ * @cssprop --rh-footer-accent-color - Accent color for emphasis elements
+ * @cssprop --rh-footer-section-side-gap - Horizontal spacing between footer sections
+ * @cssprop --rh-footer-links-gap - Spacing between footer links
+ * @cssprop --rh-footer-link-header-font-size - Font size for link section headers
  */
 @customElement('rh-footer')
 export class RhFooter extends LitElement {
