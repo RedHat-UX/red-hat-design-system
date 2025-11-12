@@ -28,7 +28,17 @@
   container: navigation-primary / inline-size;
   position: relative;
 
-  /** The initial z-index for the primary navigation element, default is 102. */
+  /**
+   * --rh-navigation-primary-z-index
+   * Controls the stacking order of the navigation bar. Defaults to 102 to ensure
+   * navigation appears above most page content but below modals and overlays.
+   *
+   * **Usage guidelines:**
+   * - Keep default value for standard layouts
+   * - Increase only when navigation must appear above specific elements
+   * - Ensure navigation doesn't overlap modals (z-index typically 1000+)
+   * - Coordinate with page-level z-index values to avoid conflicts
+   */
   /* stylelint-disable-next-line rhds/no-unknown-token-name */
   z-index: var(--rh-navigation-primary-z-index, 102);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif) !important;

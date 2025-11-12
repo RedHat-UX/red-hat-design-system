@@ -4,6 +4,17 @@
   inset: 0;
   inline-size: 100dvw;
   block-size: 100dvh;
+  /**
+   * --rh-overlay-z-index
+   * Controls the stacking order of the navigation overlay. Defaults to 1 to appear
+   * behind the navigation bar (z-index 102) but above page content.
+   *
+   * **Usage guidelines:**
+   * - Keep default value for standard overlay behavior
+   * - Must be lower than navigation z-index to appear behind navigation
+   * - Adjust only when specific page elements conflict with overlay layering
+   * - Coordinate with --rh-navigation-primary-z-index to maintain proper stacking
+   */
   /* stylelint-disable-next-line rhds/no-unknown-token-name */
   z-index: var(--rh-overlay-z-index, 1);
 }
