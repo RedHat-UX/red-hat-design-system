@@ -37,5 +37,5 @@ export async function highlight(textContent: string, language: RhCodeBlock['lang
   return prism.highlight(textContent, prism.languages[language!], language!);
 }
 
-export { prismStyles } from './prism.css.js';
+export { prismStyles, preRenderedLightDomStyles } from './prism.css.js';
 

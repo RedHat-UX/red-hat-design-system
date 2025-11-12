@@ -60,4 +60,9 @@ const styles = css`
 `;
 
 export const prismStyles = css`.prism-styles {${styles}}`;
+export const preRenderedLightDomStyles = css`rh-code-block {
+--_styles-applied: true;
+${styles}
+& > pre { opacity: 1; }
+}`;
 

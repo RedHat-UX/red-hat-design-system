@@ -344,7 +344,7 @@ export class RhCodeBlock extends LitElement {
            @code-action="${this.#onCodeAction}">
         <div id="content-lines" tabindex="${ifDefined((!fullHeight || undefined) && 0)}">
           <!-- CSS counter-based line numbers with wrapped content -->
-          ${this.#wrappedLines.length > 0 ? html`
+          ${this.#wrappedLines.length > 0 && this.highlighting !== 'prerendered' ? html`
             <div id="code-with-line-numbers" class="prism-styles language-${this.language}">
               ${this.#wrappedLines}
             </div>
@@ -357,7 +357,7 @@ export class RhCodeBlock extends LitElement {
             also be a \`<pre>\` tag.
           -->
           <slot id="content"
-                ?hidden="${this.#wrappedLines.length > 0}"
+                ?hidden="${this.#wrappedLines.length > 0 && this.highlighting !== 'prerendered'}"
                 @slotchange="${this.#onSlotChange}"></slot>
         </div>
 
@@ -488,7 +488,10 @@ export class RhCodeBlock extends LitElement {
       case 'client': await this.#highlightWithPrism(); break;
       // TODO: if we ever support other tokenizers e.g. highlightjs,
       // dispatch here off of some supplemental attribute like `tokenizer="highlightjs"`
-      case 'prerendered': await this.#applyPrismPrerenderedStyles(); break;
+      case 'prerendered':
+        // For prerendered content, only load styles - don't modify the lightdom at all
+        await this.#applyPrismPrerenderedStyles();
+        break;
     }
 
     // Always extract lines to determine expandable state, even in lazy mode
@@ -496,21 +499,23 @@ export class RhCodeBlock extends LitElement {
     this.#extractLines();
     this.requestUpdate();
 
-    // Wrap lines based on load mode
-    switch (this.load) {
-      case 'immediate':
-        this.#wrapLinesInSpans();
-        break;
-      case 'lazy':
-        // Only wrap if already intersected
-        // But #lines is already populated above for expandable check
-        if (this.#isIntersecting || this.#hasComputedLineNumbers) {
+    // Wrap lines based on load mode (only for client-side rendering, not prerendered)
+    if (this.highlighting !== 'prerendered') {
+      switch (this.load) {
+        case 'immediate':
           this.#wrapLinesInSpans();
-        }
-        break;
-      case 'deferred':
-        ric(() => this.#wrapLinesInSpans());
-        break;
+          break;
+        case 'lazy':
+          // Only wrap if already intersected
+          // But #lines is already populated above for expandable check
+          if (this.#isIntersecting || this.#hasComputedLineNumbers) {
+            this.#wrapLinesInSpans();
+          }
+          break;
+        case 'deferred':
+          ric(() => this.#wrapLinesInSpans());
+          break;
+      }
     }
   }
 
@@ -539,9 +544,30 @@ export class RhCodeBlock extends LitElement {
 
   /**
    * Applies Prism.js styles for prerendered code highlighting.
+   * Applies styles to the root node (document or shadow root) so they can style light DOM content.
    * Used when `highlighting="prerendered"` attribute is set.
    */
   async #applyPrismPrerenderedStyles() {
+    if (isServer) {
+      return;
+    }
+
+    // Check if styles are already applied via CSS variable
+    if (getComputedStyle(this).getPropertyValue('--_styles-applied') !== 'true') {
+      const root = this.getRootNode();
+      if (root instanceof Document || root instanceof ShadowRoot) {
+        const { preRenderedLightDomStyles } = await import('./prism.js');
+        const styleSheet = ('styleSheet' in preRenderedLightDomStyles) ?
+          (preRenderedLightDomStyles.styleSheet as CSSStyleSheet)
+          : ((preRenderedLightDomStyles as CSSResult).styleSheet);
+
+        if (styleSheet && !root.adoptedStyleSheets.includes(styleSheet)) {
+          root.adoptedStyleSheets = [...root.adoptedStyleSheets, styleSheet];
+        }
+      }
+    }
+
+    // Also load shadow DOM styles for any internal styling needs
     await this.#loadPrismStyles();
   }
 
@@ -675,16 +701,11 @@ export class RhCodeBlock extends LitElement {
       // Get content from slotted elements
       const codes = this.#getSlottedCodeElements();
       if (codes.length > 0) {
-        htmlContent = (this.highlighting === 'prerendered') ?
-          // Prerendered content already has Prism HTML - preserve it
-          codes.map(el => el?.innerHTML || '').join('\n')
-          // Plain text content - escape HTML to prevent XSS
-          : (() => {
-            const textContent = codes.map(el => el?.textContent || '').join('\n');
-            const div = document.createElement('div');
-            div.textContent = textContent;
-            return div.innerHTML;
-          })();
+        // Plain text content - escape HTML to prevent XSS
+        const textContent = codes.map(el => el?.textContent || '').join('\n');
+        const div = document.createElement('div');
+        div.textContent = textContent;
+        htmlContent = div.innerHTML;
       }
     }
 

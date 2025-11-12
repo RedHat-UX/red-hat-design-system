@@ -2,6 +2,7 @@
   import "@rhds/elements/rh-code-block/rh-code-block.js";
 </script>
 
+<link rel="stylesheet" href="../rh-code-block-lightdom.css">
 <link rel="stylesheet" href="../rh-code-block-lightdom-shim.css">
 
 <style>
@@ -743,7 +744,7 @@ control-plane-3                Ready    master   15d   v1.28.2</code></pre>
   </code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="javascript" actions="copyine-numbers="hidden"> <pre class="language-javascript"><code class="language-javascript">    <span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span><span class="token punctuation">;</span>
+<rh-code-block highlighting="prerendered" compact language="javascript" actions="copy wrap" line-numbers="hidden"> <pre class="language-javascript"><code class="language-javascript">    <span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span><span class="token punctuation">;</span>
     <span class="token keyword">import</span> <span class="token punctuation">{</span> createServer <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'http'</span><span class="token punctuation">;</span>
 
     <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -2986,13 +2987,8 @@ end</code></pre>
 export default DataService;</code></pre>
 </rh-code-block>
 
-<rh-code-block
-  highlighting="prerendered"
-  language="plaintext"
-
-
-  actions="copy wrap"
- <pre class="language-plaintext"><code class="language-plaintext">Deployment successful!Application version: 2.5.0
+<rh-code-block highlighting="prerendered" language="plaintext" actions="copy wrap">
+<pre class="language-plaintext"><code class="language-plaintext">Deployment successful!Application version: 2.5.0
 Environment: production
 Replicas: 5
 Health check: PASSED
@@ -3721,11 +3717,8 @@ curl -f http://localhost:3000/health || exit 1
 echo "Deployment completed successfully"</code></pre>
 </rh-code-block>
 
-<rh-code-block
-  highlighting="prerendered"
-  language="ruby"
-
-  actions="copy wrap"  <pre class="language-ruby"><code class="language-ruby">class User &lt; ApplicationRecord
+<rh-code-block highlighting="prerendered" language="ruby" actions="copy wrap">
+<pre class="language-ruby"><code class="language-ruby">class User &lt; ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments
 
@@ -4957,12 +4950,8 @@ echo "All nodes processed"</code></pre>
 }</code></pre>
 </rh-code-block>
 
-<rh-code-block
-  highlighting="prerendered"
-  language="ruby"
-
-  actions="copy wrap"
-  <pre class="language-ruby"><code class="language-ruby">class User &lt; ApplicationRecord
+<rh-code-block highlighting="prerendered" language="ruby" actions="copy wrap">
+<pre class="language-ruby"><code class="language-ruby">class User &lt; ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments
 
@@ -9119,9 +9108,8 @@ spec:
 <rh-code-block
   highlighting="prerendered"
   language="ruby"
-
-
-  actions="copy wrap" <pre class="language-ruby"><code class="language-ruby">class User &lt; ApplicationRecord  has_many :posts, dependent: :destroy
+  actions="copy wrap">
+<pre class="language-ruby"><code class="language-ruby">class User &lt; ApplicationRecord  has_many :posts, dependent: :destroy
   has_many :comments
 
   validates :email, presence: true, uniqueness: true
@@ -14191,7 +14179,9 @@ end</code></pre>
   </code></pre>
 </rh-code-block>
 
-<rh-code-block highlighting="prerendered" compact language="plaintext" actions="copyine-numbers="hidden"> <pre class="language-plaintext"><code class="language-plaintext">Error: Connection timeoutRetrying... (attempt 1/3)
+<rh-code-block highlighting="prerendered" compact language="plaintext" actions="copy wrap" line-numbers="hidden">
+<pre class="language-plaintext">
+<code class="language-plaintext">Error: Connection timeoutRetrying... (attempt 1/3)
 Retrying... (attempt 2/3)
 Retrying... (attempt 3/3)
 Failed to connect to database
