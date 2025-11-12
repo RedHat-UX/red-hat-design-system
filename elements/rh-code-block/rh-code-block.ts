@@ -52,6 +52,14 @@ export class RhCodeBlockCopyEvent extends Event {
  * @event {RhCodeBlockCopyEvent} copy - fired when the user requests to copy the code block text.
  *                                      Modify the `event.content` field to change the copied text
  *                                      (e.g. to remove a prompt from a shell command)
+ *
+ * @cssprop --rh-code-block-callout-size
+ * Width of the callout/notification indicator that appears when highlighting specific lines.
+ * Controls the visual size of line highlight markers or callout indicators.
+ *
+ * @cssprop --rh-code-block-border-block-start-width
+ * Width of the top border for the code block container. Used to visually separate the code
+ * block from surrounding content. Should maintain consistency with design system border widths.
  */
 @customElement('rh-code-block')
 @themable
@@ -111,9 +119,21 @@ export class RhCodeBlock extends LitElement {
   @property({
     reflect: true,
     converter: {
+      /**
+       * Converts the HTML attribute string to an array of action names.
+       * Splits on spaces or commas, trims whitespace, and filters empty values.
+       * @param value - Attribute string like "copy wrap" or "copy, wrap"
+       * @returns Array of action names
+       */
       fromAttribute(value) {
         return ((value ?? '').split(/\s+|,/) ?? []).map(x => x.trim()).filter(Boolean);
       },
+      /**
+       * Converts the array of action names to an HTML attribute string.
+       * Joins array values with spaces.
+       * @param value - Array of action names
+       * @returns Space-separated string of actions
+       */
       toAttribute(value) {
         return Array.isArray(value) ? value.join(' ') : '';
       },
