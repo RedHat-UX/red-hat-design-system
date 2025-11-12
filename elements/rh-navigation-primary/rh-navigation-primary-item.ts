@@ -43,12 +43,49 @@ export class RhNavigationPrimaryItem extends LitElement {
   @state()
   private compact?: boolean;
 
+  /**
+   * Controls whether the dropdown menu is expanded or collapsed.
+   *
+   * When `true`, the dropdown menu content is visible. When `false`, the menu is hidden.
+   * Only applies to items with `variant="dropdown"`.
+   *
+   * ## Usage guidelines
+   * - Automatically toggled when users click the dropdown summary
+   * - Can be set declaratively in HTML: `<rh-navigation-primary-item open>`
+   * - Use programmatically with `show()` and `hide()` methods
+   * - Only one dropdown should be open at a time in navigation
+   *
+   * @see [Navigation](https://ux.redhat.com/elements/navigation/) documentation
+   */
   @property({ type: Boolean, reflect: true }) open = false;
 
-  /* Summary text for dropdown variants only */
+  /**
+   * Text label displayed for dropdown menu items.
+   *
+   * Provides the clickable text that users see to open the dropdown menu.
+   * Only relevant when `variant="dropdown"`. Alternatively, use the `summary` slot
+   * for more complex content like icons with text.
+   *
+   * ## Usage guidelines
+   * - Use concise, descriptive labels (e.g., "Account", "Search", "More")
+   * - Prefer the `summary` slot for custom markup or icons
+   * - Keep labels short for better mobile experience
+   * - Ensure labels clearly indicate the dropdown purpose
+   */
   @property() summary?: string;
 
-  /* Variants 'link' | 'dropdown', link is the default if no variant is given */
+  /**
+   * Defines the navigation item's presentation and behavior.
+   *
+   * - `link` (default) - Standard navigation link without dropdown functionality
+   * - `dropdown` - Interactive dropdown menu that expands to show additional content
+   *
+   * ## Usage guidelines
+   * - Use `link` for direct navigation to pages or sections
+   * - Use `dropdown` for menus with multiple options (search, account, categories)
+   * - Dropdown variant requires content in the default slot for the menu
+   * - Link variant typically contains a single anchor element
+   */
   @property() variant?: 'link' | 'dropdown' = 'link';
 
   /**
@@ -101,9 +138,43 @@ export class RhNavigationPrimaryItem extends LitElement {
     })}">${this.variant === 'dropdown' ? html`
         <details @toggle="${this.#detailsToggle}" ?open="${this.open}">
           <summary>${hamburger ? '' : html`
+            <!-- summary: icon displayed before dropdown label
+                 description: |
+                   Contains an icon that appears before the dropdown summary text in the secondary
+                   navigation area. Use for visual identification of dropdown purpose.
+
+                   **Common patterns:**
+                   - Search icon for search dropdowns
+                   - User avatar or profile icon for account menus
+                   - Custom brand or feature icons
+
+                   **Best practices:**
+                   - Use the \`icon\` property as shorthand for standard icons
+                   - Slot custom SVG or image elements for unique icons
+                   - Ensure icons are decorative and don't convey critical information alone
+                   - Keep icon size consistent across navigation items
+
+                   @see [Navigation](https://ux.redhat.com/elements/navigation/) documentation -->
             <slot name="icon">${!this.icon ? '' : html`
               <rh-icon icon="${ifDefined(this.icon)}" set="${ifDefined(this.iconSet)}"></rh-icon>`}
             </slot>`}
+            <!-- summary: dropdown label text or custom content
+                 description: |
+                   Contains the text label for the dropdown menu. This is the clickable area
+                   that users interact with to expand/collapse the dropdown.
+
+                   **Common patterns:**
+                   - Simple text labels ("Account", "Search", "Help")
+                   - Text with icons or badges
+                   - Customized markup for specific use cases
+
+                   **Best practices:**
+                   - Use the \`summary\` property for simple text labels
+                   - Use this slot for custom HTML or complex content
+                   - Keep labels concise and descriptive
+                   - Ensure content is accessible with proper ARIA labels if needed
+
+                   @see [Navigation](https://ux.redhat.com/elements/navigation/) documentation -->
             <div id="summary-text"><slot name="summary">${this.summary}</slot></div>
             <rh-icon icon="caret-down" set="microns"></rh-icon>
           </summary>
@@ -121,14 +192,48 @@ export class RhNavigationPrimaryItem extends LitElement {
     this.dispatchEvent(new Event('toggle', { bubbles: true }));
   }
 
-  /** @summary hides the dropdown */
+  /**
+   * Programmatically closes the dropdown menu.
+   *
+   * Sets the `open` property to `false`, collapsing the dropdown menu content.
+   * This method is asynchronous and waits for the component to finish updating.
+   *
+   * ## Usage guidelines
+   * - Use to close dropdowns programmatically in response to user actions
+   * - Called automatically when users click outside the dropdown
+   * - Useful for closing menus after selection or navigation
+   * - Coordinates with navigation overlay to manage multiple open dropdowns
+   *
+   * @example
+   * ```javascript
+   * const dropdown = document.querySelector('rh-navigation-primary-item');
+   * await dropdown.hide();
+   * ```
+   */
   public async hide() {
     this.open = false;
     this.requestUpdate();
     await this.updateComplete;
   }
 
-  /** @summary shows the dropdown */
+  /**
+   * Programmatically opens the dropdown menu.
+   *
+   * Sets the `open` property to `true`, expanding the dropdown menu content.
+   * This method is asynchronous and waits for the component to finish updating.
+   *
+   * ## Usage guidelines
+   * - Use to open dropdowns programmatically in response to events
+   * - Called automatically when users click the dropdown summary
+   * - Closes other open dropdowns when navigation is in single-dropdown mode
+   * - Triggers overlay display for modal-like dropdown presentation
+   *
+   * @example
+   * ```javascript
+   * const dropdown = document.querySelector('rh-navigation-primary-item');
+   * await dropdown.show();
+   * ```
+   */
   public async show() {
     this.open = true;
     this.requestUpdate();
