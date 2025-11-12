@@ -153,7 +153,7 @@ export default pfeDevServerConfig({
     inputMap: { imports },
   },
   middleware: [
-    async function (ctx, next) {
+    async function(ctx, next) {
       if (ctx.path === '/lib/environment.ts') {
         ctx.type = 'text/javascript';
         ctx.body = await makeDemoEnv();
@@ -166,7 +166,7 @@ export default pfeDevServerConfig({
      * @param ctx koa context
      * @param next next koa middleware
      */
-    function (ctx, next) {
+    function(ctx, next) {
       if (ctx.path.startsWith('/styles/')) {
         ctx.redirect(`/docs${ctx.path}`);
       } else {
@@ -179,7 +179,7 @@ export default pfeDevServerConfig({
      * @param ctx koa context
      * @param next next koa middleware
      */
-    async function (ctx, next) {
+    async function(ctx, next) {
       if (!ctx.path.includes('-lightdom')) {
         return next();
       }
@@ -209,7 +209,7 @@ export default pfeDevServerConfig({
      * @param ctx koa context
      * @param next next koa middleware
      */
-    async function (ctx, next) {
+    async function(ctx, next) {
       if (ctx.path.endsWith('/') && !ctx.path.includes('.')) {
         await next();
         const document = parse(ctx.body);
@@ -227,7 +227,7 @@ export default pfeDevServerConfig({
       serverStart(args) {
         const fsDemoFilesGlob = new URL('./elements/*/demo/**/*.html', import.meta.url).pathname;
         args.fileWatcher.add(fsDemoFilesGlob);
-        args.app.use(function (ctx, next) {
+        args.app.use(function(ctx, next) {
           if (ctx.path.match(/\/|\.css|\.html|\.js$/)) {
             ctx.etag = `e${Math.random() * Date.now()}`;
           }
