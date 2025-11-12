@@ -6,7 +6,11 @@
 
   display: block;
   max-width: 1000px;
-  max-height: calc(10 * var(--rh-space-4xl, 64px));
+  min-height: 193px;
+}
+
+:host([compact]) {
+  max-height: 185px;
 }
 
 :host([full-height]) {
@@ -52,7 +56,7 @@
 #content-lines,
 #content,
 #prism-output,
-#sizers {
+#code-with-line-numbers {
   max-width: 100%;
 }
 
@@ -196,7 +200,6 @@
   }
 }
 
-#sizers,
 #prism-output,
 #content {
   display: block;
@@ -206,7 +209,6 @@
   grid-area: code;
 }
 
-#sizers,
 #prism-output,
 #content::slotted(:is(script, pre)) {
   display: inline;
@@ -254,33 +256,39 @@
   width: 100%;
 }
 
-#sizers {
-  position: absolute;
-  min-width: 100%;
-  width: 100%;
-  opacity: 0;
-  pointer-events: none;
-  z-index: -10000;
+/* CSS counter-based line numbers with wrapped lines */
+#code-with-line-numbers {
+  counter-reset: line-number;
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  column-gap: var(--rh-space-lg, 16px);
+  grid-area: code;
+  align-items: start;
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
   line-height: var(--rh-line-height-code, 1.5);
 }
 
-#line-numbers {
-  pointer-events: none;
-  overflow-y: hidden;
-  margin: 0;
-  grid-area: lines;
-  list-style-type: none;
-  padding-inline: 0 var(--rh-space-md, 8px);
+#code-with-line-numbers .line {
+  counter-increment: line-number;
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+}
+
+#code-with-line-numbers .line:before {
+  content: counter(line-number);
   text-align: end;
-  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  padding-inline-end: var(--rh-space-md, 8px);
   color: var(--rh-color-text-secondary);
   font-weight: var(--rh-font-weight-code-regular, 400);
   border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+  user-select: none;
+  pointer-events: none;
+}
 
-  li {
-    line-height: var(--rh-line-height-code, 1.5);
-    display: block;
-  }
+#code-with-line-numbers .line-content {
+  white-space: var(--_code-white-space, pre);
+  word-wrap: var(--_code-word-wrap, initial);
 }
 
 #actions {
@@ -360,8 +368,16 @@
   grid-template-columns: 1fr;
 }
 
-:host([line-numbers='hidden']) #line-numbers {
+:host([line-numbers='hidden']) #code-with-line-numbers {
+  grid-template-columns: 1fr;
+}
+
+:host([line-numbers='hidden']) #code-with-line-numbers .line:before {
   display: none;
+}
+
+:host([line-numbers='hidden']) #code-with-line-numbers .line-content {
+  grid-column: 1;
 }
 
 :not(.wrap) #actions:before {

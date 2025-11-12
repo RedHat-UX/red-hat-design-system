@@ -1,11 +1,10 @@
-import type { DirectiveResult } from 'lit-html/directive.js';
 import { CSSResult, LitElement, html, isServer, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { styleMap } from 'lit/directives/style-map.js';
 import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -15,8 +14,22 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import style from './rh-code-block.css';
 
 /**
- * Returns a string with common indent stripped from each line. Useful for templating HTML
- * @param str indented string
+ * Returns a string with common indent stripped from each line. Useful for templating HTML.
+ * This function removes leading whitespace that is common to all lines, making code samples
+ * more readable when they are indented in template literals.
+ *
+ * @param str - The indented string to process
+ * @returns The dedented string with common leading whitespace removed and trimmed
+ *
+ * @example
+ * ```ts
+ * const code = dedent(`
+ *     function hello() {
+ *       console.log('world');
+ *     }
+ *   `);
+ * // Returns: "function hello() {\n  console.log('world');\n}"
+ * ```
  */
 function dedent(str: string) {
   const stripped = str.replace(/^\n/, '');
@@ -25,16 +38,33 @@ function dedent(str: string) {
   return out.trim();
 }
 
-interface CodeLineHeightsInfo {
-  lines: string[];
-  lineHeights: (number | undefined)[];
-  sizer: HTMLElement;
-  oneLinerHeight: number;
-}
+/**
+ * requestIdleCallback when available, requestAnimationFrame when not
+ * @param f callback
+ */
+const ric: typeof globalThis.requestIdleCallback =
+     globalThis.requestIdleCallback
+  ?? globalThis.requestAnimationFrame
+  ?? (async (f: () => void) => Promise.resolve().then(f));
 
-const prismApplyPromises = new WeakMap();
-
+/**
+ * Custom event fired when the user requests to copy the code block content.
+ * The event is cancelable and allows modification of the copied content before
+ * it is written to the clipboard.
+ *
+ * @example
+ * ```ts
+ * codeBlock.addEventListener('copy', (event) => {
+ *   // Remove shell prompts from the copied text
+ *   event.content = event.content.replace(/^\$ /gm, '');
+ * });
+ * ```
+ */
 export class RhCodeBlockCopyEvent extends Event {
+  /**
+   * Creates a new RhCodeBlockCopyEvent
+   * @param content - The text content to copy to clipboard
+   */
   constructor(
     /** Text content to copy */
     public content: string
@@ -156,10 +186,21 @@ export class RhCodeBlock extends LitElement {
   /** When set to `hidden`, the code block's line numbers are hidden */
   @property({ reflect: true, attribute: 'line-numbers' }) lineNumbers?: 'hidden';
 
+  /**
+   * Controls when the component performs expensive calculations like line number height computation.
+   * - `lazy` (default): Uses intersection observer. Only calculates after the component has intersected at least once.
+   * - `immediate`: Load immediately, no intersection observer. Performs all calculations as the browser renders.
+   * - `deferred`: Uses requestIdleCallback to load when the main thread is available.
+   */
+  @property() load: 'lazy' | 'immediate' | 'deferred' = 'lazy';
+
+  /** Current state of the copy action button (default, active after copy, or failed) */
   @state() private copyButtonState: 'default' | 'active' | 'failed' = 'default';
 
+  /** Logger instance for error and debug messages */
   #logger = new Logger(this);
 
+  /** Slot controller for managing named slots and their content */
   #slots = new SlotController(
     this,
     null,
@@ -171,37 +212,118 @@ export class RhCodeBlock extends LitElement {
     'legend',
   );
 
-  #prismOutput?: DirectiveResult;
+  /** Raw HTML string from Prism highlighting (for client-side and prerendered modes) */
+  #prismHighlightedHtml?: string;
 
+  /** Whether the code block is currently intersecting the viewport (for lazy mode) */
   #isIntersecting = false;
-  #io = new IntersectionObserver(rs => {
-    const old = this.#isIntersecting;
-    const isIntersecting = rs.some(r => r.isIntersecting);
-    this.#isIntersecting = isIntersecting;
-    if (old !== isIntersecting) {
-      this.requestUpdate();
-    }
-    this.#computeLineNumbers();
-  }, { rootMargin: '50% 0px' });
 
-  #ro = new ResizeObserver(() => this.#computeLineNumbers());
+  /** Whether line number calculations have been completed (for lazy mode cleanup) */
+  #hasComputedLineNumbers = false;
 
+  /**
+   * Intersection observer to track visibility and optimize line number calculations.
+   * Only used in lazy mode. Uses a 50% root margin to precompute before the element enters the viewport.
+   */
+  #io: IntersectionObserver | null = null;
+
+  /** Array of text content for each line in the code block */
   #lines: string[] = [];
-  #lineHeights: `${string}px`[] = [];
+
+  /** Wrapped lines with CSS counters for line numbering */
+  #wrappedLines: unknown[] = [];
 
   override connectedCallback() {
     super.connectedCallback();
     if (!isServer) {
-      this.#ro.observe(this);
-      this.#io.observe(this);
+      this.#setupObservers();
     }
     this.#onSlotChange();
   }
 
   override disconnectedCallback() {
     super.disconnectedCallback();
-    this.#ro.disconnect();
-    this.#io.disconnect();
+    this.#cleanupIntersectionObserver();
+  }
+
+  /**
+   * Sets up IntersectionObserver for lazy mode.
+   * Only creates observer if load mode is 'lazy'.
+   * Observer tracks both entry and exit to manage memory by unwrapping when off-screen.
+   */
+  #setupObservers() {
+    // Only create IntersectionObserver for lazy mode
+    if (this.load === 'lazy' && !this.#io) {
+      // Create a new IntersectionObserver instance for THIS component only
+      // Each component has its own observer, so cleanup only affects this instance
+      this.#io = new IntersectionObserver(entries => {
+        // IntersectionObserver callback receives entries for all observed elements
+        // Since each component has its own observer instance that only observes 'this',
+        // entries will always contain exactly one entry for this element
+        const [entry] = entries;
+        if (entry && entry.target === this) {
+          const wasIntersecting = this.#isIntersecting;
+          const { isIntersecting } = entry;
+
+          // Update intersection state
+          this.#isIntersecting = isIntersecting;
+
+          // Handle entering viewport - wrap lines for display
+          if (isIntersecting && !wasIntersecting && !this.#hasComputedLineNumbers) {
+            this.#handleIntersection();
+          } else if (!isIntersecting && wasIntersecting && this.#hasComputedLineNumbers) {
+            // Handle exiting viewport - unwrap to save memory
+            this.#unwrapLines();
+          }
+        }
+      }, { rootMargin: '50% 0px' });
+
+      // Observe ONLY this element - each component has its own observer instance
+      // Observer stays active throughout component lifecycle to manage memory
+      this.#io.observe(this);
+    }
+  }
+
+  /**
+   * Handles intersection - wraps lines when entering viewport
+   */
+  #handleIntersection() {
+    // Prevent duplicate calls
+    if (this.#hasComputedLineNumbers) {
+      return;
+    }
+
+    this.requestUpdate();
+    // Wrap lines with CSS counters for line numbers
+    // Observer stays active to unwrap when element exits viewport
+    this.#wrapLinesInSpans();
+  }
+
+  /**
+   * Unwraps lines when element exits viewport to save memory.
+   * Resets wrapped lines and computation flag so element can be re-wrapped on re-entry.
+   */
+  #unwrapLines() {
+    this.#wrappedLines = [];
+    this.#hasComputedLineNumbers = false;
+    this.requestUpdate();
+  }
+
+  /**
+   * Cleans up intersection observer for THIS component instance only.
+   * Each component has its own IntersectionObserver, so this only affects this element.
+   * Called when component is disconnected from DOM.
+   */
+  #cleanupIntersectionObserver() {
+    if (this.#io) {
+      // Since each component has its own observer instance (this.#io),
+      // unobserve only removes this element from this specific observer
+      // Other components' observers are unaffected
+      this.#io.unobserve(this);
+      // Disconnect this observer instance as component is being removed
+      this.#io.disconnect();
+      this.#io = null;
+    }
   }
 
   render() {
@@ -221,13 +343,13 @@ export class RhCodeBlock extends LitElement {
            class="${classMap({ actions, compact, expandable, fullHeight, isIntersecting, resizable, truncated, wrap })}"
            @code-action="${this.#onCodeAction}">
         <div id="content-lines" tabindex="${ifDefined((!fullHeight || undefined) && 0)}">
-          <div id="sizers" aria-hidden="true"></div>
-          <ol id="line-numbers" inert aria-hidden="true">${this.#lineHeights.map((height, i) => html`
-            <li style="${styleMap({ height })}">${i + 1}</li>`)}
-          </ol>
-          <pre id="prism-output"
-               class="language-${this.language}"
-               ?hidden="${!this.#prismOutput}">${this.#prismOutput}</pre>
+          <!-- CSS counter-based line numbers with wrapped content -->
+          ${this.#wrappedLines.length > 0 && this.highlighting !== 'prerendered' ? html`
+            <div id="code-with-line-numbers" class="prism-styles language-${this.language}">
+              ${this.#wrappedLines}
+            </div>
+          ` : ''}
+          
           <!--
             A non-executable script tag containing the sample content. JavaScript
             samples should use the type \`text/sample-javascript\`. HTML samples
@@ -235,7 +357,7 @@ export class RhCodeBlock extends LitElement {
             also be a \`<pre>\` tag.
           -->
           <slot id="content"
-                ?hidden="${!!this.#prismOutput}"
+                ?hidden="${this.#wrappedLines.length > 0 && this.highlighting !== 'prerendered'}"
                 @slotchange="${this.#onSlotChange}"></slot>
         </div>
 
@@ -303,7 +425,18 @@ export class RhCodeBlock extends LitElement {
   }
 
   protected override firstUpdated(): void {
-    this.#computeLineNumbers();
+    switch (this.load) {
+      case 'immediate':
+        this.#wrapLinesInSpans();
+        break;
+      case 'lazy':
+        // IntersectionObserver will fire when element enters viewport
+        // or immediately if element is already in viewport
+        break;
+      case 'deferred':
+        ric(() => this.#wrapLinesInSpans());
+        break;
+    }
   }
 
   protected override updated(changed: PropertyValues<this>): void {
@@ -315,55 +448,172 @@ export class RhCodeBlock extends LitElement {
     }
   }
 
+  /**
+   * Extracts lines from code content. Used to populate #lines for expandable check.
+   * This is a lightweight operation that doesn't compute line heights.
+   * Can be called before Prism highlighting completes - will extract from raw slot content.
+   */
+  #extractLines() {
+    if (isServer) {
+      return;
+    }
+
+    let textContent = '';
+
+    // If we have Prism HTML, extract text from it
+    if (this.#prismHighlightedHtml) {
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = this.#prismHighlightedHtml;
+      textContent = tempDiv.textContent || '';
+    } else {
+      // Otherwise, get from slotted content
+      const codes = this.#getSlottedCodeElements();
+      if (codes.length === 0) {
+        this.#lines = [];
+        return;
+      }
+      textContent = codes.map(code => code?.textContent || '').join('\n');
+    }
+
+    // Split into lines
+    this.#lines = textContent.split(/\n(?!$)/g);
+  }
+
+  /**
+   * Handles slot content changes by applying appropriate syntax highlighting
+   * and recalculating line numbers based on load mode.
+   */
   async #onSlotChange() {
     switch (this.highlighting) {
       case 'client': await this.#highlightWithPrism(); break;
       // TODO: if we ever support other tokenizers e.g. highlightjs,
       // dispatch here off of some supplemental attribute like `tokenizer="highlightjs"`
-      case 'prerendered': await this.#applyPrismPrerenderedStyles(); break;
+      case 'prerendered':
+        // For prerendered content, only load styles - don't modify the lightdom at all
+        await this.#applyPrismPrerenderedStyles();
+        break;
     }
-    this.#computeLineNumbers();
+
+    // Always extract lines to determine expandable state, even in lazy mode
+    // This is lightweight and doesn't compute line heights
+    this.#extractLines();
+    this.requestUpdate();
+
+    // Wrap lines based on load mode (only for client-side rendering, not prerendered)
+    if (this.highlighting !== 'prerendered') {
+      switch (this.load) {
+        case 'immediate':
+          this.#wrapLinesInSpans();
+          break;
+        case 'lazy':
+          // Only wrap if already intersected
+          // But #lines is already populated above for expandable check
+          if (this.#isIntersecting || this.#hasComputedLineNumbers) {
+            this.#wrapLinesInSpans();
+          }
+          break;
+        case 'deferred':
+          ric(() => this.#wrapLinesInSpans());
+          break;
+      }
+    }
   }
 
+  /**
+   * Loads Prism.js styles into the component's shadow DOM.
+   * Ensures styles are only added once to avoid duplication.
+   * Used by both client-side and prerendered highlighting modes.
+   */
+  async #loadPrismStyles() {
+    if (isServer) {
+      return;
+    }
+
+    const { prismStyles } = await import('./prism.css.js');
+    const styleSheet = ('styleSheet' in prismStyles) ?
+      (prismStyles.styleSheet as CSSStyleSheet)
+      : ((prismStyles as CSSResult).styleSheet);
+
+    if (!this.shadowRoot!.adoptedStyleSheets.includes(styleSheet!)) {
+      this.shadowRoot!.adoptedStyleSheets = [
+        ...this.shadowRoot!.adoptedStyleSheets as CSSStyleSheet[],
+        styleSheet!,
+      ];
+    }
+  }
+
+  /**
+   * Applies Prism.js styles for prerendered code highlighting.
+   * Applies styles to the root node (document or shadow root) so they can style light DOM content.
+   * Used when `highlighting="prerendered"` attribute is set.
+   */
   async #applyPrismPrerenderedStyles() {
-    let root: Node;
-    if (!isServer && !prismApplyPromises.has((root = this.getRootNode()))) {
+    if (isServer) {
+      return;
+    }
+
+    // Check if styles are already applied via CSS variable
+    if (getComputedStyle(this).getPropertyValue('--_styles-applied') !== 'true') {
+      const root = this.getRootNode();
       if (root instanceof Document || root instanceof ShadowRoot) {
-        prismApplyPromises.set(root, (async function() {
-          const { preRenderedLightDomStyles: { styleSheet } } = await import('./prism.css.js');
-          root.adoptedStyleSheets = [...root.adoptedStyleSheets, styleSheet!];
-        })());
+        const { preRenderedLightDomStyles } = await import('./prism.js');
+        const styleSheet = ('styleSheet' in preRenderedLightDomStyles) ?
+          (preRenderedLightDomStyles.styleSheet as CSSStyleSheet)
+          : ((preRenderedLightDomStyles as CSSResult).styleSheet);
+
+        if (styleSheet && !root.adoptedStyleSheets.includes(styleSheet)) {
+          root.adoptedStyleSheets = [...root.adoptedStyleSheets, styleSheet];
+        }
       }
     }
+
+    // Also load shadow DOM styles for any internal styling needs
+    await this.#loadPrismStyles();
   }
 
+  /**
+   * Performs client-side syntax highlighting using Prism.js.
+   * Dynamically imports Prism, applies styles to shadow root, extracts code from script elements,
+   * and generates highlighted output. Used when `highlighting="client"` attribute is set.
+   */
   async #highlightWithPrism() {
-    if (!isServer) {
-      const { highlight, prismStyles } = await import('./prism.js');
-      const styleSheet =
-          prismStyles instanceof CSSStyleSheet ? prismStyles
-        : (prismStyles as CSSResult).styleSheet;
-      if (!this.shadowRoot!.adoptedStyleSheets.includes(styleSheet!)) {
-        this.shadowRoot!.adoptedStyleSheets = [
-          ...this.shadowRoot!.adoptedStyleSheets as CSSStyleSheet[],
-          styleSheet!,
-        ];
-      }
-      const scripts = this.querySelectorAll('script[type]:not([type="javascript"])');
-      const preprocess = this.dedent ? dedent : (x: string) => x;
-      const textContent = preprocess(Array.from(scripts, x => x.textContent).join(''));
-      this.#prismOutput = await highlight(textContent, this.language);
-      this.requestUpdate('#prismOutput', {});
-      await this.updateComplete;
+    if (isServer) {
+      return;
     }
+
+    await this.#loadPrismStyles();
+    const { highlight } = await import('./prism.js');
+
+    const scripts = this.querySelectorAll('script[type]:not([type="javascript"])');
+    const preprocess = this.dedent ? dedent : (x: string) => x;
+    const textContent = preprocess(Array.from(scripts, x => x.textContent).join(''));
+    this.#prismHighlightedHtml = await highlight(textContent, this.language);
+
+    // Extract lines for expandable check
+    this.#extractLines();
+
+    // Immediately wrap the Prism output into line spans
+    await this.#wrapLinesInSpans();
   }
 
+  /**
+   * Handles changes to the wrap property by recalculating line numbers
+   * and updating the wrap action button label state.
+   */
   async #wrapChanged() {
     await this.updateComplete;
-    this.#computeLineNumbers();
+    // Reset computed flag to force recalculation
+    this.#hasComputedLineNumbers = false;
+    this.#wrapLinesInSpans();
     this.#setSlottedLabelState('action-label-wrap', this.wrap ? 'active' : undefined);
   }
 
+  /**
+   * Updates the visibility of slotted label elements based on the current state.
+   * Shows/hides elements with matching data-code-block-state attributes.
+   * @param slotName - The name of the slot containing label elements
+   * @param state - The current state ('active', 'failed', or undefined for default)
+   */
   #setSlottedLabelState(slotName: 'action-label-copy' | 'action-label-wrap', state?: string) {
     if (this.#slots.hasSlotted(slotName)) {
       for (const el of this.#slots.getSlotted(slotName)) {
@@ -374,87 +624,121 @@ export class RhCodeBlock extends LitElement {
     }
   }
 
-  #getSlottedCodeElements() {
-    const slot = this.shadowRoot?.getElementById('content') as HTMLSlotElement;
-    return slot.assignedElements().flatMap(x =>
-        x instanceof HTMLScriptElement
-        || x instanceof HTMLPreElement ? [x]
-      : []);
+  /**
+   * Retrieves code elements (script or pre tags) and text nodes from the default slot.
+   * Handles both element nodes and text nodes for prerendered content.
+   * @returns Array of HTMLScriptElement, HTMLPreElement, or Text node containers
+   */
+  #getSlottedCodeElements(): (HTMLScriptElement | HTMLPreElement | HTMLElement)[] {
+    if (isServer) {
+      return [];
+    }
+    const slot = this.shadowRoot?.getElementById('content') as HTMLSlotElement | null;
+    if (!slot) {
+      return [];
+    }
+
+    const assigned = slot.assignedNodes();
+    const result: (HTMLScriptElement | HTMLPreElement | HTMLElement)[] = [];
+
+    // Collect pre/script elements and text nodes (but skip whitespace-only text nodes)
+    for (const node of assigned) {
+      if (node instanceof HTMLScriptElement || node instanceof HTMLPreElement) {
+        result.push(node);
+      } else if (node instanceof Text) {
+        const text = node.textContent;
+        // Only include text nodes that have non-whitespace content
+        // This filters out newlines/spaces between elements in the HTML
+        if (text && text.trim()) {
+          // Wrap text nodes in a temporary element for processing
+          const wrapper = document.createElement('pre');
+          wrapper.textContent = text;
+          result.push(wrapper);
+        }
+      }
+    }
+
+    return result;
   }
 
   /**
-   * Clone the text content and connect it to the document, in order to calculate the number of lines
-   * @license MIT
-   * Portions copyright prism.js authors (MIT license)
+   * Wraps each line of code in span elements with CSS counters.
+   * This provides proper alignment even with wrapped lines.
+   * Works with both Prism-highlighted and plain text content.
    */
-  async #computeLineNumbers() {
-    if (!this.#isIntersecting) {
+  async #wrapLinesInSpans() {
+    // Server-side rendering doesn't need line wrapping
+    if (isServer) {
+      return;
+    }
+
+    // For lazy mode, only wrap if intersecting or already computed
+    if (this.load === 'lazy' && !this.#isIntersecting && !this.#hasComputedLineNumbers) {
       return;
     }
 
     await this.updateComplete;
-    const codes =
-        this.#prismOutput ? [this.shadowRoot?.getElementById('prism-output')].filter(x => !!x)
-      : this.#getSlottedCodeElements();
 
-    this.#lines = codes.flatMap(element =>
-      element.textContent?.split(/\n(?!$)/g) ?? []);
+    // Extract lines if not already populated (needed for expandable calculation)
+    if (this.#lines.length === 0) {
+      this.#extractLines();
+    }
 
-    if (this.lineNumbers === 'hidden') {
+    // Skip wrapping if no line numbers and no Prism highlighting
+    const needsWrapping = this.lineNumbers !== 'hidden'
+      || !!this.#prismHighlightedHtml;
+    if (!needsWrapping) {
+      this.#wrappedLines = [];
       return;
     }
 
-    const infos: CodeLineHeightsInfo[] = codes.map(element => {
-      const codeElement = this.#prismOutput ? element.querySelector('code') : element;
-      if (codeElement) {
-        const sizer = document.createElement('span');
-        sizer.className = 'sizer';
-        sizer.innerText = '0';
-        sizer.style.display = 'block';
-        this.shadowRoot?.getElementById('sizers')?.appendChild(sizer);
-        return {
-          lines: element.textContent?.split(/\n(?!$)/g) ?? [],
-          lineHeights: [],
-          sizer,
-          oneLinerHeight: sizer.getBoundingClientRect().height,
-        };
+    // Get content - either from Prism or slotted elements
+    let htmlContent = '';
+    if (this.#prismHighlightedHtml) {
+      // Client-side Prism output is already HTML with syntax highlighting
+      htmlContent = this.#prismHighlightedHtml;
+    } else {
+      // Get content from slotted elements
+      const codes = this.#getSlottedCodeElements();
+      if (codes.length > 0) {
+        // Plain text content - escape HTML to prevent XSS
+        const textContent = codes.map(el => el?.textContent || '').join('\n');
+        const div = document.createElement('div');
+        div.textContent = textContent;
+        htmlContent = div.innerHTML;
       }
-    }).filter(x => !!x);
-
-    for (const { lines, lineHeights, sizer, oneLinerHeight } of infos) {
-      lineHeights[lines.length - 1] = undefined; // why?
-      lines.forEach((line, i) => {
-        if (line.length > 1) {
-          const e = sizer.appendChild(document.createElement('span'));
-          e.style.display = 'block';
-          e.textContent = line;
-        } else {
-          lineHeights[i] = oneLinerHeight;
-        }
-      });
     }
 
-    for (const { sizer, lineHeights } of infos) {
-      let childIndex = 0;
-      for (let i = 0; i < lineHeights.length; i++) {
-        if (lineHeights[i] === undefined) {
-          lineHeights[i] = sizer.children[childIndex++].getBoundingClientRect()?.height ?? 0;
-        }
-      }
-      sizer.remove();
+    // Nothing to render
+    if (!htmlContent) {
+      this.#wrappedLines = [];
+      return;
     }
 
-    this.#lineHeights = infos.flatMap(x =>
-      x.lineHeights?.map(y =>
-        `${y ?? x.oneLinerHeight}px` as const));
+    // Split by newlines and wrap each line in span elements for CSS counter
+    const lines = htmlContent.split('\n');
+    this.#wrappedLines = lines.map(line =>
+      html`<span class="line"><span class="line-content">${unsafeHTML(line || ' ')}</span></span>`
+    );
 
-    this.requestUpdate('#linesNumbers', 0);
+    this.#hasComputedLineNumbers = true;
+    this.requestUpdate();
   }
 
+  /**
+   * Handles click events on action buttons (copy, wrap).
+   * Delegates to #onCodeAction for processing.
+   * @param event - The click event
+   */
   #onActionsClick(event: Event) {
     this.#onCodeAction(event);
   }
 
+  /**
+   * Handles keyboard events on action buttons.
+   * Responds to Space key to trigger actions (Enter is handled natively by buttons).
+   * @param event - The keyboard event
+   */
   #onActionsKeyup(event: KeyboardEvent) {
     switch (event.key) {
       case 'Enter':
@@ -465,6 +749,11 @@ export class RhCodeBlock extends LitElement {
     }
   }
 
+  /**
+   * Routes action events to the appropriate handler based on data-code-block-action attribute.
+   * Supports 'copy' (copy code to clipboard) and 'wrap' (toggle line wrapping) actions.
+   * @param event - The triggering event
+   */
   #onCodeAction(event: Event) {
     const el = event.composedPath().find((x: EventTarget): x is HTMLElement =>
       x instanceof HTMLElement && !!x.dataset.codeBlockAction);
@@ -480,10 +769,21 @@ export class RhCodeBlock extends LitElement {
     }
   }
 
+  /**
+   * Handles clicks on the expand/collapse button, toggling the fullHeight property.
+   */
   #onClickExpand() {
     this.fullHeight = !this.fullHeight;
   }
 
+  /**
+   * Prepares the code content for copying and dispatches a cancelable copy event.
+   * Extracts text from either pre elements (prerendered mode) or script elements (client mode).
+   * Fires the RhCodeBlockCopyEvent which allows listeners to modify the content before copying.
+   *
+   * @returns The content to copy (potentially modified by event listeners)
+   * @throws {Error} If the copy event is cancelled or prevented
+   */
   #preCopy() {
     let content: string;
     if (this.highlighting === 'prerendered') {
@@ -505,6 +805,11 @@ export class RhCodeBlock extends LitElement {
     return event.content;
   }
 
+  /**
+   * Copies the code block content to the clipboard and manages the copy button state.
+   * Shows appropriate tooltip feedback (success or failure) for 5 seconds after the operation.
+   * Updates the button state and tooltip content to reflect the copy operation result.
+   */
   async #copy() {
     const slot =
       this.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="action-label-copy"]');

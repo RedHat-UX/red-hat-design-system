@@ -1,0 +1,7 @@
+rh-code-block:not(:defined) {
+  height: 193px;
+
+  &[compact] {
+    height: 185px;
+  }
+}

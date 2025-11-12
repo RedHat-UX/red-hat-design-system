@@ -63,6 +63,12 @@ function injectManuallyResolvedModulesToImportMap(document) {
       '@floating-ui/dom': '/node_modules/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs',
       '@floating-ui/core': '/node_modules/@floating-ui/core/dist/floating-ui.core.browser.min.mjs',
       'vue/dist/vue.esm-browser.js': 'https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js',
+      'prism-esm': '/node_modules/prism-esm/prism.js',
+      'prism-esm/': '/node_modules/prism-esm/',
+      'prism-esm/components/': '/node_modules/prism-esm/components/',
+      'construct-style-sheets-polyfill':
+        '/node_modules/construct-style-sheets-polyfill/dist/adoptedStyleSheets.js',
+      'construct-style-sheets-polyfill/': '/node_modules/construct-style-sheets-polyfill/dist/',
     });
     for (const key of Object.keys(json.scopes ?? {})) {
       json.scopes[key]['@patternfly/pfe-core'] = '/node_modules/@patternfly/pfe-core/core.js';
