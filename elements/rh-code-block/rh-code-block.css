@@ -7,6 +7,10 @@
   display: block;
   max-width: 1000px;
   max-height: calc(10 * var(--rh-space-4xl, 64px));
+  content-visibility: auto;
+
+  /* magic number for collapsed code blocks with more then 5 lines */
+  contain-intrinsic-block-size: 193px;
 }
 
 :host([full-height]) {
@@ -165,7 +169,7 @@
       var(--rh-color-green-40, #87bb62));
 
   display: grid;
-  contain-intrinsic-size: auto none;
+  contain-intrinsic-size: auto 193px;
   place-items: center;
   grid-template-columns: auto min-content;
   grid-template-areas:

@@ -89,6 +89,23 @@ export class RhCodeBlock extends LitElement {
   static styles = [style];
 
   /**
+   * Two-stage lazy loading for IntersectionObserver:
+   * Stage 1: Outer observer (100% rootMargin) - static class observer, detects code-block proximity
+   * Stage 2: Inner observer (50% rootMargin) - created per-instance only when in outer zone
+   * Strategy reduces memory and computation overhead only processing nearby elements especially on mobile devices.
+   */
+  private static outerIO?: IntersectionObserver;
+  private static observedElements = new Map<RhCodeBlock, boolean>();
+
+  /**
+   * Calculate line heights for line numbers display
+   * @license MIT
+   * Portions copyright prism.js authors (MIT license)
+  // Strategy reduces memory and computation overhead only process nearby elements especially on mobile devices.
+  private static outerIO?: IntersectionObserver;
+  private static observedElements = new Map<RhCodeBlock, boolean>();
+
+  /**
    * Space- or comma-separated list of code block action buttons to display, containing either 'copy', 'wrap', or both.
    * 'copy' adds a button that copies the text content to the clipboard. 'wrap' adds a button that toggles line wrap.
    *
@@ -174,7 +191,8 @@ export class RhCodeBlock extends LitElement {
   #prismOutput?: DirectiveResult;
 
   #isIntersecting = false;
-  #io?: IntersectionObserver;
+  #inOuterZone = false; // Tracked by outer observer
+  #innerIO?: IntersectionObserver; // Created only when in outer zone
   #ro?: ResizeObserver;
 
   #lines: string[] = [];
@@ -192,7 +210,18 @@ export class RhCodeBlock extends LitElement {
   override disconnectedCallback() {
     super.disconnectedCallback();
     this.#ro?.disconnect();
-    this.#io?.disconnect();
+
+    // Unobserve from outer (shared) observer
+    if (RhCodeBlock.observedElements.has(this)) {
+      RhCodeBlock.outerIO?.unobserve(this);
+      RhCodeBlock.observedElements.delete(this);
+    }
+
+    // Disconnect inner observer if it exists
+    if (this.#innerIO) {
+      this.#innerIO.disconnect();
+      this.#innerIO = undefined;
+    }
   }
 
   render() {
@@ -359,20 +388,94 @@ export class RhCodeBlock extends LitElement {
   }
 
   #updateIntersectionObserver() {
-    if (this.lineNumbers === 'hidden') {
-      this.#io?.disconnect();
-      this.#io = undefined;
-    } else if (!this.#io) {
-      this.#io = new IntersectionObserver(rs => {
+    const shouldObserve = this.lineNumbers !== 'hidden';
+    const isCurrentlyObserved = RhCodeBlock.observedElements.has(this);
+
+    if (!shouldObserve && isCurrentlyObserved) {
+      // Should not be observed - unobserve from outer observer
+      RhCodeBlock.outerIO?.unobserve(this);
+      RhCodeBlock.observedElements.delete(this);
+      // Also clean up inner observer if it exists
+      this.#cleanupInnerObserver();
+    } else if (shouldObserve && !isCurrentlyObserved) {
+      // Create static outer observer for all instances
+      // This observer has a large margin (100%) and used to detects proximity
+      if (!RhCodeBlock.outerIO) {
+        RhCodeBlock.outerIO = new IntersectionObserver(entries => {
+          for (const entry of entries) {
+            const element = entry.target as RhCodeBlock;
+            if (element instanceof RhCodeBlock) {
+              element.#handleOuterIntersection(entry.isIntersecting);
+            }
+          }
+        }, {
+          // Large margin for early detection
+          rootMargin: '100%',
+          threshold: 0.1,
+        });
+      }
+
+      // Observe this element with the outer observer
+      RhCodeBlock.outerIO.observe(this);
+      RhCodeBlock.observedElements.set(this, true);
+    }
+  }
+
+  /**
+   * Handle outer zone intersection (100% rootMargin)
+   * Creates/destroys inner observer based on proximity
+   * @param isIntersecting Whether element is intersecting the outer zone
+   */
+  #handleOuterIntersection(isIntersecting: boolean) {
+    const wasInZone = this.#inOuterZone;
+    this.#inOuterZone = isIntersecting;
+
+    if (isIntersecting && !wasInZone) {
+      // Entering outer zone - create inner observer
+      this.#createInnerObserver();
+    } else if (!isIntersecting && wasInZone) {
+      // Leaving outer zone - destroy inner observer
+      this.#cleanupInnerObserver();
+    }
+  }
+
+  /**
+   * Create inner observer (50% rootMargin) for this specific element
+   * This observer does the expensive line number calculations
+   */
+  #createInnerObserver() {
+    if (this.#innerIO) {
+      return; // Already exists
+    }
+
+    this.#innerIO = new IntersectionObserver(entries => {
+      for (const entry of entries) {
         const old = this.#isIntersecting;
-        const isIntersecting = rs.some(r => r.isIntersecting);
-        this.#isIntersecting = isIntersecting;
-        if (old !== isIntersecting) {
+        this.#isIntersecting = entry.isIntersecting;
+        if (old !== entry.isIntersecting) {
           this.requestUpdate();
         }
+        // Only compute line numbers when in INNER zone
         this.#computeLineNumbers();
-      }, { rootMargin: '50% 0px' });
-      this.#io.observe(this);
+      }
+    }, {
+      // Smaller margin for actual computation
+      rootMargin: '50%',
+      threshold: 0.01,
+    });
+
+    this.#innerIO.observe(this);
+  }
+
+  /**
+   * Cleanup inner observer when element leaves outer zone
+   */
+  #cleanupInnerObserver() {
+    if (this.#innerIO) {
+      this.#innerIO.disconnect();
+      this.#innerIO = undefined;
+      this.#isIntersecting = false;
+      this.requestUpdate();
     }
   }
 
