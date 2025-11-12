@@ -98,14 +98,6 @@ export class RhCodeBlock extends LitElement {
   private static observedElements = new Map<RhCodeBlock, boolean>();
 
   /**
-   * Calculate line heights for line numbers display
-   * @license MIT
-   * Portions copyright prism.js authors (MIT license)
-  // Strategy reduces memory and computation overhead only process nearby elements especially on mobile devices.
-  private static outerIO?: IntersectionObserver;
-  private static observedElements = new Map<RhCodeBlock, boolean>();
-
-  /**
    * Space- or comma-separated list of code block action buttons to display, containing either 'copy', 'wrap', or both.
    * 'copy' adds a button that copies the text content to the clipboard. 'wrap' adds a button that toggles line wrap.
    *
