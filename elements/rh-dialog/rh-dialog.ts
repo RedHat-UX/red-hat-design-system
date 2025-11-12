@@ -152,6 +152,18 @@ export class RhDialog extends LitElement {
                 <slot name="header"></slot>
                 <!-- The container for the optional dialog description in the header -->
                 <div part="description" ?hidden=${!hasDescription}>
+                  <!-- summary: descriptive text providing additional context about the dialog
+                       description: |
+                         Contains supplementary text that provides additional context or instructions
+                         for the dialog. Appears below the header and above the main content. This
+                         slot is optional and should be used when users need more information to
+                         understand the dialog's purpose or required actions.
+
+                         **Usage guidelines:**
+                         - Keep description text concise and informative
+                         - Use to clarify the dialog's purpose or provide instructions
+                         - Should complement, not duplicate, the dialog header
+                         - Consider accessibility - description adds context for all users -->
                   <slot name="description"></slot>
                 </div>
               </div>
@@ -273,6 +285,29 @@ export class RhDialog extends LitElement {
     }
   }
 
+  /**
+   * Cancels and closes the dialog, typically in response to user actions like
+   * clicking outside the dialog or pressing ESC.
+   *
+   * This method fires a cancelable `cancel` event before closing. The dialog
+   * will only close if the event is not prevented. After canceling, the dialog
+   * fires a `close` event.
+   *
+   * ## Usage guidelines
+   * - Called automatically when user presses ESC or clicks outside the dialog
+   * - Can be called programmatically to cancel dialog programmatically
+   * - Fires `cancel` event (cancelable) before closing
+   * - Use `close()` instead for explicit user actions (like clicking a button)
+   *
+   * @param returnValue - Optional return value for the dialog
+   *
+   * @example
+   * ```js
+   * const dialog = document.querySelector('rh-dialog');
+   * dialog.cancel(); // Cancels with no return value
+   * dialog.cancel('user-cancelled'); // Cancels with return value
+   * ```
+   */
   async cancel(returnValue?: string) {
     this.#cancelling = true;
     this.close(returnValue);
@@ -281,6 +316,33 @@ export class RhDialog extends LitElement {
     this.#cancelling = false;
   }
 
+  /**
+   * Programmatically sets the trigger element for the dialog.
+   *
+   * This method assigns an element as the dialog's trigger and attaches click
+   * event listeners. When the trigger is clicked, the dialog opens. Use this
+   * when you need to dynamically change the trigger element or set a trigger
+   * that isn't specified via the `trigger` attribute.
+   *
+   * ## Usage guidelines
+   * - Use when trigger element is dynamically created or changed
+   * - Automatically adds click listener to open dialog
+   * - Replaces any previously set trigger element
+   * - Useful for programmatic trigger management in dynamic UIs
+   *
+   * ## Accessibility
+   * - Ensure trigger element has appropriate accessible name
+   * - Trigger should clearly indicate it will open a dialog
+   *
+   * @param element - The HTML element that will trigger the dialog to open
+   *
+   * @example
+   * ```js
+   * const dialog = document.querySelector('rh-dialog');
+   * const button = document.querySelector('#my-button');
+   * dialog.setTrigger(button);
+   * ```
+   */
   setTrigger(element: HTMLElement) {
     this.#triggerElement = element;
     this.#triggerElement.addEventListener('click', this.onTriggerClick);
@@ -312,6 +374,30 @@ export class RhDialog extends LitElement {
     this.open = true;
   }
 
+  /**
+   * Opens the dialog in modal mode.
+   *
+   * This method opens the dialog as a modal, which means it appears on top of other
+   * content and prevents interaction with the rest of the page until closed. This is
+   * the standard way to open a dialog.
+   *
+   * ## Usage guidelines
+   * - Use for important dialogs requiring user action before continuing
+   * - Modal dialogs block interaction with underlying content
+   * - Automatically manages focus and prevents background scrolling
+   * - Fires an `open` event when the dialog opens
+   *
+   * ## Accessibility
+   * - Focus automatically moves to the dialog when opened
+   * - Background content becomes inert (non-interactive)
+   * - Users can close with ESC key or by clicking outside (if not prevented)
+   *
+   * @example
+   * ```js
+   * const dialog = document.querySelector('rh-dialog');
+   * dialog.showModal();
+   * ```
+   */
   showModal() {
     // TODO: non-modal mode
     this.show();
