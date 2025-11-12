@@ -45,10 +45,10 @@ async function resolveLocal(pattern, relativeTo = './') {
 function injectManuallyResolvedModulesToImportMap(document) {
   const importMapNode = query(document, node =>
     isElementNode(node)
-      && node.tagName === 'script'
-      && node.attrs.some(attr =>
-        attr.name === 'type'
-          && attr.value === 'importmap'));
+    && node.tagName === 'script'
+    && node.attrs.some(attr =>
+      attr.name === 'type'
+      && attr.value === 'importmap'));
   if (importMapNode && isElementNode(importMapNode)) {
     const json = JSON.parse(getTextContent(importMapNode));
     Object.assign(json.imports, {
@@ -63,6 +63,12 @@ function injectManuallyResolvedModulesToImportMap(document) {
       '@floating-ui/dom': '/node_modules/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs',
       '@floating-ui/core': '/node_modules/@floating-ui/core/dist/floating-ui.core.browser.min.mjs',
       'vue/dist/vue.esm-browser.js': 'https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js',
+      'prism-esm': '/node_modules/prism-esm/prism.js',
+      'prism-esm/': '/node_modules/prism-esm/',
+      'prism-esm/components/': '/node_modules/prism-esm/components/',
+      'construct-style-sheets-polyfill':
+        '/node_modules/construct-style-sheets-polyfill/dist/adoptedStyleSheets.js',
+      'construct-style-sheets-polyfill/': '/node_modules/construct-style-sheets-polyfill/dist/',
     });
     for (const key of Object.keys(json.scopes ?? {})) {
       json.scopes[key]['@patternfly/pfe-core'] = '/node_modules/@patternfly/pfe-core/core.js';
@@ -90,14 +96,14 @@ function transformDevServerHTML(document) {
   // add a context picker to header, targeting main
   const header = query(document, x =>
     isElementNode(x)
-      && getAttribute(x, 'id') === 'main-header');
+    && getAttribute(x, 'id') === 'main-header');
   if (header && isElementNode(header)) {
     const picker = createElement('rh-context-picker');
     setAttribute(picker, 'target', surfaceId);
     setAttribute(picker, 'value', '');
     const logoBar = query(header, node =>
       isElementNode(node)
-        && getAttribute(node, 'class') === 'logo-bar');
+      && getAttribute(node, 'class') === 'logo-bar');
     if (logoBar) {
       spliceChildren(logoBar, 4, 0, picker);
     }
@@ -105,8 +111,8 @@ function transformDevServerHTML(document) {
   // import surface and picker
   const module = query(document, x =>
     isElementNode(x)
-      && x.tagName === 'script'
-      && getAttribute(x, 'type') === 'module');
+    && x.tagName === 'script'
+    && getAttribute(x, 'type') === 'module');
   if (module) {
     setTextContent(module, /* js */`${getTextContent(module)}
     import '@rhds/elements/rh-surface/rh-surface.js';
@@ -147,7 +153,7 @@ export default pfeDevServerConfig({
     inputMap: { imports },
   },
   middleware: [
-    async function(ctx, next) {
+    async function (ctx, next) {
       if (ctx.path === '/lib/environment.ts') {
         ctx.type = 'text/javascript';
         ctx.body = await makeDemoEnv();
@@ -160,7 +166,7 @@ export default pfeDevServerConfig({
      * @param ctx koa context
      * @param next next koa middleware
      */
-    function(ctx, next) {
+    function (ctx, next) {
       if (ctx.path.startsWith('/styles/')) {
         ctx.redirect(`/docs${ctx.path}`);
       } else {
@@ -173,7 +179,7 @@ export default pfeDevServerConfig({
      * @param ctx koa context
      * @param next next koa middleware
      */
-    async function(ctx, next) {
+    async function (ctx, next) {
       if (!ctx.path.includes('-lightdom')) {
         return next();
       }
@@ -203,7 +209,7 @@ export default pfeDevServerConfig({
      * @param ctx koa context
      * @param next next koa middleware
      */
-    async function(ctx, next) {
+    async function (ctx, next) {
       if (ctx.path.endsWith('/') && !ctx.path.includes('.')) {
         await next();
         const document = parse(ctx.body);
@@ -221,7 +227,7 @@ export default pfeDevServerConfig({
       serverStart(args) {
         const fsDemoFilesGlob = new URL('./elements/*/demo/**/*.html', import.meta.url).pathname;
         args.fileWatcher.add(fsDemoFilesGlob);
-        args.app.use(function(ctx, next) {
+        args.app.use(function (ctx, next) {
           if (ctx.path.match(/\/|\.css|\.html|\.js$/)) {
             ctx.etag = `e${Math.random() * Date.now()}`;
           }
