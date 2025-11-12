@@ -18,6 +18,18 @@
   --_current-active-child-border-color: var(--rh-color-brand-red);
   --_border-color: light-dark(transparent, var(--rh-color-border-subtle));
 
+  /**
+   * --rh-navigation-secondary-z-index
+   * Controls the stacking order of the secondary navigation bar. Defaults to 102 to ensure
+   * navigation appears above most page content but below modals and overlays.
+   *
+   * **Usage guidelines:**
+   * - Keep default value (102) for standard page layouts
+   * - Same z-index as primary navigation for consistent stacking
+   * - Increase only when navigation must appear above specific page elements
+   * - Coordinate with --rh-navigation-primary-z-index if using both navigations
+   * - Ensure navigation doesn't overlap modals (typically z-index 1000+)
+   */
   z-index: var(--rh-navigation-secondary-z-index, 102);
 }
 
