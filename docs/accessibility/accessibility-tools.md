@@ -71,7 +71,7 @@ Some of our elements may receive errors or warnings that are false positives fro
   </figure>
 </div>
 
-In many cases, these false positives occur because automated tools expect to see an ARIA `role` or `aria-*` attribute explicitly defined on a Custom Element, even though that `role` or attribute is already being applied through the [ElementInternals API](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals).
+In many cases, these false positives occur because automated tools expect to see an ARIA `role` or `aria-*` attribute explicitly defined on a Custom Element, even though that `role` or attribute is already being applied implicitly through the [ElementInternals API](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals).
 
 By using the ElementInternals API, we can assign roles and other accessibility properties directly to a Custom Element, just like a native HTML element. These roles appear correctly in the [accessibility tree](#accessibility-tools-built-into-the-browser-inspector) and are interpreted properly by [screen readers](/accessibility/screen-readers/).
 

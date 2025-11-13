@@ -36,7 +36,7 @@
   flex-direction: column;
   justify-items: flex-start;
   overflow: hidden;
-  border-radius: var(--_border-radius, var(--rh-border-width-lg, 3px));
+  border-radius: var(--_border-radius, var(--rh-border-radius-default, 3px));
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif) !important;
   line-height: var(--rh-line-height-body-text, 1.5);
   border-style: solid;
