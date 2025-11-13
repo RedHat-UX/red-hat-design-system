@@ -4,7 +4,6 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { property } from 'lit/decorators/property.js';
-import { query } from 'lit/decorators/query.js';
 import { state } from 'lit/decorators/state.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 
@@ -163,8 +162,6 @@ export class RhCodeBlock extends LitElement {
 
   @state() private copyButtonState: 'default' | 'active' | 'failed' = 'default';
 
-  @query('#container') private _container!: HTMLElement;
-
   #logger = new Logger(this);
 
   #slots = new SlotController(
@@ -197,10 +194,6 @@ export class RhCodeBlock extends LitElement {
   override disconnectedCallback() {
     super.disconnectedCallback();
     this.#ro?.disconnect();
-    this._container?.removeEventListener(
-      'contentvisibilityautostatechange',
-      this.#handleVisibilityChange,
-    );
   }
 
   render() {
@@ -219,7 +212,8 @@ export class RhCodeBlock extends LitElement {
     return html`
       <div id="container"
            class="${classMap({ actions, compact, expandable, fullHeight, isIntersecting, resizable, truncated, wrap, 'line-numbers': lineNumbers })}"
-           @code-action="${this.#onCodeAction}">
+           @code-action="${this.#onCodeAction}"
+           @contentvisibilityautostatechange="${this.#onVisibilityChange}">
         <div id="content-lines" tabindex="${ifDefined((!fullHeight || undefined) && 0)}">
           <div id="sizers" aria-hidden="true"></div>
           <ol id="line-numbers" inert aria-hidden="true">${this.#lineHeights.map((height, i) => html`
@@ -303,13 +297,6 @@ export class RhCodeBlock extends LitElement {
   }
 
   protected override firstUpdated(): void {
-    if (!isServer) {
-      // Set up visibility change listener on the container element
-      this._container?.addEventListener(
-        'contentvisibilityautostatechange',
-        this.#handleVisibilityChange,
-      );
-    }
     this.#computeLines();
     // After computing lines, also update line heights if visible
     this.#computeLineNumbers();
@@ -377,7 +364,7 @@ export class RhCodeBlock extends LitElement {
    * When the element is rendered (not skipped), compute line numbers
    * @param event - The contentvisibilityautostatechange event
    */
-  #handleVisibilityChange = (event: Event) => {
+  #onVisibilityChange(event: Event) {
     // skipped = true means content is NOT being rendered (off-screen)
     // skipped = false means content IS being rendered (on/near screen)
     const { skipped } = event as ContentVisibilityAutoStateChangeEvent;
@@ -390,7 +377,7 @@ export class RhCodeBlock extends LitElement {
         this.#computeLineNumbers();
       }
     }
-  };
+  }
 
   #updateResizeObserver() {
     const shouldHaveObserver = this.wrap && this.lineNumbers !== 'hidden';
