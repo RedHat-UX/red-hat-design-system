@@ -225,9 +225,11 @@ function initToaster() {
     const node = document.createElement('section');
     node.classList.add('rh-alert-toast-group');
     // TODO: possibly allow other roots
+    const styles = toastStyles instanceof CSSStyleSheet ? toastStyles
+        : toastStyles.styleSheet;
     document.adoptedStyleSheets = [
         ...document.adoptedStyleSheets ?? [],
-        toastStyles.styleSheet,
+        styles,
     ];
     document.body.append(node);
     return node;
