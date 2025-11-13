@@ -1,0 +1,61 @@
+/* Lightdom shim for rh-accordion when JavaScript is disabled or not yet loaded */
+
+/* Show all accordion panels by default when JS is not available */
+rh-accordion-panel:not(:defined) {
+  display: block;
+  overflow: hidden;
+  padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
+  border-inline-end:
+    1px
+    solid
+    light-dark(
+        var(--rh-color-border-subtle-on-light, #c7c7c7),
+        var(--rh-color-border-subtle-on-dark, #707070)
+      );
+  background-color: var(--rh-color-surface-lightest, #ffffff);
+}
+
+/* Style accordion panel content */
+rh-accordion-panel:not(:defined) > * {
+  display: block;
+  margin: unset;
+  color:
+    light-dark(
+        var(--rh-color-text-primary-on-light, #151515),
+        var(--rh-color-text-primary-on-dark, #ffffff)
+      );
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+}
+
+rh-accordion-panel:not(:defined) > *:not(:first-child) {
+  padding-block-start: var(--rh-space-xl, 24px);
+}
+
+/* Style accordion headers when not defined */
+rh-accordion-header:not(:defined) {
+  display: block;
+  color:
+    light-dark(
+        var(--rh-color-text-primary-on-light, #151515),
+        var(--rh-color-text-primary-on-dark, #ffffff)
+      );
+  background-color: var(--rh-color-surface-lightest, #ffffff);
+  font-weight: var(--rh-font-weight-body-text-medium, 500);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
+  border-inline-end:
+    1px
+    solid
+    light-dark(
+        var(--rh-color-border-subtle-on-light, #c7c7c7),
+        var(--rh-color-border-subtle-on-dark, #707070)
+      );
+}
+
+/* When scripting is enabled, hide non-expanded panels */
+@media (scripting: enabled) {
+  rh-accordion-panel:not(:defined, [expanded]) {
+    display: none;
+  }
+}

@@ -9,11 +9,8 @@
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
 }
 
-/* Hide panels when not expanded, only when scripting is available */
-@media (scripting: enabled) {
-  :host(:not([expanded])) {
-    display: none;
-  }
+:host(:not([expanded])) {
+  display: none;
 }
 
 ::slotted(*:not(rh-accordion)) {
