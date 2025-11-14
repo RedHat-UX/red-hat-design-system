@@ -22,7 +22,7 @@ more.
        alt="Form component samples"
        width="736"
        height="717"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Style
@@ -32,7 +32,7 @@ more.
        alt="Form component blueprint"
        width="660"
        height="899"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Visual elements
@@ -56,7 +56,7 @@ There are a variety of form elements available for use depending on what informa
        alt="Form component visual elements"
        width="824"
        height="167"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Variants
@@ -70,7 +70,7 @@ There are two form variants available for use.
        alt="Form component variants"
        width="736"
        height="389"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Color scheme
@@ -83,7 +83,7 @@ There are two form variants available for use.
        alt="Form component, light theme"
        width="360"
        height="717"
-       loading="lazy">
+>
 </uxdot-example>
 
 <rh-alert state="info">
@@ -96,7 +96,7 @@ There are two form variants available for use.
        alt="Form component, dark theme"
        width="360"
        height="717"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Orientation
@@ -118,7 +118,7 @@ the left edge and some elements span the width of the form, like a field.
        alt="Form components (Container and Floating), default orientation"
        width="736"
        height="717"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Horizontal
@@ -145,7 +145,7 @@ of other form elements with text labels.
        alt="Form components (Container and Floating), horizontal orientation"
        width="750"
        height="587"
-       loading="lazy">
+>
 </uxdot-example>
 
 <uxdot-example width-adjustment="750px" color-palette="lightest">
@@ -153,7 +153,7 @@ of other form elements with text labels.
        alt="Form component (Floating), horizontal orientation"
        width="750"
        height="525"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Text label alignment
@@ -165,7 +165,7 @@ In the Horizontal orientation, text labels should be **left justified** making i
       alt="Form component text label alignment"
       width="872"
       height="204"
-      loading="lazy">
+>
 </uxdot-example>
 
 ## Usage
@@ -190,7 +190,7 @@ page.
        alt="Form (Container), default orientation"
        width="1000"
        height="917"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Floating variant
@@ -210,7 +210,7 @@ page.
        alt="Form (Floating), default orientation"
        width="1000"
        height="855"
-       loading="lazy">
+>
 </uxdot-example>
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
@@ -218,7 +218,7 @@ page.
        alt="Form (Floating), horizontal orientation"
        width="1000"
        height="903"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Form content
@@ -235,7 +235,7 @@ A user will have a better experience with submitting a form if the elements are 
        alt="Form component content"
        width="296"
        height="84"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Required fields
@@ -252,7 +252,7 @@ should state **All fields are optional** instead.
        alt="Form component required fields"
        width="736"
        height="717"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Data inputs
@@ -266,7 +266,7 @@ same form.
        alt="Form component data inputs"
        width="576"
        height="124"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Using data inputs
@@ -314,7 +314,7 @@ Radio buttons and checkboxes can be stacked horizontally or vertically depending
       alt="Form component arranging data inputs"
       width="462"
       height="272"
-      loading="lazy">
+>
 </uxdot-example>
 
 ### Popover
@@ -342,7 +342,7 @@ as a trigger to display the popover.
       alt="Form component popover"
       width="406"
       height="282"
-      loading="lazy">
+>
 </uxdot-example>
 
 ### Placement
@@ -356,7 +356,7 @@ columns (or 750px).
       alt="Form component placement, default orientation"
       width="1000"
       height="438"
-      loading="lazy">
+>
 </uxdot-example>
 
 <uxdot-example width-adjustment="1000px" color-palette="lightest">
@@ -364,7 +364,7 @@ columns (or 750px).
       alt="Form component placement, horizontal orientation"
       width="1000"
       height="720"
-      loading="lazy">
+>
 </uxdot-example>
 
 ## Behavior
@@ -387,7 +387,7 @@ can still submit a form successfully if they skip an optional form element.
       alt="Form component disabled state"
       width="720"
       height="148"
-      loading="lazy">
+>
 </uxdot-example>
 
 ### Error states
@@ -409,7 +409,7 @@ once again.
       alt="Form component, error validation on loss of focus"
       width="360"
       height="627"
-      loading="lazy">
+>
 </uxdot-example>
 
 ### Error validation on submission
@@ -426,7 +426,7 @@ are resolved and the form is submitted again.
       alt="Form component, error validation on submission"
       width="360"
       height="707"
-      loading="lazy">
+>
 </uxdot-example>
 
 ## Interaction states
@@ -445,7 +445,7 @@ are resolved and the form is submitted again.
       alt="Form component interaction state, link"
       width="300"
       height="344"
-      loading="lazy">
+>
 </uxdot-example>
 
 ### Hover
@@ -457,7 +457,7 @@ Form fields and select lists share the same hover state.
       alt="Form component interaction state, hover"
       width="300"
       height="349"
-      loading="lazy">
+>
 </uxdot-example>
 
 ### Focus
@@ -470,7 +470,7 @@ disappear and a blinking cursor will be visible.
       alt="Form component interaction state, focus"
       width="300"
       height="344"
-      loading="lazy">
+>
 </uxdot-example>
 
 ### Active
@@ -482,7 +482,7 @@ Form fields and select lists share the same active state.
       alt="Form component interaction state, active"
       width="300"
       height="344"
-      loading="lazy">
+>
 </uxdot-example>
 
 ### Tab order
@@ -495,7 +495,7 @@ in order, from top to bottom or left to right.
       alt="Form component tab order"
       width="1000"
       height="717"
-      loading="lazy">
+>
 </uxdot-example>
 
 ## Accessibility
@@ -523,7 +523,7 @@ Horizontal variant will switch to the Default variant as screens get smaller.
        alt="Form component (Default) responsive design, desktop"
        width="1000"
        height="438"
-       loading="lazy">
+>
 </uxdot-example>
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
@@ -531,7 +531,7 @@ Horizontal variant will switch to the Default variant as screens get smaller.
        alt="Form component (Horizontal) responsive design, desktop"
        width="1000"
        height="360"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Tablet
@@ -544,7 +544,7 @@ variant to reduce crowding.
        alt="Form component responsive design, tablet"
        width="768"
        height="438"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Mobile
@@ -554,7 +554,7 @@ variant to reduce crowding.
        alt="Form component responsive design, mobile"
        width="360"
        height="438"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Best practices
@@ -568,7 +568,7 @@ Do not align the button group and privacy link to the **right edge** of other fo
        alt="Form component, best practice 1"
        width="360"
        height="438"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Two Primary buttons
@@ -585,7 +585,7 @@ Do not include two Primary buttons, use a combination of Primary and Link button
        alt="Form component, best practice 2"
        width="360"
        height="438"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Too many required fields
@@ -599,7 +599,7 @@ inputs are optional, the text should state **All fields are optional** instead.
        alt="Form component, best practice 3"
        width="360"
        height="717"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### 12 columns
@@ -618,7 +618,7 @@ maximum of 8 grid columns.
        alt="Form component, best practice 4"
        width="872"
        height="438"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Rearranging data inputs and button groups
@@ -631,7 +631,7 @@ rare cases.
        alt="Form component, best practice 5"
        width="360"
        height="444"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Spacing
@@ -646,7 +646,7 @@ values between elements.
        alt="Form component spacing, default"
        width="360"
        height="497"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Horizontal
@@ -656,7 +656,7 @@ values between elements.
        alt="Form component spacing, horizontal"
        width="750"
        height="419"
-       loading="lazy">
+>
 </uxdot-example>
 
 <uxdot-spacer-tokens-table tokens="xs, sm, md, lg, xl, 2xl"></uxdot-spacer-tokens-table>

@@ -21,7 +21,7 @@ a button. It allows a user to input text and then perform a search.
        alt="Search bar component sample"
        width="1000"
        height="36"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Style
@@ -34,7 +34,7 @@ red button that is placed on the right.
        alt="Search bar component blueprint"
        width="872"
        height="74"
-       loading="lazy">
+>
 </uxdot-example>
 
 #### Button
@@ -55,7 +55,7 @@ search, so a button must be used instead.
        alt="Search bar component button vs. CTA"
        width="262"
        height="106"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Color scheme
@@ -68,7 +68,7 @@ The light search bar includes a light theme form field and red button.
        alt="Search bar component, light theme"
        width="872"
        height="36"
-       loading="lazy">
+>
 </uxdot-example>
 
 For now, the light search bar can also be used in the dark scheme.
@@ -78,7 +78,7 @@ For now, the light search bar can also be used in the dark scheme.
        alt="Search bar component, dark theme"
        width="872"
        height="36"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Usage
@@ -96,7 +96,7 @@ boundaries of whatever container or grid it is placed in.
        alt="Search bar component usage"
        width="872"
        height="503"
-       loading="lazy">
+>
 </uxdot-example>
 
 #### Content
@@ -111,7 +111,7 @@ resources), a user might expect to search through an individual page.
        alt="Search bar component placeholder text options"
        width="872"
        height="104"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Behavior
@@ -133,7 +133,7 @@ change.
        alt="Search bar component styling changes"
        width="872"
        height="172"
-       loading="lazy">
+>
 </uxdot-example>
 
 #### Typeahead
@@ -147,7 +147,7 @@ options.
        alt="Search bar component typeahead"
        width="872"
        height="240"
-       loading="lazy">
+>
 </uxdot-example>
 
 #### Errors
@@ -166,7 +166,7 @@ form field, an error will be displayed.
        alt="Search bar component form field errors"
        width="872"
        height="359"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Interaction states
@@ -185,7 +185,7 @@ form field, an error will be displayed.
        alt="Search bar component interaction state, link"
        width="872"
        height="36"
-       loading="lazy">
+>
 </uxdot-example>
 
 #### Hover
@@ -197,7 +197,7 @@ A blue line appears at the bottom of the form field indicating it is selectable.
        alt="Search bar component interaction state, hover"
        width="872"
        height="42"
-       loading="lazy">
+>
 </uxdot-example>
 
 #### Focus
@@ -211,7 +211,7 @@ moved away, the placeholder text will be visible again.
        alt="Search bar component interaction state, focus"
        width="872"
        height="104"
-       loading="lazy">
+>
 </uxdot-example>
 
 #### Active
@@ -225,7 +225,7 @@ away, the placeholder text will be visible again.
        alt="Search bar component interaction state, active"
        width="872"
        height="110"
-       loading="lazy">
+>
 </uxdot-example>
 
 #### Tab order
@@ -239,7 +239,7 @@ button without an error being displayed.
        alt="Search bar component tab order"
        width="872"
        height="229"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Accessibility
@@ -268,7 +268,7 @@ whereas the button always stays the same size.
        alt="Search bar component responsive design, desktop"
        width="1000"
        height="168"
-       loading="lazy">
+>
 </uxdot-example>
 
 #### Tablet
@@ -278,7 +278,7 @@ whereas the button always stays the same size.
        alt="Search bar component responsive design, tablet"
        width="768"
        height="168"
-       loading="lazy">
+>
 </uxdot-example>
 
 #### Mobile
@@ -288,7 +288,7 @@ whereas the button always stays the same size.
        alt="Search bar component responsive design, mobile"
        width="360"
        height="100"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Best practices
@@ -303,7 +303,7 @@ Do not write placeholder text too long, it should be short and to the point
        alt="Search component best practice 1"
        width="872"
        height="36"
-       loading="lazy">
+>
 </uxdot-example>
 
 #### Call to action as button
@@ -315,7 +315,7 @@ Do not replace the button with a call to action.
        alt="Search component best practice 2"
        width="872"
        height="56"
-       loading="lazy">
+>
 </uxdot-example>
 
 #### Different style or color
@@ -328,7 +328,7 @@ Do not use a different button color or style when using a search bar on Red Hat
        alt="Search component best practice 3"
        width="872"
        height="36"
-       loading="lazy">
+>
 </uxdot-example>
 
 #### Disabled
@@ -342,7 +342,7 @@ in the form field, an error should be displayed instead.
        alt="Search component best practice 4"
        width="872"
        height="36"
-       loading="lazy">
+>
 </uxdot-example>
 
 #### Solo button
@@ -359,7 +359,7 @@ Avoid using the search button on its own without a form field.
        alt="Search component best practice 5"
        width="81"
        height="36"
-       loading="lazy">
+>
 </uxdot-example>
 
 #### Rearranging the component
@@ -372,7 +372,7 @@ changing its width.
        alt="Search component best practice 6"
        width="360"
        height="88"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Spacing
@@ -385,7 +385,7 @@ between elements.
        alt="Search bar spacing"
        width="872"
        height="36"
-       loading="lazy">
+>
 </uxdot-example>
 
 <uxdot-spacer-tokens-table tokens="sm,md,lg"></uxdot-spacer-tokens-table>

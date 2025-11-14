@@ -21,7 +21,7 @@ positioned to the left or on top of a link, depending on orientation.
        src="./link-with-icon.svg"
        width="484"
        height="35"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Style
@@ -36,7 +36,7 @@ on or tap the link. It acts as a functional addition instead of only visual.
        src="./link-with-icon-style.svg"
        width="484"
        height="65"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Color scheme
@@ -47,7 +47,7 @@ on or tap the link. It acts as a functional addition instead of only visual.
        src="./link-with-icon-theme-light.svg"
        width="484"
        height="145"
-       loading="lazy">
+>
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="484px">
@@ -55,7 +55,7 @@ on or tap the link. It acts as a functional addition instead of only visual.
        src="./link-with-icon-theme-dark.svg"
        width="484"
        height="145"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Usage
@@ -73,7 +73,7 @@ Don't increase the icon size because the link text size will appear smaller.
        src="./link-with-icon-best-practices.svg"
        width="516"
        height="67"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Behavior
@@ -88,7 +88,7 @@ link exceeds the width of its container, the text will break to two lines.
        src="./link-with-icon-responsive.svg"
        width="1000"
        height="273"
-       loading="lazy">
+>
 </uxdot-example>
 
 <figure>
@@ -97,7 +97,7 @@ link exceeds the width of its container, the text will break to two lines.
          src="./link-with-icon-responsive-mobile.svg"
          width="360"
          height="640"
-         loading="lazy">
+>
   </uxdot-example>
   <figcaption>Some text styles reduce in size on small screens. Learn more about typography on mobile</figcaption>
 </figure>
@@ -111,7 +111,7 @@ The icon and the link are always vertically-aligned.
        src="./link-with-icon-alignment-1.svg"
        width="269"
        height="35"
-       loading="lazy">
+>
 </uxdot-example>
 
 <uxdot-example width-adjustment="269px">
@@ -119,7 +119,7 @@ The icon and the link are always vertically-aligned.
        src="./link-with-icon-alignment-2.svg"
        width="270"
        height="54"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Interaction states
@@ -137,7 +137,7 @@ between elements.
        src="./link-with-icon-spacing.svg"
        width="484"
        height="231"
-       loading="lazy">
+>
 </uxdot-example>
 
 <uxdot-spacer-tokens-table tokens="lg"></uxdot-spacer-tokens-table>

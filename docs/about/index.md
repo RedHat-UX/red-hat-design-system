@@ -88,7 +88,7 @@ and adapts to meet new challenges.
       alt="the words 'brand standards' framed by elements and shapes in Red Hat colors"
       width="1140"
       height="286"
-      loading="lazy">
+>
 </uxdot-example>
 
 ### Design tokens
@@ -105,7 +105,7 @@ help us assign consistent meanings that correspond with foundational guidelines.
       alt="Flow showing how a color like brand red becomes a token, how it is named, and how it is applied to a call to action"
       width="807"
       height="96"
-      loading="lazy">
+>
 </uxdot-example>
 
 ## We build Web Components
@@ -122,7 +122,7 @@ framework or platform.
       alt="Example of a card next to the Web Component's code"
       width="820"
       height="281"
-      loading="lazy">
+>
 </uxdot-example>
 
 ## We look for opportunities to align

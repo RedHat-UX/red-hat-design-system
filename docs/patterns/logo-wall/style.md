@@ -22,7 +22,7 @@ There are two styles of logo wall: bordered and borderless. Both styles can be e
       alt="Examples of a bordered logo and borderless logo with numbers pointing to the logos and border of the bordered variant."
       width="442"
       height="177"
-      loading="lazy">
+>
 </uxdot-example>
 
 1. Logo
@@ -44,7 +44,7 @@ Logo walls can be used in light and dark color schemes.
       alt="Image of bordered and borderless logos against 3 light themed backgrounds."
       width="462"
       height="618"
-      loading="lazy">
+>
 </uxdot-example>
 
 ### Dark theme
@@ -54,7 +54,7 @@ Logo walls can be used in light and dark color schemes.
       alt="Image of bordered and borderless logos against 4 dark themed backgrounds."
       width="924"
       height="412"
-      loading="lazy">
+>
 </uxdot-example>
 
 ## Space
@@ -70,7 +70,7 @@ Logo walls define layout rules for spacing logos, and their styles.
       alt="Example of a bordered logo wall with spacing values."
       width="1120"
       height="110"
-      loading="lazy">
+>
 </uxdot-example>
 
 ### Borderless
@@ -83,7 +83,7 @@ Logo walls define layout rules for spacing logos, and their styles.
       alt="Example of a borderless logo wall with spacing values."
       width="1113"
       height="110"
-      loading="lazy">
+>
 </uxdot-example>
 
 ## Interaction states
@@ -97,7 +97,7 @@ Interaction states are visual representations used to communicate the status of 
       alt="Image showing hover states in light theme. The bordered logo background changes to light gray. The borderless logo has a red border on the bottom."
       width="328"
       height="110"
-      loading="lazy">
+>
 </uxdot-example>
 
 <uxdot-example width-adjustment="328px">
@@ -105,7 +105,7 @@ Interaction states are visual representations used to communicate the status of 
       alt="Image showing hover states in dark theme. The bordered logo background changes to lighter gray. The borderless logo has a red border on the bottom."
       width="328"
       height="110"
-      loading="lazy">
+>
 </uxdot-example>
 
 ### Focus
@@ -119,7 +119,7 @@ Interaction states are visual representations used to communicate the status of 
       alt="Image showing focus states in light theme. The focus states are the same as the hover states with an added focus ring."
       width="332"
       height="114"
-      loading="lazy">
+>
 </uxdot-example>
 
 <uxdot-example width-adjustment="332px">
@@ -127,7 +127,7 @@ Interaction states are visual representations used to communicate the status of 
       alt="Image showing focus states in dark theme. The focus states are the same as the hover states with an added focus ring."
       width="332"
       height="114"
-      loading="lazy">
+>
 </uxdot-example>
 
 ### Active
@@ -141,7 +141,7 @@ Interaction states are visual representations used to communicate the status of 
       alt="Image showing active states in light theme. They are the same as the focus state."
       width="332"
       height="114"
-      loading="lazy">
+>
 </uxdot-example>
 
 <uxdot-example width-adjustment="332px">
@@ -149,7 +149,7 @@ Interaction states are visual representations used to communicate the status of 
       alt="Image showing active states in dark theme. They are the same as the focus state."
       width="332"
       height="114"
-      loading="lazy">
+>
 </uxdot-example>
 
 {% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}

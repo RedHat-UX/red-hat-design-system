@@ -40,7 +40,7 @@ Consider how these elements might look to a color blind user:
 
 <figure>
   <uxdot-example color-palette="lightest" width-adjustment="1012px">
-    <img alt="Dialog with a gray leave button, a form field with a gray bottom border, and progress steps in gray without labels" src="/assets/color/color-a11y-using-color-alone.svg" loading="lazy">
+    <img alt="Dialog with a gray leave button, a form field with a gray bottom border, and progress steps in gray without labels" src="/assets/color/color-a11y-using-color-alone.svg">
   </uxdot-example>
   <figcaption>
     A simulation of what a color blind user might see when only color is used to communicate meaning.
@@ -61,7 +61,7 @@ code text (non-bold text of **at least 24px** and bold text of **at least
 <uxdot-example width-adjustment=”100%” variant="full" alignment="left" no-border>
   <img alt="Two examples of dark text on light backgrounds and two examples of light text on dark backgrounds" 
        src="/assets/color/color-a11y-color-contrast-body-code-text.svg"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Red text on backgrounds
@@ -71,7 +71,7 @@ Red is our primary brand color. It has many applications, but on the web, it doe
 If red text cannot be used, use dark gray or black text against lighter backgrounds, or light gray or white text against darker backgrounds. If you have questions about using our other red colors, contact the Brand team.
 
 <uxdot-example width-adjustment=”100%” variant="full" alignment="left" no-border>
-  <img alt="Several examples of red text over light and dark themed backgrounds showing some that pass and some that fail. There is also an example of dark gray text and black text against a light background as well as an example of light gray text and white text on a dark background." src="/assets/color/color-a11y-red-text-on-bgs.svg" loading="lazy">
+  <img alt="Several examples of red text over light and dark themed backgrounds showing some that pass and some that fail. There is also an example of dark gray text and black text against a light background as well as an example of light gray text and white text on a dark background." src="/assets/color/color-a11y-red-text-on-bgs.svg">
 </uxdot-example>
 
 #### Red text WCAG requirements
@@ -129,7 +129,7 @@ You can layer colors on light or dark backgrounds. However, layering colors on t
 <uxdot-example width-adjustment=”1140px” variant="full" alignment="left" no-border>
   <img alt="Red call to action on a white background, blue button on a light gray background, and a light red-orange button on a black background"
        src="/assets/color/color-a11y-color-contrast-layering.svg"
-       loading="lazy">
+>
 </uxdot-example>
 
 <uxdot-feedback>

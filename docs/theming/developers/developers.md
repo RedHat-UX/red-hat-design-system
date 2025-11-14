@@ -298,7 +298,7 @@ developers should carefully choose the graphic that matches the background.
   <h2 id="products">Products</h2>
   <img alt="Red Hat Enterprise Linux"
        src="/assets/logos/products/rhel-on-dark.svg"
-       loading="lazy">
+>
 </rh-surface>
 ```
 
@@ -317,7 +317,7 @@ themable graphics.
   <rh-picture>
     <source srcset="/assets/logos/products/rhel-on-dark.avif" color-theme="dark"></source>
     <source srcset="/assets/logos/products/rhel-on-light.avif" color-theme="light"></source>
-    <img src="/assets/logos/products/rhel.avif" alt="Red Hat Enterprise Linux" loading="lazy">
+    <img src="/assets/logos/products/rhel.avif" alt="Red Hat Enterprise Linux">
   <rh-picture>
 </rh-surface>
 ```

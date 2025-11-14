@@ -34,7 +34,7 @@ styles][alertstyles].
     src="/assets/optimization/announcement.svg"
     width="1000"
     height="203"
-    loading="lazy">
+>
 </uxdot-example>
 
 ## How to use

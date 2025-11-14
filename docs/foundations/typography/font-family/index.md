@@ -45,7 +45,7 @@ Use regular, medium, or bold weights. Other weights can be used for [Expressive 
       alt="examples of Red Hat Display and its three weights"
       width="810"
       height="192"
-      loading="lazy">
+>
 </uxdot-example>
 
 ## Red Hat Text
@@ -59,7 +59,7 @@ Use the medium weight and italics for emphasis. Other weights can be used for [E
       alt="examples of Red Hat Text and its weights and styles"
       width="810"
       height="224"
-      loading="lazy">
+>
 </uxdot-example>
 
 ## Red Hat Mono
@@ -73,7 +73,7 @@ Use the medium weight and italics for emphasis. Other weights can be used for [E
       alt="examples of Red Hat Mono and its weights and styles"
       width="810"
       height="192"
-      loading="lazy">
+>
 </uxdot-example>
 
 ## Non-Latin fonts
@@ -85,7 +85,7 @@ Noto is a set of international fonts developed by Google, Monotype, Adobe, and l
       alt="examples of Noto used for non-latin text"
       width="778"
       height="207"
-      loading="lazy">
+>
 </uxdot-example>
 
 ## Download fonts
@@ -97,7 +97,7 @@ Noto is a set of international fonts developed by Google, Monotype, Adobe, and l
         src="./google-fonts-icon.svg" 
         width="64px" 
         alt="Google Fonts icon"
-        loading="lazy">
+>
     <rh-cta>
         <a href="https://fonts.google.com/?query=Red+Hat">Google Fonts</a>
     </rh-cta>
@@ -107,7 +107,7 @@ Noto is a set of international fonts developed by Google, Monotype, Adobe, and l
         src="./github-icon.svg" 
         width="64px" 
         alt="GitHub icon"
-        loading="lazy">
+>
     <rh-cta>
         <a href="https://github.com/RedHatOfficial/RedHatFont">GitHub</a>
     </rh-cta>
@@ -121,7 +121,7 @@ Noto is a set of international fonts developed by Google, Monotype, Adobe, and l
         src="./google-fonts-icon.svg" 
         width="64px" 
         alt="Google Fonts icon"
-        loading="lazy">
+>
     <rh-cta>
         <a href="https://fonts.google.com/noto/specimen/Noto+Sans">Google Fonts</a>
     </rh-cta>

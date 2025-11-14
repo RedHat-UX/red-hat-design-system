@@ -70,7 +70,7 @@ tags:
          alt="How to apply spacing"
          width="1000"
          height="566"
-         loading="lazy">
+>
   </uxdot-example>
 
 </section>
@@ -87,7 +87,7 @@ tags:
          alt="How to apply spacing to typography"
          width="1000"
          height="421"
-         loading="lazy">
+>
   </uxdot-example>
 
   ### Spacing between text styles
@@ -102,7 +102,7 @@ tags:
          alt="Spacing between text styles"
          width="1000"
          height="720"
-         loading="lazy">
+>
   </uxdot-example>
 
   ### Titles and headlines
@@ -124,7 +124,7 @@ tags:
          alt="Headlines and body copy spacing guidelines"
          width="1000"
          height="523"
-         loading="lazy">
+>
   </uxdot-example>
 
   ### Desktop scale
@@ -184,7 +184,7 @@ tags:
          alt="How to apply spacing to headlines and calls to action"
          width="1000"
          height="814"
-         loading="lazy">
+>
   </uxdot-example>
 
   ### Scale
@@ -227,7 +227,7 @@ tags:
          alt="How to apply spacing to headlines and buttons"
          width="1000"
          height="740"
-         loading="lazy">
+>
   </uxdot-example>
 
   #### Scale
@@ -256,7 +256,7 @@ tags:
          alt="Spacing on lists"
          width="1000"
          height="741"
-         loading="lazy">
+>
   </uxdot-example>
 
   ### Other use cases
@@ -287,7 +287,7 @@ tags:
          alt="Spacing in search layout"
          width="1000"
          height="388"
-         loading="lazy">
+>
   </uxdot-example>
 
   ### Calls to action
@@ -304,7 +304,7 @@ tags:
          alt="Spacing within calls to action"
          width="1000"
          height="218"
-         loading="lazy">
+>
   </uxdot-example>
 
   The Brick style has a fixed top and bottom spacing of 16px, but the left and 
@@ -315,7 +315,7 @@ tags:
          alt="Spacing within brick CTAs"
          width="1000"
          height="340"
-         loading="lazy">
+>
   </uxdot-example>
 
   The Default style needs 8px of spacing between the text and the arrow or icon.
@@ -325,7 +325,7 @@ tags:
          alt="Spacing within default CTAs"
          width="1000"
          height="185"
-         loading="lazy">
+>
   </uxdot-example>
 
   ### Accordion
@@ -338,7 +338,7 @@ tags:
          alt="Spacing within accordions"
          width="1000"
          height="755"
-         loading="lazy">
+>
   </uxdot-example>
 
   ### Tabs
@@ -354,7 +354,7 @@ tags:
          alt="Spacing within tabs"
          width="1000"
          height="470"
-         loading="lazy">
+>
   </uxdot-example>
 
   ### Cards
@@ -368,7 +368,7 @@ tags:
          alt="Spacing within cards"
          width="1000"
          height="442"
-         loading="lazy">
+>
   </uxdot-example>
 
   <uxdot-example variant="full">
@@ -376,7 +376,7 @@ tags:
          alt="Spacing within 4 column cards"
          width="1000"
          height="442"
-         loading="lazy">
+>
   </uxdot-example>
 
   ### Scale
@@ -402,7 +402,7 @@ tags:
          alt="Spacing within other components"
          width="1000"
          height="923"
-         loading="lazy">
+>
   </uxdot-example>
 
   ### Other use cases
@@ -434,7 +434,7 @@ tags:
          alt="Spacing within layouts"
          width="1000"
          height="598"
-         loading="lazy">
+>
   </uxdot-example>
 
   ### Responsive design
@@ -450,7 +450,7 @@ tags:
          alt="Spacing within the grid"
          width="1000"
          height="368"
-         loading="lazy">
+>
   </uxdot-example>
 
   In the *tablet, landscape* breakpoint, the gutters in the grid are
@@ -461,7 +461,7 @@ tags:
          alt="Spacing within a landscape tablet layout"
          width="992"
          height="392"
-         loading="lazy">
+>
   </uxdot-example>
 
   In the *tablet, portrait* breakpoint, the gutters in the grid are spaced
@@ -472,7 +472,7 @@ tags:
          alt="Spacing within a portrait tablet layout"
          width="768"
          height="392"
-         loading="lazy">
+>
   </uxdot-example>
 
   In the *mobile* breakpoint, the gutters in the grid are spaced 16px
@@ -483,7 +483,7 @@ tags:
          alt="Spacing within a mobile landscape layout"
          width="576"
          height="392"
-         loading="lazy">
+>
   </uxdot-example>
 
   <uxdot-example variant="full" width-adjustment="360px" alignment="left" no-border>
@@ -491,7 +491,7 @@ tags:
          alt="Spacing within a mobile portrait layout"
          width="360"
          height="640"
-         loading="lazy">
+>
   </uxdot-example>
 
   ### Other use cases
@@ -514,7 +514,7 @@ tags:
          alt="Use existing spacers"
          width="1000"
          height="441"
-         loading="lazy">
+>
   </uxdot-example>
 
 </section>

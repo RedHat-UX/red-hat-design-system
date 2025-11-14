@@ -34,7 +34,7 @@ logos.
       alt="An example of a bordered logo wall with 6 logos each inside of a bordered container."
       width="1120"
       height="110"
-      loading="lazy">
+>
 </uxdot-example>
 
 ### Borderless
@@ -44,7 +44,7 @@ logos.
       alt="An example of a borderless logo wall with 6 logos."
       width="1113"
       height="110"
-      loading="lazy">
+>
 </uxdot-example>
 
 ## Layout
@@ -86,7 +86,7 @@ identity by ensuring that their logos meet accessibility standards.
       alt="Examples of two Red Hat logos in dark and light themes against background colors that ensure enough color contrast."
       width="556"
       height="206"
-      loading="lazy">
+>
     </uxdot-example>
     <p>Ensure that the color contrast between each logo and the background meets accessibility standards.</p>
   </uxdot-best-practice>
@@ -97,7 +97,7 @@ identity by ensuring that their logos meet accessibility standards.
       alt="Examples of two Red Hat logos in dark and light themes against background colors that do not provide enough contrast."
       width="556"
       height="206"
-      loading="lazy">
+>
     </uxdot-example>
     <p>Place a logo over a background that does not meet accessibility standards.</p>
   </uxdot-best-practice>
@@ -116,7 +116,7 @@ wall.
       alt="Examples of two Red Hat logos in dark and light themes against background colors that ensure enough color contrast."
       width="556"
       height="206"
-      loading="lazy">
+>
     </uxdot-example>
     <p>Ensure that the color contrast between each logo and the background meets accessibility standards.</p>
   </uxdot-best-practice>
@@ -127,7 +127,7 @@ wall.
       alt="Examples of two Red Hat logos in dark and light themes against background colors that do not provide enough contrast."
       width="556"
       height="206"
-      loading="lazy">
+>
     </uxdot-example>
     <p>Place a logo over a background that does not meet accessibility standards.</p>
   </uxdot-best-practice>
@@ -147,7 +147,7 @@ with this case</rh-alert>
       alt="Example of a borderless logo wall with similarly sized logos that represent each partner evenly."
       width="556"
       height="55"
-      loading="lazy">
+>
     </uxdot-example>
     <p>Because the size and shape of our partners’ logos can vary, make sure to size them similarly so that each partner is evenly represented.</p>
   </uxdot-best-practice>
@@ -158,7 +158,7 @@ with this case</rh-alert>
       alt="Example of a borderless logo wall in which the sizes of logos varies and disproportionately represents each partner."
       width="559"
       height="48"
-      loading="lazy">
+>
     </uxdot-example>
     <p>Each logo does not need to be the same height or width.</p>
   </uxdot-best-practice>
@@ -173,7 +173,7 @@ with this case</rh-alert>
       alt="Example of a borderless logo wall in which each logo is horizontally and vertically aligned in its container."
       width="556"
       height="55"
-      loading="lazy">
+>
     </uxdot-example>
     <p>Align logos vertically and horizontally within a container.</p>
   </uxdot-best-practice>
@@ -184,7 +184,7 @@ with this case</rh-alert>
       alt="Example of a borderless logo wall in which each logo is aligned to the bottom of the container."
       width="556"
       height="55"
-      loading="lazy">
+>
     </uxdot-example>
     <p>Don’t align all logos to the top or bottom of a container.</p>
   </uxdot-best-practice>

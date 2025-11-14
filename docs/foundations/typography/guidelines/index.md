@@ -132,7 +132,7 @@ rh-card.dont {
             alt="Form field with 'Zip code' label in small, black text"
             width="482"
             height="145"
-            loading="lazy">
+>
     </uxdot-example>
     <p>Choose the correct text style and color for the correct use case.</p>
   </uxdot-best-practice>
@@ -143,7 +143,7 @@ rh-card.dont {
             alt="Form field with 'Zip code' label in large, red text"
             width="482"
             height="145"
-            loading="lazy">
+>
     </uxdot-example>
     <p>Do not choose text styles and colors randomly.</p>
   </uxdot-best-practice>
@@ -158,7 +158,7 @@ rh-card.dont {
             alt="Heading using Red Hat Display with body text using Red Hat Text"
             width="482"
             height="248"
-            loading="lazy">
+>
     </uxdot-example>
     <p>Choose the correct font families for the correct use cases.</p>
   </uxdot-best-practice>
@@ -169,7 +169,7 @@ rh-card.dont {
             alt="Heading using Red Hat Text with body text using Red Hat Display"
             width="482"
             height="248"
-            loading="lazy">
+>
     </uxdot-example>
     <p>Do not use Red Hat Text for headings or Red Hat Display for body text on websites.</p>
   </uxdot-best-practice>
@@ -184,7 +184,7 @@ rh-card.dont {
             alt="Body text with blue inline link that has a dashed underline"
             width="482"
             height="160"
-            loading="lazy">
+>
     </uxdot-example>
     <p>In paragraphs, linked text must use our blue link color and an underline emphasis.</p>
   </uxdot-best-practice>
@@ -195,7 +195,7 @@ rh-card.dont {
             alt="Body text with inline link that's a slightly lighter shade of gray than the rest of the text"
             width="482"
             height="160"
-            loading="lazy">
+>
     </uxdot-example>
     <p>Using color only without other visual affordances causes barriers to access for some readers. Learn more in the <a href="/accessibility/design/#contrast">Accessibility</a> section.</p>
   </uxdot-best-practice>
@@ -210,7 +210,7 @@ rh-card.dont {
             alt="2xl heading using a normal weight"
             width="482"
             height="165"
-            loading="lazy">
+>
     </uxdot-example>
     <p>Use font weights to create emphasis.</p>
   </uxdot-best-practice>
@@ -221,7 +221,7 @@ rh-card.dont {
             alt="2xl heading using a bold weight"
             width="482"
             height="165"
-            loading="lazy">
+>
     </uxdot-example>
     <p>The Bold weight will always have more emphasis than lighter weights even if the font size is the same.</p>
   </uxdot-best-practice>
@@ -236,7 +236,7 @@ rh-card.dont {
             alt="xl heading paired with lg body text"
             width="482"
             height="160"
-            loading="lazy">
+>
     </uxdot-example>
     <p>Create balanced text size pairings for better visual harmony.</p>
   </uxdot-best-practice>
@@ -247,7 +247,7 @@ rh-card.dont {
             alt="2xl heading with xs body text"
             width="482"
             height="160"
-            loading="lazy">
+>
     </uxdot-example>
     <p>Do not pair huge and tiny text sizes; it creates tension.</p>
   </uxdot-best-practice>
@@ -262,7 +262,7 @@ rh-card.dont {
             alt="Paragraph that doesn't span entire container"
             width="482"
             height="218"
-            loading="lazy">
+>
     </uxdot-example>
     <p>Use a comfortable line length so body text is easy to read.</p>
   </uxdot-best-practice>
@@ -273,7 +273,7 @@ rh-card.dont {
             alt="Paragraph that spans entire container and goes past a red line"
             width="482"
             height="218"
-            loading="lazy">
+>
     </uxdot-example>
     <p>Do not stretch body text beyond 120 characters per line.</p>
   </uxdot-best-practice>
@@ -288,7 +288,7 @@ rh-card.dont {
             alt="Text using four different styles plus a call to action"
             width="482"
             height="402"
-            loading="lazy">
+>
     </uxdot-example>
     <p>Use an appropriate amount of text styles in the same block so readers are not overwhelmed by too much content.</p>
   </uxdot-best-practice>
@@ -299,7 +299,7 @@ rh-card.dont {
             alt="A title, four different heading styles, body text, and a call to action"
             width="482"
             height="402"
-            loading="lazy">
+>
     </uxdot-example>
     <p>Do not use more than 3 text styles at the same time in the same block. Add padding or use components to organize text instead.</p>
   </uxdot-best-practice>
@@ -314,7 +314,7 @@ rh-card.dont {
             alt="Large spacer between a title, heading, and body text with a 2xl spacer before a call to action"
             width="482"
             height="294"
-            loading="lazy">
+>
     </uxdot-example>
     <p>Follow spacing best practices when stacking text styles.</p>
   </uxdot-best-practice>
@@ -325,7 +325,7 @@ rh-card.dont {
             alt="No extra space between a title, heading, body text, and a call to action"
             width="482"
             height="294"
-            loading="lazy">
+>
     </uxdot-example>
     <p>Do not stack text too tightly. A user should be able to read each style independently of the others.</p>
   </uxdot-best-practice>

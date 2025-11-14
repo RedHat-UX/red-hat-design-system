@@ -68,7 +68,7 @@ We use [space tokens][space tokens] to define grid margins and gutters.
         alt="Text at a width of 789px and layered on a grid"
         width="1012"
         height="170"
-        loading="lazy">
+>
   </uxdot-example>
 
   <p>The width of body text should be 7 grid columns on desktop or 789px max in all layouts.</p>
@@ -80,7 +80,7 @@ We use [space tokens][space tokens] to define grid margins and gutters.
         alt="Text spanning all 12 columns of a grid"
         width="1012"
         height="107"
-        loading="lazy">
+>
   </uxdot-example>
 
   <p>Do not allow the width of body text to span more than 789px.</p>

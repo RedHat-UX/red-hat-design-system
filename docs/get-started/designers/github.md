@@ -20,9 +20,13 @@ and much more.
 <uxdot-example variant="full" no-border>
   <img alt="Screenshot of the red-hat-design-system GitHub repo's Code tab"
        src="get-familiar-with-github.avif"
+<<<<<<< Updated upstream
        width="1140"
        height="770"
        loading="lazy">
+=======
+>
+>>>>>>> Stashed changes
 </uxdot-example>
 
 ## Contributing

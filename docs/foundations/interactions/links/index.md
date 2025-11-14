@@ -174,7 +174,7 @@ The following elements are exempt from underlining requirements and should not h
             alt="Recommendations menu with list of links that aren't underlined"
             width="482"
             height="342"
-            loading="lazy">
+>
     </uxdot-example>
     <figcaption>
         <span><rh-icon set="ui" size="md" icon="close-circle-fill" defer-hydration=""></rh-icon>Don't underline</span>
@@ -188,7 +188,7 @@ The following elements are exempt from underlining requirements and should not h
             alt="Heading, body copy, and call to action with an arrow but without an underline"
             width="482"
             height="342"
-            loading="lazy">
+>
     </uxdot-example>
     <figcaption>
         <span><rh-icon set="ui" size="md" icon="close-circle-fill" defer-hydration=""></rh-icon>Don't underline</span>
@@ -202,7 +202,7 @@ The following elements are exempt from underlining requirements and should not h
             alt="List of links "
             width="482"
             height="268"
-            loading="lazy">
+>
     </uxdot-example>
     <figcaption>
         <span><rh-icon set="ui" size="md" icon="close-circle-fill" defer-hydration=""></rh-icon>Don't underline</span>
@@ -293,7 +293,7 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
         alt="Three inline links and a call to action in a row with focus rings around each"
         width="606"
         height="27"
-        loading="lazy">
+>
 </uxdot-example>
 
 <uxdot-example color-palette="lightest" width-adjustment="93px" slot="image">
@@ -301,7 +301,7 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
         alt="Four links in a vertical list with focus rings around each"
         width="93"
         height="156"
-        loading="lazy">
+>
 </uxdot-example>
 
 ## Best practices
@@ -315,7 +315,7 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
             alt="'Open hybrid cloud' linked within a paragraph"
             width="482"
             height="81"
-            loading="lazy">
+>
     </uxdot-example>
     <p>Use descriptive language to give users a clear idea of where a link will take them.</p>
   </uxdot-best-practice>
@@ -326,7 +326,7 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
             alt="'Click here' linked within a paragraph"
             width="482"
             height="81"
-            loading="lazy">
+>
     </uxdot-example>
     <p>Do not use ambiguous phrases or a full website URL in body text.</p>
   </uxdot-best-practice>
@@ -343,7 +343,7 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
             alt="A paragraph of text with the last few words hyperlinked"
             width="482"
             height="135"
-            loading="lazy">
+>
     </uxdot-example>
     <p>Try to keep link text as brief as possible.</p>
   </uxdot-best-practice>
@@ -354,7 +354,7 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
             alt="A paragraph of text with the final sentence hyperlinked"
             width="482"
             height="135"
-            loading="lazy">
+>
     </uxdot-example>
     <p><a href="/accessibility/content/#avoid-the-following-when-creating-links">Do not link</a> very long strings of text (including long URLs).</p>
   </uxdot-best-practice>
@@ -369,7 +369,7 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
             alt="Blue primary button that says 'Submit'"
             width="482"
             height="100"
-            loading="lazy">
+>
     </uxdot-example>
     <p><a href="/elements/button/">Buttons</a> have different use cases and should only be used for actions.</p>
   </uxdot-best-practice>
@@ -380,7 +380,7 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
             alt="Blue primary button that says 'Learn more' text with a right arrow"
             width="482"
             height="100"
-            loading="lazy">
+>
     </uxdot-example>
     <p>Do not use buttons as links.</p>
   </uxdot-best-practice>

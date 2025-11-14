@@ -30,6 +30,7 @@ subnav:
 
 ## Accessing our Figma library
 
+<<<<<<< Updated upstream
 Our Figma library can be accessed by following these steps.
 
   - In a design file, select the **Assets** tab in the left sidebar next to File
@@ -51,6 +52,12 @@ Our Figma library can be accessed by following these steps.
        width="1140"
        height="464"
        loading="lazy">
+=======
+<uxdot-example color-palette="lightest" width-adjustment="60%">
+  <img alt="Figma's Libraries modal showing the Red Hat Design System library is added"
+       src="access-figma-libraries.avif"
+>
+>>>>>>> Stashed changes
 </uxdot-example>
 
 ### Access for agencies
@@ -86,9 +93,84 @@ Be careful about detaching components and patterns because you will
 **not** receive notifications about updates when the main library is 
 published. They are technically out of date as soon as you detach them.
 
+<<<<<<< Updated upstream
 If you think any part of a component or pattern needs something added 
 or edited, create a 
 [GitHub discussion](https://github.com/orgs/RedHat-UX/discussions/new/choose).
+=======
+<uxdot-example color-palette="lightest" width-adjustment="40%">
+  <img alt="Figma's asset preview dialog box for a card component with an 'Insert instance' button"
+       src="figma-inserting-elements-patterns.avif"
+>
+</uxdot-example>
+
+### Properties
+
+Properties are changeable aspects of an element or pattern and you can see them
+in the right sidebar when the asset is selected. Properties change the
+appearance of an element or pattern so they can be used for different use cases.
+Some examples of properties include state, theme, variant, etc.
+
+<uxdot-example color-palette="lightest">
+  <img alt="Diagram showing a blue primary button being changed to a destroy button with Figma's properties selector",
+       src="figma-properties.avif"
+>
+</uxdot-example>
+
+### Responsive resize
+
+Most elements and patterns can be resized to fit different viewport sizes. You
+can change the height or width of an asset by dragging an edge or corner.
+
+<uxdot-example color-palette="lightest">
+  <img alt="Screenshot of a progress steps element being resized by dragging the bottom right corner"
+       src="figma-responsive-resize-drag.avif"
+>
+</uxdot-example>
+
+You can also use [Constraints][constraints] to tell Figma how layers should
+respond when their frames are resized.
+
+<uxdot-example color-palette="lightest">
+  <img alt="Screenshot of a selected progress steps element next to Figma's constraints settings"
+       src="figma-responsive-resize-constraints.avif"
+>
+</uxdot-example>
+
+### Instance swap
+
+To speed up your design process, you can swap elements or patterns instead of
+dragging and dropping over and over again. Use the **Instance** menu to swap one
+element for another from any enabled library. Changing a property will not
+replace an element, but instance swapping will.
+
+<uxdot-example color-palette="lightest">
+  <img alt="Diagram of a primary CTA being changed to a secondary CTA via the instance swap panel"
+       src="figma-instance-swap.avif"
+>
+</uxdot-example>
+
+## Best practices
+
+### Detaching an instance
+
+Currently, you **cannot** add new items to an element or pattern instance that
+you pull from a library. You need to detach it if you want to add new assets,
+more slots, etc. If you believe that an element or pattern in any library needs
+more slots for new items, [create an issue][createanissue] and we will try and
+prioritize building them in.
+
+<rh-alert state="warning" variant="inline">
+  <h3 slot="header">Warning</h3>
+  <p>Detached instances will not receive style or other updates from any of the libraries if that element or pattern is updated.</p>
+</rh-alert>
+
+<uxdot-example color-palette="lightest" width-adjustment="90%">
+  <img alt="Comparison of a linked and a detached accordion with their layers panel below"
+       src="best-practices-detach-instance.avif"
+>
+</uxdot-example>
+>>>>>>> Stashed changes
 
 <uxdot-feedback>
   <h2>Developers</h2>

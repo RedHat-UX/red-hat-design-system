@@ -23,14 +23,14 @@ in an accordion or a disclosure.
          alt="Example of a filter using an accordion"
          width="300"
          height="513"
-         loading="lazy">
+>
   </uxdot-example>
   <uxdot-example width-adjustment="300px" color-palette="lightest">
     <img src="./filter-sample-2.svg"
          alt="Example of a filter using a disclosure"
          width="300"
          height="328"
-         loading="lazy">
+>
   </uxdot-example>
 </div>
 
@@ -48,7 +48,7 @@ reset their selections.
        alt="Filter component with different parts labeled"
        width="600"
        height="695"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Usage
@@ -70,7 +70,7 @@ amount of time that users spend searching for something.
            alt="Expanded disclosure panel with one checkbox"
            width="300"
            height="592"
-           loading="lazy">
+>
     </uxdot-example>
     <figcaption>A user can select one or multiple tags to sort by in one category</figcaption>
   </figure>
@@ -80,7 +80,7 @@ amount of time that users spend searching for something.
            alt="Expanded accordion panels with multiple checkboxes selected"
            width="300"
            height="592"
-           loading="lazy">
+>
     </uxdot-example>
     <figcaption>A user can select multiple tags to sort by in multiple categories</figcaption>
   </figure>
@@ -108,7 +108,7 @@ only one panel is needed, use a disclosure instead.
        alt="A filter using an accordion instead of a disclosure even though it has only one panel"
        width="300"
        height="148"
-       loading="lazy">
+>
 </uxdot-example>
 
 Don’t change the width of a filter on large screens because the aside region is
@@ -119,7 +119,7 @@ already a fixed width.
        alt="A filter that is abnormally wide on desktop"
        width="555"
        height="513"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Behavior
@@ -136,7 +136,7 @@ toggled.
        alt="Two filters showing collapsed and expanded states of the enclosed accordions"
        width="664"
        height="439"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Multiple panels
@@ -150,7 +150,7 @@ filter content in the same view.
        alt="Two filters, one showing an expanded accordion panel and one showing two expanded accordion panels"
        width="664"
        height="494"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Selecting checkboxes
@@ -167,7 +167,7 @@ checkboxes that are currently selected.
        alt="Two accordions, one showing an expanded accordion with unselected checkboxes, and one showing selected checkboxes"
        width="664"
        height="555"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Progressive disclosure
@@ -182,7 +182,7 @@ reveals an additional five checkboxes until all checkboxes are displayed.
        alt="A filter showing 10 checkboxes and an link to see more"
        width="300"
        height="584"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Clear all button
@@ -211,7 +211,7 @@ content set.
        alt="A filter that stretches across the entire grid"
        width="708"
        height="386"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Desktop
@@ -221,7 +221,7 @@ content set.
        alt="A filter on desktop taking up almost 4 columns"
        width="1000"
        height="598"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Tablet
@@ -231,7 +231,7 @@ content set.
        alt="A filter on a tablet taking up the full width"
        width="768"
        height="706"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Mobile
@@ -241,7 +241,7 @@ content set.
        alt="A filter on a mobile device taking up the full width"
        width="360"
        height="640"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Interaction states
@@ -256,7 +256,7 @@ same for each, like accordion, disclosure, button, and [Data inputs](../form).
        alt="Example of expanded accordions with filter checkboxes"
        width="664"
        height="513"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Focus
@@ -266,7 +266,7 @@ same for each, like accordion, disclosure, button, and [Data inputs](../form).
        alt="Example of focus states for filters"
        width="664"
        height="513"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Hover
@@ -276,7 +276,7 @@ same for each, like accordion, disclosure, button, and [Data inputs](../form).
        alt="Example of hover states for filters"
        width="664"
        height="513"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Tab order
@@ -290,7 +290,7 @@ tab order before the focus indicator reaches the next panel.
        alt="Example of interaction states for a filter"
        width="664"
        height="513"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Spacing
@@ -304,7 +304,7 @@ values between elements.
        alt="A filter with spacers"
        width="664"
        height="565"
-       loading="lazy">
+>
 </uxdot-example>
 
 <uxdot-spacer-tokens-table tokens="xs, sm, lg, xl"></uxdot-spacer-tokens-table>

@@ -22,7 +22,7 @@ scrolls underneath until a user dismisses them.
        alt="Sticky banner"
        width="340"
        height="200"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Style
@@ -37,7 +37,7 @@ button also needs to be included in both sizes.
        alt="Sticky banner style"
        width="884"
        height="170"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Sizes
@@ -53,7 +53,7 @@ text, and a larger call to action.
        alt="Sticky banner large size"
        width="1012"
        height="140"
-       loading="lazy">
+>
 </uxdot-example>
 
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
@@ -61,7 +61,7 @@ text, and a larger call to action.
        alt="Sticky banner small size"
        width="360"
        height="640"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Content
@@ -102,7 +102,7 @@ banner to appear.
        alt="Sticky banner desktop placement"
        width="1012"
        height="628"
-       loading="lazy">
+>
 </uxdot-example>
 
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
@@ -110,7 +110,7 @@ banner to appear.
        alt="Sticky banner mobile placement"
        width="372"
        height="643"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Layout
@@ -139,7 +139,7 @@ Don't change the large sticky banner to be fixed width.
        alt="Fixed width issue"
        width="872"
        height="195"
-       loading="lazy">
+>
 </uxdot-example>
 
 Don’t omit the thumbnail image from the sticky banner on large screens like
@@ -151,7 +151,7 @@ downloading.
        alt="Full width small banner issue"
        width="884"
        height="171"
-       loading="lazy">
+>
 </uxdot-example>
 
 Don’t omit the drop shadow because the banner will blend into the background.
@@ -161,7 +161,7 @@ Don’t omit the drop shadow because the banner will blend into the background.
        alt="Banner without thumbnail issue"
        width="872"
        height="192"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Behavior
@@ -177,7 +177,7 @@ promotes a less important offer like a resource or webinar.
        alt="Sticky banner behavior"
        width="1012"
        height="608"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Sliding
@@ -205,7 +205,7 @@ dropped when space reduces to keep the layout clean and organized.
        alt="Sticky banner desktop breakpoint"
        width="1012"
        height="140"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Tablet
@@ -215,7 +215,7 @@ dropped when space reduces to keep the layout clean and organized.
        alt="Sticky banner tablet breakpoint"
        width="780"
        height="116"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Mobile, landscape
@@ -226,7 +226,7 @@ dropped when space reduces to keep the layout clean and organized.
          alt="Sticky banner mobile landscape breakpoint"
          width="588"
          height="327"
-         loading="lazy">
+>
   </uxdot-example>
   <figcaption>Some text styles reduce in size on small screens. Learn more about
     typography on mobile.</figcaption>
@@ -239,7 +239,7 @@ dropped when space reduces to keep the layout clean and organized.
        alt="Sticky banner mobile portrait breakpoint"
        width="372"
        height="643"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Interaction states
@@ -260,7 +260,7 @@ between elements.
        alt="Sticky banner large spacing"
        width="884"
        height="308"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Small size
@@ -273,7 +273,7 @@ section.
        alt="Sticky banner small spacing"
        width="588"
        height="329"
-       loading="lazy">
+>
 </uxdot-example>
 
 <uxdot-spacer-tokens-table tokens="md, lg, xl, 2xl, 3xl, 4xl"></uxdot-spacer-tokens-table>

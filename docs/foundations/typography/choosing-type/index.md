@@ -28,7 +28,7 @@ Expressive type can be used as imagery if using other assets is not an option or
       alt="examples of expressive type and functional text"
       width="900"
       height="395"
-      loading="lazy">
+>
 </uxdot-example>
 
 ### Extended weights and other fonts
@@ -40,7 +40,7 @@ Expressive type can be used as imagery if using other assets is not an option or
       alt="examples of expressive type and functional text"
       width="1012"
       height="529"
-      loading="lazy">
+>
 </uxdot-example>
 
 ### Extra large headings
@@ -59,7 +59,7 @@ Expressive type allows for the <strong>extremely limited</strong> use of extra l
       alt="examples of text in large font sizes"
       width="1012"
       height="543"
-      loading="lazy">
+>
 </uxdot-example>
 
 ## Editorial type
@@ -80,7 +80,7 @@ Editorial type includes the following styles:
       alt="examples of editorial type"
       width="1012"
       height="673"
-      loading="lazy">
+>
 </uxdot-example>
 
 ## Utility type
@@ -101,7 +101,7 @@ Utility type includes the following styles:
       alt="examples of editorial type"
       width="1012"
       height="530"
-      loading="lazy">
+>
 </uxdot-example>
 
 <uxdot-feedback>

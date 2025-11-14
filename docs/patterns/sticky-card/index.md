@@ -22,7 +22,7 @@ scrolls underneath until a user dismisses them.
        alt="Sticky card"
        width="274"
        height="361"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Style
@@ -34,7 +34,7 @@ A sticky card acts as a small container for a limited amount of content.
        alt="Sticky card style"
        width="453"
        height="361"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Color scheme
@@ -52,7 +52,7 @@ than the page background color.
        alt="Sticky card light theme"
        width="277"
        height="361"
-       loading="lazy">
+>
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="262px">
@@ -60,7 +60,7 @@ than the page background color.
        alt="Sticky card dark theme"
        width="262"
        height="349"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Layout
@@ -96,7 +96,7 @@ footer is always required and shouldn't be hidden.
        alt="Sticky card content sections"
        width="713"
        height="361"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Usage
@@ -118,7 +118,7 @@ fixed width of 262px.
        alt="Sticky card on right side"
        width="879"
        height="477"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Content
@@ -134,7 +134,7 @@ possible.
        alt="Sticky card content sections"
        width="596"
        height="399"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Character count
@@ -167,7 +167,7 @@ Don’t use more than one sticky card per page.
        alt="Sticky card multiple issue"
        width="751"
        height="477"
-       loading="lazy">
+>
 </uxdot-example>
 
 Don’t change the width of a sticky card on large screens, it’s fixed at 262px.
@@ -177,7 +177,7 @@ Don’t change the width of a sticky card on large screens, it’s fixed at 262p
        alt="Sticky card width issue"
        width="375"
        height="311"
-       loading="lazy">
+>
 </uxdot-example>
 
 Don’t anchor a sticky card on small screens, it covers too much content.
@@ -187,7 +187,7 @@ Don’t anchor a sticky card on small screens, it covers too much content.
        alt="Sticky card overlap issue"
        width="366"
        height="477"
-       loading="lazy">
+>
 </uxdot-example>
 
 Don't omit the close button, it’s needed for accessibility.
@@ -197,7 +197,7 @@ Don't omit the close button, it’s needed for accessibility.
        alt="Sticky card close button issue"
        width="277"
        height="323"
-       loading="lazy">
+>
 </uxdot-example>
 
 Don’t use more than one call to action.
@@ -207,7 +207,7 @@ Don’t use more than one call to action.
        alt="Sticky card call to action issue"
        width="277"
        height="400"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Behavior
@@ -242,7 +242,7 @@ aspect ratio as possible.
        alt="Sticky card vertical height caution"
        width="603"
        height="607"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Breakpoints
@@ -258,7 +258,7 @@ maintains the same styles.
        alt="Sticky card desktop layout"
        width="1007"
        height="477"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Tablet
@@ -268,7 +268,7 @@ maintains the same styles.
        alt="Sticky card tablet layout"
        width="775"
        height="477"
-       loading="lazy">
+>
 </uxdot-example>
 
 ### Mobile
@@ -278,7 +278,7 @@ maintains the same styles.
        alt="Sticky card mobile layout"
        width="360"
        height="640"
-       loading="lazy">
+>
 </uxdot-example>
 
 ## Interaction states
@@ -297,7 +297,7 @@ values between elements.
        alt="Sticky card spacing"
        width="287"
        height="361"
-       loading="lazy">
+>
 </uxdot-example>
 
 <uxdot-spacer-tokens-table tokens="lg,xl"></uxdot-spacer-tokens-table>

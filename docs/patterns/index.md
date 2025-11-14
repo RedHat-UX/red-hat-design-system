@@ -73,7 +73,7 @@ create uniform, accessible experiences.
     <uxdot-example slot="image">
       <img alt="{{ title }}"
            src="/assets/patterns/all-patterns-{{ slug }}.avif"
-           loading="lazy">
+>
     </uxdot-example>
     <h3 slot="headline"><a href="{{ pattern.url }}">{{ title }}</a></h3>
     <p>{{ summary }}</p>
