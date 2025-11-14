@@ -50,8 +50,7 @@ Interactions are foundational to how our users engage with Red Hat digital exper
            slot="image"
            width="295"
            height="176"
-           style="background-color: var(--rh-color-surface-lightest);"
->
+           style="background-color: var(--rh-color-surface-lightest);">
       <h3 slot="headline"><a href="/foundations/interactions/links">Links</a></h3>
       Text that sends users to another destination
     </rh-tile>

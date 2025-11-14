@@ -31,16 +31,14 @@ The Red Hat Design System for digital experiences gives designers and developers
   <rh-tile>
     <uxdot-example slot="image" no-border variant="full" transparent>
       <img alt="Row of two cards being resized with a mouse pointer" 
-        src="designers.svg"
->
+        src="designers.svg">
     </uxdot-example>
     <h3 slot="headline"><a href="./designers">Designers</a></h3>
   </rh-tile>
   <rh-tile>
     <uxdot-example slot="image" no-border variant="full" transparent>
       <img alt="Card overlapping code editor user interface" 
-        src="developers.svg"
->
+        src="developers.svg">
     </uxdot-example>
     <h3 slot="headline"><a href="./developers">Developers</a></h3>
   </rh-tile>

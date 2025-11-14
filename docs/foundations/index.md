@@ -37,8 +37,7 @@ tags:
            src="color.svg"
            slot="image"
            width="500"
-           height="150"
->
+           height="150">
       <h3 slot="headline"><a href="../foundations/color">Color</a></h3>
       <p>Unifies our brand while bringing accessibility and consistency to our digital experiences</p>
     </rh-tile>
@@ -47,8 +46,7 @@ tags:
            src="grid.svg"
            slot="image"
            width="500"
-           height="150"
->
+           height="150">
       <h3 slot="headline"><a href="../foundations/grid">Grid</a></h3>
       <p>Provides guidance and structure when positioning elements and components in a layout</p>
     </rh-tile>
@@ -57,8 +55,7 @@ tags:
            src="spacing.svg"
            slot="image"
            width="500"
-           height="150"
->
+           height="150">
       <h3 slot="headline"><a href="../foundations/spacing">Spacing</a></h3>
       <p>Defines fixed amounts of space between elements and makes it easy to maintain consistency</p>
     </rh-tile>
@@ -67,8 +64,7 @@ tags:
            src="typography.svg"
            slot="image"
            width="500"
-           height="150"
->
+           height="150">
       <h3 slot="headline"><a href="../foundations/typography">Typography</a></h3>
       <p>A system of fonts that creates hierarchies and helps guide a user through an experience</p>
     </rh-tile>

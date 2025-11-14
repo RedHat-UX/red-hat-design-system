@@ -144,8 +144,7 @@ system][designsystem] team for guidance.
 
 <uxdot-example>
   <img alt="Example of a hero that uses light blue tags against a background image",
-       src="custom-theme.avif"
->
+       src="custom-theme.avif">
 </uxdot-example>
 
 {% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}

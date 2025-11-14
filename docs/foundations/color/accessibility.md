@@ -60,8 +60,7 @@ code text (non-bold text of **at least 24px** and bold text of **at least
 
 <uxdot-example width-adjustment=”100%” variant="full" alignment="left" no-border>
   <img alt="Two examples of dark text on light backgrounds and two examples of light text on dark backgrounds" 
-       src="/assets/color/color-a11y-color-contrast-body-code-text.svg"
->
+       src="/assets/color/color-a11y-color-contrast-body-code-text.svg">
 </uxdot-example>
 
 ### Red text on backgrounds
@@ -128,8 +127,7 @@ You can layer colors on light or dark backgrounds. However, layering colors on t
 
 <uxdot-example width-adjustment=”1140px” variant="full" alignment="left" no-border>
   <img alt="Red call to action on a white background, blue button on a light gray background, and a light red-orange button on a black background"
-       src="/assets/color/color-a11y-color-contrast-layering.svg"
->
+       src="/assets/color/color-a11y-color-contrast-layering.svg">
 </uxdot-example>
 
 <uxdot-feedback>

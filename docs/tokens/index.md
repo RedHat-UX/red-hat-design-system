@@ -45,8 +45,7 @@ websites, libraries, and tools.
 
 <uxdot-example color-palette="lightest" width-adjustment="807px">
   <img alt="Flow showing how a color like brand red becomes a token, how it is named, and how it is applied to a call to action"
-       src="/tokens/images/design-tokens-intro.avif"
->
+       src="/tokens/images/design-tokens-intro.avif">
 </uxdot-example>
 
 ## Installation
@@ -92,80 +91,70 @@ values or if you have an idea for an output format or tool integration.
   <rh-tile color-palette="lightest" compact bleed>
     <uxdot-example slot="image" no-border>
       <img alt="Tokens for border radius, width, color, and more"
-           src="/tokens/images/design-tokens-category-border.avif"
->
+           src="/tokens/images/design-tokens-category-border.avif">
     </uxdot-example>
     <a slot="headline" href="border/"><h3>Border</h3></a>
   </rh-tile>
   <rh-tile color-palette="lightest" compact bleed>
     <uxdot-example slot="image" no-border>
       <img alt="Tokens for box shadows"
-           src="/tokens/images/design-tokens-category-box-shadow.avif"
->
+           src="/tokens/images/design-tokens-category-box-shadow.avif">
     </uxdot-example>
     <a slot="headline" href="box-shadow/"><h3>Box shadow</h3></a>
   </rh-tile>
   <rh-tile color-palette="lightest" compact bleed>
     <uxdot-example slot="image" no-border>
       <img alt="Tokens for breakpoint sizes"
-           src="/tokens/images/design-tokens-category-breakpoint.avif"
->
+           src="/tokens/images/design-tokens-category-breakpoint.avif">
     </uxdot-example>
     <a slot="headline" href="breakpoint/" slot="headline"><h3>Breakpoint</h3></a>
   </rh-tile>
   <rh-tile color-palette="lightest" compact bleed>
     <uxdot-example slot="image" no-border>
       <img alt="Tokens for colors"
-           src="/tokens/images/design-tokens-category-color.avif"
->
+           src="/tokens/images/design-tokens-category-color.avif">
     </uxdot-example>
     <a slot="headline" href="color/"><h3>Color</h3></a>
   </rh-tile>
   <rh-tile color-palette="lightest" compact bleed>
     <uxdot-example slot="image" no-border>
       <img alt="Tokens for icon sizes"
-           src="/tokens/images/design-tokens-category-icon.avif"
->
+           src="/tokens/images/design-tokens-category-icon.avif">
     </uxdot-example>
     <a slot="headline" href="icon/"><h3>Icon</h3></a>
   </rh-tile>
   <rh-tile color-palette="lightest" compact bleed>
     <uxdot-example slot="image" no-border>
       <img alt="Tokens for length values"
-           src="/tokens/images/design-tokens-category-length.avif"
->
+           src="/tokens/images/design-tokens-category-length.avif">
     </uxdot-example>
     <a slot="headline" href="length/"><h3>Length</h3></a>
   </rh-tile>
   <rh-tile color-palette="lightest" compact bleed>
     <uxdot-example slot="image" no-border>
       <img alt="Tokens for media query sizes"
-           src="/tokens/images/design-tokens-category-media-query.avif"
->
+           src="/tokens/images/design-tokens-category-media-query.avif">
     </uxdot-example>
     <a slot="headline" href="media/"><h3>Media query</h3></a>
   </rh-tile>
   <rh-tile color-palette="lightest" compact bleed>
     <uxdot-example slot="image" no-border>
       <img alt="Tokens for opacity values"
-           src="/tokens/images/design-tokens-category-opacity.avif"
->
+           src="/tokens/images/design-tokens-category-opacity.avif">
     </uxdot-example>
     <a slot="headline" href="opacity/"><h3>Opacity</h3></a>
   </rh-tile>
   <rh-tile color-palette="lightest" compact bleed>
     <uxdot-example slot="image" no-border>
       <img alt="Tokens for spacer sizes"
-           src="/tokens/images/design-tokens-category-space.avif"
->
+           src="/tokens/images/design-tokens-category-space.avif">
     </uxdot-example>
     <a slot="headline" href="space/"><h3>Space</h3></a>
   </rh-tile>
   <rh-tile color-palette="lightest" compact bleed>
     <uxdot-example slot="image" no-border>
       <img alt="Tokens for fonts, sizes, weights, line heights, color, and more"
-           src="/tokens/images/design-tokens-category-typography.avif"
->
+           src="/tokens/images/design-tokens-category-typography.avif">
     </uxdot-example>
     <a slot="headline" href="font/"><h3>Typography</h3></a>
   </rh-tile>
@@ -185,8 +174,7 @@ toward consistency even if a token is updated.
 
 <uxdot-example width-adjustment="739px">
   <img alt="Flow showing how changing a global token like a color will propagate through the entire design system"
-       src="/tokens/images/design-tokens-why-we-need-tokens.avif"
->
+       src="/tokens/images/design-tokens-why-we-need-tokens.avif">
 </uxdot-example>
 
 ## Tokens and our design system
@@ -198,8 +186,7 @@ websites, libraries, and tools.
 
 <uxdot-example width-adjustment="396px">
   <img alt="Flow showing how tokens can be utilized in design programs as well as applied to various touchpoints like brand, web, and product"
-       src="/tokens/images/design-tokens-and-our-ds.avif"
->
+       src="/tokens/images/design-tokens-and-our-ds.avif">
 </uxdot-example>
 
 ## Naming tokens
@@ -213,8 +200,7 @@ proceeding from the general to the specific, e.g. `color` (general), `surface`
 
 <uxdot-example width-adjustment="269px">
   <img alt="Destructive button with a Danger text label showing its assigned token name underneath"
-       src="/tokens/images/design-tokens-naming.avif"
->
+       src="/tokens/images/design-tokens-naming.avif">
 </uxdot-example>
 
 ### Aliases
@@ -231,8 +217,7 @@ order for it to propagate everywhere.
 
 <uxdot-example width-adjustment="602px">
   <img alt="Flow showing how 1 global token is applied to 2 different elements because the alias names are different"
-       src="/tokens/images/design-tokens-aliases.avif"
->
+       src="/tokens/images/design-tokens-aliases.avif">
 </uxdot-example>
 
 ## Themes
@@ -244,8 +229,7 @@ different audience or brand requirements.
 
 <uxdot-example width-adjustment="870px">
   <img alt="Examples of how tokens are applied to elements in the light and dark themes"
-       src="/tokens/images/design-tokens-themes.avif"
->
+       src="/tokens/images/design-tokens-themes.avif">
 </uxdot-example>
 
 [color]: /tokens/color/

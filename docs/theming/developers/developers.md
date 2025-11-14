@@ -297,8 +297,7 @@ developers should carefully choose the graphic that matches the background.
             color-palette="darkest">
   <h2 id="products">Products</h2>
   <img alt="Red Hat Enterprise Linux"
-       src="/assets/logos/products/rhel-on-dark.svg"
->
+       src="/assets/logos/products/rhel-on-dark.svg">
 </rh-surface>
 ```
 

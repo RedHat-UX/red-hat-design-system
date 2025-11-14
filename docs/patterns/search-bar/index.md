@@ -20,8 +20,7 @@ a button. It allows a user to input text and then perform a search.
   <img src="./search-bar-sample.svg"
        alt="Search bar component sample"
        width="1000"
-       height="36"
->
+       height="36">
 </uxdot-example>
 
 ## Style
@@ -33,8 +32,7 @@ red button that is placed on the right.
   <img src="./search-bar-blueprint.svg"
        alt="Search bar component blueprint"
        width="872"
-       height="74"
->
+       height="74">
 </uxdot-example>
 
 #### Button
@@ -54,8 +52,7 @@ search, so a button must be used instead.
   <img src="./search-bar-button-vs-cta.svg"
        alt="Search bar component button vs. CTA"
        width="262"
-       height="106"
->
+       height="106">
 </uxdot-example>
 
 ## Color scheme
@@ -67,8 +64,7 @@ The light search bar includes a light theme form field and red button.
   <img src="./search-bar-light-theme.svg"
        alt="Search bar component, light theme"
        width="872"
-       height="36"
->
+       height="36">
 </uxdot-example>
 
 For now, the light search bar can also be used in the dark scheme.
@@ -77,8 +73,7 @@ For now, the light search bar can also be used in the dark scheme.
   <img src="./search-bar-dark-theme.svg"
        alt="Search bar component, dark theme"
        width="872"
-       height="36"
->
+       height="36">
 </uxdot-example>
 
 ## Usage
@@ -95,8 +90,7 @@ boundaries of whatever container or grid it is placed in.
   <img src="./search-bar-layout.svg"
        alt="Search bar component usage"
        width="872"
-       height="503"
->
+       height="503">
 </uxdot-example>
 
 #### Content
@@ -110,8 +104,7 @@ resources), a user might expect to search through an individual page.
   <img src="./search-bar-placeholder-text.svg"
        alt="Search bar component placeholder text options"
        width="872"
-       height="104"
->
+       height="104">
 </uxdot-example>
 
 ## Behavior
@@ -132,8 +125,7 @@ change.
   <img src="./search-bar-form-field.svg"
        alt="Search bar component styling changes"
        width="872"
-       height="172"
->
+       height="172">
 </uxdot-example>
 
 #### Typeahead
@@ -146,8 +138,7 @@ options.
   <img src="./search-bar-typeahead.svg"
        alt="Search bar component typeahead"
        width="872"
-       height="240"
->
+       height="240">
 </uxdot-example>
 
 #### Errors
@@ -165,8 +156,7 @@ form field, an error will be displayed.
   <img src="./search-bar-errors.svg"
        alt="Search bar component form field errors"
        width="872"
-       height="359"
->
+       height="359">
 </uxdot-example>
 
 ## Interaction states
@@ -184,8 +174,7 @@ form field, an error will be displayed.
   <img src="./search-bar-interaction-states-link.svg"
        alt="Search bar component interaction state, link"
        width="872"
-       height="36"
->
+       height="36">
 </uxdot-example>
 
 #### Hover
@@ -196,8 +185,7 @@ A blue line appears at the bottom of the form field indicating it is selectable.
   <img src="./search-bar-interaction-states-hover.svg"
        alt="Search bar component interaction state, hover"
        width="872"
-       height="42"
->
+       height="42">
 </uxdot-example>
 
 #### Focus
@@ -210,8 +198,7 @@ moved away, the placeholder text will be visible again.
   <img src="./search-bar-interaction-states-focus.svg"
        alt="Search bar component interaction state, focus"
        width="872"
-       height="104"
->
+       height="104">
 </uxdot-example>
 
 #### Active
@@ -224,8 +211,7 @@ away, the placeholder text will be visible again.
   <img src="./search-bar-interaction-states-active.svg"
        alt="Search bar component interaction state, active"
        width="872"
-       height="110"
->
+       height="110">
 </uxdot-example>
 
 #### Tab order
@@ -238,8 +224,7 @@ button without an error being displayed.
   <img src="./search-bar-tab-order.svg"
        alt="Search bar component tab order"
        width="872"
-       height="229"
->
+       height="229">
 </uxdot-example>
 
 ## Accessibility
@@ -267,8 +252,7 @@ whereas the button always stays the same size.
   <img src="./search-bar-responsive-desktop.svg"
        alt="Search bar component responsive design, desktop"
        width="1000"
-       height="168"
->
+       height="168">
 </uxdot-example>
 
 #### Tablet
@@ -277,8 +261,7 @@ whereas the button always stays the same size.
   <img src="./search-bar-responsive-tablet.svg"
        alt="Search bar component responsive design, tablet"
        width="768"
-       height="168"
->
+       height="168">
 </uxdot-example>
 
 #### Mobile
@@ -287,8 +270,7 @@ whereas the button always stays the same size.
   <img src="./search-bar-responsive-mobile.svg"
        alt="Search bar component responsive design, mobile"
        width="360"
-       height="100"
->
+       height="100">
 </uxdot-example>
 
 ## Best practices
@@ -302,8 +284,7 @@ Do not write placeholder text too long, it should be short and to the point
   <img src="./search-bar-best-practice-1.svg"
        alt="Search component best practice 1"
        width="872"
-       height="36"
->
+       height="36">
 </uxdot-example>
 
 #### Call to action as button
@@ -314,8 +295,7 @@ Do not replace the button with a call to action.
   <img src="./search-bar-best-practice-2.svg"
        alt="Search component best practice 2"
        width="872"
-       height="56"
->
+       height="56">
 </uxdot-example>
 
 #### Different style or color
@@ -327,8 +307,7 @@ Do not use a different button color or style when using a search bar on Red Hat
   <img src="./search-bar-best-practice-3.svg"
        alt="Search component best practice 3"
        width="872"
-       height="36"
->
+       height="36">
 </uxdot-example>
 
 #### Disabled
@@ -341,8 +320,7 @@ in the form field, an error should be displayed instead.
   <img src="./search-bar-best-practice-4.svg"
        alt="Search component best practice 4"
        width="872"
-       height="36"
->
+       height="36">
 </uxdot-example>
 
 #### Solo button
@@ -358,8 +336,7 @@ Avoid using the search button on its own without a form field.
   <img src="./search-bar-best-practice-5.svg"
        alt="Search component best practice 5"
        width="81"
-       height="36"
->
+       height="36">
 </uxdot-example>
 
 #### Rearranging the component
@@ -371,8 +348,7 @@ changing its width.
   <img src="./search-bar-best-practice-6.svg"
        alt="Search component best practice 6"
        width="360"
-       height="88"
->
+       height="88">
 </uxdot-example>
 
 ## Spacing
@@ -384,8 +360,7 @@ between elements.
   <img src="./search-bar-spacing.svg"
        alt="Search bar spacing"
        width="872"
-       height="36"
->
+       height="36">
 </uxdot-example>
 
 <uxdot-spacer-tokens-table tokens="sm,md,lg"></uxdot-spacer-tokens-table>

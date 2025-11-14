@@ -103,8 +103,7 @@ When writing alternative text, it’s important to first consider the image’s 
   <img src="/assets/accessibility/Its_A_Wonderful_Life.avif"
       alt="George Bailey hugs his wife, Mary, and holds his daughter, Zuzu, in the movie It's a Wonderful Life"
       width="720"
-      height="540"
->
+      height="540">
 </uxdot-example>
 
 Depending on whether a web page is about the plot of the 1946 movie It’s a Wonderful Life or about the actor Jimmy Stewart, the above image could have very different alt text. For the first case, the image’s alt text could be `“George Bailey hugs his wife, Mary, and holds his daughter, Zuzu.”` For the second, the alt text could be `“Jimmy Stewart returned to acting after the war with It’s a Wonderful Life.”`
@@ -119,8 +118,7 @@ Images acting as buttons or links are functional, and thus serve different purpo
       <img src="/assets/logo-redhat.avif"
         alt="Red Hat homepage"
         width="613"
-        height="145"
->
+        height="145">
     </a>
   </figure>
 </uxdot-example>
@@ -587,8 +585,7 @@ For pages with multilingual content, each element containing a different languag
     <p>
       Colombian author Gabriel García Márquez wrote that we each live three lives: one public, one
       private, and one secret. (Full original quote:
-      <span lang="es"
-        >“Todos los seres humanos tenemos tres vidas: pública, privada y secreta.”</span
+      <span lang="es">“Todos los seres humanos tenemos tres vidas: pública, privada y secreta.”</span
       >)
     </p>
   </body>

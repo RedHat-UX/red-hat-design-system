@@ -33,8 +33,7 @@ styles][alertstyles].
 <img alt="Announcement"
     src="/assets/optimization/announcement.svg"
     width="1000"
-    height="203"
->
+    height="203">
 </uxdot-example>
 
 ## How to use

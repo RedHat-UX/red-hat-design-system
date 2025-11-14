@@ -99,8 +99,7 @@ Google's Chrome and Microsoft's Edge browsers have several accessibility tools b
     <img src="/assets/accessibility/lighthouse-audit.avif"
       alt="Screenshot of a Lighthouse autdit with a score of 100%."
       width="900"
-      height="251"
->
+      height="251">
   </uxdot-example>
 </figure>
 
@@ -119,8 +118,7 @@ Chrome and Edge also have an "Accessibility Pane" that lets users see informatio
     <img src="/assets/accessibility/accessibility-pane.avif"
       alt="Screenshot of the accessibility pane on a ux.redhat.com page with three numbers identifying key features."
       width="893"
-      height="498"
->
+      height="498">
   </uxdot-example>
   <figcaption>
     To view the Accessibility Pane, open DevTools then click:
@@ -139,8 +137,7 @@ Users can optionally check "Enable full-page accessibility tree" to change what'
     <img src="/assets/accessibility/accessibility-tree-view.avif"
       alt="Screenshot showing the rendered page content in the browser on the left and the same content in the accessibility tree view on the right in DevTools"
       width="1167"
-      height="535"
->
+      height="535">
   </uxdot-example>
   <figcaption>
     Inspecting the Alert (left) with the full-page accessibility tree enabled reveals its accessible properties (right).
@@ -162,8 +159,7 @@ One neat feature included within Firefox's accessibility inspector is the abilit
     <img src="/assets/accessibility/firefox-show-tab-order.avif"
       alt="Screenshot of a page with 'Show Tabbing Order' checked. Each tab stop shows its tab stop number inside a pip."
       width="994"
-      height="505"
->
+      height="505">
   </uxdot-example>
   <figcaption>
     A page in Firefox with visually numbered tab stops via the Firefox feature, "Show Tabbing order".
