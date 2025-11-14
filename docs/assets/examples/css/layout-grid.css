@@ -8,8 +8,10 @@
   grid-template-rows: repeat(var(--_rhx-grid-rows), 1fr);
   grid-template-columns: repeat(var(--_rhx-grid-cols), 1fr);
   gap:
-    var(--rhx-grid-column-gap, var(--rhx-grid-gap, var(--_rhx-grid-col-gap, var(--rh-space-lg, 16px))))
-    var(--rhx-grid-row-gap, var(--rhx-grid-gap, var(--_rhx-grid-row-gap, var(--rh-space-lg, 16px))));
+    var(--rhx-grid-column-gap,
+      var(--rhx-grid-gap, var(--_rhx-grid-col-gap, var(--rh-space-lg, 16px)))),
+    var(--rhx-grid-row-gap,
+      var(--rhx-grid-gap, var(--_rhx-grid-row-gap, var(--rh-space-lg, 16px))));
   inline-size: 100%;
 
   &[data-rhx-cols~='2xs:1'] {
