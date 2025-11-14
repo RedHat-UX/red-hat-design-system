@@ -27,12 +27,28 @@ subnav:
   }
 </style>
 
-
 ## Accessing our Figma library
 
-<uxdot-example color-palette="lightest" width-adjustment="60%">
-  <img alt="Figma's Libraries modal showing the Red Hat Design System library is added"
-       src="access-figma-libraries.avif">
+Our Figma library can be accessed by following these steps.
+
+  - In a design file, select the **Assets** tab in the left sidebar next to File
+  - Select the **Libraries** icon to open the libraries window
+  - Under Browse libraries, select **Your organization**
+  - In the search field, type `rhds`
+  - Select the **Add to file** button next to `RHDS component library - vX.X.X` to enable the library
+  - Close the window and you should see our library under **All libraries** in the Assets tab
+  - You are now ready to use RHDS components, patterns, and more
+
+<rh-alert state="warning">
+  <h4 slot="header">Warning</h4>
+  <p>You need a Figma license and a <code>@redhat.com</code> email address in order to access our Figma library.</p>
+</rh-alert>
+
+<uxdot-example variant="full" color-palette="lightest" no-border>
+  <img alt="Screenshot of the manage libraries dialog in Figma with a cursor over the 'Add file' button."
+       src="figma-library-accessing-our-library.avif"
+       width="1140"
+       height="464">
 </uxdot-example>
 
 ### Access for agencies
