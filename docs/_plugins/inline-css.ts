@@ -10,20 +10,13 @@ interface InlineCssPluginOptions {
 
 type NunjucksAsyncCallback = (error: Error | null, result: string) => void;
 
-interface EleventyConfig extends UserConfig {
-  addNunjucksAsyncFilter: (
-    name: string,
-    callback: (filename: string, cb: NunjucksAsyncCallback) => Promise<void>
-  ) => void;
-}
-
 /**
  * An Eleventy plugin to read and inline CSS file contents.
  * @param eleventyConfig - The Eleventy configuration object
  * @param options - Plugin options
  */
 export default function inlineCssPlugin(
-  eleventyConfig: EleventyConfig,
+  eleventyConfig: UserConfig,
   options: InlineCssPluginOptions = {}
 ): void {
   // Set default options
@@ -38,7 +31,12 @@ export default function inlineCssPlugin(
    * Reads a CSS file from the filesystem and returns its contents as a string.
    * This is an async filter, which is best practice for I/O operations.
    */
-  eleventyConfig.addNunjucksAsyncFilter(
+  (eleventyConfig as UserConfig & {
+    addNunjucksAsyncFilter: (
+      name: string,
+      callback: (filename: string, cb: NunjucksAsyncCallback) => Promise<void>
+    ) => void;
+  }).addNunjucksAsyncFilter(
     'inlineCss',
     async (filename: string, callback: NunjucksAsyncCallback): Promise<void> => {
       // Construct the full path to the CSS file
