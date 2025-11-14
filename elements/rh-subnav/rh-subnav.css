@@ -2,11 +2,15 @@
   display: block;
 }
 
+:host([color-palette]) {
+  background-color: var(--rh-color-surface);
+}
+
 [part='container'] {
   display: flex;
 }
 
-[part='links'] {
+#link-container {
   display: flex;
   position: relative;
   bottom: 0;
@@ -34,7 +38,7 @@
 
 ::slotted(a:hover),
 ::slotted(a:active),
-::slotted(a[active]) {
+::slotted(a:is([active], [aria-current='page'])) {
   color: var(--rh-color-text-primary) !important;
 }
 
@@ -44,7 +48,7 @@
 }
 
 ::slotted(a:active):after,
-::slotted(a[active]):after {
+::slotted(a:is([active], [aria-current='page'])):after {
   border-block-end-color: var(--rh-color-accent-brand) !important;
 }
 
@@ -59,6 +63,47 @@
 
 ::slotted(a:visited) {
   color: var(--rh-color-text-primary) !important;
+}
+
+::slotted(rh-navigation-link) {
+  --_navigation-link-display: flex;
+  --_navigation-link-gap: var(--rh-space-xs, 4px);
+  --_navigation-link-align-items: center;
+  --_navigation-link-inline-size: 100%;
+  --_navigation-link-padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+  --_navigation-link-font-size: var(--rh-font-size-body-text-md);
+  --_navigation-link-text-decoration: none;
+  --_navigation-link-text-decoration-style: none;
+  --_navigation-link-text-decoration-line: none;
+  --_navigation-link-color: var(--rh-color-text-primary);
+  --_navigation-link-color-hover: var(--rh-color-text-primary);
+  --_navigation-link-container-display: flex;
+  --_navigation-link-container-align-items: center;
+  --_navigation-link-container-position: relative;
+  --_navigation-link-container-inline-size: 100%;
+  --_navigation-link-focus-outline-offset: -2px;
+
+  position: relative;
+  display: flex;
+}
+
+::slotted(rh-navigation-link):after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  border-block-end: var(--rh-border-width-lg, 3px) solid transparent;
+  pointer-events: none;
+}
+
+::slotted(rh-navigation-link:hover):after {
+  border-block-end-color: var(--rh-color-border-subtle);
+}
+
+::slotted(rh-navigation-link:active):after,
+::slotted(rh-navigation-link[current-page]):after {
+  border-block-end-color: var(--rh-color-brand-red);
 }
 
 button {
@@ -100,6 +145,8 @@ button {
 
 #next,
 #previous {
+  border-block-end: var(--rh-border-width-sm, 1px)  solid  var(--rh-color-border-subtle);
+
   & rh-icon {
     pointer-events: none;
 

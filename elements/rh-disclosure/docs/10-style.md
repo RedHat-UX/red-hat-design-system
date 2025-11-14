@@ -22,6 +22,54 @@ A disclosure is a container that includes a caret icon and a text label, similar
   </figcaption>
 </figure>
 
+## Variants
+
+### Box
+
+The box variant, which is the default style, shows a border around the entire disclosure in all states. A thicker accent border appears on the left when it’s expanded.
+
+<uxdot-example color-palette="lightest">
+  <img alt="Two box variant disclosures. One closed, one open on a light color scheme."
+       src="../disclosure-style-variants-box.svg"
+       width="1012"
+       height="299">
+</uxdot-example>
+
+### Borderless
+
+The borderless disclosure omits the border and uses `--rh-color-interactive-primary-default` for the title text for improved interactive affordance.
+
+<uxdot-example color-palette="lightest">
+  <img alt="Two borderless variant disclosures. One closed, one open on a light color scheme."
+       src="../disclosure-style-variants-borderless.svg"
+       width="1012"
+       height="299">
+</uxdot-example>
+
+## Sizes
+
+The style variants come in both sizes.
+
+### Default
+
+<uxdot-example color-palette="lightest">
+  <img alt="Two default-sized disclosures. The first is the box variant and the second is the borderless variant on a light color scheme."
+       src="../disclosure-style-sizes-default.svg"
+       width="1012"
+       height="299">
+</uxdot-example>
+
+### Compact
+
+The compact size reduces the font size of the title text and amount of padding around it.
+
+<uxdot-example color-palette="lightest">
+  <img alt="Two compact disclosures. The first is the box variant and the second is the borderless variant on a light color scheme."
+       src="../disclosure-style-sizes-compact.svg"
+       width="1012"
+       height="299">
+</uxdot-example>
+
 ## Color scheme
 
 ### Light scheme
@@ -59,19 +107,50 @@ Only one additional disclosure can be nested to help organize content better. If
 
 <uxdot-example color-palette="lightest">
   <img alt="Two open disclosures, each with a nested disclosure. The top nested disclosure is closed while the bottom is open."
-       src="../disclosure-style-configuration-nested-disclosure.svg"
+       src="../disclosure-style-configuration-nested.svg"
        width="1012"
        height="769">
 </uxdot-example>
 
 ## Space
 
-<uxdot-example color-palette="lightest">
-  <img alt="Three disclosures. The top one is closed, the middle one is open, and the bottom one is open with a nested disclosure. There's 16px on the top and bottom of the trigger, 24px on the left and right. There's 24px padding on the open disclosure content."
-       src="../disclosure-style-space.svg"
-       width="1012"
-       height="809">
-</uxdot-example>
+A disclosure’s spacing is affected by whether they are the default or compact size. A box and a borderless disclosure used at the same size have the same spacing.
+
+<figure>
+  <uxdot-example color-palette="lightest">
+    <img alt="A closed default-sized and a closed compact disclosure, each showing the spacing tokens within the disclosure element. The default-sized has 24px spacing on the left and right side and 16px on the top and bottom. The compact version has 16px and 8px respectively."
+         src="../disclosure-style-space-collapsed.svg"
+         width="1012"
+         height="341">
+  </uxdot-example>
+  <figcaption>
+    <p>Spacing when disclosures are collapsed</p>
+  </figcaption>
+</figure>
+
+<figure>
+  <uxdot-example color-palette="lightest">
+    <img alt="An open default-sized and an open compact disclosure, each showing the spacing tokens inside the disclosure panel. The default-sized has 24px spacing on the left, right and bottom with 16px between the summary and the panel. The compact version has 16px on the left, right and top, but keeps the 24px on the bottom."
+         src="../disclosure-style-space-expanded.svg"
+         width="1012"
+         height="341">
+  </uxdot-example>
+  <figcaption>
+    <p>Spacing when disclosures are expanded</p>
+  </figcaption>
+</figure>
+
+<figure>
+  <uxdot-example color-palette="lightest">
+    <img alt="An open default-sized and an open compact disclosure, each showing the spacing tokens around the nested disclosure inside the panel. The default-sized has 24px on the left, right and bottom. The compact has 16px on the left and right with 24px on the bottom."
+         src="../disclosure-style-space-expanded.svg"
+         width="1012"
+         height="341">
+  </uxdot-example>
+  <figcaption>
+    <p>Spacing when disclosures are nested</p>
+  </figcaption>
+</figure>
 
 ## Interaction states
 
@@ -92,14 +171,6 @@ The entire trigger button surface changes color on hover.
        width="1012"
        height="315">
 </uxdot-example>
-
-<rh-table>
-
-| Property                     | Light Scheme                 | Dark Scheme               |
-|------------------------------|------------------------------|---------------------------|
-| Trigger button surface color | `--rh-color-surface-lighter` | `--rh-color-surface-dark` |
-
-</rh-table>
 
 ### Focus and Active
 

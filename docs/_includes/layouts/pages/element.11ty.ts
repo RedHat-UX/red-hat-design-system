@@ -3,7 +3,7 @@ import type * as CEM from 'custom-elements-manifest';
 
 import { tokens } from '@rhds/tokens/meta.js';
 import { join } from 'node:path';
-import { readFile } from 'node:fs/promises';
+import { readFile, access } from 'node:fs/promises';
 import { capitalize, copyCell, dedent, getTokenHref } from '#11ty-plugins/tokensHelpers.js';
 import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
 import { AssetCache } from '@11ty/eleventy-fetch';
@@ -410,9 +410,17 @@ export default class ElementsPage extends Renderer<Context> {
               <tbody>
                 ${(await Promise.all(slots.map(async slot => html`
                 <tr>
-                  <td><code>${slot.name}</code></td>
+                  <td><uxdot-copy-permalink>
+                    <span id="${tagName}-slots-${this.slugify(slot.name)}">
+                      <a href="#${tagName}-slots-${this.slugify(slot.name)}">
+                        <code>${slot.name === '' ? '[default]' : slot.name}</code>
+                      </a>
+                    </span>
+                  </uxdot-copy-permalink></td>
                   <td>${await this.#innerMD(slot.summary)}</td>
-                  <td>${await this.#innerMD(slot.description)}</td>
+                  <td>
+                   ${slot.name === '' ? await this.#innerMD(`${slot.description} <br><span style="font-size: var(--rh-font-size-body-text-md);"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span>`) : await this.#innerMD(slot.description)}
+                  </td>
                 </tr>`))).join('')}
               </tbody>
             </table>
@@ -474,7 +482,15 @@ export default class ElementsPage extends Renderer<Context> {
               <tbody>
                 ${(await Promise.all(attributes.map(async attribute => html`
                 <tr>
-                  <td><code>${attribute.name}</code></td>
+                  <td>
+                    <uxdot-copy-permalink>
+                      <span id="${tagName}-attributes-${this.slugify(attribute.name)}">
+                        <a href="#${tagName}-attributes-${this.slugify(attribute.name)}">
+                          <code>${attribute.name}</code>
+                        </a>
+                      </span>
+                    </uxdot-copy-permalink>
+                  </td>
                   <td><code>${attribute.fieldName}</code></td>
                   <td>${await this.#innerMD(attribute.description)}</td>
                   <td class="type">${this.highlight('ts', attribute?.type?.text ?? 'unknown').replace(/\s+/g, ' ')}</td>
@@ -543,7 +559,15 @@ export default class ElementsPage extends Renderer<Context> {
               <tbody>
                 ${(await Promise.all(methods.map(async method => html`
                 <tr>
-                  <td><code>${method.name}(${stringifyParams(method)})</code></td>
+                  <td>
+                    <uxdot-copy-permalink>
+                      <span id="${tagName}-methods-${this.slugify(method.name)}">
+                        <a href="#${tagName}-methods-${this.slugify(method.name)}">
+                          <code>${method.name}(${stringifyParams(method)})</code>
+                        </a>
+                      </span>
+                    </uxdot-copy-permalink>
+                  </td>
                   <td>${await this.#innerMD(method.description)}</td>
                 </tr>`))).join('')}
               </tbody>
@@ -603,7 +627,15 @@ export default class ElementsPage extends Renderer<Context> {
               <tbody>
                 ${(await Promise.all(events.map(async event => html`
                 <tr>
-                  <td><code>${event.name}</code></td>
+                  <td>
+                    <uxdot-copy-permalink>
+                      <span id="${tagName}-events-${this.slugify(event.name)}">
+                        <a href="#${tagName}-events-${this.slugify(event.name)}">
+                          <code>${event.name}</code>
+                        </a>
+                      </span>
+                    </uxdot-copy-permalink>
+                  </td>
                   <td>${await this.#innerMD(event.description)}</td>
                 </tr>`))).join('')}
               </tbody>
@@ -664,7 +696,15 @@ export default class ElementsPage extends Renderer<Context> {
               <tbody>
                 ${(await Promise.all(parts.map(async part => html`
                 <tr>
-                  <td><code>${part.name}</code></td>
+                  <td>
+                    <uxdot-copy-permalink>
+                      <span id="${tagName}-css-parts-${this.slugify(part.name)}">
+                        <a href="#${tagName}-css-parts-${this.slugify(part.name)}">
+                          <code>${part.name}</code>
+                        </a>
+                      </span>
+                    </uxdot-copy-permalink>
+                  </td>
                   <td>${await this.#innerMD(part.summary)}</td>
                   <td>${await this.#innerMD(part.description)}</td>
                 </tr>`))).join('')}
@@ -781,18 +821,20 @@ export default class ElementsPage extends Renderer<Context> {
               <thead>
                 <tr>
                   <th>Token</th>
+                  <th>Summary</th>
                   <th>Copy</th>
                 </tr>
               </thead>
-              <tbody>${designTokens.map(token => html`
+              <tbody>${(await Promise.all(designTokens.map(async token => html`
                 <tr>
                   <td>
                     <a href="${getTokenHref(token)}">
                       <code>${token.name}</code>
                     </a>
                   </td>
+                  <td>${await this.#innerMD(token.summary ?? '')}</td>
                   ${copyCell(token)}
-                </tr>`).join('')}
+                </tr>`))).join('')}
               </tbody>
             </table>
           </rh-table>`}
@@ -823,9 +865,24 @@ export default class ElementsPage extends Renderer<Context> {
       ${(await Promise.all(demos.map(async demo => `
       ${this.#header(demo.filePath?.match(/\/index(\.html|\/)/) ? this.#getPrettyTagName(ctx)
                    : demo.title, 2, `demo-${this.slugify(demo.title)}`)}
+      ${await this.#renderDemoDescription(demo, ctx)}
       ${await this.#renderDemo(demo, ctx)}
       `))).filter(Boolean).join('')}
     `;
+  }
+
+  async #renderDemoDescription(demo: DemoRecord, ctx: Context) {
+    // Use the same logic as the header to determine the demo name
+    const demoName = demo.filePath?.match(/\/index(\.html|\/)/) ? 'index' : demo.title;
+    const demoDescriptionPath = join(process.cwd(), 'elements', ctx.tagName, 'demo', `${this.slugify(demoName)}.md`);
+    // check if the file exists, if it does return the html
+    try {
+      await access(demoDescriptionPath);
+      const demoDescriptionContent = await this.renderFile(demoDescriptionPath, ctx);
+      return html`${demoDescriptionContent}`;
+    } catch {
+      return '';
+    }
   }
 
   async #renderDemo(demo: DemoRecord, ctx: Context, knobs?: string) {
