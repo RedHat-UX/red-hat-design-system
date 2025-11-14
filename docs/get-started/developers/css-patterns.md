@@ -30,13 +30,9 @@ We also have element-specific patterns for extending our design system elements 
 ## Reset
 
 
-<rh-code-block actions="copy" highlighting="prerendered" dedent language="css">
-
-```css
-{%- set cssContent = "./docs/styles/reset.css" | inlineCss -%}{{ cssContent }}
+```css code-block {dedent: true, language: "css", highlighting: "prerendered"}
+{% set cssContent = "./docs/styles/reset.css" | inlineCss %}{{ cssContent | safe }}
 ```
-
-</rh-code-block>
 
 ## Fonts
 
@@ -44,24 +40,24 @@ We also have element-specific patterns for extending our design system elements 
 
 If you are on a `*.redhat.com` domain, you can use our CDN to access the Red Hat fonts:
 
-```html code-block {dedent}
-https://www.redhatstatic.com/dssf-001/v2/@redhat/redhat-font@4.1.0/font.min.css</script>
+```html code-block {dedent: true, language: "css", highlighting: "prerendered"}
+https://www.redhatstatic.com/dssf-001/v2/@redhat/redhat-font@4.1.0/font.min.css
 ```
 
 ### Hosted/bundled assets
 
 Optionally, you can [download the Red Hat fonts](https://github.com/RedHatOfficial/RedHatFont) and include them directly in your project. Below is an example of how you might reference them in CSS:
 
-```css code-block {dedent}
-{%- set cssContent = "./docs/assets/examples/css/fonts.css" | inlineCss -%}{{ cssContent | safe }}
+```css code-block {dedent: true, language: "css", highlighting: "prerendered"}
+{% set cssContent = "./docs/assets/examples/css/fonts.css" | inlineCss %}{{ cssContent | safe }}
 ```
 
 ## Typography
 
 We highly recommend [using our tokens](/get-started/developers/tokens/#how-to-install-tokens) in your project, so that you can take full advantage of their utility throughout your code. Here is an example of how to set typography using our tokens:
 
-```css code-block {dedent}
-{%- set cssContent = "./docs/assets/examples/css/typography.css" | inlineCss -%}{{ cssContent | safe }}
+```css code-block {dedent: true, language: "css", highlighting: "prerendered"}
+{% set cssContent = "./docs/assets/examples/css/typography.css" | inlineCss %}{{ cssContent | safe }}
 ```
 
 ## Layout and grid
@@ -70,13 +66,13 @@ There are a number of ways you can create layouts and grid systems within your a
 
 ### CSS-based grid layout
 
-```css code-block {dedent}
-{%- set cssContent = "./docs/assets/examples/css/layout-grid.css" | inlineCss -%}{{ cssContent | safe }}
+```css code-block {dedent: true, language: "css", highlighting: "prerendered"}
+{% set cssContent = "./docs/assets/examples/css/layout-grid.css" | inlineCss %}{{ cssContent | safe }}
 ```
 
 ### Experimental RHX Grid
 
-If you'd prefer using a Web Component for layout and grid purposes, we have an experimental `<rhx-grid>` element available. You can install it using one of two ways:
+If you'd prefer using a Web Component for layout and grid purposes, we have an experimental `<rhx-grid>` [element available](https://github.com/RedHat-UX/red-hat-extensions). You can install it using one of two ways:
 
 1. NPM [@rhdx/elements](https://www.npmjs.com/package/@rhdx/elements)
 2. Red Hat CDN
