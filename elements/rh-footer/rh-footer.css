@@ -10,6 +10,15 @@
   color-scheme: only dark !important;
 }
 
+/* Should only be applied if scripting is disabled */
+@media (scripting: none) {
+  :host {
+    /** Minimum height for the footer when JavaScript is disabled
+      * @deprecated  target `rh-footer:not(:defined) directly */
+    min-height: var(--rh-footer-nojs-min-height);
+  }
+}
+
 :host,
 ::slotted(rh-footer-universal) {
   --_fallback-animation: nothing-doing !important;

@@ -1,7 +1,7 @@
 :host {
   display: block;
   position: relative;
-  width: max-content;
+  width: 100%;
 }
 
 a {
@@ -24,6 +24,8 @@ a {
       calc(var(--rh-space-lg, 16px) + var(--_padding-inline-start, 0px))
       var(--rh-space-lg, 16px);
     border-inline-start: var(--_bdr);
+
+    /** max-width for each vertical jump link */
     max-width: var(--rh-jump-link-max-width, calc(var(--rh-length-md, 8px) * 40));
   }
 

@@ -48,20 +48,8 @@ function getBestGuessAccessibleContent(node: Node): string {
  *
  * @summary Reveals a small area of information on hover
  *
- * @slot - Place invoking element here,
- *         i.e. the element which when hovered the tooltip will display.
- *         Must be inline content.
- * @slot content - Place tooltip content here. Overrides the `content` attribute.
+ * @alias tooltip
  *
- * @cssprop {<length>} [--rh-tooltip-arrow-size=11px]
- * @cssprop {<color>} [--rh-tooltip-content-background-color=#ffffff]
- * @cssprop {<color>} [--rh-tooltip-content-color=#151515]
- * @cssprop {<length>} [--rh-tooltip-max-width=18.75rem]
- * @cssprop {<length>} [--rh-tooltip-content-padding-block-start=16px]
- * @cssprop {<length>} [--rh-tooltip-content-padding-inline-end=16px]
- * @cssprop {<length>} [--rh-tooltip-content-padding-block-end=16px]
- * @cssprop {<length>} [--rh-tooltip-content-padding-inline-start=16px]
- * @cssprop {<absolute-size> | <relative-size> | <length> | <percentage>} [--rh-tooltip-content-font-size=0.875rem]
  */
 @customElement('rh-tooltip')
 @themable
@@ -111,6 +99,9 @@ export class RhTooltip extends LitElement {
   /** Tooltip content. Overridden by the content slot */
   @property() content?: string;
 
+  /** When true, disables screen reader announcements for tooltip content. Only use when another accessible label is provided. */
+  @property({ type: Boolean, reflect: true }) silent = false;
+
   #float = new FloatingDOMController(this, {
     content: (): HTMLElement | undefined | null => this.shadowRoot?.querySelector('#tooltip'),
   });
@@ -158,9 +149,15 @@ export class RhTooltip extends LitElement {
                                [anchor]: !!anchor,
                                [alignment]: !!alignment })}">
         <div id="invoker">
+          <!--
+            Place invoking element here,
+            i.e. the element which when hovered the tooltip will display.
+            Must be inline content.
+          -->
           <slot id="invoker-slot"></slot>
         </div>
         <div id="tooltip" role="status" class="${classMap({ dark, light })}">
+          <!-- Place tooltip content here. Overrides the \`content\` attribute. -->
           <slot id="content" name="content">${this.content}</slot>
         </div>
       </div>
@@ -177,13 +174,17 @@ export class RhTooltip extends LitElement {
       : { mainAxis: 15, alignmentAxis: -4 };
     await this.#float.show({ offset, placement });
     this.#initialized ||= true;
-    RhTooltip.announce(this.#content);
+    if (!this.silent) {
+      RhTooltip.announce(this.#content);
+    }
   }
 
   /** Hide the tooltip */
   async hide() {
     await this.#float.hide();
-    RhTooltip.announcer.innerText = '';
+    if (!this.silent) {
+      RhTooltip.announcer.innerText = '';
+    }
   }
 
   #onKeydown = (event: KeyboardEvent): void => {

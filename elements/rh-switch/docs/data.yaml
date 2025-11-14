@@ -1,0 +1,13 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-switch
+name: Switch
+type: element
+overallStatus: new
+libraries:
+  figma: ready
+  rhds: ready
+  shared: planned
+  docs: ready
+relatedItems:
+  - rh-button
+  - form

@@ -1,0 +1,30 @@
+<rh-progress-stepper>
+  <rh-progress-step state="complete"
+                    href="#"
+                    description="This step has been completed successfully">
+    Complete Step
+  </rh-progress-step>
+  <rh-progress-step state="warn"
+                    href="#"
+                    description="This step has a warning that needs attention">
+    Warning Step
+  </rh-progress-step>
+  <rh-progress-step state="fail"
+                    href="#"
+                    description="This step has failed and needs to be retried">
+    Failed Step
+  </rh-progress-step>
+  <rh-progress-step state="active"
+                    href="#"
+                    description="Currently working on this step">
+    Active Step
+  </rh-progress-step>
+  <rh-progress-step href="#"
+                    description="This step is not yet started">
+    Inactive Step
+  </rh-progress-step>
+</rh-progress-stepper>
+
+<script type="module">
+  import '@rhds/elements/rh-progress-stepper/rh-progress-stepper.js';
+</script>

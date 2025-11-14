@@ -12,11 +12,10 @@ import styles from './rh-avatar.css';
 
 /**
  * An avatar is a small thumbnail representation of a user.
+ *
  * @summary Visually represents a user in a masthead or navigation
- * @slot                                       - The subject's name
- * @slot subtitle                              - auxiliary information about the subject, e.g. job title
- * @cssprop {<color>+} --rh-avatar-colors      - List of colors to use when generating avatars
- * @cssprop {<length>} [--rh-avatar-size=64px] - Size of the avatar,
+ *
+ * @alias avatar
  */
 @customElement('rh-avatar')
 @themable
@@ -40,7 +39,7 @@ export class RhAvatar extends LitElement {
   /** The auxiliary information about the user, e.g. job title */
   @property({ reflect: true }) subtitle?: string;
 
-  /** The type of pattern to display. */
+  /** Places avatar on the left or on top of the text. */
   @property({ reflect: true }) layout?: 'inline' | 'block';
 
   /** The type of pattern to display. */
@@ -48,6 +47,9 @@ export class RhAvatar extends LitElement {
 
   /** When true, hides the title and subtitle */
   @property({ reflect: true, type: Boolean }) plain = false;
+
+  /** Adds a subtle border to the avatar image */
+  @property({ reflect: true }) variant?: 'bordered';
 
   #style?: CSSStyleDeclaration;
 
@@ -81,8 +83,11 @@ export class RhAvatar extends LitElement {
     const { mobile } = this.#screen;
     return html`
       <div id="container" class="${classMap({ mobile })}">${this.pattern ? html`
+        <!-- Target the canvas element -->
         <canvas part="canvas"></canvas>` : this.src ? html`
+        <!-- Targets the img or svg element -->
         <img src="${this.src}" role="presentation" part="img">` : html`
+        <!-- Targets the img or svg element -->
         <svg xmlns="http://www.w3.org/2000/svg" style="enable-background:new 0 0 36 36" viewBox="0 0 36 36" role="presentation" part="img" id="default">
           <path d="M0 0h36v36H0z" class="st1"/><path d="M17.7 20.1c-3.5 0-6.4-2.9-6.4-6.4s2.9-6.4 6.4-6.4 6.4 2.9 6.4 6.4-2.8 6.4-6.4 6.4z" class="st3"/>
           <path d="M13.3 36v-6.7c-2 .4-2.9 1.4-3.1 3.5l-.1 3.2h3.2z" class="st2"/>
@@ -90,7 +95,9 @@ export class RhAvatar extends LitElement {
           <path d="m25.9 36-.1-3.2c-.2-2.1-1.1-3.1-3.1-3.5V36h3.2z" class="st2"/>
         </svg>
         `}
+        <!-- The subject's name -->
         <slot id="title">${this.name}</slot>
+        <!-- auxiliary information about the subject, e.g. job title -->
         <slot id="subtitle" name="subtitle">${this.subtitle}</slot>
       </div>
     `;

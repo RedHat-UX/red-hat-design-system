@@ -22,11 +22,12 @@ export class DisclosureToggleEvent extends Event {
 
 /**
  * A disclosure toggles the visibility of content when triggered.
+ *
  * @summary A disclosure toggles the visibility of content when triggered
- * @slot - Place the content you want to disclose in the default slot. This content is hidden by default.
- * @slot summary - The title of the disclosure
+ *
+ * @alias disclosure
+ *
  * @fires {DisclosureToggleEvent} toggle - Fires when a user opens or closes a disclosure.
- * @csspart caret - The caret icon in the shadow DOM
  */
 @customElement('rh-disclosure')
 @colorPalettes
@@ -67,9 +68,15 @@ export class RhDisclosure extends LitElement {
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
-   * Sets the disclosure to be in its open state
+   * Sets the disclosure to be in its open (expanded) state
    */
   @property({ type: Boolean, reflect: true }) open = false;
+
+  /** Borderless: Removes the outer and left border from the disclosure.
+   * The background is `surface-light`/`surface-dark` when expanded.
+   * Compact: decreases disclosure padding.
+   */
+  @property({ reflect: true }) variant?: 'borderless' | 'compact';
 
   /**
    * Sets the disclosure title via an attribute
@@ -89,10 +96,13 @@ export class RhDisclosure extends LitElement {
           @keydown="${this.#onKeydown}"
           @toggle="${this.#onToggle}">
         <summary>
+          <!-- The caret icon in the shadow DOM -->
           <rh-icon id="caret" set="ui" icon="caret-down"></rh-icon>
+          <!-- The title of the disclosure -->
           <slot name="summary">${this.summary}</slot>
         </summary>
         <div id="details-content">
+          <!-- Place the content you want to disclose in the default slot. This content is hidden by default. -->
           <slot></slot>
         </div>
       </details>

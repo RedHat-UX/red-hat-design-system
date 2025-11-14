@@ -4,6 +4,7 @@ bodyClasses: element-docs
 layout: layouts/pages/has-toc.njk
 order: 2
 ---
+
 <link rel="stylesheet"
       data-helmet
       href="/assets/packages/@rhds/elements/elements/rh-pagination/rh-pagination-lightdom.css">
@@ -25,7 +26,7 @@ order: 2
 </script>
 
 Red Hat Design System comes with a contextual color-theming feature based on
-color schemes (light, dark) and six corresponding color palettes.  Designed to
+color schemes (light, dark) and six corresponding color palettes. Designed to
 respect user's preferences while enabling designer's vision and increasing
 developers' efficiency, theming with RHDS builds upon state-of-the-art web
 standards. Authors and developers who adopt the color palette system can quickly
@@ -37,14 +38,15 @@ cross-property consistency.
 </uxdot-pattern>
 
 ## Color schemes
+
 <a id="backgrounds-and-theme-tokens"></a>
 <a id="backgrounds"></a>
 
-Color schemes (previously referred to as **backgrounds**) are rendering modes 
-for elements that change their foreground and background colors. There are two 
-color schemes: `light` and `dark`, each corresponding to three of the six color 
-palettes. Elements which respond to their color scheme by changing their colors 
-are called **color scheme consumers** (previously referred to as **color context 
+Color schemes (previously referred to as **backgrounds**) are rendering modes
+for elements that change their foreground and background colors. There are two
+color schemes: `light` and `dark`, each corresponding to three of the six color
+palettes. Elements which respond to their color scheme by changing their colors
+are called **color scheme consumers** (previously referred to as **color context
 consumers**).
 
 <div class="surface-grid">
@@ -60,10 +62,11 @@ consumers**).
   </rh-card>
 </div>
 
-Being aware of which elements are rendering in which color scheme is important 
+Being aware of which elements are rendering in which color scheme is important
 to ensure that things like icons, text, and border colors remain legible.
 
 ## Color palettes
+
 <a id="what-are-color-palettes"></a>
 <a id="how-color-palettes-work"></a>
 
@@ -79,7 +82,7 @@ over JavaScript as much as possible. The following explains how the theming
 system works.
 
 <abbr title="red hat design system">RHDS</abbr>' color palette system is an
-*HTML* and *CSS* system with some supporting JavaScript.
+_HTML_ and _CSS_ system with some supporting JavaScript.
 
 <rh-card class="pullquote-card right">
   <rh-blockquote>HTML design systems help teams ship better digital experiences,
@@ -92,12 +95,12 @@ on their current color palette. For example `<rh-surface>`, `<rh-card>`, and
 `<rh-accordion>` can define their own color palette, while `<rh-cta>` and
 `<rh-badge>` cannot.
 
-Elements which have this ability are called **color scheme providers** 
-(previously referred to as **color context providers**). They usually implement 
-a default color palette (e.g. `lightest`). Color scheme providers must also 
-possess an optional `color-palette` attribute. When it is set to one of the six 
-color palette values, any child elements which consume a background type will 
-respond to the change. Setting the `color-palette` attribute will override any 
+Elements which have this ability are called **color scheme providers**
+(previously referred to as **color context providers**). They usually implement
+a default color palette (e.g. `lightest`). Color scheme providers must also
+possess an optional `color-palette` attribute. When it is set to one of the six
+color palette values, any child elements which consume a background type will
+respond to the change. Setting the `color-palette` attribute will override any
 parent's color scheme.
 
 There are six color palettes in RHDS:
@@ -121,17 +124,17 @@ use this HTML:
                full-height="">
 </uxdot-pattern>
 
-Color palettes allow for the creation of different experiences using the same 
-design system. Changing an element's color palette can affect its colors and 
-backgrounds, but usually spacing, typography, layouts, content, and imagery 
+Color palettes allow for the creation of different experiences using the same
+design system. Changing an element's color palette can affect its colors and
+backgrounds, but usually spacing, typography, layouts, content, and imagery
 remain the same.
 
 ### Nested color palettes
 
-Color palette containers can be nested, such that child elements will always 
+Color palette containers can be nested, such that child elements will always
 adopt the color theme corresponding to the nearest container's palette.
 Extending our card example from above, if you add an
-`<rh-cta>` to the card, it will *automatically* adopt the dark color theme. The
+`<rh-cta>` to the card, it will _automatically_ adopt the dark color theme. The
 page author need not and should not customize the CTA's colors.
 
 <uxdot-pattern class="card-snippet-grid"
@@ -163,9 +166,9 @@ it can set its own color palette, and inherit that scheme to it's child elements
 
 <rh-alert>
 
-  Page authors *do not need to and should not* directly customize the
-  colors of consumer elements, but instead should set custom values for [theme
-  tokens][theming].
+Page authors _do not need to and should not_ directly customize the
+colors of consumer elements, but instead should set custom values for [theme
+tokens][theming].
 
 </rh-alert>
 
@@ -217,8 +220,8 @@ light elements and patterns have dark counterparts.
 <rh-alert state="warning">
   <h4 slot="header">Brand red and accessibility</h4>
 
-  Do not apply the Red Hat red color to text in dark environments unless it
-  meets [WCAG 2.1 AA][wcag21aa] requirements.
+Do not apply the Red Hat red color to text in dark environments unless it
+meets [WCAG 2.2 AA][wcag22aa] requirements.
 
 </rh-alert>
 
@@ -242,4 +245,4 @@ creating themable, responsive graphics.
 [contact]: https://github.com/RedHat-UX/red-hat-design-system/discussions
 [artdirection]: /theming/developers/#art-direction
 [theming]: /theming/customizing/
-[wcag21aa]: https://www.w3.org/WAI/WCAG21/Understanding/
+[wcag22aa]: https://www.w3.org/WAI/WCAG22/Understanding/

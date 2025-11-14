@@ -8,17 +8,23 @@
 
 <style>
   .example-title-bar-card {
-    width: 360px;
+    inline-size: 360px;
     --rh-card-header-background-on-light: var(--rh-color-surface-light);
     --rh-card-header-background-on-dark: var(--rh-color-surface-dark);
+  /* Pattern: override heading typography via custom properties */
+    --rh-font-family-heading: var(--rh-font-family-body-text);
+    --rh-card-heading-font-family: var(--rh-font-family-body-text);
+    --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular);
+    --rh-card-heading-font-size: var(--rh-font-size-body-text-md);
+    --rh-line-height-heading: var(--rh-line-height-body-text);
+  font-family: var(--rh-font-family-heading);
+  font-weight: var(--rh-card-heading-font-weight);
+
     &::part(header) {
       margin: 0;
       padding: var(--rh-space-lg) var(--rh-space-2xl);
       flex-direction: row;
       gap: var(--rh-space-lg);
-      font-weight: var(--rh-font-weight-heading-regular);
-      font-size: var(--rh-font-size-body-text-md);
-      font-family: var(--rh-font-family-body-text);
     }
   }
 </style>

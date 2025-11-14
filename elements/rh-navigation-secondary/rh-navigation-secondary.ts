@@ -47,21 +47,16 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
 }
 
 /**
- * The Secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [primary navigation](../navigation-primary).
+ * The secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [primary navigation](../navigation-primary).
+ *
  * @summary Propagates related content across a series of pages
- * @slot logo           - Logo added to the main nav bar, expects `<a>Text</a> | <a><svg/></a> | <a><img/></a>` element
- * @slot nav            - Navigation list added to the main nav bar, expects `<ul>` element
- * @slot cta            - Nav bar level CTA, expects `<rh-cta>` element
- * @slot mobile-menu    - Text label for the mobile menu button, for l10n. Defaults to "Menu"
- * @csspart nav         - container, `<nav>` element
- * @csspart container   - container, `<div>` element
- * @csspart cta         - container, `<div>` element
+ *
+ * @alias Navigation (secondary)
+ *
  * @fires {SecondaryNavOverlayChangeEvent} overlay-change -
  *                                         Fires when an dropdown is opened or closed in desktop
  *                                         view or when the mobile menu button is toggled in mobile
  *                                         view.
- * @cssprop {<integer>} [--rh-navigation-secondary-z-index=102] - z-index of the navigation-secondary
- * @cssprop {<integer>} [--rh-navigation-secondary-overlay-z-index=-1] - z-index of the navigation-secondary-overlay
  */
 @customElement('rh-navigation-secondary')
 @colorPalettes
@@ -179,17 +174,25 @@ export class RhNavigationSecondary extends LitElement {
     // CTA must always be 'lightest' on mobile screens
     const dropdownPalette = this.#compact ? 'lightest' : this.#computedPalette;
     return html`
+      <!-- container, \`<nav>\` element -->
       <div part="nav"
            class="${classMap({ compact: this.#compact })}">
         ${this.#logoCopy}
+        <!-- container, \`<div>\` element -->
         <div id="container" part="container" class="${classMap({ expanded })}">
+          <!-- Logo added to the main nav bar, expects \`<a>Text</a> | <a><svg/></a> | <a><img/></a>\` element -->
           <slot name="logo" id="logo"></slot>
           <button aria-controls="container"
                   aria-expanded="${String(expanded) as 'true' | 'false'}"
-                  @click="${this.#toggleMobileMenu}"><slot name="mobile-menu">Menu</slot></button>
+                  @click="${this.#toggleMobileMenu}"><!--
+            Text label for the mobile menu button, for l10n. Defaults to "Menu"
+          --><slot name="mobile-menu">Menu</slot></button>
           <rh-surface color-palette="${dropdownPalette}">
+            <!-- Navigation list added to the main nav bar, expects \`<ul>\` element -->
             <slot name="nav"></slot>
+            <!-- container, \`<div>\` element -->
             <div id="cta" part="cta">
+              <!-- Nav bar level CTA, expects \`<rh-cta>\` element -->
               <slot name="cta"></slot>
             </div>
           </rh-surface>

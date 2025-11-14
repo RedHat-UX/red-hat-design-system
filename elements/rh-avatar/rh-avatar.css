@@ -11,6 +11,7 @@
   display: grid;
   color: var(--rh-color-text-secondary);
 
+  /** List of colors to use when generating avatars */
   --_colors:
     light-dark(var(--rh-avatar-colors,
       var(--rh-color-blue-30, #92c5f9)
@@ -74,7 +75,6 @@ slot {
 
 ::slotted(a) {
   color: var(--rh-color-interactive-primary-default);
-  text-decoration: none;
 }
 
 ::slotted(a:visited) {
@@ -96,11 +96,17 @@ canvas,
 img,
 svg {
   overflow: hidden;
+
+  /** Size of the avatar, */
   width: var(--rh-avatar-size, var(--rh-size-icon-06, 64px));
   max-width: var(--rh-size-icon-06, 64px);
   aspect-ratio: 1;
   grid-area: a;
   border-radius: var(--rh-border-radius-pill, 64px);
+}
+
+:host([variant='bordered']) :is(canvas, img, svg) {
+  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
 }
 
 :host([plain]) slot {

@@ -165,6 +165,7 @@
       var(--rh-color-green-40, #87bb62));
 
   display: grid;
+  content-visibility: auto;
   place-items: center;
   grid-template-columns: auto min-content;
   grid-template-areas:
@@ -185,10 +186,14 @@
     linear-gradient(var(--_gradient-angle, 0deg),
       var(--_code-background-color) 0%,
       transparent 100%);
-}
 
-#container.expandable {
-  padding-block-end: 0;
+  &.isIntersecting {
+    content-visibility: visible;
+  }
+
+  &.expandable {
+    padding-block-end: 0;
+  }
 }
 
 #sizers,
@@ -348,6 +353,15 @@
   pointer-events: none;
   grid-column: -1/1;
   background: var(--_gradient);
+}
+
+:host([line-numbers='hidden']) #content-lines {
+  grid-template-areas: 'code';
+  grid-template-columns: 1fr;
+}
+
+:host([line-numbers='hidden']) #line-numbers {
+  display: none;
 }
 
 :not(.wrap) #actions:before {

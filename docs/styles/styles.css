@@ -29,20 +29,12 @@
     color: var(--rh-color-text-primary);
   }
 
-  :where(p, ul, ol, dl) {
-    font-size: var(--rh-font-size-body-text-lg);
-  }
-
-  :where(h1, h2, h3, h4, h5, h6) {
-    font-weight: var(--rh-font-weight-heading-medium);
-  }
-
   a {
     color: var(--rh-color-interactive-primary-default);
     text-decoration: underline dashed 1px;
     text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40));
     text-underline-offset: max(5px, 0.28em);
-    transition: ease all 0.3s;
+    transition: ease text-underline-offset 0.3s;
 
     &:hover {
       color: var(--rh-color-interactive-primary-hover);
@@ -87,6 +79,14 @@
     white-space: nowrap;
     border: 0;
   }
+
+  ::selection {
+    background-color:
+      light-dark(
+          var(--rh-color-blue-20, #b9dafc),
+          rgba(from var(--rh-color-blue-40, #4394e5) r g b / 0.5)
+        );
+  }
 }
 
 @layer layout {
@@ -124,7 +124,6 @@
 
   #main {
     grid-area: main;
-    border-inline-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
     container-type: inline-size;
     container-name: main;
     padding-block-start: var(--uxdot-masthead-max-height);
@@ -135,8 +134,15 @@
     padding-block-end: var(--rh-space-lg);
   }
 
+  /**
+    * position masthead as fixed
+    * z-index: to float above scroll page content
+    */
   uxdot-masthead {
     grid-area: header;
+    position: fixed;
+    inset: 0;
+    z-index: var(--uxdot-masthead-z-index);
   }
 
   uxdot-sidenav {
@@ -203,12 +209,12 @@
   }
 
   :where(h1, h2, h3, h4, h5, h6) + :where(h2, h3, h4, h5, h6),
-  /* any where copy-permalink is used as a sibling to another */
   :where(uxdot-copy-permalink + uxdot-copy-permalink) {
     margin-block-start: var(--rh-space-2xl);
   }
 
-  :where(uxdot-copy-permalink, h1, h2, h3 ,h4, h5 ,h6) + uxdot-example {
+  :where(uxdot-copy-permalink, h1, h2, h3 ,h4, h5 ,h6) + uxdot-example,
+  :where(rh-alert) + uxdot-demo {
     margin-block-start: var(--rh-space-lg);
   }
 
@@ -239,18 +245,41 @@
 
   uxdot-example + figcaption,
   figcaption + uxdot-example {
-    margin-block: var(--rh-space-xl);
+    margin-block: var(--rh-space-lg);
+  }
+
+  uxdot-example + figcaption ol,
+  uxdot-example + figcaption p {
+    color: var(--rh-color-text-secondary);
+    font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+    line-height: var(--rh-line-height-body-text, 1.5);
+  }
+
+  uxdot-example + figcaption ol {
+    list-style-position: inside;
+  }
+
+  uxdot-example + figcaption > ol {
+    padding-inline-start: 0;
+  }
+
+  uxdot-example + figcaption > ol li {
+    margin-block: 0;
+  }
+
+  uxdot-example + figcaption > ol ol {
+    margin: 0;
   }
 }
 
 @layer patterns {
   /**
-   * Patterns layer for defining component and site patterns
-   **/
+     * Patterns layer for defining component and site patterns
+     */
 
   /**
-   * KBD and code pattern
-  **/
+     * KBD and code pattern
+     */
 
   :where(code:not([class^='language-'])) {
     padding-inline: var(--rh-space-xs);
@@ -274,7 +303,10 @@
   :where(kbd) {
     --_uxdot-kbd-color-border: var(--rh-color-border-subtle);
 
-    background-color: light-dark(var(--rh-color-surface-lightest), var(--rh-color-surface-darkest));
+    background-color:
+      light-dark(
+          var(--rh-color-surface-lightest),
+          var(--rh-color-surface-darkest));
     color: var(--rh-color-text-primary);
     border-radius: var(--rh-border-radius-default);
     border: var(--rh-border-width-sm) solid var(--_uxdot-kbd-color-border);
@@ -309,20 +341,10 @@
   }
 
   /**
-   * position masthead as fixed
-   * z-index: to float above scroll page content
-  */
-  uxdot-masthead {
-    position: fixed;
-    inset: 0;
-    z-index: var(--uxdot-masthead-z-index);
-  }
-
-  /**
-   * Sticky header pattern
-   * progressive enhancement sticky, using :has()
-   * z-index: of masthead + 1
-   **/
+    * Sticky header pattern
+    * progressive enhancement sticky, using :has()
+    * z-index: of masthead + 1
+    */
   uxdot-header:has(rh-subnav) {
     position: sticky;
     top: -54px; /* masthead height (72px) + subnav height (56px) - header mobile height (182px) */
@@ -351,19 +373,36 @@
    * Overrides layer for overriding component and site styles
    */
 
-  /* TODO: Document this bug table overflows vertically causing a scrollbar when it shouldn't */
-  rh-table {
-    overflow-y: unset;
-  }
-
   /* Compact tile + Uxdot Example reduce overall spacing */
   rh-tile[compact] uxdot-example::part(container) {
     margin-block-end: 0;
   }
 
-  rh-alert p {
-    /* TODO: Document this bug shouldn't have to force the font size
-    the component is trying to set internally on #description */
-    font-size: var(--rh-font-size-body-text-md) !important;
+  rh-alert {
+    & p {
+      /* TODO: Document this bug shouldn't have to force the font size
+      the component is trying to set internally on #description */
+      font-size: var(--rh-font-size-body-text-md) !important;
+    }
+
+    & code {
+      font-size: inherit;
+    }
+  }
+
+  rh-table {
+    /* TODO: Document this bug table overflows vertically causing a scrollbar when it shouldn't */
+    overflow-y: unset;
+
+    /* Hover state for copy permalink button when in a table row */
+    & tr {
+      &:hover {
+        --uxdot-copy-permalink-button-background:
+          light-dark(
+              var(--rh-color-surface-light),
+              var(--rh-color-surface-darker)
+            );
+      }
+    }
   }
 }

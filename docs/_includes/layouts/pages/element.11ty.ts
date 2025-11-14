@@ -1,9 +1,9 @@
 import type { ElementDocsPageData } from '#11ty-plugins/element-docs.js';
-import type { ClassMethod } from 'custom-elements-manifest';
+import type * as CEM from 'custom-elements-manifest';
 
 import { tokens } from '@rhds/tokens/meta.js';
 import { join } from 'node:path';
-import { readFile } from 'node:fs/promises';
+import { readFile, access } from 'node:fs/promises';
 import { capitalize, copyCell, dedent, getTokenHref } from '#11ty-plugins/tokensHelpers.js';
 import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
 import { AssetCache } from '@11ty/eleventy-fetch';
@@ -23,9 +23,13 @@ import { parseFragment } from 'parse5';
 const html = String.raw; // for editor highlighting
 const pfeconfig = getPfeConfig();
 
-function stringifyParams(method: ClassMethod) {
+function stringifyParams(method: CEM.ClassMethod) {
   return method.parameters?.map?.(p =>
     `${p.name}: ${p.type?.text ?? 'unknown'}`).join(', ') ?? '';
+}
+
+function getDeprecationReason(deprecatable: { deprecated?: true | string }): string {
+  return deprecatable.deprecated === true ? '' : deprecatable.deprecated ?? '';
 }
 
 interface EleventyPageRenderData {
@@ -43,6 +47,18 @@ interface Context extends EleventyPageRenderData {
   tagName: string;
   isLocal: boolean;
   importMap: { imports: Record<string, string>; scopes: Record<string, Record<string, string>> };
+  repoStatusData: Record<string, any>; // todo: type this
+}
+
+const [manifest] = getAllManifests();
+
+class NoElementInDemoError extends Error {
+  constructor(
+    public tagName: string,
+    public filePath: string,
+  ) {
+    super(`ENOTAG: ${filePath} does not contain ${tagName}`);
+  }
 }
 
 export default class ElementsPage extends Renderer<Context> {
@@ -62,7 +78,8 @@ export default class ElementsPage extends Renderer<Context> {
   static demoManifestsForTagNames =
     Object.groupBy(getAllManifests()
         .flatMap(manifest => manifest.getTagNames()
-            .flatMap(tagName => manifest.getDemoMetadata(tagName, getPfeConfig()))),
+            .flatMap(tagName => manifest.getDemoMetadata(tagName, getPfeConfig())
+                .filter(x => x.filePath?.includes(tagName)))),
                    x => x.primaryElementName);
 
   async render(ctx: Context) {
@@ -106,6 +123,7 @@ export default class ElementsPage extends Renderer<Context> {
         import '@rhds/elements/rh-accordion/rh-accordion.js';
         import '@rhds/elements/rh-badge/rh-badge.js';
         import '@rhds/elements/rh-tag/rh-tag.js';
+        import '@patternfly/elements/pf-select/pf-select.js';
       </script>
 
       ${planned ? '' : html`
@@ -135,7 +153,7 @@ export default class ElementsPage extends Renderer<Context> {
 
   async #getMainDemoContent(tagName: string) {
     try {
-      const demoPath = join(process.cwd(), 'elements', tagName, 'demo', `${tagName}.html`);
+      const demoPath = join(process.cwd(), 'elements', tagName, 'demo', `index.html`);
       const demoContent = await readFile(demoPath, 'utf8');
       return html`
         <rh-code-block actions="wrap copy" highlighting="prerendered">
@@ -158,6 +176,15 @@ export default class ElementsPage extends Renderer<Context> {
     return readFile(svgPath, 'utf8');
   }
 
+  #getPrettyTagName(ctx: Context) {
+    return capitalize(this.deslugify(ctx.doc.alias ?? ctx.doc.slug));
+  }
+
+  #getElementStatus(ctx: Context, tagName: string) {
+    const allStatus = ctx.repoStatusData || [];
+    return allStatus.find((x: any) => x.tagName === tagName);
+  }
+
   #header(text: string, level = 2, id = this.slugify(text)) {
     return html`
       <uxdot-copy-permalink class="h${level}">
@@ -174,18 +201,77 @@ export default class ElementsPage extends Renderer<Context> {
       <p>This element is currently in progress and not yet available for use.</p>`}
       ${this.#header('Overview')}
       ${await this.renderTemplate(description, 'md')}
-      ${!ctx.doc.overviewImageHref ? ''
+      ${!ctx.doc.overviewImageHref ? await this.#renderKnobs(ctx)
        : ctx.doc.overviewImageHref.endsWith('svg') ? html`
       <uxdot-example>${await this.#getOverviewInlineSvg(ctx)}</uxdot-example>
       ` : html`
       <uxdot-example color-palette="lightest"><img src="${ctx.doc.overviewImageHref}" alt="" aria-labelledby="overview-image-description"></uxdot-example>`}
       ${this.#header('Status')}
-      <uxdot-repo-status-list element="${ctx.tagName}"></uxdot-repo-status-list>
-      ${this.#header('Sample element')}
-      ${ctx.doc.mainDemoContent}
+      <uxdot-repo-status-list 
+        figma-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.figma || ''}"
+        rhds-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.rhds || ''}"
+        shared-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.shared || ''}"></uxdot-repo-status-list>
       ${content}
       ${this.#header('Status checklist')}
-      <uxdot-repo-status-checklist element="${ctx.tagName}"></uxdot-repo-status-checklist>
+      <uxdot-repo-status-checklist 
+        figma-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.figma || ''}"
+        rhds-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.rhds || ''}"
+        shared-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.shared || ''}"></uxdot-repo-status-checklist>
+    `;
+  }
+
+  async #renderKnobs(ctx: Context) {
+    // set up an iframe
+    // inject a script which receives messages from the parent
+    // render knobs based on cem - these are ces, one element per field type
+    // e.g. uxdot-knob-attribute
+    //      uxdot-knob-slot
+    //      uxdot-knob-event (read only), etc
+    //
+    const tagName = ctx.tagName as `rh-${string}`;
+    const [demo] = ElementsPage.demoManifestsForTagNames[tagName] ?? [];
+    if (!demo?.filePath) {
+      return '';
+    };
+    const attributes = manifest.getAttributes(tagName) ?? [];
+    const content = await readFile(demo.filePath, 'utf-8');
+    const fragment = parseFragment(content);
+    const isOurNode = (node: Tools.Node) =>
+      Tools.isElementNode(node) && node.tagName === ctx.tagName;
+    const elementNode: Tools.Element | null =
+      Tools.query(fragment, isOurNode);
+    if (!elementNode) {
+      const templatedElementNode =
+        Tools.queryAll(fragment, node => Tools.isTemplateNode(node)
+          && !!Tools.query(node.content, isOurNode));
+      if (!templatedElementNode) {
+        throw new NoElementInDemoError(
+          ctx.tagName,
+          demo.filePath,
+        );
+      }
+    }
+
+
+    return html`
+      <script type="module" data-helmet>
+        import '@uxdot/elements/uxdot-demo.js';
+        import '@uxdot/elements/uxdot-knob-attribute.js';
+      </script>
+      ${await this.#renderDemo(demo, ctx, (await Promise.all(attributes.map(async attr => {
+        const type = attr.type?.text?.replaceAll('"', '\\"');
+        const description =
+            !attr.description ? ''
+          : await this.renderTemplate(attr.description, 'md');
+        return html`
+          <uxdot-knob-attribute slot="knobs"
+                                tag="${ctx.tagName}"
+                                name="${attr.name}"${!type ? '' : html`
+                                type="${type}"`}${!attr.default ? '' : html`
+                                default="${attr.default}"`}>
+            <div slot="description">${description}</div>
+          </uxdot-knob-attribute>`;
+        }))).join(''))}
     `;
   }
 
@@ -212,7 +298,6 @@ export default class ElementsPage extends Renderer<Context> {
       await this.#renderLightdom(ctx),
       this.#header('Usage'),
       await this.#getMainDemoContent(tagName),
-      doc.fileExists && await this.renderFile(doc.filePath, ctx),
       await this.#renderCodeDocs.call(this,
                                       doc.docsPage.tagName,
                                       { ...ctx, level: (ctx.level ?? 1) + 1 }),
@@ -318,41 +403,51 @@ export default class ElementsPage extends Renderer<Context> {
               <thead>
                 <tr>
                   <th scope="col">Slot Name</th>
+                  <th scope="col">Summary</th>
                   <th scope="col">Description</th>
                 </tr>
               </thead>
               <tbody>
                 ${(await Promise.all(slots.map(async slot => html`
                 <tr>
-                  <td><code>${slot.name}</code></td>
-                  <td>${await this.#innerMD(slot.description)}</td>
+                  <td><uxdot-copy-permalink>
+                    <span id="${tagName}-slots-${this.slugify(slot.name)}">
+                      <a href="#${tagName}-slots-${this.slugify(slot.name)}">
+                        <code>${slot.name === '' ? '[default]' : slot.name}</code>
+                      </a>
+                    </span>
+                  </uxdot-copy-permalink></td>
+                  <td>${await this.#innerMD(slot.summary)}</td>
+                  <td>
+                   ${slot.name === '' ? await this.#innerMD(`${slot.description} <br><span style="font-size: var(--rh-font-size-body-text-md);"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span>`) : await this.#innerMD(slot.description)}
+                  </td>
                 </tr>`))).join('')}
               </tbody>
             </table>
-          </rh-table>`}${!deprecated.length ? '' : html`
-          <details>
-            <summary><h${level + 1}>Deprecated Slots</h${level + 1}></summary>
+          </rh-table>`}${!deprecated.length ? '' : /* NB: we need to use our own stuff. don't replace with details */ html`
+          <rh-disclosure summary="Deprecated Slots">
             <rh-table>
               <table>
                 <thead>
                   <tr>
                     <th scope="col">Slot Name</th>
+                    <th scope="col">Summary</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Reason</th>
                   </tr>
                 </thead>
                 <tbody>
                   ${(await Promise.all(deprecated.map(async slot => html`
                   <tr>
                     <td><code>${slot.name}</code></td>
-                    <td>
-                      ${await this.#innerMD(slot.description)}
-                      <em>Note: ${slot.name} is deprecated. ${await this.#innerMD(String(slot.deprecated ?? ''))}</em>
-                    </td>
+                    <td>${await this.#innerMD(slot.summary)}</td>
+                    <td>${await this.#innerMD(slot.description)}</td>
+                    <td>${await this.#innerMD(getDeprecationReason(slot))}</td>
                   </tr>`))).join('')}
                 </tbody>
               </table>
             </rh-table>
-          </details>`}
+          </rh-disclosure>`}
         </section>
       </rh-accordion-panel>`;
   }
@@ -387,7 +482,15 @@ export default class ElementsPage extends Renderer<Context> {
               <tbody>
                 ${(await Promise.all(attributes.map(async attribute => html`
                 <tr>
-                  <td><code>${attribute.name}</code></td>
+                  <td>
+                    <uxdot-copy-permalink>
+                      <span id="${tagName}-attributes-${this.slugify(attribute.name)}">
+                        <a href="#${tagName}-attributes-${this.slugify(attribute.name)}">
+                          <code>${attribute.name}</code>
+                        </a>
+                      </span>
+                    </uxdot-copy-permalink>
+                  </td>
                   <td><code>${attribute.fieldName}</code></td>
                   <td>${await this.#innerMD(attribute.description)}</td>
                   <td class="type">${this.highlight('ts', attribute?.type?.text ?? 'unknown').replace(/\s+/g, ' ')}</td>
@@ -396,9 +499,8 @@ export default class ElementsPage extends Renderer<Context> {
               </tbody>
             </table>
           </rh-table>`}
-          ${!deprecated.length ? '' : html`
-          <details>
-            <summary><h${level + 1}>Deprecated Attributes<h${level + 1}></summary>
+          ${!deprecated.length ? '' : /* NB: we need to use our own stuff. don't replace with details */ html`
+          <rh-disclosure summary="Deprecated Attributes">
             <rh-table>
               <table>
                 <thead>
@@ -422,7 +524,7 @@ export default class ElementsPage extends Renderer<Context> {
                 </tbody>
               </table>
             </rh-table>
-          </details>`}
+          </rh-disclosure>`}
         </section>
       </rh-accordion-panel>
     `;
@@ -457,35 +559,41 @@ export default class ElementsPage extends Renderer<Context> {
               <tbody>
                 ${(await Promise.all(methods.map(async method => html`
                 <tr>
-                  <td><code>${method.name}(${stringifyParams(method)})</code></td>
+                  <td>
+                    <uxdot-copy-permalink>
+                      <span id="${tagName}-methods-${this.slugify(method.name)}">
+                        <a href="#${tagName}-methods-${this.slugify(method.name)}">
+                          <code>${method.name}(${stringifyParams(method)})</code>
+                        </a>
+                      </span>
+                    </uxdot-copy-permalink>
+                  </td>
                   <td>${await this.#innerMD(method.description)}</td>
                 </tr>`))).join('')}
               </tbody>
             </table>
-          </rh-table>`}${!deprecated.length ? '' : html`
-          <details>
-            <summary><h${level + 1}>Deprecated Methods</h${level + 1}></summary>
+          </rh-table>`}${!deprecated.length ? '' : /* NB: we need to use our own stuff. don't replace with details */ html`
+          <rh-disclosure summary="Deprecated Methods">
             <rh-table>
               <table>
                 <thead>
                   <tr>
                     <th scope="col">Method Name</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Reason</th>
                   </tr>
                 </thead>
                 <tbody>
                   ${(await Promise.all(deprecated.map(async method => html`
                   <tr>
                     <td><code>${method.name}(${stringifyParams(method)})</code></td>
-                    <td>
-                      ${await this.#innerMD(method.description)}
-                      <em>Note: ${method.name} is deprecated. ${await this.#innerMD((method.deprecated ?? '').toString())}</em>
-                    </td>
+                    <td>${await this.#innerMD(method.description)}</td>
+                    <td>${await this.#innerMD(getDeprecationReason(method))}</td>
                   </tr>`))).join('')}
                 </tbody>
               </table>
             </rh-table>
-          </details>`}
+          </rh-disclosure>`}
         </section>
       </rh-accordion-panel>
     `;
@@ -519,35 +627,41 @@ export default class ElementsPage extends Renderer<Context> {
               <tbody>
                 ${(await Promise.all(events.map(async event => html`
                 <tr>
-                  <td><code>${event.name}</code></td>
+                  <td>
+                    <uxdot-copy-permalink>
+                      <span id="${tagName}-events-${this.slugify(event.name)}">
+                        <a href="#${tagName}-events-${this.slugify(event.name)}">
+                          <code>${event.name}</code>
+                        </a>
+                      </span>
+                    </uxdot-copy-permalink>
+                  </td>
                   <td>${await this.#innerMD(event.description)}</td>
                 </tr>`))).join('')}
               </tbody>
             </table>
-          </rh-table>`}${!deprecated.length ? '' : html`
-          <details>
-            <summary><h${level + 1}>Deprecated Events</h${level + 1}></summary>
+          </rh-table>`}${!deprecated.length ? '' : /* NB: we need to use our own stuff. don't replace with details */ html`
+          <rh-disclosure summary="Deprecated Events">
             <rh-table>
               <table>
                 <thead>
                   <tr>
                     <th scope="col">Event Name</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Reason</th>
                   </tr>
                 </thead>
                 <tbody>
                   ${(await Promise.all(deprecated.map(async event => html`
                   <tr>
                     <td><code>${event.name}</code></td>
-                    <td>
-                      ${await this.#innerMD(event.description)}
-                      <em>Note: ${event.name} is deprecated. ${await this.#innerMD((event.deprecated ?? '').toString())}</em>
-                    </td>
+                    <td>${await this.#innerMD(event.description)}</td>
+                    <td>${await this.#innerMD(getDeprecationReason(event))}</td>
                   </tr>`))).join('')}
                 </tbody>
               </table>
             </rh-table>
-          </details>`}
+          </rh-disclosure>`}
         </section>
       </rh-accordion-panel>
     `;
@@ -575,41 +689,51 @@ export default class ElementsPage extends Renderer<Context> {
               <thead>
                 <tr>
                   <th scope="col">Part Name</th>
+                  <th scope="col">Summary</th>
                   <th scope="col">Description</th>
                 </tr>
               </thead>
               <tbody>
                 ${(await Promise.all(parts.map(async part => html`
                 <tr>
-                  <td><code>${part.name}</code></td>
+                  <td>
+                    <uxdot-copy-permalink>
+                      <span id="${tagName}-css-parts-${this.slugify(part.name)}">
+                        <a href="#${tagName}-css-parts-${this.slugify(part.name)}">
+                          <code>${part.name}</code>
+                        </a>
+                      </span>
+                    </uxdot-copy-permalink>
+                  </td>
+                  <td>${await this.#innerMD(part.summary)}</td>
                   <td>${await this.#innerMD(part.description)}</td>
                 </tr>`))).join('')}
               </tbody>
             </table>
-          </rh-table>`}${!deprecated.length ? '' : html`
-          <details>
-            <summary><h${level + 1}>Deprecated CSS Shadow Parts</h${level + 1}></summary>
+          </rh-table>`}${!deprecated.length ? '' : /* NB: we need to use our own stuff. don't replace with details */ html`
+          <rh-disclosure summary="Deprecated CSS Shadow Parts">
             <rh-table>
               <table>
                 <thead>
                   <tr>
                     <th scope="col">Part Name</th>
+                    <th scope="col">Summary</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Reason</th>
                   </tr>
                 </thead>
                 <tbody>
                   ${(await Promise.all(deprecated.map(async part => html`
                   <tr>
                     <td><code>${part.name}</code></td>
-                    <td>
-                      ${await this.#innerMD(part.description)}
-                      <em>Note: ${part.name} is deprecated. ${await this.#innerMD((part.deprecated ?? '').toString())}</em>
-                    </td>
+                    <td>${await this.#innerMD(part.summary)}</td>
+                    <td>${await this.#innerMD(part.description)}</td>
+                    <td>${await this.#innerMD(getDeprecationReason(part))}</td>
                   </tr>`))).join('')}
                 </tbody>
               </table>
             </rh-table>
-          </details>`}
+          </rh-disclosure>`}
         </section>
       </rh-accordion-panel>
     `;
@@ -620,7 +744,7 @@ export default class ElementsPage extends Renderer<Context> {
     const allCssProperties = (ctx.doc.docsPage.manifest.getCssCustomProperties(tagName) ?? [])
         .filter(x => !tokens.has(x.name));
     const cssProperties = allCssProperties.filter(x => !x.deprecated);
-    const deprecated = allCssProperties.filter(x => x.deprecated);
+    const deprecated = allCssProperties.filter(x => x.deprecated != null);
     const count = cssProperties.length;
     const deprecatedCssPropertiesCount = deprecated.length;
 
@@ -652,16 +776,16 @@ export default class ElementsPage extends Renderer<Context> {
                 </tr>`))).join('')}
               </tbody>
             </table>
-          </rh-table>`}${!deprecated.length ? '' : html`
-          <details>
-            <summary><h${level + 1}>Deprecated CSS Custom Properties</h${level + 1}></summary>
+          </rh-table>`}${!deprecated.length ? '' : /* NB: we need to use our own stuff. don't replace with details */ html`
+          <rh-disclosure summary="Deprecated CSS Custom Properties">
             <rh-table>
               <table>
                 <thead>
                   <tr>
                     <th scope="col">CSS Property</th>
                     <th scope="col">Description</th>
-                    <th>Default</th>
+                    <th scope="col">Default</th>
+                    <th scope="col">Reason</th>
                   </tr>
                 </thead>
                 <tbody>${(await Promise.all(deprecated.map(async prop => html`
@@ -669,11 +793,12 @@ export default class ElementsPage extends Renderer<Context> {
                     <td><code>${prop.name}</code></td>
                     <td>${await this.#innerMD(prop.description)}</td>
                     <td>${await this.#innerMD(prop.default ?? '—')}</td>
+                    <td>${await this.#innerMD(getDeprecationReason(prop))}</td>
                   </tr>`))).join('')}
                 </tbody>
               </table>
             </rh-table>
-          </details>`}
+          </rh-disclosure>`}
         </section>
       </rh-accordion-panel>
     `;
@@ -696,18 +821,20 @@ export default class ElementsPage extends Renderer<Context> {
               <thead>
                 <tr>
                   <th>Token</th>
+                  <th>Summary</th>
                   <th>Copy</th>
                 </tr>
               </thead>
-              <tbody>${designTokens.map(token => html`
+              <tbody>${(await Promise.all(designTokens.map(async token => html`
                 <tr>
                   <td>
                     <a href="${getTokenHref(token)}">
                       <code>${token.name}</code>
                     </a>
                   </td>
+                  <td>${await this.#innerMD(token.summary ?? '')}</td>
                   ${copyCell(token)}
-                </tr>`).join('')}
+                </tr>`))).join('')}
               </tbody>
             </table>
           </rh-table>`}
@@ -719,8 +846,7 @@ export default class ElementsPage extends Renderer<Context> {
   async #renderDemos(content: string, ctx: Context) {
     const tagName = ctx.tagName as `rh-${string}`;
     const demos: DemoRecord[] = ElementsPage.demoManifestsForTagNames[tagName] ?? [];
-    return [
-      html`
+    return html`
       <script type="module" data-helmet>
         import '@uxdot/elements/uxdot-copy-button.js';
         import '@uxdot/elements/uxdot-header.js';
@@ -733,67 +859,84 @@ export default class ElementsPage extends Renderer<Context> {
         import '@rhds/elements/rh-subnav/rh-subnav.js';
         import '@rhds/elements/rh-surface/rh-surface.js';
         import '@rhds/elements/rh-tabs/rh-tabs.js';
-      </script>`,
-      content,
-      ctx.doc.fileExists && await this.renderFile(ctx.doc.filePath, ctx),
-      ...await Promise.all(demos.map(async demo => {
-        if (!demo.title || !demo.filePath) {
-          return '';
-        } else {
-          const labelSlug = this.slugify(demo.title);
-          const filepath = demo.filePath
-              ?.replace(join(process.cwd(), 'elements', tagName, 'demo/'), '');
-          const demoSlug = filepath?.split('.').shift()?.replaceAll('/', '-') ?? '';
-          const projectId = `demo-${tagName}-${demoSlug}`;
+      </script>
+      ${content}
+      ${!ctx.doc.fileExists ? '' : await this.renderFile(ctx.doc.filePath, ctx)}
+      ${(await Promise.all(demos.map(async demo => `
+      ${this.#header(demo.filePath?.match(/\/index(\.html|\/)/) ? this.#getPrettyTagName(ctx)
+                   : demo.title, 2, `demo-${this.slugify(demo.title)}`)}
+      ${await this.#renderDemoDescription(demo, ctx)}
+      ${await this.#renderDemo(demo, ctx)}
+      `))).filter(Boolean).join('')}
+    `;
+  }
 
-          const githubSourcePrefix = `https://github.com/RedHat-UX/red-hat-design-system/tree/main`;
+  async #renderDemoDescription(demo: DemoRecord, ctx: Context) {
+    // Use the same logic as the header to determine the demo name
+    const demoName = demo.filePath?.match(/\/index(\.html|\/)/) ? 'index' : demo.title;
+    const demoDescriptionPath = join(process.cwd(), 'elements', ctx.tagName, 'demo', `${this.slugify(demoName)}.md`);
+    // check if the file exists, if it does return the html
+    try {
+      await access(demoDescriptionPath);
+      const demoDescriptionContent = await this.renderFile(demoDescriptionPath, ctx);
+      return html`${demoDescriptionContent}`;
+    } catch {
+      return '';
+    }
+  }
 
-          const sourceUrl = `${githubSourcePrefix}${demo.filePath.replace(process.cwd(), '')}`;
-
-          const demoUrl = `/elements/${this.getTagNameSlug(tagName)}/demo/${demoSlug === tagName ? '' : `${demoSlug}/`}`;
-
-          const codeblocks = await this.#getDemoCodeBlocks(demo);
-
-          if (codeblocks) {
-            return html`
-              ${this.#header(demo.title, 2, `demo-${labelSlug}`)}
-              <uxdot-demo id="${projectId}"
-                          tag="${tagName}"
-                          demo="${demoSlug}"
-                          demo-title="${demo.title}"
-                          demo-source-url="${sourceUrl}"
-                          demo-url="${demoUrl}"
-                          demo-file-path="${demo.filePath}"
-              >${codeblocks}</uxdot-demo>
-            `;
-          } else {
-            return '';
-          }
-        }
-      })),
-    ].filter(Boolean).join('');
+  async #renderDemo(demo: DemoRecord, ctx: Context, knobs?: string) {
+    if (!demo.title || !demo.filePath) {
+      return '';
+    } else {
+      const tagName = ctx.tagName as `rh-${string}`;
+      const filepath = demo.filePath
+          ?.replace(join(process.cwd(), 'elements', tagName, 'demo/'), '');
+      const demoSlug = filepath?.split('.').shift()?.replaceAll('/', '-') ?? '';
+      const projectId = `demo-${tagName}-${demoSlug}`;
+      const githubSourcePrefix = `https://github.com/RedHat-UX/red-hat-design-system/tree/main`;
+      const sourceUrl = `${githubSourcePrefix}${demo.filePath.replace(process.cwd(), '')}`;
+      const demoUrl = `/elements/${this.getTagNameSlug(tagName)}/demo/${demoSlug === 'index' ? '' : `${demoSlug}/`}`;
+      const codeblocks = await this.#getDemoCodeBlocks(demo);
+      if (codeblocks) {
+        return html`
+          <uxdot-demo id="${projectId}"
+                      tag="${tagName}"
+                      demo="${demoSlug}"${!knobs ? '' : html`
+                      attribute-knobs="${[...manifest.getAttributes(tagName)?.values().map(x => x.name) ?? []]}"`}
+                      demo-title="${demo.title}"
+                      demo-source-url="${sourceUrl}"
+                      demo-url="${demoUrl}"
+                      demo-file-path="${demo.filePath}"
+          >${codeblocks}${knobs ?? ''}</uxdot-demo>
+        `;
+      } else {
+        return '';
+      }
+    }
   }
 
   async #getDemoCodeBlocks(demo: DemoRecord) {
     const map = new Map<'html' | 'css' | 'js', string>();
 
-    function updateKey(key: 'html' | 'css' | 'js', node: Tools.ParentNode) {
-      const oldContent = map.get(key) ?? '';
+    function updateDemoContentForType(contentType: 'html' | 'css' | 'js', node: Tools.ParentNode) {
+      const oldContent = map.get(contentType) ?? '';
       const newContent =
       dedent(node.childNodes.map(x => Tools.isTextNode(x) ? x.value : '').join('\n'));
       Tools.removeNode(node);
-      map.set(key, oldContent + newContent);
+      map.set(contentType, oldContent + newContent);
     }
 
     if (demo.filePath) {
-      const fragment = parseFragment(await readFile(demo.filePath, 'utf-8'));
+      const content = await readFile(demo.filePath, 'utf-8');
+      const fragment = parseFragment(content);
 
       for (const node of Tools.queryAll<Tools.Element>(fragment, Tools.isElementNode)) {
         if (node.tagName === 'script'
           && node.attrs.some(x => x.name === 'type' && x.value === 'module')) {
-          updateKey('js', node);
+          updateDemoContentForType('js', node);
         } else if (node.tagName === 'style') {
-          updateKey('css', node);
+          updateDemoContentForType('css', node);
         }
       }
 

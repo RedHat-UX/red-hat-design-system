@@ -34,27 +34,9 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 /**
  * An audio player plays audio clips in the browser and includes other features.
  * @summary Plays audio clips and includes other features
- * @slot series - optional, name of podcast series
- * @slot title - optional, title of episode
- * @slot media - html `audio` element
- * @slot about - optional `rh-audio-player-about` panel with attribution
- * @slot subscribe - optional `rh-audio-player-subscribe` panel with links to subscribe
- * @slot transcript - optional `rh-transcript` panel with `rh-cue` elements
- * @cssprop [--rh-audio-player-background-color=var(--rh-color-surface-lightest, #ffffff)] - color of player background -
- * @cssprop [--rh-audio-player-icon-background-color=var(--rh-audio-player-background-color)]
- * @cssprop [--rh-audio-player-border-color=var(--rh-color-border-subtle-on-light, #d2d2d2)] - color of player border -
- * @cssprop [--rh-audio-player-secondary-text-color=var(--rh-color-text-secondary-on-light, #6a6e73)] - player secondary text color -
- * @cssprop [--rh-audio-player-secondary-opacity=0.75] - player secondary opacity used for partially faded elements -
- * @cssprop [--rh-audio-player-range-thumb-color=var(--rh-color-accent-brand-on-light, #ee0000)] - color of time and volume range slider thumb -
- * @cssprop [--rh-tooltip-content-padding-block-start=var(--rh-space-md, 8px)] - padding top on tooltips -
- * @cssprop [--rh-tooltip-content-padding-block-end=var(--rh-space-md, 8px)] - padding bottom on tooltips -
- * @cssprop [--rh-tooltip-content-padding-inline-start=var(--rh-space-md, 8px)] - padding left on tooltips -
- * @cssprop [--rh-tooltip-content-padding-inline-end=var(--rh-space-md, 8px)] - padding right on tooltips -
- * @csspart panel - expandable panel
- * @csspart toolbar - main controls
- * @csspart about - about the episode panel
- * @csspart subscribe - subscribe panel
- * @csspart transcript - transcript panel
+ *
+ * @alias audio-player
+ *
  */
 @customElement('rh-audio-player')
 @colorPalettes
@@ -370,18 +352,21 @@ export class RhAudioPlayer extends LitElement {
     const accentColor = !!this.#styles?.getPropertyValue('--rh-audio-player-background-color');
 
     return html`
-      <div id="container"
-          class="${classMap({
-              [layout]: true,
-              expanded,
-              'mediatitle': mediatitle !== undefined,
-              'poster': poster !== undefined,
-              'show-menu': showMenu,
-              'has-accent-color': accentColor,
-              'mobile-safari': !!this.#isMobileSafari,
-            })}">
+      <div id="query-context">
+        <div id="container"
+            class="${classMap({
+                [layout]: true,
+                expanded,
+                'mediatitle': mediatitle !== undefined,
+                'poster': poster !== undefined,
+                'show-menu': showMenu,
+                'has-accent-color': accentColor,
+                'mobile-safari': !!this.#isMobileSafari,
+              })}">
         <input type="hidden" value=${this.#readyState}>
+        <!-- html \`audio\` element -->
         <slot id="media" name="media" @slotchange="${this.#initMediaElement}"></slot>
+        <!-- main controls -->
         <div id="toolbar"
              class="${this.expanded ? 'expanded' : ''}"
              part="toolbar"
@@ -402,9 +387,11 @@ export class RhAudioPlayer extends LitElement {
 
           <div id="full-title">
             <rh-audio-player-scrolling-text-overflow id="mediaseries" ?hidden=${!this.mediaseries}>
+              <!-- optional, name of podcast series -->
               <slot name="series" @slotchange=${this.#onTitleChange}>${this.mediaseries}</slot>
             </rh-audio-player-scrolling-text-overflow>
             <rh-audio-player-scrolling-text-overflow id="mediatitle" ?hidden=${!this.mediatitle}>
+              <!-- optional, title of episode -->
               <slot name="title" @slotchange=${this.#onTitleChange}>${this.mediatitle}</slot>
             </rh-audio-player-scrolling-text-overflow>
           </div>
@@ -484,14 +471,7 @@ export class RhAudioPlayer extends LitElement {
                     class="toolbar-button"
                     ?disabled=${rewinddisabled}
                     @click=${() => this.rewind()}>
-              <svg xmlns="http://www.w3.org/2000/svg"
-                   viewBox="0 0 32 32"
-                   class="scrubber"
-                   role="presentation">
-                <path d="M10.4,19.5h1.8v-5l-1.8,0.8v-1l2.2-0.9h0.7v6.2h1.9v1h-4.8V19.5z"/>
-                <path d="M16.4,19.6l0.7-0.8c0.6,0.5,1.2,0.8,1.9,0.8c0.9,0,1.5-0.6,1.5-1.4c0-0.8-0.6-1.3-1.5-1.3 c-0.5,0-0.9,0.1-1.4,0.4L16.8,17l0.2-3.7h4.3v1h-3.3l-0.1,2c0.5-0.2,1-0.3,1.5-0.3c1.4,0,2.4,0.9,2.4,2.1c0,1.4-1.1,2.4-2.7,2.4 C18,20.5,17.1,20.2,16.4,19.6z"/>
-                <path d="M4,6.6L9.5,2v3.7h7.4c6.1,0,11.1,5,11.1,11.1c0,6.1-5,11.1-11.1,11.1H9.5V26h1.8h5.5 c5.1,0,9.2-4.1,9.2-9.2c0-5.1-4.1-9.2-9.2-9.2h-5.5H9.5v3.7L4,6.6z"/>
-              </svg>
+              <rh-icon set="ui" icon="undo" class="scrubber"></rh-icon>
             </button>
             <span slot="content">${this.#translation.get('rewind')}</span>
           </rh-tooltip>
@@ -514,14 +494,7 @@ export class RhAudioPlayer extends LitElement {
                     class="toolbar-button"
                     ?disabled=${forwarddisabled}
                     @click=${() => this.forward()}>
-              <svg xmlns="http://www.w3.org/2000/svg"
-                   viewBox="0 0 32 32"
-                   class="scrubber"
-                   role="presentation">
-                <path d="M10.4,19.5h1.8v-5l-1.8,0.8v-1l2.2-0.9h0.7v6.2h1.9v1h-4.8V19.5z"/>
-                <path d="M16.4,19.6l0.7-0.8c0.6,0.5,1.2,0.8,1.9,0.8c0.9,0,1.5-0.6,1.5-1.4c0-0.8-0.6-1.3-1.5-1.3 c-0.5,0-0.9,0.1-1.4,0.4L16.8,17l0.2-3.7h4.3v1h-3.3l-0.1,2c0.5-0.2,1-0.3,1.5-0.3c1.4,0,2.4,0.9,2.4,2.1c0,1.4-1.1,2.4-2.7,2.4 C18,20.5,17.1,20.2,16.4,19.6z"/>
-                <path d="M28,6.6L22.4,2v3.7h-7.4C9,5.7,4,10.6,4,16.7c0,6.1,5,11.1,11.1,11.1h7.4V26h-1.8h-5.5c-5.1,0-9.2-4.1-9.2-9.2 c0-5.1,4.1-9.2,9.2-9.2h5.5h1.8v3.7L28,6.6z"/>
-              </svg>
+              <rh-icon set="ui" icon="redo" class="scrubber"></rh-icon>
             </button>
             <span slot="content">${this.#translation.get('advance')}</span>
           </rh-tooltip>`}${!this.#hasMenu ? '' : html`
@@ -542,6 +515,7 @@ export class RhAudioPlayer extends LitElement {
 
           <rh-menu id="menu"
                    aria-labelledby="menu-button"
+                   role="menu"
                    ?inert="${!this.#menuOpen}"
                    style="${styleMap(styles)}"
                    class="${classMap({ open })}"
@@ -576,23 +550,42 @@ export class RhAudioPlayer extends LitElement {
           <div class="full-spacer"></div>
         </div>
 
+        <!-- expandable panel -->
         <div id="panel"
              role="dialog"
              aria-live="polite"
              aria-labelledby="about-menu-item"
              part="panel"
-             ?hidden=${!this.expanded || !this.#hasMenu}>
+             ?hidden="${!this.expanded || !this.#hasMenu}">
+          <!--
+            slot:
+              description: optional \`rh-audio-player-about\` panel with attribution
+            part:
+              description: about the episode panel
+          -->
           <slot id="about-slot"
                 name="about"
                 part="about"
                 @slotchange=${this.#onPanelChange}>
             <rh-audio-player-about></rh-audio-player-about>
           </slot>
+          <!--
+            slot:
+              description: optional \`rh-audio-player-subscribe\` panel with links to subscribe
+            part:
+              description: subscribe panel
+          -->
           <slot id="subscribe-slot"
                 name="subscribe"
                 part="subscribe"
                 @slotchange=${this.#onPanelChange}>
           </slot>
+          <!--
+            slot:
+              description: optional \`rh-transcript\` panel with \`rh-cue\` elements
+            part:
+              description: transcript panel
+          -->
           <slot id="transcribe-slot"
                 name="transcript"
                 part="transcript"
@@ -600,6 +593,7 @@ export class RhAudioPlayer extends LitElement {
                 @transcriptdownload=${this.#onTranscriptDownload}>
           </slot>
         </div>
+      </div>
       </div>
     `;
   }

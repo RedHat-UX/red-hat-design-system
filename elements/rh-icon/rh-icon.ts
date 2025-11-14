@@ -47,12 +47,14 @@ export class IconResolveErrorEvent extends ErrorEvent {
  * Icons represents general concepts and can support text as a decorative
  * element. The icon element is a container that allows users to add icons of
  * varying dimensions in the same area without shifting surrounding content.
+ *
  * @summary Decorative element which supports related content
- * @slot - Slotted content is used as a fallback in case the icon doesn't load
+ *
+ * @alias icon
+ *
  * @fires load - Fired when an icon is loaded and rendered
  * @fires error - Fired when an icon fails to load
- * @csspart fallback - Container for the fallback (i.e. slotted) content
- * @cssprop --rh-icon-size - Override default icon size
+ *
  */
 @customElement('rh-icon')
 export class RhIcon extends LitElement {
@@ -75,7 +77,7 @@ export class RhIcon extends LitElement {
           .then(mod => mod.default.cloneNode(true));
 
   /** Icon set */
-  @property({ type: String, reflect: true }) set?: IconSetName;
+  @property({ type: String, reflect: true }) set: IconSetName = 'standard';
 
   /** Icon name */
   @property({ type: String, reflect: true }) icon?: IconNameFor<IconSetName>;
@@ -109,13 +111,17 @@ export class RhIcon extends LitElement {
   }
 
   render(): TemplateResult {
-    const { set = 'standard' } = this;
+    const { set } = this;
     const content = this.#getContent();
     return html`
       <div id="container"
            aria-hidden="${String(!!content)}"
-           class="${classMap({ [set]: set })}">${!isServer ? content
-        : unsafeHTML(content as unknown as string)}<span part="fallback" ?hidden="${content}"><slot></slot></span>
+           class="${classMap({ [set]: true })}">${!isServer ? content
+        : unsafeHTML(content as unknown as string)}<!--
+           Container for the fallback (i.e. slotted) content
+        --><span part="fallback" ?hidden="${content}"><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
       </div>
     `;
   }
@@ -133,7 +139,7 @@ export class RhIcon extends LitElement {
       const { set = 'standard', icon } = this;
       return globalThis.RH_ICONS.get(set)?.get(icon as never) ?? '';
     } else {
-      return this.content ?? '';
+      return this.content as string ?? '';
     }
   }
 

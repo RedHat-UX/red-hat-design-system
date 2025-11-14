@@ -1,6 +1,5 @@
 import { LitElement, html, isServer } from 'lit';
 
-import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
@@ -9,10 +8,6 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './uxdot-sidenav.css';
-import itemStyles from './uxdot-sidenav-item.css';
-import dropdownStyles from './uxdot-sidenav-dropdown.css';
-import dropdownMenuStyles from './uxdot-sidenav-dropdown-menu.css';
-import dropdownMenuItemStyles from './uxdot-sidenav-dropdown-menu-item.css';
 
 @customElement('uxdot-sidenav')
 @themable
@@ -62,9 +57,9 @@ export class UxdotSideNav extends LitElement {
             <rh-icon set="ui" icon="close" size="lg"></rh-icon>
           </button>
         </div>
-        <nav part="nav" aria-label="Main menu">
+        <div id="content">
           <slot></slot>
-        </nav>
+        </div>
       </div>
       <div id="overlay" part="overlay" ?hidden=${!this.open}></div>
     `;
@@ -147,82 +142,8 @@ export class UxdotSideNav extends LitElement {
   }
 }
 
-@customElement('uxdot-sidenav-item')
-export class UxdotSideNavItem extends LitElement {
-  static styles = [itemStyles];
-
-  @property({ type: Boolean, reflect: true })
-  active = false;
-
-  @property()
-  href: string | undefined;
-
-  render() {
-    const { active } = this;
-    return html`
-      <a class="${classMap({ active })}" href="${this.href}"><slot></slot></a>
-    `;
-  }
-}
-
-@customElement('uxdot-sidenav-dropdown')
-export class UxdotSideNavDropdown extends LitElement {
-  static styles = [dropdownStyles];
-
-  @property({ type: Boolean, reflect: true })
-  expanded = false;
-
-  connectedCallback() {
-    super.connectedCallback();
-    if (!isServer) {
-      this.addEventListener('click', this.#onClick);
-    }
-  }
-
-  render() {
-    return html`
-      <slot></slot>
-    `;
-  }
-
-  async #onClick(event: Event) {
-    if (!event.composedPath().some(node => node instanceof HTMLAnchorElement)) {
-      event.preventDefault();
-      this.expanded = !this.expanded;
-      this.querySelector('details')?.toggleAttribute('open', this.expanded);
-      // trigger change event which evokes the mutation on this.expanded
-      this.dispatchEvent(new CustomEvent('expand', {
-        bubbles: true,
-        composed: true,
-        detail: {
-          expanded: this.expanded,
-          toggle: this,
-        },
-      }));
-    }
-  }
-}
-
-@customElement('uxdot-sidenav-dropdown-menu')
-export class UxdotSideNavDropdownMenu extends LitElement {
-  static styles = [dropdownMenuStyles];
-
-  render() {
-    return html`
-      <slot></slot>
-    `;
-  }
-}
-
-@customElement('uxdot-sidenav-dropdown-menu-item')
-export class UxdotSideNavDropdownMenuItem extends UxdotSideNavItem {
-  static styles = [itemStyles, dropdownMenuItemStyles];
-}
-
 declare global {
   interface HTMLElementTagNameMap {
     'uxdot-sidenav': UxdotSideNav;
-    'uxdot-sidenav-dropdown-menu': UxdotSideNavDropdownMenu;
-    'uxdot-sidenav-dropdown-menu-item': UxdotSideNavDropdownMenuItem;
   }
 }

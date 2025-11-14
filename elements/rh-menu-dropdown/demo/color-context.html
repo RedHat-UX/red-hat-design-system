@@ -1,0 +1,31 @@
+<rh-context-demo>
+  <rh-menu-dropdown>
+    <span slot="toggle-label">Basic toggle</span>
+    <rh-menu-item>Action one</rh-menu-item>
+    <rh-menu-item>Action two</rh-menu-item>
+    <rh-menu-item>Action three</rh-menu-item>
+    <rh-menu-item disabled>Disabled Action</rh-menu-item>
+    <hr/>
+    <rh-menu-item>Separated action</rh-menu-item>
+  </rh-menu-dropdown>
+</rh-context-demo>
+
+<style>
+  rh-context-demo::part(demo) {
+    display: flex;
+    align-items: start;
+    flex-wrap: wrap;
+    gap: var(--rh-space-lg, 16px);
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+  import '@rhds/elements/rh-menu-dropdown/rh-menu-dropdown.js';
+  import '@rhds/elements/rh-menu/rh-menu-item.js';
+
+  const dropdown = document.querySelector('rh-menu-dropdown');
+  dropdown.addEventListener('select', e => {
+    console.log('Selected:', e.text);
+  });
+</script>

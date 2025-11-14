@@ -11,7 +11,16 @@
 
 <style>
   .example-asset-text-and-link-top {
-    width: 360px;
+    inline-size: 360px;
+    /* Pattern: override heading typography via custom properties */
+    --rh-font-family-heading: var(--rh-font-family-body-text);
+    --rh-card-heading-font-family: var(--rh-font-family-body-text);
+    --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular);
+    --rh-card-heading-font-size: var(--rh-font-size-body-text-xl);
+    --rh-line-height-heading: var(--rh-line-height-body-text);
+
+    font-family: var(--rh-font-family-heading);
+    font-weight: var(--rh-card-heading-font-weight);
     &::part(footer) {
       margin-block-end: 0;
     }
@@ -20,9 +29,10 @@
       margin-block: 0 var(--rh-space-lg, 16px);
       display: flex;
       gap: var(--rh-space-lg, 16px);
-      font-weight: var(--rh-font-weight-heading-regular, 300);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
-      font-family: var(--rh-font-family-body-text);
+      color: light-dark(
+        var(--rh-color-text-brand-on-light, #ee0000),
+        var(--rh-color-text-primary-on-dark, #ffffff)
+      );
       line-height: var(--rh-line-height-body-text, 1.5);
     }
   }

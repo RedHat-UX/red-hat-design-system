@@ -52,6 +52,154 @@ or anything else, please submit a [GitHub issue][issues].
   <a slot="headline" href="https://github.com/RedHat-UX/red-hat-design-system/releases">Changelog</a>
 </rh-tile>
 
+<section aria-labelledby="version-4.0">
+
+## Version 4.0
+Released October 31, 2025 🎃
+
+### Highlights
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| 🎨 Icons: Updated @rhds/icons to version 2.0 | {{j()}} | Added 191 new UI icons, including new `ai-experience` icons and many `-fill` variations, and removed `auto-light-dark-mode-fill` icon. Please see [official 4.0 release notes](https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.0.0) for details on breaking changes. |
+| ✨ Added `<rh-menu-dropdown>` | {{i()}} | A UI component designed for presenting a set of related actions or commands. It consists of two parts: a menu toggle, which users interact with to open or close the menu, and a menu list that contains actionable items. |
+| ✨ Added `<rh-navigation-vertical>` | {{i()}} | A vertical navigation list containing top-level navigation items and grouped navigation items, typically used in a side navigation pattern. |
+| ✨ Added `<rh-navigation-link>` | {{i()}} | A styled link that is used as a slotted child of navigation elements. Can be used in the primary, secondary, subnav, and vertical navigation elements. |
+| `<rh-avatar>`: added `bordered` variant | {{i()}} | Added a variant that adds a subtle border around the avatar image. |
+| `<rh-cta>`: added new CSS tokens | {{i()}} | Added CSS APIs for `text-underline-offset` and `text-decoration` on focus. |
+| `<rh-disclosure>`: added the `borderless` and `compact` variants | {{i()}} | `<rh-disclosure>` now has a `borderless` and a `compact` variant. |
+| `<rh-navigation-primary>`: added support for `<rh-navigation-link>` | {{i()}} | `<rh-navigation-primary>` can now use `<rh-navigation-link>`. |
+| `<rh-navigation-secondary>`: added support for `<rh-navigation-link>` | {{i()}} | `<rh-navigation-secondary>` can now use `<rh-navigation-link>`. |
+| `<rh-subnav>`: added support for `<rh-navigation-link>` | {{i()}} | `<rh-subnav>` can now use `<rh-navigation-link>` elements, deprecating slotting `<a>` elements. |
+| `<rh-tile>`: added support for all 6 color palettes | {{i()}} | Tile now accepts all six color palettes. |
+| `<rh-accordion>`: accessibility fix | {{p()}} | Fixed axe accessibility error flagged in `<rh-accordion-header>`. |
+| `<rh-audio-player>`: improved responsiveness | {{p()}} | Better responsiveness when inside non-full width containers. |
+| `<rh-back-to-top>`: added dark color scheme support | {{p()}} | Back to Top now has dark color scheme support. |
+| `<rh-button>`: updated dark scheme colors | {{p()}} | Updated colors and background colors on dark color schemes. |
+| `<rh-card>`: fixed `flex` layout issue | {{p()}} | Corrected layout when contained in a `flex` parent. |
+| `<rh-health-index>`: fixed status tokens usage | {{p()}} | Fixed usage of status tokens for border, background, and text colors. |
+| `<rh-footer>`: reduced CLS issues | {{p()}} | Reduced Cumulative Layout Shift (CLS) before component upgrades or if JavaScript fails to load. |
+| `<rh-jump-links>`: fixed text wrapping | {{p()}} | Corrected text wrap for long links; allow wrapping to a new line. |
+| `<rh-navigation-primary>`: improved empty slot accessibility | {{p()}} | Improved accessibility when slots are empty. |
+| `<rh-navigation-primary>`: improved navigtation label accessibility | {{p()}} | Improved accessibility of navigation label for screen readers. |
+| `<rh-navigation-primary>`: fixed content search issues | {{p()}} | Corrected content menus opening during `command/ctrl` + `F` searches. |
+| `<rh-pagination>`: fixed paging behavior | {{p()}} | Corrected behavior using `aria-current="page"` attributes or fragment identifier URLs. |
+| `<rh-pagination>`: added a token for disabled icon color | {{p()}} | Added a customizable token for disabled stepper icon color. |
+| `<rh-pagination>`: updated dark scheme colors | {{p()}} | Updated dark scheme disabled button background color. |
+| `<rh-progress-stepper>`: fixed fallback styles | {{p()}} | Corrected missing fallback styles. |
+| `<rh-site-status>`: updated background colors | {{p()}} | Updated light scheme background colors. |
+| `<rh-subnav>`: deprecated `color-palette` attribute | {{p()}} | Corrected the implementation of and deprecated the `color-palette` attribute. |
+| `<rh-subnav>`: fixed active page styling | {{p()}} | Corrected styling to reflect proper `aria-current="page"` usage for the active page. |
+| `<rh-subnav>`: fixed overflow arrow display | {{p()}} | Fixed regression in overflow arrow display. |
+| `<rh-tabs>`: updated inactive background color | {{p()}} | Updated the background color of inactive box variant tabs. |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.0.0">View all version 4.0 release notes</rh-cta>
+
+</section>
+
+<section aria-labelledby="version-3.2">
+
+## Version 3.2
+Released October 24, 2025
+
+### Highlights
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| `<rh-code-block>`: added `copy` event | {{i()}} | Modify the `event.content` field to change the text to be copied |
+| `<rh-tooltip>`: add `silent` attribute | {{i()}} | Add the `silent` attribute to hide tooltip content from screen readers |
+| `<rh-progress-stepper>`: documentation improvements | {{p()}} | Improved online documentation |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.2.0">View all version 3.2 release notes</rh-cta>
+
+</section>
+
+<section aria-labelledby="version-3.1.0">
+
+### Patches from version 3.1.3
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| `<rh-code-block>`: fix expand button | {{p()}} | Show expand button ("Show more") even when line numbers are hidden |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.1.3">View all version 3.1.3 release notes</rh-cta>
+
+### Patches from version 3.1.2
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| `<rh-code-block>`: performance improvements | {{p()}} | Set content-visibility for improved performance on large pages with many codeblocks |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.1.2">View all version 3.1.2 release notes</rh-cta>
+
+### Patches from version 3.1.1
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| `<rh-alert>`: color schemes | {{p()}} | Added support for dark color schemes |
+| `<rh-breadcrumb>`: layout fixes | {{p()}} | Fix colors, spacing, and arrows |
+| `<rh-footer>`: color contrast | {{p()}} | Fix color contrast of text when javascript fails to load |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.1.1">View all version 3.1.1 release notes</rh-cta>
+
+
+## Version 3.1.0
+Released August 6, 2025
+
+### Highlights
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| ✨ Added `<rh-progress-stepper>` | {{i()}} | Progress stepper communicates how many steps are required to complete a process. |
+| ✨ Added `<rh-scheme-toggle>` | {{i()}} | A toggle to switch between light, dark and system default color schemes. |
+| ✨ Added `<rh-skeleton>` | {{i()}} | A skeleton loader is a placeholder for content that is loading. |
+| `<rh-breadcrumb>`: added the `truncate` attribute | {{i()}} | When the `truncate` attribute is present, the middle breadcrumb items are hidden until the user interacts with them. |
+| `<rh-code-block>`: added the `line-numbers="hidden"` attribute | {{i()}} | Line numbers can now be hidden. |
+| `<rh-navigation-primary>`: improved logo rendering | {{i()}} | Default logo is now bi-modal auto adjusting text color to light or dark scheme. For more control, use the existing [`logo` slot](https://ux.redhat.com/elements/navigation-primary/code/#slots). |
+| `<rh-tag>`: add disabled, hover, focus, and active states to linked tags | {{i()}} | Linked `<rh-tag>` elements now have hover, focus, active, and disabled states. |
+| `<rh-alert>`: fixed case-sensitivity on `state` attribute | {{p()}} | Made `state` attribute case-insensitive. |
+| `<rh-announcement>`: fixed line wrapping in CTAs | {{p()}} | Long CTA text wraps to next line for small viewports. |
+| `<rh-audio-player>`: corrected icons for rewind and fast forward | {{p()}} | Fixed rewind and fast forward icons. |
+| `<rh-card>`: allow card to accept all six color palettes | {{p()}} | `<rh-card>` now works with all six [color palettes](https://ux.redhat.com/theming/color-palettes/). |
+| `<rh-code-block>`: performance improvements | {{p()}} | Improved performance when `line-numbers="hidden"` attribute is present. |
+| `<rh-footer>`: corrected height style | {{p()}} | Corrected height style when JavaScript is not available |
+| `<rh-footer>`: removed console warnings | {{p()}} | Removed console warnings in `<rh-footer>`. |
+| `<rh-footer>`: removed "Inc" from copyright | {{p()}} | Removed "Inc" from copyright in `<rh-footer>`. |
+| `<rh-navigation-primary>`: keyboard accessibility | {{p()}} | Improved keyboard accessibility of the dropdown toggle. |
+| `<rh-tabs>`: corrected background styles | {{p()}} | Corrected background styles inherited from parent color-scheme and host color-palette. |
+| `<rh-tabs>`: corrected vertical layout styles | {{p()}} |  |
+| `<rh-tabs>`: corrected duplicate focus ring | {{p()}} | Fixed duplicate focus ring with keyboard navigation. |
+| `<rh-tag>`: color contrast improvements | {{p()}} | Improved color contrast of gray tags on dark color schemes. |
+| Improved accessibility of links | {{p()}} | Inline links should show a dashed underline in accordance to our [inline link style guidelines](https://ux.redhat.com/foundations/interactions/links/#inline-links). |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.1.0">View all version 3.1 release notes</rh-cta>
+
+</section>
+
 <section aria-labelledby="version-3.0.0">
 
 ### Patches from version 3.0.4

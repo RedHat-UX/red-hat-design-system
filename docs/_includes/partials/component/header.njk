@@ -21,7 +21,7 @@
 </script>
 {% endif %}
 
-<uxdot-header {% if tabs %}has-subnav{% endif %} {% if tokenSearch %}has-search {% endif %}>
+<uxdot-header {% if tabs %}has-subnav{% endif %}>
   {#- TODO: cheap hack here to fix data spaghetti from demos page -#}
   <h1 id="{{ headingId }}" class="page-title">
     {{ prettyName or heading or title }}
@@ -29,16 +29,16 @@
     <rh-tag icon="notification-fill" color="gray">Planned</rh-tag>
     {% endif %}
   </h1>
-  {% if tokenSearch %}{% include 'partials/component/token-search.html' %}{% endif %}
+
   {% if tabs %}
   <rh-subnav slot="subnav" accessible-label="{{ heading }}">
   {% for tab in tabs %}
     {%- set pageUrl = (doc and doc.permalink | replace('index.html', '')) or page.url -%}
     {%- set title = tab.pageTitle or tab.data.title -%}
     {%- set active = tab.url == pageUrl -%}
-    <a href="{{ tab.url }}"
-       {{- ' active' if active -}}
-       {{- ' hidden' if hidden -}}>{{ title | capitalize }}</a>
+    <rh-navigation-link href="{{ tab.url }}"
+       {{- ' current-page' if active -}}
+       {{- ' hidden' if hidden -}}>{{ title }}</rh-navigation-link>
   {%- endfor -%}
   </rh-subnav>
   {% endif %}

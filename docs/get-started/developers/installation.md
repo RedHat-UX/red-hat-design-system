@@ -10,10 +10,18 @@ subnav:
   order: 10
 ---
 
+<style data-helmet>
+  .code-tabs rh-tab-panel {
+    padding-block-end: 0;
+    padding-inline: 0;
+  }
+</style>
+
 <script type="module" data-helmet>
   import '@uxdot/elements/uxdot-example.js';
   import '@rhds/elements/rh-code-block/rh-code-block.js';
   import '@rhds/elements/rh-alert/rh-alert.js';
+  import '@rhds/elements/rh-tabs/rh-tabs.js';
 </script>
 
 <rh-alert state="info">
@@ -24,13 +32,20 @@ subnav:
 
 ## How to install
 
-There are three ways you can install the Red Hat Design System's Web Components: 
-CDN, NPM, or JSPM. Each element's "Code" page includes the same installation 
+There are three ways you can install the Red Hat Design System's Web Components: Red Hat CDN, NPM,
+or via a third party CDN like jsDelivr. Each element's "Code" page includes the same installation 
 information with code snippets that are specific to that element.
 
 - [Red Hat CDN](#red-hat-cdn)
 - [NPM](#npm)
-- [JSPM](#jspm)
+- [jsDelivr CDN](#jsdelivr-cdn)
+
+### Tokens CSS
+
+In addition to loading JavaScript, RHDS strongly encourages loading our design [tokens](/tokens/)
+via a `<link>` tag in the `<head>`. Designers and developers use tokens instead of hard-coded values
+to create flexible yet seamless user experiences across a variety of Red Hat platforms and
+technologies. See our [Tokens Installation](/get-started/developers/tokens/) page for further details.
 
 ## Red Hat CDN
 
@@ -107,10 +122,10 @@ won't make any additional calls as long as they use the same bare module specifi
 If you'd like to continue to use the bundles available in v1 of our CDN, they are still available on our new server at the following URL:
 
 ```html rhcodeblock
-https://www.redhatstatic.com/dssf-001/v1/
+https://www.redhatstatic.com/dssf-001/v1-alpha/
 ```
 
-To migrate, change <code>/dx/v1-alpha/</code> to <code>/dssf-001/v1/</code> in your current URLs.
+To migrate, change <code>/dx/v1-alpha/</code> to <code>/dssf-001/v1-alpha/</code> in your current URLs.
 
 ## NPM
 
@@ -130,41 +145,65 @@ scope of this page; read more about bundlers on their websites:
 - [Parcel][parcel]
 - [Webpack][webpack]
 
-
-## JSPM
+## jsDelivr CDN
 
 <rh-alert state="warning">
   <h4 slot="header">Public CDNs</h4>
-  <p>JSPM and other public CDNs should not be used on corporate domains. Use 
+  <p>jsDelivr and other public CDNs should not be used on corporate domains. Use 
     them for <strong>development purposes only</strong>!</p>
 </rh-alert>
 
-Add an [import map][importmap] to the `<head>`, pointing to the CDN, or update
-any existing import map.
+Add an [import map][importmap] to the `<head>`, pointing to the jsDelivr CDN, or update
+any existing import map. This provides the same functionality as the Red Hat CDN but uses
+the publicly accessible jsDelivr CDN.
 
 ```html rhcodeblock
 <script type="importmap">
   {
     "imports": {
-      "@rhds/elements/": "https://jspm.dev/@rhds/elements/",
-      "@patternfly/elements/": "https://jspm.dev/@patternfly/elements/"
+      "@rhds/elements/": "https://cdn.jsdelivr.net/npm/@rhds/elements@{{ pkg.version }}/elements/"
+    },
+    "scopes": {
+      "https://cdn.jsdelivr.net/npm/": {
+          "@floating-ui/core": "https://cdn.jsdelivr.net/npm/@floating-ui/core@{{ packageinfo.packages["node_modules/@floating-ui/core"].version }}/dist/floating-ui.core.mjs",
+          "@floating-ui/dom": "https://cdn.jsdelivr.net/npm/@floating-ui/dom@{{ packageinfo.packages["node_modules/@floating-ui/dom"].version }}/dist/floating-ui.dom.mjs",
+          "@floating-ui/utils": "https://cdn.jsdelivr.net/npm/@floating-ui/utils@{{ packageinfo.packages["node_modules/@floating-ui/utils"].version }}/dist/floating-ui.utils.mjs",
+          "@floating-ui/utils/dom": "https://cdn.jsdelivr.net/npm/@floating-ui/utils@{{ packageinfo.packages["node_modules/@floating-ui/utils"].version }}/dist/floating-ui.utils.dom.mjs",
+          "@lit/context": "https://cdn.jsdelivr.net/npm/@lit/context@{{ packageinfo.packages["node_modules/@lit/context"].version }}/development/index.js",
+          "@lit/reactive-element": "https://cdn.jsdelivr.net/npm/@lit/reactive-element@{{ packageinfo.packages["node_modules/@lit/reactive-element"].version }}/reactive-element.js",
+          "@lit/reactive-element/decorators/": "https://cdn.jsdelivr.net/npm/@lit/reactive-element@{{ packageinfo.packages["node_modules/@lit/reactive-element"].version }}/decorators/",
+          "@patternfly/pfe-core": "https://cdn.jsdelivr.net/npm/@patternfly/pfe-core@{{ packageinfo.packages["node_modules/@patternfly/pfe-core"].version }}/core.js",
+          "@patternfly/pfe-core/": "https://cdn.jsdelivr.net/npm/@patternfly/pfe-core@{{ packageinfo.packages["node_modules/@patternfly/pfe-core"].version }}/",
+          "@rhds/elements/lib/": "https://cdn.jsdelivr.net/npm/@rhds/elements@{{ pkg.version }}/lib/",
+          "@rhds/icons": "https://cdn.jsdelivr.net/npm/@rhds/icons@{{ packageinfo.packages["node_modules/@rhds/icons"].version }}/icons.js",
+          "@rhds/icons/": "https://cdn.jsdelivr.net/npm/@rhds/icons@{{ packageinfo.packages["node_modules/@rhds/icons"].version }}/",
+          "@rhds/tokens/media.js": "https://cdn.jsdelivr.net/npm/@rhds/tokens@{{ packageinfo.packages["node_modules/@rhds/tokens"].version }}/js/media.js",
+          "@rhds/tokens/": "https://cdn.jsdelivr.net/npm/@rhds/tokens@{{ packageinfo.packages["node_modules/@rhds/tokens"].version }}/",
+          "lit": "https://cdn.jsdelivr.net/npm/lit@{{ packageinfo.packages["node_modules/lit"].version }}/index.js",
+          "lit/": "https://cdn.jsdelivr.net/npm/lit@{{ packageinfo.packages["node_modules/lit"].version }}/",
+          "lit-element/lit-element.js": "https://cdn.jsdelivr.net/npm/lit-element@{{ packageinfo.packages["node_modules/lit-element"].version }}/lit-element.js",
+          "lit-html": "https://cdn.jsdelivr.net/npm/lit-html@{{ packageinfo.packages["node_modules/lit-html"].version }}/lit-html.js",
+          "lit-html/": "https://cdn.jsdelivr.net/npm/lit-html@{{ packageinfo.packages["node_modules/lit-html"].version }}/",
+          "tslib": "https://cdn.jsdelivr.net/npm/tslib@{{ packageinfo.packages["node_modules/tslib"].version }}/tslib.es6.mjs"
+      }
     }
   }
 </script>
 ```
 
-Once the import map is established, you can load the element with the following
-module, containing a [bare module specifier][barespec]. The example below shows
-how you'd load in <`rh-button>`.
+Once the import map is established, you can load individual elements using the same approach as with
+the Red Hat CDN. For example, you can load `<rh-button>` using:
 
 ```html rhcodeblock
+<rh-button>Primary</rh-button>
+
 <script type="module">
   import "@rhds/elements/rh-button/rh-button.js";
 </script>
 ```
 
-Note that Modules may be placed in the `<head>`. Since they are deferred by
-default, they will not block rendering.
+Note that modules may be placed in the `<head>`. Since they are deferred by default, they will not
+block rendering.
 
 ## Lightdom CSS
 
@@ -174,10 +213,29 @@ some [Cumulative Layout Shift (CLS)][cls] experience before the element has full
 initialized, but are not intended to be used without initializing the element or by
 themselves to prevent CLS.
 
+<rh-tabs class="code-tabs">
+  <rh-tab slot="tab" active>Red Hat CDN</rh-tab>
+  <rh-tab-panel>
+
 ```html rhcodeblock
 <link rel="stylesheet"
       href="https://www.redhatstatic.com/dssf-001/v2/@rhds/elements@{{ pkg.version }}/rh-footer/rh-footer-lightdom.css">
 ```
+
+  </rh-tab-panel>
+  <rh-tab slot="tab">Third party CDN</rh-tab>
+  <rh-tab-panel>
+
+```html rhcodeblock
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@rhds/elements@{{ pkg.version }}/elements/rh-footer/rh-footer-lightdom.css">
+```
+
+If you're looking for lightdom stylesheets on a third party CDN, the URL patterns follow a similar
+convention.
+
+  </rh-tab-panel>
+</rh-tabs>
 
 <rh-alert>Note: a future version of RHDS will remove the requirement to manually
 load these stylesheets</rh-alert>

@@ -32,10 +32,12 @@ export default function RHDSPlugin(eleventyConfig: UserConfig, pluginOptions?: P
       tokenCategory.slug ??= tokenCategory.path?.replace('.', '-') ?? '';
       const tokens = resolveTokens(tokenCategory.path);
       const docs = tokens?.$extensions?.['com.redhat.ux'];
+      const title = docs?.heading ?? tokenCategory.slug.replaceAll('-', ' ');
+
       return {
         ...tokenCategory,
         docs,
-        title: docs?.heading ?? tokenCategory.slug.replaceAll('-', ' '),
+        title: title.charAt(0).toUpperCase() + title.slice(1).toLowerCase(),
         url: `/tokens/${tokenCategory.slug}/`,
       };
     });

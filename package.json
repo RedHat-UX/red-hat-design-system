@@ -1,6 +1,6 @@
 {
   "name": "@rhds/elements",
-  "version": "3.0.4",
+  "version": "4.0.0",
   "description": "Red Hat Design System Elements",
   "type": "module",
   "license": "MIT",
@@ -31,8 +31,11 @@
     "Corey Vickery <cvickery@redhat.com>",
     "Diwanshi Gadgil <dpandey@redhat.com>",
     "Em Nouveau <enouveau@redhat.com>",
+    "Gili Greenberger (https://github.com/Gili-Greenberger)",
+    "Hadassah Yelenik",
     "Ivana Rodriguez <ivana@redhat.com>",
     "Kelsey Swanson <kswanson@redhat.com>",
+    "Luke Dary <ldary@redhat.com>",
     "Marionne Patel <mapatel@redhat.com>",
     "Michael Potter <mpotter@redhat.com",
     "Nikki Massaro Kauffman <nmassaro@redhat.com>",
@@ -84,7 +87,8 @@
     "⚙️--UTIL": "❓ Manages the repo",
     "clean": "git clean -dfx -e node_modules -e .husky",
     "clean:nuke": "git clean -fX",
-    "lint": "wireit"
+    "lint": "wireit",
+    "validate-element-data": "wireit"
   },
   "wireit": {
     "patch": {
@@ -105,7 +109,7 @@
     },
     "11ty-dev": {
       "service": true,
-      "command": "NODE_OPTIONS='--import tsx/esm' eleventy --serve --incremental --config=eleventy.config.ts"
+      "command": "cross-env NODE_OPTIONS='--import tsx/esm' eleventy --serve --incremental --config=eleventy.config.ts"
     },
     "dev": {
       "service": true,
@@ -117,7 +121,7 @@
     },
     "serve": {
       "service": true,
-      "command": "TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --incremental --serve",
+      "command": "cross-env TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --incremental --serve",
       "dependencies": [
         "patch"
       ]
@@ -136,6 +140,7 @@
       "dependencies": [
         "patch",
         "analyze",
+        "copy-assets",
         "compile"
       ]
     },
@@ -200,16 +205,11 @@
       ]
     },
     "analyze": {
-      "command": "cem analyze",
-      "dependencies": [
-        "patch"
-      ],
+      "command": "cem generate",
       "files": [
         "elements/*/demo/*.html",
         "elements/**/*.{ts,js,map}",
         "elements/**/*.css",
-        "scripts/cem-tokens.ts",
-        "scripts/system-tokens.ts",
         "tsconfig.tsbuildinfo"
       ],
       "output": [
@@ -217,7 +217,7 @@
       ]
     },
     "docs": {
-      "command": "TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --incremental",
+      "command": "cross-env TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --incremental",
       "dependencies": [
         "patch"
       ],
@@ -230,9 +230,11 @@
     },
     "lint": {
       "dependencies": [
+        "patch",
         "eslint",
         "stylelint",
-        "markdownlint"
+        "markdownlint",
+        "validate-element-data"
       ]
     },
     "eslint": {
@@ -270,12 +272,20 @@
       "dependencies": [
         "build"
       ]
+    },
+    "validate-element-data": {
+      "command": "npx tsx scripts/validate-element-data.ts --errors-only",
+      "files": [
+        "elements/*/docs/data.yaml",
+        "docs/schemas/element-data.schema.json",
+        "scripts/validate-element-data.ts"
+      ]
     }
   },
   "dependencies": {
     "@lit/context": "^1.1.4",
-    "@patternfly/pfe-core": "^5.0.2",
-    "@rhds/icons": "^1.2.0",
+    "@patternfly/pfe-core": "^5.0.3",
+    "@rhds/icons": "^2.0",
     "@rhds/tokens": "^3.0.1",
     "lit": "^3.2.1",
     "prism-esm": "^1.29.0-fix.6",
@@ -298,8 +308,9 @@
     "@patternfly/eslint-config-elements": "^4.0.0",
     "@patternfly/eslint-plugin-elements": "^2.0.0",
     "@patternfly/icons": "^1.0.3",
-    "@patternfly/pfe-tools": "^4.0.3",
-    "@playwright/test": "^1.51.0",
+    "@patternfly/pfe-tools": "^5.0.4",
+    "@playwright/test": "^1.54.1",
+    "@pwrs/cem": "^0.6.5",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@stylistic/eslint-plugin-js": "^2.13.0",
     "@stylistic/stylelint-config": "^2.0.0",
@@ -313,6 +324,7 @@
     "@webcomponents/template-shadowroot": "^0.2.1",
     "async-csv": "^2.1.3",
     "autoprefixer": "^10.4.21",
+    "cross-env": "^10.0.0",
     "cssnano": "^7.0.6",
     "custom-elements-manifest": "^2.1.0",
     "element-internals-polyfill": "^1.3.13",
@@ -320,7 +332,7 @@
     "eleventy-plugin-helmet": "^0.2.2",
     "eleventy-plugin-nesting-toc": "^1.3.0",
     "es-module-shims": "^1.10.1",
-    "eslint": "^9.22.0",
+    "eslint": "^9.31.0",
     "fuse.js": "^7.1.0",
     "git-branch": "^2.0.1",
     "image-size": "^1.2.0",

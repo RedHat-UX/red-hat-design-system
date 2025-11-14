@@ -71,7 +71,7 @@ Other non-text elements (e.g., ASCII emoticons) may use ARIA attributes, like `a
 <span role="img" aria-label="astonished face">:O</span>
 ```
 
-These are not the only means of providing alt text for non-text elements, but they cover many common situations. For less-common cases, view the [WCAG 2.1 documentation](https://www.w3.org/WAI/WCAG21/Understanding/non-text-content.html).
+These are not the only means of providing alt text for non-text elements, but they cover many common situations. For less-common cases, view the [WCAG 2.2 documentation](https://www.w3.org/WAI/WCAG22/Understanding/non-text-content.html).
 
 ### Complex images
 
@@ -172,10 +172,10 @@ Best practices for all microcopy:
 - Use as few words as possible
 - Avoid non-informative or vague text, like “click here,” “learn more,” “read more,” etc.
 - Make the first word meaningful
-    - For example, avoid starting with “a”, “the”, “for”, etc
-    - In many cases, this practice allows screen reader users to navigate items alphabetically
+  - For example, avoid starting with “a”, “the”, “for”, etc
+  - In many cases, this practice allows screen reader users to navigate items alphabetically
 - Keep the text consistent.
-    - Ensure that consistency is maintained on pages, sites, and entire user journeys.
+  - Ensure that consistency is maintained on pages, sites, and entire user journeys.
 
 ### Creating emphasis
 
@@ -191,7 +191,7 @@ However, the golden rule for bolding is moderation. Overusing bold can backfire�
 
 #### Italics
 
-Italics offer another useful option for formatting, though they’re not a substitute for bold. They can help distinguish a section of text from the rest, adding emphasis in a subtler way. 
+Italics offer another useful option for formatting, though they’re not a substitute for bold. They can help distinguish a section of text from the rest, adding emphasis in a subtler way.
 
 However, italics can be harder to read, especially for individuals with dyslexia. As with bolding, it’s best to use italics sparingly.
 
@@ -452,7 +452,7 @@ Your content order can impact not only how a page is read, but also how it’s o
 
 <rh-blockquote>
   <p>If any audio on a Web page plays automatically for more than 3 seconds, either a mechanism is available to pause or stop the audio, or a mechanism is available to control audio volume independently from the overall system volume level.</p>
-  <a slot="author" href="https://www.w3.org/WAI/WCAG21/Understanding/audio-control">WCAG 2.1 Success Criterion 1.4.2: Audio Control (Level A)</a>
+  <a slot="author" href="https://www.w3.org/WAI/WCAG22/Understanding/audio-control">WCAG 2.2 Success Criterion 1.4.2: Audio Control (Level A)</a>
 </rh-blockquote>
 
 Enabling autoplay on audio or video can create several accessibility barriers:

@@ -5,6 +5,11 @@
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
 }
 
+#query-context {
+  container-type: inline-size;
+  width: 100%;
+}
+
 [hidden] {
   display: none !important;
   border-radius: var(--rh-border-radius-default, 3px);
@@ -25,7 +30,7 @@ button {
   color: var(--_text-color);
   background-color: transparent;
   border-radius: var(--rh-border-radius-default, 3px);
-  width: var(--_player-width, 304px);
+  width: min(100%, var(--_player-width, 304px));
 
   --_player-width: 328px;
   --_poster-size: 40px;
@@ -37,13 +42,18 @@ button {
   --_about-mediatitle-display: none;
   --_about-heading-display: flex;
   --_box-shadow: light-dark(var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25)), none);
-  --_secondary-opacity: var(--rh-audio-player-secondary-opacity, 1);
+  --_secondary-opacity: /** player secondary opacity used for partially faded elements - */
+    var(--rh-audio-player-secondary-opacity, 1);
   --_text-color: var(--rh-audio-player-text-color, var(--rh-color-text-primary));
-  --_border-color: var(--rh-color-border-subtle);
+  --_border-color: /** color of player border - */
+    var(--rh-color-border-subtle);
   --_surface-color:
-    light-dark(var(--rh-audio-player-background-color, var(--rh-color-surface-lightest, #ffffff)),
-      var(--rh-audio-player-background-color, var(--rh-color-surface-darkest, #151515)));
-  --_secondary-text-color:
+    light-dark(
+        /** color of player background - */
+        var(--rh-audio-player-background-color, var(--rh-color-surface-lightest, #ffffff)),
+        var(--rh-audio-player-background-color, var(--rh-color-surface-darkest, #151515))
+      );
+  --_secondary-text-color: /** player secondary text color - */
     var(--rh-audio-player-secondary-text-color,
       var(--rh-color-text-secondary));
   --_static-border-color: var(--rh-color-border-subtle);
@@ -58,9 +68,17 @@ button {
   --_static-surface-focus-color:
     light-dark(var(--rh-color-surface-light, #e0e0e0),
       var(--rh-color-surface-dark, #383838));
+
+  /** padding top on tooltips - */
   --rh-tooltip-content-padding-block-start: var(--rh-space-md, 8px);
+
+  /** padding bottom on tooltips - */
   --rh-tooltip-content-padding-block-end: var(--rh-space-md, 8px);
+
+  /** padding left on tooltips - */
   --rh-tooltip-content-padding-inline-start: var(--rh-space-md, 8px);
+
+  /** padding right on tooltips - */
   --rh-tooltip-content-padding-inline-end: var(--rh-space-md, 8px);
   --rh-audio-player-scrolling-text-overflow-background-color: var(--_surface-color);
 
@@ -104,10 +122,8 @@ rh-audio-player-rate-stepper {
   width: auto;
 }
 
-svg.scrubber {
-  fill: var(--_text-color);
-  height: var(--_svg-size);
-  width: var(--_svg-size);
+.scrubber {
+  color: var(--_text-color);
   padding: var(--_icon-padding);
 }
 
@@ -330,8 +346,8 @@ input[type='range'] {
 #play-tooltip {
   margin: 0;
 
-  --_icon-gap: 16px;
-  --rh-icon-size: 18px;
+  --_icon-gap: var(--rh-space-lg, 16px);
+  --rh-icon-size: var(--rh-size-icon-01, 16px);
 }
 
 #full-play-tooltip {
@@ -460,7 +476,7 @@ rh-menu > button:focus {
   }
 }
 
-@media (min-width: 360px) {
+@container (min-width: 360px) {
   #container {
     --_player-width: 360px;
     --_time-slider-base: 191px;
@@ -471,7 +487,7 @@ rh-menu > button:focus {
   }
 }
 
-@media (min-width: 576px) {
+@container (min-width: 576px) {
   #container {
     --_player-width: 503px;
     --_time-slider-base: 334px;
@@ -660,7 +676,7 @@ rh-menu > button:focus {
   }
 }
 
-@media (min-width: 768px) {
+@container (min-width: 768px) {
   #container {
     &:is(.compact,.compact-wide) #volume-tooltip,
     &.full:not(.expanded) #volume-tooltip {

@@ -25,20 +25,11 @@ const L2 = html`
 
 /**
  * A paginator allows users to navigate between pages of related content.
+ *
  * @summary Allows users to navigate content divided into pages
- * @slot            - An ordered list of links
- * @slot go-to-page - "Go to page" text, defaults to "Page"
- * @slot out-of     - "of" text
- * @csspart container - pagination container
- * @csspart numeric-middle - container for the numeric control at medium screen widths
- * @csspart numeric-end - container for the numeric control at small and large screen widths
- * @csspart numeric - shared container for the numeric controls at all widths
- * @cssprop [--rh-pagination-accent-color=var(--rh-color-interactive-blue, #0066cc)]
- *          Sets the outline color when the page input has focus.
- * @cssprop [--rh-pagination-background-focused=var(--rh-color-gray-20, #c7c7c7)]
- *          Sets the disabled stepper color.
- * @cssprop [--rh-pagination-stepper-color=var(--rh-color-icon-subtle, #707070)]
- *           Sets the stepper color.
+ *
+ * @alias pagination
+ *
  */
 @customElement('rh-pagination')
 @themable
@@ -122,6 +113,7 @@ export class RhPagination extends LitElement {
       if (!this.#ol || [...this.children].filter(x => !x.slot).length > 1) {
         this.#logger.warn('must have a single <ol> element as it\'s only child');
       }
+      this.#currentLink = this.#getCurrentLink();
     }
   }
 
@@ -133,7 +125,6 @@ export class RhPagination extends LitElement {
 
   override update(changed: PropertyValues<this>): void {
     if (!isServer) {
-      this.querySelector('[aria-current="page"]')?.removeAttribute('aria-current');
       this.#updateLightDOMRefs();
       this.overflow = this.#getOverflow();
     }
@@ -165,8 +156,32 @@ export class RhPagination extends LitElement {
       lastHref,
     } = this;
     const currentPage = this.#currentPage.toString();
+    const numericContent = html`
+      <!-- shared container for the numeric controls at all widths -->
+      <div id="numeric" part="numeric">
+        <span id="go-to-page" class="xxs-visually-hidden sm-visually-visible">
+          <!-- "Go to page" text, defaults to "Page" -->
+          <slot name="go-to-page">
+            Page
+          </slot>
+        </span>
+        <input type="number"
+               inputmode="numeric" 
+               required
+               min=1
+               max="${this.total}"
+               aria-labelledby="go-to-page"
+               @change="${this.#onChange}"
+               @keyup="${this.#onKeyup}"
+               .value="${currentPage}">
+        <!-- "of" text -->
+        <slot ?hidden="${!this.total}" name="out-of">of</slot>
+        <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
+      </div>
+    `;
 
     return html`
+      <!-- pagination container -->
       <div id="container" part="container">
         <a id="first"
            class="stepper"
@@ -179,10 +194,12 @@ export class RhPagination extends LitElement {
            .inert="${this.#currentLink === this.#prevLink || this.#currentLink === this.#firstLink}"
            aria-label="${labelPrevious}">${L1}</a>
         <nav aria-label="${label}">
+          <!-- An ordered list of links -->
           <slot></slot>
         </nav>
+        <!-- container for the numeric control at medium screen widths -->
         <div id="numeric-middle" part="numeric-middle">
-          ${this.#numericContent(currentPage, lastHref)}
+          ${numericContent}
         </div>
         <a id="next"
            class="stepper"
@@ -194,31 +211,10 @@ export class RhPagination extends LitElement {
            href="${ifDefined(lastHref)}"
            .inert="${this.#currentLink === this.#lastLink}"
            aria-label="${labelLast}">${L2}</a>
+        <!-- container for the numeric control at small and large screen widths -->
         <div id="numeric-end" part="numeric-end">
-          ${this.#numericContent(currentPage, lastHref)}
+          ${numericContent}
         </div>
-      </div>
-    `;
-  }
-
-  #numericContent(currentPage: string, lastHref?: string) {
-    return html`
-      <div id="numeric" part="numeric">
-        <span id="go-to-page" class="xxs-visually-hidden sm-visually-visible">
-          <slot name="go-to-page">
-            Page
-          </slot>
-        </span>
-        <input inputmode="numeric"
-               required
-               min=1
-               max="${this.total}"
-               aria-labelledby="go-to-page"
-               @change="${this.#onChange}"
-               @keyup="${this.#onKeyup}"
-               .value="${currentPage}">
-        <slot ?hidden="${!this.total}" name="out-of">of</slot>
-        <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
       </div>
     `;
   }
@@ -245,10 +241,12 @@ export class RhPagination extends LitElement {
     if (isServer) {
       return null;
     }
+    // if there is an aria-current="page" attribute, use that
     const ariaCurrent = this.querySelector<HTMLAnchorElement>('li a[aria-current="page"]');
     if (ariaCurrent) {
       return ariaCurrent;
     }
+    // otherwise, use the href to determine the current link
     for (const link of this.#links ?? []) {
       const url = new URL(link.href);
       if (url.pathname === location.pathname
@@ -270,6 +268,16 @@ export class RhPagination extends LitElement {
     this.#currentLink = this.#getCurrentLink();
     if (this.#currentLink) {
       const links = Array.from(this.#links);
+      // if any other links have aria-current="page", remove it unless it is the current link
+      for (const link of links) {
+        if (link === this.#currentLink) {
+          continue;
+        }
+        if (link.getAttribute('aria-current') === 'page') {
+          link.removeAttribute('aria-current');
+        }
+      }
+
       this.#currentIndex = links.indexOf(this.#currentLink);
       this.#prevLink = this.#links[this.#currentIndex - 1];
       this.#nextLink = this.#links[this.#currentIndex + 1];
@@ -333,12 +341,17 @@ export class RhPagination extends LitElement {
     }
   }
 
-  #onChange() {
+  #onChange(event: Event) {
     if (!this.input || !this.#links) {
       return;
     }
+    const newValue = parseInt((event.target as HTMLInputElement).value);
     const inputNum = parseInt(this.input.value);
-    this.#currentIndex = inputNum - 1;
+    if (newValue === inputNum) {
+      return;
+    }
+    this.input.value = newValue.toString();
+    this.#currentIndex = parseInt(this.input.value) - 1;
     if (this.#checkValidity()) {
       this.#go(this.#currentPage);
     }

@@ -16,6 +16,7 @@ import RHDSPlugin from '#11ty-plugins/rhds.js';
 import DesignTokensPlugin from '#11ty-plugins/tokens.js';
 import RHDSMarkdownItPlugin from '#11ty-plugins/markdown-it.js';
 import ImportMapPlugin from '#11ty-plugins/importMap.js';
+import LargeDemoWorkaroundPlugin from '#11ty-plugins/large-demo-workaround.js';
 
 export interface GlobalData {
   runMode: 'build' | 'watch' | 'serve';
@@ -106,12 +107,14 @@ export default async function(eleventyConfig: UserConfig) {
         '@rhds/tokens/': '/assets/packages/@rhds/tokens/js/',
         '@rhds/elements/lib/': '/assets/packages/@rhds/elements/lib/',
         '@rhds/elements/': '/assets/packages/@rhds/elements/elements/',
+        '@rhds/icons': '/assets/packages/@rhds/icons/icons.js',
         '@rhds/icons/': '/assets/packages/@rhds/icons/',
         '@rhds/icons/icons.js': '/assets/packages/@rhds/icons/icons.js',
         '@patternfly/elements/': '/assets/packages/@patternfly/elements/',
         '@patternfly/icons/': '/assets/packages/@patternfly/icons/',
         '@patternfly/pfe-core/': '/assets/packages/@patternfly/pfe-core/',
         '@uxdot/elements/': '/assets/packages/@uxdot/elements/',
+        'vue/dist/vue.esm-browser.js': 'https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js',
       },
     },
     localPackages: [
@@ -119,6 +122,7 @@ export default async function(eleventyConfig: UserConfig) {
       'fuse.js',
       'tinycolor2',
       'element-internals-polyfill',
+      'vue/dist/vue.esm-browser.js',
 
       // RHDS dependencies
       // `manualImportMap` is not traced, so we need to manually specify these
@@ -217,12 +221,16 @@ export default async function(eleventyConfig: UserConfig) {
       'elements/rh-jump-links/rh-jump-link.ts',
       'elements/rh-jump-links/rh-jump-links-list.ts',
       'elements/rh-jump-links/rh-jump-links.ts',
+      'elements/rh-navigation-link/rh-navigation-link.ts',
       'elements/rh-navigation-primary/rh-navigation-primary-item-menu.ts',
       'elements/rh-navigation-primary/rh-navigation-primary-item.ts',
       'elements/rh-navigation-primary/rh-navigation-primary-overlay.ts',
       'elements/rh-navigation-primary/rh-navigation-primary.ts',
       'elements/rh-navigation-secondary/rh-navigation-secondary.ts',
+      'elements/rh-navigation-vertical/rh-navigation-vertical.ts',
+      'elements/rh-navigation-vertical/rh-navigation-vertical-list.ts',
       'elements/rh-pagination/rh-pagination.ts',
+      'elements/rh-scheme-toggle/rh-scheme-toggle.ts',
       'elements/rh-site-status/rh-site-status.ts',
       'elements/rh-skip-link/rh-skip-link.ts',
       'elements/rh-spinner/rh-spinner.ts',
@@ -239,9 +247,12 @@ export default async function(eleventyConfig: UserConfig) {
       'elements/rh-tile/rh-tile.ts',
       'elements/rh-tooltip/rh-tooltip.ts',
       'elements/rh-video-embed/rh-video-embed.ts',
+      'elements/rh-menu-dropdown/rh-menu-dropdown.ts',
+      'elements/rh-menu/rh-menu.ts',
+      'elements/rh-menu/rh-menu-item.ts',
+      'elements/rh-menu/rh-menu-item-group.ts',
       'lib/elements/rh-context-picker/rh-context-picker.ts',
       'uxdot/uxdot-best-practice.ts',
-      'uxdot/uxdot-color-scheme-picker.ts',
       'uxdot/uxdot-copy-button.ts',
       'uxdot/uxdot-copy-permalink.ts',
       'uxdot/uxdot-demo.ts',
@@ -252,7 +263,6 @@ export default async function(eleventyConfig: UserConfig) {
       'uxdot/uxdot-pattern.ts',
       'uxdot/uxdot-repo-status-checklist.ts',
       'uxdot/uxdot-repo-status-list.ts',
-      'uxdot/uxdot-search.ts',
       'uxdot/uxdot-sidenav.ts',
       'uxdot/uxdot-spacer-tokens-table.ts',
       'uxdot/uxdot-toc.ts',
@@ -278,6 +288,11 @@ export default async function(eleventyConfig: UserConfig) {
       'rh-tag',
       'rh-tile',
       'rh-video-embed',
+      'rh-menu-dropdown',
+      'rh-menu',
+      'rh-menu-item',
+      'rh-menu-item-group',
+      'uxdot-pattern',
     ],
     tagsToAlphabetize: [
       'component',
@@ -285,6 +300,10 @@ export default async function(eleventyConfig: UserConfig) {
       'getstarted',
     ],
   });
+
+  // Workaround for large demo files that break Nunjucks includes
+  // Can be removed once the underlying issue is resolved
+  eleventyConfig.addPlugin(LargeDemoWorkaroundPlugin);
 
   return {
     templateFormats: ['html', 'md', 'njk', '11ty.js', '11ty.cjs'],

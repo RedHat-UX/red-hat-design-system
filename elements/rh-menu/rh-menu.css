@@ -6,7 +6,7 @@ slot {
   display: inline-flex;
   align-items: stretch;
   flex-direction: column;
-  width: max-content;
+  width: 100%;
 }
 
 ::slotted(a) {
@@ -24,4 +24,14 @@ slot {
 
 ::slotted(a:visited:hover) {
   color: var(--rh-color-interactive-primary-visited-default) !important;
+}
+
+::slotted(hr) {
+  border: 0;
+  border-top:
+    var(--rh-border-width-sm, 1px) solid light-dark(
+        var(--rh-color-gray-30, #c7c7c7),
+        var(--rh-color-gray-50, #707070)
+      );
+  width: 100%;
 }

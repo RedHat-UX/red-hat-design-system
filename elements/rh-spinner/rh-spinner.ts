@@ -12,8 +12,10 @@ export type SpinnerSize = RhSpinner['size'];
  * A spinner indicates that an action is in progress.
  * It appears as an animated circle over the section that is loading,
  * and it may include a text label
+ *
  * @summary Notifies users their action is being processed or loaded
- * @slot - Optional text label below the animated circle.
+ *
+ * @alias spinner
  */
 @customElement('rh-spinner')
 @themable
@@ -31,6 +33,7 @@ export class RhSpinner extends LitElement {
         <circle class="track" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
         <circle class="dash" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
       </svg>
+      <!-- Optional text label below the animated circle. -->
       <slot></slot>
     `;
   }

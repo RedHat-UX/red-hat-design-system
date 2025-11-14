@@ -51,7 +51,7 @@ rules:
   '@stylistic/string-quotes': single
   '@stylistic/selector-combinator-space-after': always
   '@stylistic/selector-combinator-space-before': always
-  '@stylistic/function-parentheses-newline-inside': never-multi-line
+  '@stylistic/function-parentheses-newline-inside': null
   '@stylistic/function-comma-newline-after': always-multi-line
   '@stylistic/indentation':
     - 2
