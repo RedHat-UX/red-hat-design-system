@@ -15,11 +15,28 @@ export default function(eleventyConfig: UserConfig) {
   eleventyConfig.addTransform('large-demo-workaround', async function(this, content) {
     const { outputPath, inputPath } = this.page;
 
-    // Only apply to the specific problematic demo file
-    if (
-      inputPath === './docs/elements/demo.html'
-      && outputPath.includes('/elements/code-block/demo/thousands/index.html')
-    ) {
+    // Define the large demo files that need workarounds
+    const largeDemos = [
+      {
+        output: '/elements/code-block/demo/thousands/index.html',
+        source: 'thousands.html',
+      },
+      {
+        output: '/elements/code-block/demo/thousands-line-numbers/index.html',
+        source: 'thousands-line-numbers.html',
+      },
+      {
+        output: '/elements/code-block/demo/thousands-line-numbers-full-height/index.html',
+        source: 'thousands-line-numbers-full-height.html',
+      },
+    ];
+
+    // Check if this is one of the problematic demo files
+    const demo = largeDemos.find(d =>
+      inputPath === './docs/elements/demo.html' && outputPath.includes(d.output)
+    );
+
+    if (demo) {
       const document = Parse5.parse(content);
       const body = Tools.query(document, node =>
         Tools.isElementNode(node) && node.tagName === 'body'
@@ -34,7 +51,7 @@ export default function(eleventyConfig: UserConfig) {
 
         if (!hasContent) {
           // Read the demo file directly
-          const demoPath = join(process.cwd(), 'elements/rh-code-block/demo/thousands.html');
+          const demoPath = join(process.cwd(), `elements/rh-code-block/demo/${demo.source}`);
           const demoContent = await readFile(demoPath, 'utf8');
 
           // Parse and inject the demo content
