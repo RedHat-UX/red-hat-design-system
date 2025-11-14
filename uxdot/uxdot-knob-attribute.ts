@@ -44,6 +44,7 @@ export class UxdotKnobAttribute extends LitElement {
 
   #typeMembers: string[] = [];
 
+  // eslint-disable-next-line no-unused-private-class-members
   #internals = InternalsController.of(this, { role: 'listitem' });
 
   get value() {
