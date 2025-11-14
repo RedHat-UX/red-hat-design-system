@@ -15,6 +15,23 @@
   <rh-tab-panel>Server</rh-tab-panel>
   <rh-tab slot="tab"> No Icon </rh-tab>
   <rh-tab-panel>System</rh-tab-panel>
+    <rh-tab slot="tab" icon="users" icon-set="ui">
+    Attrs: Users
+  </rh-tab>
+  <rh-tab-panel>Attrs demo (users/ui)</rh-tab-panel>
+
+  <rh-tab slot="tab" icon="bell" icon-set="ui">
+    Slotted SVG
+    <svg slot="icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M3 12h18M12 3v18" stroke="currentColor" fill="none"/>
+    </svg>
+  </rh-tab>
+  <rh-tab-panel>Slot content takes precedence over attrs</rh-tab-panel>
+
+  <rh-tab slot="tab" icon="container" icon-set="standard" style="--rh-icon-size: var(--rh-size-icon-03);">
+    Icon size override
+  </rh-tab>
+  <rh-tab-panel>Override size via --rh-icon-size</rh-tab-panel>
 </rh-tabs>
 
 <script type="module">
@@ -24,6 +41,6 @@
 
 <style>
   rh-icon {
-    --rh-icon-size: var(--rh-size-icon-03);
+    --rh-icon-size: var(--rh-size-icon-01);
   }
 </style>
