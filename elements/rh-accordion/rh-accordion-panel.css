@@ -1,5 +1,5 @@
 :host {
-  display: none;
+  display: block;
   overflow: hidden;
   will-change: height;
 
@@ -7,6 +7,13 @@
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
+}
+
+/* Hide panels when not expanded, only when scripting is available */
+@media (scripting: enabled) {
+  :host(:not([expanded])) {
+    display: none;
+  }
 }
 
 ::slotted(*:not(rh-accordion)) {
