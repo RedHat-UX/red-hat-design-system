@@ -54,12 +54,6 @@ aligns to our brand strategy, and uses a consistent visual language.
 Why does that matter? Because it helps us create an authentic relationship 
 and credibility with our customers, partners, and contributors.
 
-
-<uxdot-example variant="full" no-border>
-  <img alt="The text 'Brand Standards' with small illustrations of color swatches, dropdown element, and resizing an icon"
-       src="brand-standards.avif">
-</uxdot-example>
-
 <rh-cta><a href="https://www.redhat.com/en/about/brand/standards">Explore brand standards</a></rh-cta>
 
 ### Hybrid Style

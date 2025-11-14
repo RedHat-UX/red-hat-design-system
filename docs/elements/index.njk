@@ -58,7 +58,7 @@ summaries:
     {% endif %}
     {% if not hiddenComponent %}
       <rh-tile id="tile-{{ tagName }}" compact bleed {% if comingSoon %}disabled{% endif %}>
-        <uxdot-example slot="image" no-border transparent><img src="{{ doc.screenshotPath }}" alt="{{ title }}">
+        <uxdot-example slot="image" no-border transparent><img src="{{ doc.screenshotPath }}" alt="{{ title }}"></uxdot-example>
         <h3 slot="headline"><a href="{{ doc.overviewHref | url }}">{{ title }}</a></h3>
         <p>{{ summary }}</p>
         {% if comingSoon %}<div slot="footer">Coming Soon</div>{% endif %}

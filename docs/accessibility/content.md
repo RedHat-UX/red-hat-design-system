@@ -585,7 +585,8 @@ For pages with multilingual content, each element containing a different languag
     <p>
       Colombian author Gabriel García Márquez wrote that we each live three lives: one public, one
       private, and one secret. (Full original quote:
-      <span lang="es">“Todos los seres humanos tenemos tres vidas: pública, privada y secreta.”</span
+      <span lang="es"
+        >“Todos los seres humanos tenemos tres vidas: pública, privada y secreta.”</span
       >)
     </p>
   </body>
