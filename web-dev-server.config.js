@@ -169,7 +169,7 @@ export default pfeDevServerConfig({
     },
     /**
      * serve lightdom CSS files directly from filesystem
-     * Handles: /elements/rh-foo-lightdom.css or /rh-foo/rh-foo-lightdom-*.css
+     * Handles: /elements/rh-foo/rh-foo-lightdom.css or /rh-foo/rh-foo-lightdom-*.css
      * @param ctx koa context
      * @param next next koa middleware
      */
@@ -178,7 +178,9 @@ export default pfeDevServerConfig({
         return next();
       }
 
-      const match = ctx.path.match(/\/(rh-[\w-]+)-(lightdom(?:-[\w-]*)?)\.css$/);
+      // Match paths like /elements/rh-button/rh-button-lightdom.css or /rh-button-lightdom.css
+      const match = ctx.path.match(
+        /(?:\/elements)?\/(rh-[\w-]+)(?:\/\1)?-(lightdom(?:-[\w-]*)?)\.css$/);
       if (!match) {
         return next();
       }
