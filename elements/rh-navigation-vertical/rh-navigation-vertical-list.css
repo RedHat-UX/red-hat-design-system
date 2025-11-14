@@ -11,6 +11,7 @@ details {
     list-style: none;
     cursor: pointer;
     position: relative;
+    place-items: center;
     gap: var(--rh-space-lg, 16px);
 
     &::-webkit-details-marker,
