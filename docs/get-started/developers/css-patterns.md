@@ -29,19 +29,23 @@ We also have element-specific patterns for extending our design system elements 
 
 ## Reset
 
-```html code-block {dedent}
-{%- set cssContent = "./docs/styles/reset.css" | inlineCss -%}{{ cssContent | safe }}
-```
+<rh-code-block actions="copy">
+<script type="text/html">{%- set cssContent = "./docs/styles/reset.css" | inlineCss -%}{{ cssContent | safe }}</script>
+</rh-code-block>
 
 ## Fonts
 
+### Red Hat CDN
+
 If you are on a `*.redhat.com` domain, you can use our CDN to access the Red Hat fonts:
 
-```html code-block {line-numbers=hidden}
-https://www.redhatstatic.com/dssf-001/v2/@redhat/redhat-font@4.1.0/font.min.css
+```html code-block {dedent}
+https://www.redhatstatic.com/dssf-001/v2/@redhat/redhat-font@4.1.0/font.min.css</script>
 ```
 
-Otherwise, you'll need to [download the Red Hat fonts](https://github.com/RedHatOfficial/RedHatFont) and include them directly in your project. Below is an example of how we reference them in CSS:
+### Hosted/bundled assets
+
+Optionally, you can [download the Red Hat fonts](https://github.com/RedHatOfficial/RedHatFont) and include them directly in your project. Below is an example of how you might reference them in CSS:
 
 ```css code-block {dedent}
 {%- set cssContent = "./docs/assets/examples/css/fonts.css" | inlineCss -%}{{ cssContent | safe }}
