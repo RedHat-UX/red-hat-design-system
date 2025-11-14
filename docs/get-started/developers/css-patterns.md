@@ -29,8 +29,13 @@ We also have element-specific patterns for extending our design system elements 
 
 ## Reset
 
-<rh-code-block actions="copy">
-<script type="text/html">{%- set cssContent = "./docs/styles/reset.css" | inlineCss -%}{{ cssContent | safe }}</script>
+
+<rh-code-block actions="copy" highlighting="prerendered" dedent language="css">
+
+```css
+{%- set cssContent = "./docs/styles/reset.css" | inlineCss -%}{{ cssContent }}
+```
+
 </rh-code-block>
 
 ## Fonts
