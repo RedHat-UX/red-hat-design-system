@@ -1,4 +1,4 @@
-var _UxdotKnobAttribute_instances, _UxdotKnobAttribute_values, _UxdotKnobAttribute_iconSet, _UxdotKnobAttribute_icons, _UxdotKnobAttribute_typeMembers, _UxdotKnobAttribute_computeValues, _UxdotKnobAttribute_computeIcons, _UxdotKnobAttribute_getValueForCheckboxes, _UxdotKnobAttribute_firstChange, _UxdotKnobAttribute_onChange;
+var _UxdotKnobAttribute_instances, _UxdotKnobAttribute_values, _UxdotKnobAttribute_iconSet, _UxdotKnobAttribute_icons, _UxdotKnobAttribute_typeMembers, _UxdotKnobAttribute_internals, _UxdotKnobAttribute_computeValues, _UxdotKnobAttribute_computeIcons, _UxdotKnobAttribute_getValueForCheckboxes, _UxdotKnobAttribute_firstChange, _UxdotKnobAttribute_onChange;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -6,10 +6,11 @@ import { property } from 'lit/decorators/property.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { icons } from '@rhds/icons/metadata.js';
 import { css } from "lit";
-const styles = css `li{list-style-type:none;padding:0;margin:0;margin-block:0}li .checkbox-group,li>label{display:flex;align-items:center}li>label{padding-block-end:var(--pf-c-form__group-label--PaddingBottom,8px);font-size:var(--pf-c-form__label--FontSize,16px);line-height:var(--pf-c-form__label--LineHeight,1.5rem)}li rh-tooltip{--rh-color-interactive-primary-default:var(--rh-color-icon-subtle);margin-block-start:var(--rh-space-sm,6px)}#knob-title{font-size:var(--rh-font-size-body-text-sm,.875rem)}#knob[type=text]{box-sizing:border-box;display:flex;flex:1 0 auto;min-width:44px;font-family:var(--pf-global--FontFamily--sans-serif);font-weight:var(--pf-global--FontWeight--normal,400);color:var(--pf-c-form-control--Color,#151515);width:var(--pf-c-form-control--Width,100%);height:var(--pf-c-form-control--Height,36px);line-height:var(--pf-c-form-control--LineHeight,24px);padding-block:var(--pf-c-form-control--PaddingTop,8px) var(--pf-c-form-control--PaddingBottom,8px);padding-inline:var(--pf-c-form-control--PaddingLeft,8px) var(--pf-c-form-control--PaddingRight,8px);font-size:var(--pf-c-form-control--FontSize);background-color:var(--pf-c-form-control--BackgroundColor,#fff);background-repeat:no-repeat;border:var(--pf-c-form-control--BorderWidth,1px) solid;border-color:var(--pf-c-form-control--BorderTopColor,#d2d2d2) var(--pf-c-form-control--BorderRightColor,#d2d2d2) var(--pf-theme--color--text,#151515) var(--pf-c-form-control--BorderLeftColor,#d2d2d2);border-radius:var(--pf-c-form-control--BorderRadius);appearance:none}pf-option{--rh-icon-size:var(--rh-size-icon-03)}button.toggletip{background:none;border:none;padding:none;margin:none;outline:none}button.toggletip rh-icon{color:var(--rh-color-interactive-primary-default)}button.toggletip:is(:focus,:hover){outline:none}button.toggletip:is(:focus,:hover) rh-icon{color:var(--rh-color-interactive-primary-hover)}`;
+const styles = css `#container{list-style-type:none;padding:0;margin:0;margin-block:0}#container .checkbox-group,#container>label{display:flex;align-items:center}#container>label{padding-block-end:var(--pf-c-form__group-label--PaddingBottom,8px);font-size:var(--pf-c-form__label--FontSize,16px);line-height:var(--pf-c-form__label--LineHeight,1.5rem)}#container rh-tooltip{--rh-color-interactive-primary-default:var(--rh-color-icon-subtle);margin-block-start:var(--rh-space-sm,6px)}#knob-title{font-size:var(--rh-font-size-body-text-sm,.875rem)}#knob[type=text]{box-sizing:border-box;display:flex;flex:1 0 auto;min-width:44px;font-family:var(--pf-global--FontFamily--sans-serif);font-weight:var(--pf-global--FontWeight--normal,400);color:var(--pf-c-form-control--Color,#151515);width:var(--pf-c-form-control--Width,100%);height:var(--pf-c-form-control--Height,36px);line-height:var(--pf-c-form-control--LineHeight,24px);padding-block:var(--pf-c-form-control--PaddingTop,8px) var(--pf-c-form-control--PaddingBottom,8px);padding-inline:var(--pf-c-form-control--PaddingLeft,8px) var(--pf-c-form-control--PaddingRight,8px);font-size:var(--pf-c-form-control--FontSize);background-color:var(--pf-c-form-control--BackgroundColor,#fff);background-repeat:no-repeat;border:var(--pf-c-form-control--BorderWidth,1px) solid;border-color:var(--pf-c-form-control--BorderTopColor,#d2d2d2) var(--pf-c-form-control--BorderRightColor,#d2d2d2) var(--pf-theme--color--text,#151515) var(--pf-c-form-control--BorderLeftColor,#d2d2d2);border-radius:var(--pf-c-form-control--BorderRadius);appearance:none}pf-option{--rh-icon-size:var(--rh-size-icon-03)}button.toggletip{background:none;border:none;padding:none;margin:none;outline:none}button.toggletip rh-icon{color:var(--rh-color-interactive-primary-default)}button.toggletip:is(:focus,:hover){outline:none}button.toggletip:is(:focus,:hover) rh-icon{color:var(--rh-color-interactive-primary-hover)}`;
 import '@rhds/elements/rh-switch/rh-switch.js';
 import '@rhds/elements/rh-tabs/rh-tabs.js';
 import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { observes } from '@patternfly/pfe-core/decorators.js';
 const dequote = (x) => x.replace(/^\s*['"]([^'"]+)['"].*$/m, '$1');
 const ARRAY_OF_PAREN_TYPE_RE = /^\((.*)\)\[\]$/;
@@ -21,6 +22,8 @@ let UxdotKnobAttribute = class UxdotKnobAttribute extends LitElement {
         _UxdotKnobAttribute_iconSet.set(this, null);
         _UxdotKnobAttribute_icons.set(this, []);
         _UxdotKnobAttribute_typeMembers.set(this, []);
+        // eslint-disable-next-line no-unused-private-class-members
+        _UxdotKnobAttribute_internals.set(this, InternalsController.of(this, { role: 'listitem' }));
         // guards against the initial pf-select change event
         _UxdotKnobAttribute_firstChange.set(this, false);
     }
@@ -53,7 +56,7 @@ let UxdotKnobAttribute = class UxdotKnobAttribute extends LitElement {
         const listAttrEnumMembers = listAttrEnum?.split('|') ?? [];
         // TODO: replace tooltip with popover for toggletips
         return html `
-      <li data-name="${this.name}" @change="${__classPrivateFieldGet(this, _UxdotKnobAttribute_instances, "m", _UxdotKnobAttribute_onChange)}">
+      <div id="container" data-name="${this.name}" @change="${__classPrivateFieldGet(this, _UxdotKnobAttribute_instances, "m", _UxdotKnobAttribute_onChange)}">
         <label for="knob">
           <code id="knob-title">${this.name}</code>
           <rh-tooltip>
@@ -106,7 +109,7 @@ let UxdotKnobAttribute = class UxdotKnobAttribute extends LitElement {
                id="knob"
                inputmode="${ifDefined(this.type === 'number' ? 'numeric' : undefined)}"
                value="${ifDefined(__classPrivateFieldGet(this, _UxdotKnobAttribute_values, "f").get(this.name))}">`}
-      </li>
+      </div>
     `;
     }
 };
@@ -114,6 +117,7 @@ _UxdotKnobAttribute_values = new WeakMap();
 _UxdotKnobAttribute_iconSet = new WeakMap();
 _UxdotKnobAttribute_icons = new WeakMap();
 _UxdotKnobAttribute_typeMembers = new WeakMap();
+_UxdotKnobAttribute_internals = new WeakMap();
 _UxdotKnobAttribute_firstChange = new WeakMap();
 _UxdotKnobAttribute_instances = new WeakSet();
 _UxdotKnobAttribute_computeValues = async function _UxdotKnobAttribute_computeValues() {
