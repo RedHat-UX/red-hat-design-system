@@ -2,7 +2,9 @@
 title: Patterns
 sidenavTitle: All Patterns
 summaries:
+  accordion: Automatically expand accordions when a URL has hash fragments
   announcement: Displays important messages across web properties
+  call-to-action: Use theming to create desaturated CTAs
   card: Arranges content and interactive elements in a layout
   disclosure: Toggles the visibility of a content panel
   filter: Sorts data by predetermined sections and tags
@@ -15,6 +17,7 @@ summaries:
   sticky-banner: Anchors an offer to the bottom edge of a page
   sticky-card: Anchors an offer to the right edge of a page
   tabs: Programatically activate a tab panel or item inside a tab panel
+  tag: Tags can be used with other elements to label or categorize content
   tile: Style Tiles to differentiate them from other page elements
   video-thumbnail: Overlays a button that indicates video playback
 order: 0
