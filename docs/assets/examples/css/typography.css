@@ -50,10 +50,6 @@ body {
   font-size: var(--rh-font-size-body-text-md);
 }
 
-:where(p, h1, h2, h3, h4, h5, h6, li) {
-  max-width: 56rem; /* warning: magic number */
-}
-
 :where(p, ul, ol, dl) {
   font-size: var(--rh-font-size-body-text-lg);
 }
