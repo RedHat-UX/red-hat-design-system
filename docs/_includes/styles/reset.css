@@ -1,8 +1,12 @@
 /* Box sizing rules */
+html {
+  box-sizing: border-box; /* Set the root element's box-sizing */
+}
+
 *,
 *:before,
 *:after {
-  box-sizing: border-box;
+  box-sizing: inherit; /* Make all elements inherit the root's setting */
 }
 
 /* Remove default margin */
