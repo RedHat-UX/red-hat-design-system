@@ -1,8 +1,8 @@
 ---
 layout: layouts/pages/has-toc.njk
-title: CSS patterns
+title: CSS foundations
 heading: Developers
-permalink: /get-started/developers/css-patterns/index.html
+permalink: /get-started/developers/css-foundations/index.html
 tags:
   - developers
 subnav:
@@ -23,7 +23,7 @@ subnav:
   import '@rhds/elements/rh-accordion/rh-accordion.js';
 </script>
 
-We use CSS patterns to set typography and compose layouts within the design system. Below are some common CSS patterns that we use in combination with [our Tokens](/get-started/developers/tokens/) for this site, which you might find helpful for bootstrapping your own application, page, or website.
+We use CSS patterns to create a foundation of typography and layout compositions within the design system. Below are some common foundational CSS patterns that we use in combination with [our Tokens](/get-started/developers/tokens/) for this site, which you might find helpful for bootstrapping your own application, page, or website.
 
 We also have element-specific patterns for extending our design system elements on our [Patterns page](/patterns/).
 
