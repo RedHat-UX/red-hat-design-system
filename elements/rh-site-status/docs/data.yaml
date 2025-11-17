@@ -9,5 +9,6 @@ libraries:
   shared: planned
   docs: ready
 relatedItems:
-  - rh-card
+  - rh-alert
   - rh-footer
+  - rh-health-index

@@ -2,15 +2,14 @@
 
 A back to top is a pill-shaped button that is anchored to the bottom right corner of a page.
 
-
 ###  Anatomy
 
 <figure>
-  <uxdot-example color-palette="lightest" width-adjustment="140px">
-    <img alt="Back to top button with numerical annotations"
+  <uxdot-example color-palette="lightest">
+    <img alt="Back to top button a 1 next to the button background, 2 next to the button text, and 3 next to the upward facing chevron icon."
          src="../back-to-top-anatomy.svg"
-         width="140"
-         height="67">
+         width="180"
+         height="42">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -23,84 +22,44 @@ A back to top is a pill-shaped button that is anchored to the bottom right corne
 
 
 ## Color scheme
-<a id="theme"></a>
 
-The back to top button looks the same on light and dark color schemes.
+Back to top is available in both light and dark color schemes.
 
-<div class="grid sm-two-columns">
+### Light scheme
 
-  <uxdot-example color-palette="lightest" width-adjustment="90px">
-    <img alt="Back to top button with a blue background and white text against a white surface color"
-         src="../back-to-top.svg"
-         width="90"
-         height="26">  
-  </uxdot-example>
+<uxdot-example color-palette="lightest">
+  <img alt="Back to top button with a blue background and white text against a white surface color"
+       src="../back-to-top.svg"
+       width="98"
+       height="26">  
+</uxdot-example>
 
-  <uxdot-example color-palette="darkest" width-adjustment="90px">
-    <img alt="Back to top buttons that have a blue background and white text against a black surface color"
-         src="../back-to-top.svg"
-         width="90"
-         height="26">
-  </uxdot-example>
+### Dark scheme
 
-</div>
-
+<uxdot-example color-palette="darkest">
+  <img alt="Back to top buttons that have a light blue background and black text against a black surface color"
+       src="../back-to-top-style-scheme-dark.svg"
+       width="98"
+       height="26">
+</uxdot-example>
 
 ## Space
 
-A back to top button has 4px of padding on the left and right, 8px of padding on the top and bottom, and a 4px gap between text and icon. The amount of space remains the same on all breakpoints.
-
-<uxdot-example color-palette="lightest" width-adjustment="106px">
+<uxdot-example color-palette="lightest">
   <img alt="Back to top button with block padding of 4px, inline padding of 8px, and a 4px gap between text and icon"
        src="../back-to-top-space.svg"
-       width="106"
-       height="47">
+       width="114"
+       height="50">
 </uxdot-example>
 
 
 ## Interaction states
 
-Interaction states are visual representations used to communicate the status of an element or pattern.
+The focus ring in the Hover state is slightly smaller than the ring in the Focus and Active states.
 
-
-### Hover
-
-The background color of the button turns to a darker blue on hover. It also has a white border adjacent to the button and a dark blue outline adjacent to the border. This ensures contrast against all surface colors.
-
-<uxdot-example width-adjustment="94px">
-  <img alt="Back to top button with a dark blue background when a cursor hovers over it"
+<uxdot-example color-palette="lightest">
+  <img alt="Three back to top buttons with a dark blue background and a blue focus ring around it demonstrating identical focus and active states, while the hover state has a slightly smaller ring."
        src="../back-to-top-focus-hover-active.svg"
-       width="94"
-       height="30">
+       width="418"
+       height="73">
 </uxdot-example>
-
-
-### Focus
-
-<rh-alert state="info">
-  <h4 slot="header">Helpful tip</h4>
-  <p>The Focus state has the same styles as the Hover state.</p>
-</rh-alert>
-
-<uxdot-example width-adjustment="94px">
-  <img alt="A back to top button with a dark blue background and a blue focus ring around it"
-       src="../back-to-top-focus-hover-active.svg"
-       width="94"
-       height="30">
-</uxdot-example>
-
-
-### Active
-
-<rh-alert state="info">
-  <h4 slot="header">Helpful tip</h4>
-  <p>The Active state has the same styles as the Hover state.</p>
-</rh-alert>
-
-<uxdot-example width-adjustment="94px">
-  <img alt="A back to top button with a dark blue background and a blue focus ring around it"
-       src="../back-to-top-focus-hover-active.svg"
-       width="94"
-       height="30">
-</uxdot-example>
-

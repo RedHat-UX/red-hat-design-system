@@ -35,7 +35,7 @@ export class TileSelectEvent extends Event {
  * @fires {TileSelectEvent} select - when tile is clicked
  */
 @customElement('rh-tile')
-@colorPalettes('lightest', 'darkest')
+@colorPalettes
 @themable
 export class RhTile extends LitElement {
   static readonly styles = [styles];

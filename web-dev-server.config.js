@@ -62,6 +62,7 @@ function injectManuallyResolvedModulesToImportMap(document) {
       '@rhds/tokens/css/': '/node_modules/@rhds/tokens/css/',
       '@floating-ui/dom': '/node_modules/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs',
       '@floating-ui/core': '/node_modules/@floating-ui/core/dist/floating-ui.core.browser.min.mjs',
+      'vue/dist/vue.esm-browser.js': 'https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js',
     });
     for (const key of Object.keys(json.scopes ?? {})) {
       json.scopes[key]['@patternfly/pfe-core'] = '/node_modules/@patternfly/pfe-core/core.js';
@@ -141,6 +142,7 @@ export default pfeDevServerConfig({
     ignore: [
       /^\./,
       /^@rhds\/icons/,
+      /^vue/,
     ],
     inputMap: { imports },
   },
@@ -167,7 +169,7 @@ export default pfeDevServerConfig({
     },
     /**
      * serve lightdom CSS files directly from filesystem
-     * Handles: /elements/rh-foo-lightdom.css or /rh-foo/rh-foo-lightdom-*.css
+     * Handles: /elements/rh-foo/rh-foo-lightdom.css or /rh-foo/rh-foo-lightdom-*.css
      * @param ctx koa context
      * @param next next koa middleware
      */
@@ -176,7 +178,9 @@ export default pfeDevServerConfig({
         return next();
       }
 
-      const match = ctx.path.match(/\/(rh-[\w-]+)-(lightdom(?:-[\w-]*)?)\.css$/);
+      // Match paths like /elements/rh-button/rh-button-lightdom.css or /rh-button-lightdom.css
+      const match = ctx.path.match(
+        /(?:\/elements)?\/(rh-[\w-]+)(?:\/\1)?-(lightdom(?:-[\w-]*)?)\.css$/);
       if (!match) {
         return next();
       }
