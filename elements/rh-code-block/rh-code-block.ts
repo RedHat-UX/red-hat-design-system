@@ -388,10 +388,6 @@ export class RhCodeBlock extends LitElement {
    * Portions copyright prism.js authors (MIT license)
    */
   async #computeLineNumbers() {
-    if (!this.#isIntersecting) {
-      return;
-    }
-
     await this.updateComplete;
     const codes =
         this.#prismOutput ? [this.shadowRoot?.getElementById('prism-output')].filter(x => !!x)
@@ -399,6 +395,11 @@ export class RhCodeBlock extends LitElement {
 
     this.#lines = codes.flatMap(element =>
       element.textContent?.split(/\n(?!$)/g) ?? []);
+    this.requestUpdate();
+
+    if (!this.#isIntersecting) {
+      return;
+    }
 
     if (this.lineNumbers === 'hidden') {
       return;

@@ -44,6 +44,42 @@ In addition to WCAG versions 2.0, 2.1, and 2.2, Equal Access Checker can run sca
 
 [Equal Access Checker](https://www.ibm.com/able/toolkit/tools/#develop) can be installed as a browser extension in Chrome, Firefox, and Edge. It’s also available as CI/CD Node packages.
 
+### False positives on Custom Elements in automated tools
+
+At the time of this writing, automated accessibility tooling cannot detect accessibility features added via the ElementInternals API. This highlights why [manual testing](/accessibility/manual-testing/) is essential—automated tools can miss or misinterpret accessibility implementations that rely on newer APIs.
+
+Some of our elements may receive errors or warnings that are false positives from automated testing tools, like the following:
+
+<div class="grid sm-two-columns">
+  <figure>
+    <uxdot-example color-palette="lightest" width-adjustment="872px">
+      <img src="/assets/accessibility/axe-dev-tools-false-positive.avif"  
+          alt="Axe Dev Tools showing a critical issue on 'Certain ARIA roles must contain particular children.'"
+          width="680"
+          height="485">
+    </uxdot-example>
+    <figcaption>Axe Dev Tools report showing a false positive on a certain ARIA role not having the required child elements.</figcaption>
+  </figure>
+  <figure>
+    <uxdot-example color-palette="lightest" width-adjustment="872px">
+      <img src="/assets/accessibility/lighthouse-false-positive.avif"  
+          alt="Screenshot of Lighthouse reports 'Elements with an ARIA [role] that require children to contain a specific [role] are missing some or all of those required children.'"
+          width="680"
+          height="485">
+    </uxdot-example>
+    <figcaption>Lighthouse report showing a false positive about a missing ARIA role.</figcaption>
+  </figure>
+</div>
+
+In many cases, these false positives occur because automated tools expect to see an ARIA `role` or `aria-*` attribute explicitly defined on a Custom Element, even though that `role` or attribute is already being applied implicitly through the [ElementInternals API](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals).
+
+By using the ElementInternals API, we can assign roles and other accessibility properties directly to a Custom Element, just like a native HTML element. These roles appear correctly in the [accessibility tree](#accessibility-tools-built-into-the-browser-inspector) and are interpreted properly by [screen readers](/accessibility/screen-readers/).
+
+<rh-alert state="info">
+  <h3 slot="header">Note</h3>
+  <p>Our team is working with Deque and others to improve automated accessibility tools, ensuring they correctly detect the ElementInternals API and other modern Web Platform features implemented in our design system.</p>
+</rh-alert>
+
 ## Browser inspectors
 
 You can’t just view a page’s source and trust that the code you’re seeing there reflects what the browser is interpreting. Inspecting elements shows what’s really going on with them—after they’ve been inserted, modified, or deleted by JavaScript.
