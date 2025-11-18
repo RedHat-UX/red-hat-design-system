@@ -138,7 +138,7 @@ let RhAlert = class RhAlert extends LitElement {
             <div id="header-actions">
               <rh-button id="close-button"
                          variant="close"
-                         accessible-label="Close"
+                         label="Close"
                          confirm
                          @click="${__classPrivateFieldGet(this, _RhAlert_instances, "m", _RhAlert_onClose)}"></rh-button>
             </div>`}
