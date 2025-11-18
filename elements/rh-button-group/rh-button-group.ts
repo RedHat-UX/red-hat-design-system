@@ -28,9 +28,6 @@ export class RhButtonGroup extends LitElement {
   // eslint-disable-next-line no-unused-private-class-members
   #internals = InternalsController.of(this, { role: 'group' });
 
-  /** Visually sets the orientation of the button group */
-  @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'horizontal';
-
   @queryAssignedElements({ flatten: true })
   private _buttons!: (HTMLButtonElement | RhButton)[];
 
