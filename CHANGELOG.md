@@ -1,5 +1,15 @@
 # @rhds/elements
 
+## 4.0.1
+### Patch Changes
+
+- 582af1b: `<rh-card>`: improved theming of card border radiuses
+- f335c3d: `<rh-code-block>`: fixed code blocks not being truncated when using deep links, causing them to overlay other content
+- 8ace3c3: `<rh-alert>`: updated close button's label attribute to give accessible name
+- 7a92867: `<rh-alert>`: allow toast function to work when built using native constructible style sheets
+- 3786f5a: `<rh-code-block>`: fixed the visibility of the Show more/less button in `<rh-code-block>` when line numbers are hidden.
+- b8fd133: `<rh-tag>`: fixed height to match design guidelines
+
 ## 4.0.0
 ### Major Changes
 
