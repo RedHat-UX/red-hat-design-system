@@ -76,7 +76,18 @@ export class RhAccordion extends LitElement {
   }
 
   /**
-   * Sets accordion header's accents position to inline or bottom
+   * Positions the accent slot content relative to the panel's title.
+   * The accent slot contains secondary information such as tags, badges, or other small elements.
+   *
+   * - `inline` (default) - Accents appear on the same line as the title
+   * - `bottom` - Accents appear below the title
+   *
+   * ## Usage guidelines
+   * - Use `inline` when accents are brief and horizontal space permits for both title and accents
+   * - Use `bottom` when you have multiple accent elements or need more horizontal space for the title text
+   * - Accent content represents secondary, supplementary information to the title
+   *
+   * @see [Accent slot](https://ux.redhat.com/elements/accordion/style/#accent-slot) in Style documentation
    */
   @property({ attribute: true, reflect: true }) accents?: 'inline' | 'bottom';
 
