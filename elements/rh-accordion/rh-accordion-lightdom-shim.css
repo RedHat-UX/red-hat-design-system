@@ -1,3 +1,5 @@
+/* Lightdom shim for rh-accordion when JavaScript is disabled or not yet loaded */
+
 /*
   NOTE: This shim prioritizes reduced CLS over perfect semantic accessibility.
   As a result, heading hierarchy and some accessibility semantics may be lost when JS is disabled,
@@ -5,20 +7,11 @@
   This is a conscious trade-off for better perceived performance.
 */
 
-/* Lightdom shim for rh-accordion when JavaScript is disabled or not yet loaded */
-
 /* Show all accordion panels by default when JS is not available */
 rh-accordion-panel:not(:defined) {
   display: block;
   overflow: hidden;
   padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
-  border-inline-end:
-    1px
-    solid
-    light-dark(
-        var(--rh-color-border-subtle-on-light, #c7c7c7),
-        var(--rh-color-border-subtle-on-dark, #707070)
-      );
   background-color: var(--rh-color-surface-lightest, #ffffff);
 }
 
