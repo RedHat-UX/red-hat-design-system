@@ -43,8 +43,23 @@ export class RhButton extends LitElement {
    */
   @property({ reflect: true }) type?: 'button' | 'submit' | 'reset';
 
-  /** Accessible name for the button, use when the button does not have slotted text */
-  @property() label?: string;
+  /**
+   * Accessible name for the button, use when the button does not have slotted text
+   */
+  @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
+
+  /**
+   * @deprecated Use `accessible-label` instead
+   * This property maintains backwards compatibility for the old `label` attribute
+   */
+  @property({ attribute: 'label' })
+  set label(value: string | undefined) {
+    this.accessibleLabel = value;
+  }
+
+  get label(): string | undefined {
+    return this.accessibleLabel;
+  }
 
   /** Form value for the button */
   @property() value?: string;
@@ -101,7 +116,7 @@ export class RhButton extends LitElement {
     const hasIcon = this.#hasIcon;
     return html`
       <!-- Internal button element -->
-      <button aria-label="${ifDefined(this.label)}"
+      <button aria-label="${ifDefined(this.accessibleLabel)}"
               class="${classMap({
                 danger,
                 hasIcon,
@@ -123,7 +138,7 @@ export class RhButton extends LitElement {
                 part="icon"
                 name="icon">${this.#renderIcon()}</slot>
         </span>
-        <span aria-hidden=${String(!!this.label) as 'true' | 'false'}><!-- Contains button text --><slot id="text" ></slot></span>
+        <span aria-hidden=${String(!!this.accessibleLabel) as 'true' | 'false'}><!-- Contains button text --><slot id="text" ></slot></span>
       </button>
     `;
   }
