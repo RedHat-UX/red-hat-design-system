@@ -41,6 +41,7 @@ export class RhFooterUniversal extends LitElement {
   /**
    * Check if this element is nested inside another `<footer>`/`<rh-footer>`.
    * If not, set role="contentinfo" on the host via InternalsController.
+   * NOTE: Does not check for other custom elements with `role="contentinfo"`
    */
   #updateRole() {
     let node: HTMLElement | null | undefined = this.parentElement;
