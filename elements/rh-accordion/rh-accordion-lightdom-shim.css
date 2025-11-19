@@ -1,10 +1,10 @@
-/* Lightdom shim for rh-accordion when JavaScript is disabled or not yet loaded */
-
-/*
-  NOTE: This shim prioritizes reduced CLS over perfect semantic accessibility.
-  As a result, heading hierarchy and some accessibility semantics may be lost when JS is disabled,
-  but content remains visible and stable.
-  This is a conscious trade-off for better perceived performance.
+/**
+ *  Lightdom shim for rh-accordion when JavaScript is disabled or not yet loaded
+ *
+ * NOTE: This shim prioritizes reduced CLS over perfect semantic accessibility.
+ * As a result, heading hierarchy and some accessibility semantics may be lost when JS is disabled,
+ * but content remains visible and stable.
+ * This is a conscious trade-off for better perceived performance.
 */
 
 /* Show all accordion panels by default when JS is not available */
@@ -31,7 +31,6 @@ rh-accordion-panel:not(:defined) > *:not(:first-child) {
   padding-block-start: var(--rh-space-xl, 24px);
 }
 
-/* Style accordion headers when not defined */
 rh-accordion-header:not(:defined) {
   display: block;
   color:
@@ -44,13 +43,6 @@ rh-accordion-header:not(:defined) {
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
-  border-inline-end:
-    1px
-    solid
-    light-dark(
-        var(--rh-color-border-subtle-on-light, #c7c7c7),
-        var(--rh-color-border-subtle-on-dark, #707070)
-      );
 }
 
 /* When scripting is enabled, hide non-expanded panels */
