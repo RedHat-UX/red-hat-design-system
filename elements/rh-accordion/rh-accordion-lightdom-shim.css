@@ -1,3 +1,10 @@
+/*
+  NOTE: This shim prioritizes reduced CLS over perfect semantic accessibility.
+  As a result, heading hierarchy and some accessibility semantics may be lost when JS is disabled,
+  but content remains visible and stable.
+  This is a conscious trade-off for better perceived performance.
+*/
+
 /* Lightdom shim for rh-accordion when JavaScript is disabled or not yet loaded */
 
 /* Show all accordion panels by default when JS is not available */
