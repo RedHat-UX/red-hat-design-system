@@ -81,8 +81,11 @@ export class RhAvatar extends LitElement {
 
   render() {
     const { mobile } = this.#screen;
+    const layout = this.layout ? `layout-${this.layout}` : '';
+    const bordered = this.variant === 'bordered';
+
     return html`
-      <div id="container" class="${classMap({ mobile })}">${this.pattern ? html`
+      <div id="container" class="${classMap({ mobile, [layout]: !!layout, plain: this.plain, bordered })}">${this.pattern ? html`
         <!-- Target the canvas element -->
         <canvas part="canvas"></canvas>` : this.src ? html`
         <!-- Targets the img or svg element -->
