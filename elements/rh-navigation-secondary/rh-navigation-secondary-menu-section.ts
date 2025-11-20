@@ -27,7 +27,24 @@ export class RhNavigationSecondaryMenuSection extends LitElement {
 
   render() {
     return html`
-      <!-- container, <section> element -->
+      <!-- summary: menu section container
+           description: |
+             The semantic container for a menu section, grouping related navigation links
+             under a common header. This part corresponds to a \`<section>\` element that
+             provides structure and automatic accessibility enhancements.
+
+             **Styling:**
+             - Use this part to customize individual menu section appearance
+             - Controls spacing and layout of header, links, and CTA
+             - Sections are organized in a grid when multiple sections exist
+             - Automatically applies aria-labelledby to link lists
+
+             **Accessibility:**
+             - Automatically associates heading with list using aria-labelledby
+             - Generates IDs for headers if not present
+             - Ensures semantic structure for screen reader users
+
+             @see [Navigation](https://ux.redhat.com/elements/navigation/) documentation -->
       <section part="container">
         <!-- Adds a header tag to section, expects \`<h1> | <h2> | <h3> | <h4> | <h5> | <h6>\` element -->
         <slot name="header"></slot>
