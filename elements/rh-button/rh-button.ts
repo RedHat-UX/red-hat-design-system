@@ -160,6 +160,30 @@ export class RhButton extends LitElement {
     }
   }
 
+  /**
+   * Programmatically moves focus to the button element.
+   *
+   * This method focuses the internal button element, making it the active element
+   * on the page. Useful for managing focus flow after dynamic content changes or
+   * user interactions.
+   *
+   * ## Usage guidelines
+   * - Use to direct user attention after completing an action
+   * - Helpful for accessibility when managing focus programmatically
+   * - Called automatically when the button is the target of a focus navigation
+   * - Can be used after modals close to return focus to a trigger button
+   *
+   * ## Accessibility
+   * - When focus is moved programmatically, ensure users are aware of the change
+   * - Avoid moving focus unexpectedly as it can disorient users
+   * - Moving focus to a button should be deliberate and serve user needs
+   *
+   * @example
+   * ```js
+   * const button = document.querySelector('rh-button');
+   * button.focus();
+   * ```
+   */
   focus() {
     this._button?.focus();
   }
