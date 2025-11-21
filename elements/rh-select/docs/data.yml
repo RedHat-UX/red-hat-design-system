@@ -1,0 +1,16 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-select
+name: Select
+type: element
+overallStatus: ready
+description: >-
+  The select element represents a control that provides a menu of options.
+libraries:
+  figma: ready
+  rhds: ready
+  shared: planned
+  docs: ready
+relatedItems:
+  - rh-chip
+  - rh-menu-dropdown
+  - rh-switch
