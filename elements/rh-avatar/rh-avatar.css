@@ -71,27 +71,27 @@ slot {
       white-space: nowrap;
       border: 0;
     }
+  }
 
-    #default {
-      & .st1 {
-        fill-rule: evenodd;
-        clip-rule: evenodd;
-        fill: light-dark(#f0f0f0, #212427);
-      }
+  #default {
+    & .st1 {
+      fill-rule: evenodd;
+      clip-rule: evenodd;
+      fill: light-dark(#f0f0f0, #212427);
+    }
 
-      & .st2 {
-        fill: light-dark(#b8bbbe, #4f5255);
-      }
+    & .st2 {
+      fill: light-dark(#b8bbbe, #4f5255);
+    }
 
-      & .st3 {
-        fill-rule: evenodd;
-        clip-rule: evenodd;
-        fill: light-dark(#d2d2d2, #6a6e73);
-      }
+    & .st3 {
+      fill-rule: evenodd;
+      clip-rule: evenodd;
+      fill: light-dark(#d2d2d2, #6a6e73);
+    }
 
-      & .st4 {
-        fill: light-dark(#d2d2d2, #6a6e73);
-      }
+    & .st4 {
+      fill: light-dark(#d2d2d2, #6a6e73);
     }
   }
 
