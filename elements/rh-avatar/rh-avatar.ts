@@ -3,9 +3,7 @@ import type { RandomPatternController } from './random-pattern-controller.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { LitElement, html, isServer, type PropertyValues } from 'lit';
-import { classMap } from 'lit/directives/class-map.js';
 
-import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 import { themable } from '../../lib/themable.js';
 
 import styles from './rh-avatar.css';
@@ -55,7 +53,6 @@ export class RhAvatar extends LitElement {
 
   #pattern?: RandomPatternController;
 
-  #screen = new ScreenSizeController(this);
 
   connectedCallback() {
     super.connectedCallback();
@@ -80,9 +77,8 @@ export class RhAvatar extends LitElement {
   }
 
   render() {
-    const { mobile } = this.#screen;
     return html`
-      <div id="container" class="${classMap({ mobile })}">${this.pattern ? html`
+      <div id="container">${this.pattern ? html`
         <!-- Target the canvas element -->
         <canvas part="canvas"></canvas>` : this.src ? html`
         <!-- Targets the img or svg element -->
