@@ -1,13 +1,11 @@
-var _RhAvatar_instances, _RhAvatar_style, _RhAvatar_pattern, _RhAvatar_screen, _RhAvatar_normalize, _RhAvatar_initPattern;
+var _RhAvatar_instances, _RhAvatar_style, _RhAvatar_pattern, _RhAvatar_normalize, _RhAvatar_initPattern;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { LitElement, html, isServer } from 'lit';
-import { classMap } from 'lit/directives/class-map.js';
-import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 import { themable } from '../../lib/themable.js';
 import { css } from "lit";
-const styles = css `:host{display:inline-block;width:min-content}[hidden]{display:none!important}#container{display:grid;color:var(--rh-color-text-secondary);--_colors:light-dark(var(--rh-avatar-colors,var(--rh-color-blue-30,#92c5f9) var(--rh-color-teal-50,#37a3a3) var(--rh-color-green-60,#3d7317) var(--rh-color-red-40,#f56e6e) var(--rh-color-purple-60,#3d2785)),var(--rh-avatar-colors,var(--rh-color-blue-50,#06c) var(--rh-color-teal-70,#004d4d) var(--rh-color-green-70,#204d00) var(--rh-color-red-50,#e00) var(--rh-color-purple-70,#21134d)));column-gap:var(--rh-space-lg,16px);width:min-content;grid-template-columns:min-content minmax(max-content,250px);grid-template-rows:min-content min-content;grid-template-areas:"a t" "a s"}#title{grid-area:t;align-self:end;font-family:var(--rh-font-family-heading,RedHatDisplay,"Red Hat Display",Helvetica,Arial,sans-serif);font-weight:var(--rh-font-weight-heading-medium,500)}#subtitle,#title{font-size:var(--rh-font-size-body-text-sm,.875rem)}#subtitle{grid-area:s;align-self:start;font-weight:var(--rh-font-weight-heading-regular,400)}:host(:not([plain])) #container.mobile,:host([layout=block]) #container{text-align:center;place-items:center;gap:0;grid-template-columns:minmax(max-content,250px);grid-template-areas:"a" "t" "s";grid-template-rows:minmax(var(--rh-avatar-size,var(--rh-size-icon-06,64px)),var(--rh-size-icon-06,64px)) min-content auto}:host(:not([plain])) #container.mobile :is(img,canvas,svg),:host([layout=block]) :is(img,canvas,svg){margin-block-end:var(--rh-space-lg,16px)}slot{display:block;max-width:250px}::slotted(a){color:var(--rh-color-interactive-primary-default)}::slotted(a:visited){color:var(--rh-color-interactive-primary-visited-default)}::slotted(a:active),::slotted(a:hover){color:var(--rh-color-interactive-primary-hover)}img,svg{object-fit:cover;object-position:center}canvas,img,svg{overflow:hidden;width:var(--rh-avatar-size,var(--rh-size-icon-06,64px));max-width:var(--rh-size-icon-06,64px);aspect-ratio:1;grid-area:a;border-radius:var(--rh-border-radius-pill,64px)}:host([variant=bordered]) :is(canvas,img,svg){border:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}:host([plain]) slot{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}:host([plain]) #container{column-gap:0}#default .st1{fill-rule:evenodd;clip-rule:evenodd;fill:light-dark(#f0f0f0,#212427)}#default .st2{fill:light-dark(#b8bbbe,#4f5255)}#default .st3{fill-rule:evenodd;clip-rule:evenodd}#default .st3,#default .st4{fill:light-dark(#d2d2d2,#6a6e73)}`;
+const styles = css `:host{display:inline-block;width:min-content}[hidden]{display:none!important}#container{display:grid;color:var(--rh-color-text-secondary);--_colors:light-dark(var(--rh-avatar-colors,var(--rh-color-blue-30,#92c5f9) var(--rh-color-teal-50,#37a3a3) var(--rh-color-green-60,#3d7317) var(--rh-color-red-40,#f56e6e) var(--rh-color-purple-60,#3d2785)),var(--rh-avatar-colors,var(--rh-color-blue-50,#06c) var(--rh-color-teal-70,#004d4d) var(--rh-color-green-70,#204d00) var(--rh-color-red-50,#e00) var(--rh-color-purple-70,#21134d)));column-gap:var(--rh-space-lg,16px);width:min-content;grid-template-columns:min-content minmax(max-content,250px);grid-template-rows:min-content min-content;grid-template-areas:"a t" "a s"}#title{grid-area:t;align-self:end;font-family:var(--rh-font-family-heading,RedHatDisplay,"Red Hat Display",Helvetica,Arial,sans-serif);font-weight:var(--rh-font-weight-heading-medium,500)}#subtitle,#title{font-size:var(--rh-font-size-body-text-sm,.875rem)}#subtitle{grid-area:s;align-self:start;font-weight:var(--rh-font-weight-heading-regular,400)}@media (max-width:575px){:host(:not([plain])) #container,:host([layout=block]) #container{text-align:center;place-items:center;gap:0;grid-template-columns:minmax(max-content,250px);grid-template-areas:"a" "t" "s";grid-template-rows:minmax(var(--rh-avatar-size,var(--rh-size-icon-06,64px)),var(--rh-size-icon-06,64px)) min-content auto}}@media (max-width:575px){:host(:not([plain])) #container :is(img,canvas,svg),:host([layout=block]) :is(img,canvas,svg){margin-block-end:var(--rh-space-lg,16px)}}slot{display:block;max-width:250px}::slotted(a){color:var(--rh-color-interactive-primary-default)}::slotted(a:visited){color:var(--rh-color-interactive-primary-visited-default)}::slotted(a:active),::slotted(a:hover){color:var(--rh-color-interactive-primary-hover)}img,svg{object-fit:cover;object-position:center}canvas,img,svg{overflow:hidden;width:var(--rh-avatar-size,var(--rh-size-icon-06,64px));max-width:var(--rh-size-icon-06,64px);aspect-ratio:1;grid-area:a;border-radius:var(--rh-border-radius-pill,64px)}:host([variant=bordered]) :is(canvas,img,svg){border:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}:host([plain]) slot{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}:host([plain]) #container{column-gap:0}#default .st1{fill-rule:evenodd;clip-rule:evenodd;fill:light-dark(#f0f0f0,#212427)}#default .st2{fill:light-dark(#b8bbbe,#4f5255)}#default .st3{fill-rule:evenodd;clip-rule:evenodd}#default .st3,#default .st4{fill:light-dark(#d2d2d2,#6a6e73)}`;
 /**
  * An avatar is a small thumbnail representation of a user.
  *
@@ -23,7 +21,6 @@ let RhAvatar = class RhAvatar extends LitElement {
         this.plain = false;
         _RhAvatar_style.set(this, void 0);
         _RhAvatar_pattern.set(this, void 0);
-        _RhAvatar_screen.set(this, new ScreenSizeController(this));
     }
     connectedCallback() {
         super.connectedCallback();
@@ -32,9 +29,8 @@ let RhAvatar = class RhAvatar extends LitElement {
         }
     }
     render() {
-        const { mobile } = __classPrivateFieldGet(this, _RhAvatar_screen, "f");
         return html `
-      <div id="container" class="${classMap({ mobile })}">${this.pattern ? html `
+      <div id="container">${this.pattern ? html `
         <!-- Target the canvas element -->
         <canvas part="canvas"></canvas>` : this.src ? html `
         <!-- Targets the img or svg element -->
@@ -72,7 +68,6 @@ let RhAvatar = class RhAvatar extends LitElement {
 };
 _RhAvatar_style = new WeakMap();
 _RhAvatar_pattern = new WeakMap();
-_RhAvatar_screen = new WeakMap();
 _RhAvatar_instances = new WeakSet();
 _RhAvatar_normalize = function _RhAvatar_normalize() {
     for (const node of this.childNodes) {
