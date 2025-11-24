@@ -1,4 +1,4 @@
-var _RhCodeBlock_instances, _RhCodeBlock_logger, _RhCodeBlock_slots, _RhCodeBlock_prismOutput, _RhCodeBlock_isIntersecting, _RhCodeBlock_io, _RhCodeBlock_ro, _RhCodeBlock_lines, _RhCodeBlock_lineHeights, _RhCodeBlock_onSlotChange, _RhCodeBlock_applyPrismPrerenderedStyles, _RhCodeBlock_highlightWithPrism, _RhCodeBlock_wrapChanged, _RhCodeBlock_setSlottedLabelState, _RhCodeBlock_getSlottedCodeElements, _RhCodeBlock_computeLineNumbers, _RhCodeBlock_onActionsClick, _RhCodeBlock_onActionsKeyup, _RhCodeBlock_onCodeAction, _RhCodeBlock_onClickExpand, _RhCodeBlock_preCopy, _RhCodeBlock_copy;
+var _RhCodeBlock_instances, _RhCodeBlock_logger, _RhCodeBlock_slots, _RhCodeBlock_prismOutput, _RhCodeBlock_isIntersecting, _RhCodeBlock_ro, _RhCodeBlock_lines, _RhCodeBlock_lineHeights, _RhCodeBlock_onSlotChange, _RhCodeBlock_applyPrismPrerenderedStyles, _RhCodeBlock_highlightWithPrism, _RhCodeBlock_onVisibilityChange, _RhCodeBlock_updateResizeObserver, _RhCodeBlock_wrapChanged, _RhCodeBlock_setSlottedLabelState, _RhCodeBlock_getSlottedCodeElements, _RhCodeBlock_computeLines, _RhCodeBlock_computeLineNumbers, _RhCodeBlock_onActionsClick, _RhCodeBlock_onActionsKeyup, _RhCodeBlock_onCodeAction, _RhCodeBlock_onClickExpand, _RhCodeBlock_preCopy, _RhCodeBlock_copy;
 var RhCodeBlock_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { CSSResult, LitElement, html, isServer } from 'lit';
@@ -12,7 +12,7 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
-const style = css `:host{--rh-code-block-callout-size:var(--rh-size-icon-02,24px);--_aspect-ratio:1;--_badge-size:var(--rh-code-block-callout-size);--_badge-padding:0;display:block;max-width:1000px;max-height:calc(var(--rh-space-4xl, 64px)*10)}:host([full-height]){--_expand-toggle-rotate:0deg;max-height:none}[hidden]{display:none!important}::slotted(pre){margin:0!important;padding:0!important;background:#0000!important;border:none!important}.shadow-fab{display:flex;align-items:center;justify-content:center;border:none;background:#0000;padding:var(--rh-space-md,8px);border-radius:var(--rh-border-radius-default,3px);width:var(--rh-length-3xl,48px);height:var(--rh-length-3xl,48px)}.shadow-fab:is(:hover,:focus,:active){background:var(--rh-color-surface)}.shadow-fab svg{width:var(--rh-size-icon-02,24px);height:var(--rh-size-icon-02,24px);color:var(--rh-color-text-primary)}#container,#content,#content-lines,#prism-output,#sizers{max-width:100%}#prism-output{margin:0}#prism-output code{font-size:inherit;font-family:inherit;font-weight:inherit;line-height:inherit}#container{--_code-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),oklch(from var(--rh-color-surface-dark,#383838) calc(l * 0.82) c h));--_code-main-spacer:var(--rh-space-xl,24px);--_cdata-color:var(--rh-color-text-secondary);--_comment-color:var(--rh-color-text-secondary);--_comment-block-color:var(--rh-color-text-secondary);--_doctype-color:var(--rh-color-text-secondary);--_default-color:light-dark(var(--rh-color-gray-95,#151515),var(--rh-color-gray-20,#e0e0e0));--_selected-text-background:light-dark(var(--rh-color-blue-10,#e0f0ff),var(--rh-color-gray-95,#151515));--_punctuation-color:light-dark(var(--rh-color-gray-40,#a3a3a3),var(--rh-color-gray-20,#e0e0e0));--_namespace-color:light-dark(var(--rh-color-gray-95,#151515),var(--rh-color-red-40,#f56e6e));--_property-color:light-dark(var(--rh-color-purple-50,#5e40be),var(--rh-color-yellow-40,#dca614));--_tag-color:light-dark(var(--rh-color-purple-50,#5e40be),var(--rh-color-red-10,#fce3e3));--_boolean-color:light-dark(var(--rh-color-purple-50,#5e40be),var(--rh-color-orange-40,#f5921b));--_number-color:light-dark(var(--rh-color-purple-50,#5e40be),var(--rh-color-orange-40,#f5921b));--_constant-color:light-dark(var(--rh-color-purple-50,#5e40be),var(--rh-color-yellow-40,#dca614));--_symbol-color:light-dark(var(--rh-color-purple-50,#5e40be),var(--rh-color-yellow-40,#dca614));--_deleted-color:light-dark(var(--rh-color-purple-50,#5e40be),var(--rh-color-red-40,#f56e6e));--_function-name-color:light-dark(var(--rh-color-purple-50,#5e40be),var(--rh-color-teal-20,#b9e5e5));--_selector-color:light-dark(var(--rh-color-teal-60,#147878),var(--rh-color-purple-30,#b6a6e9));--_attr-name-color:light-dark(var(--rh-color-teal-60,#147878),var(--rh-color-red-40,#f56e6e));--_string-color:light-dark(var(--rh-color-teal-60,#147878),var(--rh-color-green-40,#87bb62));--_character-color:light-dark(var(--rh-color-teal-60,#147878),var(--rh-color-green-40,#87bb62));--_built-in-color:light-dark(var(--rh-color-teal-60,#147878),var(--rh-color-purple-30,#b6a6e9));--_inserted-color:light-dark(var(--rh-color-teal-60,#147878),var(--rh-color-green-40,#87bb62));--_operator-color:light-dark(var(--rh-color-yellow-60,#96640f),var(--rh-color-blue-40,#4394e5));--_entity-color:light-dark(var(--rh-color-yellow-60,#96640f),var(--rh-color-blue-40,#4394e5));--_url-color:light-dark(var(--rh-color-yellow-60,#96640f),var(--rh-color-blue-40,#4394e5));--_at-rule-color:light-dark(var(--rh-color-blue-60,#004d99),var(--rh-color-purple-30,#b6a6e9));--_attr-value-color:light-dark(var(--rh-color-blue-60,#004d99),var(--rh-color-green-40,#87bb62));--_keyword-color:light-dark(var(--rh-color-blue-60,#004d99),var(--rh-color-purple-30,#b6a6e9));--_function-color:light-dark(var(--rh-color-red-60,#a60000),var(--rh-color-orange-40,#f5921b));--_class-name-color:light-dark(var(--rh-color-red-60,#a60000),var(--rh-color-yellow-40,#dca614));--_regex-color:light-dark(var(--rh-color-orange-60,#9e4a06),var(--rh-color-green-40,#87bb62));--_important-color:light-dark(var(--rh-color-orange-60,#9e4a06),var(--rh-color-purple-30,#b6a6e9));--_variable-color:light-dark(var(--rh-color-orange-60,#9e4a06),var(--rh-color-green-40,#87bb62));display:grid;content-visibility:auto;place-items:center;grid-template-columns:auto min-content;grid-template-areas:"code actions" "expand expand";column-gap:var(--_code-main-spacer);padding-inline-start:var(--_code-main-spacer);padding-block-end:var(--_code-main-spacer);border-radius:var(--rh-border-radius-default,3px);background-color:var(--_code-background-color);color:var(--rh-color-text-primary);border:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-block-start-width:var(--rh-code-block-border-block-start-width,var(--rh-border-width-sm,1px));--_gradient:linear-gradient(var(--_gradient-angle,0deg),var(--_code-background-color) 0%,#0000 100%)}#container.isIntersecting{content-visibility:visible}#container.expandable{padding-block-end:0}#content,#prism-output,#sizers{display:block;font-family:var(--rh-font-family-code,RedHatMono,"Red Hat Mono","Courier New",Courier,monospace);z-index:1;place-self:start;grid-area:code}#content::slotted(:is(script,pre)),#prism-output,#sizers{display:inline;white-space:var(--_code-white-space,pre);word-wrap:var(--_code-word-wrap,initial);color:inherit}#content::slotted(:is(code[class*=language-],pre[class*=language-])){color:var(--_code-color);font-family:var(--rh-font-family-code,RedHatMono,"Red Hat Mono","Courier New",Courier,monospace);text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:var(--rh-line-height-code,1.5);tab-size:4;hyphens:none;background:#0000}:host([highlighting=prerendered]) .wrap #content::slotted(pre[class*=language-]){white-space:pre-wrap!important}#content::slotted(rh-tag){width:var(--rh-size-icon-06,64px)}#content-lines{display:grid;column-gap:var(--rh-space-lg,16px);grid-area:code;grid-template-areas:"lines code";grid-template-columns:min-content 1fr;grid-template-rows:1fr;position:relative;overflow-y:auto;margin-block-start:var(--_code-main-spacer);width:100%}#sizers{position:absolute;min-width:100%;width:100%;opacity:0;pointer-events:none;z-index:-10000;line-height:var(--rh-line-height-code,1.5)}#line-numbers{pointer-events:none;overflow-y:hidden;margin:0;grid-area:lines;list-style-type:none;padding-inline:0 var(--rh-space-md,8px);text-align:end;font-family:var(--rh-font-family-code,RedHatMono,"Red Hat Mono","Courier New",Courier,monospace);color:var(--rh-color-text-secondary);font-weight:var(--rh-font-weight-code-regular,400);border-inline-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}#line-numbers li{line-height:var(--rh-line-height-code,1.5);display:block}#actions{display:flex;grid-area:actions;gap:var(--rh-space-md,8px);flex-flow:column;margin-block-start:var(--rh-space-lg,16px);margin-inline-end:var(--rh-space-lg,16px);z-index:2;place-self:start center;height:100%;position:relative;--_gradient-angle:270deg}#actions rh-tooltip{display:block}#expand{--_code-secondary-spacer:var(--rh-space-md,8px);display:inline-flex;align-items:center;border:0;background:#0000;grid-area:expand;gap:var(--rh-space-md,8px);inset-block-end:var(--_code-secondary-spacer);margin-block:var(--_code-secondary-spacer);color:var(--rh-color-text-primary);font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-sm,.875rem);font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5)}#expand svg{width:11px;height:7px;rotate:var(--_expand-toggle-rotate,180deg);transform:rotate .2s ease-in-out;color:var(--rh-color-icon-secondary)}#container.compact{--_code-main-spacer:var(--rh-space-lg,16px);--_code-secondary-spacer:var(--rh-space-sm,6px)}.resizable #content-lines{resize:vertical;overflow-x:scroll}.truncated #content-lines{max-height:calc(var(--rh-font-size-code-md, 1rem)*8)}.truncated #content-lines:before{content:"";display:block;position:sticky;z-index:2;inset-block-end:0;inset-inline:0;height:var(--rh-space-3xl,48px);pointer-events:none;grid-column:-1/1;background:var(--_gradient)}:host([line-numbers=hidden]) #content-lines{grid-template-areas:"code";grid-template-columns:1fr}:host([line-numbers=hidden]) #line-numbers{display:none}:not(.wrap) #actions:before{content:"";display:block;position:absolute;z-index:2;inset-block:0;inset-inline-start:calc(var(--rh-space-4xl, 64px)*-1);width:var(--rh-space-4xl,64px);pointer-events:none;background:var(--_gradient)}:not(.actions) #actions{margin:0}.wrap{--_code-white-space:pre-wrap;--_code-word-wrap:anywhere}[name=legend]::slotted(dl){display:grid;grid-template-columns:max-content auto;margin-block:var(--rh-space-lg,16px);gap:var(--rh-space-md,8px)}:host([highlighting=client]) #content::slotted(:is(script,pre)){display:none}`;
+const style = css `:host{--rh-code-block-callout-size:var(--rh-size-icon-02,24px);--_aspect-ratio:1;--_badge-size:var(--rh-code-block-callout-size);--_badge-padding:0;display:block;max-width:1000px;max-height:calc(var(--rh-space-4xl, 64px)*10)}:host([full-height]){--_expand-toggle-rotate:0deg;max-height:none}[hidden]{display:none!important}::slotted(pre){margin:0!important;padding:0!important;background:#0000!important;border:none!important}.shadow-fab{display:flex;align-items:center;justify-content:center;border:none;background:#0000;padding:var(--rh-space-md,8px);border-radius:var(--rh-border-radius-default,3px);width:var(--rh-length-3xl,48px);height:var(--rh-length-3xl,48px)}.shadow-fab:is(:hover,:focus,:active){background:var(--rh-color-surface)}.shadow-fab svg{width:var(--rh-size-icon-02,24px);height:var(--rh-size-icon-02,24px);color:var(--rh-color-text-primary)}#container,#content,#content-lines,#prism-output,#sizers{max-width:100%}#prism-output{margin:0}#prism-output code{font-size:inherit;font-family:inherit;font-weight:inherit;line-height:inherit}#container{--_code-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),oklch(from var(--rh-color-surface-dark,#383838) calc(l * 0.82) c h));--_code-main-spacer:var(--rh-space-xl,24px);--_cdata-color:var(--rh-color-text-secondary);--_comment-color:var(--rh-color-text-secondary);--_comment-block-color:var(--rh-color-text-secondary);--_doctype-color:var(--rh-color-text-secondary);--_default-color:light-dark(var(--rh-color-gray-95,#151515),var(--rh-color-gray-20,#e0e0e0));--_selected-text-background:light-dark(var(--rh-color-blue-10,#e0f0ff),var(--rh-color-gray-95,#151515));--_punctuation-color:light-dark(var(--rh-color-gray-40,#a3a3a3),var(--rh-color-gray-20,#e0e0e0));--_namespace-color:light-dark(var(--rh-color-gray-95,#151515),var(--rh-color-red-40,#f56e6e));--_property-color:light-dark(var(--rh-color-purple-50,#5e40be),var(--rh-color-yellow-40,#dca614));--_tag-color:light-dark(var(--rh-color-purple-50,#5e40be),var(--rh-color-red-10,#fce3e3));--_boolean-color:light-dark(var(--rh-color-purple-50,#5e40be),var(--rh-color-orange-40,#f5921b));--_number-color:light-dark(var(--rh-color-purple-50,#5e40be),var(--rh-color-orange-40,#f5921b));--_constant-color:light-dark(var(--rh-color-purple-50,#5e40be),var(--rh-color-yellow-40,#dca614));--_symbol-color:light-dark(var(--rh-color-purple-50,#5e40be),var(--rh-color-yellow-40,#dca614));--_deleted-color:light-dark(var(--rh-color-purple-50,#5e40be),var(--rh-color-red-40,#f56e6e));--_function-name-color:light-dark(var(--rh-color-purple-50,#5e40be),var(--rh-color-teal-20,#b9e5e5));--_selector-color:light-dark(var(--rh-color-teal-60,#147878),var(--rh-color-purple-30,#b6a6e9));--_attr-name-color:light-dark(var(--rh-color-teal-60,#147878),var(--rh-color-red-40,#f56e6e));--_string-color:light-dark(var(--rh-color-teal-60,#147878),var(--rh-color-green-40,#87bb62));--_character-color:light-dark(var(--rh-color-teal-60,#147878),var(--rh-color-green-40,#87bb62));--_built-in-color:light-dark(var(--rh-color-teal-60,#147878),var(--rh-color-purple-30,#b6a6e9));--_inserted-color:light-dark(var(--rh-color-teal-60,#147878),var(--rh-color-green-40,#87bb62));--_operator-color:light-dark(var(--rh-color-yellow-60,#96640f),var(--rh-color-blue-40,#4394e5));--_entity-color:light-dark(var(--rh-color-yellow-60,#96640f),var(--rh-color-blue-40,#4394e5));--_url-color:light-dark(var(--rh-color-yellow-60,#96640f),var(--rh-color-blue-40,#4394e5));--_at-rule-color:light-dark(var(--rh-color-blue-60,#004d99),var(--rh-color-purple-30,#b6a6e9));--_attr-value-color:light-dark(var(--rh-color-blue-60,#004d99),var(--rh-color-green-40,#87bb62));--_keyword-color:light-dark(var(--rh-color-blue-60,#004d99),var(--rh-color-purple-30,#b6a6e9));--_function-color:light-dark(var(--rh-color-red-60,#a60000),var(--rh-color-orange-40,#f5921b));--_class-name-color:light-dark(var(--rh-color-red-60,#a60000),var(--rh-color-yellow-40,#dca614));--_regex-color:light-dark(var(--rh-color-orange-60,#9e4a06),var(--rh-color-green-40,#87bb62));--_important-color:light-dark(var(--rh-color-orange-60,#9e4a06),var(--rh-color-purple-30,#b6a6e9));--_variable-color:light-dark(var(--rh-color-orange-60,#9e4a06),var(--rh-color-green-40,#87bb62));display:grid;place-items:center;grid-template-columns:auto min-content;grid-template-areas:"code actions" "expand expand";column-gap:var(--_code-main-spacer);padding-inline-start:var(--_code-main-spacer);padding-block-end:var(--_code-main-spacer);border-radius:var(--rh-border-radius-default,3px);background-color:var(--_code-background-color);color:var(--rh-color-text-primary);border:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-block-start-width:var(--rh-code-block-border-block-start-width,var(--rh-border-width-sm,1px));content-visibility:auto;contain-intrinsic-block-size:auto 193px;--_gradient:linear-gradient(var(--_gradient-angle,0deg),var(--_code-background-color) 0%,#0000 100%)}#container.isIntersecting,#container:not(.line-numbers):not(.isIntersecting){content-visibility:visible}#container.expandable{padding-block-end:0}#content,#prism-output,#sizers{display:block;font-family:var(--rh-font-family-code,RedHatMono,"Red Hat Mono","Courier New",Courier,monospace);z-index:1;place-self:start;grid-area:code}#content::slotted(:is(script,pre)),#prism-output,#sizers{display:inline;white-space:var(--_code-white-space,pre);word-wrap:var(--_code-word-wrap,initial);color:inherit}#content::slotted(:is(code[class*=language-],pre[class*=language-])){color:var(--_code-color);font-family:var(--rh-font-family-code,RedHatMono,"Red Hat Mono","Courier New",Courier,monospace);text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:var(--rh-line-height-code,1.5);tab-size:4;hyphens:none;background:#0000}:host([highlighting=prerendered]) .wrap #content::slotted(pre[class*=language-]){white-space:pre-wrap!important}#content::slotted(rh-tag){width:var(--rh-size-icon-06,64px)}#content-lines{display:grid;column-gap:var(--rh-space-lg,16px);grid-area:code;grid-template-areas:"lines code";grid-template-columns:min-content 1fr;grid-template-rows:1fr;position:relative;overflow-y:auto;margin-block-start:var(--_code-main-spacer);width:100%}#sizers{position:absolute;min-width:100%;width:100%;opacity:0;pointer-events:none;z-index:-10000;line-height:var(--rh-line-height-code,1.5)}#line-numbers{pointer-events:none;overflow-y:hidden;margin:0;grid-area:lines;list-style-type:none;padding-inline:0 var(--rh-space-md,8px);text-align:end;font-family:var(--rh-font-family-code,RedHatMono,"Red Hat Mono","Courier New",Courier,monospace);color:var(--rh-color-text-secondary);font-weight:var(--rh-font-weight-code-regular,400);border-inline-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}#line-numbers li{line-height:var(--rh-line-height-code,1.5);display:block}#actions{display:flex;grid-area:actions;gap:var(--rh-space-md,8px);flex-flow:column;margin-block-start:var(--rh-space-lg,16px);margin-inline-end:var(--rh-space-lg,16px);z-index:2;place-self:start center;height:100%;position:relative;--_gradient-angle:270deg}#actions rh-tooltip{display:block;z-index:10000}#expand{--_code-secondary-spacer:var(--rh-space-md,8px);display:inline-flex;align-items:center;border:0;background:#0000;grid-area:expand;gap:var(--rh-space-md,8px);inset-block-end:var(--_code-secondary-spacer);margin-block:var(--_code-secondary-spacer);color:var(--rh-color-text-primary);font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-sm,.875rem);font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5)}#expand svg{width:11px;height:7px;rotate:var(--_expand-toggle-rotate,180deg);transform:rotate .2s ease-in-out;color:var(--rh-color-icon-secondary)}#container.compact{--_code-main-spacer:var(--rh-space-lg,16px);--_code-secondary-spacer:var(--rh-space-sm,6px)}.resizable #content-lines{resize:vertical;overflow-x:scroll}.truncated #content-lines{max-height:calc(var(--rh-font-size-code-md, 1rem)*8)}.truncated #content-lines:before{content:"";display:block;position:sticky;z-index:2;inset-block-end:0;inset-inline:0;height:var(--rh-space-3xl,48px);pointer-events:none;grid-column:-1/1;background:var(--_gradient)}:host([line-numbers=hidden]) #content-lines{grid-template-areas:"code";grid-template-columns:1fr}:host([line-numbers=hidden]) #line-numbers{display:none}:not(.wrap) #actions:before{content:"";display:block;position:absolute;z-index:2;inset-block:0;inset-inline-start:calc(var(--rh-space-4xl, 64px)*-1);width:var(--rh-space-4xl,64px);pointer-events:none;background:var(--_gradient)}:not(.actions) #actions{margin:0}.wrap{--_code-white-space:pre-wrap;--_code-word-wrap:anywhere}[name=legend]::slotted(dl){display:grid;grid-template-columns:max-content auto;margin-block:var(--rh-space-lg,16px);gap:var(--rh-space-md,8px)}:host([highlighting=client]) #content::slotted(:is(script,pre)){display:none}`;
 /**
  * Returns a string with common indent stripped from each line. Useful for templating HTML
  * @param str indented string
@@ -82,38 +82,28 @@ let RhCodeBlock = RhCodeBlock_1 = class RhCodeBlock extends LitElement {
         _RhCodeBlock_slots.set(this, new SlotController(this, null, 'action-label-copy', 'copy-failed', 'action-label-wrap', 'show-more', 'show-less', 'legend'));
         _RhCodeBlock_prismOutput.set(this, void 0);
         _RhCodeBlock_isIntersecting.set(this, false);
-        _RhCodeBlock_io.set(this, new IntersectionObserver(rs => {
-            const old = __classPrivateFieldGet(this, _RhCodeBlock_isIntersecting, "f");
-            const isIntersecting = rs.some(r => r.isIntersecting);
-            __classPrivateFieldSet(this, _RhCodeBlock_isIntersecting, isIntersecting, "f");
-            if (old !== isIntersecting) {
-                this.requestUpdate();
-            }
-            __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_computeLineNumbers).call(this);
-        }, { rootMargin: '50% 0px' }));
-        _RhCodeBlock_ro.set(this, new ResizeObserver(() => __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_computeLineNumbers).call(this)));
+        _RhCodeBlock_ro.set(this, void 0);
         _RhCodeBlock_lines.set(this, []);
         _RhCodeBlock_lineHeights.set(this, []);
     }
     connectedCallback() {
         super.connectedCallback();
         if (!isServer) {
-            __classPrivateFieldGet(this, _RhCodeBlock_ro, "f").observe(this);
-            __classPrivateFieldGet(this, _RhCodeBlock_io, "f").observe(this);
+            __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_updateResizeObserver).call(this);
         }
         __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_onSlotChange).call(this);
     }
     disconnectedCallback() {
         super.disconnectedCallback();
-        __classPrivateFieldGet(this, _RhCodeBlock_ro, "f").disconnect();
-        __classPrivateFieldGet(this, _RhCodeBlock_io, "f").disconnect();
+        __classPrivateFieldGet(this, _RhCodeBlock_ro, "f")?.disconnect();
     }
     render() {
         const { fullHeight, wrap, resizable, compact } = this;
+        const lineNumbers = this.lineNumbers !== 'hidden';
         const expandable = __classPrivateFieldGet(this, _RhCodeBlock_lines, "f").length > 5;
         const truncated = expandable && !fullHeight;
         const actions = !!this.actions.length;
-        const isIntersecting = __classPrivateFieldGet(this, _RhCodeBlock_isIntersecting, "f");
+        const isIntersecting = __classPrivateFieldGet(this, _RhCodeBlock_isIntersecting, "f") && this.lineNumbers !== 'hidden';
         const actionCopyLabelledBy = this.copyButtonState === 'default' ?
             'copy-to-clipboard-label'
             : this.copyButtonState === 'active' ?
@@ -121,8 +111,9 @@ let RhCodeBlock = RhCodeBlock_1 = class RhCodeBlock extends LitElement {
                 : 'copy-failed-label';
         return html `
       <div id="container"
-           class="${classMap({ actions, compact, expandable, fullHeight, isIntersecting, resizable, truncated, wrap })}"
-           @code-action="${__classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_onCodeAction)}">
+           class="${classMap({ actions, compact, expandable, fullHeight, isIntersecting, resizable, truncated, wrap, 'line-numbers': lineNumbers })}"
+           @code-action="${__classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_onCodeAction)}"
+           @contentvisibilityautostatechange="${__classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_onVisibilityChange)}">
         <div id="content-lines" tabindex="${ifDefined((!fullHeight || undefined) && 0)}">
           <div id="sizers" aria-hidden="true"></div>
           <ol id="line-numbers" inert aria-hidden="true">${__classPrivateFieldGet(this, _RhCodeBlock_lineHeights, "f").map((height, i) => html `
@@ -205,11 +196,16 @@ let RhCodeBlock = RhCodeBlock_1 = class RhCodeBlock extends LitElement {
     `;
     }
     firstUpdated() {
+        __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_computeLines).call(this);
+        // After computing lines, also update line heights if visible
         __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_computeLineNumbers).call(this);
     }
     updated(changed) {
         if (changed.has('wrap')) {
             __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_wrapChanged).call(this);
+        }
+        if (changed.has('lineNumbers') && !isServer) {
+            __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_updateResizeObserver).call(this);
         }
         if (this.actions.length && !isServer) {
             import('@rhds/elements/rh-tooltip/rh-tooltip.js');
@@ -220,7 +216,6 @@ _RhCodeBlock_logger = new WeakMap();
 _RhCodeBlock_slots = new WeakMap();
 _RhCodeBlock_prismOutput = new WeakMap();
 _RhCodeBlock_isIntersecting = new WeakMap();
-_RhCodeBlock_io = new WeakMap();
 _RhCodeBlock_ro = new WeakMap();
 _RhCodeBlock_lines = new WeakMap();
 _RhCodeBlock_lineHeights = new WeakMap();
@@ -236,6 +231,8 @@ _RhCodeBlock_onSlotChange = async function _RhCodeBlock_onSlotChange() {
             await __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_applyPrismPrerenderedStyles).call(this);
             break;
     }
+    await __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_computeLines).call(this);
+    // After computing lines, also update line heights if visible
     __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_computeLineNumbers).call(this);
 };
 _RhCodeBlock_applyPrismPrerenderedStyles = async function _RhCodeBlock_applyPrismPrerenderedStyles() {
@@ -268,7 +265,34 @@ _RhCodeBlock_highlightWithPrism = async function _RhCodeBlock_highlightWithPrism
         await this.updateComplete;
     }
 };
+_RhCodeBlock_onVisibilityChange = function _RhCodeBlock_onVisibilityChange(event) {
+    // skipped = true means content is NOT being rendered (off-screen)
+    // skipped = false means content IS being rendered (on/near screen)
+    const { skipped } = event;
+    const old = __classPrivateFieldGet(this, _RhCodeBlock_isIntersecting, "f");
+    __classPrivateFieldSet(this, _RhCodeBlock_isIntersecting, !skipped, "f");
+    if (old !== __classPrivateFieldGet(this, _RhCodeBlock_isIntersecting, "f")) {
+        this.requestUpdate();
+        if (__classPrivateFieldGet(this, _RhCodeBlock_isIntersecting, "f") && this.lineNumbers !== 'hidden') {
+            __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_computeLineNumbers).call(this);
+        }
+    }
+};
+_RhCodeBlock_updateResizeObserver = function _RhCodeBlock_updateResizeObserver() {
+    const shouldHaveObserver = this.wrap && this.lineNumbers !== 'hidden';
+    if (!shouldHaveObserver && __classPrivateFieldGet(this, _RhCodeBlock_ro, "f")) {
+        // Clean up observer when not needed
+        __classPrivateFieldGet(this, _RhCodeBlock_ro, "f").disconnect();
+        __classPrivateFieldSet(this, _RhCodeBlock_ro, undefined, "f");
+    }
+    else if (shouldHaveObserver && !__classPrivateFieldGet(this, _RhCodeBlock_ro, "f")) {
+        // Create observer only when both conditions are met
+        __classPrivateFieldSet(this, _RhCodeBlock_ro, new ResizeObserver(() => __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_computeLineNumbers).call(this)), "f");
+        __classPrivateFieldGet(this, _RhCodeBlock_ro, "f").observe(this);
+    }
+};
 _RhCodeBlock_wrapChanged = async function _RhCodeBlock_wrapChanged() {
+    __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_updateResizeObserver).call(this);
     await this.updateComplete;
     __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_computeLineNumbers).call(this);
     __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_setSlottedLabelState).call(this, 'action-label-wrap', this.wrap ? 'active' : undefined);
@@ -288,24 +312,30 @@ _RhCodeBlock_getSlottedCodeElements = function _RhCodeBlock_getSlottedCodeElemen
         || x instanceof HTMLPreElement ? [x]
         : []);
 };
-_RhCodeBlock_computeLineNumbers = 
+_RhCodeBlock_computeLines = 
 /**
- * Clone the text content and connect it to the document, in order to calculate the number of lines
- * @license MIT
- * Portions copyright prism.js authors (MIT license)
+ * Calculate the number of lines in the code block
  */
-async function _RhCodeBlock_computeLineNumbers() {
+async function _RhCodeBlock_computeLines() {
     await this.updateComplete;
     const codes = __classPrivateFieldGet(this, _RhCodeBlock_prismOutput, "f") ? [this.shadowRoot?.getElementById('prism-output')].filter(x => !!x)
         : __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_getSlottedCodeElements).call(this);
     __classPrivateFieldSet(this, _RhCodeBlock_lines, codes.flatMap(element => element.textContent?.split(/\n(?!$)/g) ?? []), "f");
     this.requestUpdate();
-    if (!__classPrivateFieldGet(this, _RhCodeBlock_isIntersecting, "f")) {
+};
+_RhCodeBlock_computeLineNumbers = 
+/**
+ * Calculate line heights for line numbers display
+ * @license MIT
+ * Portions copyright prism.js authors (MIT license)
+ */
+async function _RhCodeBlock_computeLineNumbers() {
+    if (!__classPrivateFieldGet(this, _RhCodeBlock_isIntersecting, "f") || this.lineNumbers === 'hidden') {
         return;
     }
-    if (this.lineNumbers === 'hidden') {
-        return;
-    }
+    await this.updateComplete;
+    const codes = __classPrivateFieldGet(this, _RhCodeBlock_prismOutput, "f") ? [this.shadowRoot?.getElementById('prism-output')].filter(x => !!x)
+        : __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_getSlottedCodeElements).call(this);
     const infos = codes.map(element => {
         const codeElement = __classPrivateFieldGet(this, _RhCodeBlock_prismOutput, "f") ? element.querySelector('code') : element;
         if (codeElement) {
