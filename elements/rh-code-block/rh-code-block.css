@@ -241,7 +241,7 @@
 :host([highlighting='prerendered']) {
   .wrap {
     #content::slotted(pre[class*='language-']) {
-      white-space: pre-wrap;
+      white-space: pre-wrap !important;
     }
   }
 }
