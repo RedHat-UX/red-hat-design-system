@@ -16,7 +16,7 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
  *
  * @summary Organize multiple related buttons into a single collection
  *
- * @alias Button Group
+ * @alias button-group
  */
 @customElement('rh-button-group')
 @themable
