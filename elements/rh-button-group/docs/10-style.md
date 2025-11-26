@@ -16,7 +16,6 @@ A button group is two or more [Buttons](/elements/button/) grouped together. A b
       <li>Primary and Secondary buttons</li>
       <li>Secondary, Primary, and Link buttons</li>
       <li>Icon buttons</li>
-      <li>Scheme toggle with icon buttons</li>
     </ol>
   </figcaption>
 </figure>
