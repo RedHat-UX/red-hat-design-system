@@ -6,8 +6,8 @@ Use a Button Group when multiple buttons perform related tasks, such as navigati
 
 ```html
 <rh-button-group>
-  <button type="button">Save</button>
-  <button type="button">Cancel</button>
-  <button type="button">Delete</button>
+  <rh-button>Save</rh-button>
+  <rh-button>Cancel</rh-button>
+  <rh-button>Delete</rh-button>
 </rh-button-group>
 ```
