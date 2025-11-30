@@ -66,6 +66,18 @@ export class RhNavigationSecondaryDropdown extends LitElement {
     const classes = { 'expanded': this.expanded, 'highlight': this.#highlight };
 
     return html`
+      <!-- summary: dropdown wrapper container
+           description: |
+             The container for a navigation dropdown item, wrapping both the link and menu.
+             This part corresponds to a \`<div>\` element that manages the dropdown state and styling.
+
+             **Styling:**
+             - Use this part to customize the dropdown appearance and layout
+             - Applies `.expanded` class when dropdown is open
+             - Applies `.highlight` class when dropdown contains the current page
+             - Controls dropdown link and menu positioning
+
+             @see [Navigation](https://ux.redhat.com/elements/navigation/) documentation -->
       <div id="container" part="container" class="${classMap(classes)}">
         <!-- Link for dropdown, expects \`<a>\` element -->
         <slot name="link"></slot>
