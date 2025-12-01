@@ -13,20 +13,21 @@
   display: grid;
   color: var(--rh-color-text-secondary);
 
-  /** List of colors to use when generating avatars */
   --_colors:
-    light-dark(var(--rh-avatar-colors,
-      var(--rh-color-blue-30, #92c5f9)
-      var(--rh-color-teal-50, #37a3a3)
-      var(--rh-color-green-60, #3d7317)
-      var(--rh-color-red-40, #f56e6e)
-      var(--rh-color-purple-60, #3d2785)),
-      var(--rh-avatar-colors,
-      var(--rh-color-blue-50, #0066cc)
-      var(--rh-color-teal-70, #004d4d)
-      var(--rh-color-green-70, #204d00)
-      var(--rh-color-red-50, #ee0000)
-      var(--rh-color-purple-70, #21134d)));
+    light-dark(
+        /** List of colors to use when generating avatars */
+        var(--rh-avatar-colors,
+        var(--rh-color-blue-30, #92c5f9)
+        var(--rh-color-teal-50, #37a3a3)
+        var(--rh-color-green-60, #3d7317)
+        var(--rh-color-red-40, #f56e6e)
+        var(--rh-color-purple-60, #3d2785)),
+        var(--rh-avatar-colors,
+        var(--rh-color-blue-50, #0066cc)
+        var(--rh-color-teal-70, #004d4d)
+        var(--rh-color-green-70, #204d00)
+        var(--rh-color-red-50, #ee0000)
+        var(--rh-color-purple-70, #21134d)));
 
   column-gap: var(--rh-space-lg, 16px);
   width: min-content;
@@ -101,7 +102,7 @@ img,
 svg {
   overflow: hidden;
 
-  /** Size of the avatar, */
+  /** Width of the avatar */
   width: var(--rh-avatar-size, var(--rh-size-icon-06, 64px));
   max-width: var(--rh-size-icon-06, 64px);
   aspect-ratio: 1;
