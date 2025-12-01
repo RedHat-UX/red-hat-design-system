@@ -1,4 +1,6 @@
 :host {
+  --rh-avatar-container-grid: min-content minmax(max-content, 250px);
+
   display: inline-block;
   width: min-content;
 }
@@ -28,7 +30,9 @@
 
   column-gap: var(--rh-space-lg, 16px);
   width: min-content;
-  grid-template-columns: min-content minmax(max-content, 250px);
+
+  /** Value for the `grid-template-columns` property of avatar's `#container` */
+  grid-template-columns: var(--rh-avatar-container-grid);
   grid-template-rows: min-content min-content;
   grid-template-areas:
     'a t'
