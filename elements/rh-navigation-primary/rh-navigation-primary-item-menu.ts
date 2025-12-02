@@ -45,7 +45,24 @@ export class RhNavigationPrimaryItemMenu extends LitElement {
     const compact = !this.#hydrated ? true : this.compact ?? true;
     return html`
       <div id="container" class="${classMap({ compact: compact, dehydrated: !this.#hydrated })}">
-        <!-- Place element content here -->
+        <!-- summary: dropdown menu content and navigation items (default slot)
+             description: |
+               Contains the menu content displayed when a navigation dropdown is expanded.
+               Typically includes links, buttons, or custom content organized in a menu structure.
+
+               **Common patterns:**
+               - Links organized into groups or sections
+               - Search forms or input fields
+               - User account information and settings links
+               - Hierarchical navigation with categories
+
+               **Best practices:**
+               - Use semantic HTML (lists, links) for navigation items
+               - Ensure all interactive elements are keyboard accessible
+               - Provide clear labels and organize content logically
+               - Keep menu depth shallow (avoid deeply nested menus)
+
+               @see [Navigation](https://ux.redhat.com/elements/navigation/) documentation -->
         <slot></slot>
       </div>
     `;
