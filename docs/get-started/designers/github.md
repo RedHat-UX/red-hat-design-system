@@ -21,8 +21,7 @@ and much more.
   <img alt="Screenshot of the red-hat-design-system GitHub repo's Code tab"
        src="get-familiar-with-github.avif"
        width="1140"
-       height="770"
-       loading="lazy">
+       height="770">
 </uxdot-example>
 
 ## Contributing
