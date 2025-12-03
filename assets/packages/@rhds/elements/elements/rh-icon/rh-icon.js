@@ -93,6 +93,10 @@ let RhIcon = RhIcon_1 = _a = class RhIcon extends LitElement {
         RhIcon_1.instances.delete(this);
     }
     iconChanged() {
+        if (!this.icon) {
+            this.content = null;
+            return;
+        }
         __classPrivateFieldGet(this, _RhIcon_instances, "m", _RhIcon_dispatchLoad).call(this);
     }
     accessibleLabelChanged() {
@@ -118,6 +122,9 @@ _RhIcon_instances = new WeakSet();
 _RhIcon_getContent = function _RhIcon_getContent() {
     if (isServer) {
         const { set = 'standard', icon } = this;
+        if (!icon) {
+            return '';
+        }
         return globalThis.RH_ICONS.get(set)?.get(icon) ?? '';
     }
     else {
