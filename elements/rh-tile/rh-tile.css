@@ -98,16 +98,6 @@
   border: var(--rh-border-width-sm, 1px) solid var(--_border-color);
 
   /**
-   * Color tile surface.
-   * Could cause accessibility issues; prefer to use `--rh-color-surface-lightest`
-   * and `--rh-color-surface-darkest` for theming.
-   */
-  background-color:
-    var(--rh-tile-background-color,
-      light-dark(var(--rh-color-surface-lightest, #ffffff),
-      var(--rh-color-surface-darkest, #151515)));
-
-  /**
    * Color of text.
    * Could cause accessibility issues; prefer to use `--rh-color-text-primary-on-light`
    * and `--rh-color-text-primary-on-dark` for theming.
@@ -345,3 +335,36 @@ svg {
 *:is(#image, #tile, #headline, #body, #footer) {
   z-index: 2;
 }
+
+/*
+ * Defines color palettes for the host element.
+ * These styles are necessary for the `color-palette` attribute to apply
+ * specific color themes from the design system.
+ */
+:host([color-palette^='dark']) {
+  --_interactive-color: var(--rh-color-border-interactive-on-dark);
+  --_focus-interactive-color: var(--rh-color-interactive-primary-hover-on-dark);
+  --_text-color-secondary: var(--rh-color-text-secondary-on-dark);
+  --_disabled-background-color: var(--rh-color-surface-dark);
+  --_border-color: var(--rh-color-border-subtle-on-dark);
+
+  color: var(--rh-color-text-primary-on-dark);
+}
+
+:host([color-palette='darkest']) { background-color: var(--rh-color-surface-darkest); }
+:host([color-palette='darker']) { background-color: var(--rh-color-surface-darker); }
+:host([color-palette='dark']) { background-color: var(--rh-color-surface-dark); }
+
+:host([color-palette^='light']) {
+  --_interactive-color: var(--rh-color-border-interactive-on-light);
+  --_focus-interactive-color: var(--rh-color-interactive-primary-hover-on-light);
+  --_text-color-secondary: var(--rh-color-text-secondary-on-light);
+  --_disabled-background-color: var(--rh-color-surface-light);
+  --_border-color: var(--rh-color-border-subtle-on-light);
+
+  color: var(--rh-color-text-primary-on-light);
+}
+
+:host([color-palette='lightest']) { background-color: var(--rh-color-surface-lightest); }
+:host([color-palette='lighter']) { background-color: var(--rh-color-surface-lighter); }
+:host([color-palette='light']) { background-color: var(--rh-color-surface-light); }

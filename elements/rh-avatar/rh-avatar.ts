@@ -3,9 +3,7 @@ import type { RandomPatternController } from './random-pattern-controller.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { LitElement, html, isServer, type PropertyValues } from 'lit';
-import { classMap } from 'lit/directives/class-map.js';
 
-import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 import { themable } from '../../lib/themable.js';
 
 import styles from './rh-avatar.css';
@@ -39,7 +37,7 @@ export class RhAvatar extends LitElement {
   /** The auxiliary information about the user, e.g. job title */
   @property({ reflect: true }) subtitle?: string;
 
-  /** The type of pattern to display. */
+  /** Places avatar on the left or on top of the text. */
   @property({ reflect: true }) layout?: 'inline' | 'block';
 
   /** The type of pattern to display. */
@@ -48,11 +46,13 @@ export class RhAvatar extends LitElement {
   /** When true, hides the title and subtitle */
   @property({ reflect: true, type: Boolean }) plain = false;
 
+  /** Adds a subtle border to the avatar image */
+  @property({ reflect: true }) variant?: 'bordered';
+
   #style?: CSSStyleDeclaration;
 
   #pattern?: RandomPatternController;
 
-  #screen = new ScreenSizeController(this);
 
   connectedCallback() {
     super.connectedCallback();
@@ -77,11 +77,13 @@ export class RhAvatar extends LitElement {
   }
 
   render() {
-    const { mobile } = this.#screen;
     return html`
-      <div id="container" class="${classMap({ mobile })}">${this.pattern ? html`
+      <div id="container">${this.pattern ? html`
+        <!-- Target the canvas element -->
         <canvas part="canvas"></canvas>` : this.src ? html`
+        <!-- Targets the img or svg element -->
         <img src="${this.src}" role="presentation" part="img">` : html`
+        <!-- Targets the img or svg element -->
         <svg xmlns="http://www.w3.org/2000/svg" style="enable-background:new 0 0 36 36" viewBox="0 0 36 36" role="presentation" part="img" id="default">
           <path d="M0 0h36v36H0z" class="st1"/><path d="M17.7 20.1c-3.5 0-6.4-2.9-6.4-6.4s2.9-6.4 6.4-6.4 6.4 2.9 6.4 6.4-2.8 6.4-6.4 6.4z" class="st3"/>
           <path d="M13.3 36v-6.7c-2 .4-2.9 1.4-3.1 3.5l-.1 3.2h3.2z" class="st2"/>

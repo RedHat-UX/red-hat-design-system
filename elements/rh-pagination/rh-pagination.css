@@ -49,9 +49,16 @@
   --rh-pagination-stepper-color:
     light-dark(var(--rh-color-gray-50, #707070),
       var(--rh-color-text-secondary-on-dark, #c7c7c7));
-  --rh-pagination-background-focused:
-    light-dark(var(--rh-color-gray-30, #c7c7c7),
-      var(--rh-color-gray-50, #707070));
+
+  /**
+   * Remove this re-declaration when the status-disabled variable is defined in tokens
+   * and deprecate `--rh-pagination-background-focused`.
+  */
+  --rh-color-icon-status-disabled:
+    light-dark(var(--rh-color-gray-40, #a3a3a3),
+      var(--rh-color-gray-60, #4d4d4d));
+  /* stylelint-disable-next-line rhds/no-unknown-token-name */
+  --rh-pagination-background-focused: var(--rh-color-icon-status-disabled);
 }
 
 @container pagination (min-width: 768px) {
@@ -175,7 +182,8 @@ svg {
   pointer-events: none;
 
   /** Sets the disabled stepper color. */
-  color: var(--rh-pagination-background-focused, var(--rh-color-gray-30, #c7c7c7));
+  color: var(--rh-pagination-background-focused);
+  background-color: var(--_stepper-bg-color);
 }
 
 @container pagination (min-width: 768px) {
@@ -248,13 +256,19 @@ input:invalid:focus {
 }
 
 #numeric a {
-  text-decoration: none;
+  text-decoration: underline dashed var(--rh-border-width-sm, 1px);
+  text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40));
+  text-underline-offset: max(5px, 0.28em);
+  transition-timing-function: ease;
+  transition-property: text-underline-offset, color, text-decoration-color;
+  transition-duration: 0.3s;
   color: var(--_numeric-a-color);
 }
 
 #numeric a:hover {
   color: var(--_numeric-a-color-hover);
-  text-decoration: underline;
+  text-decoration-color: inherit;
+  text-underline-offset: max(6px, 0.33em);
 }
 
 #numeric a:visited {
@@ -266,7 +280,8 @@ input:invalid:focus {
   color: var(--_numeric-a-color-focus);
   outline: var(--rh-border-width-md, 2px) solid transparent;
   outline-color: var(--_numeric-a-color-focus-outline);
-  text-decoration: underline;
+  text-decoration-color: inherit;
+  text-underline-offset: max(6px, 0.33em);
 }
 
 #numeric a:visited:hover {

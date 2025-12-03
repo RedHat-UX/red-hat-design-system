@@ -1,6 +1,6 @@
 // @ts-check
 import { pfeDevServerConfig } from '@patternfly/pfe-tools/dev-server/config.js';
-import { glob } from 'node:fs/promises';
+import { glob, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { makeDemoEnv } from './scripts/environment.js';
 import { parse, serialize } from 'parse5';
@@ -10,6 +10,7 @@ import {
   getTextContent,
   isElementNode,
   query,
+  removeAttribute,
   setAttribute,
   setTextContent,
   spliceChildren,
@@ -61,6 +62,7 @@ function injectManuallyResolvedModulesToImportMap(document) {
       '@rhds/tokens/css/': '/node_modules/@rhds/tokens/css/',
       '@floating-ui/dom': '/node_modules/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs',
       '@floating-ui/core': '/node_modules/@floating-ui/core/dist/floating-ui.core.browser.min.mjs',
+      'vue/dist/vue.esm-browser.js': 'https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js',
     });
     for (const key of Object.keys(json.scopes ?? {})) {
       json.scopes[key]['@patternfly/pfe-core'] = '/node_modules/@patternfly/pfe-core/core.js';
@@ -81,7 +83,7 @@ function transformDevServerHTML(document) {
     && x.tagName === 'main');
   if (main && isElementNode(main)) {
     main.tagName = 'rh-surface';
-    setAttribute(main, 'color-palette', 'lightest');
+    removeAttribute(main, 'color-palette');
     setAttribute(main, 'id', surfaceId);
     setAttribute(main, 'role', 'main');
   }
@@ -92,7 +94,7 @@ function transformDevServerHTML(document) {
   if (header && isElementNode(header)) {
     const picker = createElement('rh-context-picker');
     setAttribute(picker, 'target', surfaceId);
-    setAttribute(picker, 'value', 'lightest');
+    setAttribute(picker, 'value', '');
     const logoBar = query(header, node =>
       isElementNode(node)
         && getAttribute(node, 'class') === 'logo-bar');
@@ -118,7 +120,7 @@ function transformDevServerHTML(document) {
 export const litcssOptions = {
   exclude: [
     /(lightdom)/,
-    /node_modules\/@rhds\/tokens\/css\/global\.css/,
+    /node_modules\/@rhds\/tokens\/css\/.*\.css/,
   ],
   include: [
     /elements\/rh-[\w-]+\/[\w-]+\.css$/,
@@ -140,6 +142,7 @@ export default pfeDevServerConfig({
     ignore: [
       /^\./,
       /^@rhds\/icons/,
+      /^vue/,
     ],
     inputMap: { imports },
   },
@@ -163,6 +166,38 @@ export default pfeDevServerConfig({
       } else {
         return next();
       }
+    },
+    /**
+     * serve lightdom CSS files directly from filesystem
+     * Handles: /elements/rh-foo/rh-foo-lightdom.css or /rh-foo/rh-foo-lightdom-*.css
+     * @param ctx koa context
+     * @param next next koa middleware
+     */
+    async function(ctx, next) {
+      if (!ctx.path.includes('-lightdom')) {
+        return next();
+      }
+
+      // Match paths like /elements/rh-button/rh-button-lightdom.css or /rh-button-lightdom.css
+      const match = ctx.path.match(
+        /(?:\/elements)?\/(rh-[\w-]+)(?:\/\1)?-(lightdom(?:-[\w-]*)?)\.css$/);
+      if (!match) {
+        return next();
+      }
+
+      const [, elementName, suffix] = match;
+      const filePath = join(process.cwd(), 'elements', elementName, `${elementName}-${suffix}.css`);
+
+      try {
+        ctx.type = 'text/css';
+        ctx.body = await readFile(filePath, 'utf-8');
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error(`Lightdom CSS not found: ${filePath}`);
+        // eslint-disable-next-line no-console
+        console.error(e);
+      }
+      return;
     },
     /**
      * @param ctx koa context

@@ -21,7 +21,7 @@ order: 1
 
 ### The Red Hat Design System and Accessibility
 
-At Red Hat®, we believe that an open source approach leads to better, more inclusive experiences for all people, including users with disabilities.
+At Red Hat, we believe that an [open source approach to accessibility](https://www.redhat.com/en/accessibility) leads to better, more inclusive experiences for all people, including users with disabilities.
 
 The user experience across Red Hat properties, including our products, services, applications, and digital communications, are all held to a high standard of inclusivity. We strive to make them accessible for as many users and devices as possible.
 
@@ -41,7 +41,7 @@ The W3C Web Accessibility Initiative (WAI) has designed a collection of [web use
 
 If you’ve spent any time incorporating or reading about web accessibility, you’ve likely heard mention of the World Wide Web Consortium’s (W3C) Web Content Accessibility Guidelines—or WCAG. (You may also have heard this acronym pronounced several different ways, any of them acceptable: W-C-A-G, Wuh-cag, W-cag, etc.)
 
-At Red Hat, we currently target [WCAG 2.1 AA](https://www.w3.org/WAI/WCAG21/Understanding/), as it aligns with many laws and regulations and provides a good experience for most users.
+At Red Hat, we currently target [WCAG 2.2 AA](https://www.w3.org/WAI/WCAG22/Understanding/), as it aligns with many laws and regulations and provides a good experience for most users.
 
 ### POUR
 
@@ -54,7 +54,7 @@ It’s important to remember that the goal of web accessibility is not conforman
     <li><strong>Understandable</strong> - Information and the operation of the user interface must be understandable.</li>
     <li><strong>Robust</strong> - Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies.</li>
   </ol>
-  <span slot="author">Source: <a href="https://www.w3.org/WAI/WCAG21/Understanding/intro">Introduction to Understanding WCAG</a>.</span>
+  <span slot="author">Source: <a href="https://www.w3.org/WAI/WCAG22/Understanding/intro">Introduction to Understanding WCAG</a>.</span>
   <span slot="title">Accessibility Guidelines Working Group (AG WG) Participants. Copyright © 2023 W3C® (MIT, ERCIM, Keio). Status: Draft Updated 20 June 2023.</span>
 </rh-blockquote>
 

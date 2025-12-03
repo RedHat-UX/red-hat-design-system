@@ -11,23 +11,27 @@ border for emphasis.
 
 ### Anatomy
 
-<uxdot-example color-palette="lightest" width-adjustment="872px">
-  <img alt="Anatomy of an accordion with lots of annotations pointing to various parts"
-       src="../accordion-anatomy.png"
-       width="872"
-       height="755">
-</uxdot-example>
-
-1) Collapsed panel
-2) Expanded panel
-3) Title
-4) Panel header region
-5) Caret
-6) Emphasis
-7) Content
-8) Panel body region
-9) Accent slot
-{.example-notes}
+<figure>
+  <uxdot-example color-palette="lightest">
+    <img alt="Anatomy of an accordion with lots of annotations pointing to various parts"
+         src="../accordion-anatomy.png"
+         width="872"
+         height="755">
+  </uxdot-example>
+  <figcaption>
+    <ol>
+      <li>Collapsed panel</li>
+      <li>Expanded panel</li>
+      <li>Title</li>
+      <li>Panel header region</li>
+      <li>Caret</li>
+      <li>Emphasis</li>
+      <li>Content</li>
+      <li>Panel body region</li>
+      <li>Accent slot</li>
+    </ol>
+  </figcaption>
+</figure>
 
 ### Sizes
 

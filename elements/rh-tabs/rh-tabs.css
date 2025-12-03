@@ -96,10 +96,13 @@ button {
   --_arrow-color: var(--rh-color-accent-base);
   --_overflow-button-text-color: var(--rh-color-text-secondary);
 
-  /* Non Standard usage of crayon token */
-  --_overflow-button-disabled-text-color:
+  /* Non Standard usage of rh-color-icon-status-disabled.
+  * Remove this re-declaration when the variable is defined in tokens */
+  --rh-color-icon-status-disabled:
     light-dark(var(--rh-color-gray-40, #a3a3a3),
-      var(--rh-color-gray-50, #707070));
+      var(--rh-color-gray-60, #4d4d4d));
+  /* stylelint-disable-next-line rhds/no-unknown-token-name */
+  --_overflow-button-disabled-text-color: var(--rh-color-icon-status-disabled);
   --_overflow-button-hover-text-color: var(--rh-color-text-primary);
 
   color: var(--rh-color-text-primary);

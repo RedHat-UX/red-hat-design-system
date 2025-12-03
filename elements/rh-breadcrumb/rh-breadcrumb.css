@@ -1,33 +1,3 @@
 :host {
   display: block;
-
-  /** The link color for each anchor in the list */
-  --rh-breadcrumb-link-color: var(--rh-color-interactive-blue-darker, #0066cc);
-
-  /** The current page's color */
-  --rh-breadcrumb-link-color-current-page: var(--rh-color-text-primary-on-light, #151515);
-
-  /** The current page's color for the `subtle` variant */
-  --rh-breadcrumb-link-color-current-page-subtle: var(--rh-color-text-secondary-on-light, #4d4d4d);
-
-  /** The link color on hover/focus/active for each anchor in the list */
-  --rh-breadcrumb-link-color-hover: var(--rh-color-interactive-blue-darkest, #003366);
-
-  /** The visited color for each breadcrumb link */
-  --rh-breadcrumb-link-color-visited: var(--rh-color-interactive-purple-darker, #5e40be);
-
-  /** The visited color on hover for each breadcrumb link */
-  --rh-breadcrumb-link-color-visited-hover: var(--rh-color-interactive-purple-darkest, #ece6ff);
-
-  /** The link focus outline color */
-  --rh-breadcrumb-link-focus-outline-color: var(--rh-color-border-interactive-on-light, #0066cc);
-
-  /** Sets the spacing between each breadcrumb item. */
-  --rh-breadcrumb-li-padding-inline-end: 42px;
-
-  /** The default background image separating each breadcrumb item */
-  --rh-breadcrumb-caret-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="10" height="21" viewBox="0 0 10 21"%3E%3Cpath d="m0 20.5 9-10-9-10" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E');
-
-  /** The `subtle` variant background image separating each breadcrumb item */
-  --rh-breadcrumb-caret-image-subtle: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="10" height="21" viewBox="0 0 10 21"%3E%3Cpath d="m0 20.5 9-10-9-10" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E');
 }

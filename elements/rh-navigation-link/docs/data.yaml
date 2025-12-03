@@ -1,0 +1,15 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-navigation-link
+name: Navigation Link
+type: element
+overallStatus: ready
+libraries:
+  figma: ready
+  rhds: ready
+  shared: planned
+  docs: planned
+relatedItems:
+  - rh-navigation-primary
+  - rh-navigation-secondary
+  - rh-navigation-vertical
+  - rh-subnav

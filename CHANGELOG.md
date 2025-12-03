@@ -1,5 +1,323 @@
 # @rhds/elements
 
+## 4.0.0
+### Major Changes
+
+- 7243929: Updating @rhds/icons to version 2.0
+  
+  #### ⛔️ Breaking changes with `<rh-icon>`
+  
+  Removed `auto-light-dark-mode-fill` UI icon. Please use `auto-light-dark-mode` instead.
+  
+    **Before**
+  
+    ```html
+    <rh-icon set="ui" icon="auto-light-dark-mode-fill"></rh-icon>
+    ```
+  
+    **After**
+  
+    ```html
+    <rh-icon set="ui" icon="auto-light-dark-mode"></rh-icon>
+    ```
+  
+    #### ⚠️ Potentially breaking changes with `<rh-icon>`
+  
+    ##### ✨ AI Experiences
+  
+    The `new` and `new-fill` UI icons have been updated and are no longer using the "sparkle" metaphor. Therefore, this may potentially break implementations and/or uses of `new` or `new-fill` to symbolize AI experiences.
+  
+    Where `new` or `new-fill` are used to symbolize AI experiences, please use one of our new AI Experience icon instead:
+  
+    - ai-experience
+    - ai-experience-fill
+  
+    **Before**
+  
+    ```html
+    <rh-icon set="ui" icon="new"></rh-icon>
+    <rh-icon set="ui" icon="new-fill"></rh-icon>
+    ```
+  
+    **After**
+  
+    ```html
+    <rh-icon set="ui" icon="ai-experience"></rh-icon>
+    <rh-icon set="ui" icon="ai-experience-fill"></rh-icon>
+    ```
+  
+  Please see [Red Hat Icons version 2.0 release notes](https://github.com/RedHat-UX/red-hat-icons/releases/tag/v2.0.0) for more information about the @rhds/icons version 2.0 update.
+
+### Minor Changes
+
+- 7243929: `<rh-navigation-secondary>`: adds support for `<rh-navigation-link>`
+- 7243929: `<rh-avatar>`: added a variant that adds a subtle border around the avatar image
+  
+  ```html
+  <rh-avatar name="Bordered Bossman"
+             subtitle="Zoning Specialist"
+             variant="bordered"></rh-avatar>
+  ```
+- 7243929: ✨ Added `<rh-navigation-vertical>`
+  
+  A vertical navigation list containing top-level navigation items and grouped navigation items, typically used in a side navigation pattern.
+  
+  ## Usage
+  
+  ```html
+  <rh-navigation-vertical>
+    <rh-navigation-link href="/">Home</rh-navigation-link>
+    <rh-navigation-vertical-list summary="Products">
+      <rh-navigation-link href="/products/1">Product 1</rh-navigation-link>
+      <rh-navigation-link href="/products/2">Product 2</rh-navigation-link>
+      <rh-navigation-link href="/products/3">Product 3</rh-navigation-link>
+      <rh-navigation-link href="/products/4">Product 4</rh-navigation-link>
+    </rh-navigation-vertical-list>
+    <rh-navigation-link href="/about">About</rh-navigation-link>
+    <rh-navigation-link href="/contact">Contact</rh-navigation-link>
+  </rh-navigation-vertical>
+  ```
+- 7243929: `<rh-cta>`: add CSS APIs for `text-underline-offset` and `text-decoration` on focus.
+  
+  ```css
+  rh-cta.custom-cta {
+    --rh-cta-focus-text-underline-offset: 5px;
+    --rh-cta-focus-text-decoration: underline;
+  }
+  ```
+- 7243929: `<rh-disclosure>`: add the `borderless` and `compact` variants.
+  
+  When the `variant="compact"` attribute is present, disclosures will have less padding around the trigger and disclosure content:
+  
+  ```html
+  <rh-disclosure summary="Compact variant disclosure" variant="compact">
+    <p>Lorem ipsum dolor sit amet.</p>
+  </rh-disclosure>
+  ```
+  
+  When the `variant="borderless"` attribute is present, disclosures will not have borders and will have a gray background when expanded:
+  
+  ```html
+  <rh-disclosure summary="Borderless variant disclosure" variant="borderless">
+    <p>Lorem ipsum dolor sit amet.</p>
+  </rh-disclosure>
+  ```
+  
+  Additionally, all disclosures now have subtle rounded borders.
+- 7243929: ✨ Added `<rh-navigation-link>`.
+  
+  A styled link that is used as a slotted child of navigation elements.  Can be used in the primary, secondary, subnav, and vertical navigation elements.
+  
+  ```html
+  <rh-navigation-primary>
+    <rh-navigation-link href="/" current-page>Home</rh-navigation-link>
+    <rh-navigation-link href="/about">About</rh-navigation-link>
+    <rh-navigation-link href="/contact">Contact</rh-navigation-link>
+  </rh-navigation-primary>
+  ```
+- 7243929: `<rh-subnav>`: adds support for `<rh-navigation-link>` elements, deprecated slotting `<a>` elements
+  
+  ```html
+  <rh-subnav>
+    <rh-navigation-link href="#">Users</rh-navigation-link>
+    <rh-navigation-link href="#">Containers</rh-navigation-link>
+    <rh-navigation-link href="#">Databases</rh-navigation-link>
+    <rh-navigation-link href="#" current-page>Servers</rh-navigation-link>
+    <rh-navigation-link href="#">System</rh-navigation-link>
+    <rh-navigation-link href="#">Network</rh-navigation-link>
+    <rh-navigation-link href="#">Cloud</rh-navigation-link>
+  </rh-subnav>
+  ```
+- 7243929: `<rh-subnav>`: adds support for `<rh-navigation-link>`
+- 7243929: ✨ Added `<rh-menu-dropdown>`.
+  
+  `<rh-menu-dropdown>` is a UI component designed for presenting a set of related actions or commands. It consists of two parts: a menu toggle, which users interact with to open or close the menu, and a menu list that contains actionable items. When opened, it behaves similarly to menus found in desktop applications—offering users a compact, keyboard-accessible way to perform tasks or invoke functions without occupying significant screen space.
+  
+  ```html
+  <rh-menu-dropdown>
+    <span slot="toggle-label">Basic toggle</span>
+    <rh-menu-item>Action one</rh-menu-item>
+    <rh-menu-item>Action two</rh-menu-item>
+    <rh-menu-item>Action three</rh-menu-item>
+    <rh-menu-item disabled>Disabled Action</rh-menu-item>
+    <hr>
+    <rh-menu-item>Separated action</rh-menu-item>
+  </rh-menu-dropdown>
+  ```
+- 7243929: `<rh-tile>`:  allows tile to accept all six color palettes
+- 7243929: `<rh-navigation-primary>`: adds support for `<rh-navigation-link>`
+
+### Patch Changes
+
+- 7243929: `<rh-accordion>`: fix axe accessibility error flagged in `<rh-accordion-header>`.
+- 7243929: `<rh-card>`: corrected layout when contained in a flex parent
+- 7243929: `<rh-tabs>`: updated the background color of inactive box variant tabs
+- 7243929: `<rh-jump-links>`: corrected text wrap for long links; allow wrapping to a new line
+- 7243929: `<rh-footer>`: reduce CLS before component upgrades or if JavaScript fails to load.
+- 7243929: `<rh-site-status>`: update light scheme background colors
+- 7243929: `<rh-pagination>`: add a customizable token for disabled stepper icon color
+- 7243929: `<rh-button>`: update colors and background colors on dark color schemes
+- 7243929: `<rh-navigation-primary>`: improved accessibility when slots are empty
+- 7243929: `<rh-audio-player>`: better responsiveness when inside non-full width containers
+- 7243929: `<rh-back-to-top>`: add dark color scheme support
+- 7243929: `<rh-subnav>`: corrected the implementation of and deprecated the `color-palette` attribute
+- 7243929: `<rh-progress-stepper>`: corrects missing fallback styles
+- 7243929: `<rh-subnav>`: fixed regression in overflow arrow display
+- 7243929: `<rh-pagination>`: corrected behavior using `aria-current="page"` attributes or fragment identifier URLs
+- 7243929: `<rh-navigation-primary>`: improves accessibility of navigation label for screen readers
+- 7243929: `<rh-navigation-primary>`: corrected content menus opening during command/ctrl + F searches
+- 7243929: `<rh-subnav>`: corrected styling to reflect proper `aria-current="page"` usage for the active page
+- 7243929: `<rh-health-index>`: use status tokens for border, background, and text colors
+- 7243929: `<rh-pagination>`: update dark scheme disabled button background color
+
+## 3.2.0
+### Minor Changes
+
+- 07310da: `<rh-code-block>`: Added `copy` event. Modify the `event.content` field to change the text to be copied.
+  
+  ```js
+  import {RhCodeBlockCopyEvent} from '@rhds/elements/rh-code-block/rh-code-block.js';
+  
+  document.body.addEventListener('copy', function(event) {
+    if (event instanceof RhCodeBlockCopyEvent) {
+      // remove prompt and surrounding whitespace from the start of the string
+      event.content = event.content.replace(/^\s*\$|#\s*/, '');
+    }
+  });
+  ```
+- 07310da: `<rh-tooltip>`: add the `silent` attribute to hide tooltip content from screen readers.
+  
+  ```html
+  <rh-tooltip silent>
+    <rh-button variant="secondary">
+      <rh-icon set="ui" icon="copy" accessible-label="Copy to Clipboard"></rh-icon>
+    </rh-button>
+    <span slot="content">Copy to Clipboard</span>
+  </rh-tooltip>
+  ```
+
+### Patch Changes
+
+- 59dde97: `<rh-progress-stepper>`: improved online documentation
+
+## 3.1.3
+### Patch Changes
+
+- 2c54b9a: `<rh-code-block>`: show expand button ("Show more") even when line numbers are hidden
+
+## 3.1.2
+### Patch Changes
+
+- c73539a: `<rh-code-block>`: set content-visibility for improved performance on large pages with many codeblocks.
+
+## 3.1.1
+### Patch Changes
+
+- 4886ec0: `<rh-alert>`: added support for dark color schemes
+- c853f3e: `<rh-footer>`: fix color contrast of text when javascript fails to load
+- 8d40d2c: `<rh-breadcrumb>`: fix colors, spacing, and arrows
+
+## 3.1.0
+### Minor Changes
+
+- c0b5e9a: `<rh-tag>`: add disabled, hover, focus, and active states to linked tags
+  
+  ```html
+  <rh-tag href="/engage">Engage cluster</rh-tag>
+  ```
+- c0b5e9a: ✨ Added `<rh-scheme-toggle>`
+  
+  A toggle to switch between light, dark and system default color schemes.
+  
+  ```html
+  <rh-scheme-toggle></rh-scheme-toggle>
+  ```
+- c0b5e9a: `<rh-navigation-primary>`: improved logo rendering
+  
+  Default logo is now bi-modal auto adjusting text color to light or dark scheme. For more control,
+  use the existing [`logo` slot](https://ux.redhat.com/elements/navigation-primary/code/#slots).
+- c0b5e9a: `<rh-code-block>`: added the `line-numbers="hidden"` attribute:
+  
+  ```html
+  <rh-code-block line-numbers="hidden">
+  <script type="text/html"><p>Lines gone</p></script>
+  </rh-code-block>
+  ```
+- c0b5e9a: `<rh-breadcrumb>`: added the `truncate` attribute.
+  
+  When present, the middle breadcrumb items are hidden until the user interacts with them:
+  
+  ```html
+  <rh-breadcrumb truncate>
+    <ol>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#open-shift-aws">Red Hat OpenShift on AWS</a></li>
+      <li><a href="#4">4</a></li>
+      <li><a href="#introduction-to-rosa">Introduction to ROSA</a></li>
+      <li><a href="#understanding-rosa" aria-current="page">Chapter 1. Understanding ROSA</a></li>
+    </ol>
+  </rh-breadcrumb>
+  ```
+- c0b5e9a: ✨ Added `<rh-progress-stepper>`
+  
+  Progress stepper communicates how many steps are required to complete a process.
+  
+  ```html
+  <rh-progress-stepper orientation="horizontal">
+    <rh-progress-step state="complete"
+                      description="This step has been completed successfully">
+      Complete Step
+    </rh-progress-step>
+  
+    <rh-progress-step state="active"
+                      description="Currently working on this step">
+      Active Step
+    </rh-progress-step>
+  
+    <rh-progress-step state="inactive">
+      Inactive Step
+      <span slot="description">
+        This step is <strong>not yet started</strong>
+      </span>
+    </rh-progress-step>
+  </rh-progress-stepper>
+  ```
+- c0b5e9a: ✨ Added `<rh-skeleton>`
+  
+  A skeleton loader is a placeholder for content that is loading.
+  
+  ```html
+  <rh-skeleton></rh-skeleton>
+  ```
+
+### Patch Changes
+
+- c76fe5e: `<rh-announcement>`: let long CTA text wrap to next line for small viewports
+- 2f4714a: `<rh-tabs>`: corrected duplicate focus ring with keyboard navigation
+- c0b5e9a: `<rh-tag>`: improve color contrast of gray tags on dark color schemes
+- c0b5e9a: `<rh-footer>`: removed console warnings
+- 2f4714a: `<rh-tabs>`: corrected background styles inherited from parent color-scheme and host color-palette
+- 9f01572: `<rh-alert>`: make `state` attribute case-insensitive
+- 83561d7: `<rh-navigation-primary>`: improved keyboard accessibility of the dropdown toggle
+- 4b130a7: `<rh-footer>`: removed "Inc" from copyright
+- 877a0a1: `<rh-audio-player>`: corrected icons for rewind and fast forward
+- c0b5e9a: Inline links should show a dashed underline, provided they are not in a navigation element or accompanied by visual clues that indicate interactivity. The following changes were made to adhere to our inline link styling guidelines.
+  
+  Updated CSS to allow slotted `<a>` elements to display underlines in `<rh-avatar>` and `<rh-table>`.
+  
+  Removed underlines from linked text in `<rh-breadcrumbs>`.
+  
+  Updated or added underline styles for:
+  
+    - `<rh-footer>`: Links that show an underline only on hover now show a dashed underline, instead of a solid one. Links in `<rh-footer-block>` show an underline in the default state.
+    - `<rh-pagination>`: An underline was added only for the last page link.
+    - `<rh-skip-link>`: Skip link's hover state uses a dashed underline, instead of a solid underline, now.
+- 2f4714a: `<rh-tabs>`: corrected vertical layout styles
+- c0b5e9a: `<rh-code-block>`: improve performance when `line-numbers="hidden"` attribute is present
+- c0b5e9a: `<rh-card>`: allow card to accept all six color palettes
+- c0b5e9a: `<rh-footer>`: corrected height style when JavaScript is not available
+
 ## 3.0.4
 ### Patch Changes
 

@@ -2,11 +2,11 @@
 
 Users should have the ability to navigate to and interact with the back to top button using their keyboard.
 
-<uxdot-example width-adjustment="872px">
-  <img src="../back-to-top-keyboard-nav.png" 
+<uxdot-example variant="full" no-border>
+  <img src="../back-to-top-a11y-keyboard-nav.svg" 
       alt="Example of a page with footer links and a back to top button that has keyboard interaction annotations"
-      width="872"
-      height="240">
+      width="1140"
+      height="730">
 </uxdot-example>
 
 <rh-table>
@@ -20,15 +20,15 @@ Users should have the ability to navigate to and interact with the back to top b
     <tbody>
       <tr>
         <td data-label="Key"><kbd>Tab</kbd></td>
-        <td data-label="Result">Shifts focus to the back to top button </td>
+        <td data-label="Result">Shifts focus to back to top</td>
       </tr>
       <tr>
         <td data-label="Key"><kbd>Shift + Tab</kbd></td>
-        <td data-label="Result">Shifts focus to a previous interactive element</td>
+        <td data-label="Result">Shifts focus to the previous interactive element</td>
       </tr>
       <tr>
         <td data-label="Key"><kbd>Enter</kbd></td>
-        <td data-label="Result">Activates the back to top button and moves focus to the first interactive element on the pag</td>
+        <td data-label="Result">Activates back to top and moves focus to the very first interactive element on the page</td>
       </tr>
     </tbody>
   </table>
@@ -37,7 +37,7 @@ Users should have the ability to navigate to and interact with the back to top b
 
 ## Focus order
 
-As long as the back to top button is only at the bottom of the page, it should be the last interactive element on the page to receive focus.
+Back to top should be the last interactive element to receive focus.
 
 {% include 'partials/accessibility/ariaguide.md' %}
 {% include 'partials/accessibility/wcag.md' %}

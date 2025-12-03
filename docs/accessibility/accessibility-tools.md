@@ -23,7 +23,7 @@ Automated tools can help you quickly identify many potential high-impact accessi
 
 Tucked away in your browser’s DevTools panel after installation, Deque’s aXe DevTools extension scans your page for accessibility issues and best practices, and then returns a text list of results and code callouts. With its ability to export results, aXe DevTools is also useful for documentation, reports, and issue tracking.
 
-Different WCAG versions (2.0 through 2.2) and conformance levels (A through AAA) can be specified in the extension’s settings. (At Red Hat, we target WCAG 2.1 AA.) And you can toggle best practices results on and off, depending on whether you’re interested solely in strict WCAG conformance. You can read the full list of rules being tested at the [axe-core GitHub repository](https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md).
+Different WCAG versions (2.0 through 2.2) and conformance levels (A through AAA) can be specified in the extension’s settings. (At Red Hat, we target WCAG 2.2 AA.) And you can toggle best practices results on and off, depending on whether you’re interested solely in strict WCAG conformance. You can read the full list of rules being tested at the [axe-core GitHub repository](https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md).
 
 The [aXe DevTools extension](https://www.deque.com/axe/devtools/) is available for Chrome, Firefox, and Edge. The free version allows you to test entire pages. The paid Pro version adds the capability to specify page sections for testing, provides additional export options, and also includes some guided walkthroughs for further testing.
 
@@ -40,9 +40,45 @@ Like aXe DevTools, IBM’s free Equal Access Checker resides in your browser’s
 
 Running Equal Access Checker in conjunction with a tool like aXe DevTools can be useful for detecting a wider array of violations than either tool alone. And surfacing violations common to both tools may help you identify higher-risk issues.
 
-In addition to WCAG versions 2.0, 2.1, and 2.2, Equal Access Checker can run scans based on IBM’s internal accessibility target. Currently, this target includes all of WCAG 2.1 AA, plus some additional U.S. (Section 508) and European (EN 301 549) standards not covered by WCAG. IBM has posted the [Equal Access testing ruleset](https://www.ibm.com/able/requirements/checker-rule-sets) at their accessibility site.
+In addition to WCAG versions 2.0, 2.1, and 2.2, Equal Access Checker can run scans based on IBM’s [internal accessibility target](https://www.ibm.com/able/requirements/requirements/). Currently, this target includes WCAG 2.2 AA, plus some additional U.S. (Section 508) and European (EN 301 549) standards not covered by WCAG. IBM has posted the [Equal Access testing ruleset](https://www.ibm.com/able/requirements/checker-rule-sets) at their accessibility site.
 
 [Equal Access Checker](https://www.ibm.com/able/toolkit/tools/#develop) can be installed as a browser extension in Chrome, Firefox, and Edge. It’s also available as CI/CD Node packages.
+
+### False positives on Custom Elements in automated tools
+
+At the time of this writing, automated accessibility tooling cannot detect accessibility features added via the ElementInternals API. This highlights why [manual testing](/accessibility/manual-testing/) is essential—automated tools can miss or misinterpret accessibility implementations that rely on newer APIs.
+
+Some of our elements may receive errors or warnings that are false positives from automated testing tools, like the following:
+
+<div class="grid sm-two-columns">
+  <figure>
+    <uxdot-example color-palette="lightest" width-adjustment="872px">
+      <img src="/assets/accessibility/axe-dev-tools-false-positive.avif"  
+          alt="Axe Dev Tools showing a critical issue on 'Certain ARIA roles must contain particular children.'"
+          width="680"
+          height="485">
+    </uxdot-example>
+    <figcaption>Axe Dev Tools report showing a false positive on a certain ARIA role not having the required child elements.</figcaption>
+  </figure>
+  <figure>
+    <uxdot-example color-palette="lightest" width-adjustment="872px">
+      <img src="/assets/accessibility/lighthouse-false-positive.avif"  
+          alt="Screenshot of Lighthouse reports 'Elements with an ARIA [role] that require children to contain a specific [role] are missing some or all of those required children.'"
+          width="680"
+          height="485">
+    </uxdot-example>
+    <figcaption>Lighthouse report showing a false positive about a missing ARIA role.</figcaption>
+  </figure>
+</div>
+
+In many cases, these false positives occur because automated tools expect to see an ARIA `role` or `aria-*` attribute explicitly defined on a Custom Element, even though that `role` or attribute is already being applied implicitly through the [ElementInternals API](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals).
+
+By using the ElementInternals API, we can assign roles and other accessibility properties directly to a Custom Element, just like a native HTML element. These roles appear correctly in the [accessibility tree](#accessibility-tools-built-into-the-browser-inspector) and are interpreted properly by [screen readers](/accessibility/screen-readers/).
+
+<rh-alert state="info">
+  <h3 slot="header">Note</h3>
+  <p>Our team is working with Deque and others to improve automated accessibility tools, ensuring they correctly detect the ElementInternals API and other modern Web Platform features implemented in our design system.</p>
+</rh-alert>
 
 ## Browser inspectors
 

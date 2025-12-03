@@ -2,6 +2,7 @@
   display: block;
   container-name: card;
   container-type: inline-size;
+  width: 100%;
   height: max-content;
 }
 
@@ -35,7 +36,7 @@
   flex-direction: column;
   justify-items: flex-start;
   overflow: hidden;
-  border-radius: var(--_border-radius, var(--rh-border-width-lg, 3px));
+  border-radius: var(--_border-radius, var(--rh-border-radius-default, 3px));
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif) !important;
   line-height: var(--rh-line-height-body-text, 1.5);
   border-style: solid;
@@ -46,13 +47,22 @@
   border-color: var(--rh-color-border-subtle);
   width: 100%;
   height: 100%;
+
+  /* colors for when `color-palette` inherits from a parent: */
   background-color:
     light-dark(var(--_card-background, var(--rh-color-surface-lightest, #ffffff)),
       var(--_card-background, var(--rh-color-surface-darkest, #151515)));
   color: var(--rh-color-text-primary);
 
-  &.lighter { background-color: var(--rh-color-surface-lighter, #f2f2f2); }
-  &.darker { background-color: var(--rh-color-surface-darker, #1f1f1f); }
+  /* colors for when `color-palette` is applied directly on an rh-card: */
+  &.light,
+  &.lighter,
+  &.lightest,
+  &.dark,
+  &.darker,
+  &.darkest {
+    --_card-background: var(--rh-color-surface);
+  }
 }
 
 #header,
@@ -167,6 +177,9 @@
   --_promo-paragraph-margin-block-end: var(--rh-space-lg, 16px);
   --_promo-standard-inline-padding: var(--rh-space-2xl, 32px);
 
+  background-color:
+    light-dark(var(--rh-color-surface-lightest, #ffffff),
+      var(--rh-color-surface-darkest, #151515));
   height: auto;
 }
 
@@ -205,6 +218,9 @@
 }
 
 #container.promo.standard {
+  background-color:
+    light-dark(var(--rh-color-surface-lighter, #f2f2f2),
+      var(--rh-color-surface-darker, #1f1f1f));
   display: flex;
   padding: var(--_promo-standard-inline-padding);
   width: auto;

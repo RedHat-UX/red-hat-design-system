@@ -1,0 +1,237 @@
+/* Progress Stepper Component Styles */
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+:host {
+  --_step-line-color: /** @summary Connecting line color between steps */
+    var(--rh-color-border-strong);
+  --_current-step-color: var(--_rh-color-status-disabled, #6a6e73);
+  --_current-step-label-color: /** @summary Step label color (default state) */
+    var(--rh-color-text-primary);
+  --_step-line-angle: -180deg;
+  --_step-line-position-block: 0 100%;
+  --_step-line-position-inline: calc(calc(100% - var(--_step-icon-width)) * -1) 100%;
+  --_step-line-size-inline: calc(100% - var(--_step-icon-width));
+  --_step-line-size-block: 100%;
+  --_step-template-areas:
+    'icon'
+    'label'
+    'description';
+  --_step-template-columns: auto;
+  --_step-template-rows:
+    calc(
+        /** @summary Base icon container size */
+        var(--rh-length-xl, 24px) + 4px
+      ) auto 1fr;
+  --_step-justify-self: baseline;
+  --_step-compact-vertical-padding: 0;
+  --_step-compact-horizontal-padding:
+    /** @summary Horizontal padding between steps in compact mode */
+    var(
+        --rh-length-2xl,
+        32px
+      );
+  --_step-column-gap:
+    /** @summary Horizontal gap between step elements */
+    var(
+        --rh-length-lg,
+        16px
+      );
+  --_step-row-gap:
+    /** @summary Vertical spacing between rows in step grid */
+    var(
+        --rh-length-xs,
+        4px
+      );
+  --_step-compact-grid-row: 2;
+  --_step-description-margin: inherit;
+  --_step-align-items: center;
+  --_step-icon-width:
+    calc(
+        /** @summary Icon size for step indicators */
+        var(--rh-size-icon-02, 24px) + 4px
+      );
+
+  container-type: inline-size;
+  display: block;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+
+  /** @summary Vertical spacing between stepper elements */
+  gap: var(--rh-length-lg, 16px);
+}
+
+#step-list {
+  padding: 0;
+  display: grid;
+  place-content: baseline normal;
+
+  /* Horizontal orientation styles */
+  grid-auto-flow: column;
+  grid-auto-columns: var(--_stepper-grid-auto-column, 1fr);
+}
+
+.visually-hidden {
+  block-size: 1px;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  inline-size: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  color: var(--_current-step-label-color);
+  font-weight:
+    var(
+        --_current-step-weight,
+        /* @summary Font weight for current step text */
+        var(--rh-font-weight-body-text-medium, 500)
+      );
+}
+
+::slotted(rh-progress-step:first-of-type) {
+  --_step-line-style: none;
+}
+
+::slotted([state='inactive']),
+::slotted(:not([state],[icon])) {
+  --_step-line-color: /** @summary Connecting line color for inactive steps */
+    var(--rh-color-border-subtle) !important;
+}
+
+/* Vertical orientation styles */
+.vertical {
+  --_step-line-angle: 90deg; /* sets the line direction between steps to vertical */
+  --_step-line-position-block: calc(calc(100% - var(--_step-icon-width)) * -1) 100%;
+  --_step-line-position-inline: 0 100%;
+  --_step-line-size-inline: 100%;
+  --_step-line-size-block: calc(100% - var(--_step-icon-width));
+  --_step-template-areas:
+    'icon label'
+    'line description';
+  --_step-template-columns: var(--_step-icon-width) auto;
+  --_step-template-rows: auto;
+  --_step-justify-self: start;
+  --_step-icon-justify-self: center;
+  --_step-description-grid-column: 2;
+
+  /** @summary Vertical padding between steps in compact vertical mode */
+  --_step-compact-vertical-padding: var(--rh-length-2xl, 32px);
+  --_step-column-gap: /** @summary Horizontal gap between icon and label in vertical mode */
+    var(--rh-length-lg, 16px);
+  --_step-row-gap: /** @summary Vertical spacing between step elements */
+    var(--rh-length-xs, 4px);
+  --_step-align-items: baseline;
+
+  & #step-list {
+    grid-auto-flow: row;
+  }
+
+  & ::slotted(rh-progress-step) {
+    --_step-compact-horizontal-padding: 0;
+  }
+}
+
+/* Compact view styles */
+.compact {
+  grid-template-rows: auto;
+
+  --_step-template-areas: 'icon';
+  --_step-grid-row: var(--_step-compact-grid-row);
+  --_step-template-rows: auto;
+  --_step-compact-vertical-padding: 0;
+  --_step-compact-horizontal-padding: /** @summary Horizontal padding in compact horizontal mode */
+    var(--rh-length-lg, 16px);
+  --_step-template-columns: var(--_step-icon-width);
+  --_step-row-gap: 0;
+  --_step-column-gap: 0;
+  --_stepper-grid-auto-column:
+    calc(
+        var(--_step-icon-width) + var(--_step-compact-horizontal-padding)
+      );
+
+  &.vertical {
+    --_step-template-areas: 'icon' 'line';
+    --_step-compact-horizontal-padding: 0;
+    --_step-compact-vertical-padding:
+      /** @summary Vertical padding in compact vertical mode */
+      var(
+          --rh-length-lg,
+          16px
+        );
+  }
+
+  & ::slotted(rh-progress-step) {
+    /* set again to override container query in rh-progress-step */
+    --_step-compact-horizontal-padding:
+      /** @summary Horizontal padding override for compact steps */
+      var(
+          --rh-length-lg,
+          16px
+        );
+  }
+
+  & #current-step {
+    /* Visually Showing */
+    block-size: auto;
+    border: none;
+    clip: auto;
+    inline-size: auto;
+    margin: 0;
+    overflow: auto;
+    padding: 0;
+    position: relative;
+    white-space: normal;
+
+    /* End Visually Showing */
+
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+}
+
+/* State-based color and weight variations for compact <rh-progress-stepper> */
+.inactive {
+  --_current-step-color: var(--_rh-color-status-disabled, #6a6e73);
+}
+
+.active {
+  --_current-step-color: /** @summary Color for active step in compact mode */
+    var(--rh-color-status-note);
+}
+
+.complete {
+  --_current-step-color: /** @summary Color for completed step in compact mode */
+    var(--rh-color-status-success);
+}
+
+.warn {
+  --_current-step-color:
+    light-dark(
+        /** @summary Warning step color in light mode */
+        var(--rh-color-yellow-50, #b98412),
+        /** @summary Warning step color in dark mode */
+        var(--rh-color-yellow-30, #ffcc17)
+      );
+  --_current-step-label-color:
+    light-dark(
+        /** @summary Warning step label color in light mode */
+        var(--rh-color-yellow-60, #96640f),
+        /** @summary Warning step label color in dark mode */
+        var(--rh-color-yellow-20, #ffe072)
+      ) !important;
+}
+
+.fail {
+  --_current-step-color: /** @summary Color for failed step icon in compact mode */
+    var(--rh-color-status-danger);
+  --_current-step-label-color: /** @summary Color for failed step label in compact mode */
+    var(--rh-color-status-danger) !important;
+}
