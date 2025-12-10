@@ -210,6 +210,7 @@ export default async function(eleventyConfig: UserConfig) {
       'elements/rh-button/rh-button.ts',
       'elements/rh-card/rh-card.ts',
       'elements/rh-chip/rh-chip.ts',
+      'elements/rh-chip/rh-chip-group.ts',
       'elements/rh-code-block/rh-code-block.ts',
       'elements/rh-cta/rh-cta.ts',
       'elements/rh-dialog/rh-dialog.ts',
