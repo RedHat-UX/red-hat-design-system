@@ -312,7 +312,7 @@
     "@playwright/test": "^1.54.1",
     "@pwrs/cem": "^0.6.5",
     "@rollup/plugin-node-resolve": "^16.0.0",
-    "@stylistic/eslint-plugin-js": "^2.13.0",
+    "@stylistic/eslint-plugin-js": "^4.2.0",
     "@stylistic/stylelint-config": "^2.0.0",
     "@stylistic/stylelint-plugin": "^3.1.2",
     "@types/js-yaml": "^4.0.9",
