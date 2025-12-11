@@ -1,11 +1,51 @@
-<rh-select></rh-select>
+<div class="container">
+  <rh-select placeholder="Select a title" accessible-label="Title">
+    <rh-option>Item 1</rh-option>
+    <rh-option>Item 2</rh-option>
+    <rh-option>Item 3</rh-option>
+    <rh-option>Item 4</rh-option>
+    <hr>
+    <rh-option>Item 5</rh-option>
+    <rh-option>Item 6</rh-option>
+  </rh-select>
+</div>
 
 <script type="module">
   import '@rhds/elements/rh-select/rh-select.js';
+  // import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 </script>
 
 <style>
-  rh-select {
+  .container {
     margin: 20px;
+    max-inline-size: 320px;
   }
+
+  .todos {
+    margin-block-start: 500px;
+  }
+
+/*  label {
+    display: block;
+    margin-bottom: var(--rh-space-md, 8px);
+  }
+
+  .required {
+    color: var(--rh-color-status-danger);
+  }
+*/
 </style>
+
+<div class="container todos">
+  <h2>To Do's</h2>
+  <ul>
+    <li>Fake <a href="#">link</a></li>
+    <li>Style according to RHDS figma</li>
+    <li>Implement focus state for option</li>
+    <li>Make demo for icons and style</li>
+    <li>Make demo for descriptions and style</li>
+    <li>Implement success/warning/error states + help text</li>
+    <li>Add demo for rh-optgroup & style</li>
+    <li>Add color context demo, test on dark</li>
+  </ul>
+</div>
