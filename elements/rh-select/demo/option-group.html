@@ -1,0 +1,83 @@
+<div class="container limit-width">
+  <label for="select-4">
+    With option group <span class="required" aria-label="Required field">*</span>
+    <rh-tooltip>
+      <rh-button>
+        <rh-icon set="ui" icon="question-mark-circle" accessible-label="More information"></rh-icon>
+      </rh-button>
+      <span slot="content">Extra helpful information</span>
+    </rh-tooltip>
+  </label>
+  <rh-select id="select-4" placeholder="Select an item">
+    <rh-option>
+      Item 1
+    </rh-option>
+    <rh-option disabled>
+      Disabled Item 2
+    </rh-option>
+    <rh-option>
+      Item 3
+    </rh-option>
+    <rh-option-group label="First Group">
+      <rh-option>
+        Item 4
+      </rh-option>
+      <rh-option>
+        Item 5
+      </rh-option>
+    </rh-option-group>
+    <rh-option-group disabled label="Second Disabled Group">
+      <rh-option>
+        Item 6
+      </rh-option>
+      <rh-option>
+        Item 7
+      </rh-option>
+    </rh-option-group>
+    <rh-option>
+      Item 8
+    </rh-option>
+    <rh-option-group label="Third Group">
+      <rh-option>
+        Item 9
+      </rh-option>
+      <rh-option>
+        Item 10
+      </rh-option>
+    </rh-option-group>
+    <rh-option>
+      Item 11
+    </rh-option>
+  </rh-select>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-select/rh-select.js';
+  import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+</script>
+
+<style>
+  .container {
+    margin: 20px;
+  }
+
+  .limit-width {
+    max-inline-size: 320px;
+  }
+
+  label {
+    display: block;
+    font-family: var(--rh-font-family-body-text);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    margin-block-end: var(--rh-space-md, 8px);
+    margin-inline-start: 3px;
+  }
+
+  .required {
+    color: var(--rh-color-status-danger);
+  }
+
+  rh-tooltip {
+    font-weight: var(--rh-font-weight-body-text-regular, 400);
+  }
+</style>

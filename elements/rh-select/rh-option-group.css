@@ -1,26 +1,25 @@
 :host {
-  border-bottom: 1px solid var(--pf-global--BorderColor--100, #d2d2d2);
+  border-block-start: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
   display: block;
+  padding-block: var(--rh-space-md, 8px);
 }
 
 :host([disabled]) {
-  --_active-descendant-color: var(--pf-theme--color--surface--lighter, #f0f0f0) !important;
-  --_svg-color: var(--pf-global--Color--200, #6a6e73) !important;
-
-  background-color: var(--pf-theme--color--surface--lighter, #f0f0f0) !important;
-  border-color: var(--pf-theme--color--surface--lighter, #f0f0f0) !important;
-  color: var(--pf-global--Color--200, #6a6e73) !important;
-  cursor: not-allowed;
   pointer-events: none;
+}
+
+:host([disabled]),
+:host([disabled]) slot[name='label'] {
+  color: var(--rh-color-text-status-disabled, #707070);
 }
 
 slot {
   display: block;
-  padding: var(--pf-global--spacer--md, 1rem) 0;
 }
 
 slot[name='label'] {
-  color: var(--pf-global--Color--dark-200, #6a6e73);
-  font-size: var(--pf-global--FontSize--xs, 0.75rem);
-  padding: var(--pf-global--spacer--md, 1rem) var(--pf-global--spacer--md, 1rem) 0;
+  color: var(--rh-color-text-secondary);
+  font-size: var(--rh-font-size-body-text-xs, 0.75rem);
+  padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+  user-select: none;
 }
