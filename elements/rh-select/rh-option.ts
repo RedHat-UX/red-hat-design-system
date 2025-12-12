@@ -33,9 +33,6 @@ export class RhOption extends LitElement {
   /** Whether option is selected */
   @property({ type: Boolean, reflect: true }) selected = false;
 
-  /** Whether option is active descendant */
-  @property({ type: Boolean, reflect: true }) active = false;
-
   /** Optional option description; overridden by description slot. */
   @property() description = '';
 
@@ -76,7 +73,7 @@ export class RhOption extends LitElement {
   #internals = InternalsController.of(this, { role: 'option' });
 
   render() {
-    const { disabled, active, selected } = this;
+    const { disabled, selected } = this;
     return html`
       <div id="outer" class="${classMap({ active, disabled, selected })}">
         <input type="checkbox"
@@ -85,6 +82,7 @@ export class RhOption extends LitElement {
                tabindex="-1"
                ?checked="${this.selected}"
                ?disabled="${this.disabled}">
+      <div id="outer" class="${classMap({ disabled, selected })}">
         <!-- Optional rh-icon to appear before option text -->
         <slot name="icon"></slot>
         <span>

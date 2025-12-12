@@ -28,8 +28,6 @@
   padding: var(--pf-global--spacer--sm, 0.5rem) var(--pf-global--spacer--md, 1rem);
 }
 
-#outer.active {
-  background-color: var(--_active-descendant-color, var(--pf-theme--color--surface--lighter, #f0f0f0));
 }
 
 :host([disabled]) #outer {

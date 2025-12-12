@@ -108,7 +108,6 @@ export class RhSelect extends LitElement {
     requestHideListbox: () => void (this.expanded &&= false),
     setItemHidden: (item, hidden) => (item.id !== 'placeholder') && void (item.hidden = hidden),
     isItem: item => item instanceof RhOption,
-    setItemActive: (item, active) => item.active = active,
     setItemSelected: (item, selected) => item.selected = selected,
   });
 
