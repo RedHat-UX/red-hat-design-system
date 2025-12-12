@@ -8,8 +8,8 @@
 }
 
 :host([disabled]) {
-  cursor: not-allowed !important;
-  pointer-events: none !important;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 :host(:focus),
