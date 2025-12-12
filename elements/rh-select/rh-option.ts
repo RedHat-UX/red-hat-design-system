@@ -75,13 +75,6 @@ export class RhOption extends LitElement {
   render() {
     const { disabled, selected } = this;
     return html`
-      <div id="outer" class="${classMap({ active, disabled, selected })}">
-        <input type="checkbox"
-               inert
-               role="presentation"
-               tabindex="-1"
-               ?checked="${this.selected}"
-               ?disabled="${this.disabled}">
       <div id="outer" class="${classMap({ disabled, selected })}">
         <!-- Optional rh-icon to appear before option text -->
         <slot name="icon"></slot>
