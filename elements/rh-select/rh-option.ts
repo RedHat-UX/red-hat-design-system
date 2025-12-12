@@ -78,7 +78,7 @@ export class RhOption extends LitElement {
       <div id="outer" class="${classMap({ disabled, selected })}">
         <!-- Optional rh-icon to appear before option text -->
         <slot name="icon"></slot>
-        <span>
+        <span id="label">
           <!-- Option text / label (required) -->
           <slot>${this.value}</slot>
         </span>

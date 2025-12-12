@@ -3,6 +3,7 @@
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   font-weight: var(--rh-font-weight-body-text-regular, 400);
+  line-height: var(--rh-line-height-body-text, 1.5);
 }
 
 :host,
@@ -85,8 +86,7 @@
   flex: 1 0 auto;
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   gap: var(--rh-space-lg, 16px);
-  min-height: 44px;
-  min-width: 44px;
+  min-block-size: 37px;
   padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
   text-align: left;
 
