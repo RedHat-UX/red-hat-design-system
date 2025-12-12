@@ -43,6 +43,10 @@
 
 #label {
   flex: 1 1 auto;
+}
+
+#label,
+::slotted([slot='description']) {
   user-select: none;
 }
 

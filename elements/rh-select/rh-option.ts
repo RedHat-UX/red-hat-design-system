@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -23,7 +23,20 @@ export class RhOption extends LitElement {
   /** Form value for this option */
   @property({ reflect: true })
   get value() {
-    return (this.#value ?? this.textContent ?? '').trim();
+    if (this.#value) {
+      return this.#value;
+    }
+    if (!isServer) {
+      // Limit text to default slotted content
+      const defaultSlot = this.shadowRoot?.querySelector<HTMLSlotElement>('slot:not([name])');
+      if (defaultSlot) {
+        return defaultSlot.assignedNodes()
+            .map(node => node.textContent ?? '')
+            .join('')
+            .trim();
+      }
+    }
+    return '';
   }
 
   set value(v: string) {
