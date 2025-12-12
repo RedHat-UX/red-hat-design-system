@@ -1,5 +1,14 @@
-<div class="container">
-  <rh-select placeholder="Select a title" accessible-label="Title">
+<div class="container limit-width">
+  <label for="select-1">
+    Label <span class="required" aria-label="Required field">*</span>
+    <rh-tooltip>
+      <rh-button>
+        <rh-icon set="ui" icon="question-mark-circle" accessible-label="More information"></rh-icon>
+      </rh-button>
+      <span slot="content">Extra helpful information</span>
+    </rh-tooltip>
+  </label>
+  <rh-select id="select-1" placeholder="Select an item">
     <rh-option>Item 1</rh-option>
     <rh-option>Item 2</rh-option>
     <rh-option>Item 3</rh-option>
@@ -12,7 +21,7 @@
 
 <script type="module">
   import '@rhds/elements/rh-select/rh-select.js';
-  // import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+  import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 </script>
 
 <style>
@@ -25,15 +34,20 @@
     margin-block-start: 500px;
   }
 
-/*  label {
     display: block;
+    font-family: var(--rh-font-family-body-text);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
     margin-bottom: var(--rh-space-md, 8px);
   }
 
   .required {
     color: var(--rh-color-status-danger);
   }
-*/
+
+  rh-tooltip {
+    font-weight: var(--rh-font-weight-body-text-regular, 400);
+  }
+
 </style>
 
 <div class="container todos">
