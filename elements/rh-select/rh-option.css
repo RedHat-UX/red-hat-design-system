@@ -18,8 +18,7 @@
 }
 
 :host(:focus) #outer,
-:host(:hover) #outer,
-#outer.selected {
+:host(:hover) #outer {
   background-color: var(--rh-color-surface-lighter, #f2f2f2);
 }
 
@@ -61,15 +60,5 @@ slot[name='description'] {
 }
 
 ::slotted([slot='icon']) {
-  margin-inline-end: 0.5em;
-}
-
-:host([suggestion]) {
-  #outer.selected {
-    background-color: transparent;
-  }
-
-  svg {
-    display: none;
-  }
+  margin-inline-end: var(--rh-space-md, 8px);
 }
