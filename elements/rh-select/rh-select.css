@@ -45,6 +45,7 @@
   border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
   border-radius: var(--rh-border-radius-default, 3px);
   box-shadow: var(--rh-box-shadow-sm);
+  padding-block: var(--rh-space-md, 8px);
   position: absolute;
   opacity: 0;
 }
