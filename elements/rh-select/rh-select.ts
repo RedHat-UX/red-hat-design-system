@@ -148,7 +148,6 @@ export class RhSelect extends LitElement {
     const { anchor = 'bottom', alignment = 'start', styles = {} } = this.#float;
     const { height, width } = this.getBoundingClientRect?.() || {};
     const hasSelection = !!(Array.isArray(this.selected) ? this.selected.length : this.selected);
-    const hideLightDomItems = !ComboboxController.supportsCrossRootActiveDescendant;
     const placeholderIsInert = !placeholder && this.#slots.isEmpty('placeholder');
     return html`
       <div id="outer"
@@ -179,7 +178,7 @@ export class RhSelect extends LitElement {
             </rh-option>
             ${this.#combobox.renderItemsToShadowRoot()}
             <!-- insert \`rh-option\` and/or \`rh-option-groups\` here -->
-            <slot ?hidden="${hideLightDomItems}"></slot>
+            <slot></slot>
           </div>
         </div>
       </div>
