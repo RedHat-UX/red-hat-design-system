@@ -31,8 +31,8 @@
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.4/core.js",
-    "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -89,11 +89,28 @@
 
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
-  <body><rh-chip-group size="sm">
+  <body><rh-chip-group  size="sm"><template shadowroot="open" shadowrootmode="open"><style>:host{--_spacer:var(--rh-space-lg,16px);display:block}fieldset{align-items:center;border:0;display:flex;flex-wrap:wrap;margin:0;padding:0}legend{float:left;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);margin-inline-end:var(--rh-space-md,8px)}.btn-link{background-color:initial;border:0;border-radius:var(--rh-border-radius-pill,64px);color:var(--rh-color-interactive-primary-default);cursor:pointer;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-sm,.875rem);line-height:var(--rh-line-height-body-text,1.5);margin-block-start:1px;outline:var(--rh-border-width-sm,1px) solid #0000;padding:var(--rh-space-xs,4px) var(--rh-space-md,8px);position:relative;&:focus,&:hover{color:var(--rh-color-interactive-primary-hover);outline-color:var(--rh-color-border-subtle)}&:focus{outline-offset:var(--rh-border-width-md,2px)}&:focus:after{border-radius:var(--rh-border-radius-default,3px);content:"";inset:var(--rh-length-4xs,1px) var(--rh-length-md,8px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-border-interactive);position:absolute}}.btn-link,legend{margin-block-end:var(--_spacer)}:host([size=sm]){legend{font-size:var(--rh-font-size-body-text-sm,.875rem)}.btn-link{font-size:var(--rh-font-size-body-text-xs,.75rem)}}</style><!--lit-part KQe1jPYyNHQ=-->
+      <fieldset>
+        <legend part="legend">
+          <!--
+            An accessible label for the chip group.
+            Content for this slot is put into the `<legend>` element.
+            Also available as an attribute.
+          -->
+          <slot name="accessible-label"><!--lit-part-->Filter by:<!--/lit-part--></slot>
+        </legend>
+        <!-- Place individual `rh-chips` inside `rh-chip-group` -->
+        <slot></slot>
+        <!--lit-node 7--><button class="btn-link" type="button" >
+          <!-- Customized text for the "Clear all" button -->
+          <slot name="clear-all">Clear all</slot>
+        </button>
+      </fieldset>
+    <!--/lit-part--></template>
   <span slot="accessible-label">Filter by (small):</span>
   <rh-chip><template shadowroot="open" shadowrootmode="open"><style>:host{--_spacer:var(--rh-space-lg,16px);display:inline-block;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif)!important;line-height:var(--rh-line-height-body-text,1.5)!important;margin-block:2px;margin-inline-end:var(--rh-space-md,8px)}label{border-radius:var(--rh-border-radius-pill,64px);display:flex;font-size:var(--rh-font-size-body-text-sm,.875rem)!important;margin-block-end:var(--_spacer);outline:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);padding:var(--rh-space-xs,4px) var(--rh-space-md,8px);position:relative;text-wrap:balance;&.size-sm{font-size:var(--rh-font-size-body-text-xs,.75rem)!important}&:focus-within,&:hover{cursor:pointer;outline-width:var(--rh-border-width-md,2px)}&:focus-within:after{border-radius:var(--rh-border-radius-default,3px);content:"";inset:var(--rh-length-3xs,2px) var(--rh-length-md,8px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-border-interactive);position:absolute}&:has(input[aria-disabled=true]),&:has(input[aria-disabled=true]:checked){background-color:light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-surface-dark,#383838));color:light-dark(var(--rh-color-text-secondary),var(--rh-color-gray-40,#a3a3a3));outline-color:light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-surface-dark,#383838));pointer-events:none}&:has(input:checked){background-color:light-dark(var(--rh-color-blue-10,#e0f0ff),var(--rh-color-blue-70,#036));color:light-dark(var(--rh-color-blue-70,#036),var(--rh-color-blue-10,#e0f0ff));outline-color:light-dark(var(--rh-color-blue-30,#92c5f9),var(--rh-color-blue-50,#06c));&:hover{outline-color:light-dark(var(--rh-color-blue-30,#92c5f9),var(--rh-color-blue-50,#06c))}}}#close-icon{block-size:0;inline-size:0;opacity:0;transition-behavior:allow-discrete;transition-duration:.2s;transition-property:inline-size,block-size,opacity,margin-inline-start;transition-timing-function:ease-in-out}input{appearance:none;cursor:pointer;margin:0;&:focus{outline:0}&:checked+#close-icon{block-size:auto;inline-size:auto;margin-inline-start:var(--rh-space-md,8px);opacity:1}}</style><!--lit-part DGFmBS/ggVs=-->
       <!-- The main chip container -->
-      <!--lit-node 1--><label part="chip" class="  ">
+      <!--lit-node 1--><label part="chip" class=" size-sm ">
         <!-- The label of the checkbox -->
         <slot></slot>
         <!--lit-node 4--><input type="checkbox"
@@ -115,7 +132,7 @@
     <!--/lit-part--></template>Automation</rh-chip>
   <rh-chip  checked><template shadowroot="open" shadowrootmode="open"><style>:host{--_spacer:var(--rh-space-lg,16px);display:inline-block;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif)!important;line-height:var(--rh-line-height-body-text,1.5)!important;margin-block:2px;margin-inline-end:var(--rh-space-md,8px)}label{border-radius:var(--rh-border-radius-pill,64px);display:flex;font-size:var(--rh-font-size-body-text-sm,.875rem)!important;margin-block-end:var(--_spacer);outline:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);padding:var(--rh-space-xs,4px) var(--rh-space-md,8px);position:relative;text-wrap:balance;&.size-sm{font-size:var(--rh-font-size-body-text-xs,.75rem)!important}&:focus-within,&:hover{cursor:pointer;outline-width:var(--rh-border-width-md,2px)}&:focus-within:after{border-radius:var(--rh-border-radius-default,3px);content:"";inset:var(--rh-length-3xs,2px) var(--rh-length-md,8px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-border-interactive);position:absolute}&:has(input[aria-disabled=true]),&:has(input[aria-disabled=true]:checked){background-color:light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-surface-dark,#383838));color:light-dark(var(--rh-color-text-secondary),var(--rh-color-gray-40,#a3a3a3));outline-color:light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-surface-dark,#383838));pointer-events:none}&:has(input:checked){background-color:light-dark(var(--rh-color-blue-10,#e0f0ff),var(--rh-color-blue-70,#036));color:light-dark(var(--rh-color-blue-70,#036),var(--rh-color-blue-10,#e0f0ff));outline-color:light-dark(var(--rh-color-blue-30,#92c5f9),var(--rh-color-blue-50,#06c));&:hover{outline-color:light-dark(var(--rh-color-blue-30,#92c5f9),var(--rh-color-blue-50,#06c))}}}#close-icon{block-size:0;inline-size:0;opacity:0;transition-behavior:allow-discrete;transition-duration:.2s;transition-property:inline-size,block-size,opacity,margin-inline-start;transition-timing-function:ease-in-out}input{appearance:none;cursor:pointer;margin:0;&:focus{outline:0}&:checked+#close-icon{block-size:auto;inline-size:auto;margin-inline-start:var(--rh-space-md,8px);opacity:1}}</style><!--lit-part DGFmBS/ggVs=-->
       <!-- The main chip container -->
-      <!--lit-node 1--><label part="chip" class="  ">
+      <!--lit-node 1--><label part="chip" class=" size-sm ">
         <!-- The label of the checkbox -->
         <slot></slot>
         <!--lit-node 4--><input type="checkbox"
@@ -137,7 +154,7 @@
     <!--/lit-part--></template>Security</rh-chip>
   <rh-chip><template shadowroot="open" shadowrootmode="open"><style>:host{--_spacer:var(--rh-space-lg,16px);display:inline-block;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif)!important;line-height:var(--rh-line-height-body-text,1.5)!important;margin-block:2px;margin-inline-end:var(--rh-space-md,8px)}label{border-radius:var(--rh-border-radius-pill,64px);display:flex;font-size:var(--rh-font-size-body-text-sm,.875rem)!important;margin-block-end:var(--_spacer);outline:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);padding:var(--rh-space-xs,4px) var(--rh-space-md,8px);position:relative;text-wrap:balance;&.size-sm{font-size:var(--rh-font-size-body-text-xs,.75rem)!important}&:focus-within,&:hover{cursor:pointer;outline-width:var(--rh-border-width-md,2px)}&:focus-within:after{border-radius:var(--rh-border-radius-default,3px);content:"";inset:var(--rh-length-3xs,2px) var(--rh-length-md,8px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-border-interactive);position:absolute}&:has(input[aria-disabled=true]),&:has(input[aria-disabled=true]:checked){background-color:light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-surface-dark,#383838));color:light-dark(var(--rh-color-text-secondary),var(--rh-color-gray-40,#a3a3a3));outline-color:light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-surface-dark,#383838));pointer-events:none}&:has(input:checked){background-color:light-dark(var(--rh-color-blue-10,#e0f0ff),var(--rh-color-blue-70,#036));color:light-dark(var(--rh-color-blue-70,#036),var(--rh-color-blue-10,#e0f0ff));outline-color:light-dark(var(--rh-color-blue-30,#92c5f9),var(--rh-color-blue-50,#06c));&:hover{outline-color:light-dark(var(--rh-color-blue-30,#92c5f9),var(--rh-color-blue-50,#06c))}}}#close-icon{block-size:0;inline-size:0;opacity:0;transition-behavior:allow-discrete;transition-duration:.2s;transition-property:inline-size,block-size,opacity,margin-inline-start;transition-timing-function:ease-in-out}input{appearance:none;cursor:pointer;margin:0;&:focus{outline:0}&:checked+#close-icon{block-size:auto;inline-size:auto;margin-inline-start:var(--rh-space-md,8px);opacity:1}}</style><!--lit-part DGFmBS/ggVs=-->
       <!-- The main chip container -->
-      <!--lit-node 1--><label part="chip" class="  ">
+      <!--lit-node 1--><label part="chip" class=" size-sm ">
         <!-- The label of the checkbox -->
         <slot></slot>
         <!--lit-node 4--><input type="checkbox"
@@ -159,7 +176,24 @@
     <!--/lit-part--></template>Containers</rh-chip>
 </rh-chip-group>
 
-<rh-chip-group>
+<rh-chip-group><template shadowroot="open" shadowrootmode="open"><style>:host{--_spacer:var(--rh-space-lg,16px);display:block}fieldset{align-items:center;border:0;display:flex;flex-wrap:wrap;margin:0;padding:0}legend{float:left;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);margin-inline-end:var(--rh-space-md,8px)}.btn-link{background-color:initial;border:0;border-radius:var(--rh-border-radius-pill,64px);color:var(--rh-color-interactive-primary-default);cursor:pointer;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-sm,.875rem);line-height:var(--rh-line-height-body-text,1.5);margin-block-start:1px;outline:var(--rh-border-width-sm,1px) solid #0000;padding:var(--rh-space-xs,4px) var(--rh-space-md,8px);position:relative;&:focus,&:hover{color:var(--rh-color-interactive-primary-hover);outline-color:var(--rh-color-border-subtle)}&:focus{outline-offset:var(--rh-border-width-md,2px)}&:focus:after{border-radius:var(--rh-border-radius-default,3px);content:"";inset:var(--rh-length-4xs,1px) var(--rh-length-md,8px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-border-interactive);position:absolute}}.btn-link,legend{margin-block-end:var(--_spacer)}:host([size=sm]){legend{font-size:var(--rh-font-size-body-text-sm,.875rem)}.btn-link{font-size:var(--rh-font-size-body-text-xs,.75rem)}}</style><!--lit-part KQe1jPYyNHQ=-->
+      <fieldset>
+        <legend part="legend">
+          <!--
+            An accessible label for the chip group.
+            Content for this slot is put into the `<legend>` element.
+            Also available as an attribute.
+          -->
+          <slot name="accessible-label"><!--lit-part-->Filter by:<!--/lit-part--></slot>
+        </legend>
+        <!-- Place individual `rh-chips` inside `rh-chip-group` -->
+        <slot></slot>
+        <!--lit-node 7--><button class="btn-link" type="button" >
+          <!-- Customized text for the "Clear all" button -->
+          <slot name="clear-all">Clear all</slot>
+        </button>
+      </fieldset>
+    <!--/lit-part--></template>
   <rh-chip><template shadowroot="open" shadowrootmode="open"><style>:host{--_spacer:var(--rh-space-lg,16px);display:inline-block;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif)!important;line-height:var(--rh-line-height-body-text,1.5)!important;margin-block:2px;margin-inline-end:var(--rh-space-md,8px)}label{border-radius:var(--rh-border-radius-pill,64px);display:flex;font-size:var(--rh-font-size-body-text-sm,.875rem)!important;margin-block-end:var(--_spacer);outline:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);padding:var(--rh-space-xs,4px) var(--rh-space-md,8px);position:relative;text-wrap:balance;&.size-sm{font-size:var(--rh-font-size-body-text-xs,.75rem)!important}&:focus-within,&:hover{cursor:pointer;outline-width:var(--rh-border-width-md,2px)}&:focus-within:after{border-radius:var(--rh-border-radius-default,3px);content:"";inset:var(--rh-length-3xs,2px) var(--rh-length-md,8px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-border-interactive);position:absolute}&:has(input[aria-disabled=true]),&:has(input[aria-disabled=true]:checked){background-color:light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-surface-dark,#383838));color:light-dark(var(--rh-color-text-secondary),var(--rh-color-gray-40,#a3a3a3));outline-color:light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-surface-dark,#383838));pointer-events:none}&:has(input:checked){background-color:light-dark(var(--rh-color-blue-10,#e0f0ff),var(--rh-color-blue-70,#036));color:light-dark(var(--rh-color-blue-70,#036),var(--rh-color-blue-10,#e0f0ff));outline-color:light-dark(var(--rh-color-blue-30,#92c5f9),var(--rh-color-blue-50,#06c));&:hover{outline-color:light-dark(var(--rh-color-blue-30,#92c5f9),var(--rh-color-blue-50,#06c))}}}#close-icon{block-size:0;inline-size:0;opacity:0;transition-behavior:allow-discrete;transition-duration:.2s;transition-property:inline-size,block-size,opacity,margin-inline-start;transition-timing-function:ease-in-out}input{appearance:none;cursor:pointer;margin:0;&:focus{outline:0}&:checked+#close-icon{block-size:auto;inline-size:auto;margin-inline-start:var(--rh-space-md,8px);opacity:1}}</style><!--lit-part DGFmBS/ggVs=-->
       <!-- The main chip container -->
       <!--lit-node 1--><label part="chip" class="  ">
