@@ -1,4 +1,15 @@
 :host {
+  /* Remove these re-declarations when the `status-disabled` variables are defined in tokens */
+  --rh-color-text-status-disabled:
+    light-dark(var(--rh-color-gray-50, #707070),
+      var(--rh-color-gray-60, #4d4d4d));
+  --rh-color-status-disabled:
+    light-dark(var(--rh-color-gray-30, #c7c7c7),
+      var(--rh-color-gray-40, #a3a3a3));
+  --rh-color-icon-status-disabled:
+    light-dark(var(--rh-color-gray-40, #a3a3a3),
+      var(--rh-color-gray-60, #4d4d4d));
+
   color: var(--rh-color-text-primary);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
@@ -74,8 +85,10 @@
 }
 
 .disabled #toggle {
-  color: var(--rh-color-text-status-disabled, #707070);
-  background-color: var(--rh-color-status-disabled, #c7c7c7);
+  /* stylelint-disable-next-line rhds/no-unknown-token-name */
+  color: var(--rh-color-text-status-disabled);
+  /* stylelint-disable-next-line rhds/no-unknown-token-name */
+  background-color: var(--rh-color-status-disabled);
   border-color: transparent; /* TODO: Double check if this is needed */
 }
 
@@ -115,7 +128,8 @@
 }
 
 .disabled #toggle-icon {
-  color: var(--rh-color-icon-status-disabled, #a3a3a3);
+  /* stylelint-disable-next-line rhds/no-unknown-token-name */
+  color: var(--rh-color-icon-status-disabled);
 }
 
 ::slotted(hr) {
