@@ -13,9 +13,9 @@ describe('<rh-select>', function() {
       element = await createFixture<RhSelect>(html`<rh-select></rh-select>`);
       const klass = customElements.get('rh-select');
       expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhSelect);
+          .to.be.an.instanceOf(klass)
+          .and
+          .to.be.an.instanceOf(RhSelect);
     });
-  })
+  });
 });
