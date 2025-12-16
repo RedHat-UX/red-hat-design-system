@@ -279,7 +279,6 @@ export default class ElementsPage extends Renderer<Context> {
     const { doc } = ctx;
     const { tagName } = doc.docsPage;
     return [
-      content,
       html`
       <section class="band" id="installation">
         ${this.#header('Importing')}
@@ -293,11 +292,10 @@ export default class ElementsPage extends Renderer<Context> {
         <p>To learn more about installing RHDS elements on your site using an import map read our <a href="/get-started/developers/installation/">getting started docs</a>.        
       </section>
       `,
-
-
       await this.#renderLightdom(ctx),
       this.#header('Usage'),
       await this.#getMainDemoContent(tagName),
+      content,
       await this.#renderCodeDocs.call(this,
                                       doc.docsPage.tagName,
                                       { ...ctx, level: (ctx.level ?? 1) + 1 }),
