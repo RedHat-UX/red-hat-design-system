@@ -30,7 +30,6 @@
   }
 
   a {
-    border-radius: var(--rh-border-radius-default);
     color: var(--rh-color-interactive-primary-default);
     text-decoration: underline dashed 1px;
     text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40));
@@ -82,6 +81,7 @@
   }
 
   :is(*, :hover):focus-visible {
+    border-radius: var(--rh-border-radius-default);
     outline-color: light-dark(--rh-color-border-interactive-on-light, --rh-color-border-interactive-on-dark);
     outline-offset: var(--rh-border-width-lg, 3px);
     outline-style: solid;
