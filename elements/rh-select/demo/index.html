@@ -10,7 +10,7 @@
   </label>
   <rh-select id="select-1" placeholder="Select an item">
     <rh-option>Item 1</rh-option>
-    <rh-option>Item 2</rh-option>
+    <rh-option disabled>Disabled Item 2</rh-option>
     <rh-option>Item 3</rh-option>
     <rh-option>Item 4</rh-option>
     <hr>
@@ -27,6 +27,9 @@
 <style>
   .container {
     margin: 20px;
+  }
+
+  .limit-width {
     max-inline-size: 320px;
   }
 
@@ -34,10 +37,12 @@
     margin-block-start: 500px;
   }
 
+  label {
     display: block;
     font-family: var(--rh-font-family-body-text);
     font-weight: var(--rh-font-weight-body-text-medium, 500);
-    margin-bottom: var(--rh-space-md, 8px);
+    margin-block-end: var(--rh-space-md, 8px);
+    margin-inline-start: 3px;
   }
 
   .required {
