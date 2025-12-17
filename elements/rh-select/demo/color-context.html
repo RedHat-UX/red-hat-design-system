@@ -1,0 +1,44 @@
+<rh-context-demo>
+  <div class="limit-width">
+    <label for="select-1">
+      Success
+    </label>
+    <rh-select id="select-1" placeholder="Select an item">
+      <rh-option>Item 1</rh-option>
+      <rh-option>
+        <rh-icon slot="icon" set="ui" icon="document"></rh-icon>
+        Item 2
+      </rh-option>
+      <rh-option>Item 3</rh-option>
+      <rh-option>
+        Item 4
+        <span slot="description">Description goes here</span>
+      </rh-option>
+      <rh-option>Item 5</rh-option>
+      <rh-option-group label="First Group">
+        <rh-option>Item 5.1</rh-option>
+        <rh-option>Item 5.2</rh-option>
+      </rh-option-group>
+      <rh-option>Item 6</rh-option>
+    </rh-select>
+  </div>
+</rh-context-demo>
+
+<script type="module">
+  import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+  import '@rhds/elements/rh-select/rh-select.js';
+</script>
+
+<style>
+  .limit-width {
+    max-inline-size: 320px;
+  }
+
+  label {
+    display: block;
+    font-family: var(--rh-font-family-body-text);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    margin-block-end: var(--rh-space-md, 8px);
+    margin-inline-start: 3px;
+  }
+</style>
