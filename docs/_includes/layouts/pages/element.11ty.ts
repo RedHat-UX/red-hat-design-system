@@ -279,7 +279,6 @@ export default class ElementsPage extends Renderer<Context> {
     const { doc } = ctx;
     const { tagName } = doc.docsPage;
     return [
-      content,
       html`
       <section class="band" id="installation">
         ${this.#header('Importing')}
@@ -293,11 +292,10 @@ export default class ElementsPage extends Renderer<Context> {
         <p>To learn more about installing RHDS elements on your site using an import map read our <a href="/get-started/developers/installation/">getting started docs</a>.        
       </section>
       `,
-
-
       await this.#renderLightdom(ctx),
       this.#header('Usage'),
       await this.#getMainDemoContent(tagName),
+      content,
       await this.#renderCodeDocs.call(this,
                                       doc.docsPage.tagName,
                                       { ...ctx, level: (ctx.level ?? 1) + 1 }),
@@ -897,6 +895,14 @@ export default class ElementsPage extends Renderer<Context> {
       const githubSourcePrefix = `https://github.com/RedHat-UX/red-hat-design-system/tree/main`;
       const sourceUrl = `${githubSourcePrefix}${demo.filePath.replace(process.cwd(), '')}`;
       const demoUrl = `/elements/${this.getTagNameSlug(tagName)}/demo/${demoSlug === 'index' ? '' : `${demoSlug}/`}`;
+
+      // if code-block demo and has thousands in the demoSlug then do not generate a uxdot-demo but a link to the full screen demo
+      if (demoSlug.includes('thousands') && tagName === 'rh-code-block') {
+        return html`
+          <a href="${demoUrl}">View full screen demo</a>
+        `;
+      }
+
       const codeblocks = await this.#getDemoCodeBlocks(demo);
       if (codeblocks) {
         return html`

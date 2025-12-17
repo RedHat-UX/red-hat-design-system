@@ -1,10 +1,21 @@
-<rh-tooltip position="bottom">
-  <rh-button>Bottom Tooltip</rh-button>
-  <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-    labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
-</rh-tooltip>
-
+<div class="tooltip-container">
+  <rh-tooltip position="bottom">
+    <rh-button>Bottom Tooltip</rh-button>
+    <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+      labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
+  </rh-tooltip>
+</div>
 <script type="module">
   import '@rhds/elements/rh-button/rh-button.js';
   import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 </script>
+
+
+<style>
+  .tooltip-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+  }
+</style>
