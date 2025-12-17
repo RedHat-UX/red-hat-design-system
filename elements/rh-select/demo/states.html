@@ -1,0 +1,57 @@
+<div class="container limit-width">
+  <label for="select-5">
+    Success
+  </label>
+  <rh-select aria-describedby="help-text-5" id="select-5" placeholder="Select an item" state="success">
+    <rh-option>Item 1</rh-option>
+    <rh-option>Item 2</rh-option>
+    <rh-option>Item 3</rh-option>
+    <p id="help-text-5" slot="help-text">Sucess message</p>
+  </rh-select>
+
+  <label for="select-6">
+    Warning
+  </label>
+  <rh-select aria-describedby="help-text-6" id="select-6" placeholder="Select an item" state="warning">
+    <rh-option>Item 1</rh-option>
+    <rh-option>Item 2</rh-option>
+    <rh-option>Item 3</rh-option>
+    <p id="help-text-6" slot="help-text">Warning message</p>
+  </rh-select>
+
+  <label for="select-7">
+    Danger
+  </label>
+  <rh-select aria-describedby="help-text-7" id="select-7" placeholder="Select an item" state="danger">
+    <rh-option>Item 1</rh-option>
+    <rh-option>Item 2</rh-option>
+    <rh-option>Item 3</rh-option>
+    <p id="help-text-7" slot="help-text">Danger message</p>
+  </rh-select>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-select/rh-select.js';
+</script>
+
+<style>
+  .container {
+    margin: 20px;
+  }
+
+  .limit-width {
+    max-inline-size: 320px;
+  }
+
+  label {
+    display: block;
+    font-family: var(--rh-font-family-body-text);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    margin-block-end: var(--rh-space-md, 8px);
+    margin-inline-start: 3px;
+  }
+
+  rh-select {
+    margin-block-end: var(--rh-space-xl, 24px);
+  }
+</style>

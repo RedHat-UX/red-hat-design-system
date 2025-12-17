@@ -79,6 +79,15 @@ export class RhSelect extends LitElement {
    */
   @property({ reflect: true }) position: Placement = 'bottom';
 
+  /**
+   * Communicates the state of the form control and is denoted by various styling configurations.
+   *
+   *  - `danger` - Indicates a danger state, like an error that is blocking a user submitting a form.
+   *  - `warning` - Indicates a warning state, like a non-blocking error that might need to be fixed.
+   *  - `success` - Indicates a success state, like when a proper selection was made.
+   */
+  @property({ reflect: true }) state?: 'danger' | 'success' | 'warning';
+
   @query('#toggle-button') private _toggleButton?: HTMLButtonElement;
 
   @query('#listbox') private _listbox?: HTMLElement;
@@ -93,7 +102,7 @@ export class RhSelect extends LitElement {
 
   #float = new FloatingDOMController(this, { content: () => this._listboxContainer });
 
-  #slots = new SlotController(this, null, 'placeholder');
+  #slots = new SlotController(this, null, 'placeholder', 'help-text');
 
   #combobox = ComboboxController.of(this, {
     getItems: () => this.options,
@@ -150,6 +159,11 @@ export class RhSelect extends LitElement {
     const { height, width } = this.getBoundingClientRect?.() || {};
     const hasSelection = !!(Array.isArray(this.selected) ? this.selected.length : this.selected);
     const placeholderIsInert = !placeholder && this.#slots.isEmpty('placeholder');
+    const listboxOffsetWithoutHelpText = `${height - 4 || 0}px`;
+    const listboxOffsetWithHelpText = `${height - 25 || 0}px`;
+    const hasHelpText = !this.#slots.isEmpty('help-text');
+    const listboxMarginBlockStart = hasHelpText ?
+      listboxOffsetWithHelpText : listboxOffsetWithoutHelpText;
     return html`
       <div id="outer"
            style="${styleMap(styles)}"
@@ -159,13 +173,28 @@ export class RhSelect extends LitElement {
             <span id="toggle-text">
               ${this.#buttonLabel}
             </span>
+            <rh-icon ?hidden="${this.state !== 'success'}"
+                     class="icon-success"
+                     set="ui"
+                     icon="check-circle-fill">
+            </rh-icon>
+            <rh-icon ?hidden="${this.state !== 'warning'}"
+                     class="icon-warning"
+                     set="ui"
+                     icon="warning-fill">
+            </rh-icon>
+            <rh-icon ?hidden="${this.state !== 'danger'}"
+                     class="icon-danger"
+                     set="ui"
+                     icon="ban-fill">
+            </rh-icon>
             <rh-icon id="toggle-icon" set="microns" icon="caret-down-fill"></rh-icon>
           </button>
         </div>
         <div id="listbox-container"
              ?hidden="${!expanded}"
              style="${styleMap({
-               marginBlockStart: `${height + 4 || 0}px`,
+               marginBlockStart: listboxMarginBlockStart,
                inlineSize: width ? `${width - 1}px` : 'auto',
              })}">
           <div id="listbox">
@@ -181,6 +210,25 @@ export class RhSelect extends LitElement {
             <!-- insert \`rh-option\` and/or \`rh-option-groups\` here -->
             <slot></slot>
           </div>
+        </div>
+        <div id="help-text">
+          <rh-icon ?hidden="${this.state !== 'success'}"
+                   class="icon-success"
+                   set="ui"
+                   icon="check-circle-fill">
+          </rh-icon>
+          <rh-icon ?hidden="${this.state !== 'warning'}"
+                   class="icon-warning"
+                   set="ui"
+                   icon="warning-fill">
+          </rh-icon>
+          <rh-icon ?hidden="${this.state !== 'danger'}"
+                   class="icon-danger"
+                   set="ui"
+                   icon="ban-fill">
+          </rh-icon>
+          <!-- Insert a paragraph tag with text that helps describe the select -->
+          <slot id="help-text-content" name="help-text"></slot>
         </div>
       </div>
     `;
