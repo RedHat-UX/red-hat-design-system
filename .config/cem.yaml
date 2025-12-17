@@ -14,8 +14,4 @@ generate:
 serve:
   transforms:
     css:
-      include:
-        - elements/**/*.css
-      exclude:
-        - elements/**/*.shim.css
-        - elements/**/*.lightdom.css
+      enabled: true
