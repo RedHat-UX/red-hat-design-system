@@ -117,6 +117,35 @@ function transformDevServerHTML(document) {
 }
 
 
+/**
+ * Web dev server plugin to strip CSS import attributes from element source files
+ * This runs BEFORE esbuild transforms the TypeScript
+ * Removes `with { type: 'css' }` so browsers don't expect CSS MIME type modules
+ *
+ * NB: this can be removed when browsers widely support CSS modules
+ */
+export function stripCssImportAttributesPlugin() {
+  return {
+    name: 'strip-css-import-attributes',
+    transform(context) {
+      // Only process element and lib source files, not test files or node_modules
+      if (/\/(elements|lib)\/.*\.ts$/.test(context.path)
+          && !/\.spec\.ts$/.test(context.path)
+          && context.body
+          && typeof context.body === 'string') {
+        // Remove `with { type: 'css' }` from CSS imports
+        const transformed = context.body.replace(
+          /(\bimport\s+[^;]+from\s+['"][^'"]+\.css['"])\s+with\s+\{\s*type:\s*['"]css['"]\s*\}/g,
+          '$1'
+        );
+        if (transformed !== context.body) {
+          return { body: transformed };
+        }
+      }
+    },
+  };
+}
+
 export const litcssOptions = {
   exclude: [
     /(lightdom)/,
@@ -216,6 +245,7 @@ export default pfeDevServerConfig({
     },
   ],
   plugins: [
+    stripCssImportAttributesPlugin(),
     {
       name: 'watch-demos',
       serverStart(args) {
