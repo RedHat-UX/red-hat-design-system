@@ -11,7 +11,7 @@ import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { consume } from '@lit/context';
 import { context, type RhAccordionContext } from './context.js';
 
-import styles from './rh-accordion-panel.css';
+import styles from './rh-accordion-panel.css' with { type: 'css' };
 
 /**
  * Accordion Panel

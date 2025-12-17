@@ -6,7 +6,7 @@ import { LitElement, html, isServer, type PropertyValues } from 'lit';
 
 import { themable } from '../../lib/themable.js';
 
-import styles from './rh-avatar.css';
+import styles from './rh-avatar.css' with { type: 'css' };
 
 /**
  * An avatar is a small thumbnail representation of a user.

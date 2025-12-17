@@ -4,7 +4,7 @@ import { property } from 'lit/decorators/property.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-spinner.css';
+import styles from './rh-spinner.css' with { type: 'css' };
 
 export type SpinnerSize = RhSpinner['size'];
 

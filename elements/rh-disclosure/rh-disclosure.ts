@@ -12,7 +12,7 @@ import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palet
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
-import styles from './rh-disclosure.css';
+import styles from './rh-disclosure.css' with { type: 'css' };
 
 export class DisclosureToggleEvent extends Event {
   constructor() {

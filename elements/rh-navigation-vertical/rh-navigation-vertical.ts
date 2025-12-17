@@ -13,7 +13,7 @@ import '@rhds/elements/rh-navigation-link/rh-navigation-link.js';
 
 import './rh-navigation-vertical-list.js';
 
-import styles from './rh-navigation-vertical.css';
+import styles from './rh-navigation-vertical.css' with { type: 'css' };
 
 /**
  * A vertical navigation list of top-level and grouped navigation items, typically used in a side navigation pattern.

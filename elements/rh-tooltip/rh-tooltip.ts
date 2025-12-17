@@ -12,7 +12,7 @@ import {
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-tooltip.css';
+import styles from './rh-tooltip.css' with { type: 'css' };
 
 const ENTER_EVENTS = ['focusin', 'tap', 'click', 'mouseenter'];
 const EXIT_EVENTS = ['focusout', 'blur', 'mouseleave'];

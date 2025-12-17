@@ -16,7 +16,7 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-tile.css';
+import styles from './rh-tile.css' with { type: 'css' };
 
 export class TileSelectEvent extends Event {
   declare target: RhTile;

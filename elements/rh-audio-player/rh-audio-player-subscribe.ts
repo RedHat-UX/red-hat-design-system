@@ -7,8 +7,8 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 
 import './rh-audio-player-scrolling-text-overflow.js';
 
-import panelStyles from './rh-audio-player-panel.css';
-import styles from './rh-audio-player-subscribe.css';
+import panelStyles from './rh-audio-player-panel.css' with { type: 'css' };
+import styles from './rh-audio-player-subscribe.css' with { type: 'css' };
 
 
 /**

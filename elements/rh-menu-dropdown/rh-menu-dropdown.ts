@@ -12,7 +12,7 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 import '@rhds/elements/rh-menu/rh-menu.js';
 import { RhMenuItem } from '../rh-menu/rh-menu-item.js';
 
-import styles from './rh-menu-dropdown.css';
+import styles from './rh-menu-dropdown.css' with { type: 'css' };
 
 /** Fired when a user selects an action or link from the menu */
 export class MenuDropdownSelectEvent extends Event {

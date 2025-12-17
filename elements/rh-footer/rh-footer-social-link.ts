@@ -5,7 +5,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 
-import style from './rh-footer-social-link.css';
+import style from './rh-footer-social-link.css' with { type: 'css' };
 
 
 /**

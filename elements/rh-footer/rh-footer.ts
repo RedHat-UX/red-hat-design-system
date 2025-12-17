@@ -13,7 +13,7 @@ import './rh-footer-social-link.js';
 import './rh-footer-links.js';
 import './rh-footer-block.js';
 
-import style from './rh-footer.css';
+import style from './rh-footer.css' with { type: 'css' };
 
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 

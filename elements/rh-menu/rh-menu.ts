@@ -10,7 +10,7 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import { RhMenuItem } from './rh-menu-item.js';
 import { RhMenuItemGroup } from './rh-menu-item-group.js';
 
-import styles from './rh-menu.css';
+import styles from './rh-menu.css' with { type: 'css' };
 
 export class MenuToggleEvent extends Event {
   constructor(

@@ -20,7 +20,7 @@ import { context, type RhAccordionContext } from './context.js';
 export * from './rh-accordion-header.js';
 export * from './rh-accordion-panel.js';
 
-import styles from './rh-accordion.css';
+import styles from './rh-accordion.css' with { type: 'css' };
 
 export class AccordionExpandEvent extends ComposedEvent {
   constructor(

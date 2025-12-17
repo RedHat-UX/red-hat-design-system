@@ -9,7 +9,7 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 import '@rhds/elements/rh-icon/rh-icon.js';
 import '@rhds/elements/rh-navigation-link/rh-navigation-link.js';
 
-import styles from './rh-navigation-vertical-list.css';
+import styles from './rh-navigation-vertical-list.css' with { type: 'css' };
 
 /**
  * A disclosure menu of grouped navigation items in a vertical navigation list.

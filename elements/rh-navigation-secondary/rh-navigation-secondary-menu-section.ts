@@ -6,7 +6,7 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { isHeadingElement } from '../../lib/functions.js';
 
-import styles from './rh-navigation-secondary-menu-section.css';
+import styles from './rh-navigation-secondary-menu-section.css' with { type: 'css' };
 
 /**
  * A menu section which auto upgrades accessibility for headers and sibling list

@@ -13,7 +13,7 @@ import { RhNavigationLink } from '@rhds/elements/rh-navigation-link/rh-navigatio
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
-import styles from './rh-subnav.css';
+import styles from './rh-subnav.css' with { type: 'css' };
 
 
 type LinkElement = HTMLAnchorElement | RhNavigationLink;

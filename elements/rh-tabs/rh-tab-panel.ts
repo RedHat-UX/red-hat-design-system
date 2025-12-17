@@ -4,7 +4,7 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-tab-panel.css';
+import styles from './rh-tab-panel.css' with { type: 'css' };
 
 /**
  * The tab panel for use within a rh-tabs element, must be paired with a rh-tab.

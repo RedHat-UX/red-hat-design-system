@@ -5,7 +5,7 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
-import styles from './rh-audio-player-rate-stepper.css';
+import styles from './rh-audio-player-rate-stepper.css' with { type: 'css' };
 
 /**
  */

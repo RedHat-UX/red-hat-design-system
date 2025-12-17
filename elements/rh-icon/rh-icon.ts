@@ -11,7 +11,7 @@ import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
-import style from './rh-icon.css';
+import style from './rh-icon.css' with { type: 'css' };
 
 if (isServer) {
   await import('./ssr.js');

@@ -10,7 +10,7 @@ import type { IconNameFor, IconSetName } from '@rhds/icons';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import style from './rh-cta.css';
+import style from './rh-cta.css' with { type: 'css' };
 
 function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLButtonElement {
   return el instanceof HTMLAnchorElement || el instanceof HTMLButtonElement;

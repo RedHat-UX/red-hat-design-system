@@ -4,7 +4,7 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-audio-player-scrolling-text-overflow.css';
+import styles from './rh-audio-player-scrolling-text-overflow.css' with { type: 'css' };
 
 /**
  * Audio Player Scrolling Text Overflow
