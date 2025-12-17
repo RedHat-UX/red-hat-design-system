@@ -11,7 +11,3 @@ generate:
     fileGlob: elements/*/demo/*.html
     urlPattern: elements/:tag/demo/:demo.html
     urlTemplate: https://ux.redhat.com/elements/{{.tag | alias | slug }}/demo/{{.demo}}/
-serve:
-  transforms:
-    css:
-      enabled: true
