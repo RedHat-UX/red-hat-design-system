@@ -2,9 +2,9 @@
   <label for="select-2">
     With option icons <span class="required" aria-label="Required field">*</span>
     <rh-tooltip>
-      <rh-button>
+      <button>
         <rh-icon set="ui" icon="question-mark-circle" accessible-label="More information"></rh-icon>
-      </rh-button>
+      </button>
       <span slot="content">Extra helpful information</span>
     </rh-tooltip>
   </label>
@@ -38,8 +38,8 @@
 </div>
 
 <script type="module">
-  import '@rhds/elements/rh-select/rh-select.js';
   import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+  import '@rhds/elements/rh-select/rh-select.js';
 </script>
 
 <style>
@@ -65,5 +65,24 @@
 
   rh-tooltip {
     font-weight: var(--rh-font-weight-body-text-regular, 400);
+  }
+
+  button {
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    min-block-size: var(--rh-length-xl, 24px);
+    min-inline-size: var(--rh-length-xl, 24px);
+    padding: 0;
+
+    &:hover {
+      color: var(--rh-color-interactive-primary-hover);
+    }
+
+    &:focus-visible {
+      outline-color: var(--rh-color-border-interactive);
+    }
   }
 </style>
