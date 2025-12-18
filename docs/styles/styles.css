@@ -82,7 +82,10 @@
 
   :is(*, :hover):focus-visible {
     border-radius: var(--rh-border-radius-default);
-    outline-color: light-dark(--rh-color-border-interactive-on-light, --rh-color-border-interactive-on-dark);
+    outline-color:
+      light-dark(
+          --rh-color-border-interactive-on-light,
+          --rh-color-border-interactive-on-dark);
     outline-offset: var(--rh-border-width-lg, 3px);
     outline-style: solid;
     outline-width: var(--rh-border-width-lg, 3px);
