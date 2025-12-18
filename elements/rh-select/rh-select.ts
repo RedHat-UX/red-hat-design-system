@@ -61,23 +61,11 @@ export class RhSelect extends LitElement {
   /** Whether the select listbox is expanded */
   @property({ type: Boolean, reflect: true }) expanded = false;
 
-  /**
-   * Enable to flip listbox when it reaches boundary
-   */
-  @property({ attribute: 'enable-flip', type: Boolean }) enableFlip = false;
-
   /** Current form value */
   @property() value?: string;
 
   /** Placeholder entry. Overridden by the `placeholder` slot */
   @property() placeholder?: string;
-
-  /**
-   * Indicates initial popover position.
-   * There are 6 options: `bottom`, `top`, `top-start`, `top-end`, `bottom-start`, `bottom-end`.
-   * Default is `bottom`.
-   */
-  @property({ reflect: true }) position: Placement = 'bottom';
 
   /**
    * Communicates the state of the form control and is denoted by various styling configurations.
@@ -266,7 +254,7 @@ export class RhSelect extends LitElement {
 
   async #doExpand() {
     try {
-      await this.#float.show({ placement: this.position || 'bottom', flip: !!this.enableFlip });
+      await this.#float.show({ placement: 'bottom' });
       return true;
     } catch {
       return false;
