@@ -1,0 +1,54 @@
+<form>
+  <div class="container limit-width">
+    <label for="select-8">
+      Events
+    </label>
+    <rh-select id="select-8" placeholder="Select an item">
+      <rh-option>Item 1</rh-option>
+      <rh-option disabled>Disabled Item 2</rh-option>
+      <rh-option>Item 3</rh-option>
+    </rh-select>
+  </div>
+
+  <p class="container">
+    A change event is fired whenever the page loads or a new,
+    not previously chosen selection is made.
+  </p>
+
+  <fieldset class="container">
+    <legend>Events Fired</legend>
+    <output name="events">No events yet</output>
+  </fieldset>
+</form>
+
+<script type="module">
+  import '@rhds/elements/rh-select/rh-select.js';
+
+  const getSelect = document.querySelector('#select-8');
+  const getForm = document.querySelector('form');
+  const events = [];
+  getForm.addEventListener('submit', event => event.preventDefault());
+  const onSelectEvent = (event) => {
+    events.push(event.type);
+    getForm.elements.events.value = events.join(', ');
+  };
+  getSelect.addEventListener('change', onSelectEvent);
+</script>
+
+<style>
+  .container {
+    margin: 20px;
+  }
+
+  .limit-width {
+    max-inline-size: 320px;
+  }
+
+  label {
+    display: block;
+    font-family: var(--rh-font-family-body-text);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    margin-block-end: var(--rh-space-md, 8px);
+    margin-inline-start: 3px;
+  }
+</style>
