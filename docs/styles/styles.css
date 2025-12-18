@@ -1,3 +1,5 @@
+/* stylelint-disable declaration-block-no-redundant-longhand-properties */
+
 @layer
   reset,
   fonts,
@@ -78,6 +80,32 @@
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+  }
+
+  :is(*, :hover):focus-visible {
+    border-radius: var(--rh-border-radius-default);
+    outline-color:
+      light-dark(
+          --rh-color-border-interactive-on-light,
+          --rh-color-border-interactive-on-dark);
+    outline-offset: var(--rh-border-width-lg, 3px);
+    outline-style: solid;
+    outline-width: var(--rh-border-width-lg, 3px);
+    transition: none;
+  }
+
+  /* `.inset` class for inset focus. */
+  .inset:is(*, :hover):focus-visible {
+    outline-offset: -7px;
+  }
+
+  /* `.no-offset` class for focus on element border. */
+  .no-offset:is(*, :hover):focus-visible {
+    outline-offset: 0;
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none;
   }
 
   ::selection {
