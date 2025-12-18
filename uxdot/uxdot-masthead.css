@@ -1,3 +1,5 @@
+/* stylelint-disable declaration-block-no-redundant-longhand-properties */
+
 :host {
   color-scheme: only dark;
   display: block;
