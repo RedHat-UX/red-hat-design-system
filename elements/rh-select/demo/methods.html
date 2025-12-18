@@ -1,0 +1,48 @@
+<div class="container">
+  <rh-button variant="primary">Toggle</rh-button>
+  <rh-button variant="secondary">Show</rh-button>
+  <rh-button variant="secondary">Hide</rh-button>
+</div>
+
+<div class="container limit-width">
+  <label for="select-9">
+    Methods
+  </label>
+  <rh-select id="select-9" placeholder="Select an item">
+    <rh-option>Item 1</rh-option>
+    <rh-option>Item 2</rh-option>
+  </rh-select>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-button/rh-button.js';
+  import '@rhds/elements/rh-select/rh-select.js';
+
+  const select = document.querySelector('rh-select');
+  const [toggleBtn, showBtn, hideBtn] = document.querySelectorAll('rh-button');
+
+  await customElements.whenDefined('rh-select');
+  await select.updateComplete; // Wait for select to be fully rendered
+
+  showBtn.addEventListener('click', () => select.show());
+  hideBtn.addEventListener('click', () => select.hide());
+  toggleBtn.addEventListener('click', () => select.toggle());
+</script>
+
+<style>
+  .container {
+    margin: 20px;
+  }
+
+  .limit-width {
+    max-inline-size: 320px;
+  }
+
+  label {
+    display: block;
+    font-family: var(--rh-font-family-body-text);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    margin-block-end: var(--rh-space-md, 8px);
+    margin-inline-start: 3px;
+  }
+</style>
