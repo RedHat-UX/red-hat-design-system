@@ -151,6 +151,14 @@
   display: none;
 }
 
+::slotted(rh-option-group) {
+  border-block: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+}
+
+::slotted(rh-option-group:last-child) {
+  border-block-end: 0;
+}
+
 #help-text {
   align-items: center;
   display: flex;

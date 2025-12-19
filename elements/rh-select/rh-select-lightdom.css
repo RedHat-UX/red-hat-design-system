@@ -1,0 +1,4 @@
+/* This file only necessary if using `<rh-option-group>` */
+rh-option-group + rh-option-group {
+  border-block-start: 0;
+}
