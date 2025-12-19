@@ -1,12 +1,9 @@
-import type { Placement } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
-
 import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { ComboboxController } from '@patternfly/pfe-core/controllers/combobox-controller.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
@@ -188,8 +185,7 @@ export class RhSelect extends LitElement {
           <div id="listbox">
             <rh-option id="placeholder"
                        disabled
-                       ?inert="${placeholderIsInert}"
-                       aria-hidden="${ifDefined(placeholderIsInert ? undefined : !!hasSelection)}"
+                       ?inert="${placeholderIsInert || hasSelection}"
                        ?hidden="${!placeholder && this.#slots.isEmpty('placeholder')}">
               <!-- placeholder text for the select. Overrides the \`placeholder\` attribute. -->
               <slot name="placeholder">${placeholder ?? ''}</slot>
@@ -255,6 +251,11 @@ export class RhSelect extends LitElement {
   async #doExpand() {
     try {
       await this.#float.show({ placement: 'bottom' });
+      // Focus the first selected option if one exists.
+      // RTI will sync its internal index when this option
+      // receives focus, ensuring keyboard navigation
+      // starts from the correct position.
+      this.selected.at(0)?.focus();
       return true;
     } catch {
       return false;

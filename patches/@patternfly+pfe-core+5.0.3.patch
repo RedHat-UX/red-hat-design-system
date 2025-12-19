@@ -1,0 +1,26 @@
+diff --git a/node_modules/@patternfly/pfe-core/controllers/roving-tabindex-controller.js b/node_modules/@patternfly/pfe-core/controllers/roving-tabindex-controller.js
+index f0bd33c..8d6c824 100644
+--- a/node_modules/@patternfly/pfe-core/controllers/roving-tabindex-controller.js
++++ b/node_modules/@patternfly/pfe-core/controllers/roving-tabindex-controller.js
+@@ -59,6 +59,21 @@ export class RovingTabindexController extends ATFocusController {
+         if (!isServer) {
+             if (container instanceof HTMLElement) {
+                 container.addEventListener('focusin', () => __classPrivateFieldSet(this, _RovingTabindexController_gainedInitialFocus, true, "f"), { once: true });
++                // Sync atFocusedItemIndex when an item receives DOM focus (e.g., via mouse click)
++                // This ensures keyboard navigation starts from the correct position
++                container.addEventListener('focusin', (event) => {
++                    const target = event.target;
++                    const index = this.items.indexOf(target);
++                    // Only update if the target is a valid item and index differs
++                    if (index >= 0 && index !== this.atFocusedItemIndex) {
++                        // Update parent's index directly via setter, but we need to avoid
++                        // the focus() call. We do this by temporarily clearing gainedInitialFocus.
++                        const hadInitialFocus = __classPrivateFieldGet(this, _RovingTabindexController_gainedInitialFocus, "f");
++                        __classPrivateFieldSet(this, _RovingTabindexController_gainedInitialFocus, false, "f");
++                        this.atFocusedItemIndex = index;
++                        __classPrivateFieldSet(this, _RovingTabindexController_gainedInitialFocus, hadInitialFocus, "f");
++                    }
++                });
+             }
+             else {
+                 __classPrivateFieldGet(this, _RovingTabindexController_logger, "f").warn('RovingTabindexController requires a getItemsContainer function');
