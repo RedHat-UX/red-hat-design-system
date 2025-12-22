@@ -133,7 +133,12 @@ export class RhSelect extends LitElement {
 
   get #buttonLabel(): string {
     const { selected } = this.#combobox;
-    return (selected ? this.value : '')
+    const selectedLabels = selected
+        .map(opt => opt.displayLabel)
+        .filter(Boolean)
+        .join(', ');
+
+    return selectedLabels
       || this.#computePlaceholderText()
       || 'Select a value';
   }

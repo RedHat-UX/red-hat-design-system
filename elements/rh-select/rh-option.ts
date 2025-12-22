@@ -29,21 +29,33 @@ export class RhOption extends LitElement {
     if (this.#value) {
       return this.#value;
     }
-    if (!isServer) {
-      // Limit text to default slotted content
-      const defaultSlot = this.shadowRoot?.querySelector<HTMLSlotElement>('slot:not([name])');
-      if (defaultSlot) {
-        return defaultSlot.assignedNodes()
-            .map(node => node.textContent ?? '')
-            .join('')
-            .trim();
-      }
-    }
-    return '';
+    // Fall back to display label
+    return this.displayLabel;
   }
 
   set value(v: string) {
     this.#value = v;
+  }
+
+  /**
+   * Gets the display text for the rh-option.
+   * Priority: slotted text content -> label attr -> value attr -> ''
+   */
+  get displayLabel(): string {
+    if (!isServer) {
+      const defaultSlot = this.shadowRoot?.querySelector<HTMLSlotElement>('slot:not([name])');
+      if (defaultSlot) {
+        const slotText = defaultSlot.assignedNodes()
+            .map(node => node.textContent ?? '')
+            .join('')
+            .trim();
+        if (slotText) {
+          return slotText;
+        }
+      }
+    }
+    // Fall back to label attr, then value attr
+    return this.label ?? this.#value ?? '';
   }
 
   /** Whether option is selected */
@@ -57,6 +69,9 @@ export class RhOption extends LitElement {
 
   /** Optional option description; overridden by description slot. */
   @property({ reflect: true }) description? = '';
+
+  /** Display text for this option; overridden by slotted text content */
+  @property({ reflect: true }) label?: string;
 
   /**
    * This option's position relative to the other options
@@ -104,14 +119,20 @@ export class RhOption extends LitElement {
                  ?hidden="${!this.icon}">
         </rh-icon>
         <span id="label">
-          <!-- Option text / label (required) -->
-          <slot>${this.value}</slot>
+          <!-- Option label (required) -->
+          <slot @slotchange="${this.#onSlotChange}" hidden></slot>
+          ${this.displayLabel}
         </span>
         <rh-icon ?hidden="${!this.selected}" set="microns" icon="checkmark"></rh-icon>
         <!-- Optional option description -->
         <slot id="description" name="description">${this.description ?? ''}</slot>
       </div>
     `;
+  }
+
+  /** Trigger re-render when slot content changes */
+  #onSlotChange() {
+    this.requestUpdate();
   }
 
   @observes('selected')

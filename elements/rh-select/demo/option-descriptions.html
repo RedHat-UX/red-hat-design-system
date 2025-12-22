@@ -2,31 +2,16 @@
   <label for="select-3">
     With option descriptions
   </label>
-  <rh-select id="select-3" placeholder="Select an item">
-    <rh-option>
-      Item 1
-      <span slot="description">Description goes here</span>
-    </rh-option>
-    <rh-option disabled>
-      Disabled Item 2
-      <span slot="description">Description goes here</span>
-    </rh-option>
-    <rh-option>
-      Item 3
-      <span slot="description">Description goes here</span>
-    </rh-option>
-    <rh-option>
-      Item 4
-      <span slot="description">Description goes here</span>
-    </rh-option>
+  <rh-select id="select-3" placeholder="Select a country">
+    <rh-option label="Canada" value="ca" description="Longest coastline of any country"></rh-option>
+    <rh-option label="Germany" value="de" description="Worlds third largest importer and exporter"></rh-option>
     <hr>
+    <rh-option label="India" value="in" description="Seventh largest country by area"></rh-option>
     <rh-option>
-      Item 5
-      <span slot="description">Description goes here</span>
+      Israel
+      <span slot="description">Slotted content instead of attributes</span>
     </rh-option>
-    <rh-option>
-      Item 6
-      <span slot="description">Description goes here</span>
+    <rh-option label="United States" value="us" description="50 states" disabled>
     </rh-option>
   </rh-select>
 </div>
