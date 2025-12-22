@@ -173,10 +173,13 @@
 #help-text ::slotted(*) {
   display: inline-block;
   font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
-  font-weight: var(--rh-font-weight-body-text-medium, 500) !important;
 }
 
 /* States: */
+:host([state]) {
+  font-weight: var(--rh-font-weight-body-text-medium, 500) !important;
+}
+
 :host([state='success']) {
   #toggle-button {
     border-color: var(--rh-color-border-status-success);
