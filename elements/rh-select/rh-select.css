@@ -75,14 +75,14 @@
 
 #toggle {
   background-color: var(--rh-color-surface);
-  border-radius: var(--rh-border-radius-default, 3px);
   justify-content: space-between;
 }
 
 #toggle,
 #toggle-button {
-  display: flex;
   align-items: center;
+  border-radius: var(--rh-border-radius-default, 3px);
+  display: flex;
 }
 
 .disabled #toggle {
