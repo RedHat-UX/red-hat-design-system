@@ -54,7 +54,8 @@
 }
 
 #label,
-::slotted([slot='description']) {
+::slotted([slot='description']),
+#description {
   user-select: none;
 }
 

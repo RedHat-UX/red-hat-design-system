@@ -47,7 +47,7 @@ export class RhOption extends LitElement {
   @property({ type: Boolean, reflect: true }) selected = false;
 
   /** Optional option description; overridden by description slot. */
-  @property() description = '';
+  @property({ reflect: true }) description = '';
 
   /**
    * This option's position relative to the other options
