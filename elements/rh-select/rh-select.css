@@ -75,6 +75,7 @@
 
 #toggle {
   background-color: var(--rh-color-surface);
+  border-radius: var(--rh-border-radius-default, 3px);
   justify-content: space-between;
 }
 
@@ -95,7 +96,6 @@
 #toggle-button {
   background-color: transparent;
   border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
-  border-radius: var(--rh-border-radius-default, 3px);
   color: var(--rh-color-text-primary);
   flex: 1 0 auto;
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
