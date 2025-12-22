@@ -1,7 +1,10 @@
+import type { IconNameFor, IconSetName } from '@rhds/icons';
+
 import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
@@ -46,8 +49,14 @@ export class RhOption extends LitElement {
   /** Whether option is selected */
   @property({ type: Boolean, reflect: true }) selected = false;
 
+  /** Icon set for the optional rh-icon to precede the option text - 'ui' by default */
+  @property({ attribute: 'icon-set' }) iconSet?: IconSetName = 'ui';
+
+  /** The icon name of an rh-icon */
+  @property({ reflect: true }) icon?: IconNameFor<IconSetName>;
+
   /** Optional option description; overridden by description slot. */
-  @property({ reflect: true }) description = '';
+  @property({ reflect: true }) description? = '';
 
   /**
    * This option's position relative to the other options
@@ -89,8 +98,11 @@ export class RhOption extends LitElement {
     const { disabled, selected } = this;
     return html`
       <div id="outer" class="${classMap({ disabled, selected })}">
-        <!-- Optional rh-icon to appear before option text -->
-        <slot name="icon"></slot>
+        <rh-icon id="display-icon"
+                 set="${this.iconSet ?? 'ui'}"
+                 icon="${ifDefined(this.icon)}"
+                 ?hidden="${!this.icon}">
+        </rh-icon>
         <span id="label">
           <!-- Option text / label (required) -->
           <slot>${this.value}</slot>
