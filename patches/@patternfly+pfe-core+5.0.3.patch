@@ -1,3 +1,23 @@
+diff --git a/node_modules/@patternfly/pfe-core/controllers/at-focus-controller.js b/node_modules/@patternfly/pfe-core/controllers/at-focus-controller.js
+index ba9af2b..a2ede6d 100644
+--- a/node_modules/@patternfly/pfe-core/controllers/at-focus-controller.js
++++ b/node_modules/@patternfly/pfe-core/controllers/at-focus-controller.js
+@@ -19,8 +19,14 @@ export class ATFocusController {
+     }
+     set atFocusedItemIndex(index) {
+         const previousIndex = __classPrivateFieldGet(this, _ATFocusController_atFocusedItemIndex, "f");
+-        const direction = index > previousIndex ? 1 : -1;
+         const { items, atFocusableItems } = this;
++        // Fix direction calculation for Home/End keys:
++        // - Home (index=0): always search forward to find first focusable item
++        // - End (index=last): always search backward to find last focusable item
++        // - Other cases: use comparison to determine direction
++        const direction = index === 0 ? 1
++            : index >= items.length - 1 ? -1
++            : index > previousIndex ? 1 : -1;
+         const itemsIndexOfLastATFocusableItem = items.indexOf(this.atFocusableItems.at(-1));
+         let itemToGainFocus = items.at(index);
+         let itemToGainFocusIsFocusable = atFocusableItems.includes(itemToGainFocus);
 diff --git a/node_modules/@patternfly/pfe-core/controllers/roving-tabindex-controller.js b/node_modules/@patternfly/pfe-core/controllers/roving-tabindex-controller.js
 index f0bd33c..8d6c824 100644
 --- a/node_modules/@patternfly/pfe-core/controllers/roving-tabindex-controller.js
