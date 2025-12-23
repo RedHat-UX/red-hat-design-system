@@ -146,7 +146,7 @@ export class RhSelect extends LitElement {
   override render() {
     const { disabled, expanded, placeholder } = this;
     const { anchor = 'bottom', alignment = 'start', styles = {} } = this.#float;
-    const { height, width } = this.getBoundingClientRect?.() || {};
+    const { height = 0, width = 0 } = isServer ? {} : (this.getBoundingClientRect?.() ?? {});
     const hasSelection = !!(Array.isArray(this.selected) ? this.selected.length : this.selected);
     const placeholderIsInert = !placeholder && this.#slots.isEmpty('placeholder');
     const listboxOffsetWithoutHelpText = `${height - 4 || 0}px`;
