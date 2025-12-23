@@ -2,6 +2,7 @@ sourceControlRootUrl: https://github.com/redhat-ux/red-hat-design-system/tree/ma
 generate:
   files:
     - elements/*/rh-*.ts
+    - lib/**/*.ts
   output: custom-elements.json
   noDefaultExcludes: false
   designTokens:
