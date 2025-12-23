@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
@@ -32,8 +32,10 @@ export class RhOptionGroup extends LitElement {
   #optionEls: RhOption[] = [];
 
   override firstUpdated() {
-    this.#optionEls = this.#getChildOptions();
-    this.#disableChildren();
+    if (!isServer) {
+      this.#optionEls = this.#getChildOptions();
+      this.#disableChildren();
+    }
   }
 
   render() {
