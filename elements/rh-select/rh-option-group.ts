@@ -1,9 +1,10 @@
-import { LitElement, html, type PropertyValues } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
+import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
 import { RhOption } from './rh-option.js';
 
@@ -35,12 +36,6 @@ export class RhOptionGroup extends LitElement {
     this.#disableChildren();
   }
 
-  override updated(changedProperties: PropertyValues<this>) {
-    if (changedProperties.has('disabled')) {
-      this.#updateDisabledChildren();
-    }
-  }
-
   render() {
     return html`
       <div id="label-container"
@@ -51,6 +46,11 @@ export class RhOptionGroup extends LitElement {
       <!-- Insert \`<rh-option>\` or \`<hr>\` elements -->
       <slot></slot>
     `;
+  }
+
+  @observes('disabled')
+  private disabledChanged() {
+    this.#updateDisabledChildren();
   }
 
   /**
