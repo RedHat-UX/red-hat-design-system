@@ -141,8 +141,6 @@ export default async function(eleventyConfig: UserConfig) {
       '@patternfly/elements',
       '@patternfly/pfe-core',
       // Vendor
-      '@floating-ui/core',
-      '@floating-ui/dom',
       '@lit-labs/ssr-client/',
       '@lit/context',
       '@lit/reactive-element',
