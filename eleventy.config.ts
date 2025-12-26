@@ -138,6 +138,7 @@ export default async function(eleventyConfig: UserConfig) {
       '@rhds/icons/social/',
       '@rhds/icons/standard/',
       '@rhds/icons/ui/',
+      '@patternfly/elements/',
       '@patternfly/pfe-core',
       // Vendor
       '@lit-labs/ssr-client/',
