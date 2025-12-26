@@ -2,6 +2,9 @@
   "name": "@rhds/elements",
   "version": "4.0.1",
   "description": "Red Hat Design System Elements",
+  "overrides": {
+    "playwright": "~1.48.0"
+  },
   "type": "module",
   "license": "MIT",
   "customElements": "custom-elements.json",
