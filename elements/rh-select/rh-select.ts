@@ -14,6 +14,7 @@ import { arraysAreEquivalent } from '@patternfly/pfe-core/functions/arraysAreEqu
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
 import { RhOption } from './rh-option.js';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { RhOptionGroup } from './rh-option-group.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
