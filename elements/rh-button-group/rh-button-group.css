@@ -1,0 +1,7 @@
+:host {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+  margin-inline-end: var(--rh-space-lg, 16px);
+  margin-block-end: var(--rh-space-md, 8px);
+}
