@@ -22,4 +22,6 @@ The `<rh-chip-group>` element adds an accessible label for the group and a "clea
 </rh-chip-group>
 ```
 
-See the [official documentation](https://ux.redhat.com/elements/chip/code/) for more customization options.
+If using chip group, users must modify the import to reference `rh-chip-group.js`.
+
+See the [official documentation](https://ux.redhat.com/elements/chip/code/) for importing and customization options.
