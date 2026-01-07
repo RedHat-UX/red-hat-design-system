@@ -20,10 +20,7 @@ import { collectResult } from '@lit-labs/ssr/lib/render-result.js';
 import { renderValue } from '@lit-labs/ssr/lib/render-value.js';
 
 import Piscina from 'piscina';
-import Postcss from 'postcss';
-import cssnano from 'cssnano';
-
-const postcss = Postcss([cssnano]);
+import { transform } from 'lightningcss';
 
 interface WorkerInitData {
   imports: string[];
@@ -69,13 +66,13 @@ class RHDSSSRableRenderer extends LitElementRenderer {
         .filter(RHDSSSRableRenderer.isRHDSSSRController);
   }
 
-  setupController(controller: RHDSSSRController, renderInfo: RenderInfo): Thunk[] {
-    return [async () => {
+  setupController(controller: RHDSSSRController, renderInfo: RenderInfo): Thunk {
+    return async () => {
       if (controller.ssrSetup) {
         await controller.ssrSetup(renderInfo);
       }
       return '';
-    }];
+    };
   }
 
   override renderShadow(renderInfo: RenderInfo): ThunkedRenderResult {
@@ -83,7 +80,7 @@ class RHDSSSRableRenderer extends LitElementRenderer {
       // set up controllers
       ...this.#setupControllers(renderInfo),
       // Render styles.
-      ...this.#renderStyles(),
+      this.#renderStyles(),
       // Render template
       ...renderValue(
         // @ts-expect-error: if upstream can do it, so can we
@@ -99,16 +96,16 @@ class RHDSSSRableRenderer extends LitElementRenderer {
           this.setupController(controller, renderInfo));
   }
 
-  #renderStyles(): Thunk[] {
+  #renderStyles(): Thunk {
     const styles = (this.element.constructor as typeof LitElement).elementStyles;
     if (styles !== undefined && styles.length > 0) {
-      return [
-        () => '<style>',
+      return () => [
+        '<style>',
         ...this.#thunkStyles(styles),
-        () => '</style>',
+        '</style>',
       ];
     } else {
-      return [];
+      return () => '';
     }
   }
 
@@ -116,10 +113,18 @@ class RHDSSSRableRenderer extends LitElementRenderer {
     return styles.flatMap(style => {
       const { cssText } = style as CSSResult;
       if (!RHDSSSRableRenderer.styleCache.has(cssText)) {
-        const processed = () => postcss
-            .process(cssText, { from: undefined })
-            .then(r => r.css)
-            .catch(() => cssText);
+        const processed = () => {
+          try {
+            const { code } = transform({
+              filename: 'constructed-stylesheet.css',
+              code: Buffer.from(cssText),
+              minify: true,
+            });
+            return code.toString();
+          } catch {
+            return cssText;
+          }
+        };
         RHDSSSRableRenderer.styleCache.set(cssText, processed);
       }
       return [RHDSSSRableRenderer.styleCache.get(cssText)!];
