@@ -1,12 +1,11 @@
-## Importing Chip vs. Chip Group
+## Importing chip vs. chip group
 
-If users are only using `<rh-chip>`, use the import specified above.
+If using `<rh-chip-group>`, change the import from `rh-chip.js` to `rh-chip-group.js`:
 
-If users are using `<rh-chip-group>`, change the import from `rh-chip.js` to `rh-chip-group.js`:
 
 ```diff rhcodeblock
 - import '@rhds/elements/rh-chip/rh-chip.js';
 + import '@rhds/elements/rh-chip/rh-chip-group.js';
 ```
 
-`rh-chip-group.js` imports `rh-chip.js` internally. There's no need to import `rh-chip.js` if using chip group.
+Users can import `rh-chip-group.js` to gain access to both elements. If you're only using chip, save some bytes by only importing `rh-chip.js`.
