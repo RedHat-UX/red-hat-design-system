@@ -7,7 +7,6 @@ export class RHDSSSRController implements ReactiveController {
   /** @internal This is experimental and may change at any time without warning */
   ssrSetup?(renderInfo?: RenderInfo): Promise<void>;
   hostUpdate?(): void;
-  hostUpdate?(): void;
   constructor(public host: ReactiveElement) {
     host.addController(this);
   }
