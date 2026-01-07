@@ -27,7 +27,7 @@ export type IconResolverFunction = (set: string, icon: string) =>
  * @param f callback
  */
 const ric: typeof globalThis.requestIdleCallback =
-     globalThis.requestIdleCallback
+  globalThis.requestIdleCallback
   ?? globalThis.requestAnimationFrame
   ?? (async (f: () => void) => Promise.resolve().then(f));
 
@@ -137,6 +137,9 @@ export class RhIcon extends LitElement {
   #getContent() {
     if (isServer) {
       const { set = 'standard', icon } = this;
+      if (!icon) {
+        return '';
+      }
       return globalThis.RH_ICONS.get(set)?.get(icon as never) ?? '';
     } else {
       return this.content as string ?? '';
@@ -152,6 +155,10 @@ export class RhIcon extends LitElement {
   @observes('icon')
   @observes('set')
   private iconChanged(): void {
+    if (!this.icon) {
+      this.content = null;
+      return;
+    }
     this.#dispatchLoad();
   }
 

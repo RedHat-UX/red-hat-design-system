@@ -1,5 +1,21 @@
 # @rhds/elements
 
+## 4.0.1
+### Patch Changes
+
+- 582af1b: `<rh-card>`: improved theming of card border radiuses
+- f335c3d: `<rh-code-block>`: fixed code blocks not being truncated when using deep links, causing them to overlay other content
+- 8ace3c3: `<rh-alert>`: updated close button's label attribute to give accessible name
+- a4b30fa: `<rh-navigation-vertical>`: corrected caret position in mobile safari
+- 3726b1e: `<rh-tooltip>`: corrected tooltip arrow position and improved RTL support
+- 3fcc904: `<rh-code-block>`: improve load performance when using certain property combinations
+- 149d074: `<rh-avatar>`: improved render performance
+- 7a92867: `<rh-alert>`: allow toast function to work when built using native constructible style sheets
+- 19e3306: `<rh-code-block>`: correct wrap functionality for prerendered code blocks
+- 3786f5a: `<rh-code-block>`: fixed the visibility of the Show more/less button in `<rh-code-block>` when line numbers are hidden.
+- 86fe7aa: `<rh-icon>`: remove the displayed icon when the `icon` attribute is removed or set to an empty string.
+- b8fd133: `<rh-tag>`: fixed height to match design guidelines
+
 ## 4.0.0
 ### Major Changes
 
