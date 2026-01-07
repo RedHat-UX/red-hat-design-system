@@ -1,0 +1,13 @@
+diff --git a/node_modules/@patternfly/pfe-tools/react/generate-wrappers.js b/node_modules/@patternfly/pfe-tools/react/generate-wrappers.js
+index c049523..7e1cc57 100644
+--- a/node_modules/@patternfly/pfe-tools/react/generate-wrappers.js
++++ b/node_modules/@patternfly/pfe-tools/react/generate-wrappers.js
+@@ -136,7 +136,7 @@ export async function generateReactWrappers(customElementsManifestOrPathOrURL, o
+     try {
+         for (const module of manifest.modules) {
+             if (!module.exports) {
+-                throw new Error(`module has no exports: ${module.path}`);
++                continue
+             }
+             const { js, ts, tagNames } = genWrapperModules(module, packageName, elPrefix, classPrefix);
+             written.push(await writeReactWrappers(js, ts, tagNames, module.path, outDirPathOrURL));
