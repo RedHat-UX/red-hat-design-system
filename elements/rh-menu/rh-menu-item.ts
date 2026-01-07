@@ -3,7 +3,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
-import styles from './rh-menu-item.css';
+import styles from './rh-menu-item.css' with { type: 'css' };
 
 /**
  * Menu Dropdown Item

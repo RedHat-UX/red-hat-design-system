@@ -19,7 +19,7 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 
 import './rh-navigation-primary-item-menu.js';
 
-import styles from './rh-navigation-primary-item.css';
+import styles from './rh-navigation-primary-item.css' with { type: 'css' };
 
 @themable
 @customElement('rh-navigation-primary-item')

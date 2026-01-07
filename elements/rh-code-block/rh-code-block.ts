@@ -12,7 +12,7 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import style from './rh-code-block.css';
+import style from './rh-code-block.css' with { type: 'css' };
 
 /**
  * Returns a string with common indent stripped from each line. Useful for templating HTML

@@ -6,7 +6,7 @@ import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-badge.css';
+import styles from './rh-badge.css' with { type: 'css' };
 
 /**
  * A badge is used to annotate other information like a label or an object name.

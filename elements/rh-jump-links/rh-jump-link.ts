@@ -11,7 +11,7 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import style from './rh-jump-link.css';
+import style from './rh-jump-link.css' with { type: 'css' };
 
 import { rhJumpLinksOrientationContext } from './context.js';
 

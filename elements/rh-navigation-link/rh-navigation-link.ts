@@ -9,7 +9,7 @@ import { themable } from '@rhds/elements/lib/themable.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
-import styles from './rh-navigation-link.css';
+import styles from './rh-navigation-link.css' with { type: 'css' };
 
 /**
  * Navigation Link is a link element that is used as a child of the primary, secondary,
