@@ -20,7 +20,7 @@ import { collectResult } from '@lit-labs/ssr/lib/render-result.js';
 import { renderValue } from '@lit-labs/ssr/lib/render-value.js';
 
 import Piscina from 'piscina';
-import { transform } from 'lightningcss';
+import { transform, Features } from 'lightningcss';
 
 interface WorkerInitData {
   imports: string[];
@@ -101,7 +101,7 @@ class RHDSSSRableRenderer extends LitElementRenderer {
     if (styles !== undefined && styles.length > 0) {
       return () => [
         '<style>',
-        ...this.#thunkStyles(styles),
+        ...this.thunkStyles(styles),
         '</style>',
       ];
     } else {
@@ -109,7 +109,7 @@ class RHDSSSRableRenderer extends LitElementRenderer {
     }
   }
 
-  #thunkStyles(styles: CSSResultOrNative[]): Thunk[] {
+  private thunkStyles(styles: CSSResultOrNative[]): Thunk[] {
     return styles.flatMap(style => {
       const { cssText } = style as CSSResult;
       if (!RHDSSSRableRenderer.styleCache.has(cssText)) {
@@ -119,8 +119,16 @@ class RHDSSSRableRenderer extends LitElementRenderer {
               filename: 'constructed-stylesheet.css',
               code: Buffer.from(cssText),
               minify: true,
+              include: Features.Nesting,
             });
-            return code.toString();
+            // Fix lightningcss normalizing inherit to normal for color-scheme
+            // https://github.com/parcel-bundler/lightningcss/issues/821#issuecomment-3719524299
+            return code
+                .toString()
+                .replaceAll(
+                  'color-scheme:normal',
+                  'color-scheme:inherit',
+                );
           } catch {
             return cssText;
           }
