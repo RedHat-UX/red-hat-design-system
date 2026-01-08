@@ -17,5 +17,8 @@ serve:
       include:
         - elements/**/*.css
       exclude:
-        - elements/**/*.shim.css
-        - elements/**/*.lightdom.css
+        - elements/**/*-shim.css
+        - elements/**/*-lightdom.css
+  urlRewrites:
+    - urlPattern: /elements/:pretty/demo/:whatever*-lightdom:suffix(-shim)?.css
+      urlTemplate: /elements/rh-{{.pretty}}/{{.whatever}}-lightdom{{.suffix}}.css
