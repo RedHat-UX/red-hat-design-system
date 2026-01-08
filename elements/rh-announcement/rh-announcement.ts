@@ -92,7 +92,7 @@ export class RhAnnouncement extends LitElement {
              ?hidden="${!this.dismissable}"
              ?inert="${!this.dismissable}">
           <rh-button id="close-button"
-                  label="Close"
+                  accessible-label="Close"
                   confirm
                   variant="close"
                   @click=${this.#closeHandler}></rh-button>
