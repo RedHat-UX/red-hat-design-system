@@ -24,12 +24,11 @@ import { transform, Features } from 'lightningcss';
 
 interface WorkerInitData {
   imports: string[];
-  tsconfig: string;
 }
 
-const { imports, tsconfig } = Piscina.workerData as WorkerInitData;
+const { imports } = Piscina.workerData as WorkerInitData;
 
-registerTS({ tsconfig });
+registerTS();
 register('./lit-css-node.ts', import.meta.url);
 
 /* eslint-disable no-console */
@@ -66,34 +65,24 @@ class RHDSSSRableRenderer extends LitElementRenderer {
         .filter(RHDSSSRableRenderer.isRHDSSSRController);
   }
 
-  setupController(controller: RHDSSSRController, renderInfo: RenderInfo): Thunk {
-    return async () => {
-      if (controller.ssrSetup) {
-        await controller.ssrSetup(renderInfo);
-      }
-      return '';
-    };
-  }
-
   override renderShadow(renderInfo: RenderInfo): ThunkedRenderResult {
     return [
-      // set up controllers
-      ...this.#setupControllers(renderInfo),
       // Render styles.
       this.#renderStyles(),
-      // Render template
-      ...renderValue(
-        // @ts-expect-error: if upstream can do it, so can we
-        this.element.render(),
-        renderInfo,
-      ),
+      // Thunk that sets up controllers first, then renders template
+      async () => {
+        for (const controller of this.getControllers()) {
+          if (controller.ssrSetup) {
+            await controller.ssrSetup(renderInfo);
+          }
+        }
+        return renderValue(
+          // @ts-expect-error: if upstream can do it, so can we
+          this.element.render(),
+          renderInfo,
+        );
+      },
     ];
-  }
-
-  #setupControllers(renderInfo: RenderInfo): Thunk[] {
-    return this.getControllers()
-        .flatMap(controller =>
-          this.setupController(controller, renderInfo));
   }
 
   #renderStyles(): Thunk {
