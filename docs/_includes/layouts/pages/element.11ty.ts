@@ -5,6 +5,7 @@ import { tokens } from '@rhds/tokens/meta.js';
 import { join } from 'node:path';
 import { readFile, access } from 'node:fs/promises';
 import { capitalize, copyCell, dedent, getTokenHref } from '#11ty-plugins/tokensHelpers.js';
+import { htmlToReact } from '#11ty-plugins/html-to-react.js';
 import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
 import { AssetCache } from '@11ty/eleventy-fetch';
 import { Renderer } from '#eleventy.config';
@@ -923,7 +924,7 @@ export default class ElementsPage extends Renderer<Context> {
   }
 
   async #getDemoCodeBlocks(demo: DemoRecord) {
-    const map = new Map<'html' | 'css' | 'js', string>();
+    const map = new Map<'html' | 'react' | 'css' | 'js', string>();
 
     function updateDemoContentForType(contentType: 'html' | 'css' | 'js', node: Tools.ParentNode) {
       const oldContent = map.get(contentType) ?? '';
@@ -946,11 +947,19 @@ export default class ElementsPage extends Renderer<Context> {
         }
       }
 
-      map.set('html', serialize(fragment));
+      const htmlContent = serialize(fragment);
+      map.set('html', htmlContent);
+
+      // Generate React wrapper code from the HTML
+      const reactCode = htmlToReact(htmlContent);
+      if (reactCode) {
+        map.set('react', reactCode);
+      }
 
       const blocks = await Promise.all(map.entries().map(([kind, content]) => {
+        const lang = kind === 'react' ? 'jsx' : kind;
         const tpl = dedent(`
-          \`\`\`${kind} uxdotcodeblock {slot=${kind}}
+          \`\`\`${lang} uxdotcodeblock {slot=${kind}}
           ${content.trim()}
           \`\`\`
         `);
