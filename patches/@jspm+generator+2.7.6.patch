@@ -1,8 +1,28 @@
 diff --git a/node_modules/@jspm/generator/dist/generator-790b7aa7.js b/node_modules/@jspm/generator/dist/generator-790b7aa7.js
-index 269fffc..dc7527c 100644
+index 269fffc..e3ff181 100644
 --- a/node_modules/@jspm/generator/dist/generator-790b7aa7.js
 +++ b/node_modules/@jspm/generator/dist/generator-790b7aa7.js
-@@ -3314,6 +3314,9 @@ async function extractLockConstraintsAndMap(log, map, preloadUrls, mapUrl, rootU
+@@ -217,7 +217,8 @@ async function createTsAnalysis(source, url) {
+             sourceType: 'module',
+             parserOpts: {
+                 plugins: [
+-                    'jsx'
++                    'jsx',
++                    'decorators-legacy'
+                 ],
+                 errorRecovery: true
+             },
+@@ -225,7 +226,8 @@ async function createTsAnalysis(source, url) {
+                 [
+                     babelPresetTs,
+                     {
+-                        onlyRemoveTypeImports: true
++                        onlyRemoveTypeImports: true,
++                        allowDeclareFields: true
+                     }
+                 ]
+             ],
+@@ -3314,6 +3316,9 @@ async function extractLockConstraintsAndMap(log, map, preloadUrls, mapUrl, rootU
                      }
                      if (installSubpath !== false) {
                          setResolution(locks, parsedKey.pkgName, pkgUrl, null, installSubpath);
@@ -12,7 +32,7 @@ index 269fffc..dc7527c 100644
                          return;
                      }
                  }
-@@ -3825,7 +3828,7 @@ function _define_property$2(obj, key, value) {
+@@ -3825,7 +3830,7 @@ function _define_property$2(obj, key, value) {
      return obj;
  }
  function combineSubpaths(installSubpath, traceSubpath) {
@@ -21,7 +41,16 @@ index 269fffc..dc7527c 100644
      return installSubpath === null || installSubpath === '.' || traceSubpath === '.' ? installSubpath || traceSubpath : `${installSubpath}${traceSubpath.slice(1)}`;
  }
  class TraceMap {
-@@ -3869,7 +3872,7 @@ class TraceMap {
+@@ -3860,7 +3865,7 @@ class TraceMap {
+    */ async visit(specifier, opts, parentUrl = this.baseUrl.href, seen = new Set()) {
+         var _this_opts_ignore;
+         if (!parentUrl) throw new Error('Internal error: expected parentUrl');
+-        if ((_this_opts_ignore = this.opts.ignore) === null || _this_opts_ignore === void 0 ? void 0 : _this_opts_ignore.includes(specifier)) return;
++        if ((_this_opts_ignore = this.opts.ignore) === null || _this_opts_ignore === void 0 ? void 0 : _this_opts_ignore.some(pattern => pattern instanceof RegExp ? pattern.test(specifier) : pattern === specifier)) return;
+         if (seen.has(`${specifier}##${parentUrl}`)) return;
+         seen.add(`${specifier}##${parentUrl}`);
+         this.log('tracemap/visit', `Attempting to resolve ${specifier} to a module from ${parentUrl}, toplevel=${opts.toplevel}, mode=${opts.installMode}`);
+@@ -3869,7 +3874,7 @@ class TraceMap {
          // very likely that the user has some CommonJS dependencies, but this is
          // something that the user has to explicitly enable:
          if (isBuiltinScheme(resolved)) return null;
@@ -30,7 +59,7 @@ index 269fffc..dc7527c 100644
          try {
              var entry = await this.resolver.analyze(resolved);
          } catch (e) {
-@@ -5112,7 +5115,7 @@ function createFetchOptions(cache = true, fetchOptions = {}) {
+@@ -5112,7 +5117,7 @@ function createFetchOptions(cache = true, fetchOptions = {}) {
                  replacer.remove(existingComment.start, existingComment.end, true);
              }
          }
