@@ -54,7 +54,7 @@ let RhButton = class RhButton extends LitElement {
         const hasIcon = __classPrivateFieldGet(this, _RhButton_instances, "a", _RhButton_hasIcon_get);
         return html `
       <!-- Internal button element -->
-      <button aria-label="${ifDefined(this.label)}"
+      <button aria-label="${ifDefined(this.accessibleLabel || this.label)}"
               class="${classMap({
             danger,
             hasIcon,
@@ -76,7 +76,7 @@ let RhButton = class RhButton extends LitElement {
                 part="icon"
                 name="icon">${__classPrivateFieldGet(this, _RhButton_instances, "m", _RhButton_renderIcon).call(this)}</slot>
         </span>
-        <span aria-hidden=${String(!!this.label)}><!-- Contains button text --><slot id="text" ></slot></span>
+        <span aria-hidden=${String(!!this.accessibleLabel || !!this.label)}><!-- Contains button text --><slot id="text" ></slot></span>
       </button>
     `;
     }
@@ -123,6 +123,9 @@ __decorate([
 __decorate([
     property({ reflect: true })
 ], RhButton.prototype, "type", void 0);
+__decorate([
+    property({ attribute: 'accessible-label' })
+], RhButton.prototype, "accessibleLabel", void 0);
 __decorate([
     property()
 ], RhButton.prototype, "label", void 0);

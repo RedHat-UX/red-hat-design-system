@@ -30,7 +30,15 @@ export declare class RhButton extends LitElement {
      * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#type
      */
     type?: 'button' | 'submit' | 'reset';
-    /** Accessible name for the button, use when the button does not have slotted text */
+    /**
+     * Accessible name for the button, use when the button does not have slotted text.
+     */
+    accessibleLabel?: string;
+    /**
+     * Accessible name for the button, use when the button does not have slotted text.
+     * Use `accessible-label` instead.
+     * @deprecated
+     */
     label?: string;
     /** Form value for the button */
     value?: string;
