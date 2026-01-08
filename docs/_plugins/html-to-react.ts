@@ -1,10 +1,4 @@
 import type * as CEM from 'custom-elements-manifest';
-import type {
-  ChildNode,
-  DocumentFragment,
-  Element,
-  TextNode,
-} from 'parse5/dist/tree-adapters/default.js';
 
 import { parseFragment } from 'parse5';
 import * as Tools from '@parse5/tools';
@@ -43,9 +37,9 @@ const tagNameMap = buildTagNameMap();
 /**
  * Collect all unique rh-* tag names from a parse5 fragment
  */
-function collectRhTagNames(fragment: DocumentFragment): Set<string> {
+function collectRhTagNames(fragment: Tools.DocumentFragment): Set<string> {
   const tagNames = new Set<string>();
-  for (const node of Tools.queryAll<Element>(fragment, Tools.isElementNode)) {
+  for (const node of Tools.queryAll<Tools.Element>(fragment, Tools.isElementNode)) {
     if (node.tagName.startsWith('rh-') && tagNameMap.has(node.tagName)) {
       tagNames.add(node.tagName);
     }
@@ -110,14 +104,14 @@ function serializeAttrs(attrs: { name: string; value: string }[]): string {
 /**
  * Check if a node is only whitespace text
  */
-function isWhitespaceOnly(node: ChildNode): boolean {
-  return Tools.isTextNode(node) && /^\s*$/.test((node as TextNode).value);
+function isWhitespaceOnly(node: Tools.ChildNode): boolean {
+  return Tools.isTextNode(node) && /^\s*$/.test((node as Tools.TextNode).value);
 }
 
 /**
  * Check if element has only inline content (text and inline elements)
  */
-function hasOnlyInlineContent(node: Element): boolean {
+function hasOnlyInlineContent(node: Tools.Element): boolean {
   const inlineTags = new Set(['a', 'span', 'strong', 'em', 'b', 'i', 'code', 'small']);
   for (const child of node.childNodes) {
     if (Tools.isTextNode(child)) {
@@ -136,11 +130,11 @@ function hasOnlyInlineContent(node: Element): boolean {
 /**
  * Recursively serialize a node to pretty-printed JSX
  */
-function serializeNode(node: ChildNode, indent: number): string {
+function serializeNode(node: Tools.ChildNode, indent: number): string {
   const indentStr = '  '.repeat(indent);
 
   if (Tools.isTextNode(node)) {
-    const text = (node as TextNode).value;
+    const text = (node as Tools.TextNode).value;
     // Collapse pure whitespace between elements
     if (/^\s*$/.test(text)) {
       return '';
@@ -157,14 +151,14 @@ function serializeNode(node: ChildNode, indent: number): string {
     return '';
   }
 
-  const elem = node as Element;
+  const elem = node as Tools.Element;
   const tagName = elem.tagName.startsWith('rh-') ?
     getComponentName(elem.tagName)
     : elem.tagName;
   const attrs = serializeAttrs(elem.attrs);
 
   // Filter out whitespace-only text nodes
-  const meaningfulChildren = elem.childNodes.filter(c => !isWhitespaceOnly(c));
+  const meaningfulChildren = elem.childNodes.filter((c: Tools.ChildNode) => !isWhitespaceOnly(c));
 
   // Self-closing if no children
   if (meaningfulChildren.length === 0) {
@@ -173,14 +167,14 @@ function serializeNode(node: ChildNode, indent: number): string {
 
   // Check if we can render inline (single text node or simple inline content)
   if (meaningfulChildren.length === 1 && Tools.isTextNode(meaningfulChildren[0])) {
-    const text = (meaningfulChildren[0] as TextNode).value.trim();
+    const text = (meaningfulChildren[0] as Tools.TextNode).value.trim();
     return `${indentStr}<${tagName}${attrs}>${text}</${tagName}>`;
   }
 
   // Check for simple inline content
   if (hasOnlyInlineContent(elem) && meaningfulChildren.length <= 2) {
     const innerContent = meaningfulChildren
-        .map(c => serializeNode(c, 0))
+        .map((c: Tools.ChildNode) => serializeNode(c, 0))
         .filter(Boolean)
         .join('');
     if (innerContent.length < 60) {
@@ -190,7 +184,7 @@ function serializeNode(node: ChildNode, indent: number): string {
 
   // Multi-line output
   const childContent = meaningfulChildren
-      .map(c => serializeNode(c, indent + 1))
+      .map((c: Tools.ChildNode) => serializeNode(c, indent + 1))
       .filter(Boolean)
       .join('\n');
 
@@ -200,7 +194,7 @@ function serializeNode(node: ChildNode, indent: number): string {
 /**
  * Serialize a fragment to pretty-printed JSX
  */
-function serializeFragment(fragment: DocumentFragment): string {
+function serializeFragment(fragment: Tools.DocumentFragment): string {
   const parts: string[] = [];
   for (const node of fragment.childNodes) {
     if (isWhitespaceOnly(node)) {
