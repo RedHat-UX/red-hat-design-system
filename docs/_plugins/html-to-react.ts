@@ -1,5 +1,10 @@
 import type * as CEM from 'custom-elements-manifest';
-import type { ChildNode, Element, TextNode, DocumentFragment } from 'parse5/dist/tree-adapters/default.js';
+import type {
+  ChildNode,
+  DocumentFragment,
+  Element,
+  TextNode,
+} from 'parse5/dist/tree-adapters/default.js';
 
 import { parseFragment } from 'parse5';
 import * as Tools from '@parse5/tools';
@@ -90,7 +95,7 @@ function serializeAttrs(attrs: { name: string; value: string }[]): string {
   if (attrs.length === 0) {
     return '';
   }
-  return ' ' + attrs
+  return ` ${attrs
       .map(({ name, value }) => {
         const jsxName = transformAttrName(name);
         // Boolean attributes (empty value)
@@ -99,7 +104,7 @@ function serializeAttrs(attrs: { name: string; value: string }[]): string {
         }
         return `${jsxName}="${value}"`;
       })
-      .join(' ');
+      .join(' ')}`;
 }
 
 /**
@@ -153,8 +158,8 @@ function serializeNode(node: ChildNode, indent: number): string {
   }
 
   const elem = node as Element;
-  const tagName = elem.tagName.startsWith('rh-')
-    ? getComponentName(elem.tagName)
+  const tagName = elem.tagName.startsWith('rh-') ?
+    getComponentName(elem.tagName)
     : elem.tagName;
   const attrs = serializeAttrs(elem.attrs);
 
