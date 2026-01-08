@@ -4,23 +4,7 @@ import '@patternfly/elements/pf-icon/pf-icon.js';
 /**
  * The **back to top** component is a shortcut that allows users to quickly navigate to the top of a lengthy content page.
  * @summary A shortcut that allows users to quickly navigate to the top of a lengthy content page.
- * @csspart trigger - The `<a>` or `<pf-button>` element
- * @slot icon
- *       Contains the prefix icon to display before the link or button.
- * @slot
- *       Text to display inside the link or button.
- * @cssprop {<length>} [--pf-c-back-to-top--Right=3rem`]
- * @cssprop {<length>} [--pf-c-back-to-top--Bottom=1.5rem`]
- * @cssprop [--pf-c-back-to-top--c-button--BoxShadow=0 0.75rem 0.75rem -0.5rem rgba(3, 3, 3, 0.18)]
- * @cssprop {<length>} [--pf-c-button--FontSize=0.75rem]
- * @cssprop {<length>|<percentage>}  [--pf-c-button--BorderRadius=30em]
- * @cssprop {<length>} [--pf-c-button--PaddingTop=0.25rem]
- * @cssprop {<length>} [--pf-c-button--PaddingRight=0.5rem]
- * @cssprop {<length>} [--pf-c-button--PaddingBottom=0.25rem]
- * @cssprop {<length>} [--pf-c-button--PaddingLeft=0.5rem]
- * @cssprop {<color>} [--pf-c-button--m-primary--Color=#fff]
- * @cssprop {<color>} [--pf-c-button--m-primary--BackgroundColor=#06c]
- * @cssprop {<length>} [--pf-c-button__icon--m-end--MarginLeft=0.25rem]
+ * @alias Back to Top
  */
 export declare class PfBackToTop extends LitElement {
     #private;

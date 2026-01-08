@@ -83,7 +83,7 @@ export const standardProperty = (options = defaultPropertyDeclaration, target, c
             set(v) {
                 const oldValue = target.get.call(this);
                 target.set.call(this, v);
-                this.requestUpdate(name, oldValue, options);
+                this.requestUpdate(name, oldValue, options, true, v);
             },
             init(v) {
                 if (v !== undefined) {
@@ -98,7 +98,7 @@ export const standardProperty = (options = defaultPropertyDeclaration, target, c
         return function (value) {
             const oldValue = this[name];
             target.call(this, value);
-            this.requestUpdate(name, oldValue, options);
+            this.requestUpdate(name, oldValue, options, true, value);
         };
     }
     throw new Error(`Unsupported decorator location: ${kind}`);

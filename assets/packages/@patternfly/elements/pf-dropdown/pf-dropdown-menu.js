@@ -10,7 +10,44 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 import { PfDropdownItem, DropdownItemChange } from './pf-dropdown-item.js';
 import { PfDropdownGroup } from './pf-dropdown-group.js';
 import { css } from "lit";
-const styles = css `:host {\n  background: var(--pf-c-dropdown__menu--BackgroundColor, #fff);\n}\n\n.disabled {\n  --pf-c-dropdown__menu-item--Color: var(\n    --pf-c-dropdown__menu-item--disabled--Color,\n    var(--pf-global--Color--dark-200, #6a6e73)\n  ) !important;\n  --pf-c-dropdown__menu-item--BackgroundColor: var(\n    --pf-c-dropdown__menu-item--disabled--BackgroundColor,\n    transparent\n  ) !important;\n}\n\n:host([hidden]),\n[hidden] {\n  display: none !important;\n}\n\n::slotted(hr) {\n  margin: 0;\n  border-color: var(--pf-c-divider--BackgroundColor, var(--pf-global--BorderColor--100, #d2d2d2));\n  border-style: solid;\n}\n\n::slotted([role="separator"]:not(hr)) {\n  width: 100%;\n  height: 1px;\n  background-color: var(--pf-c-divider--BackgroundColor, var(--pf-global--BorderColor--100, #d2d2d2));\n  padding: 0px;\n  margin: 0px;\n  border: 0;\n  display: block;\n  pointer-events: none;\n}\n\n`;
+const styles = css `:host {
+  background: var(--pf-c-dropdown__menu--BackgroundColor, #fff);
+}
+
+.disabled {
+  --pf-c-dropdown__menu-item--Color: var(
+    --pf-c-dropdown__menu-item--disabled--Color,
+    var(--pf-global--Color--dark-200, #6a6e73)
+  ) !important;
+  --pf-c-dropdown__menu-item--BackgroundColor: var(
+    --pf-c-dropdown__menu-item--disabled--BackgroundColor,
+    transparent
+  ) !important;
+}
+
+:host([hidden]),
+[hidden] {
+  display: none !important;
+}
+
+::slotted(hr) {
+  margin: 0;
+  border-color: var(--pf-c-divider--BackgroundColor, var(--pf-global--BorderColor--100, #d2d2d2));
+  border-style: solid;
+}
+
+::slotted([role="separator"]:not(hr)) {
+  width: 100%;
+  height: 1px;
+  background-color: var(--pf-c-divider--BackgroundColor, var(--pf-global--BorderColor--100, #d2d2d2));
+  padding: 0px;
+  margin: 0px;
+  border: 0;
+  display: block;
+  pointer-events: none;
+}
+
+`;
 import { classMap } from 'lit/directives/class-map.js';
 function isDisabledItemClick(event) {
     const item = event.composedPath().find((x) => x instanceof PfDropdownItem);
@@ -120,7 +157,7 @@ PfDropdownMenu.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
-PfDropdownMenu.version = "4.1.0";
+PfDropdownMenu.version = "4.3.0";
 __decorate([
     consume({ context, subscribe: true }),
     state()

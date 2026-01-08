@@ -1,4 +1,12 @@
 /**
+ * Initialize a ref by setting up an attribute observe on it
+ * looking for changes to disabled
+ * @param {HTMLElement} ref - The element to watch
+ * @param {ElementInternals} internals - The element internals instance for the ref
+ * @return {void}
+ */
+export declare const initRef: (ref: HTMLElement, internals: ElementInternals) => void;
+/**
  * If a fieldset's disabled state is toggled, the formDisabledCallback
  * on any child form-associated cusotm elements.
  */

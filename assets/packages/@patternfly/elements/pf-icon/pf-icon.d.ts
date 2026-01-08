@@ -12,11 +12,9 @@ export declare class IconResolveError extends ErrorEvent {
 /**
  * An **icon** component is a container that allows for icons of varying dimensions to
  * seamlessly replace each other without shifting surrounding content.
- * @slot - Slotted content is used as a fallback in case the icon doesn't load
+ * @alias Icon
  * @fires load - Fired when an icon is loaded and rendered
  * @fires error - Fired when an icon fails to load
- * @csspart fallback - Container for the fallback (i.e. slotted) content
- * @cssprop {<length>} --pf-icon--size - size of the icon
  */
 export declare class PfIcon extends LitElement {
     #private;

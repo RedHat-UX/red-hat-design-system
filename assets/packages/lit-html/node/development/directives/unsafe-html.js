@@ -1,5 +1,5 @@
 import { nothing, noChange } from '../lit-html.js';
-import { Directive, PartType, directive } from '../directive.js';
+import { directive, Directive, PartType } from '../directive.js';
 
 /**
  * @license

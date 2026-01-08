@@ -6,11 +6,27 @@ import { consume } from '@lit/context';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { context } from './context.js';
 import { css } from "lit";
-const styles = css `:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n\n:host([box="light"]) {\n  background-color: var(--pf-c-tab-content--m-light-300, var(--pf-global--BackgroundColor--light-300, #f0f0f0));\n}\n`;
+const styles = css `:host {
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+:host([box="light"]) {
+  /** Background color for light tab content */
+  background-color: var(--pf-c-tab-content--m-light-300, var(--pf-global--BackgroundColor--light-300, #f0f0f0));
+}
+`;
 let PfTabPanel = class PfTabPanel extends LitElement {
     render() {
         return html `
-      <slot></slot>
+      <!-- container for the panel content -->
+      <div part="container">
+        <!-- Tab panel content -->
+        <slot></slot>
+      </div>
     `;
     }
     connectedCallback() {
@@ -40,7 +56,7 @@ let PfTabPanel = class PfTabPanel extends LitElement {
     }
 };
 PfTabPanel.styles = [styles];
-PfTabPanel.version = "4.1.0";
+PfTabPanel.version = "4.3.0";
 __decorate([
     consume({ context, subscribe: true }),
     state()

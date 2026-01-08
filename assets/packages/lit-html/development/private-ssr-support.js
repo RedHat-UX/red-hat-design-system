@@ -29,7 +29,7 @@ export const _$LH = {
         }
     },
     patchDirectiveResolve: (directiveClass, resolveOverrideFn) => {
-        if (directiveClass.prototype._$resolve !== resolveOverrideFn) {
+        if (directiveClass.prototype._$resolve.name !== resolveOverrideFn.name) {
             resolveMethodName ??= directiveClass.prototype._$resolve
                 .name;
             for (let proto = directiveClass.prototype; proto !== Object.prototype; proto = Object.getPrototypeOf(proto)) {

@@ -315,6 +315,8 @@ const createAttributeParts = (comment, stack, options) => {
 };
 // Number of 32 bit elements to use to create template digests
 const digestSize = 2;
+// Digest cache
+const digestCache = new WeakMap();
 // We need to specify a digest to use across rendering environments. This is a
 // simple digest build from a DJB2-ish hash modified from:
 // https://github.com/darkskyapp/string-hash/blob/master/index.js
@@ -327,6 +329,10 @@ const digestSize = 2;
 //  - Easily specifiable and implementable in multiple languages.
 // We don't care about cryptographic suitability.
 const digestForTemplateResult = (templateResult) => {
+    let digest = digestCache.get(templateResult.strings);
+    if (digest !== undefined) {
+        return digest;
+    }
     const hashes = new Uint32Array(digestSize).fill(5381);
     for (const s of templateResult.strings) {
         for (let i = 0; i < s.length; i++) {
@@ -343,7 +349,10 @@ const digestForTemplateResult = (templateResult) => {
     // for `btoa` when they set up their VM context, we instead inject an import
     // for `Buffer` from Node's built-in `buffer` module in our Rollup config (see
     // note at the top of this file), and use that.
-    return Buffer.from(str, 'binary').toString('base64') ;
+    digest = Buffer.from(str, 'binary').toString('base64')
+        ;
+    digestCache.set(templateResult.strings, digest);
+    return digest;
 };
 
 export { digestForTemplateResult, hydrate };

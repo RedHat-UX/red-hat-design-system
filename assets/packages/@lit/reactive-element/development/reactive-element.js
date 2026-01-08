@@ -664,11 +664,12 @@ export class ReactiveElement
                     : defaultConverter;
             // mark state reflecting
             this.__reflectingProperty = propName;
+            const convertedValue = converter.fromAttribute(value, options.type);
             this[propName] =
-                converter.fromAttribute(value, options.type) ??
+                convertedValue ??
                     this.__defaultValues?.get(propName) ??
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    null;
+                    convertedValue;
             // mark state not reflecting
             this.__reflectingProperty = null;
         }
@@ -685,16 +686,24 @@ export class ReactiveElement
      * @param oldValue old value of requesting property
      * @param options property options to use instead of the previously
      *     configured options
+     * @param useNewValue if true, the newValue argument is used instead of
+     *     reading the property value. This is important to use if the reactive
+     *     property is a standard private accessor, as opposed to a plain
+     *     property, since private members can't be dynamically read by name.
+     * @param newValue the new value of the property. This is only used if
+     *     `useNewValue` is true.
      * @category updates
      */
-    requestUpdate(name, oldValue, options) {
+    requestUpdate(name, oldValue, options, useNewValue = false, newValue) {
         // If we have a property key, perform property update steps.
         if (name !== undefined) {
             if (DEV_MODE && name instanceof Event) {
                 issueWarning(``, `The requestUpdate() method was called with an Event as the property name. This is probably a mistake caused by binding this.requestUpdate as an event listener. Instead bind a function that will call it with no arguments: () => this.requestUpdate()`);
             }
             const ctor = this.constructor;
-            const newValue = this[name];
+            if (useNewValue === false) {
+                newValue = this[name];
+            }
             options ??= ctor.getPropertyOptions(name);
             const changed = (options.hasChanged ?? notEqual)(newValue, oldValue) ||
                 // When there is no change, check a corner case that can occur when
@@ -1103,7 +1112,7 @@ if (DEV_MODE) {
 }
 // IMPORTANT: do not change the property name or the assignment expression.
 // This line will be used in regexes to search for ReactiveElement usage.
-(global.reactiveElementVersions ??= []).push('2.1.0');
+(global.reactiveElementVersions ??= []).push('2.1.2');
 if (DEV_MODE && global.reactiveElementVersions.length > 1) {
     queueMicrotask(() => {
         issueWarning('multiple-versions', `Multiple versions of Lit loaded. Loading multiple versions ` +

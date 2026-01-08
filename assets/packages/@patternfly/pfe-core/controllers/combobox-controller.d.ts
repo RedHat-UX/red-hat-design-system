@@ -89,6 +89,8 @@ export declare class ComboboxController<Item extends HTMLElement> implements Rea
     static get supportsCrossRootActiveDescendant(): boolean;
     private static langs;
     private static langsRE;
+    private static instances;
+    private static hosts;
     private options;
     /** All items */
     get items(): Item[];
@@ -106,6 +108,8 @@ export declare class ComboboxController<Item extends HTMLElement> implements Rea
     hostConnected(): Promise<void>;
     hostUpdated(): void;
     hostDisconnected(): void;
+    disconnect(): void;
+    _onFocusoutElement(): Promise<void>;
     /**
      * For Browsers which do not support `ariaActiveDescendantElement`, we must clone
      * the listbox items into the same root as the combobox input

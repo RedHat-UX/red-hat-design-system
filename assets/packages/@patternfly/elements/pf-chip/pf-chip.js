@@ -5,7 +5,136 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import '@patternfly/elements/pf-button/pf-button.js';
 import { css } from "lit";
-const styles = css `:host {\n  --pf-c-chip--PaddingTop: var(--pf-global--spacer--xs, 0.25rem);\n  --pf-c-chip--PaddingRight: var(--pf-global--spacer--sm, 0.5rem);\n  --pf-c-chip--PaddingBottom: var(--pf-global--spacer--xs, 0.25rem);\n  --pf-c-chip--PaddingLeft: var(--pf-global--spacer--sm, 0.5rem);\n  --pf-c-chip--BackgroundColor: var(--pf-global--Color--light-100, #fff);\n  --pf-c-chip--BorderRadius: var(--pf-global--BorderRadius--sm, 3px);\n  --pf-c-chip--before--BorderColor: var(--pf-global--BorderColor--300, #f0f0f0);\n  --pf-c-chip--before--BorderWidth: var(--pf-global--BorderWidth--sm, 1px);\n  --pf-c-chip--before--BorderRadius: var(--pf-c-chip--BorderRadius);\n  --pf-c-chip--m-overflow__text--Color: var(--pf-global--primary-color--100, #06c);\n  --pf-c-chip--m-draggable--BackgroundColor: var(--pf-global--BackgroundColor--200, #f0f0f0);\n  --pf-c-chip--m-draggable--BoxShadow: var(--pf-global--BoxShadow--sm, 0 0.0625rem 0.125rem 0 rgba(3, 3, 3, 0.12), 0 0 0.125rem 0 rgba(3, 3, 3, 0.06));\n  --pf-c-chip--m-draggable__icon--FontSize: var(--pf-global--icon--FontSize--sm, 0.625rem);\n  --pf-c-chip__text--FontSize: var(--pf-global--FontSize--xs, 0.75rem);\n  --pf-c-chip__text--Color: var(--pf-global--Color--100, #151515);\n  --pf-c-chip__text--MaxWidth: 16ch;\n  --pf-c-chip__icon--MarginLeft: var(--pf-global--spacer--sm, 0.5rem);\n  color: var(--pf-global--Color--100, #151515);\n  position: relative;\n  display: inline-flex;\n  align-items: center;\n  min-width: 0;\n  list-style: none;\n  background-color: var(--pf-c-chip--BackgroundColor);\n  border-radius: var(--pf-c-chip--BorderRadius);\n  padding:\n\t  var(--pf-c-chip--PaddingTop)\n\t  var(--pf-c-chip--PaddingRight)\n\t  var(--pf-c-chip--PaddingBottom)\n\t  var(--pf-c-chip--PaddingLeft);\n}\n\n[hidden],\n:host([hidden]) {\n  display: none !important;\n}\n\ndiv#outer {\n  display: contents;\n}\n\n#outer:before {\n  position: absolute;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  content: "";\n  border: var(--pf-c-chip--before--BorderWidth) solid var(--pf-c-chip--before--BorderColor);\n  border-radius: var(--pf-c-chip--before--BorderRadius);\n}\n\nspan {\n  display: inline-block;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  position: relative;\n  max-width: var(--pf-c-chip__text--MaxWidth);\n  font-size: var(--pf-c-chip__text--FontSize);\n  color: var(--pf-c-chip__text--Color);\n}\n\n:host([readonly]) span {\n  color: var(--pf-global--Color--200, #6a6e73);\n}\n\n/* OVERFLOW */\n\nbutton#outer {\n  display: flex;\n  background: none;\n  border: 1px solid transparent;\n}\n\nbutton#outer span {\n  color: var(--pf-c-chip--m-overflow__text--Color);\n}\n\n/* CLOSE */\n\n#close-button {\n  --pf-icon--size: 12px;\n  --pf-c-button--PaddingTop: var(--pf-c-chip__c-button--PaddingTop);\n  --pf-c-button--PaddingRight: var(--pf-c-chip__c-button--PaddingRight);\n  --pf-c-button--PaddingBottom: var(--pf-c-chip__c-button--PaddingBottom);\n  --pf-c-button--PaddingLeft: var(--pf-c-chip__c-button--PaddingLeft);\n  --pf-c-button--FontSize: var(--pf-c-chip__c-button--FontSize);\n  margin-top: var(--pf-c-chip__c-button--MarginTop);\n  margin-right: var(--pf-c-chip__c-button--MarginRight);\n  margin-bottom: var(--pf-c-chip__c-button--MarginBottom);\n  inset-block-start: 0.125em;\n}\n\n::slotted(pf-badge) {\n  font-size: var(--pf-global--FontSize--xs, 12px);\n  margin: 0 0 0 var(--pf-global--spacer--xs, 0.25rem) !important;\n  min-width: unset;\n}\n`;
+const styles = css `:host {
+  /** Top padding for chip */
+  --pf-c-chip--PaddingTop: var(--pf-global--spacer--xs, 0.25rem);
+  /** Right padding for chip */
+  --pf-c-chip--PaddingRight: var(--pf-global--spacer--sm, 0.5rem);
+  /** Bottom padding for chip */
+  --pf-c-chip--PaddingBottom: var(--pf-global--spacer--xs, 0.25rem);
+  /** Left padding for chip */
+  --pf-c-chip--PaddingLeft: var(--pf-global--spacer--sm, 0.5rem);
+  /** Background color for chip */
+  --pf-c-chip--BackgroundColor: var(--pf-global--Color--light-100, #fff);
+  /** Border radius for chip */
+  --pf-c-chip--BorderRadius: var(--pf-global--BorderRadius--sm, 3px);
+  /** Border color for chip */
+  --pf-c-chip--before--BorderColor: var(--pf-global--BorderColor--300, #f0f0f0);
+  /** Border width for chip */
+  --pf-c-chip--before--BorderWidth: var(--pf-global--BorderWidth--sm, 1px);
+  /** Border radius for chip border (references chip border radius) */
+  --pf-c-chip--before--BorderRadius: var(--pf-c-chip--BorderRadius);
+  /** Text color for overflow chip */
+  --pf-c-chip--m-overflow__text--Color: var(--pf-global--primary-color--100, #06c);
+  /** Background color for draggable chip */
+  --pf-c-chip--m-draggable--BackgroundColor: var(--pf-global--BackgroundColor--200, #f0f0f0);
+  /** Box shadow for draggable chip */
+  --pf-c-chip--m-draggable--BoxShadow: var(--pf-global--BoxShadow--sm, 0 0.0625rem 0.125rem 0 rgba(3, 3, 3, 0.12), 0 0 0.125rem 0 rgba(3, 3, 3, 0.06));
+  /** Font size for draggable chip icon */
+  --pf-c-chip--m-draggable__icon--FontSize: var(--pf-global--icon--FontSize--sm, 0.625rem);
+  /** Font size for chip text */
+  --pf-c-chip__text--FontSize: var(--pf-global--FontSize--xs, 0.75rem);
+  /** Color for chip text */
+  --pf-c-chip__text--Color: var(--pf-global--Color--100, #151515);
+  /** Maximum width for chip text */
+  --pf-c-chip__text--MaxWidth: 16ch;
+  /** Left margin for chip icon */
+  --pf-c-chip__icon--MarginLeft: var(--pf-global--spacer--sm, 0.5rem);
+  color: var(--pf-global--Color--100, #151515);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  list-style: none;
+  /** Background color of chip */
+  background-color: var(--pf-c-chip--BackgroundColor);
+  /** Border radius of chip */
+  border-radius: var(--pf-c-chip--BorderRadius);
+  padding:
+\t  var(--pf-c-chip--PaddingTop)
+\t  var(--pf-c-chip--PaddingRight)
+\t  var(--pf-c-chip--PaddingBottom)
+\t  var(--pf-c-chip--PaddingLeft);
+}
+
+[hidden],
+:host([hidden]) {
+  display: none !important;
+}
+
+div#outer {
+  display: contents;
+}
+
+#outer:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: "";
+  border:
+    /** Border width */
+    var(--pf-c-chip--before--BorderWidth)
+    solid
+    /** Border color */
+    var(--pf-c-chip--before--BorderColor);
+  /** Border radius of chip border */
+  border-radius: var(--pf-c-chip--before--BorderRadius);
+}
+
+span {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
+  /** Maximum width of chip text */
+  max-width: var(--pf-c-chip__text--MaxWidth);
+  /** Font size of chip text */
+  font-size: var(--pf-c-chip__text--FontSize);
+  /** Color of chip text */
+  color: var(--pf-c-chip__text--Color);
+}
+
+:host([readonly]) span {
+  color: var(--pf-global--Color--200, #6a6e73);
+}
+
+/* OVERFLOW */
+
+button#outer {
+  display: flex;
+  background: none;
+  border: 1px solid transparent;
+}
+
+button#outer span {
+  /** Color for overflow chip text */
+  color: var(--pf-c-chip--m-overflow__text--Color);
+}
+
+/* CLOSE */
+
+#close-button {
+  --pf-icon--size: 12px;
+  --pf-c-button--PaddingTop: var(--pf-c-chip__c-button--PaddingTop);
+  --pf-c-button--PaddingRight: var(--pf-c-chip__c-button--PaddingRight);
+  --pf-c-button--PaddingBottom: var(--pf-c-chip__c-button--PaddingBottom);
+  --pf-c-button--PaddingLeft: var(--pf-c-chip__c-button--PaddingLeft);
+  --pf-c-button--FontSize: var(--pf-c-chip__c-button--FontSize);
+  margin-top: var(--pf-c-chip__c-button--MarginTop);
+  margin-right: var(--pf-c-chip__c-button--MarginRight);
+  margin-bottom: var(--pf-c-chip__c-button--MarginBottom);
+  inset-block-start: 0.125em;
+}
+
+::slotted(pf-badge) {
+  font-size: var(--pf-global--FontSize--xs, 12px);
+  margin: 0 0 0 var(--pf-global--spacer--xs, 0.25rem) !important;
+  min-width: unset;
+}
+`;
 import shared from "./pf-chip-shared.css.js";
 export class PfChipRemoveEvent extends Event {
     constructor(chip) {
@@ -33,13 +162,17 @@ let PfChip = class PfChip extends LitElement {
     render() {
         return this.overflowChip ? html `
       <button id="outer">
+        <!-- container for chip text -->
         <span part="text">
+          <!-- chip text -->
           <slot></slot>
         </span>
       </button>
     ` : html `
       <div id="outer">
+        <!-- container for chip text -->
         <span id="chip-text" part="text">
+          <!-- chip text -->
           <slot></slot>
         </span>
         <pf-button id="close-button"
@@ -64,7 +197,7 @@ PfChip.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
-PfChip.version = "4.1.0";
+PfChip.version = "4.3.0";
 __decorate([
     property({ attribute: 'accessible-close-label', type: String })
 ], PfChip.prototype, "accessibleCloseLabel", void 0);

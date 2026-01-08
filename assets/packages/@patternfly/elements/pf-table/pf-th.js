@@ -8,7 +8,100 @@ import { consume } from '@lit/context';
 import { thRoleContext } from './context.js';
 import '@patternfly/elements/pf-button/pf-button.js';
 import { css } from "lit";
-const styles = css `:host {\n  font-weight: bold;\n  padding: 1rem;\n  position: relative;\n}\n\n:host(:empty) {\n  padding: 0;\n}\n\n.sortable {\n  padding-inline-end: 1.5em;\n}\n\n.sortable slot {\n  display: inline;\n  margin-inline-end: 1.5em;\n}\n\nbutton {\n  width: 100%;\n  padding: var(--pf-c-table--cell--PaddingTop) var(--pf-c-table--cell--PaddingRight) var(--pf-c-table--cell--PaddingBottom) var(--pf-c-table--cell--PaddingLeft);\n  font-size: inherit;\n  font-weight: inherit;\n  color: var(--pf-c-table__button--Color);\n  text-align: left;\n  white-space: inherit;\n  -webkit-user-select: text;\n  -moz-user-select: text;\n  -ms-user-select: text;\n  user-select: text;\n  background-color: var(--pf-c-table__button--BackgroundColor);\n  border: 0;\n}\n\nbutton::before {\n  position: absolute;\n  inset: 0;\n  cursor: pointer;\n  content: '';\n}\n\nbutton:hover {\n  --pf-c-table__sort-indicator--Color: var(--pf-c-table__sort__button--hover__sort-indicator--Color);\n  --pf-c-table__sort__button__text--Color: var(--pf-c-table__sort__button--hover__text--Color);\n}\n\nbutton:active {\n  --pf-c-table__sort-indicator--Color: var(--pf-c-table__sort__button--active__sort-indicator--Color);\n  --pf-c-table__sort__button__text--Color: var(--pf-c-table__sort__button--active__text--Color);\n}\n\nbutton:focus {\n  --pf-c-table__sort-indicator--Color: var(--pf-c-table__sort__button--focus__sort-indicator--Color);\n  --pf-c-table__sort__button__text--Color: var(--pf-c-table__sort__button--focus__text--Color);\n}\n\nbutton.sortable {\n  --pf-c-table--cell--PaddingTop: var(--pf-c-table__sort__button--PaddingTop);\n  --pf-c-table--cell--PaddingRight: var(--pf-c-table__sort__button--PaddingRight);\n  --pf-c-table--cell--PaddingBottom: var(--pf-c-table__sort__button--PaddingBottom);\n  --pf-c-table--cell--PaddingLeft: var(--pf-c-table__sort__button--PaddingLeft);\n\n  display: flex;\n  width: auto;\n  margin-top: var(--pf-c-table__sort__button--MarginTop);\n  margin-bottom: var(--pf-c-table__sort__button--MarginBottom);\n  margin-left: var(--pf-c-table__sort__button--MarginLeft);\n}\n\nbutton.selected {\n  --pf-c-table__sort-indicator--Color: var(--pf-c-table__sort--m-selected__sort-indicator--Color);\n  --pf-c-table__sort__button__text--Color: var(--pf-c-table__sort--m-selected__button__text--Color);\n\n  color: var(--pf-c-table__sort--m-selected__button--Color);\n}\n\n#sort-indicator {\n  width: 0;\n  margin-inline-start: -1em;\n  overflow: visible;\n  color: var(--pf-c-table__sort-indicator--Color);\n}\n\n.visually-hidden {\n  position: fixed;\n  top: 0;\n  left: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border: 0;\n}\n`;
+const styles = css `:host {
+  font-weight: bold;
+  padding: 1rem;
+  position: relative;
+}
+
+:host(:empty) {
+  padding: 0;
+}
+
+.sortable {
+  padding-inline-end: 1.5em;
+}
+
+.sortable slot {
+  display: inline;
+  margin-inline-end: 1.5em;
+}
+
+button {
+  width: 100%;
+  padding: var(--pf-c-table--cell--PaddingTop) var(--pf-c-table--cell--PaddingRight) var(--pf-c-table--cell--PaddingBottom) var(--pf-c-table--cell--PaddingLeft);
+  font-size: inherit;
+  font-weight: inherit;
+  color: var(--pf-c-table__button--Color);
+  text-align: left;
+  white-space: inherit;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  background-color: var(--pf-c-table__button--BackgroundColor);
+  border: 0;
+}
+
+button::before {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  content: '';
+}
+
+button:hover {
+  --pf-c-table__sort-indicator--Color: var(--pf-c-table__sort__button--hover__sort-indicator--Color);
+  --pf-c-table__sort__button__text--Color: var(--pf-c-table__sort__button--hover__text--Color);
+}
+
+button:active {
+  --pf-c-table__sort-indicator--Color: var(--pf-c-table__sort__button--active__sort-indicator--Color);
+  --pf-c-table__sort__button__text--Color: var(--pf-c-table__sort__button--active__text--Color);
+}
+
+button:focus {
+  --pf-c-table__sort-indicator--Color: var(--pf-c-table__sort__button--focus__sort-indicator--Color);
+  --pf-c-table__sort__button__text--Color: var(--pf-c-table__sort__button--focus__text--Color);
+}
+
+button.sortable {
+  --pf-c-table--cell--PaddingTop: var(--pf-c-table__sort__button--PaddingTop);
+  --pf-c-table--cell--PaddingRight: var(--pf-c-table__sort__button--PaddingRight);
+  --pf-c-table--cell--PaddingBottom: var(--pf-c-table__sort__button--PaddingBottom);
+  --pf-c-table--cell--PaddingLeft: var(--pf-c-table__sort__button--PaddingLeft);
+
+  display: flex;
+  width: auto;
+  margin-top: var(--pf-c-table__sort__button--MarginTop);
+  margin-bottom: var(--pf-c-table__sort__button--MarginBottom);
+  margin-left: var(--pf-c-table__sort__button--MarginLeft);
+}
+
+button.selected {
+  --pf-c-table__sort-indicator--Color: var(--pf-c-table__sort--m-selected__sort-indicator--Color);
+  --pf-c-table__sort__button__text--Color: var(--pf-c-table__sort--m-selected__button__text--Color);
+
+  color: var(--pf-c-table__sort--m-selected__button--Color);
+}
+
+#sort-indicator {
+  width: 0;
+  margin-inline-start: -1em;
+  overflow: visible;
+  color: var(--pf-c-table__sort-indicator--Color);
+}
+
+.visually-hidden {
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+`;
 const DIRECTIONS = { asc: 'desc', desc: 'asc' };
 export class RequestSortEvent extends Event {
     constructor(key, direction) {
@@ -69,7 +162,7 @@ _PfTh_onClick = function _PfTh_onClick() {
     }
 };
 PfTh.styles = [styles];
-PfTh.version = "4.1.0";
+PfTh.version = "4.3.0";
 __decorate([
     property({ type: Boolean, reflect: true })
 ], PfTh.prototype, "sortable", void 0);

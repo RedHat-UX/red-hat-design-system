@@ -5,27 +5,78 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { css } from "lit";
-const styles = css `:host {\n  display: block;\n  background-color: var(--pf-c-code-block--BackgroundColor, #f0f0f0);\n  font-size: var(--pf-c-code-block__pre--FontSize, 0.875rem);\n  font-family: var(--pf-c-code-block__pre--FontFamily, "Liberation Mono", consolas, "SFMono-Regular", menlo, monaco, "Courier New", monospace);\n}\n\n[hidden] {\n  display: none !important;\n}\n\n#container {\n  margin: 0;\n  padding-top: var(--pf-c-code-block__content--PaddingTop, 1rem);\n  padding-right: var(--pf-c-code-block__content--PaddingRight, 1rem);\n  padding-bottom: var(--pf-c-code-block__content--PaddingBottom, 1rem);\n  padding-left: var(--pf-c-code-block__content--PaddingLeft, 1rem);\n}\n\n#header {\n  border-bottom: var(--pf-c-code-block__header--BorderBottomWidth, 1px) solid var(--pf-c-code-block__header--BorderBottomColor, #d2d2d2);\n}\n\npre {\n  margin: 0;\n}\n\nslot[name="actions"] {\n  display: flex;\n  justify-content: end;\n}\n\n#expanded {\n  display: inline;\n}\n\nbutton {\n  display: flex;\n  background: none;\n  border: none;\n  padding: 6px 16px 6px 0;\n  color: #06c;\n  cursor: pointer;\n  font-size: 16px;\n}\n\nbutton svg {\n  color: #151515;\n  margin-right: 12px;\n  transition: .2s ease-in 0s;\n  vertical-align: -0.125em;\n}\n\n.expanded button svg {\n  transform: rotate(-90deg);\n}\n`;
+const styles = css `:host {
+  display: block;
+  /** Background color for code block */
+  background-color: var(--pf-c-code-block--BackgroundColor, #f0f0f0);
+  /** Font size for code block pre element */
+  font-size: var(--pf-c-code-block__pre--FontSize, 0.875rem);
+  /** Font family for code block pre element */
+  font-family: var(--pf-c-code-block__pre--FontFamily, "Liberation Mono", consolas, "SFMono-Regular", menlo, monaco, "Courier New", monospace);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+#container {
+  margin: 0;
+  /** Top padding for code block content */
+  padding-top: var(--pf-c-code-block__content--PaddingTop, 1rem);
+  /** Right padding for code block content */
+  padding-right: var(--pf-c-code-block__content--PaddingRight, 1rem);
+  /** Bottom padding for code block content */
+  padding-bottom: var(--pf-c-code-block__content--PaddingBottom, 1rem);
+  /** Left padding for code block content */
+  padding-left: var(--pf-c-code-block__content--PaddingLeft, 1rem);
+}
+
+#header {
+  /** Border bottom width for code block header */
+  border-bottom: var(--pf-c-code-block__header--BorderBottomWidth, 1px) solid
+    /** Border bottom color for code block header */
+    var(--pf-c-code-block__header--BorderBottomColor, #d2d2d2);
+}
+
+pre {
+  margin: 0;
+}
+
+slot[name="actions"] {
+  display: flex;
+  justify-content: end;
+}
+
+#expanded {
+  display: inline;
+}
+
+button {
+  display: flex;
+  background: none;
+  border: none;
+  padding: 6px 16px 6px 0;
+  color: #06c;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button svg {
+  color: #151515;
+  margin-right: 12px;
+  transition: .2s ease-in 0s;
+  vertical-align: -0.125em;
+}
+
+.expanded button svg {
+  transform: rotate(-90deg);
+}
+`;
 /**
  * A **code block** is a component that contains 2 or more lines of read-only code. The code in a code block can be copied to the clipboard.
- * @slot code
- *       The slot to put the code in
- * @slot expandable-code
- *       The slot to put the code in that should be revealed when the "Show more" button is
- *       clicked to expand the code-block
- * @slot actions
- *       Contains the actions for the code-block. For example, copy to clipboard.
+ * @alias Code Block
  * @attr {boolean} [expanded=false]
  *       Indicates if the code-block has been expanded
- * @cssprop {<color>} [--pf-c-code-block--BackgroundColor=#f0f0f0]
- * @cssprop {<length>} [--pf-c-code-block__header--BorderBottomWidth=1px]
- * @cssprop {<color>} [--pf-c-code-block__header--BorderBottomColor=#d2d2d2]
- * @cssprop {<length>} [--pf-c-code-block__content--PaddingTop=1rem]
- * @cssprop {<length>} [--pf-c-code-block__content--PaddingRight=1rem]
- * @cssprop {<length>} [--pf-c-code-block__content--PaddingBottom=1rem]
- * @cssprop {<length>} [--pf-c-code-block__content--PaddingLeft=1rem]
- * @cssprop {<length>} [--pf-c-code-block__pre--FontSize=0.875rem]
- * @cssprop {<string>} [--pf-c-code-block__pre--FontFamily="Liberation Mono", consolas, "SFMono-Regular", menlo, monaco, "Courier New", monospace]
  */
 function dedent(str) {
     const stripped = str.replace(/^\n/, '');
@@ -44,6 +95,7 @@ let PfCodeBlock = class PfCodeBlock extends LitElement {
         return html `
       <div id="header">
         <div id="actions">
+          <!-- Contains the actions for the code-block. For example, copy to clipboard. -->
           <slot name="actions"></slot>
         </div>
       </div>
@@ -85,7 +137,7 @@ _PfCodeBlock_toggle = function _PfCodeBlock_toggle() {
     this.expanded = !this.expanded;
 };
 PfCodeBlock.styles = [styles];
-PfCodeBlock.version = "4.1.0";
+PfCodeBlock.version = "4.3.0";
 __decorate([
     property({ type: Boolean, reflect: true })
 ], PfCodeBlock.prototype, "expanded", void 0);

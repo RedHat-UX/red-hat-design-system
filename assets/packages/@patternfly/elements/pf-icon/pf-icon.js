@@ -6,7 +6,42 @@ import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { css } from "lit";
-const style = css `:host {\n  position: relative;\n  display:  inline-block;\n  line-height:  0;\n  height: fit-content !important;\n  width: fit-content !important;\n}\n\n#container {\n  display: grid;\n  grid-template: 1fr / 1fr;\n  place-content: center;\n}\n\n#container.content ::slotted(*) {\n  display: none;\n}\n\nsvg {\n  fill: currentcolor;\n}\n\n:host([size=sm]) #container { --_size: var(--pf-global--icon--FontSize--sm, 10px); }\n:host([size=md]) #container { --_size: var(--pf-global--icon--FontSize--md, 18px); }\n:host([size=lg]) #container { --_size: var(--pf-global--icon--FontSize--lg, 24px); }\n:host([size=xl]) #container { --_size: var(--pf-global--icon--FontSize--xl, 54px); }\n\n#container, svg {\n  width: var(--pf-icon--size, var(--_size));\n  height: var(--pf-icon--size, var(--_size));\n  min-width: var(--pf-icon--size, var(--_size));\n  min-height: var(--pf-icon--size, var(--_size));\n}\n\n`;
+const style = css `:host {
+  position: relative;
+  display:  inline-block;
+  line-height:  0;
+  height: fit-content !important;
+  width: fit-content !important;
+}
+
+#container {
+  display: grid;
+  grid-template: 1fr / 1fr;
+  place-content: center;
+}
+
+#container.content ::slotted(*) {
+  display: none;
+}
+
+svg {
+  fill: currentcolor;
+}
+
+:host([size=sm]) #container { --_size: var(--pf-global--icon--FontSize--sm, 10px); }
+:host([size=md]) #container { --_size: var(--pf-global--icon--FontSize--md, 18px); }
+:host([size=lg]) #container { --_size: var(--pf-global--icon--FontSize--lg, 24px); }
+:host([size=xl]) #container { --_size: var(--pf-global--icon--FontSize--xl, 54px); }
+
+#container, svg {
+  /** size of the icon */
+  width: var(--pf-icon--size, var(--_size));
+  height: var(--pf-icon--size, var(--_size));
+  min-width: var(--pf-icon--size, var(--_size));
+  min-height: var(--pf-icon--size, var(--_size));
+}
+
+`;
 /**
  * requestIdleCallback when available, requestAnimationFrame when not
  * @param f callback
@@ -94,8 +129,13 @@ let PfIcon = _a = class PfIcon extends LitElement {
     render() {
         const content = this.content ?? '';
         return html `
-      <div id="container" aria-hidden="true">${content}<span part="fallback"
-          ?hidden=${!!content}><slot></slot>
+      <div id="container" aria-hidden="true">${content}<!--
+         summary: Container for the fallback (i.e. slotted) content
+        -->
+        <span part="fallback"
+          ?hidden=${!!content}><!--
+           summary: Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot>
         </span>
       </div>
     `;
@@ -187,7 +227,7 @@ PfIcon.instances = new Set();
  *          ```
  */
 PfIcon.resolve = PfIcon.defaultResolve;
-PfIcon.version = "4.1.0";
+PfIcon.version = "4.3.0";
 __decorate([
     property()
 ], PfIcon.prototype, "set", void 0);

@@ -5,7 +5,206 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { css } from "lit";
-const styles = css `:host {\n  /* NB: upstream sets these on the container, which is why we do not use fallbacks here. */\n  --pf-c-panel--Width: auto;\n  --pf-c-panel--MinWidth: auto;\n  --pf-c-panel--MaxWidth: none;\n  --pf-c-panel--ZIndex: auto;\n  --pf-c-panel--BackgroundColor: var(--pf-global--BackgroundColor--100, #fff);\n  --pf-c-panel--BoxShadow: none;\n  --pf-c-panel--before--BorderWidth: 0;\n  --pf-c-panel--before--BorderColor: var(--pf-global--BorderColor--100, #d2d2d2);\n  --pf-c-panel--m-bordered--before--BorderWidth: var(--pf-global--BorderWidth--sm, 1px);\n  --pf-c-panel--m-raised--BoxShadow: var(--pf-global--BoxShadow--md, 0 0.25rem 0.5rem 0rem rgba(3, 3, 3, 0.12), 0 0 0.25rem 0 rgba(3, 3, 3, 0.06));\n  --pf-c-panel--m-raised--ZIndex: var(--pf-global--ZIndex--sm, 200);\n  --pf-c-panel__header--PaddingTop: var(--pf-global--spacer--md, 1rem);\n  --pf-c-panel__header--PaddingRight: var(--pf-global--spacer--md, 1rem);\n  --pf-c-panel__header--PaddingBottom: var(--pf-global--spacer--md, 1rem);\n  --pf-c-panel__header--PaddingLeft: var(--pf-global--spacer--md, 1rem);\n  --pf-c-panel__main--MaxHeight: none;\n  --pf-c-panel__main--Overflow: visible;\n  --pf-c-panel__main-body--PaddingTop: var(--pf-global--spacer--md, 1rem);\n  --pf-c-panel__main-body--PaddingRight: var(--pf-global--spacer--md, 1rem);\n  --pf-c-panel__main-body--PaddingBottom: var(--pf-global--spacer--md, 1rem);\n  --pf-c-panel__main-body--PaddingLeft: var(--pf-global--spacer--md, 1rem);\n  --pf-c-panel__footer--PaddingTop: var(--pf-global--spacer--md, 1rem);\n  --pf-c-panel__footer--PaddingRight: var(--pf-global--spacer--md, 1rem);\n  --pf-c-panel__footer--PaddingBottom: var(--pf-global--spacer--md, 1rem);\n  --pf-c-panel__footer--PaddingLeft: var(--pf-global--spacer--md, 1rem);\n  --pf-c-panel__footer--BoxShadow: none;\n  --pf-c-panel--m-scrollable__main--MaxHeight: 18.75rem;\n  --pf-c-panel--m-scrollable__main--Overflow: auto;\n  --pf-c-panel--m-scrollable__footer--BoxShadow: 0 -0.3125rem 0.25rem -0.25rem rgba(3, 3, 3, 0.16);\n  position: relative;\n  z-index: var(--pf-c-panel--ZIndex);\n  width: var(--pf-c-panel--Width);\n  min-width: var(--pf-c-panel--MinWidth);\n  max-width: var(--pf-c-panel--MaxWidth);\n  background-color: var(--pf-c-panel--BackgroundColor);\n  box-shadow: var(--pf-c-panel--BoxShadow);\n  display: block;\n}\n\n:host([variant="bordered"])::before {\n  position: absolute;\n  inset: 0;\n  pointer-events: none;\n  content: "";\n  border:\n  var(--pf-c-panel--m-bordered--before--BorderWidth, var(--pf-global--BorderWidth--sm, 1px))\n    solid\n    var(--pf-c-panel--before--BorderColor,\n      var(--pf-global--BorderColor--100, #d2d2d2));\n}\n\n:host([variant="raised"])::before {\n  position: absolute;\n  inset: 0;\n  pointer-events: none;\n  content: "";\n  box-shadow: var(--pf-c-panel--m-raised--BoxShadow, 0 0.25rem 0.5rem 0rem rgba(3, 3, 3, 0.12), 0 0 0.25rem 0 rgba(3, 3, 3, 0.06));\n  z-index: var(--pf-c-panel--m-raised--ZIndex, var(--pf-global--ZIndex--sm, 200));\n}\n\n:host([variant="raised"]) {\n  --pf-c-panel--BoxShadow: var(--pf-c-panel--m-raised--BoxShadow,\n    var(--pf-global--BoxShadow--md, 0 0.25rem 0.5rem 0rem rgba(3, 3, 3, 0.12), 0 0 0.25rem 0 rgba(3, 3, 3, 0.06)));\n  --pf-c-panel--ZIndex: var(--pf-c-panel--m-raised--ZIndex,\n    var(--pf-global--ZIndex--sm, 200));\n}\n\n:host([scrollable]) {\n  --pf-c-panel__main--MaxHeight: var(--pf-c-panel--m-scrollable__main--MaxHeight);\n  --pf-c-panel__main--Overflow: var(--pf-c-panel--m-scrollable__main--Overflow);\n  --pf-c-panel__footer--BoxShadow: var(--pf-c-panel--m-scrollable__footer--BoxShadow);\n}\n\n[hidden] {\n  display: none !important;\n}\n\nslot {\n  display: block;\n}\n\nslot:not([name]) {\n  max-height: var(--pf-c-panel__main--MaxHeight);\n  overflow: var(--pf-c-panel__main--Overflow);\n  padding:\n    var(--pf-c-panel__main-body--PaddingTop,\n      var(--pf-global--spacer--md, 1rem))\n    var(--pf-c-panel__main-body--PaddingRight,\n      var(--pf-global--spacer--md, 1rem))\n    var(--pf-c-panel__main-body--PaddingBottom,\n      var(--pf-global--spacer--md, 1rem))\n    var(--pf-c-panel__main-body--PaddingLeft,\n      var(--pf-global--spacer--md, 1rem));\n}\n\nslot[name="header"] {\n  padding:\n    var(--pf-c-panel__header--PaddingTop)\n    var(--pf-c-panel__header--PaddingRight)\n    var(--pf-c-panel__header--PaddingBottom)\n    var(--pf-c-panel__header--PaddingLeft);\n}\n\nslot[name="footer"] {\n  padding:\n    var(--pf-c-panel__footer--PaddingTop)\n    var(--pf-c-panel__footer--PaddingRight)\n    var(--pf-c-panel__footer--PaddingBottom)\n    var(--pf-c-panel__footer--PaddingLeft);\n  box-shadow: var(--pf-c-panel__footer--BoxShadow);\n}\n\nhr {\n  --pf-c-divider--BorderWidth--base: var(--pf-global--BorderWidth--sm, 1px);\n  --pf-c-divider--BorderColor--base: var(--pf-c-divider--BackgroundColor);\n  --pf-c-divider--Height: var(--pf-c-divider--BorderWidth--base);\n  --pf-c-divider--BackgroundColor: var(--pf-global--BorderColor--100, #d2d2d2);\n  --pf-c-divider--after--BackgroundColor: var(--pf-c-divider--BorderColor--base);\n  --pf-c-divider--after--FlexBasis: 100%;\n  --pf-c-divider--after--Inset: 0%;\n  --pf-c-divider--m-vertical--after--FlexBasis: 100%;\n  --pf-c-divider--m-horizontal--Display: flex;\n  --pf-c-divider--m-horizontal--FlexDirection: row;\n  --pf-c-divider--m-horizontal--after--Height: var(--pf-c-divider--Height);\n  --pf-c-divider--m-horizontal--after--Width: auto;\n  --pf-c-divider--m-vertical--Display: inline-flex;\n  --pf-c-divider--m-vertical--FlexDirection: column;\n  --pf-c-divider--m-vertical--after--Height: auto;\n  --pf-c-divider--m-vertical--after--Width: var(--pf-c-divider--BorderWidth--base);\n  --pf-hidden-visible--visible--Display: var(--pf-c-divider--Display);\n  --pf-c-divider--Display: var(--pf-c-divider--m-horizontal--Display);\n  --pf-c-divider--FlexDirection: var(--pf-c-divider--m-horizontal--FlexDirection);\n  --pf-c-divider--after--Width: var(--pf-c-divider--m-horizontal--after--Width);\n  --pf-c-divider--after--Height: var(--pf-c-divider--m-horizontal--after--Height);\n  width: 100%;\n  height: auto;\n  display: var(--pf-c-divider--Display);\n  flex-direction: var(--pf-c-divider--FlexDirection);\n  align-items: center;\n  align-self: stretch;\n  flex-shrink: 0;\n  justify-content: center;\n  border: 0;\n}\n\nhr::after {\n  align-self: stretch;\n  width: var(--pf-c-divider--after--Width);\n  height: var(--pf-c-divider--after--Height);\n  content: "";\n  background-color: var(--pf-c-divider--after--BackgroundColor);\n  justify-self: center;\n  padding: 0;\n  margin: 0;\n  flex-basis: calc(var(--pf-c-divider--after--FlexBasis) - var(--pf-c-divider--after--Inset) * 2);\n}\n\n::slotted(:is(p, h1, h2, h3, h4, h5, h6):first-of-type) {\n  margin-block-start: 0;\n}\n\n::slotted(:is(p, h1, h2, h3, h4, h5, h6):last-of-type) {\n  margin-block-end: 0;\n}\n\n::slotted(:is(p, h1, h2, h3, h4, h5, h6):is(:last-of-type, :first-of-type)) {\n  margin-block: 0;\n}\n`;
+const styles = css `:host {
+  /* NB: upstream sets these on the container, which is why we do not use fallbacks here. */
+  /** Width of panel */
+  --pf-c-panel--Width: auto;
+  /** Minimum width of panel */
+  --pf-c-panel--MinWidth: auto;
+  /** Maximum width of panel */
+  --pf-c-panel--MaxWidth: none;
+  /** Z-index of panel */
+  --pf-c-panel--ZIndex: auto;
+  /** Background color of panel */
+  --pf-c-panel--BackgroundColor: var(--pf-global--BackgroundColor--100, #fff);
+  /** Box shadow of panel */
+  --pf-c-panel--BoxShadow: none;
+  /** Border width of panel before element */
+  --pf-c-panel--before--BorderWidth: 0;
+  /** Border color of panel before element */
+  --pf-c-panel--before--BorderColor: var(--pf-global--BorderColor--100, #d2d2d2);
+  /** Border width of bordered panel before element */
+  --pf-c-panel--m-bordered--before--BorderWidth: var(--pf-global--BorderWidth--sm, 1px);
+  /** Box shadow of raised panel */
+  --pf-c-panel--m-raised--BoxShadow: var(--pf-global--BoxShadow--md, 0 0.25rem 0.5rem 0rem rgba(3, 3, 3, 0.12), 0 0 0.25rem 0 rgba(3, 3, 3, 0.06));
+  /** Z-index of raised panel */
+  --pf-c-panel--m-raised--ZIndex: var(--pf-global--ZIndex--sm, 200);
+  /** Top padding of panel header */
+  --pf-c-panel__header--PaddingTop: var(--pf-global--spacer--md, 1rem);
+  /** Right padding of panel header */
+  --pf-c-panel__header--PaddingRight: var(--pf-global--spacer--md, 1rem);
+  /** Bottom padding of panel header */
+  --pf-c-panel__header--PaddingBottom: var(--pf-global--spacer--md, 1rem);
+  /** Left padding of panel header */
+  --pf-c-panel__header--PaddingLeft: var(--pf-global--spacer--md, 1rem);
+  /** Maximum height of panel main */
+  --pf-c-panel__main--MaxHeight: none;
+  /** Overflow of panel main */
+  --pf-c-panel__main--Overflow: visible;
+  /** Top padding of panel main body */
+  --pf-c-panel__main-body--PaddingTop: var(--pf-global--spacer--md, 1rem);
+  /** Right padding of panel main body */
+  --pf-c-panel__main-body--PaddingRight: var(--pf-global--spacer--md, 1rem);
+  /** Bottom padding of panel main body */
+  --pf-c-panel__main-body--PaddingBottom: var(--pf-global--spacer--md, 1rem);
+  /** Left padding of panel main body */
+  --pf-c-panel__main-body--PaddingLeft: var(--pf-global--spacer--md, 1rem);
+  /** Top padding of panel footer */
+  --pf-c-panel__footer--PaddingTop: var(--pf-global--spacer--md, 1rem);
+  /** Right padding of panel footer */
+  --pf-c-panel__footer--PaddingRight: var(--pf-global--spacer--md, 1rem);
+  /** Bottom padding of panel footer */
+  --pf-c-panel__footer--PaddingBottom: var(--pf-global--spacer--md, 1rem);
+  /** Left padding of panel footer */
+  --pf-c-panel__footer--PaddingLeft: var(--pf-global--spacer--md, 1rem);
+  /** Box shadow of panel footer */
+  --pf-c-panel__footer--BoxShadow: none;
+  /** Maximum height of scrollable panel main */
+  --pf-c-panel--m-scrollable__main--MaxHeight: 18.75rem;
+  /** Overflow of scrollable panel main */
+  --pf-c-panel--m-scrollable__main--Overflow: auto;
+  /** Box shadow of scrollable panel footer */
+  --pf-c-panel--m-scrollable__footer--BoxShadow: 0 -0.3125rem 0.25rem -0.25rem rgba(3, 3, 3, 0.16);
+  position: relative;
+  z-index: var(--pf-c-panel--ZIndex);
+  width: var(--pf-c-panel--Width);
+  min-width: var(--pf-c-panel--MinWidth);
+  max-width: var(--pf-c-panel--MaxWidth);
+  background-color: var(--pf-c-panel--BackgroundColor);
+  box-shadow: var(--pf-c-panel--BoxShadow);
+  display: block;
+}
+
+:host([variant="bordered"])::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  border:
+  var(--pf-c-panel--m-bordered--before--BorderWidth, var(--pf-global--BorderWidth--sm, 1px))
+    solid
+    var(--pf-c-panel--before--BorderColor,
+      var(--pf-global--BorderColor--100, #d2d2d2));
+}
+
+:host([variant="raised"])::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  box-shadow: var(--pf-c-panel--m-raised--BoxShadow, 0 0.25rem 0.5rem 0rem rgba(3, 3, 3, 0.12), 0 0 0.25rem 0 rgba(3, 3, 3, 0.06));
+  z-index: var(--pf-c-panel--m-raised--ZIndex, var(--pf-global--ZIndex--sm, 200));
+}
+
+:host([variant="raised"]) {
+  --pf-c-panel--BoxShadow: var(--pf-c-panel--m-raised--BoxShadow,
+    var(--pf-global--BoxShadow--md, 0 0.25rem 0.5rem 0rem rgba(3, 3, 3, 0.12), 0 0 0.25rem 0 rgba(3, 3, 3, 0.06)));
+  --pf-c-panel--ZIndex: var(--pf-c-panel--m-raised--ZIndex,
+    var(--pf-global--ZIndex--sm, 200));
+}
+
+:host([scrollable]) {
+  --pf-c-panel__main--MaxHeight: var(--pf-c-panel--m-scrollable__main--MaxHeight);
+  --pf-c-panel__main--Overflow: var(--pf-c-panel--m-scrollable__main--Overflow);
+  --pf-c-panel__footer--BoxShadow: var(--pf-c-panel--m-scrollable__footer--BoxShadow);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+slot {
+  display: block;
+}
+
+slot:not([name]) {
+  max-height: var(--pf-c-panel__main--MaxHeight);
+  overflow: var(--pf-c-panel__main--Overflow);
+  padding:
+    var(--pf-c-panel__main-body--PaddingTop,
+      var(--pf-global--spacer--md, 1rem))
+    var(--pf-c-panel__main-body--PaddingRight,
+      var(--pf-global--spacer--md, 1rem))
+    var(--pf-c-panel__main-body--PaddingBottom,
+      var(--pf-global--spacer--md, 1rem))
+    var(--pf-c-panel__main-body--PaddingLeft,
+      var(--pf-global--spacer--md, 1rem));
+}
+
+slot[name="header"] {
+  padding:
+    var(--pf-c-panel__header--PaddingTop)
+    var(--pf-c-panel__header--PaddingRight)
+    var(--pf-c-panel__header--PaddingBottom)
+    var(--pf-c-panel__header--PaddingLeft);
+}
+
+slot[name="footer"] {
+  padding:
+    var(--pf-c-panel__footer--PaddingTop)
+    var(--pf-c-panel__footer--PaddingRight)
+    var(--pf-c-panel__footer--PaddingBottom)
+    var(--pf-c-panel__footer--PaddingLeft);
+  box-shadow: var(--pf-c-panel__footer--BoxShadow);
+}
+
+hr {
+  --pf-c-divider--BorderWidth--base: var(--pf-global--BorderWidth--sm, 1px);
+  --pf-c-divider--BorderColor--base: var(--pf-c-divider--BackgroundColor);
+  --pf-c-divider--Height: var(--pf-c-divider--BorderWidth--base);
+  --pf-c-divider--BackgroundColor: var(--pf-global--BorderColor--100, #d2d2d2);
+  --pf-c-divider--after--BackgroundColor: var(--pf-c-divider--BorderColor--base);
+  --pf-c-divider--after--FlexBasis: 100%;
+  --pf-c-divider--after--Inset: 0%;
+  --pf-c-divider--m-vertical--after--FlexBasis: 100%;
+  --pf-c-divider--m-horizontal--Display: flex;
+  --pf-c-divider--m-horizontal--FlexDirection: row;
+  --pf-c-divider--m-horizontal--after--Height: var(--pf-c-divider--Height);
+  --pf-c-divider--m-horizontal--after--Width: auto;
+  --pf-c-divider--m-vertical--Display: inline-flex;
+  --pf-c-divider--m-vertical--FlexDirection: column;
+  --pf-c-divider--m-vertical--after--Height: auto;
+  --pf-c-divider--m-vertical--after--Width: var(--pf-c-divider--BorderWidth--base);
+  --pf-hidden-visible--visible--Display: var(--pf-c-divider--Display);
+  --pf-c-divider--Display: var(--pf-c-divider--m-horizontal--Display);
+  --pf-c-divider--FlexDirection: var(--pf-c-divider--m-horizontal--FlexDirection);
+  --pf-c-divider--after--Width: var(--pf-c-divider--m-horizontal--after--Width);
+  --pf-c-divider--after--Height: var(--pf-c-divider--m-horizontal--after--Height);
+  width: 100%;
+  height: auto;
+  display: var(--pf-c-divider--Display);
+  flex-direction: var(--pf-c-divider--FlexDirection);
+  align-items: center;
+  align-self: stretch;
+  flex-shrink: 0;
+  justify-content: center;
+  border: 0;
+}
+
+hr::after {
+  align-self: stretch;
+  width: var(--pf-c-divider--after--Width);
+  height: var(--pf-c-divider--after--Height);
+  content: "";
+  background-color: var(--pf-c-divider--after--BackgroundColor);
+  justify-self: center;
+  padding: 0;
+  margin: 0;
+  flex-basis: calc(var(--pf-c-divider--after--FlexBasis) - var(--pf-c-divider--after--Inset) * 2);
+}
+
+::slotted(:is(p, h1, h2, h3, h4, h5, h6):first-of-type) {
+  margin-block-start: 0;
+}
+
+::slotted(:is(p, h1, h2, h3, h4, h5, h6):last-of-type) {
+  margin-block-end: 0;
+}
+
+::slotted(:is(p, h1, h2, h3, h4, h5, h6):is(:last-of-type, :first-of-type)) {
+  margin-block: 0;
+}
+`;
 let PfPanel = class PfPanel extends LitElement {
     constructor() {
         super(...arguments);
@@ -17,11 +216,14 @@ let PfPanel = class PfPanel extends LitElement {
         const hasFooter = __classPrivateFieldGet(this, _PfPanel_slots, "f").hasSlotted('footer');
         return html `
       <header>
+        <!-- Place header content here -->
         <slot name="header" ?hidden="${!hasHeader}"></slot>
       </header>
       <hr role="presentation" ?hidden="${!hasHeader}">
+      <!-- Place main content here -->
       <slot></slot>
       <footer>
+        <!-- Place footer content here -->
         <slot name="footer" ?hidden="${!hasFooter}"></slot>
       </footer>
     `;
@@ -29,7 +231,7 @@ let PfPanel = class PfPanel extends LitElement {
 };
 _PfPanel_slots = new WeakMap();
 PfPanel.styles = [styles];
-PfPanel.version = "4.1.0";
+PfPanel.version = "4.3.0";
 __decorate([
     property({ type: Boolean, reflect: true })
 ], PfPanel.prototype, "scrollable", void 0);

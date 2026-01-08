@@ -79,7 +79,7 @@ function query(selector, cache) {
             //      in the case of experimental decorators on fields.
             const { get, set } = typeof nameOrContext === 'object'
                 ? protoOrTarget
-                : descriptor ??
+                : (descriptor ??
                     (() => {
                         const key = Symbol(`${String(nameOrContext)} (@query() cache)`)
                             ;
@@ -91,7 +91,7 @@ function query(selector, cache) {
                                 this[key] = v;
                             },
                         };
-                    })();
+                    })());
             return desc(protoOrTarget, nameOrContext, {
                 get() {
                     let result = get.call(this);

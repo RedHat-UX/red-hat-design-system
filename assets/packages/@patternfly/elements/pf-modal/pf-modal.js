@@ -11,7 +11,202 @@ import { bound, initializer, observes } from '@patternfly/pfe-core/decorators.js
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { css } from "lit";
-const style = css `:host {\n\tdisplay: block;\n\tposition: relative;\n  --_spacer-align-top: var(--pf-c-modal-box--m-align-top--spacer,\n    var(--pf-global--spacer--sm, 0.5rem));\n  --_height-offset: min(var(--_spacer-align-top), var(--pf-global--spacer--2xl, 3rem));\n}\n\n[hidden] {\n  display: none !important;\n}\n\nsection {\n  display: flex;\n  position: fixed;\n  height: 100%;\n  width: 100%;\n  top: 0;\n  left: 0;\n  align-items: center;\n  justify-content: center;\n  z-index: var(--pf-c-modal-box--ZIndex,\n    var(--pf-global--ZIndex--xl,\n      500));\n}\n\n#container {\n  position: relative;\n  max-height: inherit;\n}\n\n[part=overlay] {\n  position: fixed;\n  height: 100%;\n  width: 100%;\n  top: 0;\n  left: 0;\n  background-color: var(--pf-c-backdrop--BackgroundColor,\n      var(--pf-global--BackgroundColor--dark-transparent-100,\n        rgba(3, 3, 3, 0.62)));\n}\n\n[part=dialog] {\n  position: relative;\n  margin: 0 auto;\n\n  width: var(--pf-c-modal-box--Width,\n    calc(100% - var(--pf-global--spacer--xl,2rem)));\n\n  max-width: var(--pf-c-modal-box--MaxWidth,\n    calc(100% - var(--pf-global--spacer--xl,2rem)));\n\n  max-height: var(--pf-c-modal-box--MaxHeight,\n    calc(100% - var(--pf-global--spacer--2xl,3rem)));\n\n  box-shadow: var(--pf-c-modal-box--BoxShadow,\n    var(--pf-global--BoxShadow--xl,\n      0 1rem 2rem 0 rgba(3, 3, 3, 0.16),\n      0 0 0.5rem 0 rgba(3, 3, 3, 0.1)));\n\n\tbackground-color: var(--pf-c-modal-box--BackgroundColor,\n    var(--pf-global--BackgroundColor--100,\n      var(--pf-global--BackgroundColor--100, #fff)));\n\n  padding: var(--pf-global--spacer--lg, 1.5rem);\n  margin-inline: var(--pf-global--spacer--md, 1rem);\n}\n\n:host([width]) [part=dialog],\n:host([variant]) [part=dialog] {\n  margin-inline: 0;\n}\n\n:host([width="small"]) [part=dialog],\n:host([variant="small"]) [part=dialog] {\n  --pf-c-modal-box--Width: var(--pf-c-modal-box--m-sm--sm--MaxWidth, 35rem);\n}\n\n:host([width="medium"]) [part=dialog],\n:host([variant="medium"]) [part=dialog] {\n  --pf-c-modal-box--Width: var(--pf-c-modal-box--m-md--Width, 52.5rem);\n}\n\n:host([width="large"]) [part=dialog],\n:host([variant="large"]) [part=dialog] {\n  --pf-c-modal-box--Width: var(--pf-c-modal-box--m-lg--lg--MaxWidth, 70rem);\n}\n\n[part=content] {\n  overflow-y: auto;\n  overscroll-behavior: contain;\n\n  max-height: var(--pf-c-modal-box--MaxHeight,\n    calc(100vh - var(--pf-global--spacer--2xl,\n      3rem)));\n\n  box-sizing: border-box;\n}\n\n[part=content] ::slotted([slot="header"]) {\n  margin-top: 0 !important;\n}\n\nheader {\n  position: sticky;\n  top: 0;\n\tbackground-color: var(--pf-c-modal-box--BackgroundColor,\n    var(--pf-global--BackgroundColor--100,\n      var(--pf-global--BackgroundColor--100,\n        #fff)));\n}\n\nheader ::slotted(:is(h1,h2,h3,h4,h5,h6)[slot="header"]) {\n  font-size: var(--pf-c-modal-box__title--FontSize,\n    var(--pf-global--FontSize--2xl,\n      1.5rem));\n  font-weight: var(--pf-global--FontWeight--normal, 400);\n  font-family: var(--pf-c-modal-box__title--FontFamily,\n    var(--pf-global--FontFamily--heading--sans-serif,\n      var(--pf-global--FontFamily--redhat-updated--heading--sans-serif,\n        "RedHatDisplayUpdated", "Overpass", overpass, helvetica, arial, sans-serif)));\n}\n\n[part=close-button] {\n  background-color: transparent;\n  border: none;\n  margin: 0;\n  padding: 0;\n  text-align: left;\n\n  position: absolute;\n  cursor: pointer;\n  line-height: 24px;\n  padding-block:\n    var(--pf-c-button--PaddingTop,\n      var(--pf-global--spacer--form-element, 0.375rem));\n  padding-inline:\n    var(--pf-c-button--PaddingRight,\n      var(--pf-global--spacer--md, 1rem));\n  top: 0;\n  right: calc(var(--pf-global--spacer--lg, 1.5rem) / -3);\n  color: var(--pf-c-button--m-plain--Color,\n    var(--pf-global--Color--200,\n      #6a6e73));\n  font-size: var(--pf-c-button--FontSize,\n    var(--pf-global--FontSize--md,\n      1rem));\n}\n\n[part=close-button]:is(:focus-within, :focus-visible, :hover) {\n  color: var(--pf-c-button--m-plain--focus--Color, var(--pf-global--Color--100, #151515));\n}\n\n[part=close-button] > svg {\n  font-size: 16px;\n  width: var(--pf-global--spacer--md, 1rem);\n  aspect-ratio: 1/1;\n}\n\n:host([position="top"]) #dialog {\n  align-self: start;\n\n  margin-block: var(--pf-c-modal-box--m-align-top--MarginTop,\n    var(--pf-c-modal-box--m-align-top--spacer,\n      2rem));\n\n  margin-inline: var(--pf-global--spacer--md, 1rem);\n\n  width: 100%;\n\n  max-width: var(--pf-c-modal-box--m-align-top--MaxWidth,\n    calc(100% - min(\n      var(--pf-c-modal-box--m-align-top--spacer, 2rem) * 2,\n      var(--pf-global--spacer--xl, 2rem))));\n\n  max-height: var(--pf-c-modal-box--m-align-top--MaxHeight,\n    calc(100% - var(--_height-offset) - var(--_spacer-align-top)));\n}\n\nfooter {\n  display: flex;\n  align-items: center;\n  gap: var(--pf-global--spacer--xl, 0.5rem);\n}\n`;
+const style = css `:host {
+\tdisplay: block;
+\tposition: relative;
+  --_spacer-align-top: var(--pf-c-modal-box--m-align-top--spacer,
+    var(--pf-global--spacer--sm, 0.5rem));
+  --_height-offset: min(var(--_spacer-align-top), var(--pf-global--spacer--2xl, 3rem));
+}
+
+[hidden] {
+  display: none !important;
+}
+
+section {
+  display: flex;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  /** Z-index for modal box */
+  z-index: var(--pf-c-modal-box--ZIndex,
+    var(--pf-global--ZIndex--xl,
+      500));
+}
+
+#container {
+  position: relative;
+  max-height: inherit;
+}
+
+[part=overlay] {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--pf-c-backdrop--BackgroundColor,
+      var(--pf-global--BackgroundColor--dark-transparent-100,
+        rgba(3, 3, 3, 0.62)));
+}
+
+[part=dialog] {
+  position: relative;
+  margin: 0 auto;
+
+  /** Width of modal */
+  width: var(--pf-c-modal-box--Width,
+    calc(100% - var(--pf-global--spacer--xl,2rem)));
+
+  /** Max width of modal */
+  max-width: var(--pf-c-modal-box--MaxWidth,
+    calc(100% - var(--pf-global--spacer--xl,2rem)));
+
+  /** Max height of modal */
+  max-height: var(--pf-c-modal-box--MaxHeight,
+    calc(100% - var(--pf-global--spacer--2xl,3rem)));
+
+  /** Box shadow for modal */
+  box-shadow: var(--pf-c-modal-box--BoxShadow,
+    var(--pf-global--BoxShadow--xl,
+      0 1rem 2rem 0 rgba(3, 3, 3, 0.16),
+      0 0 0.5rem 0 rgba(3, 3, 3, 0.1)));
+
+\t/** Background color for modal */
+\tbackground-color: var(--pf-c-modal-box--BackgroundColor,
+    var(--pf-global--BackgroundColor--100,
+      var(--pf-global--BackgroundColor--100, #fff)));
+
+  padding: var(--pf-global--spacer--lg, 1.5rem);
+  margin-inline: var(--pf-global--spacer--md, 1rem);
+}
+
+:host([width]) [part=dialog],
+:host([variant]) [part=dialog] {
+  margin-inline: 0;
+}
+
+:host([width="small"]) [part=dialog],
+:host([variant="small"]) [part=dialog] {
+  /** Max width for small modal */
+  --pf-c-modal-box--Width: var(--pf-c-modal-box--m-sm--sm--MaxWidth, 35rem);
+}
+
+:host([width="medium"]) [part=dialog],
+:host([variant="medium"]) [part=dialog] {
+  /** Max width for medium modal */
+  --pf-c-modal-box--Width: var(--pf-c-modal-box--m-md--Width, 52.5rem);
+}
+
+:host([width="large"]) [part=dialog],
+:host([variant="large"]) [part=dialog] {
+  /** Max width for large modal */
+  --pf-c-modal-box--Width: var(--pf-c-modal-box--m-lg--lg--MaxWidth, 70rem);
+}
+
+[part=content] {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+
+  max-height: var(--pf-c-modal-box--MaxHeight,
+    calc(100vh - var(--pf-global--spacer--2xl,
+      3rem)));
+
+  box-sizing: border-box;
+}
+
+[part=content] ::slotted([slot="header"]) {
+  margin-top: 0 !important;
+}
+
+header {
+  position: sticky;
+  top: 0;
+\tbackground-color: var(--pf-c-modal-box--BackgroundColor,
+    var(--pf-global--BackgroundColor--100,
+      var(--pf-global--BackgroundColor--100,
+        #fff)));
+}
+
+header ::slotted(:is(h1,h2,h3,h4,h5,h6)[slot="header"]) {
+  /** Font size for modal title */
+  font-size: var(--pf-c-modal-box__title--FontSize,
+    var(--pf-global--FontSize--2xl,
+      1.5rem));
+  font-weight: var(--pf-global--FontWeight--normal, 400);
+  /** Font family for modal title */
+  font-family: var(--pf-c-modal-box__title--FontFamily,
+    var(--pf-global--FontFamily--heading--sans-serif,
+      var(--pf-global--FontFamily--redhat-updated--heading--sans-serif,
+        "RedHatDisplayUpdated", "Overpass", overpass, helvetica, arial, sans-serif)));
+}
+
+[part=close-button] {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+
+  position: absolute;
+  cursor: pointer;
+  line-height: 24px;
+  padding-block:
+    var(--pf-c-button--PaddingTop,
+      var(--pf-global--spacer--form-element, 0.375rem));
+  padding-inline:
+    var(--pf-c-button--PaddingRight,
+      var(--pf-global--spacer--md, 1rem));
+  top: 0;
+  right: calc(var(--pf-global--spacer--lg, 1.5rem) / -3);
+  color: var(--pf-c-button--m-plain--Color,
+    var(--pf-global--Color--200,
+      #6a6e73));
+  font-size: var(--pf-c-button--FontSize,
+    var(--pf-global--FontSize--md,
+      1rem));
+}
+
+[part=close-button]:is(:focus-within, :focus-visible, :hover) {
+  color: var(--pf-c-button--m-plain--focus--Color, var(--pf-global--Color--100, #151515));
+}
+
+[part=close-button] > svg {
+  font-size: 16px;
+  width: var(--pf-global--spacer--md, 1rem);
+  aspect-ratio: 1/1;
+}
+
+:host([position="top"]) #dialog {
+  align-self: start;
+
+  margin-block: var(--pf-c-modal-box--m-align-top--MarginTop,
+    var(--pf-c-modal-box--m-align-top--spacer,
+      2rem));
+
+  margin-inline: var(--pf-global--spacer--md, 1rem);
+
+  width: 100%;
+
+  max-width: var(--pf-c-modal-box--m-align-top--MaxWidth,
+    calc(100% - min(
+      var(--pf-c-modal-box--m-align-top--spacer, 2rem) * 2,
+      var(--pf-global--spacer--xl, 2rem))));
+
+  max-height: var(--pf-c-modal-box--m-align-top--MaxHeight,
+    calc(100% - var(--_height-offset) - var(--_spacer-align-top)));
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  gap: var(--pf-global--spacer--xl, 0.5rem);
+}
+`;
 export class ModalCancelEvent extends ComposedEvent {
     constructor() {
         super('cancel');
@@ -57,7 +252,9 @@ let PfModal = class PfModal extends LitElement {
         const hasFooter = __classPrivateFieldGet(this, _PfModal_slots, "f").hasSlotted('footer');
         return html `
       <section ?hidden=${!this.open}>
+        <!-- summary: The modal overlay which lies under the dialog and above the page body -->
         <div id="overlay" part="overlay" ?hidden=${!this.open}></div>
+        <!-- summary: The dialog element -->
         <div id="dialog"
             part="dialog"
             tabindex="0"
@@ -66,18 +263,34 @@ let PfModal = class PfModal extends LitElement {
             aria-label=${ifDefined(headerLabel)}
             ?hidden="${!this.open}">
           <div id="container">
+            <!-- summary: The container for the dialog content -->
             <div id="content" part="content" class=${classMap({ hasHeader, hasDescription, hasFooter })}>
+              <!-- summary: The container for the optional dialog header -->
               <header part="header">
+                <!-- summary: Heading tag
+                     description: |
+                       The header is an optional slot that appears at the top of the modal window.
+                       It should be a heading tag (h2-h6). -->
                 <slot name="header"></slot>
+                <!-- summary: The container for the optional dialog description in the header -->
                 <div part="description" ?hidden=${!hasDescription}>
                   <slot name="description"></slot>
                 </div>
               </header>
+              <!--
+                summary: Modal dialog content
+                description: |
+                  The default slot can contain any type of content. When the header is not present,
+                  this unnamed slot appear at the top of the modal window (to the left of the close
+                  button). Otherwise it will appear beneath the header. -->
               <slot></slot>
+              <!-- summary: Actions footer container -->
               <footer ?hidden=${!hasFooter} part="footer">
+                <!-- summary: Optional footer content. Good place to put action buttons. -->
                 <slot name="footer"></slot>
               </footer>
             </div>
+            <!-- summary: The modal's close button -->
             <button id="close-button"
                 part="close-button"
                 aria-label="Close dialog"
@@ -242,7 +455,7 @@ PfModal.shadowRootOptions = {
 PfModal.styles = [style];
 /** Should the dialog close when user clicks outside the dialog? */
 PfModal.closeOnOutsideClick = false;
-PfModal.version = "4.1.0";
+PfModal.version = "4.3.0";
 __decorate([
     property({ reflect: true })
 ], PfModal.prototype, "variant", void 0);

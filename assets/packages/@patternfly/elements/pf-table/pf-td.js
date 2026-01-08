@@ -4,7 +4,112 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { css } from "lit";
-const styles = css `:host(:empty),\n:host([compound-expand]) {\n  padding: 0;\n}\n\n:host([compound-expand]:hover) {\n  --pf-c-table__compound-expansion-toggle__button--before--BorderRightWidth: var(--pf-c-table__compound-expansion-toggle__button--before--border-width--base);\n  --pf-c-table__compound-expansion-toggle__button--before--BorderLeftWidth: var(--pf-c-table__compound-expansion-toggle__button--before--border-width--base);\n  --pf-c-table__compound-expansion-toggle__button--after--BorderTopWidth: var(--pf-c-table__compound-expansion-toggle__button--after--border-width--base);\n}\n\n:host([compound-expand]:focus-within) {\n  outline-offset: var(--pf-c-table__button--OutlineOffset);\n}\n\n:host([compound-expand][expanded]) {\n  --pf-c-table__compound-expansion-toggle__button--before--BorderRightWidth: var(--pf-c-table__compound-expansion-toggle__button--before--border-width--base);\n  --pf-c-table__compound-expansion-toggle__button--before--BorderLeftWidth: var(--pf-c-table__compound-expansion-toggle__button--before--border-width--base);\n  --pf-c-table__compound-expansion-toggle__button--after--BorderTopWidth: var(--pf-c-table__compound-expansion-toggle__button--after--border-width--base);\n  --pf-c-table__compound-expansion-toggle__button--before--Left: 0;\n}\n\n@media (-webkit-min-device-pixel-ratio: 0) {\n  :host([compound-expand]:focus-within) {\n    outline-style: auto;\n    outline-color: -webkit-focus-ring-color;\n  }\n}\n\n@media (min-width: 768px) {\n  :host {\n    padding: 1.5rem 1rem;\n  }\n}\n\nbutton {\n  position: relative;\n  width: 100%;\n  padding: var(--pf-c-table--cell--PaddingTop) var(--pf-c-table--cell--PaddingRight) var(--pf-c-table--cell--PaddingBottom) var(--pf-c-table--cell--PaddingLeft);\n  font-size: inherit;\n  font-weight: inherit;\n  color: var(--pf-c-table__button--Color);\n  text-align: left;\n  white-space: inherit;\n  -webkit-user-select: text;\n  -moz-user-select: text;\n  -ms-user-select: text;\n  user-select: text;\n  background-color: var(--pf-c-table__button--BackgroundColor);\n  border: 0;\n  min-width: 100%;\n  min-height: 100%;\n  overflow: hidden;\n}\n\nbutton::before,\nbutton::after {\n  position: absolute;\n  inset-inline-end: 0;\n  content: "";\n  border-style: solid;\n  border-width: 0;\n  border-block-start-width: 0px;\n}\n\nbutton::before {\n  inset-block-start: 0;\n  inset-block-end: var(--pf-c-table__compound-expansion-toggle__button--before--Bottom);\n  inset-inline-start: var(--pf-c-table__compound-expansion-toggle__button--before--Left);\n  border-color: var(--pf-c-table__compound-expansion-toggle__button--before--BorderColor);\n  border-inline-start-width: var(--pf-c-table__compound-expansion-toggle__button--before--BorderLeftWidth);\n  border-inline-end-width: var(--pf-c-table__compound-expansion-toggle__button--before--BorderRightWidth);\n}\n\n:host([expanded]) {\n  border-bottom: var(--pf-c-table--BackgroundColor) solid var(--pf-c-table__compound-expansion-toggle__button--before--border-width--base);\n  z-index: 1;\n}\n\nbutton::after {\n  inset-block-start: var(--pf-c-table__compound-expansion-toggle__button--after--Top);\n  inset-inline-start: var(--pf-c-table__compound-expansion-toggle__button--after--Left);\n  pointer-events: none;\n  border-color: var(--pf-c-table__compound-expansion-toggle__button--after--BorderColor);\n  border-block-start-width: var(--pf-c-table__compound-expansion-toggle__button--after--BorderTopWidth);\n}\n\nbutton:active,\nbutton:focus,\nbutton:hover {\n  outline: 0;\n}\n\nbutton:active {\n  color: var(--pf-c-table__button--active--Color);\n}\n\nbutton:focus {\n  color: var(--pf-c-table__button--focus--Color);\n}\n\nbutton:hover {\n  color: var(--pf-c-table__button--hover--Color);\n}\n\n`;
+const styles = css `:host(:empty),
+:host([compound-expand]) {
+  padding: 0;
+}
+
+:host([compound-expand]:hover) {
+  --pf-c-table__compound-expansion-toggle__button--before--BorderRightWidth: var(--pf-c-table__compound-expansion-toggle__button--before--border-width--base);
+  --pf-c-table__compound-expansion-toggle__button--before--BorderLeftWidth: var(--pf-c-table__compound-expansion-toggle__button--before--border-width--base);
+  --pf-c-table__compound-expansion-toggle__button--after--BorderTopWidth: var(--pf-c-table__compound-expansion-toggle__button--after--border-width--base);
+}
+
+:host([compound-expand]:focus-within) {
+  outline-offset: var(--pf-c-table__button--OutlineOffset);
+}
+
+:host([compound-expand][expanded]) {
+  --pf-c-table__compound-expansion-toggle__button--before--BorderRightWidth: var(--pf-c-table__compound-expansion-toggle__button--before--border-width--base);
+  --pf-c-table__compound-expansion-toggle__button--before--BorderLeftWidth: var(--pf-c-table__compound-expansion-toggle__button--before--border-width--base);
+  --pf-c-table__compound-expansion-toggle__button--after--BorderTopWidth: var(--pf-c-table__compound-expansion-toggle__button--after--border-width--base);
+  --pf-c-table__compound-expansion-toggle__button--before--Left: 0;
+}
+
+@media (-webkit-min-device-pixel-ratio: 0) {
+  :host([compound-expand]:focus-within) {
+    outline-style: auto;
+    outline-color: -webkit-focus-ring-color;
+  }
+}
+
+@media (min-width: 768px) {
+  :host {
+    padding: 1.5rem 1rem;
+  }
+}
+
+button {
+  position: relative;
+  width: 100%;
+  padding: var(--pf-c-table--cell--PaddingTop) var(--pf-c-table--cell--PaddingRight) var(--pf-c-table--cell--PaddingBottom) var(--pf-c-table--cell--PaddingLeft);
+  font-size: inherit;
+  font-weight: inherit;
+  color: var(--pf-c-table__button--Color);
+  text-align: left;
+  white-space: inherit;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  background-color: var(--pf-c-table__button--BackgroundColor);
+  border: 0;
+  min-width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+button::before,
+button::after {
+  position: absolute;
+  inset-inline-end: 0;
+  content: "";
+  border-style: solid;
+  border-width: 0;
+  border-block-start-width: 0px;
+}
+
+button::before {
+  inset-block-start: 0;
+  inset-block-end: var(--pf-c-table__compound-expansion-toggle__button--before--Bottom);
+  inset-inline-start: var(--pf-c-table__compound-expansion-toggle__button--before--Left);
+  border-color: var(--pf-c-table__compound-expansion-toggle__button--before--BorderColor);
+  border-inline-start-width: var(--pf-c-table__compound-expansion-toggle__button--before--BorderLeftWidth);
+  border-inline-end-width: var(--pf-c-table__compound-expansion-toggle__button--before--BorderRightWidth);
+}
+
+:host([expanded]) {
+  border-bottom: var(--pf-c-table--BackgroundColor) solid var(--pf-c-table__compound-expansion-toggle__button--before--border-width--base);
+  z-index: 1;
+}
+
+button::after {
+  inset-block-start: var(--pf-c-table__compound-expansion-toggle__button--after--Top);
+  inset-inline-start: var(--pf-c-table__compound-expansion-toggle__button--after--Left);
+  pointer-events: none;
+  border-color: var(--pf-c-table__compound-expansion-toggle__button--after--BorderColor);
+  border-block-start-width: var(--pf-c-table__compound-expansion-toggle__button--after--BorderTopWidth);
+}
+
+button:active,
+button:focus,
+button:hover {
+  outline: 0;
+}
+
+button:active {
+  color: var(--pf-c-table__button--active--Color);
+}
+
+button:focus {
+  color: var(--pf-c-table__button--focus--Color);
+}
+
+button:hover {
+  color: var(--pf-c-table__button--hover--Color);
+}
+
+`;
 import { RequestExpandEvent } from './pf-tr.js';
 let PfTd = class PfTd extends LitElement {
     constructor() {
@@ -35,7 +140,7 @@ _PfTd_onClick = function _PfTd_onClick() {
     this.dispatchEvent(event);
 };
 PfTd.styles = [styles];
-PfTd.version = "4.1.0";
+PfTd.version = "4.3.0";
 __decorate([
     property({ attribute: 'compound-expand' })
 ], PfTd.prototype, "compoundExpand", void 0);

@@ -5,7 +5,161 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { css } from "lit";
-const styles = css `:host {\n  display: inline-block;\n  outline: none;\n}\n\nsvg {\n  fill: currentcolor;\n}\n\n[hidden] {\n  display: none !important;\n}\n\n:host([checked]) #container {\n  color: var(--pf-c-switch__input--checked__label--Color,\n    var(--pf-global--Color--dark-100, #151515));\n  background-color: var(--pf-c-switch__input--checked__toggle--BackgroundColor,\n    var(--pf-global--primary-color--100, #06c));\n}\n\n:host([checked]) #container::before {\n  translate: var(--pf-c-switch__input--checked__toggle--before--TranslateX,\n    calc(100% + var(--pf-c-switch__toggle-icon--Offset, 0.125rem)));\n}\n\n:host(:is(:focus,:focus-within)) #container {\n  outline: var(--pf-c-switch__input--focus__toggle--OutlineWidth,\n    var(--pf-global--BorderWidth--md, 2px)) solid var(--pf-c-switch__input--focus__toggle--OutlineColor,\n      var(--pf-global--primary-color--100, #06c));\n  outline-offset: var(--pf-c-switch__input--focus__toggle--OutlineOffset,\n    var(--pf-global--spacer--sm, 0.5rem));\n}\n\n:host(:disabled) {\n  pointer-events: none;\n  cursor: not-allowed;\n}\n\n:host(:disabled) #container {\n  cursor: not-allowed;\n\n  color: var(--pf-c-switch__input--disabled__label--Color,\n    var(--pf-global--disabled-color--100, #6a6e73));\n  background-color: var(--pf-c-switch__input--disabled__toggle--BackgroundColor,\n    var(--pf-global--disabled-color--200, #d2d2d2));\n}\n\n:host(:disabled) #container::before {\n  background-color: var(--pf-c-switch__input--disabled__toggle--before--BackgroundColor,\n    var(--pf-global--palette--black-150, #f5f5f5));\n}\n\n:host([checked]:disabled) #container::before {\n  translate: var(--pf-c-switch__input--checked__toggle--before--TranslateX,\n    calc(100% + var(--pf-c-switch__toggle-icon--Offset, 0.125rem)));\n}\n\n:host(:disabled:focus-within) #container {\n  outline: none;\n}\n\n#container {\n  position: relative;\n  display: inline-flex;\n  align-items: center;\n  width: var(--pf-c-switch__toggle--Width,\n    calc(var(--pf-c-switch__toggle--Height,\n      calc(var(--pf-c-switch--FontSize,\n        var(--pf-global--FontSize--md, 1rem)) * var(--pf-c-switch--LineHeight,\n          var(--pf-global--LineHeight--md, 1.5)))) + var(--pf-c-switch__toggle-icon--Offset, 0.125rem) + var(--pf-c-switch__toggle--before--Width,\n            calc(var(--pf-c-switch--FontSize,\n              var(--pf-global--FontSize--md, 1rem)) - var(--pf-c-switch__toggle-icon--Offset, 0.125rem)))));\n  height: var(--pf-c-switch__toggle--Height,\n    calc(var(--pf-c-switch--FontSize,\n      var(--pf-global--FontSize--md, 1rem)) * var(--pf-c-switch--LineHeight,\n        var(--pf-global--LineHeight--md, 1.5))));\n  background-color: var(--pf-c-switch__toggle--BackgroundColor,\n    var(--pf-global--palette--black-500, #8a8d90));\n  border-radius: var(--pf-c-switch__toggle--BorderRadius,\n    var(--pf-c-switch__toggle--Height, calc(var(--pf-c-switch--FontSize,\n      var(--pf-global--FontSize--md, 1rem)) * var(--pf-c-switch--LineHeight,\n        var(--pf-global--LineHeight--md, 1.5)))));\n}\n\n#container::before {\n  position: absolute;\n  display: block;\n  content: "";\n  top: var(--pf-c-switch__toggle--before--Top,\n    calc((var(--pf-c-switch__toggle--Height,\n      calc(var(--pf-c-switch--FontSize,\n        var(--pf-global--FontSize--md, 1rem)) * var(--pf-c-switch--LineHeight,\n          var(--pf-global--LineHeight--md, 1.5)))) - var(--pf-c-switch__toggle--before--Height,\n            var(--pf-c-switch__toggle--before--Width,\n              calc(var(--pf-c-switch--FontSize,\n                var(--pf-global--FontSize--md, 1rem)) - var(--pf-c-switch__toggle-icon--Offset, 0.125rem))))) / 2));\n  left: var(--pf-c-switch__toggle--before--Left,\n    var(--pf-c-switch__toggle--before--Top,\n      calc((var(--pf-c-switch__toggle--Height,\n        calc(var(--pf-c-switch--FontSize,\n          var(--pf-global--FontSize--md, 1rem)) * var(--pf-c-switch--LineHeight,\n            var(--pf-global--LineHeight--md, 1.5)))) - var(--pf-c-switch__toggle--before--Height,\n              var(--pf-c-switch__toggle--before--Width,\n                calc(var(--pf-c-switch--FontSize,\n                  var(--pf-global--FontSize--md, 1rem)) - var(--pf-c-switch__toggle-icon--Offset, 0.125rem))))) / 2)));\n  width: var(--pf-c-switch__toggle--before--Width,\n    calc(var(--pf-c-switch--FontSize,\n      var(--pf-global--FontSize--md, 1rem)) - var(--pf-c-switch__toggle-icon--Offset, 0.125rem)));\n  height: var(--pf-c-switch__toggle--before--Height,\n    var(--pf-c-switch__toggle--before--Width,\n      calc(var(--pf-c-switch--FontSize,\n        var(--pf-global--FontSize--md, 1rem)) - var(--pf-c-switch__toggle-icon--Offset, 0.125rem))));\n  background-color: var(--pf-c-switch__toggle--before--backgroundcolor,\n    var(--pf-global--backgroundcolor--100, #fff));\n  border-radius: var(--pf-c-switch__toggle--before--BorderRadius,\n    var(--pf-global--BorderRadius--lg, 30em));\n  box-shadow: var(--pf-c-switch__toggle--before--BoxShadow,\n    var(--pf-global--BoxShadow--md, 0 0.25rem 0.5rem 0rem rgba(3, 3, 3, 0.12), 0 0 0.25rem 0 rgba(3, 3, 3, 0.06)));\n  transition: var(--pf-c-switch__toggle--before--Transition,\n    var(--pf-c-switch__toggle--before--Transition, translate .25s ease 0s));\n}\n\nsvg {\n  margin-inline: var(--pf-c-switch__toggle-icon--Left,\n    calc(var(--pf-c-switch--FontSize,\n      var(--pf-global--FontSize--md, 1rem)) * .4));\n  font-size: var(--pf-c-switch__toggle-icon--FontSize,\n    calc(var(--pf-c-switch--FontSize,\n      var(--pf-global--FontSize--md, 1rem)) * .625));\n  color: var(--pf-c-switch__toggle-icon--Color,\n    var(--pf-global--Color--light-100, #fff));\n}\n`;
+const styles = css `:host {
+  display: inline-block;
+  outline: none;
+}
+
+svg {
+  fill: currentcolor;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+:host([checked]) #container {
+  /** Color of the label when switch is checked */
+  color: var(--pf-c-switch__input--checked__label--Color,
+    var(--pf-global--Color--dark-100, #151515));
+  /** Background color of the toggle when switch is checked */
+  background-color: var(--pf-c-switch__input--checked__toggle--BackgroundColor,
+    var(--pf-global--primary-color--100, #06c));
+}
+
+:host([checked]) #container::before {
+  /** Translation of the toggle knob when checked */
+  translate: var(--pf-c-switch__input--checked__toggle--before--TranslateX,
+    calc(100% + var(--pf-c-switch__toggle-icon--Offset, 0.125rem)));
+}
+
+:host(:is(:focus,:focus-within)) #container {
+  /** Focus outline width */
+  outline: var(--pf-c-switch__input--focus__toggle--OutlineWidth,
+    var(--pf-global--BorderWidth--md, 2px)) solid var(--pf-c-switch__input--focus__toggle--OutlineColor,
+      var(--pf-global--primary-color--100, #06c));
+  /** Focus outline offset */
+  outline-offset: var(--pf-c-switch__input--focus__toggle--OutlineOffset,
+    var(--pf-global--spacer--sm, 0.5rem));
+}
+
+:host(:disabled) {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+:host(:disabled) #container {
+  cursor: not-allowed;
+
+  /** Color of the label when switch is disabled */
+  color: var(--pf-c-switch__input--disabled__label--Color,
+    var(--pf-global--disabled-color--100, #6a6e73));
+  /** Background color when switch is disabled */
+  background-color: var(--pf-c-switch__input--disabled__toggle--BackgroundColor,
+    var(--pf-global--disabled-color--200, #d2d2d2));
+}
+
+:host(:disabled) #container::before {
+  /** Background color of the toggle knob when disabled */
+  background-color: var(--pf-c-switch__input--disabled__toggle--before--BackgroundColor,
+    var(--pf-global--palette--black-150, #f5f5f5));
+}
+
+:host([checked]:disabled) #container::before {
+  translate: var(--pf-c-switch__input--checked__toggle--before--TranslateX,
+    calc(100% + var(--pf-c-switch__toggle-icon--Offset, 0.125rem)));
+}
+
+:host(:disabled:focus-within) #container {
+  outline: none;
+}
+
+#container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  /** Width of the toggle */
+  width: var(--pf-c-switch__toggle--Width,
+    calc(var(--pf-c-switch__toggle--Height,
+      calc(var(--pf-c-switch--FontSize,
+        var(--pf-global--FontSize--md, 1rem)) * var(--pf-c-switch--LineHeight,
+          var(--pf-global--LineHeight--md, 1.5)))) + var(--pf-c-switch__toggle-icon--Offset, 0.125rem) + var(--pf-c-switch__toggle--before--Width,
+            calc(var(--pf-c-switch--FontSize,
+              var(--pf-global--FontSize--md, 1rem)) - var(--pf-c-switch__toggle-icon--Offset, 0.125rem)))));
+  height: var(--pf-c-switch__toggle--Height,
+    calc(var(--pf-c-switch--FontSize,
+      var(--pf-global--FontSize--md, 1rem)) * var(--pf-c-switch--LineHeight,
+        var(--pf-global--LineHeight--md, 1.5))));
+  /** Background color of the toggle */
+  background-color: var(--pf-c-switch__toggle--BackgroundColor,
+    var(--pf-global--palette--black-500, #8a8d90));
+  /** Border radius of the toggle */
+  border-radius: var(--pf-c-switch__toggle--BorderRadius,
+    var(--pf-c-switch__toggle--Height, calc(var(--pf-c-switch--FontSize,
+      var(--pf-global--FontSize--md, 1rem)) * var(--pf-c-switch--LineHeight,
+        var(--pf-global--LineHeight--md, 1.5)))));
+}
+
+#container::before {
+  position: absolute;
+  display: block;
+  content: "";
+  /** Top position of the toggle knob */
+  top: var(--pf-c-switch__toggle--before--Top,
+    calc((var(--pf-c-switch__toggle--Height,
+      calc(var(--pf-c-switch--FontSize,
+        var(--pf-global--FontSize--md, 1rem)) * var(--pf-c-switch--LineHeight,
+          var(--pf-global--LineHeight--md, 1.5)))) - var(--pf-c-switch__toggle--before--Height,
+            var(--pf-c-switch__toggle--before--Width,
+              calc(var(--pf-c-switch--FontSize,
+                var(--pf-global--FontSize--md, 1rem)) - var(--pf-c-switch__toggle-icon--Offset, 0.125rem))))) / 2));
+  /** Left position of the toggle knob */
+  left: var(--pf-c-switch__toggle--before--Left,
+    var(--pf-c-switch__toggle--before--Top,
+      calc((var(--pf-c-switch__toggle--Height,
+        calc(var(--pf-c-switch--FontSize,
+          var(--pf-global--FontSize--md, 1rem)) * var(--pf-c-switch--LineHeight,
+            var(--pf-global--LineHeight--md, 1.5)))) - var(--pf-c-switch__toggle--before--Height,
+              var(--pf-c-switch__toggle--before--Width,
+                calc(var(--pf-c-switch--FontSize,
+                  var(--pf-global--FontSize--md, 1rem)) - var(--pf-c-switch__toggle-icon--Offset, 0.125rem))))) / 2)));
+  /** Width of the toggle knob */
+  width: var(--pf-c-switch__toggle--before--Width,
+    calc(var(--pf-c-switch--FontSize,
+      var(--pf-global--FontSize--md, 1rem)) - var(--pf-c-switch__toggle-icon--Offset, 0.125rem)));
+  /** Height of the toggle knob */
+  height: var(--pf-c-switch__toggle--before--Height,
+    var(--pf-c-switch__toggle--before--Width,
+      calc(var(--pf-c-switch--FontSize,
+        var(--pf-global--FontSize--md, 1rem)) - var(--pf-c-switch__toggle-icon--Offset, 0.125rem))));
+  /** Background color of the toggle knob */
+  background-color: var(--pf-c-switch__toggle--before--backgroundcolor,
+    var(--pf-global--backgroundcolor--100, #fff));
+  /** Border radius of the toggle knob */
+  border-radius: var(--pf-c-switch__toggle--before--BorderRadius,
+    var(--pf-global--BorderRadius--lg, 30em));
+  /** Box shadow of the toggle knob */
+  box-shadow: var(--pf-c-switch__toggle--before--BoxShadow,
+    var(--pf-global--BoxShadow--md, 0 0.25rem 0.5rem 0rem rgba(3, 3, 3, 0.12), 0 0 0.25rem 0 rgba(3, 3, 3, 0.06)));
+  /** Transition of the toggle knob */
+  transition: var(--pf-c-switch__toggle--before--Transition,
+    var(--pf-c-switch__toggle--before--Transition, translate .25s ease 0s));
+}
+
+svg {
+  /** Horizontal margin of the toggle icon */
+  margin-inline: var(--pf-c-switch__toggle-icon--Left,
+    calc(var(--pf-c-switch--FontSize,
+      var(--pf-global--FontSize--md, 1rem)) * .4));
+  /** Font size of the toggle icon */
+  font-size: var(--pf-c-switch__toggle-icon--FontSize,
+    calc(var(--pf-c-switch--FontSize,
+      var(--pf-global--FontSize--md, 1rem)) * .625));
+  /** Color of the toggle icon */
+  color: var(--pf-c-switch__toggle-icon--Color,
+    var(--pf-global--Color--light-100, #fff));
+}
+`;
 let PfSwitch = class PfSwitch extends LitElement {
     constructor() {
         super(...arguments);
@@ -102,7 +256,7 @@ _PfSwitch_updateLabels = function _PfSwitch_updateLabels() {
 };
 PfSwitch.styles = [styles];
 PfSwitch.formAssociated = true;
-PfSwitch.version = "4.1.0";
+PfSwitch.version = "4.3.0";
 __decorate([
     property({ reflect: true })
 ], PfSwitch.prototype, "label", void 0);

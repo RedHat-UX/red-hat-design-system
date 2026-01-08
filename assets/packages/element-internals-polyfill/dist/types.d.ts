@@ -1,61 +1,38 @@
-import { CustomStateSet } from './CustomStateSet.js';
-import { ElementInternals } from './element-internals.js';
-export interface IAom {
-    ariaAtomic: string;
-    ariaAutoComplete: string;
-    ariaBusy: string;
-    ariaChecked: string;
-    ariaColCount: string;
-    ariaColIndex: string;
-    ariaColIndexText: string;
-    ariaColSpan: string;
-    ariaCurrent: string;
-    ariaDescription: string;
-    ariaDisabled: string;
-    ariaExpanded: string;
-    ariaHasPopup: string;
-    ariaHidden: string;
-    ariaInvalid: string;
-    ariaKeyShortcuts: string;
-    ariaLabel: string;
-    ariaLevel: string;
-    ariaLive: string;
-    ariaModal: string;
-    ariaMultiLine: string;
-    ariaMultiSelectable: string;
-    ariaOrientation: string;
-    ariaPlaceholder: string;
-    ariaPosInSet: string;
-    ariaPressed: string;
-    ariaReadOnly: string;
-    ariaRelevant: string;
-    ariaRequired: string;
-    ariaRoleDescription: string;
-    ariaRowCount: string;
-    ariaRowIndex: string;
-    ariaRowIndexText: string;
-    ariaRowSpan: string;
-    ariaSelected: string;
-    ariaSetSize: string;
-    ariaSort: string;
-    ariaValueMax: string;
-    ariaValueMin: string;
-    ariaValueNow: string;
-    ariaValueText: string;
-    role: string;
-}
-export interface IElementInternals extends IAom {
-    checkValidity: () => boolean;
-    form: HTMLFormElement;
-    labels: LabelsList;
-    reportValidity: () => boolean;
-    setFormValue: (value: string | FormData | null) => void;
-    setValidity: (validityChanges: Partial<ValidityState>, validationMessage?: string, anchor?: HTMLElement) => void;
-    shadowRoot: ShadowRoot | null;
-    states: CustomStateSet;
-    validationMessage: string;
-    validity: ValidityState;
-    willValidate: boolean;
+import { CustomState } from "./CustomStateSet.js";
+import { ElementInternals } from "./element-internals.js";
+declare global {
+    interface ARIAMixin {
+        /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaBrailleLabel) */
+        ariaBrailleLabel: string | null;
+        /** [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaBrailleRoleDescription) */
+        ariaBrailleRoleDescription: string | null;
+        /** [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaColIndexText) */
+        ariaColIndexText: string | null;
+        /** [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaRelevant) */
+        ariaRelevant: string | null;
+        /** [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaRowIndexText) */
+        ariaRowIndexText: string | null;
+    }
+    interface ElementInternals extends ARIAMixin {
+        checkValidity: () => boolean;
+        readonly form: HTMLFormElement | null;
+        readonly labels: NodeList;
+        reportValidity: () => boolean;
+        setFormValue: (value: File | string | FormData | null, state?: File | string | FormData | null) => void;
+        setValidity: (flags?: ValidityStateFlags, message?: string, anchor?: HTMLElement) => void;
+        readonly shadowRoot: ShadowRoot | null;
+        readonly states: CustomStateSet;
+        readonly validationMessage: string;
+        readonly validity: ValidityState;
+        readonly willValidate: boolean;
+    }
+    interface FormAssociatedCustomElement extends HTMLElement {
+        formDisabledCallback?: (isDisabled: boolean) => void;
+        formResetCallback: () => void;
+        formAssociatedCallback: (form: HTMLFormElement) => void;
+    }
+    interface CustomStateSet extends Set<CustomState> {
+    }
 }
 export interface ICustomElement extends HTMLElement {
     constructor: (...args: any[]) => HTMLElement;
@@ -72,6 +49,6 @@ export interface ICustomElement extends HTMLElement {
 export type LabelsList = NodeListOf<HTMLLabelElement>;
 declare global {
     interface HTMLElement {
-        attachInternals(): IElementInternals;
+        attachInternals(): ElementInternals;
     }
 }

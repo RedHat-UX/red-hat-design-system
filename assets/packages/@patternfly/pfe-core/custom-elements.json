@@ -7,7 +7,7 @@
       "declarations": [
         {
           "name": "ActivedescendantController",
-          "description": "Implements activedescendant pattern, as described in WAI-ARIA practices,\n[Managing Focus in Composites Using aria-activedescendant][ad]\n* The steps for using the aria-activedescendant method of managing focus are as follows.\n*  - When the container element that has a role that supports aria-activedescendant is loaded\nor created, ensure that:\n- The container element is included in the tab sequence as described in\nKeyboard Navigation Between Components or is a focusable element of a composite\nthat implements a roving tabindex.\n- It has aria-activedescendant=\"IDREF\" where IDREF is the ID of the element within\nthe container that should be identified as active when the widget receives focus.\nThe referenced element needs to meet the DOM relationship requirements described below.\n- When the container element receives DOM focus, draw a visual focus indicator on the active\nelement and ensure the active element is scrolled into view.\n- When the composite widget contains focus and the user presses a navigation key that moves\nfocus within the widget, such as an arrow key:\n- Change the value of aria-activedescendant on the container to refer to the element\nthat should be reported to assistive technologies as active.\n- Move the visual focus indicator and, if necessary, scrolled the active element into view.\n- If the design calls for a specific element to be focused the next time a user moves focus\ninto the composite with Tab or Shift+Tab, check if aria-activedescendant is referring to\nthat target element when the container loses focus. If it is not, set aria-activedescendant\nto refer to the target element.\n* The specification for aria-activedescendant places important restrictions on the\nDOM relationship between the focused element that has the aria-activedescendant attribute\nand the element referenced as active by the value of the attribute.\nOne of the following three conditions must be met.\n* 1. The element referenced as active is a DOM descendant of the focused referencing element.\n2. The focused referencing element has a value specified for the aria-owns property that\nincludes the ID of the element referenced as active.\n3. The focused referencing element has role of combobox, textbox, or searchbox\nand has aria-controls property referring to an element with a role that supports\naria-activedescendant and either:\n1. The element referenced as active is a descendant of the controlled element.\n2. The controlled element has a value specified for the aria-owns property that includes\nthe ID of the element referenced as active.\n* [ad]: https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_focus_activedescendant",
+          "description": "Implements activedescendant pattern, as described in WAI-ARIA practices,\n[Managing Focus in Composites Using aria-activedescendant][ad]\n\nThe steps for using the aria-activedescendant method of managing focus are as follows.\n\n- When the container element that has a role that supports aria-activedescendant is loaded\nor created, ensure that:\n- The container element is included in the tab sequence as described in\nKeyboard Navigation Between Components or is a focusable element of a composite\nthat implements a roving tabindex.\n- It has aria-activedescendant=\"IDREF\" where IDREF is the ID of the element within\nthe container that should be identified as active when the widget receives focus.\nThe referenced element needs to meet the DOM relationship requirements described below.\n- When the container element receives DOM focus, draw a visual focus indicator on the active\nelement and ensure the active element is scrolled into view.\n- When the composite widget contains focus and the user presses a navigation key that moves\nfocus within the widget, such as an arrow key:\n- Change the value of aria-activedescendant on the container to refer to the element\nthat should be reported to assistive technologies as active.\n- Move the visual focus indicator and, if necessary, scrolled the active element into view.\n- If the design calls for a specific element to be focused the next time a user moves focus\ninto the composite with Tab or Shift+Tab, check if aria-activedescendant is referring to\nthat target element when the container loses focus. If it is not, set aria-activedescendant\nto refer to the target element.\n\nThe specification for aria-activedescendant places important restrictions on the\nDOM relationship between the focused element that has the aria-activedescendant attribute\nand the element referenced as active by the value of the attribute.\nOne of the following three conditions must be met.\n\n1. The element referenced as active is a DOM descendant of the focused referencing element.\n2. The focused referencing element has a value specified for the aria-owns property that\nincludes the ID of the element referenced as active.\n3. The focused referencing element has role of combobox, textbox, or searchbox\nand has aria-controls property referring to an element with a role that supports\naria-activedescendant and either:\n1. The element referenced as active is a descendant of the controlled element.\n2. The controlled element has a value specified for the aria-owns property that includes\nthe ID of the element referenced as active.\n\n[ad]: https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_focus_activedescendant",
           "superclass": {
             "name": "ATFocusController"
           },
@@ -68,6 +68,21 @@
               "kind": "field"
             },
             {
+              "name": "host",
+              "type": {
+                "text": "ReactiveControllerHost"
+              },
+              "kind": "field"
+            },
+            {
+              "name": "options",
+              "type": {
+                "text": "ActivedescendantControllerOptions\u003cItem\u003e"
+              },
+              "kind": "field",
+              "privacy": "protected"
+            },
+            {
               "return": {
                 "type": {
                   "text": "void"
@@ -115,6 +130,9 @@
               "privacy": "public"
             }
           ],
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/activedescendant-controller.ts#L76"
+          },
           "kind": "class"
         }
       ],
@@ -179,6 +197,20 @@
                 "text": "Map\u003cstring, string[]\u003e"
               },
               "default": "new Map\u003cstring, string[]\u003e()",
+              "kind": "field"
+            },
+            {
+              "name": "host",
+              "type": {
+                "text": "E"
+              },
+              "kind": "field"
+            },
+            {
+              "name": "options",
+              "type": {
+                "text": "Options\u003cE\u003e | undefined"
+              },
               "kind": "field"
             },
             {
@@ -323,6 +355,9 @@
               "privacy": "private"
             }
           ],
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/cascade-controller.ts#L18"
+          },
           "kind": "class",
           "deprecated": "use context, especially via `@patternfly/pfe-core/functions/context.js`;"
         }
@@ -344,7 +379,7 @@
       "declarations": [
         {
           "name": "ComboboxController",
-          "summary": "Implements the WAI-ARIA pattern [Editable Combobox with Both List and Inline Autocomplete].\n* Combobox with keyboard and pointer navigation, using the aria-activedescendant pattern.\n* WARNING: Safari VoiceOver does not support aria-activedescendant, so Safari users\nrely on the combobox input value being announced when navigating the listbox with the keyboard.\nWe have erred on the side that it may be less-broken to avoid announcing disabled items in that\ncase, rather than announcing the disabled items value without indicating that it is disabled.",
+          "summary": "Implements the WAI-ARIA pattern [Editable Combobox with Both List and Inline Autocomplete].\n\nCombobox with keyboard and pointer navigation, using the aria-activedescendant pattern.\n\nWARNING: Safari VoiceOver does not support aria-activedescendant, so Safari users\nrely on the combobox input value being announced when navigating the listbox with the keyboard.\nWe have erred on the side that it may be less-broken to avoid announcing disabled items in that\ncase, rather than announcing the disabled items value without indicating that it is disabled.",
           "members": [
             {
               "parameters": [
@@ -396,6 +431,20 @@
               "privacy": "private"
             },
             {
+              "name": "instances",
+              "default": "new WeakMap\u003cReactiveControllerHost, ComboboxController\u003cHTMLElement\u003e\u003e()",
+              "kind": "field",
+              "static": true,
+              "privacy": "private"
+            },
+            {
+              "name": "hosts",
+              "default": "new Set\u003cReactiveControllerHost\u003e()",
+              "kind": "field",
+              "static": true,
+              "privacy": "private"
+            },
+            {
               "name": "options",
               "type": {
                 "text": "RequireProps\u003cComboboxControllerOptions\u003cItem\u003e,\n    | 'isItemDisabled'\n    | 'isItem'\n    | 'isItemFiltered'\n    | 'getItemValue'\n    | 'getOrientation'\n    | 'getComboboxValue'\n    | 'setComboboxValue'\n    | 'setItemHidden'\n  \u003e"
@@ -424,6 +473,13 @@
             {
               "name": "selected",
               "description": "The current selection: a list of items",
+              "kind": "field"
+            },
+            {
+              "name": "host",
+              "type": {
+                "text": "ReactiveControllerHost"
+              },
               "kind": "field"
             },
             {
@@ -456,6 +512,24 @@
             {
               "return": {
                 "type": {
+                  "text": "void"
+                }
+              },
+              "name": "disconnect",
+              "kind": "method"
+            },
+            {
+              "return": {
+                "type": {
+                  "text": "Promise\u003cvoid\u003e"
+                }
+              },
+              "name": "_onFocusoutElement",
+              "kind": "method"
+            },
+            {
+              "return": {
+                "type": {
                   "text": "Node[] | typeof nothing"
                 }
               },
@@ -465,6 +539,9 @@
               "privacy": "public"
             }
           ],
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/combobox-controller.ts#L158"
+          },
           "kind": "class"
         }
       ],
@@ -490,6 +567,13 @@
               "name": "style",
               "type": {
                 "text": "CSSStyleDeclaration"
+              },
+              "kind": "field"
+            },
+            {
+              "name": "host",
+              "type": {
+                "text": "ReactiveElement"
               },
               "kind": "field"
             },
@@ -533,6 +617,9 @@
               "kind": "method"
             }
           ],
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/css-variable-controller.ts#L3"
+          },
           "kind": "class"
         }
       ],
@@ -593,12 +680,20 @@
             },
             {
               "name": "styles",
-              "description": "Styles to apply to your element's container\n* - `--_floating-content-translate`: translate to apply to floating content.",
+              "description": "Styles to apply to your element's container\n\n- `--_floating-content-translate`: translate to apply to floating content.",
               "type": {
                 "text": "StyleInfo"
               },
               "readonly": true,
               "kind": "field"
+            },
+            {
+              "name": "host",
+              "type": {
+                "text": "ReactiveControllerHost"
+              },
+              "kind": "field",
+              "privacy": "private"
             },
             {
               "return": {
@@ -630,6 +725,9 @@
               "kind": "method"
             }
           ],
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/floating-dom-controller.ts#L29"
+          },
           "kind": "class"
         }
       ],
@@ -650,7 +748,6 @@
       "declarations": [
         {
           "name": "InternalsController",
-          "description": "reactively forward the internals object's aria mixin prototype",
           "members": [
             {
               "name": "instances",
@@ -1242,6 +1339,21 @@
               "privacy": "private"
             },
             {
+              "name": "host",
+              "type": {
+                "text": "ReactiveControllerHost"
+              },
+              "kind": "field"
+            },
+            {
+              "name": "options",
+              "type": {
+                "text": "InternalsControllerOptions"
+              },
+              "kind": "field",
+              "privacy": "private"
+            },
+            {
               "name": "attachOrRetrieveInternals",
               "description": "Typescript (with experimental decorators) will compile the class\nsuch that the order of operations is:\n1. set up constructor parameter fields\n2. run decorated field setters with initializers as the value\n3. run the rest of the constructor\nBecause of that, `this.internals` may not be available in the decorator setter\nso we cheat here with nullish coalescing assignment operator `??=`;",
               "kind": "method",
@@ -1351,6 +1463,9 @@
               "kind": "method"
             }
           ],
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/internals-controller.ts#L71"
+          },
           "kind": "class"
         }
       ],
@@ -1397,6 +1512,22 @@
               "privacy": "private"
             },
             {
+              "name": "host",
+              "type": {
+                "text": "ReactiveElement"
+              },
+              "kind": "field",
+              "privacy": "private"
+            },
+            {
+              "name": "options",
+              "type": {
+                "text": "Options | undefined"
+              },
+              "kind": "field",
+              "privacy": "private"
+            },
+            {
               "return": {
                 "type": {
                   "text": "void"
@@ -1430,6 +1561,9 @@
               "kind": "method"
             }
           ],
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/light-dom-controller.ts#L10"
+          },
           "kind": "class"
         }
       ],
@@ -1459,7 +1593,10 @@
             }
           ],
           "name": "isItem",
-          "kind": "function"
+          "kind": "function",
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/listbox-controller.ts#L81"
+          }
         },
         {
           "parameters": [
@@ -1473,11 +1610,14 @@
           ],
           "name": "isItemDisabled",
           "description": "This is a fib. aria-disabled might not be present on an element that uses internals,\nand the `disabled` attribute may not accurately represent the disabled state.\nshort of patching the `attachInternals` constructor, it may not be possible at\nruntime to know with certainty that an arbitrary custom element is disabled or not.",
-          "kind": "function"
+          "kind": "function",
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/listbox-controller.ts#L96"
+          }
         },
         {
           "name": "ListboxController",
-          "description": "Options for listbox controller",
+          "description": "Implements listbox semantics and accesibility. As there are two recognized\npatterns for implementing keyboard interactions with listbox patterns,\nprovide a secondary controller (either RovingTabindexController or\nActiveDescendantController) to complete the implementation.",
           "members": [
             {
               "name": "instances",
@@ -1552,6 +1692,13 @@
               "kind": "field"
             },
             {
+              "name": "host",
+              "type": {
+                "text": "ReactiveControllerHost"
+              },
+              "kind": "field"
+            },
+            {
               "return": {
                 "type": {
                   "text": "Promise\u003cvoid\u003e"
@@ -1606,6 +1753,9 @@
               "privacy": "public"
             }
           ],
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/listbox-controller.ts#L145"
+          },
           "kind": "class"
         }
       ],
@@ -1672,7 +1822,7 @@
                 }
               },
               "name": "debugLog",
-              "description": "A boolean value that indicates if the logging should be printed to the console; used for debugging.\nFor use in a JS file or script tag; can also be added in the constructor of a component during development.",
+              "description": "A boolean value that indicates if the logging should be printed to the console; used for debugging.\nFor use in a JS file or script tag; can also be added in the constructor of a component during development.\n\nLogger.debugLog(true);",
               "kind": "method",
               "static": true
             },
@@ -1692,7 +1842,7 @@
                 }
               },
               "name": "debug",
-              "description": "A logging wrapper which checks the debugLog boolean and prints to the console if true.",
+              "description": "A logging wrapper which checks the debugLog boolean and prints to the console if true.\n\nLogger.debug(\"Hello\");",
               "kind": "method",
               "static": true
             },
@@ -1712,7 +1862,7 @@
                 }
               },
               "name": "info",
-              "description": "A logging wrapper which checks the debugLog boolean and prints to the console if true.",
+              "description": "A logging wrapper which checks the debugLog boolean and prints to the console if true.\n\nLogger.info(\"Hello\");",
               "kind": "method",
               "static": true
             },
@@ -1732,7 +1882,7 @@
                 }
               },
               "name": "log",
-              "description": "A logging wrapper which checks the debugLog boolean and prints to the console if true.",
+              "description": "A logging wrapper which checks the debugLog boolean and prints to the console if true.\n\nLogger.log(\"Hello\");",
               "kind": "method",
               "static": true
             },
@@ -1752,7 +1902,7 @@
                 }
               },
               "name": "warn",
-              "description": "A console warning wrapper which formats your output with useful debugging information.",
+              "description": "A console warning wrapper which formats your output with useful debugging information.\n\nLogger.warn(\"Hello\");",
               "kind": "method",
               "static": true
             },
@@ -1772,7 +1922,7 @@
                 }
               },
               "name": "error",
-              "description": "A console error wrapper which formats your output with useful debugging information.\nFor use inside a component's function.",
+              "description": "A console error wrapper which formats your output with useful debugging information.\nFor use inside a component's function.\n\nLogger.error(\"Hello\");",
               "kind": "method",
               "static": true
             },
@@ -1792,7 +1942,7 @@
                 }
               },
               "name": "debug",
-              "description": "Debug logging that outputs the tag name as a prefix automatically",
+              "description": "Debug logging that outputs the tag name as a prefix automatically\n\nthis.logger.log(\"Hello\");",
               "kind": "method"
             },
             {
@@ -1811,7 +1961,7 @@
                 }
               },
               "name": "info",
-              "description": "Info logging that outputs the tag name as a prefix automatically",
+              "description": "Info logging that outputs the tag name as a prefix automatically\n\nthis.logger.log(\"Hello\");",
               "kind": "method"
             },
             {
@@ -1830,7 +1980,7 @@
                 }
               },
               "name": "log",
-              "description": "Local logging that outputs the tag name as a prefix automatically",
+              "description": "Local logging that outputs the tag name as a prefix automatically\n\nthis.logger.log(\"Hello\");",
               "kind": "method"
             },
             {
@@ -1849,7 +1999,7 @@
                 }
               },
               "name": "warn",
-              "description": "Local warning wrapper that outputs the tag name as a prefix automatically.\nFor use inside a component's function.",
+              "description": "Local warning wrapper that outputs the tag name as a prefix automatically.\nFor use inside a component's function.\n\nthis.logger.warn(\"Hello\");",
               "kind": "method"
             },
             {
@@ -1868,8 +2018,16 @@
                 }
               },
               "name": "error",
-              "description": "Local error wrapper that outputs the tag name as a prefix automatically.\nFor use inside a component's function.",
+              "description": "Local error wrapper that outputs the tag name as a prefix automatically.\nFor use inside a component's function.\n\nthis.logger.error(\"Hello\");",
               "kind": "method"
+            },
+            {
+              "name": "host",
+              "type": {
+                "text": "ReactiveControllerHost"
+              },
+              "kind": "field",
+              "privacy": "private"
             },
             {
               "return": {
@@ -1881,6 +2039,9 @@
               "kind": "method"
             }
           ],
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/logger.ts#L3"
+          },
           "kind": "class"
         }
       ],
@@ -1941,6 +2102,21 @@
               },
               "readonly": true,
               "kind": "field"
+            },
+            {
+              "name": "host",
+              "type": {
+                "text": "ReactiveElement"
+              },
+              "kind": "field"
+            },
+            {
+              "name": "options",
+              "type": {
+                "text": "Options | undefined"
+              },
+              "kind": "field",
+              "privacy": "private"
             },
             {
               "parameters": [
@@ -2011,6 +2187,9 @@
               "kind": "method"
             }
           ],
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/overflow-controller.ts#L16"
+          },
           "kind": "class"
         }
       ],
@@ -2048,6 +2227,14 @@
               "kind": "field"
             },
             {
+              "name": "host",
+              "type": {
+                "text": "ReactiveElement"
+              },
+              "kind": "field",
+              "privacy": "private"
+            },
+            {
               "return": {
                 "type": {
                   "text": "void"
@@ -2066,6 +2253,9 @@
               "kind": "method"
             }
           ],
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/perf-controller.ts#L5"
+          },
           "kind": "class"
         }
       ],
@@ -2097,6 +2287,22 @@
               "privacy": "private"
             },
             {
+              "name": "host",
+              "type": {
+                "text": "T"
+              },
+              "kind": "field",
+              "privacy": "private"
+            },
+            {
+              "name": "options",
+              "type": {
+                "text": "PropertyObserverOptions\u003cT\u003e"
+              },
+              "kind": "field",
+              "privacy": "private"
+            },
+            {
               "return": {
                 "type": {
                   "text": "void"
@@ -2116,6 +2322,9 @@
               "kind": "method"
             }
           ],
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/property-observer-controller.ts#L19"
+          },
           "kind": "class"
         }
       ],
@@ -2136,7 +2345,7 @@
       "declarations": [
         {
           "name": "RovingTabindexController",
-          "description": "Implements roving tabindex, as described in WAI-ARIA practices, [Managing Focus Within\nComponents Using a Roving tabindex][rti]\n* [rti]: https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex",
+          "description": "Implements roving tabindex, as described in WAI-ARIA practices, [Managing Focus Within\nComponents Using a Roving tabindex][rti]\n\n[rti]: https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex",
           "superclass": {
             "name": "ATFocusController"
           },
@@ -2178,6 +2387,13 @@
               "kind": "field"
             },
             {
+              "name": "host",
+              "type": {
+                "text": "ReactiveControllerHost"
+              },
+              "kind": "field"
+            },
+            {
               "parameters": [
                 {
                   "name": "event",
@@ -2196,6 +2412,9 @@
               "privacy": "protected"
             }
           ],
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/roving-tabindex-controller.ts#L15"
+          },
           "kind": "class"
         }
       ],
@@ -2239,6 +2458,14 @@
               "kind": "field"
             },
             {
+              "name": "host",
+              "type": {
+                "text": "ReactiveControllerHost \u0026 HTMLElement"
+              },
+              "kind": "field",
+              "privacy": "private"
+            },
+            {
               "return": {
                 "type": {
                   "text": "void"
@@ -2276,6 +2503,9 @@
               "privacy": "public"
             }
           ],
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/scroll-spy-controller.ts#L34"
+          },
           "kind": "class"
         }
       ],
@@ -2330,6 +2560,13 @@
               "default": "'ssr-hint-has-slotted-default' as const",
               "kind": "field",
               "static": true
+            },
+            {
+              "name": "host",
+              "type": {
+                "text": "ReactiveElement"
+              },
+              "kind": "field"
             },
             {
               "parameters": [
@@ -2399,6 +2636,9 @@
               "kind": "method"
             }
           ],
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/slot-controller-server.ts#L7"
+          },
           "kind": "class"
         }
       ],
@@ -2427,7 +2667,10 @@
             }
           ],
           "name": "isObjectSpread",
-          "kind": "function"
+          "kind": "function",
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/slot-controller.ts#L37"
+          }
         },
         {
           "name": "SlotControllerPublicAPI",
@@ -2448,11 +2691,36 @@
               "kind": "field"
             }
           ],
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/slot-controller.ts#L52"
+          },
           "kind": "class"
         },
         {
           "name": "SlotRecord",
           "members": [
+            {
+              "name": "slot",
+              "type": {
+                "text": "HTMLSlotElement"
+              },
+              "kind": "field"
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string | symbol"
+              },
+              "kind": "field"
+            },
+            {
+              "name": "host",
+              "type": {
+                "text": "ReactiveElement"
+              },
+              "kind": "field",
+              "privacy": "private"
+            },
             {
               "name": "elements",
               "readonly": true,
@@ -2464,6 +2732,9 @@
               "kind": "field"
             }
           ],
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/slot-controller.ts#L101"
+          },
           "kind": "class"
         },
         {
@@ -2484,6 +2755,13 @@
               "deprecated": "use `default`",
               "kind": "field",
               "static": true
+            },
+            {
+              "name": "host",
+              "type": {
+                "text": "ReactiveElement"
+              },
+              "kind": "field"
             },
             {
               "return": {
@@ -2519,7 +2797,7 @@
                 }
               },
               "name": "getSlotted",
-              "description": "Given a slot name or slot names, returns elements assigned to the requested slots as an array.\nIf no value is provided, it returns all children not assigned to a slot (without a slot attribute).",
+              "description": "Given a slot name or slot names, returns elements assigned to the requested slots as an array.\nIf no value is provided, it returns all children not assigned to a slot (without a slot attribute).\n\n\u003cfigure\u003e\n\u003cfigcaption\u003eGet header-slotted elements\u003c/figcaption\u003e\n\n```js\nthis.getSlotted('header')\n```\n\u003c/figure\u003e\n\n\u003cfigure\u003e\n\u003cfigcaption\u003eGet header- and footer-slotted elements\u003c/figcaption\u003e\n\n```js\nthis.getSlotted('header', 'footer')\n```\n\u003c/figure\u003e\n\n\u003cfigure\u003e\n\u003cfigcaption\u003eGet default-slotted elements\u003c/figcaption\u003e\n\n```js\nthis.getSlotted();\n```\n\u003c/figure\u003e",
               "kind": "method",
               "privacy": "public"
             },
@@ -2539,7 +2817,7 @@
                 }
               },
               "name": "hasSlotted",
-              "description": "Returns a boolean statement of whether or not any of those slots exists in the light DOM.",
+              "description": "Returns a boolean statement of whether or not any of those slots exists in the light DOM.\n\nthis.hasSlotted('header');",
               "kind": "method",
               "privacy": "public"
             },
@@ -2559,11 +2837,14 @@
                 }
               },
               "name": "isEmpty",
-              "description": "Whether or not all the requested slots are empty.",
+              "description": "Whether or not all the requested slots are empty.\n\nthis.isEmpty('header', 'footer');\n\nthis.isEmpty();",
               "kind": "method",
               "privacy": "public"
             }
           ],
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/slot-controller.ts#L130"
+          },
           "kind": "class"
         }
       ],
@@ -2604,6 +2885,23 @@
               "privacy": "private"
             },
             {
+              "name": "host",
+              "type": {
+                "text": "ReactiveElement"
+              },
+              "kind": "field",
+              "privacy": "private"
+            },
+            {
+              "name": "styles",
+              "description": "These styles will be applied to the host element",
+              "type": {
+                "text": "CSSResultGroup"
+              },
+              "kind": "field",
+              "privacy": "private"
+            },
+            {
               "return": {
                 "type": {
                   "text": "void"
@@ -2613,6 +2911,9 @@
               "kind": "method"
             }
           ],
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/style-controller.ts#L21"
+          },
           "kind": "class"
         }
       ],
@@ -2709,6 +3010,9 @@
               "kind": "method"
             }
           ],
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/tabs-aria-controller.ts#L14"
+          },
           "kind": "class"
         }
       ],
@@ -2785,6 +3089,9 @@
               "kind": "method"
             }
           ],
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/timestamp-controller.ts#L27"
+          },
           "kind": "class"
         }
       ],
@@ -2813,8 +3120,11 @@
             }
           ],
           "name": "bound",
-          "description": "Binds a class method to the instance",
-          "kind": "function"
+          "description": "Binds a class method to the instance\n\n\u003cfigure\u003e\n\u003cfigcaption\u003eBinding an event listener\u003c/figcaption\u003e\n\n```ts\nprivate mo = new MutationObserver(this.onMutation);\n\u003c/figure\u003e",
+          "kind": "function",
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/decorators/bound.ts#L17"
+          }
         }
       ],
       "exports": [
@@ -2845,7 +3155,10 @@
           "name": "cascades",
           "description": "Cascades the decorated attribute to children",
           "deprecated": "use context, especially via `@patternfly/pfe-core/functions/context.js`;",
-          "kind": "function"
+          "kind": "function",
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/decorators/cascades.ts#L10"
+          }
         }
       ],
       "exports": [
@@ -2874,12 +3187,14 @@
             }
           ],
           "name": "deprecation",
-          "description": "Aliases the decorated field to an existing property, and logs a warning if it is used",
-          "kind": "function"
+          "description": "Aliases the decorated field to an existing property, and logs a warning if it is used\n\n\u003cfigure\u003e\n\u003cfigcaption\u003edeprecating an attribute\u003c/figcaption\u003e\n\n```ts\n\u003c/figure\u003e",
+          "kind": "function",
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/decorators/deprecation.ts#L21"
+          }
         },
         {
           "name": "Deprecation",
-          "description": "Aliases the decorated field to an existing property, and logs a warning if it is used",
           "members": [
             {
               "name": "logger",
@@ -2899,10 +3214,37 @@
               "privacy": "private"
             },
             {
+              "name": "host",
+              "type": {
+                "text": "T"
+              },
+              "kind": "field",
+              "privacy": "private"
+            },
+            {
+              "name": "options",
+              "type": {
+                "text": "DeprecationDeclaration\u003cK\u003e"
+              },
+              "kind": "field",
+              "privacy": "private"
+            },
+            {
+              "name": "deprecatedKey",
+              "type": {
+                "text": "string \u0026 keyof T"
+              },
+              "kind": "field",
+              "privacy": "private"
+            },
+            {
               "name": "hostUpdate",
               "kind": "method"
             }
           ],
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/decorators/deprecation.ts#L38"
+          },
           "kind": "class"
         }
       ],
@@ -2933,7 +3275,10 @@
           ],
           "name": "initializer",
           "description": "Runs the decorated method in `connectedCallback`,\nprovided the element has light children, and sets\nup a mutation observer to re-run the callback,\nunless opted-out with `{ observe: false }`",
-          "kind": "function"
+          "kind": "function",
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/decorators/initializer.ts#L13"
+          }
         }
       ],
       "exports": [
@@ -2963,7 +3308,10 @@
           ],
           "name": "listen",
           "description": "Listens for a given event on the custom element.\nequivalent to calling `this.addEventListener` in the constructor",
-          "kind": "function"
+          "kind": "function",
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/decorators/listen.ts#L9"
+          }
         }
       ],
       "exports": [
@@ -2991,7 +3339,10 @@
             }
           ],
           "name": "observed",
-          "kind": "function"
+          "kind": "function",
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/decorators/observed.ts#L34"
+          }
         },
         {
           "parameters": [
@@ -3003,7 +3354,10 @@
             }
           ],
           "name": "observed",
-          "kind": "function"
+          "kind": "function",
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/decorators/observed.ts#L35"
+          }
         }
       ],
       "exports": [
@@ -3033,7 +3387,10 @@
           ],
           "name": "observes",
           "description": "Observes changes on the given property and calls the decorated method\nwith the old and new values when it changes. In cases where the decorated method\nneeds to access uninitialized class fields, You may need to wait for the element to connect\nbefore running your effects. In that case, you can optionally specify which\nlifecycle state to wait for. e.g.:\n- `waitFor: 'firstUpdate'` waits until the first update cycle has completed\n- `waitFor: 'updated'` waits until the next update cycle has completed\n- `waitFor: 'connected'` waits until the element connects",
-          "kind": "function"
+          "kind": "function",
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/decorators/observes.ts#L21"
+          }
         }
       ],
       "exports": [
@@ -3063,7 +3420,10 @@
           ],
           "name": "time",
           "description": "Tracks the time a method takes to complete using the [performance API](https://developer.mozilla.org/en-US/docs/Web/API/Performance)",
-          "kind": "function"
+          "kind": "function",
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/decorators/time.ts#L5"
+          }
         }
       ],
       "exports": [
@@ -3093,7 +3453,10 @@
           ],
           "name": "trace",
           "description": "Logs the result of a class method",
-          "kind": "function"
+          "kind": "function",
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/decorators/trace.ts#L5"
+          }
         }
       ],
       "exports": [
@@ -3123,7 +3486,10 @@
           ],
           "name": "arraysAreEquivalent",
           "description": "Whether the two arrays are equivalent\nArrays are equivalent when they are both empty, or when their lengths are equal and each of\ntheir members is equal (===) to the corresponding member in the other array.\nIf either argument is not an array, the result will be strict equivalence (===)",
-          "kind": "function"
+          "kind": "function",
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/functions/arraysAreEquivalent.ts#L9"
+          }
         }
       ],
       "exports": [
@@ -3153,7 +3519,10 @@
           ],
           "name": "containsDeep",
           "description": "Whether or not the container contains the node,\nand if not, whether the node is contained by any element\nslotted in to the container",
-          "kind": "function"
+          "kind": "function",
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/functions/containsDeep.ts#L8"
+          }
         }
       ],
       "exports": [
@@ -3184,7 +3553,10 @@
           ],
           "name": "createContextWithRoot",
           "description": "In order to prevent late-upgrading-context-consumers from 'missing'\ntheir rightful context providers, we must set up a `ContextRoot` on the body.\nAlways use this function when creating contexts that are shared with child elements.",
-          "kind": "function"
+          "kind": "function",
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/functions/context.ts#L25"
+          }
         }
       ],
       "exports": [
@@ -3214,7 +3586,10 @@
           ],
           "name": "debounce",
           "description": "Debounce helper function",
-          "kind": "function"
+          "kind": "function",
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/functions/debounce.ts#L9"
+          }
         }
       ],
       "exports": [
@@ -3247,7 +3622,10 @@
           },
           "name": "isElementInView",
           "description": "This function returns whether or not an element is within the viewable area of a container. If partial is true,\nthen this function will return true even if only part of the element is in view.",
-          "kind": "function"
+          "kind": "function",
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/functions/isElementInView.ts#L10"
+          }
         }
       ],
       "exports": [
@@ -3268,7 +3646,10 @@
         {
           "name": "getRandomId",
           "description": "A quick way to fetch a random ID value.\n_Note:_ All values are prefixed automatically to ensure an ID-safe value is returned.",
-          "kind": "function"
+          "kind": "function",
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/functions/random.ts#L6"
+          }
         }
       ],
       "exports": [

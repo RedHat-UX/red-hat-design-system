@@ -3,7 +3,45 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { css } from "lit";
-const styles = css `:host {\n  display: block;\n}\n\n[hidden] {\n  display: none !important;\n}\n\np {\n  margin: 0;\n  font-size: 14px;\n  font-weight: normal;\n  color: #777;\n  padding-top: 0.5rem;\n  padding-right: 1rem;\n  padding-bottom: 0.5rem;\n  padding-left: 1rem;\n  font-size: 0.75rem;\n  font-weight: 400;\n  color: #6a6e73;\n}\n\n::slotted(hr) {\n  margin: 0;\n  border-color: var(--pf-c-divider--BackgroundColor, var(--pf-global--BorderColor--100, #d2d2d2));\n  border-style: solid;\n}\n\n::slotted([role="separator"]:not(hr)) {\n  width: 100%;\n  height: 1px;\n  background-color: var(--pf-c-divider--BackgroundColor, var(--pf-global--BorderColor--100, #d2d2d2));\n  padding: 0px;\n  margin: 0px;\n  border: 0;\n  display: block;\n  pointer-events: none;\n}\n`;
+const styles = css `:host {
+  display: block;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: normal;
+  color: #777;
+  padding-top: 0.5rem;
+  padding-right: 1rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #6a6e73;
+}
+
+::slotted(hr) {
+  margin: 0;
+  border-color: var(--pf-c-divider--BackgroundColor, var(--pf-global--BorderColor--100, #d2d2d2));
+  border-style: solid;
+}
+
+::slotted([role="separator"]:not(hr)) {
+  width: 100%;
+  height: 1px;
+  background-color: var(--pf-c-divider--BackgroundColor, var(--pf-global--BorderColor--100, #d2d2d2));
+  padding: 0px;
+  margin: 0px;
+  border: 0;
+  display: block;
+  pointer-events: none;
+}
+`;
 let PfDropdownGroup = class PfDropdownGroup extends LitElement {
     render() {
         return html `
@@ -17,7 +55,7 @@ PfDropdownGroup.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
-PfDropdownGroup.version = "4.1.0";
+PfDropdownGroup.version = "4.3.0";
 __decorate([
     property({ reflect: true })
 ], PfDropdownGroup.prototype, "label", void 0);

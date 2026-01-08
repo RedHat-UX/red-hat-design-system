@@ -5,7 +5,15 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { TimestampController, } from '@patternfly/pfe-core/controllers/timestamp-controller.js';
 import { css } from "lit";
-const style = css `:host {\n  display: inline;\n}\n\ntime {\n  text-decoration: var(--_timestamp-text-decoration, none);\n  text-underline-offset: var(--_timestamp-text-underline-offset, initial);\n}\n`;
+const style = css `:host {
+  display: inline;
+}
+
+time {
+  text-decoration: var(--_timestamp-text-decoration, none);
+  text-underline-offset: var(--_timestamp-text-underline-offset, initial);
+}
+`;
 const BooleanStringConverter = {
     fromAttribute(value) {
         return !value || value === 'true';
@@ -47,7 +55,7 @@ let PfTimestamp = class PfTimestamp extends LitElement {
 };
 _PfTimestamp_timestamp = new WeakMap();
 PfTimestamp.styles = [style];
-PfTimestamp.version = "4.1.0";
+PfTimestamp.version = "4.3.0";
 __decorate([
     property({ reflect: true, attribute: 'date-format' })
 ], PfTimestamp.prototype, "dateFormat", void 0);

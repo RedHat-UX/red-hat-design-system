@@ -5,7 +5,7 @@
  */
 import { noChange } from '../lit-html.js';
 import { isPrimitive } from '../directive-helpers.js';
-import { directive, AsyncDirective } from '../async-directive.js';
+import { directive, AsyncDirective, } from '../async-directive.js';
 import { Pauser, PseudoWeakRef } from './private-async-helpers.js';
 const isPromise = (x) => {
     return !isPrimitive(x) && typeof x.then === 'function';
@@ -21,7 +21,7 @@ export class UntilDirective extends AsyncDirective {
         this.__pauser = new Pauser();
     }
     render(...args) {
-        return args.find((x) => !isPromise(x)) ?? noChange;
+        return (args.find((x) => !isPromise(x)) ?? noChange);
     }
     update(_part, args) {
         const previousValues = this.__values;

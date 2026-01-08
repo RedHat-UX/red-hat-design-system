@@ -8,7 +8,82 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import '@patternfly/elements/pf-button/pf-button.js';
 import '@patternfly/elements/pf-icon/pf-icon.js';
 import { css } from "lit";
-const styles = css `:host {\n  display: inline-block;\n  position: absolute;\n  right: var(--pf-c-back-to-top--Right, var(--pf-global--spacer--2xl, 3rem));\n  bottom: var(--pf-c-back-to-top--Bottom, var(--pf-global--spacer--lg, 1.5rem));\n}\n\n[part="trigger"] {\n  box-shadow: var(--pf-c-back-to-top--c-button--BoxShadow, var(--pf-global--BoxShadow--lg-bottom, 0 0.75rem 0.75rem -0.5rem rgba(3, 3, 3, 0.18)));\n\n  --pf-c-button--FontSize: var(--pf-c-back-to-top--c-button--FontSize, var(--pf-global--FontSize--xs, 0.75rem));\n  --pf-c-button--BorderRadius: var(--pf-c-back-to-top--c-button--BorderRadius,  var(--pf-global--BorderRadius--lg, 30em));\n  --pf-c-button--PaddingTop: var(--pf-c-back-to-top--c-button--PaddingTop, var(--pf-global--spacer--xs, 0.25rem));\n  --pf-c-button--PaddingRight: var(--pf-c-back-to-top--c-button--PaddingRight, var(--pf-global--spacer--sm, 0.5rem));\n  --pf-c-button--PaddingBottom: var(--pf-c-back-to-top--c-button--PaddingBottom, var(--pf-global--spacer--xs, 0.25rem));\n  --pf-c-button--PaddingLeft: var(--pf-c-back-to-top--c-button--PaddingLeft, var(--pf-global--spacer--sm, 0.5rem));\n}\n\na {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  color: var(--pf-c-button--m-primary--Color, var(--pf-global--Color--light-100, #fff));\n  background-color: var(--pf-c-button--m-primary--BackgroundColor, var(--pf-global--primary-color--100, #06c));\n  text-decoration: none;\n  font-size: var(--pf-c-button--FontSize);\n  padding: var(--pf-c-button--PaddingTop) var(--pf-c-button--PaddingRight) var(--pf-c-button--PaddingBottom) var(--pf-c-button--PaddingLeft);\n  border-radius: var(--pf-c-button--BorderRadius);\n  gap: var(--pf-c-button__icon--m-end--MarginLeft, var(--pf-global--spacer--xs, 0.25rem));\n}\n\na:hover {\n  --pf-c-button--m-primary--Color: var(--pf-c-button--m-primary--hover--Color, var(--pf-global--Color--light-100, #fff));\n  --pf-c-button--m-primary--BackgroundColor: var(--pf-c-button--m-primary--hover--BackgroundColor, var(--pf-global--primary-color--200, #004080));\n}\n\na:focus {\n  --pf-c-button--m-primary--Color: var(--pf-c-button--m-primary--hover--Color, var(--pf-global--Color--light-100,#fff));\n  --pf-c-button--m-primary--BackgroundColor: var(--pf-c-button--m-primary--hover--BackgroundColor, var(--pf-global--primary-color--200, #004080));\n}\n\n[part="trigger"][hidden] {\n  display: none;\n}\n\npf-icon {\n  /* override icon size as default sm variant is incorrect */\n  --pf-icon--size: var(--pf-c-button--FontSize);\n  vertical-align: -0.125rem;\n}\n\nspan {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: var(--pf-c-button__icon--m-end--MarginLeft, var(--pf-global--spacer--xs, 0.25rem));\n}\n\n@media (min-width: 768px) {\n  :host {\n    --pf-c-back-to-top--Bottom: var(--pf-c-back-to-top--md--Bottom, var(--pf-global--spacer--2xl, 3rem));\n  }\n}\n`;
+const styles = css `:host {
+  display: inline-block;
+  position: absolute;
+  /** Right position for back to top */
+  right: var(--pf-c-back-to-top--Right, var(--pf-global--spacer--2xl, 3rem));
+  /** Bottom position for back to top */
+  bottom: var(--pf-c-back-to-top--Bottom, var(--pf-global--spacer--lg, 1.5rem));
+}
+
+[part="trigger"] {
+  /** Box shadow for back to top button */
+  box-shadow: var(--pf-c-back-to-top--c-button--BoxShadow, var(--pf-global--BoxShadow--lg-bottom, 0 0.75rem 0.75rem -0.5rem rgba(3, 3, 3, 0.18)));
+
+  /** Font size for back to top button */
+  --pf-c-button--FontSize: var(--pf-c-back-to-top--c-button--FontSize, var(--pf-global--FontSize--xs, 0.75rem));
+  /** Border radius for back to top button */
+  --pf-c-button--BorderRadius: var(--pf-c-back-to-top--c-button--BorderRadius,  var(--pf-global--BorderRadius--lg, 30em));
+  /** Top padding for back to top button */
+  --pf-c-button--PaddingTop: var(--pf-c-back-to-top--c-button--PaddingTop, var(--pf-global--spacer--xs, 0.25rem));
+  /** Right padding for back to top button */
+  --pf-c-button--PaddingRight: var(--pf-c-back-to-top--c-button--PaddingRight, var(--pf-global--spacer--sm, 0.5rem));
+  /** Bottom padding for back to top button */
+  --pf-c-button--PaddingBottom: var(--pf-c-back-to-top--c-button--PaddingBottom, var(--pf-global--spacer--xs, 0.25rem));
+  /** Left padding for back to top button */
+  --pf-c-button--PaddingLeft: var(--pf-c-back-to-top--c-button--PaddingLeft, var(--pf-global--spacer--sm, 0.5rem));
+}
+
+a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /** Primary color for back to top button */
+  color: var(--pf-c-button--m-primary--Color, var(--pf-global--Color--light-100, #fff));
+  /** Primary background color for back to top button */
+  background-color: var(--pf-c-button--m-primary--BackgroundColor, var(--pf-global--primary-color--100, #06c));
+  text-decoration: none;
+  font-size: var(--pf-c-button--FontSize);
+  padding: var(--pf-c-button--PaddingTop) var(--pf-c-button--PaddingRight) var(--pf-c-button--PaddingBottom) var(--pf-c-button--PaddingLeft);
+  border-radius: var(--pf-c-button--BorderRadius);
+  /** End icon margin left for back to top button */
+  gap: var(--pf-c-button__icon--m-end--MarginLeft, var(--pf-global--spacer--xs, 0.25rem));
+}
+
+a:hover {
+  --pf-c-button--m-primary--Color: var(--pf-c-button--m-primary--hover--Color, var(--pf-global--Color--light-100, #fff));
+  --pf-c-button--m-primary--BackgroundColor: var(--pf-c-button--m-primary--hover--BackgroundColor, var(--pf-global--primary-color--200, #004080));
+}
+
+a:focus {
+  --pf-c-button--m-primary--Color: var(--pf-c-button--m-primary--hover--Color, var(--pf-global--Color--light-100,#fff));
+  --pf-c-button--m-primary--BackgroundColor: var(--pf-c-button--m-primary--hover--BackgroundColor, var(--pf-global--primary-color--200, #004080));
+}
+
+[part="trigger"][hidden] {
+  display: none;
+}
+
+pf-icon {
+  /* override icon size as default sm variant is incorrect */
+  --pf-icon--size: var(--pf-c-button--FontSize);
+  vertical-align: -0.125rem;
+}
+
+span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--pf-c-button__icon--m-end--MarginLeft, var(--pf-global--spacer--xs, 0.25rem));
+}
+
+@media (min-width: 768px) {
+  :host {
+    --pf-c-back-to-top--Bottom: var(--pf-c-back-to-top--md--Bottom, var(--pf-global--spacer--2xl, 3rem));
+  }
+}
+`;
 let PfBackToTop = class PfBackToTop extends LitElement {
     constructor() {
         super(...arguments);
@@ -64,8 +139,14 @@ let PfBackToTop = class PfBackToTop extends LitElement {
         }
         if (this.href) {
             return html `
-        <a href="${this.href}" ?hidden="${!__classPrivateFieldGet(this, _PfBackToTop_visible, "f")}" part="trigger" aria-label="${ifDefined(__classPrivateFieldGet(this, _PfBackToTop_instances, "a", _PfBackToTop_ariaLabel_get))}">
+        <!-- The \`<a>\` or \`<pf-button>\` element -->
+        <a href="${this.href}"
+           ?hidden="${!__classPrivateFieldGet(this, _PfBackToTop_visible, "f")}"
+           part="trigger"
+           aria-label="${ifDefined(__classPrivateFieldGet(this, _PfBackToTop_instances, "a", _PfBackToTop_ariaLabel_get))}">
+          <!-- Contains the prefix icon to display before the link or button. -->
           <slot name="icon"></slot>
+          <!-- Text to display inside the link or button. -->
           <slot @slotchange="${__classPrivateFieldGet(this, _PfBackToTop_instances, "m", _PfBackToTop_onSlotchange)}"></slot>
           <pf-icon icon="angle-up" set="fas"></pf-icon>
         </a>
@@ -73,6 +154,7 @@ let PfBackToTop = class PfBackToTop extends LitElement {
         }
         else {
             return html `
+        <!-- The \`<a>\` or \`<pf-button>\` element -->
         <pf-button
             icon="${ifDefined(this.icon)}"
             icon-set="${ifDefined(this.iconSet)}"
@@ -81,8 +163,10 @@ let PfBackToTop = class PfBackToTop extends LitElement {
             part="trigger"
             label="${ifDefined(__classPrivateFieldGet(this, _PfBackToTop_instances, "a", _PfBackToTop_ariaLabel_get))}"
           >
+          <!-- Contains the prefix icon to display before the link or button. -->
           <slot name="icon" slot="icon"></slot>
           <span>
+            <!-- Text to display inside the link or button. -->
             <slot></slot>
             <pf-icon icon="angle-up" set="fas"></pf-icon>
           </span>
@@ -150,7 +234,7 @@ _PfBackToTop_addScrollListener = function _PfBackToTop_addScrollListener() {
     __classPrivateFieldGet(this, _PfBackToTop_toggleVisibility, "f").call(this);
 };
 PfBackToTop.styles = [styles];
-PfBackToTop.version = "4.1.0";
+PfBackToTop.version = "4.3.0";
 __decorate([
     property({ reflect: true })
 ], PfBackToTop.prototype, "icon", void 0);

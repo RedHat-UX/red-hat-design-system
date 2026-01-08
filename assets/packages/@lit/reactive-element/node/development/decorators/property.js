@@ -1,4 +1,4 @@
-import { defaultConverter, notEqual } from '../reactive-element.js';
+import { notEqual, defaultConverter } from '../reactive-element.js';
 
 /**
  * @license
@@ -83,7 +83,7 @@ const standardProperty = (options = defaultPropertyDeclaration, target, context)
             set(v) {
                 const oldValue = target.get.call(this);
                 target.set.call(this, v);
-                this.requestUpdate(name, oldValue, options);
+                this.requestUpdate(name, oldValue, options, true, v);
             },
             init(v) {
                 if (v !== undefined) {
@@ -98,7 +98,7 @@ const standardProperty = (options = defaultPropertyDeclaration, target, context)
         return function (value) {
             const oldValue = this[name];
             target.call(this, value);
-            this.requestUpdate(name, oldValue, options);
+            this.requestUpdate(name, oldValue, options, true, value);
         };
     }
     throw new Error(`Unsupported decorator location: ${kind}`);

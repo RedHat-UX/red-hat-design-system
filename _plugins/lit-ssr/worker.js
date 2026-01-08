@@ -1,7 +1,8 @@
-                                                                     
-                                                              
+                                                                                        
+                                                
                                                                               
                                                                             
+                                                                                     
 
 import '@patternfly/pfe-core/ssr-shims.js';
 
@@ -19,19 +20,15 @@ import { collectResult } from '@lit-labs/ssr/lib/render-result.js';
 import { renderValue } from '@lit-labs/ssr/lib/render-value.js';
 
 import Piscina from 'piscina';
-import Postcss from 'postcss';
-import cssnano from 'cssnano';
-
-const postcss = Postcss([cssnano]);
+import { transform, Features } from 'lightningcss';
 
 ;                         
                     
-                   
  
 
-const { imports, tsconfig } = Piscina.workerData                  ;
+const { imports } = Piscina.workerData                  ;
 
-registerTS({ tsconfig });
+registerTS();
 register('./lit-css-node.ts', import.meta.url);
 
 /* eslint-disable no-console */
@@ -56,7 +53,7 @@ for (const bareSpec of imports) {
 /* eslint-enable no-console */
 
 class RHDSSSRableRenderer extends LitElementRenderer {
-  static styleCache = new Map                         ();
+  static styleCache = new Map               ();
 
   static isRHDSSSRController(ctrl                    )                            {
     return !!(ctrl                     ).isRHDSSSRController;
@@ -68,41 +65,67 @@ class RHDSSSRableRenderer extends LitElementRenderer {
         .filter(RHDSSSRableRenderer.isRHDSSSRController);
   }
 
-  async setupController(controller                   , renderInfo            ) {
-    if (controller.ssrSetup) {
-      await controller.ssrSetup(renderInfo);
-    }
-    return '';
+           renderShadow(renderInfo            )                      {
+    return [
+      // Render styles.
+      this.#renderStyles(),
+      // Thunk that sets up controllers first, then renders template
+      async () => {
+        for (const controller of this.getControllers()) {
+          if (controller.ssrSetup) {
+            await controller.ssrSetup(renderInfo);
+          }
+        }
+        return renderValue(
+          // @ts-expect-error: if upstream can do it, so can we
+          this.element.render(),
+          renderInfo,
+        );
+      },
+    ];
   }
 
-          * renderShadow(renderInfo            )               {
-    for (const controller of this.getControllers()) {
-      yield this.setupController(controller, renderInfo);
-    }
-    // Render styles.
+  #renderStyles()        {
     const styles = (this.element.constructor                     ).elementStyles;
     if (styles !== undefined && styles.length > 0) {
-      yield '<style>';
-      for (const style of styles) {
-        const { cssText } = style             ;
-        if (!RHDSSSRableRenderer.styleCache.has(cssText)) {
-          const processed = postcss
-              .process(cssText, { from: undefined })
-              .then(r => r.css)
-              .catch(() => cssText);
-          RHDSSSRableRenderer.styleCache.set(cssText, processed);
-        }
-        yield RHDSSSRableRenderer.styleCache.get(cssText) ;
-      }
-      yield '</style>';
+      return () => [
+        '<style>',
+        ...this.thunkStyles(styles),
+        '</style>',
+      ];
+    } else {
+      return () => '';
     }
-    // Render template
+  }
 
-    yield* renderValue(
-      // @ts-expect-error: if upstream can do it, so can we
-      this.element.render(),
-      renderInfo,
-    );
+          thunkStyles(styles                     )          {
+    return styles.flatMap(style => {
+      const { cssText } = style             ;
+      if (!RHDSSSRableRenderer.styleCache.has(cssText)) {
+        const processed = () => {
+          try {
+            const { code } = transform({
+              filename: 'constructed-stylesheet.css',
+              code: Buffer.from(cssText),
+              minify: true,
+              include: Features.Nesting,
+            });
+            // Fix lightningcss normalizing inherit to normal for color-scheme
+            // https://github.com/parcel-bundler/lightningcss/issues/821#issuecomment-3719524299
+            return code
+                .toString()
+                .replaceAll(
+                  'color-scheme:normal',
+                  'color-scheme:inherit',
+                );
+          } catch {
+            return cssText;
+          }
+        };
+        RHDSSSRableRenderer.styleCache.set(cssText, processed);
+      }
+      return [RHDSSSRableRenderer.styleCache.get(cssText) ];
+    });
   }
 }
 

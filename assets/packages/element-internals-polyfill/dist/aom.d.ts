@@ -1,3 +1,3 @@
-import { IAom, IElementInternals } from './types.js';
-export declare const aom: IAom;
-export declare const initAom: (ref: Element, internals: IElementInternals) => void;
+import "./types.js";
+export declare const aom: Record<keyof ARIAMixin, string>;
+export declare const initAom: (ref: FormAssociatedCustomElement, internals: ElementInternals) => void;

@@ -1,8 +1,6 @@
 import { LitElement, type TemplateResult } from 'lit';
 /**
  * @slot - Tab panel content
- * @cssprop {<color>} [--pf-c-tab-content--m-light-300=#f0f0f0]
- * @csspart container - container for the panel content
  */
 export declare class PfTabPanel extends LitElement {
     static readonly styles: CSSStyleSheet[];

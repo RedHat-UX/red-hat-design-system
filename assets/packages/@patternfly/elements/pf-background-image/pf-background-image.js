@@ -6,7 +6,80 @@ import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js
 import { property } from 'lit/decorators/property.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { css } from "lit";
-const styles = css `:host {\n  display: flex;\n\n  --_background-image: var(--pf-c-background-image--BackgroundImage);\n}\n\n#outer-container {\n  display: contents;\n}\n\n#container {\n  padding: 0;\n  margin: 0;\n  background-color: transparent;\n}\n\n#container::after {\n  display: block;\n  position: fixed;\n  top:  0;\n  left: 0;\n  z-index: -1;\n  width: 100%;\n  height: 100%;\n  content: "";\n  background-color: var(--pf-c-background-image--BackgroundColor, var(--pf-global--BackgroundColor--dark-100, #151515));\n  background-image: var(--_background-image);\n  filter: var(--pf-c-background-image--Filter, url("#image_overlay"));\n  background-repeat:  no-repeat;\n  background-size: cover;\n}\n\nslot[name="filter"] {\n  display: none;\n}\n\nslot[part="content"] {\n  display: block;\n  position: relative;\n  z-index: 1;\n  color: white;\n}\n\n@media screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {\n  #container::after {\n    background-image: var(--pf-c-background-image--BackgroundImage-2x, var(--_background-image-2x, var(--_background-image)));\n  }\n}\n\n@media screen and (min-width: 576px) {\n  #container::after {\n    background-image: var(--pf-c-background-image--BackgroundImage--sm, var(--_background-image-sm, var(--_background-image)));\n  }\n}\n\n@media screen and (min-width: 576px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 576px) and (min-resolution: 192dpi) {\n  #container::after {\n    background-image: var(--pf-c-background-image--BackgroundImage--sm-2x, var(--_background-image-sm-2x, var(--_background-image)));\n  }\n}\n\n@media screen and (min-width: 992px) {\n  #container::after {\n    background-image: var(--pf-c-background-image--BackgroundImage--lg, var(--_background-image-lg, var(--_background-image)));\n  }\n}\n`;
+const styles = css `:host {
+  display: flex;
+
+  /** Background image for the element */
+  --_background-image: var(--pf-c-background-image--BackgroundImage);
+}
+
+#outer-container {
+  display: contents;
+}
+
+#container {
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+}
+
+#container::after {
+  display: block;
+  position: fixed;
+  top:  0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  content: "";
+  /** Background color for the background image */
+  background-color: var(--pf-c-background-image--BackgroundColor, var(--pf-global--BackgroundColor--dark-100, #151515));
+  background-image: var(--_background-image);
+  /** SVG filter applied to the background image */
+  filter: var(--pf-c-background-image--Filter, url("#image_overlay"));
+  background-repeat:  no-repeat;
+  background-size: cover;
+}
+
+slot[name="filter"] {
+  display: none;
+}
+
+slot[part="content"] {
+  display: block;
+  position: relative;
+  z-index: 1;
+  color: white;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  #container::after {
+    /** Background image for 2x DPI screens */
+    background-image: var(--pf-c-background-image--BackgroundImage-2x, var(--_background-image-2x, var(--_background-image)));
+  }
+}
+
+@media screen and (min-width: 576px) {
+  #container::after {
+    /** Background image for small screens */
+    background-image: var(--pf-c-background-image--BackgroundImage--sm, var(--_background-image-sm, var(--_background-image)));
+  }
+}
+
+@media screen and (min-width: 576px) and (-webkit-min-device-pixel-ratio: 2), (min-width: 576px) and (min-resolution: 192dpi) {
+  #container::after {
+    /** Background image for small screens with 2x DPI */
+    background-image: var(--pf-c-background-image--BackgroundImage--sm-2x, var(--_background-image-sm-2x, var(--_background-image)));
+  }
+}
+
+@media screen and (min-width: 992px) {
+  #container::after {
+    /** Background image for large screens */
+    background-image: var(--pf-c-background-image--BackgroundImage--lg, var(--_background-image-lg, var(--_background-image)));
+  }
+}
+`;
 let PfBackgroundImage = class PfBackgroundImage extends LitElement {
     constructor() {
         super(...arguments);
@@ -39,6 +112,7 @@ let PfBackgroundImage = class PfBackgroundImage extends LitElement {
         return html `
       <div id="container" part="container" style="${styleMap(cssProps)}">
         ${!this.filter ? html `` : html `
+          <!-- Overrides the default svg filter for the background image. -->
           <slot name="filter" @slotchange=${__classPrivateFieldGet(this, _PfBackgroundImage_instances, "m", _PfBackgroundImage_onSlotChange)}>
             ${(__classPrivateFieldGet(this, _PfBackgroundImage_svg, "f") && __classPrivateFieldGet(this, _PfBackgroundImage_updated, "f")) ? __classPrivateFieldGet(this, _PfBackgroundImage_svg, "f") : html `
               <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
@@ -74,7 +148,7 @@ _PfBackgroundImage_onSlotChange = function _PfBackgroundImage_onSlotChange() {
     }
 };
 PfBackgroundImage.styles = [styles];
-PfBackgroundImage.version = "4.1.0";
+PfBackgroundImage.version = "4.3.0";
 __decorate([
     property({ reflect: true })
 ], PfBackgroundImage.prototype, "src", void 0);

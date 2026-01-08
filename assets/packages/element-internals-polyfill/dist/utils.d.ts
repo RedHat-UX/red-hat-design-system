@@ -1,4 +1,3 @@
-import { ICustomElement, IElementInternals, LabelsList } from './types.js';
 /**
  * Set attribute if its value differs from existing one.
  *
@@ -18,41 +17,33 @@ import { ICustomElement, IElementInternals, LabelsList } from './types.js';
  * @param {string} value - The attribute value
  * @returns
  */
-export declare const setAttribute: (ref: ICustomElement | Element, name: string, value: string) => void;
+export declare const setAttribute: (ref: Element, name: string, value: string) => void;
 /**
  * Toggle's the disabled state (attributes & callback) on the given element
- * @param {ICustomElement} ref - The custom element instance
+ * @param {HTMLElement} ref - The custom element instance
  * @param {boolean} disabled - The disabled state
  */
-export declare const setDisabled: (ref: ICustomElement, disabled: boolean) => void;
+export declare const setDisabled: (ref: FormAssociatedCustomElement, disabled: boolean) => void;
 /**
  * Removes all hidden inputs for the given element internals instance
- * @param {IElementInternals} internals - The element internals instance
+ * @param {ElementInternals} internals - The element internals instance
  * @return {void}
  */
-export declare const removeHiddenInputs: (internals: IElementInternals) => void;
+export declare const removeHiddenInputs: (internals: ElementInternals) => void;
 /**
  * Creates a hidden input for the given ref
- * @param {ICustomElement} ref - The element to watch
- * @param {IElementInternals} internals - The element internals instance for the ref
+ * @param {HTMLElement} ref - The element to watch
+ * @param {ElementInternals} internals - The element internals instance for the ref
  * @return {HTMLInputElement} The hidden input
  */
-export declare const createHiddenInput: (ref: ICustomElement, internals: IElementInternals) => HTMLInputElement | null;
-/**
- * Initialize a ref by setting up an attribute observe on it
- * looking for changes to disabled
- * @param {ICustomElement} ref - The element to watch
- * @param {IElementInternals} internals - The element internals instance for the ref
- * @return {void}
- */
-export declare const initRef: (ref: ICustomElement, internals: IElementInternals) => void;
+export declare const createHiddenInput: (ref: HTMLElement, internals: ElementInternals) => HTMLInputElement | null;
 /**
  * Set up labels for the ref
- * @param {ICustomElement} ref - The ref to add labels to
- * @param {LabelsList} labels - A list of the labels
+ * @param {HTMLElement} ref - The ref to add labels to
+ * @param {NodeList} labels - A list of the labels
  * @return {void}
  */
-export declare const initLabels: (ref: ICustomElement, labels: LabelsList) => void;
+export declare const initLabels: (ref: HTMLElement, labels: NodeList) => void;
 /**
  * Sets the internals-valid and internals-invalid attributes
  * based on form validity.
@@ -95,7 +86,7 @@ export declare const formResetCallback: (event: Event) => void;
  * @param {ElementInternals} internals - The internals for ref
  * @return {void}
  */
-export declare const initForm: (ref: ICustomElement, form: HTMLFormElement, internals: IElementInternals) => void;
+export declare const initForm: (ref: FormAssociatedCustomElement, form: HTMLFormElement, internals: ElementInternals) => void;
 /**
  * Recursively look for an element's parent form
  * @param {Element} elem - The element to look for a parent form
@@ -104,11 +95,11 @@ export declare const initForm: (ref: ICustomElement, form: HTMLFormElement, inte
 export declare const findParentForm: (elem: any) => any;
 /**
  * Throw an error if the element ref is not form associated
- * @param ref {ICustomElement} - The element to check if it is form associated
+ * @param ref {HTMLElement} - The element to check if it is form associated
  * @param message {string} - The error message to throw
  * @param ErrorType {any} - The error type to throw, defaults to DOMException
  */
-export declare const throwIfNotFormAssociated: (ref: ICustomElement, message: string, ErrorType?: any) => void;
+export declare const throwIfNotFormAssociated: (ref: HTMLElement, message: string, ErrorType?: any) => void;
 /**
  * Called for each HTMLFormElement.checkValidity|reportValidity
  * will loop over a form's added components and call the respective
@@ -123,9 +114,9 @@ export declare const overrideFormMethod: (form: HTMLFormElement, returnValue: bo
  * Will upgrade an ElementInternals instance by initializing the
  * instance's form and labels. This is called when the element is
  * either constructed or appended from a DocumentFragment
- * @param ref {ICustomElement} - The custom element to upgrade
+ * @param ref {HTMLElement} - The custom element to upgrade
  */
-export declare const upgradeInternals: (ref: ICustomElement) => void;
+export declare const upgradeInternals: (ref: FormAssociatedCustomElement) => boolean;
 /**
  * Check to see if MutationObserver exists in the current
  * execution context. Will likely return false on the server

@@ -231,7 +231,7 @@ export const _$LE = {
 };
 // IMPORTANT: do not change the property name or the assignment expression.
 // This line will be used in regexes to search for LitElement usage.
-(global.litElementVersions ??= []).push('4.2.0');
+(global.litElementVersions ??= []).push('4.2.2');
 if (DEV_MODE && global.litElementVersions.length > 1) {
     queueMicrotask(() => {
         issueWarning('multiple-versions', `Multiple versions of Lit loaded. Loading multiple versions ` +

@@ -34,7 +34,7 @@ export declare const _$LH: {
             _$parent: Disconnectable;
             _$disconnectableChildren?: Set<Disconnectable>;
             _$notifyDirectiveConnectionChanged?(isConnected: boolean): void;
-            readonly _$isConnected: boolean;
+            get _$isConnected(): boolean;
             _$initialize(part: Part, parent: Disconnectable, attributeIndex: number | undefined): void;
             render: ((...props: Array<unknown>) => unknown) & (() => unknown);
             update(_part: Part, props: Array<unknown>): unknown;

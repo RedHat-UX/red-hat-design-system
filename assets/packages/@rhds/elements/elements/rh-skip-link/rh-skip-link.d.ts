@@ -11,6 +11,8 @@ import { LitElement } from 'lit';
 export declare class RhSkipLink extends LitElement {
     static shadowRootOptions: {
         delegatesFocus: boolean;
+        clonable?: boolean;
+        customElementRegistry?: CustomElementRegistry;
         mode: ShadowRootMode;
         serializable?: boolean;
         slotAssignment?: SlotAssignmentMode;

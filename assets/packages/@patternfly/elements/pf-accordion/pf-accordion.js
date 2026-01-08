@@ -13,7 +13,160 @@ import { PfAccordionPanel } from './pf-accordion-panel.js';
 export * from './pf-accordion-header.js';
 export * from './pf-accordion-panel.js';
 import { css } from "lit";
-const style = css `:host {\n\t--pf-c-accordion--BackgroundColor: var(--pf-global--BackgroundColor--100, #fff);\n\t--pf-c-accordion__toggle--PaddingTop: var(--pf-global--spacer--sm, 0.5rem);\n\t--pf-c-accordion__toggle--PaddingRight: var(--pf-global--spacer--md, 1rem);\n\t--pf-c-accordion__toggle--PaddingBottom: var(--pf-global--spacer--sm, 0.5rem);\n\t--pf-c-accordion__toggle--PaddingLeft: var(--pf-global--spacer--md, 1rem);\n\t--pf-c-accordion__toggle--before--BackgroundColor: transparent;\n\t--pf-c-accordion__toggle--before--Top: 0;\n\t--pf-c-accordion__toggle--hover--BackgroundColor: var(--pf-global--BackgroundColor--200, #f0f0f0);\n\t--pf-c-accordion__toggle--focus--BackgroundColor: var(--pf-global--BackgroundColor--200, #f0f0f0);\n\t--pf-c-accordion__toggle--active--BackgroundColor: var(--pf-global--BackgroundColor--200, #f0f0f0);\n\t--pf-c-accordion__toggle--before--Width: var(--pf-global--BorderWidth--lg, 3px);\n\t--pf-c-accordion__toggle--m-expanded--before--BackgroundColor: var(--pf-global--primary-color--100, #06c);\n\t--pf-c-accordion__toggle-text--MaxWidth: calc(100% - var(--pf-global--spacer--lg, 1.5rem));\n\t--pf-c-accordion__toggle--hover__toggle-text--Color: var(--pf-global--link--Color, #06c);\n\t--pf-c-accordion__toggle--active__toggle-text--Color: var(--pf-global--link--Color, #06c);\n\t--pf-c-accordion__toggle--active__toggle-text--FontWeight: var(--pf-global--FontWeight--semi-bold, 700);\n\t--pf-c-accordion__toggle--focus__toggle-text--Color: var(--pf-global--link--Color, #06c);\n\t--pf-c-accordion__toggle--focus__toggle-text--FontWeight: var(--pf-global--FontWeight--semi-bold, 700);\n\t--pf-c-accordion__toggle--m-expanded__toggle-text--Color: var(--pf-global--link--Color, #06c);\n\t--pf-c-accordion__toggle--m-expanded__toggle-text--FontWeight: var(--pf-global--FontWeight--semi-bold, 700);\n\t--pf-c-accordion__toggle-icon--Transition: .2s ease-in 0s;\n\t--pf-c-accordion__toggle--m-expanded__toggle-icon--Rotate: 90deg;\n\t--pf-c-accordion__expanded-content--Color: var(--pf-global--Color--200, #6a6e73);\n\t--pf-c-accordion__expanded-content--FontSize: var(--pf-global--FontSize--sm, 0.875rem);\n\t--pf-c-accordion__expanded-content--m-expanded__expanded-content-body--before--BackgroundColor: var(--pf-global--primary-color--100, #06c);\n\t--pf-c-accordion__expanded-content--m-fixed--MaxHeight: 9.375rem;\n\t--pf-c-accordion__expanded-content-body--PaddingTop: var(--pf-global--spacer--sm, 0.5rem);\n\t--pf-c-accordion__expanded-content-body--PaddingRight: var(--pf-global--spacer--md, 1rem);\n\t--pf-c-accordion__expanded-content-body--PaddingBottom: var(--pf-global--spacer--sm, 0.5rem);\n\t--pf-c-accordion__expanded-content-body--PaddingLeft: var(--pf-global--spacer--md, 1rem);\n\t--pf-c-accordion__expanded-content-body--expanded-content-body--PaddingTop: 0;\n\t--pf-c-accordion__expanded-content-body--before--BackgroundColor: transparent;\n\t--pf-c-accordion__expanded-content-body--before--Width: var(--pf-global--BorderWidth--lg, 3px);\n\t--pf-c-accordion__expanded-content-body--before--Top: 0;\n\t--pf-c-accordion--m-display-lg__toggle--PaddingTop: var(--pf-global--spacer--md, 1rem);\n\t--pf-c-accordion--m-display-lg__toggle--PaddingRight: var(--pf-global--spacer--md, 1rem);\n\t--pf-c-accordion--m-display-lg__toggle--PaddingBottom: var(--pf-global--spacer--md, 1rem);\n\t--pf-c-accordion--m-display-lg__toggle--PaddingLeft: var(--pf-global--spacer--lg, 1.5rem);\n\t--pf-c-accordion--m-display-lg__toggle--FontFamily: var(--pf-global--FontFamily--heading--sans-serif, "RedHatDisplay", "Overpass", overpass, helvetica, arial, sans-serif);\n\t--pf-c-accordion--m-display-lg__toggle--FontSize: var(--pf-global--FontSize--xl, 1.25rem);\n\t--pf-c-accordion--m-display-lg__toggle--hover__toggle-text--Color: var(--pf-global--Color--100, #151515);\n\t--pf-c-accordion--m-display-lg__toggle--active__toggle-text--Color: var(--pf-global--Color--100, #151515);\n\t--pf-c-accordion--m-display-lg__toggle--active__toggle-text--FontWeight: var(--pf-global--FontWeight--normal, 400);\n\t--pf-c-accordion--m-display-lg__toggle--focus__toggle-text--Color: var(--pf-global--Color--100, #151515);\n\t--pf-c-accordion--m-display-lg__toggle--focus__toggle-text--FontWeight: var(--pf-global--FontWeight--normal, 400);\n\t--pf-c-accordion--m-display-lg__toggle--m-expanded__toggle-text--Color: var(--pf-global--Color--100, #151515);\n\t--pf-c-accordion--m-display-lg__toggle--m-expanded__toggle-text--FontWeight: var(--pf-global--FontWeight--normal, 400);\n\t--pf-c-accordion--m-display-lg__expanded-content--FontSize: var(--pf-global--FontSize--md, 1rem);\n\t--pf-c-accordion--m-display-lg__expanded-content--Color: var(--pf-global--Color--100, #151515);\n\t--pf-c-accordion--m-display-lg__expanded-content-body--PaddingTop: 0;\n\t--pf-c-accordion--m-display-lg__expanded-content-body--PaddingRight: var(--pf-global--spacer--md, 1rem);\n\t--pf-c-accordion--m-display-lg__expanded-content-body--PaddingBottom: var(--pf-global--spacer--md, 1rem);\n\t--pf-c-accordion--m-display-lg__expanded-content-body--last-child--PaddingBottom: var(--pf-global--spacer--lg, 1.5rem);\n\t--pf-c-accordion--m-display-lg__expanded-content-body--PaddingLeft: var(--pf-global--spacer--lg, 1.5rem);\n\t--pf-c-accordion--m-bordered--BorderTopWidth: var(--pf-global--BorderWidth--sm, 1px);\n\t--pf-c-accordion--m-bordered--BorderTopColor: var(--pf-global--BorderColor--100, #d2d2d2);\n\t--pf-c-accordion--m-bordered__toggle--before--Top: calc(-1 * var(--pf-global--BorderWidth--sm, 1px));\n\t--pf-c-accordion--m-bordered__toggle--after--BorderColor: var(--pf-global--BorderColor--100, #d2d2d2);\n\t--pf-c-accordion--m-bordered__toggle--after--BorderTopWidth: 0;\n\t--pf-c-accordion--m-bordered__toggle--after--BorderBottomWidth: var(--pf-global--BorderWidth--sm, 1px);\n\t--pf-c-accordion--m-bordered__expanded-content--m-expanded__expanded-content-body--last-child--after--BorderBottomWidth: var(--pf-global--BorderWidth--sm, 1px);\n\t--pf-c-accordion--m-bordered__expanded-content--m-expanded__expanded-content-body--last-child--after--BorderBottomColor: var(--pf-global--BorderColor--100, #d2d2d2);\n\tcolor: var(--pf-global--Color--100, #151515);\n\tbackground-color: var(--pf-c-accordion--BackgroundColor);\n}\n\n:host([bordered]) ::slotted(pf-accordion-header:first-child),\n:host([large]) ::slotted(pf-accordion-header:first-child) {\n  display: block;\n  border-top: 1px solid var(--accordion__bordered--Color);\n  border-bottom: 1px solid var(--accordion__bordered--Color);\n}\n\n:host([bordered]) ::slotted(pf-accordion-header:not(:first-child)),\n:host([large]) ::slotted(pf-accordion-header:not(:first-child)) {\n  display: block;\n  border-bottom: 1px solid var(--accordion__bordered--Color);\n}\n\n:host([bordered]) ::slotted(pf-accordion-header:is([expanded])),\n:host([large]) ::slotted(pf-accordion-header:is([expanded])) {\n  display: block;\n  border-bottom: 0;\n}\n\n:host([bordered]) ::slotted(pf-accordion-panel:is([expanded])),\n:host([large]) ::slotted(pf-accordion-panel:is([expanded])) {\n  display: block;\n  border-bottom: 1px solid var(--accordion__bordered--Color);\n}\n`;
+const style = css `:host {
+\t/** BackgroundColor for the accordion */
+\t--pf-c-accordion--BackgroundColor: var(--pf-global--BackgroundColor--100, #fff);
+\t/** PaddingTop for the toggle */
+\t--pf-c-accordion__toggle--PaddingTop: var(--pf-global--spacer--sm, 0.5rem);
+\t/** PaddingRight for the toggle */
+\t--pf-c-accordion__toggle--PaddingRight: var(--pf-global--spacer--md, 1rem);
+\t/** PaddingBottom for the toggle */
+\t--pf-c-accordion__toggle--PaddingBottom: var(--pf-global--spacer--sm, 0.5rem);
+\t/** PaddingLeft for the toggle */
+\t--pf-c-accordion__toggle--PaddingLeft: var(--pf-global--spacer--md, 1rem);
+\t/** BackgroundColor for the toggle before element */
+\t--pf-c-accordion__toggle--before--BackgroundColor: transparent;
+\t/** Top position for the toggle before element */
+\t--pf-c-accordion__toggle--before--Top: 0;
+\t/** BackgroundColor for the toggle on hover */
+\t--pf-c-accordion__toggle--hover--BackgroundColor: var(--pf-global--BackgroundColor--200, #f0f0f0);
+\t/** BackgroundColor for the toggle on focus */
+\t--pf-c-accordion__toggle--focus--BackgroundColor: var(--pf-global--BackgroundColor--200, #f0f0f0);
+\t/** BackgroundColor for the toggle when active */
+\t--pf-c-accordion__toggle--active--BackgroundColor: var(--pf-global--BackgroundColor--200, #f0f0f0);
+\t/** Width for the toggle before element */
+\t--pf-c-accordion__toggle--before--Width: var(--pf-global--BorderWidth--lg, 3px);
+\t/** BackgroundColor for the toggle before element when expanded */
+\t--pf-c-accordion__toggle--m-expanded--before--BackgroundColor: var(--pf-global--primary-color--100, #06c);
+\t/** MaxWidth for the toggle text */
+\t--pf-c-accordion__toggle-text--MaxWidth: calc(100% - var(--pf-global--spacer--lg, 1.5rem));
+\t/** Color for the toggle text on hover */
+\t--pf-c-accordion__toggle--hover__toggle-text--Color: var(--pf-global--link--Color, #06c);
+\t/** Color for the toggle text when active */
+\t--pf-c-accordion__toggle--active__toggle-text--Color: var(--pf-global--link--Color, #06c);
+\t/** FontWeight for the toggle text when active */
+\t--pf-c-accordion__toggle--active__toggle-text--FontWeight: var(--pf-global--FontWeight--semi-bold, 700);
+\t/** Color for the toggle text on focus */
+\t--pf-c-accordion__toggle--focus__toggle-text--Color: var(--pf-global--link--Color, #06c);
+\t/** FontWeight for the toggle text on focus */
+\t--pf-c-accordion__toggle--focus__toggle-text--FontWeight: var(--pf-global--FontWeight--semi-bold, 700);
+\t/** Color for the toggle text when expanded */
+\t--pf-c-accordion__toggle--m-expanded__toggle-text--Color: var(--pf-global--link--Color, #06c);
+\t/** FontWeight for the toggle text when expanded */
+\t--pf-c-accordion__toggle--m-expanded__toggle-text--FontWeight: var(--pf-global--FontWeight--semi-bold, 700);
+\t/** Transition for the toggle icon */
+\t--pf-c-accordion__toggle-icon--Transition: .2s ease-in 0s;
+\t/** Rotate value for the toggle icon when expanded */
+\t--pf-c-accordion__toggle--m-expanded__toggle-icon--Rotate: 90deg;
+\t/** Color for the expanded content */
+\t--pf-c-accordion__expanded-content--Color: var(--pf-global--Color--200, #6a6e73);
+\t/** FontSize for the expanded content */
+\t--pf-c-accordion__expanded-content--FontSize: var(--pf-global--FontSize--sm, 0.875rem);
+\t/** BackgroundColor for the expanded content body before element when expanded */
+\t--pf-c-accordion__expanded-content--m-expanded__expanded-content-body--before--BackgroundColor: var(--pf-global--primary-color--100, #06c);
+\t/** MaxHeight for the expanded content when fixed */
+\t--pf-c-accordion__expanded-content--m-fixed--MaxHeight: 9.375rem;
+\t/** PaddingTop for the expanded content body */
+\t--pf-c-accordion__expanded-content-body--PaddingTop: var(--pf-global--spacer--sm, 0.5rem);
+\t/** PaddingRight for the expanded content body */
+\t--pf-c-accordion__expanded-content-body--PaddingRight: var(--pf-global--spacer--md, 1rem);
+\t/** PaddingBottom for the expanded content body */
+\t--pf-c-accordion__expanded-content-body--PaddingBottom: var(--pf-global--spacer--sm, 0.5rem);
+\t/** PaddingLeft for the expanded content body */
+\t--pf-c-accordion__expanded-content-body--PaddingLeft: var(--pf-global--spacer--md, 1rem);
+\t/** PaddingTop for nested expanded content body */
+\t--pf-c-accordion__expanded-content-body--expanded-content-body--PaddingTop: 0;
+\t/** BackgroundColor for the expanded content body before element */
+\t--pf-c-accordion__expanded-content-body--before--BackgroundColor: transparent;
+\t/** Width for the expanded content body before element */
+\t--pf-c-accordion__expanded-content-body--before--Width: var(--pf-global--BorderWidth--lg, 3px);
+\t/** Top position for the expanded content body before element */
+\t--pf-c-accordion__expanded-content-body--before--Top: 0;
+\t/** PaddingTop for the toggle in large display mode */
+\t--pf-c-accordion--m-display-lg__toggle--PaddingTop: var(--pf-global--spacer--md, 1rem);
+\t/** PaddingRight for the toggle in large display mode */
+\t--pf-c-accordion--m-display-lg__toggle--PaddingRight: var(--pf-global--spacer--md, 1rem);
+\t/** PaddingBottom for the toggle in large display mode */
+\t--pf-c-accordion--m-display-lg__toggle--PaddingBottom: var(--pf-global--spacer--md, 1rem);
+\t/** PaddingLeft for the toggle in large display mode */
+\t--pf-c-accordion--m-display-lg__toggle--PaddingLeft: var(--pf-global--spacer--lg, 1.5rem);
+\t/** FontFamily for the toggle in large display mode */
+\t--pf-c-accordion--m-display-lg__toggle--FontFamily: var(--pf-global--FontFamily--heading--sans-serif, "RedHatDisplay", "Overpass", overpass, helvetica, arial, sans-serif);
+\t/** FontSize for the toggle in large display mode */
+\t--pf-c-accordion--m-display-lg__toggle--FontSize: var(--pf-global--FontSize--xl, 1.25rem);
+\t/** Color for the toggle text on hover in large display mode */
+\t--pf-c-accordion--m-display-lg__toggle--hover__toggle-text--Color: var(--pf-global--Color--100, #151515);
+\t/** Color for the toggle text when active in large display mode */
+\t--pf-c-accordion--m-display-lg__toggle--active__toggle-text--Color: var(--pf-global--Color--100, #151515);
+\t/** FontWeight for the toggle text when active in large display mode */
+\t--pf-c-accordion--m-display-lg__toggle--active__toggle-text--FontWeight: var(--pf-global--FontWeight--normal, 400);
+\t/** Color for the toggle text on focus in large display mode */
+\t--pf-c-accordion--m-display-lg__toggle--focus__toggle-text--Color: var(--pf-global--Color--100, #151515);
+\t/** FontWeight for the toggle text on focus in large display mode */
+\t--pf-c-accordion--m-display-lg__toggle--focus__toggle-text--FontWeight: var(--pf-global--FontWeight--normal, 400);
+\t/** Color for the toggle text when expanded in large display mode */
+\t--pf-c-accordion--m-display-lg__toggle--m-expanded__toggle-text--Color: var(--pf-global--Color--100, #151515);
+\t/** FontWeight for the toggle text when expanded in large display mode */
+\t--pf-c-accordion--m-display-lg__toggle--m-expanded__toggle-text--FontWeight: var(--pf-global--FontWeight--normal, 400);
+\t/** FontSize for the expanded content in large display mode */
+\t--pf-c-accordion--m-display-lg__expanded-content--FontSize: var(--pf-global--FontSize--md, 1rem);
+\t/** Color for the expanded content in large display mode */
+\t--pf-c-accordion--m-display-lg__expanded-content--Color: var(--pf-global--Color--100, #151515);
+\t/** PaddingTop for the expanded content body in large display mode */
+\t--pf-c-accordion--m-display-lg__expanded-content-body--PaddingTop: 0;
+\t/** PaddingRight for the expanded content body in large display mode */
+\t--pf-c-accordion--m-display-lg__expanded-content-body--PaddingRight: var(--pf-global--spacer--md, 1rem);
+\t/** PaddingBottom for the expanded content body in large display mode */
+\t--pf-c-accordion--m-display-lg__expanded-content-body--PaddingBottom: var(--pf-global--spacer--md, 1rem);
+\t/** PaddingBottom for the last child of expanded content body in large display mode */
+\t--pf-c-accordion--m-display-lg__expanded-content-body--last-child--PaddingBottom: var(--pf-global--spacer--lg, 1.5rem);
+\t/** PaddingLeft for the expanded content body in large display mode */
+\t--pf-c-accordion--m-display-lg__expanded-content-body--PaddingLeft: var(--pf-global--spacer--lg, 1.5rem);
+\t/** BorderTopWidth for the bordered variant */
+\t--pf-c-accordion--m-bordered--BorderTopWidth: var(--pf-global--BorderWidth--sm, 1px);
+\t/** BorderTopColor for the bordered variant */
+\t--pf-c-accordion--m-bordered--BorderTopColor: var(--pf-global--BorderColor--100, #d2d2d2);
+\t/** Top position for the toggle before element in bordered variant */
+\t--pf-c-accordion--m-bordered__toggle--before--Top: calc(-1 * var(--pf-global--BorderWidth--sm, 1px));
+\t/** BorderColor for the toggle after element in bordered variant */
+\t--pf-c-accordion--m-bordered__toggle--after--BorderColor: var(--pf-global--BorderColor--100, #d2d2d2);
+\t/** BorderTopWidth for the toggle after element in bordered variant */
+\t--pf-c-accordion--m-bordered__toggle--after--BorderTopWidth: 0;
+\t/** BorderBottomWidth for the toggle after element in bordered variant */
+\t--pf-c-accordion--m-bordered__toggle--after--BorderBottomWidth: var(--pf-global--BorderWidth--sm, 1px);
+\t/** BorderBottomWidth for the last child after element in bordered expanded content */
+\t--pf-c-accordion--m-bordered__expanded-content--m-expanded__expanded-content-body--last-child--after--BorderBottomWidth: var(--pf-global--BorderWidth--sm, 1px);
+\t/** BorderBottomColor for the last child after element in bordered expanded content */
+\t--pf-c-accordion--m-bordered__expanded-content--m-expanded__expanded-content-body--last-child--after--BorderBottomColor: var(--pf-global--BorderColor--100, #d2d2d2);
+\tcolor: var(--pf-global--Color--100, #151515);
+\tbackground-color: var(--pf-c-accordion--BackgroundColor);
+}
+
+:host([bordered]) ::slotted(pf-accordion-header:first-child),
+:host([large]) ::slotted(pf-accordion-header:first-child) {
+  display: block;
+  border-top: 1px solid var(--accordion__bordered--Color);
+  border-bottom: 1px solid var(--accordion__bordered--Color);
+}
+
+:host([bordered]) ::slotted(pf-accordion-header:not(:first-child)),
+:host([large]) ::slotted(pf-accordion-header:not(:first-child)) {
+  display: block;
+  border-bottom: 1px solid var(--accordion__bordered--Color);
+}
+
+:host([bordered]) ::slotted(pf-accordion-header:is([expanded])),
+:host([large]) ::slotted(pf-accordion-header:is([expanded])) {
+  display: block;
+  border-bottom: 0;
+}
+
+:host([bordered]) ::slotted(pf-accordion-panel:is([expanded])),
+:host([large]) ::slotted(pf-accordion-panel:is([expanded])) {
+  display: block;
+  border-bottom: 1px solid var(--accordion__bordered--Color);
+}
+`;
 export class PfAccordionExpandEvent extends Event {
     constructor(toggle, panel) {
         super('expand', { bubbles: true, cancelable: true });
@@ -88,6 +241,7 @@ let PfAccordion = class PfAccordion extends LitElement {
     }
     render() {
         return html `
+      <!-- Place the \`pf-accordion-header\` and \`pf-accordion-panel\` elements here. -->
       <slot></slot>
     `;
     }
@@ -300,7 +454,7 @@ _PfAccordion_getIndex = function _PfAccordion_getIndex(el) {
     return -1;
 };
 PfAccordion.styles = [style];
-PfAccordion.version = "4.1.0";
+PfAccordion.version = "4.3.0";
 __decorate([
     property({ reflect: true, type: Boolean })
 ], PfAccordion.prototype, "single", void 0);

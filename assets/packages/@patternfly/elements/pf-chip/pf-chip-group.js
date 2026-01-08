@@ -10,7 +10,116 @@ import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { PfChip, PfChipRemoveEvent } from './pf-chip.js';
 import { css } from "lit";
-const styles = css `:host {\n  --pf-c-chip-group__list--MarginBottom: calc(var(--pf-global--spacer--xs, 0.25rem) * -1);\n  --pf-c-chip-group__list--MarginRight: calc(var(--pf-global--spacer--xs, 0.25rem) * -1);\n  --pf-c-chip-group--m-category--PaddingTop: var(--pf-global--spacer--xs, 0.25rem);\n  --pf-c-chip-group--m-category--PaddingRight: var(--pf-global--spacer--xs, 0.25rem);\n  --pf-c-chip-group--m-category--PaddingBottom: var(--pf-global--spacer--xs, 0.25rem);\n  --pf-c-chip-group--m-category--PaddingLeft: var(--pf-global--spacer--sm, 0.5rem);\n  --pf-c-chip-group--m-category--BorderRadius: var(--pf-global--BorderRadius--sm, 3px);\n  --pf-c-chip-group--m-category--BackgroundColor: var(--pf-global--BackgroundColor--200, #f0f0f0);\n  --pf-c-chip-group__label--MarginRight: var(--pf-global--spacer--sm, 0.5rem);\n  --pf-c-chip-group__label--FontSize: var(--pf-global--FontSize--sm, 0.875rem);\n  --pf-c-chip-group__label--MaxWidth: 18ch;\n  --pf-c-chip-group__close--MarginTop: calc(var(--pf-global--spacer--xs, 0.25rem) * -1);\n  --pf-c-chip-group__close--MarginBottom: calc(var(--pf-global--spacer--xs, 0.25rem) * -1);\n  --pf-c-chip-group__list-item--MarginRight: var(--pf-global--spacer--xs, 0.25rem);\n  --pf-c-chip-group__list-item--MarginBottom: var(--pf-global--spacer--xs, 0.25rem);\n  display: inline-flex;\n  flex-wrap: wrap;\n  align-items: center;\n  min-width: 0;\n  max-width: 100%;\n  color: var(--pf-global--Color--100, #151515);\n}\n\n[hidden],\n.empty,\n::slotted([overflow-hidden]) {\n  display: none !important;\n}\n\n#outer {\n  display: flex;\n  flex: 1;\n  flex-wrap: wrap;\n  align-items: baseline;\n  min-width: 0;\n  display: inline-flex;\n  column-gap: var(--pf-global--spacer--xs, 0.25rem);\n  align-items: center;\n  border-radius: var(--pf-global--BorderRadius--sm, 3px);\n  padding: 0 !important;\n}\n\n#outer.has-category {\n  padding: var(--pf-global--spacer--xs, 0.25rem) var(--pf-global--spacer--sm, 0.5rem) !important;\n  background-color: var(--pf-theme--color--surface--lighter, #f0f0f0);\n}\n\n#chips {\n  margin-right: var(--pf-c-chip-group__list--MarginRight);\n  margin-bottom: var(--pf-c-chip-group__list--MarginBottom);\n  font-family: var(--pf-global--FontFamily--sans-serif, "RedHatTextUpdated", "Overpass", overpass, helvetica, arial, sans-serif);\n  font-size: var(--pf-global--FontSize--sm, 14px);\n  font-weight: var(--pf-global--FontWeight--normal, 400);\n  line-height: 1.6;\n}\n\n#chips ::slotted(pf-chip) {\n  display: inline-flex;\n  min-width: 0;\n  margin-right: var(--pf-c-chip-group__list-item--MarginRight);\n  margin-bottom: var(--pf-c-chip-group__list-item--MarginBottom);\n}\n\n#close-button {\n  --pf-icon--size: 16px;\n  margin: var(--pf-c-chip__c-button--MarginTop)\n    var(--pf-c-chip__c-button--MarginRight)\n    var(--pf-c-chip__c-button--MarginBottom)\n    var(--pf-c-chip__c-button--MarginLeft);\n  padding: var(--pf-c-chip__c-button--PaddingTop)\n    var(--pf-c-chip__c-button--PaddingRight)\n    var(--pf-c-chip__c-button--PaddingBottom)\n    var(--pf-c-chip__c-button--PaddingLeft);\n  inset-block-start: 0.125em;\n}\n\nsvg {\n  width: var(--pf-global--FontSize--sm, 14px);\n  height: var(--pf-global--FontSize--sm, 14px);\n}\n\n.visually-hidden {\n  border: 0;\n  clip: rect(0, 0, 0, 0);\n  block-size: 1px;\n  margin: -1px;\n  overflow: hidden;\n  padding: 0;\n  position: absolute;\n  white-space: nowrap;\n  inline-size: 1px;\n}\n\n`;
+const styles = css `:host {
+  /** MarginBottom for the chip group list */
+  --pf-c-chip-group__list--MarginBottom: calc(var(--pf-global--spacer--xs, 0.25rem) * -1);
+  /** MarginRight for the chip group list */
+  --pf-c-chip-group__list--MarginRight: calc(var(--pf-global--spacer--xs, 0.25rem) * -1);
+  /** PaddingTop for the chip group category */
+  --pf-c-chip-group--m-category--PaddingTop: var(--pf-global--spacer--xs, 0.25rem);
+  /** PaddingRight for the chip group category */
+  --pf-c-chip-group--m-category--PaddingRight: var(--pf-global--spacer--xs, 0.25rem);
+  /** PaddingBottom for the chip group category */
+  --pf-c-chip-group--m-category--PaddingBottom: var(--pf-global--spacer--xs, 0.25rem);
+  /** PaddingLeft for the chip group category */
+  --pf-c-chip-group--m-category--PaddingLeft: var(--pf-global--spacer--sm, 0.5rem);
+  /** BorderRadius for the chip group category */
+  --pf-c-chip-group--m-category--BorderRadius: var(--pf-global--BorderRadius--sm, 3px);
+  /** BackgroundColor for the chip group category */
+  --pf-c-chip-group--m-category--BackgroundColor: var(--pf-global--BackgroundColor--200, #f0f0f0);
+  /** MarginRight for the chip group label */
+  --pf-c-chip-group__label--MarginRight: var(--pf-global--spacer--sm, 0.5rem);
+  /** FontSize for the chip group label */
+  --pf-c-chip-group__label--FontSize: var(--pf-global--FontSize--sm, 0.875rem);
+  /** MaxWidth for the chip group label */
+  --pf-c-chip-group__label--MaxWidth: 18ch;
+  /** MarginTop for the chip group close button */
+  --pf-c-chip-group__close--MarginTop: calc(var(--pf-global--spacer--xs, 0.25rem) * -1);
+  /** MarginBottom for the chip group close button */
+  --pf-c-chip-group__close--MarginBottom: calc(var(--pf-global--spacer--xs, 0.25rem) * -1);
+  /** MarginRight for chip group list items */
+  --pf-c-chip-group__list-item--MarginRight: var(--pf-global--spacer--xs, 0.25rem);
+  /** MarginBottom for chip group list items */
+  --pf-c-chip-group__list-item--MarginBottom: var(--pf-global--spacer--xs, 0.25rem);
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  min-width: 0;
+  max-width: 100%;
+  color: var(--pf-global--Color--100, #151515);
+}
+
+[hidden],
+.empty,
+::slotted([overflow-hidden]) {
+  display: none !important;
+}
+
+#outer {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  align-items: baseline;
+  min-width: 0;
+  display: inline-flex;
+  column-gap: var(--pf-global--spacer--xs, 0.25rem);
+  align-items: center;
+  border-radius: var(--pf-global--BorderRadius--sm, 3px);
+  padding: 0 !important;
+}
+
+#outer.has-category {
+  padding: var(--pf-global--spacer--xs, 0.25rem) var(--pf-global--spacer--sm, 0.5rem) !important;
+  background-color: var(--pf-theme--color--surface--lighter, #f0f0f0);
+}
+
+#chips {
+  margin-right: var(--pf-c-chip-group__list--MarginRight);
+  margin-bottom: var(--pf-c-chip-group__list--MarginBottom);
+  font-family: var(--pf-global--FontFamily--sans-serif, "RedHatTextUpdated", "Overpass", overpass, helvetica, arial, sans-serif);
+  font-size: var(--pf-global--FontSize--sm, 14px);
+  font-weight: var(--pf-global--FontWeight--normal, 400);
+  line-height: 1.6;
+}
+
+#chips ::slotted(pf-chip) {
+  display: inline-flex;
+  min-width: 0;
+  margin-right: var(--pf-c-chip-group__list-item--MarginRight);
+  margin-bottom: var(--pf-c-chip-group__list-item--MarginBottom);
+}
+
+#close-button {
+  --pf-icon--size: 16px;
+  margin: var(--pf-c-chip__c-button--MarginTop)
+    var(--pf-c-chip__c-button--MarginRight)
+    var(--pf-c-chip__c-button--MarginBottom)
+    var(--pf-c-chip__c-button--MarginLeft);
+  padding: var(--pf-c-chip__c-button--PaddingTop)
+    var(--pf-c-chip__c-button--PaddingRight)
+    var(--pf-c-chip__c-button--PaddingBottom)
+    var(--pf-c-chip__c-button--PaddingLeft);
+  inset-block-start: 0.125em;
+}
+
+svg {
+  width: var(--pf-global--FontSize--sm, 14px);
+  height: var(--pf-global--FontSize--sm, 14px);
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  block-size: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  inline-size: 1px;
+}
+
+`;
 import shared from "./pf-chip-shared.css.js";
 export class PfChipGroupExpandEvent extends Event {
     constructor() {
@@ -190,7 +299,7 @@ PfChipGroup.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
-PfChipGroup.version = "4.1.0";
+PfChipGroup.version = "4.3.0";
 __decorate([
     property({ attribute: 'accessible-label', type: String })
 ], PfChipGroup.prototype, "accessibleLabel", void 0);

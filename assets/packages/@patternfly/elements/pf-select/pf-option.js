@@ -8,7 +8,88 @@ import { classMap } from 'lit/directives/class-map.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { css } from "lit";
-const styles = css `:host {\n  display: block;\n}\n\n:host([hidden]),\n*[hidden] {\n  display: none !important;\n}\n\n:host([disabled]) {\n  pointer-events: none !important;\n  cursor: not-allowed !important;\n}\n\n:host(:focus) #outer,\n:host(:hover) #outer,\n#outer.selected {\n  background-color: #e0e0e0;\n}\n\n#outer {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: flex-start;\n  padding: var(--pf-global--spacer--sm, 0.5rem) var(--pf-global--spacer--md, 1rem);\n  min-height: calc(44px - 2 * var(--pf-global--spacer--sm, 0.5rem));\n  min-width: calc(44px - 2 * var(--pf-global--spacer--md, 1rem));\n}\n\n#outer.active {\n  background-color: var(--_active-descendant-color, var(--pf-theme--color--surface--lighter, #f0f0f0));\n}\n\n:host([disabled]) #outer {\n  color: var(--pf-global--Color--dark-200, #6a6e73) !important;\n}\n\ninput[type="checkbox"] {\n  margin-inline-end: 1em;\n  display: var(--_pf-option-checkboxes-display, none);\n  pointer-events: none;\n  flex: 0 0 auto;\n}\n\nspan {\n  flex: 1 1 auto;\n}\n\nsvg {\n  font-size: var(--pf-c-select__menu-item-icon--FontSize, var(--pf-global--icon--FontSize--sm, 0.675rem));\n  color: var(--_svg-color, var(--pf-theme--color--accent, #0066cc));\n  width: 1em;\n  height: 1em;\n  margin-inline-start: 1em;\n  text-align: right;\n  flex: 0 0 auto;\n  display: var(--_pf-option-svg-display, block);\n}\n\n#description {\n  display: block;\n  flex: 1 0 100%;\n}\n\nslot[name="description"] {\n  font-size: var(--pf-global--FontSize--xs, 0.75rem);\n  color: var(--pf-global--Color--dark-200, #6a6e73);\n}\n\n::slotted([slot="icon"]) {\n  margin-inline-end: 0.5em;\n}\n\n`;
+const styles = css `:host {
+  display: block;
+}
+
+:host([hidden]),
+*[hidden] {
+  display: none !important;
+}
+
+:host([disabled]) {
+  pointer-events: none !important;
+  cursor: not-allowed !important;
+}
+
+:host(:focus) #outer,
+:host(:hover) #outer,
+#outer.selected {
+  background-color: var(--_pf-option-selected-background-color, var(--rh-color-gray-20, #e0e0e0));
+}
+
+#outer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  padding: var(--pf-global--spacer--sm, 0.5rem) var(--pf-global--spacer--md, 1rem);
+  min-height: calc(44px - 2 * var(--pf-global--spacer--sm, 0.5rem));
+  min-width: calc(44px - 2 * var(--pf-global--spacer--md, 1rem));
+}
+
+#outer.active {
+  background-color: var(--_active-descendant-color, var(--pf-theme--color--surface--lighter, #f0f0f0));
+}
+
+:host([disabled]) #outer {
+  color: var(--pf-global--Color--dark-200, #6a6e73) !important;
+}
+
+input[type="checkbox"] {
+  margin-inline-end: 1em;
+  display: var(--_pf-option-checkboxes-display, none);
+  pointer-events: none;
+  flex: 0 0 auto;
+}
+
+span {
+  flex: 1 1 auto;
+}
+
+svg {
+  font-size: var(--pf-c-select__menu-item-icon--FontSize, var(--pf-global--icon--FontSize--sm, 0.675rem));
+  color: var(--_svg-color, var(--pf-theme--color--accent, #0066cc));
+  width: 1em;
+  height: 1em;
+  margin-inline-start: 1em;
+  text-align: right;
+  flex: 0 0 auto;
+  display: var(--_pf-option-svg-display, block);
+}
+
+#description {
+  display: block;
+  flex: 1 0 100%;
+}
+
+slot[name="description"] {
+  font-size: var(--pf-global--FontSize--xs, 0.75rem);
+  color: var(--pf-global--Color--dark-200, #6a6e73);
+}
+
+::slotted([slot="icon"]) {
+  margin-inline-end: 0.5em;
+}
+
+:host([suggestion]) {
+  #outer.selected {
+    background-color: transparent;
+  }  
+  svg {
+    display: none;
+  }
+}`;
 let PfOption = class PfOption extends LitElement {
     constructor() {
         super(...arguments);
@@ -101,7 +182,7 @@ let PfOption = class PfOption extends LitElement {
 _PfOption_value = new WeakMap();
 _PfOption_internals = new WeakMap();
 PfOption.styles = [styles];
-PfOption.version = "4.1.0";
+PfOption.version = "4.3.0";
 __decorate([
     property({ type: Boolean, reflect: true })
 ], PfOption.prototype, "disabled", void 0);

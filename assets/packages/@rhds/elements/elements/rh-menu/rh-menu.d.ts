@@ -14,6 +14,8 @@ export declare class RhMenu extends LitElement {
     static readonly styles: CSSStyleSheet[];
     static shadowRootOptions: {
         delegatesFocus: boolean;
+        clonable?: boolean;
+        customElementRegistry?: CustomElementRegistry;
         mode: ShadowRootMode;
         serializable?: boolean;
         slotAssignment?: SlotAssignmentMode;

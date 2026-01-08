@@ -8,7 +8,131 @@ import { classMap } from 'lit/directives/class-map.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { css } from "lit";
-const style = css `[hidden] {\n  display: none !important;\n}\n\n#icon {\n  z-index: var(--pf-c-progress-stepper__step-icon--ZIndex);\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: var(--pf-c-progress-stepper__step-icon--Width);\n  height: var(--pf-c-progress-stepper__step-icon--Height);\n  color: var(--pf-c-progress-stepper__step-icon--Color);\n  background-color: var(--pf-c-progress-stepper__step-icon--BackgroundColor);\n  border: var(--pf-c-progress-stepper__step-icon--BorderWidth) solid var(--pf-c-progress-stepper__step-icon--BorderColor);\n  border-radius: 50%;\n  font-size: var(--pf-c-progress-stepper__step-icon--FontSize);\n  --pf-icon--size: 1.125em;\n}\n\n#main {\n  position: var(--pf-c-progress-stepper__step-main--Position, initial);\n  min-width: 0;\n  margin: var(--pf-c-progress-stepper__step-main--MarginTop) var(--pf-c-progress-stepper__step-main--MarginRight) var(--pf-c-progress-stepper__step-main--MarginBottom) var(--pf-c-progress-stepper__step-main--MarginLeft);\n  text-align: var(--pf-c-progress-stepper--step-main--TextAlign, auto);\n  overflow-wrap: anywhere;\n}\n\n:host(:not([current])) #main.compact {\n  position: fixed;\n  top: 0;\n  left: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border: 0;\n  margin-bottom: var(--pf-c-progress-stepper--m-compact__step-main--MarginBottom);\n}\n\n:host([current]) #main.compact {\n  grid-column: 1/-1;\n  grid-row: 1/2;\n}\n\n#title {\n  font-size: var(--pf-c-progress-stepper__step-title--FontSize);\n  font-weight: var(--pf-c-progress-stepper__step-title--FontWeight);\n  color: var(--pf-c-progress-stepper__step-title--Color);\n  text-align: var(--pf-c-progress-stepper__step-title--TextAlign);\n  border: 0;\n}\n\n#description {\n  margin-top: var(--pf-c-progress-stepper__step-description--MarginTop);\n  font-size: var(--pf-c-progress-stepper__step-description--FontSize);\n  color: var(--pf-c-progress-stepper__step-description--Color);\n  text-align: var(--pf-c-progress-stepper__step-description--TextAlign);\n  display: block;\n}\n\n:host {\n  display: contents;\n}\n\n#connector {\n  position: relative;\n  display: flex;\n  justify-content: var(--pf-c-progress-stepper__step-connector--JustifyContent);\n  width: 100%;\n}\n\n#connector.compact {\n  min-width: var(--pf-c-progress-stepper--m-compact__step-connector--MinWidth);\n  grid-row: var(--pf-c-progress-stepper--m-compact__step-connector--GridRow);\n  padding-bottom: var(--pf-c-progress-stepper--m-compact__step-connector--PaddingBottom);\n}\n\n:host(:not(:last-of-type)) #main::before {\n  content: var(--pf-c-progress-stepper__step-main--before--Content);\n  position: absolute;\n  top: calc(100% + var(--pf-c-progress-stepper__step-main--MarginTop));\n  left: calc(50% - var(--pf-c-progress-stepper__step-connector--before--BorderRightWidth) / 2);\n  width: auto;\n  height: calc(var(--pf-c-progress-stepper__step-main--MarginTop) + var(--pf-c-progress-stepper__step-main--MarginBottom));\n  border-right: var(--pf-c-progress-stepper__step-connector--before--BorderRightWidth) solid var(--pf-c-progress-stepper__step-connector--before--BorderRightColor);\n}\n\n:host(:not(:last-of-type)) #connector::before {\n  position: absolute;\n  top: var(--pf-c-progress-stepper__step-connector--before--Top);\n  left: var(--pf-c-progress-stepper__step-connector--before--Left);\n  width: var(--pf-c-progress-stepper__step-connector--before--Width);\n  height: var(--pf-c-progress-stepper__step-connector--before--Height);\n  content: var(--pf-c-progress-stepper__step-connector--before--Content);\n  border-right: var(--pf-c-progress-stepper__step-connector--before--BorderRightWidth) solid var(--pf-c-progress-stepper__step-connector--before--BorderRightColor);\n  border-bottom: var(--pf-c-progress-stepper__step-connector--before--BorderBottomWidth) solid var(--pf-c-progress-stepper__step-connector--before--BorderBottomColor);\n  transform: var(--pf-c-progress-stepper__step-connector--before--Transform);\n}\n\n:host([current]) {\n  --pf-c-progress-stepper__step-title--FontWeight: var(--pf-c-progress-stepper__step--m-current__step-title--FontWeight);\n  --pf-c-progress-stepper__step-title--Color: var(--pf-c-progress-stepper__step--m-current__step-title--Color);\n}\n\n:host([variant="success"]) {\n  --pf-c-progress-stepper__step-icon--Color: var(--pf-global--success-color--100, #3e8635);\n}\n\n:host([variant="info"]) {\n  --pf-c-progress-stepper__step-icon--Color: var(--pf-global--info-color--100, #2b9af3);\n}\n\n:host([variant="warning"]) {\n  --pf-c-progress-stepper__step-icon--Color: var(--pf-global--warning-color--100, #f0ab00);\n}\n\n:host([variant="danger"]) {\n  --pf-c-progress-stepper__step-icon--Color: var(--pf-global--danger-color--100, #c9190b);\n  --pf-c-progress-stepper__step-title--Color: var(--pf-c-progress-stepper__step--m-danger__step-title--Color);\n  --pf-c-progress-stepper__step-title--m-help-text--hover--Color: var(--pf-c-progress-stepper__step--m-danger__step-title--m-help-text--hover--Color);\n  --pf-c-progress-stepper__step-title--m-help-text--focus--Color: var(--pf-c-progress-stepper__step--m-danger__step-title--m-help-text--focus--Color);\n  --pf-c-progress-stepper__step-title--m-help-text--TextDecorationColor: var(--pf-c-progress-stepper__step--m-danger__step-title--m-help-text--TextDecorationColor);\n  --pf-c-progress-stepper__step-title--m-help-text--hover--TextDecorationColor: var(--pf-c-progress-stepper__step--m-danger__step-title--m-help-text--hover--TextDecorationColor);\n  --pf-c-progress-stepper__step-title--m-help-text--focus--TextDecorationColor: var(--pf-c-progress-stepper__step--m-danger__step-title--m-help-text--focus--TextDecorationColor);\n}\n`;
+const style = css `[hidden] {
+  display: none !important;
+}
+
+#icon {
+  z-index: var(--pf-c-progress-stepper__step-icon--ZIndex);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--pf-c-progress-stepper__step-icon--Width);
+  height: var(--pf-c-progress-stepper__step-icon--Height);
+  color: var(--pf-c-progress-stepper__step-icon--Color);
+  background-color: var(--pf-c-progress-stepper__step-icon--BackgroundColor);
+  border: var(--pf-c-progress-stepper__step-icon--BorderWidth) solid var(--pf-c-progress-stepper__step-icon--BorderColor);
+  border-radius: 50%;
+  font-size: var(--pf-c-progress-stepper__step-icon--FontSize);
+  --pf-icon--size: 1.125em;
+}
+
+#main {
+  position: var(--pf-c-progress-stepper__step-main--Position, initial);
+  min-width: 0;
+  margin: var(--pf-c-progress-stepper__step-main--MarginTop) var(--pf-c-progress-stepper__step-main--MarginRight) var(--pf-c-progress-stepper__step-main--MarginBottom) var(--pf-c-progress-stepper__step-main--MarginLeft);
+  text-align: var(--pf-c-progress-stepper--step-main--TextAlign, auto);
+  overflow-wrap: anywhere;
+}
+
+:host(:not([current])) #main.compact {
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  margin-bottom: var(--pf-c-progress-stepper--m-compact__step-main--MarginBottom);
+}
+
+:host([current]) #main.compact {
+  grid-column: 1/-1;
+  grid-row: 1/2;
+}
+
+#title {
+  font-size: var(--pf-c-progress-stepper__step-title--FontSize);
+  font-weight: var(--pf-c-progress-stepper__step-title--FontWeight);
+  color: var(--pf-c-progress-stepper__step-title--Color);
+  text-align: var(--pf-c-progress-stepper__step-title--TextAlign);
+  border: 0;
+}
+
+#description {
+  margin-top: var(--pf-c-progress-stepper__step-description--MarginTop);
+  font-size: var(--pf-c-progress-stepper__step-description--FontSize);
+  color: var(--pf-c-progress-stepper__step-description--Color);
+  text-align: var(--pf-c-progress-stepper__step-description--TextAlign);
+  display: block;
+}
+
+:host {
+  display: contents;
+}
+
+#connector {
+  position: relative;
+  display: flex;
+  justify-content: var(--pf-c-progress-stepper__step-connector--JustifyContent);
+  width: 100%;
+}
+
+#connector.compact {
+  min-width: var(--pf-c-progress-stepper--m-compact__step-connector--MinWidth);
+  grid-row: var(--pf-c-progress-stepper--m-compact__step-connector--GridRow);
+  padding-bottom: var(--pf-c-progress-stepper--m-compact__step-connector--PaddingBottom);
+}
+
+:host(:not(:last-of-type)) #main::before {
+  content: var(--pf-c-progress-stepper__step-main--before--Content);
+  position: absolute;
+  top: calc(100% + var(--pf-c-progress-stepper__step-main--MarginTop));
+  left: calc(50% - var(--pf-c-progress-stepper__step-connector--before--BorderRightWidth) / 2);
+  width: auto;
+  height: calc(var(--pf-c-progress-stepper__step-main--MarginTop) + var(--pf-c-progress-stepper__step-main--MarginBottom));
+  border-right: var(--pf-c-progress-stepper__step-connector--before--BorderRightWidth) solid var(--pf-c-progress-stepper__step-connector--before--BorderRightColor);
+}
+
+:host(:not(:last-of-type)) #connector::before {
+  position: absolute;
+  top: var(--pf-c-progress-stepper__step-connector--before--Top);
+  left: var(--pf-c-progress-stepper__step-connector--before--Left);
+  width: var(--pf-c-progress-stepper__step-connector--before--Width);
+  height: var(--pf-c-progress-stepper__step-connector--before--Height);
+  content: var(--pf-c-progress-stepper__step-connector--before--Content);
+  border-right: var(--pf-c-progress-stepper__step-connector--before--BorderRightWidth) solid var(--pf-c-progress-stepper__step-connector--before--BorderRightColor);
+  border-bottom: var(--pf-c-progress-stepper__step-connector--before--BorderBottomWidth) solid var(--pf-c-progress-stepper__step-connector--before--BorderBottomColor);
+  transform: var(--pf-c-progress-stepper__step-connector--before--Transform);
+}
+
+:host([current]) {
+  --pf-c-progress-stepper__step-title--FontWeight: var(--pf-c-progress-stepper__step--m-current__step-title--FontWeight);
+  --pf-c-progress-stepper__step-title--Color: var(--pf-c-progress-stepper__step--m-current__step-title--Color);
+}
+
+:host([variant="success"]) {
+  --pf-c-progress-stepper__step-icon--Color: var(--pf-global--success-color--100, #3e8635);
+}
+
+:host([variant="info"]) {
+  --pf-c-progress-stepper__step-icon--Color: var(--pf-global--info-color--100, #2b9af3);
+}
+
+:host([variant="warning"]) {
+  --pf-c-progress-stepper__step-icon--Color: var(--pf-global--warning-color--100, #f0ab00);
+}
+
+:host([variant="danger"]) {
+  --pf-c-progress-stepper__step-icon--Color: var(--pf-global--danger-color--100, #c9190b);
+  --pf-c-progress-stepper__step-title--Color: var(--pf-c-progress-stepper__step--m-danger__step-title--Color);
+  --pf-c-progress-stepper__step-title--m-help-text--hover--Color: var(--pf-c-progress-stepper__step--m-danger__step-title--m-help-text--hover--Color);
+  --pf-c-progress-stepper__step-title--m-help-text--focus--Color: var(--pf-c-progress-stepper__step--m-danger__step-title--m-help-text--focus--Color);
+  --pf-c-progress-stepper__step-title--m-help-text--TextDecorationColor: var(--pf-c-progress-stepper__step--m-danger__step-title--m-help-text--TextDecorationColor);
+  --pf-c-progress-stepper__step-title--m-help-text--hover--TextDecorationColor: var(--pf-c-progress-stepper__step--m-danger__step-title--m-help-text--hover--TextDecorationColor);
+  --pf-c-progress-stepper__step-title--m-help-text--focus--TextDecorationColor: var(--pf-c-progress-stepper__step--m-danger__step-title--m-help-text--focus--TextDecorationColor);
+}
+`;
 const ICONS = new Map(Object.entries({
     success: { icon: 'check-circle' },
     danger: { icon: 'exclamation-circle' },
@@ -53,7 +177,7 @@ _PfProgressStep_slots = new WeakMap();
 _PfProgressStep_internals = new WeakMap();
 PfProgressStep.parentTagName = 'pf-progress-stepper';
 PfProgressStep.styles = [style];
-PfProgressStep.version = "4.1.0";
+PfProgressStep.version = "4.3.0";
 __decorate([
     property()
 ], PfProgressStep.prototype, "description", void 0);

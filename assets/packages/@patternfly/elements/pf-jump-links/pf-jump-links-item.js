@@ -6,7 +6,82 @@ import { property } from 'lit/decorators/property.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { css } from "lit";
-const style = css `:host {\n  display: block;\n}\n\n#container {\n  display: contents;\n}\n\nslot:not([name]) {\n  display: flex;\n  flex-direction: column;\n  row-gap: var(--pf-global--spacer--md, 1rem);\n}\n\na {\n  position: relative;\n  display: flex;\n  cursor: pointer;\n  flex: 1;\n  padding-block-start: var(--pf-c-jump-links__link--PaddingTop,\n    var(--pf-global--spacer--md, 1rem));\n  padding-inline-end: var(--pf-c-jump-links__link--PaddingRight,\n    var(--pf-global--spacer--md, 1rem));\n  padding-block-end: var(--pf-c-jump-links__link--PaddingBottom,\n    var(--pf-global--spacer--md, 1rem));\n  padding-inline-start: var(--pf-c-jump-links__link--PaddingLeft,\n    var(--pf-global--spacer--md, 1rem));\n  text-decoration: none;\n  outline-offset: var(--pf-c-jump-links__link--OutlineOffset,\n    calc(-1 * var(--pf-global--spacer--sm, 0.5rem)));\n  color: var(--pf-c-jump-links__link-text--Color,\n    var(--pf-global--Color--200, #6a6e73));\n}\n\na::before {\n  position: absolute;\n  inset: 0;\n  pointer-events: none;\n  content: "";\n  border-color: var(--pf-c-jump-links__link--before--BorderColor, transparent);\n  border-style: solid;\n  border-width:\n    var(--pf-c-jump-links__link--before--BorderTopWidth,\n      var(--pf-c-jump-links__list--before--BorderTopWidth,\n        var(--pf-global--BorderWidth--sm, 1px)))\n    var(--pf-c-jump-links__link--before--BorderRightWidth, 0)\n    var(--pf-c-jump-links__link--before--BorderBottomWidth, 0)\n    var(--pf-c-jump-links__link--before--BorderLeftWidth, 0);\n}\n\na:hover {\n  --pf-c-jump-links__link-text--Color: var(--pf-c-jump-links__link--hover__link-text--Color,\n    var(--pf-global--Color--100, #151515));\n}\n\na:focus {\n  --pf-c-jump-links__link-text--Color: var(--pf-c-jump-links__link--focus__link-text--Color,\n    var(--pf-global--Color--100, #151515));\n}\n\n:host([active]) {\n  --pf-c-jump-links__link--before--BorderTopWidth: var(--pf-c-jump-links__item--m-current__link--before--BorderTopWidth,\n    var(--pf-global--BorderWidth--lg, 3px));\n  --pf-c-jump-links__link--before--BorderLeftWidth: var(--pf-c-jump-links__item--m-current__link--before--BorderLeftWidth, 0);\n  --pf-c-jump-links__link--before--BorderColor: var(--pf-c-jump-links__item--m-current__link--before--BorderColor,\n    var(--pf-global--primary-color--100, #06c));\n  --pf-c-jump-links__link-text--Color: var(--pf-c-jump-links__item--m-current__link-text--Color,\n    pfvar(--pf-global--Color--100, #151515));\n}\n`;
+const style = css `:host {
+  display: block;
+}
+
+#container {
+  display: contents;
+}
+
+slot:not([name]) {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--pf-global--spacer--md, 1rem);
+}
+
+a {
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  flex: 1;
+  /** Top padding around the link */
+  padding-block-start: var(--pf-c-jump-links__link--PaddingTop,
+    var(--pf-global--spacer--md, 1rem));
+  /** Right padding around the link */
+  padding-inline-end: var(--pf-c-jump-links__link--PaddingRight,
+    var(--pf-global--spacer--md, 1rem));
+  /** Bottom padding around the link */
+  padding-block-end: var(--pf-c-jump-links__link--PaddingBottom,
+    var(--pf-global--spacer--md, 1rem));
+  /** Left padding around the link */
+  padding-inline-start: var(--pf-c-jump-links__link--PaddingLeft,
+    var(--pf-global--spacer--md, 1rem));
+  text-decoration: none;
+  /** Outline offset for jump links link */
+  outline-offset: var(--pf-c-jump-links__link--OutlineOffset,
+    calc(-1 * var(--pf-global--spacer--sm, 0.5rem)));
+  /** Color for jump links link text */
+  color: var(--pf-c-jump-links__link-text--Color,
+    var(--pf-global--Color--200, #6a6e73));
+}
+
+a::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  border-color: var(--pf-c-jump-links__link--before--BorderColor, transparent);
+  border-style: solid;
+  border-width:
+    var(--pf-c-jump-links__link--before--BorderTopWidth,
+      var(--pf-c-jump-links__list--before--BorderTopWidth,
+        var(--pf-global--BorderWidth--sm, 1px)))
+    var(--pf-c-jump-links__link--before--BorderRightWidth, 0)
+    var(--pf-c-jump-links__link--before--BorderBottomWidth, 0)
+    var(--pf-c-jump-links__link--before--BorderLeftWidth, 0);
+}
+
+a:hover {
+  --pf-c-jump-links__link-text--Color: var(--pf-c-jump-links__link--hover__link-text--Color,
+    var(--pf-global--Color--100, #151515));
+}
+
+a:focus {
+  --pf-c-jump-links__link-text--Color: var(--pf-c-jump-links__link--focus__link-text--Color,
+    var(--pf-global--Color--100, #151515));
+}
+
+:host([active]) {
+  --pf-c-jump-links__link--before--BorderTopWidth: var(--pf-c-jump-links__item--m-current__link--before--BorderTopWidth,
+    var(--pf-global--BorderWidth--lg, 3px));
+  --pf-c-jump-links__link--before--BorderLeftWidth: var(--pf-c-jump-links__item--m-current__link--before--BorderLeftWidth, 0);
+  --pf-c-jump-links__link--before--BorderColor: var(--pf-c-jump-links__item--m-current__link--before--BorderColor,
+    var(--pf-global--primary-color--100, #06c));
+  --pf-c-jump-links__link-text--Color: var(--pf-c-jump-links__item--m-current__link-text--Color,
+    var(--pf-global--Color--100, #151515));
+}
+`;
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 let PfJumpLinksItem = class PfJumpLinksItem extends LitElement {
     constructor() {
@@ -43,7 +118,7 @@ PfJumpLinksItem.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
-PfJumpLinksItem.version = "4.1.0";
+PfJumpLinksItem.version = "4.3.0";
 __decorate([
     property({ type: Boolean, reflect: true })
 ], PfJumpLinksItem.prototype, "active", void 0);

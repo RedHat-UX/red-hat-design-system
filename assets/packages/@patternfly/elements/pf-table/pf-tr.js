@@ -4,7 +4,94 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { css } from "lit";
-const styles = css `:host {\n  display: grid;\n  align-items: center;\n  padding-inline-start: calc(50px * var(--_pf-table--expandable-rows, 0));\n}\n\n::slotted(*) {\n  height: 100%;\n}\n\n@media (min-width: 768px) {\n  :host {\n    /* TODO: provide ability to override */\n    grid-template-columns: repeat(var(--_pf-table--number-of-columns), 1fr);\n  }\n}\n\n#container {\n  display: contents;\n}\n\n:host([expandable]),\n#expansion {\n  position: relative;\n}\n\n#expansion {\n  display: block;\n  margin-inline-start: calc(-1 * 50px * var(--_pf-table--expandable-rows, 0));\n  grid-auto-flow: row;\n  grid-template-columns: auto;\n  padding: 0px 1.5rem;\n  display: grid;\n  grid-column: 1/-1;\n}\n\n:host(:not([expanded])),\n:host([expanded]) #expansion {\n  border-block-end: 1px solid #d2d2d2;\n}\n\n:host([expanded]) #expansion::before {\n  content: '';\n  position: absolute;\n  inset: 0;\n  border-block-start: 1px solid #d2d2d2;\n  inset-block-start: -1px;\n}\n\n\n#expansion::slotted(pf-td) {\n  padding-block-start: 0;\n  padding-inline-start: 0;\n}\n\n:host([expandable][expanded])::before {\n  position: absolute;\n  inset-block-start: -1px;\n  inset-inline-end: 0;\n  inset-block-end: -1px;\n  inset-inline-start: 0;\n  content: "";\n  border-inline-start: 3px solid #06c;\n  pointer-events: none;\n  z-index: 1;\n}\n\n#expansion::slotted(pf-table) {\n  margin-block-end: -1px;\n}\n\n#toggle-cell {\n  z-index: 2;\n  position: absolute;\n  inset-inline-start: 0;\n  inset-block-start: 1.5rem;\n  padding: 0;\n}\n\n#toggle-icon {\n  transition: .2s ease-in 0s;\n  vertical-align: -0.125em;\n}\n\n:host([expanded]) #toggle-icon {\n  transform: rotate(90deg);\n}\n`;
+const styles = css `:host {
+  display: grid;
+  align-items: center;
+  padding-inline-start: calc(50px * var(--_pf-table--expandable-rows, 0));
+}
+
+::slotted(*) {
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  :host {
+    /* TODO: provide ability to override */
+    grid-template-columns: repeat(var(--_pf-table--number-of-columns), 1fr);
+  }
+}
+
+#container {
+  display: contents;
+}
+
+:host([expandable]),
+#expansion {
+  position: relative;
+}
+
+#expansion {
+  display: block;
+  margin-inline-start: calc(-1 * 50px * var(--_pf-table--expandable-rows, 0));
+  grid-auto-flow: row;
+  grid-template-columns: auto;
+  padding: 0px 1.5rem;
+  display: grid;
+  grid-column: 1/-1;
+}
+
+:host(:not([expanded])),
+:host([expanded]) #expansion {
+  border-block-end: 1px solid #d2d2d2;
+}
+
+:host([expanded]) #expansion::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-block-start: 1px solid #d2d2d2;
+  inset-block-start: -1px;
+}
+
+
+#expansion::slotted(pf-td) {
+  padding-block-start: 0;
+  padding-inline-start: 0;
+}
+
+:host([expandable][expanded])::before {
+  position: absolute;
+  inset-block-start: -1px;
+  inset-inline-end: 0;
+  inset-block-end: -1px;
+  inset-inline-start: 0;
+  content: "";
+  border-inline-start: 3px solid #06c;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#expansion::slotted(pf-table) {
+  margin-block-end: -1px;
+}
+
+#toggle-cell {
+  z-index: 2;
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: 1.5rem;
+  padding: 0;
+}
+
+#toggle-icon {
+  transition: .2s ease-in 0s;
+  vertical-align: -0.125em;
+}
+
+:host([expanded]) #toggle-icon {
+  transform: rotate(90deg);
+}
+`;
 import { ifDefined } from 'lit/directives/if-defined.js';
 import '@patternfly/elements/pf-button/pf-button.js';
 import '@patternfly/elements/pf-icon/pf-icon.js';
@@ -138,7 +225,7 @@ _PfTr_onClick = function _PfTr_onClick() {
     this.dispatchEvent(new RequestExpandEvent());
 };
 PfTr.styles = [styles];
-PfTr.version = "4.1.0";
+PfTr.version = "4.3.0";
 __decorate([
     property({
         reflect: true,

@@ -14,7 +14,231 @@ import { bound } from '@patternfly/pfe-core/decorators/bound.js';
 import { ComposedEvent, StringListConverter } from '@patternfly/pfe-core/core.js';
 import '@patternfly/elements/pf-button/pf-button.js';
 import { css } from "lit";
-const styles = css `:host {\n  display: inline;\n  --_floating-arrow-size: var(--pf-c-popover__arrow--Width, var(--pf-global--arrow--width-lg, 1.5625rem));\n  --_header-text-color: var(--pf-c-popover__title-text--Color, inherit);\n  --_header-icon-color: var(--pf-c-popover__title-icon--Color, var(--pf-global--Color--100, #151515));\n  --_animation-speed: var(--pf-popover--animation-speed, 300ms);\n  --_z-index: var(--pf-popover--z-index, 9999);\n}\n\n.visually-hidden {\n  position: fixed;\n  top: 0;\n  left: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border: 0;\n}\n\n[hidden] {\n  display: none !important;\n}\n\n#container {\n  display: inline-flex;\n  position: relative;\n}\n\n#trigger {\n  display: inline-block;\n  position: relative;\n}\n\n#arrow {\n  display: block;\n  position: absolute;\n  background-color: var(--pf-c-popover__arrow--BackgroundColor, var(--pf-global--BackgroundColor--100, #fff));\n  box-shadow: var(\n    --pf-c-popover__arrow--BoxShadow,\n    var(--pf-global--BoxShadow--lg, 0 0.5rem 1rem 0 rgba(3, 3, 3, 0.16), 0 0 0.375rem 0 rgba(3, 3, 3, 0.08))\n  );\n  content: '';\n  height: var(--pf-c-popover__arrow--Height, var(--pf-global--arrow--width-lg, 1.5625rem));\n  width: var(--pf-c-popover__arrow--Width, var(--pf-global--arrow--width-lg, 1.5625rem));\n  rotate: 45deg;\n  z-index: -1;\n  pointer-events: none;\n}\n\n#popover {\n  display: block;\n  position: absolute;\n  opacity: 0;\n  z-index: -1;\n  transition: visibility 0s, opacity var(--_animation-speed) cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;\n  left: 0;\n  top: 0;\n  translate: var(--_floating-content-translate);\n  box-shadow: var(\n    --pf-c-popover--BoxShadow,\n    var(--pf-global--BoxShadow--lg, 0 0.5rem 1rem 0 rgba(3, 3, 3, 0.16), 0 0 0.375rem 0 rgba(3, 3, 3, 0.08))\n  );\n  border: 0;\n  padding: 0;\n  visibility: hidden;\n}\n\n#popover[open] {\n  opacity: 1;\n  z-index: var(--_z-index);\n  visibility: visible;\n}\n\n[part='content'] {\n  position: relative;\n  padding: var(--pf-c-popover__content--PaddingTop, var(--pf-global--spacer--md, 1rem))\n    var(--pf-c-popover__content--PaddingRight, var(--pf-global--spacer--md, 1rem))\n    var(--pf-c-popover__content--PaddingBottom, var(--pf-global--spacer--md, 1rem))\n    var(--pf-c-popover__content--PaddingLeft, var(--pf-global--spacer--md, 1rem));\n  word-break: break-word;\n  line-height: var(--pf-c-popover--line-height, 1.5);\n  font-size: var(--pf-c-popover__content--FontSize, var(--pf-global--FontSize--sm, 0.875rem));\n  color: var(--pf-c-popover__content--Color, var(--pf-global--Color--100, #151515));\n  background-color: var(--pf-c-popover__content--BackgroundColor, var(--pf-global--BackgroundColor--100, #fff));\n  max-width: var(\n    --pf-c-popover--MaxWidth,\n    calc(var(--pf-c-popover__content--PaddingLeft, 1rem) + var(--pf-c-popover__content--PaddingRight, 1rem) + 18.75rem)\n  );\n  min-width: var(\n    --pf-c-popover--MinWidth,\n    calc(var(--pf-c-popover__content--PaddingLeft, 1rem) + var(--pf-c-popover__content--PaddingRight, 1rem) + 18.75rem)\n  );\n  width: max-content;\n}\n\n[part='close-button'] {\n  cursor: pointer;\n  position: absolute;\n  right: var(\n    --pf-c-popover--c-button--Right,\n    calc(var(--pf-c-popover__content--PaddingRight, 1rem) - var(--pf-global--spacer--md, 1rem))\n  );\n  top: var(\n    --pf-c-popover--c-button--Top,\n    calc(var(--pf-c-popover__content--PaddingTop, 1rem) - var(--pf-global--spacer--form-element, 0.375rem))\n  );\n}\n\n[part='content'] > [part='close-button']:not([hidden]) ~ *:not([hidden]) {\n  padding-right: var(--pf-c-popover--c-button--sibling--PaddingRight, var(--pf-global--spacer--2xl, 3rem));\n}\n\n[part='header'] {\n  display: flex;\n  align-items: baseline;\n}\n\n[part='icon'] {\n  color: var(--_header-icon-color);\n  margin-right: var(--pf-c-popover__title-icon--MarginRight, var(--pf-global--spacer--sm, 0.5rem));\n}\n\n[part='icon'] ::slotted(*),\n[part='icon'] * {\n  vertical-align: -0.125em;\n}\n\n[part='icon'],\n[part='heading']::slotted(:is(h2, h3, h4, h5, h6)),\n[part='heading'] :is(h2, h3, h4, h5, h6) {\n  font-size: var(--pf-c-popover__title--FontSize, var(--pf-global--FontSize--md, 1rem));\n  font-weight: var(--pf-global--FontWeight--normal, 400);\n  --pf-icon--size: var(\n    --pf-c-popover__title--FontSize,\n    var(--pf-global--FontSize--md, var(--pf-global--icon--FontSize--md, 1em))\n  );\n}\n\n[part='heading']::slotted(:is(h2, h3, h4, h5, h6)),\n[part='heading'] :is(h2, h3, h4, h5, h6) {\n  color: var(--_header-text-color);\n  margin-top: 0;\n  margin-bottom: var(--pf-c-popover__title--MarginBottom, var(--pf-global--spacer--sm, 0.5rem));\n  line-height: var(--pf-c-popover__title--LineHeight, var(--pf-global--LineHeight--md, 1.5));\n  font-family: var(\n    --pf-c-popover__title--FontFamily,\n    var(\n      --pf-global--FontFamily--heading--sans-serif,\n      'RedHatDisplay',\n      'Overpass',\n      overpass,\n      helvetica,\n      arial,\n      sans-serif\n    )\n  );\n}\n\n[part='body'] {\n  display: block;\n  word-wrap: break-word;\n}\n\n[part='footer'] {\n  margin-top: var(--pf-c-popover__footer--MarginTop, var(--pf-global--spacer--md, 1rem));\n}\n\n:host([alert-severity='default']) {\n  --_header-text-color: var(--pf-c-popover--m-default__title-text--Color, var(--pf-global--default-color--300, #003737));\n  --_header-icon-color: var(--pf-c-popover--m-default__title-icon--Color, var(--pf-global--default-color--200, #009596));\n}\n\n:host([alert-severity='info']) {\n  --_header-text-color: var(--pf-c-popover--m-info__title-text--Color, var(--pf-global--info-color--200, #002952));\n  --_header-icon-color: var(--pf-c-popover--m-info__title-icon--Color, var(--pf-global--info-color--100, #2b9af3));\n}\n\n:host([alert-severity='warning']) {\n  --_header-icon-color: var(--pf-c-popover--m-warning__title-icon--Color, var(--pf-global--warning-color--100, #f0ab00));\n  --_header-text-color: var(--pf-c-popover--m-warning__title-text--Color, var(--pf-global--warning-color--200, #795600));\n}\n\n:host([alert-severity='success']) {\n  --_header-icon-color: var(--pf-c-popover--m-success__title-icon--Color, var(--pf-global--success-color--100, #3e8635));\n  --_header-text-color: var(--pf-c-popover--m-success__title-text--Color, var(--pf-global--success-color--200, #1e4f18));\n}\n\n:host([alert-severity='danger']) {\n  --_header-icon-color: var(--pf-c-popover--m-danger__title-icon--Color, var(--pf-global--danger-color--100, #c9190b));\n  --_header-text-color: var(--pf-c-popover--m-danger__title-text--Color, var(--pf-global--danger-color--200, #a30000));\n}\n`;
+const styles = css `:host {
+  display: inline;
+  /** Width of the arrow */
+  --_floating-arrow-size: var(--pf-c-popover__arrow--Width, var(--pf-global--arrow--width-lg, 1.5625rem));
+  /** Heading font color */
+  --_header-text-color: var(--pf-c-popover__title-text--Color, inherit);
+  /** Heading icon font color */
+  --_header-icon-color: var(--pf-c-popover__title-icon--Color, var(--pf-global--Color--100, #151515));
+  --_animation-speed: var(--pf-popover--animation-speed, 300ms);
+  --_z-index: var(--pf-popover--z-index, 9999);
+}
+
+.visually-hidden {
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+#container {
+  display: inline-flex;
+  position: relative;
+}
+
+#trigger {
+  display: inline-block;
+  position: relative;
+}
+
+#arrow {
+  display: block;
+  position: absolute;
+  /** Arrow background color */
+  background-color: var(--pf-c-popover__arrow--BackgroundColor, var(--pf-global--BackgroundColor--100, #fff));
+  /** Arrow box shadow */
+  box-shadow: var(
+    --pf-c-popover__arrow--BoxShadow,
+    var(--pf-global--BoxShadow--lg, 0 0.5rem 1rem 0 rgba(3, 3, 3, 0.16), 0 0 0.375rem 0 rgba(3, 3, 3, 0.08))
+  );
+  content: '';
+  /** Height of the arrow */
+  height: var(--pf-c-popover__arrow--Height, var(--pf-global--arrow--width-lg, 1.5625rem));
+  /** Width of the arrow */
+  width: var(--pf-c-popover__arrow--Width, var(--pf-global--arrow--width-lg, 1.5625rem));
+  rotate: 45deg;
+  z-index: -1;
+  pointer-events: none;
+}
+
+#popover {
+  display: block;
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+  transition: visibility 0s, opacity var(--_animation-speed) cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
+  left: 0;
+  top: 0;
+  translate: var(--_floating-content-translate);
+  /** Popover box shadow */
+  box-shadow: var(
+    --pf-c-popover--BoxShadow,
+    var(--pf-global--BoxShadow--lg, 0 0.5rem 1rem 0 rgba(3, 3, 3, 0.16), 0 0 0.375rem 0 rgba(3, 3, 3, 0.08))
+  );
+  border: 0;
+  padding: 0;
+  visibility: hidden;
+}
+
+#popover[open] {
+  opacity: 1;
+  z-index: var(--_z-index);
+  visibility: visible;
+}
+
+[part='content'] {
+  position: relative;
+  /** Popover padding (top, right, bottom, left) */
+  padding: var(--pf-c-popover__content--PaddingTop, var(--pf-global--spacer--md, 1rem))
+    var(--pf-c-popover__content--PaddingRight, var(--pf-global--spacer--md, 1rem))
+    var(--pf-c-popover__content--PaddingBottom, var(--pf-global--spacer--md, 1rem))
+    var(--pf-c-popover__content--PaddingLeft, var(--pf-global--spacer--md, 1rem));
+  word-break: break-word;
+  /** Popover line height */
+  line-height: var(--pf-c-popover--line-height, 1.5);
+  /** Popover font-size */
+  font-size: var(--pf-c-popover__content--FontSize, var(--pf-global--FontSize--sm, 0.875rem));
+  color: var(--pf-c-popover__content--Color, var(--pf-global--Color--100, #151515));
+  /** Popover background color */
+  background-color: var(--pf-c-popover__content--BackgroundColor, var(--pf-global--BackgroundColor--100, #fff));
+  /** Popover max-width */
+  max-width: var(
+    --pf-c-popover--MaxWidth,
+    calc(var(--pf-c-popover__content--PaddingLeft, 1rem) + var(--pf-c-popover__content--PaddingRight, 1rem) + 18.75rem)
+  );
+  /** Popover min-width */
+  min-width: var(
+    --pf-c-popover--MinWidth,
+    calc(var(--pf-c-popover__content--PaddingLeft, 1rem) + var(--pf-c-popover__content--PaddingRight, 1rem) + 18.75rem)
+  );
+  width: max-content;
+}
+
+[part='close-button'] {
+  cursor: pointer;
+  position: absolute;
+  /** Close button right position */
+  right: var(
+    --pf-c-popover--c-button--Right,
+    calc(var(--pf-c-popover__content--PaddingRight, 1rem) - var(--pf-global--spacer--md, 1rem))
+  );
+  /** Close button top position */
+  top: var(
+    --pf-c-popover--c-button--Top,
+    calc(var(--pf-c-popover__content--PaddingTop, 1rem) - var(--pf-global--spacer--form-element, 0.375rem))
+  );
+}
+
+[part='content'] > [part='close-button']:not([hidden]) ~ *:not([hidden]) {
+  /** Padding between close button and its immediate sibling */
+  padding-right: var(--pf-c-popover--c-button--sibling--PaddingRight, var(--pf-global--spacer--2xl, 3rem));
+}
+
+[part='header'] {
+  display: flex;
+  align-items: baseline;
+}
+
+[part='icon'] {
+  color: var(--_header-icon-color);
+  /** Heading icon right margin */
+  margin-right: var(--pf-c-popover__title-icon--MarginRight, var(--pf-global--spacer--sm, 0.5rem));
+}
+
+[part='icon'] ::slotted(*),
+[part='icon'] * {
+  vertical-align: -0.125em;
+}
+
+[part='icon'],
+[part='heading']::slotted(:is(h2, h3, h4, h5, h6)),
+[part='heading'] :is(h2, h3, h4, h5, h6) {
+  /** Header font-size */
+  font-size: var(--pf-c-popover__title--FontSize, var(--pf-global--FontSize--md, 1rem));
+  font-weight: var(--pf-global--FontWeight--normal, 400);
+  --pf-icon--size: var(
+    --pf-c-popover__title--FontSize,
+    var(--pf-global--FontSize--md, var(--pf-global--icon--FontSize--md, 1em))
+  );
+}
+
+[part='heading']::slotted(:is(h2, h3, h4, h5, h6)),
+[part='heading'] :is(h2, h3, h4, h5, h6) {
+  color: var(--_header-text-color);
+  margin-top: 0;
+  /** Header bottom margin */
+  margin-bottom: var(--pf-c-popover__title--MarginBottom, var(--pf-global--spacer--sm, 0.5rem));
+  /** Header line height */
+  line-height: var(--pf-c-popover__title--LineHeight, var(--pf-global--LineHeight--md, 1.5));
+  /** Header font-family */
+  font-family: var(
+    --pf-c-popover__title--FontFamily,
+    var(
+      --pf-global--FontFamily--heading--sans-serif,
+      'RedHatDisplay',
+      'Overpass',
+      overpass,
+      helvetica,
+      arial,
+      sans-serif
+    )
+  );
+}
+
+[part='body'] {
+  display: block;
+  word-wrap: break-word;
+}
+
+[part='footer'] {
+  /** Footer top margin */
+  margin-top: var(--pf-c-popover__footer--MarginTop, var(--pf-global--spacer--md, 1rem));
+}
+
+:host([alert-severity='default']) {
+  /** Default alert heading color */
+  --_header-text-color: var(--pf-c-popover--m-default__title-text--Color, var(--pf-global--default-color--300, #003737));
+  /** Default alert icon color */
+  --_header-icon-color: var(--pf-c-popover--m-default__title-icon--Color, var(--pf-global--default-color--200, #009596));
+}
+
+:host([alert-severity='info']) {
+  /** Info alert heading color */
+  --_header-text-color: var(--pf-c-popover--m-info__title-text--Color, var(--pf-global--info-color--200, #002952));
+  /** Info alert icon color */
+  --_header-icon-color: var(--pf-c-popover--m-info__title-icon--Color, var(--pf-global--info-color--100, #2b9af3));
+}
+
+:host([alert-severity='warning']) {
+  /** Warning alert icon color */
+  --_header-icon-color: var(--pf-c-popover--m-warning__title-icon--Color, var(--pf-global--warning-color--100, #f0ab00));
+  /** Warning alert heading color */
+  --_header-text-color: var(--pf-c-popover--m-warning__title-text--Color, var(--pf-global--warning-color--200, #795600));
+}
+
+:host([alert-severity='success']) {
+  /** Success alert icon color */
+  --_header-icon-color: var(--pf-c-popover--m-success__title-icon--Color, var(--pf-global--success-color--100, #3e8635));
+  /** Success alert heading color */
+  --_header-text-color: var(--pf-c-popover--m-success__title-text--Color, var(--pf-global--success-color--200, #1e4f18));
+}
+
+:host([alert-severity='danger']) {
+  /** Danger alert icon color */
+  --_header-icon-color: var(--pf-c-popover--m-danger__title-icon--Color, var(--pf-global--danger-color--100, #c9190b));
+  /** Danger alert heading color */
+  --_header-text-color: var(--pf-c-popover--m-danger__title-text--Color, var(--pf-global--danger-color--200, #a30000));
+}
+`;
 export class PopoverHideEvent extends ComposedEvent {
     constructor() {
         super('hide');
@@ -100,15 +324,27 @@ let PfPopover = class PfPopover extends LitElement {
                 break;
         }
         const headingSlotWithFallback = html `
+      <!-- slot:
+             summary: Heading content.
+             description: |
+               This slot projects content into the header of the popover.
+               Typically this would be a heading (e.g. h2, h3, etc.) element.
+           part:
+             summary: The heading element
+      -->
       <slot id="heading" name="heading" part="heading" ?hidden=${!hasHeading}>${headingContent}</slot>
     `;
         const headerIcon = this.icon
             ?? PfPopover.alertIcons.get(this.alertSeverity)
             ?? '';
         return html `
+      <!-- The component wrapper -->
       <div id="container"
            style="${styleMap(styles)}"
-           class="${classMap({ [anchor]: !!anchor, [alignment]: !!alignment })}">
+           class="${classMap({ [anchor]: !!anchor, [alignment]: !!alignment })}"
+           part="container">
+        <!-- The default slot holds invoking element.
+             Typically this would be an icon, button, or other small sized element. -->
         <slot id="trigger"
               @slotchange="${__classPrivateFieldGet(this, _PfPopover_instances, "m", _PfPopover_triggerChanged)}"
               @keydown="${__classPrivateFieldGet(this, _PfPopover_onKeydown, "f")}"
@@ -119,7 +355,9 @@ let PfPopover = class PfPopover extends LitElement {
                 aria-describedby="body"
                 aria-label=${ifDefined(this.label)}>
           <div id="arrow"></div>
+          <!-- The content wrapper -->
           <div id="content" part="content">
+            <!-- The close button -->
             <pf-button id="close-button"
                        part="close-button"
                        plain
@@ -132,8 +370,11 @@ let PfPopover = class PfPopover extends LitElement {
               </svg>
             </pf-button>
             ${!(hasHeading && hasIcon) ? headingSlotWithFallback : html `
+            <!-- The header element; only visible if both an icon annd heading are provided. -->
             <header part="header">
+              <!-- summary: Container for the header icon -->
               <span part="icon">
+                <!-- summary: The icon in the header of the popover, before the heading. -->
                 <slot name="icon">
                   <pf-icon icon="${headerIcon}"
                            set="${ifDefined(this.iconSet)}"
@@ -143,8 +384,15 @@ let PfPopover = class PfPopover extends LitElement {
               <span class="visually-hidden">${this.alertSeverityText ?? `${this.alertSeverity} alert:`}</span>`}
               ${headingSlotWithFallback}
             </header>`}
+            <!-- slot:
+                   summary: body of the popover, which is hidden until the popover is activated.
+                 part:
+                   summary: The container for the body content
+            -->
             <slot id="body" part="body" name="body">${this.body ?? ''}</slot>
+            <!-- summary: The container for the footer content -->
             <footer part="footer" ?hidden=${!hasFooter}>
+              <!-- summary: optional footer content of the popover. -->
               <slot name="footer">${this.footer}</slot>
             </footer>
           </div>
@@ -260,7 +508,7 @@ PfPopover.alertIcons = new Map(Object.entries({
         });
     }
 })();
-PfPopover.version = "4.1.0";
+PfPopover.version = "4.3.0";
 __decorate([
     property({ reflect: true })
 ], PfPopover.prototype, "position", void 0);

@@ -2,14 +2,7 @@ import { LitElement, type TemplateResult } from 'lit';
 /**
  * A **background image** allows you to place an image in the background of your page or area of a page.
  * @summary Allows users to place an image in the background of your page or area of a page.
- * @slot filter - Overrides the default svg filter for the background image.
- * @cssprop {<color>} [--pf-c-background-image--BackgroundColor=#151515]
- * @cssprop [--pf-c-background-image--Filter=url("#image_overlay")]
- * @cssprop --pf-c-background-image--BackgroundImage
- * @cssprop --pf-c-background-image--BackgroundImage-2x
- * @cssprop --pf-c-background-image--BackgroundImage--sm
- * @cssprop --pf-c-background-image--BackgroundImage--sm-2x
- * @cssprop --pf-c-background-image--BackgroundImage--lg
+ * @alias Background Image
  */
 export declare class PfBackgroundImage extends LitElement {
     #private;

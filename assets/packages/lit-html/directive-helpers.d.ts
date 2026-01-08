@@ -107,7 +107,12 @@ export declare const setCommittedValue: (part: Part, value?: unknown) => unknown
  */
 export declare const getCommittedValue: (part: ChildPart) => unknown;
 /**
- * Removes a ChildPart from the DOM, including any of its content.
+ * Removes a ChildPart from the DOM, including any of its content and markers.
+ *
+ * Note: The only difference between this and clearPart() is that this also
+ * removes the part's start node. This means that the ChildPart must own its
+ * start node, ie it must be a marker node specifically for this part and not an
+ * anchor from surrounding content.
  *
  * @param part The Part to remove
  */

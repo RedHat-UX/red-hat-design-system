@@ -16,7 +16,302 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { TabExpandEvent, context } from './context.js';
 import '@patternfly/elements/pf-icon/pf-icon.js';
 import { css } from "lit";
-const styles = css `:host {\n  display: block;\n}\n\n[part="tabs-container"] {\n  position: relative;\n  display: flex;\n  overflow: hidden;\n}\n\n[part="tabs-container"]::before {\n  position: absolute;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  border-style: solid;\n}\n\n:host button {\n  opacity: 1;\n}\n\n:host button:nth-of-type(1) {\n  margin-inline-end: 0;\n  translate: 0 0;\n}\n\n:host button:nth-of-type(2) {\n  margin-inline-start: 0;\n  translate: 0 0;\n}\n\n[part="tabs"],\n[part="panels"] {\n  display: block;\n}\n\n[part="tabs"] {\n  scrollbar-width: none;\n  position: relative;\n  max-width: 100%;\n  overflow-x: auto;\n}\n\n[part="tabs-container"]::before,\n[part="tabs"]::before,\nbutton::before {\n  position: absolute;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  content: "";\n  border-style: solid;\n}\n\n[part="tabs"]::before,\nbutton::before {\n  top: 0;\n}\n\nbutton,\n[part="tabs"]::before {\n  border: 0;\n}\n\nbutton {\n  flex: none;\n  line-height: 1;\n  opacity: 0;\n}\n\nbutton::before {\n  border-block-start-width: 0;\n}\n\nbutton:nth-of-type(1) {\n  translate: -100% 0;\n}\n\nbutton:nth-of-type(2) {\n  translate: 100% 0;\n}\n\nbutton:disabled {\n  pointer-events: none;\n}\n\n[part="tabs-container"] {\n  width: var(--pf-c-tabs--Width, auto);\n  padding-inline-end: var(--pf-c-tabs--inset, 0);\n  padding-inline-start: var(--pf-c-tabs--inset, 0);\n}\n\n[part="tabs-container"]::before {\n  border-color: var(--pf-c-tabs--before--BorderColor, var(--pf-global--BorderColor--100, #d2d2d2));\n  border-block-start-width: var(--pf-c-tabs--before--BorderTopWidth, 0);\n  border-inline-end-width: var(--pf-c-tabs--before--BorderRightWidth, 0);\n  border-block-end-width:  var(--pf-c-tabs--before--BorderBottomWidth, var(--pf-c-tabs--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px)));\n  border-inline-start-width: var(--pf-c-tabs--before--BorderLeftWidth, 0);\n}\n\n:host([box]) [part="tabs-container"] {\n  --pf-c-tabs__link--BackgroundColor: var(--pf-c-tabs--m-box__link--BackgroundColor, var(--pf-global--BackgroundColor--200, #f0f0f0));\n  --pf-c-tabs__link--disabled--BackgroundColor: var(--pf-c-tabs--m-box__link--disabled--BackgroundColor, var(--pf-global--disabled-color--200, #d2d2d2));\n  --pf-c-tabs__link--before--BorderBottomWidth: var(--pf-c-tabs__link--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px));\n  --pf-c-tabs__link--before--BorderRightWidth: var(--pf-c-tabs__link--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px));\n  --pf-c-tabs__link--disabled--before--BorderRightWidth: var(--pf-c-tabs__link--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px));\n  --pf-c-tabs__link--after--Top: 0;\n  --pf-c-tabs__link--after--Bottom: auto;\n}\n\n:host([box]) ::slotted(pf-tab:last-of-type) {\n  --pf-c-tabs__link--before--BorderRightWidth: 0;\n}\n\n:host([box]) button:nth-of-type(2)::before {\n  left: calc(var(--pf-c-tabs__link--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px)) * -1);\n}\n\n:host([box]) pf-tab[aria-selected="true"] + pf-tab {\n  --pf-c-tabs__link--before--Left: 0;\n}\n\n:host([box="light"]) [part="tabs-container"] {\n  --pf-c-tabs__link--BackgroundColor: var(--pf-c-tabs--m-color-scheme--light-300__link--BackgroundColor, transparent);\n  --pf-c-tabs__item--m-current__link--BackgroundColor: var(--pf-c-tabs--m-color-scheme--light-300__item--m-current__link--BackgroundColor, var(--pf-global--BackgroundColor--light-300, #f0f0f0));\n  --pf-c-tabs__link--disabled--BackgroundColor: var(--pf-c-tabs--m-color-scheme--light-300__link--disabled--BackgroundColor, var(--pf-global--palette--black-150, #f5f5f5));\n}\n\n:host([vertical]) [part="tabs-container"] {\n  --pf-c-tabs--Width: var(--pf-c-tabs--m-vertical--Width, 100%);\n  --pf-c-tabs--inset: var(--pf-c-tabs--m-vertical--inset, var(--pf-global--spacer--lg, 1.5rem));\n  --pf-c-tabs--before--BorderBottomWidth: 0;  /* *override user setting* border bottom should always be 0 for vertical tabs */\n  --pf-c-tabs__link--PaddingTop: var(--pf-c-tabs--m-vertical__link--PaddingTop, var(--pf-global--spacer--md, 1rem));\n  --pf-c-tabs__link--PaddingBottom: var(--pf-c-tabs--m-vertical__link--PaddingBottom, var(--pf-global--spacer--md, 1rem));\n  --pf-c-tabs__link--before--Left: 0;\n  --pf-c-tabs__link--disabled--before--BorderBottomWidth: 0; /* *override user setting* border bottom for disabled should always be 0 for vertical tabs */\n  --pf-c-tabs__link--disabled--before--BorderLeftWidth: var(--pf-c-tabs--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px));\n  --pf-c-tabs__link--after--Top: 0;\n  --pf-c-tabs__link--after--Right: auto;\n\n  display: inline-flex;\n  flex-direction: column;\n  height: 100%;\n  padding: 0;\n  overflow: visible;\n}\n\n:host([vertical]) [part="tabs"] {\n  position: relative;\n  flex-direction: column;\n  flex-grow: 1;\n  max-width: var(--pf-c-tabs--m-vertical--MaxWidth, 15.625rem);\n}\n\n:host([vertical]) [part="tabs"]::before {\n  position: absolute;\n  right: auto;\n  border-style: solid;\n  border-color: var(--pf-c-tabs--m-vertical__list--before--BorderColor, var(--pf-c-tabs--before--BorderColor, var(--pf-global--BorderColor--100, #d2d2d2)));\n  border-block-start-width: var(--pf-c-tabs--m-vertical__list--before--BorderTopWidth, 0);\n  border-inline-end-width: var(--pf-c-tabs--m-vertical__list--before--BorderRightWidth, 0);\n  border-block-end-width: var(--pf-c-tabs--m-vertical__list--before--BorderBottomWidth, 0);\n  border-inline-start-width: var(--pf-c-tabs--m-vertical__list--before--BorderLeftWidth, var(--pf-c-tabs--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px)));\n}\n\n:host([vertical]) ::slotted(pf-tab:first-of-type) {\n  margin-block-start: var(--pf-c-tabs--inset, 0);\n}\n\n:host([vertical]) ::slotted(pf-tab:last-of-type) {\n  margin-block-end: var(--pf-c-tabs--inset, 0);\n}\n\n:host([box][vertical]) [part="tabs-container"] {\n  --pf-c-tabs--inset: var(--pf-c-tabs--m-vertical--m-box--inset, var(--pf-global--spacer--xl, 2rem));\n  --pf-c-tabs--m-vertical__list--before--BorderLeftWidth: 0; /* *override user setting* border left should be 0 for vertical box; */\n  --pf-c-tabs--m-vertical__list--before--BorderRightWidth: var(--pf-c-tabs--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px));\n  --pf-c-tabs__link--disabled--before--BorderRightWidth: var(--pf-c-tabs--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px));\n  /* --pf-c-tabs__link--disabled--before--BorderBottomWidth: var(--pf-c-tabs--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px)); */\n  --pf-c-tabs__link--disabled--before--BorderLeftWidth: 0; /* *override user setting* border left should be 0 for disabled ; */\n}\n\n:host([box][vertical]) [part="tabs"]::before {\n  right: 0;\n  left: auto;\n}\n\n:host([box][vertical]) ::slotted(pf-tab:last-of-type) {\n  --pf-c-tabs__link--before--BorderBottomWidth: 0;\n  --pf-c-tabs__link--before--BorderRightWidth: var(--pf-c-tabs__link--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px));\n}\n\n:host([box][vertical]) ::slotted(pf-tab[aria-selected="true"]) {\n  --pf-c-tabs__link--before--BorderRightColor: var(--pf-c-tabs__item--m-current__link--BackgroundColor, var(--pf-global--BackgroundColor--100, #ffffff));\n  --pf-c-tabs__link--before--BorderBottomColor: var(--pf-c-tabs__link--before--border-color--base, var(--pf-global--BorderColor--100, #d2d2d2));\n  --pf-c-tabs__link--before--BorderBottomWidth: var(--pf-c-tabs__link--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px));\n}\n\n:host([box][vertical]) ::slotted(pf-tab[aria-selected="true"]:first-of-type) {\n  --pf-c-tabs__link--before--BorderTopWidth: var(--pf-c-tabs__link--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px));\n}\n\n[part="tabs"] {\n  display: var(--pf-c-tabs__list--Display, flex);\n}\n\nbutton {\n  width: var(--pf-c-tabs__scroll-button--Width, var(--pf-global--spacer--2xl, 3rem));\n  color: var(--pf-c-tabs__scroll-button--Color, var(--pf-global--Color--100, #151515));\n  background-color: var(--pf-c-tabs__scroll-button--BackgroundColor, var(--pf-global--BackgroundColor--100, #ffffff));\n  outline-offset: var(--pf-c-tabs__scroll-button--OutlineOffset, calc(-1 * var(--pf-global--spacer--xs, 0.25rem)));\n  transition:\n    margin var(--pf-c-tabs__scroll-button--TransitionDuration--margin, .125s),\n    translate var(--pf-c-tabs__scroll-button--TransitionDuration--transform, .125s), opacity var(--pf-c-tabs__scroll-button--TransitionDuration--opacity, .125s);\n  --pf-icon--size: 16px;\n}\n\nbutton:hover {\n  --pf-c-tabs__scroll-button--Color: var(--pf-c-tabs__scroll-button--hover--Color, var(--pf-global--active-color--100, #06c));\n}\n\nbutton::before {\n  border-color: var(--pf-c-tabs__scroll-button--before--BorderColor, var(--pf-c-tabs--before--BorderColor, var(--pf-global--BorderColor--100, #d2d2d2)));\n  border-inline-end-width: var(--pf-c-tabs__scroll-button--before--BorderRightWidth, 0);\n  border-block-end-width: var(--pf-c-tabs__scroll-button--before--BorderBottomWidth, var(--pf-c-tabs__scroll-button--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px)));\n  border-inline-start-width: var(--pf-c-tabs__scroll-button--before--BorderLeftWidth, 0);\n}\n\nbutton:nth-of-type(1) {\n  --pf-c-tabs__scroll-button--before--BorderRightWidth: var(--pf-c-tabs__scroll-button--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px));\n  margin-inline-end: calc(var(--pf-c-tabs__scroll-button--Width, var(--pf-global--spacer--2xl, 3rem)) * -1);\n}\n\nbutton:nth-of-type(2) {\n  --pf-c-tabs__scroll-button--before--BorderLeftWidth: var(--pf-c-tabs__scroll-button--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px));\n  margin-inline-start: calc(var(--pf-c-tabs__scroll-button--Width, var(--pf-global--spacer--2xl, 3rem)) * -1);\n}\n\nbutton:disabled {\n  --pf-c-tabs__scroll-button--Color: var(--pf-c-tabs__scroll-button--disabled--Color, var(--pf-global--disabled-color--200, #d2d2d2));\n}\n\n:host(:not[vertical]) [part="tabs-container"] {\n  --pf-c-tabs--inset: 0;\n  --pf-c-tabs--m-vertical--inset: 0;\n  --pf-c-tabs--m-vertical--m-box--inset: 0;\n}\n\n:host([fill]) [part="tabs"] {\n  flex-basis: 100%;\n}\n\n:host([fill]) ::slotted(pf-tab) {\n  flex-grow: 1;\n}\n\n:host([fill]) ::slotted(pf-tab:first-of-type) {\n  --pf-c-tabs--m-box__item--m-current--first-child__link--before--BorderLeftWidth: 0;\n}\n\n:host([fill]) ::slotted(pf-tab:last-of-type) {\n  --pf-c-tabs--m-box__item--m-current--last-child__link--before--BorderRightWidth: 0;\n}\n\n:host([border-bottom="false"]) [part="tabs-container"] {\n  --pf-c-tabs--before--BorderBottomWidth: 0; /* *override user setting* when border-bottom is false border bottom styles should be 0; */\n  --pf-c-tabs__link--before--BorderBottomWidth: 0;\n}\n`;
+const styles = css `:host {
+  display: block;
+}
+
+[part="tabs-container"] {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+}
+
+[part="tabs-container"]::before {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-style: solid;
+}
+
+:host button {
+  opacity: 1;
+}
+
+:host button:nth-of-type(1) {
+  margin-inline-end: 0;
+  translate: 0 0;
+}
+
+:host button:nth-of-type(2) {
+  margin-inline-start: 0;
+  translate: 0 0;
+}
+
+[part="tabs"],
+[part="panels"] {
+  display: block;
+}
+
+[part="tabs"] {
+  scrollbar-width: none;
+  position: relative;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+[part="tabs-container"]::before,
+[part="tabs"]::before,
+button::before {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: "";
+  border-style: solid;
+}
+
+[part="tabs"]::before,
+button::before {
+  top: 0;
+}
+
+button,
+[part="tabs"]::before {
+  border: 0;
+}
+
+button {
+  flex: none;
+  line-height: 1;
+  opacity: 0;
+}
+
+button::before {
+  border-block-start-width: 0;
+}
+
+button:nth-of-type(1) {
+  translate: -100% 0;
+}
+
+button:nth-of-type(2) {
+  translate: 100% 0;
+}
+
+button:disabled {
+  pointer-events: none;
+}
+
+[part="tabs-container"] {
+  /** Width of the tabs container */
+  width: var(--pf-c-tabs--Width, auto);
+  /** Inset spacing for tabs */
+  padding-inline-end: var(--pf-c-tabs--inset, 0);
+  /** Inset spacing for tabs */
+  padding-inline-start: var(--pf-c-tabs--inset, 0);
+}
+
+[part="tabs-container"]::before {
+  /** Border color for tabs container pseudo-element */
+  border-color: var(--pf-c-tabs--before--BorderColor, var(--pf-global--BorderColor--100, #d2d2d2));
+  /** Top border width */
+  border-block-start-width: var(--pf-c-tabs--before--BorderTopWidth, 0);
+  /** Right border width */
+  border-inline-end-width: var(--pf-c-tabs--before--BorderRightWidth, 0);
+  /** Bottom border width */
+  border-block-end-width:  var(--pf-c-tabs--before--BorderBottomWidth, var(--pf-c-tabs--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px)));
+  /** Left border width */
+  border-inline-start-width: var(--pf-c-tabs--before--BorderLeftWidth, 0);
+}
+
+:host([box]) [part="tabs-container"] {
+  --pf-c-tabs__link--BackgroundColor: var(--pf-c-tabs--m-box__link--BackgroundColor, var(--pf-global--BackgroundColor--200, #f0f0f0));
+  --pf-c-tabs__link--disabled--BackgroundColor: var(--pf-c-tabs--m-box__link--disabled--BackgroundColor, var(--pf-global--disabled-color--200, #d2d2d2));
+  --pf-c-tabs__link--before--BorderBottomWidth: var(--pf-c-tabs__link--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px));
+  --pf-c-tabs__link--before--BorderRightWidth: var(--pf-c-tabs__link--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px));
+  --pf-c-tabs__link--disabled--before--BorderRightWidth: var(--pf-c-tabs__link--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px));
+  --pf-c-tabs__link--after--Top: 0;
+  --pf-c-tabs__link--after--Bottom: auto;
+}
+
+:host([box]) ::slotted(pf-tab:last-of-type) {
+  --pf-c-tabs__link--before--BorderRightWidth: 0;
+}
+
+:host([box]) button:nth-of-type(2)::before {
+  left: calc(var(--pf-c-tabs__link--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px)) * -1);
+}
+
+:host([box]) pf-tab[aria-selected="true"] + pf-tab {
+  --pf-c-tabs__link--before--Left: 0;
+}
+
+:host([box="light"]) [part="tabs-container"] {
+  --pf-c-tabs__link--BackgroundColor: var(--pf-c-tabs--m-color-scheme--light-300__link--BackgroundColor, transparent);
+  --pf-c-tabs__item--m-current__link--BackgroundColor: var(--pf-c-tabs--m-color-scheme--light-300__item--m-current__link--BackgroundColor, var(--pf-global--BackgroundColor--light-300, #f0f0f0));
+  --pf-c-tabs__link--disabled--BackgroundColor: var(--pf-c-tabs--m-color-scheme--light-300__link--disabled--BackgroundColor, var(--pf-global--palette--black-150, #f5f5f5));
+}
+
+:host([vertical]) [part="tabs-container"] {
+  --pf-c-tabs--Width: var(--pf-c-tabs--m-vertical--Width, 100%);
+  --pf-c-tabs--inset: var(--pf-c-tabs--m-vertical--inset, var(--pf-global--spacer--lg, 1.5rem));
+  --pf-c-tabs--before--BorderBottomWidth: 0;  /* *override user setting* border bottom should always be 0 for vertical tabs */
+  --pf-c-tabs__link--PaddingTop: var(--pf-c-tabs--m-vertical__link--PaddingTop, var(--pf-global--spacer--md, 1rem));
+  --pf-c-tabs__link--PaddingBottom: var(--pf-c-tabs--m-vertical__link--PaddingBottom, var(--pf-global--spacer--md, 1rem));
+  --pf-c-tabs__link--before--Left: 0;
+  --pf-c-tabs__link--disabled--before--BorderBottomWidth: 0; /* *override user setting* border bottom for disabled should always be 0 for vertical tabs */
+  --pf-c-tabs__link--disabled--before--BorderLeftWidth: var(--pf-c-tabs--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px));
+  --pf-c-tabs__link--after--Top: 0;
+  --pf-c-tabs__link--after--Right: auto;
+
+  display: inline-flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0;
+  overflow: visible;
+}
+
+:host([vertical]) [part="tabs"] {
+  position: relative;
+  flex-direction: column;
+  flex-grow: 1;
+  /** Maximum width for vertical tabs */
+  max-width: var(--pf-c-tabs--m-vertical--MaxWidth, 15.625rem);
+}
+
+:host([vertical]) [part="tabs"]::before {
+  position: absolute;
+  right: auto;
+  border-style: solid;
+  border-color: var(--pf-c-tabs--m-vertical__list--before--BorderColor, var(--pf-c-tabs--before--BorderColor, var(--pf-global--BorderColor--100, #d2d2d2)));
+  /** Top border width for vertical tabs */
+  border-block-start-width: var(--pf-c-tabs--m-vertical__list--before--BorderTopWidth, 0);
+  /** Right border width for vertical tabs */
+  border-inline-end-width: var(--pf-c-tabs--m-vertical__list--before--BorderRightWidth, 0);
+  /** Bottom border width for vertical tabs */
+  border-block-end-width: var(--pf-c-tabs--m-vertical__list--before--BorderBottomWidth, 0);
+  /** Left border width for vertical tabs */
+  border-inline-start-width: var(--pf-c-tabs--m-vertical__list--before--BorderLeftWidth, var(--pf-c-tabs--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px)));
+}
+
+:host([vertical]) ::slotted(pf-tab:first-of-type) {
+  margin-block-start: var(--pf-c-tabs--inset, 0);
+}
+
+:host([vertical]) ::slotted(pf-tab:last-of-type) {
+  margin-block-end: var(--pf-c-tabs--inset, 0);
+}
+
+:host([box][vertical]) [part="tabs-container"] {
+  --pf-c-tabs--inset: var(--pf-c-tabs--m-vertical--m-box--inset, var(--pf-global--spacer--xl, 2rem));
+  --pf-c-tabs--m-vertical__list--before--BorderLeftWidth: 0; /* *override user setting* border left should be 0 for vertical box; */
+  --pf-c-tabs--m-vertical__list--before--BorderRightWidth: var(--pf-c-tabs--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px));
+  --pf-c-tabs__link--disabled--before--BorderRightWidth: var(--pf-c-tabs--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px));
+  /* --pf-c-tabs__link--disabled--before--BorderBottomWidth: var(--pf-c-tabs--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px)); */
+  --pf-c-tabs__link--disabled--before--BorderLeftWidth: 0; /* *override user setting* border left should be 0 for disabled ; */
+}
+
+:host([box][vertical]) [part="tabs"]::before {
+  right: 0;
+  left: auto;
+}
+
+:host([box][vertical]) ::slotted(pf-tab:last-of-type) {
+  --pf-c-tabs__link--before--BorderBottomWidth: 0;
+  --pf-c-tabs__link--before--BorderRightWidth: var(--pf-c-tabs__link--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px));
+}
+
+:host([box][vertical]) ::slotted(pf-tab[aria-selected="true"]) {
+  --pf-c-tabs__link--before--BorderRightColor: var(--pf-c-tabs__item--m-current__link--BackgroundColor, var(--pf-global--BackgroundColor--100, #ffffff));
+  --pf-c-tabs__link--before--BorderBottomColor: var(--pf-c-tabs__link--before--border-color--base, var(--pf-global--BorderColor--100, #d2d2d2));
+  --pf-c-tabs__link--before--BorderBottomWidth: var(--pf-c-tabs__link--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px));
+}
+
+:host([box][vertical]) ::slotted(pf-tab[aria-selected="true"]:first-of-type) {
+  --pf-c-tabs__link--before--BorderTopWidth: var(--pf-c-tabs__link--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px));
+}
+
+[part="tabs"] {
+  /** Display type for the tabs list */
+  display: var(--pf-c-tabs__list--Display, flex);
+}
+
+button {
+  /** Width of the scroll buttons */
+  width: var(--pf-c-tabs__scroll-button--Width, var(--pf-global--spacer--2xl, 3rem));
+  /** Color of the scroll buttons */
+  color: var(--pf-c-tabs__scroll-button--Color, var(--pf-global--Color--100, #151515));
+  /** Background color of the scroll buttons */
+  background-color: var(--pf-c-tabs__scroll-button--BackgroundColor, var(--pf-global--BackgroundColor--100, #ffffff));
+  /** Outline offset for scroll buttons */
+  outline-offset: var(--pf-c-tabs__scroll-button--OutlineOffset, calc(-1 * var(--pf-global--spacer--xs, 0.25rem)));
+  transition:
+    /** Transition duration for margin changes */
+    margin var(--pf-c-tabs__scroll-button--TransitionDuration--margin, .125s),
+    /** Transition duration for transform changes */
+    translate var(--pf-c-tabs__scroll-button--TransitionDuration--transform, .125s), opacity var(--pf-c-tabs__scroll-button--TransitionDuration--opacity, .125s);
+  --pf-icon--size: 16px;
+}
+
+button:hover {
+  /** Hover color for scroll buttons */
+  --pf-c-tabs__scroll-button--Color: var(--pf-c-tabs__scroll-button--hover--Color, var(--pf-global--active-color--100, #06c));
+}
+
+button::before {
+  /** Border color for scroll button pseudo-elements */
+  border-color: var(--pf-c-tabs__scroll-button--before--BorderColor, var(--pf-c-tabs--before--BorderColor, var(--pf-global--BorderColor--100, #d2d2d2)));
+  /** Right border width for scroll button pseudo-elements */
+  border-inline-end-width: var(--pf-c-tabs__scroll-button--before--BorderRightWidth, 0);
+  /** Bottom border width for scroll button pseudo-elements */
+  border-block-end-width: var(--pf-c-tabs__scroll-button--before--BorderBottomWidth, var(--pf-c-tabs__scroll-button--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px)));
+  /** Left border width for scroll button pseudo-elements */
+  border-inline-start-width: var(--pf-c-tabs__scroll-button--before--BorderLeftWidth, 0);
+}
+
+button:nth-of-type(1) {
+  --pf-c-tabs__scroll-button--before--BorderRightWidth: var(--pf-c-tabs__scroll-button--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px));
+  margin-inline-end: calc(var(--pf-c-tabs__scroll-button--Width, var(--pf-global--spacer--2xl, 3rem)) * -1);
+}
+
+button:nth-of-type(2) {
+  --pf-c-tabs__scroll-button--before--BorderLeftWidth: var(--pf-c-tabs__scroll-button--before--border-width--base, var(--pf-global--BorderWidth--sm, 1px));
+  margin-inline-start: calc(var(--pf-c-tabs__scroll-button--Width, var(--pf-global--spacer--2xl, 3rem)) * -1);
+}
+
+button:disabled {
+  /** Color for disabled scroll buttons */
+  --pf-c-tabs__scroll-button--Color: var(--pf-c-tabs__scroll-button--disabled--Color, var(--pf-global--disabled-color--200, #d2d2d2));
+}
+
+:host(:not[vertical]) [part="tabs-container"] {
+  --pf-c-tabs--inset: 0;
+  --pf-c-tabs--m-vertical--inset: 0;
+  --pf-c-tabs--m-vertical--m-box--inset: 0;
+}
+
+:host([fill]) [part="tabs"] {
+  flex-basis: 100%;
+}
+
+:host([fill]) ::slotted(pf-tab) {
+  flex-grow: 1;
+}
+
+:host([fill]) ::slotted(pf-tab:first-of-type) {
+  --pf-c-tabs--m-box__item--m-current--first-child__link--before--BorderLeftWidth: 0;
+}
+
+:host([fill]) ::slotted(pf-tab:last-of-type) {
+  --pf-c-tabs--m-box__item--m-current--last-child__link--before--BorderRightWidth: 0;
+}
+
+:host([border-bottom="false"]) [part="tabs-container"] {
+  --pf-c-tabs--before--BorderBottomWidth: 0; /* *override user setting* when border-bottom is false border bottom styles should be 0; */
+  --pf-c-tabs__link--before--BorderBottomWidth: 0;
+}
+`;
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 let PfTabs = class PfTabs extends LitElement {
     constructor() {
@@ -121,8 +416,10 @@ let PfTabs = class PfTabs extends LitElement {
     }
     render() {
         return html `
+      <!-- outer container -->
       <div part="container"
            class="${classMap({ overflow: __classPrivateFieldGet(this, _PfTabs_overflow, "f").showScrollButtons })}">
+        <!-- tabs container -->
         <div part="tabs-container">${!__classPrivateFieldGet(this, _PfTabs_overflow, "f").showScrollButtons ? '' : html `
           <button id="previousTab" tabindex="-1"
               aria-label="${this.labelScrollLeft}"
@@ -130,7 +427,9 @@ let PfTabs = class PfTabs extends LitElement {
               @click="${__classPrivateFieldGet(this, _PfTabs_instances, "m", _PfTabs_scrollLeft)}">
             <pf-icon icon="angle-left" set="fas" loading="eager"></pf-icon>
           </button>`}
+          <!-- tablist -->
           <div id="tabs" part="tabs" role="tablist">
+            <!-- Must contain one or more \`<pf-tab>\` -->
             <slot name="tab" @slotchange="${__classPrivateFieldGet(this, _PfTabs_instances, "m", _PfTabs_onSlotChange)}" @scroll="${__classPrivateFieldGet(this, _PfTabs_overflow, "f").onScroll}"></slot>
           </div>
           ${!__classPrivateFieldGet(this, _PfTabs_overflow, "f").showScrollButtons ? '' : html `
@@ -141,6 +440,12 @@ let PfTabs = class PfTabs extends LitElement {
             <pf-icon icon="angle-right" set="fas" loading="eager"></pf-icon>
           </button>`}
         </div>
+        <!--
+          slot:
+            summary: Must contain one or more \`<pf-panel>\`
+          part:
+            summary: panels
+        -->
         <slot part="panels"></slot>
       </div>
     `;
@@ -183,7 +488,7 @@ _PfTabs_onExpand = function _PfTabs_onExpand(event) {
 };
 PfTabs.styles = [styles];
 PfTabs.scrollTimeoutDelay = 150;
-PfTabs.version = "4.1.0";
+PfTabs.version = "4.3.0";
 __decorate([
     property({ reflect: false, attribute: 'label-scroll-left' })
 ], PfTabs.prototype, "labelScrollLeft", void 0);

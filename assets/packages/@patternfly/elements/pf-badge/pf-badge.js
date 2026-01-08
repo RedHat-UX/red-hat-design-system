@@ -3,7 +3,58 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { css } from "lit";
-const styles = css `:host {\n  position: relative;\n  white-space: nowrap;\n  text-align: center;\n  display: inline-block;\n  border-radius: var(--pf-c-badge--BorderRadius,\n    var(--pf-global--BorderRadius--lg, 180em));\n  min-width: var(--pf-c-badge--MinWidth,\n    var(--pf-global--spacer--xl, 2rem));\n  padding-left: var(--pf-c-badge--PaddingLeft,\n    var(--pf-global--spacer--sm, 0.5rem));\n  padding-right: var(--pf-c-badge--PaddingRight,\n    var(--pf-global--spacer--sm, 0.5rem));\n  font-size: var(--pf-c-badge--FontSize,\n    var(--pf-theme--font-size, 0.75em));\n  font-weight: var(--pf-c-badge--FontWeight,\n    var(--pf-theme--font-weight--bold, 700));\n  line-height: var(--pf-c-badge--LineHeight,\n    var(--pf-global--LineHeight--md, 1.5));\n  color: var(--pf-c-badge--Color,\n    var(--pf-global--palette--black-900, #151515));\n  background-color: var(--pf-c-badge--BackgroundColor,\n    var(--pf-global--palette--black-200, #f0f0f0));\n}\n\n:host([state="read"]) {\n  --pf-c-badge--Color: var(--pf-c-badge--m-read--Color,\n    var(--pf-global--palette--black-900, #151515));\n  --pf-c-badge--BackgroundColor: var(--pf-c-badge--m-read--BackgroundColor,\n    var(--pf-global--palette--black-200, #f0f0f0));\n}\n\n:host([state="unread"]) {\n  --pf-c-badge--Color: var(--pf-c-badge--m-unread--Color,\n    var(--pf-global--palette--white, #fff));\n  --pf-c-badge--BackgroundColor: var(--pf-c-badge--m-unread--BackgroundColor,\n    var(--pf-global--palette--blue-400, #06c));\n}\n`;
+const styles = css `:host {
+  position: relative;
+  white-space: nowrap;
+  text-align: center;
+  display: inline-block;
+  /** Border radius for badge */
+  border-radius: var(--pf-c-badge--BorderRadius,
+    var(--pf-global--BorderRadius--lg, 180em));
+  /** Minimum width for badge */
+  min-width: var(--pf-c-badge--MinWidth,
+    var(--pf-global--spacer--xl, 2rem));
+  /** Left padding for badge */
+  padding-left: var(--pf-c-badge--PaddingLeft,
+    var(--pf-global--spacer--sm, 0.5rem));
+  /** Right padding for badge */
+  padding-right: var(--pf-c-badge--PaddingRight,
+    var(--pf-global--spacer--sm, 0.5rem));
+  /** Font size for badge */
+  font-size: var(--pf-c-badge--FontSize,
+    var(--pf-theme--font-size, 0.75em));
+  /** Font weight for badge */
+  font-weight: var(--pf-c-badge--FontWeight,
+    var(--pf-theme--font-weight--bold, 700));
+  /** Line height for badge */
+  line-height: var(--pf-c-badge--LineHeight,
+    var(--pf-global--LineHeight--md, 1.5));
+  /** Color for badge */
+  color: var(--pf-c-badge--Color,
+    var(--pf-global--palette--black-900, #151515));
+  /** Background color for badge */
+  background-color: var(--pf-c-badge--BackgroundColor,
+    var(--pf-global--palette--black-200, #f0f0f0));
+}
+
+:host([state="read"]) {
+  /** Color for read badge */
+  --pf-c-badge--Color: var(--pf-c-badge--m-read--Color,
+    var(--pf-global--palette--black-900, #151515));
+  /** Background color for read badge */
+  --pf-c-badge--BackgroundColor: var(--pf-c-badge--m-read--BackgroundColor,
+    var(--pf-global--palette--black-200, #f0f0f0));
+}
+
+:host([state="unread"]) {
+  /** Color for unread badge */
+  --pf-c-badge--Color: var(--pf-c-badge--m-unread--Color,
+    var(--pf-global--palette--white, #fff));
+  /** Background color for unread badge */
+  --pf-c-badge--BackgroundColor: var(--pf-c-badge--m-unread--BackgroundColor,
+    var(--pf-global--palette--blue-400, #06c));
+}
+`;
 let PfBadge = class PfBadge extends LitElement {
     render() {
         const { threshold, number, textContent } = this;
@@ -16,7 +67,7 @@ let PfBadge = class PfBadge extends LitElement {
     }
 };
 PfBadge.styles = [styles];
-PfBadge.version = "4.1.0";
+PfBadge.version = "4.3.0";
 __decorate([
     property({ reflect: true })
 ], PfBadge.prototype, "state", void 0);

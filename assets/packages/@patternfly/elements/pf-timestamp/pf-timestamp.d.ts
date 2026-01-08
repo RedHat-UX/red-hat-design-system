@@ -3,6 +3,7 @@ import { LitElement } from 'lit';
 import { type DateTimeFormat } from '@patternfly/pfe-core/controllers/timestamp-controller.js';
 /**
  * A **timestamp** provides consistent formats for displaying date and time values.
+ * @alias Timestamp
  */
 export declare class PfTimestamp extends LitElement {
     #private;

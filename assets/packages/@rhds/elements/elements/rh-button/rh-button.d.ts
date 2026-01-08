@@ -15,6 +15,8 @@ export declare class RhButton extends LitElement {
     static readonly formAssociated = true;
     static readonly shadowRootOptions: {
         delegatesFocus: boolean;
+        clonable?: boolean;
+        customElementRegistry?: CustomElementRegistry;
         mode: ShadowRootMode;
         serializable?: boolean;
         slotAssignment?: SlotAssignmentMode;

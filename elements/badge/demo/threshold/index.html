@@ -14,9 +14,9 @@
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
-    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "lit-element": "/assets/packages/lit-element/index.js",
     "prism-esm": "/assets/packages/prism-esm/prism.js",
@@ -33,9 +33,6 @@
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.5/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
-    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
-    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
-    "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
     "lit-html/": "/assets/packages/lit-html/",
@@ -55,12 +52,9 @@
   },
   "scopes": {
     "/assets/packages/": {
-      "@floating-ui/utils": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.10/dist/floating-ui.utils.mjs",
-      "@floating-ui/utils/dom": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.10/dist/floating-ui.utils.dom.mjs",
       "@lit/reactive-element/decorators/": "/assets/packages/@lit/reactive-element/decorators/",
       "lit-element/lit-element.js": "/assets/packages/lit-element/lit-element.js",
-      "lit-html/": "/assets/packages/lit-html/",
-      "lit/": "/assets/packages/lit/"
+      "lit-html/": "/assets/packages/lit-html/"
     }
   }
 }</script>
@@ -89,7 +83,7 @@
 
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
-  <body><rh-badge   number="900" threshold="100" state="neutral"><template shadowroot="open" shadowrootmode="open"><style>slot,span{align-items:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;justify-content:center;line-height:var(--rh-line-height-body-text,1.5);min-width:var(--_badge-size,var(--rh-length-lg,16px));padding-inline:var(--_badge-padding,var(--rh-space-md,8px));position:relative;text-align:center;white-space:nowrap;&.neutral{background-color:var(--rh-color-status-neutral)}&.info{background-color:var(--rh-color-status-info)}&.success{background-color:var(--rh-color-status-success)}&.caution{background-color:var(--rh-color-status-caution)}&.caution,&.warning{color:var(--rh-color-text-primary-on-light,#151515)}&.warning{background-color:var(--rh-color-status-warning)}&.danger{background-color:var(--rh-color-status-danger)}}span:empty{display:none}slot{display:inline-flex}:host([number]){slot{display:none}span{display:inline-flex}}</style><!--lit-part hqKOHqwbWgk=-->
+  <body><rh-badge   number="900" threshold="100" state="neutral"><template shadowroot="open" shadowrootmode="open"><style>span,slot{white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px));color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));justify-content:center;align-items:center;position:relative}:is(span,slot).neutral{background-color:var(--rh-color-status-neutral)}:is(span,slot).info{background-color:var(--rh-color-status-info)}:is(span,slot).success{background-color:var(--rh-color-status-success)}:is(span,slot).caution{background-color:var(--rh-color-status-caution);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).warning{background-color:var(--rh-color-status-warning);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).danger{background-color:var(--rh-color-status-danger)}span:empty{display:none}slot{display:inline-flex}:host([number]) slot{display:none}:host([number]) span{display:inline-flex}</style><!--lit-part hqKOHqwbWgk=-->
       <!--lit-node 0--><span class=" neutral "><!--lit-part-->100+<!--/lit-part--></span>
       <!--lit-node 2--><slot class=" neutral "></slot>
     <!--/lit-part--></template>900</rh-badge> (Threshold = 100)

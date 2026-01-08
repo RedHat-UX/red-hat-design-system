@@ -2,7 +2,25 @@ import { __decorate } from "tslib";
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { css } from "lit";
-const style = css `:host {\n  display: block;\n}\n\n#container {\n  display: contents;\n  --pf-c-jump-links__list--PaddingTop: 0;\n  --pf-c-jump-links__list--PaddingBottom: 0;\n  --pf-c-jump-links__link--PaddingTop: var(--pf-c-jump-links__list__list__link--PaddingTop,\n    var(--pf-global--spacer--sm, 0.5rem));\n  --pf-c-jump-links__link--PaddingBottom: var(--pf-c-jump-links__list__list__link--PaddingBottom,\n    var(--pf-global--spacer--sm, 0.5rem));\n  --pf-c-jump-links__link--PaddingLeft: var(--pf-c-jump-links__list__list__link--PaddingLeft,\n    var(--pf-global--spacer--lg, 1.5rem));\n}\n`;
+const style = css `:host {
+  display: block;
+}
+
+#container {
+  display: contents;
+  --pf-c-jump-links__list--PaddingTop: 0;
+  --pf-c-jump-links__list--PaddingBottom: 0;
+  /** Top padding around each link */
+  --pf-c-jump-links__link--PaddingTop: var(--pf-c-jump-links__list__list__link--PaddingTop,
+    var(--pf-global--spacer--sm, 0.5rem));
+  /** Bottom padding around each link */
+  --pf-c-jump-links__link--PaddingBottom: var(--pf-c-jump-links__list__list__link--PaddingBottom,
+    var(--pf-global--spacer--sm, 0.5rem));
+  /** Left padding around each link */
+  --pf-c-jump-links__link--PaddingLeft: var(--pf-c-jump-links__list__list__link--PaddingLeft,
+    var(--pf-global--spacer--lg, 1.5rem));
+}
+`;
 let PfJumpLinksList = class PfJumpLinksList extends LitElement {
     render() {
         // TODO: add label
@@ -11,7 +29,7 @@ let PfJumpLinksList = class PfJumpLinksList extends LitElement {
     }
 };
 PfJumpLinksList.styles = [style];
-PfJumpLinksList.version = "4.1.0";
+PfJumpLinksList.version = "4.3.0";
 PfJumpLinksList = __decorate([
     customElement('pf-jump-links-list')
 ], PfJumpLinksList);

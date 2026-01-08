@@ -1,6 +1,6 @@
 var _ComboboxController_instances, _a, _ComboboxController_alert, _ComboboxController_alertTemplate, _ComboboxController_lb, _ComboboxController_fc, _ComboboxController_preventListboxGainingFocus, _ComboboxController_input, _ComboboxController_button, _ComboboxController_listbox, _ComboboxController_buttonInitialRole, _ComboboxController_mo, _ComboboxController_microcopy, _ComboboxController_hasTextInput_get, _ComboboxController_focusedItem_get, _ComboboxController_element_get, _ComboboxController_init, _ComboboxController_initListbox, _ComboboxController_initButton, _ComboboxController_initInput, _ComboboxController_initLabels, _ComboboxController_initController, _ComboboxController_initItems, _ComboboxController_show, _ComboboxController_hide, _ComboboxController_toggle, _ComboboxController_translate, _ComboboxController_announce, _ComboboxController_filterItems, _ComboboxController_onClickButton, _ComboboxController_onClickListbox, _ComboboxController_onKeydownInput, _ComboboxController_onKeyupInput, _ComboboxController_onKeydownButton, _ComboboxController_onKeydownListbox, _ComboboxController_onFocusoutListbox, _ComboboxController_onKeydownToggleButton;
 import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
-import { nothing } from 'lit';
+import { isServer, nothing } from 'lit';
 import { ListboxController, isItem, isItemDisabled } from './listbox-controller.js';
 import { RovingTabindexController } from './roving-tabindex-controller.js';
 import { ActivedescendantController } from './activedescendant-controller.js';
@@ -374,6 +374,8 @@ export class ComboboxController {
             isItemDisabled: this.options.isItemDisabled,
             setItemSelected: this.options.setItemSelected,
         }), "f");
+        _a.instances.set(host, this);
+        _a.hosts.add(host);
     }
     async hostConnected() {
         await this.host.updateComplete;
@@ -386,16 +388,26 @@ export class ComboboxController {
         const expanded = this.options.isExpanded();
         __classPrivateFieldGet(this, _ComboboxController_button, "f")?.setAttribute('aria-expanded', String(expanded));
         __classPrivateFieldGet(this, _ComboboxController_input, "f")?.setAttribute('aria-expanded', String(expanded));
-        if (__classPrivateFieldGet(this, _ComboboxController_instances, "a", _ComboboxController_hasTextInput_get)) {
-            __classPrivateFieldGet(this, _ComboboxController_button, "f")?.setAttribute('tabindex', '-1');
-        }
-        else {
-            __classPrivateFieldGet(this, _ComboboxController_button, "f")?.removeAttribute('tabindex');
-        }
         __classPrivateFieldGet(this, _ComboboxController_instances, "m", _ComboboxController_initLabels).call(this);
     }
     hostDisconnected() {
         __classPrivateFieldGet(this, _ComboboxController_fc, "f")?.hostDisconnected();
+    }
+    disconnect() {
+        _a.instances.delete(this.host);
+        _a.hosts.delete(this.host);
+    }
+    async _onFocusoutElement() {
+        if (__classPrivateFieldGet(this, _ComboboxController_instances, "a", _ComboboxController_hasTextInput_get) && this.options.isExpanded()) {
+            const root = __classPrivateFieldGet(this, _ComboboxController_instances, "a", _ComboboxController_element_get)?.getRootNode();
+            await new Promise(requestAnimationFrame);
+            if (root instanceof ShadowRoot || root instanceof Document) {
+                const { activeElement } = root;
+                if (!__classPrivateFieldGet(this, _ComboboxController_instances, "a", _ComboboxController_element_get)?.contains(activeElement)) {
+                    __classPrivateFieldGet(this, _ComboboxController_instances, "m", _ComboboxController_hide).call(this);
+                }
+            }
+        }
     }
     /**
      * For Browsers which do not support `ariaActiveDescendantElement`, we must clone
@@ -592,6 +604,8 @@ ComboboxController.langs = [
     'zh',
 ];
 ComboboxController.langsRE = new RegExp(_a.langs.join('|'));
+ComboboxController.instances = new WeakMap();
+ComboboxController.hosts = new Set();
 (() => {
     // apply visually-hidden styles
     __classPrivateFieldGet(_a, _a, "f", _ComboboxController_alertTemplate).innerHTML = `
@@ -607,5 +621,19 @@ ComboboxController.langsRE = new RegExp(_a.langs.join('|'));
          inline-size: 1px;
         "></div>
       `;
+})();
+// Hide listbox on focusout
+(() => {
+    if (!isServer) {
+        document.addEventListener('focusout', event => {
+            const target = event.target;
+            for (const host of _a.hosts) {
+                if (host instanceof Node && host.contains(target)) {
+                    const instance = _a.instances.get(host);
+                    instance?._onFocusoutElement();
+                }
+            }
+        });
+    }
 })();
 //# sourceMappingURL=combobox-controller.js.map

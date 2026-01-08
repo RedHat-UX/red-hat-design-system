@@ -23,7 +23,7 @@ class UntilDirective extends AsyncDirective {
         this.__pauser = new Pauser();
     }
     render(...args) {
-        return args.find((x) => !isPromise(x)) ?? noChange;
+        return (args.find((x) => !isPromise(x)) ?? noChange);
     }
     update(_part, args) {
         const previousValues = this.__values;

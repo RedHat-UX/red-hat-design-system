@@ -9,7 +9,7 @@ import { Directive, DirectiveParameters, PartInfo } from '../directive.js';
  * A key-value set of class names to truthy values.
  */
 export interface ClassInfo {
-    readonly [name: string]: string | boolean | number;
+    [name: string]: string | boolean | number;
 }
 declare class ClassMapDirective extends Directive {
     /**

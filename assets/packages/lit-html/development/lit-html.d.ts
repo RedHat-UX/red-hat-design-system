@@ -34,7 +34,7 @@ export declare namespace LitUnstable {
             kind: 'begin render';
             id: number;
             value: unknown;
-            container: HTMLElement | DocumentFragment;
+            container: RenderRootNode;
             options: RenderOptions | undefined;
             part: ChildPart | undefined;
         }
@@ -42,7 +42,7 @@ export declare namespace LitUnstable {
             kind: 'end render';
             id: number;
             value: unknown;
-            container: HTMLElement | DocumentFragment;
+            container: RenderRootNode;
             options: RenderOptions | undefined;
             part: ChildPart;
         }
@@ -373,6 +373,10 @@ export interface RenderOptions {
      */
     isConnected?: boolean;
 }
+/**
+ * The root DOM node for rendering.
+ */
+export type RenderRootNode = HTMLElement | SVGElement | DocumentFragment;
 export interface DirectiveParent {
     _$parent?: DirectiveParent;
     _$isConnected: boolean;
@@ -609,7 +613,7 @@ export declare const _$LH: {
  * {@link https://lit.dev/docs/libraries/standalone-templates/#rendering-lit-html-templates| Rendering Lit HTML Templates}
  */
 export declare const render: {
-    (value: unknown, container: HTMLElement | DocumentFragment, options?: RenderOptions): RootPart;
+    (value: unknown, container: RenderRootNode, options?: RenderOptions): RootPart;
     setSanitizer: (newSanitizer: SanitizerFactory) => void;
     createSanitizer: SanitizerFactory;
     _testOnlyClearSanitizerFactoryDoNotCallOrElse: () => void;

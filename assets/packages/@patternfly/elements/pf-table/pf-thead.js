@@ -4,7 +4,25 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { thRoleContext } from './context.js';
 import { css } from "lit";
-const styles = css `:host {\n  --pf-c-table--cell--MinWidth: var(--pf-c-table--m-truncate--cell--MinWidth);\n  --pf-c-table--cell--MaxWidth: var(--pf-c-table--m-truncate--cell--MaxWidth);\n  --pf-c-table--cell--Overflow: hidden;\n  --pf-c-table--cell--TextOverflow: ellipsis;\n  --pf-c-table--cell--WhiteSpace: nowrap;\n  --pf-c-table--cell--FontSize: var(--pf-c-table--thead--cell--FontSize, var(--pf-global--FontSize--sm, 0.875rem));\n  --pf-c-table--cell--FontWeight: var(--pf-c-table--thead--cell--FontWeight, var(--pf-global--FontWeight--bold, 700));\n  vertical-align: bottom;\n  display: grid;\n  visibility: visible;\n}\n\n@media (max-width: 768px) {\n  :host {\n    display: none;\n    visibility: hidden;\n  }\n}`;
+const styles = css `:host {
+  --pf-c-table--cell--MinWidth: var(--pf-c-table--m-truncate--cell--MinWidth);
+  --pf-c-table--cell--MaxWidth: var(--pf-c-table--m-truncate--cell--MaxWidth);
+  --pf-c-table--cell--Overflow: hidden;
+  --pf-c-table--cell--TextOverflow: ellipsis;
+  --pf-c-table--cell--WhiteSpace: nowrap;
+  --pf-c-table--cell--FontSize: var(--pf-c-table--thead--cell--FontSize, var(--pf-global--FontSize--sm, 0.875rem));
+  --pf-c-table--cell--FontWeight: var(--pf-c-table--thead--cell--FontWeight, var(--pf-global--FontWeight--bold, 700));
+  vertical-align: bottom;
+  display: grid;
+  visibility: visible;
+}
+
+@media (max-width: 768px) {
+  :host {
+    display: none;
+    visibility: hidden;
+  }
+}`;
 import { provide } from '@lit/context';
 let PfThead = class PfThead extends LitElement {
     constructor() {
@@ -29,7 +47,7 @@ _PfThead_onSlotchange = function _PfThead_onSlotchange() {
     }
 };
 PfThead.styles = [styles];
-PfThead.version = "4.1.0";
+PfThead.version = "4.3.0";
 __decorate([
     provide({ context: thRoleContext })
 ], PfThead.prototype, "thRowContext", void 0);

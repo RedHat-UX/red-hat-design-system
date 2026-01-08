@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 import { noChange } from '../lit-html.js';
-import { directive, Directive } from '../directive.js';
+import { directive, Directive, } from '../directive.js';
 // A sentinel that indicates guard() hasn't rendered anything yet
 const initialValue = {};
 class GuardDirective extends Directive {
