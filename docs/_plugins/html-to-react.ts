@@ -139,8 +139,8 @@ function serializeNode(node: Tools.ChildNode, indent: number): string {
     if (/^\s*$/.test(text)) {
       return '';
     }
-    // Trim and return text content
-    return text.trim();
+    // Trim and return text content with indentation
+    return `${indentStr}${text.trim()}`;
   }
 
   if (Tools.isCommentNode(node)) {
