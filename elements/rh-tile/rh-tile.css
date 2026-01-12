@@ -222,7 +222,7 @@
       width: 100%;
     }
 
-    & #headline::slotted([slot='headline']) {
+    & ::slotted([slot='headline']) {
       font-size: var(--rh-font-size-body-text-lg, 1.125rem) !important;
     }
 
