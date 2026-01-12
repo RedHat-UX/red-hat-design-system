@@ -74,7 +74,7 @@ let RhAnnouncement = class RhAnnouncement extends LitElement {
              ?hidden="${!this.dismissable}"
              ?inert="${!this.dismissable}">
           <rh-button id="close-button"
-                  accessible-label="Close"
+                  label="Close"
                   confirm
                   variant="close"
                   @click=${__classPrivateFieldGet(this, _RhAnnouncement_instances, "m", _RhAnnouncement_closeHandler)}></rh-button>

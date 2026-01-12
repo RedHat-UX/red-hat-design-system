@@ -32,11 +32,8 @@ export declare class RhPagination extends LitElement {
     labelLast: string;
     /** Change pagination size to small */
     size: 'sm' | null;
-    /**
-     * Borderless variant
-     * Note: 'open' will also work, but is deprecated
-     */
-    variant?: 'borderless' | null;
+    /** "Open" variant */
+    variant?: 'open' | null;
     private input?;
     private total;
     private firstHref?;
