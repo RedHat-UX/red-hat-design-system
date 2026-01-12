@@ -43,8 +43,7 @@
     "Michael Potter <mpotter@redhat.com",
     "Nikki Massaro Kauffman <nmassaro@redhat.com>",
     "Steven Spriggs <sspriggs@redhat.com>",
-    "Wes Ruvalcaba <wruvalcaba@redhat.com>",
-    "Hadassah Yelenik <hlyelenik@gmail.com>"
+    "Wes Ruvalcaba <wruvalcaba@redhat.com>"
   ],
   "publishConfig": {
     "access": "public",
