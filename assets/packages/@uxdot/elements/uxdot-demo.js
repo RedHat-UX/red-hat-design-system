@@ -33,6 +33,8 @@ let UxdotDemo = UxdotDemo_1 = _a = class UxdotDemo extends LitElement {
           <rh-tabs class="code-tabs" active-index="0">
             <rh-tab slot="tab" active>HTML</rh-tab>
             <rh-tab-panel><slot name="html"></slot></rh-tab-panel>
+            <rh-tab slot="tab">React</rh-tab>
+            <rh-tab-panel><slot name="react"></slot></rh-tab-panel>
             <rh-tab slot="tab">CSS</rh-tab>
             <rh-tab-panel><slot name="css"></slot></rh-tab-panel>
             <rh-tab slot="tab">JS</rh-tab>
