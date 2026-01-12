@@ -228,5 +228,16 @@ export function htmlToReact(html: string): string {
   // Serialize to pretty JSX (transformation happens during serialization)
   const jsx = serializeFragment(fragment);
 
-  return `${imports}\n\n${jsx}`;
+  // Add comment about React 19+ not needing wrappers
+  const comment = `// NOTE: React 19+ does not require these wrapper imports.
+// You can use the custom elements directly as-is.`;
+
+  // Wrap in exported function component
+  return `${imports}
+
+${comment}
+
+export const Demo = () => (
+${jsx.split('\n').map(line => `  ${line}`).join('\n')}
+);`;
 }
