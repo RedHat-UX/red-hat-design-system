@@ -1,6 +1,6 @@
 {
   "name": "@rhds/elements",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Red Hat Design System Elements",
   "overrides": {
     "playwright": "~1.48.0"
