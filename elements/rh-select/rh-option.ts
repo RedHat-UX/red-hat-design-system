@@ -68,7 +68,7 @@ export class RhOption extends LitElement {
   @property({ reflect: true }) icon?: IconNameFor<IconSetName>;
 
   /** Optional option description; overridden by description slot. */
-  @property({ reflect: true }) description? = '';
+  @property({ reflect: true }) description?: string;
 
   /** Display text for this option; overridden by slotted text content */
   @property({ reflect: true }) label?: string;
