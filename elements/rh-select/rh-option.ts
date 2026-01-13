@@ -24,7 +24,7 @@ export class RhOption extends LitElement {
   @property({ type: Boolean, reflect: true }) disabled = false;
 
   /** Form value for this option */
-  @property({ reflect: true })
+  @property()
   get value() {
     if (this.#value) {
       return this.#value;
