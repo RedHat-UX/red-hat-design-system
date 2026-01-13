@@ -176,7 +176,7 @@
 }
 
 /* States: */
-:host([state]) {
+:host([state]) #help-text-content {
   font-weight: var(--rh-font-weight-body-text-medium, 500) !important;
 }
 
