@@ -1,11 +1,9 @@
-import { html } from 'lit-html';
-
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
 import styles from './uxdot-demo.css';
 
-import { isServer, LitElement } from 'lit';
 import type { RhCodeBlock } from 'elements/rh-code-block/rh-code-block.js';
 
 @customElement('uxdot-demo')

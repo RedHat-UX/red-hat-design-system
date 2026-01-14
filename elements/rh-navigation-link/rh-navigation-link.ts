@@ -3,7 +3,7 @@ import type { IconNameFor, IconSetName } from '@rhds/icons';
 import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 

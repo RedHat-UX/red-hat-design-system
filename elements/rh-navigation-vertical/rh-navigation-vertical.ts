@@ -1,7 +1,6 @@
 import { LitElement, html, isServer, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { classMap } from 'lit-html/directives/class-map.js';
 import { query } from 'lit/decorators/query.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
