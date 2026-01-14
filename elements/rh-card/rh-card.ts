@@ -18,6 +18,25 @@ const PALETTE_RE = /(er|est)+/g;
  *
  * @alias card
  *
+ * @cssprop --rh-card-header-background-on-light
+ * Background color for the card header when using a light color palette. Used to differentiate
+ * the header from the body content. Should maintain adequate contrast with header text.
+ *
+ * @cssprop --rh-card-header-background-on-dark
+ * Background color for the card header when using a dark color palette. Used to differentiate
+ * the header from the body content. Should maintain adequate contrast with header text in dark themes.
+ *
+ * @cssprop --rh-card-heading-font-weight
+ * Font weight for heading text within the card header. Controls the visual emphasis of the
+ * heading. Default typically uses the design system's standard heading weight.
+ *
+ * @cssprop --rh-card-heading-font-family
+ * Font family for heading text within the card header. Should use design system typography
+ * tokens to maintain consistency across the application.
+ *
+ * @cssprop --rh-card-heading-font-size
+ * Font size for heading text within the card header. Controls the size hierarchy of headings
+ * within cards. Should align with the design system's typography scale.
  */
 @customElement('rh-card')
 @colorPalettes
