@@ -196,6 +196,7 @@ export class RhSelect extends LitElement {
            class="${classMap({ disabled, expanded, [anchor]: !!anchor, [alignment]: !!alignment })}">
         <div id="toggle">
           <button id="toggle-button"
+                  type="button"
                   @keydown="${this.#onKeydown}">
             <span id="toggle-text">
               ${this.#buttonLabel}
