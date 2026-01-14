@@ -194,32 +194,66 @@ export class RhNavigationPrimary extends LitElement {
           </details>
           <div id="secondary">
             <div id="event" role="list" ?hidden=${!hasEvent}>
-              <!--
-                Use this slot for event promotion.  Images such as SVGs and links are most often slotted here.
-                Slot these items using the \`<rh-navigation-primary-item slot="event">\` element. If any 
-                other element is slotted here, it will need to be a role="listitem" to avoid accessibility 
-                issues.  Other slotted elements will also likely have other rendering issues.
-              -->
+              <!-- summary: promotional event content and announcements
+                   description: |
+                     Contains promotional content for events, conferences, or important announcements.
+                     This slot appears in the secondary navigation area (right side on desktop).
+
+                     **Common patterns:**
+                     - Use \`<rh-navigation-primary-item slot="event">\` with links and images
+                     - SVG logos or event branding with accompanying links
+                     - Time-sensitive promotional content for campaigns or events
+
+                     **Best practices:**
+                     - Slot items must be \`<rh-navigation-primary-item>\` elements or have role="listitem"
+                     - Keep content concise to avoid overwhelming the navigation
+                     - Ensure links have clear accessible labels for screen reader users
+                     - Use for temporary or seasonal promotions, not permanent navigation
+
+                     @see [Navigation](https://ux.redhat.com/elements/navigation/) documentation -->
               <slot name="event"></slot>
             </div>
             <div id="links" role="list" ?hidden=${!hasLinks}>
-              <!--
-                Use this slot for quick links to other sites not directly associated with the page the
-                navigation is on.  Common use cases are developers docs and support. Slot these items using
-                the \`<rh-navigation-primary-item slot="links">\` element. If any other element is slotted 
-                here, it will need to be a role="listitem" to avoid accessibility issues.  Other slotted 
-                elements will also likely have other rendering issues.
-              -->  
+              <!-- summary: quick access links to related resources
+                   description: |
+                     Contains links to external sites or resources not directly part of the main
+                     navigation hierarchy. Appears in the secondary navigation area.
+
+                     **Common patterns:**
+                     - Use \`<rh-navigation-primary-item slot="links">\` for each link
+                     - Developer documentation portals
+                     - Support or help center links
+                     - Partner sites or ecosystems
+
+                     **Best practices:**
+                     - Slot items must be \`<rh-navigation-primary-item>\` elements or have role="listitem"
+                     - Limit to 2-4 links to avoid cluttering the navigation
+                     - Use clear, concise labels that indicate the destination
+                     - Links should represent secondary utilities, not primary site navigation
+
+                     @see [Navigation](https://ux.redhat.com/elements/navigation/) documentation -->
               <slot name="links"></slot>
             </div>
                          
             <div id="dropdowns" role="list" ?hidden=${!hasDropdowns}>
-              <!--
-                Use this slot for search, for you, and account dropdowns. Slot these items using the
-                \`<rh-navigation-primary-item slot="dropdowns" variant="dropdown">\` element. If any 
-                other element is slotted here, it will need to be a role="listitem" to avoid accessibility 
-                issues.  Other slotted elements will also likely have other rendering issues.
-              --> 
+              <!-- summary: interactive dropdown menus for user actions
+                   description: |
+                     Contains dropdown menu items for search, user account, or personalized features.
+                     Appears in the secondary navigation area (rightmost position on desktop).
+
+                     **Common patterns:**
+                     - Use \`<rh-navigation-primary-item slot="dropdowns" variant="dropdown">\`
+                     - Search functionality with dropdown
+                     - User account menu ("For you", profile settings)
+                     - Personalized content or recommendations
+
+                     **Best practices:**
+                     - Slot items must be \`<rh-navigation-primary-item variant="dropdown">\` or have role="listitem"
+                     - Limit to 2-3 dropdown menus to avoid overwhelming users
+                     - Use clear icons and labels for each dropdown purpose
+                     - Ensure dropdown content is keyboard accessible and screen reader friendly
+
+                     @see [Navigation](https://ux.redhat.com/elements/navigation/) documentation -->
               <slot name="dropdowns"></slot>
             </div>
           </div>
