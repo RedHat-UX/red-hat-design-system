@@ -261,6 +261,10 @@ export class RhSelect extends LitElement {
     `;
   }
 
+  override updated() {
+    this.#removeAriaLabelledby();
+  }
+
   override disconnectedCallback() {
     super.disconnectedCallback();
     this.removeEventListener('keydown', this.#captureKeydown, { capture: true });
@@ -335,6 +339,17 @@ export class RhSelect extends LitElement {
           .at(0)
           ?.value
       || '';
+  }
+
+  /**
+   * Removes empty aria-labelledby attribute from
+   * toggle button set via ComboboxController
+   */
+  #removeAriaLabelledby() {
+    const btn = this._toggleButton;
+    if (btn && btn.getAttribute('aria-labelledby') === '') {
+      btn.removeAttribute('aria-labelledby');
+    }
   }
 
   /**
