@@ -32,6 +32,8 @@
     getForm.elements.events.value = events.join(', ');
   };
   getSelect.addEventListener('change', onSelectEvent);
+  getSelect.addEventListener('open', onSelectEvent);
+  getSelect.addEventListener('close', onSelectEvent);
 </script>
 
 <style>
