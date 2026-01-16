@@ -263,7 +263,7 @@ export class RhSelect extends LitElement {
   }
 
   override updated() {
-    this.#removeAriaLabelledby();
+    this.#setAriaLabelledby();
   }
 
   override disconnectedCallback() {
@@ -343,13 +343,12 @@ export class RhSelect extends LitElement {
   }
 
   /**
-   * Removes empty aria-labelledby attribute from
-   * toggle button set via ComboboxController
+   * Sets aria-labelledby attribute on toggle button
    */
-  #removeAriaLabelledby() {
+  #setAriaLabelledby() {
     const btn = this._toggleButton;
     if (btn && btn.getAttribute('aria-labelledby') === '') {
-      btn.removeAttribute('aria-labelledby');
+      btn.setAttribute('aria-labelledby', 'toggle-text');
     }
   }
 
