@@ -278,7 +278,7 @@ export class RhSelect extends LitElement {
 
   @observes('expanded')
   private async expandedChanged(old: boolean, expanded: boolean) {
-    if (this.dispatchEvent(new Event(this.expanded ? 'close' : 'open'))) {
+    if (this.dispatchEvent(new Event(this.expanded ? 'open' : 'close'))) {
       if (expanded) {
         this.#doExpand();
       } else {
