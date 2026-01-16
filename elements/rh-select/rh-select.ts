@@ -38,6 +38,7 @@ export class RhSelectChangeEvent extends Event {
  * @alias select
  * @fires open - when the menu toggles open
  * @fires close - when the menu toggles closed
+ * @fires change - when the value of the select changes
  */
 @customElement('rh-select')
 export class RhSelect extends LitElement {
