@@ -272,6 +272,15 @@ export class RhSelect extends LitElement {
     this.removeEventListener('keydown', this.#captureKeydown, { capture: true });
   }
 
+  protected formResetCallback() {
+    this.value = '';
+    this.selected = [];
+  }
+
+  protected formDisabledCallback(disabled: boolean) {
+    this.disabled = disabled;
+  }
+
   @observes('disabled')
   private disabledChanged() {
     this.#combobox.disabled = this.disabled;
