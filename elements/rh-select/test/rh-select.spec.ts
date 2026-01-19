@@ -649,4 +649,138 @@ describe('<rh-select>', function() {
       expect(fired).to.be.true;
     });
   });
+
+  describe('type-ahead', function() {
+    let element: RhSelect;
+    const updateComplete = () => element.updateComplete;
+    const focus = () => element.focus();
+
+    beforeEach(async function() {
+      const container = await createFixture<HTMLDivElement>(html`
+        <div>
+          <label for="select">label</label>
+          <rh-select id="select" placeholder="placeholder">
+            <rh-option>one</rh-option>
+            <rh-option>two</rh-option>
+            <rh-option>three</rh-option>
+          </rh-select>
+        </div>
+      `);
+      element = container.querySelector('rh-select')!;
+      await element.updateComplete;
+    });
+
+    it('focuses matching option when typing characters', async function() {
+      focus();
+      await updateComplete();
+      await sendKeys({ type: 'on' });
+      await updateComplete();
+
+      expect(element.expanded).to.be.true;
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).axTreeFocusedNode.to.have.axName('one one');
+    });
+
+    it('selects the focused option when pressing Enter after type-ahead', async function() {
+      focus();
+      await updateComplete();
+      await sendKeys({ type: 'on' });
+      await updateComplete();
+      await sendKeys({ press: 'Enter' });
+      await updateComplete();
+      await nextFrame();
+
+      expect(element.value).to.equal('one');
+      expect(element.expanded).to.be.false;
+    });
+  });
+
+  describe('form association', function() {
+    let form: HTMLFormElement;
+    let element: RhSelect;
+
+    beforeEach(async function() {
+      form = await createFixture<HTMLFormElement>(html`
+        <form>
+          <label for="select">label</label>
+          <rh-select id="select" name="color" placeholder="placeholder">
+            <rh-option value="red">Red</rh-option>
+            <rh-option value="green">Green</rh-option>
+            <rh-option value="blue">Blue</rh-option>
+          </rh-select>
+        </form>
+      `);
+      element = form.querySelector('rh-select')!;
+      await element.updateComplete;
+    });
+
+    it('includes selected value in form data', async function() {
+      await element.show();
+      await element.updateComplete;
+      const option = element.querySelectorAll('rh-option')[1] as RhOption;
+      await clickElementAtCenter(option);
+      await element.updateComplete;
+      await nextFrame();
+
+      const formData = new FormData(form);
+      expect(formData.get('color')).to.equal('green');
+    });
+
+    it('clears value on form reset', async function() {
+      await element.show();
+      await element.updateComplete;
+      const option = element.querySelectorAll('rh-option')[0] as RhOption;
+      await clickElementAtCenter(option);
+      await element.updateComplete;
+      await nextFrame();
+
+      expect(element.value).to.equal('red');
+
+      form.reset();
+      await element.updateComplete;
+      await nextFrame();
+
+      expect(element.value).to.equal('');
+    });
+  });
+
+  describe('accessible label sources', function() {
+    it('uses accessible-label attribute', async function() {
+      const container = await createFixture<HTMLDivElement>(html`
+        <div>
+          <rh-select accessible-label="Choose a color">
+            <rh-option>red</rh-option>
+            <rh-option>green</rh-option>
+          </rh-select>
+        </div>
+      `);
+      const element = container.querySelector('rh-select')!;
+      await element.updateComplete;
+
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.axContainQuery({
+        role: 'combobox',
+        name: 'Choose a color',
+      });
+    });
+
+    it('uses placeholder as fallback label', async function() {
+      const container = await createFixture<HTMLDivElement>(html`
+        <div>
+          <rh-select placeholder="Select something">
+            <rh-option>red</rh-option>
+            <rh-option>green</rh-option>
+          </rh-select>
+        </div>
+      `);
+      const element = container.querySelector('rh-select')!;
+      await element.updateComplete;
+
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.axContainQuery({
+        role: 'combobox',
+        name: 'Select something',
+      });
+    });
+  });
 });
