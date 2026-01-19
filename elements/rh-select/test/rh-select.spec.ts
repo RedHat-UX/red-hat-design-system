@@ -17,6 +17,40 @@ function press(key: string) {
   };
 }
 
+async function create3OptionFixture() {
+  const container = await createFixture<HTMLDivElement>(html`
+    <div>
+      <label for="select">label</label>
+      <rh-select id="select" placeholder="placeholder">
+        <rh-option>one</rh-option>
+        <rh-option>two</rh-option>
+        <rh-option>three</rh-option>
+      </rh-select>
+    </div>
+  `);
+  const element = container.querySelector('rh-select')!;
+  await element.updateComplete;
+  return { container, element };
+}
+
+async function create5OptionFixture() {
+  const container = await createFixture<HTMLDivElement>(html`
+    <div>
+      <label for="select">label</label>
+      <rh-select id="select" placeholder="placeholder">
+        <rh-option>one</rh-option>
+        <rh-option>two</rh-option>
+        <rh-option>three</rh-option>
+        <rh-option>four</rh-option>
+        <rh-option>five</rh-option>
+      </rh-select>
+    </div>
+  `);
+  const element = container.querySelector('rh-select')!;
+  await element.updateComplete;
+  return { container, element };
+}
+
 describe('<rh-select>', function() {
   describe('simply instantiating', function() {
     let element: RhSelect;
@@ -73,20 +107,7 @@ describe('<rh-select>', function() {
     let element: RhSelect;
 
     beforeEach(async function() {
-      const container = await createFixture<HTMLDivElement>(html`
-        <div>
-          <label for="select">label</label>
-          <rh-select id="select" placeholder="placeholder">
-            <rh-option>one</rh-option>
-            <rh-option>two</rh-option>
-            <rh-option>three</rh-option>
-            <rh-option>four</rh-option>
-            <rh-option>five</rh-option>
-          </rh-select>
-        </div>
-      `);
-      element = container.querySelector('rh-select')!;
-      await element.updateComplete;
+      ({ element } = await create5OptionFixture());
     });
 
     it('should be accessible', async function() {
@@ -149,18 +170,7 @@ describe('<rh-select>', function() {
     let element: RhSelect;
 
     beforeEach(async function() {
-      const container = await createFixture<HTMLDivElement>(html`
-        <div>
-          <label for="select">label</label>
-          <rh-select id="select" placeholder="placeholder">
-            <rh-option>one</rh-option>
-            <rh-option>two</rh-option>
-            <rh-option>three</rh-option>
-          </rh-select>
-        </div>
-      `);
-      element = container.querySelector('rh-select')!;
-      await element.updateComplete;
+      ({ element } = await create3OptionFixture());
     });
 
     it('is false initially', function() {
@@ -226,20 +236,7 @@ describe('<rh-select>', function() {
     const focus = () => element.focus();
 
     beforeEach(async function() {
-      const container = await createFixture<HTMLDivElement>(html`
-        <div>
-          <label for="select">label</label>
-          <rh-select id="select" placeholder="placeholder">
-            <rh-option>one</rh-option>
-            <rh-option>two</rh-option>
-            <rh-option>three</rh-option>
-            <rh-option>four</rh-option>
-            <rh-option>five</rh-option>
-          </rh-select>
-        </div>
-      `);
-      element = container.querySelector('rh-select')!;
-      await element.updateComplete;
+      ({ element } = await create5OptionFixture());
     });
 
     describe('opening the listbox', function() {
@@ -448,18 +445,7 @@ describe('<rh-select>', function() {
     let element: RhSelect;
 
     beforeEach(async function() {
-      const container = await createFixture<HTMLDivElement>(html`
-        <div>
-          <label for="select">label</label>
-          <rh-select id="select" placeholder="placeholder">
-            <rh-option>one</rh-option>
-            <rh-option>two</rh-option>
-            <rh-option>three</rh-option>
-          </rh-select>
-        </div>
-      `);
-      element = container.querySelector('rh-select')!;
-      await element.updateComplete;
+      ({ element } = await create3OptionFixture());
     });
 
     describe('clicking toggle button', function() {
@@ -505,18 +491,7 @@ describe('<rh-select>', function() {
     let element: RhSelect;
 
     beforeEach(async function() {
-      const container = await createFixture<HTMLDivElement>(html`
-        <div>
-          <label for="select">label</label>
-          <rh-select id="select" placeholder="placeholder">
-            <rh-option>one</rh-option>
-            <rh-option>two</rh-option>
-            <rh-option>three</rh-option>
-          </rh-select>
-        </div>
-      `);
-      element = container.querySelector('rh-select')!;
-      await element.updateComplete;
+      ({ element } = await create3OptionFixture());
     });
 
     it('opens the listbox when closed', async function() {
@@ -609,18 +584,7 @@ describe('<rh-select>', function() {
     let element: RhSelect;
 
     beforeEach(async function() {
-      const container = await createFixture<HTMLDivElement>(html`
-        <div>
-          <label for="select">label</label>
-          <rh-select id="select" placeholder="placeholder">
-            <rh-option>one</rh-option>
-            <rh-option>two</rh-option>
-            <rh-option>three</rh-option>
-          </rh-select>
-        </div>
-      `);
-      element = container.querySelector('rh-select')!;
-      await element.updateComplete;
+      ({ element } = await create3OptionFixture());
     });
 
     it('fires "open" event when listbox opens', async function() {
@@ -656,18 +620,7 @@ describe('<rh-select>', function() {
     const focus = () => element.focus();
 
     beforeEach(async function() {
-      const container = await createFixture<HTMLDivElement>(html`
-        <div>
-          <label for="select">label</label>
-          <rh-select id="select" placeholder="placeholder">
-            <rh-option>one</rh-option>
-            <rh-option>two</rh-option>
-            <rh-option>three</rh-option>
-          </rh-select>
-        </div>
-      `);
-      element = container.querySelector('rh-select')!;
-      await element.updateComplete;
+      ({ element } = await create3OptionFixture());
     });
 
     it('focuses matching option when typing characters', async function() {
