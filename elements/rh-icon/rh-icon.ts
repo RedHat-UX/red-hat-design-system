@@ -55,6 +55,9 @@ export class IconResolveErrorEvent extends ErrorEvent {
  * @fires load - Fired when an icon is loaded and rendered
  * @fires error - Fired when an icon fails to load
  *
+ * @cssprop --rh-icon-size
+ * Size of the icon element. Controls both width and height to maintain square aspect ratio.
+ * Default sizes align with design system spacing tokens. Common values: 16px, 24px, 32px, 48px.
  */
 @customElement('rh-icon')
 export class RhIcon extends LitElement {
