@@ -19,12 +19,35 @@
 
 :host(:not([type='fixed-width'])) #sections {
   display: grid;
-  grid-template-columns: /** grid-template-columns for menu sections */
+  /**
+   * --rh-navigation-secondary-menu-section-grid
+   * Controls the grid column layout for menu sections within dropdown menus.
+   * Defaults to `repeat(auto-fit, minmax(15.5rem, 1fr))` which creates responsive
+   * columns that automatically fit available space with a minimum width of 15.5rem.
+   *
+   * **Usage guidelines:**
+   * - Adjust minmax values to control section column widths
+   * - Use fixed columns (e.g., `1fr 1fr`) for predictable layouts
+   * - Consider content volume when customizing column behavior
+   * - Responsive by default - columns adjust to container width
+   */
+  grid-template-columns:
     var(--rh-navigation-secondary-menu-section-grid,
       repeat(auto-fit,
       minmax(15.5rem, 1fr)));
   grid-template-rows: auto;
-  gap: /** grid-gap for menu sections */
+  /**
+   * --rh-navigation-secondary-menu-section-grid-gap
+   * Controls the spacing between menu sections in the dropdown grid.
+   * Defaults to `var(--rh-space-2xl, 32px)` for comfortable separation between sections.
+   *
+   * **Usage guidelines:**
+   * - Increase for more visual separation between menu categories
+   * - Decrease for denser menu layouts with more sections
+   * - Use design system spacing tokens for consistency
+   * - Affects both row and column gaps in the menu grid
+   */
+  gap:
     var(--rh-navigation-secondary-menu-section-grid-gap, var(--rh-space-2xl, 32px));
 }
 
@@ -62,7 +85,19 @@
   #sections {
     padding: 0;
 
-    /** max-width for menu content */
+    /**
+     * --rh-navigation-secondary-menu-content-max-width
+     * Controls the maximum width of dropdown menu content in desktop view.
+     * Defaults to 1136px to maintain readable content width and prevent
+     * overly wide dropdowns on large screens.
+     *
+     * **Usage guidelines:**
+     * - Increase for wider page layouts or content-heavy menus
+     * - Decrease for narrower, more focused dropdown content
+     * - Centered automatically with `margin: auto`
+     * - Only applies at desktop breakpoint (min-width: 992px)
+     * - Consider menu section count and content when adjusting
+     */
     max-width: var(--rh-navigation-secondary-menu-content-max-width, 1136px);
     margin: auto;
   }
