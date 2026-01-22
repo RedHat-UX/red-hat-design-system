@@ -1,0 +1,65 @@
+<label for="select-1">
+  Red Hat Products <span class="required" aria-label="Required field">*</span>
+</label>
+<rh-tooltip>
+  <button>
+    <rh-icon set="ui" icon="question-mark-circle" accessible-label="More information"></rh-icon>
+  </button>
+  <span slot="content">Extra helpful information</span>
+</rh-tooltip>
+<rh-select id="select-1" placeholder="Select an item">
+  <rh-option>3scale API Management</rh-option>
+  <rh-option>AI Inference Server</rh-option>
+  <rh-option>Ansible Automation Platform</rh-option>
+  <rh-option>Ansible Lightspeed</rh-option>
+  <rh-option>Certificate System</rh-option>
+  <rh-option>Connectivity Link</rh-option>
+  <rh-option>Data Grid</rh-option>
+</rh-select>
+
+<script type="module">
+  import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+  import '@rhds/elements/rh-select/rh-select.js';
+</script>
+
+<style>
+  label,
+  rh-select {
+    margin-inline-start: 20px;
+    max-inline-size: 320px;
+  }
+
+  label {
+    display: inline-block;
+    font-family: var(--rh-font-family-body-text);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    margin-block: var(--rh-space-md, 8px);
+  }
+
+  .required {
+    color: var(--rh-color-status-danger);
+  }
+
+  rh-tooltip {
+    font-weight: var(--rh-font-weight-body-text-regular, 400);
+  }
+
+  button {
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    min-block-size: var(--rh-length-xl, 24px);
+    min-inline-size: var(--rh-length-xl, 24px);
+    padding: 0;
+
+    &:hover {
+      color: var(--rh-color-interactive-primary-hover);
+    }
+
+    &:focus-visible {
+      outline-color: var(--rh-color-border-interactive);
+    }
+  }
+</style>
