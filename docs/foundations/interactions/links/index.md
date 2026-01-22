@@ -289,14 +289,14 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
   <img src="./a11y-tab-order-A.svg"
         alt="Three inline links and a call to action in a row with focus rings around each"
         width="606"
-       height="27">
+        height="27">
 </uxdot-example>
 
 <uxdot-example color-palette="lightest" width-adjustment="93px" slot="image">
   <img src="./a11y-tab-order-B.svg"
         alt="Four links in a vertical list with focus rings around each"
         width="93"
-       height="156">
+        height="156">
 </uxdot-example>
 
 ## Best practices
