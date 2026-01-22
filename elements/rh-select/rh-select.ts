@@ -185,11 +185,11 @@ export class RhSelect extends LitElement {
     const { anchor = 'bottom', alignment = 'start', styles = {} } = this.#float;
     const { height = 0, width = 0 } = isServer ? {} : (this.getBoundingClientRect?.() ?? {});
     const hasSelection = !!(Array.isArray(this.selected) ? this.selected.length : this.selected);
+    const hideHelpText = this.#slots.isEmpty('help-text');
     const placeholderIsInert = !placeholder && this.#slots.isEmpty('placeholder');
-    const listboxOffsetWithoutHelpText = `${height - 4 || 0}px`;
+    const listboxOffsetWithoutHelpText = `${height + 4 || 0}px`;
     const listboxOffsetWithHelpText = `${height - 25 || 0}px`;
-    const hasHelpText = !this.#slots.isEmpty('help-text');
-    const listboxMarginBlockStart = hasHelpText ?
+    const listboxMarginBlockStart = !hideHelpText ?
       listboxOffsetWithHelpText : listboxOffsetWithoutHelpText;
     return html`
       <div id="outer"
@@ -224,7 +224,7 @@ export class RhSelect extends LitElement {
              ?hidden="${!expanded}"
              style="${styleMap({
                marginBlockStart: listboxMarginBlockStart,
-               inlineSize: width ? `${width - 1}px` : 'auto',
+               inlineSize: width ? `${width - 2}px` : 'auto',
              })}">
           <div id="listbox"
                @keydown="${this.#onKeydown}">
@@ -240,7 +240,7 @@ export class RhSelect extends LitElement {
             <slot></slot>
           </div>
         </div>
-        <div id="help-text">
+        <div id="help-text" ?hidden="${hideHelpText}">
           <rh-icon ?hidden="${this.state !== 'success'}"
                    class="icon-success"
                    set="ui"
