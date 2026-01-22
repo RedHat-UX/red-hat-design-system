@@ -95,7 +95,7 @@
   background-color: transparent;
   border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
   color: var(--rh-color-text-primary);
-  flex: 1 0 auto;
+  flex: 1 1 auto;
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   gap: var(--rh-space-lg, 16px);
