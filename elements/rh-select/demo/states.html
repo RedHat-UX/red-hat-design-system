@@ -1,55 +1,51 @@
-<div class="container limit-width">
-  <label for="select-5">
-    Success
-  </label>
-  <rh-select aria-describedby="help-text-5" id="select-5" placeholder="Select an item" state="success">
-    <rh-option>3scale API Management</rh-option>
-    <rh-option>Ansible Automation Platform</rh-option>
-    <rh-option>Ansible Lightspeed</rh-option>
-    <p id="help-text-5" slot="help-text">Sucess message</p>
-  </rh-select>
+<label for="select-5">
+  Success
+</label>
+<rh-select aria-describedby="help-text-5" id="select-5" placeholder="Select an item" state="success">
+  <rh-option>3scale API Management</rh-option>
+  <rh-option>Ansible Automation Platform</rh-option>
+  <rh-option>Ansible Lightspeed</rh-option>
+  <p id="help-text-5" slot="help-text">Sucess message</p>
+</rh-select>
 
-  <label for="select-6">
-    Warning
-  </label>
-  <rh-select aria-describedby="help-text-6" id="select-6" placeholder="Select an item" state="warning">
-    <rh-option>Certificate System</rh-option>
-    <rh-option>Connectivity Link</rh-option>
-    <rh-option>Data Grid</rh-option>
-    <p id="help-text-6" slot="help-text">Warning message</p>
-  </rh-select>
+<label for="select-6">
+  Warning
+</label>
+<rh-select aria-describedby="help-text-6" id="select-6" placeholder="Select an item" state="warning">
+  <rh-option>Certificate System</rh-option>
+  <rh-option>Connectivity Link</rh-option>
+  <rh-option>Data Grid</rh-option>
+  <p id="help-text-6" slot="help-text">Warning message</p>
+</rh-select>
 
-  <label for="select-7">
-    Danger
-  </label>
-  <rh-select aria-describedby="help-text-7" id="select-7" placeholder="Select an item" state="danger">
-    <rh-option>Developer Hub</rh-option>
-    <rh-option>Device Edge</rh-option>
-    <rh-option>Directory Server</rh-option>
-    <p id="help-text-7" slot="help-text">Danger message</p>
-  </rh-select>
+<label for="select-7">
+  Danger
+</label>
+<rh-select aria-describedby="help-text-7" id="select-7" placeholder="Select an item" state="danger">
+  <rh-option>Developer Hub</rh-option>
+  <rh-option>Device Edge</rh-option>
+  <rh-option>Directory Server</rh-option>
+  <p id="help-text-7" slot="help-text">Danger message</p>
+</rh-select>
 
-  <label for="select-8">
-    Label
-  </label>
-  <rh-select aria-describedby="help-text-8" id="select-8" placeholder="Select an item">
-    <rh-option>Developer Hub</rh-option>
-    <rh-option>Device Edge</rh-option>
-    <rh-option>Directory Server</rh-option>
-    <p id="help-text-8" slot="help-text">Help text</p>
-  </rh-select>
-</div>
+<label for="select-8">
+  Label
+</label>
+<rh-select aria-describedby="help-text-8" id="select-8" placeholder="Select an item">
+  <rh-option>Developer Hub</rh-option>
+  <rh-option>Device Edge</rh-option>
+  <rh-option>Directory Server</rh-option>
+  <p id="help-text-8" slot="help-text">Help text</p>
+</rh-select>
 
 <script type="module">
   import '@rhds/elements/rh-select/rh-select.js';
 </script>
 
 <style>
-  .container {
-    margin: 20px;
-  }
-
-  .limit-width {
+  label,
+  rh-select {
+    margin-inline: 20px;
     max-inline-size: 320px;
   }
 
@@ -57,8 +53,7 @@
     display: block;
     font-family: var(--rh-font-family-body-text);
     font-weight: var(--rh-font-weight-body-text-medium, 500);
-    margin-block-end: var(--rh-space-md, 8px);
-    margin-inline-start: 3px;
+    margin-block: var(--rh-space-md, 8px);
   }
 
   rh-select {

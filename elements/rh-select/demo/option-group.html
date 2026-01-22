@@ -1,52 +1,50 @@
-<div class="container limit-width">
-  <label for="select-4">
-    With option group
-  </label>
-  <rh-select id="select-4" placeholder="Select an item">
+<label for="select-4">
+  With option group
+</label>
+<rh-select id="select-4" placeholder="Select an item">
+  <rh-option>
+    3scale API Management
+  </rh-option>
+  <rh-option disabled>
+    AI Inference Server
+  </rh-option>
+  <rh-option-group label="Ansible">
     <rh-option>
-      3scale API Management
-    </rh-option>
-    <rh-option disabled>
-      AI Inference Server
-    </rh-option>
-    <rh-option-group label="Ansible">
-      <rh-option>
-        Ansible Automation Platform
-      </rh-option>
-      <rh-option>
-        Ansible Lightspeed
-      </rh-option>
-    </rh-option-group>
-    <rh-option>
-      Certificate System
+      Ansible Automation Platform
     </rh-option>
     <rh-option>
-      Connectivity Link
+      Ansible Lightspeed
     </rh-option>
-    <rh-option-group disabled label="Developer Tools">
-      <rh-option>
-        Developer Hub
-      </rh-option>
-      <rh-option>
-        Device Edge
-      </rh-option>
-      <rh-option>
-        Directory Server
-      </rh-option>
-    </rh-option-group>
-    <rh-option-group label="RHEL">
-      <rh-option>
-        Enterprise Linux
-      </rh-option>
-      <rh-option>
-        Enterprise Linux Lightspeed
-      </rh-option>
-    </rh-option-group>
+  </rh-option-group>
+  <rh-option>
+    Certificate System
+  </rh-option>
+  <rh-option>
+    Connectivity Link
+  </rh-option>
+  <rh-option-group disabled label="Developer Tools">
     <rh-option>
-      High performance computing portfolio
+      Developer Hub
     </rh-option>
-  </rh-select>
-</div>
+    <rh-option>
+      Device Edge
+    </rh-option>
+    <rh-option>
+      Directory Server
+    </rh-option>
+  </rh-option-group>
+  <rh-option-group label="RHEL">
+    <rh-option>
+      Enterprise Linux
+    </rh-option>
+    <rh-option>
+      Enterprise Linux Lightspeed
+    </rh-option>
+  </rh-option-group>
+  <rh-option>
+    High performance computing portfolio
+  </rh-option>
+</rh-select>
 
 <script type="module">
   import '@rhds/elements/rh-select/rh-select.js';
@@ -55,11 +53,9 @@
 <link rel="stylesheet" href="../rh-select-lightdom.css">
 
 <style>
-  .container {
-    margin: 20px;
-  }
-
-  .limit-width {
+  label,
+  rh-select {
+    margin-inline: 20px;
     max-inline-size: 320px;
   }
 
@@ -67,7 +63,6 @@
     display: block;
     font-family: var(--rh-font-family-body-text);
     font-weight: var(--rh-font-weight-body-text-medium, 500);
-    margin-block-end: var(--rh-space-md, 8px);
-    margin-inline-start: 3px;
+    margin-block: var(--rh-space-md, 8px);
   }
 </style>

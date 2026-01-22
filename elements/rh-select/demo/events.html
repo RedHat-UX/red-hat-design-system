@@ -1,14 +1,12 @@
 <form>
-  <div class="container limit-width">
-    <label for="select-8">
-      Events
-    </label>
-    <rh-select id="select-8" placeholder="Select an item">
-      <rh-option>Red Hat Lightspeed</rh-option>
-      <rh-option disabled>OpenShift</rh-option>
-      <rh-option>Quay</rh-option>
-    </rh-select>
-  </div>
+  <label for="select-8">
+    Events
+  </label>
+  <rh-select id="select-8" placeholder="Select an item">
+    <rh-option>Red Hat Lightspeed</rh-option>
+    <rh-option disabled>OpenShift</rh-option>
+    <rh-option>Quay</rh-option>
+  </rh-select>
 
   <p class="container">
     A change event is fired whenever the page loads or a selection is made.
@@ -37,11 +35,15 @@
 </script>
 
 <style>
+  label,
+  rh-select,
   .container {
-    margin: 20px;
+    margin-inline: 20px;
+    margin-block-end: var(--rh-space-md, 8px);
   }
 
-  .limit-width {
+  label,
+  rh-select {
     max-inline-size: 320px;
   }
 
@@ -49,7 +51,6 @@
     display: block;
     font-family: var(--rh-font-family-body-text);
     font-weight: var(--rh-font-weight-body-text-medium, 500);
-    margin-block-end: var(--rh-space-md, 8px);
-    margin-inline-start: 3px;
+    margin-block: var(--rh-space-md, 8px);
   }
 </style>
