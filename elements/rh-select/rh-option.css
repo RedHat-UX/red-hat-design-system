@@ -73,5 +73,7 @@ slot[name='description'] {
 }
 
 #display-icon {
+  --rh-icon-size: var(--rh-select-icon-size, 14px);
+
   margin-inline-end: var(--rh-space-md, 8px);
 }
