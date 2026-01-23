@@ -60,11 +60,8 @@ export class RhOptionGroup extends LitElement {
    * Returns each rh-option in rh-option-group's default slot
    */
   #getChildOptions(): RhOption[] {
-    if (!this.defaultSlot) {
-      return [];
-    }
+    const assignedElements = this.defaultSlot?.assignedElements?.() ?? [];
 
-    const assignedElements = this.defaultSlot.assignedElements();
     return assignedElements.filter((element): element is RhOption =>
       element instanceof RhOption
     );
