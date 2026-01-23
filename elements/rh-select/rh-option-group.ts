@@ -12,6 +12,7 @@ import styles from './rh-option-group.css';
 
 /**
  * Group of options within a select / listbox
+ * @summary Groups related rh-option elements within a select
  * @alias option-group
  */
 @customElement('rh-option-group')
@@ -21,7 +22,7 @@ export class RhOptionGroup extends LitElement {
   /** Group description. Overridden by `label` slot. */
   @property() label?: string;
 
-  /** Whether group is disabled */
+  /** Whether the group is disabled */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
   @query('slot:not([name])') private defaultSlot!: HTMLSlotElement;
@@ -56,7 +57,7 @@ export class RhOptionGroup extends LitElement {
   }
 
   /**
-   * Get each rh-option in rh-option-group's default slot
+   * Returns each rh-option in rh-option-group's default slot
    */
   #getChildOptions(): RhOption[] {
     if (!this.defaultSlot) {
@@ -83,9 +84,8 @@ export class RhOptionGroup extends LitElement {
   }
 
   /**
-   * Toggle `disabled` attributes on slotted `rh-option` elements when `disabled` is added or
-   * removed from the parent `rh-option-group`.`
-  */
+   * Updates disabled state of child options when rh-option-group disabled state changes
+   */
   #updateDisabledChildren(): void {
     for (const childOption of this.#optionEls) {
       if (this.disabled) {
