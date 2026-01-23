@@ -13,7 +13,11 @@ import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import styles from './rh-option.css';
 
 /**
- * Option within a select / listbox
+ * A selectable option within a rh-select dropdown menu. Must be a child of rh-select
+ * or rh-option-group. Should include a value attribute for form submission.
+ * Must include slotted content or the label attribute for accessibility.
+ * Supports optional icons and descriptions for enhanced visual presentation.
+ * @summary A selectable option within a select list
  * @alias option
  */
 @customElement('rh-option')

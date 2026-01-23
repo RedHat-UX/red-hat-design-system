@@ -11,7 +11,9 @@ import { RhOption } from './rh-option.js';
 import styles from './rh-option-group.css';
 
 /**
- * Group of options within a select / listbox
+ * Groups related rh-option elements within a rh-select for visual organization.
+ * Must be a child of rh-select. Should include a label attribute or label slot
+ * to identify the group. When disabled, all child options are automatically disabled.
  * @summary Groups related rh-option elements within a select
  * @alias option-group
  */
@@ -19,10 +21,18 @@ import styles from './rh-option-group.css';
 export class RhOptionGroup extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
 
-  /** Group description. Overridden by `label` slot. */
+  /**
+   * Group label text displayed above the option group for identification.
+   * Should be used to describe the category or purpose of grouped options.
+   * Overridden by the label slot if provided. Required for accessibility.
+   */
   @property() label?: string;
 
-  /** Whether the group is disabled */
+  /**
+   * Whether the option group and all its child options are disabled.
+   * When true, automatically disables all rh-option children, preventing
+   * selection of any options within this group.
+   */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
   @query('slot:not([name])') private defaultSlot!: HTMLSlotElement;
