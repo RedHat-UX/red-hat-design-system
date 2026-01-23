@@ -1,6 +1,6 @@
 import type { IconNameFor, IconSetName } from '@rhds/icons';
 
-import { LitElement, html, isServer } from 'lit';
+import { LitElement, html, isServer, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -46,20 +46,7 @@ export class RhOption extends LitElement {
    * Priority: slotted text content -> label attr -> value attr -> ''
    */
   get displayLabel(): string {
-    if (!isServer) {
-      const defaultSlot = this.shadowRoot?.querySelector<HTMLSlotElement>('slot:not([name])');
-      if (defaultSlot) {
-        const slotText = defaultSlot.assignedNodes()
-            .map(node => node.textContent ?? '')
-            .join('')
-            .trim();
-        if (slotText) {
-          return slotText;
-        }
-      }
-    }
-    // Fall back to label attr, then value attr
-    return this.label ?? this.#value ?? '';
+    return this.#displayLabel ?? this.label ?? this.#value ?? '';
   }
 
   /** Whether option is selected */
@@ -111,6 +98,8 @@ export class RhOption extends LitElement {
 
   #value?: string;
 
+  #displayLabel?: string;
+
   #internals = InternalsController.of(this, { role: 'option' });
 
   render() {
@@ -134,9 +123,41 @@ export class RhOption extends LitElement {
     `;
   }
 
-  /** Trigger re-render when slot content changes */
+  /**
+   * Initialize cached display label on first client-side render
+   * @param changedProperties - Properties that changed before this update
+   */
+  override firstUpdated(changedProperties: PropertyValues<this>): void {
+    super.firstUpdated(changedProperties);
+    this.#updateDisplayLabel();
+  }
+
+  /** Update cached display label and trigger re-render when slot content changes */
   #onSlotChange() {
+    this.#updateDisplayLabel();
     this.requestUpdate();
+  }
+
+  /**
+ * Updates the cached display label
+ * Priority: slotted text content -> label attr -> value attr -> ''
+ */
+  #updateDisplayLabel(): void {
+    if (!isServer) {
+      const defaultSlot = this.shadowRoot?.querySelector<HTMLSlotElement>('slot:not([name])');
+      if (defaultSlot) {
+        const slotText = defaultSlot.assignedNodes()
+            .map(node => node.textContent ?? '')
+            .join('')
+            .trim();
+        if (slotText) {
+          this.#displayLabel = slotText;
+          return;
+        }
+      }
+    }
+
+    this.#displayLabel = this.label ?? this.#value ?? '';
   }
 
   @observes('selected')
@@ -147,6 +168,18 @@ export class RhOption extends LitElement {
   @observes('disabled')
   private disabledChanged() {
     this.#internals.ariaDisabled = String(!!this.disabled);
+  }
+
+  @observes('label')
+  private labelChanged() {
+    this.#updateDisplayLabel();
+    this.requestUpdate();
+  }
+
+  @observes('value')
+  private valueChanged() {
+    this.#updateDisplayLabel();
+    this.requestUpdate();
   }
 }
 
