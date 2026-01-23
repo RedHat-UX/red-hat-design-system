@@ -28,13 +28,11 @@ export class RhSelectChangeEvent extends Event {
 }
 
 /**
- * A select list enables users to select one or more items from a list.
+ * A select is a control that provides a menu of options.
  *
- * @summary enables users to select one or more items from a list
+ * @summary a control that provides a menu of options
  *
- * A select component consists of a toggle control to open and close a menu of actions or links.
- * Selects differ from dropdowns in that they persist selection,
- * whereas dropdowns are typically used to present a list of actions or links.
+ * A select component consists of a toggle control to open and close a menu of options.
  * @alias select
  * @fires open - when the menu toggles open
  * @fires close - when the menu toggles closed

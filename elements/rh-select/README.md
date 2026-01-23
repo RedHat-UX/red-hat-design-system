@@ -1,6 +1,6 @@
 # Select
 
-A select list enables users to select one or more items from a list. It functions as a branded `<select>` element.
+A select list is a control that provides a menu of options. It functions as a branded `<select>` element.
 
 ## Installation
 
