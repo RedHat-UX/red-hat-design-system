@@ -3,8 +3,6 @@ tagName: rh-select
 name: Select
 type: element
 overallStatus: ready
-description: >-
-  The select element represents a control that provides a menu of options.
 libraries:
   figma: ready
   rhds: ready
