@@ -30,11 +30,11 @@ export class RhOption extends LitElement {
   /** Form value for this option */
   @property()
   get value() {
-    if (this.#value) {
-      return this.#value;
+    if (this.displayLabel) {
+      return this.displayLabel;
     }
-    // Fall back to display label
-    return this.displayLabel;
+    // Fall back to value
+    return this.#value ?? '';
   }
 
   set value(v: string) {
