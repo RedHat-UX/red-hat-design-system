@@ -1,8 +1,18 @@
 # Select
-Add a description of the component here.
+
+A select list enables users to select one or more items from a list. It functions as a branded `<select>` element.
+
+## Installation
+
+Follow the RHDS [installation instructions](https://ux.redhat.com/get-started/developers/installation/), then paste the following into your project:
+
+```js
+import '@rhds/elements/rh-select/rh-select.js';
+```
 
 ## Usage
-Describe how best to use this web component along with best practices.
+
+Paste the following HTML into your project:
 
 ```html
 <label for="select-1">Select an item</label>
@@ -13,3 +23,5 @@ Describe how best to use this web component along with best practices.
   <rh-option>Item 4</rh-option>
 </rh-select>
 ```
+
+Full documentation for `<rh-select>` can be found on its [Code](https://ux.redhat.com/elements/select/code/) page.
