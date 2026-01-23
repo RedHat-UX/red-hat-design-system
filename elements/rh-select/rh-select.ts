@@ -28,11 +28,10 @@ export class RhSelectChangeEvent extends Event {
 }
 
 /**
- * A select is a control that provides a menu of options.
- *
- * @summary a control that provides a menu of options
- *
- * A select component consists of a toggle control to open and close a menu of options.
+ * An control for selecting from a list of options. Must contain rh-option children, optionally
+ * grouped with rh-option-group. Supports keyboard navigation, type-to-select search, and form
+ * integration. Should include an associated label or accessible label for screen reader support.
+ * @summary A control that provides a menu of options
  * @alias select
  * @fires open - when the menu toggles open
  * @fires close - when the menu toggles closed
@@ -49,32 +48,52 @@ export class RhSelect extends LitElement {
     delegatesFocus: true,
   };
 
-  /** Accessible label for the select */
+  /**
+   * Accessible label text for screen readers and assistive technologies.
+   * Should be used when the select lacks an associated `<label>` element.
+   * Required for accessibility compliance when no visible label is present.
+   */
   @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
 
-  /** Whether the select is disabled */
+  /**
+   * Whether the select control is disabled and non-interactive.
+   * When true, prevents user interaction and excludes the value from form submission.
+   */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
-  /** Whether the select listbox is expanded */
+  /**
+   * Whether the dropdown listbox is currently expanded and visible.
+   * Automatically managed by keyboard and mouse interactions. Should not be
+   * manually set in most cases.
+   */
   @property({ type: Boolean, reflect: true }) expanded = false;
 
-  /** Current form value */
+  /**
+   * Current form value representing the selected option's value attribute.
+   * Updates automatically when selection changes. Use for form submission
+   * and programmatic value access.
+   */
   @property() value?: string;
 
-  /** Placeholder entry. Overridden by the `placeholder` slot */
+  /**
+   * Placeholder text displayed when no option is selected.
+   * Should provide guidance about expected input. Overridden by the placeholder
+   * slot if provided. Used as fallback accessible label when no accessible-label
+   * or associated label is present.
+   */
   @property() placeholder?: string;
 
   /**
-   * Communicates the state of the form control and is denoted by various styling configurations.
-   *
-   *  - `danger` - Indicates a danger state, like an error that is blocking a user submitting a form.
-   *  - `warning` - Indicates a warning state, like a non-blocking error that might need to be fixed.
-   *  - `success` - Indicates a success state, like when a proper selection was made.
+   * Visual and semantic state of the form control for user feedback.
+   * Use 'danger' for blocking errors that prevent form submission, 'warning' for
+   * non-blocking issues requiring attention, and 'success' for valid selections.
+   * Affects styling.
    */
   @property({ reflect: true }) state?: 'danger' | 'success' | 'warning';
 
   /**
-   * The currently selected option.
+   * The currently selected rh-option element. Accepts a single option.
+   * Setting this property programmatically updates the visual selection and form value.
    */
   @property({ hasChanged: (a, b) => !arraysAreEquivalent(a, b) })
   set selected(selected: RhOption | RhOption[]) {
