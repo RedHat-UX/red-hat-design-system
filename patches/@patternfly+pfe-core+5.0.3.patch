@@ -22,7 +22,15 @@ diff --git a/node_modules/@patternfly/pfe-core/controllers/combobox-controller.j
 index 86cfd13..9b870d3 100644
 --- a/node_modules/@patternfly/pfe-core/controllers/combobox-controller.js
 +++ b/node_modules/@patternfly/pfe-core/controllers/combobox-controller.js
-@@ -309,8 +309,11 @@ export class ComboboxController {
+@@ -86,9 +86,12 @@ export class ComboboxController {
+     set items(value) {
+         __classPrivateFieldGet(this, _ComboboxController_lb, "f").items = value;
++        // When items change dynamically (e.g. slotchange), refresh the focus controller
++        // so keyboard nav and aria-activedescendant use the new list.
++        __classPrivateFieldGet(this, _ComboboxController_fc, "f")?.initItems?.();
+     }
+     /** Whether the combobox is disabled */
+@@ -309,8 +312,11 @@ export class ComboboxController {
          _ComboboxController_onFocusoutListbox.set(this, (event) => {
              if (!__classPrivateFieldGet(this, _ComboboxController_instances, "a", _ComboboxController_hasTextInput_get) && this.options.isExpanded()) {
                  const root = __classPrivateFieldGet(this, _ComboboxController_instances, "a", _ComboboxController_element_get)?.getRootNode();

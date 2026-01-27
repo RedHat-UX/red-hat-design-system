@@ -111,16 +111,16 @@ export class RhSelect extends LitElement {
     return this.#combobox.selected;
   }
 
+  #options: RhOption[] = [];
+
   /** List of options */
   get options(): RhOption[] {
-    if (isServer) {
-      return []; // TODO: expose a DOM property to allow setting options in SSR scenarios
-    } else {
-      return [
-        this._placeholder,
-        ...Array.from(this.querySelectorAll('rh-option')),
-      ].filter((x): x is RhOption => !!x && !x.hidden);
-    }
+    return this.#options;
+  }
+
+  set options(v: RhOption[]) {
+    this.#options = [];
+    this.requestUpdate('options', null);
   }
 
   @query('#toggle-button') private _toggleButton?: HTMLButtonElement;
@@ -169,6 +169,21 @@ export class RhSelect extends LitElement {
   #isNotPlaceholderOption = (option: RhOption) => option !== this._placeholder;
 
   /**
+   * Update options list when rh-option elements are added/removed from the default slot.
+   */
+  #onSlotchange() {
+    if (!isServer) {
+      const newOptions = [
+        this._placeholder,
+        ...Array.from(this.querySelectorAll('rh-option')),
+      ].filter((x): x is RhOption => !!x && !x.hidden);
+      this.#options = newOptions;
+      // Sync combobox so keyboard nav sees new options
+      this.#combobox.items = this.options;
+    }
+  }
+
+  /**
    * Intercept the space key during type-ahead.
    * This runs before the ComboboxController's handler, allowing us to prevent
    * the space key from being treated as a selection action (and causing the listbox to close).
@@ -201,6 +216,12 @@ export class RhSelect extends LitElement {
   override connectedCallback() {
     super.connectedCallback();
     this.addEventListener('keydown', this.#captureKeydown, { capture: true });
+    if (!isServer) {
+      this.#options = [
+        this._placeholder,
+        ...Array.from(this.querySelectorAll('rh-option')),
+      ].filter((x): x is RhOption => !!x && !x.hidden);
+    }
   }
 
   override render() {
@@ -260,7 +281,7 @@ export class RhSelect extends LitElement {
             </rh-option>
             ${this.#combobox.renderItemsToShadowRoot()}
             <!-- insert \`rh-option\` and/or \`rh-option-groups\` here -->
-            <slot></slot>
+            <slot @slotchange="${this.#onSlotchange}"></slot>
           </div>
         </div>
         <div id="help-text" ?hidden="${hideHelpText}">
