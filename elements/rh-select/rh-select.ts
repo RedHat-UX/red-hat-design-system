@@ -20,6 +20,13 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './rh-select.css';
 
+/**
+ * Event type for the `change` event from rh-select. rh-select shall dispatch
+ * this event when the selected value changes (e.g. after the user picks an
+ * option or the value is updated programmatically). The event shall bubble.
+ * Listeners should use this type when handling change.
+ * @summary Event fired when the select value changes
+ */
 export class RhSelectChangeEvent extends Event {
   constructor() {
     super('change', { bubbles: true });
