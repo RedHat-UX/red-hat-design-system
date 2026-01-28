@@ -19,10 +19,11 @@ index ba9af2b..a2ede6d 100644
          let itemToGainFocus = items.at(index);
          let itemToGainFocusIsFocusable = atFocusableItems.includes(itemToGainFocus);
 diff --git a/node_modules/@patternfly/pfe-core/controllers/combobox-controller.js b/node_modules/@patternfly/pfe-core/controllers/combobox-controller.js
-index 86cfd13..9b870d3 100644
+index 86cfd13..97b9693 100644
 --- a/node_modules/@patternfly/pfe-core/controllers/combobox-controller.js
 +++ b/node_modules/@patternfly/pfe-core/controllers/combobox-controller.js
-@@ -86,9 +86,12 @@ export class ComboboxController {
+@@ -89,6 +89,9 @@ export class ComboboxController {
+     }
      set items(value) {
          __classPrivateFieldGet(this, _ComboboxController_lb, "f").items = value;
 +        // When items change dynamically (e.g. slotchange), refresh the focus controller
@@ -30,6 +31,7 @@ index 86cfd13..9b870d3 100644
 +        __classPrivateFieldGet(this, _ComboboxController_fc, "f")?.initItems?.();
      }
      /** Whether the combobox is disabled */
+     get disabled() {
 @@ -309,8 +312,11 @@ export class ComboboxController {
          _ComboboxController_onFocusoutListbox.set(this, (event) => {
              if (!__classPrivateFieldGet(this, _ComboboxController_instances, "a", _ComboboxController_hasTextInput_get) && this.options.isExpanded()) {
