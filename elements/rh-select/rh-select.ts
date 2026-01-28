@@ -309,6 +309,7 @@ export class RhSelect extends LitElement {
 
   override updated() {
     this.#setAriaLabelledby();
+    this.#removeListboxAriaLabelledby();
   }
 
   override disconnectedCallback() {
@@ -403,6 +404,16 @@ export class RhSelect extends LitElement {
     const btn = this._toggleButton;
     if (btn && btn.getAttribute('aria-labelledby') === '') {
       btn.setAttribute('aria-labelledby', 'toggle-text');
+    }
+  }
+
+  /**
+   * Removes blank aria-labelledby attribute on listbox
+   */
+  #removeListboxAriaLabelledby() {
+    const listbox = this._listbox;
+    if (listbox && listbox.getAttribute('aria-labelledby') === '') {
+      listbox.removeAttribute('aria-labelledby');
     }
   }
 
