@@ -27,14 +27,13 @@ export class RhOption extends LitElement {
   /** Whether option is disabled */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
-  /** Form value for this option */
+  /**
+   * Form value for this option.
+   * Priority: value attr -> displayLabel -> ''
+   */
   @property()
   get value() {
-    if (this.displayLabel) {
-      return this.displayLabel;
-    }
-    // Fall back to value
-    return this.#value ?? '';
+    return this.#value ?? this.displayLabel ?? '';
   }
 
   set value(v: string) {
