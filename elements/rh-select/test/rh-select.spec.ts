@@ -660,6 +660,8 @@ describe('<rh-select>', function() {
             <rh-option value="red">Red</rh-option>
             <rh-option value="green">Green</rh-option>
             <rh-option value="blue">Blue</rh-option>
+            <rh-option value="orange"></rh-option>
+            <rh-option>Yellow</rh-option>
           </rh-select>
         </form>
       `);
@@ -677,6 +679,32 @@ describe('<rh-select>', function() {
 
       const formData = new FormData(form);
       expect(formData.get('color')).to.equal('green');
+    });
+
+    it('includes value attribute in form data when option has value (orange)', async function() {
+      await element.show();
+      await element.updateComplete;
+      const options = element.querySelectorAll('rh-option');
+      const orangeOption = options[3] as RhOption;
+      await clickElementAtCenter(orangeOption);
+      await element.updateComplete;
+      await nextFrame();
+
+      const formData = new FormData(form);
+      expect(formData.get('color')).to.equal('orange');
+    });
+
+    it('includes display label in form data when option has no value (Yellow)', async function() {
+      await element.show();
+      await element.updateComplete;
+      const options = element.querySelectorAll('rh-option');
+      const yellowOption = options[4] as RhOption;
+      await clickElementAtCenter(yellowOption);
+      await element.updateComplete;
+      await nextFrame();
+
+      const formData = new FormData(form);
+      expect(formData.get('color')).to.equal('Yellow');
     });
 
     it('clears value on form reset', async function() {
