@@ -4,7 +4,7 @@ import '@rhds/elements/rh-navigation-link/rh-navigation-link.js';
 import './rh-navigation-vertical-list.js';
 /**
  * A vertical navigation list of top-level and grouped navigation items, typically used in a side navigation pattern.
- * @summary Vertical navigation
+ * @summary Organizes and communicates structure and content vertically
  * @alias Navigation (vertical)
  */
 export declare class RhNavigationVertical extends LitElement {
