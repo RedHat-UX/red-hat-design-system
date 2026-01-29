@@ -2,7 +2,7 @@ import { expect, html, nextFrame } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { sendKeys } from '@web/test-runner-commands';
 import { clickElementAtCenter } from '@patternfly/pfe-tools/test/utils.js';
-import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
+import { a11ySnapshot, querySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 
 import { RhSelect } from '@rhds/elements/rh-select/rh-select.js';
 import type { RhOption } from '@rhds/elements/rh-select/rh-option.js';
@@ -762,6 +762,47 @@ describe('<rh-select>', function() {
         role: 'combobox',
         name: 'Select something',
       });
+    });
+  });
+
+  describe('help-text and ARIA via ElementInternals', function() {
+    // Skipped: in wtr/Chromium the a11y snapshot does not include `description` on the node
+    // when set via ElementInternals.ariaDescription (same as internals-set role in nav-vertical).
+    // Unskip when snapshot support improves or when running in an environment that exposes it.
+
+    it.skip('help-text attribute exposes description in a11y tree', async function() {
+      const container = await createFixture<HTMLDivElement>(html`
+        <div>
+          <rh-select help-text="MyHelpText" placeholder="Select">
+            <rh-option>one</rh-option>
+          </rh-select>
+        </div>
+      `);
+      const element = container.querySelector('rh-select')!;
+      await element.updateComplete;
+      await nextFrame();
+
+      const snapshot = await a11ySnapshot();
+      const comboboxNode = querySnapshot(snapshot, { role: 'combobox', name: 'Select' });
+      expect(comboboxNode?.description).to.equal('MyHelpText');
+    });
+
+    it.skip('slotted help-text exposes description in a11y tree', async function() {
+      const container = await createFixture<HTMLDivElement>(html`
+        <div>
+          <rh-select placeholder="Select">
+            <rh-option>one</rh-option>
+            <p slot="help-text">MySlottedHelpText</p>
+          </rh-select>
+        </div>
+      `);
+      const element = container.querySelector('rh-select')!;
+      await element.updateComplete;
+      await nextFrame();
+
+      const snapshot = await a11ySnapshot();
+      const comboboxNode = querySnapshot(snapshot, { role: 'combobox', name: 'Select' });
+      expect(comboboxNode?.description).to.equal('MySlottedHelpText');
     });
   });
 });
