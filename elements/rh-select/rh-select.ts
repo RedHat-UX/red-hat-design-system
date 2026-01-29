@@ -11,6 +11,7 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 import { FloatingDOMController } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
 
 import { arraysAreEquivalent } from '@patternfly/pfe-core/functions/arraysAreEquivalent.js';
+import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
 import { RhOption } from './rh-option.js';
@@ -88,6 +89,12 @@ export class RhSelect extends LitElement {
    * or associated label is present.
    */
   @property() placeholder?: string;
+
+  /**
+   * Help text displayed below the control. Content slotted into the help-text
+   * slot overrides this attribute.
+   */
+  @property({ attribute: 'help-text' }) helpText?: string;
 
   /**
    * Visual and semantic state of the form control for user feedback.
@@ -224,12 +231,16 @@ export class RhSelect extends LitElement {
     }
   }
 
+  override willUpdate() {
+    this.#syncAriaHelpText();
+  }
+
   override render() {
     const { disabled, expanded, placeholder } = this;
     const { anchor = 'bottom', alignment = 'start', styles = {} } = this.#float;
     const { height = 0, width = 0 } = isServer ? {} : (this.getBoundingClientRect?.() ?? {});
     const hasSelection = !!(Array.isArray(this.selected) ? this.selected.length : this.selected);
-    const hideHelpText = this.#slots.isEmpty('help-text');
+    const hideHelpText = this.#slots.isEmpty('help-text') && !this.helpText;
     const placeholderIsInert = !placeholder && this.#slots.isEmpty('placeholder');
     const listboxOffsetWithoutHelpText = `${height + 4 || 0}px`;
     const listboxOffsetWithHelpText = `${height - 25 || 0}px`;
@@ -300,8 +311,8 @@ export class RhSelect extends LitElement {
                    set="ui"
                    icon="ban-fill">
           </rh-icon>
-          <!-- Insert a paragraph tag with text that helps describe the select -->
-          <slot id="help-text-content" name="help-text"></slot>
+          <!-- Insert a paragraph tag with text that helps describe the select. Overrides the \`help-text\` attribute when slotted. -->
+          <slot id="help-text-content" name="help-text"><span aria-hidden="true">${this.helpText ?? ''}</span></slot>
         </div>
       </div>
     `;
@@ -415,6 +426,61 @@ export class RhSelect extends LitElement {
     if (listbox && listbox.getAttribute('aria-labelledby') === '') {
       listbox.removeAttribute('aria-labelledby');
     }
+  }
+
+  /**
+   * Automatically assign aria-describedby/aria-description via ElementInternals when
+   * consumers add the `help-text` attribute or slot content into the `help-text` slot.
+   */
+  #syncAriaHelpText() {
+    const noSlottedHelp = this.#slots.isEmpty('help-text');
+    const noHelpText = !this.helpText;
+
+    if (noSlottedHelp && noHelpText) {
+      this.#internals.ariaDescription = '';
+      this.#internals.ariaDescribedByElements = [];
+      return;
+    }
+
+    if (!noSlottedHelp) {
+      this.#syncAriaFromSlottedHelp();
+      return;
+    }
+
+    this.#syncAriaFromHelpTextAttr();
+  }
+
+  /**
+   * Sets aria-describedby from elements in the `help-text` slot.
+   * Assigns a unique `id` to each slotted element so ariaDescribedByElements
+   * or aria-describedby can be set.
+   */
+  #syncAriaFromSlottedHelp() {
+    const helpEls = this.#slots.getSlotted('help-text');
+    for (const el of helpEls) {
+      if (!el.id) {
+        el.id = getRandomId('rh-select-help');
+      }
+    }
+    if ('ariaDescribedByElements' in (globalThis.ElementInternals?.prototype ?? {})) {
+      this.#internals.ariaDescribedByElements = helpEls;
+    } else {
+      this.setAttribute('aria-describedby', helpEls.map(x => x.id).join(' '));
+    }
+    this.#internals.ariaDescription = '';
+  }
+
+  /**
+   * Sets aria-description from the help-text attribute.
+   * Used when consumers add the `help-text` attribute to rh-select.
+   */
+  #syncAriaFromHelpTextAttr() {
+    if ('ariaDescription' in (globalThis.ElementInternals?.prototype ?? {})) {
+      this.#internals.ariaDescription = this.helpText ?? '';
+    } else {
+      this.setAttribute('aria-description', this.helpText ?? '');
+    }
+    this.#internals.ariaDescribedByElements = [];
   }
 
   /**
