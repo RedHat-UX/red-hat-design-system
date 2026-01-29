@@ -1,0 +1,30 @@
+:host {
+  /* Remove this re-declaration when the `status-disabled` variables are defined in tokens */
+  --rh-color-text-status-disabled:
+    light-dark(var(--rh-color-gray-50, #707070),
+      var(--rh-color-gray-60, #4d4d4d));
+
+  display: block;
+  padding-block: var(--rh-space-md, 8px);
+}
+
+:host([disabled]) {
+  pointer-events: none;
+}
+
+:host([disabled]),
+:host([disabled]) slot[name='label'] {
+  /* stylelint-disable-next-line rhds/no-unknown-token-name */
+  color: var(--rh-color-text-status-disabled);
+}
+
+slot {
+  display: block;
+}
+
+slot[name='label'] {
+  color: var(--rh-color-text-secondary);
+  font-size: var(--rh-font-size-body-text-xs, 0.75rem);
+  padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+  user-select: none;
+}
