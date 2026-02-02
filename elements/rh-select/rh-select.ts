@@ -452,21 +452,9 @@ export class RhSelect extends LitElement {
 
   /**
    * Sets aria-describedby from elements in the `help-text` slot.
-   * Assigns a unique `id` to each slotted element so ariaDescribedByElements
-   * or aria-describedby can be set.
    */
   #syncAriaFromSlottedHelp() {
-    const helpEls = this.#slots.getSlotted('help-text');
-    for (const el of helpEls) {
-      if (!el.id) {
-        el.id = getRandomId('rh-select-help');
-      }
-    }
-    if ('ariaDescribedByElements' in (globalThis.ElementInternals?.prototype ?? {})) {
-      this.#internals.ariaDescribedByElements = helpEls;
-    } else {
-      this.setAttribute('aria-describedby', helpEls.map(x => x.id).join(' '));
-    }
+    this.#internals.ariaDescribedByElements = this.#slots.getSlotted('help-text');
     this.#internals.ariaDescription = '';
   }
 
