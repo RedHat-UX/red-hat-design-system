@@ -19,7 +19,7 @@ index ba9af2b..a2ede6d 100644
          let itemToGainFocus = items.at(index);
          let itemToGainFocusIsFocusable = atFocusableItems.includes(itemToGainFocus);
 diff --git a/node_modules/@patternfly/pfe-core/controllers/combobox-controller.js b/node_modules/@patternfly/pfe-core/controllers/combobox-controller.js
-index 86cfd13..97b9693 100644
+index 86cfd13..3d5f9dc 100644
 --- a/node_modules/@patternfly/pfe-core/controllers/combobox-controller.js
 +++ b/node_modules/@patternfly/pfe-core/controllers/combobox-controller.js
 @@ -89,6 +89,9 @@ export class ComboboxController {
@@ -45,6 +45,66 @@ index 86cfd13..97b9693 100644
                      __classPrivateFieldGet(this, _ComboboxController_instances, "m", _ComboboxController_hide).call(this);
                  }
              }
+@@ -373,6 +379,7 @@ export class ComboboxController {
+             getATFocusedItem: () => this.items[__classPrivateFieldGet(this, _ComboboxController_fc, "f")?.atFocusedItemIndex ?? -1] ?? null,
+             isItemDisabled: this.options.isItemDisabled,
+             setItemSelected: this.options.setItemSelected,
++            setItems: this.options.setItems,
+         }), "f");
+     }
+     async hostConnected() {
+@@ -557,12 +564,17 @@ async function _ComboboxController_init() {
+     if (__classPrivateFieldGet(this, _ComboboxController_lb, "f").isSelected(item)) {
+         text += `, (${__classPrivateFieldGet(this, _ComboboxController_instances, "m", _ComboboxController_translate).call(this, 'selected', langKey)})`;
+     }
+-    if (item.hasAttribute('aria-setsize') && item.hasAttribute('aria-posinset')) {
++    const position = typeof this.options.getItemPosition === 'function'
++        ? this.options.getItemPosition(item, this.items)
++        : null;
++    const posInSet = position?.posInSet ?? (item.hasAttribute('aria-posinset') ? item.getAttribute('aria-posinset') : null);
++    const setSize = position?.setSize ?? (item.hasAttribute('aria-setsize') ? item.getAttribute('aria-setsize') : null);
++    if (posInSet != null && setSize != null) {
+         if (langKey === 'ja') {
+-            text += `, (${item.getAttribute('aria-setsize')} 件中 ${item.getAttribute('aria-posinset')} 件目)`;
++            text += `, (${setSize} 件中 ${posInSet} 件目)`;
+         }
+         else {
+-            text += `, (${item.getAttribute('aria-posinset')} ${__classPrivateFieldGet(this, _ComboboxController_instances, "m", _ComboboxController_translate).call(this, 'of', langKey)} ${item.getAttribute('aria-setsize')})`;
++            text += `, (${posInSet} ${__classPrivateFieldGet(this, _ComboboxController_instances, "m", _ComboboxController_translate).call(this, 'of', langKey)} ${setSize})`;
+         }
+     }
+     __classPrivateFieldGet(_a, _a, "f", _ComboboxController_alert).lang = lang;
+diff --git a/node_modules/@patternfly/pfe-core/controllers/listbox-controller.js b/node_modules/@patternfly/pfe-core/controllers/listbox-controller.js
+index a02b83a..78028c4 100644
+--- a/node_modules/@patternfly/pfe-core/controllers/listbox-controller.js
++++ b/node_modules/@patternfly/pfe-core/controllers/listbox-controller.js
+@@ -102,15 +102,21 @@ export class ListboxController {
+     }
+     /**
+      * register's the host's Item elements as listbox controller items
+-     * sets aria-setsize and aria-posinset on items
++     * sets aria-setsize and aria-posinset on items (unless options.setItems overrides)
+      * @param items items
+      */
+     set items(items) {
+         __classPrivateFieldSet(this, _ListboxController_items, items, "f");
+-        __classPrivateFieldGet(this, _ListboxController_items, "f").forEach((item, index, _items) => {
+-            item.ariaSetSize = _items.length.toString();
+-            item.ariaPosInSet = (index + 1).toString();
+-        });
++        const setItems = __classPrivateFieldGet(this, _ListboxController_options, "f").setItems;
++        if (typeof setItems === 'function') {
++            setItems(items);
++        }
++        else {
++            __classPrivateFieldGet(this, _ListboxController_items, "f").forEach((item, index, _items) => {
++                item.ariaSetSize = _items.length.toString();
++                item.ariaPosInSet = (index + 1).toString();
++            });
++        }
+     }
+     /**
+      * sets the listbox value based on selected options
 diff --git a/node_modules/@patternfly/pfe-core/controllers/roving-tabindex-controller.js b/node_modules/@patternfly/pfe-core/controllers/roving-tabindex-controller.js
 index f0bd33c..8d6c824 100644
 --- a/node_modules/@patternfly/pfe-core/controllers/roving-tabindex-controller.js

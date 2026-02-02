@@ -1,6 +1,7 @@
 import type { IconNameFor, IconSetName } from '@rhds/icons';
 
 import { LitElement, html, isServer, type PropertyValues } from 'lit';
+import { consume } from '@lit/context';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -9,6 +10,8 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
+
+import { selectOptionsContext, type SelectOptionsContext } from './context.js';
 
 import styles from './rh-option.css';
 
@@ -95,6 +98,9 @@ export class RhOption extends LitElement {
     }
   }
 
+  @consume({ context: selectOptionsContext, subscribe: true })
+  private selectContext?: SelectOptionsContext;
+
   #value?: string;
 
   #displayLabel?: string;
@@ -129,6 +135,23 @@ export class RhOption extends LitElement {
   override firstUpdated(changedProperties: PropertyValues<this>): void {
     super.firstUpdated(changedProperties);
     this.#updateDisplayLabel();
+  }
+
+  /**
+   * Set posInSet/setSize via ElementInternals
+   * @param changedProperties - Map of property keys to their previous values
+   * for properties that changed in the last Lit update cycle.
+   */
+  override updated(changedProperties: PropertyValues<this>): void {
+    super.updated(changedProperties);
+    if (isServer || !this.selectContext?.getPosition) {
+      return;
+    }
+    const { posInSet, setSize } = this.selectContext.getPosition(this);
+    if (this.posInSet !== posInSet || this.setSize !== setSize) {
+      this.posInSet = posInSet;
+      this.setSize = setSize;
+    }
   }
 
   /** Update cached display label and trigger re-render when slot content changes */
