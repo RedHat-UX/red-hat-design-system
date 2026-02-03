@@ -11,7 +11,6 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 import { FloatingDOMController } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
 
 import { arraysAreEquivalent } from '@patternfly/pfe-core/functions/arraysAreEquivalent.js';
-import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
 import { RhOption } from './rh-option.js';
