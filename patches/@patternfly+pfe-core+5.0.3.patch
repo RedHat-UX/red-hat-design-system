@@ -19,7 +19,7 @@ index ba9af2b..a2ede6d 100644
          let itemToGainFocus = items.at(index);
          let itemToGainFocusIsFocusable = atFocusableItems.includes(itemToGainFocus);
 diff --git a/node_modules/@patternfly/pfe-core/controllers/combobox-controller.js b/node_modules/@patternfly/pfe-core/controllers/combobox-controller.js
-index 86cfd13..97b9693 100644
+index 86cfd13..9ad774c 100644
 --- a/node_modules/@patternfly/pfe-core/controllers/combobox-controller.js
 +++ b/node_modules/@patternfly/pfe-core/controllers/combobox-controller.js
 @@ -89,6 +89,9 @@ export class ComboboxController {
@@ -45,6 +45,132 @@ index 86cfd13..97b9693 100644
                      __classPrivateFieldGet(this, _ComboboxController_instances, "m", _ComboboxController_hide).call(this);
                  }
              }
+@@ -557,12 +563,14 @@ async function _ComboboxController_init() {
+     if (__classPrivateFieldGet(this, _ComboboxController_lb, "f").isSelected(item)) {
+         text += `, (${__classPrivateFieldGet(this, _ComboboxController_instances, "m", _ComboboxController_translate).call(this, 'selected', langKey)})`;
+     }
+-    if (item.hasAttribute('aria-setsize') && item.hasAttribute('aria-posinset')) {
++    const posInSet = InternalsController.getAriaPosInSet(item);
++    const setSize = InternalsController.getAriaSetSize(item);
++    if (posInSet != null && setSize != null) {
+         if (langKey === 'ja') {
+-            text += `, (${item.getAttribute('aria-setsize')} 件中 ${item.getAttribute('aria-posinset')} 件目)`;
++            text += `, (${setSize} 件中 ${posInSet} 件目)`;
+         }
+         else {
+-            text += `, (${item.getAttribute('aria-posinset')} ${__classPrivateFieldGet(this, _ComboboxController_instances, "m", _ComboboxController_translate).call(this, 'of', langKey)} ${item.getAttribute('aria-setsize')})`;
++            text += `, (${posInSet} ${__classPrivateFieldGet(this, _ComboboxController_instances, "m", _ComboboxController_translate).call(this, 'of', langKey)} ${setSize})`;
+         }
+     }
+     __classPrivateFieldGet(_a, _a, "f", _ComboboxController_alert).lang = lang;
+diff --git a/node_modules/@patternfly/pfe-core/controllers/internals-controller.js b/node_modules/@patternfly/pfe-core/controllers/internals-controller.js
+index d43ca74..5fafdb0 100644
+--- a/node_modules/@patternfly/pfe-core/controllers/internals-controller.js
++++ b/node_modules/@patternfly/pfe-core/controllers/internals-controller.js
+@@ -53,6 +53,60 @@ export class InternalsController {
+     static getLabels(host) {
+         return Array.from(this.instances.get(host)?.internals.labels ?? []);
+     }
++    /**
++     * Set aria-posinset on a listbox item. Uses ElementInternals when the host has
++     * an InternalsController instance; otherwise sets/removes the host attribute.
++     * @param host - The listbox item element
++     * @param value - Position in set (1-based), or null to clear
++     */
++    static setAriaPosInSet(host, value) {
++        const instance = this.instances.get(host);
++        if (instance) {
++            instance.ariaPosInSet = value != null ? String(value) : null;
++        }
++        else if (value != null) {
++            host.setAttribute('aria-posinset', String(value));
++        }
++        else {
++            host.removeAttribute('aria-posinset');
++        }
++    }
++    /**
++     * Set aria-setsize on a listbox item. Uses ElementInternals when the host has
++     * an InternalsController instance; otherwise sets/removes the host attribute.
++     * @param host - The listbox item element
++     * @param value - Total set size, or null to clear
++     */
++    static setAriaSetSize(host, value) {
++        const instance = this.instances.get(host);
++        if (instance) {
++            instance.ariaSetSize = value != null ? String(value) : null;
++        }
++        else if (value != null) {
++            host.setAttribute('aria-setsize', String(value));
++        }
++        else {
++            host.removeAttribute('aria-setsize');
++        }
++    }
++    /**
++     * Get aria-posinset from a listbox item (internals or attribute).
++     * @param host - The listbox item element
++     * @returns The value as string, or null
++     */
++    static getAriaPosInSet(host) {
++        const instance = this.instances.get(host);
++        return instance != null ? instance.ariaPosInSet : host.getAttribute('aria-posinset');
++    }
++    /**
++     * Get aria-setsize from a listbox item (internals or attribute).
++     * @param host - The listbox item element
++     * @returns The value as string, or null
++     */
++    static getAriaSetSize(host) {
++        const instance = this.instances.get(host);
++        return instance != null ? instance.ariaSetSize : host.getAttribute('aria-setsize');
++    }
+     static of(host, options) {
+         constructingAllowed = true;
+         // implement the singleton pattern
+diff --git a/node_modules/@patternfly/pfe-core/controllers/listbox-controller.js b/node_modules/@patternfly/pfe-core/controllers/listbox-controller.js
+index a02b83a..5a07ad6 100644
+--- a/node_modules/@patternfly/pfe-core/controllers/listbox-controller.js
++++ b/node_modules/@patternfly/pfe-core/controllers/listbox-controller.js
+@@ -2,6 +2,7 @@ var _ListboxController_instances, _ListboxController_shiftStartingItem, _Listbox
+ import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
+ import { isServer } from 'lit';
+ import { arraysAreEquivalent } from '../functions/arraysAreEquivalent.js';
++import { InternalsController } from './internals-controller.js';
+ /**
+  * This is the default method for setting the selected state on an item element
+  * @param item the item
+@@ -101,16 +102,12 @@ export class ListboxController {
+         return __classPrivateFieldGet(this, _ListboxController_items, "f");
+     }
+     /**
+-     * register's the host's Item elements as listbox controller items
+-     * sets aria-setsize and aria-posinset on items
++     * register's the host's Item elements as listbox controller items.
++     * aria-setsize and aria-posinset are applied in hostUpdate() via InternalsController.
+      * @param items items
+      */
+     set items(items) {
+         __classPrivateFieldSet(this, _ListboxController_items, items, "f");
+-        __classPrivateFieldGet(this, _ListboxController_items, "f").forEach((item, index, _items) => {
+-            item.ariaSetSize = _items.length.toString();
+-            item.ariaPosInSet = (index + 1).toString();
+-        });
+     }
+     /**
+      * sets the listbox value based on selected options
+@@ -312,6 +309,11 @@ export class ListboxController {
+                 el.addEventListener('keyup', __classPrivateFieldGet(this, _ListboxController_onKeyup, "f"));
+             }
+         }
++        const items = __classPrivateFieldGet(this, _ListboxController_items, "f");
++        items.forEach((item, index) => {
++            InternalsController.setAriaPosInSet(item, index + 1);
++            InternalsController.setAriaSetSize(item, items.length);
++        });
+     }
+     hostUpdated() {
+         if (!__classPrivateFieldGet(this, _ListboxController_listening, "f")) {
 diff --git a/node_modules/@patternfly/pfe-core/controllers/roving-tabindex-controller.js b/node_modules/@patternfly/pfe-core/controllers/roving-tabindex-controller.js
 index f0bd33c..8d6c824 100644
 --- a/node_modules/@patternfly/pfe-core/controllers/roving-tabindex-controller.js

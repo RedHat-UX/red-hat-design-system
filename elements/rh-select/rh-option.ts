@@ -63,38 +63,6 @@ export class RhOption extends LitElement {
   /** Display text for this option; overridden by slotted text content */
   @property({ reflect: true }) label?: string;
 
-  /**
-   * This option's position relative to the other options
-   */
-  set posInSet(posInSet: number | null) {
-    this.#internals.ariaPosInSet = `${Math.max(0, posInSet ?? 0)}`;
-  }
-
-  get posInSet() {
-    const parsed = parseInt(this.#internals.ariaPosInSet ?? '0');
-    return Number.isNaN(parsed) ? null : parsed;
-  }
-
-  /**
-   * Total number of options
-   */
-  set setSize(setSize: number | null) {
-    this.#internals.ariaSetSize = `${Math.max(0, setSize ?? 0)}`;
-  }
-
-  get setSize() {
-    try {
-      const int = parseInt(this.#internals.ariaSetSize ?? '0');
-      if (Number.isNaN(int)) {
-        return 0;
-      } else {
-        return int;
-      }
-    } catch {
-      return 0;
-    }
-  }
-
   #value?: string;
 
   #displayLabel?: string;
