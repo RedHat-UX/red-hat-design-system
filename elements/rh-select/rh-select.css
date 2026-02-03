@@ -83,7 +83,6 @@
         var(--rh-color-gray-30, #c7c7c7),
         var(--rh-color-gray-40, #a3a3a3))
       );
-  border-color: transparent; /* TODO: Double check if this is needed */
 }
 
 #toggle-button {
