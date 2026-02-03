@@ -1,0 +1,6 @@
+rh-option,
+rh-option-group {
+  &:not(:defined) {
+    display: none;
+  }
+}
