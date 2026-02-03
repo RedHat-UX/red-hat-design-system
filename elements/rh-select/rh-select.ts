@@ -5,18 +5,16 @@ import { query } from 'lit/decorators/query.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { provide } from '@lit/context';
-
 import { ComboboxController } from '@patternfly/pfe-core/controllers/combobox-controller.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { FloatingDOMController } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
 
 import { arraysAreEquivalent } from '@patternfly/pfe-core/functions/arraysAreEquivalent.js';
+import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
 import { RhOption } from './rh-option.js';
-import { selectOptionsContext, type SelectOptionsContext } from './context.js';
 import './rh-option-group.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
@@ -161,18 +159,7 @@ export class RhSelect extends LitElement {
     setItemHidden: (item, hidden) => (item.id !== 'placeholder') && void (item.hidden = hidden),
     isItem: item => item instanceof RhOption,
     setItemSelected: (item, selected) => item.selected = selected,
-    // No-op so listbox does not set aria-setsize/aria-posinset on items (we use context + internals).
-    setItems: () => { /* no-op */ },
-    getItemPosition: (item: RhOption, items: RhOption[]) => ({
-      posInSet: items.indexOf(item) + 1,
-      setSize: items.length,
-    }),
-  } as Parameters<typeof ComboboxController.of<RhOption>>[1]);
-
-  @provide({ context: selectOptionsContext })
-  private selectCtx: SelectOptionsContext = {
-    getPosition: () => ({ posInSet: 0, setSize: 0 }),
-  };
+  });
 
   // Type-ahead state for printable character navigation
   #searchString = '';
@@ -200,8 +187,6 @@ export class RhSelect extends LitElement {
       this.#options = newOptions;
       // Sync combobox so keyboard nav sees new options
       this.#combobox.items = this.options;
-
-      this.#updateSelectContext();
     }
   }
 
@@ -243,8 +228,6 @@ export class RhSelect extends LitElement {
         this._placeholder,
         ...Array.from(this.querySelectorAll('rh-option')),
       ].filter((x): x is RhOption => !!x && !x.hidden);
-
-      this.#updateSelectContext();
     }
   }
 
@@ -486,20 +469,6 @@ export class RhSelect extends LitElement {
       this.setAttribute('aria-description', this.helpText ?? '');
     }
     this.#internals.ariaDescribedByElements = [];
-  }
-
-  /**
- * Updates the select options context so rh-option consumers get correct
- * posInSet/setSize via ElementInternals.
- */
-  #updateSelectContext(): void {
-    this.selectCtx = {
-      getPosition: option => ({
-        posInSet: this.#options.indexOf(option as RhOption) + 1,
-        setSize: this.#options.length,
-      }),
-    };
-    this.requestUpdate();
   }
 
   /**
