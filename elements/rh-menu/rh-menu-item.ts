@@ -5,7 +5,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
-import styles from './rh-menu-item.css';
+import styles from './rh-menu-item.css' with { type: 'css' };
 
 /**
  * Menu Dropdown Item

@@ -13,7 +13,7 @@ import { themable } from '@rhds/elements/lib/themable.js';
 
 import { rhJumpLinksOrientationContext } from './context.js';
 
-import style from './rh-jump-links-list.css';
+import style from './rh-jump-links-list.css' with { type: 'css' };
 
 /**
  */

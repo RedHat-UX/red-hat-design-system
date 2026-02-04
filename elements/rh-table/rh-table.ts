@@ -7,7 +7,7 @@ import { RequestSortEvent, RhSortButton } from './rh-sort-button.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-table.css';
+import styles from './rh-table.css' with { type: 'css' };
 
 /**
  * A table is a container for displaying information. It allows a user to scan, examine, and compare large amounts of data.

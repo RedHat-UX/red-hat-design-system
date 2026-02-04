@@ -2,7 +2,7 @@ import { LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import styles from './rh-navigation-secondary-overlay.css';
+import styles from './rh-navigation-secondary-overlay.css' with { type: 'css' };
 
 /**
  * @summary An overlay element to cover content with an opacity when navigation is expanded.
