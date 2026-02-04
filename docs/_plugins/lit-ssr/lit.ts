@@ -1,7 +1,9 @@
 import type { EleventyPage } from '@11ty/eleventy/src/UserConfig.js';
 import type { UserConfig } from '@11ty/eleventy';
 
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile, writeFile, rm } from 'node:fs/promises';
+import { glob } from 'node:fs/promises';
+import { join } from 'node:path';
 
 import { Piscina } from 'piscina';
 import tsBlankSpace from 'ts-blank-space';
@@ -10,6 +12,34 @@ import chalk from 'chalk';
 import { register } from 'node:module';
 import { fileURLToPath } from 'node:url';
 import type { Options } from '#11ty-plugins/rhds.js';
+
+/**
+ * Clean compiled .js files from elements, lib, and uxdot directories to prevent
+ * module resolution conflicts during SSR
+ */
+async function cleanCompiledJs() {
+  const cwd = process.cwd();
+  const dirs: { path: string; pattern: string }[] = [
+    { path: 'elements', pattern: '*/*.js' },
+    { path: 'lib', pattern: '*.js' },
+    { path: 'uxdot', pattern: '*.js' },
+  ];
+
+  for (const { path: dir, pattern } of dirs) {
+    const dirPath = join(cwd, dir);
+    for await (const file of glob(pattern, { cwd: dirPath })) {
+      const jsPath = join(dirPath, file);
+      const tsPath = jsPath.replace(/\.js$/, '.ts');
+      // Only remove .js files that have a corresponding .ts file
+      try {
+        await readFile(tsPath);
+        await rm(jsPath);
+      } catch {
+        // .ts file doesn't exist, keep the .js file
+      }
+    }
+  }
+}
 
 export interface RenderRequestMessage {
   content: string;
@@ -41,20 +71,21 @@ export default async function(
   opts?: Options,
 ) {
   const imports = opts?.componentModules ?? [];
-  const tsconfig = opts?.tsconfig ?? './tsconfig.json';
 
   let pool: Piscina;
 
   // If there are no component modules, we could never have anything to render.
   if (imports?.length) {
     eleventyConfig.on('eleventy.before', async function() {
+      // Clean compiled .js files to prevent module resolution conflicts
+      await cleanCompiledJs();
       await redactTSFileInPlace('./worker.ts');
       const filename = fileURLToPath(new URL('worker.js', import.meta.url));
       pool = new Piscina({
         filename,
+        execArgv: ['--no-experimental-strip-types'],
         workerData: {
           imports,
-          tsconfig,
         },
       });
     });

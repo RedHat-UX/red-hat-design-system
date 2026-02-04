@@ -5,8 +5,7 @@ import type { RenderInfo } from '@lit-labs/ssr';
 export class RHDSSSRController implements ReactiveController {
   isRHDSSSRController = true;
   /** @internal This is experimental and may change at any time without warning */
-  ssrSetup?(renderInfo?: RenderInfo): Promise<unknown>;
-  hostUpdate?(): void;
+  ssrSetup?(renderInfo?: RenderInfo): Promise<void>;
   hostUpdate?(): void;
   constructor(public host: ReactiveElement) {
     host.addController(this);

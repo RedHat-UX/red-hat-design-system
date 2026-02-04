@@ -1,5 +1,11 @@
 # @rhds/elements
 
+## 4.0.2
+### Patch Changes
+
+- e2df873: Updated Lit and other dependencies
+- 184a39a: `<rh-tile>`: decrease font size of compact and checkable Tile headings
+
 ## 4.0.1
 ### Patch Changes
 
