@@ -7,10 +7,13 @@ import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
 import styles from './rh-option.css';
+
+import '@rhds/elements/rh-icon/rh-icon.js';
 
 /**
  * A selectable option within a rh-select dropdown menu. Must be a child of rh-select
@@ -67,6 +70,7 @@ export class RhOption extends LitElement {
 
   #displayLabel?: string;
 
+  #slots = new SlotController(this, null, 'description');
   #internals = InternalsController.of(this, { role: 'option' });
 
   render() {
@@ -80,12 +84,16 @@ export class RhOption extends LitElement {
         </rh-icon>
         <span id="label">
           <!-- Option label (required) -->
-          <slot @slotchange="${this.#onSlotChange}" hidden></slot>
+          <slot @slotchange="${this.#onSlotChange}"
+                ?hidden="${this.#slots.isEmpty(null)}"></slot>
           ${this.displayLabel}
         </span>
-        <rh-icon ?hidden="${!this.selected}" set="microns" icon="checkmark"></rh-icon>
+        <rh-icon icon="checkmark"
+                 set="microns"
+                 ?hidden="${!this.selected}"></rh-icon>
         <!-- Optional option description -->
-        <slot id="description" name="description">${this.description ?? ''}</slot>
+        <slot id="description"
+              name="description">${this.description ?? ''}</slot>
       </div>
     `;
   }
