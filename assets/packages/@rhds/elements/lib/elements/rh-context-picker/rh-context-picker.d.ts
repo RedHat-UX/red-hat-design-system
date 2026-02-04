@@ -11,8 +11,8 @@ export declare class ContextChangeEvent extends Event {
     provider: HTMLElement | null);
 }
 export declare const ColorPaletteListConverter: ComplexAttributeConverter;
-export declare const paletteMap: Map<"light" | "lighter" | "lightest" | "dark" | "darker" | "darkest", Color>;
-export declare const paletteNames: ("light" | "lighter" | "lightest" | "dark" | "darker" | "darkest")[];
+export declare const paletteMap: Map<ColorPalette, Color>;
+export declare const paletteNames: ColorPalette[];
 export declare class RhContextPicker extends LitElement {
     #private;
     static formAssociated: boolean;
@@ -21,7 +21,7 @@ export declare class RhContextPicker extends LitElement {
     /** ID of context element to toggle (same root) */
     target?: string | HTMLElement;
     value: ColorPalette;
-    allow: ("light" | "lighter" | "lightest" | "dark" | "darker" | "darkest")[];
+    allow: ColorPalette[];
     render(): import("lit-html").TemplateResult<1>;
     formStateRestoreCallback(state: string): void;
     firstUpdated(): void;

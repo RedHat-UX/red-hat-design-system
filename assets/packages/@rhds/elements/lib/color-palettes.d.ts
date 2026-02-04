@@ -12,8 +12,7 @@ interface ColorPaletteElement extends ReactiveElement {
  *
  * `ColorPalette` must be associated with the `color-palette` attribute
  */
-export type ColorPalette = typeof Palettes[number];
-declare const Palettes: readonly ["light", "lighter", "lightest", "dark", "darker", "darkest"];
+export type ColorPalette = 'light' | 'lighter' | 'lightest' | 'dark' | 'darker' | 'darkest';
 /**
  * Makes this element a [color scheme provider](https://ux.redhat.com/themeing/color-palettes)
  * Limits the element to the specified color palettes, if provided.

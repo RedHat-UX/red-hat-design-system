@@ -4459,13 +4459,14 @@
 
       <!-- `<dl>` element containing rh-badges in the `<dt>` and legend text in the `<dd>` elements -->
       <!--lit-node 22--><slot name="legend" hidden></slot>
-    <!--/lit-part--></template><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> Spinner <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@rhds/elements/react/rh-spinner/rh-spinner.js"</span><span class="token punctuation">;</span>
+    <!--/lit-part--></template><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> ContextDemo <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@rhds/elements/react/rh-context-demo/rh-context-demo.js"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Spinner <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@rhds/elements/react/rh-spinner/rh-spinner.js"</span><span class="token punctuation">;</span>
 
 <span class="token comment">// NOTE: React 19+ does not require these wrapper imports.</span>
 <span class="token comment">// You can use the custom elements directly as-is.</span>
 
 <span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">Demo</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-context-demo</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ContextDemo</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Spinner</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
       </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">Loading...</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Spinner</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
@@ -4475,7 +4476,7 @@
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Spinner</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sm<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
       </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">Loading...</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Spinner</span></span><span class="token punctuation">&gt;</span></span><span class="token plain-text">
-  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-context-demo</span><span class="token punctuation">&gt;</span></span>
+  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">ContextDemo</span></span><span class="token punctuation">&gt;</span></span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block></uxdot-demo>
         
