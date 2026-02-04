@@ -4,7 +4,7 @@ import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 import { css } from "lit";
 const styles = css `:host,button,rh-icon,rh-tooltip,select{color:inherit}:host,div{display:flex;align-items:center}select{font-size:var(--rh-font-size-code-md,1rem);font-family:var(--rh-font-family-code,RedHatMono,"Red Hat Mono","Courier New",Courier,monospace);appearance:none;line-height:36px;padding:2px 0;border:none;background:#0000}:dir(rtl){text-align:right}button{border:none;background:#0000;height:var(--_button-size,40px);min-width:var(--_button-size,40px);padding:0}button:focus,select:focus{outline:var(--_outline)}button[disabled],select[disabled]{filter:grayscale(1);opacity:.5;cursor:not-allowed;border:none}`;

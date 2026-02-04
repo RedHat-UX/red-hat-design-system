@@ -5,7 +5,7 @@ import { readFile } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { parseFragment, serialize } from 'parse5';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { RHDSSSRController } from '@rhds/elements/lib/ssr-controller.js';
 import * as Tools from '@parse5/tools';
 import { injectSSRHintAttributes } from '#11ty-plugins/ssr-hints.js';

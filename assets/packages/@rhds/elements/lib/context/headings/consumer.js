@@ -1,7 +1,7 @@
 import { context } from './provider.js';
 import { html } from 'lit';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { ContextConsumer } from '@lit/context';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
 /**
  * Determines which heading level immediately precedes the host element,
  * and provides templates for shadow headings.

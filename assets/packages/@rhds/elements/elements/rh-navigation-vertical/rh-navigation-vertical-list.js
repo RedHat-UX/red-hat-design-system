@@ -1,11 +1,11 @@
 var _RhNavigationVerticalList_instances, _a, _RhNavigationVerticalList_internals, _RhNavigationVerticalList_onKeydown, _RhNavigationVerticalList_toggle, _RhNavigationVerticalList_close;
 var RhNavigationVerticalList_1;
 import { __classPrivateFieldGet, __decorate } from "tslib";
-import { LitElement, html, isServer } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
-import { classMap } from 'lit-html/directives/class-map.js';
+import { classMap } from 'lit/directives/class-map.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 import '@rhds/elements/rh-navigation-link/rh-navigation-link.js';
