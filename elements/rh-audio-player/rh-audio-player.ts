@@ -23,9 +23,9 @@ import { RhAudioPlayerSubscribe } from './rh-audio-player-subscribe.js';
 import { RhTranscript } from './rh-transcript.js';
 import { RhAudioPlayerScrollingTextOverflow } from './rh-audio-player-scrolling-text-overflow.js';
 
-import buttonStyles from './rh-audio-player-button.css';
-import rangeStyles from './rh-audio-player-range-styles.css';
-import styles from './rh-audio-player.css';
+import buttonStyles from './rh-audio-player-button.css' with { type: 'css' };
+import rangeStyles from './rh-audio-player-range-styles.css' with { type: 'css' };
+import styles from './rh-audio-player.css' with { type: 'css' };
 
 import '@rhds/elements/rh-surface/rh-surface.js';
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';

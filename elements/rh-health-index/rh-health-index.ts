@@ -7,7 +7,7 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-health-index.css';
+import styles from './rh-health-index.css' with { type: 'css' };
 
 /**
  * Health index displays a health grade (A–F) for a particular item or package.

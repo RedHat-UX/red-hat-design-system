@@ -1,7 +1,6 @@
 import { LitElement, html, isServer, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { classMap } from 'lit-html/directives/class-map.js';
 import { query } from 'lit/decorators/query.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
@@ -13,7 +12,7 @@ import '@rhds/elements/rh-navigation-link/rh-navigation-link.js';
 
 import './rh-navigation-vertical-list.js';
 
-import styles from './rh-navigation-vertical.css';
+import styles from './rh-navigation-vertical.css' with { type: 'css' };
 
 /**
  * A vertical navigation list of top-level and grouped navigation items, typically used in a side navigation pattern.
