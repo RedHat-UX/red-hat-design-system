@@ -7,7 +7,6 @@ import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
-import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
@@ -70,7 +69,6 @@ export class RhOption extends LitElement {
 
   #displayLabel?: string;
 
-  #slots = new SlotController(this, null, 'description');
   #internals = InternalsController.of(this, { role: 'option' });
 
   render() {
@@ -83,10 +81,8 @@ export class RhOption extends LitElement {
                  ?hidden="${!this.icon}">
         </rh-icon>
         <span id="label">
-          <!-- Option label (required) -->
-          <slot @slotchange="${this.#onSlotChange}"
-                ?hidden="${this.#slots.isEmpty(null)}"></slot>
-          ${this.displayLabel}
+          <!-- Option label: slotted content or default displayLabel (label/value attr) for SSR and empty slot -->
+          <slot @slotchange="${this.#onSlotChange}">${this.displayLabel}</slot>
         </span>
         <rh-icon icon="checkmark"
                  set="microns"
