@@ -179,7 +179,7 @@
     }
 
     & rh-icon[icon='menu-bars'] {
-      --rh-icon-size: 18px; /* non standard value for icons-size falls between rh-size-icon-01 and 02 */
+      --rh-icon-size: 18px; /* non standard value icons-size falls between rh-size-icon-01 and 02 */
 
       margin-block: var(--rh-space-xs, 4px);
       color: var(--rh-color-icon-secondary);

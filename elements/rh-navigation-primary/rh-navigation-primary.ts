@@ -315,7 +315,8 @@ export class RhNavigationPrimary extends LitElement {
     } else {
       if (secondaryEventToggle) {
         this.#openSecondaryDropdowns.delete(item);
-        if (this.#openSecondaryDropdowns.size === 0 && (this.compact && !this._hamburgerOpen && !this._linksMenuOpen)) {
+        if (this.#openSecondaryDropdowns.size === 0
+          && (this.compact && !this._hamburgerOpen && !this._linksMenuOpen)) {
           this.#closeOverlay();
         }
       } else {
