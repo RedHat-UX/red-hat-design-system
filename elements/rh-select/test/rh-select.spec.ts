@@ -302,8 +302,7 @@ describe('<rh-select>', function() {
 
         it('moves focus to next option', async function() {
           const snapshot = await a11ySnapshot();
-          // a11y tree reports "one one" due to hidden slot + displayLabel in rh-option template
-          expect(snapshot).axTreeFocusedNode.to.have.axName('one one');
+          expect(snapshot).axTreeFocusedNode.to.have.axName('one');
         });
 
         describe('ArrowDown again', function() {
@@ -312,7 +311,7 @@ describe('<rh-select>', function() {
 
           it('moves focus to next option', async function() {
             const snapshot = await a11ySnapshot();
-            expect(snapshot).axTreeFocusedNode.to.have.axName('two two');
+            expect(snapshot).axTreeFocusedNode.to.have.axName('two');
           });
         });
       });
@@ -327,7 +326,7 @@ describe('<rh-select>', function() {
 
         it('moves focus to previous option', async function() {
           const snapshot = await a11ySnapshot();
-          expect(snapshot).axTreeFocusedNode.to.have.axName('one one');
+          expect(snapshot).axTreeFocusedNode.to.have.axName('one');
         });
       });
 
@@ -351,7 +350,7 @@ describe('<rh-select>', function() {
 
         it('moves focus to last option', async function() {
           const snapshot = await a11ySnapshot();
-          expect(snapshot).axTreeFocusedNode.to.have.axName('five five');
+          expect(snapshot).axTreeFocusedNode.to.have.axName('five');
         });
       });
     });
@@ -576,7 +575,7 @@ describe('<rh-select>', function() {
       await updateComplete();
 
       const snapshot = await a11ySnapshot();
-      expect(snapshot).axTreeFocusedNode.to.have.axName('two two');
+      expect(snapshot).axTreeFocusedNode.to.have.axName('two');
     });
   });
 
@@ -631,7 +630,7 @@ describe('<rh-select>', function() {
 
       expect(element.expanded).to.be.true;
       const snapshot = await a11ySnapshot();
-      expect(snapshot).axTreeFocusedNode.to.have.axName('one one');
+      expect(snapshot).axTreeFocusedNode.to.have.axName('one');
     });
 
     it('selects the focused option when pressing Enter after type-ahead', async function() {
