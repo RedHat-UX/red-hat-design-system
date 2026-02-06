@@ -191,7 +191,7 @@ export class RhNavigationPrimary extends LitElement {
           <details id="hamburger" ?open="${this._hamburgerOpen}" @toggle="${this.#hamburgerToggle}" @focusout="${this.#onHamburgerFocusOut}">
             <summary @blur="${this.#onHamburgerSummaryBlur}">
               <rh-icon icon="menu-bars" set="ui"></rh-icon>
-              <div id="summary">${this.mobileToggleLabel}</div>
+              <div id="summary" class="visually-hidden">${this.mobileToggleLabel}</div>
             </summary>
             <div id="details-content" role="list" >
               <!-- 
@@ -213,6 +213,7 @@ export class RhNavigationPrimary extends LitElement {
             </div>
             <details id="links-menu" ?hidden=${!hasLinks} ?open="${this._linksMenuOpen}" @toggle="${this.#linksMenuToggle}">
               <summary>
+                <div id="links-menu-summary" class="visually-hidden">Explore Red Hat</div>
                 <rh-icon icon="menu-switcher" set="ui"></rh-icon>
               </summary>
               <div id="links-menu-content" role="list">
