@@ -348,7 +348,10 @@ export class RhSelect extends LitElement {
         this.#doExpand();
       } else {
         this.#doCollapse();
-        this._toggleButton?.focus();
+        // Only return focus to the toggle when closing the listbox
+        if (old) {
+          this._toggleButton?.focus();
+        }
       }
     }
   }
