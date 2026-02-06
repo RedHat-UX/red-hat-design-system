@@ -8,7 +8,7 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-blockquote.css';
+import styles from './rh-blockquote.css' with { type: 'css' };
 
 /**
  * A blockquote is styled quote text with an icon and attribution text.
