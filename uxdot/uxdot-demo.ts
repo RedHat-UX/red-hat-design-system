@@ -1,11 +1,9 @@
-import { html } from 'lit-html';
-
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
 import styles from './uxdot-demo.css';
 
-import { isServer, LitElement } from 'lit';
 import type { RhCodeBlock } from 'elements/rh-code-block/rh-code-block.js';
 
 @customElement('uxdot-demo')
@@ -70,6 +68,8 @@ export class UxdotDemo extends LitElement {
           <rh-tabs class="code-tabs" active-index="0">
             <rh-tab slot="tab" active>HTML</rh-tab>
             <rh-tab-panel><slot name="html"></slot></rh-tab-panel>
+            <rh-tab slot="tab">React</rh-tab>
+            <rh-tab-panel><slot name="react"></slot></rh-tab-panel>
             <rh-tab slot="tab">CSS</rh-tab>
             <rh-tab-panel><slot name="css"></slot></rh-tab-panel>
             <rh-tab slot="tab">JS</rh-tab>

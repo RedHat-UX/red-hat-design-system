@@ -11,7 +11,7 @@ import { rhChipGroupSizeCtx } from './context.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-chip.css';
+import styles from './rh-chip.css' with { type: 'css' };
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 import { observes } from '@patternfly/pfe-core/decorators.js';

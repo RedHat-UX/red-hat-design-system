@@ -9,9 +9,9 @@ import { HeadingLevelContextConsumer } from '@rhds/elements/lib/context/headings
 import { HeadingLevelContextProvider } from '@rhds/elements/lib/context/headings/provider.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller-server.js';
 
-import buttonStyles from './rh-audio-player-button.css';
-import panelStyles from './rh-audio-player-panel.css';
-import styles from './rh-transcript.css';
+import buttonStyles from './rh-audio-player-button.css' with { type: 'css' };
+import panelStyles from './rh-audio-player-panel.css' with { type: 'css' };
+import styles from './rh-transcript.css' with { type: 'css' };
 
 import './rh-audio-player-scrolling-text-overflow.js';
 
