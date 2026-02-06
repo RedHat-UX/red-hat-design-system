@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+.hidden {
+  display: none !important;
+}
+
 :host {
   display: block;
   block-size: 100%;
@@ -116,10 +120,8 @@
         border-block-start-color: var(--rh-color-accent-brand);
       }
 
-      & summary {
-        & rh-icon[icon='caret-down'] {
-          rotate: 180deg;
-        }
+      & summary rh-icon[icon='caret-down'] {
+        rotate: 180deg;
       }
     }
 
@@ -151,6 +153,9 @@
   &.dropdown {
     &.hamburger {
       & details {
+        border-inline-start: var(--rh-border-width-lg, 3px) solid transparent;
+        border-inline-end: var(--rh-border-width-sm, 1px) solid transparent;
+
         & summary {
           list-style: none;
           color: var(--rh-color-text-primary) !important;
@@ -175,8 +180,8 @@
         }
 
         &[open] {
-          border-inline-start: var(--rh-border-width-lg, 3px) solid var(--rh-color-accent-brand);
-          border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+          border-inline-start-color: var(--rh-color-accent-brand);
+          border-inline-end-color: var(--rh-color-border-subtle);
 
           & summary {
             & rh-icon[icon='caret-down'] {
@@ -223,44 +228,15 @@
           block-size: max-content;
           inline-size: max-content;
           align-items: center;
-          padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
-          border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
-          border-radius: var(--rh-border-radius-pill, 64px);
+          padding: var(--rh-space-lg, 16px);
+          border-radius: var(--rh-border-radius-default, 3px);
           font-size: var(--rh-font-size-body-text-sm, 0.875rem);
           cursor: pointer;
-
-          &:before {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            z-index: -1;
-            background: transparent;
-            border-radius: inherit;
-          }
 
           &:is(:hover, :focus-visible) {
             background-color:
               light-dark(var(--rh-color-surface-lighter, #f2f2f2),
                 var(--rh-color-surface-darker, #1f1f1f));
-
-            &:before {
-              border: var(--rh-border-width-sm, 1px) solid transparent;
-            }
-          }
-
-          &:is(:active, :active:hover) {
-            &:before {
-              border: var(--rh-border-width-md, 2px) solid transparent;
-            }
-          }
-
-          &:is(:active, :active:hover, :hover, :focus-visible) {
-            &:before {
-              background:
-                linear-gradient(light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-                  var(--rh-color-surface-darker, #1f1f1f)) 0 0) padding-box,
-                conic-gradient(from var(--_gradient-direction), var(--_conic-gradient)) border-box;
-            }
           }
 
           &:is(:focus-visible, :hover:focus-visible) {
@@ -268,19 +244,16 @@
               var(--rh-border-width-md, 2px)
               solid
               var(--rh-color-interactive-primary-default);
-            outline-offset: 3px;
+            outline-offset: 2px;
           }
 
           & #summary-text {
             clip-path: inset(50%);
             overflow: hidden;
             position: absolute;
-
-            @container (min-width: 1680px) {
-              clip-path: none;
-              overflow: none;
-              position: static;
-            }
+            block-size: 1px;
+            inline-size: 1px;
+            white-space: nowrap;
           }
         }
 
@@ -300,23 +273,6 @@
             inline-size: fit-content;
             border-end-end-radius: calc(var(--rh-border-radius-default, 3px) * 2);
             border-end-start-radius: calc(var(--rh-border-radius-default, 3px) * 2);
-          }
-        }
-
-        &[open] {
-          & summary {
-            /* stylelint-disable-next-line no-descending-specificity */
-            &:before {
-              border: var(--rh-border-width-md, 2px) solid transparent;
-              background:
-                linear-gradient(light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-                  var(--rh-color-surface-darker, #1f1f1f)) 0 0) padding-box,
-                conic-gradient(from var(--_gradient-direction), var(--_conic-gradient)) border-box;
-            }
-
-            & rh-icon[icon='caret-down'] {
-              rotate: 180deg;
-            }
           }
         }
       }
@@ -341,6 +297,20 @@
       text-decoration-style: dashed !important;
       text-decoration-skip-ink: auto !important;
       color: var(--rh-color-interactive-primary-hover) !important;
+    }
+
+    &.compact {
+      :not(:host([slot='event'])) & {
+        min-inline-size: 188px;
+        padding-inline-end: var(--rh-space-xl, 24px);
+      }
+    }
+
+    @container navigation-primary (min-width: 1200px) {
+      :not(:host([slot='event'])) & {
+        min-inline-size: unset;
+        padding-inline-end: 0;
+      }
     }
 
     &.hamburger {
@@ -377,16 +347,11 @@
     }
 
     &.standalone {
-      padding-inline:
-        var(--_padding-inline-start, var(--rh-space-md, 8px))
-        var(--_padding-inline-end, var(--rh-space-md, 8px));
-
       & ::slotted(a) {
         font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
         display: inline-flex;
         block-size: auto;
         align-items: center;
-        padding: var(--rh-space-md, 8px) !important;
       }
 
       & ::slotted(a:is(:focus-visible, :hover:focus-visible, :active)) {

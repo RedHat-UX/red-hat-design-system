@@ -75,8 +75,14 @@ export class RhNavigationPrimary extends LitElement {
   @state()
   private _hamburgerOpen = false;
 
+  @state()
+  private _linksMenuOpen = false;
+
   @query('#hamburger')
   private _hamburger!: HTMLDetailsElement;
+
+  @query('#links-menu')
+  private _linksMenu!: HTMLDetailsElement;
 
   @query('summary')
   private _hamburgerSummary!: HTMLElement;
@@ -129,6 +135,10 @@ export class RhNavigationPrimary extends LitElement {
     if (!_isHydrated) {
       this.#hydrated = true;
       this.compact = this.offsetWidth < 1200;
+      // Open links menu at desktop viewport
+      if (!this.compact) {
+        this._linksMenuOpen = true;
+      }
     }
     if (!isServer) {
       if (this._title) {
@@ -182,7 +192,6 @@ export class RhNavigationPrimary extends LitElement {
             <summary @blur="${this.#onHamburgerSummaryBlur}">
               <rh-icon icon="menu-bars" set="ui"></rh-icon>
               <div id="summary">${this.mobileToggleLabel}</div>
-              <rh-icon icon="caret-down" set="microns"></rh-icon>
             </summary>
             <div id="details-content" role="list" >
               <!-- 
@@ -202,16 +211,21 @@ export class RhNavigationPrimary extends LitElement {
               -->
               <slot name="event"></slot>
             </div>
-            <div id="links" role="list" ?hidden=${!hasLinks}>
-              <!--
-                Use this slot for quick links to other sites not directly associated with the page the
-                navigation is on.  Common use cases are developers docs and support. Slot these items using
-                the \`<rh-navigation-primary-item slot="links">\` element. If any other element is slotted 
-                here, it will need to be a role="listitem" to avoid accessibility issues.  Other slotted 
-                elements will also likely have other rendering issues.
-              -->  
-              <slot name="links"></slot>
-            </div>
+            <details id="links-menu" ?hidden=${!hasLinks} ?open="${this._linksMenuOpen}" @toggle="${this.#linksMenuToggle}">
+              <summary>
+                <rh-icon icon="menu-switcher" set="ui"></rh-icon>
+              </summary>
+              <div id="links-menu-content" role="list">
+                <!--
+                  Use this slot for quick links to other sites not directly associated with the page the
+                  navigation is on.  Common use cases are developers docs and support. Slot these items using
+                  the \`<rh-navigation-primary-item slot="links">\` element. If any other element is slotted 
+                  here, it will need to be a role="listitem" to avoid accessibility issues.  Other slotted 
+                  elements will also likely have other rendering issues.
+                -->  
+                <slot name="links"></slot>
+              </div>
+            </details>
                          
             <div id="dropdowns" role="list" ?hidden=${!hasDropdowns}>
               <!--
@@ -250,6 +264,7 @@ export class RhNavigationPrimary extends LitElement {
   #onOverlayClick() {
     this.#closePrimaryDropdowns();
     this.#closeSecondaryDropdowns();
+    this.#closeLinksMenu();
 
     if (this.compact) {
       this.#closeHamburger();
@@ -289,6 +304,7 @@ export class RhNavigationPrimary extends LitElement {
       if (secondaryEventToggle) {
         if (this.compact) {
           this.#closeHamburger();
+          this.#closeLinksMenu();
         }
         this.#openSecondaryDropdowns.add(item);
       } else {
@@ -298,7 +314,7 @@ export class RhNavigationPrimary extends LitElement {
     } else {
       if (secondaryEventToggle) {
         this.#openSecondaryDropdowns.delete(item);
-        if (this.#openSecondaryDropdowns.size === 0 && (this.compact && !this._hamburgerOpen)) {
+        if (this.#openSecondaryDropdowns.size === 0 && (this.compact && !this._hamburgerOpen && !this._linksMenuOpen)) {
           this.#closeOverlay();
         }
       } else {
@@ -430,6 +446,10 @@ export class RhNavigationPrimary extends LitElement {
     if (event instanceof ToggleEvent) {
       if (event.newState === 'open') {
         this.#openHamburger();
+        // close links menu when hamburger opens
+        if (this.compact && this._linksMenuOpen) {
+          this.#closeLinksMenu();
+        }
         // if we are compact mode and any secondary link dropdowns are open, close them
         if (this.compact && this.#openSecondaryDropdowns.size > 0) {
           this.#closeSecondaryDropdowns();
@@ -442,11 +462,54 @@ export class RhNavigationPrimary extends LitElement {
         if (this.#openPrimaryDropdowns.size > 0) {
           this.#closePrimaryDropdowns();
         }
-        if (this.compact && this.#openSecondaryDropdowns.size === 0) {
+        if (this.compact && this.#openSecondaryDropdowns.size === 0 && !this._linksMenuOpen) {
           this.#closeOverlay();
         }
       }
     }
+  }
+
+  #linksMenuToggle(event: Event) {
+    if (event instanceof ToggleEvent) {
+      if (event.newState === 'open') {
+        this.#openLinksMenu();
+        // close hamburger menu when links menu opens
+        if (this.compact && this._hamburgerOpen) {
+          this.#closeHamburger();
+        }
+        // close any open secondary dropdowns when links menu opens
+        if (this.compact && this.#openSecondaryDropdowns.size > 0) {
+          this.#closeSecondaryDropdowns();
+        }
+        // Only open overlay in compact (mobile) mode
+        if (this.compact) {
+          this.#openOverlay();
+        }
+      } else {
+        this.#closeLinksMenu();
+        if (this.compact && this.#openSecondaryDropdowns.size === 0 && !this._hamburgerOpen) {
+          this.#closeOverlay();
+        }
+      }
+    }
+  }
+
+  async #openLinksMenu() {
+    if (!this._linksMenu) {
+      await this.updateComplete;
+    }
+    this._linksMenuOpen = true;
+    this.requestUpdate();
+    await this.updateComplete;
+  }
+
+  async #closeLinksMenu() {
+    if (!this._linksMenu) {
+      await this.updateComplete;
+    }
+    this._linksMenuOpen = false;
+    this.requestUpdate();
+    await this.updateComplete;
   }
 
   @observes('compact')
@@ -454,12 +517,14 @@ export class RhNavigationPrimary extends LitElement {
     // transition into desktop
     if (oldVal && !newVal) {
       this.#openHamburger();
+      this.#openLinksMenu();
     }
     // transition into compact
     if (!oldVal && newVal) {
       if (this.#openPrimaryDropdowns.size === 0) {
         this.#closeHamburger();
       }
+      this.#closeLinksMenu();
     }
   }
 
