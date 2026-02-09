@@ -1,0 +1,14 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-button-group
+name: Button Group
+type: element
+overallStatus: ready
+libraries:
+  figma: ready
+  rhds: ready
+  shared: planned
+  docs: ready
+relatedItems:
+  - rh-button
+  - rh-cta
+  - rh-scheme-toggle

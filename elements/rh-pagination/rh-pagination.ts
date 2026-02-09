@@ -75,8 +75,16 @@ export class RhPagination extends LitElement {
   /** Change pagination size to small */
   @property({ reflect: true }) size: 'sm' | null = null;
 
-  /** "Open" variant */
-  @property({ reflect: true }) variant?: 'open' | null = null;
+  /**
+   * Borderless variant
+   * Note: 'open' will also work, but is deprecated
+   */
+  @property({ reflect: true, converter: {
+    fromAttribute(value: string | null) {
+      // Silent aliasing: convert 'open' to 'borderless'
+      return value === 'open' ? 'borderless' : value as 'borderless' | null;
+    },
+  } }) variant?: 'borderless' | null = null;
 
   @query('input') private input?: HTMLInputElement;
 
