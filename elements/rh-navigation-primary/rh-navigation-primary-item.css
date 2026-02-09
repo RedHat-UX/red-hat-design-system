@@ -247,7 +247,7 @@
             }
           }
 
-          &:is(:active) {
+          &:is(:active, :focus-within) {
             &:after {
               border-block-end-color: var(--rh-color-accent-brand);
             }
