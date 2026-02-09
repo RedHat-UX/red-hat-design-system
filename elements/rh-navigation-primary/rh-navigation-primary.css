@@ -146,7 +146,7 @@
     cursor: pointer;
     display: flex;
     gap: var(--rh-space-md, 8px);
-    block-size: max-content;
+    block-size: 100%;
     inline-size: max-content;
     align-items: center;
     padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
@@ -159,10 +159,23 @@
       display: none;
     }
 
+    &:after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-block-end: 4px solid transparent;
+    }
+
     &:is(:hover, :focus-visible) {
-      background-color:
-        light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-          var(--rh-color-surface-darker, #1f1f1f));
+      &:after {
+        border-block-end-color: var(--rh-color-border-subtle);
+      }
+    }
+
+    &:is(:active) {
+      &:after {
+        border-block-end-color: var(--rh-color-accent-brand);
+      }
     }
 
     &:is(:focus-visible, :hover:focus-visible) {
@@ -188,6 +201,14 @@
 
   & #details-content {
     display: none;
+  }
+
+  &[open] {
+    & summary {
+      &:after {
+        border-block-end-color: var(--rh-color-accent-brand);
+      }
+    }
   }
 
   &:not([open]) {
@@ -254,12 +275,14 @@
     }
 
     & summary {
+      position: relative;
       cursor: pointer;
       list-style: none;
       display: flex;
       align-items: center;
       padding: var(--rh-space-lg, 16px);
       border-radius: var(--rh-border-radius-default, 3px);
+      block-size: 100%;
 
       @container navigation-primary (min-width: 1200px) {
         display: none;
@@ -270,10 +293,23 @@
         display: none;
       }
 
+      &:after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-block-end: 4px solid transparent;
+      }
+
       &:is(:hover, :focus-visible) {
-        background-color:
-          light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-            var(--rh-color-surface-darker, #1f1f1f));
+        &:after {
+          border-block-end-color: var(--rh-color-border-subtle);
+        }
+      }
+
+      &:is(:active) {
+        &:after {
+          border-block-end-color: var(--rh-color-accent-brand);
+        }
       }
 
       &:is(:focus-visible, :hover:focus-visible) {
@@ -296,6 +332,12 @@
     }
 
     &[open] {
+      & summary {
+        &:after {
+          border-block-end-color: var(--rh-color-accent-brand);
+        }
+      }
+
       & #links-menu-content {
         position: absolute;
         z-index: var(--_nav-container-z-index);
@@ -349,11 +391,7 @@
   #dropdowns {
     display: flex;
     flex-direction: row;
-    gap: 2px;
-
-    @container navigation-primary (min-width: 1200px) {
-      padding-inline-start: var(--rh-space-md, 8px);
-    }
+    block-size: 100%;
   }
 }
 
