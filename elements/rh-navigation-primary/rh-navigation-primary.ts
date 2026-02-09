@@ -105,6 +105,10 @@ export class RhNavigationPrimary extends LitElement {
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel = 'Main navigation';
 
+  /**
+   * Indicates if the navigation is a subdomain variation
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'sub-domain' }) subDomain = false;
 
   constructor() {
     super();
@@ -123,6 +127,10 @@ export class RhNavigationPrimary extends LitElement {
               && this.#openSecondaryDropdowns.size === 0 && !this.compact) {
               this.#closeOverlay();
             }
+          }
+          // Close links menu when viewport goes below 456px (where it's hidden via CSS)
+          if (contentBoxSize.inlineSize < 456 && this._linksMenuOpen) {
+            this.#closeLinksMenu();
           }
         }
       });
@@ -166,6 +174,7 @@ export class RhNavigationPrimary extends LitElement {
     const classes = {
       compact,
       dehydrated: !this.#hydrated,
+      subdomain: this.subDomain,
     };
     const hasEvent = this.#slots.hasSlotted('event');
     const hasLinks = this.#slots.hasSlotted('links');
@@ -188,6 +197,7 @@ export class RhNavigationPrimary extends LitElement {
               </a>
             </slot>
           </div>
+          <div id="sub-domain"><slot name="sub-domain"></slot></div>
           <details id="hamburger" ?open="${this._hamburgerOpen}" @toggle="${this.#hamburgerToggle}" @focusout="${this.#onHamburgerFocusOut}">
             <summary @blur="${this.#onHamburgerSummaryBlur}">
               <rh-icon icon="menu-bars" set="ui"></rh-icon>
