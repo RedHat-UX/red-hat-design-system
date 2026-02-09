@@ -265,10 +265,10 @@ export class RhNavigationPrimary extends LitElement {
   #onOverlayClick() {
     this.#closePrimaryDropdowns();
     this.#closeSecondaryDropdowns();
-    this.#closeLinksMenu();
 
     if (this.compact) {
       this.#closeHamburger();
+      this.#closeLinksMenu();
     }
 
     this.#closeOverlay();
