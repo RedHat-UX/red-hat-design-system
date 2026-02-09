@@ -457,9 +457,6 @@
         block-size: 100%;
         place-items: center;
         text-decoration: none;
-      }
-
-      & ::slotted(a:visited) {
         color: var(--rh-color-text-primary) !important;
       }
     }
