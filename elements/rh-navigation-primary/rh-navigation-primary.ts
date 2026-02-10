@@ -96,6 +96,11 @@ export class RhNavigationPrimary extends LitElement {
    */
   @property({ attribute: 'mobile-toggle-label' }) mobileToggleLabel = 'Menu';
 
+  /**
+   * Sets the mobile links toggle (bento box) text, used for translations, defaults to 'Explore Red Hat'
+   */
+  @property({ attribute: 'mobile-links-toggle-label' }) mobileLinksToggleLabel = 'Explore Red Hat';
+
   /** Sets color context for child components, overrides parent context */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: NavigationPrimaryPalette;
 
@@ -238,7 +243,7 @@ export class RhNavigationPrimary extends LitElement {
             </div>
             <details id="links-menu" ?hidden=${!hasLinks} ?open="${this._linksMenuOpen}" @toggle="${this.#linksMenuToggle}">
               <summary>
-                <div id="links-menu-summary" class="visually-hidden">Explore Red Hat</div>
+                <div id="links-menu-summary" class="visually-hidden">${this.mobileLinksToggleLabel}</div>
                 <rh-icon icon="menu-switcher" set="ui"></rh-icon>
               </summary>
               <div id="links-menu-content" role="list">
