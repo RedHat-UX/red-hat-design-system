@@ -318,7 +318,7 @@ export class RhSelect extends LitElement {
   }
 
   override updated() {
-    this.#setAriaLabelledby();
+    this.#syncToggleAccessibleName();
     this.#removeListboxAriaLabelledby();
   }
 
@@ -413,13 +413,99 @@ export class RhSelect extends LitElement {
   }
 
   /**
-   * Sets aria-labelledby attribute on toggle button
+   * Resolved label for the toggle button's accessible name.
+   * Order: author (aria-label, aria-labelledby) → associated <label>'s → accessible-label → placeholder → fallback.
+   * Returns a single string so we can always set aria-label on the button (avoids cross-root
+   * issues with ariaLabelledByElements when the label is in light DOM and the button is in shadow).
    */
-  #setAriaLabelledby() {
-    const btn = this._toggleButton;
-    if (btn && btn.getAttribute('aria-labelledby') === '') {
-      btn.setAttribute('aria-labelledby', 'toggle-text');
+  #getResolvedToggleLabelText(): string {
+    const host = this as HTMLElement;
+
+    const authorAriaLabel = host.getAttribute?.('aria-label')?.trim();
+    if (authorAriaLabel) {
+      return authorAriaLabel;
     }
+
+    const authorLabelledBy = host.ariaLabelledByElements;
+    if (authorLabelledBy?.length) {
+      return this.#getLabelTextFromElements([...authorLabelledBy]);
+    }
+
+    const associatedLabels = InternalsController.getLabels(this);
+    if (associatedLabels?.length) {
+      return this.#getLabelTextFromElements(associatedLabels);
+    }
+
+    if (this.accessibleLabel?.trim()) {
+      return this.accessibleLabel.trim();
+    }
+
+    // Placeholder for labelling: attribute then slot content only (not first-option fallback).
+    const placeholderForLabel =
+      this.placeholder?.trim()
+      || this.#slots.getSlotted('placeholder').map(x => x.textContent ?? '').join(' ').trim();
+    if (placeholderForLabel) {
+      return placeholderForLabel;
+    }
+
+    return 'Select a value';
+  }
+
+  /**
+   * Returns text from an element using only its direct text-node children.
+   * Skips all element nodes (no descent into children). Use for wrapping labels
+   * so we don't include the control's content (e.g. option text) in the label.
+   * @param element - The element to get text from (e.g. a <label>).
+   */
+  #getTextWithoutDescendantElements(element: Element): string {
+    let text = '';
+    for (const node of element.childNodes) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        text += node.textContent ?? '';
+      }
+    }
+    return text.trim();
+  }
+
+  /**
+   * Concatenates visible text from label elements (e.g. for author aria-labelledby).
+   * @param elements - Label elements to derive text from (aria-label or textContent).
+   */
+  #getLabelTextFromElements(elements: Element[]): string {
+    return elements
+        .map((el: Element) => {
+          if (!(el instanceof HTMLElement) || el.hidden) {
+            return '';
+          }
+          const ariaLabel = el.getAttribute?.('aria-label');
+          if (ariaLabel) {
+            return ariaLabel.trim();
+          }
+          // When the label wraps the host, use only direct text nodes and skip elements.
+          if (el.contains(this)) {
+            return this.#getTextWithoutDescendantElements(el);
+          }
+          return (el.textContent ?? '').trim();
+        })
+        .filter(Boolean)
+        .join(' ')
+        .trim() || '';
+  }
+
+  /**
+   * Applies the resolved label to the toggle button so the combobox has the correct
+   * accessible name (per APG). We always set aria-label so the name is discernible
+   * Overrides any empty aria-labelledby attributes incorrectly set by the controller.
+   */
+  #syncToggleAccessibleName() {
+    const btn = this._toggleButton;
+    if (!btn) {
+      return;
+    }
+
+    const labelText = this.#getResolvedToggleLabelText();
+    btn.ariaLabel = labelText;
+    btn.removeAttribute('aria-labelledby');
   }
 
   /**
