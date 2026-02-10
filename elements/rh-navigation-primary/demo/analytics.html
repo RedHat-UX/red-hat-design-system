@@ -1,6 +1,8 @@
 <rh-navigation-primary role="navigation"
                       sub-domain
-                      logo-href="#hat-link">
+                      logo-href="#hat-link"
+                      data-analytics-linktype="href"
+                      data-analytics-text="Red Hat Homepage">
   <a href="#customer-portal" slot="sub-domain">Custo<wbr>mer Portal</a>
   <rh-navigation-primary-item variant="dropdown">
     <span slot="summary">AI</span>
@@ -332,20 +334,38 @@
 </rh-navigation-primary>
 
 <div id="mock">
-  <p>Mock Page content <a href="#">Link outside</a></p>
+  <h2>Last CTA Analytics Event</h2>
+  <p>Click hat logo to capture analytics event.</p>
+  <json-viewer>{}</json-viewer>
 </div>
+
+
 
 <link rel="stylesheet" href="../rh-navigation-primary-lightdom.css">
 
 <style>
+  /* styles for json-viewer */
+  json-viewer {
+    --json-viewer-background: white;
+    --json-viewer-boolean-color: #f76707;
+    --json-viewer-color: black;
+    --json-viewer-key-color: #f76707;
+    --json-viewer-null-color: Light #e03131;
+    --json-viewer-number-color: #0ca678;
+    --json-viewer-string-color: #0c8599;
+  }
+
   /* styles for mock content */
   #mock {
-    p {
-      margin-block-start: var(--rh-space-4xl, 64px);
-      padding-inline: var(--rh-space-lg, 16px);
-      @media (min-width: 768px) {
-        padding-inline: var(--rh-space-2xl, 32px);
-      }
+    padding: var(--rh-space-2xl, 32px) var(--rh-space-lg, 16px);
+    margin: 0 auto;
+
+    @media (min-width: 576px) {
+      padding-inline: var(--rh-space-2xl, 32px);
+    }
+
+    h2 {
+      font-size: var(--rh-font-size-heading-sm, 1.5rem);
     }
   }
 
@@ -435,4 +455,23 @@
   import '@rhds/elements/rh-navigation-primary/rh-navigation-primary.js';
   import '@rhds/elements/rh-avatar/rh-avatar.js';
   import '@rhds/elements/rh-button/rh-button.js';
+  import 'https://ga.jspm.io/npm:@power-elements/json-viewer@2.1.1/json-viewer.js';
+
+
+  document.addEventListener('click', function(event) {
+    const data = event.composedPath().reduceRight((acc, node) => {
+      if (node instanceof HTMLElement) {
+        for (const [datakey, value] of Object.entries(node.dataset)) {
+          if (datakey.startsWith('analytics')) {
+            const key = datakey.replace(/^analytics(.)/, (_, m) => m.toLowerCase());
+            acc[key] = `${acc[key] ?? ''}|${value}`.replace(/^\|/,'');
+          }
+        }
+      }
+      return acc;
+    }, {});
+    if (data.linktype === 'href') {
+      document.querySelector('json-viewer').object = data;
+    }
+  });
 </script>
