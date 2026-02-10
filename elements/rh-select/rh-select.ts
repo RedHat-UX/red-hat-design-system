@@ -398,11 +398,13 @@ export class RhSelect extends LitElement {
   }
 
   #computePlaceholderText() {
+    const slotInShadow = this.shadowRoot?.querySelector?.<HTMLSlotElement>(
+      'slot[name="placeholder"]'
+    );
+    const assigned = slotInShadow?.assignedNodes?.() ?? [];
+    const slotText = assigned.map(n => (n as Text | HTMLElement).textContent ?? '').join('').trim();
     return this.placeholder
-      || this.querySelector?.<HTMLSlotElement>('[slot=placeholder]')
-          ?.assignedNodes()
-          ?.reduce((acc, node) => `${acc}${node.textContent}`, '')
-          ?.trim()
+      || slotText
       || this.#combobox.items
           .filter(this.#isNotPlaceholderOption)
           .at(0)
