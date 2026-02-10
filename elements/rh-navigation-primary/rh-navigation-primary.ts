@@ -106,13 +106,15 @@ export class RhNavigationPrimary extends LitElement {
   @property({ attribute: 'accessible-label' }) accessibleLabel = 'Main navigation';
 
   /**
-   * Indicates if the navigation is a subdomain variation
+   * Indicates if the navigation is a subdomain variation.
+   * Defaults to false.
    */
   @property({ type: Boolean, reflect: true, attribute: 'sub-domain' }) subDomain = false;
 
 
   /**
-   * The link for the logo
+   * The link for the logo.
+   * Defaults to "/" if no value is set.
    */
   @property({ attribute: 'logo-href' }) logoHref = '/';
 
