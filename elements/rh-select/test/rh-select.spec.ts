@@ -725,6 +725,46 @@ describe('<rh-select>', function() {
   });
 
   describe('accessible label sources', function() {
+    it('uses associated label (for/id) as combobox name', async function() {
+      const container = await createFixture<HTMLDivElement>(html`
+        <div>
+          <label for="select-products">Products</label>
+          <rh-select id="select-products" placeholder="Select an item">
+            <rh-option>One</rh-option>
+            <rh-option>Two</rh-option>
+          </rh-select>
+        </div>
+      `);
+      const element = container.querySelector('rh-select')!;
+      await element.updateComplete;
+
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.axContainQuery({
+        role: 'combobox',
+        name: 'Products',
+      });
+    });
+
+    it('uses wrapping label as combobox name', async function() {
+      const container = await createFixture<HTMLDivElement>(html`
+        <div>
+          <label>
+            Country
+            <rh-select id="sel-wrap" placeholder="Choose">
+              <rh-option>Canada</rh-option>
+              <rh-option>USA</rh-option>
+            </rh-select>
+          </label>
+        </div>
+      `);
+      const element = container.querySelector('rh-select')!;
+      await element.updateComplete;
+
+      const snapshot = await a11ySnapshot();
+      const comboboxNode = querySnapshot(snapshot, { role: 'combobox' });
+      expect(comboboxNode?.name?.trim()).to.equal('Country');
+    });
+
     it('uses accessible-label attribute', async function() {
       const container = await createFixture<HTMLDivElement>(html`
         <div>
@@ -760,6 +800,45 @@ describe('<rh-select>', function() {
       expect(snapshot).to.axContainQuery({
         role: 'combobox',
         name: 'Select something',
+      });
+    });
+
+    it('uses fallback "Select a value" when no label or placeholder', async function() {
+      const container = await createFixture<HTMLDivElement>(html`
+        <div>
+          <rh-select>
+            <rh-option>Alpha</rh-option>
+            <rh-option>Beta</rh-option>
+          </rh-select>
+        </div>
+      `);
+      const element = container.querySelector('rh-select')!;
+      await element.updateComplete;
+
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.axContainQuery({
+        role: 'combobox',
+        name: 'Select a value',
+      });
+    });
+
+    it('uses author aria-label when set on host', async function() {
+      const container = await createFixture<HTMLDivElement>(html`
+        <div>
+          <label for="sel-aria">Visible label</label>
+          <rh-select id="sel-aria" aria-label="Custom label" placeholder="Select">
+            <rh-option>First</rh-option>
+            <rh-option>Second</rh-option>
+          </rh-select>
+        </div>
+      `);
+      const element = container.querySelector('rh-select')!;
+      await element.updateComplete;
+
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.axContainQuery({
+        role: 'combobox',
+        name: 'Custom label',
       });
     });
   });
