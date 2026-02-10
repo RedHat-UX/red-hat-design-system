@@ -43,9 +43,9 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.5/core.js",
     "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
     "lit-html/": "/assets/packages/lit-html/",
@@ -4134,7 +4134,7 @@ when the active page is within a dropdown menu.</p>
                   </td>
                   <td><code>colorPalette</code></td>
                   <td><p>Color palette dark | lighter (default: lighter)</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts">ColorPalette</code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'light'</span> <span class="token operator">|</span> <span class="token string">'lighter'</span> <span class="token operator">|</span> <span class="token string">'lightest'</span> <span class="token operator">|</span> <span class="token string">'dark'</span> <span class="token operator">|</span> <span class="token string">'darker'</span> <span class="token operator">|</span> <span class="token string">'darkest'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'lighter'</span></code></pre></td>
                 </tr>
                 <tr>
@@ -8905,7 +8905,7 @@ view.</p></td>
         <rh-badge state="neutral"><template shadowroot="open" shadowrootmode="open"><style>span,slot{white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px));color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));justify-content:center;align-items:center;position:relative}:is(span,slot).neutral{background-color:var(--rh-color-status-neutral)}:is(span,slot).info{background-color:var(--rh-color-status-info)}:is(span,slot).success{background-color:var(--rh-color-status-success)}:is(span,slot).caution{background-color:var(--rh-color-status-caution);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).warning{background-color:var(--rh-color-status-warning);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).danger{background-color:var(--rh-color-status-danger)}span:empty{display:none}slot{display:inline-flex}:host([number]) slot{display:none}:host([number]) span{display:inline-flex}</style><!--lit-part hqKOHqwbWgk=-->
       <!--lit-node 0--><span class=" neutral "><!--lit-part--><!--/lit-part--></span>
       <!--lit-node 2--><slot class=" neutral "></slot>
-    <!--/lit-part--></template>2</rh-badge>
+    <!--/lit-part--></template>3</rh-badge>
         
       </rh-accordion-header>
       <rh-accordion-panel role="region"><template shadowroot="open" shadowrootmode="open"><style>:host{will-change:height;--_panel-body-padding-block-start:var(--rh-space-lg,16px);--_panel-body-padding-inline-end:var(--rh-space-xl,24px);--_panel-body-padding-block-end:var(--rh-space-lg,16px);--_panel-body-padding-inline-start:var(--rh-space-xl,24px);display:none;overflow:hidden}::slotted(:not(rh-accordion)){margin:unset;background-color:#0000;display:block}:host ::slotted(:not(:first-child)){padding-block-start:var(--rh-space-xl,24px)}.large{--_panel-body-padding-block-start:var(--rh-space-xl,24px);--_panel-body-padding-inline-end:var(--rh-space-xl,24px);--_panel-body-padding-block-end:var(--rh-space-xl,24px);--_panel-body-padding-inline-start:var(--rh-space-xl,24px)}.body{padding:var(--_panel-body-padding-block-start,var(--rh-space-md,8px)) var(--_panel-body-padding-inline-end,var(--rh-space-lg,16px)) var(--_panel-body-padding-block-end,var(--rh-space-md,8px)) var(--_panel-body-padding-inline-start,var(--rh-space-lg,16px));display:block;position:relative;overflow:hidden}:host([fixed]){max-height:9.375rem;overflow-y:auto}:host([expanded]){position:unset;display:block;position:relative}#container{border-inline-end:1px solid var(--rh-color-border-subtle);background-color:var(--_accordion-background)}.body:after{content:"";width:var(--rh-border-width-lg,3px);background-color:var(--rh-color-accent-brand);top:0;bottom:0;left:0;position:absolute;inset-block:0;inset-inline-start:0}.content{color:var(--rh-color-text-primary);font-size:var(--_panel-font-size)}</style><!--lit-part s0BvwfcQgSI=-->
@@ -8972,7 +8972,7 @@ view.</p></td>
                   <td><code>colorPalette</code></td>
                   <td><p>Color palette (default: lightest)
 Secondary nav menus are always represented on the lightest color palette.</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts">ColorPalette</code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'light'</span> <span class="token operator">|</span> <span class="token string">'lighter'</span> <span class="token operator">|</span> <span class="token string">'lightest'</span> <span class="token operator">|</span> <span class="token string">'dark'</span> <span class="token operator">|</span> <span class="token string">'darker'</span> <span class="token operator">|</span> <span class="token string">'darkest'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'lightest'</span></code></pre></td>
                 </tr>
                 <tr>
@@ -9007,6 +9007,38 @@ Secondary nav menus are always represented on the lightest color palette.</p></t
 Secondary nav menus by default are always full-width, but can be set to fixed-width for special cases.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'fixed-width'</span> <span class="token operator">|</span> <span class="token string">'full-width'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'full-width'</span></code></pre></td>
+                </tr>
+                <tr>
+                  <td>
+                    <uxdot-copy-permalink><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;margin-block-end:var(--rh-space-lg);display:flex}#signifier{display:var(--perma-signifier-display,none)}#button{border-radius:var(--rh-border-radius-default);background:0 0;border:none;align-items:center;height:1.75rem;display:none}#button:is(:hover,:focus){background:var(--uxdot-copy-permalink-button-background,light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark)));color:var(--rh-color-text-primary)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){color:inherit;text-decoration:inherit;align-items:center;display:flex;margin-block-end:0!important}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part 5v6yQu9Xxog=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19.204 12.793c1.417 1.417 2.198 3.3 2.198 5.302s-.781 3.884-2.198 5.302l-5.398 5.41C12.378 30.223 10.494 31 8.497 31s-3.88-.778-5.304-2.19C.274 25.88.274 21.12 3.189 18.194l2.912-2.903a1 1 0 1 1 1.412 1.417l-2.91 2.9c-2.137 2.145-2.137 5.639.002 7.786a5.5 5.5 0 0 0 3.892 1.605c1.465 0 2.85-.572 3.896-1.61l5.396-5.407c1.04-1.04 1.613-2.421 1.613-3.888s-.573-2.849-1.612-3.888a5.356 5.356 0 0 0-1.267-.946 1 1 0 0 1 .947-1.762c.63.338 1.214.774 1.733 1.294Zm9.603-9.603C27.383 1.778 25.499 1 23.503 1s-3.881.778-5.309 2.193l-5.398 5.41c-1.417 1.417-2.198 3.3-2.198 5.302s.781 3.885 2.198 5.302c.52.52 1.104.956 1.733 1.294a1.001 1.001 0 0 0 .948-1.762 5.356 5.356 0 0 1-1.267-.946c-1.039-1.04-1.612-2.42-1.612-3.888s.573-2.848 1.613-3.888l5.396-5.407C20.654 3.572 22.038 3 23.503 3s2.849.572 3.892 1.605c2.139 2.147 2.139 5.642.002 7.786l-2.91 2.9a1 1 0 1 0 1.412 1.417l2.912-2.903c2.915-2.925 2.915-7.686-.004-10.616Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+                      <span id="rh-navigation-secondary-menu-attributes-visible">
+                        <a href="#rh-navigation-secondary-menu-attributes-visible">
+                          <code>visible</code>
+                        </a>
+                      </span>
+                    </uxdot-copy-permalink>
+                  </td>
+                  <td><code>visible</code></td>
+                  <td><p><code>visible</code> toggles on click (default: false)</p></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span></code></pre></td>
                 </tr>
               </tbody>
             </table>
