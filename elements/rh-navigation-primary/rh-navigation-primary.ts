@@ -203,7 +203,14 @@ export class RhNavigationPrimary extends LitElement {
               </a>
             </slot>
           </div>
-          <div id="sub-domain"><slot name="sub-domain"></slot></div>
+          <div id="sub-domain">
+            <!--
+              Use this slot to provide a sub-domain label, usually as a link or text.
+              A common pattern is: <a slot="sub-domain" href="...">Your Sub-domain</a>
+              This slot is typically used for navigation to different sub-sites or areas.
+            -->
+            <slot name="sub-domain"></slot>
+          </div>
           <details id="hamburger" ?open="${this._hamburgerOpen}" @toggle="${this.#hamburgerToggle}" @focusout="${this.#onHamburgerFocusOut}">
             <summary @blur="${this.#onHamburgerSummaryBlur}">
               <rh-icon icon="menu-bars" set="ui"></rh-icon>
