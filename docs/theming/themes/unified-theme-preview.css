@@ -1,0 +1,18 @@
+:root {
+  --unified-size-icon-00: 14px;
+  --unified-border-radius-default: var(--rh-border-radius-pill, 64px);
+  --unified-button-padding-block: var(--rh-space-md, 8px);
+  --unified-button-padding-inline: var(--rh-space-xl, 24px);
+}
+
+rh-button {
+  --rh-border-radius-default: var(--unified-border-radius-default);
+  --rh-space-sm: var(--unified-button-padding-block);
+  --rh-space-lg: var(--unified-button-padding-inline);
+
+  &::part(icon) {
+    display: flex;
+    width: var(--unified-size-icon-00);
+    height: var(--unified-size-icon-00);
+  }
+}

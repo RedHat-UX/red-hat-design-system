@@ -2,7 +2,9 @@
 title: Color Palettes
 bodyClasses: element-docs
 layout: layouts/pages/has-toc.njk
-order: 2
+order: 30
+tags:
+  - theming
 ---
 
 <link rel="stylesheet"

@@ -303,8 +303,21 @@ export default async function(
   });
 
   eleventyConfig.addCollection('sortedDesigners', async function(collectionApi) {
-    const developersCollection = collectionApi.getFilteredByTags('designers');
-    return developersCollection.sort((a, b) => {
+    const designersCollection = collectionApi.getFilteredByTags('designers');
+    return designersCollection.sort((a, b) => {
+      if (a.data.order > b.data.order) {
+        return 1;
+      } else if (a.data.order < b.data.order) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
+  });
+
+  eleventyConfig.addCollection('sortedThemes', async function(collectionApi) {
+    const themesCollection = collectionApi.getFilteredByTags('themes');
+    return themesCollection.sort((a, b) => {
       if (a.data.order > b.data.order) {
         return 1;
       } else if (a.data.order < b.data.order) {
