@@ -191,7 +191,7 @@ export class RhNavigationPrimary extends LitElement {
       <div id="container" class="${classMap(classes)}">
         <div id="bar">
           <div id="logo">
-            <!-- Use this slot to override the link and logo image for translations and sub sites. -->
+            <!-- Use this slot to override the link and logo image, overriding this slot contents will cause the logo-href attribute to no longer function -->
             <slot name="logo">
               <a href="${this.logoHref}">
                 <svg preserveAspectRatio="xMinYMid slice" viewBox="0 0 613 145">
