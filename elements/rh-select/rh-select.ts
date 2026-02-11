@@ -75,11 +75,24 @@ export class RhSelect extends LitElement {
   @property({ type: Boolean, reflect: true }) expanded = false;
 
   /**
+   * When true, the user must select an option with a non-empty value before the
+   * form can be submitted. Syncs to aria-required and constraint validation so
+   * the browser can show "Please fill out this field" when the value is empty.
+   */
+  @property({ type: Boolean, reflect: true }) required = false;
+
+  /**
    * Current form value representing the selected option's value attribute.
    * Updates automatically when selection changes. Use for form submission
    * and programmatic value access.
    */
   @property() value?: string;
+
+  /**
+   * Form control name. Submitted with the form as the key for this control's
+   * value in FormData. Reflects to the name attribute.
+   */
+  @property({ reflect: true }) name?: string;
 
   /**
    * Placeholder text displayed when no option is selected.
@@ -336,6 +349,26 @@ export class RhSelect extends LitElement {
     this.disabled = disabled;
   }
 
+  /**
+   * Returns true if the element's value passes constraint validation.
+   * Participates in the Constraint Validation API; updates validity state
+   * before checking.
+   */
+  checkValidity(): boolean {
+    this.#updateValidity();
+    return this.#internals.checkValidity();
+  }
+
+  /**
+   * Returns true if the element's value passes constraint validation.
+   * If invalid, reports the problem (e.g. browser "Please fill out this field")
+   * and returns false. Participates in the Constraint Validation API.
+   */
+  reportValidity(): boolean {
+    this.#updateValidity();
+    return this.#internals.reportValidity();
+  }
+
   @observes('disabled')
   private disabledChanged() {
     this.#combobox.disabled = this.disabled;
@@ -367,6 +400,12 @@ export class RhSelect extends LitElement {
   private valueChanged() {
     this.#internals.setFormValue(this.value ?? '');
     this.dispatchEvent(new RhSelectChangeEvent());
+    this.#updateValidity();
+  }
+
+  @observes('required')
+  private requiredChanged() {
+    this.#updateValidity();
   }
 
   async #doExpand() {
@@ -515,6 +554,25 @@ export class RhSelect extends LitElement {
     const listbox = this._listbox;
     if (listbox && listbox.getAttribute('aria-labelledby') === '') {
       listbox.removeAttribute('aria-labelledby');
+    }
+  }
+
+  /**
+   * Syncs ElementInternals ariaRequired and constraint validity with the
+   * required property and current value. When required is true and value is
+   * empty, marks the control invalid with valueMissing so the browser can
+   * show "Please fill out this field" on reportValidity() or form submit.
+   */
+  #updateValidity() {
+    this.#internals.ariaRequired = this.required ? 'true' : 'false';
+    const valueIsEmpty = this.value === undefined || this.value === '';
+    if (this.required && valueIsEmpty) {
+      this.#internals.setValidity(
+        { valueMissing: true },
+        'Please fill out this field.'
+      );
+    } else {
+      this.#internals.setValidity({});
     }
   }
 

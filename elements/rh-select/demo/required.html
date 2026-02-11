@@ -1,0 +1,39 @@
+<form>
+  <label for="my-select">
+    Products
+  </label>
+  <rh-select required id="my-select" name="products" placeholder="Select an item">
+    <rh-option>Device Edge</rh-option>
+    <rh-option>JBoss Web Server</rh-option>
+    <rh-option>OpenShift</rh-option>
+    <rh-option disabled>Red Hat Lightspeed</rh-option>
+    <rh-option>Quay</rh-option>
+  </rh-select>
+  <button type="submit">Submit</button>
+</form>
+
+<link rel="stylesheet" href="../rh-select-lightdom-shim.css">
+
+<script type="module">
+  import '@rhds/elements/rh-select/rh-select.js';
+</script>
+
+<style>
+  label,
+  rh-select,
+  button {
+    margin-inline: 20px;
+    max-inline-size: 320px;
+  }
+
+  label {
+    display: block;
+    font-family: var(--rh-font-family-body-text);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    margin-block: var(--rh-space-md, 8px);
+  }
+
+  button {
+    margin-block-start: var(--rh-space-md, 8px);
+  }
+</style>
