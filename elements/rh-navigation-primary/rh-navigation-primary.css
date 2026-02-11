@@ -133,7 +133,7 @@
 }
 
 #sub-domain {
-  grid-area: 'sub-domain';
+  grid-area: sub-domain;
   display: none;
 }
 
