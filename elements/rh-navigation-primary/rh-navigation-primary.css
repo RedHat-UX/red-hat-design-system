@@ -62,7 +62,7 @@
 #bar {
   position: relative;
   display: grid;
-  grid-template-areas: 'logo hamburger secondary-links';
+  grid-template-areas: 'lockup hamburger secondary-links';
   grid-template-columns: auto auto 1fr;
   grid-template-rows: var(--_navbar-height);
   background-color:
@@ -79,6 +79,13 @@
   }
 }
 
+#lockup {
+  grid-area: lockup;
+  display: grid;
+  grid-template-areas: 'logo sub-domain';
+  grid-template-columns: auto;
+}
+
 #logo {
   grid-area: logo;
   display: flex;
@@ -92,13 +99,8 @@
   }
 
   & svg {
-    block-size: 18px;
-    inline-size: 24px;
-
-    @container navigation-primary (min-width: 576px) {
-      block-size: 24px;
-      inline-size: 32px;
-    }
+    block-size: 24px;
+    inline-size: 32px;
 
     @container navigation-primary (min-width: 1440px) {
       block-size: 30px;
@@ -131,6 +133,7 @@
 }
 
 #sub-domain {
+  grid-area: 'sub-domain';
   display: none;
 }
 
@@ -248,9 +251,13 @@
   #event {
     display: none;
 
-    @container navigation-primary (min-width: 576px) {
+    @container navigation-primary (min-width: 481px) {
       display: flex;
       flex-direction: row;
+      margin-inline-end: var(--rh-space-lg, 16px);
+    }
+
+    @container navigation-primary (min-width: 576px) {
       margin-inline-end: var(--rh-space-xl, 24px);
     }
 
@@ -409,9 +416,40 @@
   z-index: 2;
 
   &.subdomain {
-    & #bar {
-      grid-template-areas: 'logo sub-domain hamburger secondary-links';
-      grid-template-columns: auto auto auto 1fr;
+    & #lockup {
+      grid-template-areas: 'logo' 'sub-domain';
+      gap: 4px;
+    }
+
+    & #logo {
+      display: flex;
+      flex-direction: row;
+      align-self: flex-end;
+      gap: var(--rh-space-xl, 24px);
+
+      & svg {
+        block-size: 18px;
+        inline-size: 24px;
+        transition: transform 0.3s ease-in-out;
+
+        @container navigation-primary (min-width: 576px) {
+          block-size: 24px;
+          inline-size: 32px;
+        }
+
+        @container navigation-primary (min-width: 1440px) {
+          block-size: 30px;
+          inline-size: 40px;
+        }
+      }
+
+      & a {
+        &:hover {
+          & svg {
+            transform: rotate(15deg);
+          }
+        }
+      }
     }
 
     & #sub-domain {
@@ -419,7 +457,7 @@
       position: relative;
       grid-area: sub-domain;
       block-size: 100%;
-      place-items: center;
+      align-self: flex-start;
       font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif) !important;
       font-size: 1rem !important;
       font-weight: var(--rh-font-weight-heading-bold, 700) !important;
@@ -428,7 +466,7 @@
       white-space: break-spaces !important;
 
       @container navigation-primary (min-width: 576px) {
-        margin-inline-end: var(--rh-space-2xl, 32px);
+        margin-inline-end: var(--rh-space-md, 8px);
         font-size: var(--rh-font-size-heading-xs, 1.25rem) !important;
       }
 
@@ -458,34 +496,16 @@
       }
     }
 
-    & #logo {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: var(--rh-space-xl, 24px);
-
-      & svg {
-        block-size: 18px;
-        inline-size: 24px;
-        transition: transform 0.3s ease-in-out;
-
-        @container navigation-primary (min-width: 576px) {
-          block-size: 24px;
-          inline-size: 32px;
-        }
-
-        @container navigation-primary (min-width: 1440px) {
-          block-size: 30px;
-          inline-size: 40px;
-        }
+    @container (min-width: 481px) {
+      & #lockup {
+        grid-template-areas: 'logo sub-domain';
+        gap: unset;
       }
 
-      & a {
-        &:hover {
-          & svg {
-            transform: rotate(15deg);
-          }
-        }
+      & #logo,
+      & #sub-domain {
+        align-self: center;
+        align-items: center;
       }
     }
   }
