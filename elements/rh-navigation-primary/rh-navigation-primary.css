@@ -418,7 +418,7 @@
   &.subdomain {
     & #lockup {
       grid-template-areas: 'logo' 'sub-domain';
-      gap: 4px;
+      gap: var(--rh-space-md, 8px);
     }
 
     & #logo {
@@ -459,9 +459,9 @@
       block-size: 100%;
       align-self: flex-start;
       font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif) !important;
-      font-size: 1rem !important;
+      font-size: 1rem !important; /* non standard for heading */
       font-weight: var(--rh-font-weight-heading-bold, 700) !important;
-      line-height: 1.5 !important;
+      line-height: 1 !important;
       color: var(--rh-color-text-primary) !important;
       white-space: break-spaces !important;
 
@@ -502,10 +502,17 @@
         gap: unset;
       }
 
-      & #logo,
+      & #logo {
+        align-self: center;
+        align-items: center;
+        padding-block-start: 0;
+      }
+
       & #sub-domain {
         align-self: center;
         align-items: center;
+        line-height: var(--rh-line-height-heading, 1.3);
+        padding-block-end: 0;
       }
     }
   }
