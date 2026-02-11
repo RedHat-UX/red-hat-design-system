@@ -1,6 +1,6 @@
 <form>
   <label for="my-select">
-    Products
+    Products <span class="required" aria-label="Required field">*</span>
   </label>
   <rh-select required id="my-select" name="products" placeholder="Select an item">
     <rh-option>Device Edge</rh-option>
@@ -35,5 +35,9 @@
 
   button {
     margin-block-start: var(--rh-space-md, 8px);
+  }
+
+  .required {
+    color: var(--rh-color-status-danger);
   }
 </style>
