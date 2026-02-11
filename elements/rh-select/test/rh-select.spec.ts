@@ -724,6 +724,177 @@ describe('<rh-select>', function() {
     });
   });
 
+  describe('required', function() {
+    let form: HTMLFormElement;
+    let element: RhSelect;
+
+    beforeEach(async function() {
+      form = await createFixture<HTMLFormElement>(html`
+        <form>
+          <label for="select">label</label>
+          <rh-select id="select" name="choice" required placeholder="placeholder">
+            <rh-option value="a">Option A</rh-option>
+            <rh-option value="b">Option B</rh-option>
+            <rh-option value="c">Option C</rh-option>
+          </rh-select>
+        </form>
+      `);
+      element = form.querySelector('rh-select')!;
+      await element.updateComplete;
+    });
+
+    it('reflects required attribute to property', function() {
+      expect(element.required).to.be.true;
+      expect(element.hasAttribute('required')).to.be.true;
+    });
+
+    it('reflects required false when attribute removed', async function() {
+      element.removeAttribute('required');
+      await element.updateComplete;
+      expect(element.required).to.be.false;
+      expect(element.hasAttribute('required')).to.be.false;
+    });
+
+    it('checkValidity returns false when required and empty', function() {
+      expect(element.checkValidity()).to.be.false;
+    });
+
+    it('checkValidity returns true when required and value set', async function() {
+      element.value = 'a';
+      await element.updateComplete;
+      await nextFrame();
+      expect(element.checkValidity()).to.be.true;
+    });
+
+    it('checkValidity returns true when not required and empty', async function() {
+      element.required = false;
+      await element.updateComplete;
+      expect(element.checkValidity()).to.be.true;
+    });
+
+    it('reportValidity returns false when required and empty', function() {
+      expect(element.reportValidity()).to.be.false;
+    });
+
+    it('reportValidity returns true when required and value set', async function() {
+      element.value = 'b';
+      await element.updateComplete;
+      await nextFrame();
+      expect(element.reportValidity()).to.be.true;
+    });
+
+    it('form reportValidity returns false when required and empty, then true after selection', async function() {
+      expect(form.reportValidity()).to.be.false;
+
+      await element.show();
+      await element.updateComplete;
+      const option = element.querySelectorAll('rh-option')[1] as RhOption;
+      await clickElementAtCenter(option);
+      await element.updateComplete;
+      await nextFrame();
+
+      expect(form.reportValidity()).to.be.true;
+    });
+
+    it('validity updates when value changes', async function() {
+      expect(element.checkValidity()).to.be.false;
+
+      element.value = 'c';
+      await element.updateComplete;
+      await nextFrame();
+      expect(element.checkValidity()).to.be.true;
+
+      element.value = '';
+      await element.updateComplete;
+      await nextFrame();
+      expect(element.checkValidity()).to.be.false;
+    });
+  });
+
+  describe('name', function() {
+    it('reflects name attribute to property', async function() {
+      const form = await createFixture<HTMLFormElement>(html`
+        <form>
+          <rh-select id="select" name="foo" placeholder="Pick">
+            <rh-option value="x">X</rh-option>
+          </rh-select>
+        </form>
+      `);
+      const element = form.querySelector('rh-select')!;
+      await element.updateComplete;
+
+      expect(element.name).to.equal('foo');
+      expect(element.getAttribute('name')).to.equal('foo');
+    });
+
+    it('reflects name property to attribute', async function() {
+      const form = await createFixture<HTMLFormElement>(html`
+        <form>
+          <rh-select id="select" placeholder="Pick">
+            <rh-option value="x">X</rh-option>
+          </rh-select>
+        </form>
+      `);
+      const element = form.querySelector('rh-select')!;
+      await element.updateComplete;
+
+      element.name = 'bar';
+      await element.updateComplete;
+      expect(element.getAttribute('name')).to.equal('bar');
+    });
+
+    it('FormData uses name from attribute', async function() {
+      const form = await createFixture<HTMLFormElement>(html`
+        <form>
+          <label for="select">label</label>
+          <rh-select id="select" name="field" placeholder="Pick">
+            <rh-option value="one">One</rh-option>
+            <rh-option value="two">Two</rh-option>
+          </rh-select>
+        </form>
+      `);
+      const element = form.querySelector('rh-select')!;
+      await element.updateComplete;
+
+      await element.show();
+      await element.updateComplete;
+      const option = element.querySelectorAll('rh-option')[1] as RhOption;
+      await clickElementAtCenter(option);
+      await element.updateComplete;
+      await nextFrame();
+
+      const formData = new FormData(form);
+      expect(formData.get('field')).to.equal('two');
+    });
+
+    it('FormData uses name when set via property', async function() {
+      const form = await createFixture<HTMLFormElement>(html`
+        <form>
+          <label for="select">label</label>
+          <rh-select id="select" placeholder="Pick">
+            <rh-option value="one">One</rh-option>
+            <rh-option value="two">Two</rh-option>
+          </rh-select>
+        </form>
+      `);
+      const element = form.querySelector('rh-select')!;
+      await element.updateComplete;
+
+      element.name = 'programmatic';
+      await element.updateComplete;
+
+      await element.show();
+      await element.updateComplete;
+      const option = element.querySelectorAll('rh-option')[0] as RhOption;
+      await clickElementAtCenter(option);
+      await element.updateComplete;
+      await nextFrame();
+
+      const formData = new FormData(form);
+      expect(formData.get('programmatic')).to.equal('one');
+    });
+  });
+
   describe('accessible label sources', function() {
     it('uses associated label (for/id) as combobox name', async function() {
       const container = await createFixture<HTMLDivElement>(html`
