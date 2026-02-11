@@ -1,4 +1,6 @@
 rh-navigation-primary {
+  container: navigation-primary / inline-size;
+
   & :is(rh-navigation-primary-item, rh-navigation-link) {
     color: var(--rh-color-text-primary) !important;
 
