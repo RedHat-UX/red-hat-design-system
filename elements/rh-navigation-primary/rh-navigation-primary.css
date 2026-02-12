@@ -254,6 +254,10 @@
   block-size: 100%;
   gap: 0;
 
+  @container navigation-primary (min-width: 480px) {
+    margin-inline-start: var(--rh-space-lg, 16px);
+  }
+
   @container navigation-primary (min-width: 1200px) {
     gap: var(--rh-space-xl, 24px);
   }
