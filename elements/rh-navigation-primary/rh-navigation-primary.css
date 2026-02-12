@@ -21,7 +21,7 @@
     linear-gradient(light-dark(var(--rh-color-surface-lighter, #f2f2f2),
       var(--rh-color-surface-darker, #1f1f1f)) 0 0) padding-box,
     conic-gradient(from var(--_gradient-direction), var(--_conic-gradient)) border-box;
-  --_navbar-height: 83px;
+  --_navbar-height: 74px;
   --_nav-container-z-index: -1;
 
   display: block;
@@ -428,6 +428,10 @@
   inline-size: 100%;
   block-size: var(--_navbar-height);
   z-index: 2;
+
+  @container navigation-primary (min-width: 480px) {
+    --_navbar-height: 82px;
+  }
 
   &.subdomain {
     & #lockup {
