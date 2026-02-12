@@ -234,7 +234,7 @@
           font-size: var(--rh-font-size-body-text-sm, 0.875rem);
           cursor: pointer;
 
-          @container navigation-primary (min-width: 320) {
+          @container navigation-primary (min-width: 480px) {
             padding: var(--rh-space-lg, 16px);
           }
 
