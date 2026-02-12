@@ -41,7 +41,11 @@
 
 #listbox-container {
   display: inline-flex;
-  background-color: var(--rh-color-surface);
+  background-color:
+    light-dark(
+        var(--rh-color-surface-lightest, #ffffff),
+        var(--rh-color-surface-darkest, #151515)
+      );
   border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
   border-radius: var(--rh-border-radius-default, 3px);
   box-shadow: var(--rh-box-shadow-sm);
@@ -63,7 +67,11 @@
 }
 
 #toggle {
-  background-color: var(--rh-color-surface);
+  background-color:
+    light-dark(
+        var(--rh-color-surface-lightest, #ffffff),
+        var(--rh-color-surface-darkest, #151515)
+      );
   justify-content: space-between;
 }
 
