@@ -335,6 +335,17 @@
   <p>Mock Page content <a href="#">Link outside</a></p>
 </div>
 
+<form>
+  <fieldset>
+    <legend>Select Sub domain</legend>
+    <label><input type="radio" name="subdomain" value="Customer Portal" checked>Customer Portal</label>
+    <label><input type="radio" name="subdomain" value="Ecosystem Catalog">Ecosystem Catalog</label>
+    <label><input type="radio" name="subdomain" value="Partner Connect">Partner Connect</label>
+    <label><input type="radio" name="subdomain" value="Developers">Developers</label>
+    <label><input type="radio" name="subdomain" value="Docs">Docs</label>
+  </fieldset>
+</form>
+
 <link rel="stylesheet" href="../rh-navigation-primary-lightdom.css">
 
 <style>
@@ -429,10 +440,27 @@
     }
   }
 
+  /* form */
+  form {
+    padding: var(--rh-space-lg, 16px);
+  }
+
+  label {
+    display: flex;
+
+  }
 </style>
 
 <script type="module">
   import '@rhds/elements/rh-navigation-primary/rh-navigation-primary.js';
   import '@rhds/elements/rh-avatar/rh-avatar.js';
   import '@rhds/elements/rh-button/rh-button.js';
+
+  // when the form value changes update rh-navigation-primary > [slot="sub-domain"] with the value
+  document.querySelector('form:has([name="subdomain"])').addEventListener('change', function(event) {
+    const subDomainLink = document.querySelector('rh-navigation-primary > [slot="sub-domain"]');
+    if (subDomainLink) {
+      subDomainLink.textContent = event.target.value;
+    }
+  });
 </script>
