@@ -32,8 +32,8 @@
   column-gap: var(--rh-space-lg, 16px);
   width: min-content;
 
-  /** Value for the `grid-template-columns` property of avatar's `#container` */
-  grid-template-columns: var(--rh-avatar-container-grid);
+  /** Override to customize the avatar's internal grid layout */
+  grid-template-columns: var(--rh-avatar-grid-columns, min-content minmax(max-content, 250px));
   grid-template-rows: min-content min-content;
   grid-template-areas:
     'a t'
