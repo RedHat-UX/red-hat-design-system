@@ -185,6 +185,8 @@ export class RhSelect extends LitElement {
 
   #lastSearchWasCycling = false;
 
+  #valueObserverHadFirstRun = false;
+
   #isNotPlaceholderOption = (option: RhOption) => option !== this._placeholder;
 
   /**
@@ -376,6 +378,11 @@ export class RhSelect extends LitElement {
 
   @observes('expanded')
   private async expandedChanged(old: boolean, expanded: boolean) {
+    // Don't dispach open/close events on page load:
+    if (old === expanded) {
+      return;
+    }
+
     if (this.dispatchEvent(new Event(this.expanded ? 'open' : 'close'))) {
       if (expanded) {
         this.#doExpand();
@@ -390,7 +397,7 @@ export class RhSelect extends LitElement {
   }
 
   @observes('selected')
-  private async selectedChanged(_: RhOption[], selected: RhOption[]) {
+  private async selectedChanged(_prev: RhOption[], selected: RhOption[]) {
     this.value = selected.map(x => x.value).join();
     await this.updateComplete;
     this.hide();
@@ -399,7 +406,14 @@ export class RhSelect extends LitElement {
   @observes('value')
   private valueChanged() {
     this.#internals.setFormValue(this.value ?? '');
-    this.dispatchEvent(new RhSelectChangeEvent());
+
+    // Don't dispatch `change` event on page load:
+    if (this.#valueObserverHadFirstRun) {
+      this.dispatchEvent(new RhSelectChangeEvent());
+    } else {
+      this.#valueObserverHadFirstRun = true;
+    }
+
     this.#updateValidity();
   }
 
