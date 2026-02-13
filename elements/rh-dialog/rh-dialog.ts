@@ -9,7 +9,7 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-dialog.css';
+import styles from './rh-dialog.css' with { type: 'css' };
 
 import { query } from 'lit/decorators/query.js';
 import { ifDefined } from 'lit/directives/if-defined.js';

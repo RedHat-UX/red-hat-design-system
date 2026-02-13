@@ -4,7 +4,7 @@ import { property } from 'lit/decorators/property.js';
 
 import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer.js';
 
-import styles from './rh-cue.css';
+import styles from './rh-cue.css' with { type: 'css' };
 
 export type Seconds = (number | null | undefined);
 export type TimeString = (string | null | undefined);
