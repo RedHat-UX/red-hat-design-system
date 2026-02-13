@@ -1,6 +1,4 @@
 :host {
-  --rh-avatar-container-grid: min-content minmax(max-content, 250px);
-
   display: inline-block;
   width: min-content;
 }
