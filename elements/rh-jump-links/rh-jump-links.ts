@@ -14,7 +14,7 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import { RhJumpLink } from './rh-jump-link.js';
 import { rhJumpLinksOrientationContext } from './context.js';
 
-import style from './rh-jump-links.css';
+import style from './rh-jump-links.css' with { type: 'css' };
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 

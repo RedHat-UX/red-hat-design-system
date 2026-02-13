@@ -11,7 +11,7 @@ import { themable } from '@rhds/elements/lib/themable.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
-import styles from './rh-button.css';
+import styles from './rh-button.css' with { type: 'css' };
 
 /**
  * A button is clickable text or an icon that triggers an action on the page or in the background.
