@@ -59,7 +59,7 @@
     text-align: center;
     place-items: center;
     gap: 0;
-    grid-template-columns: minmax(max-content, 250px);
+    grid-template-columns: var(--rh-avatar-grid-columns, minmax(max-content, 250px));
     grid-template-areas: 'a' 't' 's';
     grid-template-rows:
       minmax(var(--rh-avatar-size, var(--rh-size-icon-06, 64px)), var(--rh-size-icon-06, 64px))
