@@ -1,0 +1,1 @@
+This demo shows how to customize Avatar's grid via `--rh-avatar-grid-columns`.
