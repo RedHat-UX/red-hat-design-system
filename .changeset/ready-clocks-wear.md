@@ -2,10 +2,10 @@
 "@rhds/elements": minor
 ---
 
-`<rh-avatar>`: add the ability to customize avatar's grid
+`<rh-avatar>`: add the ability to customize avatar's internal grid via CSS
 
 ```css
 rh-avatar {
-  --rh-avatar-container-grid: 65px 170px;
+  --rh-avatar-grid-columns: 65px 170px;
 }
 ```
