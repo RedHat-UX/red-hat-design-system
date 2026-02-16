@@ -90,12 +90,7 @@ export class RhSwitch extends LitElement {
       for (const el of stateEls) {
         el.id ||= getRandomId('rh-switch-message');
       }
-      if ('ariaDescribedByElements' in (globalThis.ElementInternals ?? {})) {
-        // see https://w3c.github.io/aria/#dom-ariamixin
-        this.#internals.ariaDescribedByElements = stateEls;
-      } else {
-        this.setAttribute('aria-describedby', stateEls.map(x => x.id).join(' '));
-      }
+      this.#internals.ariaDescribedByElements = stateEls;
     }
   }
 
