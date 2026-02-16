@@ -5,7 +5,6 @@ import { property } from 'lit/decorators/property.js';
 import { LitElement, html, isServer, type PropertyValues } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 import { themable } from '../../lib/themable.js';
 
 import styles from './rh-avatar.css';
@@ -55,8 +54,6 @@ export class RhAvatar extends LitElement {
 
   #pattern?: RandomPatternController;
 
-  #screen = new ScreenSizeController(this);
-
   connectedCallback() {
     super.connectedCallback();
     if (!isServer) {
@@ -80,12 +77,11 @@ export class RhAvatar extends LitElement {
   }
 
   render() {
-    const { mobile } = this.#screen;
     const layout = this.layout ? `layout-${this.layout}` : '';
     const bordered = this.variant === 'bordered';
 
     return html`
-      <div id="container" class="${classMap({ mobile, [layout]: !!layout, plain: this.plain, bordered })}">${this.pattern ? html`
+      <div id="container" class="${classMap({ [layout]: !!layout, plain: this.plain, bordered })}">${this.pattern ? html`
         <!-- Target the canvas element -->
         <canvas part="canvas"></canvas>` : this.src ? html`
         <!-- Targets the img or svg element -->

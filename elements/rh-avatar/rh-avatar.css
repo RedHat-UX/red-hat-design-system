@@ -1,6 +1,6 @@
 :host {
-  display: inline-block;
-  inline-size: min-content;
+  display: block;
+  container: avatar / inline-size;
 }
 
 [hidden] {
@@ -9,7 +9,6 @@
 
 slot {
   display: block;
-  max-inline-size: 250px;
 }
 
 #container {
@@ -39,8 +38,8 @@ slot {
     'a t'
     'a s';
 
-  /** only apply block layout when it is block or mobile and not inline or plain */
-  &:is(.layout-block, .mobile):not(.layout-inline, .plain) {
+  /** only apply block layout when it is block or narrow and not inline or plain */
+  &.layout-block:not(.plain) {
     text-align: center;
     place-items: center;
     gap: 0;
@@ -53,6 +52,15 @@ slot {
 
     & :is(img, canvas, svg) {
       margin-block-end: var(--rh-space-lg, 16px);
+    }
+  }
+
+  /* warning magic number */
+  &.layout-inline {
+    @container avatar (min-width: 320px) {
+      background: hotpink;
+      grid-template-areas: 'a t s';
+      grid-template-rows: auto;
     }
   }
 

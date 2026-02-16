@@ -1,0 +1,87 @@
+<label for="repro">Toggle reproduction</label>
+<rh-switch id="repro"></rh-switch>
+
+<div id="test">
+  <rh-avatar src="https://redhat.com/rhdc/managed-files/styles/media_thumbnail/private/Screenshot%202025-10-28%20at%2011.42.21%E2%80%AFAM.png?itok=HtUQjtrv"
+             alt="Ana Biazetti"
+             layout="inline">
+    <a href="/en/authors/ana-biazetti">
+      Ana Biazetti
+    </a>
+    <a slot="subtitle"
+       href="/en/authors/ana-biazetti">
+      Senior Principal Engineer, Red Hat AI
+    </a>
+  </rh-avatar>
+  <rh-avatar src="https://redhat.com/rhdc/managed-files/styles/media_thumbnail/private/lindani.jpeg?itok=qNy1t-_C"
+             alt="Lindani Phiri"
+             layout="inline">
+    <a href="/en/authors/lindani-phiri">
+      Lindani Phiri
+    </a>
+    <a slot="subtitle"
+       href="/en/authors/lindani-phiri">
+      Architect, Red Hat AI
+    </a>
+  </rh-avatar>
+</div>
+
+<script type="module">
+  import "@rhds/elements/rh-avatar/rh-avatar.js";
+  import "@rhds/elements/rh-switch/rh-switch.js";
+  const repro = document.getElementById('repro');
+  const test = document.getElementById('test');
+  repro.addEventListener('change', function () {
+    test.classList.toggle('repro');
+  });
+</script>
+
+<style>
+  body {
+    padding: var {
+      --rh-space-xl
+    }
+
+    ;
+    font-family: var(--rh-font-family-body-text);
+  }
+
+
+  #test {
+    --rh-color-text-secondary-on-light: #92C5F9;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-family: "Red Hat Text", sans-serif;
+    width: 350px;
+    margin-block: 1rem;
+
+    &.repro {
+      width: 250px;
+    }
+
+    /* Change the size */
+    rh-avatar {
+      --rh-avatar-size: 100px;
+      --rh-color-interactive-primary-default: #92C5F9;
+      --rh-color-interactive-primary-visited-default: #92C5F9;
+      --rh-color-interactive-primary-hover: #92C5F9;
+      width: 100%;
+      background-color: #21134D;
+      color-scheme: dark only;
+      padding: 16px;
+      border-radius: 64px;
+
+      /* Style the image part specifically */
+      &::part(img) {
+        width: 32px;
+        color-scheme: light;
+        border: 3px solid #ee0000;
+        object-position: top;
+      }
+
+    }
+  }
+</style>
