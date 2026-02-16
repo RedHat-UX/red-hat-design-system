@@ -95,9 +95,13 @@ export class RhAvatar extends LitElement {
         </svg>
         `}
         <!-- The subject's name -->
-        <slot id="title">${this.name}</slot>
+        <div id="title">
+          <slot>${this.name}</slot>
+        </div>
         <!-- auxiliary information about the subject, e.g. job title -->
-        <slot id="subtitle" name="subtitle">${this.subtitle}</slot>
+        <div id="subtitle">
+          <slot name="subtitle">${this.subtitle}</slot>
+        </div>
       </div>
     `;
   }

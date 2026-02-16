@@ -2,7 +2,7 @@
 <rh-switch id="repro"></rh-switch>
 
 <div id="test">
-  <rh-avatar src="https://redhat.com/rhdc/managed-files/styles/media_thumbnail/private/Screenshot%202025-10-28%20at%2011.42.21%E2%80%AFAM.png?itok=HtUQjtrv"
+  <rh-avatar src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/005-a-Ruby-kindles-in-the-vine-810x1146.jpg/212px-005-a-Ruby-kindles-in-the-vine-810x1146.jpg"
              alt="Ana Biazetti"
              layout="inline">
     <a href="/en/authors/ana-biazetti">
@@ -13,7 +13,7 @@
       Senior Principal Engineer, Red Hat AI
     </a>
   </rh-avatar>
-  <rh-avatar src="https://redhat.com/rhdc/managed-files/styles/media_thumbnail/private/lindani.jpeg?itok=qNy1t-_C"
+  <rh-avatar src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/005-a-Ruby-kindles-in-the-vine-810x1146.jpg/212px-005-a-Ruby-kindles-in-the-vine-810x1146.jpg"
              alt="Lindani Phiri"
              layout="inline">
     <a href="/en/authors/lindani-phiri">
@@ -35,7 +35,6 @@
     test.classList.toggle('repro');
   });
 </script>
-
 <style>
   body {
     padding: var {
@@ -63,15 +62,15 @@
     }
 
     /* Change the size */
-    rh-avatar {
+    & rh-avatar {
       --rh-avatar-size: 100px;
       --rh-color-interactive-primary-default: #92C5F9;
       --rh-color-interactive-primary-visited-default: #92C5F9;
       --rh-color-interactive-primary-hover: #92C5F9;
-      width: 100%;
+;
+      padding: var(--rh-space-lg, 16px);
       background-color: #21134D;
       color-scheme: dark only;
-      padding: 16px;
       border-radius: 64px;
 
       /* Style the image part specifically */

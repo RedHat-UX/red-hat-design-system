@@ -1,91 +1,36 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
 :host {
   display: block;
   container: avatar / inline-size;
+  width: 100%;
 }
 
 [hidden] {
   display: none !important;
 }
 
-slot {
-  display: block;
+img,
+svg {
+  object-fit: cover;
+  object-position: center;
 }
 
-#container {
-  display: grid;
-  color: var(--rh-color-text-secondary);
+canvas,
+img,
+svg {
+  overflow: hidden;
 
-  /** List of colors to use when generating avatars */
-  --_colors:
-    light-dark(var(--rh-avatar-colors,
-      var(--rh-color-blue-30, #92c5f9)
-      var(--rh-color-teal-50, #37a3a3)
-      var(--rh-color-green-60, #3d7317)
-      var(--rh-color-red-40, #f56e6e)
-      var(--rh-color-purple-60, #3d2785)),
-      var(--rh-avatar-colors,
-      var(--rh-color-blue-50, #0066cc)
-      var(--rh-color-teal-70, #004d4d)
-      var(--rh-color-green-70, #204d00)
-      var(--rh-color-red-50, #ee0000)
-      var(--rh-color-purple-70, #21134d)));
-
-  column-gap: var(--rh-space-lg, 16px);
-  inline-size: min-content;
-  grid-template-columns: min-content minmax(max-content, 250px);
-  grid-template-rows: min-content min-content;
-  grid-template-areas:
-    'a t'
-    'a s';
-
-  /** only apply block layout when it is block or narrow and not inline or plain */
-  &.layout-block:not(.plain) {
-    text-align: center;
-    place-items: center;
-    gap: 0;
-    grid-template-columns: minmax(max-content, 250px);
-    grid-template-areas: 'a' 't' 's';
-    grid-template-rows:
-      minmax(var(--rh-avatar-size, var(--rh-size-icon-06, 64px)), var(--rh-size-icon-06, 64px))
-      min-content
-      auto;
-
-    & :is(img, canvas, svg) {
-      margin-block-end: var(--rh-space-lg, 16px);
-    }
-  }
-
-  /* warning magic number */
-  &.layout-inline {
-    @container avatar (min-width: 320px) {
-      background: hotpink;
-      grid-template-areas: 'a t s';
-      grid-template-rows: auto;
-    }
-  }
-
-  &.plain {
-    column-gap: 0;
-
-    & slot {
-      /* .visually-hidden */
-      position: absolute;
-      inline-size: 1px;
-      block-size: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-  }
-
-  &.bordered {
-    & :is(canvas, img, svg) {
-      border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
-    }
-  }
+  /** Size of the avatar, */
+  inline-size: var(--rh-avatar-size, var(--rh-size-icon-06, 64px));
+  max-inline-size: var(--rh-size-icon-06, 64px);
+  aspect-ratio: 1;
+  grid-area: a;
+  border-radius: var(--rh-border-radius-pill, 64px);
 }
 
 #default {
@@ -138,21 +83,91 @@ slot {
   color: var(--rh-color-interactive-primary-hover);
 }
 
-img,
-svg {
-  object-fit: cover;
-  object-position: center;
-}
+#container {
+  /** List of colors to use when generating avatars */
+  --_colors:
+    light-dark(var(--rh-avatar-colors,
+      var(--rh-color-blue-30, #92c5f9)
+      var(--rh-color-teal-50, #37a3a3)
+      var(--rh-color-green-60, #3d7317)
+      var(--rh-color-red-40, #f56e6e)
+      var(--rh-color-purple-60, #3d2785)),
+      var(--rh-avatar-colors,
+      var(--rh-color-blue-50, #0066cc)
+      var(--rh-color-teal-70, #004d4d)
+      var(--rh-color-green-70, #204d00)
+      var(--rh-color-red-50, #ee0000)
+      var(--rh-color-purple-70, #21134d)));
 
-canvas,
-img,
-svg {
-  overflow: hidden;
+  display: grid;
+  column-gap: var(--rh-space-lg, 16px);
+  grid-template-columns: min-content 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'a t'
+    'a s';
+  color: var(--rh-color-text-secondary);
 
-  /** Size of the avatar, */
-  inline-size: var(--rh-avatar-size, var(--rh-size-icon-06, 64px));
-  max-inline-size: var(--rh-size-icon-06, 64px);
-  aspect-ratio: 1;
-  grid-area: a;
-  border-radius: var(--rh-border-radius-pill, 64px);
+  &:not(.plain) {
+    &.layout-block {
+      text-align: center;
+      place-items: center;
+      gap: 0;
+      grid-template-columns: auto;
+      grid-template-areas: 'a' 't' 's';
+      grid-template-rows:
+        1fr
+        auto
+        auto;
+
+      & :is(img, canvas, svg) {
+        margin-block-end: var(--rh-space-lg, 16px);
+      }
+    }
+
+    &.layout-inline {
+      grid-template-columns: 1fr;
+      grid-template-areas: 'a' 't' 's';
+      grid-template-rows: auto;
+      text-align: center;
+      place-items: center;
+
+      @container avatar (min-width: 288px) {
+        text-align: start;
+        place-items: start;
+        grid-template-areas:
+          'a t'
+          'a s';
+        grid-template-columns: min-content 1fr;
+        grid-template-rows: auto auto;
+
+        & :is(#title, #subtitle) {
+          text-align: start;
+        }
+      }
+    }
+  }
+
+  &.plain {
+    column-gap: 0;
+
+    & :is(#title, #subtitle) {
+      /* .visually-hidden */
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  }
+
+  &.bordered {
+    & :is(canvas, img, svg) {
+      border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+    }
+  }
 }
