@@ -79,7 +79,7 @@ export class RhSwitch extends LitElement {
     const noMessageOn = this.#slots.isEmpty('message-on');
     const noMessageOff = this.#slots.isEmpty('message-off');
     if (noMessageOn || noMessageOff) {
-      if ('ariaDescription' in (globalThis.ElementInternals ?? {})) {
+      if ('ariaDescription' in (globalThis.ElementInternals?.prototype ?? {})) {
         this.#internals.ariaDescription = this.#message ?? '';
       } else {
         this.setAttribute('aria-description', this.#message ?? '');
