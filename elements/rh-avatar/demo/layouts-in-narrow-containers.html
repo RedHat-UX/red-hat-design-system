@@ -1,0 +1,69 @@
+<div id="test">
+  <label for="repro">
+    <rh-switch id="repro"></rh-switch>
+    Toggle reproduction
+  </label>
+
+  <rh-avatar layout="inline"
+             variant="bordered">
+    <a href="/en/authors/ana-biazetti">
+      Ana Biazetti
+    </a>
+    <a slot="subtitle"
+       href="/en/authors/ana-biazetti">
+      Senior Principal Engineer, Red Hat AI
+    </a>
+  </rh-avatar>
+  <rh-avatar layout="inline"
+             variant="bordered">
+    <a href="/en/authors/lindani-phiri">
+      Lindani Phiri
+    </a>
+    <a slot="subtitle"
+       href="/en/authors/lindani-phiri">
+      Architect, Red Hat AI
+    </a>
+  </rh-avatar>
+</div>
+
+<style>
+  #test {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: var(--rh-space-xl);
+    padding: var(--rh-space-xl);
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 450px;
+
+    &.repro {
+      width: 250px;
+    }
+  }
+
+  rh-avatar {
+    --rh-avatar-size: var(--rh-length-3xl);
+    --rh-color-surface-darker: var(--rh-color-purple-70);
+    --rh-color-border-subtle: var(--rh-color-brand-red);
+    --rh-color-text-secondary: var(--rh-color-accent);
+    --rh-color-interactive-primary-default-on-dark: var(--rh-color-accent);
+    --rh-color-interactive-primary-visited-default-on-dark: var(--rh-color-accent);
+    --rh-color-interactive-primary-hover-on-dark: var(--rh-color-accent);
+    --rh-border-width-sm: var(--rh-length-xs);
+
+    padding: var(--rh-space-lg);
+    background-color: var(--rh-color-surface-darker);
+    color-scheme: dark only;
+    border-radius: var(--rh-border-radius-pill);
+  }
+</style>
+
+<script type="module">
+  import "@rhds/elements/rh-avatar/rh-avatar.js";
+  import "@rhds/elements/rh-switch/rh-switch.js";
+  const repro = document.getElementById('repro');
+  const test = document.getElementById('test');
+  repro.addEventListener('change', function () {
+    test.classList.toggle('repro');
+  });
+</script>
