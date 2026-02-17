@@ -83,7 +83,11 @@
   inline-size: 100%;
   max-block-size: var(--_navbar-height);
   box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
-  padding-inline: var(--rh-space-lg, 16px) var(--rh-space-md, 8px);
+  padding-inline: var(--rh-space-lg, 16px);
+
+  @container navigation-primary (min-width: 320px) {
+    padding-inline: var(--rh-space-lg, 16px) var(--rh-space-md, 8px);
+  }
 
   @container navigation-primary (min-width: 480px) {
     grid-template-columns: auto auto 1fr;
