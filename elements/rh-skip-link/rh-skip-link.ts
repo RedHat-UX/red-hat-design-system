@@ -3,7 +3,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 
 import { property } from 'lit/decorators/property.js';
 
-import styles from './rh-skip-link.css';
+import styles from './rh-skip-link.css' with { type: 'css' };
 
 /**
  * A skip link is used to skip repetitive content on a page.

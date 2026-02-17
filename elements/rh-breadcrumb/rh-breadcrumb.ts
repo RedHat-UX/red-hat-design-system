@@ -4,7 +4,7 @@ import { property } from 'lit/decorators/property.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-breadcrumb.css';
+import styles from './rh-breadcrumb.css' with { type: 'css' };
 
 const truncateBtnClass = 'truncate-btn';
 const truncateBtnContainerClass = `${truncateBtnClass}-container`;
