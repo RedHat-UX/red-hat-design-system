@@ -109,7 +109,7 @@ svg {
   color: var(--rh-color-text-secondary);
 
   &:not(.plain) {
-    &.layout-block {
+    &.block {
       text-align: center;
       place-items: center;
       gap: 0;
@@ -125,7 +125,7 @@ svg {
       }
     }
 
-    &.layout-inline {
+    &.inline {
       grid-template-columns: 1fr;
       grid-template-areas: 'a' 't' 's';
       grid-template-rows: auto;

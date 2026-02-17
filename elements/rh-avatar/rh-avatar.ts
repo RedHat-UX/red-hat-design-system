@@ -76,15 +76,18 @@ export class RhAvatar extends LitElement {
   }
 
   render() {
-    const layout = this.layout ? `layout-${this.layout}` : '';
-    const bordered = this.variant === 'bordered';
+    const { layout, name, pattern, plain, src, subtitle, variant } = this;
+    const bordered = variant === 'bordered';
+    const inline = layout === 'inline';
+    const block = layout === 'block';
 
     return html`
-      <div id="container" class="${classMap({ [layout]: !!layout, plain: this.plain, bordered })}">${this.pattern ? html`
+      <div id="container"
+           class="${classMap({ inline, block, plain, bordered })}">${pattern ? html`
         <!-- Target the canvas element -->
-        <canvas part="canvas"></canvas>` : this.src ? html`
+        <canvas part="canvas"></canvas>` : src ? html`
         <!-- Targets the img or svg element -->
-        <img src="${this.src}" role="presentation" part="img">` : html`
+        <img src="${src}" role="presentation" part="img">` : html`
         <!-- Targets the img or svg element -->
         <svg xmlns="http://www.w3.org/2000/svg" style="enable-background:new 0 0 36 36" viewBox="0 0 36 36" role="presentation" part="img" id="default">
           <path d="M0 0h36v36H0z" class="st1"/><path d="M17.7 20.1c-3.5 0-6.4-2.9-6.4-6.4s2.9-6.4 6.4-6.4 6.4 2.9 6.4 6.4-2.8 6.4-6.4 6.4z" class="st3"/>
@@ -95,11 +98,11 @@ export class RhAvatar extends LitElement {
         `}
         <!-- The subject's name -->
         <div id="title">
-          <slot>${this.name}</slot>
+          <slot>${name}</slot>
         </div>
         <!-- auxiliary information about the subject, e.g. job title -->
         <div id="subtitle">
-          <slot name="subtitle">${this.subtitle}</slot>
+          <slot name="subtitle">${subtitle}</slot>
         </div>
       </div>
     `;
