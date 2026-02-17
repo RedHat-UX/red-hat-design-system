@@ -3,11 +3,10 @@ import type { RandomPatternController } from './random-pattern-controller.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { LitElement, html, isServer, type PropertyValues } from 'lit';
-import { classMap } from 'lit/directives/class-map.js';
 
 import { themable } from '../../lib/themable.js';
 
-import styles from './rh-avatar.css';
+import styles from './rh-avatar.css' with { type: 'css' };
 
 /**
  * An avatar is a small thumbnail representation of a user.

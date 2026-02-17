@@ -5,6 +5,7 @@ import { tokens } from '@rhds/tokens/meta.js';
 import { join } from 'node:path';
 import { readFile, access } from 'node:fs/promises';
 import { capitalize, copyCell, dedent, getTokenHref } from '#11ty-plugins/tokensHelpers.js';
+import { htmlToReact } from '#11ty-plugins/html-to-react.js';
 import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
 import { AssetCache } from '@11ty/eleventy-fetch';
 import { Renderer } from '#eleventy.config';
@@ -279,7 +280,6 @@ export default class ElementsPage extends Renderer<Context> {
     const { doc } = ctx;
     const { tagName } = doc.docsPage;
     return [
-      content,
       html`
       <section class="band" id="installation">
         ${this.#header('Importing')}
@@ -293,11 +293,10 @@ export default class ElementsPage extends Renderer<Context> {
         <p>To learn more about installing RHDS elements on your site using an import map read our <a href="/get-started/developers/installation/">getting started docs</a>.        
       </section>
       `,
-
-
       await this.#renderLightdom(ctx),
       this.#header('Usage'),
       await this.#getMainDemoContent(tagName),
+      content,
       await this.#renderCodeDocs.call(this,
                                       doc.docsPage.tagName,
                                       { ...ctx, level: (ctx.level ?? 1) + 1 }),
@@ -897,6 +896,14 @@ export default class ElementsPage extends Renderer<Context> {
       const githubSourcePrefix = `https://github.com/RedHat-UX/red-hat-design-system/tree/main`;
       const sourceUrl = `${githubSourcePrefix}${demo.filePath.replace(process.cwd(), '')}`;
       const demoUrl = `/elements/${this.getTagNameSlug(tagName)}/demo/${demoSlug === 'index' ? '' : `${demoSlug}/`}`;
+
+      // if code-block demo and has thousands in the demoSlug then do not generate a uxdot-demo but a link to the full screen demo
+      if (demoSlug.includes('thousands') && tagName === 'rh-code-block') {
+        return html`
+          <a href="${demoUrl}">View full screen demo</a>
+        `;
+      }
+
       const codeblocks = await this.#getDemoCodeBlocks(demo);
       if (codeblocks) {
         return html`
@@ -917,7 +924,7 @@ export default class ElementsPage extends Renderer<Context> {
   }
 
   async #getDemoCodeBlocks(demo: DemoRecord) {
-    const map = new Map<'html' | 'css' | 'js', string>();
+    const map = new Map<'html' | 'react' | 'css' | 'js', string>();
 
     function updateDemoContentForType(contentType: 'html' | 'css' | 'js', node: Tools.ParentNode) {
       const oldContent = map.get(contentType) ?? '';
@@ -940,11 +947,19 @@ export default class ElementsPage extends Renderer<Context> {
         }
       }
 
-      map.set('html', serialize(fragment));
+      const htmlContent = serialize(fragment);
+      map.set('html', htmlContent);
+
+      // Generate React wrapper code from the HTML
+      const reactCode = htmlToReact(htmlContent);
+      if (reactCode) {
+        map.set('react', reactCode);
+      }
 
       const blocks = await Promise.all(map.entries().map(([kind, content]) => {
+        const lang = kind === 'react' ? 'jsx' : kind;
         const tpl = dedent(`
-          \`\`\`${kind} uxdotcodeblock {slot=${kind}}
+          \`\`\`${lang} uxdotcodeblock {slot=${kind}}
           ${content.trim()}
           \`\`\`
         `);

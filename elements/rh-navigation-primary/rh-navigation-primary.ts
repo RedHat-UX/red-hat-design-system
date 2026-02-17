@@ -20,7 +20,7 @@ import './rh-navigation-primary-overlay.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
-import styles from './rh-navigation-primary.css';
+import styles from './rh-navigation-primary.css' with { type: 'css' };
 
 export type NavigationPrimaryPalette = Extract<ColorPalette, (
   | 'lightest'

@@ -10,7 +10,7 @@ import '@rhds/elements/rh-surface/rh-surface.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-video-embed.css';
+import styles from './rh-video-embed.css' with { type: 'css' };
 
 export class ConsentClickEvent extends Event {
   declare target: RhVideoEmbed;

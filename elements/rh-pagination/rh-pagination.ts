@@ -11,7 +11,7 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-pagination.css';
+import styles from './rh-pagination.css' with { type: 'css' };
 
 const L1 = html`
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 14">
@@ -75,8 +75,16 @@ export class RhPagination extends LitElement {
   /** Change pagination size to small */
   @property({ reflect: true }) size: 'sm' | null = null;
 
-  /** "Open" variant */
-  @property({ reflect: true }) variant?: 'open' | null = null;
+  /**
+   * Borderless variant
+   * Note: 'open' will also work, but is deprecated
+   */
+  @property({ reflect: true, converter: {
+    fromAttribute(value: string | null) {
+      // Silent aliasing: convert 'open' to 'borderless'
+      return value === 'open' ? 'borderless' : value as 'borderless' | null;
+    },
+  } }) variant?: 'borderless' | null = null;
 
   @query('input') private input?: HTMLInputElement;
 
