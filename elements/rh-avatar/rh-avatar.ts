@@ -1,10 +1,11 @@
 import type { RandomPatternController } from './random-pattern-controller.js';
 
+import { LitElement, html, isServer, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { LitElement, html, isServer, type PropertyValues } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
 
-import { themable } from '../../lib/themable.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-avatar.css' with { type: 'css' };
 
