@@ -84,8 +84,12 @@ export class RhNavigationPrimary extends LitElement {
   @query('#links-menu')
   private _linksMenu!: HTMLDetailsElement;
 
-  @query('summary')
+  @query('#hamburger summary')
   private _hamburgerSummary!: HTMLElement;
+
+  @query('#links-menu summary')
+  private _linksMenuSummary!: HTMLElement;
+
 
   @query('#title')
   private _title!: HTMLHeadingElement;
@@ -234,7 +238,7 @@ export class RhNavigationPrimary extends LitElement {
             </div>
           </details>
           <div id="secondary">
-            <div id="event" role="list" ?hidden=${!hasEvent}>
+            <div id="event" role="list" class="${classMap({ 'hidden': !hasEvent })}">
               <!--
                 Use this slot for event promotion.  Images such as SVGs and links are most often slotted here.
                 Slot these items using the \`<rh-navigation-primary-item slot="event">\` element. If any 
@@ -243,8 +247,8 @@ export class RhNavigationPrimary extends LitElement {
               -->
               <slot name="event"></slot>
             </div>
-            <details id="links-menu" ?hidden=${!hasLinks} ?open="${this._linksMenuOpen}" @toggle="${this.#linksMenuToggle}">
-              <summary>
+            <details id="links-menu" class="${classMap({ 'hidden': !hasLinks })}" ?open="${this._linksMenuOpen}" @toggle="${this.#linksMenuToggle}" @focusout="${this.#onLinksMenuFocusOut}">
+              <summary @blur="${this.#onLinksMenuSummaryBlur}">
                 <div id="links-menu-summary" class="visually-hidden">${this.mobileLinksToggleLabel}</div>
                 <rh-icon icon="menu-switcher" set="ui"></rh-icon>
               </summary>
@@ -260,7 +264,7 @@ export class RhNavigationPrimary extends LitElement {
               </div>
             </details>
                          
-            <div id="dropdowns" role="list" ?hidden=${!hasDropdowns}>
+            <div id="dropdowns" role="list" class="${classMap({ 'hidden': !hasDropdowns })}">
               <!--
                 Use this slot for search, for you, and account dropdowns. Slot these items using the
                 \`<rh-navigation-primary-item slot="dropdowns" variant="dropdown">\` element. If any 
@@ -318,6 +322,14 @@ export class RhNavigationPrimary extends LitElement {
     return Array.from(
       this.querySelectorAll(
         'rh-navigation-primary-item[variant="dropdown"][open]',
+      )
+    );
+  }
+
+  #secondaryLinksItems(): RhNavigationPrimaryItem[] {
+    return Array.from(
+      this.querySelectorAll(
+        'rh-navigation-primary-item[slot="links"]',
       )
     );
   }
@@ -393,6 +405,35 @@ export class RhNavigationPrimary extends LitElement {
     }
   }
 
+  #linksMenuContains(item: Node): boolean {
+    return this.#secondaryLinksItems().some(li => li.contains(item));
+  }
+
+  #onLinksMenuSummaryBlur(event: FocusEvent) {
+    if (event.relatedTarget) {
+      if (this.#linksMenuContains(event.relatedTarget as Node)) {
+        return;
+      }
+      if (this.compact) {
+        this.#closeLinksMenu();
+      }
+    }
+  }
+
+  #onLinksMenuFocusOut(event: FocusEvent) {
+    if (event.relatedTarget) {
+      if (event.relatedTarget === this._linksMenuSummary) {
+        return;
+      }
+      if (this.#linksMenuContains(event.relatedTarget as Node)) {
+        return;
+      }
+      if (this.compact) {
+        this.#closeLinksMenu();
+      }
+    }
+  }
+
   async #onFocusout(event: FocusEvent) {
     const target = event.relatedTarget as HTMLElement;
     if (target?.closest('rh-navigation-primary') === this || target === null) {
@@ -406,18 +447,7 @@ export class RhNavigationPrimary extends LitElement {
   #onKeydown(event: KeyboardEvent) {
     switch (event.key) {
       case 'Escape': {
-        if (this.#openPrimaryDropdowns.size > 0) {
-          const [dropdown] = this.#openPrimaryDropdowns;
-          dropdown.hide();
-          dropdown.shadowRoot?.querySelector('summary')?.focus();
-        } else if (this.#openSecondaryDropdowns.size > 0) {
-          const [dropdown] = this.#openSecondaryDropdowns;
-          dropdown.hide();
-          dropdown.shadowRoot?.querySelector('summary')?.focus();
-        } else if (this._hamburgerOpen) {
-          this.#closeHamburger();
-          this._hamburger.querySelector('summary')?.focus();
-        }
+        this.#onEscDown();
         break;
       }
       default:
@@ -431,6 +461,24 @@ export class RhNavigationPrimary extends LitElement {
         this.#onTabUp(event);
         break;
       }
+    }
+  }
+
+  #onEscDown() {
+    if (this.#openPrimaryDropdowns.size > 0) {
+      const [dropdown] = this.#openPrimaryDropdowns;
+      dropdown.hide();
+      dropdown.shadowRoot?.querySelector('summary')?.focus();
+    } else if (this.#openSecondaryDropdowns.size > 0) {
+      const [dropdown] = this.#openSecondaryDropdowns;
+      dropdown.hide();
+      dropdown.shadowRoot?.querySelector('summary')?.focus();
+    } else if (this._hamburgerOpen) {
+      this.#closeHamburger();
+      this._hamburger.querySelector('summary')?.focus();
+    } else if (this._linksMenuOpen) {
+      this.#closeLinksMenu();
+      this._linksMenu.querySelector('summary')?.focus();
     }
   }
 

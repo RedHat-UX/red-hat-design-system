@@ -16,6 +16,12 @@ rh-navigation-primary {
       display: flex;
       align-items: center;
     }
+
+    &[slot='event'] {
+      &:hover {
+        animation: rh-navigation-event-bounce 1s infinite;
+      }
+    }
   }
 
   & rh-navigation-link {
@@ -46,5 +52,23 @@ rh-navigation-primary {
         border-block-end: none;
       }
     }
+  }
+}
+
+@keyframes rh-navigation-event-bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0); /* Element is at its original position */
+  }
+
+  40% {
+    transform: translateY(-10px); /* Element moves up 20px */
+  }
+
+  60% {
+    transform: translateY(-5px); /* Element moves up 10px from original */
   }
 }
