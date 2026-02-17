@@ -321,6 +321,24 @@ describe('<rh-navigation-primary>', function() {
               expect(snapshot).to.have.axQuery({ name: 'Item 8' });
             });
 
+            describe('pressing escape ', function() {
+              beforeEach(press('Escape'));
+              beforeEach(async () => await element.updateComplete);
+
+              it('should close bento box', async function() {
+                const snapshot = await a11ySnapshot();
+                expect(snapshot).to.not.have.axQuery({ name: 'Explore Red Hat', expanded: false });
+                expect(snapshot).to.not.have.axQuery({ name: 'Link 1' });
+                expect(snapshot).to.not.have.axQuery({ name: 'Link 2' });
+                expect(snapshot).to.not.have.axQuery({ name: 'Link 3' });
+              });
+
+              it('bento box should have focus', async function() {
+                const snapshot = await a11ySnapshot();
+                expect(snapshot).to.have.axQuery({ name: 'Explore Red Hat', focused: true });
+              });
+            });
+
             describe('tabbing to first link in bento box', function() {
               beforeEach(press('Tab'));
               beforeEach(async () => await element.updateComplete);
@@ -328,6 +346,21 @@ describe('<rh-navigation-primary>', function() {
               it('should focus the first link', async function() {
                 const snapshot = await a11ySnapshot();
                 expect(snapshot).to.have.axQuery({ name: 'Link 1', focused: true });
+              });
+            });
+
+            describe('tabbing out of the bento box', function() {
+              beforeEach(press('Tab'));
+              beforeEach(press('Tab'));
+              beforeEach(press('Tab'));
+              beforeEach(press('Tab')); // should tab out
+
+              it('should close bento box', async function() {
+                const snapshot = await a11ySnapshot();
+                expect(snapshot).to.not.have.axQuery({ name: 'Explore Red Hat', expanded: false });
+                expect(snapshot).to.not.have.axQuery({ name: 'Link 1' });
+                expect(snapshot).to.not.have.axQuery({ name: 'Link 2' });
+                expect(snapshot).to.not.have.axQuery({ name: 'Link 3' });
               });
             });
           });
@@ -467,7 +500,7 @@ describe('<rh-navigation-primary>', function() {
     });
     beforeEach(async () => await element.updateComplete);
 
-    it('should have a dark themed menu bar', function() {
+    it('should have a darkest themed menu bar', function() {
       const bar = element.shadowRoot?.querySelector('#bar') as HTMLElement | undefined;
       expect(getComputedStyle(bar!).getPropertyValue('background-color')).to.be.equal('rgb(21, 21, 21)'); /* rgb(21, 21, 21) equiv #151515 */
     });
