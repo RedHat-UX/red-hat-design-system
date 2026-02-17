@@ -169,8 +169,8 @@
   place-self: flex-end;
   align-content: center;
 
-  @container navigation-primary (min-width: 480px) {
-    place-items: center;
+  @container navigation-primary (min-width: 380px) {
+    place-self: flex-start;
   }
 
   @container navigation-primary (min-width: 1200px) {
@@ -312,9 +312,13 @@
   }
 
   #links-menu {
-    display: flex;
+    display: none;
     align-items: center;
     block-size: 100%;
+
+    @container navigation-primary (min-width: 320px) {
+      display: flex;
+    }
 
     & summary {
       position: relative;
@@ -439,13 +443,15 @@
 }
 
 #container {
+  --_navbar-height: 66px;
+
   display: block;
   position: relative;
   inline-size: 100%;
   block-size: var(--_navbar-height);
   z-index: 2;
 
-  @container navigation-primary (min-width: 480px) {
+  @container navigation-primary (min-width: 576px) {
     --_navbar-height: 82px;
   }
 
@@ -454,7 +460,7 @@
       grid-template-areas: 'logo sub-domain';
       gap: var(--rh-space-lg, 16px);
 
-      @container navigation-primary (min-width: 567px) {
+      @container navigation-primary (min-width: 576px) {
         gap: var(--rh-space-xl, 24px);
       }
     }
