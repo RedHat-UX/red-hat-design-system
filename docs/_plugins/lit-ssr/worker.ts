@@ -24,12 +24,11 @@ import { transform, Features } from 'lightningcss';
 
 interface WorkerInitData {
   imports: string[];
-  tsconfig: string;
 }
 
-const { imports, tsconfig } = Piscina.workerData as WorkerInitData;
+const { imports } = Piscina.workerData as WorkerInitData;
 
-registerTS({ tsconfig });
+registerTS();
 register('./lit-css-node.ts', import.meta.url);
 
 /* eslint-disable no-console */

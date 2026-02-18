@@ -71,7 +71,6 @@ export default async function(
   opts?: Options,
 ) {
   const imports = opts?.componentModules ?? [];
-  const tsconfig = opts?.tsconfig ?? './tsconfig.settings.json';
 
   let pool: Piscina;
 
@@ -87,7 +86,6 @@ export default async function(
         execArgv: ['--no-experimental-strip-types'],
         workerData: {
           imports,
-          tsconfig,
         },
       });
     });

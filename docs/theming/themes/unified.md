@@ -13,9 +13,10 @@ subnav:
   import '@uxdot/elements/uxdot-pattern.js';
   import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
   import '@rhds/elements/rh-accordion/rh-accordion.js';
+  import '@rhds/elements/rh-button/rh-button.js';
+  import '@rhds/elements/rh-progress-stepper/rh-progress-stepper.js';
   import '@rhds/elements/rh-audio-player/rh-audio-player.js';
   import '@rhds/elements/rh-blockquote/rh-blockquote.js';
-  import '@rhds/elements/rh-button/rh-button.js';
   import '@rhds/elements/rh-card/rh-card.js';
   import '@rhds/elements/rh-cta/rh-cta.js';
   import '@rhds/elements/rh-pagination/rh-pagination.js';
@@ -26,11 +27,34 @@ subnav:
 </script>
 <style>
   #unified-theme-toggle {
+    margin-block-end: var(--rh-space-2xl, 32px);
+
     p {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: var(--rh-space-2xl, 32px);
     }
+  }
+
+  .card-grid {
+    display: grid;
+    gap: var(--rh-space-2xl, 32px);
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+
+    rh-card {
+        height: 100%;
+    }
+  }
+
+  .example-row {
+    margin-block: var(--rh-space-2xl, 32px);
+  }
+
+  .example-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rh-space-lg, 16px);
+    align-items: center;
   }
 </style>
 
@@ -55,21 +79,15 @@ Unified content
   </p>
 </rh-card>
 
-### Currently supported elements
-<rh-card id="unified-supported-elements">
-  <div id="unified-supported-buttons">
-    <rh-button>Primary</rh-button>
-    <rh-button danger>Primary danger</rh-button>
-    <rh-button variant="secondary">Secondary</rh-button>
-    <rh-button variant="secondary" danger>Secondary danger</rh-button>
-    <rh-button variant="tertiary">Tertiary</rh-button>
-    <rh-button variant="link">Link</rh-button>
-    <rh-button icon="search" icon-set="microns" variant="secondary" label="Search"></rh-button>
-    <rh-button variant="close" accessible-label="Close"></rh-button>
-    <rh-button variant="play">Play</rh-button>
-    <rh-button disabled>Disabled</rh-button>
-  </div>
-</rh-card>
+{% renderFile './docs/theming/patterns/unified-theme-demo.html' %}
+
+<rh-accordion>
+  <h2><rh-accordion-header>All supported elements</rh-accordion-header></h2>
+  <rh-accordion-panel>
+    {% renderFile './docs/theming/patterns/unified-supported-elements.html' %}
+  </rh-accordion-panel>
+</rh-accordion>
+
 
 {% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}
 
