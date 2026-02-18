@@ -1,0 +1,1 @@
+Demonstrates using the `link` variant for top-level navigation items instead of dropdowns. Use this pattern when navigation items are simple anchors that link directly to a page without requiring an expandable menu.
