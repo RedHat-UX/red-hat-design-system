@@ -262,7 +262,7 @@ describe('<rh-navigation-primary>', function() {
 
               it('should still have an open overlay', async function() {
                 // query the shadow root for the overlay
-                const overlay = element.shadowRoot?.querySelector('rh-navigation-primary-overlay[open]');
+                const overlay = element.shadowRoot?.querySelector('#overlay.open');
                 expect(overlay).to.exist;
               });
             });
@@ -391,10 +391,10 @@ describe('<rh-navigation-primary>', function() {
                 expect(snapshot).to.not.have.axQuery({ name: 'Link 3' });
               });
 
-              it('should not still have an open overlay', async function() {
+              it('should have a closed overlay', async function() {
                 // query the shadow root for the overlay
-                const overlay = element.shadowRoot?.querySelector('rh-navigation-primary-overlay[open]');
-                expect(overlay).to.not.exist;
+                const overlay = element.shadowRoot?.querySelector('#overlay:not(.open)');
+                expect(overlay).to.exist;
               });
             });
           });
