@@ -5,22 +5,6 @@
 }
 
 :host {
-  --_color-stop-start: var(--rh-color-brand-red-light, #f56e6e);
-  --_color-stop-middle: var(--rh-color-purple-40, #876fd4);
-  --_color-stop-end: var(--rh-color-purple-60, #3d2785);
-  --_linear-gradient:
-    var(--_color-stop-start),
-    var(--_color-stop-middle),
-    var(--_color-stop-end);
-  --_conic-gradient:
-    var(--_linear-gradient),
-    var(--_color-stop-middle),
-    var(--_color-stop-start);
-  --_gradient-direction: -90deg;
-  --_gradient-ring:
-    linear-gradient(light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-      var(--rh-color-surface-darker, #1f1f1f)) 0 0) padding-box,
-    conic-gradient(from var(--_gradient-direction), var(--_conic-gradient)) border-box;
   --_navbar-height: 74px;
   --_nav-container-z-index: -1;
   --_box-shadow-color: light-dark(rgba(21, 21, 21, 0.2), rgba(0, 0, 0, 0.6));
@@ -74,6 +58,8 @@
   grid-template-areas: 'lockup hamburger secondary-links';
   grid-template-columns: auto 1fr auto;
   grid-template-rows: var(--_navbar-height);
+
+  /* Surface uses lightest/darkest tokens; adapts via color-scheme on :host */
   background-color:
     light-dark(
         var(--rh-color-surface-lightest, #ffffff),
@@ -504,6 +490,8 @@
       position: relative;
       place-items: center;
       block-size: 100%;
+
+      /* Uses heading font tokens (rh-font-family-heading, rh-font-weight-heading-bold) */
       font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif) !important;
       font-size: 1rem !important; /* non standard for heading */
       font-weight: var(--rh-font-weight-heading-bold, 700) !important;
