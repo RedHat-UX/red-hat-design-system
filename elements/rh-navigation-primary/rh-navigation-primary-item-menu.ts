@@ -9,7 +9,11 @@ import { context } from './context.js';
 import styles from './rh-navigation-primary-item-menu.css' with { type: 'css' };
 
 /**
- * Navigation Menu
+ * A navigation menu is a responsive content container for navigation item
+ * dropdowns that adapts its layout based on the primary navigation's compact
+ * state.
+ *
+ * @summary Content container for navigation item dropdowns
  */
 @customElement('rh-navigation-primary-item-menu')
 export class RhNavigationPrimaryItemMenu extends LitElement {
@@ -45,7 +49,11 @@ export class RhNavigationPrimaryItemMenu extends LitElement {
     const compact = !this.#hydrated ? true : this.compact ?? true;
     return html`
       <div id="container" class="${classMap({ compact: compact, dehydrated: !this.#hydrated })}">
-        <!-- Place element content here -->
+        <!--
+          Use this slot for navigation item dropdown content, typically links
+          and nested menus. Content layout adapts based on the primary
+          navigation's compact state.
+        -->
         <slot></slot>
       </div>
     `;

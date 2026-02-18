@@ -21,6 +21,15 @@ import './rh-navigation-primary-item-menu.js';
 
 import styles from './rh-navigation-primary-item.css' with { type: 'css' };
 
+/**
+ * A navigation item represents an interactive element within the primary
+ * navigation bar. It supports link and dropdown variants, adapting its
+ * presentation based on the navigation's compact state and slot placement.
+ *
+ * @summary Interactive link or dropdown within the primary navigation
+ *
+ * @fires toggle - when the dropdown opens or closes
+ */
 @themable
 @customElement('rh-navigation-primary-item')
 export class RhNavigationPrimaryItem extends LitElement {
@@ -101,16 +110,34 @@ export class RhNavigationPrimaryItem extends LitElement {
     })}">${this.variant === 'dropdown' ? html`
         <details @toggle="${this.#detailsToggle}" ?open="${this.open}">
           <summary>${hamburger ? '' : html`
+            <!--
+              Use this slot to provide a custom icon before the summary text.
+              If the \`icon\` property is set, it will be used as the default slot content.
+            -->
             <slot name="icon">${!this.icon ? '' : html`
               <rh-icon icon="${ifDefined(this.icon)}" set="${ifDefined(this.iconSet)}"></rh-icon>`}
             </slot>`}
-            <div id="summary-text"><slot name="summary">${this.summary}</slot></div>
+            <div id="summary-text">
+              <!--
+                Use this slot to provide custom label content for the dropdown toggle.
+                If the \`summary\` property is set, it will be used as the default slot content.
+              -->
+              <slot name="summary">${this.summary}</slot>
+            </div>
             <rh-icon icon="caret-down" set="microns" class="${hamburger ? '' : 'hidden'}"></rh-icon>
           </summary>
           <rh-navigation-primary-item-menu id="details-content">
+            <!--
+              Use this slot for dropdown menu content, displayed when the item is open.
+              Typically contains links, nested menus, or other navigational content.
+            -->
             <slot></slot>
           </rh-navigation-primary-item-menu>
         </details>` : html`
+        <!--
+          Use this slot for link variant content, typically an \`<a>\` or
+          \`<rh-navigation-link>\` element.
+        -->
         <slot></slot>`}
       </div>
     `;

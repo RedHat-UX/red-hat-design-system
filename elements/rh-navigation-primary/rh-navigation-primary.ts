@@ -30,7 +30,7 @@ export type NavigationPrimaryPalette = Extract<ColorPalette, (
 /**
  * Primary navigation helps users orient themselves and move through websites and domains.
  *
- * @summary       Primary navigation
+ * @summary Primary navigation
  *
  * @alias Navigation (primary)
  *
