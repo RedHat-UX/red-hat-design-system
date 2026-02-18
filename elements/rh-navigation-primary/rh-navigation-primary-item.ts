@@ -22,11 +22,15 @@ import './rh-navigation-primary-item-menu.js';
 import styles from './rh-navigation-primary-item.css' with { type: 'css' };
 
 /**
- * A navigation item represents an interactive element within the primary
- * navigation bar. It supports link and dropdown variants, adapting its
- * presentation based on the navigation's compact state and slot placement.
+ * A navigation item provides an interactive link or dropdown for use within the
+ * primary navigation bar. When the `variant` is set to `dropdown`, it allows
+ * users to expand and collapse a menu of navigational content. The element
+ * MUST be placed inside an `rh-navigation-primary` element and SHOULD use the
+ * `summary` attribute or slot when using the `dropdown` variant. Avoid using
+ * the `dropdown` variant without providing summary text, as this will result
+ * in an inaccessible toggle.
  *
- * @summary Interactive link or dropdown within the primary navigation
+ * @summary Interactive link or dropdown for the primary navigation
  *
  * @fires toggle - when the dropdown opens or closes
  */
@@ -52,25 +56,44 @@ export class RhNavigationPrimaryItem extends LitElement {
   @state()
   private compact?: boolean;
 
+  /** Whether the dropdown is currently expanded. Only applies when `variant` is `dropdown`. */
   @property({ type: Boolean, reflect: true }) open = false;
 
-  /* Summary text for dropdown variants only */
+  /**
+   * Sets the label text for the dropdown toggle. When `variant` is `dropdown`,
+   * either this property or the `summary` slot MUST be provided so the toggle
+   * has an accessible name.
+   */
   @property() summary?: string;
 
-  /* Variants 'link' | 'dropdown', link is the default if no variant is given */
+  /**
+   * Controls the presentation style of the navigation item. MUST be set to
+   * `dropdown` when the item provides an expandable menu, otherwise it
+   * SHOULD remain `link` for simple anchor-style items. Defaults to `link`.
+   */
   @property() variant?: 'link' | 'dropdown' = 'link';
 
   /**
-   * Hides the element at various container query based breakpoints.
-   * Breakpoints available 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+   * Hides the element below a given container-query breakpoint and reveals it
+   * when the navigation is at or above that width. Allows progressive
+   * disclosure of navigation items at wider viewports. Avoid hiding critical
+   * navigation items, as they will be inaccessible below the breakpoint.
+   * Defaults to `undefined`.
    */
   @property({ reflect: true, attribute: 'hide-at' })
   hideAt?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' = undefined;
 
-  /** Shorthand for the `icon` slot, the value is icon name */
+  /**
+   * Shorthand for the `icon` slot. Sets the icon name from the given icon set.
+   * SHOULD be used with the `dropdown` variant for standalone secondary items
+   * such as account or search toggles. Defaults to `undefined`.
+   */
   @property() icon?: IconNameFor<IconSetName>;
 
-  /** Icon set for the `icon` property - 'ui' by default */
+  /**
+   * Icon set for the `icon` property. MUST match a registered icon set name.
+   * Defaults to `ui`.
+   */
   @property({ attribute: 'icon-set' }) iconSet?: IconSetName;
 
 

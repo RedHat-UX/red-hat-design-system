@@ -28,9 +28,19 @@ export type NavigationPrimaryPalette = Extract<ColorPalette, (
 )>;
 
 /**
- * Primary navigation helps users orient themselves and move through websites and domains.
+ * Primary navigation provides a persistent bar for orienting users and
+ * navigating across websites and domains. Use this element when a site
+ * requires a global header for wayfinding across multiple sections or
+ * domains. It allows grouping of primary links, dropdown menus, event
+ * promotions, and utility actions into a single responsive bar. The element
+ * MUST contain at least one `rh-navigation-primary-item` in the default slot
+ * and SHOULD include an `accessible-label` when multiple navigation landmarks
+ * exist on the page. The `logo` slot allows branding customization; when
+ * overridden, the `logo-href` attribute will no longer function. Avoid
+ * leaving the default slot empty, as this results in an inaccessible
+ * hamburger menu.
  *
- * @summary Primary navigation
+ * @summary Persistent bar for orienting users and navigating across sites
  *
  * @alias Navigation (primary)
  *
@@ -96,34 +106,44 @@ export class RhNavigationPrimary extends LitElement {
 
 
   /**
-   * Sets the mobile toggle (hamburger) text, used for translations, defaults to 'Menu'
+   * Accessible label for the mobile hamburger toggle. MUST be set when the
+   * navigation is served in a non-English locale. Defaults to `'Menu'`.
    */
   @property({ attribute: 'mobile-toggle-label' }) mobileToggleLabel = 'Menu';
 
   /**
-   * Sets the mobile links toggle (bento box) text, used for translations, defaults to 'Explore Red Hat'
+   * Accessible label for the mobile links (bento box) toggle. MUST be set
+   * when the navigation is served in a non-English locale. Defaults to
+   * `'Explore Red Hat'`.
    */
   @property({ attribute: 'mobile-links-toggle-label' }) mobileLinksToggleLabel = 'Explore Red Hat';
 
-  /** Sets color context for child components, overrides parent context */
+  /**
+   * Sets the color palette for the navigation and its child components.
+   * SHOULD only use `lightest` or `darkest` to match the page theme.
+   * Defaults to `undefined` (inherits from the page color scheme).
+   */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: NavigationPrimaryPalette;
 
   /**
-   * Customize the default label for the navigation.
-   * Defaults to "Main navigation" if no value is set.
+   * Accessible label applied to the `<nav>` landmark. MUST be set when the
+   * navigation is served in a non-English locale, and SHOULD be set when the
+   * page contains multiple navigation landmarks to provide unique identification
+   * for assistive technology. Defaults to `'Main navigation'`.
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel = 'Main navigation';
 
   /**
-   * Indicates if the navigation is a subdomain variation.
-   * Defaults to false.
+   * Enables the sub-domain variation, which displays the `sub-domain` slot
+   * alongside the logo lockup. MUST be set to `true` when slotting content
+   * into the `sub-domain` slot. Defaults to `false`.
    */
   @property({ type: Boolean, reflect: true, attribute: 'sub-domain' }) subDomain = false;
 
-
   /**
-   * The link for the logo.
-   * Defaults to "/" if no value is set.
+   * Sets the `href` for the default logo link. Avoid changing this value
+   * unless the site requires a non-root landing page for the logo. Defaults
+   * to `'/'`.
    */
   @property({ attribute: 'logo-href' }) logoHref = '/';
 

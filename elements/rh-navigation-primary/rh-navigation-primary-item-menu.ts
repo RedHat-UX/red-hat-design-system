@@ -9,9 +9,11 @@ import { context } from './context.js';
 import styles from './rh-navigation-primary-item-menu.css' with { type: 'css' };
 
 /**
- * A navigation menu is a responsive content container for navigation item
- * dropdowns that adapts its layout based on the primary navigation's compact
- * state.
+ * A navigation menu provides a responsive content container for navigation
+ * item dropdowns that adapts its layout based on the primary navigation's
+ * compact state. This element MUST be a child of `rh-navigation-primary-item`
+ * and SHOULD NOT be used independently. Avoid placing interactive content
+ * outside of this container when building dropdown menus.
  *
  * @summary Content container for navigation item dropdowns
  */
@@ -52,7 +54,11 @@ export class RhNavigationPrimaryItemMenu extends LitElement {
         <!--
           Use this slot for navigation item dropdown content, typically links
           and nested menus. Content layout adapts based on the primary
-          navigation's compact state.
+          navigation's compact state. Slotted content SHOULD use semantic
+          heading and list elements for screen reader navigation. Avoid
+          placing focusable elements outside of this container, as focus
+          management relies on this boundary to trap and restore focus
+          when the dropdown closes.
         -->
         <slot></slot>
       </div>
