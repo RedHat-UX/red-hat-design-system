@@ -16,7 +16,6 @@ import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palet
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import { RhNavigationPrimaryItem } from './rh-navigation-primary-item.js';
-import './rh-navigation-primary-overlay.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
@@ -300,10 +299,11 @@ export class RhNavigationPrimary extends LitElement {
           </div>
         </div>
       </div>
-      <rh-navigation-primary-overlay
-          .open="${this._overlayOpen}"
-          @click="${this.#onOverlayClick}">
-      </rh-navigation-primary-overlay>
+      <div id="overlay" 
+        class="${classMap({ 'open': this._overlayOpen })}" 
+        @click="${this.#onOverlayClick}"
+        @keydown="${this.#onOverlayClick}">
+      </div>
     `;
   }
 
@@ -497,10 +497,10 @@ export class RhNavigationPrimary extends LitElement {
       const [dropdown] = this.#openSecondaryDropdowns;
       dropdown.hide();
       dropdown.shadowRoot?.querySelector('summary')?.focus();
-    } else if (this._hamburgerOpen) {
+    } else if (this._hamburgerOpen && this.compact) {
       this.#closeHamburger();
       this._hamburger.querySelector('summary')?.focus();
-    } else if (this._linksMenuOpen) {
+    } else if (this._linksMenuOpen && this.compact) {
       this.#closeLinksMenu();
       this._linksMenu.querySelector('summary')?.focus();
     }
