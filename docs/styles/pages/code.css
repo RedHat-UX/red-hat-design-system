@@ -28,7 +28,7 @@
     }
 
     td :is(h2, h3, h4) {
-      font-size: var(--rh-font-size-body-text-md);
+      font-size: var(--rh-font-size-body-text-sm);
     }
 
     td {
