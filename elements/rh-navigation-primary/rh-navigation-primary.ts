@@ -253,7 +253,7 @@ export class RhNavigationPrimary extends LitElement {
               <div id="summary" class="visually-hidden">${this.mobileToggleLabel}</div>
             </summary>
             <div id="details-content" role="list" >
-              <!-- 
+              <!--
                 Use this slot for \`<rh-primary-navigation-item>\` hamburger menu links and dropdowns.
                 If left empty will result in accessibility issues.
               -->
@@ -264,8 +264,8 @@ export class RhNavigationPrimary extends LitElement {
             <div id="event" role="list" class="${classMap({ 'hidden': !hasEvent })}">
               <!--
                 Use this slot for event promotion.  Images such as SVGs and links are most often slotted here.
-                Slot these items using the \`<rh-navigation-primary-item slot="event">\` element. If any 
-                other element is slotted here, it will need to be a role="listitem" to avoid accessibility 
+                Slot these items using the \`<rh-navigation-primary-item slot="event">\` element. If any
+                other element is slotted here, it will need to be a role="listitem" to avoid accessibility
                 issues.  Other slotted elements will also likely have other rendering issues.
               -->
               <slot name="event"></slot>
@@ -279,30 +279,29 @@ export class RhNavigationPrimary extends LitElement {
                 <!--
                   Use this slot for quick links to other sites not directly associated with the page the
                   navigation is on.  Common use cases are developers docs and support. Slot these items using
-                  the \`<rh-navigation-primary-item slot="links">\` element. If any other element is slotted 
-                  here, it will need to be a role="listitem" to avoid accessibility issues.  Other slotted 
+                  the \`<rh-navigation-primary-item slot="links">\` element. If any other element is slotted
+                  here, it will need to be a role="listitem" to avoid accessibility issues.  Other slotted
                   elements will also likely have other rendering issues.
-                -->  
+                -->
                 <slot name="links"></slot>
               </div>
             </details>
-                         
             <div id="dropdowns" role="list" class="${classMap({ 'hidden': !hasDropdowns })}">
               <!--
                 Use this slot for search, for you, and account dropdowns. Slot these items using the
-                \`<rh-navigation-primary-item slot="dropdowns" variant="dropdown">\` element. If any 
-                other element is slotted here, it will need to be a role="listitem" to avoid accessibility 
+                \`<rh-navigation-primary-item slot="dropdowns" variant="dropdown">\` element. If any
+                other element is slotted here, it will need to be a role="listitem" to avoid accessibility
                 issues.  Other slotted elements will also likely have other rendering issues.
-              --> 
+              -->
               <slot name="dropdowns"></slot>
             </div>
           </div>
         </div>
       </div>
-      <div id="overlay" 
-        class="${classMap({ 'open': this._overlayOpen })}" 
-        @click="${this.#onOverlayClick}"
-        @keydown="${this.#onOverlayClick}">
+      <div id="overlay"
+           class="${classMap({ open: this._overlayOpen })}"
+           @click="${this.#onOverlayClick}"
+           @keydown="${this.#onOverlayClick}">
       </div>
     `;
   }
