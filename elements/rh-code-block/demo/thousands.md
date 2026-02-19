@@ -1,0 +1,1 @@
+This demo loads 1000+ code blocks.  The code blocks have the line-numbers="hidden" and the actions="copy" attribute. No intersection or resize observers will instantiate.

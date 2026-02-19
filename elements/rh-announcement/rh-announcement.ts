@@ -10,7 +10,7 @@ import { themable } from '@rhds/elements/lib/themable.js';
 
 import '@rhds/elements/rh-button/rh-button.js';
 
-import styles from './rh-announcement.css';
+import styles from './rh-announcement.css' with { type: 'css' };
 
 export class AnnouncementCloseEvent extends Event {
   constructor() {

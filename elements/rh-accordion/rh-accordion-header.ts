@@ -17,7 +17,7 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import { consume } from '@lit/context';
 import { context } from './context.js';
 
-import styles from './rh-accordion-header.css';
+import styles from './rh-accordion-header.css' with { type: 'css' };
 
 export class AccordionHeaderChangeEvent extends Event {
   declare target: RhAccordionHeader;

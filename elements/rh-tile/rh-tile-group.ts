@@ -12,7 +12,7 @@ import { RhTile, TileSelectEvent } from './rh-tile.js';
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-tile-group.css';
+import styles from './rh-tile-group.css' with { type: 'css' };
 
 /**
  * A group of `<rh-tile>` elements which handles radio selection.
