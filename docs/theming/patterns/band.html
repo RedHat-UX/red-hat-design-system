@@ -1,4 +1,6 @@
-<rh-surface id="band" color-palette="light" class="theme-bordeaux">
+<rh-surface id="band"
+            color-palette="light"
+            class="theme-bordeaux">
   <div class="band-grid">
     <rh-card>
       <h2 slot="header">Card</h2>
@@ -6,7 +8,7 @@
         Nullam eleifend elit sed est egestas, a sollicitudin mauris
         tincidunt.</p>
       <rh-cta slot="footer"
-              priority="primary"
+              variant="primary"
               href="#">
         Call to action
       </rh-cta>
@@ -17,7 +19,7 @@
         Nullam eleifend elit sed est egestas, a sollicitudin mauris
         tincidunt.</p>
       <rh-cta slot="footer"
-              priority="primary"
+              variant="primary"
               href="#">
         Call to action
       </rh-cta>
@@ -28,7 +30,7 @@
         Nullam eleifend elit sed est egestas, a sollicitudin mauris
         tincidunt.</p>
       <rh-cta slot="footer"
-              priority="primary"
+              variant="primary"
               href="#">
         Call to action
       </rh-cta>
@@ -85,3 +87,9 @@
     }
   }
 </style>
+
+<script type="module">
+  import "@rhds/elements/rh-card/rh-card.js";
+  import "@rhds/elements/rh-cta/rh-cta.js";
+  import "@rhds/elements/rh-surface/rh-surface.js";
+</script>
