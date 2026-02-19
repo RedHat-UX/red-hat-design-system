@@ -28,16 +28,11 @@ export type NavigationPrimaryPalette = Extract<ColorPalette, (
 
 /**
  * Primary navigation provides a persistent bar for orienting users and
- * navigating across websites and domains. Use this element when a site
+ * navigating across websites and domains. It should be used when a site
  * requires a global header for wayfinding across multiple sections or
  * domains. It allows grouping of primary links, dropdown menus, event
- * promotions, and utility actions into a single responsive bar. The element
- * MUST contain at least one `rh-navigation-primary-item` in the default slot
- * and SHOULD include an `accessible-label` when multiple navigation landmarks
- * exist on the page. The `logo` slot allows branding customization; when
- * overridden, the `logo-href` attribute will no longer function. Avoid
- * leaving the default slot empty, as this results in an inaccessible
- * hamburger menu.
+ * promotions, and utility actions into a single responsive bar. There
+ * must not be more than one `<rh-navigation-primary>` on a page.
  *
  * @summary Persistent bar for orienting users and navigating across sites
  *
@@ -109,13 +104,13 @@ export class RhNavigationPrimary extends LitElement {
 
 
   /**
-   * Accessible label for the mobile hamburger toggle. MUST be set when the
+   * Accessible label for the mobile hamburger toggle. Must be set when the
    * navigation is served in a non-English locale. Defaults to `'Menu'`.
    */
   @property({ attribute: 'mobile-toggle-label' }) mobileToggleLabel = 'Menu';
 
   /**
-   * Accessible label for the mobile links (bento box) toggle. MUST be set
+   * Accessible label for the mobile links (bento box) toggle. Must be set
    * when the navigation is served in a non-English locale. Defaults to
    * `'Explore Red Hat'`.
    */
@@ -123,22 +118,23 @@ export class RhNavigationPrimary extends LitElement {
 
   /**
    * Sets the color palette for the navigation and its child components.
-   * SHOULD only use `lightest` or `darkest` to match the page theme.
+   * Should only use `lightest` or `darkest` to match the page theme.
    * Defaults to `undefined` (inherits from the page color scheme).
+   * Should not be set when user's color-scheme preference is respected.
    */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: NavigationPrimaryPalette;
 
   /**
-   * Accessible label applied to the `<nav>` landmark. MUST be set when the
-   * navigation is served in a non-English locale, and SHOULD be set when the
-   * page contains multiple navigation landmarks to provide unique identification
+   * Accessible label applied to the navigation landmark. Must be set when the
+   * navigation is served in a non-English locale, and should be set when the
+   * page contains multiple navigation landmarks, to provide unique identification
    * for assistive technology. Defaults to `'Main navigation'`.
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel = 'Main navigation';
 
   /**
    * Enables the sub-domain variation, which displays the `sub-domain` slot
-   * alongside the logo lockup. MUST be set to `true` when slotting content
+   * alongside the logo lockup. Must be set to `true` when slotting content
    * into the `sub-domain` slot. Defaults to `false`.
    */
   @property({ type: Boolean, reflect: true, attribute: 'sub-domain' }) subDomain = false;
@@ -226,7 +222,10 @@ export class RhNavigationPrimary extends LitElement {
         <div id="bar">
           <div id="lockup">
             <div id="logo">
-              <!-- Use this slot to override the link and logo image, overriding this slot contents will cause the logo-href attribute to no longer function -->
+              <!--
+                Use this slot to set the link and logo image, for branding customization.
+                Slotting content here will override the \`logo-href\` and \`logo\` attributes
+              -->
               <slot name="logo">
                 <a href="${this.logoHref}">
                   <svg preserveAspectRatio="xMinYMid slice" viewBox="0 0 613 145">
@@ -255,7 +254,8 @@ export class RhNavigationPrimary extends LitElement {
             <div id="details-content" role="list" >
               <!--
                 Use this slot for \`<rh-primary-navigation-item>\` hamburger menu links and dropdowns.
-                If left empty will result in accessibility issues.
+                Users must not leave the default slot empty, it must contain at least one \`<rh-navigation-primary-item>\`,
+                otherwise the hamburger menu will be inaccessible.
               -->
               <slot></slot>
             </div>
