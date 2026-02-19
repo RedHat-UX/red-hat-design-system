@@ -20,7 +20,20 @@
   gap: var(--rh-space-2xl, 32px) calc(var(--rh-space-xs, 4px) / 2);
   flex-wrap: wrap;
 
-  --_numeric-a-color: /** Sets the outline color when the page input has focus. */
+  /**
+   * --rh-pagination-accent-color
+   * Controls the accent color used for interactive elements and focus states.
+   * Defaults to `--rh-color-interactive-primary-default` (interactive blue).
+   *
+   * **Usage guidelines:**
+   * - Sets outline color when page input field has focus
+   * - Applied to bottom border of active/hovered page links
+   * - Used for focus indicators on navigation controls
+   * - Keep default for consistent interactive color across pages
+   * - Customize only when brand guidelines require specific accent colors
+   * - Ensure sufficient contrast with background (4.5:1 ratio minimum)
+   */
+  --_numeric-a-color:
     var(--rh-pagination-accent-color, var(--rh-color-interactive-primary-default));
   --_numeric-a-color-hover: var(--rh-color-interactive-primary-hover);
   --_numeric-a-color-focus:
@@ -46,6 +59,18 @@
   --_border-top-hover-color:
     light-dark(var(--rh-color-gray-60, #4d4d4d),
       var(--rh-color-border-subtle-on-light, #c7c7c7));
+  /**
+   * --rh-pagination-stepper-color
+   * Controls the icon color for navigation stepper buttons (first, previous, next, last).
+   * Defaults to gray-50 in light mode and text-secondary in dark mode for subtle appearance.
+   *
+   * **Usage guidelines:**
+   * - Applied to arrow icons in stepper buttons at default state
+   * - Changes on hover/focus to provide interactive feedback
+   * - Keep default for consistent secondary control appearance
+   * - Adjust only when specific brand or contrast requirements exist
+   * - Ensure icons remain visible against button background
+   */
   --rh-pagination-stepper-color:
     light-dark(var(--rh-color-gray-50, #707070),
       var(--rh-color-text-secondary-on-dark, #c7c7c7));
@@ -57,6 +82,18 @@
   --rh-color-icon-status-disabled:
     light-dark(var(--rh-color-gray-40, #a3a3a3),
       var(--rh-color-gray-60, #4d4d4d));
+  /**
+   * --rh-pagination-background-focused
+   * @deprecated This property will be deprecated when status-disabled token is defined.
+   * Controls the color of disabled/inactive stepper button icons.
+   * Defaults to `--rh-color-icon-status-disabled` (gray-40 light, gray-60 dark).
+   *
+   * **Usage guidelines:**
+   * - Applied to stepper buttons when disabled (e.g., "first" when on first page)
+   * - Provides visual feedback that navigation is not available in that direction
+   * - Do not customize unless required by specific accessibility needs
+   * - Will be replaced by design system status-disabled token in future version
+   */
   /* stylelint-disable-next-line rhds/no-unknown-token-name */
   --rh-pagination-background-focused: var(--rh-color-icon-status-disabled);
 }

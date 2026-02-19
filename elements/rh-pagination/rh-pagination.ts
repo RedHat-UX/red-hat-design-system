@@ -174,7 +174,23 @@ export class RhPagination extends LitElement {
                @change="${this.#onChange}"
                @keyup="${this.#onKeyup}"
                .value="${currentPage}">
-        <!-- "of" text -->
+        <!-- summary: preposition text between page input and total (default: "of")
+             description: |
+               Contains the text displayed between the current page input field and the total page count.
+               Defaults to "of" but can be customized for internationalization or alternate phrasing.
+
+               **Common patterns:**
+               - Default: "of" (e.g., "Page 3 of 10")
+               - Internationalization: "de" (German), "sur" (French), etc.
+               - Alternate phrasing: "out of", "/" (slash separator)
+
+               **Best practices:**
+               - Keep text short (1-3 characters) for compact layouts
+               - Use localized prepositions for international audiences
+               - Ensure text semantically connects current and total page values
+               - Consider screen reader pronunciation when choosing text
+
+               @see [Pagination](https://ux.redhat.com/elements/pagination/) documentation -->
         <slot ?hidden="${!this.total}" name="out-of">of</slot>
         <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
       </div>
