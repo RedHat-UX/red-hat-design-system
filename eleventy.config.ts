@@ -17,6 +17,7 @@ import DesignTokensPlugin from '#11ty-plugins/tokens.js';
 import RHDSMarkdownItPlugin from '#11ty-plugins/markdown-it.js';
 import ImportMapPlugin from '#11ty-plugins/importMap.js';
 import LargeDemoWorkaroundPlugin from '#11ty-plugins/large-demo-workaround.js';
+import LazyLoadingPlugin from '#11ty-plugins/lazy-loading.js';
 
 export interface GlobalData {
   runMode: 'build' | 'watch' | 'serve';
@@ -78,6 +79,12 @@ export default async function(eleventyConfig: UserConfig) {
   eleventyConfig.addPlugin(EleventyRenderPlugin);
   eleventyConfig.addPlugin(HelmetPlugin);
   eleventyConfig.addPlugin(RHDSMarkdownItPlugin);
+
+  /** Automatically add loading="lazy" to images below the fold */
+  eleventyConfig.addPlugin(LazyLoadingPlugin, {
+    skipFirstImages: 1,
+    excludeSelectors: [],
+  });
 
   /** Table of Contents Shortcode */
   eleventyConfig.addPlugin(TOCPlugin, {
