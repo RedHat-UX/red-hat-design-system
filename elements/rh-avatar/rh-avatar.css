@@ -51,21 +51,25 @@
 }
 
 :host([layout='block']) #container,
-:host(:not([plain])) #container.mobile {
-  text-align: center;
-  place-items: center;
-  gap: 0;
-  grid-template-columns: minmax(max-content, 250px);
-  grid-template-areas: 'a' 't' 's';
-  grid-template-rows:
-    minmax(var(--rh-avatar-size, var(--rh-size-icon-06, 64px)), var(--rh-size-icon-06, 64px))
-    min-content
-    auto;
+:host(:not([plain])) #container {
+  @media (max-width: 575px) {
+    text-align: center;
+    place-items: center;
+    gap: 0;
+    grid-template-columns: minmax(max-content, 250px);
+    grid-template-areas: 'a' 't' 's';
+    grid-template-rows:
+      minmax(var(--rh-avatar-size, var(--rh-size-icon-06, 64px)), var(--rh-size-icon-06, 64px))
+      min-content
+      auto;
+  }
 }
 
 :host([layout='block']) :is(img, canvas, svg),
-:host(:not([plain])) #container.mobile :is(img, canvas, svg) {
-  margin-block-end: var(--rh-space-lg, 16px);
+:host(:not([plain])) #container :is(img, canvas, svg) {
+  @media (max-width: 575px) {
+    margin-block-end: var(--rh-space-lg, 16px);
+  }
 }
 
 slot {

@@ -165,7 +165,6 @@
       var(--rh-color-green-40, #87bb62));
 
   display: grid;
-  content-visibility: auto;
   place-items: center;
   grid-template-columns: auto min-content;
   grid-template-areas:
@@ -182,10 +181,20 @@
     var(--rh-code-block-border-block-start-width,
       var(--rh-border-width-sm, 1px));
 
+  /* Apply content-visibility here instead of on :host to allow tooltips to overflow */
+  content-visibility: auto;
+  contain-intrinsic-block-size: auto 193px;
+
   --_gradient:
     linear-gradient(var(--_gradient-angle, 0deg),
       var(--_code-background-color) 0%,
       transparent 100%);
+
+  &:not(.line-numbers) {
+    &:not(.isIntersecting) {
+      content-visibility: visible;
+    }
+  }
 
   &.isIntersecting {
     content-visibility: visible;
@@ -232,7 +241,7 @@
 :host([highlighting='prerendered']) {
   .wrap {
     #content::slotted(pre[class*='language-']) {
-      white-space: pre-wrap;
+      white-space: pre-wrap !important;
     }
   }
 }
@@ -300,6 +309,7 @@
 
 #actions rh-tooltip {
   display: block;
+  z-index: 10000;
 }
 
 #expand {

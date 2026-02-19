@@ -32,7 +32,7 @@ export class SecondaryNavOverlayChangeEvent extends ComposedEvent {
   }
 }
 
-import styles from './rh-navigation-secondary.css';
+import styles from './rh-navigation-secondary.css' with { type: 'css' };
 
 /* TODO: Abstract this out to a shareable function, should RTI handle something similar? */
 function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {

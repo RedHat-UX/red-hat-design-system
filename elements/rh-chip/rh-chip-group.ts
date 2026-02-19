@@ -7,7 +7,7 @@ import { query } from 'lit/decorators/query.js';
 
 import { RhChip, ChipChangeEvent } from './rh-chip.js';
 
-import styles from './rh-chip-group.css';
+import styles from './rh-chip-group.css' with { type: 'css' };
 
 /**
  * Chip Group

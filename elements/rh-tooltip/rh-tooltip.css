@@ -29,8 +29,11 @@
   translate: var(--_floating-content-translate);
   transform: translateX(var(--_rh-tooltip-shake-x, 0));
   width: max-content;
-  inset-block-start: 0;
-  inset-inline-start: 0;
+
+  /* We need to use top and left instead of inset-block-start and inset-inline-start
+  because of the RTL support and floatingDOM controller */
+  top: 0;
+  left: 0;
   will-change: opacity;
   line-height: var(--rh-line-height-body-text, 1.5);
   box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
@@ -99,10 +102,10 @@
 }
 
 /* PLAIN */
-.left #tooltip:after { inset-inline-start: calc(-0.5 * var(--_floating-arrow-size)); }
-.top #tooltip:after { inset-block-start: calc(100% - 0.5 * var(--_floating-arrow-size)); }
-.right #tooltip:after { inset-inline-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
-.bottom #tooltip:after { inset-block-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+.left #tooltip:after { inset-inline-end: calc(-0.5 * var(--_floating-arrow-size)); }
+.top #tooltip:after { inset-block-end: calc(-0.5 * var(--_floating-arrow-size)); }
+.right #tooltip:after { inset-inline-start: calc(-0.5 * var(--_floating-arrow-size)); }
+.bottom #tooltip:after { inset-block-start: calc(-0.5 * var(--_floating-arrow-size)); }
 
 /* CENTER */
 .left.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
@@ -125,4 +128,15 @@
 :host([position='left']),
 :host([position='right']) {
   --_text-alignment: 'start';
+}
+
+#container:dir(rtl) {
+  /* RTL: Reverse left/right arrow positioning use of inset-inline-start and inset-inline-end */
+  &.left #tooltip:after {
+    inset-inline: calc(-0.5 * var(--_floating-arrow-size)) auto;
+  }
+
+  &.right #tooltip:after {
+    inset-inline: auto calc(-0.5 * var(--_floating-arrow-size));
+  }
 }
