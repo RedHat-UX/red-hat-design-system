@@ -7,7 +7,7 @@
 :host {
   display: block;
   container: avatar / inline-size;
-  width: 100%;
+  inline-size: 100%;
 }
 
 [hidden] {
