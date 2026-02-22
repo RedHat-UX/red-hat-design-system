@@ -34,6 +34,8 @@ svg {
 }
 
 #default {
+  enable-background: new 0 0 36 36;
+
   & .st1 {
     fill-rule: evenodd;
     clip-rule: evenodd;
