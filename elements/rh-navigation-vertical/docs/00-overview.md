@@ -1,8 +1,5 @@
-<script type="module">
-  import {RhAlert} from '@rhds/elements/rh-alert/rh-alert.js';
-  RhAlert.toast({
-    persistent: false,
-    heading: 'Coming Soon!',
-    message: 'This element is available to use, but the rest of the documentation is in progress.',
-  });
-</script>
+## When to use
+
+- Stack navigation items vertically
+- Align a navigation to the left or right side of a web page
+- If a navigation is likely to grow in the future

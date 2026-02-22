@@ -290,7 +290,7 @@
   "dependencies": {
     "@lit/context": "^1.1.6",
     "@patternfly/pfe-core": "^5.0.5",
-    "@rhds/icons": "^2.0",
+    "@rhds/icons": "^2.1.0",
     "@rhds/tokens": "^3.0.2",
     "lit": "^3.3.2",
     "prism-esm": "^1.29.0-fix.6",
@@ -315,7 +315,7 @@
     "@patternfly/icons": "^1.0.3",
     "@patternfly/pfe-tools": "^6.0.1",
     "@playwright/test": "~1.48.0",
-    "@pwrs/cem": "^0.7.5",
+    "@pwrs/cem": "^0.9.8",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@stylistic/eslint-plugin-js": "^2.13.0",
     "@stylistic/stylelint-config": "^2.0.0",
