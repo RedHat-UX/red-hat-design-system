@@ -11,7 +11,13 @@
 }
 
 :host([plain]) {
-  inline-size: var(--rh-avatar-size, var(--rh-size-icon-06, 64px));
+  /** Size of the avatar, */
+  inline-size:
+    var(
+        --rh-avatar-size,
+        /** Default avatar size */
+        var(--rh-size-icon-06, 64px)
+      );
 }
 
 [hidden] {
@@ -28,12 +34,12 @@ canvas,
 img,
 svg {
   overflow: hidden;
-
-  /** Size of the avatar, */
   inline-size: var(--rh-avatar-size, var(--rh-size-icon-06, 64px));
   max-inline-size: var(--rh-size-icon-06, 64px);
   aspect-ratio: 1;
   grid-area: a;
+
+  /** Default avatar border radius */
   border-radius: var(--rh-border-radius-pill, 64px);
 }
 
@@ -64,34 +70,47 @@ svg {
 #title {
   grid-area: t;
   align-self: end;
+
+  /** Avatar title font family */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+
+  /** Avatar title font weight */
   font-weight: var(--rh-font-weight-heading-medium, 500);
+
+  /** Avatar title font size */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
 
 #subtitle {
   grid-area: s;
   align-self: start;
+
+  /** Avatar subtitle font weight */
   font-weight: var(--rh-font-weight-heading-regular, 400);
+
+  /** Avatar subtitle font size */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
 
 ::slotted(a) {
+  /** Avatar link color */
   color: var(--rh-color-interactive-primary-default);
 }
 
 ::slotted(a:visited) {
+  /** Avatar visited slotted link color */
   color: var(--rh-color-interactive-primary-visited-default);
 }
 
 ::slotted(a:active),
 ::slotted(a:hover) {
+  /** Avatar hovered or active slotted link color */
   color: var(--rh-color-interactive-primary-hover);
 }
 
 #container {
-  /** List of colors to use when generating avatars */
   --_colors:
+    /** List of colors to use when generating avatars */
     light-dark(var(--rh-avatar-colors,
       var(--rh-color-blue-30, #92c5f9)
       var(--rh-color-teal-50, #37a3a3)
@@ -106,12 +125,16 @@ svg {
       var(--rh-color-purple-70, #21134d)));
 
   display: grid;
+
+  /** Gap between the avatar and title/text in inline layouts */
   column-gap: var(--rh-space-lg, 16px);
   grid-template-columns: min-content 1fr;
   grid-template-rows: auto;
   grid-template-areas:
     'a t'
     'a s';
+
+  /** Avatar title/subtitle text color */
   color: var(--rh-color-text-secondary);
 
   &:not(.plain) {
@@ -127,6 +150,7 @@ svg {
         auto;
 
       & :is(img, canvas, svg) {
+        /** Avatar blockwise end margin in block layouts */
         margin-block-end: var(--rh-space-lg, 16px);
       }
     }
@@ -174,7 +198,12 @@ svg {
 
   &.bordered {
     & :is(canvas, img, svg) {
-      border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+      border:
+        /** Avatar border width when `bordered` is true */
+        var(--rh-border-width-sm, 1px)
+        solid
+        /** Avatar border color when `bordered` is true */
+        var(--rh-color-border-subtle);
     }
   }
 }
