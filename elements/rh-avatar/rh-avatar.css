@@ -155,7 +155,7 @@ svg {
       }
     }
 
-    &.inline {
+    &:not(.block) {
       grid-template-columns: 1fr;
       grid-template-areas: 'a' 't' 's';
       grid-template-rows: auto;
