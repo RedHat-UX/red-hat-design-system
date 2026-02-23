@@ -159,7 +159,7 @@ export class RhCodeBlock extends LitElement {
   @property({ type: Boolean }) wrap = false;
 
   /** When set to `hidden`, the code block's line numbers are hidden */
-  @property({ reflect: true, attribute: 'line-numbers' }) lineNumbers?: 'hidden';
+  @property({ reflect: true, attribute: 'line-numbers' }) lineNumbers?: 'hidden' | 'visible';
 
   @state() private copyButtonState: 'default' | 'active' | 'failed' = 'default';
 
