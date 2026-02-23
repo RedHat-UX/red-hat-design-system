@@ -39,10 +39,10 @@ export class UxdotPatternSSRControllerClient extends RHDSSSRController {
       ['#html-panel', 'htmlContent'],
       ['#css-panel', 'cssContent'],
       ['#js-panel', 'jsContent'],
-    ] as const) {
+    ] satisfies readonly [string, keyof this][]) {
       const pre = root.querySelector(`${panel} rh-code-block pre`);
       if (pre) {
-        (this as any)[prop] = unsafeHTML(pre.outerHTML);
+        this[prop] = unsafeHTML(pre.outerHTML);
       }
     }
 
