@@ -88,7 +88,15 @@ export class RhAccordionHeader extends LitElement {
         <span id="header-container" class="${classMap({ [accents ?? '']: !!accents })}">
           <!-- summary: inline element containing the heading text or slotted heading content -->
           <span id="header-text" part="text">
-            <!-- summary: accordion toggle content -->
+            <!-- summary: panel's title text or heading content
+                 description: |
+                   Contains the primary label that describes what content will be revealed when the panel expands.
+                   Title text should be written concisely (max 65 characters) so users know what to expect.
+                   Avoid writing titles that sound like calls to action - make it easy for users to understand
+                   the content within. Title text that is too long should be broken into separate sections, and
+                   text that is too vague may not help users understand the panel content.
+
+                   @see [Title text](https://ux.redhat.com/elements/accordion/guidelines/#title-text) in Guidelines documentation -->
             <slot></slot>
           </span>
           <!-- summary: container for accents within the header -->
