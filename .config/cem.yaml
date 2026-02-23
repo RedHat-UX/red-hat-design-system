@@ -2,6 +2,7 @@ sourceControlRootUrl: https://github.com/redhat-ux/red-hat-design-system/tree/ma
 generate:
   files:
     - elements/*/rh-*.ts
+    - lib/**/*.ts
   output: custom-elements.json
   noDefaultExcludes: false
   designTokens:
@@ -11,3 +12,7 @@ generate:
     fileGlob: elements/*/demo/*.html
     urlPattern: elements/:tag/demo/:demo.html
     urlTemplate: https://ux.redhat.com/elements/{{.tag | alias | slug }}/demo/{{.demo}}/
+serve:
+  urlRewrites:
+    - urlPattern: /elements/:pretty/demo/:whatever*-lightdom:suffix(-shim)?.css
+      urlTemplate: /elements/rh-{{.pretty}}/{{.whatever}}-lightdom{{.suffix}}.css

@@ -17,7 +17,7 @@ import '@rhds/icons/ui/error-fill.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-site-status.css';
+import styles from './rh-site-status.css' with { type: 'css' };
 
 type Impact = 'none' | 'minor' | 'major' | 'critical';
 type StatusKey = 'operational' | 'degraded_performance' | 'partial_outage' | 'major_outage';
