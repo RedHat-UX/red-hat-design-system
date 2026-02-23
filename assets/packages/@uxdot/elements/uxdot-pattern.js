@@ -75,6 +75,7 @@ let UxdotPattern = class UxdotPattern extends SSRFailureRecoverableElement {
           <rh-tab id="html-tab" slot="tab" >HTML</rh-tab>
           <rh-tab-panel id="html-panel">
             <rh-code-block highlighting="prerendered"
+                           line-numbers="visible"
                            actions="copy wrap"
                            ?full-height="${this.fullHeight}">
               ${htmlContent}

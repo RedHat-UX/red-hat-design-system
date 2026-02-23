@@ -1,4 +1,4 @@
-import { LitElement } from 'lit';
+import { LitElement, render } from 'lit';
 function isLitElement(e) {
     return 'updateComplete' in e;
 }
@@ -24,6 +24,11 @@ async function forceUpdate(e) {
         forceProperty(e, key);
     }
 }
+function forceRender(e) {
+    render(
+    // @ts-expect-error: this is a workaround for SSR failures
+    e.render(), e.renderRoot, e.renderOptions);
+}
 function forceHydration(node) {
     for (const e of node.shadowRoot?.querySelectorAll('*') ?? []) {
         e.removeAttribute('defer-hydration');
@@ -42,6 +47,7 @@ export class SSRFailureRecoverableElement extends LitElement {
             if (e instanceof Error && e.message.startsWith('Hydration')) {
                 // eslint-disable-next-line no-console
                 console.warn(e);
+                forceRender(this);
                 forceHydration(this);
             }
             else {

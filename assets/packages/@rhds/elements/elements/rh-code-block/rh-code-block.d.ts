@@ -60,7 +60,7 @@ export declare class RhCodeBlock extends LitElement {
     /** When set, lines in the code snippet wrap */
     wrap: boolean;
     /** When set to `hidden`, the code block's line numbers are hidden */
-    lineNumbers?: 'hidden';
+    lineNumbers?: 'hidden' | 'visible';
     private copyButtonState;
     connectedCallback(): void;
     disconnectedCallback(): void;
