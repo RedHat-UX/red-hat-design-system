@@ -1,5 +1,13 @@
 # @rhds/elements
 
+## 4.0.3
+### Patch Changes
+
+- 5e77e43: `<rh-code-block>`: add `visible` value to typescript types for the `line-numbers` attribute
+- be03ad5: Corrected import paths for `lit` dependencies
+- d703934: `<rh-navigation-primary>`: correct rendering issue for safari 26.2
+- 25990af: Updated `@rhds/icons` to v2.1, adding 82 new icons to the UI and Standard sets!
+
 ## 4.0.2
 ### Patch Changes
 
