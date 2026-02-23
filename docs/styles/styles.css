@@ -27,6 +27,12 @@
 @import url('third-party/prism-rhds.css') layer(third-party);
 
 @layer base {
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      interpolate-size: allow-keywords;
+    }
+  }
+
   body {
     color: var(--rh-color-text-primary);
   }
@@ -62,6 +68,11 @@
     border-inline: none;
     border-block-end: none;
     margin-block-end: var(--rh-space-2xl);
+  }
+
+  :where(img, picture, video, canvas, svg) {
+    display: block;
+    max-width: 100%;
   }
 
   figure > img {

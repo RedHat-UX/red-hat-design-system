@@ -41,7 +41,7 @@ We also have element-specific patterns for extending our design system elements 
 If you are on a `*.redhat.com` domain, you can use our CDN to access the Red Hat fonts:
 
 ```html code-block {dedent: true, language: "css", highlighting: "prerendered"}
-https://www.redhatstatic.com/dssf-001/v2/@redhat/redhat-font@4.1.0/font.min.css
+<link rel="stylesheet" href="https://www.redhatstatic.com/dssf-001/v2/@redhat/redhat-font@4.1.0/font.min.css">
 ```
 
 ### Hosted/bundled assets
@@ -64,21 +64,29 @@ We highly recommend [using our tokens](/get-started/developers/tokens/#how-to-in
 
 There are a number of ways you can create layouts and grid systems within your application or website. With [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Grid_layout) and [Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Flexible_box_layout/Basic_concepts), it's never been easier.
 
-### CSS-based grid layout
-
-```css code-block {dedent: true, language: "css", highlighting: "prerendered"}
-{% set cssContent = "./docs/assets/examples/css/layout-grid.css" | inlineCss %}{{ cssContent | safe }}
-```
-
 ### Experimental RHX Grid
 
 If you'd prefer using a Web Component for layout and grid purposes, we have an experimental `<rhx-grid>` [element available](https://github.com/RedHat-UX/red-hat-extensions). You can install it using one of two ways:
 
-1. NPM [@rhdx/elements](https://www.npmjs.com/package/@rhdx/elements)
-2. Red Hat CDN
+- NPM [@rhdx/elements](https://www.npmjs.com/package/@rhdx/elements)
+- [Red Hat CDN](/get-started/developers/installation/#red-hat-cdn)
+
+#### 1. Update your import map to add RHX Elements:
 
 ```html code-block {line-numbers=hidden}
-https://www.redhatstatic.com/dssf-001/v2/@rhdx/elements@0.0.1/elements/rhx-grid/rhx-grid.js
+/* Modify your imports block to add: */
+"imports": {
+  ...
+  "@rhdx/elements/": "https://www.redhatstatic.com/dssf-001/v2/@rhdx/elements@0.0.1/elements/"
+}
+```
+
+#### 2. Import the bare module specifier:
+
+```html code-block {line-numbers=hidden}
+<script type="module">
+ @import "@rhdx/elements/rhx-grid/rhx-grid.js"
+</script>
 ```
 
 We'd love your [feedback](/support/) on `<rhx-grid>` and/or our CSS-based approach.
