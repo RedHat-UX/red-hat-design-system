@@ -86,8 +86,8 @@
       }
 
       & ::slotted(rh-icon) {
-        /* need 24px total icons 18px + 3px margin * 2, avatar is 24px */
-        margin-block: calc(var(--rh-space-sm, 6px) / 2);
+        /** Toggle slotted icon min-height */
+        min-block-size: var(--rh-size-icon-02, 24px);
       }
 
       & rh-icon {
