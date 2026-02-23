@@ -134,8 +134,11 @@ export class RhNavigationPrimary extends LitElement {
 
   /**
    * Enables the sub-domain variation, which displays the `sub-domain` slot
-   * alongside the logo lockup. Must be set to `true` when slotting content
-   * into the `sub-domain` slot. Defaults to `false`.
+   * alongside the logo lockup. A logo lockup is a fixed, approved arrangement
+   * of a brand’s visual elements—typically the logomark (symbol), logotype (name),
+   * and sometimes a tagline—combined into a single, cohesive unit. MUST be set to
+   * `true` when slotting content into the `sub-domain` slot otherwise content will
+   * remain hidden. Defaults to `false`.
    */
   @property({ type: Boolean, reflect: true, attribute: 'sub-domain' }) subDomain = false;
 
