@@ -64,11 +64,14 @@
   grid-template-rows: var(--_navbar-height);
   background-color:
     light-dark(
-        /* Navigation primary background colour under light color scheme */
+        /* Navigation bar primary background color under light color scheme */
         var(--rh-color-surface-lightest, #ffffff),
-        /* Navigation primary background colour under dark color scheme */
+        /* Navigation bar primary background color under dark color scheme */
         var(--rh-color-surface-darkest, #151515)
       );
+
+  /** Default text color for all bar content; inherits
+     the theme-aware rh-color-text-primary design system token */
   color: var(--rh-color-text-primary);
   inline-size: 100%;
   max-block-size: var(--_navbar-height);
@@ -78,7 +81,7 @@
   padding-inline: var(--rh-space-lg, 16px);
 
   @container navigation-primary (min-width: 320px) {
-    padding-inline: var(--rh-space-lg, 16px) var(--rh-space-md, 8px);
+    padding-inline: var(--rh-space-lg, 16px) calc(var(--rh-space-lg, 16px) / 2);
   }
 
   @container navigation-primary (min-width: 480px) {
@@ -86,8 +89,7 @@
   }
 
   @container navigation-primary (min-width: 576px) {
-    /** Inline padding for the main nav bar (desktop) */
-    padding-inline: var(--rh-space-2xl, 32px) var(--rh-space-lg, 16px);
+    padding-inline: calc(var(--rh-space-lg, 16px) * 2) var(--rh-space-lg, 16px);
   }
 }
 
@@ -138,10 +140,10 @@
   & a:is(:focus-visible, :hover:focus-visible) {
     outline-offset: -2px;
     outline:
-      /** Primary link outline width */
+      /** Logo Focus ring width */
       var(--rh-border-width-md, 2px)
       solid
-      /** Primary link colour */
+      /** Logo Focus ring interactive color */
       var(--rh-color-interactive-primary-default);
 
     /** Link border radius */
@@ -158,9 +160,13 @@
   & a:is(:focus-visible, :hover:focus-visible) {
     outline-offset: -2px;
     outline:
+      /** Subdomain Focus ring width */
       var(--rh-border-width-md, 2px)
       solid
+      /** Subdomain Focus ring interactive color */
       var(--rh-color-interactive-primary-default);
+
+    /** Subdomain focus ring radius */
     border-radius: var(--rh-border-radius-default, 3px);
   }
 }
@@ -186,12 +192,15 @@
     display: flex;
     block-size: 100%;
     inline-size: max-content;
+
+    /** Hamburger tap target padding for narrow screens below 480px */
     padding: var(--rh-space-md, 8px);
     border-radius: 5px; /* non-standard value for border radius */
     margin-inline-start: 0;
     z-index: 1;
 
     @container navigation-primary (min-width: 480px) {
+      /** Hamburger tap target padding at containers >= 480px */
       padding: var(--rh-space-lg, 16px);
       align-items: center;
     }
@@ -209,22 +218,24 @@
 
     &:is(:hover, :focus-visible) {
       &:after {
-        /** Hover and focus colour for hamburger links */
+        /** Hamburger hover and focus indicator color */
         border-block-end-color: var(--rh-color-border-subtle);
       }
     }
 
     &:is(:active) {
       &:after {
-        /** Active hamburger link bottom border colour */
+        /** Hamburger active state indicator color */
         border-block-end-color: var(--rh-color-accent-brand);
       }
     }
 
     &:is(:focus-visible, :hover:focus-visible) {
       outline:
+        /** Hamburger focus ring border width */
         var(--rh-border-width-md, 2px)
         solid
+        /** Hamburger focus ring interactive color */
         var(--rh-color-interactive-primary-default);
       outline-offset: 3px;
     }
@@ -239,7 +250,7 @@
 
       aspect-ratio: unset;
 
-      /** Menu bar icon colour */
+      /** Menu bar icon color */
       color: var(--rh-color-icon-secondary);
     }
   }
@@ -283,23 +294,28 @@
   gap: 0;
 
   @container navigation-primary (min-width: 480px) {
+    /* Secondary area margin from the hamburger, starting at containers >= 480px */
     margin-inline-start: var(--rh-space-lg, 16px);
   }
 
   @container navigation-primary (min-width: 1200px) {
+    /** Secondary area spacing between items, starting at containers >= 1200px */
     gap: var(--rh-space-xl, 24px);
   }
 
   #event {
     display: none;
 
-    @container navigation-primary (min-width: 481px) {
+    @container navigation-primary (min-width: 480px) {
       display: flex;
       flex-direction: row;
+
+      /* Event slot margin end from adjacent items, starting at containers >= 480px */
       margin-inline-end: var(--rh-space-lg, 16px);
     }
 
     @container navigation-primary (min-width: 576px) {
+      /** Event slot margin end from adjacent items, starting at containers >= 576px */
       margin-inline-end: var(--rh-space-xl, 24px);
     }
 
@@ -333,7 +349,11 @@
       list-style: none;
       display: flex;
       align-items: center;
+
+      /** Links menu toggle padding using space design system token for accessible tap target */
       padding: var(--rh-space-lg, 16px);
+
+      /** inks menu toggle rounded corners */
       border-radius: var(--rh-border-radius-default, 3px);
       block-size: 100%;
 
@@ -355,20 +375,24 @@
 
       &:is(:hover, :focus-visible) {
         &:after {
+          /** Links menu toggle hover indicator color */
           border-block-end-color: var(--rh-color-border-subtle);
         }
       }
 
       &:is(:active) {
         &:after {
+          /** Links menu toggle active indicator color */
           border-block-end-color: var(--rh-color-accent-brand);
         }
       }
 
       &:is(:focus-visible, :hover:focus-visible) {
         outline:
+          /** Links menu toggle focus ring width */
           var(--rh-border-width-md, 2px)
           solid
+          /** Links menu toggle focus ring color */
           var(--rh-color-interactive-primary-default);
         outline-offset: 2px;
       }
@@ -376,6 +400,7 @@
       & rh-icon {
         --rh-icon-size: 18px;
 
+        /** Links menu icon color */
         color: var(--rh-color-icon-secondary);
       }
     }
@@ -387,6 +412,7 @@
     &[open] {
       & summary {
         &:after {
+          /** Links menu open state indicator color */
           border-block-end-color: var(--rh-color-accent-brand);
         }
       }
@@ -398,11 +424,21 @@
         inset-inline-end: 0;
         display: flex;
         flex-direction: column;
+
+        /** Links menu content gap */
         gap: var(--rh-space-lg, 16px);
-        background-color: var(--rh-color-surface);
+        background-color:
+          light-dark(
+              /** Links Menu content when open primary background color under light color scheme */
+              var(--rh-color-surface-lightest, #ffffff),
+              /** Links Menu content when open primary background color under dark color scheme */
+              var(--rh-color-surface-darkest, #151515)
+            );
         box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
         padding-block: var(--rh-space-2xl, 32px) var(--rh-space-3xl, 48px);
         padding-inline: var(--rh-space-2xl, 32px);
+
+        /** Links Menu Rounded corners */
         border-end-start-radius: var(--rh-border-radius-default, 3px);
         border-end-end-radius: var(--rh-border-radius-default, 3px);
 
@@ -465,17 +501,18 @@
   &.subdomain {
     & #lockup {
       grid-template-areas: 'logo sub-domain';
+
+      /** Subdomain logo lockup gap between logo and text at containers <=575 */
       gap: var(--rh-space-lg, 16px);
 
       @container navigation-primary (min-width: 576px) {
+        /** Subdomain logo lockup gap between logo and text at containers >=576 */
         gap: var(--rh-space-xl, 24px);
       }
     }
 
     & #logo {
       display: flex;
-      flex-direction: row;
-      gap: var(--rh-space-xl, 24px);
 
       & svg {
         block-size: 18px;
@@ -515,12 +552,16 @@
       /** Subdomain heading font weight */
       font-weight: var(--rh-font-weight-heading-bold, 700) !important;
       line-height: 1 !important;
+
+      /** Subdomain text color */
       color: var(--rh-color-text-primary) !important;
       white-space: break-spaces !important;
+
+      /** Subdomain margin inline end at containers <= 575px */
       margin-inline-end: var(--rh-space-md, 8px);
 
       @container navigation-primary (min-width: 576px) {
-        /** Subdomain heading font size (desktop) */
+        /** Subdomain heading font size at containers >= 576px */
         font-size: var(--rh-font-size-heading-xs, 1.25rem) !important;
       }
 
@@ -534,25 +575,29 @@
 
       &:is(:hover, :focus-visible) {
         &:after {
+          /** Subdomain hover indicator color */
           border-block-end-color: var(--rh-color-border-subtle);
         }
       }
 
       &:is(:active) {
         &:after {
+          /** Subdomain active indicator color */
           border-block-end-color: var(--rh-color-accent-brand);
         }
       }
 
       & ::slotted(a) {
         text-decoration: none;
+
+        /** Subdomain slotted link text color */
         color: var(--rh-color-text-primary) !important;
         block-size: 100%;
         place-content: center;
       }
     }
 
-    @container (min-width: 481px) {
+    @container (min-width: 480px) {
       & #lockup {
         grid-template-areas: 'logo sub-domain';
       }
@@ -566,6 +611,8 @@
       & #sub-domain {
         align-self: center;
         align-items: center;
+
+        /** Subdomain line height at containers >= 480px */
         line-height: var(--rh-line-height-heading, 1.3);
         padding-block-end: 0;
       }
@@ -657,37 +704,57 @@
           z-index: var(--_nav-container-z-index);
           display: flex;
           flex-direction: column;
-          background-color: var(--rh-color-surface);
+          background-color:
+            light-dark(
+                /** Hamburger open state and compact content primary background color under light color scheme */
+                var(--rh-color-surface-lightest, #ffffff),
+                /** Hamburger open state and compact content primary background color under dark color scheme */
+                var(--rh-color-surface-darkest, #151515)
+              );
           inline-size: 100%;
           block-size: auto;
           place-items: initial;
+
+          /** Hamburger open state and compact content menu padding */
           padding: var(--rh-space-lg, 16px);
           box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
           max-block-size: calc(100dvh - var(--_navbar-height));
           overflow-y: auto;
 
           & ::slotted(rh-navigation-primary-item) {
+            /** Hamburger open state and compact slotted item border separator */
             border-block-start: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
           }
 
           & ::slotted(rh-navigation-primary-item:nth-last-child(1 of :not([slot]))) {
+            /** Hamburger open state and compact slotted last item border separator */
             border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
           }
 
           @container navigation-primary (min-width: 320px) {
+            /** Hamburger open state and compact content padding  at containers >= 320px */
             padding: var(--rh-space-2xl, 32px);
           }
 
           @container navigation-primary (min-width: 1200px) {
             & ::slotted(rh-navigation-primary-item) {
               border-block-start:
+                /** Hamburger open state and compact slotted item separator
+                    width at containers >= 1200px */
                 var(--rh-border-width-sm, 1px)
                 solid
+                /** Hamburger open state and compact slotted item separator
+                    color at containers >= 1200px */
                 var(--rh-color-border-subtle);
             }
 
             & ::slotted(rh-navigation-primary-item:nth-last-child(1 of :not([slot]))) {
-              border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+              border-block-end:
+                /** Hamburger open state and compact last item border block end width */
+                var(--rh-border-width-sm, 1px)
+                solid
+                /** Hamburger open state and compact last item border block end color */
+                var(--rh-color-border-subtle);
             }
           }
         }
@@ -711,11 +778,23 @@
             inset-inline-end: 0;
             display: flex;
             flex-direction: column;
+
+            /** Links menu content compact state gap */
             gap: var(--rh-space-lg, 16px);
-            background-color: var(--rh-color-surface);
+            background-color:
+              light-dark(
+                  /** Links menu content when compact and open primary
+                      background color under light color scheme */
+                  var(--rh-color-surface-lightest, #ffffff),
+                  /** Links menu content when compact and open primary
+                      background color under dark color scheme */
+                  var(--rh-color-surface-darkest, #151515)
+                );
             box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
             padding-block: var(--rh-space-2xl, 32px) var(--rh-space-3xl, 48px);
             padding-inline: var(--rh-space-2xl, 32px);
+
+            /** Links menu content rounded corners  */
             border-end-start-radius: var(--rh-border-radius-default, 3px);
             border-end-end-radius: var(--rh-border-radius-default, 3px);
             block-size: revert;
