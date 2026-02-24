@@ -338,6 +338,11 @@
       flex-direction: row;
 
       /** Event slot margin end from adjacent items, starting at containers >= 576px */
+      margin-inline-end: var(--rh-space-lg, 16px);
+    }
+
+    @container navigation-primary (min-width: 768px) {
+      /** Event slot margin end from adjacent items, starting at container >= 768px */
       margin-inline-end: var(--rh-space-xl, 24px);
     }
 
