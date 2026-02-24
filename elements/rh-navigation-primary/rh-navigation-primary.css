@@ -561,6 +561,12 @@
           display: none;
         }
       }
+
+      & ::slotted(a:focus-visible),
+      & ::slotted(:hover:focus-visible),
+      & a:is(:focus-visible, :hover:focus-visible) {
+        outline-offset: 4px;
+      }
     }
 
     & #sub-domain {

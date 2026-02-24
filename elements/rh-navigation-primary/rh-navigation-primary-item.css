@@ -436,7 +436,7 @@
       }
 
       & ::slotted(a:is(:focus-visible, :hover:focus-visible, :active)) {
-        outline-offset: -2px;
+        outline-offset: 4px;
         outline:
           /** Secondary area slotted item with slotted link focus ring width */
           var(--rh-border-width-md, 2px)
