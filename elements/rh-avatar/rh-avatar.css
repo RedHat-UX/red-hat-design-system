@@ -70,6 +70,7 @@ svg {
 #title {
   grid-area: t;
   align-self: end;
+  max-inline-size: 250px;
 
   /** Avatar title font family */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
@@ -84,6 +85,7 @@ svg {
 #subtitle {
   grid-area: s;
   align-self: start;
+  max-inline-size: 250px;
 
   /** Avatar subtitle font weight */
   font-weight: var(--rh-font-weight-heading-regular, 400);
