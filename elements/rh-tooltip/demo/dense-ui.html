@@ -1,0 +1,32 @@
+<div class="dense">
+  <rh-tooltip content="Tooltip 1"><rh-button>1</rh-button></rh-tooltip>
+  <rh-tooltip content="Tooltip 2"><rh-button>2</rh-button></rh-tooltip>
+  <rh-tooltip content="Tooltip 3"><rh-button>3</rh-button></rh-tooltip>
+  <rh-tooltip content="Tooltip 4"><rh-button>4</rh-button></rh-tooltip>
+  <rh-tooltip content="Tooltip 5"><rh-button>5</rh-button></rh-tooltip>
+  <rh-tooltip content="Tooltip 6"><rh-button>6</rh-button></rh-tooltip>
+  <rh-tooltip content="Tooltip 7"><rh-button>7</rh-button></rh-tooltip>
+  <rh-tooltip content="Tooltip 8"><rh-button>8</rh-button></rh-tooltip>
+  <rh-tooltip content="Tooltip 9"><rh-button>9</rh-button></rh-tooltip>
+  <rh-tooltip content="Tooltip 10"><rh-button>10</rh-button></rh-tooltip>
+</div>
+
+<style>
+  .dense {
+    display: grid;
+    place-items: center;
+    gap: var(--rh-space-md, 8px);
+    padding: var(--rh-space-lg, 16px);
+    background: light-dark(var(--rh-color-surface-light, #e0e0e0), var(--rh-color-surface-dark, #383838));
+    inline-size: var(--rh-length-6xl, 96px);
+
+    rh-button::part(button) {
+      min-inline-size: var(--rh-length-3xl, 48px);
+    }
+  }
+</style>
+
+<script type="module">
+  import "@rhds/elements/rh-tooltip/rh-tooltip.js";
+  import "@rhds/elements/rh-button/rh-button.js";
+</script>
