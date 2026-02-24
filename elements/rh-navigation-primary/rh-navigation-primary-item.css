@@ -363,18 +363,19 @@
 
     & ::slotted(a) {
       /** Link variant slotted link text color */
-      color: var(--rh-color-text-primary) !important;
+      color: var(--_navigation-link-color, var(--rh-color-text-primary)) !important;
     }
 
     & ::slotted(:is(a:hover, a:focus-visible, :active)) {
-      text-underline-offset: 4px !important;
+      text-underline-offset: var(--_navigation-link-text-underline-offset, 4px) !important;
 
       /** Link variant slotted link hover, focus, active text decoration color */
       text-decoration-color:
-        light-dark(var(--rh-color-gray-50, #707070),
-          var(--rh-color-gray-40, #a3a3a3)) !important;
-      text-decoration-line: underline !important;
-      text-decoration-style: dashed !important;
+        var(--_navigation-link-text-decoration-color,
+          light-dark(var(--rh-color-gray-50, #707070),
+          var(--rh-color-gray-40, #a3a3a3))) !important;
+      text-decoration-line: var(--_navigation-link-text-decoration-line, underline) !important;
+      text-decoration-style: var(--_navigation-link-text-decoration-style, dashed) !important;
       text-decoration-skip-ink: auto !important;
 
       /** Link variant slotted link hover, focus, active text color */
