@@ -556,13 +556,9 @@
           block-size: 30px;
           inline-size: 40px;
         }
-      }
 
-      & a {
-        &:is(:hover, :focus) {
-          & svg {
-            transform: rotate(15deg);
-          }
+        & #wordmark {
+          display: none;
         }
       }
     }
