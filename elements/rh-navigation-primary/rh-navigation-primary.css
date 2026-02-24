@@ -320,7 +320,7 @@
   block-size: 100%;
   gap: 0;
 
-  @container navigation-primary (min-width: 480px) {
+  @container navigation-primary (min-width: 320px) {
     /* Secondary area margin from the hamburger, starting at containers >= 480px */
     margin-inline-start: var(--rh-space-lg, 16px);
   }
@@ -333,15 +333,10 @@
   #event {
     display: none;
 
-    @container navigation-primary (min-width: 480px) {
+    @container navigation-primary (min-width: 576px) {
       display: flex;
       flex-direction: row;
 
-      /* Event slot margin end from adjacent items, starting at containers >= 480px */
-      margin-inline-end: var(--rh-space-lg, 16px);
-    }
-
-    @container navigation-primary (min-width: 576px) {
       /** Event slot margin end from adjacent items, starting at containers >= 576px */
       margin-inline-end: var(--rh-space-xl, 24px);
     }
@@ -377,12 +372,17 @@
       display: flex;
       align-items: center;
 
-      /** Links menu toggle padding using space design system token for accessible tap target */
-      padding: var(--rh-space-lg, 16px);
+      /** Links menu toggle padding accessible tap target, at container < 576px */
+      padding: var(--rh-space-md, 8px);
 
-      /** inks menu toggle rounded corners */
+      /** Links menu toggle rounded corners */
       border-radius: var(--rh-border-radius-default, 3px);
       block-size: 100%;
+
+      @container navigation-primary (min-width: 576px) {
+        /** Links menu toggle padding accessible tap target, at container >= 576px */
+        padding: var(--rh-space-lg, 16px);
+      }
 
       @container navigation-primary (min-width: 1200px) {
         display: none;
