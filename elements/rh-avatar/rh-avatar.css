@@ -11,9 +11,9 @@
 }
 
 :host([plain]) {
-  /** Size of the avatar, */
   inline-size:
     var(
+        /** Size of the avatar, */
         --rh-avatar-size,
         /** Default avatar size */
         var(--rh-size-icon-06, 64px)
@@ -154,6 +154,15 @@ svg {
       & :is(img, canvas, svg) {
         /** Avatar blockwise end margin in block layouts */
         margin-block-end: var(--rh-space-lg, 16px);
+      }
+    }
+
+    @container avatar (max-width: 287px) {
+      &:not(.block) {
+        & :is(img, canvas, svg) {
+          /** Avatar blockwise end margin in block layouts */
+          margin-block-end: var(--rh-space-lg, 16px);
+        }
       }
     }
 
