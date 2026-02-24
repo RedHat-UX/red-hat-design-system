@@ -1,7 +1,7 @@
 body {
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-md, 1rem);
-  line-height: var(--rh-line-height-heading, 1.3);
+  line-height: var(--rh-line-height-body-text, 1.5);
   -webkit-font-smoothing: antialiased;
 }
 

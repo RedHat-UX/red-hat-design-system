@@ -1,55 +1,60 @@
 body {
-  font-family: var(--rh-font-family-body-text);
-  font-size: 1rem;
-  line-height: var(--rh-line-height-body-text);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+  line-height: var(--rh-line-height-body-text, 1.5);
+  -webkit-font-smoothing: antialiased;
 }
 
 :where(h1, h2, h3, h4, h5, h6) {
-  font-family: var(--rh-font-family-heading);
-  line-height: var(--rh-line-height-heading);
-  font-weight: var(--rh-font-weight-heading-medium);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+  line-height: var(--rh-line-height-heading, 1.3);
+  font-weight: var(--rh-font-weight-heading-medium, 500);
 }
 
 :where(code) {
   font-size: inherit;
-  font-family: var(--rh-font-family-code);
-  line-height: var(--rh-line-height-code);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  line-height: var(--rh-line-height-code, 1.5);
 }
 
 :where(kbd) {
-  font-family: var(--rh-font-family-body-text);
-  font-size: 1rem;
-  line-height: var(--rh-line-height-body-text);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+  line-height: var(--rh-line-height-body-text, 1.5);
 }
 
 :where(h1) {
-  font-size: var(--rh-font-size-heading-2xl);
+  font-size: var(--rh-font-size-heading-2xl, 3rem);
 }
 
 :where(h2) {
-  font-size: var(--rh-font-size-heading-xl);
+  font-size: var(--rh-font-size-heading-xl, 2.5rem);
 }
 
 :where(h3) {
-  font-size: var(--rh-font-size-heading-lg);
+  font-size: var(--rh-font-size-heading-lg, 2.25rem);
 }
 
 :where(h4) {
-  font-size: var(--rh-font-size-heading-md);
+  font-size: var(--rh-font-size-heading-md, 1.75rem);
 }
 
 :where(h5) {
-  font-size: var(--rh-font-size-heading-sm);
+  font-size: var(--rh-font-size-heading-sm, 1.5rem);
 }
 
 :where(h6) {
-  font-size: var(--rh-font-size-heading-xs);
+  font-size: var(--rh-font-size-heading-xs, 1.25rem);
 }
 
 :where(p) {
-  font-size: var(--rh-font-size-body-text-md);
+  font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 :where(p, ul, ol, dl) {
-  font-size: var(--rh-font-size-body-text-lg);
+  font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+}
+
+:where(input, button, textarea, select) {
+  font: inherit;
 }
