@@ -10,7 +10,7 @@ import { themable } from '@rhds/elements/lib/themable.js';
 
 import '@rhds/elements/rh-button/rh-button.js';
 
-import styles from './rh-announcement.css';
+import styles from './rh-announcement.css' with { type: 'css' };
 
 export class AnnouncementCloseEvent extends Event {
   constructor() {
@@ -92,7 +92,7 @@ export class RhAnnouncement extends LitElement {
              ?hidden="${!this.dismissable}"
              ?inert="${!this.dismissable}">
           <rh-button id="close-button"
-                  label="Close"
+                  accessible-label="Close"
                   confirm
                   variant="close"
                   @click=${this.#closeHandler}></rh-button>

@@ -13,8 +13,8 @@ import '@rhds/elements/rh-surface/rh-surface.js';
 import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 
-import styles from './rh-alert.css';
-import toastStyles from './rh-alert-toast-styles.css';
+import styles from './rh-alert.css' with { type: 'css' };
+import toastStyles from './rh-alert-toast-styles.css' with { type: 'css' };
 
 interface AlertAction {
   action: 'dismiss' | 'confirm' | string;
@@ -229,7 +229,7 @@ export class RhAlert extends LitElement {
             <div id="header-actions">
               <rh-button id="close-button"
                          variant="close"
-                         accessible-label="Close"
+                         label="Close"
                          confirm
                          @click="${this.#onClose}"></rh-button>
             </div>`}

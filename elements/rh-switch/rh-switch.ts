@@ -9,7 +9,7 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-switch.css';
+import styles from './rh-switch.css' with { type: 'css' };
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
@@ -79,7 +79,7 @@ export class RhSwitch extends LitElement {
     const noMessageOn = this.#slots.isEmpty('message-on');
     const noMessageOff = this.#slots.isEmpty('message-off');
     if (noMessageOn || noMessageOff) {
-      if ('ariaDescription' in (globalThis.ElementInternals ?? {})) {
+      if ('ariaDescription' in (globalThis.ElementInternals?.prototype ?? {})) {
         this.#internals.ariaDescription = this.#message ?? '';
       } else {
         this.setAttribute('aria-description', this.#message ?? '');
@@ -90,12 +90,7 @@ export class RhSwitch extends LitElement {
       for (const el of stateEls) {
         el.id ||= getRandomId('rh-switch-message');
       }
-      if ('ariaDescribedByElements' in (globalThis.ElementInternals ?? {})) {
-        // see https://w3c.github.io/aria/#dom-ariamixin
-        this.#internals.ariaDescribedByElements = stateEls;
-      } else {
-        this.setAttribute('aria-describedby', stateEls.map(x => x.id).join(' '));
-      }
+      this.#internals.ariaDescribedByElements = stateEls;
     }
   }
 

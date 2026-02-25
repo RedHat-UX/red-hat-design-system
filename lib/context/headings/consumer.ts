@@ -1,9 +1,9 @@
 import { context } from './provider.js';
 
 import { html, type LitElement, type TemplateResult } from 'lit';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { ContextConsumer } from '@lit/context';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 export interface HeadingTemplateOptions {
   id?: string;

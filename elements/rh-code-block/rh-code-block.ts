@@ -1,18 +1,19 @@
-import type { DirectiveResult } from 'lit-html/directive.js';
+import type { DirectiveResult } from 'lit/directive.js';
+
 import { CSSResult, LitElement, html, isServer, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
-import { classMap } from 'lit/directives/class-map.js';
-import { styleMap } from 'lit/directives/style-map.js';
 import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
+import { classMap } from 'lit/directives/class-map.js';
+import { styleMap } from 'lit/directives/style-map.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import style from './rh-code-block.css';
+import style from './rh-code-block.css' with { type: 'css' };
 
 /**
  * Returns a string with common indent stripped from each line. Useful for templating HTML
@@ -30,6 +31,10 @@ interface CodeLineHeightsInfo {
   lineHeights: (number | undefined)[];
   sizer: HTMLElement;
   oneLinerHeight: number;
+}
+
+interface ContentVisibilityAutoStateChangeEvent extends Event {
+  skipped: boolean;
 }
 
 const prismApplyPromises = new WeakMap();
@@ -154,7 +159,7 @@ export class RhCodeBlock extends LitElement {
   @property({ type: Boolean }) wrap = false;
 
   /** When set to `hidden`, the code block's line numbers are hidden */
-  @property({ reflect: true, attribute: 'line-numbers' }) lineNumbers?: 'hidden';
+  @property({ reflect: true, attribute: 'line-numbers' }) lineNumbers?: 'hidden' | 'visible';
 
   @state() private copyButtonState: 'default' | 'active' | 'failed' = 'default';
 
@@ -174,17 +179,7 @@ export class RhCodeBlock extends LitElement {
   #prismOutput?: DirectiveResult;
 
   #isIntersecting = false;
-  #io = new IntersectionObserver(rs => {
-    const old = this.#isIntersecting;
-    const isIntersecting = rs.some(r => r.isIntersecting);
-    this.#isIntersecting = isIntersecting;
-    if (old !== isIntersecting) {
-      this.requestUpdate();
-    }
-    this.#computeLineNumbers();
-  }, { rootMargin: '50% 0px' });
-
-  #ro = new ResizeObserver(() => this.#computeLineNumbers());
+  #ro?: ResizeObserver;
 
   #lines: string[] = [];
   #lineHeights: `${string}px`[] = [];
@@ -192,24 +187,23 @@ export class RhCodeBlock extends LitElement {
   override connectedCallback() {
     super.connectedCallback();
     if (!isServer) {
-      this.#ro.observe(this);
-      this.#io.observe(this);
+      this.#updateResizeObserver();
     }
     this.#onSlotChange();
   }
 
   override disconnectedCallback() {
     super.disconnectedCallback();
-    this.#ro.disconnect();
-    this.#io.disconnect();
+    this.#ro?.disconnect();
   }
 
   render() {
     const { fullHeight, wrap, resizable, compact } = this;
+    const lineNumbers = this.lineNumbers !== 'hidden';
     const expandable = this.#lines.length > 5;
     const truncated = expandable && !fullHeight;
     const actions = !!this.actions.length;
-    const isIntersecting = this.#isIntersecting;
+    const isIntersecting = this.#isIntersecting && this.lineNumbers !== 'hidden';
     const actionCopyLabelledBy =
        this.copyButtonState === 'default' ?
          'copy-to-clipboard-label'
@@ -218,8 +212,9 @@ export class RhCodeBlock extends LitElement {
            : 'copy-failed-label';
     return html`
       <div id="container"
-           class="${classMap({ actions, compact, expandable, fullHeight, isIntersecting, resizable, truncated, wrap })}"
-           @code-action="${this.#onCodeAction}">
+           class="${classMap({ actions, compact, expandable, fullHeight, isIntersecting, resizable, truncated, wrap, 'line-numbers': lineNumbers })}"
+           @code-action="${this.#onCodeAction}"
+           @contentvisibilityautostatechange="${this.#onVisibilityChange}">
         <div id="content-lines" tabindex="${ifDefined((!fullHeight || undefined) && 0)}">
           <div id="sizers" aria-hidden="true"></div>
           <ol id="line-numbers" inert aria-hidden="true">${this.#lineHeights.map((height, i) => html`
@@ -303,12 +298,17 @@ export class RhCodeBlock extends LitElement {
   }
 
   protected override firstUpdated(): void {
+    this.#computeLines();
+    // After computing lines, also update line heights if visible
     this.#computeLineNumbers();
   }
 
   protected override updated(changed: PropertyValues<this>): void {
     if (changed.has('wrap')) {
       this.#wrapChanged();
+    }
+    if (changed.has('lineNumbers') && !isServer) {
+      this.#updateResizeObserver();
     }
     if (this.actions.length && !isServer) {
       import('@rhds/elements/rh-tooltip/rh-tooltip.js');
@@ -322,6 +322,8 @@ export class RhCodeBlock extends LitElement {
       // dispatch here off of some supplemental attribute like `tokenizer="highlightjs"`
       case 'prerendered': await this.#applyPrismPrerenderedStyles(); break;
     }
+    await this.#computeLines();
+    // After computing lines, also update line heights if visible
     this.#computeLineNumbers();
   }
 
@@ -358,7 +360,42 @@ export class RhCodeBlock extends LitElement {
     }
   }
 
+  /**
+   * Handle content-visibility auto state changes
+   * When the element is rendered (not skipped), compute line numbers
+   * @param event - The contentvisibilityautostatechange event
+   */
+  #onVisibilityChange(event: Event) {
+    // skipped = true means content is NOT being rendered (off-screen)
+    // skipped = false means content IS being rendered (on/near screen)
+    const { skipped } = event as ContentVisibilityAutoStateChangeEvent;
+    const old = this.#isIntersecting;
+    this.#isIntersecting = !skipped;
+
+    if (old !== this.#isIntersecting) {
+      this.requestUpdate();
+      if (this.#isIntersecting && this.lineNumbers !== 'hidden') {
+        this.#computeLineNumbers();
+      }
+    }
+  }
+
+  #updateResizeObserver() {
+    const shouldHaveObserver = this.wrap && this.lineNumbers !== 'hidden';
+
+    if (!shouldHaveObserver && this.#ro) {
+      // Clean up observer when not needed
+      this.#ro.disconnect();
+      this.#ro = undefined;
+    } else if (shouldHaveObserver && !this.#ro) {
+      // Create observer only when both conditions are met
+      this.#ro = new ResizeObserver(() => this.#computeLineNumbers());
+      this.#ro.observe(this);
+    }
+  }
+
   async #wrapChanged() {
+    this.#updateResizeObserver();
     await this.updateComplete;
     this.#computeLineNumbers();
     this.#setSlottedLabelState('action-label-wrap', this.wrap ? 'active' : undefined);
@@ -383,15 +420,9 @@ export class RhCodeBlock extends LitElement {
   }
 
   /**
-   * Clone the text content and connect it to the document, in order to calculate the number of lines
-   * @license MIT
-   * Portions copyright prism.js authors (MIT license)
+   * Calculate the number of lines in the code block
    */
-  async #computeLineNumbers() {
-    if (!this.#isIntersecting) {
-      return;
-    }
-
+  async #computeLines() {
     await this.updateComplete;
     const codes =
         this.#prismOutput ? [this.shadowRoot?.getElementById('prism-output')].filter(x => !!x)
@@ -400,10 +431,22 @@ export class RhCodeBlock extends LitElement {
     this.#lines = codes.flatMap(element =>
       element.textContent?.split(/\n(?!$)/g) ?? []);
     this.requestUpdate();
+  }
 
-    if (this.lineNumbers === 'hidden') {
+  /**
+   * Calculate line heights for line numbers display
+   * @license MIT
+   * Portions copyright prism.js authors (MIT license)
+   */
+  async #computeLineNumbers() {
+    if (!this.#isIntersecting || this.lineNumbers === 'hidden') {
       return;
     }
+
+    await this.updateComplete;
+    const codes =
+        this.#prismOutput ? [this.shadowRoot?.getElementById('prism-output')].filter(x => !!x)
+      : this.#getSlottedCodeElements();
 
     const infos: CodeLineHeightsInfo[] = codes.map(element => {
       const codeElement = this.#prismOutput ? element.querySelector('code') : element;

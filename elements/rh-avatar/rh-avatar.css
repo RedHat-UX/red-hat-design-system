@@ -1,89 +1,27 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
 :host {
-  display: inline-block;
-  width: min-content;
+  display: block;
+  container: avatar / inline-size;
+  inline-size: 100%;
+}
+
+:host([plain]) {
+  inline-size:
+    var(
+        /** Size of the avatar, */
+        --rh-avatar-size,
+        /** Default avatar size */
+        var(--rh-size-icon-06, 64px)
+      );
 }
 
 [hidden] {
   display: none !important;
-}
-
-#container {
-  display: grid;
-  color: var(--rh-color-text-secondary);
-
-  /** List of colors to use when generating avatars */
-  --_colors:
-    light-dark(var(--rh-avatar-colors,
-      var(--rh-color-blue-30, #92c5f9)
-      var(--rh-color-teal-50, #37a3a3)
-      var(--rh-color-green-60, #3d7317)
-      var(--rh-color-red-40, #f56e6e)
-      var(--rh-color-purple-60, #3d2785)),
-      var(--rh-avatar-colors,
-      var(--rh-color-blue-50, #0066cc)
-      var(--rh-color-teal-70, #004d4d)
-      var(--rh-color-green-70, #204d00)
-      var(--rh-color-red-50, #ee0000)
-      var(--rh-color-purple-70, #21134d)));
-
-  column-gap: var(--rh-space-lg, 16px);
-  width: min-content;
-  grid-template-columns: min-content minmax(max-content, 250px);
-  grid-template-rows: min-content min-content;
-  grid-template-areas:
-    'a t'
-    'a s';
-}
-
-#title {
-  grid-area: t;
-  align-self: end;
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
-  font-weight: var(--rh-font-weight-heading-medium, 500);
-  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
-}
-
-#subtitle {
-  grid-area: s;
-  align-self: start;
-  font-weight: var(--rh-font-weight-heading-regular, 400);
-  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
-}
-
-:host([layout='block']) #container,
-:host(:not([plain])) #container.mobile {
-  text-align: center;
-  place-items: center;
-  gap: 0;
-  grid-template-columns: minmax(max-content, 250px);
-  grid-template-areas: 'a' 't' 's';
-  grid-template-rows:
-    minmax(var(--rh-avatar-size, var(--rh-size-icon-06, 64px)), var(--rh-size-icon-06, 64px))
-    min-content
-    auto;
-}
-
-:host([layout='block']) :is(img, canvas, svg),
-:host(:not([plain])) #container.mobile :is(img, canvas, svg) {
-  margin-block-end: var(--rh-space-lg, 16px);
-}
-
-slot {
-  display: block;
-  max-width: 250px;
-}
-
-::slotted(a) {
-  color: var(--rh-color-interactive-primary-default);
-}
-
-::slotted(a:visited) {
-  color: var(--rh-color-interactive-primary-visited-default);
-}
-
-::slotted(a:active),
-::slotted(a:hover) {
-  color: var(--rh-color-interactive-primary-hover);
 }
 
 img,
@@ -96,37 +34,18 @@ canvas,
 img,
 svg {
   overflow: hidden;
-
-  /** Size of the avatar, */
-  width: var(--rh-avatar-size, var(--rh-size-icon-06, 64px));
-  max-width: var(--rh-size-icon-06, 64px);
+  inline-size: var(--rh-avatar-size, var(--rh-size-icon-06, 64px));
+  max-inline-size: var(--rh-size-icon-06, 64px);
   aspect-ratio: 1;
   grid-area: a;
+
+  /** Default avatar border radius */
   border-radius: var(--rh-border-radius-pill, 64px);
 }
 
-:host([variant='bordered']) :is(canvas, img, svg) {
-  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
-}
-
-:host([plain]) slot {
-  /* .visually-hidden */
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-:host([plain]) #container {
-  column-gap: 0;
-}
-
 #default {
+  enable-background: new 0 0 36 36;
+
   & .st1 {
     fill-rule: evenodd;
     clip-rule: evenodd;
@@ -145,5 +64,157 @@ svg {
 
   & .st4 {
     fill: light-dark(#d2d2d2, #6a6e73);
+  }
+}
+
+#title {
+  grid-area: t;
+  align-self: end;
+  max-inline-size: 250px;
+
+  /** Avatar title font family */
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+
+  /** Avatar title font weight */
+  font-weight: var(--rh-font-weight-heading-medium, 500);
+
+  /** Avatar title font size */
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+}
+
+#subtitle {
+  grid-area: s;
+  align-self: start;
+  max-inline-size: 250px;
+
+  /** Avatar subtitle font weight */
+  font-weight: var(--rh-font-weight-heading-regular, 400);
+
+  /** Avatar subtitle font size */
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+}
+
+::slotted(a) {
+  /** Avatar link color */
+  color: var(--rh-color-interactive-primary-default);
+}
+
+::slotted(a:visited) {
+  /** Avatar visited slotted link color */
+  color: var(--rh-color-interactive-primary-visited-default);
+}
+
+::slotted(a:active),
+::slotted(a:hover) {
+  /** Avatar hovered or active slotted link color */
+  color: var(--rh-color-interactive-primary-hover);
+}
+
+#container {
+  --_colors:
+    /** List of colors to use when generating avatars */
+    light-dark(var(--rh-avatar-colors,
+      var(--rh-color-blue-30, #92c5f9)
+      var(--rh-color-teal-50, #37a3a3)
+      var(--rh-color-green-60, #3d7317)
+      var(--rh-color-red-40, #f56e6e)
+      var(--rh-color-purple-60, #3d2785)),
+      var(--rh-avatar-colors,
+      var(--rh-color-blue-50, #0066cc)
+      var(--rh-color-teal-70, #004d4d)
+      var(--rh-color-green-70, #204d00)
+      var(--rh-color-red-50, #ee0000)
+      var(--rh-color-purple-70, #21134d)));
+
+  display: grid;
+
+  /** Gap between the avatar and title/text in inline layouts */
+  column-gap: var(--rh-space-lg, 16px);
+  grid-template-columns: min-content 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'a t'
+    'a s';
+
+  /** Avatar title/subtitle text color */
+  color: var(--rh-color-text-secondary);
+
+  &:not(.plain) {
+    &.block {
+      text-align: center;
+      place-items: center;
+      gap: 0;
+      grid-template-columns: auto;
+      grid-template-areas: 'a' 't' 's';
+      grid-template-rows:
+        1fr
+        auto
+        auto;
+
+      & :is(img, canvas, svg) {
+        /** Avatar blockwise end margin in block layouts */
+        margin-block-end: var(--rh-space-lg, 16px);
+      }
+    }
+
+    @container avatar (max-width: 287px) {
+      &:not(.block) {
+        & :is(img, canvas, svg) {
+          /** Avatar blockwise end margin in block layouts */
+          margin-block-end: var(--rh-space-lg, 16px);
+        }
+      }
+    }
+
+    &:not(.block) {
+      grid-template-columns: 1fr;
+      grid-template-areas: 'a' 't' 's';
+      grid-template-rows: auto;
+      text-align: center;
+      place-items: center;
+
+      @container avatar (min-width: 288px) {
+        text-align: start;
+        place-items: start;
+        grid-template-areas:
+          'a t'
+          'a s';
+        grid-template-columns: min-content 1fr;
+        grid-template-rows: auto auto;
+
+        & :is(#title, #subtitle) {
+          text-align: start;
+        }
+      }
+    }
+  }
+
+  &.plain {
+    column-gap: 0;
+    inline-size: var(--rh-avatar-size, var(--rh-size-icon-06, 64px));
+
+    & :is(#title, #subtitle) {
+      /* .visually-hidden */
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  }
+
+  &.bordered {
+    & :is(canvas, img, svg) {
+      border:
+        /** Avatar border width when `bordered` is true */
+        var(--rh-border-width-sm, 1px)
+        solid
+        /** Avatar border color when `bordered` is true */
+        var(--rh-color-border-subtle);
+    }
   }
 }
