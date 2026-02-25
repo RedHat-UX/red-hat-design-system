@@ -5,7 +5,6 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
