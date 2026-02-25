@@ -13,6 +13,16 @@ import style from './rh-footer.css' with { type: 'css' };
 
 import './rh-footer-copyright.js';
 
+/**
+ * The universal footer is an abbreviated footer element with content that
+ * stays the same across all websites. It can stand by itself (eg: on
+ * orphan pages, landing pages, minisites, etc) or be used in tandem with
+ * rh-footer.
+ *
+ * @summary An abbreviated footer with content that stays the same across all websites
+ *
+ * @alias footer-universal
+ */
 @customElement('rh-footer-universal')
 @colorPalettes
 export class RhFooterUniversal extends LitElement {
