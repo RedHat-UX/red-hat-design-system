@@ -18,6 +18,7 @@ import './rh-footer-copyright.js';
 export class RhFooterUniversal extends LitElement {
   static readonly styles = [style];
 
+  /* Sets the color palette for footer universal */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
 
   #internals = InternalsController.of(this);
