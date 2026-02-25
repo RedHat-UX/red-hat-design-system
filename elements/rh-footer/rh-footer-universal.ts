@@ -1,10 +1,10 @@
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
@@ -13,12 +13,25 @@ import style from './rh-footer.css' with { type: 'css' };
 
 import './rh-footer-copyright.js';
 
+/**
+ * The universal footer is an abbreviated footer element with content that
+ * stays the same across all websites. It can stand by itself (eg: on
+ * orphan pages, landing pages, minisites, etc) or be used in tandem with
+ * rh-footer.
+ *
+ * @summary An abbreviated footer with content that stays the same across all websites
+ *
+ * @alias footer-universal
+ */
 @customElement('rh-footer-universal')
 @colorPalettes
 export class RhFooterUniversal extends LitElement {
   static readonly styles = [style];
 
+  /* Sets the color palette for footer universal */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
+
+  #internals = InternalsController.of(this);
 
   #slots = new SlotController(
     this,
@@ -31,26 +44,60 @@ export class RhFooterUniversal extends LitElement {
     'tertiary',
   );
 
+  override connectedCallback() {
+    super.connectedCallback();
+    this.#updateRole();
+  }
+
+  /**
+   * Check if this element is nested inside another `<footer>`/`<rh-footer>`.
+   * If not, set role="contentinfo" on the host via InternalsController.
+   * NOTE: Does not check for other custom elements with `role="contentinfo"`
+   */
+  #updateRole() {
+    let node: HTMLElement | null | undefined = this.parentElement;
+    let hasFooterAncestor = false;
+
+    while (node) {
+      if (node.tagName === 'FOOTER') {
+        hasFooterAncestor = true;
+        break;
+      }
+
+      if (node.tagName === 'RH-FOOTER') {
+        hasFooterAncestor = true;
+        break;
+      }
+
+      if (node.shadowRoot?.querySelector('footer')) {
+        hasFooterAncestor = true;
+        break;
+      }
+
+      node = node.parentElement;
+    }
+
+    if (!hasFooterAncestor) {
+      this.#internals.role = 'contentinfo';
+    }
+  }
+
   override render() {
     const hasTertiary = this.#slots.hasSlotted('tertiary');
 
-    // determine if footer and h2 already exist
+    // determine if h2 already exists in parent context
     let node: HTMLElement | null | undefined = this.parentElement;
-    let footer: HTMLElement | null | undefined = node?.closest('footer');
     let h2: HTMLElement | null | undefined = null;
-    while (!!node && !footer) {
+    while (!!node && !h2) {
       h2 = h2
         || node?.closest('h2')
         || node?.querySelector('h2')
         || node?.shadowRoot?.querySelector('h2');
-      footer = node?.closest('footer')
-        || node?.querySelector('footer')
-        || node?.shadowRoot?.querySelector('footer');
       node = node.parentElement;
     }
 
     return html`
-      <footer role="${ifDefined(footer ? 'none' : undefined)}">
+      <div class="footer">
         <h2 id="global-heading" ?hidden="${!!h2}">
           <!-- text that describes the footer section to assistive tecchnology. Contains default text "Red Hat footer". -->
           <slot name="heading">Red Hat footer</slot>
@@ -136,7 +183,7 @@ export class RhFooterUniversal extends LitElement {
             </div>
           </slot>
         </div>
-      </footer>
+      </div>
     `;
   }
 }
