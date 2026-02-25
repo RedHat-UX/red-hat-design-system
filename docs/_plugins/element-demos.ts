@@ -19,7 +19,8 @@ export default function(eleventyConfig: UserConfig) {
       return '';
     }
     const isNested = outputPath.match(/demo\/.+\/index\.html$/);
-    if (inputPath === './docs/elements/demos.html') {
+    if (inputPath === './docs/elements/demos.html'
+      || inputPath === './docs/elements/demo.html') {
       const document = Parse5.parse(content);
       for (const node of Tools.queryAll(document, node =>
         Tools.isElementNode(node)
