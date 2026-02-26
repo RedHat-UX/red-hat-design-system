@@ -351,17 +351,15 @@ export class RhPagination extends LitElement {
 
   #onSubmit(event: Event) {
     event.preventDefault();
-    const form = event.target as HTMLFormElement;
-    const input = form.querySelector('input');
-    if (!input || !this.#links) {
+    if (!this.input || !this.#links) {
       return;
     }
-    const newValue = parseInt(input.value);
+    const newValue = parseInt(this.input.value);
     this.#currentIndex = newValue - 1;
     if (this.#checkValidity()) {
       this.#go(this.#currentPage);
     } else {
-      input.reportValidity();
+      this.input.reportValidity();
     }
   }
 
