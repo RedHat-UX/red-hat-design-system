@@ -1,5 +1,6 @@
-import { expect, html } from '@open-wc/testing';
+import { expect, html, nextFrame } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
+import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { RhPagination } from '@rhds/elements/rh-pagination/rh-pagination.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { stub, type SinonStub } from 'sinon';
@@ -21,6 +22,30 @@ describe('<rh-pagination>', function() {
         .to.be.an.instanceOf(klass)
         .and
         .to.be.an.instanceOf(RhPagination);
+  });
+
+  describe('after initial render', function() {
+    let element: RhPagination;
+    beforeEach(async function() {
+      element = await createFixture<RhPagination>(html`
+        <rh-pagination>
+          <ol>
+            <li><a href="#">1</a></li>
+            <li><a href="#2">2</a></li>
+            <li><a href="#3">3</a></li>
+            <li><a href="#4">4</a></li>
+            <li><a href="#5">5</a></li>
+          </ol>
+        </rh-pagination>
+      `);
+      await element.updateComplete;
+      await nextFrame();
+    });
+
+    it('does not focus the page number input', async function() {
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.not.have.axQuery({ role: 'spinbutton', focused: true });
+    });
   });
 
   describe('with slotted i18n content', function() {
