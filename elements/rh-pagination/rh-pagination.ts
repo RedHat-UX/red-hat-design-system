@@ -173,15 +173,16 @@ export class RhPagination extends LitElement {
             Page
           </slot>
         </span>
-        <input type="number"
-               inputmode="numeric" 
-               required
-               min=1
-               max="${this.total}"
-               aria-labelledby="go-to-page"
-               @change="${this.#onChange}"
-               @keyup="${this.#onKeyup}"
-               .value="${currentPage}">
+        <form @submit="${this.#onSubmit}">
+          <input type="number"
+                 enterkeyhint="go"
+                 required
+                 min=1
+                 max="${this.total}"
+                 aria-labelledby="go-to-page"
+                 @keyup="${this.#onKeyup}"
+                 .value="${currentPage}">
+        </form>
         <!-- "of" text -->
         <slot ?hidden="${!this.total}" name="out-of">of</slot>
         <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
@@ -348,21 +349,19 @@ export class RhPagination extends LitElement {
     }
   }
 
-  #onChange(event: Event) {
-    if (!this.input || !this.#links) {
+  #onSubmit(event: Event) {
+    event.preventDefault();
+    const form = event.target as HTMLFormElement;
+    const input = form.querySelector('input');
+    if (!input || !this.#links) {
       return;
     }
-    const newValue = parseInt((event.target as HTMLInputElement).value);
-    const inputNum = parseInt(this.input.value);
-    if (newValue === inputNum) {
-      return;
-    }
-    this.input.value = newValue.toString();
-    this.#currentIndex = parseInt(this.input.value) - 1;
+    const newValue = parseInt(input.value);
+    this.#currentIndex = newValue - 1;
     if (this.#checkValidity()) {
       this.#go(this.#currentPage);
     } else {
-      this.input?.reportValidity();
+      input.reportValidity();
     }
   }
 

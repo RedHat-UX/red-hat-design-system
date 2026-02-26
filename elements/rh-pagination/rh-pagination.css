@@ -250,6 +250,10 @@ input:invalid:focus {
   inline-size: 100%;
 }
 
+#numeric form {
+  display: contents;
+}
+
 #numeric input {
   align-self: stretch;
   block-size: auto;
