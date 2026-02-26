@@ -1,0 +1,69 @@
+<label for="select-4">
+  With option group
+</label>
+<rh-select id="select-4" placeholder="Select an item">
+  <rh-option>
+    3scale API Management
+  </rh-option>
+  <rh-option disabled>
+    AI Inference Server
+  </rh-option>
+  <rh-option-group label="Ansible">
+    <rh-option>
+      Ansible Automation Platform
+    </rh-option>
+    <rh-option>
+      Ansible Lightspeed
+    </rh-option>
+  </rh-option-group>
+  <rh-option>
+    Certificate System
+  </rh-option>
+  <rh-option>
+    Connectivity Link
+  </rh-option>
+  <rh-option-group disabled label="Developer Tools">
+    <rh-option>
+      Developer Hub
+    </rh-option>
+    <rh-option>
+      Device Edge
+    </rh-option>
+    <rh-option>
+      Directory Server
+    </rh-option>
+  </rh-option-group>
+  <rh-option-group label="RHEL">
+    <rh-option>
+      Enterprise Linux
+    </rh-option>
+    <rh-option>
+      Enterprise Linux Lightspeed
+    </rh-option>
+  </rh-option-group>
+  <rh-option>
+    High performance computing portfolio
+  </rh-option>
+</rh-select>
+
+<link rel="stylesheet" href="../rh-select-lightdom.css">
+<link rel="stylesheet" href="../rh-select-lightdom-shim.css">
+
+<script type="module">
+  import '@rhds/elements/rh-select/rh-select.js';
+</script>
+
+<style>
+  label,
+  rh-select {
+    margin-inline: 20px;
+    max-inline-size: 320px;
+  }
+
+  label {
+    display: block;
+    font-family: var(--rh-font-family-body-text);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    margin-block: var(--rh-space-md, 8px);
+  }
+</style>

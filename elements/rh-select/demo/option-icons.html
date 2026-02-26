@@ -1,0 +1,45 @@
+<label for="select-2">
+  With option icons
+</label>
+<rh-select id="select-2" placeholder="Select an item">
+  <rh-option icon-set="ui" icon="document">
+    3scale API Management
+  </rh-option>
+  <rh-option disabled icon-set="ui" icon="document">
+    AI Inference Server
+  </rh-option>
+  <rh-option>
+    Ansible Automation Platform
+  </rh-option>
+  <rh-option icon-set="ui" icon="document">
+    Ansible Lightspeed
+  </rh-option>
+  <hr>
+  <rh-option icon-set="ui" icon="document">
+    Certificate System
+  </rh-option>
+  <rh-option icon-set="ui" icon="document">
+    Connectivity Link
+  </rh-option>
+</rh-select>
+
+<link rel="stylesheet" href="../rh-select-lightdom-shim.css">
+
+<script type="module">
+  import '@rhds/elements/rh-select/rh-select.js';
+</script>
+
+<style>
+  label,
+  rh-select {
+    margin-inline: 20px;
+    max-inline-size: 320px;
+  }
+
+  label {
+    display: block;
+    font-family: var(--rh-font-family-body-text);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    margin-block: var(--rh-space-md, 8px);
+  }
+</style>

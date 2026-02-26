@@ -1,0 +1,36 @@
+<label for="select-3">
+  With option descriptions
+</label>
+<rh-select id="select-3" placeholder="Select a country">
+  <rh-option label="Canada" value="ca" description="Longest coastline of any country"></rh-option>
+  <rh-option label="Germany" value="de" description="Worlds third largest importer and exporter"></rh-option>
+  <hr>
+  <rh-option label="India" value="in" description="Seventh largest country by area"></rh-option>
+  <rh-option>
+    Israel
+    <span slot="description">Slotted content instead of attributes</span>
+  </rh-option>
+  <rh-option label="United States" value="us" description="50 states" disabled>
+  </rh-option>
+</rh-select>
+
+<link rel="stylesheet" href="../rh-select-lightdom-shim.css">
+
+<script type="module">
+  import '@rhds/elements/rh-select/rh-select.js';
+</script>
+
+<style>
+  label,
+  rh-select {
+    margin-inline: 20px;
+    max-inline-size: 320px;
+  }
+
+  label {
+    display: block;
+    font-family: var(--rh-font-family-body-text);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    margin-block: var(--rh-space-md, 8px);
+  }
+</style>
