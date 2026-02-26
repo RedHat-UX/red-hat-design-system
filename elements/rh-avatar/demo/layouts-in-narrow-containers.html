@@ -1,0 +1,69 @@
+<div id="test">
+  <label for="repro">
+    <rh-switch id="repro"></rh-switch>
+    Toggle reproduction
+  </label>
+
+  <rh-avatar layout="inline"
+             variant="bordered">
+    <a href="/en/authors/ana-biazetti">
+      Ana Biazetti
+    </a>
+    <a slot="subtitle"
+       href="/en/authors/ana-biazetti">
+      Senior Principal Engineer, Red Hat AI
+    </a>
+  </rh-avatar>
+  <rh-avatar layout="inline"
+             variant="bordered">
+    <a href="/en/authors/lindani-phiri">
+      Lindani Phiri
+    </a>
+    <a slot="subtitle"
+       href="/en/authors/lindani-phiri">
+      Architect, Red Hat AI
+    </a>
+  </rh-avatar>
+</div>
+
+<style>
+  #test {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: var(--rh-space-xl, 24px);
+    padding: var(--rh-space-xl, 24px);
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-inline-size: 450px;
+
+    &.repro {
+      max-inline-size: 250px;
+    }
+  }
+
+  rh-avatar {
+    --rh-avatar-size: var(--rh-length-3xl, 48px);
+    --rh-color-surface-darker: var(--rh-color-purple-70, #21134d);
+    --rh-color-border-subtle: var(--rh-color-brand-red, light-dark(var(--rh-color-brand-red-on-light, #ee0000), var(--rh-color-brand-red-on-dark, #ee0000)));
+    --rh-color-text-secondary: --var(--rh-color-accent-base, light-dark(var(--rh-color-accent-base-on-light, #0066cc), var(--rh-color-accent-base-on-dark, #92c5f9)));
+    --rh-color-interactive-primary-default-on-dark: var(--rh-color-accent-base, light-dark(var(--rh-color-accent-base-on-light, #0066cc), var(--rh-color-accent-base-on-dark, #92c5f9)));
+    --rh-color-interactive-primary-visited-default-on-dark: var(--rh-color-accent-base, light-dark(var(--rh-color-accent-base-on-light, #0066cc), var(--rh-color-accent-base-on-dark, #92c5f9)));
+    --rh-color-interactive-primary-hover-on-dark: var(--rh-color-accent);
+    --rh-border-width-sm: var(--rh-length-xs, 4px);
+
+    padding: var(--rh-space-lg, 16px);
+    background-color: var(--rh-color-surface-darker, #1f1f1f);
+    color-scheme: dark only;
+    border-radius: var(--rh-border-radius-pill, 64px);
+  }
+</style>
+
+<script type="module">
+  import "@rhds/elements/rh-avatar/rh-avatar.js";
+  import "@rhds/elements/rh-switch/rh-switch.js";
+  const repro = document.getElementById('repro');
+  const test = document.getElementById('test');
+  repro.addEventListener('change', function () {
+    test.classList.toggle('repro');
+  });
+</script>
