@@ -1,7 +1,9 @@
 ---
 title: Developers
 layout: layouts/pages/has-toc.njk
-order: 4
+order: 50
+tags:
+  - theming
 ---
 
 <link rel="stylesheet"
