@@ -9,7 +9,7 @@ import CustomElementsManifestPlugin from '@patternfly/pfe-tools/11ty/plugins/cus
 import HelmetPlugin from 'eleventy-plugin-helmet';
 
 import { EleventyRenderPlugin, type UserConfig } from '@11ty/eleventy';
-
+import inlineCssPlugin from '#11ty-plugins/inline-css.js';
 import TypescriptAssetsPlugin from '#11ty-plugins/typescript-assets.js';
 import TOCPlugin from '#11ty-plugins/table-of-contents.js';
 import RHDSPlugin from '#11ty-plugins/rhds.js';
@@ -86,6 +86,8 @@ export default async function(eleventyConfig: UserConfig) {
     tags: ['h2'],
     headingText: 'On this page',
   });
+
+  eleventyConfig.addPlugin(inlineCssPlugin);
 
   /** Bespoke import map for ux-dot pages and demos */
   eleventyConfig.addPassthroughCopy({
