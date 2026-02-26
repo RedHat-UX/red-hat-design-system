@@ -429,7 +429,9 @@
     &.standalone {
       & ::slotted(a) {
         /** Secondary area slotted item font size */
-        font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
+        font-size:
+          var(--_navigation-link-font-size,
+            var(--rh-font-size-body-text-sm, 0.875rem)) !important;
         display: inline-flex;
         block-size: auto;
         align-items: center;
