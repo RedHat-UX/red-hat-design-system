@@ -203,7 +203,7 @@ input {
   inline-size: 100%;
 
   & form,
- label {
+  & label {
     height: 100%;
   }
 
