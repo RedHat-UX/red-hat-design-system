@@ -207,12 +207,14 @@ input {
 
   & form,
   & label {
+    place-content: center;
     height: 100%;
   }
 
-  & input {
-    align-self: stretch;
-    block-size: auto;
+  form {
+    display: flex;
+    flex-direction: row;
+    gap: var(--rh-space-md);
   }
 
   & a {
@@ -249,70 +251,38 @@ input {
   }
 }
 
-.go-to-page {
-  display: flex;
-  flex-direction: row;
-  gap: var(--rh-space-md, 8px);
-  place-items: center;
-
-  & .go-to-page-text {
-    @container pagination (min-width: 344px) {
-      border: 0;
-      clip: rect(0, 0, 0, 0);
-      block-size: 1px;
-      margin: -1px;
-      overflow: hidden;
-      padding: 0;
-      position: absolute;
-      white-space: nowrap;
-      inline-size: 1px;
-    }
-
-    @container pagination (min-width: 768px) {
-      clip: auto;
-      block-size: auto;
-      margin: 0;
-      overflow: visible;
-      padding: 0;
-      position: static;
-      white-space: normal;
-      inline-size: auto;
-    }
+.go-to-page-text {
+  @container pagination (min-width: 344px) {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    block-size: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    inline-size: 1px;
   }
-}
 
-#numeric-middle {
-  display: none;
-}
-
-#numeric-end {
-  display: block;
-  inline-size: 100%;
+  @container pagination (min-width: 768px) {
+    clip: auto;
+    block-size: auto;
+    margin: 0;
+    overflow: visible;
+    padding: 0;
+    position: static;
+    white-space: normal;
+    inline-size: auto;
+  }
 }
 
 @container pagination (min-width: 344px) {
-  #numeric-middle {
-    display: contents;
-  }
-
-  #numeric-end {
-    display: none;
-  }
-
   #numeric {
     margin-inline-start: var(--rh-space-lg, 16px);
   }
 }
 
 @container pagination (min-width: 768px) {
-  #numeric-middle {
-    display: none;
-  }
-
-  #numeric-end {
-    display: contents;
-  }
-
   #numeric {
     margin-inline-start: 0;
   }

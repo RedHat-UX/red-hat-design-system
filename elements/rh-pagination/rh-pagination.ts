@@ -87,9 +87,16 @@ export class RhPagination extends LitElement {
   } }) variant?: 'borderless' | null = null;
 
   @query('input') private input?: HTMLInputElement;
+  @query('#container') private container?: HTMLElement;
 
   #mo = new MutationObserver(() => this.requestUpdate());
   #logger = new Logger(this);
+
+  #ro = isServer ? null : new ResizeObserver(entries => {
+    for (const entry of entries) {
+      this.compact = entry.contentBoxSize[0].inlineSize < 768;
+    }
+  });
 
   #ol = isServer ? null : this.querySelector('ol');
   #links = this.#ol?.querySelectorAll<HTMLAnchorElement>('li a');
@@ -101,6 +108,7 @@ export class RhPagination extends LitElement {
   #currentLink = this.#getCurrentLink();
   #currentIndex = 0;
 
+  @state() private compact = true;
   @state() private total = 0;
   @state() private firstHref?: string;
   @state() private lastHref?: string;
@@ -129,6 +137,13 @@ export class RhPagination extends LitElement {
     super.disconnectedCallback();
     RhPagination.instances.delete(this);
     this.#mo.disconnect();
+    this.#ro?.disconnect();
+  }
+
+  protected override firstUpdated(): void {
+    if (this.container) {
+      this.#ro?.observe(this.container);
+    }
   }
 
   override update(changed: PropertyValues<this>): void {
@@ -166,21 +181,22 @@ export class RhPagination extends LitElement {
     const currentPage = this.#currentPage.toString();
     const numericContent = html`
       <div id="numeric" part="numeric">
+
         <form @submit="${this.#onSubmit}">
-          <label class="go-to-page">
-            <span class="go-to-page-text">
-              <slot name="go-to-page">
-                Page
-              </slot>
-            </span>
-            <input type="number"
-                   enterkeyhint="go"
-                   required
-                   name="page"
-                   min=1
-                   max="${this.total}"
-                   .value="${currentPage}">
+          <label for="page" class="go-to-page-text">
+            <slot name="go-to-page">
+              Page
+            </slot>
           </label>
+          <input type="number"
+                 enterkeyhint="go"
+                 required
+                 name="page"
+                 min=1
+                 max="${this.total}"
+                 aria-labelledby="go-to-page"
+                 value="${currentPage}"
+                 id="page">
         </form>
         <slot ?hidden="${!this.total}" name="out-of">of</slot>
         <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
@@ -188,6 +204,7 @@ export class RhPagination extends LitElement {
     `;
 
     return html`
+      
       <div id="container" part="container">
         <a id="first"
            class="stepper"
@@ -202,9 +219,7 @@ export class RhPagination extends LitElement {
         <nav aria-label="${label}">
           <slot></slot>
         </nav>
-        <div id="numeric-middle" part="numeric-middle">
-          ${numericContent}
-        </div>
+        ${this.compact ? numericContent : ''}
         <a id="next"
            class="stepper"
            href="${ifDefined(nextHref)}"
@@ -215,9 +230,7 @@ export class RhPagination extends LitElement {
            href="${ifDefined(lastHref)}"
            .inert="${this.#currentLink === this.#lastLink}"
            aria-label="${labelLast}">${L2}</a>
-        <div id="numeric-end" part="numeric-end">
-          ${numericContent}
-        </div>
+        ${!this.compact ? numericContent : ''}
       </div>
     `;
   }
@@ -332,18 +345,15 @@ export class RhPagination extends LitElement {
 
   #onSubmit(event: Event) {
     event.preventDefault();
-    // Query from the submitted form because numericContent renders twice
-    // for focus-order compliance; @query('input') only returns the first.
-    const input = (event.target as HTMLFormElement)?.querySelector('input');
-    if (!input || !this.#links) {
+    if (!this.input || !this.#links) {
       return;
     }
-    const newValue = parseInt(input.value);
+    const newValue = parseInt(this.input.value);
     this.#currentIndex = newValue - 1;
     if (this.#checkValidity()) {
       this.#go(this.#currentPage);
     } else {
-      input.reportValidity();
+      this.input.reportValidity();
     }
   }
 

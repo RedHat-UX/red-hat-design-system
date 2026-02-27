@@ -89,9 +89,9 @@ describe('<rh-pagination>', function() {
         await nextFrame();
       });
 
-      it('does not navigate to an invalid page', async function() {
+      it('marks the input as invalid', async function() {
         const snapshot = await a11ySnapshot();
-        expect(snapshot).to.not.have.axQuery({ role: 'spinbutton', value: 99 });
+        expect(snapshot).to.have.axQuery({ role: 'spinbutton', invalid: 'true' });
       });
     });
   });
