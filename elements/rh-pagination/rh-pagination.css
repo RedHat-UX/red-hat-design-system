@@ -174,7 +174,10 @@ input {
   color: var(--rh-color-text-primary);
 
   &:focus {
-    border: var(--rh-border-width-md, 2px) solid var(--rh-pagination-accent-color, var(--rh-color-interactive-primary-default));
+    border:
+      var(--rh-border-width-md, 2px)
+      solid
+      var(--rh-pagination-accent-color, var(--rh-color-interactive-primary-default));
     padding-block: calc(var(--rh-space-sm, 6px) - 1px);
     padding-inline: calc(var(--rh-space-md, 8px) - 1px);
     outline: none;
