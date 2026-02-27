@@ -34,8 +34,8 @@
   background: transparent;
   padding: var(--rh-space-md, 8px);
   border-radius: var(--rh-border-radius-default, 3px);
-  width: var(--rh-length-3xl, 48px);
-  height: var(--rh-length-3xl, 48px);
+  width: var(--rh-space-2xl, 32px);
+  height: var(--rh-space-2xl, 32px);
 }
 
 .shadow-fab:is(:hover, :focus, :active) {
@@ -71,7 +71,10 @@
   --_code-background-color:
     light-dark(var(--rh-color-surface-lighter, #f2f2f2),
       oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h));
-  --_code-main-spacer: var(--rh-space-xl, 24px);
+  --_code-main-spacer: var(--rh-space-2xl, 32px);
+  --_code-actions-gap: var(--rh-space-lg, 16px);
+  --_line-number-code-gap: var(--rh-space-lg, 16px);
+  --_code-font-size: var(--rh-font-size-code-md, 1rem);
   --_cdata-color: var(--rh-color-text-secondary);
   --_comment-color: var(--rh-color-text-secondary);
   --_comment-block-color: var(--rh-color-text-secondary);
@@ -170,9 +173,8 @@
   grid-template-areas:
     'code actions'
     'expand expand';
-  column-gap: var(--_code-main-spacer);
+  column-gap: var(--_code-actions-gap);
   padding-inline-start: var(--_code-main-spacer);
-  padding-block-end: var(--_code-main-spacer);
   border-radius: var(--rh-border-radius-default, 3px);
   background-color: var(--_code-background-color);
   color: var(--rh-color-text-primary);
@@ -199,10 +201,6 @@
   &.isIntersecting {
     content-visibility: visible;
   }
-
-  &.expandable {
-    padding-block-end: 0;
-  }
 }
 
 #sizers,
@@ -210,6 +208,7 @@
 #content {
   display: block;
   font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  font-size: var(--_code-font-size);
   z-index: 1;
   place-self: start;
   grid-area: code;
@@ -227,6 +226,7 @@
 #content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
   color: var(--_code-color);
   font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  font-size: inherit;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -252,15 +252,23 @@
 
 #content-lines {
   display: grid;
-  column-gap: var(--rh-space-lg, 16px);
+  column-gap: var(--_line-number-code-gap);
   grid-area: code;
   grid-template-areas: 'lines code';
   grid-template-columns: min-content 1fr;
   grid-template-rows: 1fr;
   position: relative;
   overflow-y: auto;
-  margin-block-start: var(--_code-main-spacer);
+  margin-block: var(--_code-main-spacer) var(--rh-space-md, 8px);
   width: 100%;
+
+  :not(.expandable) & {
+    margin-block: var(--rh-space-2xl, 32px);
+  }
+
+  .compact:not(.expandable) & {
+    margin-block: var(--rh-space-lg, 16px);
+  }
 }
 
 #sizers {
@@ -279,7 +287,7 @@
   margin: 0;
   grid-area: lines;
   list-style-type: none;
-  padding-inline: 0 var(--rh-space-md, 8px);
+  padding-inline: 0 var(--_line-number-code-gap);
   text-align: end;
   font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
   color: var(--rh-color-text-secondary);
@@ -298,7 +306,7 @@
   gap: var(--rh-space-md, 8px);
   flex-flow: column;
   margin-block-start: var(--rh-space-lg, 16px);
-  margin-inline-end: var(--rh-space-lg, 16px);
+  margin-inline-end: var(--_code-main-spacer);
   z-index: 2;
   place-self: start center;
   height: 100%;
@@ -340,6 +348,9 @@
 
 #container.compact {
   --_code-main-spacer: var(--rh-space-lg, 16px);
+  --_code-actions-gap: var(--rh-space-md, 8px);
+  --_line-number-code-gap: var(--rh-space-md, 8px);
+  --_code-font-size: var(--rh-font-size-code-sm, 0.875rem);
   --_code-secondary-spacer: var(--rh-space-sm, 6px);
 }
 
