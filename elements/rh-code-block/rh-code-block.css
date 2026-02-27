@@ -39,7 +39,11 @@
 }
 
 .shadow-fab:is(:hover, :focus, :active) {
-  background: var(--rh-color-surface);
+  background:
+    light-dark(
+        var(--rh-color-surface-light, #e0e0e0),
+        var(--rh-color-surface-dark, #383838)
+      );
 }
 
 .shadow-fab svg {
