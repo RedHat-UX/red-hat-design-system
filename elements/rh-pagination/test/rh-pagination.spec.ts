@@ -1,4 +1,4 @@
-import { expect, html, nextFrame } from '@open-wc/testing';
+import { expect, html, nextFrame, aTimeout } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { RhPagination } from '@rhds/elements/rh-pagination/rh-pagination.js';
@@ -30,7 +30,7 @@ describe('<rh-pagination>', function() {
       element = await createFixture<RhPagination>(html`
         <rh-pagination>
           <ol>
-            <li><a href="#">1</a></li>
+            <li><a href="#1">1</a></li>
             <li><a href="#2">2</a></li>
             <li><a href="#3">3</a></li>
             <li><a href="#4">4</a></li>
@@ -42,9 +42,57 @@ describe('<rh-pagination>', function() {
       await nextFrame();
     });
 
+    afterEach(function() {
+      // Clean up URL hash so it doesn't bleed into subsequent tests
+      history.replaceState(null, '', location.pathname + location.search);
+    });
+
+    it('should be accessible', async function() {
+      await expect(element).to.be.accessible();
+    });
+
     it('does not focus the page number input', async function() {
       const snapshot = await a11ySnapshot();
       expect(snapshot).to.not.have.axQuery({ role: 'spinbutton', focused: true });
+    });
+
+    it('has a page number input', async function() {
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.have.axQuery({ role: 'spinbutton', name: /Page/ });
+    });
+
+    describe('submitting the numeric input with a valid page number', function() {
+      beforeEach(async function() {
+        const input = element.shadowRoot!.querySelector('input')!;
+        const form = element.shadowRoot!.querySelector('form')!;
+        input.value = '3';
+        form.requestSubmit();
+        await aTimeout(50);
+        await element.updateComplete;
+        await nextFrame();
+      });
+
+      it('navigates to the entered page', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.have.axQuery({ role: 'spinbutton', value: 3 });
+      });
+    });
+
+    describe('submitting the numeric input with an out-of-range page number', function() {
+      beforeEach(async function() {
+        const input = element.shadowRoot!.querySelector('input')!;
+        const form = element.shadowRoot!.querySelector('form')!;
+        input.value = '99';
+        form.requestSubmit();
+        await aTimeout(50);
+        await element.updateComplete;
+        await nextFrame();
+      });
+
+      it('marks the input as invalid', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.have.axQuery({ role: 'spinbutton', invalid: 'true' });
+      });
     });
   });
 
@@ -71,6 +119,11 @@ describe('<rh-pagination>', function() {
     });
     it('does not log a content validation warning', function() {
       expect(Logger.prototype.warn).to.not.have.been.called;
+    });
+
+    it('labels the page number input with the slotted text', async function() {
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.have.axQuery({ role: 'spinbutton', name: /עבור לדף/ });
     });
   });
 

@@ -87,9 +87,16 @@ export class RhPagination extends LitElement {
   } }) variant?: 'borderless' | null = null;
 
   @query('input') private input?: HTMLInputElement;
+  @query('#container') private container?: HTMLElement;
 
   #mo = new MutationObserver(() => this.requestUpdate());
   #logger = new Logger(this);
+
+  #ro = isServer ? null : new ResizeObserver(entries => {
+    for (const entry of entries) {
+      this.compact = entry.contentBoxSize[0].inlineSize < 768;
+    }
+  });
 
   #ol = isServer ? null : this.querySelector('ol');
   #links = this.#ol?.querySelectorAll<HTMLAnchorElement>('li a');
@@ -101,6 +108,7 @@ export class RhPagination extends LitElement {
   #currentLink = this.#getCurrentLink();
   #currentIndex = 0;
 
+  @state() private compact = true;
   @state() private total = 0;
   @state() private firstHref?: string;
   @state() private lastHref?: string;
@@ -129,6 +137,13 @@ export class RhPagination extends LitElement {
     super.disconnectedCallback();
     RhPagination.instances.delete(this);
     this.#mo.disconnect();
+    this.#ro?.disconnect();
+  }
+
+  protected override firstUpdated(): void {
+    if (this.container) {
+      this.#ro?.observe(this.container);
+    }
   }
 
   override update(changed: PropertyValues<this>): void {
@@ -165,31 +180,31 @@ export class RhPagination extends LitElement {
     } = this;
     const currentPage = this.#currentPage.toString();
     const numericContent = html`
-      <!-- shared container for the numeric controls at all widths -->
       <div id="numeric" part="numeric">
-        <span id="go-to-page" class="xxs-visually-hidden sm-visually-visible">
-          <!-- "Go to page" text, defaults to "Page" -->
-          <slot name="go-to-page">
-            Page
-          </slot>
-        </span>
-        <input type="number"
-               inputmode="numeric" 
-               required
-               min=1
-               max="${this.total}"
-               aria-labelledby="go-to-page"
-               @change="${this.#onChange}"
-               @keyup="${this.#onKeyup}"
-               .value="${currentPage}">
-        <!-- "of" text -->
+
+        <form @submit="${this.#onSubmit}">
+          <label for="page" class="go-to-page-text">
+            <slot name="go-to-page">
+              Page
+            </slot>
+          </label>
+          <input type="number"
+                 enterkeyhint="go"
+                 required
+                 name="page"
+                 min=1
+                 max="${this.total}"
+                 aria-labelledby="go-to-page"
+                 value="${currentPage}"
+                 id="page">
+        </form>
         <slot ?hidden="${!this.total}" name="out-of">of</slot>
         <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
       </div>
     `;
 
     return html`
-      <!-- pagination container -->
+      
       <div id="container" part="container">
         <a id="first"
            class="stepper"
@@ -202,13 +217,9 @@ export class RhPagination extends LitElement {
            .inert="${this.#currentLink === this.#prevLink || this.#currentLink === this.#firstLink}"
            aria-label="${labelPrevious}">${L1}</a>
         <nav aria-label="${label}">
-          <!-- An ordered list of links -->
           <slot></slot>
         </nav>
-        <!-- container for the numeric control at medium screen widths -->
-        <div id="numeric-middle" part="numeric-middle">
-          ${numericContent}
-        </div>
+        ${this.compact ? numericContent : ''}
         <a id="next"
            class="stepper"
            href="${ifDefined(nextHref)}"
@@ -219,10 +230,7 @@ export class RhPagination extends LitElement {
            href="${ifDefined(lastHref)}"
            .inert="${this.#currentLink === this.#lastLink}"
            aria-label="${labelLast}">${L2}</a>
-        <!-- container for the numeric control at small and large screen widths -->
-        <div id="numeric-end" part="numeric-end">
-          ${numericContent}
-        </div>
+        ${!this.compact ? numericContent : ''}
       </div>
     `;
   }
@@ -249,12 +257,6 @@ export class RhPagination extends LitElement {
     if (isServer) {
       return null;
     }
-    // if there is an aria-current="page" attribute, use that
-    const ariaCurrent = this.querySelector<HTMLAnchorElement>('li a[aria-current="page"]');
-    if (ariaCurrent) {
-      return ariaCurrent;
-    }
-    // otherwise, use the href to determine the current link
     for (const link of this.#links ?? []) {
       const url = new URL(link.href);
       if (url.pathname === location.pathname
@@ -263,8 +265,9 @@ export class RhPagination extends LitElement {
         return link;
       }
     }
-    this.#logger.warn('could not determine current link');
-    return null;
+    // Fall back to aria-current="page" if no URL match (e.g., initial load without a hash)
+    return this.querySelector<HTMLAnchorElement>('li a[aria-current="page"]')
+      ?? (this.#logger.warn('could not determine current link'), null);
   }
 
   #updateLightDOMRefs(): void {
@@ -319,50 +322,33 @@ export class RhPagination extends LitElement {
   }
 
   /**
-   * 1. Normalize the element state
-   * 2. validate and act on the input
-   * 3. update the element in case a full browser navigation was prevented (e.g. SPA routing)
-   * @param id
+   * Navigate by clicking the corresponding link element.
+   * Numeric ids click light DOM links synchronously (preserving user gesture).
+   * String ids click shadow DOM steppers after rendering ensures their href is set.
+   * After the click, request an update in case a SPA prevented full navigation.
    */
   async #go(id: 'first' | 'prev' | 'next' | 'last' | number) {
-    await this.updateComplete;
     if (typeof id === 'number') {
-      const link = this.#links?.[id - 1];
-      link?.click?.();
+      this.#links?.[id - 1]?.click();
     } else {
+      await this.updateComplete;
       this.shadowRoot?.getElementById(id)?.click();
     }
     this.requestUpdate();
     await this.updateComplete;
-    return this.#currentIndex;
   }
 
-  #onKeyup(event: Event) {
-    if (!(event.target instanceof HTMLInputElement) || !this.#links) {
-      return;
-    }
-    const max = this.total.toString();
-    const input = event.target;
-    if (parseInt(input.value) > parseInt(max)) {
-      input.value = max;
-    }
-  }
-
-  #onChange(event: Event) {
+  #onSubmit(event: Event) {
+    event.preventDefault();
     if (!this.input || !this.#links) {
       return;
     }
-    const newValue = parseInt((event.target as HTMLInputElement).value);
-    const inputNum = parseInt(this.input.value);
-    if (newValue === inputNum) {
-      return;
-    }
-    this.input.value = newValue.toString();
-    this.#currentIndex = parseInt(this.input.value) - 1;
+    const newValue = parseInt(this.input.value);
+    this.#currentIndex = newValue - 1;
     if (this.#checkValidity()) {
       this.#go(this.#currentPage);
     } else {
-      this.input?.reportValidity();
+      this.input.reportValidity();
     }
   }
 
