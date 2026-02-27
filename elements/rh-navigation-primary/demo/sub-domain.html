@@ -227,20 +227,21 @@
 
   <rh-navigation-primary-item slot="links">
     <a href="#console">Console</a>
-    </rh-navigation-primary-item>
+  </rh-navigation-primary-item>
   <rh-navigation-primary-item slot="links">
     <a href="#support">Docs</a>
-    </rh-navigation-primary-item>
+  </rh-navigation-primary-item>
   <rh-navigation-primary-item slot="links">
     <a href="#console">Support</a>
-    </rh-navigation-primary-item>
+  </rh-navigation-primary-item>
 
   <rh-navigation-primary-item slot="dropdowns" variant="dropdown">
     <rh-icon slot="icon" icon="search" set="ui"></rh-icon>
     <span slot="summary">Search</span>
     <form>
       <label for="search">Search</label>
-      <input id="search" type="search"><button>Search</button>
+      <input id="search" type="search">
+      <button>Search</button>
     </form>
   </rh-navigation-primary-item>
 
@@ -250,9 +251,15 @@
     <h2>Recommendations for you</h2>
     <p>As you browse redhat.com, we'll recommend resources you may like. For now, try these.</p>
     <ul>
-      <li><a href="#">All Red Hat products</a></li>
-      <li><a href="#">Tech topics</a></li>
-      <li><a href="#">Red Hat resources</a></li>
+      <li>
+        <a href="#">All Red Hat products</a>
+      </li>
+      <li>
+        <a href="#">Tech topics</a>
+      </li>
+      <li>
+        <a href="#">Red Hat resources</a>
+      </li>
     </ul>
   </rh-navigation-primary-item>
 
@@ -266,7 +273,10 @@
           <rh-avatar plain></rh-avatar>
           <div class="account">
             <div class="name">Mr. Roboto</div>
-            <div class="edit"><a href="#"><rh-icon icon="edit" set="ui"></rh-icon> Edit Avatar</a></div>
+            <div class="edit">
+              <a href="#">
+                <rh-icon icon="edit" set="ui"></rh-icon> Edit Avatar</a>
+            </div>
           </div>
           <div class="info">
             <div>Login: jdoe@redhat.com</div>
@@ -332,31 +342,33 @@
 </rh-navigation-primary>
 
 <div id="mock">
-  <p>Mock Page content <a href="#">Link outside</a></p>
+  <form>
+    <fieldset>
+      <legend>Select Sub domain</legend>
+      <label><input type="radio" name="subdomain" value="Customer Portal" checked>Customer Portal</label>
+      <label><input type="radio" name="subdomain" value="Ecosystem Catalog">Ecosystem Catalog</label>
+      <label><input type="radio" name="subdomain" value="Partner Connect">Partner Connect</label>
+      <label><input type="radio" name="subdomain" value="Developers">Developers</label>
+      <label><input type="radio" name="subdomain" value="Docs">Docs</label>
+    </fieldset>
+  </form>
 </div>
-
-<form>
-  <fieldset>
-    <legend>Select Sub domain</legend>
-    <label><input type="radio" name="subdomain" value="Customer Portal" checked>Customer Portal</label>
-    <label><input type="radio" name="subdomain" value="Ecosystem Catalog">Ecosystem Catalog</label>
-    <label><input type="radio" name="subdomain" value="Partner Connect">Partner Connect</label>
-    <label><input type="radio" name="subdomain" value="Developers">Developers</label>
-    <label><input type="radio" name="subdomain" value="Docs">Docs</label>
-  </fieldset>
-</form>
 
 <link rel="stylesheet" href="../rh-navigation-primary-lightdom.css">
 
 <style>
   /* styles for mock content */
   #mock {
-    p {
-      margin-block-start: var(--rh-space-4xl, 64px);
-      padding-inline: var(--rh-space-lg, 16px);
-      @media (min-width: 768px) {
-        padding-inline: var(--rh-space-2xl, 32px);
-      }
+    margin-block: var(--rh-space-4xl, 64px);
+    padding-inline: var(--rh-space-lg, 16px);
+
+    @media (min-width: 768px) {
+      padding-inline: var(--rh-space-2xl, 32px);
+    }
+
+    fieldset {
+      display: flex;
+      flex-direction: column;
     }
   }
 
@@ -439,16 +451,6 @@
       }
     }
   }
-
-  /* form */
-  form {
-    padding: var(--rh-space-lg, 16px);
-  }
-
-  label {
-    display: flex;
-
-  }
 </style>
 
 <script type="module">
@@ -457,10 +459,12 @@
   import '@rhds/elements/rh-button/rh-button.js';
 
   // when the form value changes update rh-navigation-primary > [slot="sub-domain"] with the value
-  document.querySelector('form:has([name="subdomain"])').addEventListener('change', function(event) {
-    const subDomainLink = document.querySelector('rh-navigation-primary > [slot="sub-domain"]');
-    if (subDomainLink) {
-      subDomainLink.textContent = event.target.value;
-    }
-  });
+  document
+    .querySelector('form:has([name="subdomain"])')
+    .addEventListener('change', function (event) {
+      const subDomainLink = document.querySelector('rh-navigation-primary > [slot="sub-domain"]');
+      if (subDomainLink) {
+        subDomainLink.textContent = event.target.value;
+      }
+    });
 </script>

@@ -229,20 +229,21 @@
 
   <rh-navigation-primary-item slot="links">
     <a href="#console">Console</a>
-    </rh-navigation-primary-item>
+  </rh-navigation-primary-item>
   <rh-navigation-primary-item slot="links">
     <a href="#support">Docs</a>
-    </rh-navigation-primary-item>
+  </rh-navigation-primary-item>
   <rh-navigation-primary-item slot="links">
     <a href="#console">Support</a>
-    </rh-navigation-primary-item>
+  </rh-navigation-primary-item>
 
   <rh-navigation-primary-item slot="dropdowns" variant="dropdown">
     <rh-icon slot="icon" icon="search" set="ui"></rh-icon>
     <span slot="summary">Search</span>
     <form>
       <label for="search">Search</label>
-      <input id="search" type="search"><button>Search</button>
+      <input id="search" type="search">
+      <button>Search</button>
     </form>
   </rh-navigation-primary-item>
 
@@ -252,9 +253,15 @@
     <h2>Recommendations for you</h2>
     <p>As you browse redhat.com, we'll recommend resources you may like. For now, try these.</p>
     <ul>
-      <li><a href="#">All Red Hat products</a></li>
-      <li><a href="#">Tech topics</a></li>
-      <li><a href="#">Red Hat resources</a></li>
+      <li>
+        <a href="#">All Red Hat products</a>
+      </li>
+      <li>
+        <a href="#">Tech topics</a>
+      </li>
+      <li>
+        <a href="#">Red Hat resources</a>
+      </li>
     </ul>
   </rh-navigation-primary-item>
 
@@ -268,7 +275,10 @@
           <rh-avatar plain></rh-avatar>
           <div class="account">
             <div class="name">Mr. Roboto</div>
-            <div class="edit"><a href="#"><rh-icon icon="edit" set="ui"></rh-icon> Edit Avatar</a></div>
+            <div class="edit">
+              <a href="#">
+                <rh-icon icon="edit" set="ui"></rh-icon> Edit Avatar</a>
+            </div>
           </div>
           <div class="info">
             <div>Login: jdoe@redhat.com</div>
@@ -338,8 +348,6 @@
   <p>Click hat logo to capture analytics event.</p>
   <json-viewer>{}</json-viewer>
 </div>
-
-
 
 <link rel="stylesheet" href="../rh-navigation-primary-lightdom.css">
 
@@ -448,7 +456,6 @@
       }
     }
   }
-
 </style>
 
 <script type="module">
@@ -457,21 +464,24 @@
   import '@rhds/elements/rh-button/rh-button.js';
   import 'https://ga.jspm.io/npm:@power-elements/json-viewer@2.1.1/json-viewer.js';
 
-
-  document.addEventListener('click', function(event) {
-    const data = event.composedPath().reduceRight((acc, node) => {
-      if (node instanceof HTMLElement) {
-        for (const [datakey, value] of Object.entries(node.dataset)) {
-          if (datakey.startsWith('analytics')) {
-            const key = datakey.replace(/^analytics(.)/, (_, m) => m.toLowerCase());
-            acc[key] = `${acc[key] ?? ''}|${value}`.replace(/^\|/,'');
+  document.addEventListener('click', function (event) {
+    const data = event
+      .composedPath()
+      .reduceRight((acc, node) => {
+        if (node instanceof HTMLElement) {
+          for (const [datakey, value] of Object.entries(node.dataset)) {
+            if (datakey.startsWith('analytics')) {
+              const key = datakey.replace(/^analytics(.)/, (_, m) => m.toLowerCase());
+              acc[key] = `${acc[key] ?? ''}|${value}`.replace(/^\|/, '');
+            }
           }
         }
-      }
-      return acc;
-    }, {});
+        return acc;
+      }, {});
     if (data.linktype === 'href') {
-      document.querySelector('json-viewer').object = data;
+      document
+        .querySelector('json-viewer')
+        .object = data;
     }
   });
 </script>
