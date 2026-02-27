@@ -259,16 +259,8 @@
   grid-template-rows: 1fr;
   position: relative;
   overflow-y: auto;
-  margin-block: var(--_code-main-spacer) var(--rh-space-md, 8px);
+  margin-block: var(--_code-main-spacer);
   width: 100%;
-
-  :not(.expandable) & {
-    margin-block: var(--rh-space-2xl, 32px);
-  }
-
-  .compact:not(.expandable) & {
-    margin-block: var(--rh-space-lg, 16px);
-  }
 }
 
 #sizers {
@@ -383,6 +375,10 @@
 
 :host([line-numbers='hidden']) #line-numbers {
   display: none;
+}
+
+#container.expandable #content-lines {
+  margin-block: var(--_code-main-spacer) var(--rh-space-md, 8px);
 }
 
 :not(.wrap) #actions:before {
