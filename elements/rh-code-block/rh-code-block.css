@@ -34,8 +34,8 @@
   background: transparent;
   padding: var(--rh-space-md, 8px);
   border-radius: var(--rh-border-radius-default, 3px);
-  width: var(--rh-space-2xl, 32px);
-  height: var(--rh-space-2xl, 32px);
+  width: var(--rh-length-2xl, 32px);
+  height: var(--rh-length-2xl, 32px);
 }
 
 .shadow-fab:is(:hover, :focus, :active) {
