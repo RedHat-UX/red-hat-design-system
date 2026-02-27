@@ -47,8 +47,8 @@
 }
 
 .shadow-fab svg {
-  width: var(--rh-size-icon-02, 24px);
-  height: var(--rh-size-icon-02, 24px);
+  width: var(--rh-size-icon-01, 16px);
+  height: var(--rh-size-icon-01, 16px);
   color: var(--rh-color-text-primary);
 }
 
