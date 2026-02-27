@@ -22,18 +22,17 @@ rh-navigation-primary {
         /* stylelint-disable-next-line @stylistic/max-line-length */
         color: var(--rh-color-interactive-primary-default, light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc), var(--rh-color-interactive-primary-default-on-dark, #92c5f9))) !important;
         inline-size: 100%;
-        text-decoration:
-          underline
-          dashed
-          var(--rh-color-gray-50, #707070)
-          var(--rh-border-width-sm, 1px);
-        text-underline-offset: max(5px, 0.28em);
-        transition-timing-function: ease;
-        transition-property: text-underline-offset, color, text-decoration-color;
-        transition-duration: 0.3s;
+        text-decoration: none;
 
         &:hover {
-          text-decoration-color: inherit;
+          text-decoration:
+            underline
+            dashed
+            var(--rh-color-gray-50, #707070)
+            var(--rh-border-width-sm, 1px);
+          transition-timing-function: ease;
+          transition-property: text-underline-offset, color, text-decoration-color;
+          transition-duration: 0.3s;
           text-underline-offset: max(6px, 0.33em);
           color: var(--rh-color-interactive-primary-hover) !important;
         }
