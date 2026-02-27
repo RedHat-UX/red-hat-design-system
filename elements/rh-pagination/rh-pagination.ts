@@ -166,19 +166,21 @@ export class RhPagination extends LitElement {
     const currentPage = this.#currentPage.toString();
     const numericContent = html`
       <div id="numeric" part="numeric">
-        <span id="go-to-page" class="xxs-visually-hidden sm-visually-visible">
-          <slot name="go-to-page">
-            Page
-          </slot>
-        </span>
         <form @submit="${this.#onSubmit}">
-          <input type="number"
-                 enterkeyhint="go"
-                 required
-                 min=1
-                 max="${this.total}"
-                 aria-labelledby="go-to-page"
-                 value="${currentPage}">
+          <label class="go-to-page">
+            <span class="go-to-page-text">
+              <slot name="go-to-page">
+                Page
+              </slot>
+            </span>
+            <input type="number"
+                   enterkeyhint="go"
+                   required
+                   name="page"
+                   min=1
+                   max="${this.total}"
+                   .value="${currentPage}">
+          </label>
         </form>
         <slot ?hidden="${!this.total}" name="out-of">of</slot>
         <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
