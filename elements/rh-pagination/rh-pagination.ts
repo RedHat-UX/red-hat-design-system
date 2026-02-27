@@ -257,12 +257,6 @@ export class RhPagination extends LitElement {
     if (isServer) {
       return null;
     }
-    // if there is an aria-current="page" attribute, use that
-    const ariaCurrent = this.querySelector<HTMLAnchorElement>('li a[aria-current="page"]');
-    if (ariaCurrent) {
-      return ariaCurrent;
-    }
-    // otherwise, use the href to determine the current link
     for (const link of this.#links ?? []) {
       const url = new URL(link.href);
       if (url.pathname === location.pathname
@@ -271,8 +265,9 @@ export class RhPagination extends LitElement {
         return link;
       }
     }
-    this.#logger.warn('could not determine current link');
-    return null;
+    // Fall back to aria-current="page" if no URL match (e.g., initial load without a hash)
+    return this.querySelector<HTMLAnchorElement>('li a[aria-current="page"]')
+      ?? (this.#logger.warn('could not determine current link'), null);
   }
 
   #updateLightDOMRefs(): void {
