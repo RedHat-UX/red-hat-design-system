@@ -3,18 +3,6 @@ rh-navigation-primary {
   container: navigation-primary / inline-size;
 
   & :is(rh-navigation-primary-item, rh-navigation-link) {
-    color: var(--rh-color-text-primary) !important;
-
-    & a {
-      color: var(--rh-color-interactive-primary-default) !important;
-      text-decoration: none;
-      inline-size: 100%;
-
-      &:hover {
-        color: var(--rh-color-interactive-primary-hover) !important;
-      }
-    }
-
     &[slot='links'] {
       display: flex;
       align-items: center;
@@ -23,6 +11,32 @@ rh-navigation-primary {
     &[slot='event'] {
       &:hover {
         animation: rh-navigation-event-bounce 1s infinite;
+      }
+    }
+
+    &:not([slot='links']) {
+      color: var(--rh-color-text-primary) !important;
+
+      & a {
+        font-size: var(--rh-font-size-body-text-md, 1rem);
+        /* stylelint-disable-next-line @stylistic/max-line-length */
+        color: var(--rh-color-interactive-primary-default, light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc), var(--rh-color-interactive-primary-default-on-dark, #92c5f9))) !important;
+        inline-size: 100%;
+        text-decoration:
+          underline
+          dashed
+          var(--rh-color-gray-50, #707070)
+          var(--rh-border-width-sm, 1px);
+        text-underline-offset: max(5px, 0.28em);
+        transition-timing-function: ease;
+        transition-property: text-underline-offset, color, text-decoration-color;
+        transition-duration: 0.3s;
+
+        &:hover {
+          text-decoration-color: inherit;
+          text-underline-offset: max(6px, 0.33em);
+          color: var(--rh-color-interactive-primary-hover) !important;
+        }
       }
     }
   }

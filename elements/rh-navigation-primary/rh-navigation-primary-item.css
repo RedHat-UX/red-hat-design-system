@@ -428,6 +428,8 @@
 
     &.standalone {
       & ::slotted(a) {
+        text-decoration: none;
+
         /** Secondary area slotted item font size */
         font-size:
           var(--_navigation-link-font-size,
