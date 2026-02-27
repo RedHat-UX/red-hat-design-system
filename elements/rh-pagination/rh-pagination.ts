@@ -87,26 +87,9 @@ export class RhPagination extends LitElement {
   } }) variant?: 'borderless' | null = null;
 
   @query('input') private input?: HTMLInputElement;
-  @query('#container') private container?: HTMLElement;
 
   #mo = new MutationObserver(() => this.requestUpdate());
   #logger = new Logger(this);
-
-  #ro = isServer ? null : new ResizeObserver(entries => {
-    const numeric = this.shadowRoot?.getElementById('numeric');
-    if (!numeric) {
-      return;
-    }
-    for (const entry of entries) {
-      const width = entry.contentBoxSize[0].inlineSize;
-      const slotId =
-        width < 768 ? 'numeric-position-middle' : 'numeric-position-end';
-      const target = this.shadowRoot?.getElementById(slotId);
-      if (target?.nextElementSibling !== numeric) {
-        target?.after(numeric);
-      }
-    }
-  });
 
   #ol = isServer ? null : this.querySelector('ol');
   #links = this.#ol?.querySelectorAll<HTMLAnchorElement>('li a');
@@ -146,13 +129,6 @@ export class RhPagination extends LitElement {
     super.disconnectedCallback();
     RhPagination.instances.delete(this);
     this.#mo.disconnect();
-    this.#ro?.disconnect();
-  }
-
-  protected override firstUpdated(): void {
-    if (this.container) {
-      this.#ro?.observe(this.container);
-    }
   }
 
   override update(changed: PropertyValues<this>): void {
@@ -188,6 +164,26 @@ export class RhPagination extends LitElement {
       lastHref,
     } = this;
     const currentPage = this.#currentPage.toString();
+    const numericContent = html`
+      <div id="numeric" part="numeric">
+        <span id="go-to-page" class="xxs-visually-hidden sm-visually-visible">
+          <slot name="go-to-page">
+            Page
+          </slot>
+        </span>
+        <form @submit="${this.#onSubmit}">
+          <input type="number"
+                 enterkeyhint="go"
+                 required
+                 min=1
+                 max="${this.total}"
+                 aria-labelledby="go-to-page"
+                 value="${currentPage}">
+        </form>
+        <slot ?hidden="${!this.total}" name="out-of">of</slot>
+        <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
+      </div>
+    `;
 
     return html`
       <div id="container" part="container">
@@ -204,24 +200,8 @@ export class RhPagination extends LitElement {
         <nav aria-label="${label}">
           <slot></slot>
         </nav>
-        <span id="numeric-position-middle"></span>
-        <div id="numeric" part="numeric">
-          <span id="go-to-page" class="xxs-visually-hidden sm-visually-visible">
-            <slot name="go-to-page">
-              Page
-            </slot>
-          </span>
-          <form @submit="${this.#onSubmit}">
-            <input type="number"
-                   enterkeyhint="go"
-                   required
-                   min=1
-                   max="${this.total}"
-                   aria-labelledby="go-to-page"
-                   value="${currentPage}">
-          </form>
-          <slot ?hidden="${!this.total}" name="out-of">of</slot>
-          <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
+        <div id="numeric-middle" part="numeric-middle">
+          ${numericContent}
         </div>
         <a id="next"
            class="stepper"
@@ -233,7 +213,9 @@ export class RhPagination extends LitElement {
            href="${ifDefined(lastHref)}"
            .inert="${this.#currentLink === this.#lastLink}"
            aria-label="${labelLast}">${L2}</a>
-        <span id="numeric-position-end"></span>
+        <div id="numeric-end" part="numeric-end">
+          ${numericContent}
+        </div>
       </div>
     `;
   }
@@ -348,15 +330,18 @@ export class RhPagination extends LitElement {
 
   #onSubmit(event: Event) {
     event.preventDefault();
-    if (!this.input || !this.#links) {
+    // Query from the submitted form because numericContent renders twice
+    // for focus-order compliance; @query('input') only returns the first.
+    const input = (event.target as HTMLFormElement)?.querySelector('input');
+    if (!input || !this.#links) {
       return;
     }
-    const newValue = parseInt(this.input.value);
+    const newValue = parseInt(input.value);
     this.#currentIndex = newValue - 1;
     if (this.#checkValidity()) {
       this.#go(this.#currentPage);
     } else {
-      this.input.reportValidity();
+      input.reportValidity();
     }
   }
 

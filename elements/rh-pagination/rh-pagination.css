@@ -283,18 +283,38 @@ input:invalid:focus {
   color: var(--_numeric-a-color-visited-hover);
 }
 
-#numeric-position-middle,
-#numeric-position-end {
+#numeric-middle {
   display: none;
 }
 
+#numeric-end {
+  display: block;
+  inline-size: 100%;
+}
+
 @container pagination (min-width: 344px) {
+  #numeric-middle {
+    display: contents;
+  }
+
+  #numeric-end {
+    display: none;
+  }
+
   #numeric {
     margin-inline-start: var(--rh-space-lg, 16px);
   }
 }
 
 @container pagination (min-width: 768px) {
+  #numeric-middle {
+    display: none;
+  }
+
+  #numeric-end {
+    display: contents;
+  }
+
   #numeric {
     margin-inline-start: 0;
   }
