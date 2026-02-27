@@ -1,0 +1,1 @@
+Demonstrates adding `data-analytics-*` attributes to the navigation and its child elements for analytics tracking integration. Use this pattern when the site requires click and interaction tracking on navigation items.

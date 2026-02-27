@@ -12,6 +12,18 @@ function press(key: string) {
   };
 }
 
+function keydown(key: string) {
+  return async function() {
+    await sendKeys({ down: key });
+  };
+}
+
+function keyup(key: string) {
+  return async function() {
+    await sendKeys({ up: key });
+  };
+}
+
 const [
   HamburgerItem1Name,
   HamburgerItem2Name,
@@ -70,15 +82,15 @@ const NAV = html`
       </a>
     </rh-navigation-primary-item>
 
-    <rh-navigation-primary-item slot="links">Link 1</rh-navigation-primary-item>
-    <rh-navigation-primary-item slot="links">Link 2</rh-navigation-primary-item>
-    <rh-navigation-primary-item slot="links">Link 3</rh-navigation-primary-item>
+    <rh-navigation-primary-item slot="links"><a href="#link1">Link 1</a></rh-navigation-primary-item>
+    <rh-navigation-primary-item slot="links"><a href="#link2">Link 2</a></rh-navigation-primary-item>
+    <rh-navigation-primary-item slot="links"><a href="#link3">Link 3</a></rh-navigation-primary-item>
 
-    <rh-navigation-primary-item slot="dropdowns" variant="dropdown" hide="sm" summary="Item 6">
+    <rh-navigation-primary-item slot="dropdowns" variant="dropdown" summary="Item 6">
       Item 6 Content
     </rh-navigation-primary-item>
 
-    <rh-navigation-primary-item slot="dropdowns" variant="dropdown" hide="sm" summary="Item 7">
+    <rh-navigation-primary-item slot="dropdowns" variant="dropdown" summary="Item 7">
       Item 7 Content
     </rh-navigation-primary-item>
 
@@ -155,17 +167,28 @@ describe('<rh-navigation-primary>', function() {
 
       it('should hide content behind hamburger menu', async function() {
         const snapshot = await a11ySnapshot();
+        expect(snapshot).to.have.axQuery({ name: 'Menu' });
         expect(snapshot).to.not.have.axQuery({ name: HamburgerItem1Name });
         expect(snapshot).to.not.have.axQuery({ name: HamburgerItem2Name });
         expect(snapshot).to.not.have.axQuery({ name: HamburgerItem3Name });
         expect(snapshot).to.not.have.axQuery({ name: HamburgerItem4Name });
         expect(snapshot).to.not.have.axQuery({ name: HamburgerItem5Name });
+      });
+
+      it('bento box should be closed', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).axQuery({ name: 'Explore Red Hat' }).to.not.have.property('expanded', true);
+      });
+
+      it('should hide links behind bento box menu', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.have.axQuery({ name: 'Explore Red Hat' });
         expect(snapshot).to.not.have.axQuery({ name: 'Link 1' });
         expect(snapshot).to.not.have.axQuery({ name: 'Link 2' });
         expect(snapshot).to.not.have.axQuery({ name: 'Link 3' });
       });
 
-      it('should not hide right-side content behind hamburger menu', async function() {
+      it('should not hide right-side dropdown content', async function() {
         const snapshot = await a11ySnapshot();
         expect(snapshot).to.have.axQuery({ name: 'Item 6' });
         expect(snapshot).to.have.axQuery({ name: 'Item 7' });
@@ -239,7 +262,7 @@ describe('<rh-navigation-primary>', function() {
 
               it('should still have an open overlay', async function() {
                 // query the shadow root for the overlay
-                const overlay = element.shadowRoot?.querySelector('rh-navigation-primary-overlay[open]');
+                const overlay = element.shadowRoot?.querySelector('#overlay.open');
                 expect(overlay).to.exist;
               });
             });
@@ -261,6 +284,118 @@ describe('<rh-navigation-primary>', function() {
               expect(snapshot).to.not.have.axQuery({ name: HamburgerItem3Name });
               expect(snapshot).to.not.have.axQuery({ name: HamburgerItem4Name });
               expect(snapshot).to.not.have.axQuery({ name: HamburgerItem5Name });
+            });
+          });
+        });
+
+        describe('toggling bento box menu', function() {
+          beforeEach(press('Tab'));
+          beforeEach(press('Tab'));
+          beforeEach(press('Tab'));
+          beforeEach(press('Tab'));
+          beforeEach(press('Enter'));
+          beforeEach(async () => await element.updateComplete);
+
+          describe('toggle open', function() {
+            it('should open the bento box', async function() {
+              const snapshot = await a11ySnapshot();
+              expect(snapshot).to.have.axQuery({ name: 'Explore Red Hat', expanded: true });
+            });
+
+            it('bento box should have focus', async function() {
+              const snapshot = await a11ySnapshot();
+              expect(snapshot).to.have.axQuery({ name: 'Explore Red Hat', focused: true });
+            });
+
+            it('should not hide content behind bento box menu', async function() {
+              const snapshot = await a11ySnapshot();
+              expect(snapshot).to.have.axQuery({ name: 'Link 1' });
+              expect(snapshot).to.have.axQuery({ name: 'Link 2' });
+              expect(snapshot).to.have.axQuery({ name: 'Link 3' });
+            });
+
+            it('should not hide right-side dropdown content', async function() {
+              const snapshot = await a11ySnapshot();
+              expect(snapshot).to.have.axQuery({ name: 'Item 6' });
+              expect(snapshot).to.have.axQuery({ name: 'Item 7' });
+              expect(snapshot).to.have.axQuery({ name: 'Item 8' });
+            });
+
+            describe('pressing escape ', function() {
+              beforeEach(press('Escape'));
+              beforeEach(async () => await element.updateComplete);
+
+              it('should close bento box', async function() {
+                const snapshot = await a11ySnapshot();
+                expect(snapshot).to.not.have.axQuery({ name: 'Explore Red Hat', expanded: false });
+                expect(snapshot).to.not.have.axQuery({ name: 'Link 1' });
+                expect(snapshot).to.not.have.axQuery({ name: 'Link 2' });
+                expect(snapshot).to.not.have.axQuery({ name: 'Link 3' });
+              });
+
+              it('bento box should have focus', async function() {
+                const snapshot = await a11ySnapshot();
+                expect(snapshot).to.have.axQuery({ name: 'Explore Red Hat', focused: true });
+              });
+            });
+
+            describe('tabbing to first link in bento box', function() {
+              beforeEach(press('Tab'));
+              beforeEach(async () => await element.updateComplete);
+
+              it('should focus the first link', async function() {
+                const snapshot = await a11ySnapshot();
+                expect(snapshot).to.have.axQuery({ name: 'Link 1', focused: true });
+              });
+            });
+
+            describe('tabbing out of the bento box', function() {
+              beforeEach(press('Tab'));
+              beforeEach(press('Tab'));
+              beforeEach(press('Tab'));
+              beforeEach(press('Tab')); // should tab out
+
+              it('should close bento box', async function() {
+                const snapshot = await a11ySnapshot();
+                expect(snapshot).to.not.have.axQuery({ name: 'Explore Red Hat', expanded: false });
+                expect(snapshot).to.not.have.axQuery({ name: 'Link 1' });
+                expect(snapshot).to.not.have.axQuery({ name: 'Link 2' });
+                expect(snapshot).to.not.have.axQuery({ name: 'Link 3' });
+              });
+            });
+          });
+
+          describe('shift tab to toggle', function() {
+            beforeEach(() => {
+              keydown('Shift');
+              press('Tab');
+              keyup('Shift');
+            });
+
+            beforeEach(async () => await element.updateComplete);
+
+            it('should focus the bento box toggle', async function() {
+              const snapshot = await a11ySnapshot();
+              expect(snapshot).to.have.axQuery({ name: 'Explore Red Hat', focused: true });
+            });
+
+            describe('pressing return', function() {
+              beforeEach(press('Enter'));
+              beforeEach(async () => await element.updateComplete);
+
+              it('should close the bento box menu', async function() {
+                const snapshot = await a11ySnapshot();
+                expect(snapshot).to.not.have.axQuery({ name: 'Explore Red Hat', expanded: false });
+                expect(snapshot).to.not.have.axQuery({ name: 'Link 1' });
+                expect(snapshot).to.not.have.axQuery({ name: 'Link 2' });
+                expect(snapshot).to.not.have.axQuery({ name: 'Link 3' });
+              });
+
+              it('should have a closed overlay', async function() {
+                // query the shadow root for the overlay
+                const overlay = element.shadowRoot?.querySelector('#overlay:not(.open)');
+                expect(overlay).to.exist;
+              });
             });
           });
         });
@@ -289,6 +424,13 @@ describe('<rh-navigation-primary>', function() {
         expect(snapshot).to.have.axQuery({ name: HamburgerItem3Name });
         expect(snapshot).to.have.axQuery({ name: HamburgerItem4Name });
         expect(snapshot).to.have.axQuery({ name: HamburgerItem5Name });
+      });
+
+      it('should not hide content behind bento box menu', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.have.axQuery({ name: 'Link 1' });
+        expect(snapshot).to.have.axQuery({ name: 'Link 2' });
+        expect(snapshot).to.have.axQuery({ name: 'Link 3' });
       });
 
       describe('interactions', function() {
@@ -358,7 +500,7 @@ describe('<rh-navigation-primary>', function() {
     });
     beforeEach(async () => await element.updateComplete);
 
-    it('should have a dark themed menu bar', function() {
+    it('should have a darkest themed menu bar', function() {
       const bar = element.shadowRoot?.querySelector('#bar') as HTMLElement | undefined;
       expect(getComputedStyle(bar!).getPropertyValue('background-color')).to.be.equal('rgb(21, 21, 21)'); /* rgb(21, 21, 21) equiv #151515 */
     });
