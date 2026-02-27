@@ -229,15 +229,6 @@ input:invalid:focus {
   border-block-end-width: var(--rh-border-width-md, 2px);
 }
 
-#numeric-middle {
-  display: none;
-}
-
-#numeric-end {
-  display: block;
-  inline-size: 100%;
-}
-
 #numeric {
   align-items: center;
   display: flex;
@@ -292,29 +283,18 @@ input:invalid:focus {
   color: var(--_numeric-a-color-visited-hover);
 }
 
+#numeric-position-middle,
+#numeric-position-end {
+  display: none;
+}
+
 @container pagination (min-width: 344px) {
-  #numeric-middle {
-    display: contents;
-  }
-
-  #numeric-end {
-    display: none;
-  }
-
   #numeric {
     margin-inline-start: var(--rh-space-lg, 16px);
   }
 }
 
 @container pagination (min-width: 768px) {
-  #numeric-middle {
-    display: none;
-  }
-
-  #numeric-end {
-    display: contents;
-  }
-
   #numeric {
     margin-inline-start: 0;
   }

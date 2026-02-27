@@ -87,9 +87,26 @@ export class RhPagination extends LitElement {
   } }) variant?: 'borderless' | null = null;
 
   @query('input') private input?: HTMLInputElement;
+  @query('#container') private container?: HTMLElement;
 
   #mo = new MutationObserver(() => this.requestUpdate());
   #logger = new Logger(this);
+
+  #ro = isServer ? null : new ResizeObserver(entries => {
+    const numeric = this.shadowRoot?.getElementById('numeric');
+    if (!numeric) {
+      return;
+    }
+    for (const entry of entries) {
+      const width = entry.contentBoxSize[0].inlineSize;
+      const slotId =
+        width < 768 ? 'numeric-position-middle' : 'numeric-position-end';
+      const target = this.shadowRoot?.getElementById(slotId);
+      if (target?.nextElementSibling !== numeric) {
+        target?.after(numeric);
+      }
+    }
+  });
 
   #ol = isServer ? null : this.querySelector('ol');
   #links = this.#ol?.querySelectorAll<HTMLAnchorElement>('li a');
@@ -129,6 +146,13 @@ export class RhPagination extends LitElement {
     super.disconnectedCallback();
     RhPagination.instances.delete(this);
     this.#mo.disconnect();
+    this.#ro?.disconnect();
+  }
+
+  protected override firstUpdated(): void {
+    if (this.container) {
+      this.#ro?.observe(this.container);
+    }
   }
 
   override update(changed: PropertyValues<this>): void {
@@ -164,33 +188,8 @@ export class RhPagination extends LitElement {
       lastHref,
     } = this;
     const currentPage = this.#currentPage.toString();
-    const numericContent = html`
-      <!-- shared container for the numeric controls at all widths -->
-      <div id="numeric" part="numeric">
-        <span id="go-to-page" class="xxs-visually-hidden sm-visually-visible">
-          <!-- "Go to page" text, defaults to "Page" -->
-          <slot name="go-to-page">
-            Page
-          </slot>
-        </span>
-        <form @submit="${this.#onSubmit}">
-          <input type="number"
-                 enterkeyhint="go"
-                 required
-                 min=1
-                 max="${this.total}"
-                 aria-labelledby="go-to-page"
-                 @keyup="${this.#onKeyup}"
-                 .value="${currentPage}">
-        </form>
-        <!-- "of" text -->
-        <slot ?hidden="${!this.total}" name="out-of">of</slot>
-        <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
-      </div>
-    `;
 
     return html`
-      <!-- pagination container -->
       <div id="container" part="container">
         <a id="first"
            class="stepper"
@@ -203,12 +202,26 @@ export class RhPagination extends LitElement {
            .inert="${this.#currentLink === this.#prevLink || this.#currentLink === this.#firstLink}"
            aria-label="${labelPrevious}">${L1}</a>
         <nav aria-label="${label}">
-          <!-- An ordered list of links -->
           <slot></slot>
         </nav>
-        <!-- container for the numeric control at medium screen widths -->
-        <div id="numeric-middle" part="numeric-middle">
-          ${numericContent}
+        <span id="numeric-position-middle"></span>
+        <div id="numeric" part="numeric">
+          <span id="go-to-page" class="xxs-visually-hidden sm-visually-visible">
+            <slot name="go-to-page">
+              Page
+            </slot>
+          </span>
+          <form @submit="${this.#onSubmit}">
+            <input type="number"
+                   enterkeyhint="go"
+                   required
+                   min=1
+                   max="${this.total}"
+                   aria-labelledby="go-to-page"
+                   value="${currentPage}">
+          </form>
+          <slot ?hidden="${!this.total}" name="out-of">of</slot>
+          <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
         </div>
         <a id="next"
            class="stepper"
@@ -220,10 +233,7 @@ export class RhPagination extends LitElement {
            href="${ifDefined(lastHref)}"
            .inert="${this.#currentLink === this.#lastLink}"
            aria-label="${labelLast}">${L2}</a>
-        <!-- container for the numeric control at small and large screen widths -->
-        <div id="numeric-end" part="numeric-end">
-          ${numericContent}
-        </div>
+        <span id="numeric-position-end"></span>
       </div>
     `;
   }
@@ -320,33 +330,20 @@ export class RhPagination extends LitElement {
   }
 
   /**
-   * 1. Normalize the element state
-   * 2. validate and act on the input
-   * 3. update the element in case a full browser navigation was prevented (e.g. SPA routing)
-   * @param id
+   * Navigate by clicking the corresponding link element.
+   * Numeric ids click light DOM links synchronously (preserving user gesture).
+   * String ids click shadow DOM steppers after rendering ensures their href is set.
+   * After the click, request an update in case a SPA prevented full navigation.
    */
   async #go(id: 'first' | 'prev' | 'next' | 'last' | number) {
-    await this.updateComplete;
     if (typeof id === 'number') {
-      const link = this.#links?.[id - 1];
-      link?.click?.();
+      this.#links?.[id - 1]?.click();
     } else {
+      await this.updateComplete;
       this.shadowRoot?.getElementById(id)?.click();
     }
     this.requestUpdate();
     await this.updateComplete;
-    return this.#currentIndex;
-  }
-
-  #onKeyup(event: Event) {
-    if (!(event.target instanceof HTMLInputElement) || !this.#links) {
-      return;
-    }
-    const max = this.total.toString();
-    const input = event.target;
-    if (parseInt(input.value) > parseInt(max)) {
-      input.value = max;
-    }
   }
 
   #onSubmit(event: Event) {
