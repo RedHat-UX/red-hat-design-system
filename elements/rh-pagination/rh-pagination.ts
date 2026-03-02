@@ -12,7 +12,6 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-pagination.css' with { type: 'css' };
-import { classMap } from 'lit/directives/class-map.js';
 
 const L1 = html`
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 14">
@@ -217,9 +216,8 @@ export class RhPagination extends LitElement {
       lastHref,
     } = this;
     const currentPage = this.#currentPage.toString();
-    const classes = { 'numeric': true, 'compact': compact };
     return html`
-    <div part="numeric" class="${classMap(classes)}">
+    <div part="numeric">
       <form @submit="${this.#onSubmit}" ?inert="${this.compact !== compact}">
         <label for="${compact ? 'compact-page' : 'page'}" class="go-to-page-text">
           <slot name="go-to-page">
