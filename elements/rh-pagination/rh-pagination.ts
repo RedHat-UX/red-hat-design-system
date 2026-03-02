@@ -75,8 +75,16 @@ export class RhPagination extends LitElement {
   /** Change pagination size to small */
   @property({ reflect: true }) size: 'sm' | null = null;
 
-  /** "Open" variant */
-  @property({ reflect: true }) variant?: 'open' | null = null;
+  /**
+   * Borderless variant
+   * Note: 'open' will also work, but is deprecated
+   */
+  @property({ reflect: true, converter: {
+    fromAttribute(value: string | null) {
+      // Silent aliasing: convert 'open' to 'borderless'
+      return value === 'open' ? 'borderless' : value as 'borderless' | null;
+    },
+  } }) variant?: 'borderless' | null = null;
 
   @query('input') private input?: HTMLInputElement;
 
@@ -307,7 +315,6 @@ export class RhPagination extends LitElement {
     if (message) {
       this.#logger.warn(this.input?.validationMessage || 'could not navigate');
     }
-    this.input?.reportValidity();
     return !message;
   }
 
@@ -354,6 +361,8 @@ export class RhPagination extends LitElement {
     this.#currentIndex = parseInt(this.input.value) - 1;
     if (this.#checkValidity()) {
       this.#go(this.#currentPage);
+    } else {
+      this.input?.reportValidity();
     }
   }
 
