@@ -12,6 +12,7 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-pagination.css' with { type: 'css' };
+import { classMap } from 'lit/directives/class-map.js';
 
 const L1 = html`
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 14">
@@ -94,7 +95,8 @@ export class RhPagination extends LitElement {
 
   #ro = isServer ? null : new ResizeObserver(entries => {
     for (const entry of entries) {
-      this.compact = entry.contentBoxSize[0].inlineSize < 768;
+      this.compact = entry.contentBoxSize[0].inlineSize < 768
+        && entry.contentBoxSize[0].inlineSize >= 344;
     }
   });
 
@@ -178,61 +180,65 @@ export class RhPagination extends LitElement {
       nextHref,
       lastHref,
     } = this;
-    const currentPage = this.#currentPage.toString();
-    const numericContent = html`
-      <div id="numeric" part="numeric">
-
-        <form @submit="${this.#onSubmit}">
-          <label for="page" class="go-to-page-text">
-            <slot name="go-to-page">
-              Page
-            </slot>
-          </label>
-          <input type="number"
-                 enterkeyhint="go"
-                 required
-                 name="page"
-                 min=1
-                 max="${this.total}"
-                 aria-labelledby="go-to-page"
-                 value="${currentPage}"
-                 id="page">
-        </form>
-        <slot ?hidden="${!this.total}" name="out-of">of</slot>
-        <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
-      </div>
-    `;
 
     return html`
-      
       <div id="container" part="container">
         <a id="first"
            class="stepper"
            href="${ifDefined(firstHref)}"
-           .inert="${this.#currentLink === this.#firstLink}"
+           ?inert="${this.#currentLink === this.#firstLink}"
            aria-label="${labelFirst}">${L2}</a>
         <a id="prev"
            class="stepper"
            href="${ifDefined(prevHref)}"
-           .inert="${this.#currentLink === this.#prevLink || this.#currentLink === this.#firstLink}"
+           ?inert="${this.#currentLink === this.#prevLink || this.#currentLink === this.#firstLink}"
            aria-label="${labelPrevious}">${L1}</a>
         <nav aria-label="${label}">
           <slot></slot>
         </nav>
-        ${this.compact ? numericContent : ''}
+        <div id="compact-numeric">${this.#numericContent(true)}</div>
         <a id="next"
            class="stepper"
            href="${ifDefined(nextHref)}"
-           .inert="${this.#currentLink === this.#nextLink || this.#currentLink === this.#lastLink}"
+           ?inert="${this.#currentLink === this.#nextLink || this.#currentLink === this.#lastLink}"
            aria-label="${labelNext}">${L1}</a>
         <a id="last"
            class="stepper"
            href="${ifDefined(lastHref)}"
-           .inert="${this.#currentLink === this.#lastLink}"
+           ?inert="${this.#currentLink === this.#lastLink}"
            aria-label="${labelLast}">${L2}</a>
-        ${!this.compact ? numericContent : ''}
+        <div id="numeric">${this.#numericContent(false)}</div>
       </div>
     `;
+  }
+
+  #numericContent(compact: boolean) {
+    const {
+      lastHref,
+    } = this;
+    const currentPage = this.#currentPage.toString();
+    const classes = { 'numeric': true, 'compact': compact };
+    return html`
+    <div part="numeric" class="${classMap(classes)}">
+      <form @submit="${this.#onSubmit}" ?inert="${this.compact !== compact}">
+        <label for="${compact ? 'compact-page' : 'page'}" class="go-to-page-text">
+          <slot name="go-to-page">
+            Page
+          </slot>
+        </label>
+        <input type="number"
+               enterkeyhint="go"
+               required
+               name="page"
+               min=1
+               max="${this.total}"
+               value="${currentPage}"
+               id="${compact ? 'compact-page' : 'page'}">
+      </form>
+      <slot ?hidden="${!this.total}" name="out-of">of</slot>
+      <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
+    </div>
+  `;
   }
 
   #getOverflow(): 'start' | 'end' | 'both' | null {
@@ -258,6 +264,9 @@ export class RhPagination extends LitElement {
       return null;
     }
     for (const link of this.#links ?? []) {
+      if (!link.href) {
+        return null;
+      }
       const url = new URL(link.href);
       if (url.pathname === location.pathname
         && url.search === location.search
@@ -340,15 +349,16 @@ export class RhPagination extends LitElement {
 
   #onSubmit(event: Event) {
     event.preventDefault();
-    if (!this.input || !this.#links) {
+    const input = (event.target as HTMLFormElement | null)?.querySelector('input');
+    if (!input || !this.#links) {
       return;
     }
-    const newValue = parseInt(this.input.value);
+    const newValue = parseInt(input.value);
     this.#currentIndex = newValue - 1;
     if (this.#checkValidity()) {
       this.#go(this.#currentPage);
     } else {
-      this.input.reportValidity();
+      input.reportValidity();
     }
   }
 

@@ -194,7 +194,36 @@ input {
   }
 }
 
-#numeric {
+#compact-numeric {
+  display: none;
+}
+
+@container pagination (min-width: 344px) {
+  #compact-numeric,
+  #numeric {
+    block-size: 100%;
+  }
+
+  #compact-numeric {
+    display: revert;
+  }
+
+  #numeric {
+    display: none;
+  }
+}
+
+@container pagination (min-width: 768px) {
+  #compact-numeric {
+    display: none;
+  }
+
+  #numeric {
+    display: revert;
+  }
+}
+
+.numeric {
   align-items: center;
   display: flex;
   flex: 0;
@@ -206,9 +235,11 @@ input {
   inline-size: 100%;
 
   & form,
-  & label {
+  & label,
+  & input {
+    place-items: center;
     place-content: center;
-    height: 100%;
+    min-block-size: var(--_stepper-size);
   }
 
   form {
@@ -277,7 +308,7 @@ input {
 }
 
 @container pagination (min-width: 344px) {
-  #numeric {
+  #compact-numeric {
     margin-inline-start: var(--rh-space-lg, 16px);
   }
 }
