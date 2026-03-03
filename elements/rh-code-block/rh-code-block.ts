@@ -53,10 +53,10 @@ export class RhCodeBlockCopyEvent extends Event {
 /**
  * A code block applies special formatting to sections of code.
  *
+ * @summary Formats code strings within a container
  * @alias code-block
  *
- * @summary Formats code strings within a container
- * @event {RhCodeBlockCopyEvent} copy - fired when the user requests to copy the code block text.
+ * @fires {RhCodeBlockCopyEvent} copy - fired when the user requests to copy the code block text.
  *                                      Modify the `event.content` field to change the copied text
  *                                      (e.g. to remove a prompt from a shell command)
  */
