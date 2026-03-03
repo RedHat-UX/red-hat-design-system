@@ -15,17 +15,17 @@ order: 10
 
 Automated tools can help you quickly identify many potential high-impact accessibility issues. Among such tools are free browser extensions like:
 
-- Deque’s aXe DevTools
+- Deque’s Axe DevTools
 - WebAIM’s WAVE
 - IBM's Equal Access Checker
 
-### Deque aXe DevTools
+### Deque Axe DevTools
 
-Tucked away in your browser’s DevTools panel after installation, Deque’s aXe DevTools extension scans your page for accessibility issues and best practices, and then returns a text list of results and code callouts. With its ability to export results, aXe DevTools is also useful for documentation, reports, and issue tracking.
+Tucked away in your browser’s DevTools panel after installation, Deque’s Axe DevTools extension scans your page for accessibility issues and best practices, and then returns a text list of results and code callouts. With its ability to export results, Axe DevTools is also useful for documentation, reports, and issue tracking.
 
 Different WCAG versions (2.0 through 2.2) and conformance levels (A through AAA) can be specified in the extension’s settings. (At Red Hat, we target WCAG 2.2 AA.) And you can toggle best practices results on and off, depending on whether you’re interested solely in strict WCAG conformance. You can read the full list of rules being tested at the [axe-core GitHub repository](https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md).
 
-The [aXe DevTools extension](https://www.deque.com/axe/devtools/) is available for Chrome, Firefox, and Edge. The free version allows you to test entire pages. The paid Pro version adds the capability to specify page sections for testing, provides additional export options, and also includes some guided walkthroughs for further testing.
+The [Axe DevTools extension](https://www.deque.com/axe/devtools/) is available for Chrome, Firefox, and Edge. The free version allows you to test entire pages. The paid Pro version adds the capability to specify page sections for testing, provides additional export options, and also includes some guided walkthroughs for further testing.
 
 ### WebAIM WAVE
 
@@ -36,9 +36,9 @@ The [WAVE browser extension](https://wave.webaim.org/) is available for Chrome, 
 
 ### IBM Equal Access Checker
 
-Like aXe DevTools, IBM’s free Equal Access Checker resides in your browser’s DevTools panel after installation. When run, Equal Access Checker returns a text list of detected violations, warnings, and/or recommendations, depending on your preferences.
+Like Axe DevTools, IBM’s free Equal Access Checker resides in your browser’s DevTools panel after installation. When run, Equal Access Checker returns a text list of detected violations, warnings, and/or recommendations, depending on your preferences.
 
-Running Equal Access Checker in conjunction with a tool like aXe DevTools can be useful for detecting a wider array of violations than either tool alone. And surfacing violations common to both tools may help you identify higher-risk issues.
+Running Equal Access Checker in conjunction with a tool like Axe DevTools can be useful for detecting a wider array of violations than either tool alone. And surfacing violations common to both tools may help you identify higher-risk issues.
 
 In addition to WCAG versions 2.0, 2.1, and 2.2, Equal Access Checker can run scans based on IBM’s [internal accessibility target](https://www.ibm.com/able/requirements/requirements/). Currently, this target includes WCAG 2.2 AA, plus some additional U.S. (Section 508) and European (EN 301 549) standards not covered by WCAG. IBM has posted the [Equal Access testing ruleset](https://www.ibm.com/able/requirements/checker-rule-sets) at their accessibility site.
 
