@@ -1,0 +1,55 @@
+<div dir="rtl" lang="he">
+  <rh-drawer id="drawer" variant="inline" open>
+    <div slot="header">כותרת</div>
+    <div slot="body">
+      <p>זהו תוכן הגוף של חלונית המגירה. בשפות מימין לשמאל, החלונית מופיעה בצד הנכון בהתאם לכיוון הטקסט.</p>
+    </div>
+    <div slot="footer">כותרת תחתונה</div>
+    <div>
+      <h3>תוכן ראשי</h3>
+      <p>תוכן זה מכוסה על ידי חלונית המגירה. המגירה תומכת בשפות מימין לשמאל כולל עברית וערבית.</p>
+      <p>לורם איפסום דולור סיט אמט, קונסקטטור אדיפיסינג אלית. סת אלמנקום נימוצינור,, ושמן מעמידושמע
+        ותלמשנותי,, תוצנ, ,, פול, מוסן מנת, נמשח, , תוצנ מוסן מנת, , , דוסי מקנה גלisce לאsjust
+        ליבום סולמיה דימון, , ברומיה, , , .</p>
+      <form id="knobs" dir="ltr">
+        <fieldset>
+          <legend>Position</legend>
+          <label><input type="radio" name="position" value="inline-start" checked> inline-start</label>
+          <label><input type="radio" name="position" value="inline-end"> inline-end</label>
+        </fieldset>
+        <fieldset>
+          <legend>Panel</legend>
+          <label><input type="radio" name="panel" value="collapsible" checked> collapsible (default)</label>
+          <label><input type="radio" name="panel" value="resizable"> resizable</label>
+        </fieldset>
+        <fieldset>
+          <legend>Fullscreen</legend>
+          <label><input type="checkbox" name="fullscreen"> fullscreen</label>
+        </fieldset>
+      </form>
+    </div>
+  </rh-drawer>
+</div>
+
+<style>
+  div[dir] {
+    block-size: 100%;
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-drawer/rh-drawer.js';
+
+  const form = document.getElementById('knobs');
+  const drawer = document.getElementById('drawer');
+
+  form.addEventListener('input', function sync() {
+    const data = Object.fromEntries(new FormData(form));
+    drawer.position = data.position;
+    drawer.panel = data.panel || undefined;
+    drawer.fullscreen = 'fullscreen' in data;
+    if (!drawer.open) {
+      drawer.open = true;
+    }
+  });
+</script>

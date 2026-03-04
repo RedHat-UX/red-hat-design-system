@@ -1,0 +1,1 @@
+The panel pushes and pulls content in the normal flex flow. Below 992px, non-collapsible panels go off-screen and content takes full width. Includes demos for inline-start, inline-end, and resizable with an external trigger.

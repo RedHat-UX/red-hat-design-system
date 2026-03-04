@@ -1,0 +1,1 @@
+The panel participates in the parent layout at desktop sizes (>= 992px), sitting in a CSS grid as a navigation sidebar. Below 992px it becomes a fixed overlay toggled by an external trigger. This demo uses `rh-navigation-vertical` to show a realistic navigation use case.

@@ -1,0 +1,1 @@
+Demonstrates session persistence using the `storage-key` attribute. Each drawer saves its open/closed state and panel width to `sessionStorage`. Toggle the drawer or resize the panel, then navigate away and come back — the last state will be restored. Closing the tab clears the state.

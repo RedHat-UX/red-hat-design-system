@@ -1,0 +1,91 @@
+<rh-drawer id="drawer" variant="overlay" storage-key="demo-storage">
+  <div slot="header">Header</div>
+  <div slot="body">Body</div>
+  <div slot="footer">Footer</div>
+  <div>
+    <h3>Content</h3>
+    <p>Collapse or resize the drawer, navigate away, then return. The drawer state will
+      be restored from session storage.</p>
+
+    <form id="knobs">
+      <fieldset>
+        <legend>Variant</legend>
+        <label><input type="radio" name="variant" value="overlay" checked> overlay</label>
+        <label><input type="radio" name="variant" value="inline"> inline</label>
+      </fieldset>
+      <fieldset>
+        <legend>Position</legend>
+        <label><input type="radio" name="position" value="inline-start" checked> inline-start</label>
+        <label><input type="radio" name="position" value="inline-end"> inline-end</label>
+      </fieldset>
+      <fieldset>
+        <legend>Panel</legend>
+        <label><input type="radio" name="panel" value="collapsible" checked> collapsible</label>
+        <label><input type="radio" name="panel" value="resizable"> resizable</label>
+      </fieldset>
+      <fieldset>
+        <legend>Fullscreen</legend>
+        <label><input type="checkbox" name="fullscreen"> fullscreen</label>
+      </fieldset>
+    </form>
+    <button id="trigger" disabled aria-controls="drawer" aria-expanded="true">Open Drawer</button>
+    <div class="help-text">Enabled when resizable is checked</div>
+  </div>
+</rh-drawer>
+
+<script type="module">
+  import '@rhds/elements/rh-drawer/rh-drawer.js';
+
+  const KNOBS_KEY = 'demo-storage-knobs';
+  const trigger = document.getElementById('trigger');
+  const form = document.getElementById('knobs');
+  const drawer = document.getElementById('drawer');
+
+  drawer.addEventListener('open', () => trigger.setAttribute('aria-expanded', 'true'));
+  drawer.addEventListener('close', () => trigger.setAttribute('aria-expanded', 'false'));
+
+  function saveKnobs() {
+    const data = Object.fromEntries(new FormData(form));
+    sessionStorage.setItem(KNOBS_KEY, JSON.stringify(data));
+  }
+
+  function restoreKnobs() {
+    try {
+      const raw = sessionStorage.getItem(KNOBS_KEY);
+      if (!raw) return;
+      const data = JSON.parse(raw);
+      for (const [name, value] of Object.entries(data)) {
+        const input = form.querySelector(`[name="${name}"][value="${value}"]`);
+        if (input) {
+          input.checked = true;
+        }
+      }
+      if (data.fullscreen) {
+        form.querySelector('[name="fullscreen"]').checked = true;
+      }
+      applyKnobs();
+    } catch {
+      // ignore corrupt data
+    }
+  }
+
+  function applyKnobs() {
+    const data = Object.fromEntries(new FormData(form));
+    const isResizable = data.panel === 'resizable';
+    drawer.variant = data.variant;
+    drawer.position = data.position;
+    drawer.panel = data.panel || undefined;
+    drawer.fullscreen = 'fullscreen' in data;
+    drawer.triggerId = isResizable ? 'trigger' : undefined;
+    trigger.disabled = !isResizable;
+  }
+
+  form.addEventListener('input', function() {
+    applyKnobs();
+    saveKnobs();
+  });
+
+  await customElements.whenDefined('rh-drawer');
+  await drawer.updateComplete;
+  restoreKnobs();
+</script>
