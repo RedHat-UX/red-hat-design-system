@@ -1,0 +1,42 @@
+<button id="fixed-trigger" aria-controls="drawer" aria-expanded="false">Open Drawer</button>
+
+<rh-drawer id="drawer" variant="fixed" trigger-id="fixed-trigger">
+  <div slot="header">Header</div>
+  <div slot="body">Body</div>
+  <div slot="footer">Footer</div>
+</rh-drawer>
+
+<form id="knobs">
+  <fieldset>
+    <legend>Position</legend>
+    <label><input type="radio" name="position" value="inline-start" checked> inline-start</label>
+    <label><input type="radio" name="position" value="inline-end"> inline-end</label>
+  </fieldset>
+  <fieldset>
+    <legend>Panel</legend>
+    <label><input type="radio" name="panel" value="none" checked> none</label>
+    <label><input type="radio" name="panel" value="resizable"> resizable</label>
+  </fieldset>
+  <fieldset>
+    <legend>Fullscreen</legend>
+    <label><input type="checkbox" name="fullscreen"> fullscreen</label>
+  </fieldset>
+</form>
+
+<script type="module">
+  import '@rhds/elements/rh-drawer/rh-drawer.js';
+
+  const trigger = document.getElementById('fixed-trigger');
+  const form = document.getElementById('knobs');
+  const drawer = document.getElementById('drawer');
+
+  drawer.addEventListener('open', () => trigger.setAttribute('aria-expanded', 'true'));
+  drawer.addEventListener('close', () => trigger.setAttribute('aria-expanded', 'false'));
+
+  form.addEventListener('input', function sync() {
+    const data = Object.fromEntries(new FormData(form));
+    drawer.position = data.position;
+    drawer.panel = data.panel || undefined;
+    drawer.fullscreen = 'fullscreen' in data;
+  });
+</script>
