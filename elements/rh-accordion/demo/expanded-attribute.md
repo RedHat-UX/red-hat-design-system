@@ -1,1 +1,0 @@
-Accordion panel expanded on load using the `expanded` attribute directly on the header element.

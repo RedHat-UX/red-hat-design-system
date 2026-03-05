@@ -1,1 +1,0 @@
-Accordion rendered across different color palettes to demonstrate automatic theme adaptation.

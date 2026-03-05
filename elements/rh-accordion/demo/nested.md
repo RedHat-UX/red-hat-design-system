@@ -1,1 +1,0 @@
-Accordion panels containing nested accordion components for hierarchical content organization.
