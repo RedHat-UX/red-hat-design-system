@@ -1,0 +1,14 @@
+name: Health Report
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+jobs:
+  health:
+    uses: bennypowers/cem/.github/workflows/cem-health-report.yml@main
+    with:
+      fail-below: 60

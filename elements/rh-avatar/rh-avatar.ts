@@ -3,12 +3,10 @@ import type { RandomPatternController } from './random-pattern-controller.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { LitElement, html, isServer, type PropertyValues } from 'lit';
-import { classMap } from 'lit/directives/class-map.js';
 
-import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 import { themable } from '../../lib/themable.js';
 
-import styles from './rh-avatar.css';
+import styles from './rh-avatar.css' with { type: 'css' };
 
 /**
  * An avatar is a small thumbnail representation of a user.
@@ -73,7 +71,6 @@ export class RhAvatar extends LitElement {
 
   #pattern?: RandomPatternController;
 
-  #screen = new ScreenSizeController(this);
 
   connectedCallback() {
     super.connectedCallback();
@@ -98,12 +95,11 @@ export class RhAvatar extends LitElement {
   }
 
   render() {
-    const { mobile } = this.#screen;
     return html`
-      <div id="container" class="${classMap({ mobile })}">${this.pattern ? html`
+      <div id="container">${this.pattern ? html`
         <!-- summary: canvas element for rendering generated geometric patterns
              description: |
-               This part is used when the `pattern` attribute is set to "squares" or "triangles".
+               This part is used when the \`pattern\` attribute is set to "squares" or "triangles".
                It renders a deterministic, randomly-generated geometric pattern based on the user's name.
                The same name always produces the same pattern, providing consistent visual identity
                without storing generated images. Pattern colors are controlled by the --_colors CSS

@@ -9,7 +9,7 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-switch.css';
+import styles from './rh-switch.css' with { type: 'css' };
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
