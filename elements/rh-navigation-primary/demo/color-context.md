@@ -1,1 +1,0 @@
-Demonstrates switching between lightest and darkest color palettes using the color context picker.
