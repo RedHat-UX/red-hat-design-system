@@ -4,6 +4,7 @@
   inset: 0;
   inline-size: 100dvw;
   block-size: 100dvh;
+
   /**
    * The stacking order (z-index) for the navigation overlay backdrop.
    * SHOULD be lower than `--rh-navigation-primary-z-index` so the
