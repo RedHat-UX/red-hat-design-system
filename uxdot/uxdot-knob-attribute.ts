@@ -2,7 +2,7 @@ import type { IconSetName } from '@rhds/icons';
 import { LitElement, html, isServer, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { icons } from '@rhds/icons/metadata.js';
 
@@ -12,6 +12,9 @@ import styles from './uxdot-knob-attribute.css';
 import '@rhds/elements/rh-switch/rh-switch.js';
 import '@rhds/elements/rh-tabs/rh-tabs.js';
 import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
+
 import { observes } from '@patternfly/pfe-core/decorators.js';
 
 const dequote = (x: string) =>
@@ -40,6 +43,9 @@ export class UxdotKnobAttribute extends LitElement {
   #icons: string[] = [];
 
   #typeMembers: string[] = [];
+
+  // eslint-disable-next-line no-unused-private-class-members
+  #internals = InternalsController.of(this, { role: 'listitem' });
 
   get value() {
     const el = this.shadowRoot?.getElementById('knob') as HTMLInputElement;
@@ -78,7 +84,7 @@ export class UxdotKnobAttribute extends LitElement {
 
     // TODO: replace tooltip with popover for toggletips
     return html`
-      <li data-name="${this.name}" @change="${this.#onChange}">
+      <div id="container" data-name="${this.name}" @change="${this.#onChange}">
         <label for="knob">
           <code id="knob-title">${this.name}</code>
           <rh-tooltip>
@@ -131,7 +137,7 @@ export class UxdotKnobAttribute extends LitElement {
                id="knob"
                inputmode="${ifDefined(this.type === 'number' ? 'numeric' : undefined)}"
                value="${ifDefined(this.#values.get(this.name))}">`}
-      </li>
+      </div>
     `;
   }
 

@@ -1,4 +1,7 @@
 rh-navigation-primary {
+  /* workaround for apparent regression in Safari 26.2 for containers defined on :host */
+  container: navigation-primary / inline-size;
+
   & :is(rh-navigation-primary-item, rh-navigation-link) {
     color: var(--rh-color-text-primary) !important;
 

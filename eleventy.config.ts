@@ -9,7 +9,7 @@ import CustomElementsManifestPlugin from '@patternfly/pfe-tools/11ty/plugins/cus
 import HelmetPlugin from 'eleventy-plugin-helmet';
 
 import { EleventyRenderPlugin, type UserConfig } from '@11ty/eleventy';
-
+import inlineCssPlugin from '#11ty-plugins/inline-css.js';
 import TypescriptAssetsPlugin from '#11ty-plugins/typescript-assets.js';
 import TOCPlugin from '#11ty-plugins/table-of-contents.js';
 import RHDSPlugin from '#11ty-plugins/rhds.js';
@@ -87,6 +87,8 @@ export default async function(eleventyConfig: UserConfig) {
     headingText: 'On this page',
   });
 
+  eleventyConfig.addPlugin(inlineCssPlugin);
+
   /** Bespoke import map for ux-dot pages and demos */
   eleventyConfig.addPassthroughCopy({
     'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element',
@@ -138,11 +140,9 @@ export default async function(eleventyConfig: UserConfig) {
       '@rhds/icons/social/',
       '@rhds/icons/standard/',
       '@rhds/icons/ui/',
-      '@patternfly/elements',
+      '@patternfly/elements/',
       '@patternfly/pfe-core',
       // Vendor
-      '@floating-ui/core',
-      '@floating-ui/dom',
       '@lit-labs/ssr-client/',
       '@lit/context',
       '@lit/reactive-element',
@@ -210,6 +210,7 @@ export default async function(eleventyConfig: UserConfig) {
       'elements/rh-button/rh-button.ts',
       'elements/rh-card/rh-card.ts',
       'elements/rh-chip/rh-chip.ts',
+      'elements/rh-chip/rh-chip-group.ts',
       'elements/rh-code-block/rh-code-block.ts',
       'elements/rh-cta/rh-cta.ts',
       'elements/rh-dialog/rh-dialog.ts',

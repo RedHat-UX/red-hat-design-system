@@ -1,7 +1,7 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 
-import style from './rh-footer-block.css';
+import style from './rh-footer-block.css' with { type: 'css' };
 
 @customElement('rh-footer-block')
 export class RhFooterBlock extends LitElement {
