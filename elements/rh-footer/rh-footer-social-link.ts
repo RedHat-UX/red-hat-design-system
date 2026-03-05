@@ -54,9 +54,9 @@ export class RhFooterSocialLink extends LitElement {
       <a href="${ifDefined(this.href)}" aria-label="${ifDefined(this.accessibleLabel)}">
         <!-- summary: custom social icon content
              description: |
-               Optional slot for a custom icon when the built-in `<rh-icon>` social set
+               Optional slot for a custom icon when the built-in \`<rh-icon>\` social set
                does not include the desired platform. Screen readers rely on the parent
-               anchor's `aria-label` rather than this icon content. -->
+               anchor's \`aria-label\` rather than this icon content. -->
         <slot>${this.icon ? html`<rh-icon set="social" icon="${this.icon}"></rh-icon>` : ''}</slot>
       </a>
     `;

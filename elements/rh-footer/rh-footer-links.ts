@@ -66,8 +66,8 @@ export class RhFooterLinks extends LitElement {
         <!-- summary: link group heading
              description: |
                Heading element (h2-h5) labeling this link group. Automatically linked
-               to the `<ul>` via `aria-labelledby` for screen reader users. Visually
-               hidden when `header-hidden` attribute is set. -->
+               to the \`<ul>\` via \`aria-labelledby\` for screen reader users. Visually
+               hidden when \`header-hidden\` attribute is set. -->
         <slot name="header"></slot>
       </div>
       <div part="default" class="default">
@@ -79,8 +79,8 @@ export class RhFooterLinks extends LitElement {
         <slot name="panel"></slot>
         <!-- summary: link list
              description: |
-               Default slot for the `<ul>` of navigation links. Each link is focusable
-               via Tab. The list SHOULD have `aria-labelledby` pointing to the header
+               Default slot for the \`<ul>\` of navigation links. Each link is focusable
+               via Tab. The list SHOULD have \`aria-labelledby\` pointing to the header
                (auto-wired by the component). -->
         <slot></slot>
       </div>

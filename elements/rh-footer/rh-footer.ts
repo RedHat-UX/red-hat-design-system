@@ -108,8 +108,8 @@ export class RhFooter extends LitElement {
                     <!-- summary: main page or product logo
                          description: |
                            Slot for the site logo linking to the homepage. Defaults to the Red Hat
-                           corporate logo. Screen readers rely on the img `alt` attribute or link
-                           text for identification. MUST contain an accessible `<a>` with an image
+                           corporate logo. Screen readers rely on the img \`alt\` attribute or link
+                           text for identification. MUST contain an accessible \`<a>\` with an image
                            or text. -->
                     <slot name="logo">
                       <a href="/">
@@ -131,9 +131,9 @@ export class RhFooter extends LitElement {
                                      aria-label="Red Hat social media links">
                       <!-- summary: social media icon links
                          description: |
-                           Container for `<rh-footer-social-link>` elements. Each link MUST have
-                           an `accessible-label` for screen reader announcement. Rendered as a
-                           list with `role="list"` and `aria-label="Red Hat social media links"`. -->
+                           Container for \`<rh-footer-social-link>\` elements. Each link MUST have
+                           an \`accessible-label\` for screen reader announcement. Rendered as a
+                           list with \`role="list"\` and \`aria-label="Red Hat social media links"\`. -->
                       <slot name="social-links"></slot>
                     </rh-footer-links>
                   </div>
@@ -164,7 +164,7 @@ export class RhFooter extends LitElement {
           </div>
           <!-- summary: universal footer slot
                description: |
-                 MUST contain an `<rh-footer-universal>` element providing global Red Hat
+                 MUST contain an \`<rh-footer-universal>\` element providing global Red Hat
                  links, logo, and copyright. Screen readers navigate this as a separate
                  footer landmark region. MUST NOT be omitted. -->
           <slot name="universal"></slot>
