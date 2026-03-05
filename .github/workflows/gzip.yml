@@ -14,6 +14,7 @@ jobs:
           cache: npm
       - uses: preactjs/compressed-size-action@v2
         with:
+          build-script: build
           clean-script: clean
           pattern: ./**/*.js
           exclude: ./{scripts/**/*,elements/*/demo/**/*,docs/**/*,_site/**/*,node_modules/**/*,*.config.js}

@@ -1,5 +1,7 @@
 <rh-context-demo>
-  <rh-code-block dedent language="html" highlighting="client">
+  <rh-code-block dedent
+                 language="html"
+                 highlighting="client">
     <script type="text/html">
       <!DOCTYPE html>
       <html lang="en">
@@ -16,9 +18,9 @@
                  Nullam eleifend elit sed est egestas, a sollicitudin mauris
                  tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
                  felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
-              <rh-cta slot="footer" priority="primary">
-                <a href="#">Call to action</a>
-              </rh-cta>
+              <rh-cta slot="footer"
+                      variant="primary"
+                      href="#">Call to action</rh-cta>
             </rh-card>
           </main>
         </body>
@@ -26,7 +28,9 @@
     </script>
   </rh-code-block>
 
-  <rh-code-block dedent language="css" highlighting="client">
+  <rh-code-block dedent
+                 language="css"
+                 highlighting="client">
     <script type="text/css">
       rh-card.avatar-card {
         width: 360px;
@@ -48,7 +52,9 @@
     </script>
   </rh-code-block>
 
-  <rh-code-block dedent language="yaml" highlighting="client">
+  <rh-code-block dedent
+                 language="yaml"
+                 highlighting="client">
     <script type="text/yaml">
       extends:
         - stylelint-config-standard
@@ -74,8 +80,8 @@
 </script>
 
 <style>
-rh-context-demo::part(demo) {
-  display: grid;
-  gap: var(--rh-space-sm, 6px);
-}
+  rh-context-demo::part(demo) {
+    display: grid;
+    gap: var(--rh-space-sm, 6px);
+  }
 </style>

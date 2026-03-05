@@ -20,7 +20,7 @@ import {
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-tab.css';
+import styles from './rh-tab.css' with { type: 'css' };
 
 export class TabExpandEvent extends Event {
   constructor(

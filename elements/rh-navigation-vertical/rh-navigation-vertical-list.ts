@@ -1,15 +1,15 @@
-import { LitElement, html, isServer, type TemplateResult } from 'lit';
+import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
-import { classMap } from 'lit-html/directives/class-map.js';
+import { classMap } from 'lit/directives/class-map.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 import '@rhds/elements/rh-navigation-link/rh-navigation-link.js';
 
-import styles from './rh-navigation-vertical-list.css';
+import styles from './rh-navigation-vertical-list.css' with { type: 'css' };
 
 /**
  * A disclosure menu of grouped navigation items in a vertical navigation list.

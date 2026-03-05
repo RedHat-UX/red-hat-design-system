@@ -6,7 +6,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { consume } from '@lit/context';
 import { context } from './context.js';
 
-import styles from './rh-navigation-primary-item-menu.css';
+import styles from './rh-navigation-primary-item-menu.css' with { type: 'css' };
 
 /**
  * Navigation Menu
