@@ -24,7 +24,7 @@ import { RhProgressStep, RhProgressStepChangeEvent } from './rh-progress-step.js
 
 export * from './rh-progress-step.js';
 
-import styles from './rh-progress-stepper.css';
+import styles from './rh-progress-stepper.css' with { type: 'css' };
 
 type ProgressStepsOrientation = 'horizontal' | 'vertical';
 
