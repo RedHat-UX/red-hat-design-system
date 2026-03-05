@@ -15,6 +15,9 @@
 }
 
 a {
+  position: relative;
+  outline: none;
+  padding: 2px;
   text-decoration: none;
   color: var(--rh-color-interactive-primary-default);
   font-size: var(--rh-font-size-body-text-lg);
@@ -25,6 +28,15 @@ a {
   &:hover { color: var(--rh-color-interactive-primary-hover); }
   &:focus-within { color: var(--rh-color-interactive-primary-focus); }
   &:active { color: var(--rh-color-interactive-primary-active); }
+
+  &:focus-visible:after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: var(--rh-border-width-md, 2px) solid var(--rh-color-interactive-primary-default);
+    border-radius: var(--rh-border-radius-default, 3px);
+    pointer-events: none;
+  }
 
   &:visited {
     color: var(--rh-color-interactive-primary-visited-default);
