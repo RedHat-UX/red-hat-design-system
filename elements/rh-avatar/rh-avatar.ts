@@ -148,7 +148,7 @@ export class RhAvatar extends LitElement {
         <canvas part="canvas"></canvas>` : this.src ? html`
         <!-- summary: image element for custom user avatar photo
              description: |
-               This part displays the user's uploaded custom avatar image when the `src` attribute
+               This part displays the user's uploaded custom avatar image when the \`src\` attribute
                is provided. It replaces both the default avatar icon and generated patterns. The image
                is always circular and sized according to --rh-avatar-size. Has role="presentation" for
                accessibility as the avatar context is provided elsewhere. Use this part to customize
@@ -171,14 +171,14 @@ export class RhAvatar extends LitElement {
              description: |
                Primary identity text for the avatar. Accepts plain text or an anchor
                element for linked names. When no content is slotted, falls back to the
-               `name` attribute value. Screen readers announce this slot content as the
+               \`name\` attribute value. Screen readers announce this slot content as the
                avatar's identity label. SHOULD always provide a name for accessibility. -->
         <slot id="title">${this.name}</slot>
         <!-- summary: Auxiliary user information such as job title or company
              description: |
                Secondary descriptive text displayed below the name. Accepts text,
-               `<span>`, or `<a>` elements. When no content is slotted, falls back to
-               the `subtitle` attribute value. Slotted anchor elements receive
+               \`<span>\`, or \`<a>\` elements. When no content is slotted, falls back to
+               the \`subtitle\` attribute value. Slotted anchor elements receive
                interactive link color styles. Separate multiple items with commas. -->
         <slot id="subtitle" name="subtitle">${this.subtitle}</slot>
       </div>
