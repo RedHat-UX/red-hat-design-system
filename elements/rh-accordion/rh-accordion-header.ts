@@ -102,7 +102,7 @@ export class RhAccordionHeader extends LitElement {
               class="${classMap({ toggle: true, large, expanded })}"
               @click="${this.#onClick}">
         <span id="header-container" class="${classMap({ [accents ?? '']: !!accents })}">
-          <!-- summary: inline element containing the heading text or slotted heading content -->
+          <!-- inline element containing the heading text or slotted heading content -->
           <span id="header-text" part="text">
             <!-- summary: panel's title text or heading content
                  description: |
@@ -115,7 +115,7 @@ export class RhAccordionHeader extends LitElement {
                    @see [Title text](https://ux.redhat.com/elements/accordion/guidelines/#title-text) in Guidelines documentation -->
             <slot></slot>
           </span>
-          <!-- summary: container for accents within the header -->
+          <!-- container for accents within the header -->
           <span part="accents">
            <!-- summary: decorations like icons or tags
                 description: |
