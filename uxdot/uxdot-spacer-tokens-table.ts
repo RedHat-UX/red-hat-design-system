@@ -5,8 +5,8 @@ import { tokens as allTokens } from '@rhds/tokens';
 import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators/property.js';
 import { customElement } from 'lit/decorators/custom-element.js';
-import { classMap } from 'lit-html/directives/class-map.js';
-import { styleMap } from 'lit-html/directives/style-map.js';
+import { classMap } from 'lit/directives/class-map.js';
+import { styleMap } from 'lit/directives/style-map.js';
 import { state } from 'lit/decorators/state.js';
 import { StringListConverter } from '@patternfly/pfe-core';
 

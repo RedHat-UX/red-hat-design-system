@@ -5,7 +5,7 @@ import { property } from 'lit/decorators/property.js';
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-surface.css';
+import styles from './rh-surface.css' with { type: 'css' };
 
 /**
  * Surfaces are content containers with a color palette which provide a theme

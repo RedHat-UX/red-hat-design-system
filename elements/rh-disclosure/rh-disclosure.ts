@@ -3,7 +3,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
 import { query } from 'lit/decorators/query.js';
-import { classMap } from 'lit-html/directives/class-map.js';
+import { classMap } from 'lit/directives/class-map.js';
 
 import { observes } from '@patternfly/pfe-core/decorators.js';
 
@@ -12,7 +12,7 @@ import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palet
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
-import styles from './rh-disclosure.css';
+import styles from './rh-disclosure.css' with { type: 'css' };
 
 export class DisclosureToggleEvent extends Event {
   constructor() {

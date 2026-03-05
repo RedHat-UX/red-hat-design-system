@@ -22,7 +22,15 @@ interface ColorPaletteElement extends ReactiveElement {
  *
  * `ColorPalette` must be associated with the `color-palette` attribute
  */
-export type ColorPalette = typeof Palettes[number];
+export type ColorPalette =
+  // While we could do this with `typeof Palettes[keyof Palettes]`,
+  // duplicating this union lets `cem` statically analyze the type
+  | 'light'
+  | 'lighter'
+  | 'lightest'
+  | 'dark'
+  | 'darker'
+  | 'darkest';
 
 const Palettes = Object.freeze([
   'light',
