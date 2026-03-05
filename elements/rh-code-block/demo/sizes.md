@@ -1,0 +1,1 @@
+Code block demonstrating compact and default size variants.

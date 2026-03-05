@@ -1,0 +1,1 @@
+Code block with internationalized action button labels via slots.

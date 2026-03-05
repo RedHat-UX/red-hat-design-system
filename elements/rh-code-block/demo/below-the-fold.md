@@ -1,0 +1,1 @@
+Code block positioned below the fold to test content-visibility optimization.
