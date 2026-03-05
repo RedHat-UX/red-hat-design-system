@@ -95,9 +95,9 @@ export class RhAnnouncement extends LitElement {
                class="${classMap({ empty: !this.#slots.hasSlotted('image') })}">
             <!-- summary: optional visual such as an icon, logo, or image
                  description: |
-                   Accepts an `<img>`, `<svg>`, or `<rh-icon>` element. Images
-                   MUST have explicit `width` and `height` attributes set.
-                   SHOULD include `role="img"` and an `aria-label` for
+                   Accepts an \`<img>\`, \`<svg>\`, or \`<rh-icon>\` element. Images
+                   MUST have explicit \`width\` and \`height\` attributes set.
+                   SHOULD include \`role="img"\` and an \`aria-label\` for
                    accessibility. Max recommended height is 48px for icons
                    or 20-25px for text logos. -->
             <slot name="image"></slot>
@@ -106,7 +106,7 @@ export class RhAnnouncement extends LitElement {
             <div id="body" class="${classMap({ empty: this.#slots.isEmpty(null) })}">
               <!-- summary: main body text content for the announcement
                    description: |
-                     USE a `<p>` element for body text. Content SHOULD be
+                     USE a \`<p>\` element for body text. Content SHOULD be
                      concise (65 characters max recommended). Screen readers
                      will read this content in DOM order. AVOID long or
                      multi-paragraph content. -->
@@ -115,7 +115,7 @@ export class RhAnnouncement extends LitElement {
             <div id="cta" class="${classMap({ empty: !this.#slots.hasSlotted('cta') })}">
               <!-- summary: call-to-action link for the announcement
                    description: |
-                     MUST contain an `<rh-cta>` element with an `href`
+                     MUST contain an \`<rh-cta>\` element with an \`href\`
                      attribute. CTA text SHOULD be 25 characters or fewer.
                      Keyboard users can Tab to the CTA and activate it
                      with Enter. -->
