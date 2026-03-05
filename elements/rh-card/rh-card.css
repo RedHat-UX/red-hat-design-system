@@ -27,6 +27,7 @@
 ::slotted(a:visited:active) { color: var(--rh-color-interactive-primary-visited-active); }
 
 #container {
+  /** @summary Header background color, computed from light/dark card header tokens */
   --_header-bg:
     light-dark(var(--rh-card-header-background-on-light, transparent),
       var(--rh-card-header-background-on-dark, transparent));
@@ -36,10 +37,10 @@
   flex-direction: column;
   justify-items: flex-start;
   overflow: hidden;
+  /** @summary Card border radius; uses --rh-border-radius-default design token */
   border-radius:
     var(
         --_border-radius,
-        /** Card's default border radius */
         var(--rh-border-radius-default, 3px)
       );
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif) !important;
@@ -47,8 +48,7 @@
   border-style: solid;
   border-width: var(--rh-border-width-sm, 1px);
 
-  /** Computed from the color context. Intended to be read for
-   *              theming purposes, rather than set in page css. */
+  /** @summary Border color computed from color context; uses --rh-color-border-subtle design token */
   border-color: var(--rh-color-border-subtle);
   width: 100%;
   height: 100%;
@@ -92,13 +92,13 @@
   gap: var(--rh-space-lg, 16px);
   box-sizing: border-box;
 
-  /** The font family for headings in the header and body */
+  /** @summary Heading font family; uses --rh-card-heading-font-family or --rh-font-family-heading design token */
   font-family: var(--rh-card-heading-font-family, var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif)) !important;
 
-  /** The font size for headings in the header and body */
+  /** @summary Heading font size; uses --rh-card-heading-font-size or --rh-font-size-heading-sm design token */
   font-size: var(--rh-card-heading-font-size, var(--rh-font-size-heading-sm, 1.5rem));
 
-  /** The font weight for headings in the header and body */
+  /** @summary Heading font weight; uses --rh-card-heading-font-weight or --rh-font-weight-body-text-medium design token */
   font-weight:
     var(--rh-card-heading-font-weight,
       var(--rh-font-weight-body-text-medium, 500)) !important;
