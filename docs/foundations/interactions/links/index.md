@@ -219,7 +219,7 @@ Developers can use the following CSS as a starting point for link underlining:
 <rh-code-block>
   <script type="text/css">
     :is(p, ul, ol, dl) a {
-      text-decoration-color: var(--rh-color-gray-50, #707070);
+      text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40));
       text-decoration-line: underline;
       text-decoration-style: dashed;
       text-decoration-thickness: var(--rh-border-width-sm, 1px);
