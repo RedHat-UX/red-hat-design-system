@@ -27,7 +27,6 @@
 ::slotted(a:visited:active) { color: var(--rh-color-interactive-primary-visited-active); }
 
 #container {
-  /** @summary Header background color, computed from light/dark card header tokens */
   --_header-bg:
     light-dark(var(--rh-card-header-background-on-light, transparent),
       var(--rh-card-header-background-on-dark, transparent));
