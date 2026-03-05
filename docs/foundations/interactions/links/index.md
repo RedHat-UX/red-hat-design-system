@@ -216,7 +216,7 @@ Developers can use the following CSS as a starting point for link underlining:
 - This example adds a `max()` function to the `text-underline-offset` property, allowing this value to grow proportionally at large font sizes.
 - As of this writing, Safari has some issues with the `text-decoration` shorthand property, so we separated it out into its component options `(-color, -line, -style, and -thickness)`.
 
-<rh-code-block>
+<rh-code-block actions="wrap copy">
   <script type="text/css">
     :is(p, ul, ol, dl) a {
       text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40));
