@@ -19,11 +19,20 @@ import style from './rh-jump-links.css' with { type: 'css' };
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 /**
- * Jump links allow users to navigate sections of content on a page.
+ * Provides persistent in-page navigation so users can quickly jump to
+ * content sections without scrolling. Renders as a `role="navigation"`
+ * landmark; authors MUST set `accessible-label` when multiple nav
+ * landmarks exist. Supports vertical (sidebar) and horizontal (inline)
+ * orientations. Uses ScrollSpy to auto-highlight the active section.
+ * Tab moves focus between links; Enter activates the link and scrolls
+ * the page. AVOID placing more than one level of nesting.
  *
  * @alias jump-links
  *
- * @fires toggle - when the `expanded` disclosure widget is toggled
+ * @summary Persistent navigation links to page sections
+ *
+ * @fires toggle - Fired when the `expanded` disclosure widget is toggled.
+ *   Does not carry additional detail data.
  */
 @customElement('rh-jump-links')
 @themable

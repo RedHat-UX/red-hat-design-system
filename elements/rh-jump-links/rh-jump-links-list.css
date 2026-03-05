@@ -8,6 +8,7 @@
 }
 
 #container {
+  /** @summary Border for nested list container; uses --rh-color-border-subtle design token */
   --_bdr: var(--rh-length-4xs, 1px) solid var(--rh-color-border-subtle);
 
   &.vertical {

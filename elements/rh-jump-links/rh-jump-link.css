@@ -25,7 +25,7 @@ a {
       var(--rh-space-lg, 16px);
     border-inline-start: var(--_bdr);
 
-    /** max-width for each vertical jump link */
+    /** @summary Max width of vertical links; uses --rh-length-md design token */
     max-width: var(--rh-jump-link-max-width, calc(var(--rh-length-md, 8px) * 40));
   }
 
