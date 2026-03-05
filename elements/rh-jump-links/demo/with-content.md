@@ -1,1 +1,0 @@
-Jump links alongside page content demonstrating scroll spy behavior.

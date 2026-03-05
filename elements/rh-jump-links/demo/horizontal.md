@@ -1,1 +1,0 @@
-Horizontal jump links layout with overflow scroll buttons.

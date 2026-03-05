@@ -1,1 +1,0 @@
-Default vertical jump links with scroll spy tracking active sections.

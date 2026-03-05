@@ -1,1 +1,0 @@
-Responsive jump links switching between vertical and horizontal layouts.
