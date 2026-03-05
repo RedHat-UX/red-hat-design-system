@@ -1,1 +1,0 @@
-Code block with the resizable attribute for user-adjustable height.

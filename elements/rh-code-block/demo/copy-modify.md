@@ -1,1 +1,0 @@
-Code block demonstrating modification of copied text via the copy event.

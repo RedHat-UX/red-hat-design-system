@@ -1,1 +1,0 @@
-Code block with callout badge indicators and a legend.

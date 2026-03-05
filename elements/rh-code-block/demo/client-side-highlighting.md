@@ -1,1 +1,0 @@
-Code block with client-side Prism.js syntax highlighting enabled.

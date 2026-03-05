@@ -1,1 +1,0 @@
-Code block with prerendered callout annotations on specific lines.

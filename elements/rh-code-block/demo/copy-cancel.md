@@ -1,1 +1,0 @@
-Code block demonstrating cancellation of the copy event.

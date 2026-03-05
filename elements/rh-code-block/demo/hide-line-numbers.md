@@ -1,1 +1,0 @@
-Code block with line numbers hidden via the line-numbers attribute.

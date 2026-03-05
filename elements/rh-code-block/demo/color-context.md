@@ -1,1 +1,0 @@
-Code block rendered in light and dark color contexts.
