@@ -1,0 +1,1 @@
+Default dialog with a header slot, body content, and a footer call-to-action button. Click the trigger button to open.

@@ -1,0 +1,1 @@
+Dialog with no heading elements, using the `accessible-label` attribute to provide an accessible name for screen readers.

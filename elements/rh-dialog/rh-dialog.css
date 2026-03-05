@@ -163,7 +163,7 @@
 }
 
 #close-button {
-  /** Sets the dialog close button color. */
+  /** Sets the close button icon color. Defaults to the --rh-color-icon-secondary design token. In video mode, defaults to --rh-color-surface-lightest for contrast against the dark backdrop. */
   color: var(--rh-dialog-close-button-color, var(--rh-color-icon-secondary));
   cursor: pointer;
   display: block;
@@ -209,7 +209,7 @@
 }
 
 :host([type='video'][open]) #dialog {
-  /** Aspect ratio for the video inside the dialog */
+  /** Sets the aspect ratio for the video dialog container. Defaults to 16/9. USE to match non-standard video dimensions, e.g., 4/3 or 21/9. */
   --_aspect-ratio: var(--rh-dialog-video-aspect-ratio, 16/9);
 
   aspect-ratio: var(--_aspect-ratio);

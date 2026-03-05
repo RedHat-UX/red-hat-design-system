@@ -1,0 +1,1 @@
+Dialog containing a form with a select input, demonstrating `returnValue` usage via programmatic `close()` and `cancel()` calls.
