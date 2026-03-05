@@ -22,14 +22,14 @@ function isHeaderTagName(tagName: string) {
 }
 
 /**
- * Provides persistent site-wide secondary content, navigation links, social media
- * icons, and legal information at the bottom of every page. MUST be used with
- * `<rh-footer-universal>` in the `universal` slot. On mobile viewports, link
- * columns collapse to an `<rh-accordion>`. Uses `<footer>` landmark with a
- * visually-hidden `<h2>` for screen readers. Tab navigates between links;
- * `aria-labelledby` is auto-wired to link list headers for assistive technology.
+ * Site footer with navigation links, social icons, and legal content.
+ * MUST slot an `rh-footer-universal` in the `universal` slot. SHOULD
+ * contain `rh-footer-links` groups and `rh-footer-block` sections.
+ * Uses a `<footer>` landmark with a visually-hidden `<h2>` for
+ * screen readers. Tab navigates links; `aria-labelledby` auto-wires
+ * to headers. On mobile, link columns collapse to `rh-accordion`.
  *
- * @summary Site footer with links, social icons, and legal content
+ * @summary Site footer with navigation links, social icons, and legal content
  *
  * @alias footer
  *
@@ -97,11 +97,15 @@ export class RhFooter extends LitElement {
                  Contains the site logo and social media links. Screen readers navigate
                  these as link groups. Tab moves through logo link and social links. -->
           <div class="section header" part="section header">
-            <!-- Overrides \`header-*\`, \`logo\`, \`social-links\` -->
+            <!-- Overrides header-primary, logo, and social-links slots.
+                 SHOULD contain block-level elements. Screen readers
+                 navigate child links as a group. -->
             <slot name="header">
               <!-- primary footer header content, e.g. main logo -->
               <div class="header-primary" part="header-primary">
-                <!-- primary footer header content, e.g. main logo. Overrides \`logo\` -->
+                <!-- Primary header area, typically the site logo.
+                     Overrides the logo slot. SHOULD contain an
+                     accessible \`<a>\` linking to the homepage. -->
                 <slot name="header-primary">
                   <!-- main page or product logo container -->
                   <div class="logo" part="logo">
@@ -121,7 +125,10 @@ export class RhFooter extends LitElement {
               </div>
               <!-- secondary footer header content, e.g. social links -->
               <div class="header-secondary" part="header-secondary">
-                <!-- secondary footer header content, e.g. social links. Overrides \`social-links\` -->
+                <!-- Secondary header area for social media links.
+                     Overrides social-links slot. SHOULD contain
+                     \`<rh-footer-social-link>\` elements with
+                     accessible labels for screen readers. -->
                 <slot name="header-secondary">
                   <div class="social-links">
                     <!-- social links container \`<rh-footer-links>\` -->
@@ -143,11 +150,16 @@ export class RhFooter extends LitElement {
           </div>
           <!-- main content container. -->
           <div class="section main" part="section main">
-            <!-- main footer content. Overrides \`main-*\` -->
+            <!-- Main footer content area. Overrides main-primary
+                 and main-secondary slots. SHOULD contain
+                 \`<rh-footer-links>\` groups with heading elements.
+                 Screen readers use aria-labelledby on each group. -->
             <slot name="main">
               <!-- container for main footer links -->
               <div class="main-primary" part="main-primary">
-                <!-- main footer region. typically a columnar grid -->
+                <!-- Primary footer links in a columnar grid.
+                     SHOULD contain \`<rh-footer-links>\` with heading
+                     elements. On mobile, collapses to accordion. -->
                 <slot name="main-primary">
                   <!-- container for main footer links -->
                   <div class="links" part="links">
@@ -157,7 +169,9 @@ export class RhFooter extends LitElement {
               </div>
               <!-- container for prose or promotional content -->
               <div class="main-secondary" part="main-secondary">
-                <!-- typically contains prose or promotional content -->
+                <!-- Secondary content area for prose, promotional
+                     blocks, or \`<rh-footer-block>\` elements.
+                     Accepts block-level content. -->
                 <slot name="main-secondary"></slot>
               </div>
             </slot>
