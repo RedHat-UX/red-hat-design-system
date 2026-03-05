@@ -299,7 +299,7 @@ export class RhCodeBlock extends LitElement {
 
   protected override firstUpdated(): void {
     this.#computeLines();
-    // After computing lines, also update line heights if visible
+    this.#checkInitialVisibility();
     this.#computeLineNumbers();
   }
 
@@ -378,6 +378,29 @@ export class RhCodeBlock extends LitElement {
         this.#computeLineNumbers();
       }
     }
+  }
+
+  /**
+   * After SSR hydration the browser may have already fired
+   * `contentvisibilityautostatechange` before Lit attached
+   * the event listener, so the initial event is lost.
+   * Deferred to rAF to avoid blocking render on pages with many code blocks.
+   */
+  #checkInitialVisibility() {
+    if (isServer || this.#isIntersecting || this.lineNumbers === 'hidden') {
+      return;
+    }
+    requestAnimationFrame(() => {
+      if (this.#isIntersecting || !this.isConnected) {
+        return;
+      }
+      const container = this.shadowRoot?.getElementById('container');
+      if (container?.checkVisibility?.({ contentVisibilityAuto: true })) {
+        this.#isIntersecting = true;
+        this.requestUpdate();
+        this.#computeLineNumbers();
+      }
+    });
   }
 
   #updateResizeObserver() {
