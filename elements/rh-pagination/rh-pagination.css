@@ -34,8 +34,7 @@
    * - Customize only when brand guidelines require specific accent colors
    * - Ensure sufficient contrast with background (4.5:1 ratio minimum)
    */
-  --_numeric-a-color:
-    var(--rh-pagination-accent-color, var(--rh-color-interactive-primary-default));
+  --_numeric-a-color: var(--rh-pagination-accent-color, var(--rh-color-interactive-primary-default));
   --_numeric-a-color-hover: var(--rh-color-interactive-primary-hover);
   --_numeric-a-color-focus:
     var(--rh-pagination-accent-color,
@@ -60,6 +59,7 @@
   --_border-top-hover-color:
     light-dark(var(--rh-color-gray-60, #4d4d4d),
       var(--rh-color-border-subtle-on-light, #c7c7c7));
+
   /**
    * --rh-pagination-stepper-color
    * Controls the icon color for navigation stepper buttons (first, previous, next, last).
@@ -83,6 +83,7 @@
   --rh-color-icon-status-disabled:
     light-dark(var(--rh-color-gray-40, #a3a3a3),
       var(--rh-color-gray-60, #4d4d4d));
+
   /**
    * --rh-pagination-background-focused
    * @deprecated This property will be deprecated when status-disabled token is defined.
