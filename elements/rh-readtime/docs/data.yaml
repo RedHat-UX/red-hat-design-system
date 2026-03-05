@@ -1,0 +1,10 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-readtime
+name: Read time
+type: element
+overallStatus: draft
+libraries:
+  figma: planned
+  rhds: draft
+  shared: planned
+  docs: draft

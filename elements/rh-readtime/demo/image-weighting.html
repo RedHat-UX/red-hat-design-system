@@ -1,0 +1,23 @@
+<meta itemprop="description" content="With the images attribute, the component counts images in the container and adds time using Medium's weighting algorithm.">
+
+<rh-readtime selector="#article-with-images" images>%t min read</rh-readtime>
+
+<div id="article-with-images">
+  <p>
+    This example enables the image weighting system. The component counts images in the
+    target container and adds time based on Medium's algorithm. The first image adds 12
+    seconds, the second adds 11, and so on down to 3 seconds per image for the 11th and
+    beyond.
+  </p>
+  <img src="placeholder-600x200.svg" alt="First image" width="600" height="200">
+  <img src="placeholder-600x200.svg" alt="Second image" width="600" height="200">
+  <img src="placeholder-600x200.svg" alt="Third image" width="600" height="200">
+  <p>
+    With three images the algorithm adds 12 + 11 + 10 = 33 seconds of additional reading
+    time on top of the word-based estimate.
+  </p>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-readtime/rh-readtime.js';
+</script>

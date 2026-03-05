@@ -1,0 +1,19 @@
+:host {
+  display: inline;
+
+  /** Body text font family design token @see https://ux.redhat.com/tokens/ */
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
+  /** Body text font size design token */
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+
+  /** Regular font weight design token */
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
+
+  /** Body text line height design token */
+  line-height: var(--rh-line-height-body-text, 1.5);
+}
+
+:host([hidden]) {
+  display: none !important;
+}
