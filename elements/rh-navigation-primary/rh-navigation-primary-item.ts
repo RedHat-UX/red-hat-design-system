@@ -6,7 +6,7 @@ import { state } from 'lit/decorators/state.js';
 import { query } from 'lit/decorators/query.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { consume } from '@lit/context';
 import { context } from './context.js';
@@ -19,7 +19,7 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 
 import './rh-navigation-primary-item-menu.js';
 
-import styles from './rh-navigation-primary-item.css';
+import styles from './rh-navigation-primary-item.css' with { type: 'css' };
 
 @themable
 @customElement('rh-navigation-primary-item')

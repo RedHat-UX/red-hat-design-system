@@ -1,5 +1,5 @@
 import type { RhTabs } from 'elements/rh-tabs/rh-tabs.js';
-import { LitElement, type PropertyValues } from 'lit';
+import { LitElement, render, type PropertyValues } from 'lit';
 
 function isLitElement(e: Element): e is LitElement {
   return 'updateComplete' in e;
@@ -30,6 +30,15 @@ async function forceUpdate(e: LitElement) {
   }
 }
 
+function forceRender(e: LitElement) {
+  render(
+    // @ts-expect-error: this is a workaround for SSR failures
+    e.render(),
+    e.renderRoot,
+    e.renderOptions,
+  );
+}
+
 function forceHydration(node: Element) {
   for (const e of node.shadowRoot?.querySelectorAll('*') ?? []) {
     e.removeAttribute('defer-hydration');
@@ -48,6 +57,7 @@ export class SSRFailureRecoverableElement extends LitElement {
       if (e instanceof Error && e.message.startsWith('Hydration')) {
         // eslint-disable-next-line no-console
         console.warn(e);
+        forceRender(this);
         forceHydration(this);
       } else {
         throw e;
