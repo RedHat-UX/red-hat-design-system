@@ -744,9 +744,11 @@
           flex-direction: column;
           background-color:
             light-dark(
-                /** Hamburger open state and compact content primary background color under light color scheme */
+                /** Hamburger open state and compact content
+                 *  primary bg color under light scheme */
                 var(--rh-color-surface-lightest, #ffffff),
-                /** Hamburger open state and compact content primary background color under dark color scheme */
+                /** Hamburger open state and compact content
+                 *  primary bg color under dark scheme */
                 var(--rh-color-surface-darkest, #151515)
               );
           inline-size: 100%;
