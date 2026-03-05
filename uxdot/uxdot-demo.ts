@@ -75,18 +75,18 @@ export class UxdotDemo extends LitElement {
             <rh-tab slot="tab">JS</rh-tab>
             <rh-tab-panel><slot name="js"></slot></rh-tab-panel>
           </rh-tabs>
-          <div slot="footer">
-            <rh-button variant="link"
-                       icon="expand"
-                       icon-set="ui"
-                       @click="${this.#toggleFullscreen}">View fullscreen</rh-button>
-            <rh-button variant="link"
-                       icon="refresh"
-                       icon-set="ui"
-                       @click="${this.#reloadIframe}">Reload</rh-button>
-            <a href="${this.demoSourceUrl}">View source on GitHub <rh-icon set="ui" icon="code"></rh-icon></a>
-            <a href="${this.demoUrl}" target="_blank">View in new window <rh-icon set="ui" icon="duplicate"></rh-icon></a>
-          </div>
+          <rh-button slot="footer"
+                     variant="link"
+                     icon="expand"
+                     icon-set="ui"
+                     @click="${this.#toggleFullscreen}">View fullscreen</rh-button>
+          <rh-button slot="footer"
+                     variant="link"
+                     icon="refresh"
+                     icon-set="ui"
+                     @click="${this.#reloadIframe}">Reload</rh-button>
+          <a slot="footer" href="${this.demoSourceUrl}">View source on GitHub <rh-icon set="ui" icon="code"></rh-icon></a>
+          <a slot="footer" href="${this.demoUrl}" target="_blank">View in new window <rh-icon set="ui" icon="duplicate"></rh-icon></a>
         </rh-card>
       </div>
     `;
