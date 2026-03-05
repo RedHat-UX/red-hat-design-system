@@ -1,1 +1,0 @@
-Demonstrates the close event fired when the dismiss button is clicked, with a JavaScript listener that shows an alert dialog.
