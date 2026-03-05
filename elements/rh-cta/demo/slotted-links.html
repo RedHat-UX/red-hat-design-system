@@ -1,0 +1,47 @@
+<section>
+  <rh-cta>
+    <a href="#default">Default</a>
+  </rh-cta>
+  <rh-cta icon="play-circle">
+    <a href="#default-video">Default Video</a>
+  </rh-cta>
+  <rh-cta variant="primary">
+    <a href="#primary">Primary</a>
+  </rh-cta>
+  <rh-cta variant="primary"
+          icon="play-circle">
+    <a href="#primary-video">Video</a>
+  </rh-cta>
+  <rh-cta variant="secondary">
+    <a href="#secondary">Secondary</a>
+  </rh-cta>
+  <div id="brick">
+    <rh-cta variant="brick">
+      <a href="#brick">Brick</a>
+    </rh-cta>
+    <rh-cta variant="brick"
+            icon="user">
+      <a href="#brick-icon">Brick Icon</a>
+    </rh-cta>
+  </div>
+</section>
+
+<style>
+  section {
+    display: flex;
+    gap: var(--rh-space-lg, 16px);
+    flex-flow: row wrap;
+    max-width: 750px;
+    margin: var(--rh-space-2xl, 32px) auto;
+  }
+
+  #brick {
+    display: flex;
+    width: 100%;
+    gap: var(--rh-space-lg, 16px);
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-cta/rh-cta.js';
+</script>
