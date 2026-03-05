@@ -1,3 +1,4 @@
+/** @summary Base badge styles: pill shape, centered text, status colors */
 span,
 slot {
   align-items: center;
@@ -6,32 +7,42 @@ slot {
   white-space: nowrap;
   text-align: center;
   aspect-ratio: var(--_aspect-ratio);
+  /** @summary Pill shape; uses --rh-border-radius-pill design token */
   border-radius: var(--rh-border-radius-pill, 64px);
+  /** @summary Minimum width; uses --rh-length-lg design token */
   min-width: var(--_badge-size, var(--rh-length-lg, 16px));
+  /** @summary Small text size; uses --rh-font-size-body-text-xs design token */
   font-size: var(--rh-font-size-body-text-xs, 0.75rem);
   font-weight: 700;
   line-height: var(--rh-line-height-body-text, 1.5);
+  /** @summary Inline padding; uses --rh-space-md design token */
   padding-inline: var(--_badge-padding, var(--rh-space-md, 8px));
   color:
     light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
       var(--rh-color-text-primary-on-light, #151515));
 
+  /** @summary Neutral state; uses --rh-color-status-neutral design token */
   &.neutral { background-color: var(--rh-color-status-neutral); }
 
+  /** @summary Info state; uses --rh-color-status-info design token */
   &.info { background-color: var(--rh-color-status-info); }
 
+  /** @summary Success state; uses --rh-color-status-success design token */
   &.success { background-color: var(--rh-color-status-success); }
 
+  /** @summary Caution state; uses --rh-color-status-caution design token. Forces dark text for contrast. */
   &.caution {
     background-color: var(--rh-color-status-caution);
     color: var(--rh-color-text-primary-on-light, #151515); /** maintain color contrast */
   }
 
+  /** @summary Warning state; uses --rh-color-status-warning design token. Forces dark text for contrast. */
   &.warning {
     background-color: var(--rh-color-status-warning);
     color: var(--rh-color-text-primary-on-light, #151515); /** maintain color contrast */
   }
 
+  /** @summary Danger state; uses --rh-color-status-danger design token */
   &.danger { background-color: var(--rh-color-status-danger); }
 }
 

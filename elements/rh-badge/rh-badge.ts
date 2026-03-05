@@ -9,16 +9,15 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import styles from './rh-badge.css' with { type: 'css' };
 
 /**
- * A badge is used to annotate other information like a label or an object name.
+ * Displays a small numeric count on a pill-shaped background to annotate labels,
+ * objects, or filter controls. USE the `state` attribute to convey semantic
+ * severity (neutral, info, success, caution, warning, danger). The badge is
+ * non-interactive and MUST NOT receive focus. Screen readers SHOULD receive
+ * context from surrounding content since badge has no implicit ARIA role.
+ * AVOID relying on color alone; provide visible or visually-hidden text.
+ * USE `threshold` to cap large numbers (e.g. "999+").
  *
- *  - `neutral` - Indicates generic information or a message with no severity.
- *  - `danger` - Indicates a danger state, like an error that is blocking a user from completing a task.
- *  - `warning` - Indicates a warning state, like a non-blocking error that might need to be fixed.
- *  - `caution` - Indicates an action or notice which should immediately draw the attention
- *  - `info` - Indicates helpful information or a message with very little to no severity.
- *  - `success` - Indicates a success state, like if a process was completed without errors.
- *
- * @summary Annotates information like a label or object
+ * @summary Non-interactive numeric pill badge for counts and status
  *
  * @alias badge
  *
