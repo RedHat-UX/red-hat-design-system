@@ -2,9 +2,9 @@ $schema: ../../../docs/schemas/element-data.schema.json
 tagName: rh-readtime
 name: Read time
 type: element
-overallStatus: draft
+overallStatus: ready
 libraries:
-  figma: planned
-  rhds: draft
+  figma: ready
+  rhds: ready
   shared: planned
-  docs: draft
+  docs: planned
