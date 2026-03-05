@@ -6,10 +6,6 @@
 .overflow-button { display: hidden; }
 
 #container {
-  /**
-   * @summary Default border style for vertical link
-   * separator; uses --rh-color-border-subtle design token
-   */
   --_bdr: var(--rh-length-4xs, 1px) solid var(--rh-color-border-subtle);
 }
 
