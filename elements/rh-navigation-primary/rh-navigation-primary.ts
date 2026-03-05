@@ -28,11 +28,21 @@ export type NavigationPrimaryPalette = Extract<ColorPalette, (
 )>;
 
 /**
- * Primary navigation helps users orient themselves and move through websites and domains.
+ * Responsive site navigation with dropdowns and hamburger menu at
+ * compact viewports. MUST contain `rh-navigation-primary-item`
+ * children. Uses ARIA `navigation` role; SHOULD set `accessible-label`.
+ * Tab navigates items, Escape closes menus. Renders a hamburger
+ * toggle below 1200px. Supports `lightest` and `darkest` palettes.
  *
- * @summary       Primary navigation
+ * @summary       Responsive primary site navigation with hamburger and dropdowns
  *
  * @alias Navigation (primary)
+ *
+ * @slot          - USE this slot for `rh-navigation-primary-item` hamburger menu links and dropdowns. Items MUST have `role="listitem"` for accessibility. Leaving this slot empty will result in accessibility issues.
+ * @slot logo     - USE this slot to override the default Red Hat logo link and image for translations or sub-sites. The slotted content SHOULD be an anchor wrapping an SVG or image.
+ * @slot event    - USE this slot for event promotion items such as SVG logos with links. Slot items using `<rh-navigation-primary-item slot="event">`. Any other slotted element MUST have `role="listitem"` to AVOID accessibility issues.
+ * @slot links    - USE this slot for quick links to external sites (e.g., docs, support). Slot items using `<rh-navigation-primary-item slot="links">`. Other elements MUST have `role="listitem"`.
+ * @slot dropdowns - USE this slot for utility dropdowns (search, notifications, account). Slot items using `<rh-navigation-primary-item slot="dropdowns" variant="dropdown">`. Other elements MUST have `role="listitem"`.
  *
  */
 @customElement('rh-navigation-primary')
@@ -86,16 +96,25 @@ export class RhNavigationPrimary extends LitElement {
 
 
   /**
-   * Sets the mobile toggle (hamburger) text, used for translations, defaults to 'Menu'
+   * Sets the visible label text for the mobile hamburger toggle button.
+   * USE this attribute for internationalization and translations.
+   * The label is visually hidden at narrow viewports and revealed at >=992px.
+   * Defaults to `'Menu'`.
    */
   @property({ attribute: 'mobile-toggle-label' }) mobileToggleLabel = 'Menu';
 
-  /** Sets color context for child components, overrides parent context */
+  /**
+   * Sets the color palette context for child components, overriding any parent
+   * context. Valid values are `'lightest'` and `'darkest'`. Controls surface
+   * and text color tokens applied to the navigation bar and its children.
+   */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: NavigationPrimaryPalette;
 
   /**
-   * Customize the default label for the navigation.
-   * Defaults to "Main navigation" if no value is set.
+   * Sets the accessible label for the `<nav>` landmark via `aria-label`.
+   * Screen readers announce this label to help users identify the navigation
+   * region. USE this attribute for translations. Defaults to
+   * `'Main navigation'`.
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel = 'Main navigation';
 
@@ -166,7 +185,13 @@ export class RhNavigationPrimary extends LitElement {
       <div id="container" class="${classMap(classes)}">
         <div id="bar">
           <div id="logo">
-            <!-- Use this slot to override the link and logo image for translations and sub sites. -->
+            <!--
+              summary: Override the default Red Hat logo link and image.
+              description: |
+                USE this slot for translations or sub-site branding.
+                The slotted content SHOULD be an anchor element wrapping an
+                SVG or image with an accessible title.
+            -->
             <slot name="logo">
               <a href="/">
                 <svg preserveAspectRatio="xMinYMid slice" viewBox="0 0 613 145">
@@ -185,75 +210,50 @@ export class RhNavigationPrimary extends LitElement {
               <rh-icon icon="caret-down" set="microns"></rh-icon>
             </summary>
             <div id="details-content" role="list" >
-              <!-- 
-                Use this slot for \`<rh-primary-navigation-item>\` hamburger menu links and dropdowns.
-                If left empty will result in accessibility issues.
+              <!--
+                summary: Primary navigation items displayed in the hamburger menu and main bar.
+                description: |
+                  USE this slot for \`<rh-navigation-primary-item>\` links and dropdowns.
+                  Items MUST have \`role="listitem"\` (applied automatically by the item element).
+                  Leaving this slot empty will result in accessibility issues since the
+                  parent container has \`role="list"\`.
               -->
               <slot></slot>
             </div>
           </details>
           <div id="secondary">
             <div id="event" role="list" ?hidden=${!hasEvent}>
-              <!-- summary: promotional event content and announcements
-                   description: |
-                     Contains promotional content for events, conferences, or important announcements.
-                     This slot appears in the secondary navigation area (right side on desktop).
-
-                     **Common patterns:**
-                     - Use \`<rh-navigation-primary-item slot="event">\` with links and images
-                     - SVG logos or event branding with accompanying links
-                     - Time-sensitive promotional content for campaigns or events
-
-                     **Best practices:**
-                     - Slot items must be \`<rh-navigation-primary-item>\` elements or have role="listitem"
-                     - Keep content concise to avoid overwhelming the navigation
-                     - Ensure links have clear accessible labels for screen reader users
-                     - Use for temporary or seasonal promotions, not permanent navigation
-
-                     @see [Navigation](https://ux.redhat.com/elements/navigation/) documentation -->
+              <!--
+                summary: Event promotion area for SVG logos and links.
+                description: |
+                  USE this slot for event promotion content such as conference logos.
+                  Slot items using \`<rh-navigation-primary-item slot="event">\`.
+                  Any other slotted element MUST have \`role="listitem"\` to
+                  AVOID accessibility issues. Hidden below 768px viewport width.
+              -->
               <slot name="event"></slot>
             </div>
             <div id="links" role="list" ?hidden=${!hasLinks}>
-              <!-- summary: quick access links to related resources
-                   description: |
-                     Contains links to external sites or resources not directly part of the main
-                     navigation hierarchy. Appears in the secondary navigation area.
-
-                     **Common patterns:**
-                     - Use \`<rh-navigation-primary-item slot="links">\` for each link
-                     - Developer documentation portals
-                     - Support or help center links
-                     - Partner sites or ecosystems
-
-                     **Best practices:**
-                     - Slot items must be \`<rh-navigation-primary-item>\` elements or have role="listitem"
-                     - Limit to 2-4 links to avoid cluttering the navigation
-                     - Use clear, concise labels that indicate the destination
-                     - Links should represent secondary utilities, not primary site navigation
-
-                     @see [Navigation](https://ux.redhat.com/elements/navigation/) documentation -->
+              <!--
+                summary: Quick links to external sites (e.g., Console, Docs, Support).
+                description: |
+                  USE this slot for secondary navigation links not directly part of the
+                  main site hierarchy. Slot items using
+                  \`<rh-navigation-primary-item slot="links">\`. Other elements MUST
+                  have \`role="listitem"\`. Hidden below 1440px viewport width.
+              -->
               <slot name="links"></slot>
             </div>
                          
             <div id="dropdowns" role="list" ?hidden=${!hasDropdowns}>
-              <!-- summary: interactive dropdown menus for user actions
-                   description: |
-                     Contains dropdown menu items for search, user account, or personalized features.
-                     Appears in the secondary navigation area (rightmost position on desktop).
-
-                     **Common patterns:**
-                     - Use \`<rh-navigation-primary-item slot="dropdowns" variant="dropdown">\`
-                     - Search functionality with dropdown
-                     - User account menu ("For you", profile settings)
-                     - Personalized content or recommendations
-
-                     **Best practices:**
-                     - Slot items must be \`<rh-navigation-primary-item variant="dropdown">\` or have role="listitem"
-                     - Limit to 2-3 dropdown menus to avoid overwhelming users
-                     - Use clear icons and labels for each dropdown purpose
-                     - Ensure dropdown content is keyboard accessible and screen reader friendly
-
-                     @see [Navigation](https://ux.redhat.com/elements/navigation/) documentation -->
+              <!--
+                summary: Utility dropdown items (search, notifications, account).
+                description: |
+                  USE this slot for utility dropdowns rendered in the secondary bar area.
+                  Slot items using
+                  \`<rh-navigation-primary-item slot="dropdowns" variant="dropdown">\`.
+                  Other elements MUST have \`role="listitem"\` to AVOID accessibility issues.
+              -->
               <slot name="dropdowns"></slot>
             </div>
           </div>
@@ -498,8 +498,9 @@ export class RhNavigationPrimary extends LitElement {
   }
 
   /**
-   * Close Menus
-   * @param skip Boolean - closes hamburger menu if true and in a small viewport, default false;
+   * Closes all open dropdown menus and the overlay. In compact mode, also
+   * closes the hamburger menu unless `skip` is `true`.
+   * @param skip - When `true`, keeps the hamburger menu open in compact mode. Defaults to `false`.
    */
   close(skip = false): void {
     if (this.#openPrimaryDropdowns.size > 0) {

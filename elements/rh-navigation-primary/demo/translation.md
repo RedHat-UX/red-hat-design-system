@@ -1,0 +1,1 @@
+Demonstrates internationalization support with German labels using mobile-toggle-label and accessible-label attributes.

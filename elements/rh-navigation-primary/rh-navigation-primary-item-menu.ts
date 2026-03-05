@@ -9,7 +9,17 @@ import { context } from './context.js';
 import styles from './rh-navigation-primary-item-menu.css' with { type: 'css' };
 
 /**
- * Navigation Menu
+ * Internal container for dropdown menu panel content within a primary
+ * navigation item. This element manages responsive layout between compact
+ * (mobile) and desktop modes via context from the parent
+ * `rh-navigation-primary`. Authors SHOULD NOT use this element directly;
+ * it is rendered automatically by `rh-navigation-primary-item` when
+ * `variant="dropdown"`.
+ *
+ * @summary       Responsive dropdown menu panel container for primary navigation items
+ *
+ * @slot          - Dropdown panel content projected from the parent `rh-navigation-primary-item` default slot. Content SHOULD include headings, links, and structured layout for the mega-menu pattern.
+ *
  */
 @customElement('rh-navigation-primary-item-menu')
 export class RhNavigationPrimaryItemMenu extends LitElement {
@@ -45,24 +55,12 @@ export class RhNavigationPrimaryItemMenu extends LitElement {
     const compact = !this.#hydrated ? true : this.compact ?? true;
     return html`
       <div id="container" class="${classMap({ compact: compact, dehydrated: !this.#hydrated })}">
-        <!-- summary: dropdown menu content and navigation items (default slot)
-             description: |
-               Contains the menu content displayed when a navigation dropdown is expanded.
-               Typically includes links, buttons, or custom content organized in a menu structure.
-
-               **Common patterns:**
-               - Links organized into groups or sections
-               - Search forms or input fields
-               - User account information and settings links
-               - Hierarchical navigation with categories
-
-               **Best practices:**
-               - Use semantic HTML (lists, links) for navigation items
-               - Ensure all interactive elements are keyboard accessible
-               - Provide clear labels and organize content logically
-               - Keep menu depth shallow (avoid deeply nested menus)
-
-               @see [Navigation](https://ux.redhat.com/elements/navigation/) documentation -->
+        <!--
+          summary: Dropdown panel content from the parent navigation item.
+          description: |
+            Content is projected from \`rh-navigation-primary-item\` default slot.
+            SHOULD include structured layout with headings, links, and columns.
+        -->
         <slot></slot>
       </div>
     `;

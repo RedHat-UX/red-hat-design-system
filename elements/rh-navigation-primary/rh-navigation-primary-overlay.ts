@@ -5,29 +5,22 @@ import { property } from 'lit/decorators/property.js';
 import styles from './rh-navigation-primary-overlay.css' with { type: 'css' };
 
 /**
- * Overlay
- * @slot - Place element content here
+ * A full-viewport semi-transparent overlay displayed behind open navigation
+ * menus. Clicking the overlay closes all open dropdowns and the hamburger
+ * menu. Authors SHOULD NOT use this element directly; it is managed
+ * internally by `rh-navigation-primary`.
+ *
+ * @summary       Background overlay for open navigation menus
+ *
  */
 @customElement('rh-navigation-primary-overlay')
 export class RhNavigationPrimaryOverlay extends LitElement {
   static readonly styles = [styles];
 
   /**
-   * Controls the visibility of the navigation overlay.
-   *
-   * When `true`, displays a semi-transparent overlay that covers the page content
-   * behind the navigation. When `false`, the overlay is hidden.
-   *
-   * ## Usage guidelines
-   * - Automatically managed by `<rh-navigation-primary>` parent component
-   * - Displays when dropdowns or mobile menu (hamburger) are open
-   * - Clicking the overlay closes all open navigation menus
-   * - Provides visual focus on navigation and prevents interaction with page content
-   *
-   * ## Accessibility
-   * - Overlay helps users understand the navigation modal context
-   * - Prevents accidental clicks on page content while navigation is open
-   * - Works with keyboard navigation (ESC key closes overlay)
+   * Whether the overlay is currently visible. When `true`, a fixed
+   * semi-transparent backdrop covers the viewport behind the navigation.
+   * Managed internally by `rh-navigation-primary`.
    */
   @property({ type: Boolean, reflect: true }) open = false;
 }

@@ -1,0 +1,1 @@
+Primary navigation using simple anchor links as top-level items instead of dropdown menus.
