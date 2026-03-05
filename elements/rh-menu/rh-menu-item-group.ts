@@ -1,7 +1,7 @@
 import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import styles from './rh-menu-item-group.css';
+import styles from './rh-menu-item-group.css' with { type: 'css' };
 
 /**
  * Menu Dropdown Item Group

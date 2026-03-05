@@ -5,7 +5,7 @@ import { property } from 'lit/decorators/property.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 import { observes } from '@patternfly/pfe-core/decorators.js';
 
-import styles from './rh-scheme-toggle.css';
+import styles from './rh-scheme-toggle.css' with { type: 'css' };
 
 declare global {
   interface Storage {
