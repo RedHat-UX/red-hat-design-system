@@ -1,0 +1,1 @@
+Shows the image-position attribute with inline-start (image beside text) and block-start (image above text) on mobile viewports.

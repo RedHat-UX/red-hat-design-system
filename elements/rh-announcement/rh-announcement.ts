@@ -12,6 +12,12 @@ import '@rhds/elements/rh-button/rh-button.js';
 
 import styles from './rh-announcement.css' with { type: 'css' };
 
+/**
+ * Event fired when a user dismisses an announcement by clicking the close
+ * button. The event is cancelable; calling `preventDefault()` on it will
+ * prevent the announcement from being removed from the DOM. The event
+ * bubbles and carries no additional detail properties.
+ */
 export class AnnouncementCloseEvent extends Event {
   constructor() {
     super('close', { bubbles: true, cancelable: true });
@@ -19,14 +25,20 @@ export class AnnouncementCloseEvent extends Event {
 }
 
 /**
- * Announcements are flexible surfaces used to group information in a full width banner layout, traditionally across the top of a page.
- * They are used to announce new features, promos, or news.
- * @summary Arranges content and interactive elements in a layout
+ * Full-width banner for promoting events or important messages. SHOULD
+ * be placed above primary navigation. USE `dismissable` to add a close
+ * button. Supports `color-palette` for light/dark themes. Tab and
+ * Enter MUST activate interactive elements. Slotted content provides
+ * screen reader context; SHOULD include meaningful text.
+ *
+ * @summary Full-width promotional or informational banner
  *
  * @alias announcement
  *
- * @fires   {AnnouncementCloseEvent} close
- *          When a user clicks the close/dismiss button on an announcement.
+ * @fires {AnnouncementCloseEvent} close - Fires when the user clicks the
+ *        dismiss button. Cancelable: calling `preventDefault()` prevents
+ *        the element from being removed. Bubbles. No additional detail
+ *        properties.
  */
 @customElement('rh-announcement')
 @colorPalettes
@@ -35,60 +47,27 @@ export class RhAnnouncement extends LitElement {
   static styles = [styles];
 
   /**
-   * Sets color palette theme for the announcement and its child components.
-   *
-   * Controls the visual theme (light or dark) of the announcement banner. When changing
-   * the background color, ensure accessibility guidelines like color contrast are maintained.
-   *
-   * ## Usage guidelines
-   * - Use a dark theme announcement **only if** it has a different background color than the navigation
-   * - Do not use a dark theme if the announcement has the same background color as navigation
-   * - Maintain proper color contrast ratios for text and interactive elements
-   * - Theme choice should support visual hierarchy and content separation
-   *
-   * @see https://ux.redhat.com/theming/color-palettes/
-   * @see [Theme](https://ux.redhat.com/elements/announcement/style/#theme) in Style documentation
+   * Sets the color context for child components, overriding any inherited
+   * parent context. Valid values include `light`, `dark`, and other
+   * palette names defined by the design system. Determines surface and
+   * text colors. SHOULD contrast with adjacent surfaces (e.g., AVOID
+   * using a dark announcement above a dark navigation).
    */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
-   * Makes the announcement dismissable by adding a close button in the top right corner.
-   *
-   * When enabled, displays a close button that allows users to dismiss the announcement.
-   * Clicking the close button fires a cancelable `close` event and removes the announcement from the DOM
-   * (unless `event.preventDefault()` is called).
-   *
-   * ## Usage guidelines
-   * - A close button is **required at minimum** and provides users control over their experience
-   * - Only remove the close button if absolutely necessary for critical messaging
-   * - Users who have dismissed an announcement typically should not see it again
-   *
-   * ## Accessibility
-   * - The close button is the last focusable element in the announcement (after skip link and CTA)
-   * - Keyboard users can dismiss with Tab + Enter on the close button
-   *
-   * @see [Close button](https://ux.redhat.com/elements/announcement/guidelines/#customizing) in Guidelines documentation
+   * When true, renders a close button that allows the user to dismiss the
+   * announcement. Pressing Enter or Space on the close button fires a
+   * cancelable `close` event. If the event is not canceled, the element is
+   * removed from the DOM. Defaults to `false`.
    */
   @property({ reflect: true, type: Boolean }) dismissable = false;
 
   /**
-   * Sets the position of the inline image relative to body text on mobile viewports.
-   *
-   * Controls how the image slot content is positioned on small screens. This property
-   * only affects mobile viewport sizes; desktop layouts position the image inline by default.
-   *
-   * - `inline-start` - Positions the image to the left of body text (default for LTR)
-   * - `block-start` - Positions the image on top of body text
-   *
-   * ## Usage guidelines
-   * - Use `inline-start` for square logos, icons, or compact images
-   * - Use `block-start` for wider images or horizontal text logos that need more space
-   *
-   * ## Image sizing
-   * - Logo or icon images: max height of 48px
-   * - Horizontal text logos: approximately 20-25px tall
-   *
-   * @see [Layout](https://ux.redhat.com/elements/announcement/guidelines/#layout) in Guidelines documentation
+   * Controls the position of the slotted image on mobile viewports.
+   * `inline-start` keeps the image beside the body text; `block-start`
+   * places it above. On wider viewports (768px+), images always appear
+   * inline. When unset, the image appears above content on mobile.
    */
   @property({ reflect: true, attribute: 'image-position' })
   imagePosition?: 'inline-start' | 'block-start';
@@ -108,77 +87,38 @@ export class RhAnnouncement extends LitElement {
               'block-start': imagePosBlockStart,
               'empty': this.#slots.isEmpty(null),
             })}">
-        <!-- summary: main container row that holds the image and content sections
-             description: |
-               This part wraps the primary banner content layout, containing both the
-               image slot and text content areas. Use this part to customize the overall
-               row structure and spacing. -->
+        <!-- The row for the banner. Contains the image and content divs. -->
         <div id="row" part="row">
-          <!-- summary: container for the inline image slot
-               description: |
-                 This part wraps the image slot and handles responsive positioning based
-                 on the `image-position` attribute on mobile viewports. Use this part to
-                 customize image container styling and dimensions. -->
+          <!-- The image for the banner. Contains the image slot. -->
           <div id="image"
                part="image"
                class="${classMap({ empty: !this.#slots.hasSlotted('image') })}">
-            <!-- summary: inline image such as a logo, icon, or graphic
+            <!-- summary: optional visual such as an icon, logo, or image
                  description: |
-                   An optional inline image that adds context or visual interest to the announcement.
-                   Accepts an `<img>` tag with width and height set, or an icon, SVG, or rh-icon component.
-
-                   **Image sizing:**
-                   - Logo or icon images: max height of 48px
-                   - Horizontal text logos: approximately 20-25px tall
-
-                   **Positioning:** Use the `image-position` attribute to control placement on mobile viewports
-                   (inline-start positions to the left, block-start positions on top).
-
-                   @example
-                   <img slot="image" src="summit.png" alt="summit logo" width="48" height="48"> -->
+                   Accepts an `<img>`, `<svg>`, or `<rh-icon>` element. Images
+                   MUST have explicit `width` and `height` attributes set.
+                   SHOULD include `role="img"` and an `aria-label` for
+                   accessibility. Max recommended height is 48px for icons
+                   or 20-25px for text logos. -->
             <slot name="image"></slot>
           </div>
           <div id="content">
             <div id="body" class="${classMap({ empty: this.#slots.isEmpty(null) })}">
-              <!-- summary: body text for the announcement message (default slot)
+              <!-- summary: main body text content for the announcement
                    description: |
-                     **Required.** Contains the primary message text, typically within a paragraph element.
-                     This is the main content that communicates the announcement, event, or important message.
-
-                     **Content guidelines:**
-                     - Maximum 65 characters
-                     - 1 line on desktop (up to 2 lines on small viewports)
-                     - Keep content short and to the point
-
-                     **When to use:**
-                     - Display a message to a specific audience or group
-                     - Announce important messages or initiatives
-                     - Support events or new product launches
-
-                     **When NOT to use:**
-                     - Very long content
-                     - Multiple messages or announcements
-                     - Secondary or less important content
-                     - Messages without a call to action
-                     - Alert feedback as result of user action
-
-                     @example
-                     <p>Join us at Red Hat Summit 2024 - Register today!</p> -->
+                     USE a `<p>` element for body text. Content SHOULD be
+                     concise (65 characters max recommended). Screen readers
+                     will read this content in DOM order. AVOID long or
+                     multi-paragraph content. -->
               <slot></slot>
             </div>
             <div id="cta" class="${classMap({ empty: !this.#slots.hasSlotted('cta') })}">
-              <!-- summary: call to action link or button
+              <!-- summary: call-to-action link for the announcement
                    description: |
-                     **Required.** Expects an `rh-cta` component that directs users to take action.
-                     This is a critical element that works with the body text to drive user engagement.
-
-                     **Content guidelines:**
-                     - Maximum 25 characters
-                     - Single line only
-                     - Clear, action-oriented text
-
-                     @example
-                     <rh-cta slot="cta" href="/summit">Learn More</rh-cta> -->
+                     MUST contain an `<rh-cta>` element with an `href`
+                     attribute. CTA text SHOULD be 25 characters or fewer.
+                     Keyboard users can Tab to the CTA and activate it
+                     with Enter. -->
               <slot name="cta"></slot>
             </div>
           </div>

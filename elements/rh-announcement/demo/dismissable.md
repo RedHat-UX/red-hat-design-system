@@ -1,0 +1,1 @@
+Dismissable announcements with a close button, shown in light, dark inline-start, and block-start variants.

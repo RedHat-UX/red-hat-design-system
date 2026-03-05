@@ -1,4 +1,7 @@
 :host {
+  /** Controls text wrapping for slotted CTA elements. On narrow viewports,
+    * the CTA text wraps normally; at 768px+ it switches to `nowrap`.
+    * @default normal */
   --_rh-cta-white-space: normal;
 
   display: flex;
@@ -43,6 +46,8 @@
   justify-content: center;
 }
 
+/** Main container; uses `rh-color-surface` and `rh-color-text-primary`
+  * tokens for theming. Padding uses `rh-space-lg`. */
 #container {
   background: var(--rh-color-surface);
   color: var(--rh-color-text-primary);

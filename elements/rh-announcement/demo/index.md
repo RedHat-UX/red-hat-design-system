@@ -1,0 +1,1 @@
+Basic announcement with an image slot, body text, and a call-to-action link.
