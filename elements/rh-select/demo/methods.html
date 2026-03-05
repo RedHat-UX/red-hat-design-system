@@ -1,0 +1,50 @@
+<rh-button variant="primary">Toggle</rh-button>
+<rh-button variant="secondary">Show</rh-button>
+<rh-button variant="secondary">Hide</rh-button>
+
+<label for="select-9">
+  Methods
+</label>
+<rh-select id="select-9" placeholder="Select an item">
+  <rh-option>OpenShift</rh-option>
+  <rh-option>Quay</rh-option>
+</rh-select>
+
+<link rel="stylesheet" href="../rh-select-lightdom-shim.css">
+
+<script type="module">
+  import '@rhds/elements/rh-button/rh-button.js';
+  import '@rhds/elements/rh-select/rh-select.js';
+
+  const select = document.querySelector('rh-select');
+  const [toggleBtn, showBtn, hideBtn] = document.querySelectorAll('rh-button');
+
+  await customElements.whenDefined('rh-select');
+  await select.updateComplete; // Wait for select to be fully rendered
+
+  showBtn.addEventListener('click', () => select.show());
+  hideBtn.addEventListener('click', () => select.hide());
+  toggleBtn.addEventListener('click', () => select.toggle());
+</script>
+
+<style>
+  rh-button {
+    &:first-child {
+      margin-block: var(--rh-space-md, 8px);
+      margin-inline-start: 20px;
+    }
+  }
+    
+  label,
+  rh-select  {
+    margin-inline: 20px;
+    max-inline-size: 320px;
+  }
+
+  label {
+    display: block;
+    font-family: var(--rh-font-family-body-text);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    margin-block: var(--rh-space-md, 8px);
+  }
+</style>

@@ -1,0 +1,41 @@
+<rh-context-demo>
+  <label for="select-1">
+    Label
+  </label>
+  <rh-select id="select-1" placeholder="Select an item">
+    <rh-option>Ansible Lightspeed</rh-option>
+    <rh-option set="ui" icon="document">Certificate System</rh-option>
+    <rh-option>Connectivity Link</rh-option>
+    <rh-option>Device Edge</rh-option>
+    <rh-option>
+      Directory Server
+      <span slot="description">Centralized directory service</span>
+    </rh-option>
+    <rh-option-group label="RHEL">
+      <rh-option>Enterprise Linux</rh-option>
+      <rh-option>Enterprise Linux Lightspeed</rh-option>
+    </rh-option-group>
+    <rh-option>JBoss Web Server</rh-option>
+  </rh-select>
+</rh-context-demo>
+
+<link rel="stylesheet" href="../rh-select-lightdom-shim.css">
+
+<script type="module">
+  import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+  import '@rhds/elements/rh-select/rh-select.js';
+</script>
+
+<style>
+  label,
+  rh-select {
+    max-inline-size: 320px;
+  }
+
+  label {
+    display: block;
+    font-family: var(--rh-font-family-body-text);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    margin-block: var(--rh-space-md, 8px);
+  }
+</style>

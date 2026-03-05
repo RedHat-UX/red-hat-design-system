@@ -1,0 +1,70 @@
+<label for="select-5">
+  Success
+</label>
+<rh-select id="select-5" placeholder="Select an item" state="success" help-text="Sucess message">
+  <rh-option>3scale API Management</rh-option>
+  <rh-option>Ansible Automation Platform</rh-option>
+  <rh-option>Ansible Lightspeed</rh-option>
+</rh-select>
+
+<label for="select-6">
+  Warning
+</label>
+<rh-select id="select-6" placeholder="Select an item" state="warning" help-text="Warning message">
+  <rh-option>Certificate System</rh-option>
+  <rh-option>Connectivity Link</rh-option>
+  <rh-option>Data Grid</rh-option>
+</rh-select>
+
+<label for="select-7">
+  Danger
+</label>
+<rh-select id="select-7" placeholder="Select an item" state="danger" help-text="Danger message">
+  <rh-option>Developer Hub</rh-option>
+  <rh-option>Device Edge</rh-option>
+  <rh-option>Directory Server</rh-option>
+</rh-select>
+
+<label for="select-8">
+  Label
+</label>
+<rh-select id="select-8" placeholder="Select an item" help-text="Help text">
+  <rh-option>JBoss Web Server</rh-option>
+  <rh-option>OpenShift</rh-option>
+  <rh-option>Red Hat Lightspeed</rh-option>
+</rh-select>
+
+<label for="select-9">
+  Slotted help text
+</label>
+<rh-select id="select-9" placeholder="Select an item">
+  <rh-option>Quay</rh-option>
+  <rh-option>Runtimes</rh-option>
+  <rh-option>Satellite</rh-option>
+  <p slot="help-text">Slotted help text</p>
+</rh-select>
+
+<link rel="stylesheet" href="../rh-select-lightdom-shim.css">
+
+<script type="module">
+  import '@rhds/elements/rh-select/rh-select.js';
+</script>
+
+<style>
+  label,
+  rh-select {
+    margin-inline: 20px;
+    max-inline-size: 320px;
+  }
+
+  label {
+    display: block;
+    font-family: var(--rh-font-family-body-text);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    margin-block: var(--rh-space-md, 8px);
+  }
+
+  rh-select {
+    margin-block-end: var(--rh-space-xl, 24px);
+  }
+</style>
