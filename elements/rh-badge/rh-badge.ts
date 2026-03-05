@@ -140,7 +140,7 @@ export class RhBadge extends LitElement {
              The content appears after the computed number display in visual rendering.
 
              **Common patterns:**
-             - Duplicate the `number` value for screen reader accessibility
+             - Duplicate the \`number\` value for screen reader accessibility
              - Add contextual labels like "Unread" or "Flagged" when using multiple badges
              - Provide aria-label on the element for additional context
 
@@ -148,7 +148,7 @@ export class RhBadge extends LitElement {
              - Always provide accessible context since badges convey information visually
              - Do not rely on color alone to communicate status
              - Keep content short (use rh-tag for lengthy text captions)
-             - Content should complement, not replace, the `number` property
+             - Content should complement, not replace, the \`number\` property
 
              **Accessibility:**
              - Badge does not get an accessible name by default
