@@ -47,16 +47,26 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
 }
 
 /**
- * The secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [primary navigation](../navigation-primary).
+ * Connects a series of related pages with persistent wayfinding navigation
+ * below the primary nav. Uses `role="navigation"` with a configurable
+ * `aria-label`. Supports light and dark color palettes. On mobile, nav
+ * items collapse behind a hamburger menu button. Keyboard: Tab moves
+ * between links/dropdowns, Escape closes expanded menus and mobile menu,
+ * Enter/Space toggles dropdown expansion. MUST be used with `<rh-navigation-primary>`
+ * above it. SHOULD contain a `logo` slot, `nav` slot with `<ul>`, and
+ * optional `cta` slot. AVOID more than 5 nav items.
  *
- * @summary Propagates related content across a series of pages
+ * @summary Sticky sub-navigation bar linking related pages
  *
  * @alias Navigation (secondary)
  *
- * @fires {SecondaryNavOverlayChangeEvent} overlay-change -
- *                                         Fires when an dropdown is opened or closed in desktop
- *                                         view or when the mobile menu button is toggled in mobile
- *                                         view.
+ * @fires {SecondaryNavOverlayChangeEvent} overlay-change - Fires when a dropdown opens/closes
+ *        in desktop view or mobile menu toggles. Detail: `open` (boolean), `toggle` (HTMLElement).
+ *
+ * @slot logo - Product logo or name link. Expects `<a>` with text or image.
+ * @slot mobile-menu - Label for the mobile menu button. Defaults to "Menu". USE for l10n.
+ * @slot nav - Navigation list. Expects `<ul>` with `<li>` children containing links or dropdowns.
+ * @slot cta - Optional call-to-action. Expects `<rh-cta>` element.
  */
 @customElement('rh-navigation-secondary')
 @colorPalettes
@@ -103,13 +113,18 @@ export class RhNavigationSecondary extends LitElement {
   }
 
   /**
-   * Color palette dark | lighter (default: lighter)
+   * Controls the visual color palette of the navigation bar. Valid values:
+   * `'lighter'` (default) for light environments, `'dark'` for dark
+   * environments. Light-family values (`'light'`, `'lightest'`) map to
+   * `'lighter'`; dark-family values (`'darker'`, `'darkest'`) map to `'dark'`.
+   * SHOULD match the surrounding page color scheme. Defaults to `'lighter'`.
    */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'lighter';
 
   /**
-   * Customize the default `aria-label` on the `<nav>` container.
-   * Defaults to "secondary" if no attribute/property is set.
+   * Sets the `aria-label` on the internal `<nav>` element for screen readers.
+   * USE a descriptive label like the product name (e.g. "OpenShift navigation").
+   * MUST be unique if multiple navigations exist on the page. Defaults to `'secondary'`.
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel = 'secondary';
 
@@ -203,15 +218,29 @@ export class RhNavigationSecondary extends LitElement {
 
                @see [Navigation](https://ux.redhat.com/elements/navigation/) documentation -->
         <div id="container" part="container" class="${classMap({ expanded })}">
-          <!-- Logo added to the main nav bar, expects \`<a>Text</a> | <a><svg/></a> | <a><img/></a>\` element -->
+          <!-- summary: product logo or name link
+               description: |
+                 Expects an `<a>` element with text, SVG, or image linking to the product
+                 homepage. Screen readers announce the link text or `alt` attribute.
+                 MUST be provided. `aria-current="page"` highlights when on the homepage. -->
           <slot name="logo" id="logo"></slot>
           <button aria-controls="container"
                   aria-expanded="${String(expanded) as 'true' | 'false'}"
                   @click="${this.#toggleMobileMenu}"><!--
             Text label for the mobile menu button, for l10n. Defaults to "Menu"
-          --><slot name="mobile-menu">Menu</slot></button>
+          --><!-- summary: mobile menu button label
+               description: |
+                 Text label for the mobile hamburger menu button. Defaults to "Menu".
+                 USE this slot for localization/translation of the button text.
+                 Screen readers announce this label with the button's expanded state. -->
+          <slot name="mobile-menu">Menu</slot></button>
           <rh-surface color-palette="${dropdownPalette}">
-            <!-- Navigation list added to the main nav bar, expects \`<ul>\` element -->
+            <!-- summary: navigation link list
+                 description: |
+                   Expects a `<ul>` element containing `<li>` children with links or
+                   `<rh-navigation-secondary-dropdown>` elements. On mobile, hidden behind
+                   the menu button. AVOID more than 5 total items. Screen readers navigate
+                   via list semantics. Tab moves focus through each link or dropdown trigger. -->
             <slot name="nav"></slot>
             <!-- summary: call-to-action container
                  description: |
@@ -226,7 +255,11 @@ export class RhNavigationSecondary extends LitElement {
 
                    @see [Navigation](https://ux.redhat.com/elements/navigation/) documentation -->
             <div id="cta" part="cta">
-              <!-- Nav bar level CTA, expects \`<rh-cta>\` element -->
+              <!-- summary: navigation-level call to action
+                   description: |
+                     Optional slot for an `<rh-cta>` element positioned at the end of the
+                     navigation bar. On mobile, appears below the nav list. Screen readers
+                     announce the CTA link text. AVOID long text that reduces nav item space. -->
               <slot name="cta"></slot>
             </div>
           </rh-surface>

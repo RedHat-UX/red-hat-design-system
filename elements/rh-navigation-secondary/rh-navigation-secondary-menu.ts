@@ -13,8 +13,17 @@ import styles from './rh-navigation-secondary-menu.css' with { type: 'css' };
 
 
 /**
- * Dropdown menu for secondary nav, available in full-width and fixed-with sizes
- * @summary 'Dropdown menu for secondary nav, available in full-width and fixed-with sizes'
+ * The expandable dropdown menu panel for secondary navigation. Supports
+ * `full-width` (default) and `fixed-width` layouts. Contains
+ * `<rh-navigation-secondary-menu-section>` children organized in a CSS grid.
+ * Always renders on the lightest color palette. Visibility is toggled by the
+ * parent `<rh-navigation-secondary-dropdown>`. MUST be placed inside the
+ * `menu` slot of a dropdown. Tab navigates through menu content; Escape
+ * closes the menu. Screen readers access content via section headings.
+ *
+ * @summary Expandable dropdown menu panel for secondary navigation
+ *
+ * @slot - Menu content. Expects `<rh-navigation-secondary-menu-section>` elements.
  */
 @customElement('rh-navigation-secondary-menu')
 @colorPalettes
@@ -22,21 +31,27 @@ export class RhNavigationSecondaryMenu extends LitElement {
   static readonly styles = [styles];
 
   /**
-   * Color palette (default: lightest)
-   * Secondary nav menus are always represented on the lightest color palette.
+   * Color palette for the menu panel surface. SHOULD remain `'lightest'`
+   * (default) as secondary nav menus always render on a light surface.
+   * Defaults to `'lightest'`.
    */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'lightest';
 
   /**
-   * Layout (default: full-width)
-   * Secondary nav menus by default are always full-width, but can be set to fixed-width for special cases.
+   * Controls the menu panel width. `'full-width'` (default) spans the browser
+   * width with content in a responsive grid. `'fixed-width'` constrains the
+   * panel to its content width, positioned below the trigger link. USE
+   * `'fixed-width'` for simple menus with fewer sections. Defaults to `'full-width'`.
    */
   @property({ reflect: true }) layout: 'fixed-width' | 'full-width' = 'full-width';
 
   #screenSize = new ScreenSizeController(this);
 
   /**
-   * `visible` toggles on click (default: false)
+   * Controls whether the menu panel is visible. Managed automatically by the
+   * parent `<rh-navigation-secondary-dropdown>`. When `true`, the menu is
+   * displayed; when `false`, it is hidden. AVOID setting directly.
+   * Defaults to `false`.
    */
   @property({ type: Boolean }) visible = false;
 

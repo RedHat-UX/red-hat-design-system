@@ -9,6 +9,7 @@
   height: 100%;
 }
 
+/** @summary Expanded dropdown shows red brand border and subtle shadow */
 #container.expanded {
   border-inline-start-color: var(--rh-color-text-brand-on-light, #ee0000);
   border-inline-end-color: var(--rh-color-border-subtle-on-light, #c7c7c7);

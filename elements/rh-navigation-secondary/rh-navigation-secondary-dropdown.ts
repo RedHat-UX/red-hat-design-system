@@ -28,11 +28,21 @@ export class SecondaryNavDropdownExpandEvent extends ComposedEvent {
 import styles from './rh-navigation-secondary-dropdown.css' with { type: 'css' };
 
 /**
- * Upgrades a top level nav link to include dropdown functionality
+ * Wraps a top-level nav link to add expandable dropdown menu functionality.
+ * Upgrades the slotted `<a>` with `role="button"`, `aria-expanded`, and
+ * `aria-controls` for accessibility. Highlights with a red top border when
+ * the dropdown contains the current page (`aria-current="page"`). Keyboard:
+ * Enter/Space toggles the dropdown; Tab moves through menu items; Escape
+ * closes. MUST contain an `<a>` in the `link` slot and an
+ * `<rh-navigation-secondary-menu>` in the `menu` slot.
  *
- * @summary Upgrades a top level nav link to include dropdown functionality
+ * @summary Expandable dropdown wrapper for secondary nav links
  *
- * @fires { SecondaryNavDropdownExpandEvent } change - Fires when a dropdown is clicked
+ * @fires {SecondaryNavDropdownExpandEvent} expand-request - Fires when the dropdown link is
+ *        clicked. Detail: `expanded` (boolean), `toggle` (RhNavigationSecondaryDropdown).
+ *
+ * @slot link - The dropdown trigger link. Expects `<a>` element.
+ * @slot menu - The dropdown menu. Expects `<rh-navigation-secondary-menu>` element.
  */
 @customElement('rh-navigation-secondary-dropdown')
 export class RhNavigationSecondaryDropdown extends LitElement {
@@ -79,9 +89,17 @@ export class RhNavigationSecondaryDropdown extends LitElement {
 
              @see [Navigation](https://ux.redhat.com/elements/navigation/) documentation -->
       <div id="container" part="container" class="${classMap(classes)}">
-        <!-- Link for dropdown, expects \`<a>\` element -->
+        <!-- summary: dropdown trigger link
+             description: |
+               Expects an `<a>` element. Automatically upgraded with `role="button"`,
+               `aria-expanded`, and `aria-controls` for keyboard and screen reader
+               accessibility. Enter/Space toggles the dropdown. -->
         <slot name="link"></slot>
-        <!-- Menu for dropdown, expects \`<rh-navigation-secondary-menu>\` element -->
+        <!-- summary: dropdown menu panel
+             description: |
+               Expects an `<rh-navigation-secondary-menu>` element. Visibility is
+               toggled when the link slot is activated. Screen readers can navigate
+               menu sections via headings inside the menu. -->
         <slot name="menu"></slot>
       </div>
     `;

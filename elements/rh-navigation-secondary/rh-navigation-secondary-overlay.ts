@@ -5,7 +5,13 @@ import { property } from 'lit/decorators/property.js';
 import styles from './rh-navigation-secondary-overlay.css' with { type: 'css' };
 
 /**
- * @summary An overlay element to cover content with an opacity when navigation is expanded.
+ * Semi-transparent backdrop overlay that dims page content when a secondary
+ * navigation dropdown or mobile menu is expanded. Clicking the overlay closes
+ * all open menus. Managed automatically by `<rh-navigation-secondary>`.
+ * AVOID using standalone. Screen readers SHOULD ignore this element as it
+ * serves a purely visual purpose. Keyboard: Escape closes the overlay.
+ *
+ * @summary Backdrop overlay for expanded secondary navigation menus
  */
 @customElement('rh-navigation-secondary-overlay')
 export class RhNavigationSecondaryOverlay extends LitElement {

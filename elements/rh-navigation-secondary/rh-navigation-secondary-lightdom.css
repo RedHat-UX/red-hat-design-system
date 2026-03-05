@@ -1,8 +1,14 @@
+/** @summary Light DOM styles for rh-navigation-secondary host and slotted content */
 rh-navigation-secondary {
+  /** @summary Maximum height of nav container */
   --_max-height: max-content;
+  /** @summary Minimum height of nav bar (80px mobile). Uses --rh-space values */
   --_min-height: 80px;
+  /** @summary Color for navigation link text. Uses --rh-color-text-primary design token */
   --_nav-link-color: var(--rh-color-text-primary);
+  /** @summary Color for the logo link text. Uses --rh-color-text-primary design token */
   --_logo-link-color: var(--rh-color-text-primary);
+  /** @summary Color for dropdown chevron indicators. Uses --rh-color-text-primary design token */
   --_nav-chevron-color: var(--rh-color-text-primary);
   --rh-color-surface:
     light-dark(var(--rh-color-surface-lighter, #f2f2f2),

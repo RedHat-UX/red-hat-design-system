@@ -1,7 +1,11 @@
 :host {
+  /** @summary Size of the dropdown chevron indicator */
   --_chevron-size: calc(var(--rh-font-size-body-text-md, 1rem) * 0.35);
+  /** @summary Border thickness of the chevron indicator */
   --_chevron-thickness: calc(var(--rh-font-size-body-text-md, 1rem) * 0.125);
+  /** @summary Rotation angle for chevron in collapsed state */
   --_chevron-up: 45deg;
+  /** @summary Rotation angle for chevron in expanded state */
   --_chevron-down: -135deg;
   --_chevron-correction-x: calc(-1 * var(--rh-font-size-body-text-md, 1rem) / 16);
   --_chevron-correction-y: calc(-1 * var(--rh-font-size-body-text-md, 1rem) / 16);
@@ -12,10 +16,15 @@
   --_chevron-transform-expanded:
     rotate(var(--_chevron-down))
     translate(var(--_chevron-correction-y), var(--_chevron-correction-y));
+  /** @summary Font color for the mobile menu button. Uses --rh-color-text-primary design token */
   --_button-font-color: var(--rh-color-text-primary);
+  /** @summary Maximum height of the navigation container */
   --_nav-max-height: var(--_max-height, max-content);
+  /** @summary Minimum height of the navigation bar. 80px mobile, 86px desktop */
   --_nav-min-height: var(--_min-height, 80px);
+  /** @summary Border color for current page indicator. Uses --rh-color-brand-red design token */
   --_current-active-child-border-color: var(--rh-color-brand-red);
+  /** @summary Bottom border color. Transparent in light, subtle in dark scheme */
   --_border-color: light-dark(transparent, var(--rh-color-border-subtle));
 
   /**

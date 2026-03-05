@@ -9,8 +9,18 @@ import { isHeadingElement } from '../../lib/functions.js';
 import styles from './rh-navigation-secondary-menu-section.css' with { type: 'css' };
 
 /**
- * A menu section which auto upgrades accessibility for headers and sibling list
- * @summary 'A menu section which auto upgrades accessibility for headers and sibling list'
+ * Groups related links under a heading within a dropdown menu. Automatically
+ * wires `aria-labelledby` between the slotted heading and adjacent `<ul>`/`<ol>`
+ * for screen reader navigation. Renders as a `<section>` element. MUST contain
+ * a heading in the `header` slot and a list in the `links` slot. SHOULD
+ * provide an `id` on the heading or one will be auto-generated. Tab navigates
+ * through links; the heading provides group context to assistive technology.
+ *
+ * @summary Accessible link group with heading for dropdown menus
+ *
+ * @slot header - Section heading (h1-h6). Auto-linked to list via aria-labelledby.
+ * @slot links - Navigation link list. Expects `<ul>` or `<ol>` element.
+ * @slot cta - Optional section-level call to action. Expects `<rh-cta>`.
  */
 @customElement('rh-navigation-secondary-menu-section')
 export class RhNavigationSecondaryMenuSection extends LitElement {
@@ -46,11 +56,22 @@ export class RhNavigationSecondaryMenuSection extends LitElement {
 
              @see [Navigation](https://ux.redhat.com/elements/navigation/) documentation -->
       <section part="container">
-        <!-- Adds a header tag to section, expects \`<h1> | <h2> | <h3> | <h4> | <h5> | <h6>\` element -->
+        <!-- summary: section heading
+             description: |
+               Expects an `<h1>`-`<h6>` element. Auto-linked to the links list via
+               `aria-labelledby` for screen reader group identification. An `id` is
+               generated if not present. -->
         <slot name="header"></slot>
-        <!-- Adds a ul tag to section, expects \`<ul> | <ol>\` element -->
+        <!-- summary: section link list
+             description: |
+               Expects a `<ul>` or `<ol>` element with navigation links. Automatically
+               receives `aria-labelledby` pointing to the header for screen readers.
+               Tab navigates through each link in the list. -->
         <slot name="links"></slot>
-        <!-- Adds a section level CTA, expects \`<rh-cta>\` element -->
+        <!-- summary: section-level call to action
+             description: |
+               Optional slot for an `<rh-cta>` element. Appears after the link list.
+               Screen readers announce the CTA link text in document order. -->
         <slot name="cta"></slot>
       </section>
     `;
