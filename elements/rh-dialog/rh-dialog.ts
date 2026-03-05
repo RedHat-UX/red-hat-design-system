@@ -185,7 +185,7 @@ export class RhDialog extends LitElement {
                      description: |
                        SHOULD contain a heading element (h2-h6) that describes the
                        dialog's purpose. The heading automatically becomes the dialog's
-                       ARIA accessible name via `aria-labelledby`. Sticks to the top
+                       ARIA accessible name via \`aria-labelledby\`. Sticks to the top
                        of the dialog when content overflows. AVOID using h1 to maintain
                        proper document heading hierarchy. -->
                 <slot name="header"></slot>
@@ -207,8 +207,8 @@ export class RhDialog extends LitElement {
                        content appears at the top of the dialog. If a heading
                        element (h2-h6) is placed here without a header slot, it
                        automatically provides the dialog's accessible name via
-                       `aria-labelledby`. For `type="video"`, USE a `<video>` or
-                       YouTube `<iframe>` element. Content scrolls vertically when
+                       \`aria-labelledby\`. For \`type="video"\`, USE a \`<video>\` or
+                       YouTube \`<iframe>\` element. Content scrolls vertically when
                        it overflows the dialog container. -->
                 <slot></slot>
               </div>
@@ -220,7 +220,7 @@ export class RhDialog extends LitElement {
                      description: |
                        USE for primary and secondary action buttons (e.g., confirm,
                        cancel). SHOULD contain at most two buttons. Buttons are
-                       laid out horizontally with `--rh-space-md` gap. Hidden when
+                       laid out horizontally with \`--rh-space-md\` gap. Hidden when
                        no content is slotted. Focusable elements here are included
                        in the dialog's Tab key focus cycle. -->
                 <slot name="footer"></slot>
