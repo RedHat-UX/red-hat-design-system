@@ -178,6 +178,7 @@
   background-color: var(--_code-background-color);
   color: var(--rh-color-text-primary);
   border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+
   /** @summary Top border width; override to add a colored accent bar */
   border-block-start-width:
     var(--rh-code-block-border-block-start-width,
