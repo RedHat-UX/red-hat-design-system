@@ -1,0 +1,1 @@
+Demonstrates the navigation in both `lightest` and `darkest` color palettes using the color context picker. Use `color-palette` to set the scheme when the navigation needs to match a specific page theme or contrast requirement.

@@ -203,7 +203,8 @@
 </rh-navigation-primary>
 
 <div id="mock">
-  <p>Mock Page content <a href="#">Link outside</a></p>
+  <p>Mock Page content <a href="#">Link outside</a>
+  </p>
 </div>
 
 <link rel="stylesheet" href="../rh-navigation-primary-lightdom.css">
@@ -211,12 +212,10 @@
 <style>
   /* styles for mock content */
   #mock {
-    p {
-      margin-block-start: var(--rh-space-4xl, 64px);
-      padding-inline: var(--rh-space-lg, 16px);
-      @media (min-width: 768px) {
-        padding-inline: var(--rh-space-2xl, 32px);
-      }
+    margin-block: var(--rh-space-4xl, 64px);
+    padding-inline: var(--rh-space-lg, 16px);
+    @media (min-width: 768px) {
+      padding-inline: var(--rh-space-2xl, 32px);
     }
   }
 

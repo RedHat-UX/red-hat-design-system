@@ -3,14 +3,23 @@
 }
 
 #container {
+  /** Content panel text color */
   color: var(--rh-color-text-primary);
-  background-color: var(--rh-color-surface);
+  background-color:
+    light-dark(
+        /** Content panel background color under light color scheme */
+        var(--rh-color-surface-lightest, #ffffff),
+        /** Content panel background color under dark color scheme */
+        var(--rh-color-surface-darkest, #151515)
+      );
   padding: var(--rh-space-2xl, 32px) var(--rh-space-xl, 24px);
 
   &:not(.compact) {
     @container (min-width: 1200px) {
       margin: 0 auto;
       max-width: 1440px;
+
+      /** Content panel not compact state starting at viewports >= 1200px */
       padding: var(--rh-space-3xl, 48px) var(--rh-space-2xl, 32px);
     }
   }

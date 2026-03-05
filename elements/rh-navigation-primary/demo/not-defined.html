@@ -26,7 +26,7 @@
 
   <rh-navigation-primary-item slot="event">
     <a href="#summit">
-      <svg width="64" height="35" viewBox="0 0 64 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="55" height="30" viewBox="0 0 64 35" fill="none" xmlns="http://www.w3.org/2000/svg">
         <title>Red Hat Summit logo</title>
         <path d="M61.9356 1.34412H2.06356C1.08623 1.34412 0.293945 2.1364 0.293945 3.11373V27.8382C0.293945 28.8156 1.08623 29.6079 2.06356 29.6079H26.4849C26.9543 29.6079 27.4044 29.7943 27.7363 30.1262L30.7477 33.1377C31.4388 33.8287 32.5591 33.8288 33.2502 33.1379L36.263 30.126C36.5948 29.7942 37.0449 29.6079 37.5141 29.6079H61.9356C62.913 29.6079 63.7053 28.8156 63.7053 27.8382V3.11373C63.7053 2.1364 62.913 1.34412 61.9356 1.34412Z" fill="#EE0000"/>
         <path d="M18.3535 12.4776V7.41943H20.9404C21.2873 7.41943 21.5955 7.48805 21.8654 7.62537C22.1351 7.76262 22.3459 7.953 22.4977 8.19616C22.6495 8.43947 22.7252 8.7177 22.7252 9.03079C22.7252 9.34876 22.6385 9.63305 22.4651 9.88348C22.2917 10.134 22.0628 10.3242 21.7787 10.4543L22.8842 12.4776H21.4969L20.5431 10.6349H19.5963V12.4776H18.3535ZM19.5963 9.62332H20.8248C21.0175 9.62332 21.1729 9.57039 21.2909 9.46433C21.4089 9.3584 21.4679 9.22117 21.4679 9.05245C21.4679 8.88388 21.4089 8.74657 21.2909 8.64057C21.1728 8.53465 21.0175 8.48159 20.8248 8.48159H19.5963V9.62332Z" fill="white"/>
@@ -47,125 +47,183 @@
 
   <rh-navigation-primary-item slot="links">
     <a href="#console">Console</a>
-    </rh-navigation-primary-item>
+  </rh-navigation-primary-item>
   <rh-navigation-primary-item slot="links">
     <a href="#support">Docs</a>
-    </rh-navigation-primary-item>
+  </rh-navigation-primary-item>
   <rh-navigation-primary-item slot="links">
     <a href="#console">Support</a>
-    </rh-navigation-primary-item>
+  </rh-navigation-primary-item>
 
-  <rh-navigation-primary-item slot="dropdowns" hide-at="sm" variant="dropdown">
+  <rh-navigation-primary-item slot="dropdowns" variant="dropdown">
     <rh-icon slot="icon" icon="search" set="ui"></rh-icon>
     <span slot="summary">Search</span>
     <div>Search content</div>
   </rh-navigation-primary-item>
 
-  <rh-navigation-primary-item slot="dropdowns" hide-at="sm" variant="dropdown">
+  <rh-navigation-primary-item slot="dropdowns" variant="dropdown">
     <rh-icon slot="icon" icon="notification" set="ui"></rh-icon>
     <span slot="summary">For you</span>
     <div>For you Content</div>
   </rh-navigation-primary-item>
 
-    <rh-navigation-primary-item slot="dropdowns" variant="dropdown">
-      <rh-avatar slot="icon" plain layout="inline"></rh-avatar>
-      <span slot="summary">My Red Hat</span>
-      <!-- Mock content -->
-      <div class="grid">
-        <div class="profile">
-          <rh-avatar>
-          Mr. Roboto
-          <span slot="subtitle">AI UX Engineer, </span>
-            <a slot="subtitle" href="#">Red Hat</a>
-          </rh-avatar>
-          <div>Login: jdoe@redhat.com</div>
-          <div>Account number: 0123456</div>
-          <div>jdoe+alias@redhat.com</div>
-          <div>
-            <select>
+  <rh-navigation-primary-item slot="dropdowns" variant="dropdown">
+    <rh-avatar slot="icon" plain layout="inline"></rh-avatar>
+    <span slot="summary">My Red Hat</span>
+    <!-- Mock content -->
+    <div class="grid">
+      <div id="profile">
+        <div class="lockup">
+          <rh-avatar plain></rh-avatar>
+          <div class="account">
+            <div class="name">Mr. Roboto</div>
+            <div class="edit">
+              <a href="#">
+                <rh-icon icon="edit" set="ui"></rh-icon> Edit Avatar</a>
+            </div>
+          </div>
+          <div class="info">
+            <div>Login: jdoe@redhat.com</div>
+            <div>Account number: 0123456</div>
+            <div>jdoe+alias@redhat.com</div>
+          </div>
+          <div class="language">
+            <label for="language">Language</label>
+            <select id="language">
               <option>English</option>
               <option>French</option>
               <option>German</option>
             </select>
           </div>
-          <div>
+          <div class="logout">
             <rh-button danger>Log out</rh-button>
           </div>
         </div>
-        <div class="content-column">
-          <ul>
-            <li>
-              <a href="#">Account details</a>
-              <p>Edit your contact info, password, location preferences, and errata notifications.</p>
-            </li>
-            <li>
-              <a href="#">Community profile</a>
-              <p>Fill out your public profile and control what content you follow.</p>
-            </li>
-            <li>
-              <a href="#">My Red Hat </a>
-              <p>Get a customized view of resources to help you use our products, solutions, and services.</p>
-            </li>
-            <li>
-              <a href="#">Training & certification</a>
-              <p>Access your Red Hat Learning Subscription, courses, and exams.</p>
-            </li>
-          </ul>
-        </div>
-        <div class="content-column">
-          <ul>
-            <li>
-              <a href="#">Subscriptions</a>
-              <p>Manage your subscriptions.</p>
-            </li>
-            <li>
-              <a href="#">Support Cases</a>
-              <p>Manage your support tickets.</p>
-            </li>
-            <li>
-              <a href="#">User management</a>
-              <p>Manage users in your organization.</p>
-            </li>
-            <li>
-              <a href="#">Activate Red Hat</a>
-              <p>Activate your subscription to gain access to updates and support.</p>
-            </li>
-          </ul>
-        </div>
       </div>
-      <!-- Mock content end -->
-    </rh-navigation-primary-item>
+      <div class="content-column">
+        <ul>
+          <li>
+            <a href="#">Account details</a>
+            <p>Edit your contact info, password, location preferences, and errata notifications.</p>
+          </li>
+          <li>
+            <a href="#">Community profile</a>
+            <p>Fill out your public profile and control what content you follow.</p>
+          </li>
+          <li>
+            <a href="#">My Red Hat </a>
+            <p>Get a customized view of resources to help you use our products, solutions, and services.</p>
+          </li>
+          <li>
+            <a href="#">Training & certification</a>
+            <p>Access your Red Hat Learning Subscription, courses, and exams.</p>
+          </li>
+        </ul>
+      </div>
+      <div class="content-column">
+        <ul>
+          <li>
+            <a href="#">Subscriptions</a>
+            <p>Manage your subscriptions.</p>
+          </li>
+          <li>
+            <a href="#">Support Cases</a>
+            <p>Manage your support tickets.</p>
+          </li>
+          <li>
+            <a href="#">User management</a>
+            <p>Manage users in your organization.</p>
+          </li>
+          <li>
+            <a href="#">Activate Red Hat</a>
+            <p>Activate your subscription to gain access to updates and support.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Mock content end -->
+  </rh-navigation-primary-item>
 </rh-navigation-primary>
 
-<p>Mock Page content <a href="#">Link outside</a></p>
+<div id="mock">
+  <p>Mock Page content <a href="#">Link outside</a>
+  </p>
+</div>
 
 <link rel="stylesheet" href="../rh-navigation-primary-lightdom.css">
 
 <style>
   /* styles for mock content */
+  #mock {
+    p {
+      margin-block-start: var(--rh-space-4xl, 64px);
+      padding-inline: var(--rh-space-lg, 16px);
+      @media (min-width: 768px) {
+        padding-inline: var(--rh-space-2xl, 32px);
+      }
+    }
+  }
+
+  /* panel grid */
   .grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--rh-space-4xl);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+    fon-size: var(--rh-font-size-body-text-md, 1rem);
 
     @container (min-width: 768px) {
       grid-template-columns: 1fr 1fr 1fr;
     }
 
-    & rh-avatar {
-      display: block;
-    }
+    #profile {
+      margin-inline-start: var(--rh-space-4xl);
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      grid-template-areas: 'avatar content';
+      grid-template-rows: fit-content;
+      column-gap: var(--rh-space-lg, 16px);
 
-    & .profile {
-      & div {
-        margin-inline-start: var(--rh-space-4xl);
-        margin-block: var(--rh-space-md);
-        line-height: var(--rh-line-height-body-text);
+      & rh-avatar {
+        --rh-size-icon-06: 72px;
+
+        grid-area: avatar;
+        display: block;
+      }
+
+      & .lockup {
+        display: contents;
+
+        & .account {
+          grid-area: content;
+
+          & .name {
+            font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+            font-size: var(--rh-font-size-heading-sm, 1.5rem);
+          }
+        }
+
+        & .info {
+          grid-area: content;
+          grid-row: 2;
+        }
+
+        & .language {
+          grid-area: content;
+          grid-row: 3;
+        }
+
+        & .logout {
+          grid-area: content;
+          grid-row: 4;
+        }
       }
     }
 
     .content-column {
       max-width: 320px;
+      margin-block: var(--rh-space-md);
+      line-height: var(--rh-line-height-body-text);
     }
 
     & select {
@@ -179,6 +237,10 @@
       list-style: none;
       margin: 0;
       padding: 0;
+
+      & p {
+        font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+      }
     }
   }
 </style>

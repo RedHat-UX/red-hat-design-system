@@ -1,0 +1,1 @@
+Demonstrates the `sub-domain` slot and attribute, which provides a secondary label and link next to the logo lockup. Use this variant when navigating to a sub-site or portal that needs its own branded label, such as "Customer Portal" or "Developer Hub".
