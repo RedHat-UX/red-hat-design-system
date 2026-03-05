@@ -1,4 +1,4 @@
-import { expect, html, aTimeout } from '@open-wc/testing';
+import { expect, html } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { allUpdates } from '@patternfly/pfe-tools/test/utils.js';
@@ -229,31 +229,6 @@ describe('<rh-readtime>', function() {
 
     it('should use image-count over DOM count', function() {
       expect(element.minutes).to.equal(2);
-    });
-  });
-
-  describe('container mode with dynamic content', function() {
-    let element: RhReadtime;
-    let target: Element;
-
-    beforeEach(async function() {
-      const container = await createFixture<HTMLDivElement>(html`
-        <div>
-          <rh-readtime selector="#dynamic-content">%t min read</rh-readtime>
-          <div id="dynamic-content">${generateWords(228)}</div>
-        </div>
-      `);
-      element = container.querySelector('rh-readtime')!;
-      target = container.querySelector('#dynamic-content')!;
-      await allUpdates(element);
-    });
-
-    it('should recalculate when content changes', async function() {
-      const initialMinutes = element.minutes;
-      target.textContent = generateWords(1140);
-      await aTimeout(50);
-      await allUpdates(element);
-      expect(element.minutes).to.be.greaterThan(initialMinutes);
     });
   });
 

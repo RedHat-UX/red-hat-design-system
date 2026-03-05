@@ -157,14 +157,14 @@ export class RhReadtime extends LitElement {
   static readonly styles = [styles];
 
   /**
-   * CSS selector targeting the content container to observe.
+   * CSS selector targeting the content container to read from.
    * If omitted and `word-count` is not set, defaults to `parentElement`.
    */
   @property({ reflect: true }) selector?: string;
 
   /**
-   * Manual word count. When set, disables container observation
-   * and uses this value directly.
+   * Manual word count. When set, the component uses this value
+   * directly instead of reading from a container.
    */
   @property({ reflect: true, type: Number, attribute: 'word-count' }) wordCount?: number;
 
@@ -176,9 +176,9 @@ export class RhReadtime extends LitElement {
 
   /**
    * Opt-in to image weighting in container mode.
-   * When set, counts `<img>` elements from the observed container.
-   * Not needed when `image-count` is set.
-   * In property mode without `image-count`, has no effect and logs a warning.
+   * When set, counts `<img>` and non-decorative `<svg>` elements
+   * from the target container. Not needed when `image-count` is set.
+   * In property mode without `image-count`, has no effect.
    */
   @property({ reflect: true, type: Boolean }) images = false;
 
@@ -189,20 +189,13 @@ export class RhReadtime extends LitElement {
 
   #minutes = 0;
   #template = '';
-  #mo = new MutationObserver(() => this.#calculate());
 
   override connectedCallback(): void {
     super.connectedCallback();
     this.#template = this.textContent?.trim() ?? '';
     if (!isServer) {
-      this.#observeTarget();
       this.#calculate();
     }
-  }
-
-  override disconnectedCallback(): void {
-    super.disconnectedCallback();
-    this.#mo.disconnect();
   }
 
   protected override willUpdate(): void {
@@ -271,17 +264,6 @@ export class RhReadtime extends LitElement {
 
     const imageCount = this.#resolveImageCount();
     this.#minutes = getReadingTime(words, wpm, imageCount);
-  }
-
-  #observeTarget(): void {
-    this.#mo.disconnect();
-    if (this.#isPropertyMode()) {
-      return;
-    }
-    const target = this.#resolveTarget();
-    if (target) {
-      this.#mo.observe(target, { childList: true, subtree: true, characterData: true });
-    }
   }
 }
 

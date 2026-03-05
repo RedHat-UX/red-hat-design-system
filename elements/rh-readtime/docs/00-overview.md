@@ -6,8 +6,8 @@ discoverability and time management.
 
 The component supports two modes of operation:
 
-- **Container mode**: Automatically counts words (and optionally images) from a
-  target DOM element.
+- **Container mode**: Counts words (and optionally images) from a target DOM
+  element identified by a CSS `selector` or the parent element.
 - **Property mode**: Accepts a `word-count` and optional `image-count` directly
   via attributes.
 
