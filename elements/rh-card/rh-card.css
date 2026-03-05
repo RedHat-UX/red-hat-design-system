@@ -37,6 +37,7 @@
   flex-direction: column;
   justify-items: flex-start;
   overflow: hidden;
+
   /** @summary Card border radius; uses --rh-border-radius-default design token */
   border-radius:
     var(
@@ -48,7 +49,10 @@
   border-style: solid;
   border-width: var(--rh-border-width-sm, 1px);
 
-  /** @summary Border color computed from color context; uses --rh-color-border-subtle design token */
+  /**
+   * @summary Border color computed from color context;
+   * uses --rh-color-border-subtle design token
+   */
   border-color: var(--rh-color-border-subtle);
   width: 100%;
   height: 100%;
@@ -92,13 +96,25 @@
   gap: var(--rh-space-lg, 16px);
   box-sizing: border-box;
 
-  /** @summary Heading font family; uses --rh-card-heading-font-family or --rh-font-family-heading design token */
+  /**
+   * @summary Heading font family; uses
+   * --rh-card-heading-font-family or
+   * --rh-font-family-heading design token
+   */
   font-family: var(--rh-card-heading-font-family, var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif)) !important;
 
-  /** @summary Heading font size; uses --rh-card-heading-font-size or --rh-font-size-heading-sm design token */
+  /**
+   * @summary Heading font size; uses
+   * --rh-card-heading-font-size or
+   * --rh-font-size-heading-sm design token
+   */
   font-size: var(--rh-card-heading-font-size, var(--rh-font-size-heading-sm, 1.5rem));
 
-  /** @summary Heading font weight; uses --rh-card-heading-font-weight or --rh-font-weight-body-text-medium design token */
+  /**
+   * @summary Heading font weight; uses
+   * --rh-card-heading-font-weight or
+   * --rh-font-weight-body-text-medium design token
+   */
   font-weight:
     var(--rh-card-heading-font-weight,
       var(--rh-font-weight-body-text-medium, 500)) !important;
