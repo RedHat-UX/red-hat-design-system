@@ -2,7 +2,7 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import styles from './rh-skeleton.css';
+import styles from './rh-skeleton.css' with { type: 'css' };
 
 /**
  * A skeleton displays an animated placeholder that mimics the structure and layout of actual content while it loads.
