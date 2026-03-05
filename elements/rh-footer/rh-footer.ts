@@ -22,20 +22,25 @@ function isHeaderTagName(tagName: string) {
 }
 
 /**
- * A footer displays secondary content and legal information to users who reach the bottom of a page.
+ * Provides persistent site-wide secondary content, navigation links, social media
+ * icons, and legal information at the bottom of every page. MUST be used with
+ * `<rh-footer-universal>` in the `universal` slot. On mobile viewports, link
+ * columns collapse to an `<rh-accordion>`. Uses `<footer>` landmark with a
+ * visually-hidden `<h2>` for screen readers. Tab navigates between links;
+ * `aria-labelledby` is auto-wired to link list headers for assistive technology.
  *
- * @summary Displays secondary information at the bottom of a page
+ * @summary Site footer with links, social icons, and legal content
  *
  * @alias footer
  *
- * @cssprop --rh-footer-nojs-min-height - Minimum height for footer when JavaScript is disabled
- * @cssprop --rh-footer-icon-color - Default color for icons in the footer
- * @cssprop --rh-footer-icon-color-hover - Icon color on hover state
- * @cssprop --rh-footer-border-color - Border color for footer sections
- * @cssprop --rh-footer-accent-color - Accent color for emphasis elements
- * @cssprop --rh-footer-section-side-gap - Horizontal spacing between footer sections
- * @cssprop --rh-footer-links-gap - Spacing between footer links
- * @cssprop --rh-footer-link-header-font-size - Font size for link section headers
+ * @cssprop --rh-footer-nojs-min-height - Minimum height when JavaScript is disabled. @deprecated target `rh-footer:not(:defined)` directly
+ * @cssprop --rh-footer-icon-color - Default icon color. Uses --rh-color-gray-40 design token
+ * @cssprop --rh-footer-icon-color-hover - Icon color on hover/focus. Uses --rh-color-gray-30 design token
+ * @cssprop --rh-footer-border-color - Border color for section dividers. Uses --rh-color-border-subtle-on-dark design token
+ * @cssprop --rh-footer-accent-color - Accent color for emphasis. Uses --rh-color-accent-brand-on-light design token
+ * @cssprop --rh-footer-section-side-gap - Horizontal padding for footer sections. Responsive: 16px / 32px / 64px
+ * @cssprop --rh-footer-links-gap - Vertical spacing between footer link items. Defaults to --rh-space-lg
+ * @cssprop --rh-footer-link-header-font-size - Font size for link column headers. Defaults to --rh-font-size-body-text-sm
  */
 @customElement('rh-footer')
 export class RhFooter extends LitElement {
@@ -78,10 +83,19 @@ export class RhFooter extends LitElement {
     return html`
       <!-- main footer element, containing all footer content -->
       <footer class="base ${classMap({ isMobile: this.#compact })}" part="base">
-        <h2 id="heading"><!-- text that describes the footer section to assistive technology. Contains default text "Red Hat footer". --><slot name="heading">Red Hat footer</slot></h2>
-        <!-- Overrides everything. Do not use. -->
+        <h2 id="heading"><!-- summary: visually-hidden footer heading for assistive technology
+             description: |
+               Screen readers announce this heading to identify the footer landmark region.
+               Defaults to "Red Hat footer". Override for localized or custom heading text. --><slot name="heading">Red Hat footer</slot></h2>
+        <!-- summary: overrides all footer content
+             description: |
+               Replaces the entire footer inner structure. AVOID using; bypasses all
+               built-in layout, accessibility wiring, and responsive behavior. -->
         <slot name="base">
-          <!-- footer header, typically containing main logo and social links -->
+          <!-- summary: footer header with logo and social links
+               description: |
+                 Contains the site logo and social media links. Screen readers navigate
+                 these as link groups. Tab moves through logo link and social links. -->
           <div class="section header" part="section header">
             <!-- Overrides \`header-*\`, \`logo\`, \`social-links\` -->
             <slot name="header">
@@ -91,7 +105,12 @@ export class RhFooter extends LitElement {
                 <slot name="header-primary">
                   <!-- main page or product logo container -->
                   <div class="logo" part="logo">
-                    <!-- main page or product logo. Defaults to Red Hat corporate logo -->
+                    <!-- summary: main page or product logo
+                         description: |
+                           Slot for the site logo linking to the homepage. Defaults to the Red Hat
+                           corporate logo. Screen readers rely on the img `alt` attribute or link
+                           text for identification. MUST contain an accessible `<a>` with an image
+                           or text. -->
                     <slot name="logo">
                       <a href="/">
                         <img alt="Red Hat" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg"/>
@@ -110,7 +129,11 @@ export class RhFooter extends LitElement {
                                      part="social-links"
                                      role="list"
                                      aria-label="Red Hat social media links">
-                      <!-- social media links (icons). Contains a default set of links -->
+                      <!-- summary: social media icon links
+                         description: |
+                           Container for `<rh-footer-social-link>` elements. Each link MUST have
+                           an `accessible-label` for screen reader announcement. Rendered as a
+                           list with `role="list"` and `aria-label="Red Hat social media links"`. -->
                       <slot name="social-links"></slot>
                     </rh-footer-links>
                   </div>
@@ -139,7 +162,11 @@ export class RhFooter extends LitElement {
               </div>
             </slot>
           </div>
-          <!-- must contain \`<rh-footer-universal>\` -->
+          <!-- summary: universal footer slot
+               description: |
+                 MUST contain an `<rh-footer-universal>` element providing global Red Hat
+                 links, logo, and copyright. Screen readers navigate this as a separate
+                 footer landmark region. MUST NOT be omitted. -->
           <slot name="universal"></slot>
         </slot>
       </footer>

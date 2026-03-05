@@ -5,6 +5,17 @@ import style from './rh-footer-copyright.css' with { type: 'css' };
 
 const currentYear = new Date().getFullYear();
 
+/**
+ * Renders the copyright notice for the footer universal bar. Defaults to
+ * the current year and "Red Hat" if no slotted content is provided.
+ * MUST appear inside `<rh-footer-universal>`. Screen readers announce
+ * the copyright text as static content. AVOID overriding unless legally
+ * required for a different entity.
+ *
+ * @summary Copyright notice with auto-updating year
+ *
+ * @slot - Copyright text content. Defaults to "(c) [year] Red Hat".
+ */
 @customElement('rh-footer-copyright')
 export class RhFooterCopyright extends LitElement {
   static readonly styles = style;

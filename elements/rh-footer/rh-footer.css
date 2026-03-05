@@ -29,13 +29,21 @@
 
 footer,
 .global-base {
+  /** @summary Icon color for social links and logo. Uses --rh-color-gray-40 design token */
   --_icon-color: var(--rh-footer-icon-color, var(--rh-color-gray-40, #a3a3a3));
+  /** @summary Icon color on hover/focus state. Uses --rh-color-gray-30 design token */
   --_icon-color-hover: var(--rh-footer-icon-color-hover, var(--rh-color-gray-30, #c7c7c7));
+  /** @summary Border color for section dividers. Uses --rh-color-border-subtle-on-dark design token */
   --_border-color: var(--rh-footer-border-color, var(--rh-color-border-subtle-on-dark, #707070));
+  /** @summary Accent color for brand emphasis. Uses --rh-color-accent-brand-on-light design token */
   --_accent-color: var(--rh-footer-accent-color, var(--rh-color-accent-brand-on-light, #ee0000));
+  /** @summary Horizontal padding for footer sections. Responsive via media queries */
   --_section-side-gap: var(--rh-footer-section-side-gap, var(--rh-space-lg, 16px));
+  /** @summary Background color for accordion on mobile. Uses --rh-color-white design token */
   --_accordion-background: var(--rh-color-white, #ffffff);
+  /** @summary Width of the Red Hat logo. Uses --rh-size-icon-04 design token */
   --_logo-width: var(--rh-size-icon-04, 40px);
+  /** @summary Default font weight for body text. Uses --rh-font-weight-body-text-regular design token */
   --_font-weight: var(--rh-font-weight-body-text-regular, 400);
 }
 
@@ -128,6 +136,7 @@ footer,
 }
 
 .global-base {
+  /** @summary Reduced font size for universal footer links. Uses --rh-font-size-body-text-xs design token */
   --rh-footer-link-font-size: var(--rh-font-size-body-text-xs, 0.75rem);
 
   /* reduce the line-height for global links */
@@ -330,6 +339,7 @@ footer,
 }
 
 [part='base']:not(.isMobile) .links ::slotted(ul) {
+  /** @summary Vertical spacing between links in desktop columns. Uses --rh-footer-links-gap or --rh-space-lg design token */
   gap: var(--rh-footer-links-gap, var(--rh-space-lg, 16px));
   display: flex;
   flex-direction: column;
