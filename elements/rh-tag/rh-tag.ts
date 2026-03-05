@@ -13,7 +13,7 @@ import { themable } from '@rhds/elements/lib/themable.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
-import styles from './rh-tag.css';
+import styles from './rh-tag.css' with { type: 'css' };
 
 /**
  * A tag is a caption added to an element for better clarity and user convenience.
