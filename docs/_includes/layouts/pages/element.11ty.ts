@@ -828,7 +828,7 @@ export default class ElementsPage extends Renderer<Context> {
               <thead>
                 <tr>
                   <th>Token</th>
-                  <th>Summary</th>
+                  <th>Description</th>
                   <th>Copy</th>
                 </tr>
               </thead>
@@ -839,7 +839,9 @@ export default class ElementsPage extends Renderer<Context> {
                       <code>${token.name}</code>
                     </a>
                   </td>
-                  <td>${await this.#innerMD(token.summary ?? '')}</td>
+                  <td>${!token.summary ? '' : await this.#innerMD(token.summary)}
+                    ${!token.description ? '' : await this.#innerMD(token.description)}
+                  </td>
                   ${copyCell(token)}
                 </tr>`))).join('')}
               </tbody>

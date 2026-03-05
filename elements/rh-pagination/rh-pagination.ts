@@ -315,7 +315,6 @@ export class RhPagination extends LitElement {
     if (message) {
       this.#logger.warn(this.input?.validationMessage || 'could not navigate');
     }
-    this.input?.reportValidity();
     return !message;
   }
 
@@ -362,6 +361,8 @@ export class RhPagination extends LitElement {
     this.#currentIndex = parseInt(this.input.value) - 1;
     if (this.#checkValidity()) {
       this.#go(this.#currentPage);
+    } else {
+      this.input?.reportValidity();
     }
   }
 
