@@ -4,35 +4,27 @@
 
 iframe {
   border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
-  height: 400px;
-  max-height: var(--height);
-  width: 100%;
+  block-size: 400px;
+  max-block-size: var(--height);
+  inline-size: 100%;
   box-sizing: border-box;
 }
 
 #container {
   --height: 825px;
 
-  &:not(:defined) {
-    opacity: 0;
-  }
-
   display: flex;
   flex-direction: column;
   gap: var(--rh-space-2xl);
+
+  &:not(:defined) {
+    opacity: 0;
+  }
 }
 
 #code {
   & rh-tabs > rh-tab-panel {
     --_panel-padding: 0;
-
-    @container (min-width: 768px) {
-      --_panel-padding: var(--rh-space-lg, 16px) !important;
-    }
-
-    @container (min-width: 992px) {
-      --_panel-padding: var(--rh-space-2xl, 32px) !important;
-    }
   }
 
   &::part(container) {
@@ -61,28 +53,28 @@ iframe {
       gap: var(--rh-space-lg);
       padding: var(--rh-space-lg);
     }
-  }
 
-  & [slot='footer'] rh-button {
-    display: inline-block;
-  }
+    & rh-button {
+      display: inline-block;
 
-  & [slot='footer'] rh-button::part(button) {
-    text-align: start;
-  }
+      &::part(button) {
+        text-align: start;
+      }
+    }
 
-  & [slot='footer'] a {
-    display: inline-flex;
-    align-items: center;
-    white-space: nowrap;
-    gap: var(--rh-space-sm);
-    padding-inline: calc(var(--rh-space-lg) * 0.75) var(--rh-space-lg);
-    padding-block: var(--rh-space-sm);
-    text-decoration: none;
+    & a {
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      gap: var(--rh-space-sm);
+      padding-inline: calc(var(--rh-space-lg) * 0.75) var(--rh-space-lg);
+      padding-block: var(--rh-space-sm);
+      text-decoration: none;
+    }
   }
 
   & ::slotted(rh-code-block) {
-    max-width: 100% !important;
+    max-inline-size: 100% !important;
   }
 }
 
@@ -96,12 +88,12 @@ iframe {
 }
 
 :host([attribute-knobs]) {
-  iframe {
+  & iframe {
     border-end-start-radius: 0;
     border-end-end-radius: 0;
   }
 
-  #knobs-drawer {
+  & #knobs-drawer {
     position: relative;
     display: block;
     margin-block-start: -1px;
@@ -109,76 +101,69 @@ iframe {
     border-end-end-radius: var(--rh-border-radius-default);
   }
 
-  #knobs {
+  & #knobs {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--rh-space-2xl);
-  }
 
-  /* var(--rh-breakpoint-sm, 768px) */
-  @media (min-width: 768px) {
-    #knobs {
+    /* var(--rh-breakpoint-sm, 768px) */
+    @media (min-width: 768px) {
       grid-template-columns: 1fr 1fr;
     }
-  }
 
-  /* var(--rh-breakpoint-md, 992px) */
-  @media (min-width: 992px) {
-    #knobs {
+    /* var(--rh-breakpoint-md, 992px) */
+    @media (min-width: 992px) {
       grid-template-columns: repeat(3, 1fr);
     }
-  }
 
-  /* var(--rh-breakpoint-lg, 1200px) */
-  @media (min-width: 1200px) {
-    #knobs {
+    /* var(--rh-breakpoint-lg, 1200px) */
+    @media (min-width: 1200px) {
       grid-template-columns: repeat(4, 1fr);
     }
   }
 
-  #code {
-    height: auto;
+  & #code {
+    block-size: auto;
 
     &::part(body) {
-      height: 100%;
-    }
-  }
-
-  .code-tabs {
-    border: 0;
-    border-radius: var(--rh-border-radius-default);
-
-    &::part(tabs-container) {
-      background:
-        light-dark(var(--rh-color-surface-lightest),
-          var(--rh-color-surface-darker));
+      block-size: 100%;
     }
 
-    & rh-tab-panel {
-      padding: 0;
-      border-radius: 0;
+    & .code-tabs {
+      border: 0;
+      border-radius: var(--rh-border-radius-default);
+
+      &::part(tabs-container) {
+        background:
+          light-dark(var(--rh-color-surface-lightest),
+            var(--rh-color-surface-darker));
+      }
+
+      & rh-tab-panel {
+        padding: 0;
+        border-radius: 0;
+      }
     }
-  }
 
-  ::slotted(rh-code-block) {
-    --rh-border-radius-default: 0;
-    --rh-border-width-sm: 0px;
+    & ::slotted(rh-code-block) {
+      --rh-border-radius-default: 0;
+      --rh-border-width-sm: 0px;
 
-    max-width: 100% !important;
-    border-width: 0;
+      border-width: 0;
+    }
   }
 
   :host(:fullscreen) #container {
-    height: 100vh;
+    block-size: 100vh;
     justify-content: space-between;
 
-    iframe {
+    & iframe {
       flex: 1 1 auto;
-      max-height: unset;
+      max-block-size: unset;
     }
 
-    #code {
-      height: max-content;
+    & #code {
+      block-size: max-content;
     }
   }
 }
