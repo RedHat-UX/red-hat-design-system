@@ -1,1 +1,0 @@
-Plain variant avatars showing thumbnail-only display (name and subtitle visually hidden) for default icon, custom image, squares pattern, and triangles pattern.

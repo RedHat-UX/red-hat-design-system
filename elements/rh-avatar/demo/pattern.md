@@ -1,1 +1,0 @@
-Generated geometric patterns (squares and triangles) that are deterministically derived from the user's name.

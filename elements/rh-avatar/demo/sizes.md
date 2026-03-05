@@ -1,1 +1,0 @@
-Avatars at different sizes using the --rh-avatar-size custom property with various --rh-size-icon-* design tokens, including the maximum size cap.
