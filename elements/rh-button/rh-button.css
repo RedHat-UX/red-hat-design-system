@@ -23,6 +23,7 @@ button {
   font-family: inherit;
   border-width: 0;
   border-style: solid;
+
   /** @summary Button corner radius; uses --rh-border-radius-default design token */
   border-radius: var(--rh-border-radius-default, 3px);
   color: var(--_color);
@@ -77,7 +78,10 @@ button {
     }
   }
 
-  /** @summary Primary variant: filled accent background; uses --rh-color-interactive-primary-default design token */
+  /**
+   * @summary Primary variant: filled accent background;
+   * uses --rh-color-interactive-primary-default design token
+   */
   &.primary {
     --_color:
       light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
@@ -98,7 +102,10 @@ button {
     --_hover-border-width: var(--rh-border-width-sm, 1px);
   }
 
-  /** @summary Danger variant: red/orange destructive action; uses --rh-color-status-danger design token */
+  /**
+   * @summary Danger variant: red/orange destructive action;
+   * uses --rh-color-status-danger design token
+   */
   &.danger {
     --_color:
       light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
@@ -124,7 +131,11 @@ button {
     --_hover-border-color: transparent;
   }
 
-  /** @summary Secondary variant: outlined with transparent background; uses --rh-color-interactive-primary-default design token */
+  /**
+   * @summary Secondary variant: outlined with transparent
+   * background; uses --rh-color-interactive-primary-default
+   * design token
+   */
   &.secondary {
     --_color: var(--rh-color-interactive-primary-default);
     --_background-color: transparent;
@@ -159,7 +170,10 @@ button {
     }
   }
 
-  /** @summary Tertiary variant: subtle bordered button; uses --rh-color-border-strong design token */
+  /**
+   * @summary Tertiary variant: subtle bordered button;
+   * uses --rh-color-border-strong design token
+   */
   &.tertiary {
     --_color: var(--rh-color-text-primary);
     --_background-color: transparent;
