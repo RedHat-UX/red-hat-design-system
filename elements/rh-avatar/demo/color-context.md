@@ -1,0 +1,1 @@
+Avatars rendered inside an rh-context-demo to show behavior across light and dark color schemes, including slotted content, plain variants, custom images, and generated patterns.

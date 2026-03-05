@@ -1,0 +1,1 @@
+Default avatar with a custom image source, name, and subtitle, plus a CSS `::part(img)` override for image positioning.

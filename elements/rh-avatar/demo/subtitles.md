@@ -1,0 +1,1 @@
+Avatar with a long, multi-line subtitle slotted via a span element, demonstrating text wrapping behavior.

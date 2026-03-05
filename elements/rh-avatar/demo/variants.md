@@ -1,0 +1,1 @@
+Bordered variant avatars showing the subtle border treatment on both a default silhouette and a custom image.

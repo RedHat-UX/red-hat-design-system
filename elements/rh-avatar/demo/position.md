@@ -1,0 +1,1 @@
+Avatar using the block layout, which stacks the thumbnail above the name and subtitle text.

@@ -1,0 +1,1 @@
+Avatars with anchor elements slotted in the name and subtitle slots, demonstrating interactive link color styles.
