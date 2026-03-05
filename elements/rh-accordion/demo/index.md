@@ -1,0 +1,1 @@
+Default accordion with multiple collapsible panels. Click any header to expand or collapse its content panel.

@@ -1,0 +1,1 @@
+Large size accordion with increased font size and padding for page-level content sections.

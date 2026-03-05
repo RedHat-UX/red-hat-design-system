@@ -1,0 +1,1 @@
+Accordion with accent content positioned below the header title text using `accents="bottom"`.

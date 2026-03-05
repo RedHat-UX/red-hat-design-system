@@ -1,0 +1,1 @@
+Accordion headers with inline accent slot content such as tags or badges alongside the title.

@@ -1,0 +1,1 @@
+Accordion in a right-to-left (RTL) text direction context, demonstrating correct layout mirroring.

@@ -1,9 +1,15 @@
 :host {
+  /** @summary Header block-start padding, uses --rh-space-lg design token */
   --_padding-block-start: var(--rh-space-lg, 16px);
+  /** @summary Header inline-end padding, uses --rh-space-xl design token */
   --_padding-inline-end: var(--rh-space-xl, 24px);
+  /** @summary Header block-end padding, uses --rh-space-lg design token */
   --_padding-block-end: var(--rh-space-lg, 16px);
+  /** @summary Header inline-start padding, uses --rh-space-xl design token */
   --_padding-inline-start: var(--rh-space-xl, 24px);
+  /** @summary Accent bar color, transparent when collapsed */
   --_after-background-color: transparent;
+  /** @summary Accent bar color when expanded, uses --rh-color-accent-brand design token */
   --_expanded-background-color: var(--rh-color-accent-brand);
 }
 

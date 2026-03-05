@@ -41,17 +41,21 @@ export class AccordionCollapseEvent extends ComposedEvent {
 }
 
 /**
- * An accordion is a stacked list of panels which allows users to expand or collapse information
- * when selected. They feature panels that consist of a section text label and a caret icon that
- * collapses or expands to reveal more information.
+ * Organizes content into expandable panels for scanning and selective
+ * disclosure. MUST contain paired `rh-accordion-header` and
+ * `rh-accordion-panel` children. SHOULD have two or more pairs; for a
+ * single section use `rh-disclosure`. Headers use ARIA `role="heading"`
+ * with `aria-expanded`/`aria-controls` for screen readers. Supports
+ * keyboard navigation: Tab to move focus, Enter or Space to toggle.
  *
- * @summary Expands or collapses a stacked list of panels
+ * @summary Organizes content into expandable sections users can open or close
  *
  * @alias accordion
  *
- * @fires {AccordionExpandEvent} expand - when a panel expands
- * @fires {AccordionCollapseEvent} collapse - when a panel collapses
- * @attr  [accents=inline] Position accents in the header either inline or bottom
+ * @fires {AccordionExpandEvent} expand - Fires when a panel expands.
+ *   Event detail: `toggle` (RhAccordionHeader), `panel` (RhAccordionPanel).
+ * @fires {AccordionCollapseEvent} collapse - Fires when a panel collapses.
+ *   Event detail: `toggle` (RhAccordionHeader), `panel` (RhAccordionPanel).
  */
 @customElement('rh-accordion')
 @colorPalettes
@@ -76,40 +80,32 @@ export class RhAccordion extends LitElement {
   }
 
   /**
-   * Positions the accent slot content relative to the panel's title.
-   * The accent slot contains secondary information such as tags, badges, or other small elements.
-   *
-   * - `inline` (default) - Accents appear on the same line as the title
-   * - `bottom` - Accents appear below the title
-   *
-   * ## Usage guidelines
-   * - Use `inline` when accents are brief and horizontal space permits for both title and accents
-   * - Use `bottom` when you have multiple accent elements or need more horizontal space for the title text
-   * - Accent content represents secondary, supplementary information to the title
-   *
-   * @see [Accent slot](https://ux.redhat.com/elements/accordion/style/#accent-slot) in Style documentation
+   * Position of accent slot content relative to the header title.
+   * Defaults to `inline`. Use `bottom` when accents are numerous or
+   * the title needs more horizontal space.
    */
   @property({ attribute: true, reflect: true }) accents?: 'inline' | 'bottom';
 
   /**
-   * If this accordion uses large styles
+   * Switches the accordion to large size, increasing font size and padding.
+   * AVOID on viewports below 576px; the accordion automatically falls back
+   * to small size on mobile breakpoints. Use large for page-level content
+   * sections where the accordion is the primary content structure.
    */
   @property({ reflect: true, type: Boolean }) large = false;
 
   /**
-   * Color Palette for this accordion.
+   * Color palette for the accordion and its child headers and panels.
+   * MUST match the surrounding surface color to ensure adequate text contrast.
+   * AVOID mixing light and dark palettes within the same page section.
    * @see https://ux.redhat.com/theming/color-palettes/
    */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
-   * Sets and reflects the currently expanded accordion 0-based indexes.
-   * Use commas to separate multiple indexes.
-   * ```html
-   * <rh-accordion expanded-index="1,2">
-   *   ...
-   * </rh-accordion>
-   * ```
+   * Comma-separated 0-based indexes of initially expanded panels.
+   * Defaults to none (all collapsed). Example: `expanded-index="0,2"`
+   * expands the first and third panels.
    */
   @property({
     attribute: 'expanded-index',
@@ -161,7 +157,12 @@ export class RhAccordion extends LitElement {
     return html`
       <div id="container"
            class="${classMap({ large, expanded })}"><!--
-        Place the \`rh-accordion-header\` and \`rh-accordion-panel\` elements here.
+        summary: Alternating rh-accordion-header and rh-accordion-panel pairs
+        description: |
+          MUST contain paired rh-accordion-header and rh-accordion-panel elements
+          in alternating order. Each header MUST be immediately followed by its
+          corresponding panel. SHOULD contain at least two pairs.
+          Headers provide aria-controls linking to their panel for screen readers.
         --><slot></slot></div>
     `;
   }

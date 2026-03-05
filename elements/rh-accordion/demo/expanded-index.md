@@ -1,0 +1,1 @@
+Accordion with specific panels expanded on initial render using the `expanded-index` attribute.
