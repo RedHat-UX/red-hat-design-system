@@ -61,6 +61,7 @@
   bottom: 0;
   left: 0;
   width: var(--rh-border-width-lg, 3px);
+
   /** Expanded panel accent bar uses --rh-color-accent-brand design token */
   background-color: var(--rh-color-accent-brand);
   inset-block: 0;
