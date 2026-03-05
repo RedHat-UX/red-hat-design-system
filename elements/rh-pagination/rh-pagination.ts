@@ -11,7 +11,7 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-pagination.css';
+import styles from './rh-pagination.css' with { type: 'css' };
 
 const L1 = html`
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 14">
