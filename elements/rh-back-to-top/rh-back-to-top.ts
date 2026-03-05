@@ -9,10 +9,14 @@ import styles from './rh-back-to-top.css' with { type: 'css' };
 
 
 /**
- * Back to top component is a fragment link that allows users to quickly navigate
- * to the top of a lengthy content page.
+ * Provides a fixed-position pill-shaped anchor link for quickly navigating back
+ * to the top of lengthy content pages. The button MUST appear after scrolling
+ * past a configurable threshold and SHOULD be the last element in tab order.
+ * Uses an `<a>` element internally, so screen readers announce it as a link.
+ * Keyboard users MUST be able to reach it via Tab and activate with Enter.
+ * AVOID placing more than one instance per page.
  *
- * @summary A shortcut to the top of the page content
+ * @summary Fixed anchor link for returning to page top on long pages
  *
  * @alias back-to-top
  *
@@ -20,19 +24,7 @@ import styles from './rh-back-to-top.css' with { type: 'css' };
  * Background color for the back to top button. Defaults to `--rh-color-accent-base`,
  * which uses the design system's primary interactive blue color and automatically
  * adapts to light and dark color schemes (Blue 60 in light, Blue 30 in dark).
- *
- * ## Usage guidelines
- * - Most projects should use the default accent color for consistency
- * - Customize for brand-specific campaigns or special events requiring unique themes
- * - Custom values must maintain adequate color contrast with text (4.5:1 ratio minimum)
- * - Should provide appropriate colors for both light and dark color schemes
- *
- * @example Customizing the background color
- * ```css
- * .custom-theme {
- *   --rh-back-to-top-background-color: var(--custom-brand-color);
- * }
- * ```
+ * Custom values MUST maintain 4.5:1 contrast ratio with text.
  */
 @customElement('rh-back-to-top')
 export class RhBackToTop extends LitElement {
