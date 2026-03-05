@@ -9,7 +9,7 @@ import {
   type DateTimeFormat,
 } from '@patternfly/pfe-core/controllers/timestamp-controller.js';
 
-import styles from './rh-timestamp.css';
+import styles from './rh-timestamp.css' with { type: 'css' };
 
 const BooleanStringConverter: ComplexAttributeConverter = {
   fromAttribute(value) {

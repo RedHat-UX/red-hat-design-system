@@ -7,7 +7,7 @@ import { html, LitElement } from 'lit';
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-card.css';
+import styles from './rh-card.css' with { type: 'css' };
 
 const PALETTE_RE = /(er|est)+/g;
 
