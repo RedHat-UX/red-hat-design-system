@@ -210,6 +210,9 @@
 #content {
   display: block;
   font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  font-size: var(--rh-font-size-code-md, 1rem);
+  -webkit-text-size-adjust: 100%; /* stylelint-disable-line property-no-vendor-prefix */
+  text-size-adjust: 100%;
   z-index: 1;
   place-self: start;
   grid-area: code;
@@ -282,6 +285,8 @@
   padding-inline: 0 var(--rh-space-md, 8px);
   text-align: end;
   font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  -webkit-text-size-adjust: 100%; /* stylelint-disable-line property-no-vendor-prefix */
+  text-size-adjust: 100%;
   color: var(--rh-color-text-secondary);
   font-weight: var(--rh-font-weight-code-regular, 400);
   border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
