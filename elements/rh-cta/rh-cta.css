@@ -59,8 +59,11 @@ a:after,
   border-width: var(--rh-border-width-sm, 1px);
 
   --rh-color-surface: var(--_background-color) !important;
+  /** @summary Size of the trailing arrow icon in px */
   --_arrow-size: 13px;
+  /** @summary Icon dimensions; uses --rh-font-size-body-text-lg design token */
   --rh-icon-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  /** @summary Padding reserved for the icon plus spacing */
   --_rh-icon-plus-padding: calc(5px + var(--rh-icon-size));
 }
 
