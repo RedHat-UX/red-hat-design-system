@@ -11,7 +11,7 @@ import type { IconNameFor, IconSetName } from '@rhds/icons';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-stat.css';
+import styles from './rh-stat.css' with { type: 'css' };
 
 /**
  * A statistic showcases a data point or quick fact visually.

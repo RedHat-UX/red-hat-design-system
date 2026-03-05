@@ -1,7 +1,7 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 
-import style from './rh-footer-copyright.css';
+import style from './rh-footer-copyright.css' with { type: 'css' };
 
 const currentYear = new Date().getFullYear();
 

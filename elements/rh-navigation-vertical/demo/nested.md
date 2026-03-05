@@ -1,0 +1,1 @@
+When nesting `<rh-navigation-vertical-list>` elements, it's advised limit nesting to 5 levels or less.

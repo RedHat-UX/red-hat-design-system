@@ -7,7 +7,7 @@ libraries:
   figma: ready
   rhds: ready
   shared: planned
-  docs: planned
+  docs: ready
 relatedItems:
   - rh-navigation-primary
   - rh-navigation-secondary
