@@ -80,9 +80,8 @@ describe('<rh-code-block>', function() {
       });
 
       describe('after the 5-second feedback timeout', function() {
-        this.timeout(10_000);
-
-        beforeEach(async function() {
+        beforeEach(async function(this: Mocha.Context) {
+          this.timeout(10_000);
           await aTimeout(5200);
         });
 
@@ -97,9 +96,8 @@ describe('<rh-code-block>', function() {
       });
 
       describe('immediately after the feedback timeout (during fade-out)', function() {
-        this.timeout(10_000);
-
-        beforeEach(async function() {
+        beforeEach(async function(this: Mocha.Context) {
+          this.timeout(10_000);
           // Wait just past the 5s feedback period, but not long enough
           // for the 300ms CSS opacity transition to complete
           await aTimeout(5050);
@@ -117,9 +115,8 @@ describe('<rh-code-block>', function() {
     });
 
     describe('clicking the copy button multiple times rapidly', function() {
-      this.timeout(15_000);
-
-      beforeEach(async function() {
+      beforeEach(async function(this: Mocha.Context) {
+        this.timeout(15_000);
         await moveMouseAway();
         await clickElementAtCenter(button);
         await aTimeout(100);
@@ -127,7 +124,8 @@ describe('<rh-code-block>', function() {
       });
 
       describe('after the feedback timeout from the last click', function() {
-        beforeEach(async function() {
+        beforeEach(async function(this: Mocha.Context) {
+          this.timeout(10_000);
           await aTimeout(5300);
         });
 
