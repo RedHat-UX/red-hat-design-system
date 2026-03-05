@@ -5,7 +5,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
-import styles from './rh-back-to-top.css';
+import styles from './rh-back-to-top.css' with { type: 'css' };
 
 
 /**

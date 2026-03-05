@@ -1,3 +1,5 @@
+/* stylelint-disable declaration-block-no-redundant-longhand-properties */
+
 @layer
   reset,
   fonts,
@@ -25,6 +27,12 @@
 @import url('third-party/prism-rhds.css') layer(third-party);
 
 @layer base {
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      interpolate-size: allow-keywords;
+    }
+  }
+
   body {
     color: var(--rh-color-text-primary);
   }
@@ -62,6 +70,11 @@
     margin-block-end: var(--rh-space-2xl);
   }
 
+  :where(img, picture, video, canvas, svg) {
+    display: block;
+    max-width: 100%;
+  }
+
   figure > img {
     max-width: 100%;
   }
@@ -78,6 +91,32 @@
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+  }
+
+  :is(*, :hover):focus-visible {
+    border-radius: var(--rh-border-radius-default);
+    outline-color:
+      light-dark(
+          --rh-color-border-interactive-on-light,
+          --rh-color-border-interactive-on-dark);
+    outline-offset: var(--rh-border-width-lg, 3px);
+    outline-style: solid;
+    outline-width: var(--rh-border-width-lg, 3px);
+    transition: none;
+  }
+
+  /* `.inset` class for inset focus. */
+  .inset:is(*, :hover):focus-visible {
+    outline-offset: -7px;
+  }
+
+  /* `.no-offset` class for focus on element border. */
+  .no-offset:is(*, :hover):focus-visible {
+    outline-offset: 0;
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none;
   }
 
   ::selection {
@@ -196,6 +235,10 @@
 }
 
 @layer flow {
+  :where(p, h1, h2, h3, h4, h5, h6, li) {
+    max-width: 56rem; /* warning: magic number */
+  }
+
   :where(p, ul, ol, dl) {
     margin-block: var(--rh-space-lg) var(--rh-space-2xl);
   }

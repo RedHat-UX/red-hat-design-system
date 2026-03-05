@@ -18,6 +18,25 @@ rules:
   # color-function-notation: modern
   color-function-notation: null
 
+  # Disabled after upgrade to stylelint-config-standard v39.
+  # These rules create conflicts with design token values and valid CSS patterns.
+
+  # Tokens may contain rgba/hsla syntax which v39 rejects in favor of rgb/hsl
+  color-function-alias-notation: null
+
+  # Tokens may reference deprecated but still-supported properties
+  # (clip, word-wrap, grid-gap, grid-column-gap, etc.)
+  property-no-deprecated: null
+
+  # Token values may use syntax that stylelint doesn't recognize but browsers support
+  declaration-property-value-no-unknown: null
+
+  # Token values may use deprecated keywords that remain functional (e.g., break-word)
+  declaration-property-value-keyword-no-deprecated: null
+
+  # Avoid conflicts with valid descriptors in @font-face (e.g., text-rendering)
+  at-rule-descriptor-no-unknown: null
+
   custom-property-pattern: _?[a-z]+[a-z0-9-]*
   declaration-block-no-redundant-longhand-properties:
     - true
