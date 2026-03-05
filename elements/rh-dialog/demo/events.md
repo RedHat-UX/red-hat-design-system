@@ -1,1 +1,0 @@
-Demonstrates the `open`, `close`, and `cancel` events fired by the dialog, with a live log of event names.

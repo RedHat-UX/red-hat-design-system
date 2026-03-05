@@ -1,1 +1,0 @@
-Dialog without a `header` slot, where a heading in the default slot automatically provides the accessible name via `aria-labelledby`.

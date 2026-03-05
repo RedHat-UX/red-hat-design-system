@@ -1,1 +1,0 @@
-Dialog rendered inside an `rh-context-demo` wrapper to test color context and theming behavior across light and dark surfaces.

@@ -1,1 +1,0 @@
-Dialog with extensive body content that overflows the container, demonstrating vertical scrolling and sticky header behavior.

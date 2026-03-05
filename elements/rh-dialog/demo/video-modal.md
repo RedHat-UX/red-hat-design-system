@@ -1,1 +1,0 @@
-Video dialogs using `type="video"` with a native HTML5 video element and a YouTube iframe embed. Demonstrates automatic video pausing on close.
