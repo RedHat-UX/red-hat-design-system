@@ -220,9 +220,9 @@ export class RhNavigationSecondary extends LitElement {
         <div id="container" part="container" class="${classMap({ expanded })}">
           <!-- summary: product logo or name link
                description: |
-                 Expects an `<a>` element with text, SVG, or image linking to the product
-                 homepage. Screen readers announce the link text or `alt` attribute.
-                 MUST be provided. `aria-current="page"` highlights when on the homepage. -->
+                 Expects an \`<a>\` element with text, SVG, or image linking to the product
+                 homepage. Screen readers announce the link text or \`alt\` attribute.
+                 MUST be provided. \`aria-current="page"\` highlights when on the homepage. -->
           <slot name="logo" id="logo"></slot>
           <button aria-controls="container"
                   aria-expanded="${String(expanded) as 'true' | 'false'}"
@@ -237,8 +237,8 @@ export class RhNavigationSecondary extends LitElement {
           <rh-surface color-palette="${dropdownPalette}">
             <!-- summary: navigation link list
                  description: |
-                   Expects a `<ul>` element containing `<li>` children with links or
-                   `<rh-navigation-secondary-dropdown>` elements. On mobile, hidden behind
+                   Expects a \`<ul>\` element containing \`<li>\` children with links or
+                   \`<rh-navigation-secondary-dropdown>\` elements. On mobile, hidden behind
                    the menu button. AVOID more than 5 total items. Screen readers navigate
                    via list semantics. Tab moves focus through each link or dropdown trigger. -->
             <slot name="nav"></slot>
@@ -257,7 +257,7 @@ export class RhNavigationSecondary extends LitElement {
             <div id="cta" part="cta">
               <!-- summary: navigation-level call to action
                    description: |
-                     Optional slot for an `<rh-cta>` element positioned at the end of the
+                     Optional slot for an \`<rh-cta>\` element positioned at the end of the
                      navigation bar. On mobile, appears below the nav list. Screen readers
                      announce the CTA link text. AVOID long text that reduces nav item space. -->
               <slot name="cta"></slot>

@@ -58,19 +58,19 @@ export class RhNavigationSecondaryMenuSection extends LitElement {
       <section part="container">
         <!-- summary: section heading
              description: |
-               Expects an `<h1>`-`<h6>` element. Auto-linked to the links list via
-               `aria-labelledby` for screen reader group identification. An `id` is
+               Expects an \`<h1>\`-\`<h6>\` element. Auto-linked to the links list via
+               \`aria-labelledby\` for screen reader group identification. An \`id\` is
                generated if not present. -->
         <slot name="header"></slot>
         <!-- summary: section link list
              description: |
-               Expects a `<ul>` or `<ol>` element with navigation links. Automatically
-               receives `aria-labelledby` pointing to the header for screen readers.
+               Expects a \`<ul>\` or \`<ol>\` element with navigation links. Automatically
+               receives \`aria-labelledby\` pointing to the header for screen readers.
                Tab navigates through each link in the list. -->
         <slot name="links"></slot>
         <!-- summary: section-level call to action
              description: |
-               Optional slot for an `<rh-cta>` element. Appears after the link list.
+               Optional slot for an \`<rh-cta>\` element. Appears after the link list.
                Screen readers announce the CTA link text in document order. -->
         <slot name="cta"></slot>
       </section>

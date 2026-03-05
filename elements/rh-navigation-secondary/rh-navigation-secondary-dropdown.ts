@@ -83,21 +83,21 @@ export class RhNavigationSecondaryDropdown extends LitElement {
 
              **Styling:**
              - Use this part to customize the dropdown appearance and layout
-             - Applies `.expanded` class when dropdown is open
-             - Applies `.highlight` class when dropdown contains the current page
+             - Applies \`.expanded\` class when dropdown is open
+             - Applies \`.highlight\` class when dropdown contains the current page
              - Controls dropdown link and menu positioning
 
              @see [Navigation](https://ux.redhat.com/elements/navigation/) documentation -->
       <div id="container" part="container" class="${classMap(classes)}">
         <!-- summary: dropdown trigger link
              description: |
-               Expects an `<a>` element. Automatically upgraded with `role="button"`,
-               `aria-expanded`, and `aria-controls` for keyboard and screen reader
+               Expects an \`<a>\` element. Automatically upgraded with \`role="button"\`,
+               \`aria-expanded\`, and \`aria-controls\` for keyboard and screen reader
                accessibility. Enter/Space toggles the dropdown. -->
         <slot name="link"></slot>
         <!-- summary: dropdown menu panel
              description: |
-               Expects an `<rh-navigation-secondary-menu>` element. Visibility is
+               Expects an \`<rh-navigation-secondary-menu>\` element. Visibility is
                toggled when the link slot is activated. Screen readers can navigate
                menu sections via headings inside the menu. -->
         <slot name="menu"></slot>
