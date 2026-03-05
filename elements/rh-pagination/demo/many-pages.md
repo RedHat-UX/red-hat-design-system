@@ -1,1 +1,0 @@
-Pagination with a large number of pages to test truncation behavior.

@@ -1,1 +1,0 @@
-Compact pagination in the open variant style.

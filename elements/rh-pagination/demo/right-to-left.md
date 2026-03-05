@@ -1,1 +1,0 @@
-Pagination in right-to-left (RTL) direction layout.
