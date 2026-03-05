@@ -2,7 +2,7 @@
 
 <rh-readtime selector="#article-with-images" images>%t min read</rh-readtime>
 
-<div id="article-with-images">
+<article id="article-with-images">
   <p>
     This example enables the image weighting system. The component counts images in the
     target container and adds time based on Medium's algorithm. The first image adds 12
@@ -16,7 +16,15 @@
     With three images the algorithm adds 12 + 11 + 10 = 33 seconds of additional reading
     time on top of the word-based estimate.
   </p>
-</div>
+</article>
+
+<style>
+article p {
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+  line-height: var(--rh-line-height-body-text, 1.5);
+  margin-block-end: 1rem;
+}
+</style>
 
 <script type="module">
   import '@rhds/elements/rh-readtime/rh-readtime.js';

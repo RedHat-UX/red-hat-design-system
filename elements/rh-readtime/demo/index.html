@@ -2,7 +2,7 @@
 
 <rh-readtime images selector="#article-content">%t min read</rh-readtime>
 
-<div id="article-content">
+<article id="article-content">
   <p>
     Design systems are a collection of reusable components, guided by clear standards,
     that can be assembled together to build any number of applications. They help teams
@@ -35,7 +35,16 @@
     a common pattern on blogs and documentation sites. The algorithm accounts for both
     text content and images, since images require additional time to process and understand.
   </p>
-</div>
+</article>
+
+<style>
+article p {
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+  line-height: var(--rh-line-height-body-text, 1.5);
+  margin-block-end: 1rem;
+}
+</style>
+
 
 <script type="module">
   import '@rhds/elements/rh-readtime/rh-readtime.js';
