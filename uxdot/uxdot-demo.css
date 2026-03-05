@@ -67,6 +67,11 @@ iframe {
     padding-inline: calc(var(--rh-space-lg) * 0.75) var(--rh-space-lg);
     padding-block: var(--rh-space-sm);
     text-decoration: none;
+
+    &:focus-visible {
+      outline: var(--rh-border-width-md, 2px) solid var(--rh-color-interactive-primary-default);
+      border-radius: var(--rh-border-radius-default, 3px);
+    }
   }
 
   & ::slotted(rh-code-block) {
