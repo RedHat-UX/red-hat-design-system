@@ -1,0 +1,1 @@
+Pagination in the open variant with transparent button backgrounds.

@@ -1,0 +1,1 @@
+Compact pagination in small size with inline numeric input.

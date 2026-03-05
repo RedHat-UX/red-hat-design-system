@@ -1,4 +1,5 @@
 :host {
+  /** @summary Height and width of stepper buttons; uses --rh-length-3xl design token */
   --_stepper-size: var(--rh-length-3xl, 48px);
 
   display: block;

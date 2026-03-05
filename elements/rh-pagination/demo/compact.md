@@ -1,0 +1,1 @@
+Compact pagination layout with numeric input between stepper buttons.

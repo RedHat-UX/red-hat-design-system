@@ -1,0 +1,1 @@
+Compact pagination in the open variant with small size.

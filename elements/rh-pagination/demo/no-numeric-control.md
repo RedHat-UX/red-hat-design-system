@@ -1,0 +1,1 @@
+Pagination without the numeric page input control visible.

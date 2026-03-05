@@ -1,0 +1,1 @@
+Pagination rendered in light and dark color contexts.

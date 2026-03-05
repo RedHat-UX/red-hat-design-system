@@ -1,0 +1,1 @@
+Default pagination with page links and numeric input.

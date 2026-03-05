@@ -1,0 +1,1 @@
+Pagination in small size variant with reduced button dimensions.
