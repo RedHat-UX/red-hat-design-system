@@ -21,6 +21,23 @@ import './rh-navigation-primary-item-menu.js';
 
 import styles from './rh-navigation-primary-item.css' with { type: 'css' };
 
+/**
+ * An individual item within the primary navigation. Renders as either a simple
+ * link container or an expandable dropdown with a `<details>`/`<summary>`
+ * disclosure widget. The element has ARIA `listitem` role and MUST be a direct
+ * child of `rh-navigation-primary`. Users activate dropdowns via Enter, Return,
+ * or Space, and close them with Escape. Tab moves focus to the next interactive
+ * element inside or outside the dropdown.
+ *
+ * @summary       A navigation item used as a link or expandable dropdown within primary navigation
+ *
+ * @slot          - Default slot for link content (when `variant="link"`) or dropdown panel content (when `variant="dropdown"`). For dropdowns, this content appears inside `rh-navigation-primary-item-menu`.
+ * @slot icon     - USE this slot to place an icon before the summary text in dropdown variants. Typically an `rh-icon` or `rh-avatar` element.
+ * @slot summary  - USE this slot to provide the visible trigger label text for dropdown variants. Typically a `<span>` element.
+ *
+ * @fires {Event} toggle - Fires when the dropdown opens or closes. Bubbles to `rh-navigation-primary`. The `open` property on the element reflects the current state.
+ *
+ */
 @themable
 @customElement('rh-navigation-primary-item')
 export class RhNavigationPrimaryItem extends LitElement {
@@ -43,25 +60,50 @@ export class RhNavigationPrimaryItem extends LitElement {
   @state()
   private compact?: boolean;
 
+  /**
+   * Whether the dropdown is currently expanded. Reflects to the `open`
+   * attribute. Only applies when `variant="dropdown"`. Controlled
+   * internally by the `<details>` toggle or via `show()`/`hide()` methods.
+   */
   @property({ type: Boolean, reflect: true }) open = false;
 
-  /* Summary text for dropdown variants only */
+  /**
+   * Summary text displayed as the dropdown trigger label. Only used when
+   * `variant="dropdown"`. SHOULD be set via the `summary` slot for richer
+   * content, or via this attribute for plain text.
+   */
   @property() summary?: string;
 
-  /* Variants 'link' | 'dropdown', link is the default if no variant is given */
+  /**
+   * Controls the rendering mode. `'link'` (default) renders the default slot
+   * directly for simple anchor links. `'dropdown'` renders a
+   * `<details>`/`<summary>` disclosure widget with the default slot as the
+   * expandable panel content.
+   */
   @property() variant?: 'link' | 'dropdown' = 'link';
 
   /**
-   * Hides the element at various container query based breakpoints.
-   * Breakpoints available 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+   * Hides the element below a container-query-based breakpoint. USE this to
+   * progressively hide utility items at smaller viewport sizes. Valid values:
+   * `'xs'` (320px), `'sm'` (567px), `'md'` (768px), `'lg'` (992px),
+   * `'xl'` (1200px), `'2xl'` (not currently mapped). The element is hidden
+   * by default when this attribute is present and shown once the container
+   * reaches the specified minimum width.
    */
   @property({ reflect: true, attribute: 'hide-at' })
   hideAt?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' = undefined;
 
-  /** Shorthand for the `icon` slot, the value is icon name */
+  /**
+   * Shorthand for the `icon` slot. Sets the icon name rendered before the
+   * summary text in dropdown variants. USE the `icon` slot instead for
+   * non-standard icon content like `rh-avatar`.
+   */
   @property() icon?: IconNameFor<IconSetName>;
 
-  /** Icon set for the `icon` property - 'ui' by default */
+  /**
+   * Icon set for the `icon` property. Defaults to `'ui'` when not specified.
+   * Common values: `'ui'`, `'microns'`.
+   */
   @property({ attribute: 'icon-set' }) iconSet?: IconSetName;
 
 
