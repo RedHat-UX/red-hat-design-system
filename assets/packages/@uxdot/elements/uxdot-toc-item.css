@@ -1,21 +1,23 @@
 :host {
   display: block;
-  margin-block-end: var(--rh-space-lg);
+  padding-block-end: var(--rh-space-lg);
+  break-inside: avoid;
 }
 
 :host(:first-of-type) {
-  margin-block-start: 0;
-
   /* TODO: This style is specific to the implementation on ux.redhat.com,
    * not ideal for the component lightdom files, maybe this is a
    * pattern level style that should be in the pattern layer.
    */
   @container main (min-width: 1440px) {
-    margin-block-start: var(--rh-space-md);
+    padding-block-start: var(--rh-space-md);
   }
 }
 
 a {
+  position: relative;
+  outline: none;
+  padding: 2px;
   text-decoration: none;
   color: var(--rh-color-interactive-primary-default);
   font-size: var(--rh-font-size-body-text-lg);
@@ -26,6 +28,15 @@ a {
   &:hover { color: var(--rh-color-interactive-primary-hover); }
   &:focus-within { color: var(--rh-color-interactive-primary-focus); }
   &:active { color: var(--rh-color-interactive-primary-active); }
+
+  &:focus-visible:after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: var(--rh-border-width-md, 2px) solid var(--rh-color-interactive-primary-default);
+    border-radius: var(--rh-border-radius-default, 3px);
+    pointer-events: none;
+  }
 
   &:visited {
     color: var(--rh-color-interactive-primary-visited-default);
