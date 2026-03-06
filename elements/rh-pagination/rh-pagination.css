@@ -165,7 +165,11 @@ svg {
   /** Sets the stepper color. */
   color: var(--rh-pagination-stepper-color, var(--rh-color-gray-50, #707070));
   display: grid;
+
+  /** Pagination typeface */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+
+  /** Pagination text size */
   font-size: var(--rh-font-size-heading-xs, 1.25rem);
   block-size: var(--_stepper-size);
   place-content: center;
@@ -175,8 +179,11 @@ svg {
 }
 
 .stepper:focus {
+  /** Pagination corner rounding */
   border-radius: var(--rh-border-radius-default, 3px);
   outline-offset: -2px;
+
+  /** Pagination focus outline */
   outline: var(--rh-border-width-md, 2px) solid transparent;
   outline-color: var(--rh-pagination-accent-color, var(--rh-color-interactive-primary-default));
 }
@@ -226,13 +233,19 @@ svg {
 
 @container pagination (min-width: 768px) {
   #last {
+    /** Pagination end margin */
     margin-inline-end: var(--rh-space-2xl, 32px);
   }
 }
 
 input {
+  /** Pagination block size */
   block-size: var(--rh-length-2xl, 32px);
+
+  /** Pagination inline size */
   inline-size: var(--rh-length-4xl, 64px);
+
+  /** Pagination text size */
   font-size: var(--rh-font-size-body-text-md, 1rem);
   background:
     light-dark(var(--rh-color-surface-lightest, #ffffff),
@@ -242,8 +255,14 @@ input {
     light-dark(var(--rh-color-gray-40, #a3a3a3),
       var(--rh-color-gray-60, #4d4d4d));
   box-sizing: border-box;
+
+  /** Pagination vertical spacing */
   padding-block: var(--rh-space-sm, 6px);
+
+  /** Pagination horizontal spacing */
   padding-inline: var(--rh-space-md, 8px);
+
+  /** Pagination text color */
   color: var(--rh-color-text-primary);
 }
 
@@ -252,7 +271,11 @@ input:focus {
     var(--rh-border-width-md, 2px)
     solid
     var(--rh-pagination-accent-color, var(--rh-color-interactive-primary-default));
+
+  /** Pagination vertical spacing */
   padding-block: calc(var(--rh-space-sm, 6px) - 1px);
+
+  /** Pagination horizontal spacing */
   padding-inline: calc(var(--rh-space-md, 8px) - 1px);
   outline: none;
 }
@@ -280,9 +303,13 @@ input:invalid:focus {
   align-items: center;
   display: flex;
   flex: 0;
+
+  /** Pagination text size */
   font-size: var(--rh-font-size-body-text-md, 1rem);
   gap: 0.5em;
   margin-block: 0;
+
+  /** Pagination horizontal margin */
   margin-inline: 0 var(--rh-space-lg, 16px);
   min-block-size: var(--_stepper-size);
   inline-size: 100%;
@@ -314,8 +341,11 @@ input:invalid:focus {
 }
 
 #numeric a:focus {
+  /** Pagination corner rounding */
   border-radius: var(--rh-border-radius-default, 3px);
   color: var(--_numeric-a-color-focus);
+
+  /** Pagination focus outline */
   outline: var(--rh-border-width-md, 2px) solid transparent;
   outline-color: var(--_numeric-a-color-focus-outline);
   text-decoration-color: inherit;
@@ -336,6 +366,7 @@ input:invalid:focus {
   }
 
   #numeric {
+    /** Pagination start margin */
     margin-inline-start: var(--rh-space-lg, 16px);
   }
 }
