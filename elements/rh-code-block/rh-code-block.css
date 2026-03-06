@@ -33,19 +33,33 @@
   justify-content: center;
   border: none;
   background: transparent;
+
+  /** Code block inner spacing */
   padding: var(--rh-space-md, 8px);
+
+  /** Code block corner rounding */
   border-radius: var(--rh-border-radius-default, 3px);
+
+  /** Code block width */
   width: var(--rh-length-3xl, 48px);
+
+  /** Code block height */
   height: var(--rh-length-3xl, 48px);
 }
 
 .shadow-fab:is(:hover, :focus, :active) {
+  /** Code block background */
   background: var(--rh-color-surface);
 }
 
 .shadow-fab svg {
+  /** Code block width */
   width: var(--rh-size-icon-02, 24px);
+
+  /** Code block height */
   height: var(--rh-size-icon-02, 24px);
+
+  /** Code block text color */
   color: var(--rh-color-text-primary);
 }
 
@@ -174,8 +188,12 @@
   column-gap: var(--_code-main-spacer);
   padding-inline-start: var(--_code-main-spacer);
   padding-block-end: var(--_code-main-spacer);
+
+  /** Code block corner rounding */
   border-radius: var(--rh-border-radius-default, 3px);
   background-color: var(--_code-background-color);
+
+  /** Code block text color */
   color: var(--rh-color-text-primary);
   border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
 
@@ -212,6 +230,8 @@
 #prism-output,
 #content {
   display: block;
+
+  /** Code block typeface */
   font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
   z-index: 1;
   place-self: start;
@@ -229,12 +249,16 @@
 
 #content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
   color: var(--_code-color);
+
+  /** Code block typeface */
   font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
   text-align: left;
   white-space: pre;
   word-spacing: normal;
   word-break: normal;
   word-wrap: normal;
+
+  /** Code block line height */
   line-height: var(--rh-line-height-code, 1.5);
   tab-size: 4;
   hyphens: none;
@@ -250,11 +274,14 @@
 }
 
 #content::slotted(rh-tag) {
+  /** Code block width */
   width: var(--rh-size-icon-06, 64px);
 }
 
 #content-lines {
   display: grid;
+
+  /** Code block column gap */
   column-gap: var(--rh-space-lg, 16px);
   grid-area: code;
   grid-template-areas: 'lines code';
@@ -273,6 +300,8 @@
   opacity: 0;
   pointer-events: none;
   z-index: -10000;
+
+  /** Code block line height */
   line-height: var(--rh-line-height-code, 1.5);
 }
 
@@ -282,14 +311,23 @@
   margin: 0;
   grid-area: lines;
   list-style-type: none;
+
+  /** Code block horizontal spacing */
   padding-inline: 0 var(--rh-space-md, 8px);
   text-align: end;
+
+  /** Code block typeface */
   font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+
+  /** Code block text color */
   color: var(--rh-color-text-secondary);
+
+  /** Code block font weight */
   font-weight: var(--rh-font-weight-code-regular, 400);
   border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
 
   li {
+    /** Code block line height */
     line-height: var(--rh-line-height-code, 1.5);
     display: block;
   }
@@ -298,9 +336,15 @@
 #actions {
   display: flex;
   grid-area: actions;
+
+  /** Code block content gap */
   gap: var(--rh-space-md, 8px);
   flex-flow: column;
+
+  /** Code block top margin */
   margin-block-start: var(--rh-space-lg, 16px);
+
+  /** Code block end margin */
   margin-inline-end: var(--rh-space-lg, 16px);
   z-index: 2;
   place-self: start center;
@@ -323,13 +367,25 @@
   border: 0;
   background: transparent;
   grid-area: expand;
+
+  /** Code block content gap */
   gap: var(--rh-space-md, 8px);
   inset-block-end: var(--_code-secondary-spacer);
   margin-block: var(--_code-secondary-spacer);
+
+  /** Code block text color */
   color: var(--rh-color-text-primary);
+
+  /** Code block typeface */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
+  /** Code block text size */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+
+  /** Code block font weight */
   font-weight: var(--rh-font-weight-body-text-regular, 400);
+
+  /** Code block line height */
   line-height: var(--rh-line-height-body-text, 1.5);
 }
 
@@ -338,6 +394,8 @@
   height: 7px;
   rotate: var(--_expand-toggle-rotate, 180deg);
   transform: rotate 0.2s ease-in-out;
+
+  /** Code block text color */
   color: var(--rh-color-icon-secondary);
 }
 
@@ -362,6 +420,8 @@
   z-index: 2;
   inset-block-end: 0;
   inset-inline: 0;
+
+  /** Code block height */
   height: var(--rh-space-3xl, 48px);
   pointer-events: none;
   grid-column: -1/1;
@@ -384,6 +444,8 @@
   z-index: 2;
   inset-block: 0;
   inset-inline-start: calc(-1 * var(--rh-space-4xl, 64px));
+
+  /** Code block width */
   width: var(--rh-space-4xl, 64px);
   pointer-events: none;
   background: var(--_gradient);
@@ -402,6 +464,8 @@
   display: grid;
   grid-template-columns: max-content auto;
   margin-block: var(--rh-space-lg, 16px);
+
+  /** Code block content gap */
   gap: var(--rh-space-md, 8px);
 }
 
