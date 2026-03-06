@@ -22,14 +22,26 @@
    */
   background-color: var(--rh-back-to-top-background-color, var(--rh-color-accent-base));
   text-decoration: none;
+
+  /** Trigger text size */
   font-size: var(--rh-font-size-body-text-xs, 0.75rem);
+
+  /** Trigger horizontal spacing */
   padding-inline: var(--rh-space-md, 8px);
+
+  /** Trigger vertical spacing */
   padding-block: var(--rh-space-xs, 4px);
 
   /** @summary Pill shape; uses --rh-border-radius-pill design token */
   border-radius: var(--rh-border-radius-pill, 64px);
+
+  /** Trigger content gap */
   gap: var(--rh-space-xs, 4px);
+
+  /** Trigger line height */
   line-height: var(--rh-line-height-body-text, 1.5);
+
+  /** Trigger focus outline */
   outline: var(--rh-border-width-md, 2px) solid transparent;
   border: var(--rh-border-width-md, 2px) solid transparent;
   pointer-events: all;
@@ -42,6 +54,8 @@
     solid
     light-dark(var(--rh-color-border-strong-on-dark, #ffffff),
       var(--rh-color-border-strong-on-light, #151515));
+
+  /** Trigger background */
   background-color: var(--rh-color-interactive-primary-hover);
 }
 
@@ -60,6 +74,8 @@ span {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
+  /** Trigger content gap */
   gap: var(--rh-space-xs, 4px);
 }
 
