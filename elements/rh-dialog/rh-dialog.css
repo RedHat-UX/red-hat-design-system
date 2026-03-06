@@ -27,6 +27,8 @@
   --_offset-right: var(--_offset);
 
   display: contents;
+
+  /** Dialog typeface */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
 }
 
@@ -38,10 +40,16 @@
   background-color:
     light-dark(var(--rh-color-surface-lightest, #ffffff),
       var(--rh-color-surface-dark, #383838));
+
+  /** Dialog corner rounding */
   border-radius: var(--rh-border-radius-default, 3px);
   border: 0;
+
+  /** Dialog elevation shadow */
   box-shadow: var(--rh-box-shadow-xl, 0 8px 24px 3px rgba(21, 21, 21, 0.35));
   box-sizing: border-box;
+
+  /** Dialog text color */
   color: var(--rh-color-text-primary);
   font-family: inherit;
   inline-size: 100%;
@@ -50,6 +58,8 @@
   max-inline-size: var(--_box-width, min(90%, 1140px));
   overflow-y: auto;
   overscroll-behavior: contain;
+
+  /** Dialog inner spacing */
   padding: var(--rh-space-xl, 24px);
   position: fixed;
 }
@@ -78,6 +88,8 @@
     light-dark(var(--rh-color-surface-lightest, #ffffff),
       var(--rh-color-surface-dark, #383838));
   inset-block-start: 0;
+
+  /** Dialog bottom margin */
   margin-block-end: var(--rh-space-lg, 16px);
   position: relative;
 
@@ -97,6 +109,8 @@
     background-color:
       light-dark(var(--rh-color-surface-lightest, #ffffff),
         var(--rh-color-surface-dark, #383838));
+
+    /** Dialog block size */
     block-size: var(--rh-space-lg, 16px);
     content: '';
     inline-size: 100%;
@@ -113,6 +127,7 @@
   }
 
   @media (min-width: 1200px) {
+    /** Dialog bottom margin */
     margin-block-end: var(--rh-space-xl, 24px);
   }
 }
@@ -123,6 +138,7 @@
 
 #header,
 #header[hidden] + #body {
+  /** Dialog end spacing */
   padding-inline-end: var(--rh-space-3xl, 48px);
 }
 
@@ -132,6 +148,7 @@
   }
 
   #dialog {
+    /** Dialog inner spacing */
     padding: var(--rh-space-2xl, 32px);
   }
 
@@ -149,8 +166,13 @@
 }
 
 #header ::slotted(:is(h1,h2,h3,h4,h5,h6)[slot='header']) {
+  /** Dialog typeface */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+
+  /** Dialog text size */
   font-size: var(--rh-font-size-heading-sm, 1.5rem);
+
+  /** Dialog font weight */
   font-weight: var(--rh-font-weight-body-text-regular, 400);
 }
 
@@ -159,6 +181,7 @@
 }
 
 #body ::slotted(p:last-of-type) {
+  /** Dialog bottom margin */
   margin-block-end: var(--rh-space-xl, 24px) !important;
 }
 
@@ -183,13 +206,21 @@
   background-color:
     light-dark(var(--rh-color-surface-lightest, #ffffff),
       var(--rh-color-surface-dark, #383838));
+
+  /** Dialog block size */
   block-size: var(--rh-length-xl, 24px);
+
+  /** Dialog corner rounding */
   border-radius: var(--rh-border-radius-default, 3px);
+
+  /** Dialog inline size */
   inline-size: var(--rh-length-xl, 24px);
 }
 
 :host([position='top']) #dialog {
   inline-size: 100%;
+
+  /** Dialog top margin */
   margin-block-start: var(--rh-space-2xl, 32px);
   max-inline-size: var(--_box-width, calc(100% - var(--rh-space-2xl, 32px)));
 }
@@ -197,6 +228,8 @@
 #footer {
   align-items: center;
   display: flex;
+
+  /** Dialog content gap */
   gap: var(--rh-space-md, 8px);
 }
 
