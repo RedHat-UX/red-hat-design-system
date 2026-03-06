@@ -16,6 +16,7 @@
 }
 
 :host ::slotted(*:not(:first-child)) {
+  /** Vertical spacing between stacked panel children */
   padding-block-start: var(--rh-space-xl, 24px);
 }
 
@@ -49,7 +50,7 @@
 }
 
 #container {
-  /** Panel border uses --rh-color-border-subtle design token for visual separation */
+  /** Panel trailing border */
   border-inline-end: 1px solid var(--rh-color-border-subtle);
   background-color: var(--_accordion-background);
 }
@@ -60,16 +61,18 @@
   top: 0;
   bottom: 0;
   left: 0;
+
+  /** Accent bar thickness */
   width: var(--rh-border-width-lg, 3px);
 
-  /** Expanded panel accent bar uses --rh-color-accent-brand design token */
+  /** Expanded panel accent bar color */
   background-color: var(--rh-color-accent-brand);
   inset-block: 0;
   inset-inline-start: 0;
 }
 
 .content {
-  /** Panel text uses --rh-color-text-primary design token for readability */
+  /** Panel content text color */
   color: var(--rh-color-text-primary);
   font-size: var(--_panel-font-size);
 }
