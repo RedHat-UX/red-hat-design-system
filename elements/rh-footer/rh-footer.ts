@@ -3,6 +3,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 export { RhFooterUniversal } from './rh-footer-universal.js';
 
@@ -48,6 +49,8 @@ export class RhFooter extends LitElement {
 
   #compact = false;
 
+  #internals = InternalsController.of(this);
+
   /**
    * ScreenSizeController effects callback to set #compact is true when viewport
    * `(min-width: ${tabletLandscapeBreakpoint})`.
@@ -60,6 +63,7 @@ export class RhFooter extends LitElement {
 
   override connectedCallback() {
     super.connectedCallback();
+    this.#internals.role = 'contentinfo';
     this.#compact = !this.screenSize.matches.has('md');
     // wire up accessibility aria-labels with unordered lists
     this.updateAccessibility();
@@ -67,8 +71,8 @@ export class RhFooter extends LitElement {
 
   override render() {
     return html`
-      <!-- main footer element, containing all footer content -->
-      <footer class="base ${classMap({ isMobile: this.#compact })}" part="base">
+      <!-- main footer container, containing all footer content. -->
+      <div class="footer base ${classMap({ isMobile: this.#compact })}" part="base">
         <h2 id="heading"><!-- text that describes the footer section to assistive technology. Contains default text "Red Hat footer". --><slot name="heading">Red Hat footer</slot></h2>
         <!-- Overrides everything. Do not use. -->
         <slot name="base">
@@ -133,7 +137,7 @@ export class RhFooter extends LitElement {
           <!-- must contain \`<rh-footer-universal>\` -->
           <slot name="universal"></slot>
         </slot>
-      </footer>
+      </div>
     `;
   }
 
