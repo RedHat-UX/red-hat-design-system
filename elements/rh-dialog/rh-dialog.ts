@@ -31,7 +31,7 @@ export class DialogCloseEvent extends Event {
 
 export class DialogOpenEvent extends Event {
   constructor(
-    /** The trigger element which triggered the dialog to open */
+    /** The trigger element that caused the dialog to open, or null if opened programmatically. */
     public trigger: HTMLElement | null
   ) {
     super('open', { bubbles: true, cancelable: true });
@@ -44,15 +44,25 @@ async function pauseYoutube(iframe: HTMLIFrameElement) {
 }
 
 /**
- * A dialog displays important information to users without requiring them to navigate away from the page.
+ * Modal overlay for confirming decisions or collecting input. Traps
+ * focus and blocks page interaction. MUST have a heading or
+ * `accessible-label` for screen readers. Uses native `<dialog>` with
+ * ARIA `aria-labelledby`. Keyboard: Escape closes, Tab cycles focus.
+ * USE sparingly to avoid disrupting user workflow.
  *
- * @summary Communicates information requiring user input or action
+ * @summary Modal dialog for confirmations, errors, or required input
  *
  * @alias dialog
  *
- * @fires {DialogOpenEvent} open - Fires when a user clicks on the trigger or manually opens a dialog.
- * @fires {DialogCloseEvent} close - Fires when either a user clicks on either the close button or manually closes a dialog.
- * @fires {DialogCancelEvent} cancel - Fires when a user clicks outside the dialog or hits ESC on their keyboard.
+ * @fires {DialogOpenEvent} open - Fires when the dialog opens, either via
+ *   trigger click or programmatic `show()`/`showModal()` call.
+ *   Event detail: `trigger` (HTMLElement | null) — the element that opened
+ *   the dialog, or null if opened programmatically.
+ * @fires {DialogCloseEvent} close - Fires when the dialog closes via the
+ *   close button or a programmatic `close()` call. No event detail properties.
+ * @fires {DialogCancelEvent} cancel - Fires when the user dismisses the
+ *   dialog by clicking the backdrop or pressing Escape. No event detail
+ *   properties.
  */
 @customElement('rh-dialog')
 @themable
@@ -60,32 +70,55 @@ export class RhDialog extends LitElement {
   static readonly styles = [styles];
 
   /**
-   * The `variant` controls the width of the dialog.
-   * There are three options: `small`, `medium` and `large`. The default is `large`.
+   * Controls the fixed width of the dialog container. Valid values are
+   * `small` (35rem), `medium` (52.5rem), or `large` (70rem). When unset
+   * the dialog defaults to `min(90%, 1140px)`. USE `small` for brief
+   * confirmations, `medium` for forms, and `large` for content-heavy dialogs.
    */
   @property({ reflect: true }) variant?: 'small' | 'medium' | 'large';
 
   /**
-   * `position="top"` aligns the dialog with the top of the page
+   * Controls the vertical placement of the dialog. When set to `top`, the
+   * dialog aligns to the top of the viewport with a `--rh-space-2xl` margin.
+   * When unset, the dialog is vertically and horizontally centered. USE
+   * `top` for full-width layouts or when the dialog contains charts or
+   * complex images that benefit from more horizontal space.
    */
   @property({ reflect: true }) position?: 'top';
 
   /**
-   * Use `accessible-label="My custom label"` to specify the dialog's accessible name.
-   * Defaults to the name of the dialog trigger if no attribute is set and no headings exist in the modal.
-   * See Dialog's Accessibility page for more info.
+   * Sets the ARIA accessible name for the dialog, used by screen readers to
+   * announce the dialog's purpose. MUST be provided when no heading element
+   * exists in the `header` or default slot. Fallback order: 1) this attribute,
+   * 2) first heading found in slotted content, 3) trigger element text.
+   * Maps to `aria-label` on the native `<dialog>` element.
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
 
   /**
-   * `open` / `open="open"` declaratively opens the dialog
+   * Whether the dialog is currently open. Set declaratively to show the
+   * dialog on load, or use `show()`/`showModal()` programmatically. When
+   * `true`, the dialog traps focus and prevents interaction with background
+   * content. Reflects to the `open` attribute. Defaults to `false`.
    */
   @property({ type: Boolean, reflect: true }) open = false;
 
-  /** Optional ID of the trigger element */
+  /**
+   * ID of the element that opens this dialog when clicked. The trigger
+   * element MUST exist in the same document or shadow root. When set, the
+   * dialog automatically listens for click and Enter keypress events on the
+   * trigger. The trigger's text content is used as a fallback accessible
+   * name if no heading or `accessible-label` is provided.
+   */
   @property() trigger?: string;
 
-  /** Use `type="video"` to embed a video player into a dialog. */
+  /**
+   * Sets the dialog to video mode. When set to `video`, the dialog uses a
+   * 16:9 aspect ratio (customizable via `--rh-dialog-video-aspect-ratio`),
+   * removes padding, and automatically pauses `<video>` or YouTube
+   * `<iframe>` elements when the dialog closes. The close button overlays
+   * the video content.
+   */
   @property({ reflect: true }) type?: 'video';
 
   /** @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/returnValue */
@@ -148,22 +181,48 @@ export class RhDialog extends LitElement {
               <div id="header"
                    part="header"
                    ?hidden=${!hasHeader}>
-                <!-- The header is an optional slot that appears at the top of the dialog window. It should be a header tag (h2-h6). -->
+                <!-- summary: Optional heading displayed at the top of the dialog
+                     description: |
+                       SHOULD contain a heading element (h2-h6) that describes the
+                       dialog's purpose. The heading automatically becomes the dialog's
+                       ARIA accessible name via \`aria-labelledby\`. Sticks to the top
+                       of the dialog when content overflows. AVOID using h1 to maintain
+                       proper document heading hierarchy. -->
                 <slot name="header"></slot>
                 <!-- The container for the optional dialog description in the header -->
                 <div part="description" ?hidden=${!hasDescription}>
+                  <!-- summary: Supplementary text displayed below the header heading
+                       description: |
+                         USE for brief context that supports the header. SHOULD be
+                         concise body text, not interactive elements. Hidden when
+                         no content is slotted. -->
                   <slot name="description"></slot>
                 </div>
               </div>
               <div id="body" part="body">
-                <!-- The default slot can contain any type of content. When the header is not present this unnamed slot appear at the top of the dialog window (to the left of the close button). Otherwise it will appear beneath the header. -->
+                <!-- summary: Primary dialog body content
+                     description: |
+                       Accepts any content including text, forms, images, or
+                       interactive elements. When the header slot is empty, this
+                       content appears at the top of the dialog. If a heading
+                       element (h2-h6) is placed here without a header slot, it
+                       automatically provides the dialog's accessible name via
+                       \`aria-labelledby\`. For \`type="video"\`, USE a \`<video>\` or
+                       YouTube \`<iframe>\` element. Content scrolls vertically when
+                       it overflows the dialog container. -->
                 <slot></slot>
               </div>
               <!-- Actions footer container -->
               <div id="footer"
                    part="footer"
                    ?hidden=${!hasFooter}>
-                <!-- Optional footer content. Good place to put action buttons. -->
+                <!-- summary: Action buttons or links anchored to the bottom of the dialog
+                     description: |
+                       USE for primary and secondary action buttons (e.g., confirm,
+                       cancel). SHOULD contain at most two buttons. Buttons are
+                       laid out horizontally with \`--rh-space-md\` gap. Hidden when
+                       no content is slotted. Focusable elements here are included
+                       in the dialog's Tab key focus cycle. -->
                 <slot name="footer"></slot>
               </div>
             </div>
