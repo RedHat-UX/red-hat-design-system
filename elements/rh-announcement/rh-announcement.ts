@@ -15,8 +15,8 @@ import styles from './rh-announcement.css' with { type: 'css' };
 /**
  * Event fired when a user dismisses an announcement by clicking the close
  * button. The event is cancelable; calling `preventDefault()` on it will
- * prevent the announcement from being removed from the DOM. The event
- * bubbles and carries no additional detail properties.
+ * prevent the announcement from being removed from the DOM: users must
+ * ensure that an appropriate UI (e.g. a confirm dialog) appears.
  */
 export class AnnouncementCloseEvent extends Event {
   constructor() {
@@ -35,10 +35,10 @@ export class AnnouncementCloseEvent extends Event {
  *
  * @alias announcement
  *
- * @fires {AnnouncementCloseEvent} close - Fires when the user clicks the
- *        dismiss button. Cancelable: calling `preventDefault()` prevents
- *        the element from being removed. Bubbles. No additional detail
- *        properties.
+ * @fires {AnnouncementCloseEvent} close - Fires when the user clicks the dismiss button.
+ *        Cancelling this event prevents the element from being removed from the page.
+ *        When cancelling the event, you MUST ensure that some UI appears - e.g. a confirm
+ *        dialog - to avoid confusing the user with a close button that does nothing.
  */
 @customElement('rh-announcement')
 @colorPalettes
