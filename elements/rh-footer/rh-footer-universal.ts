@@ -14,10 +14,11 @@ import style from './rh-footer.css' with { type: 'css' };
 import './rh-footer-copyright.js';
 
 /**
- * The universal footer is an abbreviated footer element with content that
- * stays the same across all websites. It can stand by itself (eg: on
- * orphan pages, landing pages, minisites, etc) or be used in tandem with
- * rh-footer.
+ * Abbreviated footer with consistent content across all sites. Use for
+ * standalone pages (landing, minisites) when you need one footer. Provides
+ * logo, link groups, and optional tertiary area. Use alone or inside
+ * \`<rh-footer>\`. When outside \`<rh-footer>\`, receives role="contentinfo".
+ * Should include a visible heading (e.g. heading slot) for assistive tech.
  *
  * @summary An abbreviated footer with content that stays the same across all websites
  *
@@ -28,7 +29,12 @@ import './rh-footer-copyright.js';
 export class RhFooterUniversal extends LitElement {
   static readonly styles = [style];
 
-  /* Sets the color palette for footer universal */
+  /**
+   * Color palette for the footer surface and text. Use design-system values
+   * (e.g. light, darker). Should contrast with adjacent layout; avoid matching
+   * a dark universal footer to a dark nav bar.
+   * @summary Theme for footer (light/dark); should contrast with adjacent layout.
+   */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
 
   #internals = InternalsController.of(this);
@@ -99,21 +105,44 @@ export class RhFooterUniversal extends LitElement {
     return html`
       <div class="footer">
         <h2 id="global-heading" ?hidden="${!!h2}">
-          <!-- text that describes the footer section to assistive tecchnology. Contains default text "Red Hat footer". -->
+          <!--
+            slot:
+              description: Heading for the footer region; announced to assistive technology. Defaults to "Red Hat footer".
+          -->
           <slot name="heading">Red Hat footer</slot>
         </h2>
-        <!-- base -->
+        <!--
+          part:
+            description: Wrapper for the universal footer content (logo, primary, secondary, tertiary).
+        -->
         <div class="section global-base ${classMap({ hasTertiary })}" part="section base">
+          <!--
+            slot:
+              description: Replaces the default layout. Use to supply logo, primary row, secondary row, and optional tertiary content.
+          -->
           <slot name="base">
-            <!-- logo -->
+            <!--
+              part:
+                description: Container for the logo slot.
+            -->
             <div class="global-logo" part="logo">
-              <!-- logo -->
+              <!--
+                slot:
+                  description: Logo or brand mark (e.g. link + image or SVG). Defaults to Red Hat logo.
+              -->
               <slot name="logo">
+                <!--
+                  part:
+                    description: Link wrapping the logo; defaults to redhat.com.
+                -->
                 <a class="global-logo-anchor"
                     part="logo-anchor"
                     href="https://redhat.com"
                     aria-label="Visit Red Hat">
-                  <!-- logo-image -->
+                  <!--
+                    part:
+                      description: Logo image or SVG element.
+                  -->
                   <svg class="global-logo-image"
                        part="logo-image"
                        data-name="Layer 1"
@@ -133,52 +162,110 @@ export class RhFooterUniversal extends LitElement {
                 </a>
               </slot>
             </div>
-            <!-- primary -->
+            <!--
+              part:
+                description: Primary row (start, links, end).
+            -->
             <div class="global-primary" part="primary">
-              <!-- primary -->
+              <!--
+                slot:
+                  description: Content for the primary row; use primary-start, links-primary, and primary-end slots.
+              -->
               <slot name="primary">
-                <!-- primary-start -->
+                <!--
+                  part:
+                    description: Left area of the primary row.
+                -->
                 <div class="global-primary-start" part="primary-start" ?hidden=${!this.#slots.hasSlotted('primary-start')}>
-                  <!-- primary-start -->
+                  <!--
+                    slot:
+                      description: Optional content at the start of the primary row.
+                  -->
                   <slot name="primary-start"></slot>
                 </div>
-                <!-- links-primary -->
+                <!--
+                  part:
+                    description: Main link list area in the primary row.
+                -->
                 <div class="global-links-primary" part="links-primary" ?hidden=${!this.#slots.hasSlotted('links-primary')}>
-                  <!-- links-primary -->
+                  <!--
+                    slot:
+                      description: Primary links (e.g. About, Contact). Use a heading and \`<ul>\` with \`<a>\` items.
+                  -->
                   <slot name="links-primary"></slot>
                 </div>
-                <!-- primary-end -->
+                <!--
+                  part:
+                    description: Right area of the primary row.
+                -->
                 <div class="global-primary-end" part="primary-end" ?hidden=${!this.#slots.hasSlotted('primary-end')}>
-                  <!-- primary-end -->
+                  <!--
+                    slot:
+                      description: Optional content at the end of the primary row (e.g. \`<rh-footer-copyright>\`).
+                  -->
                   <slot name="primary-end"></slot>
                 </div>
               </slot>
             </div>
+            <!--
+              part:
+                description: Spacer between primary and secondary rows.
+            -->
             <div class="spacer" part="spacer"></div>
-            <!-- secondary -->
+            <!--
+              part:
+                description: Secondary row (start, links, end).
+            -->
             <div class="global-secondary" part="secondary">
-              <!-- secondary -->
+              <!--
+                slot:
+                  description: Content for the secondary row; use secondary-start, links-secondary, and secondary-end slots.
+              -->
               <slot name="secondary">
-                <!-- secondary-start -->
+                <!--
+                  part:
+                    description: Left area of the secondary row.
+                -->
                 <div class="global-secondary-start" part="secondary-start" ?hidden=${!this.#slots.hasSlotted('secondary-start')}>
-                  <!-- secondary-start -->
+                  <!--
+                    slot:
+                      description: Optional content at the start of the secondary row.
+                  -->
                   <slot name="secondary-start"></slot>
                 </div>
-                <!-- links-secondary -->
+                <!--
+                  part:
+                    description: Main link list area in the secondary row.
+                -->
                 <div class="global-links-secondary" part="links-secondary" ?hidden=${!this.#slots.hasSlotted('links-secondary')}>
-                  <!-- links-secondary -->
+                  <!--
+                    slot:
+                      description: Secondary links (e.g. Privacy, Terms). Use a heading and \`<ul>\` with \`<a>\` items.
+                  -->
                   <slot name="links-secondary"></slot>
                 </div>
-                <!-- secondary-end -->
+                <!--
+                  part:
+                    description: Right area of the secondary row.
+                -->
                 <div class="global-secondary-end" part="secondary-end" ?hidden=${!this.#slots.hasSlotted('secondary-end')}>
-                  <!-- secondary-end -->
+                  <!--
+                    slot:
+                      description: Optional content at the end of the secondary row.
+                  -->
                   <slot name="secondary-end"></slot>
                 </div>
               </slot>
             </div>
-            <!-- tertiary -->
+            <!--
+              part:
+                description: Optional bottom section (e.g. copyright, extra text).
+            -->
             <div class="global-tertiary" part="tertiary" ?hidden=${!this.#slots.hasSlotted('tertiary')}>
-              <!-- tertiary -->
+              <!--
+                slot:
+                  description: Tertiary content below primary and secondary rows.
+              -->
               <slot name="tertiary"></slot>
             </div>
           </slot>
