@@ -313,6 +313,10 @@
   uxdot-example + figcaption > ol ol {
     margin: 0;
   }
+
+  uxdot-demo + rh-cta {
+    margin-block: var(--rh-space-2xl);
+  }
 }
 
 @layer patterns {
