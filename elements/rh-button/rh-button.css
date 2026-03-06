@@ -28,11 +28,23 @@ button {
   border-radius: var(--rh-border-radius-default, 3px);
   color: var(--_color);
   background-color: var(--_background-color);
+
+  /** Button text size */
   font-size: var(--rh-font-size-body-text-md, 1rem);
+
+  /** Button font weight */
   font-weight: var(--rh-font-weight-body-text-regular, 400);
+
+  /** Button line height */
   line-height: var(--rh-line-height-body-text, 1.5);
+
+  /** Button vertical spacing */
   padding-block: var(--rh-space-sm, 6px);
+
+  /** Button horizontal spacing */
   padding-inline: var(--rh-space-lg, 16px);
+
+  /** Button focus ring offset */
   outline-offset: var(--rh-length-4xs, 1px);
 
   &:active {
@@ -48,6 +60,8 @@ button {
     border-style: solid;
     border-color: var(--_border-color);
     border-width: var(--_border-width);
+
+    /** Button corner rounding */
     border-radius: var(--rh-border-radius-default, 3px);
   }
 
@@ -69,8 +83,12 @@ button {
   &.hasIcon {
     position: relative;
     display: flex;
+
+    /** Button content gap */
     gap: var(--rh-space-sm, 6px);
     align-items: center;
+
+    /** Button start spacing */
     padding-inline-start: calc(var(--rh-space-lg, 16px) * 0.75);
 
     & [part='icon'] {
@@ -226,6 +244,7 @@ button {
     --_hover-color: var(--rh-color-interactive-secondary-hover);
     --_hover-background-color: transparent;
 
+    /** Button width */
     width: var(--rh-length-lg, 16px);
     aspect-ratio: 1;
 
@@ -252,6 +271,8 @@ button {
         rgba(from white r g b / var(--rh-opacity-80, 80%)));
 
     border-radius: 100%;
+
+    /** Button width */
     width: var(--rh-length-4xl, 64px);
 
     & [part='icon'] {
