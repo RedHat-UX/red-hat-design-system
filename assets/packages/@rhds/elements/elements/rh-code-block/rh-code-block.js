@@ -1,4 +1,4 @@
-var _RhCodeBlock_instances, _RhCodeBlock_logger, _RhCodeBlock_slots, _RhCodeBlock_prismOutput, _RhCodeBlock_isIntersecting, _RhCodeBlock_ro, _RhCodeBlock_lines, _RhCodeBlock_lineHeights, _RhCodeBlock_onSlotChange, _RhCodeBlock_applyPrismPrerenderedStyles, _RhCodeBlock_highlightWithPrism, _RhCodeBlock_onVisibilityChange, _RhCodeBlock_updateResizeObserver, _RhCodeBlock_wrapChanged, _RhCodeBlock_setSlottedLabelState, _RhCodeBlock_getSlottedCodeElements, _RhCodeBlock_computeLines, _RhCodeBlock_computeLineNumbers, _RhCodeBlock_onActionsClick, _RhCodeBlock_onActionsKeyup, _RhCodeBlock_onCodeAction, _RhCodeBlock_onClickExpand, _RhCodeBlock_preCopy, _RhCodeBlock_copy;
+var _RhCodeBlock_instances, _RhCodeBlock_logger, _RhCodeBlock_slots, _RhCodeBlock_prismOutput, _RhCodeBlock_copyFeedbackTimeout, _RhCodeBlock_isIntersecting, _RhCodeBlock_ro, _RhCodeBlock_lines, _RhCodeBlock_lineHeights, _RhCodeBlock_onSlotChange, _RhCodeBlock_applyPrismPrerenderedStyles, _RhCodeBlock_highlightWithPrism, _RhCodeBlock_onVisibilityChange, _RhCodeBlock_updateResizeObserver, _RhCodeBlock_wrapChanged, _RhCodeBlock_setSlottedLabelState, _RhCodeBlock_getSlottedCodeElements, _RhCodeBlock_computeLines, _RhCodeBlock_computeLineNumbers, _RhCodeBlock_onActionsClick, _RhCodeBlock_onActionsKeyup, _RhCodeBlock_onCodeAction, _RhCodeBlock_onClickExpand, _RhCodeBlock_preCopy, _RhCodeBlock_copy;
 var RhCodeBlock_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { CSSResult, LitElement, html, isServer } from 'lit';
@@ -81,6 +81,7 @@ let RhCodeBlock = RhCodeBlock_1 = class RhCodeBlock extends LitElement {
         _RhCodeBlock_logger.set(this, new Logger(this));
         _RhCodeBlock_slots.set(this, new SlotController(this, null, 'action-label-copy', 'copy-failed', 'action-label-wrap', 'show-more', 'show-less', 'legend'));
         _RhCodeBlock_prismOutput.set(this, void 0);
+        _RhCodeBlock_copyFeedbackTimeout.set(this, void 0);
         _RhCodeBlock_isIntersecting.set(this, false);
         _RhCodeBlock_ro.set(this, void 0);
         _RhCodeBlock_lines.set(this, []);
@@ -215,6 +216,7 @@ let RhCodeBlock = RhCodeBlock_1 = class RhCodeBlock extends LitElement {
 _RhCodeBlock_logger = new WeakMap();
 _RhCodeBlock_slots = new WeakMap();
 _RhCodeBlock_prismOutput = new WeakMap();
+_RhCodeBlock_copyFeedbackTimeout = new WeakMap();
 _RhCodeBlock_isIntersecting = new WeakMap();
 _RhCodeBlock_ro = new WeakMap();
 _RhCodeBlock_lines = new WeakMap();
@@ -426,6 +428,9 @@ _RhCodeBlock_copy = async function _RhCodeBlock_copy() {
     if (!tooltip) {
         return;
     }
+    // Cancel any previous feedback timeout to prevent stale timers
+    // from interfering when the user clicks copy multiple times
+    clearTimeout(__classPrivateFieldGet(this, _RhCodeBlock_copyFeedbackTimeout, "f"));
     try {
         tooltip.hide();
         const content = __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_preCopy).call(this);
@@ -439,11 +444,21 @@ _RhCodeBlock_copy = async function _RhCodeBlock_copy() {
         __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_setSlottedLabelState).call(this, 'action-label-copy', 'failed');
     }
     tooltip.show();
-    await new Promise(r => setTimeout(r, 5000));
-    tooltip.hide();
+    await new Promise(r => {
+        __classPrivateFieldSet(this, _RhCodeBlock_copyFeedbackTimeout, setTimeout(r, 5000), "f");
+    });
+    await tooltip.hide();
+    // Wait for the tooltip's CSS opacity transition to finish
+    // before resetting the label, so the text doesn't flash
+    // from "Copied!" to "Copy to Clipboard" while still visible
+    const tooltipContent = tooltip.shadowRoot?.querySelector('#tooltip');
+    await new Promise(r => {
+        tooltipContent?.addEventListener('transitionend', () => r(), { once: true });
+        // fallback in case no transition fires (e.g. reduced motion)
+        setTimeout(r, 300);
+    });
     this.copyButtonState = 'default';
     __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_setSlottedLabelState).call(this, 'action-label-copy', undefined);
-    tooltip.show();
 };
 RhCodeBlock.actionIcons = new Map([
     ['wrap', html `
