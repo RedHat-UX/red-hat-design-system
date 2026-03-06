@@ -9,6 +9,8 @@
 
 #container {
   display: grid;
+
+  /** Avatar text color */
   color: var(--rh-color-text-secondary);
 
   /**
@@ -46,15 +48,25 @@
 #title {
   grid-area: t;
   align-self: end;
+
+  /** Avatar typeface */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+
+  /** Avatar font weight */
   font-weight: var(--rh-font-weight-heading-medium, 500);
+
+  /** Avatar text size */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
 
 #subtitle {
   grid-area: s;
   align-self: start;
+
+  /** Avatar font weight */
   font-weight: var(--rh-font-weight-heading-regular, 400);
+
+  /** Avatar text size */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
 
@@ -76,6 +88,7 @@
 :host([layout='block']) :is(img, canvas, svg),
 :host(:not([plain])) #container :is(img, canvas, svg) {
   @media (max-width: 575px) {
+    /** Avatar bottom margin */
     margin-block-end: var(--rh-space-lg, 16px);
   }
 }
@@ -86,15 +99,18 @@ slot {
 }
 
 ::slotted(a) {
+  /** Avatar text color */
   color: var(--rh-color-interactive-primary-default);
 }
 
 ::slotted(a:visited) {
+  /** Avatar text color */
   color: var(--rh-color-interactive-primary-visited-default);
 }
 
 ::slotted(a:active),
 ::slotted(a:hover) {
+  /** Avatar text color */
   color: var(--rh-color-interactive-primary-hover);
 }
 
@@ -114,9 +130,13 @@ svg {
    * defaults to --rh-size-icon-06 (64px). Capped at --rh-size-icon-06 via max-width.
    */
   width: var(--rh-avatar-size, var(--rh-size-icon-06, 64px));
+
+  /** Avatar maximum width */
   max-width: var(--rh-size-icon-06, 64px);
   aspect-ratio: 1;
   grid-area: a;
+
+  /** Avatar corner rounding */
   border-radius: var(--rh-border-radius-pill, 64px);
 }
 
