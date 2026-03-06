@@ -96,10 +96,9 @@ export class RhAnnouncement extends LitElement {
             <!-- summary: optional visual such as an icon, logo, or image
                  description: |
                    Accepts an \`<img>\`, \`<svg>\`, or \`<rh-icon>\` element. Images
-                   MUST have explicit \`width\` and \`height\` attributes set.
-                   SHOULD include \`role="img"\` and an \`aria-label\` for
-                   accessibility. Max recommended height is 48px for icons
-                   or 20-25px for text logos. -->
+                   SHOULD have explicit \`width\` and \`height\` attributes set.
+                   Images MAY include \`role="presentation"\`. Icons MAY include an \`accessible-label\`.
+                   Max recommended height is 48px for icons or 20-25px for text logos. -->
             <slot name="image"></slot>
           </div>
           <div id="content">
@@ -116,9 +115,7 @@ export class RhAnnouncement extends LitElement {
               <!-- summary: call-to-action link for the announcement
                    description: |
                      MUST contain an \`<rh-cta>\` element with an \`href\`
-                     attribute. CTA text SHOULD be 25 characters or fewer.
-                     Keyboard users can Tab to the CTA and activate it
-                     with Enter. -->
+                     attribute. CTA text SHOULD be 25 characters or fewer. -->
               <slot name="cta"></slot>
             </div>
           </div>
