@@ -1,7 +1,8 @@
 <meta itemprop="description"
       content="Announcement with a CSS background image positioned to the left, demonstrating the pattern described in the design guidelines.">
 
-<rh-announcement dismissable>
+<rh-announcement color-palette="lighter"
+                 dismissable>
   <p>Join us at Red Hat Summit — register now for early access.</p>
   <rh-cta slot="cta"
           href="#">Register</rh-cta>
@@ -18,6 +19,7 @@
 
     @media (max-width: 767px) {
       background-image: none;
+      --rh-color-surface: var(--rh-color-surface-lighter, #f2f2f2);
     }
   }
 </style>
