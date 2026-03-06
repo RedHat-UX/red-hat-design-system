@@ -1,5 +1,10 @@
 # @rhds/elements
 
+## 4.0.4
+### Patch Changes
+
+- 0ebfaf0: `<rh-code-block>`: prevent tooltip from unexpectedly reappearing
+
 ## 4.0.3
 ### Patch Changes
 
