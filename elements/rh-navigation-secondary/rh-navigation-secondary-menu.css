@@ -5,7 +5,11 @@
 
 #container {
   position: relative;
+
+  /** Navigation text color */
   color: var(--rh-color-text-primary-on-light, #151515);
+
+  /** Navigation background */
   background-color: var(--rh-color-surface-lightest, #ffffff);
 }
 
@@ -14,6 +18,7 @@
 }
 
 #sections {
+  /** Navigation inner spacing */
   padding: var(--rh-space-xl, 24px);
 }
 
@@ -58,6 +63,8 @@
   padding: 0;
   display: flex;
   flex-direction: column;
+
+  /** Navigation content gap */
   gap: var(--rh-font-size-body-text-md, 1rem);
 }
 
@@ -70,6 +77,8 @@
       var(--rh-space-4xl, 64px)
       var(--rh-space-2xl, 32px)
       var(--rh-space-3xl, 48px);
+
+    /** Navigation elevation shadow */
     box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
     z-index: -1;
     max-height: calc(100vh - (var(--rh-space-4xl, 64px)) - var(--_nav-min-height));
@@ -99,11 +108,14 @@
      * - Only applies at desktop breakpoint (min-width: 992px)
      * - Consider menu section count and content when adjusting
      */
+
+    /** Navigation maximum width */
     max-width: var(--rh-navigation-secondary-menu-content-max-width, 1136px);
     margin: auto;
   }
 
   :host([layout='fixed-width']) #sections {
+    /** Navigation inner spacing */
     padding: var(--rh-space-2xl, 32px);
   }
 }

@@ -7,6 +7,7 @@
 }
 
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  /** Navigation typeface */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
 }
 
@@ -16,14 +17,18 @@
   padding: 0;
   display: flex;
   flex-direction: column;
+
+  /** Navigation content gap */
   gap: var(--rh-font-size-body-text-md, 1rem);
 }
 
 ::slotted([slot='cta']) {
+  /** Navigation inner spacing */
   padding: var(--rh-space-xl, 24px) 0 0;
 }
 
 ::slotted([slot='cta']:last-of-type) {
+  /** Navigation inner spacing */
   padding: var(--rh-space-xl, 24px) 0;
 }
 
