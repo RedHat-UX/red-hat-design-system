@@ -24,9 +24,16 @@ const L2 = html`
   </svg>`;
 
 /**
- * A paginator allows users to navigate between pages of related content.
+ * Enables navigation across pages of content using first/prev/next/last
+ * stepper buttons, numbered page links, and a direct page-input field.
+ * Authors MUST provide a single `<ol>` child with `<li><a>` page links.
+ * The active page is determined by `aria-current="page"` or URL match.
+ * Supports box and open variants, default and small sizes, and compact
+ * layout. Tab moves focus through steppers and input; Enter activates.
+ * Screen readers announce the `<nav>` landmark with the `label` property.
+ * Truncation with ellipsis appears automatically beyond 9 pages.
  *
- * @summary Allows users to navigate content divided into pages
+ * @summary Navigate between pages of content with steppers and input
  *
  * @alias pagination
  *
@@ -49,33 +56,32 @@ export class RhPagination extends LitElement {
   }
 
   /**
-   * Override `overflow` values set from HTML or JS.
-   * `overflow` should ideally be private, but because
-   * we can't do `::slotted(nav ol li)`, we need to reflect
-   * it to a host attribute, so that lightdom CSS can target
-   * the list items.
+   * Controls which end(s) of the page list are truncated with ellipsis.
+   * Accepts `'start'` | `'end'` | `'both'` | `null`. Computed automatically
+   * from page count and current index. Reflected to the host attribute so
+   * light-DOM CSS can hide overflow `<li>` elements. Defaults to `null`.
    */
   @property({ reflect: true }) overflow: 'start' | 'end' | 'both' | null = null;
 
-  /** Accessible label for the 'nav' element */
+  /** Accessible label for the `<nav>` landmark. SHOULD be unique when multiple paginations exist on a page. Defaults to `'Page navigation'`. */
   @property() label = 'Page navigation';
 
-  /** Accessible label for the 'first page' button */
+  /** Accessible label for the first-page stepper button. Used by screen readers. Defaults to `'first page'`. */
   @property({ attribute: 'label-first' }) labelFirst = 'first page';
 
-  /** Accessible label for the 'previous page' button */
+  /** Accessible label for the previous-page stepper button. Used by screen readers. Defaults to `'previous page'`. */
   @property({ attribute: 'label-previous' }) labelPrevious = 'previous page';
 
-  /** Accessible label for the 'next page' button */
+  /** Accessible label for the next-page stepper button. Used by screen readers. Defaults to `'next page'`. */
   @property({ attribute: 'label-next' }) labelNext = 'next page';
 
-  /** Accessible label for the 'last page' button */
+  /** Accessible label for the last-page stepper button. Used by screen readers. Defaults to `'last page'`. */
   @property({ attribute: 'label-last' }) labelLast = 'last page';
 
-  /** Change pagination size to small */
+  /** Controls pagination size. Accepts `'sm'` for smaller touch targets (WCAG AA) or `null` for default (WCAG AAA). Defaults to `null`. */
   @property({ reflect: true }) size: 'sm' | null = null;
 
-  /** "Open" variant */
+  /** Visual variant. Accepts `'open'` for transparent backgrounds with bottom borders, or `null` for the default box variant. Defaults to `null`. */
   @property({ reflect: true }) variant?: 'open' | null = null;
 
   @query('input') private input?: HTMLInputElement;
@@ -160,7 +166,12 @@ export class RhPagination extends LitElement {
       <!-- shared container for the numeric controls at all widths -->
       <div id="numeric" part="numeric">
         <span id="go-to-page" class="xxs-visually-hidden sm-visually-visible">
-          <!-- "Go to page" text, defaults to "Page" -->
+          <!-- summary: page input label text (go-to-page slot)
+               description: |
+                 Label text preceding the page number input field. Defaults to
+                 "Page". Customize for internationalization. Visually hidden at
+                 very small widths but always accessible to screen readers via
+                 \`aria-labelledby\`. -->
           <slot name="go-to-page">
             Page
           </slot>
@@ -174,7 +185,23 @@ export class RhPagination extends LitElement {
                @change="${this.#onChange}"
                @keyup="${this.#onKeyup}"
                .value="${currentPage}">
-        <!-- "of" text -->
+        <!-- summary: preposition text between page input and total (default: "of")
+             description: |
+               Contains the text displayed between the current page input field and the total page count.
+               Defaults to "of" but can be customized for internationalization or alternate phrasing.
+
+               **Common patterns:**
+               - Default: "of" (e.g., "Page 3 of 10")
+               - Internationalization: "de" (German), "sur" (French), etc.
+               - Alternate phrasing: "out of", "/" (slash separator)
+
+               **Best practices:**
+               - Keep text short (1-3 characters) for compact layouts
+               - Use localized prepositions for international audiences
+               - Ensure text semantically connects current and total page values
+               - Consider screen reader pronunciation when choosing text
+
+               @see [Pagination](https://ux.redhat.com/elements/pagination/) documentation -->
         <slot ?hidden="${!this.total}" name="out-of">of</slot>
         <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
       </div>
@@ -194,7 +221,12 @@ export class RhPagination extends LitElement {
            .inert="${this.#currentLink === this.#prevLink || this.#currentLink === this.#firstLink}"
            aria-label="${labelPrevious}">${L1}</a>
         <nav aria-label="${label}">
-          <!-- An ordered list of links -->
+          <!-- summary: page link list (default slot)
+               description: |
+                 An \`<ol>\` containing \`<li><a>\` elements for each page. The
+                 active page link MUST have \`aria-current="page"\` or match the
+                 current URL. Screen readers announce this as a navigation
+                 landmark labeled by the \`label\` property. -->
           <slot></slot>
         </nav>
         <!-- container for the numeric control at medium screen widths -->
