@@ -10,18 +10,22 @@
 }
 
 svg {
-  /** Override default icon size */
+  /** @summary Default (ui) icon size; uses --rh-size-icon-01 design token (16px) */
   width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
   fill: currentcolor;
   aspect-ratio: 1/1;
 }
 
 .standard svg {
+  /** @summary Standard set icon size; uses --rh-size-icon-04 design token (40px) */
   width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
 }
 
 .microns svg {
+  /** @summary Microns set icon size; constrained to 8-12px range */
   min-width: 8px;
   max-width: 12px;
+
+  /** Icon width */
   width: var(--rh-icon-size, 12px);
 }
