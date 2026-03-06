@@ -12,12 +12,36 @@ import styles from './rh-card.css' with { type: 'css' };
 const PALETTE_RE = /(er|est)+/g;
 
 /**
- * Cards are flexible surfaces used to group information in a small layout. They give small previews of information or provide secondary content in relation to the content it's near. Several cards can be used together to group related information.
+ * USE cards to group small previews of content with optional calls to action.
+ * Cards SHOULD contain a header with a heading level tag (h1-h6) and MUST NOT
+ * replace primary page content. Cards do not manage focus; interactive elements
+ * inside (links, CTAs) MUST be keyboard-accessible via Tab and activated with
+ * Enter. Screen readers announce card content in DOM order. The `promo` variant
+ * SHOULD be used for promotional content separate from the main page flow.
  *
- * @summary     Arranges content and interactive elements in a layout
+ * @summary Groups content previews with optional actions in a contained layout
  *
  * @alias card
  *
+ * @cssprop --rh-card-header-background-on-light
+ * Background color for the card header in light color palettes.
+ * Uses `light-dark()` internally. Defaults to transparent.
+ *
+ * @cssprop --rh-card-header-background-on-dark
+ * Background color for the card header in dark color palettes.
+ * Uses `light-dark()` internally. Defaults to transparent.
+ *
+ * @cssprop --rh-card-heading-font-weight
+ * Font weight for heading text. Applies to both header and body headings.
+ * Defaults to `--rh-font-weight-body-text-medium` (500).
+ *
+ * @cssprop --rh-card-heading-font-family
+ * Font family for heading text. Defaults to `--rh-font-family-heading`
+ * (RedHatDisplay). SHOULD use design system typography tokens.
+ *
+ * @cssprop --rh-card-heading-font-size
+ * Font size for heading text in the card header. Defaults to
+ * `--rh-font-size-heading-sm` (1.5rem). Body headings inherit this value.
  */
 @customElement('rh-card')
 @colorPalettes
@@ -27,19 +51,27 @@ export class RhCard extends LitElement {
 
   /**
    * Sets color palette, which affects the element's styles as well as descendants' color theme.
-   * Overrides parent color context.
-   * Your theme will influence these colors so check there first if you are seeing inconsistencies.
-   * See [CSS Custom Properties](#css-custom-properties) for default values
+   * Overrides parent color context. Accepts 'lightest' | 'lighter' | 'light' | 'dark' |
+   * 'darker' | 'darkest'. Promo variants automatically compute palette: featured promos
+   * USE the `-est` suffix, standard promos USE the `-er` suffix. Defaults to undefined
+   * (inherits from parent context). See [CSS Custom Properties](#css-custom-properties)
+   * for default values.
    */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
-   * Change the style of the card to be a "Promo"
+   * Controls the card's visual variant. Accepts 'promo' or undefined.
+   * When set to 'promo', the card renders in a promotional layout with
+   * grid-based positioning for image, body, and footer. Defaults to
+   * undefined (standard card layout). AVOID mixing promo and standard
+   * cards in the same group.
    */
   @property({ reflect: true }) variant?: 'promo';
 
   /**
-   * Change a promo with an image + body + footer to use the `full-width` style
+   * When true, a promo card bleeds to the edges of its container with no border.
+   * Only applies when `variant` is 'promo'. Requires the image slot to be populated
+   * for the full-width grid layout. Defaults to false. Boolean attribute.
    */
   @property({ reflect: true, attribute: 'full-width', type: Boolean }) fullWidth? = false;
 
@@ -75,8 +107,11 @@ export class RhCard extends LitElement {
            part="header"
            class="${classMap({ empty: !hasHeader })}">
         <!--
-          If this slot is used, we expect a heading level tag (h1, h2, h3, h4, h5, h6).
-          An icon, svg, or use of the icon component are also valid in this region.
+          summary: Card header content
+          description: |
+            MUST contain a heading level tag (h1-h6) for screen reader
+            navigation. Icons, SVGs, or rh-icon are also valid. Screen
+            readers announce this slot content first in the card.
         -->
         <slot name="header"></slot>
       </div>`;
@@ -85,7 +120,13 @@ export class RhCard extends LitElement {
       <div id="footer"
            part="footer"
            class="${classMap({ empty: !hasFooter })}">
-        <!-- Use this slot for anything that you want to be stuck to the base of the card. -->
+        <!--
+          summary: Card footer content
+          description: |
+            USE for calls to action or links anchored to the card bottom.
+            Screen readers announce footer content last. Interactive
+            elements MUST be focusable via Tab and activated with Enter.
+        -->
         <slot name="footer"></slot>
       </div>`;
     return html`
@@ -105,7 +146,13 @@ export class RhCard extends LitElement {
         <div id="image"
              part="image"
              class="${classMap({ empty: !hasImage })}">
-          <!-- Use this slot for the promo variant of the card. Images & CTA's are most often slotted here. -->
+          <!--
+            summary: Promo variant image content
+            description: |
+              USE for images or CTAs in the promo variant. Images SHOULD
+              include alt text for screen readers. Decorative images
+              SHOULD use alt="" to be hidden from assistive technology.
+          -->
           <slot name="image"></slot>
         </div>
         <!-- The body for the card. Contains the default slot. -->
@@ -113,7 +160,13 @@ export class RhCard extends LitElement {
              part="body"
              class="${classMap({ empty: !hasBody })}">
           ${!promo ? '' : header}
-          <!-- Any content that is not designated for the header or footer slot, will go to this slot. -->
+          <!--
+            summary: Card body content (default slot)
+            description: |
+              Receives all content not assigned to named slots. SHOULD
+              contain descriptive text, headings, or supporting elements.
+              Screen readers announce this between header and footer.
+          -->
           <slot></slot>
           ${!promo ? '' : footer}
         </div>
