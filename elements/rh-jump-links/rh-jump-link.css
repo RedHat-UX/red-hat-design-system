@@ -5,6 +5,7 @@
 }
 
 a {
+  /** Jump link text color */
   color: var(--rh-color-interactive-secondary-default);
   text-decoration: none;
   display: inline-block;
@@ -19,22 +20,25 @@ a {
   }
 
   &.vertical {
+    /** Jump link vertical spacing */
     padding-block: var(--rh-space-md, 8px);
     padding-inline:
       calc(var(--rh-space-lg, 16px) + var(--_padding-inline-start, 0px))
       var(--rh-space-lg, 16px);
     border-inline-start: var(--_bdr);
 
-    /** max-width for each vertical jump link */
+    /** @summary Max width of vertical links; uses --rh-length-md design token */
     max-width: var(--rh-jump-link-max-width, calc(var(--rh-length-md, 8px) * 40));
   }
 
   &.horizontal {
+    /** Jump link inner spacing */
     padding: var(--rh-space-lg, 16px);
     white-space: nowrap;
   }
 
   &:hover {
+    /** Jump link text color */
     color: var(--rh-color-text-primary);
   }
 
@@ -49,6 +53,8 @@ a {
       position: absolute;
       inset: 0;
       border: 2px solid var(--rh-color-interactive-primary-default);
+
+      /** Jump link corner rounding */
       border-radius: var(--rh-border-radius-default, 3px);
     }
   }
@@ -59,6 +65,7 @@ a {
   }
 
   &.active {
+    /** Jump link text color */
     color: var(--rh-color-text-primary);
 
     --_bdr-c: var(--rh-color-brand-red);

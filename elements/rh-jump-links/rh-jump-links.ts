@@ -19,22 +19,62 @@ import style from './rh-jump-links.css' with { type: 'css' };
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 /**
- * Jump links allow users to navigate sections of content on a page.
+ * Provides persistent in-page navigation so users can quickly jump to
+ * content sections without scrolling. Renders as a `role="navigation"`
+ * landmark; authors MUST set `accessible-label` when multiple nav
+ * landmarks exist. Supports vertical (sidebar) and horizontal (inline)
+ * orientations. Uses ScrollSpy to auto-highlight the active section.
+ * Tab moves focus between links; Enter activates the link and scrolls
+ * the page. AVOID placing more than one level of nesting.
  *
  * @alias jump-links
  *
- * @fires toggle - when the `expanded` disclosure widget is toggled
+ * @summary Persistent navigation links to page sections
+ *
+ * @fires toggle - Fired when the `expanded` disclosure widget is toggled.
+ *   Does not carry additional detail data.
  */
 @customElement('rh-jump-links')
 @themable
 export class RhJumpLinks extends LitElement {
   static readonly styles: CSSStyleSheet[] = [style];
 
-  /** Whether the layout of children is vertical or horizontal. */
+  /**
+   * Controls the layout direction of jump link items.
+   *
+   * - `vertical` (default) - Links are stacked vertically, typically displayed on the side of the page
+   * - `horizontal` - Links are arranged in a row, with overflow scroll controls when needed
+   *
+   * ## Usage guidelines
+   * - Use `vertical` for sidebar navigation on desktop layouts
+   * - Use `horizontal` for mobile-friendly layouts or when space is limited
+   * - When horizontal, scroll buttons appear automatically to navigate overflowing links
+   * - The orientation cascades to child `<rh-jump-link>` and `<rh-jump-links-list>` elements
+   *
+   * @see [Orientation](https://ux.redhat.com/elements/jump-links/style/#orientation) in Style documentation
+   */
   @provide({ context: rhJumpLinksOrientationContext })
   @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'vertical';
 
-  /** Accessible label for nav */
+  /**
+   * Accessible name for the navigation landmark.
+   *
+   * Provides an `aria-label` for the jump links navigation element, helping screen reader
+   * users identify and navigate to this section. This is especially important when multiple
+   * navigation landmarks exist on the page.
+   *
+   * ## Usage guidelines
+   * - Use a descriptive label like "On this page" or "Page sections"
+   * - Ensure the label is unique if you have multiple `<rh-jump-links>` on the page
+   * - Keep labels concise and meaningful for screen reader users
+   *
+   * ## Accessibility
+   * - Jump links use `role="navigation"` creating a navigation landmark
+   * - The accessible label helps distinguish this navigation from others on the page
+   * - Without an accessible label, screen readers will announce "navigation" without context
+   *
+   * @see [Accessibility](https://ux.redhat.com/elements/jump-links/accessibility/) documentation
+   */
   @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
 
   #internals = InternalsController.of(this, { role: 'navigation' });
@@ -88,7 +128,24 @@ export class RhJumpLinks extends LitElement {
         </button>
 
         <div id="container" role="list">
-          <!-- Place \`<rh-jump-link>\` or \`<rh-jump-links-list>\` elements here -->
+          <!-- summary: navigation link items and nested lists (default slot)
+               description: |
+                 Contains \`<rh-jump-link>\` elements that navigate to sections on the page,
+                 and optional \`<rh-jump-links-list>\` elements to create nested navigation hierarchies.
+
+                 **Common patterns:**
+                 - Individual \`<rh-jump-link>\` elements for flat navigation
+                 - \`<rh-jump-links-list>\` to group related links with expandable sections
+                 - Mix of both for multi-level page navigation
+
+                 **Best practices:**
+                 - Link to sections with IDs (href="#section-id")
+                 - Place links in the order they appear on the page for intuitive navigation
+                 - Use nested lists sparingly to avoid overwhelming users with options
+                 - Each link should correspond to a heading or landmark on the page
+
+                 @see [Jump links](https://ux.redhat.com/elements/jump-links/) documentation
+                 @see [Guidelines](https://ux.redhat.com/elements/jump-links/guidelines/) for usage patterns -->
           <slot></slot>
         </div>
 
