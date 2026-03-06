@@ -13,7 +13,3 @@
   /** Reading time text line height */
   line-height: var(--rh-line-height-body-text, 1.5);
 }
-
-:host([hidden]) {
-  display: none !important;
-}
