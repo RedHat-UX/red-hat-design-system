@@ -49,17 +49,30 @@ a:after,
   position: relative;
   white-space: var(--_rh-cta-white-space, nowrap);
   color: var(--_color);
+
+  /** CTA typeface */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+
+  /** CTA text size */
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
+
+  /** CTA line height */
   line-height: var(--rh-line-height-body-text, 1.5);
   background-color: var(--_background-color);
   border-color: var(--_border-color, transparent);
+
+  /** CTA corner rounding */
   border-radius: var(--rh-border-radius-default, 3px);
+
+  /** CTA border thickness */
   border-width: var(--rh-border-width-sm, 1px);
 
   --rh-color-surface: var(--_background-color) !important;
+
   --_arrow-size: 13px;
+
+  /** @summary Icon dimensions; uses --rh-font-size-body-text-lg design token */
   --rh-icon-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_rh-icon-plus-padding: calc(5px + var(--rh-icon-size));
 }
@@ -80,6 +93,8 @@ a:after,
   position: absolute;
   top: var(--_offset);
   left: var(--_offset);
+
+  /** CTA border thickness */
   border-width: var(--rh-border-width-sm, 1px);
   border-radius: 2px;
   outline: none;
@@ -89,6 +104,8 @@ a:after,
 /** Default variant arrow icon */
 rh-icon {
   vertical-align: middle;
+
+  /** CTA start margin */
   margin-inline-start: var(--rh-space-md, 8px);
   display: inline-block;
   fill: currentcolor;
@@ -192,10 +209,19 @@ a:focus-within,
  *****************************************************************************/
 
 :host([variant]) #container {
+  /** CTA text size */
   font-size: var(--rh-font-size-body-text-md, 1rem);
+
+  /** CTA corner rounding */
   border-radius: var(--rh-border-radius-default, 3px);
+
+  /** CTA border thickness */
   border-width: var(--rh-border-width-sm, 1px);
+
+  /** CTA horizontal spacing */
   padding-inline: var(--rh-space-2xl, 32px);
+
+  /** CTA vertical spacing */
   padding-block: var(--rh-space-lg, 16px);
 
   & a,
@@ -211,6 +237,7 @@ a:focus-within,
     }
 
     & rh-icon {
+      /** CTA start margin */
       margin-inline-start: var(--rh-space-md, 8px);
     }
   }
@@ -380,10 +407,16 @@ a:focus-within,
 
   & #container {
     border-style: solid;
+
+    /** CTA typeface */
     font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
+    /** CTA font weight */
     font-weight: var(--rh-font-weight-body-text-regular, 400);
     display: flex;
     flex-flow: row wrap;
+
+    /** CTA content gap */
     gap: var(--rh-space-md, 8px);
     justify-content: center;
     align-items: center;
