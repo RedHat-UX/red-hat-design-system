@@ -18,6 +18,18 @@
   --_current-active-child-border-color: var(--rh-color-brand-red);
   --_border-color: light-dark(transparent, var(--rh-color-border-subtle));
 
+  /**
+   * --rh-navigation-secondary-z-index
+   * Controls the stacking order of the secondary navigation bar. Defaults to 102 to ensure
+   * navigation appears above most page content but below modals and overlays.
+   *
+   * **Usage guidelines:**
+   * - Keep default value (102) for standard page layouts
+   * - Same z-index as primary navigation for consistent stacking
+   * - Increase only when navigation must appear above specific page elements
+   * - Coordinate with --rh-navigation-primary-z-index if using both navigations
+   * - Ensure navigation doesn't overlap modals (typically z-index 1000+)
+   */
   z-index: var(--rh-navigation-secondary-z-index, 102);
 }
 
@@ -43,6 +55,8 @@ nav {
   background-color:
     light-dark(var(--rh-color-surface-lighter, #f2f2f2),
       var(--rh-color-surface-dark, #383838));
+
+  /** Navigation content gap */
   gap: 0 var(--rh-space-lg, 16px);
   grid-template-rows:
     minmax(var(--_nav-min-height), var(--_nav-max-height))
@@ -99,17 +113,32 @@ button {
   display: flex;
   height: 100%;
   align-items: center;
+
+  /** Navigation typeface */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
+  /** Navigation text size */
   font-size: var(--rh-font-size-body-text-md, 1rem);
+
+  /** Navigation inner spacing */
   padding: var(--rh-space-lg, 16px);
+
+  /** Navigation top border */
   border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
+
+  /** Navigation end margin */
   margin-inline-end: var(--rh-space-lg, 16px);
   color: var(--_button-font-color);
+
+  /** Navigation background */
   background-color: var(--rh-color-surface);
+
+  /** Navigation content gap */
   gap: var(--rh-space-md, 8px);
 }
 
 button:hover {
+  /** Navigation top accent color */
   border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
 }
 
@@ -129,10 +158,12 @@ button[aria-expanded='true']:after {
 }
 
 button:focus {
+  /** Navigation top accent color */
   border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
 }
 
 :host([color-palette='dark']) button {
+  /** Navigation background */
   background-color: var(--rh-color-surface);
 }
 
@@ -141,22 +172,30 @@ button[aria-expanded='true'],
 :host([color-palette='dark']) button[aria-expanded='true'] {
   --_chevron-color: var(--rh-color-text-primary-on-light, #151515);
 
+  /** Navigation text color */
   color: var(--rh-color-text-primary-on-light, #151515);
+
+  /** Navigation background */
   background-color: var(--rh-color-surface-lightest, #ffffff);
+
+  /** Navigation top accent color */
   border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
   border-block-end: none;
 }
 
 :host([color-palette='dark']) button:active {
+  /** Navigation text color */
   color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
 :host([color-palette='dark']) button[aria-expanded='true']:active {
+  /** Navigation text color */
   color: var(--rh-color-text-primary-on-light, #151515);
 }
 
 @media screen and (min-width: 768px) {
   button {
+    /** Navigation end margin */
     margin-inline-end: var(--rh-space-2xl, 32px);
   }
 
@@ -168,6 +207,7 @@ button[aria-expanded='true'],
   }
 
   #container.expanded ::slotted([slot='cta']) {
+    /** Navigation inner spacing */
     padding: var(--rh-space-2xl, 32px) !important;
   }
 }
