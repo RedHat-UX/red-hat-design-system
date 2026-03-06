@@ -17,6 +17,8 @@ slot {
   /** @summary Small text size; uses --rh-font-size-body-text-xs design token */
   font-size: var(--rh-font-size-body-text-xs, 0.75rem);
   font-weight: 700;
+
+  /** Badge line height */
   line-height: var(--rh-line-height-body-text, 1.5);
 
   /** @summary Inline padding; uses --rh-space-md design token */
@@ -39,7 +41,10 @@ slot {
    * design token. Forces dark text for contrast.
    */
   &.caution {
+    /** Badge background */
     background-color: var(--rh-color-status-caution);
+
+    /** Badge text color */
     color: var(--rh-color-text-primary-on-light, #151515); /** maintain color contrast */
   }
 
@@ -48,7 +53,10 @@ slot {
    * design token. Forces dark text for contrast.
    */
   &.warning {
+    /** Badge background */
     background-color: var(--rh-color-status-warning);
+
+    /** Badge text color */
     color: var(--rh-color-text-primary-on-light, #151515); /** maintain color contrast */
   }
 
