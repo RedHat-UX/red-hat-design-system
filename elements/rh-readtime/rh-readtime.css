@@ -1,0 +1,15 @@
+:host {
+  display: inline;
+
+  /** Reading time text font family */
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
+  /** Reading time text size */
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+
+  /** Reading time text weight */
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
+
+  /** Reading time text line height */
+  line-height: var(--rh-line-height-body-text, 1.5);
+}
