@@ -1,9 +1,5 @@
 :host {
-  /** Controls text wrapping for slotted CTA elements. On narrow viewports,
-    * the CTA text wraps normally; at 768px+ it switches to `nowrap`.
-    * @default normal */
   --_rh-cta-white-space: normal;
-
   display: flex;
 }
 
