@@ -25,5 +25,7 @@ svg {
   /** @summary Microns set icon size; constrained to 8-12px range */
   min-width: 8px;
   max-width: 12px;
+
+  /** Icon width */
   width: var(--rh-icon-size, 12px);
 }
