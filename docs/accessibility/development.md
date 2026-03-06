@@ -78,7 +78,7 @@ You can hide `<svg>` elements from assistive tech with an `aria-hidden="true"` a
 <svg aria-hidden="true">...</svg>
 ```
 
-Carie Fisher explores several patterns (including the above) for embedding accessible SVGs in her 2021 [Smashing Magaine article][smashingmagainearticle].
+Carie Fisher explores several patterns (including the above) for embedding accessible SVGs in her 2021 [Smashing Magazine article][smashingmagazinearticle].
 
 ## Web standards and semantics
 
@@ -114,7 +114,7 @@ Heydon Pickering describes his [Inclusive Components][inclusivecomponents] as "a
 
 ## Interactivity
 
-The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelines (WCAG) 2.1 A and AA apply to developing interactive elements:
+The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelines (WCAG) 2.2 A and AA apply to developing interactive elements:
 
 - Ensure that content that appears on hover or focus is dismissable, hoverable, and persistent for keyboard and mouse users. ([1.4.13 Content on Hover or Focus - Level AA][wcag22u1413])
 - Ensure that all interactive elements can be accessed via keyboard. ([2.1.1 Keyboard - Level A][wcag22ukeyb])
@@ -132,7 +132,7 @@ The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelin
 
 ### Hiding elements
 
-The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelines (WCAG) 2.1 A and AA apply to dyanmic content:
+The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelines (WCAG) 2.2 A and AA apply to dyanmic content:
 
 - Ensure content that appears or disappears on changes to mouse hover or keyboard focus is dismissable, hoverable, and persistent. ([1.4.13 Content on Hover or Focus - Level AA][wcag22u1413])
 
@@ -173,7 +173,7 @@ If the focus cannot be moved away from a focusable element by keyboard alone, a 
 
 ## Error Handling
 
-The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelines (WCAG) 2.1 A and AA apply to error handling:
+The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelines (WCAG) 2.2 A and AA apply to error handling:
 
 - Use text to identify and describe errors that are automatically detected. ([3.3.1 Error Identification - Level A][wcag22uerror])
 - Use text labels and instructions for user input. ([3.3.2 Labels or Instructions - Level A][wcag22ulabels])
@@ -208,7 +208,7 @@ Mobile users must be permitted to reorient their screen at will between landscap
 [patterns]: https://www.w3.org/WAI/ARIA/apg/patterns/
 [practices]: https://www.w3.org/WAI/ARIA/apg/practices/
 [rovingtabindex]: https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#keyboardnavigationbetweencomponents
-[smashingmagainearticle]: https://www.smashingmagaine.com/2021/05/accessible-svg-patterns-comparison/
+[smashingmagazinearticle]: https://www.smashingmagazine.com/2021/05/accessible-svg-patterns-comparison/
 [tabscomponent]: https://www.w3.org/WAI/ARIA/apg/patterns/tabs/#wai-ariaroles,states,andproperties
 [waiariarecommends]: https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#focusabilityofdisabledcontrols
 [wcagnokeyboardtrap]: https://www.w3.org/WAI/WCAG22/Understanding/no-keyboard-trap.html
