@@ -1,16 +1,16 @@
 :host {
   display: inline;
 
-  /** Body text font family design token @see https://ux.redhat.com/tokens/ */
+  /** Reading time text font family */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
 
-  /** Body text font size design token */
+  /** Reading time text size */
   font-size: var(--rh-font-size-body-text-md, 1rem);
 
-  /** Regular font weight design token */
+  /** Reading time text weight */
   font-weight: var(--rh-font-weight-body-text-regular, 400);
 
-  /** Body text line height design token */
+  /** Reading time text line height */
   line-height: var(--rh-line-height-body-text, 1.5);
 }
 
