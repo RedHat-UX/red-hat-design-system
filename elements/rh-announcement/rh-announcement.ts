@@ -25,11 +25,12 @@ export class AnnouncementCloseEvent extends Event {
 }
 
 /**
- * Full-width banner for promoting events or important messages. SHOULD
- * be placed above primary navigation. USE `dismissable` to add a close
- * button. Supports `color-palette` for light/dark themes. Tab and
- * Enter MUST activate interactive elements. Slotted content provides
- * screen reader context; SHOULD include meaningful text.
+ * Announcements are flexible surfaces used to group information in a full width
+ * banner layout, traditionally across the top of a page. They are used to
+ * announce new features, promos, or news. Use `dismissable` to add a close
+ * button. Supports `color-palette` for light/dark themes. Keyboard users
+ * should be able to tab to and activate interactive elements. Slotted content
+ * provides screen reader context and should include meaningful text.
  *
  * @summary Full-width promotional or informational banner
  *
@@ -37,7 +38,7 @@ export class AnnouncementCloseEvent extends Event {
  *
  * @fires {AnnouncementCloseEvent} close - Fires when the user clicks the dismiss button.
  *        Cancelling this event prevents the element from being removed from the page.
- *        When cancelling the event, you MUST ensure that some UI appears - e.g. a confirm
+ *        When cancelling the event, you must ensure that some UI appears - e.g. a confirm
  *        dialog - to avoid confusing the user with a close button that does nothing.
  */
 @customElement('rh-announcement')
@@ -50,7 +51,7 @@ export class RhAnnouncement extends LitElement {
    * Sets the color context for child components, overriding any inherited
    * parent context. Valid values include `light`, `dark`, and other
    * palette names defined by the design system. Determines surface and
-   * text colors. SHOULD contrast with adjacent surfaces (e.g., AVOID
+   * text colors. Should contrast with adjacent surfaces (e.g., avoid
    * using a dark announcement above a dark navigation).
    */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
@@ -59,7 +60,7 @@ export class RhAnnouncement extends LitElement {
    * When true, renders a close button that allows the user to dismiss the
    * announcement. Pressing Enter or Space on the close button fires a
    * cancelable `close` event. If the event is not canceled, the element is
-   * removed from the DOM. Defaults to `false`.
+   * removed from the DOM.
    */
   @property({ reflect: true, type: Boolean }) dismissable = false;
 
@@ -95,27 +96,28 @@ export class RhAnnouncement extends LitElement {
                class="${classMap({ empty: !this.#slots.hasSlotted('image') })}">
             <!-- summary: optional visual such as an icon, logo, or image
                  description: |
-                   Accepts an \`<img>\`, \`<svg>\`, or \`<rh-icon>\` element. Images
-                   SHOULD have explicit \`width\` and \`height\` attributes set.
-                   Images MAY include \`role="presentation"\`. Icons MAY include an \`accessible-label\`.
-                   Max recommended height is 48px for icons or 20-25px for text logos. -->
+                   Accepts an \`<img>\`, \`<svg>\`, or \`<rh-icon>\` element.
+                   Should have explicit \`width\` and \`height\` attributes set.
+                   Images using this slot must follow accessibility best practices.
+                   Max recommended height is 48px for image logos/icons or 20-25px for text-based logos. -->
             <slot name="image"></slot>
           </div>
           <div id="content">
             <div id="body" class="${classMap({ empty: this.#slots.isEmpty(null) })}">
               <!-- summary: main body text content for the announcement
                    description: |
-                     USE a \`<p>\` element for body text. Content SHOULD be
+                     Use a \`<p>\` element for body text. Content should be
                      concise (65 characters max recommended). Screen readers
-                     will read this content in DOM order. AVOID long or
+                     will read this content in DOM order. Avoid long or
                      multi-paragraph content. -->
               <slot></slot>
             </div>
             <div id="cta" class="${classMap({ empty: !this.#slots.hasSlotted('cta') })}">
               <!-- summary: call-to-action link for the announcement
                    description: |
-                     MUST contain an \`<rh-cta>\` element with an \`href\`
-                     attribute. CTA text SHOULD be 25 characters or fewer. -->
+                     Must contain an \`<rh-cta>\` element with an \`href\`
+                     attribute. CTA text should follow established guidelines;
+                     ideally keeping character counts to less than 25 characters. -->
               <slot name="cta"></slot>
             </div>
           </div>
