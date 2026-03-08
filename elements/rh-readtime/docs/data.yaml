@@ -1,14 +1,10 @@
 $schema: ../../../docs/schemas/element-data.schema.json
-tagName: rh-code-block
-name: Code block
+tagName: rh-readtime
+name: Read time
 type: element
 overallStatus: ready
 libraries:
   figma: ready
   rhds: ready
   shared: planned
-  docs: ready
-relatedItems:
-  - rh-blockquote
-  - rh-card
-  - rh-dialog
+  docs: planned
