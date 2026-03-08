@@ -1,24 +1,24 @@
 ## Style
 
-A code block displays read-only code-formatted text within a flexible container.
+A code block displays read-only and code-formatted text. Included are buttons to copy the code text or toggle how it is displayed in the container.
 
 ### Anatomy
 
 <figure>
-  <uxdot-example width-adjustment="503px">
+  <uxdot-example width-adjustment="1012px">
     <img src="../code-block-style-anatomy.svg"
          alt="Code block anatomy showing six annotations. See figcaption below for more information."
-         width="503"
-         height="192">
+         width="1012"
+         height="432">
   </uxdot-example>
   <figcaption>
     <ol>
       <li>Line numbers</li>
       <li>Code text</li>
-      <li>Copy button</li>
-      <li>Wrap button</li>
-      <li>Expand/collapse</li>
-      <li>Container</li>
+      <li>Expand/collapse button</li>
+      <li>Copy to clipboard button</li>
+      <li>Toggle overflow button</li>
+      <li>Toggle word wrapping button</li>
     </ol>
   </figcaption>
 </figure>
@@ -29,21 +29,21 @@ Code block is available for both light and dark color schemes.
 
 ### Light scheme
 
-<uxdot-example color-palette="lightest" width-adjustment="503px">
+<uxdot-example color-palette="lightest" width-adjustment="1012px">
   <img src="../code-block-style-scheme-light.svg"
        alt="Light scheme code block has a gray background and black text"
-       width="503"
-       height="192">
+       width="1012"
+       height="200">
 </uxdot-example>
 
 
 ### Dark scheme
 
-<uxdot-example color-palette="darkest" width-adjustment="503px">
+<uxdot-example color-palette="darkest" width-adjustment="1012px">
   <img src="../code-block-style-scheme-dark.svg"
        alt="Dark scheme code block has a dark gray background thats slightly lighter than black and white text"
-       width="503"
-       height="192">
+       width="1012"
+       height="200">
 </uxdot-example>
 
 ## Variants
@@ -52,65 +52,51 @@ Code block is available for both light and dark color schemes.
 
 A code block may or may not show line numbers.
 
-<uxdot-example width-adjustment="495px">
+<uxdot-example width-adjustment="1012px">
   <img src="../code-block-style-variants-line-numbers.svg"
        alt="Two code blocks. One with and one without line numbers."
-       width="495"
-       height="416">
+       width="1012"
+       height="432">
 </uxdot-example>
 
-<rh-table>
+### Fixed width
 
-| Property                | Light scheme                | Dark scheme                 |
-|-------------------------|-----------------------------|-----------------------------|
-| Line numbers text color | `--rh-color-text-secondary` | `--rh-color-text-secondary` |
-| Line numbers border     | `--rh-color-border-subtle`  | `--rh-color-border-subtle`  |
+A code block can adhere to the width of code text or be a fixed width.
 
-</rh-table>
-
-### Configuration
-
-### Line numbers
-
-A code block may or may not show line numbers.
-
-<uxdot-example width-adjustment="503px">
-  <img src="../code-block-style-variants-line-numbers.svg"
-       alt="Two code blocks, one with line numbers and one without"
-       width="503"
-       height="416">
+<uxdot-example width-adjustment="1012px">
+  <img src="../code-block-style-variants-fixed-width.svg"
+       alt="Two code blocks. One short, taking up 70% width and one 100% width."
+       width="1012"
+       height="624">
 </uxdot-example>
 
-<rh-table>
+### Compact size
 
-| Property                | Light Scheme                | Dark Scheme                 |
-|-------------------------|-----------------------------|-----------------------------|
-| Line numbers text color | `--rh-color-text-secondary` | `--rh-color-text-secondary` |
-| Line numbers border     | `--rh-color-border-subtle`  | `--rh-color-border-subtle`  |
+The Large size is the default and there is a Compact size for smaller use cases like mobile.
 
-</rh-table>
+<uxdot-example width-adjustment="1012px">
+  <img src="../code-block-style-variants-compact-size.svg"
+       alt="Two code blocks. The top is the default/large code block with larger text and more padding. The bottom is the compact code block with a slightly smaller font size and less exterior padding."
+       width="1012"
+       height="475">
+</uxdot-example>
 
-### Expand or collapse
+### Syntax highlighting
 
-A code block may expand or collapse to display more or less code. There must be at least 5 lines of code in order to display this feature.
+Code text can be highlighted with various colors to enhance readability.
 
-<rh-alert state="info">
-  <h3 slot="header">Helpful tip</h3>
-  <p>A code block is always collapsed by default if there are at least 5 lines of code.</p>
-</rh-alert>
-
-<uxdot-example width-adjustment="599px">
-  <img src="../code-block-style-variants-expand-collapse.svg"
-       alt="Three code blocks. One short, 3 line code block without an expand button. The next is a collapsed code block that has more than 5 lines with an expand/collapse button. The third is an expanded code block."
-       width="599"
-       height="680">
+<uxdot-example width-adjustment="1012px">
+  <img src="../code-block-style-variants-syntax-highlighting.svg"
+       alt="Two code blocks. One default and one compact. Both have an example rh-alert HTML that is syntax highlighted."
+       width="1012"
+       height="515">
 </uxdot-example>
 
 ## Space
 
-<uxdot-example width-adjustment="599px">
+<uxdot-example width-adjustment="1012px">
   <img src="../code-block-style-space.svg"
-       alt="Code block has 24px padding around the outer edges, 16px between the line numbers and the code excerpt, 8px around the show more button, and 16px margin top between the code and the show more button."
-       width="599"
-       height="688">
+       alt="The default code block has 32px padding around the outer edges, 16px between the line numbers and the code excerpt, 8px around the show more button, and 16px margin top between the code and the show more button. The compact code block decreases outer padding to 16px and the gap between the code and line numbers/floating action buttons is 8px."
+       width="1012"
+       height="960">
 </uxdot-example>
