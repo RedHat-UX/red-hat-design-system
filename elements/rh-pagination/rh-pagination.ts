@@ -215,7 +215,7 @@ export class RhPagination extends LitElement {
                    name="page"
                    min=1
                    max="${this.total}"
-                   value="${currentPage}">
+                   .value="${currentPage}">
           </form>
           <!-- Inline text separator between the page input and total count.
                Consumers SHOULD localize for screen reader accessibility. -->
