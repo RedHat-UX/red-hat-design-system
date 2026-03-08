@@ -68,10 +68,38 @@ export class RhFooter extends LitElement {
 
   override connectedCallback() {
     super.connectedCallback();
-    this.#internals.role = 'contentinfo';
+    this.#updateRole();
     this.#compact = !this.screenSize.matches.has('md');
     // wire up accessibility aria-labels with unordered lists
     this.updateAccessibility();
+  }
+
+  /**
+   * Check if this element is nested inside a `<footer>`.
+   * If not, set role="contentinfo" on the host via InternalsController.
+   * NOTE: Does not check for other custom elements with `role="contentinfo"`
+   */
+  #updateRole() {
+    let node: HTMLElement | null | undefined = this.parentElement;
+    let hasFooterAncestor = false;
+
+    while (node) {
+      if (node.tagName === 'FOOTER') {
+        hasFooterAncestor = true;
+        break;
+      }
+
+      if (node.shadowRoot?.querySelector('footer')) {
+        hasFooterAncestor = true;
+        break;
+      }
+
+      node = node.parentElement;
+    }
+
+    if (!hasFooterAncestor) {
+      this.#internals.role = 'contentinfo';
+    }
   }
 
   override render() {

@@ -52,9 +52,26 @@ export class RhFooterUniversal extends LitElement {
     'tertiary',
   );
 
+  #hasAncestorH2 = false;
+
   override connectedCallback() {
     super.connectedCallback();
     this.#updateRole();
+    this.#hasAncestorH2 = this.#detectAncestorH2();
+  }
+
+  /** Check if an h2 already exists in the parent context. */
+  #detectAncestorH2(): boolean {
+    let node: HTMLElement | null | undefined = this.parentElement;
+    while (node) {
+      if (node?.closest('h2')
+        || node?.querySelector('h2')
+        || node?.shadowRoot?.querySelector('h2')) {
+        return true;
+      }
+      node = node.parentElement;
+    }
+    return false;
   }
 
   /**
@@ -93,20 +110,9 @@ export class RhFooterUniversal extends LitElement {
   override render() {
     const hasTertiary = this.#slots.hasSlotted('tertiary');
 
-    // determine if h2 already exists in parent context
-    let node: HTMLElement | null | undefined = this.parentElement;
-    let h2: HTMLElement | null | undefined = null;
-    while (!!node && !h2) {
-      h2 = h2
-        || node?.closest('h2')
-        || node?.querySelector('h2')
-        || node?.shadowRoot?.querySelector('h2');
-      node = node.parentElement;
-    }
-
     return html`
       <div class="footer">
-        <h2 id="global-heading" ?hidden="${!!h2}">
+        <h2 id="global-heading" ?hidden="${this.#hasAncestorH2}">
           <!-- Visually-hidden heading announced by screen readers to identify the footer landmark. Expects inline text. Defaults to "Red Hat footer". -->
           <slot name="heading">Red Hat footer</slot>
         </h2>
