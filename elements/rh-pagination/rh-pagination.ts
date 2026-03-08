@@ -24,7 +24,11 @@ const L2 = html`
   </svg>`;
 
 /**
- * A paginator allows users to navigate between pages of related content.
+ * Allows users to navigate between pages of related content. Users MUST
+ * provide an `<ol>` of anchor links as children. The current page is
+ * determined by matching hrefs or `aria-current="page"`. Users Tab to
+ * stepper buttons and links; the input navigates on Enter. Screen
+ * readers SHOULD use the `label` attribute for the nav landmark.
  *
  * @summary Allows users to navigate content divided into pages
  *
@@ -166,6 +170,7 @@ export class RhPagination extends LitElement {
     const currentPage = this.#currentPage.toString();
 
     return html`
+      <!-- The outer flex container wrapping stepper buttons, nav, and numeric input -->
       <div id="container" part="container">
         <a id="first"
            class="stepper"
@@ -178,6 +183,9 @@ export class RhPagination extends LitElement {
            ?inert="${this.#currentLink === this.#prevLink || this.#currentLink === this.#firstLink}"
            aria-label="${labelPrevious}">${L1}</a>
         <nav aria-label="${label}">
+          <!-- MUST contain a single \`<ol>\` with \`<li><a>\` children representing each page link.
+               Screen readers announce these links within a \`<nav>\` landmark.
+               The current page link SHOULD have \`aria-current="page"\` for assistive technology. -->
           <slot></slot>
         </nav>
         <a id="next"
@@ -190,9 +198,12 @@ export class RhPagination extends LitElement {
            href="${ifDefined(lastHref)}"
            ?inert="${this.#currentLink === this.#lastLink}"
            aria-label="${labelLast}">${L2}</a>
+        <!-- The container for the page input, separator text, and total page link -->
         <div id="numeric" part="numeric">
           <form @submit="${this.#onSubmit}">
             <label for="page" class="go-to-page-text">
+              <!-- Inline text label for the numeric page input.
+                   Consumers SHOULD localize for screen reader accessibility. -->
               <slot name="go-to-page">
                 Page
               </slot>
@@ -206,6 +217,8 @@ export class RhPagination extends LitElement {
                    max="${this.total}"
                    value="${currentPage}">
           </form>
+          <!-- Inline text separator between the page input and total count.
+               Consumers SHOULD localize for screen reader accessibility. -->
           <slot ?hidden="${!this.total}" name="out-of">of</slot>
           <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
         </div>
