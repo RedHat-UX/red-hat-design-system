@@ -29,10 +29,15 @@
 
 .footer,
 .global-base {
+  /** Fill color for social-link icons. Overrides the `--rh-color-gray-40` design token default. */
   --_icon-color: var(--rh-footer-icon-color, var(--rh-color-gray-40, #a3a3a3));
+  /** Fill color for social-link icons on hover or focus. Overrides the `--rh-color-gray-30` design token default. */
   --_icon-color-hover: var(--rh-footer-icon-color-hover, var(--rh-color-gray-30, #c7c7c7));
+  /** Color of horizontal rule borders between footer sections. Overrides the `--rh-color-border-subtle-on-dark` design token default. */
   --_border-color: var(--rh-footer-border-color, var(--rh-color-border-subtle-on-dark, #707070));
+  /** Brand accent color used for decorative highlights. Overrides the `--rh-color-accent-brand-on-light` design token default. */
   --_accent-color: var(--rh-footer-accent-color, var(--rh-color-accent-brand-on-light, #ee0000));
+  /** Inline padding on each footer section. Overrides the `--rh-space-lg` design token default. */
   --_section-side-gap: var(--rh-footer-section-side-gap, var(--rh-space-lg, 16px));
   --_accordion-background: var(--rh-color-white, #ffffff);
   --_logo-width: var(--rh-size-icon-04, 40px);
@@ -122,6 +127,7 @@
 
 .main-secondary {
   display: grid;
+  /** Gap between promotional blocks in the secondary region */
   gap: var(--pf-global--spacer--xl, 32px);
   place-items: baseline;
   place-content: start;
@@ -163,6 +169,7 @@
 
 .global-secondary {
   grid-area: secondary;
+  /** Secondary text color for legal and copyright content in the universal footer */
   color: var(--rh-color-text-secondary);
   display: flex;
   flex-direction: column;
@@ -219,6 +226,7 @@
 }
 
 .isMobile .links {
+  /** Font size for link-column headings on mobile. Overrides the `--rh-font-size-body-text-lg` design token default. */
   --rh-footer-link-header-font-size: var(--rh-font-size-body-text-lg, 1.125rem);
 }
 
@@ -330,6 +338,7 @@
 }
 
 [part='base']:not(.isMobile) .links ::slotted(ul) {
+  /** Vertical gap between link items in a column. Overrides the `--rh-space-lg` design token default. */
   gap: var(--rh-footer-links-gap, var(--rh-space-lg, 16px));
   display: flex;
   flex-direction: column;
@@ -343,9 +352,11 @@
   font-weight: var(--rh-font-weight-heading-medium, 500) !important;
   margin-block: 0 !important;
   margin-block-start: var(--_link-header-margin, 0) !important;
+  /** Font size for link-column headings. Overrides the `--rh-font-size-body-text-sm` design token default. */
   font-size:
     var(--rh-footer-link-header-font-size,
       var(--rh-font-size-body-text-sm, 0.875rem)) !important;
+  /** Primary text color for link-column headings. Uses the `--rh-color-text-primary` design token. */
   color: var(--rh-color-text-primary) !important;
 }
 
