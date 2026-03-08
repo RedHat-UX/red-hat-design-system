@@ -1,4 +1,5 @@
 :host {
+  /** Overrides the size of callout badge icons using the `--rh-size-icon-02` design token */
   --rh-code-block-callout-size: var(--rh-size-icon-02, 24px);
   --_aspect-ratio: 1;
   --_badge-size: var(--rh-code-block-callout-size);
@@ -178,6 +179,8 @@
   background-color: var(--_code-background-color);
   color: var(--rh-color-text-primary);
   border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+
+  /** Overrides the top border width, using the `--rh-border-width-sm` design token by default */
   border-block-start-width:
     var(--rh-code-block-border-block-start-width,
       var(--rh-border-width-sm, 1px));
@@ -208,6 +211,8 @@
   display: block;
   font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
   font-size: var(--_code-font-size);
+  -webkit-text-size-adjust: 100%; /* stylelint-disable-line property-no-vendor-prefix */
+  text-size-adjust: 100%;
   z-index: 1;
   place-self: start;
   grid-area: code;
@@ -281,8 +286,14 @@
   padding-inline: 0 var(--_line-number-code-gap);
   text-align: end;
   font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  -webkit-text-size-adjust: 100%; /* stylelint-disable-line property-no-vendor-prefix */
+  text-size-adjust: 100%;
+
+  /** Line number text uses the secondary text design token for reduced emphasis */
   color: var(--rh-color-text-secondary);
   font-weight: var(--rh-font-weight-code-regular, 400);
+
+  /** Separator between line numbers and code uses the subtle border design token */
   border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
 
   li {
@@ -337,6 +348,7 @@
   rh-icon {
     --rh-icon-size: 10px;
 
+    /** Expand chevron uses the secondary icon design token */
     color: var(--rh-color-icon-secondary);
     inset-block-start: 1px;
     position: relative;

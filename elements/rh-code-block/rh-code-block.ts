@@ -41,6 +41,12 @@ interface ContentVisibilityAutoStateChangeEvent extends Event {
 
 const prismApplyPromises = new WeakMap();
 
+/**
+ * Fired when the user activates the copy button via click, Enter, or Space.
+ * Provides `content` (string) for clipboard use. Listeners SHOULD modify
+ * `content` to strip prompts. MUST call `preventDefault()` to cancel.
+ * Screen reader users activate this via the keyboard-accessible button.
+ */
 export class RhCodeBlockCopyEvent extends Event {
   constructor(
     /** Text content to copy */
@@ -51,14 +57,20 @@ export class RhCodeBlockCopyEvent extends Event {
 }
 
 /**
- * A code block applies special formatting to sections of code.
+ * A code block provides formatted display of code snippets for documentation.
+ * Authors SHOULD provide a `<script type="text/...">` or `<pre>` as slot
+ * content and MUST NOT use executable script types. SHOULD be paired with a
+ * heading so screen reader users understand context. Keyboard users Tab to
+ * action buttons and activate with Enter or Space.
  *
  * @summary Formats code strings within a container
  * @alias code-block
  *
- * @fires {RhCodeBlockCopyEvent} copy - fired when the user requests to copy the code block text.
- *                                      Modify the `event.content` field to change the copied text
- *                                      (e.g. to remove a prompt from a shell command)
+ * @fires {RhCodeBlockCopyEvent} copy - Fired when the user clicks the copy
+ *        action button or activates it with Enter/Space. The event's
+ *        `content` field (string) contains the text to copy. Listeners MAY
+ *        modify `event.content` to alter the copied text (e.g. to strip a
+ *        shell prompt). Call `event.preventDefault()` to cancel the copy.
  */
 @customElement('rh-code-block')
 @themable
@@ -211,7 +223,8 @@ export class RhCodeBlock extends LitElement {
             A non-executable script tag containing the sample content. JavaScript
             samples should use the type \`text/sample-javascript\`. HTML samples
             containing script tags must escape the closing \`</script>\` tag. Can
-            also be a \`<pre>\` tag.
+            also be a \`<pre>\` tag. Screen reader users will hear the code as
+            plain text; ensure the surrounding context provides a label or heading.
           -->
           <slot id="content"
                 ?hidden="${!!this.#prismOutput}"
@@ -223,7 +236,7 @@ export class RhCodeBlock extends LitElement {
              @keyup="${this.#onActionsKeyup}">
         ${!this.actions.includes('copy') ? '' : html`
           <rh-tooltip silent>
-            <!-- Tooltip content for the copy action button -->
+            <!-- Tooltip content for the copy action button. Provides the accessible label read by screen readers when the copy button receives focus. -->
             <slot slot="content" name="action-label-copy">
               <span ?hidden="${this.copyButtonState !== 'default'}" id="copy-to-clipboard-label">Copy to Clipboard</span>
               <span ?hidden="${this.copyButtonState !== 'active'}" id="copied-label">Copied!</span>
@@ -238,7 +251,7 @@ export class RhCodeBlock extends LitElement {
           </rh-tooltip>`}
           ${!this.actions.includes('wrap') ? '' : html`
             <rh-tooltip silent>
-             <!-- Tooltip content for the wrap action button -->
+             <!-- Tooltip content for the wrap action button. Provides the accessible label read by screen readers when the wrap button receives focus. -->
              <slot id="label-wrap" slot="content" name="action-label-wrap">
                <span ?hidden="${this.wrap}">Toggle word wrap</span>
                <span ?hidden="${!this.wrap}"
