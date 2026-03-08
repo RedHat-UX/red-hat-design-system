@@ -39,6 +39,12 @@ interface ContentVisibilityAutoStateChangeEvent extends Event {
 
 const prismApplyPromises = new WeakMap();
 
+/**
+ * Fired when the user activates the copy button via click, Enter, or Space.
+ * Provides `content` (string) for clipboard use. Listeners SHOULD modify
+ * `content` to strip prompts. MUST call `preventDefault()` to cancel.
+ * Screen reader users activate this via the keyboard-accessible button.
+ */
 export class RhCodeBlockCopyEvent extends Event {
   constructor(
     /** Text content to copy */

@@ -47,6 +47,7 @@
 .shadow-fab svg {
   width: var(--rh-size-icon-02, 24px);
   height: var(--rh-size-icon-02, 24px);
+
   /** Icon color inherits the primary text design token for theme compatibility */
   color: var(--rh-color-text-primary);
 }
@@ -180,6 +181,7 @@
   background-color: var(--_code-background-color);
   color: var(--rh-color-text-primary);
   border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+
   /** Overrides the top border width, using the `--rh-border-width-sm` design token by default */
   border-block-start-width:
     var(--rh-code-block-border-block-start-width,
@@ -291,9 +293,11 @@
   font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
   -webkit-text-size-adjust: 100%; /* stylelint-disable-line property-no-vendor-prefix */
   text-size-adjust: 100%;
+
   /** Line number text uses the secondary text design token for reduced emphasis */
   color: var(--rh-color-text-secondary);
   font-weight: var(--rh-font-weight-code-regular, 400);
+
   /** Separator between line numbers and code uses the subtle border design token */
   border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
 
@@ -346,6 +350,7 @@
   height: 7px;
   rotate: var(--_expand-toggle-rotate, 180deg);
   transform: rotate 0.2s ease-in-out;
+
   /** Expand chevron uses the secondary icon design token */
   color: var(--rh-color-icon-secondary);
 }
