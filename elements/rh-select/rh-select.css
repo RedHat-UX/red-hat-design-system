@@ -1,8 +1,17 @@
 :host {
+  /** Primary text color design token for the select control */
   color: var(--rh-color-text-primary);
+
+  /** Body text font family design token */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
+  /** Small body text size design token */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+
+  /** Regular font weight design token */
   font-weight: var(--rh-font-weight-body-text-regular, 400);
+
+  /** Body text line height design token */
   line-height: var(--rh-line-height-body-text, 1.5);
 }
 
@@ -41,14 +50,22 @@
 
 #listbox-container {
   display: inline-flex;
+
+  /** Surface color design token for the dropdown, adapts to light/dark theme */
   background-color:
     light-dark(
         var(--rh-color-surface-lightest, #ffffff),
         var(--rh-color-surface-darkest, #151515)
       );
   border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+
+  /** Default border radius design token */
   border-radius: var(--rh-border-radius-default, 3px);
+
+  /** Small shadow design token for dropdown elevation */
   box-shadow: var(--rh-box-shadow-sm);
+
+  /** Medium spacing design token for vertical padding */
   padding-block: var(--rh-space-md, 8px);
   position: absolute;
   opacity: 0;
@@ -67,6 +84,7 @@
 }
 
 #toggle {
+  /** Surface color design token for the toggle, adapts to light/dark theme */
   background-color:
     light-dark(
         var(--rh-color-surface-lightest, #ffffff),
@@ -96,10 +114,18 @@
 #toggle-button {
   background-color: transparent;
   border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+
+  /** Primary text color for the toggle button label */
   color: var(--rh-color-text-primary);
   flex: 1 1 auto;
+
+  /** Body text font stack for the toggle button */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
+  /** Small body text size for the toggle button */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+
+  /** Large spacing between toggle text and icons */
   gap: var(--rh-space-lg, 16px);
   min-block-size: 37px;
   padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
@@ -193,6 +219,7 @@
 #toggle-button,
 #help-text {
   rh-icon {
+    /** Overrides the icon size design token for status and caret icons */
     --rh-icon-size: var(--rh-select-icon-size, 14px);
   }
 }

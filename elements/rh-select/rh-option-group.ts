@@ -11,11 +11,14 @@ import { RhOption } from './rh-option.js';
 import styles from './rh-option-group.css';
 
 /**
- * Groups related rh-option elements within a rh-select for visual organization.
- * Must be a child of rh-select. Should include a label attribute or label slot
- * to identify the group. When disabled, all child options are automatically disabled.
+ * Groups related `rh-option` elements within an `rh-select` for organizing
+ * options into categories. Provides visual separation when used with `<hr>`.
+ * Should include a `label` for screen readers (ARIA `group` role). When
+ * `disabled`, all child options are disabled. Arrow keys and Tab navigate
+ * through grouped options the same way as ungrouped options.
  * @summary Groups related rh-option elements within a select
  * @alias option-group
+ * @demo https://ux.redhat.com/elements/select/demo/option-group/ - Options organized into labeled groups
  */
 @customElement('rh-option-group')
 export class RhOptionGroup extends LitElement {
@@ -53,10 +56,10 @@ export class RhOptionGroup extends LitElement {
     return html`
       <div id="label-container"
            role="presentation">
-        <!-- Group label. Overrides the \`label\` attribute. -->
+        <!-- Group label as inline text. Overrides the \`label\` attribute. Screen readers announce this text when the group receives focus. -->
         <slot name="label">${this.label}</slot>
       </div>
-      <!-- Insert \`<rh-option>\` or \`<hr>\` elements -->
+      <!-- Insert \`<rh-option>\` elements. Each option must have accessible text content for screen readers. -->
       <slot></slot>
     `;
   }

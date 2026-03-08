@@ -18,6 +18,7 @@
 
 :host(:focus) #outer,
 :host(:hover) #outer {
+  /** Surface color design token for focused/hovered option, adapts to theme */
   background-color:
     light-dark(
         var(--rh-color-surface-lighter, #f2f2f2),
@@ -34,6 +35,8 @@
 
 :host(:focus) #outer {
   border: 0;
+
+  /** Default border radius design token */
   border-radius: var(--rh-border-radius-default, 3px);
   outline: var(--rh-border-width-lg, 3px) solid var(--rh-color-border-interactive);
   outline-offset: calc(var(--rh-border-width-lg, 3px) * -1);
@@ -61,6 +64,7 @@
 }
 
 rh-icon[icon='checkmark'] {
+  /** Primary interactive color design token for selected checkmark */
   color: var(--rh-color-interactive-primary-default);
 }
 
@@ -70,11 +74,14 @@ rh-icon[icon='checkmark'] {
 }
 
 slot[name='description'] {
+  /** Extra-small text size design token for option descriptions */
   font-size: var(--rh-font-size-body-text-xs, 0.75rem);
 }
 
 #display-icon {
+  /** Overrides the icon size design token for the display icon */
   --rh-icon-size: var(--rh-select-icon-size, 14px);
 
+  /** Medium spacing design token between icon and label */
   margin-inline-end: var(--rh-space-md, 8px);
 }

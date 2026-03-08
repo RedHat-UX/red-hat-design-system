@@ -15,18 +15,20 @@ import styles from './rh-option.css';
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 /**
- * A selectable option within a rh-select dropdown menu. Must be a child of rh-select
- * or rh-option-group. Should include a value attribute for form submission.
- * Must include slotted content or the label attribute for accessibility.
- * Supports optional icons and descriptions for enhanced visual presentation.
+ * An option within an `rh-select` dropdown. Must be a child of `rh-select`
+ * or `rh-option-group`. Should include a `value` attribute for form data.
+ * Must have text content or `label` for screen readers (ARIA `option` role).
+ * Press Enter/Space to select; Arrow keys to navigate between options.
  * @summary A selectable option within a select list
  * @alias option
+ * @demo https://ux.redhat.com/elements/select/demo/option-icons/ - Options with icons
+ * @demo https://ux.redhat.com/elements/select/demo/option-descriptions/ - Options with descriptions
  */
 @customElement('rh-option')
 export class RhOption extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
 
-  /** Whether option is disabled */
+  /** Whether the option is disabled and cannot be selected. Defaults to `false`. */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
   /**
@@ -50,7 +52,7 @@ export class RhOption extends LitElement {
     return this.#displayLabel ?? this.label ?? this.#value ?? '';
   }
 
-  /** Whether option is selected */
+  /** Whether the option is currently selected. Defaults to `false`. */
   @property({ type: Boolean, reflect: true }) selected = false;
 
   /** Icon set for the optional rh-icon to precede the option text - 'ui' by default */
@@ -81,13 +83,13 @@ export class RhOption extends LitElement {
                  ?hidden="${!this.icon}">
         </rh-icon>
         <span id="label">
-          <!-- Option label: slotted content or default displayLabel (label/value attr) for SSR and empty slot -->
+          <!-- Option label as inline text. Screen readers use this content as the accessible name. Falls back to the \`label\` or \`value\` attribute when empty. -->
           <slot @slotchange="${this.#onSlotChange}">${this.displayLabel}</slot>
         </span>
         <rh-icon icon="checkmark"
                  set="microns"
                  ?hidden="${!this.selected}"></rh-icon>
-        <!-- Optional option description -->
+        <!-- Optional inline or block description text displayed below the option label. Overrides the \`description\` attribute. Should be a \`<span>\` or \`<p>\` element. -->
         <slot id="description"
               name="description">${this.description ?? ''}</slot>
       </div>

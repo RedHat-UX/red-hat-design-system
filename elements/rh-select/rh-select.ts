@@ -21,10 +21,12 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 import styles from './rh-select.css';
 
 /**
- * Event type for the `change` event from rh-select. rh-select shall dispatch
+ * Event type for the `change` event from rh-select. The select shall dispatch
  * this event when the selected value changes (e.g. after the user picks an
- * option or the value is updated programmatically). The event shall bubble.
- * Listeners should use this type when handling change.
+ * option or the value is updated programmatically). The event shall bubble and
+ * provides no `detail` payload; listeners should read the new value from the
+ * select's `value` property. Consumers must use this class when they need to
+ * construct a synthetic change event.
  * @summary Event fired when the select value changes
  */
 export class RhSelectChangeEvent extends Event {
@@ -34,14 +36,16 @@ export class RhSelectChangeEvent extends Event {
 }
 
 /**
- * An control for selecting from a list of options. Must contain rh-option children, optionally
- * grouped with rh-option-group. Supports keyboard navigation, type-to-select search, and form
- * integration. Should include an associated label or accessible label for screen reader support.
+ * A control for selecting from a list of options. Must contain `rh-option`
+ * children. Provides keyboard navigation per the APG Select-Only Combobox
+ * pattern: Arrow keys navigate, Enter/Space select, Escape closes. Should
+ * include a `<label>` or `accessible-label` so screen readers can announce
+ * the ARIA combobox role and current selection.
  * @summary A control that provides a menu of options
  * @alias select
- * @fires open - when the menu toggles open
- * @fires close - when the menu toggles closed
- * @fires change - when the value of the select changes
+ * @fires {Event} open - Fires when the dropdown listbox opens. Does not bubble. The event has no `detail` payload.
+ * @fires {Event} close - Fires when the dropdown listbox closes. Does not bubble. The event has no `detail` payload.
+ * @fires {RhSelectChangeEvent} change - Fires when the selected value changes. Bubbles. The event has no `detail` payload; read the new value from the `value` property.
  */
 @customElement('rh-select')
 export class RhSelect extends LitElement {
@@ -301,11 +305,11 @@ export class RhSelect extends LitElement {
                        disabled
                        ?inert="${placeholderIsInert || hasSelection}"
                        ?hidden="${!placeholder && this.#slots.isEmpty('placeholder')}">
-              <!-- placeholder text for the select. Overrides the \`placeholder\` attribute. -->
+              <!-- Placeholder inline text for the select. Overrides the \`placeholder\` attribute. Screen readers announce this text as the default label when no other label is provided. -->
               <slot name="placeholder">${placeholder ?? ''}</slot>
             </rh-option>
             ${this.#combobox.renderItemsToShadowRoot()}
-            <!-- insert \`rh-option\` and/or \`rh-option-groups\` here -->
+            <!-- Insert \`rh-option\` elements and optional \`rh-option-group\` or \`hr\` separator elements. Each \`rh-option\` must have accessible text content (slotted text or \`label\` attribute) so screen readers can announce it. -->
             <slot @slotchange="${this.#onSlotchange}"></slot>
           </div>
         </div>
@@ -325,7 +329,7 @@ export class RhSelect extends LitElement {
                    set="ui"
                    icon="ban-fill">
           </rh-icon>
-          <!-- Insert a paragraph tag with text that helps describe the select. Overrides the \`help-text\` attribute when slotted. -->
+          <!-- Insert a block element (e.g. \`<p>\`) with text that helps describe the select. Overrides the \`help-text\` attribute when slotted. Content is automatically linked to the control via \`aria-describedby\` so screen readers announce it. -->
           <slot id="help-text-content" name="help-text"><span aria-hidden="true">${this.helpText ?? ''}</span></slot>
         </div>
       </div>
