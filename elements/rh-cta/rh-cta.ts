@@ -95,7 +95,7 @@ export class RhCta extends LitElement {
           element. Less preferred but allowed for specific use-cases
           include: \`<button>\` (note however that the \`button\` tag is not
           supported for the default CTA styles).
-    --><slot></slot>${follower}`;
+    --><slot></slot>&nbsp;${follower}`;
     const linkContent =
         !href ? slot
       : html`<a href=${href}

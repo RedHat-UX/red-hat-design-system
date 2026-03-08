@@ -89,7 +89,7 @@ a:after,
 /** Default variant arrow icon */
 rh-icon {
   vertical-align: middle;
-  margin-inline-start: var(--rh-space-md, 8px);
+  margin-inline-start: calc(var(--rh-space-md, 8px) / 2);
   display: inline-block;
   fill: currentcolor;
   translate: 0 0;
