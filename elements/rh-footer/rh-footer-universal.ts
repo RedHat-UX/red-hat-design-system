@@ -14,14 +14,16 @@ import style from './rh-footer.css' with { type: 'css' };
 import './rh-footer-copyright.js';
 
 /**
- * Abbreviated footer with consistent content across all sites. Use for
- * standalone pages (landing, minisites) when you need one footer. Provides
- * logo, link groups, and optional tertiary area. Use alone or inside
- * \`<rh-footer>\`. When outside \`<rh-footer>\`, receives role="contentinfo".
- * Should include a visible heading (e.g. heading slot) for assistive tech.
+ * Abbreviated footer for content shared across all Red Hat sites. Use
+ * standalone or inside `<rh-footer>`. MUST NOT be wrapped in a native
+ * `<footer>` — when standalone, sets the ARIA `contentinfo` landmark
+ * role via ElementInternals. SHOULD include a heading slot for screen
+ * readers. Tab moves focus between links. No special keyboard
+ * interaction beyond standard link navigation.
  *
  * @summary An abbreviated footer with content that stays the same across all websites
  *
+ * @demo https://ux.redhat.com/elements/footer/demo/footer-universal/ - Standalone universal footer
  * @alias footer-universal
  */
 @customElement('rh-footer-universal')
@@ -105,10 +107,7 @@ export class RhFooterUniversal extends LitElement {
     return html`
       <div class="footer">
         <h2 id="global-heading" ?hidden="${!!h2}">
-          <!--
-            slot:
-              description: Heading for the footer region; announced to assistive technology. Defaults to "Red Hat footer".
-          -->
+          <!-- Visually-hidden heading announced by screen readers to identify the footer landmark. Expects inline text. Defaults to "Red Hat footer". -->
           <slot name="heading">Red Hat footer</slot>
         </h2>
         <!--
@@ -116,20 +115,14 @@ export class RhFooterUniversal extends LitElement {
             description: Wrapper for the universal footer content (logo, primary, secondary, tertiary).
         -->
         <div class="section global-base ${classMap({ hasTertiary })}" part="section base">
-          <!--
-            slot:
-              description: Replaces the default layout. Use to supply logo, primary row, secondary row, and optional tertiary content.
-          -->
+          <!-- Replaces the default layout. AVOID using; it removes all built-in ARIA structure. Expects block-level elements. -->
           <slot name="base">
             <!--
               part:
                 description: Container for the logo slot.
             -->
             <div class="global-logo" part="logo">
-              <!--
-                slot:
-                  description: Logo or brand mark (e.g. link + image or SVG). Defaults to Red Hat logo.
-              -->
+              <!-- Logo or brand mark. Expects an anchor wrapping an \`<img>\` or \`<svg>\` with descriptive alt text for screen readers. Defaults to Red Hat logo. -->
               <slot name="logo">
                 <!--
                   part:
@@ -167,20 +160,14 @@ export class RhFooterUniversal extends LitElement {
                 description: Primary row (start, links, end).
             -->
             <div class="global-primary" part="primary">
-              <!--
-                slot:
-                  description: Content for the primary row; use primary-start, links-primary, and primary-end slots.
-              -->
+              <!-- Content for the primary row. Expects block-level elements using the primary-start, links-primary, and primary-end slots. -->
               <slot name="primary">
                 <!--
                   part:
                     description: Left area of the primary row.
                 -->
                 <div class="global-primary-start" part="primary-start" ?hidden=${!this.#slots.hasSlotted('primary-start')}>
-                  <!--
-                    slot:
-                      description: Optional content at the start of the primary row.
-                  -->
+                  <!-- Optional content at the start of the primary row. Expects block-level elements. -->
                   <slot name="primary-start"></slot>
                 </div>
                 <!--
@@ -188,10 +175,7 @@ export class RhFooterUniversal extends LitElement {
                     description: Main link list area in the primary row.
                 -->
                 <div class="global-links-primary" part="links-primary" ?hidden=${!this.#slots.hasSlotted('links-primary')}>
-                  <!--
-                    slot:
-                      description: Primary links (e.g. About, Contact). Use a heading and \`<ul>\` with \`<a>\` items.
-                  -->
+                  <!-- Primary links (e.g. About, Contact). Expects a heading and \`<ul>\` with \`<a>\` items. Each heading SHOULD have a unique id for \`aria-labelledby\`. -->
                   <slot name="links-primary"></slot>
                 </div>
                 <!--
@@ -199,10 +183,7 @@ export class RhFooterUniversal extends LitElement {
                     description: Right area of the primary row.
                 -->
                 <div class="global-primary-end" part="primary-end" ?hidden=${!this.#slots.hasSlotted('primary-end')}>
-                  <!--
-                    slot:
-                      description: Optional content at the end of the primary row (e.g. \`<rh-footer-copyright>\`).
-                  -->
+                  <!-- Optional content at the end of the primary row (e.g. \`<rh-footer-copyright>\`). Expects block-level elements. -->
                   <slot name="primary-end"></slot>
                 </div>
               </slot>
@@ -217,20 +198,14 @@ export class RhFooterUniversal extends LitElement {
                 description: Secondary row (start, links, end).
             -->
             <div class="global-secondary" part="secondary">
-              <!--
-                slot:
-                  description: Content for the secondary row; use secondary-start, links-secondary, and secondary-end slots.
-              -->
+              <!-- Content for the secondary row. Expects block-level elements using the secondary-start, links-secondary, and secondary-end slots. -->
               <slot name="secondary">
                 <!--
                   part:
                     description: Left area of the secondary row.
                 -->
                 <div class="global-secondary-start" part="secondary-start" ?hidden=${!this.#slots.hasSlotted('secondary-start')}>
-                  <!--
-                    slot:
-                      description: Optional content at the start of the secondary row.
-                  -->
+                  <!-- Optional content at the start of the secondary row. Expects block-level elements. -->
                   <slot name="secondary-start"></slot>
                 </div>
                 <!--
@@ -238,10 +213,7 @@ export class RhFooterUniversal extends LitElement {
                     description: Main link list area in the secondary row.
                 -->
                 <div class="global-links-secondary" part="links-secondary" ?hidden=${!this.#slots.hasSlotted('links-secondary')}>
-                  <!--
-                    slot:
-                      description: Secondary links (e.g. Privacy, Terms). Use a heading and \`<ul>\` with \`<a>\` items.
-                  -->
+                  <!-- Secondary links (e.g. Privacy, Terms). Expects a heading and \`<ul>\` with \`<a>\` items. Each heading SHOULD have a unique id for \`aria-labelledby\`. -->
                   <slot name="links-secondary"></slot>
                 </div>
                 <!--
@@ -249,10 +221,7 @@ export class RhFooterUniversal extends LitElement {
                     description: Right area of the secondary row.
                 -->
                 <div class="global-secondary-end" part="secondary-end" ?hidden=${!this.#slots.hasSlotted('secondary-end')}>
-                  <!--
-                    slot:
-                      description: Optional content at the end of the secondary row.
-                  -->
+                  <!-- Optional content at the end of the secondary row. Expects block-level elements. -->
                   <slot name="secondary-end"></slot>
                 </div>
               </slot>
@@ -262,10 +231,7 @@ export class RhFooterUniversal extends LitElement {
                 description: Optional bottom section (e.g. copyright, extra text).
             -->
             <div class="global-tertiary" part="tertiary" ?hidden=${!this.#slots.hasSlotted('tertiary')}>
-              <!--
-                slot:
-                  description: Tertiary content below primary and secondary rows.
-              -->
+              <!-- Tertiary content below primary and secondary rows. Expects block-level elements. -->
               <slot name="tertiary"></slot>
             </div>
           </slot>
