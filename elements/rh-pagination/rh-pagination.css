@@ -27,7 +27,8 @@
 
 #container {
   --_numeric-a-color:
-    var(--rh-pagination-accent-color, var(--rh-color-interactive-primary-default));
+    var(--rh-pagination-accent-color,
+      var(--rh-color-interactive-primary-default));
   --_numeric-a-color-hover: var(--rh-color-interactive-primary-hover);
   --_numeric-a-color-focus:
     var(--rh-pagination-accent-color,
@@ -92,6 +93,7 @@ svg {
 .stepper {
   background-color: var(--_stepper-bg-color);
   border: var(--rh-border-width-sm, 1px) solid transparent;
+
   /** Sets the fill color of stepper arrow icons, using the `--rh-color-gray-50` token */
   color: var(--rh-pagination-stepper-color, var(--rh-color-gray-50, #707070));
   display: grid;
@@ -107,8 +109,11 @@ svg {
     border-radius: var(--rh-border-radius-default, 3px);
     outline-offset: -2px;
     outline: var(--rh-border-width-md, 2px) solid transparent;
-    /** Sets the accent color for focus outlines, falls back to `--rh-color-interactive-primary-default` */
-    outline-color: var(--rh-pagination-accent-color, var(--rh-color-interactive-primary-default));
+
+    /** Sets the accent color for focus outlines */
+    outline-color:
+      var(--rh-pagination-accent-color,
+        var(--rh-color-interactive-primary-default));
   }
 
   &:hover:after,
@@ -139,6 +144,7 @@ svg {
 
   &[inert] {
     pointer-events: none;
+
     /** Sets the color of disabled stepper icons, using `--rh-color-icon-status-disabled` token */
     color: var(--rh-pagination-background-focused);
     background-color: var(--_stepper-bg-color);
