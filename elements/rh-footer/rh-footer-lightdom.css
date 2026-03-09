@@ -1,4 +1,6 @@
+/** @summary Light DOM link styles for footer. Uses --rh-color-interactive-primary-default design token */
 :is(rh-footer, rh-footer-universal) a {
+  /** Footer text color */
   color: var(--rh-color-interactive-primary-default);
   text-decoration: none;
 }
@@ -18,6 +20,8 @@ rh-footer [slot^='links'] a {
 
 :is(rh-footer, rh-footer-universal) [slot^='links'] a {
   display: block;
+
+  /** Footer text color */
   color: var(--rh-color-text-primary) !important;
   font-size: var(--rh-footer-link-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
   width: fit-content;
@@ -28,6 +32,7 @@ rh-footer-universal [slot^='links'] a {
 }
 
 :is(rh-footer, rh-footer-universal) a:hover {
+  /** Footer text color */
   color: var(--rh-color-interactive-primary-hover);
   text-decoration: underline var(--rh-border-width-sm, 1px) dashed;
   text-decoration-color: inherit;
@@ -38,6 +43,7 @@ rh-footer-universal [slot^='links'] a {
 }
 
 :is(rh-footer, rh-footer-universal) a:is(:focus, :focus-within) {
+  /** Footer text color */
   color: var(--rh-color-interactive-primary-hover);
   text-decoration: underline dashed var(--rh-border-width-sm, 1px);
   text-decoration-color: inherit;
@@ -48,6 +54,7 @@ rh-footer-universal [slot^='links'] a {
 }
 
 :is(rh-footer, rh-footer-universal) a:visited {
+  /** Footer text color */
   color: var(--rh-color-interactive-primary-hover);
   text-decoration: none;
 }
@@ -77,12 +84,19 @@ rh-footer-universal [slot^='links'] a {
   display: block;
   width: auto;
   height: 100%;
+
+  /** Footer height */
   height: var(--rh-size-icon-04, 40px);
 }
 
 :is(rh-footer, rh-footer-universal) :is(h1, h2, h3, h4, h5, h6) {
+  /** Footer text color */
   color: var(--rh-color-text-primary);
+
+  /** Footer typeface */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+
+  /** Footer line height */
   line-height: var(--rh-line-height-heading, 1.3);
 }
 
@@ -126,6 +140,7 @@ rh-footer [slot='links']:is(h1, h2, h3, h4, h5):nth-of-type(n+5) {
 rh-footer:not(:defined) {
   --_section-side-gap: var(--rh-space-lg, 16px);
 
+  /** Footer background */
   background-color: var(--rh-color-surface-darker, #1f1f1f);
   width: 100%;
   display: grid;
@@ -142,6 +157,7 @@ rh-footer:not(:defined) {
   }
 
   a[slot='logo'] {
+    /** Footer vertical spacing */
     padding-block: var(--rh-space-2xl, 32px);
   }
 
@@ -149,6 +165,8 @@ rh-footer:not(:defined) {
     display: flex;
     flex-direction: column;
     gap: var(--rh-footer-links-gap, var(--rh-space-md, 8px));
+
+    /** Footer bottom margin */
     margin-block-end: var(--rh-space-3xl, 48px);
   }
 
@@ -164,6 +182,7 @@ rh-footer:not(:defined) [slot='social-links'] {
 
 :is(rh-footer, rh-footer-universal):not(:defined) {
   p {
+    /** Footer text color */
     color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
   }
 
@@ -171,12 +190,15 @@ rh-footer:not(:defined) [slot='social-links'] {
     &[slot='links'],
     &[slot='header'] {
       font-size: var(--rh-footer-link-header-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+
+      /** Footer font weight */
       font-weight: var(--rh-font-weight-heading-medium, 500);
     }
   }
 }
 
 rh-footer-universal:not(:defined) {
+  /** Footer background */
   background-color: var(--rh-color-surface-darkest, #151515);
   display: block;
   width: 100%;
@@ -190,7 +212,11 @@ rh-footer-universal:not(:defined) {
   & [slot='links-secondary'] {
     display: flex;
     flex-flow: column wrap;
+
+    /** Footer content gap */
     gap: var(--rh-space-md, 8px);
+
+    /** Footer text size */
     font-size: var(--rh-font-size-body-text-xs, 0.75rem);
     margin: 0;
     padding: 0;
@@ -212,7 +238,11 @@ rh-footer-universal:not(:defined) {
   & rh-footer-copyright:not(:defined) {
     grid-column: -1/1;
     padding-block: var(--rh-space-2xl, 32px) var(--rh-space-md, 8px);
+
+    /** Footer text size */
     font-size: var(--rh-font-size-body-text-xs, 0.75rem);
+
+    /** Footer text color */
     color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
   }
 }
@@ -220,21 +250,29 @@ rh-footer-universal:not(:defined) {
 rh-footer-block:not(:defined) {
   :is(h1, h2, h3, h4, h5, h6) {
     font-size: var(--rh-footer-link-header-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+
+    /** Footer font weight */
     font-weight: var(--rh-font-weight-heading-medium, 500);
+
+    /** Footer bottom margin */
     margin-block-end: var(--rh-space-lg, 16px);
 
     &:not(:first-of-type) {
+      /** Footer top margin */
       margin-block-start: var(--rh-space-lg, 16px);
     }
   }
 
   &:not(:first-of-type) {
+    /** Footer top margin */
     margin-block-start: var(--rh-space-2xl, 32px);
   }
 }
 
 rh-footer:not(:defined) rh-footer-universal:not(:defined) {
   /* Only apply space when universal footer is inside rh-footer */
+
+  /** Footer top margin */
   margin-block-start: var(--rh-space-2xl, 32px);
 }
 
@@ -255,7 +293,10 @@ rh-footer:not(:defined) rh-footer-universal:not(:defined) {
       position: relative;
 
       &:before {
+        /** Footer background */
         background-color: var(--rh-color-border-subtle-on-dark, #707070);
+
+        /** Footer block size */
         block-size: var(--rh-length-4xs, 1px);
         content: '';
         inline-size: calc(100% - var(--_section-side-gap) * 2);
@@ -328,10 +369,12 @@ rh-footer:not(:defined) rh-footer-universal:not(:defined) {
 
   rh-footer:not(:defined) :is(h2, h3)[slot='links'],
   rh-footer-block:not(:defined):first-of-type {
+    /** Footer top margin */
     margin-block-start: var(--rh-space-lg, 16px);
   }
 
   rh-footer-universal:not(:defined) {
+    /** Footer vertical spacing */
     padding-block: var(--rh-space-2xl, 32px);
     padding-inline: var(--rh-space-7xl, 128px) var(--rh-space-4xl, 64px);
 
@@ -346,10 +389,12 @@ rh-footer:not(:defined) rh-footer-universal:not(:defined) {
     }
 
     & ul[slot='links-primary'] {
+      /** Footer bottom margin */
       margin-block-end: var(--rh-space-xl, 24px);
     }
 
     & rh-footer-copyright:not(:defined) {
+      /** Footer vertical spacing */
       padding-block: var(--rh-space-md, 8px);
     }
   }

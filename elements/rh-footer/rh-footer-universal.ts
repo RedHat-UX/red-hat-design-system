@@ -13,11 +13,40 @@ import style from './rh-footer.css' with { type: 'css' };
 
 import './rh-footer-copyright.js';
 
+/**
+ * The universal footer bar containing Red Hat global links, logo, copyright,
+ * and legal information. Content MUST NOT be customized per-site; it displays
+ * the same Red Hat branding across all properties. Renders on the darkest
+ * color palette. Detects parent `<footer>` and `<h2>` to avoid duplicate
+ * landmarks. Screen readers navigate via heading and link groups. Tab moves
+ * through links in primary, secondary, and tertiary regions. MUST include
+ * `<rh-footer-copyright>` in the `secondary-start` slot.
+ *
+ * @summary Global Red Hat universal footer with logo, links, and copyright
+ *
+ * @slot heading - Visually hidden heading for assistive technology. Defaults to "Red Hat footer".
+ * @slot base - Overrides all universal footer content. AVOID using.
+ * @slot logo - Red Hat logo. Defaults to the fedora SVG linking to redhat.com.
+ * @slot primary - Overrides primary-start, links-primary, and primary-end slots.
+ * @slot primary-start - Content before primary links.
+ * @slot links-primary - Primary global navigation links.
+ * @slot primary-end - Content after primary links.
+ * @slot secondary - Overrides secondary-start, links-secondary, and secondary-end slots.
+ * @slot secondary-start - Content before secondary links (e.g. copyright).
+ * @slot links-secondary - Secondary global navigation links.
+ * @slot secondary-end - Content after secondary links.
+ * @slot tertiary - Optional third content region (e.g. language selector).
+ */
 @customElement('rh-footer-universal')
 @colorPalettes
 export class RhFooterUniversal extends LitElement {
   static readonly styles = [style];
 
+  /**
+   * Color palette for the universal footer. Defaults to `'darker'`.
+   * Valid values: `'lighter'`, `'light'`, `'dark'`, `'darker'`, `'darkest'`.
+   * The universal footer typically renders on the darkest surface.
+   */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
 
   #slots = new SlotController(
@@ -52,7 +81,10 @@ export class RhFooterUniversal extends LitElement {
     return html`
       <footer role="${ifDefined(footer ? 'none' : undefined)}">
         <h2 id="global-heading" ?hidden="${!!h2}">
-          <!-- text that describes the footer section to assistive tecchnology. Contains default text "Red Hat footer". -->
+          <!-- summary: visually-hidden heading for assistive technology
+               description: |
+                 Screen readers use this heading to identify the universal footer region.
+                 Defaults to "Red Hat footer". Hidden if a parent `<h2>` already exists. -->
           <slot name="heading">Red Hat footer</slot>
         </h2>
         <!-- base -->
