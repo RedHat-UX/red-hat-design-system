@@ -25,15 +25,6 @@ rh-navigation-primary {
         text-decoration: none;
 
         &:hover {
-          text-decoration:
-            underline
-            dashed
-            var(--rh-color-gray-50, #707070)
-            var(--rh-border-width-sm, 1px);
-          transition-timing-function: ease;
-          transition-property: text-underline-offset, color, text-decoration-color;
-          transition-duration: 0.3s;
-          text-underline-offset: max(6px, 0.33em);
           color: var(--rh-color-interactive-primary-hover) !important;
         }
       }
