@@ -16,20 +16,35 @@ rh-icon {
   color: currentcolor;
 }
 
+/** @summary Base button styles: rounded corners, variant-driven colors */
 button {
   cursor: pointer;
   position: relative;
   font-family: inherit;
   border-width: 0;
   border-style: solid;
+
+  /** @summary Button corner radius; uses --rh-border-radius-default design token */
   border-radius: var(--rh-border-radius-default, 3px);
   color: var(--_color);
   background-color: var(--_background-color);
+
+  /** Button text size */
   font-size: var(--rh-font-size-body-text-md, 1rem);
+
+  /** Button font weight */
   font-weight: var(--rh-font-weight-body-text-regular, 400);
+
+  /** Button line height */
   line-height: var(--rh-line-height-body-text, 1.5);
+
+  /** Button vertical spacing */
   padding-block: var(--rh-space-sm, 6px);
+
+  /** Button horizontal spacing */
   padding-inline: var(--rh-space-lg, 16px);
+
+  /** Button focus ring offset */
   outline-offset: var(--rh-length-4xs, 1px);
 
   &:active {
@@ -45,6 +60,8 @@ button {
     border-style: solid;
     border-color: var(--_border-color);
     border-width: var(--_border-width);
+
+    /** Button corner rounding */
     border-radius: var(--rh-border-radius-default, 3px);
   }
 
@@ -66,8 +83,12 @@ button {
   &.hasIcon {
     position: relative;
     display: flex;
+
+    /** Button content gap */
     gap: var(--rh-space-sm, 6px);
     align-items: center;
+
+    /** Button start spacing */
     padding-inline-start: calc(var(--rh-space-lg, 16px) * 0.75);
 
     & [part='icon'] {
@@ -75,6 +96,10 @@ button {
     }
   }
 
+  /**
+   * @summary Primary variant: filled accent background;
+   * uses --rh-color-interactive-primary-default design token
+   */
   &.primary {
     --_color:
       light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
@@ -95,6 +120,10 @@ button {
     --_hover-border-width: var(--rh-border-width-sm, 1px);
   }
 
+  /**
+   * @summary Danger variant: red/orange destructive action;
+   * uses --rh-color-status-danger design token
+   */
   &.danger {
     --_color:
       light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
@@ -120,6 +149,11 @@ button {
     --_hover-border-color: transparent;
   }
 
+  /**
+   * @summary Secondary variant: outlined with transparent
+   * background; uses --rh-color-interactive-primary-default
+   * design token
+   */
   &.secondary {
     --_color: var(--rh-color-interactive-primary-default);
     --_background-color: transparent;
@@ -154,6 +188,10 @@ button {
     }
   }
 
+  /**
+   * @summary Tertiary variant: subtle bordered button;
+   * uses --rh-color-border-strong design token
+   */
   &.tertiary {
     --_color: var(--rh-color-text-primary);
     --_background-color: transparent;
@@ -194,6 +232,7 @@ button {
     display: inline-flex;
   }
 
+  /** @summary Close variant: icon-only button for dismissing dialogs/panels */
   &.close {
     --_color: var(--rh-color-icon-secondary);
     --_background-color: transparent;
@@ -205,6 +244,7 @@ button {
     --_hover-color: var(--rh-color-interactive-secondary-hover);
     --_hover-background-color: transparent;
 
+    /** Button width */
     width: var(--rh-length-lg, 16px);
     aspect-ratio: 1;
 
@@ -213,6 +253,7 @@ button {
     }
   }
 
+  /** @summary Play variant: circular semi-transparent overlay for media playback */
   &.play {
     --_color: var(--rh-color-icon-secondary-on-dark);
     --_background-color:
@@ -230,6 +271,8 @@ button {
         rgba(from white r g b / var(--rh-opacity-80, 80%)));
 
     border-radius: 100%;
+
+    /** Button width */
     width: var(--rh-length-4xl, 64px);
 
     & [part='icon'] {
