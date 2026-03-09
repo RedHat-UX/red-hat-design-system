@@ -81,8 +81,8 @@ export interface ComboboxControllerOptions<Item extends HTMLElement> extends Omi
  */
 export declare class ComboboxController<Item extends HTMLElement> implements ReactiveController {
     #private;
-    host: ReactiveControllerHost;
-    static of<T extends HTMLElement>(host: ReactiveControllerHost, options: ComboboxControllerOptions<T>): ComboboxController<T>;
+    host: ReactiveControllerHost & HTMLElement;
+    static of<T extends HTMLElement>(host: ReactiveControllerHost & HTMLElement, options: ComboboxControllerOptions<T>): ComboboxController<T>;
     /**
      * Whether the `ariaActiveDescendantElement` IDL attribute is supported for cross-root ARIA.
      */
@@ -109,7 +109,7 @@ export declare class ComboboxController<Item extends HTMLElement> implements Rea
     hostUpdated(): void;
     hostDisconnected(): void;
     disconnect(): void;
-    _onFocusoutElement(): Promise<void>;
+    private _onFocusoutElement;
     /**
      * For Browsers which do not support `ariaActiveDescendantElement`, we must clone
      * the listbox items into the same root as the combobox input

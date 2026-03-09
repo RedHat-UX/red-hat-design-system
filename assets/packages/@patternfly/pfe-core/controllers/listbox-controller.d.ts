@@ -120,9 +120,8 @@ export declare class ListboxController<Item extends HTMLElement> implements Reac
     set multi(v: boolean);
     get items(): Item[];
     /**
-     * register's the host's Item elements as listbox controller items
-     * sets aria-setsize and aria-posinset on items
-     * @param items items
+     * Registers the host's item elements as listbox controller items.
+     * @param items - Array of listbox option elements.
      */
     set items(items: Item[]);
     /**
@@ -136,6 +135,10 @@ export declare class ListboxController<Item extends HTMLElement> implements Reac
     get selected(): Item[];
     private constructor();
     hostConnected(): Promise<void>;
+    /**
+     * Called during host update; syncs control element listeners and
+     * applies aria-posinset/aria-setsize to each item via InternalsController.
+     */
     hostUpdate(): void;
     hostUpdated(): void;
     hostDisconnected(): void;

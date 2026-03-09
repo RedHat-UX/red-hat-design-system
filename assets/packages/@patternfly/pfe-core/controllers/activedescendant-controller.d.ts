@@ -84,6 +84,12 @@ export declare class ActivedescendantController<Item extends HTMLElement = HTMLE
     set atFocusedItemIndex(index: number);
     protected get controlsElements(): HTMLElement[];
     protected set controlsElements(elements: HTMLElement[]);
+    /**
+     * Check the source item's focusable state, not the clone's.
+     * This is needed because filtering sets `hidden` on the light DOM item,
+     * and the MutationObserver sync to clones is asynchronous.
+     */
+    get atFocusableItems(): Item[];
     /** All items */
     get items(): Item[];
     /**
@@ -92,7 +98,8 @@ export declare class ActivedescendantController<Item extends HTMLElement = HTMLE
      */
     set items(items: Item[]);
     private constructor();
-    protected initItems(): void;
+    /** @internal */
+    initItems(): void;
     hostDisconnected(): void;
     protected onKeydown(event: KeyboardEvent): void;
     renderItemsToShadowRoot(): typeof nothing | Node[];

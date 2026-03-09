@@ -1,4 +1,4 @@
-var _ComboboxController_instances, _a, _ComboboxController_alert, _ComboboxController_alertTemplate, _ComboboxController_lb, _ComboboxController_fc, _ComboboxController_preventListboxGainingFocus, _ComboboxController_input, _ComboboxController_button, _ComboboxController_listbox, _ComboboxController_buttonInitialRole, _ComboboxController_mo, _ComboboxController_microcopy, _ComboboxController_hasTextInput_get, _ComboboxController_focusedItem_get, _ComboboxController_element_get, _ComboboxController_init, _ComboboxController_initListbox, _ComboboxController_initButton, _ComboboxController_initInput, _ComboboxController_initLabels, _ComboboxController_initController, _ComboboxController_initItems, _ComboboxController_show, _ComboboxController_hide, _ComboboxController_toggle, _ComboboxController_translate, _ComboboxController_announce, _ComboboxController_filterItems, _ComboboxController_onClickButton, _ComboboxController_onClickListbox, _ComboboxController_onKeydownInput, _ComboboxController_onKeyupInput, _ComboboxController_onKeydownButton, _ComboboxController_onKeydownListbox, _ComboboxController_onFocusoutListbox, _ComboboxController_onKeydownToggleButton;
+var _ComboboxController_instances, _a, _ComboboxController_alert, _ComboboxController_alertTemplate, _ComboboxController_lb, _ComboboxController_fc, _ComboboxController_initializing, _ComboboxController_preventListboxGainingFocus, _ComboboxController_input, _ComboboxController_button, _ComboboxController_listbox, _ComboboxController_buttonInitialRole, _ComboboxController_buttonHasMouseDown, _ComboboxController_mo, _ComboboxController_microcopy, _ComboboxController_hasTextInput_get, _ComboboxController_focusedItem_get, _ComboboxController_element_get, _ComboboxController_init, _ComboboxController_initListbox, _ComboboxController_initButton, _ComboboxController_initInput, _ComboboxController_initLabels, _ComboboxController_initController, _ComboboxController_initItems, _ComboboxController_show, _ComboboxController_hide, _ComboboxController_toggle, _ComboboxController_translate, _ComboboxController_announce, _ComboboxController_filterItems, _ComboboxController_onClickButton, _ComboboxController_onMousedownButton, _ComboboxController_onMouseupButton, _ComboboxController_onClickListbox, _ComboboxController_onKeydownInput, _ComboboxController_onKeyupInput, _ComboboxController_onKeydownButton, _ComboboxController_onKeydownListbox, _ComboboxController_onFocusoutListbox, _ComboboxController_onKeydownToggleButton;
 import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
 import { isServer, nothing } from 'lit';
 import { ListboxController, isItem, isItemDisabled } from './listbox-controller.js';
@@ -89,6 +89,7 @@ export class ComboboxController {
     }
     set items(value) {
         __classPrivateFieldGet(this, _ComboboxController_lb, "f").items = value;
+        __classPrivateFieldGet(this, _ComboboxController_fc, "f")?.initItems();
     }
     /** Whether the combobox is disabled */
     get disabled() {
@@ -116,11 +117,13 @@ export class ComboboxController {
         this.host = host;
         _ComboboxController_lb.set(this, void 0);
         _ComboboxController_fc.set(this, void 0);
+        _ComboboxController_initializing.set(this, false);
         _ComboboxController_preventListboxGainingFocus.set(this, false);
         _ComboboxController_input.set(this, null);
         _ComboboxController_button.set(this, null);
         _ComboboxController_listbox.set(this, null);
         _ComboboxController_buttonInitialRole.set(this, null);
+        _ComboboxController_buttonHasMouseDown.set(this, false);
         _ComboboxController_mo.set(this, new MutationObserver(() => __classPrivateFieldGet(this, _ComboboxController_instances, "m", _ComboboxController_initItems).call(this)));
         _ComboboxController_microcopy.set(this, new Map(Object.entries({
             dimmed: {
@@ -158,6 +161,15 @@ export class ComboboxController {
             else {
                 __classPrivateFieldGet(this, _ComboboxController_instances, "m", _ComboboxController_hide).call(this);
             }
+        });
+        /**
+         * Distinguish click-to-toggle vs Tab/Shift+Tab
+        */
+        _ComboboxController_onMousedownButton.set(this, () => {
+            __classPrivateFieldSet(this, _ComboboxController_buttonHasMouseDown, true, "f");
+        });
+        _ComboboxController_onMouseupButton.set(this, () => {
+            __classPrivateFieldSet(this, _ComboboxController_buttonHasMouseDown, false, "f");
         });
         _ComboboxController_onClickListbox.set(this, (event) => {
             if (!this.multi && event.composedPath().some(this.options.isItem)) {
@@ -309,8 +321,13 @@ export class ComboboxController {
         _ComboboxController_onFocusoutListbox.set(this, (event) => {
             if (!__classPrivateFieldGet(this, _ComboboxController_instances, "a", _ComboboxController_hasTextInput_get) && this.options.isExpanded()) {
                 const root = __classPrivateFieldGet(this, _ComboboxController_instances, "a", _ComboboxController_element_get)?.getRootNode();
+                // Check if focus moved to the toggle button via mouse click
+                // If so, let the click handler manage toggle (prevents double-toggle)
+                // But if focus moved via Shift+Tab (no mousedown), we should still hide
+                const isClickOnToggleButton = event.relatedTarget === __classPrivateFieldGet(this, _ComboboxController_button, "f") && __classPrivateFieldGet(this, _ComboboxController_buttonHasMouseDown, "f");
                 if ((root instanceof ShadowRoot || root instanceof Document)
-                    && !this.items.includes(event.relatedTarget)) {
+                    && !this.items.includes(event.relatedTarget)
+                    && !isClickOnToggleButton) {
                     __classPrivateFieldGet(this, _ComboboxController_instances, "m", _ComboboxController_hide).call(this);
                 }
             }
@@ -382,7 +399,7 @@ export class ComboboxController {
         this.hostUpdated();
     }
     hostUpdated() {
-        if (!__classPrivateFieldGet(this, _ComboboxController_fc, "f")) {
+        if (!__classPrivateFieldGet(this, _ComboboxController_fc, "f") && !__classPrivateFieldGet(this, _ComboboxController_initializing, "f")) {
             __classPrivateFieldGet(this, _ComboboxController_instances, "m", _ComboboxController_init).call(this);
         }
         const expanded = this.options.isExpanded();
@@ -424,7 +441,7 @@ export class ComboboxController {
         }
     }
 }
-_a = ComboboxController, _ComboboxController_lb = new WeakMap(), _ComboboxController_fc = new WeakMap(), _ComboboxController_preventListboxGainingFocus = new WeakMap(), _ComboboxController_input = new WeakMap(), _ComboboxController_button = new WeakMap(), _ComboboxController_listbox = new WeakMap(), _ComboboxController_buttonInitialRole = new WeakMap(), _ComboboxController_mo = new WeakMap(), _ComboboxController_microcopy = new WeakMap(), _ComboboxController_onClickButton = new WeakMap(), _ComboboxController_onClickListbox = new WeakMap(), _ComboboxController_onKeydownInput = new WeakMap(), _ComboboxController_onKeyupInput = new WeakMap(), _ComboboxController_onKeydownButton = new WeakMap(), _ComboboxController_onKeydownListbox = new WeakMap(), _ComboboxController_onFocusoutListbox = new WeakMap(), _ComboboxController_onKeydownToggleButton = new WeakMap(), _ComboboxController_instances = new WeakSet(), _ComboboxController_hasTextInput_get = function _ComboboxController_hasTextInput_get() {
+_a = ComboboxController, _ComboboxController_lb = new WeakMap(), _ComboboxController_fc = new WeakMap(), _ComboboxController_initializing = new WeakMap(), _ComboboxController_preventListboxGainingFocus = new WeakMap(), _ComboboxController_input = new WeakMap(), _ComboboxController_button = new WeakMap(), _ComboboxController_listbox = new WeakMap(), _ComboboxController_buttonInitialRole = new WeakMap(), _ComboboxController_buttonHasMouseDown = new WeakMap(), _ComboboxController_mo = new WeakMap(), _ComboboxController_microcopy = new WeakMap(), _ComboboxController_onClickButton = new WeakMap(), _ComboboxController_onMousedownButton = new WeakMap(), _ComboboxController_onMouseupButton = new WeakMap(), _ComboboxController_onClickListbox = new WeakMap(), _ComboboxController_onKeydownInput = new WeakMap(), _ComboboxController_onKeyupInput = new WeakMap(), _ComboboxController_onKeydownButton = new WeakMap(), _ComboboxController_onKeydownListbox = new WeakMap(), _ComboboxController_onFocusoutListbox = new WeakMap(), _ComboboxController_onKeydownToggleButton = new WeakMap(), _ComboboxController_instances = new WeakSet(), _ComboboxController_hasTextInput_get = function _ComboboxController_hasTextInput_get() {
     return this.options.getComboboxInput();
 }, _ComboboxController_focusedItem_get = function _ComboboxController_focusedItem_get() {
     return __classPrivateFieldGet(this, _ComboboxController_fc, "f")?.items.at(Math.max(__classPrivateFieldGet(this, _ComboboxController_fc, "f")?.atFocusedItemIndex ?? -1, 0)) ?? null;
@@ -440,6 +457,7 @@ _a = ComboboxController, _ComboboxController_lb = new WeakMap(), _ComboboxContro
  * Order of operations is important
  */
 async function _ComboboxController_init() {
+    __classPrivateFieldSet(this, _ComboboxController_initializing, true, "f");
     await this.host.updateComplete;
     __classPrivateFieldGet(this, _ComboboxController_instances, "m", _ComboboxController_initListbox).call(this);
     __classPrivateFieldGet(this, _ComboboxController_instances, "m", _ComboboxController_initItems).call(this);
@@ -447,6 +465,7 @@ async function _ComboboxController_init() {
     __classPrivateFieldGet(this, _ComboboxController_instances, "m", _ComboboxController_initInput).call(this);
     __classPrivateFieldGet(this, _ComboboxController_instances, "m", _ComboboxController_initLabels).call(this);
     __classPrivateFieldGet(this, _ComboboxController_instances, "m", _ComboboxController_initController).call(this);
+    __classPrivateFieldSet(this, _ComboboxController_initializing, false, "f");
 }, _ComboboxController_initListbox = function _ComboboxController_initListbox() {
     var _b;
     __classPrivateFieldGet(this, _ComboboxController_mo, "f").disconnect();
@@ -465,6 +484,8 @@ async function _ComboboxController_init() {
 }, _ComboboxController_initButton = function _ComboboxController_initButton() {
     __classPrivateFieldGet(this, _ComboboxController_button, "f")?.removeEventListener('click', __classPrivateFieldGet(this, _ComboboxController_onClickButton, "f"));
     __classPrivateFieldGet(this, _ComboboxController_button, "f")?.removeEventListener('keydown', __classPrivateFieldGet(this, _ComboboxController_onKeydownButton, "f"));
+    __classPrivateFieldGet(this, _ComboboxController_button, "f")?.removeEventListener('mousedown', __classPrivateFieldGet(this, _ComboboxController_onMousedownButton, "f"));
+    __classPrivateFieldGet(this, _ComboboxController_button, "f")?.removeEventListener('mouseup', __classPrivateFieldGet(this, _ComboboxController_onMouseupButton, "f"));
     __classPrivateFieldSet(this, _ComboboxController_button, this.options.getToggleButton(), "f");
     if (!__classPrivateFieldGet(this, _ComboboxController_button, "f")) {
         throw new Error('ComboboxController getToggleButton() option must return an element');
@@ -474,6 +495,8 @@ async function _ComboboxController_init() {
     __classPrivateFieldGet(this, _ComboboxController_button, "f").setAttribute('aria-controls', __classPrivateFieldGet(this, _ComboboxController_listbox, "f")?.id ?? '');
     __classPrivateFieldGet(this, _ComboboxController_button, "f").addEventListener('click', __classPrivateFieldGet(this, _ComboboxController_onClickButton, "f"));
     __classPrivateFieldGet(this, _ComboboxController_button, "f").addEventListener('keydown', __classPrivateFieldGet(this, _ComboboxController_onKeydownButton, "f"));
+    __classPrivateFieldGet(this, _ComboboxController_button, "f").addEventListener('mousedown', __classPrivateFieldGet(this, _ComboboxController_onMousedownButton, "f"));
+    __classPrivateFieldGet(this, _ComboboxController_button, "f").addEventListener('mouseup', __classPrivateFieldGet(this, _ComboboxController_onMouseupButton, "f"));
 }, _ComboboxController_initInput = function _ComboboxController_initInput() {
     __classPrivateFieldGet(this, _ComboboxController_input, "f")?.removeEventListener('click', __classPrivateFieldGet(this, _ComboboxController_onClickButton, "f"));
     __classPrivateFieldGet(this, _ComboboxController_input, "f")?.removeEventListener('keyup', __classPrivateFieldGet(this, _ComboboxController_onKeyupInput, "f"));
@@ -535,6 +558,8 @@ async function _ComboboxController_init() {
         this.items = this.options.getItems();
     }
 }, _ComboboxController_show = async function _ComboboxController_show() {
+    // Re-read items on open so slotted/dynamically added options are included:
+    __classPrivateFieldGet(this, _ComboboxController_instances, "m", _ComboboxController_initItems).call(this);
     const success = await this.options.requestShowListbox();
     __classPrivateFieldGet(this, _ComboboxController_instances, "m", _ComboboxController_filterItems).call(this);
     if (success !== false && !__classPrivateFieldGet(this, _ComboboxController_instances, "a", _ComboboxController_hasTextInput_get)) {
@@ -569,12 +594,14 @@ async function _ComboboxController_init() {
     if (__classPrivateFieldGet(this, _ComboboxController_lb, "f").isSelected(item)) {
         text += `, (${__classPrivateFieldGet(this, _ComboboxController_instances, "m", _ComboboxController_translate).call(this, 'selected', langKey)})`;
     }
-    if (item.hasAttribute('aria-setsize') && item.hasAttribute('aria-posinset')) {
+    const posInSet = InternalsController.getAriaPosInSet(item);
+    const setSize = InternalsController.getAriaSetSize(item);
+    if (posInSet != null && setSize != null) {
         if (langKey === 'ja') {
-            text += `, (${item.getAttribute('aria-setsize')} 件中 ${item.getAttribute('aria-posinset')} 件目)`;
+            text += `, (${setSize} 件中 ${posInSet} 件目)`;
         }
         else {
-            text += `, (${item.getAttribute('aria-posinset')} ${__classPrivateFieldGet(this, _ComboboxController_instances, "m", _ComboboxController_translate).call(this, 'of', langKey)} ${item.getAttribute('aria-setsize')})`;
+            text += `, (${posInSet} ${__classPrivateFieldGet(this, _ComboboxController_instances, "m", _ComboboxController_translate).call(this, 'of', langKey)} ${setSize})`;
         }
     }
     __classPrivateFieldGet(_a, _a, "f", _ComboboxController_alert).lang = lang;

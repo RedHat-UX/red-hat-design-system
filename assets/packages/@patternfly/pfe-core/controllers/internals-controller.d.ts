@@ -2,9 +2,10 @@ import { type ReactiveController, type ReactiveControllerHost } from 'lit';
 interface InternalsControllerOptions extends Partial<ARIAMixin> {
     getHTMLElement?(): HTMLElement;
 }
+type InternalsHost = ReactiveControllerHost & HTMLElement;
 export declare class InternalsController implements ReactiveController, ARIAMixin {
     #private;
-    host: ReactiveControllerHost;
+    host: InternalsHost;
     private options?;
     private static instances;
     readonly form: ElementInternals['form'];
@@ -12,9 +13,33 @@ export declare class InternalsController implements ReactiveController, ARIAMixi
     readonly states: unknown;
     readonly willValidate: ElementInternals['willValidate'];
     readonly validationMessage: ElementInternals['validationMessage'];
-    static getLabels(host: ReactiveControllerHost): Element[];
+    static getLabels(host: InternalsHost): Element[];
+    /**
+     * Gets the ARIA posinset value from a listbox item (attribute takes precedence over internals).
+     * @param host - The listbox item element.
+     */
+    static getAriaPosInSet(host: HTMLElement): string | null;
+    /**
+     * Sets the ARIA posinset on a listbox item. Uses ElementInternals when the host has
+     * an InternalsController instance; otherwise sets/removes the host attribute.
+     * @param host - The listbox item element (option or option-like).
+     * @param value - Position in set (1-based), or null to clear.
+     */
+    static setAriaPosInSet(host: HTMLElement, value: number | string | null): void;
+    /**
+     * Gets the ARIA setsize from a listbox item (aria attribute if set or defaulting to internals).
+     * @param host - The listbox item element.
+     */
+    static getAriaSetSize(host: HTMLElement): string | null;
+    /**
+     * Sets the ARIA setsize on a listbox item. Uses ElementInternals when the host has
+     * an InternalsController instance; otherwise sets/removes the host attribute.
+     * @param host - The listbox item element (option or option-like).
+     * @param value - Total set size, or null to clear.
+     */
+    static setAriaSetSize(host: HTMLElement, value: number | string | null): void;
     static isSafari: boolean;
-    static of(host: ReactiveControllerHost, options?: InternalsControllerOptions): InternalsController;
+    static of(host: InternalsHost, options?: InternalsControllerOptions): InternalsController;
     role: string | null;
     ariaActivedescendant: string | null;
     ariaAtomic: string | null;
@@ -60,21 +85,15 @@ export declare class InternalsController implements ReactiveController, ARIAMixi
     ariaValueMin: string | null;
     ariaValueNow: string | null;
     ariaValueText: string | null;
-    /** WARNING: be careful of cross-root ARIA browser support */
+    /** As of April 2025, the following are considered Baseline supported in evergreen browsers */
     ariaActiveDescendantElement: Element | null;
-    /** WARNING: be careful of cross-root ARIA browser support */
     ariaControlsElements: Element[] | null;
-    /** WARNING: be careful of cross-root ARIA browser support */
     ariaDescribedByElements: Element[] | null;
-    /** WARNING: be careful of cross-root ARIA browser support */
     ariaDetailsElements: Element[] | null;
-    /** WARNING: be careful of cross-root ARIA browser support */
     ariaErrorMessageElements: Element[] | null;
-    /** WARNING: be careful of cross-root ARIA browser support */
     ariaFlowToElements: Element[] | null;
-    /** WARNING: be careful of cross-root ARIA browser support */
     ariaLabelledByElements: Element[] | null;
-    /** WARNING: be careful of cross-root ARIA browser support */
+    /** As of February 2026, this is not supported in Chromium browsers */
     ariaOwnsElements: Element[] | null;
     /** True when the control is disabled via it's containing fieldset element */
     get formDisabled(): boolean;

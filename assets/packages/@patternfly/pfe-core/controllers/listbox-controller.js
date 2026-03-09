@@ -2,6 +2,7 @@ var _ListboxController_instances, _ListboxController_shiftStartingItem, _Listbox
 import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
 import { isServer } from 'lit';
 import { arraysAreEquivalent } from '../functions/arraysAreEquivalent.js';
+import { InternalsController } from './internals-controller.js';
 /**
  * This is the default method for setting the selected state on an item element
  * @param item the item
@@ -101,16 +102,14 @@ export class ListboxController {
         return __classPrivateFieldGet(this, _ListboxController_items, "f");
     }
     /**
-     * register's the host's Item elements as listbox controller items
-     * sets aria-setsize and aria-posinset on items
-     * @param items items
+     * Registers the host's item elements as listbox controller items.
+     * @param items - Array of listbox option elements.
      */
     set items(items) {
-        __classPrivateFieldSet(this, _ListboxController_items, items, "f");
-        __classPrivateFieldGet(this, _ListboxController_items, "f").forEach((item, index, _items) => {
-            item.ariaSetSize = _items.length.toString();
-            item.ariaPosInSet = (index + 1).toString();
-        });
+        if (!arraysAreEquivalent(items, __classPrivateFieldGet(this, _ListboxController_items, "f"))) {
+            __classPrivateFieldSet(this, _ListboxController_items, items, "f");
+            this.host.requestUpdate();
+        }
     }
     /**
      * sets the listbox value based on selected options
@@ -302,6 +301,10 @@ export class ListboxController {
         this.hostUpdate();
         this.hostUpdated();
     }
+    /**
+     * Called during host update; syncs control element listeners and
+     * applies aria-posinset/aria-setsize to each item via InternalsController.
+     */
     hostUpdate() {
         const last = __classPrivateFieldGet(this, _ListboxController_controlsElements, "f");
         __classPrivateFieldSet(this, _ListboxController_controlsElements, __classPrivateFieldGet(this, _ListboxController_options, "f").getControlsElements?.() ?? [], "f");
@@ -312,6 +315,11 @@ export class ListboxController {
                 el.addEventListener('keyup', __classPrivateFieldGet(this, _ListboxController_onKeyup, "f"));
             }
         }
+        const items = __classPrivateFieldGet(this, _ListboxController_items, "f");
+        items.forEach((item, index) => {
+            InternalsController.setAriaPosInSet(item, index + 1);
+            InternalsController.setAriaSetSize(item, items.length);
+        });
     }
     hostUpdated() {
         if (!__classPrivateFieldGet(this, _ListboxController_listening, "f")) {
@@ -401,11 +409,13 @@ _ListboxController_shiftStartingItem = new WeakMap(), _ListboxController_options
                 return shadowRootItem;
             }
             else {
-                const index = Array.from(shadowRootListboxElement?.children ?? [])
-                    .filter(__classPrivateFieldGet(this, _ListboxController_options, "f").isItem)
-                    .filter(x => !x.hidden)
-                    .indexOf(shadowRootItem);
-                return __classPrivateFieldGet(this, _ListboxController_items, "f").filter(x => !x.hidden)[index];
+                // Shadow clone needs to be mapped back to light DOM item.
+                // Match by value attribute or text content since index-based matching
+                // doesn't work when items are filtered (hidden state differs between clone and source)
+                const cloneValue = shadowRootItem.getAttribute('value')
+                    ?? shadowRootItem.textContent?.trim();
+                const sourceItem = __classPrivateFieldGet(this, _ListboxController_items, "f").find(item => (item.getAttribute('value') ?? item.textContent?.trim()) === cloneValue);
+                return sourceItem ?? null;
             }
         }
         const itemFromEventContainer = shadowRootListboxElement ? shadowRootListboxElement

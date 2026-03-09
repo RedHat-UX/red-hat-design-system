@@ -70,7 +70,10 @@ export class ActivedescendantController extends ATFocusController {
         super.atFocusedItemIndex = index;
         const item = this._items.at(this.atFocusedItemIndex);
         for (const _item of this.items) {
-            this.options.setItemActive?.(_item, _item === item);
+            const isActive = _item === item;
+            // Map clone back to original item for setItemActive callback
+            const originalItem = __classPrivateFieldGet(this, _ActivedescendantController_shadowToLightMap, "f").get(_item) ?? _item;
+            this.options.setItemActive?.(originalItem, isActive);
         }
         const container = this.options.getActiveDescendantContainer();
         if (!ActivedescendantController.supportsCrossRootActiveDescendant) {
@@ -85,6 +88,12 @@ export class ActivedescendantController extends ATFocusController {
         return __classPrivateFieldGet(this, _ActivedescendantController_controlsElements, "f");
     }
     set controlsElements(elements) {
+        // Avoid removing/re-adding listeners if elements haven't changed
+        // This prevents breaking event listeners during active event dispatch
+        if (elements.length === __classPrivateFieldGet(this, _ActivedescendantController_controlsElements, "f").length
+            && elements.every((el, i) => el === __classPrivateFieldGet(this, _ActivedescendantController_controlsElements, "f")[i])) {
+            return;
+        }
         for (const old of __classPrivateFieldGet(this, _ActivedescendantController_controlsElements, "f")) {
             old?.removeEventListener('keydown', this.onKeydown);
         }
@@ -92,6 +101,21 @@ export class ActivedescendantController extends ATFocusController {
         for (const element of __classPrivateFieldGet(this, _ActivedescendantController_controlsElements, "f")) {
             element.addEventListener('keydown', this.onKeydown);
         }
+    }
+    /**
+     * Check the source item's focusable state, not the clone's.
+     * This is needed because filtering sets `hidden` on the light DOM item,
+     * and the MutationObserver sync to clones is asynchronous.
+     */
+    get atFocusableItems() {
+        return this._items.filter(item => {
+            // Map clone to source item to check actual hidden state
+            const sourceItem = __classPrivateFieldGet(this, _ActivedescendantController_shadowToLightMap, "f").get(item) ?? item;
+            return !!sourceItem
+                && sourceItem.ariaHidden !== 'true'
+                && !sourceItem.hasAttribute('inert')
+                && !sourceItem.hasAttribute('hidden');
+        });
     }
     /** All items */
     get items() {
@@ -130,6 +154,11 @@ export class ActivedescendantController extends ATFocusController {
                     return item;
                 }
                 else {
+                    // Reuse existing clone if available to maintain stable IDs
+                    const existingClone = __classPrivateFieldGet(this, _ActivedescendantController_lightToShadowMap, "f").get(item);
+                    if (existingClone) {
+                        return existingClone;
+                    }
                     const clone = item.cloneNode(true);
                     clone.id = getRandomId();
                     __classPrivateFieldGet(this, _ActivedescendantController_lightToShadowMap, "f").set(item, clone);
@@ -160,12 +189,14 @@ export class ActivedescendantController extends ATFocusController {
         _ActivedescendantController_observing.set(this, false);
         _ActivedescendantController_listMO.set(this, new MutationObserver(records => __classPrivateFieldGet(this, _ActivedescendantController_instances, "m", _ActivedescendantController_onItemsDOMChange).call(this, records)));
         _ActivedescendantController_attrMO.set(this, new MutationObserver(records => __classPrivateFieldGet(this, _ActivedescendantController_instances, "m", _ActivedescendantController_onItemAttributeChange).call(this, records)));
+        this.initItems();
         (_a = this.options).getItemValue ?? (_a.getItemValue = function () {
             return this.value;
         });
     }
     ;
     ;
+    /** @internal */
     initItems() {
         __classPrivateFieldGet(this, _ActivedescendantController_attrMO, "f").disconnect();
         super.initItems();

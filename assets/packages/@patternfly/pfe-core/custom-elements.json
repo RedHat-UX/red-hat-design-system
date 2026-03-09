@@ -63,6 +63,15 @@
               "privacy": "protected"
             },
             {
+              "name": "atFocusableItems",
+              "description": "Check the source item's focusable state, not the clone's.\nThis is needed because filtering sets `hidden` on the light DOM item,\nand the MutationObserver sync to clones is asynchronous.",
+              "type": {
+                "text": "Item[]"
+              },
+              "readonly": true,
+              "kind": "field"
+            },
+            {
               "name": "items",
               "description": "All items",
               "kind": "field"
@@ -89,8 +98,7 @@
                 }
               },
               "name": "initItems",
-              "kind": "method",
-              "privacy": "protected"
+              "kind": "method"
             },
             {
               "return": {
@@ -386,7 +394,7 @@
                 {
                   "name": "host",
                   "type": {
-                    "text": "ReactiveControllerHost"
+                    "text": "ReactiveControllerHost \u0026 HTMLElement"
                   }
                 },
                 {
@@ -478,7 +486,7 @@
             {
               "name": "host",
               "type": {
-                "text": "ReactiveControllerHost"
+                "text": "ReactiveControllerHost \u0026 HTMLElement"
               },
               "kind": "field"
             },
@@ -525,7 +533,8 @@
                 }
               },
               "name": "_onFocusoutElement",
-              "kind": "method"
+              "kind": "method",
+              "privacy": "private"
             },
             {
               "return": {
@@ -751,7 +760,7 @@
           "members": [
             {
               "name": "instances",
-              "default": "new WeakMap\u003cReactiveControllerHost, InternalsController\u003e()",
+              "default": "new WeakMap\u003cHTMLElement, InternalsController\u003e()",
               "kind": "field",
               "static": true,
               "privacy": "private"
@@ -801,7 +810,7 @@
                 {
                   "name": "host",
                   "type": {
-                    "text": "ReactiveControllerHost"
+                    "text": "InternalsHost"
                   }
                 }
               ],
@@ -811,6 +820,98 @@
                 }
               },
               "name": "getLabels",
+              "kind": "method",
+              "static": true,
+              "privacy": "public"
+            },
+            {
+              "parameters": [
+                {
+                  "name": "host",
+                  "type": {
+                    "text": "HTMLElement"
+                  }
+                }
+              ],
+              "return": {
+                "type": {
+                  "text": "string | null"
+                }
+              },
+              "name": "getAriaPosInSet",
+              "description": "Gets the ARIA posinset value from a listbox item (attribute takes precedence over internals).",
+              "kind": "method",
+              "static": true,
+              "privacy": "public"
+            },
+            {
+              "parameters": [
+                {
+                  "name": "host",
+                  "type": {
+                    "text": "HTMLElement"
+                  }
+                },
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "number | string | null"
+                  }
+                }
+              ],
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "name": "setAriaPosInSet",
+              "description": "Sets the ARIA posinset on a listbox item. Uses ElementInternals when the host has\nan InternalsController instance; otherwise sets/removes the host attribute.",
+              "kind": "method",
+              "static": true,
+              "privacy": "public"
+            },
+            {
+              "parameters": [
+                {
+                  "name": "host",
+                  "type": {
+                    "text": "HTMLElement"
+                  }
+                }
+              ],
+              "return": {
+                "type": {
+                  "text": "string | null"
+                }
+              },
+              "name": "getAriaSetSize",
+              "description": "Gets the ARIA setsize from a listbox item (aria attribute if set or defaulting to internals).",
+              "kind": "method",
+              "static": true,
+              "privacy": "public"
+            },
+            {
+              "parameters": [
+                {
+                  "name": "host",
+                  "type": {
+                    "text": "HTMLElement"
+                  }
+                },
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "number | string | null"
+                  }
+                }
+              ],
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "name": "setAriaSetSize",
+              "description": "Sets the ARIA setsize on a listbox item. Uses ElementInternals when the host has\nan InternalsController instance; otherwise sets/removes the host attribute.",
               "kind": "method",
               "static": true,
               "privacy": "public"
@@ -829,7 +930,7 @@
                 {
                   "name": "host",
                   "type": {
-                    "text": "ReactiveControllerHost"
+                    "text": "InternalsHost"
                   }
                 },
                 {
@@ -1211,7 +1312,7 @@
             },
             {
               "name": "ariaActiveDescendantElement",
-              "description": "WARNING: be careful of cross-root ARIA browser support",
+              "description": "As of April 2025, the following are considered Baseline supported in evergreen browsers",
               "type": {
                 "text": "Element | null"
               },
@@ -1220,7 +1321,6 @@
             },
             {
               "name": "ariaControlsElements",
-              "description": "WARNING: be careful of cross-root ARIA browser support",
               "type": {
                 "text": "Element[] | null"
               },
@@ -1229,7 +1329,6 @@
             },
             {
               "name": "ariaDescribedByElements",
-              "description": "WARNING: be careful of cross-root ARIA browser support",
               "type": {
                 "text": "Element[] | null"
               },
@@ -1238,7 +1337,6 @@
             },
             {
               "name": "ariaDetailsElements",
-              "description": "WARNING: be careful of cross-root ARIA browser support",
               "type": {
                 "text": "Element[] | null"
               },
@@ -1247,7 +1345,6 @@
             },
             {
               "name": "ariaErrorMessageElements",
-              "description": "WARNING: be careful of cross-root ARIA browser support",
               "type": {
                 "text": "Element[] | null"
               },
@@ -1256,7 +1353,6 @@
             },
             {
               "name": "ariaFlowToElements",
-              "description": "WARNING: be careful of cross-root ARIA browser support",
               "type": {
                 "text": "Element[] | null"
               },
@@ -1265,7 +1361,6 @@
             },
             {
               "name": "ariaLabelledByElements",
-              "description": "WARNING: be careful of cross-root ARIA browser support",
               "type": {
                 "text": "Element[] | null"
               },
@@ -1274,7 +1369,7 @@
             },
             {
               "name": "ariaOwnsElements",
-              "description": "WARNING: be careful of cross-root ARIA browser support",
+              "description": "As of February 2026, this is not supported in Chromium browsers",
               "type": {
                 "text": "Element[] | null"
               },
@@ -1341,7 +1436,7 @@
             {
               "name": "host",
               "type": {
-                "text": "ReactiveControllerHost"
+                "text": "InternalsHost"
               },
               "kind": "field"
             },
@@ -1464,7 +1559,7 @@
             }
           ],
           "source": {
-            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/internals-controller.ts#L71"
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/internals-controller.ts#L72"
           },
           "kind": "class"
         }
@@ -1595,7 +1690,7 @@
           "name": "isItem",
           "kind": "function",
           "source": {
-            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/listbox-controller.ts#L81"
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/listbox-controller.ts#L82"
           }
         },
         {
@@ -1612,7 +1707,7 @@
           "description": "This is a fib. aria-disabled might not be present on an element that uses internals,\nand the `disabled` attribute may not accurately represent the disabled state.\nshort of patching the `attachInternals` constructor, it may not be possible at\nruntime to know with certainty that an arbitrary custom element is disabled or not.",
           "kind": "function",
           "source": {
-            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/listbox-controller.ts#L96"
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/listbox-controller.ts#L97"
           }
         },
         {
@@ -1677,7 +1772,7 @@
             },
             {
               "name": "items",
-              "description": "register's the host's Item elements as listbox controller items\nsets aria-setsize and aria-posinset on items",
+              "description": "Registers the host's item elements as listbox controller items.",
               "type": {
                 "text": "Item[]"
               },
@@ -1714,6 +1809,7 @@
                 }
               },
               "name": "hostUpdate",
+              "description": "Called during host update; syncs control element listeners and\napplies aria-posinset/aria-setsize to each item via InternalsController.",
               "kind": "method"
             },
             {
@@ -1754,7 +1850,7 @@
             }
           ],
           "source": {
-            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/listbox-controller.ts#L145"
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/listbox-controller.ts#L146"
           },
           "kind": "class"
         }

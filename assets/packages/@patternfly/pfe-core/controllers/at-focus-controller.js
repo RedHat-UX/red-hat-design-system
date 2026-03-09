@@ -1,7 +1,6 @@
-var _ATFocusController_instances, _ATFocusController_itemsContainerElement, _ATFocusController_atFocusedItemIndex, _ATFocusController_initContainer;
+var _ATFocusController_instances, _ATFocusController_itemsContainerElement, _ATFocusController_atFocusedItemIndex, _ATFocusController_initContainer, _ATFocusController_getNextFocusableItem;
 import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
 import { isServer } from 'lit';
-import { bound } from '../decorators/bound.js';
 function isATFocusableItem(el) {
     return !!el
         && el.ariaHidden !== 'true'
@@ -17,33 +16,41 @@ export class ATFocusController {
     get atFocusedItemIndex() {
         return __classPrivateFieldGet(this, _ATFocusController_atFocusedItemIndex, "f");
     }
-    set atFocusedItemIndex(index) {
-        const previousIndex = __classPrivateFieldGet(this, _ATFocusController_atFocusedItemIndex, "f");
-        const direction = index > previousIndex ? 1 : -1;
+    set atFocusedItemIndex(requestedIndex) {
         const { items, atFocusableItems } = this;
-        const itemsIndexOfLastATFocusableItem = items.indexOf(this.atFocusableItems.at(-1));
-        let itemToGainFocus = items.at(index);
-        let itemToGainFocusIsFocusable = atFocusableItems.includes(itemToGainFocus);
-        if (atFocusableItems.length) {
-            let count = 0;
-            while (!itemToGainFocus || !itemToGainFocusIsFocusable && count++ <= 1000) {
-                if (index < 0) {
-                    index = itemsIndexOfLastATFocusableItem;
-                }
-                else if (index >= itemsIndexOfLastATFocusableItem) {
-                    index = 0;
-                }
-                else {
-                    index = index + direction;
-                }
-                itemToGainFocus = items.at(index);
-                itemToGainFocusIsFocusable = atFocusableItems.includes(itemToGainFocus);
-            }
-            if (count >= 1000) {
-                throw new Error('Could not atFocusedItemIndex');
-            }
+        if (!atFocusableItems.length) {
+            __classPrivateFieldSet(this, _ATFocusController_atFocusedItemIndex, requestedIndex, "f");
+            return;
         }
-        __classPrivateFieldSet(this, _ATFocusController_atFocusedItemIndex, index, "f");
+        // Fast path: requested item is already focusable
+        if (requestedIndex >= 0
+            && requestedIndex < items.length
+            && atFocusableItems.includes(items[requestedIndex])) {
+            __classPrivateFieldSet(this, _ATFocusController_atFocusedItemIndex, requestedIndex, "f");
+            return;
+        }
+        const lastFocusableIndex = items.indexOf(atFocusableItems.at(-1));
+        // Navigated before start → wrap to last focusable
+        if (requestedIndex < 0) {
+            __classPrivateFieldSet(this, _ATFocusController_atFocusedItemIndex, lastFocusableIndex, "f");
+            return;
+        }
+        const firstFocusableIndex = items.indexOf(atFocusableItems[0]);
+        // Navigated past end or past last focusable → wrap to first focusable
+        if (requestedIndex >= items.length
+            || requestedIndex > lastFocusableIndex) {
+            __classPrivateFieldSet(this, _ATFocusController_atFocusedItemIndex, firstFocusableIndex, "f");
+            return;
+        }
+        // Before first focusable (e.g. disabled placeholder at index 0).
+        // ArrowUp from first focusable → wrap to last; otherwise snap to first.
+        if (requestedIndex < firstFocusableIndex) {
+            __classPrivateFieldSet(this, _ATFocusController_atFocusedItemIndex, __classPrivateFieldGet(this, _ATFocusController_atFocusedItemIndex, "f") === firstFocusableIndex ? lastFocusableIndex
+                : firstFocusableIndex, "f");
+            return;
+        }
+        // Mid-list non-focusable item: find nearest focusable in the navigation direction
+        __classPrivateFieldSet(this, _ATFocusController_atFocusedItemIndex, items.indexOf(__classPrivateFieldGet(this, _ATFocusController_instances, "m", _ATFocusController_getNextFocusableItem).call(this, requestedIndex)), "f");
     }
     /** Elements which control the items container e.g. a combobox input */
     get controlsElements() {
@@ -75,7 +82,10 @@ export class ATFocusController {
         this.host.updateComplete.then(() => this.initItems());
     }
     /**
-     * Initialize the items and itemsContainerElement fields
+     * Initialize the items and itemsContainerElement fields.
+     * Call this when the list of items has changed
+     * (e.g. when a parent controller sets items).
+     * @internal not for use by element authors
      */
     initItems() {
         this.items = this.options.getItems();
@@ -136,24 +146,30 @@ export class ATFocusController {
                 event.stopPropagation();
                 event.preventDefault();
                 break;
-            case 'Home':
+            case 'Home': {
                 if (!(event.target instanceof HTMLElement
                     && (event.target.hasAttribute('aria-activedescendant')
                         || event.target.ariaActiveDescendantElement))) {
-                    this.atFocusedItemIndex = 0;
+                    // Use first focusable index so the setter doesn't see 0 (reserved for Up-from-first wrap).
+                    const first = this.atFocusableItems.at(0);
+                    this.atFocusedItemIndex = first != null ? this.items.indexOf(first) : 0;
                     event.stopPropagation();
                     event.preventDefault();
                 }
                 break;
-            case 'End':
+            }
+            case 'End': {
                 if (!(event.target instanceof HTMLElement
                     && (event.target.hasAttribute('aria-activedescendant')
                         || event.target.ariaActiveDescendantElement))) {
-                    this.atFocusedItemIndex = this.items.length - 1;
+                    // Use last focusable index for consistency with lists that have non-focusable items.
+                    const last = this.atFocusableItems.at(-1);
+                    this.atFocusedItemIndex = last != null ? this.items.indexOf(last) : this.items.length - 1;
                     event.stopPropagation();
                     event.preventDefault();
                 }
                 break;
+            }
             default:
                 break;
         }
@@ -164,5 +180,13 @@ export class ATFocusController {
 _ATFocusController_itemsContainerElement = new WeakMap(), _ATFocusController_atFocusedItemIndex = new WeakMap(), _ATFocusController_instances = new WeakSet(), _ATFocusController_initContainer = function _ATFocusController_initContainer() {
     return this.options.getItemsContainer?.()
         ?? (!isServer && this.host instanceof HTMLElement ? this.host : null);
+}, _ATFocusController_getNextFocusableItem = function _ATFocusController_getNextFocusableItem(requestedIndex) {
+    const { items, atFocusableItems } = this;
+    if (requestedIndex > __classPrivateFieldGet(this, _ATFocusController_atFocusedItemIndex, "f")) {
+        return atFocusableItems.find(item => items.indexOf(item) > requestedIndex);
+    }
+    else {
+        return atFocusableItems.findLast(item => items.indexOf(item) < requestedIndex);
+    }
 };
 //# sourceMappingURL=at-focus-controller.js.map

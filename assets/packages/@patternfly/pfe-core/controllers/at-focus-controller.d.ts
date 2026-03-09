@@ -31,7 +31,7 @@ export declare abstract class ATFocusController<Item extends HTMLElement> {
      * wrap around to the other side of the list.
      */
     get atFocusedItemIndex(): number;
-    set atFocusedItemIndex(index: number);
+    set atFocusedItemIndex(requestedIndex: number);
     /** Elements which control the items container e.g. a combobox input */
     protected get controlsElements(): HTMLElement[];
     /** All items which are able to receive assistive technology focus */
@@ -41,9 +41,12 @@ export declare abstract class ATFocusController<Item extends HTMLElement> {
     set itemsContainerElement(container: HTMLElement | null);
     constructor(host: ReactiveControllerHost, options: ATFocusControllerOptions<Item>);
     /**
-     * Initialize the items and itemsContainerElement fields
+     * Initialize the items and itemsContainerElement fields.
+     * Call this when the list of items has changed
+     * (e.g. when a parent controller sets items).
+     * @internal not for use by element authors
      */
-    protected initItems(): void;
+    initItems(): void;
     hostConnected(): void;
     hostDisconnected(): void;
     hostUpdate(): void;

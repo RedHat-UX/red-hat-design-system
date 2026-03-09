@@ -41,7 +41,7 @@ function aria(target, key) {
     protos.get(target).add(key);
 }
 function getLabelText(label) {
-    if (label.hidden) {
+    if (!(label instanceof HTMLElement) || label.hidden) {
         return '';
     }
     else {
@@ -52,6 +52,60 @@ function getLabelText(label) {
 export class InternalsController {
     static getLabels(host) {
         return Array.from(this.instances.get(host)?.internals.labels ?? []);
+    }
+    /**
+     * Gets the ARIA posinset value from a listbox item (attribute takes precedence over internals).
+     * @param host - The listbox item element.
+     */
+    static getAriaPosInSet(host) {
+        return host.getAttribute('aria-posinset')
+            ?? this.instances.get(host)?.ariaPosInSet
+            ?? null;
+    }
+    /**
+     * Sets the ARIA posinset on a listbox item. Uses ElementInternals when the host has
+     * an InternalsController instance; otherwise sets/removes the host attribute.
+     * @param host - The listbox item element (option or option-like).
+     * @param value - Position in set (1-based), or null to clear.
+     */
+    static setAriaPosInSet(host, value) {
+        const instance = this.instances.get(host);
+        if (instance) {
+            instance.ariaPosInSet = value != null ? String(value) : null;
+        }
+        else if (value != null) {
+            host.setAttribute('aria-posinset', String(value));
+        }
+        else {
+            host.removeAttribute('aria-posinset');
+        }
+    }
+    /**
+     * Gets the ARIA setsize from a listbox item (aria attribute if set or defaulting to internals).
+     * @param host - The listbox item element.
+     */
+    static getAriaSetSize(host) {
+        return host.getAttribute('aria-setsize')
+            ?? this.instances.get(host)?.ariaSetSize
+            ?? null;
+    }
+    /**
+     * Sets the ARIA setsize on a listbox item. Uses ElementInternals when the host has
+     * an InternalsController instance; otherwise sets/removes the host attribute.
+     * @param host - The listbox item element (option or option-like).
+     * @param value - Total set size, or null to clear.
+     */
+    static setAriaSetSize(host, value) {
+        const instance = this.instances.get(host);
+        if (instance) {
+            instance.ariaSetSize = value != null ? String(value) : null;
+        }
+        else if (value != null) {
+            host.setAttribute('aria-setsize', String(value));
+        }
+        else {
+            host.removeAttribute('aria-setsize');
+        }
     }
     static of(host, options) {
         constructingAllowed = true;
@@ -87,8 +141,6 @@ export class InternalsController {
     }
     get element() {
         if (isServer) {
-            // FIXME(bennyp): a little white lie, which may break
-            // when the controller is applied to non-lit frameworks.
             return this.host;
         }
         else {
@@ -144,21 +196,15 @@ export class InternalsController {
         this.ariaValueMin = null;
         this.ariaValueNow = null;
         this.ariaValueText = null;
-        /** WARNING: be careful of cross-root ARIA browser support */
+        /** As of April 2025, the following are considered Baseline supported in evergreen browsers */
         this.ariaActiveDescendantElement = null;
-        /** WARNING: be careful of cross-root ARIA browser support */
         this.ariaControlsElements = null;
-        /** WARNING: be careful of cross-root ARIA browser support */
         this.ariaDescribedByElements = null;
-        /** WARNING: be careful of cross-root ARIA browser support */
         this.ariaDetailsElements = null;
-        /** WARNING: be careful of cross-root ARIA browser support */
         this.ariaErrorMessageElements = null;
-        /** WARNING: be careful of cross-root ARIA browser support */
         this.ariaFlowToElements = null;
-        /** WARNING: be careful of cross-root ARIA browser support */
         this.ariaLabelledByElements = null;
-        /** WARNING: be careful of cross-root ARIA browser support */
+        /** As of February 2026, this is not supported in Chromium browsers */
         this.ariaOwnsElements = null;
         this._formDisabled = false;
         if (!constructingAllowed) {
