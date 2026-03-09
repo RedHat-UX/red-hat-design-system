@@ -98,7 +98,8 @@
           /* non standard, this wont take effect though as microns hard stops at 12px */
           --rh-icon-size: 10px;
 
-          /** Toggle caret color; uses `rh-color-gray-40` and `rh-color-icon-subtle` design tokens */
+          /** Toggle caret color; uses `rh-color-gray-40`
+              and `rh-color-icon-subtle` design tokens */
           color: light-dark(var(--rh-color-gray-40, #a3a3a3), var(--rh-color-icon-subtle));
           transition: rotate 0.2s;
         }
@@ -178,7 +179,8 @@
           inline-size: 100%;
           block-size: 100%;
 
-          /** Dropdown variant when slotted in hamburger padding; uses `rh-space-lg` and `rh-space-xl` design tokens */
+          /** Dropdown variant hamburger padding;
+              uses `rh-space-lg` and `rh-space-xl` tokens */
           padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
           cursor: pointer;
 
@@ -267,7 +269,8 @@
           /** Secondary area  slotted item toggle border radius */
           border-radius: var(--rh-border-radius-default, 3px);
 
-          /** Secondary area slotted item font size; uses `rh-font-size-body-text-sm` design token */
+          /** Secondary area item font size;
+              uses `rh-font-size-body-text-sm` token */
           font-size: var(--rh-font-size-body-text-sm, 0.875rem);
           cursor: pointer;
 
@@ -394,7 +397,8 @@
         align-items: center;
         block-size: calc(100% + 4px);
 
-        /** Link variant when slotted in hamburger menu font size; uses the `rh-font-size-body-text-md` design token */
+        /** Link variant hamburger menu font size;
+            uses `rh-font-size-body-text-md` token */
         font-size: var(--rh-font-size-body-text-md, 1rem);
 
         /** Link variant when slotted in hamburger padding */
