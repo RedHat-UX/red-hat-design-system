@@ -74,6 +74,8 @@
 
       display: flex;
       list-style: none;
+
+      /** Navigation content gap */
       gap: var(--rh-space-md, 8px);
 
       &::marker,
@@ -113,6 +115,7 @@
       }
 
       @container (min-width: 1200px) {
+        /** Navigation top accent color */
         border-block-start-color: var(--rh-color-accent-brand);
       }
 
@@ -138,6 +141,7 @@
         border-block-end: 4px solid transparent; /* Non standard border width */
 
         &:hover {
+          /** Navigation bottom border color */
           border-block-end-color: var(--rh-color-border-subtle);
         }
 
@@ -153,6 +157,8 @@
       & details {
         & summary {
           list-style: none;
+
+          /** Navigation text color */
           color: var(--rh-color-text-primary) !important;
           text-decoration: none !important;
           text-align: center;
@@ -170,6 +176,8 @@
               var(--rh-border-width-md, 2px)
               solid
               var(--rh-color-interactive-primary-default);
+
+            /** Navigation corner rounding */
             border-radius: var(--rh-border-radius-default, 3px);
           }
         }
@@ -195,6 +203,8 @@
           & summary {
             @container (min-width: 1200px) {
               block-size: calc(100% + 4px);
+
+              /** Navigation inner spacing */
               padding: 0 var(--rh-space-lg, 16px);
             }
           }
@@ -203,6 +213,8 @@
             @container (min-width: 1200px) {
               position: absolute;
               z-index: -1;
+
+              /** Navigation background */
               background-color: var(--rh-color-surface);
               box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
               inset-block-start: 100%;
@@ -225,7 +237,11 @@
           align-items: center;
           padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
           border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+
+          /** Navigation corner rounding */
           border-radius: var(--rh-border-radius-pill, 64px);
+
+          /** Navigation text size */
           font-size: var(--rh-font-size-body-text-sm, 0.875rem);
           cursor: pointer;
 
@@ -288,6 +304,8 @@
         & #details-content {
           position: absolute;
           z-index: -1;
+
+          /** Navigation background */
           background-color: var(--rh-color-surface);
           box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
           inset-block-start: 100%;
@@ -329,6 +347,7 @@
     border-block-start: none;
 
     & ::slotted(a) {
+      /** Navigation text color */
       color: var(--rh-color-text-primary) !important;
     }
 
@@ -340,6 +359,8 @@
       text-decoration-line: underline !important;
       text-decoration-style: dashed !important;
       text-decoration-skip-ink: auto !important;
+
+      /** Navigation text color */
       color: var(--rh-color-interactive-primary-hover) !important;
     }
 
@@ -354,6 +375,8 @@
         display: flex;
         align-items: center;
         block-size: calc(100% + 4px);
+
+        /** Navigation text size */
         font-size: var(--rh-font-size-body-text-md, 1rem);
         padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
       }
@@ -361,11 +384,14 @@
       & ::slotted(a:is(:focus-visible, :hover:focus-visible, :active)) {
         outline-offset: 0;
         outline: var(--rh-border-width-md, 2px) solid var(--rh-color-interactive-primary-default);
+
+        /** Navigation corner rounding */
         border-radius: var(--rh-border-radius-default, 3px);
       }
 
       @container (min-width: 1200px) {
         & ::slotted(a) {
+          /** Navigation inner spacing */
           padding: 0 var(--rh-space-lg, 16px);
         }
 
@@ -382,10 +408,13 @@
         var(--_padding-inline-end, var(--rh-space-md, 8px));
 
       & ::slotted(a) {
+        /** Navigation text size */
         font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
         display: inline-flex;
         block-size: auto;
         align-items: center;
+
+        /** Navigation inner spacing */
         padding: var(--rh-space-md, 8px) !important;
       }
 
@@ -395,6 +424,8 @@
           var(--rh-border-width-md, 2px)
           solid
           var(--rh-color-interactive-primary-default);
+
+        /** Navigation corner rounding */
         border-radius: var(--rh-border-radius-default, 3px);
       }
     }
