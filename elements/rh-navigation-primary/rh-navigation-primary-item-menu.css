@@ -3,7 +3,7 @@
 }
 
 #container {
-  /** Content panel text color */
+  /** Content panel text color; uses the `rh-color-text-primary` design token */
   color: var(--rh-color-text-primary);
   background-color:
     light-dark(
@@ -19,7 +19,7 @@
       margin: 0 auto;
       max-width: 1440px;
 
-      /** Content panel not compact state starting at viewports >= 1200px */
+      /** Content panel desktop padding; uses `rh-space-3xl` and `rh-space-2xl` design tokens */
       padding: var(--rh-space-3xl, 48px) var(--rh-space-2xl, 32px);
     }
   }

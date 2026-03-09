@@ -19,7 +19,7 @@
    */
   z-index: var(--rh-navigation-primary-z-index, 102);
 
-  /** Primary font for navigation text */
+  /** Uses the `rh-font-family-body-text` design token for consistent body typography */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif) !important;
 }
 
@@ -70,14 +70,13 @@
         var(--rh-color-surface-darkest, #151515)
       );
 
-  /** Default text color for all bar content; inherits
-     the theme-aware rh-color-text-primary design system token */
+  /** Uses the `rh-color-text-primary` design token for theme-aware text color */
   color: var(--rh-color-text-primary);
   inline-size: 100%;
   max-block-size: var(--_navbar-height);
   box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
 
-  /** Inline padding for the main nav bar (mobile) */
+  /** Inline padding for the main nav bar (mobile); uses `rh-space-lg` design token */
   padding-inline: var(--rh-space-lg, 16px);
 
   @container navigation-primary (min-width: 320px) {
@@ -99,7 +98,7 @@
   grid-template-areas: 'logo sub-domain';
   grid-template-columns: auto;
 
-  /** Inline padding for the main nav bar (desktop) */
+  /** Lockup gap between logo and sub-domain; uses the `rh-space-lg` design token */
   gap: var(--rh-space-lg, 16px);
 }
 
@@ -279,7 +278,7 @@
 
       aspect-ratio: unset;
 
-      /** Menu bar icon color */
+      /** Menu bar icon color; uses the `rh-color-icon-secondary` design token */
       color: var(--rh-color-icon-secondary);
     }
   }
@@ -434,7 +433,7 @@
       & rh-icon {
         --rh-icon-size: 18px;
 
-        /** Links menu icon color */
+        /** Links menu icon color; uses the `rh-color-icon-secondary` design token */
         color: var(--rh-color-icon-secondary);
       }
     }
@@ -583,11 +582,11 @@
       place-items: center;
       block-size: 100%;
 
-      /** Subdomain heading font */
+      /** Subdomain heading font; uses the `rh-font-family-heading` design token */
       font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif) !important;
       font-size: 1rem !important; /* non standard for heading */
 
-      /** Subdomain heading font weight */
+      /** Subdomain heading font weight; uses the `rh-font-weight-heading-bold` design token */
       font-weight: var(--rh-font-weight-heading-bold, 700) !important;
       line-height: 1 !important;
 
@@ -599,7 +598,7 @@
       margin-inline-end: var(--rh-space-md, 8px);
 
       @container navigation-primary (min-width: 1200px) {
-        /** Subdomain heading font size at containers >= 1200px */
+        /** Subdomain heading font size; uses the `rh-font-size-heading-xs` design token */
         font-size: var(--rh-font-size-heading-xs, 1.25rem) !important;
       }
 

@@ -22,17 +22,19 @@ import './rh-navigation-primary-item-menu.js';
 import styles from './rh-navigation-primary-item.css' with { type: 'css' };
 
 /**
- * A navigation item provides an interactive link or dropdown for use within the
- * primary navigation bar. When the `variant` is set to `dropdown`, it allows
- * users to expand and collapse a menu of navigational content. The element
- * MUST be placed inside an `rh-navigation-primary` element and SHOULD use the
- * `summary` attribute or slot when using the `dropdown` variant. Avoid using
- * the `dropdown` variant without providing summary text, as this will result
- * in an inaccessible toggle.
+ * A navigation item provides an interactive link or dropdown within the
+ * primary navigation bar. It MUST be placed inside `rh-navigation-primary`.
+ * When `variant` is `dropdown`, the toggle uses `aria-expanded` to convey
+ * state to screen readers. Keyboard users press Enter or Space to toggle
+ * the dropdown; Escape closes it and returns focus to the toggle.
  *
  * @summary Interactive link or dropdown for the primary navigation
  *
- * @fires toggle - when the dropdown opens or closes
+ * @fires {Event} toggle - Fires when the dropdown opens or closes. The event
+ *   has no custom detail; read the element's `open` property for the new state.
+ *
+ * @demo https://ux.redhat.com/elements/navigation-primary/demo/ - Default navigation with dropdown items
+ * @demo https://ux.redhat.com/elements/navigation-primary/demo/links-as-top-level/ - Link variant items
  */
 @themable
 @customElement('rh-navigation-primary-item')

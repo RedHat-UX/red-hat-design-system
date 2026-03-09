@@ -10,12 +10,15 @@ import styles from './rh-navigation-primary-item-menu.css' with { type: 'css' };
 
 /**
  * A navigation menu provides a responsive content container for navigation
- * item dropdowns that adapts its layout based on the primary navigation's
- * compact state. This element MUST be a child of `rh-navigation-primary-item`
- * and SHOULD NOT be used independently. Avoid placing interactive content
- * outside of this container when building dropdown menus.
+ * item dropdowns. This element MUST be a child of `rh-navigation-primary-item`
+ * and SHOULD NOT be used independently. Slotted content SHOULD use semantic
+ * heading and list elements for screen reader navigation. Focus is managed
+ * within this container; Tab moves through focusable children and Escape
+ * closes the parent dropdown.
  *
  * @summary Content container for navigation item dropdowns
+ *
+ * @demo https://ux.redhat.com/elements/navigation-primary/demo/ - Navigation with dropdown menus
  */
 @customElement('rh-navigation-primary-item-menu')
 export class RhNavigationPrimaryItemMenu extends LitElement {

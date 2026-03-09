@@ -28,19 +28,17 @@ export type NavigationPrimaryPalette = Extract<ColorPalette, (
 
 /**
  * Primary navigation provides a persistent bar for orienting users and
- * navigating across websites and domains. It should be used when a site
- * requires a global header for wayfinding across multiple sections or
- * domains. It allows grouping of primary links, dropdown menus, event
- * promotions, and utility actions into a single responsive bar. There
- * must not be more than one `<rh-navigation-primary>` on a page.
+ * navigating across websites and domains. It groups primary links,
+ * dropdown menus, event promotions, and utility actions into a single
+ * responsive bar. There MUST NOT be more than one on a page. The element
+ * uses the ARIA `navigation` landmark role and SHOULD have a unique
+ * `accessible-label` when multiple navigation landmarks exist on the page,
+ * so screen readers can distinguish between them. Keyboard users navigate
+ * items with Tab/Shift+Tab and close open dropdowns with Escape.
  *
  * @summary Persistent bar for orienting users and navigating across sites
  *
  * @alias Navigation (primary)
- *
- * @cssprop [--rh-navigation-primary-z-index=102] - Sets the stacking order of
- *   the navigation element. Adjust this token when the navigation overlaps
- *   other fixed or sticky elements on the page.
  *
  */
 @customElement('rh-navigation-primary')
