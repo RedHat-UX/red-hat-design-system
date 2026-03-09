@@ -4,6 +4,7 @@
 }
 
 #list {
+  /** Jump link end spacing */
   padding-inline-end: var(--rh-space-lg, 16px);
 }
 

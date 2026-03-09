@@ -15,6 +15,15 @@ import style from './rh-jump-link.css' with { type: 'css' };
 
 import { rhJumpLinksOrientationContext } from './context.js';
 
+/**
+ * An individual navigation link within `<rh-jump-links>` that scrolls the
+ * page to a target section. Renders as `role="listitem"` with an internal
+ * anchor. When active, sets `aria-current="location"` for screen readers.
+ * Tab moves focus to the link; Enter or click scrolls to the `href`
+ * target. MUST be a child of `<rh-jump-links>` or `<rh-jump-links-list>`.
+ *
+ * @summary A single jump link targeting a page section
+ */
 @customElement('rh-jump-link')
 @themable
 export class RhJumpLink extends LitElement {
@@ -29,10 +38,10 @@ export class RhJumpLink extends LitElement {
   @consume({ context: rhJumpLinksOrientationContext, subscribe: true })
   @state() private orientation?: 'horizontal' | 'vertical';
 
-  /** Whether this item is active. */
+  /** Whether this link represents the currently visible section. When true, a bold border and `aria-current="location"` are applied. Defaults to false. */
   @property({ type: Boolean, reflect: true }) active = false;
 
-  /** hypertext reference for this link */
+  /** The URL fragment (e.g. `"#section-id"`) this link navigates to. MUST match an element ID on the page. Defaults to undefined. */
   @property({ reflect: true }) href?: string;
 
   #internals = InternalsController.of(this, { role: 'listitem' });

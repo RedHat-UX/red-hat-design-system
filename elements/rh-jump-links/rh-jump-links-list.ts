@@ -16,6 +16,14 @@ import { rhJumpLinksOrientationContext } from './context.js';
 import style from './rh-jump-links-list.css' with { type: 'css' };
 
 /**
+ * Groups related `<rh-jump-link>` elements into a nested, expandable
+ * list within `<rh-jump-links>`. The parent link SHOULD be slotted
+ * into `slot="parent"`. In vertical orientation, child links indent
+ * beneath the parent; in horizontal orientation, the nested list is
+ * hidden. Sets `aria-current="location"` and `role="listitem"` on
+ * itself. AVOID deeply nesting multiple `<rh-jump-links-list>` levels.
+ *
+ * @summary Nested group of jump links with an expandable parent
  */
 @customElement('rh-jump-links-list')
 @themable
@@ -28,7 +36,7 @@ export class RhJumpLinksList extends LitElement {
   @consume({ context: rhJumpLinksOrientationContext, subscribe: true })
   @state() private orientation?: 'horizontal' | 'vertical';
 
-  /** Whether this item is active. */
+  /** Whether any child link in this group is the active section. When true, the parent border highlights and child list expands (vertical only). Defaults to false. */
   @property({ type: Boolean, reflect: true }) active = false;
 
   @observes('active')
@@ -40,10 +48,21 @@ export class RhJumpLinksList extends LitElement {
     const { active, orientation = 'vertical' } = this;
     return html`
       <div id="container" class="${classMap({ active, [orientation]: true })}">
+        <!-- summary: parent link for this nested group (parent slot)
+             description: |
+               A single \`<rh-jump-link>\` that labels this group. When clicked,
+               the nested list expands in vertical orientation. Screen readers
+               announce it as a list item within the navigation landmark. -->
         <slot name="parent"></slot>
         <div id="list"
              ?hidden="${this.orientation === 'horizontal' || !active}"
              role="list">
+          <!-- summary: child jump links (default slot)
+               description: |
+                 One or more \`<rh-jump-link>\` children that appear nested under
+                 the parent link. In vertical mode, these indent with additional
+                 padding. Hidden in horizontal orientation. Each child has
+                 \`role="listitem"\` for screen readers. -->
           <slot></slot>
         </div>
       </div>
