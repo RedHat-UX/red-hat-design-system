@@ -17,11 +17,36 @@ function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLB
 }
 
 /**
- * A call to action is styled text representing a link.
- * @summary     A call to action is styled text representing a link.
+ * USE to style interactive links or buttons as prominent calls to action.
+ * MUST contain either an `href` attribute or a slotted `<a>` or `<button>`.
+ * Keyboard users MUST be able to focus via Tab and activate with Enter.
+ * The element delegates focus to its inner link or button. Screen readers
+ * announce the slotted link text. AVOID using `<button>` with the default
+ * (no variant) style. USE `primary` for the most important page action.
+ *
+ * @summary Styled link or button for prominent user actions
  *
  * @alias call-to-action
  *
+ * @cssprop --rh-icon-size
+ * Size of the trailing icon. Controls width and height.
+ * Defaults to `--rh-font-size-body-text-lg` (1.125rem).
+ *
+ * @cssprop --rh-cta-focus-container-outline-color
+ * Outline color of the container on keyboard focus. MUST provide adequate
+ * contrast for WCAG 2.4.7 compliance. Fallback: `--rh-cta-focus-outline-color`.
+ *
+ * @cssprop --rh-cta-focus-outline-color
+ * Outline color of the inner focus indicator. Used when
+ * `--rh-cta-focus-container-outline-color` is not set.
+ *
+ * @cssprop --rh-cta-font-size-priority
+ * Font size for primary and secondary CTA variants. Defaults to
+ * `--rh-font-size-body-text-md` (1rem).
+ *
+ * @cssprop --rh-cta-active-background-color
+ * Background color during the active/pressed state. Provides visual
+ * feedback on click or touch.
  */
 @customElement('rh-cta')
 @themable
@@ -29,40 +54,39 @@ export class RhCta extends LitElement {
   static readonly styles = [style];
 
   /**
-   * Indicates the importance of this call-to-action in the context of the page.
-   * Will also influence how the call-to-action is styled.
-   *   - **Primary**: Use for the primary or most important link. This variant is the highest in
-   *       hierarchy and can also be used to play a video in a Modal or large container.
-   *   - **Secondary**: Use for secondary or general links. This variant is lower in hierarchy than
-   *       the Primary variant and can be used multiple times in the same container or layout.
-   *   - **Brick**: Use to group links together. Only the Brick variant can stretch to fit a
-   *       container or grid, otherwise the text label padding in other variants stays the same.
-   *   - Default (no variant): Use for tertiary or the least important links. This variant is the
-   *       lowest in hierarchy and can be used multiple times in the same container or layout.
+   * Controls the visual importance and styling of the call to action.
+   * Accepts 'primary' | 'secondary' | 'brick' or undefined (default).
+   *   - **Primary**: USE for the most important page action. Red background, white text.
+   *   - **Secondary**: USE for general links. Bordered with inverted hover.
+   *   - **Brick**: USE to group links in a grid. Stretches to fill container width.
+   *   - **Default** (undefined): USE for tertiary links. Inline text with arrow icon.
+   * Defaults to undefined. AVOID using more than one primary CTA per page section.
    */
   @property({ reflect: true }) variant?: 'primary' | 'secondary' | 'brick';
 
   /**
-   * When set, overrides the default slot. Use *instead* of a slotted anchor tag
+   * URL for the call to action link. When set, renders an internal `<a>` tag
+   * and overrides slotted anchor content. USE instead of a slotted `<a>` tag.
+   * MUST NOT be combined with a slotted link. Defaults to undefined.
    */
   @property({ reflect: true }) href?: string;
 
-  /** when `href` is set, the link's `download` attribute */
+  /** When `href` is set, triggers a file download. Passes through to the link's `download` attribute. Defaults to undefined. */
   @property() download?: string;
 
-  /** when `href` is set, the link's `referrerpolicy` attribute */
+  /** When `href` is set, controls the referrer policy. Passes through to the link's `referrerpolicy` attribute. Defaults to undefined. */
   @property() referrerpolicy?: string;
 
-  /** when `href` is set, the link's `rel` attribute */
+  /** When `href` is set, specifies the link relationship. Passes through to the link's `rel` attribute. Defaults to undefined. */
   @property() rel?: string;
 
-  /** when `href` is set, the link's `target` attribute */
+  /** When `href` is set, specifies where to open the link (e.g. '_blank'). Passes through to the link's `target` attribute. Defaults to undefined. */
   @property() target?: string;
 
-  /** Icon name */
+  /** Name of the icon to display. For default variant, overrides the trailing arrow. For brick variant, displays before the text. Defaults to undefined. */
   @property({ reflect: true }) icon?: IconNameFor<IconSetName>;
 
-  /** Icon set */
+  /** Icon set to load the icon from. Accepts any registered icon set name. Defaults to 'ui'. */
   @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'ui';
 
   override async scheduleUpdate() {
@@ -89,12 +113,13 @@ export class RhCta extends LitElement {
     const iconContent =
       !(variant === 'brick' && icon) ? '' : html`<rh-icon .icon=${icon} set="${iconSet ?? 'ui'}"></rh-icon>`;
     const slot = html`<!--
-          The default slot contains the link text when the \`href\`
-          attribute is set. In case there is no href attribute, an anchor
-          tag (\`<a href="...">\`) should be the first child inside \`rh-cta\`
-          element. Less preferred but allowed for specific use-cases
-          include: \`<button>\` (note however that the \`button\` tag is not
-          supported for the default CTA styles).
+          summary: CTA link or button content
+          description: |
+            When href is set, contains plain text for the link label.
+            Otherwise, MUST contain an <a> tag as the first child.
+            A <button> is allowed but MUST NOT be used with the default
+            variant. Screen readers announce the slotted text as the
+            accessible name for the interactive element.
     --><slot></slot>${follower}`;
     const linkContent =
         !href ? slot
