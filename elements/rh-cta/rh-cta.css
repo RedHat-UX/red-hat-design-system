@@ -10,6 +10,7 @@ a,
 ::slotted(:is(a, button, input)) {
   vertical-align: middle !important;
   word-break: break-word !important;
+  white-space: normal !important;
   display: inline !important;
   color: inherit !important;
   font-family: inherit !important;
@@ -21,10 +22,6 @@ a,
   text-decoration: var(--_text-decoration) !important;
   text-underline-offset: var(--_text-underline-offset) !important;
   z-index: 2 !important;
-}
-
-::slotted(:is(a, button, input)) {
-  white-space: break-spaces !important;
 }
 
 a:after,
@@ -89,7 +86,7 @@ a:after,
 /** Default variant arrow icon */
 rh-icon {
   vertical-align: middle;
-  margin-inline-start: calc(var(--rh-space-md, 8px) / 2);
+  margin-inline-start: var(--rh-space-md, 8px);
   display: inline-block;
   fill: currentcolor;
   translate: 0 0;
