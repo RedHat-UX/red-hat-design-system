@@ -14,7 +14,11 @@ rh-pagination {
       border: var(--rh-border-width-sm, 1px) solid transparent;
       color: var(--_list-a-text-color);
       display: grid;
+
+      /** Pagination typeface */
       font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+
+      /** Pagination text size */
       font-size: var(--rh-font-size-body-text-xl, 1.25rem);
       height: var(--_link-size);
       place-content: center;
@@ -23,8 +27,11 @@ rh-pagination {
       width: var(--_link-size);
 
       &:focus {
+        /** Pagination corner rounding */
         border-radius: var(--rh-border-radius-default, 3px);
         outline-offset: -2px;
+
+        /** Pagination focus outline */
         outline: var(--rh-border-width-md, 2px) solid transparent;
         outline-color:
           var(--rh-pagination-accent-color,
@@ -103,7 +110,11 @@ rh-pagination {
     padding-inline-end: 4px;
     display: flex;
     align-items: center;
+
+    /** Pagination text size */
     font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+
+    /** Pagination text color */
     color: var(--rh-color-gray-40, #a3a3a3);
     justify-content: center;
     align-self: start;

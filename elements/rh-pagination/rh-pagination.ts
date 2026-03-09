@@ -24,13 +24,13 @@ const L2 = html`
   </svg>`;
 
 /**
- * Allows users to navigate between pages of related content. Users MUST
- * provide an `<ol>` of anchor links as children. The current page is
- * determined by matching hrefs or `aria-current="page"`. Users Tab to
- * stepper buttons and links; the input navigates on Enter. Screen
- * readers SHOULD use the `label` attribute for the nav landmark.
+ * Provides page navigation for content using stepper buttons, numbered
+ * links, and a page-input field. Authors MUST provide an `<ol>` with
+ * `<li><a>` page links. SHOULD use `aria-current="page"` on the active
+ * link. Screen readers announce the `<nav>` landmark via `label`. Tab
+ * moves focus through steppers and input; Enter activates.
  *
- * @summary Allows users to navigate content divided into pages
+ * @summary Navigate between pages of content with steppers and input
  *
  * @alias pagination
  *
@@ -53,36 +53,32 @@ export class RhPagination extends LitElement {
   }
 
   /**
-   * Override `overflow` values set from HTML or JS.
-   * `overflow` should ideally be private, but because
-   * we can't do `::slotted(nav ol li)`, we need to reflect
-   * it to a host attribute, so that lightdom CSS can target
-   * the list items.
+   * Controls which end(s) of the page list are truncated with ellipsis.
+   * Accepts `'start'` | `'end'` | `'both'` | `null`. Computed automatically
+   * from page count and current index. Reflected to the host attribute so
+   * light-DOM CSS can hide overflow `<li>` elements. Defaults to `null`.
    */
   @property({ reflect: true }) overflow: 'start' | 'end' | 'both' | null = null;
 
-  /** Accessible label for the 'nav' element */
+  /** Accessible label for the `<nav>` landmark. SHOULD be unique when multiple paginations exist on a page. Defaults to `'Page navigation'`. */
   @property() label = 'Page navigation';
 
-  /** Accessible label for the 'first page' button */
+  /** Accessible label for the first-page stepper button. Used by screen readers. Defaults to `'first page'`. */
   @property({ attribute: 'label-first' }) labelFirst = 'first page';
 
-  /** Accessible label for the 'previous page' button */
+  /** Accessible label for the previous-page stepper button. Used by screen readers. Defaults to `'previous page'`. */
   @property({ attribute: 'label-previous' }) labelPrevious = 'previous page';
 
-  /** Accessible label for the 'next page' button */
+  /** Accessible label for the next-page stepper button. Used by screen readers. Defaults to `'next page'`. */
   @property({ attribute: 'label-next' }) labelNext = 'next page';
 
-  /** Accessible label for the 'last page' button */
+  /** Accessible label for the last-page stepper button. Used by screen readers. Defaults to `'last page'`. */
   @property({ attribute: 'label-last' }) labelLast = 'last page';
 
-  /** Change pagination size to small */
+  /** Controls pagination size. Accepts `'sm'` for smaller touch targets (WCAG AA) or `null` for default (WCAG AAA). Defaults to `null`. */
   @property({ reflect: true }) size: 'sm' | null = null;
 
-  /**
-   * Borderless variant
-   * Note: 'open' will also work, but is deprecated
-   */
+  /** Visual variant. Accepts `'open'` for transparent backgrounds with bottom borders, or `null` for the default box variant. Defaults to `null`. */
   @property({ reflect: true, converter: {
     fromAttribute(value: string | null) {
       // Silent aliasing: convert 'open' to 'borderless'
@@ -183,9 +179,12 @@ export class RhPagination extends LitElement {
            ?inert="${this.#currentLink === this.#prevLink || this.#currentLink === this.#firstLink}"
            aria-label="${labelPrevious}">${L1}</a>
         <nav aria-label="${label}">
-          <!-- MUST contain a single \`<ol>\` with \`<li><a>\` children representing each page link.
-               Screen readers announce these links within a \`<nav>\` landmark.
-               The current page link SHOULD have \`aria-current="page"\` for assistive technology. -->
+          <!-- summary: page link list (default slot)
+               description: |
+                 An \`<ol>\` containing \`<li><a>\` elements for each page. The
+                 active page link MUST have \`aria-current="page"\` or match the
+                 current URL. Screen readers announce this as a navigation
+                 landmark labeled by the \`label\` property. -->
           <slot></slot>
         </nav>
         <a id="next"
@@ -202,8 +201,12 @@ export class RhPagination extends LitElement {
         <div id="numeric" part="numeric">
           <form @submit="${this.#onSubmit}">
             <label for="page" class="go-to-page-text">
-              <!-- Inline text label for the numeric page input.
-                   Consumers SHOULD localize for screen reader accessibility. -->
+              <!-- summary: page input label text (go-to-page slot)
+                   description: |
+                     Label text preceding the page number input field. Defaults to
+                     "Page". Customize for internationalization. Visually hidden at
+                     very small widths but always accessible to screen readers via
+                     \`aria-labelledby\`. -->
               <slot name="go-to-page">
                 Page
               </slot>
@@ -217,8 +220,10 @@ export class RhPagination extends LitElement {
                    max="${this.total}"
                    .value="${currentPage}">
           </form>
-          <!-- Inline text separator between the page input and total count.
-               Consumers SHOULD localize for screen reader accessibility. -->
+        <!-- summary: preposition text between page input and total (default: "of")
+             description: |
+               Contains the text displayed between the current page input field and the total page count.
+               Defaults to "of" but can be customized for internationalization or alternate phrasing. -->
           <slot ?hidden="${!this.total}" name="out-of">of</slot>
           <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
         </div>
