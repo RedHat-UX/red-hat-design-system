@@ -217,6 +217,7 @@ export class RhPagination extends LitElement {
                    name="page"
                    min=1
                    max="${this.total}"
+                   @click="${this.#onClick}"
                    .value="${currentPage}">
           </form>
         <!-- summary: preposition text between page input and total (default: "of")
@@ -345,6 +346,13 @@ export class RhPagination extends LitElement {
     }
     this.requestUpdate();
     await this.updateComplete;
+  }
+
+  /** Firefox does not focus the input when clicking spinner arrows */
+  #onClick(event: Event) {
+    if (event.target instanceof HTMLInputElement) {
+      event.target.focus();
+    }
   }
 
   #onSubmit(event: Event) {
