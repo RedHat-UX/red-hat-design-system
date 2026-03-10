@@ -1,3 +1,9 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 :host {
   --_stepper-size: var(--rh-length-3xl, 48px);
 

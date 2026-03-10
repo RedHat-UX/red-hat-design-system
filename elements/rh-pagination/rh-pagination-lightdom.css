@@ -1,5 +1,5 @@
 rh-pagination {
-  --_link-size: calc(var(--_stepper-size) + 2px);
+  --_link-size: var(--_stepper-size);
 
   > ol {
     list-style-type: none;
@@ -12,6 +12,7 @@ rh-pagination {
     > a {
       background-color: var(--_list-a-bg-color);
       border: var(--rh-border-width-sm, 1px) solid transparent;
+      box-sizing: border-box;
       color: var(--_list-a-text-color);
       display: grid;
 
@@ -68,7 +69,7 @@ rh-pagination {
       &[aria-current='page'] {
         background-color: var(--_list-a-current-page-bg-color);
         border-color: var(--_list-a-current-page-border-color);
-        border-block-start: 0;
+        border-block-start-color: transparent;
       }
 
       &:focus:after,
@@ -81,7 +82,7 @@ rh-pagination {
   &[size='sm'] {
     li > a { font-size: var(--rh-font-size-body-text-md, 1rem); }
 
-    --_link-size: calc(var(--_stepper-size) + 2px);
+    --_link-size: var(--_stepper-size);
   }
 
   &[overflow='start'] li:nth-last-child(n+6):not(:first-child),
