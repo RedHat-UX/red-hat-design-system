@@ -215,6 +215,7 @@ describe('<rh-pagination>', function() {
         expect(element.getAttribute('overflow'), 'overflow attr').to.equal('end');
       });
 
+
       it('should show first 5 items', function() {
         for (const i of [1, 2, 3, 4, 5]) {
           const item = nodelist[i - 1];
