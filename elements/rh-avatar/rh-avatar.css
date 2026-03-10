@@ -9,9 +9,18 @@
 
 #container {
   display: grid;
+
+  /** Avatar text color */
   color: var(--rh-color-text-secondary);
 
-  /** List of colors to use when generating avatars */
+  /**
+   * Internal palette of hex colors for generated patterns. Uses `light-dark()`
+   * to switch between light-scheme colors (--rh-color-blue-30, --rh-color-teal-50,
+   * --rh-color-green-60, --rh-color-red-40, --rh-color-purple-60) and
+   * dark-scheme colors (--rh-color-blue-50, --rh-color-teal-70,
+   * --rh-color-green-70, --rh-color-red-50, --rh-color-purple-70).
+   * Override with `--rh-avatar-colors` to supply custom hex values.
+   */
   --_colors:
     light-dark(var(--rh-avatar-colors,
       var(--rh-color-blue-30, #92c5f9)
@@ -26,6 +35,7 @@
       var(--rh-color-red-50, #ee0000)
       var(--rh-color-purple-70, #21134d)));
 
+  /** Gap between avatar thumbnail and text; uses --rh-space-lg design token */
   column-gap: var(--rh-space-lg, 16px);
   width: min-content;
   grid-template-columns: min-content minmax(max-content, 250px);
@@ -38,15 +48,25 @@
 #title {
   grid-area: t;
   align-self: end;
+
+  /** Avatar typeface */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+
+  /** Avatar font weight */
   font-weight: var(--rh-font-weight-heading-medium, 500);
+
+  /** Avatar text size */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
 
 #subtitle {
   grid-area: s;
   align-self: start;
+
+  /** Avatar font weight */
   font-weight: var(--rh-font-weight-heading-regular, 400);
+
+  /** Avatar text size */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
 
@@ -68,6 +88,7 @@
 :host([layout='block']) :is(img, canvas, svg),
 :host(:not([plain])) #container :is(img, canvas, svg) {
   @media (max-width: 575px) {
+    /** Avatar bottom margin */
     margin-block-end: var(--rh-space-lg, 16px);
   }
 }
@@ -78,15 +99,18 @@ slot {
 }
 
 ::slotted(a) {
+  /** Avatar text color */
   color: var(--rh-color-interactive-primary-default);
 }
 
 ::slotted(a:visited) {
+  /** Avatar text color */
   color: var(--rh-color-interactive-primary-visited-default);
 }
 
 ::slotted(a:active),
 ::slotted(a:hover) {
+  /** Avatar text color */
   color: var(--rh-color-interactive-primary-hover);
 }
 
@@ -101,11 +125,18 @@ img,
 svg {
   overflow: hidden;
 
-  /** Size of the avatar, */
+  /**
+   * Avatar thumbnail size. Controlled by --rh-avatar-size custom property,
+   * defaults to --rh-size-icon-06 (64px). Capped at --rh-size-icon-06 via max-width.
+   */
   width: var(--rh-avatar-size, var(--rh-size-icon-06, 64px));
+
+  /** Avatar maximum width */
   max-width: var(--rh-size-icon-06, 64px);
   aspect-ratio: 1;
   grid-area: a;
+
+  /** Avatar corner rounding */
   border-radius: var(--rh-border-radius-pill, 64px);
 }
 
