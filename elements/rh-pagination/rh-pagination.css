@@ -76,8 +76,12 @@
   container-name: pagination;
   container-type: inline-size;
   display: flex;
-  gap: var(--rh-space-2xl, 32px) calc(var(--rh-space-xs, 4px) / 2);
+  gap: var(--rh-space-xl, 24px) calc(var(--rh-space-xs, 4px) / 2);
   flex-wrap: wrap;
+
+  @container pagination (min-width: 344px) {
+    row-gap: var(--rh-space-2xl, 32px);
+  }
 
   @container pagination (min-width: 768px) {
     flex-wrap: nowrap;
