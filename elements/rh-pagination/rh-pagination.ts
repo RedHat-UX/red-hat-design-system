@@ -132,17 +132,16 @@ export class RhPagination extends LitElement {
   }
 
   override update(changed: PropertyValues<this>): void {
-    if (!isServer) {
-      this.#updateLightDOMRefs();
-      this.total = this.#links?.length ?? 0;
-      this.firstHref = this.#firstLink?.href;
-      this.lastHref = this.#lastLink?.href;
-      this.prevHref = this.#prevLink?.href;
-      this.nextHref = this.#nextLink?.href;
-      this.currentHref = this.#currentLink?.href;
-      this.overflow = this.#getOverflow();
+    if (!isServer && this.hasUpdated) {
+      this.#setStateFromLightDOM();
     }
     super.update(changed);
+  }
+
+  override firstUpdated() {
+    if (!isServer) {
+      this.#setStateFromLightDOM();
+    }
   }
 
   override updated() {
@@ -229,6 +228,17 @@ export class RhPagination extends LitElement {
         </div>
       </div>
     `;
+  }
+
+  #setStateFromLightDOM() {
+    this.#updateLightDOMRefs();
+    this.total = this.#links?.length ?? 0;
+    this.firstHref = this.#firstLink?.href;
+    this.lastHref = this.#lastLink?.href;
+    this.prevHref = this.#prevLink?.href;
+    this.nextHref = this.#nextLink?.href;
+    this.currentHref = this.#currentLink?.href;
+    this.overflow = this.#getOverflow();
   }
 
   #getOverflow(): 'start' | 'end' | 'both' | null {
