@@ -134,6 +134,12 @@ export class RhPagination extends LitElement {
   override update(changed: PropertyValues<this>): void {
     if (!isServer) {
       this.#updateLightDOMRefs();
+      this.total = this.#links?.length ?? 0;
+      this.firstHref = this.#firstLink?.href;
+      this.lastHref = this.#lastLink?.href;
+      this.prevHref = this.#prevLink?.href;
+      this.nextHref = this.#nextLink?.href;
+      this.currentHref = this.#currentLink?.href;
       this.overflow = this.#getOverflow();
     }
     super.update(changed);
@@ -141,12 +147,6 @@ export class RhPagination extends LitElement {
 
   override updated() {
     if (!isServer && this.hasUpdated) {
-      this.total = this.#links?.length ?? 0;
-      this.firstHref = this.#firstLink?.href;
-      this.lastHref = this.#lastLink?.href;
-      this.prevHref = this.#prevLink?.href;
-      this.nextHref = this.#nextLink?.href;
-      this.currentHref = this.#currentLink?.href;
       this.#checkValidity();
     }
   }
@@ -171,12 +171,12 @@ export class RhPagination extends LitElement {
         <a id="first"
            class="stepper"
            href="${ifDefined(firstHref)}"
-           ?inert="${this.#currentLink === this.#firstLink}"
+           ?inert="${!firstHref || this.#currentLink === this.#firstLink}"
            aria-label="${labelFirst}">${L2}</a>
         <a id="prev"
            class="stepper"
            href="${ifDefined(prevHref)}"
-           ?inert="${this.#currentLink === this.#prevLink || this.#currentLink === this.#firstLink}"
+           ?inert="${!prevHref || this.#currentLink === this.#prevLink || this.#currentLink === this.#firstLink}"
            aria-label="${labelPrevious}">${L1}</a>
         <nav aria-label="${label}">
           <!-- summary: page link list (default slot)
@@ -190,12 +190,12 @@ export class RhPagination extends LitElement {
         <a id="next"
            class="stepper"
            href="${ifDefined(nextHref)}"
-           ?inert="${this.#currentLink === this.#nextLink || this.#currentLink === this.#lastLink}"
+           ?inert="${!nextHref || this.#currentLink === this.#nextLink || this.#currentLink === this.#lastLink}"
            aria-label="${labelNext}">${L1}</a>
         <a id="last"
            class="stepper"
            href="${ifDefined(lastHref)}"
-           ?inert="${this.#currentLink === this.#lastLink}"
+           ?inert="${!lastHref || this.#currentLink === this.#lastLink}"
            aria-label="${labelLast}">${L2}</a>
         <!-- The container for the page input, separator text, and total page link -->
         <div id="numeric" part="numeric">
