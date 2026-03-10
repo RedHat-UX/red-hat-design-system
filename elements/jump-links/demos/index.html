@@ -25,8 +25,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
@@ -3640,7 +3640,7 @@
       <!--lit-node 22--><slot name="legend" hidden></slot>
     <!--/lit-part--></template><pre class="language-css"><code class="language-css"><span class="token selector">#jump-links-demo-container</span> <span class="token punctuation">{</span>
   <span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span>
-  <span class="token property">grid-template-columns</span><span class="token punctuation">:</span> max-content auto<span class="token punctuation">;</span>
+  <span class="token property">grid-template-columns</span><span class="token punctuation">:</span> auto 1fr<span class="token punctuation">;</span>
   <span class="token property">gap</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--rh-space-2xl<span class="token punctuation">,</span> 32px<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
   <span class="token selector">aside</span> <span class="token punctuation">{</span>
@@ -5882,7 +5882,7 @@
       <!-- `<dl>` element containing rh-badges in the `<dt>` and legend text in the `<dd>` elements -->
       <!--lit-node 22--><slot name="legend" hidden></slot>
     <!--/lit-part--></template><pre class="language-css"><code class="language-css"><span class="token selector">#page-content</span> <span class="token punctuation">{</span>
-  <span class="token property">max-width</span><span class="token punctuation">:</span> 100vw<span class="token punctuation">;</span>
+  <span class="token property">max-width</span><span class="token punctuation">:</span> 100dvw<span class="token punctuation">;</span>
   <span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span>
   <span class="token property">grid-template-columns</span><span class="token punctuation">:</span> auto auto<span class="token punctuation">;</span>
   <span class="token property">gap</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--rh-space-lg<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -7141,7 +7141,7 @@
       <!-- `<dl>` element containing rh-badges in the `<dt>` and legend text in the `<dd>` elements -->
       <!--lit-node 22--><slot name="legend" hidden></slot>
     <!--/lit-part--></template><pre class="language-css"><code class="language-css"><span class="token selector">#responsive-container</span> <span class="token punctuation">{</span>
-  <span class="token property">max-width</span><span class="token punctuation">:</span> 100vw<span class="token punctuation">;</span>
+  <span class="token property">max-width</span><span class="token punctuation">:</span> 100dvw<span class="token punctuation">;</span>
   <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--rh-space-xl<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
   <span class="token selector">&amp; p</span> <span class="token punctuation">{</span>
@@ -8260,8 +8260,7 @@
       <!--lit-node 22--><slot name="legend" hidden></slot>
     <!--/lit-part--></template><pre class="language-css"><code class="language-css"><span class="token selector">#page-content</span> <span class="token punctuation">{</span>
   <span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span>
-  <span class="token property">grid-template-columns</span><span class="token punctuation">:</span> max-content max-content<span class="token punctuation">;</span>
-  <span class="token property">max-width</span><span class="token punctuation">:</span> 100vw<span class="token punctuation">;</span>
+  <span class="token property">grid-template-columns</span><span class="token punctuation">:</span> auto 1fr<span class="token punctuation">;</span>
   <span class="token property">gap</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--rh-space-lg<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
   <span class="token selector">#jump-links-container,
