@@ -18,6 +18,15 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 export class RhButtonGroup extends LitElement {
   static readonly styles = [styles];
 
+  /**
+   * `<rh-button-group>` exposes `role="group"` via ElementInternals.
+   * For a toolbar pattern, authors may wrap the group in an additional element with
+   * `role="toolbar"`.
+   * When the page has more than one toolbar, each must have an accessible name
+   * (via `aria-label` or `aria-labelledby`).
+   * When the toolbar is vertical, authors must set `aria-orientation="vertical"` on
+   * the toolbar element.
+  */
   // eslint-disable-next-line no-unused-private-class-members
   #internals = InternalsController.of(this, { role: 'group' });
 
