@@ -30,9 +30,19 @@ export class AccordionHeaderChangeEvent extends Event {
 }
 
 /**
- * Accordion Header
- * We expect the light DOM of the rh-accordion-header to be a heading level tag (h1, h2, h3, h4, h5, h6)
- * @fires {AccordionHeaderChangeEvent} change - when the open panels change
+ * Clickable toggle for an accordion panel. Each header controls the visibility
+ * of its adjacent `rh-accordion-panel` sibling. Renders as an accessible button
+ * with `role="heading"` at the appropriate aria-level.
+ *
+ * MUST be a direct child of `rh-accordion`. SHOULD contain concise title text
+ * (max 65 characters). AVOID writing titles that sound like calls to action.
+ *
+ * Supports keyboard activation with `Enter` or `Space`. Automatically manages
+ * `aria-expanded` and `aria-controls` for its associated panel.
+ *
+ * @fires {AccordionHeaderChangeEvent} change - Fires when the header's expanded
+ *   state changes, either by user click or programmatic toggle. The event
+ *   `expanded` property indicates the new state.
  */
 @customElement('rh-accordion-header')
 @themable
@@ -45,6 +55,12 @@ export class RhAccordionHeader extends LitElement {
     delegatesFocus: true,
   };
 
+  /**
+   * Whether this header's associated panel is expanded. When true, the caret
+   * icon rotates upward and the panel content is visible. Managed automatically
+   * by the parent `rh-accordion` — set `expanded-index` on the accordion to
+   * control initial state declaratively.
+   */
   @property({ type: Boolean, reflect: true }) expanded = false;
 
   @consume({ context, subscribe: true })
@@ -86,12 +102,20 @@ export class RhAccordionHeader extends LitElement {
               class="${classMap({ toggle: true, large, expanded })}"
               @click="${this.#onClick}">
         <span id="header-container" class="${classMap({ [accents ?? '']: !!accents })}">
-          <!-- summary: inline element containing the heading text or slotted heading content -->
+          <!-- inline element containing the heading text or slotted heading content -->
           <span id="header-text" part="text">
-            <!-- summary: accordion toggle content -->
+            <!-- summary: panel's title text or heading content
+                 description: |
+                   Contains the primary label that describes what content will be revealed when the panel expands.
+                   Title text should be written concisely (max 65 characters) so users know what to expect.
+                   Avoid writing titles that sound like calls to action - make it easy for users to understand
+                   the content within. Title text that is too long should be broken into separate sections, and
+                   text that is too vague may not help users understand the panel content.
+
+                   @see [Title text](https://ux.redhat.com/elements/accordion/guidelines/#title-text) in Guidelines documentation -->
             <slot></slot>
           </span>
-          <!-- summary: container for accents within the header -->
+          <!-- container for accents within the header -->
           <span part="accents">
            <!-- summary: decorations like icons or tags
                 description: |
