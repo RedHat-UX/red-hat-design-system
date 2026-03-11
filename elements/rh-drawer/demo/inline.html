@@ -1,0 +1,47 @@
+<rh-drawer id="drawer" variant="inline" open>
+  <div slot="header">Header</div>
+  <div slot="body">Body</div>
+  <div slot="footer">Footer</div>
+  <div>
+    <h3>Page Content</h3>
+    <p>This content is pushed aside by the inline drawer panel. When the panel collapses,
+      this content expands to fill the full width.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+      ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+      laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+    <form id="knobs">
+      <fieldset>
+        <legend>Position</legend>
+        <label><input type="radio" name="position" value="inline-start" checked> inline-start</label>
+        <label><input type="radio" name="position" value="inline-end"> inline-end</label>
+      </fieldset>
+      <fieldset>
+        <legend>Panel</legend>
+        <label><input type="radio" name="panel" value="collapsible" checked> collapsible (default)</label>
+        <label><input type="radio" name="panel" value="resizable"> resizable</label>
+      </fieldset>
+      <fieldset>
+        <legend>Fullscreen</legend>
+        <label><input type="checkbox" name="fullscreen"> fullscreen</label>
+      </fieldset>
+    </form>
+  </div>
+</rh-drawer>
+
+<script type="module">
+  import '@rhds/elements/rh-drawer/rh-drawer.js';
+
+  const form = document.getElementById('knobs');
+  const drawer = document.getElementById('drawer');
+
+  form.addEventListener('input', function sync() {
+    const data = Object.fromEntries(new FormData(form));
+    drawer.position = data.position;
+    drawer.panel = data.panel || undefined;
+    drawer.fullscreen = 'fullscreen' in data;
+    if (!drawer.open) {
+      drawer.open = true;
+    }
+  });
+</script>

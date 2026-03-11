@@ -213,6 +213,7 @@ export default async function(eleventyConfig: UserConfig) {
       'elements/rh-chip/rh-chip-group.ts',
       'elements/rh-code-block/rh-code-block.ts',
       'elements/rh-cta/rh-cta.ts',
+      'elements/rh-drawer/rh-drawer.ts',
       'elements/rh-dialog/rh-dialog.ts',
       'elements/rh-disclosure/rh-disclosure.ts',
       'elements/rh-footer/rh-footer-copyright.ts',

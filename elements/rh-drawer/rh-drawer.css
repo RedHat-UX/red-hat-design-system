@@ -1,0 +1,764 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+:host {
+  --_panel-width: 320px;
+  --_panel-min-width: 320px;
+  --_collapse-toggle-size: 40px;
+  --_collapse-visible-width: calc(32px + var(--_collapse-toggle-size) / 2);
+  --_resize-handle-width: 12px;
+  --_transition-duration: 0.3s;
+  --_panel-bg: var(--rh-color-surface);
+  --_slide-dir: -1;
+
+  display: block;
+  position: relative;
+  block-size: 100%;
+  container: drawer / inline-size;
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+}
+
+:host(:dir(rtl)) {
+  --_slide-dir: 1;
+}
+
+:host([variant='fixed']) {
+  display: contents;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.visually-hidden {
+  block-size: 1px;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  inline-size: 1px;
+  margin: -1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}
+
+/*****************************************************************************
+ * CONTAINER
+ *****************************************************************************/
+
+#container {
+  display: flex;
+  block-size: 100%;
+  position: relative;
+  overflow: hidden;
+
+  &.inline-end {
+    flex-direction: row-reverse;
+  }
+}
+
+/*****************************************************************************
+ * PANEL
+ *****************************************************************************/
+
+#panel {
+  inline-size: 100%;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  block-size: 100%;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  background-color: var(--_panel-bg);
+  border-inline-end:
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--rh-color-border-subtle);
+  transition: translate var(--_transition-duration) ease-in-out;
+  will-change: translate;
+
+  &.resizing {
+    transition: none;
+    user-select: none;
+  }
+}
+
+.collapsible #panel {
+  max-inline-size: calc(100% - var(--_collapse-toggle-size) / 2);
+}
+
+@container drawer (min-width: 321px) {
+  #panel {
+    inline-size: var(--_panel-width);
+    min-inline-size: var(--_panel-min-width);
+  }
+}
+
+.inline-end #panel {
+  border-inline-end: 0;
+  border-inline-start:
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--rh-color-border-subtle);
+}
+
+#panel-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  block-size: 100%;
+  overflow: hidden auto;
+  color: var(--rh-color-text-primary);
+  opacity: 1;
+  transition: opacity var(--_transition-duration) ease-in-out;
+}
+
+.resizable.inline-start #panel-body {
+  grid-template: 'content handle' / 1fr var(--_resize-handle-width);
+}
+
+.resizable.inline-end #panel-body {
+  grid-template: 'handle content' / var(--_resize-handle-width) 1fr;
+}
+
+#panel-content {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden auto;
+  min-inline-size: 0;
+}
+
+.resizable #panel-content {
+  grid-area: content;
+}
+
+.fullscreen #panel {
+  inline-size: 100%;
+}
+
+/*****************************************************************************
+ * PANEL: ACTIONS BAR
+ *****************************************************************************/
+
+#actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--rh-space-sm, 6px);
+  padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+  flex-shrink: 0;
+}
+
+#close-button,
+#fullscreen-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--_panel-bg);
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  color: var(--rh-color-icon-secondary);
+  border-radius: var(--rh-border-radius-default, 3px);
+  inline-size: var(--_collapse-toggle-size);
+  block-size: var(--_collapse-toggle-size);
+
+  &:hover {
+    color: var(--rh-color-text-secondary);
+    background-color:
+      light-dark(
+          var(--rh-color-surface-light, #e0e0e0),
+          var(--rh-color-surface-dark, #383838)
+        );
+  }
+
+  &:active {
+    color:
+      light-dark(
+          var(--rh-color-text-secondary-on-dark, #c7c7c7),
+          var(--rh-color-text-secondary-on-light, #4d4d4d)
+        );
+    background-color: var(--rh-color-interactive-secondary-active);
+  }
+
+  &:is(:focus, :focus-visible) {
+    outline: var(--rh-border-width-md, 2px) solid var(--rh-color-interactive-primary-default);
+    outline-offset: 2px;
+  }
+}
+
+/*****************************************************************************
+ * PANEL: SLOTS
+ *****************************************************************************/
+
+#header {
+  padding-block: var(--rh-space-lg, 16px);
+  padding-inline: var(--rh-space-xl, 24px);
+}
+
+#header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-heading-sm, 1.5rem);
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
+  margin-block: 0 !important;
+}
+
+#body {
+  flex: 1;
+  overflow-y: auto;
+  padding-inline: var(--rh-space-xl, 24px);
+}
+
+#footer {
+  padding-block: var(--rh-space-lg, 16px);
+  padding-inline: var(--rh-space-xl, 24px);
+  margin-block-start: auto;
+}
+
+/*****************************************************************************
+ * COLLAPSIBLE TOGGLE
+ *****************************************************************************/
+
+#collapse-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset-block-start: var(--rh-space-xl, 24px);
+  inline-size: var(--_collapse-toggle-size);
+  block-size: var(--_collapse-toggle-size);
+  border-radius: 50%;
+  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+  background-color: var(--_panel-bg);
+  cursor: pointer;
+  z-index: 4;
+  padding: 0;
+  color: var(--rh-color-icon-secondary);
+  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
+
+  &:before {
+    content: '';
+    position: absolute;
+    inset: calc(var(--_resize-handle-width) / -2);
+  }
+
+  &:hover {
+    color: var(--rh-color-interactive-primary-default);
+    background-color:
+      light-dark(
+          var(--rh-color-surface-light, #e0e0e0),
+          var(--rh-color-surface-dark, #383838)
+        );
+  }
+
+  &:is(:focus, :focus-visible) {
+    color: var(--rh-color-interactive-primary-default);
+    outline: var(--rh-border-width-md, 2px) solid var(--rh-color-interactive-primary-default);
+    outline-offset: 2px;
+  }
+
+  & rh-icon {
+    transition: rotate var(--_transition-duration) ease-in-out;
+  }
+}
+
+.inline-start #collapse-toggle {
+  inset-inline-end: calc(var(--_collapse-toggle-size) / -2);
+}
+
+.inline-end #collapse-toggle {
+  inset-inline-start: calc(var(--_collapse-toggle-size) / -2);
+
+  & rh-icon {
+    rotate: 180deg;
+  }
+}
+
+.closed.inline-start #collapse-toggle rh-icon {
+  rotate: 180deg;
+}
+
+.closed.inline-end #collapse-toggle rh-icon {
+  rotate: 360deg;
+}
+
+:host(:dir(rtl)) .inline-start #collapse-toggle rh-icon {
+  rotate: 180deg;
+}
+
+:host(:dir(rtl)) .inline-end #collapse-toggle rh-icon {
+  rotate: 0deg;
+}
+
+:host(:dir(rtl)) .closed.inline-start #collapse-toggle rh-icon {
+  rotate: 360deg;
+}
+
+:host(:dir(rtl)) .closed.inline-end #collapse-toggle rh-icon {
+  rotate: 180deg;
+}
+
+/*****************************************************************************
+ * RESIZE HANDLE
+ *****************************************************************************/
+
+#resize-handle {
+  grid-area: handle;
+  inline-size: var(--_resize-handle-width);
+  block-size: 100%;
+  cursor: col-resize;
+  position: relative;
+  z-index: 3;
+  background-color: transparent;
+  touch-action: none;
+  visibility: visible;
+  transition: visibility 0s var(--_transition-duration);
+
+  &:after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    inline-size: 4px;
+    block-size: 40px;
+    border-radius: 4px;
+    background-color: var(--rh-color-icon-secondary);
+  }
+
+  &:hover:after,
+  &:active:after {
+    background-color: var(--rh-color-interactive-primary-default);
+  }
+
+  &:focus-visible {
+    outline: var(--rh-border-width-md, 2px) solid var(--rh-color-interactive-primary-default);
+    outline-offset: -2px;
+  }
+
+  &:focus-visible:before {
+    background-color: var(--rh-color-interactive-primary-default);
+    inline-size: 3px;
+  }
+
+  &:focus-visible:after {
+    background-color: var(--rh-color-interactive-primary-default);
+  }
+}
+
+.inline-start #resize-handle {
+  border-inline-start:
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--rh-color-border-subtle);
+}
+
+.inline-end #resize-handle {
+  border-inline-end:
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--rh-color-border-subtle);
+}
+
+.closed.resizable #resize-handle {
+  visibility: hidden;
+  transition: visibility 0s;
+}
+
+/*****************************************************************************
+ * CONTENT
+ *****************************************************************************/
+
+#content-container {
+  flex: 1;
+  min-inline-size: 0;
+  block-size: 100%;
+  overflow: auto;
+  position: relative;
+  container: content / inline-size;
+
+  #content {
+    padding: var(--rh-drawer-content-padding, var(--rh-space-4xl) var(--rh-space-lg, 16px) 0);
+
+    @container content (min-width: 567px) {
+      padding: var(--rh-drawer-content-padding, var(--rh-space-4xl) var(--rh-space-2xl, 32px) 0);
+    }
+
+    @container content (min-width: 768px) {
+      padding: var(--rh-drawer-content-padding, var(--rh-space-4xl, 64px));
+    }
+  }
+}
+
+/*****************************************************************************
+ * FIXED VARIANT
+ *
+ * Panel is always position: fixed, overlaying the page at all sizes.
+ *****************************************************************************/
+
+.fixed {
+  overflow: visible;
+
+  &#container {
+    block-size: 0;
+  }
+
+  &.open.inline-start #panel,
+  &.closed.inline-start #panel {
+    position: fixed;
+    z-index: 10;
+    inset-block: 0;
+    inset-inline-start: 0;
+    inline-size: var(--_panel-width);
+    min-inline-size: var(--_panel-min-width);
+  }
+
+  &.open.inline-end #panel,
+  &.closed.inline-end #panel {
+    position: fixed;
+    z-index: 10;
+    inset-block: 0;
+    inset-inline-end: 0;
+    inline-size: var(--_panel-width);
+    min-inline-size: var(--_panel-min-width);
+  }
+
+  &.closed.inline-start #panel {
+    translate: calc(var(--_slide-dir) * 100%) 0;
+  }
+
+  &.closed.inline-end #panel {
+    translate: calc(var(--_slide-dir) * -100%) 0;
+  }
+
+  &.fullscreen.open #panel,
+  &.fullscreen.closed #panel {
+    inline-size: 100%;
+  }
+}
+
+/*****************************************************************************
+ * FLOW VARIANT
+ *
+ * Participates in parent layout at >= 992px (in-flow sidebar).
+ * Becomes position: fixed overlay at < 992px.
+ *****************************************************************************/
+
+.flow {
+  overflow: visible;
+
+  &.open.inline-start #panel,
+  &.closed.inline-start #panel {
+    position: fixed;
+    z-index: 10;
+    inset-block: 0;
+    inset-inline-start: 0;
+    inline-size: var(--_panel-width);
+    min-inline-size: var(--_panel-min-width);
+  }
+
+  &.open.inline-end #panel,
+  &.closed.inline-end #panel {
+    position: fixed;
+    z-index: 10;
+    inset-block: 0;
+    inset-inline-end: 0;
+    inline-size: var(--_panel-width);
+    min-inline-size: var(--_panel-min-width);
+  }
+
+  &.closed.inline-start #panel {
+    translate: calc(var(--_slide-dir) * 100%) 0;
+  }
+
+  &.closed.inline-end #panel {
+    translate: calc(var(--_slide-dir) * -100%) 0;
+  }
+
+  @media (min-width: 992px) {
+    &.open.inline-start #panel,
+    &.closed.inline-start #panel {
+      position: relative;
+      z-index: 2;
+      inset-block: auto;
+      inset-inline-start: auto;
+    }
+
+    &.open.inline-end #panel,
+    &.closed.inline-end #panel {
+      position: relative;
+      z-index: 2;
+      inset-block: auto;
+      inset-inline-end: auto;
+    }
+
+    &.open #close-button,
+    &.closed #close-button {
+      display: none;
+    }
+  }
+}
+
+/*****************************************************************************
+ * OVERLAY VARIANT
+ *
+ * Panel is always absolutely positioned and overlays #container content.
+ * Content never shifts. Collapsible closed state hides panel body, shows
+ * only the collapse toggle, and reserves --_collapse-visible-width space.
+ *****************************************************************************/
+
+.overlay {
+  &.open.inline-start #panel,
+  &.closed.inline-start #panel {
+    position: absolute;
+    z-index: 10;
+    inset-block: 0;
+    inset-inline-start: 0;
+  }
+
+  &.open.inline-end #panel,
+  &.closed.inline-end #panel {
+    position: absolute;
+    z-index: 10;
+    inset-block: 0;
+    inset-inline-end: 0;
+  }
+
+  &.closed:not(.collapsible).inline-start #panel {
+    translate: calc(var(--_slide-dir) * 100%) 0;
+  }
+
+  &.closed:not(.collapsible).inline-end #panel {
+    translate: calc(var(--_slide-dir) * -100%) 0;
+  }
+
+  &.closed.collapsible.inline-start #panel {
+    translate: calc(var(--_slide-dir) * (100% - var(--_collapse-visible-width))) 0;
+  }
+
+  &.closed.collapsible.inline-end #panel {
+    translate: calc(var(--_slide-dir) * (-100% + var(--_collapse-visible-width))) 0;
+  }
+
+  &.closed.collapsible #panel-body {
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity var(--_transition-duration) ease-out,
+      visibility 0s var(--_transition-duration);
+  }
+
+  &.open #content-container,
+  &.closed #content-container {
+    inline-size: 100%;
+  }
+
+  &.collapsible.inline-start #content-container {
+    padding-inline-start: var(--_collapse-visible-width);
+  }
+
+  &.collapsible.inline-end #content-container {
+    padding-inline-end: var(--_collapse-visible-width);
+  }
+}
+
+/*****************************************************************************
+ * INLINE VARIANT
+ *
+ * Pushes/pulls content at all sizes. Non-collapsible closed panels go
+ * off-screen (absolute) at small containers; at >= 992px they use
+ * negative margin. Collapsible panels always use margin.
+ *****************************************************************************/
+
+.inline {
+  &.open #panel,
+  &.closed #panel {
+    transition:
+      margin var(--_transition-duration) ease-in-out,
+      translate var(--_transition-duration) ease-in-out;
+  }
+
+  &.closed:not(.collapsible).inline-start #panel {
+    position: absolute;
+    translate: calc(var(--_slide-dir) * 100%) 0;
+  }
+
+  &.closed:not(.collapsible).inline-end #panel {
+    position: absolute;
+    translate: calc(var(--_slide-dir) * -100%) 0;
+  }
+
+  &.closed:not(.collapsible).inline-start #content-container,
+  &.closed:not(.collapsible).inline-end #content-container {
+    inline-size: 100%;
+  }
+
+  &.closed.collapsible.inline-start #panel {
+    translate: none;
+    margin-inline-start: calc(-1 * var(--_panel-width) + var(--_collapse-visible-width));
+  }
+
+  &.closed.collapsible.inline-end #panel {
+    translate: none;
+    margin-inline-end: calc(-1 * var(--_panel-width) + var(--_collapse-visible-width));
+  }
+
+  &.closed.collapsible #panel-body {
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity var(--_transition-duration) ease-out,
+      visibility 0s var(--_transition-duration);
+  }
+
+  @container drawer (min-width: 992px) {
+    &.closed:not(.collapsible).inline-start #panel {
+      position: relative;
+      translate: none;
+      margin-inline-start: calc(-1 * var(--_panel-width));
+    }
+
+    &.closed:not(.collapsible).inline-end #panel {
+      position: relative;
+      translate: none;
+      margin-inline-end: calc(-1 * var(--_panel-width));
+    }
+
+    &.closed:not(.collapsible).inline-start #content-container,
+    &.closed:not(.collapsible).inline-end #content-container {
+      inline-size: auto;
+    }
+  }
+}
+
+/*****************************************************************************
+ * AUTO VARIANT
+ *
+ * Overlay below 992px container width, inline at >= 992px.
+ * No auto-toggle of open state; the user controls open/close.
+ *****************************************************************************/
+
+.auto {
+  &.open.inline-start #panel,
+  &.closed.inline-start #panel {
+    position: absolute;
+    z-index: 10;
+    inset-block: 0;
+    inset-inline-start: 0;
+  }
+
+  &.open.inline-end #panel,
+  &.closed.inline-end #panel {
+    position: absolute;
+    z-index: 10;
+    inset-block: 0;
+    inset-inline-end: 0;
+  }
+
+  &.closed:not(.collapsible).inline-start #panel {
+    translate: calc(var(--_slide-dir) * 100%) 0;
+  }
+
+  &.closed:not(.collapsible).inline-end #panel {
+    translate: calc(var(--_slide-dir) * -100%) 0;
+  }
+
+  &.closed.collapsible.inline-start #panel {
+    translate: calc(var(--_slide-dir) * (100% - var(--_collapse-visible-width))) 0;
+  }
+
+  &.closed.collapsible.inline-end #panel {
+    translate: calc(var(--_slide-dir) * (-100% + var(--_collapse-visible-width))) 0;
+  }
+
+  &.closed.collapsible #panel-body {
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity var(--_transition-duration) ease-out,
+      visibility 0s var(--_transition-duration);
+  }
+
+  &.open #content-container,
+  &.closed #content-container {
+    inline-size: 100%;
+  }
+
+  &.collapsible.inline-start #content-container {
+    padding-inline-start: var(--_collapse-visible-width);
+  }
+
+  &.collapsible.inline-end #content-container {
+    padding-inline-end: var(--_collapse-visible-width);
+  }
+
+  @container drawer (min-width: 992px) {
+    &.open.inline-start #panel,
+    &.closed.inline-start #panel {
+      position: relative;
+      z-index: 2;
+      inset-block: auto;
+      inset-inline-start: auto;
+      transition:
+        margin var(--_transition-duration) ease-in-out,
+        translate var(--_transition-duration) ease-in-out;
+    }
+
+    &.open.inline-end #panel,
+    &.closed.inline-end #panel {
+      position: relative;
+      z-index: 2;
+      inset-block: auto;
+      inset-inline-end: auto;
+      transition:
+        margin var(--_transition-duration) ease-in-out,
+        translate var(--_transition-duration) ease-in-out;
+    }
+
+    &.closed:not(.collapsible).inline-start #panel {
+      translate: none;
+      margin-inline-start: calc(-1 * var(--_panel-width));
+    }
+
+    &.closed:not(.collapsible).inline-end #panel {
+      translate: none;
+      margin-inline-end: calc(-1 * var(--_panel-width));
+    }
+
+    &.closed:not(.collapsible).inline-start #content-container,
+    &.closed:not(.collapsible).inline-end #content-container {
+      inline-size: auto;
+    }
+
+    &.closed.collapsible.inline-start #panel {
+      translate: none;
+      margin-inline-start: calc(-1 * var(--_panel-width) + var(--_collapse-visible-width));
+    }
+
+    &.closed.collapsible.inline-end #panel {
+      translate: none;
+      margin-inline-end: calc(-1 * var(--_panel-width) + var(--_collapse-visible-width));
+    }
+
+    &.open.inline-start #content-container,
+    &.open.inline-end #content-container,
+    &.closed.inline-start #content-container,
+    &.closed.inline-end #content-container {
+      inline-size: auto;
+    }
+  }
+}
+
+/*****************************************************************************
+ * SUPPRESS TRANSITIONS
+ *****************************************************************************/
+
+#container.no-transition #panel {
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #panel {
+    transition: none;
+  }
+}
