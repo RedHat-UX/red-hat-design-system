@@ -1,13 +1,14 @@
 <button id="trigger" aria-controls="drawer" aria-expanded="false">Open Drawer</button>
 
-<rh-drawer id="drawer" variant="overlay" trigger-id="trigger">
+<rh-drawer id="drawer" variant="auto" trigger-id="trigger">
   <div slot="header">Header</div>
   <div slot="body">Body</div>
   <div slot="footer">Footer</div>
   <form id="knobs">
     <fieldset>
       <legend>Variant</legend>
-      <label><input type="radio" name="variant" value="overlay" checked> overlay</label>
+      <label><input type="radio" name="auto" value="auto" checked> auto</label>
+      <label><input type="radio" name="variant" value="overlay" > overlay</label>
       <label><input type="radio" name="variant" value="inline"> inline</label>
     </fieldset>
     <fieldset>
