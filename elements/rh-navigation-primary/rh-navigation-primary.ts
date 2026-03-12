@@ -66,7 +66,7 @@ export class RhNavigationPrimary extends LitElement {
                               null,
   );
 
-  #hasSlottedHamburgerItems = false;
+  #hasHamburgerItems = false;
 
   /**
    * We should start in compact mode (mobile first)
@@ -191,12 +191,12 @@ export class RhNavigationPrimary extends LitElement {
       if (this._title) {
         this.#internals.ariaLabelledByElements = [this._title];
       }
+      this.#updateSlottedState();
     }
   }
 
   async connectedCallback() {
     super.connectedCallback();
-    this.role = 'navigation';
 
     if (!isServer) {
       this.#ro?.observe(this);
@@ -208,16 +208,23 @@ export class RhNavigationPrimary extends LitElement {
     }
   }
 
-  protected willUpdate() {
-    // done here to not have side-effects in render() causing duplicate render.
-    this.#hasSlottedHamburgerItems = this.#slots.hasSlotted();
-    if (!this.#hasSlottedHamburgerItems) {
-      this.#internals.role = 'banner';
-      this.role = 'banner';
-      if (this.accessibleLabel === 'Main navigation') {
-        this.accessibleLabel = 'Site header';
-      }
+  #updateSlottedState(): void {
+    const hasSlottedDefault = this.#slots.hasSlotted();
+    const role = hasSlottedDefault ? 'navigation' : 'banner';
+    this.role = role;
+    this.#internals.role = role;
+    this.#hasHamburgerItems = hasSlottedDefault;
+    // this silliness is to get around SSR and defaults
+    if (!hasSlottedDefault && this.accessibleLabel === 'Main navigation') {
+      this.accessibleLabel = 'Site header';
     }
+    if (hasSlottedDefault && this.accessibleLabel === 'Site header') {
+      this.accessibleLabel = 'Main navigation';
+    }
+  }
+
+  protected willUpdate(_changedProperties: PropertyValues): void {
+    this.#updateSlottedState();
   }
 
   render() {
@@ -264,7 +271,7 @@ export class RhNavigationPrimary extends LitElement {
               <slot name="sub-domain"></slot>
             </div>
           </div>
-          <details id="hamburger" ?open="${this._hamburgerOpen}" @toggle="${this.#hamburgerToggle}" @focusout="${this.#onHamburgerFocusOut}" class="${classMap({ 'hidden': !this.#hasSlottedHamburgerItems })}">
+          <details id="hamburger" ?open="${this._hamburgerOpen}" @toggle="${this.#hamburgerToggle}" @focusout="${this.#onHamburgerFocusOut}" class="${classMap({ 'hidden': !this.#hasHamburgerItems })}">
             <summary @blur="${this.#onHamburgerSummaryBlur}">
               <rh-icon icon="menu-bars" set="ui"></rh-icon>
               <div id="summary" class="visually-hidden">${this.mobileToggleLabel}</div>
