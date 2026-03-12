@@ -47,7 +47,7 @@ export type NavigationPrimaryPalette = Extract<ColorPalette, (
 export class RhNavigationPrimary extends LitElement {
   static readonly styles = [styles];
 
-  #internals = InternalsController.of(this, { role: 'navigation' });
+  #internals = InternalsController.of(this);
 
   #openPrimaryDropdowns = new Set<RhNavigationPrimaryItem>();
 
@@ -67,6 +67,10 @@ export class RhNavigationPrimary extends LitElement {
   );
 
   #hasHamburgerItems = false;
+
+  #userSetLabel = false;
+
+  #accessibleLabel = 'Main navigation';
 
   /**
    * We should start in compact mode (mobile first)
@@ -128,9 +132,25 @@ export class RhNavigationPrimary extends LitElement {
    * Accessible label applied to the navigation landmark. Must be set when the
    * navigation is served in a non-English locale, and should be set when the
    * page contains multiple navigation landmarks, to provide unique identification
-   * for assistive technology. Defaults to `'Main navigation'`.
+   * for assistive technology. Defaults to `'Main navigation'` when the default
+   * slot has content, or `'Site header'` when it does not.
    */
-  @property({ attribute: 'accessible-label' }) accessibleLabel = 'Main navigation';
+  @property({ attribute: 'accessible-label' })
+  get accessibleLabel(): string {
+    return this.#accessibleLabel;
+  }
+
+  set accessibleLabel(value: string) {
+    if (value == null) {
+      this.#userSetLabel = false;
+      this.requestUpdate();
+    } else {
+      const old = this.#accessibleLabel;
+      this.#userSetLabel = true;
+      this.#accessibleLabel = value;
+      this.requestUpdate('accessibleLabel', old);
+    }
+  }
 
   /**
    * Enables the sub-domain variation, which displays the `sub-domain` slot
@@ -204,7 +224,6 @@ export class RhNavigationPrimary extends LitElement {
       this.addEventListener('focusout', this.#onFocusout);
       this.addEventListener('keydown', this.#onKeydown);
       this.addEventListener('keyup', this.#onKeyup);
-      this.#upgradeAccessibility();
     }
   }
 
@@ -214,13 +233,10 @@ export class RhNavigationPrimary extends LitElement {
     this.role = role;
     this.#internals.role = role;
     this.#hasHamburgerItems = hasSlottedDefault;
-    // this silliness is to get around SSR and defaults
-    if (!hasSlottedDefault && this.accessibleLabel === 'Main navigation') {
-      this.accessibleLabel = 'Site header';
+    if (!this.#userSetLabel) {
+      this.#accessibleLabel = hasSlottedDefault ? 'Main navigation' : 'Site header';
     }
-    if (hasSlottedDefault && this.accessibleLabel === 'Site header') {
-      this.accessibleLabel = 'Main navigation';
-    }
+    this.#internals.ariaLabel = this.#accessibleLabel;
   }
 
   protected willUpdate(_changedProperties: PropertyValues): void {
@@ -329,13 +345,6 @@ export class RhNavigationPrimary extends LitElement {
            @keydown="${this.#onOverlayClick}">
       </div>
     `;
-  }
-
-  /**
-   * Upgrades the aria attributes on upgrade
-   */
-  #upgradeAccessibility(): void {
-    this.#internals.ariaLabel = this.accessibleLabel;
   }
 
   #openOverlay() {
