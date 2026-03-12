@@ -16,26 +16,26 @@ tags:
 Many Red Hat projects use continuous integration and continuous delivery 
 pipelines to help deliver robust digital products to our users. There are 
 several accessibility tools for CI/CD. The Red Hat Design System uses the [Chai 
-A11y aXe][chaia11yaxe] module and [PatternFly Elements Tools][pfe-tools]'s 
+A11y Axe][chaia11yaxe] module and [PatternFly Elements Tools][pfe-tools]'s 
 a11ySnapshot feature, based on [Web Test Runner][wtr], for unit tests.
 
-### Chai A11y aXe
+### Chai A11y Axe
 
-Chai A11y aXe is a plugin to perform automated accessibility tests via 
-[aXe][axe] for the [Chai Assertion Library][chaiassertionlibrary]. Here's how to 
-test and see if a Web Component in the Red Hat Design System passes aXe 
-accessibility tests. In this example, we're going to use Chai A11y aXe with 
+Chai A11y Axe is a plugin to perform automated accessibility tests via 
+[Axe][axe] for the [Chai Assertion Library][chaiassertionlibrary]. Here's how to 
+test and see if a Web Component in the Red Hat Design System passes Axe 
+accessibility tests. In this example, we're going to use Chai A11y Axe with 
 `<rh-tag>`:
 
 1. Follow the instructions to [Install the project][installtheproject].
 1. Open `elements/rh-tag/test/rh-tag.spec.ts`.
-1. Add an aXe assertion to `rh-tag.spec.ts` (see below)
+1. Add an Axe assertion to `rh-tag.spec.ts` (see below)
 1. Run this test in your terminal by typing:
    `npm run test -- -- elements/rh-tag/test/rh-tag.spec.ts`
 1. You should see "1/1 test files | 1 passed, 0 failed" output to your terminal.
-1. Congrats, you just implemented aXe a11y tests into your testing pipeline! 🎉
+1. Congrats, you just implemented Axe a11y tests into your testing pipeline! 🎉
 
-The aXe assertion from step 3 looks like this, add it anywhere inside the first 
+The Axe assertion from step 3 looks like this, add it anywhere inside the first 
 `describe('<rh-tag>')` block:
 
 ```ts rh-code-block
@@ -44,13 +44,13 @@ it("should be accessible", async function () {
 });
 ```
 
-In this test, we called the Chai A11y aXe module and ran it against `<rh-tag>` 
+In this test, we called the Chai A11y Axe module and ran it against `<rh-tag>` 
 to ensure `<rh-tag>` didn't fail any automated accessibility tests as reported 
-by aXe. Every component in the Red Hat Design System should call and use Chai 
-A11y aXe to continuously verify accessibility in RHDS components.
+by Axe. Every component in the Red Hat Design System should call and use Chai 
+A11y Axe to continuously verify accessibility in RHDS components.
 
 If you want to see what a failed test might look like, add something to 
-`<rh-tag>` that aXe would flag for failing an accessibility test—like 
+`<rh-tag>` that Axe would flag for failing an accessibility test—like 
 `tabindex="1234"`. Then, re-run the test (step 4). Your terminal will show 
 "Error: Accessibility Violations" and provide more information about what failed 
 and how to fix it.

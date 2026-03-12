@@ -54,7 +54,7 @@ Wherever meaningful images or other non-text elements are used on a page, you mu
 Images loaded via the `<img>` element typically use the alt attribute for their alternative text:
 
 ```html rhcodeblock
-<img src="imagesource.jpg" alt="Description of image">
+<img src="imagesource.jpg" alt="Description of image" />
 ```
 
 Inline SVGs that compose simple images commonly use a combination of the `role="img"` attribute and a `<title>` element as the first child of the `<svg>` element:
@@ -106,7 +106,7 @@ When writing alternative text, it’s important to first consider the image’s 
       height="540">
 </uxdot-example>
 
-Depending on whether a web page is about the plot of the 1946 movie It’s a Wonderful Life or about the actor Jimmy Stewart, the above image could have very different alt text. For the first case, the image’s alt text could be `“George Bailey hugs his wife, Mary, and holds his daughter, Zuzu.”` For the second, the alt text could be `“Jimmy Stewart returned to acting after the war with It’s a Wonderful Life.”`
+Depending on whether a web page is about the plot of the 1946 movie It’s a Wonderful Life or about the actor Jimmy Stewart, the above image could have very different alt text. For the first case, the image’s alt text could be `“George Bailey hugs his wife, Mary, and holds his daughter, Zuzu.”` For the second, the alt text could be `“Jimmy Stewart acting alongside costars Donna Reed and Karolyn Grimes in It’s a Wonderful Life.”`
 
 ### Functional images
 
@@ -153,7 +153,7 @@ Or the first element of the group can have alt text, while the others are hidden
 
 ### Embedded media (and other non-text) titles
 
-Though the techniques may vary, meaningful embedded media objects require text alternatives—just like images do. This applies to `<video>`. `<audio>`, and `<canvas>` elements; objects; applets; ASCII art; and (if you still use them) multimedia embeds like Flash and Silverlight.
+Though the techniques may vary, meaningful embedded media objects require text alternatives—just like images do. This applies to `<video>`, `<audio>`, and `<canvas>` elements; objects; applets; ASCII art; and (if you still use them) multimedia embeds like Flash and Silverlight.
 A common technique is labeling objects with ARIA attributes:
 
 ```html rhcodeblock
@@ -166,12 +166,12 @@ Microcopy comprises short words, phrases, or chunks of text used on the web or i
 
 Best practices for all microcopy:
 
-- Keep text short but descriptive
-- Use as few words as possible
+- Keep text short but descriptive.
+- Use as few words as possible.
 - Avoid non-informative or vague text, like “click here,” “learn more,” “read more,” etc.
-- Make the first word meaningful
-  - For example, avoid starting with “a”, “the”, “for”, etc
-  - In many cases, this practice allows screen reader users to navigate items alphabetically
+- Make the first word meaningful.
+  - For example, avoid starting with “a”, “the”, “for”, etc.
+  - In many cases, this practice allows screen reader users to navigate items alphabetically.
 - Keep the text consistent.
   - Ensure that consistency is maintained on pages, sites, and entire user journeys.
 
@@ -282,13 +282,13 @@ Here’s an example of a page outline:
     - Cheese
       - Fried cheese curds
       - Beer cheese dip
-- Desserts
-  - Bars
-    - Scotch-a-roos
-    - Dream bars
-  - Pastries
-    - Kringle
-    - Dutch letters
+  - Desserts
+    - Bars
+      - Scotch-a-roos
+      - Dream bars
+    - Pastries
+      - Kringle
+      - Dutch letters
 
 And here’s how that outline would be reflected in a page’s heading structure:
 
