@@ -1,15 +1,18 @@
 import type { RandomPatternController } from './random-pattern-controller.js';
 
+import { LitElement, html, isServer, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { LitElement, html, isServer, type PropertyValues } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
 
-import { themable } from '../../lib/themable.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-avatar.css' with { type: 'css' };
 
 /**
- * An avatar is a small thumbnail representation of a user.
+ * Provides a small thumbnail representation of a user, including image and optional
+ * title and subtitle. Use when representing a specific person by image, name, and/or
+ * job title.
  *
  * @summary Visually represents a user in a masthead or navigation
  *
@@ -31,10 +34,14 @@ export class RhAvatar extends LitElement {
    * The user's name, either given name and family name, or username.
    *
    * When displaying a pattern, the name will be used to seed the pattern generator.
+   * When \`plain\` is set, the name and subtitle are used as accessible labels
    */
   @property({ reflect: true }) name?: string;
 
-  /** The auxiliary information about the user, e.g. job title */
+  /**
+   * Auxiliary information about the user. May be used to add job title, company, etc.
+   * When \`plain\` is set, the name and subtitle are used as accessible labels
+   */
   @property({ reflect: true }) subtitle?: string;
 
   /** Places avatar on the left or on top of the text. */
@@ -53,11 +60,57 @@ export class RhAvatar extends LitElement {
 
   #pattern?: RandomPatternController;
 
-
   connectedCallback() {
     super.connectedCallback();
     if (!isServer) {
       this.#normalize();
+    }
+  }
+
+  render() {
+    const { layout, name, pattern, plain, src, subtitle, variant } = this;
+    const bordered = variant === 'bordered';
+    const inline = layout === 'inline';
+    const block = layout === 'block';
+
+    return html`
+      <div id="container"
+           class="${classMap({ inline, block, plain, bordered })}">${pattern ? html`
+        <!-- Target the canvas element -->
+        <canvas part="canvas"></canvas>` : src ? html`
+        <!-- Targets the img or svg element. Avoid using this part for theming -->
+        <img part="img" src="${src}" role="presentation">` : html`
+        <svg id="default"
+             viewBox="0 0 36 36"
+             role="presentation"
+             part="img">
+          <path d="M0 0h36v36H0z" class="st1"/><path d="M17.7 20.1c-3.5 0-6.4-2.9-6.4-6.4s2.9-6.4 6.4-6.4 6.4 2.9 6.4 6.4-2.8 6.4-6.4 6.4z" class="st3"/>
+          <path d="M13.3 36v-6.7c-2 .4-2.9 1.4-3.1 3.5l-.1 3.2h3.2z" class="st2"/>
+          <path d="m10.1 36 .1-3.2c.2-2.1 1.1-3.1 3.1-3.5V36h9.4v-6.7c2 .4 2.9 1.4 3.1 3.5l.1 3.2h4.7c-.4-3.9-1.3-9-2.9-11-1.1-1.4-2.3-2.2-3.5-2.6s-1.8-.6-6.3-.6-6.1.7-6.1.7c-1.2.4-2.4 1.2-3.4 2.6-1.7 1.9-2.6 7.1-3 10.9h4.7z" class="st4"/>
+          <path d="m25.9 36-.1-3.2c-.2-2.1-1.1-3.1-3.1-3.5V36h3.2z" class="st2"/>
+        </svg>
+        `}
+        <div id="title">
+          <!--
+            The subject's name. Should contain inline text, optionally wrapped in a link.
+            When \`plain\` is set, the name and subtitle are used as accessible labels
+          -->
+          <slot>${name}</slot>
+        </div>
+        <div id="subtitle">
+          <!--
+            Auxiliary information about the subject, e.g. job title. Should contain inline text, optional links.
+            When \`plain\` is set, the name and subtitle are used as accessible labels
+          -->
+          <slot name="subtitle">${subtitle}</slot>
+        </div>
+      </div>
+    `;
+  }
+
+  async updated(changed: PropertyValues<this>) {
+    if ((changed.has('pattern') && this.pattern) || (changed.has('name') && this.#pattern)) {
+      this.updatePattern();
     }
   }
 
@@ -76,36 +129,6 @@ export class RhAvatar extends LitElement {
     this.normalize();
   }
 
-  render() {
-    return html`
-      <div id="container">${this.pattern ? html`
-        <!-- Target the canvas element -->
-        <canvas part="canvas"></canvas>` : this.src ? html`
-        <!-- Targets the img or svg element -->
-        <img src="${this.src}" role="presentation" part="img">` : html`
-        <!-- Targets the img or svg element -->
-        <svg xmlns="http://www.w3.org/2000/svg" style="enable-background:new 0 0 36 36" viewBox="0 0 36 36" role="presentation" part="img" id="default">
-          <path d="M0 0h36v36H0z" class="st1"/><path d="M17.7 20.1c-3.5 0-6.4-2.9-6.4-6.4s2.9-6.4 6.4-6.4 6.4 2.9 6.4 6.4-2.8 6.4-6.4 6.4z" class="st3"/>
-          <path d="M13.3 36v-6.7c-2 .4-2.9 1.4-3.1 3.5l-.1 3.2h3.2z" class="st2"/>
-          <path d="m10.1 36 .1-3.2c.2-2.1 1.1-3.1 3.1-3.5V36h9.4v-6.7c2 .4 2.9 1.4 3.1 3.5l.1 3.2h4.7c-.4-3.9-1.3-9-2.9-11-1.1-1.4-2.3-2.2-3.5-2.6s-1.8-.6-6.3-.6-6.1.7-6.1.7c-1.2.4-2.4 1.2-3.4 2.6-1.7 1.9-2.6 7.1-3 10.9h4.7z" class="st4"/>
-          <path d="m25.9 36-.1-3.2c-.2-2.1-1.1-3.1-3.1-3.5V36h3.2z" class="st2"/>
-        </svg>
-        `}
-        <!-- The subject's name -->
-        <slot id="title">${this.name}</slot>
-        <!-- auxiliary information about the subject, e.g. job title -->
-        <slot id="subtitle" name="subtitle">${this.subtitle}</slot>
-      </div>
-    `;
-  }
-
-  async updated(changed: PropertyValues<this>) {
-    if ((changed.has('pattern') && this.pattern)
-        || (this.#pattern && changed.has('name') || changed.has('on' as keyof RhAvatar))) {
-      this.updatePattern();
-    }
-  }
-
   async #initPattern() {
     const { RandomPatternController } = await import('./random-pattern-controller.js');
     const canvas = this.shadowRoot?.querySelector('canvas');
@@ -115,6 +138,10 @@ export class RhAvatar extends LitElement {
     }
   }
 
+  /**
+   * Called when the pattern or name changes
+   * @deprecated a future version will remove this public method
+   */
   async updatePattern() {
     this.#pattern ??= await this.#initPattern();
     if (this.#pattern) {
