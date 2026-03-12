@@ -6,10 +6,10 @@
 #container {
   position: relative;
 
-  /** Navigation text color */
+  /** Navigation menu dropdown text color */
   color: var(--rh-color-text-primary-on-light, #151515);
 
-  /** Navigation background */
+  /** Navigation menu dropdown background */
   background-color: var(--rh-color-surface-lightest, #ffffff);
 }
 
@@ -18,7 +18,7 @@
 }
 
 #sections {
-  /** Navigation inner spacing */
+  /** Navigation menu sections inner spacing */
   padding: var(--rh-space-xl, 24px);
 }
 
@@ -64,7 +64,7 @@
   display: flex;
   flex-direction: column;
 
-  /** Navigation content gap */
+  /** Navigation menu slotted list content gap */
   gap: var(--rh-font-size-body-text-md, 1rem);
 }
 
@@ -74,11 +74,14 @@
     left: 0;
     right: 0;
     padding:
+      /** Navigation menu block-start padding medium viewports */
       var(--rh-space-4xl, 64px)
+      /** Navigation menu inline padding medium viewports  */
       var(--rh-space-2xl, 32px)
+      /** Navigation menu block-end padding medium viewports  */
       var(--rh-space-3xl, 48px);
 
-    /** Navigation elevation shadow */
+    /** Navigation menu elevation shadow */
     box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
     z-index: -1;
     max-height: calc(100vh - (var(--rh-space-4xl, 64px)) - var(--_nav-min-height));
@@ -105,7 +108,7 @@
      * - Increase for wider page layouts or content-heavy menus
      * - Decrease for narrower, more focused dropdown content
      * - Centered automatically with `margin: auto`
-     * - Only applies at desktop breakpoint (min-width: 992px)
+     * - Only applies at medium breakpoint (min-width: 992px)
      * - Consider menu section count and content when adjusting
      */
 
@@ -115,19 +118,24 @@
   }
 
   :host([layout='fixed-width']) #sections {
-    /** Navigation inner spacing */
+    /** Navigation menu sections fixed-width inner spacing */
     padding: var(--rh-space-2xl, 32px);
   }
 }
 
 @media screen and (min-width: 1200px) {
   #container.visible {
-    padding: var(--rh-space-3xl, 48px) var(--rh-space-2xl, 32px);
+    padding:
+      /** Navigation menu block padding large viewports */
+      var(--rh-space-3xl, 48px)
+      /** Navigation menu inline padding large viewports */
+      var(--rh-space-2xl, 32px);
   }
 }
 
 @media screen and (min-width: 1440px) {
   #container.visible {
+    /** Navigation menu inline padding extra large viewports */
     padding: var(--rh-space-3xl, 48px) var(--rh-space-4xl, 64px);
   }
 }

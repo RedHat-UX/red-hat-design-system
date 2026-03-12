@@ -5,6 +5,8 @@
   --_chevron-down: -135deg;
   --_chevron-correction-x: calc(-1 * var(--rh-font-size-body-text-md, 1rem) / 16);
   --_chevron-correction-y: calc(-1 * var(--rh-font-size-body-text-md, 1rem) / 16);
+
+  /** Navigation dropdown chevron color */
   --_chevron-color: var(--rh-color-text-primary);
   --_chevron-transform-collapsed:
     rotate(var(--_chevron-up))
@@ -12,10 +14,16 @@
   --_chevron-transform-expanded:
     rotate(var(--_chevron-down))
     translate(var(--_chevron-correction-y), var(--_chevron-correction-y));
+
+  /** Navigation menu toggle color */
   --_button-font-color: var(--rh-color-text-primary);
   --_nav-max-height: var(--_max-height, max-content);
   --_nav-min-height: var(--_min-height, 80px);
+
+  /** Navigation current active item border color */
   --_current-active-child-border-color: var(--rh-color-brand-red);
+
+  /**
   --_border-color: light-dark(transparent, var(--rh-color-border-subtle));
 
   /**
@@ -52,11 +60,13 @@ nav {
   position: absolute;
   width: 100%;
   z-index: var(--rh-navigation-secondary-z-index, 102);
+
+  /** Navigation bar background color **/
   background-color:
     light-dark(var(--rh-color-surface-lighter, #f2f2f2),
       var(--rh-color-surface-dark, #383838));
 
-  /** Navigation content gap */
+  /** Navigation bar content gap */
   gap: 0 var(--rh-space-lg, 16px);
   grid-template-rows:
     minmax(var(--_nav-min-height), var(--_nav-max-height))
@@ -70,6 +80,8 @@ nav {
   min-height: 100%;
   max-height: 100vh;
   overflow-y: auto;
+
+  /** Navigation bar bottom border **/
   border-block-end: var(--rh-border-width-sm, 1px) solid var(--_border-color);
 }
 
@@ -96,9 +108,12 @@ rh-surface {
   flex-direction: column;
   padding: 2rem 1rem 0;
   padding:
+    /* Navigation menu expanded small viewport top padding */
     var(--rh-space-2xl, 32px)
+    /* Navigation menu expanded small viewport inline-end padding */
     var(--rh-space-lg, 16px)
     0
+    /* Navigation menu expanded small viewport inline-start padding */
     var(--rh-space-lg, 16px);
   margin: 0 !important;
 }
@@ -114,31 +129,31 @@ button {
   height: 100%;
   align-items: center;
 
-  /** Navigation typeface */
+  /** Navigation menu toggle typeface */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
 
-  /** Navigation text size */
+  /** Navigation menu toggle text size */
   font-size: var(--rh-font-size-body-text-md, 1rem);
 
-  /** Navigation inner spacing */
+  /** Navigation menu toggle inner spacing */
   padding: var(--rh-space-lg, 16px);
 
-  /** Navigation top border */
+  /** Navigation menu toggle top border */
   border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
 
-  /** Navigation end margin */
+  /** Navigation menu toggle inline-end margin */
   margin-inline-end: var(--rh-space-lg, 16px);
   color: var(--_button-font-color);
 
-  /** Navigation background */
+  /** Navigation menu toggle background */
   background-color: var(--rh-color-surface);
 
-  /** Navigation content gap */
+  /** Navigation menu toggle content gap */
   gap: var(--rh-space-md, 8px);
 }
 
 button:hover {
-  /** Navigation top accent color */
+  /** Navigation menu toggle top accent color */
   border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
 }
 
@@ -158,12 +173,12 @@ button[aria-expanded='true']:after {
 }
 
 button:focus {
-  /** Navigation top accent color */
+  /** Navigation menu toggle top accent color */
   border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
 }
 
 :host([color-palette='dark']) button {
-  /** Navigation background */
+  /** Navigation menu toggle background */
   background-color: var(--rh-color-surface);
 }
 
@@ -172,30 +187,30 @@ button[aria-expanded='true'],
 :host([color-palette='dark']) button[aria-expanded='true'] {
   --_chevron-color: var(--rh-color-text-primary-on-light, #151515);
 
-  /** Navigation text color */
+  /** Navigation menu toggle text color */
   color: var(--rh-color-text-primary-on-light, #151515);
 
-  /** Navigation background */
+  /** Navigation menu toggle background */
   background-color: var(--rh-color-surface-lightest, #ffffff);
 
-  /** Navigation top accent color */
+  /** Navigation menu toggle top accent color */
   border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
   border-block-end: none;
 }
 
 :host([color-palette='dark']) button:active {
-  /** Navigation text color */
+  /** Navigation menu toggle text color */
   color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
 :host([color-palette='dark']) button[aria-expanded='true']:active {
-  /** Navigation text color */
+  /** Navigation menu toggle text color */
   color: var(--rh-color-text-primary-on-light, #151515);
 }
 
 @media screen and (min-width: 768px) {
   button {
-    /** Navigation end margin */
+    /** Navigation menu toggle inline-end margin */
     margin-inline-end: var(--rh-space-2xl, 32px);
   }
 
@@ -207,7 +222,7 @@ button[aria-expanded='true'],
   }
 
   #container.expanded ::slotted([slot='cta']) {
-    /** Navigation inner spacing */
+    /** Navigation call to action inner spacing */
     padding: var(--rh-space-2xl, 32px) !important;
   }
 }

@@ -12,15 +12,15 @@
   height: 100%;
 }
 
-/** @summary Expanded dropdown shows red brand border and subtle shadow */
+/* Expanded dropdown shows red brand border and subtle shadow */
 #container.expanded {
-  /** Navigation leading border color */
+  /** Navigation dropdown leading border color */
   border-inline-start-color: var(--rh-color-text-brand-on-light, #ee0000);
 
-  /** Navigation trailing border color */
+  /** Navigation dropdown trailing border color */
   border-inline-end-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
 
-  /** Navigation elevation shadow */
+  /** Navigation dropdown elevation shadow */
   box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
 }
 
@@ -30,10 +30,10 @@
   justify-content: space-between;
   position: relative;
 
-  /** Navigation content gap */
+  /** Navigation dropdown link slot content gap */
   gap: calc(var(--rh-font-size-body-text-md, 1rem) / 2);
 
-  /** Navigation background */
+  /** Navigation dropdown link slot background */
   background-color: var(--rh-color-surface);
 }
 
@@ -68,14 +68,15 @@
   }
 
   ::slotted([slot='link'][aria-expanded='true']) {
-    /** Navigation top accent color */
+    /** Navigation dropdown link slot expanded block-start accent color */
     border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
 
-    /** Navigation background */
+    /** Navigation dropdown link slot expanded background */
     background: var(--rh-color-surface-lightest, #ffffff) !important;
   }
 
   ::slotted([slot='link'][aria-expanded='true']):after {
+    /** Navigation dropdown link slot expanded chevron color */
     --_chevron-color: var(--rh-color-text-primary-on-light, #151515) !important;
   }
 }
