@@ -1,6 +1,16 @@
 # Navigation Primary
 
-Primary navigation for top level site navigation.
+Primary navigation provides a persistent bar for orienting users and
+navigating across websites and domains. Use this element when a site
+requires a global header for wayfinding across multiple sections or
+domains. It allows grouping of primary links, dropdown menus, event
+promotions, and utility actions into a single responsive bar. The element
+MUST contain at least one `rh-navigation-primary-item` in the default slot
+and SHOULD include an `accessible-label` when multiple navigation landmarks
+exist on the page. The `logo` slot allows branding customization; when
+overridden, the `logo-href` attribute will no longer function. Avoid
+leaving the default slot empty, as this results in an inaccessible
+hamburger menu.
 
 ## Usage
 

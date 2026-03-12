@@ -1,0 +1,1 @@
+Demonstrates internationalization support using the `mobile-toggle-label` and `accessible-label` attributes to provide translated strings for non-English locales. Use these attributes when the navigation appears on pages served in languages other than English.
