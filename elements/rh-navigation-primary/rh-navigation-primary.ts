@@ -1,4 +1,4 @@
-import { LitElement, html, isServer } from 'lit';
+import { LitElement, html, isServer, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { state } from 'lit/decorators/state.js';
 import { property } from 'lit/decorators/property.js';
@@ -65,6 +65,8 @@ export class RhNavigationPrimary extends LitElement {
                               'dropdowns',
                               null,
   );
+
+  #hasSlottedHamburgerItems = false;
 
   /**
    * We should start in compact mode (mobile first)
@@ -206,6 +208,18 @@ export class RhNavigationPrimary extends LitElement {
     }
   }
 
+  protected willUpdate() {
+    // done here to not have side-effects in render() causing duplicate render.
+    this.#hasSlottedHamburgerItems = this.#slots.hasSlotted();
+    if (!this.#hasSlottedHamburgerItems) {
+      this.#internals.role = 'banner';
+      this.role = 'banner';
+      if (this.accessibleLabel === 'Main navigation') {
+        this.accessibleLabel = 'Site header';
+      }
+    }
+  }
+
   render() {
     const { compact } = this;
     const classes = {
@@ -213,6 +227,7 @@ export class RhNavigationPrimary extends LitElement {
       dehydrated: !this.#hydrated,
       subdomain: this.subDomain,
     };
+
     const hasEvent = this.#slots.hasSlotted('event');
     const hasLinks = this.#slots.hasSlotted('links');
     const hasDropdowns = this.#slots.hasSlotted('dropdowns');
@@ -249,7 +264,7 @@ export class RhNavigationPrimary extends LitElement {
               <slot name="sub-domain"></slot>
             </div>
           </div>
-          <details id="hamburger" ?open="${this._hamburgerOpen}" @toggle="${this.#hamburgerToggle}" @focusout="${this.#onHamburgerFocusOut}">
+          <details id="hamburger" ?open="${this._hamburgerOpen}" @toggle="${this.#hamburgerToggle}" @focusout="${this.#onHamburgerFocusOut}" class="${classMap({ 'hidden': !this.#hasSlottedHamburgerItems })}">
             <summary @blur="${this.#onHamburgerSummaryBlur}">
               <rh-icon icon="menu-bars" set="ui"></rh-icon>
               <div id="summary" class="visually-hidden">${this.mobileToggleLabel}</div>

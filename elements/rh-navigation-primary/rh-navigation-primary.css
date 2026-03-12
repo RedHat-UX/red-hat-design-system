@@ -200,11 +200,14 @@
 }
 
 #hamburger {
-  display: flex;
   grid-area: hamburger;
   block-size: 100%;
   place-self: flex-end;
   align-content: center;
+
+  &:not(.hidden) {
+    display: flex;
+  }
 
   @container navigation-primary (min-width: 380px) {
     place-self: flex-start;
