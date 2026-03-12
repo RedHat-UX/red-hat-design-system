@@ -368,7 +368,9 @@
     block-size: 100%;
 
     @container navigation-primary (min-width: 320px) {
-      display: flex;
+      &:not(.hidden) {
+        display: flex;
+      }
     }
 
     & summary {
