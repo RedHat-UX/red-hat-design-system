@@ -1,0 +1,711 @@
+@layer
+  tokens,
+  elements;
+
+/* Base-level "tokens" / CSS custom props */
+@layer tokens {
+  :root {
+    /* Fonts/Type */
+    --unified-font-size-body-text-sm: 14px;
+    --unified-line-height-body-text: 1.5;
+
+    /* Base colors: Grays */
+    --unified-color-gray-10: #f2f2f2;
+    --unified-color-gray-20: #e0e0e0;
+    --unified-color-gray-30: #c7c7c7;
+    --unified-color-gray-40: #a3a3a3;
+    --unified-color-gray-50: #707070;
+    --unified-color-gray-60: #4d4d4d;
+    --unified-color-gray-70: #383838;
+    --unified-color-gray-90: #1f1f1f;
+    --unified-color-gray-95: #151515;
+
+    /* Base colors: Blues */
+    --unified-color-blue-10: #e0f0ff;
+    --unified-color-blue-20: #b9dafc;
+    --unified-color-blue-30: #92c5f9;
+    --unified-color-blue-40: #4394e5;
+    --unified-color-blue-50: #0066cc;
+    --unified-color-blue-60: #004d99;
+    --unified-color-blue-70: #003366;
+
+    /* Base colors: Red-oranges */
+    --unified-color-red-orange-20: #fbbea8;
+    --unified-color-red-orange-30: #f89b78;
+    --unified-color-red-orange-40: #f4784a;
+    --unified-color-red-orange-60: #b1380b;
+    --unified-color-red-orange-70: #731f00;
+
+    /* Base colors: Yellows */
+    --unified-color-yellow-20: #ffe072;
+    --unified-color-yellow-40: #dca614;
+
+    /* Base colors: Greens */
+    --unified-color-green-30: #afdc8f;
+    --unified-color-green-70: #204d00;
+
+    /* Base colors: Purples */
+    --unified-color-purple-20: #d0c5f4;
+    --unified-color-purple-60: #3d2785;
+
+    /* Base colors: Teals */
+    --unified-color-teal-30: #9ad8d8;
+    --unified-color-teal-40: #63bdbd;
+    --unified-color-teal-60: #147878;
+    --unified-color-teal-70: #004d4d;
+
+    /* Text color */
+    --unified-color-text-primary-inverse:
+      light-dark(
+          white,
+          var(--unified-color-gray-90)
+        );
+
+    /* Icon colors */
+    --unified-color-icon-secondary:
+      light-dark(
+          var(--unified-color-gray-90),
+          white
+        );
+    --unified-color-icon-secondary-inverse:
+      light-dark(
+          white,
+          var(--unified-color-gray-90)
+        );
+
+    /* Interactive colors */
+    --unified-color-interactive-primary-default:
+      light-dark(
+          var(--unified-color-blue-50),
+          var(--unified-color-blue-30)
+        );
+    --unified-color-interactive-primary-hover:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-20)
+        );
+    --unified-color-interactive-primary-focus:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-20)
+        );
+    --unified-color-interactive-primary-active:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-20)
+        );
+    --unified-color-interactive-fill-plain-on-light: rgba(199, 199, 199, 0.25);
+    --unified-color-interactive-fill-plain-on-dark: rgba(199, 199, 199, 0.15);
+    --unified-color-interactive-fill-plain-default: transparent;
+    --unified-color-interactive-fill-plain-hover:
+      light-dark(
+          var(--unified-color-interactive-fill-plain-on-light),
+          var(--unified-color-interactive-fill-plain-on-dark)
+        );
+    --unified-color-interactive-fill-plain-focus:
+      light-dark(
+          var(--unified-color-interactive-fill-plain-on-light),
+          var(--unified-color-interactive-fill-plain-on-dark)
+        );
+    --unified-color-interactive-fill-plain-active:
+      light-dark(
+          var(--unified-color-interactive-fill-plain-on-light),
+          var(--unified-color-interactive-fill-plain-on-dark)
+        );
+    --unified-color-interactive-fill-plain-clicked:
+      var(
+          --unified-color-interactive-fill-plain-active
+        );
+    --unified-color-text-interactive-default:
+      light-dark(
+          var(--unified-color-blue-50),
+          var(--unified-color-blue-20)
+        );
+    --unified-color-text-interactive-hover:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-10)
+        );
+    --unified-color-text-interactive-focus:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-10)
+        );
+    --unified-color-text-interactive-active:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-10)
+        );
+    --unified-color-icon-interactive-default:
+      light-dark(
+          var(--unified-color-blue-50),
+          var(--unified-color-blue-20)
+        );
+    --unified-color-icon-interactive-hover:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-10)
+        );
+    --unified-color-icon-interactive-focus:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-10)
+        );
+    --unified-color-icon-interactive-active:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-10)
+        );
+    --unified-color-border-interactive-default:
+      light-dark(
+          var(--unified-color-blue-50),
+          var(--unified-color-blue-30)
+        );
+    --unified-color-border-interactive-subtle-default:
+      light-dark(
+          var(--unified-color-gray-30),
+          var(--unified-color-gray-50)
+        );
+    --unified-color-border-interactive-subtle-hover:
+      light-dark(
+          var(--unified-color-blue-40),
+          var(--unified-color-blue-30)
+        );
+
+    /* TODO: Double-check color */
+    --unified-color-border-interactive-subtle-focus:
+      light-dark(
+          var(--unified-color-blue-40),
+          var(--unified-color-blue-30)
+        );
+    --unified-color-border-interactive-subtle-active:
+      light-dark(
+          var(--unified-color-blue-50),
+          var(--unified-color-blue-20)
+        );
+
+    /* Status colors: Disabled */
+    --unified-color-text-status-on-disabled:
+      light-dark(
+          var(--unified-color-gray-50),
+          var(--unified-color-gray-70)
+        );
+    --unified-color-icon-status-on-disabled:
+      light-dark(
+          var(--unified-color-gray-50),
+          var(--unified-color-gray-70)
+        );
+    --unified-color-text-status-disabled:
+      light-dark(
+          var(--unified-color-gray-40),
+          var(--unified-color-gray-50)
+        );
+    --unified-color-icon-status-disabled:
+      light-dark(
+          var(--unified-color-gray-40),
+          var(--unified-color-gray-50)
+        );
+
+    /* Status colors: Danger */
+    --unified-color-status-danger-hover:
+      light-dark(
+          var(--unified-color-red-orange-70),
+          var(--unified-color-red-orange-40)
+        );
+    --unified-color-status-danger-focus:
+      light-dark(
+          var(--unified-color-red-orange-70),
+          var(--unified-color-red-orange-40)
+        );
+    --unified-color-status-danger-active:
+      light-dark(
+          var(--unified-color-red-orange-70),
+          var(--unified-color-red-orange-40)
+        );
+    --unified-color-text-status-danger:
+      light-dark(
+          var(--unified-color-red-orange-60),
+          var(--unified-color-red-orange-30)
+        );
+    --unified-color-text-status-danger-hover:
+      light-dark(
+          var(--unified-color-red-orange-70),
+          var(--unified-color-red-orange-20)
+        );
+    --unified-color-text-status-danger-focus:
+      light-dark(
+          var(--unified-color-red-orange-70),
+          var(--unified-color-red-orange-20)
+        );
+    --unified-color-text-status-danger-active:
+      light-dark(
+          var(--unified-color-red-orange-70),
+          var(--unified-color-red-orange-20)
+        );
+    --unified-color-icon-status-danger-hover:
+      light-dark(
+          var(--unified-color-red-orange-70),
+          var(--unified-color-red-orange-40)
+        );
+    --unified-color-icon-status-danger-focus:
+      light-dark(
+          var(--unified-color-red-orange-70),
+          var(--unified-color-red-orange-40)
+        );
+    --unified-color-icon-status-danger-active:
+      light-dark(
+          var(--unified-color-red-orange-70),
+          var(--unified-color-red-orange-40)
+        );
+    --unified-color-border-status-danger-hover:
+      light-dark(
+          var(--unified-color-red-orange-70),
+          var(--unified-color-red-orange-40)
+        );
+    --unified-color-border-status-danger-focus:
+      light-dark(
+          var(--unified-color-red-orange-70),
+          var(--unified-color-red-orange-40)
+        );
+    --unified-color-border-status-danger-active:
+      light-dark(
+          var(--unified-color-red-orange-70),
+          var(--unified-color-red-orange-40)
+        );
+
+    /* Status colors: Warning */
+    --unified-color-status-warning-hover:
+      light-dark(
+          var(--unified-color-yellow-40),
+          var(--unified-color-yellow-20)
+        );
+    --unified-color-status-warning-focus:
+      light-dark(
+          var(--unified-color-yellow-40),
+          var(--unified-color-yellow-20)
+        );
+    --unified-color-status-warning-active:
+      light-dark(
+          var(--unified-color-yellow-40),
+          var(--unified-color-yellow-20)
+        );
+    --unified-color-border-status-warning-hover:
+      light-dark(
+          var(--unified-color-yellow-50),
+          var(--unified-color-yellow-20)
+        );
+    --unified-color-border-status-warning-focus:
+      light-dark(
+          var(--unified-color-yellow-50),
+          var(--unified-color-yellow-20)
+        );
+    --unified-color-border-status-warning-active:
+      light-dark(
+          var(--unified-color-yellow-50),
+          var(--unified-color-yellow-20)
+        );
+
+    /* Status colors: Success */
+    --unified-color-status-success-hover:
+      light-dark(
+          var(--unified-color-green-70),
+          var(--unified-color-green-30)
+        );
+    --unified-color-status-success-focus:
+      light-dark(
+          var(--unified-color-green-70),
+          var(--unified-color-green-30)
+        );
+    --unified-color-status-success-active:
+      light-dark(
+          var(--unified-color-green-70),
+          var(--unified-color-green-30)
+        );
+    --unified-color-border-status-success-hover:
+      light-dark(
+          var(--unified-color-green-70),
+          var(--unified-color-green-30)
+        );
+    --unified-color-border-status-success-focus:
+      light-dark(
+          var(--unified-color-green-70),
+          var(--unified-color-green-30)
+        );
+    --unified-color-border-status-success-active:
+      light-dark(
+          var(--unified-color-green-70),
+          var(--unified-color-green-30)
+        );
+
+    /* Status colors: Info */
+    --unified-color-status-info-hover:
+      light-dark(
+          var(--unified-color-purple-60),
+          var(--unified-color-purple-20)
+        );
+    --unified-color-status-info-focus:
+      light-dark(
+          var(--unified-color-purple-60),
+          var(--unified-color-purple-20)
+        );
+    --unified-color-status-info-active:
+      light-dark(
+          var(--unified-color-purple-60),
+          var(--unified-color-purple-20)
+        );
+    --unified-color-border-status-info-hover:
+      light-dark(
+          var(--unified-color-purple-60),
+          var(--unified-color-purple-20)
+        );
+    --unified-color-border-status-info-focus:
+      light-dark(
+          var(--unified-color-purple-60),
+          var(--unified-color-purple-20)
+        );
+    --unified-color-border-status-info-active:
+      light-dark(
+          var(--unified-color-purple-60),
+          var(--unified-color-purple-20)
+        );
+
+    /* Status colors: Custom */
+    --unified-color-status-custom:
+      light-dark(
+          var(--unified-color-teal-60),
+          var(--unified-color-teal-40)
+        );
+    --unified-color-status-custom-hover:
+      light-dark(
+          var(--unified-color-teal-70),
+          var(--unified-color-teal-30)
+        );
+    --unified-color-status-custom-focus:
+      light-dark(
+          var(--unified-color-teal-70),
+          var(--unified-color-teal-30)
+        );
+    --unified-color-status-custom-active:
+      light-dark(
+          var(--unified-color-teal-70),
+          var(--unified-color-teal-30)
+        );
+    --unified-color-border-status-custom-hover:
+      light-dark(
+          var(--unified-color-teal-70),
+          var(--unified-color-teal-30)
+        );
+    --unified-color-border-status-custom-focus:
+      light-dark(
+          var(--unified-color-teal-70),
+          var(--unified-color-teal-30)
+        );
+    --unified-color-border-status-custom-active:
+      light-dark(
+          var(--unified-color-teal-70),
+          var(--unified-color-teal-30)
+        );
+
+    /* Other border colors */
+    --unified-color-border-track:
+      light-dark(
+          var(--unified-color-blue-20),
+          var(--unified-color-blue-70)
+        );
+
+    /* Borders */
+    --unified-border-radius-default: 16px;
+    --unified-border-radius-pill: 64px;
+    --unified-border-width-sm: 1px;
+    --unified-border-width-md: 2px;
+    --unified-border-width-lg: 3px;
+
+    /* Dimensions */
+    --unified-size-icon-00: 14px; /* 0.875rem */
+    --unified-space-xs: 4px;
+    --unified-space-sm: 6px;
+    --unified-space-md: 8px;
+    --unified-space-lg: 16px;
+    --unified-space-xl: 24px;
+    --unified-space-2xl: 32px;
+    --unified-space-3xl: 48px;
+    --unified-length-xs: 4px;
+  }
+}
+
+/* Component-specific styles */
+@layer elements {
+  @layer
+    button,
+    card,
+    progress-steppers,
+    spinner;
+}
+
+/* Element: Button */
+@layer button {
+  rh-button {
+    --unified-button-font-size: var(--unified-font-size-body-text-sm);
+    --unified-button-padding-block: var(--unified-space-md);
+    --unified-button-padding-inline: var(--unified-space-xl);
+    --unified-button-padding-block-compact: var(--unified-space-sm);
+    --unified-button-padding-inline-compact: var(--unified-space-lg);
+    --unified-button-border-width-hover: var(--unified-border-width-md);
+    --unified-button-border-width-focus: var(--unified-border-width-md);
+    --unified-button-border-width-focus-ring: var(--unified-border-width-lg);
+    --unified-button-border-width-active: var(--unified-border-width-md);
+    --unified-button-link-color-on-light: var(--unified-color-blue-20);
+    --unified-button-link-color-on-light-hover: var(--unified-color-blue-60);
+
+    /* Directly theme through RH-specific tokens */
+    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+    --rh-border-radius-default: var(--unified-border-radius-pill);
+    --rh-font-size-body-text-md: var(--unified-button-font-size);
+    --rh-space-sm: var(--unified-button-padding-block);
+    --rh-space-lg: var(--unified-button-padding-inline);
+    --rh-icon-size: var(--unified-size-icon-00);
+
+    &::part(button):focus {
+      outline:
+        var(--unified-button-border-width-focus-ring)
+        solid
+        var(--unified-color-interactive-primary-default);
+      outline-offset: var(--unified-button-border-width-focus-ring);
+    }
+
+    &[variant='primary'] {
+      &[danger] {
+        &::part(button):hover {
+          background-color: var(--unified-color-status-danger-hover);
+        }
+
+        &::part(button):active {
+          background-color: var(--unified-color-status-danger-active);
+        }
+      }
+    }
+
+    &[variant='secondary'] {
+      --rh-border-width-sm: var(--unified-border-width-sm);
+
+      &::part(button):hover {
+        --rh-border-width-sm: var(--unified-button-border-width-hover);
+        --rh-color-interactive-primary-default:
+          var(
+              --unified-color-interactive-primary-hover
+            );
+      }
+
+      &::part(button):focus {
+        --rh-color-interactive-primary-default:
+          var(
+              --unified-color-interactive-primary-focus
+            );
+        --rh-border-width-sm: var(--unified-button-border-width-focus);
+      }
+
+      &::part(button):active {
+        --rh-color-interactive-primary-default:
+          var(
+              --unified-color-interactive-primary-active
+            );
+        --rh-border-width-sm: var(--unified-button-border-width-active);
+      }
+
+      &[danger] {
+        &::part(button):hover {
+          --rh-color-border-status-danger: var(--unified-color-status-danger-hover);
+          --rh-color-status-danger: var(--unified-color-status-danger-hover);
+        }
+
+        &::part(button):focus {
+          --rh-color-border-status-danger: var(--unified-color-status-danger-focus);
+          --rh-color-status-danger: var(--unified-color-status-danger-focus);
+        }
+
+        &::part(button):active {
+          --rh-color-border-status-danger: var(--unified-color-status-danger-hover);
+          --rh-color-status-danger: var(--unified-color-status-danger-hover);
+        }
+      }
+    }
+
+    &[variant='tertiary'] {
+      --rh-color-border-strong: var(--unified-color-border-interactive-subtle-default);
+      --rh-color-text-primary: var(--unified-interactive-primary-default);
+
+      &::part(button):hover {
+        --rh-color-text-primary: var(--unified-color-interactive-primary-hover);
+        --rh-color-border-strong: var(--unified-color-border-interactive-subtle-hover);
+      }
+
+      &::part(button):focus {
+        --rh-color-interactive-primary-default:
+          var(
+              --unified-color-interactive-primary-focus
+            );
+        --rh-border-width-sm: var(--unified-button-border-width-focus);
+        --rh-color-border-strong: var(--unified-color-border-interactive-subtle-focus);
+      }
+
+      &[danger] {
+        --rh-color-text-primary: var(--unified-color-text-status-danger);
+        --rh-color-border-strong: var(--unified-color-status-danger);
+
+        &::part(button):hover {
+          --rh-color-border-status-danger: var(--unified-color-status-danger-hover);
+          --rh-color-text-primary: var(--unified-color-text-status-danger-hover);
+          --rh-color-border-strong: var(--unified-color-status-danger-hover);
+        }
+
+        &::part(button):focus {
+          --rh-color-border-status-danger: var(--unified-color-status-danger-focus);
+          --rh-color-text-primary: var(--unified-color-text-status-danger-focus);
+          --rh-color-border-strong: var(--unified-color-status-danger-focus);
+        }
+
+        &::part(button):active {
+          --rh-color-border-status-danger: var(--unified-color-status-danger-active);
+          --rh-color-status-danger: var(--unified-color-status-danger-active);
+          --rh-color-border-strong: var(--unified-color-status-danger-active);
+        }
+      }
+    }
+
+    &[variant='link'] {
+      &::part(button):hover,
+      &::part(button):focus,
+      &::part(button):active {
+        --rh-color-blue-70: var(--unified-button-link-color-default);
+
+        background-color: var(--unified-color-interactive-fill-plain-hover);
+      }
+
+      &::part(button):active:after,
+      &:disabled::part(button):after {
+        border-color: transparent;
+      }
+
+      &[danger] {
+        --rh-color-interactive-primary-default: var(--unified-color-text-status-danger);
+
+        &::part(button):hover,
+        &::part(button):focus,
+        &::part(button):active {
+          color: var(--unified-color-text-status-danger);
+        }
+      }
+
+      &:disabled::part(button) {
+        background-color: transparent;
+        color: var(--unified-color-text-status-disabled);
+      }
+    }
+
+    &[variant='secondary'],
+    &[variant='tertiary'] {
+      &:disabled::part(button) {
+        background-color: transparent;
+        color: var(--unified-color-text-status-disabled);
+      }
+
+      &:disabled::part(button):after {
+        border-color: var(--unified-color-border-status-disabled);
+      }
+    }
+
+    &[variant='icon'] {
+      --rh-color-text-primary: var(--unified-color-icon-secondary);
+
+      &::part(button) {
+        box-sizing: content-box;
+        display: flex;
+        justify-content: center;
+        padding: var(--unified-button-padding-block);
+        height: calc(var(--unified-button-font-size) * var(--unified-line-height-body-text));
+        width: calc(var(--unified-button-font-size) * var(--unified-line-height-body-text));
+      }
+
+      &::part(button):after {
+        border-color: transparent;
+      }
+
+      &::part(button):hover,
+      &::part(button):focus,
+      &::part(button):active {
+        background-color: var(--unified-color-interactive-fill-plain-hover);
+      }
+
+      &::part(button):active:after,
+      &:disabled::part(button):after {
+        border-color: transparent;
+      }
+
+      &:disabled::part(button) {
+        background-color: transparent;
+        color: var(--unified-color-text-status-disabled);
+      }
+    }
+
+    &::part(button):active {
+      color: var(--unified-color-interactive-primary-active);
+    }
+
+    &::part(button):active:after {
+      border-width: var(--unified-button-border-width-active);
+      border-color: var(--unified-color-border-interactive-subtle-active);
+    }
+
+    &[compact] {
+      --unified-button-padding-block: var(--unified-button-padding-block-compact);
+      --rh-space-sm: var(--unified-button-padding-block-compact);
+      --rh-space-lg: var(--unified-button-padding-inline-compact);
+    }
+  }
+}
+
+/* Element: Card */
+@layer card {
+  rh-card {
+    --unified-card-padding-default: var(--unified-space-xl);
+    --unified-card-padding-compact: var(--unified-space-lg);
+    --unified-card-padding-large: var(--unified-space-2xl);
+
+    /* Directly theme through RH-specific tokens */
+    --rh-border-radius-default: var(--unified-border-radius-default);
+    --rh-space-xl: var(--unified-card-padding-default);
+
+    &[compact],
+    &[size='compact'] {
+      --rh-space-xl: var(--unified-card-padding-compact);
+    }
+
+    &[large],
+    &[size='large'] {
+      --rh-space-xl: var(--unified-card-padding-large);
+    }
+  }
+}
+
+/* Element: Progress Stepper */
+@layer progress-stepper {
+  rh-progress-stepper {
+    --rh-size-icon-02: calc(var(--unified-size-icon-00) + var(--unified-space-md));
+  }
+}
+
+/* Element: Spinner */
+@layer spinner {
+  rh-spinner {
+    --unified-spinner-stroke-width: var(--unified-length-xs);
+    --unified-spinner-color: var(--unified-color-border-interactive-default);
+    --unified-spinner-color-track-on-light: var(--unified-color-gray-20);
+    --unified-spinner-color-track-on-dark: var(--unified-color-gray-70);
+
+    /* Directly theme through RH-specific tokens */
+    --rh-length-sm: var(--unified-spinner-stroke-width);
+    --rh-color-gray-10: var(--unified-spinner-color-track-on-light);
+    --rh-color-gray-70: var(--unified-spinner-color-track-on-dark);
+    --rh-color-accent-base: var(--unified-spinner-color);
+  }
+}

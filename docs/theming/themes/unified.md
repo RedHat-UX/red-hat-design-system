@@ -63,7 +63,7 @@ Unified content
 ## Preview theme CSS
 
 ```css code-block {dedent: true, language: "css", highlighting: "prerendered", linenumbers: "true"}
-{% set cssContent = "./docs/theming/themes/unified-theme-preview.css" | inlineCss %}{{ cssContent | safe }}
+{% set cssContent = "./docs/theming/themes/unified-theme/unified-theme-preview.css" | inlineCss %}{{ cssContent | safe }}
 ```
 
 ## Demo
@@ -99,7 +99,6 @@ Unified content
         throw new Error(`HTTP error! status: ${response.status}`);
         }
         const cssString = await response.text();
-        console.log(cssString); // The raw CSS content as a string
         return cssString;
     } catch (error) {
         console.error("Could not fetch the CSS file:", error);
@@ -107,7 +106,7 @@ Unified content
   }
   const rhSwitch = document.querySelector('#unified-page-switch');
     const stylesheet = new CSSStyleSheet(); 
-    const cssFile = await getCssFileAsString("/theming/themes/unified-theme-preview.css");
+    const cssFile = await getCssFileAsString("/theming/themes/unified-theme/unified-theme-preview.css");
     rhSwitch.addEventListener('change', function() {
         if (rhSwitch.checked) {
             stylesheet
@@ -116,7 +115,6 @@ Unified content
                 console.error("Failed to replace styles:", err);
             });
             document.adoptedStyleSheets.push(stylesheet);
-            console.log(stylesheet);
         } else {
             stylesheet
             .replace("")
