@@ -33,6 +33,7 @@
     --unified-color-red-orange-20: #fbbea8;
     --unified-color-red-orange-30: #f89b78;
     --unified-color-red-orange-40: #f4784a;
+    --unified-color-red-orange-50: #f0561d;
     --unified-color-red-orange-60: #b1380b;
     --unified-color-red-orange-70: #731f00;
 
@@ -207,6 +208,11 @@
         );
 
     /* Status colors: Danger */
+    --unified-color-status-danger:
+      light-dark(
+          var(--unified-color-red-orange-60),
+          var(--unified-color-red-orange-50)
+        );
     --unified-color-status-danger-hover:
       light-dark(
           var(--unified-color-red-orange-70),
@@ -513,6 +519,8 @@
       }
 
       &[danger] {
+        --rh-color-status-danger: var(--unified-color-text-status-danger);
+
         &::part(button):hover {
           --rh-color-border-status-danger: var(--unified-color-status-danger-hover);
           --rh-color-status-danger: var(--unified-color-status-danger-hover);
@@ -549,8 +557,8 @@
       }
 
       &[danger] {
-        --rh-color-text-primary: var(--unified-color-text-status-danger);
         --rh-color-border-strong: var(--unified-color-status-danger);
+        --rh-color-text-primary: var(--unified-color-text-status-danger);
 
         &::part(button):hover {
           --rh-color-border-status-danger: var(--unified-color-status-danger-hover);
