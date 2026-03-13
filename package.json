@@ -109,12 +109,8 @@
       "dependencies": [
         "patch",
         "analyze",
-        "11ty-dev"
+        "serve"
       ]
-    },
-    "11ty-dev": {
-      "service": true,
-      "command": "cross-env NODE_OPTIONS='--import tsx/esm' eleventy --serve --incremental --config=eleventy.config.ts"
     },
     "dev": {
       "service": true,
