@@ -83,7 +83,7 @@ export class RhCta extends LitElement {
     const isDefault = !variant;
     const svg = isDefault;
     const follower =
-        (variant !== 'brick' && icon) ? html`<rh-icon icon=${icon} set=${iconSet ?? 'ui'}></rh-icon>`
+        (variant !== 'brick' && icon) ? html`<rh-icon icon="${icon}" set="${iconSet ?? 'ui'}"></rh-icon>`
       : (variant === undefined) ? html`<rh-icon icon="arrow-right" set="ui"></rh-icon>`
       : '';
     const iconContent =
@@ -94,8 +94,10 @@ export class RhCta extends LitElement {
           tag (\`<a href="...">\`) should be the first child inside \`rh-cta\`
           element. Less preferred but allowed for specific use-cases
           include: \`<button>\` (note however that the \`button\` tag is not
-          supported for the default CTA styles).
-    --><slot></slot>${follower}`;
+          supported for the default CTA styles). In case the slotted content is one
+          long word (like in some agglutinating languages), users must supply \`<wbr>\`
+          at appropriate points in the slotted content.
+    --><slot></slot>`;
     const linkContent =
         !href ? slot
       : html`<a href=${href}
@@ -108,7 +110,7 @@ export class RhCta extends LitElement {
       <span id="container"
             part="container"
             class=${classMap({ icon: !!icon, svg })}
-            @slotchange=${this.firstUpdated}>${iconContent}${linkContent}</span>`;
+            @slotchange=${this.firstUpdated}>${iconContent}${linkContent}${follower}</span>`;
   }
 
   override firstUpdated() {

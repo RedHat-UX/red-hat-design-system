@@ -174,6 +174,8 @@ export class RhCodeBlock extends LitElement {
 
   #prismOutput?: DirectiveResult;
 
+  #copyFeedbackTimeout?: ReturnType<typeof setTimeout>;
+
   #isIntersecting = false;
   #ro?: ResizeObserver;
 
@@ -551,6 +553,10 @@ export class RhCodeBlock extends LitElement {
       return;
     }
 
+    // Cancel any previous feedback timeout to prevent stale timers
+    // from interfering when the user clicks copy multiple times
+    clearTimeout(this.#copyFeedbackTimeout);
+
     try {
       tooltip.hide();
       const content = this.#preCopy();
@@ -563,11 +569,21 @@ export class RhCodeBlock extends LitElement {
       this.#setSlottedLabelState('action-label-copy', 'failed');
     }
     tooltip.show();
-    await new Promise(r => setTimeout(r, 5_000));
-    tooltip.hide();
+    await new Promise<void>(r => {
+      this.#copyFeedbackTimeout = setTimeout(r, 5_000);
+    });
+    await tooltip.hide();
+    // Wait for the tooltip's CSS opacity transition to finish
+    // before resetting the label, so the text doesn't flash
+    // from "Copied!" to "Copy to Clipboard" while still visible
+    const tooltipContent = tooltip.shadowRoot?.querySelector('#tooltip');
+    await new Promise<void>(r => {
+      tooltipContent?.addEventListener('transitionend', () => r(), { once: true });
+      // fallback in case no transition fires (e.g. reduced motion)
+      setTimeout(r, 300);
+    });
     this.copyButtonState = 'default';
     this.#setSlottedLabelState('action-label-copy', undefined);
-    tooltip.show();
   }
 }
 

@@ -293,8 +293,13 @@
   color: var(--rh-color-text-secondary);
   font-weight: var(--rh-font-weight-code-regular, 400);
 
-  /** Separator between line numbers and code uses the subtle border design token */
-  border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+  /** Separator width between line numbers and code content */
+  border-inline-end-width: var(--rh-border-width-sm, 1px);
+  border-inline-end-style: solid;
+
+  /** Separator color between line numbers and code uses the subtle border token */
+  /* stylelint-disable-next-line declaration-block-no-redundant-longhand-properties */
+  border-inline-end-color: var(--rh-color-border-subtle);
 
   li {
     line-height: var(--rh-line-height-code, 1.5);
