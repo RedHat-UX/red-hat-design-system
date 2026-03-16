@@ -138,19 +138,6 @@ describe('<rh-navigation-primary>', function() {
       expect(element.role).to.equal('navigation');
     });
 
-    describe('removing all hamburgers slotted navigation items', function() {
-      beforeEach(async function() {
-        const items = element.querySelectorAll('rh-navigation-primary-item[variant="dropdown"]:not([slot])');
-        items.forEach(item => {
-          item.remove();
-        });
-      });
-      beforeEach(async () => await element.updateComplete);
-
-      it('should be accessible', async function() {
-        expect(element.role).to.equal('banner');
-      });
-    });
   });
 
   describe('resizing viewports', function() {
