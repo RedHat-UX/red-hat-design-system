@@ -9,6 +9,16 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
  * A button group visually organizes multiple related buttons into a single
  * collection.
  *
+ * The component exposes `role="group"` via ElementInternals; authors do not need
+ * to set it.
+ *
+ * For a toolbar pattern, wrap the group in an element with
+ * `role="toolbar"`. When there is more than one toolbar, each must have an
+ * accessible name (`aria-label` or `aria-labelledby`). For vertical toolbars, set
+ * `aria-orientation="vertical"` on the toolbar element.
+ *
+ * For further accessibility details, see the [Accessibility](/elements/button-group/accessibility/) documentation.
+ *
  * @summary Organize multiple related buttons into a single collection
  *
  * @alias button-group
@@ -18,21 +28,12 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 export class RhButtonGroup extends LitElement {
   static readonly styles = [styles];
 
-  /**
-   * `<rh-button-group>` exposes `role="group"` via ElementInternals.
-   * For a toolbar pattern, authors may wrap the group in an additional element with
-   * `role="toolbar"`.
-   * When the page has more than one toolbar, each must have an accessible name
-   * (via `aria-label` or `aria-labelledby`).
-   * When the toolbar is vertical, authors must set `aria-orientation="vertical"` on
-   * the toolbar element.
-  */
   // eslint-disable-next-line no-unused-private-class-members
   #internals = InternalsController.of(this, { role: 'group' });
 
   override render() {
     return html`
-      <!-- Place \`<rh-button>\` elements or native \`<button>\` elements here to organize them into a button group. -->
+      <!-- Place \`<rh-button>\` elements or native \`<button>\` elements here to organize them into a button group. For toolbar semantics and labeling, wrap the group in an element with \`role="toolbar"\` and see the element accessibility documentation. -->
       <slot></slot>
     `;
   }
