@@ -1,4 +1,4 @@
-import { LitElement, html, isServer, type PropertyValues } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { state } from 'lit/decorators/state.js';
 import { property } from 'lit/decorators/property.js';
@@ -47,7 +47,11 @@ export type NavigationPrimaryPalette = Extract<ColorPalette, (
 export class RhNavigationPrimary extends LitElement {
   static readonly styles = [styles];
 
-  #internals = InternalsController.of(this);
+  // Setting role: navigation here will output role="navigation" prior to lit SSR hydration in the DSD.
+  // When hydration runs it will then remove the role, which we then re-add in connectedCallback().
+  // Note: Setting role here blocks the user from setting any other role on the rh-navigation host element.
+  // IE: role="banner" for when the hamburger items are empty.
+  #internals = InternalsController.of(this, { role: 'navigation' });
 
   #openPrimaryDropdowns = new Set<RhNavigationPrimaryItem>();
 
@@ -65,12 +69,6 @@ export class RhNavigationPrimary extends LitElement {
                               'dropdowns',
                               null,
   );
-
-  #hasHamburgerItems = false;
-
-  #userSetLabel = false;
-
-  #accessibleLabel = 'Main navigation';
 
   /**
    * We should start in compact mode (mobile first)
@@ -132,25 +130,9 @@ export class RhNavigationPrimary extends LitElement {
    * Accessible label applied to the navigation landmark. Must be set when the
    * navigation is served in a non-English locale, and should be set when the
    * page contains multiple navigation landmarks, to provide unique identification
-   * for assistive technology. Defaults to `'Main navigation'` when the default
-   * slot has content, or `'Site header'` when it does not.
+   * for assistive technology. Defaults to `'Main navigation'`.
    */
-  @property({ attribute: 'accessible-label' })
-  get accessibleLabel(): string {
-    return this.#accessibleLabel;
-  }
-
-  set accessibleLabel(value: string) {
-    if (value == null) {
-      this.#userSetLabel = false;
-      this.requestUpdate();
-    } else {
-      const old = this.#accessibleLabel;
-      this.#userSetLabel = true;
-      this.#accessibleLabel = value;
-      this.requestUpdate('accessibleLabel', old);
-    }
-  }
+  @property({ attribute: 'accessible-label' }) accessibleLabel = 'Main navigation';
 
   /**
    * Enables the sub-domain variation, which displays the `sub-domain` slot
@@ -211,37 +193,28 @@ export class RhNavigationPrimary extends LitElement {
       if (this._title) {
         this.#internals.ariaLabelledByElements = [this._title];
       }
-      this.#updateSlottedState();
     }
   }
 
   async connectedCallback() {
     super.connectedCallback();
-
     if (!isServer) {
+      // We set this back to navigation due to axe automation tools not reading the element internals value
+      // for the navigation.  This was made prior to our discovery of the bug in lit ssr hydration
+      // https://github.com/lit/lit/pull/5115 that only removed some of the aria- attributes.
+      // Moved inside the !isServer check as there still could be a race condition on ssr hydration that
+      // connectedCallback() runs before hydration completes removing the reset role attribute.
+      this.role = 'navigation';
+
       this.#ro?.observe(this);
       this.addEventListener('toggle', this.#onDropdownToggle);
       this.addEventListener('focusout', this.#onFocusout);
       this.addEventListener('keydown', this.#onKeydown);
       this.addEventListener('keyup', this.#onKeyup);
+      this.#upgradeAccessibility();
     }
   }
 
-  #updateSlottedState(): void {
-    const hasSlottedDefault = this.#slots.hasSlotted();
-    const role = hasSlottedDefault ? 'navigation' : 'banner';
-    this.role = role;
-    this.#internals.role = role;
-    this.#hasHamburgerItems = hasSlottedDefault;
-    if (!this.#userSetLabel) {
-      this.#accessibleLabel = hasSlottedDefault ? 'Main navigation' : 'Site header';
-    }
-    this.#internals.ariaLabel = this.#accessibleLabel;
-  }
-
-  protected willUpdate(_changedProperties: PropertyValues): void {
-    this.#updateSlottedState();
-  }
 
   render() {
     const { compact } = this;
@@ -251,6 +224,7 @@ export class RhNavigationPrimary extends LitElement {
       subdomain: this.subDomain,
     };
 
+    const hasSlottedDefault = this.#slots.hasSlotted();
     const hasEvent = this.#slots.hasSlotted('event');
     const hasLinks = this.#slots.hasSlotted('links');
     const hasDropdowns = this.#slots.hasSlotted('dropdowns');
@@ -287,7 +261,7 @@ export class RhNavigationPrimary extends LitElement {
               <slot name="sub-domain"></slot>
             </div>
           </div>
-          <details id="hamburger" ?open="${this._hamburgerOpen}" @toggle="${this.#hamburgerToggle}" @focusout="${this.#onHamburgerFocusOut}" class="${classMap({ 'hidden': !this.#hasHamburgerItems })}">
+          <details id="hamburger" ?open="${this._hamburgerOpen}" @toggle="${this.#hamburgerToggle}" @focusout="${this.#onHamburgerFocusOut}" class="${classMap({ 'hidden': !hasSlottedDefault })}">
             <summary @blur="${this.#onHamburgerSummaryBlur}">
               <rh-icon icon="menu-bars" set="ui"></rh-icon>
               <div id="summary" class="visually-hidden">${this.mobileToggleLabel}</div>
@@ -345,6 +319,13 @@ export class RhNavigationPrimary extends LitElement {
            @keydown="${this.#onOverlayClick}">
       </div>
     `;
+  }
+
+  /**
+   * Upgrades the aria attributes on upgrade
+   */
+  #upgradeAccessibility(): void {
+    this.#internals.ariaLabel = this.accessibleLabel;
   }
 
   #openOverlay() {
