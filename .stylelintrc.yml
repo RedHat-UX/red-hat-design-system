@@ -8,6 +8,7 @@ plugins:
 
 ignoreFiles:
   - node_modules/**/*
+  - .claude/**/*
   - docs/assets/javascript/elements/*.js
 
 rules:

@@ -3,6 +3,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 export { RhFooterUniversal } from './rh-footer-universal.js';
 
@@ -22,7 +23,12 @@ function isHeaderTagName(tagName: string) {
 }
 
 /**
- * A footer displays secondary content and legal information to users who reach the bottom of a page.
+ * Provides navigation, social icons, and legal content at the bottom
+ * of a page. Columns collapse into an accordion on small viewports.
+ * MUST contain `<rh-footer-universal>` in the `universal` slot.
+ * SHOULD add headings before each `<ul>` for `aria-labelledby`.
+ * MUST NOT wrap in `<footer>` — sets ARIA `contentinfo` role via
+ * ElementInternals. Tab moves focus; Enter/Space expands accordions.
  *
  * @summary Displays secondary information at the bottom of a page
  *
@@ -48,6 +54,8 @@ export class RhFooter extends LitElement {
 
   #compact = false;
 
+  #internals = InternalsController.of(this);
+
   /**
    * ScreenSizeController effects callback to set #compact is true when viewport
    * `(min-width: ${tabletLandscapeBreakpoint})`.
@@ -60,29 +68,58 @@ export class RhFooter extends LitElement {
 
   override connectedCallback() {
     super.connectedCallback();
+    this.#updateRole();
     this.#compact = !this.screenSize.matches.has('md');
     // wire up accessibility aria-labels with unordered lists
     this.updateAccessibility();
   }
 
+  /**
+   * Check if this element is nested inside a `<footer>`.
+   * If not, set role="contentinfo" on the host via InternalsController.
+   * NOTE: Does not check for other custom elements with `role="contentinfo"`
+   */
+  #updateRole() {
+    let node: HTMLElement | null | undefined = this.parentElement;
+    let hasFooterAncestor = false;
+
+    while (node) {
+      if (node.tagName === 'FOOTER') {
+        hasFooterAncestor = true;
+        break;
+      }
+
+      if (node.shadowRoot?.querySelector('footer')) {
+        hasFooterAncestor = true;
+        break;
+      }
+
+      node = node.parentElement;
+    }
+
+    if (!hasFooterAncestor) {
+      this.#internals.role = 'contentinfo';
+    }
+  }
+
   override render() {
     return html`
-      <!-- main footer element, containing all footer content -->
-      <footer class="base ${classMap({ isMobile: this.#compact })}" part="base">
-        <h2 id="heading"><!-- text that describes the footer section to assistive technology. Contains default text "Red Hat footer". --><slot name="heading">Red Hat footer</slot></h2>
-        <!-- Overrides everything. Do not use. -->
+      <!-- main footer container, containing all footer content. -->
+      <div class="footer base ${classMap({ isMobile: this.#compact })}" part="base">
+        <h2 id="heading"><!-- Visually-hidden heading announced by screen readers to identify the footer landmark. Expects inline text. Defaults to "Red Hat footer". --><slot name="heading">Red Hat footer</slot></h2>
+        <!-- Overrides the entire footer layout. AVOID using; it replaces all default regions including ARIA landmarks. Expects block-level elements. -->
         <slot name="base">
           <!-- footer header, typically containing main logo and social links -->
           <div class="section header" part="section header">
-            <!-- Overrides \`header-*\`, \`logo\`, \`social-links\` -->
+            <!-- Overrides header-primary, header-secondary, logo, and social-links slots. Expects block-level elements. -->
             <slot name="header">
               <!-- primary footer header content, e.g. main logo -->
               <div class="header-primary" part="header-primary">
-                <!-- primary footer header content, e.g. main logo. Overrides \`logo\` -->
+                <!-- Primary footer header content. Overrides the logo slot. Expects block-level elements such as an anchor wrapping an image. -->
                 <slot name="header-primary">
                   <!-- main page or product logo container -->
                   <div class="logo" part="logo">
-                    <!-- main page or product logo. Defaults to Red Hat corporate logo -->
+                    <!-- Main page or product logo. Expects an anchor wrapping an \`<img>\` with descriptive alt text for screen readers. Defaults to Red Hat corporate logo. -->
                     <slot name="logo">
                       <a href="/">
                         <img alt="Red Hat" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg"/>
@@ -93,7 +130,7 @@ export class RhFooter extends LitElement {
               </div>
               <!-- secondary footer header content, e.g. social links -->
               <div class="header-secondary" part="header-secondary">
-                <!-- secondary footer header content, e.g. social links. Overrides \`social-links\` -->
+                <!-- Secondary footer header content. Overrides the social-links slot. Expects block-level elements. -->
                 <slot name="header-secondary">
                   <div class="social-links">
                     <!-- social links container \`<rh-footer-links>\` -->
@@ -101,7 +138,7 @@ export class RhFooter extends LitElement {
                                      part="social-links"
                                      role="list"
                                      aria-label="Red Hat social media links">
-                      <!-- social media links (icons). Contains a default set of links -->
+                      <!-- Social media icon links. Expects \`<rh-footer-social-link>\` elements, each with an \`accessible-label\` attribute for screen readers. -->
                       <slot name="social-links"></slot>
                     </rh-footer-links>
                   </div>
@@ -111,11 +148,11 @@ export class RhFooter extends LitElement {
           </div>
           <!-- main content container. -->
           <div class="section main" part="section main">
-            <!-- main footer content. Overrides \`main-*\` -->
+            <!-- Overrides the main-primary and main-secondary slots. Expects block-level elements. -->
             <slot name="main">
               <!-- container for main footer links -->
               <div class="main-primary" part="main-primary">
-                <!-- main footer region. typically a columnar grid -->
+                <!-- Main footer region displayed as a columnar grid. Expects block-level elements. -->
                 <slot name="main-primary">
                   <!-- container for main footer links -->
                   <div class="links" part="links">
@@ -125,15 +162,15 @@ export class RhFooter extends LitElement {
               </div>
               <!-- container for prose or promotional content -->
               <div class="main-secondary" part="main-secondary">
-                <!-- typically contains prose or promotional content -->
+                <!-- Prose or promotional content such as \`<rh-footer-block>\` elements. Expects block-level elements. -->
                 <slot name="main-secondary"></slot>
               </div>
             </slot>
           </div>
-          <!-- must contain \`<rh-footer-universal>\` -->
+          <!-- MUST contain an \`<rh-footer-universal>\` element. Provides global Red Hat links and legal information. The universal footer manages its own ARIA landmark role. -->
           <slot name="universal"></slot>
         </slot>
-      </footer>
+      </div>
     `;
   }
 
@@ -146,7 +183,7 @@ export class RhFooter extends LitElement {
     children.forEach((child, i) => child.setAttribute('slot', isMobile ? `links-${i}` : 'links'));
 
     return !(isMobile && children) ? html`
-      <!-- main footer links -->
+      <!-- Main footer link columns. Expects alternating headings (e.g. \`<h3>\`) and \`<ul>\` lists. Each heading MUST have a unique id so screen readers announce groups via \`aria-labelledby\`. -->
       <slot name="links"></slot>
       ` : html`
 
