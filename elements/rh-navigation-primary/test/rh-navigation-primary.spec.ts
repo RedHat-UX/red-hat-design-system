@@ -137,7 +137,6 @@ describe('<rh-navigation-primary>', function() {
     it('should have internals role of navigation', async function() {
       expect(element.role).to.equal('navigation');
     });
-
   });
 
   describe('resizing viewports', function() {
