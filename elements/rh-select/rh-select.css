@@ -191,11 +191,6 @@
   inline-size: 100%;
 }
 
-::slotted(rh-option-group + hr),
-::slotted(hr:has(+ rh-option-group)) {
-  display: none;
-}
-
 ::slotted(rh-option-group) {
   border-block: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
 }
