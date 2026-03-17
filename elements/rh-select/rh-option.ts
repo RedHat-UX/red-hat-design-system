@@ -10,6 +10,8 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import styles from './rh-option.css';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
@@ -25,6 +27,7 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  * @demo https://ux.redhat.com/elements/select/demo/option-descriptions/ - Options with descriptions
  */
 @customElement('rh-option')
+@themable
 export class RhOption extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
 

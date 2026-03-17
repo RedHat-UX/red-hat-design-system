@@ -6,6 +6,8 @@ import { query } from 'lit/decorators/query.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import { RhOption } from './rh-option.js';
 
 import styles from './rh-option-group.css';
@@ -21,6 +23,7 @@ import styles from './rh-option-group.css';
  * @demo https://ux.redhat.com/elements/select/demo/option-group/ - Options organized into labeled groups
  */
 @customElement('rh-option-group')
+@themable
 export class RhOptionGroup extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
 

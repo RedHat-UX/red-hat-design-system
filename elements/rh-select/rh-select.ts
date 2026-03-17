@@ -13,6 +13,8 @@ import { FloatingDOMController } from '@patternfly/pfe-core/controllers/floating
 import { arraysAreEquivalent } from '@patternfly/pfe-core/functions/arraysAreEquivalent.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import { RhOption } from './rh-option.js';
 import './rh-option-group.js';
 
@@ -48,6 +50,7 @@ export class RhSelectChangeEvent extends Event {
  * @fires {RhSelectChangeEvent} change - Fires when the selected value changes. Bubbles. The event has no `detail` payload; read the new value from the `value` property.
  */
 @customElement('rh-select')
+@themable
 export class RhSelect extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
 
