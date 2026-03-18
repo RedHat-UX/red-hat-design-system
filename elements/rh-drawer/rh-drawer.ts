@@ -229,8 +229,8 @@ export class RhDrawer extends LitElement {
                           type="button"
                           aria-controls="panel"
                           aria-labelledby="expand-label"
-                          @click=${this.expand === 'full-width'
-                            ? this.#onFullWidthToggle
+                          @click=${this.expand === 'full-width' ?
+                            this.#onFullWidthToggle
                             : this.#onFullScreenToggle}>
                     <rh-icon set="ui"
                              icon="${this.#expandIcon}"></rh-icon>
@@ -522,12 +522,12 @@ export class RhDrawer extends LitElement {
 
   get #expandIcon(): string {
     if (this.expand === 'full-screen') {
-      return this._isFullScreen
-        ? 'arrow-down-left-up-right-to-center'
+      return this._isFullScreen ?
+        'arrow-down-left-up-right-to-center'
         : 'expand-arrows';
     }
-    return this._isFullWidth
-      ? 'panel-close-fill'
+    return this._isFullWidth ?
+      'panel-close-fill'
       : 'panel-open-fill';
   }
 

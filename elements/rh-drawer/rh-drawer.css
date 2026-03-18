@@ -315,6 +315,16 @@
   rotate: 180deg;
 }
 
+/*****************************************************************************
+ * EXPAND BUTTON ICON FLIP
+ *
+ * panel-open-fill / panel-close-fill icons are directional and must be
+ * mirrored for inline-end position and RTL. Placed after the collapse
+ * toggle rules to satisfy stylelint no-descending-specificity.
+ *****************************************************************************/
+
+/* stylelint-disable no-descending-specificity --
+   #expand-button and #collapse-toggle rh-icon never match the same element */
 .inline-end #expand-button rh-icon {
   scale: -1 1;
 }
@@ -326,6 +336,7 @@
 :host(:dir(rtl)) .inline-end #expand-button rh-icon {
   scale: 1 1;
 }
+/* stylelint-enable no-descending-specificity */
 
 /*****************************************************************************
  * RESIZE HANDLE
