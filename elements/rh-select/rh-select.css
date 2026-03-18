@@ -125,8 +125,8 @@
   /** Small body text size for the toggle button */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 
-  /** Large spacing between toggle text and icons */
-  gap: var(--rh-space-lg, 16px);
+  /** Medium spacing between toggle text and icons */
+  gap: var(--rh-space-md, 8px);
   min-block-size: 37px;
   padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
   text-align: start;
