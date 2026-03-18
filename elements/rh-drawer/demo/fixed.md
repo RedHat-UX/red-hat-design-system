@@ -1,1 +1,1 @@
-The panel is always `position: fixed`, overlaying the page at all viewport sizes. It takes up no space in the document flow and is toggled exclusively by an external trigger. Use the knobs to switch position, enable resizing, or toggle fullscreen.
+The panel is always `position: fixed`, overlaying the page at all viewport sizes. It takes up no space in the document flow and is toggled exclusively by an external trigger. Use the knobs to switch position, enable resizing, or toggle expand mode.

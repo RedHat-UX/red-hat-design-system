@@ -10,9 +10,28 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
+import {
+  BreakpointXs,
+  BreakpointSm,
+  BreakpointMd,
+  BreakpointLg,
+  BreakpointXl,
+  Breakpoint2xl,
+} from '@rhds/tokens/media.js';
+
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './rh-drawer.css' with { type: 'css' };
+
+const overlayThresholds: Record<string, number> = {
+  '2xs': 320,
+  'xs': parseInt(BreakpointXs),
+  'sm': parseInt(BreakpointSm),
+  'md': parseInt(BreakpointMd),
+  'lg': parseInt(BreakpointLg),
+  'xl': parseInt(BreakpointXl),
+  '2xl': parseInt(Breakpoint2xl),
+};
 
 export class DrawerOpenEvent extends Event {
   constructor(
@@ -53,7 +72,7 @@ export class RhDrawer extends LitElement {
   #resizeObserver?: ResizeObserver;
   #resizeTimer?: ReturnType<typeof setTimeout>;
   #fixedUserState: boolean | null = null;
-  #preFullscreenWidth: number | null = null;
+  #preFullWidthWidth: number | null = null;
   #userInteracted = false;
   #initialized = false;
 
@@ -69,8 +88,12 @@ export class RhDrawer extends LitElement {
   /** Optional ID of the external trigger element. */
   @property({ attribute: 'trigger-id' }) triggerId?: string;
 
-  /** Adds a fullscreen toggle button to the panel actions. */
-  @property({ type: Boolean, reflect: true }) fullscreen = false;
+  /**
+   * Adds an expand toggle button to the panel actions.
+   * - `full-width`: expands the panel to fill the container width
+   * - `full-screen`: enters browser fullscreen mode via the Fullscreen API
+   */
+  @property({ reflect: true }) expand?: 'full-width' | 'full-screen';
 
   /**
    * Controls the panel edge interaction.
@@ -84,7 +107,17 @@ export class RhDrawer extends LitElement {
   /** When set, persists open/closed state and panel width to sessionStorage under this key. */
   @property({ attribute: 'storage-key' }) storageKey?: string;
 
-  @state() private _isFullscreen = false;
+  /**
+   * Minimum content area width (as a breakpoint t-shirt size) before the
+   * panel switches from inline to overlay positioning. Only applies to
+   * `inline` and `auto` variants with `panel="resizable"`.
+   */
+  @property({ attribute: 'overlay-threshold' })
+  overlayThreshold?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+
+  @state() private _isFullWidth = false;
+  @state() private _isFullScreen = false;
+  @state() private _forceOverlay = false;
   @state() private _panelWidth: number | null = null;
   @state() private _suppressTransition = false;
 
@@ -96,6 +129,7 @@ export class RhDrawer extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener('keydown', this.#onKeyDown);
+    document.addEventListener('fullscreenchange', this.#onFullScreenChange);
   }
 
   protected override willUpdate(changed: PropertyValues<this>) {
@@ -125,7 +159,8 @@ export class RhDrawer extends LitElement {
       // server-rendered HTML and client-rendered values
       this._suppressTransition = true;
       this.#restoreState();
-      if (this.variant === 'auto') {
+      this.#evaluateOverlayThreshold();
+      if (this.variant === 'auto' || this.variant === 'inline') {
         this.#resizeObserver = new ResizeObserver(this.#onContainerResize);
         this.#resizeObserver.observe(this);
       }
@@ -147,6 +182,7 @@ export class RhDrawer extends LitElement {
     this.#mediaQuery?.removeEventListener('change', this.#onMediaChange);
     this.#resizeObserver?.disconnect();
     window.removeEventListener('resize', this.#onWindowResize);
+    document.removeEventListener('fullscreenchange', this.#onFullScreenChange);
     clearTimeout(this.#resizeTimer);
   }
 
@@ -171,7 +207,8 @@ export class RhDrawer extends LitElement {
       'inline': this.variant === 'inline',
       'inline-start': this.position === 'inline-start',
       'inline-end': this.position === 'inline-end',
-      'fullscreen': this._isFullscreen,
+      'full-width': this._isFullWidth,
+      'force-overlay': this._forceOverlay,
       'collapsible': showCollapsible,
       'resizable': isResizable,
       'no-transition': this._suppressTransition,
@@ -186,19 +223,21 @@ export class RhDrawer extends LitElement {
           <div id="panel-body">
             <div id="panel-content">
               <div id="actions">
-                ${this.fullscreen ? html`
-                  <button id="fullscreen-button"
-                          part="fullscreen-button"
+                ${this.expand ? html`
+                  <button id="expand-button"
+                          part="expand-button"
                           type="button"
                           aria-controls="panel"
-                          aria-labelledby="fullscreen-label"
-                          @click=${this.#onFullscreenToggle}>
+                          aria-labelledby="expand-label"
+                          @click=${this.expand === 'full-width'
+                            ? this.#onFullWidthToggle
+                            : this.#onFullScreenToggle}>
                     <rh-icon set="ui"
-                             icon="${this._isFullscreen ? 'arrow-down-left-up-right-to-center' : 'expand-arrows'}"></rh-icon>
+                             icon="${this.#expandIcon}"></rh-icon>
                   </button>
-                  <span id="fullscreen-label" class="visually-hidden">
-                    <span ?hidden=${this._isFullscreen}><!-- Accessible label for the fullscreen button when not fullscreen --><slot name="fullscreen-label-expand">Enter fullscreen</slot></span>
-                    <span ?hidden=${!this._isFullscreen}><!-- Accessible label for the fullscreen button when fullscreen --><slot name="fullscreen-label-collapse">Exit fullscreen</slot></span>
+                  <span id="expand-label" class="visually-hidden">
+                    <span ?hidden=${this._isFullWidth || this._isFullScreen}><slot name="expand-label-expand">${this.expand === 'full-width' ? 'Expand to full width' : 'Enter full screen'}</slot></span>
+                    <span ?hidden=${!this._isFullWidth && !this._isFullScreen}><slot name="expand-label-collapse">${this.expand === 'full-width' ? 'Exit full width' : 'Exit full screen'}</slot></span>
                   </span>
                 ` : nothing}
                 ${!showCollapsible ? html`
@@ -290,6 +329,12 @@ export class RhDrawer extends LitElement {
       }
       this.dispatchEvent(new DrawerOpenEvent(this.#triggerElement));
     } else {
+      if (this._isFullWidth) {
+        this._isFullWidth = false;
+        this._forceOverlay = false;
+        this._panelWidth = this.#preFullWidthWidth ?? this.#getStoredPanelWidth();
+        this.#preFullWidthWidth = null;
+      }
       if (this.#userInteracted) {
         // TODO: use .focus({ focusVisible: true }) when Baseline
         this.#triggerElement?.focus();
@@ -301,11 +346,19 @@ export class RhDrawer extends LitElement {
 
   @observes('panel')
   protected _panelChanged(_old?: string, _new?: string) {
-    // Reset dimensions so the panel doesn't stay at a user-resized width
-    // after switching away from resizable mode
     if (_old === 'resizable' && _new !== 'resizable') {
       this._panelWidth = null;
-      this._isFullscreen = false;
+      this._isFullWidth = false;
+      this._forceOverlay = false;
+    } else if (_new === 'resizable') {
+      this.#evaluateOverlayThreshold();
+    }
+  }
+
+  @observes('overlayThreshold')
+  protected _overlayThresholdChanged() {
+    if (this.#initialized) {
+      this.#evaluateOverlayThreshold();
     }
   }
 
@@ -352,7 +405,8 @@ export class RhDrawer extends LitElement {
         : this.panelEl.parentElement!.getBoundingClientRect().right - event.clientX;
     }
     this._panelWidth = Math.max(RhDrawer.minPanelWidth, Math.min(newWidth, maxWidth));
-    this._isFullscreen = false;
+    this._isFullWidth = false;
+    this.#evaluateOverlayThreshold(maxWidth);
   };
 
   #onPointerUp = () => {
@@ -377,11 +431,14 @@ export class RhDrawer extends LitElement {
       case 'Home':
         event.preventDefault();
         this._panelWidth = RhDrawer.minPanelWidth;
+        this._forceOverlay = false;
         break;
       case 'End':
         event.preventDefault();
         if (this.panelEl?.parentElement) {
-          this._panelWidth = this.panelEl.parentElement.getBoundingClientRect().width;
+          const containerWidth = this.panelEl.parentElement.getBoundingClientRect().width;
+          this._panelWidth = containerWidth;
+          this.#evaluateOverlayThreshold(containerWidth);
         }
         break;
       case 'Enter':
@@ -395,7 +452,22 @@ export class RhDrawer extends LitElement {
     const current = this._panelWidth ?? RhDrawer.minPanelWidth;
     const maxWidth = this.panelEl?.parentElement?.getBoundingClientRect().width ?? current;
     this._panelWidth = Math.max(RhDrawer.minPanelWidth, Math.min(current + delta, maxWidth));
-    this._isFullscreen = false;
+    this._isFullWidth = false;
+    this.#evaluateOverlayThreshold(maxWidth);
+  }
+
+  #evaluateOverlayThreshold(containerWidth?: number) {
+    if (!this.overlayThreshold || this._isFullWidth || this.panel !== 'resizable') {
+      return;
+    }
+    const width = containerWidth
+      ?? this.panelEl?.parentElement?.getBoundingClientRect().width;
+    if (width == null) {
+      return;
+    }
+    const threshold = overlayThresholds[this.overlayThreshold] ?? 0;
+    const contentRemaining = width - (this._panelWidth ?? RhDrawer.minPanelWidth);
+    this._forceOverlay = contentRemaining < threshold;
   }
 
   #getSplitterValue(): number {
@@ -424,6 +496,7 @@ export class RhDrawer extends LitElement {
   // breakpoint so the layout swap between overlay and inline snaps instantly.
   #onContainerResize = () => {
     this.containerEl?.classList.add('no-transition');
+    this.#evaluateOverlayThreshold();
     clearTimeout(this.#resizeTimer);
     this.#resizeTimer = setTimeout(() => {
       this.containerEl?.classList.remove('no-transition');
@@ -447,17 +520,40 @@ export class RhDrawer extends LitElement {
     }
   };
 
-  #onFullscreenToggle() {
-    this._isFullscreen = !this._isFullscreen;
-    if (this._isFullscreen) {
-      this.#preFullscreenWidth = this._panelWidth;
-      this._panelWidth = null;
-    } else {
-      this._panelWidth = this.#preFullscreenWidth ?? this.#getStoredPanelWidth();
-      this.#preFullscreenWidth = null;
+  get #expandIcon(): string {
+    if (this.expand === 'full-screen') {
+      return this._isFullScreen
+        ? 'arrow-down-left-up-right-to-center'
+        : 'expand-arrows';
     }
+    return this._isFullWidth
+      ? 'panel-close-fill'
+      : 'panel-open-fill';
   }
 
+  #onFullWidthToggle = () => {
+    this._isFullWidth = !this._isFullWidth;
+    this._forceOverlay = this._isFullWidth && this.panel !== 'resizable';
+    if (this._isFullWidth) {
+      this.#preFullWidthWidth = this._panelWidth;
+      this._panelWidth = null;
+    } else {
+      this._panelWidth = this.#preFullWidthWidth ?? this.#getStoredPanelWidth();
+      this.#preFullWidthWidth = null;
+    }
+  };
+
+  #onFullScreenToggle = () => {
+    if (this._isFullScreen) {
+      document.exitFullscreen();
+    } else {
+      this.panelEl?.requestFullscreen();
+    }
+  };
+
+  #onFullScreenChange = () => {
+    this._isFullScreen = document.fullscreenElement === this;
+  };
 
   #setFixedUserState(open: boolean) {
     if (this.variant === 'flow') {
@@ -474,7 +570,7 @@ export class RhDrawer extends LitElement {
           open: this.open,
           panel: this.panel,
           panelWidth: this._panelWidth,
-          isFullscreen: this._isFullscreen,
+          isFullWidth: this._isFullWidth,
         }));
       } catch { /* storage unavailable */ }
     }
@@ -498,8 +594,9 @@ export class RhDrawer extends LitElement {
         if (typeof s.panelWidth === 'number') {
           this._panelWidth = s.panelWidth;
         }
-        if (typeof s.isFullscreen === 'boolean') {
-          this._isFullscreen = s.isFullscreen;
+        if (typeof s.isFullWidth === 'boolean') {
+          this._isFullWidth = s.isFullWidth;
+          this._forceOverlay = s.isFullWidth && this.panel !== 'resizable';
         }
       }
     } catch {

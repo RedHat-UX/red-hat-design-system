@@ -1,0 +1,1 @@
+Demonstrates the drawer inside a sized container rather than the full viewport. The container constrains the drawer's dimensions, which affects overlay threshold calculations and full-width behavior. Use the knobs to test position, panel mode, expand, and overlay threshold within the bounded area.

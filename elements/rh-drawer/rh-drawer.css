@@ -11,7 +11,11 @@
   --_collapse-visible-width: calc(32px + var(--_collapse-toggle-size) / 2);
   --_resize-handle-width: 12px;
   --_transition-duration: 0.3s;
-  --_panel-bg: var(--rh-color-surface);
+  --_panel-bg:
+    light-dark(
+        var(--rh-color-surface-lightest, #ffffff),
+        var(--rh-color-surface-darker, #1f1f1f)
+      );
   --_slide-dir: -1;
 
   display: block;
@@ -133,8 +137,20 @@
   grid-area: content;
 }
 
-.fullscreen #panel {
+.full-width #panel {
   inline-size: 100%;
+}
+
+#panel:fullscreen {
+  inline-size: 100dvw;
+  block-size: 100dvh;
+  max-inline-size: none;
+  background-color: var(--_panel-bg);
+}
+
+#panel:fullscreen #collapse-toggle,
+#panel:fullscreen #resize-handle {
+  display: none;
 }
 
 /*****************************************************************************
@@ -150,8 +166,20 @@
   flex-shrink: 0;
 }
 
+.inline-end #expand-button rh-icon {
+  scale: -1 1;
+}
+
+:host(:dir(rtl)) #expand-button rh-icon {
+  scale: -1 1;
+}
+
+:host(:dir(rtl)) .inline-end #expand-button rh-icon {
+  scale: 1 1;
+}
+
 #close-button,
-#fullscreen-button {
+#expand-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -431,8 +459,8 @@
     translate: calc(var(--_slide-dir) * -100%) 0;
   }
 
-  &.fullscreen.open #panel,
-  &.fullscreen.closed #panel {
+  &.full-width.open #panel,
+  &.full-width.closed #panel {
     inline-size: 100%;
   }
 }
@@ -632,6 +660,34 @@
 }
 
 /*****************************************************************************
+ * INLINE FORCE-OVERLAY
+ *
+ * When full-width or the resize threshold is crossed, switch the inline
+ * panel to absolute positioning so it overlays content instead of pushing
+ * it off-screen.
+ *****************************************************************************/
+
+.inline.force-overlay {
+  &.open.inline-start #panel {
+    position: absolute;
+    z-index: 10;
+    inset-block: 0;
+    inset-inline-start: 0;
+  }
+
+  &.open.inline-end #panel {
+    position: absolute;
+    z-index: 10;
+    inset-block: 0;
+    inset-inline-end: 0;
+  }
+
+  &.open #content-container {
+    inline-size: 100%;
+  }
+}
+
+/*****************************************************************************
  * AUTO VARIANT
  *
  * Overlay below 992px container width, inline at >= 992px.
@@ -745,6 +801,24 @@
     &.closed.inline-start #content-container,
     &.closed.inline-end #content-container {
       inline-size: auto;
+    }
+
+    &.force-overlay.open.inline-start #panel {
+      position: absolute;
+      inset-block: 0;
+      inset-inline-start: 0;
+      z-index: 10;
+    }
+
+    &.force-overlay.open.inline-end #panel {
+      position: absolute;
+      inset-block: 0;
+      inset-inline-end: 0;
+      z-index: 10;
+    }
+
+    &.force-overlay.open #content-container {
+      inline-size: 100%;
     }
   }
 }

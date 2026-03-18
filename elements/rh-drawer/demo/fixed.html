@@ -1,4 +1,4 @@
-<button id="fixed-trigger" aria-controls="drawer" aria-expanded="false">Open Drawer</button>
+<button id="fixed-trigger" aria-controls="drawer" aria-expanded="false">Toggle Drawer</button>
 
 <rh-drawer id="drawer" variant="fixed" trigger-id="fixed-trigger">
   <div slot="header">Header</div>
@@ -18,8 +18,10 @@
     <label><input type="radio" name="panel" value="resizable"> resizable</label>
   </fieldset>
   <fieldset>
-    <legend>Fullscreen</legend>
-    <label><input type="checkbox" name="fullscreen"> fullscreen</label>
+    <legend>Expand</legend>
+    <label><input type="radio" name="expand" value="" checked> none</label>
+    <label><input type="radio" name="expand" value="full-width"> full-width</label>
+    <label><input type="radio" name="expand" value="full-screen"> full-screen</label>
   </fieldset>
 </form>
 
@@ -37,6 +39,6 @@
     const data = Object.fromEntries(new FormData(form));
     drawer.position = data.position;
     drawer.panel = data.panel || undefined;
-    drawer.fullscreen = 'fullscreen' in data;
+    drawer.expand = data.expand || undefined;
   });
 </script>

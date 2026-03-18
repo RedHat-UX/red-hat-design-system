@@ -22,24 +22,47 @@
         <label><input type="radio" name="panel" value="resizable"> resizable</label>
       </fieldset>
       <fieldset>
-        <legend>Fullscreen</legend>
-        <label><input type="checkbox" name="fullscreen"> fullscreen</label>
+        <legend>Expand</legend>
+        <label><input type="radio" name="expand" value="" checked> none</label>
+        <label><input type="radio" name="expand" value="full-width"> full-width</label>
+        <label><input type="radio" name="expand" value="full-screen"> full-screen</label>
+      </fieldset>
+      <fieldset id="overlay-threshold-fieldset" disabled>
+        <legend>Overlay Threshold</legend>
+        <div class="help-text">Enabled when inline and resizable are checked</div>
+        <label><input type="radio" name="overlay-threshold" value="" checked> none</label>
+        <label><input type="radio" name="overlay-threshold" value="2xs"> 2xs (320px)</label>
+        <label><input type="radio" name="overlay-threshold" value="xs"> xs (576px)</label>
+        <label><input type="radio" name="overlay-threshold" value="sm"> sm (768px)</label>
+        <label><input type="radio" name="overlay-threshold" value="md"> md (992px)</label>
+        <label><input type="radio" name="overlay-threshold" value="lg"> lg (1200px)</label>
+        <label><input type="radio" name="overlay-threshold" value="xl"> xl (1440px)</label>
       </fieldset>
     </form>
+    <button id="trigger" disabled aria-controls="drawer" aria-expanded="true">Toggle Drawer</button>
   </div>
 </rh-drawer>
 
 <script type="module">
   import '@rhds/elements/rh-drawer/rh-drawer.js';
 
+  const trigger = document.getElementById('trigger');
   const form = document.getElementById('knobs');
   const drawer = document.getElementById('drawer');
 
+  drawer.addEventListener('open', () => trigger.setAttribute('aria-expanded', 'true'));
+  drawer.addEventListener('close', () => trigger.setAttribute('aria-expanded', 'false'));
+
   form.addEventListener('input', function sync() {
     const data = Object.fromEntries(new FormData(form));
+    const isResizable = data.panel === 'resizable';
     drawer.position = data.position;
     drawer.panel = data.panel || undefined;
-    drawer.fullscreen = 'fullscreen' in data;
+    drawer.expand = data.expand || undefined;
+    drawer.overlayThreshold = data['overlay-threshold'] || undefined;
+    drawer.triggerId = isResizable ? 'trigger' : undefined;
+    trigger.disabled = !isResizable;
+    document.getElementById('overlay-threshold-fieldset').disabled = !isResizable;
     if (!drawer.open) {
       drawer.open = true;
     }

@@ -1,1 +1,1 @@
-The panel overlays the content slot without shifting layout. Defaults to collapsible with an optional fullscreen toggle. Includes demos for inline-start, inline-end, and resizable with an external trigger.
+The panel overlays the content slot without shifting layout. Defaults to collapsible with an optional expand toggle (full-width or full-screen). Includes demos for inline-start, inline-end, and resizable with an external trigger.
