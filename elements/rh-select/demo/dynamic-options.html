@@ -1,0 +1,96 @@
+<label for="my-select">
+  Products
+</label>
+<rh-select id="my-select" placeholder="Select an item">
+  <rh-option>Device Edge</rh-option>
+  <rh-option>JBoss Web Server</rh-option>
+  <rh-option>OpenShift</rh-option>
+  <rh-option disabled>Red Hat Lightspeed</rh-option>
+  <rh-option>Quay</rh-option>
+</rh-select>
+
+<div class="button-group">
+  <button type="button" id="add-option">Add option</button>
+  <button type="button" id="remove-option">Remove option</button>
+</div>
+
+<link rel="stylesheet" href="../rh-select-lightdom-shim.css">
+
+<script type="module">
+  import '@rhds/elements/rh-select/rh-select.js';
+
+  await customElements.whenDefined('rh-select');
+  const select = document.getElementById('my-select');
+  const addBtn = document.getElementById('add-option');
+  const removeBtn = document.getElementById('remove-option');
+  let optionCount = 0;
+
+  /**
+   * Adds a new rh-option to the end of the select.
+   */
+  function addOption() {
+    const option = document.createElement('rh-option');
+    optionCount += 1;
+    option.textContent = `New option ${optionCount}`;
+    option.value = `new-${optionCount}`;
+    select.appendChild(option);
+    updateRemoveButtonState();
+  }
+
+  /**
+   * Removes the last rh-option from the select.
+   */
+  function removeOption() {
+    const options = select.querySelectorAll('rh-option');
+    if (options.length > 1) {
+      options[options.length - 1].remove();
+      updateRemoveButtonState();
+    }
+  }
+
+  /**
+   * Disable "Remove option" when only one option is left to avoid an empty select.
+   */
+  function updateRemoveButtonState() {
+    const options = select.querySelectorAll('rh-option');
+    removeBtn.disabled = options.length <= 1;
+  }
+
+  addBtn.addEventListener('click', addOption);
+  removeBtn.addEventListener('click', removeOption);
+
+  // Set initial state in case we load with only one option.
+  updateRemoveButtonState();
+</script>
+
+<style>
+  label,
+  rh-select {
+    margin-inline: 20px;
+    max-inline-size: 320px;
+  }
+
+  label {
+    display: block;
+    font-family: var(--rh-font-family-body-text);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    margin-block: var(--rh-space-md, 8px);
+  }
+
+  .button-group {
+    display: flex;
+    gap: var(--rh-space-sm, 8px);
+    margin-inline: 20px;
+    margin-block-start: var(--rh-space-lg, 16px);
+  }
+
+  .button-group button {
+    font-family: var(--rh-font-family-body-text);
+    padding: var(--rh-space-sm, 8px) var(--rh-space-md, 16px);
+  }
+
+  .button-group button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+</style>
