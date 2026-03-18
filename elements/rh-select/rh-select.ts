@@ -38,11 +38,7 @@ export class RhSelectChangeEvent extends Event {
 }
 
 /**
- * A control for selecting from a list of options. Must contain `rh-option`
- * children. Provides keyboard navigation per the APG Select-Only Combobox
- * pattern: Arrow keys navigate, Enter/Space select, Escape closes. Should
- * include a `<label>` or `accessible-label` so screen readers can announce
- * the ARIA combobox role and current selection.
+ * A select element allows users to Select from an expandable list.
  * @summary A control that provides a menu of options
  * @alias select
  * @fires {Event} open - Fires when the dropdown listbox opens. Does not bubble. The event has no `detail` payload.

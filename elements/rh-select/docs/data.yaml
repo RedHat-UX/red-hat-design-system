@@ -9,6 +9,5 @@ libraries:
   shared: planned
   docs: ready
 relatedItems:
-  - rh-chip
   - rh-menu-dropdown
   - rh-switch
