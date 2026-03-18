@@ -51,7 +51,9 @@ export class RhOptionGroup extends LitElement {
   override firstUpdated() {
     if (!isServer) {
       this.#optionEls = this.#getChildOptions();
-      this.#disableChildren();
+      if (this.disabled) {
+        this.#updateDisabledChildren();
+      }
     }
   }
 
@@ -84,28 +86,11 @@ export class RhOptionGroup extends LitElement {
   }
 
   /**
-   * Disable each child `rh-option` element when `rh-option-group` is disabled
-   */
-  #disableChildren(): void {
-    if (!this.disabled) {
-      return;
-    }
-
-    for (const childOption of this.#optionEls) {
-      childOption.disabled = true;
-    }
-  }
-
-  /**
-   * Updates disabled state of child options when rh-option-group disabled state changes
+   * Syncs disabled state of child options to match rh-option-group.
    */
   #updateDisabledChildren(): void {
     for (const childOption of this.#optionEls) {
-      if (this.disabled) {
-        childOption.disabled = true;
-      } else {
-        childOption.disabled = false;
-      }
+      childOption.disabled = this.disabled;
     }
   }
 }
