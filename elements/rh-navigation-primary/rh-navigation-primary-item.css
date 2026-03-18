@@ -71,9 +71,7 @@
 
     & summary {
       --rh-icon-size: 18px /* non standard value */;
-
-      /** Toggle avatar size; uses the `rh-size-icon-02` design token */
-      --rh-avatar-size: var(--rh-size-icon-02, 24px);
+      --rh-avatar-size: var(--rh-icon-size); /* non standard value */
 
       display: flex;
       list-style: none;
