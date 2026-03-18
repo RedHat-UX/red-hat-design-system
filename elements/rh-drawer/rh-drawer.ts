@@ -129,7 +129,9 @@ export class RhDrawer extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener('keydown', this.#onKeyDown);
-    document.addEventListener('fullscreenchange', this.#onFullScreenChange);
+    if (!isServer) {
+      document.addEventListener('fullscreenchange', this.#onFullScreenChange);
+    }
   }
 
   protected override willUpdate(changed: PropertyValues<this>) {
@@ -177,12 +179,14 @@ export class RhDrawer extends LitElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     this.#triggerElement?.removeEventListener('click', this.#onTriggerClick);
-    document.removeEventListener('pointermove', this.#onPointerMove);
-    document.removeEventListener('pointerup', this.#onPointerUp);
+    if (!isServer) {
+      document.removeEventListener('pointermove', this.#onPointerMove);
+      document.removeEventListener('pointerup', this.#onPointerUp);
+      window.removeEventListener('resize', this.#onWindowResize);
+      document.removeEventListener('fullscreenchange', this.#onFullScreenChange);
+    }
     this.#mediaQuery?.removeEventListener('change', this.#onMediaChange);
     this.#resizeObserver?.disconnect();
-    window.removeEventListener('resize', this.#onWindowResize);
-    document.removeEventListener('fullscreenchange', this.#onFullScreenChange);
     clearTimeout(this.#resizeTimer);
   }
 
