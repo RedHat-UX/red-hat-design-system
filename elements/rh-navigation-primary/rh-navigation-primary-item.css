@@ -86,11 +86,6 @@
         display: none;
       }
 
-      & ::slotted(rh-icon) {
-        /** Toggle slotted icon min-height; uses the `rh-size-icon-02` design token */
-        min-block-size: var(--rh-size-icon-02, 24px);
-      }
-
       & rh-icon {
         aspect-ratio: unset;
 
