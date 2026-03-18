@@ -166,18 +166,6 @@
   flex-shrink: 0;
 }
 
-.inline-end #expand-button rh-icon {
-  scale: -1 1;
-}
-
-:host(:dir(rtl)) #expand-button rh-icon {
-  scale: -1 1;
-}
-
-:host(:dir(rtl)) .inline-end #expand-button rh-icon {
-  scale: 1 1;
-}
-
 #close-button,
 #expand-button {
   display: inline-flex;
@@ -325,6 +313,18 @@
 
 :host(:dir(rtl)) .closed.inline-end #collapse-toggle rh-icon {
   rotate: 180deg;
+}
+
+.inline-end #expand-button rh-icon {
+  scale: -1 1;
+}
+
+:host(:dir(rtl)) #expand-button rh-icon {
+  scale: -1 1;
+}
+
+:host(:dir(rtl)) .inline-end #expand-button rh-icon {
+  scale: 1 1;
 }
 
 /*****************************************************************************
