@@ -538,6 +538,33 @@ describe('<rh-select>', function() {
       expect(element.selected).to.not.include(disabledOption);
       expect(element.value).to.not.equal('two');
     });
+
+    it('updates child options when group disabled is toggled', async function() {
+      const group = element.querySelector('rh-option-group') as RhOptionGroup;
+      const childOptions = Array.from(group.querySelectorAll('rh-option')) as RhOption[];
+
+      // Group starts disabled: children should be disabled
+      expect(group.disabled).to.be.true;
+      for (const opt of childOptions) {
+        expect(opt.disabled).to.be.true;
+      }
+
+      // Remove disabled from group: children should become enabled
+      group.removeAttribute('disabled');
+      await group.updateComplete;
+      expect(group.disabled).to.be.false;
+      for (const opt of childOptions) {
+        expect(opt.disabled).to.be.false;
+      }
+
+      // Set disabled again: children should become disabled
+      group.setAttribute('disabled', '');
+      await group.updateComplete;
+      expect(group.disabled).to.be.true;
+      for (const opt of childOptions) {
+        expect(opt.disabled).to.be.true;
+      }
+    });
   });
 
   describe('<rh-option-group> navigation', function() {
