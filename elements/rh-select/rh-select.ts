@@ -194,6 +194,15 @@ export class RhSelect extends LitElement {
 
   #valueObserverHadFirstRun = false;
 
+  // Default value captured once when options are stable; form reset restores to this.
+  #defaultValue = '';
+
+  // Only capture the default selection once
+  #defaultCaptureDone = false;
+
+  // When true, valueChanged should not dispatch change (e.g. during form reset restore).
+  #restoringFromReset = false;
+
   #isNotPlaceholderOption = (option: RhOption) => option !== this._placeholder;
 
   /**
@@ -342,6 +351,13 @@ export class RhSelect extends LitElement {
   override updated() {
     this.#syncToggleAccessibleName();
     this.#removeListboxAriaLabelledby();
+
+    // Capture default value for form reset restore
+    if (!isServer && !this.#defaultCaptureDone && this.options.length > 0) {
+      const attr = this.getAttribute('value');
+      this.#defaultValue = attr ?? this.value ?? '';
+      this.#defaultCaptureDone = true;
+    }
   }
 
   override disconnectedCallback() {
@@ -350,8 +366,12 @@ export class RhSelect extends LitElement {
   }
 
   protected formResetCallback() {
-    this.value = '';
-    this.selected = [];
+    this.#restoringFromReset = true;
+    const defaultVal = this.#defaultValue ?? '';
+    const option = this.options.find(
+      opt => opt !== this._placeholder && opt.value === defaultVal
+    );
+    this.selected = option ? [option] : [];
   }
 
   protected formDisabledCallback(disabled: boolean) {
@@ -414,7 +434,12 @@ export class RhSelect extends LitElement {
   private valueChanged() {
     this.#internals.setFormValue(this.value ?? '');
 
-    // Don't dispatch `change` event on page load:
+    // Don't dispatch `change` on page load or when restoring from form reset:
+    if (this.#restoringFromReset) {
+      this.#restoringFromReset = false;
+      this.#updateValidity();
+      return;
+    }
     if (this.#valueObserverHadFirstRun) {
       this.dispatchEvent(new RhSelectChangeEvent());
     } else {

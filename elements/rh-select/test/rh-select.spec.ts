@@ -706,7 +706,7 @@ describe('<rh-select>', function() {
       expect(formData.get('color')).to.equal('Yellow');
     });
 
-    it('clears value on form reset', async function() {
+    it('restores to initial (empty) on form reset when no initial selection', async function() {
       await element.show();
       await element.updateComplete;
       const option = element.querySelectorAll('rh-option')[0] as RhOption;
@@ -721,6 +721,71 @@ describe('<rh-select>', function() {
       await nextFrame();
 
       expect(element.value).to.equal('');
+    });
+
+    it('restores to initial selection on form reset when value attribute set', async function() {
+      const formWithDefault = await createFixture<HTMLFormElement>(html`
+        <form>
+          <label for="select">label</label>
+          <rh-select id="select" name="color" value="green" placeholder="placeholder">
+            <rh-option value="red">Red</rh-option>
+            <rh-option value="green">Green</rh-option>
+            <rh-option value="blue">Blue</rh-option>
+          </rh-select>
+        </form>
+      `);
+      const selectWithDefault = formWithDefault.querySelector('rh-select')!;
+      await selectWithDefault.updateComplete;
+      await nextFrame();
+
+      await selectWithDefault.show();
+      await selectWithDefault.updateComplete;
+      const redOption = selectWithDefault.querySelectorAll('rh-option')[0] as RhOption;
+      await clickElementAtCenter(redOption);
+      await selectWithDefault.updateComplete;
+      await nextFrame();
+      expect(selectWithDefault.value).to.equal('red');
+
+      formWithDefault.reset();
+      await selectWithDefault.updateComplete;
+      await nextFrame();
+
+      expect(selectWithDefault.value).to.equal('green');
+    });
+
+    it('form reset does not dispatch change event', async function() {
+      const formWithDefault = await createFixture<HTMLFormElement>(html`
+        <form>
+          <label for="select">label</label>
+          <rh-select id="select" name="color" value="green" placeholder="placeholder">
+            <rh-option value="red">Red</rh-option>
+            <rh-option value="green">Green</rh-option>
+            <rh-option value="blue">Blue</rh-option>
+          </rh-select>
+        </form>
+      `);
+      const selectWithDefault = formWithDefault.querySelector('rh-select')!;
+      await selectWithDefault.updateComplete;
+      await nextFrame();
+
+      let changeCount = 0;
+      selectWithDefault.addEventListener('change', () => {
+        changeCount += 1;
+      });
+
+      await selectWithDefault.show();
+      await selectWithDefault.updateComplete;
+      const redOption = selectWithDefault.querySelectorAll('rh-option')[0] as RhOption;
+      await clickElementAtCenter(redOption);
+      await selectWithDefault.updateComplete;
+      await nextFrame();
+      expect(changeCount).to.equal(1);
+
+      formWithDefault.reset();
+      await selectWithDefault.updateComplete;
+      await nextFrame();
+
+      expect(changeCount).to.equal(1);
     });
   });
 
