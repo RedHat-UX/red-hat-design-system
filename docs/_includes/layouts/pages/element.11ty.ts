@@ -54,11 +54,12 @@ interface Context extends EleventyPageRenderData {
 const [manifest] = getAllManifests();
 
 class NoElementInDemoError extends Error {
-  constructor(
-    public tagName: string,
-    public filePath: string,
-  ) {
+  tagName: string;
+  filePath: string;
+  constructor(tagName: string, filePath: string) {
     super(`ENOTAG: ${filePath} does not contain ${tagName}`);
+    this.tagName = tagName;
+    this.filePath = filePath;
   }
 }
 
