@@ -1,6 +1,7 @@
 ## Keyboard interactions
 
 Buttons, page input field, and last page link all have keyboard interactions when the <kbd>Enter</kbd> key is pressed.
+The menu toggle and the menu items options can be interacted with using the <kbd>Tab</kbd>, <kbd>arrow</kbd>, <kbd>Space</kbd>, and <kbd>Enter</kbd> keys.
 
 <uxdot-example color-palette="lightest">
   <img alt="Diagram showing the keyboard interactions for an expanded menu dropdown."
@@ -63,8 +64,8 @@ A logical focus order helps keyboard users operate our websites. Elements need t
 <uxdot-example color-palette="lightest">
   <img alt="Diagram showing the focus order for an expanded menu dropdown."
        src="../menu-dropdown-accessibility-focus-order.svg"
-       width="312"
-       height="300">
+       width="300"
+       height="333">
 </uxdot-example>
 
 ## Touch targets

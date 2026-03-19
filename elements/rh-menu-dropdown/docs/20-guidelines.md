@@ -4,11 +4,11 @@ A menu dropdown expands to show a list of menu items, which are typically action
 
 ### Menu dropdowns vs. select lists
 
-Though they may be visually similar, understanding the difference between a menu dropdown and a select list is crucial for proper semantic implementation and accessibility.
+Though they may be visually similar, understanding the difference between a menu dropdown and a <a href="/elements/select">select element</a> is crucial for proper semantic implementation and accessibility.
 
 An action in a menu dropdown performs a command, and its toggle functions like a button. It does not update a form field value, which would result in a change to what the toggle displays.
 
-A select list is a form control that allows a user to choose one or more options as inputs. The value in a select list’s toggle does change to show a user’s selection(s).
+A select element is a form control that allows a user to choose one or more options as inputs. The value in a select list’s toggle does change to show a user’s selection.
 
 <rh-alert state="info">
   <h4 slot="header">Note</h4>
@@ -20,8 +20,8 @@ A select list is a form control that allows a user to choose one or more options
     <uxdot-example color-palette="lightest">
       <img alt="A menu toggle labeled, 'Share,' with menu items showing related actions."
         src="../menu-dropdown-guidelines-dropdown-example.svg"
-        width="482"
-        height="176">
+        width="185"
+        height="234">
     </uxdot-example>
     <figcaption>
       <p>Menu dropdown</p>
@@ -31,8 +31,8 @@ A select list is a form control that allows a user to choose one or more options
     <uxdot-example color-palette="lightest">
       <img alt="A select list labeled 'Select a state' that includes related choices."
         src="../menu-dropdown-guidelines-select-example.svg"
-        width="482"
-        height="176">
+        width="320"
+        height="234">
     </uxdot-example>
     <figcaption>
       <p>Select list (example only)</p>
@@ -70,7 +70,7 @@ The basic menu toggle is the default and clearly communicates the menu’s purpo
 <uxdot-example color-palette="lightest">
   <img alt="A basic menu toggle with visible text that says, 'Actions'."
        src="../menu-dropdown-guidelines-variants-basic-menu-toggle.svg"
-       width="106"
+       width="104"
        height="36">
 </uxdot-example>
 
@@ -125,7 +125,7 @@ A menu dropdown’s layout should not change much at different screen or contain
     <uxdot-example color-palette="lightest" slot="image">
       <img alt="Expanded menu dropdown with a single level of menu items."
            src="../menu-dropdown-guidelines-best-practices-1-do.svg"
-           width="199"
+           width="185"
            height="235">
     </uxdot-example>
     <p>Do use only a single level of menu items for a menu dropdown.</p>
@@ -135,7 +135,7 @@ A menu dropdown’s layout should not change much at different screen or contain
     <uxdot-example color-palette="lightest" slot="image">
       <img alt="Expanded menu dropdown with a nested and expanded menu item."
            src="../menu-dropdown-guidelines-best-practices-1-dont.svg"
-           width="409"
+           width="402"
            height="235">
     </uxdot-example>
     <p>Do not create multi-level menu dropdowns.</p>
@@ -150,7 +150,7 @@ A menu dropdown’s layout should not change much at different screen or contain
       <img alt="Menu dropdown with three groups. One group has five menu items."
            src="../menu-dropdown-guidelines-best-practices-2-do.svg"
            width="148"
-           height="408">
+           height="425">
     </uxdot-example>
     <p>Do limit the number of items to 7 or fewer per group to make the options easy to scan.</p>
   </uxdot-best-practice>
@@ -160,7 +160,7 @@ A menu dropdown’s layout should not change much at different screen or contain
       <img alt="An expanded menu dropdown with eight, ungrouped menu items."
            src="../menu-dropdown-guidelines-best-practices-2-caution.svg"
            width="148"
-           height="408">
+           height="425">
     </uxdot-example>
     <p>Reconsider having more than 7 menu items if you are not categorizing the items into groups.</p>
   </uxdot-best-practice>
@@ -197,7 +197,7 @@ A menu dropdown’s layout should not change much at different screen or contain
     <uxdot-example color-palette="lightest" slot="image">
       <img alt="Expanded 'Edit' menu dropdown with actions."
            src="../menu-dropdown-guidelines-best-practices-element-purpose-do.svg"
-           width="115"
+           width="101"
            height="285">
     </uxdot-example>
     <p>Do add menu items that allow users to perform actions without changing any labels in the menu dropdown.</p>
@@ -207,10 +207,10 @@ A menu dropdown’s layout should not change much at different screen or contain
     <uxdot-example color-palette="lightest" slot="image">
       <img alt="Expanded menu dropdown labeled 'Choose a product platform'."
            src="../menu-dropdown-guidelines-best-practices-element-purpose-dont.svg"
-           width="314"
+           width="300"
            height="285">
     </uxdot-example>
-    <p>Do not use a menu dropdown for navigation or for form options that should be used in a select list.</p>
+    <p>Do not use a menu dropdown for form options that should be used in a select list.</p>
   </uxdot-best-practice>
 </div>
 
@@ -221,7 +221,7 @@ A menu dropdown’s layout should not change much at different screen or contain
     <uxdot-example color-palette="lightest" slot="image">
       <img alt="Menu dropdown that contains actions to edit something."
            src="../menu-dropdown-guidelines-best-practices-menu-item-types-do.svg"
-           width="115"
+           width="101"
            height="285">
     </uxdot-example>
     <p>Menu items in a single menu dropdown should usually be actions or functions.</p>
@@ -231,7 +231,7 @@ A menu dropdown’s layout should not change much at different screen or contain
     <uxdot-example color-palette="lightest" slot="image">
       <img alt="Menu dropdown with two actions and a link."
            src="../menu-dropdown-guidelines-best-practices-menu-item-types-caution.svg"
-           width="209"
+           width="195"
            height="285">
     </uxdot-example>
     <p>Avoid mixing actions and links whenever possible. If those two types of menu items must be included, do not replace the link styling that’s built into the menu dropdown.</p>
