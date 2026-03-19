@@ -312,9 +312,12 @@ export default class ElementsPage extends Renderer<Context> {
       content += html`
         ${this.#header('Lightdom CSS', 3)}
 
-        <p>This element uses "Lightdom CSS" stylesheets for styling deeply slotted
+        <p>This element uses a "Lightdom CSS" stylesheet for styling deeply slotted
            elements. The stylesheet is automatically loaded into the element's root
-           node when the element connects.</p>
+           node when the element connects. Adding a <code>&lt;link&gt;</code> tag
+           is optional. See
+           <a href="/get-started/developers/installation/#lightdom-css">Lightdom CSS</a>
+           for details.</p>
       `;
     }
     if (ctx.doc.hasLightdomShim) {
