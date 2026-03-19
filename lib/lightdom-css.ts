@@ -18,8 +18,12 @@ function adoptIntoRoot(href: string, root: Document | ShadowRoot): Promise<void>
   }
   if (!sheets.has(href)) {
     sheets.set(href, (async () => {
+      const response = await fetch(href);
+      if (!response.ok) {
+        return;
+      }
       const sheet = new CSSStyleSheet();
-      sheet.replaceSync(await fetch(href).then(r => r.text()));
+      sheet.replaceSync(await response.text());
       root.adoptedStyleSheets = [...root.adoptedStyleSheets, sheet];
     })());
   }
@@ -68,7 +72,7 @@ export function lightdomCSS(baseUrl: string, path: string) {
         super.connectedCallback();
         const root = this.getRootNode();
         if (root instanceof Document || root instanceof ShadowRoot) {
-          adoptIntoRoot(href, root);
+          void adoptIntoRoot(href, root);
         }
       }
     } as unknown as T;

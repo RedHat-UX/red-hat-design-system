@@ -111,7 +111,12 @@ class RHDSSSRableRenderer extends LitElementRenderer {
     ri[LIGHTDOM_SEEN].add(cssUrl.href);
     return [
       async (): Promise<ThunkedRenderResult> => {
-        const css = await readFile(cssUrl, 'utf-8');
+        let css: string;
+        try {
+          css = await readFile(cssUrl, 'utf-8');
+        } catch {
+          return '';
+        }
         try {
           const { code } = transform({
             filename: cssUrl.pathname,
@@ -121,7 +126,10 @@ class RHDSSSRableRenderer extends LitElementRenderer {
           });
           return [
             '<style>',
-            code.toString().replaceAll('color-scheme:normal', 'color-scheme:inherit'),
+            code.toString().replaceAll(
+              'color-scheme:normal',
+              'color-scheme:inherit',
+            ),
             '</style>',
           ];
         } catch {
