@@ -12,6 +12,23 @@ import { DocsPage } from '@patternfly/pfe-tools/11ty/DocsPage.js';
 import { $ } from 'execa';
 import { capitalize } from '#11ty-plugins/tokensHelpers.js';
 
+// WARNING: This import uses the TypeScript compiler API to parse element source
+// files. The compiler API is not a stable public API and may break across
+// TypeScript major versions. If the docs build breaks after a TypeScript
+// upgrade, this is a likely culprit. See scanElementDecorators() below.
+import ts from 'typescript';
+
+export interface ElementDecoratorData {
+  /** Whether the element uses the @themable decorator */
+  themable: boolean;
+  /**
+   * Color palettes supported by this element, or null if the element does not
+   * use the @colorPalettes decorator. An empty array means all palettes are
+   * supported (bare @colorPalettes with no arguments).
+   */
+  colorPalettes: string[] | null;
+}
+
 interface ElementDocsPageTabData {
   url: string;
   /** element name slug e.g. 'call-to-action' or 'footer' */
@@ -47,6 +64,8 @@ interface ElementDocsPageFileSystemData extends ElementDocsPageBasicData {
   siblingElements: string[];
   overviewImageHref?: string;
   mainDemoContent: string;
+  /** Decorator metadata for this element and its siblings, keyed by tag name */
+  decoratorData: Record<string, ElementDecoratorData>;
 }
 
 export interface ElementDocsPageData extends ElementDocsPageFileSystemData {
@@ -78,6 +97,91 @@ async function exists(path: string) {
     return false;
   }
 };
+
+/**
+ * Scan element source files for `@themable` and `@colorPalettes` decorators
+ * using the TypeScript compiler API.
+ *
+ * COST: This parses every element .ts source file during the docs build. The
+ * TypeScript parser (ts.createSourceFile) is used in parse-only mode without
+ * type checking, so it is fast (typically <100ms total for all elements), but
+ * it is still real work that would not be necessary if the custom elements
+ * manifest spec supported extensions for arbitrary decorator metadata.
+ * See: https://github.com/webcomponents/custom-elements-manifest/issues/38
+ *
+ * WARNING: The TypeScript compiler API is not a stable public API. Node kinds,
+ * modifier handling, and decorator AST shapes have changed across TS versions
+ * (e.g. decorators moved from node.decorators to node.modifiers in TS 5.0).
+ * If this function breaks after a TypeScript upgrade, check the ts.SyntaxKind
+ * and ts.isDecorator APIs for changes.
+ *
+ * WHY NOT REGEX: Decorators can span multiple lines, use aliased imports, or
+ * appear in non-obvious positions. A proper parser avoids false positives from
+ * comments, strings, or partial matches.
+ */
+async function scanAllElementDecorators(): Promise<Record<string, ElementDecoratorData>> {
+  const result: Record<string, ElementDecoratorData> = {};
+
+  for await (const filePath of glob('elements/*/rh-*.ts', { cwd })) {
+    if (filePath.endsWith('.d.ts')) {
+      continue;
+    }
+    const filebasename = basename(filePath);
+    const tagName = filebasename.replace('.ts', '');
+
+    const sourceText = await readFile(join(cwd, filePath), 'utf8');
+
+    // ts.createSourceFile is parse-only: no type resolution, no program
+    // creation, no tsconfig needed. This is the cheapest way to get an AST.
+    const sourceFile = ts.createSourceFile(
+      filePath,
+      sourceText,
+      ts.ScriptTarget.Latest,
+      /* setParentNodes */ true,
+    );
+
+    let themable = false;
+    let colorPalettes: string[] | null = null;
+
+    for (const statement of sourceFile.statements) {
+      if (!ts.isClassDeclaration(statement)) {
+        continue;
+      }
+      // In TS 5.0+, decorators are modifiers on the class declaration.
+      // ts.canHaveDecorators and ts.getDecorators are the stable accessors.
+      const decorators = ts.canHaveDecorators(statement)
+        ? ts.getDecorators(statement) ?? []
+        : [];
+
+      for (const decorator of decorators) {
+        const expr = decorator.expression;
+
+        // Bare decorator: @themable or @colorPalettes
+        if (ts.isIdentifier(expr)) {
+          if (expr.text === 'themable') {
+            themable = true;
+          } else if (expr.text === 'colorPalettes') {
+            // Bare @colorPalettes means all palettes are supported
+            colorPalettes = [];
+          }
+        }
+
+        // Call decorator: @colorPalettes('light', 'dark', ...)
+        if (ts.isCallExpression(expr)
+            && ts.isIdentifier(expr.expression)
+            && expr.expression.text === 'colorPalettes') {
+          colorPalettes = expr.arguments
+              .filter(ts.isStringLiteral)
+              .map(arg => arg.text);
+        }
+      }
+    }
+
+    result[tagName] = { themable, colorPalettes };
+  }
+
+  return result;
+}
 
 /**
  * Load complete element data from colocated YAML file including relatedItems
@@ -143,6 +247,21 @@ export default function(eleventyConfig: UserConfig): void {
       // 4. compile a list of tabs for each page's subnav.
       //    this step depends on the full list from step 2.
       // 5. assign data which relies on the filesystem (async)
+
+      // Scan element source files for decorator metadata (@themable,
+      // @colorPalettes). This parses all element .ts files using the TS
+      // compiler API in parse-only mode. See scanAllElementDecorators() for
+      // cost and stability notes.
+      performance.mark('decorator-scan-start');
+      const allDecoratorData = await scanAllElementDecorators();
+      performance.mark('decorator-scan-end');
+      const DECORATOR_SCAN = performance.measure(
+        'decorator-scan-total',
+        'decorator-scan-start',
+        'decorator-scan-end',
+      );
+      // eslint-disable-next-line no-console
+      console.log(`⏲️  Decorator scan completed in ${chalk.blue(DECORATOR_SCAN.duration.toFixed(0))}ms\n`);
 
       const siblingElementsByTagName = new Map<string, string[]>();
       for await (const path of glob(`elements/*/*.ts`, { cwd })) {
@@ -247,6 +366,14 @@ export default function(eleventyConfig: UserConfig): void {
           const overviewImageHref =
             _overviewImageHref && await exists(join(docsDir, _overviewImageHref)) ?
               _overviewImageHref : undefined;
+          // Build decorator data for this element and its siblings
+          const siblings = siblingElementsByTagName.get(data.tagName) ?? [];
+          const decoratorData: Record<string, ElementDecoratorData> = {};
+          for (const tag of [data.tagName, ...siblings]) {
+            decoratorData[tag] = allDecoratorData[tag]
+              ?? { themable: false, colorPalettes: null };
+          }
+
           return {
             ...data,
             fileExists: await exists(data.absPath),
@@ -254,7 +381,8 @@ export default function(eleventyConfig: UserConfig): void {
             hasLightdomShim: await exists(join(elDir, `${data.tagName}-lightdom-shim.css`)),
             mainDemoContent: await exists(demoPath) ? await readFile(demoPath, 'utf8') : '',
             overviewImageHref,
-            siblingElements: siblingElementsByTagName.get(data.tagName) ?? [],
+            siblingElements: siblings,
+            decoratorData,
           };
         })
       );
