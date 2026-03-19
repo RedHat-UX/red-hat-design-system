@@ -13,6 +13,7 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { lightdomCSS } from '@rhds/elements/lib/lightdom-css.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import { RhNavigationPrimaryItem } from './rh-navigation-primary-item.js';
@@ -38,6 +39,7 @@ export type NavigationPrimaryPalette = Extract<ColorPalette, (
 @customElement('rh-navigation-primary')
 @colorPalettes
 @themable
+@lightdomCSS(import.meta.url, './rh-navigation-primary-lightdom.css')
 export class RhNavigationPrimary extends LitElement {
   static readonly styles = [styles];
 

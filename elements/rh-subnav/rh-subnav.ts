@@ -7,6 +7,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-controller.js';
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { lightdomCSS } from '@rhds/elements/lib/lightdom-css.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import { RhNavigationLink } from '@rhds/elements/rh-navigation-link/rh-navigation-link.js';
@@ -28,6 +29,7 @@ type LinkElement = HTMLAnchorElement | RhNavigationLink;
 @customElement('rh-subnav')
 @colorPalettes
 @themable
+@lightdomCSS(import.meta.url, './rh-subnav-lightdom.css')
 export class RhSubnav extends LitElement {
   static readonly styles = [styles];
 

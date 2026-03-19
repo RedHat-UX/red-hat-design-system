@@ -9,6 +9,7 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { lightdomCSS } from '@rhds/elements/lib/lightdom-css.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import '@rhds/elements/rh-surface/rh-surface.js';
@@ -61,6 +62,7 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
 @customElement('rh-navigation-secondary')
 @colorPalettes
 @themable
+@lightdomCSS(import.meta.url, './rh-navigation-secondary-lightdom.css')
 export class RhNavigationSecondary extends LitElement {
   static readonly styles = [styles];
 

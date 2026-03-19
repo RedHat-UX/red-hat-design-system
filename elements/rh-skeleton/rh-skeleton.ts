@@ -2,6 +2,8 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
+import { lightdomCSS } from '@rhds/elements/lib/lightdom-css.js';
+
 import styles from './rh-skeleton.css' with { type: 'css' };
 
 /**
@@ -13,6 +15,7 @@ import styles from './rh-skeleton.css' with { type: 'css' };
  * @alias skeleton
  */
 @customElement('rh-skeleton')
+@lightdomCSS(import.meta.url, './rh-skeleton-lightdom.css')
 export class RhSkeleton extends LitElement {
   static readonly styles = [styles];
 

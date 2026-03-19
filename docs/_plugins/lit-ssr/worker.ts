@@ -10,6 +10,7 @@ import { LitElementRenderer } from '@lit-labs/ssr/lib/lit-element-renderer.js';
 
 import { register } from 'node:module';
 import { register as registerTS } from 'tsx/esm/api';
+import { readFile } from 'node:fs/promises';
 
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -19,8 +20,12 @@ import { render } from '@lit-labs/ssr';
 import { collectResult } from '@lit-labs/ssr/lib/render-result.js';
 import { renderValue } from '@lit-labs/ssr/lib/render-value.js';
 
+import { getLightdomCSSUrl } from '@rhds/elements/lib/lightdom-css.js';
+
 import Piscina from 'piscina';
 import { transform, Features } from 'lightningcss';
+
+const LIGHTDOM_SEEN = Symbol('rhds.lightdomSeen');
 
 interface WorkerInitData {
   imports: string[];
@@ -82,6 +87,41 @@ class RHDSSSRableRenderer extends LitElementRenderer {
           renderInfo,
         );
       },
+    ];
+  }
+
+  override renderLight(renderInfo: RenderInfo): ThunkedRenderResult {
+    const superResult = super.renderLight(renderInfo);
+    const cssUrl = getLightdomCSSUrl(this.element.constructor);
+    if (!cssUrl) {
+      return superResult;
+    }
+    const ri = renderInfo as RenderInfo & { [LIGHTDOM_SEEN]?: Set<string> };
+    ri[LIGHTDOM_SEEN] ??= new Set();
+    if (ri[LIGHTDOM_SEEN].has(cssUrl.href)) {
+      return superResult;
+    }
+    ri[LIGHTDOM_SEEN].add(cssUrl.href);
+    return [
+      async (): Promise<ThunkedRenderResult> => {
+        const css = await readFile(cssUrl, 'utf-8');
+        try {
+          const { code } = transform({
+            filename: cssUrl.pathname,
+            code: Buffer.from(css),
+            minify: true,
+            include: Features.Nesting,
+          });
+          return [
+            '<style>',
+            code.toString().replaceAll('color-scheme:normal', 'color-scheme:inherit'),
+            '</style>',
+          ];
+        } catch {
+          return ['<style>', css, '</style>'];
+        }
+      },
+      ...(superResult ?? ['']),
     ];
   }
 

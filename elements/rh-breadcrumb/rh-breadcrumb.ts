@@ -2,6 +2,7 @@ import { LitElement, html, isServer, render } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
+import { lightdomCSS } from '@rhds/elements/lib/lightdom-css.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-breadcrumb.css' with { type: 'css' };
@@ -43,6 +44,7 @@ const truncationBtn = html`
 
 @customElement('rh-breadcrumb')
 @themable
+@lightdomCSS(import.meta.url, './rh-breadcrumb-lightdom.css')
 export class RhBreadcrumb extends LitElement {
   static readonly styles = [styles];
   /**

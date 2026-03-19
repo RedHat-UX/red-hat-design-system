@@ -5,6 +5,7 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { RequestSortEvent, RhSortButton } from './rh-sort-button.js';
 
+import { lightdomCSS } from '@rhds/elements/lib/lightdom-css.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-table.css' with { type: 'css' };
@@ -19,6 +20,7 @@ import styles from './rh-table.css' with { type: 'css' };
  */
 @customElement('rh-table')
 @themable
+@lightdomCSS(import.meta.url, './rh-table-lightdom.css')
 export class RhTable extends LitElement {
   static readonly styles = [styles];
 

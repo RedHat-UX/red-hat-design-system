@@ -14,6 +14,7 @@ import type { IconNameFor, IconSetName } from '@rhds/icons';
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { lightdomCSS } from '@rhds/elements/lib/lightdom-css.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-tile.css' with { type: 'css' };
@@ -37,6 +38,7 @@ export class TileSelectEvent extends Event {
 @customElement('rh-tile')
 @colorPalettes
 @themable
+@lightdomCSS(import.meta.url, './rh-tile-lightdom.css')
 export class RhTile extends LitElement {
   static readonly styles = [styles];
 
