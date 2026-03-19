@@ -149,9 +149,9 @@ async function scanAllElementDecorators(): Promise<Record<string, ElementDecorat
       }
       // In TS 5.0+, decorators are modifiers on the class declaration.
       // ts.canHaveDecorators and ts.getDecorators are the stable accessors.
-      const decorators = ts.canHaveDecorators(statement)
-        ? ts.getDecorators(statement) ?? []
-        : [];
+      const decorators = ts.canHaveDecorators(statement) ?
+        ts.getDecorators(statement) ?? [] :
+        [];
 
       for (const decorator of decorators) {
         const expr = decorator.expression;
