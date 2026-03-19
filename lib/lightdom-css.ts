@@ -27,8 +27,11 @@ function adoptIntoRoot(href: string, root: Document | ShadowRoot): Promise<void>
 }
 
 /** Returns the lightdom CSS URL for a decorated element class, if any. */
-export function getLightdomCSSUrl(klass: Function): URL | undefined {
-  return (klass as Record<symbol, unknown>)[LIGHTDOM_CSS_URL] as URL | undefined;
+export function getLightdomCSSUrl(
+  klass: abstract new (...args: never) => unknown,
+): URL | undefined {
+  const record = klass as unknown as Record<symbol, unknown>;
+  return record[LIGHTDOM_CSS_URL] as URL | undefined;
 }
 
 /**
