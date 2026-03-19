@@ -65,7 +65,7 @@
   border: none;
 
   .action-icon rh-icon {
-    --rh-icon-size: 12px;
+    --rh-icon-size: 10px;
 
     padding-inline-start: var(--rh-space-md, 8px);
   }
