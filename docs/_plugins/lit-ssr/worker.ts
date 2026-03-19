@@ -92,7 +92,8 @@ class RHDSSSRableRenderer extends LitElementRenderer {
 
   override renderLight(renderInfo: RenderInfo): ThunkedRenderResult {
     const superResult = super.renderLight(renderInfo);
-    const cssUrl = getLightdomCSSUrl(this.element.constructor);
+    const ctor = this.element.constructor as typeof LitElement;
+    const cssUrl = getLightdomCSSUrl(ctor);
     if (!cssUrl) {
       return superResult;
     }
