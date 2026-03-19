@@ -20,12 +20,18 @@ import { render } from '@lit-labs/ssr';
 import { collectResult } from '@lit-labs/ssr/lib/render-result.js';
 import { renderValue } from '@lit-labs/ssr/lib/render-value.js';
 
-import { getLightdomCSSUrl } from '@rhds/elements/lib/lightdom-css.js';
-
 import Piscina from 'piscina';
 import { transform, Features } from 'lightningcss';
 
+const LIGHTDOM_CSS_URL = Symbol.for('rhds.lightdomCSSUrl');
 const LIGHTDOM_SEEN = Symbol('rhds.lightdomSeen');
+
+function getLightdomCSSUrl(
+  klass: typeof LitElement,
+): URL | undefined {
+  const record = klass as unknown as Record<symbol, unknown>;
+  return record[LIGHTDOM_CSS_URL] as URL | undefined;
+}
 
 interface WorkerInitData {
   imports: string[];
