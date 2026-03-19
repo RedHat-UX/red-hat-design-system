@@ -115,7 +115,7 @@ class RHDSSSRableRenderer extends LitElementRenderer {
         try {
           css = await readFile(cssUrl, 'utf-8');
         } catch {
-          return '';
+          return [''];
         }
         try {
           const { code } = transform({
