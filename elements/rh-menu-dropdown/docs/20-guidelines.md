@@ -20,7 +20,7 @@ A select element is a form control that allows a user to choose one or more opti
     <uxdot-example color-palette="lightest">
       <img alt="A menu toggle labeled, 'Share,' with menu items showing related actions."
         src="../menu-dropdown-guidelines-dropdown-example.svg"
-        width="185"
+        width="360"
         height="234">
     </uxdot-example>
     <figcaption>
@@ -31,7 +31,7 @@ A select element is a form control that allows a user to choose one or more opti
     <uxdot-example color-palette="lightest">
       <img alt="A select list labeled 'Select a state' that includes related choices."
         src="../menu-dropdown-guidelines-select-example.svg"
-        width="320"
+        width="360"
         height="234">
     </uxdot-example>
     <figcaption>
@@ -125,7 +125,7 @@ A menu dropdown’s layout should not change much at different screen or contain
     <uxdot-example color-palette="lightest" slot="image">
       <img alt="Expanded menu dropdown with a single level of menu items."
            src="../menu-dropdown-guidelines-best-practices-1-do.svg"
-           width="185"
+           width="482"
            height="235">
     </uxdot-example>
     <p>Do use only a single level of menu items for a menu dropdown.</p>
@@ -135,7 +135,7 @@ A menu dropdown’s layout should not change much at different screen or contain
     <uxdot-example color-palette="lightest" slot="image">
       <img alt="Expanded menu dropdown with a nested and expanded menu item."
            src="../menu-dropdown-guidelines-best-practices-1-dont.svg"
-           width="402"
+           width="482"
            height="235">
     </uxdot-example>
     <p>Do not create multi-level menu dropdowns.</p>
@@ -149,7 +149,7 @@ A menu dropdown’s layout should not change much at different screen or contain
     <uxdot-example color-palette="lightest" slot="image">
       <img alt="Menu dropdown with three groups. One group has five menu items."
            src="../menu-dropdown-guidelines-best-practices-2-do.svg"
-           width="148"
+           width="482"
            height="425">
     </uxdot-example>
     <p>Do limit the number of items to 7 or fewer per group to make the options easy to scan.</p>
@@ -159,7 +159,7 @@ A menu dropdown’s layout should not change much at different screen or contain
     <uxdot-example color-palette="lightest" slot="image">
       <img alt="An expanded menu dropdown with eight, ungrouped menu items."
            src="../menu-dropdown-guidelines-best-practices-2-caution.svg"
-           width="148"
+           width="482"
            height="425">
     </uxdot-example>
     <p>Reconsider having more than 7 menu items if you are not categorizing the items into groups.</p>
@@ -173,7 +173,7 @@ A menu dropdown’s layout should not change much at different screen or contain
     <uxdot-example color-palette="lightest" slot="image">
       <img alt="Expanded menu dropdown with 'Delete' menu item in a separate group."
            src="../menu-dropdown-guidelines-best-practices-destructive-actions-do.svg"
-           width="101"
+           width="482"
            height="285">
     </uxdot-example>
     <p>Do find a way to differentiate or separate destructive actions.</p>
@@ -183,7 +183,7 @@ A menu dropdown’s layout should not change much at different screen or contain
     <uxdot-example color-palette="lightest" slot="image">
       <img alt="Expanded menu dropdown with 'Delete' action mixed with non-destructive items"
            src="../menu-dropdown-guidelines-best-practices-destructive-actions-dont.svg"
-           width="101"
+           width="482"
            height="285">
     </uxdot-example>
     <p>Avoid mixing destructive actions with non-destructive actions, especially if additional visual clues, like status icons, are not used.</p>
@@ -197,7 +197,7 @@ A menu dropdown’s layout should not change much at different screen or contain
     <uxdot-example color-palette="lightest" slot="image">
       <img alt="Expanded 'Edit' menu dropdown with actions."
            src="../menu-dropdown-guidelines-best-practices-element-purpose-do.svg"
-           width="101"
+           width="482"
            height="285">
     </uxdot-example>
     <p>Do add menu items that allow users to perform actions without changing any labels in the menu dropdown.</p>
@@ -207,7 +207,7 @@ A menu dropdown’s layout should not change much at different screen or contain
     <uxdot-example color-palette="lightest" slot="image">
       <img alt="Expanded menu dropdown labeled 'Choose a product platform'."
            src="../menu-dropdown-guidelines-best-practices-element-purpose-dont.svg"
-           width="300"
+           width="482"
            height="285">
     </uxdot-example>
     <p>Do not use a menu dropdown for form options that should be used in a select list.</p>
@@ -221,7 +221,7 @@ A menu dropdown’s layout should not change much at different screen or contain
     <uxdot-example color-palette="lightest" slot="image">
       <img alt="Menu dropdown that contains actions to edit something."
            src="../menu-dropdown-guidelines-best-practices-menu-item-types-do.svg"
-           width="101"
+           width="482"
            height="285">
     </uxdot-example>
     <p>Menu items in a single menu dropdown should usually be actions or functions.</p>
@@ -231,7 +231,7 @@ A menu dropdown’s layout should not change much at different screen or contain
     <uxdot-example color-palette="lightest" slot="image">
       <img alt="Menu dropdown with two actions and a link."
            src="../menu-dropdown-guidelines-best-practices-menu-item-types-caution.svg"
-           width="195"
+           width="482"
            height="285">
     </uxdot-example>
     <p>Avoid mixing actions and links whenever possible. If those two types of menu items must be included, do not replace the link styling that’s built into the menu dropdown.</p>
