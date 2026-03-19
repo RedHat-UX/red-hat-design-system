@@ -8,6 +8,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { lightdomCSS } from '@rhds/elements/lib/lightdom-css.js';
 
 import style from './rh-footer.css' with { type: 'css' };
 
@@ -15,6 +16,7 @@ import './rh-footer-copyright.js';
 
 @customElement('rh-footer-universal')
 @colorPalettes
+@lightdomCSS(import.meta.url, './rh-footer-lightdom.css')
 export class RhFooterUniversal extends LitElement {
   static readonly styles = [style];
 
