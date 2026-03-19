@@ -21,7 +21,7 @@ A select element is a form control that allows a user to choose one or more opti
       <img alt="A menu toggle labeled, 'Share,' with menu items showing related actions."
         src="../menu-dropdown-guidelines-dropdown-example.svg"
         width="360"
-        height="234">
+        height="245">
     </uxdot-example>
     <figcaption>
       <p>Menu dropdown</p>
@@ -32,7 +32,7 @@ A select element is a form control that allows a user to choose one or more opti
       <img alt="A select list labeled 'Select a state' that includes related choices."
         src="../menu-dropdown-guidelines-select-example.svg"
         width="360"
-        height="234">
+        height="245">
     </uxdot-example>
     <figcaption>
       <p>Select list (example only)</p>
