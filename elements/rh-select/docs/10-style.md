@@ -34,7 +34,9 @@ Select is available in both light and dark schemes.
          width="1012"
          height="242">
   </uxdot-example>
-  <figcaption>Select - collapsed and expanded</figcaption>
+  <figcaption>
+    <p>Select - collapsed and expanded</p>
+  </figcaption>
 </figure>
 
 <figure>
@@ -44,7 +46,9 @@ Select is available in both light and dark schemes.
          width="1012"
          height="37">
   </uxdot-example>
-  <figcaption>Select elements with status</figcaption>
+  <figcaption>
+    <p>Select elements with status</p>
+  </figcaption>
 </figure>
 
 ### Dark scheme
@@ -56,7 +60,9 @@ Select is available in both light and dark schemes.
          width="1012"
          height="279">
   </uxdot-example>
-  <figcaption>Select - collapsed and expanded</figcaption>
+  <figcaption>
+    <p>Select - collapsed and expanded</p>
+  </figcaption>
 </figure>
 
 <figure>
@@ -66,7 +72,9 @@ Select is available in both light and dark schemes.
          width="1012"
          height="37">
   </uxdot-example>
-  <figcaption>Select elements with status</figcaption>
+  <figcaption>
+    <p>Select elements with status</p>
+  </figcaption>
 </figure>
 
 ## Configuration
