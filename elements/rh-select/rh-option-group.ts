@@ -46,14 +46,9 @@ export class RhOptionGroup extends LitElement {
   // eslint-disable-next-line no-unused-private-class-members
   #internals = InternalsController.of(this, { role: 'group' });
 
-  #optionEls: RhOption[] = [];
-
   override firstUpdated() {
-    if (!isServer) {
-      this.#optionEls = this.#getChildOptions();
-      if (this.disabled) {
-        this.#updateDisabledChildren();
-      }
+    if (!isServer && this.disabled) {
+      this.#updateDisabledChildren();
     }
   }
 
@@ -65,13 +60,24 @@ export class RhOptionGroup extends LitElement {
         <slot name="label">${this.label}</slot>
       </div>
       <!-- Insert \`<rh-option>\` elements. Each option must have accessible text content for screen readers. -->
-      <slot></slot>
+      <slot @slotchange="${this.#onDefaultSlotChange}"></slot>
     `;
   }
 
   @observes('disabled')
   private disabledChanged() {
     this.#updateDisabledChildren();
+  }
+
+  /**
+   * When options are added or removed, refresh child disabled state if this
+   * group is disabled. We only sync when `disabled` is true so we do not clear
+   * per-option `disabled` on children while the group is enabled.
+   */
+  #onDefaultSlotChange(): void {
+    if (this.disabled) {
+      this.#updateDisabledChildren();
+    }
   }
 
   /**
@@ -87,9 +93,12 @@ export class RhOptionGroup extends LitElement {
 
   /**
    * Syncs disabled state of child options to match rh-option-group.
+   * Always reads the current default-slot assignment so the list stays correct
+   * after DOM changes.
    */
   #updateDisabledChildren(): void {
-    for (const childOption of this.#optionEls) {
+    const options = this.#getChildOptions();
+    for (const childOption of options) {
       childOption.disabled = this.disabled;
     }
   }

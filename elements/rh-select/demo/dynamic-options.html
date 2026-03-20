@@ -4,14 +4,27 @@
 <rh-select id="my-select" placeholder="Select an item">
   <rh-option>Device Edge</rh-option>
   <rh-option>JBoss Web Server</rh-option>
-  <rh-option>OpenShift</rh-option>
-  <rh-option disabled>Red Hat Lightspeed</rh-option>
-  <rh-option>Quay</rh-option>
+  <rh-option-group id="dynamic-group" label="Dynamic group" disabled>
+    <rh-option>OpenShift</rh-option>
+    <rh-option disabled>Red Hat Lightspeed</rh-option>
+    <rh-option>Quay</rh-option>
+  </rh-option-group>
 </rh-select>
 
 <div class="button-group">
-  <button type="button" id="add-option">Add option</button>
-  <button type="button" id="remove-option">Remove option</button>
+  <span class="button-group-label">Top-level options</span>
+  <div class="button-row">
+    <button type="button" id="add-option">Add option</button>
+    <button type="button" id="remove-option">Remove option</button>
+  </div>
+</div>
+
+<div class="button-group">
+  <span class="button-group-label">Inside “Dynamic group”</span>
+  <div class="button-row">
+    <button type="button" id="add-group-option">Add option to group</button>
+    <button type="button" id="remove-group-option">Remove from group</button>
+  </div>
 </div>
 
 <link rel="stylesheet" href="../rh-select-lightdom-shim.css">
@@ -21,27 +34,59 @@
 
   await customElements.whenDefined('rh-select');
   const select = document.getElementById('my-select');
+  const group = document.getElementById('dynamic-group');
   const addBtn = document.getElementById('add-option');
   const removeBtn = document.getElementById('remove-option');
+  const addGroupBtn = document.getElementById('add-group-option');
+  const removeGroupBtn = document.getElementById('remove-group-option');
   let optionCount = 0;
 
+  /** Direct child <rh-option> elements of the select (not inside a group). */
+  function getTopLevelOptions() {
+    return Array.from(select.children).filter(
+      (el) => el instanceof HTMLElement && el.localName === 'rh-option',
+    );
+  }
+
+  /** Direct child <rh-option> elements inside the option group. */
+  function getGroupOptions() {
+    return Array.from(group.children).filter(
+      (el) => el instanceof HTMLElement && el.localName === 'rh-option',
+    );
+  }
+
   /**
-   * Adds a new rh-option to the end of the select.
+   * rh-select rebuilds its option list when its default slot fires `slotchange`.
+   * Adding/removing <rh-option> inside <rh-option-group> does not change that slot,
+   * so we re-insert the group at the same spot to trigger a refresh.
+   */
+  function refreshSelectAfterGroupMutation() {
+    const next = group.nextSibling;
+    group.remove();
+    if (next) {
+      select.insertBefore(group, next);
+    } else {
+      select.appendChild(group);
+    }
+  }
+
+  /**
+   * Adds a new rh-option as a direct child of the select (sibling to the group).
    */
   function addOption() {
     const option = document.createElement('rh-option');
     optionCount += 1;
-    option.textContent = `New option ${optionCount}`;
-    option.value = `new-${optionCount}`;
+    option.textContent = `New top-level option ${optionCount}`;
+    option.value = `new-root-${optionCount}`;
     select.appendChild(option);
     updateRemoveButtonState();
   }
 
   /**
-   * Removes the last rh-option from the select.
+   * Removes the last top-level rh-option from the select.
    */
   function removeOption() {
-    const options = select.querySelectorAll('rh-option');
+    const options = getTopLevelOptions();
     if (options.length > 1) {
       options[options.length - 1].remove();
       updateRemoveButtonState();
@@ -49,18 +94,51 @@
   }
 
   /**
-   * Disable "Remove option" when only one option is left to avoid an empty select.
+   * Appends a new rh-option inside the existing rh-option-group.
+   */
+  function addGroupOption() {
+    const option = document.createElement('rh-option');
+    optionCount += 1;
+    option.textContent = `New grouped option ${optionCount}`;
+    option.value = `new-group-${optionCount}`;
+    group.appendChild(option);
+    refreshSelectAfterGroupMutation();
+    updateGroupRemoveButtonState();
+  }
+
+  /**
+   * Removes the last rh-option from inside the group.
+   */
+  function removeGroupOption() {
+    const options = getGroupOptions();
+    if (options.length > 1) {
+      options[options.length - 1].remove();
+      refreshSelectAfterGroupMutation();
+      updateGroupRemoveButtonState();
+    }
+  }
+
+  /**
+   * Disable top-level remove when only one top-level option remains.
    */
   function updateRemoveButtonState() {
-    const options = select.querySelectorAll('rh-option');
-    removeBtn.disabled = options.length <= 1;
+    removeBtn.disabled = getTopLevelOptions().length <= 1;
+  }
+
+  /**
+   * Disable group remove when only one option remains in the group.
+   */
+  function updateGroupRemoveButtonState() {
+    removeGroupBtn.disabled = getGroupOptions().length <= 1;
   }
 
   addBtn.addEventListener('click', addOption);
   removeBtn.addEventListener('click', removeOption);
+  addGroupBtn.addEventListener('click', addGroupOption);
+  removeGroupBtn.addEventListener('click', removeGroupOption);
 
-  // Set initial state in case we load with only one option.
   updateRemoveButtonState();
+  updateGroupRemoveButtonState();
 </script>
 
 <style>
@@ -79,17 +157,31 @@
 
   .button-group {
     display: flex;
+    flex-direction: column;
     gap: var(--rh-space-sm, 8px);
     margin-inline: 20px;
     margin-block-start: var(--rh-space-lg, 16px);
   }
 
-  .button-group button {
+  .button-group-label {
+    font-family: var(--rh-font-family-body-text);
+    font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    color: var(--rh-color-text-secondary, #6a6e73);
+  }
+
+  .button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rh-space-sm, 8px);
+  }
+
+  .button-row button {
     font-family: var(--rh-font-family-body-text);
     padding: var(--rh-space-sm, 8px) var(--rh-space-md, 16px);
   }
 
-  .button-group button:disabled {
+  .button-row button:disabled {
     opacity: 0.6;
     cursor: not-allowed;
   }

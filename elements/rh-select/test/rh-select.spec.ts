@@ -565,6 +565,18 @@ describe('<rh-select>', function() {
         expect(opt.disabled).to.be.true;
       }
     });
+
+    it('disables rh-options appended while the group is disabled', async function() {
+      const group = element.querySelector('rh-option-group') as RhOptionGroup;
+      const appended = document.createElement('rh-option') as RhOption;
+      appended.textContent = 'appended';
+      appended.value = 'appended';
+      group.appendChild(appended);
+      await group.updateComplete;
+      await nextFrame();
+      expect(group.disabled).to.be.true;
+      expect(appended.disabled).to.be.true;
+    });
   });
 
   describe('<rh-option-group> navigation', function() {

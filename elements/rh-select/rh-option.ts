@@ -91,6 +91,7 @@ export class RhOption extends LitElement {
         </span>
         <rh-icon icon="checkmark"
                  set="microns"
+                 loading="eager"
                  ?hidden="${!this.selected}"></rh-icon>
         <!-- Optional inline or block description text displayed below the option label. Overrides the \`description\` attribute. Should be a \`<span>\` or \`<p>\` element. -->
         <slot id="description"
