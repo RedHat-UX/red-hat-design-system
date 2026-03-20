@@ -4,6 +4,28 @@
 
 `rh-button-group` exposes `role="group"` automatically via ElementInternals. The [group role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/group_role) identifies a logical collection of related controls that is not intended to be included in a page summary or table of contents by assistive technologies. Since we use [ElementInternals](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals) to set `role="group"`, authors do not need to set it.
 
+#### Naming the group (optional)
+
+Naming `<rh-button-group>` is optional: the [group](https://w3c.github.io/aria/#group) role does not require an accessible name. Only add `aria-labelledby`/ `aria-label` when several groups on one page could be hard to distinguish, or when the collection’s purpose is not obvious from nearby visible text. Ensure the label describes the container only, not each button.
+
+If you wrap the group in a toolbar, put the label on the element with `role="toolbar"` (see [Toolbar labeling](#toolbar-labeling)).
+
+#### Example: two named groups
+
+```html rhcodeblock
+<h3 id="view-actions">View</h3>
+<rh-button-group aria-labelledby="view-actions">
+  <rh-button>List</rh-button>
+  <rh-button>Grid</rh-button>
+</rh-button-group>
+
+<h3 id="sort-actions">Sort</h3>
+<rh-button-group aria-labelledby="sort-actions">
+  <rh-button>Name</rh-button>
+  <rh-button>Date</rh-button>
+</rh-button-group>
+```
+
 ### Optional role="toolbar"
 
 When the button group acts as a compact set of commonly used actions (a toolbar pattern), wrap it in an element with `role="toolbar"`. The [toolbar role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role) is intended for three or more controls. 
