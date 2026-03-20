@@ -672,6 +672,31 @@ describe('<rh-select>', function() {
       expect(snapshot).axTreeFocusedNode.to.have.axName('one');
     });
 
+    // Space mid-string must route through capture-phase handler during active type-ahead
+    // (see `#captureKeydown`), not be treated as combobox select/open on the toggle.
+    it('focuses option when type-ahead includes a space in the label', async function() {
+      const container = await createFixture<HTMLDivElement>(html`
+        <div>
+          <label for="select">label</label>
+          <rh-select id="select" placeholder="placeholder">
+            <rh-option>one</rh-option>
+            <rh-option>foo bar</rh-option>
+            <rh-option>three</rh-option>
+          </rh-select>
+        </div>
+      `);
+      const spaced = container.querySelector('rh-select')!;
+      await spaced.updateComplete;
+      spaced.focus();
+      await spaced.updateComplete;
+      await sendKeys({ type: 'foo ' });
+      await spaced.updateComplete;
+
+      expect(spaced.expanded).to.be.true;
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).axTreeFocusedNode.to.have.axName('foo bar');
+    });
+
     it('selects the focused option when pressing Enter after type-ahead', async function() {
       focus();
       await updateComplete();

@@ -684,18 +684,20 @@ export class RhSelect extends LitElement {
 
   /**
    * Handles keydown events on the toggle button and listbox.
-   * Detects printable characters and delegates to type-ahead logic.
+   * Detects printable characters (except Space) and delegates to type-ahead logic.
+   * Space is left to normal combobox behavior (open/select); during an active
+   * type-ahead session it is handled in `#captureKeydown` instead.
    * @param event - The keyboard event to handle
    */
   #onKeydown(event: KeyboardEvent) {
-    // Only handle printable characters
+    // Printable keys only; exclude Space so it is not swallowed as type-ahead here.
     const isPrintable = event.key.length === 1
+      && event.key !== ' '
       && !event.ctrlKey
       && !event.altKey
       && !event.metaKey;
 
     if (isPrintable) {
-      // Don't scroll after pressing space and don't toggle the listbox
       event.preventDefault();
       event.stopPropagation();
       this.#handleTypeAhead(event.key);
