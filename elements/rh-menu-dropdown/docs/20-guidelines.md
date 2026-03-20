@@ -10,11 +10,6 @@ An action in a menu dropdown performs a command, and its toggle functions like a
 
 A select element is a form control that allows a user to choose one or more options as inputs. The value in a select list’s toggle does change to show a user’s selection.
 
-<rh-alert state="info">
-  <h4 slot="header">Note</h4>
-  <p>Red Hat Design System does not yet include a select list element. <a href="/support/">Contact the team</a> with any questions.</p>
-</rh-alert>
-
 <div class="grid sm-two-columns">
   <figure>
     <uxdot-example color-palette="lightest">
@@ -35,7 +30,7 @@ A select element is a form control that allows a user to choose one or more opti
         height="245">
     </uxdot-example>
     <figcaption>
-      <p>Select list (example only)</p>
+      <p>Select list</p>
     </figcaption>
   </figure>
 </div>
