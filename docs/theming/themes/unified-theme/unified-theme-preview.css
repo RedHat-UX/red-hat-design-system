@@ -444,6 +444,7 @@
   @layer
     button,
     card,
+    cta,
     progress-steppers,
     spinner;
 }
@@ -580,7 +581,8 @@
       }
     }
 
-    &[variant='link'] {
+    &[variant='link'],
+    &[variant='plain'] {
       &::part(button):hover,
       &::part(button):focus,
       &::part(button):active {
@@ -691,6 +693,44 @@
     &[large],
     &[size='large'] {
       --rh-space-xl: var(--unified-card-padding-large);
+    }
+  }
+}
+
+/* Element: Call to action */
+@layer cta {
+  rh-cta {
+    --unified-cta-font-size: var(--unified-font-size-body-text-sm);
+    --unified-cta-padding-block: var(--unified-space-lg);
+    --unified-cta-padding-inline: var(--unified-space-2xl);
+    --rh-space-lg: var(--unified-cta-padding-block);
+    --rh-space-2xl: var(--unified-cta-padding-inline);
+    --unified-cta-padding-block-compact: var(--unified-space-sm);
+    --unified-cta-padding-inline-compact: var(--unified-space-lg);
+    --unified-cta-border-width-hover: var(--unified-border-width-md);
+    --unified-cta-border-width-focus: var(--unified-border-width-md);
+    --unified-cta-border-width-focus-ring: var(--unified-border-width-lg);
+    --unified-cta-border-width-active: var(--unified-border-width-md);
+    --unified-cta-link-color-on-light: var(--unified-color-blue-20);
+    --unified-cta-link-color-on-light-hover: var(--unified-color-blue-60);
+    --unified-cta-focus-ring-offset: calc(var(--unified-cta-border-width-focus-ring) * 2);
+
+    /* Directly theme through RH-specific tokens */
+    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+    --rh-border-radius-default: var(--unified-border-radius-pill);
+    --rh-font-size-body-text-md: var(--unified-cta-font-size);
+    --rh-cta-focus-inner-border-color: var(--unified-color-interactive-primary-default);
+    --_text-decoration: dashed;
+
+    &::part(container):after {
+      --rh-border-width-sm: 2px;
+
+      border-width: var(--unified-cta-border-width-focus-ring);
+      border-radius: var(--unified-border-radius-pill);
+      height: calc(100% + var(--unified-cta-focus-ring-offset) * 2);
+      width: calc(100% + var(--unified-cta-focus-ring-offset) * 2);
+      top: calc(var(--unified-cta-focus-ring-offset) * -1);
+      left: calc(var(--unified-cta-focus-ring-offset) * -1);
     }
   }
 }
