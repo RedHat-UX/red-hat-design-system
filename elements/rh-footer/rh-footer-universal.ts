@@ -1,10 +1,10 @@
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
@@ -13,12 +13,33 @@ import style from './rh-footer.css' with { type: 'css' };
 
 import './rh-footer-copyright.js';
 
+/**
+ * Abbreviated footer for content shared across all Red Hat sites. Use
+ * standalone or inside `<rh-footer>`. MUST NOT be wrapped in a native
+ * `<footer>` — when standalone, sets the ARIA `contentinfo` landmark
+ * role via ElementInternals. SHOULD include a heading slot for screen
+ * readers. Tab moves focus between links. No special keyboard
+ * interaction beyond standard link navigation.
+ *
+ * @summary An abbreviated footer with content that stays the same across all websites
+ *
+ * @demo https://ux.redhat.com/elements/footer/demo/footer-universal/ - Standalone universal footer
+ * @alias footer-universal
+ */
 @customElement('rh-footer-universal')
 @colorPalettes
 export class RhFooterUniversal extends LitElement {
   static readonly styles = [style];
 
+  /**
+   * Color palette for the footer surface and text. Use design-system values
+   * (e.g. light, darker). Should contrast with adjacent layout; avoid matching
+   * a dark universal footer to a dark nav bar.
+   * @summary Theme for footer (light/dark); should contrast with adjacent layout.
+   */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
+
+  #internals = InternalsController.of(this);
 
   #slots = new SlotController(
     this,
@@ -31,42 +52,96 @@ export class RhFooterUniversal extends LitElement {
     'tertiary',
   );
 
-  override render() {
-    const hasTertiary = this.#slots.hasSlotted('tertiary');
+  #hasAncestorH2 = false;
 
-    // determine if footer and h2 already exist
+  override connectedCallback() {
+    super.connectedCallback();
+    this.#updateRole();
+    this.#hasAncestorH2 = this.#detectAncestorH2();
+  }
+
+  /** Check if an h2 already exists in the parent context. */
+  #detectAncestorH2(): boolean {
     let node: HTMLElement | null | undefined = this.parentElement;
-    let footer: HTMLElement | null | undefined = node?.closest('footer');
-    let h2: HTMLElement | null | undefined = null;
-    while (!!node && !footer) {
-      h2 = h2
-        || node?.closest('h2')
+    while (node) {
+      if (node?.closest('h2')
         || node?.querySelector('h2')
-        || node?.shadowRoot?.querySelector('h2');
-      footer = node?.closest('footer')
-        || node?.querySelector('footer')
-        || node?.shadowRoot?.querySelector('footer');
+        || node?.shadowRoot?.querySelector('h2')) {
+        return true;
+      }
+      node = node.parentElement;
+    }
+    return false;
+  }
+
+  /**
+   * Check if this element is nested inside another `<footer>`/`<rh-footer>`.
+   * If not, set role="contentinfo" on the host via InternalsController.
+   * NOTE: Does not check for other custom elements with `role="contentinfo"`
+   */
+  #updateRole() {
+    let node: HTMLElement | null | undefined = this.parentElement;
+    let hasFooterAncestor = false;
+
+    while (node) {
+      if (node.tagName === 'FOOTER') {
+        hasFooterAncestor = true;
+        break;
+      }
+
+      if (node.tagName === 'RH-FOOTER') {
+        hasFooterAncestor = true;
+        break;
+      }
+
+      if (node.shadowRoot?.querySelector('footer')) {
+        hasFooterAncestor = true;
+        break;
+      }
+
       node = node.parentElement;
     }
 
+    if (!hasFooterAncestor) {
+      this.#internals.role = 'contentinfo';
+    }
+  }
+
+  override render() {
+    const hasTertiary = this.#slots.hasSlotted('tertiary');
+
     return html`
-      <footer role="${ifDefined(footer ? 'none' : undefined)}">
-        <h2 id="global-heading" ?hidden="${!!h2}">
-          <!-- text that describes the footer section to assistive tecchnology. Contains default text "Red Hat footer". -->
+      <div class="footer">
+        <h2 id="global-heading" ?hidden="${this.#hasAncestorH2}">
+          <!-- Visually-hidden heading announced by screen readers to identify the footer landmark. Expects inline text. Defaults to "Red Hat footer". -->
           <slot name="heading">Red Hat footer</slot>
         </h2>
-        <!-- base -->
+        <!--
+          part:
+            description: Wrapper for the universal footer content (logo, primary, secondary, tertiary).
+        -->
         <div class="section global-base ${classMap({ hasTertiary })}" part="section base">
+          <!-- Replaces the default layout. AVOID using; it removes all built-in ARIA structure. Expects block-level elements. -->
           <slot name="base">
-            <!-- logo -->
+            <!--
+              part:
+                description: Container for the logo slot.
+            -->
             <div class="global-logo" part="logo">
-              <!-- logo -->
+              <!-- Logo or brand mark. Expects an anchor wrapping an \`<img>\` or \`<svg>\` with descriptive alt text for screen readers. Defaults to Red Hat logo. -->
               <slot name="logo">
+                <!--
+                  part:
+                    description: Link wrapping the logo; defaults to redhat.com.
+                -->
                 <a class="global-logo-anchor"
                     part="logo-anchor"
                     href="https://redhat.com"
                     aria-label="Visit Red Hat">
-                  <!-- logo-image -->
+                  <!--
+                    part:
+                      description: Logo image or SVG element.
+                  -->
                   <svg class="global-logo-image"
                        part="logo-image"
                        data-name="Layer 1"
@@ -86,57 +161,88 @@ export class RhFooterUniversal extends LitElement {
                 </a>
               </slot>
             </div>
-            <!-- primary -->
+            <!--
+              part:
+                description: Primary row (start, links, end).
+            -->
             <div class="global-primary" part="primary">
-              <!-- primary -->
+              <!-- Content for the primary row. Expects block-level elements using the primary-start, links-primary, and primary-end slots. -->
               <slot name="primary">
-                <!-- primary-start -->
+                <!--
+                  part:
+                    description: Left area of the primary row.
+                -->
                 <div class="global-primary-start" part="primary-start" ?hidden=${!this.#slots.hasSlotted('primary-start')}>
-                  <!-- primary-start -->
+                  <!-- Optional content at the start of the primary row. Expects block-level elements. -->
                   <slot name="primary-start"></slot>
                 </div>
-                <!-- links-primary -->
+                <!--
+                  part:
+                    description: Main link list area in the primary row.
+                -->
                 <div class="global-links-primary" part="links-primary" ?hidden=${!this.#slots.hasSlotted('links-primary')}>
-                  <!-- links-primary -->
+                  <!-- Primary links (e.g. About, Contact). Expects a heading and \`<ul>\` with \`<a>\` items. Each heading SHOULD have a unique id for \`aria-labelledby\`. -->
                   <slot name="links-primary"></slot>
                 </div>
-                <!-- primary-end -->
+                <!--
+                  part:
+                    description: Right area of the primary row.
+                -->
                 <div class="global-primary-end" part="primary-end" ?hidden=${!this.#slots.hasSlotted('primary-end')}>
-                  <!-- primary-end -->
+                  <!-- Optional content at the end of the primary row (e.g. \`<rh-footer-copyright>\`). Expects block-level elements. -->
                   <slot name="primary-end"></slot>
                 </div>
               </slot>
             </div>
+            <!--
+              part:
+                description: Spacer between primary and secondary rows.
+            -->
             <div class="spacer" part="spacer"></div>
-            <!-- secondary -->
+            <!--
+              part:
+                description: Secondary row (start, links, end).
+            -->
             <div class="global-secondary" part="secondary">
-              <!-- secondary -->
+              <!-- Content for the secondary row. Expects block-level elements using the secondary-start, links-secondary, and secondary-end slots. -->
               <slot name="secondary">
-                <!-- secondary-start -->
+                <!--
+                  part:
+                    description: Left area of the secondary row.
+                -->
                 <div class="global-secondary-start" part="secondary-start" ?hidden=${!this.#slots.hasSlotted('secondary-start')}>
-                  <!-- secondary-start -->
+                  <!-- Optional content at the start of the secondary row. Expects block-level elements. -->
                   <slot name="secondary-start"></slot>
                 </div>
-                <!-- links-secondary -->
+                <!--
+                  part:
+                    description: Main link list area in the secondary row.
+                -->
                 <div class="global-links-secondary" part="links-secondary" ?hidden=${!this.#slots.hasSlotted('links-secondary')}>
-                  <!-- links-secondary -->
+                  <!-- Secondary links (e.g. Privacy, Terms). Expects a heading and \`<ul>\` with \`<a>\` items. Each heading SHOULD have a unique id for \`aria-labelledby\`. -->
                   <slot name="links-secondary"></slot>
                 </div>
-                <!-- secondary-end -->
+                <!--
+                  part:
+                    description: Right area of the secondary row.
+                -->
                 <div class="global-secondary-end" part="secondary-end" ?hidden=${!this.#slots.hasSlotted('secondary-end')}>
-                  <!-- secondary-end -->
+                  <!-- Optional content at the end of the secondary row. Expects block-level elements. -->
                   <slot name="secondary-end"></slot>
                 </div>
               </slot>
             </div>
-            <!-- tertiary -->
+            <!--
+              part:
+                description: Optional bottom section (e.g. copyright, extra text).
+            -->
             <div class="global-tertiary" part="tertiary" ?hidden=${!this.#slots.hasSlotted('tertiary')}>
-              <!-- tertiary -->
+              <!-- Tertiary content below primary and secondary rows. Expects block-level elements. -->
               <slot name="tertiary"></slot>
             </div>
           </slot>
         </div>
-      </footer>
+      </div>
     `;
   }
 }

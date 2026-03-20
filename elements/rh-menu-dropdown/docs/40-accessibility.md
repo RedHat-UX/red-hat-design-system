@@ -1,5 +1,6 @@
 ## Keyboard interactions
 
+Buttons, page input field, and last page link all have keyboard interactions when the <kbd>Enter</kbd> key is pressed.
 The menu toggle and the menu items options can be interacted with using the <kbd>Tab</kbd>, <kbd>arrow</kbd>, <kbd>Space</kbd>, and <kbd>Enter</kbd> keys.
 
 <uxdot-example color-palette="lightest">
