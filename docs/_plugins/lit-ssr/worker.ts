@@ -24,7 +24,7 @@ import Piscina from 'piscina';
 import { transform, Features } from 'lightningcss';
 
 const LIGHTDOM_CSS_URL = Symbol.for('rhds.lightdomCSSUrl');
-const LIGHTDOM_SEEN = Symbol('rhds.lightdomSeen');
+let lightdomCSSUrls = new Map<string, URL>();
 
 function getLightdomCSSUrl(
   klass: typeof LitElement,
@@ -77,6 +77,11 @@ class RHDSSSRableRenderer extends LitElementRenderer {
   }
 
   override renderShadow(renderInfo: RenderInfo): ThunkedRenderResult {
+    const ctor = this.element.constructor as typeof LitElement;
+    const cssUrl = getLightdomCSSUrl(ctor);
+    if (cssUrl) {
+      lightdomCSSUrls.set(cssUrl.href, cssUrl);
+    }
     return [
       // Render styles.
       this.#renderStyles(),
@@ -93,50 +98,6 @@ class RHDSSSRableRenderer extends LitElementRenderer {
           renderInfo,
         );
       },
-    ];
-  }
-
-  override renderLight(renderInfo: RenderInfo): ThunkedRenderResult {
-    const superResult = super.renderLight(renderInfo);
-    const ctor = this.element.constructor as typeof LitElement;
-    const cssUrl = getLightdomCSSUrl(ctor);
-    if (!cssUrl) {
-      return superResult;
-    }
-    const ri = renderInfo as RenderInfo & { [LIGHTDOM_SEEN]?: Set<string> };
-    ri[LIGHTDOM_SEEN] ??= new Set();
-    if (ri[LIGHTDOM_SEEN].has(cssUrl.href)) {
-      return superResult;
-    }
-    ri[LIGHTDOM_SEEN].add(cssUrl.href);
-    return [
-      async (): Promise<ThunkedRenderResult> => {
-        let css: string;
-        try {
-          css = await readFile(cssUrl, 'utf-8');
-        } catch {
-          return [''];
-        }
-        try {
-          const { code } = transform({
-            filename: cssUrl.pathname,
-            code: Buffer.from(css),
-            minify: true,
-            include: Features.Nesting,
-          });
-          return [
-            '<style>',
-            code.toString().replaceAll(
-              'color-scheme:normal',
-              'color-scheme:inherit',
-            ),
-            '</style>',
-          ];
-        } catch {
-          return ['<style>', css, '</style>'];
-        }
-      },
-      ...(superResult ?? ['']),
     ];
   }
 
@@ -204,6 +165,37 @@ class UnsafeHTMLStringsArray extends Array {
  * @param opts.page
  * @param opts.content
  */
+async function lightdomStyles(
+  urls: Iterable<URL>,
+): Promise<string> {
+  const styles: string[] = [];
+  for (const cssUrl of urls) {
+    let css: string;
+    try {
+      css = await readFile(cssUrl, 'utf-8');
+    } catch {
+      continue;
+    }
+    try {
+      const { code } = transform({
+        filename: cssUrl.pathname,
+        code: Buffer.from(css),
+        minify: true,
+        include: Features.Nesting,
+      });
+      styles.push(code.toString().replaceAll(
+        'color-scheme:normal',
+        'color-scheme:inherit',
+      ));
+    } catch {
+      styles.push(css);
+    }
+  }
+  return styles.length ?
+    `<style>${styles.join('')}</style>`
+    : '';
+}
+
 export default async function renderPage({
   page,
   content,
@@ -211,12 +203,17 @@ export default async function renderPage({
 }: RenderRequestMessage): Promise<RenderResponseMessage> {
   const start = performance.now();
   const tpl = html(new UnsafeHTMLStringsArray(content));
-  const result = render(tpl, {
+  const ri = {
     elementRenderers,
     page,
     slotControllerElements,
-  } as unknown as RenderInfo);
-  const rendered = await collectResult(result);
+  } as unknown as RenderInfo;
+  const result = render(tpl, ri);
+  let rendered = await collectResult(result);
+  if (lightdomCSSUrls.size) {
+    rendered = await lightdomStyles(lightdomCSSUrls.values()) + rendered;
+    lightdomCSSUrls = new Map();
+  }
   const end = performance.now();
   return { page, rendered, durationMs: end - start };
 }
