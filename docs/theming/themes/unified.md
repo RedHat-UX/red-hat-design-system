@@ -60,18 +60,12 @@ subnav:
 
 Unified content
 
-## Preview theme CSS
-
-```css code-block {dedent: true, language: "css", highlighting: "prerendered", linenumbers: "true"}
-{% set cssContent = "./docs/theming/themes/unified-theme/unified-theme-preview.css" | inlineCss %}{{ cssContent | safe }}
-```
-
-## Demo
+## Try it out!
 
 <rh-card id="unified-theme-toggle">
   <p>
     <label for="unified-page-switch">
-        What would it look like to set the Unified theme on an entire page?
+        What would it look like to set the Unified theme preview on an entire page? Try it out:
     </label>
     <rh-switch id="unified-page-switch"
                 message-on="Unified theme"
@@ -79,15 +73,37 @@ Unified content
   </p>
 </rh-card>
 
-{% renderFile './docs/theming/patterns/unified-theme-demo.html' %}
+## Preview theme CSS
 
-<rh-accordion>
-  <h2><rh-accordion-header>All supported elements</rh-accordion-header></h2>
-  <rh-accordion-panel>
-    {% renderFile './docs/theming/patterns/unified-supported-elements.html' %}
-  </rh-accordion-panel>
-</rh-accordion>
+```css code-block {dedent: true, language: "css", highlighting: "prerendered", linenumbers: "true"}
+{% set cssContent = "./docs/theming/themes/unified-theme/unified-theme-preview.css" | inlineCss %}{{ cssContent | safe }}
+```
 
+## Demos
+
+{% renderFile './docs/theming/patterns/unified-theme-inline-demo.html' %}
+
+<uxdot-pattern src="../patterns/unified-buttons.html">
+  <h3 id="text-and-cta" slot="heading">Buttons</h3>
+</uxdot-pattern>
+
+<uxdot-pattern src="../patterns/unified-ctas.html">
+  <h3 id="text-and-cta" slot="heading">Calls to action</h3>
+</uxdot-pattern>
+
+<uxdot-pattern src="../patterns/unified-cards.html">
+  <h3 id="text-and-cta" slot="heading">Cards</h3>
+</uxdot-pattern>
+
+<uxdot-pattern src="../patterns/unified-progress-stepper.html">
+  <h3 id="text-and-cta" slot="heading">Progress stepper</h3>
+</uxdot-pattern>
+
+<uxdot-pattern src="../patterns/unified-spinner.html">
+  <h3 id="text-and-cta" slot="heading">Spinner</h3>
+</uxdot-pattern>
+
+{# renderFile './docs/theming/patterns/unified-kitchen-sink.html' #}
 
 {% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}
 

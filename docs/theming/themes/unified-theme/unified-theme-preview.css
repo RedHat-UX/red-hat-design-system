@@ -4,7 +4,8 @@
 
 /* Base-level "tokens" / CSS custom props */
 @layer tokens {
-  :root {
+  :root,
+  :host {
     /* Fonts/Type */
     --unified-font-size-body-text-sm: 14px;
     --unified-line-height-body-text: 1.5;
@@ -703,25 +704,45 @@
     --unified-cta-font-size: var(--unified-font-size-body-text-sm);
     --unified-cta-padding-block: var(--unified-space-lg);
     --unified-cta-padding-inline: var(--unified-space-2xl);
-    --rh-space-lg: var(--unified-cta-padding-block);
-    --rh-space-2xl: var(--unified-cta-padding-inline);
     --unified-cta-padding-block-compact: var(--unified-space-sm);
     --unified-cta-padding-inline-compact: var(--unified-space-lg);
     --unified-cta-border-width-hover: var(--unified-border-width-md);
     --unified-cta-border-width-focus: var(--unified-border-width-md);
     --unified-cta-border-width-focus-ring: var(--unified-border-width-lg);
     --unified-cta-border-width-active: var(--unified-border-width-md);
-    --unified-cta-link-color-on-light: var(--unified-color-blue-20);
-    --unified-cta-link-color-on-light-hover: var(--unified-color-blue-60);
     --unified-cta-focus-ring-offset: calc(var(--unified-cta-border-width-focus-ring) * 2);
+    --unified-cta-border-offset:
+      calc(
+          var(--unified-cta-border-width-hover)
+          - var(--unified-border-width-sm)
+        );
+    --unified-cta-border-offset-block:
+      calc(
+          var(--rh-space-lg)
+          - var(--unified-cta-border-offset)
+        );
+    --unified-cta-border-offset-inline:
+      calc(
+          var(--rh-space-2xl)
+          - var(--unified-cta-border-offset)
+        );
+    --unified-cta-text-underline-offset: 4px;
+    --unified-cta-text-decoration: underline dashed 1px;
+    --unified-cta-primary-bg-default: #ee0000;
+    --unified-cta-primary-bg-hover: #a60000;
+    --unified-cta-primary-bg-active: #a60000;
 
-    /* Directly theme through RH-specific tokens */
+    /* Map unified tokens to RH tokens */
     --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+    --rh-color-interactive-primary-hover: var(--unified-color-interactive-primary-hover);
     --rh-border-radius-default: var(--unified-border-radius-pill);
     --rh-font-size-body-text-md: var(--unified-cta-font-size);
+    --rh-font-size-body-text-lg: var(--unified-cta-font-size);
+    --rh-space-lg: var(--unified-cta-padding-block);
+    --rh-space-2xl: var(--unified-cta-padding-inline);
     --rh-cta-focus-inner-border-color: var(--unified-color-interactive-primary-default);
-    --_text-decoration: dashed;
 
+    /* Focus ring pseudo-element (shared across all variants) */
     &::part(container):after {
       --rh-border-width-sm: 2px;
 
@@ -731,6 +752,111 @@
       width: calc(100% + var(--unified-cta-focus-ring-offset) * 2);
       top: calc(var(--unified-cta-focus-ring-offset) * -1);
       left: calc(var(--unified-cta-focus-ring-offset) * -1);
+    }
+
+    &[variant='primary'] {
+      --rh-color-interactive-primary-default: var(--unified-cta-primary-bg-default);
+      --rh-color-interactive-primary-hover: var(--unified-cta-primary-bg-hover);
+      --rh-cta-hover-text-decoration: var(--unified-cta-text-decoration);
+      --rh-cta-hover-text-underline-offset: var(--unified-cta-text-underline-offset);
+      --rh-cta-focus-text-decoration: var(--unified-cta-text-decoration);
+      --rh-cta-active-text-decoration: var(--unified-cta-text-decoration);
+    }
+
+    &[variant='secondary'] {
+      --rh-cta-hover-background-color: transparent;
+      --rh-cta-hover-color: var(--rh-color-text-primary);
+      --rh-cta-hover-text-decoration: var(--unified-cta-text-decoration);
+      --rh-cta-hover-text-underline-offset: var(--unified-cta-text-underline-offset);
+      --rh-cta-focus-background-color: transparent;
+      --rh-cta-focus-text-decoration: var(--unified-cta-text-decoration);
+      --rh-cta-active-background-color: transparent;
+      --rh-cta-active-text-decoration: var(--unified-cta-text-decoration);
+
+      &::part(container):hover {
+        --rh-border-width-sm: var(--unified-cta-border-width-hover);
+
+        padding-block: var(--unified-cta-border-offset-block);
+        padding-inline: var(--unified-cta-border-offset-inline);
+      }
+
+      &::part(container):focus-within {
+        --rh-border-width-sm: var(--unified-cta-border-width-focus);
+
+        padding-block: var(--unified-cta-border-offset-block);
+        padding-inline: var(--unified-cta-border-offset-inline);
+      }
+
+      &::part(container):active {
+        --rh-border-width-sm: var(--unified-cta-border-width-active);
+
+        padding-block: var(--unified-cta-border-offset-block);
+        padding-inline: var(--unified-cta-border-offset-inline);
+      }
+    }
+
+    &:not([variant]) {
+      --rh-cta-hover-background-color: var(--unified-color-interactive-fill-plain-hover);
+      --rh-cta-hover-text-decoration: var(--unified-cta-text-decoration);
+      --rh-cta-hover-text-underline-offset: var(--unified-cta-text-underline-offset);
+      --rh-cta-focus-container-background-color: var(--unified-color-interactive-fill-plain-focus);
+      --rh-cta-focus-text-decoration: var(--unified-cta-text-decoration);
+      --rh-cta-active-container-background-color:
+        var(
+            --unified-color-interactive-fill-plain-active
+          );
+      --rh-cta-active-text-decoration: var(--unified-cta-text-decoration);
+
+      &::part(container) {
+        padding-block: var(--rh-space-lg);
+        padding-inline: var(--rh-space-2xl);
+      }
+    }
+
+    &:is([variant='tertiary'], [variant='brick']) {
+      --rh-cta-hover-background-color: transparent;
+      --rh-cta-hover-text-decoration: var(--unified-cta-text-decoration);
+      --rh-cta-hover-text-underline-offset: var(--unified-cta-text-underline-offset);
+      --rh-cta-focus-text-decoration: var(--unified-cta-text-decoration);
+      --rh-cta-active-text-decoration: var(--unified-cta-text-decoration);
+
+      &::part(container) {
+        border-style: solid;
+        color: var(--unified-color-text-interactive-default);
+        border-color: var(--unified-color-border-interactive-subtle-default);
+      }
+
+      &::part(container):hover {
+        --rh-border-width-sm: var(--unified-cta-border-width-hover);
+
+        color: var(--unified-color-text-interactive-hover);
+        border-color: var(--unified-color-border-interactive-subtle-default);
+        padding-block: var(--unified-cta-border-offset-block);
+        padding-inline: var(--unified-cta-border-offset-inline);
+      }
+
+      &::part(container):focus-within {
+        --rh-border-width-sm: var(--unified-cta-border-width-focus);
+
+        color: var(--unified-color-text-interactive-focus);
+        border-color: var(--unified-color-border-interactive-subtle-default);
+        padding-block: var(--unified-cta-border-offset-block);
+        padding-inline: var(--unified-cta-border-offset-inline);
+      }
+
+      &::part(container):active {
+        --rh-border-width-sm: var(--unified-cta-border-width-active);
+
+        color: var(--unified-color-text-interactive-active);
+        border-color: var(--unified-color-border-interactive-subtle-default);
+        padding-block: var(--unified-cta-border-offset-block);
+        padding-inline: var(--unified-cta-border-offset-inline);
+      }
+    }
+
+    &[compact] {
+      --rh-space-lg: var(--unified-cta-padding-block-compact);
+      --rh-space-2xl: var(--unified-cta-padding-inline-compact);
     }
   }
 }
