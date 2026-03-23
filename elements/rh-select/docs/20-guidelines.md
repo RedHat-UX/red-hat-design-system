@@ -42,7 +42,7 @@ There are additional visual distinctions.
       <img alt="A menu toggle labeled 'Share' with menu items showing related actions"
            src="../select-guidelines-menu-dropdown-example.svg"
            width="482"
-           height="176">
+           height="234">
     </uxdot-example>
     <figcaption>
       <p>Menu dropdown</p>

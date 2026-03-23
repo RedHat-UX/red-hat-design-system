@@ -31,7 +31,7 @@ Select is available in both light and dark schemes.
   <uxdot-example color-palette="lightest">
     <img alt="A collapsed select with 'Select a platform' as the placeholder text, next to the same select expanded in light scheme"
          src="../select-style-scheme-light.svg"
-         width="1012"
+         width="664"
          height="242">
   </uxdot-example>
   <figcaption>
@@ -57,8 +57,8 @@ Select is available in both light and dark schemes.
   <uxdot-example color-palette="darkest">
     <img alt="A collapsed select with 'Select a platform' as the placeholder text, next to the same select expanded in dark scheme"
          src="../select-style-scheme-dark.svg"
-         width="1012"
-         height="279">
+         width="664"
+         height="242">
   </uxdot-example>
   <figcaption>
     <p>Select - collapsed and expanded</p>
@@ -121,14 +121,14 @@ The images below show interaction states for both the select toggle and its opti
 <uxdot-example color-palette="lightest">
   <img alt="In light scheme, when the mouse hovers over the collapsed select toggle, the border color turns blue. When the list is expanded, hovering over an option changes its background color to a light gray."
        src="../select-style-interaction-states-hover-light.svg"
-       width="1012"
+       width="736"
        height="242">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest">
   <img alt="In dark scheme, when the mouse hovers over collapsed select toggle, the border color turns light blue. When the list is expanded, hovering over an option changes its background color to a lighter gray."
        src="../select-style-interaction-states-hover-dark.svg"
-       width="1012"
+       width="736"
        height="242">
 </uxdot-example>
 
