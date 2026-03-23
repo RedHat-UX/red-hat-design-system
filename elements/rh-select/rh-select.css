@@ -177,6 +177,10 @@
       );
 }
 
+#toggle-button #toggle-icon {
+  --rh-icon-size: 10px;
+}
+
 ::slotted(hr) {
   border: 0;
   inline-size: 100%;
