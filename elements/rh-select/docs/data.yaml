@@ -10,4 +10,5 @@ libraries:
   docs: ready
 relatedItems:
   - rh-menu-dropdown
+  - rh-scheme-toggle
   - rh-switch
