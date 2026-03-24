@@ -226,7 +226,7 @@ export class RhDrawer extends LitElement {
              style=${panelStyle}>
           <div id="panel-body">
             <div id="panel-content">
-              <div id="actions">
+              <div id="actions" ?hidden="${!this.expand && showCollapsible}">
                 ${this.expand ? html`
                   <button id="expand-button"
                           part="expand-button"
