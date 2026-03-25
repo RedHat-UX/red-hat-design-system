@@ -16,8 +16,15 @@ import styles from './rh-chip.css' with { type: 'css' };
 import '@rhds/elements/rh-icon/rh-icon.js';
 import { observes } from '@patternfly/pfe-core/decorators.js';
 
+/**
+ * Event fired when a chip's checked state changes.
+ * The `checked` property indicates the chip's state before the change.
+ */
 export class ChipChangeEvent extends Event {
-  constructor(public checked: boolean) {
+  constructor(
+    /** The checked state of the chip before the change occurred. */
+    public checked: boolean,
+  ) {
     super('change', {
       bubbles: true,
       cancelable: true,
@@ -26,12 +33,25 @@ export class ChipChangeEvent extends Event {
 }
 
 /**
- * A chip is used to filter information or indicate that a selection was made.
+ * A chip provides a toggle for filtering content or indicating a selection.
+ * Each chip MUST contain short inline text. Authors SHOULD use
+ * `rh-chip-group` for multiple related chips. The chip renders a hidden
+ * checkbox for form participation and screen reader accessibility.
+ * Users MAY press Tab to navigate and Enter or Space to toggle.
+ *
  * @summary Filter information or indicate that a selection was made
  *
  * @alias chip
  *
- * @fires {ChipCheckedEvent} chip-checked - when chip is checked/unchecked
+ * @slot - Expects short inline text for the chip label.
+ *         Content SHOULD be concise, typically 1-3 words.
+ *
+ * @fires {ChipChangeEvent} change - Fires when the chip is checked or
+ *        unchecked. The event's `checked` property contains the previous
+ *        checked state (boolean). This event bubbles and is cancelable.
+ *
+ * @csspart chip - The outer `<label>` container for the chip,
+ *          styled with the `--rh-border-radius-pill` token.
  */
 @customElement('rh-chip')
 @themable
@@ -73,9 +93,8 @@ export class RhChip extends LitElement {
 
   render() {
     return html`
-      <!-- The main chip container -->
       <label part="chip" class=${classMap({ [`size-${this.size}`]: !!this.size })}>
-        <!-- The label of the checkbox -->
+        <!-- Short inline text for the chip label -->
         <slot></slot>
         <input type="checkbox"
                value="${ifDefined(this.value)}"
