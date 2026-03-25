@@ -19,11 +19,21 @@ import styles from './rh-subnav.css' with { type: 'css' };
 type LinkElement = HTMLAnchorElement | RhNavigationLink;
 
 /**
- * A subnavigation allows users to navigate between a small number of page links.
+ * A subnavigation provides a horizontal list of links for navigating
+ * related pages. Authors MUST provide `<rh-navigation-link>` children
+ * and SHOULD AVOID using plain `<a>` elements, which are deprecated.
+ * Overflow scroll buttons appear when links exceed the available space.
+ * The `<nav>` landmark has a configurable `aria-label` for screen
+ * readers; all links are keyboard accessible via Tab and Enter.
  *
- * @summary Organizes content into sections using tabbed pages
+ * @summary Displays a horizontal list of navigation links for related pages.
  *
  * @alias subnavigation
+ *
+ * @slot - Expects `<rh-navigation-link>` or `<a>` elements. Authors MUST
+ *         provide at least two links. Slotting plain `<a>` elements is
+ *         deprecated; use `<rh-navigation-link>` instead. Each link
+ *         SHOULD have concise, descriptive text for screen readers.
  */
 @customElement('rh-subnav')
 @colorPalettes
@@ -110,8 +120,11 @@ export class RhSubnav extends LitElement {
 
   override render() {
     return html`
-      <!-- container, \`<div>\` element -->
-      <nav part="container" 
+      <!--
+        part:
+          description: The nav container wrapping the link list
+      -->
+      <nav part="container"
            aria-label="${this.accessibleLabel}">
         ${!this.#overflow.showScrollButtons ? '' : html`
           <button id="previous"
@@ -122,14 +135,17 @@ export class RhSubnav extends LitElement {
                   @click="${this.#onClickScroll}">
             <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
           </button>`}
-        <!--
-          slot:
-            description: Sub navigation links, expects collection of \`<a>\` or \`<rh-navigation-link>\` elements
-            Slotting a \`<a>\` element is deprecated and will be removed in a future release. Use \`<rh-navigation-link>\` instead.
-          part:
-            description: the anonymous slot
-        -->
         <div id="link-container" role="${ifDefined(this.hasNavigationLinks ? 'list' : undefined)}" >
+          <!--
+            summary: Sub navigation links
+            description: |
+              Expects a collection of \`<rh-navigation-link>\` or
+              \`<a>\` elements. Each link MUST have text content
+              for screen readers. Slotting \`<a>\` elements is
+              deprecated; use \`<rh-navigation-link>\` instead.
+            part:
+              description: The scrollable link list container
+          -->
           <slot @slotchange="${this.#onSlotchange}" part="links"></slot>
         </div>
         ${!this.#overflow.showScrollButtons ? '' : html`

@@ -3,6 +3,7 @@
 }
 
 :host([color-palette]) {
+  /** Theme surface color token for subnav background */
   background-color: var(--rh-color-surface);
 }
 
@@ -24,6 +25,7 @@
   white-space: nowrap !important;
   padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px) !important;
   text-decoration: none !important;
+  /** Theme secondary text token for inactive links */
   color: var(--rh-color-text-secondary) !important;
   position: relative !important;
 }
@@ -33,35 +35,42 @@
   position: absolute !important;
   inset: 0 !important;
   width: 100% !important;
+  /** Bottom border indicator for link state */
   border-block-end: var(--rh-border-width-lg, 3px) solid transparent !important;
 }
 
 ::slotted(a:hover),
 ::slotted(a:active),
 ::slotted(a:is([active], [aria-current='page'])) {
+  /** Theme primary text token for active links */
   color: var(--rh-color-text-primary) !important;
 }
 
 ::slotted(a:focus-visible):after,
 ::slotted(a:hover):after {
+  /** Subtle border on hover and focus */
   border-block-end-color: var(--rh-color-border-subtle) !important;
 }
 
 ::slotted(a:active):after,
 ::slotted(a:is([active], [aria-current='page'])):after {
+  /** Brand accent design token for current page */
   border-block-end-color: var(--rh-color-accent-brand) !important;
 }
 
 ::slotted(a:focus-visible) {
   outline:
+    /** Focus outline width */
     var(--rh-border-width-md, 2px)
     solid
+    /** Focus outline color */
     var(--rh-color-border-interactive) !important;
   outline-offset: -2px !important;
   border-radius: 10px !important;
 }
 
 ::slotted(a:visited) {
+  /** Theme primary text token for visited links */
   color: var(--rh-color-text-primary) !important;
 }
 
@@ -93,33 +102,40 @@
   z-index: 1;
   inset: 0;
   width: 100%;
+  /** Bottom border indicator for navigation link state */
   border-block-end: var(--rh-border-width-lg, 3px) solid transparent;
   pointer-events: none;
 }
 
 ::slotted(rh-navigation-link:hover):after {
+  /** Subtle border on navigation link hover */
   border-block-end-color: var(--rh-color-border-subtle);
 }
 
 ::slotted(rh-navigation-link:active):after,
 ::slotted(rh-navigation-link[current-page]):after {
+  /** Brand red design token for current page */
   border-block-end-color: var(--rh-color-brand-red);
 }
 
 button {
   position: relative;
+  /** Horizontal padding for scroll buttons */
   padding: 0 var(--rh-space-lg, 16px);
   margin: 0;
   background-color: transparent;
   border: none;
+  /** Theme secondary text token for scroll buttons */
   color: var(--rh-color-text-secondary);
 
   &:disabled {
     pointer-events: none;
+    /** Subtle border color when scroll is disabled */
     color: var(--rh-color-border-subtle);
   }
 
   &:hover {
+    /** Primary text color on scroll button hover */
     color: var(--rh-color-text-primary);
   }
 
@@ -127,9 +143,11 @@ button {
     position: absolute;
     inset: 0;
     content: '';
+    /** Bottom border for scroll button state */
     border-block-end: var(--rh-border-width-lg, 3px) solid transparent;
 
     &:hover {
+      /** Subtle border on scroll button hover */
       border-block-end-color: var(--rh-color-border-subtle);
     }
   }
