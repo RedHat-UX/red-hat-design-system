@@ -8,20 +8,20 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import styles from './rh-surface.css' with { type: 'css' };
 
 /**
- * Surfaces are content containers with a color palette which provide a theme
- * (i.e. a background color as well as accessible font colors) to their child
- * elements. Use surface only when other containers like card or accordion
- * are inappropriate.
- * @summary Provides background color context for elements placed on top
+ * A surface provides color context to descendants via `color-palette`.
+ * Authors MUST set a `color-palette` and SHOULD use surface only when
+ * containers like `rh-card` are not appropriate. Each palette provides
+ * WCAG-compliant contrast. Surface is non-interactive: Tab and focus
+ * pass through to focusable children. Screen reader users perceive
+ * no additional ARIA semantics from this element.
+ *
+ * @summary Provides background color and theming context for children
  *
  * @alias surface
  *
- * @example A surface providing a theme to a spinner
- *          ```html
- *          <rh-surface color-palette="light">
- *            <rh-spinner>Loading...</rh-spinner>
- *          </rh-surface>
- *          ```
+ * @slot - Accepts any content. Slotted interactive elements
+ *         MUST provide their own ARIA roles and screen reader
+ *         labels to remain accessible.
  */
 @customElement('rh-surface')
 @colorPalettes
@@ -30,18 +30,19 @@ export class RhSurface extends LitElement {
   static readonly styles = [styles];
 
   /**
-   * Sets color palette, which affects the element's styles as well as
-   * descendants' color theme. The default surface color palette is 'lightest',
-   * Surface always overrides the parent's color context.
-   * Your theme will influence these colors so check there first if you are seeing inconsistencies.
-   * See [CSS Custom Properties](#css-custom-properties) for default values
+   * Sets the color palette, which controls the element's background color
+   * and propagates accessible text and interactive colors to descendants.
+   * Accepted values are `lightest`, `lighter`, `light`, `dark`, `darker`,
+   * and `darkest`. Surface always overrides the parent's color context.
+   * Your theme will influence these colors so check there first if you
+   * are seeing inconsistencies.
+   * See [CSS Custom Properties](#css-custom-properties) for default values.
    */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   render() {
-    return html`<!--
-      The \`<rh-surface>\` element has a single anonymous slot which accepts any content and does not provide additional layout styling
-    --><slot id="slot" @slotchange=${this.#onSlotchange}></slot>`;
+    return html`<!-- Accepts any content. Slotted interactive elements
+      MUST provide their own ARIA roles and screen reader labels. --><slot id="slot" @slotchange=${this.#onSlotchange}></slot>`;
   }
 
   #onSlotchange() {

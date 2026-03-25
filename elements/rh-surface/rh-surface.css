@@ -1,5 +1,7 @@
 :host {
   display: block;
+  /** Themed primary text color from the design token */
   color: var(--rh-color-text-primary);
+  /** Themed background from the color-palette token */
   background-color: var(--rh-color-surface);
 }
