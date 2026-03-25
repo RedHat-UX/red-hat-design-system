@@ -43,8 +43,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
@@ -3535,7 +3535,8 @@
       <!-- `<dl>` element containing rh-badges in the `<dt>` and legend text in the `<dd>` elements -->
       <!--lit-node 22--><slot name="legend" hidden></slot>
     <!--/lit-part--></template>
-          <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-announcement</span><span class="token punctuation">&gt;</span></span>
+          <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">itemprop</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>description<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Basic announcement with an image slot, body text, and a call-to-action link.<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-announcement</span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>image<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>80<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>48<span class="token punctuation">"</span></span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>img<span class="token punctuation">"</span></span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Sample image<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rect</span> <span class="token attr-name">fill</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>light-dark(var(--rh-color-surface-dark, #383838), var(--rh-color-surface-light, #e0e0e0))<span class="token punctuation">"</span></span> <span class="token attr-name">stroke</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>var(--rh-color-border-subtle)<span class="token punctuation">"</span></span> <span class="token attr-name">stroke-width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2px<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>100%<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>100%<span class="token punctuation">"</span></span> <span class="token attr-name">stroke-dasharray</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>4 4<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rect</span><span class="token punctuation">&gt;</span></span>
@@ -3584,8 +3585,12 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>Announcements are flexible surfaces used to group information in a full width banner layout, traditionally across the top of a page.
-They are used to announce new features, promos, or news.</p>
+      <p>Announcements are flexible surfaces used to group information in a full width
+banner layout, traditionally across the top of a page. They are used to
+announce new features, promos, or news. Use <code>dismissable</code> to add a close
+button. Supports <code>color-palette</code> for light/dark themes. Keyboard users
+should be able to tab to and activate interactive elements. Slotted content
+provides screen reader context and should include meaningful text.</p>
 
 
       <div class="element-apis">
@@ -3665,10 +3670,12 @@ They are used to announce new features, promos, or news.</p>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>optional visual such as an icon, logo, or image</p></td>
                   <td>
-                   <p>If this slot is used, we expect an image tag with a width and height set.
-An icon, svg, or use of the icon component are also valid in this region.</p>
+                   <p>Accepts an <code>&lt;img&gt;</code>, <code>&lt;svg&gt;</code>, or <code>&lt;rh-icon&gt;</code> element.
+Should have explicit <code>width</code> and <code>height</code> attributes set.
+Images using this slot must follow accessibility best practices.
+Max recommended height is 48px for image logos/icons or 20-25px for text-based logos.</p>
                   </td>
                 </tr>
                 <tr>
@@ -3696,9 +3703,12 @@ An icon, svg, or use of the icon component are also valid in this region.</p>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>main body text content for the announcement</p></td>
                   <td>
-                   <p>Any content that is not designated for the header or footer slot, will go to this slot. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Use a <code>&lt;p&gt;</code> element for body text. Content should be
+concise (65 characters max recommended). Screen readers
+will read this content in DOM order. Avoid long or
+multi-paragraph content. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
                 <tr>
@@ -3726,9 +3736,11 @@ An icon, svg, or use of the icon component are also valid in this region.</p>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>call-to-action link for the announcement</p></td>
                   <td>
-                   <p>If this slot is used, we expect a rh-cta component.</p>
+                   <p>Must contain an <code>&lt;rh-cta&gt;</code> element with an <code>href</code>
+attribute. CTA text should follow established guidelines;
+ideally keeping character counts to less than 25 characters.</p>
                   </td>
                 </tr>
               </tbody>
@@ -3816,7 +3828,11 @@ An icon, svg, or use of the icon component are also valid in this region.</p>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>colorPalette</code></td>
-                  <td><p>Sets color context for child components, overrides parent context</p></td>
+                  <td><p>Sets the color context for child components, overriding any inherited
+parent context. Valid values include <code>light</code>, <code>dark</code>, and other
+palette names defined by the design system. Determines surface and
+text colors. Should contrast with adjacent surfaces (e.g., avoid
+using a dark announcement above a dark navigation).</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'light'</span> <span class="token operator">|</span> <span class="token string">'lighter'</span> <span class="token operator">|</span> <span class="token string">'lightest'</span> <span class="token operator">|</span> <span class="token string">'dark'</span> <span class="token operator">|</span> <span class="token string">'darker'</span> <span class="token operator">|</span> <span class="token string">'darkest'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -3848,7 +3864,10 @@ An icon, svg, or use of the icon component are also valid in this region.</p>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>dismissable</code></td>
-                  <td><p>Make an announcement dismissable</p></td>
+                  <td><p>When true, renders a close button that allows the user to dismiss the
+announcement. Pressing Enter or Space on the close button fires a
+cancelable <code>close</code> event. If the event is not canceled, the element is
+removed from the DOM.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span></code></pre></td>
                 </tr>
@@ -3880,11 +3899,10 @@ An icon, svg, or use of the icon component are also valid in this region.</p>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>imagePosition</code></td>
-                  <td><p>Set the position of the image in the announcement on mobile viewports. Possible values are:</p>
-<ul>
-<li><code>inline-start</code></li>
-<li><code>block-start</code></li>
-</ul></td>
+                  <td><p>Controls the position of the slotted image on mobile viewports.
+<code>inline-start</code> keeps the image beside the body text; <code>block-start</code>
+places it above. On wider viewports (768px+), images always appear
+inline. When unset, the image appears above content on mobile.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'inline-start'</span> <span class="token operator">|</span> <span class="token string">'block-start'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4003,7 +4021,10 @@ An icon, svg, or use of the icon component are also valid in this region.</p>
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
+                  <td><p>Fires when the user clicks the dismiss button.
+Cancelling this event prevents the element from being removed from the page.
+When cancelling the event, you must ensure that some UI appears - e.g. a confirm
+dialog - to avoid confusing the user with a close button that does nothing.</p></td>
                 </tr>
               </tbody>
             </table>
@@ -4214,7 +4235,8 @@ An icon, svg, or use of the icon component are also valid in this region.</p>
                     </a>
                   </td>
                   <td>
-                    <p>16px length token</p>
+                    <p>Dismiss button icon size</p>
+<p>16px length token</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4310,7 +4332,7 @@ An icon, svg, or use of the icon component are also valid in this region.</p>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Banner background, adapts to color-palette</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4406,7 +4428,7 @@ An icon, svg, or use of the icon component are also valid in this region.</p>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Banner text color, adapts to color-palette</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4502,7 +4524,8 @@ An icon, svg, or use of the icon component are also valid in this region.</p>
                     </a>
                   </td>
                   <td>
-                    <p>Body text font family</p>
+                    <p>Banner body typeface</p>
+<p>Body text font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4598,7 +4621,8 @@ An icon, svg, or use of the icon component are also valid in this region.</p>
                     </a>
                   </td>
                   <td>
-                    <p>Line height for body text</p>
+                    <p>Banner body line height</p>
+<p>Line height for body text</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4694,7 +4718,8 @@ An icon, svg, or use of the icon component are also valid in this region.</p>
                     </a>
                   </td>
                   <td>
-                    <p>18px font size</p>
+                    <p>Larger body text at desktop widths</p>
+<p>18px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4790,7 +4815,8 @@ An icon, svg, or use of the icon component are also valid in this region.</p>
                     </a>
                   </td>
                   <td>
-                    <p>32px spacer</p>
+                    <p>Wider body text padding on large viewports</p>
+<p>32px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4886,7 +4912,8 @@ An icon, svg, or use of the icon component are also valid in this region.</p>
                     </a>
                   </td>
                   <td>
-                    <p>16px font size</p>
+                    <p>Smaller body text on mobile</p>
+<p>16px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5078,7 +5105,13 @@ An icon, svg, or use of the icon component are also valid in this region.</p>
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Dismiss button touch target padding</p>
+<p>Spacing between image slot and body text</p>
+<p>Banner inner padding on all sides</p>
+<p>Gap between body text and CTA when image is inline</p>
+<p>Horizontal spacing around body text at desktop</p>
+<p>Trailing padding to prevent text touching dismiss button</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
