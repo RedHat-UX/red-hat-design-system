@@ -7,6 +7,7 @@ fieldset {
   border: 0;
   display: flex;
   flex-flow: row nowrap;
+  /** Space design token for legend-to-group gap. */
   gap: var(--rh-space-lg, 16px);
   margin: 0;
   padding: 0;
@@ -16,6 +17,7 @@ fieldset {
   }
 
   #button-group {
+    /** Design token for icon size in scheme buttons. */
     --rh-icon-size: var(--rh-size-icon-01, 16px);
 
     display: flex;
@@ -25,11 +27,17 @@ fieldset {
 label {
   align-items: center;
   background-color: initial;
-  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+  /** Design token for toggle button border width. */
+  border-width: var(--rh-border-width-sm, 1px);
+  border-style: solid;
+  /** Theme token for toggle button border color. */
+  border-color: var(--rh-color-border-subtle);
   display: flex;
+  /** Space token for toggle button height. */
   height: var(--rh-space-2xl, 32px);
   justify-content: center;
   position: relative;
+  /** Space token for toggle button width. */
   width: var(--rh-space-3xl, 48px);
 
   &:not(:first-of-type) {
@@ -37,34 +45,51 @@ label {
   }
 
   &:first-of-type {
-    border-start-start-radius: var(--rh-border-radius-default, 3px);
-    border-end-start-radius: var(--rh-border-radius-default, 3px);
+    /** Border radius token for group start edge. */
+    border-start-start-radius:
+      var(--rh-border-radius-default, 3px);
+    /** Border radius token for group start edge. */
+    border-end-start-radius:
+      var(--rh-border-radius-default, 3px);
   }
 
   &:last-of-type {
-    border-start-end-radius: var(--rh-border-radius-default, 3px);
-    border-end-end-radius: var(--rh-border-radius-default, 3px);
+    /** Border radius token for group end edge. */
+    border-start-end-radius:
+      var(--rh-border-radius-default, 3px);
+    /** Border radius token for group end edge. */
+    border-end-end-radius:
+      var(--rh-border-radius-default, 3px);
   }
 
   &:focus-within,
   &:hover {
-    background-color: var(--rh-color-interactive-secondary-focus);
+    /** Theme token for hover/focus background. */
+    background-color:
+      var(--rh-color-interactive-secondary-focus);
     color:
-      light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
+      light-dark(
+        var(--rh-color-text-primary-on-dark, #ffffff),
         var(--rh-color-text-primary-on-light, #151515));
   }
 
   &:has(input:checked) {
-    background-color: var(--rh-color-interactive-primary-active);
+    /** Theme token for active selection background. */
+    background-color:
+      var(--rh-color-interactive-primary-active);
+    /** Theme token for active selection border. */
     border-color: var(--rh-color-border-interactive);
     color:
-      light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
+      light-dark(
+        var(--rh-color-text-primary-on-dark, #ffffff),
         var(--rh-color-text-primary-on-light, #151515));
     z-index: 1;
 
     &:focus-within,
     &:hover {
-      background-color: var(--rh-color-interactive-primary-focus);
+      /** Theme token for active+hover background. */
+      background-color:
+        var(--rh-color-interactive-primary-focus);
     }
   }
 }
@@ -78,7 +103,10 @@ input {
   position: absolute;
 
   &:focus-visible {
-    outline: var(--rh-border-width-sm, 1px) solid var(--rh-color-interactive-primary-focus);
+    outline:
+      var(--rh-border-width-sm, 1px)
+      solid
+      var(--rh-color-interactive-primary-focus);
   }
 }
 
