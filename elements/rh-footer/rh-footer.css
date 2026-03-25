@@ -153,7 +153,7 @@ footer,
 }
 
 .global-base {
-  /** @summary Reduced font size for universal footer links. Uses --rh-font-size-body-text-xs design token */
+  /** Reduced font size for universal footer links */
   --rh-footer-link-font-size: var(--rh-font-size-body-text-xs, 0.75rem);
 
   /* reduce the line-height for global links */
@@ -367,7 +367,7 @@ footer,
 }
 
 [part='base']:not(.isMobile) .links ::slotted(ul) {
-  /** @summary Vertical spacing between links in desktop columns. Uses --rh-footer-links-gap or --rh-space-lg design token */
+  /** Vertical spacing between links in desktop columns */
   gap: var(--rh-footer-links-gap, var(--rh-space-lg, 16px));
   display: flex;
   flex-direction: column;

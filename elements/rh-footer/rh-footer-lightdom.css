@@ -1,4 +1,4 @@
-/** @summary Light DOM link styles for footer. Uses --rh-color-interactive-primary-default design token */
+/** Light DOM link styles for footer */
 :is(rh-footer, rh-footer-universal) a {
   /** Footer text color */
   color: var(--rh-color-interactive-primary-default);
