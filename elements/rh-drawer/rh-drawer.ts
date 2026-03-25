@@ -14,6 +14,11 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './rh-drawer.css' with { type: 'css' };
 
+/**
+ * Fired when the drawer panel opens. The `trigger` property provides a
+ * reference to the HTMLElement that initiated the open action, or `null`
+ * when opened programmatically via {@link RhDrawer.show}.
+ */
 export class DrawerOpenEvent extends Event {
   constructor(
     public trigger: HTMLElement | null
@@ -22,6 +27,7 @@ export class DrawerOpenEvent extends Event {
   }
 }
 
+/** Fired when the drawer panel closes. */
 export class DrawerCloseEvent extends Event {
   constructor() {
     super('close', { bubbles: true, cancelable: true });
@@ -29,15 +35,43 @@ export class DrawerCloseEvent extends Event {
 }
 
 /**
- * A drawer is a panel that slides in from the edge of its container, providing
- * supplementary content or navigation without leaving the current page.
+ * A drawer provides a collapsible side panel for supplementary content
+ * or navigation. It allows users to access information without leaving
+ * the current context. The `body` slot MUST contain the primary panel
+ * content. Keyboard users MAY press Escape to close. Focus SHOULD move
+ * to the close or collapse toggle on open for screen reader awareness.
+ * Uses `aria-controls` and `aria-expanded` on toggle buttons.
  *
  * @summary Slides a panel in from the side for supplementary content or navigation
  *
  * @alias drawer
  *
- * @fires {DrawerOpenEvent} open - Fires when the drawer panel opens.
- * @fires {DrawerCloseEvent} close - Fires when the drawer panel closes.
+ * @slot - Expects block elements such as `div`, `section`, or `article` for page content alongside the drawer panel. Not rendered for fixed or flow variants.
+ * @slot header - Expects block elements for the panel header. MAY include a heading (`h1`–`h6`) so screen readers can identify the panel content.
+ * @slot body - Expects block elements such as `div`, `nav`, or `rh-navigation-vertical` for panel content. MUST NOT be left empty for accessibility.
+ * @slot footer - Expects block elements for footer content pinned to the bottom of the panel.
+ * @slot expand-label-expand - Inline text label for the expand button when collapsed. Defaults to "Enter full screen". SHOULD be localized.
+ * @slot expand-label-collapse - Inline text label for the expand button when expanded. Defaults to "Exit full screen". SHOULD be localized.
+ * @slot close-label - Inline text label for the close button. Defaults to "Close drawer". SHOULD be localized for screen readers.
+ * @slot resize-label - Inline text label for the resize handle. Defaults to "Resize panel". SHOULD be localized for screen readers.
+ * @slot collapse-label-open - Inline text label for the collapse toggle when open. Defaults to "Collapse panel". SHOULD be localized.
+ * @slot collapse-label-closed - Inline text label for the collapse toggle when closed. Defaults to "Expand panel". SHOULD be localized.
+ *
+ * @csspart panel - The sliding panel container. Background adapts to light and dark themes.
+ * @csspart header - The panel header area for slotted heading content.
+ * @csspart body - The panel body content area.
+ * @csspart footer - The panel footer area, pinned to the bottom.
+ * @csspart expand-button - The full-screen expand toggle button.
+ * @csspart close-button - The panel close button, visible when not collapsible.
+ * @csspart resize-handle - The drag handle for resizing panel width.
+ * @csspart collapse-toggle - The round collapse and expand toggle button.
+ * @csspart content - The main content area adjacent to the panel.
+ *
+ * @cssprop [--rh-drawer-panel-padding] - Padding inside the drawer panel. Defaults to `rh-space-lg` (16px).
+ * @cssprop [--rh-drawer-content-padding] - Padding for the main content area adjacent to the panel. Responsive defaults use `rh-space-lg`, `rh-space-2xl`, and `rh-space-4xl` tokens at different container widths.
+ *
+ * @fires {DrawerOpenEvent} open - Fires when the drawer panel opens. The event's `trigger` property is the HTMLElement that initiated the action, or `null` when opened via `show()`.
+ * @fires {DrawerCloseEvent} close - Fires when the drawer panel closes. No additional data.
  */
 @customElement('rh-drawer')
 @themable
@@ -205,49 +239,45 @@ export class RhDrawer extends LitElement {
              part="panel"
              style=${panelStyle}>
           <div id="panel-body">
+            <div id="actions" ?hidden="${!this.expand && showCollapsible}">
+              ${this.expand ? html`
+                <button id="expand-button"
+                        part="expand-button"
+                        type="button"
+                        aria-controls="panel"
+                        aria-labelledby="expand-label"
+                        @click=${this.#onFullScreenToggle}>
+                  <rh-icon set="ui"
+                           icon="${this._isFullScreen ? 'arrow-down-left-up-right-to-center' : 'expand-arrows'}"></rh-icon>
+                </button>
+                <span id="expand-label" class="visually-hidden">
+                  <span ?hidden=${this._isFullScreen}><slot name="expand-label-expand">Enter full screen</slot></span>
+                  <span ?hidden=${!this._isFullScreen}><slot name="expand-label-collapse">Exit full screen</slot></span>
+                </span>
+              ` : nothing}
+              ${!showCollapsible ? html`
+                <button id="close-button"
+                        part="close-button"
+                        type="button"
+                        aria-controls="panel"
+                        aria-expanded="true"
+                        aria-labelledby="close-label"
+                        @click=${this.close}>
+                  <rh-icon set="microns" icon="close"></rh-icon>
+                </button>
+                <span id="close-label" class="visually-hidden">
+                  <slot name="close-label">Close drawer</slot>
+                </span>
+              ` : nothing}
+            </div>
             <div id="panel-content">
-              <div id="actions" ?hidden="${!this.expand && showCollapsible}">
-                ${this.expand ? html`
-                  <button id="expand-button"
-                          part="expand-button"
-                          type="button"
-                          aria-controls="panel"
-                          aria-labelledby="expand-label"
-                          @click=${this.#onFullScreenToggle}>
-                    <rh-icon set="ui"
-                             icon="${this._isFullScreen ? 'arrow-down-left-up-right-to-center' : 'expand-arrows'}"></rh-icon>
-                  </button>
-                  <span id="expand-label" class="visually-hidden">
-                    <span ?hidden=${this._isFullScreen}><slot name="expand-label-expand">Enter full screen</slot></span>
-                    <span ?hidden=${!this._isFullScreen}><slot name="expand-label-collapse">Exit full screen</slot></span>
-                  </span>
-                ` : nothing}
-                ${!showCollapsible ? html`
-                  <button id="close-button"
-                          part="close-button"
-                          type="button"
-                          aria-controls="panel"
-                          aria-expanded="true"
-                          aria-labelledby="close-label"
-                          @click=${this.close}>
-                    <rh-icon set="microns" icon="close"></rh-icon>
-                  </button>
-                  <span id="close-label" class="visually-hidden">
-                    <!-- Accessible label for the close button -->
-                    <slot name="close-label">Close drawer</slot>
-                  </span>
-                ` : nothing}
-              </div>
               <div id="header" part="header" ?hidden=${!hasHeader}>
-                <!-- Header content for the panel -->
                 <slot name="header"></slot>
               </div>
               <div id="body" part="body" ?hidden=${!hasBody}>
-                <!-- Body content for the panel -->
                 <slot name="body"></slot>
               </div>
               <div id="footer" part="footer" ?hidden=${!hasFooter}>
-                <!-- Footer content for the panel -->
                 <slot name="footer"></slot>
               </div>
             </div>
