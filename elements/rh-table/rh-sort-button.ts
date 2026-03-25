@@ -28,9 +28,25 @@ const paths = new Map(Object.entries({
 }));
 
 /**
- * Table sort button
+ * A button for sorting table columns in ascending or descending order.
+ * Authors MUST place this element inside a `<th>` cell within an
+ * `<rh-table>` element. The button provides a screen reader accessible
+ * label announcing the current sort direction and column name.
+ * Authors SHOULD set the `column` attribute to identify the sorted
+ * column for assistive technology users.
  *
- * @fires {RequestSortEvent} request-sort - when the button is clicked
+ * @summary Toggles column sort direction within a table header
+ *
+ * @fires {RequestSortEvent} request-sort - Fired when the user
+ *        activates the sort button. The event detail includes a
+ *        `direction` property set to `'asc'` or `'desc'`.
+ *        Cancelling this event prevents the default sort behavior.
+ *
+ * @csspart sort-button - The native button element. Use to
+ *          customize the sort button appearance.
+ * @csspart sort-indicator - The wrapper around the sort direction
+ *          SVG icon.
+ *
  */
 @customElement('rh-sort-button')
 @themable

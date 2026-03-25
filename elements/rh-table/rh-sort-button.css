@@ -1,6 +1,7 @@
 #sort-button {
   background-color: transparent;
   border: 0;
+  /** Primary text color for the sort button */
   color: var(--rh-color-text-primary);
 }
 

@@ -10,11 +10,39 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import styles from './rh-table.css' with { type: 'css' };
 
 /**
- * A table is a container for displaying information. It allows a user to scan, examine, and compare large amounts of data.
+ * A table provides a container for displaying tabular data, allowing
+ * users to scan and compare information. Authors MUST include a
+ * `<table>` with `<thead>`, `<tbody>`, and scoped `<th>` for ARIA
+ * screen reader navigation. SHOULD use `<col>` for column hover and
+ * `<caption>` for context. Tab and arrow keys scroll overflow. AVOID
+ * using tables for layout.
  *
  * @summary Organizes and displays information from a data set
  *
  * @alias table
+ *
+ * @slot - The default slot expects a native HTML \`<table>\` element.
+ *         Authors MUST include proper semantic table markup with
+ *         \`<thead>\`, \`<tbody>\`, and scoped \`<th>\` elements so
+ *         that screen readers can navigate the table structure.
+ * @slot summary - An optional description of the table data, rendered
+ *                 below the table. Authors SHOULD use inline content
+ *                 such as \`<small>\` for brief supplementary context.
+ *                 The summary is linked to the table via
+ *                 \`aria-describedby\` for screen reader users.
+ *
+ * @csspart container - The outer wrapper around the table and summary
+ *                      slots. Use to customize padding or background.
+ *
+ * @cssproperty {<border>} [--rh-table-row-border] - Row border
+ *              style. Uses \`--rh-border-width-sm\` width and
+ *              \`--rh-color-border-subtle-on-light\` color tokens.
+ * @cssproperty {<color>} [--rh-table-row-background-hover-color] -
+ *              Row hover background. Uses \`--rh-color-gray-40\`
+ *              token at 10% opacity for the light theme.
+ * @cssproperty {<color>} [--rh-table-column-background-hover-color]
+ *              Column hover background. Uses \`--rh-color-blue-50\`
+ *              token at 10% opacity for the light theme.
  *
  */
 @customElement('rh-table')
@@ -78,12 +106,22 @@ export class RhTable extends LitElement {
   render() {
     return html`
       <div id="container" part="container">
-        <!-- an HTML table -->
+        <!-- summary: Default slot for the table element
+             description: |
+               Expects a native HTML \`<table>\` element with semantic
+               markup. Authors MUST include \`<thead>\`, \`<tbody>\`,
+               and scoped \`<th>\` elements so that screen readers
+               can navigate the table structure. -->
         <slot @pointerleave="${this.#onPointerleave}"
               @pointerover="${this.#onPointerover}"
               @request-sort="${this.#onRequestSort}"
               @slotchange="${this.#onSlotChange}"></slot>
-        <!-- description of the data -->
+        <!-- summary: Summary slot for table description
+             description: |
+               An optional description of the table data displayed
+               below the table. The element links this content to the
+               table via \`aria-describedby\` for screen reader users.
+               Authors SHOULD use inline elements like \`<small>\`. -->
         <slot id="summary" name="summary"></slot>
       </div>
     `;
