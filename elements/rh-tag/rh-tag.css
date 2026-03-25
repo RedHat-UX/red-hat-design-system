@@ -28,15 +28,15 @@ a {
   /** Tag text color, varies by color and variant */
   color: var(--_text-color, var(--rh-color-text-primary));
   display: inline-flex;
-  /** Tag font family */
+  /** Body text font, themed via rh-font-family-body-text */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  /** Tag default text size */
+  /** Small body text size, themed via rh-font-size-body-text-sm */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
-  /** Tag text weight */
+  /** Regular weight, themed via rh-font-weight-body-text-regular */
   font-weight: var(--rh-font-weight-body-text-regular, 400);
-  /** Space between the icon and text */
+  /** Icon-to-text gap, themed via rh-space-xs */
   gap: var(--rh-space-xs, 4px);
-  /** Tag text line height */
+  /** Body line height, themed via rh-line-height-body-text */
   line-height: var(--rh-line-height-body-text, 1.5);
   max-inline-size: 100%;
   overflow: hidden;
@@ -269,8 +269,10 @@ a {
 
   &.desaturated {
     --_fill-color: transparent;
+    /** Desaturated border uses primary text token */
     --_border-color: var(--rh-color-text-primary);
     --_icon-color: var(--rh-color-text-primary);
+    /** Desaturated text uses primary text token */
     --_text-color: var(--rh-color-text-primary);
   }
 

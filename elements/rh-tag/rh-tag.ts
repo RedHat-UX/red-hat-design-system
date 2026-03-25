@@ -26,8 +26,15 @@ import styles from './rh-tag.css' with { type: 'css' };
  *
  * @alias tag
  *
- * @slot - Must contain the text content for the tag. Keep text concise (25 characters or fewer). Text SHOULD be descriptive enough to convey meaning without relying on color, so that screen reader users receive equivalent information.
- * @slot icon - Contains an optional decorative icon, such as an SVG or \`rh-icon\` element. Icons are purely decorative and SHOULD NOT convey information that is not also present in the text.
+ * @slot - Must contain text content for the tag. Keep text concise
+ *   (25 characters or fewer). Text MUST be descriptive enough to
+ *   convey meaning without relying on color, so that screen reader
+ *   users and users who cannot perceive color receive equivalent
+ *   information (WCAG 1.4.1 Use of Color).
+ * @slot icon - Optional decorative icon, such as an SVG or
+ *   `rh-icon` element. Icons MUST be purely decorative and SHOULD
+ *   NOT convey information absent from the text. Screen readers
+ *   skip this slot because the icon has no accessible name.
  *
  */
 @customElement('rh-tag')
@@ -97,7 +104,10 @@ export class RhTag extends LitElement {
     const { icon, size, variant = 'filled', color = 'gray', disabled } = this;
     const hasIcon = !!icon || this.#slots.hasSlotted('icon');
     const textSlot = html`
-      <!-- Must contain the text content for the tag. Keep text concise (25 characters or fewer). -->
+      <!-- summary: tag text content for screen readers and visual display
+           description: |
+             Text MUST convey meaning without relying on color alone
+             (WCAG 1.4.1). Keep under 25 characters. -->
       <slot id="text"></slot>
     `;
     return html`
@@ -109,7 +119,10 @@ export class RhTag extends LitElement {
               teal: color === ('cyan' as 'blue' /* cyan deprecated */) || color === 'teal',
               [variant]: true,
               [color]: true })}">
-        <!-- Contains an optional decorative icon, such as an SVG or \`rh-icon\` element. -->
+        <!-- summary: decorative icon for screen reader and visual context
+             description: |
+               Icons MUST be purely decorative. Screen readers skip
+               this slot because the icon has no accessible name. -->
         <slot name="icon" part="icon">
           <rh-icon ?hidden="${!icon}" icon="${ifDefined(icon)}" set="${this.iconSet}"></rh-icon>
         </slot>${!this.href ? textSlot : html`
