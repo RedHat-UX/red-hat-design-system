@@ -11,7 +11,8 @@ export type SpinnerSize = RhSpinner['size'];
 /**
  * A spinner SHOULD be used when loading takes fewer than ten seconds
  * and the content structure is unknown. It is not keyboard-focusable
- * or operable. Screen readers announce it via `aria-live="polite"`.
+ * or operable. The SVG has `role="status"` so screen readers treat
+ * it as a live region.
  *
  * @summary Notifies users their action is being processed or loaded
  *
