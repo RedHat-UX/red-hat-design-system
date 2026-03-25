@@ -432,10 +432,6 @@
           translate: calc(var(--_slide-dir) * -100%) 0;
         }
       }
-
-      &.full-width:is(.open, .closed) #panel {
-        inline-size: 100%;
-      }
     }
   }
 
@@ -623,28 +619,6 @@
     }
   }
 
-  @layer inline-force-overlay {
-    #container.inline.force-overlay.open {
-      &.inline-start #panel {
-        position: absolute;
-        z-index: 10;
-        inset-block: 0;
-        inset-inline-start: 0;
-      }
-
-      &.inline-end #panel {
-        position: absolute;
-        z-index: 10;
-        inset-block: 0;
-        inset-inline-end: 0;
-      }
-
-      & #content-container {
-        inline-size: 100%;
-      }
-    }
-  }
-
   @layer auto {
     #container.auto {
       &:is(.open, .closed).inline-start #panel {
@@ -705,77 +679,551 @@
         }
       }
 
-      @container drawer (min-width: 992px) {
-        &:is(.open, .closed).inline-start #panel {
-          position: relative;
-          z-index: 2;
-          inset-block: auto;
-          inset-inline-start: auto;
-          transition:
-            margin var(--_transition-duration) ease-in-out,
-            translate var(--_transition-duration) ease-in-out;
-        }
-
-        &:is(.open, .closed).inline-end #panel {
-          position: relative;
-          z-index: 2;
-          inset-block: auto;
-          inset-inline-end: auto;
-          transition:
-            margin var(--_transition-duration) ease-in-out,
-            translate var(--_transition-duration) ease-in-out;
-        }
-
-        &:is(.open, .closed):is(.inline-start, .inline-end) #content-container {
-          inline-size: auto;
-        }
-
-        &.force-overlay.open {
-          &.inline-start #panel {
-            position: absolute;
-            inset-block: 0;
-            inset-inline-start: 0;
-            z-index: 10;
+      &:not(.threshold-2xs,
+      .threshold-xs,
+      .threshold-sm,
+      .threshold-md,
+      .threshold-lg,
+      .threshold-xl,
+      .threshold-2xl) {
+        @container drawer (min-width: 768px) {
+          &:is(.open, .closed).inline-start #panel {
+            position: relative;
+            z-index: 2;
+            inset-block: auto;
+            inset-inline-start: auto;
+            transition:
+              margin var(--_transition-duration) ease-in-out,
+              translate var(--_transition-duration) ease-in-out;
           }
 
-          &.inline-end #panel {
-            position: absolute;
-            inset-block: 0;
-            inset-inline-end: 0;
-            z-index: 10;
+          &:is(.open, .closed).inline-end #panel {
+            position: relative;
+            z-index: 2;
+            inset-block: auto;
+            inset-inline-end: auto;
+            transition:
+              margin var(--_transition-duration) ease-in-out,
+              translate var(--_transition-duration) ease-in-out;
           }
 
-          & #content-container {
-            inline-size: 100%;
-          }
-        }
-
-        &.closed {
-          &:not(.collapsible) {
-            &.inline-start #panel {
-              translate: none;
-              margin-inline-start: calc(-1 * var(--_panel-width));
-            }
-
-            &.inline-end #panel {
-              translate: none;
-              margin-inline-end: calc(-1 * var(--_panel-width));
-            }
-
-            &:is(.inline-start, .inline-end) #content-container {
-              inline-size: auto;
-            }
+          &:is(.open, .closed):is(.inline-start, .inline-end) #content-container {
+            inline-size: auto;
           }
 
           &.collapsible {
-            &.inline-start #panel {
-              translate: none;
-              margin-inline-start: calc(-1 * var(--_panel-width) + var(--_collapse-visible-width));
+            &.inline-start #content-container {
+              padding-inline-start: 0;
             }
 
-            &.inline-end #panel {
-              translate: none;
-              margin-inline-end: calc(-1 * var(--_panel-width) + var(--_collapse-visible-width));
+            &.inline-end #content-container {
+              padding-inline-end: 0;
+            }
+          }
+
+          &.closed {
+            &:not(.collapsible) {
+              &.inline-start #panel {
+                translate: none;
+                margin-inline-start: calc(-1 * var(--_panel-width));
+              }
+
+              &.inline-end #panel {
+                translate: none;
+                margin-inline-end: calc(-1 * var(--_panel-width));
+              }
+
+              &:is(.inline-start, .inline-end) #content-container {
+                inline-size: auto;
+              }
+            }
+
+            &.collapsible {
+              &.inline-start #panel {
+                translate: none;
+                margin-inline-start: calc(var(--_collapse-visible-width) - var(--_panel-width));
+              }
+
+              &.inline-end #panel {
+                translate: none;
+                margin-inline-end: calc(-1 * var(--_panel-width) + var(--_collapse-visible-width));
+              }
+            }
+          }
+        }
+      }
+
+      &.threshold-2xs {
+        @container drawer (min-width: 320px) {
+          &:is(.open, .closed).inline-start #panel {
+            position: relative;
+            z-index: 2;
+            inset-block: auto;
+            inset-inline-start: auto;
+            transition:
+              margin var(--_transition-duration) ease-in-out,
+              translate var(--_transition-duration) ease-in-out;
+          }
+
+          &:is(.open, .closed).inline-end #panel {
+            position: relative;
+            z-index: 2;
+            inset-block: auto;
+            inset-inline-end: auto;
+            transition:
+              margin var(--_transition-duration) ease-in-out,
+              translate var(--_transition-duration) ease-in-out;
+          }
+
+          &:is(.open, .closed):is(.inline-start, .inline-end) #content-container {
+            inline-size: auto;
+          }
+
+          &.collapsible {
+            &.inline-start #content-container {
+              padding-inline-start: 0;
+            }
+
+            &.inline-end #content-container {
+              padding-inline-end: 0;
+            }
+          }
+
+          &.closed {
+            &:not(.collapsible) {
+              &.inline-start #panel {
+                translate: none;
+                margin-inline-start: calc(-1 * var(--_panel-width));
+              }
+
+              &.inline-end #panel {
+                translate: none;
+                margin-inline-end: calc(-1 * var(--_panel-width));
+              }
+
+              &:is(.inline-start, .inline-end) #content-container {
+                inline-size: auto;
+              }
+            }
+
+            &.collapsible {
+              &.inline-start #panel {
+                translate: none;
+                margin-inline-start: calc(var(--_collapse-visible-width) - var(--_panel-width));
+              }
+
+              &.inline-end #panel {
+                translate: none;
+                margin-inline-end: calc(-1 * var(--_panel-width) + var(--_collapse-visible-width));
+              }
+            }
+          }
+        }
+      }
+
+      &.threshold-xs {
+        @container drawer (min-width: 576px) {
+          &:is(.open, .closed).inline-start #panel {
+            position: relative;
+            z-index: 2;
+            inset-block: auto;
+            inset-inline-start: auto;
+            transition:
+              margin var(--_transition-duration) ease-in-out,
+              translate var(--_transition-duration) ease-in-out;
+          }
+
+          &:is(.open, .closed).inline-end #panel {
+            position: relative;
+            z-index: 2;
+            inset-block: auto;
+            inset-inline-end: auto;
+            transition:
+              margin var(--_transition-duration) ease-in-out,
+              translate var(--_transition-duration) ease-in-out;
+          }
+
+          &:is(.open, .closed):is(.inline-start, .inline-end) #content-container {
+            inline-size: auto;
+          }
+
+          &.collapsible {
+            &.inline-start #content-container {
+              padding-inline-start: 0;
+            }
+
+            &.inline-end #content-container {
+              padding-inline-end: 0;
+            }
+          }
+
+          &.closed {
+            &:not(.collapsible) {
+              &.inline-start #panel {
+                translate: none;
+                margin-inline-start: calc(-1 * var(--_panel-width));
+              }
+
+              &.inline-end #panel {
+                translate: none;
+                margin-inline-end: calc(-1 * var(--_panel-width));
+              }
+
+              &:is(.inline-start, .inline-end) #content-container {
+                inline-size: auto;
+              }
+            }
+
+            &.collapsible {
+              &.inline-start #panel {
+                translate: none;
+                margin-inline-start: calc(var(--_collapse-visible-width) - var(--_panel-width));
+              }
+
+              &.inline-end #panel {
+                translate: none;
+                margin-inline-end: calc(-1 * var(--_panel-width) + var(--_collapse-visible-width));
+              }
+            }
+          }
+        }
+      }
+
+      &.threshold-sm {
+        @container drawer (min-width: 768px) {
+          &:is(.open, .closed).inline-start #panel {
+            position: relative;
+            z-index: 2;
+            inset-block: auto;
+            inset-inline-start: auto;
+            transition:
+              margin var(--_transition-duration) ease-in-out,
+              translate var(--_transition-duration) ease-in-out;
+          }
+
+          &:is(.open, .closed).inline-end #panel {
+            position: relative;
+            z-index: 2;
+            inset-block: auto;
+            inset-inline-end: auto;
+            transition:
+              margin var(--_transition-duration) ease-in-out,
+              translate var(--_transition-duration) ease-in-out;
+          }
+
+          &:is(.open, .closed):is(.inline-start, .inline-end) #content-container {
+            inline-size: auto;
+          }
+
+          &.collapsible {
+            &.inline-start #content-container {
+              padding-inline-start: 0;
+            }
+
+            &.inline-end #content-container {
+              padding-inline-end: 0;
+            }
+          }
+
+          &.closed {
+            &:not(.collapsible) {
+              &.inline-start #panel {
+                translate: none;
+                margin-inline-start: calc(-1 * var(--_panel-width));
+              }
+
+              &.inline-end #panel {
+                translate: none;
+                margin-inline-end: calc(-1 * var(--_panel-width));
+              }
+
+              &:is(.inline-start, .inline-end) #content-container {
+                inline-size: auto;
+              }
+            }
+
+            &.collapsible {
+              &.inline-start #panel {
+                translate: none;
+                margin-inline-start: calc(var(--_collapse-visible-width) - var(--_panel-width));
+              }
+
+              &.inline-end #panel {
+                translate: none;
+                margin-inline-end: calc(-1 * var(--_panel-width) + var(--_collapse-visible-width));
+              }
+            }
+          }
+        }
+      }
+
+      &.threshold-md {
+        @container drawer (min-width: 992px) {
+          &:is(.open, .closed).inline-start #panel {
+            position: relative;
+            z-index: 2;
+            inset-block: auto;
+            inset-inline-start: auto;
+            transition:
+              margin var(--_transition-duration) ease-in-out,
+              translate var(--_transition-duration) ease-in-out;
+          }
+
+          &:is(.open, .closed).inline-end #panel {
+            position: relative;
+            z-index: 2;
+            inset-block: auto;
+            inset-inline-end: auto;
+            transition:
+              margin var(--_transition-duration) ease-in-out,
+              translate var(--_transition-duration) ease-in-out;
+          }
+
+          &:is(.open, .closed):is(.inline-start, .inline-end) #content-container {
+            inline-size: auto;
+          }
+
+          &.collapsible {
+            &.inline-start #content-container {
+              padding-inline-start: 0;
+            }
+
+            &.inline-end #content-container {
+              padding-inline-end: 0;
+            }
+          }
+
+          &.closed {
+            &:not(.collapsible) {
+              &.inline-start #panel {
+                translate: none;
+                margin-inline-start: calc(-1 * var(--_panel-width));
+              }
+
+              &.inline-end #panel {
+                translate: none;
+                margin-inline-end: calc(-1 * var(--_panel-width));
+              }
+
+              &:is(.inline-start, .inline-end) #content-container {
+                inline-size: auto;
+              }
+            }
+
+            &.collapsible {
+              &.inline-start #panel {
+                translate: none;
+                margin-inline-start: calc(var(--_collapse-visible-width) - var(--_panel-width));
+              }
+
+              &.inline-end #panel {
+                translate: none;
+                margin-inline-end: calc(-1 * var(--_panel-width) + var(--_collapse-visible-width));
+              }
+            }
+          }
+        }
+      }
+
+      &.threshold-lg {
+        @container drawer (min-width: 1200px) {
+          &:is(.open, .closed).inline-start #panel {
+            position: relative;
+            z-index: 2;
+            inset-block: auto;
+            inset-inline-start: auto;
+            transition:
+              margin var(--_transition-duration) ease-in-out,
+              translate var(--_transition-duration) ease-in-out;
+          }
+
+          &:is(.open, .closed).inline-end #panel {
+            position: relative;
+            z-index: 2;
+            inset-block: auto;
+            inset-inline-end: auto;
+            transition:
+              margin var(--_transition-duration) ease-in-out,
+              translate var(--_transition-duration) ease-in-out;
+          }
+
+          &:is(.open, .closed):is(.inline-start, .inline-end) #content-container {
+            inline-size: auto;
+          }
+
+          &.collapsible {
+            &.inline-start #content-container {
+              padding-inline-start: 0;
+            }
+
+            &.inline-end #content-container {
+              padding-inline-end: 0;
+            }
+          }
+
+          &.closed {
+            &:not(.collapsible) {
+              &.inline-start #panel {
+                translate: none;
+                margin-inline-start: calc(-1 * var(--_panel-width));
+              }
+
+              &.inline-end #panel {
+                translate: none;
+                margin-inline-end: calc(-1 * var(--_panel-width));
+              }
+
+              &:is(.inline-start, .inline-end) #content-container {
+                inline-size: auto;
+              }
+            }
+
+            &.collapsible {
+              &.inline-start #panel {
+                translate: none;
+                margin-inline-start: calc(var(--_collapse-visible-width) - var(--_panel-width));
+              }
+
+              &.inline-end #panel {
+                translate: none;
+                margin-inline-end: calc(-1 * var(--_panel-width) + var(--_collapse-visible-width));
+              }
+            }
+          }
+        }
+      }
+
+      &.threshold-xl {
+        @container drawer (min-width: 1440px) {
+          &:is(.open, .closed).inline-start #panel {
+            position: relative;
+            z-index: 2;
+            inset-block: auto;
+            inset-inline-start: auto;
+            transition:
+              margin var(--_transition-duration) ease-in-out,
+              translate var(--_transition-duration) ease-in-out;
+          }
+
+          &:is(.open, .closed).inline-end #panel {
+            position: relative;
+            z-index: 2;
+            inset-block: auto;
+            inset-inline-end: auto;
+            transition:
+              margin var(--_transition-duration) ease-in-out,
+              translate var(--_transition-duration) ease-in-out;
+          }
+
+          &:is(.open, .closed):is(.inline-start, .inline-end) #content-container {
+            inline-size: auto;
+          }
+
+          &.collapsible {
+            &.inline-start #content-container {
+              padding-inline-start: 0;
+            }
+
+            &.inline-end #content-container {
+              padding-inline-end: 0;
+            }
+          }
+
+          &.closed {
+            &:not(.collapsible) {
+              &.inline-start #panel {
+                translate: none;
+                margin-inline-start: calc(-1 * var(--_panel-width));
+              }
+
+              &.inline-end #panel {
+                translate: none;
+                margin-inline-end: calc(-1 * var(--_panel-width));
+              }
+
+              &:is(.inline-start, .inline-end) #content-container {
+                inline-size: auto;
+              }
+            }
+
+            &.collapsible {
+              &.inline-start #panel {
+                translate: none;
+                margin-inline-start: calc(var(--_collapse-visible-width) - var(--_panel-width));
+              }
+
+              &.inline-end #panel {
+                translate: none;
+                margin-inline-end: calc(-1 * var(--_panel-width) + var(--_collapse-visible-width));
+              }
+            }
+          }
+        }
+      }
+
+      &.threshold-2xl {
+        @container drawer (min-width: 1680px) {
+          &:is(.open, .closed).inline-start #panel {
+            position: relative;
+            z-index: 2;
+            inset-block: auto;
+            inset-inline-start: auto;
+            transition:
+              margin var(--_transition-duration) ease-in-out,
+              translate var(--_transition-duration) ease-in-out;
+          }
+
+          &:is(.open, .closed).inline-end #panel {
+            position: relative;
+            z-index: 2;
+            inset-block: auto;
+            inset-inline-end: auto;
+            transition:
+              margin var(--_transition-duration) ease-in-out,
+              translate var(--_transition-duration) ease-in-out;
+          }
+
+          &:is(.open, .closed):is(.inline-start, .inline-end) #content-container {
+            inline-size: auto;
+          }
+
+          &.collapsible {
+            &.inline-start #content-container {
+              padding-inline-start: 0;
+            }
+
+            &.inline-end #content-container {
+              padding-inline-end: 0;
+            }
+          }
+
+          &.closed {
+            &:not(.collapsible) {
+              &.inline-start #panel {
+                translate: none;
+                margin-inline-start: calc(-1 * var(--_panel-width));
+              }
+
+              &.inline-end #panel {
+                translate: none;
+                margin-inline-end: calc(-1 * var(--_panel-width));
+              }
+
+              &:is(.inline-start, .inline-end) #content-container {
+                inline-size: auto;
+              }
+            }
+
+            &.collapsible {
+              &.inline-start #panel {
+                translate: none;
+                margin-inline-start: calc(var(--_collapse-visible-width) - var(--_panel-width));
+              }
+
+              &.inline-end #panel {
+                translate: none;
+                margin-inline-end: calc(-1 * var(--_panel-width) + var(--_collapse-visible-width));
+              }
             }
           }
         }
@@ -785,10 +1233,6 @@
 }
 
 @layer overrides {
-  #container.full-width #panel {
-    inline-size: 100%;
-  }
-
   #container.no-transition #panel {
     transition: none;
   }
