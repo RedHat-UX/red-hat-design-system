@@ -12,6 +12,7 @@
 #container {
   display: inline-flex;
   align-items: center;
+  /** Gap between track and message, uses rh-space-lg token */
   gap: var(--rh-space-lg, 16px);
 
   --_margin-inline: 5px; /* non standard spacer */
@@ -20,7 +21,7 @@
   --_switch-handle-size: 14px;
   --_switch-track-background-color:
     light-dark(
-        /** The background color of the switch when it is unchecked. */
+        /** Unchecked track color; overrides rh-color-gray tokens */
         var(--rh-switch-unchecked, var(--rh-color-gray-60, #4d4d4d)),
         var(--rh-switch-unchecked, var(--rh-color-gray-40, #a3a3a3))
       );
@@ -70,17 +71,19 @@
   }
 
   & .message {
+    /** Unchecked message uses the rh-color-text-secondary token */
     color: var(--rh-color-text-secondary);
   }
 
   &.checked {
-    --_switch-track-background-color: /** The background color of the switch when it is checked. */
+    --_switch-track-background-color: /** Checked track color; uses rh-color-accent tokens */
       var(--rh-switch-checked,
         light-dark(
           var(--rh-color-accent-base-on-light, #0066cc),
           var(--rh-color-accent-base-on-dark, #92c5f9)));
 
     & .message {
+      /** Checked message uses the rh-color-text-primary token */
       color: var(--rh-color-text-primary);
     }
 
@@ -108,7 +111,11 @@ rh-icon {
 }
 
 :host(:is(:focus, :focus-within)) #container #switch {
-  outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
+  /** Focus ring uses rh-border-width-md token for width */
+  outline: var(--rh-border-width-md, 2px) solid
+    /** Focus ring color from the rh-color-border-interactive token */
+    var(--rh-color-border-interactive);
+  /** Focus ring offset uses the rh-space-sm token */
   outline-offset: var(--rh-space-sm, 6px);
 }
 
@@ -130,7 +137,7 @@ rh-icon {
     &:not(.checked) {
       --_switch-track-background-color:
         light-dark(
-            /** The background color of the switch when it is disabled. */
+            /** Disabled track color; overrides rh-color-gray tokens */
             var(--rh-switch-disabled, var(--rh-color-gray-30, #c7c7c7)),
             var(--rh-switch-disabled, var(--rh-color-gray-60, #4d4d4d))
           );
