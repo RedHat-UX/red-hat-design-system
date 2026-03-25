@@ -21,9 +21,9 @@ const BooleanStringConverter: ComplexAttributeConverter = {
  * Provides locale-aware date and time formatting for consistent display
  * across pages. Renders a `<time>` element with an ARIA-accessible
  * `datetime` attribute for screen readers. Users SHOULD set `date`;
- * when omitted, the current time is used. MUST AVOID using relative
- * timestamps without an `rh-tooltip` wrapper. Allows Tab focus via
- * the tooltip; no keyboard interaction is needed on its own.
+ * when omitted, the current time is used. Relative timestamps SHOULD
+ * be wrapped in `rh-tooltip` so users can see the full date. The
+ * element is not keyboard-focusable on its own.
  *
  * @summary Displays a formatted date and time value using locale-aware formatting
  *
