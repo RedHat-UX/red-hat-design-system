@@ -292,6 +292,7 @@ export default async function(eleventyConfig: UserConfig) {
       'rh-menu',
       'rh-menu-item',
       'rh-menu-item-group',
+      'rh-navigation-primary',
       'uxdot-pattern',
     ],
     tagsToAlphabetize: [

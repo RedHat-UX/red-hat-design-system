@@ -35,14 +35,6 @@
   display: none;
 }
 
-.dehydrated {
-  & :is(#event, #links-menu, #dropdowns) {
-    &.hidden {
-      display: flex;
-    }
-  }
-}
-
 .visually-hidden {
   position: absolute !important;
   block-size: 1px;
