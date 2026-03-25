@@ -107,20 +107,21 @@ export class RhCta extends LitElement {
     const isDefault = !variant;
     const svg = isDefault;
     const follower =
-        (variant !== 'brick' && icon) ? html`<rh-icon icon=${icon} set=${iconSet ?? 'ui'}></rh-icon>`
+        (variant !== 'brick' && icon) ? html`<rh-icon icon="${icon}" set="${iconSet ?? 'ui'}"></rh-icon>`
       : (variant === undefined) ? html`<rh-icon icon="arrow-right" set="ui"></rh-icon>`
       : '';
     const iconContent =
       !(variant === 'brick' && icon) ? '' : html`<rh-icon .icon=${icon} set="${iconSet ?? 'ui'}"></rh-icon>`;
     const slot = html`<!--
-          summary: CTA link or button content
-          description: |
-            When href is set, contains plain text for the link label.
-            Otherwise, MUST contain an <a> tag as the first child.
-            A <button> is allowed but MUST NOT be used with the default
-            variant. Screen readers announce the slotted text as the
-            accessible name for the interactive element.
-    --><slot></slot>${follower}`;
+          The default slot contains the link text when the \`href\`
+          attribute is set. In case there is no href attribute, an anchor
+          tag (\`<a href="...">\`) should be the first child inside \`rh-cta\`
+          element. Less preferred but allowed for specific use-cases
+          include: \`<button>\` (note however that the \`button\` tag is not
+          supported for the default CTA styles). In case the slotted content is one
+          long word (like in some agglutinating languages), users must supply \`<wbr>\`
+          at appropriate points in the slotted content.
+    --><slot></slot>`;
     const linkContent =
         !href ? slot
       : html`<a href=${href}
@@ -133,7 +134,7 @@ export class RhCta extends LitElement {
       <span id="container"
             part="container"
             class=${classMap({ icon: !!icon, svg })}
-            @slotchange=${this.firstUpdated}>${iconContent}${linkContent}</span>`;
+            @slotchange=${this.firstUpdated}>${iconContent}${linkContent}${follower}</span>`;
   }
 
   override firstUpdated() {
