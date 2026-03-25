@@ -9,11 +9,15 @@ import styles from './rh-spinner.css' with { type: 'css' };
 export type SpinnerSize = RhSpinner['size'];
 
 /**
- * A spinner indicates that an action is in progress.
- * It appears as an animated circle over the section that is loading,
- * and it may include a text label
+ * A spinner SHOULD be used when loading takes fewer than ten seconds
+ * and the content structure is unknown. It is not keyboard-focusable
+ * or operable. Screen readers announce it via `aria-live="polite"`.
  *
  * @summary Notifies users their action is being processed or loaded
+ *
+ * @slot - Optional text label below the spinner circle,
+ *         typically a `<p>` element with a brief message
+ *         (e.g. "Loading..."). SHOULD be under 30 characters.
  *
  * @alias spinner
  */
@@ -33,7 +37,8 @@ export class RhSpinner extends LitElement {
         <circle class="track" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
         <circle class="dash" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
       </svg>
-      <!-- Optional text label below the animated circle. -->
+      <!-- Optional text label displayed below the animated circle.
+           Use a \`<p>\` element with a brief loading message (e.g. "Loading..."). -->
       <slot></slot>
     `;
   }
