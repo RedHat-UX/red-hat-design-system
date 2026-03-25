@@ -169,8 +169,8 @@ export class RhNavigationPrimary extends LitElement {
               this.#closeOverlay();
             }
           }
-          // Close links menu when viewport goes below 456px (where it's hidden via CSS)
-          if (contentBoxSize.inlineSize < 456 && this._linksMenuOpen) {
+          // Close links menu when container goes below 320px (where it's hidden via CSS)
+          if (contentBoxSize.inlineSize < 320 && this._linksMenuOpen) {
             this.#closeLinksMenu();
           }
         }
@@ -660,6 +660,7 @@ export class RhNavigationPrimary extends LitElement {
     }
     if (this.compact && !skip) {
       this.#closeHamburger();
+      this.#closeLinksMenu();
     }
     this.#closeOverlay();
   }
