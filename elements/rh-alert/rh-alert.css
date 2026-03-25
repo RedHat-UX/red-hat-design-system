@@ -14,10 +14,12 @@ header {
 }
 
 .hasBody header {
+  /** Header spacing uses `rh-space-xs` design token */
   margin-block-end: var(--rh-space-xs, 4px);
 }
 
 footer.hasActions {
+  /** Footer spacing uses `rh-space-lg` design token */
   margin-block-start: var(--rh-space-lg, 16px);
 }
 
@@ -26,6 +28,7 @@ footer ::slotted([slot='actions']:not(rh-button[variant='link' i])) {
   padding: 0 !important;
   border: none !important;
   background-color: transparent !important;
+  /** Action link color token */
   color: var(--rh-color-interactive-primary-default) !important;
   font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
   font-family: var(--_font-family) !important;
@@ -34,6 +37,7 @@ footer ::slotted([slot='actions']:not(rh-button[variant='link' i])) {
 /* TODO: separate focus and hover styles */
 footer ::slotted([slot='actions']:focus) {
   text-decoration: underline !important;
+  /** Action link hover/focus color token */
   color: var(--rh-color-interactive-primary-hover) !important;
 }
 
@@ -53,6 +57,7 @@ footer ::slotted(rh-button[variant='link' i]) {
   --_border-color: var(--rh-color-teal-50, #37a3a3);
   --_icon-color: var(--rh-color-teal-50, #37a3a3);
 
+  /** Alert border uses the `rh-border-width-md` token */
   border-width: var(--rh-border-width-md, 2px);
   border-style: solid;
   border-color: var(--_border-color);
@@ -61,13 +66,19 @@ footer ::slotted(rh-button[variant='link' i]) {
   border-inline-end-color: transparent;
   background-color: light-dark(var(--_background-color), var(--rh-color-surface-dark, #383838));
   box-shadow: var(--_box-shadow, none);
+  /** Padding uses the `rh-space-lg` design token */
   padding: var(--rh-space-lg, 16px);
   display: grid;
   grid-template-columns: min-content 1fr;
+  /** Gap uses the `rh-space-xs` design token */
   gap: var(--rh-space-xs, 4px);
+  /** Uses `rh-font-family-body-text` design token */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  /** Uses `rh-font-weight-body-text-regular` token */
   font-weight: var(--rh-font-weight-body-text-regular, 400);
+  /** Uses `rh-font-size-body-text-sm` design token */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+  /** Uses `rh-line-height-body-text` design token */
   line-height: var(--rh-line-height-body-text, 1.5);
 
   & header ::slotted(*) {
@@ -92,38 +103,56 @@ footer ::slotted(rh-button[variant='link' i]) {
 }
 
 #container.neutral {
+  /** Neutral state border color token */
   --_border-color: var(--rh-color-status-neutral);
+  /** Neutral state icon color token */
   --_icon-color: var(--rh-color-icon-status-neutral);
+  /** Neutral state surface color token */
   --_background-color: var(--rh-color-surface-status-neutral);
 }
 
 #container.info {
+  /** Info state border color token */
   --_border-color: var(--rh-color-status-info);
+  /** Info state icon color token */
   --_icon-color: var(--rh-color-icon-status-info);
+  /** Info state surface color token */
   --_background-color: var(--rh-color-surface-status-info);
 }
 
 #container.success {
+  /** Success state border color token */
   --_border-color: var(--rh-color-status-success);
+  /** Success state icon color token */
   --_icon-color: var(--rh-color-icon-status-success);
+  /** Success state surface color token */
   --_background-color: var(--rh-color-surface-status-success);
 }
 
 #container.caution {
+  /** Caution state border color token */
   --_border-color: var(--rh-color-status-caution);
+  /** Caution state icon color token */
   --_icon-color: var(--rh-color-icon-status-caution);
+  /** Caution state surface color token */
   --_background-color: var(--rh-color-surface-status-caution);
 }
 
 #container.warning {
+  /** Warning state border color token */
   --_border-color: var(--rh-color-status-warning);
+  /** Warning state icon color token */
   --_icon-color: var(--rh-color-icon-status-warning);
+  /** Warning state surface color token */
   --_background-color: var(--rh-color-surface-status-warning);
 }
 
 #container.danger {
+  /** Danger state border color token */
   --_border-color: var(--rh-color-status-danger);
+  /** Danger state icon color token */
   --_icon-color: var(--rh-color-icon-status-danger);
+  /** Danger state surface color token */
   --_background-color: var(--rh-color-surface-status-danger);
 }
 
@@ -132,8 +161,10 @@ footer ::slotted(rh-button[variant='link' i]) {
  *************************/
 
 #container.toast {
+  /** Toast uses `rh-color-surface-lightest` token */
   --_background-color: var(--rh-color-surface-lightest, #ffffff);
   --_max-width: 550px;
+  /** Toast shadow uses `rh-box-shadow-xl` token */
   --_box-shadow: var(--rh-box-shadow-xl, 0 8px 24px 3px rgba(21, 21, 21, 0.35));
 }
 
@@ -158,6 +189,7 @@ footer ::slotted(rh-button[variant='link' i]) {
 }
 
 #header {
+  /** Header color uses `rh-color-text-primary` token */
   color: var(--rh-color-text-primary);
   flex: 1 1 auto;
 }
@@ -166,20 +198,24 @@ footer ::slotted(rh-button[variant='link' i]) {
   display: flex;
   align-items: center;
   justify-content: center;
+  /** Icon size uses `rh-size-icon-02` design token */
   width: var(--rh-size-icon-02, 24px);
   height: var(--rh-size-icon-02, 24px);
   color: var(--_icon-color);
 }
 
 #close-button {
+  /** Close button uses `rh-color-text-secondary` token */
   color: var(--rh-color-text-secondary);
   background-color: transparent;
   border: none;
+  /** Close button size uses `rh-length-xl` token */
   height: var(--rh-length-xl, 24px);
   width: var(--rh-length-xl, 24px);
   cursor: pointer;
 }
 
 #close-button:hover {
+  /** Close button hover uses `rh-color-text-primary` */
   color: var(--rh-color-text-primary);
 }
