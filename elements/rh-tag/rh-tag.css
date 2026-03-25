@@ -5,6 +5,7 @@
 a {
   color: inherit;
   text-decoration: underline dashed;
+  /** Offset between the link text and its dashed underline */
   text-underline-offset: var(--rh-length-3xs, 2px);
 
   &:hover,
@@ -19,15 +20,23 @@ a {
 
 #container {
   align-items: center;
+  /** Tag pill background color, varies by color and variant */
   background-color: var(--_fill-color, var(--rh-color-surface-lighter, #f2f2f2));
+  /** Pill-shaped border radius for the tag container */
   border-radius: var(--rh-border-radius-pill, 64px);
   border-width: 0;
+  /** Tag text color, varies by color and variant */
   color: var(--_text-color, var(--rh-color-text-primary));
   display: inline-flex;
+  /** Tag font family */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  /** Tag default text size */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+  /** Tag text weight */
   font-weight: var(--rh-font-weight-body-text-regular, 400);
+  /** Space between the icon and text */
   gap: var(--rh-space-xs, 4px);
+  /** Tag text line height */
   line-height: var(--rh-line-height-body-text, 1.5);
   max-inline-size: 100%;
   overflow: hidden;
@@ -35,16 +44,17 @@ a {
   text-overflow: ellipsis;
   white-space: nowrap;
   padding-block:
-    /** The padding at the start of the direction perpendicular to the flow of the text. */
+    /** Block-start padding, uses the rh-space-xs design token by default. */
     var(--rh-tag-padding-block-start, var(--rh-space-xs, 4px))
-    /** The padding at the end of the direction perpendicular to the flow of the text. */
+    /** Block-end padding, uses the rh-space-xs design token by default. */
     var(--rh-tag-padding-block-end, var(--rh-space-xs, 4px));
   padding-inline:
-    /** The padding at the start of the direction parallel to the flow of the text. */
+    /** Inline-start padding, uses the rh-space-md design token by default. */
     var(--rh-tag-padding-inline-start, var(--rh-space-md, 8px))
-    /** The padding at the end of the direction parallel to the flow of the text. */
+    /** Inline-end padding, uses the rh-space-md design token by default. */
     var(--rh-tag-padding-inline-end, var(--rh-space-md, 8px));
 
+  /** Size of the decorative icon, mapped to the rh-size-icon-01 design token. */
   --rh-icon-size: var(--rh-size-icon-01, 16px);
   --_icon-color: currentcolor;
 
@@ -53,6 +63,7 @@ a {
       var(--rh-border-width-sm, 1px)
       solid
       var(--_border-color, var(--rh-color-border-subtle));
+    /** Pill-shaped border radius matching the container */
     border-radius: var(--rh-border-radius-pill, 64px);
     content: '';
     inset: 0;
@@ -60,6 +71,7 @@ a {
     position: absolute;
 
     &:hover {
+      /** Thicker border on hover for visual feedback */
       border-width: var(--rh-border-width-md, 2px);
     }
   }
@@ -69,6 +81,7 @@ a {
   }
 
   &:has(a:focus-visible, a:active):after {
+    /** Focus ring border radius for the inner text area */
     border-radius: var(--rh-border-radius-default, 3px);
     content: '';
     inset: calc(var(--rh-space-xs, 4px) - 1px) calc(var(--rh-space-md, 8px) - 1px);
@@ -78,6 +91,7 @@ a {
   }
 
   &.compact {
+    /** Compact variant uses a smaller text size */
     font-size: var(--rh-font-size-body-text-xs, 0.75rem);
     padding:
       var(--rh-tag-padding-block-start, 0)

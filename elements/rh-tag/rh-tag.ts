@@ -16,13 +16,18 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 import styles from './rh-tag.css' with { type: 'css' };
 
 /**
- * A tag is a caption added to an element for better clarity and user convenience.
+ * A tag provides a short, pill-shaped label for categorizing content or
+ * indicating status. It SHOULD include an icon when color alone conveys
+ * meaning. Linked tags MUST have descriptive text for screen readers, and
+ * SHOULD provide an `aria-label` on group containers. When disabled, Enter
+ * keyboard navigation is suppressed on linked tags.
  *
- * @summary  Highlights an element to add clarity or draw attention
+ * @summary Categorizes content, adds context, or indicates status using a short text label
  *
  * @alias tag
  *
- * @fires close - when a removable label's close button is clicked
+ * @slot - Must contain the text content for the tag. Keep text concise (25 characters or fewer). Text SHOULD be descriptive enough to convey meaning without relying on color, so that screen reader users receive equivalent information.
+ * @slot icon - Contains an optional decorative icon, such as an SVG or \`rh-icon\` element. Icons are purely decorative and SHOULD NOT convey information that is not also present in the text.
  *
  */
 @customElement('rh-tag')
@@ -31,32 +36,48 @@ export class RhTag extends LitElement {
   static readonly styles = [styles];
 
   /**
-   * The icon to display in the tag.
+   * The name of the icon to display in the tag.
+   * When set, an `rh-icon` element renders in the icon slot as a decorative visual.
    */
   @property({ reflect: true }) icon?: IconNameFor<IconSetName>;
 
   /**
-   * Icon set to display in the tag
+   * The icon set from which to select the icon. Defaults to `ui`.
    */
   @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'ui';
 
-  /** The variant of the tag. */
+  /**
+   * The visual style variant of the tag.
+   * - `filled`: colored background with a subtle border (default)
+   * - `outline`: transparent background with a colored border
+   * - `desaturated`: transparent background with a neutral border and text color
+   */
   @property() variant?: 'filled' | 'outline' | 'desaturated' = 'filled';
 
-  /** The size of the tag. */
+  /**
+   * The size of the tag. When set to `compact`, the tag uses a smaller font
+   * size and reduced padding.
+   */
   @property() size?: 'compact';
 
-  /** optional href for linked tag. */
+  /**
+   * Optional URL that makes the tag a navigable link. When set, the tag
+   * renders an anchor element around its text content.
+   */
   @property() href?: string;
 
   /**
-   * Whether an interactive tag is disabled.
+   * Whether an interactive (linked) tag is disabled. When true, the tag
+   * visually appears inactive and keyboard navigation is suppressed.
    */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
   /**
-   * The color of the label.
-   * Note: 'cyan' will also work, but is deprecated
+   * The color palette of the tag. Nine colors are available. Choose colors
+   * that correspond to the tag's semantic meaning (e.g. red for errors,
+   * green for success). Defaults to gray.
+   *
+   * Note: `cyan` is accepted but deprecated; use `teal` instead.
    */
   @property() color?:
     | 'red'
@@ -76,7 +97,7 @@ export class RhTag extends LitElement {
     const { icon, size, variant = 'filled', color = 'gray', disabled } = this;
     const hasIcon = !!icon || this.#slots.hasSlotted('icon');
     const textSlot = html`
-      <!-- Must contain the text for the label. -->
+      <!-- Must contain the text content for the tag. Keep text concise (25 characters or fewer). -->
       <slot id="text"></slot>
     `;
     return html`
@@ -88,12 +109,7 @@ export class RhTag extends LitElement {
               teal: color === ('cyan' as 'blue' /* cyan deprecated */) || color === 'teal',
               [variant]: true,
               [color]: true })}">
-        <!--
-          slot:
-            summary: Contains the labels's icon, e.g. web-icon-alert-success.
-          part:
-            summary: container for the label icon
-        -->
+        <!-- Contains an optional decorative icon, such as an SVG or \`rh-icon\` element. -->
         <slot name="icon" part="icon">
           <rh-icon ?hidden="${!icon}" icon="${ifDefined(icon)}" set="${this.iconSet}"></rh-icon>
         </slot>${!this.href ? textSlot : html`
