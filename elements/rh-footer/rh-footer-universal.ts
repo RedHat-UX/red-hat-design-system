@@ -84,7 +84,7 @@ export class RhFooterUniversal extends LitElement {
           <!-- summary: visually-hidden heading for assistive technology
                description: |
                  Screen readers use this heading to identify the universal footer region.
-                 Defaults to "Red Hat footer". Hidden if a parent `<h2>` already exists. -->
+                 Defaults to "Red Hat footer". Hidden if a parent \`<h2>\` already exists. -->
           <slot name="heading">Red Hat footer</slot>
         </h2>
         <!-- base -->
