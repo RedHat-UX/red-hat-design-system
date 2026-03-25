@@ -955,6 +955,8 @@ export default class ElementsPage extends Renderer<Context> {
           updateDemoContentForType('js', node);
         } else if (node.tagName === 'style') {
           updateDemoContentForType('css', node);
+        } else if (node.tagName === 'meta' && node.attrs.some(x => x.name === 'itemprop')) {
+          Tools.removeNode(node);
         }
       }
 
