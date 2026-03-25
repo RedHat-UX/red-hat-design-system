@@ -26,6 +26,7 @@ import styles from './rh-blockquote.css' with { type: 'css' };
  * @slot title - Inline text for the author's job title or role. Rendered in
  *               the figcaption alongside the author for screen reader context.
  *
+ * @alias blockquote
  */
 @customElement('rh-blockquote')
 @colorPalettes
