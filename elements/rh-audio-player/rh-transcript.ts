@@ -19,7 +19,25 @@ import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 /**
- * Audio Player Transcript Panel
+ * An expandable panel that displays a synchronized transcript of the audio
+ * content using `rh-cue` child elements. The panel includes an autoscroll
+ * toggle that keeps the active cue visible, and a download button that
+ * triggers a text file download of the full transcript. This element MUST
+ * be placed in the `transcript` slot of `rh-audio-player`. Content authors
+ * SHOULD provide `rh-cue` elements in the default slot with `start` and
+ * optionally `end` and `voice` attributes.
+ *
+ * @summary Displays synchronized, scrollable transcript with download
+ *
+ * @slot - Default slot reserved for `rh-cue` elements.
+ * @slot heading - Custom heading text for the transcript panel.
+ *
+ * @csspart heading - The panel heading with scrolling text overflow.
+ * @csspart toolbar - The toolbar area containing autoscroll and download.
+ *
+ * @fires transcriptdownload - Fired when the user clicks the download
+ *        button, handled by the parent `rh-audio-player` to generate
+ *        a text file download.
  */
 @customElement('rh-transcript')
 export class RhTranscript extends LitElement {

@@ -7,7 +7,17 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import styles from './rh-audio-player-scrolling-text-overflow.css' with { type: 'css' };
 
 /**
- * Audio Player Scrolling Text Overflow
+ * A text container that detects when its content overflows the available
+ * width and provides a scrolling animation on hover or focus to reveal the
+ * full text. A fade effect is applied at the trailing edge when content
+ * overflows. The scroll animation duration is calculated based on the
+ * character count of the text content. This element is used internally by
+ * `rh-audio-player` and its sub-components for titles, series names, and
+ * panel headings.
+ *
+ * @summary Scrolls overflowing text on hover or focus
+ *
+ * @slot - Inline text content that scrolls when wider than the host.
  */
 @customElement('rh-audio-player-scrolling-text-overflow')
 @themable

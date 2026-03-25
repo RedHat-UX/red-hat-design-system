@@ -12,7 +12,24 @@ import styles from './rh-audio-player-about.css' with { type: 'css' };
 import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer.js';
 
 /**
- * Audio Player About Panel
+ * An expandable panel that displays episode information such as title, series
+ * name, a text description, and speaker attribution via `rh-avatar`. This
+ * element MUST be placed in the `about` slot of `rh-audio-player`. Content
+ * authors SHOULD provide a heading via the `heading` slot and MAY include
+ * up to two `rh-avatar` elements in the `profile` slot for attribution.
+ * The panel heading level is automatically set by the parent player's
+ * heading level context.
+ *
+ * @summary Displays episode description and speaker attribution
+ *
+ * @slot - Default slot for episode description text.
+ * @slot heading - Custom heading text for the panel.
+ * @slot profile - `rh-avatar` elements for speaker attribution. A maximum
+ *                of two profiles are displayed.
+ *
+ * @csspart heading - The panel heading container with scrolling overflow.
+ * @csspart body - The scrollable description content area.
+ * @csspart profile - The speaker profile / avatar area.
  */
 @customElement('rh-audio-player-about')
 export class RhAudioPlayerAbout extends LitElement {

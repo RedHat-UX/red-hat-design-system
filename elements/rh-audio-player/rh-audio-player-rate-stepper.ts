@@ -8,6 +8,19 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 import styles from './rh-audio-player-rate-stepper.css' with { type: 'css' };
 
 /**
+ * A playback rate control that lets users adjust audio speed between 0.25x
+ * and 2x in 0.25x increments. The stepper renders left/right arrow buttons
+ * flanking a `<select>` dropdown showing the current rate. Users MAY step
+ * through rates with the arrow buttons or select directly from the dropdown.
+ * This element is used internally by `rh-audio-player` and SHOULD NOT be
+ * placed independently in user markup.
+ *
+ * @summary Controls audio playback speed with step buttons and dropdown
+ *
+ * @fires playback-rate-select - Fired when the user changes the playback
+ *        rate, either by clicking step buttons or selecting from the
+ *        dropdown. The event's `playbackRate` property contains the new
+ *        rate value.
  */
 @customElement('rh-audio-player-rate-stepper')
 export class RhAudioPlayerRateStepper extends LitElement {
@@ -21,13 +34,13 @@ export class RhAudioPlayerRateStepper extends LitElement {
 
   private static pbrFixed = 2;
 
-  /** Playback rate */
+  /** Current playback rate multiplier, from 0.25 to 2. */
   @property({ reflect: true, type: Number, attribute: 'playback-rate' }) playbackRate = 1;
 
-  /** Playback rate */
+  /** Whether the stepper controls are disabled. */
   @property({ reflect: true, type: Boolean }) disabled = false;
 
-  /** Playback rate */
+  /** Accessible label for the rate select dropdown. */
   @property() label?: string;
 
   /**

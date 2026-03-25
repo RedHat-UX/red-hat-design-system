@@ -12,7 +12,21 @@ import styles from './rh-audio-player-subscribe.css' with { type: 'css' };
 
 
 /**
- * Audio Player Subscribe Panel
+ * An expandable panel that displays subscription links to podcast platforms
+ * such as Apple Podcasts, Spotify, and RSS feeds. This element MUST be
+ * placed in the `subscribe` slot of `rh-audio-player`. Content authors
+ * SHOULD provide anchor elements with images or text in the `link` slot.
+ * At wider breakpoints, links are laid out in a flex row.
+ *
+ * @summary Displays podcast subscription links in an expandable panel
+ *
+ * @slot - Default slot for introductory text content.
+ * @slot heading - Custom heading text for the panel.
+ * @slot link - Anchor elements linking to podcast subscription services.
+ *
+ * @csspart heading - The panel heading with scrolling text overflow.
+ * @csspart body - The default content area.
+ * @csspart links - The container for subscription link elements.
  */
 @customElement('rh-audio-player-subscribe')
 export class RhAudioPlayerSubscribe extends LitElement {
