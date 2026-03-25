@@ -23,23 +23,28 @@ span,
 }
 
 .hasIcon #icon {
+  /** Icon color; theme-aware design token */
   color: var(--rh-color-icon-secondary);
 }
 
 .md {
+  /** Default icon size design token */
   --rh-icon-size: var(--rh-size-icon-04, 40px);
 }
 
 .lg {
+  /** Large icon size design token */
   --rh-icon-size: var(--rh-size-icon-06, 64px);
 }
 
 .md ::slotted([slot='icon']) {
+  /** Slotted icon width design token */
   width: var(--rh-size-icon-04, 40px);
   aspect-ratio: 1;
 }
 
 .lg ::slotted([slot='icon']) {
+  /** Slotted icon width design token */
   width: var(--rh-size-icon-06, 64px);
   aspect-ratio: 1;
 }
@@ -56,30 +61,42 @@ span,
 #title {
   order: 1;
   color: var(--_accent-color);
+  /** Title text size design token */
   font-size: var(--rh-font-size-body-text-xl, 1.25rem);
+  /** Title heading font family design token */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+  /** Title font weight design token */
   font-weight: var(--rh-font-weight-body-text-regular, 400);
 }
 
 #statistic {
   order: 2;
   color: var(--_accent-color);
+  /** Data text size design token */
   font-size: var(--rh-font-size-heading-lg, 2.25rem);
+  /** Data text font weight design token */
   font-weight: var(--rh-font-weight-heading-regular, 400);
+  /** Data text heading font family design token */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
 }
 
 #content {
   order: 3;
+  /** Body text size design token */
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  /** Body font family design token */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  /** Space above body design token */
   margin-top: var(--rh-space-sm, 6px);
 }
 
 #cta {
   order: 4;
+  /** CTA text size design token */
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  /** CTA heading font family design token */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+  /** Space above CTA design token */
   margin-top: var(--rh-space-lg, 16px);
 }
 
@@ -91,6 +108,7 @@ div:not(.hasCta) #cta {
 }
 
 .isMobile #content {
+  /** Mobile body text size design token */
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
 }
 
@@ -99,6 +117,7 @@ div:not(.hasCta) #cta {
 }
 
 :host([size='large']) #statistic {
+  /** Large variant data size design token */
   font-size: var(--rh-font-size-heading-2xl, 3rem);
 }
 

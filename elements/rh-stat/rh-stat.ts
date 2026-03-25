@@ -15,8 +15,33 @@ import styles from './rh-stat.css' with { type: 'css' };
 
 /**
  * A statistic showcases a data point or quick fact visually.
+ * Elements MUST include a `statistic` slot and body text.
+ * Icons, titles, and CTAs SHOULD be consistent when grouped.
+ * Adapts color for WCAG contrast in light and dark contexts.
+ * Only the CTA receives Tab focus; screen readers read DOM order.
  *
  * @summary Showcases a data point or quick fact visually
+ *
+ * @slot icon - Optional decorative icon above the statistic.
+ *              Accepts an `rh-icon` element or inline SVG.
+ *              Alternatively, use the `icon` attribute.
+ *              Decorative; does not need aria-label unless it
+ *              conveys meaning not present in the text.
+ * @slot title - Optional inline text title providing context
+ *               for the data value. SHOULD NOT exceed one line
+ *               or 20 characters. Read by screen readers in
+ *               DOM order.
+ * @slot statistic - Required inline text data value such as a
+ *                    number or percentage. Read by screen
+ *                    readers in DOM order.
+ * @slot - Required body text (block or inline elements)
+ *         describing or explaining the statistic. Provides
+ *         context for screen reader users. SHOULD NOT exceed
+ *         two lines or 100 characters.
+ * @slot cta - Optional call to action, typically an `rh-cta`
+ *             element. Only focusable element; receives Tab
+ *             focus, activated with Enter or Space per WCAG
+ *             2.1.1.
  *
  * @alias statistic
  */
@@ -26,30 +51,48 @@ export class RhStat extends LitElement {
   static readonly styles = [styles];
 
   /**
-   * The icon to display in the statistic
+   * The icon name to display above the statistic.
+   * When set, the component dynamically imports `rh-icon`
+   * and renders it using the specified icon set.
    */
   @property({ reflect: true }) icon?: IconNameFor<IconSetName>;
 
   /**
-   * Icon set to display in the statistic
+   * The icon set from which to load the icon.
+   * Only applies when the `icon` attribute is set.
    */
   @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'standard';
 
-  /** Whether the title or statistic should be displayed on top in the statistic */
+  /**
+   * Controls the visual ordering of the title and
+   * statistic slots. When set to `statistic`, the data
+   * value appears above the title text.
+   */
   @property({ reflect: true, type: String }) top: 'default' | 'statistic' = 'default';
 
-  /** The size of the statistic */
+  /**
+   * The size variant of the statistic. The `large` size
+   * increases the data text font size and icon dimensions.
+   */
   @property({ reflect: true, type: String }) size: 'default' | 'large' = 'default';
 
-  /** Whether the statistic is in a mobile view or not for styling */
+  /**
+   * Whether the statistic renders in a mobile layout with
+   * reduced font sizes. Managed internally via
+   * ScreenSizeController but can be set explicitly.
+   */
   @property({ type: Boolean, reflect: true, attribute: 'is-mobile' }) isMobile = false;
 
+  /** Tracks viewport size to toggle mobile layout */
   #screenSize = new ScreenSizeController(this);
 
+  /** Manages slot presence detection for conditional rendering */
   #slots = new SlotController(this, null, 'icon', 'title', 'statistic', 'cta');
 
+  /** Observes child list changes to validate required content */
   #mo = new MutationObserver(() => this.#onMutation());
 
+  /** Logs warnings when required slots are empty */
   #logger = new Logger(this);
 
   connectedCallback() {
@@ -76,17 +119,41 @@ export class RhStat extends LitElement {
     return html`
       <div class="${classMap({ isMobile, hasIcon, hasTitle, hasStatistic, hasCta })}">
         <span id="icon" class="${classMap({ [iconSize]: !!iconSize })}">
-          <!-- Optional icon -->
+          <!-- Optional decorative icon above the data value.
+               Accepts an \`rh-icon\` or inline SVG. Decorative
+               for screen readers; add aria-label to convey
+               meaning not in text (WCAG 1.1.1). -->
           <slot name="icon">
             ${!this.icon ? '' : html`
               <rh-icon icon="${this.icon}" set="${this.iconSet}"></rh-icon>
             `}
           </slot>
         </span>
-        <span id="title"><!-- Statistic title --><slot name="title"></slot></span>
-        <span id="statistic"><!-- Statistic data --><slot name="statistic"></slot></span>
-        <span id="content"><!-- Description of the stat --><slot></slot></span>
-        <span id="cta"><!-- Call to action --><slot name="cta"></slot></span>
+        <span id="title">
+          <!-- Optional inline text title for context.
+               Screen readers announce in DOM order;
+               ARIA landmark not required. -->
+          <slot name="title"></slot>
+        </span>
+        <span id="statistic">
+          <!-- Required inline text data value (number or
+               percentage). Screen readers read in DOM order;
+               ensure value is meaningful without visual
+               formatting (WCAG 1.3.1). -->
+          <slot name="statistic"></slot>
+        </span>
+        <span id="content">
+          <!-- Required block or inline body text describing
+               the statistic. Gives screen reader users
+               context for the data value. -->
+          <slot></slot>
+        </span>
+        <span id="cta">
+          <!-- Optional call to action (\`rh-cta\` element).
+               Only focusable element; receives Tab focus
+               and activates with Enter or Space. -->
+          <slot name="cta"></slot>
+        </span>
       </div>
     `;
   }
