@@ -73,8 +73,13 @@ import '@rhds/elements/rh-alert/rh-alert.js';
 
 ### Toast Alert
 
-Alerts may be toasted using the `toast()` function. A toasted alert has a
-unique style, a drop shadow, and either disappears after eight seconds, or can persist until the user dismisses it.
+Alerts may be toasted using the static `RhAlert.toast()` method. A toasted alert
+has a distinct style, a drop shadow, and either disappears after about eight
+seconds or can stay until the user dismisses it when `persistent` is set.
+
+For the full API, accessibility considerations, and a live demo, see the
+[Alert pattern](https://ux.redhat.com/patterns/alert/) on the Red Hat Design
+System site.
 
 ```js
 import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
