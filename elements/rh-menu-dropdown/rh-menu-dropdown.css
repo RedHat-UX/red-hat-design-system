@@ -12,17 +12,22 @@
 
 #menu-list {
   position: absolute;
+  /** Menu panel vertical padding */
   padding: var(--rh-space-md, 8px) 0;
   left: 0;
   top: 0;
   z-index: 1000;
   min-inline-size: 18.5rem;
   max-inline-size: 100%;
+  /** Corner rounding via rh-border-radius-default token */
   border-radius: var(--rh-border-radius-default, 3px);
   border: var(--_border);
   background:
+    /** Menu panel background in light mode */
     light-dark(var(--rh-color-surface-lightest, #ffffff),
+      /** Menu panel background in dark mode */
       var(--rh-color-surface-darkest, #151515));
+  /** Elevation shadow via rh-box-shadow-md token */
   box-shadow: var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25));
   transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
   translate: var(--_floating-content-translate);
@@ -34,39 +39,57 @@
 
 ::slotted([slot='toggle-label']) {
   color: var(--_color);
+  /** Toggle label font family */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  /** Toggle label font size */
   font-size: var(--rh-font-size-body-text-md, 1rem) !important;
   font-style: normal;
+  /** Toggle label font weight */
   font-weight: var(--rh-font-weight-body-text-regular, 400);
+  /** Toggle label line height */
   line-height: var(--rh-line-height-code, 1.5);
 }
 
 #menu-toggle {
   --_interactive-border-color:
+    /** Interactive border color in light mode */
     light-dark(var(--rh-color-accent-base-on-light, #0066cc),
+      /** Interactive border color in dark mode */
       var(--rh-color-accent-base-on-dark, #92c5f9));
 
   color: var(--_color);
+  /** Toggle button font family */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  /** Toggle button font size */
   font-size: var(--rh-font-size-body-text-md, 1rem);
   font-style: normal;
+  /** Toggle button font weight */
   font-weight: var(--rh-font-weight-body-text-regular, 400);
+  /** Toggle button line height */
   line-height: var(--rh-line-height-code, 1.5);
   inline-size: 100%;
-  padding: var(--rh-space-sm, 6px) var(--rh-space-lg, 16px);
+  padding:
+    /** Toggle button block padding */
+    var(--rh-space-sm, 6px)
+    /** Toggle button inline padding */
+    var(--rh-space-lg, 16px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
+  /** Toggle button corner rounding */
   border-radius: var(--rh-border-radius-default, 3px);
   background:
+    /** Toggle background in light mode */
     light-dark(var(--rh-color-surface-lightest, #ffffff),
+      /** Toggle background in dark mode */
       var(--rh-color-surface-darkest, #151515));
   border: none;
 
   .action-icon rh-icon {
     --rh-icon-size: 12px;
 
+    /** Space between label and caret icon */
     padding-inline-start: var(--rh-space-md, 8px);
   }
 
@@ -109,6 +132,7 @@
   }
 
   &.compact {
+    /** Compact toggle padding */
     padding: var(--rh-space-md, 8px);
 
     &:not(.boxed) {
@@ -117,7 +141,9 @@
       &:active,
       &:focus {
         background-color:
+          /** Compact hover background in light mode */
           light-dark(var(--rh-color-surface-lighter, #f2f2f2),
+            /** Compact hover background in dark mode */
             var(--rh-color-surface-darker, #1f1f1f));
       }
 
@@ -153,6 +179,7 @@
 }
 
 ::slotted(rh-icon) {
+  /** Space after slotted icon in toggle label */
   margin-inline-end: var(--rh-space-md, 8px);
 }
 
