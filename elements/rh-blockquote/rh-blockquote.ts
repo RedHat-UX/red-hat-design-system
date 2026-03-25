@@ -11,11 +11,12 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import styles from './rh-blockquote.css' with { type: 'css' };
 
 /**
- * A blockquote for featuring quotes with an icon and attribution.
- * Authors MUST provide quoted text and SHOULD include an author.
- * Renders a semantic ARIA figure with blockquote and figcaption,
- * so screen readers convey the quote and its source. AVOID placing
- * interactive elements inside, as it is not keyboard focusable.
+ * Provides a styled blockquote for featuring quotes with an icon
+ * and attribution. Use when highlighting a customer testimonial,
+ * expert opinion, or notable statement. Authors MUST provide quoted
+ * text and SHOULD include an author. Renders a semantic ARIA figure
+ * with blockquote and figcaption, so screen readers convey the quote
+ * and its source. AVOID placing interactive elements inside.
  *
  * @summary Highlights quotations and citations with text styles
  *

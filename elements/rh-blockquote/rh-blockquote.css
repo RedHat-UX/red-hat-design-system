@@ -90,7 +90,10 @@ rh-icon {
 }
 
 .highlight {
-  border-inline-start: var(--rh-length-md, 8px) solid var(--rh-color-accent-brand);
+  border-inline-start-width: var(--rh-length-md, 8px);
+  border-inline-start-style: solid;
+  /** Brand accent color for the emphasis border */
+  border-inline-start-color: var(--rh-color-accent-brand);
   /** Inline padding between emphasis border and content, via the rh-length-xl design token */
   padding-inline-start: var(--rh-length-xl, 24px);
 }
