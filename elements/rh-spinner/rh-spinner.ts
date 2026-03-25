@@ -9,10 +9,13 @@ import styles from './rh-spinner.css' with { type: 'css' };
 export type SpinnerSize = RhSpinner['size'];
 
 /**
- * A spinner SHOULD be used when loading takes fewer than ten seconds
- * and the content structure is unknown. It is not keyboard-focusable
- * or operable. The SVG has `role="status"` so screen readers treat
- * it as a live region.
+ * Provides an animated loading indicator for when content is being
+ * processed or fetched. A spinner SHOULD be used when loading takes
+ * fewer than ten seconds and the content structure is unknown.
+ * Authors MUST NOT use a spinner for indeterminate loading over ten
+ * seconds; use a progress bar instead. Authors SHOULD AVOID omitting
+ * a text label, as screen readers rely on `role="status"` to announce
+ * the ARIA live region. The element is not keyboard-focusable.
  *
  * @summary Notifies users their action is being processed or loaded
  *
