@@ -14,6 +14,11 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './rh-disclosure.css' with { type: 'css' };
 
+/**
+ * Fired when a disclosure is opened or closed. The event bubbles and is
+ * cancelable. The event has no `detail` property; read the `open` property
+ * on the host element to determine the current state.
+ */
 export class DisclosureToggleEvent extends Event {
   constructor() {
     super('toggle', { bubbles: true, cancelable: true });
@@ -21,13 +26,29 @@ export class DisclosureToggleEvent extends Event {
 }
 
 /**
- * A disclosure toggles the visibility of content when triggered.
+ * A disclosure provides a way to toggle content visibility when triggered.
+ * It wraps a native `<details>`/`<summary>` element, so screen readers
+ * announce expanded or collapsed ARIA state (WCAG 4.1.2). Users SHOULD
+ * provide a title via the `summary` attribute or slot. Enter, Space, or
+ * Escape MUST toggle or close the panel.
  *
  * @summary A disclosure toggles the visibility of content when triggered
  *
  * @alias disclosure
  *
- * @fires {DisclosureToggleEvent} toggle - Fires when a user opens or closes a disclosure.
+ * @slot summary - The title of the disclosure. SHOULD contain inline text or
+ *                 a heading element. When a heading is slotted, it renders
+ *                 inline so it does not break the summary layout. Screen
+ *                 readers announce this text as the accessible name for the
+ *                 disclosure trigger.
+ * @slot - The content disclosed when the panel is open. Accepts block-level
+ *         elements such as paragraphs, lists, or nested components. Content
+ *         MUST be accessible; interactive children receive focus via Tab.
+ *         Slotted content SHOULD follow WCAG reading order guidelines.
+ *
+ * @fires {DisclosureToggleEvent} toggle - Fires when a user opens or closes
+ *        a disclosure. The event has no detail; read `open` on the host to
+ *        determine current state.
  */
 @customElement('rh-disclosure')
 @colorPalettes
@@ -96,13 +117,24 @@ export class RhDisclosure extends LitElement {
           @keydown="${this.#onKeydown}"
           @toggle="${this.#onToggle}">
         <summary>
-          <!-- The caret icon in the shadow DOM -->
           <rh-icon id="caret" set="ui" icon="caret-down"></rh-icon>
-          <!-- The title of the disclosure -->
+          <!-- summary: The clickable title text for the disclosure.
+               description: |
+                 Accepts inline text or a heading element. When a heading
+                 is slotted, it renders inline. Falls back to the
+                 \`summary\` attribute value when no slot content is
+                 provided. Screen readers announce this text as the
+                 accessible name for the disclosure trigger. -->
           <slot name="summary">${this.summary}</slot>
         </summary>
         <div id="details-content">
-          <!-- Place the content you want to disclose in the default slot. This content is hidden by default. -->
+          <!-- summary: Content revealed when the disclosure is open.
+               description: |
+                 Accepts block-level elements such as paragraphs, lists,
+                 or nested components. Interactive children receive
+                 focus via Tab when the panel is expanded. Slotted
+                 content SHOULD follow WCAG reading order so screen
+                 readers present it logically. -->
           <slot></slot>
         </div>
       </details>

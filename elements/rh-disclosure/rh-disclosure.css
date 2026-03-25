@@ -1,19 +1,31 @@
 :host {
-  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+  /** Outer border width for the disclosure container */
+  border-width: var(--rh-border-width-sm, 1px);
+  border-style: solid;
+  /** Outer border color; theme-aware design token */
+  border-color: var(--rh-color-border-subtle);
+  /** Corner radius design token */
   border-radius: var(--rh-border-radius-default, 3px);
   display: block;
+  /** Typography design token for body text */
   font-family: var(--rh-font-family-body-text);
 }
 
 summary {
+  /** Summary trigger surface; adapts to theme via token */
   background-color: var(--rh-color-surface);
   border-radius: var(--rh-border-radius-default, 3px);
+  /** Summary text; inherits theme-aware token */
   color: var(--rh-color-text-primary);
   cursor: pointer;
+  /** Body text size design token for trigger */
   font-size: var(--rh-font-size-body-text-md, 1rem);
+  /** Medium weight design token for trigger text */
   font-weight: var(--rh-font-weight-body-text-medium, 500);
   list-style: none;
+  /** Spacing design token for trigger block padding */
   padding-block: var(--rh-space-lg, 16px);
+  /** Spacing design token for trigger inline padding */
   padding-inline: var(--rh-space-xl, 24px);
 
   &::-webkit-details-marker,
@@ -31,7 +43,9 @@ summary {
 
   &:active,
   &:focus {
+    /** Focus outline width design token */
     outline: var(--rh-border-width-md, 2px) solid;
+    /** Focus outline; uses interactive design token */
     outline-color: var(--rh-color-interactive-primary-default);
     outline-offset: -2px;
     position: relative;
@@ -50,22 +64,32 @@ summary {
 }
 
 #caret {
+  /** Caret icon size; spacing design token */
   inline-size: var(--rh-space-lg, 16px);
   block-size: var(--rh-space-lg, 16px);
   transition: 0.2s;
   will-change: rotate;
   position: relative;
   inset-block-start: 3px;
+  /** Caret margin; spacing design token */
   margin-inline-end: var(--rh-space-md, 8px);
 }
 
 #details-content {
+  /** Panel content surface; adapts to theme via token */
   background-color: var(--rh-color-surface);
   border-radius: var(--rh-border-radius-default, 3px);
+  /** Panel text; inherits theme-aware token */
   color: var(--rh-color-text-primary);
+  /** Body text size design token */
   font-size: var(--rh-font-size-body-text-md, 1rem);
+  /** Body text line height design token */
   line-height: var(--rh-line-height-body-text, 1.5);
-  padding-block: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
+  /** Spacing design token for panel block-start */
+  padding-block-start: var(--rh-space-lg, 16px);
+  /** Spacing design token for panel block-end */
+  padding-block-end: var(--rh-space-xl, 24px);
+  /** Spacing design token for panel inline padding */
   padding-inline: var(--rh-space-xl, 24px);
 }
 
@@ -78,6 +102,7 @@ summary {
 }
 
 details[open] {
+  /** Elevation design token when disclosure is open */
   box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
   position: relative;
 
@@ -87,6 +112,7 @@ details[open] {
 
   &:before {
     content: '';
+    /** Brand accent stripe; uses brand design token */
     border-inline-start: 3px solid var(--rh-color-brand-red);
     border-start-start-radius: var(--rh-border-radius-default, 3px);
     border-end-start-radius: var(--rh-border-radius-default, 3px);
@@ -106,6 +132,7 @@ details[open] {
  *****************************************************************************/
 :host([variant~='compact']) {
   summary {
+    /** Compact text size design token */
     font-size: var(--rh-font-size-body-text-sm, 0.875rem);
     padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
 
@@ -133,15 +160,18 @@ details[open] {
   border: 0;
 
   summary {
+    /** Borderless trigger text; interactive token */
     color: var(--rh-color-interactive-primary-default);
 
     &:hover,
     &:focus {
       background-color: var(--_hover-background-color);
+      /** Borderless trigger hover; interactive token */
       color: var(--rh-color-interactive-primary-hover);
     }
 
     &:focus {
+      /** Focus offset; length design token */
       outline-offset: var(--rh-length-3xs, 2px);
     }
   }
