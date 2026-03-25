@@ -18,21 +18,53 @@ import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-tile.css' with { type: 'css' };
 
+/**
+ * Fired when a checkable tile is selected or deselected.
+ * The `force` property, when true, indicates the tile MUST be selected
+ * (used in radio group mode). When absent, the tile toggles its state.
+ */
 export class TileSelectEvent extends Event {
   declare target: RhTile;
-  constructor(public force?: boolean) {
+  constructor(
+    /** When true, the tile MUST be selected rather than toggled */
+    public force?: boolean,
+  ) {
     super('select', { bubbles: true, cancelable: true });
   }
 }
 
 /**
- * A tile is a flexible layout with a clickable and contained surface.
+ * A tile provides a clickable surface for presenting content with
+ * optional images, icons, and links. Checkable tiles expose ARIA
+ * `role="checkbox"` or `role="radio"` to screen readers. Users
+ * SHOULD set `accessible-label` when tiles lack text content.
+ * Keyboard users activate checkable tiles with Enter or Space.
  *
- * @summary Creates a clickable, contained surface
+ * @summary Clickable, contained surface for content with optional
+ *          images, icons, and links.
  *
  * @alias tile
  *
- * @fires {TileSelectEvent} select - when tile is clicked
+ * @slot image - Place an `\<img\>` or `\<svg\>` element (block
+ *               content). Images MUST include `alt` text or
+ *               `role="presentation"` for screen readers. Hidden
+ *               when the tile is checkable.
+ * @slot icon - Place an `\<rh-icon\>` or inline `\<svg\>` element.
+ *              Icons SHOULD convey meaning for screen reader users
+ *              by providing a title or label.
+ * @slot title - Inline text for secondary context above the
+ *               headline. Hidden when tile is checkable or compact.
+ * @slot headline - Block heading element. In a link tile, MUST
+ *                  contain an `\<a\>` element. In a checkable tile,
+ *                  this labels the ARIA form control.
+ * @slot - Inline or block body text expanding on the headline.
+ * @slot footer - Inline text for supplementary info. SHOULD NOT
+ *                contain interactive elements, as the tile surface
+ *                is already clickable.
+ *
+ * @fires {TileSelectEvent} select - Fired when a checkable tile is
+ *        clicked. The event's `force` property is `true` when the
+ *        tile is in a radio group, indicating it MUST be selected.
  */
 @customElement('rh-tile')
 @colorPalettes
@@ -188,13 +220,17 @@ export class RhTile extends LitElement {
                                  : 'arrow-right';
     return html`
       <div id="outer" class="${classMap({ bleed, checkable, compact, checked, desaturated, disabled })}">
-        <!-- optional image on top of tile -->
+        <!-- Place a block-level img or svg element here.
+             Images MUST include alt text for screen readers, or
+             role="presentation" for decorative images.
+             Hidden when the tile is checkable. -->
         <slot id="image"
               name="image"
               ?hidden="${this.checkable}"
         ></slot>
         <div id="inner">
-          <!-- optional icon -->
+          <!-- Place an inline rh-icon or svg element here.
+               Icon SHOULD include a title for screen readers. -->
           <slot id="icon"
                 class="${classMap({ compact, checkable })}"
                 name="icon"
@@ -203,11 +239,14 @@ export class RhTile extends LitElement {
           </slot>
           <div id="content">
             <div id="header">
-              <!-- A title provides secondary descriptive context. Selectable and compact tiles do not have title slots -->
+              <!-- Inline text providing secondary context above
+                   the headline. Hidden when checkable or compact. -->
               <slot id="title"
                     name="title"
                     ?hidden="${this.checkable || this.compact}"></slot>
-              <!-- In a link tile, the heading should indicate what clicking on the tile will do. In a selectable tile, the heading labels the radio button or checkbox. -->
+              <!-- Block heading element. In a link tile, MUST
+                   contain an anchor. In a checkable tile, this
+                   labels the ARIA form control for screen readers. -->
               <slot id="headline" name="headline"></slot>
               <div id="input-outer" aria-hidden="true" ?hidden="${!this.#isCheckable}" ?inert="${!this.#isCheckable}">
                 <input id="input"
@@ -217,10 +256,12 @@ export class RhTile extends LitElement {
                        ?disabled="${disabled}"></input>
               </div>
             </div>
-            <!-- The body text expands on heading content and gives the user more information. -->
+            <!-- Inline or block body text expanding on the
+                 headline. SHOULD be concise. -->
             <slot id="body" class="${classMap({ empty: this.#slots.isEmpty() })}"></slot>
             <div id="footer" class="${classMap({ empty: this.#slots.isEmpty('footer') })}">
-              <!-- Footer text should be brief and be used for supplementary information only. -->
+              <!-- Inline supplementary text. SHOULD NOT contain
+                   interactive elements as the tile is clickable. -->
               <slot id="footer-text" name="footer"></slot><rh-icon set="ui" icon="${linkIcon}"></rh-icon>
             </div>
           </div>
