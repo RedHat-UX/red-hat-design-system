@@ -26,16 +26,6 @@ import styles from './rh-tag.css' with { type: 'css' };
  *
  * @alias tag
  *
- * @slot - Must contain text content for the tag. Keep text concise
- *   (25 characters or fewer). Text MUST be descriptive enough to
- *   convey meaning without relying on color, so that screen reader
- *   users and users who cannot perceive color receive equivalent
- *   information (WCAG 1.4.1 Use of Color).
- * @slot icon - Optional decorative icon, such as an SVG or
- *   `rh-icon` element. Icons MUST be purely decorative and SHOULD
- *   NOT convey information absent from the text. Screen readers
- *   skip this slot because the icon has no accessible name.
- *
  */
 @customElement('rh-tag')
 @themable
