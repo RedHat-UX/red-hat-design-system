@@ -25,6 +25,7 @@
   white-space: nowrap !important;
   padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px) !important;
   text-decoration: none !important;
+
   /** Theme secondary text token for inactive links */
   color: var(--rh-color-text-secondary) !important;
   position: relative !important;
@@ -35,6 +36,7 @@
   position: absolute !important;
   inset: 0 !important;
   width: 100% !important;
+
   /** Bottom border indicator for link state */
   border-block-end: var(--rh-border-width-lg, 3px) solid transparent !important;
 }
@@ -102,6 +104,7 @@
   z-index: 1;
   inset: 0;
   width: 100%;
+
   /** Bottom border indicator for navigation link state */
   border-block-end: var(--rh-border-width-lg, 3px) solid transparent;
   pointer-events: none;
@@ -120,16 +123,19 @@
 
 button {
   position: relative;
+
   /** Horizontal padding for scroll buttons */
   padding: 0 var(--rh-space-lg, 16px);
   margin: 0;
   background-color: transparent;
   border: none;
+
   /** Theme secondary text token for scroll buttons */
   color: var(--rh-color-text-secondary);
 
   &:disabled {
     pointer-events: none;
+
     /** Subtle border color when scroll is disabled */
     color: var(--rh-color-border-subtle);
   }
@@ -143,6 +149,7 @@ button {
     position: absolute;
     inset: 0;
     content: '';
+
     /** Bottom border for scroll button state */
     border-block-end: var(--rh-border-width-lg, 3px) solid transparent;
 
