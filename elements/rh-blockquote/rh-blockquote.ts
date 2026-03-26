@@ -14,8 +14,8 @@ import styles from './rh-blockquote.css' with { type: 'css' };
  * Provides a styled blockquote for featuring quotes with an icon
  * and attribution. Use when highlighting a customer testimonial,
  * expert opinion, or notable statement. Authors MUST provide quoted
- * text and SHOULD include an author. Renders a semantic ARIA figure
- * with blockquote and figcaption, so screen readers convey the quote
+ * text and SHOULD include an author. Uses `<figure>` semantics
+ * with `<blockquote>` and `<figcaption>`, so screen readers convey the quote
  * and its source. AVOID placing interactive elements inside.
  *
  * @summary Highlights quotations and citations with text styles
@@ -72,14 +72,18 @@ export class RhBlockquote extends LitElement {
         <rh-icon set="standard" icon="quotemark-open"></rh-icon>
         <blockquote id="quote">
           <!-- Block elements like \`<p>\` for the quoted passage.
-               Screen readers announce this within the ARIA figure landmark. -->
+               Screen readers announce this within the \`figure\` landmark. -->
           <slot></slot>
         </blockquote>
         <figcaption>
-          <p id="author"><!-- Inline text for the quoted person's name.
-                 Screen readers announce this as figcaption attribution. --><slot name="author"></slot></p>
-          <p id="title"><!-- Inline text for the author's job title or role.
-                 Screen readers announce this in the figcaption. --><slot name="title"></slot></p>
+          <p id="author"><!--
+            Inline text for the quoted person's name.
+            Screen readers announce this as attribution for the quote.
+          --><slot name="author"></slot></p>
+          <p id="title"><!--
+            Inline text for the author's job title or role.
+            Screen readers announce this in the figcaption.
+          --><slot name="title"></slot></p>
         </figcaption>
       </figure>
     `;
