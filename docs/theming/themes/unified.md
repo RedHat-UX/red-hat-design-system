@@ -81,26 +81,28 @@ Unified content
 
 ## Demos
 
-{% renderFile './docs/theming/patterns/unified-theme-inline-demo.html' %}
-
 <uxdot-pattern src="../patterns/unified-buttons.html">
-  <h3 id="text-and-cta" slot="heading">Buttons</h3>
+  <h3 id="unified-buttons" slot="heading">Buttons</h3>
 </uxdot-pattern>
 
 <uxdot-pattern src="../patterns/unified-ctas.html">
-  <h3 id="text-and-cta" slot="heading">Calls to action</h3>
+  <h3 id="unified-ctas" slot="heading">Calls to action</h3>
 </uxdot-pattern>
 
 <uxdot-pattern src="../patterns/unified-cards.html">
-  <h3 id="text-and-cta" slot="heading">Cards</h3>
+  <h3 id="unified-cards" slot="heading">Cards</h3>
 </uxdot-pattern>
 
 <uxdot-pattern src="../patterns/unified-progress-stepper.html">
-  <h3 id="text-and-cta" slot="heading">Progress stepper</h3>
+  <h3 id="unified-progress-stepper" slot="heading">Progress stepper</h3>
 </uxdot-pattern>
 
 <uxdot-pattern src="../patterns/unified-spinner.html">
-  <h3 id="text-and-cta" slot="heading">Spinner</h3>
+  <h3 id="unified-spinner" slot="heading">Spinner</h3>
+</uxdot-pattern>
+
+<uxdot-pattern src="../patterns/unified-cards-glass.html">
+  <h3 id="unified-glass-cards" slot="heading">Cards w/ Glass</h3>
 </uxdot-pattern>
 
 {# renderFile './docs/theming/patterns/unified-kitchen-sink.html' #}

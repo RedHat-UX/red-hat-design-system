@@ -1,0 +1,68 @@
+@layer
+  tokens,
+  elements;
+
+@layer tokens {
+  :root,
+  :host {
+    /* Glass surface */
+    --unified-glass-backdrop-filter: blur(16px);
+
+    /* Glass border */
+    --unified-glass-border-color:
+      light-dark(
+          #f2f2f2,
+          #383838
+        );
+    --unified-glass-border-width: 1px;
+    --unified-glass-border-radius: 16px;
+
+    /* Glass shadow */
+    --unified-glass-box-shadow: 0 0 10px 0 rgba(41, 41, 41, 0.15);
+    --unified-glass-box-shadow-dark: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+
+    /* Translucent surface overrides (light) */
+    --unified-glass-surface-lightest: rgba(255, 255, 255, 0.6);
+    --unified-glass-surface-lightest-hover: rgba(199, 199, 199, 0.3);
+    --unified-glass-surface-lightest-active: rgba(199, 199, 199, 0.3);
+    --unified-glass-surface-lighter: rgba(199, 199, 199, 0.3);
+    --unified-glass-surface-lighter-hover: rgba(163, 163, 163, 0.3);
+    --unified-glass-surface-lighter-active: rgba(163, 163, 163, 0.3);
+    --unified-glass-surface-light: rgba(199, 199, 199, 0.3);
+    --unified-glass-surface-light-hover: rgba(163, 163, 163, 0.3);
+    --unified-glass-surface-light-active: rgba(163, 163, 163, 0.3);
+
+    /* Translucent surface overrides (dark) */
+    --unified-glass-surface-darkest: rgba(41, 41, 41, 0.5);
+    --unified-glass-surface-darkest-hover: rgba(56, 56, 56, 0.5);
+    --unified-glass-surface-darkest-active: rgba(56, 56, 56, 0.5);
+    --unified-glass-surface-darker: rgba(21, 21, 21, 0.6);
+    --unified-glass-surface-darker-hover: rgba(41, 41, 41, 0.6);
+    --unified-glass-surface-darker-active: rgba(41, 41, 41, 0.6);
+    --unified-glass-surface-dark: rgba(21, 21, 21, 0.6);
+    --unified-glass-surface-dark-hover: rgba(41, 41, 41, 0.6);
+    --unified-glass-surface-dark-active: rgba(41, 41, 41, 0.6);
+  }
+}
+
+/* Component-specific styles */
+@layer elements {
+  @layer
+    card;
+}
+
+/* Element: Card */
+@layer card {
+  .unified-glass rh-card,
+  rh-card.unified-glass {
+    &::part(container) {
+      --rh-color-border-subtle: var(--unified-glass-border-color);
+      --rh-color-surface-lightest: var(--unified-glass-surface-lightest);
+      --rh-color-surface-lighter: var(--unified-glass-surface-lighter);
+      --rh-color-surface-light: var(--unified-glass-surface-light);
+      --rh-color-surface-darkest: var(--unified-glass-surface-darkest);
+      --rh-color-surface-darker: var(--unified-glass-surface-darker);
+      --rh-color-surface-dark: var(--unified-glass-surface-dark);
+    }
+  }
+}
