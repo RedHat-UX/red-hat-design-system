@@ -17,7 +17,6 @@
 
     & .aside {
       grid-area: aside;
-      padding-inline: var(--rh-space-lg);
 
       @container main (width >= 1440px) {
         padding-inline: 0 var(--rh-space-2xl);

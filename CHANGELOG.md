@@ -1,5 +1,22 @@
 # @rhds/elements
 
+## 4.0.4
+### Patch Changes
+
+- 7cd8446: `<rh-jump-links>`: fix active state race conditions during rapid clicks and smooth scrolling
+- 0ebfaf0: `<rh-code-block>`: prevent tooltip from unexpectedly reappearing
+- bb581f3: `<rh-cta>`: ensure default variant's arrow consistently follows text on firefox
+- 6f23579: `<rh-switch>`: fix switch rendering on some browsers in light/dark schemes
+- 887f0af: `<rh-tooltip>`: corrects the intentionality delay for a user triggering the tooltip
+
+## 4.0.3
+### Patch Changes
+
+- 5e77e43: `<rh-code-block>`: add `visible` value to typescript types for the `line-numbers` attribute
+- be03ad5: Corrected import paths for `lit` dependencies
+- d703934: `<rh-navigation-primary>`: correct rendering issue for safari 26.2
+- 25990af: Updated `@rhds/icons` to v2.1, adding 82 new icons to the UI and Standard sets!
+
 ## 4.0.2
 ### Patch Changes
 
