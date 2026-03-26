@@ -4,6 +4,7 @@ import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
 import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { styleMap } from 'lit/directives/style-map.js';
 
 import { observes } from '@patternfly/pfe-core/decorators.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
@@ -246,7 +247,9 @@ export class RhDrawer extends LitElement {
     const hasHeader = this.#slots.hasSlotted('header');
     const hasBody = this.#slots.hasSlotted('body');
     const hasFooter = this.#slots.hasSlotted('footer');
-    const panelStyle = this._panelWidth != null ? `--_panel-width: ${this._panelWidth}px;` : '';
+    const panelStyles = this._panelWidth != null ?
+        { '--_panel-width': `${this._panelWidth}px` }
+      : {};
     const hasContentSlot = this.variant !== 'fixed' && this.variant !== 'flow';
     const isAuto = this.variant === 'auto';
     const classes = {
@@ -277,7 +280,7 @@ export class RhDrawer extends LitElement {
         <div id="panel"
              part="panel"
              role="${this.#panelRole}"
-             style=${panelStyle}>
+             style=${styleMap(panelStyles)}>
           <div id="panel-body">
             <div id="actions" ?hidden="${!this.expand && showCollapsible}">
               ${this.expand ? html`
