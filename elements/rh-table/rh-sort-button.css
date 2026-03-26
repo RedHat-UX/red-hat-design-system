@@ -4,17 +4,21 @@
 
   /** Primary text color for the sort button */
   color: var(--rh-color-text-primary);
+
+  &:after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+  }
 }
 
-#sort-button:after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  cursor: pointer;
-}
-
-#sort-button #sort-indicator {
+#sort-indicator {
   color: currentcolor;
+
+  svg {
+    vertical-align: -0.125em;
+  }
 }
 
 .visually-hidden {

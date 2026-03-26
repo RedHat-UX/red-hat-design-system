@@ -13,6 +13,7 @@ const DIRECTIONS_OPPOSITES = { asc: 'desc', desc: 'asc' } as const;
 export class RequestSortEvent extends ComposedEvent {
   constructor(public direction: 'asc' | 'desc') {
     super('request-sort', {
+      bubbles: true,
       cancelable: true,
     });
   }
@@ -41,12 +42,6 @@ const paths = new Map(Object.entries({
  *        activates the sort button. The event detail includes a
  *        `direction` property set to `'asc'` or `'desc'`.
  *        Cancelling this event prevents the default sort behavior.
- *
- * @csspart sort-button - The native button element. Use to
- *          customize the sort button appearance.
- * @csspart sort-indicator - The wrapper around the sort direction
- *          SVG icon.
- *
  */
 @customElement('rh-sort-button')
 @themable
@@ -59,24 +54,46 @@ export class RhSortButton extends LitElement {
     attribute: 'sort-direction',
   }) sortDirection?: 'asc' | 'desc';
 
+  /**
+   * Automatically set based on `sort-direction`.
+   * Use this attribute or the `accessible-label` slot when localizing a table,
+   * but be certain to update the text based on sort direction whenever it changes.
+   */
+  @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
+
   /** The column name associated with this button (for screen readers) */
   @property() column?: string;
 
   render() {
+    const { accessibleLabel, column, sortDirection } = this;
+    const order = sortDirection === 'asc' ? 'ascending' : 'descending';
+    const srText =
+        !sortDirection ? 'Sort'
+      : `(sort${!column ? '' : ` by ${column}`} in ${order} order)`;
     return html`
-      <!-- button element -->
-      <button id="sort-button" part="sort-button" @click="${this.sort}" aria-label="Sort">
-        <span class="visually-hidden">${!this.sortDirection ? '' : `(sort${!this.column ? '' : ` by ${this.column}`} in ${this.sortDirection === 'asc' ? 'ascending' : 'descending'} order)`}</span>
-        <!-- icon wrapper element -->
+      <!-- The native button element. Use to customize the sort button appearance. -->
+      <button id="sort-button"
+              part="sort-button"
+              @click="${this.sort}"
+              aria-labelledby="sort-text">
+        <span id="sort-text"
+              class="visually-hidden">
+          <!--
+            MUST NOT use unless localizing the table.
+            Automatically set based on \`sort-direction\`.
+            Overrides the \`accessible-label\` attribute.
+          -->
+          <slot name="accessible-label">${accessibleLabel ?? srText}</slot>
+        </span>
+        <!-- The wrapper around the sort direction SVG icon. -->
         <span id="sort-indicator" part="sort-indicator">
           <svg fill="currentColor"
                height="1em"
                width="1em"
                viewBox="0 0 320 512"
                aria-hidden="true"
-               role="img"
-               style="vertical-align: -0.125em;">
-            ${svg`<path d="${paths.get(this.sortDirection ?? 'sort')}"></path>`}
+               role="img">${svg`
+            <path d="${paths.get(this.sortDirection ?? 'sort')}"></path>`}
           </svg>
         </span>
       </button>
