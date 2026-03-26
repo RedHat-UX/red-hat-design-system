@@ -13,10 +13,10 @@ import styles from './rh-blockquote.css' with { type: 'css' };
 /**
  * Provides a styled blockquote for featuring quotes with an icon
  * and attribution. Use when highlighting a customer testimonial,
- * expert opinion, or notable statement. Authors MUST provide quoted
- * text and SHOULD include an author. Uses `<figure>` semantics
+ * expert opinion, or notable statement. Authors must provide quoted
+ * text and should include an author. Uses `<figure>` semantics
  * with `<blockquote>` and `<figcaption>`, so screen readers convey the quote
- * and its source. AVOID placing interactive elements inside.
+ * and its source. Avoid placing interactive elements inside.
  *
  * @summary Highlights quotations and citations with text styles
  *
@@ -60,7 +60,7 @@ export class RhBlockquote extends LitElement {
   /**
    * Controls the horizontal alignment of the blockquote content.
    * Use `center` for short quotes in visually prominent layouts.
-   * AVOID centering long text, as it reduces readability.
+   * Avoid centering long text, as it reduces readability.
    * Possible values are:
    * - `inline-start` (default)
    * - `center`
