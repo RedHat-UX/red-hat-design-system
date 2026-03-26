@@ -21,24 +21,14 @@ import styles from './rh-table.css' with { type: 'css' };
  *
  * @alias table
  *
- * @slot - The default slot expects a native HTML \`<table>\` element.
- *         Authors MUST include proper semantic table markup with
- *         \`<thead>\`, \`<tbody>\`, and scoped \`<th>\` elements so
- *         that screen readers can navigate the table structure.
- * @slot summary - An optional description of the table data, rendered
- *                 below the table. Authors SHOULD use inline content
- *                 such as \`<small>\` for brief supplementary context.
- *                 The summary is linked to the table via
- *                 \`aria-describedby\` for screen reader users.
- *
  * @csspart container - The outer wrapper around the table and summary
  *                      slots. Use to customize padding or background.
  *
- *              style. Uses \`--rh-border-width-sm\` width and
- *              \`--rh-color-border-subtle-on-light\` color tokens.
- *              Row hover background. Uses \`--rh-color-gray-40\`
+ *              style. Uses `--rh-border-width-sm` width and
+ *              `--rh-color-border-subtle-on-light` color tokens.
+ *              Row hover background. Uses `--rh-color-gray-40`
  *              token at 10% opacity for the light theme.
- *              Column hover background. Uses \`--rh-color-blue-50\`
+ *              Column hover background. Uses `--rh-color-blue-50`
  *              token at 10% opacity for the light theme.
  *
  */
