@@ -24,6 +24,7 @@
     th,
     td,
     td :is(p, ul, ol, code) {
+      margin-block-end: var(--rh-space-lg);
       font-size: var(--rh-font-size-body-text-sm);
     }
 
