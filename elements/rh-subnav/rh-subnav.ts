@@ -20,8 +20,8 @@ type LinkElement = HTMLAnchorElement | RhNavigationLink;
 
 /**
  * A subnavigation provides a horizontal list of links for navigating
- * related pages. Authors MUST provide `<rh-navigation-link>` children
- * and SHOULD AVOID using plain `<a>` elements, which are deprecated.
+ * related pages.
+ *
  * Overflow scroll buttons appear when links exceed the available space.
  * The `<nav>` landmark has a configurable `aria-label` for screen
  * readers; all links are keyboard accessible via Tab and Enter.
@@ -116,10 +116,7 @@ export class RhSubnav extends LitElement {
 
   override render() {
     return html`
-      <!--
-        part:
-          description: The nav container wrapping the link list
-      -->
+      <!-- The nav container wrapping the link list -->
       <nav part="container"
            aria-label="${this.accessibleLabel}">
         ${!this.#overflow.showScrollButtons ? '' : html`
@@ -133,14 +130,15 @@ export class RhSubnav extends LitElement {
           </button>`}
         <div id="link-container" role="${ifDefined(this.hasNavigationLinks ? 'list' : undefined)}" >
           <!--
-            summary: Sub navigation links
-            description: |
-              Expects a collection of \`<rh-navigation-link>\` or
-              \`<a>\` elements. Each link MUST have text content
-              for screen readers. Slotting \`<a>\` elements is
-              deprecated; use \`<rh-navigation-link>\` instead.
             part:
               description: The scrollable link list container
+            slot:
+              summary: Sub navigation links
+              description: |
+                Expects a collection of \`<rh-navigation-link>\` or
+                \`<a>\` elements. Each link MUST have text content
+                for screen readers. Slotting \`<a>\` elements is
+                deprecated; use \`<rh-navigation-link>\` instead.
           -->
           <slot @slotchange="${this.#onSlotchange}" part="links"></slot>
         </div>
