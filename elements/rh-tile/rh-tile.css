@@ -45,6 +45,7 @@
    * and `--rh-color-border-interactive-on-dark` for theming.
    */
   --_interactive-color: var(--rh-tile-interactive-color, var(--rh-color-border-interactive));
+
   /** Border and icon color on focus/hover, themed via
    * rh-color-interactive design tokens. */
   --_focus-interactive-color:

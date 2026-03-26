@@ -4,6 +4,7 @@
 
 rh-tile a {
   color: var(--_link-color) !important;
+
   /** Text decoration for tile links at rest */
   text-decoration: var(--rh-tile-link-text-decoration, none) !important;
 }
