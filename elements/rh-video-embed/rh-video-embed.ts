@@ -216,7 +216,7 @@ export class RhVideoEmbed extends LitElement {
                        that cookie opt-in is required. SHOULD be
                        readable by screen readers. Defaults to a
                        built-in message when not provided. -->
-                <slot name=”consent-message”>
+                <slot name="consent-message">
                   <p id="consent-message">View this video by opting in to “Advertising Cookies.”</p>
                 </slot>
                 <rh-button
