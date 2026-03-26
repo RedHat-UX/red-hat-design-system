@@ -12,6 +12,7 @@
 #container {
   display: inline-flex;
   align-items: center;
+
   /** Gap between track and message, uses rh-space-lg token */
   gap: var(--rh-space-lg, 16px);
 
@@ -111,10 +112,9 @@ rh-icon {
 }
 
 :host(:is(:focus, :focus-within)) #container #switch {
-  /** Focus ring uses rh-border-width-md token for width */
-  outline: var(--rh-border-width-md, 2px) solid
-    /** Focus ring color from the rh-color-border-interactive token */
-    var(--rh-color-border-interactive);
+  /** Focus ring outline */
+  outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
+
   /** Focus ring offset uses the rh-space-sm token */
   outline-offset: var(--rh-space-sm, 6px);
 }
