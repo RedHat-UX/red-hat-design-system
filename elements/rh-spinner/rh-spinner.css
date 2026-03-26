@@ -13,16 +13,20 @@
 ::slotted(p) {
   /** Text label font family, uses body text typography token */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
   /** Text label font weight, uses body text weight token */
   font-weight: var(--rh-font-weight-body-text-regular, 400);
+
   /** Text label line height, uses body text line-height token */
   line-height: var(--rh-line-height-body-text, 1.5);
 }
 
 svg {
   aspect-ratio: 1 / 1;
+
   /** Default spinner circle diameter */
   width: var(--rh-length-4xl, 64px);
+
   /** Default spinner circle stroke width */
   stroke-width: var(--rh-length-sm, 6px);
   overflow: hidden;
@@ -40,6 +44,7 @@ circle {
 circle.dash {
   transform-origin: 50% 50%;
   animation: rh-spinner-animation-dash 1.4s ease-out infinite;
+
   /** Animated indicator stroke color, uses the accent theme token */
   stroke: var(--rh-color-accent-base);
   stroke-dasharray: 283;
@@ -56,6 +61,7 @@ circle.track {
 :host([size='lg']) svg {
   /** Large spinner circle diameter */
   width: var(--rh-size-icon-06, 64px);
+
   /** Large spinner circle stroke width */
   stroke-width: var(--rh-length-sm, 6px);
 }
@@ -68,6 +74,7 @@ circle.track {
 :host([size='md']) svg {
   /** Medium spinner circle diameter */
   width: var(--rh-size-icon-04, 40px);
+
   /** Medium spinner circle stroke width */
   stroke-width: var(--rh-length-xs, 4px);
 }
@@ -80,6 +87,7 @@ circle.track {
 :host([size='sm']) svg {
   /** Small spinner circle diameter */
   width: var(--rh-size-icon-01, 16px);
+
   /** Small spinner circle stroke width */
   stroke-width: var(--rh-length-2xs, 3px);
 }
