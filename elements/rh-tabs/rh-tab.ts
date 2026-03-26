@@ -65,19 +65,14 @@ export class TabExpandEvent extends Event {
  * @csspart icon - container for the icon slot
  * @csspart text - container for the default (text) slot
  *
- * @cssprop {<color>} [--rh-tabs-link-color] -
  *          Tab label text color, defaults to
  *          rh-color-text-secondary token
- * @cssprop {<length>} [--rh-tabs-link-padding-block-start] -
  *          Padding above the tab label, defaults to
  *          rh-space-lg token
- * @cssprop {<length>} [--rh-tabs-link-padding-block-end] -
  *          Padding below the tab label, defaults to
  *          rh-space-lg token
- * @cssprop {<length>} [--rh-tabs-link-padding-inline-start] -
  *          Padding before the tab label, defaults to
  *          rh-space-2xl token
- * @cssprop {<length>} [--rh-tabs-link-padding-inline-end] -
  *          Padding after the tab label, defaults to
  *          rh-space-2xl token
  */

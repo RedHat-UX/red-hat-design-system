@@ -1,7 +1,9 @@
 :host {
   display: block;
+
   /** Text color using rh-color-text-primary token */
   color: var(--rh-color-text-primary);
+
   /** Background using rh-color-surface token */
   background-color: var(--rh-color-surface);
   container-name: host;
@@ -23,8 +25,10 @@
     position: absolute;
     inset-inline-end: 0;
     inset: 0;
+
     /** Border width using rh-border-width-sm token */
     border-width: 0 0 var(--rh-border-width-sm, 1px);
+
     /** Border color using rh-color-border-subtle token */
     border-color: var(--rh-color-border-subtle);
     border-style: solid;
@@ -44,6 +48,7 @@
   bottom: 0;
   margin: 0;
   width: auto;
+
   /** Font size using rh-font-size-body-text-md token */
   font-size: var(--rh-font-size-body-text-md, 1rem);
 }
@@ -134,6 +139,7 @@ button {
         &:before {
           height: 100%;
           border-block-end-width: 0;
+
           /** Vertical border using rh-border-width-sm token */
           border-inline-start-width: var(--rh-border-width-sm, 1px);
         }
@@ -203,8 +209,10 @@ button {
 /* OVERFLOW BUTTONS */
 :is(#previous-tab, #next-tab) {
   padding-block: 0;
+
   /** Inline padding using rh-space-lg token */
   padding-inline: var(--rh-space-lg, 16px);
+
   /** Background using rh-color-surface token */
   background-color: var(--rh-color-surface);
   color: var(--_overflow-button-text-color);

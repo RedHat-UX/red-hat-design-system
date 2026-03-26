@@ -58,9 +58,7 @@ export { RhTab };
  * @csspart tabs - the scrollable tab list (has `role="tablist"`)
  * @csspart panels - container for `rh-tab-panel` elements
  *
- * @cssprop {<length>} [--rh-tabs-inset] - Inline margin for the
  *          tab list when centered or inset box style is used
- * @cssprop {<color>} [--rh-tabs-active-border-color] -
  *          Active tab indicator color, defaults to the
  *          rh-color-accent-brand design token
  *
