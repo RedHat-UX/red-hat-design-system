@@ -56,14 +56,9 @@ const thresholdBreakpoints: Record<string, number> = {
 
 /**
  * A drawer provides a collapsible side panel for supplementary content
- * or navigation. It allows users to access information without leaving
- * the current context. The `body` slot MUST contain the primary panel
- * content. The panel uses `role="dialog"` for overlay variants (fixed,
- * overlay) and `role="complementary"` for inline. The auto and flow
- * variants switch roles dynamically at their layout breakpoints.
- * Keyboard users MAY press Escape to close. Focus SHOULD move to the
- * close or collapse toggle on open for screen reader awareness. Uses
- * `aria-controls` and `aria-expanded` on toggle buttons.
+ * or navigation. The `body` slot MUST contain panel content. Authors
+ * SHOULD provide a header or `accessible-label` so screen readers can
+ * identify the panel per WCAG. Background adapts to the color scheme.
  *
  * @summary Slides a panel in from the side for supplementary content or navigation
  *
@@ -72,13 +67,13 @@ const thresholdBreakpoints: Record<string, number> = {
  * @slot - Expects block elements such as `div`, `section`, or `article` for page content alongside the drawer panel. Not rendered for fixed or flow variants.
  * @slot header - Expects block elements for the panel header. MAY include a heading (`h1`–`h6`) so screen readers can identify the panel content.
  * @slot body - Expects block elements such as `div`, `nav`, or `rh-navigation-vertical` for panel content. MUST NOT be left empty for accessibility.
- * @slot footer - Expects block elements for footer content pinned to the bottom of the panel.
- * @slot expand-label-expand - Inline text label for the expand button when collapsed. Defaults to "Enter full screen". SHOULD be localized.
- * @slot expand-label-collapse - Inline text label for the expand button when expanded. Defaults to "Exit full screen". SHOULD be localized.
- * @slot close-label - Inline text label for the close button. Defaults to "Close drawer". SHOULD be localized for screen readers.
- * @slot resize-label - Inline text label for the resize handle. Defaults to "Resize panel". SHOULD be localized for screen readers.
- * @slot collapse-label-open - Inline text label for the collapse toggle when open. Defaults to "Collapse panel". SHOULD be localized.
- * @slot collapse-label-closed - Inline text label for the collapse toggle when closed. Defaults to "Expand panel". SHOULD be localized.
+ * @slot footer - Expects block elements for footer content pinned to the bottom of the panel. Content is visible to screen readers.
+ * @slot expand-label-expand - Expects inline text for the expand button when collapsed. Defaults to "Enter full screen". SHOULD be localized for screen readers.
+ * @slot expand-label-collapse - Expects inline text for the expand button when expanded. Defaults to "Exit full screen". SHOULD be localized for screen readers.
+ * @slot close-label - Expects inline text for the close button. Defaults to "Close drawer". SHOULD be localized for screen readers.
+ * @slot resize-label - Expects inline text for the resize handle. Defaults to "Resize panel". SHOULD be localized for screen readers.
+ * @slot collapse-label-open - Expects inline text for the collapse toggle when open. Defaults to "Collapse panel". SHOULD be localized for screen readers.
+ * @slot collapse-label-closed - Expects inline text for the collapse toggle when closed. Defaults to "Expand panel". SHOULD be localized for screen readers.
  *
  * @csspart panel - The sliding panel container. Background adapts to light and dark themes.
  * @csspart header - The panel header area for slotted heading content.
