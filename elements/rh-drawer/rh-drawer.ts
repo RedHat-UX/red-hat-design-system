@@ -38,9 +38,12 @@ export class DrawerCloseEvent extends Event {
  * A drawer provides a collapsible side panel for supplementary content
  * or navigation. It allows users to access information without leaving
  * the current context. The `body` slot MUST contain the primary panel
- * content. Keyboard users MAY press Escape to close. Focus SHOULD move
- * to the close or collapse toggle on open for screen reader awareness.
- * Uses `aria-controls` and `aria-expanded` on toggle buttons.
+ * content. The panel uses `role="dialog"` for overlay variants (fixed,
+ * overlay) and `role="complementary"` for inline. The auto and flow
+ * variants switch roles dynamically at their layout breakpoints.
+ * Keyboard users MAY press Escape to close. Focus SHOULD move to the
+ * close or collapse toggle on open for screen reader awareness. Uses
+ * `aria-controls` and `aria-expanded` on toggle buttons.
  *
  * @summary Slides a panel in from the side for supplementary content or navigation
  *
@@ -126,6 +129,7 @@ export class RhDrawer extends LitElement {
   overlayThreshold?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
   @state() private _isFullScreen = false;
+  @state() private _isInlineMode = false;
   @state() private _panelWidth: number | null = null;
   @state() private _suppressTransition = false;
 
@@ -169,15 +173,20 @@ export class RhDrawer extends LitElement {
       // server-rendered HTML and client-rendered values
       this._suppressTransition = true;
       this.#restoreState();
+      if (this.variant === 'inline') {
+        this._isInlineMode = true;
+      }
       if (this.variant === 'auto' || this.variant === 'inline') {
         this.#resizeObserver = new ResizeObserver(this.#onContainerResize);
         this.#resizeObserver.observe(this);
+        this.#updateInlineMode();
       }
       if (this.variant === 'flow') {
         this.#mediaQuery = window.matchMedia('(min-width: 992px)');
         this.#mediaQuery.addEventListener('change', this.#onMediaChange);
         window.addEventListener('resize', this.#onWindowResize);
         this.#onMediaChange();
+        this._isInlineMode = this.#mediaQuery.matches;
       }
       this.#initialized = true;
     }
@@ -195,6 +204,20 @@ export class RhDrawer extends LitElement {
     this.#mediaQuery?.removeEventListener('change', this.#onMediaChange);
     this.#resizeObserver?.disconnect();
     clearTimeout(this.#resizeTimer);
+  }
+
+  get #panelRole(): string {
+    switch (this.variant) {
+      case 'fixed':
+      case 'overlay':
+        return 'dialog';
+      case 'inline':
+        return 'complementary';
+      case 'auto':
+      case 'flow':
+      default:
+        return this._isInlineMode ? 'complementary' : 'dialog';
+    }
   }
 
   render() {
@@ -237,6 +260,7 @@ export class RhDrawer extends LitElement {
            class=${classMap(classes)}>
         <div id="panel"
              part="panel"
+             .role="${this.#panelRole}"
              style=${panelStyle}>
           <div id="panel-body">
             <div id="actions" ?hidden="${!this.expand && showCollapsible}">
@@ -470,16 +494,30 @@ export class RhDrawer extends LitElement {
   // breakpoint so the layout swap between overlay and inline snaps instantly.
   #onContainerResize = () => {
     this.containerEl?.classList.add('no-transition');
+    this.#updateInlineMode();
     clearTimeout(this.#resizeTimer);
     this.#resizeTimer = setTimeout(() => {
       this.containerEl?.classList.remove('no-transition');
     }, 150);
   };
 
+  #updateInlineMode() {
+    if (this.variant === 'inline') {
+      this._isInlineMode = true;
+      return;
+    }
+    if (this.variant === 'auto') {
+      const { width } = this.getBoundingClientRect();
+      const breakpoint = 768;
+      this._isInlineMode = width >= breakpoint;
+    }
+  }
+
   #onMediaChange = () => {
     if (this.variant !== 'flow' || !this.#mediaQuery) {
       return;
     }
+    this._isInlineMode = this.#mediaQuery.matches;
     const nextOpen = this.#mediaQuery.matches ? true : (this.#getStoredOpen() ?? false);
     if (nextOpen !== this.open) {
       this.open = nextOpen;
