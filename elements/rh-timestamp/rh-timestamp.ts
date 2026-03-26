@@ -65,9 +65,9 @@ export class RhTimestamp extends LitElement {
   @property({ reflect: true, attribute: 'display-suffix' }) displaySuffix?: string;
 
   /**
-   * Overrides the browser's default locale for formatting. Accepts any
-   * valid BCP 47 language tag (e.g. "en-GB", "es", "ja"). Defaults to the
-   * browser's locale when not set.
+   * Overrides the browser's default locale for formatting.
+   * Accepts any valid BCP 47 language tag (e.g. "en-GB", "es", "ja").
+   * Defaults to the browser's locale when not set.
    */
   @property({ reflect: true }) locale?: string;
 
@@ -75,20 +75,19 @@ export class RhTimestamp extends LitElement {
    * When set, displays the timestamp as a relative time string
    * (e.g. "3 hours ago", "in 2 days") instead of an absolute date.
    * Uses `Intl.RelativeTimeFormat` for locale-aware output.
-   * Defaults to `false`.
    */
   @property({ reflect: true, type: Boolean }) relative?: boolean;
 
   /**
    * When set, converts the displayed time to UTC. If no `display-suffix`
-   * is provided, "UTC" is automatically appended. Defaults to `false`.
+   * is provided, "UTC" is automatically appended.
    */
   @property({ reflect: true, type: Boolean }) utc?: boolean;
 
   /**
    * When set, uses 12-hour time format (e.g. "2:30 PM") instead of
    * 24-hour time (e.g. "14:30"). Accepts the attribute values "true"
-   * or "false", or can be set as a boolean property. Defaults to `false`.
+   * or "false", or can be set as a boolean property.
    */
   @property({
     reflect: true,
