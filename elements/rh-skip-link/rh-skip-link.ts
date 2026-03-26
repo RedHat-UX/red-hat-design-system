@@ -14,11 +14,6 @@ import styles from './rh-skip-link.css' with { type: 'css' };
  *
  * @summary Allows users to skip repetitive navigation for accessibility.
  *
- * @slot - An anchor element (`<a>`) linking to the main content area.
- *         When `href` is set on the host, the slot accepts plain text instead.
- *         Slotted anchors MUST have an accessible name for screen readers,
- *         and SHOULD use a descriptive label like "Skip to main content".
- *
  * @alias skip-link
  */
 @customElement('rh-skip-link')
