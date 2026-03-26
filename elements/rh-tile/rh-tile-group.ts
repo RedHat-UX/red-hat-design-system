@@ -24,8 +24,6 @@ import styles from './rh-tile-group.css' with { type: 'css' };
  * @summary Groups tiles for checkbox or radio selection with
  *          keyboard navigation and form association.
  *
- * @slot - Place `\<rh-tile\>` elements here. Each tile MUST have a
- *         `headline` slot with descriptive text for screen readers.
  */
 @customElement('rh-tile-group')
 @colorPalettes

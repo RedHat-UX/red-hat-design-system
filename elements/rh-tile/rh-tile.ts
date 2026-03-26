@@ -45,23 +45,6 @@ export class TileSelectEvent extends Event {
  *
  * @alias tile
  *
- * @slot image - Place an `\<img\>` or `\<svg\>` element (block
- *               content). Images MUST include `alt` text or
- *               `role="presentation"` for screen readers. Hidden
- *               when the tile is checkable.
- * @slot icon - Place an `\<rh-icon\>` or inline `\<svg\>` element.
- *              Icons SHOULD convey meaning for screen reader users
- *              by providing a title or label.
- * @slot title - Inline text for secondary context above the
- *               headline. Hidden when tile is checkable or compact.
- * @slot headline - Block heading element. In a link tile, MUST
- *                  contain an `\<a\>` element. In a checkable tile,
- *                  this labels the ARIA form control.
- * @slot - Inline or block body text expanding on the headline.
- * @slot footer - Inline text for supplementary info. SHOULD NOT
- *                contain interactive elements, as the tile surface
- *                is already clickable.
- *
  * @fires {TileSelectEvent} select - Fired when a checkable tile is
  *        clicked. The event's `force` property is `true` when the
  *        tile is in a radio group, indicating it MUST be selected.
