@@ -19,10 +19,6 @@ export type SpinnerSize = RhSpinner['size'];
  *
  * @summary Notifies users their action is being processed or loaded
  *
- * @slot - Optional text label below the spinner circle,
- *         typically a `<p>` element with a brief message
- *         (e.g. "Loading..."). SHOULD be under 30 characters.
- *
  * @alias spinner
  */
 @customElement('rh-spinner')
