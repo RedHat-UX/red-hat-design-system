@@ -2,11 +2,14 @@
   --_spacer: var(--rh-space-lg, 16px);
 
   display: inline-block;
+
   /** Uses --rh-font-family-body-text design token */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif) !important;
+
   /** Uses --rh-line-height-body-text design token */
   line-height: var(--rh-line-height-body-text, 1.5) !important;
   margin-block: 2px;
+
   /** Uses --rh-space-md design token for chip spacing */
   margin-inline-end: var(--rh-space-md, 8px);
 }
@@ -20,6 +23,7 @@ label {
   padding: var(--rh-space-xs, 4px) var(--rh-space-md, 8px);
   position: relative;
   text-wrap: balance;
+
   /** Uses --rh-font-size-body-text-sm design token */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
 
@@ -31,12 +35,14 @@ label {
   &:hover,
   &:focus-within {
     cursor: pointer;
+
     /** Uses --rh-border-width-md design token */
     outline-width: var(--rh-border-width-md, 2px);
   }
 
   &:focus-within:after {
     content: '';
+
     /** Uses --rh-border-radius-default design token */
     border-radius: var(--rh-border-radius-default, 3px);
     inset: var(--rh-length-3xs, 2px) var(--rh-length-md, 8px);
@@ -50,10 +56,12 @@ label {
     background-color:
       light-dark(var(--rh-color-gray-30, #c7c7c7),
         var(--rh-color-surface-dark, #383838));
+
     /** Disabled chip text color */
-    color: light-dark(
-      var(--rh-color-text-secondary),
-      var(--rh-color-gray-40, #a3a3a3));
+    color:
+      light-dark(
+          var(--rh-color-text-secondary),
+          var(--rh-color-gray-40, #a3a3a3));
     outline-color:
       light-dark(var(--rh-color-gray-30, #c7c7c7),
         var(--rh-color-surface-dark, #383838));
@@ -65,19 +73,24 @@ label {
     background-color:
       light-dark(var(--rh-color-blue-10, #e0f0ff),
         var(--rh-color-blue-70, #003366));
+
     /** Checked chip text color */
-    color: light-dark(
-      var(--rh-color-blue-70, #003366),
-      var(--rh-color-blue-10, #e0f0ff));
+    color:
+      light-dark(
+          var(--rh-color-blue-70, #003366),
+          var(--rh-color-blue-10, #e0f0ff));
+
     /** Checked chip border color */
-    outline-color: light-dark(
-      var(--rh-color-blue-30, #92c5f9),
-      var(--rh-color-blue-50, #0066cc));
+    outline-color:
+      light-dark(
+          var(--rh-color-blue-30, #92c5f9),
+          var(--rh-color-blue-50, #0066cc));
 
     &:hover {
-      outline-color: light-dark(
-        var(--rh-color-blue-30, #92c5f9),
-        var(--rh-color-blue-50, #0066cc));
+      outline-color:
+        light-dark(
+            var(--rh-color-blue-30, #92c5f9),
+            var(--rh-color-blue-50, #0066cc));
     }
   }
 }
@@ -104,6 +117,7 @@ input {
   &:checked + #close-icon {
     block-size: auto;
     inline-size: auto;
+
     /** Uses --rh-space-md design token for icon spacing */
     margin-inline-start: var(--rh-space-md, 8px);
     opacity: 1;

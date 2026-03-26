@@ -15,10 +15,13 @@ fieldset {
 
 legend {
   float: left;
+
   /** Uses --rh-font-family-body-text design token */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
   /** Uses --rh-font-size-body-text-md design token */
   font-size: var(--rh-font-size-body-text-md, 1rem);
+
   /** Uses --rh-space-md design token for legend spacing */
   margin-inline-end: var(--rh-space-md, 8px);
 }
@@ -26,18 +29,24 @@ legend {
 .btn-link {
   background-color: transparent;
   border: 0;
+
   /** Uses --rh-border-radius-pill design token */
   border-radius: var(--rh-border-radius-pill, 64px);
+
   /** Uses --rh-color-interactive-primary-default token */
   color: var(--rh-color-interactive-primary-default);
   cursor: pointer;
+
   /** Uses --rh-font-family-body-text design token */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
   /** Uses --rh-font-size-body-text-sm design token */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+
   /** Uses --rh-line-height-body-text design token */
   line-height: var(--rh-line-height-body-text, 1.5);
   margin-block-start: 1px;
+
   /** Uses --rh-border-width-sm design token */
   outline: var(--rh-border-width-sm, 1px) solid transparent;
   padding: var(--rh-space-xs, 4px) var(--rh-space-md, 8px);
@@ -47,6 +56,7 @@ legend {
   &:focus {
     /** Uses --rh-color-interactive-primary-hover token */
     color: var(--rh-color-interactive-primary-hover);
+
     /** Uses --rh-color-border-subtle design token */
     outline-color: var(--rh-color-border-subtle);
   }
@@ -58,6 +68,7 @@ legend {
 
   &:focus:after {
     content: '';
+
     /** Uses --rh-border-radius-default design token */
     border-radius: var(--rh-border-radius-default, 3px);
     inset: var(--rh-length-4xs, 1px) var(--rh-length-md, 8px);
