@@ -524,7 +524,7 @@ export class RhDrawer extends LitElement {
     }, 150);
   };
 
-  // Auto/inline variant: suppress transitions when the container crosses a
+  // Auto variant: suppress transitions when the container crosses a
   // breakpoint so the layout swap between overlay and inline snaps instantly.
   #onContainerResize = () => {
     this.containerEl?.classList.add('no-transition');
