@@ -32,10 +32,6 @@ export class MenuToggleEvent extends Event {
  *
  * @summary Vertically stacked list of menu actions or links
  *
- * @slot - Accepts `rh-menu-item`, `rh-menu-item-group`, `<a>`, or `<hr>`
- *         elements. Screen reader users will perceive these as menubar items.
- *         Authors SHOULD NOT place non-interactive content in this slot.
- *
  * @fires {MenuToggleEvent} toggle - Fired when the menu opens or closes.
  *        The event detail includes the `open` boolean state and a reference
  *        to the menu element.

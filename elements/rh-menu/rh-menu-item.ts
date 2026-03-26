@@ -18,13 +18,6 @@ import styles from './rh-menu-item.css' with { type: 'css' };
  *
  * @summary A single action or link within a menu
  *
- * @slot - Inline text label for the menu item. MUST contain visible
- *         text for screen reader accessibility.
- * @slot icon - An icon displayed alongside the menu item label.
- *              Appears before the text in LTR layouts.
- * @slot description - Supplementary description text displayed below
- *                     the menu item label.
- *
  * @alias Menu Dropdown Item
  */
 @customElement('rh-menu-item')

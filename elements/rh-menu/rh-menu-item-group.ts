@@ -13,10 +13,6 @@ import styles from './rh-menu-item-group.css' with { type: 'css' };
  *
  * @summary A labeled group of related menu items
  *
- * @slot - Accepts `rh-menu-item` elements. Authors MUST NOT place
- *         non-interactive content in this slot. Screen reader users
- *         navigate grouped items via the parent menu's keyboard controls.
- *
  * @alias Menu Dropdown
  */
 @customElement('rh-menu-item-group')
