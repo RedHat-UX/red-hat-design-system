@@ -13,7 +13,7 @@ div#container {
 
 a,
 ::slotted(a) {
-  /** Skip link container background, uses the lightest surface token to ensure contrast in both light and dark themes */
+  /** Skip link background, lightest surface token */
   background-color: var(--rh-color-surface-lightest, #ffffff) !important;
   border-block-start-width: 0 !important;
   border-block-end:
@@ -28,17 +28,23 @@ a,
     var(--rh-border-width-sm, 1px)
     solid
     var(--rh-color-border-interactive-on-light, #0066cc);
+
   /** Bottom-start corner radius, matches the default border radius design token */
   border-end-start-radius: var(--rh-border-radius-default, 3px) !important;
+
   /** Bottom-end corner radius, matches the default border radius design token */
   border-end-end-radius: var(--rh-border-radius-default, 3px) !important;
   clip: rect(0, 0, 0, 0) !important;
+
   /** Link text color, uses the interactive primary token for accessible contrast */
   color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
+
   /** Link text font family, uses the heading font token for brand consistency */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif) !important;
+
   /** Link text font size, matches body text for readability */
   font-size: var(--rh-font-size-body-text-md, 1rem) !important;
+
   /** Link text font weight, uses bold heading weight for emphasis */
   font-weight: var(--rh-font-weight-heading-bold, 700) !important;
   height: 1px !important;
@@ -80,6 +86,7 @@ a:is(:active, :hover),
   text-decoration: underline !important;
   text-decoration-style: dashed !important;
   text-decoration-color: inherit !important;
+
   /** Underline thickness on hover/active, uses the small border width token */
   text-decoration-thickness: var(--rh-border-width-sm) !important;
   text-underline-offset: max(5px, 0.28em) !important;
