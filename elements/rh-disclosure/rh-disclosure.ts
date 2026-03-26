@@ -16,8 +16,8 @@ import styles from './rh-disclosure.css' with { type: 'css' };
 
 /**
  * Fired when a disclosure is opened or closed. The event bubbles and is
- * cancelable. The event has no `detail` property; read the `open` property
- * on the host element to determine the current state.
+ * cancelable. The event has no additional properties; read the `open` property
+ * on the event target to determine the current state.
  */
 export class DisclosureToggleEvent extends Event {
   constructor() {
@@ -27,10 +27,8 @@ export class DisclosureToggleEvent extends Event {
 
 /**
  * A disclosure provides a way to toggle content visibility when triggered.
- * It wraps a native `<details>`/`<summary>` element, so screen readers
- * announce expanded or collapsed ARIA state (WCAG 4.1.2). Users SHOULD
- * provide a title via the `summary` attribute or slot. Enter, Space, or
- * Escape MUST toggle or close the panel.
+ * When used correctly, assistive technology announces expanded or collapsed state
+ * (WCAG 4.1.2). Users SHOULD provide a title via the `summary` attribute or slot.
  *
  * @summary A disclosure toggles the visibility of content when triggered
  *
@@ -83,7 +81,8 @@ export class RhDisclosure extends LitElement {
    */
   @property({ type: Boolean, reflect: true }) open = false;
 
-  /** Borderless: Removes the outer and left border from the disclosure.
+  /**
+   * Borderless: Removes the outer and left border from the disclosure.
    * The background is `surface-light`/`surface-dark` when expanded.
    * Compact: decreases disclosure padding.
    */
@@ -125,7 +124,9 @@ export class RhDisclosure extends LitElement {
                  or nested components. Interactive children receive
                  focus via Tab when the panel is expanded. Slotted
                  content SHOULD follow WCAG reading order so screen
-                 readers present it logically. -->
+                 readers present it logically. Care has been taken to ensure
+                 that the escape key does not close the disclosure when focus
+                 is on an interactive element. -->
           <slot></slot>
         </div>
       </details>
