@@ -128,6 +128,13 @@ export class RhDrawer extends LitElement {
   @property({ reflect: true }) expand?: 'full-screen';
 
   /**
+   * Accessible label for the drawer panel. When set, applies `aria-label`
+   * to the panel. When not set and the header slot has content, the panel
+   * uses `aria-labelledby` referencing the header instead.
+   */
+  @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
+
+  /**
    * Controls the panel edge interaction.
    * - `collapsible`: adds a collapse/expand toggle button (default for overlay/inline)
    * - `resizable`: adds a drag bar for manual resizing (fixed and overlay only)
@@ -158,6 +165,20 @@ export class RhDrawer extends LitElement {
   @query('#collapse-toggle') private collapseToggle!: HTMLElement;
   @query('#panel') private panelEl!: HTMLElement;
 
+  get #panelRole(): 'dialog' | 'complementary' {
+    switch (this.variant) {
+      case 'fixed':
+      case 'overlay':
+        return 'dialog';
+      case 'inline':
+        return 'complementary';
+      case 'auto':
+      case 'flow':
+      default:
+        return this._isInlineMode ? 'complementary' : 'dialog';
+    }
+  }
+
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener('keydown', this.#onKeyDown);
@@ -187,26 +208,10 @@ export class RhDrawer extends LitElement {
   protected override async firstUpdated() {
     await this.updateComplete;
     if (!isServer) {
-      // Restore state after hydration to avoid a mismatch between
-      // server-rendered HTML and client-rendered values
       this._suppressTransition = true;
       this.#restoreState();
       this.#updateSplitterValue();
-      if (this.variant === 'inline') {
-        this._isInlineMode = true;
-      }
-      if (this.variant === 'auto') {
-        this.#resizeObserver = new ResizeObserver(this.#onContainerResize);
-        this.#resizeObserver.observe(this);
-        this.#updateInlineMode();
-      }
-      if (this.variant === 'flow') {
-        this.#mediaQuery = window.matchMedia('(min-width: 992px)');
-        this.#mediaQuery.addEventListener('change', this.#onMediaChange);
-        window.addEventListener('resize', this.#onWindowResize);
-        this.#onMediaChange();
-        this._isInlineMode = this.#mediaQuery.matches;
-      }
+      this.#setupVariant();
     }
   }
 
@@ -223,20 +228,6 @@ export class RhDrawer extends LitElement {
     this.#mediaQuery?.removeEventListener('change', this.#onMediaChange);
     this.#resizeObserver?.disconnect();
     clearTimeout(this.#resizeTimer);
-  }
-
-  get #panelRole(): 'dialog' | 'complementary' {
-    switch (this.variant) {
-      case 'fixed':
-      case 'overlay':
-        return 'dialog';
-      case 'inline':
-        return 'complementary';
-      case 'auto':
-      case 'flow':
-      default:
-        return this._isInlineMode ? 'complementary' : 'dialog';
-    }
   }
 
   render() {
@@ -282,6 +273,8 @@ export class RhDrawer extends LitElement {
         <div id="panel"
              part="panel"
              role="${this.#panelRole}"
+             aria-label="${this.accessibleLabel || nothing}"
+             aria-labelledby="${!this.accessibleLabel && hasHeader ? 'header' : nothing}"
              style=${styleMap(panelStyles)}>
           <div id="panel-body">
             <div id="actions" ?hidden="${!this.expand && showCollapsible}">
@@ -394,6 +387,11 @@ export class RhDrawer extends LitElement {
       this.dispatchEvent(new DrawerCloseEvent());
     }
     this.#userInteracted = false;
+  }
+
+  @observes('variant')
+  protected _variantChanged() {
+    this.#setupVariant();
   }
 
   @observes('panel')
@@ -546,6 +544,32 @@ export class RhDrawer extends LitElement {
         thresholdBreakpoints[this.overlayThreshold] ?? 768
         : 768;
       this._isInlineMode = width >= breakpoint;
+    }
+  }
+
+  #setupVariant() {
+    if (isServer) {
+      return;
+    }
+    this.#resizeObserver?.disconnect();
+    this.#resizeObserver = undefined;
+    this.#mediaQuery?.removeEventListener('change', this.#onMediaChange);
+    window.removeEventListener('resize', this.#onWindowResize);
+
+    if (this.variant === 'inline') {
+      this._isInlineMode = true;
+    } else if (this.variant === 'auto') {
+      this.#resizeObserver = new ResizeObserver(this.#onContainerResize);
+      this.#resizeObserver.observe(this);
+      this.#updateInlineMode();
+    } else if (this.variant === 'flow') {
+      this.#mediaQuery = window.matchMedia('(min-width: 992px)');
+      this.#mediaQuery.addEventListener('change', this.#onMediaChange);
+      window.addEventListener('resize', this.#onWindowResize);
+      this.#onMediaChange();
+      this._isInlineMode = this.#mediaQuery.matches;
+    } else {
+      this._isInlineMode = false;
     }
   }
 
