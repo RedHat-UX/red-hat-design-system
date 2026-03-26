@@ -5,12 +5,6 @@ import { html } from 'lit';
 
 import { RhDrawer } from '@rhds/elements/rh-drawer/rh-drawer.js';
 
-function press(key: string) {
-  return async function() {
-    await sendKeys({ press: key });
-  };
-}
-
 function oneEvent(el: Element, type: string): Promise<Event> {
   return new Promise(resolve => {
     el.addEventListener(type, resolve, { once: true });
