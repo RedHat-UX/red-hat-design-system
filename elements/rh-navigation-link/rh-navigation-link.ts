@@ -22,19 +22,6 @@ import styles from './rh-navigation-link.css' with { type: 'css' };
  *
  * @summary A link that can be used as a child of navigation elements.
  * @alias navigation-link
- *
- * @slot
- *       When the `href` attribute is set, this slot SHOULD contain inline
- *       text for the link label. Alternatively, an anchor element
- *       (\`<a href="...">\`) SHOULD be the first child in this slot when
- *       `href` is not set. Screen readers will announce the slotted text as
- *       the accessible name for the link.
- *
- * @slot icon
- *       Use this slot when the \`icon\` and \`icon-set\` attributes are not
- *       set. Can contain an \`rh-icon\`, \`svg\`, or \`img\` element. Icon
- *       content SHOULD have appropriate \`aria-hidden\` or \`alt\` attributes
- *       so screen readers do not announce decorative images.
  */
 @customElement('rh-navigation-link')
 @themable
@@ -75,13 +62,13 @@ export class RhNavigationLink extends LitElement {
       <div id="container">
         ${this.href ? html`
           <a href="${ifDefined(this.href)}" aria-current="${ifDefined(isCurrentPage)}">
-            <!-- summary: Optional icon slot
+            <!-- summary: icon, only rendered when \`href\` is set
                  description: |
-                   Use this slot when the \`icon\` and \`icon-set\` attributes
-                   are not set. Can contain an \`rh-icon\`, \`svg\`, or \`img\`
-                   element. Icon content SHOULD have appropriate
-                   \`aria-hidden\` or \`alt\` attributes so screen readers do
-                   not announce decorative images. -->
+                   Use instead of the \`icon\` and \`icon-set\` attributes.
+                   Accepts \`rh-icon\`, \`svg\`, or \`img\`. Content SHOULD
+                   have \`aria-hidden\` or \`alt\` so screen readers skip
+                   decorative images. Not available when slotting
+                   an \`<a>\` directly (without \`href\` on the host). -->
             <slot name="icon">
               ${!this.icon ? html``
                 : html`<rh-icon icon="${ifDefined(this.icon)}" set="${ifDefined(this.iconSet)}"></rh-icon>`
