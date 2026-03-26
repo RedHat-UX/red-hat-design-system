@@ -16,10 +16,12 @@
   --_border-sm: var(--rh-color-status-success);
   --_border-md: transparent;
   --_border-lg: var(--rh-color-status-success);
+
   /** Design token for healthy grade surface fill */
   --_fill-sm: var(--rh-color-surface-status-success);
   --_fill-md: var(--rh-color-status-success);
   --_fill-lg: var(--rh-color-surface-status-success);
+
   /** Design token for grade letter text */
   --_text-sm: var(--rh-color-text-primary);
   --_text-lg: var(--rh-color-text-primary);
@@ -43,6 +45,7 @@
   --_border-sm: var(--rh-color-status-warning);
   --_border-md: transparent;
   --_border-lg: var(--rh-color-status-warning);
+
   /** Design token for warning grade surface fill */
   --_fill-sm: var(--rh-color-surface-status-warning);
   --_fill-md: var(--rh-color-status-warning);
@@ -57,6 +60,7 @@
   --_border-sm: var(--rh-color-status-caution);
   --_border-md: transparent;
   --_border-lg: var(--rh-color-status-caution);
+
   /** Design token for caution grade surface fill */
   --_fill-sm: var(--rh-color-surface-status-caution);
   --_fill-md: var(--rh-color-status-caution);
@@ -71,6 +75,7 @@
   --_border-sm: var(--rh-color-status-danger);
   --_border-md: transparent;
   --_border-lg: var(--rh-color-status-danger);
+
   /** Design token for danger grade surface fill */
   --_fill-sm: var(--rh-color-surface-status-danger);
   --_fill-md: var(--rh-color-status-danger);
@@ -104,18 +109,14 @@
   scale: 1;
   align-items: center;
   width: max-content;
+
   /** Design token: font size for grade letters */
   font-size:
     var(--_font-size,
       var(--rh-font-size-body-text-md, 1rem));
+
   /** Design token: monospace font for grade letters */
-  font-family:
-    var(--rh-font-family-code,
-      RedHatMono,
-      'Red Hat Mono',
-      'Courier New',
-      Courier,
-      monospace);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
   line-height: var(--_box-size);
   text-transform: uppercase;
 
@@ -143,8 +144,7 @@
 
 .box {
   /** Design token: default border for grade boxes */
-  border:
-    var(--rh-border-width-sm, 1px) solid transparent;
+  border: var(--rh-border-width-sm, 1px) solid transparent;
   background-color:
     light-dark(var(--rh-color-surface-lightest, #ffffff),
       oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h));
@@ -200,6 +200,7 @@
     &:after {
       display: block;
       content: '';
+
       /** Design token: accent bar height */
       min-height: var(--rh-length-xs, 4px);
       z-index: 1;
@@ -209,9 +210,9 @@
     &.active {
       position: relative;
       margin: -1px;
+
       /** Design token: active grade font weight */
-      font-weight:
-        var(--rh-font-weight-code-medium, 500);
+      font-weight: var(--rh-font-weight-code-medium, 500);
       color: var(--rh-color-text-primary);
 
       &:before {
