@@ -28,7 +28,24 @@ import styles from './rh-blockquote.css' with { type: 'css' };
 export class RhBlockquote extends LitElement {
   static readonly styles = styles;
 
-  /** Accessible label for the blockquote figure element. Defaults to 'Blockquote'. */
+  /**
+   * The author's name or pseudonym. Overridden by the `author` slot.
+   * Should not contain long strings of text.
+   */
+  @property({ type: String }) author?: string;
+
+  /**
+   * The author's job title or role. Overridden by the `subtitle` slot.
+   * Should not contain long strings of text. May contain links.
+   */
+  @property({ type: String }) subtitle?: string;
+
+  /**
+   * built-in tooltip blockquote figure element.
+   * Defaults to 'Blockquote'.
+   *
+   * @deprecated use subtitle
+   */
   @property({ type: String }) title = 'Blockquote';
 
   /**
@@ -79,11 +96,21 @@ export class RhBlockquote extends LitElement {
           <p id="author"><!--
             Inline text for the quoted person's name.
             Screen readers announce this as attribution for the quote.
-          --><slot name="author"></slot></p>
+            Overrides the \`author\` attribute.
+          --><slot name="author">${this.author}</slot></p>
           <p id="title"><!--
             Inline text for the author's job title or role.
             Screen readers announce this in the figcaption.
-          --><slot name="title"></slot></p>
+            Deprecated: use \`subtitle\`.
+          --><slot name="title"></slot>
+            <!--
+              Inline text for the author's job title or role.
+              Screen readers announce this in the figcaption.
+              Overrides the \`subtitle\` attribute.
+              Should not contain long strings of text. May contain links.
+            -->
+             <slot name="subtitle">${this.subtitle}</slot>
+          </p>
         </figcaption>
       </figure>
     `;
