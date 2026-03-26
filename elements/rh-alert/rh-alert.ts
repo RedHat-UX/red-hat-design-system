@@ -71,17 +71,6 @@ const toasts = new Set<Required<ToastOptions>>();
  *
  * @alias alert
  *
- * @slot header - Alert heading; MUST be a heading element
- *               (e.g. `<h3>`) so screen readers convey the
- *               alert's ARIA structure.
- * @slot - Body content for the alert; accepts block elements
- *         like `<p>`. SHOULD be concise so screen reader users
- *         can quickly understand the message.
- * @slot actions - Up to two `rh-button` action elements. Each
- *                 MUST have a `data-action` attribute. Buttons
- *                 are keyboard-focusable via Tab and SHOULD
- *                 use ARIA labels when text is not descriptive.
- *
  * @fires {AlertCloseEvent} close - Fires when dismissed via
  *        close button or action click. `AlertCloseEvent.action`
  *        contains the action string (e.g. 'close', 'confirm',
