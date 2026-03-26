@@ -36,16 +36,6 @@ export class DisclosureToggleEvent extends Event {
  *
  * @alias disclosure
  *
- * @slot summary - The title of the disclosure. SHOULD contain inline text or
- *                 a heading element. When a heading is slotted, it renders
- *                 inline so it does not break the summary layout. Screen
- *                 readers announce this text as the accessible name for the
- *                 disclosure trigger.
- * @slot - The content disclosed when the panel is open. Accepts block-level
- *         elements such as paragraphs, lists, or nested components. Content
- *         MUST be accessible; interactive children receive focus via Tab.
- *         Slotted content SHOULD follow WCAG reading order guidelines.
- *
  * @fires {DisclosureToggleEvent} toggle - Fires when a user opens or closes
  *        a disclosure. The event has no detail; read `open` on the host to
  *        determine current state.
