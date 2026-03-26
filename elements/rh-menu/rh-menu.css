@@ -11,6 +11,7 @@ slot {
 
 ::slotted(a) {
   padding: 5px !important; /* WARNING: not a token value */
+
   /** Design token for default link color */
   color: var(--rh-color-interactive-primary-default);
 }
@@ -32,6 +33,7 @@ slot {
 
 ::slotted(hr) {
   border: 0;
+
   /** Design token for separator border width */
   border-top:
     var(--rh-border-width-sm, 1px) solid light-dark(

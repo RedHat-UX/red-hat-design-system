@@ -6,15 +6,20 @@
     /** Design token for horizontal item padding */
     var(--rh-space-lg, 16px);
   cursor: pointer;
+
   /** Design token for body text font family */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
   /** Design token for standard body text size */
   font-size: var(--rh-font-size-body-text-md, 1rem);
   font-style: normal;
+
   /** Design token for regular font weight */
   font-weight: var(--rh-font-weight-body-text-regular, 400);
+
   /** Design token for line height */
   line-height: var(--rh-line-height-code, 1.5);
+
   /** Design token surface color for light/dark theme */
   background:
     light-dark(var(--rh-color-surface-lightest, #ffffff),
@@ -65,8 +70,10 @@
     rh-icon {
       /** Design token for external link icon color */
       color: var(--rh-color-interactive-secondary-default);
+
       /** Design token for external link icon fill */
       fill: var(--rh-color-interactive-secondary-default);
+
       /** Design token for space before external icon */
       padding-inline-start: var(--rh-space-md, 8px);
     }
@@ -144,9 +151,11 @@
 ::slotted([slot='description']) {
   /** Design token for description font family */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
   /** Design token for smaller description text */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
   font-style: normal;
+
   /** Design token for description font weight */
   font-weight: var(--rh-font-weight-heading-regular, 400);
   line-height: 21px;
