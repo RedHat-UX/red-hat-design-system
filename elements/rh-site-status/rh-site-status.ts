@@ -126,11 +126,6 @@ const isStatusPageResponse = (data: unknown): data is SummaryResponse => {
  *
  * @summary Communicates operational status of a website or domain
  *
- * @slot loading-text - Text displayed while status data is loading.
- *                      SHOULD contain a localized equivalent of "Loading".
- *                      Screen reader users will hear this text announced
- *                      via the polite live region.
- *
  * @alias site-status
  */
 @customElement('rh-site-status')
