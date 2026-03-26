@@ -143,7 +143,7 @@ export class RhDrawer extends LitElement {
    */
   @property({ reflect: true }) panel?: 'collapsible' | 'resizable' | 'none';
 
-  /** When set, persists open/closed state and panel width to sessionStorage under this key. */
+  /** When set, persists open/closed state and panel width to sessionStorage using this value as a key prefix */
   @property({ attribute: 'storage-key' }) storageKey?: string;
 
   /**
