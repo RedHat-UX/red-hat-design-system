@@ -1,6 +1,5 @@
 :host {
   display: block;
-  /** Surface token for navigation background */
   background:
     light-dark(var(--rh-color-surface-lightest),
       var(--rh-color-surface-darker, #1f1f1f));
@@ -22,9 +21,7 @@
 #container {
   display: flex;
   flex-direction: column;
-  /** Space token for gap between navigation items */
   gap: var(--rh-space-xs, 4px);
-  /** Typography token for link text line height */
   line-height: var(--rh-line-height-body-text, 1.5);
 }
 
@@ -32,26 +29,15 @@
   --_navigation-link-display: flex;
   --_navigation-link-align-items: center;
   --_navigation-link-inline-size: 100%;
-  --_navigation-link-padding:
-    /** Space token for block padding on links */
-    var(--rh-space-md, 8px)
-    /** Space token for inline padding on links */
-    var(--rh-space-lg, 16px);
-  --_navigation-link-font-size:
-    /** Typography token for top-level link size */
-    var(--rh-font-size-body-text-md, 1rem);
+  --_navigation-link-padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+  --_navigation-link-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_navigation-link-text-decoration: none;
   --_navigation-link-text-decoration-style: none;
   --_navigation-link-text-decoration-line: none;
-  --_navigation-link-color:
-    /** Color token for navigation link text */
-    var(--rh-color-text-primary);
+  --_navigation-link-color: var(--rh-color-text-primary);
   --_navigation-link-color-hover: var(--rh-color-text-primary);
   --_navigation-link-hover-background-color:
-    light-dark(
-      /** Surface token for hover in light theme */
-      var(--rh-color-surface-lighter, #f2f2f2),
-      /** Surface token for hover in dark theme */
+    light-dark(var(--rh-color-surface-lighter, #f2f2f2),
       var(--rh-color-surface-dark, #383838));
   --_navigation-link-container-display: flex;
   --_navigation-link-container-align-items: center;
@@ -60,30 +46,19 @@
 }
 
 ::slotted(rh-navigation-link:hover) {
-  --_navigation-link-before-border-inline-start-width:
-    /** Border token for hover indicator width */
-    var(--rh-border-width-lg, 3px);
-  --_navigation-link-before-border-inline-start-color:
-    /** Border token for hover indicator color */
-    var(--rh-color-border-subtle);
+  --_navigation-link-before-border-inline-start-width: var(--rh-border-width-lg, 3px);
+  --_navigation-link-before-border-inline-start-color: var(--rh-color-border-subtle);
 }
 
 ::slotted(rh-navigation-link:active) {
-  --_navigation-link-before-border-inline-start-width:
-    var(--rh-border-width-lg, 3px);
-  --_navigation-link-before-border-inline-start-color:
-    /** Brand token for active state border */
-    var(--rh-color-brand-red);
+  --_navigation-link-before-border-inline-start-width: var(--rh-border-width-lg, 3px);
+  --_navigation-link-before-border-inline-start-color: var(--rh-color-brand-red);
 }
 
 ::slotted(rh-navigation-link[current-page]) {
   --_navigation-link-background-color:
-    light-dark(
-      /** Surface token for current page highlight */
-      var(--rh-color-surface-lighter, #f2f2f2),
+    light-dark(var(--rh-color-surface-lighter, #f2f2f2),
       var(--rh-color-surface-dark, #383838));
-  --_navigation-link-before-border-inline-start-width:
-    var(--rh-border-width-lg, 3px);
-  --_navigation-link-before-border-inline-start-color:
-    var(--rh-color-brand-red);
+  --_navigation-link-before-border-inline-start-width: var(--rh-border-width-lg, 3px);
+  --_navigation-link-before-border-inline-start-color: var(--rh-color-brand-red);
 }
