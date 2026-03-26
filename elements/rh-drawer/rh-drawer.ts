@@ -193,7 +193,7 @@ export class RhDrawer extends LitElement {
       if (this.variant === 'inline') {
         this._isInlineMode = true;
       }
-      if (this.variant === 'auto' || this.variant === 'inline') {
+      if (this.variant === 'auto') {
         this.#resizeObserver = new ResizeObserver(this.#onContainerResize);
         this.#resizeObserver.observe(this);
         this.#updateInlineMode();
