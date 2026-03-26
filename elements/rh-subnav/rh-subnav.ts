@@ -30,10 +30,6 @@ type LinkElement = HTMLAnchorElement | RhNavigationLink;
  *
  * @alias subnavigation
  *
- * @slot - Expects `<rh-navigation-link>` or `<a>` elements. Authors MUST
- *         provide at least two links. Slotting plain `<a>` elements is
- *         deprecated; use `<rh-navigation-link>` instead. Each link
- *         SHOULD have concise, descriptive text for screen readers.
  */
 @customElement('rh-subnav')
 @colorPalettes
