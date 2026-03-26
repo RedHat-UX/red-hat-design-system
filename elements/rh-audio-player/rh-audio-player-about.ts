@@ -22,11 +22,6 @@ import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer
  *
  * @summary Displays episode description and speaker attribution
  *
- * @slot - Default slot for episode description text.
- * @slot heading - Custom heading text for the panel.
- * @slot profile - `rh-avatar` elements for speaker attribution. A maximum
- *                of two profiles are displayed.
- *
  * @csspart heading - The panel heading container with scrolling overflow.
  * @csspart body - The scrollable description content area.
  * @csspart profile - The speaker profile / avatar area.

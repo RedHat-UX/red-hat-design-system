@@ -29,9 +29,6 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  *
  * @summary Displays synchronized, scrollable transcript with download
  *
- * @slot - Default slot reserved for `rh-cue` elements.
- * @slot heading - Custom heading text for the transcript panel.
- *
  * @csspart heading - The panel heading with scrolling text overflow.
  * @csspart toolbar - The toolbar area containing autoscroll and download.
  *

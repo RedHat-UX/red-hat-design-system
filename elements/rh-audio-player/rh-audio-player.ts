@@ -42,20 +42,6 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  *
  * @alias audio-player
  *
- * @slot media - MUST contain an `<audio>` block element. Visually hidden
- *              but accessible to screen readers.
- * @slot series - Optional inline text for the series name, e.g. a
- *               `<p>` element. Screen readers announce it before the title.
- * @slot title - Optional heading element for the episode title.
- *              SHOULD use an appropriate heading level for the page.
- * @slot about - Optional `rh-audio-player-about` block element panel.
- *              Provides episode description accessible via screen readers.
- * @slot subscribe - Optional `rh-audio-player-subscribe` block element
- *                  with links. Each link SHOULD have descriptive alt text.
- * @slot transcript - Optional `rh-transcript` block element with
- *                   `rh-cue` children. Provides accessible transcript
- *                   that screen readers can navigate.
- *
  * @csspart toolbar - The main controls toolbar container.
  * @csspart panel - The expandable content panel below the toolbar.
  * @csspart about - The about panel slot container.

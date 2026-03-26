@@ -17,7 +17,6 @@ import styles from './rh-audio-player-scrolling-text-overflow.css' with { type: 
  *
  * @summary Scrolls overflowing text on hover or focus
  *
- * @slot - Inline text content that scrolls when wider than the host.
  */
 @customElement('rh-audio-player-scrolling-text-overflow')
 @themable

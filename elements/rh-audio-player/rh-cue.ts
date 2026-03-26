@@ -66,8 +66,6 @@ export const getSeconds = (str: TimeString): Seconds => {
  *
  * @summary A timed transcript segment with optional speaker label
  *
- * @slot - The spoken text content of this cue.
- *
  * @fires cueseek - Fired when the user clicks a time cue link to seek
  *        the audio to this cue's start time.
  */

@@ -20,10 +20,6 @@ import styles from './rh-audio-player-subscribe.css' with { type: 'css' };
  *
  * @summary Displays podcast subscription links in an expandable panel
  *
- * @slot - Default slot for introductory text content.
- * @slot heading - Custom heading text for the panel.
- * @slot link - Anchor elements linking to podcast subscription services.
- *
  * @csspart heading - The panel heading with scrolling text overflow.
  * @csspart body - The default content area.
  * @csspart links - The container for subscription link elements.
