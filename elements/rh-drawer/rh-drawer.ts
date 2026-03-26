@@ -128,11 +128,11 @@ export class RhDrawer extends LitElement {
   @property({ reflect: true }) expand?: 'full-screen';
 
   /**
-   * Accessible label for the drawer panel. When set, applies `aria-label`
-   * to the panel. When not set and the header slot has content, the panel
-   * uses `aria-labelledby` referencing the header instead.
+   * Accessible label for the drawer panel. When the header slot has content,
+   * the panel uses `aria-labelledby` referencing the header. When no header
+   * is present, falls back to this value as `aria-label`. Defaults to 'Panel'.
    */
-  @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
+  @property({ attribute: 'accessible-label' }) accessibleLabel = 'Panel';
 
   /**
    * Controls the panel edge interaction.
@@ -273,8 +273,8 @@ export class RhDrawer extends LitElement {
         <div id="panel"
              part="panel"
              role="${this.#panelRole}"
-             aria-label="${this.accessibleLabel || nothing}"
-             aria-labelledby="${!this.accessibleLabel && hasHeader ? 'header' : nothing}"
+             aria-label="${!hasHeader ? this.accessibleLabel : nothing}"
+             aria-labelledby="${hasHeader ? 'header' : nothing}"
              style=${styleMap(panelStyles)}>
           <div id="panel-body">
             <div id="actions" ?hidden="${!this.expand && showCollapsible}">

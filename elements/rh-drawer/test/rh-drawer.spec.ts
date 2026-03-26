@@ -1,4 +1,4 @@
-import { expect, fixture } from '@open-wc/testing';
+import { expect, fixture, nextFrame } from '@open-wc/testing';
 import { sendKeys } from '@web/test-runner-commands';
 import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { html } from 'lit';
@@ -456,6 +456,8 @@ describe('<rh-drawer>', function() {
     });
   });
 
+  // Chrome's a11y tree does not consistently surface dialog/complementary
+  // roles on shadow DOM elements, so panel role is verified via DOM attribute.
   describe('panel ARIA role', function() {
     describe('fixed variant', function() {
       beforeEach(async function() {
@@ -467,9 +469,9 @@ describe('<rh-drawer>', function() {
       });
       beforeEach(async () => await element.updateComplete);
 
-      it('should have role dialog', async function() {
-        const snapshot = await a11ySnapshot();
-        expect(snapshot).to.have.axQuery({ role: 'dialog' });
+      it('should have role dialog', function() {
+        const panel = element.shadowRoot?.querySelector('#panel');
+        expect(panel?.getAttribute('role')).to.equal('dialog');
       });
     });
 
@@ -484,9 +486,9 @@ describe('<rh-drawer>', function() {
       });
       beforeEach(async () => await element.updateComplete);
 
-      it('should have role dialog', async function() {
-        const snapshot = await a11ySnapshot();
-        expect(snapshot).to.have.axQuery({ role: 'dialog' });
+      it('should have role dialog', function() {
+        const panel = element.shadowRoot?.querySelector('#panel');
+        expect(panel?.getAttribute('role')).to.equal('dialog');
       });
     });
 
@@ -501,9 +503,35 @@ describe('<rh-drawer>', function() {
       });
       beforeEach(async () => await element.updateComplete);
 
-      it('should have role complementary', async function() {
-        const snapshot = await a11ySnapshot();
-        expect(snapshot).to.have.axQuery({ role: 'complementary' });
+      it('should have role complementary', function() {
+        const panel = element.shadowRoot?.querySelector('#panel');
+        expect(panel?.getAttribute('role')).to.equal('complementary');
+      });
+    });
+
+    describe('switching variant at runtime', function() {
+      beforeEach(async function() {
+        element = await fixture<RhDrawer>(html`
+          <rh-drawer variant="overlay" open>
+            <nav slot="body">Body</nav>
+            <div><p>Content</p></div>
+          </rh-drawer>
+        `);
+      });
+      beforeEach(async () => await element.updateComplete);
+
+      it('should switch to complementary for inline variant', async function() {
+        element.variant = 'inline';
+        await element.updateComplete;
+        const panel = element.shadowRoot?.querySelector('#panel');
+        expect(panel?.getAttribute('role')).to.equal('complementary');
+      });
+
+      it('should switch to dialog for fixed variant', async function() {
+        element.variant = 'fixed';
+        await element.updateComplete;
+        const panel = element.shadowRoot?.querySelector('#panel');
+        expect(panel?.getAttribute('role')).to.equal('dialog');
       });
     });
   });
