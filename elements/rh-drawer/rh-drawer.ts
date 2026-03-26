@@ -110,7 +110,6 @@ export class RhDrawer extends LitElement {
   #resizeTimer?: ReturnType<typeof setTimeout>;
   #fixedUserState: boolean | null = null;
   #userInteracted = false;
-  #initialized = false;
 
   /** Controls the layout behavior of the drawer. */
   @property({ reflect: true }) variant: 'auto' | 'fixed' | 'flow' | 'overlay' | 'inline' = 'auto';
@@ -181,9 +180,6 @@ export class RhDrawer extends LitElement {
         this._suppressTransition = false;
       });
     }
-    if (this.#initialized) {
-      this.#saveState();
-    }
   }
 
   protected override async firstUpdated() {
@@ -208,7 +204,6 @@ export class RhDrawer extends LitElement {
         this.#onMediaChange();
         this._isInlineMode = this.#mediaQuery.matches;
       }
-      this.#initialized = true;
     }
   }
 
@@ -378,6 +373,7 @@ export class RhDrawer extends LitElement {
     if (oldValue == null || newValue == null || oldValue === newValue) {
       return;
     }
+    this.#store('open', newValue);
     await this.updateComplete;
     if (newValue) {
       if (this.#userInteracted) {
@@ -399,7 +395,9 @@ export class RhDrawer extends LitElement {
   protected _panelChanged(_old?: string, _new?: string) {
     if (_old === 'resizable' && _new !== 'resizable') {
       this._panelWidth = null;
+      this.#store('panelWidth', null);
     }
+    this.#store('panel', _new ?? null);
   }
 
   @observes('triggerId')
@@ -452,6 +450,7 @@ export class RhDrawer extends LitElement {
     document.removeEventListener('pointermove', this.#onPointerMove);
     document.removeEventListener('pointerup', this.#onPointerUp);
     this.panelEl?.classList.remove('resizing');
+    this.#store('panelWidth', this._panelWidth);
   };
 
   #onResizeKeyDown = (event: KeyboardEvent) => {
@@ -461,19 +460,23 @@ export class RhDrawer extends LitElement {
       case 'ArrowLeft':
         event.preventDefault();
         this.#adjustPanelWidth(panelOnLeft ? -step : step);
+        this.#store('panelWidth', this._panelWidth);
         break;
       case 'ArrowRight':
         event.preventDefault();
         this.#adjustPanelWidth(panelOnLeft ? step : -step);
+        this.#store('panelWidth', this._panelWidth);
         break;
       case 'Home':
         event.preventDefault();
         this._panelWidth = RhDrawer.minPanelWidth;
+        this.#store('panelWidth', this._panelWidth);
         break;
       case 'End':
         event.preventDefault();
         if (this.panelEl?.parentElement) {
           this._panelWidth = this.panelEl.parentElement.getBoundingClientRect().width;
+          this.#store('panelWidth', this._panelWidth);
         }
         break;
       case 'Enter':
@@ -579,18 +582,17 @@ export class RhDrawer extends LitElement {
     }
   }
 
-  // sessionStorage access is wrapped in try-catch because storage may be
-  // unavailable (private browsing, disabled by policy, quota exceeded, etc.)
-  #saveState() {
-    if (this.storageKey) {
-      try {
-        sessionStorage.setItem(this.storageKey, JSON.stringify({
-          open: this.open,
-          panel: this.panel,
-          panelWidth: this._panelWidth,
-        }));
-      } catch { /* storage unavailable */ }
+  #store(key: string, value: string | number | boolean | null) {
+    if (!this.storageKey) {
+      return;
     }
+    try {
+      if (value == null) {
+        sessionStorage.removeItem(`${this.storageKey}:${key}`);
+      } else {
+        sessionStorage.setItem(`${this.storageKey}:${key}`, String(value));
+      }
+    } catch { /* storage unavailable */ }
   }
 
   #restoreState() {
@@ -598,34 +600,30 @@ export class RhDrawer extends LitElement {
       return;
     }
     try {
-      const stored = sessionStorage.getItem(this.storageKey);
-      if (stored) {
-        const s = JSON.parse(stored);
-        if (typeof s.open === 'boolean') {
-          this.open = s.open;
-          this.#fixedUserState = s.open;
-        }
-        if (typeof s.panel === 'string') {
-          this.panel = s.panel;
-        }
-        if (typeof s.panelWidth === 'number') {
-          this._panelWidth = s.panelWidth;
-        }
+      const open = sessionStorage.getItem(`${this.storageKey}:open`);
+      if (open != null) {
+        this.open = open === 'true';
+        this.#fixedUserState = this.open;
+      }
+      const panel = sessionStorage.getItem(`${this.storageKey}:panel`);
+      if (panel != null) {
+        this.panel = panel as typeof this.panel;
+      }
+      const width = sessionStorage.getItem(`${this.storageKey}:panelWidth`);
+      if (width != null) {
+        this._panelWidth = Number(width);
       }
     } catch {
-      // ignore malformed storage
+      // ignore — storage unavailable
     }
   }
 
   #getStoredOpen(): boolean | null {
     if (this.storageKey) {
       try {
-        const stored = sessionStorage.getItem(this.storageKey);
-        if (stored) {
-          const s = JSON.parse(stored);
-          if (typeof s.open === 'boolean') {
-            return s.open;
-          }
+        const v = sessionStorage.getItem(`${this.storageKey}:open`);
+        if (v != null) {
+          return v === 'true';
         }
       } catch {
         // ignore
