@@ -77,7 +77,8 @@
   }
 
   &.checked {
-    --_switch-track-background-color: /** Checked track color; uses rh-color-accent tokens */
+    /** Checked track color; uses rh-color-accent tokens */
+    --_switch-track-background-color:
       var(--rh-switch-checked,
         light-dark(
           var(--rh-color-accent-base-on-light, #0066cc),
