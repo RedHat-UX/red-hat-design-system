@@ -402,8 +402,9 @@ export class RhDrawer extends LitElement {
 
   @observes('triggerId')
   protected _triggerChanged() {
+    this.#triggerElement?.removeEventListener('click', this.#onTriggerClick);
+    this.#triggerElement = null;
     if (this.triggerId) {
-      this.#triggerElement?.removeEventListener('click', this.#onTriggerClick);
       this.#triggerElement =
         (this.getRootNode() as Document | ShadowRoot).getElementById(this.triggerId);
       this.#triggerElement?.addEventListener('click', this.#onTriggerClick);
