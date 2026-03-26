@@ -99,7 +99,12 @@ rh-icon {
 }
 
 .highlight {
-  border-inline-start: var(--rh-length-md, 8px) solid var(--rh-color-accent-brand);
+  border-inline-start:
+    /** Width of the highlighted inline-start emphasis border */
+    var(--rh-length-md, 8px)
+    solid
+    /** Color for the highlighted inline-start emphasis border */
+    var(--rh-color-accent-brand);
 
   /** Inline padding between border and content */
   padding-inline-start: var(--rh-length-xl, 24px);
