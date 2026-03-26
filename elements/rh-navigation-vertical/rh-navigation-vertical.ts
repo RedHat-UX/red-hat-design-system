@@ -23,10 +23,6 @@ import styles from './rh-navigation-vertical.css' with { type: 'css' };
  * @summary Organizes and communicates structure and content vertically
  * @alias Navigation (vertical)
  *
- * @slot - Place \`<rh-navigation-link>\` or \`<rh-navigation-vertical-list>\`
- *         elements. Each item receives an ARIA listitem role for screen
- *         reader accessibility. Authors SHOULD ensure link text is
- *         descriptive for assistive technology users.
  */
 @customElement('rh-navigation-vertical')
 @themable

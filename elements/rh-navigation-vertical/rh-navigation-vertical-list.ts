@@ -13,7 +13,7 @@ import styles from './rh-navigation-vertical-list.css' with { type: 'css' };
 
 /**
  * A collapsible group for organizing related links within an
- * \`<rh-navigation-vertical>\` element. Allows users to expand and
+ * `<rh-navigation-vertical>` element. Allows users to expand and
  * collapse sections. Authors SHOULD set `summary` to provide a
  * label. Pressing Escape closes the group and returns focus to the
  * summary. Uses an ARIA `listitem` role for screen readers.
@@ -21,17 +21,8 @@ import styles from './rh-navigation-vertical-list.css' with { type: 'css' };
  * @summary Vertical navigation group
  * @alias navigation-vertical-list
  *
- * @slot - Place \`<rh-navigation-link>\` or nested
- *         \`<rh-navigation-vertical-list>\` elements. ARIA listitem role
- *         provides screen reader context. AVOID nesting deeper than
- *         five levels.
- * @slot summary - Group heading label. Accepts inline text or a
- *                 \`<span>\`. Overrides the \`summary\` attribute.
- *                 Screen readers use this as the ARIA label for the
- *                 disclosure toggle.
- *
  * @fires {Event} toggle - Fires when the group opens or closes. The
- *        event has no detail; check the \`open\` property on the element
+ *        event has no detail; check the `open` property on the element
  *        to determine the current state.
  */
 @customElement('rh-navigation-vertical-list')
