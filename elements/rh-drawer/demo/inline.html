@@ -27,19 +27,14 @@
         <label><input type="radio" name="expand" value="full-screen"> full-screen</label>
       </fieldset>
     </form>
-    <button id="trigger" disabled aria-controls="drawer" aria-expanded="true">Toggle Drawer</button>
   </div>
 </rh-drawer>
 
 <script type="module">
   import '@rhds/elements/rh-drawer/rh-drawer.js';
 
-  const trigger = document.getElementById('trigger');
   const form = document.getElementById('knobs');
   const drawer = document.getElementById('drawer');
-
-  drawer.addEventListener('open', () => trigger.setAttribute('aria-expanded', 'true'));
-  drawer.addEventListener('close', () => trigger.setAttribute('aria-expanded', 'false'));
 
   form.addEventListener('input', function sync() {
     const data = Object.fromEntries(new FormData(form));

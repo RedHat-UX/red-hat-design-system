@@ -20,10 +20,11 @@
         <label><input type="radio" name="position" value="inline-start" checked> inline-start</label>
         <label><input type="radio" name="position" value="inline-end"> inline-end</label>
       </fieldset>
-      <fieldset>
+      <fieldset id="panel-fieldset">
         <legend>Panel</legend>
         <label><input type="radio" name="panel" value="collapsible" checked> collapsible</label>
         <label><input type="radio" name="panel" value="resizable"> resizable</label>
+        <label><input type="radio" name="panel" value="none"> none</label>
       </fieldset>
       <fieldset>
         <legend>Expand</legend>
@@ -32,7 +33,7 @@
       </fieldset>
       <fieldset id="overlay-threshold-fieldset" disabled>
         <legend>Overlay Threshold</legend>
-        <div class="help-text">Enabled when inline and resizable are checked</div>
+        <div class="help-text">Only applies to auto variant</div>
         <label><input type="radio" name="overlay-threshold" value="" checked> none</label>
         <label><input type="radio" name="overlay-threshold" value="2xs"> 2xs (320px)</label>
         <label><input type="radio" name="overlay-threshold" value="xs"> xs (576px)</label>
@@ -43,7 +44,7 @@
       </fieldset>
     </form>
     <button id="trigger" disabled aria-controls="drawer" aria-expanded="true">Toggle Drawer</button>
-    <div class="help-text">Enabled when resizable is checked</div>
+    <div class="help-text">Enabled when panel is resizable or none</div>
   </div>
 </rh-drawer>
 
@@ -54,6 +55,10 @@
   const trigger = document.getElementById('trigger');
   const form = document.getElementById('knobs');
   const drawer = document.getElementById('drawer');
+
+  const collapsibleInput = form.querySelector('[name="panel"][value="collapsible"]');
+  const resizableInput = form.querySelector('[name="panel"][value="resizable"]');
+  const noneInput = form.querySelector('[name="panel"][value="none"]');
 
   drawer.addEventListener('open', () => trigger.setAttribute('aria-expanded', 'true'));
   drawer.addEventListener('close', () => trigger.setAttribute('aria-expanded', 'false'));
@@ -74,10 +79,6 @@
           input.checked = true;
         }
       }
-      if (data.expand) {
-        const el = form.querySelector(`[name="expand"][value="${data.expand}"]`);
-        if (el) el.checked = true;
-      }
       applyKnobs();
     } catch {
       // ignore corrupt data
@@ -86,16 +87,33 @@
 
   function applyKnobs() {
     const data = Object.fromEntries(new FormData(form));
-    const isResizable = data.panel === 'resizable';
-    const isInline = data.variant === 'inline';
-    drawer.variant = data.variant;
+    const variant = data.variant;
+
+    const canCollapse = variant !== 'fixed' && variant !== 'flow';
+    const canResize = variant === 'fixed' || variant === 'overlay';
+
+    collapsibleInput.disabled = !canCollapse;
+    resizableInput.disabled = !canResize;
+
+    if (data.panel === 'collapsible' && !canCollapse) {
+      data.panel = canResize ? 'resizable' : 'none';
+      (canResize ? resizableInput : noneInput).checked = true;
+    } else if (data.panel === 'resizable' && !canResize) {
+      data.panel = canCollapse ? 'collapsible' : 'none';
+      (canCollapse ? collapsibleInput : noneInput).checked = true;
+    }
+
+    const needsTrigger = data.panel === 'resizable' || data.panel === 'none';
+
+    drawer.variant = variant;
     drawer.position = data.position;
     drawer.panel = data.panel || undefined;
     drawer.expand = data.expand || undefined;
     drawer.overlayThreshold = data['overlay-threshold'] || undefined;
-    drawer.triggerId = isResizable ? 'trigger' : undefined;
-    trigger.disabled = !isResizable;
-    document.getElementById('overlay-threshold-fieldset').disabled = !(isResizable && isInline);
+    drawer.triggerId = needsTrigger ? 'trigger' : undefined;
+    trigger.disabled = !needsTrigger;
+
+    document.getElementById('overlay-threshold-fieldset').disabled = variant !== 'auto';
   }
 
   form.addEventListener('input', function() {

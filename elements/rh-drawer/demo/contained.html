@@ -15,7 +15,7 @@
         <legend>Variant</legend>
         <label><input type="radio" name="variant" value="auto" checked> auto</label>
         <label><input type="radio" name="variant" value="overlay"> overlay</label>
-        <label><input type="radio" name="variant" value="inline" > inline</label>
+        <label><input type="radio" name="variant" value="inline"> inline</label>
       </fieldset>
       <fieldset>
         <legend>Position</legend>
@@ -24,7 +24,9 @@
       </fieldset>
       <fieldset>
         <legend>Panel</legend>
-        <label><input type="radio" name="panel" value="collapsible" checked> collapsible (default)</label>
+        <label><input type="radio" name="panel" value="collapsible" checked> collapsible</label>
+        <label><input type="radio" name="panel" value="resizable"> resizable</label>
+        <label><input type="radio" name="panel" value="none"> none</label>
       </fieldset>
       <fieldset>
         <legend>Expand</legend>
@@ -33,6 +35,7 @@
       </fieldset>
     </form>
     <button id="trigger" disabled aria-controls="drawer" aria-expanded="true">Toggle Drawer</button>
+    <div class="help-text">Enabled when panel is resizable or none</div>
   </div>
 </rh-drawer>
 </div>
@@ -64,15 +67,40 @@
   const form = document.getElementById('knobs');
   const drawer = document.getElementById('drawer');
 
+  const collapsibleInput = form.querySelector('[name="panel"][value="collapsible"]');
+  const resizableInput = form.querySelector('[name="panel"][value="resizable"]');
+  const noneInput = form.querySelector('[name="panel"][value="none"]');
+
   drawer.addEventListener('open', () => trigger.setAttribute('aria-expanded', 'true'));
   drawer.addEventListener('close', () => trigger.setAttribute('aria-expanded', 'false'));
 
   form.addEventListener('input', function sync() {
     const data = Object.fromEntries(new FormData(form));
-    drawer.variant = data.variant;
+    const variant = data.variant;
+
+    const canCollapse = variant !== 'fixed' && variant !== 'flow';
+    const canResize = variant === 'fixed' || variant === 'overlay';
+
+    collapsibleInput.disabled = !canCollapse;
+    resizableInput.disabled = !canResize;
+
+    if (data.panel === 'collapsible' && !canCollapse) {
+      data.panel = canResize ? 'resizable' : 'none';
+      (canResize ? resizableInput : noneInput).checked = true;
+    } else if (data.panel === 'resizable' && !canResize) {
+      data.panel = canCollapse ? 'collapsible' : 'none';
+      (canCollapse ? collapsibleInput : noneInput).checked = true;
+    }
+
+    const needsTrigger = data.panel === 'resizable' || data.panel === 'none';
+
+    drawer.variant = variant;
     drawer.position = data.position;
     drawer.panel = data.panel || undefined;
     drawer.expand = data.expand || undefined;
+    drawer.triggerId = needsTrigger ? 'trigger' : undefined;
+    trigger.disabled = !needsTrigger;
+
     if (!drawer.open) {
       drawer.open = true;
     }
