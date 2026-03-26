@@ -100,10 +100,11 @@ export class RhDisclosure extends LitElement {
   @query('summary') private summaryEl!: HTMLElement;
 
   render() {
+    const { open, summary, hasJumpLinks } = this;
     return html`
       <details
-          ?open="${this.open}"
-          class=${classMap({ 'has-jump-links': this.hasJumpLinks })}
+          ?open="${open}"
+          class="${classMap({ hasJumpLinks })}"
           @keydown="${this.#onKeydown}"
           @toggle="${this.#onToggle}">
         <summary>
@@ -115,7 +116,7 @@ export class RhDisclosure extends LitElement {
                  \`summary\` attribute value when no slot content is
                  provided. Screen readers announce this text as the
                  accessible name for the disclosure trigger. -->
-          <slot name="summary">${this.summary}</slot>
+          <slot name="summary">${summary}</slot>
         </summary>
         <div id="details-content">
           <!-- summary: Content revealed when the disclosure is open.
