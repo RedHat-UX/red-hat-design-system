@@ -14,10 +14,6 @@ import styles from './rh-tab-panel.css' with { type: 'css' };
  *
  * @summary Content panel paired with an `rh-tab`
  *
- * @slot - Panel content shown when the paired tab is active.
- *         Screen reader users navigate here via the ARIA
- *         tabpanel role. Authors SHOULD ensure content is
- *         keyboard accessible.
  */
 @customElement('rh-tab-panel')
 @themable

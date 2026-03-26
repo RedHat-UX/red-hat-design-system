@@ -52,9 +52,6 @@ export class TabExpandEvent extends Event {
  *
  * @summary A single tab within an `rh-tabs` set
  *
- * @slot - Tab label text
- * @slot icon - Optional icon, accepts an `<svg>` or `<rh-icon>`
- *
  * @fires {TabExpandEvent} expand - when a tab expands.
  *        The event detail shape includes `active` (boolean)
  *        indicating prior state and `tab` (RhTab) referencing
