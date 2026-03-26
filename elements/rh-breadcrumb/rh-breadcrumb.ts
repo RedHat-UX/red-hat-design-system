@@ -48,12 +48,6 @@ const truncationBtn = html`
  *
  * @alias breadcrumb
  *
- * @slot - Expects a single `<ol>` block element containing `<li>` items
- *         with inline `<a>` text links. The final `<a>` SHOULD set
- *         `aria-current="page"`. Alternatively, the last `<li>` MAY
- *         contain inline text without a link for a non-interactive
- *         current page indicator.
- *
  * @cssprop [--rh-breadcrumb-caret-image={svg encoded as data URI}] -
  *          The `mask-image` separator icon between items; theme by
  *          providing an SVG data URI. Uses `--rh-color-icon-secondary`
