@@ -6,16 +6,9 @@ import styles from './rh-skeleton.css' with { type: 'css' };
 
 /**
  * A skeleton provides an animated placeholder for content that is loading
- * progressively. A screen reader SHOULD announce the slot text to convey
- * loading state via ARIA. MUST NOT receive focus or keyboard input.
+ * progressively. MUST NOT receive focus or keyboard input.
  *
  * @summary A placeholder for content that is loading.
- *
- * @slot - Visually hidden text for screen readers that describes what is
- *         loading. Accepts inline text content. Defaults to "Loading..." if
- *         no content is provided. SHOULD be customized when multiple
- *         skeletons appear on the same page to help users of assistive
- *         technologies distinguish between them.
  *
  * @alias skeleton
  */
@@ -23,19 +16,23 @@ import styles from './rh-skeleton.css' with { type: 'css' };
 export class RhSkeleton extends LitElement {
   static readonly styles = [styles];
 
-  /** What shape the skeleton should be. Defaults to \`body-copy\`. */
+  /** What shape the skeleton should be. Defaults to `body-copy`. */
   @property({ reflect: true }) type?: 'body-copy' | 'heading' | 'circle' | 'square' | 'rectangle';
 
-  /** What size the skeleton should be. Defaults to \`md\`.
-   * The \`size\` attribute is not valid on circle, square, or rectangle skeletons.
-  */
+  /**
+   * What size the skeleton should be. Defaults to `md`.
+   * The `size` attribute is not valid on circle, square, or rectangle skeletons.
+   */
   @property({ reflect: true }) size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
   render() {
     return html`
       <span class="visually-hidden">
         <!-- Visually hidden text for screen readers.
-             Customize by slotting in text that describes the loading content. -->
+             Customize by slotting in text that describes the loading content.
+             Accepts inline text content. Defaults to "Loading...".
+             Should be customized when multiple skeletons appear on the same page
+             to help users of assistive technologies distinguish between them. -->
         <slot>Loading...</slot>
       </span>
     `;
