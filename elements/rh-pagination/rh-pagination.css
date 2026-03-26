@@ -33,7 +33,9 @@
    * - Customize only when brand guidelines require specific accent colors
    * - Ensure sufficient contrast with background (4.5:1 ratio minimum)
    */
-  --_numeric-a-color: var(--rh-pagination-accent-color, var(--rh-color-interactive-primary-default));
+  --_numeric-a-color:
+    var(--rh-pagination-accent-color,
+      var(--rh-color-interactive-primary-default));
   --_numeric-a-color-hover: var(--rh-color-interactive-primary-hover);
   --_numeric-a-color-focus:
     var(--rh-pagination-accent-color,
