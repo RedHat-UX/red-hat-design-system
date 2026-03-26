@@ -134,9 +134,10 @@ export class RhDisclosure extends LitElement {
   }
 
   #onToggle(): void {
-    this.open = this.detailsEl.open;
     const event = new DisclosureToggleEvent();
-    this.dispatchEvent(event);
+    if (this.dispatchEvent(event) && !event.defaultPrevented) {
+      this.open = this.detailsEl.open;
+    }
   }
 
   #onKeydown(event: KeyboardEvent): void {
