@@ -3,12 +3,16 @@
   color: var(--rh-color-text-primary);
   margin: 0 auto;
   text-align: start;
+
   /** Base font size for blockquote body text, via the rh-font-size-body-text-lg design token */
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+
   /** Display font family used for quotation text, via the rh-font-family-heading design token */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+
   /** Line height for blockquote body text, via the rh-line-height-body-text design token */
   line-height: var(--rh-line-height-body-text, 1.5);
+
   /** Regular weight for quotation text, via the rh-font-weight-heading-regular design token */
   font-weight: var(--rh-font-weight-heading-regular, 400);
 }
@@ -34,15 +38,18 @@ blockquote ::slotted(p) {
   /** Font size for quoted paragraph text, via the rh-font-size-body-text-xl design token */
   font-size: var(--rh-font-size-body-text-xl, 1.25rem) !important;
   margin: 0;
+
   /** Bottom spacing below quoted paragraph text, via the rh-length-lg design token */
   margin-block-end: var(--rh-length-lg, 16px);
 }
 
 figcaption {
-  /** Secondary text color for attribution text, themed via the rh-color-text-secondary design token */
+  /** Attribution text color, themed via rh-color-text-secondary */
   color: var(--rh-color-text-secondary);
+
   /** Body text font family for attribution text, via the rh-font-family-body-text design token */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
   /** Smaller font size for attribution text, via the rh-font-size-body-text-sm design token */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
@@ -54,6 +61,7 @@ figcaption p {
 #author {
   /** Bold weight for the author name, via the rh-font-weight-heading-bold design token */
   font-weight: var(--rh-font-weight-heading-bold, 700);
+
   /** Top spacing above the author name, via the rh-space-lg design token */
   margin-block-start: var(--rh-space-lg, 16px);
 }
@@ -78,22 +86,21 @@ rh-icon {
 :host([size='large']) blockquote ::slotted(p) {
   /** Larger font size for the large variant, via the rh-font-size-body-text-2xl design token */
   font-size: var(--rh-font-size-body-text-2xl, 1.5rem) !important;
+
   /** Tighter line height for larger quoted text, via the rh-line-height-heading design token */
   line-height: var(--rh-line-height-heading, 1.3);
 }
 
 @media (min-width: 768px) {
   :host([size='large']) blockquote ::slotted(p) {
-    /** Heading-scale font size for large variant on wider viewports, via the rh-font-size-heading-md design token */
+    /** Large variant font size on wider viewports */
     font-size: var(--rh-font-size-heading-md, 1.75rem) !important;
   }
 }
 
 .highlight {
-  border-inline-start-width: var(--rh-length-md, 8px);
-  border-inline-start-style: solid;
-  /** Brand accent color for the emphasis border */
-  border-inline-start-color: var(--rh-color-accent-brand);
-  /** Inline padding between emphasis border and content, via the rh-length-xl design token */
+  border-inline-start: var(--rh-length-md, 8px) solid var(--rh-color-accent-brand);
+
+  /** Inline padding between border and content */
   padding-inline-start: var(--rh-length-xl, 24px);
 }
