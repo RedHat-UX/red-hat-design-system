@@ -12,6 +12,15 @@ import { themable } from '@rhds/elements/lib/themable.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
+import {
+  BreakpointXs,
+  BreakpointSm,
+  BreakpointMd,
+  BreakpointLg,
+  BreakpointXl,
+  Breakpoint2xl,
+} from '@rhds/tokens/media.js';
+
 import styles from './rh-drawer.css' with { type: 'css' };
 
 /**
@@ -33,6 +42,16 @@ export class DrawerCloseEvent extends Event {
     super('close', { bubbles: true, cancelable: true });
   }
 }
+
+const thresholdBreakpoints: Record<string, number> = {
+  '2xs': 320,
+  'xs': parseInt(BreakpointXs),
+  'sm': parseInt(BreakpointSm),
+  'md': parseInt(BreakpointMd),
+  'lg': parseInt(BreakpointLg),
+  'xl': parseInt(BreakpointXl),
+  '2xl': parseInt(Breakpoint2xl),
+};
 
 /**
  * A drawer provides a collapsible side panel for supplementary content
@@ -142,6 +161,7 @@ export class RhDrawer extends LitElement {
     super.connectedCallback();
     this.addEventListener('keydown', this.#onKeyDown);
     if (!isServer) {
+      document.addEventListener('keydown', this.#onDocumentKeyDown);
       document.addEventListener('fullscreenchange', this.#onFullScreenChange);
     }
   }
@@ -196,6 +216,7 @@ export class RhDrawer extends LitElement {
     super.disconnectedCallback();
     this.#triggerElement?.removeEventListener('click', this.#onTriggerClick);
     if (!isServer) {
+      document.removeEventListener('keydown', this.#onDocumentKeyDown);
       document.removeEventListener('pointermove', this.#onPointerMove);
       document.removeEventListener('pointerup', this.#onPointerUp);
       window.removeEventListener('resize', this.#onWindowResize);
@@ -206,7 +227,7 @@ export class RhDrawer extends LitElement {
     clearTimeout(this.#resizeTimer);
   }
 
-  get #panelRole(): string {
+  get #panelRole(): 'dialog' | 'complementary' {
     switch (this.variant) {
       case 'fixed':
       case 'overlay':
@@ -260,7 +281,7 @@ export class RhDrawer extends LitElement {
            class=${classMap(classes)}>
         <div id="panel"
              part="panel"
-             .role="${this.#panelRole}"
+             role="${this.#panelRole}"
              style=${panelStyle}>
           <div id="panel-body">
             <div id="actions" ?hidden="${!this.expand && showCollapsible}">
@@ -284,7 +305,7 @@ export class RhDrawer extends LitElement {
                         part="close-button"
                         type="button"
                         aria-controls="panel"
-                        aria-expanded="true"
+                        aria-expanded="${this.open}"
                         aria-labelledby="close-label"
                         @click=${this.close}>
                   <rh-icon set="microns" icon="close"></rh-icon>
@@ -508,7 +529,9 @@ export class RhDrawer extends LitElement {
     }
     if (this.variant === 'auto') {
       const { width } = this.getBoundingClientRect();
-      const breakpoint = 768;
+      const breakpoint = this.overlayThreshold != null ?
+        thresholdBreakpoints[this.overlayThreshold] ?? 768
+        : 768;
       this._isInlineMode = width >= breakpoint;
     }
   }
@@ -531,6 +554,13 @@ export class RhDrawer extends LitElement {
     }
   };
 
+  #onDocumentKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Escape' && this.open && this.#panelRole === 'dialog') {
+      event.preventDefault();
+      this.close();
+    }
+  };
+
   #onFullScreenToggle = () => {
     if (this._isFullScreen) {
       document.exitFullscreen();
@@ -540,7 +570,7 @@ export class RhDrawer extends LitElement {
   };
 
   #onFullScreenChange = () => {
-    this._isFullScreen = document.fullscreenElement === this;
+    this._isFullScreen = document.fullscreenElement === this.panelEl;
   };
 
   #setFixedUserState(open: boolean) {
