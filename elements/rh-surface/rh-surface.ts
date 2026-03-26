@@ -11,17 +11,13 @@ import styles from './rh-surface.css' with { type: 'css' };
  * A surface provides color context to descendants via `color-palette`.
  * Authors MUST set a `color-palette` and SHOULD use surface only when
  * containers like `rh-card` are not appropriate. Each palette provides
- * WCAG-compliant contrast. Surface is non-interactive: Tab and focus
- * pass through to focusable children. Screen reader users perceive
- * no additional ARIA semantics from this element.
+ * WCAG-compliant contrast when using the default theme. Surface is
+ * non-interactive: Tab and focus pass through to focusable children.
+ * Users of AT perceive no additional semantics from this element.
  *
  * @summary Provides background color and theming context for children
  *
  * @alias surface
- *
- * @slot - Accepts any content. Slotted interactive elements
- *         MUST provide their own ARIA roles and screen reader
- *         labels to remain accessible.
  */
 @customElement('rh-surface')
 @colorPalettes
@@ -41,8 +37,7 @@ export class RhSurface extends LitElement {
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   render() {
-    return html`<!-- Accepts any content. Slotted interactive elements
-      MUST provide their own ARIA roles and screen reader labels. --><slot id="slot" @slotchange=${this.#onSlotchange}></slot>`;
+    return html`<!-- Accepts any content. --><slot id="slot" @slotchange=${this.#onSlotchange}></slot>`;
   }
 
   #onSlotchange() {
