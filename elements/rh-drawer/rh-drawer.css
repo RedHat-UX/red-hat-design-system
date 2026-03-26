@@ -40,10 +40,10 @@
 
     /** Body typography */
     font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  }
 
-    &:dir(rtl) {
-      --_slide-dir: 1;
-    }
+  :host(:dir(rtl)) {
+    --_slide-dir: 1;
   }
 
   :host([variant='fixed']) {
