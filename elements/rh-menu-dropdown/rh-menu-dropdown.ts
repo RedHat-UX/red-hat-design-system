@@ -38,17 +38,6 @@ export class MenuDropdownSelectEvent extends Event {
  *
  * @summary A collapsible menu for presenting a list of options or actions
  *
- * @slot toggle-label - Inline content for the toggle button, such as a
- *                      `<span>` or `<rh-icon>`. SHOULD be short and
- *                      descriptive. Screen readers announce this as
- *                      the accessible name for the menu button. Not
- *                      used in compact layout; use `accessible-label`
- *                      instead.
- * @slot - MUST contain `<rh-menu-item>` elements. MAY include `<hr>`
- *         separators or `<rh-menu-item-group>` for grouped items.
- *         Items receive ARIA `menuitem` role and focus via roving
- *         tabindex for keyboard and screen reader navigation.
- *
  * @fires {MenuDropdownSelectEvent} select - Fired when a user selects an
  *        action or link from the menu. The event detail includes the selected
  *        `RhMenuItem` element and its text content.
