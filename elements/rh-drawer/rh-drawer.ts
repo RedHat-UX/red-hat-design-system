@@ -391,7 +391,9 @@ export class RhDrawer extends LitElement {
 
   @observes('variant')
   protected _variantChanged() {
-    this.#setupVariant();
+    if (this.hasUpdated) {
+      this.#setupVariant();
+    }
   }
 
   @observes('panel')
