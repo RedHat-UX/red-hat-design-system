@@ -22,27 +22,6 @@ import styles from './rh-stat.css' with { type: 'css' };
  *
  * @summary Showcases a data point or quick fact visually
  *
- * @slot icon - Optional decorative icon above the statistic.
- *              Accepts an `rh-icon` element or inline SVG.
- *              Alternatively, use the `icon` attribute.
- *              Decorative; does not need aria-label unless it
- *              conveys meaning not present in the text.
- * @slot title - Optional inline text title providing context
- *               for the data value. SHOULD NOT exceed one line
- *               or 20 characters. Read by screen readers in
- *               DOM order.
- * @slot statistic - Required inline text data value such as a
- *                    number or percentage. Read by screen
- *                    readers in DOM order.
- * @slot - Required body text (block or inline elements)
- *         describing or explaining the statistic. Provides
- *         context for screen reader users. SHOULD NOT exceed
- *         two lines or 100 characters.
- * @slot cta - Optional call to action, typically an `rh-cta`
- *             element. Only focusable element; receives Tab
- *             focus, activated with Enter or Space per WCAG
- *             2.1.1.
- *
  * @alias statistic
  */
 @customElement('rh-stat')
