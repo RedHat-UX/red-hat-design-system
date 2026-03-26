@@ -34,13 +34,10 @@ import styles from './rh-table.css' with { type: 'css' };
  * @csspart container - The outer wrapper around the table and summary
  *                      slots. Use to customize padding or background.
  *
- * @cssproperty {<border>} [--rh-table-row-border] - Row border
  *              style. Uses \`--rh-border-width-sm\` width and
  *              \`--rh-color-border-subtle-on-light\` color tokens.
- * @cssproperty {<color>} [--rh-table-row-background-hover-color] -
  *              Row hover background. Uses \`--rh-color-gray-40\`
  *              token at 10% opacity for the light theme.
- * @cssproperty {<color>} [--rh-table-column-background-hover-color]
  *              Column hover background. Uses \`--rh-color-blue-50\`
  *              token at 10% opacity for the light theme.
  *

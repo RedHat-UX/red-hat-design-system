@@ -8,6 +8,7 @@
   width: 100%;
   overflow: auto;
   scrollbar-color: var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);
+
   /** Primary text color for table content */
   color: var(--rh-color-text-primary);
 
@@ -15,6 +16,7 @@
   --_scrollbar-thumb-color: var(--rh-color-gray-50, #707070);
   --_scrollbar-track-color: var(--rh-color-border-subtle);
   --_row-border:
+
     /** row border */
     var(--rh-table-row-border,
       var(--rh-border-width-sm, 1px)
@@ -52,15 +54,20 @@
 ::slotted([slot='summary']) {
   display: block;
   padding: var(--rh-space-xl, 24px) var(--rh-space-lg, 16px) 0 var(--rh-space-lg, 16px);
+
   /** Secondary text color for summary description */
   color: var(--rh-color-text-secondary);
+
   /** Body text font for summary */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
   /** Medium body text size for summary */
   font-size: var(--rh-font-size-body-text-md, 1rem);
   font-style: italic;
+
   /** Regular weight for summary text */
   font-weight: var(--rh-font-weight-body-text-regular, 400);
+
   /** Body text line height for summary */
   line-height: var(--rh-line-height-body-text, 1.5);
 }
