@@ -20,13 +20,6 @@ import styles from './rh-blockquote.css' with { type: 'css' };
  *
  * @summary Highlights quotations and citations with text styles
  *
- * @slot - Block elements like `\<p\>` for the quoted passage. Screen readers
- *         announce this as quoted content within the ARIA figure landmark.
- * @slot author - Inline text for the quoted person's name. Rendered inside a
- *                figcaption so screen readers announce the attribution.
- * @slot title - Inline text for the author's job title or role. Rendered in
- *               the figcaption alongside the author for screen reader context.
- *
  * @alias blockquote
  */
 @customElement('rh-blockquote')
