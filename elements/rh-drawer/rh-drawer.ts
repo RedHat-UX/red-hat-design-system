@@ -150,6 +150,7 @@ export class RhDrawer extends LitElement {
   @state() private _isFullScreen = false;
   @state() private _isInlineMode = false;
   @state() private _panelWidth: number | null = null;
+  @state() private _splitterValue = 0;
   @state() private _suppressTransition = false;
 
   @query('#container') private containerEl!: HTMLElement;
@@ -190,6 +191,7 @@ export class RhDrawer extends LitElement {
       // server-rendered HTML and client-rendered values
       this._suppressTransition = true;
       this.#restoreState();
+      this.#updateSplitterValue();
       if (this.variant === 'inline') {
         this._isInlineMode = true;
       }
@@ -330,7 +332,7 @@ export class RhDrawer extends LitElement {
                    role="separator"
                    tabindex="0"
                    aria-orientation="vertical"
-                   aria-valuenow=${this.#getSplitterValue()}
+                   aria-valuenow=${this._splitterValue}
                    aria-valuemin="0"
                    aria-valuemax="100"
                    aria-controls="panel"
@@ -447,6 +449,7 @@ export class RhDrawer extends LitElement {
         : this.panelEl.parentElement!.getBoundingClientRect().right - event.clientX;
     }
     this._panelWidth = Math.max(RhDrawer.minPanelWidth, Math.min(newWidth, maxWidth));
+    this.#updateSplitterValue();
   };
 
   #onPointerUp = () => {
@@ -474,12 +477,14 @@ export class RhDrawer extends LitElement {
       case 'Home':
         event.preventDefault();
         this._panelWidth = RhDrawer.minPanelWidth;
+        this.#updateSplitterValue();
         this.#store('panelWidth', this._panelWidth);
         break;
       case 'End':
         event.preventDefault();
         if (this.panelEl?.parentElement) {
           this._panelWidth = this.panelEl.parentElement.getBoundingClientRect().width;
+          this.#updateSplitterValue();
           this.#store('panelWidth', this._panelWidth);
         }
         break;
@@ -494,15 +499,16 @@ export class RhDrawer extends LitElement {
     const current = this._panelWidth ?? RhDrawer.minPanelWidth;
     const maxWidth = this.panelEl?.parentElement?.getBoundingClientRect().width ?? current;
     this._panelWidth = Math.max(RhDrawer.minPanelWidth, Math.min(current + delta, maxWidth));
+    this.#updateSplitterValue();
   }
 
-  #getSplitterValue(): number {
-    if (isServer || !this.panelEl?.parentElement) {
-      return 50;
+  #updateSplitterValue() {
+    if (!this.panelEl?.parentElement) {
+      return;
     }
     const containerWidth = this.panelEl.parentElement.getBoundingClientRect().width;
     const panelWidth = this._panelWidth ?? RhDrawer.minPanelWidth;
-    return Math.round((panelWidth / containerWidth) * 100);
+    this._splitterValue = Math.round((panelWidth / containerWidth) * 100);
   }
 
   // Flow variant: when the window crosses the 992px breakpoint during a resize,
