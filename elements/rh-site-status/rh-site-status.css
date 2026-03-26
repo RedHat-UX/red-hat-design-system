@@ -4,8 +4,10 @@
 
 #container {
   display: inline-flex;
+
   /** Spacing design token for container padding */
   padding: var(--rh-space-lg, 16px);
+
   /** Border radius design token for container */
   border-radius: var(--rh-border-radius-default, 3px);
   min-width: 150px;
@@ -41,12 +43,15 @@
 
 a {
   display: inline-flex;
+
   /** Typography design token for small body text */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   text-decoration: none;
   align-items: center;
+
   /** Spacing design token between icon and label */
   gap: var(--rh-space-md, 8px);
+
   /** Theme text color for the status link */
   color: var(--rh-color-text-primary);
   text-transform: lowercase;
@@ -61,6 +66,7 @@ a:focus {
     var(--rh-border-width-md, 2px)
     solid
     var(--rh-color-border-interactive);
+
   /** Border radius design token for focus outline */
   border-radius: var(--rh-border-radius-default, 3px);
 }
@@ -74,10 +80,13 @@ rh-icon {
   width: var(--rh-size-icon-01, 16px);
   height: var(--rh-size-icon-01, 16px);
   color: var(--rh-color-white, #ffffff);
+
   /** Status theme color for operational icon */
   &.success { color: var(--rh-color-status-success); }
+
   /** Status theme color for degraded icon */
   &.warning { color: var(--rh-color-status-warning); }
+
   /** Status theme color for critical icon */
   &.danger { color: var(--rh-color-status-danger); }
 }
