@@ -18,16 +18,6 @@ import styles from './rh-chip-group.css' with { type: 'css' };
  *
  * @summary Groups related chips with a label and clear-all action
  *
- * @slot - Expects `rh-chip` elements. Non-chip content SHOULD
- *         NOT be placed here, as the fieldset groups its children
- *         for screen readers and ARIA landmark navigation.
- * @slot accessible-label - Inline text for the chip group legend.
- *       Content is placed into the `<legend>` element for
- *       screen reader accessibility and ARIA labeling.
- * @slot clear-all - Inline text to customize the "Clear all"
- *       button label. Screen readers announce this text when the
- *       button receives focus. Defaults to "Clear all".
- *
  * @csspart legend - The `<legend>` element containing the
  *          accessible label, styled with `--rh-font-size-body-text-md`.
  *

@@ -43,9 +43,6 @@ export class ChipChangeEvent extends Event {
  *
  * @alias chip
  *
- * @slot - Expects short inline text for the chip label.
- *         Content SHOULD be concise, typically 1-3 words.
- *
  * @fires {ChipChangeEvent} change - Fires when the chip is checked or
  *        unchecked. The event's `checked` property contains the previous
  *        checked state (boolean). This event bubbles and is cancelable.
