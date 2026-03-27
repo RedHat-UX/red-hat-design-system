@@ -32,6 +32,11 @@ A logical focus order helps users understand and operate our websites and produc
 
 ## Toasts
 
+<rh-alert state="caution">
+  <h3 slot="header">Accessibility considerations</h3>
+  <p>There are accessibility considerations to keep in mind when using toasts. See our <a href="/patterns/alert/guidelines/">toast pattern accessibility guidelines</a> for more information.</p>
+</rh-alert>
+
 Toasts created with `RhAlert.toast()` are not the same as inline alerts in how
 assistive technology exposes them:
 
