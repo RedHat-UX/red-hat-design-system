@@ -1,4 +1,4 @@
-## Toasting alerts
+## RhAlert.toast()
 
 <rh-alert state="caution">
   <h3 slot="header">Accessibility considerations</h3>

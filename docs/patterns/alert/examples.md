@@ -44,7 +44,7 @@ in Github's design system, Primer.
 
   </uxdot-example>
 
-  Use the JavaScript API to toast alerts.
+  Use the JavaScript API to show toast alerts.
 
 </uxdot-best-practice>
 
@@ -53,7 +53,7 @@ in Github's design system, Primer.
 
   ```html rhcodeblock
   <rh-alert variant="toast">
-    <p>Writing toasted alerts explicitly in HTML</p>
+    <p>Writing toast alerts explicitly in HTML</p>
   </rh-alert>
   ```
 
@@ -108,13 +108,13 @@ e.g. `dismiss` or `confirm`, which is applied to the `close` event as the
 
 </rh-table>
 
-### Toasted alert content
+### Toast alert content
 
-When toasting, you must provide body content for the alert. This content can
+When you call `RhAlert.toast()`, you must provide body content for the alert. This content can
 either be a string, a DOM node, a lit-html `TemplateResult`, or an array of the
 same.
 
-#### Toasting a string
+#### String message
 
 ```js rhcodeblock
 await RhAlert.toast({
@@ -122,7 +122,7 @@ await RhAlert.toast({
 });
 ```
 
-#### Toasting a DOM Node
+#### DOM node
 
 ```js rhcodeblock
 const message = document.createElement('strong');
@@ -130,7 +130,7 @@ const message = document.createElement('strong');
 await RhAlert.toast({ message });
 ```
 
-#### Toasting a lit-html template:
+#### lit-html template
 
 ```js rhcodeblock
 import { html } from 'lit';
@@ -139,7 +139,7 @@ await RhAlert.toast({
 });
 ```
 
-#### Toasting an array of renderables
+#### Array of renderables
 
 ```js rhcodeblock
 import { html } from 'lit';
@@ -182,11 +182,11 @@ await RhAlert.toast({
 });
 ```
 
-### Persistent toasted alerts
+### Persistent toast alerts
 
-Toasted alerts can be timed or persistent. Timed alerts remain on screen for
+Toast alerts can be timed or persistent. Timed alerts remain on screen for
 eight seconds before disappearing. Persistent alerts remain on screen until the
-user explicitly dismisses them. To make your toasted alert persistent, use the
+user explicitly dismisses them. To make your toast alert persistent, use the
 `persistent: true` option.
 
 ```js rhcodeblock
@@ -199,9 +199,9 @@ await RhAlert.toast({
 });
 ```
 
-### Toasted alert actions
+### Toast alert actions
 
-Like inline alerts, toasted alerts may include one or two actions. When there
+Like inline alerts, toast alerts may include one or two actions. When there
 are two actions, the first will be a secondary variant button, and the second
 a link variant button. If there is only one action, it will be a link button.
 

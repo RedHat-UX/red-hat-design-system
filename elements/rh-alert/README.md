@@ -73,7 +73,7 @@ import '@rhds/elements/rh-alert/rh-alert.js';
 
 ### Toast Alert
 
-Alerts may be toasted using the static `RhAlert.toast()` method. A toasted alert
+Use the static `RhAlert.toast()` method to show a toast alert. A toast alert
 has a distinct style, a drop shadow, and either disappears after about eight
 seconds or can stay until the user dismisses it when `persistent` is set.
 
@@ -86,7 +86,7 @@ import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
 
 await RhAlert.toast({
   heading: 'Toast alert',
-  message: 'Example toasted alert',
+  message: 'Example toast alert',
   actions: [
     { variant: 'secondary', action: 'confirm', text: 'Confirm' },
     { action: 'dismiss', text: 'Dismiss' }

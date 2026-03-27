@@ -341,7 +341,7 @@ async function manageAlertAnimation(event: Event) {
 
 /**
  * @see https://aerotwist.com/blog/flip-your-animations/
- * @param toaster container for toasted alerts
+ * @param toaster container for toast alerts
  */
 function flip(toaster: HTMLElement) {
   const first = toaster.offsetHeight;
