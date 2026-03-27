@@ -1,5 +1,5 @@
 import { expect, fixture, nextFrame } from '@open-wc/testing';
-import { sendKeys } from '@web/test-runner-commands';
+import { sendKeys, setViewport } from '@web/test-runner-commands';
 import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { html } from 'lit';
 
@@ -871,6 +871,54 @@ describe('<rh-drawer>', function() {
 
       it('is accessible in RTL with inline-end', async function() {
         await expect(element).to.be.accessible();
+      });
+    });
+  });
+
+  describe('flow variant with overlay-threshold', function() {
+    beforeEach(async function() {
+      element = await fixture<RhDrawer>(html`
+        <rh-drawer variant="flow" overlay-threshold="xl"
+                   trigger-id="none" open>
+          <nav slot="body">Body</nav>
+        </rh-drawer>
+      `);
+    });
+    beforeEach(async () => await element.updateComplete);
+
+    describe('below threshold', function() {
+      beforeEach(async function() {
+        await setViewport({ width: 1200, height: 800 });
+      });
+      beforeEach(async () => await element.updateComplete);
+      beforeEach(nextFrame);
+
+      it('should have role dialog', function() {
+        const panel = element.shadowRoot?.querySelector('#panel');
+        expect(panel?.getAttribute('role')).to.equal('dialog');
+      });
+
+      it('should not have flow-wide class', function() {
+        const container = element.shadowRoot?.querySelector('#container');
+        expect(container?.classList.contains('flow-wide')).to.be.false;
+      });
+    });
+
+    describe('at or above threshold', function() {
+      beforeEach(async function() {
+        await setViewport({ width: 1440, height: 800 });
+      });
+      beforeEach(async () => await element.updateComplete);
+      beforeEach(nextFrame);
+
+      it('should have role complementary', function() {
+        const panel = element.shadowRoot?.querySelector('#panel');
+        expect(panel?.getAttribute('role')).to.equal('complementary');
+      });
+
+      it('should have flow-wide class', function() {
+        const container = element.shadowRoot?.querySelector('#container');
+        expect(container?.classList.contains('flow-wide')).to.be.true;
       });
     });
   });

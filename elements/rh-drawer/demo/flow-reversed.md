@@ -1,0 +1,1 @@
+Flow variant with the panel on the inline-end side of the page. Uses `overlay-threshold="xl"` to switch from a fixed overlay to an inline grid participant at 1440px. Below the threshold, the panel is toggled by an external trigger button.

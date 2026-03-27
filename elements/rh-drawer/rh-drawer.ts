@@ -139,9 +139,10 @@ export class RhDrawer extends LitElement {
   @property({ attribute: 'storage-key' }) storageKey?: string;
 
   /**
-   * Container width breakpoint (as a t-shirt size) at which the auto variant
-   * switches from overlay to inline layout. Defaults to 768px when not set.
-   * Only applies to the `auto` variant.
+   * Breakpoint (as a t-shirt size) at which the layout switches.
+   * For `auto`: container width at which overlay switches to inline.
+   * For `flow`: viewport width at which fixed switches to inline.
+   * Defaults to 768px when not set.
    */
   @property({ attribute: 'overlay-threshold' })
   overlayThreshold?: 'md' | 'lg' | 'xl' | '2xl';
@@ -240,12 +241,15 @@ export class RhDrawer extends LitElement {
       : {};
     const hasContentSlot = this.variant !== 'fixed' && this.variant !== 'flow';
     const isAuto = this.variant === 'auto';
+    const isFlow = this.variant === 'flow';
+    const hasThreshold = isAuto || isFlow;
     const classes = {
       'open': this.open,
       'closed': !this.open,
       'auto': isAuto,
       'fixed': this.variant === 'fixed',
-      'flow': this.variant === 'flow',
+      'flow': isFlow,
+      'flow-wide': isFlow && this._isInlineMode,
       'overlay': this.variant === 'overlay',
       'inline-start': this.position === 'inline-start',
       'inline-end': this.position === 'inline-end',
@@ -253,10 +257,10 @@ export class RhDrawer extends LitElement {
       'resizable': isResizable,
       'full-viewport': this._isFullViewport,
       'no-transition': this._suppressTransition,
-      'threshold-md': isAuto && this.overlayThreshold === 'md',
-      'threshold-lg': isAuto && this.overlayThreshold === 'lg',
-      'threshold-xl': isAuto && this.overlayThreshold === 'xl',
-      'threshold-2xl': isAuto && this.overlayThreshold === '2xl',
+      'threshold-md': hasThreshold && this.overlayThreshold === 'md',
+      'threshold-lg': hasThreshold && this.overlayThreshold === 'lg',
+      'threshold-xl': hasThreshold && this.overlayThreshold === 'xl',
+      'threshold-2xl': hasThreshold && this.overlayThreshold === '2xl',
     };
 
     return html`
@@ -588,7 +592,10 @@ export class RhDrawer extends LitElement {
       this.#resizeObserver.observe(this);
       this.#updateInlineMode();
     } else if (this.variant === 'flow') {
-      this.#mediaQuery = window.matchMedia('(min-width: 992px)');
+      const bp = this.overlayThreshold != null ?
+        thresholdBreakpoints[this.overlayThreshold] ?? 768
+        : 768;
+      this.#mediaQuery = window.matchMedia(`(min-width: ${bp}px)`);
       this.#mediaQuery.addEventListener('change', this.#onMediaChange);
       window.addEventListener('resize', this.#onWindowResize);
       this.#onMediaChange();

@@ -649,7 +649,7 @@
         }
       }
 
-      @media (min-width: 992px) {
+      &.flow-wide {
         &:is(.open, .closed).inline-start #panel {
           position: relative;
           z-index: 2;
