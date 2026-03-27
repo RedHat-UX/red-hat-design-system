@@ -30,10 +30,8 @@ in Github's design system, Primer.
 
 ## Authoring
 
-<div class="grid sm-two-columns">
-
-  <uxdot-best-practice variant="do">
-    <uxdot-example slot="image" alignment="left" variant="full" no-border>
+<uxdot-best-practice variant="do">
+  <uxdot-example slot="image" alignment="left" variant="full" no-border>
 
   ```js rhcodeblock
   import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
@@ -44,14 +42,14 @@ in Github's design system, Primer.
   });
   ```
 
-    </uxdot-example>
+  </uxdot-example>
 
   Use the JavaScript API to toast alerts.
 
-  </uxdot-best-practice>
+</uxdot-best-practice>
 
-  <uxdot-best-practice variant="dont">
-    <uxdot-example slot="image" alignment="left" no-border>
+<uxdot-best-practice variant="dont">
+  <uxdot-example slot="image" alignment="left" variant="full" no-border>
 
   ```html rhcodeblock
   <rh-alert variant="toast">
@@ -59,13 +57,11 @@ in Github's design system, Primer.
   </rh-alert>
   ```
 
-    </uxdot-example>
+  </uxdot-example>
 
   Write toast variant alerts in HTML.
 
-  </uxdot-best-practice>
-
-</div>
+</uxdot-best-practice>
 
 View the [toast demo](/elements/alert/demos/#demo-toast) on the `<rh-alert>`
 Demos page to see a full-featured toast demo.
