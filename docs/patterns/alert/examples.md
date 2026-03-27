@@ -8,7 +8,7 @@ tags:
   - alertPatterns
 subnav:
   collection: alertPatterns
-  order: 4
+  order: 5
 ---
 
 <script type="module" data-helmet>
