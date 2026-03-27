@@ -63,13 +63,13 @@ If you still use a toast in RHDS, follow these guidelines:
 Prefer other patterns when the user must read, understand, or act on
 important information—for example:
 
-- Critical or blocking errors: inline alert, banner, or dialog (persistent
+- For critical or blocking errors, use an inline alert, banner, or dialog (persistent
   until addressed where appropriate).
-- Complex or multi-step outcomes: summary banner or progressive disclosure, not
+- For complex or multi-step outcomes, use a summary banner or progressive disclosure, not
   a short auto-dismissing message alone.
-- Long-running tasks: persistent notification, banner, email, or another channel
+- For long-running tasks, use a persistent notification, banner, email, or another channel
   the user can return to.
-- Simple success that is already obvious in the UI: often no toast is needed.
+- For a simple success that is already obvious in the UI, often no toast is needed.
 
 ### Usability concerns
 
