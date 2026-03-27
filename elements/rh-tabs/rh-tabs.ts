@@ -36,7 +36,7 @@ export { RhTab };
 
 /**
  * Tabs provide a way for users to organize and navigate between
- * sections of content on the same page. Each tab MUST be paired
+ * sections of content on the same page. Each tab must be paired
  * with a corresponding `rh-tab-panel`. When using keyboard
  * navigation, arrow keys move focus between tabs following the
  * WAI-ARIA Tabs pattern. The component allows horizontal,
@@ -58,10 +58,6 @@ export { RhTab };
  * @csspart tabs - the scrollable tab list (has `role="tablist"`)
  * @csspart panels - container for `rh-tab-panel` elements
  *
- *          tab list when centered or inset box style is used
- *          Active tab indicator color, defaults to the
- *          rh-color-accent-brand design token
- *
  */
 @customElement('rh-tabs')
 @colorPalettes
@@ -71,13 +67,13 @@ export class RhTabs extends LitElement {
 
   /**
    * Accessible label for the scroll-left overflow button.
-   * Authors SHOULD localize this string for non-English pages.
+   * Authors should localize this string for non-English pages.
    */
   @property({ reflect: true, attribute: 'label-scroll-left' }) labelScrollLeft = 'Scroll left';
 
   /**
    * Accessible label for the scroll-right overflow button.
-   * Authors SHOULD localize this string for non-English pages.
+   * Authors should localize this string for non-English pages.
    */
   @property({ reflect: true, attribute: 'label-scroll-right' }) labelScrollRight = 'Scroll right';
 
@@ -95,6 +91,7 @@ export class RhTabs extends LitElement {
   /**
    * Zero-based index of the currently active tab. Setting this
    * property programmatically selects the tab at that index.
+   * Defaults to -1 (no tab selected).
    */
   @property({ attribute: 'active-index', type: Number })
   get activeIndex() {
@@ -124,7 +121,7 @@ export class RhTabs extends LitElement {
 
   /**
    * When true, centers the tab list within the container.
-   * Authors SHOULD AVOID centering when there are many tabs,
+   * Authors should avoid centering when there are many tabs,
    * as it may cause layout issues with overflow.
    */
   @property({ reflect: true, type: Boolean }) centered? = false;
@@ -220,7 +217,7 @@ export class RhTabs extends LitElement {
             <!-- summary: Tab elements
                  description: |
                    Must contain one or more \`<rh-tab>\` elements.
-                   Each tab MUST have a corresponding \`<rh-tab-panel>\`
+                   Each tab must have a corresponding \`<rh-tab-panel>\`
                    in the default slot. Screen readers announce the
                    tab role and selected state for each tab. -->
             <slot name="tab"
@@ -238,7 +235,7 @@ export class RhTabs extends LitElement {
         <!-- summary: Panel elements
              description: |
                Must contain one or more \`<rh-tab-panel>\` elements.
-               Each panel MUST correspond to a tab in the \`tab\` slot.
+               Each panel must correspond to a tab in the \`tab\` slot.
                Panels receive \`role="tabpanel"\` and are focusable
                via Tab key for keyboard accessibility. -->
         <slot part="panels" @slotchange="${this.#onSlotchange}"></slot>

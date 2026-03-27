@@ -8,8 +8,8 @@ import styles from './rh-tab-panel.css' with { type: 'css' };
 
 /**
  * A content panel for use in an `rh-tabs` element. Each panel
- * MUST be paired with a corresponding `rh-tab`. Authors SHOULD
- * AVOID empty panels. The ARIA `tabpanel` role and `tabindex`
+ * must be paired with a corresponding `rh-tab`. Authors should
+ * avoid empty panels. The ARIA `tabpanel` role and `tabindex`
  * allow screen reader and keyboard navigation.
  *
  * @summary Content panel paired with an `rh-tab`
@@ -47,7 +47,7 @@ export class RhTabPanel extends LitElement {
              description: |
                Content shown when the paired tab is active. Screen
                reader users navigate here via the ARIA tabpanel
-               role. Authors SHOULD ensure keyboard accessibility. -->
+               role. Authors should ensure keyboard accessibility. -->
         <slot></slot>
       </div>
     `;

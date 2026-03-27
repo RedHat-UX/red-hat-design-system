@@ -103,7 +103,10 @@ button {
 }
 
 #container {
+  /** Overflow scroll button arrow accent color */
   --_arrow-color: var(--rh-color-accent-base);
+
+  /** Overflow scroll button default text color */
   --_overflow-button-text-color: var(--rh-color-text-secondary);
 
   /* Non Standard usage of rh-color-icon-status-disabled.
@@ -111,8 +114,12 @@ button {
   --rh-color-icon-status-disabled:
     light-dark(var(--rh-color-gray-40, #a3a3a3),
       var(--rh-color-gray-60, #4d4d4d));
+
+  /** Overflow scroll button disabled text color */
   /* stylelint-disable-next-line rhds/no-unknown-token-name */
   --_overflow-button-disabled-text-color: var(--rh-color-icon-status-disabled);
+
+  /** Overflow scroll button hover text color */
   --_overflow-button-hover-text-color: var(--rh-color-text-primary);
 
   /** Container text color from rh-color-text-primary */

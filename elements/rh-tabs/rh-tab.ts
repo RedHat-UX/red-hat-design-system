@@ -45,10 +45,10 @@ export class TabExpandEvent extends Event {
 
 /**
  * A tab button for use in an `rh-tabs` element. Each `rh-tab`
- * MUST be paired with an `rh-tab-panel`. The ARIA `tab` role
+ * must be paired with an `rh-tab-panel`. The ARIA `tab` role
  * and `aria-selected` state allow screen reader users to
- * identify the active tab. Authors SHOULD keep labels short
- * and SHOULD AVOID interactive content inside the tab.
+ * identify the active tab. Authors should keep labels short
+ * and should avoid interactive content inside the tab.
  *
  * @summary A single tab within an `rh-tabs` set
  *
@@ -62,16 +62,6 @@ export class TabExpandEvent extends Event {
  * @csspart icon - container for the icon slot
  * @csspart text - container for the default (text) slot
  *
- *          Tab label text color, defaults to
- *          rh-color-text-secondary token
- *          Padding above the tab label, defaults to
- *          rh-space-lg token
- *          Padding below the tab label, defaults to
- *          rh-space-lg token
- *          Padding before the tab label, defaults to
- *          rh-space-2xl token
- *          Padding after the tab label, defaults to
- *          rh-space-2xl token
  */
 @customElement('rh-tab')
 @themable
@@ -80,7 +70,7 @@ export class RhTab extends LitElement {
 
   /**
    * When true, this tab is the currently selected tab. Only one
-   * tab in a set SHOULD be active at a time. Screen readers
+   * tab in a set should be active at a time. Screen readers
    * announce the active state via `aria-selected`.
    */
   @property({ reflect: true, type: Boolean }) active = false;
@@ -139,7 +129,7 @@ export class RhTab extends LitElement {
               part="icon"></slot>
         <!-- summary: Tab label
              description: |
-               Tab label text. Authors SHOULD keep labels short
+               Tab label text. Authors should keep labels short
                and descriptive. -->
         <slot part="text"></slot>
       </div>
