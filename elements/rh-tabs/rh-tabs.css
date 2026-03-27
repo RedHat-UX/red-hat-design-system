@@ -26,10 +26,10 @@
     inset-inline-end: 0;
     inset: 0;
 
-    /** Border width using rh-border-width-sm token */
+    /** Tab list bottom border width */
     border-width: 0 0 var(--rh-border-width-sm, 1px);
 
-    /** Border color using rh-color-border-subtle token */
+    /** Tab list bottom border color, adapts to color-palette */
     border-color: var(--rh-color-border-subtle);
     border-style: solid;
   }
@@ -217,7 +217,7 @@ button {
 :is(#previous-tab, #next-tab) {
   padding-block: 0;
 
-  /** Inline padding using rh-space-lg token */
+  /** Scroll button inline padding */
   padding-inline: var(--rh-space-lg, 16px);
 
   /** Scroll button background, adapts to color-palette */
