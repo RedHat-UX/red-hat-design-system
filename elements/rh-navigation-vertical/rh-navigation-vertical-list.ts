@@ -14,7 +14,7 @@ import styles from './rh-navigation-vertical-list.css' with { type: 'css' };
 /**
  * A collapsible group for organizing related links within an
  * `<rh-navigation-vertical>` element. Allows users to expand and
- * collapse sections. Authors SHOULD set `summary` to provide a
+ * collapse sections. Authors should set `summary` to provide a
  * label. Pressing Escape closes the group and returns focus to the
  * summary. Uses an ARIA `listitem` role for screen readers.
  *
@@ -54,7 +54,7 @@ export class RhNavigationVerticalList extends LitElement {
   #internals = InternalsController.of(this, { role: 'listitem' });
 
   /**
-   * Optional open attribute that, sets the open state of the group.
+   * Optional open attribute that sets the open state of the group.
    * Defaults to false.
    */
   @property({ type: Boolean, reflect: true }) open = false;
@@ -100,7 +100,7 @@ export class RhNavigationVerticalList extends LitElement {
                  Place \`<rh-navigation-link>\` or nested
                  \`<rh-navigation-vertical-list>\` elements. ARIA
                  listitem role provides screen reader context.
-                 AVOID nesting deeper than five levels. -->
+                 Avoid nesting deeper than five levels. -->
           <slot></slot>
         </div>
       </details>

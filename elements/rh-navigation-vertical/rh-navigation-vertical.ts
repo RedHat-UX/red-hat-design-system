@@ -16,9 +16,9 @@ import styles from './rh-navigation-vertical.css' with { type: 'css' };
 
 /**
  * A vertical sidebar navigation for organizing site structure. Authors
- * MUST set `accessible-label` when multiple navigation landmarks exist.
+ * must set `accessible-label` when multiple navigation landmarks exist.
  * Uses a `navigation` ARIA role with a visually hidden heading for
- * screen readers. Keyboard users Tab through links and groups.
+ * screen readers. Keyboard users tab through links and groups.
  *
  * @summary Organizes and communicates structure and content vertically
  * @alias Navigation (vertical)
