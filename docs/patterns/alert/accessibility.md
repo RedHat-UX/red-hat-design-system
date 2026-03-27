@@ -1,5 +1,5 @@
 ---
-title: Guidelines
+title: Accessibility
 heading: Alert
 sidenavTitle: Alert
 layout: layouts/pages/pattern.njk

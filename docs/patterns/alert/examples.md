@@ -24,7 +24,7 @@ subnav:
 
 Toasts can be easy to miss when they time out or sit outside a magnified region.
 Before shipping this in production, review
-[Guidelines: Accessibility](/patterns/alert/guidelines/#accessibility) and
+[toast's accessibility guidelines](/patterns/alert/guidelines/#accessibility) and
 [Accessible notifications and messages](https://primer.style/accessibility/patterns/accessible-notifications-and-messages/)
 in Github's design system: Primer.
 

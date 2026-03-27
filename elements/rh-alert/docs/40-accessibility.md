@@ -34,7 +34,7 @@ A logical focus order helps users understand and operate our websites and produc
 
 <rh-alert state="caution">
   <h3 slot="header">Accessibility considerations</h3>
-  <p>There are accessibility considerations to keep in mind when using toasts. See our <a href="/patterns/alert/guidelines/">toast pattern accessibility guidelines</a> for more information.</p>
+  <p>There are accessibility considerations to keep in mind when using toasts. See our <a href="/patterns/alert/accessibility/">toast pattern accessibility guidelines</a> for more information.</p>
 </rh-alert>
 
 Toasts created with `RhAlert.toast()` are not the same as inline alerts in how
@@ -49,7 +49,7 @@ Toasts render inside a single "toaster" region appended to `document.body`, not
 next to the control that triggered them. That separation affects reading order
 and discovery ([WCAG 1.3.2 Meaningful Sequence](https://www.w3.org/WAI/WCAG21/Understanding/meaningful-sequence.html)).
 Design mitigations (when to use a toast, persistence, redundant in-context feedback)
-are covered on [toast Alert pattern — Guidelines](/patterns/alert/guidelines/).
+are covered on [toast Alert pattern — Accessibility](/patterns/alert/accessibility/).
 
 `RhAlert.toast()` does not move keyboard focus into the toast when it appears.
 Many screen reader users will still hear the announcement; sighted keyboard
