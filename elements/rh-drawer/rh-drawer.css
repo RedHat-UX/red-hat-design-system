@@ -709,10 +709,7 @@
 
           & #panel-body {
             opacity: 0;
-            visibility: hidden;
-            transition:
-              opacity var(--_transition-duration) ease-out,
-              visibility 0s var(--_transition-duration);
+            transition: opacity var(--_transition-duration) ease-out;
           }
         }
       }
@@ -771,10 +768,7 @@
 
           & #panel-body {
             opacity: 0;
-            visibility: hidden;
-            transition:
-              opacity var(--_transition-duration) ease-out,
-              visibility 0s var(--_transition-duration);
+            transition: opacity var(--_transition-duration) ease-out;
           }
         }
       }

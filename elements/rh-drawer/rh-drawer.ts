@@ -267,8 +267,10 @@ export class RhDrawer extends LitElement {
              role="${this.#panelRole}"
              aria-label="${!hasHeader ? this.accessibleLabel : nothing}"
              aria-labelledby="${hasHeader ? 'header' : nothing}"
+             ?inert=${!this.open && !showCollapsible}
              style=${styleMap(panelStyles)}>
-          <div id="panel-body">
+          <div id="panel-body"
+               ?inert=${!this.open && showCollapsible}>
             <div id="actions" ?hidden="${!this.expand && showCollapsible}">
               ${this.expand ? html`
                 <button id="expand-button"
