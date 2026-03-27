@@ -34,6 +34,7 @@
     display: block;
     position: relative;
     block-size: 100%;
+    min-block-size: 0;
 
     /** Container query context for responsive layout switching */
     container: drawer / inline-size;
@@ -84,7 +85,6 @@
     /** Panel shadow; `rh-box-shadow-sm` token */
     box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
     transition: translate var(--_transition-duration) ease-in-out;
-    will-change: translate;
 
     &.resizing {
       transition: none;
@@ -123,18 +123,6 @@
 
   #panel-body:has(#actions:not([hidden])) #panel-content {
     padding-block-start: 0;
-  }
-
-  #panel:fullscreen {
-    inline-size: 100dvw;
-    block-size: 100dvh;
-    max-inline-size: none;
-    background-color: var(--_panel-bg);
-  }
-
-  #panel:fullscreen #collapse-toggle,
-  #panel:fullscreen #resize-handle {
-    display: none;
   }
 
   #actions {
@@ -185,9 +173,9 @@
       &:active {
         color:
           light-dark(
-              /** Active text color (dark theme) */
-              var(--rh-color-text-secondary-on-dark, #c7c7c7),
               /** Active text color (light theme) */
+              var(--rh-color-text-secondary-on-dark, #c7c7c7),
+              /** Active text color (dark theme) */
               var(--rh-color-text-secondary-on-light, #4d4d4d)
             );
 
@@ -282,6 +270,53 @@
         var(--rh-border-width-md, 2px)
         solid
         /** Focus ring color */
+        var(--rh-color-interactive-primary-default);
+      outline-offset: 2px;
+    }
+
+    & rh-icon {
+      transition: rotate var(--_transition-duration) ease-in-out;
+    }
+  }
+
+  #narrow-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    inline-size: fit-content;
+    margin-block-start: var(--rh-space-xl, 24px);
+    border-radius: 50%;
+    border:
+      var(--rh-border-width-sm, 1px)
+      solid
+      var(--rh-color-border-subtle);
+    background-color: var(--_panel-bg);
+    cursor: pointer;
+    padding: var(--rh-space-lg, 16px);
+    color: var(--rh-color-icon-secondary);
+    box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
+
+    &:before {
+      content: '';
+      position: absolute;
+      inset: calc(var(--_resize-handle-width) / -2);
+    }
+
+    &:hover {
+      color: var(--rh-color-interactive-primary-default);
+      background-color:
+        light-dark(
+            var(--rh-color-surface-light, #e0e0e0),
+            var(--rh-color-surface-dark, #383838)
+          );
+    }
+
+    &:is(:focus, :focus-visible) {
+      color: var(--rh-color-interactive-primary-default);
+      outline:
+        var(--rh-border-width-md, 2px)
+        solid
         var(--rh-color-interactive-primary-default);
       outline-offset: 2px;
     }
@@ -437,6 +472,14 @@
         }
       }
 
+      & #narrow-toggle {
+        margin-inline-start: var(--rh-space-lg, 16px);
+
+        & rh-icon:dir(rtl) {
+          rotate: 180deg;
+        }
+      }
+
       & #resize-handle {
         border-inline-start:
           /** Resize handle border width */
@@ -479,6 +522,18 @@
         }
       }
 
+      & #narrow-toggle {
+        margin-inline: auto var(--rh-space-lg, 16px);
+
+        & rh-icon {
+          rotate: 180deg;
+
+          &:where(:dir(rtl)) {
+            rotate: 0deg;
+          }
+        }
+      }
+
       & #expand-button rh-icon {
         scale: -1 1;
 
@@ -500,7 +555,7 @@
 
   @layer closed {
     @layer start {
-      #container.closed.inline-start #collapse-toggle rh-icon {
+      #container.closed.inline-start :is(#collapse-toggle, #narrow-toggle) rh-icon {
         rotate: 180deg;
 
         &:dir(rtl) {
@@ -510,7 +565,7 @@
     }
 
     @layer end {
-      #container.closed.inline-end #collapse-toggle rh-icon {
+      #container.closed.inline-end :is(#collapse-toggle, #narrow-toggle) rh-icon {
         rotate: 360deg;
 
         &:dir(rtl) {
@@ -678,74 +733,6 @@
     }
   }
 
-  @layer inline {
-    #container.inline {
-      &:is(.open, .closed) #panel {
-        transition:
-          margin var(--_transition-duration) ease-in-out,
-          translate var(--_transition-duration) ease-in-out;
-      }
-
-      &.closed {
-        &:not(.collapsible) {
-          &.inline-start #panel {
-            position: absolute;
-            translate: calc(var(--_slide-dir) * 100%) 0;
-          }
-
-          &.inline-end #panel {
-            position: absolute;
-            translate: calc(var(--_slide-dir) * -100%) 0;
-          }
-
-          &:is(.inline-start, .inline-end) #content-container {
-            inline-size: 100%;
-          }
-        }
-
-        &.collapsible {
-          &.inline-start #panel {
-            translate: none;
-            margin-inline-start: calc(-1 * var(--_panel-width) + var(--_collapse-visible-width));
-          }
-
-          &.inline-end #panel {
-            translate: none;
-            margin-inline-end: calc(-1 * var(--_panel-width) + var(--_collapse-visible-width));
-          }
-
-          & #panel-body {
-            opacity: 0;
-            visibility: hidden;
-            transition:
-              opacity var(--_transition-duration) ease-out,
-              visibility 0s var(--_transition-duration);
-          }
-        }
-      }
-
-      @container drawer (min-width: 992px) {
-        &.closed:not(.collapsible) {
-          &.inline-start #panel {
-            position: relative;
-            translate: none;
-            margin-inline-start: calc(-1 * var(--_panel-width));
-          }
-
-          &.inline-end #panel {
-            position: relative;
-            translate: none;
-            margin-inline-end: calc(-1 * var(--_panel-width));
-          }
-
-          &:is(.inline-start, .inline-end) #content-container {
-            inline-size: auto;
-          }
-        }
-      }
-    }
-  }
-
   @layer auto {
     #container.auto {
       &:is(.open, .closed).inline-start #panel {
@@ -794,6 +781,10 @@
 
       &:is(.open, .closed) #content-container {
         inline-size: 100%;
+
+        & #content {
+          padding-block-start: var(--rh-space-2xl, 32px);
+        }
       }
 
       &.collapsible {
@@ -806,217 +797,10 @@
         }
       }
 
-      &:not(.threshold-2xs,
-      .threshold-xs,
-      .threshold-sm,
-      .threshold-md,
+      &:not(.threshold-md,
       .threshold-lg,
       .threshold-xl,
       .threshold-2xl) {
-        @container drawer (min-width: 768px) {
-          &:is(.open, .closed).inline-start #panel {
-            position: relative;
-            z-index: 2;
-            inset-block: auto;
-            inset-inline-start: auto;
-            transition:
-              margin var(--_transition-duration) ease-in-out,
-              translate var(--_transition-duration) ease-in-out;
-          }
-
-          &:is(.open, .closed).inline-end #panel {
-            position: relative;
-            z-index: 2;
-            inset-block: auto;
-            inset-inline-end: auto;
-            transition:
-              margin var(--_transition-duration) ease-in-out,
-              translate var(--_transition-duration) ease-in-out;
-          }
-
-          &:is(.open, .closed):is(.inline-start, .inline-end) #content-container {
-            inline-size: auto;
-          }
-
-          &.collapsible {
-            &.inline-start #content-container {
-              padding-inline-start: 0;
-            }
-
-            &.inline-end #content-container {
-              padding-inline-end: 0;
-            }
-          }
-
-          &.closed {
-            &:not(.collapsible) {
-              &.inline-start #panel {
-                translate: none;
-                margin-inline-start: calc(-1 * var(--_panel-width));
-              }
-
-              &.inline-end #panel {
-                translate: none;
-                margin-inline-end: calc(-1 * var(--_panel-width));
-              }
-
-              &:is(.inline-start, .inline-end) #content-container {
-                inline-size: auto;
-              }
-            }
-
-            &.collapsible {
-              &.inline-start #panel {
-                translate: none;
-                margin-inline-start: calc(var(--_collapse-visible-width) - var(--_panel-width));
-              }
-
-              &.inline-end #panel {
-                translate: none;
-                margin-inline-end: calc(-1 * var(--_panel-width) + var(--_collapse-visible-width));
-              }
-            }
-          }
-        }
-      }
-
-      &.threshold-2xs {
-        @container drawer (min-width: 320px) {
-          &:is(.open, .closed).inline-start #panel {
-            position: relative;
-            z-index: 2;
-            inset-block: auto;
-            inset-inline-start: auto;
-            transition:
-              margin var(--_transition-duration) ease-in-out,
-              translate var(--_transition-duration) ease-in-out;
-          }
-
-          &:is(.open, .closed).inline-end #panel {
-            position: relative;
-            z-index: 2;
-            inset-block: auto;
-            inset-inline-end: auto;
-            transition:
-              margin var(--_transition-duration) ease-in-out,
-              translate var(--_transition-duration) ease-in-out;
-          }
-
-          &:is(.open, .closed):is(.inline-start, .inline-end) #content-container {
-            inline-size: auto;
-          }
-
-          &.collapsible {
-            &.inline-start #content-container {
-              padding-inline-start: 0;
-            }
-
-            &.inline-end #content-container {
-              padding-inline-end: 0;
-            }
-          }
-
-          &.closed {
-            &:not(.collapsible) {
-              &.inline-start #panel {
-                translate: none;
-                margin-inline-start: calc(-1 * var(--_panel-width));
-              }
-
-              &.inline-end #panel {
-                translate: none;
-                margin-inline-end: calc(-1 * var(--_panel-width));
-              }
-
-              &:is(.inline-start, .inline-end) #content-container {
-                inline-size: auto;
-              }
-            }
-
-            &.collapsible {
-              &.inline-start #panel {
-                translate: none;
-                margin-inline-start: calc(var(--_collapse-visible-width) - var(--_panel-width));
-              }
-
-              &.inline-end #panel {
-                translate: none;
-                margin-inline-end: calc(-1 * var(--_panel-width) + var(--_collapse-visible-width));
-              }
-            }
-          }
-        }
-      }
-
-      &.threshold-xs {
-        @container drawer (min-width: 576px) {
-          &:is(.open, .closed).inline-start #panel {
-            position: relative;
-            z-index: 2;
-            inset-block: auto;
-            inset-inline-start: auto;
-            transition:
-              margin var(--_transition-duration) ease-in-out,
-              translate var(--_transition-duration) ease-in-out;
-          }
-
-          &:is(.open, .closed).inline-end #panel {
-            position: relative;
-            z-index: 2;
-            inset-block: auto;
-            inset-inline-end: auto;
-            transition:
-              margin var(--_transition-duration) ease-in-out,
-              translate var(--_transition-duration) ease-in-out;
-          }
-
-          &:is(.open, .closed):is(.inline-start, .inline-end) #content-container {
-            inline-size: auto;
-          }
-
-          &.collapsible {
-            &.inline-start #content-container {
-              padding-inline-start: 0;
-            }
-
-            &.inline-end #content-container {
-              padding-inline-end: 0;
-            }
-          }
-
-          &.closed {
-            &:not(.collapsible) {
-              &.inline-start #panel {
-                translate: none;
-                margin-inline-start: calc(-1 * var(--_panel-width));
-              }
-
-              &.inline-end #panel {
-                translate: none;
-                margin-inline-end: calc(-1 * var(--_panel-width));
-              }
-
-              &:is(.inline-start, .inline-end) #content-container {
-                inline-size: auto;
-              }
-            }
-
-            &.collapsible {
-              &.inline-start #panel {
-                translate: none;
-                margin-inline-start: calc(var(--_collapse-visible-width) - var(--_panel-width));
-              }
-
-              &.inline-end #panel {
-                translate: none;
-                margin-inline-end: calc(-1 * var(--_panel-width) + var(--_collapse-visible-width));
-              }
-            }
-          }
-        }
-      }
-
-      &.threshold-sm {
         @container drawer (min-width: 768px) {
           &:is(.open, .closed).inline-start #panel {
             position: relative;
@@ -1360,6 +1144,19 @@
 }
 
 @layer overrides {
+  #container.full-viewport #panel {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    max-inline-size: none;
+    background-color: var(--_panel-bg);
+  }
+
+  #container.full-viewport #collapse-toggle,
+  #container.full-viewport #resize-handle {
+    display: none;
+  }
+
   #container.no-transition #panel {
     transition: none;
   }

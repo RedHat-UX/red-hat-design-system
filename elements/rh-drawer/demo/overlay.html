@@ -19,27 +19,40 @@
         <legend>Panel</legend>
         <label><input type="radio" name="panel" value="collapsible" checked> collapsible (default)</label>
         <label><input type="radio" name="panel" value="resizable"> resizable</label>
+        <label><input type="radio" name="panel" value="none"> none</label>
       </fieldset>
       <fieldset>
         <legend>Expand</legend>
         <label><input type="radio" name="expand" value="" checked> none</label>
-        <label><input type="radio" name="expand" value="full-screen"> full-screen</label>
+        <label><input type="radio" name="expand" value="full-viewport"> full-viewport</label>
       </fieldset>
     </form>
+    <button id="trigger" disabled aria-controls="drawer" aria-expanded="true">Toggle Drawer</button>
+    <div class="help-text">Enabled when panel is resizable or none</div>
   </div>
 </rh-drawer>
 
 <script type="module">
   import '@rhds/elements/rh-drawer/rh-drawer.js';
 
+  const trigger = document.getElementById('trigger');
   const form = document.getElementById('knobs');
   const drawer = document.getElementById('drawer');
 
+  drawer.addEventListener('open', () => trigger.setAttribute('aria-expanded', 'true'));
+  drawer.addEventListener('close', () => trigger.setAttribute('aria-expanded', 'false'));
+
   form.addEventListener('input', function sync() {
     const data = Object.fromEntries(new FormData(form));
+
+    const needsTrigger = data.panel === 'resizable' || data.panel === 'none';
+
     drawer.position = data.position;
     drawer.panel = data.panel || undefined;
     drawer.expand = data.expand || undefined;
+    drawer.triggerId = needsTrigger ? 'trigger' : undefined;
+    trigger.disabled = !needsTrigger;
+
     if (!drawer.open) {
       drawer.open = true;
     }

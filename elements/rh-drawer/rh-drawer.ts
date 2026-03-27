@@ -14,8 +14,6 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 import {
-  BreakpointXs,
-  BreakpointSm,
   BreakpointMd,
   BreakpointLg,
   BreakpointXl,
@@ -45,9 +43,6 @@ export class DrawerCloseEvent extends Event {
 }
 
 const thresholdBreakpoints: Record<string, number> = {
-  '2xs': 320,
-  'xs': parseInt(BreakpointXs),
-  'sm': parseInt(BreakpointSm),
   'md': parseInt(BreakpointMd),
   'lg': parseInt(BreakpointLg),
   'xl': parseInt(BreakpointXl),
@@ -68,8 +63,8 @@ const thresholdBreakpoints: Record<string, number> = {
  * @slot header - Expects block elements for the panel header. MAY include a heading (`h1`–`h6`) so screen readers can identify the panel content.
  * @slot body - Expects block elements such as `div`, `nav`, or `rh-navigation-vertical` for panel content. MUST NOT be left empty for accessibility.
  * @slot footer - Expects block elements for footer content pinned to the bottom of the panel. Content is visible to screen readers.
- * @slot expand-label-expand - Expects inline text for the expand button when collapsed. Defaults to "Enter full screen". SHOULD be localized for screen readers.
- * @slot expand-label-collapse - Expects inline text for the expand button when expanded. Defaults to "Exit full screen". SHOULD be localized for screen readers.
+ * @slot expand-label-expand - Expects inline text for the expand button when collapsed. Defaults to "Enter full viewport". SHOULD be localized for screen readers.
+ * @slot expand-label-collapse - Expects inline text for the expand button when expanded. Defaults to "Exit full viewport". SHOULD be localized for screen readers.
  * @slot close-label - Expects inline text for the close button. Defaults to "Close drawer". SHOULD be localized for screen readers.
  * @slot resize-label - Expects inline text for the resize handle. Defaults to "Resize panel". SHOULD be localized for screen readers.
  * @slot collapse-label-open - Expects inline text for the collapse toggle when open. Defaults to "Collapse panel". SHOULD be localized for screen readers.
@@ -79,7 +74,7 @@ const thresholdBreakpoints: Record<string, number> = {
  * @csspart header - The panel header area for slotted heading content.
  * @csspart body - The panel body content area.
  * @csspart footer - The panel footer area, pinned to the bottom.
- * @csspart expand-button - The full-screen expand toggle button.
+ * @csspart expand-button - The full-viewport expand toggle button.
  * @csspart close-button - The panel close button, visible when not collapsible.
  * @csspart resize-handle - The drag handle for resizing panel width.
  * @csspart collapse-toggle - The round collapse and expand toggle button.
@@ -106,9 +101,11 @@ export class RhDrawer extends LitElement {
   #resizeTimer?: ReturnType<typeof setTimeout>;
   #fixedUserState: boolean | null = null;
   #userInteracted = false;
+  #reverting = false;
+  #isRtl = false;
 
   /** Controls the layout behavior of the drawer. */
-  @property({ reflect: true }) variant: 'auto' | 'fixed' | 'flow' | 'overlay' | 'inline' = 'auto';
+  @property({ reflect: true }) variant: 'auto' | 'fixed' | 'flow' | 'overlay' = 'auto';
 
   /** Which side the panel appears on. */
   @property({ reflect: true }) position: 'inline-start' | 'inline-end' = 'inline-start';
@@ -119,8 +116,8 @@ export class RhDrawer extends LitElement {
   /** Optional ID of the external trigger element. */
   @property({ attribute: 'trigger-id' }) triggerId?: string;
 
-  /** Adds a full-screen toggle button to the panel actions via the Fullscreen API. */
-  @property({ reflect: true }) expand?: 'full-screen';
+  /** Adds a full-viewport toggle button to the panel actions. */
+  @property({ reflect: true }) expand?: 'full-viewport';
 
   /**
    * Accessible label for the drawer panel. When the header slot has content,
@@ -131,9 +128,9 @@ export class RhDrawer extends LitElement {
 
   /**
    * Controls the panel edge interaction.
-   * - `collapsible`: adds a collapse/expand toggle button (default for overlay/inline)
+   * - `collapsible`: adds a collapse/expand toggle button (default for auto/overlay)
    * - `resizable`: adds a drag bar for manual resizing (fixed and overlay only)
-   * Overlay and inline variants default to `collapsible` when not set.
+   * Auto and overlay variants default to `collapsible` when not set.
    * Fixed variant ignores `collapsible`.
    */
   @property({ reflect: true }) panel?: 'collapsible' | 'resizable' | 'none';
@@ -147,10 +144,11 @@ export class RhDrawer extends LitElement {
    * Only applies to the `auto` variant.
    */
   @property({ attribute: 'overlay-threshold' })
-  overlayThreshold?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+  overlayThreshold?: 'md' | 'lg' | 'xl' | '2xl';
 
-  @state() private _isFullScreen = false;
+  @state() private _isFullViewport = false;
   @state() private _isInlineMode = false;
+  @state() private _isNarrowMode = false;
   @state() private _panelWidth: number | null = null;
   @state() private _splitterValue = 0;
   @state() private _suppressTransition = false;
@@ -165,8 +163,6 @@ export class RhDrawer extends LitElement {
       case 'fixed':
       case 'overlay':
         return 'dialog';
-      case 'inline':
-        return 'complementary';
       case 'auto':
       case 'flow':
       default:
@@ -178,8 +174,8 @@ export class RhDrawer extends LitElement {
     super.connectedCallback();
     this.addEventListener('keydown', this.#onKeyDown);
     if (!isServer) {
+      this.#isRtl = this.matches(':dir(rtl)');
       document.addEventListener('keydown', this.#onDocumentKeyDown);
-      document.addEventListener('fullscreenchange', this.#onFullScreenChange);
     }
   }
 
@@ -218,7 +214,6 @@ export class RhDrawer extends LitElement {
       document.removeEventListener('pointermove', this.#onPointerMove);
       document.removeEventListener('pointerup', this.#onPointerUp);
       window.removeEventListener('resize', this.#onWindowResize);
-      document.removeEventListener('fullscreenchange', this.#onFullScreenChange);
     }
     this.#mediaQuery?.removeEventListener('change', this.#onMediaChange);
     this.#resizeObserver?.disconnect();
@@ -226,10 +221,15 @@ export class RhDrawer extends LitElement {
   }
 
   render() {
-    const showCollapsible = !this.triggerId
+    const wouldBeCollapsible = !this.triggerId
       && (this.panel === 'collapsible' || (!this.panel
         && this.variant !== 'fixed' && this.variant !== 'flow'))
       && this.variant !== 'fixed' && this.variant !== 'flow';
+    // showCollapsible and showNarrowToggle are mutually exclusive.
+    // Both render slots named collapse-label-open / collapse-label-closed;
+    // only one must be in the DOM at a time to avoid duplicate slot projection.
+    const showCollapsible = wouldBeCollapsible && !this._isNarrowMode;
+    const showNarrowToggle = wouldBeCollapsible && this._isNarrowMode;
     const isResizable = this.panel === 'resizable'
       && (this.variant === 'fixed' || this.variant === 'overlay');
     const hasHeader = this.#slots.hasSlotted('header');
@@ -247,15 +247,12 @@ export class RhDrawer extends LitElement {
       'fixed': this.variant === 'fixed',
       'flow': this.variant === 'flow',
       'overlay': this.variant === 'overlay',
-      'inline': this.variant === 'inline',
       'inline-start': this.position === 'inline-start',
       'inline-end': this.position === 'inline-end',
       'collapsible': showCollapsible,
       'resizable': isResizable,
+      'full-viewport': this._isFullViewport,
       'no-transition': this._suppressTransition,
-      'threshold-2xs': isAuto && this.overlayThreshold === '2xs',
-      'threshold-xs': isAuto && this.overlayThreshold === 'xs',
-      'threshold-sm': isAuto && this.overlayThreshold === 'sm',
       'threshold-md': isAuto && this.overlayThreshold === 'md',
       'threshold-lg': isAuto && this.overlayThreshold === 'lg',
       'threshold-xl': isAuto && this.overlayThreshold === 'xl',
@@ -279,13 +276,13 @@ export class RhDrawer extends LitElement {
                         type="button"
                         aria-controls="panel"
                         aria-labelledby="expand-label"
-                        @click=${this.#onFullScreenToggle}>
+                        @click=${this.#onFullViewportToggle}>
                   <rh-icon set="ui"
-                           icon="${this._isFullScreen ? 'arrow-down-left-up-right-to-center' : 'expand-arrows'}"></rh-icon>
+                           icon="${this._isFullViewport ? 'arrow-down-left-up-right-to-center' : 'expand-arrows'}"></rh-icon>
                 </button>
                 <span id="expand-label" class="visually-hidden">
-                  <span ?hidden=${this._isFullScreen}><slot name="expand-label-expand">Enter full screen</slot></span>
-                  <span ?hidden=${!this._isFullScreen}><slot name="expand-label-collapse">Exit full screen</slot></span>
+                  <span ?hidden=${this._isFullViewport}><slot name="expand-label-expand">Enter full viewport</slot></span>
+                  <span ?hidden=${!this._isFullViewport}><slot name="expand-label-collapse">Exit full viewport</slot></span>
                 </span>
               ` : nothing}
               ${!showCollapsible ? html`
@@ -293,7 +290,6 @@ export class RhDrawer extends LitElement {
                         part="close-button"
                         type="button"
                         aria-controls="panel"
-                        aria-expanded="${this.open}"
                         aria-labelledby="close-label"
                         @click=${this.close}>
                   <rh-icon set="microns" icon="close"></rh-icon>
@@ -351,6 +347,21 @@ export class RhDrawer extends LitElement {
         </div>
         ${hasContentSlot ? html`
           <div id="content-container" part="content">
+            ${showNarrowToggle ? html`
+              <button id="narrow-toggle"
+                      part="narrow-toggle"
+                      type="button"
+                      aria-controls="panel"
+                      aria-expanded="${this.open}"
+                      aria-labelledby="narrow-toggle-label"
+                      @click=${this.toggle}>
+                <rh-icon set="ui" icon="caret-left"></rh-icon>
+              </button>
+              <span id="narrow-toggle-label" class="visually-hidden">
+                <span ?hidden=${!this.open}><slot name="collapse-label-open">Collapse panel</slot></span>
+                <span ?hidden=${this.open}><slot name="collapse-label-closed">Expand panel</slot></span>
+              </span>
+            ` : nothing}
             <div id="content">
               <!-- Page content displayed alongside the panel (not used with fixed variant) -->
               <slot></slot>
@@ -363,23 +374,38 @@ export class RhDrawer extends LitElement {
 
   @observes('open')
   protected async _openChanged(oldValue?: boolean, newValue?: boolean) {
-    if (oldValue == null || newValue == null || oldValue === newValue) {
+    // Skip during revert to prevent re-entry when open is restored after cancellation
+    if (this.#reverting || oldValue == null || newValue == null || oldValue === newValue) {
+      return;
+    }
+    await this.updateComplete;
+    const event = newValue ?
+      new DrawerOpenEvent(this.#triggerElement)
+      : new DrawerCloseEvent();
+    // dispatchEvent returns false when a cancelable event had preventDefault() called.
+    // In that case, revert the open property to its previous value so the drawer
+    // stays in its prior state. The #reverting flag prevents the property change
+    // from re-entering this observer, and _suppressTransition avoids any visual
+    // flicker from the brief intermediate state.
+    if (!this.dispatchEvent(event)) {
+      this.#reverting = true;
+      this._suppressTransition = true;
+      this.open = oldValue;
+      await this.updateComplete;
+      this.#reverting = false;
       return;
     }
     this.#store('open', newValue);
-    await this.updateComplete;
     if (newValue) {
       if (this.#userInteracted) {
         // TODO: use .focus({ focusVisible: true }) when Baseline
         (this.closeButton ?? this.collapseToggle)?.focus();
       }
-      this.dispatchEvent(new DrawerOpenEvent(this.#triggerElement));
     } else {
       if (this.#userInteracted) {
         // TODO: use .focus({ focusVisible: true }) when Baseline
         this.#triggerElement?.focus();
       }
-      this.dispatchEvent(new DrawerCloseEvent());
     }
     this.#userInteracted = false;
   }
@@ -418,6 +444,7 @@ export class RhDrawer extends LitElement {
 
   #onPointerDown = (event: PointerEvent) => {
     event.preventDefault();
+    this.#isRtl = this.matches(':dir(rtl)');
     this.#resizing = true;
     document.addEventListener('pointermove', this.#onPointerMove);
     document.addEventListener('pointerup', this.#onPointerUp);
@@ -429,7 +456,7 @@ export class RhDrawer extends LitElement {
       return;
     }
     const isFixedPosition = this.variant === 'fixed';
-    const panelOnLeft = (this.position === 'inline-start') !== this.matches(':dir(rtl)');
+    const panelOnLeft = (this.position === 'inline-start') !== this.#isRtl;
     const maxWidth = isFixedPosition ?
       window.innerWidth
       : this.panelEl.parentElement!.getBoundingClientRect().width;
@@ -457,7 +484,7 @@ export class RhDrawer extends LitElement {
 
   #onResizeKeyDown = (event: KeyboardEvent) => {
     const step = 10;
-    const panelOnLeft = (this.position === 'inline-start') !== this.matches(':dir(rtl)');
+    const panelOnLeft = (this.position === 'inline-start') !== this.#isRtl;
     switch (event.key) {
       case 'ArrowLeft':
         event.preventDefault();
@@ -531,16 +558,17 @@ export class RhDrawer extends LitElement {
   };
 
   #updateInlineMode() {
-    if (this.variant === 'inline') {
-      this._isInlineMode = true;
-      return;
-    }
-    if (this.variant === 'auto') {
+    if (this.variant === 'auto' || this.variant === 'overlay') {
       const { width } = this.getBoundingClientRect();
-      const breakpoint = this.overlayThreshold != null ?
+      const breakpoint = this.variant === 'auto' && this.overlayThreshold != null ?
         thresholdBreakpoints[this.overlayThreshold] ?? 768
         : 768;
-      this._isInlineMode = width >= breakpoint;
+      const nextInline = this.variant === 'auto' && width >= breakpoint;
+      const nextNarrow = width < breakpoint;
+      if (nextInline !== this._isInlineMode || nextNarrow !== this._isNarrowMode) {
+        this._isInlineMode = nextInline;
+        this._isNarrowMode = nextNarrow;
+      }
     }
   }
 
@@ -553,9 +581,7 @@ export class RhDrawer extends LitElement {
     this.#mediaQuery?.removeEventListener('change', this.#onMediaChange);
     window.removeEventListener('resize', this.#onWindowResize);
 
-    if (this.variant === 'inline') {
-      this._isInlineMode = true;
-    } else if (this.variant === 'auto') {
+    if (this.variant === 'auto' || this.variant === 'overlay') {
       this.#resizeObserver = new ResizeObserver(this.#onContainerResize);
       this.#resizeObserver.observe(this);
       this.#updateInlineMode();
@@ -565,8 +591,10 @@ export class RhDrawer extends LitElement {
       window.addEventListener('resize', this.#onWindowResize);
       this.#onMediaChange();
       this._isInlineMode = this.#mediaQuery.matches;
+      this._isNarrowMode = false;
     } else {
       this._isInlineMode = false;
+      this._isNarrowMode = false;
     }
   }
 
@@ -582,7 +610,7 @@ export class RhDrawer extends LitElement {
   };
 
   #onKeyDown = (event: KeyboardEvent) => {
-    if (event.key === 'Escape' && this.open) {
+    if (event.key === 'Escape' && this.open && this.#panelRole === 'dialog') {
       event.preventDefault();
       this.close();
     }
@@ -595,16 +623,8 @@ export class RhDrawer extends LitElement {
     }
   };
 
-  #onFullScreenToggle = () => {
-    if (this._isFullScreen) {
-      document.exitFullscreen();
-    } else {
-      this.panelEl?.requestFullscreen();
-    }
-  };
-
-  #onFullScreenChange = () => {
-    this._isFullScreen = document.fullscreenElement === this.panelEl;
+  #onFullViewportToggle = () => {
+    this._isFullViewport = !this._isFullViewport;
   };
 
   #setFixedUserState(open: boolean) {
@@ -637,12 +657,16 @@ export class RhDrawer extends LitElement {
         this.#fixedUserState = this.open;
       }
       const panel = sessionStorage.getItem(`${this.storageKey}:panel`);
-      if (panel != null) {
+      const validPanels: string[] = ['collapsible', 'resizable', 'none'];
+      if (panel != null && validPanels.includes(panel)) {
         this.panel = panel as typeof this.panel;
       }
       const width = sessionStorage.getItem(`${this.storageKey}:panelWidth`);
       if (width != null) {
-        this._panelWidth = Number(width);
+        const parsed = Number(width);
+        if (Number.isFinite(parsed) && parsed >= RhDrawer.minPanelWidth) {
+          this._panelWidth = parsed;
+        }
       }
     } catch {
       // ignore — storage unavailable

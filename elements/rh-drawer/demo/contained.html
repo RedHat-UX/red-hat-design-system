@@ -1,6 +1,6 @@
 <meta itemprop="description" content="Drawer inside a sized container demonstrating how the component respects its container dimensions rather than the viewport.">
 <div id="container">
-<rh-drawer id="drawer" variant="inline" open>
+<rh-drawer id="drawer" variant="auto" open>
   <div slot="header">Header</div>
   <div slot="body">Body</div>
   <div slot="footer">Footer</div>
@@ -15,7 +15,6 @@
         <legend>Variant</legend>
         <label><input type="radio" name="variant" value="auto" checked> auto</label>
         <label><input type="radio" name="variant" value="overlay"> overlay</label>
-        <label><input type="radio" name="variant" value="inline"> inline</label>
       </fieldset>
       <fieldset>
         <legend>Position</legend>
@@ -31,7 +30,7 @@
       <fieldset>
         <legend>Expand</legend>
         <label><input type="radio" name="expand" value="" checked> none</label>
-        <label><input type="radio" name="expand" value="full-screen"> full-screen</label>
+        <label><input type="radio" name="expand" value="full-viewport"> full-viewport</label>
       </fieldset>
     </form>
     <button id="trigger" disabled aria-controls="drawer" aria-expanded="true">Toggle Drawer</button>

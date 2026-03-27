@@ -1,1 +1,0 @@
-The inline variant panel pushes and pulls content in the normal flex flow at all container widths. The collapsible toggle allows users to collapse and expand the panel. Use the knobs to test position, panel mode, and expand.

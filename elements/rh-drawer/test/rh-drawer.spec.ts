@@ -24,7 +24,7 @@ const DRAWER_COLLAPSIBLE = html`
 `;
 
 const DRAWER_WITH_EXPAND = html`
-  <rh-drawer open expand="full-screen">
+  <rh-drawer open expand="full-viewport">
     <h3 slot="header">Panel Header</h3>
     <nav slot="body">Panel Body</nav>
     <p slot="footer">Panel Footer</p>
@@ -75,7 +75,7 @@ describe('<rh-drawer>', function() {
       });
     });
 
-    describe('with expand="full-screen"', function() {
+    describe('with expand="full-viewport"', function() {
       beforeEach(async function() {
         element = await fixture<RhDrawer>(DRAWER_WITH_EXPAND);
       });
@@ -87,7 +87,7 @@ describe('<rh-drawer>', function() {
 
       it('should expose expand label', async function() {
         const snapshot = await a11ySnapshot();
-        expect(snapshot).to.have.axQuery({ name: 'Enter full screen' });
+        expect(snapshot).to.have.axQuery({ name: 'Enter full viewport' });
       });
     });
 
@@ -129,11 +129,6 @@ describe('<rh-drawer>', function() {
         await expect(element).to.be.accessible();
       });
 
-      it('inline is accessible', async function() {
-        element.variant = 'inline';
-        await element.updateComplete;
-        await expect(element).to.be.accessible();
-      });
     });
   });
 
@@ -328,7 +323,7 @@ describe('<rh-drawer>', function() {
     it('should expose both collapse toggle and expand button', async function() {
       const snapshot = await a11ySnapshot();
       expect(snapshot).to.have.axQuery({ name: 'Collapse panel' });
-      expect(snapshot).to.have.axQuery({ name: 'Enter full screen' });
+        expect(snapshot).to.have.axQuery({ name: 'Enter full viewport' });
     });
 
     describe('closing the drawer', function() {
@@ -344,20 +339,7 @@ describe('<rh-drawer>', function() {
     });
   });
 
-  describe('resizable is noop for inline and auto', function() {
-    it('should not expose resize handle for inline variant', async function() {
-      element = await fixture<RhDrawer>(html`
-        <rh-drawer variant="inline" panel="resizable" open>
-          <h3 slot="header">Header</h3>
-          <nav slot="body">Body</nav>
-          <div><p>Content</p></div>
-        </rh-drawer>
-      `);
-      await element.updateComplete;
-      const snapshot = await a11ySnapshot();
-      expect(snapshot).to.not.have.axQuery({ name: 'Resize panel' });
-    });
-
+  describe('resizable is noop for auto', function() {
     it('should not expose resize handle for auto variant', async function() {
       element = await fixture<RhDrawer>(html`
         <rh-drawer variant="auto" panel="resizable" open>
@@ -492,23 +474,6 @@ describe('<rh-drawer>', function() {
       });
     });
 
-    describe('inline variant', function() {
-      beforeEach(async function() {
-        element = await fixture<RhDrawer>(html`
-          <rh-drawer variant="inline" open>
-            <nav slot="body">Body</nav>
-            <div><p>Content</p></div>
-          </rh-drawer>
-        `);
-      });
-      beforeEach(async () => await element.updateComplete);
-
-      it('should have role complementary', function() {
-        const panel = element.shadowRoot?.querySelector('#panel');
-        expect(panel?.getAttribute('role')).to.equal('complementary');
-      });
-    });
-
     describe('switching variant at runtime', function() {
       beforeEach(async function() {
         element = await fixture<RhDrawer>(html`
@@ -519,13 +484,6 @@ describe('<rh-drawer>', function() {
         `);
       });
       beforeEach(async () => await element.updateComplete);
-
-      it('should switch to complementary for inline variant', async function() {
-        element.variant = 'inline';
-        await element.updateComplete;
-        const panel = element.shadowRoot?.querySelector('#panel');
-        expect(panel?.getAttribute('role')).to.equal('complementary');
-      });
 
       it('should switch to dialog for fixed variant', async function() {
         element.variant = 'fixed';

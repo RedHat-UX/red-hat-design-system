@@ -1,7 +1,7 @@
 <meta itemprop="description" content="Fixed variant where the panel is always position fixed, overlaying the page at all viewport sizes, toggled by an external trigger.">
 <button id="fixed-trigger" aria-controls="drawer" aria-expanded="false">Toggle Drawer</button>
 
-<rh-drawer id="drawer" variant="fixed" trigger-id="fixed-trigger">
+<rh-drawer id="drawer" variant="fixed" trigger-id="fixed-trigger" style="--_panel-width: 500px">
   <div slot="header">Header</div>
   <div slot="body">Body</div>
   <div slot="footer">Footer</div>
@@ -21,7 +21,7 @@
   <fieldset>
     <legend>Expand</legend>
     <label><input type="radio" name="expand" value="" checked> none</label>
-    <label><input type="radio" name="expand" value="full-screen"> full-screen</label>
+    <label><input type="radio" name="expand" value="full-viewport"> full-viewport</label>
   </fieldset>
 </form>
 

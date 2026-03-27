@@ -1,6 +1,6 @@
 <meta itemprop="description" content="Right-to-left language support demonstrating panel position, toggle icons, and keyboard interactions in RTL context.">
 <div dir="rtl" lang="he">
-  <rh-drawer id="drawer" variant="inline" open>
+  <rh-drawer id="drawer" variant="auto" open>
     <div slot="header">כותרת</div>
     <div slot="body">
       <p>זהו תוכן הגוף של חלונית המגירה. בשפות מימין לשמאל, החלונית מופיעה בצד הנכון בהתאם לכיוון הטקסט.</p>
@@ -15,9 +15,8 @@
       <form id="knobs" dir="ltr">
         <fieldset>
           <legend>Variant</legend>
-          <label><input type="radio" name="variant" value="auto"> auto</label>
+          <label><input type="radio" name="variant" value="auto" checked> auto</label>
           <label><input type="radio" name="variant" value="overlay"> overlay</label>
-          <label><input type="radio" name="variant" value="inline" checked> inline</label>
         </fieldset>
         <fieldset>
           <legend>Position</legend>
@@ -33,7 +32,7 @@
         <fieldset>
           <legend>Expand</legend>
           <label><input type="radio" name="expand" value="" checked> none</label>
-          <label><input type="radio" name="expand" value="full-screen"> full-screen</label>
+          <label><input type="radio" name="expand" value="full-viewport"> full-viewport</label>
         </fieldset>
       </form>
       <button id="trigger" disabled aria-controls="drawer" aria-expanded="true">Toggle Drawer</button>

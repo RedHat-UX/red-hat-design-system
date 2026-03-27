@@ -13,7 +13,6 @@
         <legend>Variant</legend>
         <label><input type="radio" name="variant" value="auto"> auto</label>
         <label><input type="radio" name="variant" value="overlay" checked> overlay</label>
-        <label><input type="radio" name="variant" value="inline"> inline</label>
       </fieldset>
       <fieldset>
         <legend>Position</legend>
@@ -29,18 +28,16 @@
       <fieldset>
         <legend>Expand</legend>
         <label><input type="radio" name="expand" value="" checked> none</label>
-        <label><input type="radio" name="expand" value="full-screen"> full-screen</label>
+        <label><input type="radio" name="expand" value="full-viewport"> full-viewport</label>
       </fieldset>
       <fieldset id="overlay-threshold-fieldset" disabled>
         <legend>Overlay Threshold</legend>
         <div class="help-text">Only applies to auto variant</div>
-        <label><input type="radio" name="overlay-threshold" value="" checked> none</label>
-        <label><input type="radio" name="overlay-threshold" value="2xs"> 2xs (320px)</label>
-        <label><input type="radio" name="overlay-threshold" value="xs"> xs (576px)</label>
-        <label><input type="radio" name="overlay-threshold" value="sm"> sm (768px)</label>
+        <label><input type="radio" name="overlay-threshold" value="" checked> none (768px)</label>
         <label><input type="radio" name="overlay-threshold" value="md"> md (992px)</label>
         <label><input type="radio" name="overlay-threshold" value="lg"> lg (1200px)</label>
         <label><input type="radio" name="overlay-threshold" value="xl"> xl (1440px)</label>
+        <label><input type="radio" name="overlay-threshold" value="2xl"> 2xl (1680px)</label>
       </fieldset>
     </form>
     <button id="trigger" disabled aria-controls="drawer" aria-expanded="true">Toggle Drawer</button>
