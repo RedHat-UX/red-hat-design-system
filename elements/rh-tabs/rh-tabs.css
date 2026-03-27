@@ -1,10 +1,10 @@
 :host {
   display: block;
 
-  /** Text color using rh-color-text-primary token */
+  /** Text color, adapts to color-palette */
   color: var(--rh-color-text-primary);
 
-  /** Background using rh-color-surface token */
+  /** Tabs background, adapts to color-palette */
   background-color: var(--rh-color-surface);
   container-name: host;
   container-type: inline-size;
@@ -220,7 +220,7 @@ button {
   /** Inline padding using rh-space-lg token */
   padding-inline: var(--rh-space-lg, 16px);
 
-  /** Background using rh-color-surface token */
+  /** Scroll button background, adapts to color-palette */
   background-color: var(--rh-color-surface);
   color: var(--_overflow-button-text-color);
   position: relative;

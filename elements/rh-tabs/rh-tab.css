@@ -271,7 +271,10 @@
   &:not(.active) {
     &.box {
       &:before {
+        /** Inactive box tab side border color */
         border-inline-color: var(--rh-color-border-subtle);
+
+        /** Inactive box tab side border width */
         border-inline-start-width: var(--rh-border-width-sm, 1px);
       }
 
@@ -283,8 +286,10 @@
         &:hover {
           &:before {
             border-block-start:
+              /** Vertical tab hover indicator width */
               var(--rh-border-width-lg, 3px)
               solid
+              /** Vertical tab hover indicator color */
               var(--rh-color-interactive-secondary-default);
           }
         }
@@ -293,12 +298,16 @@
           &:before {
             border-inline-start-color: transparent;
             border-inline-end:
+              /** Vertical box tab trailing border width above sm breakpoint */
               var(--rh-border-width-sm, 1px)
               solid
+              /** Vertical box tab trailing border color above sm breakpoint */
               var(--rh-color-border-subtle);
             border-block-start:
+              /** Vertical box tab top border width above sm breakpoint */
               var(--rh-border-width-sm, 1px)
               solid
+              /** Vertical box tab top border color above sm breakpoint */
               var(--rh-color-border-subtle);
           }
 
@@ -309,16 +318,20 @@
           &:hover {
             &:before {
               border-inline-start:
+                /** Vertical box tab hover active indicator width above sm breakpoint */
                 var(--rh-border-width-lg, 3px)
                 solid
+                /** Vertical box tab hover active indicator color above sm breakpoint */
                 var(--rh-color-interactive-secondary-default);
               border-block-start: 0;
             }
 
             &:after {
               border-block-start:
+                /** Vertical box tab hover separator width above sm breakpoint */
                 var(--rh-border-width-sm, 1px)
                 solid
+                /** Vertical box tab hover separator color above sm breakpoint */
                 var(--rh-color-border-subtle);
             }
           }
@@ -327,6 +340,8 @@
             @container (min-width: 768px) {
               &:before {
                 border-block-start: 0 solid transparent;
+
+                /** First vertical box tab trailing border */
                 border-inline-end-color: var(--rh-color-border-subtle);
               }
             }
@@ -346,14 +361,17 @@
         &:hover {
           &:after {
             border-block-start:
+              /** Horizontal box tab hover indicator width */
               var(--rh-border-width-lg, 3px)
               solid
+              /** Horizontal box tab hover indicator color */
               var(--rh-color-interactive-secondary-default);
           }
         }
 
         @container (min-width: 768px) {
           &:after {
+            /** Horizontal box tab bottom border above sm breakpoint */
             border-block-end-color: var(--rh-color-border-subtle);
           }
         }
@@ -372,8 +390,10 @@
           @container (max-width: 767px) {
             &:after {
               border-block-end:
+                /** Vertical open tab hover indicator width below sm breakpoint */
                 var(--rh-border-width-lg, 3px)
                 solid
+                /** Vertical open tab hover indicator color below sm breakpoint */
                 var(--rh-color-interactive-secondary-default);
             }
           }
@@ -381,8 +401,10 @@
           @container (min-width: 768px) {
             &:after {
               border-inline-start:
+                /** Vertical open tab hover indicator width above sm breakpoint */
                 var(--rh-border-width-lg, 3px)
                 solid
+                /** Vertical open tab hover indicator color above sm breakpoint */
                 var(--rh-color-interactive-secondary-default);
               border-block-start: transparent;
               border-block-end: transparent;
@@ -396,8 +418,10 @@
       &:hover {
         &:before {
           border-block-end:
+            /** Horizontal open tab hover indicator width */
             var(--rh-border-width-lg, 3px)
             solid
+            /** Horizontal open tab hover indicator color */
             var(--rh-color-interactive-secondary-default);
         }
       }
@@ -421,7 +445,7 @@
   outline: none;
 
   & #button {
-    /** Focus outline using interactive primary token */
+    /** Focus outline, adapts to color-palette */
     outline: 1px auto var(--rh-color-interactive-primary-default);
     outline-offset: -3px;
   }
