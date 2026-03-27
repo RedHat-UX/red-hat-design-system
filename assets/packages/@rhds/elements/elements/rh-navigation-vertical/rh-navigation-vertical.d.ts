@@ -3,9 +3,14 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 import '@rhds/elements/rh-navigation-link/rh-navigation-link.js';
 import './rh-navigation-vertical-list.js';
 /**
- * A vertical navigation list of top-level and grouped navigation items, typically used in a side navigation pattern.
+ * A vertical sidebar navigation for organizing site structure. Authors
+ * must set `accessible-label` when multiple navigation landmarks exist.
+ * Uses a `navigation` ARIA role with a visually hidden heading for
+ * screen readers. Keyboard users tab through links and groups.
+ *
  * @summary Organizes and communicates structure and content vertically
  * @alias Navigation (vertical)
+ *
  */
 export declare class RhNavigationVertical extends LitElement {
     #private;

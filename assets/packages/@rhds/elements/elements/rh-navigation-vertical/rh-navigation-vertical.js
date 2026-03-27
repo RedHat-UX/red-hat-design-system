@@ -12,9 +12,14 @@ import './rh-navigation-vertical-list.js';
 import { css } from "lit";
 const styles = css `:host{display:block;background:light-dark(var(--rh-color-surface-lightest),var(--rh-color-surface-darker,#1f1f1f))}.visually-hidden{position:absolute!important;block-size:1px;inline-size:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap;border:0;padding:0!important;margin:-1px!important}#container{display:flex;flex-direction:column;gap:var(--rh-space-xs,4px);line-height:var(--rh-line-height-body-text,1.5)}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-md,1rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-lg,3px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-lg,3px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-lg,3px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}`;
 /**
- * A vertical navigation list of top-level and grouped navigation items, typically used in a side navigation pattern.
+ * A vertical sidebar navigation for organizing site structure. Authors
+ * must set `accessible-label` when multiple navigation landmarks exist.
+ * Uses a `navigation` ARIA role with a visually hidden heading for
+ * screen readers. Keyboard users tab through links and groups.
+ *
  * @summary Organizes and communicates structure and content vertically
  * @alias Navigation (vertical)
+ *
  */
 let RhNavigationVertical = class RhNavigationVertical extends LitElement {
     constructor() {
@@ -39,10 +44,11 @@ let RhNavigationVertical = class RhNavigationVertical extends LitElement {
         return html `
       <h2 class="visually-hidden">${this.accessibleLabel}</h2>
       <div id="container" role="list">
-          <!--
-            Use this slot for \`<rh-navigation-link>\` elements to provide a list of navigation links  
-            and \`<rh-navigation-vertical-list>\` when providing a grouped list of navigation links. 
-          -->
+        <!-- summary: Navigation items
+             description: |
+               Place \`<rh-navigation-link>\` or \`<rh-navigation-vertical-list>\`
+               elements. Each item receives an ARIA listitem role for
+               screen reader accessibility. -->
         <slot></slot>
       </div>
     `;

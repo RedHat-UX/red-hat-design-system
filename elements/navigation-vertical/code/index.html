@@ -27,9 +27,9 @@
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
-    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "lit-element": "/assets/packages/lit-element/index.js",
     "prism-esm": "/assets/packages/prism-esm/prism.js",
@@ -43,8 +43,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
     "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
@@ -278,13 +278,14 @@
       </div>
       <!--lit-node 6--><div id="overlay" part="overlay" hidden></div>
     <!--/lit-part--></template>
-  <rh-navigation-vertical  role="navigation" hydrate-internals-role="navigation" accessible-label="Main navigation"><template shadowroot="open" shadowrootmode="open"><style>:host{background:light-dark(var(--rh-color-surface-lightest),var(--rh-color-surface-darker,#1f1f1f));display:block}.visually-hidden{clip:rect(1px, 1px, 1px, 1px);clip-path:inset(50%);white-space:nowrap;border:0;block-size:1px;inline-size:1px;overflow:hidden;margin:-1px!important;padding:0!important;position:absolute!important}#container{gap:var(--rh-space-xs,4px);line-height:var(--rh-line-height-body-text,1.5);flex-direction:column;display:flex}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-md,1rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-lg,3px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-lg,3px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-lg,3px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}</style><!--lit-part Vo680MIq9uY=-->
+  <rh-navigation-vertical  role="navigation" hydrate-internals-role="navigation" accessible-label="Main navigation"><template shadowroot="open" shadowrootmode="open"><style>:host{background:light-dark(var(--rh-color-surface-lightest),var(--rh-color-surface-darker,#1f1f1f));display:block}.visually-hidden{clip:rect(1px, 1px, 1px, 1px);clip-path:inset(50%);white-space:nowrap;border:0;block-size:1px;inline-size:1px;overflow:hidden;margin:-1px!important;padding:0!important;position:absolute!important}#container{gap:var(--rh-space-xs,4px);line-height:var(--rh-line-height-body-text,1.5);flex-direction:column;display:flex}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-md,1rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-lg,3px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-lg,3px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-lg,3px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}</style><!--lit-part qbJunynC2SA=-->
       <h2 class="visually-hidden"><!--lit-part-->Main navigation<!--/lit-part--></h2>
       <div id="container" role="list">
-          <!--
-            Use this slot for `<rh-navigation-link>` elements to provide a list of navigation links  
-            and `<rh-navigation-vertical-list>` when providing a grouped list of navigation links. 
-          -->
+        <!-- summary: Navigation items
+             description: |
+               Place `<rh-navigation-link>` or `<rh-navigation-vertical-list>`
+               elements. Each item receives an ARIA listitem role for
+               screen reader accessibility. -->
         <slot></slot>
       </div>
     <!--/lit-part--></template>
@@ -309,14 +310,18 @@
           </a><!--/lit-part-->
       </div>
     <!--/lit-part--></template>Home</rh-navigation-link>
-    <rh-navigation-vertical-list  role="listitem" hydrate-internals-role="listitem" summary="About"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}details summary{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);cursor:pointer;justify-content:space-between;place-items:center;gap:var(--rh-space-lg,16px);flex-direction:row;list-style:none;display:flex;position:relative}details summary::marker{display:none}details summary::-webkit-details-marker{display:none}details summary:is(:hover,:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}details summary ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-weight:var(--rh-font-weight-body-text-regular,400);font-size:var(--rh-font-size-body-text-md,1rem)!important}details summary rh-icon{will-change:rotate;transition:all .2s;position:relative}details[open] rh-icon{transform:rotate(-180deg)}details #subtree{gap:var(--rh-space-xs,4px);margin-inline-start:var(--rh-space-lg,16px);margin-block:var(--rh-space-xs,4px) var(--_subtree-margin-block-end,var(--rh-space-md,8px));flex-direction:column;display:flex}::slotted(rh-navigation-vertical-list){font-size:var(--rh-font-size-body-text-sm,.875rem);--_subtree-margin-block-end:0}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-sm,.875rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}.highlight ::slotted(rh-navigation-link:first-child){--_navigation-link-font-weight:var(--rh-font-weight-body-text-medium,500)}</style><!--lit-part u3Rqd3n54AE=-->
+    <rh-navigation-vertical-list  role="listitem" hydrate-internals-role="listitem" summary="About"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}details summary{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);cursor:pointer;justify-content:space-between;place-items:center;gap:var(--rh-space-lg,16px);flex-direction:row;list-style:none;display:flex;position:relative}details summary::marker{display:none}details summary::-webkit-details-marker{display:none}details summary:is(:hover,:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}details summary ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-weight:var(--rh-font-weight-body-text-regular,400);font-size:var(--rh-font-size-body-text-md,1rem)!important}details summary rh-icon{will-change:rotate;transition:all .2s;position:relative}details[open] rh-icon{transform:rotate(-180deg)}details #subtree{gap:var(--rh-space-xs,4px);margin-inline-start:var(--rh-space-lg,16px);margin-block:var(--rh-space-xs,4px) var(--_subtree-margin-block-end,var(--rh-space-md,8px));flex-direction:column;display:flex}::slotted(rh-navigation-vertical-list){font-size:var(--rh-font-size-body-text-sm,.875rem);--_subtree-margin-block-end:0}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-sm,.875rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}.highlight ::slotted(rh-navigation-link:first-child){--_navigation-link-font-weight:var(--rh-font-weight-body-text-medium,500)}</style><!--lit-part oY7ALgyQC64=-->
       <!--lit-node 0--><details 
         class="  "
          
         
         >
         <summary>
-          <!-- A summary slot for the group title, overrides the summary attribute -->
+          <!-- summary: Group heading label
+               description: |
+                 Accepts inline text or a `<span>`. Overrides the
+                 `summary` attribute. Screen readers use this as
+                 the ARIA label for the disclosure toggle. -->
           <slot name="summary"><!--lit-part-->About<!--/lit-part--></slot>
           <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
       <!--lit-node 0--><div id="container"
@@ -330,9 +335,12 @@
     <!--/lit-part--></template></rh-icon>
         </summary>
         <div id="subtree" role="list">
-          <!-- 
-            Use this slot for `<rh-navigation-link>` or `<rh-navigation-vertical-list>` elements.
-          -->
+          <!-- summary: Navigation group items
+               description: |
+                 Place `<rh-navigation-link>` or nested
+                 `<rh-navigation-vertical-list>` elements. ARIA
+                 listitem role provides screen reader context.
+                 Avoid nesting deeper than five levels. -->
           <slot></slot>
         </div>
       </details>
@@ -382,14 +390,18 @@
     <!--/lit-part--></template>Roadmap</rh-navigation-link>
     </rh-navigation-vertical-list>
 
-    <rh-navigation-vertical-list  role="listitem" hydrate-internals-role="listitem" summary="Get started"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}details summary{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);cursor:pointer;justify-content:space-between;place-items:center;gap:var(--rh-space-lg,16px);flex-direction:row;list-style:none;display:flex;position:relative}details summary::marker{display:none}details summary::-webkit-details-marker{display:none}details summary:is(:hover,:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}details summary ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-weight:var(--rh-font-weight-body-text-regular,400);font-size:var(--rh-font-size-body-text-md,1rem)!important}details summary rh-icon{will-change:rotate;transition:all .2s;position:relative}details[open] rh-icon{transform:rotate(-180deg)}details #subtree{gap:var(--rh-space-xs,4px);margin-inline-start:var(--rh-space-lg,16px);margin-block:var(--rh-space-xs,4px) var(--_subtree-margin-block-end,var(--rh-space-md,8px));flex-direction:column;display:flex}::slotted(rh-navigation-vertical-list){font-size:var(--rh-font-size-body-text-sm,.875rem);--_subtree-margin-block-end:0}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-sm,.875rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}.highlight ::slotted(rh-navigation-link:first-child){--_navigation-link-font-weight:var(--rh-font-weight-body-text-medium,500)}</style><!--lit-part u3Rqd3n54AE=-->
+    <rh-navigation-vertical-list  role="listitem" hydrate-internals-role="listitem" summary="Get started"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}details summary{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);cursor:pointer;justify-content:space-between;place-items:center;gap:var(--rh-space-lg,16px);flex-direction:row;list-style:none;display:flex;position:relative}details summary::marker{display:none}details summary::-webkit-details-marker{display:none}details summary:is(:hover,:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}details summary ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-weight:var(--rh-font-weight-body-text-regular,400);font-size:var(--rh-font-size-body-text-md,1rem)!important}details summary rh-icon{will-change:rotate;transition:all .2s;position:relative}details[open] rh-icon{transform:rotate(-180deg)}details #subtree{gap:var(--rh-space-xs,4px);margin-inline-start:var(--rh-space-lg,16px);margin-block:var(--rh-space-xs,4px) var(--_subtree-margin-block-end,var(--rh-space-md,8px));flex-direction:column;display:flex}::slotted(rh-navigation-vertical-list){font-size:var(--rh-font-size-body-text-sm,.875rem);--_subtree-margin-block-end:0}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-sm,.875rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}.highlight ::slotted(rh-navigation-link:first-child){--_navigation-link-font-weight:var(--rh-font-weight-body-text-medium,500)}</style><!--lit-part oY7ALgyQC64=-->
       <!--lit-node 0--><details 
         class="  "
          
         
         >
         <summary>
-          <!-- A summary slot for the group title, overrides the summary attribute -->
+          <!-- summary: Group heading label
+               description: |
+                 Accepts inline text or a `<span>`. Overrides the
+                 `summary` attribute. Screen readers use this as
+                 the ARIA label for the disclosure toggle. -->
           <slot name="summary"><!--lit-part-->Get started<!--/lit-part--></slot>
           <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
       <!--lit-node 0--><div id="container"
@@ -403,9 +415,12 @@
     <!--/lit-part--></template></rh-icon>
         </summary>
         <div id="subtree" role="list">
-          <!-- 
-            Use this slot for `<rh-navigation-link>` or `<rh-navigation-vertical-list>` elements.
-          -->
+          <!-- summary: Navigation group items
+               description: |
+                 Place `<rh-navigation-link>` or nested
+                 `<rh-navigation-vertical-list>` elements. ARIA
+                 listitem role provides screen reader context.
+                 Avoid nesting deeper than five levels. -->
           <slot></slot>
         </div>
       </details>
@@ -475,14 +490,18 @@
     <!--/lit-part--></template>Developers</rh-navigation-link>
     </rh-navigation-vertical-list>
 
-    <rh-navigation-vertical-list  role="listitem" hydrate-internals-role="listitem" summary="Foundations"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}details summary{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);cursor:pointer;justify-content:space-between;place-items:center;gap:var(--rh-space-lg,16px);flex-direction:row;list-style:none;display:flex;position:relative}details summary::marker{display:none}details summary::-webkit-details-marker{display:none}details summary:is(:hover,:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}details summary ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-weight:var(--rh-font-weight-body-text-regular,400);font-size:var(--rh-font-size-body-text-md,1rem)!important}details summary rh-icon{will-change:rotate;transition:all .2s;position:relative}details[open] rh-icon{transform:rotate(-180deg)}details #subtree{gap:var(--rh-space-xs,4px);margin-inline-start:var(--rh-space-lg,16px);margin-block:var(--rh-space-xs,4px) var(--_subtree-margin-block-end,var(--rh-space-md,8px));flex-direction:column;display:flex}::slotted(rh-navigation-vertical-list){font-size:var(--rh-font-size-body-text-sm,.875rem);--_subtree-margin-block-end:0}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-sm,.875rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}.highlight ::slotted(rh-navigation-link:first-child){--_navigation-link-font-weight:var(--rh-font-weight-body-text-medium,500)}</style><!--lit-part u3Rqd3n54AE=-->
+    <rh-navigation-vertical-list  role="listitem" hydrate-internals-role="listitem" summary="Foundations"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}details summary{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);cursor:pointer;justify-content:space-between;place-items:center;gap:var(--rh-space-lg,16px);flex-direction:row;list-style:none;display:flex;position:relative}details summary::marker{display:none}details summary::-webkit-details-marker{display:none}details summary:is(:hover,:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}details summary ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-weight:var(--rh-font-weight-body-text-regular,400);font-size:var(--rh-font-size-body-text-md,1rem)!important}details summary rh-icon{will-change:rotate;transition:all .2s;position:relative}details[open] rh-icon{transform:rotate(-180deg)}details #subtree{gap:var(--rh-space-xs,4px);margin-inline-start:var(--rh-space-lg,16px);margin-block:var(--rh-space-xs,4px) var(--_subtree-margin-block-end,var(--rh-space-md,8px));flex-direction:column;display:flex}::slotted(rh-navigation-vertical-list){font-size:var(--rh-font-size-body-text-sm,.875rem);--_subtree-margin-block-end:0}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-sm,.875rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}.highlight ::slotted(rh-navigation-link:first-child){--_navigation-link-font-weight:var(--rh-font-weight-body-text-medium,500)}</style><!--lit-part oY7ALgyQC64=-->
       <!--lit-node 0--><details 
         class="  "
          
         
         >
         <summary>
-          <!-- A summary slot for the group title, overrides the summary attribute -->
+          <!-- summary: Group heading label
+               description: |
+                 Accepts inline text or a `<span>`. Overrides the
+                 `summary` attribute. Screen readers use this as
+                 the ARIA label for the disclosure toggle. -->
           <slot name="summary"><!--lit-part-->Foundations<!--/lit-part--></slot>
           <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
       <!--lit-node 0--><div id="container"
@@ -496,9 +515,12 @@
     <!--/lit-part--></template></rh-icon>
         </summary>
         <div id="subtree" role="list">
-          <!-- 
-            Use this slot for `<rh-navigation-link>` or `<rh-navigation-vertical-list>` elements.
-          -->
+          <!-- summary: Navigation group items
+               description: |
+                 Place `<rh-navigation-link>` or nested
+                 `<rh-navigation-vertical-list>` elements. ARIA
+                 listitem role provides screen reader context.
+                 Avoid nesting deeper than five levels. -->
           <slot></slot>
         </div>
       </details>
@@ -648,14 +670,18 @@
     <!--/lit-part--></template>Typography</rh-navigation-link>
     </rh-navigation-vertical-list>
 
-    <rh-navigation-vertical-list  role="listitem" hydrate-internals-role="listitem" summary="Tokens"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}details summary{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);cursor:pointer;justify-content:space-between;place-items:center;gap:var(--rh-space-lg,16px);flex-direction:row;list-style:none;display:flex;position:relative}details summary::marker{display:none}details summary::-webkit-details-marker{display:none}details summary:is(:hover,:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}details summary ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-weight:var(--rh-font-weight-body-text-regular,400);font-size:var(--rh-font-size-body-text-md,1rem)!important}details summary rh-icon{will-change:rotate;transition:all .2s;position:relative}details[open] rh-icon{transform:rotate(-180deg)}details #subtree{gap:var(--rh-space-xs,4px);margin-inline-start:var(--rh-space-lg,16px);margin-block:var(--rh-space-xs,4px) var(--_subtree-margin-block-end,var(--rh-space-md,8px));flex-direction:column;display:flex}::slotted(rh-navigation-vertical-list){font-size:var(--rh-font-size-body-text-sm,.875rem);--_subtree-margin-block-end:0}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-sm,.875rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}.highlight ::slotted(rh-navigation-link:first-child){--_navigation-link-font-weight:var(--rh-font-weight-body-text-medium,500)}</style><!--lit-part u3Rqd3n54AE=-->
+    <rh-navigation-vertical-list  role="listitem" hydrate-internals-role="listitem" summary="Tokens"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}details summary{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);cursor:pointer;justify-content:space-between;place-items:center;gap:var(--rh-space-lg,16px);flex-direction:row;list-style:none;display:flex;position:relative}details summary::marker{display:none}details summary::-webkit-details-marker{display:none}details summary:is(:hover,:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}details summary ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-weight:var(--rh-font-weight-body-text-regular,400);font-size:var(--rh-font-size-body-text-md,1rem)!important}details summary rh-icon{will-change:rotate;transition:all .2s;position:relative}details[open] rh-icon{transform:rotate(-180deg)}details #subtree{gap:var(--rh-space-xs,4px);margin-inline-start:var(--rh-space-lg,16px);margin-block:var(--rh-space-xs,4px) var(--_subtree-margin-block-end,var(--rh-space-md,8px));flex-direction:column;display:flex}::slotted(rh-navigation-vertical-list){font-size:var(--rh-font-size-body-text-sm,.875rem);--_subtree-margin-block-end:0}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-sm,.875rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}.highlight ::slotted(rh-navigation-link:first-child){--_navigation-link-font-weight:var(--rh-font-weight-body-text-medium,500)}</style><!--lit-part oY7ALgyQC64=-->
       <!--lit-node 0--><details 
         class="  "
          
         
         >
         <summary>
-          <!-- A summary slot for the group title, overrides the summary attribute -->
+          <!-- summary: Group heading label
+               description: |
+                 Accepts inline text or a `<span>`. Overrides the
+                 `summary` attribute. Screen readers use this as
+                 the ARIA label for the disclosure toggle. -->
           <slot name="summary"><!--lit-part-->Tokens<!--/lit-part--></slot>
           <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
       <!--lit-node 0--><div id="container"
@@ -669,9 +695,12 @@
     <!--/lit-part--></template></rh-icon>
         </summary>
         <div id="subtree" role="list">
-          <!-- 
-            Use this slot for `<rh-navigation-link>` or `<rh-navigation-vertical-list>` elements.
-          -->
+          <!-- summary: Navigation group items
+               description: |
+                 Place `<rh-navigation-link>` or nested
+                 `<rh-navigation-vertical-list>` elements. ARIA
+                 listitem role provides screen reader context.
+                 Avoid nesting deeper than five levels. -->
           <slot></slot>
         </div>
       </details>
@@ -902,14 +931,18 @@
     <!--/lit-part--></template>Media queries</rh-navigation-link>
     </rh-navigation-vertical-list>
 
-    <rh-navigation-vertical-list   role="listitem" hydrate-internals-role="listitem" summary="Elements" open><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}details summary{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);cursor:pointer;justify-content:space-between;place-items:center;gap:var(--rh-space-lg,16px);flex-direction:row;list-style:none;display:flex;position:relative}details summary::marker{display:none}details summary::-webkit-details-marker{display:none}details summary:is(:hover,:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}details summary ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-weight:var(--rh-font-weight-body-text-regular,400);font-size:var(--rh-font-size-body-text-md,1rem)!important}details summary rh-icon{will-change:rotate;transition:all .2s;position:relative}details[open] rh-icon{transform:rotate(-180deg)}details #subtree{gap:var(--rh-space-xs,4px);margin-inline-start:var(--rh-space-lg,16px);margin-block:var(--rh-space-xs,4px) var(--_subtree-margin-block-end,var(--rh-space-md,8px));flex-direction:column;display:flex}::slotted(rh-navigation-vertical-list){font-size:var(--rh-font-size-body-text-sm,.875rem);--_subtree-margin-block-end:0}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-sm,.875rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}.highlight ::slotted(rh-navigation-link:first-child){--_navigation-link-font-weight:var(--rh-font-weight-body-text-medium,500)}</style><!--lit-part u3Rqd3n54AE=-->
+    <rh-navigation-vertical-list   role="listitem" hydrate-internals-role="listitem" summary="Elements" open><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}details summary{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);cursor:pointer;justify-content:space-between;place-items:center;gap:var(--rh-space-lg,16px);flex-direction:row;list-style:none;display:flex;position:relative}details summary::marker{display:none}details summary::-webkit-details-marker{display:none}details summary:is(:hover,:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}details summary ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-weight:var(--rh-font-weight-body-text-regular,400);font-size:var(--rh-font-size-body-text-md,1rem)!important}details summary rh-icon{will-change:rotate;transition:all .2s;position:relative}details[open] rh-icon{transform:rotate(-180deg)}details #subtree{gap:var(--rh-space-xs,4px);margin-inline-start:var(--rh-space-lg,16px);margin-block:var(--rh-space-xs,4px) var(--_subtree-margin-block-end,var(--rh-space-md,8px));flex-direction:column;display:flex}::slotted(rh-navigation-vertical-list){font-size:var(--rh-font-size-body-text-sm,.875rem);--_subtree-margin-block-end:0}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-sm,.875rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}.highlight ::slotted(rh-navigation-link:first-child){--_navigation-link-font-weight:var(--rh-font-weight-body-text-medium,500)}</style><!--lit-part oY7ALgyQC64=-->
       <!--lit-node 0--><details 
         class="  "
          
         open
         >
         <summary>
-          <!-- A summary slot for the group title, overrides the summary attribute -->
+          <!-- summary: Group heading label
+               description: |
+                 Accepts inline text or a `<span>`. Overrides the
+                 `summary` attribute. Screen readers use this as
+                 the ARIA label for the disclosure toggle. -->
           <slot name="summary"><!--lit-part-->Elements<!--/lit-part--></slot>
           <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
       <!--lit-node 0--><div id="container"
@@ -923,9 +956,12 @@
     <!--/lit-part--></template></rh-icon>
         </summary>
         <div id="subtree" role="list">
-          <!-- 
-            Use this slot for `<rh-navigation-link>` or `<rh-navigation-vertical-list>` elements.
-          -->
+          <!-- summary: Navigation group items
+               description: |
+                 Place `<rh-navigation-link>` or nested
+                 `<rh-navigation-vertical-list>` elements. ARIA
+                 listitem role provides screen reader context.
+                 Avoid nesting deeper than five levels. -->
           <slot></slot>
         </div>
       </details>
@@ -1946,14 +1982,18 @@
           
     </rh-navigation-vertical-list>
 
-    <rh-navigation-vertical-list  role="listitem" hydrate-internals-role="listitem" summary="Theming"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}details summary{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);cursor:pointer;justify-content:space-between;place-items:center;gap:var(--rh-space-lg,16px);flex-direction:row;list-style:none;display:flex;position:relative}details summary::marker{display:none}details summary::-webkit-details-marker{display:none}details summary:is(:hover,:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}details summary ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-weight:var(--rh-font-weight-body-text-regular,400);font-size:var(--rh-font-size-body-text-md,1rem)!important}details summary rh-icon{will-change:rotate;transition:all .2s;position:relative}details[open] rh-icon{transform:rotate(-180deg)}details #subtree{gap:var(--rh-space-xs,4px);margin-inline-start:var(--rh-space-lg,16px);margin-block:var(--rh-space-xs,4px) var(--_subtree-margin-block-end,var(--rh-space-md,8px));flex-direction:column;display:flex}::slotted(rh-navigation-vertical-list){font-size:var(--rh-font-size-body-text-sm,.875rem);--_subtree-margin-block-end:0}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-sm,.875rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}.highlight ::slotted(rh-navigation-link:first-child){--_navigation-link-font-weight:var(--rh-font-weight-body-text-medium,500)}</style><!--lit-part u3Rqd3n54AE=-->
+    <rh-navigation-vertical-list  role="listitem" hydrate-internals-role="listitem" summary="Theming"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}details summary{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);cursor:pointer;justify-content:space-between;place-items:center;gap:var(--rh-space-lg,16px);flex-direction:row;list-style:none;display:flex;position:relative}details summary::marker{display:none}details summary::-webkit-details-marker{display:none}details summary:is(:hover,:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}details summary ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-weight:var(--rh-font-weight-body-text-regular,400);font-size:var(--rh-font-size-body-text-md,1rem)!important}details summary rh-icon{will-change:rotate;transition:all .2s;position:relative}details[open] rh-icon{transform:rotate(-180deg)}details #subtree{gap:var(--rh-space-xs,4px);margin-inline-start:var(--rh-space-lg,16px);margin-block:var(--rh-space-xs,4px) var(--_subtree-margin-block-end,var(--rh-space-md,8px));flex-direction:column;display:flex}::slotted(rh-navigation-vertical-list){font-size:var(--rh-font-size-body-text-sm,.875rem);--_subtree-margin-block-end:0}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-sm,.875rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}.highlight ::slotted(rh-navigation-link:first-child){--_navigation-link-font-weight:var(--rh-font-weight-body-text-medium,500)}</style><!--lit-part oY7ALgyQC64=-->
       <!--lit-node 0--><details 
         class="  "
          
         
         >
         <summary>
-          <!-- A summary slot for the group title, overrides the summary attribute -->
+          <!-- summary: Group heading label
+               description: |
+                 Accepts inline text or a `<span>`. Overrides the
+                 `summary` attribute. Screen readers use this as
+                 the ARIA label for the disclosure toggle. -->
           <slot name="summary"><!--lit-part-->Theming<!--/lit-part--></slot>
           <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
       <!--lit-node 0--><div id="container"
@@ -1967,9 +2007,12 @@
     <!--/lit-part--></template></rh-icon>
         </summary>
         <div id="subtree" role="list">
-          <!-- 
-            Use this slot for `<rh-navigation-link>` or `<rh-navigation-vertical-list>` elements.
-          -->
+          <!-- summary: Navigation group items
+               description: |
+                 Place `<rh-navigation-link>` or nested
+                 `<rh-navigation-vertical-list>` elements. ARIA
+                 listitem role provides screen reader context.
+                 Avoid nesting deeper than five levels. -->
           <slot></slot>
         </div>
       </details>
@@ -2059,14 +2102,18 @@
     <!--/lit-part--></template>Developers</rh-navigation-link>
     </rh-navigation-vertical-list>
 
-    <rh-navigation-vertical-list  role="listitem" hydrate-internals-role="listitem" summary="Patterns"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}details summary{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);cursor:pointer;justify-content:space-between;place-items:center;gap:var(--rh-space-lg,16px);flex-direction:row;list-style:none;display:flex;position:relative}details summary::marker{display:none}details summary::-webkit-details-marker{display:none}details summary:is(:hover,:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}details summary ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-weight:var(--rh-font-weight-body-text-regular,400);font-size:var(--rh-font-size-body-text-md,1rem)!important}details summary rh-icon{will-change:rotate;transition:all .2s;position:relative}details[open] rh-icon{transform:rotate(-180deg)}details #subtree{gap:var(--rh-space-xs,4px);margin-inline-start:var(--rh-space-lg,16px);margin-block:var(--rh-space-xs,4px) var(--_subtree-margin-block-end,var(--rh-space-md,8px));flex-direction:column;display:flex}::slotted(rh-navigation-vertical-list){font-size:var(--rh-font-size-body-text-sm,.875rem);--_subtree-margin-block-end:0}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-sm,.875rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}.highlight ::slotted(rh-navigation-link:first-child){--_navigation-link-font-weight:var(--rh-font-weight-body-text-medium,500)}</style><!--lit-part u3Rqd3n54AE=-->
+    <rh-navigation-vertical-list  role="listitem" hydrate-internals-role="listitem" summary="Patterns"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}details summary{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);cursor:pointer;justify-content:space-between;place-items:center;gap:var(--rh-space-lg,16px);flex-direction:row;list-style:none;display:flex;position:relative}details summary::marker{display:none}details summary::-webkit-details-marker{display:none}details summary:is(:hover,:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}details summary ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-weight:var(--rh-font-weight-body-text-regular,400);font-size:var(--rh-font-size-body-text-md,1rem)!important}details summary rh-icon{will-change:rotate;transition:all .2s;position:relative}details[open] rh-icon{transform:rotate(-180deg)}details #subtree{gap:var(--rh-space-xs,4px);margin-inline-start:var(--rh-space-lg,16px);margin-block:var(--rh-space-xs,4px) var(--_subtree-margin-block-end,var(--rh-space-md,8px));flex-direction:column;display:flex}::slotted(rh-navigation-vertical-list){font-size:var(--rh-font-size-body-text-sm,.875rem);--_subtree-margin-block-end:0}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-sm,.875rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}.highlight ::slotted(rh-navigation-link:first-child){--_navigation-link-font-weight:var(--rh-font-weight-body-text-medium,500)}</style><!--lit-part oY7ALgyQC64=-->
       <!--lit-node 0--><details 
         class="  "
          
         
         >
         <summary>
-          <!-- A summary slot for the group title, overrides the summary attribute -->
+          <!-- summary: Group heading label
+               description: |
+                 Accepts inline text or a `<span>`. Overrides the
+                 `summary` attribute. Screen readers use this as
+                 the ARIA label for the disclosure toggle. -->
           <slot name="summary"><!--lit-part-->Patterns<!--/lit-part--></slot>
           <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
       <!--lit-node 0--><div id="container"
@@ -2080,9 +2127,12 @@
     <!--/lit-part--></template></rh-icon>
         </summary>
         <div id="subtree" role="list">
-          <!-- 
-            Use this slot for `<rh-navigation-link>` or `<rh-navigation-vertical-list>` elements.
-          -->
+          <!-- summary: Navigation group items
+               description: |
+                 Place `<rh-navigation-link>` or nested
+                 `<rh-navigation-vertical-list>` elements. ARIA
+                 listitem role provides screen reader context.
+                 Avoid nesting deeper than five levels. -->
           <slot></slot>
         </div>
       </details>
@@ -2372,14 +2422,18 @@
     <!--/lit-part--></template>Tile</rh-navigation-link>
     </rh-navigation-vertical-list>
 
-    <rh-navigation-vertical-list  role="listitem" hydrate-internals-role="listitem" summary="Personalization"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}details summary{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);cursor:pointer;justify-content:space-between;place-items:center;gap:var(--rh-space-lg,16px);flex-direction:row;list-style:none;display:flex;position:relative}details summary::marker{display:none}details summary::-webkit-details-marker{display:none}details summary:is(:hover,:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}details summary ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-weight:var(--rh-font-weight-body-text-regular,400);font-size:var(--rh-font-size-body-text-md,1rem)!important}details summary rh-icon{will-change:rotate;transition:all .2s;position:relative}details[open] rh-icon{transform:rotate(-180deg)}details #subtree{gap:var(--rh-space-xs,4px);margin-inline-start:var(--rh-space-lg,16px);margin-block:var(--rh-space-xs,4px) var(--_subtree-margin-block-end,var(--rh-space-md,8px));flex-direction:column;display:flex}::slotted(rh-navigation-vertical-list){font-size:var(--rh-font-size-body-text-sm,.875rem);--_subtree-margin-block-end:0}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-sm,.875rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}.highlight ::slotted(rh-navigation-link:first-child){--_navigation-link-font-weight:var(--rh-font-weight-body-text-medium,500)}</style><!--lit-part u3Rqd3n54AE=-->
+    <rh-navigation-vertical-list  role="listitem" hydrate-internals-role="listitem" summary="Personalization"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}details summary{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);cursor:pointer;justify-content:space-between;place-items:center;gap:var(--rh-space-lg,16px);flex-direction:row;list-style:none;display:flex;position:relative}details summary::marker{display:none}details summary::-webkit-details-marker{display:none}details summary:is(:hover,:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}details summary ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-weight:var(--rh-font-weight-body-text-regular,400);font-size:var(--rh-font-size-body-text-md,1rem)!important}details summary rh-icon{will-change:rotate;transition:all .2s;position:relative}details[open] rh-icon{transform:rotate(-180deg)}details #subtree{gap:var(--rh-space-xs,4px);margin-inline-start:var(--rh-space-lg,16px);margin-block:var(--rh-space-xs,4px) var(--_subtree-margin-block-end,var(--rh-space-md,8px));flex-direction:column;display:flex}::slotted(rh-navigation-vertical-list){font-size:var(--rh-font-size-body-text-sm,.875rem);--_subtree-margin-block-end:0}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-sm,.875rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}.highlight ::slotted(rh-navigation-link:first-child){--_navigation-link-font-weight:var(--rh-font-weight-body-text-medium,500)}</style><!--lit-part oY7ALgyQC64=-->
       <!--lit-node 0--><details 
         class="  "
          
         
         >
         <summary>
-          <!-- A summary slot for the group title, overrides the summary attribute -->
+          <!-- summary: Group heading label
+               description: |
+                 Accepts inline text or a `<span>`. Overrides the
+                 `summary` attribute. Screen readers use this as
+                 the ARIA label for the disclosure toggle. -->
           <slot name="summary"><!--lit-part-->Personalization<!--/lit-part--></slot>
           <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
       <!--lit-node 0--><div id="container"
@@ -2393,9 +2447,12 @@
     <!--/lit-part--></template></rh-icon>
         </summary>
         <div id="subtree" role="list">
-          <!-- 
-            Use this slot for `<rh-navigation-link>` or `<rh-navigation-vertical-list>` elements.
-          -->
+          <!-- summary: Navigation group items
+               description: |
+                 Place `<rh-navigation-link>` or nested
+                 `<rh-navigation-vertical-list>` elements. ARIA
+                 listitem role provides screen reader context.
+                 Avoid nesting deeper than five levels. -->
           <slot></slot>
         </div>
       </details>
@@ -2445,14 +2502,18 @@
     <!--/lit-part--></template>Announcement</rh-navigation-link>
     </rh-navigation-vertical-list>
 
-    <rh-navigation-vertical-list  role="listitem" hydrate-internals-role="listitem" summary="Accessibility"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}details summary{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);cursor:pointer;justify-content:space-between;place-items:center;gap:var(--rh-space-lg,16px);flex-direction:row;list-style:none;display:flex;position:relative}details summary::marker{display:none}details summary::-webkit-details-marker{display:none}details summary:is(:hover,:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}details summary ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-weight:var(--rh-font-weight-body-text-regular,400);font-size:var(--rh-font-size-body-text-md,1rem)!important}details summary rh-icon{will-change:rotate;transition:all .2s;position:relative}details[open] rh-icon{transform:rotate(-180deg)}details #subtree{gap:var(--rh-space-xs,4px);margin-inline-start:var(--rh-space-lg,16px);margin-block:var(--rh-space-xs,4px) var(--_subtree-margin-block-end,var(--rh-space-md,8px));flex-direction:column;display:flex}::slotted(rh-navigation-vertical-list){font-size:var(--rh-font-size-body-text-sm,.875rem);--_subtree-margin-block-end:0}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-sm,.875rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}.highlight ::slotted(rh-navigation-link:first-child){--_navigation-link-font-weight:var(--rh-font-weight-body-text-medium,500)}</style><!--lit-part u3Rqd3n54AE=-->
+    <rh-navigation-vertical-list  role="listitem" hydrate-internals-role="listitem" summary="Accessibility"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}details summary{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);cursor:pointer;justify-content:space-between;place-items:center;gap:var(--rh-space-lg,16px);flex-direction:row;list-style:none;display:flex;position:relative}details summary::marker{display:none}details summary::-webkit-details-marker{display:none}details summary:is(:hover,:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}details summary ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-weight:var(--rh-font-weight-body-text-regular,400);font-size:var(--rh-font-size-body-text-md,1rem)!important}details summary rh-icon{will-change:rotate;transition:all .2s;position:relative}details[open] rh-icon{transform:rotate(-180deg)}details #subtree{gap:var(--rh-space-xs,4px);margin-inline-start:var(--rh-space-lg,16px);margin-block:var(--rh-space-xs,4px) var(--_subtree-margin-block-end,var(--rh-space-md,8px));flex-direction:column;display:flex}::slotted(rh-navigation-vertical-list){font-size:var(--rh-font-size-body-text-sm,.875rem);--_subtree-margin-block-end:0}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-sm,.875rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}.highlight ::slotted(rh-navigation-link:first-child){--_navigation-link-font-weight:var(--rh-font-weight-body-text-medium,500)}</style><!--lit-part oY7ALgyQC64=-->
       <!--lit-node 0--><details 
         class="  "
          
         
         >
         <summary>
-          <!-- A summary slot for the group title, overrides the summary attribute -->
+          <!-- summary: Group heading label
+               description: |
+                 Accepts inline text or a `<span>`. Overrides the
+                 `summary` attribute. Screen readers use this as
+                 the ARIA label for the disclosure toggle. -->
           <slot name="summary"><!--lit-part-->Accessibility<!--/lit-part--></slot>
           <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
       <!--lit-node 0--><div id="container"
@@ -2466,9 +2527,12 @@
     <!--/lit-part--></template></rh-icon>
         </summary>
         <div id="subtree" role="list">
-          <!-- 
-            Use this slot for `<rh-navigation-link>` or `<rh-navigation-vertical-list>` elements.
-          -->
+          <!-- summary: Navigation group items
+               description: |
+                 Place `<rh-navigation-link>` or nested
+                 `<rh-navigation-vertical-list>` elements. ARIA
+                 listitem role provides screen reader context.
+                 Avoid nesting deeper than five levels. -->
           <slot></slot>
         </div>
       </details>
@@ -3683,7 +3747,10 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>A vertical navigation list of top-level and grouped navigation items, typically used in a side navigation pattern.</p>
+      <p>A vertical sidebar navigation for organizing site structure. Authors
+must set <code>accessible-label</code> when multiple navigation landmarks exist.
+Uses a <code>navigation</code> ARIA role with a visually hidden heading for
+screen readers. Keyboard users tab through links and groups.</p>
 
 
       <div class="element-apis">
@@ -3763,10 +3830,11 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Navigation items</p></td>
                   <td>
-                   <p>Use this slot for <code>&lt;rh-navigation-link&gt;</code> elements to provide a list of navigation links<br>
-and <code>&lt;rh-navigation-vertical-list&gt;</code> when providing a grouped list of navigation links. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Place <code>&lt;rh-navigation-link&gt;</code> or <code>&lt;rh-navigation-vertical-list&gt;</code>
+elements. Each item receives an ARIA listitem role for
+screen reader accessibility. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -4244,7 +4312,8 @@ are present or when translations are needed.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>4px spacer</p>
+                    <p>Spacing between navigation items</p>
+<p>4px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4340,7 +4409,8 @@ are present or when translations are needed.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Line height for body text</p>
+                    <p>Navigation label line height</p>
+<p>Line height for body text</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4628,7 +4698,8 @@ are present or when translations are needed.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>16px font size</p>
+                    <p>Top-level link font size</p>
+<p>16px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4724,7 +4795,7 @@ are present or when translations are needed.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Link text color, inherits from theme</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4820,7 +4891,7 @@ are present or when translations are needed.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Hover indicator uses subtle border</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5108,7 +5179,10 @@ are present or when translations are needed.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>3px border width: Example: Expanded Accordion panel</p>
+                    <p>Hover indicator border width</p>
+<p>Active indicator border width</p>
+<p>Current page indicator border width</p>
+<p>3px border width: Example: Expanded Accordion panel</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5204,7 +5278,8 @@ are present or when translations are needed.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Active indicator uses brand accent</p>
+<p>Current page indicator uses brand accent</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5324,7 +5399,11 @@ are present or when translations are needed.</p></td>
         </h2>
       </uxdot-copy-permalink>
 
-      <p>A disclosure menu of grouped navigation items in a vertical navigation list.</p>
+      <p>A collapsible group for organizing related links within an
+<code>&lt;rh-navigation-vertical&gt;</code> element. Allows users to expand and
+collapse sections. Authors should set <code>summary</code> to provide a
+label. Pressing Escape closes the group and returns focus to the
+summary. Uses an ARIA <code>listitem</code> role for screen readers.</p>
 
 
       <div class="element-apis">
@@ -5404,9 +5483,11 @@ are present or when translations are needed.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Group heading label</p></td>
                   <td>
-                   <p>A summary slot for the group title, overrides the summary attribute</p>
+                   <p>Accepts inline text or a <code>&lt;span&gt;</code>. Overrides the
+<code>summary</code> attribute. Screen readers use this as
+the ARIA label for the disclosure toggle.</p>
                   </td>
                 </tr>
                 <tr>
@@ -5434,9 +5515,12 @@ are present or when translations are needed.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Navigation group items</p></td>
                   <td>
-                   <p>Use this slot for <code>&lt;rh-navigation-link&gt;</code> or <code>&lt;rh-navigation-vertical-list&gt;</code> elements. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Place <code>&lt;rh-navigation-link&gt;</code> or nested
+<code>&lt;rh-navigation-vertical-list&gt;</code> elements. ARIA
+listitem role provides screen reader context.
+Avoid nesting deeper than five levels. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -5524,7 +5608,7 @@ are present or when translations are needed.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>open</code></td>
-                  <td><p>Optional open attribute that, sets the open state of the group.
+                  <td><p>Optional open attribute that sets the open state of the group.
 Defaults to false.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span></code></pre></td>
@@ -5657,13 +5741,66 @@ Defaults to false.</p></td>
               <a href="#rh-navigation-vertical-list-events">Events <rh-badge state="neutral"><template shadowroot="open" shadowrootmode="open"><style>span,slot{white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px));color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));justify-content:center;align-items:center;position:relative}:is(span,slot).neutral{background-color:var(--rh-color-status-neutral)}:is(span,slot).info{background-color:var(--rh-color-status-info)}:is(span,slot).success{background-color:var(--rh-color-status-success)}:is(span,slot).caution{background-color:var(--rh-color-status-caution);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).warning{background-color:var(--rh-color-status-warning);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).danger{background-color:var(--rh-color-status-danger)}span:empty{display:none}slot{display:inline-flex}:host([number]) slot{display:none}:host([number]) span{display:inline-flex}</style><!--lit-part hqKOHqwbWgk=-->
       <!--lit-node 0--><span class=" neutral "><!--lit-part--><!--/lit-part--></span>
       <!--lit-node 2--><slot class=" neutral "></slot>
-    <!--/lit-part--></template>0</rh-badge>
+    <!--/lit-part--></template>1</rh-badge>
                 
               </a>
             </h3>
           </uxdot-copy-permalink>
           
-          <p><em>None</em></p>
+          <rh-table  compact><template shadowroot="open" shadowrootmode="open"><style>*{box-sizing:border-box}:host{scrollbar-color:var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);width:100%;color:var(--rh-color-text-primary);--_scrollbar-size:calc(10 / 16 * 1rem);--_scrollbar-thumb-color:var(--rh-color-gray-50,#707070);--_scrollbar-track-color:var(--rh-color-border-subtle);--_row-border: var(--rh-table-row-border,var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle-on-light,#c7c7c7));--_row-background-hover-color:light-dark(var(--rh-table-row-background-hover-color,rgba(from var(--rh-color-gray-40,#a3a3a3) r g b / .1)),rgba(from var(--rh-color-white,#fff) r g b / .1));--_column-background-hover-color:light-dark(var(--rh-table-column-background-hover-color,rgba(from var(--rh-color-blue-50,#06c) r g b / .1)),rgba(from var(--rh-color-blue-70,#036) r g b / .3));display:block;position:relative;overflow:auto}:host::-webkit-scrollbar{width:var(--_scrollbar-size);height:var(--_scrollbar-size)}:host::-webkit-scrollbar{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-track{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-thumb{background-color:var(--_scrollbar-thumb-color)}[slot]{display:block}::slotted([slot=summary]){padding:var(--rh-space-xl,24px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px);color:var(--rh-color-text-secondary);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:italic;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5);display:block}</style><!--lit-part 2TLt9j2sbhA=-->
+      <div id="container" part="container">
+        <!-- an HTML table -->
+        <!--lit-node 2--><slot 
+              
+              
+              ></slot>
+        <!-- description of the data -->
+        <slot id="summary" name="summary"></slot>
+      </div>
+    <!--/lit-part--></template>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Event Name</th>
+                  <th scope="col">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                <tr>
+                  <td>
+                    <uxdot-copy-permalink><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;margin-block-end:var(--rh-space-lg);display:flex}#signifier{display:var(--perma-signifier-display,none)}#button{border-radius:var(--rh-border-radius-default);background:0 0;border:none;align-items:center;height:1.75rem;display:none}#button:is(:hover,:focus){background:var(--uxdot-copy-permalink-button-background,light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark)));color:var(--rh-color-text-primary)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){color:inherit;text-decoration:inherit;align-items:center;display:flex;margin-block-end:0!important}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part 5v6yQu9Xxog=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19.204 12.793c1.417 1.417 2.198 3.3 2.198 5.302s-.781 3.884-2.198 5.302l-5.398 5.41C12.378 30.223 10.494 31 8.497 31s-3.88-.778-5.304-2.19C.274 25.88.274 21.12 3.189 18.194l2.912-2.903a1 1 0 1 1 1.412 1.417l-2.91 2.9c-2.137 2.145-2.137 5.639.002 7.786a5.5 5.5 0 0 0 3.892 1.605c1.465 0 2.85-.572 3.896-1.61l5.396-5.407c1.04-1.04 1.613-2.421 1.613-3.888s-.573-2.849-1.612-3.888a5.356 5.356 0 0 0-1.267-.946 1 1 0 0 1 .947-1.762c.63.338 1.214.774 1.733 1.294Zm9.603-9.603C27.383 1.778 25.499 1 23.503 1s-3.881.778-5.309 2.193l-5.398 5.41c-1.417 1.417-2.198 3.3-2.198 5.302s.781 3.885 2.198 5.302c.52.52 1.104.956 1.733 1.294a1.001 1.001 0 0 0 .948-1.762 5.356 5.356 0 0 1-1.267-.946c-1.039-1.04-1.612-2.42-1.612-3.888s.573-2.848 1.613-3.888l5.396-5.407C20.654 3.572 22.038 3 23.503 3s2.849.572 3.892 1.605c2.139 2.147 2.139 5.642.002 7.786l-2.91 2.9a1 1 0 1 0 1.412 1.417l2.912-2.903c2.915-2.925 2.915-7.686-.004-10.616Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+                      <span id="rh-navigation-vertical-list-events-toggle">
+                        <a href="#rh-navigation-vertical-list-events-toggle">
+                          <code>toggle</code>
+                        </a>
+                      </span>
+                    </uxdot-copy-permalink>
+                  </td>
+                  <td><p>Fires when the group opens or closes. The
+event has no detail; check the <code>open</code> property on the element
+to determine the current state.</p></td>
+                </tr>
+              </tbody>
+            </table>
+          </rh-table>
         </section>
     
         
@@ -5787,7 +5924,8 @@ Defaults to false.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Body text font family</p>
+                    <p>Summary label typeface</p>
+<p>Body text font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5883,7 +6021,8 @@ Defaults to false.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>16px font size</p>
+                    <p>Summary label font size</p>
+<p>16px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5979,7 +6118,8 @@ Defaults to false.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Regular font weight</p>
+                    <p>Summary label font weight</p>
+<p>Regular font weight</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6075,7 +6215,9 @@ Defaults to false.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>4px spacer</p>
+                    <p>Spacing between nested navigation items</p>
+<p>Nested list block spacing</p>
+<p>4px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6267,7 +6409,9 @@ Defaults to false.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Spacing between summary text and caret icon</p>
+<p>Nested list inline indentation</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6363,7 +6507,9 @@ Defaults to false.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>14px font size</p>
+                    <p>Nested group uses smaller font size</p>
+<p>Nested link font size</p>
+<p>14px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6459,7 +6605,8 @@ Defaults to false.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Nested link text color, inherits from theme</p>
+<p>Nested link text color on hover, inherits from theme</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6555,7 +6702,7 @@ Defaults to false.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Nested hover indicator uses subtle border</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6843,7 +6990,9 @@ Defaults to false.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>2px border width: Example: Alert</p>
+                    <p>Nested hover indicator border width</p>
+<p>Active indicator border width</p>
+<p>2px border width: Example: Alert</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6939,7 +7088,8 @@ Defaults to false.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Active indicator uses brand accent</p>
+<p>Current page indicator uses brand accent</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7035,7 +7185,8 @@ Defaults to false.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Medium font weight</p>
+                    <p>Highlighted first link uses medium weight</p>
+<p>Medium font weight</p>
                   </td>
                   <td data-label="Copy">
       <div>

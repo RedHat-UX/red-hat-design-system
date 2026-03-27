@@ -12,9 +12,18 @@ import '@rhds/elements/rh-navigation-link/rh-navigation-link.js';
 import { css } from "lit";
 const styles = css `:host{display:block}details summary{display:flex;flex-direction:row;justify-content:space-between;padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);list-style:none;cursor:pointer;position:relative;place-items:center;gap:var(--rh-space-lg,16px)}:is(details summary)::-webkit-details-marker,:is(details summary)::marker{display:none}:is(details summary):is(:hover,:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}:is(details summary) ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-size:var(--rh-font-size-body-text-md,1rem)!important;font-weight:var(--rh-font-weight-body-text-regular,400)}:is(details summary) rh-icon{transition:.2s;will-change:rotate;position:relative}details[open] rh-icon{transform:rotate(-180deg)}details #subtree{display:flex;flex-direction:column;gap:var(--rh-space-xs,4px);margin-inline-start:var(--rh-space-lg,16px);margin-block:var(--rh-space-xs,4px) var(--_subtree-margin-block-end,var(--rh-space-md,8px))}::slotted(rh-navigation-vertical-list){font-size:var(--rh-font-size-body-text-sm,.875rem);--_subtree-margin-block-end:0}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-sm,0.875rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}.highlight ::slotted(rh-navigation-link:first-child){--_navigation-link-font-weight:var(--rh-font-weight-body-text-medium,500)}`;
 /**
- * A disclosure menu of grouped navigation items in a vertical navigation list.
+ * A collapsible group for organizing related links within an
+ * `<rh-navigation-vertical>` element. Allows users to expand and
+ * collapse sections. Authors should set `summary` to provide a
+ * label. Pressing Escape closes the group and returns focus to the
+ * summary. Uses an ARIA `listitem` role for screen readers.
+ *
  * @summary Vertical navigation group
  * @alias navigation-vertical-list
+ *
+ * @fires {Event} toggle - Fires when the group opens or closes. The
+ *        event has no detail; check the `open` property on the element
+ *        to determine the current state.
  */
 let RhNavigationVerticalList = RhNavigationVerticalList_1 = _a = class RhNavigationVerticalList extends LitElement {
     constructor() {
@@ -23,7 +32,7 @@ let RhNavigationVerticalList = RhNavigationVerticalList_1 = _a = class RhNavigat
         // eslint-disable-next-line no-unused-private-class-members
         _RhNavigationVerticalList_internals.set(this, InternalsController.of(this, { role: 'listitem' }));
         /**
-         * Optional open attribute that, sets the open state of the group.
+         * Optional open attribute that sets the open state of the group.
          * Defaults to false.
          */
         this.open = false;
@@ -45,14 +54,21 @@ let RhNavigationVerticalList = RhNavigationVerticalList_1 = _a = class RhNavigat
         ?open="${this.open}"
         @keydown="${__classPrivateFieldGet(this, _RhNavigationVerticalList_instances, "m", _RhNavigationVerticalList_onKeydown)}">
         <summary>
-          <!-- A summary slot for the group title, overrides the summary attribute -->
+          <!-- summary: Group heading label
+               description: |
+                 Accepts inline text or a \`<span>\`. Overrides the
+                 \`summary\` attribute. Screen readers use this as
+                 the ARIA label for the disclosure toggle. -->
           <slot name="summary">${this.summary}</slot>
           <rh-icon set="microns" icon="caret-down"></rh-icon>
         </summary>
         <div id="subtree" role="list">
-          <!-- 
-            Use this slot for \`<rh-navigation-link>\` or \`<rh-navigation-vertical-list>\` elements.
-          -->
+          <!-- summary: Navigation group items
+               description: |
+                 Place \`<rh-navigation-link>\` or nested
+                 \`<rh-navigation-vertical-list>\` elements. ARIA
+                 listitem role provides screen reader context.
+                 Avoid nesting deeper than five levels. -->
           <slot></slot>
         </div>
       </details>
