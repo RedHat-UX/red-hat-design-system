@@ -352,7 +352,7 @@ export class RhDrawer extends LitElement {
           ` : nothing}
         </div>
         ${hasContentSlot ? html`
-          <div id="content-container" part="content">
+          <div id="content-container">
             ${showNarrowToggle ? html`
               <button id="narrow-toggle"
                       part="narrow-toggle"
@@ -368,7 +368,7 @@ export class RhDrawer extends LitElement {
                 <span ?hidden=${this.open}><slot name="collapse-label-closed">Expand panel</slot></span>
               </span>
             ` : nothing}
-            <div id="content">
+            <div id="content" part="content">
               <!-- Page content displayed alongside the panel (not used with fixed variant) -->
               <slot></slot>
             </div>

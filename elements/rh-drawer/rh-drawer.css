@@ -15,7 +15,7 @@
     --_collapse-toggle-size: var(--rh-length-3xl, 48px);
 
     /** Visible width reserved for the collapse toggle when the panel is closed */
-    --_collapse-visible-width: calc(var(--rh-length-xl, 24px) + (var(--_collapse-toggle-size) / 2));
+    --_collapse-visible-width: var(--rh-space-2xl, 32px);
     --_resize-handle-width: 12px;
     --_transition-duration: 0.3s;
 
@@ -283,9 +283,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    inline-size: fit-content;
-    margin-block-start: var(--rh-space-xl, 24px);
+    position: absolute;
+    inset-block-start: var(--rh-space-xl, 24px);
+    z-index: 4;
     border-radius: 50%;
     border:
       var(--rh-border-width-sm, 1px)
@@ -459,9 +459,13 @@
 
   @layer position-start {
     #container.inline-start {
+      &.collapsible #panel {
+        padding-inline-end: var(--rh-space-xl, 24px);
+      }
+
       &.collapsible #actions {
         /** Clear collapse toggle on end edge */
-        padding-inline-end: var(--rh-space-2xl, 32px);
+        padding-inline-end: var(--rh-space-lg, 16px);
       }
 
       & #collapse-toggle {
@@ -473,7 +477,7 @@
       }
 
       & #narrow-toggle {
-        margin-inline-start: var(--rh-space-lg, 16px);
+        inset-inline-start: var(--rh-space-sm, 6px);
 
         & rh-icon:dir(rtl) {
           rotate: 180deg;
@@ -495,11 +499,6 @@
     #container.inline-end {
       flex-direction: row-reverse;
 
-      &.collapsible #actions {
-        /** Clear collapse toggle on start edge */
-        padding-inline-start: var(--rh-space-2xl, 32px);
-      }
-
       & #panel {
         border-inline-end: 0;
         border-inline-start:
@@ -508,6 +507,15 @@
           solid
           /** Panel border color */
           var(--rh-color-border-subtle);
+      }
+
+      &.collapsible #panel {
+        padding-inline-start: var(--rh-space-xl, 24px);
+      }
+
+      &.collapsible #actions {
+        /** Clear collapse toggle on start edge */
+        padding-inline-start: var(--rh-space-lg, 16px);
       }
 
       & #collapse-toggle {
@@ -523,7 +531,7 @@
       }
 
       & #narrow-toggle {
-        margin-inline: auto var(--rh-space-lg, 16px);
+        inset-inline-end: var(--rh-space-sm, 6px);
 
         & rh-icon {
           rotate: 180deg;
@@ -775,10 +783,6 @@
 
       &:is(.open, .closed) #content-container {
         inline-size: 100%;
-
-        & #content {
-          padding-block-start: var(--rh-space-2xl, 32px);
-        }
       }
 
       &.collapsible {
