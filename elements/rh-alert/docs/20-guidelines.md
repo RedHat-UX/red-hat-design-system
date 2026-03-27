@@ -95,7 +95,7 @@ Inline and toast alerts have limited space (see the [Alert pattern](/patterns/al
 
 ## Actions
 
-Actions enable a user to perform a specific action in relation to the alert message. Inline and toast alerts may include actions, but no more than two. Actions require using specific elements, however including actions is optional.
+Actions enable a user to perform a specific action in relation to the alert message. They are optional, and no more than two should be used in a single inline or toast alert. When using two actions, ensure that they follow the guidelines below:
 
 - Primary action - use the [Secondary button](/elements/button/guidelines/#variants) element
 - Secondary action - use the [Link button](/elements/button/guidelines/#variants) element
