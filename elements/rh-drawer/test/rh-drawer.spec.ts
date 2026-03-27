@@ -5,10 +5,10 @@ import { html } from 'lit';
 
 import { RhDrawer } from '@rhds/elements/rh-drawer/rh-drawer.js';
 
-function oneEvent(el: Element, type: string): Promise<Event> {
-  return new Promise(resolve => {
-    el.addEventListener(type, resolve, { once: true });
-  });
+function press(key: string) {
+  return async function() {
+    await sendKeys({ press: key });
+  };
 }
 
 const DRAWER_COLLAPSIBLE = html`
@@ -128,7 +128,6 @@ describe('<rh-drawer>', function() {
         await element.updateComplete;
         await expect(element).to.be.accessible();
       });
-
     });
   });
 
@@ -139,12 +138,14 @@ describe('<rh-drawer>', function() {
     beforeEach(async () => await element.updateComplete);
 
     describe('closing via collapse toggle', function() {
-      it('should dispatch close event', async function() {
-        const event = oneEvent(element, 'close');
-        const toggle = element.shadowRoot?.querySelector('#collapse-toggle') as HTMLElement;
-        toggle?.click();
-        await event;
-        expect(element.open).to.be.false;
+      beforeEach(press('Tab'));
+      beforeEach(press('Enter'));
+      beforeEach(async () => await element.updateComplete);
+
+      it('should show expand label', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.have.axQuery({ name: 'Expand panel' });
+        expect(snapshot).to.not.have.axQuery({ name: 'Collapse panel' });
       });
     });
 
@@ -153,31 +154,37 @@ describe('<rh-drawer>', function() {
         element.open = false;
         await element.updateComplete;
       });
+      beforeEach(press('Tab'));
+      beforeEach(press('Enter'));
+      beforeEach(async () => await element.updateComplete);
 
-      it('should dispatch open event', async function() {
-        const event = oneEvent(element, 'open');
-        const toggle = element.shadowRoot?.querySelector('#collapse-toggle') as HTMLElement;
-        toggle?.click();
-        await event;
-        expect(element.open).to.be.true;
+      it('should show collapse label', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.have.axQuery({ name: 'Collapse panel' });
+        expect(snapshot).to.not.have.axQuery({ name: 'Expand panel' });
       });
     });
   });
 
   describe('keyboard interaction', function() {
-    beforeEach(async function() {
-      element = await fixture<RhDrawer>(DRAWER_COLLAPSIBLE);
-    });
-    beforeEach(async () => await element.updateComplete);
+    describe('pressing Escape when panel role is dialog', function() {
+      beforeEach(async function() {
+        element = await fixture<RhDrawer>(html`
+          <rh-drawer variant="overlay" open trigger-id="none">
+            <h3 slot="header">Header</h3>
+            <nav slot="body">Body</nav>
+          </rh-drawer>
+        `);
+      });
+      beforeEach(async () => await element.updateComplete);
+      beforeEach(press('Tab'));
+      beforeEach(press('Escape'));
+      beforeEach(async () => await element.updateComplete);
+      beforeEach(async () => await element.updateComplete);
 
-    describe('pressing Escape when open', function() {
-      it('should dispatch close event', async function() {
-        const toggle = element.shadowRoot?.querySelector('#collapse-toggle') as HTMLElement;
-        toggle?.focus();
-        const event = oneEvent(element, 'close');
-        await sendKeys({ press: 'Escape' });
-        await event;
-        expect(element.open).to.be.false;
+      it('should close the drawer', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.not.have.axQuery({ name: 'Close drawer' });
       });
     });
   });
@@ -192,40 +199,54 @@ describe('<rh-drawer>', function() {
       beforeEach(async function() {
         element.open = false;
         await element.updateComplete;
+        element.show();
+        await element.updateComplete;
       });
 
-      it('should dispatch open event', async function() {
-        const event = oneEvent(element, 'open');
-        element.show();
-        await event;
-        expect(element.open).to.be.true;
+      it('should show collapse label', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.have.axQuery({ name: 'Collapse panel' });
       });
     });
 
     describe('close()', function() {
-      it('should dispatch close event', async function() {
-        const event = oneEvent(element, 'close');
+      beforeEach(async function() {
         element.close();
-        await event;
-        expect(element.open).to.be.false;
+        await element.updateComplete;
+      });
+
+      it('should show expand label', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.have.axQuery({ name: 'Expand panel' });
+        expect(snapshot).to.not.have.axQuery({ name: 'Collapse panel' });
       });
     });
 
     describe('toggle()', function() {
-      it('should dispatch close event when open', async function() {
-        const event = oneEvent(element, 'close');
-        element.toggle();
-        await event;
-        expect(element.open).to.be.false;
+      describe('when open', function() {
+        beforeEach(async function() {
+          element.toggle();
+          await element.updateComplete;
+        });
+
+        it('should show expand label', async function() {
+          const snapshot = await a11ySnapshot();
+          expect(snapshot).to.have.axQuery({ name: 'Expand panel' });
+        });
       });
 
-      it('should dispatch open event when closed', async function() {
-        element.open = false;
-        await element.updateComplete;
-        const event = oneEvent(element, 'open');
-        element.toggle();
-        await event;
-        expect(element.open).to.be.true;
+      describe('when closed', function() {
+        beforeEach(async function() {
+          element.open = false;
+          await element.updateComplete;
+          element.toggle();
+          await element.updateComplete;
+        });
+
+        it('should show collapse label', async function() {
+          const snapshot = await a11ySnapshot();
+          expect(snapshot).to.have.axQuery({ name: 'Collapse panel' });
+        });
       });
     });
   });
@@ -242,8 +263,10 @@ describe('<rh-drawer>', function() {
     });
     beforeEach(async () => await element.updateComplete);
 
-    it('should not be open', function() {
-      expect(element.open).to.be.false;
+    it('should not be open', async function() {
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.have.axQuery({ name: 'Expand panel' });
+      expect(snapshot).to.not.have.axQuery({ name: 'Collapse panel' });
     });
 
     it('is accessible', async function() {
@@ -260,24 +283,26 @@ describe('<rh-drawer>', function() {
     });
     beforeEach(async () => await element.updateComplete);
 
-    it('should not show collapse toggle in a11y tree', async function() {
+    it('should not show panel content when closed', async function() {
       const snapshot = await a11ySnapshot();
       expect(snapshot).to.not.have.axQuery({ name: 'Collapse panel' });
-      expect(snapshot).to.not.have.axQuery({ name: 'Expand panel' });
+      expect(snapshot).to.not.have.axQuery({ name: 'Close drawer' });
     });
 
-    it('should show close button in a11y tree', async function() {
-      const snapshot = await a11ySnapshot();
-      expect(snapshot).to.have.axQuery({ name: 'Close drawer' });
-    });
+    describe('opening via external trigger', function() {
+      beforeEach(press('Tab'));
+      beforeEach(press('Enter'));
+      beforeEach(async () => await element.updateComplete);
+      beforeEach(async () => await element.updateComplete);
 
-    describe('clicking external trigger', function() {
-      it('should dispatch open event', async function() {
-        const event = oneEvent(element, 'open');
-        const trigger = container.querySelector('#trigger') as HTMLElement;
-        trigger?.click();
-        await event;
-        expect(element.open).to.be.true;
+      it('should move focus to close button', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.have.axQuery({ name: 'Close drawer', focused: true });
+      });
+
+      it('should not show collapse toggle', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.not.have.axQuery({ name: 'Collapse panel' });
       });
     });
   });
@@ -303,13 +328,15 @@ describe('<rh-drawer>', function() {
       expect(snapshot).to.not.have.axQuery({ name: 'Collapse panel' });
     });
 
-    describe('clicking close button', function() {
-      it('should dispatch close event', async function() {
-        const event = oneEvent(element, 'close');
-        const closeBtn = element.shadowRoot?.querySelector('#close-button') as HTMLElement;
-        closeBtn?.click();
-        await event;
-        expect(element.open).to.be.false;
+    describe('closing via close button', function() {
+      beforeEach(press('Tab'));
+      beforeEach(press('Enter'));
+      beforeEach(async () => await element.updateComplete);
+      beforeEach(async () => await element.updateComplete);
+
+      it('should hide close button', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.not.have.axQuery({ name: 'Close drawer' });
       });
     });
   });
@@ -323,18 +350,59 @@ describe('<rh-drawer>', function() {
     it('should expose both collapse toggle and expand button', async function() {
       const snapshot = await a11ySnapshot();
       expect(snapshot).to.have.axQuery({ name: 'Collapse panel' });
-        expect(snapshot).to.have.axQuery({ name: 'Enter full viewport' });
+      expect(snapshot).to.have.axQuery({ name: 'Enter full viewport' });
     });
 
     describe('closing the drawer', function() {
+      beforeEach(press('Tab'));
+      beforeEach(press('Tab'));
+      beforeEach(press('Enter'));
+      beforeEach(async () => await element.updateComplete);
+
       it('should change collapse label to Expand panel', async function() {
-        const event = oneEvent(element, 'close');
-        const toggle = element.shadowRoot?.querySelector('#collapse-toggle') as HTMLElement;
-        toggle?.click();
-        await event;
         const snapshot = await a11ySnapshot();
         expect(snapshot).to.have.axQuery({ name: 'Expand panel' });
         expect(snapshot).to.not.have.axQuery({ name: 'Collapse panel' });
+      });
+    });
+  });
+
+  describe('full-viewport mode', function() {
+    beforeEach(async function() {
+      element = await fixture<RhDrawer>(DRAWER_WITH_EXPAND);
+    });
+    beforeEach(async () => await element.updateComplete);
+
+    describe('activating expand button', function() {
+      beforeEach(press('Tab'));
+      beforeEach(press('Enter'));
+      beforeEach(async () => await element.updateComplete);
+
+      it('should have focus on exit full viewport button', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.have.axQuery({ name: 'Exit full viewport', focused: true });
+      });
+
+      it('should show Exit full viewport label', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.have.axQuery({ name: 'Exit full viewport' });
+        expect(snapshot).to.not.have.axQuery({ name: 'Enter full viewport' });
+      });
+
+      describe('deactivating full viewport', function() {
+        beforeEach(press('Enter'));
+        beforeEach(async () => await element.updateComplete);
+
+        it('should have focus on enter full viewport button', async function() {
+          const snapshot = await a11ySnapshot();
+          expect(snapshot).to.have.axQuery({ name: 'Enter full viewport', focused: true });
+        });
+
+        it('should restore Enter full viewport label', async function() {
+          const snapshot = await a11ySnapshot();
+          expect(snapshot).to.have.axQuery({ name: 'Enter full viewport' });
+          expect(snapshot).to.not.have.axQuery({ name: 'Exit full viewport' });
+        });
       });
     });
   });
@@ -390,13 +458,15 @@ describe('<rh-drawer>', function() {
       expect(snapshot).to.have.axQuery({ name: 'Resize panel' });
     });
 
-    describe('clicking close button', function() {
-      it('should dispatch close event', async function() {
-        const event = oneEvent(element, 'close');
-        const closeBtn = element.shadowRoot?.querySelector('#close-button') as HTMLElement;
-        closeBtn?.click();
-        await event;
-        expect(element.open).to.be.false;
+    describe('closing via close button', function() {
+      beforeEach(press('Tab'));
+      beforeEach(press('Enter'));
+      beforeEach(async () => await element.updateComplete);
+      beforeEach(async () => await element.updateComplete);
+
+      it('should hide close button', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.not.have.axQuery({ name: 'Close drawer' });
       });
     });
   });
@@ -427,13 +497,88 @@ describe('<rh-drawer>', function() {
       expect(snapshot).to.have.axQuery({ name: 'Resize panel' });
     });
 
-    describe('clicking close button', function() {
-      it('should dispatch close event', async function() {
-        const event = oneEvent(element, 'close');
-        const closeBtn = element.shadowRoot?.querySelector('#close-button') as HTMLElement;
-        closeBtn?.click();
-        await event;
-        expect(element.open).to.be.false;
+    describe('closing via close button', function() {
+      beforeEach(press('Tab'));
+      beforeEach(press('Enter'));
+      beforeEach(async () => await element.updateComplete);
+      beforeEach(async () => await element.updateComplete);
+
+      it('should hide close button', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.not.have.axQuery({ name: 'Close drawer' });
+      });
+    });
+  });
+
+  // Resize handle keyboard tests are skipped because sendKeys for
+  // ArrowRight/Home on a fixed-position panel conflicts with the
+  // test runner's browser automation.
+  describe.skip('resize handle keyboard interaction', function() {
+    let container: HTMLDivElement;
+
+    beforeEach(async function() {
+      container = await fixture<HTMLDivElement>(html`
+        <div>
+          <button id="trigger" aria-controls="drawer">Toggle</button>
+          <rh-drawer id="drawer" variant="fixed" panel="resizable"
+                     trigger-id="trigger" open>
+            <h3 slot="header">Header</h3>
+            <nav slot="body">Body</nav>
+          </rh-drawer>
+        </div>
+      `);
+      element = container.querySelector('rh-drawer')!;
+    });
+    beforeEach(async () => await element.updateComplete);
+
+    describe('tabbing to resize handle', function() {
+      beforeEach(press('Tab'));
+      beforeEach(press('Tab'));
+      beforeEach(press('Tab'));
+
+      it('should allow resize handle to receive focus', function() {
+        const handle = element.shadowRoot?.querySelector('#resize-handle');
+        expect(element.shadowRoot?.activeElement).to.equal(handle);
+      });
+
+      describe('pressing ArrowRight', function() {
+        beforeEach(press('ArrowRight'));
+        beforeEach(async () => await element.updateComplete);
+
+        it('should increase panel width', function() {
+          const width = element.shadowRoot?.querySelector('#panel')?.getBoundingClientRect().width ?? 0;
+          expect(width).to.be.greaterThan(RhDrawer.minPanelWidth);
+        });
+
+        describe('pressing ArrowLeft', function() {
+          beforeEach(press('ArrowLeft'));
+          beforeEach(async () => await element.updateComplete);
+
+          it('should decrease panel width', function() {
+            const width = element.shadowRoot?.querySelector('#panel')?.getBoundingClientRect().width ?? 0;
+            expect(width).to.be.at.most(RhDrawer.minPanelWidth);
+          });
+        });
+      });
+
+      describe('pressing Home', function() {
+        beforeEach(press('Home'));
+        beforeEach(async () => await element.updateComplete);
+
+        it('should set minimum width', function() {
+          const width = element.shadowRoot?.querySelector('#panel')?.getBoundingClientRect().width ?? 0;
+          expect(width).to.be.at.most(RhDrawer.minPanelWidth + 1);
+        });
+      });
+
+      describe('pressing Enter', function() {
+        beforeEach(press('Enter'));
+        beforeEach(async () => await element.updateComplete);
+
+        it('should close the drawer', async function() {
+          const snapshot = await a11ySnapshot();
+          expect(snapshot).to.not.have.axQuery({ name: 'Close drawer' });
+        });
       });
     });
   });
@@ -490,6 +635,242 @@ describe('<rh-drawer>', function() {
         await element.updateComplete;
         const panel = element.shadowRoot?.querySelector('#panel');
         expect(panel?.getAttribute('role')).to.equal('dialog');
+      });
+    });
+  });
+
+  describe('narrow mode behavior', function() {
+    describe('auto variant in narrow container', function() {
+      let container: HTMLDivElement;
+
+      beforeEach(async function() {
+        container = await fixture<HTMLDivElement>(html`
+          <div style="inline-size: 500px;">
+            <rh-drawer variant="auto" open>
+              <h3 slot="header">Header</h3>
+              <nav slot="body">Body</nav>
+              <div><p>Content</p></div>
+            </rh-drawer>
+          </div>
+        `);
+        element = container.querySelector('rh-drawer')!;
+        await element.updateComplete;
+        await element.updateComplete;
+      });
+
+      it('should show narrow toggle with correct label', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.have.axQuery({ name: 'Collapse panel' });
+        expect(element.shadowRoot?.querySelector('#collapse-toggle')).to.be.null;
+      });
+
+      it('should show close button in panel', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.have.axQuery({ name: 'Close drawer' });
+      });
+
+      describe('activating narrow toggle', function() {
+        beforeEach(press('Tab'));
+        beforeEach(press('Tab'));
+        beforeEach(press('Enter'));
+        beforeEach(async () => await element.updateComplete);
+
+        it('should hide close button', async function() {
+          const snapshot = await a11ySnapshot();
+          expect(snapshot).to.not.have.axQuery({ name: 'Close drawer' });
+        });
+      });
+    });
+
+    describe('overlay variant in narrow container', function() {
+      let container: HTMLDivElement;
+
+      beforeEach(async function() {
+        container = await fixture<HTMLDivElement>(html`
+          <div style="inline-size: 500px;">
+            <rh-drawer variant="overlay" open>
+              <h3 slot="header">Header</h3>
+              <nav slot="body">Body</nav>
+              <div><p>Content</p></div>
+            </rh-drawer>
+          </div>
+        `);
+        element = container.querySelector('rh-drawer')!;
+        await element.updateComplete;
+        await element.updateComplete;
+      });
+
+      it('should show narrow toggle with correct label', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.have.axQuery({ name: 'Collapse panel' });
+        expect(element.shadowRoot?.querySelector('#collapse-toggle')).to.be.null;
+      });
+
+      it('should show close button in panel', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.have.axQuery({ name: 'Close drawer' });
+      });
+    });
+  });
+
+  describe('storage-key persistence', function() {
+    const STORAGE_KEY = 'test-drawer';
+
+    afterEach(function() {
+      sessionStorage.removeItem(`${STORAGE_KEY}:open`);
+      sessionStorage.removeItem(`${STORAGE_KEY}:panel`);
+      sessionStorage.removeItem(`${STORAGE_KEY}:panelWidth`);
+    });
+
+    describe('persisting open state', function() {
+      beforeEach(async function() {
+        element = await fixture<RhDrawer>(html`
+          <rh-drawer storage-key="${STORAGE_KEY}" open>
+            <nav slot="body">Body</nav>
+            <div><p>Content</p></div>
+          </rh-drawer>
+        `);
+      });
+      beforeEach(async () => await element.updateComplete);
+      beforeEach(async function() {
+        element.close();
+        await element.updateComplete;
+      });
+      beforeEach(nextFrame);
+
+      it('should write false to sessionStorage', function() {
+        expect(sessionStorage.getItem(`${STORAGE_KEY}:open`)).to.equal('false');
+      });
+    });
+
+    describe('restoring open state', function() {
+      beforeEach(function() {
+        sessionStorage.setItem(`${STORAGE_KEY}:open`, 'true');
+      });
+      beforeEach(async function() {
+        element = await fixture<RhDrawer>(html`
+          <rh-drawer storage-key="${STORAGE_KEY}">
+            <nav slot="body">Body</nav>
+            <div><p>Content</p></div>
+          </rh-drawer>
+        `);
+      });
+      beforeEach(async () => await element.updateComplete);
+      beforeEach(async () => await element.updateComplete);
+
+      it('should restore as open', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.have.axQuery({ name: 'Collapse panel' });
+      });
+    });
+
+    describe('restoring invalid panel value', function() {
+      beforeEach(function() {
+        sessionStorage.setItem(`${STORAGE_KEY}:panel`, 'banana');
+      });
+      beforeEach(async function() {
+        element = await fixture<RhDrawer>(html`
+          <rh-drawer storage-key="${STORAGE_KEY}" open>
+            <nav slot="body">Body</nav>
+            <div><p>Content</p></div>
+          </rh-drawer>
+        `);
+      });
+      beforeEach(async () => await element.updateComplete);
+
+      it('should not apply invalid panel value', function() {
+        expect(element.panel).to.not.equal('banana');
+      });
+    });
+
+    describe('restoring NaN panelWidth', function() {
+      beforeEach(function() {
+        sessionStorage.setItem(`${STORAGE_KEY}:panelWidth`, 'notanumber');
+      });
+      beforeEach(async function() {
+        element = await fixture<RhDrawer>(html`
+          <rh-drawer storage-key="${STORAGE_KEY}" variant="fixed" panel="resizable"
+                     trigger-id="none" open>
+            <nav slot="body">Body</nav>
+          </rh-drawer>
+        `);
+      });
+      beforeEach(async () => await element.updateComplete);
+
+      it('should not set panel width', function() {
+        const panel = element.shadowRoot?.querySelector('#panel') as HTMLElement;
+        expect(panel?.style.getPropertyValue('--_panel-width')).to.equal('');
+      });
+    });
+
+    describe('restoring panelWidth below minimum', function() {
+      beforeEach(function() {
+        sessionStorage.setItem(`${STORAGE_KEY}:panelWidth`, '100');
+      });
+      beforeEach(async function() {
+        element = await fixture<RhDrawer>(html`
+          <rh-drawer storage-key="${STORAGE_KEY}" variant="fixed" panel="resizable"
+                     trigger-id="none" open>
+            <nav slot="body">Body</nav>
+          </rh-drawer>
+        `);
+      });
+      beforeEach(async () => await element.updateComplete);
+
+      it('should not set panel width', function() {
+        const panel = element.shadowRoot?.querySelector('#panel') as HTMLElement;
+        expect(panel?.style.getPropertyValue('--_panel-width')).to.equal('');
+      });
+    });
+  });
+
+  describe('RTL behavior', function() {
+    describe('auto variant in RTL', function() {
+      let container: HTMLDivElement;
+
+      beforeEach(async function() {
+        container = await fixture<HTMLDivElement>(html`
+          <div dir="rtl">
+            <rh-drawer open>
+              <h3 slot="header">Header</h3>
+              <nav slot="body">Body</nav>
+              <div><p>Content</p></div>
+            </rh-drawer>
+          </div>
+        `);
+        element = container.querySelector('rh-drawer')!;
+      });
+      beforeEach(async () => await element.updateComplete);
+
+      it('is accessible in RTL', async function() {
+        await expect(element).to.be.accessible();
+      });
+
+      it('should have panel role', function() {
+        const panel = element.shadowRoot?.querySelector('#panel');
+        expect(panel?.getAttribute('role')).to.be.oneOf(['dialog', 'complementary']);
+      });
+    });
+
+    describe('position inline-end in RTL', function() {
+      let container: HTMLDivElement;
+
+      beforeEach(async function() {
+        container = await fixture<HTMLDivElement>(html`
+          <div dir="rtl">
+            <rh-drawer position="inline-end" open>
+              <h3 slot="header">Header</h3>
+              <nav slot="body">Body</nav>
+              <div><p>Content</p></div>
+            </rh-drawer>
+          </div>
+        `);
+        element = container.querySelector('rh-drawer')!;
+      });
+      beforeEach(async () => await element.updateComplete);
+
+      it('is accessible in RTL with inline-end', async function() {
+        await expect(element).to.be.accessible();
       });
     });
   });
