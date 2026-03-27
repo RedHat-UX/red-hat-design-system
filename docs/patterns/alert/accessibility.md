@@ -71,7 +71,7 @@ important information—for example:
   the user can return to.
 - Simple success that is already obvious in the UI: often no toast is needed.
 
-### Usability
+### Usability concerns
 
 Corner placement can be easy to miss on large displays or under
 screen magnification. Auto-dismiss and tab switching can cause users to lose the
