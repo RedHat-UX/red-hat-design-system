@@ -13,10 +13,9 @@ subnav:
 
 ## Style
 
-Toasts use the alert layout (icon, title, body, optional actions, dismiss
-control) with the toast visual treatment: light surface, shadow, and placement
-in the viewport corner. For anatomy, themes, and spacing tokens, see
-[Alert element — Style](/elements/alert/style/) and the
+Toasts use a similar layout to an alert, but they include a drop shadow and
+are placed in the viewport corner. For anatomy, themes, and spacing tokens,
+see [Alert element — Style](/elements/alert/style/) and the
 [Toast](/elements/alert/style/#toast) subsection.
 
 ## Placement and persistence
@@ -34,7 +33,7 @@ seconds unless the user dismisses it first.
 
 ## Dismissal
 
-Toast alerts include a dismiss control.
+Toast alerts include a close button.
 
 <uxdot-example color-palette="lightest" width-adjustment="456px">
   <img alt="Alert element dismissal toast examples"
