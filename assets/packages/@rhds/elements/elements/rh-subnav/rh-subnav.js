@@ -15,11 +15,20 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 import { css } from "lit";
 const styles = css `:host{display:block}:host([color-palette]){background-color:var(--rh-color-surface)}[part=container]{display:flex}#link-container{display:flex;position:relative;bottom:0;overflow-x:auto;scrollbar-width:none;max-width:100%}::slotted(a){display:block!important;white-space:nowrap!important;padding:var(--rh-space-lg,16px) var(--rh-space-2xl,32px)!important;text-decoration:none!important;color:var(--rh-color-text-secondary)!important;position:relative!important}::slotted(a):after{content:""!important;position:absolute!important;inset:0!important;width:100%!important;border-block-end:var(--rh-border-width-lg,3px) solid #0000!important}::slotted(a:active),::slotted(a:hover),::slotted(a:is([active],[aria-current=page])){color:var(--rh-color-text-primary)!important}::slotted(a:focus-visible):after,::slotted(a:hover):after{border-block-end-color:var(--rh-color-border-subtle)!important}::slotted(a:active):after,::slotted(a:is([active],[aria-current=page])):after{border-block-end-color:var(--rh-color-accent-brand)!important}::slotted(a:focus-visible){outline:var(--rh-border-width-md,2px) solid var(--rh-color-border-interactive)!important;outline-offset:-2px!important;border-radius:10px!important}::slotted(a:visited){color:var(--rh-color-text-primary)!important}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-gap:var(--rh-space-xs,4px);--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-lg,16px) var(--rh-space-2xl,32px);--_navigation-link-font-size:var(--rh-font-size-body-text-md);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%;--_navigation-link-focus-outline-offset:-2px;position:relative;display:flex}::slotted(rh-navigation-link):after{content:"";position:absolute;z-index:1;inset:0;width:100%;border-block-end:var(--rh-border-width-lg,3px) solid #0000;pointer-events:none}::slotted(rh-navigation-link:hover):after{border-block-end-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active):after,::slotted(rh-navigation-link[current-page]):after{border-block-end-color:var(--rh-color-brand-red)}button{position:relative;padding:0 var(--rh-space-lg,16px);margin:0;background-color:initial;border:none;color:var(--rh-color-text-secondary)}button:disabled{pointer-events:none;color:var(--rh-color-border-subtle)}button:hover{color:var(--rh-color-text-primary)}button:before{position:absolute;inset:0;content:"";border-block-end:var(--rh-border-width-lg,3px) solid #0000}:is(button:before):hover{border-block-end-color:var(--rh-color-border-subtle)}#previous{border-inline-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}#next{border-inline-start:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}#next,#previous{border-block-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}:is(#next,#previous) rh-icon{pointer-events:none}:is(:is(#next,#previous) rh-icon):dir(rtl){rotate:180deg}`;
 /**
- * A subnavigation allows users to navigate between a small number of page links.
+ * A subnavigation provides a horizontal list of links for navigating
+ * related pages. Authors should slot `<rh-navigation-link>` elements
+ * as children; authors should avoid slotting bare `<a>` elements, which
+ * are deprecated. Each link must have visible text content for
+ * accessibility. When more than one subnav appears on a page, authors
+ * should set `accessible-label` so screen readers can distinguish them.
  *
- * @summary Organizes content into sections using tabbed pages
+ * Overflow scroll buttons appear when links exceed the available space.
+ * All links are keyboard accessible via Tab and Enter.
+ *
+ * @summary Displays a horizontal list of navigation links for related pages.
  *
  * @alias subnavigation
+ *
  */
 let RhSubnav = RhSubnav_1 = class RhSubnav extends LitElement {
     constructor() {
@@ -56,8 +65,8 @@ let RhSubnav = RhSubnav_1 = class RhSubnav extends LitElement {
     }
     render() {
         return html `
-      <!-- container, \`<div>\` element -->
-      <nav part="container" 
+      <!-- The nav container wrapping the link list -->
+      <nav part="container"
            aria-label="${this.accessibleLabel}">
         ${!__classPrivateFieldGet(this, _RhSubnav_overflow, "f").showScrollButtons ? '' : html `
           <button id="previous"
@@ -68,14 +77,18 @@ let RhSubnav = RhSubnav_1 = class RhSubnav extends LitElement {
                   @click="${__classPrivateFieldGet(this, _RhSubnav_instances, "m", _RhSubnav_onClickScroll)}">
             <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
           </button>`}
-        <!--
-          slot:
-            description: Sub navigation links, expects collection of \`<a>\` or \`<rh-navigation-link>\` elements
-            Slotting a \`<a>\` element is deprecated and will be removed in a future release. Use \`<rh-navigation-link>\` instead.
-          part:
-            description: the anonymous slot
-        -->
         <div id="link-container" role="${ifDefined(this.hasNavigationLinks ? 'list' : undefined)}" >
+          <!--
+            part:
+              description: The scrollable link list container
+            slot:
+              summary: Sub navigation links
+              description: |
+                Expects a collection of \`<rh-navigation-link>\` or
+                \`<a>\` elements. Each link must have text content
+                for screen readers. Slotting \`<a>\` elements is
+                deprecated; use \`<rh-navigation-link>\` instead.
+          -->
           <slot @slotchange="${__classPrivateFieldGet(this, _RhSubnav_instances, "m", _RhSubnav_onSlotchange)}" part="links"></slot>
         </div>
         ${!__classPrivateFieldGet(this, _RhSubnav_overflow, "f").showScrollButtons ? '' : html `
