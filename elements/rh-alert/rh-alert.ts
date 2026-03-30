@@ -1,4 +1,5 @@
-import { type CSSResult, LitElement, type TemplateResult, html, isServer, render, nothing } from 'lit';
+import type { CSSResult, TemplateResult } from 'lit';
+import { LitElement, html, isServer, render, nothing } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { repeat } from 'lit/directives/repeat.js';
