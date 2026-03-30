@@ -41,7 +41,7 @@ Toasts sit in tension with several WCAG success criteria, including:
 
 `RhAlert.toast()` exposes toasts as polite status messages
 (`role="status"`, `aria-live="polite"`), not as `role="alert"` interruptions.
-Focus does not move into the toast when it opens; keyboard users tab to it
+Focus does not move into the toast when it opens; keyboard users <kbd>Tab</kbd> to it
 to use dismiss or actions. See [Alert accessibility](/elements/alert/accessibility/#toasts)
 for details.
 
