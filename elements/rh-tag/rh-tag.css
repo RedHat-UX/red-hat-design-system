@@ -21,9 +21,10 @@ a {
 
 #container {
   align-items: center;
-
-  /** Tag pill background color, varies by color and variant */
-  background-color: var(--_fill-color, var(--rh-color-surface-lighter, #f2f2f2));
+  background-color:
+    var(--_fill-color,
+      /** Tag pill background color, varies by color and variant */
+      var(--rh-color-surface-lighter, #f2f2f2));
 
   /** Pill-shaped border radius for the tag container */
   border-radius: var(--rh-border-radius-pill, 64px);
@@ -72,8 +73,9 @@ a {
       /** Container border width */
       var(--rh-border-width-sm, 1px)
       solid
-      /** Container border color */
-      var(--_border-color, var(--rh-color-border-subtle));
+      var(--_border-color,
+        /** Container border color */
+        var(--rh-color-border-subtle));
 
     /** Pill-shaped border radius matching the container */
     border-radius: var(--rh-border-radius-pill, 64px);
@@ -117,12 +119,14 @@ a {
     padding:
       /** Compact block-start padding */
       var(--rh-tag-padding-block-start, 0)
-      /** Compact inline-end padding */
-      var(--rh-tag-padding-inline-end, var(--rh-space-md, 8px))
+      var(--rh-tag-padding-inline-end,
+        /** Compact inline-end padding */
+        var(--rh-space-md, 8px))
       /** Compact block-end padding */
       var(--rh-tag-padding-block-end, 0)
-      /** Compact inline-start padding */
-      var(--rh-tag-padding-inline-start, var(--rh-space-md, 8px));
+      var(--rh-tag-padding-inline-start,
+        /** Compact inline-start padding */
+        var(--rh-space-md, 8px));
   }
 
   &.red {
