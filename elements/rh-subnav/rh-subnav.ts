@@ -20,11 +20,14 @@ type LinkElement = HTMLAnchorElement | RhNavigationLink;
 
 /**
  * A subnavigation provides a horizontal list of links for navigating
- * related pages.
+ * related pages. Authors should slot `<rh-navigation-link>` elements
+ * as children; authors should avoid slotting bare `<a>` elements, which
+ * are deprecated. Each link must have visible text content for
+ * accessibility. When more than one subnav appears on a page, authors
+ * should set `accessible-label` so screen readers can distinguish them.
  *
  * Overflow scroll buttons appear when links exceed the available space.
- * The `<nav>` landmark has a configurable `aria-label` for screen
- * readers; all links are keyboard accessible via Tab and Enter.
+ * All links are keyboard accessible via Tab and Enter.
  *
  * @summary Displays a horizontal list of navigation links for related pages.
  *
@@ -136,7 +139,7 @@ export class RhSubnav extends LitElement {
               summary: Sub navigation links
               description: |
                 Expects a collection of \`<rh-navigation-link>\` or
-                \`<a>\` elements. Each link MUST have text content
+                \`<a>\` elements. Each link must have text content
                 for screen readers. Slotting \`<a>\` elements is
                 deprecated; use \`<rh-navigation-link>\` instead.
           -->
