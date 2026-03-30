@@ -53,8 +53,10 @@ const isStatusPageResponse = (data) => {
         && Array.isArray(data.components));
 };
 /**
- * Website status communicates the operational status of a website or domain using a status icon and
- * link. It is usually located in the Footer component.
+ * Provides live operational status for a website or domain using a status
+ * icon and link. Authors SHOULD place this element in the footer. Screen
+ * reader users receive updates via `aria-live="polite"`. Users MAY
+ * activate the link with Enter or Tab to focus it.
  *
  * @summary Communicates operational status of a website or domain
  *
@@ -84,7 +86,9 @@ let RhSiteStatus = RhSiteStatus_1 = _a = class RhSiteStatus extends LitElement {
            aria-busy="${String(__classPrivateFieldGet(this, _RhSiteStatus_loading, "f"))}"
            aria-live="polite">${__classPrivateFieldGet(this, _RhSiteStatus_loading, "f") ? html `
           <rh-spinner size="sm"></rh-spinner>
-          <span><!-- Text to display while loading the status defaults to "Loading" --><slot name="loading-text">Loading</slot></span>` : html `
+          <span><!-- Localized loading text for screen reader
+                    announcement via aria-live polite region -->
+            <slot name="loading-text">Loading</slot></span>` : html `
           <rh-icon loading="eager" set="ui" icon="${icon}" class="${status}"></rh-icon>
           <span>${__classPrivateFieldGet(this, _RhSiteStatus_instances, "a", _RhSiteStatus_text_get)}</span>`}
         </a>

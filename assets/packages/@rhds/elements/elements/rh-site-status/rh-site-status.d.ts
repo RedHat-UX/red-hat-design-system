@@ -59,8 +59,10 @@ export interface SummaryResponse {
     incidents: Incident[];
 }
 /**
- * Website status communicates the operational status of a website or domain using a status icon and
- * link. It is usually located in the Footer component.
+ * Provides live operational status for a website or domain using a status
+ * icon and link. Authors SHOULD place this element in the footer. Screen
+ * reader users receive updates via `aria-live="polite"`. Users MAY
+ * activate the link with Enter or Tab to focus it.
  *
  * @summary Communicates operational status of a website or domain
  *
