@@ -9,7 +9,7 @@ import styles from './rh-surface.css' with { type: 'css' };
 
 /**
  * A surface provides color context to descendants via `color-palette`.
- * Authors MUST set a `color-palette` and SHOULD use surface only when
+ * Authors must set a `color-palette` and should use surface only when
  * containers like `rh-card` are not appropriate. Each palette provides
  * WCAG-compliant contrast when using the default theme. Surface is
  * non-interactive: Tab and focus pass through to focusable children.
