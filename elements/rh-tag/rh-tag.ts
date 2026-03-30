@@ -17,9 +17,9 @@ import styles from './rh-tag.css' with { type: 'css' };
 
 /**
  * A tag provides a short, pill-shaped label for categorizing content or
- * indicating status. It SHOULD include an icon when color alone conveys
- * meaning. Linked tags MUST have descriptive text for screen readers, and
- * SHOULD provide an `aria-label` on group containers. When disabled, Enter
+ * indicating status. It should include an icon when color alone conveys
+ * meaning. Linked tags must have descriptive text for screen readers, and
+ * should provide an `aria-label` on group containers. When disabled, Enter
  * keyboard navigation is suppressed on linked tags.
  *
  * @summary Categorizes content, adds context, or indicates status using a short text label
@@ -96,7 +96,7 @@ export class RhTag extends LitElement {
     const textSlot = html`
       <!-- summary: tag text content for screen readers and visual display
            description: |
-             Text MUST convey meaning without relying on color alone
+             Text must convey meaning without relying on color alone
              (WCAG 1.4.1). Keep under 25 characters. -->
       <slot id="text"></slot>
     `;
@@ -111,7 +111,7 @@ export class RhTag extends LitElement {
               [color]: true })}">
         <!-- summary: decorative icon for screen reader and visual context
              description: |
-               Icons MUST be purely decorative. Screen readers skip
+               Icons must be purely decorative. Screen readers skip
                this slot because the icon has no accessible name. -->
         <slot name="icon" part="icon">
           <rh-icon ?hidden="${!icon}" icon="${ifDefined(icon)}" set="${this.iconSet}"></rh-icon>
