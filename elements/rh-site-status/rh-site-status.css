@@ -5,36 +5,36 @@
 #container {
   display: inline-flex;
 
-  /** Spacing design token for container padding */
+  /** Spacing container padding */
   padding: var(--rh-space-lg, 16px);
 
-  /** Border radius design token for container */
+  /** Border radius container */
   border-radius: var(--rh-border-radius-default, 3px);
   min-width: 150px;
 
   &.success {
-    /** Status theme surface for operational state */
+    /** Operational state background color */
     background-color:
       light-dark(var(--rh-color-surface-status-success),
         var(--rh-color-surface-dark, #383838));
   }
 
   &.warning {
-    /** Status theme surface for degraded state */
+    /** Degraded state background color */
     background-color:
       light-dark(var(--rh-color-surface-status-warning),
         var(--rh-color-surface-dark, #383838));
   }
 
   &.danger {
-    /** Status theme surface for critical state */
+    /** Critical state background color */
     background-color:
       light-dark(var(--rh-color-surface-status-danger),
         var(--rh-color-surface-dark, #383838));
   }
 
   &.loading {
-    /** Theme surface color while data loads */
+    /** Loading background color */
     background-color:
       light-dark(var(--rh-color-surface-light, #e0e0e0),
         var(--rh-color-surface-dark, #383838));
@@ -44,15 +44,15 @@
 a {
   display: inline-flex;
 
-  /** Typography design token for small body text */
+  /** Link font size */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   text-decoration: none;
   align-items: center;
 
-  /** Spacing design token between icon and label */
+  /** Link gap between text and icon */
   gap: var(--rh-space-md, 8px);
 
-  /** Theme text color for the status link */
+  /** Link font color */
   color: var(--rh-color-text-primary);
   text-transform: lowercase;
 }
@@ -63,11 +63,13 @@ span:first-letter {
 
 a:focus {
   outline:
+    /** Link focus outline */
     var(--rh-border-width-md, 2px)
     solid
+    /** Link focus outline color */
     var(--rh-color-border-interactive);
 
-  /** Border radius design token for focus outline */
+  /** Link focus border radius */
   border-radius: var(--rh-border-radius-default, 3px);
 }
 
@@ -76,17 +78,21 @@ a:is(:hover,:focus) {
 }
 
 rh-icon {
-  /** Icon sizing design token */
+  /** Status Icon width */
   width: var(--rh-size-icon-01, 16px);
+
+  /** Status Icon height  */
   height: var(--rh-size-icon-01, 16px);
+
+  /** Status Icon color */
   color: var(--rh-color-white, #ffffff);
 
-  /** Status theme color for operational icon */
+  /** Operational state icon status color */
   &.success { color: var(--rh-color-status-success); }
 
-  /** Status theme color for degraded icon */
+  /** Degraded state icon status color  */
   &.warning { color: var(--rh-color-status-warning); }
 
-  /** Status theme color for critical icon */
+  /** Critical state icon status color  */
   &.danger { color: var(--rh-color-status-danger); }
 }
