@@ -1,9 +1,8 @@
-import { type CSSResult, LitElement, type TemplateResult, html, isServer, render } from 'lit';
+import { type CSSResult, LitElement, type TemplateResult, html, isServer, render, nothing } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { repeat } from 'lit/directives/repeat.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
@@ -216,7 +215,7 @@ export class RhAlert extends LitElement {
                     [state]: true,
                     [variant]: !!variant,
                   })}"
-                  role="${ifDefined(this.variant === 'toast' ? undefined : 'alert')}"
+                  role="${this.variant !== 'toast' ? 'alert' : nothing}"
                   aria-hidden="false">
         <div id="left-column">
           <rh-icon id="icon" set="ui" icon="${this.#icon}"></rh-icon>
