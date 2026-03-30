@@ -1,9 +1,13 @@
 import type { IconNameFor, IconSetName } from '@rhds/icons';
 import { LitElement, type TemplateResult } from 'lit';
 /**
- * Navigation Link is a link element that is used as a child of the primary, secondary,
- * subnav, and vertical navigation elements. Intrinsically, the Navigation Link is a list
- * item and should not be used outside of navigation elements that define the parent list element.
+ * Navigation Link provides a link for use within Red Hat navigation
+ * components. It must be a child of elements like `rh-subnav` or
+ * `rh-navigation-primary` that provide the parent list context. Authors
+ * should set `href` or slot an `<a>` element directly; authors must not
+ * slot a `<button>`. When `current-page` is set, `aria-current="page"` is
+ * applied so screen readers announce the active page. Uses
+ * `delegatesFocus` so Tab focus passes to the anchor.
  *
  * @summary A link that can be used as a child of navigation elements.
  * @alias navigation-link
