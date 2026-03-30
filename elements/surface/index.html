@@ -3789,16 +3789,13 @@
           <a href="#overview">Overview</a>
         </h2>
       </uxdot-copy-permalink>
-      <p>Surfaces are content containers with a color palette which provide a theme
-(i.e. a background color as well as accessible font colors) to their child
-elements. Use surface only when other containers like card or accordion
-are inappropriate.</p>
-<figure>
-<figcaption>A surface providing a theme to a spinner</figcaption>
-<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-surface</span> <span class="token attr-name">color-palette</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>light<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-spinner</span><span class="token punctuation">&gt;</span></span>Loading...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-spinner</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-surface</span><span class="token punctuation">&gt;</span></span></code></pre>
-</figure>
+      <p>A surface provides color context to descendants via <code>color-palette</code>.
+Authors must set a <code>color-palette</code> and should use surface only when
+containers like <code>rh-card</code> are not appropriate. Each palette provides
+WCAG-compliant contrast when using the default theme. Surface is
+non-interactive: Tab and focus pass through to focusable children.
+Users of AT perceive no additional semantics from this element.</p>
+
       
       
       
@@ -4689,11 +4686,13 @@ are inappropriate.</p>
 <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
           <uxdot-knob-attribute slot="knobs" tag="rh-surface" name="color-palette" type="'light' | 'lighter' | 'lightest' | 'dark' | 'darker' | 'darkest'">
-            <div slot="description"><p>Sets color palette, which affects the element's styles as well as
-descendants' color theme. The default surface color palette is 'lightest',
-Surface always overrides the parent's color context.
-Your theme will influence these colors so check there first if you are seeing inconsistencies.
-See <a href="#css-custom-properties">CSS Custom Properties</a> for default values</p>
+            <div slot="description"><p>Sets the color palette, which controls the element's background color
+and propagates accessible text and interactive colors to descendants.
+Accepted values are <code>lightest</code>, <code>lighter</code>, <code>light</code>, <code>dark</code>, <code>darker</code>,
+and <code>darkest</code>. Surface always overrides the parent's color context.
+Your theme will influence these colors so check there first if you
+are seeing inconsistencies.
+See <a href="#css-custom-properties">CSS Custom Properties</a> for default values.</p>
 </div>
           </uxdot-knob-attribute></uxdot-demo>
         

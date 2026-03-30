@@ -1,30 +1,28 @@
 import { LitElement } from 'lit';
 import { type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 /**
- * Surfaces are content containers with a color palette which provide a theme
- * (i.e. a background color as well as accessible font colors) to their child
- * elements. Use surface only when other containers like card or accordion
- * are inappropriate.
- * @summary Provides background color context for elements placed on top
+ * A surface provides color context to descendants via `color-palette`.
+ * Authors must set a `color-palette` and should use surface only when
+ * containers like `rh-card` are not appropriate. Each palette provides
+ * WCAG-compliant contrast when using the default theme. Surface is
+ * non-interactive: Tab and focus pass through to focusable children.
+ * Users of AT perceive no additional semantics from this element.
+ *
+ * @summary Provides background color and theming context for children
  *
  * @alias surface
- *
- * @example A surface providing a theme to a spinner
- *          ```html
- *          <rh-surface color-palette="light">
- *            <rh-spinner>Loading...</rh-spinner>
- *          </rh-surface>
- *          ```
  */
 export declare class RhSurface extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet[];
     /**
-     * Sets color palette, which affects the element's styles as well as
-     * descendants' color theme. The default surface color palette is 'lightest',
-     * Surface always overrides the parent's color context.
-     * Your theme will influence these colors so check there first if you are seeing inconsistencies.
-     * See [CSS Custom Properties](#css-custom-properties) for default values
+     * Sets the color palette, which controls the element's background color
+     * and propagates accessible text and interactive colors to descendants.
+     * Accepted values are `lightest`, `lighter`, `light`, `dark`, `darker`,
+     * and `darkest`. Surface always overrides the parent's color context.
+     * Your theme will influence these colors so check there first if you
+     * are seeing inconsistencies.
+     * See [CSS Custom Properties](#css-custom-properties) for default values.
      */
     colorPalette?: ColorPalette;
     render(): import("lit-html").TemplateResult<1>;

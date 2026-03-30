@@ -4079,16 +4079,13 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>Surfaces are content containers with a color palette which provide a theme
-(i.e. a background color as well as accessible font colors) to their child
-elements. Use surface only when other containers like card or accordion
-are inappropriate.</p>
-<figure>
-<figcaption>A surface providing a theme to a spinner</figcaption>
-<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-surface</span> <span class="token attr-name">color-palette</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>light<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-spinner</span><span class="token punctuation">&gt;</span></span>Loading...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-spinner</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-surface</span><span class="token punctuation">&gt;</span></span></code></pre>
-</figure>
+      <p>A surface provides color context to descendants via <code>color-palette</code>.
+Authors must set a <code>color-palette</code> and should use surface only when
+containers like <code>rh-card</code> are not appropriate. Each palette provides
+WCAG-compliant contrast when using the default theme. Surface is
+non-interactive: Tab and focus pass through to focusable children.
+Users of AT perceive no additional semantics from this element.</p>
+
 
       <div class="element-apis">
         
@@ -4169,7 +4166,7 @@ are inappropriate.</p>
                   </uxdot-copy-permalink></td>
                   <td></td>
                   <td>
-                   <p>The <code>&lt;rh-surface&gt;</code> element has a single anonymous slot which accepts any content and does not provide additional layout styling <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Accepts any content. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -4257,11 +4254,13 @@ are inappropriate.</p>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>colorPalette</code></td>
-                  <td><p>Sets color palette, which affects the element's styles as well as
-descendants' color theme. The default surface color palette is 'lightest',
-Surface always overrides the parent's color context.
-Your theme will influence these colors so check there first if you are seeing inconsistencies.
-See <a href="#css-custom-properties">CSS Custom Properties</a> for default values</p></td>
+                  <td><p>Sets the color palette, which controls the element's background color
+and propagates accessible text and interactive colors to descendants.
+Accepted values are <code>lightest</code>, <code>lighter</code>, <code>light</code>, <code>dark</code>, <code>darker</code>,
+and <code>darkest</code>. Surface always overrides the parent's color context.
+Your theme will influence these colors so check there first if you
+are seeing inconsistencies.
+See <a href="#css-custom-properties">CSS Custom Properties</a> for default values.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'light'</span> <span class="token operator">|</span> <span class="token string">'lighter'</span> <span class="token operator">|</span> <span class="token string">'lightest'</span> <span class="token operator">|</span> <span class="token string">'dark'</span> <span class="token operator">|</span> <span class="token string">'darker'</span> <span class="token operator">|</span> <span class="token string">'darkest'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4457,7 +4456,7 @@ See <a href="#css-custom-properties">CSS Custom Properties</a> for default value
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Primary text color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4553,7 +4552,7 @@ See <a href="#css-custom-properties">CSS Custom Properties</a> for default value
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Surface background color</p>
                   </td>
                   <td data-label="Copy">
       <div>
