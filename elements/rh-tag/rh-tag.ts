@@ -96,8 +96,9 @@ export class RhTag extends LitElement {
     const textSlot = html`
       <!-- summary: tag text content for screen readers and visual display
            description: |
-             Text must convey meaning without relying on color alone
-             (WCAG 1.4.1). Keep under 25 characters. -->
+             Expects inline text. Text must convey meaning without
+             relying on color alone (WCAG 1.4.1). Keep under
+             25 characters. -->
       <slot id="text"></slot>
     `;
     return html`
@@ -111,8 +112,9 @@ export class RhTag extends LitElement {
               [color]: true })}">
         <!-- summary: decorative icon for screen reader and visual context
              description: |
-               Icons must be purely decorative. Screen readers skip
-               this slot because the icon has no accessible name. -->
+               Expects an \`rh-icon\` element or inline \`svg\`. Icons must
+               be purely decorative. Screen readers skip this slot
+               because the icon has no accessible name. -->
         <slot name="icon" part="icon">
           <rh-icon ?hidden="${!icon}" icon="${ifDefined(icon)}" set="${this.iconSet}"></rh-icon>
         </slot>${!this.href ? textSlot : html`
