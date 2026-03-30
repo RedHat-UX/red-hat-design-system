@@ -13,9 +13,9 @@ import styles from './rh-navigation-link.css' with { type: 'css' };
 
 /**
  * Navigation Link provides a link for use within Red Hat navigation
- * components. It MUST be a child of elements like `rh-subnav` or
+ * components. It must be a child of elements like `rh-subnav` or
  * `rh-navigation-primary` that provide the parent list context. Authors
- * SHOULD set `href` or slot an `<a>` element directly; authors MUST NOT
+ * should set `href` or slot an `<a>` element directly; authors must not
  * slot a `<button>`. When `current-page` is set, `aria-current="page"` is
  * applied so screen readers announce the active page. Uses
  * `delegatesFocus` so Tab focus passes to the anchor.
@@ -65,7 +65,7 @@ export class RhNavigationLink extends LitElement {
             <!-- summary: icon, only rendered when \`href\` is set
                  description: |
                    Use instead of the \`icon\` and \`icon-set\` attributes.
-                   Accepts \`rh-icon\`, \`svg\`, or \`img\`. Content SHOULD
+                   Accepts \`rh-icon\`, \`svg\`, or \`img\`. Content should
                    have \`aria-hidden\` or \`alt\` so screen readers skip
                    decorative images. Not available when slotting
                    an \`<a>\` directly (without \`href\` on the host). -->
@@ -76,23 +76,23 @@ export class RhNavigationLink extends LitElement {
             </slot>
             <!-- summary: Link content
                  description: |
-                   When the \`href\` attribute is set, this slot SHOULD
+                   When the \`href\` attribute is set, this slot should
                    contain inline text for the link label. Alternatively,
-                   an anchor element (\`<a href="...">\`) SHOULD be the
+                   an anchor element (\`<a href="...">\`) should be the
                    first child in this slot when \`href\` is not set.
                    Screen readers will announce the slotted text as the
-                   accessible name for the link. Authors MUST NOT slot a
+                   accessible name for the link. Authors must not slot a
                    \`<button>\` element. -->
             <slot></slot>
           </a>`
           : html`<!-- summary: Link content
                  description: |
-                   When the \`href\` attribute is set, this slot SHOULD
+                   When the \`href\` attribute is set, this slot should
                    contain inline text for the link label. Alternatively,
-                   an anchor element (\`<a href="...">\`) SHOULD be the
+                   an anchor element (\`<a href="...">\`) should be the
                    first child in this slot when \`href\` is not set.
                    Screen readers will announce the slotted text as the
-                   accessible name for the link. Authors MUST NOT slot a
+                   accessible name for the link. Authors must not slot a
                    \`<button>\` element. -->
             <slot></slot>`
         }
