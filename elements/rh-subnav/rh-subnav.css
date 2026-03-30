@@ -23,7 +23,11 @@
 ::slotted(a) {
   display: block !important;
   white-space: nowrap !important;
-  padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px) !important;
+  padding:
+    /** Link block padding */
+    var(--rh-space-lg, 16px)
+    /** Link inline padding */
+    var(--rh-space-2xl, 32px) !important;
   text-decoration: none !important;
 
   /** Theme secondary text token for inactive links */
@@ -36,9 +40,11 @@
   position: absolute !important;
   inset: 0 !important;
   width: 100% !important;
-
-  /** Bottom border indicator for link state */
-  border-block-end: var(--rh-border-width-lg, 3px) solid transparent !important;
+  border-block-end:
+    /** Link state indicator border block end width */
+    var(--rh-border-width-lg, 3px)
+    solid
+    transparent !important;
 }
 
 ::slotted(a:hover),
@@ -104,44 +110,47 @@
   z-index: 1;
   inset: 0;
   width: 100%;
-
-  /** Bottom border indicator for navigation link state */
-  border-block-end: var(--rh-border-width-lg, 3px) solid transparent;
+  border-block-end:
+    /** Navigation link state indicator border block */
+    var(--rh-border-width-lg, 3px)
+    solid
+    transparent;
   pointer-events: none;
 }
 
 ::slotted(rh-navigation-link:hover):after {
-  /** Subtle border on navigation link hover */
+  /** Navigation link hover subtle border block end color */
   border-block-end-color: var(--rh-color-border-subtle);
 }
 
 ::slotted(rh-navigation-link:active):after,
 ::slotted(rh-navigation-link[current-page]):after {
-  /** Brand red design token for current page */
+  /** Current page border block end color */
   border-block-end-color: var(--rh-color-brand-red);
 }
 
 button {
   position: relative;
-
-  /** Horizontal padding for scroll buttons */
-  padding: 0 var(--rh-space-lg, 16px);
+  padding:
+    0
+    /** Scroll button inline padding */
+    var(--rh-space-lg, 16px);
   margin: 0;
   background-color: transparent;
   border: none;
 
-  /** Theme secondary text token for scroll buttons */
+  /** Scroll buttons text color */
   color: var(--rh-color-text-secondary);
 
   &:disabled {
     pointer-events: none;
 
-    /** Subtle border color when scroll is disabled */
+    /** Disabled scroll buttons text color */
     color: var(--rh-color-border-subtle);
   }
 
   &:hover {
-    /** Primary text color on scroll button hover */
+    /** Scroll button hover text color */
     color: var(--rh-color-text-primary);
   }
 
@@ -149,28 +158,45 @@ button {
     position: absolute;
     inset: 0;
     content: '';
-
-    /** Bottom border for scroll button state */
-    border-block-end: var(--rh-border-width-lg, 3px) solid transparent;
+    border-block-end:
+      /** Scroll button state border block end width */
+      var(--rh-border-width-lg, 3px)
+      solid
+      transparent;
 
     &:hover {
-      /** Subtle border on scroll button hover */
+      /** Scroll button hover border block end color */
       border-block-end-color: var(--rh-color-border-subtle);
     }
   }
 }
 
 #previous {
-  border-inline-end: var(--rh-border-width-sm, 1px)  solid  var(--rh-color-border-subtle);
+  border-inline-end:
+    /** Previous button border inline end width */
+    var(--rh-border-width-sm, 1px)
+    solid
+    /** Previous button border inline end color */
+    var(--rh-color-border-subtle);
 }
 
 #next {
-  border-inline-start: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+  border-inline-start:
+    /** Next button border inline start width */
+    var(--rh-border-width-sm, 1px)
+    solid
+    /** Next button border inline start color */
+    var(--rh-color-border-subtle);
 }
 
 #next,
 #previous {
-  border-block-end: var(--rh-border-width-sm, 1px)  solid  var(--rh-color-border-subtle);
+  border-block-end:
+    /** Scroll button border block end width */
+    var(--rh-border-width-sm, 1px)
+    solid
+    /** Scroll button border block end color */
+    var(--rh-color-border-subtle);
 
   & rh-icon {
     pointer-events: none;
