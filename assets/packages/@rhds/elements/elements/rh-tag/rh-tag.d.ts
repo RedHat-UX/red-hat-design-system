@@ -3,39 +3,57 @@ import type { TemplateResult } from 'lit';
 import type { IconNameFor, IconSetName } from '@rhds/icons';
 import '@rhds/elements/rh-icon/rh-icon.js';
 /**
- * A tag is a caption added to an element for better clarity and user convenience.
+ * A tag provides a short, pill-shaped label for categorizing content or
+ * indicating status. It should include an icon when color alone conveys
+ * meaning. Linked tags must have descriptive text for screen readers, and
+ * should provide an `aria-label` on group containers. When disabled, Enter
+ * keyboard navigation is suppressed on linked tags.
  *
- * @summary  Highlights an element to add clarity or draw attention
+ * @summary Categorizes content, adds context, or indicates status using a short text label
  *
  * @alias tag
- *
- * @fires close - when a removable label's close button is clicked
  *
  */
 export declare class RhTag extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet[];
     /**
-     * The icon to display in the tag.
+     * The name of the icon to display in the tag.
+     * When set, an `rh-icon` element renders in the icon slot as a decorative visual.
      */
     icon?: IconNameFor<IconSetName>;
     /**
-     * Icon set to display in the tag
+     * The icon set from which to select the icon. Defaults to `ui`.
      */
     iconSet: IconSetName;
-    /** The variant of the tag. */
+    /**
+     * The visual style variant of the tag.
+     * - `filled`: colored background with a subtle border (default)
+     * - `outline`: transparent background with a colored border
+     * - `desaturated`: transparent background with a neutral border and text color
+     */
     variant?: 'filled' | 'outline' | 'desaturated';
-    /** The size of the tag. */
+    /**
+     * The size of the tag. When set to `compact`, the tag uses a smaller font
+     * size and reduced padding.
+     */
     size?: 'compact';
-    /** optional href for linked tag. */
+    /**
+     * Optional URL that makes the tag a navigable link. When set, the tag
+     * renders an anchor element around its text content.
+     */
     href?: string;
     /**
-     * Whether an interactive tag is disabled.
+     * Whether an interactive (linked) tag is disabled. When true, the tag
+     * visually appears inactive and keyboard navigation is suppressed.
      */
     disabled: boolean;
     /**
-     * The color of the label.
-     * Note: 'cyan' will also work, but is deprecated
+     * The color palette of the tag. Nine colors are available. Choose colors
+     * that correspond to the tag's semantic meaning (e.g. red for errors,
+     * green for success). Defaults to gray.
+     *
+     * Note: `cyan` is accepted but deprecated; use `teal` instead.
      */
     color?: 'red' | 'red-orange' | 'orange' | 'yellow' | 'green' | 'teal' | 'blue' | 'purple' | 'gray';
     render(): TemplateResult<1>;
