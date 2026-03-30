@@ -61,8 +61,13 @@ a:is(:hover, :hover:focus-visible, :focus-visible, :active),
   text-underline-offset: var(--_navigation-link-text-underline-offset, 4px) !important;
   text-decoration-color:
     var(--_navigation-link-text-decoration-color,
-      light-dark(var(--rh-color-gray-50, #707070),
-      var(--rh-color-gray-40, #a3a3a3))) !important;
+      light-dark(
+        /* Navigation Link hover, focus, active text decoration color on light */
+        var(--rh-color-gray-50, #707070),
+        /* Navigation Link hover, focus, active text decoration color on dark */
+        var(--rh-color-gray-40, #a3a3a3)
+      )
+    ) !important;
   text-decoration-line: var(--_navigation-link-text-decoration-line, underline) !important;
   text-decoration-style: var(--_navigation-link-text-decoration-style, dashed) !important;
   text-decoration-skip-ink: auto !important;
@@ -71,12 +76,13 @@ a:is(:hover, :hover:focus-visible, :focus-visible, :active),
 a:is(:focus-visible, :hover:focus-visible, :focus-visible, :active),
 ::slotted(a:is(:focus-visible, :hover:focus-visible, :focus-visible, :active)) {
   outline-offset: var(--_navigation-link-focus-outline-offset, 0);
+  outline:
+    /** Focus outline color */
+    var(--rh-color-interactive-primary-default)
+    solid
+    /** Focus outline width  */
+    var(--rh-border-width-md, 2px);
 
-  /** Focus outline width from design system tokens */
-  outline: var(--rh-color-interactive-primary-default) solid var(--rh-border-width-md, 2px);
-
-  /** Focus outline color from design system tokens */
-
-  /** Focus border radius from design system tokens */
+  /** Focus border radius  */
   border-radius: var(--rh-border-radius-default, 3px);
 }
