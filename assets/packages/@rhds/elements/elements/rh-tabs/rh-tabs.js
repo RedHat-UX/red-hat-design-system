@@ -22,13 +22,28 @@ import { css } from "lit";
 const styles = css `:host{display:block;color:var(--rh-color-text-primary);background-color:var(--rh-color-surface);container-name:host;container-type:inline-size}[part=tabs-container]{--_tab-max-width:200px}@container host (min-width: 768px){[part=tabs-container]{--_tab-max-width:none}}[part=tabs-container]{position:relative;display:flex;overflow:hidden}[part=tabs-container]:before{position:absolute;inset-inline-end:0;inset:0;border-width:0 0 var(--rh-border-width-sm,1px);border-color:var(--rh-color-border-subtle);border-style:solid}:is([part=tabs],[part=panels]){display:block}[part=tabs]{scrollbar-width:none;position:relative;max-width:100%;overflow-x:auto;display:flex;bottom:0;margin:0;width:auto;font-size:var(--rh-font-size-body-text-md,1rem)}:is([part=tabs-container],[part=tabs],button):before{position:absolute;inset-block-end:0;inset-inline:0;content:"";border-style:solid}:is([part=tabs],button):before{top:0}#tablist{display:contents}[part=tabs]:before,button{border:0}button{flex:none;line-height:1;opacity:1}button:before{border-block-start-width:0}button:first-of-type{margin-inline-end:0;translate:0 0}button:nth-of-type(2){margin-inline-start:0;translate:0 0}button:disabled{pointer-events:none}#container{--_arrow-color:var(--rh-color-accent-base);--_overflow-button-text-color:var(--rh-color-text-secondary);--rh-color-icon-status-disabled:light-dark(var(--rh-color-gray-40,#a3a3a3),var(--rh-color-gray-60,#4d4d4d));--_overflow-button-disabled-text-color:var(--rh-color-icon-status-disabled);--_overflow-button-hover-text-color:var(--rh-color-text-primary);color:var(--rh-color-text-primary)}@container (min-width: 768px){#container{--_panel-padding:var(--rh-space-2xl,32px)}}@container host (min-width: 768px){#container.vertical{display:grid;grid-template-columns:max-content 1fr;grid-template-areas:"tabs panels"}#container.vertical [part=tabs-container]{grid-area:tabs;display:inline-flex;flex-direction:column;height:100%;padding:0;overflow:visible}:is(#container.vertical [part=tabs-container]):before{height:100%;border-block-end-width:0;border-inline-start-width:var(--rh-border-width-sm,1px)}#container.vertical [part=panels]{grid-area:panels}#container.vertical [part=tabs]{flex-direction:column;flex-grow:1;max-width:15.625rem}#container.vertical.box{--_panel-padding:var(--rh-space-3xl,48px)}:is(#container.vertical.box [part=tabs-container]):before{border-inline-start-width:0;border-inline-end-width:var(--rh-border-width-sm,1px)}}#container.overflow{--_panel-padding:var(--rh-space-lg,16px)}#container.overflow [part=tabs]{--_inset-inline-margin:0;position:relative;inset-inline-start:-1px;z-index:1}#container.overflow [part=panels]{--_panels-overflow-padding:var(--rh-space-2xl,32px)}#container.box.inset:not(.vertical) [part=container]:not(.overflow){--_panel-padding:var(--rh-space-2xl,32px) var(--rh-space-4xl,64px)}:host([box=inset]:not([vertical])) #container [part=tabs]{--_inset-inline-margin:var(--rh-space-2xl,32px)}:host(:is([centered],[box=inset])) #container:not(.overflow) [part=tabs]{margin-inline:var(--rh-tabs-inset,var(--_inset-inline-margin,auto))}:is(#previous-tab,#next-tab){padding-block:0;padding-inline:var(--rh-space-lg,16px);background-color:var(--rh-color-surface);color:var(--_overflow-button-text-color);position:relative;z-index:2}:is(#previous-tab,#next-tab):before{border-block-start:var(--rh-border-width-sm,1px) solid #0000;border-block-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-inline:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}:is(#previous-tab,#next-tab):hover{color:var(--_overflow-button-hover-text-color,var(--rh-color-text-primary))}:is(#previous-tab,#next-tab):hover:before{border-block-end:var(--rh-border-width-lg,3px) solid var(--rh-color-border-subtle)}:is(#previous-tab,#next-tab):disabled{color:var(--_overflow-button-disabled-text-color)}#next-tab{inset-inline-start:-1px}#next-tab:before{border-inline-width:1px 0}#previous-tab:before{border-inline-width:0 1px}:is(#previous-tab,#next-tab) rh-icon:dir(rtl){rotate:180deg}`;
 export { RhTab };
 /**
- * Tabs are used to organize and navigate between sections of content.
- * They feature a horizontal or a vertical list of section text labels
- * with a content panel below or to the right of the component.
+ * Tabs provide a way for users to organize and navigate between
+ * sections of content on the same page. Each tab must be paired
+ * with a corresponding `rh-tab-panel`. When using keyboard
+ * navigation, arrow keys move focus between tabs following the
+ * WAI-ARIA Tabs pattern. The component allows horizontal,
+ * vertical, and boxed layouts, and overflow scroll buttons
+ * appear when tabs exceed the available width.
  *
  * @summary Arranges content in a contained view on the same page
  *
  * @alias tabs
+ *
+ * @fires {TabExpandEvent} expand - when a tab is selected.
+ *        The event detail shape includes `active` (boolean)
+ *        indicating prior state and `tab` (RhTab) referencing
+ *        the expanded element. Cancelable with
+ *        `preventDefault()`.
+ *
+ * @csspart container - outer container element
+ * @csspart tabs-container - wrapper around the tab list and scroll buttons
+ * @csspart tabs - the scrollable tab list (has `role="tablist"`)
+ * @csspart panels - container for `rh-tab-panel` elements
  *
  */
 let RhTabs = class RhTabs extends LitElement {
@@ -36,21 +51,35 @@ let RhTabs = class RhTabs extends LitElement {
         super(...arguments);
         _RhTabs_instances.add(this);
         /**
-         * Label for the scroll left button
+         * Accessible label for the scroll-left overflow button.
+         * Authors should localize this string for non-English pages.
          */
         this.labelScrollLeft = 'Scroll left';
         /**
-         * Label for the scroll right button
+         * Accessible label for the scroll-right overflow button.
+         * Authors should localize this string for non-English pages.
          */
         this.labelScrollRight = 'Scroll right';
         /**
-         * Tabs can be either [automatic](https://w3c.github.io/aria-practices/examples/tabs/tabs-automatic.html) activated
-         * or [manual](https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html)
+         * When true, tabs use
+         * [manual](https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html)
+         * activation, requiring the user to press Enter or click to activate
+         * a focused tab. When false (default), tabs use
+         * [automatic](https://w3c.github.io/aria-practices/examples/tabs/tabs-automatic.html)
+         * activation, where focus immediately selects the tab.
          */
         this.manual = false;
-        /** Aligns tabs to the center */
+        /**
+         * When true, centers the tab list within the container.
+         * Authors should avoid centering when there are many tabs,
+         * as it may cause layout issues with overflow.
+         */
         this.centered = false;
-        /** Sets the alignment of the tabs vertical */
+        /**
+         * When true, displays the tab list vertically to the left of
+         * the panels. On small viewports (below 768px), vertical tabs
+         * revert to horizontal layout.
+         */
         this.vertical = false;
         this.firstTab = null;
         this.lastTab = null;
@@ -67,7 +96,9 @@ let RhTabs = class RhTabs extends LitElement {
         }));
     }
     /**
-     * Index of the active tab
+     * Zero-based index of the currently active tab. Setting this
+     * property programmatically selects the tab at that index.
+     * Defaults to -1 (no tab selected).
      */
     get activeIndex() {
         return __classPrivateFieldGet(this, _RhTabs_activeIndex, "f");
@@ -127,12 +158,12 @@ let RhTabs = class RhTabs extends LitElement {
             <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
           </button>`}
           <div id="tablist" role="tablist">
-            <!--
-              slot:
-                description: Must contain one or more \`<rh-tab>\`
-              part:
-                description: tablist
-            -->
+            <!-- summary: Tab elements
+                 description: |
+                   Must contain one or more \`<rh-tab>\` elements.
+                   Each tab must have a corresponding \`<rh-tab-panel>\`
+                   in the default slot. Screen readers announce the
+                   tab role and selected state for each tab. -->
             <slot name="tab"
                   part="tabs"
                   @slotchange="${__classPrivateFieldGet(this, _RhTabs_instances, "m", _RhTabs_onSlotchange)}"></slot>
@@ -145,12 +176,12 @@ let RhTabs = class RhTabs extends LitElement {
              <rh-icon set="ui" icon="caret-right" loading="eager"></rh-icon>
           </button>`}
         </div>
-        <!--
-          slot:
-            description: Must contain one or more \`<rh-tab-panel>\`
-          part:
-            description: panels
-        -->
+        <!-- summary: Panel elements
+             description: |
+               Must contain one or more \`<rh-tab-panel>\` elements.
+               Each panel must correspond to a tab in the \`tab\` slot.
+               Panels receive \`role="tabpanel"\` and are focusable
+               via Tab key for keyboard accessibility. -->
         <slot part="panels" @slotchange="${__classPrivateFieldGet(this, _RhTabs_instances, "m", _RhTabs_onSlotchange)}"></slot>
       </div>
     `;

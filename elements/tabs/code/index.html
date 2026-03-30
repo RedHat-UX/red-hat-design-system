@@ -27,9 +27,9 @@
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
-    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "lit-element": "/assets/packages/lit-element/index.js",
     "prism-esm": "/assets/packages/prism-esm/prism.js",
@@ -43,8 +43,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
@@ -3524,9 +3524,13 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>Tabs are used to organize and navigate between sections of content.
-They feature a horizontal or a vertical list of section text labels
-with a content panel below or to the right of the component.</p>
+      <p>Tabs provide a way for users to organize and navigate between
+sections of content on the same page. Each tab must be paired
+with a corresponding <code>rh-tab-panel</code>. When using keyboard
+navigation, arrow keys move focus between tabs following the
+WAI-ARIA Tabs pattern. The component allows horizontal,
+vertical, and boxed layouts, and overflow scroll buttons
+appear when tabs exceed the available width.</p>
 
 
       <div class="element-apis">
@@ -3606,9 +3610,12 @@ with a content panel below or to the right of the component.</p>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Tab elements</p></td>
                   <td>
-                   <p>Must contain one or more <code>&lt;rh-tab&gt;</code></p>
+                   <p>Must contain one or more <code>&lt;rh-tab&gt;</code> elements.
+Each tab must have a corresponding <code>&lt;rh-tab-panel&gt;</code>
+in the default slot. Screen readers announce the
+tab role and selected state for each tab.</p>
                   </td>
                 </tr>
                 <tr>
@@ -3636,9 +3643,12 @@ with a content panel below or to the right of the component.</p>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Panel elements</p></td>
                   <td>
-                   <p>Must contain one or more <code>&lt;rh-tab-panel&gt;</code> <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Must contain one or more <code>&lt;rh-tab-panel&gt;</code> elements.
+Each panel must correspond to a tab in the <code>tab</code> slot.
+Panels receive <code>role="tabpanel"</code> and are focusable
+via Tab key for keyboard accessibility. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -3726,7 +3736,8 @@ with a content panel below or to the right of the component.</p>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>labelScrollLeft</code></td>
-                  <td><p>Label for the scroll left button</p></td>
+                  <td><p>Accessible label for the scroll-left overflow button.
+Authors should localize this string for non-English pages.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'Scroll left'</span></code></pre></td>
                 </tr>
@@ -3758,7 +3769,8 @@ with a content panel below or to the right of the component.</p>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>labelScrollRight</code></td>
-                  <td><p>Label for the scroll right button</p></td>
+                  <td><p>Accessible label for the scroll-right overflow button.
+Authors should localize this string for non-English pages.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'Scroll right'</span></code></pre></td>
                 </tr>
@@ -3790,8 +3802,12 @@ with a content panel below or to the right of the component.</p>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>manual</code></td>
-                  <td><p>Tabs can be either <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-automatic.html">automatic</a> activated
-or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html">manual</a></p></td>
+                  <td><p>When true, tabs use
+<a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html">manual</a>
+activation, requiring the user to press Enter or click to activate
+a focused tab. When false (default), tabs use
+<a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-automatic.html">automatic</a>
+activation, where focus immediately selects the tab.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span></code></pre></td>
                 </tr>
@@ -3823,7 +3839,9 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>activeIndex</code></td>
-                  <td><p>Index of the active tab</p></td>
+                  <td><p>Zero-based index of the currently active tab. Setting this
+property programmatically selects the tab at that index.
+Defaults to -1 (no tab selected).</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -3855,7 +3873,8 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>colorPalette</code></td>
-                  <td><p>Sets color context for child components, overrides parent context</p></td>
+                  <td><p>Sets the color palette for child components, overriding any
+inherited context from parent elements.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'light'</span> <span class="token operator">|</span> <span class="token string">'lighter'</span> <span class="token operator">|</span> <span class="token string">'lightest'</span> <span class="token operator">|</span> <span class="token string">'dark'</span> <span class="token operator">|</span> <span class="token string">'darker'</span> <span class="token operator">|</span> <span class="token string">'darkest'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -3887,7 +3906,9 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>centered</code></td>
-                  <td><p>Aligns tabs to the center</p></td>
+                  <td><p>When true, centers the tab list within the container.
+Authors should avoid centering when there are many tabs,
+as it may cause layout issues with overflow.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span></code></pre></td>
                 </tr>
@@ -3919,7 +3940,8 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>box</code></td>
-                  <td><p>Sets tabs to a boxed style with or without an inset</p></td>
+                  <td><p>Sets the tab style to boxed (<code>box</code>) or boxed with inset
+padding (<code>inset</code>). When unset, tabs use the default open style.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'box'</span> <span class="token operator">|</span> <span class="token string">'inset'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -3951,7 +3973,9 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>vertical</code></td>
-                  <td><p>Sets the alignment of the tabs vertical</p></td>
+                  <td><p>When true, displays the tab list vertically to the left of
+the panels. On small viewports (below 768px), vertical tabs
+revert to horizontal layout.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span></code></pre></td>
                 </tr>
@@ -4097,13 +4121,68 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
               <a href="#rh-tabs-events">Events <rh-badge state="neutral"><template shadowroot="open" shadowrootmode="open"><style>span,slot{white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px));color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));justify-content:center;align-items:center;position:relative}:is(span,slot).neutral{background-color:var(--rh-color-status-neutral)}:is(span,slot).info{background-color:var(--rh-color-status-info)}:is(span,slot).success{background-color:var(--rh-color-status-success)}:is(span,slot).caution{background-color:var(--rh-color-status-caution);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).warning{background-color:var(--rh-color-status-warning);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).danger{background-color:var(--rh-color-status-danger)}span:empty{display:none}slot{display:inline-flex}:host([number]) slot{display:none}:host([number]) span{display:inline-flex}</style><!--lit-part hqKOHqwbWgk=-->
       <!--lit-node 0--><span class=" neutral "><!--lit-part--><!--/lit-part--></span>
       <!--lit-node 2--><slot class=" neutral "></slot>
-    <!--/lit-part--></template>0</rh-badge>
+    <!--/lit-part--></template>1</rh-badge>
                 
               </a>
             </h3>
           </uxdot-copy-permalink>
           
-          <p><em>None</em></p>
+          <rh-table  compact><template shadowroot="open" shadowrootmode="open"><style>*{box-sizing:border-box}:host{scrollbar-color:var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);width:100%;color:var(--rh-color-text-primary);--_scrollbar-size:calc(10 / 16 * 1rem);--_scrollbar-thumb-color:var(--rh-color-gray-50,#707070);--_scrollbar-track-color:var(--rh-color-border-subtle);--_row-border: var(--rh-table-row-border,var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle-on-light,#c7c7c7));--_row-background-hover-color:light-dark(var(--rh-table-row-background-hover-color,rgba(from var(--rh-color-gray-40,#a3a3a3) r g b / .1)),rgba(from var(--rh-color-white,#fff) r g b / .1));--_column-background-hover-color:light-dark(var(--rh-table-column-background-hover-color,rgba(from var(--rh-color-blue-50,#06c) r g b / .1)),rgba(from var(--rh-color-blue-70,#036) r g b / .3));display:block;position:relative;overflow:auto}:host::-webkit-scrollbar{width:var(--_scrollbar-size);height:var(--_scrollbar-size)}:host::-webkit-scrollbar{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-track{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-thumb{background-color:var(--_scrollbar-thumb-color)}[slot]{display:block}::slotted([slot=summary]){padding:var(--rh-space-xl,24px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px);color:var(--rh-color-text-secondary);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:italic;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5);display:block}</style><!--lit-part 2TLt9j2sbhA=-->
+      <div id="container" part="container">
+        <!-- an HTML table -->
+        <!--lit-node 2--><slot 
+              
+              
+              ></slot>
+        <!-- description of the data -->
+        <slot id="summary" name="summary"></slot>
+      </div>
+    <!--/lit-part--></template>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Event Name</th>
+                  <th scope="col">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                <tr>
+                  <td>
+                    <uxdot-copy-permalink><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;margin-block-end:var(--rh-space-lg);display:flex}#signifier{display:var(--perma-signifier-display,none)}#button{border-radius:var(--rh-border-radius-default);background:0 0;border:none;align-items:center;height:1.75rem;display:none}#button:is(:hover,:focus){background:var(--uxdot-copy-permalink-button-background,light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark)));color:var(--rh-color-text-primary)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){color:inherit;text-decoration:inherit;align-items:center;display:flex;margin-block-end:0!important}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part 5v6yQu9Xxog=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19.204 12.793c1.417 1.417 2.198 3.3 2.198 5.302s-.781 3.884-2.198 5.302l-5.398 5.41C12.378 30.223 10.494 31 8.497 31s-3.88-.778-5.304-2.19C.274 25.88.274 21.12 3.189 18.194l2.912-2.903a1 1 0 1 1 1.412 1.417l-2.91 2.9c-2.137 2.145-2.137 5.639.002 7.786a5.5 5.5 0 0 0 3.892 1.605c1.465 0 2.85-.572 3.896-1.61l5.396-5.407c1.04-1.04 1.613-2.421 1.613-3.888s-.573-2.849-1.612-3.888a5.356 5.356 0 0 0-1.267-.946 1 1 0 0 1 .947-1.762c.63.338 1.214.774 1.733 1.294Zm9.603-9.603C27.383 1.778 25.499 1 23.503 1s-3.881.778-5.309 2.193l-5.398 5.41c-1.417 1.417-2.198 3.3-2.198 5.302s.781 3.885 2.198 5.302c.52.52 1.104.956 1.733 1.294a1.001 1.001 0 0 0 .948-1.762 5.356 5.356 0 0 1-1.267-.946c-1.039-1.04-1.612-2.42-1.612-3.888s.573-2.848 1.613-3.888l5.396-5.407C20.654 3.572 22.038 3 23.503 3s2.849.572 3.892 1.605c2.139 2.147 2.139 5.642.002 7.786l-2.91 2.9a1 1 0 1 0 1.412 1.417l2.912-2.903c2.915-2.925 2.915-7.686-.004-10.616Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+                      <span id="rh-tabs-events-expand">
+                        <a href="#rh-tabs-events-expand">
+                          <code>expand</code>
+                        </a>
+                      </span>
+                    </uxdot-copy-permalink>
+                  </td>
+                  <td><p>when a tab is selected.
+The event detail shape includes <code>active</code> (boolean)
+indicating prior state and <code>tab</code> (RhTab) referencing
+the expanded element. Cancelable with
+<code>preventDefault()</code>.</p></td>
+                </tr>
+              </tbody>
+            </table>
+          </rh-table>
         </section>
     
         
@@ -4244,8 +4323,11 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
-                  <td><p>tablist</p></td>
+                  <td><p>Tab elements</p></td>
+                  <td><p>Must contain one or more <code>&lt;rh-tab&gt;</code> elements.
+Each tab must have a corresponding <code>&lt;rh-tab-panel&gt;</code>
+in the default slot. Screen readers announce the
+tab role and selected state for each tab.</p></td>
                 </tr>
                 <tr>
                   <td>
@@ -4274,8 +4356,11 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
-                  <td><p>panels</p></td>
+                  <td><p>Panel elements</p></td>
+                  <td><p>Must contain one or more <code>&lt;rh-tab-panel&gt;</code> elements.
+Each panel must correspond to a tab in the <code>tab</code> slot.
+Panels receive <code>role="tabpanel"</code> and are focusable
+via Tab key for keyboard accessibility.</p></td>
                 </tr>
               </tbody>
             </table>
@@ -4406,7 +4491,8 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                     </a>
                   </td>
                   <td>
-                    <p>16px font size</p>
+                    <p>Font size using rh-font-size-body-text-md token</p>
+<p>16px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4502,7 +4588,7 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Overflow scroll button arrow accent color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4598,7 +4684,7 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Overflow scroll button default text color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5174,7 +5260,8 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Scroll button inline padding</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5270,7 +5357,8 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Tabs background, adapts to color-palette</p>
+<p>Scroll button background, adapts to color-palette</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5366,7 +5454,9 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                     </a>
                   </td>
                   <td>
-                    <p>1px border width; Example: Secondary CTA or Button</p>
+                    <p>Tab list bottom border width</p>
+<p>Vertical border using rh-border-width-sm token</p>
+<p>1px border width; Example: Secondary CTA or Button</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5462,7 +5552,9 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Text color, adapts to color-palette</p>
+<p>Overflow scroll button hover text color</p>
+<p>Container text color from rh-color-text-primary</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5654,7 +5746,7 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Tab list bottom border color, adapts to color-palette</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5774,7 +5866,10 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
         </h2>
       </uxdot-copy-permalink>
 
-      <p>The tab panel for use within a rh-tabs element, must be paired with a rh-tab.</p>
+      <p>A content panel for use in an <code>rh-tabs</code> element. Each panel
+must be paired with a corresponding <code>rh-tab</code>. Authors should
+avoid empty panels. The ARIA <code>tabpanel</code> role and <code>tabindex</code>
+allow screen reader and keyboard navigation.</p>
 
 
       <div class="element-apis">
@@ -5854,9 +5949,11 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Panel content</p></td>
                   <td>
-                   <p>Panel content should follow guidelines for <a href="../guidelines">tab panel content layout</a> <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Content shown when the paired tab is active. Screen
+reader users navigate here via the ARIA tabpanel
+role. Authors should ensure keyboard accessibility. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -6179,7 +6276,7 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Focus ring, design token rh-color-interactive-primary</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6299,7 +6396,11 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
         </h2>
       </uxdot-copy-permalink>
 
-      <p>The tab button for use within a rh-tabs element, must be paired with a rh-tab-panel.</p>
+      <p>A tab button for use in an <code>rh-tabs</code> element. Each <code>rh-tab</code>
+must be paired with an <code>rh-tab-panel</code>. The ARIA <code>tab</code> role
+and <code>aria-selected</code> state allow screen reader users to
+identify the active tab. Authors should keep labels short
+and should avoid interactive content inside the tab.</p>
 
 
       <div class="element-apis">
@@ -6379,9 +6480,10 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Icon</p></td>
                   <td>
-                   <p>Can contain an <code>&lt;svg&gt;</code> or <code>&lt;rh-icon&gt;</code></p>
+                   <p>Can contain an <code>&lt;svg&gt;</code> or <code>&lt;rh-icon&gt;</code> element
+displayed before the tab label text.</p>
                   </td>
                 </tr>
                 <tr>
@@ -6409,9 +6511,10 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Tab label</p></td>
                   <td>
-                   <p>Tab title text <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Tab label text. Authors should keep labels short
+and descriptive. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -6499,7 +6602,9 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>active</code></td>
-                  <td><p>True when the tab is selected</p></td>
+                  <td><p>When true, this tab is the currently selected tab. Only one
+tab in a set should be active at a time. Screen readers
+announce the active state via <code>aria-selected</code>.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span></code></pre></td>
                 </tr>
@@ -6531,7 +6636,9 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>disabled</code></td>
-                  <td><p>True when the tab is disabled</p></td>
+                  <td><p>When true, the tab cannot be activated by click, Enter, or
+focus. The tab receives <code>aria-disabled="true"</code> to communicate
+the disabled state to assistive technologies.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span></code></pre></td>
                 </tr>
@@ -6650,7 +6757,11 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td><p>when a tab expands</p></td>
+                  <td><p>when a tab expands.
+The event detail shape includes <code>active</code> (boolean)
+indicating prior state and <code>tab</code> (RhTab) referencing
+the expanded element. Cancelable with
+<code>preventDefault()</code>.</p></td>
                 </tr>
               </tbody>
             </table>
@@ -6765,8 +6876,9 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
-                  <td><p>Can contain an <code>&lt;svg&gt;</code> or <code>&lt;rh-icon&gt;</code></p></td>
+                  <td><p>Icon</p></td>
+                  <td><p>Can contain an <code>&lt;svg&gt;</code> or <code>&lt;rh-icon&gt;</code> element
+displayed before the tab label text.</p></td>
                 </tr>
                 <tr>
                   <td>
@@ -6795,8 +6907,9 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
-                  <td><p>Tab title text</p></td>
+                  <td><p>Tab label</p></td>
+                  <td><p>Tab label text. Authors should keep labels short
+and descriptive.</p></td>
                 </tr>
               </tbody>
             </table>
@@ -6862,35 +6975,35 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                 </tr>
                 <tr>
                   <td><code>--rh-tabs-link-padding-inline-end</code></td>
-                  <td><p>Tab padding inline end</p></td>
+                  <td><p>Padding after tab label</p></td>
                   <td>
                     <code>var(--rh-space-2xl, 32px)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-tabs-link-padding-inline-start</code></td>
-                  <td><p>Tab padding inline start</p></td>
+                  <td><p>Padding before tab label</p></td>
                   <td>
                     <code>var(--rh-space-2xl, 32px)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-tabs-link-padding-block-start</code></td>
-                  <td><p>Tab padding block start</p></td>
+                  <td><p>Padding above tab label</p></td>
                   <td>
                     <code>var(--rh-space-md, 8px)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-tabs-link-padding-block-end</code></td>
-                  <td><p>Tab padding block end</p></td>
+                  <td><p>Padding below tab label</p></td>
                   <td>
                     <code>var(--rh-space-md, 8px)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-tabs-link-color</code></td>
-                  <td><p>Tab link text color</p></td>
+                  <td><p>Text color, falls back to rh-color-text-secondary</p></td>
                   <td>
                     <code>var(--rh-color-text-primary)</code>
                   </td>
@@ -7147,7 +7260,8 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                     </a>
                   </td>
                   <td>
-                    <p>Line height for headings</p>
+                    <p>Line height using rh-line-height-heading token</p>
+<p>Line height for headings</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7723,7 +7837,8 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                     </a>
                   </td>
                   <td>
-                    <p>8px spacer</p>
+                    <p>Gap between icon and label using rh-space-md</p>
+<p>8px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8011,7 +8126,11 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                     </a>
                   </td>
                   <td>
-                    <p>1px border width; Example: Secondary CTA or Button</p>
+                    <p>Inactive box tab side border width</p>
+<p>Vertical box tab trailing border width above sm breakpoint</p>
+<p>Vertical box tab top border width above sm breakpoint</p>
+<p>Vertical box tab hover separator width above sm breakpoint</p>
+<p>1px border width; Example: Secondary CTA or Button</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8107,7 +8226,12 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Inactive box tab side border color</p>
+<p>Vertical box tab trailing border color above sm breakpoint</p>
+<p>Vertical box tab top border color above sm breakpoint</p>
+<p>Vertical box tab hover separator color above sm breakpoint</p>
+<p>First vertical box tab trailing border</p>
+<p>Horizontal box tab bottom border above sm breakpoint</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8204,6 +8328,13 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                   </td>
                   <td>
                     <p>Tab active border color</p>
+<p>Top border uses rh-border-width-lg token</p>
+<p>Vertical tab hover indicator width</p>
+<p>Vertical box tab hover active indicator width above sm breakpoint</p>
+<p>Horizontal box tab hover indicator width</p>
+<p>Vertical open tab hover indicator width below sm breakpoint</p>
+<p>Vertical open tab hover indicator width above sm breakpoint</p>
+<p>Horizontal open tab hover indicator width</p>
 <p>3px border width: Example: Expanded Accordion panel</p>
                   </td>
                   <td data-label="Copy">
@@ -8300,7 +8431,12 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Vertical tab hover indicator color</p>
+<p>Vertical box tab hover active indicator color above sm breakpoint</p>
+<p>Horizontal box tab hover indicator color</p>
+<p>Vertical open tab hover indicator color below sm breakpoint</p>
+<p>Vertical open tab hover indicator color above sm breakpoint</p>
+<p>Horizontal open tab hover indicator color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8396,7 +8532,7 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Focus outline, adapts to color-palette</p>
                   </td>
                   <td data-label="Copy">
       <div>

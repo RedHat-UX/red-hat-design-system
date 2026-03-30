@@ -7,7 +7,13 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
 const styles = css `:host{display:block;padding:var(--_panel-padding,var(--rh-space-2xl,32px))}:host([hidden]){display:none!important}:host(:is(:focus,:focus-within)){outline:1px auto var(--rh-color-interactive-primary-default)}#container{display:contents}`;
 /**
- * The tab panel for use within a rh-tabs element, must be paired with a rh-tab.
+ * A content panel for use in an `rh-tabs` element. Each panel
+ * must be paired with a corresponding `rh-tab`. Authors should
+ * avoid empty panels. The ARIA `tabpanel` role and `tabindex`
+ * allow screen reader and keyboard navigation.
+ *
+ * @summary Content panel paired with an `rh-tab`
+ *
  */
 let RhTabPanel = class RhTabPanel extends LitElement {
     constructor() {
@@ -33,7 +39,11 @@ let RhTabPanel = class RhTabPanel extends LitElement {
     render() {
         return html `
       <div id="container">
-        <!-- Panel content should follow guidelines for [tab panel content layout](../guidelines) -->
+        <!-- summary: Panel content
+             description: |
+               Content shown when the paired tab is active. Screen
+               reader users navigate here via the ARIA tabpanel
+               role. Authors should ensure keyboard accessibility. -->
         <slot></slot>
       </div>
     `;

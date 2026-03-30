@@ -1,6 +1,12 @@
 import { LitElement } from 'lit';
 /**
- * The tab panel for use within a rh-tabs element, must be paired with a rh-tab.
+ * A content panel for use in an `rh-tabs` element. Each panel
+ * must be paired with a corresponding `rh-tab`. Authors should
+ * avoid empty panels. The ARIA `tabpanel` role and `tabindex`
+ * allow screen reader and keyboard navigation.
+ *
+ * @summary Content panel paired with an `rh-tab`
+ *
  */
 export declare class RhTabPanel extends LitElement {
     #private;

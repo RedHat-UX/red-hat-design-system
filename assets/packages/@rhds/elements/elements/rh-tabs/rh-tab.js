@@ -13,24 +13,62 @@ import { rhTabsActiveTabContext, rhTabsBoxContext, rhTabsManualContext, rhTabsFi
 import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
 const styles = css `:host{display:flex;flex:none;--_active-tab-border:var(--rh-border-width-lg,3px) solid var(--_active-tab-border-color,var(--rh-tabs-active-border-color,var(--rh-color-accent-brand)));--_active-tab-border-open:var(--rh-border-width-sm,1px) solid var(--rh-color-surface)}[part=text]{display:inline;line-height:var(--rh-line-height-heading,1.3);text-wrap:balance}.vertical [part=text]{max-width:100%;overflow-wrap:break-word}[hidden]{display:none!important}#button{margin:0;font-family:inherit;font-size:100%;border:0;position:relative;display:flex;flex:1;gap:var(--rh-space-md,8px);text-decoration:none;cursor:pointer;align-items:center;background-color:inherit;color:var(--rh-tabs-link-color,var(--rh-color-text-secondary));width:100%;max-width:var(--_tab-max-width,200px);max-height:100%;line-height:0;padding:var(--rh-tabs-link-padding-block-start,var(--rh-space-lg,16px)) var(--rh-tabs-link-padding-inline-end,var(--rh-space-2xl,32px)) var(--rh-tabs-link-padding-block-end,var(--rh-space-lg,16px)) var(--rh-tabs-link-padding-inline-start,var(--rh-space-2xl,32px))}#button:after,#button:before{position:absolute;inset:0;content:"";border-style:solid;padding:0;margin:0;background-color:initial}#button:before{pointer-events:none;border:0 solid #0000}#button:after{background-color:initial;border-inline:0 solid #0000;border-block-start:var(--rh-border-width-lg,3px) solid #0000;border-block-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}#button.box{background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}#button.vertical{text-align:start;padding-inline:var(--rh-space-lg,16px)}@container (min-width: 768px){#button.vertical.box.first{margin-block-start:var(--rh-space-2xl,32px)}#button.vertical.box.last{margin-block-end:var(--rh-space-2xl,32px)}}@container (max-width: 767px){#button.vertical:not(.box):after{border-block-start:var(--rh-border-width-lg,3px) solid #0000}}@container (min-width: 768px){#button.vertical:not(.box){padding-block:var(--rh-tabs-link-padding-block-start,var(--rh-space-md,8px)) var(--rh-tabs-link-padding-block-end,var(--rh-space-md,8px))}#button.vertical:not(.box):after{border-block-end-color:#0000}#button.vertical.first:not(.box){margin-block-start:var(--rh-space-xl,24px)}#button.vertical.last:not(.box){margin-block-end:var(--rh-space-xl,24px)}}#button.active{color:var(--rh-tabs-link-color,var(--rh-color-text-primary))}#button.active.box{background-color:initial}#button.active.box:before{border-inline-color:var(--rh-color-border-subtle);border-inline-start-width:var(--rh-border-width-sm,1px)}#button.active.box:after{border-block-start:var(--_active-tab-border);border-block-end:var(--_active-tab-border-open)}#button.active.box.first:before{border-inline-start-color:var(--rh-color-border-subtle);border-inline-start-width:var(--rh-border-width-sm,1px)}#button.active.box.last:before{border-inline-end-color:var(--rh-color-border-subtle);border-inline-end-width:var(--rh-border-width-sm,1px)}@container (min-width: 768px){#button.active.box.vertical:before{border-inline-start:var(--_active-tab-border);border-inline-end:var(--_active-tab-border-open)}#button.active.box.vertical:after{border-block-start:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}#button.active.box.vertical.first:after{border-block-start-color:var(--rh-color-border-subtle);border-block-start-width:var(--rh-border-width-sm,1px)}#button.active.box.vertical.last:before{border-block-end-color:var(--rh-color-border-subtle);border-block-end-width:var(--rh-border-width-sm,1px)}#button.active.box.vertical.last:after{border-block-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}#button.active.box.first:not(.vertical):before{border-inline-start-color:var(--rh-color-border-subtle);border-inline-start-width:var(--rh-border-width-sm,1px)}#button.active.box.last:not(.vertical):before{border-inline-end-color:var(--rh-color-border-subtle);border-inline-end-width:var(--rh-border-width-sm,1px)}#button.active.box:not(.vertical):after{border-block-start:var(--_active-tab-border);border-block-end:var(--_active-tab-border-open)}}@container (max-width: 767px){#button.active.vertical:not(.box):after{border-block-start:#0000;border-block-end:var(--_active-tab-border)}}@container (min-width: 768px){#button.active.vertical:not(.box):before{border-inline-start:var(--_active-tab-border)}#button.active.vertical:not(.box):after{border-block-end:#0000}}#button.active:not(.box):not(.vertical):after{border-block-end:var(--_active-tab-border)}#button.box:not(.active):before{border-inline-color:var(--rh-color-border-subtle);border-inline-start-width:var(--rh-border-width-sm,1px)}#button.box:not(.active):after{border-block-end-color:var(--rh-color-border-subtle)}#button.box.vertical:not(.active):hover:before{border-block-start:var(--rh-border-width-lg,3px) solid var(--rh-color-interactive-secondary-default)}@container (min-width: 768px){#button.box.vertical:not(.active):before{border-inline-start-color:#0000;border-inline-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-block-start:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}#button.box.vertical:not(.active):after{border-block-end-color:#0000}#button.box.vertical:not(.active):hover:before{border-inline-start:var(--rh-border-width-lg,3px) solid var(--rh-color-interactive-secondary-default);border-block-start:0}#button.box.vertical:not(.active):hover:after{border-block-start:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}@container (min-width: 768px){#button.box.vertical.first:not(.active):before{border-block-start:0 solid #0000;border-inline-end-color:var(--rh-color-border-subtle)}#button.box.vertical.last:not(.active):after{border-block-end:none}}}#button.box:not(.active):not(.vertical):hover:after{border-block-start:var(--rh-border-width-lg,3px) solid var(--rh-color-interactive-secondary-default)}@container (min-width: 768px){#button.box:not(.active):not(.vertical):after{border-block-end-color:var(--rh-color-border-subtle)}}#button.box.first:not(.active):before{border-inline-color:#0000}@container (max-width: 767px){#button.vertical:not(.active):not(.box):hover:after{border-block-end:var(--rh-border-width-lg,3px) solid var(--rh-color-interactive-secondary-default)}}@container (min-width: 768px){#button.vertical:not(.active):not(.box):hover:after{border-inline-start:var(--rh-border-width-lg,3px) solid var(--rh-color-interactive-secondary-default);border-block-start:#0000;border-block-end:#0000}}#button:not(.active):not(.vertical,.box):hover:before{border-block-end:var(--rh-border-width-lg,3px) solid var(--rh-color-interactive-secondary-default)}:host(:disabled) #button{pointer-events:none}:host([aria-disabled=true]) #button{cursor:default}:host(:is(:focus,:focus-within)){outline:none}:host(:is(:focus,:focus-within)) #button{outline:1px auto var(--rh-color-interactive-primary-default);outline-offset:-3px}`;
+/**
+ * Fired when a tab is selected. Contains the `active` state and
+ * a reference to the `tab` element. This event bubbles and is
+ * cancelable; calling `preventDefault()` prevents the tab from
+ * activating.
+ *
+ * Event properties:
+ * - `active` {boolean} - whether the tab was already active
+ * - `tab` {RhTab} - the tab element being expanded
+ */
 export class TabExpandEvent extends Event {
-    constructor(active, tab) {
+    constructor(
+    /** Whether the tab was already active before this event */
+    active, 
+    /** The tab element being expanded */
+    tab) {
         super('expand', { bubbles: true, cancelable: true });
         this.active = active;
         this.tab = tab;
     }
 }
 /**
- * The tab button for use within a rh-tabs element, must be paired with a rh-tab-panel.
- * @fires { TabExpandEvent } expand - when a tab expands
+ * A tab button for use in an `rh-tabs` element. Each `rh-tab`
+ * must be paired with an `rh-tab-panel`. The ARIA `tab` role
+ * and `aria-selected` state allow screen reader users to
+ * identify the active tab. Authors should keep labels short
+ * and should avoid interactive content inside the tab.
+ *
+ * @summary A single tab within an `rh-tabs` set
+ *
+ * @fires {TabExpandEvent} expand - when a tab expands.
+ *        The event detail shape includes `active` (boolean)
+ *        indicating prior state and `tab` (RhTab) referencing
+ *        the expanded element. Cancelable with
+ *        `preventDefault()`.
+ *
+ * @csspart button - the interactive tab button container
+ * @csspart icon - container for the icon slot
+ * @csspart text - container for the default (text) slot
+ *
  */
 let RhTab = class RhTab extends LitElement {
     constructor() {
         super(...arguments);
         _RhTab_instances.add(this);
-        /** True when the tab is selected */
+        /**
+         * When true, this tab is the currently selected tab. Only one
+         * tab in a set should be active at a time. Screen readers
+         * announce the active state via `aria-selected`.
+         */
         this.active = false;
-        /** True when the tab is disabled */
+        /**
+         * When true, the tab cannot be activated by click, Enter, or
+         * focus. The tab receives `aria-disabled="true"` to communicate
+         * the disabled state to assistive technologies.
+         */
         this.disabled = false;
         this.box = false;
         this.vertical = false;
@@ -58,10 +96,16 @@ let RhTab = class RhTab extends LitElement {
            part="button"
            ?disabled="${this.disabled}"
            class="${classMap({ active, box, vertical, first, last })}">
-        <!-- Can contain an \`<svg>\` or \`<rh-icon>\` -->
+        <!-- summary: Icon
+             description: |
+               Can contain an \`<svg>\` or \`<rh-icon>\` element
+               displayed before the tab label text. -->
         <slot name="icon"
               part="icon"></slot>
-        <!-- Tab title text -->
+        <!-- summary: Tab label
+             description: |
+               Tab label text. Authors should keep labels short
+               and descriptive. -->
         <slot part="text"></slot>
       </div>
     `;
