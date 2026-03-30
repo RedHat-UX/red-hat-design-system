@@ -13,31 +13,43 @@
   min-width: 150px;
 
   &.success {
-    /** Operational state background color */
     background-color:
-      light-dark(var(--rh-color-surface-status-success),
-        var(--rh-color-surface-dark, #383838));
+      light-dark(
+          /** Operational state background color on light scheme */
+          var(--rh-color-surface-status-success),
+          /** Operational state background color on dark scheme */
+          var(--rh-color-surface-dark, #383838)
+        );
   }
 
   &.warning {
-    /** Degraded state background color */
     background-color:
-      light-dark(var(--rh-color-surface-status-warning),
-        var(--rh-color-surface-dark, #383838));
+      light-dark(
+          /** Degraded state background color on light scheme */
+          var(--rh-color-surface-status-warning),
+          /** Degraded state background color on dark scheme */
+          var(--rh-color-surface-dark, #383838)
+        );
   }
 
   &.danger {
-    /** Critical state background color */
     background-color:
-      light-dark(var(--rh-color-surface-status-danger),
-        var(--rh-color-surface-dark, #383838));
+      light-dark(
+          /** Critical state background color on light scheme */
+          var(--rh-color-surface-status-danger),
+          /** Critical state background color on dark scheme */
+          var(--rh-color-surface-dark, #383838)
+        );
   }
 
   &.loading {
-    /** Loading background color */
     background-color:
-      light-dark(var(--rh-color-surface-light, #e0e0e0),
-        var(--rh-color-surface-dark, #383838));
+      light-dark(
+          /** Loading background color on light scheme */
+          var(--rh-color-surface-light, #e0e0e0),
+          /** Loading background color on dark scheme */
+          var(--rh-color-surface-dark, #383838)
+        );
   }
 }
 
@@ -87,12 +99,18 @@ rh-icon {
   /** Status Icon color */
   color: var(--rh-color-white, #ffffff);
 
-  /** Operational state icon status color */
-  &.success { color: var(--rh-color-status-success); }
+  &.success {
+    /** Operational state icon status color */
+    color: var(--rh-color-status-success);
+  }
 
-  /** Degraded state icon status color  */
-  &.warning { color: var(--rh-color-status-warning); }
+  &.warning {
+    /** Degraded state icon status color  */
+    color: var(--rh-color-status-warning);
+  }
 
-  /** Critical state icon status color  */
-  &.danger { color: var(--rh-color-status-danger); }
+  &.danger {
+    /** Critical state icon status color  */
+    color: var(--rh-color-status-danger);
+  }
 }
