@@ -76,7 +76,7 @@
       display: flex;
       list-style: none;
 
-      /** Toggle gap; uses the `rh-space-md` design token for consistent spacing */
+      /** Toggle gap */
       gap: var(--rh-space-md, 8px);
 
       &::marker,
@@ -91,9 +91,13 @@
           /* non standard, this wont take effect though as microns hard stops at 12px */
           --rh-icon-size: 10px;
 
-          /** Toggle caret color; uses `rh-color-gray-40`
-              and `rh-color-icon-subtle` design tokens */
-          color: light-dark(var(--rh-color-gray-40, #a3a3a3), var(--rh-color-icon-subtle));
+          color:
+            light-dark(
+                /** Toggle caret color in light mode */
+                var(--rh-color-gray-40, #a3a3a3),
+                /** Toggle caret color in dark mode */
+                var(--rh-color-icon-subtle)
+              );
           transition: rotate 0.2s;
         }
       }
@@ -113,7 +117,7 @@
       }
 
       @container (min-width: 1200px) {
-        /** Dropdown variant open state active color at containers >= 1200px */
+        /** Dropdown variant open state active color at containers >= xl */
         border-block-start-color: var(--rh-color-accent-brand);
       }
 
@@ -138,13 +142,13 @@
 
         &:hover {
           /** Item when slotted in hamburger menu and not compact state
-              hover indicator color when container >= 1200px */
+              hover indicator color at containers >= xl */
           border-block-end-color: var(--rh-color-border-subtle);
         }
 
         &:is(:active, :focus-within, :has(details[open])) {
           /** Item when slotted in hamburger menu and not compact state
-              active, focus-within, and open state indicator color when container >= 1200px */
+              active, focus-within, and open state indicator color at containers >= xl */
           border-block-end-color: var(--rh-color-accent-brand);
         }
       }
@@ -154,11 +158,16 @@
   &.dropdown {
     &.hamburger {
       & details {
-        /** Dropdown variant when slotted in hamburger menu inline border start width */
-        border-inline-start: var(--rh-border-width-lg, 3px) solid transparent;
-
-        /** Dropdown variant when slotted in hamburger menu inline border end width */
-        border-inline-end: var(--rh-border-width-sm, 1px) solid transparent;
+        border-inline-start:
+          /** Hamburger dropdown border inline start width */
+          var(--rh-border-width-lg, 3px)
+          solid
+          transparent;
+        border-inline-end:
+          /** Hamburger dropdown border inline end width */
+          var(--rh-border-width-sm, 1px)
+          solid
+          transparent;
 
         & summary {
           list-style: none;
@@ -171,10 +180,11 @@
           place-items: center;
           inline-size: 100%;
           block-size: 100%;
-
-          /** Dropdown variant hamburger padding;
-              uses `rh-space-lg` and `rh-space-xl` tokens */
-          padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
+          padding:
+            /** Hamburger dropdown block padding */
+            var(--rh-space-lg, 16px)
+            /** Hamburger dropdown inline padding */
+            var(--rh-space-xl, 24px);
           cursor: pointer;
 
           &:focus-visible,
@@ -218,7 +228,10 @@
           & summary {
             @container (min-width: 1200px) {
               block-size: calc(100% + 4px);
-              padding: 0 var(--rh-space-lg, 16px);
+              padding:
+                0
+                /** Hamburger dropdown inline padding at containers >= xl */
+                var(--rh-space-lg, 16px);
             }
           }
 
@@ -229,10 +242,10 @@
               background-color:
                 light-dark(
                     /** Dropdown variant when slotted in hamburger menu and when not compact
-                        content background color at containers >= 1200px under light color scheme */
+                        content background color at containers >= xl under light color scheme */
                     var(--rh-color-surface-lightest, #ffffff),
                     /** Dropdown variant when slotted in hamburger menu and when not compact
-                        content background color at containers >= 1200px under dark color scheme */
+                        content background color at containers >= xl under dark color scheme */
                     var(--rh-color-surface-darkest, #151515)
                   );
               box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
@@ -259,15 +272,15 @@
           /** Secondary area slotted item toggle padding */
           padding: var(--rh-space-md, 8px);
 
-          /** Secondary area  slotted item toggle border radius */
+          /** Secondary area slotted item toggle border radius */
           border-radius: var(--rh-border-radius-default, 3px);
 
-          /** Secondary area item font size;
-              uses `rh-font-size-body-text-sm` token */
+          /** Secondary area item font size */
           font-size: var(--rh-font-size-body-text-sm, 0.875rem);
           cursor: pointer;
 
           @container navigation-primary (min-width: 480px) {
+            /** Secondary area toggle padding at containers >= 480px (custom) */
             padding: var(--rh-space-lg, 16px);
           }
 
@@ -317,11 +330,9 @@
           z-index: -1;
           background-color:
             light-dark(
-                /** Dropdown variant content background color at
-                    containers >= 1200px under light color scheme */
+                /** Standalone dropdown content background in light mode */
                 var(--rh-color-surface-lightest, #ffffff),
-                /** Dropdown variant content background color at
-                    containers >= 1200px under dark color scheme */
+                /** Standalone dropdown content background in dark mode */
                 var(--rh-color-surface-darkest, #151515)
               );
           box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
@@ -334,7 +345,7 @@
           @container (min-width: 1200px) {
             inline-size: fit-content;
 
-            /** Dropdown variant content rounded corners at containers >= 1200px */
+            /** Dropdown variant content rounded corners at containers >= xl */
             border-end-end-radius: calc(var(--rh-border-radius-default, 3px) * 2);
             border-end-start-radius: calc(var(--rh-border-radius-default, 3px) * 2);
           }
@@ -358,7 +369,7 @@
     border-block-start: none;
 
     & ::slotted(a) {
-      /** Link variant slotted link text color; uses the `rh-color-text-primary` design token */
+      /** Link variant slotted link text color */
       color: var(--_navigation-link-color, var(--rh-color-text-primary)) !important;
     }
 
@@ -390,12 +401,13 @@
         align-items: center;
         block-size: calc(100% + 4px);
 
-        /** Link variant hamburger menu font size;
-            uses `rh-font-size-body-text-md` token */
+        /** Link variant hamburger menu font size */
         font-size: var(--rh-font-size-body-text-md, 1rem);
-
-        /** Link variant when slotted in hamburger padding */
-        padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
+        padding:
+          /** Hamburger link block padding */
+          var(--rh-space-lg, 16px)
+          /** Hamburger link inline padding */
+          var(--rh-space-xl, 24px);
       }
 
       & ::slotted(a:is(:focus-visible, :hover:focus-visible, :active)) {
@@ -413,7 +425,10 @@
 
       @container (min-width: 1200px) {
         & ::slotted(a) {
-          padding: 0 var(--rh-space-lg, 16px);
+          padding:
+            0
+            /** Hamburger link inline padding at containers >= xl */
+            var(--rh-space-lg, 16px);
         }
 
         &:is(:active, :focus-within, :has(details[open])) {
@@ -427,7 +442,7 @@
       & ::slotted(a) {
         text-decoration: none;
 
-        /** Secondary area slotted item font size; uses `rh-font-size-body-text-sm` design token */
+        /** Secondary area slotted item font size */
         font-size:
           var(--_navigation-link-font-size,
             var(--rh-font-size-body-text-sm, 0.875rem)) !important;

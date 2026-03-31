@@ -19,7 +19,7 @@
    */
   z-index: var(--rh-navigation-primary-z-index, 102);
 
-  /** Uses the `rh-font-family-body-text` design token for consistent body typography */
+  /** Body text font family */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif) !important;
 }
 
@@ -56,23 +56,26 @@
   grid-template-rows: var(--_navbar-height);
   background-color:
     light-dark(
-        /* Navigation bar primary background color under light color scheme */
+        /** Navigation bar background in light mode */
         var(--rh-color-surface-lightest, #ffffff),
-        /* Navigation bar primary background color under dark color scheme */
+        /** Navigation bar background in dark mode */
         var(--rh-color-surface-darkest, #151515)
       );
 
-  /** Uses the `rh-color-text-primary` design token for theme-aware text color */
+  /** Navigation bar text color */
   color: var(--rh-color-text-primary);
   inline-size: 100%;
   max-block-size: var(--_navbar-height);
   box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
 
-  /** Inline padding for the main nav bar (mobile); uses `rh-space-lg` design token */
+  /** Navigation bar inline padding */
   padding-inline: var(--rh-space-lg, 16px);
 
   @container navigation-primary (min-width: 320px) {
-    padding-inline: var(--rh-space-lg, 16px) calc(var(--rh-space-lg, 16px) / 2);
+    padding-inline:
+      /** Bar inline start padding at containers >= 320px (custom) */
+      var(--rh-space-lg, 16px)
+      calc(var(--rh-space-lg, 16px) / 2);
   }
 
   @container navigation-primary (min-width: 480px) {
@@ -80,7 +83,10 @@
   }
 
   @container navigation-primary (min-width: 576px) {
-    padding-inline: calc(var(--rh-space-lg, 16px) * 2) var(--rh-space-lg, 16px);
+    padding-inline:
+      calc(var(--rh-space-lg, 16px) * 2)
+      /** Bar inline end padding at containers >= sm */
+      var(--rh-space-lg, 16px);
   }
 }
 
@@ -90,7 +96,7 @@
   grid-template-areas: 'logo sub-domain';
   grid-template-columns: auto;
 
-  /** Lockup gap between logo and sub-domain; uses the `rh-space-lg` design token */
+  /** Lockup gap between logo and sub-domain */
   gap: var(--rh-space-lg, 16px);
 }
 
@@ -223,7 +229,7 @@
     z-index: 1;
 
     @container navigation-primary (min-width: 480px) {
-      /** Hamburger tap target padding at containers >= 480px */
+      /** Hamburger tap target padding at containers >= 480px (custom) */
       padding: var(--rh-space-lg, 16px);
       align-items: center;
     }
@@ -273,7 +279,7 @@
 
       aspect-ratio: unset;
 
-      /** Menu bar icon color; uses the `rh-color-icon-secondary` design token */
+      /** Menu bar icon color */
       color: var(--rh-color-icon-secondary);
     }
   }
@@ -285,6 +291,7 @@
   &[open] {
     & summary {
       &:after {
+        /** Hamburger open state indicator color */
         border-block-end-color: var(--rh-color-accent-brand);
       }
     }
@@ -301,7 +308,11 @@
     --_navigation-link-container-align-items: start;
     --_navigation-link-container-display: flex;
     --_navigation-link-container-block-size: 100%;
-    --_navigation-link-padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
+    --_navigation-link-padding:
+      /** Navigation link padding-block */
+      var(--rh-space-lg, 16px)
+      /** Navigation link padding-inline */
+      var(--rh-space-xl, 24px);
     --_navigation-link-display: flex;
     --_navigation-link-inline-size: 100%;
   }
@@ -317,12 +328,12 @@
   gap: 0;
 
   @container navigation-primary (min-width: 320px) {
-    /* Secondary area margin from the hamburger, starting at containers >= 480px */
+    /** Secondary area margin from hamburger at containers >= 320px (custom) */
     margin-inline-start: var(--rh-space-lg, 16px);
   }
 
   @container navigation-primary (min-width: 1200px) {
-    /** Secondary area spacing between items, starting at containers >= 1200px */
+    /** Secondary area spacing between items at containers >= xl */
     gap: var(--rh-space-xl, 24px);
   }
 
@@ -333,12 +344,12 @@
       display: flex;
       flex-direction: row;
 
-      /** Event slot margin end from adjacent items, starting at containers >= 576px */
+      /** Event slot margin end at containers >= sm */
       margin-inline-end: var(--rh-space-lg, 16px);
     }
 
     @container navigation-primary (min-width: 768px) {
-      /** Event slot margin end from adjacent items, starting at container >= 768px */
+      /** Event slot margin end at containers >= md */
       margin-inline-end: var(--rh-space-xl, 24px);
     }
 
@@ -375,7 +386,7 @@
       display: flex;
       align-items: center;
 
-      /** Links menu toggle padding accessible tap target, at container < 576px */
+      /** Links menu toggle padding */
       padding: var(--rh-space-md, 8px);
 
       /** Links menu toggle rounded corners */
@@ -383,7 +394,7 @@
       block-size: 100%;
 
       @container navigation-primary (min-width: 480px) {
-        /** Links menu toggle padding accessible tap target, at container >= 576px */
+        /** Links menu toggle padding at containers >= 480px (custom) */
         padding: var(--rh-space-lg, 16px);
       }
 
@@ -430,7 +441,7 @@
       & rh-icon {
         --rh-icon-size: 18px;
 
-        /** Links menu icon color; uses the `rh-color-icon-secondary` design token */
+        /** Links menu icon color */
         color: var(--rh-color-icon-secondary);
       }
     }
@@ -465,17 +476,30 @@
               var(--rh-color-surface-darkest, #151515)
             );
         box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
-        padding-block: var(--rh-space-2xl, 32px) var(--rh-space-3xl, 48px);
+        padding-block:
+          /** Links menu content block start padding */
+          var(--rh-space-2xl, 32px)
+          /** Links menu content block end padding */
+          var(--rh-space-3xl, 48px);
+
+        /** Links menu content inline padding */
         padding-inline: var(--rh-space-2xl, 32px);
 
-        /** Links Menu Rounded corners */
+        /** Links menu rounded corners */
         border-end-start-radius: var(--rh-border-radius-default, 3px);
         border-end-end-radius: var(--rh-border-radius-default, 3px);
 
         & ::slotted(rh-navigation-primary-item),
         & ::slotted(rh-navigation-link) {
+          /** Navigation link text color */
           --_navigation-link-color: var(--rh-color-interactive-primary-default);
-          --_navigation-link-padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+          --_navigation-link-padding:
+            /** Navigation link padding-block */
+            var(--rh-space-md, 8px)
+            /** Navigation link padding-inline */
+            var(--rh-space-lg, 16px);
+
+          /** Navigation link font size */
           --_navigation-link-font-size: var(--rh-font-size-body-text-md, 1rem);
         }
 
@@ -484,6 +508,8 @@
           z-index: unset;
           display: grid;
           grid-auto-flow: column;
+
+          /** Links menu content gap at containers >= xl */
           gap: var(--rh-space-xl, 24px);
           align-items: center;
           flex-direction: unset;
@@ -496,8 +522,13 @@
 
           & ::slotted(rh-navigation-primary-item),
           & ::slotted(rh-navigation-link) {
+            /** Navigation link text color at containers >= xl */
             --_navigation-link-color: var(--rh-color-text-primary);
+
+            /** Navigation link padding at containers >= xl */
             --_navigation-link-padding: var(--rh-space-md, 8px);
+
+            /** Navigation link font size at containers >= xl */
             --_navigation-link-font-size: var(--rh-font-size-body-text-sm, 0.875rem);
           }
         }
@@ -535,11 +566,11 @@
     & #lockup {
       grid-template-areas: 'logo sub-domain';
 
-      /** Subdomain logo lockup gap between logo and text at containers <=575 */
+      /** Subdomain lockup gap */
       gap: var(--rh-space-lg, 16px);
 
       @container navigation-primary (min-width: 576px) {
-        /** Subdomain logo lockup gap between logo and text at containers >=576 */
+        /** Subdomain lockup gap at containers >= sm */
         gap: var(--rh-space-xl, 24px);
       }
     }
@@ -579,11 +610,11 @@
       place-items: center;
       block-size: 100%;
 
-      /** Subdomain heading font; uses the `rh-font-family-heading` design token */
+      /** Subdomain heading font family */
       font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif) !important;
       font-size: 1rem !important; /* non standard for heading */
 
-      /** Subdomain heading font weight; uses the `rh-font-weight-heading-bold` design token */
+      /** Subdomain heading font weight */
       font-weight: var(--rh-font-weight-heading-bold, 700) !important;
       line-height: 1 !important;
 
@@ -591,11 +622,11 @@
       color: var(--rh-color-text-primary) !important;
       white-space: break-spaces !important;
 
-      /** Subdomain margin inline end at containers <= 575px */
+      /** Subdomain margin inline end */
       margin-inline-end: var(--rh-space-md, 8px);
 
       @container navigation-primary (min-width: 1200px) {
-        /** Subdomain heading font size; uses the `rh-font-size-heading-xs` design token */
+        /** Subdomain heading font size at containers >= xl */
         font-size: var(--rh-font-size-heading-xs, 1.25rem) !important;
       }
 
@@ -646,7 +677,7 @@
         align-self: center;
         align-items: center;
 
-        /** Subdomain line height at containers >= 480px */
+        /** Subdomain line height at containers >= 480px (custom) */
         line-height: var(--rh-line-height-heading, 1.3);
         padding-block-end: 0;
       }
@@ -678,8 +709,13 @@
           --_navigation-link-align-items: center;
           --_navigation-link-block-size: 100%;
           --_navigation-link-inline-size: fit-content;
+
+          /** Navigation link hover text color at containers >= xl */
           --_navigation-link-color-hover: var(--rh-color-text-primary, light-dark(var(--rh-color-text-primary-on-light, #151515), var(--rh-color-text-primary-on-dark, #ffffff))); /* stylelint-disable-line @stylistic/max-line-length */
-          --_navigation-link-padding: 0 var(--rh-space-lg, 16px);
+          --_navigation-link-padding:
+            0
+            /** Navigation link inline padding at containers >= xl */
+            var(--rh-space-lg, 16px);
         }
       }
 
@@ -730,6 +766,7 @@
 
       &[open] {
         & #details-content {
+          /** Compact hamburger content border color */
           --_border-color: var(--rh-color-border-subtle);
 
           position: absolute;
@@ -758,17 +795,25 @@
           overflow-y: auto;
 
           & ::slotted(rh-navigation-primary-item) {
-            /** Hamburger open state and compact slotted item border separator */
-            border-block-start: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+            border-block-start:
+              /** Compact slotted item separator width */
+              var(--rh-border-width-sm, 1px)
+              solid
+              /** Compact slotted item separator color */
+              var(--rh-color-border-subtle);
           }
 
           & ::slotted(rh-navigation-primary-item:nth-last-child(1 of :not([slot]))) {
-            /** Hamburger open state and compact slotted last item border separator */
-            border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+            border-block-end:
+              /** Compact last item separator width */
+              var(--rh-border-width-sm, 1px)
+              solid
+              /** Compact last item separator color */
+              var(--rh-color-border-subtle);
           }
 
           @container navigation-primary (min-width: 320px) {
-            /** Hamburger open state and compact content padding  at containers >= 320px */
+            /** Hamburger open state and compact content padding at containers >= 320px (custom) */
             padding: var(--rh-space-2xl, 32px);
           }
 
@@ -776,11 +821,11 @@
             & ::slotted(rh-navigation-primary-item) {
               border-block-start:
                 /** Hamburger open state and compact slotted item separator
-                    width at containers >= 1200px */
+                    width at containers >= xl */
                 var(--rh-border-width-sm, 1px)
                 solid
                 /** Hamburger open state and compact slotted item separator
-                    color at containers >= 1200px */
+                    color at containers >= xl */
                 var(--rh-color-border-subtle);
             }
 
@@ -827,17 +872,27 @@
                   var(--rh-color-surface-darkest, #151515)
                 );
             box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
-            padding-block: var(--rh-space-2xl, 32px) var(--rh-space-3xl, 48px);
+            padding-block:
+              /** Compact links menu content block start padding */
+              var(--rh-space-2xl, 32px)
+              /** Compact links menu content block end padding */
+              var(--rh-space-3xl, 48px);
+
+            /** Compact links menu content inline padding */
             padding-inline: var(--rh-space-2xl, 32px);
 
-            /** Links menu content rounded corners  */
+            /** Compact links menu content rounded corners */
             border-end-start-radius: var(--rh-border-radius-default, 3px);
             border-end-end-radius: var(--rh-border-radius-default, 3px);
             block-size: revert;
 
             & ::slotted(rh-navigation-primary-item),
             & ::slotted(rh-navigation-link) {
-              --_navigation-link-padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+              --_navigation-link-padding:
+                /** Navigation link padding-block */
+                var(--rh-space-md, 8px)
+                /** Navigation link padding-inline */
+                var(--rh-space-lg, 16px);
             }
           }
         }
