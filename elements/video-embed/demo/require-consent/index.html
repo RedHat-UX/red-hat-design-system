@@ -14,9 +14,9 @@
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
-    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "lit-element": "/assets/packages/lit-element/index.js",
     "prism-esm": "/assets/packages/prism-esm/prism.js",
@@ -30,8 +30,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
@@ -83,21 +83,37 @@
 
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
-  <body><rh-video-embed     id="video" require-consent ssr-hint-has-slotted-default ssr-hint-has-slotted="thumbnail,caption"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:flex}:host([hidden]),[hidden]{display:none!important}#video,#consent{flex-direction:column;align-items:center;display:inline-flex}#video{justify-content:stretch;position:relative}figure,::slotted([slot=thumbnail]),::slotted(iframe){max-width:100%}::slotted([slot=thumbnail]){display:block}::slotted(iframe){border:0;width:100%;height:100%;position:absolute;inset-block-start:0;inset-inline-start:0}figure{--_video-focus-border-color:var(--rh-color-border-interactive);--_video-play-btn-bkg-color:light-dark(rgb(31 31 31/var(--rh-opacity-50,50%)),rgb(255 255 255/var(--rh-opacity-20,20%)));--_video-play-btn-interactive-bkg-color:light-dark(rgb(21 21 21/var(--rh-opacity-80,80%)),rgb(255 255 255/var(--rh-opacity-50,50%)));flex-direction:column;margin:0;display:flex}figcaption{margin-block-start:var(--rh-space-lg,16px)}figcaption ::slotted(p){margin-block-start:0!important}::slotted([slot=caption]){color:var(--rh-color-text-secondary);line-height:var(--rh-line-height-body-text,1.5);font-size:var(--rh-font-size-body-text-sm,.875rem)!important}#consent,#watermark{position:absolute;inset:0}#consent{justify-content:center;container:consent/inline-size}#consent-body{text-align:center;z-index:5;flex-direction:column;align-items:center;display:flex;position:relative}#consent-message,::slotted([slot=consent-message]){font-family:var(--rh-font-family-heading,RedHatDisplay, "Red Hat Display", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-heading-xs,1.25rem);line-height:var(--rh-line-height-heading,1.3)}#consent-message,::slotted([slot=consent-message]:last-of-type){margin-block-end:var(--rh-space-lg,16px)}@container consent (width>=576px){#consent-message,::slotted([slot=consent-message]:last-of-type){margin-block-end:var(--rh-space-xl,24px)}#consent-body{padding:var(--rh-space-xl,24px)}#consent-message{font-size:var(--rh-font-size-heading-sm,1.5rem)}}#play{cursor:pointer;width:100%;height:100%;display:block;position:absolute;inset:0}#play:focus-within{border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-lg,3px) solid var(--_video-focus-border-color);outline-offset:var(--rh-border-width-md,2px)}#play::part(button){background-color:var(--_video-play-btn-bkg-color,var(--rh-color-surface-darkest,#151515));inset-block:calc(50% - var(--rh-length-2xl,32px)) 0;width:var(--rh-length-4xl,64px);outline:none;position:absolute;inset-inline:50% 0;transform:translate(-50%)}#play:hover::part(button),#play:focus::part(button),#play:active::part(button){background-color:var(--_video-play-btn-interactive-bkg-color)}#play::part(icon){color:var(--rh-color-surface)}#play[hidden],:is(.video,.consent) ::slotted([slot=thumbnail]){opacity:0;pointer-events:none}.visually-hidden{clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;position:fixed;inset-block-start:0;inset-inline-start:0;overflow:hidden}#autoplay{opacity:0;transition:opacity .2s ease-in;position:absolute;inset:0}.video #autoplay{opacity:1}</style><!--lit-part RRqD7IYT/gU=-->
+  <body><meta itemprop="description" content="Video embed requiring cookie consent before playback is allowed.">
+<rh-video-embed     id="video" require-consent ssr-hint-has-slotted-default ssr-hint-has-slotted="thumbnail,caption"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:flex}:host([hidden]),[hidden]{display:none!important}#video,#consent{flex-direction:column;align-items:center;display:inline-flex}#video{justify-content:stretch;position:relative}figure,::slotted([slot=thumbnail]),::slotted(iframe){max-width:100%}::slotted([slot=thumbnail]){display:block}::slotted(iframe){border:0;width:100%;height:100%;position:absolute;inset-block-start:0;inset-inline-start:0}figure{--_video-focus-border-color:var(--rh-color-border-interactive);--_video-play-btn-bkg-color:light-dark(rgb(31 31 31/var(--rh-opacity-50,50%)),rgb(255 255 255/var(--rh-opacity-20,20%)));--_video-play-btn-interactive-bkg-color:light-dark(rgb(21 21 21/var(--rh-opacity-80,80%)),rgb(255 255 255/var(--rh-opacity-50,50%)));flex-direction:column;margin:0;display:flex}figcaption{margin-block-start:var(--rh-space-lg,16px)}figcaption ::slotted(p){margin-block-start:0!important}::slotted([slot=caption]){color:var(--rh-color-text-secondary);line-height:var(--rh-line-height-body-text,1.5);font-size:var(--rh-font-size-body-text-sm,.875rem)!important}#consent,#watermark{position:absolute;inset:0}#consent{justify-content:center;container:consent/inline-size}#consent-body{text-align:center;z-index:5;flex-direction:column;align-items:center;display:flex;position:relative}#consent-message,::slotted([slot=consent-message]){font-family:var(--rh-font-family-heading,RedHatDisplay, "Red Hat Display", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-heading-xs,1.25rem);line-height:var(--rh-line-height-heading,1.3)}#consent-message,::slotted([slot=consent-message]:last-of-type){margin-block-end:var(--rh-space-lg,16px)}@container consent (width>=576px){#consent-message,::slotted([slot=consent-message]:last-of-type){margin-block-end:var(--rh-space-xl,24px)}#consent-body{padding:var(--rh-space-xl,24px)}#consent-message{font-size:var(--rh-font-size-heading-sm,1.5rem)}}#play{cursor:pointer;width:100%;height:100%;display:block;position:absolute;inset:0}#play:focus-within{border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-lg,3px) solid var(--_video-focus-border-color);outline-offset:var(--rh-border-width-md,2px)}#play::part(button){background-color:var(--_video-play-btn-bkg-color,var(--rh-color-surface-darkest,#151515));inset-block:calc(50% - var(--rh-length-2xl,32px)) 0;width:var(--rh-length-4xl,64px);outline:none;position:absolute;inset-inline:50% 0;transform:translate(-50%)}#play:hover::part(button),#play:focus::part(button),#play:active::part(button){background-color:var(--_video-play-btn-interactive-bkg-color)}#play::part(icon){color:var(--rh-color-surface)}#play[hidden],:is(.video,.consent) ::slotted([slot=thumbnail]){opacity:0;pointer-events:none}.visually-hidden{clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;position:fixed;inset-block-start:0;inset-inline-start:0;overflow:hidden}#autoplay{opacity:0;transition:opacity .2s ease-in;position:absolute;inset:0}.video #autoplay{opacity:1}</style><!--lit-part XquPTVzvT+8=-->
       <!-- The outer container for rh-video-embed -->
       <!--lit-node 1--><figure part="figure" class=" consent ">
         <!-- The container for the video, thumbnail, and play button -->
         <div part="video" id="video">
           <!--lit-node 4--><div aria-hidden="true">
-            <!-- Optional thumbnail image on top of video embed; should include `alt` text -->
+            <!-- summary: Optional thumbnail image overlay
+                 description: |
+                   Accepts an `<img>` element displayed on top of the
+                   video embed. Authors must include descriptive `alt`
+                   text for screen reader and ARIA users, e.g. "Video
+                   title (video thumbnail)". The thumbnail is hidden
+                   via `aria-hidden` when the video is playing. -->
             <slot id="thumbnail" name="thumbnail"></slot>
           </div>
-          <!-- Place video embed code here; iframe should include a `title` attribute with the video title -->
+          <!-- summary: Video iframe template
+               description: |
+                 Accepts a `<template>` element containing an
+                 `<iframe>` for the YouTube embed. The iframe must
+                 include a `title` attribute with the video title
+                 for screen reader and ARIA accessibility. The
+                 embedded video should have accurate captions per
+                 WCAG 1.2.2. -->
           <slot></slot>
           <div id="autoplay"><!--
-            DO NOT USE! (Used by `rh-video-embed`.)
-          --><slot name="autoplay"></slot></div>
-          <!--lit-part EjukXdGzgFk=-->
+            summary: Internal autoplay iframe slot
+            description: |
+              Reserved for internal use by `rh-video-embed`.
+              Authors must not place content in this slot. --><slot name="autoplay"></slot></div>
+          <!--lit-part 2W/8IcsedYI=-->
             <!--lit-node 0--><rh-surface   id="consent" color-palette="darker" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:dark only}:host([color-palette^=light]){color-scheme:light only}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{color:var(--rh-color-text-primary);background-color:var(--rh-color-surface);display:block}</style><!--lit-part z4DDHUphzNk=--><!-- Accepts any content. --><!--lit-node 1--><slot id="slot" ></slot><!--/lit-part--></template>
               <svg id="watermark" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1136 639">
                 <defs>
@@ -118,7 +134,12 @@
               </svg>
               <!-- The container for the consent message and consent button -->
               <div part="consent-body" id="consent-body">
-                <!-- Text explaining opt-in to cookies is required, e.g. `<p>View this video by opting in to “Advertising Cookies.”</p>` -->
+                <!-- summary: Custom consent message
+                     description: |
+                       Accepts block content (e.g. `<p>`) explaining
+                       that cookie opt-in is required. should be
+                       readable by screen readers. Defaults to a
+                       built-in message when not provided. -->
                 <slot name="consent-message">
                   <p id="consent-message">View this video by opting in to “Advertising Cookies.”</p>
                 </slot>
@@ -158,8 +179,10 @@
         <!--lit-node 6--><span aria-hidden="false"><!-- Contains button text --><slot id="text" ></slot></span>
       </button>
     <!--/lit-part--></template><!--
-                    Text for CTA button to update preferences, e.g. "Update preferences"
-                  --><slot name="consent-button-text">Update preferences</slot></rh-button>
+                    summary: Consent button label
+                    description: |
+                      Accepts inline text for the consent CTA button.
+                      Defaults to "Update preferences". --><slot name="consent-button-text">Update preferences</slot></rh-button>
               </div>
             </rh-surface>
           <!--/lit-part-->
@@ -202,14 +225,21 @@
       </button>
     <!--/lit-part--></template>
             <span class="visually-hidden"><!--
-              Text for play button; recommended value "Video title (video)"
-            --><slot name="play-button-text"><!--lit-part-->Play video<!--/lit-part--></slot></span>
+              summary: Accessible play button label
+              description: |
+                Accepts inline text for the play button screen
+                reader and ARIA label. should follow the pattern
+                "Video title (video)" for accessibility. Defaults
+                to the iframe title followed by "(play video)". --><slot name="play-button-text"><!--lit-part-->Play video<!--/lit-part--></slot></span>
           </rh-button>
         </div>
-        <!-- The container for the caption -->
-        <!--lit-node 20--><figcaption part="caption" ><!--
-          Optional caption below video embed
-        --><slot name="caption"></slot></figcaption>
+        <!--lit-node 19--><figcaption part="caption" ><!--
+          summary: Optional video caption
+          description: |
+            Accepts inline or block content displayed below the
+            video embed, such as a `<p>` with a link. Links
+            should have accessible text for screen reader users.
+            Styled with secondary text color and small font. --><slot name="caption"></slot></figcaption>
       </figure>
     <!--/lit-part--></template>
   <img slot="thumbnail" src="../video-thumb.jpg" alt="Image description">

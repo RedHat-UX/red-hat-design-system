@@ -11,31 +11,63 @@ import '@rhds/elements/rh-surface/rh-surface.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
 const styles = css `:host{display:flex}:host([hidden]),[hidden]{display:none!important}#consent,#video{display:inline-flex;align-items:center;flex-direction:column}#video{justify-content:stretch;position:relative}::slotted([slot=thumbnail]),::slotted(iframe),figure{max-width:100%}::slotted([slot=thumbnail]){display:block}::slotted(iframe){width:100%;height:100%;position:absolute;inset-block-start:0;inset-inline-start:0;border:0}figure{--_video-focus-border-color:var(--rh-color-border-interactive);--_video-play-btn-bkg-color:light-dark(rgb(31 31 31/var(--rh-opacity-50,50%)),rgb(255 255 255/var(--rh-opacity-20,20%)));--_video-play-btn-interactive-bkg-color:light-dark(rgb(21 21 21/var(--rh-opacity-80,80%)),rgb(255 255 255/var(--rh-opacity-50,50%)));display:flex;flex-direction:column;margin:0}figcaption{margin-block-start:var(--rh-space-lg,16px)}figcaption ::slotted(p){margin-block-start:0!important}::slotted([slot=caption]){color:var(--rh-color-text-secondary);font-size:var(--rh-font-size-body-text-sm,.875rem)!important;line-height:var(--rh-line-height-body-text,1.5)}#consent,#watermark{position:absolute;inset:0}#consent{justify-content:center;container:consent/inline-size}#consent-body{display:flex;flex-direction:column;align-items:center;position:relative;text-align:center;z-index:5}#consent-message,::slotted([slot=consent-message]){font-family:var(--rh-font-family-heading,RedHatDisplay,"Red Hat Display",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-heading-xs,1.25rem);line-height:var(--rh-line-height-heading,1.3)}#consent-message,::slotted([slot=consent-message]:last-of-type){margin-block-end:var(--rh-space-lg,16px)}@container consent (min-width: 576px){#consent-message,::slotted([slot=consent-message]:last-of-type){margin-block-end:var(--rh-space-xl,24px)}#consent-body{padding:var(--rh-space-xl,24px)}#consent-message{font-size:var(--rh-font-size-heading-sm,1.5rem)}}#play{cursor:pointer;display:block;height:100%;inset:0;position:absolute;width:100%}#play:focus-within{border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-lg,3px) solid var(--_video-focus-border-color);outline-offset:var(--rh-border-width-md,2px)}#play::part(button){background-color:var(--_video-play-btn-bkg-color,var(--rh-color-surface-darkest,#151515));inset-block:calc(50% - var(--rh-length-2xl, 32px)) 0;inset-inline:50% 0;position:absolute;outline:none;transform:translate(-50%);width:var(--rh-length-4xl,64px)}#play:active::part(button),#play:focus::part(button),#play:hover::part(button){background-color:var(--_video-play-btn-interactive-bkg-color)}#play::part(icon){color:var(--rh-color-surface)}#play[hidden],:is(.video,.consent) ::slotted([slot=thumbnail]){opacity:0;pointer-events:none}.visually-hidden{position:fixed;inset-block-start:0;inset-inline-start:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}#autoplay{position:absolute;inset:0;opacity:0;transition:opacity .2s ease-in}.video #autoplay{opacity:1}`;
+/**
+ * Fired when the user clicks the "Update preferences" consent button.
+ * Consumers should listen for this event to open a cookie consent dialog.
+ * This event has no `detail` payload; the event `target` is the
+ * `RhVideoEmbed` element that requires consent.
+ */
 export class ConsentClickEvent extends Event {
     constructor() {
         super('consent-click', { bubbles: true, cancelable: true });
     }
 }
+/**
+ * Fired when the user clicks the play button to request video playback.
+ * Consumers should listen for this event to track user intent.
+ * This event has no `detail` payload; the event `target` is the
+ * `RhVideoEmbed` element that was clicked.
+ */
 export class VideoClickEvent extends Event {
     constructor() {
         super('request-play', { bubbles: true, cancelable: true });
     }
 }
+/**
+ * Fired when the embedded iframe is appended to the DOM and the video
+ * is about to begin playback. This event has no `detail` payload;
+ * the event `target` is the `RhVideoEmbed` element.
+ */
 export class VideoPlayEvent extends Event {
     constructor() {
         super('play', { bubbles: true, cancelable: true });
     }
 }
 /**
- * A Video embed is a graphical preview of a video overlayed with a play button. When clicked, the embedded YouTube video will begin playing.
+ * A video embed provides an accessible preview of a YouTube video
+ * with a thumbnail and play button. Users must provide an iframe
+ * inside a `<template>` with a `title` for screen reader users.
+ * Should include a thumbnail with `alt` text. Supports Tab and
+ * Enter keyboard focus. Uses `aria-hidden` on the thumbnail when
+ * active. Avoid videos without captions.
  *
- * @summary Reveals a small area of information on hover
+ * @summary Embeds a YouTube video with a thumbnail preview and play button
  *
  * @alias video-embed
  *
- * @fires consent-click - "Update preferences" consent button is clicked
- * @fires request-play - Play button is clicked
- * @fires play - Video is about to be played
+ * @csspart figure - The outer `<figure>` container element
+ * @csspart video - The container for the video, thumbnail, and play button
+ * @csspart caption - The `<figcaption>` element for caption content
+ * @csspart play - The play button overlay element
+ * @csspart consent-body - The consent message and button container
+ *
+ * @fires {ConsentClickEvent} consent-click - Fires when the user clicks
+ *   the "Update preferences" consent button. Has no `detail` payload.
+ * @fires {VideoClickEvent} request-play - Fires when the user clicks the
+ *   play button to request video playback. Has no `detail` payload.
+ * @fires {VideoPlayEvent} play - Fires when the embedded iframe is
+ *   appended and the video is about to begin playback. Has no `detail`
+ *   payload.
  */
 let RhVideoEmbed = class RhVideoEmbed extends LitElement {
     constructor() {
@@ -107,14 +139,29 @@ let RhVideoEmbed = class RhVideoEmbed extends LitElement {
         <!-- The container for the video, thumbnail, and play button -->
         <div part="video" id="video">
           <div aria-hidden="${show !== 'thumbnail'}">
-            <!-- Optional thumbnail image on top of video embed; should include \`alt\` text -->
+            <!-- summary: Optional thumbnail image overlay
+                 description: |
+                   Accepts an \`<img>\` element displayed on top of the
+                   video embed. Authors must include descriptive \`alt\`
+                   text for screen reader and ARIA users, e.g. "Video
+                   title (video thumbnail)". The thumbnail is hidden
+                   via \`aria-hidden\` when the video is playing. -->
             <slot id="thumbnail" name="thumbnail"></slot>
           </div>
-          <!-- Place video embed code here; iframe should include a \`title\` attribute with the video title -->
+          <!-- summary: Video iframe template
+               description: |
+                 Accepts a \`<template>\` element containing an
+                 \`<iframe>\` for the YouTube embed. The iframe must
+                 include a \`title\` attribute with the video title
+                 for screen reader and ARIA accessibility. The
+                 embedded video should have accurate captions per
+                 WCAG 1.2.2. -->
           <slot></slot>
           <div id="autoplay"><!--
-            DO NOT USE! (Used by \`rh-video-embed\`.)
-          --><slot name="autoplay"></slot></div>
+            summary: Internal autoplay iframe slot
+            description: |
+              Reserved for internal use by \`rh-video-embed\`.
+              Authors must not place content in this slot. --><slot name="autoplay"></slot></div>
           ${__classPrivateFieldGet(this, _RhVideoEmbed_instances, "a", _RhVideoEmbed_showConsent_get) ? html `
             <rh-surface id="consent" color-palette="darker">
               <svg id="watermark" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1136 639">
@@ -136,7 +183,12 @@ let RhVideoEmbed = class RhVideoEmbed extends LitElement {
               </svg>
               <!-- The container for the consent message and consent button -->
               <div part="consent-body" id="consent-body">
-                <!-- Text explaining opt-in to cookies is required, e.g. \`<p>View this video by opting in to “Advertising Cookies.”</p>\` -->
+                <!-- summary: Custom consent message
+                     description: |
+                       Accepts block content (e.g. \`<p>\`) explaining
+                       that cookie opt-in is required. should be
+                       readable by screen readers. Defaults to a
+                       built-in message when not provided. -->
                 <slot name="consent-message">
                   <p id="consent-message">View this video by opting in to “Advertising Cookies.”</p>
                 </slot>
@@ -145,8 +197,10 @@ let RhVideoEmbed = class RhVideoEmbed extends LitElement {
                   variant="tertiary"
                   @click="${__classPrivateFieldGet(this, _RhVideoEmbed_instances, "m", _RhVideoEmbed_handleConsentClick)}"
                   @keyup="${__classPrivateFieldGet(this, _RhVideoEmbed_instances, "m", _RhVideoEmbed_handleConsentKeyup)}"><!--
-                    Text for CTA button to update preferences, e.g. "Update preferences"
-                  --><slot name="consent-button-text">Update preferences</slot></rh-button>
+                    summary: Consent button label
+                    description: |
+                      Accepts inline text for the consent CTA button.
+                      Defaults to "Update preferences". --><slot name="consent-button-text">Update preferences</slot></rh-button>
               </div>
             </rh-surface>
           ` : ''}
@@ -158,14 +212,21 @@ let RhVideoEmbed = class RhVideoEmbed extends LitElement {
                      @click="${__classPrivateFieldGet(this, _RhVideoEmbed_instances, "m", _RhVideoEmbed_handlePlayClick)}"
                      @keyup="${__classPrivateFieldGet(this, _RhVideoEmbed_instances, "m", _RhVideoEmbed_handlePlayKeyup)}">
             <span class="visually-hidden"><!--
-              Text for play button; recommended value "Video title (video)"
-            --><slot name="play-button-text">${playLabel}</slot></span>
+              summary: Accessible play button label
+              description: |
+                Accepts inline text for the play button screen
+                reader and ARIA label. should follow the pattern
+                "Video title (video)" for accessibility. Defaults
+                to the iframe title followed by "(play video)". --><slot name="play-button-text">${playLabel}</slot></span>
           </rh-button>
         </div>
-        <!-- The container for the caption -->
         <figcaption part="caption" ?hidden="${!hasCaption}"><!--
-          Optional caption below video embed
-        --><slot name="caption"></slot></figcaption>
+          summary: Optional video caption
+          description: |
+            Accepts inline or block content displayed below the
+            video embed, such as a \`<p>\` with a link. Links
+            should have accessible text for screen reader users.
+            Styled with secondary text color and small font. --><slot name="caption"></slot></figcaption>
       </figure>
     `;
     }

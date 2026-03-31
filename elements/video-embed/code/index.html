@@ -27,9 +27,9 @@
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
-    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "lit-element": "/assets/packages/lit-element/index.js",
     "prism-esm": "/assets/packages/prism-esm/prism.js",
@@ -43,8 +43,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
@@ -4093,7 +4093,12 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>A Video embed is a graphical preview of a video overlayed with a play button. When clicked, the embedded YouTube video will begin playing.</p>
+      <p>A video embed provides an accessible preview of a YouTube video
+with a thumbnail and play button. Users must provide an iframe
+inside a <code>&lt;template&gt;</code> with a <code>title</code> for screen reader users.
+Should include a thumbnail with <code>alt</code> text. Supports Tab and
+Enter keyboard focus. Uses <code>aria-hidden</code> on the thumbnail when
+active. Avoid videos without captions.</p>
 
 
       <div class="element-apis">
@@ -4183,9 +4188,13 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Optional thumbnail image overlay</p></td>
                   <td>
-                   <p>Optional thumbnail image on top of video embed; should include <code>alt</code> text</p>
+                   <p>Accepts an <code>&lt;img&gt;</code> element displayed on top of the
+video embed. Authors must include descriptive <code>alt</code>
+text for screen reader and ARIA users, e.g. "Video
+title (video thumbnail)". The thumbnail is hidden
+via <code>aria-hidden</code> when the video is playing.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4213,9 +4222,14 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Video iframe template</p></td>
                   <td>
-                   <p>Place video embed code here; iframe should include a <code>title</code> attribute with the video title <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Accepts a <code>&lt;template&gt;</code> element containing an
+<code>&lt;iframe&gt;</code> for the YouTube embed. The iframe must
+include a <code>title</code> attribute with the video title
+for screen reader and ARIA accessibility. The
+embedded video should have accurate captions per
+WCAG 1.2.2. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
                 <tr>
@@ -4243,9 +4257,10 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Internal autoplay iframe slot</p></td>
                   <td>
-                   <p>DO NOT USE! (Used by <code>rh-video-embed</code>.)</p>
+                   <p>Reserved for internal use by <code>rh-video-embed</code>.
+Authors must not place content in this slot.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4273,9 +4288,12 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Custom consent message</p></td>
                   <td>
-                   <p>Text explaining opt-in to cookies is required, e.g. <code>&lt;p&gt;View this video by opting in to “Advertising Cookies.”&lt;/p&gt;</code></p>
+                   <p>Accepts block content (e.g. <code>&lt;p&gt;</code>) explaining
+that cookie opt-in is required. should be
+readable by screen readers. Defaults to a
+built-in message when not provided.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4303,9 +4321,10 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Consent button label</p></td>
                   <td>
-                   <p>Text for CTA button to update preferences, e.g. "Update preferences"</p>
+                   <p>Accepts inline text for the consent CTA button.
+Defaults to "Update preferences".</p>
                   </td>
                 </tr>
                 <tr>
@@ -4333,9 +4352,12 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Accessible play button label</p></td>
                   <td>
-                   <p>Text for play button; recommended value "Video title (video)"</p>
+                   <p>Accepts inline text for the play button screen
+reader and ARIA label. should follow the pattern
+"Video title (video)" for accessibility. Defaults
+to the iframe title followed by "(play video)".</p>
                   </td>
                 </tr>
                 <tr>
@@ -4363,9 +4385,12 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Optional video caption</p></td>
                   <td>
-                   <p>Optional caption below video embed</p>
+                   <p>Accepts inline or block content displayed below the
+video embed, such as a <code>&lt;p&gt;</code> with a link. Links
+should have accessible text for screen reader users.
+Styled with secondary text color and small font.</p>
                   </td>
                 </tr>
               </tbody>
@@ -4686,7 +4711,8 @@ See the Require Consent demo for reference.</p></td>
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td><p>"Update preferences" consent button is clicked</p></td>
+                  <td><p>Fires when the user clicks
+the "Update preferences" consent button. Has no <code>detail</code> payload.</p></td>
                 </tr>
                 <tr>
                   <td>
@@ -4715,7 +4741,8 @@ See the Require Consent demo for reference.</p></td>
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td><p>Play button is clicked</p></td>
+                  <td><p>Fires when the user clicks the
+play button to request video playback. Has no <code>detail</code> payload.</p></td>
                 </tr>
                 <tr>
                   <td>
@@ -4744,7 +4771,9 @@ See the Require Consent demo for reference.</p></td>
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td><p>Video is about to be played</p></td>
+                  <td><p>Fires when the embedded iframe is
+appended and the video is about to begin playback. Has no <code>detail</code>
+payload.</p></td>
                 </tr>
               </tbody>
             </table>
@@ -4960,7 +4989,7 @@ See the Require Consent demo for reference.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td></td>
-                  <td><p>The container for the caption</p></td>
+                  <td><p>The <code>&lt;figcaption&gt;</code> element for caption content</p></td>
                 </tr>
               </tbody>
             </table>
@@ -5449,7 +5478,7 @@ See the Require Consent demo for reference.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Caption text color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5545,7 +5574,8 @@ See the Require Consent demo for reference.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>14px font size</p>
+                    <p>Caption font size</p>
+<p>14px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5641,7 +5671,8 @@ See the Require Consent demo for reference.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Line height for body text</p>
+                    <p>Caption line height</p>
+<p>Line height for body text</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5737,7 +5768,8 @@ See the Require Consent demo for reference.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Heading font family</p>
+                    <p>Consent message font family</p>
+<p>Heading font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5833,7 +5865,8 @@ See the Require Consent demo for reference.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>h6 heading font size</p>
+                    <p>Consent message font size</p>
+<p>h6 heading font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5929,7 +5962,8 @@ See the Require Consent demo for reference.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Line height for headings</p>
+                    <p>Consent message line height</p>
+<p>Line height for headings</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6025,7 +6059,9 @@ See the Require Consent demo for reference.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Spacing above caption</p>
+<p>Space below consent message</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6121,7 +6157,9 @@ See the Require Consent demo for reference.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>24px spacer</p>
+                    <p>Wider consent spacing</p>
+<p>Consent body padding</p>
+<p>24px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6217,7 +6255,8 @@ See the Require Consent demo for reference.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>h5 heading font size</p>
+                    <p>Larger consent font size</p>
+<p>h5 heading font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6313,7 +6352,8 @@ See the Require Consent demo for reference.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>3px border radius; Example: Card</p>
+                    <p>Focus border radius</p>
+<p>3px border radius; Example: Card</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6409,7 +6449,8 @@ See the Require Consent demo for reference.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>3px border width: Example: Expanded Accordion panel</p>
+                    <p>Focus outline width</p>
+<p>3px border width: Example: Expanded Accordion panel</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6505,7 +6546,8 @@ See the Require Consent demo for reference.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>2px border width: Example: Alert</p>
+                    <p>Focus outline offset</p>
+<p>2px border width: Example: Alert</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6793,7 +6835,8 @@ See the Require Consent demo for reference.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>64px length token</p>
+                    <p>Play button width</p>
+<p>64px length token</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6889,7 +6932,7 @@ See the Require Consent demo for reference.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Play icon color</p>
                   </td>
                   <td data-label="Copy">
       <div>
