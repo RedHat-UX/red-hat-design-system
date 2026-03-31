@@ -30,10 +30,10 @@ const paths = new Map(Object.entries({
 
 /**
  * A button for sorting table columns in ascending or descending order.
- * Authors MUST place this element inside a `<th>` cell within an
+ * Authors must place this element inside a `<th>` cell within an
  * `<rh-table>` element. The button provides a screen reader accessible
  * label announcing the current sort direction and column name.
- * Authors SHOULD set the `column` attribute to identify the sorted
+ * Authors should set the `column` attribute to identify the sorted
  * column for assistive technology users.
  *
  * @summary Toggles column sort direction within a table header
@@ -79,7 +79,7 @@ export class RhSortButton extends LitElement {
         <span id="sort-text"
               class="visually-hidden">
           <!--
-            MUST NOT use unless localizing the table.
+            Must not use unless localizing the table.
             Automatically set based on \`sort-direction\`.
             Overrides the \`accessible-label\` attribute.
           -->

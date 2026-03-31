@@ -11,10 +11,10 @@ import styles from './rh-table.css' with { type: 'css' };
 
 /**
  * A table provides a container for displaying tabular data, allowing
- * users to scan and compare information. Authors MUST include a
+ * users to scan and compare information. Authors must include a
  * `<table>` with `<thead>`, `<tbody>`, and scoped `<th>` for ARIA
- * screen reader navigation. SHOULD use `<col>` for column hover and
- * `<caption>` for context. Tab and arrow keys scroll overflow. AVOID
+ * screen reader navigation. Should use `<col>` for column hover and
+ * `<caption>` for context. Tab and arrow keys scroll overflow. Avoid
  * using tables for layout.
  *
  * @summary Organizes and displays information from a data set
@@ -96,7 +96,7 @@ export class RhTable extends LitElement {
         <!-- summary: Default slot for the table element
              description: |
                Expects a native HTML \`<table>\` element with semantic
-               markup. Authors MUST include \`<thead>\`, \`<tbody>\`,
+               markup. Authors must include \`<thead>\`, \`<tbody>\`,
                and scoped \`<th>\` elements so that screen readers
                can navigate the table structure. -->
         <slot @pointerleave="${this.#onPointerleave}"
@@ -108,7 +108,7 @@ export class RhTable extends LitElement {
                An optional description of the table data displayed
                below the table. The element links this content to the
                table via \`aria-describedby\` for screen reader users.
-               Authors SHOULD use inline elements like \`<small>\`. -->
+               Authors should use inline elements like \`<small>\`. -->
         <slot id="summary" name="summary"></slot>
       </div>
     `;
