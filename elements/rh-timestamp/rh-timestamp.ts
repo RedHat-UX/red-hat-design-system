@@ -20,7 +20,7 @@ const BooleanStringConverter: ComplexAttributeConverter = {
 /**
  * Provides locale-aware date and time formatting for consistent display
  * across pages. Renders a `<time>` element with an ARIA-accessible
- * `datetime` attribute for screen readers. Authors MUST set `date`
+ * `datetime` attribute for screen readers. Authors must set `date`
  * when displaying a specific moment; when omitted, the current time
  * is used. Authors should wrap relative timestamps in `rh-tooltip`
  * so users can see the full date. Avoid combining `date-format` and
