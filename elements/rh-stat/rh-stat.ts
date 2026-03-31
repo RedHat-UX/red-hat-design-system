@@ -15,8 +15,8 @@ import styles from './rh-stat.css' with { type: 'css' };
 
 /**
  * A statistic showcases a data point or quick fact visually.
- * Elements MUST include a `statistic` slot and body text.
- * Icons, titles, and CTAs SHOULD be consistent when grouped.
+ * Elements must include a `statistic` slot and body text.
+ * Icons, titles, and CTAs should be consistent when grouped.
  * Adapts color for WCAG contrast in light and dark contexts.
  * Only the CTA receives Tab focus; screen readers read DOM order.
  *
