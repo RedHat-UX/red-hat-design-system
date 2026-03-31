@@ -6,11 +6,16 @@ import { property } from 'lit/decorators/property.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 import { observes } from '@patternfly/pfe-core/decorators.js';
 import { css } from "lit";
-const styles = css `:host{display:block}fieldset{align-items:center;border:0;display:flex;flex-flow:row nowrap;gap:var(--rh-space-lg,16px);margin:0;padding:0}fieldset legend{float:inline-start}fieldset #button-group{--rh-icon-size:var(--rh-size-icon-01,16px);display:flex}label{align-items:center;background-color:initial;border:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);display:flex;height:var(--rh-space-2xl,32px);justify-content:center;position:relative;width:var(--rh-space-3xl,48px)}label:not(:first-of-type){margin-inline-start:-1px}label:first-of-type{border-start-start-radius:var(--rh-border-radius-default,3px);border-end-start-radius:var(--rh-border-radius-default,3px)}label:last-of-type{border-start-end-radius:var(--rh-border-radius-default,3px);border-end-end-radius:var(--rh-border-radius-default,3px)}label:focus-within,label:hover{background-color:var(--rh-color-interactive-secondary-focus);color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515))}label:has(input:checked){background-color:var(--rh-color-interactive-primary-active);border-color:var(--rh-color-border-interactive);color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));z-index:1}label:has(input:checked):focus-within,label:has(input:checked):hover{background-color:var(--rh-color-interactive-primary-focus)}input{appearance:none;inset:0;margin:0;outline-offset:2px;padding:0;position:absolute}input:focus-visible{outline:var(--rh-border-width-sm,1px) solid var(--rh-color-interactive-primary-focus)}rh-icon{z-index:2}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}`;
+const styles = css `:host{display:block}fieldset{align-items:center;border:0;display:flex;flex-flow:row nowrap;gap:var(--rh-space-lg,16px);margin:0;padding:0}fieldset legend{float:inline-start}fieldset #button-group{--rh-icon-size:var(--rh-size-icon-01,16px);display:flex}label{align-items:center;background-color:initial;border-width:var(--rh-border-width-sm,1px);border-style:solid;border-color:var(--rh-color-border-subtle);display:flex;height:var(--rh-space-2xl,32px);justify-content:center;position:relative;width:var(--rh-space-3xl,48px)}label:not(:first-of-type){margin-inline-start:-1px}label:first-of-type{border-start-start-radius:var(--rh-border-radius-default,3px);border-end-start-radius:var(--rh-border-radius-default,3px)}label:last-of-type{border-start-end-radius:var(--rh-border-radius-default,3px);border-end-end-radius:var(--rh-border-radius-default,3px)}label:focus-within,label:hover{background-color:var(--rh-color-interactive-secondary-focus);color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515))}label:has(input:checked){background-color:var(--rh-color-interactive-primary-active);border-color:var(--rh-color-border-interactive);color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));z-index:1}label:has(input:checked):focus-within,label:has(input:checked):hover{background-color:var(--rh-color-interactive-primary-focus)}input{appearance:none;inset:0;margin:0;outline-offset:2px;padding:0;position:absolute}input:focus-visible{outline:var(--rh-border-width-sm,1px) solid var(--rh-color-interactive-primary-focus)}rh-icon{z-index:2}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}`;
 /**
- * A scheme toggle switches between light, dark, and system default color schemes.
+ * A scheme toggle provides users with the ability to switch between
+ * light, dark, and system default color schemes. It should be placed
+ * in a visible location for easy access. For WCAG compliance, screen
+ * reader users must be able to identify each option; the component
+ * uses a native fieldset with ARIA-compatible radio buttons. Tab
+ * focuses the group; arrow keys allow selection between schemes.
  *
- * @summary  Switches between a variety of color schemes
+ * @summary Switches between light, dark, and system default color schemes.
  *
  * @alias Scheme toggle
  */
@@ -18,19 +23,39 @@ let RhSchemeToggle = class RhSchemeToggle extends LitElement {
     constructor() {
         super(...arguments);
         _RhSchemeToggle_instances.add(this);
+        /** Whether the light radio button is currently checked. */
         _RhSchemeToggle_isLight.set(this, false);
+        /** Whether the dark radio button is currently checked. */
         _RhSchemeToggle_isDark.set(this, false);
+        /** Whether the system default radio button is currently checked. */
         _RhSchemeToggle_isSystem.set(this, false);
-        /** Current color scheme setting */
+        /**
+         * Current color scheme setting. Reflects to the `scheme` attribute and
+         * initializes from `localStorage.rhdsColorScheme` when available.
+         * When set, applies the value to `document.body.style.colorScheme`
+         * and persists it to `localStorage`.
+         */
         this.scheme = globalThis.localStorage
             ?.rhdsColorScheme;
-        /** Legend text for the color scheme toggle group */
+        /**
+         * Legend text displayed next to the toggle button group.
+         * Authors should keep this text short (under 20 characters).
+         */
         this.legendText = 'Color scheme';
-        /** Label text for the light mode option */
+        /**
+         * Accessible label for the light mode radio button.
+         * Rendered as a visually-hidden span and a `title` tooltip.
+         */
         this.lightText = 'Light';
-        /** Label text for the dark mode option */
+        /**
+         * Accessible label for the dark mode radio button.
+         * Rendered as a visually-hidden span and a `title` tooltip.
+         */
         this.darkText = 'Dark';
-        /** Label text for the system default option */
+        /**
+         * Accessible label for the system default radio button.
+         * Rendered as a visually-hidden span and a `title` tooltip.
+         */
         this.systemText = 'System';
     }
     connectedCallback() {
@@ -70,6 +95,11 @@ let RhSchemeToggle = class RhSchemeToggle extends LitElement {
       </fieldset>
     `;
     }
+    /**
+     * Observes changes to the `scheme` property. Applies the selected
+     * color scheme to `document.body` and persists it to `localStorage`
+     * so the preference survives page reloads.
+     */
     schemeChanged() {
         if (!isServer) {
             if (this.scheme) {

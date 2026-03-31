@@ -152,7 +152,7 @@
                  height="40">
           </a>
         </div>
-        <!--lit-node 5--><rh-scheme-toggle  id="scheme" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}fieldset{align-items:center;gap:var(--rh-space-lg,16px);border:0;flex-flow:row;margin:0;padding:0;display:flex}fieldset legend{float:inline-start}fieldset #button-group{--rh-icon-size:var(--rh-size-icon-01,16px);display:flex}label{background-color:initial;border:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);height:var(--rh-space-2xl,32px);width:var(--rh-space-3xl,48px);justify-content:center;align-items:center;display:flex;position:relative}label:not(:first-of-type){margin-inline-start:-1px}label:first-of-type{border-start-start-radius:var(--rh-border-radius-default,3px);border-end-start-radius:var(--rh-border-radius-default,3px)}label:last-of-type{border-start-end-radius:var(--rh-border-radius-default,3px);border-end-end-radius:var(--rh-border-radius-default,3px)}label:focus-within,label:hover{background-color:var(--rh-color-interactive-secondary-focus);color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515))}label:has(input:checked){background-color:var(--rh-color-interactive-primary-active);border-color:var(--rh-color-border-interactive);color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));z-index:1}label:has(input:checked):focus-within,label:has(input:checked):hover{background-color:var(--rh-color-interactive-primary-focus)}input{appearance:none;outline-offset:2px;margin:0;padding:0;position:absolute;inset:0}input:focus-visible{outline:var(--rh-border-width-sm,1px) solid var(--rh-color-interactive-primary-focus)}rh-icon{z-index:2}.visually-hidden{clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;block-size:1px;inline-size:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}</style><!--lit-part WyR6lO6H8+E=-->
+        <!--lit-node 5--><rh-scheme-toggle  id="scheme" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}fieldset{align-items:center;gap:var(--rh-space-lg,16px);border:0;flex-flow:row;margin:0;padding:0;display:flex}fieldset legend{float:inline-start}fieldset #button-group{--rh-icon-size:var(--rh-size-icon-01,16px);display:flex}label{background-color:initial;border-width:var(--rh-border-width-sm,1px);border-style:solid;border-color:var(--rh-color-border-subtle);height:var(--rh-space-2xl,32px);width:var(--rh-space-3xl,48px);justify-content:center;align-items:center;display:flex;position:relative}label:not(:first-of-type){margin-inline-start:-1px}label:first-of-type{border-start-start-radius:var(--rh-border-radius-default,3px);border-end-start-radius:var(--rh-border-radius-default,3px)}label:last-of-type{border-start-end-radius:var(--rh-border-radius-default,3px);border-end-end-radius:var(--rh-border-radius-default,3px)}label:focus-within,label:hover{background-color:var(--rh-color-interactive-secondary-focus);color:light-dark( var(--rh-color-text-primary-on-dark,#fff), var(--rh-color-text-primary-on-light,#151515))}label:has(input:checked){background-color:var(--rh-color-interactive-primary-active);border-color:var(--rh-color-border-interactive);color:light-dark( var(--rh-color-text-primary-on-dark,#fff), var(--rh-color-text-primary-on-light,#151515));z-index:1}label:has(input:checked):focus-within,label:has(input:checked):hover{background-color:var(--rh-color-interactive-primary-focus)}input{appearance:none;outline-offset:2px;margin:0;padding:0;position:absolute;inset:0}input:focus-visible{outline: var(--rh-border-width-sm,1px) solid  var(--rh-color-interactive-primary-focus)}rh-icon{z-index:2}.visually-hidden{clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;block-size:1px;inline-size:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}</style><!--lit-part WyR6lO6H8+E=-->
       <!--lit-node 0--><fieldset >
         <legend><!--lit-part-->Color scheme<!--/lit-part-->:</legend>
         <div id="button-group">
@@ -4098,7 +4098,12 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>A scheme toggle switches between light, dark, and system default color schemes.</p>
+      <p>A scheme toggle provides users with the ability to switch between
+light, dark, and system default color schemes. It should be placed
+in a visible location for easy access. For WCAG compliance, screen
+reader users must be able to identify each option; the component
+uses a native fieldset with ARIA-compatible radio buttons. Tab
+focuses the group; arrow keys allow selection between schemes.</p>
 
 
       <div class="element-apis">
@@ -4225,7 +4230,10 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>scheme</code></td>
-                  <td><p>Current color scheme setting</p></td>
+                  <td><p>Current color scheme setting. Reflects to the <code>scheme</code> attribute and
+initializes from <code>localStorage.rhdsColorScheme</code> when available.
+When set, applies the value to <code>document.body.style.colorScheme</code>
+and persists it to <code>localStorage</code>.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'light'</span> <span class="token operator">|</span> <span class="token string">'dark'</span> <span class="token operator">|</span> <span class="token string">'light dark'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts">globalThis<span class="token punctuation">.</span>localStorage\n <span class="token operator">?.</span>rhdsColorScheme <span class="token keyword">as</span> Scheme</code></pre></td>
                 </tr>
@@ -4257,7 +4265,8 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>legendText</code></td>
-                  <td><p>Legend text for the color scheme toggle group</p></td>
+                  <td><p>Legend text displayed next to the toggle button group.
+Authors should keep this text short (under 20 characters).</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'Color scheme'</span></code></pre></td>
                 </tr>
@@ -4289,7 +4298,8 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>lightText</code></td>
-                  <td><p>Label text for the light mode option</p></td>
+                  <td><p>Accessible label for the light mode radio button.
+Rendered as a visually-hidden span and a <code>title</code> tooltip.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'Light'</span></code></pre></td>
                 </tr>
@@ -4321,7 +4331,8 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>darkText</code></td>
-                  <td><p>Label text for the dark mode option</p></td>
+                  <td><p>Accessible label for the dark mode radio button.
+Rendered as a visually-hidden span and a <code>title</code> tooltip.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'Dark'</span></code></pre></td>
                 </tr>
@@ -4353,7 +4364,8 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>systemText</code></td>
-                  <td><p>Label text for the system default option</p></td>
+                  <td><p>Accessible label for the system default radio button.
+Rendered as a visually-hidden span and a <code>title</code> tooltip.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'System'</span></code></pre></td>
                 </tr>
@@ -4559,7 +4571,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Fieldset legend-to-group gap</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4751,7 +4764,7 @@
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Toggle button border color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4847,7 +4860,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>32px spacer</p>
+                    <p>Toggle button height</p>
+<p>32px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4943,7 +4957,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>48px spacer</p>
+                    <p>Toggle button width</p>
+<p>48px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5039,7 +5054,11 @@
                     </a>
                   </td>
                   <td>
-                    <p>3px border radius; Example: Card</p>
+                    <p>Button group start-start corner radius</p>
+<p>Button group end-start corner radius</p>
+<p>Button group start-end corner radius</p>
+<p>Button group end-end corner radius</p>
+<p>3px border radius; Example: Card</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5135,7 +5154,7 @@
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Toggle button hover/focus background</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5231,7 +5250,7 @@
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Selected toggle button background</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5327,7 +5346,7 @@
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Selected toggle button border color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5423,7 +5442,9 @@
                     </a>
                   </td>
                   <td>
-                    <p>Primary text color for dark theme</p>
+                    <p>Toggle button icon color in light mode</p>
+<p>Selected toggle button icon color in light mode</p>
+<p>Primary text color for dark theme</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5519,7 +5540,9 @@
                     </a>
                   </td>
                   <td>
-                    <p>Primary text color for light theme</p>
+                    <p>Toggle button icon color in dark mode</p>
+<p>Selected toggle button icon color in dark mode</p>
+<p>Primary text color for light theme</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5615,7 +5638,9 @@
                     </a>
                   </td>
                   <td>
-                    <p>1px border width; Example: Secondary CTA or Button</p>
+                    <p>Toggle button border width</p>
+<p>Focus outline width</p>
+<p>1px border width; Example: Secondary CTA or Button</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5711,7 +5736,8 @@
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Selected toggle button hover/focus background</p>
+<p>Focus outline color</p>
                   </td>
                   <td data-label="Copy">
       <div>
