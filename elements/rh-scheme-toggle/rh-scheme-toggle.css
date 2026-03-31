@@ -8,7 +8,7 @@ fieldset {
   display: flex;
   flex-flow: row nowrap;
 
-  /** Space design token for legend-to-group gap. */
+  /** Fieldset legend-to-group gap */
   gap: var(--rh-space-lg, 16px);
   margin: 0;
   padding: 0;
@@ -18,7 +18,7 @@ fieldset {
   }
 
   #button-group {
-    /** Design token for icon size in scheme buttons. */
+    /** Scheme button icon size */
     --rh-icon-size: var(--rh-size-icon-01, 16px);
 
     display: flex;
@@ -29,20 +29,20 @@ label {
   align-items: center;
   background-color: initial;
 
-  /** Design token for toggle button border width. */
+  /** Toggle button border width */
   border-width: var(--rh-border-width-sm, 1px);
   border-style: solid;
 
-  /** Theme token for toggle button border color. */
+  /** Toggle button border color */
   border-color: var(--rh-color-border-subtle);
   display: flex;
 
-  /** Space token for toggle button height. */
+  /** Toggle button height */
   height: var(--rh-space-2xl, 32px);
   justify-content: center;
   position: relative;
 
-  /** Space token for toggle button width. */
+  /** Toggle button width */
   width: var(--rh-space-3xl, 48px);
 
   &:not(:first-of-type) {
@@ -50,46 +50,52 @@ label {
   }
 
   &:first-of-type {
-    /** Border radius token for group start edge. */
+    /** Button group start-start corner radius */
     border-start-start-radius: var(--rh-border-radius-default, 3px);
 
-    /** Border radius token for group start edge. */
+    /** Button group end-start corner radius */
     border-end-start-radius: var(--rh-border-radius-default, 3px);
   }
 
   &:last-of-type {
-    /** Border radius token for group end edge. */
+    /** Button group start-end corner radius */
     border-start-end-radius: var(--rh-border-radius-default, 3px);
 
-    /** Border radius token for group end edge. */
+    /** Button group end-end corner radius */
     border-end-end-radius: var(--rh-border-radius-default, 3px);
   }
 
   &:focus-within,
   &:hover {
-    /** Theme token for hover/focus background. */
+    /** Toggle button hover/focus background */
     background-color: var(--rh-color-interactive-secondary-focus);
     color:
       light-dark(
+          /** Toggle button icon color in light mode */
           var(--rh-color-text-primary-on-dark, #ffffff),
-          var(--rh-color-text-primary-on-light, #151515));
+          /** Toggle button icon color in dark mode */
+          var(--rh-color-text-primary-on-light, #151515)
+        );
   }
 
   &:has(input:checked) {
-    /** Theme token for active selection background. */
+    /** Selected toggle button background */
     background-color: var(--rh-color-interactive-primary-active);
 
-    /** Theme token for active selection border. */
+    /** Selected toggle button border color */
     border-color: var(--rh-color-border-interactive);
     color:
       light-dark(
+          /** Selected toggle button icon color in light mode */
           var(--rh-color-text-primary-on-dark, #ffffff),
-          var(--rh-color-text-primary-on-light, #151515));
+          /** Selected toggle button icon color in dark mode */
+          var(--rh-color-text-primary-on-light, #151515)
+        );
     z-index: 1;
 
     &:focus-within,
     &:hover {
-      /** Theme token for active+hover background. */
+      /** Selected toggle button hover/focus background */
       background-color: var(--rh-color-interactive-primary-focus);
     }
   }
@@ -105,8 +111,10 @@ input {
 
   &:focus-visible {
     outline:
+      /** Focus outline width */
       var(--rh-border-width-sm, 1px)
       solid
+      /** Focus outline color */
       var(--rh-color-interactive-primary-focus);
   }
 }
