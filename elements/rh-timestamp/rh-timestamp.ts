@@ -22,8 +22,8 @@ const BooleanStringConverter: ComplexAttributeConverter = {
  * across pages. Renders a `<time>` element with an ARIA-accessible
  * `datetime` attribute for screen readers. Authors MUST set `date`
  * when displaying a specific moment; when omitted, the current time
- * is used. Authors SHOULD wrap relative timestamps in `rh-tooltip`
- * so users can see the full date. AVOID combining `date-format` and
+ * is used. Authors should wrap relative timestamps in `rh-tooltip`
+ * so users can see the full date. Avoid combining `date-format` and
  * `time-format` with `customFormat` as `customFormat` overrides both.
  * The element is not keyboard-focusable on its own.
  *
