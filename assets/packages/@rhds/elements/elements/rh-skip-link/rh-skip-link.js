@@ -5,20 +5,21 @@ import { property } from 'lit/decorators/property.js';
 import { css } from "lit";
 const styles = css `#container{display:block;z-index:1000}a#container{position:fixed}div#container{position:relative}::slotted(a),a{background-color:var(--rh-color-surface-lightest,#fff)!important;border-block-start-width:0!important;border-block-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-interactive-on-light,#06c);border-inline-start:var(--rh-border-width-sm,1px) solid var(--rh-color-border-interactive-on-light,#06c);border-inline-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-interactive-on-light,#06c);border-end-start-radius:var(--rh-border-radius-default,3px)!important;border-end-end-radius:var(--rh-border-radius-default,3px)!important;clip:rect(0,0,0,0)!important;color:var(--rh-color-interactive-primary-default-on-light,#06c);font-family:var(--rh-font-family-heading,RedHatDisplay,"Red Hat Display",Helvetica,Arial,sans-serif)!important;font-size:var(--rh-font-size-body-text-md,1rem)!important;font-weight:var(--rh-font-weight-heading-bold,700)!important;height:1px!important;left:50%!important;margin:-1px!important;outline:0!important;overflow:hidden!important;padding:0!important;text-decoration:none!important;top:-40px!important;transform:translateX(-50%)!important;transition:top .05s ease-in!important;white-space:nowrap!important;width:1px!important}::slotted(a){position:fixed!important}::slotted(a:is(:focus)),a:is(:focus){border-width:var(--rh-border-width-md,2px)!important;clip:auto!important;height:auto!important;margin:0!important;overflow:visible!important;padding:var(--rh-space-lg,16px) var(--rh-space-2xl,32px)!important;top:0!important;white-space:inherit!important;width:auto!important}::slotted(a:is(:active,:hover)),a:is(:active,:hover){color:var(--rh-color-interactive-primary-hover);text-decoration:underline!important;text-decoration-style:dashed!important;text-decoration-color:inherit!important;text-decoration-thickness:var(--rh-border-width-sm)!important;text-underline-offset:max(5px,.28em)!important;transition-timing-function:ease;transition-property:text-underline-offset,color,text-decoration-color;transition-duration:.3s;border-block-end:var(--rh-border-width-sm,1px) solid var(--rh-color-interactive-primary-hover-on-light,#036);border-inline-start:var(--rh-border-width-sm,1px) solid var(--rh-color-interactive-primary-hover-on-light,#036);border-inline-end:var(--rh-border-width-sm,1px) solid var(--rh-color-interactive-primary-hover-on-light,#036)}@media (prefers-reduced-motion:reduce){::slotted(a),a{transition-duration:.001ms!important}}`;
 /**
- * A skip link is used to skip repetitive content on a page.
- * It is hidden by default and can be activated by hitting
- * the "Tab" key after loading/refreshing a page.
+ * A skip link provides keyboard and screen reader users a way to bypass
+ * repetitive navigation and jump directly to main content. Use it when
+ * a page has many navigation items preceding the main content area.
+ * It should be the first focusable element on the page, and authors
+ * must provide either an `href` attribute or a slotted `<a>` element.
  *
- * @summary Skip to the main content of a page
+ * @summary Allows users to skip repetitive navigation for accessibility.
  *
  * @alias skip-link
  */
 let RhSkipLink = class RhSkipLink extends LitElement {
     render() {
-        const slot = html `<!--
-        An anchor tag targeting the main page content by id hash.
-        Or, if the \`href\` attribute is set, the text of the link.
-    --><slot></slot>`;
+        const slot = html `<!-- An anchor element targeting the main page content,
+         or plain text when the \`href\` attribute is set on the host.
+         Slotted anchors must have an accessible name for screen readers. --><slot></slot>`;
         return this.href ?
             html `<a id="container" href="${this.href}">${slot}</a>`
             : html `<div id="container">${slot}</div>`;
