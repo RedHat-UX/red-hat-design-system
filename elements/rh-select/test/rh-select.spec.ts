@@ -507,6 +507,75 @@ describe('<rh-select>', function() {
     });
   });
 
+  describe('show/hide/toggle focus behavior', function() {
+    let element: RhSelect;
+    let externalBtn: HTMLButtonElement;
+    const updateComplete = () => element.updateComplete;
+
+    beforeEach(async function() {
+      const container = await createFixture<HTMLDivElement>(html`
+        <div>
+          <button id="external-btn">External</button>
+          <label for="select">label</label>
+          <rh-select id="select" placeholder="placeholder">
+            <rh-option>one</rh-option>
+            <rh-option>two</rh-option>
+          </rh-select>
+        </div>
+      `);
+      element = container.querySelector('rh-select')!;
+      externalBtn = container.querySelector('#external-btn')!;
+      await element.updateComplete;
+    });
+
+    it('show() does not steal focus from an external element', async function() {
+      externalBtn.focus();
+      expect(document.activeElement).to.equal(externalBtn);
+      await element.show();
+      expect(document.activeElement).to.equal(externalBtn);
+    });
+
+    it('hide() does not steal focus from an external element', async function() {
+      externalBtn.focus();
+      await element.show();
+      // Focus should still be on the external button after show
+      expect(document.activeElement).to.equal(externalBtn);
+      await element.hide();
+      expect(document.activeElement).to.equal(externalBtn);
+    });
+
+    it('toggle() to open does not steal focus from an external element', async function() {
+      externalBtn.focus();
+      expect(document.activeElement).to.equal(externalBtn);
+      await element.toggle();
+      expect(element.expanded).to.be.true;
+      expect(document.activeElement).to.equal(externalBtn);
+    });
+
+    it('toggle() to close does not steal focus from an external element', async function() {
+      externalBtn.focus();
+      await element.toggle();
+      expect(element.expanded).to.be.true;
+      await element.toggle();
+      expect(element.expanded).to.be.false;
+      expect(document.activeElement).to.equal(externalBtn);
+    });
+
+    it('Escape inside listbox still returns focus to the toggle', async function() {
+      element.focus();
+      await updateComplete();
+      await sendKeys({ press: 'ArrowDown' });
+      await updateComplete();
+      await sendKeys({ press: 'Escape' });
+      await updateComplete();
+      await nextFrame();
+
+      expect(element.expanded).to.be.false;
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).axTreeFocusedNode.to.have.axRole('combobox');
+    });
+  });
+
   describe('<rh-option-group disabled>', function() {
     let element: RhSelect;
 
