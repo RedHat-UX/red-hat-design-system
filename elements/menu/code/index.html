@@ -4041,7 +4041,13 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>Menu</p>
+      <p>A menu provides a list of actions or links in a vertical layout.
+It is typically used as a subcomponent within <code>rh-menu-dropdown</code>, which
+allows users to select from available options. Authors must ensure that
+slotted content consists of <code>rh-menu-item</code>, <code>rh-menu-item-group</code>, or
+anchor elements. The element assigns the ARIA <code>menubar</code> role and manages
+keyboard focus with a roving tabindex, so users can navigate items using
+Arrow keys and Tab.</p>
 
 
       <div class="element-apis">
@@ -4131,9 +4137,12 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Menu items</p></td>
                   <td>
-                   <p>menu items <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Accepts <code>rh-menu-item</code>, <code>rh-menu-item-group</code>, anchor, or
+<code>&lt;hr&gt;</code> elements. Screen reader users perceive these as
+menubar items. Authors should not place non-interactive
+content in this slot. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -4349,13 +4358,76 @@
               <a href="#rh-menu-events">Events <rh-badge state="neutral"><template shadowroot="open" shadowrootmode="open"><style>span,slot{white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px));color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));justify-content:center;align-items:center;position:relative}:is(span,slot).neutral{background-color:var(--rh-color-status-neutral)}:is(span,slot).info{background-color:var(--rh-color-status-info)}:is(span,slot).success{background-color:var(--rh-color-status-success)}:is(span,slot).caution{background-color:var(--rh-color-status-caution);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).warning{background-color:var(--rh-color-status-warning);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).danger{background-color:var(--rh-color-status-danger)}span:empty{display:none}slot{display:inline-flex}:host([number]) slot{display:none}:host([number]) span{display:inline-flex}</style><!--lit-part hqKOHqwbWgk=-->
       <!--lit-node 0--><span class=" neutral "><!--lit-part--><!--/lit-part--></span>
       <!--lit-node 2--><slot class=" neutral "></slot>
-    <!--/lit-part--></template>0</rh-badge>
+    <!--/lit-part--></template>1</rh-badge>
                 
               </a>
             </h3>
           </uxdot-copy-permalink>
           
-          <p><em>None</em></p>
+          <rh-table  compact><template shadowroot="open" shadowrootmode="open"><style>*{box-sizing:border-box}:host{scrollbar-color:var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);width:100%;color:var(--rh-color-text-primary);--_scrollbar-size:calc(10 / 16 * 1rem);--_scrollbar-thumb-color:var(--rh-color-gray-50,#707070);--_scrollbar-track-color:var(--rh-color-border-subtle);--_row-border: var(--rh-table-row-border,var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle-on-light,#c7c7c7));--_row-background-hover-color:light-dark(var(--rh-table-row-background-hover-color,rgba(from var(--rh-color-gray-40,#a3a3a3) r g b / .1)),rgba(from var(--rh-color-white,#fff) r g b / .1));--_column-background-hover-color:light-dark(var(--rh-table-column-background-hover-color,rgba(from var(--rh-color-blue-50,#06c) r g b / .1)),rgba(from var(--rh-color-blue-70,#036) r g b / .3));display:block;position:relative;overflow:auto}:host::-webkit-scrollbar{width:var(--_scrollbar-size);height:var(--_scrollbar-size)}:host::-webkit-scrollbar{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-track{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-thumb{background-color:var(--_scrollbar-thumb-color)}[slot]{display:block}::slotted([slot=summary]){padding:var(--rh-space-xl,24px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px);color:var(--rh-color-text-secondary);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:italic;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5);display:block}</style><!--lit-part DhG3hBsOx/E=-->
+      <div id="container" part="container">
+        <!-- summary: Default slot for the table element
+             description: |
+               Expects a native HTML `<table>` element with semantic
+               markup. Authors must include `<thead>`, `<tbody>`,
+               and scoped `<th>` elements so that screen readers
+               can navigate the table structure. -->
+        <!--lit-node 2--><slot 
+              
+              
+              ></slot>
+        <!-- summary: Summary slot for table description
+             description: |
+               An optional description of the table data displayed
+               below the table. The element links this content to the
+               table via `aria-describedby` for screen reader users.
+               Authors should use inline elements like `<small>`. -->
+        <slot id="summary" name="summary"></slot>
+      </div>
+    <!--/lit-part--></template>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Event Name</th>
+                  <th scope="col">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                <tr>
+                  <td>
+                    <uxdot-copy-permalink><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;margin-block-end:var(--rh-space-lg);display:flex}#signifier{display:var(--perma-signifier-display,none)}#button{border-radius:var(--rh-border-radius-default);background:0 0;border:none;align-items:center;height:1.75rem;display:none}#button:is(:hover,:focus){background:var(--uxdot-copy-permalink-button-background,light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark)));color:var(--rh-color-text-primary)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){color:inherit;text-decoration:inherit;align-items:center;display:flex;margin-block-end:0!important}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part 5v6yQu9Xxog=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19.204 12.793c1.417 1.417 2.198 3.3 2.198 5.302s-.781 3.884-2.198 5.302l-5.398 5.41C12.378 30.223 10.494 31 8.497 31s-3.88-.778-5.304-2.19C.274 25.88.274 21.12 3.189 18.194l2.912-2.903a1 1 0 1 1 1.412 1.417l-2.91 2.9c-2.137 2.145-2.137 5.639.002 7.786a5.5 5.5 0 0 0 3.892 1.605c1.465 0 2.85-.572 3.896-1.61l5.396-5.407c1.04-1.04 1.613-2.421 1.613-3.888s-.573-2.849-1.612-3.888a5.356 5.356 0 0 0-1.267-.946 1 1 0 0 1 .947-1.762c.63.338 1.214.774 1.733 1.294Zm9.603-9.603C27.383 1.778 25.499 1 23.503 1s-3.881.778-5.309 2.193l-5.398 5.41c-1.417 1.417-2.198 3.3-2.198 5.302s.781 3.885 2.198 5.302c.52.52 1.104.956 1.733 1.294a1.001 1.001 0 0 0 .948-1.762 5.356 5.356 0 0 1-1.267-.946c-1.039-1.04-1.612-2.42-1.612-3.888s.573-2.848 1.613-3.888l5.396-5.407C20.654 3.572 22.038 3 23.503 3s2.849.572 3.892 1.605c2.139 2.147 2.139 5.642.002 7.786l-2.91 2.9a1 1 0 1 0 1.412 1.417l2.912-2.903c2.915-2.925 2.915-7.686-.004-10.616Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+                      <span id="rh-menu-events-toggle">
+                        <a href="#rh-menu-events-toggle">
+                          <code>toggle</code>
+                        </a>
+                      </span>
+                    </uxdot-copy-permalink>
+                  </td>
+                  <td><p>Fired when the menu opens or closes.
+The event detail includes the <code>open</code> boolean state and a reference
+to the menu element.</p></td>
+                </tr>
+              </tbody>
+            </table>
+          </rh-table>
         </section>
     
         
@@ -4446,8 +4518,11 @@
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
-                  <td><p>menu items</p></td>
+                  <td><p>Menu items</p></td>
+                  <td><p>Accepts <code>rh-menu-item</code>, <code>rh-menu-item-group</code>, anchor, or
+<code>&lt;hr&gt;</code> elements. Screen reader users perceive these as
+menubar items. Authors should not place non-interactive
+content in this slot.</p></td>
                 </tr>
               </tbody>
             </table>
@@ -4552,7 +4627,7 @@
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Default link color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4648,7 +4723,7 @@
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Link hover color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4744,7 +4819,8 @@
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Visited link color</p>
+<p>Visited hover link color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4840,7 +4916,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>1px border width; Example: Secondary CTA or Button</p>
+                    <p>Separator border width</p>
+<p>1px border width; Example: Secondary CTA or Button</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4936,7 +5013,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Subtle borders (light theme)</p>
+                    <p>Light separator color</p>
+<p>Subtle borders (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5032,7 +5110,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Subtle icon</p>
+                    <p>Dark separator color</p>
+<p>Subtle icon</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5152,7 +5231,12 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>Menu Dropdown Item Group</p>
+      <p>A menu item group provides a labeled section within an <code>rh-menu</code>, allowing
+authors to organize related <code>rh-menu-item</code> elements under a visible heading.
+The heading is rendered as a presentational span, so screen reader users
+navigate items via the parent menubar role. Authors should set the
+<code>group-heading</code> attribute when grouping items to provide visual context.
+Focus management is handled by the parent <code>rh-menu</code> roving tabindex.</p>
 
 
       <div class="element-apis">
@@ -5242,9 +5326,12 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Group items</p></td>
                   <td>
-                   <p>undefined <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Accepts <code>rh-menu-item</code> elements. Authors must not place
+non-interactive content in this slot. Screen reader users
+navigate grouped items via the parent menu keyboard
+controls. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -5342,7 +5429,9 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>groupHeading</code></td>
-                  <td></td>
+                  <td><p>The visible heading text for this group of menu items.
+When set, a label appears above the grouped items to provide
+visual context for the section.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -5548,7 +5637,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>8px spacer</p>
+                    <p>Vertical heading spacing</p>
+<p>8px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5644,7 +5734,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Horizontal heading padding</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5740,7 +5831,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Body text font family</p>
+                    <p>Group heading font family</p>
+<p>Body text font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5836,7 +5928,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>12px font size</p>
+                    <p>Heading text size</p>
+<p>12px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5932,7 +6025,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Regular font weight</p>
+                    <p>Heading font weight</p>
+<p>Regular font weight</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6028,7 +6122,7 @@
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Heading text color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6148,7 +6242,13 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>Menu Dropdown Item</p>
+      <p>A menu item provides a single action or link within an <code>rh-menu</code>.
+It renders with the ARIA <code>menuitem</code> role for screen reader users.
+Authors must provide visible text content in the default slot.
+When <code>href</code> is set, the item behaves as a hyperlink; authors should
+set the <code>external</code> attribute for links that open in a new tab. Focus
+is managed by the parent <code>rh-menu</code> via roving tabindex, so keyboard
+users can navigate items with Arrow keys.</p>
 
 
       <div class="element-apis">
@@ -6238,9 +6338,10 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Menu item label</p></td>
                   <td>
-                   <p>Use this slot to provide the text content inside menu item. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Inline text label for the menu item. Must contain visible
+text for screen reader accessibility. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
                 <tr>
@@ -6268,10 +6369,12 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Icon slot</p></td>
                   <td>
-                   <p>Slot for an icon displayed alongside the menu item.
-The icon will appear to the left of the menu item text in left-to-right (LTR) layouts.</p>
+                   <p>An icon displayed alongside the menu item label.
+Appears before the text in LTR layouts. Screen reader
+users should receive an accessible label via
+the icon element itself.</p>
                   </td>
                 </tr>
                 <tr>
@@ -6299,9 +6402,11 @@ The icon will appear to the left of the menu item text in left-to-right (LTR) la
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Description slot</p></td>
                   <td>
-                   <p>Use this slot to provide the description inside menu item.</p>
+                   <p>Supplementary description text displayed below the menu
+item label. Screen reader users will perceive this as
+additional context for the menu item.</p>
                   </td>
                 </tr>
               </tbody>
@@ -6673,7 +6778,8 @@ and includes appropriate security attributes (<code>target="_blank"</code> and <
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Horizontal item padding</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6769,7 +6875,8 @@ and includes appropriate security attributes (<code>target="_blank"</code> and <
                     </a>
                   </td>
                   <td>
-                    <p>16px font size</p>
+                    <p>Body text size</p>
+<p>16px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6865,7 +6972,8 @@ and includes appropriate security attributes (<code>target="_blank"</code> and <
                     </a>
                   </td>
                   <td>
-                    <p>Regular font weight</p>
+                    <p>Body text font weight</p>
+<p>Regular font weight</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6961,7 +7069,8 @@ and includes appropriate security attributes (<code>target="_blank"</code> and <
                     </a>
                   </td>
                   <td>
-                    <p>Line height for code</p>
+                    <p>Body text line height</p>
+<p>Line height for code</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7345,7 +7454,8 @@ and includes appropriate security attributes (<code>target="_blank"</code> and <
                     </a>
                   </td>
                   <td>
-                    
+                    <p>External link icon color</p>
+<p>External link icon fill</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7441,7 +7551,11 @@ and includes appropriate security attributes (<code>target="_blank"</code> and <
                     </a>
                   </td>
                   <td>
-                    <p>8px spacer</p>
+                    <p>Vertical item padding</p>
+<p>Space between icon and label</p>
+<p>Space before external icon</p>
+<p>Icon spacing in items</p>
+<p>8px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8402,6 +8516,8 @@ and includes appropriate security attributes (<code>target="_blank"</code> and <
                   </td>
                   <td>
                     <p>Body text font family</p>
+<p>Description font family</p>
+<p>Body text font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8497,7 +8613,8 @@ and includes appropriate security attributes (<code>target="_blank"</code> and <
                     </a>
                   </td>
                   <td>
-                    <p>14px font size</p>
+                    <p>Description font size</p>
+<p>14px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8593,7 +8710,8 @@ and includes appropriate security attributes (<code>target="_blank"</code> and <
                     </a>
                   </td>
                   <td>
-                    <p>Regular font weight for headings</p>
+                    <p>Description font weight</p>
+<p>Regular font weight for headings</p>
                   </td>
                   <td data-label="Copy">
       <div>

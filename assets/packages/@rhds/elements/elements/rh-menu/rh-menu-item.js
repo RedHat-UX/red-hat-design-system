@@ -8,7 +8,16 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 import { css } from "lit";
 const styles = css `:host{display:block;padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);cursor:pointer;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515))}:host a{text-decoration:none;position:relative;display:inline-block;color:light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9))}:is(:host a):after{content:"";position:absolute;bottom:0;left:0;inline-size:100%;height:2px;border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3))}:is(:host a):focus{outline:none}.menu-item-label{display:flex;align-items:center;justify-content:flex-start}.menu-item-label ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}.menu-item-label #menu-link{inline-size:100%;display:flex;align-items:center;justify-content:space-between}:is(.menu-item-label #menu-link) rh-icon{color:var(--rh-color-interactive-secondary-default);fill:var(--rh-color-interactive-secondary-default);padding-inline-start:var(--rh-space-md,8px)}#item{display:flex;align-items:center;justify-content:flex-start}#item ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}:host(:focus),:host(:hover){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}:is(:host(:hover),:host(:focus)) a{color:var(--rh-color-interactive-primary-hover)}:is(:is(:host(:hover),:host(:focus)) a):after{border-bottom-color:var(--rh-color-interactive-primary-hover)}:host(:focus){position:relative;box-sizing:border-box;outline:none}:host(:focus):after{content:"";position:absolute;top:50%;left:4px;transform:translateY(-50%);width:calc(100% - 8px);height:calc(100% - 6px);background-color:initial;border:var(--rh-border-width-md,2px) solid light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));border-radius:var(--rh-border-radius-default,3px)}:host(:focus) #item{outline:none}:host([disabled]),:host([disabled]) a{color:light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d));cursor:default;pointer-events:none}:is(:host([disabled]) a):after{border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d))}::slotted([slot=description]){font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-sm,.875rem)!important;font-style:normal;font-weight:var(--rh-font-weight-heading-regular,400);line-height:21px}.menu-item-content:focus-visible{outline:none}.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}`;
 /**
- * Menu Dropdown Item
+ * A menu item provides a single action or link within an `rh-menu`.
+ * It renders with the ARIA `menuitem` role for screen reader users.
+ * Authors must provide visible text content in the default slot.
+ * When `href` is set, the item behaves as a hyperlink; authors should
+ * set the `external` attribute for links that open in a new tab. Focus
+ * is managed by the parent `rh-menu` via roving tabindex, so keyboard
+ * users can navigate items with Arrow keys.
+ *
+ * @summary A single action or link within a menu
+ *
  * @alias Menu Dropdown Item
  */
 let RhMenuItem = class RhMenuItem extends LitElement {
@@ -44,9 +53,10 @@ let RhMenuItem = class RhMenuItem extends LitElement {
             'Link, opens in a new tab'
             : 'Link';
         const label = html `
-      <!-- 
-        Use this slot to provide the text content inside menu item.
-      -->
+      <!-- summary: Menu item label
+           description: |
+             Inline text label for the menu item. Must contain visible
+             text for screen reader accessibility. -->
       <slot></slot>
     `;
         const content = this.href ?
@@ -66,16 +76,20 @@ let RhMenuItem = class RhMenuItem extends LitElement {
         return html `
       <div aria-disabled="${this.disabled}" class="menu-item-content">
         <div class="menu-item-label">
-          <!-- 
-            Slot for an icon displayed alongside the menu item.
-            The icon will appear to the left of the menu item text in left-to-right (LTR) layouts.
-          -->
+          <!-- summary: Icon slot
+               description: |
+                 An icon displayed alongside the menu item label.
+                 Appears before the text in LTR layouts. Screen reader
+                 users should receive an accessible label via
+                 the icon element itself. -->
           <slot name="icon"></slot>
           ${content}
         </div>
-        <!-- 
-          Use this slot to provide the description inside menu item.
-        -->
+        <!-- summary: Description slot
+             description: |
+               Supplementary description text displayed below the menu
+               item label. Screen reader users will perceive this as
+               additional context for the menu item. -->
         <slot id="description" name="description"></slot>
       </div>
     `;

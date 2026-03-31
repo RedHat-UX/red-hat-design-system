@@ -5,7 +5,19 @@ export declare class MenuToggleEvent extends Event {
     constructor(open: boolean, menu: HTMLElement);
 }
 /**
- * Menu
+ * A menu provides a list of actions or links in a vertical layout.
+ * It is typically used as a subcomponent within `rh-menu-dropdown`, which
+ * allows users to select from available options. Authors must ensure that
+ * slotted content consists of `rh-menu-item`, `rh-menu-item-group`, or
+ * anchor elements. The element assigns the ARIA `menubar` role and manages
+ * keyboard focus with a roving tabindex, so users can navigate items using
+ * Arrow keys and Tab.
+ *
+ * @summary Vertically stacked list of menu actions or links
+ *
+ * @fires {MenuToggleEvent} toggle - Fired when the menu opens or closes.
+ *        The event detail includes the `open` boolean state and a reference
+ *        to the menu element.
  *
  * @alias menu
  */

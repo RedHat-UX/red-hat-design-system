@@ -83,9 +83,15 @@
 
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
-  <body><rh-context-demo>
-  <rh-menu  role="menubar" hydrate-internals-role="menubar" ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}slot{flex-direction:column;align-items:stretch;width:100%;display:inline-flex}::slotted(a){color:var(--rh-color-interactive-primary-default);padding:5px!important}::slotted(a:hover){color:var(--rh-color-interactive-primary-hover)!important}::slotted(a:visited),::slotted(a:visited:hover){color:var(--rh-color-interactive-primary-visited-default)!important}::slotted(hr){border:0;border-top:var(--rh-border-width-sm,1px) solid light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-gray-50,#707070));width:100%}</style><!--lit-part JOu7AhF52+o=-->
-      <!-- menu items -->
+  <body><meta itemprop="description" content="Menu with slotted anchor links rendered across light and dark color contexts.">
+<rh-context-demo>
+  <rh-menu  role="menubar" hydrate-internals-role="menubar" ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}slot{flex-direction:column;align-items:stretch;width:100%;display:inline-flex}::slotted(a){color:var(--rh-color-interactive-primary-default);padding:5px!important}::slotted(a:hover){color:var(--rh-color-interactive-primary-hover)!important}::slotted(a:visited),::slotted(a:visited:hover){color:var(--rh-color-interactive-primary-visited-default)!important}::slotted(hr){border:0;border-top:var(--rh-border-width-sm,1px) solid light-dark( var(--rh-color-gray-30,#c7c7c7), var(--rh-color-gray-50,#707070));width:100%}</style><!--lit-part 9T7XVkAB3Zs=-->
+      <!-- summary: Menu items
+           description: |
+             Accepts `rh-menu-item`, `rh-menu-item-group`, anchor, or
+             `<hr>` elements. Screen reader users perceive these as
+             menubar items. Authors should not place non-interactive
+             content in this slot. -->
       <!--lit-node 1--><slot  part="menu"></slot>
     <!--/lit-part--></template>
     <a href="#">Link1</a>
