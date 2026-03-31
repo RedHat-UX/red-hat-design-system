@@ -6,18 +6,18 @@
 }
 
 ::slotted(*) {
-  /** Space between spinner circle and text label, uses rh-space-lg spacing token */
+  /** Margin between spinner circle and text label */
   margin-top: var(--rh-space-lg, 16px);
 }
 
 ::slotted(p) {
-  /** Text label font family, uses body text typography token */
+  /** Text label font family */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
 
-  /** Text label font weight, uses body text weight token */
+  /** Text label font weight */
   font-weight: var(--rh-font-weight-body-text-regular, 400);
 
-  /** Text label line height, uses body text line-height token */
+  /** Text label line height */
   line-height: var(--rh-line-height-body-text, 1.5);
 }
 
@@ -45,7 +45,7 @@ circle.dash {
   transform-origin: 50% 50%;
   animation: rh-spinner-animation-dash 1.4s ease-out infinite;
 
-  /** Animated indicator stroke color, uses the accent theme token */
+  /** Animated indicator stroke color */
   stroke: var(--rh-color-accent-base);
   stroke-dasharray: 283;
   stroke-dashoffset: 280;
@@ -53,8 +53,13 @@ circle.dash {
 }
 
 circle.track {
-  /** Track stroke color, uses gray design tokens via light-dark() for theme adaptation */
-  stroke: light-dark(var(--rh-color-gray-10, #f2f2f2), var(--rh-color-gray-70, #383838));
+  stroke:
+    light-dark(
+        /** Track stroke color in light mode */
+        var(--rh-color-gray-10, #f2f2f2),
+        /** Track stroke color in dark mode */
+        var(--rh-color-gray-70, #383838)
+      );
   animation-duration: 0;
 }
 
