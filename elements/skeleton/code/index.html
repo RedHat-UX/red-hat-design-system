@@ -27,9 +27,9 @@
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
-    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "lit-element": "/assets/packages/lit-element/index.js",
     "prism-esm": "/assets/packages/prism-esm/prism.js",
@@ -4254,8 +4254,8 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>A skeleton displays an animated placeholder that mimics the structure and layout of actual content while it loads.
-It gives users a preview of what's coming and reduces perceived loading time.</p>
+      <p>A skeleton provides an animated placeholder for content that is loading
+progressively. Must not receive focus or keyboard input.</p>
 
 
       <div class="element-apis">
@@ -4347,7 +4347,11 @@ It gives users a preview of what's coming and reduces perceived loading time.</p
                   </uxdot-copy-permalink></td>
                   <td></td>
                   <td>
-                   <p>Place a visually hidden description of what is being loaded for assistive technologies. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Visually hidden text for screen readers.
+Customize by slotting in text that describes the loading content.
+Accepts inline text content. Defaults to "Loading...".
+Should be customized when multiple skeletons appear on the same page
+to help users of assistive technologies distinguish between them. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -4684,7 +4688,9 @@ The <code>size</code> attribute is not valid on circle, square, or rectangle ske
                     </a>
                   </td>
                   <td>
-                    <p>1px length token</p>
+                    <p>Minimum dimension for visually hidden content</p>
+<p>Minimum dimension for visually hidden content</p>
+<p>1px length token</p>
                   </td>
                   <td data-label="Copy">
       <div>

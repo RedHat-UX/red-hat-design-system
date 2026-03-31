@@ -5,8 +5,8 @@ import { property } from 'lit/decorators/property.js';
 import { css } from "lit";
 const styles = css `.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:var(--rh-length-4xs,1px);margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap;inline-size:var(--rh-length-4xs,1px)}`;
 /**
- * A skeleton displays an animated placeholder that mimics the structure and layout of actual content while it loads.
- * It gives users a preview of what's coming and reduces perceived loading time.
+ * A skeleton provides an animated placeholder for content that is loading
+ * progressively. Must not receive focus or keyboard input.
  *
  * @summary A placeholder for content that is loading.
  *
@@ -16,7 +16,11 @@ let RhSkeleton = class RhSkeleton extends LitElement {
     render() {
         return html `
       <span class="visually-hidden">
-        <!-- Place a visually hidden description of what is being loaded for assistive technologies. -->
+        <!-- Visually hidden text for screen readers.
+             Customize by slotting in text that describes the loading content.
+             Accepts inline text content. Defaults to "Loading...".
+             Should be customized when multiple skeletons appear on the same page
+             to help users of assistive technologies distinguish between them. -->
         <slot>Loading...</slot>
       </span>
     `;
