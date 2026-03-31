@@ -5,11 +5,12 @@ import { property } from 'lit/decorators/property.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
-const styles = css `#sort-button{background-color:initial;border:0;color:var(--rh-color-text-primary)}#sort-button:after{content:"";position:absolute;inset:0;cursor:pointer}#sort-button #sort-indicator{color:currentcolor}.visually-hidden{position:fixed;top:0;left:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}`;
+const styles = css `#sort-button{background-color:initial;border:0;color:var(--rh-color-text-primary)}#sort-button:after{content:"";position:absolute;inset:0;cursor:pointer}#sort-indicator{color:currentcolor}#sort-indicator svg{vertical-align:-.125em}.visually-hidden{position:fixed;top:0;left:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}`;
 const DIRECTIONS_OPPOSITES = { asc: 'desc', desc: 'asc' };
 export class RequestSortEvent extends ComposedEvent {
     constructor(direction) {
         super('request-sort', {
+            bubbles: true,
             cancelable: true,
         });
         this.direction = direction;
@@ -24,26 +25,50 @@ const paths = new Map(Object.entries({
     sort: 'M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41zm255-105L177 64c-9.4-9.4-24.6-9.4-33.9 0L24 183c-15.1 15.1-4.4 41 17 41h238c21.4 0 32.1-25.9 17-41z',
 }));
 /**
- * Table sort button
+ * A button for sorting table columns in ascending or descending order.
+ * Authors must place this element inside a `<th>` cell within an
+ * `<rh-table>` element. The button provides a screen reader accessible
+ * label announcing the current sort direction and column name.
+ * Authors should set the `column` attribute to identify the sorted
+ * column for assistive technology users.
  *
- * @fires {RequestSortEvent} request-sort - when the button is clicked
+ * @summary Toggles column sort direction within a table header
+ *
+ * @fires {RequestSortEvent} request-sort - Fired when the user
+ *        activates the sort button. The event detail includes a
+ *        `direction` property set to `'asc'` or `'desc'`.
+ *        Cancelling this event prevents the default sort behavior.
  */
 let RhSortButton = class RhSortButton extends LitElement {
     render() {
+        const { accessibleLabel, column, sortDirection } = this;
+        const order = sortDirection === 'asc' ? 'ascending' : 'descending';
+        const srText = !sortDirection ? 'Sort'
+            : `(sort${!column ? '' : ` by ${column}`} in ${order} order)`;
         return html `
-      <!-- button element -->
-      <button id="sort-button" part="sort-button" @click="${this.sort}" aria-label="Sort">
-        <span class="visually-hidden">${!this.sortDirection ? '' : `(sort${!this.column ? '' : ` by ${this.column}`} in ${this.sortDirection === 'asc' ? 'ascending' : 'descending'} order)`}</span>
-        <!-- icon wrapper element -->
+      <!-- The native button element. Use to customize the sort button appearance. -->
+      <button id="sort-button"
+              part="sort-button"
+              @click="${this.sort}"
+              aria-labelledby="sort-text">
+        <span id="sort-text"
+              class="visually-hidden">
+          <!--
+            Must not use unless localizing the table.
+            Automatically set based on \`sort-direction\`.
+            Overrides the \`accessible-label\` attribute.
+          -->
+          <slot name="accessible-label">${accessibleLabel ?? srText}</slot>
+        </span>
+        <!-- The wrapper around the sort direction SVG icon. -->
         <span id="sort-indicator" part="sort-indicator">
           <svg fill="currentColor"
                height="1em"
                width="1em"
                viewBox="0 0 320 512"
                aria-hidden="true"
-               role="img"
-               style="vertical-align: -0.125em;">
-            ${svg `<path d="${paths.get(this.sortDirection ?? 'sort')}"></path>`}
+               role="img">${svg `
+            <path d="${paths.get(this.sortDirection ?? 'sort')}"></path>`}
           </svg>
         </span>
       </button>
@@ -64,6 +89,9 @@ __decorate([
         attribute: 'sort-direction',
     })
 ], RhSortButton.prototype, "sortDirection", void 0);
+__decorate([
+    property({ attribute: 'accessible-label' })
+], RhSortButton.prototype, "accessibleLabel", void 0);
 __decorate([
     property()
 ], RhSortButton.prototype, "column", void 0);

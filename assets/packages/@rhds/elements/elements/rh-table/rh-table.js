@@ -9,11 +9,26 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
 const styles = css `*{box-sizing:border-box}:host{position:relative;display:block;width:100%;overflow:auto;scrollbar-color:var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);color:var(--rh-color-text-primary);--_scrollbar-size:0.625rem;--_scrollbar-thumb-color:var(--rh-color-gray-50,#707070);--_scrollbar-track-color:var(--rh-color-border-subtle);--_row-border:var(--rh-table-row-border,var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle-on-light,#c7c7c7));--_row-background-hover-color:light-dark(var(--rh-table-row-background-hover-color,rgba(from var(--rh-color-gray-40,#a3a3a3) r g b/0.1)),rgba(from var(--rh-color-white,#ffffff) r g b/0.1));--_column-background-hover-color:light-dark(var(--rh-table-column-background-hover-color,rgba(from var(--rh-color-blue-50,#0066cc) r g b/0.1)),rgba(from var(--rh-color-blue-70,#003366) r g b/0.3))}:host::-webkit-scrollbar{width:var(--_scrollbar-size);height:var(--_scrollbar-size)}:host::-webkit-scrollbar,:host::-webkit-scrollbar-track{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-thumb{background-color:var(--_scrollbar-thumb-color)}[slot]{display:block}::slotted([slot=summary]){display:block;padding:var(--rh-space-xl,24px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px);color:var(--rh-color-text-secondary);font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:italic;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5)}`;
 /**
- * A table is a container for displaying information. It allows a user to scan, examine, and compare large amounts of data.
+ * A table provides a container for displaying tabular data, allowing
+ * users to scan and compare information. Authors must include a
+ * `<table>` with `<thead>`, `<tbody>`, and scoped `<th>` for ARIA
+ * screen reader navigation. Should use `<col>` for column hover and
+ * `<caption>` for context. Tab and arrow keys scroll overflow. Avoid
+ * using tables for layout.
  *
  * @summary Organizes and displays information from a data set
  *
  * @alias table
+ *
+ * @csspart container - The outer wrapper around the table and summary
+ *                      slots. Use to customize padding or background.
+ *
+ *              style. Uses `--rh-border-width-sm` width and
+ *              `--rh-color-border-subtle-on-light` color tokens.
+ *              Row hover background. Uses `--rh-color-gray-40`
+ *              token at 10% opacity for the light theme.
+ *              Column hover background. Uses `--rh-color-blue-50`
+ *              token at 10% opacity for the light theme.
  *
  */
 let RhTable = RhTable_1 = _a = class RhTable extends LitElement {
@@ -46,12 +61,22 @@ let RhTable = RhTable_1 = _a = class RhTable extends LitElement {
     render() {
         return html `
       <div id="container" part="container">
-        <!-- an HTML table -->
+        <!-- summary: Default slot for the table element
+             description: |
+               Expects a native HTML \`<table>\` element with semantic
+               markup. Authors must include \`<thead>\`, \`<tbody>\`,
+               and scoped \`<th>\` elements so that screen readers
+               can navigate the table structure. -->
         <slot @pointerleave="${__classPrivateFieldGet(this, _RhTable_instances, "m", _RhTable_onPointerleave)}"
               @pointerover="${__classPrivateFieldGet(this, _RhTable_instances, "m", _RhTable_onPointerover)}"
               @request-sort="${__classPrivateFieldGet(this, _RhTable_instances, "m", _RhTable_onRequestSort)}"
               @slotchange="${__classPrivateFieldGet(this, _RhTable_instances, "m", _RhTable_onSlotChange)}"></slot>
-        <!-- description of the data -->
+        <!-- summary: Summary slot for table description
+             description: |
+               An optional description of the table data displayed
+               below the table. The element links this content to the
+               table via \`aria-describedby\` for screen reader users.
+               Authors should use inline elements like \`<small>\`. -->
         <slot id="summary" name="summary"></slot>
       </div>
     `;
