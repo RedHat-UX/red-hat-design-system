@@ -24,7 +24,7 @@ export class MenuToggleEvent extends Event {
 /**
  * A menu provides a list of actions or links in a vertical layout.
  * It is typically used as a subcomponent within `rh-menu-dropdown`, which
- * allows users to select from available options. Authors MUST ensure that
+ * allows users to select from available options. Authors must ensure that
  * slotted content consists of `rh-menu-item`, `rh-menu-item-group`, or
  * anchor elements. The element assigns the ARIA `menubar` role and manages
  * keyboard focus with a roving tabindex, so users can navigate items using
@@ -79,7 +79,7 @@ export class RhMenu extends LitElement {
            description: |
              Accepts \`rh-menu-item\`, \`rh-menu-item-group\`, anchor, or
              \`<hr>\` elements. Screen reader users perceive these as
-             menubar items. Authors SHOULD NOT place non-interactive
+             menubar items. Authors should not place non-interactive
              content in this slot. -->
       <slot @slotchange="${this.#onSlotchange}" part="menu"></slot>
     `;

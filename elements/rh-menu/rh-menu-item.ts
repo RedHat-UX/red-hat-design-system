@@ -10,8 +10,8 @@ import styles from './rh-menu-item.css' with { type: 'css' };
 /**
  * A menu item provides a single action or link within an `rh-menu`.
  * It renders with the ARIA `menuitem` role for screen reader users.
- * Authors MUST provide visible text content in the default slot.
- * When `href` is set, the item behaves as a hyperlink; authors SHOULD
+ * Authors must provide visible text content in the default slot.
+ * When `href` is set, the item behaves as a hyperlink; authors should
  * set the `external` attribute for links that open in a new tab. Focus
  * is managed by the parent `rh-menu` via roving tabindex, so keyboard
  * users can navigate items with Arrow keys.
@@ -67,7 +67,7 @@ export class RhMenuItem extends LitElement {
     const label = html`
       <!-- summary: Menu item label
            description: |
-             Inline text label for the menu item. MUST contain visible
+             Inline text label for the menu item. Must contain visible
              text for screen reader accessibility. -->
       <slot></slot>
     `;
@@ -93,7 +93,7 @@ export class RhMenuItem extends LitElement {
                description: |
                  An icon displayed alongside the menu item label.
                  Appears before the text in LTR layouts. Screen reader
-                 users SHOULD receive an accessible label via
+                 users should receive an accessible label via
                  the icon element itself. -->
           <slot name="icon"></slot>
           ${content}
