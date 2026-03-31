@@ -1,20 +1,20 @@
 span {
-  /** Design token for vertical heading spacing */
+  /** Vertical heading spacing */
   margin-block: var(--rh-space-md, 8px);
 
-  /** Design token for horizontal heading padding */
+  /** Horizontal heading padding */
   padding-inline: var(--rh-space-lg, 16px);
 
-  /** Design token for group heading font family */
+  /** Group heading font family */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
 
-  /** Design token for small heading text size */
+  /** Heading text size */
   font-size: var(--rh-font-size-body-text-xs, 0.75rem);
 
-  /** Design token for heading font weight */
+  /** Heading font weight */
   font-weight: var(--rh-font-weight-body-text-regular, 400);
   line-height: 18px;
 
-  /** Design token for subdued heading text color */
+  /** Heading text color */
   color: var(--rh-color-interactive-secondary-default);
 }
