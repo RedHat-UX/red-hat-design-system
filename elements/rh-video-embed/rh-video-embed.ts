@@ -14,7 +14,7 @@ import styles from './rh-video-embed.css' with { type: 'css' };
 
 /**
  * Fired when the user clicks the "Update preferences" consent button.
- * Consumers SHOULD listen for this event to open a cookie consent dialog.
+ * Consumers should listen for this event to open a cookie consent dialog.
  * This event has no `detail` payload; the event `target` is the
  * `RhVideoEmbed` element that requires consent.
  */
@@ -27,7 +27,7 @@ export class ConsentClickEvent extends Event {
 
 /**
  * Fired when the user clicks the play button to request video playback.
- * Consumers SHOULD listen for this event to track user intent.
+ * Consumers should listen for this event to track user intent.
  * This event has no `detail` payload; the event `target` is the
  * `RhVideoEmbed` element that was clicked.
  */
@@ -52,11 +52,11 @@ export class VideoPlayEvent extends Event {
 
 /**
  * A video embed provides an accessible preview of a YouTube video
- * with a thumbnail and play button. Users MUST provide an iframe
+ * with a thumbnail and play button. Users must provide an iframe
  * inside a `<template>` with a `title` for screen reader users.
- * SHOULD include a thumbnail with `alt` text. Supports Tab and
+ * Should include a thumbnail with `alt` text. Supports Tab and
  * Enter keyboard focus. Uses `aria-hidden` on the thumbnail when
- * active. AVOID videos without WCAG captions.
+ * active. Avoid videos without WCAG captions.
  *
  * @summary Embeds a YouTube video with a thumbnail preview and play button
  *
@@ -169,7 +169,7 @@ export class RhVideoEmbed extends LitElement {
             <!-- summary: Optional thumbnail image overlay
                  description: |
                    Accepts an \`<img>\` element displayed on top of the
-                   video embed. Authors MUST include descriptive \`alt\`
+                   video embed. Authors must include descriptive \`alt\`
                    text for screen reader and ARIA users, e.g. "Video
                    title (video thumbnail)". The thumbnail is hidden
                    via \`aria-hidden\` when the video is playing. -->
@@ -178,17 +178,17 @@ export class RhVideoEmbed extends LitElement {
           <!-- summary: Video iframe template
                description: |
                  Accepts a \`<template>\` element containing an
-                 \`<iframe>\` for the YouTube embed. The iframe MUST
+                 \`<iframe>\` for the YouTube embed. The iframe must
                  include a \`title\` attribute with the video title
                  for screen reader and ARIA accessibility. The
-                 embedded video SHOULD have accurate captions per
+                 embedded video should have accurate captions per
                  WCAG 1.2.2. -->
           <slot></slot>
           <div id="autoplay"><!--
             summary: Internal autoplay iframe slot
             description: |
               Reserved for internal use by \`rh-video-embed\`.
-              Authors MUST NOT place content in this slot. --><slot name="autoplay"></slot></div>
+              Authors must not place content in this slot. --><slot name="autoplay"></slot></div>
           ${this.#showConsent ? html`
             <rh-surface id="consent" color-palette="darker">
               <svg id="watermark" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1136 639">
@@ -213,7 +213,7 @@ export class RhVideoEmbed extends LitElement {
                 <!-- summary: Custom consent message
                      description: |
                        Accepts block content (e.g. \`<p>\`) explaining
-                       that cookie opt-in is required. SHOULD be
+                       that cookie opt-in is required. should be
                        readable by screen readers. Defaults to a
                        built-in message when not provided. -->
                 <slot name="consent-message">
@@ -242,7 +242,7 @@ export class RhVideoEmbed extends LitElement {
               summary: Accessible play button label
               description: |
                 Accepts inline text for the play button screen
-                reader and ARIA label. SHOULD follow the pattern
+                reader and ARIA label. should follow the pattern
                 "Video title (video)" for accessibility. Defaults
                 to the iframe title followed by "(play video)". --><slot name="play-button-text">${playLabel}</slot></span>
           </rh-button>
@@ -252,7 +252,7 @@ export class RhVideoEmbed extends LitElement {
           description: |
             Accepts inline or block content displayed below the
             video embed, such as a \`<p>\` with a link. Links
-            SHOULD have accessible text for screen reader users.
+            should have accessible text for screen reader users.
             Styled with secondary text color and small font. --><slot name="caption"></slot></figcaption>
       </figure>
     `;
