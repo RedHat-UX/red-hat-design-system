@@ -30,8 +30,8 @@ export type NavigationPrimaryPalette = Extract<ColorPalette, (
  * Primary navigation provides a persistent bar for orienting users and
  * navigating across websites and domains. It groups primary links,
  * dropdown menus, event promotions, and utility actions into a single
- * responsive bar. There MUST NOT be more than one on a page. The element
- * uses the ARIA `navigation` landmark role and SHOULD have a unique
+ * responsive bar. There must not be more than one on a page. The element
+ * uses the ARIA `navigation` landmark role and should have a unique
  * `accessible-label` when multiple navigation landmarks exist on the page,
  * so screen readers can distinguish between them. Keyboard users navigate
  * items with Tab/Shift+Tab and close open dropdowns with Escape.
@@ -138,7 +138,7 @@ export class RhNavigationPrimary extends LitElement {
    * Enables the sub-domain variation, which displays the `sub-domain` slot
    * alongside the logo lockup. A logo lockup is a fixed, approved arrangement
    * of a brand’s visual elements—typically the logomark (symbol), logotype (name),
-   * and sometimes a tagline—combined into a single, cohesive unit. MUST be set to
+   * and sometimes a tagline—combined into a single, cohesive unit. must be set to
    * `true` when slotting content into the `sub-domain` slot otherwise content will
    * remain hidden. Defaults to `false`.
    */

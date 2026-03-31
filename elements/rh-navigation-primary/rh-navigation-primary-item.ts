@@ -23,7 +23,7 @@ import styles from './rh-navigation-primary-item.css' with { type: 'css' };
 
 /**
  * A navigation item provides an interactive link or dropdown within the
- * primary navigation bar. It MUST be placed inside `rh-navigation-primary`.
+ * primary navigation bar. It must be placed inside `rh-navigation-primary`.
  * When `variant` is `dropdown`, the toggle uses `aria-expanded` to convey
  * state to screen readers. Keyboard users press Enter or Space to toggle
  * the dropdown; Escape closes it and returns focus to the toggle.
@@ -63,15 +63,15 @@ export class RhNavigationPrimaryItem extends LitElement {
 
   /**
    * Sets the label text for the dropdown toggle. When `variant` is `dropdown`,
-   * either this property or the `summary` slot MUST be provided so the toggle
+   * either this property or the `summary` slot must be provided so the toggle
    * has an accessible name.
    */
   @property() summary?: string;
 
   /**
-   * Controls the presentation style of the navigation item. MUST be set to
+   * Controls the presentation style of the navigation item. must be set to
    * `dropdown` when the item provides an expandable menu, otherwise it
-   * SHOULD remain `link` for simple anchor-style items. Defaults to `link`.
+   * should remain `link` for simple anchor-style items. Defaults to `link`.
    */
   @property() variant?: 'link' | 'dropdown' = 'link';
 
@@ -87,13 +87,13 @@ export class RhNavigationPrimaryItem extends LitElement {
 
   /**
    * Shorthand for the `icon` slot. Sets the icon name from the given icon set.
-   * SHOULD be used with the `dropdown` variant for standalone secondary items
+   * should be used with the `dropdown` variant for standalone secondary items
    * such as account or search toggles. Defaults to `undefined`.
    */
   @property() icon?: IconNameFor<IconSetName>;
 
   /**
-   * Icon set for the `icon` property. MUST match a registered icon set name.
+   * Icon set for the `icon` property. must match a registered icon set name.
    * Defaults to `ui`.
    */
   @property({ attribute: 'icon-set' }) iconSet?: IconSetName;
