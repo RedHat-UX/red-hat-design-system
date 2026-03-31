@@ -25,8 +25,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
@@ -4087,7 +4087,14 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>A timestamp provides consistent formats for displaying date and time values.</p>
+      <p>Provides locale-aware date and time formatting for consistent display
+across pages. Renders a <code>&lt;time&gt;</code> element with an ARIA-accessible
+<code>datetime</code> attribute for screen readers. Authors must set <code>date</code>
+when displaying a specific moment; when omitted, the current time
+is used. Authors should wrap relative timestamps in <code>rh-tooltip</code>
+so users can see the full date. Avoid combining <code>date-format</code> and
+<code>time-format</code> with <code>customFormat</code> as <code>customFormat</code> overrides both.
+The element is not keyboard-focusable on its own.</p>
 
 
       <div class="element-apis">
@@ -4214,7 +4221,9 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>dateFormat</code></td>
-                  <td><p>Custom date formatting style. See <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle">MDN</a> for options.</p></td>
+                  <td><p>Sets the date formatting style. When set without <code>time-format</code>, only the
+date portion is displayed. Accepts <code>full</code>, <code>long</code>, <code>medium</code>, or <code>short</code>.
+See <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle">MDN</a> for details on each style.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'full'</span> <span class="token operator">|</span> <span class="token string">'long'</span> <span class="token operator">|</span> <span class="token string">'medium'</span> <span class="token operator">|</span> <span class="token string">'short'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4246,7 +4255,9 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>timeFormat</code></td>
-                  <td><p>Custom time formatting style. See <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#timestyle">MDN</a> for options.</p></td>
+                  <td><p>Sets the time formatting style. When set without <code>date-format</code>, only the
+time portion is displayed. Accepts <code>full</code>, <code>long</code>, <code>medium</code>, or <code>short</code>.
+See <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#timestyle">MDN</a> for details on each style.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'full'</span> <span class="token operator">|</span> <span class="token string">'long'</span> <span class="token operator">|</span> <span class="token string">'medium'</span> <span class="token operator">|</span> <span class="token string">'short'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4278,7 +4289,9 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>displaySuffix</code></td>
-                  <td><p>Text to display after the timestamp</p></td>
+                  <td><p>Appends custom text after the formatted timestamp string. Useful for
+displaying a timezone label (e.g. "US Eastern") when the built-in
+time format does not include one.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4310,7 +4323,9 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>locale</code></td>
-                  <td><p>Overrides the runtime's default locale</p></td>
+                  <td><p>Overrides the browser's default locale for formatting.
+Accepts any valid BCP 47 language tag (e.g. "en-GB", "es", "ja").
+Defaults to the browser's locale when not set.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4342,7 +4357,9 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>relative</code></td>
-                  <td><p>Formats a timestamp in realtive terms</p></td>
+                  <td><p>When set, displays the timestamp as a relative time string
+(e.g. "3 hours ago", "in 2 days") instead of an absolute date.
+Uses <code>Intl.RelativeTimeFormat</code> for locale-aware output.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4374,7 +4391,8 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>utc</code></td>
-                  <td><p>Sets the timezone as UTC</p></td>
+                  <td><p>When set, converts the displayed time to UTC. If no <code>display-suffix</code>
+is provided, "UTC" is automatically appended.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4406,7 +4424,9 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>hour12</code></td>
-                  <td><p>Whether to use 12-hour time (as opposed to 24-hour time)</p></td>
+                  <td><p>When set, uses 12-hour time format (e.g. "2:30 PM") instead of
+24-hour time (e.g. "14:30"). Accepts the attribute values "true"
+or "false", or can be set as a boolean property.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4438,7 +4458,9 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>date</code></td>
-                  <td><p>A string value representing a date</p></td>
+                  <td><p>The date value to display, as a date string parseable by <code>new Date()</code>.
+If not set, defaults to the current date and time. When read, returns
+the locale-formatted string representation of the date.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>

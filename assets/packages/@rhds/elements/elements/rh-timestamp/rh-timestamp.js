@@ -12,9 +12,16 @@ const BooleanStringConverter = {
     },
 };
 /**
- * A timestamp provides consistent formats for displaying date and time values.
+ * Provides locale-aware date and time formatting for consistent display
+ * across pages. Renders a `<time>` element with an ARIA-accessible
+ * `datetime` attribute for screen readers. Authors must set `date`
+ * when displaying a specific moment; when omitted, the current time
+ * is used. Authors should wrap relative timestamps in `rh-tooltip`
+ * so users can see the full date. Avoid combining `date-format` and
+ * `time-format` with `customFormat` as `customFormat` overrides both.
+ * The element is not keyboard-focusable on its own.
  *
- * @summary Displays a line of text with date and time values
+ * @summary Displays a formatted date and time value using locale-aware formatting
  *
  * @alias timestamp
  */
@@ -24,7 +31,9 @@ let RhTimestamp = class RhTimestamp extends LitElement {
         _RhTimestamp_timestamp.set(this, new TimestampController(this));
     }
     /**
-     * A string value representing a date
+     * The date value to display, as a date string parseable by `new Date()`.
+     * If not set, defaults to the current date and time. When read, returns
+     * the locale-formatted string representation of the date.
      */
     get date() {
         return __classPrivateFieldGet(this, _RhTimestamp_timestamp, "f").localeString;
@@ -32,9 +41,11 @@ let RhTimestamp = class RhTimestamp extends LitElement {
     set date(string) {
         __classPrivateFieldGet(this, _RhTimestamp_timestamp, "f").date = new Date(string);
     }
+    /** The ISO 8601 string representation of the current date value. */
     get isoString() {
         return __classPrivateFieldGet(this, _RhTimestamp_timestamp, "f").isoString;
     }
+    /** The formatted time string currently displayed by the element. */
     get time() {
         return __classPrivateFieldGet(this, _RhTimestamp_timestamp, "f").time;
     }
