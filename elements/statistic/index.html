@@ -25,8 +25,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
@@ -37,8 +37,8 @@
     "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
     "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
     "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
-    "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
     "lit/static-html.js": "/assets/packages/lit/static-html.js",
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
@@ -3817,7 +3817,11 @@
           <a href="#overview">Overview</a>
         </h2>
       </uxdot-copy-permalink>
-      <p>A statistic showcases a data point or quick fact visually.</p>
+      <p>A statistic showcases a data point or quick fact visually.
+Elements must include a <code>statistic</code> slot and body text.
+Icons, titles, and CTAs should be consistent when grouped.
+Adapts color for WCAG contrast in light and dark contexts.
+Only the CTA receives Tab focus; screen readers read DOM order.</p>
 
       
       
@@ -4516,23 +4520,31 @@
 <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
           <uxdot-knob-attribute slot="knobs" tag="rh-stat" name="icon" type="IconNameFor<IconSetName>">
-            <div slot="description"><p>The icon to display in the statistic</p>
+            <div slot="description"><p>The icon name to display above the statistic.
+When set, the component dynamically imports <code>rh-icon</code>
+and renders it using the specified icon set.</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-stat" name="icon-set" type="'ui' | 'standard' | 'social' | 'microns'" default="'standard'">
-            <div slot="description"><p>Icon set to display in the statistic</p>
+            <div slot="description"><p>The icon set from which to load the icon.
+Only applies when the <code>icon</code> attribute is set.</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-stat" name="top" type="'default' | 'statistic'" default="'default'">
-            <div slot="description"><p>Whether the title or statistic should be displayed on top in the statistic</p>
+            <div slot="description"><p>Controls the visual ordering of the title and
+statistic slots. When set to <code>statistic</code>, the data
+value appears above the title text.</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-stat" name="size" type="'default' | 'large'" default="'default'">
-            <div slot="description"><p>The size of the statistic</p>
+            <div slot="description"><p>The size variant of the statistic. The <code>large</code> size
+increases the data text font size and icon dimensions.</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-stat" name="is-mobile" type="boolean" default="false">
-            <div slot="description"><p>Whether the statistic is in a mobile view or not for styling</p>
+            <div slot="description"><p>Whether the statistic renders in a mobile layout with
+reduced font sizes. Managed internally via
+ScreenSizeController but can be set explicitly.</p>
 </div>
           </uxdot-knob-attribute></uxdot-demo>
         

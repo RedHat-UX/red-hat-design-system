@@ -25,8 +25,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
@@ -37,8 +37,8 @@
     "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
     "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
     "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
-    "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
     "lit/static-html.js": "/assets/packages/lit/static-html.js",
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
@@ -4090,7 +4090,11 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>A statistic showcases a data point or quick fact visually.</p>
+      <p>A statistic showcases a data point or quick fact visually.
+Elements must include a <code>statistic</code> slot and body text.
+Icons, titles, and CTAs should be consistent when grouped.
+Adapts color for WCAG contrast in light and dark contexts.
+Only the CTA receives Tab focus; screen readers read DOM order.</p>
 
 
       <div class="element-apis">
@@ -4182,7 +4186,10 @@
                   </uxdot-copy-permalink></td>
                   <td></td>
                   <td>
-                   <p>Optional icon</p>
+                   <p>Optional decorative icon above the data value.
+Accepts an <code>rh-icon</code> or inline SVG. Decorative
+for screen readers; add aria-label to convey
+meaning not in text (WCAG 1.1.1).</p>
                   </td>
                 </tr>
                 <tr>
@@ -4212,7 +4219,9 @@
                   </uxdot-copy-permalink></td>
                   <td></td>
                   <td>
-                   <p>Statistic title</p>
+                   <p>Optional inline text title for context.
+Screen readers announce in DOM order;
+ARIA landmark not required.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4242,7 +4251,10 @@
                   </uxdot-copy-permalink></td>
                   <td></td>
                   <td>
-                   <p>Statistic data</p>
+                   <p>Required inline text data value (number or
+percentage). Screen readers read in DOM order;
+ensure value is meaningful without visual
+formatting (WCAG 1.3.1).</p>
                   </td>
                 </tr>
                 <tr>
@@ -4272,7 +4284,9 @@
                   </uxdot-copy-permalink></td>
                   <td></td>
                   <td>
-                   <p>Description of the stat <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Required block or inline body text describing
+the statistic. Gives screen reader users
+context for the data value. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
                 <tr>
@@ -4302,7 +4316,9 @@
                   </uxdot-copy-permalink></td>
                   <td></td>
                   <td>
-                   <p>Call to action</p>
+                   <p>Optional call to action (<code>rh-cta</code> element).
+Only focusable element; receives Tab focus
+and activates with Enter or Space.</p>
                   </td>
                 </tr>
               </tbody>
@@ -4400,7 +4416,9 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>icon</code></td>
-                  <td><p>The icon to display in the statistic</p></td>
+                  <td><p>The icon name to display above the statistic.
+When set, the component dynamically imports <code>rh-icon</code>
+and renders it using the specified icon set.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts">IconNameFor<span class="token operator">&lt;</span>IconSetName<span class="token operator">&gt;</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4432,7 +4450,8 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>iconSet</code></td>
-                  <td><p>Icon set to display in the statistic</p></td>
+                  <td><p>The icon set from which to load the icon.
+Only applies when the <code>icon</code> attribute is set.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'ui'</span> <span class="token operator">|</span> <span class="token string">'standard'</span> <span class="token operator">|</span> <span class="token string">'social'</span> <span class="token operator">|</span> <span class="token string">'microns'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'standard'</span></code></pre></td>
                 </tr>
@@ -4464,7 +4483,9 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>top</code></td>
-                  <td><p>Whether the title or statistic should be displayed on top in the statistic</p></td>
+                  <td><p>Controls the visual ordering of the title and
+statistic slots. When set to <code>statistic</code>, the data
+value appears above the title text.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'default'</span> <span class="token operator">|</span> <span class="token string">'statistic'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'default'</span></code></pre></td>
                 </tr>
@@ -4496,7 +4517,8 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>size</code></td>
-                  <td><p>The size of the statistic</p></td>
+                  <td><p>The size variant of the statistic. The <code>large</code> size
+increases the data text font size and icon dimensions.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'default'</span> <span class="token operator">|</span> <span class="token string">'large'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'default'</span></code></pre></td>
                 </tr>
@@ -4528,7 +4550,9 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>isMobile</code></td>
-                  <td><p>Whether the statistic is in a mobile view or not for styling</p></td>
+                  <td><p>Whether the statistic renders in a mobile layout with
+reduced font sizes. Managed internally via
+ScreenSizeController but can be set explicitly.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span></code></pre></td>
                 </tr>
@@ -4734,7 +4758,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Brand text color for light theme</p>
+                    <p>Brand accent color in light mode</p>
+<p>Brand text color for light theme</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4830,7 +4855,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Primary text color for dark theme</p>
+                    <p>Primary text accent color in dark mode</p>
+<p>Primary text color for dark theme</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4926,7 +4952,7 @@
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Icon color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5022,7 +5048,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>40px icon box</p>
+                    <p>Default slotted icon width</p>
+<p>40px icon box</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5118,7 +5145,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>64px icon box</p>
+                    <p>Large slotted icon width</p>
+<p>64px icon box</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5214,7 +5242,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>20px font size</p>
+                    <p>Title text size</p>
+<p>20px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5310,7 +5339,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Regular font weight</p>
+                    <p>Title font weight</p>
+<p>Regular font weight</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5406,7 +5436,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>h3 heading font size</p>
+                    <p>Statistic text size</p>
+<p>h3 heading font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5502,7 +5533,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Regular font weight for headings</p>
+                    <p>Statistic font weight</p>
+<p>Regular font weight for headings</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5598,7 +5630,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Body text font family</p>
+                    <p>Body font family</p>
+<p>Body text font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5694,7 +5727,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>6px spacer</p>
+                    <p>Margin above body text</p>
+<p>6px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5790,7 +5824,10 @@
                     </a>
                   </td>
                   <td>
-                    <p>Heading font family</p>
+                    <p>Title font family</p>
+<p>Statistic font family</p>
+<p>CTA font family</p>
+<p>Heading font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5886,7 +5923,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Margin above CTA</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5982,7 +6020,10 @@
                     </a>
                   </td>
                   <td>
-                    <p>18px font size</p>
+                    <p>Body text size</p>
+<p>CTA text size</p>
+<p>Mobile body text size</p>
+<p>18px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
