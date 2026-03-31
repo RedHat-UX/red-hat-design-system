@@ -14,6 +14,8 @@ rh-tile a:is(:focus, :hover, :active) {
   text-decoration: var(--rh-tile-link-text-decoration, underline) !important;
   text-decoration-color: inherit !important;
   text-decoration-style: dashed !important;
+
+  /** Link underline thickness */
   text-decoration-thickness: var(--rh-border-width-sm, 1px) !important;
   text-underline-offset: max(5px, 0.28em) !important;
   transition-timing-function: ease !important;

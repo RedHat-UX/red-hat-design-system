@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, 320px);
 
-  /** Gap between tiles, using the rh-space-2xl design token */
+  /** Gap between tiles */
   gap: var(--rh-space-2xl, 32px);
 }
 
