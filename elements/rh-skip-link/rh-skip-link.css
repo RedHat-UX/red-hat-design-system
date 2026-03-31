@@ -13,39 +13,45 @@ div#container {
 
 a,
 ::slotted(a) {
-  /** Skip link background, lightest surface token */
+  /** Skip link background color */
   background-color: var(--rh-color-surface-lightest, #ffffff) !important;
   border-block-start-width: 0 !important;
   border-block-end:
+    /** Skip link border block end width */
     var(--rh-border-width-sm, 1px)
     solid
+    /** Skip link border block end color */
     var(--rh-color-border-interactive-on-light, #0066cc);
   border-inline-start:
+    /** Skip link border inline start width */
     var(--rh-border-width-sm, 1px)
     solid
+    /** Skip link border inline start color */
     var(--rh-color-border-interactive-on-light, #0066cc);
   border-inline-end:
+    /** Skip link border inline end width */
     var(--rh-border-width-sm, 1px)
     solid
+    /** Skip link border inline end color */
     var(--rh-color-border-interactive-on-light, #0066cc);
 
-  /** Bottom-start corner radius, matches the default border radius design token */
+  /** Skip link bottom-start corner radius */
   border-end-start-radius: var(--rh-border-radius-default, 3px) !important;
 
-  /** Bottom-end corner radius, matches the default border radius design token */
+  /** Skip link bottom-end corner radius */
   border-end-end-radius: var(--rh-border-radius-default, 3px) !important;
   clip: rect(0, 0, 0, 0) !important;
 
-  /** Link text color, uses the interactive primary token for accessible contrast */
+  /** Skip link text color */
   color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
 
-  /** Link text font family, uses the heading font token for brand consistency */
+  /** Skip link font family */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif) !important;
 
-  /** Link text font size, matches body text for readability */
+  /** Skip link font size */
   font-size: var(--rh-font-size-body-text-md, 1rem) !important;
 
-  /** Link text font weight, uses bold heading weight for emphasis */
+  /** Skip link font weight */
   font-weight: var(--rh-font-weight-heading-bold, 700) !important;
   height: 1px !important;
   left: 50% !important;
@@ -67,13 +73,17 @@ a,
 
 a:is(:focus),
 ::slotted(a:is(:focus)) {
-  /** Focus border width, uses the medium border token to mimic a focus ring */
+  /** Skip link focus border width */
   border-width: var(--rh-border-width-md, 2px) !important;
   clip: auto !important;
   height: auto !important;
   margin: 0 !important;
   overflow: visible !important;
-  padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px) !important;
+  padding:
+    /** Skip link focus padding block */
+    var(--rh-space-lg, 16px)
+    /** Skip link focus padding inline */
+    var(--rh-space-2xl, 32px) !important;
   top: 0 !important;
   white-space: inherit !important;
   width: auto !important;
@@ -81,29 +91,35 @@ a:is(:focus),
 
 a:is(:active, :hover),
 ::slotted(a:is(:active, :hover)) {
-  /** Hover/active link text color, uses the interactive hover token for visual feedback */
+  /** Skip link hover text color */
   color: var(--rh-color-interactive-primary-hover);
   text-decoration: underline !important;
   text-decoration-style: dashed !important;
   text-decoration-color: inherit !important;
 
-  /** Underline thickness on hover/active, uses the small border width token */
+  /** Skip link hover underline thickness */
   text-decoration-thickness: var(--rh-border-width-sm) !important;
   text-underline-offset: max(5px, 0.28em) !important;
   transition-timing-function: ease;
   transition-property: text-underline-offset, color, text-decoration-color;
   transition-duration: 0.3s;
   border-block-end:
+    /** Skip link hover border block end width */
     var(--rh-border-width-sm, 1px)
     solid
+    /** Skip link hover border block end color */
     var(--rh-color-interactive-primary-hover-on-light, #003366);
   border-inline-start:
+    /** Skip link hover border inline start width */
     var(--rh-border-width-sm, 1px)
     solid
+    /** Skip link hover border inline start color */
     var(--rh-color-interactive-primary-hover-on-light, #003366);
   border-inline-end:
+    /** Skip link hover border inline end width */
     var(--rh-border-width-sm, 1px)
     solid
+    /** Skip link hover border inline end color */
     var(--rh-color-interactive-primary-hover-on-light, #003366);
 }
 
