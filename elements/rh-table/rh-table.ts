@@ -10,11 +10,26 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import styles from './rh-table.css' with { type: 'css' };
 
 /**
- * A table is a container for displaying information. It allows a user to scan, examine, and compare large amounts of data.
+ * A table provides a container for displaying tabular data, allowing
+ * users to scan and compare information. Authors must include a
+ * `<table>` with `<thead>`, `<tbody>`, and scoped `<th>` for ARIA
+ * screen reader navigation. Should use `<col>` for column hover and
+ * `<caption>` for context. Tab and arrow keys scroll overflow. Avoid
+ * using tables for layout.
  *
  * @summary Organizes and displays information from a data set
  *
  * @alias table
+ *
+ * @csspart container - The outer wrapper around the table and summary
+ *                      slots. Use to customize padding or background.
+ *
+ *              style. Uses `--rh-border-width-sm` width and
+ *              `--rh-color-border-subtle-on-light` color tokens.
+ *              Row hover background. Uses `--rh-color-gray-40`
+ *              token at 10% opacity for the light theme.
+ *              Column hover background. Uses `--rh-color-blue-50`
+ *              token at 10% opacity for the light theme.
  *
  */
 @customElement('rh-table')
@@ -78,12 +93,22 @@ export class RhTable extends LitElement {
   render() {
     return html`
       <div id="container" part="container">
-        <!-- an HTML table -->
+        <!-- summary: Default slot for the table element
+             description: |
+               Expects a native HTML \`<table>\` element with semantic
+               markup. Authors must include \`<thead>\`, \`<tbody>\`,
+               and scoped \`<th>\` elements so that screen readers
+               can navigate the table structure. -->
         <slot @pointerleave="${this.#onPointerleave}"
               @pointerover="${this.#onPointerover}"
               @request-sort="${this.#onRequestSort}"
               @slotchange="${this.#onSlotChange}"></slot>
-        <!-- description of the data -->
+        <!-- summary: Summary slot for table description
+             description: |
+               An optional description of the table data displayed
+               below the table. The element links this content to the
+               table via \`aria-describedby\` for screen reader users.
+               Authors should use inline elements like \`<small>\`. -->
         <slot id="summary" name="summary"></slot>
       </div>
     `;
