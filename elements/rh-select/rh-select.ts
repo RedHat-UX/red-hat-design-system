@@ -412,7 +412,8 @@ export class RhSelect extends LitElement {
       } else {
         this.#doCollapse();
         // Only return focus to the toggle when closing the listbox
-        if (old) {
+        // AND focus is currently inside this element.
+        if (old && this.matches(':focus-within')) {
           this._toggleButton?.focus();
         }
       }
