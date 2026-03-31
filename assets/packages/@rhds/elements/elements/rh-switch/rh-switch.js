@@ -12,10 +12,20 @@ import { css } from "lit";
 const styles = css `:host{display:inline-flex;outline:none;vertical-align:top;cursor:pointer}[hidden]{display:none!important}#container{display:inline-flex;align-items:center;gap:var(--rh-space-lg,16px);--_margin-inline:5px;--_switch-width:40px;--_switch-height:24px;--_switch-handle-size:14px;--_switch-track-background-color:light-dark(var(--rh-switch-unchecked,var(--rh-color-gray-60,#4d4d4d)),var(--rh-switch-unchecked,var(--rh-color-gray-40,#a3a3a3)));--_switch-handle-color:light-dark(var(--rh-color-surface-lightest,#fff),oklch(from var(--rh-color-surface-dark,#383838) calc(l * 0.82) c h))}#container:after{box-shadow:light-dark(none,var(--rh-box-shadow-sm,0 2px 4px 0 #15151533))}#container #switch{align-items:center;display:inline-flex;flex-shrink:0;position:relative;width:var(--_switch-width);height:var(--_switch-height);border-radius:var(--rh-border-radius-pill,64px)}:is(#container #switch):before{content:"";display:flex;position:absolute;width:100%;height:100%;border-radius:inherit;justify-content:center;align-items:center;background-color:var(--_switch-track-background-color)}:is(#container #switch):after{content:"";height:var(--_switch-handle-size);width:var(--_switch-handle-size);border-radius:var(--rh-border-radius-pill,64px);transform-origin:center;z-index:0;background-color:var(--_switch-handle-color);margin-inline:var(--_margin-inline);translate:0;transition:translate .25s ease 0s}#container .message{color:var(--rh-color-text-secondary)}#container.checked{--_switch-track-background-color:var(--rh-switch-checked,light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9)))}#container.checked .message{color:var(--rh-color-text-primary)}#container.checked #switch:after{translate:calc(var(--_switch-width) - var(--_switch-handle-size) - var(--_margin-inline)*2)}#container.checked #switch:dir(rtl):after{translate:calc((var(--_switch-width) - (var(--_switch-handle-size) + (var(--_margin-inline)*2)))*-1)}rh-icon{margin-inline:var(--_margin-inline);color:var(--_switch-handle-color);position:absolute;z-index:1}:host(:is(:focus,:focus-within)) #container #switch{outline:var(--rh-border-width-md,2px) solid var(--rh-color-border-interactive);outline-offset:var(--rh-space-sm,6px)}:host(:disabled){pointer-events:none;cursor:not-allowed}:is(:host(:disabled) #container) .message{color:var(--rh-color-gray-50,#707070)}:is(:host(:disabled) #container) ::slotted(*),:is(:host(:disabled) #container) span{color:light-dark(var(--rh-color-gray-60,#4d4d4d),var(--rh-color-gray-40,#a3a3a3))}.checked:is(:host(:disabled) #container),:is(:host(:disabled) #container):not(.checked){--_switch-track-background-color:light-dark(var(--rh-switch-disabled,var(--rh-color-gray-30,#c7c7c7)),var(--rh-switch-disabled,var(--rh-color-gray-60,#4d4d4d)))}`;
 import '@rhds/elements/rh-icon/rh-icon.js';
 /**
- * A switch toggles the state of a setting (between on and off). Switches and checkboxes can often be used interchangeably, but the switch provides a more explicit, visible representation on a setting.
+ * A switch provides a visible toggle for a setting. Authors must supply
+ * an accessible label via `accessible-label` or a `<label for>`. The
+ * element uses ARIA `role="switch"` with `aria-checked` for screen
+ * readers. Users should toggle with Space or Enter keys. Avoid using
+ * a switch when multiple selections are needed; use checkboxes instead.
+ *
  * @summary  A switch toggles the state of a setting (between on and off).
  *
  * @alias switch
+ *
+ * @fires {Event} change - Fires when the user toggles the switch on or
+ *   off via click, Space, or Enter. Does not fire when disabled. The
+ *   event bubbles and carries no detail; read the `checked` property
+ *   on the target element to determine the new state.
  *
  */
 let RhSwitch = class RhSwitch extends LitElement {
@@ -24,7 +34,7 @@ let RhSwitch = class RhSwitch extends LitElement {
         _RhSwitch_instances.add(this);
         /** If the checkmark icon should be displayed when the switch is on */
         this.showCheckIcon = false;
-        /** If the switch is on */
+        /** Whether the switch is on (checked) */
         this.checked = false;
         /** If the switch is disabled */
         this.disabled = false;
@@ -78,15 +88,25 @@ let RhSwitch = class RhSwitch extends LitElement {
     render() {
         const { reversed, checked } = this;
         const slots = html `
-      <!-- message content when checked. Overrides the \`message-on\` attribute. -->
+      <!-- summary: Message content when checked. Overrides the \`message-on\` attribute.
+           description: |
+             Accepts inline content such as \`<span>\` elements. Content is
+             exposed to screen readers via \`aria-describedby\`, so it should
+             be concise and meaningful. -->
       <slot class="message" name="message-on" ?hidden="${!this.checked}"><span aria-hidden="true">${this.messageOn}</span></slot>
-      <!-- message content when unchecked. Overrides the \`message-off\` attribute. -->
+      <!-- summary: Message content when unchecked. Overrides the \`message-off\` attribute.
+           description: |
+             Accepts inline content such as \`<span>\` elements. Content is
+             exposed to screen readers via \`aria-describedby\`, so it should
+             be concise and meaningful. -->
       <slot class="message" name="message-off" ?hidden="${this.checked}"><span aria-hidden="true">${this.messageOff}</span></slot>`;
         return html `
+      <!-- The outer flex container for the switch and message slots -->
       <div id="container"
            part="container"
            class="${classMap({ checked })}">
         ${reversed ? slots : ''}
+        <!-- The toggle track and handle -->
         <div id="switch"
              part="switch">
           <rh-icon id="toggle"

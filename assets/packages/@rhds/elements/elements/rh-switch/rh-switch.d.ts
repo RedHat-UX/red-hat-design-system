@@ -1,10 +1,20 @@
 import { LitElement } from 'lit';
 import '@rhds/elements/rh-icon/rh-icon.js';
 /**
- * A switch toggles the state of a setting (between on and off). Switches and checkboxes can often be used interchangeably, but the switch provides a more explicit, visible representation on a setting.
+ * A switch provides a visible toggle for a setting. Authors must supply
+ * an accessible label via `accessible-label` or a `<label for>`. The
+ * element uses ARIA `role="switch"` with `aria-checked` for screen
+ * readers. Users should toggle with Space or Enter keys. Avoid using
+ * a switch when multiple selections are needed; use checkboxes instead.
+ *
  * @summary  A switch toggles the state of a setting (between on and off).
  *
  * @alias switch
+ *
+ * @fires {Event} change - Fires when the user toggles the switch on or
+ *   off via click, Space, or Enter. Does not fire when disabled. The
+ *   event bubbles and carries no detail; read the `checked` property
+ *   on the target element to determine the new state.
  *
  */
 export declare class RhSwitch extends LitElement {
@@ -19,7 +29,7 @@ export declare class RhSwitch extends LitElement {
     messageOff?: string;
     /** If the checkmark icon should be displayed when the switch is on */
     showCheckIcon: boolean;
-    /** If the switch is on */
+    /** Whether the switch is on (checked) */
     checked: boolean;
     /** If the switch is disabled */
     disabled: boolean;

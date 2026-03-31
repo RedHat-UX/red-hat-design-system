@@ -37,8 +37,8 @@
     "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
     "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
     "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
-    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
     "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
     "lit/static-html.js": "/assets/packages/lit/static-html.js",
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
@@ -3817,7 +3817,11 @@
           <a href="#overview">Overview</a>
         </h2>
       </uxdot-copy-permalink>
-      <p>A switch toggles the state of a setting (between on and off). Switches and checkboxes can often be used interchangeably, but the switch provides a more explicit, visible representation on a setting.</p>
+      <p>A switch provides a visible toggle for a setting. Authors must supply
+an accessible label via <code>accessible-label</code> or a <code>&lt;label for&gt;</code>. The
+element uses ARIA <code>role="switch"</code> with <code>aria-checked</code> for screen
+readers. Users should toggle with Space or Enter keys. Avoid using
+a switch when multiple selections are needed; use checkboxes instead.</p>
 
       
       
@@ -4622,7 +4626,7 @@
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-switch" name="checked" type="boolean" default="false">
-            <div slot="description"><p>If the switch is on</p>
+            <div slot="description"><p>Whether the switch is on (checked)</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-switch" name="disabled" type="boolean" default="false">

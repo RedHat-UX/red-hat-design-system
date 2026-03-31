@@ -37,8 +37,8 @@
     "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
     "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
     "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
-    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
     "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
     "lit/static-html.js": "/assets/packages/lit/static-html.js",
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
@@ -4093,7 +4093,11 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>A switch toggles the state of a setting (between on and off). Switches and checkboxes can often be used interchangeably, but the switch provides a more explicit, visible representation on a setting.</p>
+      <p>A switch provides a visible toggle for a setting. Authors must supply
+an accessible label via <code>accessible-label</code> or a <code>&lt;label for&gt;</code>. The
+element uses ARIA <code>role="switch"</code> with <code>aria-checked</code> for screen
+readers. Users should toggle with Space or Enter keys. Avoid using
+a switch when multiple selections are needed; use checkboxes instead.</p>
 
 
       <div class="element-apis">
@@ -4183,9 +4187,11 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Message content when checked. Overrides the <code>message-on</code> attribute.</p></td>
                   <td>
-                   <p>message content when checked. Overrides the <code>message-on</code> attribute.</p>
+                   <p>Accepts inline content such as <code>&lt;span&gt;</code> elements. Content is
+exposed to screen readers via <code>aria-describedby</code>, so it should
+be concise and meaningful.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4213,9 +4219,11 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Message content when unchecked. Overrides the <code>message-off</code> attribute.</p></td>
                   <td>
-                   <p>message content when unchecked. Overrides the <code>message-off</code> attribute.</p>
+                   <p>Accepts inline content such as <code>&lt;span&gt;</code> elements. Content is
+exposed to screen readers via <code>aria-describedby</code>, so it should
+be concise and meaningful.</p>
                   </td>
                 </tr>
               </tbody>
@@ -4441,7 +4449,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>checked</code></td>
-                  <td><p>If the switch is on</p></td>
+                  <td><p>Whether the switch is on (checked)</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span></code></pre></td>
                 </tr>
@@ -4571,13 +4579,77 @@
               <a href="#rh-switch-events">Events <rh-badge state="neutral"><template shadowroot="open" shadowrootmode="open"><style>span,slot{white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px));color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));justify-content:center;align-items:center;position:relative}:is(span,slot).neutral{background-color:var(--rh-color-status-neutral)}:is(span,slot).info{background-color:var(--rh-color-status-info)}:is(span,slot).success{background-color:var(--rh-color-status-success)}:is(span,slot).caution{background-color:var(--rh-color-status-caution);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).warning{background-color:var(--rh-color-status-warning);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).danger{background-color:var(--rh-color-status-danger)}span:empty{display:none}slot{display:inline-flex}:host([number]) slot{display:none}:host([number]) span{display:inline-flex}</style><!--lit-part hqKOHqwbWgk=-->
       <!--lit-node 0--><span class=" neutral "><!--lit-part--><!--/lit-part--></span>
       <!--lit-node 2--><slot class=" neutral "></slot>
-    <!--/lit-part--></template>0</rh-badge>
+    <!--/lit-part--></template>1</rh-badge>
                 
               </a>
             </h3>
           </uxdot-copy-permalink>
           
-          <p><em>None</em></p>
+          <rh-table  compact><template shadowroot="open" shadowrootmode="open"><style>*{box-sizing:border-box}:host{scrollbar-color:var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);width:100%;color:var(--rh-color-text-primary);--_scrollbar-size:calc(10 / 16 * 1rem);--_scrollbar-thumb-color:var(--rh-color-gray-50,#707070);--_scrollbar-track-color:var(--rh-color-border-subtle);--_row-border: var(--rh-table-row-border,var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle-on-light,#c7c7c7));--_row-background-hover-color:light-dark(var(--rh-table-row-background-hover-color,rgba(from var(--rh-color-gray-40,#a3a3a3) r g b / .1)),rgba(from var(--rh-color-white,#fff) r g b / .1));--_column-background-hover-color:light-dark(var(--rh-table-column-background-hover-color,rgba(from var(--rh-color-blue-50,#06c) r g b / .1)),rgba(from var(--rh-color-blue-70,#036) r g b / .3));display:block;position:relative;overflow:auto}:host::-webkit-scrollbar{width:var(--_scrollbar-size);height:var(--_scrollbar-size)}:host::-webkit-scrollbar{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-track{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-thumb{background-color:var(--_scrollbar-thumb-color)}[slot]{display:block}::slotted([slot=summary]){padding:var(--rh-space-xl,24px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px);color:var(--rh-color-text-secondary);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:italic;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5);display:block}</style><!--lit-part DhG3hBsOx/E=-->
+      <div id="container" part="container">
+        <!-- summary: Default slot for the table element
+             description: |
+               Expects a native HTML `<table>` element with semantic
+               markup. Authors must include `<thead>`, `<tbody>`,
+               and scoped `<th>` elements so that screen readers
+               can navigate the table structure. -->
+        <!--lit-node 2--><slot 
+              
+              
+              ></slot>
+        <!-- summary: Summary slot for table description
+             description: |
+               An optional description of the table data displayed
+               below the table. The element links this content to the
+               table via `aria-describedby` for screen reader users.
+               Authors should use inline elements like `<small>`. -->
+        <slot id="summary" name="summary"></slot>
+      </div>
+    <!--/lit-part--></template>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Event Name</th>
+                  <th scope="col">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                <tr>
+                  <td>
+                    <uxdot-copy-permalink><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;margin-block-end:var(--rh-space-lg);display:flex}#signifier{display:var(--perma-signifier-display,none)}#button{border-radius:var(--rh-border-radius-default);background:0 0;border:none;align-items:center;height:1.75rem;display:none}#button:is(:hover,:focus){background:var(--uxdot-copy-permalink-button-background,light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark)));color:var(--rh-color-text-primary)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){color:inherit;text-decoration:inherit;align-items:center;display:flex;margin-block-end:0!important}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part 5v6yQu9Xxog=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19.204 12.793c1.417 1.417 2.198 3.3 2.198 5.302s-.781 3.884-2.198 5.302l-5.398 5.41C12.378 30.223 10.494 31 8.497 31s-3.88-.778-5.304-2.19C.274 25.88.274 21.12 3.189 18.194l2.912-2.903a1 1 0 1 1 1.412 1.417l-2.91 2.9c-2.137 2.145-2.137 5.639.002 7.786a5.5 5.5 0 0 0 3.892 1.605c1.465 0 2.85-.572 3.896-1.61l5.396-5.407c1.04-1.04 1.613-2.421 1.613-3.888s-.573-2.849-1.612-3.888a5.356 5.356 0 0 0-1.267-.946 1 1 0 0 1 .947-1.762c.63.338 1.214.774 1.733 1.294Zm9.603-9.603C27.383 1.778 25.499 1 23.503 1s-3.881.778-5.309 2.193l-5.398 5.41c-1.417 1.417-2.198 3.3-2.198 5.302s.781 3.885 2.198 5.302c.52.52 1.104.956 1.733 1.294a1.001 1.001 0 0 0 .948-1.762 5.356 5.356 0 0 1-1.267-.946c-1.039-1.04-1.612-2.42-1.612-3.888s.573-2.848 1.613-3.888l5.396-5.407C20.654 3.572 22.038 3 23.503 3s2.849.572 3.892 1.605c2.139 2.147 2.139 5.642.002 7.786l-2.91 2.9a1 1 0 1 0 1.412 1.417l2.912-2.903c2.915-2.925 2.915-7.686-.004-10.616Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+                      <span id="rh-switch-events-change">
+                        <a href="#rh-switch-events-change">
+                          <code>change</code>
+                        </a>
+                      </span>
+                    </uxdot-copy-permalink>
+                  </td>
+                  <td><p>Fires when the user toggles the switch on or
+off via click, Space, or Enter. Does not fire when disabled. The
+event bubbles and carries no detail; read the <code>checked</code> property
+on the target element to determine the new state.</p></td>
+                </tr>
+              </tbody>
+            </table>
+          </rh-table>
         </section>
     
         
@@ -4669,7 +4741,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td></td>
-                  <td></td>
+                  <td><p>The outer flex container for the switch and message slots</p></td>
                 </tr>
                 <tr>
                   <td>
@@ -4699,7 +4771,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td></td>
-                  <td></td>
+                  <td><p>The toggle track and handle</p></td>
                 </tr>
               </tbody>
             </table>
@@ -4768,23 +4840,28 @@
               <tbody>
                 <tr>
                   <td><code>--rh-switch-unchecked</code></td>
-                  <td><p>The background color of the switch when it is unchecked.</p></td>
+                  <td><p>Unchecked track color in light mode</p>
+<p>Unchecked track color in dark mode</p></td>
                   <td>
                     <code>var(--rh-color-gray-40, #a3a3a3)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-switch-checked</code></td>
-                  <td><p>The background color of the switch when it is checked.</p></td>
+                  <td></td>
                   <td>
                     <code>light-dark(
+          /** Checked track color in light mode */
           var(--rh-color-accent-base-on-light, #0066cc),
-          var(--rh-color-accent-base-on-dark, #92c5f9))</code>
+          /** Checked track color in dark mode */
+          var(--rh-color-accent-base-on-dark, #92c5f9)
+        )</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-switch-disabled</code></td>
-                  <td><p>The background color of the switch when it is disabled.</p></td>
+                  <td><p>Disabled track color in light mode</p>
+<p>Disabled track color in dark mode</p></td>
                   <td>
                     <code>var(--rh-color-gray-60, #4d4d4d)</code>
                   </td>
@@ -4859,7 +4936,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Gap between track and message</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4955,7 +5033,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Primary surface (light theme)</p>
+                    <p>Handle color in light mode</p>
+<p>Primary surface (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5147,7 +5226,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Small box shadow</p>
+                    <p>Handle shadow in dark mode</p>
+<p>Small box shadow</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5243,7 +5323,9 @@
                     </a>
                   </td>
                   <td>
-                    <p>Pill border radius; Example: Label</p>
+                    <p>Track border radius</p>
+<p>Handle border radius</p>
+<p>Pill border radius; Example: Label</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5339,7 +5421,7 @@
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Unchecked message text color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5435,7 +5517,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Inline link (light theme)</p>
+                    <p>Checked track color in light mode</p>
+<p>Inline link (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5531,7 +5614,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Inline link (dark theme)</p>
+                    <p>Checked track color in dark mode</p>
+<p>Inline link (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5627,7 +5711,7 @@
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Checked message text color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5723,7 +5807,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>2px border width: Example: Alert</p>
+                    <p>Focus ring outline width</p>
+<p>2px border width: Example: Alert</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5819,7 +5904,7 @@
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Focus ring outline color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6011,7 +6096,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Subtle icon</p>
+                    <p>Disabled message text color</p>
+<p>Subtle icon</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6107,7 +6193,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Subtle icon (hover state)</p>
+                    <p>Disabled text color in dark mode</p>
+<p>Subtle icon (hover state)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6299,7 +6386,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Secondary text (light theme)</p>
+                    <p>Disabled text color in light mode</p>
+<p>Secondary text (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
