@@ -18,9 +18,9 @@ type Scheme = 'light' | 'dark' | 'light dark';
 
 /**
  * A scheme toggle provides users with the ability to switch between
- * light, dark, and system default color schemes. It SHOULD be placed
+ * light, dark, and system default color schemes. It should be placed
  * in a visible location for easy access. For WCAG compliance, screen
- * reader users MUST be able to identify each option; the component
+ * reader users must be able to identify each option; the component
  * uses a native fieldset with ARIA-compatible radio buttons. Tab
  * focuses the group; arrow keys allow selection between schemes.
  *
@@ -52,7 +52,7 @@ export class RhSchemeToggle extends LitElement {
 
   /**
    * Legend text displayed next to the toggle button group.
-   * Authors SHOULD keep this text short (under 20 characters).
+   * Authors should keep this text short (under 20 characters).
    */
   @property({ attribute: 'legend-text' }) legendText = 'Color scheme';
 
