@@ -1,5 +1,9 @@
 :host {
   display: block;
+
+  /** Primary text color */
   color: var(--rh-color-text-primary);
+
+  /** Surface background color */
   background-color: var(--rh-color-surface);
 }
