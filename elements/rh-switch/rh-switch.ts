@@ -14,10 +14,10 @@ import styles from './rh-switch.css' with { type: 'css' };
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 /**
- * A switch provides a visible toggle for a setting. Authors MUST supply
+ * A switch provides a visible toggle for a setting. Authors must supply
  * an accessible label via `accessible-label` or a `<label for>`. The
  * element uses ARIA `role="switch"` with `aria-checked` for screen
- * readers. Users SHOULD toggle with Space or Enter keys. AVOID using
+ * readers. Users should toggle with Space or Enter keys. Avoid using
  * a switch when multiple selections are needed; use checkboxes instead.
  *
  * @summary  A switch toggles the state of a setting (between on and off).
@@ -115,13 +115,13 @@ export class RhSwitch extends LitElement {
       <!-- summary: Message content when checked. Overrides the \`message-on\` attribute.
            description: |
              Accepts inline content such as \`<span>\` elements. Content is
-             exposed to screen readers via \`aria-describedby\`, so it SHOULD
+             exposed to screen readers via \`aria-describedby\`, so it should
              be concise and meaningful. -->
       <slot class="message" name="message-on" ?hidden="${!this.checked}"><span aria-hidden="true">${this.messageOn}</span></slot>
       <!-- summary: Message content when unchecked. Overrides the \`message-off\` attribute.
            description: |
              Accepts inline content such as \`<span>\` elements. Content is
-             exposed to screen readers via \`aria-describedby\`, so it SHOULD
+             exposed to screen readers via \`aria-describedby\`, so it should
              be concise and meaningful. -->
       <slot class="message" name="message-off" ?hidden="${this.checked}"><span aria-hidden="true">${this.messageOff}</span></slot>`;
     return html`
