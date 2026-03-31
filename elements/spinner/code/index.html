@@ -25,8 +25,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
@@ -43,8 +43,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
     "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
@@ -4204,9 +4204,13 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>A spinner indicates that an action is in progress.
-It appears as an animated circle over the section that is loading,
-and it may include a text label</p>
+      <p>Provides an animated loading indicator for when content is being
+processed or fetched. A spinner should be used when loading takes
+fewer than ten seconds and the content structure is unknown.
+Authors must not use a spinner for indeterminate loading over ten
+seconds; use a progress bar instead. Authors should avoid omitting
+a text label, as screen readers rely on <code>role="status"</code> to announce
+the ARIA live region. The element is not keyboard-focusable.</p>
 
 
       <div class="element-apis">
@@ -4298,7 +4302,8 @@ and it may include a text label</p>
                   </uxdot-copy-permalink></td>
                   <td></td>
                   <td>
-                   <p>Optional text label below the animated circle. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Optional text label displayed below the animated circle.
+Use a <code>&lt;p&gt;</code> element with a brief loading message (e.g. "Loading..."). <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -4602,7 +4607,8 @@ and it may include a text label</p>
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Margin between spinner circle and text label</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4698,7 +4704,8 @@ and it may include a text label</p>
                     </a>
                   </td>
                   <td>
-                    <p>Body text font family</p>
+                    <p>Text label font family</p>
+<p>Body text font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4794,7 +4801,8 @@ and it may include a text label</p>
                     </a>
                   </td>
                   <td>
-                    <p>Regular font weight</p>
+                    <p>Text label font weight</p>
+<p>Regular font weight</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4890,7 +4898,8 @@ and it may include a text label</p>
                     </a>
                   </td>
                   <td>
-                    <p>Line height for body text</p>
+                    <p>Text label line height</p>
+<p>Line height for body text</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4986,7 +4995,8 @@ and it may include a text label</p>
                     </a>
                   </td>
                   <td>
-                    <p>64px length token</p>
+                    <p>Default spinner circle diameter</p>
+<p>64px length token</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5082,7 +5092,7 @@ and it may include a text label</p>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Animated indicator stroke color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5178,7 +5188,8 @@ and it may include a text label</p>
                     </a>
                   </td>
                   <td>
-                    <p>Tertiary surface (light theme)</p>
+                    <p>Track stroke color in light mode</p>
+<p>Tertiary surface (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5274,7 +5285,8 @@ and it may include a text label</p>
                     </a>
                   </td>
                   <td>
-                    <p>Tertiary surface (dark theme)</p>
+                    <p>Track stroke color in dark mode</p>
+<p>Tertiary surface (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5466,7 +5478,8 @@ and it may include a text label</p>
                     </a>
                   </td>
                   <td>
-                    <p>6px length token</p>
+                    <p>Default spinner circle stroke width</p>
+<p>6px length token</p>
                   </td>
                   <td data-label="Copy">
       <div>
