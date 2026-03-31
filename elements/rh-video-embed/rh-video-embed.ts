@@ -56,7 +56,7 @@ export class VideoPlayEvent extends Event {
  * inside a `<template>` with a `title` for screen reader users.
  * Should include a thumbnail with `alt` text. Supports Tab and
  * Enter keyboard focus. Uses `aria-hidden` on the thumbnail when
- * active. Avoid videos without WCAG captions.
+ * active. Avoid videos without captions.
  *
  * @summary Embeds a YouTube video with a thumbnail preview and play button
  *
