@@ -10,10 +10,10 @@ export type SpinnerSize = RhSpinner['size'];
 
 /**
  * Provides an animated loading indicator for when content is being
- * processed or fetched. A spinner SHOULD be used when loading takes
+ * processed or fetched. A spinner should be used when loading takes
  * fewer than ten seconds and the content structure is unknown.
- * Authors MUST NOT use a spinner for indeterminate loading over ten
- * seconds; use a progress bar instead. Authors SHOULD AVOID omitting
+ * Authors must not use a spinner for indeterminate loading over ten
+ * seconds; use a progress bar instead. Authors should avoid omitting
  * a text label, as screen readers rely on `role="status"` to announce
  * the ARIA live region. The element is not keyboard-focusable.
  *
