@@ -1,6 +1,10 @@
 :host {
   display: block;
+
+  /** Text color, adapts to color-palette */
   color: var(--rh-color-text-primary);
+
+  /** Tabs background, adapts to color-palette */
   background-color: var(--rh-color-surface);
   container-name: host;
   container-type: inline-size;
@@ -21,7 +25,11 @@
     position: absolute;
     inset-inline-end: 0;
     inset: 0;
+
+    /** Tab list bottom border width */
     border-width: 0 0 var(--rh-border-width-sm, 1px);
+
+    /** Tab list bottom border color, adapts to color-palette */
     border-color: var(--rh-color-border-subtle);
     border-style: solid;
   }
@@ -40,6 +48,8 @@
   bottom: 0;
   margin: 0;
   width: auto;
+
+  /** Font size using rh-font-size-body-text-md token */
   font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
@@ -93,7 +103,10 @@ button {
 }
 
 #container {
+  /** Overflow scroll button arrow accent color */
   --_arrow-color: var(--rh-color-accent-base);
+
+  /** Overflow scroll button default text color */
   --_overflow-button-text-color: var(--rh-color-text-secondary);
 
   /* Non Standard usage of rh-color-icon-status-disabled.
@@ -101,10 +114,15 @@ button {
   --rh-color-icon-status-disabled:
     light-dark(var(--rh-color-gray-40, #a3a3a3),
       var(--rh-color-gray-60, #4d4d4d));
+
+  /** Overflow scroll button disabled text color */
   /* stylelint-disable-next-line rhds/no-unknown-token-name */
   --_overflow-button-disabled-text-color: var(--rh-color-icon-status-disabled);
+
+  /** Overflow scroll button hover text color */
   --_overflow-button-hover-text-color: var(--rh-color-text-primary);
 
+  /** Container text color from rh-color-text-primary */
   color: var(--rh-color-text-primary);
 
   @container (min-width: 768px) {
@@ -128,6 +146,8 @@ button {
         &:before {
           height: 100%;
           border-block-end-width: 0;
+
+          /** Vertical border using rh-border-width-sm token */
           border-inline-start-width: var(--rh-border-width-sm, 1px);
         }
       }
@@ -196,7 +216,11 @@ button {
 /* OVERFLOW BUTTONS */
 :is(#previous-tab, #next-tab) {
   padding-block: 0;
+
+  /** Scroll button inline padding */
   padding-inline: var(--rh-space-lg, 16px);
+
+  /** Scroll button background, adapts to color-palette */
   background-color: var(--rh-color-surface);
   color: var(--_overflow-button-text-color);
   position: relative;

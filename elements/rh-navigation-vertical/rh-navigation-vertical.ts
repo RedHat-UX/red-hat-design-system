@@ -15,9 +15,14 @@ import './rh-navigation-vertical-list.js';
 import styles from './rh-navigation-vertical.css' with { type: 'css' };
 
 /**
- * A vertical navigation list of top-level and grouped navigation items, typically used in a side navigation pattern.
+ * A vertical sidebar navigation for organizing site structure. Authors
+ * must set `accessible-label` when multiple navigation landmarks exist.
+ * Uses a `navigation` ARIA role with a visually hidden heading for
+ * screen readers. Keyboard users tab through links and groups.
+ *
  * @summary Organizes and communicates structure and content vertically
  * @alias Navigation (vertical)
+ *
  */
 @customElement('rh-navigation-vertical')
 @themable
@@ -50,10 +55,11 @@ export class RhNavigationVertical extends LitElement {
     return html`
       <h2 class="visually-hidden">${this.accessibleLabel}</h2>
       <div id="container" role="list">
-          <!--
-            Use this slot for \`<rh-navigation-link>\` elements to provide a list of navigation links  
-            and \`<rh-navigation-vertical-list>\` when providing a grouped list of navigation links. 
-          -->
+        <!-- summary: Navigation items
+             description: |
+               Place \`<rh-navigation-link>\` or \`<rh-navigation-vertical-list>\`
+               elements. Each item receives an ARIA listitem role for
+               screen reader accessibility. -->
         <slot></slot>
       </div>
     `;
