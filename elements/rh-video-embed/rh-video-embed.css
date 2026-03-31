@@ -53,7 +53,7 @@ figure {
 }
 
 figcaption {
-  /** Spacing above caption from rh-space-lg token */
+  /** Spacing above caption */
   margin-block-start: var(--rh-space-lg, 16px);
 }
 
@@ -62,13 +62,13 @@ figcaption ::slotted(p) {
 }
 
 ::slotted([slot='caption']) {
-  /** Caption text uses secondary color token */
+  /** Caption text color */
   color: var(--rh-color-text-secondary);
 
-  /** Caption font size from body-text-sm token */
+  /** Caption font size */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
 
-  /** Caption line height from body-text token */
+  /** Caption line height */
   line-height: var(--rh-line-height-body-text, 1.5);
 }
 
@@ -94,36 +94,36 @@ figcaption ::slotted(p) {
 
 #consent-message,
 ::slotted([slot='consent-message']) {
-  /** Consent message uses heading font family */
+  /** Consent message font family */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
 
-  /** Consent message heading-xs font size */
+  /** Consent message font size */
   font-size: var(--rh-font-size-heading-xs, 1.25rem);
 
-  /** Consent message heading line height */
+  /** Consent message line height */
   line-height: var(--rh-line-height-heading, 1.3);
 }
 
 #consent-message,
 ::slotted([slot='consent-message']:last-of-type) {
-  /** Space below consent message from rh-space-lg */
+  /** Space below consent message */
   margin-block-end: var(--rh-space-lg, 16px);
 }
 
 @container consent (min-width: 576px) {
   #consent-message,
   ::slotted([slot='consent-message']:last-of-type) {
-    /** Wider consent spacing from rh-space-xl */
+    /** Wider consent spacing */
     margin-block-end: var(--rh-space-xl, 24px);
   }
 
   #consent-body {
-    /** Consent body padding from rh-space-xl */
+    /** Consent body padding */
     padding: var(--rh-space-xl, 24px);
   }
 
   #consent-message {
-    /** Larger consent text from rh-font-size-heading-sm */
+    /** Larger consent font size */
     font-size: var(--rh-font-size-heading-sm, 1.5rem);
   }
 }
@@ -138,28 +138,28 @@ figcaption ::slotted(p) {
 }
 
 #play:focus-within {
-  /** Focus border radius from default token */
+  /** Focus border radius */
   border-radius: var(--rh-border-radius-default, 3px);
 
-  /** Focus outline width from rh-border-width-lg */
+  /** Focus outline width */
   outline: var(--rh-border-width-lg, 3px) solid var(--_video-focus-border-color);
 
-  /** Focus outline offset from rh-border-width-md */
+  /** Focus outline offset */
   outline-offset: var(--rh-border-width-md, 2px);
 }
 
 #play::part(button) {
-  /** Fallback uses rh-color-surface-darkest token */
+  /** Play button background color */
   background-color: var(--_video-play-btn-bkg-color, var(--rh-color-surface-darkest, #151515));
 
-  /** Play button vertical center from rh-length-2xl */
+  /** Play button vertical center offset */
   inset-block: calc(50% - var(--rh-length-2xl, 32px)) 0;
   inset-inline: 50% 0;
   position: absolute;
   outline: none;
   transform: translate(-50%);
 
-  /** Play button width from rh-length-4xl token */
+  /** Play button width */
   width: var(--rh-length-4xl, 64px);
 }
 
@@ -170,7 +170,7 @@ figcaption ::slotted(p) {
 }
 
 #play::part(icon) {
-  /** Play icon color adapts to surface theme */
+  /** Play icon color */
   color: var(--rh-color-surface);
 }
 
