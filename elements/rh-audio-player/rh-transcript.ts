@@ -19,13 +19,11 @@ import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 /**
- * An expandable panel that displays a synchronized transcript of the audio
- * content using `rh-cue` child elements. The panel includes an autoscroll
- * toggle that keeps the active cue visible, and a download button that
- * triggers a text file download of the full transcript. This element must
- * be placed in the `transcript` slot of `rh-audio-player`. Content authors
- * should provide `rh-cue` elements in the default slot with `start` and
- * optionally `end` and `voice` attributes.
+ * Provides a synchronized transcript panel for `rh-audio-player`. Use this
+ * when you need to display timed captions alongside audio playback. Must
+ * be placed in the `transcript` slot. Authors should provide `rh-cue`
+ * block elements with `start` and optionally `end` and `voice` attributes.
+ * Active cues are highlighted for screen reader and sighted users alike.
  *
  * @summary Displays synchronized, scrollable transcript with download
  *
@@ -33,21 +31,30 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  * @csspart toolbar - The toolbar area containing autoscroll and download.
  *
  * @fires transcriptdownload - Fired when the user clicks the download
- *        button, handled by the parent `rh-audio-player` to generate
- *        a text file download.
+ *        button. This is a plain `Event` with `bubbles: true` and no
+ *        custom detail. The parent `rh-audio-player` handles it to
+ *        generate a `.txt` file download of the full transcript.
  */
 @customElement('rh-transcript')
 export class RhTranscript extends LitElement {
   static readonly styles = [buttonStyles, panelStyles, styles];
 
+  /** Custom heading text displayed at the top of the transcript panel. Overridden by the `heading` slot. */
   @property() heading?: string;
 
+  /** Accessible label for the panel, used as the menu item text when no heading slot is provided. */
   @property() label?: string;
 
+  /** Language code for transcript content, used for text direction and localization. */
   @property({ reflect: true }) lang!: string;
 
+  /** Text label shown in the parent player's menu for this panel. */
   @property() menuLabel = 'About the episode';
+
+  /** Text label for the download button and its tooltip. */
   @property() downloadLabel = 'Download';
+
+  /** Text label for the autoscroll checkbox. */
   @property() autoscrollLabel = 'Autoscroll';
 
   @state() private _autoscroll!: string;
@@ -73,9 +80,12 @@ export class RhTranscript extends LitElement {
 
   override render(): TemplateResult {
     return html`
-      <!-- scrolling text overflow -->
       <rh-audio-player-scrolling-text-overflow part="heading">
-        <!-- custom heading for panel -->
+        <!-- summary: Panel heading
+             description: |
+               Accepts a heading block element like \`<h3>\` for the panel
+               title. Should use an appropriate heading level for the page
+               so screen readers can navigate the panel hierarchy. -->
         <slot name="heading">${this.#headings.wrap(this.menuLabel)}</slot>
       </rh-audio-player-scrolling-text-overflow>
       <!-- toolbar area above cues list -->
@@ -94,7 +104,11 @@ export class RhTranscript extends LitElement {
           <span slot="content">${this.downloadLabel}</span>
         </rh-tooltip>`}
       </div>
-      <!-- \`rh-cue\` elements -->
+      <!-- summary: Transcript cue elements
+           description: |
+             Accepts \`<rh-cue>\` block elements with \`start\`, \`end\`, and
+             \`voice\` attributes. Screen readers can navigate individual
+             cues, and clicking a cue seeks the audio to that timestamp. -->
       <slot id="cues"></slot>
     `;
   }
