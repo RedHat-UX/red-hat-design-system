@@ -25,8 +25,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
@@ -43,8 +43,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
@@ -3817,7 +3817,11 @@
           <a href="#overview">Overview</a>
         </h2>
       </uxdot-copy-permalink>
-      <p>Health index displays a health grade (A–F) for a particular item or package.</p>
+      <p>Health index provides a visual grade (A through F) for communicating the
+health or security level of an item. Authors must set the <code>grade</code>
+attribute and should place it in context that makes its purpose clear.
+It uses ARIA <code>meter</code> role so screen reader users can read the grade.
+This element should not receive keyboard focus, as it is non-interactive.</p>
 
       
       
@@ -4470,13 +4474,17 @@
 <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
           <uxdot-knob-attribute slot="knobs" tag="rh-health-index" name="size" type="'sm' | 'md' | 'lg' | 'xl'" default="'md'">
-            <div slot="description"><p>Sets the size of the health index
-Defaults to <code>md</code></p>
+            <div slot="description"><p>Sets the visual size of the health index. The <code>sm</code> size renders only the
+active grade letter. The default <code>md</code> size renders all grade boxes without
+labels. The <code>lg</code> and <code>xl</code> sizes render all grade letters with the active
+grade highlighted and bordered.</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-health-index" name="grade" type="'A' | 'B' | 'C' | 'D' | 'E' | 'F'" default="'A'">
-            <div slot="description"><p>Sets the health grade
-Defaults to <code>A</code></p>
+            <div slot="description"><p>Sets the health grade from A (best) to F (worst). Grades A and B use
+success status colors, C uses warning, D uses caution, and E and F use
+danger. The value is case-insensitive; lowercase input is normalized to
+uppercase.</p>
 </div>
           </uxdot-knob-attribute></uxdot-demo>
         

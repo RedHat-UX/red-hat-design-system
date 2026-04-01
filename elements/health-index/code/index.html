@@ -25,8 +25,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
@@ -43,8 +43,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
@@ -4087,7 +4087,11 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>Health index displays a health grade (A–F) for a particular item or package.</p>
+      <p>Health index provides a visual grade (A through F) for communicating the
+health or security level of an item. Authors must set the <code>grade</code>
+attribute and should place it in context that makes its purpose clear.
+It uses ARIA <code>meter</code> role so screen reader users can read the grade.
+This element should not receive keyboard focus, as it is non-interactive.</p>
 
 
       <div class="element-apis">
@@ -4214,8 +4218,10 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>size</code></td>
-                  <td><p>Sets the size of the health index
-Defaults to <code>md</code></p></td>
+                  <td><p>Sets the visual size of the health index. The <code>sm</code> size renders only the
+active grade letter. The default <code>md</code> size renders all grade boxes without
+labels. The <code>lg</code> and <code>xl</code> sizes render all grade letters with the active
+grade highlighted and bordered.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'sm'</span> <span class="token operator">|</span> <span class="token string">'md'</span> <span class="token operator">|</span> <span class="token string">'lg'</span> <span class="token operator">|</span> <span class="token string">'xl'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'md'</span></code></pre></td>
                 </tr>
@@ -4247,8 +4253,10 @@ Defaults to <code>md</code></p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>grade</code></td>
-                  <td><p>Sets the health grade
-Defaults to <code>A</code></p></td>
+                  <td><p>Sets the health grade from A (best) to F (worst). Grades A and B use
+success status colors, C uses warning, D uses caution, and E and F use
+danger. The value is case-insensitive; lowercase input is normalized to
+uppercase.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'A'</span> <span class="token operator">|</span> <span class="token string">'B'</span> <span class="token operator">|</span> <span class="token string">'C'</span> <span class="token operator">|</span> <span class="token string">'D'</span> <span class="token operator">|</span> <span class="token string">'E'</span> <span class="token operator">|</span> <span class="token string">'F'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'A'</span></code></pre></td>
                 </tr>
@@ -4454,7 +4462,8 @@ Defaults to <code>A</code></p></td>
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Grade label inline end spacing</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4550,7 +4559,10 @@ Defaults to <code>A</code></p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>A grade small box fill</p>
+<p>A grade large box fill</p>
+<p>B grade small box fill</p>
+<p>B grade large box fill</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4646,7 +4658,14 @@ Defaults to <code>A</code></p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>A grade small box border color</p>
+<p>A grade large box border color</p>
+<p>A grade medium box fill</p>
+<p>A grade accent bar color</p>
+<p>B grade small box border color</p>
+<p>B grade large box border color</p>
+<p>B grade medium box fill</p>
+<p>B grade accent bar color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4742,7 +4761,8 @@ Defaults to <code>A</code></p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>C grade small box fill</p>
+<p>C grade large box fill</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4838,7 +4858,10 @@ Defaults to <code>A</code></p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>C grade small box border color</p>
+<p>C grade large box border color</p>
+<p>C grade medium box fill</p>
+<p>C grade accent bar color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4934,7 +4957,8 @@ Defaults to <code>A</code></p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>D grade small box fill</p>
+<p>D grade large box fill</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5030,7 +5054,10 @@ Defaults to <code>A</code></p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>D grade small box border color</p>
+<p>D grade large box border color</p>
+<p>D grade medium box fill</p>
+<p>D grade accent bar color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5126,7 +5153,10 @@ Defaults to <code>A</code></p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>E grade small box fill</p>
+<p>E grade large box fill</p>
+<p>F grade small box fill</p>
+<p>F grade large box fill</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5222,7 +5252,14 @@ Defaults to <code>A</code></p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>E grade small box border color</p>
+<p>E grade large box border color</p>
+<p>E grade medium box fill</p>
+<p>E grade accent bar color</p>
+<p>F grade small box border color</p>
+<p>F grade large box border color</p>
+<p>F grade medium box fill</p>
+<p>F grade accent bar color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5318,7 +5355,8 @@ Defaults to <code>A</code></p></td>
                     </a>
                   </td>
                   <td>
-                    <p>24px spacer</p>
+                    <p>Default box size</p>
+<p>24px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5414,7 +5452,8 @@ Defaults to <code>A</code></p></td>
                     </a>
                   </td>
                   <td>
-                    <p>32px spacer</p>
+                    <p>Extra-large box size</p>
+<p>32px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5510,7 +5549,8 @@ Defaults to <code>A</code></p></td>
                     </a>
                   </td>
                   <td>
-                    <p>20px font size</p>
+                    <p>Extra-large grade font size</p>
+<p>20px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5702,7 +5742,8 @@ Defaults to <code>A</code></p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Code font family</p>
+                    <p>Grade letter font family</p>
+<p>Code font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5798,7 +5839,7 @@ Defaults to <code>A</code></p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Container border color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5990,7 +6031,8 @@ Defaults to <code>A</code></p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Subtle border color (light theme)</p>
+                    <p>Medium box border in light mode</p>
+<p>Subtle border color (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6086,7 +6128,7 @@ Defaults to <code>A</code></p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Medium box border in dark mode</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6182,7 +6224,9 @@ Defaults to <code>A</code></p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Primary surface (light theme)</p>
+                    <p>Grade box surface in light mode</p>
+<p>Medium box fill in light mode</p>
+<p>Primary surface (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6278,7 +6322,8 @@ Defaults to <code>A</code></p></td>
                     </a>
                   </td>
                   <td>
-                    <p>4px length token</p>
+                    <p>Accent bar height</p>
+<p>4px length token</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6374,7 +6419,8 @@ Defaults to <code>A</code></p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Medium font weight</p>
+                    <p>Active grade letter weight</p>
+<p>Medium font weight</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6470,7 +6516,21 @@ Defaults to <code>A</code></p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Small letter color</p>
+<p>Large letter color</p>
+<p>Small letter color</p>
+<p>Large letter color</p>
+<p>Small letter color</p>
+<p>Large letter color</p>
+<p>Small letter color</p>
+<p>Large letter color</p>
+<p>Small letter color</p>
+<p>Large letter color</p>
+<p>Small letter color</p>
+<p>Large letter color</p>
+<p>Active grade text color</p>
+<p>Small grade letter color in dark mode</p>
+<p>Active grade text color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6566,7 +6626,10 @@ Defaults to <code>A</code></p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Primary surface (dark theme)</p>
+                    <p>Small box fill in dark mode</p>
+<p>Medium box fill in dark mode</p>
+<p>Active box fill in dark mode</p>
+<p>Primary surface (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6662,7 +6725,10 @@ Defaults to <code>A</code></p></td>
                     </a>
                   </td>
                   <td>
-                    <p>1px border width; Example: Secondary CTA or Button</p>
+                    <p>Container border width</p>
+<p>Grade box border width</p>
+<p>Active box border width</p>
+<p>1px border width; Example: Secondary CTA or Button</p>
                   </td>
                   <td data-label="Copy">
       <div>
