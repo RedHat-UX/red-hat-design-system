@@ -181,6 +181,7 @@ export class RhTranscript extends LitElement {
     }
   }
 
+  /** Triggers the scrolling text animation on the panel heading if it overflows its container. */
   scrollText() {
     this.shadowRoot?.querySelector('rh-audio-player-scrolling-text-overflow')?.startScrolling();
   }

@@ -95,6 +95,7 @@ export class RhAudioPlayerAbout extends LitElement {
     return this.label || this.#label || 'About the episode';
   }
 
+  /** Triggers the scrolling text animation on all panel headings that overflow their container. */
   scrollText() {
     const scrollers = this.shadowRoot?.querySelectorAll('rh-audio-player-scrolling-text-overflow');
     for (const scroller of scrollers ?? []) {

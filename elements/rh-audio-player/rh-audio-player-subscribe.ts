@@ -78,6 +78,7 @@ export class RhAudioPlayerSubscribe extends LitElement {
     return this.label || this.#label || 'Subscribe';
   }
 
+  /** Triggers the scrolling text animation on the panel heading if it overflows its container. */
   scrollText() {
     this.shadowRoot?.querySelector('rh-audio-player-scrolling-text-overflow')?.startScrolling();
   }
