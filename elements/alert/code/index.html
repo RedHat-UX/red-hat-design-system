@@ -43,8 +43,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
     "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
@@ -6019,9 +6019,11 @@ like to keep the alert on screen, prevent the default action:</p>
         </h2>
       </uxdot-copy-permalink>
 
-      <p>An alert is a banner used to notify a user about a change in status
-or communicate other information. It can be generated with or without
-a user triggering an action first.</p>
+      <p>An alert provides a banner for status changes or messages.
+It uses ARIA <code>role="alert"</code> so screen readers must announce
+its content. Authors should provide a heading and must avoid
+nesting alerts. Users may Tab to interactive elements and
+press Enter to activate them. Meets WCAG 2.4.3.</p>
 
 
       <div class="element-apis">
@@ -6113,7 +6115,10 @@ a user triggering an action first.</p>
                   </uxdot-copy-permalink></td>
                   <td></td>
                   <td>
-                   <p>Provide actions that the user can take for the alert</p>
+                   <p>Up to two <code>rh-button</code> action elements. Each
+must have a <code>data-action</code> attribute. Buttons
+are keyboard-focusable via Tab and should use
+ARIA labels when text is not descriptive.</p>
                   </td>
                 </tr>
                 <tr>
@@ -6143,7 +6148,9 @@ a user triggering an action first.</p>
                   </uxdot-copy-permalink></td>
                   <td></td>
                   <td>
-                   <p>Provide a header for the alert message.</p>
+                   <p>Alert heading; must be a heading element
+(e.g. <code>&lt;h3&gt;</code>) so screen readers convey the
+alert's ARIA structure.</p>
                   </td>
                 </tr>
                 <tr>
@@ -6173,7 +6180,9 @@ a user triggering an action first.</p>
                   </uxdot-copy-permalink></td>
                   <td></td>
                   <td>
-                   <p>Provide a description for the alert message <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Body content for the alert; accepts block
+elements like <code>&lt;p&gt;</code>. Should be concise so
+screen reader users quickly understand it. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -6480,7 +6489,11 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td><p>when the dismissable alert closes</p></td>
+                  <td><p>Fires when dismissed via
+close button or action click. <code>AlertCloseEvent.action</code>
+contains the action string (e.g. 'close', 'confirm',
+'dismiss'). Cancelable: call <code>preventDefault()</code> to
+keep the alert in the DOM.</p></td>
                 </tr>
               </tbody>
             </table>
@@ -6618,7 +6631,8 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    <p>24px spacer</p>
+                    <p>Action button inline end margin</p>
+<p>24px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6714,7 +6728,7 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Action link color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6810,7 +6824,7 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Action link hover/focus color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6906,7 +6920,8 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    <p>Alert - Default background</p>
+                    <p>Default surface color</p>
+<p>Alert - Default background</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7002,7 +7017,9 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    <p>Alert - Default accent</p>
+                    <p>Default border color</p>
+<p>Default icon color</p>
+<p>Alert - Default accent</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7098,7 +7115,8 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    <p>2px border width: Example: Alert</p>
+                    <p>Alert border width</p>
+<p>2px border width: Example: Alert</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7194,7 +7212,8 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    <p>Tertiary surface (dark theme)</p>
+                    <p>Alert dark mode surface color</p>
+<p>Tertiary surface (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7290,7 +7309,9 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Footer block start margin</p>
+<p>Alert padding</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7386,7 +7407,8 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    <p>Regular font weight</p>
+                    <p>Alert font weight</p>
+<p>Regular font weight</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7482,7 +7504,9 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    <p>Body text font family</p>
+                    <p>Alert font family</p>
+<p>Header font family</p>
+<p>Body text font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7578,7 +7602,8 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    <p>Medium font weight</p>
+                    <p>Header font weight</p>
+<p>Medium font weight</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7674,7 +7699,9 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    <p>Line height for body text</p>
+                    <p>Alert line height</p>
+<p>Header line height</p>
+<p>Line height for body text</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7770,7 +7797,11 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    <p>14px font size</p>
+                    <p>Action button font size</p>
+<p>Alert font size</p>
+<p>Header font size</p>
+<p>Description font size</p>
+<p>14px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7866,7 +7897,7 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Neutral state border color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7962,7 +7993,7 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Neutral state icon color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8058,7 +8089,7 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Neutral state surface color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8154,7 +8185,7 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Info state border color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8250,7 +8281,7 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Info state icon color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8346,7 +8377,7 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Info state surface color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8442,7 +8473,7 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Success state border color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8538,7 +8569,7 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Success state icon color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8634,7 +8665,7 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Success state surface color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8730,7 +8761,7 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Caution state border color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8826,7 +8857,7 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Caution state icon color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8922,7 +8953,7 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Caution state surface color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9018,7 +9049,7 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Warning state border color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9114,7 +9145,7 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Warning state icon color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9210,7 +9241,7 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Warning state surface color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9306,7 +9337,7 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Danger state border color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9402,7 +9433,7 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Danger state icon color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9498,7 +9529,7 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Danger state surface color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9594,7 +9625,8 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    <p>Primary surface (light theme)</p>
+                    <p>Toast surface color</p>
+<p>Primary surface (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9690,7 +9722,8 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    <p>Extra large box shadow</p>
+                    <p>Toast box shadow</p>
+<p>Extra large box shadow</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9786,7 +9819,11 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    <p>4px spacer</p>
+                    <p>Header block end margin</p>
+<p>Grid gap</p>
+<p>Heading block end padding</p>
+<p>Close button area inline end margin</p>
+<p>4px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9882,7 +9919,9 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    <p>24px icon box</p>
+                    <p>Status icon inline size</p>
+<p>Status icon block size</p>
+<p>24px icon box</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9978,7 +10017,7 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Close button color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -10074,7 +10113,9 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    <p>24px length token</p>
+                    <p>Close button block size</p>
+<p>Close button inline size</p>
+<p>24px length token</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -10170,7 +10211,8 @@ All Toast alerts can be dismissed by a user selecting the close button or waitin
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Header text color</p>
+<p>Close button hover color</p>
                   </td>
                   <td data-label="Copy">
       <div>

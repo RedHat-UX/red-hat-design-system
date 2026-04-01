@@ -19,20 +19,32 @@ interface ToastOptions {
     /** One or more optional body actions */
     actions?: [] | [AlertAction] | [AlertAction, AlertAction];
 }
+/**
+ * Event fired when a dismissable alert is closed, either by the close button
+ * or by an action button with a `data-action` attribute. The event is
+ * cancelable; calling `preventDefault()` will prevent the alert from being
+ * removed from the DOM.
+ */
 export declare class AlertCloseEvent extends Event {
     action: 'close' | 'confirm' | 'dismiss' | string;
     constructor(action: 'close' | 'confirm' | 'dismiss' | string);
 }
 /**
- * An alert is a banner used to notify a user about a change in status
- * or communicate other information. It can be generated with or without
- * a user triggering an action first.
+ * An alert provides a banner for status changes or messages.
+ * It uses ARIA `role="alert"` so screen readers must announce
+ * its content. Authors should provide a heading and must avoid
+ * nesting alerts. Users may Tab to interactive elements and
+ * press Enter to activate them. Meets WCAG 2.4.3.
  *
  * @summary Notifies a user without blocking their workflow
  *
  * @alias alert
  *
- * @fires {AlertCloseEvent} close - when the dismissable alert closes
+ * @fires {AlertCloseEvent} close - Fires when dismissed via
+ *        close button or action click. `AlertCloseEvent.action`
+ *        contains the action string (e.g. 'close', 'confirm',
+ *        'dismiss'). Cancelable: call `preventDefault()` to
+ *        keep the alert in the DOM.
  */
 export declare class RhAlert extends LitElement {
     #private;
