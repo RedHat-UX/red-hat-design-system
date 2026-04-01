@@ -11,10 +11,10 @@ import styles from './rh-health-index.css' with { type: 'css' };
 
 /**
  * Health index provides a visual grade (A through F) for communicating the
- * health or security level of an item. Authors MUST set the `grade`
- * attribute and SHOULD place it in context that makes its purpose clear.
+ * health or security level of an item. Authors must set the `grade`
+ * attribute and should place it in context that makes its purpose clear.
  * It uses ARIA `meter` role so screen reader users can read the grade.
- * This element SHOULD NOT receive keyboard focus, as it is non-interactive.
+ * This element should not receive keyboard focus, as it is non-interactive.
  *
  * @summary     Displays a health grade for a particular item or package
  *
