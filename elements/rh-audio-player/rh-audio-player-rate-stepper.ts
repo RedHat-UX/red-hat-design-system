@@ -8,12 +8,11 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 import styles from './rh-audio-player-rate-stepper.css' with { type: 'css' };
 
 /**
- * A playback rate control that lets users adjust audio speed between 0.25x
- * and 2x in 0.25x increments. The stepper renders left/right arrow buttons
- * flanking a `<select>` dropdown showing the current rate. Users may step
- * through rates with the arrow buttons or select directly from the dropdown.
- * This element is used internally by `rh-audio-player` and should not be
- * placed independently in user markup.
+ * Provides playback rate controls for `rh-audio-player`, allowing users
+ * to adjust audio speed between 0.25x and 2x. Renders step buttons
+ * flanking a `<select>` dropdown with ARIA labels for screen readers.
+ * This element is used internally by `rh-audio-player` and should not
+ * be placed independently in user markup.
  *
  * @summary Controls audio playback speed with step buttons and dropdown
  *
