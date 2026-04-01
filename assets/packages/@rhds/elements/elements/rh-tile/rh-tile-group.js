@@ -13,7 +13,15 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
 const styles = css `:host{display:grid;grid-template-columns:repeat(auto-fit,320px);gap:var(--rh-space-2xl,32px)}:host([disabled]){pointer-events:none}`;
 /**
- * A group of `<rh-tile>` elements which handles radio selection.
+ * A tile group organizes `\<rh-tile\>` elements into a selectable
+ * set. When `radio` is set, it provides ARIA `role="radiogroup"`
+ * and arrow-key navigation for screen readers. The group must
+ * contain at least two tiles. Users should set `radio` when only
+ * one option must be selected.
+ *
+ * @summary Groups tiles for checkbox or radio selection with
+ *          keyboard navigation and form association.
+ *
  */
 let RhTileGroup = class RhTileGroup extends LitElement {
     /**
@@ -76,7 +84,8 @@ let RhTileGroup = class RhTileGroup extends LitElement {
     render() {
         const { radio } = this;
         return html `
-      <!-- Put one or more \`rh-tile\` elements in this slot -->
+      <!-- Place \`rh-tile\` elements here. Each tile must have a
+           headline slot with descriptive text for screen readers. -->
       <slot class="${classMap({ radio })}"></slot>
     `;
     }

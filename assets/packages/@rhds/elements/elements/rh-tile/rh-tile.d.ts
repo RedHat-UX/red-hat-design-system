@@ -2,19 +2,34 @@ import { LitElement, type PropertyValues } from 'lit';
 import type { IconNameFor, IconSetName } from '@rhds/icons';
 import '@rhds/elements/rh-icon/rh-icon.js';
 import { type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+/**
+ * Fired when a checkable tile is selected or deselected.
+ * The `force` property, when true, indicates the tile must be selected
+ * (used in radio group mode). When absent, the tile toggles its state.
+ */
 export declare class TileSelectEvent extends Event {
+    /** When true, the tile must be selected rather than toggled */
     force?: boolean | undefined;
     target: RhTile;
-    constructor(force?: boolean | undefined);
+    constructor(
+    /** When true, the tile must be selected rather than toggled */
+    force?: boolean | undefined);
 }
 /**
- * A tile is a flexible layout with a clickable and contained surface.
+ * A tile provides a clickable surface for presenting content with
+ * optional images, icons, and links. Checkable tiles expose ARIA
+ * `role="checkbox"` or `role="radio"` to screen readers. Users
+ * should set `accessible-label` when tiles lack text content.
+ * Keyboard users activate checkable tiles with Enter or Space.
  *
- * @summary Creates a clickable, contained surface
+ * @summary Clickable, contained surface for content with optional
+ *          images, icons, and links.
  *
  * @alias tile
  *
- * @fires {TileSelectEvent} select - when tile is clicked
+ * @fires {TileSelectEvent} select - Fired when a checkable tile is
+ *        clicked. The event's `force` property is `true` when the
+ *        tile is in a radio group, indicating it must be selected.
  */
 export declare class RhTile extends LitElement {
     #private;

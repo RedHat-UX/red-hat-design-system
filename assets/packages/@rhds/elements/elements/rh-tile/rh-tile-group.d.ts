@@ -2,7 +2,15 @@ import { LitElement, type PropertyValues } from 'lit';
 import { RhTile } from './rh-tile.js';
 import { type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 /**
- * A group of `<rh-tile>` elements which handles radio selection.
+ * A tile group organizes `\<rh-tile\>` elements into a selectable
+ * set. When `radio` is set, it provides ARIA `role="radiogroup"`
+ * and arrow-key navigation for screen readers. The group must
+ * contain at least two tiles. Users should set `radio` when only
+ * one option must be selected.
+ *
+ * @summary Groups tiles for checkbox or radio selection with
+ *          keyboard navigation and form association.
+ *
  */
 export declare class RhTileGroup extends LitElement {
     #private;

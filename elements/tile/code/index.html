@@ -4291,7 +4291,11 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>A tile is a flexible layout with a clickable and contained surface.</p>
+      <p>A tile provides a clickable surface for presenting content with
+optional images, icons, and links. Checkable tiles expose ARIA
+<code>role="checkbox"</code> or <code>role="radio"</code> to screen readers. Users
+should set <code>accessible-label</code> when tiles lack text content.
+Keyboard users activate checkable tiles with Enter or Space.</p>
 
 
       <div class="element-apis">
@@ -4383,7 +4387,10 @@
                   </uxdot-copy-permalink></td>
                   <td></td>
                   <td>
-                   <p>optional image on top of tile</p>
+                   <p>Place a block-level img or svg element here.
+Images must include alt text for screen readers, or
+role="presentation" for decorative images.
+Hidden when the tile is checkable.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4413,7 +4420,8 @@
                   </uxdot-copy-permalink></td>
                   <td></td>
                   <td>
-                   <p>optional icon</p>
+                   <p>Place an inline rh-icon or svg element here.
+Icon should include a title for screen readers.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4443,7 +4451,8 @@
                   </uxdot-copy-permalink></td>
                   <td></td>
                   <td>
-                   <p>A title provides secondary descriptive context. Selectable and compact tiles do not have title slots</p>
+                   <p>Inline text providing secondary context above
+the headline. Hidden when checkable or compact.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4473,7 +4482,9 @@
                   </uxdot-copy-permalink></td>
                   <td></td>
                   <td>
-                   <p>In a link tile, the heading should indicate what clicking on the tile will do. In a selectable tile, the heading labels the radio button or checkbox.</p>
+                   <p>Block heading element. In a link tile, must
+contain an anchor. In a checkable tile, this
+labels the ARIA form control for screen readers.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4503,7 +4514,8 @@
                   </uxdot-copy-permalink></td>
                   <td></td>
                   <td>
-                   <p>The body text expands on heading content and gives the user more information. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Inline or block body text expanding on the
+headline. Should be concise. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
                 <tr>
@@ -4533,7 +4545,8 @@
                   </uxdot-copy-permalink></td>
                   <td></td>
                   <td>
-                   <p>Footer text should be brief and be used for supplementary information only.</p>
+                   <p>Inline supplementary text. Should not contain
+interactive elements as the tile is clickable.</p>
                   </td>
                 </tr>
               </tbody>
@@ -5286,7 +5299,9 @@ See <a href="#css-custom-properties">CSS Custom Properties</a> for default value
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td><p>when tile is clicked</p></td>
+                  <td><p>Fired when a checkable tile is
+clicked. The event's <code>force</code> property is <code>true</code> when the
+tile is in a radio group, indicating it must be selected.</p></td>
                 </tr>
               </tbody>
             </table>
@@ -5388,64 +5403,58 @@ See <a href="#css-custom-properties">CSS Custom Properties</a> for default value
               <tbody>
                 <tr>
                   <td><code>--rh-tile-interactive-color</code></td>
-                  <td><p>Color of interactive elements.
-Could cause accessibility issues; prefer to use <code>--rh-color-border-interactive-on-light</code>
-and <code>--rh-color-border-interactive-on-dark</code> for theming.</p></td>
+                  <td><p>Interactive border and icon color</p></td>
                   <td>
                     <code>var(--rh-color-border-interactive)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-tile-focus-interactive-color</code></td>
-                  <td></td>
+                  <td><p>Interactive color on focus and hover</p></td>
                   <td>
                     <code>var(--rh-color-interactive-primary-hover)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-tile-text-color-secondary</code></td>
-                  <td><p>Disabled text and icons.
-Could cause accessibility issues; prefer to use <code>--rh-color-text-secondary-on-light</code>
-and <code>--rh-color-text-secondary-on-dark</code> for theming.</p></td>
+                  <td><p>Secondary text and icon color</p></td>
                   <td>
                     <code>var(--rh-color-text-secondary)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-tile-focus-background-color</code></td>
-                  <td></td>
+                  <td><p>Focus/hover surface color override in light mode</p>
+<p>Focus/hover surface color override in dark mode</p></td>
                   <td>
                     <code>var(--rh-color-surface-darker, #1f1f1f)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-tile-disabled-background-color</code></td>
-                  <td></td>
+                  <td><p>Disabled surface color override in light mode</p>
+<p>Disabled surface color override in dark mode</p></td>
                   <td>
                     <code>var(--rh-color-surface-dark, #383838)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-tile-border-color</code></td>
-                  <td><p>Color of tile border.
-Could cause accessibility issues; prefer to use <code>--rh-color-border-subtle-on-light</code>
-and <code>--rh-color-border-subtle-on-dark</code> for theming.</p></td>
+                  <td><p>Tile border color</p></td>
                   <td>
                     <code>var(--rh-color-border-subtle)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-tile-link-color</code></td>
-                  <td><p>Color of tile link.</p></td>
+                  <td><p>Tile link color</p></td>
                   <td>
                     <code>var(--_interactive-color)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-tile-text-color</code></td>
-                  <td><p>Color of text.
-Could cause accessibility issues; prefer to use <code>--rh-color-text-primary-on-light</code>
-and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
+                  <td><p>Tile text color</p></td>
                   <td>
                     <code>var(--rh-color-text-primary)</code>
                   </td>
@@ -5520,7 +5529,8 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Body text font family</p>
+                    <p>Tile font family</p>
+<p>Body text font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5616,7 +5626,8 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Regular font weight for headings</p>
+                    <p>Tile base font weight</p>
+<p>Regular font weight for headings</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5712,7 +5723,8 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Line height for body text</p>
+                    <p>Tile line height</p>
+<p>Line height for body text</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6192,7 +6204,8 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>3px border radius; Example: Card</p>
+                    <p>Tile border radius</p>
+<p>3px border radius; Example: Card</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6288,7 +6301,8 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>1px border width; Example: Secondary CTA or Button</p>
+                    <p>Tile border width</p>
+<p>1px border width; Example: Secondary CTA or Button</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6384,7 +6398,8 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>48px icon box</p>
+                    <p>Icon size</p>
+<p>48px icon box</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6480,7 +6495,8 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>32px icon box</p>
+                    <p>Compact icon size</p>
+<p>32px icon box</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6576,7 +6592,8 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>h6 heading font size</p>
+                    <p>Headline font size</p>
+<p>h6 heading font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6672,7 +6689,8 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Medium font weight</p>
+                    <p>Headline font weight</p>
+<p>Medium font weight</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6864,7 +6882,8 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>18px font size</p>
+                    <p>Compact headline font size</p>
+<p>18px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6960,7 +6979,8 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>14px font size</p>
+                    <p>Compact body font size</p>
+<p>14px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7056,7 +7076,8 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>12px font size</p>
+                    <p>Compact footer font size</p>
+<p>12px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7152,7 +7173,10 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>32px spacer</p>
+                    <p>Tile padding</p>
+<p>Icon block end margin</p>
+<p>Body spacer inline size</p>
+<p>32px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7248,7 +7272,10 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Tile content margin</p>
+<p>Compact tile padding</p>
+<p>Body spacer block size</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7344,7 +7371,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Arrow animation speed</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7440,7 +7467,7 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Arrow animation timing</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7536,7 +7563,12 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>24px spacer</p>
+                    <p>Compact tile padding</p>
+<p>Arrow icon inline size</p>
+<p>Arrow icon block size</p>
+<p>SVG icon inline size</p>
+<p>SVG icon block size</p>
+<p>24px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7632,7 +7664,10 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>16px font size</p>
+                    <p>Tile base font size</p>
+<p>Title font size</p>
+<p>Body text font size</p>
+<p>16px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7728,7 +7763,8 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Interactive border color (dark theme)</p>
+                    <p>Interactive color for dark palettes</p>
+<p>Interactive border color (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7824,7 +7860,8 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Primary interactive - hover (Dark theme)</p>
+                    <p>Focus interactive color for dark palettes</p>
+<p>Primary interactive - hover (Dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7920,7 +7957,8 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Secondary text color for dark theme</p>
+                    <p>Secondary text color for dark palettes</p>
+<p>Secondary text color for dark theme</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8016,7 +8054,8 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Subtle border color (dark theme)</p>
+                    <p>Border color for dark palettes</p>
+<p>Subtle border color (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8112,7 +8151,8 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Primary text color for dark theme</p>
+                    <p>Text color for dark palettes</p>
+<p>Primary text color for dark theme</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8304,7 +8344,8 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Secondary surface (dark theme)</p>
+                    <p>Focus/hover surface color in dark mode</p>
+<p>Secondary surface (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8400,7 +8441,9 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Tertiary surface (dark theme)</p>
+                    <p>Disabled surface color in dark mode</p>
+<p>Disabled background for dark palettes</p>
+<p>Tertiary surface (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8496,7 +8539,8 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Interactive border color (light theme)</p>
+                    <p>Interactive color for light palettes</p>
+<p>Interactive border color (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8592,7 +8636,8 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Primary interactive - hover (Light theme)</p>
+                    <p>Focus interactive color for light palettes</p>
+<p>Primary interactive - hover (Light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8688,7 +8733,8 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Secondary text color for light theme</p>
+                    <p>Secondary text color for light palettes</p>
+<p>Secondary text color for light theme</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8784,7 +8830,8 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Subtle border color (light theme)</p>
+                    <p>Border color for light palettes</p>
+<p>Subtle border color (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8880,7 +8927,8 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Primary text color for light theme</p>
+                    <p>Text color for light palettes</p>
+<p>Primary text color for light theme</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9072,7 +9120,8 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Tertiary surface (light theme)</p>
+                    <p>Focus/hover surface color in light mode</p>
+<p>Tertiary surface (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9168,7 +9217,9 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Secondary surface (light theme)</p>
+                    <p>Disabled surface color in light mode</p>
+<p>Disabled background for light palettes</p>
+<p>Secondary surface (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9288,7 +9339,11 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
         </h2>
       </uxdot-copy-permalink>
 
-      <p>A group of <code>&lt;rh-tile&gt;</code> elements which handles radio selection.</p>
+      <p>A tile group organizes <code>\&lt;rh-tile\&gt;</code> elements into a selectable
+set. When <code>radio</code> is set, it provides ARIA <code>role="radiogroup"</code>
+and arrow-key navigation for screen readers. The group must
+contain at least two tiles. Users should set <code>radio</code> when only
+one option must be selected.</p>
 
 
       <div class="element-apis">
@@ -9380,7 +9435,8 @@ and <code>--rh-color-text-primary-on-dark</code> for theming.</p></td>
                   </uxdot-copy-permalink></td>
                   <td></td>
                   <td>
-                   <p>Put one or more <code>rh-tile</code> elements in this slot <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Place <code>rh-tile</code> elements here. Each tile must have a
+headline slot with descriptive text for screen readers. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -9929,7 +9985,8 @@ See <a href="#css-custom-properties">CSS Custom Properties</a> for default value
                     </a>
                   </td>
                   <td>
-                    <p>32px spacer</p>
+                    <p>Gap between tiles</p>
+<p>32px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
