@@ -19,12 +19,15 @@
   flex: 1 0 auto;
   overflow-y: visible;
 
-  /** fade overlay color, should match background */
   --_fade-color:
-    light-dark(var(--rh-audio-player-scrolling-text-overflow-background-color,
-      var(--rh-color-surface-lightest, #ffffff)),
-      var(--rh-audio-player-scrolling-text-overflow-background-color,
-      var(--rh-color-surface-darkest, #151515)));
+    light-dark(
+        /** Fade overlay color in light mode */
+        var(--rh-audio-player-scrolling-text-overflow-background-color,
+        var(--rh-color-surface-lightest, #ffffff)),
+        /** Fade overlay color in dark mode */
+        var(--rh-audio-player-scrolling-text-overflow-background-color,
+        var(--rh-color-surface-darkest, #151515))
+      );
 
   &:dir(rtl) {
     text-align: right;

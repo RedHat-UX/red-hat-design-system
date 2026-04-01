@@ -41,50 +41,74 @@ button {
   --_time-slider-extension: 0px;
   --_about-mediatitle-display: none;
   --_about-heading-display: flex;
-  --_box-shadow: light-dark(var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25)), none);
+  --_box-shadow:
+    light-dark(
+        /** Player box shadow in light mode */
+        var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25)),
+        none
+      );
 
   /** Opacity for secondary UI elements */
   --_secondary-opacity: var(--rh-audio-player-secondary-opacity, 1);
-  --_text-color: /** primary text; overrides rh-color-text-primary token */
-    var(--rh-audio-player-text-color, var(--rh-color-text-primary));
+
+  /** Player primary text color */
+  --_text-color: var(--rh-audio-player-text-color, var(--rh-color-text-primary));
+
+  /** Player border color */
   --_border-color: var(--rh-color-border-subtle);
   --_surface-color:
     light-dark(
-        /** background; overrides rh-color-surface-lightest design token */
+        /** Player surface in light mode */
         var(--rh-audio-player-background-color, var(--rh-color-surface-lightest, #ffffff)),
-        /** background; overrides rh-color-surface-darkest design token */
+        /** Player surface in dark mode */
         var(--rh-audio-player-background-color, var(--rh-color-surface-darkest, #151515))
       );
+
+  /** Player secondary text color */
   --_secondary-text-color:
-    /** secondary text; overrides rh-color-text-secondary token */
     var(--rh-audio-player-secondary-text-color,
       var(--rh-color-text-secondary));
-  --_static-border-color: /** border color from rh-color-border-subtle design token */
-    var(--rh-color-border-subtle);
-  --_static-text-color: /** text color from rh-color-text-primary design token */
-    var(--rh-color-text-primary);
+
+  /** Static border color for panels */
+  --_static-border-color: var(--rh-color-border-subtle);
+
+  /** Static text color for panels */
+  --_static-text-color: var(--rh-color-text-primary);
   --_static-highlight-color:
-    /** highlight from rh-color-interactive-primary-hover token */
-    light-dark(var(--rh-color-interactive-primary-hover),
-      var(--rh-color-surface-dark, #383838));
+    light-dark(
+        /** Active cue highlight in light mode */
+        var(--rh-color-interactive-primary-hover),
+        /** Active cue highlight in dark mode */
+        var(--rh-color-surface-dark, #383838)
+      );
+
+  /** Cue text underline color */
   --_static-undeline-color: var(--rh-color-border-subtle);
   --_static-surface-color:
-    light-dark(var(--rh-color-surface-lightest, #ffffff),
-      var(--rh-color-surface-darkest, #151515));
+    light-dark(
+        /** Static panel surface in light mode */
+        var(--rh-color-surface-lightest, #ffffff),
+        /** Static panel surface in dark mode */
+        var(--rh-color-surface-darkest, #151515)
+      );
   --_static-surface-focus-color:
-    light-dark(var(--rh-color-surface-light, #e0e0e0),
-      var(--rh-color-surface-dark, #383838));
+    light-dark(
+        /** Panel focus surface in light mode */
+        var(--rh-color-surface-light, #e0e0e0),
+        /** Panel focus surface in dark mode */
+        var(--rh-color-surface-dark, #383838)
+      );
 
-  /** tooltip top padding; uses rh-space-md design token */
+  /** Tooltip block start padding override */
   --rh-tooltip-content-padding-block-start: var(--rh-space-md, 8px);
 
-  /** tooltip bottom padding; uses rh-space-md design token */
+  /** Tooltip block end padding override */
   --rh-tooltip-content-padding-block-end: var(--rh-space-md, 8px);
 
-  /** tooltip left padding; uses rh-space-md design token */
+  /** Tooltip inline start padding override */
   --rh-tooltip-content-padding-inline-start: var(--rh-space-md, 8px);
 
-  /** tooltip right padding; uses rh-space-md design token */
+  /** Tooltip inline end padding override */
   --rh-tooltip-content-padding-inline-end: var(--rh-space-md, 8px);
   --rh-audio-player-scrolling-text-overflow-background-color: var(--_surface-color);
 
@@ -95,7 +119,11 @@ button {
   }
 
   &.has-accent-color {
-    --_border-color: light-dark(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.5));
+    --_border-color:
+      light-dark(
+          rgba(0, 0, 0, 0.5),
+          rgba(255, 255, 255, 0.5)
+        );
     --_secondary-text-color:
       var(--rh-audio-player-secondary-text-color,
         var(--rh-color-text-primary));
@@ -458,11 +486,19 @@ rh-menu > button:focus {
   justify-content: center;
   border-radius: 50%;
   background-color:
-    light-dark(var(--rh-color-surface-darkest, #151515),
-      var(--rh-color-surface-lightest, #ffffff));
+    light-dark(
+        /** Play button fill in light mode */
+        var(--rh-color-surface-darkest, #151515),
+        /** Play button fill in dark mode */
+        var(--rh-color-surface-lightest, #ffffff)
+      );
   color:
-    light-dark(var(--rh-color-surface-lightest, #ffffff),
-      var(--rh-color-surface-darkest, #151515));
+    light-dark(
+        /** Play button icon in light mode */
+        var(--rh-color-surface-lightest, #ffffff),
+        /** Play button icon in dark mode */
+        var(--rh-color-surface-darkest, #151515)
+      );
 }
 
 .expanded {

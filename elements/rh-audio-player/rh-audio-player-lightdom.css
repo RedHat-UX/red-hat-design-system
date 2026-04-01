@@ -10,6 +10,7 @@ rh-audio-player {
   color: var(--rh-audio-player-text-color, var(--rh-color-text-primary));
 
   &[color-palette^='dark'] > * {
+    /** Dark palette panel surface */
     background-color:
       var(--rh-audio-player-background-color,
         var(--rh-color-surface-darkest, #151515));
@@ -53,10 +54,14 @@ rh-audio-player-about,
 rh-audio-player-subscribe,
 rh-transcript {
   background-color:
-    light-dark(var(--rh-audio-player-background-color,
-      var(--rh-color-surface-lightest, #ffffff)),
-      var(--rh-audio-player-background-color,
-      var(--rh-color-surface-darkest, #151515)));
+    light-dark(
+        /** Panel surface in light mode */
+        var(--rh-audio-player-background-color,
+        var(--rh-color-surface-lightest, #ffffff)),
+        /** Panel surface in dark mode */
+        var(--rh-audio-player-background-color,
+        var(--rh-color-surface-darkest, #151515))
+      );
 }
 
 rh-audio-player > [slot='series'] {

@@ -43,15 +43,27 @@ input[type='range'] {
   --_thumb-radius: calc((var(--_thumb-height, 16px) * 0.5) - 1px);
   --_clip-edges: 0.125em;
   --_track-height: var(--rh-length-xs, 4px);
-  --_thumb-disabled-color: light-dark(rgb(0 0 0 / 0.5), rgb(255 255 255 / 0.5));
-  --_track-color: light-dark(var(--rh-color-gray-30, #c7c7c7), var(--rh-color-gray-50, #707070));
+  --_thumb-disabled-color:
+    light-dark(
+        rgb(0 0 0 / 0.5),
+        rgb(255 255 255 / 0.5)
+      );
+  --_track-color:
+    light-dark(
+        /** Range track in light mode */
+        var(--rh-color-gray-30, #c7c7c7),
+        /** Range track in dark mode */
+        var(--rh-color-gray-50, #707070)
+      );
   --_interactive-color: var(--rh-color-border-interactive);
   --_accent-color: var(--rh-color-accent-brand);
   --_outline: var(--rh-border-width-md, 2px) solid var(--_interactive-color);
-  --_thumb-color: /** range slider thumb; defaults to rh-color-accent-brand token */
-    var(--rh-audio-player-range-thumb-color, var(--_accent-color));
-  --_progress-color: /** filled range track; defaults to rh-color-accent-brand token */
-    var(--rh-audio-player-range-progress-color, var(--_accent-color));
+
+  /** Range slider thumb color */
+  --_thumb-color: var(--rh-audio-player-range-thumb-color, var(--_accent-color));
+
+  /** Filled range track color */
+  --_progress-color: var(--rh-audio-player-range-progress-color, var(--_accent-color));
 
   &:focus {
     outline: var(--_outline);
