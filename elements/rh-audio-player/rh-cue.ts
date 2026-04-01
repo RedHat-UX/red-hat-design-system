@@ -56,18 +56,17 @@ export const getSeconds = (str: TimeString): Seconds => {
 };
 
 /**
- * A single transcript cue representing a timed segment of spoken content.
- * Each cue displays a timestamp, an optional speaker voice label, and the
- * spoken text. Clicking on a cue fires a `cueseek` event that the parent
- * `rh-audio-player` uses to seek to that point in the audio. When the
- * audio playback reaches this cue's time range, the `active` attribute
- * is set and the cue is visually highlighted. Cues must be placed in the
- * `cues` slot of `rh-transcript`.
+ * A single transcript cue which provides a timed transcript segment for
+ * `rh-transcript`. Use this to display spoken content with timestamps and
+ * optional speaker labels. Clicking a cue seeks the audio to that timestamp.
+ * The `active` attribute highlights the current cue for sighted and screen
+ * reader users. Must be placed in the `cues` slot of `rh-transcript`.
  *
  * @summary A timed transcript segment with optional speaker label
  *
- * @fires cueseek - Fired when the user clicks a time cue link to seek
- *        the audio to this cue's start time.
+ * @fires cueseek - Fired when the user clicks a cue link. This is a plain
+ *        `Event` with `bubbles: true` and no custom detail. The parent
+ *        `rh-audio-player` handles it to seek to this cue's start time.
  */
 @customElement('rh-cue')
 export class RhCue extends LitElement {
@@ -116,7 +115,11 @@ export class RhCue extends LitElement {
     const { start, voice } = this;
     return html`${!this.#hasVoice ? nothing : this.#headings.wrap(this.#linkTemplate(html`
       <span id="start">${start}</span> - <span id="voice">${voice}</span>`, true))}${this.#linkTemplate(html`
-      <!-- text of cue -->
+      <!-- summary: Cue spoken text
+           description: |
+             Accepts inline text content for this cue's spoken words.
+             Screen readers announce the text alongside the timestamp
+             and voice label when navigating the transcript. -->
       <slot></slot>
     `)}`;
   }
