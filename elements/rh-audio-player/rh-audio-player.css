@@ -63,10 +63,10 @@ button {
         /** Player surface in dark mode */
         var(--rh-audio-player-background-color, var(--rh-color-surface-darkest, #151515))
       );
-
-  /** Player secondary text color */
   --_secondary-text-color:
+    /** Player secondary text color override */
     var(--rh-audio-player-secondary-text-color,
+      /** Player secondary text color */
       var(--rh-color-text-secondary));
 
   /** Static border color for panels */
