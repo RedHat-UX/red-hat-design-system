@@ -52,7 +52,7 @@
   /** Interactive border and icon color */
   --_interactive-color: var(--rh-tile-interactive-color, var(--rh-color-border-interactive));
 
-  /** Interactive color on focus and hover */ 
+  /** Interactive color on focus and hover */
   --_focus-interactive-color:
     var(--rh-tile-focus-interactive-color,
       var(--rh-color-interactive-primary-hover));
