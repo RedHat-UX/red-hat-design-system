@@ -39,9 +39,13 @@ input[type='range'] {
 
   --_box-fill-color: var(--_progress-color);
   --_track-fill-color: var(--_track-color);
+
+  /** Thumb height */
   --_thumb-height: var(--rh-length-lg, 16px);
   --_thumb-radius: calc((var(--_thumb-height, 16px) * 0.5) - 1px);
   --_clip-edges: 0.125em;
+
+  /** Track height */
   --_track-height: var(--rh-length-xs, 4px);
   --_thumb-disabled-color:
     light-dark(
@@ -55,9 +59,17 @@ input[type='range'] {
         /** Range track in dark mode */
         var(--rh-color-gray-50, #707070)
       );
+
+  /** Focus ring color */
   --_interactive-color: var(--rh-color-border-interactive);
+
+  /** Brand accent for thumb and progress fill */
   --_accent-color: var(--rh-color-accent-brand);
-  --_outline: var(--rh-border-width-md, 2px) solid var(--_interactive-color);
+  --_outline:
+    /** Focus outline width */
+    var(--rh-border-width-md, 2px)
+    solid
+    var(--_interactive-color);
 
   /** Range slider thumb color */
   --_thumb-color: var(--rh-audio-player-range-thumb-color, var(--_accent-color));
