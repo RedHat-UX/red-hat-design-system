@@ -12,11 +12,11 @@ import styles from './rh-audio-player-subscribe.css' with { type: 'css' };
 
 
 /**
- * An expandable panel that displays subscription links to podcast platforms
- * such as Apple Podcasts, Spotify, and RSS feeds. This element must be
- * placed in the `subscribe` slot of `rh-audio-player`. Content authors
- * should provide anchor elements with images or text in the `link` slot.
- * At wider breakpoints, links are laid out in a flex row.
+ * An expandable panel that provides subscription links for podcast platforms.
+ * Use this when you need to allow users to subscribe from within the audio
+ * player. Must be placed in the `subscribe` slot of `rh-audio-player`.
+ * Authors should provide anchor elements in the `link` slot with alt text
+ * so screen readers can identify each platform.
  *
  * @summary Displays podcast subscription links in an expandable panel
  *
@@ -28,8 +28,10 @@ import styles from './rh-audio-player-subscribe.css' with { type: 'css' };
 export class RhAudioPlayerSubscribe extends LitElement {
   static readonly styles = [panelStyles, styles];
 
+  /** Custom heading text displayed at the top of the subscribe panel. Overridden by the `heading` slot. */
   @property() heading?: string;
 
+  /** Accessible label for the panel, used as the menu item text when no heading slot is provided. */
   @property() label?: string;
 
   #headings = new HeadingLevelContextConsumer(this);
@@ -40,17 +42,30 @@ export class RhAudioPlayerSubscribe extends LitElement {
 
   override render() {
     return html`
-      <!-- scrolling text overflow -->
       <rh-audio-player-scrolling-text-overflow part="heading">
-        <!-- custom heading for panel -->
+        <!-- summary: Custom panel heading
+             description: |
+               Accepts a heading element for the subscribe panel title.
+               Should use an appropriate heading level for the page so
+               screen readers can navigate the panel hierarchy. -->
         <slot name="heading">${this.#headings.wrap(this.menuLabel)}</slot>
       </rh-audio-player-scrolling-text-overflow>
-      <!-- panel content -->
+      <!-- summary: Subscribe panel body content
+           description: |
+             Accepts descriptive text or rich content for the subscribe
+             panel. Content is accessible to screen readers when the
+             panel is expanded. -->
       <slot part="body" ?hidden="${this.#slots.isEmpty(null)}"></slot>
-      <!-- slot:
-             summary: link to subscribe to podcast
-           part:
-             summary: subscribe links -->
+      <!--
+        slot:
+          summary: Subscription platform link
+          description: |
+            Accepts anchor elements linking to podcast platforms. Each
+            link should include descriptive text or an image with alt
+            text so screen readers can identify the platform.
+        part:
+          summary: subscribe links
+      -->
       <slot name="link" part="links"></slot>`;
   }
 
