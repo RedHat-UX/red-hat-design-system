@@ -1,8 +1,11 @@
 import { LitElement } from 'lit';
 import { type Placement } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
 /**
- * A tooltip is a floating text area that provides helpful
- * or contextual information on hover, focus, or tap.
+ * A tooltip provides contextual information on hover, focus, or tap.
+ * Content should be brief. Authors must ensure the invoking element
+ * is focusable for keyboard and screen reader users. Pressing Escape
+ * dismisses the tooltip. When `silent` is set, authors must provide
+ * an alternative accessible label.
  *
  * @summary Reveals a small area of information on hover
  *

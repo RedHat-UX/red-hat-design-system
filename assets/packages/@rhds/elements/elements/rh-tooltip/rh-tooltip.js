@@ -40,8 +40,11 @@ function getBestGuessAccessibleContent(node) {
     return node.textContent ?? '';
 }
 /**
- * A tooltip is a floating text area that provides helpful
- * or contextual information on hover, focus, or tap.
+ * A tooltip provides contextual information on hover, focus, or tap.
+ * Content should be brief. Authors must ensure the invoking element
+ * is focusable for keyboard and screen reader users. Pressing Escape
+ * dismisses the tooltip. When `silent` is set, authors must provide
+ * an alternative accessible label.
  *
  * @summary Reveals a small area of information on hover
  *
@@ -103,15 +106,20 @@ let RhTooltip = RhTooltip_1 = class RhTooltip extends LitElement {
             [anchor]: !!anchor,
             [alignment]: !!alignment })}">
         <div id="invoker">
-          <!--
-            Place invoking element here,
-            i.e. the element which when hovered the tooltip will display.
-            Must be inline content.
-          -->
+          <!-- summary: Invoking element
+               description: |
+                 Place the invoking element here, i.e. the element which
+                 when hovered or focused causes the tooltip to display.
+                 Must be inline, focusable content so that keyboard and
+                 screen reader users can activate the tooltip. -->
           <slot id="invoker-slot"></slot>
         </div>
         <div id="tooltip" role="status" class="${classMap({ dark, light })}">
-          <!-- Place tooltip content here. Overrides the \`content\` attribute. -->
+          <!-- summary: Tooltip content
+               description: |
+                 Place tooltip content here. Overrides the \`content\`
+                 attribute. Content is announced to screen readers via
+                 a live region unless the \`silent\` attribute is set. -->
           <slot id="content" name="content">${this.content}</slot>
         </div>
       </div>
