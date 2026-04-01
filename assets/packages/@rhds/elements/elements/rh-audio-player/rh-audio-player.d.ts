@@ -4,10 +4,21 @@ import '@rhds/elements/rh-surface/rh-surface.js';
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 /**
- * An audio player plays audio clips in the browser and includes other features.
- * @summary Plays audio clips and includes other features
+ * An audio player for podcasts and media clips. Users must provide an
+ * `<audio>` element in the `media` slot. Provides playback controls,
+ * seek timeline, and expandable panels. All buttons use ARIA labels
+ * and `rh-tooltip` for screen reader and keyboard accessibility.
+ * Tab and Enter navigate and activate controls.
+ *
+ * @summary Plays audio clips with playback controls, transcript, and panels
  *
  * @alias audio-player
+ *
+ * @csspart toolbar - The main controls toolbar container.
+ * @csspart panel - The expandable content panel below the toolbar.
+ * @csspart about - The about panel slot container.
+ * @csspart subscribe - The subscribe panel slot container.
+ * @csspart transcript - The transcript panel slot container.
  *
  */
 export declare class RhAudioPlayer extends LitElement {
@@ -32,28 +43,35 @@ export declare class RhAudioPlayer extends LitElement {
         autoscroll: string;
         download: string;
     };
-    /**  Audio's series name, e.g. Podcast series. */
+    /** Audio series name, e.g. a podcast series title. */
     mediaseries?: string;
-    /**  Audio's title, e.g. Podcast episode title. */
+    /** Audio track title, e.g. a podcast episode name. */
     mediatitle?: string;
     /**
-     * Layout:
-     *   - `mini` (default): minimal controls: play/pause, range; volume and other controls hidden behind menu
-     *   - `compact`: artwork and more controls: time, skip, volume
-     *   - `compact-wide`: like compact but full width
-     *   - `full`: maximal controls and artwork
+     * Player layout variant. Users should choose a layout appropriate to
+     * the available width:
+     *   - `mini` (default): play/pause and seek range only; volume and
+     *     other controls are behind the "more options" menu.
+     *   - `compact`: adds artwork, elapsed time, skip buttons, and volume.
+     *   - `compact-wide`: like `compact` but stretches to fill container
+     *     width.
+     *   - `full`: maximal controls including artwork, rewind/forward,
+     *     elapsed/duration display, and inline playback rate stepper.
      */
     layout: 'mini' | 'compact' | 'compact-wide' | 'full';
-    /** URL to audio's artwork */
+    /** URL to the audio track's artwork image. */
     poster?: string;
-    /** Playback volume */
+    /** Playback volume from 0 (muted) to 1 (max). */
     volume: number;
-    /** Playback rate */
+    /** Playback speed multiplier, from 0.25 to 2. */
     playbackRate: number;
+    /** Whether the expandable content panel is open. */
     expanded: boolean;
+    /** Language code for i18n of control labels. */
     lang: string;
+    /** Custom microcopy overrides keyed by language code. */
     microcopy: {};
-    /** Element's color palette */
+    /** Element's color palette. */
     colorPalette?: ColorPalette;
     private _mediaseries?;
     private _mediatitle?;

@@ -10,8 +10,18 @@ export declare const getFormattedTime: (seconds: Seconds) => string;
  */
 export declare const getSeconds: (str: TimeString) => Seconds;
 /**
- * Media Transcript Cue
- * @fires cueseek - when user clicks a time cue
+ * Provides a timed transcript segment for `rh-transcript`. Use this to
+ * display spoken content with timestamps and optional speaker labels.
+ * Cue links are focusable; pressing Enter seeks the audio to that
+ * timestamp. The `active` attribute visually highlights the current
+ * cue. Screen readers can navigate cue links to browse the
+ * transcript. Must be placed in the `cues` slot.
+ *
+ * @summary A timed transcript segment with optional speaker label
+ *
+ * @fires cueseek - Fired when the user clicks a cue link. This is a plain
+ *        `Event` with `bubbles: true` and no custom detail. The parent
+ *        `rh-audio-player` handles it to seek to this cue's start time.
  */
 export declare class RhCue extends LitElement {
     #private;

@@ -7,7 +7,14 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
 const styles = css `:host{display:flex;overflow:hidden;flex-direction:column;align-items:stretch;width:100%;min-height:1em}:host([hidden]),[hidden]{display:none!important}#outer{position:relative;width:100%;min-width:6em;flex:1 0 auto;overflow-y:visible;--_fade-color:light-dark(var(--rh-audio-player-scrolling-text-overflow-background-color,var(--rh-color-surface-lightest,#fff)),var(--rh-audio-player-scrolling-text-overflow-background-color,var(--rh-color-surface-darkest,#151515)))}#outer:dir(rtl){text-align:right}#inner{margin:0 auto;white-space:nowrap;overflow:hidden;position:absolute;top:0;bottom:0;min-height:100%}slot{display:inline-block}::slotted(*){margin:0!important}#fade{position:absolute;height:150%;content:" ";top:-25%;right:0;width:3em;box-shadow:-1em 0 1.5em 0 var(--_fade-color) inset}#fade:dir(rtl){left:0;right:unset;box-shadow:1em 0 1.5em 0 var(--_fade-color) inset}slot.scrolling.scrollable{animation:ltr var(--_animation-ms,1s) ease-out}slot.scrolling.scrollable:dir(rtl){animation:rtl var(--_animation-ms,1s) ease-out}@keyframes ltr{0%{transform:translate(0)}to{transform:translate(-100%)}}@keyframes rtl{0%{transform:translate(0)}to{transform:translate(100%)}}`;
 /**
- * Audio Player Scrolling Text Overflow
+ * Provides a scrolling text animation for `rh-audio-player` when content
+ * overflows. Reveals full text on hover or focus with a trailing fade
+ * effect. Animation duration scales with character count. Keyboard and
+ * screen reader users can trigger scrolling via focus. Should not be
+ * placed independently in user markup.
+ *
+ * @summary Scrolls overflowing text on hover or focus
+ *
  */
 let RhAudioPlayerScrollingTextOverflow = class RhAudioPlayerScrollingTextOverflow extends LitElement {
     constructor() {
@@ -40,16 +47,22 @@ let RhAudioPlayerScrollingTextOverflow = class RhAudioPlayerScrollingTextOverflo
            @focus=${this.startScrolling}
            @blur=${this.stopScrolling}>
         <div id="inner">
-          <!-- inline text to scroll if wider than host -->
+          <!-- summary: Overflowing inline text
+               description: |
+                 Accepts inline text content such as a heading or title.
+                 Screen readers announce the full text regardless of
+                 whether the scroll animation is active. -->
           <slot class="${classMap({ scrolling, scrollable })}"></slot>
         </div>${!scrollable ? '' : html `
         <span id="fade"></span>`}
       </div>`;
     }
+    /** Stops the scrolling text animation and resets to the initial position. */
     stopScrolling() {
         __classPrivateFieldSet(this, _RhAudioPlayerScrollingTextOverflow_scrolling, false, "f");
         this.requestUpdate();
     }
+    /** Starts the scrolling text animation if the content overflows the container. */
     startScrolling() {
         if (__classPrivateFieldGet(this, _RhAudioPlayerScrollingTextOverflow_instances, "a", _RhAudioPlayerScrollingTextOverflow_isScrollable_get)) {
             __classPrivateFieldSet(this, _RhAudioPlayerScrollingTextOverflow_scrolling, true, "f");

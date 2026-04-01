@@ -10,7 +10,18 @@ import { css } from "lit";
 const panelStyles = css `:host{display:block;border-top:1px solid var(--_border-color)}:host([hidden]),[hidden]{display:none!important}[part=heading]{margin:var(--rh-space-lg,16px) 0;height:26px}::slotted([slot=heading]),slot[name=heading] *{margin-bottom:0!important;margin-top:0!important}::slotted([slot=heading]),::slotted([slot=title]),slot[name=heading] *{font-family:var(--rh-font-family-heading,RedHatDisplay,"Red Hat Display",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-heading-xs,1.25rem);font-weight:var(--rh-font-weight-heading-medium,500);line-height:var(--rh-line-height-heading,1.3)}::slotted([slot=title]){margin:0 0 var(--rh-space-lg,16px);padding:0}::slotted([slot=series]){letter-spacing:var(--rh-letter-spacing-body-text,.0125rem);font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:var(--rh-font-weight-heading-medium,500);margin:0 0 var(--rh-space-md,8px);padding:0}::-webkit-scrollbar{width:.5em}::-webkit-scrollbar-track{box-shadow:inset 0 0 .15em var(--_static-border-color)}::-webkit-scrollbar-thumb{background-color:var(--_static-border-color)}::-webkit-scrollbar-thumb:hover{cursor:pointer}`;
 const styles = css `[part=body]{max-height:240px;overflow-y:auto}::slotted([slot=link]){display:block}@container (min-width: 576px){slot[part=links]{display:flex;align-items:stretch;justify-content:space-between;flex-wrap:wrap}}`;
 /**
- * Audio Player Subscribe Panel
+ * Provides subscription links for podcast platforms within the audio
+ * player. Use this when you need to allow users to subscribe. Must be
+ * placed in the `subscribe` slot of `rh-audio-player`. Rendered inside
+ * an ARIA dialog panel; keyboard users can Tab through links. Authors
+ * should provide alt text on images so screen readers can identify
+ * each platform.
+ *
+ * @summary Displays podcast subscription links in an expandable panel
+ *
+ * @csspart heading - The panel heading with scrolling text overflow.
+ * @csspart body - The default content area.
+ * @csspart links - The container for subscription link elements.
  */
 let RhAudioPlayerSubscribe = class RhAudioPlayerSubscribe extends LitElement {
     constructor() {
@@ -21,17 +32,30 @@ let RhAudioPlayerSubscribe = class RhAudioPlayerSubscribe extends LitElement {
     }
     render() {
         return html `
-      <!-- scrolling text overflow -->
       <rh-audio-player-scrolling-text-overflow part="heading">
-        <!-- custom heading for panel -->
+        <!-- summary: Custom panel heading
+             description: |
+               Accepts a heading element for the subscribe panel title.
+               Should use an appropriate heading level for the page so
+               screen readers can navigate the panel hierarchy. -->
         <slot name="heading">${__classPrivateFieldGet(this, _RhAudioPlayerSubscribe_headings, "f").wrap(this.menuLabel)}</slot>
       </rh-audio-player-scrolling-text-overflow>
-      <!-- panel content -->
+      <!-- summary: Subscribe panel body content
+           description: |
+             Accepts descriptive text or rich content for the subscribe
+             panel. Content is accessible to screen readers when the
+             panel is expanded. -->
       <slot part="body" ?hidden="${__classPrivateFieldGet(this, _RhAudioPlayerSubscribe_slots, "f").isEmpty(null)}"></slot>
-      <!-- slot:
-             summary: link to subscribe to podcast
-           part:
-             summary: subscribe links -->
+      <!--
+        slot:
+          summary: Subscription platform link
+          description: |
+            Accepts anchor elements linking to podcast platforms. Each
+            link should include descriptive text or an image with alt
+            text so screen readers can identify the platform.
+        part:
+          summary: subscribe links
+      -->
       <slot name="link" part="links"></slot>`;
     }
     set menuLabel(label) {
@@ -41,6 +65,7 @@ let RhAudioPlayerSubscribe = class RhAudioPlayerSubscribe extends LitElement {
     get menuLabel() {
         return this.label || __classPrivateFieldGet(this, _RhAudioPlayerSubscribe_label, "f") || 'Subscribe';
     }
+    /** Triggers the scrolling text animation on the panel heading if it overflows its container. */
     scrollText() {
         this.shadowRoot?.querySelector('rh-audio-player-scrolling-text-overflow')?.startScrolling();
     }

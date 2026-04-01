@@ -16,7 +16,21 @@ import './rh-audio-player-scrolling-text-overflow.js';
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 /**
- * Audio Player Transcript Panel
+ * Provides a synchronized transcript panel for `rh-audio-player`. Use this
+ * when you need to display timed captions alongside audio playback. Must
+ * be placed in the `transcript` slot. Authors should provide `rh-cue`
+ * block elements with `start` and optionally `end` and `voice` attributes.
+ * Active cues are highlighted for screen reader and sighted users alike.
+ *
+ * @summary Displays synchronized, scrollable transcript with download
+ *
+ * @csspart heading - The panel heading with scrolling text overflow.
+ * @csspart toolbar - The toolbar area containing autoscroll and download.
+ *
+ * @fires transcriptdownload - Fired when the user clicks the download
+ *        button. This is a plain `Event` with `bubbles: true` and no
+ *        custom detail. The parent `rh-audio-player` handles it to
+ *        generate a `.txt` file download of the full transcript.
  */
 let RhTranscript = class RhTranscript extends LitElement {
     get downloadText() {
@@ -25,8 +39,11 @@ let RhTranscript = class RhTranscript extends LitElement {
     constructor() {
         super();
         _RhTranscript_instances.add(this);
+        /** Text label shown in the parent player's menu for this panel. */
         this.menuLabel = 'About the episode';
+        /** Text label for the download button and its tooltip. */
         this.downloadLabel = 'Download';
+        /** Text label for the autoscroll checkbox. */
         this.autoscrollLabel = 'Autoscroll';
         _RhTranscript_autoscroll.set(this, true);
         _RhTranscript_duration.set(this, void 0);
@@ -36,9 +53,12 @@ let RhTranscript = class RhTranscript extends LitElement {
     }
     render() {
         return html `
-      <!-- scrolling text overflow -->
       <rh-audio-player-scrolling-text-overflow part="heading">
-        <!-- custom heading for panel -->
+        <!-- summary: Panel heading
+             description: |
+               Accepts a heading block element like \`<h3>\` for the panel
+               title. Should use an appropriate heading level for the page
+               so screen readers can navigate the panel hierarchy. -->
         <slot name="heading">${__classPrivateFieldGet(this, _RhTranscript_headings, "f").wrap(this.menuLabel)}</slot>
       </rh-audio-player-scrolling-text-overflow>
       <!-- toolbar area above cues list -->
@@ -57,13 +77,25 @@ let RhTranscript = class RhTranscript extends LitElement {
           <span slot="content">${this.downloadLabel}</span>
         </rh-tooltip>`}
       </div>
-      <!-- \`rh-cue\` elements -->
+      <!-- summary: Transcript cue elements
+           description: |
+             Accepts \`<rh-cue>\` block elements with \`start\`, \`end\`, and
+             \`voice\` attributes. Screen readers can navigate individual
+             cues, and clicking a cue seeks the audio to that timestamp. -->
       <slot id="cues"></slot>
     `;
     }
+    /**
+     * Updates cue active states based on the current playback time.
+     * @param currentTime elapsed time in seconds
+     */
     setActiveCues(currentTime = 0) {
         __classPrivateFieldGet(this, _RhTranscript_instances, "m", _RhTranscript_updateCues).call(this, currentTime);
     }
+    /**
+     * Sets the total media duration and recalculates cue end times.
+     * @param mediaDuration total duration in seconds
+     */
     setDuration(mediaDuration) {
         if (!!mediaDuration && __classPrivateFieldGet(this, _RhTranscript_duration, "f") !== mediaDuration) {
             __classPrivateFieldSet(this, _RhTranscript_duration, mediaDuration, "f");
@@ -71,6 +103,7 @@ let RhTranscript = class RhTranscript extends LitElement {
             __classPrivateFieldGet(this, _RhTranscript_instances, "m", _RhTranscript_updateCues).call(this);
         }
     }
+    /** Triggers the scrolling text animation on the panel heading if it overflows its container. */
     scrollText() {
         this.shadowRoot?.querySelector('rh-audio-player-scrolling-text-overflow')?.startScrolling();
     }

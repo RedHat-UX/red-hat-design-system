@@ -9,14 +9,26 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 import { css } from "lit";
 const styles = css `:host,button,rh-icon,rh-tooltip,select{color:inherit}:host,div{display:flex;align-items:center}select{font-size:var(--rh-font-size-code-md,1rem);font-family:var(--rh-font-family-code,RedHatMono,"Red Hat Mono","Courier New",Courier,monospace);appearance:none;line-height:36px;padding:2px 0;border:none;background:#0000}:dir(rtl){text-align:right}button{border:none;background:#0000;height:var(--_button-size,40px);min-width:var(--_button-size,40px);padding:0}button:focus,select:focus{outline:var(--_outline)}button[disabled],select[disabled]{filter:grayscale(1);opacity:.5;cursor:not-allowed;border:none}`;
 /**
+ * Provides playback rate controls for `rh-audio-player`, allowing users
+ * to adjust audio speed between 0.25x and 2x. Renders step buttons
+ * flanking a `<select>` dropdown with ARIA labels for screen readers.
+ * This element is used internally by `rh-audio-player` and should not
+ * be placed independently in user markup.
+ *
+ * @summary Controls audio playback speed with step buttons and dropdown
+ *
+ * @fires playback-rate-select - Fired when the user changes the playback
+ *        rate, either by clicking step buttons or selecting from the
+ *        dropdown. The event's `playbackRate` property contains the new
+ *        rate value.
  */
 let RhAudioPlayerRateStepper = RhAudioPlayerRateStepper_1 = _a = class RhAudioPlayerRateStepper extends LitElement {
     constructor() {
         super(...arguments);
         _RhAudioPlayerRateStepper_instances.add(this);
-        /** Playback rate */
+        /** Current playback rate multiplier, from 0.25 to 2. */
         this.playbackRate = 1;
-        /** Playback rate */
+        /** Whether the stepper controls are disabled. */
         this.disabled = false;
     }
     /** template for playback rate controls */

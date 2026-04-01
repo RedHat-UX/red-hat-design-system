@@ -43,8 +43,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
     "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
@@ -4813,7 +4813,11 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>An audio player plays audio clips in the browser and includes other features.</p>
+      <p>An audio player for podcasts and media clips. Users must provide an
+<code>&lt;audio&gt;</code> element in the <code>media</code> slot. Provides playback controls,
+seek timeline, and expandable panels. All buttons use ARIA labels
+and <code>rh-tooltip</code> for screen reader and keyboard accessibility.
+Tab and Enter navigate and activate controls.</p>
 
 
       <div class="element-apis">
@@ -4933,9 +4937,10 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>optional inline text for podcast series name</p></td>
                   <td>
-                   <p>optional, name of podcast series</p>
+                   <p>Accepts a <code>&lt;p&gt;</code> or inline text element. Screen readers
+announce the series name before the title for context.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4963,9 +4968,11 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>optional heading element for episode title</p></td>
                   <td>
-                   <p>optional, title of episode</p>
+                   <p>Accepts a heading element like <code>&lt;h3&gt;</code>. Should use an
+appropriate heading level for the page. Screen readers
+use this as the primary label for the player region.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4993,9 +5000,11 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>optional about panel block element</p></td>
                   <td>
-                   <p>optional <code>rh-audio-player-about</code> panel with attribution</p>
+                   <p>Accepts an <code>rh-audio-player-about</code> block element with
+episode description and speaker attribution. Content
+is accessible to screen readers when the panel is expanded.</p>
                   </td>
                 </tr>
                 <tr>
@@ -5023,9 +5032,11 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>optional subscribe panel block element</p></td>
                   <td>
-                   <p>optional <code>rh-audio-player-subscribe</code> panel with links to subscribe</p>
+                   <p>Accepts an <code>rh-audio-player-subscribe</code> block element with
+anchor links to podcast services. Each link should include
+descriptive alt text on images for screen reader users.</p>
                   </td>
                 </tr>
                 <tr>
@@ -5053,9 +5064,11 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>optional transcript panel block element</p></td>
                   <td>
-                   <p>optional <code>rh-transcript</code> panel with <code>rh-cue</code> elements</p>
+                   <p>Accepts an <code>rh-transcript</code> block element containing <code>rh-cue</code>
+children. The transcript provides accessible text content
+that screen readers can navigate. Clicking cues seeks audio.</p>
                   </td>
                 </tr>
               </tbody>
@@ -5153,7 +5166,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>mediaseries</code></td>
-                  <td><p>Audio's series name, e.g. Podcast series.</p></td>
+                  <td><p>Audio series name, e.g. a podcast series title.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -5185,7 +5198,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>mediatitle</code></td>
-                  <td><p>Audio's title, e.g. Podcast episode title.</p></td>
+                  <td><p>Audio track title, e.g. a podcast episode name.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -5217,12 +5230,16 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>layout</code></td>
-                  <td><p>Layout:</p>
+                  <td><p>Player layout variant. Users should choose a layout appropriate to
+the available width:</p>
 <ul>
-<li><code>mini</code> (default): minimal controls: play/pause, range; volume and other controls hidden behind menu</li>
-<li><code>compact</code>: artwork and more controls: time, skip, volume</li>
-<li><code>compact-wide</code>: like compact but full width</li>
-<li><code>full</code>: maximal controls and artwork</li>
+<li><code>mini</code> (default): play/pause and seek range only; volume and
+other controls are behind the "more options" menu.</li>
+<li><code>compact</code>: adds artwork, elapsed time, skip buttons, and volume.</li>
+<li><code>compact-wide</code>: like <code>compact</code> but stretches to fill container
+width.</li>
+<li><code>full</code>: maximal controls including artwork, rewind/forward,
+elapsed/duration display, and inline playback rate stepper.</li>
 </ul></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'mini'</span> <span class="token operator">|</span> <span class="token string">'compact'</span> <span class="token operator">|</span> <span class="token string">'compact-wide'</span> <span class="token operator">|</span> <span class="token string">'full'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'mini'</span></code></pre></td>
@@ -5255,7 +5272,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>poster</code></td>
-                  <td><p>URL to audio's artwork</p></td>
+                  <td><p>URL to the audio track's artwork image.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -5287,7 +5304,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>volume</code></td>
-                  <td><p>Playback volume</p></td>
+                  <td><p>Playback volume from 0 (muted) to 1 (max).</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">number</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token number">0.5</span></code></pre></td>
                 </tr>
@@ -5319,7 +5336,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>playbackRate</code></td>
-                  <td><p>Playback rate</p></td>
+                  <td><p>Playback speed multiplier, from 0.25 to 2.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">number</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token number">1</span></code></pre></td>
                 </tr>
@@ -5351,7 +5368,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>expanded</code></td>
-                  <td></td>
+                  <td><p>Whether the expandable content panel is open.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span></code></pre></td>
                 </tr>
@@ -5383,7 +5400,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>lang</code></td>
-                  <td></td>
+                  <td><p>Language code for i18n of control labels.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -5415,7 +5432,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>colorPalette</code></td>
-                  <td><p>Element's color palette</p></td>
+                  <td><p>Element's color palette.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'light'</span> <span class="token operator">|</span> <span class="token string">'lighter'</span> <span class="token operator">|</span> <span class="token string">'lightest'</span> <span class="token operator">|</span> <span class="token string">'dark'</span> <span class="token operator">|</span> <span class="token string">'darker'</span> <span class="token operator">|</span> <span class="token string">'darkest'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -6061,21 +6078,21 @@
               <tbody>
                 <tr>
                   <td><code>--rh-audio-player-text-color</code></td>
-                  <td></td>
+                  <td><p>Player primary text color override</p></td>
                   <td>
                     <code>var(--rh-color-text-primary)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-audio-player-range-thumb-color</code></td>
-                  <td><p>color of time and volume range slider thumb</p></td>
+                  <td><p>Range slider thumb color</p></td>
                   <td>
                     <code>var(--_accent-color)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-audio-player-range-progress-color</code></td>
-                  <td></td>
+                  <td><p>Filled range track color</p></td>
                   <td>
                     <code>var(--_accent-color)</code>
                   </td>
@@ -6089,14 +6106,14 @@
                 </tr>
                 <tr>
                   <td><code>--rh-audio-player-secondary-text-color</code></td>
-                  <td><p>player secondary text color -</p></td>
+                  <td><p>Player secondary text color override</p></td>
                   <td>
                     <code>var(--rh-color-text-primary)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-audio-player-secondary-opacity</code></td>
-                  <td><p>player secondary opacity used for partially faded elements -</p></td>
+                  <td><p>Opacity for secondary UI elements</p></td>
                   <td>
                     <code>0.75</code>
                   </td>
@@ -6110,7 +6127,8 @@
                 </tr>
                 <tr>
                   <td><code>--rh-audio-player-background-color</code></td>
-                  <td><p>color of player background -</p></td>
+                  <td><p>Player surface in light mode override</p>
+<p>Player surface in dark mode override</p></td>
                   <td>
                     <code>var(--_static-surface-color)</code>
                   </td>
@@ -6291,7 +6309,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>16px font size</p>
+                    <p>Player base font size</p>
+<p>16px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6397,7 +6416,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Medium box shadow</p>
+                    <p>Player box shadow in light mode</p>
+<p>Medium box shadow</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6503,7 +6523,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>16px length token</p>
+                    <p>Thumb height</p>
+<p>16px length token</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6609,7 +6630,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>4px length token</p>
+                    <p>Track height</p>
+<p>4px length token</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6715,7 +6737,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Subtle borders (light theme)</p>
+                    <p>Range track in light mode</p>
+<p>Subtle borders (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6816,118 +6839,13 @@
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://ux.redhat.com/tokens/color/#--rh-color-text-secondary">
-                      <code>--rh-color-text-secondary</code>
-                    </a>
-                  </td>
-                  <td>
-                    
-                  </td>
-                  <td data-label="Copy">
-      <div>
-        <uxdot-copy-button   class="icon-only" copy="var(--rh-color-text-secondary, undefined)"><template shadowroot="open" shadowrootmode="open"><style>button{color:inherit;border-radius:var(--rh-border-radius-default);align-items:center;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs);background:0 0;border-width:0;display:inline-flex}code{padding:var(--rh-space-xs) var(--rh-space-md);background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);font-family:var(--rh-font-family-code);line-height:var(--rh-line-height-code)}:host(.icon-only) code,:host(:empty) code,:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{color:var(--rh-color-text-primary);background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;block-size:1px;inline-size:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}</style><!--lit-part zk+fFwx/8Tw=-->
-      <!--lit-node 0--><rh-tooltip  position="left-start" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline}#container{--_floating-arrow-size: var(--rh-tooltip-arrow-size, var(--rh-tooltip__arrow--Width,11px));max-width:100%;display:inline-flex;position:relative}#tooltip,#tooltip:after{position:absolute}#tooltip{opacity:0;pointer-events:none;z-index:10000;transition:opacity 0s 0s, display 0s 0s allow-discrete;text-align:var(--_text-alignment,center);word-break:break-word;translate:var(--_floating-content-translate);transform:translateX(var(--_rh-tooltip-shake-x,0));will-change:opacity;width:max-content;line-height:var(--rh-line-height-body-text,1.5);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);max-width: var(--rh-tooltip-max-width, var(--rh-tooltip--MaxWidth,18.75rem));border-radius:var(--rh-border-radius-default,3px);padding-block: var(--rh-tooltip-content-padding-block-start, var(--rh-tooltip__content--PaddingTop,var(--rh-space-lg,16px)))  var(--rh-tooltip-content-padding-block-end, var(--rh-tooltip__content--PaddingBottom,var(--rh-space-lg,16px)));padding-inline: var(--rh-tooltip-content-padding-inline-start, var(--rh-tooltip__content--PaddingLeft,var(--rh-space-lg,16px)))  var(--rh-tooltip-content-padding-inline-end, var(--rh-tooltip__content--PaddingRight,var(--rh-space-lg,16px)));font-size: var(--rh-tooltip-content-font-size, var(--rh-tooltip__content--FontSize,var(--rh-font-size-body-text-sm,.875rem)));color:light-dark( var(--rh-tooltip-content-color, var(--rh-tooltip__content--Color,var(--rh-color-text-primary-on-light,#151515))), var(--rh-tooltip-content-color,var(--rh-color-text-primary-on-dark,#fff)));background-color:light-dark( var(--rh-tooltip-content-background-color, var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))), var(--rh-tooltip-content-background-color,var(--rh-color-surface-darkest,#151515)));display:none;top:0;left:0}#tooltip.dark{color-scheme:dark}#tooltip.light{color-scheme:light}.initialized #tooltip{display:block}#tooltip:after{content:"";width:var(--_floating-arrow-size);height:var(--_floating-arrow-size);will-change:left top right bottom;background-color:light-dark( var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))), var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515))));display:block;rotate:45deg}.open #tooltip{opacity:1;transition:opacity .3s cubic-bezier(.54, 1.5, .38, 1.11) .3s, display .3s .3s allow-discrete}@starting-style{.open #tooltip{opacity:0}}.left #tooltip:after{inset-inline-end:calc(-.5 * var(--_floating-arrow-size))}.top #tooltip:after{inset-block-end:calc(-.5 * var(--_floating-arrow-size))}.right #tooltip:after{inset-inline-start:calc(-.5 * var(--_floating-arrow-size))}.bottom #tooltip:after{inset-block-start:calc(-.5 * var(--_floating-arrow-size))}.left.center #tooltip:after{inset-block-start:calc(50% - .5 * var(--_floating-arrow-size))}.top.center #tooltip:after{inset-inline-end:calc(50% - .5 * var(--_floating-arrow-size))}.right.center #tooltip:after{inset-block-start:calc(50% - .5 * var(--_floating-arrow-size))}.bottom.center #tooltip:after{inset-inline-end:calc(50% - .5 * var(--_floating-arrow-size))}.left.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.top.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.right.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.bottom.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.left.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.top.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}.right.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.bottom.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}:host([position=left]),:host([position=right]){--_text-alignment:"start"}#container:dir(rtl).left #tooltip:after{inset-inline:calc(-.5 * var(--_floating-arrow-size)) auto}#container:dir(rtl).right #tooltip:after{inset-inline:auto calc(-.5 * var(--_floating-arrow-size))}</style><!--lit-part 98+Q3SU39hY=-->
-      <!--lit-node 0--><div id="container"
-           style=""
-           class=" center ">
-        <div id="invoker">
-          <!-- summary: Invoking element
-               description: |
-                 Place the invoking element here, i.e. the element which
-                 when hovered or focused causes the tooltip to display.
-                 Must be inline, focusable content so that keyboard and
-                 screen reader users can activate the tooltip. -->
-          <slot id="invoker-slot"></slot>
-        </div>
-        <!--lit-node 4--><div id="tooltip" role="status" class=" dark ">
-          <!-- summary: Tooltip content
-               description: |
-                 Place tooltip content here. Overrides the `content`
-                 attribute. Content is announced to screen readers via
-                 a live region unless the `silent` attribute is set. -->
-          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
-        </div>
-      </div>
-    <!--/lit-part--></template>
-        <span id="caption" slot="content"><!--lit-part-->var(--rh-color-text-secondary, undefined)<!--/lit-part--></span>
-        <!--lit-node 3--><button >
-          <code><slot></slot></code>
-          <slot name="extra-content"></slot>
-          <span class="visually-hidden">Click to copy</span>
-          <!--lit-node 8--><rh-icon    aria-hidden="true" set="ui" icon="copy" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part giAImwWJlo8=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M28 7v22.607c0 .768-.622 1.393-1.387 1.393H10a1 1 0 1 1 0-2h16V7a1 1 0 1 1 2 0Zm-6.5 19h-16c-.827 0-1.5-.673-1.5-1.5V8a1.001 1.001 0 0 1 .294-.708l5.998-5.998A1.001 1.001 0 0 1 11 1h10.5c.827 0 1.5.673 1.5 1.5v22c0 .827-.673 1.5-1.5 1.5ZM7.414 7H10V4.414L7.414 7ZM21 3h-9v4.614C12 8.378 11.378 9 10.613 9H6v15h15V3Z"/></svg><!--/lit-part--><!--
-           Container for the fallback (i.e. slotted) content
-        --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
-        --><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-        </button>
-      </rh-tooltip>
-    <!--/lit-part--></template>
-          <span slot="extra-content" class="visually-hidden">
-            Full CSS Variable
-          </span>
-        </uxdot-copy-button>
-        <uxdot-copy-button    class="icon-only" copy="https://ux.redhat.com/tokens/color/#--rh-color-text-secondary" icon="link"><template shadowroot="open" shadowrootmode="open"><style>button{color:inherit;border-radius:var(--rh-border-radius-default);align-items:center;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs);background:0 0;border-width:0;display:inline-flex}code{padding:var(--rh-space-xs) var(--rh-space-md);background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);font-family:var(--rh-font-family-code);line-height:var(--rh-line-height-code)}:host(.icon-only) code,:host(:empty) code,:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{color:var(--rh-color-text-primary);background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;block-size:1px;inline-size:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}</style><!--lit-part zk+fFwx/8Tw=-->
-      <!--lit-node 0--><rh-tooltip  position="left-start" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline}#container{--_floating-arrow-size: var(--rh-tooltip-arrow-size, var(--rh-tooltip__arrow--Width,11px));max-width:100%;display:inline-flex;position:relative}#tooltip,#tooltip:after{position:absolute}#tooltip{opacity:0;pointer-events:none;z-index:10000;transition:opacity 0s 0s, display 0s 0s allow-discrete;text-align:var(--_text-alignment,center);word-break:break-word;translate:var(--_floating-content-translate);transform:translateX(var(--_rh-tooltip-shake-x,0));will-change:opacity;width:max-content;line-height:var(--rh-line-height-body-text,1.5);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);max-width: var(--rh-tooltip-max-width, var(--rh-tooltip--MaxWidth,18.75rem));border-radius:var(--rh-border-radius-default,3px);padding-block: var(--rh-tooltip-content-padding-block-start, var(--rh-tooltip__content--PaddingTop,var(--rh-space-lg,16px)))  var(--rh-tooltip-content-padding-block-end, var(--rh-tooltip__content--PaddingBottom,var(--rh-space-lg,16px)));padding-inline: var(--rh-tooltip-content-padding-inline-start, var(--rh-tooltip__content--PaddingLeft,var(--rh-space-lg,16px)))  var(--rh-tooltip-content-padding-inline-end, var(--rh-tooltip__content--PaddingRight,var(--rh-space-lg,16px)));font-size: var(--rh-tooltip-content-font-size, var(--rh-tooltip__content--FontSize,var(--rh-font-size-body-text-sm,.875rem)));color:light-dark( var(--rh-tooltip-content-color, var(--rh-tooltip__content--Color,var(--rh-color-text-primary-on-light,#151515))), var(--rh-tooltip-content-color,var(--rh-color-text-primary-on-dark,#fff)));background-color:light-dark( var(--rh-tooltip-content-background-color, var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))), var(--rh-tooltip-content-background-color,var(--rh-color-surface-darkest,#151515)));display:none;top:0;left:0}#tooltip.dark{color-scheme:dark}#tooltip.light{color-scheme:light}.initialized #tooltip{display:block}#tooltip:after{content:"";width:var(--_floating-arrow-size);height:var(--_floating-arrow-size);will-change:left top right bottom;background-color:light-dark( var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))), var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515))));display:block;rotate:45deg}.open #tooltip{opacity:1;transition:opacity .3s cubic-bezier(.54, 1.5, .38, 1.11) .3s, display .3s .3s allow-discrete}@starting-style{.open #tooltip{opacity:0}}.left #tooltip:after{inset-inline-end:calc(-.5 * var(--_floating-arrow-size))}.top #tooltip:after{inset-block-end:calc(-.5 * var(--_floating-arrow-size))}.right #tooltip:after{inset-inline-start:calc(-.5 * var(--_floating-arrow-size))}.bottom #tooltip:after{inset-block-start:calc(-.5 * var(--_floating-arrow-size))}.left.center #tooltip:after{inset-block-start:calc(50% - .5 * var(--_floating-arrow-size))}.top.center #tooltip:after{inset-inline-end:calc(50% - .5 * var(--_floating-arrow-size))}.right.center #tooltip:after{inset-block-start:calc(50% - .5 * var(--_floating-arrow-size))}.bottom.center #tooltip:after{inset-inline-end:calc(50% - .5 * var(--_floating-arrow-size))}.left.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.top.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.right.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.bottom.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.left.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.top.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}.right.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.bottom.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}:host([position=left]),:host([position=right]){--_text-alignment:"start"}#container:dir(rtl).left #tooltip:after{inset-inline:calc(-.5 * var(--_floating-arrow-size)) auto}#container:dir(rtl).right #tooltip:after{inset-inline:auto calc(-.5 * var(--_floating-arrow-size))}</style><!--lit-part 98+Q3SU39hY=-->
-      <!--lit-node 0--><div id="container"
-           style=""
-           class=" center ">
-        <div id="invoker">
-          <!-- summary: Invoking element
-               description: |
-                 Place the invoking element here, i.e. the element which
-                 when hovered or focused causes the tooltip to display.
-                 Must be inline, focusable content so that keyboard and
-                 screen reader users can activate the tooltip. -->
-          <slot id="invoker-slot"></slot>
-        </div>
-        <!--lit-node 4--><div id="tooltip" role="status" class=" dark ">
-          <!-- summary: Tooltip content
-               description: |
-                 Place tooltip content here. Overrides the `content`
-                 attribute. Content is announced to screen readers via
-                 a live region unless the `silent` attribute is set. -->
-          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
-        </div>
-      </div>
-    <!--/lit-part--></template>
-        <span id="caption" slot="content"><!--lit-part-->https://ux.redhat.com/tokens/color/#--rh-color-text-secondary<!--/lit-part--></span>
-        <!--lit-node 3--><button >
-          <code><slot></slot></code>
-          <slot name="extra-content"></slot>
-          <span class="visually-hidden">Click to copy</span>
-          <!--lit-node 8--><rh-icon    aria-hidden="true" set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part 5v6yQu9Xxog=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19.204 12.793c1.417 1.417 2.198 3.3 2.198 5.302s-.781 3.884-2.198 5.302l-5.398 5.41C12.378 30.223 10.494 31 8.497 31s-3.88-.778-5.304-2.19C.274 25.88.274 21.12 3.189 18.194l2.912-2.903a1 1 0 1 1 1.412 1.417l-2.91 2.9c-2.137 2.145-2.137 5.639.002 7.786a5.5 5.5 0 0 0 3.892 1.605c1.465 0 2.85-.572 3.896-1.61l5.396-5.407c1.04-1.04 1.613-2.421 1.613-3.888s-.573-2.849-1.612-3.888a5.356 5.356 0 0 0-1.267-.946 1 1 0 0 1 .947-1.762c.63.338 1.214.774 1.733 1.294Zm9.603-9.603C27.383 1.778 25.499 1 23.503 1s-3.881.778-5.309 2.193l-5.398 5.41c-1.417 1.417-2.198 3.3-2.198 5.302s.781 3.885 2.198 5.302c.52.52 1.104.956 1.733 1.294a1.001 1.001 0 0 0 .948-1.762 5.356 5.356 0 0 1-1.267-.946c-1.039-1.04-1.612-2.42-1.612-3.888s.573-2.848 1.613-3.888l5.396-5.407C20.654 3.572 22.038 3 23.503 3s2.849.572 3.892 1.605c2.139 2.147 2.139 5.642.002 7.786l-2.91 2.9a1 1 0 1 0 1.412 1.417l2.912-2.903c2.915-2.925 2.915-7.686-.004-10.616Z"/></svg><!--/lit-part--><!--
-           Container for the fallback (i.e. slotted) content
-        --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
-        --><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-        </button>
-      </rh-tooltip>
-    <!--/lit-part--></template>
-          <span slot="extra-content" class="visually-hidden">
-            Permalink to this token
-          </span>
-        </uxdot-copy-button>
-      </div>
-    </td>
-                </tr>
-                <tr>
-                  <td>
                     <a href="https://ux.redhat.com/tokens/color/#--rh-color-gray-50">
                       <code>--rh-color-gray-50</code>
                     </a>
                   </td>
                   <td>
-                    <p>Subtle icon</p>
+                    <p>Range track in dark mode</p>
+<p>Subtle icon</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7033,7 +6951,7 @@
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Focus ring color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7139,7 +7057,7 @@
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Brand accent for thumb and progress fill</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7245,7 +7163,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>2px border width: Example: Alert</p>
+                    <p>Focus outline width</p>
+<p>2px border width: Example: Alert</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7346,12 +7265,120 @@
                 </tr>
                 <tr>
                   <td>
+                    <a href="https://ux.redhat.com/tokens/color/#--rh-color-text-secondary">
+                      <code>--rh-color-text-secondary</code>
+                    </a>
+                  </td>
+                  <td>
+                    <p>Player secondary text color</p>
+                  </td>
+                  <td data-label="Copy">
+      <div>
+        <uxdot-copy-button   class="icon-only" copy="var(--rh-color-text-secondary, undefined)"><template shadowroot="open" shadowrootmode="open"><style>button{color:inherit;border-radius:var(--rh-border-radius-default);align-items:center;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs);background:0 0;border-width:0;display:inline-flex}code{padding:var(--rh-space-xs) var(--rh-space-md);background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);font-family:var(--rh-font-family-code);line-height:var(--rh-line-height-code)}:host(.icon-only) code,:host(:empty) code,:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{color:var(--rh-color-text-primary);background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;block-size:1px;inline-size:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}</style><!--lit-part zk+fFwx/8Tw=-->
+      <!--lit-node 0--><rh-tooltip  position="left-start" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline}#container{--_floating-arrow-size: var(--rh-tooltip-arrow-size, var(--rh-tooltip__arrow--Width,11px));max-width:100%;display:inline-flex;position:relative}#tooltip,#tooltip:after{position:absolute}#tooltip{opacity:0;pointer-events:none;z-index:10000;transition:opacity 0s 0s, display 0s 0s allow-discrete;text-align:var(--_text-alignment,center);word-break:break-word;translate:var(--_floating-content-translate);transform:translateX(var(--_rh-tooltip-shake-x,0));will-change:opacity;width:max-content;line-height:var(--rh-line-height-body-text,1.5);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);max-width: var(--rh-tooltip-max-width, var(--rh-tooltip--MaxWidth,18.75rem));border-radius:var(--rh-border-radius-default,3px);padding-block: var(--rh-tooltip-content-padding-block-start, var(--rh-tooltip__content--PaddingTop,var(--rh-space-lg,16px)))  var(--rh-tooltip-content-padding-block-end, var(--rh-tooltip__content--PaddingBottom,var(--rh-space-lg,16px)));padding-inline: var(--rh-tooltip-content-padding-inline-start, var(--rh-tooltip__content--PaddingLeft,var(--rh-space-lg,16px)))  var(--rh-tooltip-content-padding-inline-end, var(--rh-tooltip__content--PaddingRight,var(--rh-space-lg,16px)));font-size: var(--rh-tooltip-content-font-size, var(--rh-tooltip__content--FontSize,var(--rh-font-size-body-text-sm,.875rem)));color:light-dark( var(--rh-tooltip-content-color, var(--rh-tooltip__content--Color,var(--rh-color-text-primary-on-light,#151515))), var(--rh-tooltip-content-color,var(--rh-color-text-primary-on-dark,#fff)));background-color:light-dark( var(--rh-tooltip-content-background-color, var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))), var(--rh-tooltip-content-background-color,var(--rh-color-surface-darkest,#151515)));display:none;top:0;left:0}#tooltip.dark{color-scheme:dark}#tooltip.light{color-scheme:light}.initialized #tooltip{display:block}#tooltip:after{content:"";width:var(--_floating-arrow-size);height:var(--_floating-arrow-size);will-change:left top right bottom;background-color:light-dark( var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))), var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515))));display:block;rotate:45deg}.open #tooltip{opacity:1;transition:opacity .3s cubic-bezier(.54, 1.5, .38, 1.11) .3s, display .3s .3s allow-discrete}@starting-style{.open #tooltip{opacity:0}}.left #tooltip:after{inset-inline-end:calc(-.5 * var(--_floating-arrow-size))}.top #tooltip:after{inset-block-end:calc(-.5 * var(--_floating-arrow-size))}.right #tooltip:after{inset-inline-start:calc(-.5 * var(--_floating-arrow-size))}.bottom #tooltip:after{inset-block-start:calc(-.5 * var(--_floating-arrow-size))}.left.center #tooltip:after{inset-block-start:calc(50% - .5 * var(--_floating-arrow-size))}.top.center #tooltip:after{inset-inline-end:calc(50% - .5 * var(--_floating-arrow-size))}.right.center #tooltip:after{inset-block-start:calc(50% - .5 * var(--_floating-arrow-size))}.bottom.center #tooltip:after{inset-inline-end:calc(50% - .5 * var(--_floating-arrow-size))}.left.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.top.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.right.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.bottom.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.left.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.top.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}.right.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.bottom.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}:host([position=left]),:host([position=right]){--_text-alignment:"start"}#container:dir(rtl).left #tooltip:after{inset-inline:calc(-.5 * var(--_floating-arrow-size)) auto}#container:dir(rtl).right #tooltip:after{inset-inline:auto calc(-.5 * var(--_floating-arrow-size))}</style><!--lit-part 98+Q3SU39hY=-->
+      <!--lit-node 0--><div id="container"
+           style=""
+           class=" center ">
+        <div id="invoker">
+          <!-- summary: Invoking element
+               description: |
+                 Place the invoking element here, i.e. the element which
+                 when hovered or focused causes the tooltip to display.
+                 Must be inline, focusable content so that keyboard and
+                 screen reader users can activate the tooltip. -->
+          <slot id="invoker-slot"></slot>
+        </div>
+        <!--lit-node 4--><div id="tooltip" role="status" class=" dark ">
+          <!-- summary: Tooltip content
+               description: |
+                 Place tooltip content here. Overrides the `content`
+                 attribute. Content is announced to screen readers via
+                 a live region unless the `silent` attribute is set. -->
+          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
+        <span id="caption" slot="content"><!--lit-part-->var(--rh-color-text-secondary, undefined)<!--/lit-part--></span>
+        <!--lit-node 3--><button >
+          <code><slot></slot></code>
+          <slot name="extra-content"></slot>
+          <span class="visually-hidden">Click to copy</span>
+          <!--lit-node 8--><rh-icon    aria-hidden="true" set="ui" icon="copy" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part giAImwWJlo8=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M28 7v22.607c0 .768-.622 1.393-1.387 1.393H10a1 1 0 1 1 0-2h16V7a1 1 0 1 1 2 0Zm-6.5 19h-16c-.827 0-1.5-.673-1.5-1.5V8a1.001 1.001 0 0 1 .294-.708l5.998-5.998A1.001 1.001 0 0 1 11 1h10.5c.827 0 1.5.673 1.5 1.5v22c0 .827-.673 1.5-1.5 1.5ZM7.414 7H10V4.414L7.414 7ZM21 3h-9v4.614C12 8.378 11.378 9 10.613 9H6v15h15V3Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        </button>
+      </rh-tooltip>
+    <!--/lit-part--></template>
+          <span slot="extra-content" class="visually-hidden">
+            Full CSS Variable
+          </span>
+        </uxdot-copy-button>
+        <uxdot-copy-button    class="icon-only" copy="https://ux.redhat.com/tokens/color/#--rh-color-text-secondary" icon="link"><template shadowroot="open" shadowrootmode="open"><style>button{color:inherit;border-radius:var(--rh-border-radius-default);align-items:center;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs);background:0 0;border-width:0;display:inline-flex}code{padding:var(--rh-space-xs) var(--rh-space-md);background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);font-family:var(--rh-font-family-code);line-height:var(--rh-line-height-code)}:host(.icon-only) code,:host(:empty) code,:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{color:var(--rh-color-text-primary);background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;block-size:1px;inline-size:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}</style><!--lit-part zk+fFwx/8Tw=-->
+      <!--lit-node 0--><rh-tooltip  position="left-start" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline}#container{--_floating-arrow-size: var(--rh-tooltip-arrow-size, var(--rh-tooltip__arrow--Width,11px));max-width:100%;display:inline-flex;position:relative}#tooltip,#tooltip:after{position:absolute}#tooltip{opacity:0;pointer-events:none;z-index:10000;transition:opacity 0s 0s, display 0s 0s allow-discrete;text-align:var(--_text-alignment,center);word-break:break-word;translate:var(--_floating-content-translate);transform:translateX(var(--_rh-tooltip-shake-x,0));will-change:opacity;width:max-content;line-height:var(--rh-line-height-body-text,1.5);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);max-width: var(--rh-tooltip-max-width, var(--rh-tooltip--MaxWidth,18.75rem));border-radius:var(--rh-border-radius-default,3px);padding-block: var(--rh-tooltip-content-padding-block-start, var(--rh-tooltip__content--PaddingTop,var(--rh-space-lg,16px)))  var(--rh-tooltip-content-padding-block-end, var(--rh-tooltip__content--PaddingBottom,var(--rh-space-lg,16px)));padding-inline: var(--rh-tooltip-content-padding-inline-start, var(--rh-tooltip__content--PaddingLeft,var(--rh-space-lg,16px)))  var(--rh-tooltip-content-padding-inline-end, var(--rh-tooltip__content--PaddingRight,var(--rh-space-lg,16px)));font-size: var(--rh-tooltip-content-font-size, var(--rh-tooltip__content--FontSize,var(--rh-font-size-body-text-sm,.875rem)));color:light-dark( var(--rh-tooltip-content-color, var(--rh-tooltip__content--Color,var(--rh-color-text-primary-on-light,#151515))), var(--rh-tooltip-content-color,var(--rh-color-text-primary-on-dark,#fff)));background-color:light-dark( var(--rh-tooltip-content-background-color, var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))), var(--rh-tooltip-content-background-color,var(--rh-color-surface-darkest,#151515)));display:none;top:0;left:0}#tooltip.dark{color-scheme:dark}#tooltip.light{color-scheme:light}.initialized #tooltip{display:block}#tooltip:after{content:"";width:var(--_floating-arrow-size);height:var(--_floating-arrow-size);will-change:left top right bottom;background-color:light-dark( var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))), var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515))));display:block;rotate:45deg}.open #tooltip{opacity:1;transition:opacity .3s cubic-bezier(.54, 1.5, .38, 1.11) .3s, display .3s .3s allow-discrete}@starting-style{.open #tooltip{opacity:0}}.left #tooltip:after{inset-inline-end:calc(-.5 * var(--_floating-arrow-size))}.top #tooltip:after{inset-block-end:calc(-.5 * var(--_floating-arrow-size))}.right #tooltip:after{inset-inline-start:calc(-.5 * var(--_floating-arrow-size))}.bottom #tooltip:after{inset-block-start:calc(-.5 * var(--_floating-arrow-size))}.left.center #tooltip:after{inset-block-start:calc(50% - .5 * var(--_floating-arrow-size))}.top.center #tooltip:after{inset-inline-end:calc(50% - .5 * var(--_floating-arrow-size))}.right.center #tooltip:after{inset-block-start:calc(50% - .5 * var(--_floating-arrow-size))}.bottom.center #tooltip:after{inset-inline-end:calc(50% - .5 * var(--_floating-arrow-size))}.left.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.top.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.right.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.bottom.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.left.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.top.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}.right.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.bottom.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}:host([position=left]),:host([position=right]){--_text-alignment:"start"}#container:dir(rtl).left #tooltip:after{inset-inline:calc(-.5 * var(--_floating-arrow-size)) auto}#container:dir(rtl).right #tooltip:after{inset-inline:auto calc(-.5 * var(--_floating-arrow-size))}</style><!--lit-part 98+Q3SU39hY=-->
+      <!--lit-node 0--><div id="container"
+           style=""
+           class=" center ">
+        <div id="invoker">
+          <!-- summary: Invoking element
+               description: |
+                 Place the invoking element here, i.e. the element which
+                 when hovered or focused causes the tooltip to display.
+                 Must be inline, focusable content so that keyboard and
+                 screen reader users can activate the tooltip. -->
+          <slot id="invoker-slot"></slot>
+        </div>
+        <!--lit-node 4--><div id="tooltip" role="status" class=" dark ">
+          <!-- summary: Tooltip content
+               description: |
+                 Place tooltip content here. Overrides the `content`
+                 attribute. Content is announced to screen readers via
+                 a live region unless the `silent` attribute is set. -->
+          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
+        <span id="caption" slot="content"><!--lit-part-->https://ux.redhat.com/tokens/color/#--rh-color-text-secondary<!--/lit-part--></span>
+        <!--lit-node 3--><button >
+          <code><slot></slot></code>
+          <slot name="extra-content"></slot>
+          <span class="visually-hidden">Click to copy</span>
+          <!--lit-node 8--><rh-icon    aria-hidden="true" set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part 5v6yQu9Xxog=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19.204 12.793c1.417 1.417 2.198 3.3 2.198 5.302s-.781 3.884-2.198 5.302l-5.398 5.41C12.378 30.223 10.494 31 8.497 31s-3.88-.778-5.304-2.19C.274 25.88.274 21.12 3.189 18.194l2.912-2.903a1 1 0 1 1 1.412 1.417l-2.91 2.9c-2.137 2.145-2.137 5.639.002 7.786a5.5 5.5 0 0 0 3.892 1.605c1.465 0 2.85-.572 3.896-1.61l5.396-5.407c1.04-1.04 1.613-2.421 1.613-3.888s-.573-2.849-1.612-3.888a5.356 5.356 0 0 0-1.267-.946 1 1 0 0 1 .947-1.762c.63.338 1.214.774 1.733 1.294Zm9.603-9.603C27.383 1.778 25.499 1 23.503 1s-3.881.778-5.309 2.193l-5.398 5.41c-1.417 1.417-2.198 3.3-2.198 5.302s.781 3.885 2.198 5.302c.52.52 1.104.956 1.733 1.294a1.001 1.001 0 0 0 .948-1.762 5.356 5.356 0 0 1-1.267-.946c-1.039-1.04-1.612-2.42-1.612-3.888s.573-2.848 1.613-3.888l5.396-5.407C20.654 3.572 22.038 3 23.503 3s2.849.572 3.892 1.605c2.139 2.147 2.139 5.642.002 7.786l-2.91 2.9a1 1 0 1 0 1.412 1.417l2.912-2.903c2.915-2.925 2.915-7.686-.004-10.616Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        </button>
+      </rh-tooltip>
+    <!--/lit-part--></template>
+          <span slot="extra-content" class="visually-hidden">
+            Permalink to this token
+          </span>
+        </uxdot-copy-button>
+      </div>
+    </td>
+                </tr>
+                <tr>
+                  <td>
                     <a href="https://ux.redhat.com/tokens/color/#--rh-color-border-subtle">
                       <code>--rh-color-border-subtle</code>
                     </a>
                   </td>
                   <td>
-                    <p>color of player border -</p>
+                    <p>Player border color</p>
+<p>Static border color for panels</p>
+<p>Cue text underline color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7457,7 +7484,9 @@
                     </a>
                   </td>
                   <td>
-                    <p>Tertiary surface (dark theme)</p>
+                    <p>Active cue highlight in dark mode</p>
+<p>Panel focus surface in dark mode</p>
+<p>Tertiary surface (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7563,7 +7592,7 @@
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Active cue highlight in light mode</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7669,7 +7698,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Secondary surface (light theme)</p>
+                    <p>Panel focus surface in light mode</p>
+<p>Secondary surface (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7775,7 +7805,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>12px font size</p>
+                    <p>Series font size</p>
+<p>12px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7881,7 +7912,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>20px font size</p>
+                    <p>Title font size</p>
+<p>20px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7987,7 +8019,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Line height for headings</p>
+                    <p>Title line height</p>
+<p>Line height for headings</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8093,7 +8126,9 @@
                     </a>
                   </td>
                   <td>
-                    <p>Heading font family</p>
+                    <p>Title font family</p>
+<p>Media title font family</p>
+<p>Heading font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8199,7 +8234,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>h6 heading font size</p>
+                    <p>Media title font size</p>
+<p>h6 heading font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8305,7 +8341,10 @@
                     </a>
                   </td>
                   <td>
-                    <p>Medium font weight for headings</p>
+                    <p>Series font weight</p>
+<p>Title font weight</p>
+<p>Media title font weight</p>
+<p>Medium font weight for headings</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8411,7 +8450,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>14px font size</p>
+                    <p>Series name font size</p>
+<p>14px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8517,7 +8557,9 @@
                     </a>
                   </td>
                   <td>
-                    <p>Regular font weight</p>
+                    <p>Player base font weight</p>
+<p>Series name font weight</p>
+<p>Regular font weight</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8623,7 +8665,9 @@
                     </a>
                   </td>
                   <td>
-                    <p>Extra letter spacing for small body text sizes</p>
+                    <p>Series letter spacing</p>
+<p>Series name letter spacing</p>
+<p>Extra letter spacing for small body text sizes</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8729,7 +8773,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Code font family</p>
+                    <p>Time display font family</p>
+<p>Code font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8835,7 +8880,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>12px font size</p>
+                    <p>Time display font size</p>
+<p>12px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8941,7 +8987,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Line height for code</p>
+                    <p>Time display line height</p>
+<p>Line height for code</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9153,7 +9200,12 @@
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Player inline and block padding</p>
+<p>Title block end margin</p>
+<p>Spacer inline end margin</p>
+<p>Play button icon gap</p>
+<p>Menu item inline padding</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9259,7 +9311,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>16px font size</p>
+                    <p>Menu item font size</p>
+<p>16px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9365,7 +9418,9 @@
                     </a>
                   </td>
                   <td>
-                    <p>Line height for body text</p>
+                    <p>Player base line height</p>
+<p>Menu item line height</p>
+<p>Line height for body text</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9471,7 +9526,10 @@
                     </a>
                   </td>
                   <td>
-                    <p>Body text font family</p>
+                    <p>Player base font family</p>
+<p>Series name font family</p>
+<p>Menu item font family</p>
+<p>Body text font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9577,7 +9635,8 @@
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Player primary text color</p>
+<p>Static text color for panels</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9683,7 +9742,11 @@
                     </a>
                   </td>
                   <td>
-                    <p>Primary surface (light theme)</p>
+                    <p>Player surface in light mode</p>
+<p>Static panel surface in light mode</p>
+<p>Play button fill in dark mode</p>
+<p>Play button icon in light mode</p>
+<p>Primary surface (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9789,7 +9852,11 @@
                     </a>
                   </td>
                   <td>
-                    <p>Primary surface (dark theme)</p>
+                    <p>Player surface in dark mode</p>
+<p>Static panel surface in dark mode</p>
+<p>Play button fill in light mode</p>
+<p>Play button icon in dark mode</p>
+<p>Primary surface (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9895,7 +9962,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>3px border radius; Example: Card</p>
+                    <p>Toolbar and panel border radius</p>
+<p>3px border radius; Example: Card</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -10001,7 +10069,11 @@
                     </a>
                   </td>
                   <td>
-                    <p>8px spacer</p>
+                    <p>Series block end margin</p>
+<p>Series name block end margin</p>
+<p>Toolbar inline end padding</p>
+<p>Menu item block padding</p>
+<p>8px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -10319,7 +10391,9 @@
                     </a>
                   </td>
                   <td>
-                    <p>24px spacer</p>
+                    <p>Gap between toolbar icon buttons</p>
+<p>Spacer width</p>
+<p>24px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -10449,7 +10523,11 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>Audio Player About Panel</p>
+      <p>Provides episode details and speaker attribution for <code>rh-audio-player</code>.
+Use when you need show notes or speaker profiles. Must be placed in
+the <code>about</code> slot. Authors should provide a heading and may include up
+to two <code>rh-avatar</code> elements for attribution. Rendered inside an
+ARIA dialog panel so screen readers can navigate its content.</p>
 
 
       <div class="element-apis">
@@ -10539,9 +10617,11 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Panel heading</p></td>
                   <td>
-                   <p>custom heading for panel</p>
+                   <p>Accepts a heading block element like <code>&lt;h3&gt;</code> for the panel
+title. Should use an appropriate heading level for the page
+so screen readers can navigate the panel hierarchy.</p>
                   </td>
                 </tr>
                 <tr>
@@ -10569,9 +10649,11 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Episode description</p></td>
                   <td>
-                   <p>panel content <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Accepts block elements like <code>&lt;p&gt;</code> for episode show notes
+or description text. Content is focusable and scrollable
+so keyboard and screen reader users can read it. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
                 <tr>
@@ -10599,9 +10681,10 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Speaker attribution</p></td>
                   <td>
-                   <p><code>&lt;rh-avatar&gt;</code> for attribution</p>
+                   <p>Accepts up to two <code>&lt;rh-avatar&gt;</code> block elements for speaker
+attribution. Additional elements beyond two are hidden.</p>
                   </td>
                 </tr>
               </tbody>
@@ -10859,7 +10942,7 @@
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
+                  <td><p>Triggers the scrolling text animation on all panel headings that overflow their container.</p></td>
                 </tr>
               </tbody>
             </table>
@@ -10988,7 +11071,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td></td>
-                  <td><p>panel heading</p></td>
+                  <td><p>The panel heading container with scrolling overflow.</p></td>
                 </tr>
                 <tr>
                   <td>
@@ -11018,7 +11101,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td></td>
-                  <td><p>panel body</p></td>
+                  <td><p>The scrollable description content area.</p></td>
                 </tr>
                 <tr>
                   <td>
@@ -11117,7 +11200,7 @@
               <tbody>
                 <tr>
                   <td><code>--rh-avatar-size</code></td>
-                  <td></td>
+                  <td><p>Avatar size</p></td>
                   <td>
                     <code>var(--rh-size-icon-05, 48px)</code>
                   </td>
@@ -11298,7 +11381,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Extra letter spacing for small body text sizes</p>
+                    <p>Series letter spacing</p>
+<p>Extra letter spacing for small body text sizes</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -11404,7 +11488,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>12px font size</p>
+                    <p>Series font size</p>
+<p>12px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -11510,7 +11595,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Line height for body text</p>
+                    <p>Series line height</p>
+<p>Line height for body text</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -11616,7 +11702,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Body text font family</p>
+                    <p>Series font family</p>
+<p>Body text font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -11722,7 +11809,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Medium font weight</p>
+                    <p>Series font weight</p>
+<p>Medium font weight</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -11828,7 +11916,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>h6 heading font size</p>
+                    <p>Title font size</p>
+<p>h6 heading font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -11934,7 +12023,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Heading font family</p>
+                    <p>Title font family</p>
+<p>Heading font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -12040,7 +12130,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Medium font weight for headings</p>
+                    <p>Title font weight</p>
+<p>Medium font weight for headings</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -12146,7 +12237,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Line height for headings</p>
+                    <p>Title line height</p>
+<p>Line height for headings</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -12252,7 +12344,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>8px spacer</p>
+                    <p>Series block end margin</p>
+<p>8px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -12358,7 +12451,10 @@
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Title block end margin</p>
+<p>Profile grid gap</p>
+<p>Profile block start margin</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -12488,7 +12584,12 @@
         </h2>
       </uxdot-copy-permalink>
 
-      
+      <p>Provides playback rate controls for <code>rh-audio-player</code>, allowing users
+to adjust audio speed between 0.25x and 2x. Renders step buttons
+flanking a <code>&lt;select&gt;</code> dropdown with ARIA labels for screen readers.
+This element is used internally by <code>rh-audio-player</code> and should not
+be placed independently in user markup.</p>
+
 
       <div class="element-apis">
         
@@ -12614,7 +12715,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>playbackRate</code></td>
-                  <td><p>Playback rate</p></td>
+                  <td><p>Current playback rate multiplier, from 0.25 to 2.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">number</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token number">1</span></code></pre></td>
                 </tr>
@@ -12646,7 +12747,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>disabled</code></td>
-                  <td><p>Playback rate</p></td>
+                  <td><p>Whether the stepper controls are disabled.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span></code></pre></td>
                 </tr>
@@ -12678,7 +12779,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>label</code></td>
-                  <td><p>Playback rate</p></td>
+                  <td><p>Accessible label for the rate select dropdown.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -12744,13 +12845,77 @@
               <a href="#rh-audio-player-rate-stepper-events">Events <rh-badge state="neutral"><template shadowroot="open" shadowrootmode="open"><style>span,slot{white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px));color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));justify-content:center;align-items:center;position:relative}:is(span,slot).neutral{background-color:var(--rh-color-status-neutral)}:is(span,slot).info{background-color:var(--rh-color-status-info)}:is(span,slot).success{background-color:var(--rh-color-status-success)}:is(span,slot).caution{background-color:var(--rh-color-status-caution);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).warning{background-color:var(--rh-color-status-warning);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).danger{background-color:var(--rh-color-status-danger)}span:empty{display:none}slot{display:inline-flex}:host([number]) slot{display:none}:host([number]) span{display:inline-flex}</style><!--lit-part hqKOHqwbWgk=-->
       <!--lit-node 0--><span class=" neutral "><!--lit-part--><!--/lit-part--></span>
       <!--lit-node 2--><slot class=" neutral "></slot>
-    <!--/lit-part--></template>0</rh-badge>
+    <!--/lit-part--></template>1</rh-badge>
                 
               </a>
             </h3>
           </uxdot-copy-permalink>
           
-          <p><em>None</em></p>
+          <rh-table  compact><template shadowroot="open" shadowrootmode="open"><style>*{box-sizing:border-box}:host{scrollbar-color:var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);width:100%;color:var(--rh-color-text-primary);--_scrollbar-size:calc(10 / 16 * 1rem);--_scrollbar-thumb-color:var(--rh-color-gray-50,#707070);--_scrollbar-track-color:var(--rh-color-border-subtle);--_row-border: var(--rh-table-row-border,var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle-on-light,#c7c7c7));--_row-background-hover-color:light-dark(var(--rh-table-row-background-hover-color,rgba(from var(--rh-color-gray-40,#a3a3a3) r g b / .1)),rgba(from var(--rh-color-white,#fff) r g b / .1));--_column-background-hover-color:light-dark(var(--rh-table-column-background-hover-color,rgba(from var(--rh-color-blue-50,#06c) r g b / .1)),rgba(from var(--rh-color-blue-70,#036) r g b / .3));display:block;position:relative;overflow:auto}:host::-webkit-scrollbar{width:var(--_scrollbar-size);height:var(--_scrollbar-size)}:host::-webkit-scrollbar{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-track{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-thumb{background-color:var(--_scrollbar-thumb-color)}[slot]{display:block}::slotted([slot=summary]){padding:var(--rh-space-xl,24px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px);color:var(--rh-color-text-secondary);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:italic;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5);display:block}</style><!--lit-part DhG3hBsOx/E=-->
+      <div id="container" part="container">
+        <!-- summary: Default slot for the table element
+             description: |
+               Expects a native HTML `<table>` element with semantic
+               markup. Authors must include `<thead>`, `<tbody>`,
+               and scoped `<th>` elements so that screen readers
+               can navigate the table structure. -->
+        <!--lit-node 2--><slot 
+              
+              
+              ></slot>
+        <!-- summary: Summary slot for table description
+             description: |
+               An optional description of the table data displayed
+               below the table. The element links this content to the
+               table via `aria-describedby` for screen reader users.
+               Authors should use inline elements like `<small>`. -->
+        <slot id="summary" name="summary"></slot>
+      </div>
+    <!--/lit-part--></template>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Event Name</th>
+                  <th scope="col">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                <tr>
+                  <td>
+                    <uxdot-copy-permalink><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;margin-block-end:var(--rh-space-lg);display:flex}#signifier{display:var(--perma-signifier-display,none)}#button{border-radius:var(--rh-border-radius-default);background:0 0;border:none;align-items:center;height:1.75rem;display:none}#button:is(:hover,:focus){background:var(--uxdot-copy-permalink-button-background,light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark)));color:var(--rh-color-text-primary)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){color:inherit;text-decoration:inherit;align-items:center;display:flex;margin-block-end:0!important}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part 5v6yQu9Xxog=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19.204 12.793c1.417 1.417 2.198 3.3 2.198 5.302s-.781 3.884-2.198 5.302l-5.398 5.41C12.378 30.223 10.494 31 8.497 31s-3.88-.778-5.304-2.19C.274 25.88.274 21.12 3.189 18.194l2.912-2.903a1 1 0 1 1 1.412 1.417l-2.91 2.9c-2.137 2.145-2.137 5.639.002 7.786a5.5 5.5 0 0 0 3.892 1.605c1.465 0 2.85-.572 3.896-1.61l5.396-5.407c1.04-1.04 1.613-2.421 1.613-3.888s-.573-2.849-1.612-3.888a5.356 5.356 0 0 0-1.267-.946 1 1 0 0 1 .947-1.762c.63.338 1.214.774 1.733 1.294Zm9.603-9.603C27.383 1.778 25.499 1 23.503 1s-3.881.778-5.309 2.193l-5.398 5.41c-1.417 1.417-2.198 3.3-2.198 5.302s.781 3.885 2.198 5.302c.52.52 1.104.956 1.733 1.294a1.001 1.001 0 0 0 .948-1.762 5.356 5.356 0 0 1-1.267-.946c-1.039-1.04-1.612-2.42-1.612-3.888s.573-2.848 1.613-3.888l5.396-5.407C20.654 3.572 22.038 3 23.503 3s2.849.572 3.892 1.605c2.139 2.147 2.139 5.642.002 7.786l-2.91 2.9a1 1 0 1 0 1.412 1.417l2.912-2.903c2.915-2.925 2.915-7.686-.004-10.616Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+                      <span id="rh-audio-player-rate-stepper-events-playback-rate-select">
+                        <a href="#rh-audio-player-rate-stepper-events-playback-rate-select">
+                          <code>playback-rate-select</code>
+                        </a>
+                      </span>
+                    </uxdot-copy-permalink>
+                  </td>
+                  <td><p>Fired when the user changes the playback
+rate, either by clicking step buttons or selecting from the
+dropdown. The event's <code>playbackRate</code> property contains the new
+rate value.</p></td>
+                </tr>
+              </tbody>
+            </table>
+          </rh-table>
         </section>
     
         
@@ -12884,7 +13049,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>16px font size</p>
+                    <p>Rate selector font size</p>
+<p>16px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -12990,7 +13156,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Code font family</p>
+                    <p>Rate selector font family</p>
+<p>Code font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -13120,7 +13287,11 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>Audio Player Scrolling Text Overflow</p>
+      <p>Provides a scrolling text animation for <code>rh-audio-player</code> when content
+overflows. Reveals full text on hover or focus with a trailing fade
+effect. Animation duration scales with character count. Keyboard and
+screen reader users can trigger scrolling via focus. Should not be
+placed independently in user markup.</p>
 
 
       <div class="element-apis">
@@ -13210,9 +13381,11 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Overflowing inline text</p></td>
                   <td>
-                   <p>inline text to scroll if wider than host <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Accepts inline text content such as a heading or title.
+Screen readers announce the full text regardless of
+whether the scroll animation is active. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -13368,7 +13541,7 @@
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
+                  <td><p>Stops the scrolling text animation and resets to the initial position.</p></td>
                 </tr>
                 <tr>
                   <td>
@@ -13397,7 +13570,7 @@
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
+                  <td><p>Starts the scrolling text animation if the content overflows the container.</p></td>
                 </tr>
               </tbody>
             </table>
@@ -13532,7 +13705,8 @@
               <tbody>
                 <tr>
                   <td><code>--rh-audio-player-scrolling-text-overflow-background-color</code></td>
-                  <td></td>
+                  <td><p>Fade overlay color in light mode override</p>
+<p>Fade overlay color in dark mode override</p></td>
                   <td>
                     <code>var(--rh-color-surface-darkest, #151515)</code>
                   </td>
@@ -13607,7 +13781,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Primary surface (light theme)</p>
+                    <p>Fade overlay color in light mode</p>
+<p>Primary surface (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -13713,7 +13888,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Primary surface (dark theme)</p>
+                    <p>Fade overlay color in dark mode</p>
+<p>Primary surface (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -13843,7 +14019,12 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>Audio Player Subscribe Panel</p>
+      <p>Provides subscription links for podcast platforms within the audio
+player. Use this when you need to allow users to subscribe. Must be
+placed in the <code>subscribe</code> slot of <code>rh-audio-player</code>. Rendered inside
+an ARIA dialog panel; keyboard users can Tab through links. Authors
+should provide alt text on images so screen readers can identify
+each platform.</p>
 
 
       <div class="element-apis">
@@ -13933,9 +14114,11 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Custom panel heading</p></td>
                   <td>
-                   <p>custom heading for panel</p>
+                   <p>Accepts a heading element for the subscribe panel title.
+Should use an appropriate heading level for the page so
+screen readers can navigate the panel hierarchy.</p>
                   </td>
                 </tr>
                 <tr>
@@ -13963,9 +14146,11 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Subscribe panel body content</p></td>
                   <td>
-                   <p>panel content <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Accepts descriptive text or rich content for the subscribe
+panel. Content is accessible to screen readers when the
+panel is expanded. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
                 <tr>
@@ -13993,9 +14178,11 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td><p>link to subscribe to podcast</p></td>
+                  <td><p>Subscription platform link</p></td>
                   <td>
-                   
+                   <p>Accepts anchor elements linking to podcast platforms. Each
+link should include descriptive text or an image with alt
+text so screen readers can identify the platform.</p>
                   </td>
                 </tr>
               </tbody>
@@ -14093,7 +14280,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>heading</code></td>
-                  <td></td>
+                  <td><p>Custom heading text displayed at the top of the subscribe panel. Overridden by the <code>heading</code> slot.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -14125,7 +14312,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>label</code></td>
-                  <td></td>
+                  <td><p>Accessible label for the panel, used as the menu item text when no heading slot is provided.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -14221,7 +14408,7 @@
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
+                  <td><p>Triggers the scrolling text animation on the panel heading if it overflows its container.</p></td>
                 </tr>
               </tbody>
             </table>
@@ -14350,7 +14537,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td></td>
-                  <td><p>scrolling text overflow</p></td>
+                  <td><p>The panel heading with scrolling text overflow.</p></td>
                 </tr>
                 <tr>
                   <td>
@@ -14379,8 +14566,10 @@
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
-                  <td><p>panel content</p></td>
+                  <td><p>Subscribe panel body content</p></td>
+                  <td><p>Accepts descriptive text or rich content for the subscribe
+panel. Content is accessible to screen readers when the
+panel is expanded.</p></td>
                 </tr>
                 <tr>
                   <td>
@@ -14410,7 +14599,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><p>subscribe links</p></td>
-                  <td></td>
+                  <td><p>The container for subscription link elements.</p></td>
                 </tr>
               </tbody>
             </table>
@@ -14515,7 +14704,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Heading font family</p>
+                    <p>Panel heading font family</p>
+<p>Heading font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -14621,7 +14811,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>h6 heading font size</p>
+                    <p>Panel heading font size</p>
+<p>h6 heading font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -14727,7 +14918,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Line height for headings</p>
+                    <p>Panel heading line height</p>
+<p>Line height for headings</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -14833,7 +15025,9 @@
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Heading block margin</p>
+<p>Title block end margin</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -14939,7 +15133,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Extra letter spacing for small body text sizes</p>
+                    <p>Series letter spacing</p>
+<p>Extra letter spacing for small body text sizes</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -15045,7 +15240,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>12px font size</p>
+                    <p>Series font size</p>
+<p>12px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -15151,7 +15347,9 @@
                     </a>
                   </td>
                   <td>
-                    <p>Medium font weight for headings</p>
+                    <p>Panel heading font weight</p>
+<p>Series font weight</p>
+<p>Medium font weight for headings</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -15257,7 +15455,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>8px spacer</p>
+                    <p>Series block end margin</p>
+<p>8px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -15387,7 +15586,12 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>Media Transcript Cue</p>
+      <p>Provides a timed transcript segment for <code>rh-transcript</code>. Use this to
+display spoken content with timestamps and optional speaker labels.
+Cue links are focusable; pressing Enter seeks the audio to that
+timestamp. The <code>active</code> attribute visually highlights the current
+cue. Screen readers can navigate cue links to browse the
+transcript. Must be placed in the <code>cues</code> slot.</p>
 
 
       <div class="element-apis">
@@ -15477,9 +15681,11 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Cue spoken text</p></td>
                   <td>
-                   <p>text of cue <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Accepts inline text content for this cue's spoken words.
+Screen readers announce the text alongside the timestamp
+and voice label when navigating the transcript. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -15834,7 +16040,9 @@
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td><p>when user clicks a time cue</p></td>
+                  <td><p>Fired when the user clicks a cue link. This is a plain
+<code>Event</code> with <code>bubbles: true</code> and no custom detail. The parent
+<code>rh-audio-player</code> handles it to seek to this cue's start time.</p></td>
                 </tr>
               </tbody>
             </table>
@@ -15972,7 +16180,9 @@
                     </a>
                   </td>
                   <td>
-                    <p>16px font size</p>
+                    <p>Cue default font size</p>
+<p>Heading font size override</p>
+<p>16px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -16078,7 +16288,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Heading font family</p>
+                    <p>Speaker name font family</p>
+<p>Heading font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -16184,7 +16395,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Code font family</p>
+                    <p>Timestamp font family</p>
+<p>Code font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -16314,7 +16526,11 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>Audio Player Transcript Panel</p>
+      <p>Provides a synchronized transcript panel for <code>rh-audio-player</code>. Use this
+when you need to display timed captions alongside audio playback. Must
+be placed in the <code>transcript</code> slot. Authors should provide <code>rh-cue</code>
+block elements with <code>start</code> and optionally <code>end</code> and <code>voice</code> attributes.
+Active cues are highlighted for screen reader and sighted users alike.</p>
 
 
       <div class="element-apis">
@@ -16404,9 +16620,11 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Panel heading</p></td>
                   <td>
-                   <p>custom heading for panel</p>
+                   <p>Accepts a heading block element like <code>&lt;h3&gt;</code> for the panel
+title. Should use an appropriate heading level for the page
+so screen readers can navigate the panel hierarchy.</p>
                   </td>
                 </tr>
                 <tr>
@@ -16434,9 +16652,11 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Transcript cue elements</p></td>
                   <td>
-                   <p><code>rh-cue</code> elements <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Accepts <code>&lt;rh-cue&gt;</code> block elements with <code>start</code>, <code>end</code>, and
+<code>voice</code> attributes. Screen readers can navigate individual
+cues, and clicking a cue seeks the audio to that timestamp. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -16534,7 +16754,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>heading</code></td>
-                  <td></td>
+                  <td><p>Custom heading text displayed at the top of the transcript panel. Overridden by the <code>heading</code> slot.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -16566,7 +16786,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>label</code></td>
-                  <td></td>
+                  <td><p>Accessible label for the panel, used as the menu item text when no heading slot is provided.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -16598,7 +16818,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>lang</code></td>
-                  <td></td>
+                  <td><p>Language code for transcript content, used for text direction and localization.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -16630,7 +16850,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>menuLabel</code></td>
-                  <td></td>
+                  <td><p>Text label shown in the parent player's menu for this panel.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'About the episode'</span></code></pre></td>
                 </tr>
@@ -16662,7 +16882,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>downloadLabel</code></td>
-                  <td></td>
+                  <td><p>Text label for the download button and its tooltip.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'Download'</span></code></pre></td>
                 </tr>
@@ -16694,7 +16914,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>autoscrollLabel</code></td>
-                  <td></td>
+                  <td><p>Text label for the autoscroll checkbox.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'Autoscroll'</span></code></pre></td>
                 </tr>
@@ -16790,7 +17010,7 @@
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
+                  <td><p>Updates cue active states based on the current playback time.</p></td>
                 </tr>
                 <tr>
                   <td>
@@ -16819,7 +17039,7 @@
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
+                  <td><p>Sets the total media duration and recalculates cue end times.</p></td>
                 </tr>
                 <tr>
                   <td>
@@ -16848,7 +17068,7 @@
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
+                  <td><p>Triggers the scrolling text animation on the panel heading if it overflows its container.</p></td>
                 </tr>
               </tbody>
             </table>
@@ -16879,13 +17099,77 @@
               <a href="#rh-transcript-events">Events <rh-badge state="neutral"><template shadowroot="open" shadowrootmode="open"><style>span,slot{white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px));color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));justify-content:center;align-items:center;position:relative}:is(span,slot).neutral{background-color:var(--rh-color-status-neutral)}:is(span,slot).info{background-color:var(--rh-color-status-info)}:is(span,slot).success{background-color:var(--rh-color-status-success)}:is(span,slot).caution{background-color:var(--rh-color-status-caution);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).warning{background-color:var(--rh-color-status-warning);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).danger{background-color:var(--rh-color-status-danger)}span:empty{display:none}slot{display:inline-flex}:host([number]) slot{display:none}:host([number]) span{display:inline-flex}</style><!--lit-part hqKOHqwbWgk=-->
       <!--lit-node 0--><span class=" neutral "><!--lit-part--><!--/lit-part--></span>
       <!--lit-node 2--><slot class=" neutral "></slot>
-    <!--/lit-part--></template>0</rh-badge>
+    <!--/lit-part--></template>1</rh-badge>
                 
               </a>
             </h3>
           </uxdot-copy-permalink>
           
-          <p><em>None</em></p>
+          <rh-table  compact><template shadowroot="open" shadowrootmode="open"><style>*{box-sizing:border-box}:host{scrollbar-color:var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);width:100%;color:var(--rh-color-text-primary);--_scrollbar-size:calc(10 / 16 * 1rem);--_scrollbar-thumb-color:var(--rh-color-gray-50,#707070);--_scrollbar-track-color:var(--rh-color-border-subtle);--_row-border: var(--rh-table-row-border,var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle-on-light,#c7c7c7));--_row-background-hover-color:light-dark(var(--rh-table-row-background-hover-color,rgba(from var(--rh-color-gray-40,#a3a3a3) r g b / .1)),rgba(from var(--rh-color-white,#fff) r g b / .1));--_column-background-hover-color:light-dark(var(--rh-table-column-background-hover-color,rgba(from var(--rh-color-blue-50,#06c) r g b / .1)),rgba(from var(--rh-color-blue-70,#036) r g b / .3));display:block;position:relative;overflow:auto}:host::-webkit-scrollbar{width:var(--_scrollbar-size);height:var(--_scrollbar-size)}:host::-webkit-scrollbar{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-track{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-thumb{background-color:var(--_scrollbar-thumb-color)}[slot]{display:block}::slotted([slot=summary]){padding:var(--rh-space-xl,24px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px);color:var(--rh-color-text-secondary);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:italic;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5);display:block}</style><!--lit-part DhG3hBsOx/E=-->
+      <div id="container" part="container">
+        <!-- summary: Default slot for the table element
+             description: |
+               Expects a native HTML `<table>` element with semantic
+               markup. Authors must include `<thead>`, `<tbody>`,
+               and scoped `<th>` elements so that screen readers
+               can navigate the table structure. -->
+        <!--lit-node 2--><slot 
+              
+              
+              ></slot>
+        <!-- summary: Summary slot for table description
+             description: |
+               An optional description of the table data displayed
+               below the table. The element links this content to the
+               table via `aria-describedby` for screen reader users.
+               Authors should use inline elements like `<small>`. -->
+        <slot id="summary" name="summary"></slot>
+      </div>
+    <!--/lit-part--></template>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Event Name</th>
+                  <th scope="col">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                <tr>
+                  <td>
+                    <uxdot-copy-permalink><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;margin-block-end:var(--rh-space-lg);display:flex}#signifier{display:var(--perma-signifier-display,none)}#button{border-radius:var(--rh-border-radius-default);background:0 0;border:none;align-items:center;height:1.75rem;display:none}#button:is(:hover,:focus){background:var(--uxdot-copy-permalink-button-background,light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark)));color:var(--rh-color-text-primary)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){color:inherit;text-decoration:inherit;align-items:center;display:flex;margin-block-end:0!important}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part 5v6yQu9Xxog=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19.204 12.793c1.417 1.417 2.198 3.3 2.198 5.302s-.781 3.884-2.198 5.302l-5.398 5.41C12.378 30.223 10.494 31 8.497 31s-3.88-.778-5.304-2.19C.274 25.88.274 21.12 3.189 18.194l2.912-2.903a1 1 0 1 1 1.412 1.417l-2.91 2.9c-2.137 2.145-2.137 5.639.002 7.786a5.5 5.5 0 0 0 3.892 1.605c1.465 0 2.85-.572 3.896-1.61l5.396-5.407c1.04-1.04 1.613-2.421 1.613-3.888s-.573-2.849-1.612-3.888a5.356 5.356 0 0 0-1.267-.946 1 1 0 0 1 .947-1.762c.63.338 1.214.774 1.733 1.294Zm9.603-9.603C27.383 1.778 25.499 1 23.503 1s-3.881.778-5.309 2.193l-5.398 5.41c-1.417 1.417-2.198 3.3-2.198 5.302s.781 3.885 2.198 5.302c.52.52 1.104.956 1.733 1.294a1.001 1.001 0 0 0 .948-1.762 5.356 5.356 0 0 1-1.267-.946c-1.039-1.04-1.612-2.42-1.612-3.888s.573-2.848 1.613-3.888l5.396-5.407C20.654 3.572 22.038 3 23.503 3s2.849.572 3.892 1.605c2.139 2.147 2.139 5.642.002 7.786l-2.91 2.9a1 1 0 1 0 1.412 1.417l2.912-2.903c2.915-2.925 2.915-7.686-.004-10.616Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+                      <span id="rh-transcript-events-transcriptdownload">
+                        <a href="#rh-transcript-events-transcriptdownload">
+                          <code>transcriptdownload</code>
+                        </a>
+                      </span>
+                    </uxdot-copy-permalink>
+                  </td>
+                  <td><p>Fired when the user clicks the download
+button. This is a plain <code>Event</code> with <code>bubbles: true</code> and no
+custom detail. The parent <code>rh-audio-player</code> handles it to
+generate a <code>.txt</code> file download of the full transcript.</p></td>
+                </tr>
+              </tbody>
+            </table>
+          </rh-table>
         </section>
     
         
@@ -16977,7 +17261,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td></td>
-                  <td><p>scrolling text overflow</p></td>
+                  <td><p>The panel heading with scrolling text overflow.</p></td>
                 </tr>
                 <tr>
                   <td>
@@ -17076,9 +17360,9 @@
               <tbody>
                 <tr>
                   <td><code>--rh-icon-size</code></td>
-                  <td></td>
+                  <td><p>Default icon size</p></td>
                   <td>
-                    <code>—</code>
+                    <code>var(--rh-size-icon-03, 32px)</code>
                   </td>
                 </tr>
               </tbody>
@@ -17257,7 +17541,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>2px border width: Example: Alert</p>
+                    <p>Focus outline width</p>
+<p>2px border width: Example: Alert</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -17363,7 +17648,7 @@
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Focus outline color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -17469,7 +17754,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Heading font family</p>
+                    <p>Panel heading font family</p>
+<p>Heading font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -17575,7 +17861,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>8px spacer</p>
+                    <p>Download button inline start margin</p>
+<p>8px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -17681,7 +17968,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>h6 heading font size</p>
+                    <p>Panel heading font size</p>
+<p>h6 heading font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -17787,7 +18075,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Line height for headings</p>
+                    <p>Panel heading line height</p>
+<p>Line height for headings</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -17893,7 +18182,9 @@
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Heading block margin</p>
+<p>Title block end margin</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -17999,7 +18290,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Extra letter spacing for small body text sizes</p>
+                    <p>Series letter spacing</p>
+<p>Extra letter spacing for small body text sizes</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -18105,7 +18397,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>12px font size</p>
+                    <p>Series font size</p>
+<p>12px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -18211,7 +18504,9 @@
                     </a>
                   </td>
                   <td>
-                    <p>Medium font weight for headings</p>
+                    <p>Panel heading font weight</p>
+<p>Series font weight</p>
+<p>Medium font weight for headings</p>
                   </td>
                   <td data-label="Copy">
       <div>
