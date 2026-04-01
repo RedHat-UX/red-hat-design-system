@@ -21,11 +21,13 @@
 
   --_fade-color:
     light-dark(
+        /** Fade overlay color in light mode override */
+        var(--rh-audio-player-scrolling-text-overflow-background-color,
         /** Fade overlay color in light mode */
-        var(--rh-audio-player-scrolling-text-overflow-background-color,
         var(--rh-color-surface-lightest, #ffffff)),
-        /** Fade overlay color in dark mode */
+        /** Fade overlay color in dark mode override */
         var(--rh-audio-player-scrolling-text-overflow-background-color,
+        /** Fade overlay color in dark mode */
         var(--rh-color-surface-darkest, #151515))
       );
 
@@ -59,11 +61,15 @@ slot {
   top: -25%;
   right: 0;
   width: 3em;
+
+  /** Trailing edge fade shadow */
   box-shadow: -1em 0 1.5em 0 var(--_fade-color) inset;
 
   &:dir(rtl) {
     left: 0;
     right: unset;
+
+    /** RTL trailing edge fade shadow */
     box-shadow: 1em 0 1.5em 0 var(--_fade-color) inset;
   }
 }
