@@ -1,0 +1,32 @@
+<meta itemprop="description" content="Listening to the TabExpandEvent to show or hide content when a specific tab is selected.">
+<p id="status">Select the <strong>Database</strong> tab
+  <rh-tag id="selected-tag" color="green" hidden>Selected</rh-tag>
+</p>
+
+<rh-tabs>
+  <rh-tab slot="tab" active>Users</rh-tab>
+  <rh-tab-panel>Users</rh-tab-panel>
+  <rh-tab slot="tab">Containers</rh-tab>
+  <rh-tab-panel>Containers</rh-tab-panel>
+  <rh-tab id="database-tab" slot="tab">Database</rh-tab>
+  <rh-tab-panel>Database</rh-tab-panel>
+</rh-tabs>
+
+<script type="module">
+  import '@rhds/elements/rh-tabs/rh-tabs.js';
+  import '@rhds/elements/rh-tag/rh-tag.js';
+
+  const tag = document.getElementById('selected-tag');
+  const target = document.getElementById('database-tab');
+  const tabs = document.querySelector('rh-tabs');
+  tabs.addEventListener('expand', event => {
+    tag.hidden = event.tab !== target;
+  });
+</script>
+
+<style>
+  #status {
+    font: var(--rh-font-body-text-md);
+    margin-block-end: var(--rh-space-lg);
+  }
+</style>
