@@ -12,11 +12,12 @@ import styles from './rh-audio-player-subscribe.css' with { type: 'css' };
 
 
 /**
- * An expandable panel that provides subscription links for podcast platforms.
- * Use this when you need to allow users to subscribe from within the audio
- * player. Must be placed in the `subscribe` slot of `rh-audio-player`.
- * Authors should provide anchor elements in the `link` slot with alt text
- * so screen readers can identify each platform.
+ * Provides subscription links for podcast platforms within the audio
+ * player. Use this when you need to allow users to subscribe. Must be
+ * placed in the `subscribe` slot of `rh-audio-player`. Rendered inside
+ * an ARIA dialog panel; keyboard users can Tab through links. Authors
+ * should provide alt text on images so screen readers can identify
+ * each platform.
  *
  * @summary Displays podcast subscription links in an expandable panel
  *
