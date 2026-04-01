@@ -109,7 +109,7 @@ Utility menus organize secondary content like important user actions. The height
 
 ### Expanding menus
 
-Expanded menus are visually identified by a 4px thick red accent border. When users hover over other collapsed menus, the accent border is gray. When a collapsed menu is selected, the caret icon rotates quickly and the previously expanded menu collapses. Only 1 menu can be expanded at a time.
+Expanded menus are visually identified by a 4px thick red accent border. When users hover over other collapsed menus, the accent border is gray. When a collapsed menu is selected, the caret icon rotates quickly and the previously expanded menu collapses. **Only 1 menu can be expanded at a time.**
 
 <uxdot-example color-palette="lighter" no-border>
   <img alt="Two navs showing hover interactions (red underlines under menu buttons) of various elements"
@@ -123,7 +123,7 @@ Expanded menus are visually identified by a 4px thick red accent border. When us
 Menus can be collapsed by doing the following.
 
 - Selecting the same primary or utility menu again
-- Selecting anywhere inside of the overlay
+- Selecting anywhere inside of the overlay under the menu
 - Pressing the <kbd>Escape</kbd> key
 
 <uxdot-example color-palette="lighter" no-border>
