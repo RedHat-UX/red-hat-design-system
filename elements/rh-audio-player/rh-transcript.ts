@@ -169,10 +169,18 @@ export class RhTranscript extends LitElement {
     this.dispatchEvent(new Event('transcriptdownload', { bubbles: true }));
   }
 
+  /**
+   * Updates cue active states based on the current playback time.
+   * @param currentTime elapsed time in seconds
+   */
   setActiveCues(currentTime = 0) {
     this.#updateCues(currentTime);
   }
 
+  /**
+   * Sets the total media duration and recalculates cue end times.
+   * @param mediaDuration total duration in seconds
+   */
   setDuration(mediaDuration: number) {
     if (!!mediaDuration && this.#duration !== mediaDuration) {
       this.#duration = mediaDuration;
