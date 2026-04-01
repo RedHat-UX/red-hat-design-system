@@ -44,9 +44,9 @@ function getBestGuessAccessibleContent(node: Node): string {
 
 /**
  * A tooltip provides contextual information on hover, focus, or tap.
- * Content SHOULD be brief. Authors MUST ensure the invoking element
+ * Content should be brief. Authors must ensure the invoking element
  * is focusable for keyboard and screen reader users. Pressing Escape
- * dismisses the tooltip. When `silent` is set, authors MUST provide
+ * dismisses the tooltip. When `silent` is set, authors must provide
  * an alternative accessible label.
  *
  * @summary Reveals a small area of information on hover
@@ -156,7 +156,7 @@ export class RhTooltip extends LitElement {
                description: |
                  Place the invoking element here, i.e. the element which
                  when hovered or focused causes the tooltip to display.
-                 MUST be inline, focusable content so that keyboard and
+                 Must be inline, focusable content so that keyboard and
                  screen reader users can activate the tooltip. -->
           <slot id="invoker-slot"></slot>
         </div>
