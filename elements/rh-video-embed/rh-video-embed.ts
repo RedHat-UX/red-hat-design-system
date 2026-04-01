@@ -12,6 +12,12 @@ import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-video-embed.css' with { type: 'css' };
 
+/**
+ * Fired when the user clicks the "Update preferences" consent button.
+ * Consumers should listen for this event to open a cookie consent dialog.
+ * This event has no `detail` payload; the event `target` is the
+ * `RhVideoEmbed` element that requires consent.
+ */
 export class ConsentClickEvent extends Event {
   declare target: RhVideoEmbed;
   constructor() {
@@ -19,6 +25,12 @@ export class ConsentClickEvent extends Event {
   }
 }
 
+/**
+ * Fired when the user clicks the play button to request video playback.
+ * Consumers should listen for this event to track user intent.
+ * This event has no `detail` payload; the event `target` is the
+ * `RhVideoEmbed` element that was clicked.
+ */
 export class VideoClickEvent extends Event {
   declare target: RhVideoEmbed;
   constructor() {
@@ -26,6 +38,11 @@ export class VideoClickEvent extends Event {
   }
 }
 
+/**
+ * Fired when the embedded iframe is appended to the DOM and the video
+ * is about to begin playback. This event has no `detail` payload;
+ * the event `target` is the `RhVideoEmbed` element.
+ */
 export class VideoPlayEvent extends Event {
   declare target: RhVideoEmbed;
   constructor() {
@@ -34,15 +51,30 @@ export class VideoPlayEvent extends Event {
 }
 
 /**
- * A Video embed is a graphical preview of a video overlayed with a play button. When clicked, the embedded YouTube video will begin playing.
+ * A video embed provides an accessible preview of a YouTube video
+ * with a thumbnail and play button. Users must provide an iframe
+ * inside a `<template>` with a `title` for screen reader users.
+ * Should include a thumbnail with `alt` text. Supports Tab and
+ * Enter keyboard focus. Uses `aria-hidden` on the thumbnail when
+ * active. Avoid videos without captions.
  *
- * @summary Reveals a small area of information on hover
+ * @summary Embeds a YouTube video with a thumbnail preview and play button
  *
  * @alias video-embed
  *
- * @fires consent-click - "Update preferences" consent button is clicked
- * @fires request-play - Play button is clicked
- * @fires play - Video is about to be played
+ * @csspart figure - The outer `<figure>` container element
+ * @csspart video - The container for the video, thumbnail, and play button
+ * @csspart caption - The `<figcaption>` element for caption content
+ * @csspart play - The play button overlay element
+ * @csspart consent-body - The consent message and button container
+ *
+ * @fires {ConsentClickEvent} consent-click - Fires when the user clicks
+ *   the "Update preferences" consent button. Has no `detail` payload.
+ * @fires {VideoClickEvent} request-play - Fires when the user clicks the
+ *   play button to request video playback. Has no `detail` payload.
+ * @fires {VideoPlayEvent} play - Fires when the embedded iframe is
+ *   appended and the video is about to begin playback. Has no `detail`
+ *   payload.
  */
 @customElement('rh-video-embed')
 @themable
@@ -134,14 +166,29 @@ export class RhVideoEmbed extends LitElement {
         <!-- The container for the video, thumbnail, and play button -->
         <div part="video" id="video">
           <div aria-hidden="${show !== 'thumbnail'}">
-            <!-- Optional thumbnail image on top of video embed; should include \`alt\` text -->
+            <!-- summary: Optional thumbnail image overlay
+                 description: |
+                   Accepts an \`<img>\` element displayed on top of the
+                   video embed. Authors must include descriptive \`alt\`
+                   text for screen reader and ARIA users, e.g. "Video
+                   title (video thumbnail)". The thumbnail is hidden
+                   via \`aria-hidden\` when the video is playing. -->
             <slot id="thumbnail" name="thumbnail"></slot>
           </div>
-          <!-- Place video embed code here; iframe should include a \`title\` attribute with the video title -->
+          <!-- summary: Video iframe template
+               description: |
+                 Accepts a \`<template>\` element containing an
+                 \`<iframe>\` for the YouTube embed. The iframe must
+                 include a \`title\` attribute with the video title
+                 for screen reader and ARIA accessibility. The
+                 embedded video should have accurate captions per
+                 WCAG 1.2.2. -->
           <slot></slot>
           <div id="autoplay"><!--
-            DO NOT USE! (Used by \`rh-video-embed\`.)
-          --><slot name="autoplay"></slot></div>
+            summary: Internal autoplay iframe slot
+            description: |
+              Reserved for internal use by \`rh-video-embed\`.
+              Authors must not place content in this slot. --><slot name="autoplay"></slot></div>
           ${this.#showConsent ? html`
             <rh-surface id="consent" color-palette="darker">
               <svg id="watermark" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1136 639">
@@ -163,7 +210,12 @@ export class RhVideoEmbed extends LitElement {
               </svg>
               <!-- The container for the consent message and consent button -->
               <div part="consent-body" id="consent-body">
-                <!-- Text explaining opt-in to cookies is required, e.g. \`<p>View this video by opting in to “Advertising Cookies.”</p>\` -->
+                <!-- summary: Custom consent message
+                     description: |
+                       Accepts block content (e.g. \`<p>\`) explaining
+                       that cookie opt-in is required. should be
+                       readable by screen readers. Defaults to a
+                       built-in message when not provided. -->
                 <slot name="consent-message">
                   <p id="consent-message">View this video by opting in to “Advertising Cookies.”</p>
                 </slot>
@@ -172,8 +224,10 @@ export class RhVideoEmbed extends LitElement {
                   variant="tertiary"
                   @click="${this.#handleConsentClick}"
                   @keyup="${this.#handleConsentKeyup}"><!--
-                    Text for CTA button to update preferences, e.g. "Update preferences"
-                  --><slot name="consent-button-text">Update preferences</slot></rh-button>
+                    summary: Consent button label
+                    description: |
+                      Accepts inline text for the consent CTA button.
+                      Defaults to "Update preferences". --><slot name="consent-button-text">Update preferences</slot></rh-button>
               </div>
             </rh-surface>
           ` : ''}
@@ -185,14 +239,21 @@ export class RhVideoEmbed extends LitElement {
                      @click="${this.#handlePlayClick}"
                      @keyup="${this.#handlePlayKeyup}">
             <span class="visually-hidden"><!--
-              Text for play button; recommended value "Video title (video)"
-            --><slot name="play-button-text">${playLabel}</slot></span>
+              summary: Accessible play button label
+              description: |
+                Accepts inline text for the play button screen
+                reader and ARIA label. should follow the pattern
+                "Video title (video)" for accessibility. Defaults
+                to the iframe title followed by "(play video)". --><slot name="play-button-text">${playLabel}</slot></span>
           </rh-button>
         </div>
-        <!-- The container for the caption -->
         <figcaption part="caption" ?hidden="${!hasCaption}"><!--
-          Optional caption below video embed
-        --><slot name="caption"></slot></figcaption>
+          summary: Optional video caption
+          description: |
+            Accepts inline or block content displayed below the
+            video embed, such as a \`<p>\` with a link. Links
+            should have accessible text for screen reader users.
+            Styled with secondary text color and small font. --><slot name="caption"></slot></figcaption>
       </figure>
     `;
   }
