@@ -65,11 +65,13 @@ export class RhAudioPlayerScrollingTextOverflow extends LitElement {
       </div>`;
   }
 
+  /** Stops the scrolling text animation and resets to the initial position. */
   stopScrolling() {
     this.#scrolling = false;
     this.requestUpdate();
   }
 
+  /** Starts the scrolling text animation if the content overflows the container. */
   startScrolling() {
     if (this.#isScrollable) {
       this.#scrolling = true;
