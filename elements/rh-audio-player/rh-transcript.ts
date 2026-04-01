@@ -22,9 +22,9 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  * An expandable panel that displays a synchronized transcript of the audio
  * content using `rh-cue` child elements. The panel includes an autoscroll
  * toggle that keeps the active cue visible, and a download button that
- * triggers a text file download of the full transcript. This element MUST
+ * triggers a text file download of the full transcript. This element must
  * be placed in the `transcript` slot of `rh-audio-player`. Content authors
- * SHOULD provide `rh-cue` elements in the default slot with `start` and
+ * should provide `rh-cue` elements in the default slot with `start` and
  * optionally `end` and `voice` attributes.
  *
  * @summary Displays synchronized, scrollable transcript with download

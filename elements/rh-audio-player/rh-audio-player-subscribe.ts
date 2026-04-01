@@ -13,9 +13,9 @@ import styles from './rh-audio-player-subscribe.css' with { type: 'css' };
 
 /**
  * An expandable panel that displays subscription links to podcast platforms
- * such as Apple Podcasts, Spotify, and RSS feeds. This element MUST be
+ * such as Apple Podcasts, Spotify, and RSS feeds. This element must be
  * placed in the `subscribe` slot of `rh-audio-player`. Content authors
- * SHOULD provide anchor elements with images or text in the `link` slot.
+ * should provide anchor elements with images or text in the `link` slot.
  * At wider breakpoints, links are laid out in a flex row.
  *
  * @summary Displays podcast subscription links in an expandable panel

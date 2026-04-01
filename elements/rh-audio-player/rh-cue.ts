@@ -61,7 +61,7 @@ export const getSeconds = (str: TimeString): Seconds => {
  * spoken text. Clicking on a cue fires a `cueseek` event that the parent
  * `rh-audio-player` uses to seek to that point in the audio. When the
  * audio playback reaches this cue's time range, the `active` attribute
- * is set and the cue is visually highlighted. Cues MUST be placed in the
+ * is set and the cue is visually highlighted. Cues must be placed in the
  * `cues` slot of `rh-transcript`.
  *
  * @summary A timed transcript segment with optional speaker label

@@ -14,8 +14,8 @@ import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer
 /**
  * An expandable panel that displays episode information such as title, series
  * name, a text description, and speaker attribution via `rh-avatar`. This
- * element MUST be placed in the `about` slot of `rh-audio-player`. Content
- * authors SHOULD provide a heading via the `heading` slot and MAY include
+ * element must be placed in the `about` slot of `rh-audio-player`. Content
+ * authors should provide a heading via the `heading` slot and may include
  * up to two `rh-avatar` elements in the `profile` slot for attribution.
  * The panel heading level is automatically set by the parent player's
  * heading level context.

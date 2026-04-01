@@ -32,7 +32,7 @@ import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 /**
- * An audio player for podcasts and media clips. Users MUST provide an
+ * An audio player for podcasts and media clips. Users must provide an
  * `<audio>` element in the `media` slot. Provides playback controls,
  * seek timeline, and expandable panels. All buttons use ARIA labels
  * and `rh-tooltip` for screen reader and keyboard accessibility.
@@ -83,7 +83,7 @@ export class RhAudioPlayer extends LitElement {
   @property({ reflect: true }) mediatitle?: string;
 
   /**
-   * Player layout variant. Users SHOULD choose a layout appropriate to
+   * Player layout variant. Users should choose a layout appropriate to
    * the available width:
    *   - `mini` (default): play/pause and seek range only; volume and
    *     other controls are behind the "more options" menu.
@@ -384,7 +384,7 @@ export class RhAudioPlayer extends LitElement {
         <input type="hidden" value=${this.#readyState}>
         <!-- summary: html \`audio\` element
              description: |
-               MUST contain an \`<audio>\` block element with source children.
+               Must contain an \`<audio>\` block element with source children.
                The audio element is visually hidden but remains accessible
                to screen readers for native media controls. -->
         <slot id="media" name="media" @slotchange="${this.#initMediaElement}"></slot>
@@ -418,7 +418,7 @@ export class RhAudioPlayer extends LitElement {
             <rh-audio-player-scrolling-text-overflow id="mediatitle" ?hidden=${!this.mediatitle}>
               <!-- summary: optional heading element for episode title
                    description: |
-                     Accepts a heading element like \`<h3>\`. SHOULD use an
+                     Accepts a heading element like \`<h3>\`. Should use an
                      appropriate heading level for the page. Screen readers
                      use this as the primary label for the player region. -->
               <slot name="title" @slotchange=${this.#onTitleChange}>${this.mediatitle}</slot>
@@ -607,7 +607,7 @@ export class RhAudioPlayer extends LitElement {
               summary: optional subscribe panel block element
               description: |
                 Accepts an \`rh-audio-player-subscribe\` block element with
-                anchor links to podcast services. Each link SHOULD include
+                anchor links to podcast services. Each link should include
                 descriptive alt text on images for screen reader users.
             part:
               description: subscribe panel
