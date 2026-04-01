@@ -12,13 +12,11 @@ import styles from './rh-audio-player-about.css' with { type: 'css' };
 import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer.js';
 
 /**
- * An expandable panel that displays episode information such as title, series
- * name, a text description, and speaker attribution via `rh-avatar`. This
- * element must be placed in the `about` slot of `rh-audio-player`. Content
- * authors should provide a heading via the `heading` slot and may include
- * up to two `rh-avatar` elements in the `profile` slot for attribution.
- * The panel heading level is automatically set by the parent player's
- * heading level context.
+ * Provides episode details and speaker attribution for `rh-audio-player`.
+ * Use when you need show notes or speaker profiles. Must be placed in
+ * the `about` slot. Authors should provide a heading and may include up
+ * to two `rh-avatar` elements for attribution. Rendered inside an
+ * ARIA dialog panel so screen readers can navigate its content.
  *
  * @summary Displays episode description and speaker attribution
  *
@@ -51,9 +49,12 @@ export class RhAudioPlayerAbout extends LitElement {
     const heading = this.#headings.wrap(mediatitle ?? '');
 
     return html`
-      <!-- panel heading -->
       <rh-audio-player-scrolling-text-overflow id="title" part="heading">
-        <!-- custom heading for panel -->
+        <!-- summary: Panel heading
+             description: |
+               Accepts a heading block element like \`<h3>\` for the panel
+               title. Should use an appropriate heading level for the page
+               so screen readers can navigate the panel hierarchy. -->
         <slot name="heading">${label}</slot>
       </rh-audio-player-scrolling-text-overflow>${!mediatitle ? `` : !mediaseries ? heading : html`
       <hgroup class="media-info" part="heading">${!mediaseries ? '' : html`
@@ -64,15 +65,23 @@ export class RhAudioPlayerAbout extends LitElement {
           ${heading}
         </rh-audio-player-scrolling-text-overflow>
       </hgroup>`}
-      <!-- panel body -->
-      <div part="body" ?hidden="${!hasContent}" tabindex=0><!-- panel content --><slot></slot></div>
+      <div part="body" ?hidden="${!hasContent}" tabindex=0>
+        <!-- summary: Episode description
+             description: |
+               Accepts block elements like \`<p>\` for episode show notes
+               or description text. Content is focusable and scrollable
+               so keyboard and screen reader users can read it. -->
+        <slot></slot>
+      </div>
       <!--
+        slot:
+          summary: Speaker attribution
+          description: |
+            Accepts up to two \`<rh-avatar>\` block elements for speaker
+            attribution. Additional elements beyond two are hidden.
         part:
           description: |
             panel profile / avatar
-        slot:
-          description: |
-            \`<rh-avatar>\` for attribution
       -->
       <slot part="profile" name="profile"></slot>`;
   }
