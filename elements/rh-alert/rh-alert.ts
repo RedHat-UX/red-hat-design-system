@@ -62,9 +62,9 @@ const toasts = new Set<Required<ToastOptions>>();
 
 /**
  * An alert provides a banner for status changes or messages.
- * It uses ARIA `role="alert"` so screen readers MUST announce
- * its content. Authors SHOULD provide a heading and MUST AVOID
- * nesting alerts. Users MAY Tab to interactive elements and
+ * It uses ARIA `role="alert"` so screen readers must announce
+ * its content. Authors should provide a heading and must avoid
+ * nesting alerts. Users may Tab to interactive elements and
  * press Enter to activate them. Meets WCAG 2.4.3.
  *
  * @summary Notifies a user without blocking their workflow
@@ -217,8 +217,8 @@ export class RhAlert extends LitElement {
     const footer = html`<footer class="${classMap({ hasActions })}"
                   @click="${this.#onActionsClick}">
             <!-- Up to two \`rh-button\` action elements. Each
-                 MUST have a \`data-action\` attribute. Buttons
-                 are keyboard-focusable via Tab and SHOULD use
+                 must have a \`data-action\` attribute. Buttons
+                 are keyboard-focusable via Tab and should use
                  ARIA labels when text is not descriptive. -->
             <slot name="actions"></slot>
           </footer>`;
@@ -238,7 +238,7 @@ export class RhAlert extends LitElement {
         <div id="middle-column">
           <header ?hidden="${!_isServer && this.#slots.isEmpty('header')}">
             <div id="header">
-              <!-- Alert heading; MUST be a heading element
+              <!-- Alert heading; must be a heading element
                  (e.g. \`<h3>\`) so screen readers convey the
                  alert's ARIA structure. -->
               <slot name="header"></slot>
@@ -253,7 +253,7 @@ export class RhAlert extends LitElement {
           </header>
           <div id="description">
             <!-- Body content for the alert; accepts block
-                 elements like \`<p>\`. SHOULD be concise so
+                 elements like \`<p>\`. Should be concise so
                  screen reader users quickly understand it. -->
             <slot></slot>
           </div>
