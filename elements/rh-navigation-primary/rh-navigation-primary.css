@@ -714,7 +714,7 @@
           --_navigation-link-block-size: 100%;
           --_navigation-link-inline-size: fit-content;
           --_navigation-link-color-hover:
-            /** Navigation link hover text color override at containers >= xl */
+            /** Navigation link hover text color at containers >= xl */
             var(--rh-color-text-primary,
               light-dark(var(--rh-color-text-primary-on-light, #151515),
               var(--rh-color-text-primary-on-dark, #ffffff)
