@@ -58,8 +58,9 @@ export class RhChipGroup extends LitElement {
             description: |
               Inline text for the chip group legend. Content is placed
               into the \`<legend>\` element for screen reader
-              accessibility. Also available as the
-              \`accessible-label\` attribute.
+              accessibility. Authors must ensure the label is
+              descriptive for assistive technology. Also available as
+              the \`accessible-label\` attribute.
           -->
           <slot name="accessible-label">${label}</slot>
         </legend>
@@ -68,6 +69,7 @@ export class RhChipGroup extends LitElement {
           description: |
             Expects \`rh-chip\` elements. Place individual chips
             inside \`rh-chip-group\` to group them as a fieldset.
+            Each chip must have a unique text label for screen readers.
         -->
         <slot></slot>
         <button class="btn-link" type="button" @click="${this.#uncheckAllChips}">
@@ -75,7 +77,8 @@ export class RhChipGroup extends LitElement {
             summary: Clear all button label
             description: |
               Inline text to customize the "Clear all" button label.
-              Defaults to "Clear all".
+              Defaults to "Clear all". Should be localized for
+              non-English contexts.
           -->
           <slot name="clear-all">Clear all</slot>
         </button>
