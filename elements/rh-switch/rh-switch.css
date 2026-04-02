@@ -12,6 +12,8 @@
 #container {
   display: inline-flex;
   align-items: center;
+
+  /** Gap between track and message */
   gap: var(--rh-space-lg, 16px);
 
   --_margin-inline: 5px; /* non standard spacer */
@@ -20,16 +22,26 @@
   --_switch-handle-size: 14px;
   --_switch-track-background-color:
     light-dark(
-        /** The background color of the switch when it is unchecked. */
+        /** Unchecked track color in light mode */
         var(--rh-switch-unchecked, var(--rh-color-gray-60, #4d4d4d)),
+        /** Unchecked track color in dark mode */
         var(--rh-switch-unchecked, var(--rh-color-gray-40, #a3a3a3))
       );
   --_switch-handle-color:
-    light-dark(var(--rh-color-surface-lightest, #ffffff),
-      oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h));
+    light-dark(
+        /** Handle color in light mode */
+        var(--rh-color-surface-lightest, #ffffff),
+        /** Handle color in dark mode */
+        oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h)
+      );
 
   &:after {
-    box-shadow: light-dark(none, var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2)));
+    box-shadow:
+      light-dark(
+          none,
+          /** Handle shadow in dark mode */
+          var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2))
+        );
   }
 
   #switch {
@@ -39,6 +51,8 @@
     position: relative;
     width: var(--_switch-width);
     height: var(--_switch-height);
+
+    /** Track border radius */
     border-radius: var(--rh-border-radius-pill, 64px);
 
     /* track */
@@ -59,6 +73,8 @@
       content: '';
       height: var(--_switch-handle-size);
       width: var(--_switch-handle-size);
+
+      /** Handle border radius */
       border-radius: var(--rh-border-radius-pill, 64px);
       transform-origin: center;
       z-index: 0;
@@ -70,17 +86,22 @@
   }
 
   & .message {
+    /** Unchecked message text color */
     color: var(--rh-color-text-secondary);
   }
 
   &.checked {
-    --_switch-track-background-color: /** The background color of the switch when it is checked. */
+    --_switch-track-background-color:
       var(--rh-switch-checked,
         light-dark(
+          /** Checked track color in light mode */
           var(--rh-color-accent-base-on-light, #0066cc),
-          var(--rh-color-accent-base-on-dark, #92c5f9)));
+          /** Checked track color in dark mode */
+          var(--rh-color-accent-base-on-dark, #92c5f9)
+        ));
 
     & .message {
+      /** Checked message text color */
       color: var(--rh-color-text-primary);
     }
 
@@ -108,7 +129,14 @@ rh-icon {
 }
 
 :host(:is(:focus, :focus-within)) #container #switch {
-  outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
+  outline:
+    /** Focus ring outline width */
+    var(--rh-border-width-md, 2px)
+    solid
+    /** Focus ring outline color */
+    var(--rh-color-border-interactive);
+
+  /** Focus ring offset */
   outline-offset: var(--rh-space-sm, 6px);
 }
 
@@ -118,20 +146,28 @@ rh-icon {
 
   & #container {
     & .message {
+      /** Disabled message text color */
       color: var(--rh-color-gray-50, #707070);
     }
 
     & ::slotted(*),
     & span {
-      color: light-dark(var(--rh-color-gray-60, #4d4d4d), var(--rh-color-gray-40, #a3a3a3));
+      color:
+        light-dark(
+            /** Disabled text color in light mode */
+            var(--rh-color-gray-60, #4d4d4d),
+            /** Disabled text color in dark mode */
+            var(--rh-color-gray-40, #a3a3a3)
+          );
     }
 
     &.checked,
     &:not(.checked) {
       --_switch-track-background-color:
         light-dark(
-            /** The background color of the switch when it is disabled. */
+            /** Disabled track color in light mode */
             var(--rh-switch-disabled, var(--rh-color-gray-30, #c7c7c7)),
+            /** Disabled track color in dark mode */
             var(--rh-switch-disabled, var(--rh-color-gray-60, #4d4d4d))
           );
     }
