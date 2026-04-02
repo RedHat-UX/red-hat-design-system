@@ -23,6 +23,7 @@ rh-navigation-primary {
         font-size: var(--rh-font-size-body-text-md, 1rem);
         color:
           /** Navigation link text color override */
+          /* stylelint-disable-next-line rhds/token-values */
           var(--rh-color-interactive-primary-default,
             light-dark(
               /** Navigation link text color in light mode */
