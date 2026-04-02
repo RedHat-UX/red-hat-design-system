@@ -23,23 +23,32 @@ slot {
   /** Badge inline padding */
   padding-inline: var(--_badge-padding, var(--rh-space-md, 8px));
   color:
-    light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
-      var(--rh-color-text-primary-on-light, #151515));
+    light-dark(
+        /** Primary text on dark / saturated surfaces */
+        var(--rh-color-text-primary-on-dark, #ffffff),
+        /** Primary text on light surfaces */
+        var(--rh-color-text-primary-on-light, #151515));
 
-  /** Neutral status background */
-  &.neutral { background-color: var(--rh-color-status-neutral); }
+  &.neutral {
+    /** Neutral status background */
+    background-color: var(--rh-color-status-neutral);
+  }
 
-  /** Info status background */
-  &.info { background-color: var(--rh-color-status-info); }
+  &.info {
+    /** Info status background */
+    background-color: var(--rh-color-status-info);
+  }
 
-  /** Success status background */
-  &.success { background-color: var(--rh-color-status-success); }
+  &.success {
+    /** Success status background */
+    background-color: var(--rh-color-status-success);
+  }
 
   &.caution {
     /** Caution status background */
     background-color: var(--rh-color-status-caution);
 
-    /** Dark text on caution background for contrast */
+    /** Caution text color */
     color: var(--rh-color-text-primary-on-light, #151515);
   }
 
@@ -47,12 +56,14 @@ slot {
     /** Warning status background */
     background-color: var(--rh-color-status-warning);
 
-    /** Dark text on warning background for contrast */
+    /** Warning text color */
     color: var(--rh-color-text-primary-on-light, #151515);
   }
 
-  /** Danger status background */
-  &.danger { background-color: var(--rh-color-status-danger); }
+  &.danger {
+    /** Danger status background */
+    background-color: var(--rh-color-status-danger);
+  }
 }
 
 /** Hide empty label span */
