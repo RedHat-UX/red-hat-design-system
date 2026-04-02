@@ -27,9 +27,9 @@
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
-    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "lit-element": "/assets/packages/lit-element/index.js",
     "prism-esm": "/assets/packages/prism-esm/prism.js",
@@ -4128,8 +4128,13 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>A menu dropdown presents a list of actions or links in a vertically stacked menu,
-appearing when a user interacts with a toggle button.</p>
+      <p>A toggle button that reveals a list of actions or links, for use
+when space is limited or context-specific options are needed. Users
+must interact with the toggle to expand or collapse the menu.
+Supports keyboard navigation: Enter, Space, or ArrowDown opens
+the menu; Escape closes it. Screen readers should perceive the
+toggle via <code>aria-haspopup</code> and <code>aria-expanded</code>. Compact variants
+must set <code>accessible-label</code> for assistive technologies.</p>
 
 
       <div class="element-apis">
@@ -4219,9 +4224,13 @@ appearing when a user interacts with a toggle button.</p>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Toggle label</p></td>
                   <td>
-                   <p>Use this slot for the toggle label. Keep toggle labels short and succinct.</p>
+                   <p>Inline content for the toggle button, such as a
+<code>&lt;span&gt;</code> or <code>&lt;rh-icon&gt;</code>. Should be short and
+descriptive. Screen readers announce this as the
+accessible name for the menu button. Not used in
+compact layout; use <code>accessible-label</code> instead.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4249,11 +4258,13 @@ appearing when a user interacts with a toggle button.</p>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Menu content</p></td>
                   <td>
-                   <p>Use this slot to provide the menu content. Use the "rh-menu" component
-for the menu panel, and use "rh-menu-items" to define the individual menu items.
-To organize menu items into groups, use the "rh-menu-item-group" component. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Must contain <code>&lt;rh-menu-item&gt;</code> elements. May include
+<code>&lt;hr&gt;</code> separators or <code>&lt;rh-menu-item-group&gt;</code> for
+grouped items. Items receive ARIA menuitem role and
+focus via roving tabindex for keyboard and screen
+reader navigation. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -4639,13 +4650,76 @@ the compact menu dropdown.</p></td>
               <a href="#rh-menu-dropdown-events">Events <rh-badge state="neutral"><template shadowroot="open" shadowrootmode="open"><style>span,slot{white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px));color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));justify-content:center;align-items:center;position:relative}:is(span,slot).neutral{background-color:var(--rh-color-status-neutral)}:is(span,slot).info{background-color:var(--rh-color-status-info)}:is(span,slot).success{background-color:var(--rh-color-status-success)}:is(span,slot).caution{background-color:var(--rh-color-status-caution);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).warning{background-color:var(--rh-color-status-warning);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).danger{background-color:var(--rh-color-status-danger)}span:empty{display:none}slot{display:inline-flex}:host([number]) slot{display:none}:host([number]) span{display:inline-flex}</style><!--lit-part hqKOHqwbWgk=-->
       <!--lit-node 0--><span class=" neutral "><!--lit-part--><!--/lit-part--></span>
       <!--lit-node 2--><slot class=" neutral "></slot>
-    <!--/lit-part--></template>0</rh-badge>
+    <!--/lit-part--></template>1</rh-badge>
                 
               </a>
             </h3>
           </uxdot-copy-permalink>
           
-          <p><em>None</em></p>
+          <rh-table  compact><template shadowroot="open" shadowrootmode="open"><style>*{box-sizing:border-box}:host{scrollbar-color:var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);width:100%;color:var(--rh-color-text-primary);--_scrollbar-size:calc(10 / 16 * 1rem);--_scrollbar-thumb-color:var(--rh-color-gray-50,#707070);--_scrollbar-track-color:var(--rh-color-border-subtle);--_row-border: var(--rh-table-row-border,var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle-on-light,#c7c7c7));--_row-background-hover-color:light-dark(var(--rh-table-row-background-hover-color,rgba(from var(--rh-color-gray-40,#a3a3a3) r g b / .1)),rgba(from var(--rh-color-white,#fff) r g b / .1));--_column-background-hover-color:light-dark(var(--rh-table-column-background-hover-color,rgba(from var(--rh-color-blue-50,#06c) r g b / .1)),rgba(from var(--rh-color-blue-70,#036) r g b / .3));display:block;position:relative;overflow:auto}:host::-webkit-scrollbar{width:var(--_scrollbar-size);height:var(--_scrollbar-size)}:host::-webkit-scrollbar{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-track{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-thumb{background-color:var(--_scrollbar-thumb-color)}[slot]{display:block}::slotted([slot=summary]){padding:var(--rh-space-xl,24px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px);color:var(--rh-color-text-secondary);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:italic;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5);display:block}</style><!--lit-part DhG3hBsOx/E=-->
+      <div id="container" part="container">
+        <!-- summary: Default slot for the table element
+             description: |
+               Expects a native HTML `<table>` element with semantic
+               markup. Authors must include `<thead>`, `<tbody>`,
+               and scoped `<th>` elements so that screen readers
+               can navigate the table structure. -->
+        <!--lit-node 2--><slot 
+              
+              
+              ></slot>
+        <!-- summary: Summary slot for table description
+             description: |
+               An optional description of the table data displayed
+               below the table. The element links this content to the
+               table via `aria-describedby` for screen reader users.
+               Authors should use inline elements like `<small>`. -->
+        <slot id="summary" name="summary"></slot>
+      </div>
+    <!--/lit-part--></template>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Event Name</th>
+                  <th scope="col">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                <tr>
+                  <td>
+                    <uxdot-copy-permalink><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;margin-block-end:var(--rh-space-lg);display:flex}#signifier{display:var(--perma-signifier-display,none)}#button{border-radius:var(--rh-border-radius-default);background:0 0;border:none;align-items:center;height:1.75rem;display:none}#button:is(:hover,:focus){background:var(--uxdot-copy-permalink-button-background,light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark)));color:var(--rh-color-text-primary)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){color:inherit;text-decoration:inherit;align-items:center;display:flex;margin-block-end:0!important}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part 5v6yQu9Xxog=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19.204 12.793c1.417 1.417 2.198 3.3 2.198 5.302s-.781 3.884-2.198 5.302l-5.398 5.41C12.378 30.223 10.494 31 8.497 31s-3.88-.778-5.304-2.19C.274 25.88.274 21.12 3.189 18.194l2.912-2.903a1 1 0 1 1 1.412 1.417l-2.91 2.9c-2.137 2.145-2.137 5.639.002 7.786a5.5 5.5 0 0 0 3.892 1.605c1.465 0 2.85-.572 3.896-1.61l5.396-5.407c1.04-1.04 1.613-2.421 1.613-3.888s-.573-2.849-1.612-3.888a5.356 5.356 0 0 0-1.267-.946 1 1 0 0 1 .947-1.762c.63.338 1.214.774 1.733 1.294Zm9.603-9.603C27.383 1.778 25.499 1 23.503 1s-3.881.778-5.309 2.193l-5.398 5.41c-1.417 1.417-2.198 3.3-2.198 5.302s.781 3.885 2.198 5.302c.52.52 1.104.956 1.733 1.294a1.001 1.001 0 0 0 .948-1.762 5.356 5.356 0 0 1-1.267-.946c-1.039-1.04-1.612-2.42-1.612-3.888s.573-2.848 1.613-3.888l5.396-5.407C20.654 3.572 22.038 3 23.503 3s2.849.572 3.892 1.605c2.139 2.147 2.139 5.642.002 7.786l-2.91 2.9a1 1 0 1 0 1.412 1.417l2.912-2.903c2.915-2.925 2.915-7.686-.004-10.616Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+                      <span id="rh-menu-dropdown-events-select">
+                        <a href="#rh-menu-dropdown-events-select">
+                          <code>select</code>
+                        </a>
+                      </span>
+                    </uxdot-copy-permalink>
+                  </td>
+                  <td><p>Fired when a user selects an
+action or link from the menu. The event detail includes the selected
+<code>RhMenuItem</code> element and its text content.</p></td>
+                </tr>
+              </tbody>
+            </table>
+          </rh-table>
         </section>
     
         
@@ -4779,7 +4853,8 @@ the compact menu dropdown.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>1px border width; Example: Secondary CTA or Button</p>
+                    <p>Menu Dropdown Border width</p>
+<p>1px border width; Example: Secondary CTA or Button</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4885,7 +4960,7 @@ the compact menu dropdown.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Default text color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4991,7 +5066,8 @@ the compact menu dropdown.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Medium box shadow</p>
+                    <p>Menu panel elevation shadow</p>
+<p>Medium box shadow</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5097,7 +5173,8 @@ the compact menu dropdown.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Inline link (light theme)</p>
+                    <p>Interactive border color in light mode</p>
+<p>Inline link (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5203,7 +5280,8 @@ the compact menu dropdown.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Inline link (dark theme)</p>
+                    <p>Interactive border color in dark mode</p>
+<p>Inline link (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5309,7 +5387,9 @@ the compact menu dropdown.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Body text font family</p>
+                    <p>Toggle label font family</p>
+<p>Toggle button font family</p>
+<p>Body text font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5415,7 +5495,9 @@ the compact menu dropdown.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>16px font size</p>
+                    <p>Toggle label font size</p>
+<p>Toggle button font size</p>
+<p>16px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5521,7 +5603,9 @@ the compact menu dropdown.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Regular font weight</p>
+                    <p>Toggle label font weight</p>
+<p>Toggle button font weight</p>
+<p>Regular font weight</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5627,7 +5711,9 @@ the compact menu dropdown.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Line height for code</p>
+                    <p>Toggle label line height</p>
+<p>Toggle button line height</p>
+<p>Line height for code</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5733,7 +5819,8 @@ the compact menu dropdown.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>6px spacer</p>
+                    <p>Toggle button block padding</p>
+<p>6px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5839,7 +5926,8 @@ the compact menu dropdown.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Toggle button inline padding</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5945,7 +6033,9 @@ the compact menu dropdown.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>3px border radius; Example: Card</p>
+                    <p>Menu panel corner rounding</p>
+<p>Toggle button corner rounding</p>
+<p>3px border radius; Example: Card</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6051,7 +6141,9 @@ the compact menu dropdown.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Primary surface (light theme)</p>
+                    <p>Menu panel background in light mode</p>
+<p>Toggle background in light mode</p>
+<p>Primary surface (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6157,7 +6249,9 @@ the compact menu dropdown.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Primary surface (dark theme)</p>
+                    <p>Menu panel background in dark mode</p>
+<p>Toggle background in dark mode</p>
+<p>Primary surface (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6263,7 +6357,8 @@ the compact menu dropdown.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Tertiary surface (light theme)</p>
+                    <p>Compact hover background in light mode</p>
+<p>Tertiary surface (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6369,7 +6464,8 @@ the compact menu dropdown.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Secondary surface (dark theme)</p>
+                    <p>Compact hover background in dark mode</p>
+<p>Secondary surface (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6475,7 +6571,14 @@ the compact menu dropdown.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>2px length token</p>
+                    <p>Active border spread width</p>
+<p>Focus outline width</p>
+<p>Focus outline offset</p>
+<p>Open border spread width</p>
+<p>Focus outline width</p>
+<p>Focus outline offset</p>
+<p>Focus/active border spread width</p>
+<p>2px length token</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6581,7 +6684,10 @@ the compact menu dropdown.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Subtle borders (light theme)</p>
+                    <p>Border color in light mode</p>
+<p>Boxed border color in light mode</p>
+<p>Disabled background in light mode</p>
+<p>Subtle borders (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6687,7 +6793,8 @@ the compact menu dropdown.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Subtle icon (hover state)</p>
+                    <p>Disabled background in dark mode</p>
+<p>Subtle icon (hover state)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6793,7 +6900,11 @@ the compact menu dropdown.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>8px spacer</p>
+                    <p>Menu panel block padding</p>
+<p>Space between label and caret icon</p>
+<p>Compact toggle padding</p>
+<p>Space after slotted icon in toggle label</p>
+<p>8px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6899,7 +7010,10 @@ the compact menu dropdown.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Subtle icon</p>
+                    <p>Border color in dark mode</p>
+<p>Boxed border color in dark mode</p>
+<p>Disabled text color in light mode</p>
+<p>Subtle icon</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7005,7 +7119,8 @@ the compact menu dropdown.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Secondary text (light theme)</p>
+                    <p>Disabled text color in dark mode</p>
+<p>Secondary text (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>

@@ -14,9 +14,9 @@
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
-    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "lit-element": "/assets/packages/lit-element/index.js",
     "prism-esm": "/assets/packages/prism-esm/prism.js",
@@ -83,8 +83,9 @@
 
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
-  <body><rh-context-demo>
-  <rh-menu-dropdown   ssr-hint-has-slotted-default ssr-hint-has-slotted="toggle-label" accessible-label="Toggle menu"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_border:var(--rh-border-width-sm,1px) solid light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-gray-50,#707070));--_color:var(--rh-color-text-primary);display:inline-block;position:relative}#menu-list{padding:var(--rh-space-md,8px) 0;z-index:1000;border-radius:var(--rh-border-radius-default,3px);border:var(--_border);background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));min-inline-size:18.5rem;max-inline-size:100%;box-shadow:var(--rh-box-shadow-md,0 4px 6px 1px #15151540);translate:var(--_floating-content-translate);transition:opacity .3s cubic-bezier(.54,1.5,.38,1.11);position:absolute;top:0;left:0}.visible{display:block}::slotted([slot=toggle-label]){color:var(--_color);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);font-size:var(--rh-font-size-body-text-md,1rem)!important}#menu-toggle{--_interactive-border-color:light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));color:var(--_color);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);inline-size:100%;padding:var(--rh-space-sm,6px) var(--rh-space-lg,16px);box-sizing:border-box;border-radius:var(--rh-border-radius-default,3px);background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));border:none;justify-content:space-between;align-items:center;display:flex}#menu-toggle .action-icon rh-icon{--rh-icon-size:12px;padding-inline-start:var(--rh-space-md,8px)}#menu-toggle .info-section{justify-content:flex-start;align-items:center;display:flex}#menu-toggle.boxed{box-shadow:inset 0 0 0 1px light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-gray-50,#707070))}#menu-toggle.boxed:not(.open):hover{box-shadow:inset 0 0 0 1px var(--_interactive-border-color)}#menu-toggle.boxed:not(.open):active{box-shadow:inset 0 0 0 var(--rh-length-3xs,2px) var(--_interactive-border-color)}#menu-toggle.boxed:not(.open):focus{outline:var(--rh-length-3xs,2px) solid var(--_interactive-border-color);outline-offset:var(--rh-length-3xs,2px)}#menu-toggle.boxed.open{box-shadow:inset 0 0 0 var(--rh-length-3xs,2px) var(--_interactive-border-color)}#menu-toggle.boxed.open:focus{outline:var(--rh-length-3xs,2px) solid var(--_interactive-border-color);outline-offset:var(--rh-length-3xs,2px)}#menu-toggle.compact{padding:var(--rh-space-md,8px)}#menu-toggle.compact:not(.boxed).open,#menu-toggle.compact:not(.boxed):hover,#menu-toggle.compact:not(.boxed):active,#menu-toggle.compact:not(.boxed):focus{background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}#menu-toggle.compact:not(.boxed):focus,#menu-toggle.compact:not(.boxed):active{box-shadow:inset 0 0 0 var(--rh-length-3xs,2px) var(--_interactive-border-color)}#menu-toggle.disabled{pointer-events:none;cursor:not-allowed;background:light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-gray-40,#a3a3a3))}#menu-toggle.disabled:focus,#menu-toggle.disabled:active,#menu-toggle.disabled:hover{box-shadow:none}#menu-dropdown-container{inline-size:100%;position:relative}::slotted(hr){border:0;border-top:var(--_border);inline-size:100%}::slotted(rh-icon){margin-inline-end:var(--rh-space-md,8px)}rh-menu::part(menu){inline-size:100%}:host([aria-disabled=true]){pointer-events:none;cursor:not-allowed}:host([disabled]) ::slotted([slot=toggle-label]),:host([disabled]) .action-icon rh-icon{color:light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d))}</style><!--lit-part iUzLdb0SdPc=-->
+  <body><meta itemprop="description" content="Menu dropdown rendered across multiple color contexts (light and dark).">
+<rh-context-demo>
+  <rh-menu-dropdown   ssr-hint-has-slotted-default ssr-hint-has-slotted="toggle-label" accessible-label="Toggle menu"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_border: var(--rh-border-width-sm,1px) solid light-dark( var(--rh-color-gray-30,#c7c7c7), var(--rh-color-gray-50,#707070));--_color:var(--rh-color-text-primary);display:inline-block;position:relative}#menu-list{padding: var(--rh-space-md,8px) 0;z-index:1000;border-radius:var(--rh-border-radius-default,3px);border:var(--_border);background:light-dark( var(--rh-color-surface-lightest,#fff), var(--rh-color-surface-darkest,#151515));min-inline-size:18.5rem;max-inline-size:100%;box-shadow:var(--rh-box-shadow-md,0 4px 6px 1px #15151540);translate:var(--_floating-content-translate);transition:opacity .3s cubic-bezier(.54,1.5,.38,1.11);position:absolute;top:0;left:0}.visible{display:block}::slotted([slot=toggle-label]){color:var(--_color);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);font-size:var(--rh-font-size-body-text-md,1rem)!important}#menu-toggle{--_interactive-border-color:light-dark( var(--rh-color-accent-base-on-light,#06c), var(--rh-color-accent-base-on-dark,#92c5f9));color:var(--_color);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);inline-size:100%;padding: var(--rh-space-sm,6px)  var(--rh-space-lg,16px);box-sizing:border-box;border-radius:var(--rh-border-radius-default,3px);background:light-dark( var(--rh-color-surface-lightest,#fff), var(--rh-color-surface-darkest,#151515));border:none;justify-content:space-between;align-items:center;display:flex}#menu-toggle .action-icon rh-icon{--rh-icon-size:12px;padding-inline-start:var(--rh-space-md,8px)}#menu-toggle .info-section{justify-content:flex-start;align-items:center;display:flex}#menu-toggle.boxed{box-shadow:inset 0 0 0 1px light-dark( var(--rh-color-gray-30,#c7c7c7), var(--rh-color-gray-50,#707070))}#menu-toggle.boxed:not(.open):hover{box-shadow:inset 0 0 0 1px var(--_interactive-border-color)}#menu-toggle.boxed:not(.open):active{box-shadow:inset 0 0 0  var(--rh-length-3xs,2px) var(--_interactive-border-color)}#menu-toggle.boxed:not(.open):focus{outline: var(--rh-length-3xs,2px) solid var(--_interactive-border-color);outline-offset:var(--rh-length-3xs,2px)}#menu-toggle.boxed.open{box-shadow:inset 0 0 0  var(--rh-length-3xs,2px) var(--_interactive-border-color)}#menu-toggle.boxed.open:focus{outline: var(--rh-length-3xs,2px) solid var(--_interactive-border-color);outline-offset:var(--rh-length-3xs,2px)}#menu-toggle.compact{padding:var(--rh-space-md,8px)}#menu-toggle.compact:not(.boxed).open,#menu-toggle.compact:not(.boxed):hover,#menu-toggle.compact:not(.boxed):active,#menu-toggle.compact:not(.boxed):focus{background-color:light-dark( var(--rh-color-surface-lighter,#f2f2f2), var(--rh-color-surface-darker,#1f1f1f))}#menu-toggle.compact:not(.boxed):focus,#menu-toggle.compact:not(.boxed):active{box-shadow:inset 0 0 0  var(--rh-length-3xs,2px) var(--_interactive-border-color)}#menu-toggle.disabled{pointer-events:none;cursor:not-allowed;background:light-dark( var(--rh-color-gray-30,#c7c7c7), var(--rh-color-gray-40,#a3a3a3))}#menu-toggle.disabled:focus,#menu-toggle.disabled:active,#menu-toggle.disabled:hover{box-shadow:none}#menu-dropdown-container{inline-size:100%;position:relative}::slotted(hr){border:0;border-top:var(--_border);inline-size:100%}::slotted(rh-icon){margin-inline-end:var(--rh-space-md,8px)}rh-menu::part(menu){inline-size:100%}:host([aria-disabled=true]){pointer-events:none;cursor:not-allowed}:host([disabled]) ::slotted([slot=toggle-label]),:host([disabled]) .action-icon rh-icon{color:light-dark( var(--rh-color-gray-50,#707070), var(--rh-color-gray-60,#4d4d4d))}</style><!--lit-part dg+mm7jIG64=-->
       <!--lit-node 0--><div  id="menu-dropdown-container">
         <!--lit-node 1--><button id="menu-toggle"
                 type="button"
@@ -95,9 +96,15 @@
                 aria-disabled="false"
                 
                 class=" boxed ">
-            <!--lit-part sjTKTaq/byY=--> 
+            <!--lit-part mRUDo6LGm/w=--> 
               <span class="info-section"> 
-                <!-- Use this slot for the toggle label. Keep toggle labels short and succinct. -->
+                <!-- summary: Toggle label
+                     description: |
+                       Inline content for the toggle button, such as a
+                       `<span>` or `<rh-icon>`. Should be short and
+                       descriptive. Screen readers announce this as the
+                       accessible name for the menu button. Not used in
+                       compact layout; use `accessible-label` instead. -->
                 <slot name="toggle-label"></slot>
               </span>
               <span class="action-icon">
@@ -129,11 +136,13 @@
              content in this slot. -->
       <!--lit-node 1--><slot  part="menu"></slot>
     <!--/lit-part--></template>
-            <!-- 
-              Use this slot to provide the menu content. Use the "rh-menu" component 
-              for the menu panel, and use "rh-menu-items" to define the individual menu items.
-              To organize menu items into groups, use the "rh-menu-item-group" component.
-            -->
+            <!-- summary: Menu content
+                 description: |
+                   Must contain `<rh-menu-item>` elements. May include
+                   `<hr>` separators or `<rh-menu-item-group>` for
+                   grouped items. Items receive ARIA menuitem role and
+                   focus via roving tabindex for keyboard and screen
+                   reader navigation. -->
             <slot></slot>
           </rh-menu>
         </div>

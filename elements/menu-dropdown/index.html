@@ -27,9 +27,9 @@
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
-    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "lit-element": "/assets/packages/lit-element/index.js",
     "prism-esm": "/assets/packages/prism-esm/prism.js",
@@ -3817,8 +3817,13 @@
           <a href="#overview">Overview</a>
         </h2>
       </uxdot-copy-permalink>
-      <p>A menu dropdown presents a list of actions or links in a vertically stacked menu,
-appearing when a user interacts with a toggle button.</p>
+      <p>A toggle button that reveals a list of actions or links, for use
+when space is limited or context-specific options are needed. Users
+must interact with the toggle to expand or collapse the menu.
+Supports keyboard navigation: Enter, Space, or ArrowDown opens
+the menu; Escape closes it. Screen readers should perceive the
+toggle via <code>aria-haspopup</code> and <code>aria-expanded</code>. Compact variants
+must set <code>accessible-label</code> for assistive technologies.</p>
 
       
       

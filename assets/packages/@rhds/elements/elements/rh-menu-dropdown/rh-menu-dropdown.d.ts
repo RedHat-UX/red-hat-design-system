@@ -10,10 +10,19 @@ export declare class MenuDropdownSelectEvent extends Event {
     constructor(selectedItem: RhMenuItem, text: string);
 }
 /**
- * A menu dropdown presents a list of actions or links in a vertically stacked menu,
- * appearing when a user interacts with a toggle button.
+ * A toggle button that reveals a list of actions or links, for use
+ * when space is limited or context-specific options are needed. Users
+ * must interact with the toggle to expand or collapse the menu.
+ * Supports keyboard navigation: Enter, Space, or ArrowDown opens
+ * the menu; Escape closes it. Screen readers should perceive the
+ * toggle via `aria-haspopup` and `aria-expanded`. Compact variants
+ * must set `accessible-label` for assistive technologies.
  *
  * @summary A collapsible menu for presenting a list of options or actions
+ *
+ * @fires {MenuDropdownSelectEvent} select - Fired when a user selects an
+ *        action or link from the menu. The event detail includes the selected
+ *        `RhMenuItem` element and its text content.
  *
  * @alias menu-dropdown
  */
