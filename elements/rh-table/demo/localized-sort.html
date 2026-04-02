@@ -1,0 +1,69 @@
+<meta itemprop="description"
+      content="Localized sort buttons using the accessible-label slot to provide translated button text that updates with sort direction.">
+<rh-table dir="rtl"
+          lang="he">
+  <table>
+    <caption>
+      הופעות
+    </caption>
+    <colgroup>
+      <col>
+      <col>
+      <col>
+    </colgroup>
+    <thead>
+      <tr>
+        <th scope="col">תאריך</th>
+        <th scope="col">אירוע<rh-sort-button><span slot="accessible-label">מיון</span></rh-sort-button>
+        </th>
+        <th scope="col">מיקום<rh-sort-button><span slot="accessible-label">מיון</span></rh-sort-button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>12 בפברואר</td>
+        <td>ואלס עם שטראוס</td>
+        <td>האולם הראשי</td>
+      </tr>
+      <tr>
+        <td>24 במרץ</td>
+        <td>האובליסקים</td>
+        <td>האגף המערבי</td>
+      </tr>
+      <tr>
+        <td>14 באפריל</td>
+        <td>ה-What</td>
+        <td>האולם הראשי</td>
+      </tr>
+    </tbody>
+  </table>
+  <small slot="summary">התאריכים והמיקומים עשויים להשתנות.</small>
+</rh-table>
+
+<link rel="stylesheet"
+      href="../rh-table-lightdom.css">
+
+<script type="module">
+  import '@rhds/elements/rh-table/rh-table.js';
+
+  const LABELS = new Map(Object.entries({
+    asc: 'ממוין בסדר עולה',
+    desc: 'ממוין בסדר יורד',
+  }));
+
+  document.querySelector('rh-table').addEventListener('request-sort', async function (event) {
+    await this.updateComplete;
+    await event.target.updateComplete;
+    if (!event.defaultPrevented) {
+      for (const button of this.querySelectorAll('rh-sort-button')) {
+        const label = button.querySelector('[slot="accessible-label"]');
+        if (button === event.target) {
+          label.textContent = LABELS.get(event.direction);
+        } else {
+          label.textContent = 'מיון';
+        }
+      }
+    }
+  });
+</script>

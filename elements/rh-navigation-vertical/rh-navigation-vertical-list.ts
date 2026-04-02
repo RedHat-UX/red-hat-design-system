@@ -12,9 +12,18 @@ import '@rhds/elements/rh-navigation-link/rh-navigation-link.js';
 import styles from './rh-navigation-vertical-list.css' with { type: 'css' };
 
 /**
- * A disclosure menu of grouped navigation items in a vertical navigation list.
+ * A collapsible group for organizing related links within an
+ * `<rh-navigation-vertical>` element. Allows users to expand and
+ * collapse sections. Authors should set `summary` to provide a
+ * label. Pressing Escape closes the group and returns focus to the
+ * summary. Uses an ARIA `listitem` role for screen readers.
+ *
  * @summary Vertical navigation group
  * @alias navigation-vertical-list
+ *
+ * @fires {Event} toggle - Fires when the group opens or closes. The
+ *        event has no detail; check the `open` property on the element
+ *        to determine the current state.
  */
 @customElement('rh-navigation-vertical-list')
 export class RhNavigationVerticalList extends LitElement {
@@ -45,7 +54,7 @@ export class RhNavigationVerticalList extends LitElement {
   #internals = InternalsController.of(this, { role: 'listitem' });
 
   /**
-   * Optional open attribute that, sets the open state of the group.
+   * Optional open attribute that sets the open state of the group.
    * Defaults to false.
    */
   @property({ type: Boolean, reflect: true }) open = false;
@@ -77,14 +86,21 @@ export class RhNavigationVerticalList extends LitElement {
         ?open="${this.open}"
         @keydown="${this.#onKeydown}">
         <summary>
-          <!-- A summary slot for the group title, overrides the summary attribute -->
+          <!-- summary: Group heading label
+               description: |
+                 Accepts inline text or a \`<span>\`. Overrides the
+                 \`summary\` attribute. Screen readers use this as
+                 the ARIA label for the disclosure toggle. -->
           <slot name="summary">${this.summary}</slot>
           <rh-icon set="microns" icon="caret-down"></rh-icon>
         </summary>
         <div id="subtree" role="list">
-          <!-- 
-            Use this slot for \`<rh-navigation-link>\` or \`<rh-navigation-vertical-list>\` elements.
-          -->
+          <!-- summary: Navigation group items
+               description: |
+                 Place \`<rh-navigation-link>\` or nested
+                 \`<rh-navigation-vertical-list>\` elements. ARIA
+                 listitem role provides screen reader context.
+                 Avoid nesting deeper than five levels. -->
           <slot></slot>
         </div>
       </details>
