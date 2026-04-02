@@ -30,11 +30,11 @@ export class MenuDropdownSelectEvent extends Event {
 /**
  * A toggle button that reveals a list of actions or links, for use
  * when space is limited or context-specific options are needed. Users
- * MUST interact with the toggle to expand or collapse the menu.
+ * must interact with the toggle to expand or collapse the menu.
  * Supports keyboard navigation: Enter, Space, or ArrowDown opens
- * the menu; Escape closes it. Screen readers SHOULD perceive the
+ * the menu; Escape closes it. Screen readers should perceive the
  * toggle via `aria-haspopup` and `aria-expanded`. Compact variants
- * MUST set `accessible-label` for assistive technologies.
+ * must set `accessible-label` for assistive technologies.
  *
  * @summary A collapsible menu for presenting a list of options or actions
  *
@@ -178,7 +178,7 @@ export class RhMenuDropdown extends LitElement {
                 <!-- summary: Toggle label
                      description: |
                        Inline content for the toggle button, such as a
-                       \`<span>\` or \`<rh-icon>\`. SHOULD be short and
+                       \`<span>\` or \`<rh-icon>\`. Should be short and
                        descriptive. Screen readers announce this as the
                        accessible name for the menu button. Not used in
                        compact layout; use \`accessible-label\` instead. -->
@@ -199,7 +199,7 @@ export class RhMenuDropdown extends LitElement {
           <rh-menu role="menu" aria-labelledby="menu-toggle">
             <!-- summary: Menu content
                  description: |
-                   MUST contain \`<rh-menu-item>\` elements. MAY include
+                   Must contain \`<rh-menu-item>\` elements. May include
                    \`<hr>\` separators or \`<rh-menu-item-group>\` for
                    grouped items. Items receive ARIA menuitem role and
                    focus via roving tabindex for keyboard and screen
