@@ -9,18 +9,23 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import styles from './rh-badge.css' with { type: 'css' };
 
 /**
- * Displays a small numeric count on a pill-shaped background to annotate labels,
- * objects, or filter controls. USE the `state` attribute to convey semantic
- * severity (neutral, info, success, caution, warning, danger). The badge is
- * non-interactive and MUST NOT receive focus. Screen readers SHOULD receive
- * context from surrounding content since badge has no implicit ARIA role.
- * AVOID relying on color alone; provide visible or visually-hidden text.
- * USE `threshold` to cap large numbers (e.g. "999+").
+ * A badge provides a small numeric count on a pill for labels, filters, or lists. Set `state`
+ * when the count carries severity:
+ *
+ *  - `neutral` - Indicates generic information or a message with no severity.
+ *  - `danger` - Indicates a danger state, like an error that is blocking a user from completing a task.
+ *  - `warning` - Indicates a warning state, like a non-blocking error that might need to be fixed.
+ *  - `caution` - Indicates an action or notice which should immediately draw the attention
+ *  - `info` - Indicates helpful information or a message with very little to no severity.
+ *  - `success` - Indicates a success state, like if a process was completed without errors.
+ *
+ * It must not take focus or act as a control; it has no implicit ARIA role. Authors should include
+ * nearby or slotted text for screen readers; Avoid color-only meaning (WCAG 1.4.1). Use `threshold`
+ * with `number` for values like `999+`.
  *
  * @summary Non-interactive numeric pill badge for counts and status
  *
  * @alias badge
- *
  */
 @customElement('rh-badge')
 @themable
@@ -28,25 +33,13 @@ export class RhBadge extends LitElement {
   static readonly styles = [styles];
 
   /**
-   * Denotes the status or severity that this badge represents.
+   * Background severity: `danger`, `warning`, `caution`, `neutral`, `success`, or `info`.
+   * Defaults to `neutral`.
    *
-   * - `neutral` (default) - Generic information or message with no severity
-   * - `info` - Helpful information or message with very little to no severity
-   * - `success` - Success state, like a process completed without errors
-   * - `caution` - Action or notice which should immediately draw attention
-   * - `warning` - Warning state, like a non-blocking error that might need fixing
-   * - `danger` - Danger state, like an error blocking a user from completing a task
+   * Legacy values are normalized: `moderate` → `warning`, `important` → `caution`,
+   * `critical` → `danger`, `note` → `info`.
    *
-   * ## Usage guidelines
-   * - Use appropriate state to indicate severity level
-   * - Do not rely on color alone - provide additional context via text or labels
-   * - When using multiple badges, use visual cues beyond color to differentiate them
-   * - Default to `neutral` for generic counts without status meaning
-   *
-   * **Note:** 'moderate', 'important', and 'critical' are deprecated and will be converted
-   * to their DPO-approved equivalents ('warning', 'caution', 'danger').
-   *
-   * @see [Guidelines](https://ux.redhat.com/elements/badge/guidelines/) documentation
+   * @see [Guidelines](https://ux.redhat.com/elements/badge/guidelines/)
    */
   @property({ reflect: true }) state:
     | 'danger'
@@ -58,54 +51,17 @@ export class RhBadge extends LitElement {
       'neutral';
 
   /**
-   * Sets the numeric count to display in the badge.
-   *
-   * Displays the number value inside the badge. Commonly used to show counts like
-   * number of objects, events, or unread items.
-   *
-   * ## Usage guidelines
-   * - Use for displaying counts (e.g., unread messages, notifications, items)
-   * - Pair with `threshold` to cap display at a maximum value (e.g., "999+")
-   * - For general text captions without counts, use rh-tag instead
-   * - Duplicate the number in the default slot for screen reader accessibility
-   *
-   * ## Threshold behavior
-   * When paired with `threshold`, displays `threshold+` if number exceeds threshold.
-   * For example, `number="1500" threshold="999"` displays "999+".
-   *
-   * @example
-   * ```html
-   * <rh-badge number="7">7</rh-badge>
-   * <rh-badge number="1500" threshold="999">1500</rh-badge>
-   * ```
+   * Numeric count rendered in the badge. With `threshold`, values above the threshold display
+   * as `threshold+`. For text-only labels without a count, use `rh-tag` instead.
    */
   @property({ reflect: true, type: Number }) number?: number;
 
   /**
-   * Sets a maximum display value, adding a `+` sign if the number exceeds this threshold.
-   *
-   * When the `number` value exceeds the `threshold`, the badge displays `threshold+`
-   * instead of the actual number. This prevents displaying very large numbers that
-   * would make the badge too wide.
-   *
-   * ## Usage guidelines
-   * - Common threshold value: 999 (displays "999+" for values >= 1000)
-   * - Use to maintain consistent badge width for large counts
-   * - Do not display actual values over 999 to avoid UI layout issues
-   * - Always pair with the `number` attribute
-   *
-   * @example
-   * ```html
-   * <!-- Displays "999+" -->
-   * <rh-badge number="1500" threshold="999">1500</rh-badge>
-   *
-   * <!-- Displays "50" (under threshold) -->
-   * <rh-badge number="50" threshold="999">50</rh-badge>
-   * ```
+   * Upper bound for `number`; when `number` is greater, the badge shows `threshold+`.
    */
   @property({ reflect: true, type: Number }) threshold?: number;
 
-  /** Ensures that state is consistent, regardless of input */
+  /** Normalizes `state` to supported values (including deprecated aliases). */
   @observes('state', { waitFor: 'updated' })
   private stateChanged() {
     const state = this.state.toLowerCase();
@@ -134,34 +90,14 @@ export class RhBadge extends LitElement {
     const computedContent = isLarge ? `${threshold}+` : number?.toString() ?? null;
     return html`
       <span class="${classMap({ [state]: true })}">${computedContent}</span>
-      <!-- summary: accessible text content or contextual labels (default slot)
-           description: |
-             Contains accessible text content that provides context for the badge count.
-             The content appears after the computed number display in visual rendering.
-
-             **Common patterns:**
-             - Duplicate the \`number\` value for screen reader accessibility
-             - Add contextual labels like "Unread" or "Flagged" when using multiple badges
-             - Provide aria-label on the element for additional context
-
-             **Best practices:**
-             - Always provide accessible context since badges convey information visually
-             - Do not rely on color alone to communicate status
-             - Keep content short (use rh-tag for lengthy text captions)
-             - Content should complement, not replace, the \`number\` property
-
-             **Accessibility:**
-             - Badge does not get an accessible name by default
-             - Ensure adequate contextual information is provided in surrounding layout
-             - Do not convey information by color alone (e.g., read vs unread)
-
-             @example Accessible badge with duplicated number
-             <rh-badge number="7">7</rh-badge>
-
-             @example Badge with contextual label
-             <rh-badge number="50" state="neutral">Unread</rh-badge>
-
-             @see [Accessibility](https://ux.redhat.com/elements/badge/accessibility/) documentation -->
+      <!--
+        summary: Optional label beside the count
+        description: |
+          Short text after the computed number (for example repeating the count for screen readers,
+          or a word like "Unread"). The badge has no implicit accessible name; slotted text should
+          supply context. Eg: \`<rh-badge number="50">Unread</rh-badge>\`. Use the \`<rh-tag>\` element 
+          for longer captions.
+      -->
       <slot class="${classMap({ [state]: true })}"></slot>
     `;
   }
