@@ -184,8 +184,6 @@ export class RhSelect extends LitElement {
   // Tracks the last typed character to detect repeated chars for cycling behavior
   #lastSearchChar = '';
 
-  #typeAheadFocusPending = false;
-
   #lastSearchWasCycling = false;
 
   #valueObserverHadFirstRun = false;
@@ -454,16 +452,6 @@ export class RhSelect extends LitElement {
   async #doExpand() {
     try {
       await this.#float.show({ placement: 'bottom' });
-      // Focus the first selected option if one exists,
-      // BUT only if we're not in the middle of a type-ahead operation.
-      // Type-ahead sets its own focus target after opening the listbox.
-      const skipDefaultFocus = this.#typeAheadFocusPending;
-      this.#typeAheadFocusPending = false;
-      if (!skipDefaultFocus) {
-        // RTI will sync its internal index when this option receives focus
-        // ensuring keyboard navigation starts from the correct position.
-        this.selected.at(0)?.focus();
-      }
       return true;
     } catch {
       return false;
@@ -685,12 +673,44 @@ export class RhSelect extends LitElement {
 
   /**
    * Handles keydown events on the toggle button and listbox.
-   * Detects printable characters (except Space) and delegates to type-ahead logic.
-   * Space is left to normal combobox behavior (open/select); during an active
-   * type-ahead session it is handled in `#captureKeydown` instead.
+   * - Arrow keys on the toggle button open the listbox (if needed) and move
+   *   focus into it, bridging a gap where the ComboboxController does not
+   *   transfer focus when the listbox is already expanded (via show/toggle methods).
+   * - Printable characters (except Space) delegate to type-ahead logic.
+   *   Space is left to normal combobox behavior (open/select); during an
+   *   active type-ahead session it is handled in `#captureKeydown` instead.
    * @param event - The keyboard event to handle
    */
   #onKeydown(event: KeyboardEvent) {
+    // Arrow keys on the toggle button should open the listbox (if needed)
+    // and move focus into it. The ComboboxController's toggle-button handler
+    // only opens the listbox but never moves focus; #doExpand intentionally
+    // does not auto-focus so that Enter/Space/click keep focus on the toggle.
+    // We handle focus transfer here so a single ArrowDown/ArrowUp enters the listbox.
+    if (event.target === this._toggleButton
+        && (event.key === 'ArrowDown' || event.key === 'ArrowUp')) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      // Open if needed, wait for the listbox to render, then focus.
+      if (!this.expanded) {
+        this.expanded = true;
+      }
+      this.updateComplete.then(() => {
+        // When an option is selected, resume from that option.
+        // Otherwise start at the placeholder (first item in the list).
+        // The placeholder is hidden/inert when no placeholder text exists
+        // or when a selection exists, so check before using it.
+        const ph = this._placeholder;
+        const placeholderFocusable = ph && !ph.hidden && !ph.hasAttribute('inert');
+        const target = this.selected.at(0)
+          ?? (placeholderFocusable ? ph : undefined)
+          ?? this.#getFocusableOptions().at(0);
+        target?.focus();
+      });
+      return;
+    }
+
     // Printable keys only; exclude Space so it is not swallowed as type-ahead here.
     const isPrintable = event.key.length === 1
       && event.key !== ' '
@@ -790,10 +810,6 @@ export class RhSelect extends LitElement {
    */
   async #focusOption(option: RhOption) {
     if (!this.expanded) {
-      // Set flag to prevent #doExpand from overriding our focus target.
-      // The flag is cleared in #doExpand after it checks the flag,
-      // because @observes runs asynchronously after updateComplete.
-      this.#typeAheadFocusPending = true;
       this.expanded = true;
       await this.updateComplete;
     }
