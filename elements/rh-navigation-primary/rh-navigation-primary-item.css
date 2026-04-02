@@ -239,9 +239,11 @@
               z-index: -1;
               background-color:
                 light-dark(
-                    /** Open hamburger dropdown content background in light mode at containers >= xl */
+                    /** Open hamburger dropdown content background
+                    in light mode at containers >= xl */
                     var(--rh-color-surface-lightest, #ffffff),
-                    /** Open hamburger dropdown content background in dark mode at containers >= xl */
+                    /** Open hamburger dropdown content background
+                    in dark mode at containers >= xl */
                     var(--rh-color-surface-darkest, #151515)
                   );
               box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
