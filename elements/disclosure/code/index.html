@@ -23,8 +23,8 @@
 
     <script type="importmap">{
   "imports": {
-    "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
+    "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
@@ -4327,7 +4327,12 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>A disclosure toggles the visibility of content when triggered.</p>
+      <p>A disclosure allows users to toggle supplementary content via a
+trigger. Authors should provide a title through the <code>summary</code>
+attribute or slot. It renders a native <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code>
+pair; screen readers announce state changes. Enter or Space
+toggles the panel, Tab moves focus in, and Escape closes it.
+Avoid nesting; use <code>rh-accordion</code> instead.</p>
 
 
       <div class="element-apis">
@@ -4417,9 +4422,17 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>The clickable title text for the disclosure.</p></td>
                   <td>
-                   <p>The title of the disclosure</p>
+                   <p>Accepts inline text or a heading element (e.g.
+<code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>). When a heading is slotted, it
+renders inline. Falls back to the <code>summary</code> attribute
+value when no slot content is provided. Authors should
+keep the summary short and descriptive; screen readers
+announce it as the accessible name for the disclosure
+trigger. When using a heading element, ensure its level
+fits the page outline so assistive technology presents
+correct heading hierarchy.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4447,9 +4460,20 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Content revealed when the disclosure is open.</p></td>
                   <td>
-                   <p>Place the content you want to disclose in the default slot. This content is hidden by default. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Accepts block-level elements such as paragraphs, lists,
+or nested components. Interactive children receive
+focus via Tab when the panel is expanded. Slotted
+content should follow WCAG reading order so screen
+readers present it logically. Authors should ensure
+that interactive elements inside the panel have
+visible focus indicators and accessible labels so
+keyboard and assistive-technology users can operate
+them. The escape key returns focus to the summary
+trigger unless the focused element is an input,
+select, textarea, or media control, in which case
+Escape is passed through to that element. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -4782,7 +4806,11 @@ Compact: decreases disclosure padding.</p></td>
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td><p>Fires when a user opens or closes a disclosure.</p></td>
+                  <td><p>Fires when the disclosure
+opens or closes. The event has no <code>detail</code> payload; read
+<code>event.target.open</code> to determine the new state. The event
+bubbles and is cancelable — calling <code>preventDefault()</code> blocks
+the state change.</p></td>
                 </tr>
               </tbody>
             </table>
@@ -4920,7 +4948,8 @@ Compact: decreases disclosure padding.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>1px border width; Example: Secondary CTA or Button</p>
+                    <p>Disclosure container border width</p>
+<p>1px border width; Example: Secondary CTA or Button</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5026,11 +5055,11 @@ Compact: decreases disclosure padding.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Disclosure container border color</p>
                   </td>
                   <td data-label="Copy">
       <div>
-        <uxdot-copy-button   class="icon-only" copy="var(--rh-color-border-subtle, 1px)"><template shadowroot="open" shadowrootmode="open"><style>button{color:inherit;border-radius:var(--rh-border-radius-default);align-items:center;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs);background:0 0;border-width:0;display:inline-flex}code{padding:var(--rh-space-xs) var(--rh-space-md);background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);font-family:var(--rh-font-family-code);line-height:var(--rh-line-height-code)}:host(.icon-only) code,:host(:empty) code,:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{color:var(--rh-color-text-primary);background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;block-size:1px;inline-size:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}</style><!--lit-part zk+fFwx/8Tw=-->
+        <uxdot-copy-button   class="icon-only" copy="var(--rh-color-border-subtle, undefined)"><template shadowroot="open" shadowrootmode="open"><style>button{color:inherit;border-radius:var(--rh-border-radius-default);align-items:center;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs);background:0 0;border-width:0;display:inline-flex}code{padding:var(--rh-space-xs) var(--rh-space-md);background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);font-family:var(--rh-font-family-code);line-height:var(--rh-line-height-code)}:host(.icon-only) code,:host(:empty) code,:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{color:var(--rh-color-text-primary);background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;block-size:1px;inline-size:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}</style><!--lit-part zk+fFwx/8Tw=-->
       <!--lit-node 0--><rh-tooltip  position="left-start" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline}#container{--_floating-arrow-size: var(--rh-tooltip-arrow-size, var(--rh-tooltip__arrow--Width,11px));max-width:100%;display:inline-flex;position:relative}#tooltip,#tooltip:after{position:absolute}#tooltip{opacity:0;pointer-events:none;z-index:10000;transition:opacity 0s 0s, display 0s 0s allow-discrete;text-align:var(--_text-alignment,center);word-break:break-word;translate:var(--_floating-content-translate);transform:translateX(var(--_rh-tooltip-shake-x,0));will-change:opacity;width:max-content;line-height:var(--rh-line-height-body-text,1.5);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);max-width: var(--rh-tooltip-max-width, var(--rh-tooltip--MaxWidth,18.75rem));border-radius:var(--rh-border-radius-default,3px);padding-block: var(--rh-tooltip-content-padding-block-start, var(--rh-tooltip__content--PaddingTop,var(--rh-space-lg,16px)))  var(--rh-tooltip-content-padding-block-end, var(--rh-tooltip__content--PaddingBottom,var(--rh-space-lg,16px)));padding-inline: var(--rh-tooltip-content-padding-inline-start, var(--rh-tooltip__content--PaddingLeft,var(--rh-space-lg,16px)))  var(--rh-tooltip-content-padding-inline-end, var(--rh-tooltip__content--PaddingRight,var(--rh-space-lg,16px)));font-size: var(--rh-tooltip-content-font-size, var(--rh-tooltip__content--FontSize,var(--rh-font-size-body-text-sm,.875rem)));color:light-dark( var(--rh-tooltip-content-color, var(--rh-tooltip__content--Color,var(--rh-color-text-primary-on-light,#151515))), var(--rh-tooltip-content-color,var(--rh-color-text-primary-on-dark,#fff)));background-color:light-dark( var(--rh-tooltip-content-background-color, var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))), var(--rh-tooltip-content-background-color,var(--rh-color-surface-darkest,#151515)));display:none;top:0;left:0}#tooltip.dark{color-scheme:dark}#tooltip.light{color-scheme:light}.initialized #tooltip{display:block}#tooltip:after{content:"";width:var(--_floating-arrow-size);height:var(--_floating-arrow-size);will-change:left top right bottom;background-color:light-dark( var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))), var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515))));display:block;rotate:45deg}.open #tooltip{opacity:1;transition:opacity .3s cubic-bezier(.54, 1.5, .38, 1.11) .3s, display .3s .3s allow-discrete}@starting-style{.open #tooltip{opacity:0}}.left #tooltip:after{inset-inline-end:calc(-.5 * var(--_floating-arrow-size))}.top #tooltip:after{inset-block-end:calc(-.5 * var(--_floating-arrow-size))}.right #tooltip:after{inset-inline-start:calc(-.5 * var(--_floating-arrow-size))}.bottom #tooltip:after{inset-block-start:calc(-.5 * var(--_floating-arrow-size))}.left.center #tooltip:after{inset-block-start:calc(50% - .5 * var(--_floating-arrow-size))}.top.center #tooltip:after{inset-inline-end:calc(50% - .5 * var(--_floating-arrow-size))}.right.center #tooltip:after{inset-block-start:calc(50% - .5 * var(--_floating-arrow-size))}.bottom.center #tooltip:after{inset-inline-end:calc(50% - .5 * var(--_floating-arrow-size))}.left.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.top.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.right.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.bottom.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.left.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.top.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}.right.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.bottom.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}:host([position=left]),:host([position=right]){--_text-alignment:"start"}#container:dir(rtl).left #tooltip:after{inset-inline:calc(-.5 * var(--_floating-arrow-size)) auto}#container:dir(rtl).right #tooltip:after{inset-inline:auto calc(-.5 * var(--_floating-arrow-size))}</style><!--lit-part 98+Q3SU39hY=-->
       <!--lit-node 0--><div id="container"
            style=""
@@ -5054,7 +5083,7 @@ Compact: decreases disclosure padding.</p></td>
         </div>
       </div>
     <!--/lit-part--></template>
-        <span id="caption" slot="content"><!--lit-part-->var(--rh-color-border-subtle, 1px)<!--/lit-part--></span>
+        <span id="caption" slot="content"><!--lit-part-->var(--rh-color-border-subtle, undefined)<!--/lit-part--></span>
         <!--lit-node 3--><button >
           <code><slot></slot></code>
           <slot name="extra-content"></slot>
@@ -5132,7 +5161,8 @@ Compact: decreases disclosure padding.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>2px border width: Example: Alert</p>
+                    <p>Focus outline width</p>
+<p>2px border width: Example: Alert</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5238,7 +5268,9 @@ Compact: decreases disclosure padding.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Body text font family</p>
+                    <p>Disclosure body font family</p>
+<p>Slotted summary font family</p>
+<p>Body text font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5344,7 +5376,9 @@ Compact: decreases disclosure padding.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Medium font weight</p>
+                    <p>Trigger text weight</p>
+<p>Slotted summary text weight</p>
+<p>Medium font weight</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5450,7 +5484,8 @@ Compact: decreases disclosure padding.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Trigger surface color</p>
+<p>Panel surface color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5556,7 +5591,8 @@ Compact: decreases disclosure padding.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Trigger text color</p>
+<p>Panel text color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5662,7 +5698,10 @@ Compact: decreases disclosure padding.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>16px font size</p>
+                    <p>Trigger text size</p>
+<p>Slotted summary text size</p>
+<p>Panel text size</p>
+<p>16px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5768,7 +5807,8 @@ Compact: decreases disclosure padding.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Line height for body text</p>
+                    <p>Panel text line height</p>
+<p>Line height for body text</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5874,7 +5914,10 @@ Compact: decreases disclosure padding.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>24px spacer</p>
+                    <p>Trigger inline padding</p>
+<p>Panel block-end padding</p>
+<p>Panel inline padding</p>
+<p>24px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5980,7 +6023,8 @@ Compact: decreases disclosure padding.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Small box shadow</p>
+                    <p>Open disclosure elevation</p>
+<p>Small box shadow</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6086,7 +6130,7 @@ Compact: decreases disclosure padding.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Brand accent stripe color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6192,7 +6236,8 @@ Compact: decreases disclosure padding.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>14px font size</p>
+                    <p>Compact trigger text size</p>
+<p>14px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6298,7 +6343,9 @@ Compact: decreases disclosure padding.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>8px spacer</p>
+                    <p>Caret trailing margin</p>
+<p>Compact trigger block padding</p>
+<p>8px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6404,7 +6451,13 @@ Compact: decreases disclosure padding.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Trigger block padding</p>
+<p>Caret icon inline size</p>
+<p>Caret icon block size</p>
+<p>Panel block-start padding</p>
+<p>Compact trigger inline padding</p>
+<p>Compact panel inline padding</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6510,7 +6563,9 @@ Compact: decreases disclosure padding.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Tertiary surface (light theme)</p>
+                    <p>Trigger hover surface in light mode</p>
+<p>Borderless hover surface in light mode</p>
+<p>Tertiary surface (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6616,7 +6671,8 @@ Compact: decreases disclosure padding.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Secondary surface (dark theme)</p>
+                    <p>Borderless hover surface in dark mode</p>
+<p>Secondary surface (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6722,7 +6778,8 @@ Compact: decreases disclosure padding.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Focus outline color</p>
+<p>Borderless trigger text color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6828,7 +6885,7 @@ Compact: decreases disclosure padding.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Borderless trigger hover text color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6934,7 +6991,8 @@ Compact: decreases disclosure padding.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>2px length token</p>
+                    <p>Borderless focus outline offset</p>
+<p>2px length token</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7040,7 +7098,13 @@ Compact: decreases disclosure padding.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>3px border radius; Example: Card</p>
+                    <p>Disclosure container corner radius</p>
+<p>Trigger corner radius</p>
+<p>Panel corner radius</p>
+<p>Accent stripe start corner radius</p>
+<p>Accent stripe end corner radius</p>
+<p>Borderless open panel corner radius</p>
+<p>3px border radius; Example: Card</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7146,7 +7210,8 @@ Compact: decreases disclosure padding.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Secondary surface (light theme)</p>
+                    <p>Borderless open hover surface in light mode</p>
+<p>Secondary surface (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7252,7 +7317,9 @@ Compact: decreases disclosure padding.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Tertiary surface (dark theme)</p>
+                    <p>Trigger hover surface in dark mode</p>
+<p>Borderless open hover surface in dark mode</p>
+<p>Tertiary surface (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
