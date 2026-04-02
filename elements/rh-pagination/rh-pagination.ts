@@ -26,7 +26,7 @@ const L2 = html`
 /**
  * Enables navigation across pages of content using first/prev/next/last
  * stepper buttons, numbered page links, and a direct page-input field.
- * Authors MUST provide a single `<ol>` child with `<li><a>` page links.
+ * Authors must provide a single `<ol>` child with `<li><a>` page links.
  * The active page is determined by `aria-current="page"` or URL match.
  * Supports box and open variants, default and small sizes, and compact
  * layout. Tab moves focus through steppers and input; Enter activates.
@@ -63,7 +63,7 @@ export class RhPagination extends LitElement {
    */
   @property({ reflect: true }) overflow: 'start' | 'end' | 'both' | null = null;
 
-  /** Accessible label for the `<nav>` landmark. SHOULD be unique when multiple paginations exist on a page. Defaults to `'Page navigation'`. */
+  /** Accessible label for the `<nav>` landmark. Should be unique when multiple paginations exist on a page. Defaults to `'Page navigation'`. */
   @property() label = 'Page navigation';
 
   /** Accessible label for the first-page stepper button. Used by screen readers. Defaults to `'first page'`. */
@@ -224,7 +224,7 @@ export class RhPagination extends LitElement {
           <!-- summary: page link list (default slot)
                description: |
                  An \`<ol>\` containing \`<li><a>\` elements for each page. The
-                 active page link MUST have \`aria-current="page"\` or match the
+                 active page link must have \`aria-current="page"\` or match the
                  current URL. Screen readers announce this as a navigation
                  landmark labeled by the \`label\` property. -->
           <slot></slot>
