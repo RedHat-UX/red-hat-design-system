@@ -1,5 +1,7 @@
 :host {
   display: inline;
+
+  /** Cue default font size */
   font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
@@ -27,12 +29,18 @@ a[id$='text'] {
 }
 
 a[id$='text']:hover {
+  /** Cue hover surface */
   background-color: var(--_static-surface-color);
+
+  /** Cue hover underline */
   border-block-end-color: var(--_static-underline-color);
 }
 
 a[active][id$='text'] {
+  /** Active cue text color */
   color: var(--_static-text-color);
+
+  /** Active cue highlight surface */
   background-color: var(--_static-highlight-color);
 }
 
@@ -46,15 +54,18 @@ h3,
 h4,
 h5,
 h6 {
+  /** Heading font size override */
   font-size: var(--rh-font-size-body-text-md, 1rem) !important;
   margin-block-end: 0;
 }
 
 #voice {
+  /** Speaker name font family */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
 }
 
 #start {
+  /** Timestamp font family */
   font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
 }
 
