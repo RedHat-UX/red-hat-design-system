@@ -715,14 +715,10 @@
           --_navigation-link-inline-size: fit-content;
           --_navigation-link-color-hover:
             /** Navigation link hover text color override at containers >= xl */
-            /* stylelint-disable-next-line rhds/token-values */
             var(--rh-color-text-primary,
-              light-dark(
-                /** Navigation link hover text color in light mode at containers >= xl */
-                var(--rh-color-text-primary-on-light, #151515),
-                /** Navigation link hover text color in dark mode at containers >= xl */
-                var(--rh-color-text-primary-on-dark, #ffffff)
-              ));
+              light-dark(var(--rh-color-text-primary-on-light, #151515),
+              var(--rh-color-text-primary-on-dark, #ffffff)
+            ));
           --_navigation-link-padding:
             0
             /** Navigation link inline padding at containers >= xl */
