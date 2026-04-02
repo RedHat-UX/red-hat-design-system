@@ -1,39 +1,41 @@
 :host {
-  /** Outer border width for the disclosure container */
+  /** Disclosure container border width */
   border-width: var(--rh-border-width-sm, 1px);
   border-style: solid;
 
-  /** Outer border color; theme-aware design token */
+  /** Disclosure container border color */
   border-color: var(--rh-color-border-subtle);
 
-  /** Corner radius design token */
+  /** Disclosure container corner radius */
   border-radius: var(--rh-border-radius-default, 3px);
   display: block;
 
-  /** Typography design token for body text */
+  /** Disclosure body font family */
   font-family: var(--rh-font-family-body-text);
 }
 
 summary {
-  /** Summary trigger surface; adapts to theme via token */
+  /** Trigger surface color */
   background-color: var(--rh-color-surface);
+
+  /** Trigger corner radius */
   border-radius: var(--rh-border-radius-default, 3px);
 
-  /** Summary text; inherits theme-aware token */
+  /** Trigger text color */
   color: var(--rh-color-text-primary);
   cursor: pointer;
 
-  /** Body text size design token for trigger */
+  /** Trigger text size */
   font-size: var(--rh-font-size-body-text-md, 1rem);
 
-  /** Medium weight design token for trigger text */
+  /** Trigger text weight */
   font-weight: var(--rh-font-weight-body-text-medium, 500);
   list-style: none;
 
-  /** Spacing design token for trigger block padding */
+  /** Trigger block padding */
   padding-block: var(--rh-space-lg, 16px);
 
-  /** Spacing design token for trigger inline padding */
+  /** Trigger inline padding */
   padding-inline: var(--rh-space-xl, 24px);
 
   &::-webkit-details-marker,
@@ -45,16 +47,22 @@ summary {
   &:active,
   &:focus {
     background-color:
-      light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-        var(--rh-color-surface-dark, #383838));
+      light-dark(
+          /** Trigger hover surface in light mode */
+          var(--rh-color-surface-lighter, #f2f2f2),
+          /** Trigger hover surface in dark mode */
+          var(--rh-color-surface-dark, #383838)
+        );
   }
 
   &:active,
   &:focus {
-    /** Focus outline width design token */
-    outline: var(--rh-border-width-md, 2px) solid;
+    outline:
+      /** Focus outline width */
+      var(--rh-border-width-md, 2px)
+      solid;
 
-    /** Focus outline; uses interactive design token */
+    /** Focus outline color */
     outline-color: var(--rh-color-interactive-primary-default);
     outline-offset: -2px;
     position: relative;
@@ -62,8 +70,13 @@ summary {
   }
 
   & ::slotted([slot='summary']) {
+    /** Slotted summary font family */
     font-family: var(--rh-font-family-body-text);
+
+    /** Slotted summary text size */
     font-size: var(--rh-font-size-body-text-md, 1rem) !important;
+
+    /** Slotted summary text weight */
     font-weight: var(--rh-font-weight-body-text-medium, 500);
   }
 
@@ -73,38 +86,42 @@ summary {
 }
 
 #caret {
-  /** Caret icon size; spacing design token */
+  /** Caret icon inline size */
   inline-size: var(--rh-space-lg, 16px);
+
+  /** Caret icon block size */
   block-size: var(--rh-space-lg, 16px);
   transition: 0.2s;
   will-change: rotate;
   position: relative;
   inset-block-start: 3px;
 
-  /** Caret margin; spacing design token */
+  /** Caret trailing margin */
   margin-inline-end: var(--rh-space-md, 8px);
 }
 
 #details-content {
-  /** Panel content surface; adapts to theme via token */
+  /** Panel surface color */
   background-color: var(--rh-color-surface);
+
+  /** Panel corner radius */
   border-radius: var(--rh-border-radius-default, 3px);
 
-  /** Panel text; inherits theme-aware token */
+  /** Panel text color */
   color: var(--rh-color-text-primary);
 
-  /** Body text size design token */
+  /** Panel text size */
   font-size: var(--rh-font-size-body-text-md, 1rem);
 
-  /** Body text line height design token */
+  /** Panel text line height */
   line-height: var(--rh-line-height-body-text, 1.5);
+  padding-block:
+    /** Panel block-start padding */
+    var(--rh-space-lg, 16px)
+    /** Panel block-end padding */
+    var(--rh-space-xl, 24px);
 
-  /** Spacing design token for panel block-start */
-  padding-block: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
-
-  /** Spacing design token for panel block-end */
-
-  /** Spacing design token for panel inline padding */
+  /** Panel inline padding */
   padding-inline: var(--rh-space-xl, 24px);
 }
 
@@ -117,7 +134,7 @@ summary {
 }
 
 details[open] {
-  /** Elevation design token when disclosure is open */
+  /** Open disclosure elevation */
   box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
   position: relative;
 
@@ -127,10 +144,16 @@ details[open] {
 
   &:before {
     content: '';
+    border-inline-start:
+      3px
+      solid
+      /** Brand accent stripe color */
+      var(--rh-color-brand-red);
 
-    /** Brand accent stripe; uses brand design token */
-    border-inline-start: 3px solid var(--rh-color-brand-red);
+    /** Accent stripe start corner radius */
     border-start-start-radius: var(--rh-border-radius-default, 3px);
+
+    /** Accent stripe end corner radius */
     border-end-start-radius: var(--rh-border-radius-default, 3px);
     position: absolute;
     z-index: 1;
@@ -148,9 +171,13 @@ details[open] {
  *****************************************************************************/
 :host([variant~='compact']) {
   summary {
-    /** Compact text size design token */
+    /** Compact trigger text size */
     font-size: var(--rh-font-size-body-text-sm, 0.875rem);
-    padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+    padding:
+      /** Compact trigger block padding */
+      var(--rh-space-md, 8px)
+      /** Compact trigger inline padding */
+      var(--rh-space-lg, 16px);
 
     rh-icon {
       --rh-icon-size: 14px;
@@ -158,6 +185,7 @@ details[open] {
   }
 
   #details-content {
+    /** Compact panel inline padding */
     padding-inline: var(--rh-space-lg, 16px);
   }
 }
@@ -168,7 +196,9 @@ details[open] {
 :host([variant~='borderless']) {
   --_hover-background-color:
     light-dark(
+        /** Borderless hover surface in light mode */
         var(--rh-color-surface-lighter, #f2f2f2),
+        /** Borderless hover surface in dark mode */
         var(--rh-color-surface-darker, #1f1f1f)
       );
   --_open-background-color: var(--_hover-background-color);
@@ -176,25 +206,27 @@ details[open] {
   border: 0;
 
   summary {
-    /** Borderless trigger text; interactive token */
+    /** Borderless trigger text color */
     color: var(--rh-color-interactive-primary-default);
 
     &:hover,
     &:focus {
       background-color: var(--_hover-background-color);
 
-      /** Borderless trigger hover; interactive token */
+      /** Borderless trigger hover text color */
       color: var(--rh-color-interactive-primary-hover);
     }
 
     &:focus {
-      /** Focus offset; length design token */
+      /** Borderless focus outline offset */
       outline-offset: var(--rh-length-3xs, 2px);
     }
   }
 
   details[open] {
     background-color: var(--_open-background-color);
+
+    /** Borderless open panel corner radius */
     border-radius: var(--rh-border-radius-default, 3px);
     box-shadow: none;
 
@@ -209,7 +241,9 @@ details[open] {
       &:focus {
         background-color:
           light-dark(
+              /** Borderless open hover surface in light mode */
               var(--rh-color-surface-light, #e0e0e0),
+              /** Borderless open hover surface in dark mode */
               var(--rh-color-surface-dark, #383838)
             );
       }
