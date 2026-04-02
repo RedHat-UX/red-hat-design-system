@@ -22,11 +22,12 @@ import './rh-navigation-primary-item-menu.js';
 import styles from './rh-navigation-primary-item.css' with { type: 'css' };
 
 /**
- * A navigation item provides an interactive link or dropdown within the
- * primary navigation bar. It must be placed inside `rh-navigation-primary`.
- * When `variant` is `dropdown`, the toggle uses `aria-expanded` to convey
- * state to screen readers. Keyboard users press Enter or Space to toggle
- * the dropdown; Escape closes it and returns focus to the toggle.
+ * A navigation item provides an interactive link or dropdown for the
+ * primary navigation bar. It must be placed inside
+ * `rh-navigation-primary`. When `variant` is `dropdown`, the toggle
+ * uses `aria-expanded` for screen readers. Keyboard users press Enter
+ * or Space to open; Escape closes and returns focus to the toggle.
+ * Link items should contain one `<a>` for an accessible name.
  *
  * @summary Interactive link or dropdown for the primary navigation
  *
@@ -136,16 +137,20 @@ export class RhNavigationPrimaryItem extends LitElement {
         <details @toggle="${this.#detailsToggle}" ?open="${this.open}">
           <summary>${hamburger ? '' : html`
             <!--
-              Use this slot to provide a custom icon before the summary text.
-              If the \`icon\` property is set, it will be used as the default slot content.
+              Use this slot to provide a custom icon before the summary text,
+              typically an \`<rh-icon>\` or \`<rh-avatar>\` element. For
+              accessibility, the icon is treated as decorative; the summary
+              slot provides the accessible name for the toggle.
             -->
             <slot name="icon">${!this.icon ? '' : html`
               <rh-icon icon="${ifDefined(this.icon)}" set="${ifDefined(this.iconSet)}"></rh-icon>`}
             </slot>`}
             <div id="summary-text">
               <!--
-                Use this slot to provide custom label content for the dropdown toggle.
-                If the \`summary\` property is set, it will be used as the default slot content.
+                Use this slot to provide custom label content for the dropdown
+                toggle, typically a \`<span>\` with visible text. For
+                accessibility, this content provides the accessible name read
+                by screen readers; it must not be empty.
               -->
               <slot name="summary">${this.summary}</slot>
             </div>
@@ -153,15 +158,18 @@ export class RhNavigationPrimaryItem extends LitElement {
           </summary>
           <rh-navigation-primary-item-menu id="details-content">
             <!--
-              Use this slot for dropdown menu content, displayed when the item is open.
-              Typically contains links, nested menus, or other navigational content.
+              Use this slot for dropdown menu content such as headings,
+              link lists, and structured columns. For accessibility, content
+              is hidden from assistive technology until the dropdown is
+              opened via the disclosure widget.
             -->
             <slot></slot>
           </rh-navigation-primary-item-menu>
         </details>` : html`
         <!--
-          Use this slot for link variant content, typically an \`<a>\` or
-          \`<rh-navigation-link>\` element.
+          Use this slot for link variant content, typically a single \`<a>\`
+          or \`<rh-navigation-link>\` element. For accessibility, the link
+          text provides the accessible name for this navigation item.
         -->
         <slot></slot>`}
       </div>

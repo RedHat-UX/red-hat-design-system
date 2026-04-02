@@ -236,8 +236,10 @@ export class RhNavigationPrimary extends LitElement {
           <div id="lockup">
             <div id="logo">
               <!--
-                Use this slot to set the link and logo image, for branding customization.
-                Slotting content here will override the \`logo-href\` and \`logo\` attributes
+                Accepts an anchor element wrapping an inline SVG or \`<img>\` to
+                override the default Red Hat logo. The slotted anchor should
+                contain a \`<title>\` or \`alt\` text so screen readers can
+                identify the brand link.
               -->
               <slot name="logo">
                 <a href="${this.logoHref}">
@@ -254,9 +256,8 @@ export class RhNavigationPrimary extends LitElement {
             </div>
             <div id="sub-domain">
               <!--
-                Use this slot to provide a sub-domain label, usually as a link or text.
-                A common pattern is: <a slot="sub-domain" href="...">Your Sub-domain</a>
-                This slot is typically used for navigation to different sub-sites or areas.
+                Accepts inline content such as a link or text label for sub-site
+                branding alongside the logo lockup.
               -->
               <slot name="sub-domain"></slot>
             </div>
@@ -268,9 +269,12 @@ export class RhNavigationPrimary extends LitElement {
             </summary>
             <div id="details-content" role="list" >
               <!--
-                Use this slot for \`<rh-primary-navigation-item>\` hamburger menu links and dropdowns.
-                Users must not leave the default slot empty, it must contain at least one \`<rh-navigation-primary-item>\`,
-                otherwise the hamburger menu will be inaccessible.
+                Accepts \`<rh-navigation-primary-item>\` block elements for
+                hamburger menu links and dropdowns. The parent container has
+                \`role="list"\`, so slotted items must have \`role="listitem"\`
+                for screen readers; \`rh-navigation-primary-item\` applies this
+                automatically. Leaving this slot empty makes the hamburger
+                menu inaccessible.
               -->
               <slot></slot>
             </div>
@@ -278,10 +282,10 @@ export class RhNavigationPrimary extends LitElement {
           <div id="secondary">
             <div id="event" role="list" class="${classMap({ 'hidden': !hasEvent })}">
               <!--
-                Use this slot for event promotion.  Images such as SVGs and links are most often slotted here.
-                Slot these items using the \`<rh-navigation-primary-item slot="event">\` element. If any
-                other element is slotted here, it will need to be a role="listitem" to avoid accessibility
-                issues.  Other slotted elements will also likely have other rendering issues.
+                Accepts \`<rh-navigation-primary-item slot="event">\` block
+                elements for event promotion such as conference logos. The
+                parent has \`role="list"\`, so any other slotted element must
+                include \`role="listitem"\` to avoid accessibility tree issues.
               -->
               <slot name="event"></slot>
             </div>
@@ -292,21 +296,21 @@ export class RhNavigationPrimary extends LitElement {
               </summary>
               <div id="links-menu-content" role="list">
                 <!--
-                  Use this slot for quick links to other sites not directly associated with the page the
-                  navigation is on.  Common use cases are developers docs and support. Slot these items using
-                  the \`<rh-navigation-primary-item slot="links">\` element. If any other element is slotted
-                  here, it will need to be a role="listitem" to avoid accessibility issues.  Other slotted
-                  elements will also likely have other rendering issues.
+                  Accepts \`<rh-navigation-primary-item slot="links">\` block
+                  elements for quick links to external sites (e.g., docs,
+                  support). The parent has \`role="list"\`, so other slotted
+                  elements must include \`role="listitem"\`.
                 -->
                 <slot name="links"></slot>
               </div>
             </details>
             <div id="dropdowns" role="list" class="${classMap({ 'hidden': !hasDropdowns })}">
               <!--
-                Use this slot for search, for you, and account dropdowns. Slot these items using the
-                \`<rh-navigation-primary-item slot="dropdowns" variant="dropdown">\` element. If any
-                other element is slotted here, it will need to be a role="listitem" to avoid accessibility
-                issues.  Other slotted elements will also likely have other rendering issues.
+                Accepts \`<rh-navigation-primary-item slot="dropdowns"
+                variant="dropdown">\` block elements for utility dropdowns
+                (search, notifications, account). The parent has
+                \`role="list"\`, so other slotted elements must include
+                \`role="listitem"\`.
               -->
               <slot name="dropdowns"></slot>
             </div>
