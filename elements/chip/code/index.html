@@ -4323,7 +4323,12 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>A chip is used to filter information or indicate that a selection was made.</p>
+      <p>A chip provides a toggle for filtering content or indicating a selection
+when users choose from categories. Each chip must contain short inline
+text and may be placed in an <code>rh-chip-group</code> of related chips. The
+hidden checkbox allows form participation and provides screen reader
+accessibility. Keyboard users press Tab to navigate between chips and
+use Enter or Space to toggle.</p>
 
 
       <div class="element-apis">
@@ -4413,9 +4418,10 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Chip label</p></td>
                   <td>
-                   <p>The label of the checkbox <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Expects short inline text for the chip label. Should not
+contain block elements or interactive content. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -4699,14 +4705,17 @@
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-                      <span id="rh-chip-events-chip-checked">
-                        <a href="#rh-chip-events-chip-checked">
-                          <code>chip-checked</code>
+                      <span id="rh-chip-events-change">
+                        <a href="#rh-chip-events-change">
+                          <code>change</code>
                         </a>
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td><p>when chip is checked/unchecked</p></td>
+                  <td><p>Fires when the chip is checked or
+unchecked. The event's <code>checked</code> property (boolean) holds the
+chip's state before the change. Cancelable — canceling prevents
+the state change.</p></td>
                 </tr>
               </tbody>
             </table>
@@ -4802,7 +4811,8 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td></td>
-                  <td><p>The main chip container</p></td>
+                  <td><p>The outer <code>&lt;label&gt;</code> container for the chip,
+styled with the <code>--rh-border-radius-pill</code> token.</p></td>
                 </tr>
               </tbody>
             </table>
@@ -4907,7 +4917,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Chip label block end margin</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5013,7 +5024,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Body text font family</p>
+                    <p>Chip body text font family</p>
+<p>Body text font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5119,7 +5131,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Line height for body text</p>
+                    <p>Chip body text line height</p>
+<p>Line height for body text</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5225,7 +5238,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Pill border radius; Example: Label</p>
+                    <p>Chip pill border radius</p>
+<p>Pill border radius; Example: Label</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5331,7 +5345,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>1px border width; Example: Secondary CTA or Button</p>
+                    <p>Chip outline width</p>
+<p>1px border width; Example: Secondary CTA or Button</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5437,7 +5452,7 @@
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Chip outline color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5543,7 +5558,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>4px spacer</p>
+                    <p>Chip block padding</p>
+<p>4px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5649,7 +5665,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>14px font size</p>
+                    <p>Chip label font size</p>
+<p>14px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5755,7 +5772,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>12px font size</p>
+                    <p>Small size chip label font size</p>
+<p>12px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5861,7 +5879,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>3px border radius; Example: Card</p>
+                    <p>Focus ring border radius</p>
+<p>3px border radius; Example: Card</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5967,7 +5986,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>2px length token</p>
+                    <p>Focus ring block inset</p>
+<p>2px length token</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6073,7 +6093,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>8px length token</p>
+                    <p>Focus ring inline inset</p>
+<p>8px length token</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6179,7 +6200,9 @@
                     </a>
                   </td>
                   <td>
-                    <p>2px border width: Example: Alert</p>
+                    <p>Chip hover/focus outline width</p>
+<p>Focus ring outline width</p>
+<p>2px border width: Example: Alert</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6285,7 +6308,7 @@
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Focus ring outline color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6391,7 +6414,7 @@
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Disabled chip text color in light mode</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6497,7 +6520,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Subtle icon (hover state)</p>
+                    <p>Disabled chip text color in dark mode</p>
+<p>Subtle icon (hover state)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6603,7 +6627,9 @@
                     </a>
                   </td>
                   <td>
-                    <p>Subtle borders (light theme)</p>
+                    <p>Disabled chip background in light mode</p>
+<p>Disabled chip outline in light mode</p>
+<p>Subtle borders (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6709,7 +6735,9 @@
                     </a>
                   </td>
                   <td>
-                    <p>Tertiary surface (dark theme)</p>
+                    <p>Disabled chip background in dark mode</p>
+<p>Disabled chip outline in dark mode</p>
+<p>Tertiary surface (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6815,7 +6843,9 @@
                     </a>
                   </td>
                   <td>
-                    <p>Alert - Info title text</p>
+                    <p>Checked chip background in dark mode</p>
+<p>Checked chip text color in light mode</p>
+<p>Alert - Info title text</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6921,7 +6951,9 @@
                     </a>
                   </td>
                   <td>
-                    <p>Alert - Info background</p>
+                    <p>Checked chip background in light mode</p>
+<p>Checked chip text color in dark mode</p>
+<p>Alert - Info background</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7027,7 +7059,9 @@
                     </a>
                   </td>
                   <td>
-                    <p>Inline link (dark theme)</p>
+                    <p>Checked chip outline in light mode</p>
+<p>Checked chip hover outline in light mode</p>
+<p>Inline link (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7133,7 +7167,9 @@
                     </a>
                   </td>
                   <td>
-                    <p>Label - Filled (Blue) accent color</p>
+                    <p>Checked chip outline in dark mode</p>
+<p>Checked chip hover outline in dark mode</p>
+<p>Label - Filled (Blue) accent color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7239,7 +7275,10 @@
                     </a>
                   </td>
                   <td>
-                    <p>8px spacer</p>
+                    <p>Chip inline end spacing</p>
+<p>Chip inline padding</p>
+<p>Close icon inline start spacing</p>
+<p>8px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7369,7 +7408,11 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>Chip Group</p>
+      <p>A chip group provides a <code>&lt;fieldset&gt;</code> container for related <code>rh-chip</code>
+elements. It renders a <code>&lt;legend&gt;</code> for screen reader accessibility.
+Authors must provide an accessible label when "Filter by:" is not
+appropriate. Authors should avoid placing non-chip elements in the
+default slot. Users may press Tab to navigate between chips.</p>
 
 
       <div class="element-apis">
@@ -7459,11 +7502,13 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Accessible label for the chip group</p></td>
                   <td>
-                   <p>An accessible label for the chip group.
-Content for this slot is put into the <code>&lt;legend&gt;</code> element.
-Also available as an attribute.</p>
+                   <p>Inline text for the chip group legend. Content is placed
+into the <code>&lt;legend&gt;</code> element for screen reader
+accessibility. Authors must ensure the label is
+descriptive for assistive technology. Also available as
+the <code>accessible-label</code> attribute.</p>
                   </td>
                 </tr>
                 <tr>
@@ -7491,9 +7536,11 @@ Also available as an attribute.</p>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Default slot for chip elements</p></td>
                   <td>
-                   <p>Place individual <code>rh-chips</code> inside <code>rh-chip-group</code> <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Expects <code>rh-chip</code> elements. Place individual chips
+inside <code>rh-chip-group</code> to group them as a fieldset.
+Each chip must have a unique text label for screen readers. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
                 <tr>
@@ -7521,9 +7568,11 @@ Also available as an attribute.</p>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Clear all button label</p></td>
                   <td>
-                   <p>Customized text for the "Clear all" button</p>
+                   <p>Inline text to customize the "Clear all" button label.
+Defaults to "Clear all". Should be localized for
+non-English contexts.</p>
                   </td>
                 </tr>
               </tbody>
@@ -7878,7 +7927,8 @@ Also available as an attribute.</p>
                     </uxdot-copy-permalink>
                   </td>
                   <td></td>
-                  <td></td>
+                  <td><p>The <code>&lt;legend&gt;</code> element containing the
+accessible label, styled with <code>--rh-font-size-body-text-md</code>.</p></td>
                 </tr>
               </tbody>
             </table>
@@ -7983,7 +8033,8 @@ Also available as an attribute.</p>
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Chip group margin block spacing</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8089,7 +8140,8 @@ Also available as an attribute.</p>
                     </a>
                   </td>
                   <td>
-                    <p>16px font size</p>
+                    <p>Legend font size</p>
+<p>16px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8195,7 +8247,8 @@ Also available as an attribute.</p>
                     </a>
                   </td>
                   <td>
-                    <p>Pill border radius; Example: Label</p>
+                    <p>Clear all button border radius</p>
+<p>Pill border radius; Example: Label</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8301,7 +8354,7 @@ Also available as an attribute.</p>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Clear all button text color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8407,7 +8460,9 @@ Also available as an attribute.</p>
                     </a>
                   </td>
                   <td>
-                    <p>Body text font family</p>
+                    <p>Legend body text font family</p>
+<p>Clear all button font family</p>
+<p>Body text font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8513,7 +8568,8 @@ Also available as an attribute.</p>
                     </a>
                   </td>
                   <td>
-                    <p>Line height for body text</p>
+                    <p>Clear all button line height</p>
+<p>Line height for body text</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8619,7 +8675,8 @@ Also available as an attribute.</p>
                     </a>
                   </td>
                   <td>
-                    <p>1px border width; Example: Secondary CTA or Button</p>
+                    <p>Clear all button outline width</p>
+<p>1px border width; Example: Secondary CTA or Button</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8725,7 +8782,8 @@ Also available as an attribute.</p>
                     </a>
                   </td>
                   <td>
-                    <p>4px spacer</p>
+                    <p>Clear all button block padding</p>
+<p>4px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8831,7 +8889,9 @@ Also available as an attribute.</p>
                     </a>
                   </td>
                   <td>
-                    <p>8px spacer</p>
+                    <p>Legend inline end spacing</p>
+<p>Clear all button inline padding</p>
+<p>8px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8937,7 +8997,7 @@ Also available as an attribute.</p>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Clear all button hover/focus text color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9043,7 +9103,7 @@ Also available as an attribute.</p>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Clear all button hover/focus outline color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9149,7 +9209,8 @@ Also available as an attribute.</p>
                     </a>
                   </td>
                   <td>
-                    <p>3px border radius; Example: Card</p>
+                    <p>Focus ring border radius</p>
+<p>3px border radius; Example: Card</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9255,7 +9316,8 @@ Also available as an attribute.</p>
                     </a>
                   </td>
                   <td>
-                    <p>1px length token</p>
+                    <p>Focus ring block inset</p>
+<p>1px length token</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9361,7 +9423,8 @@ Also available as an attribute.</p>
                     </a>
                   </td>
                   <td>
-                    <p>8px length token</p>
+                    <p>Focus ring inline inset</p>
+<p>8px length token</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9467,7 +9530,9 @@ Also available as an attribute.</p>
                     </a>
                   </td>
                   <td>
-                    <p>2px border width: Example: Alert</p>
+                    <p>Clear all button focus outline offset</p>
+<p>Focus ring outline width</p>
+<p>2px border width: Example: Alert</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9573,7 +9638,7 @@ Also available as an attribute.</p>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Focus ring outline color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9679,7 +9744,9 @@ Also available as an attribute.</p>
                     </a>
                   </td>
                   <td>
-                    <p>14px font size</p>
+                    <p>Clear all button font size</p>
+<p>Legend font size at small size</p>
+<p>14px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9785,7 +9852,8 @@ Also available as an attribute.</p>
                     </a>
                   </td>
                   <td>
-                    <p>12px font size</p>
+                    <p>Clear all button font size at small size</p>
+<p>12px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>

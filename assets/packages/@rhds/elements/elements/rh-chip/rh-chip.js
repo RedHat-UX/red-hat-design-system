@@ -13,8 +13,14 @@ import { css } from "lit";
 const styles = css `:host{--_spacer:var(--rh-space-lg,16px);display:inline-block;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif)!important;line-height:var(--rh-line-height-body-text,1.5)!important;margin-block:2px;margin-inline-end:var(--rh-space-md,8px)}label{border-radius:var(--rh-border-radius-pill,64px);display:flex;margin-block-end:var(--_spacer);outline:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);padding:var(--rh-space-xs,4px) var(--rh-space-md,8px);position:relative;text-wrap:balance;font-size:var(--rh-font-size-body-text-sm,.875rem)!important}label.size-sm{font-size:var(--rh-font-size-body-text-xs,.75rem)!important}label:focus-within,label:hover{cursor:pointer;outline-width:var(--rh-border-width-md,2px)}label:focus-within:after{content:"";border-radius:var(--rh-border-radius-default,3px);inset:var(--rh-length-3xs,2px) var(--rh-length-md,8px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-border-interactive);position:absolute}label:has(input[aria-disabled=true]),label:has(input[aria-disabled=true]:checked){background-color:light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-surface-dark,#383838));color:light-dark(var(--rh-color-text-secondary),var(--rh-color-gray-40,#a3a3a3));outline-color:light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-surface-dark,#383838));pointer-events:none}label:has(input:checked){background-color:light-dark(var(--rh-color-blue-10,#e0f0ff),var(--rh-color-blue-70,#036));color:light-dark(var(--rh-color-blue-70,#036),var(--rh-color-blue-10,#e0f0ff));outline-color:light-dark(var(--rh-color-blue-30,#92c5f9),var(--rh-color-blue-50,#06c))}label:has(input:checked):hover{outline-color:light-dark(var(--rh-color-blue-30,#92c5f9),var(--rh-color-blue-50,#06c))}#close-icon{block-size:0;inline-size:0;opacity:0;transition-behavior:allow-discrete;transition-duration:.2s;transition-property:inline-size,block-size,opacity,margin-inline-start;transition-timing-function:ease-in-out}input{appearance:none;cursor:pointer;margin:0}input:focus{outline:0}input:checked+#close-icon{block-size:auto;inline-size:auto;margin-inline-start:var(--rh-space-md,8px);opacity:1}`;
 import '@rhds/elements/rh-icon/rh-icon.js';
 import { observes } from '@patternfly/pfe-core/decorators.js';
+/**
+ * Event fired when a chip's checked state changes.
+ * The `checked` property indicates the chip's state before the change.
+ */
 export class ChipChangeEvent extends Event {
-    constructor(checked) {
+    constructor(
+    /** The checked state of the chip before the change occurred. */
+    checked) {
         super('change', {
             bubbles: true,
             cancelable: true,
@@ -23,12 +29,24 @@ export class ChipChangeEvent extends Event {
     }
 }
 /**
- * A chip is used to filter information or indicate that a selection was made.
+ * A chip provides a toggle for filtering content or indicating a selection
+ * when users choose from categories. Each chip must contain short inline
+ * text and may be placed in an `rh-chip-group` of related chips. The
+ * hidden checkbox allows form participation and provides screen reader
+ * accessibility. Keyboard users press Tab to navigate between chips and
+ * use Enter or Space to toggle.
+ *
  * @summary Filter information or indicate that a selection was made
  *
  * @alias chip
  *
- * @fires {ChipCheckedEvent} chip-checked - when chip is checked/unchecked
+ * @fires {ChipChangeEvent} change - Fires when the chip is checked or
+ *        unchecked. The event's `checked` property (boolean) holds the
+ *        chip's state before the change. Cancelable — canceling prevents
+ *        the state change.
+ *
+ * @csspart chip - The outer `<label>` container for the chip,
+ *          styled with the `--rh-border-radius-pill` token.
  */
 let RhChip = class RhChip extends LitElement {
     constructor() {
@@ -54,9 +72,13 @@ let RhChip = class RhChip extends LitElement {
     }
     render() {
         return html `
-      <!-- The main chip container -->
       <label part="chip" class=${classMap({ [`size-${this.size}`]: !!this.size })}>
-        <!-- The label of the checkbox -->
+        <!--
+          summary: Chip label
+          description: |
+            Expects short inline text for the chip label. Should not
+            contain block elements or interactive content.
+        -->
         <slot></slot>
         <input type="checkbox"
                value="${ifDefined(this.value)}"
