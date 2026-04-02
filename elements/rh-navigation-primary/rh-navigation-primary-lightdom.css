@@ -21,12 +21,8 @@ rh-navigation-primary {
       & a {
         /** Navigation link font size */
         font-size: var(--rh-font-size-body-text-md, 1rem);
-        color:
-          /** Navigation link text color */
-          /* stylelint-disable-next-line rhds/token-values */
-          var(--rh-color-interactive-primary-default,
-            light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc),
-            var(--rh-color-interactive-primary-default-on-dark, #92c5f9))) !important;
+        /* stylelint-disable-next-line @stylistic/max-line-length */
+        color: var(--rh-color-interactive-primary-default, light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc), var(--rh-color-interactive-primary-default-on-dark, #92c5f9))) !important;
         inline-size: 100%;
         text-decoration: none;
 

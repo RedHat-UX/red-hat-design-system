@@ -713,13 +713,7 @@
           --_navigation-link-align-items: center;
           --_navigation-link-block-size: 100%;
           --_navigation-link-inline-size: fit-content;
-          --_navigation-link-color-hover:
-            /** Navigation link hover text color at containers >= xl */
-            /* stylelint-disable-next-line rhds/token-values */
-            var(--rh-color-text-primary,
-              light-dark(var(--rh-color-text-primary-on-light, #151515),
-              var(--rh-color-text-primary-on-dark, #ffffff)
-            ));
+          --_navigation-link-color-hover: var(--rh-color-text-primary, light-dark(var(--rh-color-text-primary-on-light, #151515), var(--rh-color-text-primary-on-dark, #ffffff))); /* stylelint-disable-line @stylistic/max-line-length */
           --_navigation-link-padding:
             0
             /** Navigation link inline padding at containers >= xl */
