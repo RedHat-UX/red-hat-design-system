@@ -83,13 +83,21 @@
 
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
-  <body><rh-breadcrumb  truncate><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}</style><!--lit-part YL/rdO6t5Kc=-->
-      <!-- container element for slotted breadcrumb -->
+  <body><meta itemprop="description" content="Breadcrumb with truncation enabled, hiding middle items behind an ellipsis button that expands on activation.">
+<rh-breadcrumb  truncate><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}</style><!--lit-part z7ozG0b0v6c=-->
+      <!-- nav landmark with aria-label for assistive technology -->
       <!--lit-node 1--><nav id="container"
            part="container"
            aria-label="Breadcrumb"
            >
-        <!-- Place an ordered list (`<ol>`) of your breadcrumbs into the slot -->
+        <!--
+          summary: Expects a single `<ol>` block element with `<li>` items
+          description: |
+            Each `<li>` should contain an inline `<a>` text link.
+            The final `<a>` should set `aria-current="page"`.
+            The last `<li>` may contain inline text without a link
+            for a non-interactive current page indicator.
+        -->
         <slot></slot>
       </nav>
     <!--/lit-part--></template>

@@ -4288,9 +4288,12 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>A breadcrumb navigation is a secondary navigation element consisting of a list
-of links to the parent pages of the current page in hierarchical order. It
-helps users find their place within a website or web application.</p>
+      <p>A breadcrumb provides secondary navigation for showing the user's
+hierarchical location within a site. Users must slot an <code>&lt;ol&gt;</code> with
+<code>&lt;li&gt;</code> items containing <code>&lt;a&gt;</code> links. The last item should carry
+<code>aria-current="page"</code> so screen readers announce the current page.
+Keyboard users navigate breadcrumb links with Tab and activate
+them with Enter.</p>
 
 
       <div class="element-apis">
@@ -4380,9 +4383,12 @@ helps users find their place within a website or web application.</p>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Expects a single <code>&lt;ol&gt;</code> block element with <code>&lt;li&gt;</code> items</p></td>
                   <td>
-                   <p>Place an ordered list (<code>&lt;ol&gt;</code>) of your breadcrumbs into the slot <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Each <code>&lt;li&gt;</code> should contain an inline <code>&lt;a&gt;</code> text link.
+The final <code>&lt;a&gt;</code> should set <code>aria-current="page"</code>.
+The last <code>&lt;li&gt;</code> may contain inline text without a link
+for a non-interactive current page indicator. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -4480,8 +4486,10 @@ helps users find their place within a website or web application.</p>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>accessibleLabel</code></td>
-                  <td><p>Customize the default <code>aria-label</code> on the <code>&lt;nav&gt;</code> container.
-Defaults to "Breadcrumb" if no attribute/property is set.</p></td>
+                  <td><p>Customizes the <code>aria-label</code> on the internal <code>&lt;nav&gt;</code> element.
+Defaults to "Breadcrumb" when not set. Authors should override
+this value when more than one breadcrumb navigation appears on
+the same page so screen readers can distinguish between them.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4513,7 +4521,10 @@ Defaults to "Breadcrumb" if no attribute/property is set.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>variant</code></td>
-                  <td><p>Sets variants to breadcrumbs</p></td>
+                  <td><p>Sets the visual variant for the breadcrumb. The <code>subtle</code> variant
+uses secondary text color for the current-page item and a muted
+separator icon, which authors should use on darker backgrounds
+or when the breadcrumb should appear less prominent.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'subtle'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4545,7 +4556,11 @@ Defaults to "Breadcrumb" if no attribute/property is set.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>truncate</code></td>
-                  <td><p>Breadcrumbs over four items will be truncated and include a button to expand the middle breadcrumb items</p></td>
+                  <td><p>When true, breadcrumb lists with five or more items are truncated:
+middle items are hidden and replaced by an ellipsis button that
+users can activate to reveal the full trail. Lists with fewer
+than five items are not affected. The truncation button is
+keyboard-accessible and announces its purpose to screen readers.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span></code></pre></td>
                 </tr>
@@ -4641,7 +4656,10 @@ Defaults to "Breadcrumb" if no attribute/property is set.</p></td>
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
+                  <td><p>After first render, applies truncation when the <code>truncate</code> attribute
+is set and the list contains five or more items. Middle items
+(all except the first and last two) are hidden and an ellipsis
+button is inserted before them.</p></td>
                 </tr>
               </tbody>
             </table>
@@ -4770,7 +4788,7 @@ Defaults to "Breadcrumb" if no attribute/property is set.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td></td>
-                  <td><p>container element for slotted breadcrumb</p></td>
+                  <td><p>nav landmark with aria-label for assistive technology</p></td>
                 </tr>
               </tbody>
             </table>
@@ -4839,21 +4857,25 @@ Defaults to "Breadcrumb" if no attribute/property is set.</p></td>
               <tbody>
                 <tr>
                   <td><code>--rh-breadcrumb-caret-image</code></td>
-                  <td><p>The default <code>mask-image</code> separating each breadcrumb item</p></td>
+                  <td><p>The <code>mask-image</code> separator icon between items; theme by
+providing an SVG data URI. Uses <code>--rh-color-icon-secondary</code>
+design token for the icon background color.</p></td>
                   <td>
                     <code>{svg encoded as data URI}</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-breadcrumb-li-padding-inline-end</code></td>
-                  <td><p>Sets the spacing between each breadcrumb item.</p></td>
+                  <td><p>Inline-end spacing per item; defaults to the <code>--rh-space-lg</code>
+design token (16px)</p></td>
                   <td>
                     <code>var(--rh-space-lg, 16px)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-breadcrumb-link-color</code></td>
-                  <td><p>The link color for each anchor in the list</p></td>
+                  <td><p>Link color for anchors; defaults to the
+<code>--rh-color-interactive-primary-default</code> design token</p></td>
                   <td>
                     <code>var(--rh-color-interactive-primary-default)</code>
                   </td>

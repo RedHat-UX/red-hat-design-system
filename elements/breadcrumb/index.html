@@ -3818,9 +3818,12 @@
           <a href="#overview">Overview</a>
         </h2>
       </uxdot-copy-permalink>
-      <p>A breadcrumb navigation is a secondary navigation element consisting of a list
-of links to the parent pages of the current page in hierarchical order. It
-helps users find their place within a website or web application.</p>
+      <p>A breadcrumb provides secondary navigation for showing the user's
+hierarchical location within a site. Users must slot an <code>&lt;ol&gt;</code> with
+<code>&lt;li&gt;</code> items containing <code>&lt;a&gt;</code> links. The last item should carry
+<code>aria-current="page"</code> so screen readers announce the current page.
+Keyboard users navigate breadcrumb links with Tab and activate
+them with Enter.</p>
 
       
       
@@ -4583,16 +4586,25 @@ helps users find their place within a website or web application.</p>
 <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
           <uxdot-knob-attribute slot="knobs" tag="rh-breadcrumb" name="accessible-label" type="string">
-            <div slot="description"><p>Customize the default <code>aria-label</code> on the <code>&lt;nav&gt;</code> container.
-Defaults to "Breadcrumb" if no attribute/property is set.</p>
+            <div slot="description"><p>Customizes the <code>aria-label</code> on the internal <code>&lt;nav&gt;</code> element.
+Defaults to "Breadcrumb" when not set. Authors should override
+this value when more than one breadcrumb navigation appears on
+the same page so screen readers can distinguish between them.</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-breadcrumb" name="variant" type="'subtle'">
-            <div slot="description"><p>Sets variants to breadcrumbs</p>
+            <div slot="description"><p>Sets the visual variant for the breadcrumb. The <code>subtle</code> variant
+uses secondary text color for the current-page item and a muted
+separator icon, which authors should use on darker backgrounds
+or when the breadcrumb should appear less prominent.</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-breadcrumb" name="truncate" type="boolean" default="false">
-            <div slot="description"><p>Breadcrumbs over four items will be truncated and include a button to expand the middle breadcrumb items</p>
+            <div slot="description"><p>When true, breadcrumb lists with five or more items are truncated:
+middle items are hidden and replaced by an ellipsis button that
+users can activate to reveal the full trail. Lists with fewer
+than five items are not affected. The truncation button is
+keyboard-accessible and announces its purpose to screen readers.</p>
 </div>
           </uxdot-knob-attribute></uxdot-demo>
         

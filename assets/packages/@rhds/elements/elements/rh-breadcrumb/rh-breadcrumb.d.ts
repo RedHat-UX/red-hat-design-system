@@ -1,35 +1,60 @@
 import { LitElement } from 'lit';
 /**
- * A breadcrumb navigation is a secondary navigation element consisting of a list
- * of links to the parent pages of the current page in hierarchical order. It
- * helps users find their place within a website or web application.
- * @summary Links displaying a hierarchical location
+ * A breadcrumb provides secondary navigation for showing the user's
+ * hierarchical location within a site. Users must slot an `<ol>` with
+ * `<li>` items containing `<a>` links. The last item should carry
+ * `aria-current="page"` so screen readers announce the current page.
+ * Keyboard users navigate breadcrumb links with Tab and activate
+ * them with Enter.
+ *
+ * @summary Displays a hierarchical trail of links showing the user's
+ *          location within a site
  *
  * @alias breadcrumb
+ *
  * @cssprop [--rh-breadcrumb-caret-image={svg encoded as data URI}] -
- * The default `mask-image` separating each breadcrumb item
+ *          The `mask-image` separator icon between items; theme by
+ *          providing an SVG data URI. Uses `--rh-color-icon-secondary`
+ *          design token for the icon background color.
  * @cssprop [--rh-breadcrumb-li-padding-inline-end=var(--rh-space-lg, 16px)] -
- * Sets the spacing between each breadcrumb item.
+ *          Inline-end spacing per item; defaults to the `--rh-space-lg`
+ *          design token (16px)
  * @cssprop [--rh-breadcrumb-link-color=var(--rh-color-interactive-primary-default)] -
- * The link color for each anchor in the list
+ *          Link color for anchors; defaults to the
+ *          `--rh-color-interactive-primary-default` design token
  */
 export declare class RhBreadcrumb extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet[];
     /**
-     * Customize the default `aria-label` on the `<nav>` container.
-     * Defaults to "Breadcrumb" if no attribute/property is set.
+     * Customizes the `aria-label` on the internal `<nav>` element.
+     * Defaults to "Breadcrumb" when not set. Authors should override
+     * this value when more than one breadcrumb navigation appears on
+     * the same page so screen readers can distinguish between them.
      */
     accessibleLabel?: string;
     /**
-     * Sets variants to breadcrumbs
+     * Sets the visual variant for the breadcrumb. The `subtle` variant
+     * uses secondary text color for the current-page item and a muted
+     * separator icon, which authors should use on darker backgrounds
+     * or when the breadcrumb should appear less prominent.
      */
     variant?: 'subtle';
     /**
-   * Breadcrumbs over four items will be truncated and include a button to expand the middle breadcrumb items
-   */
+     * When true, breadcrumb lists with five or more items are truncated:
+     * middle items are hidden and replaced by an ellipsis button that
+     * users can activate to reveal the full trail. Lists with fewer
+     * than five items are not affected. The truncation button is
+     * keyboard-accessible and announces its purpose to screen readers.
+     */
     truncate?: boolean | undefined;
     render(): import("lit-html").TemplateResult<1>;
+    /**
+     * After first render, applies truncation when the `truncate` attribute
+     * is set and the list contains five or more items. Middle items
+     * (all except the first and last two) are hidden and an ellipsis
+     * button is inserted before them.
+     */
     firstUpdated(): void;
 }
 declare global {
