@@ -12,9 +12,9 @@ import styles from './rh-chip-group.css' with { type: 'css' };
 /**
  * A chip group provides a `<fieldset>` container for related `rh-chip`
  * elements. It renders a `<legend>` for screen reader accessibility.
- * Authors MUST provide an accessible label when "Filter by:" is not
- * appropriate. Authors SHOULD AVOID placing non-chip elements in the
- * default slot. Users MAY press Tab to navigate between chips.
+ * Authors must provide an accessible label when "Filter by:" is not
+ * appropriate. Authors should avoid placing non-chip elements in the
+ * default slot. Users may press Tab to navigate between chips.
  *
  * @summary Groups related chips with a label and clear-all action
  *

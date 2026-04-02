@@ -34,10 +34,10 @@ export class ChipChangeEvent extends Event {
 
 /**
  * A chip provides a toggle for filtering content or indicating a selection.
- * Each chip MUST contain short inline text. Authors SHOULD use
+ * Each chip must contain short inline text. Authors should use
  * `rh-chip-group` for multiple related chips. The chip renders a hidden
  * checkbox for form participation and screen reader accessibility.
- * Users MAY press Tab to navigate and Enter or Space to toggle.
+ * Users may press Tab to navigate and Enter or Space to toggle.
  *
  * @summary Filter information or indicate that a selection was made
  *
