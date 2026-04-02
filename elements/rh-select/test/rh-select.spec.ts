@@ -574,6 +574,132 @@ describe('<rh-select>', function() {
       const snapshot = await a11ySnapshot();
       expect(snapshot).axTreeFocusedNode.to.have.axRole('combobox');
     });
+
+    it('ArrowDown on toggle enters already-open listbox', async function() {
+      await element.show();
+      await updateComplete();
+      element.focus();
+      await updateComplete();
+      await sendKeys({ press: 'ArrowDown' });
+      await updateComplete();
+
+      expect(element.expanded).to.be.true;
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).axTreeFocusedNode.to.have.axName('placeholder');
+    });
+
+    it('ArrowUp on toggle enters already-open listbox', async function() {
+      await element.show();
+      await updateComplete();
+      element.focus();
+      await updateComplete();
+      await sendKeys({ press: 'ArrowUp' });
+      await updateComplete();
+
+      expect(element.expanded).to.be.true;
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).axTreeFocusedNode.to.have.axName('placeholder');
+    });
+  });
+
+  describe('arrow keys without placeholder', function() {
+    let element: RhSelect;
+    const updateComplete = () => element.updateComplete;
+
+    beforeEach(async function() {
+      const container = await createFixture<HTMLDivElement>(html`
+        <div>
+          <label for="select">label</label>
+          <rh-select id="select">
+            <rh-option>one</rh-option>
+            <rh-option>two</rh-option>
+            <rh-option>three</rh-option>
+          </rh-select>
+        </div>
+      `);
+      element = container.querySelector('rh-select')!;
+      await element.updateComplete;
+    });
+
+    it('ArrowDown focuses the first option', async function() {
+      element.focus();
+      await updateComplete();
+      await sendKeys({ press: 'ArrowDown' });
+      await updateComplete();
+
+      expect(element.expanded).to.be.true;
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).axTreeFocusedNode.to.have.axName('one');
+    });
+
+    it('ArrowUp focuses the first option', async function() {
+      element.focus();
+      await updateComplete();
+      await sendKeys({ press: 'ArrowUp' });
+      await updateComplete();
+
+      expect(element.expanded).to.be.true;
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).axTreeFocusedNode.to.have.axName('one');
+    });
+
+    it('arrow keys navigate after opening without placeholder', async function() {
+      element.focus();
+      await updateComplete();
+      await sendKeys({ press: 'ArrowDown' });
+      await updateComplete();
+      await sendKeys({ press: 'ArrowDown' });
+      await updateComplete();
+
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).axTreeFocusedNode.to.have.axName('two');
+    });
+  });
+
+  describe('arrow keys resume from selected option', function() {
+    let element: RhSelect;
+    const updateComplete = () => element.updateComplete;
+
+    beforeEach(async function() {
+      const container = await createFixture<HTMLDivElement>(html`
+        <div>
+          <label for="select">label</label>
+          <rh-select id="select" placeholder="placeholder">
+            <rh-option>one</rh-option>
+            <rh-option>two</rh-option>
+            <rh-option>three</rh-option>
+          </rh-select>
+        </div>
+      `);
+      element = container.querySelector('rh-select')!;
+      await element.updateComplete;
+    });
+
+    it('ArrowDown focuses previously selected option after reopen', async function() {
+      element.focus();
+      await updateComplete();
+      // Open, navigate to "two", select it
+      await sendKeys({ press: 'ArrowDown' });
+      await updateComplete();
+      await sendKeys({ press: 'ArrowDown' });
+      await updateComplete();
+      await sendKeys({ press: 'ArrowDown' });
+      await updateComplete();
+      await sendKeys({ press: 'Enter' });
+      await updateComplete();
+      await nextFrame();
+
+      expect(element.value).to.equal('two');
+      expect(element.expanded).to.be.false;
+
+      // Reopen with ArrowDown — should resume at "two"
+      await sendKeys({ press: 'ArrowDown' });
+      await updateComplete();
+
+      expect(element.expanded).to.be.true;
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).axTreeFocusedNode.to.have.axName('two');
+    });
   });
 
   describe('<rh-option-group disabled>', function() {
