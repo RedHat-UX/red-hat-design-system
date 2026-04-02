@@ -33,19 +33,21 @@ export class ChipChangeEvent extends Event {
 }
 
 /**
- * A chip provides a toggle for filtering content or indicating a selection.
- * Each chip must contain short inline text. Authors should use
- * `rh-chip-group` for multiple related chips. The chip renders a hidden
- * checkbox for form participation and screen reader accessibility.
- * Users may press Tab to navigate and Enter or Space to toggle.
+ * A chip provides a toggle for filtering content or indicating a selection
+ * when users choose from categories. Each chip must contain short inline
+ * text and may be placed in an `rh-chip-group` of related chips. The
+ * hidden checkbox allows form participation and provides screen reader
+ * accessibility. Keyboard users press Tab to navigate between chips and
+ * use Enter or Space to toggle.
  *
  * @summary Filter information or indicate that a selection was made
  *
  * @alias chip
  *
  * @fires {ChipChangeEvent} change - Fires when the chip is checked or
- *        unchecked. The event's `checked` property contains the previous
- *        checked state (boolean). This event bubbles and is cancelable.
+ *        unchecked. The event's `checked` property (boolean) holds the
+ *        chip's state before the change. Cancelable — canceling prevents
+ *        the state change.
  *
  * @csspart chip - The outer `<label>` container for the chip,
  *          styled with the `--rh-border-radius-pill` token.
@@ -91,7 +93,12 @@ export class RhChip extends LitElement {
   render() {
     return html`
       <label part="chip" class=${classMap({ [`size-${this.size}`]: !!this.size })}>
-        <!-- Short inline text for the chip label -->
+        <!--
+          summary: Chip label
+          description: |
+            Expects short inline text for the chip label. Should not
+            contain block elements or interactive content.
+        -->
         <slot></slot>
         <input type="checkbox"
                value="${ifDefined(this.value)}"
