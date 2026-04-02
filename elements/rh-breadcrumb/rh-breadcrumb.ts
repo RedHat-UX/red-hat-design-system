@@ -37,8 +37,8 @@ const truncationBtn = html`
 
 /**
  * A breadcrumb provides secondary navigation for showing the user's
- * hierarchical location within a site. Users MUST slot an `<ol>` with
- * `<li>` items containing `<a>` links. The last item SHOULD carry
+ * hierarchical location within a site. Users must slot an `<ol>` with
+ * `<li>` items containing `<a>` links. The last item should carry
  * `aria-current="page"` so screen readers announce the current page.
  * Keyboard users navigate breadcrumb links with Tab and activate
  * them with Enter.
@@ -66,7 +66,7 @@ export class RhBreadcrumb extends LitElement {
   static readonly styles = [styles];
   /**
    * Customizes the `aria-label` on the internal `<nav>` element.
-   * Defaults to "Breadcrumb" when not set. Authors SHOULD override
+   * Defaults to "Breadcrumb" when not set. Authors should override
    * this value when more than one breadcrumb navigation appears on
    * the same page so screen readers can distinguish between them.
    */
@@ -75,7 +75,7 @@ export class RhBreadcrumb extends LitElement {
   /**
    * Sets the visual variant for the breadcrumb. The `subtle` variant
    * uses secondary text color for the current-page item and a muted
-   * separator icon, which authors SHOULD use on darker backgrounds
+   * separator icon, which authors should use on darker backgrounds
    * or when the breadcrumb should appear less prominent.
    */
   @property({ reflect: true }) variant?: 'subtle';
@@ -103,9 +103,9 @@ export class RhBreadcrumb extends LitElement {
         <!--
           summary: Expects a single \`<ol>\` block element with \`<li>\` items
           description: |
-            Each \`<li>\` SHOULD contain an inline \`<a>\` text link.
-            The final \`<a>\` SHOULD set \`aria-current="page"\`.
-            The last \`<li>\` MAY contain inline text without a link
+            Each \`<li>\` should contain an inline \`<a>\` text link.
+            The final \`<a>\` should set \`aria-current="page"\`.
+            The last \`<li>\` may contain inline text without a link
             for a non-interactive current page indicator.
         -->
         <slot></slot>
