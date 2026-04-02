@@ -24,14 +24,11 @@ const L2 = html`
   </svg>`;
 
 /**
- * Enables navigation across pages of content using first/prev/next/last
- * stepper buttons, numbered page links, and a direct page-input field.
- * Authors must provide a single `<ol>` child with `<li><a>` page links.
- * The active page is determined by `aria-current="page"` or URL match.
- * Supports box and open variants, default and small sizes, and compact
- * layout. Tab moves focus through steppers and input; Enter activates.
- * Screen readers announce the `<nav>` landmark with the `label` property.
- * Truncation with ellipsis appears automatically beyond 9 pages.
+ * Pagination allows users to navigate between pages of related content.
+ * Use it when content is too long for a single view. Authors must
+ * provide a single `<ol>` with `<li><a>` page links where the active
+ * page should have `aria-current="page"`. Tab navigates between controls;
+ * Enter activates. Supports box and open variants, default and small sizes.
  *
  * @summary Navigate between pages of content with steppers and input
  *
@@ -166,12 +163,12 @@ export class RhPagination extends LitElement {
       <!-- shared container for the numeric controls at all widths -->
       <div id="numeric" part="numeric">
         <span id="go-to-page" class="xxs-visually-hidden sm-visually-visible">
-          <!-- summary: page input label text (go-to-page slot)
+          <!-- summary: Page input label
                description: |
-                 Label text preceding the page number input field. Defaults to
-                 "Page". Customize for internationalization. Visually hidden at
-                 very small widths but always accessible to screen readers via
-                 \`aria-labelledby\`. -->
+                 Expects short inline text labeling the page number input.
+                 Defaults to "Page". Should be localized for non-English
+                 contexts. Visually hidden at narrow widths but always
+                 exposed to screen readers via \`aria-labelledby\`. -->
           <slot name="go-to-page">
             Page
           </slot>
@@ -185,23 +182,14 @@ export class RhPagination extends LitElement {
                @change="${this.#onChange}"
                @keyup="${this.#onKeyup}"
                .value="${currentPage}">
-        <!-- summary: preposition text between page input and total (default: "of")
+        <!-- summary: Preposition between page input and total
              description: |
-               Contains the text displayed between the current page input field and the total page count.
-               Defaults to "of" but can be customized for internationalization or alternate phrasing.
-
-               **Common patterns:**
-               - Default: "of" (e.g., "Page 3 of 10")
-               - Internationalization: "de" (German), "sur" (French), etc.
-               - Alternate phrasing: "out of", "/" (slash separator)
-
-               **Best practices:**
-               - Keep text short (1-3 characters) for compact layouts
-               - Use localized prepositions for international audiences
-               - Ensure text semantically connects current and total page values
-               - Consider screen reader pronunciation when choosing text
-
-               @see [Pagination](https://ux.redhat.com/elements/pagination/) documentation -->
+               Expects short inline text (1\u20133 characters) displayed between
+               the current page input and the total page count (e.g.,
+               "Page 3 of 10"). Defaults to "of". Should be localized for
+               non-English contexts. Screen readers announce this text
+               between the input and total, so it must be semantically
+               clear. -->
         <slot ?hidden="${!this.total}" name="out-of">of</slot>
         <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
       </div>
@@ -221,12 +209,16 @@ export class RhPagination extends LitElement {
            .inert="${this.#currentLink === this.#prevLink || this.#currentLink === this.#firstLink}"
            aria-label="${labelPrevious}">${L1}</a>
         <nav aria-label="${label}">
-          <!-- summary: page link list (default slot)
+          <!-- summary: Page link list
                description: |
-                 An \`<ol>\` containing \`<li><a>\` elements for each page. The
-                 active page link must have \`aria-current="page"\` or match the
-                 current URL. Screen readers announce this as a navigation
-                 landmark labeled by the \`label\` property. -->
+                 Expects a single \`<ol>\` containing \`<li><a>\` block
+                 elements for each page. The active page link must have
+                 \`aria-current="page"\` or match the current URL.
+                 Authors should ensure each link has descriptive text
+                 for assistive technology. The wrapping \`<nav>\` is
+                 announced as a landmark labeled by the \`label\`
+                 property; authors must keep labels unique when
+                 multiple paginations exist on a page. -->
           <slot></slot>
         </nav>
         <!-- container for the numeric control at medium screen widths -->
