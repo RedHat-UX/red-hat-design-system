@@ -7,9 +7,9 @@
   color: var(--rh-color-text-primary);
   background-color:
     light-dark(
-        /** Content panel background color under light color scheme */
+        /** Content panel background in light mode */
         var(--rh-color-surface-lightest, #ffffff),
-        /** Content panel background color under dark color scheme */
+        /** Content panel background in dark mode */
         var(--rh-color-surface-darkest, #151515)
       );
 

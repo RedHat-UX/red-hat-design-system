@@ -71,6 +71,8 @@
 
     & summary {
       --rh-icon-size: 18px /* non standard value */;
+
+      /** Toggle avatar size */
       --rh-avatar-size: var(--rh-icon-size); /* non standard value */
 
       display: flex;
@@ -141,14 +143,12 @@
         border-block-end: 4px solid transparent; /* Non standard border width */
 
         &:hover {
-          /** Item when slotted in hamburger menu and not compact state
-              hover indicator color at containers >= xl */
+          /** Hamburger item hover indicator color at containers >= xl */
           border-block-end-color: var(--rh-color-border-subtle);
         }
 
         &:is(:active, :focus-within, :has(details[open])) {
-          /** Item when slotted in hamburger menu and not compact state
-              active, focus-within, and open state indicator color at containers >= xl */
+          /** Hamburger item active indicator color at containers >= xl */
           border-block-end-color: var(--rh-color-accent-brand);
         }
       }
@@ -172,7 +172,7 @@
         & summary {
           list-style: none;
 
-          /** Dropdown variant when slotted in hamburger text color */
+          /** Hamburger dropdown text color */
           color: var(--rh-color-text-primary) !important;
           text-decoration: none !important;
           text-align: center;
@@ -191,24 +191,22 @@
           &:hover:focus-visible {
             outline-offset: -2px;
             outline:
-              /** Dropdown variant when slotted in hamburger focus ring width */
+              /** Hamburger dropdown focus ring width */
               var(--rh-border-width-md, 2px)
               solid
-              /** Dropdown variant when slotted in hamburger focus ring color */
+              /** Hamburger dropdown focus ring color */
               var(--rh-color-interactive-primary-default);
 
-            /** Dropdown variant when slotted in hamburger rounded corners */
+            /** Hamburger dropdown focus ring radius */
             border-radius: var(--rh-border-radius-default, 3px);
           }
         }
 
         &[open] {
-          /** Dropdown variant when slotted in hamburger menu open
-              state border inline start color */
+          /** Open hamburger dropdown inline start border color */
           border-inline-start-color: var(--rh-color-accent-brand);
 
-          /** Dropdown variant when slotted in hamburger menu open
-              state border inline end color */
+          /** Open hamburger dropdown inline end border color */
           border-inline-end-color: var(--rh-color-border-subtle);
 
           & summary {
@@ -241,11 +239,9 @@
               z-index: -1;
               background-color:
                 light-dark(
-                    /** Dropdown variant when slotted in hamburger menu and when not compact
-                        content background color at containers >= xl under light color scheme */
+                    /** Open hamburger dropdown content background in light mode at containers >= xl */
                     var(--rh-color-surface-lightest, #ffffff),
-                    /** Dropdown variant when slotted in hamburger menu and when not compact
-                        content background color at containers >= xl under dark color scheme */
+                    /** Open hamburger dropdown content background in dark mode at containers >= xl */
                     var(--rh-color-surface-darkest, #151515)
                   );
               box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
@@ -345,8 +341,10 @@
           @container (min-width: 1200px) {
             inline-size: fit-content;
 
-            /** Dropdown variant content rounded corners at containers >= xl */
+            /** Standalone dropdown content end rounded corner at containers >= xl */
             border-end-end-radius: calc(var(--rh-border-radius-default, 3px) * 2);
+
+            /** Standalone dropdown content start rounded corner at containers >= xl */
             border-end-start-radius: calc(var(--rh-border-radius-default, 3px) * 2);
           }
         }
@@ -369,23 +367,26 @@
     border-block-start: none;
 
     & ::slotted(a) {
-      /** Link variant slotted link text color */
-      color: var(--_navigation-link-color, var(--rh-color-text-primary)) !important;
+      color:
+        var(--_navigation-link-color,
+          /** Link variant text color */
+          var(--rh-color-text-primary)) !important;
     }
 
     & ::slotted(:is(a:hover, a:focus-visible, :active)) {
       text-underline-offset: var(--_navigation-link-text-underline-offset, 4px) !important;
-
-      /** Link variant slotted link hover, focus, active text decoration color */
       text-decoration-color:
         var(--_navigation-link-text-decoration-color,
-          light-dark(var(--rh-color-gray-50, #707070),
-          var(--rh-color-gray-40, #a3a3a3))) !important;
+          light-dark(
+            /** Link variant hover decoration color in light mode */
+            var(--rh-color-gray-50, #707070),
+            /** Link variant hover decoration color in dark mode */
+            var(--rh-color-gray-40, #a3a3a3))) !important;
       text-decoration-line: var(--_navigation-link-text-decoration-line, underline) !important;
       text-decoration-style: var(--_navigation-link-text-decoration-style, dashed) !important;
       text-decoration-skip-ink: auto !important;
 
-      /** Link variant slotted link hover, focus, active text color */
+      /** Link variant hover text color */
       color: var(--rh-color-interactive-primary-hover) !important;
     }
 
@@ -413,13 +414,13 @@
       & ::slotted(a:is(:focus-visible, :hover:focus-visible, :active)) {
         outline-offset: 0;
         outline:
-          /** Link variant slotted link focus ring width */
+          /** Link variant focus ring width */
           var(--rh-border-width-md, 2px)
           solid
-          /** Link variant slotted link focus ring color */
+          /** Link variant focus ring color */
           var(--rh-color-interactive-primary-default);
 
-        /** Link variant slotted link border radius */
+        /** Link variant focus ring radius */
         border-radius: var(--rh-border-radius-default, 3px);
       }
 
@@ -441,10 +442,9 @@
     &.standalone {
       & ::slotted(a) {
         text-decoration: none;
-
-        /** Secondary area slotted item font size */
         font-size:
           var(--_navigation-link-font-size,
+            /** Standalone link font size */
             var(--rh-font-size-body-text-sm, 0.875rem)) !important;
         display: inline-flex;
         block-size: auto;
@@ -454,11 +454,13 @@
       & ::slotted(a:is(:focus-visible, :hover:focus-visible, :active)) {
         outline-offset: 4px;
         outline:
-          /** Secondary area slotted item with slotted link focus ring width */
+          /** Standalone link focus ring width */
           var(--rh-border-width-md, 2px)
           solid
-          /** Secondary area slotted item with slotted link focus ring color */
+          /** Standalone link focus ring color */
           var(--rh-color-interactive-primary-default);
+
+        /** Standalone link focus ring radius */
         border-radius: var(--rh-border-radius-default, 3px);
       }
     }
@@ -470,7 +472,7 @@
     &.compact {
       min-inline-size: 188px;
 
-      /** Links slot when compact padding inline end */
+      /** Compact links slot inline end padding */
       padding-inline-end: var(--rh-space-xl, 24px);
     }
 
