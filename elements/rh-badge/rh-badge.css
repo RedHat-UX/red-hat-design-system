@@ -1,4 +1,3 @@
-/** @summary Base badge styles: pill shape, centered text, status colors */
 span,
 slot {
   align-items: center;
@@ -8,68 +7,62 @@ slot {
   text-align: center;
   aspect-ratio: var(--_aspect-ratio);
 
-  /** @summary Pill shape; uses --rh-border-radius-pill design token */
+  /** Badge pill border radius */
   border-radius: var(--rh-border-radius-pill, 64px);
 
-  /** @summary Minimum width; uses --rh-length-lg design token */
+  /** Minimum badge width */
   min-width: var(--_badge-size, var(--rh-length-lg, 16px));
 
-  /** @summary Small text size; uses --rh-font-size-body-text-xs design token */
+  /** Badge text font size */
   font-size: var(--rh-font-size-body-text-xs, 0.75rem);
   font-weight: 700;
 
   /** Badge line height */
   line-height: var(--rh-line-height-body-text, 1.5);
 
-  /** @summary Inline padding; uses --rh-space-md design token */
+  /** Badge inline padding */
   padding-inline: var(--_badge-padding, var(--rh-space-md, 8px));
   color:
     light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
       var(--rh-color-text-primary-on-light, #151515));
 
-  /** @summary Neutral state; uses --rh-color-status-neutral design token */
+  /** Neutral status background */
   &.neutral { background-color: var(--rh-color-status-neutral); }
 
-  /** @summary Info state; uses --rh-color-status-info design token */
+  /** Info status background */
   &.info { background-color: var(--rh-color-status-info); }
 
-  /** @summary Success state; uses --rh-color-status-success design token */
+  /** Success status background */
   &.success { background-color: var(--rh-color-status-success); }
 
-  /**
-   * @summary Caution state; uses --rh-color-status-caution
-   * design token. Forces dark text for contrast.
-   */
   &.caution {
-    /** Badge background */
+    /** Caution status background */
     background-color: var(--rh-color-status-caution);
 
-    /** Badge text color */
-    color: var(--rh-color-text-primary-on-light, #151515); /** maintain color contrast */
+    /** Dark text on caution background for contrast */
+    color: var(--rh-color-text-primary-on-light, #151515);
   }
 
-  /**
-   * @summary Warning state; uses --rh-color-status-warning
-   * design token. Forces dark text for contrast.
-   */
   &.warning {
-    /** Badge background */
+    /** Warning status background */
     background-color: var(--rh-color-status-warning);
 
-    /** Badge text color */
-    color: var(--rh-color-text-primary-on-light, #151515); /** maintain color contrast */
+    /** Dark text on warning background for contrast */
+    color: var(--rh-color-text-primary-on-light, #151515);
   }
 
-  /** @summary Danger state; uses --rh-color-status-danger design token */
+  /** Danger status background */
   &.danger { background-color: var(--rh-color-status-danger); }
 }
 
+/** Hide empty label span */
 span:empty {
   display: none;
 }
 
 slot { display: inline-flex; }
 
+/** Numeric badge: show counter span only */
 :host([number]) {
   slot { display: none; }
   span { display: inline-flex; }
