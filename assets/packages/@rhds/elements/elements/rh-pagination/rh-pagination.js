@@ -20,9 +20,13 @@ const L2 = html `
     <path d="M8.7 6.26 14.66.3a1.05 1.05 0 0 1 1.49 0l.98.99c.42.4.42 1.07 0 1.48L12.92 7l4.2 4.22c.42.4.42 1.07 0 1.48l-.98 1c-.41.4-1.08.4-1.48 0L8.7 7.73a1.05 1.05 0 0 1 0-1.48zM.3 7.74l5.96 5.95c.4.41 1.07.41 1.48 0l.99-.99c.4-.4.4-1.07 0-1.48L4.52 7l4.21-4.22c.41-.4.41-1.07 0-1.48l-.99-1a1.05 1.05 0 0 0-1.48 0L.31 6.27a1.05 1.05 0 0 0 0 1.48z"/>
   </svg>`;
 /**
- * A paginator allows users to navigate between pages of related content.
+ * Pagination allows users to navigate between pages of related content.
+ * Use it when content is too long for a single view. Authors must
+ * provide a single `<ol>` with `<li><a>` page links where the active
+ * page should have `aria-current="page"`. Tab navigates between controls;
+ * Enter activates. Supports box and open variants, default and small sizes.
  *
- * @summary Allows users to navigate content divided into pages
+ * @summary Navigate between pages of content with steppers and input
  *
  * @alias pagination
  *
@@ -32,26 +36,25 @@ let RhPagination = RhPagination_1 = class RhPagination extends LitElement {
         super(...arguments);
         _RhPagination_instances.add(this);
         /**
-         * Override `overflow` values set from HTML or JS.
-         * `overflow` should ideally be private, but because
-         * we can't do `::slotted(nav ol li)`, we need to reflect
-         * it to a host attribute, so that lightdom CSS can target
-         * the list items.
+         * Controls which end(s) of the page list are truncated with ellipsis.
+         * Accepts `'start'` | `'end'` | `'both'` | `null`. Computed automatically
+         * from page count and current index. Reflected to the host attribute so
+         * light-DOM CSS can hide overflow `<li>` elements. Defaults to `null`.
          */
         this.overflow = null;
-        /** Accessible label for the 'nav' element */
+        /** Accessible label for the `<nav>` landmark. Should be unique when multiple paginations exist on a page. Defaults to `'Page navigation'`. */
         this.label = 'Page navigation';
-        /** Accessible label for the 'first page' button */
+        /** Accessible label for the first-page stepper button. Used by screen readers. Defaults to `'first page'`. */
         this.labelFirst = 'first page';
-        /** Accessible label for the 'previous page' button */
+        /** Accessible label for the previous-page stepper button. Used by screen readers. Defaults to `'previous page'`. */
         this.labelPrevious = 'previous page';
-        /** Accessible label for the 'next page' button */
+        /** Accessible label for the next-page stepper button. Used by screen readers. Defaults to `'next page'`. */
         this.labelNext = 'next page';
-        /** Accessible label for the 'last page' button */
+        /** Accessible label for the last-page stepper button. Used by screen readers. Defaults to `'last page'`. */
         this.labelLast = 'last page';
-        /** Change pagination size to small */
+        /** Controls pagination size. Accepts `'sm'` for smaller touch targets (WCAG AA) or `null` for default (WCAG AAA). Defaults to `null`. */
         this.size = null;
-        /** "Open" variant */
+        /** Visual variant. Accepts `'open'` for transparent backgrounds with bottom borders, or `null` for the default box variant. Defaults to `null`. */
         this.variant = null;
         _RhPagination_mo.set(this, new MutationObserver(() => this.requestUpdate()));
         _RhPagination_logger.set(this, new Logger(this));
@@ -107,7 +110,12 @@ let RhPagination = RhPagination_1 = class RhPagination extends LitElement {
       <!-- shared container for the numeric controls at all widths -->
       <div id="numeric" part="numeric">
         <span id="go-to-page" class="xxs-visually-hidden sm-visually-visible">
-          <!-- "Go to page" text, defaults to "Page" -->
+          <!-- summary: Page input label
+               description: |
+                 Expects short inline text labeling the page number input.
+                 Defaults to "Page". Should be localized for non-English
+                 contexts. Visually hidden at narrow widths but always
+                 exposed to screen readers via \`aria-labelledby\`. -->
           <slot name="go-to-page">
             Page
           </slot>
@@ -121,7 +129,14 @@ let RhPagination = RhPagination_1 = class RhPagination extends LitElement {
                @change="${__classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_onChange)}"
                @keyup="${__classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_onKeyup)}"
                .value="${currentPage}">
-        <!-- "of" text -->
+        <!-- summary: Preposition between page input and total
+             description: |
+               Expects short inline text (1\u20133 characters) displayed between
+               the current page input and the total page count (e.g.,
+               "Page 3 of 10"). Defaults to "of". Should be localized for
+               non-English contexts. Screen readers announce this text
+               between the input and total, so it must be semantically
+               clear. -->
         <slot ?hidden="${!this.total}" name="out-of">of</slot>
         <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
       </div>
@@ -140,7 +155,16 @@ let RhPagination = RhPagination_1 = class RhPagination extends LitElement {
            .inert="${__classPrivateFieldGet(this, _RhPagination_currentLink, "f") === __classPrivateFieldGet(this, _RhPagination_prevLink, "f") || __classPrivateFieldGet(this, _RhPagination_currentLink, "f") === __classPrivateFieldGet(this, _RhPagination_firstLink, "f")}"
            aria-label="${labelPrevious}">${L1}</a>
         <nav aria-label="${label}">
-          <!-- An ordered list of links -->
+          <!-- summary: Page link list
+               description: |
+                 Expects a single \`<ol>\` containing \`<li><a>\` block
+                 elements for each page. The active page link must have
+                 \`aria-current="page"\` or match the current URL.
+                 Authors should ensure each link has descriptive text
+                 for assistive technology. The wrapping \`<nav>\` is
+                 announced as a landmark labeled by the \`label\`
+                 property; authors must keep labels unique when
+                 multiple paginations exist on a page. -->
           <slot></slot>
         </nav>
         <!-- container for the numeric control at medium screen widths -->

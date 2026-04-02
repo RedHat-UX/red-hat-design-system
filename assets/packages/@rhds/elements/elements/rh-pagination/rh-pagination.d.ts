@@ -1,9 +1,13 @@
 import type { PropertyValues } from 'lit';
 import { LitElement } from 'lit';
 /**
- * A paginator allows users to navigate between pages of related content.
+ * Pagination allows users to navigate between pages of related content.
+ * Use it when content is too long for a single view. Authors must
+ * provide a single `<ol>` with `<li><a>` page links where the active
+ * page should have `aria-current="page"`. Tab navigates between controls;
+ * Enter activates. Supports box and open variants, default and small sizes.
  *
- * @summary Allows users to navigate content divided into pages
+ * @summary Navigate between pages of content with steppers and input
  *
  * @alias pagination
  *
@@ -13,26 +17,25 @@ export declare class RhPagination extends LitElement {
     static readonly styles: CSSStyleSheet[];
     private static instances;
     /**
-     * Override `overflow` values set from HTML or JS.
-     * `overflow` should ideally be private, but because
-     * we can't do `::slotted(nav ol li)`, we need to reflect
-     * it to a host attribute, so that lightdom CSS can target
-     * the list items.
+     * Controls which end(s) of the page list are truncated with ellipsis.
+     * Accepts `'start'` | `'end'` | `'both'` | `null`. Computed automatically
+     * from page count and current index. Reflected to the host attribute so
+     * light-DOM CSS can hide overflow `<li>` elements. Defaults to `null`.
      */
     overflow: 'start' | 'end' | 'both' | null;
-    /** Accessible label for the 'nav' element */
+    /** Accessible label for the `<nav>` landmark. Should be unique when multiple paginations exist on a page. Defaults to `'Page navigation'`. */
     label: string;
-    /** Accessible label for the 'first page' button */
+    /** Accessible label for the first-page stepper button. Used by screen readers. Defaults to `'first page'`. */
     labelFirst: string;
-    /** Accessible label for the 'previous page' button */
+    /** Accessible label for the previous-page stepper button. Used by screen readers. Defaults to `'previous page'`. */
     labelPrevious: string;
-    /** Accessible label for the 'next page' button */
+    /** Accessible label for the next-page stepper button. Used by screen readers. Defaults to `'next page'`. */
     labelNext: string;
-    /** Accessible label for the 'last page' button */
+    /** Accessible label for the last-page stepper button. Used by screen readers. Defaults to `'last page'`. */
     labelLast: string;
-    /** Change pagination size to small */
+    /** Controls pagination size. Accepts `'sm'` for smaller touch targets (WCAG AA) or `null` for default (WCAG AAA). Defaults to `null`. */
     size: 'sm' | null;
-    /** "Open" variant */
+    /** Visual variant. Accepts `'open'` for transparent backgrounds with bottom borders, or `null` for the default box variant. Defaults to `null`. */
     variant?: 'open' | null;
     private input?;
     private total;

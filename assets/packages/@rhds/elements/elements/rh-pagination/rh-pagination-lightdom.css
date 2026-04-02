@@ -11,10 +11,18 @@ rh-pagination {
 
     > a {
       background-color: var(--_list-a-bg-color);
-      border: var(--rh-border-width-sm, 1px) solid transparent;
+      border:
+        /** Page link border width */
+        var(--rh-border-width-sm, 1px)
+        solid
+        transparent;
       color: var(--_list-a-text-color);
       display: grid;
+
+      /** Pagination typeface */
       font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+
+      /** Pagination text size */
       font-size: var(--rh-font-size-body-text-xl, 1.25rem);
       height: var(--_link-size);
       place-content: center;
@@ -23,11 +31,18 @@ rh-pagination {
       width: var(--_link-size);
 
       &:focus {
+        /** Page link focus corner rounding */
         border-radius: var(--rh-border-radius-default, 3px);
         outline-offset: -2px;
-        outline: var(--rh-border-width-md, 2px) solid transparent;
+        outline:
+          /** Page link focus outline width */
+          var(--rh-border-width-md, 2px)
+          solid
+          transparent;
         outline-color:
+          /** Page link focus outline color override */
           var(--rh-pagination-accent-color,
+            /** Page link focus outline color */
             var(--rh-color-interactive-primary-default));
       }
 
@@ -46,6 +61,7 @@ rh-pagination {
       &:hover:after,
       &:focus:before,
       &[aria-current='page']:after {
+        /** Page link hover/focus/active border width */
         border-block-width: var(--rh-border-width-lg, 3px);
       }
 
@@ -55,6 +71,7 @@ rh-pagination {
       }
 
       &:focus:after {
+        /** Page link focus accent border width */
         border-block-width: var(--rh-border-width-md, 2px);
       }
 
@@ -66,13 +83,20 @@ rh-pagination {
 
       &:focus:after,
       &[aria-current='page']:after {
-        border-block-color: var(--rh-pagination-accent-color, var(--rh-color-border-interactive));
+        border-block-color:
+          /** Page link focus/active accent color override */
+          var(--rh-pagination-accent-color,
+            /** Page link focus/active accent color */
+            var(--rh-color-border-interactive));
       }
     }
   }
 
   &[size='sm'] {
-    li > a { font-size: var(--rh-font-size-body-text-md, 1rem); }
+    li > a {
+      /** Page link font size at small size */
+      font-size: var(--rh-font-size-body-text-md, 1rem);
+    }
 
     --_link-size: calc(var(--_stepper-size) + 2px);
   }
@@ -103,7 +127,11 @@ rh-pagination {
     padding-inline-end: 4px;
     display: flex;
     align-items: center;
+
+    /** Pagination text size */
     font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+
+    /** Pagination text color */
     color: var(--rh-color-gray-40, #a3a3a3);
     justify-content: center;
     align-self: start;

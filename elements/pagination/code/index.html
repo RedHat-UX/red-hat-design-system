@@ -23,8 +23,8 @@
 
     <script type="importmap">{
   "imports": {
-    "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
+    "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
@@ -43,8 +43,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
@@ -4516,7 +4516,11 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>A paginator allows users to navigate between pages of related content.</p>
+      <p>Pagination allows users to navigate between pages of related content.
+Use it when content is too long for a single view. Authors must
+provide a single <code>&lt;ol&gt;</code> with <code>&lt;li&gt;&lt;a&gt;</code> page links where the active
+page should have <code>aria-current="page"</code>. Tab navigates between controls;
+Enter activates. Supports box and open variants, default and small sizes.</p>
 
 
       <div class="element-apis">
@@ -4606,9 +4610,12 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Page input label</p></td>
                   <td>
-                   <p>"Go to page" text, defaults to "Page"</p>
+                   <p>Expects short inline text labeling the page number input.
+Defaults to "Page". Should be localized for non-English
+contexts. Visually hidden at narrow widths but always
+exposed to screen readers via <code>aria-labelledby</code>.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4666,9 +4673,16 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Page link list</p></td>
                   <td>
-                   <p>An ordered list of links <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Expects a single <code>&lt;ol&gt;</code> containing <code>&lt;li&gt;&lt;a&gt;</code> block
+elements for each page. The active page link must have
+<code>aria-current="page"</code> or match the current URL.
+Authors should ensure each link has descriptive text
+for assistive technology. The wrapping <code>&lt;nav&gt;</code> is
+announced as a landmark labeled by the <code>label</code>
+property; authors must keep labels unique when
+multiple paginations exist on a page. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -4766,11 +4780,10 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>overflow</code></td>
-                  <td><p>Override <code>overflow</code> values set from HTML or JS.
-<code>overflow</code> should ideally be private, but because
-we can't do <code>::slotted(nav ol li)</code>, we need to reflect
-it to a host attribute, so that lightdom CSS can target
-the list items.</p></td>
+                  <td><p>Controls which end(s) of the page list are truncated with ellipsis.
+Accepts <code>'start'</code> | <code>'end'</code> | <code>'both'</code> | <code>null</code>. Computed automatically
+from page count and current index. Reflected to the host attribute so
+light-DOM CSS can hide overflow <code>&lt;li&gt;</code> elements. Defaults to <code>null</code>.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'start'</span> <span class="token operator">|</span> <span class="token string">'end'</span> <span class="token operator">|</span> <span class="token string">'both'</span> <span class="token operator">|</span> <span class="token keyword">null</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token keyword">null</span></code></pre></td>
                 </tr>
@@ -4802,7 +4815,7 @@ the list items.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>label</code></td>
-                  <td><p>Accessible label for the 'nav' element</p></td>
+                  <td><p>Accessible label for the <code>&lt;nav&gt;</code> landmark. Should be unique when multiple paginations exist on a page. Defaults to <code>'Page navigation'</code>.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'Page navigation'</span></code></pre></td>
                 </tr>
@@ -4834,7 +4847,7 @@ the list items.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>labelFirst</code></td>
-                  <td><p>Accessible label for the 'first page' button</p></td>
+                  <td><p>Accessible label for the first-page stepper button. Used by screen readers. Defaults to <code>'first page'</code>.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'first page'</span></code></pre></td>
                 </tr>
@@ -4866,7 +4879,7 @@ the list items.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>labelPrevious</code></td>
-                  <td><p>Accessible label for the 'previous page' button</p></td>
+                  <td><p>Accessible label for the previous-page stepper button. Used by screen readers. Defaults to <code>'previous page'</code>.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'previous page'</span></code></pre></td>
                 </tr>
@@ -4898,7 +4911,7 @@ the list items.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>labelNext</code></td>
-                  <td><p>Accessible label for the 'next page' button</p></td>
+                  <td><p>Accessible label for the next-page stepper button. Used by screen readers. Defaults to <code>'next page'</code>.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'next page'</span></code></pre></td>
                 </tr>
@@ -4930,7 +4943,7 @@ the list items.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>labelLast</code></td>
-                  <td><p>Accessible label for the 'last page' button</p></td>
+                  <td><p>Accessible label for the last-page stepper button. Used by screen readers. Defaults to <code>'last page'</code>.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'last page'</span></code></pre></td>
                 </tr>
@@ -4962,7 +4975,7 @@ the list items.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>size</code></td>
-                  <td><p>Change pagination size to small</p></td>
+                  <td><p>Controls pagination size. Accepts <code>'sm'</code> for smaller touch targets (WCAG AA) or <code>null</code> for default (WCAG AAA). Defaults to <code>null</code>.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'sm'</span> <span class="token operator">|</span> <span class="token keyword">null</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token keyword">null</span></code></pre></td>
                 </tr>
@@ -4994,7 +5007,7 @@ the list items.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>variant</code></td>
-                  <td><p>"Open" variant</p></td>
+                  <td><p>Visual variant. Accepts <code>'open'</code> for transparent backgrounds with bottom borders, or <code>null</code> for the default box variant. Defaults to <code>null</code>.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'open'</span> <span class="token operator">|</span> <span class="token keyword">null</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token keyword">null</span></code></pre></td>
                 </tr>
@@ -5501,21 +5514,38 @@ the list items.</p></td>
                 </tr>
                 <tr>
                   <td><code>--rh-pagination-stepper-color</code></td>
-                  <td><p>Sets the stepper color.</p></td>
+                  <td><p>Stepper icon color override</p></td>
                   <td>
                     <code>var(--rh-color-gray-50, #707070)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-pagination-background-focused</code></td>
-                  <td><p>Sets the disabled stepper color.</p></td>
+                  <td><p>Disabled stepper icon color</p></td>
                   <td>
                     <code>—</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-pagination-accent-color</code></td>
-                  <td><p>Sets the outline color when the page input has focus.</p></td>
+                  <td><p>--rh-pagination-accent-color
+Controls the accent color used for interactive elements and focus states.
+Defaults to <code>--rh-color-interactive-primary-default</code> (interactive blue).</p>
+<p><strong>Usage guidelines:</strong></p>
+<ul>
+<li>Sets outline color when page input field has focus</li>
+<li>Applied to bottom border of active/hovered page links</li>
+<li>Used for focus indicators on navigation controls</li>
+<li>Keep default for consistent interactive color across pages</li>
+<li>Customize only when brand guidelines require specific accent colors</li>
+<li>Ensure sufficient contrast with background (4.5:1 ratio minimum)</li>
+</ul>
+<p>Page link color override</p>
+<p>Page link focus color override</p>
+<p>Page link focus outline color override</p>
+<p>Stepper focus outline color override</p>
+<p>Stepper focus accent border color override</p>
+<p>Input focus border color override</p></td>
                   <td>
                     <code>var(--rh-color-interactive-primary-default)</code>
                   </td>
@@ -5590,7 +5620,8 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>48px length token</p>
+                    <p>Stepper button size</p>
+<p>48px length token</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5802,7 +5833,7 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Page link hover color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5908,7 +5939,7 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Page link visited color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6014,7 +6045,7 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Page link visited hover color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6120,7 +6151,9 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Tertiary surface (light theme)</p>
+                    <p>Page link background in light mode</p>
+<p>Stepper background in light mode</p>
+<p>Tertiary surface (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6332,7 +6365,8 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Primary text color for dark theme</p>
+                    <p>Stepper hover/focus icon color</p>
+<p>Primary text color for dark theme</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6438,7 +6472,8 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Subtle border color (light theme)</p>
+                    <p>Stepper hover border in dark mode</p>
+<p>Subtle border color (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6544,7 +6579,8 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Secondary text color for dark theme</p>
+                    <p>Stepper icon color in dark mode</p>
+<p>Secondary text color for dark theme</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6650,7 +6686,8 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Heading font family</p>
+                    <p>Stepper typeface</p>
+<p>Heading font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6756,7 +6793,8 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>h6 heading font size</p>
+                    <p>Stepper text size</p>
+<p>h6 heading font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6862,7 +6900,8 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>3px border width: Example: Expanded Accordion panel</p>
+                    <p>Stepper hover/focus border width</p>
+<p>3px border width: Example: Expanded Accordion panel</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6968,7 +7007,7 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Stepper focus accent border color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7074,7 +7113,9 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>32px spacer</p>
+                    <p>Container row gap</p>
+<p>Pagination end margin at containers &gt;= md</p>
+<p>32px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7180,7 +7221,9 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>32px length token</p>
+                    <p>Stepper button size at small size</p>
+<p>Pagination block size</p>
+<p>32px length token</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7286,7 +7329,8 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>64px length token</p>
+                    <p>Pagination inline size</p>
+<p>64px length token</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7392,7 +7436,9 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Primary surface (light theme)</p>
+                    <p>Current page background in light mode</p>
+<p>Input background in light mode</p>
+<p>Primary surface (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7498,7 +7544,9 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Primary surface (dark theme)</p>
+                    <p>Current page background in dark mode</p>
+<p>Input background in dark mode</p>
+<p>Primary surface (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7604,7 +7652,8 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Current page border color</p>
+<p>Input border color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7710,7 +7759,10 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Secondary text (light theme)</p>
+                    <p>Stepper hover border in light mode</p>
+<p>Disabled icon color in dark mode</p>
+<p>Input bottom border in dark mode</p>
+<p>Secondary text (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7816,7 +7868,8 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Page link text color</p>
+<p>Pagination text color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7922,7 +7975,11 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Page link color</p>
+<p>Page link focus color</p>
+<p>Page link focus outline color</p>
+<p>Stepper focus outline color</p>
+<p>Input focus border color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8028,7 +8085,8 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>6px spacer</p>
+                    <p>Pagination vertical spacing</p>
+<p>6px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8134,7 +8192,8 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>8px spacer</p>
+                    <p>Pagination horizontal spacing</p>
+<p>8px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8240,7 +8299,8 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Dark brand red</p>
+                    <p>Invalid input bottom border in light mode</p>
+<p>Dark brand red</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8346,7 +8406,8 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Light brand red</p>
+                    <p>Invalid input bottom border in dark mode</p>
+<p>Light brand red</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8452,7 +8513,9 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>16px font size</p>
+                    <p>Input text size</p>
+<p>Pagination text size</p>
+<p>16px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8558,7 +8621,10 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>1px border width; Example: Secondary CTA or Button</p>
+                    <p>Stepper border width</p>
+<p>Input border width</p>
+<p>Total link underline width</p>
+<p>1px border width; Example: Secondary CTA or Button</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8664,7 +8730,10 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Subtle icon</p>
+                    <p>Stepper icon color in light mode</p>
+<p>Stepper icon color</p>
+<p>Total link underline in light mode</p>
+<p>Subtle icon</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8770,7 +8839,10 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Subtle icon (hover state)</p>
+                    <p>Disabled icon color in light mode</p>
+<p>Input bottom border in light mode</p>
+<p>Total link underline in dark mode</p>
+<p>Subtle icon (hover state)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8876,7 +8948,9 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>3px border radius; Example: Card</p>
+                    <p>Stepper focus corner rounding</p>
+<p>Total link focus corner rounding</p>
+<p>3px border radius; Example: Card</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8982,7 +9056,11 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>2px border width: Example: Alert</p>
+                    <p>Stepper focus outline width</p>
+<p>Stepper focus accent border width</p>
+<p>Input focus border width</p>
+<p>Total link focus outline width</p>
+<p>2px border width: Example: Alert</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9088,7 +9166,9 @@ the list items.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Pagination horizontal margin</p>
+<p>Pagination start margin at containers &gt;= 344px (custom)</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>

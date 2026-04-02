@@ -23,8 +23,8 @@
 
     <script type="importmap">{
   "imports": {
-    "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
+    "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
@@ -43,8 +43,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
@@ -3818,7 +3818,11 @@
           <a href="#overview">Overview</a>
         </h2>
       </uxdot-copy-permalink>
-      <p>A paginator allows users to navigate between pages of related content.</p>
+      <p>Pagination allows users to navigate between pages of related content.
+Use it when content is too long for a single view. Authors must
+provide a single <code>&lt;ol&gt;</code> with <code>&lt;li&gt;&lt;a&gt;</code> page links where the active
+page should have <code>aria-current="page"</code>. Tab navigates between controls;
+Enter activates. Supports box and open variants, default and small sizes.</p>
 
       
       
@@ -4577,39 +4581,38 @@
 <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
           <uxdot-knob-attribute slot="knobs" tag="rh-pagination" name="overflow" type="'start' | 'end' | 'both' | null" default="null">
-            <div slot="description"><p>Override <code>overflow</code> values set from HTML or JS.
-<code>overflow</code> should ideally be private, but because
-we can't do <code>::slotted(nav ol li)</code>, we need to reflect
-it to a host attribute, so that lightdom CSS can target
-the list items.</p>
+            <div slot="description"><p>Controls which end(s) of the page list are truncated with ellipsis.
+Accepts <code>'start'</code> | <code>'end'</code> | <code>'both'</code> | <code>null</code>. Computed automatically
+from page count and current index. Reflected to the host attribute so
+light-DOM CSS can hide overflow <code>&lt;li&gt;</code> elements. Defaults to <code>null</code>.</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-pagination" name="label" type="string" default="'Page navigation'">
-            <div slot="description"><p>Accessible label for the 'nav' element</p>
+            <div slot="description"><p>Accessible label for the <code>&lt;nav&gt;</code> landmark. Should be unique when multiple paginations exist on a page. Defaults to <code>'Page navigation'</code>.</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-pagination" name="label-first" type="string" default="'first page'">
-            <div slot="description"><p>Accessible label for the 'first page' button</p>
+            <div slot="description"><p>Accessible label for the first-page stepper button. Used by screen readers. Defaults to <code>'first page'</code>.</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-pagination" name="label-previous" type="string" default="'previous page'">
-            <div slot="description"><p>Accessible label for the 'previous page' button</p>
+            <div slot="description"><p>Accessible label for the previous-page stepper button. Used by screen readers. Defaults to <code>'previous page'</code>.</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-pagination" name="label-next" type="string" default="'next page'">
-            <div slot="description"><p>Accessible label for the 'next page' button</p>
+            <div slot="description"><p>Accessible label for the next-page stepper button. Used by screen readers. Defaults to <code>'next page'</code>.</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-pagination" name="label-last" type="string" default="'last page'">
-            <div slot="description"><p>Accessible label for the 'last page' button</p>
+            <div slot="description"><p>Accessible label for the last-page stepper button. Used by screen readers. Defaults to <code>'last page'</code>.</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-pagination" name="size" type="'sm' | null" default="null">
-            <div slot="description"><p>Change pagination size to small</p>
+            <div slot="description"><p>Controls pagination size. Accepts <code>'sm'</code> for smaller touch targets (WCAG AA) or <code>null</code> for default (WCAG AAA). Defaults to <code>null</code>.</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-pagination" name="variant" type="'open' | null" default="null">
-            <div slot="description"><p>"Open" variant</p>
+            <div slot="description"><p>Visual variant. Accepts <code>'open'</code> for transparent backgrounds with bottom borders, or <code>null</code> for the default box variant. Defaults to <code>null</code>.</p>
 </div>
           </uxdot-knob-attribute></uxdot-demo>
         
