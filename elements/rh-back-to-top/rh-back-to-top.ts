@@ -9,12 +9,11 @@ import styles from './rh-back-to-top.css' with { type: 'css' };
 
 
 /**
- * Provides a fixed-position pill-shaped anchor link for quickly navigating back
- * to the top of lengthy content pages. The button must appear after scrolling
- * past a configurable threshold and should be the last element in tab order.
- * Uses an `<a>` element internally, so screen readers announce it as a link.
- * Keyboard users must be able to reach it via Tab and activate with Enter.
- * AVOID placing more than one instance per page.
+ * Provides a fixed-position anchor link for scrolling back to the top of
+ * long pages. Appears after a configurable scroll threshold; should be
+ * last in tab order. Renders an `<a>` element so screen readers announce
+ * it as a navigation link. Keyboard-accessible via Tab and Enter (WCAG 2.1.1).
+ * Avoid placing more than one instance per page.
  *
  * @summary Fixed anchor link for returning to page top on long pages
  *
@@ -160,10 +159,11 @@ export class RhBackToTop extends LitElement {
       <a href="${ifDefined(this.href)}" ?hidden="${!this.#visible}" part="trigger">
         <!-- summary: link text content (default slot)
              description: |
-               Text displayed within the back to top button. Defaults to "Back to top" if not provided.
-               Keep text short and action-oriented. Should clearly indicate the button will navigate
-               to the top of the page. Common alternatives include "Top", "Back to top", or localized
-               equivalents. The text appears alongside an upward caret icon. -->
+               Text displayed within the back to top button. Defaults to
+               "Back to top" if not provided. Serves as the ARIA accessible
+               name for the anchor link (per WCAG 2.5.3 Label in Name).
+               Use visible, descriptive text so screen readers announce
+               the link purpose; avoid icon-only content without a label. -->
         <slot>Back to top</slot>
         <rh-icon set="ui" icon="caret-up"></rh-icon>
       </a>
