@@ -13,17 +13,14 @@ import styles from './rh-navigation-secondary-menu.css' with { type: 'css' };
 
 
 /**
- * The expandable dropdown menu panel for secondary navigation. Supports
- * `full-width` (default) and `fixed-width` layouts. Contains
- * `<rh-navigation-secondary-menu-section>` children organized in a CSS grid.
- * Always renders on the lightest color palette. Visibility is toggled by the
- * parent `<rh-navigation-secondary-dropdown>`. Must be placed inside the
- * `menu` slot of a dropdown. Tab navigates through menu content; Escape
- * closes the menu. Screen readers access content via section headings.
+ * Expandable dropdown menu panel for secondary navigation. Provides
+ * `full-width` (default) and `fixed-width` layouts with content
+ * organized in a CSS grid. Must be placed inside the `menu` slot of
+ * an `<rh-navigation-secondary-dropdown>`. Tab navigates through
+ * menu content; Escape closes the menu. Screen readers access
+ * content via section headings and `aria-labelledby` associations.
  *
  * @summary Expandable dropdown menu panel for secondary navigation
- *
- * @slot - Menu content. Expects `<rh-navigation-secondary-menu-section>` elements.
  */
 @customElement('rh-navigation-secondary-menu')
 @colorPalettes
@@ -71,7 +68,11 @@ export class RhNavigationSecondaryMenu extends LitElement {
         <div id="full-width" part="full-width">
           <!-- container - \`<div>\` element, wrapper for menu sections -->
           <div id="sections" part="sections">
-            <!-- Optional \`<rh-navigation-secondary-menu-section>\` elements or content following [design guidelines](../guidelines/#expandable-tray) -->
+            <!-- summary: menu content
+                 description: |
+                   Should contain \`<rh-navigation-secondary-menu-section>\` elements
+                   with headings. Screen readers navigate sections via
+                   \`aria-labelledby\` associations between headings and link lists. -->
             <slot></slot>
           </div>
         </div>` : html`
