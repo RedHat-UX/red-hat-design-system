@@ -60,11 +60,6 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
  *
  * @fires {SecondaryNavOverlayChangeEvent} overlay-change - Fires when a dropdown opens/closes
  *        in desktop view or mobile menu toggles. Detail: `open` (boolean), `toggle` (HTMLElement).
- *
- * @slot logo - Product logo or name link. Expects `<a>` with text or image.
- * @slot mobile-menu - Label for the mobile menu button. Defaults to "Menu". USE for l10n.
- * @slot nav - Navigation list. Expects `<ul>` with `<li>` children containing links or dropdowns.
- * @slot cta - Optional call-to-action. Expects `<rh-cta>` element.
  */
 @customElement('rh-navigation-secondary')
 @colorPalettes
