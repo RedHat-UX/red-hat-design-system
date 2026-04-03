@@ -7,9 +7,22 @@ import { themable } from '../../lib/themable.js';
 import { css } from "lit";
 const styles = css `:host{display:inline-block;width:min-content}[hidden]{display:none!important}#container{display:grid;color:var(--rh-color-text-secondary);--_colors:light-dark(var(--rh-avatar-colors,var(--rh-color-blue-30,#92c5f9) var(--rh-color-teal-50,#37a3a3) var(--rh-color-green-60,#3d7317) var(--rh-color-red-40,#f56e6e) var(--rh-color-purple-60,#3d2785)),var(--rh-avatar-colors,var(--rh-color-blue-50,#06c) var(--rh-color-teal-70,#004d4d) var(--rh-color-green-70,#204d00) var(--rh-color-red-50,#e00) var(--rh-color-purple-70,#21134d)));column-gap:var(--rh-space-lg,16px);width:min-content;grid-template-columns:min-content minmax(max-content,250px);grid-template-rows:min-content min-content;grid-template-areas:"a t" "a s"}#title{grid-area:t;align-self:end;font-family:var(--rh-font-family-heading,RedHatDisplay,"Red Hat Display",Helvetica,Arial,sans-serif);font-weight:var(--rh-font-weight-heading-medium,500)}#subtitle,#title{font-size:var(--rh-font-size-body-text-sm,.875rem)}#subtitle{grid-area:s;align-self:start;font-weight:var(--rh-font-weight-heading-regular,400)}@media (max-width:575px){:host(:not([plain])) #container,:host([layout=block]) #container{text-align:center;place-items:center;gap:0;grid-template-columns:minmax(max-content,250px);grid-template-areas:"a" "t" "s";grid-template-rows:minmax(var(--rh-avatar-size,var(--rh-size-icon-06,64px)),var(--rh-size-icon-06,64px)) min-content auto}}@media (max-width:575px){:host(:not([plain])) #container :is(img,canvas,svg),:host([layout=block]) :is(img,canvas,svg){margin-block-end:var(--rh-space-lg,16px)}}slot{display:block;max-width:250px}::slotted(a){color:var(--rh-color-interactive-primary-default)}::slotted(a:visited){color:var(--rh-color-interactive-primary-visited-default)}::slotted(a:active),::slotted(a:hover){color:var(--rh-color-interactive-primary-hover)}img,svg{object-fit:cover;object-position:center}canvas,img,svg{overflow:hidden;width:var(--rh-avatar-size,var(--rh-size-icon-06,64px));max-width:var(--rh-size-icon-06,64px);aspect-ratio:1;grid-area:a;border-radius:var(--rh-border-radius-pill,64px)}:host([variant=bordered]) :is(canvas,img,svg){border:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}:host([plain]) slot{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}:host([plain]) #container{column-gap:0}#default .st1{fill-rule:evenodd;clip-rule:evenodd;fill:light-dark(#f0f0f0,#212427)}#default .st2{fill:light-dark(#b8bbbe,#4f5255)}#default .st3{fill-rule:evenodd;clip-rule:evenodd}#default .st3,#default .st4{fill:light-dark(#d2d2d2,#6a6e73)}`;
 /**
- * An avatar is a small thumbnail representation of a user.
+ * Provides a circular user thumbnail for mastheads, cards, and attribution when
+ * you need to visually identify a person. Allows an image, a deterministic
+ * pattern, or a default icon. Must not take focus or act as a control; images
+ * carry `role="presentation"`. Authors should provide a name via the
+ * default slot so screen readers have context.
  *
- * @summary Visually represents a user in a masthead or navigation
+ * @summary Circular user thumbnail for mastheads, navigation, and attribution
+ *
+ * @slot - The user's display name — provides the accessible label for screen readers. Accepts text or an anchor for linked names.
+ * @slot subtitle - Auxiliary info such as job title. Accepts text or `<a>` elements. Slotted anchors receive interactive color token styles. Screen readers announce this after the name.
+ *
+ * @csspart canvas - The `<canvas>` used for generated geometric patterns.
+ * @csspart img - The `<img>` or default `<svg>` silhouette icon.
+ *
+ * @cssprop [--rh-avatar-size=var(--rh-size-icon-06, 64px)] - Thumbnail width and height; capped at the `--rh-size-icon-06` token (64px).
+ * @cssprop [--rh-avatar-colors] - Space-separated hex values overriding the built-in light-dark pattern color tokens.
  *
  * @alias avatar
  */
@@ -17,7 +30,10 @@ let RhAvatar = class RhAvatar extends LitElement {
     constructor() {
         super(...arguments);
         _RhAvatar_instances.add(this);
-        /** When true, hides the title and subtitle */
+        /**
+         * When true, visually hides the name and subtitle via CSS clip while
+         * keeping them accessible to screen readers.
+         */
         this.plain = false;
         _RhAvatar_style.set(this, void 0);
         _RhAvatar_pattern.set(this, void 0);
@@ -31,11 +47,26 @@ let RhAvatar = class RhAvatar extends LitElement {
     render() {
         return html `
       <div id="container">${this.pattern ? html `
-        <!-- Target the canvas element -->
+        <!--
+          summary: Canvas for generated pattern
+          description: |
+            Renders a deterministic geometric pattern seeded by the user's name.
+            Only present when the pattern attribute is set.
+        -->
         <canvas part="canvas"></canvas>` : this.src ? html `
-        <!-- Targets the img or svg element -->
+        <!--
+          summary: Custom avatar image
+          description: |
+            Displays the user's uploaded photo when src is set. Circular crop,
+            sized by --rh-avatar-size. Has role="presentation".
+        -->
         <img src="${this.src}" role="presentation" part="img">` : html `
-        <!-- Targets the img or svg element -->
+        <!--
+          summary: Default silhouette icon
+          description: |
+            Fallback SVG shown when neither src nor pattern is provided.
+            Has role="presentation".
+        -->
         <svg xmlns="http://www.w3.org/2000/svg" style="enable-background:new 0 0 36 36" viewBox="0 0 36 36" role="presentation" part="img" id="default">
           <path d="M0 0h36v36H0z" class="st1"/><path d="M17.7 20.1c-3.5 0-6.4-2.9-6.4-6.4s2.9-6.4 6.4-6.4 6.4 2.9 6.4 6.4-2.8 6.4-6.4 6.4z" class="st3"/>
           <path d="M13.3 36v-6.7c-2 .4-2.9 1.4-3.1 3.5l-.1 3.2h3.2z" class="st2"/>
@@ -43,9 +74,19 @@ let RhAvatar = class RhAvatar extends LitElement {
           <path d="m25.9 36-.1-3.2c-.2-2.1-1.1-3.1-3.1-3.5V36h3.2z" class="st2"/>
         </svg>
         `}
-        <!-- The subject's name -->
+        <!--
+          summary: The user's display name
+          description: |
+            Primary identity text. Falls back to the name attribute when empty.
+            Should always be provided for accessibility.
+        -->
         <slot id="title">${this.name}</slot>
-        <!-- auxiliary information about the subject, e.g. job title -->
+        <!--
+          summary: Auxiliary user info (e.g. job title)
+          description: |
+            Secondary text below the name. Falls back to the subtitle attribute.
+            Slotted anchors receive interactive link color styles.
+        -->
         <slot id="subtitle" name="subtitle">${this.subtitle}</slot>
       </div>
     `;
@@ -56,6 +97,10 @@ let RhAvatar = class RhAvatar extends LitElement {
             this.updatePattern();
         }
     }
+    /**
+     * Re-renders the geometric pattern. Called automatically when `pattern`
+     * or `name` change; call manually after updating CSS custom properties.
+     */
     async updatePattern() {
         __classPrivateFieldSet(this, _RhAvatar_pattern, __classPrivateFieldGet(this, _RhAvatar_pattern, "f") ?? await __classPrivateFieldGet(this, _RhAvatar_instances, "m", _RhAvatar_initPattern).call(this), "f");
         if (__classPrivateFieldGet(this, _RhAvatar_pattern, "f")) {

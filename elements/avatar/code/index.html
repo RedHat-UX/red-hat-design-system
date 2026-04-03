@@ -25,8 +25,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
@@ -4066,7 +4066,7 @@
       <!-- `<dl>` element containing rh-badges in the `<dt>` and legend text in the `<dd>` elements -->
       <!--lit-node 22--><slot name="legend" hidden></slot>
     <!--/lit-part--></template>
-          <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-avatar</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Omar Khayyam<span class="token punctuation">"</span></span> <span class="token attr-name">subtitle</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Mathematician, Astronomer<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/005-a-Ruby-kindles-in-the-vine-810x1146.jpg/212px-005-a-Ruby-kindles-in-the-vine-810x1146.jpg<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-avatar</span><span class="token punctuation">&gt;</span></span>
+          <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-avatar</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Omar Khayyam<span class="token punctuation">"</span></span> <span class="token attr-name">subtitle</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Mathematician, Astronomer<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://upload.wikimedia.org/wikipedia/commons/d/da/Omar_Khayyam2.JPG<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-avatar</span><span class="token punctuation">&gt;</span></span>
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style"><span class="token language-css">
 <span class="token selector">rh-avatar::part(img)</span> <span class="token punctuation">{</span>
@@ -4108,7 +4108,11 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>An avatar is a small thumbnail representation of a user.</p>
+      <p>Provides a circular user thumbnail for mastheads, cards, and attribution when
+you need to visually identify a person. Allows an image, a deterministic
+pattern, or a default icon. Must not take focus or act as a control; images
+carry <code>role="presentation"</code>. Authors should provide a name via the
+default slot so screen readers have context.</p>
 
 
       <div class="element-apis">
@@ -4206,9 +4210,10 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>The user's display name</p></td>
                   <td>
-                   <p>The subject's name <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Primary identity text. Falls back to the name attribute when empty.
+Should always be provided for accessibility. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
                 <tr>
@@ -4236,9 +4241,10 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Auxiliary user info (e.g. job title)</p></td>
                   <td>
-                   <p>auxiliary information about the subject, e.g. job title</p>
+                   <p>Secondary text below the name. Falls back to the subtitle attribute.
+Slotted anchors receive interactive link color styles.</p>
                   </td>
                 </tr>
               </tbody>
@@ -4344,8 +4350,8 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>src</code></td>
-                  <td><p>The URL to the user's custom avatar image.</p>
-<p>It will be displayed instead of a random pattern.</p></td>
+                  <td><p>URL to a custom avatar image. Replaces the default icon and any
+generated pattern. The <code>&lt;img&gt;</code> has <code>role="presentation"</code>.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4377,8 +4383,8 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>name</code></td>
-                  <td><p>The user's name, either given name and family name, or username.</p>
-<p>When displaying a pattern, the name will be used to seed the pattern generator.</p></td>
+                  <td><p>The user's display name. Falls back as default slot content and
+seeds the deterministic pattern generator when <code>pattern</code> is set.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4410,7 +4416,8 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>subtitle</code></td>
-                  <td><p>The auxiliary information about the user, e.g. job title</p></td>
+                  <td><p>Auxiliary text such as job title or company. Falls back as default
+content in the <code>subtitle</code> slot.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4442,7 +4449,8 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>layout</code></td>
-                  <td><p>Places avatar on the left or on top of the text.</p></td>
+                  <td><p>Thumbnail position relative to text: <code>'inline'</code> (default, left of text)
+or <code>'block'</code> (stacked above). Both collapse to centered block below 576px.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'inline'</span> <span class="token operator">|</span> <span class="token string">'block'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4474,7 +4482,9 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>pattern</code></td>
-                  <td><p>The type of pattern to display.</p></td>
+                  <td><p>Type of geometric pattern (<code>'squares'</code> or <code>'triangles'</code>). Generated
+deterministically from <code>name</code> so the same name always yields the same
+pattern. Colors come from the <code>--_colors</code> CSS custom property.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'squares'</span> <span class="token operator">|</span> <span class="token string">'triangles'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4506,7 +4516,8 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>plain</code></td>
-                  <td><p>When true, hides the title and subtitle</p></td>
+                  <td><p>When true, visually hides the name and subtitle via CSS clip while
+keeping them accessible to screen readers.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span></code></pre></td>
                 </tr>
@@ -4538,7 +4549,7 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>variant</code></td>
-                  <td><p>Adds a subtle border to the avatar image</p></td>
+                  <td><p>Adds a subtle border around the thumbnail when set to <code>'bordered'</code>.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'bordered'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4642,7 +4653,8 @@
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
+                  <td><p>Re-renders the geometric pattern. Called automatically when <code>pattern</code>
+or <code>name</code> change; call manually after updating CSS custom properties.</p></td>
                 </tr>
               </tbody>
             </table>
@@ -4786,8 +4798,9 @@
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
-                  <td><p>Target the canvas element</p></td>
+                  <td><p>Canvas for generated pattern</p></td>
+                  <td><p>Renders a deterministic geometric pattern seeded by the user's name.
+Only present when the pattern attribute is set.</p></td>
                 </tr>
                 <tr>
                   <td>
@@ -4816,8 +4829,9 @@
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
-                  <td><p>Targets the img or svg element</p></td>
+                  <td><p>Custom avatar image</p></td>
+                  <td><p>Displays the user's uploaded photo when src is set. Circular crop,
+sized by --rh-avatar-size. Has role="presentation".</p></td>
                 </tr>
               </tbody>
             </table>
@@ -4893,17 +4907,17 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><code>--rh-avatar-colors</code></td>
-                  <td></td>
+                  <td><code>--rh-avatar-size</code></td>
+                  <td><p>Thumbnail width and height; capped at the <code>--rh-size-icon-06</code> token (64px).</p></td>
                   <td>
-                    <code>var(--rh-color-blue-50, #0066cc) var(--rh-color-teal-70, #004d4d) var(--rh-color-green-70, #204d00) var(--rh-color-red-50, #ee0000) var(--rh-color-purple-70, #21134d)</code>
+                    <code>var(--rh-size-icon-06, 64px)</code>
                   </td>
                 </tr>
                 <tr>
-                  <td><code>--rh-avatar-size</code></td>
-                  <td><p>Size of the avatar,</p></td>
+                  <td><code>--rh-avatar-colors</code></td>
+                  <td><p>Space-separated hex values overriding the built-in light-dark pattern color tokens.</p></td>
                   <td>
-                    <code>var(--rh-size-icon-06, 64px)</code>
+                    <code>—</code>
                   </td>
                 </tr>
               </tbody>
@@ -4984,7 +4998,7 @@
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Avatar text color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6150,7 +6164,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Heading font family</p>
+                    <p>Name line typeface</p>
+<p>Heading font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6256,7 +6271,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Medium font weight for headings</p>
+                    <p>Name line font-weight</p>
+<p>Medium font weight for headings</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6362,7 +6378,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Regular font weight for headings</p>
+                    <p>Subtitle font weight</p>
+<p>Regular font weight for headings</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6468,7 +6485,9 @@
                     </a>
                   </td>
                   <td>
-                    <p>14px font size</p>
+                    <p>Name text size</p>
+<p>Subtitle text size</p>
+<p>14px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6574,7 +6593,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Gap between avatar thumbnail and text</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6680,7 +6700,7 @@
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Default link color for slotted name or subtitle</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6786,7 +6806,7 @@
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Visited link color for slotted name or subtitle</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6892,7 +6912,7 @@
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Hover and active link color for slotted name or subtitle</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6998,7 +7018,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>64px icon box</p>
+                    <p>Avatar maximum width</p>
+<p>64px icon box</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7104,7 +7125,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>Pill border radius; Example: Label</p>
+                    <p>Avatar corner rounding</p>
+<p>Pill border radius; Example: Label</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7210,7 +7232,8 @@
                     </a>
                   </td>
                   <td>
-                    <p>1px border width; Example: Secondary CTA or Button</p>
+                    <p>Bordered variant stroke width</p>
+<p>1px border width; Example: Secondary CTA or Button</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7316,7 +7339,7 @@
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Bordered variant stroke color</p>
                   </td>
                   <td data-label="Copy">
       <div>
