@@ -30,8 +30,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
     "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
@@ -100,13 +100,18 @@
           <!--lit-node 5--><slot id="icon"
                 class="  "
                 name="icon"
-                ><!--lit-part 0xFsbTWziYc=--><!--lit-node 0--><rh-icon   icon="bank-safe" set="standard" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+                ><!--lit-part 0xFsbTWziYc=--><!--lit-node 0--><rh-icon   icon="bank-safe" set="standard" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" standard "><!--lit-part ZgdGBOWWFAs=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path d="M31 4.38H5a.62.62 0 0 0-.62.62v26a.62.62 0 0 0 .62.62h26a.62.62 0 0 0 .62-.62V5a.62.62 0 0 0-.62-.62Zm-.62 26H5.62V5.62h24.76Z"/><path d="M9 10.62a.62.62 0 0 0 .62-.62v-.38h16.76v16.76H9.62V26a.62.62 0 0 0-1.24 0v1a.62.62 0 0 0 .62.62h18a.62.62 0 0 0 .62-.62V9a.62.62 0 0 0-.62-.62H9a.62.62 0 0 0-.62.62v1a.62.62 0 0 0 .62.62Z"/><path d="M8 16.62h2a.62.62 0 0 0 .62-.62v-4a.62.62 0 0 0-.62-.62H8a.62.62 0 0 0-.62.62v4a.62.62 0 0 0 .62.62Zm.62-4h.76v2.76h-.76Zm-.62 12h2a.62.62 0 0 0 .62-.62v-4a.62.62 0 0 0-.62-.62H8a.62.62 0 0 0-.62.62v4a.62.62 0 0 0 .62.62Zm.62-4h.76v2.76h-.76Zm6.94 1.82a.61.61 0 0 0 .88 0L17.92 21a3.64 3.64 0 0 0 4.16 0l1.48 1.48a.62.62 0 0 0 .88-.88L23 20.08a3.64 3.64 0 0 0 0-4.16l1.48-1.48c.58-.56-.32-1.46-.88-.88L22.08 15a3.64 3.64 0 0 0-4.16 0l-1.48-1.48c-.56-.58-1.46.32-.88.88L17 15.92a3.64 3.64 0 0 0 0 4.16l-1.48 1.48a.61.61 0 0 0 .04.88ZM22.38 18a2.38 2.38 0 0 1-4.75 0 2.38 2.38 0 0 1 4.75 0Z"/><circle cx="20" cy="18" r=".62"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon><!--/lit-part-->
@@ -136,13 +141,18 @@
             <!--lit-node 17--><div id="footer" class="  ">
               <!-- Inline supplementary text. Should not contain
                    interactive elements as the tile is clickable. -->
-              <slot id="footer-text" name="footer"></slot><!--lit-node 20--><rh-icon   set="ui" icon="lock" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+              <slot id="footer-text" name="footer"></slot><!--lit-node 20--><rh-icon   set="ui" icon="lock" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" ui "><!--lit-part fk6x2Rr9BYI=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M24.5 12H23V8c0-3.86-3.14-7-7-7S9 4.14 9 8v4H7.5c-.827 0-1.5.673-1.5 1.5v15c0 .827.673 1.5 1.5 1.5h17c.827 0 1.5-.673 1.5-1.5v-15c0-.827-.673-1.5-1.5-1.5ZM11 8c0-2.757 2.243-5 5-5s5 2.243 5 5v4H11V8Zm13 20H8V14h16v14Zm-6.5-7c0 .52-.265.978-.667 1.247l-.004.003a1.938 1.938 0 0 1-.203.109c-.015.007-.029.017-.044.024l-.013.007c-.039.013-.082.023-.122.035a1.47 1.47 0 0 1-.447.076c-.057 0-.111-.011-.167-.017-.043-.005-.087-.005-.129-.013a1.499 1.499 0 0 1-1.204-1.47c0-.035.008-.07.011-.105.035-.492.302-.917.697-1.164.024-.015.05-.027.075-.041.074-.04.15-.075.231-.103.033-.011.065-.022.098-.031a1.52 1.52 0 0 1 .235-.042c.036-.004.071-.01.107-.011.016 0 .03-.005.046-.005.293 0 .564.087.795.232.011.007.024.011.035.017l.005.004c.388.261.645.699.661 1.198 0 .016.005.032.005.048Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -173,13 +183,18 @@
           <!--lit-node 5--><slot id="icon"
                 class="  "
                 name="icon"
-                ><!--lit-part 0xFsbTWziYc=--><!--lit-node 0--><rh-icon   icon="globe-abstract" set="standard" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+                ><!--lit-part 0xFsbTWziYc=--><!--lit-node 0--><rh-icon   icon="globe-abstract" set="standard" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" standard "><!--lit-part JtlE+lSXAEA=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path d="M28.34 7.66c-9.09-9.18-25-2.58-25 10.34A14.67 14.67 0 0 0 18 32.62c12.93.06 19.52-15.88 10.34-24.96Zm2.52 14h-7a21.16 21.16 0 0 0 0-7.36h7a13.53 13.53 0 0 1 0 7.38Zm-17.43 0a19.8 19.8 0 0 1 0-7.36h9.14a19.8 19.8 0 0 1 0 7.36Zm8.85 1.25A19.57 19.57 0 0 1 18 31a19.57 19.57 0 0 1-4.28-8.07ZM4.62 18a13.69 13.69 0 0 1 .52-3.68h7a21.16 21.16 0 0 0 0 7.36h-7A13.69 13.69 0 0 1 4.62 18Zm9.1-4.93A19.57 19.57 0 0 1 18 5a19.57 19.57 0 0 1 4.28 8.07Zm16.71 0h-6.87a20.76 20.76 0 0 0-4.17-8.37 13.41 13.41 0 0 1 11.04 8.37ZM8.54 8.54a13.32 13.32 0 0 1 8.07-3.84 20.76 20.76 0 0 0-4.17 8.37H5.57a13.24 13.24 0 0 1 2.97-4.53Zm-3 14.39h6.87a20.76 20.76 0 0 0 4.17 8.37 13.41 13.41 0 0 1-11.01-8.37Zm21.89 4.53a13.32 13.32 0 0 1-8.08 3.84 20.65 20.65 0 0 0 4.18-8.37h6.87a13.24 13.24 0 0 1-2.94 4.53Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon><!--/lit-part-->
@@ -209,13 +224,18 @@
             <!--lit-node 17--><div id="footer" class="  ">
               <!-- Inline supplementary text. Should not contain
                    interactive elements as the tile is clickable. -->
-              <slot id="footer-text" name="footer"></slot><!--lit-node 20--><rh-icon   set="ui" icon="external-link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+              <slot id="footer-text" name="footer"></slot><!--lit-node 20--><rh-icon   set="ui" icon="external-link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" ui "><!--lit-part 0as6zs+cq9I=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30 21v7.5c0 .827-.673 1.5-1.5 1.5h-25c-.827 0-1.5-.673-1.5-1.5v-25C2 2.673 2.673 2 3.5 2H11a1 1 0 1 1 0 2H4v24h24v-7a1 1 0 1 1 2 0ZM28.5 2H18a1 1 0 1 0 0 2h8.586L13.293 17.293a.999.999 0 1 0 1.414 1.414L28 5.414V14a1 1 0 1 0 2 0V3.5c0-.827-.673-1.5-1.5-1.5Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>

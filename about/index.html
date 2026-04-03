@@ -43,8 +43,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
     "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
@@ -154,13 +154,18 @@
                    name="scheme"
                    value="light"
                    >
-            <!--lit-node 8--><rh-icon   set="ui" icon="light-mode" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+            <!--lit-node 8--><rh-icon   set="ui" icon="light-mode" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" ui "><!--lit-part 6DiEkfPw3WQ=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 7c-4.963 0-9 4.038-9 9s4.037 9 9 9 9-4.038 9-9-4.037-9-9-9Zm0 16c-3.859 0-7-3.14-7-7s3.141-7 7-7 7 3.14 7 7-3.141 7-7 7ZM15 4V1a1 1 0 1 1 2 0v3a1 1 0 1 1-2 0Zm2 24v3a1 1 0 1 1-2 0v-3a1 1 0 1 1 2 0Zm15-12a1 1 0 0 1-1 1h-3a1 1 0 1 1 0-2h3a1 1 0 0 1 1 1ZM4 17H1a1 1 0 1 1 0-2h3a1 1 0 1 1 0 2Zm3.707 7.293a.999.999 0 0 1 0 1.414l-2 2a.997.997 0 0 1-1.414 0 .999.999 0 0 1 0-1.414l2-2a.999.999 0 0 1 1.414 0ZM24.293 7.707a.999.999 0 0 1 0-1.414l2-2a.999.999 0 1 1 1.414 1.414l-2 2a.997.997 0 0 1-1.414 0Zm-20-2a.999.999 0 1 1 1.414-1.414l2 2a.999.999 0 1 1-1.414 1.414l-2-2Zm23.414 20.586a.999.999 0 1 1-1.414 1.414l-2-2a.999.999 0 1 1 1.414-1.414l2 2Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -171,13 +176,18 @@
                    name="scheme"
                    value="dark"
                    >
-            <!--lit-node 13--><rh-icon   set="ui" icon="dark-mode" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+            <!--lit-node 13--><rh-icon   set="ui" icon="dark-mode" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" ui "><!--lit-part dg0Qw+XfFoA=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 29C8.832 29 3 23.168 3 16a12.98 12.98 0 0 1 8.82-12.307.999.999 0 0 1 1.265 1.275A10.735 10.735 0 0 0 12.5 8.5c0 6.065 4.935 11 11 11 1.226 0 2.414-.197 3.532-.585a1 1 0 0 1 1.275 1.265A12.981 12.981 0 0 1 16 29ZM10.672 6.375A10.985 10.985 0 0 0 5 16c0 6.065 4.935 11 11 11 4.056 0 7.718-2.216 9.625-5.672a13.01 13.01 0 0 1-2.125.172c-7.168 0-13-5.832-13-13 0-.72.058-1.43.172-2.125Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -188,13 +198,18 @@
                    name="scheme"
                    value="light dark"
                    >
-            <!--lit-node 18--><rh-icon   set="ui" icon="auto-light-dark-mode" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+            <!--lit-node 18--><rh-icon   set="ui" icon="auto-light-dark-mode" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" ui "><!--lit-part c4/b1isfZvw=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 2C8.28 2 2 8.28 2 16s6.28 14 14 14 14-6.28 14-14S23.72 2 16 2Zm0 26C9.383 28 4 22.617 4 16S9.383 4 16 4s12 5.383 12 12-5.383 12-12 12Zm9-12a9 9 0 0 1-8.738 8.996.259.259 0 0 1-.262-.257V7.26c0-.142.12-.261.262-.257A9 9 0 0 1 25 15.999Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -205,13 +220,18 @@
         <div id="links">
           <a id="github" href="https://github.com/RedHat-UX/red-hat-design-system/">
             <span class="display-xs">Contribute on Github</span>
-            <!--lit-node 9--><rh-icon    set="social" icon="github" size="lg" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+            <!--lit-node 9--><rh-icon    set="social" icon="github" size="lg" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" social "><!--lit-part up/A3qFLmfI=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="M15 4.22a11.05 11.05 0 0 0-3.5 21.54c.56.11.76-.24.76-.53v-1.88c-3.07.67-3.72-1.48-3.72-1.48a2.91 2.91 0 0 0-1.23-1.62c-1-.68.08-.67.08-.67a2.32 2.32 0 0 1 1.69 1.14 2.36 2.36 0 0 0 3.22.92 2.39 2.39 0 0 1 .7-1.48c-2.45-.28-5-1.23-5-5.46a4.3 4.3 0 0 1 1.13-3 4 4 0 0 1 .06-2.9s.93-.3 3 1.14a10.29 10.29 0 0 1 5.54 0c2.11-1.44 3-1.14 3-1.14a4 4 0 0 1 .11 2.93 4.25 4.25 0 0 1 1.13 3c0 4.24-2.58 5.18-5.05 5.45a2.63 2.63 0 0 1 .75 2.05v3c0 .33.2.64.76.53A11.05 11.05 0 0 0 15 4.22Z" fill-rule="evenodd"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -224,13 +244,18 @@
       <slot></slot>
     <!--/lit-part--></template>
       <button id="hamburger" slot="hamburger" aria-controls="sidebar" aria-expanded="false" aria-label="Expand Main Navigation">
-        <rh-icon    set="ui" icon="menu-bars" size="lg"><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+        <rh-icon    set="ui" icon="menu-bars" size="lg"><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" ui "><!--lit-part l+QYTmNSfAE=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M31 16a1 1 0 0 1-1 1H2a1 1 0 1 1 0-2h28a1 1 0 0 1 1 1Zm-1 9H2a1 1 0 1 0 0 2h28a1 1 0 1 0 0-2ZM2 7h28a1 1 0 1 0 0-2H2a1 1 0 1 0 0 2Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -251,13 +276,18 @@
               aria-label="Close dialog"
               
               >
-            <!--lit-node 3--><rh-icon    set="ui" icon="close" size="lg" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+            <!--lit-node 3--><rh-icon    set="ui" icon="close" size="lg" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" ui "><!--lit-part AhgC8mQFZcM=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M28.707 27.293a.999.999 0 1 1-1.414 1.414L16 17.414 4.707 28.707a.997.997 0 0 1-1.414 0 .999.999 0 0 1 0-1.414L14.586 16 3.293 4.707a.999.999 0 1 1 1.414-1.414L16 14.586 27.293 3.293a.999.999 0 1 1 1.414 1.414L17.414 16l11.293 11.293Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -320,13 +350,18 @@
                  `summary` attribute. Screen readers use this as
                  the ARIA label for the disclosure toggle. -->
           <slot name="summary"><!--lit-part-->About<!--/lit-part--></slot>
-          <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+          <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" microns "><!--lit-part vJ13JnWXULs=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 5.29a.996.996 0 0 0-1.41 0l-7.29 7.29-7.3-7.29a.987.987 0 0 0-1.41-.02.987.987 0 0 0-.02 1.41l.02.02 7.65 7.65c.29.29.68.44 1.06.44s.77-.15 1.06-.44l7.65-7.65a.996.996 0 0 0 0-1.41Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -412,13 +447,18 @@
                  `summary` attribute. Screen readers use this as
                  the ARIA label for the disclosure toggle. -->
           <slot name="summary"><!--lit-part-->Get started<!--/lit-part--></slot>
-          <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+          <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" microns "><!--lit-part vJ13JnWXULs=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 5.29a.996.996 0 0 0-1.41 0l-7.29 7.29-7.3-7.29a.987.987 0 0 0-1.41-.02.987.987 0 0 0-.02 1.41l.02.02 7.65 7.65c.29.29.68.44 1.06.44s.77-.15 1.06-.44l7.65-7.65a.996.996 0 0 0 0-1.41Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -530,13 +570,18 @@
                  `summary` attribute. Screen readers use this as
                  the ARIA label for the disclosure toggle. -->
           <slot name="summary"><!--lit-part-->Foundations<!--/lit-part--></slot>
-          <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+          <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" microns "><!--lit-part vJ13JnWXULs=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 5.29a.996.996 0 0 0-1.41 0l-7.29 7.29-7.3-7.29a.987.987 0 0 0-1.41-.02.987.987 0 0 0-.02 1.41l.02.02 7.65 7.65c.29.29.68.44 1.06.44s.77-.15 1.06-.44l7.65-7.65a.996.996 0 0 0 0-1.41Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -752,13 +797,18 @@
                  `summary` attribute. Screen readers use this as
                  the ARIA label for the disclosure toggle. -->
           <slot name="summary"><!--lit-part-->Tokens<!--/lit-part--></slot>
-          <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+          <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" microns "><!--lit-part vJ13JnWXULs=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 5.29a.996.996 0 0 0-1.41 0l-7.29 7.29-7.3-7.29a.987.987 0 0 0-1.41-.02.987.987 0 0 0-.02 1.41l.02.02 7.65 7.65c.29.29.68.44 1.06.44s.77-.15 1.06-.44l7.65-7.65a.996.996 0 0 0 0-1.41Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -1079,13 +1129,18 @@
                  `summary` attribute. Screen readers use this as
                  the ARIA label for the disclosure toggle. -->
           <slot name="summary"><!--lit-part-->Elements<!--/lit-part--></slot>
-          <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+          <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" microns "><!--lit-part vJ13JnWXULs=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 5.29a.996.996 0 0 0-1.41 0l-7.29 7.29-7.3-7.29a.987.987 0 0 0-1.41-.02.987.987 0 0 0-.02 1.41l.02.02 7.65 7.65c.29.29.68.44 1.06.44s.77-.15 1.06-.44l7.65-7.65a.996.996 0 0 0 0-1.41Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -1891,13 +1946,18 @@
                be purely decorative. Screen readers skip this slot
                because the icon has no accessible name. -->
         <slot name="icon" part="icon">
-          <!--lit-node 3--><rh-icon    icon="notification-fill" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+          <!--lit-node 3--><rh-icon    icon="notification-fill" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" ui "><!--lit-part od30jTpriaA=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M28.75 22v3.5c0 .689-.561 1.25-1.25 1.25h-7.521c.005.084.021.166.021.25 0 2.206-1.794 4-4 4s-4-1.794-4-4c0-.084.016-.166.021-.25H4.5c-.689 0-1.25-.561-1.25-1.25V22a.75.75 0 0 1 .75-.75c1.24 0 2.25-1.009 2.25-2.25v-4c0-4.826 3.528-8.833 8.138-9.605A2.482 2.482 0 0 1 13.5 3.5C13.5 2.122 14.621 1 16 1s2.5 1.122 2.5 2.5c0 .761-.349 1.436-.888 1.895 4.61.772 8.138 4.779 8.138 9.605v4c0 1.241 1.01 2.25 2.25 2.25a.75.75 0 0 1 .75.75Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -2403,13 +2463,18 @@
                  `summary` attribute. Screen readers use this as
                  the ARIA label for the disclosure toggle. -->
           <slot name="summary"><!--lit-part-->Theming<!--/lit-part--></slot>
-          <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+          <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" microns "><!--lit-part vJ13JnWXULs=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 5.29a.996.996 0 0 0-1.41 0l-7.29 7.29-7.3-7.29a.987.987 0 0 0-1.41-.02.987.987 0 0 0-.02 1.41l.02.02 7.65 7.65c.29.29.68.44 1.06.44s.77-.15 1.06-.44l7.65-7.65a.996.996 0 0 0 0-1.41Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -2547,13 +2612,18 @@
                  `summary` attribute. Screen readers use this as
                  the ARIA label for the disclosure toggle. -->
           <slot name="summary"><!--lit-part-->Patterns<!--/lit-part--></slot>
-          <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+          <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" microns "><!--lit-part vJ13JnWXULs=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 5.29a.996.996 0 0 0-1.41 0l-7.29 7.29-7.3-7.29a.987.987 0 0 0-1.41-.02.987.987 0 0 0-.02 1.41l.02.02 7.65 7.65c.29.29.68.44 1.06.44s.77-.15 1.06-.44l7.65-7.65a.996.996 0 0 0 0-1.41Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -2951,13 +3021,18 @@
                  `summary` attribute. Screen readers use this as
                  the ARIA label for the disclosure toggle. -->
           <slot name="summary"><!--lit-part-->Personalization<!--/lit-part--></slot>
-          <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+          <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" microns "><!--lit-part vJ13JnWXULs=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 5.29a.996.996 0 0 0-1.41 0l-7.29 7.29-7.3-7.29a.987.987 0 0 0-1.41-.02.987.987 0 0 0-.02 1.41l.02.02 7.65 7.65c.29.29.68.44 1.06.44s.77-.15 1.06-.44l7.65-7.65a.996.996 0 0 0 0-1.41Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -3043,13 +3118,18 @@
                  `summary` attribute. Screen readers use this as
                  the ARIA label for the disclosure toggle. -->
           <slot name="summary"><!--lit-part-->Accessibility<!--/lit-part--></slot>
-          <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+          <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" microns "><!--lit-part vJ13JnWXULs=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 5.29a.996.996 0 0 0-1.41 0l-7.29 7.29-7.3-7.29a.987.987 0 0 0-1.41-.02.987.987 0 0 0-.02 1.41l.02.02 7.65 7.65c.29.29.68.44 1.06.44s.77-.15 1.06-.44l7.65-7.65a.996.996 0 0 0 0-1.41Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -3473,13 +3553,18 @@
       <!--lit-node 2--><button 
               id="button"
               aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" ui "><!--lit-part 5v6yQu9Xxog=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19.204 12.793c1.417 1.417 2.198 3.3 2.198 5.302s-.781 3.884-2.198 5.302l-5.398 5.41C12.378 30.223 10.494 31 8.497 31s-3.88-.778-5.304-2.19C.274 25.88.274 21.12 3.189 18.194l2.912-2.903a1 1 0 1 1 1.412 1.417l-2.91 2.9c-2.137 2.145-2.137 5.639.002 7.786a5.5 5.5 0 0 0 3.892 1.605c1.465 0 2.85-.572 3.896-1.61l5.396-5.407c1.04-1.04 1.613-2.421 1.613-3.888s-.573-2.849-1.612-3.888a5.356 5.356 0 0 0-1.267-.946 1 1 0 0 1 .947-1.762c.63.338 1.214.774 1.733 1.294Zm9.603-9.603C27.383 1.778 25.499 1 23.503 1s-3.881.778-5.309 2.193l-5.398 5.41c-1.417 1.417-2.198 3.3-2.198 5.302s.781 3.885 2.198 5.302c.52.52 1.104.956 1.733 1.294a1.001 1.001 0 0 0 .948-1.762 5.356 5.356 0 0 1-1.267-.946c-1.039-1.04-1.612-2.42-1.612-3.888s.573-2.848 1.613-3.888l5.396-5.407C20.654 3.572 22.038 3 23.503 3s2.849.572 3.892 1.605c2.139 2.147 2.139 5.642.002 7.786l-2.91 2.9a1 1 0 1 0 1.412 1.417l2.912-2.903c2.915-2.925 2.915-7.686-.004-10.616Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -3501,13 +3586,18 @@ Red Hat reflect our core brand traits: open, authentic, helpful, and brave.</p>
       <!--lit-node 2--><button 
               id="button"
               aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" ui "><!--lit-part 5v6yQu9Xxog=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19.204 12.793c1.417 1.417 2.198 3.3 2.198 5.302s-.781 3.884-2.198 5.302l-5.398 5.41C12.378 30.223 10.494 31 8.497 31s-3.88-.778-5.304-2.19C.274 25.88.274 21.12 3.189 18.194l2.912-2.903a1 1 0 1 1 1.412 1.417l-2.91 2.9c-2.137 2.145-2.137 5.639.002 7.786a5.5 5.5 0 0 0 3.892 1.605c1.465 0 2.85-.572 3.896-1.61l5.396-5.407c1.04-1.04 1.613-2.421 1.613-3.888s-.573-2.849-1.612-3.888a5.356 5.356 0 0 0-1.267-.946 1 1 0 0 1 .947-1.762c.63.338 1.214.774 1.733 1.294Zm9.603-9.603C27.383 1.778 25.499 1 23.503 1s-3.881.778-5.309 2.193l-5.398 5.41c-1.417 1.417-2.198 3.3-2.198 5.302s.781 3.885 2.198 5.302c.52.52 1.104.956 1.733 1.294a1.001 1.001 0 0 0 .948-1.762 5.356 5.356 0 0 1-1.267-.946c-1.039-1.04-1.612-2.42-1.612-3.888s.573-2.848 1.613-3.888l5.396-5.407C20.654 3.572 22.038 3 23.503 3s2.849.572 3.892 1.605c2.139 2.147 2.139 5.642.002 7.786l-2.91 2.9a1 1 0 1 0 1.412 1.417l2.912-2.903c2.915-2.925 2.915-7.686-.004-10.616Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -3559,13 +3649,18 @@ Red Hat reflect our core brand traits: open, authentic, helpful, and brave.</p>
       </div><!--/lit-part-->
       </div>
     <!--/lit-part--></template>
-    <rh-icon    slot="header" set="standard" icon="community-people"><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+    <rh-icon    slot="header" set="standard" icon="community-people"><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" standard "><!--lit-part m76mgccm+v4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path d="M12.87 23.29a3.86 3.86 0 1 0-4.74 0A7.11 7.11 0 0 0 3.38 30a.61.61 0 0 0 .62.62h13a.63.63 0 0 0 .63-.62 7.13 7.13 0 0 0-4.76-6.71Zm-5-3a2.62 2.62 0 0 1 5.24 0 2.62 2.62 0 0 1-5.23-.04Zm-3.21 9.09c.84-6.94 10.84-6.93 11.68 0Zm8.71-14a6 6 0 0 1 9.48.18.61.61 0 0 0 .66-.07c1.07-1-2.27-3-3.13-3.21a3.86 3.86 0 1 0-4.76 0c-.86.25-4.2 2.18-3.13 3.21a.62.62 0 0 0 .88-.11Zm2-6.13a2.62 2.62 0 0 1 5.24 0 2.62 2.62 0 0 1-5.23 0ZM16 19.38a.62.62 0 0 0 0 1.24h4a.62.62 0 0 0 0-1.24Zm11.87 3.91a3.86 3.86 0 1 0-4.74 0A7.11 7.11 0 0 0 18.38 30a.61.61 0 0 0 .62.62h13a.63.63 0 0 0 .63-.62 7.13 7.13 0 0 0-4.76-6.71Zm-5-3a2.62 2.62 0 0 1 5.24 0 2.62 2.62 0 0 1-5.23-.04Zm-3.22 9.13c.84-6.94 10.84-6.93 11.68 0Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -3613,13 +3708,18 @@ Red Hat reflect our core brand traits: open, authentic, helpful, and brave.</p>
       </div><!--/lit-part-->
       </div>
     <!--/lit-part--></template>
-    <rh-icon    slot="header" set="standard" icon="handshake"><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+    <rh-icon    slot="header" set="standard" icon="handshake"><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" standard "><!--lit-part E3JckseFRpQ=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path d="M31.67 9.52A9.69 9.69 0 0 0 18 5.7C8.14 0-1.77 12.56 6.14 20.8a2.63 2.63 0 0 0 2.8 2.85 2.62 2.62 0 0 0 2.73 2.88 2.65 2.65 0 0 0 3.56 2.78 2.65 2.65 0 0 0 4.57 1.44l9.94-9.94a9.59 9.59 0 0 0 1.93-11.29ZM4.55 14c-.1-7.38 9.2-11.24 14.37-6l4.61 4.62c1.26 1.29-.68 3.27-2 2L17 10a.66.66 0 0 0-.7-.13 4.77 4.77 0 0 1-3.3 1.4A4.39 4.39 0 0 1 9.83 10a.63.63 0 0 0-.89.88 5.49 5.49 0 0 0 4.65 1.6l-6.75 6.73a2.88 2.88 0 0 0-.22.27A8.36 8.36 0 0 1 4.55 14Zm24.32 6-9.95 10a1.39 1.39 0 1 1-2.13-1.79l3-3a.64.64 0 0 0 0-.89.63.63 0 0 0-.88 0l-3.55 3.55a1.39 1.39 0 1 1-2-2L17 22.22a.63.63 0 0 0-.88-.89l-3.56 3.56a1.38 1.38 0 0 1-1.95-1.95l3.55-3.56c.58-.56-.32-1.47-.89-.88L9.7 22a1.39 1.39 0 0 1-2-2l8.78-8.77 4 4a.6.6 0 0 0 .09.13 2.65 2.65 0 0 0 3.77-3.72l-5-5a2.45 2.45 0 0 1-.35-.29C27.68 2 35.8 13.1 28.87 19.92Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -3667,13 +3767,18 @@ Red Hat reflect our core brand traits: open, authentic, helpful, and brave.</p>
       </div><!--/lit-part-->
       </div>
     <!--/lit-part--></template>
-    <rh-icon    slot="header" set="standard" icon="architect"><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+    <rh-icon    slot="header" set="standard" icon="architect"><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" standard "><!--lit-part 7yrC35EqKHM=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path d="M31 7.38H9a.63.63 0 0 0-.44.18l-4 4a.63.63 0 0 0-.18.44v16a.61.61 0 0 0 .62.62h26a.61.61 0 0 0 .62-.62V8a.61.61 0 0 0-.62-.62ZM8.38 9.51v1.87H6.51Zm22 17.87H5.62V12.62H9a.61.61 0 0 0 .62-.62V8.62h20.76Z"/><path d="M15 18.62h2.38V23a.61.61 0 0 0 .62.62h3a.62.62 0 0 0 0-1.24h-2.38v-8.76H21a.62.62 0 1 0 0-1.24h-3a.61.61 0 0 0-.62.62v4.38H15a.62.62 0 0 0 0 1.24Zm10-3A2.62 2.62 0 1 0 22.38 13 2.62 2.62 0 0 0 25 15.62Zm0-4A1.38 1.38 0 1 1 23.62 13 1.38 1.38 0 0 1 25 11.62ZM8.38 18A2.62 2.62 0 1 0 11 15.38 2.62 2.62 0 0 0 8.38 18Zm4 0A1.38 1.38 0 1 1 11 16.62 1.38 1.38 0 0 1 12.38 18ZM25 25.62A2.62 2.62 0 1 0 22.38 23 2.62 2.62 0 0 0 25 25.62Zm0-4A1.38 1.38 0 1 1 23.62 23 1.38 1.38 0 0 1 25 21.62Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -3721,13 +3826,18 @@ Red Hat reflect our core brand traits: open, authentic, helpful, and brave.</p>
       </div><!--/lit-part-->
       </div>
     <!--/lit-part--></template>
-    <rh-icon    slot="header" set="standard" icon="management-and-automation"><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+    <rh-icon    slot="header" set="standard" icon="management-and-automation"><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" standard "><!--lit-part HJ0T3A6CwJY=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path d="M25 17.38h-1.77a5.27 5.27 0 0 0-1.09-2.64l1.25-1.25a.62.62 0 1 0-.88-.88l-1.25 1.25a5.27 5.27 0 0 0-2.64-1.09V11a.62.62 0 1 0-1.24 0v1.77a5.27 5.27 0 0 0-2.64 1.09l-1.25-1.25a.62.62 0 0 0-.88.88l1.25 1.25a5.27 5.27 0 0 0-1.09 2.64H11a.62.62 0 0 0 0 1.24h1.77a5.27 5.27 0 0 0 1.09 2.64l-1.25 1.25a.61.61 0 0 0 0 .88.63.63 0 0 0 .88 0l1.25-1.25a5.27 5.27 0 0 0 2.64 1.09V25a.62.62 0 0 0 1.24 0v-1.77a5.27 5.27 0 0 0 2.64-1.09l1.25 1.25a.63.63 0 0 0 .88 0 .61.61 0 0 0 0-.88l-1.25-1.25a5.27 5.27 0 0 0 1.09-2.64H25a.62.62 0 0 0 0-1.24Zm-7 4.68A4.06 4.06 0 1 1 22.06 18 4.06 4.06 0 0 1 18 22.06Zm9.9 6.46a.62.62 0 0 1-.44-.18.61.61 0 0 1 0-.88 13.42 13.42 0 0 0 2.63-15.19.61.61 0 0 1 .3-.83.62.62 0 0 1 .83.29 14.67 14.67 0 0 1-2.88 16.61.62.62 0 0 1-.44.18Zm0-19.79a.63.63 0 0 1-.44-.19 13.4 13.4 0 0 0-15.19-2.63.61.61 0 0 1-.83-.3.62.62 0 0 1 .29-.83 14.67 14.67 0 0 1 16.61 2.88.63.63 0 0 1-.44 1.07ZM5.35 24.62a.63.63 0 0 1-.57-.35A14.67 14.67 0 0 1 7.66 7.66a.62.62 0 0 1 .88.88 13.42 13.42 0 0 0-2.63 15.19.61.61 0 0 1-.3.83.48.48 0 0 1-.26.06Zm12.65 8a14.64 14.64 0 0 1-10.34-4.28.63.63 0 0 1 0-.88.61.61 0 0 1 .88 0 13.42 13.42 0 0 0 15.19 2.63.61.61 0 0 1 .83.3.62.62 0 0 1-.29.83 14.67 14.67 0 0 1-6.27 1.4Z"/><path d="M30 29.62h-3a.62.62 0 0 1-.62-.62v-3a.62.62 0 0 1 1.24 0v2.38H30a.62.62 0 0 1 0 1.24Zm-23 1a.62.62 0 0 1-.62-.62v-3a.62.62 0 0 1 .62-.62h3a.62.62 0 0 1 0 1.24H7.62V30a.62.62 0 0 1-.62.62Zm22-21h-3a.62.62 0 0 1 0-1.24h2.38V6a.62.62 0 0 1 1.24 0v3a.62.62 0 0 1-.62.62Zm-20 1a.62.62 0 0 1-.62-.62V7.62H6a.62.62 0 0 1 0-1.24h3a.62.62 0 0 1 .62.62v3a.62.62 0 0 1-.62.62Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -3741,13 +3851,18 @@ Red Hat reflect our core brand traits: open, authentic, helpful, and brave.</p>
       <!--lit-node 2--><button 
               id="button"
               aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" ui "><!--lit-part 5v6yQu9Xxog=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19.204 12.793c1.417 1.417 2.198 3.3 2.198 5.302s-.781 3.884-2.198 5.302l-5.398 5.41C12.378 30.223 10.494 31 8.497 31s-3.88-.778-5.304-2.19C.274 25.88.274 21.12 3.189 18.194l2.912-2.903a1 1 0 1 1 1.412 1.417l-2.91 2.9c-2.137 2.145-2.137 5.639.002 7.786a5.5 5.5 0 0 0 3.892 1.605c1.465 0 2.85-.572 3.896-1.61l5.396-5.407c1.04-1.04 1.613-2.421 1.613-3.888s-.573-2.849-1.612-3.888a5.356 5.356 0 0 0-1.267-.946 1 1 0 0 1 .947-1.762c.63.338 1.214.774 1.733 1.294Zm9.603-9.603C27.383 1.778 25.499 1 23.503 1s-3.881.778-5.309 2.193l-5.398 5.41c-1.417 1.417-2.198 3.3-2.198 5.302s.781 3.885 2.198 5.302c.52.52 1.104.956 1.733 1.294a1.001 1.001 0 0 0 .948-1.762 5.356 5.356 0 0 1-1.267-.946c-1.039-1.04-1.612-2.42-1.612-3.888s.573-2.848 1.613-3.888l5.396-5.407C20.654 3.572 22.038 3 23.503 3s2.849.572 3.892 1.605c2.139 2.147 2.139 5.642.002 7.786l-2.91 2.9a1 1 0 1 0 1.412 1.417l2.912-2.903c2.915-2.925 2.915-7.686-.004-10.616Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -3768,13 +3883,18 @@ language standards</a>.</p>
       <!--lit-node 2--><button 
               id="button"
               aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" ui "><!--lit-part 5v6yQu9Xxog=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19.204 12.793c1.417 1.417 2.198 3.3 2.198 5.302s-.781 3.884-2.198 5.302l-5.398 5.41C12.378 30.223 10.494 31 8.497 31s-3.88-.778-5.304-2.19C.274 25.88.274 21.12 3.189 18.194l2.912-2.903a1 1 0 1 1 1.412 1.417l-2.91 2.9c-2.137 2.145-2.137 5.639.002 7.786a5.5 5.5 0 0 0 3.892 1.605c1.465 0 2.85-.572 3.896-1.61l5.396-5.407c1.04-1.04 1.613-2.421 1.613-3.888s-.573-2.849-1.612-3.888a5.356 5.356 0 0 0-1.267-.946 1 1 0 0 1 .947-1.762c.63.338 1.214.774 1.733 1.294Zm9.603-9.603C27.383 1.778 25.499 1 23.503 1s-3.881.778-5.309 2.193l-5.398 5.41c-1.417 1.417-2.198 3.3-2.198 5.302s.781 3.885 2.198 5.302c.52.52 1.104.956 1.733 1.294a1.001 1.001 0 0 0 .948-1.762 5.356 5.356 0 0 1-1.267-.946c-1.039-1.04-1.612-2.42-1.612-3.888s.573-2.848 1.613-3.888l5.396-5.407C20.654 3.572 22.038 3 23.503 3s2.849.572 3.892 1.605c2.139 2.147 2.139 5.642.002 7.786l-2.91 2.9a1 1 0 1 0 1.412 1.417l2.912-2.903c2.915-2.925 2.915-7.686-.004-10.616Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -3806,13 +3926,18 @@ and adapts to meet new challenges.</p>
           supported for the default CTA styles). In case the slotted content is one
           long word (like in some agglutinating languages), users must supply `<wbr>`
           at appropriate points in the slotted content.
-    --><slot></slot><!--/lit-part--></a><!--/lit-part--><!--lit-part Rpn9RahanC4=--><!--lit-node 0--><rh-icon   icon="arrow-right" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+    --><slot></slot><!--/lit-part--></a><!--/lit-part--><!--lit-part Rpn9RahanC4=--><!--lit-node 0--><rh-icon   icon="arrow-right" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" ui "><!--lit-part en+ux32c1VQ=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.354 14.939 19.708 4.293a.999.999 0 1 0-1.414 1.414L27.587 15H2a1 1 0 0 0 0 2h25.586l-9.293 9.293a.999.999 0 1 0 1.414 1.414l10.646-10.646c.283-.283.439-.66.439-1.061s-.156-.777-.439-1.061Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon><!--/lit-part--></span><!--/lit-part--></template>Learn about the Red Hat brand</rh-cta></p>
@@ -3832,13 +3957,18 @@ and adapts to meet new challenges.</p>
       <!--lit-node 2--><button 
               id="button"
               aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" ui "><!--lit-part 5v6yQu9Xxog=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19.204 12.793c1.417 1.417 2.198 3.3 2.198 5.302s-.781 3.884-2.198 5.302l-5.398 5.41C12.378 30.223 10.494 31 8.497 31s-3.88-.778-5.304-2.19C.274 25.88.274 21.12 3.189 18.194l2.912-2.903a1 1 0 1 1 1.412 1.417l-2.91 2.9c-2.137 2.145-2.137 5.639.002 7.786a5.5 5.5 0 0 0 3.892 1.605c1.465 0 2.85-.572 3.896-1.61l5.396-5.407c1.04-1.04 1.613-2.421 1.613-3.888s-.573-2.849-1.612-3.888a5.356 5.356 0 0 0-1.267-.946 1 1 0 0 1 .947-1.762c.63.338 1.214.774 1.733 1.294Zm9.603-9.603C27.383 1.778 25.499 1 23.503 1s-3.881.778-5.309 2.193l-5.398 5.41c-1.417 1.417-2.198 3.3-2.198 5.302s.781 3.885 2.198 5.302c.52.52 1.104.956 1.733 1.294a1.001 1.001 0 0 0 .948-1.762 5.356 5.356 0 0 1-1.267-.946c-1.039-1.04-1.612-2.42-1.612-3.888s.573-2.848 1.613-3.888l5.396-5.407C20.654 3.572 22.038 3 23.503 3s2.849.572 3.892 1.605c2.139 2.147 2.139 5.642.002 7.786l-2.91 2.9a1 1 0 1 0 1.412 1.417l2.912-2.903c2.915-2.925 2.915-7.686-.004-10.616Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -3870,13 +4000,18 @@ help us assign consistent meanings that correspond with foundational guidelines.
           supported for the default CTA styles). In case the slotted content is one
           long word (like in some agglutinating languages), users must supply `<wbr>`
           at appropriate points in the slotted content.
-    --><slot></slot><!--/lit-part--></a><!--/lit-part--><!--lit-part Rpn9RahanC4=--><!--lit-node 0--><rh-icon   icon="arrow-right" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+    --><slot></slot><!--/lit-part--></a><!--/lit-part--><!--lit-part Rpn9RahanC4=--><!--lit-node 0--><rh-icon   icon="arrow-right" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" ui "><!--lit-part en+ux32c1VQ=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.354 14.939 19.708 4.293a.999.999 0 1 0-1.414 1.414L27.587 15H2a1 1 0 0 0 0 2h25.586l-9.293 9.293a.999.999 0 1 0 1.414 1.414l10.646-10.646c.283-.283.439-.66.439-1.061s-.156-.777-.439-1.061Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon><!--/lit-part--></span><!--/lit-part--></template>Learn about our tokens</rh-cta></p>
@@ -3896,13 +4031,18 @@ help us assign consistent meanings that correspond with foundational guidelines.
       <!--lit-node 2--><button 
               id="button"
               aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" ui "><!--lit-part 5v6yQu9Xxog=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19.204 12.793c1.417 1.417 2.198 3.3 2.198 5.302s-.781 3.884-2.198 5.302l-5.398 5.41C12.378 30.223 10.494 31 8.497 31s-3.88-.778-5.304-2.19C.274 25.88.274 21.12 3.189 18.194l2.912-2.903a1 1 0 1 1 1.412 1.417l-2.91 2.9c-2.137 2.145-2.137 5.639.002 7.786a5.5 5.5 0 0 0 3.892 1.605c1.465 0 2.85-.572 3.896-1.61l5.396-5.407c1.04-1.04 1.613-2.421 1.613-3.888s-.573-2.849-1.612-3.888a5.356 5.356 0 0 0-1.267-.946 1 1 0 0 1 .947-1.762c.63.338 1.214.774 1.733 1.294Zm9.603-9.603C27.383 1.778 25.499 1 23.503 1s-3.881.778-5.309 2.193l-5.398 5.41c-1.417 1.417-2.198 3.3-2.198 5.302s.781 3.885 2.198 5.302c.52.52 1.104.956 1.733 1.294a1.001 1.001 0 0 0 .948-1.762 5.356 5.356 0 0 1-1.267-.946c-1.039-1.04-1.612-2.42-1.612-3.888s.573-2.848 1.613-3.888l5.396-5.407C20.654 3.572 22.038 3 23.503 3s2.849.572 3.892 1.605c2.139 2.147 2.139 5.642.002 7.786l-2.91 2.9a1 1 0 1 0 1.412 1.417l2.912-2.903c2.915-2.925 2.915-7.686-.004-10.616Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -3934,13 +4074,18 @@ framework or platform.</p>
           supported for the default CTA styles). In case the slotted content is one
           long word (like in some agglutinating languages), users must supply `<wbr>`
           at appropriate points in the slotted content.
-    --><slot></slot><!--/lit-part--></a><!--/lit-part--><!--lit-part Rpn9RahanC4=--><!--lit-node 0--><rh-icon   icon="arrow-right" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+    --><slot></slot><!--/lit-part--></a><!--/lit-part--><!--lit-part Rpn9RahanC4=--><!--lit-node 0--><rh-icon   icon="arrow-right" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" ui "><!--lit-part en+ux32c1VQ=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.354 14.939 19.708 4.293a.999.999 0 1 0-1.414 1.414L27.587 15H2a1 1 0 0 0 0 2h25.586l-9.293 9.293a.999.999 0 1 0 1.414 1.414l10.646-10.646c.283-.283.439-.66.439-1.061s-.156-.777-.439-1.061Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon><!--/lit-part--></span><!--/lit-part--></template>Learn about the benefits of Web Components</rh-cta></p>
@@ -3960,13 +4105,18 @@ framework or platform.</p>
       <!--lit-node 2--><button 
               id="button"
               aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" ui "><!--lit-part 5v6yQu9Xxog=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19.204 12.793c1.417 1.417 2.198 3.3 2.198 5.302s-.781 3.884-2.198 5.302l-5.398 5.41C12.378 30.223 10.494 31 8.497 31s-3.88-.778-5.304-2.19C.274 25.88.274 21.12 3.189 18.194l2.912-2.903a1 1 0 1 1 1.412 1.417l-2.91 2.9c-2.137 2.145-2.137 5.639.002 7.786a5.5 5.5 0 0 0 3.892 1.605c1.465 0 2.85-.572 3.896-1.61l5.396-5.407c1.04-1.04 1.613-2.421 1.613-3.888s-.573-2.849-1.612-3.888a5.356 5.356 0 0 0-1.267-.946 1 1 0 0 1 .947-1.762c.63.338 1.214.774 1.733 1.294Zm9.603-9.603C27.383 1.778 25.499 1 23.503 1s-3.881.778-5.309 2.193l-5.398 5.41c-1.417 1.417-2.198 3.3-2.198 5.302s.781 3.885 2.198 5.302c.52.52 1.104.956 1.733 1.294a1.001 1.001 0 0 0 .948-1.762 5.356 5.356 0 0 1-1.267-.946c-1.039-1.04-1.612-2.42-1.612-3.888s.573-2.848 1.613-3.888l5.396-5.407C20.654 3.572 22.038 3 23.503 3s2.849.572 3.892 1.605c2.139 2.147 2.139 5.642.002 7.786l-2.91 2.9a1 1 0 1 0 1.412 1.417l2.912-2.903c2.915-2.925 2.915-7.686-.004-10.616Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -3982,13 +4132,18 @@ framework or platform.</p>
       <!--lit-node 2--><button 
               id="button"
               aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" ui "><!--lit-part 5v6yQu9Xxog=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19.204 12.793c1.417 1.417 2.198 3.3 2.198 5.302s-.781 3.884-2.198 5.302l-5.398 5.41C12.378 30.223 10.494 31 8.497 31s-3.88-.778-5.304-2.19C.274 25.88.274 21.12 3.189 18.194l2.912-2.903a1 1 0 1 1 1.412 1.417l-2.91 2.9c-2.137 2.145-2.137 5.639.002 7.786a5.5 5.5 0 0 0 3.892 1.605c1.465 0 2.85-.572 3.896-1.61l5.396-5.407c1.04-1.04 1.613-2.421 1.613-3.888s-.573-2.849-1.612-3.888a5.356 5.356 0 0 0-1.267-.946 1 1 0 0 1 .947-1.762c.63.338 1.214.774 1.733 1.294Zm9.603-9.603C27.383 1.778 25.499 1 23.503 1s-3.881.778-5.309 2.193l-5.398 5.41c-1.417 1.417-2.198 3.3-2.198 5.302s.781 3.885 2.198 5.302c.52.52 1.104.956 1.733 1.294a1.001 1.001 0 0 0 .948-1.762 5.356 5.356 0 0 1-1.267-.946c-1.039-1.04-1.612-2.42-1.612-3.888s.573-2.848 1.613-3.888l5.396-5.407C20.654 3.572 22.038 3 23.503 3s2.849.572 3.892 1.605c2.139 2.147 2.139 5.642.002 7.786l-2.91 2.9a1 1 0 1 0 1.412 1.417l2.912-2.903c2.915-2.925 2.915-7.686-.004-10.616Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -4022,13 +4177,18 @@ language across all of Red Hat, for each stage of the customer lifecycle.</p>
           supported for the default CTA styles). In case the slotted content is one
           long word (like in some agglutinating languages), users must supply `<wbr>`
           at appropriate points in the slotted content.
-    --><slot></slot><!--/lit-part--></a><!--/lit-part--><!--lit-part Rpn9RahanC4=--><!--lit-node 0--><rh-icon   icon="arrow-right" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+    --><slot></slot><!--/lit-part--></a><!--/lit-part--><!--lit-part Rpn9RahanC4=--><!--lit-node 0--><rh-icon   icon="arrow-right" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" ui "><!--lit-part en+ux32c1VQ=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.354 14.939 19.708 4.293a.999.999 0 1 0-1.414 1.414L27.587 15H2a1 1 0 0 0 0 2h25.586l-9.293 9.293a.999.999 0 1 0 1.414 1.414l10.646-10.646c.283-.283.439-.66.439-1.061s-.156-.777-.439-1.061Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon><!--/lit-part--></span><!--/lit-part--></template>Visit PatternFly</rh-cta></p>
@@ -4038,13 +4198,18 @@ language across all of Red Hat, for each stage of the customer lifecycle.</p>
       <!--lit-node 2--><button 
               id="button"
               aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" ui "><!--lit-part 5v6yQu9Xxog=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19.204 12.793c1.417 1.417 2.198 3.3 2.198 5.302s-.781 3.884-2.198 5.302l-5.398 5.41C12.378 30.223 10.494 31 8.497 31s-3.88-.778-5.304-2.19C.274 25.88.274 21.12 3.189 18.194l2.912-2.903a1 1 0 1 1 1.412 1.417l-2.91 2.9c-2.137 2.145-2.137 5.639.002 7.786a5.5 5.5 0 0 0 3.892 1.605c1.465 0 2.85-.572 3.896-1.61l5.396-5.407c1.04-1.04 1.613-2.421 1.613-3.888s-.573-2.849-1.612-3.888a5.356 5.356 0 0 0-1.267-.946 1 1 0 0 1 .947-1.762c.63.338 1.214.774 1.733 1.294Zm9.603-9.603C27.383 1.778 25.499 1 23.503 1s-3.881.778-5.309 2.193l-5.398 5.41c-1.417 1.417-2.198 3.3-2.198 5.302s.781 3.885 2.198 5.302c.52.52 1.104.956 1.733 1.294a1.001 1.001 0 0 0 .948-1.762 5.356 5.356 0 0 1-1.267-.946c-1.039-1.04-1.612-2.42-1.612-3.888s.573-2.848 1.613-3.888l5.396-5.407C20.654 3.572 22.038 3 23.503 3s2.849.572 3.892 1.605c2.139 2.147 2.139 5.642.002 7.786l-2.91 2.9a1 1 0 1 0 1.412 1.417l2.912-2.903c2.915-2.925 2.915-7.686-.004-10.616Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -4078,13 +4243,18 @@ upgraded easily, allowing for consistency, scalability, and flexibility.</p>
           supported for the default CTA styles). In case the slotted content is one
           long word (like in some agglutinating languages), users must supply `<wbr>`
           at appropriate points in the slotted content.
-    --><slot></slot><!--/lit-part--></a><!--/lit-part--><!--lit-part Rpn9RahanC4=--><!--lit-node 0--><rh-icon   icon="arrow-right" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+    --><slot></slot><!--/lit-part--></a><!--/lit-part--><!--lit-part Rpn9RahanC4=--><!--lit-node 0--><rh-icon   icon="arrow-right" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" ui "><!--lit-part en+ux32c1VQ=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.354 14.939 19.708 4.293a.999.999 0 1 0-1.414 1.414L27.587 15H2a1 1 0 0 0 0 2h25.586l-9.293 9.293a.999.999 0 1 0 1.414 1.414l10.646-10.646c.283-.283.439-.66.439-1.061s-.156-.777-.439-1.061Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon><!--/lit-part--></span><!--/lit-part--></template>Visit PatternFly Elements</rh-cta></p>
@@ -4125,13 +4295,18 @@ upgraded easily, allowing for consistency, scalability, and flexibility.</p>
       <!--lit-node 2--><button 
               id="button"
               aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" ui "><!--lit-part 5v6yQu9Xxog=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19.204 12.793c1.417 1.417 2.198 3.3 2.198 5.302s-.781 3.884-2.198 5.302l-5.398 5.41C12.378 30.223 10.494 31 8.497 31s-3.88-.778-5.304-2.19C.274 25.88.274 21.12 3.189 18.194l2.912-2.903a1 1 0 1 1 1.412 1.417l-2.91 2.9c-2.137 2.145-2.137 5.639.002 7.786a5.5 5.5 0 0 0 3.892 1.605c1.465 0 2.85-.572 3.896-1.61l5.396-5.407c1.04-1.04 1.613-2.421 1.613-3.888s-.573-2.849-1.612-3.888a5.356 5.356 0 0 0-1.267-.946 1 1 0 0 1 .947-1.762c.63.338 1.214.774 1.733 1.294Zm9.603-9.603C27.383 1.778 25.499 1 23.503 1s-3.881.778-5.309 2.193l-5.398 5.41c-1.417 1.417-2.198 3.3-2.198 5.302s.781 3.885 2.198 5.302c.52.52 1.104.956 1.733 1.294a1.001 1.001 0 0 0 .948-1.762 5.356 5.356 0 0 1-1.267-.946c-1.039-1.04-1.612-2.42-1.612-3.888s.573-2.848 1.613-3.888l5.396-5.407C20.654 3.572 22.038 3 23.503 3s2.849.572 3.892 1.605c2.139 2.147 2.139 5.642.002 7.786l-2.91 2.9a1 1 0 1 0 1.412 1.417l2.912-2.903c2.915-2.925 2.915-7.686-.004-10.616Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>
@@ -4165,13 +4340,18 @@ reach our team about bugs, feature requests, and more.</p>
           supported for the default CTA styles). In case the slotted content is one
           long word (like in some agglutinating languages), users must supply `<wbr>`
           at appropriate points in the slotted content.
-    --><slot></slot><!--/lit-part--></a><!--/lit-part--><!--lit-part Rpn9RahanC4=--><!--lit-node 0--><rh-icon   icon="arrow-right" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+    --><slot></slot><!--/lit-part--></a><!--/lit-part--><!--lit-part Rpn9RahanC4=--><!--lit-node 0--><rh-icon   icon="arrow-right" set="ui" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" ui "><!--lit-part en+ux32c1VQ=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.354 14.939 19.708 4.293a.999.999 0 1 0-1.414 1.414L27.587 15H2a1 1 0 0 0 0 2h25.586l-9.293 9.293a.999.999 0 1 0 1.414 1.414l10.646-10.646c.283-.283.439-.66.439-1.061s-.156-.777-.439-1.061Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon><!--/lit-part--></span><!--/lit-part--></template>Get support</rh-cta></p>
@@ -4226,13 +4406,18 @@ reach our team about bugs, feature requests, and more.</p>
       <!--lit-node 1--><a href="#" hidden part="trigger">
         <!-- Text for the back to top link -->
         <slot>Back to top</slot>
-        <!--lit-node 4--><rh-icon   set="ui" icon="caret-up" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+        <!--lit-node 4--><rh-icon   set="ui" icon="caret-up" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" ui "><!--lit-part W69xz2nd3h4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29 22a.997.997 0 0 1-.707-.293L16 9.414 3.707 21.707a.999.999 0 1 1-1.414-1.414L14.939 7.646a1.501 1.501 0 0 1 2.121 0l12.646 12.646a.999.999 0 0 1-.707 1.707Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     <!--/lit-part--></template></rh-icon>

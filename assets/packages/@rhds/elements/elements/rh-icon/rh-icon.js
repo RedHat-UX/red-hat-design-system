@@ -32,29 +32,44 @@ export class IconResolveErrorEvent extends ErrorEvent {
     }
 }
 /**
- * Icons represents general concepts and can support text as a decorative
- * element. The icon element is a container that allows users to add icons of
- * varying dimensions in the same area without shifting surrounding content.
+ * Use to display Red Hat brand icons as decorative or informational elements.
+ * Hidden from assistive technology by default (role="presentation"). When
+ * `accessible-label` is set, gains role="img" and aria-label for screen
+ * readers. Must not be the sole interactive element; wrap in a button or
+ * link for keyboard access. Supports lazy, idle, and eager loading. Avoid
+ * setting aria-hidden manually.
  *
- * @summary Decorative element which supports related content
+ * @summary Displays Red Hat brand icons with configurable size and loading
  *
  * @alias icon
  *
- * @fires load - Fired when an icon is loaded and rendered
- * @fires error - Fired when an icon fails to load
+ * @fires load - Fired when icon SVG content is loaded and rendered. Bubbles.
+ *   No detail payload; check the element's `icon` and `set` properties.
+ * @fires error - Fired when icon fails to load. Instance of
+ *   {@link IconResolveErrorEvent} with `originalError` containing the
+ *   import failure and `message` describing the icon and set.
  *
+ * @cssprop [--rh-icon-size] - Controls both width and height (square aspect
+ *          ratio). Defaults vary by set: ui icons use `--rh-size-icon-01`
+ *          (16px), standard icons use `--rh-size-icon-04` (40px), microns
+ *          use 12px (range 8-12px).
  */
 let RhIcon = RhIcon_1 = _a = class RhIcon extends LitElement {
     constructor() {
         super(...arguments);
         _RhIcon_instances.add(this);
-        /** Icon set */
+        /**
+         * Icon set to load from. Accepts 'standard' | 'ui' | 'microns' or any
+         * registered custom set name. Controls default sizing: standard=40px,
+         * ui=16px, microns=12px. Defaults to 'standard'.
+         */
         this.set = 'standard';
         /**
-         * Controls how eager the element will be to load the icon data
-         * - `eager`: eagerly load the icon, blocking the main thread
-         * - `idle`: wait for the browser to attain an idle state before loading
-         * - `lazy` (default): wait for the element to enter the viewport before loading
+         * Controls when the icon data is fetched.
+         * - `eager`: loads immediately, blocking the main thread
+         * - `idle`: waits for browser idle via requestIdleCallback
+         * - `lazy` (default): waits for the element to enter the viewport
+         *   via IntersectionObserver. Defaults to 'lazy'.
          */
         this.loading = 'lazy';
         _RhIcon_intersecting.set(this, false);
@@ -75,7 +90,12 @@ let RhIcon = RhIcon_1 = _a = class RhIcon extends LitElement {
             : unsafeHTML(content)}<!--
            Container for the fallback (i.e. slotted) content
         --><span part="fallback" ?hidden="${content}"><!--
-          Slotted content is used as a fallback in case the icon doesn't load
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
         --><slot></slot></span>
       </div>
     `;
