@@ -52,8 +52,8 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
  * `aria-label`. Supports light and dark color palettes. On mobile, nav
  * items collapse behind a hamburger menu button. Keyboard: Tab moves
  * between links/dropdowns, Escape closes expanded menus and mobile menu,
- * Enter/Space toggles dropdown expansion. MUST be used with `<rh-navigation-primary>`
- * above it. SHOULD contain a `logo` slot, `nav` slot with `<ul>`, and
+ * Enter/Space toggles dropdown expansion. Must be used with `<rh-navigation-primary>`
+ * above it. Should contain a `logo` slot, `nav` slot with `<ul>`, and
  * optional `cta` slot. AVOID more than 5 nav items.
  *
  * @summary Sticky sub-navigation bar linking related pages
@@ -117,14 +117,14 @@ export class RhNavigationSecondary extends LitElement {
    * `'lighter'` (default) for light environments, `'dark'` for dark
    * environments. Light-family values (`'light'`, `'lightest'`) map to
    * `'lighter'`; dark-family values (`'darker'`, `'darkest'`) map to `'dark'`.
-   * SHOULD match the surrounding page color scheme. Defaults to `'lighter'`.
+   * Should match the surrounding page color scheme. Defaults to `'lighter'`.
    */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'lighter';
 
   /**
    * Sets the `aria-label` on the internal `<nav>` element for screen readers.
    * USE a descriptive label like the product name (e.g. "OpenShift navigation").
-   * MUST be unique if multiple navigations exist on the page. Defaults to `'secondary'`.
+   * Must be unique if multiple navigations exist on the page. Defaults to `'secondary'`.
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel = 'secondary';
 
@@ -222,7 +222,7 @@ export class RhNavigationSecondary extends LitElement {
                description: |
                  Expects an \`<a>\` element with text, SVG, or image linking to the product
                  homepage. Screen readers announce the link text or \`alt\` attribute.
-                 MUST be provided. \`aria-current="page"\` highlights when on the homepage. -->
+                 Must be provided. \`aria-current="page"\` highlights when on the homepage. -->
           <slot name="logo" id="logo"></slot>
           <button aria-controls="container"
                   aria-expanded="${String(expanded) as 'true' | 'false'}"

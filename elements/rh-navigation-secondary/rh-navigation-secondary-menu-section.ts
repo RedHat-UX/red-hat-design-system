@@ -11,8 +11,8 @@ import styles from './rh-navigation-secondary-menu-section.css' with { type: 'cs
 /**
  * Groups related links under a heading within a dropdown menu. Automatically
  * wires `aria-labelledby` between the slotted heading and adjacent `<ul>`/`<ol>`
- * for screen reader navigation. Renders as a `<section>` element. MUST contain
- * a heading in the `header` slot and a list in the `links` slot. SHOULD
+ * for screen reader navigation. Renders as a `<section>` element. Must contain
+ * a heading in the `header` slot and a list in the `links` slot. Should
  * provide an `id` on the heading or one will be auto-generated. Tab navigates
  * through links; the heading provides group context to assistive technology.
  *

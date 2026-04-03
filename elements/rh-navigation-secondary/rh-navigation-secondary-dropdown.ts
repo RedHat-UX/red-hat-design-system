@@ -33,7 +33,7 @@ import styles from './rh-navigation-secondary-dropdown.css' with { type: 'css' }
  * `aria-controls` for accessibility. Highlights with a red top border when
  * the dropdown contains the current page (`aria-current="page"`). Keyboard:
  * Enter/Space toggles the dropdown; Tab moves through menu items; Escape
- * closes. MUST contain an `<a>` in the `link` slot and an
+ * closes. Must contain an `<a>` in the `link` slot and an
  * `<rh-navigation-secondary-menu>` in the `menu` slot.
  *
  * @summary Expandable dropdown wrapper for secondary nav links

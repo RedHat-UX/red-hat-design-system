@@ -8,7 +8,7 @@ import styles from './rh-navigation-secondary-overlay.css' with { type: 'css' };
  * Semi-transparent backdrop overlay that dims page content when a secondary
  * navigation dropdown or mobile menu is expanded. Clicking the overlay closes
  * all open menus. Managed automatically by `<rh-navigation-secondary>`.
- * AVOID using standalone. Screen readers SHOULD ignore this element as it
+ * AVOID using standalone. Screen readers should ignore this element as it
  * serves a purely visual purpose. Keyboard: Escape closes the overlay.
  *
  * @summary Backdrop overlay for expanded secondary navigation menus

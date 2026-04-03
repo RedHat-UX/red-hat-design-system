@@ -17,7 +17,7 @@ import styles from './rh-navigation-secondary-menu.css' with { type: 'css' };
  * `full-width` (default) and `fixed-width` layouts. Contains
  * `<rh-navigation-secondary-menu-section>` children organized in a CSS grid.
  * Always renders on the lightest color palette. Visibility is toggled by the
- * parent `<rh-navigation-secondary-dropdown>`. MUST be placed inside the
+ * parent `<rh-navigation-secondary-dropdown>`. Must be placed inside the
  * `menu` slot of a dropdown. Tab navigates through menu content; Escape
  * closes the menu. Screen readers access content via section headings.
  *
@@ -31,7 +31,7 @@ export class RhNavigationSecondaryMenu extends LitElement {
   static readonly styles = [styles];
 
   /**
-   * Color palette for the menu panel surface. SHOULD remain `'lightest'`
+   * Color palette for the menu panel surface. Should remain `'lightest'`
    * (default) as secondary nav menus always render on a light surface.
    * Defaults to `'lightest'`.
    */
