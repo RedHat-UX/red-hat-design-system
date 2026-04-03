@@ -186,11 +186,12 @@
 }
 
 #close-button {
-  /**
-   * Close button icon color; in video mode defaults to lightest surface
-   * token for contrast against the dark backdrop.
-   */
-  color: var(--rh-dialog-close-button-color, var(--rh-color-icon-secondary));
+  color:
+    /** Close button icon color; in video mode defaults to lightest surface
+    * token for contrast against the dark backdrop. */
+    var(--rh-dialog-close-button-color,
+      /** Default close button icon color */
+      var(--rh-color-icon-secondary));
   cursor: pointer;
   display: block;
   inset-block-start: 0;
@@ -245,11 +246,11 @@
 }
 
 :host([type='video'][open]) #dialog {
-  /**
-   * Video dialog aspect ratio. Defaults to 16/9. Override for non-standard
-   * video dimensions (e.g. 4/3 or 21/9).
-   */
-  --_aspect-ratio: var(--rh-dialog-video-aspect-ratio, 16/9);
+  /* stylelint-disable-next-line @stylistic/declaration-colon-space-after */
+  --_aspect-ratio:
+    /** Video dialog aspect ratio. Defaults to 16/9. Override for non-standard
+    * video dimensions (e.g. 4/3 or 21/9). */
+    var(--rh-dialog-video-aspect-ratio, 16/9);
 
   aspect-ratio: var(--_aspect-ratio);
   background-color: var(--_dialog-backdrop-bg-color);
