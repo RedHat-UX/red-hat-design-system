@@ -191,9 +191,7 @@ export class RhNavigationSecondary extends LitElement {
              **Styling:**
              - Use this part to customize the overall navigation appearance
              - Applies compact mode styles when viewport is mobile-sized
-             - Controls positioning and z-index of navigation elements
-
-             @see [Navigation](https://ux.redhat.com/elements/navigation/) documentation -->
+             - Controls positioning and z-index of navigation elements -->
       <div part="nav"
            class="${classMap({ compact: this.#compact })}">
         ${this.#logoCopy}
@@ -207,9 +205,7 @@ export class RhNavigationSecondary extends LitElement {
                - Use this part to customize the navigation content layout
                - Controls expanded/collapsed states for mobile menu
                - Manages positioning of navigation items and dropdowns
-               - Contains grid layout for organizing navigation elements
-
-               @see [Navigation](https://ux.redhat.com/elements/navigation/) documentation -->
+               - Contains grid layout for organizing navigation elements -->
         <div id="container" part="container" class="${classMap({ expanded })}">
           <!-- summary: product logo or name link
                description: |
@@ -244,9 +240,7 @@ export class RhNavigationSecondary extends LitElement {
                    - Use this part to customize the CTA positioning and spacing
                    - Appears at the rightmost position in desktop view
                    - Typically contains a single \`<rh-cta>\` element
-                   - Automatically adjusts color palette in mobile vs desktop views
-
-                   @see [Navigation](https://ux.redhat.com/elements/navigation/) documentation -->
+                   - Automatically adjusts color palette in mobile vs desktop views -->
             <div id="cta" part="cta">
               <!-- summary: navigation-level call to action
                    description: |
