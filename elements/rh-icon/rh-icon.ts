@@ -61,10 +61,10 @@ export class IconResolveErrorEvent extends ErrorEvent {
  *   {@link IconResolveErrorEvent} with `originalError` containing the
  *   import failure and `message` describing the icon and set.
  *
- * @cssprop --rh-icon-size
- * Controls both width and height (square aspect ratio). Defaults vary by
- * set: ui icons use `--rh-size-icon-01` (16px), standard icons use
- * `--rh-size-icon-04` (40px), microns use 12px (range 8-12px).
+ * @cssprop [--rh-icon-size] - Controls both width and height (square aspect
+ *          ratio). Defaults vary by set: ui icons use `--rh-size-icon-01`
+ *          (16px), standard icons use `--rh-size-icon-04` (40px), microns
+ *          use 12px (range 8-12px).
  */
 @customElement('rh-icon')
 export class RhIcon extends LitElement {
