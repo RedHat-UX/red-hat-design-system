@@ -54,7 +54,11 @@
    * - Use design system spacing tokens for consistency
    * - Affects both row and column gaps in the menu grid
    */
-  gap: var(--rh-navigation-secondary-menu-section-grid-gap, var(--rh-space-2xl, 32px));
+  gap:
+    /** Menu section grid gap override */
+    var(--rh-navigation-secondary-menu-section-grid-gap,
+      /** Menu section grid gap */
+      var(--rh-space-2xl, 32px));
 }
 
 ::slotted(:is(ul, ol)) {
@@ -74,14 +78,14 @@
     left: 0;
     right: 0;
     padding:
-      /** Navigation menu block-start padding medium viewports */
+      /** Navigation menu block-start padding at viewport >= lg */
       var(--rh-space-4xl, 64px)
-      /** Navigation menu inline padding medium viewports  */
+      /** Navigation menu inline padding at viewport >= lg */
       var(--rh-space-2xl, 32px)
-      /** Navigation menu block-end padding medium viewports  */
+      /** Navigation menu block-end padding at viewport >= lg */
       var(--rh-space-3xl, 48px);
 
-    /** Navigation menu elevation shadow */
+    /** Navigation menu elevation shadow at viewport >= lg */
     box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
     z-index: -1;
     max-height: calc(100vh - (var(--rh-space-4xl, 64px)) - var(--_nav-min-height));
@@ -108,17 +112,17 @@
      * - Increase for wider page layouts or content-heavy menus
      * - Decrease for narrower, more focused dropdown content
      * - Centered automatically with `margin: auto`
-     * - Only applies at medium breakpoint (min-width: 992px)
+     * - Only applies at viewport >= lg
      * - Consider menu section count and content when adjusting
      */
 
-    /** Navigation maximum width */
+    /** Navigation maximum width at viewport >= lg */
     max-width: var(--rh-navigation-secondary-menu-content-max-width, 1136px);
     margin: auto;
   }
 
   :host([layout='fixed-width']) #sections {
-    /** Navigation menu sections fixed-width inner spacing */
+    /** Navigation menu sections fixed-width inner spacing at viewport >= lg */
     padding: var(--rh-space-2xl, 32px);
   }
 }
@@ -126,17 +130,20 @@
 @media screen and (min-width: 1200px) {
   #container.visible {
     padding:
-      /** Navigation menu block padding large viewports */
+      /** Navigation menu block padding at viewport >= xl */
       var(--rh-space-3xl, 48px)
-      /** Navigation menu inline padding large viewports */
+      /** Navigation menu inline padding at viewport >= xl */
       var(--rh-space-2xl, 32px);
   }
 }
 
 @media screen and (min-width: 1440px) {
   #container.visible {
-    /** Navigation menu inline padding extra large viewports */
-    padding: var(--rh-space-3xl, 48px) var(--rh-space-4xl, 64px);
+    padding:
+      /** Navigation menu block padding at viewport >= 2xl */
+      var(--rh-space-3xl, 48px)
+      /** Navigation menu inline padding at viewport >= 2xl */
+      var(--rh-space-4xl, 64px);
   }
 }
 

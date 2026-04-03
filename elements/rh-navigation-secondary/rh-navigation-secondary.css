@@ -1,9 +1,16 @@
 :host {
+  /** Dropdown chevron arm length */
   --_chevron-size: calc(var(--rh-font-size-body-text-md, 1rem) * 0.35);
+
+  /** Dropdown chevron arm thickness */
   --_chevron-thickness: calc(var(--rh-font-size-body-text-md, 1rem) * 0.125);
   --_chevron-up: 45deg;
   --_chevron-down: -135deg;
+
+  /** Dropdown chevron horizontal offset */
   --_chevron-correction-x: calc(-1 * var(--rh-font-size-body-text-md, 1rem) / 16);
+
+  /** Dropdown chevron vertical offset */
   --_chevron-correction-y: calc(-1 * var(--rh-font-size-body-text-md, 1rem) / 16);
 
   /** Navigation dropdown chevron color */
@@ -59,15 +66,20 @@ nav {
   display: grid;
   position: absolute;
   width: 100%;
+
+  /** Navigation container stacking order */
   z-index: var(--rh-navigation-secondary-z-index, 102);
-
-  /** Navigation bar background color **/
   background-color:
-    light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-      var(--rh-color-surface-dark, #383838));
-
-  /** Navigation bar content gap */
-  gap: 0 var(--rh-space-lg, 16px);
+    light-dark(
+        /** Navigation bar surface in light mode */
+        var(--rh-color-surface-lighter, #f2f2f2),
+        /** Navigation bar surface in dark mode */
+        var(--rh-color-surface-dark, #383838)
+      );
+  gap:
+    0
+    /** Navigation bar column gap */
+    var(--rh-space-lg, 16px);
   grid-template-rows:
     minmax(var(--_nav-min-height), var(--_nav-max-height))
     max-content
@@ -80,9 +92,11 @@ nav {
   min-height: 100%;
   max-height: 100vh;
   overflow-y: auto;
-
-  /** Navigation bar bottom border **/
-  border-block-end: var(--rh-border-width-sm, 1px) solid var(--_border-color);
+  border-block-end:
+    /** Navigation bar bottom border width */
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--_border-color);
 }
 
 rh-surface {
@@ -108,12 +122,12 @@ rh-surface {
   flex-direction: column;
   padding: 2rem 1rem 0;
   padding:
-    /* Navigation menu expanded small viewport top padding */
+    /** Navigation menu expanded top padding */
     var(--rh-space-2xl, 32px)
-    /* Navigation menu expanded small viewport inline-end padding */
+    /** Navigation menu expanded inline-end padding */
     var(--rh-space-lg, 16px)
     0
-    /* Navigation menu expanded small viewport inline-start padding */
+    /** Navigation menu expanded inline-start padding */
     var(--rh-space-lg, 16px);
   margin: 0 !important;
 }
@@ -137,9 +151,11 @@ button {
 
   /** Navigation menu toggle inner spacing */
   padding: var(--rh-space-lg, 16px);
-
-  /** Navigation menu toggle top border */
-  border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
+  border-block-start:
+    /** Navigation menu toggle top border width */
+    var(--rh-border-width-lg, 3px)
+    solid
+    transparent;
 
   /** Navigation menu toggle inline-end margin */
   margin-inline-end: var(--rh-space-lg, 16px);
@@ -210,19 +226,21 @@ button[aria-expanded='true'],
 
 @media screen and (min-width: 768px) {
   button {
-    /** Navigation menu toggle inline-end margin */
+    /** Navigation menu toggle inline-end margin at viewport >= md */
     margin-inline-end: var(--rh-space-2xl, 32px);
   }
 
   #container.expanded ::slotted([slot='nav']) {
     padding:
+      /** Navigation menu expanded top padding at viewport >= md */
       var(--rh-space-2xl, 32px)
+      /** Navigation menu expanded inline padding at viewport >= md */
       var(--rh-space-2xl, 32px)
       0 !important;
   }
 
   #container.expanded ::slotted([slot='cta']) {
-    /** Navigation call to action inner spacing */
+    /** Navigation call to action inner spacing at viewport >= md */
     padding: var(--rh-space-2xl, 32px) !important;
   }
 }

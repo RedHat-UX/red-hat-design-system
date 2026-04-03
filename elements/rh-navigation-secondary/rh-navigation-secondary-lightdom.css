@@ -11,8 +11,12 @@ rh-navigation-secondary {
   /** Navigation dropdown chevron indicators */
   --_nav-chevron-color: var(--rh-color-text-primary);
   --rh-color-surface:
-    light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-      var(--rh-color-surface-dark, #383838));
+    light-dark(
+        /** Navigation bar surface in light mode */
+        var(--rh-color-surface-lighter, #f2f2f2),
+        /** Navigation bar surface in dark mode */
+        var(--rh-color-surface-dark, #383838)
+      );
 
   display: block;
   position: sticky;
@@ -20,9 +24,11 @@ rh-navigation-secondary {
 
   /** Navigation bar background */
   background-color: var(--rh-color-surface);
-
-  /** Navigation bar block-end border */
-  border-block-end: var(--rh-border-width-sm, 1px) solid transparent;
+  border-block-end:
+    /** Navigation bar block-end border width */
+    var(--rh-border-width-sm, 1px)
+    solid
+    transparent;
 
   /** Navigation elevation shadow */
   box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
@@ -35,9 +41,10 @@ rh-navigation-secondary {
   &:not(:defined) {
     display: grid;
     position: relative;
-
-    /** Navigation bar grid gap */
-    gap: 0 var(--rh-space-2xl, 32px);
+    gap:
+      0
+      /** Navigation bar grid column gap */
+      var(--rh-space-2xl, 32px);
     grid-template-rows: minmax(var(--_min-height), var(--_max-height)) max-content max-content;
     grid-template-columns: 1fr max-content;
     grid-template-areas:
@@ -72,9 +79,11 @@ rh-navigation-secondary {
 
     /** Navigation logo vertical spacing */
     padding-block: var(--rh-space-lg, 16px);
-
-    /** Navigation logo block-start border */
-    border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
+    border-block-start:
+      /** Navigation logo block-start border width */
+      var(--rh-border-width-lg, 3px)
+      solid
+      transparent;
     width: max-content;
 
     &:hover {
@@ -98,8 +107,11 @@ rh-navigation-secondary {
     background-color: var(--rh-color-surface-lightest, #ffffff);
     margin: 0;
     padding:
+      /** Navigation nav slot top padding */
       var(--rh-space-2xl, 32px)
+      /** Navigation nav slot inline padding */
       var(--rh-space-lg, 16px)
+      /** Navigation nav slot bottom padding */
       var(--rh-space-lg, 16px);
   }
 
@@ -117,8 +129,11 @@ rh-navigation-secondary {
     /** Navigation cta slot background */
     background-color: var(--rh-color-surface-lightest, #ffffff);
     padding:
+      /** Navigation CTA slot top padding */
       var(--rh-space-lg, 16px)
+      /** Navigation CTA slot inline padding */
       var(--rh-space-lg, 16px)
+      /** Navigation CTA slot bottom padding */
       var(--rh-space-2xl, 32px);
     margin: 0;
     max-width: 100%;
@@ -181,12 +196,18 @@ rh-navigation-secondary-dropdown > a {
   /** Navigation slotted link text size */
   font-size: var(--rh-font-size-body-text-md, 1rem);
   font-weight: 500;
-  padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
+  padding:
+    /** Navigation slotted link block padding */
+    var(--rh-space-lg, 16px)
+    /** Navigation slotted link inline padding */
+    var(--rh-space-xl, 24px);
   text-decoration: none !important;
   text-align: center;
-
-  /** Navigation slotted link block-start border */
-  border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
+  border-block-start:
+    /** Navigation slotted link block-start border width */
+    var(--rh-border-width-lg, 3px)
+    solid
+    transparent;
 }
 
 rh-navigation-secondary [slot='nav'] > li > a[aria-current='page'] {
@@ -239,9 +260,11 @@ rh-navigation-secondary-menu-section > [slot='header'] {
   /** Navigation menu section header slot text size */
   font-size: var(--rh-font-size-body-text-md, 1rem);
   font-weight: 500;
-
-  /** Navigation menu section header slot block-end margin */
-  margin: 0 0 var(--rh-space-lg, 16px);
+  margin:
+    0
+    0
+    /** Navigation menu section header block-end margin */
+    var(--rh-space-lg, 16px);
 }
 
 rh-navigation-secondary > [slot='nav'] > li > rh-navigation-link {
@@ -271,13 +294,19 @@ rh-navigation-secondary > [slot='nav'] > li > rh-navigation-link {
     --_navigation-link-font-weight: 400;
     --_navigation-link-block-size: 100%;
     --_navigation-link-align-items: center;
-    --_navigation-link-padding: 0 var(--rh-space-lg, 16px);
+    --_navigation-link-padding:
+      0
+      /** Navigation link inline padding at viewport >= lg */
+      var(--rh-space-lg, 16px);
 
-    /** Navigation menu link block-start border on medium viewports */
-    border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
+    border-block-start:
+      /** Navigation link block-start border width at viewport >= lg */
+      var(--rh-border-width-lg, 3px)
+      solid
+      transparent;
 
     &:hover {
-      /** Navigation menu hovered link block-start accent color on medium viewports */
+      /** Navigation link hovered block-start accent color at viewport >= lg */
       border-block-start-color: var(--rh-color-text-brand);
     }
   }
@@ -285,7 +314,7 @@ rh-navigation-secondary > [slot='nav'] > li > rh-navigation-link {
 
 @media screen and (min-width: 768px) {
   rh-navigation-secondary > [slot='logo'] {
-    /** Navigation logo inline-start margin on small viewports */
+    /** Navigation logo inline-start margin at viewport >= md */
     margin-inline-start: var(--rh-space-2xl, 32px);
   }
 }
@@ -307,7 +336,7 @@ rh-navigation-secondary > [slot='nav'] > li > rh-navigation-link {
   }
 
   rh-navigation-secondary > [slot='logo'] {
-    /** Navigation logo slot text size on medium viewports */
+    /** Navigation logo slot text size at viewport >= lg */
     font-size: var(--rh-font-size-body-text-lg, 1.125rem);
     margin-inline-start: 2rem;
   }
@@ -345,9 +374,10 @@ rh-navigation-secondary > [slot='nav'] > li > rh-navigation-link {
   rh-navigation-secondary-dropdown > a {
     height: 100%;
     font-weight: 400;
-
-    /** Navigation inner spacing on medium viewports */
-    padding: 0 var(--rh-space-lg, 16px);
+    padding:
+      0
+      /** Navigation link inline spacing at viewport >= lg */
+      var(--rh-space-lg, 16px);
   }
 
   rh-navigation-secondary > [slot='nav'] > li > a:focus,
@@ -355,7 +385,7 @@ rh-navigation-secondary > [slot='nav'] > li > rh-navigation-link {
   rh-navigation-secondary-dropdown > a[aria-expanded='true'],
   rh-navigation-secondary-dropdown > a:focus,
   rh-navigation-secondary-dropdown > a:hover {
-    /** Navigation link and dropdown link block-start accent color on medium viewports */
+    /** Navigation link and dropdown block-start accent color at viewport >= lg */
     border-block-start-color: var(--rh-color-text-brand-on-light, #ee0000);
   }
 
@@ -364,7 +394,7 @@ rh-navigation-secondary > [slot='nav'] > li > rh-navigation-link {
     flex-direction: row-reverse;
     background-color: transparent;
 
-    /** Navigation cta slot inline-end margin on medium viewports */
+    /** Navigation CTA slot inline-end margin at viewport >= lg */
     margin-inline-end: var(--rh-space-2xl, 32px);
     padding: unset;
   }
@@ -372,13 +402,13 @@ rh-navigation-secondary > [slot='nav'] > li > rh-navigation-link {
   @media screen and (min-width: 1440px) {
     rh-navigation-secondary:not(:defined) > [slot='logo'],
     rh-navigation-secondary > [slot='logo'] {
-      /** Navigation logo slot inline-start margin on extra large viewports */
+      /** Navigation logo slot inline-start margin at viewport >= 2xl */
       margin-inline-start: var(--rh-space-4xl, 64px);
     }
 
     rh-navigation-secondary:not(:defined) > [slot='cta'],
     rh-navigation-secondary > [slot='cta'] {
-      /** Navigation cta slot inline-end margin on extra large viewports */
+      /** Navigation CTA slot inline-end margin at viewport >= 2xl */
       margin-inline-end: var(--rh-space-4xl, 64px);
     }
   }

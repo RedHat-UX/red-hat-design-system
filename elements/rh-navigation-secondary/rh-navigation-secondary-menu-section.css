@@ -23,13 +23,18 @@
 }
 
 ::slotted([slot='cta']) {
-  /** Navigation menu section slotted cta inner spacing */
-  padding: var(--rh-space-xl, 24px) 0 0;
+  padding:
+    /** Menu section CTA top spacing */
+    var(--rh-space-xl, 24px)
+    0
+    0;
 }
 
 ::slotted([slot='cta']:last-of-type) {
-  /** Navigation inner spacing */
-  padding: var(--rh-space-xl, 24px) 0;
+  padding:
+    /** Menu section CTA block spacing */
+    var(--rh-space-xl, 24px)
+    0;
 }
 
 @media screen and (min-width: 992px) {
