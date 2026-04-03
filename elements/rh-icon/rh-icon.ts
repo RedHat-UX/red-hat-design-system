@@ -44,11 +44,11 @@ export class IconResolveErrorEvent extends ErrorEvent {
 }
 
 /**
- * USE to display Red Hat brand icons as decorative or informational elements.
+ * Use to display Red Hat brand icons as decorative or informational elements.
  * Hidden from assistive technology by default (role="presentation"). When
  * `accessible-label` is set, gains role="img" and aria-label for screen
- * readers. MUST NOT be the sole interactive element; wrap in a button or
- * link for keyboard access. Supports lazy, idle, and eager loading. AVOID
+ * readers. Must not be the sole interactive element; wrap in a button or
+ * link for keyboard access. Supports lazy, idle, and eager loading. Avoid
  * setting aria-hidden manually.
  *
  * @summary Displays Red Hat brand icons with configurable size and loading
@@ -145,7 +145,7 @@ export class RhIcon extends LitElement {
           summary: Fallback content when icon fails to load
           description: |
             Displayed only when the icon SVG cannot be resolved.
-            SHOULD contain meaningful text or an alternative image
+            Should contain meaningful text or an alternative image
             for screen readers if the icon conveys information.
             Hidden automatically when icon loads successfully.
         --><slot></slot></span>
