@@ -12,7 +12,7 @@ import styles from './rh-avatar.css' with { type: 'css' };
  * Provides a circular user thumbnail for mastheads, cards, and attribution when
  * you need to visually identify a person. Allows an image, a deterministic
  * pattern, or a default icon. Must not take focus or act as a control; images
- * carry `role="presentation"` (ARIA). Authors should provide a name via the
+ * carry `role="presentation"`. Authors should provide a name via the
  * default slot so screen readers have context.
  *
  * @summary Circular user thumbnail for mastheads, navigation, and attribution
