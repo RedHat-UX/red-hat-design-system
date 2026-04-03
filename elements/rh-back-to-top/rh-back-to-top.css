@@ -1,11 +1,22 @@
-/** @summary Host positioning: fixed bottom-right corner with responsive insets */
 :host {
   position: fixed;
   z-index: 1000;
 
-  /** uses --rh-space-xl design token for mobile inset (24px) */
+  /** Back-to-top inline-end inset */
   inset-inline-end: var(--rh-space-xl, 24px);
+
+  /** Back-to-top block-end inset */
   inset-block-end: var(--rh-space-xl, 24px);
+}
+
+@media (min-width: 768px) {
+  :host {
+    /** Back-to-top inline-end inset at viewport >= md */
+    inset-inline-end: var(--rh-space-3xl, 48px);
+
+    /** Back-to-top block-end inset at viewport >= md */
+    inset-block-end: var(--rh-space-3xl, 48px);
+  }
 }
 
 [part='trigger'] {
@@ -13,14 +24,17 @@
   align-items: center;
   justify-content: center;
   color:
-    light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
-      var(--rh-color-text-primary-on-light, #151515));
-
-  /**
-   * @summary Button background; uses --rh-back-to-top-background-color
-   * or falls back to --rh-color-accent-base design token
-   */
-  background-color: var(--rh-back-to-top-background-color, var(--rh-color-accent-base));
+    light-dark(
+        /** Trigger text color in light mode */
+        var(--rh-color-text-primary-on-dark, #ffffff),
+        /** Trigger text color in dark mode */
+        var(--rh-color-text-primary-on-light, #151515)
+      );
+  background-color:
+    /** Trigger background color override */
+    var(--rh-back-to-top-background-color,
+      /** Trigger background color */
+      var(--rh-color-accent-base));
   text-decoration: none;
 
   /** Trigger text size */
@@ -32,7 +46,7 @@
   /** Trigger vertical spacing */
   padding-block: var(--rh-space-xs, 4px);
 
-  /** @summary Pill shape; uses --rh-border-radius-pill design token */
+  /** Trigger border radius */
   border-radius: var(--rh-border-radius-pill, 64px);
 
   /** Trigger content gap */
@@ -40,22 +54,38 @@
 
   /** Trigger line height */
   line-height: var(--rh-line-height-body-text, 1.5);
-
-  /** Trigger focus outline */
-  outline: var(--rh-border-width-md, 2px) solid transparent;
-  border: var(--rh-border-width-md, 2px) solid transparent;
+  outline:
+    /** Trigger outline width */
+    var(--rh-border-width-md, 2px)
+    solid
+    transparent;
+  border:
+    /** Trigger border width */
+    var(--rh-border-width-md, 2px)
+    solid
+    transparent;
   pointer-events: all;
 }
 
 [part='trigger']:is(:hover, :focus) {
-  outline: var(--rh-border-width-md, 2px) solid var(--rh-color-interactive-primary-hover);
-  border:
+  outline:
+    /** Trigger hover/focus outline width */
     var(--rh-border-width-md, 2px)
     solid
-    light-dark(var(--rh-color-border-strong-on-dark, #ffffff),
-      var(--rh-color-border-strong-on-light, #151515));
+    /** Trigger hover/focus outline color */
+    var(--rh-color-interactive-primary-hover);
+  border:
+    /** Trigger hover/focus border width */
+    var(--rh-border-width-md, 2px)
+    solid
+    light-dark(
+        /** Trigger hover/focus border color in light mode */
+        var(--rh-color-border-strong-on-dark, #ffffff),
+        /** Trigger hover/focus border color in dark mode */
+        var(--rh-color-border-strong-on-light, #151515)
+      );
 
-  /** Trigger background */
+  /** Trigger hover/focus background color */
   background-color: var(--rh-color-interactive-primary-hover);
 }
 
@@ -64,7 +94,7 @@
 }
 
 rh-icon {
-  /* Non Standard Icon size */
+  /** Icon size matching trigger text */
   --rh-icon-size: var(--rh-font-size-body-text-xs, 0.75rem);
 
   vertical-align: -0.125rem;
@@ -77,13 +107,4 @@ span {
 
   /** Trigger content gap */
   gap: var(--rh-space-xs, 4px);
-}
-
-/** @summary Desktop breakpoint: increases inset spacing */
-@media (min-width: 768px) {
-  :host {
-    /** uses --rh-space-3xl design token for desktop inset (48px) */
-    inset-inline-end: var(--rh-space-3xl, 48px);
-    inset-block-end: var(--rh-space-3xl, 48px);
-  }
 }
