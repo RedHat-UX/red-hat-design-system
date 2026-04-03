@@ -12,14 +12,27 @@ import styles from './rh-audio-player-subscribe.css' with { type: 'css' };
 
 
 /**
- * Audio Player Subscribe Panel
+ * Provides subscription links for podcast platforms within the audio
+ * player. Use this when you need to allow users to subscribe. Must be
+ * placed in the `subscribe` slot of `rh-audio-player`. Rendered inside
+ * an ARIA dialog panel; keyboard users can Tab through links. Authors
+ * should provide alt text on images so screen readers can identify
+ * each platform.
+ *
+ * @summary Displays podcast subscription links in an expandable panel
+ *
+ * @csspart heading - The panel heading with scrolling text overflow.
+ * @csspart body - The default content area.
+ * @csspart links - The container for subscription link elements.
  */
 @customElement('rh-audio-player-subscribe')
 export class RhAudioPlayerSubscribe extends LitElement {
   static readonly styles = [panelStyles, styles];
 
+  /** Custom heading text displayed at the top of the subscribe panel. Overridden by the `heading` slot. */
   @property() heading?: string;
 
+  /** Accessible label for the panel, used as the menu item text when no heading slot is provided. */
   @property() label?: string;
 
   #headings = new HeadingLevelContextConsumer(this);
@@ -30,17 +43,30 @@ export class RhAudioPlayerSubscribe extends LitElement {
 
   override render() {
     return html`
-      <!-- scrolling text overflow -->
       <rh-audio-player-scrolling-text-overflow part="heading">
-        <!-- custom heading for panel -->
+        <!-- summary: Custom panel heading
+             description: |
+               Accepts a heading element for the subscribe panel title.
+               Should use an appropriate heading level for the page so
+               screen readers can navigate the panel hierarchy. -->
         <slot name="heading">${this.#headings.wrap(this.menuLabel)}</slot>
       </rh-audio-player-scrolling-text-overflow>
-      <!-- panel content -->
+      <!-- summary: Subscribe panel body content
+           description: |
+             Accepts descriptive text or rich content for the subscribe
+             panel. Content is accessible to screen readers when the
+             panel is expanded. -->
       <slot part="body" ?hidden="${this.#slots.isEmpty(null)}"></slot>
-      <!-- slot:
-             summary: link to subscribe to podcast
-           part:
-             summary: subscribe links -->
+      <!--
+        slot:
+          summary: Subscription platform link
+          description: |
+            Accepts anchor elements linking to podcast platforms. Each
+            link should include descriptive text or an image with alt
+            text so screen readers can identify the platform.
+        part:
+          summary: subscribe links
+      -->
       <slot name="link" part="links"></slot>`;
   }
 
@@ -53,6 +79,7 @@ export class RhAudioPlayerSubscribe extends LitElement {
     return this.label || this.#label || 'Subscribe';
   }
 
+  /** Triggers the scrolling text animation on the panel heading if it overflows its container. */
   scrollText() {
     this.shadowRoot?.querySelector('rh-audio-player-scrolling-text-overflow')?.startScrolling();
   }
