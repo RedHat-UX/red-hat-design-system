@@ -85,9 +85,7 @@ export class RhNavigationSecondaryDropdown extends LitElement {
              - Use this part to customize the dropdown appearance and layout
              - Applies \`.expanded\` class when dropdown is open
              - Applies \`.highlight\` class when dropdown contains the current page
-             - Controls dropdown link and menu positioning
-
-             @see [Navigation](https://ux.redhat.com/elements/navigation/) documentation -->
+             - Controls dropdown link and menu positioning -->
       <div id="container" part="container" class="${classMap(classes)}">
         <!-- summary: dropdown trigger link
              description: |

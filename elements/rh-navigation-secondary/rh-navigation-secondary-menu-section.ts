@@ -52,9 +52,7 @@ export class RhNavigationSecondaryMenuSection extends LitElement {
              **Accessibility:**
              - Automatically associates heading with list using aria-labelledby
              - Generates IDs for headers if not present
-             - Ensures semantic structure for screen reader users
-
-             @see [Navigation](https://ux.redhat.com/elements/navigation/) documentation -->
+             - Ensures semantic structure for screen reader users -->
       <section part="container">
         <!-- summary: section heading
              description: |
