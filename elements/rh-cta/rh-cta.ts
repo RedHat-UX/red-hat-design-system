@@ -17,36 +17,17 @@ function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLB
 }
 
 /**
- * USE to style interactive links or buttons as prominent calls to action.
- * MUST contain either an `href` attribute or a slotted `<a>` or `<button>`.
- * Keyboard users MUST be able to focus via Tab and activate with Enter.
- * The element delegates focus to its inner link or button. Screen readers
- * announce the slotted link text. AVOID using `<button>` with the default
- * (no variant) style. USE `primary` for the most important page action.
+ * Provides a styled link or button for prominent user actions when you need to
+ * draw attention to a key interaction. Must contain an `href` attribute or a
+ * slotted `<a>` / `<button>`. Screen readers announce the slotted text. Used
+ * primarily for linking to other pages. Users should prefer to use the `href`
+ * attribute or slotted links with this component. Avoid `<button>` with the
+ * default (no variant) style.
  *
  * @summary Styled link or button for prominent user actions
  *
  * @alias call-to-action
  *
- * @cssprop --rh-icon-size
- * Size of the trailing icon. Controls width and height.
- * Defaults to `--rh-font-size-body-text-lg` (1.125rem).
- *
- * @cssprop --rh-cta-focus-container-outline-color
- * Outline color of the container on keyboard focus. MUST provide adequate
- * contrast for WCAG 2.4.7 compliance. Fallback: `--rh-cta-focus-outline-color`.
- *
- * @cssprop --rh-cta-focus-outline-color
- * Outline color of the inner focus indicator. Used when
- * `--rh-cta-focus-container-outline-color` is not set.
- *
- * @cssprop --rh-cta-font-size-priority
- * Font size for primary and secondary CTA variants. Defaults to
- * `--rh-font-size-body-text-md` (1rem).
- *
- * @cssprop --rh-cta-active-background-color
- * Background color during the active/pressed state. Provides visual
- * feedback on click or touch.
  */
 @customElement('rh-cta')
 @themable
@@ -54,39 +35,30 @@ export class RhCta extends LitElement {
   static readonly styles = [style];
 
   /**
-   * Controls the visual importance and styling of the call to action.
-   * Accepts 'primary' | 'secondary' | 'brick' or undefined (default).
-   *   - **Primary**: USE for the most important page action. Red background, white text.
-   *   - **Secondary**: USE for general links. Bordered with inverted hover.
-   *   - **Brick**: USE to group links in a grid. Stretches to fill container width.
-   *   - **Default** (undefined): USE for tertiary links. Inline text with arrow icon.
-   * Defaults to undefined. AVOID using more than one primary CTA per page section.
+   * Visual importance: `primary` (red fill), `secondary` (bordered),
+   * `brick` (full-width grid), or undefined (default inline link with arrow).
    */
   @property({ reflect: true }) variant?: 'primary' | 'secondary' | 'brick';
 
-  /**
-   * URL for the call to action link. When set, renders an internal `<a>` tag
-   * and overrides slotted anchor content. USE instead of a slotted `<a>` tag.
-   * MUST NOT be combined with a slotted link. Defaults to undefined.
-   */
+  /** URL for the CTA link. Renders an internal `<a>` instead of using a slotted element. */
   @property({ reflect: true }) href?: string;
 
-  /** When `href` is set, triggers a file download. Passes through to the link's `download` attribute. Defaults to undefined. */
+  /** Triggers a file download when `href` is set. Passes through to the link. */
   @property() download?: string;
 
-  /** When `href` is set, controls the referrer policy. Passes through to the link's `referrerpolicy` attribute. Defaults to undefined. */
+  /** Referrer policy when `href` is set. Passes through to the link. */
   @property() referrerpolicy?: string;
 
-  /** When `href` is set, specifies the link relationship. Passes through to the link's `rel` attribute. Defaults to undefined. */
+  /** Link relationship when `href` is set. Passes through to the link. */
   @property() rel?: string;
 
-  /** When `href` is set, specifies where to open the link (e.g. '_blank'). Passes through to the link's `target` attribute. Defaults to undefined. */
+  /** Browsing context when `href` is set (e.g. `_blank`). Passes through to the link. */
   @property() target?: string;
 
-  /** Name of the icon to display. For default variant, overrides the trailing arrow. For brick variant, displays before the text. Defaults to undefined. */
+  /** Icon name. Overrides the default trailing arrow, or displays before text in brick variant. */
   @property({ reflect: true }) icon?: IconNameFor<IconSetName>;
 
-  /** Icon set to load the icon from. Accepts any registered icon set name. Defaults to 'ui'. */
+  /** Icon set to load from. Defaults to `ui`. */
   @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'ui';
 
   override async scheduleUpdate() {
@@ -113,14 +85,10 @@ export class RhCta extends LitElement {
     const iconContent =
       !(variant === 'brick' && icon) ? '' : html`<rh-icon .icon=${icon} set="${iconSet ?? 'ui'}"></rh-icon>`;
     const slot = html`<!--
-          The default slot contains the link text when the \`href\`
-          attribute is set. In case there is no href attribute, an anchor
-          tag (\`<a href="...">\`) should be the first child inside \`rh-cta\`
-          element. Less preferred but allowed for specific use-cases
-          include: \`<button>\` (note however that the \`button\` tag is not
-          supported for the default CTA styles). In case the slotted content is one
-          long word (like in some agglutinating languages), users must supply \`<wbr>\`
-          at appropriate points in the slotted content.
+          summary: CTA link text
+          description: |
+            Slot an anchor or button as the first child, or set href on the host. Screen readers
+            announce this content as the CTA label. For long words, supply wbr at appropriate break points.
     --><slot></slot>`;
     const linkContent =
         !href ? slot
