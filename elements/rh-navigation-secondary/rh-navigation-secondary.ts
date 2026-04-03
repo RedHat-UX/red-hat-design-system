@@ -50,7 +50,7 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
  * Persistent wayfinding navigation for linking related pages below
  * `<rh-navigation-primary>`. Provides `role="navigation"` with a
  * configurable `aria-label` and light/dark color palettes. On mobile,
- * items collapse behind a menu button. Keyboard: Tab, Escape,
+ * items collapse behind a menu button. Keyboard navigation with Tab, Escape,
  * Enter/Space. Should contain `logo`, `nav` (`<ul>`), and optional
  * `cta` slots. Avoid using more then 5 nav items.
  *
