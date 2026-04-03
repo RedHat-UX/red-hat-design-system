@@ -15,11 +15,8 @@
 
   /**
    * Internal palette of hex colors for generated patterns. Uses `light-dark()`
-   * to switch between light-scheme colors (--rh-color-blue-30, --rh-color-teal-50,
-   * --rh-color-green-60, --rh-color-red-40, --rh-color-purple-60) and
-   * dark-scheme colors (--rh-color-blue-50, --rh-color-teal-70,
-   * --rh-color-green-70, --rh-color-red-50, --rh-color-purple-70).
-   * Override with `--rh-avatar-colors` to supply custom hex values.
+   * to switch between light and dark scheme colors. Override with
+   * `--rh-avatar-colors` to supply custom hex values.
    */
   --_colors:
     light-dark(var(--rh-avatar-colors,
@@ -35,7 +32,7 @@
       var(--rh-color-red-50, #ee0000)
       var(--rh-color-purple-70, #21134d)));
 
-  /** Gap between avatar thumbnail and text; uses --rh-space-lg design token */
+  /** Gap between avatar thumbnail and text */
   column-gap: var(--rh-space-lg, 16px);
   width: min-content;
   grid-template-columns: min-content minmax(max-content, 250px);
@@ -49,13 +46,13 @@
   grid-area: t;
   align-self: end;
 
-  /** Avatar typeface */
+  /** Name line typeface */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
 
-  /** Avatar font weight */
+  /** Name line font-weight */
   font-weight: var(--rh-font-weight-heading-medium, 500);
 
-  /** Avatar text size */
+  /** Name text size */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
 
@@ -63,10 +60,10 @@
   grid-area: s;
   align-self: start;
 
-  /** Avatar font weight */
+  /** Subtitle font weight */
   font-weight: var(--rh-font-weight-heading-regular, 400);
 
-  /** Avatar text size */
+  /** Subtitle text size */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
 
@@ -88,7 +85,7 @@
 :host([layout='block']) :is(img, canvas, svg),
 :host(:not([plain])) #container :is(img, canvas, svg) {
   @media (max-width: 575px) {
-    /** Avatar bottom margin */
+    /** Space between thumbnail and text when stacked */
     margin-block-end: var(--rh-space-lg, 16px);
   }
 }
@@ -99,18 +96,18 @@ slot {
 }
 
 ::slotted(a) {
-  /** Avatar text color */
+  /** Default link color for slotted name or subtitle */
   color: var(--rh-color-interactive-primary-default);
 }
 
 ::slotted(a:visited) {
-  /** Avatar text color */
+  /** Visited link color for slotted name or subtitle */
   color: var(--rh-color-interactive-primary-visited-default);
 }
 
 ::slotted(a:active),
 ::slotted(a:hover) {
-  /** Avatar text color */
+  /** Hover and active link color for slotted name or subtitle */
   color: var(--rh-color-interactive-primary-hover);
 }
 
@@ -125,10 +122,7 @@ img,
 svg {
   overflow: hidden;
 
-  /**
-   * Avatar thumbnail size. Controlled by --rh-avatar-size custom property,
-   * defaults to --rh-size-icon-06 (64px). Capped at --rh-size-icon-06 via max-width.
-   */
+  /** Avatar thumbnail size. */
   width: var(--rh-avatar-size, var(--rh-size-icon-06, 64px));
 
   /** Avatar maximum width */
@@ -141,7 +135,12 @@ svg {
 }
 
 :host([variant='bordered']) :is(canvas, img, svg) {
-  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+  border:
+    /** Bordered variant stroke width */
+    var(--rh-border-width-sm, 1px)
+    solid
+    /** Bordered variant stroke color */
+    var(--rh-color-border-subtle);
 }
 
 :host([plain]) slot {
