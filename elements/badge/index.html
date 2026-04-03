@@ -27,9 +27,9 @@
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
-    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "lit-element": "/assets/packages/lit-element/index.js",
     "prism-esm": "/assets/packages/prism-esm/prism.js",
@@ -3817,7 +3817,8 @@
           <a href="#overview">Overview</a>
         </h2>
       </uxdot-copy-permalink>
-      <p>A badge is used to annotate other information like a label or an object name.</p>
+      <p>A badge provides a small numeric count on a pill for labels, filters, or lists. Set <code>state</code>
+when the count carries severity:</p>
 <ul>
 <li><code>neutral</code> - Indicates generic information or a message with no severity.</li>
 <li><code>danger</code> - Indicates a danger state, like an error that is blocking a user from completing a task.</li>
@@ -3826,6 +3827,9 @@
 <li><code>info</code> - Indicates helpful information or a message with very little to no severity.</li>
 <li><code>success</code> - Indicates a success state, like if a process was completed without errors.</li>
 </ul>
+<p>It must not take focus or act as a control; it has no implicit ARIA role. Provide context in
+surrounding text. Avoid color-only meaning (WCAG 1.4.1). Use <code>threshold</code> with <code>number</code> for values
+like <code>999+</code>.</p>
 
       
       
@@ -4520,19 +4524,19 @@
 <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
           <uxdot-knob-attribute slot="knobs" tag="rh-badge" name="state" type="'danger' | 'warning' | 'caution' | 'neutral' | 'success' | 'info'" default="'neutral'">
-            <div slot="description"><p>Denotes the state-of-affairs this badge represents
-Note: 'moderate','important', and 'critical' will also work, but are deprecated</p>
+            <div slot="description"><p>Background severity: <code>danger</code>, <code>warning</code>, <code>caution</code>, <code>neutral</code>, <code>success</code>, or <code>info</code>.
+Defaults to <code>neutral</code>.</p>
+<p>Legacy values are normalized: <code>moderate</code> → <code>warning</code>, <code>important</code> → <code>caution</code>,
+<code>critical</code> → <code>danger</code>, <code>note</code> → <code>info</code>.</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-badge" name="number" type="number">
-            <div slot="description"><p>Sets a numeric value for a badge.</p>
-<p>You can pair it with <code>threshold</code> attribute to add a <code>+</code> sign
-if the number exceeds the threshold value.</p>
+            <div slot="description"><p>Numeric count rendered in the badge. With <code>threshold</code>, values above the threshold display
+as <code>threshold+</code>. For text-only labels without a count, use <code>rh-tag</code> instead.</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-badge" name="threshold" type="number">
-            <div slot="description"><p>Sets a threshold for the numeric value and adds <code>+</code> sign if
-the numeric value exceeds the threshold value.</p>
+            <div slot="description"><p>Upper bound for <code>number</code>; when <code>number</code> is greater, the badge shows <code>threshold+</code>.</p>
 </div>
           </uxdot-knob-attribute></uxdot-demo>
         

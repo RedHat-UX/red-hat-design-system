@@ -27,9 +27,9 @@
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
-    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "lit-element": "/assets/packages/lit-element/index.js",
     "prism-esm": "/assets/packages/prism-esm/prism.js",
@@ -4102,7 +4102,8 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>A badge is used to annotate other information like a label or an object name.</p>
+      <p>A badge provides a small numeric count on a pill for labels, filters, or lists. Set <code>state</code>
+when the count carries severity:</p>
 <ul>
 <li><code>neutral</code> - Indicates generic information or a message with no severity.</li>
 <li><code>danger</code> - Indicates a danger state, like an error that is blocking a user from completing a task.</li>
@@ -4111,6 +4112,9 @@
 <li><code>info</code> - Indicates helpful information or a message with very little to no severity.</li>
 <li><code>success</code> - Indicates a success state, like if a process was completed without errors.</li>
 </ul>
+<p>It must not take focus or act as a control; it has no implicit ARIA role. Provide context in
+surrounding text. Avoid color-only meaning (WCAG 1.4.1). Use <code>threshold</code> with <code>number</code> for values
+like <code>999+</code>.</p>
 
 
       <div class="element-apis">
@@ -4135,9 +4139,17 @@
       </button>
     <!--/lit-part--></template>
             <h3 id="rh-badge-slots">
-              <a href="#rh-badge-slots">Slots <rh-badge state="neutral"><template shadowroot="open" shadowrootmode="open"><style>span,slot{white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px));color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));justify-content:center;align-items:center;position:relative}:is(span,slot).neutral{background-color:var(--rh-color-status-neutral)}:is(span,slot).info{background-color:var(--rh-color-status-info)}:is(span,slot).success{background-color:var(--rh-color-status-success)}:is(span,slot).caution{background-color:var(--rh-color-status-caution);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).warning{background-color:var(--rh-color-status-warning);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).danger{background-color:var(--rh-color-status-danger)}span:empty{display:none}slot{display:inline-flex}:host([number]) slot{display:none}:host([number]) span{display:inline-flex}</style><!--lit-part hqKOHqwbWgk=-->
+              <a href="#rh-badge-slots">Slots <rh-badge state="neutral"><template shadowroot="open" shadowrootmode="open"><style>span,slot{white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px));color:light-dark( var(--rh-color-text-primary-on-dark,#fff), var(--rh-color-text-primary-on-light,#151515));justify-content:center;align-items:center;position:relative}:is(span,slot).neutral{background-color:var(--rh-color-status-neutral)}:is(span,slot).info{background-color:var(--rh-color-status-info)}:is(span,slot).success{background-color:var(--rh-color-status-success)}:is(span,slot).caution{background-color:var(--rh-color-status-caution);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).warning{background-color:var(--rh-color-status-warning);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).danger{background-color:var(--rh-color-status-danger)}span:empty{display:none}slot{display:inline-flex}:host([number]) slot{display:none}:host([number]) span{display:inline-flex}</style><!--lit-part JgNQgDgoEDs=-->
       <!--lit-node 0--><span class=" neutral "><!--lit-part--><!--/lit-part--></span>
-      <!--lit-node 2--><slot class=" neutral "></slot>
+      <!--
+        summary: Count text (default slot)
+        description: |
+          Put the numeric count in the default slot—the same value as the `number` attribute when
+          you use number. The badge has no implicit accessible name; authors should provide context
+          in surrounding text (labels, headings, table cells, etc.). For longer non-count labels,
+          use rh-tag instead.
+      -->
+      <!--lit-node 3--><slot class=" neutral "></slot>
     <!--/lit-part--></template>1</rh-badge>
                 
               </a>
@@ -4200,9 +4212,12 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Count text (default slot)</p></td>
                   <td>
-                   <p>undefined <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Put the numeric count in the default slot—the same value as the <code>number</code> attribute when
+you use number. The badge has no implicit accessible name; authors should provide context
+in surrounding text (labels, headings, table cells, etc.). For longer non-count labels,
+use rh-tag instead. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -4230,9 +4245,17 @@
       </button>
     <!--/lit-part--></template>
           <h3 id="rh-badge-attributes">
-            <a href="#rh-badge-attributes">Attributes <rh-badge state="neutral"><template shadowroot="open" shadowrootmode="open"><style>span,slot{white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px));color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));justify-content:center;align-items:center;position:relative}:is(span,slot).neutral{background-color:var(--rh-color-status-neutral)}:is(span,slot).info{background-color:var(--rh-color-status-info)}:is(span,slot).success{background-color:var(--rh-color-status-success)}:is(span,slot).caution{background-color:var(--rh-color-status-caution);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).warning{background-color:var(--rh-color-status-warning);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).danger{background-color:var(--rh-color-status-danger)}span:empty{display:none}slot{display:inline-flex}:host([number]) slot{display:none}:host([number]) span{display:inline-flex}</style><!--lit-part hqKOHqwbWgk=-->
+            <a href="#rh-badge-attributes">Attributes <rh-badge state="neutral"><template shadowroot="open" shadowrootmode="open"><style>span,slot{white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px));color:light-dark( var(--rh-color-text-primary-on-dark,#fff), var(--rh-color-text-primary-on-light,#151515));justify-content:center;align-items:center;position:relative}:is(span,slot).neutral{background-color:var(--rh-color-status-neutral)}:is(span,slot).info{background-color:var(--rh-color-status-info)}:is(span,slot).success{background-color:var(--rh-color-status-success)}:is(span,slot).caution{background-color:var(--rh-color-status-caution);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).warning{background-color:var(--rh-color-status-warning);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).danger{background-color:var(--rh-color-status-danger)}span:empty{display:none}slot{display:inline-flex}:host([number]) slot{display:none}:host([number]) span{display:inline-flex}</style><!--lit-part JgNQgDgoEDs=-->
       <!--lit-node 0--><span class=" neutral "><!--lit-part--><!--/lit-part--></span>
-      <!--lit-node 2--><slot class=" neutral "></slot>
+      <!--
+        summary: Count text (default slot)
+        description: |
+          Put the numeric count in the default slot—the same value as the `number` attribute when
+          you use number. The badge has no implicit accessible name; authors should provide context
+          in surrounding text (labels, headings, table cells, etc.). For longer non-count labels,
+          use rh-tag instead.
+      -->
+      <!--lit-node 3--><slot class=" neutral "></slot>
     <!--/lit-part--></template>3</rh-badge>
               
             </a>
@@ -4300,8 +4323,10 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>state</code></td>
-                  <td><p>Denotes the state-of-affairs this badge represents
-Note: 'moderate','important', and 'critical' will also work, but are deprecated</p></td>
+                  <td><p>Background severity: <code>danger</code>, <code>warning</code>, <code>caution</code>, <code>neutral</code>, <code>success</code>, or <code>info</code>.
+Defaults to <code>neutral</code>.</p>
+<p>Legacy values are normalized: <code>moderate</code> → <code>warning</code>, <code>important</code> → <code>caution</code>,
+<code>critical</code> → <code>danger</code>, <code>note</code> → <code>info</code>.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'danger'</span> <span class="token operator">|</span> <span class="token string">'warning'</span> <span class="token operator">|</span> <span class="token string">'caution'</span> <span class="token operator">|</span> <span class="token string">'neutral'</span> <span class="token operator">|</span> <span class="token string">'success'</span> <span class="token operator">|</span> <span class="token string">'info'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'neutral'</span></code></pre></td>
                 </tr>
@@ -4333,9 +4358,8 @@ Note: 'moderate','important', and 'critical' will also work, but are deprecated<
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>number</code></td>
-                  <td><p>Sets a numeric value for a badge.</p>
-<p>You can pair it with <code>threshold</code> attribute to add a <code>+</code> sign
-if the number exceeds the threshold value.</p></td>
+                  <td><p>Numeric count rendered in the badge. With <code>threshold</code>, values above the threshold display
+as <code>threshold+</code>. For text-only labels without a count, use <code>rh-tag</code> instead.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">number</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4367,8 +4391,7 @@ if the number exceeds the threshold value.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>threshold</code></td>
-                  <td><p>Sets a threshold for the numeric value and adds <code>+</code> sign if
-the numeric value exceeds the threshold value.</p></td>
+                  <td><p>Upper bound for <code>number</code>; when <code>number</code> is greater, the badge shows <code>threshold+</code>.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">number</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4398,9 +4421,17 @@ the numeric value exceeds the threshold value.</p></td>
       </button>
     <!--/lit-part--></template>
             <h3 id="rh-badge-methods">
-              <a href="#rh-badge-methods">Methods <rh-badge state="neutral"><template shadowroot="open" shadowrootmode="open"><style>span,slot{white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px));color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));justify-content:center;align-items:center;position:relative}:is(span,slot).neutral{background-color:var(--rh-color-status-neutral)}:is(span,slot).info{background-color:var(--rh-color-status-info)}:is(span,slot).success{background-color:var(--rh-color-status-success)}:is(span,slot).caution{background-color:var(--rh-color-status-caution);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).warning{background-color:var(--rh-color-status-warning);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).danger{background-color:var(--rh-color-status-danger)}span:empty{display:none}slot{display:inline-flex}:host([number]) slot{display:none}:host([number]) span{display:inline-flex}</style><!--lit-part hqKOHqwbWgk=-->
+              <a href="#rh-badge-methods">Methods <rh-badge state="neutral"><template shadowroot="open" shadowrootmode="open"><style>span,slot{white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px));color:light-dark( var(--rh-color-text-primary-on-dark,#fff), var(--rh-color-text-primary-on-light,#151515));justify-content:center;align-items:center;position:relative}:is(span,slot).neutral{background-color:var(--rh-color-status-neutral)}:is(span,slot).info{background-color:var(--rh-color-status-info)}:is(span,slot).success{background-color:var(--rh-color-status-success)}:is(span,slot).caution{background-color:var(--rh-color-status-caution);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).warning{background-color:var(--rh-color-status-warning);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).danger{background-color:var(--rh-color-status-danger)}span:empty{display:none}slot{display:inline-flex}:host([number]) slot{display:none}:host([number]) span{display:inline-flex}</style><!--lit-part JgNQgDgoEDs=-->
       <!--lit-node 0--><span class=" neutral "><!--lit-part--><!--/lit-part--></span>
-      <!--lit-node 2--><slot class=" neutral "></slot>
+      <!--
+        summary: Count text (default slot)
+        description: |
+          Put the numeric count in the default slot—the same value as the `number` attribute when
+          you use number. The badge has no implicit accessible name; authors should provide context
+          in surrounding text (labels, headings, table cells, etc.). For longer non-count labels,
+          use rh-tag instead.
+      -->
+      <!--lit-node 3--><slot class=" neutral "></slot>
     <!--/lit-part--></template>0</rh-badge>
                 
               </a>
@@ -4431,9 +4462,17 @@ the numeric value exceeds the threshold value.</p></td>
       </button>
     <!--/lit-part--></template>
             <h3 id="rh-badge-events">
-              <a href="#rh-badge-events">Events <rh-badge state="neutral"><template shadowroot="open" shadowrootmode="open"><style>span,slot{white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px));color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));justify-content:center;align-items:center;position:relative}:is(span,slot).neutral{background-color:var(--rh-color-status-neutral)}:is(span,slot).info{background-color:var(--rh-color-status-info)}:is(span,slot).success{background-color:var(--rh-color-status-success)}:is(span,slot).caution{background-color:var(--rh-color-status-caution);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).warning{background-color:var(--rh-color-status-warning);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).danger{background-color:var(--rh-color-status-danger)}span:empty{display:none}slot{display:inline-flex}:host([number]) slot{display:none}:host([number]) span{display:inline-flex}</style><!--lit-part hqKOHqwbWgk=-->
+              <a href="#rh-badge-events">Events <rh-badge state="neutral"><template shadowroot="open" shadowrootmode="open"><style>span,slot{white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px));color:light-dark( var(--rh-color-text-primary-on-dark,#fff), var(--rh-color-text-primary-on-light,#151515));justify-content:center;align-items:center;position:relative}:is(span,slot).neutral{background-color:var(--rh-color-status-neutral)}:is(span,slot).info{background-color:var(--rh-color-status-info)}:is(span,slot).success{background-color:var(--rh-color-status-success)}:is(span,slot).caution{background-color:var(--rh-color-status-caution);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).warning{background-color:var(--rh-color-status-warning);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).danger{background-color:var(--rh-color-status-danger)}span:empty{display:none}slot{display:inline-flex}:host([number]) slot{display:none}:host([number]) span{display:inline-flex}</style><!--lit-part JgNQgDgoEDs=-->
       <!--lit-node 0--><span class=" neutral "><!--lit-part--><!--/lit-part--></span>
-      <!--lit-node 2--><slot class=" neutral "></slot>
+      <!--
+        summary: Count text (default slot)
+        description: |
+          Put the numeric count in the default slot—the same value as the `number` attribute when
+          you use number. The badge has no implicit accessible name; authors should provide context
+          in surrounding text (labels, headings, table cells, etc.). For longer non-count labels,
+          use rh-tag instead.
+      -->
+      <!--lit-node 3--><slot class=" neutral "></slot>
     <!--/lit-part--></template>0</rh-badge>
                 
               </a>
@@ -4464,9 +4503,17 @@ the numeric value exceeds the threshold value.</p></td>
       </button>
     <!--/lit-part--></template>
             <h3 id="rh-badge-css-parts">
-              <a href="#rh-badge-css-parts">CSS Shadow Parts <rh-badge state="neutral"><template shadowroot="open" shadowrootmode="open"><style>span,slot{white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px));color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));justify-content:center;align-items:center;position:relative}:is(span,slot).neutral{background-color:var(--rh-color-status-neutral)}:is(span,slot).info{background-color:var(--rh-color-status-info)}:is(span,slot).success{background-color:var(--rh-color-status-success)}:is(span,slot).caution{background-color:var(--rh-color-status-caution);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).warning{background-color:var(--rh-color-status-warning);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).danger{background-color:var(--rh-color-status-danger)}span:empty{display:none}slot{display:inline-flex}:host([number]) slot{display:none}:host([number]) span{display:inline-flex}</style><!--lit-part hqKOHqwbWgk=-->
+              <a href="#rh-badge-css-parts">CSS Shadow Parts <rh-badge state="neutral"><template shadowroot="open" shadowrootmode="open"><style>span,slot{white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px));color:light-dark( var(--rh-color-text-primary-on-dark,#fff), var(--rh-color-text-primary-on-light,#151515));justify-content:center;align-items:center;position:relative}:is(span,slot).neutral{background-color:var(--rh-color-status-neutral)}:is(span,slot).info{background-color:var(--rh-color-status-info)}:is(span,slot).success{background-color:var(--rh-color-status-success)}:is(span,slot).caution{background-color:var(--rh-color-status-caution);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).warning{background-color:var(--rh-color-status-warning);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).danger{background-color:var(--rh-color-status-danger)}span:empty{display:none}slot{display:inline-flex}:host([number]) slot{display:none}:host([number]) span{display:inline-flex}</style><!--lit-part JgNQgDgoEDs=-->
       <!--lit-node 0--><span class=" neutral "><!--lit-part--><!--/lit-part--></span>
-      <!--lit-node 2--><slot class=" neutral "></slot>
+      <!--
+        summary: Count text (default slot)
+        description: |
+          Put the numeric count in the default slot—the same value as the `number` attribute when
+          you use number. The badge has no implicit accessible name; authors should provide context
+          in surrounding text (labels, headings, table cells, etc.). For longer non-count labels,
+          use rh-tag instead.
+      -->
+      <!--lit-node 3--><slot class=" neutral "></slot>
     <!--/lit-part--></template>0</rh-badge>
                 
               </a>
@@ -4497,9 +4544,17 @@ the numeric value exceeds the threshold value.</p></td>
       </button>
     <!--/lit-part--></template>
             <h3 id="rh-badge-css-properties">
-              <a href="#rh-badge-css-properties">CSS Custom Properties <rh-badge state="neutral"><template shadowroot="open" shadowrootmode="open"><style>span,slot{white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px));color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));justify-content:center;align-items:center;position:relative}:is(span,slot).neutral{background-color:var(--rh-color-status-neutral)}:is(span,slot).info{background-color:var(--rh-color-status-info)}:is(span,slot).success{background-color:var(--rh-color-status-success)}:is(span,slot).caution{background-color:var(--rh-color-status-caution);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).warning{background-color:var(--rh-color-status-warning);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).danger{background-color:var(--rh-color-status-danger)}span:empty{display:none}slot{display:inline-flex}:host([number]) slot{display:none}:host([number]) span{display:inline-flex}</style><!--lit-part hqKOHqwbWgk=-->
+              <a href="#rh-badge-css-properties">CSS Custom Properties <rh-badge state="neutral"><template shadowroot="open" shadowrootmode="open"><style>span,slot{white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px));color:light-dark( var(--rh-color-text-primary-on-dark,#fff), var(--rh-color-text-primary-on-light,#151515));justify-content:center;align-items:center;position:relative}:is(span,slot).neutral{background-color:var(--rh-color-status-neutral)}:is(span,slot).info{background-color:var(--rh-color-status-info)}:is(span,slot).success{background-color:var(--rh-color-status-success)}:is(span,slot).caution{background-color:var(--rh-color-status-caution);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).warning{background-color:var(--rh-color-status-warning);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).danger{background-color:var(--rh-color-status-danger)}span:empty{display:none}slot{display:inline-flex}:host([number]) slot{display:none}:host([number]) span{display:inline-flex}</style><!--lit-part JgNQgDgoEDs=-->
       <!--lit-node 0--><span class=" neutral "><!--lit-part--><!--/lit-part--></span>
-      <!--lit-node 2--><slot class=" neutral "></slot>
+      <!--
+        summary: Count text (default slot)
+        description: |
+          Put the numeric count in the default slot—the same value as the `number` attribute when
+          you use number. The badge has no implicit accessible name; authors should provide context
+          in surrounding text (labels, headings, table cells, etc.). For longer non-count labels,
+          use rh-tag instead.
+      -->
+      <!--lit-node 3--><slot class=" neutral "></slot>
     <!--/lit-part--></template>0</rh-badge>
                 
               </a>
@@ -4530,9 +4585,17 @@ the numeric value exceeds the threshold value.</p></td>
       </button>
     <!--/lit-part--></template>
             <h3 id="rh-badge-design-tokens">
-              <a href="#rh-badge-design-tokens">Design Tokens <rh-badge state="neutral"><template shadowroot="open" shadowrootmode="open"><style>span,slot{white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px));color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));justify-content:center;align-items:center;position:relative}:is(span,slot).neutral{background-color:var(--rh-color-status-neutral)}:is(span,slot).info{background-color:var(--rh-color-status-info)}:is(span,slot).success{background-color:var(--rh-color-status-success)}:is(span,slot).caution{background-color:var(--rh-color-status-caution);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).warning{background-color:var(--rh-color-status-warning);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).danger{background-color:var(--rh-color-status-danger)}span:empty{display:none}slot{display:inline-flex}:host([number]) slot{display:none}:host([number]) span{display:inline-flex}</style><!--lit-part hqKOHqwbWgk=-->
+              <a href="#rh-badge-design-tokens">Design Tokens <rh-badge state="neutral"><template shadowroot="open" shadowrootmode="open"><style>span,slot{white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px));color:light-dark( var(--rh-color-text-primary-on-dark,#fff), var(--rh-color-text-primary-on-light,#151515));justify-content:center;align-items:center;position:relative}:is(span,slot).neutral{background-color:var(--rh-color-status-neutral)}:is(span,slot).info{background-color:var(--rh-color-status-info)}:is(span,slot).success{background-color:var(--rh-color-status-success)}:is(span,slot).caution{background-color:var(--rh-color-status-caution);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).warning{background-color:var(--rh-color-status-warning);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).danger{background-color:var(--rh-color-status-danger)}span:empty{display:none}slot{display:inline-flex}:host([number]) slot{display:none}:host([number]) span{display:inline-flex}</style><!--lit-part JgNQgDgoEDs=-->
       <!--lit-node 0--><span class=" neutral "><!--lit-part--><!--/lit-part--></span>
-      <!--lit-node 2--><slot class=" neutral "></slot>
+      <!--
+        summary: Count text (default slot)
+        description: |
+          Put the numeric count in the default slot—the same value as the `number` attribute when
+          you use number. The badge has no implicit accessible name; authors should provide context
+          in surrounding text (labels, headings, table cells, etc.). For longer non-count labels,
+          use rh-tag instead.
+      -->
+      <!--lit-node 3--><slot class=" neutral "></slot>
     <!--/lit-part--></template>13</rh-badge></a>
             </h3>
           </uxdot-copy-permalink>
@@ -4574,7 +4637,8 @@ the numeric value exceeds the threshold value.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Pill border radius; Example: Label</p>
+                    <p>Badge pill border radius</p>
+<p>Pill border radius; Example: Label</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4786,7 +4850,8 @@ the numeric value exceeds the threshold value.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>12px font size</p>
+                    <p>Badge text font size</p>
+<p>12px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -4892,7 +4957,8 @@ the numeric value exceeds the threshold value.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Line height for body text</p>
+                    <p>Badge line height</p>
+<p>Line height for body text</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5104,7 +5170,8 @@ the numeric value exceeds the threshold value.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Primary text color for dark theme</p>
+                    <p>Primary text on dark / saturated surfaces</p>
+<p>Primary text color for dark theme</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5210,7 +5277,7 @@ the numeric value exceeds the threshold value.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Neutral status background</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5316,7 +5383,7 @@ the numeric value exceeds the threshold value.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Info status background</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5422,7 +5489,7 @@ the numeric value exceeds the threshold value.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Success status background</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5528,7 +5595,7 @@ the numeric value exceeds the threshold value.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Caution status background</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5634,7 +5701,7 @@ the numeric value exceeds the threshold value.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Warning status background</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5740,7 +5807,10 @@ the numeric value exceeds the threshold value.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Primary text color for light theme</p>
+                    <p>Primary text on light surfaces</p>
+<p>Caution text color</p>
+<p>Warning text color</p>
+<p>Primary text color for light theme</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5846,7 +5916,7 @@ the numeric value exceeds the threshold value.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Danger status background</p>
                   </td>
                   <td data-label="Copy">
       <div>
