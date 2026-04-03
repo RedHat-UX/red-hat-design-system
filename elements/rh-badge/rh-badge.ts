@@ -19,9 +19,9 @@ import styles from './rh-badge.css' with { type: 'css' };
  *  - `info` - Indicates helpful information or a message with very little to no severity.
  *  - `success` - Indicates a success state, like if a process was completed without errors.
  *
- * It must not take focus or act as a control; it has no implicit ARIA role. Authors should include
- * nearby or slotted text for screen readers; Avoid color-only meaning (WCAG 1.4.1). Use `threshold`
- * with `number` for values like `999+`.
+ * It must not take focus or act as a control; it has no implicit ARIA role. Provide context in
+ * surrounding text. Avoid color-only meaning (WCAG 1.4.1). Use `threshold` with `number` for values
+ * like `999+`.
  *
  * @summary Non-interactive numeric pill badge for counts and status
  *
@@ -91,12 +91,12 @@ export class RhBadge extends LitElement {
     return html`
       <span class="${classMap({ [state]: true })}">${computedContent}</span>
       <!--
-        summary: Optional label beside the count
+        summary: Count text (default slot)
         description: |
-          Short text after the computed number (for example repeating the count for screen readers,
-          or a word like "Unread"). The badge has no implicit accessible name; slotted text should
-          supply context. Eg: \`<rh-badge number="50">Unread</rh-badge>\`. Use the \`<rh-tag>\` element 
-          for longer captions.
+          Put the numeric count in the default slot—the same value as the \`number\` attribute when
+          you use number. The badge has no implicit accessible name; authors should provide context
+          in surrounding text (labels, headings, table cells, etc.). For longer non-count labels,
+          use rh-tag instead.
       -->
       <slot class="${classMap({ [state]: true })}"></slot>
     `;
