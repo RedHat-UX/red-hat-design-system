@@ -345,6 +345,7 @@ export class RhDialog extends LitElement {
     this.open = true;
   }
 
+  /** Opens the dialog as a modal. */
   showModal() {
     // TODO: non-modal mode
     this.show();
