@@ -2,27 +2,27 @@ rh-cta:not(:defined) {
   width: fit-content !important;
   display: inline-flex !important;
 
-  /** CTA text color */
+  /** Pre-upgrade text color */
   color: var(--rh-cta-color);
 
-  /** CTA typeface */
+  /** Pre-upgrade typeface */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
 
-  /** CTA text size */
+  /** Pre-upgrade text size */
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
 
-  /** CTA line height */
+  /** Pre-upgrade line height */
   line-height: var(--rh-line-height-body-text, 1.5);
 
-  /** CTA background */
+  /** Pre-upgrade background color */
   background-color: var(--rh-cta-background-color);
   border-color: var(--rh-cta-border-color, transparent);
 
-  /** CTA corner rounding */
+  /** Pre-upgrade border radius */
   border-radius: var(--rh-border-radius-default, 3px);
 
-  /** CTA border thickness */
+  /** Pre-upgrade border width */
   border-width: var(--rh-border-width-sm, 1px);
 }
 
@@ -75,21 +75,21 @@ rh-cta:not(:defined):focus-within {
 }
 
 rh-cta:not(:defined):hover {
-  /** CTA text color */
+  /** Pre-upgrade hover text color */
   color: var(--rh-cta-hover-color);
   border-color: var(--rh-cta-hover-border-color);
 
-  /** CTA background */
+  /** Pre-upgrade hover background */
   background-color: var(--rh-cta-hover-background-color);
 
   --rh-cta-text-decoration: var(--rh-cta-hover-text-decoration);
 }
 
 rh-cta:not(:defined):active {
-  /** CTA background */
+  /** Pre-upgrade active background */
   background-color: var(--rh-cta-active-background-color);
 
-  /** CTA text color */
+  /** Pre-upgrade active text color */
   color: var(--rh-cta-active-color);
 }
 
@@ -154,10 +154,10 @@ rh-cta[variant='secondary'][color-palette^='dark']:not(:defined) {
 rh-cta[variant='brick']:not(:defined) {
   border-style: solid;
 
-  /** CTA typeface */
+  /** Brick pre-upgrade typeface */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
 
-  /** CTA font weight */
+  /** Brick pre-upgrade font weight */
   font-weight: var(--rh-font-weight-body-text-regular, 400);
 
   --rh-cta-background-color: transparent;
