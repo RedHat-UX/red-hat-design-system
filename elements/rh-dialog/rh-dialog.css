@@ -41,11 +41,11 @@
     light-dark(var(--rh-color-surface-lightest, #ffffff),
       var(--rh-color-surface-dark, #383838));
 
-  /** Dialog corner rounding */
+  /** Dialog box corner rounding */
   border-radius: var(--rh-border-radius-default, 3px);
   border: 0;
 
-  /** Dialog elevation shadow */
+  /** Dialog box-shadow */
   box-shadow: var(--rh-box-shadow-xl, 0 8px 24px 3px rgba(21, 21, 21, 0.35));
   box-sizing: border-box;
 
@@ -59,7 +59,7 @@
   overflow-y: auto;
   overscroll-behavior: contain;
 
-  /** Dialog inner spacing */
+  /** Dialog inner padding */
   padding: var(--rh-space-xl, 24px);
   position: fixed;
 }
@@ -89,7 +89,7 @@
       var(--rh-color-surface-dark, #383838));
   inset-block-start: 0;
 
-  /** Dialog bottom margin */
+  /** Header bottom margin */
   margin-block-end: var(--rh-space-lg, 16px);
   position: relative;
 
@@ -110,7 +110,7 @@
       light-dark(var(--rh-color-surface-lightest, #ffffff),
         var(--rh-color-surface-dark, #383838));
 
-    /** Dialog block size */
+    /** Header pseudo-element height for sticky overlap */
     block-size: var(--rh-space-lg, 16px);
     content: '';
     inline-size: 100%;
@@ -127,7 +127,7 @@
   }
 
   @media (min-width: 1200px) {
-    /** Dialog bottom margin */
+    /** Header bottom margin at wide viewports */
     margin-block-end: var(--rh-space-xl, 24px);
   }
 }
@@ -138,7 +138,7 @@
 
 #header,
 #header[hidden] + #body {
-  /** Dialog end spacing */
+  /** Header and body inline-end padding for close button clearance */
   padding-inline-end: var(--rh-space-3xl, 48px);
 }
 
@@ -148,7 +148,7 @@
   }
 
   #dialog {
-    /** Dialog inner spacing */
+    /** Dialog box inner padding at wide viewports */
     padding: var(--rh-space-2xl, 32px);
   }
 
@@ -166,13 +166,13 @@
 }
 
 #header ::slotted(:is(h1,h2,h3,h4,h5,h6)[slot='header']) {
-  /** Dialog typeface */
+  /** Heading typeface */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
 
-  /** Dialog text size */
+  /** Heading text size */
   font-size: var(--rh-font-size-heading-sm, 1.5rem);
 
-  /** Dialog font weight */
+  /** Heading font weight */
   font-weight: var(--rh-font-weight-body-text-regular, 400);
 }
 
@@ -181,16 +181,14 @@
 }
 
 #body ::slotted(p:last-of-type) {
-  /** Dialog bottom margin */
+  /** Last body paragraph bottom margin */
   margin-block-end: var(--rh-space-xl, 24px) !important;
 }
 
 #close-button {
   /**
-   * Sets the close button icon color. Defaults to the
-   * --rh-color-icon-secondary design token. In video mode,
-   * defaults to --rh-color-surface-lightest for contrast
-   * against the dark backdrop.
+   * Close button icon color; in video mode defaults to lightest surface
+   * token for contrast against the dark backdrop.
    */
   color: var(--rh-dialog-close-button-color, var(--rh-color-icon-secondary));
   cursor: pointer;
@@ -207,20 +205,20 @@
     light-dark(var(--rh-color-surface-lightest, #ffffff),
       var(--rh-color-surface-dark, #383838));
 
-  /** Dialog block size */
+  /** Close button hit area height */
   block-size: var(--rh-length-xl, 24px);
 
-  /** Dialog corner rounding */
+  /** Close button corner rounding */
   border-radius: var(--rh-border-radius-default, 3px);
 
-  /** Dialog inline size */
+  /** Close button hit area width */
   inline-size: var(--rh-length-xl, 24px);
 }
 
 :host([position='top']) #dialog {
   inline-size: 100%;
 
-  /** Dialog top margin */
+  /** Space between dialog and top of screen for top positioned dialogs */
   margin-block-start: var(--rh-space-2xl, 32px);
   max-inline-size: var(--_box-width, calc(100% - var(--rh-space-2xl, 32px)));
 }
@@ -229,7 +227,7 @@
   align-items: center;
   display: flex;
 
-  /** Dialog content gap */
+  /** Footer action button gap */
   gap: var(--rh-space-md, 8px);
 }
 
@@ -248,9 +246,8 @@
 
 :host([type='video'][open]) #dialog {
   /**
-   * Sets the aspect ratio for the video dialog container.
-   * Defaults to 16/9. USE to match non-standard video
-   * dimensions, e.g., 4/3 or 21/9.
+   * Video dialog aspect ratio. Defaults to 16/9. Override for non-standard
+   * video dimensions (e.g. 4/3 or 21/9).
    */
   --_aspect-ratio: var(--rh-dialog-video-aspect-ratio, 16/9);
 
