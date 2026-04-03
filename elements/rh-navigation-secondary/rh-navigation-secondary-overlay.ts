@@ -5,11 +5,12 @@ import { property } from 'lit/decorators/property.js';
 import styles from './rh-navigation-secondary-overlay.css' with { type: 'css' };
 
 /**
- * Semi-transparent backdrop overlay that dims page content when a secondary
- * navigation dropdown or mobile menu is expanded. Clicking the overlay closes
- * all open menus. Managed automatically by `<rh-navigation-secondary>`.
- * AVOID using standalone. Screen readers should ignore this element as it
- * serves a purely visual purpose. Keyboard: Escape closes the overlay.
+ * Semi-transparent backdrop for dimming page content when a secondary
+ * navigation dropdown or mobile menu is expanded. Provides a click
+ * target that allows users to close all open menus. Managed
+ * automatically by `<rh-navigation-secondary>`; avoid using
+ * standalone. Screen readers should ignore this element as it serves
+ * a purely visual purpose. Keyboard: Escape closes the overlay.
  *
  * @summary Backdrop overlay for expanded secondary navigation menus
  */
@@ -18,22 +19,9 @@ export class RhNavigationSecondaryOverlay extends LitElement {
   static readonly styles = [styles];
 
   /**
-   * Controls the visibility of the navigation overlay.
-   *
-   * When `true`, displays a semi-transparent overlay covering page content behind
-   * the secondary navigation. When `false`, the overlay is hidden.
-   *
-   * ## Usage guidelines
-   * - Automatically managed by `<rh-navigation-secondary>` parent component
-   * - Displays when dropdowns are expanded in desktop view
-   * - Displays when mobile menu is open in mobile view
-   * - Clicking the overlay closes all open navigation menus
-   *
-   * ## Accessibility
-   * - Provides visual focus on navigation by dimming page content
-   * - Prevents interaction with page content while navigation is active
-   * - Works with keyboard navigation (ESC key closes overlay)
-   * - Helps users understand the navigation modal context
+   * When `true`, displays the overlay. Managed automatically by the
+   * parent `<rh-navigation-secondary>` when dropdowns or the mobile
+   * menu expand. Defaults to `false`.
    */
   @property({ type: Boolean, reflect: true }) open = false;
 }
