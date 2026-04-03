@@ -31,7 +31,7 @@ export class DialogCloseEvent extends Event {
 
 export class DialogOpenEvent extends Event {
   constructor(
-    /** The trigger element that caused the dialog to open, or null if opened programmatically. */
+    /** The element that opened the dialog, or null if opened programmatically. */
     public trigger: HTMLElement | null
   ) {
     super('open', { bubbles: true, cancelable: true });
@@ -44,25 +44,21 @@ async function pauseYoutube(iframe: HTMLIFrameElement) {
 }
 
 /**
- * Modal overlay for confirming decisions or collecting input. Traps
- * focus and blocks page interaction. MUST have a heading or
- * `accessible-label` for screen readers. Uses native `<dialog>` with
- * ARIA `aria-labelledby`. Keyboard: Escape closes, Tab cycles focus.
- * USE sparingly to avoid disrupting user workflow.
+ * Modal overlay for confirming decisions or collecting input. Traps focus and
+ * blocks page interaction. Must have a heading or `accessible-label` for screen
+ * readers. Uses native `<dialog>` with `aria-labelledby`. Escape closes the
+ * dialog; Tab cycles focus within it. Use sparingly to avoid disrupting workflow.
  *
  * @summary Modal dialog for confirmations, errors, or required input
  *
  * @alias dialog
  *
- * @fires {DialogOpenEvent} open - Fires when the dialog opens, either via
- *   trigger click or programmatic `show()`/`showModal()` call.
- *   Event detail: `trigger` (HTMLElement | null) — the element that opened
- *   the dialog, or null if opened programmatically.
- * @fires {DialogCloseEvent} close - Fires when the dialog closes via the
- *   close button or a programmatic `close()` call. No event detail properties.
- * @fires {DialogCancelEvent} cancel - Fires when the user dismisses the
- *   dialog by clicking the backdrop or pressing Escape. No event detail
- *   properties.
+ * @fires {DialogOpenEvent} open - Fires when the dialog opens. The event's `trigger`
+ *   property (HTMLElement | null) holds the element that opened it.
+ * @fires {DialogCloseEvent} close - Fires when the dialog closes via close button
+ *   or programmatic `close()`. No detail properties.
+ * @fires {DialogCancelEvent} cancel - Fires when the user dismisses via backdrop
+ *   click or Escape. No detail properties.
  */
 @customElement('rh-dialog')
 @themable
@@ -70,54 +66,39 @@ export class RhDialog extends LitElement {
   static readonly styles = [styles];
 
   /**
-   * Controls the fixed width of the dialog container. Valid values are
-   * `small` (35rem), `medium` (52.5rem), or `large` (70rem). When unset
-   * the dialog defaults to `min(90%, 1140px)`. USE `small` for brief
-   * confirmations, `medium` for forms, and `large` for content-heavy dialogs.
+   * Fixed width: `small` (35 rem), `medium` (52.5 rem), or `large` (70 rem).
+   * Defaults to `min(90%, 1140px)` when unset.
    */
   @property({ reflect: true }) variant?: 'small' | 'medium' | 'large';
 
   /**
-   * Controls the vertical placement of the dialog. When set to `top`, the
-   * dialog aligns to the top of the viewport with a `--rh-space-2xl` margin.
-   * When unset, the dialog is vertically and horizontally centered. USE
-   * `top` for full-width layouts or when the dialog contains charts or
-   * complex images that benefit from more horizontal space.
+   * Vertical placement. Set to `top` to align to the top of the viewport
+   * instead of center.
    */
   @property({ reflect: true }) position?: 'top';
 
   /**
-   * Sets the ARIA accessible name for the dialog, used by screen readers to
-   * announce the dialog's purpose. MUST be provided when no heading element
-   * exists in the `header` or default slot. Fallback order: 1) this attribute,
-   * 2) first heading found in slotted content, 3) trigger element text.
-   * Maps to `aria-label` on the native `<dialog>` element.
+   * Accessible name for the dialog. Must be provided when no heading
+   * exists in the header or default slot. Maps to `aria-label` on the
+   * native `<dialog>`.
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
 
   /**
-   * Whether the dialog is currently open. Set declaratively to show the
-   * dialog on load, or use `show()`/`showModal()` programmatically. When
-   * `true`, the dialog traps focus and prevents interaction with background
-   * content. Reflects to the `open` attribute. Defaults to `false`.
+   * Whether the dialog is currently open.
    */
   @property({ type: Boolean, reflect: true }) open = false;
 
   /**
-   * ID of the element that opens this dialog when clicked. The trigger
-   * element MUST exist in the same document or shadow root. When set, the
-   * dialog automatically listens for click and Enter keypress events on the
-   * trigger. The trigger's text content is used as a fallback accessible
-   * name if no heading or `accessible-label` is provided.
+   * ID of the element that opens the dialog on click. Should exist in
+   * the same document or shadow root. Its text is used as a fallback
+   * accessible name when no heading or `accessible-label` is present.
    */
   @property() trigger?: string;
 
   /**
-   * Sets the dialog to video mode. When set to `video`, the dialog uses a
-   * 16:9 aspect ratio (customizable via `--rh-dialog-video-aspect-ratio`),
-   * removes padding, and automatically pauses `<video>` or YouTube
-   * `<iframe>` elements when the dialog closes. The close button overlays
-   * the video content.
+   * Set to `video` for a 16:9 video dialog. Removes padding and pauses
+   * `<video>` or YouTube `<iframe>` elements on close.
    */
   @property({ reflect: true }) type?: 'video';
 
@@ -181,48 +162,43 @@ export class RhDialog extends LitElement {
               <div id="header"
                    part="header"
                    ?hidden=${!hasHeader}>
-                <!-- summary: Optional heading displayed at the top of the dialog
-                     description: |
-                       SHOULD contain a heading element (h2-h6) that describes the
-                       dialog's purpose. The heading automatically becomes the dialog's
-                       ARIA accessible name via \`aria-labelledby\`. Sticks to the top
-                       of the dialog when content overflows. AVOID using h1 to maintain
-                       proper document heading hierarchy. -->
+                <!--
+                  summary: Dialog heading
+                  description: |
+                    Should contain an h2-h6 describing the dialog's purpose. The heading becomes the
+                    accessible name via aria-labelledby. Sticks to the top when content overflows.
+                -->
                 <slot name="header"></slot>
                 <!-- The container for the optional dialog description in the header -->
                 <div part="description" ?hidden=${!hasDescription}>
-                  <!-- summary: Supplementary text displayed below the header heading
-                       description: |
-                         USE for brief context that supports the header. SHOULD be
-                         concise body text, not interactive elements. Hidden when
-                         no content is slotted. -->
+                  <!--
+                    summary: Supplementary text below the heading
+                    description: |
+                      Brief context supporting the header. Hidden when empty.
+                  -->
                   <slot name="description"></slot>
                 </div>
               </div>
+              <!-- The container for the dialog body content -->
               <div id="body" part="body">
-                <!-- summary: Primary dialog body content
-                     description: |
-                       Accepts any content including text, forms, images, or
-                       interactive elements. When the header slot is empty, this
-                       content appears at the top of the dialog. If a heading
-                       element (h2-h6) is placed here without a header slot, it
-                       automatically provides the dialog's accessible name via
-                       \`aria-labelledby\`. For \`type="video"\`, USE a \`<video>\` or
-                       YouTube \`<iframe>\` element. Content scrolls vertically when
-                       it overflows the dialog container. -->
+                <!--
+                  summary: Primary dialog content
+                  description: |
+                    Accepts text, forms, images, or interactive elements. Scrolls vertically on
+                    overflow. For video dialogs, slot a video or YouTube iframe here.
+                -->
                 <slot></slot>
               </div>
               <!-- Actions footer container -->
               <div id="footer"
                    part="footer"
                    ?hidden=${!hasFooter}>
-                <!-- summary: Action buttons or links anchored to the bottom of the dialog
-                     description: |
-                       USE for primary and secondary action buttons (e.g., confirm,
-                       cancel). SHOULD contain at most two buttons. Buttons are
-                       laid out horizontally with \`--rh-space-md\` gap. Hidden when
-                       no content is slotted. Focusable elements here are included
-                       in the dialog's Tab key focus cycle. -->
+                <!--
+                  summary: Action buttons at the bottom of the dialog
+                  description: |
+                    Primary and secondary action buttons (e.g. confirm, cancel). Hidden when empty.
+                    Focusable elements here are part of the dialog's Tab focus cycle.
+                -->
                 <slot name="footer"></slot>
               </div>
             </div>
@@ -332,6 +308,10 @@ export class RhDialog extends LitElement {
     }
   }
 
+  /**
+   * Cancels and closes the dialog, dispatching a cancel event.
+   * @param [returnValue] dialog return value
+   */
   async cancel(returnValue?: string) {
     this.#cancelling = true;
     this.close(returnValue);
@@ -340,17 +320,16 @@ export class RhDialog extends LitElement {
     this.#cancelling = false;
   }
 
+  /**
+   * Sets the trigger element programmatically.
+   * @param element the element that should open the dialog on click
+   */
   setTrigger(element: HTMLElement) {
     this.#triggerElement = element;
     this.#triggerElement.addEventListener('click', this.onTriggerClick);
   }
 
-  /**
-   * Manually toggles the dialog.
-   * ```js
-   * dialog.toggle();
-   * ```
-   */
+  /** Toggles the dialog open or closed. */
   toggle() {
     if (!this.open) {
       this.showModal();
@@ -360,12 +339,7 @@ export class RhDialog extends LitElement {
     }
   }
 
-  /**
-   * Manually opens the dialog.
-   * ```js
-   * dialog.show();
-   * ```
-   */
+  /** Opens the dialog as a modal. */
   show() {
     this.dialog?.showModal();
     this.open = true;
@@ -377,11 +351,8 @@ export class RhDialog extends LitElement {
   }
 
   /**
-   * Manually closes the dialog.
-   * @param [returnValue] dialog return value.
-   * @example ```js
-   *          dialog.close();
-   *          ```
+   * Closes the dialog.
+   * @param [returnValue] dialog return value
    */
   close(returnValue?: string) {
     if (typeof returnValue === 'string') {
