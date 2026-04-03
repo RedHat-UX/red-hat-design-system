@@ -10,10 +10,10 @@ import styles from './rh-back-to-top.css' with { type: 'css' };
 
 /**
  * Provides a fixed-position pill-shaped anchor link for quickly navigating back
- * to the top of lengthy content pages. The button MUST appear after scrolling
- * past a configurable threshold and SHOULD be the last element in tab order.
+ * to the top of lengthy content pages. The button must appear after scrolling
+ * past a configurable threshold and should be the last element in tab order.
  * Uses an `<a>` element internally, so screen readers announce it as a link.
- * Keyboard users MUST be able to reach it via Tab and activate with Enter.
+ * Keyboard users must be able to reach it via Tab and activate with Enter.
  * AVOID placing more than one instance per page.
  *
  * @summary Fixed anchor link for returning to page top on long pages
@@ -24,7 +24,7 @@ import styles from './rh-back-to-top.css' with { type: 'css' };
  * Background color for the back to top button. Defaults to `--rh-color-accent-base`,
  * which uses the design system's primary interactive blue color and automatically
  * adapts to light and dark color schemes (Blue 60 in light, Blue 30 in dark).
- * Custom values MUST maintain 4.5:1 contrast ratio with text.
+ * Custom values must maintain 4.5:1 contrast ratio with text.
  */
 @customElement('rh-back-to-top')
 export class RhBackToTop extends LitElement {
