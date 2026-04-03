@@ -47,14 +47,12 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
 }
 
 /**
- * Connects a series of related pages with persistent wayfinding navigation
- * below the primary nav. Uses `role="navigation"` with a configurable
- * `aria-label`. Supports light and dark color palettes. On mobile, nav
- * items collapse behind a hamburger menu button. Keyboard: Tab moves
- * between links/dropdowns, Escape closes expanded menus and mobile menu,
- * Enter/Space toggles dropdown expansion. Must be used with `<rh-navigation-primary>`
- * above it. Should contain a `logo` slot, `nav` slot with `<ul>`, and
- * optional `cta` slot. AVOID more than 5 nav items.
+ * Persistent wayfinding navigation for linking related pages below
+ * `<rh-navigation-primary>`. Provides `role="navigation"` with a
+ * configurable `aria-label` and light/dark color palettes. On mobile,
+ * items collapse behind a menu button. Keyboard: Tab, Escape,
+ * Enter/Space. Should contain `logo`, `nav` (`<ul>`), and optional
+ * `cta` slots. Avoid using more then 5 nav items.
  *
  * @summary Sticky sub-navigation bar linking related pages
  *
