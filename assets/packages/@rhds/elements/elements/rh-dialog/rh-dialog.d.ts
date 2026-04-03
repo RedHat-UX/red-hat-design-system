@@ -8,48 +8,62 @@ export declare class DialogCloseEvent extends Event {
     constructor();
 }
 export declare class DialogOpenEvent extends Event {
-    /** The trigger element which triggered the dialog to open */
+    /** The element that opened the dialog, or null if opened programmatically. */
     trigger: HTMLElement | null;
     constructor(
-    /** The trigger element which triggered the dialog to open */
+    /** The element that opened the dialog, or null if opened programmatically. */
     trigger: HTMLElement | null);
 }
 /**
- * A dialog displays important information to users without requiring them to navigate away from the page.
+ * Modal overlay for confirming decisions or collecting input. Traps focus and
+ * blocks page interaction. Must have a heading or `accessible-label` for screen
+ * readers. Uses native `<dialog>` with `aria-labelledby`. Escape closes the
+ * dialog; Tab cycles focus within it. Use sparingly to avoid disrupting workflow.
  *
- * @summary Communicates information requiring user input or action
+ * @summary Modal dialog for confirmations, errors, or required input
  *
  * @alias dialog
  *
- * @fires {DialogOpenEvent} open - Fires when a user clicks on the trigger or manually opens a dialog.
- * @fires {DialogCloseEvent} close - Fires when either a user clicks on either the close button or manually closes a dialog.
- * @fires {DialogCancelEvent} cancel - Fires when a user clicks outside the dialog or hits ESC on their keyboard.
+ * @fires {DialogOpenEvent} open - Fires when the dialog opens. The event's `trigger`
+ *   property (HTMLElement | null) holds the element that opened it.
+ * @fires {DialogCloseEvent} close - Fires when the dialog closes via close button
+ *   or programmatic `close()`. No detail properties.
+ * @fires {DialogCancelEvent} cancel - Fires when the user dismisses via backdrop
+ *   click or Escape. No detail properties.
  */
 export declare class RhDialog extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet[];
     /**
-     * The `variant` controls the width of the dialog.
-     * There are three options: `small`, `medium` and `large`. The default is `large`.
+     * Fixed width: `small` (35 rem), `medium` (52.5 rem), or `large` (70 rem).
+     * Defaults to `min(90%, 1140px)` when unset.
      */
     variant?: 'small' | 'medium' | 'large';
     /**
-     * `position="top"` aligns the dialog with the top of the page
+     * Vertical placement. Set to `top` to align to the top of the viewport
+     * instead of center.
      */
     position?: 'top';
     /**
-     * Use `accessible-label="My custom label"` to specify the dialog's accessible name.
-     * Defaults to the name of the dialog trigger if no attribute is set and no headings exist in the modal.
-     * See Dialog's Accessibility page for more info.
+     * Accessible name for the dialog. Must be provided when no heading
+     * exists in the header or default slot. Maps to `aria-label` on the
+     * native `<dialog>`.
      */
     accessibleLabel?: string;
     /**
-     * `open` / `open="open"` declaratively opens the dialog
+     * Whether the dialog is currently open.
      */
     open: boolean;
-    /** Optional ID of the trigger element */
+    /**
+     * ID of the element that opens the dialog on click. Should exist in
+     * the same document or shadow root. Its text is used as a fallback
+     * accessible name when no heading or `accessible-label` is present.
+     */
     trigger?: string;
-    /** Use `type="video"` to embed a video player into a dialog. */
+    /**
+     * Set to `video` for a 16:9 video dialog. Removes padding and pauses
+     * `<video>` or YouTube `<iframe>` elements on close.
+     */
     type?: 'video';
     /** @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/returnValue */
     returnValue: string;
@@ -63,29 +77,25 @@ export declare class RhDialog extends LitElement {
     protected _openChanged(oldValue?: boolean, open?: boolean): Promise<void>;
     protected _triggerChanged(): void;
     private onTriggerClick;
+    /**
+     * Cancels and closes the dialog, dispatching a cancel event.
+     * @param [returnValue] dialog return value
+     */
     cancel(returnValue?: string): Promise<void>;
+    /**
+     * Sets the trigger element programmatically.
+     * @param element the element that should open the dialog on click
+     */
     setTrigger(element: HTMLElement): void;
-    /**
-     * Manually toggles the dialog.
-     * ```js
-     * dialog.toggle();
-     * ```
-     */
+    /** Toggles the dialog open or closed. */
     toggle(): void;
-    /**
-     * Manually opens the dialog.
-     * ```js
-     * dialog.show();
-     * ```
-     */
+    /** Opens the dialog as a modal. */
     show(): void;
+    /** Opens the dialog as a modal. */
     showModal(): void;
     /**
-     * Manually closes the dialog.
-     * @param [returnValue] dialog return value.
-     * @example ```js
-     *          dialog.close();
-     *          ```
+     * Closes the dialog.
+     * @param [returnValue] dialog return value
      */
     close(returnValue?: string): void;
 }

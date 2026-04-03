@@ -4113,7 +4113,10 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>A dialog displays important information to users without requiring them to navigate away from the page.</p>
+      <p>Modal overlay for confirming decisions or collecting input. Traps focus and
+blocks page interaction. Must have a heading or <code>accessible-label</code> for screen
+readers. Uses native <code>&lt;dialog&gt;</code> with <code>aria-labelledby</code>. Escape closes the
+dialog; Tab cycles focus within it. Use sparingly to avoid disrupting workflow.</p>
 
 
       <div class="element-apis">
@@ -4211,9 +4214,10 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Dialog heading</p></td>
                   <td>
-                   <p>The header is an optional slot that appears at the top of the dialog window. It should be a header tag (h2-h6).</p>
+                   <p>Should contain an h2-h6 describing the dialog's purpose. The heading becomes the
+accessible name via aria-labelledby. Sticks to the top when content overflows.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4241,9 +4245,9 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Supplementary text below the heading</p></td>
                   <td>
-                   
+                   <p>Brief context supporting the header. Hidden when empty.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4271,9 +4275,10 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Primary dialog content</p></td>
                   <td>
-                   <p>The default slot can contain any type of content. When the header is not present this unnamed slot appear at the top of the dialog window (to the left of the close button). Otherwise it will appear beneath the header. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Accepts text, forms, images, or interactive elements. Scrolls vertically on
+overflow. For video dialogs, slot a video or YouTube iframe here. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
                 <tr>
@@ -4301,9 +4306,10 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Action buttons at the bottom of the dialog</p></td>
                   <td>
-                   <p>Optional footer content. Good place to put action buttons.</p>
+                   <p>Primary and secondary action buttons (e.g. confirm, cancel). Hidden when empty.
+Focusable elements here are part of the dialog's Tab focus cycle.</p>
                   </td>
                 </tr>
               </tbody>
@@ -4409,8 +4415,8 @@
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>variant</code></td>
-                  <td><p>The <code>variant</code> controls the width of the dialog.
-There are three options: <code>small</code>, <code>medium</code> and <code>large</code>. The default is <code>large</code>.</p></td>
+                  <td><p>Fixed width: <code>small</code> (35 rem), <code>medium</code> (52.5 rem), or <code>large</code> (70 rem).
+Defaults to <code>min(90%, 1140px)</code> when unset.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'small'</span> <span class="token operator">|</span> <span class="token string">'medium'</span> <span class="token operator">|</span> <span class="token string">'large'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4442,7 +4448,8 @@ There are three options: <code>small</code>, <code>medium</code> and <code>large
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>position</code></td>
-                  <td><p><code>position="top"</code> aligns the dialog with the top of the page</p></td>
+                  <td><p>Vertical placement. Set to <code>top</code> to align to the top of the viewport
+instead of center.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'top'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4474,9 +4481,9 @@ There are three options: <code>small</code>, <code>medium</code> and <code>large
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>accessibleLabel</code></td>
-                  <td><p>Use <code>accessible-label="My custom label"</code> to specify the dialog's accessible name.
-Defaults to the name of the dialog trigger if no attribute is set and no headings exist in the modal.
-See Dialog's Accessibility page for more info.</p></td>
+                  <td><p>Accessible name for the dialog. Must be provided when no heading
+exists in the header or default slot. Maps to <code>aria-label</code> on the
+native <code>&lt;dialog&gt;</code>.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4508,7 +4515,7 @@ See Dialog's Accessibility page for more info.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>open</code></td>
-                  <td><p><code>open</code> / <code>open="open"</code> declaratively opens the dialog</p></td>
+                  <td><p>Whether the dialog is currently open.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span></code></pre></td>
                 </tr>
@@ -4540,7 +4547,9 @@ See Dialog's Accessibility page for more info.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>trigger</code></td>
-                  <td><p>Optional ID of the trigger element</p></td>
+                  <td><p>ID of the element that opens the dialog on click. Should exist in
+the same document or shadow root. Its text is used as a fallback
+accessible name when no heading or <code>accessible-label</code> is present.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4572,7 +4581,8 @@ See Dialog's Accessibility page for more info.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>type</code></td>
-                  <td><p>Use <code>type="video"</code> to embed a video player into a dialog.</p></td>
+                  <td><p>Set to <code>video</code> for a 16:9 video dialog. Removes padding and pauses
+<code>&lt;video&gt;</code> or YouTube <code>&lt;iframe&gt;</code> elements on close.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'video'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4676,7 +4686,7 @@ See Dialog's Accessibility page for more info.</p></td>
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
+                  <td><p>Cancels and closes the dialog, dispatching a cancel event.</p></td>
                 </tr>
                 <tr>
                   <td>
@@ -4705,7 +4715,7 @@ See Dialog's Accessibility page for more info.</p></td>
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
+                  <td><p>Sets the trigger element programmatically.</p></td>
                 </tr>
                 <tr>
                   <td>
@@ -4734,8 +4744,7 @@ See Dialog's Accessibility page for more info.</p></td>
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td><p>Manually toggles the dialog.</p>
-<pre class="language-js"><code class="language-js">dialog<span class="token punctuation">.</span><span class="token function">toggle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></td>
+                  <td><p>Toggles the dialog open or closed.</p></td>
                 </tr>
                 <tr>
                   <td>
@@ -4764,8 +4773,7 @@ See Dialog's Accessibility page for more info.</p></td>
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td><p>Manually opens the dialog.</p>
-<pre class="language-js"><code class="language-js">dialog<span class="token punctuation">.</span><span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></td>
+                  <td><p>Opens the dialog as a modal.</p></td>
                 </tr>
                 <tr>
                   <td>
@@ -4794,7 +4802,7 @@ See Dialog's Accessibility page for more info.</p></td>
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
+                  <td><p>Opens the dialog as a modal.</p></td>
                 </tr>
                 <tr>
                   <td>
@@ -4823,8 +4831,7 @@ See Dialog's Accessibility page for more info.</p></td>
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td><p>Manually closes the dialog.</p>
-<pre class="language-js"><code class="language-js">dialog<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></td>
+                  <td><p>Closes the dialog.</p></td>
                 </tr>
               </tbody>
             </table>
@@ -4926,7 +4933,8 @@ See Dialog's Accessibility page for more info.</p></td>
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td><p>Fires when a user clicks on the trigger or manually opens a dialog.</p></td>
+                  <td><p>Fires when the dialog opens. The event's <code>trigger</code>
+property (HTMLElement | null) holds the element that opened it.</p></td>
                 </tr>
                 <tr>
                   <td>
@@ -4955,7 +4963,8 @@ See Dialog's Accessibility page for more info.</p></td>
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td><p>Fires when either a user clicks on either the close button or manually closes a dialog.</p></td>
+                  <td><p>Fires when the dialog closes via close button
+or programmatic <code>close()</code>. No detail properties.</p></td>
                 </tr>
                 <tr>
                   <td>
@@ -4984,7 +4993,8 @@ See Dialog's Accessibility page for more info.</p></td>
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td><p>Fires when a user clicks outside the dialog or hits ESC on their keyboard.</p></td>
+                  <td><p>Fires when the user dismisses via backdrop
+click or Escape. No detail properties.</p></td>
                 </tr>
               </tbody>
             </table>
@@ -5238,7 +5248,7 @@ See Dialog's Accessibility page for more info.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td></td>
-                  <td></td>
+                  <td><p>The container for the dialog body content</p></td>
                 </tr>
                 <tr>
                   <td>
@@ -5345,14 +5355,16 @@ See Dialog's Accessibility page for more info.</p></td>
               <tbody>
                 <tr>
                   <td><code>--rh-dialog-close-button-color</code></td>
-                  <td><p>Sets the dialog close button color.</p></td>
+                  <td><p>Close button icon color; in video mode defaults to lightest surface
+token for contrast against the dark backdrop.</p></td>
                   <td>
                     <code>var(--rh-color-surface-lightest, #ffffff)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-dialog-video-aspect-ratio</code></td>
-                  <td></td>
+                  <td><p>Video dialog aspect ratio. Defaults to 16/9. Override for non-standard
+video dimensions (e.g. 4/3 or 21/9).</p></td>
                   <td>
                     <code>16/9</code>
                   </td>
@@ -5541,7 +5553,8 @@ See Dialog's Accessibility page for more info.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Body text font family</p>
+                    <p>Dialog typeface</p>
+<p>Body text font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5647,7 +5660,8 @@ See Dialog's Accessibility page for more info.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Extra large box shadow</p>
+                    <p>Dialog box-shadow</p>
+<p>Extra large box shadow</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5753,7 +5767,7 @@ See Dialog's Accessibility page for more info.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Dialog text color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5859,7 +5873,8 @@ See Dialog's Accessibility page for more info.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>48px spacer</p>
+                    <p>Header and body inline-end padding for close button clearance</p>
+<p>48px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5965,7 +5980,8 @@ See Dialog's Accessibility page for more info.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Heading font family</p>
+                    <p>Heading typeface</p>
+<p>Heading font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6071,7 +6087,8 @@ See Dialog's Accessibility page for more info.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>h5 heading font size</p>
+                    <p>Heading text size</p>
+<p>h5 heading font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6177,7 +6194,8 @@ See Dialog's Accessibility page for more info.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Regular font weight</p>
+                    <p>Heading font weight</p>
+<p>Regular font weight</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6283,7 +6301,9 @@ See Dialog's Accessibility page for more info.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Header bottom margin</p>
+<p>Header pseudo-element height for sticky overlap</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6389,7 +6409,9 @@ See Dialog's Accessibility page for more info.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>24px spacer</p>
+                    <p>Dialog inner padding</p>
+<p>Last body paragraph bottom margin</p>
+<p>24px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6495,7 +6517,7 @@ See Dialog's Accessibility page for more info.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Default close button icon color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6707,7 +6729,9 @@ See Dialog's Accessibility page for more info.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>3px border radius; Example: Card</p>
+                    <p>Dialog box corner rounding</p>
+<p>Close button corner rounding</p>
+<p>3px border radius; Example: Card</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6813,7 +6837,9 @@ See Dialog's Accessibility page for more info.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>24px length token</p>
+                    <p>Close button hit area height</p>
+<p>Close button hit area width</p>
+<p>24px length token</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6919,7 +6945,8 @@ See Dialog's Accessibility page for more info.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>32px spacer</p>
+                    <p>Dialog box inner padding at wide viewports</p>
+<p>32px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7237,7 +7264,8 @@ See Dialog's Accessibility page for more info.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>8px spacer</p>
+                    <p>Footer action button gap</p>
+<p>8px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>

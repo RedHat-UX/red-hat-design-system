@@ -27,7 +27,7 @@ export class DialogCloseEvent extends Event {
 }
 export class DialogOpenEvent extends Event {
     constructor(
-    /** The trigger element which triggered the dialog to open */
+    /** The element that opened the dialog, or null if opened programmatically. */
     trigger) {
         super('open', { bubbles: true, cancelable: true });
         this.trigger = trigger;
@@ -38,22 +38,28 @@ async function pauseYoutube(iframe) {
     await pauseVideo(iframe);
 }
 /**
- * A dialog displays important information to users without requiring them to navigate away from the page.
+ * Modal overlay for confirming decisions or collecting input. Traps focus and
+ * blocks page interaction. Must have a heading or `accessible-label` for screen
+ * readers. Uses native `<dialog>` with `aria-labelledby`. Escape closes the
+ * dialog; Tab cycles focus within it. Use sparingly to avoid disrupting workflow.
  *
- * @summary Communicates information requiring user input or action
+ * @summary Modal dialog for confirmations, errors, or required input
  *
  * @alias dialog
  *
- * @fires {DialogOpenEvent} open - Fires when a user clicks on the trigger or manually opens a dialog.
- * @fires {DialogCloseEvent} close - Fires when either a user clicks on either the close button or manually closes a dialog.
- * @fires {DialogCancelEvent} cancel - Fires when a user clicks outside the dialog or hits ESC on their keyboard.
+ * @fires {DialogOpenEvent} open - Fires when the dialog opens. The event's `trigger`
+ *   property (HTMLElement | null) holds the element that opened it.
+ * @fires {DialogCloseEvent} close - Fires when the dialog closes via close button
+ *   or programmatic `close()`. No detail properties.
+ * @fires {DialogCancelEvent} cancel - Fires when the user dismisses via backdrop
+ *   click or Escape. No detail properties.
  */
 let RhDialog = class RhDialog extends LitElement {
     constructor() {
         super(...arguments);
         _RhDialog_instances.add(this);
         /**
-         * `open` / `open="open"` declaratively opens the dialog
+         * Whether the dialog is currently open.
          */
         this.open = false;
         /** @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/returnValue */
@@ -107,22 +113,43 @@ let RhDialog = class RhDialog extends LitElement {
               <div id="header"
                    part="header"
                    ?hidden=${!hasHeader}>
-                <!-- The header is an optional slot that appears at the top of the dialog window. It should be a header tag (h2-h6). -->
+                <!--
+                  summary: Dialog heading
+                  description: |
+                    Should contain an h2-h6 describing the dialog's purpose. The heading becomes the
+                    accessible name via aria-labelledby. Sticks to the top when content overflows.
+                -->
                 <slot name="header"></slot>
                 <!-- The container for the optional dialog description in the header -->
                 <div part="description" ?hidden=${!hasDescription}>
+                  <!--
+                    summary: Supplementary text below the heading
+                    description: |
+                      Brief context supporting the header. Hidden when empty.
+                  -->
                   <slot name="description"></slot>
                 </div>
               </div>
+              <!-- The container for the dialog body content -->
               <div id="body" part="body">
-                <!-- The default slot can contain any type of content. When the header is not present this unnamed slot appear at the top of the dialog window (to the left of the close button). Otherwise it will appear beneath the header. -->
+                <!--
+                  summary: Primary dialog content
+                  description: |
+                    Accepts text, forms, images, or interactive elements. Scrolls vertically on
+                    overflow. For video dialogs, slot a video or YouTube iframe here.
+                -->
                 <slot></slot>
               </div>
               <!-- Actions footer container -->
               <div id="footer"
                    part="footer"
                    ?hidden=${!hasFooter}>
-                <!-- Optional footer content. Good place to put action buttons. -->
+                <!--
+                  summary: Action buttons at the bottom of the dialog
+                  description: |
+                    Primary and secondary action buttons (e.g. confirm, cancel). Hidden when empty.
+                    Focusable elements here are part of the dialog's Tab focus cycle.
+                -->
                 <slot name="footer"></slot>
               </div>
             </div>
@@ -191,6 +218,10 @@ let RhDialog = class RhDialog extends LitElement {
         await this.updateComplete;
         this.closeButton?.focus();
     }
+    /**
+     * Cancels and closes the dialog, dispatching a cancel event.
+     * @param [returnValue] dialog return value
+     */
     async cancel(returnValue) {
         __classPrivateFieldSet(this, _RhDialog_cancelling, true, "f");
         this.close(returnValue);
@@ -198,16 +229,15 @@ let RhDialog = class RhDialog extends LitElement {
         await this.updateComplete;
         __classPrivateFieldSet(this, _RhDialog_cancelling, false, "f");
     }
+    /**
+     * Sets the trigger element programmatically.
+     * @param element the element that should open the dialog on click
+     */
     setTrigger(element) {
         __classPrivateFieldSet(this, _RhDialog_triggerElement, element, "f");
         __classPrivateFieldGet(this, _RhDialog_triggerElement, "f").addEventListener('click', this.onTriggerClick);
     }
-    /**
-     * Manually toggles the dialog.
-     * ```js
-     * dialog.toggle();
-     * ```
-     */
+    /** Toggles the dialog open or closed. */
     toggle() {
         if (!this.open) {
             this.showModal();
@@ -217,26 +247,19 @@ let RhDialog = class RhDialog extends LitElement {
             this.close();
         }
     }
-    /**
-     * Manually opens the dialog.
-     * ```js
-     * dialog.show();
-     * ```
-     */
+    /** Opens the dialog as a modal. */
     show() {
         this.dialog?.showModal();
         this.open = true;
     }
+    /** Opens the dialog as a modal. */
     showModal() {
         // TODO: non-modal mode
         this.show();
     }
     /**
-     * Manually closes the dialog.
-     * @param [returnValue] dialog return value.
-     * @example ```js
-     *          dialog.close();
-     *          ```
+     * Closes the dialog.
+     * @param [returnValue] dialog return value
      */
     close(returnValue) {
         if (typeof returnValue === 'string') {

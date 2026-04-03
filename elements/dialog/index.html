@@ -3817,7 +3817,10 @@
           <a href="#overview">Overview</a>
         </h2>
       </uxdot-copy-permalink>
-      <p>A dialog displays important information to users without requiring them to navigate away from the page.</p>
+      <p>Modal overlay for confirming decisions or collecting input. Traps focus and
+blocks page interaction. Must have a heading or <code>accessible-label</code> for screen
+readers. Uses native <code>&lt;dialog&gt;</code> with <code>aria-labelledby</code>. Escape closes the
+dialog; Tab cycles focus within it. Use sparingly to avoid disrupting workflow.</p>
 
       
       
@@ -4628,30 +4631,34 @@
 <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
           <uxdot-knob-attribute slot="knobs" tag="rh-dialog" name="variant" type="'small' | 'medium' | 'large'">
-            <div slot="description"><p>The <code>variant</code> controls the width of the dialog.
-There are three options: <code>small</code>, <code>medium</code> and <code>large</code>. The default is <code>large</code>.</p>
+            <div slot="description"><p>Fixed width: <code>small</code> (35 rem), <code>medium</code> (52.5 rem), or <code>large</code> (70 rem).
+Defaults to <code>min(90%, 1140px)</code> when unset.</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-dialog" name="position" type="'top'">
-            <div slot="description"><p><code>position="top"</code> aligns the dialog with the top of the page</p>
+            <div slot="description"><p>Vertical placement. Set to <code>top</code> to align to the top of the viewport
+instead of center.</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-dialog" name="accessible-label" type="string">
-            <div slot="description"><p>Use <code>accessible-label="My custom label"</code> to specify the dialog's accessible name.
-Defaults to the name of the dialog trigger if no attribute is set and no headings exist in the modal.
-See Dialog's Accessibility page for more info.</p>
+            <div slot="description"><p>Accessible name for the dialog. Must be provided when no heading
+exists in the header or default slot. Maps to <code>aria-label</code> on the
+native <code>&lt;dialog&gt;</code>.</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-dialog" name="open" type="boolean" default="false">
-            <div slot="description"><p><code>open</code> / <code>open="open"</code> declaratively opens the dialog</p>
+            <div slot="description"><p>Whether the dialog is currently open.</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-dialog" name="trigger" type="string">
-            <div slot="description"><p>Optional ID of the trigger element</p>
+            <div slot="description"><p>ID of the element that opens the dialog on click. Should exist in
+the same document or shadow root. Its text is used as a fallback
+accessible name when no heading or <code>accessible-label</code> is present.</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-dialog" name="type" type="'video'">
-            <div slot="description"><p>Use <code>type="video"</code> to embed a video player into a dialog.</p>
+            <div slot="description"><p>Set to <code>video</code> for a 16:9 video dialog. Removes padding and pauses
+<code>&lt;video&gt;</code> or YouTube <code>&lt;iframe&gt;</code> elements on close.</p>
 </div>
           </uxdot-knob-attribute></uxdot-demo>
         
