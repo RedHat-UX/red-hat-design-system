@@ -11,9 +11,9 @@
 
 svg {
   width:
-    /** UI icon size override */
+    /** UI set icon size override */
     var(--rh-icon-size,
-      /** UI icon size */
+      /** UI set icon size */
       var(--rh-size-icon-01, 16px));
   fill: currentcolor;
   aspect-ratio: 1/1;
@@ -21,9 +21,9 @@ svg {
 
 .standard svg {
   width:
-    /** Standard icon size override */
+    /** Standard set icon size override */
     var(--rh-icon-size,
-      /** Standard icon size */
+      /** Standard set icon size */
       var(--rh-size-icon-04, 40px));
 }
 
@@ -31,6 +31,6 @@ svg {
   min-width: 8px;
   max-width: 12px;
 
-  /** Microns icon size */
+  /** Microns set icon size */
   width: var(--rh-icon-size, 12px);
 }
