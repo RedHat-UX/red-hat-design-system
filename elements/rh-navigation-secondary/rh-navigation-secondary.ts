@@ -54,7 +54,7 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
  * Enter/Space. Should contain `logo`, `nav` (`<ul>`), and optional
  * `cta` slots. Avoid using more then 5 nav items.
  *
- * @summary Sticky sub-navigation bar linking related pages
+ * @summary Secondary level navigation bar for linking related pages
  *
  * @alias Navigation (secondary)
  *
