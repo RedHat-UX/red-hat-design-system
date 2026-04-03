@@ -12,8 +12,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
@@ -83,71 +83,166 @@
 
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
-  <body><rh-navigation-secondary     role="navigation" hydrate-internals-role="navigation" id="navigation-secondary-analytics" data-analytics-region="secondary-navigation-Ansible" accessible-label="ansible" color-palette="lighter"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:dark only}:host([color-palette^=light]){color-scheme:light only}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{--_chevron-size:calc(var(--rh-font-size-body-text-md,1rem) * .35);--_chevron-thickness:calc(var(--rh-font-size-body-text-md,1rem) * .125);--_chevron-up:45deg;--_chevron-down:-135deg;--_chevron-correction-x:calc(-1 * var(--rh-font-size-body-text-md,1rem) / 16);--_chevron-correction-y:calc(-1 * var(--rh-font-size-body-text-md,1rem) / 16);--_chevron-color:var(--rh-color-text-primary);--_chevron-transform-collapsed:rotate(var(--_chevron-up)) translate(var(--_chevron-correction-x), var(--_chevron-correction-x));--_chevron-transform-expanded:rotate(var(--_chevron-down)) translate(var(--_chevron-correction-y), var(--_chevron-correction-y));--_button-font-color:var(--rh-color-text-primary);--_nav-max-height:var(--_max-height,max-content);--_nav-min-height:var(--_min-height,80px);--_current-active-child-border-color:var(--rh-color-brand-red);--_border-color:light-dark(transparent,var(--rh-color-border-subtle));z-index:var(--rh-navigation-secondary-z-index,102)}:host(:dir(rtl)){--_chevron-transform-collapsed:rotate(calc(-1 * var(--_chevron-up))) translate(calc(1 * var(--_chevron-correction-y)), var(--_chevron-correction-y));--_chevron-transform-expanded:rotate(calc(-1 * var(--_chevron-down))) translate(calc(1 * var(--_chevron-correction-x)), var(--_chevron-correction-x))}nav{z-index:var(--rh-navigation-secondary-z-index,102)}#container{width:100%;z-index:var(--rh-navigation-secondary-z-index,102);background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));gap:0 var(--rh-space-lg,16px);grid-template-rows:minmax(var(--_nav-min-height), var(--_nav-max-height)) max-content max-content;border-block-end:var(--rh-border-width-sm,1px) solid var(--_border-color);grid-template-columns:1fr max-content;grid-template-areas:"logo menu""main main";height:fit-content;min-height:100%;max-height:100vh;display:grid;position:absolute;overflow-y:auto}rh-surface{flex-direction:column;grid-area:main;width:100%;height:100%;display:flex}::slotted([slot=nav]),::slotted([slot=cta]){grid-area:unset!important}#container.expanded ::slotted([slot=nav]),#container.expanded ::slotted([slot=cta]){display:flex!important}#container.expanded ::slotted([slot=nav]){padding:2rem 1rem 0;padding:var(--rh-space-2xl,32px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px);flex-direction:column;list-style:none;margin:0!important}#container.expanded ::slotted([slot=cta]){padding:2rem 1rem}button{height:100%;font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);padding:var(--rh-space-lg,16px);border:none;border-block-start:var(--rh-border-width-lg,3px) solid transparent;color:var(--_button-font-color);background-color:var(--rh-color-surface);align-items:center;gap:var(--rh-space-md,8px);grid-area:menu;margin-inline-end:var(--rh-space-lg,16px);display:flex}button:hover{border-block-start-color:var(--rh-color-text-brand-on-light,#e00)}button:after{content:"";width:var(--_chevron-size);height:var(--_chevron-size);border-inline-end:var(--_chevron-thickness) solid var(--_chevron-color);border-block-end:var(--_chevron-thickness) solid var(--_chevron-color);transform:var(--_chevron-transform-collapsed);display:block;box-sizing:content-box!important}button[aria-expanded=true]:after{transform:var(--_chevron-transform-expanded)}button:focus{border-block-start-color:var(--rh-color-text-brand-on-light,#e00)}:host([color-palette=dark]) button{background-color:var(--rh-color-surface)}button:active,button[aria-expanded=true],:host([color-palette=dark]) button[aria-expanded=true]{--_chevron-color:var(--rh-color-text-primary-on-light,#151515);color:var(--rh-color-text-primary-on-light,#151515);background-color:var(--rh-color-surface-lightest,#fff);border-block-start-color:var(--rh-color-text-brand-on-light,#e00);border-block-end:none}:host([color-palette=dark]) button:active{color:var(--rh-color-text-primary-on-dark,#fff)}:host([color-palette=dark]) button[aria-expanded=true]:active{color:var(--rh-color-text-primary-on-light,#151515)}@media screen and (width>=768px){button{margin-inline-end:var(--rh-space-2xl,32px)}#container.expanded ::slotted([slot=nav]){padding:var(--rh-space-2xl,32px) var(--rh-space-2xl,32px) 0!important}#container.expanded ::slotted([slot=cta]){padding:var(--rh-space-2xl,32px)!important}}@media screen and (width>=992px){:host{--_min-height:86px}#container{height:100%;max-height:initial;overflow-y:initial;grid-template:"logo main"/max-content 1fr}rh-surface{flex-direction:row;justify-content:space-between}#container.expanded ::slotted([slot=nav]){max-height:calc(100vh - var(--_nav-min-height))}button{display:none}}</style><!--lit-part /zCyLxLp3Bc=-->
-      <!-- container, `<nav>` element -->
+  <body><meta itemprop="description" content="Secondary navigation demo showing analytics event tracking integration.">
+<rh-navigation-secondary     role="navigation" hydrate-internals-role="navigation" id="navigation-secondary-analytics" data-analytics-region="secondary-navigation-Ansible" accessible-label="ansible" color-palette="lighter"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:dark only}:host([color-palette^=light]){color-scheme:light only}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{--_chevron-size:calc(var(--rh-font-size-body-text-md,1rem) * .35);--_chevron-thickness:calc(var(--rh-font-size-body-text-md,1rem) * .125);--_chevron-up:45deg;--_chevron-down:-135deg;--_chevron-correction-x:calc(-1 * var(--rh-font-size-body-text-md,1rem) / 16);--_chevron-correction-y:calc(-1 * var(--rh-font-size-body-text-md,1rem) / 16);--_chevron-color:var(--rh-color-text-primary);--_chevron-transform-collapsed:rotate(var(--_chevron-up)) translate(var(--_chevron-correction-x), var(--_chevron-correction-x));--_chevron-transform-expanded:rotate(var(--_chevron-down)) translate(var(--_chevron-correction-y), var(--_chevron-correction-y));--_button-font-color:var(--rh-color-text-primary);--_nav-max-height:var(--_max-height,max-content);--_nav-min-height:var(--_min-height,80px);--_current-active-child-border-color:var(--rh-color-brand-red);z-index:var(--rh-navigation-secondary-z-index,102)}:host(:dir(rtl)){--_chevron-transform-collapsed:rotate(calc(-1 * var(--_chevron-up))) translate(calc(1 * var(--_chevron-correction-y)), var(--_chevron-correction-y));--_chevron-transform-expanded:rotate(calc(-1 * var(--_chevron-down))) translate(calc(1 * var(--_chevron-correction-x)), var(--_chevron-correction-x))}nav{z-index:var(--rh-navigation-secondary-z-index,102)}#container{width:100%;z-index:var(--rh-navigation-secondary-z-index,102);background-color:light-dark( var(--rh-color-surface-lighter,#f2f2f2), var(--rh-color-surface-dark,#383838));gap:0  var(--rh-space-lg,16px);grid-template-rows:minmax(var(--_nav-min-height), var(--_nav-max-height)) max-content max-content;border-block-end: var(--rh-border-width-sm,1px) solid var(--_border-color);grid-template-columns:1fr max-content;grid-template-areas:"logo menu""main main";height:fit-content;min-height:100%;max-height:100vh;display:grid;position:absolute;overflow-y:auto}rh-surface{flex-direction:column;grid-area:main;width:100%;height:100%;display:flex}::slotted([slot=nav]),::slotted([slot=cta]){grid-area:unset!important}#container.expanded ::slotted([slot=nav]),#container.expanded ::slotted([slot=cta]){display:flex!important}#container.expanded ::slotted([slot=nav]){padding:2rem 1rem 0;padding: var(--rh-space-2xl,32px)  var(--rh-space-lg,16px) 0  var(--rh-space-lg,16px);flex-direction:column;list-style:none;margin:0!important}#container.expanded ::slotted([slot=cta]){padding:2rem 1rem}button{height:100%;font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);padding:var(--rh-space-lg,16px);border:none;border-block-start: var(--rh-border-width-lg,3px) solid transparent;color:var(--_button-font-color);background-color:var(--rh-color-surface);align-items:center;gap:var(--rh-space-md,8px);grid-area:menu;margin-inline-end:var(--rh-space-lg,16px);display:flex}button:hover{border-block-start-color:var(--rh-color-text-brand-on-light,#e00)}button:after{content:"";width:var(--_chevron-size);height:var(--_chevron-size);border-inline-end:var(--_chevron-thickness) solid var(--_chevron-color);border-block-end:var(--_chevron-thickness) solid var(--_chevron-color);transform:var(--_chevron-transform-collapsed);display:block;box-sizing:content-box!important}button[aria-expanded=true]:after{transform:var(--_chevron-transform-expanded)}button:focus{border-block-start-color:var(--rh-color-text-brand-on-light,#e00)}:host([color-palette=dark]) button{background-color:var(--rh-color-surface)}button:active,button[aria-expanded=true],:host([color-palette=dark]) button[aria-expanded=true]{--_chevron-color:var(--rh-color-text-primary-on-light,#151515);color:var(--rh-color-text-primary-on-light,#151515);background-color:var(--rh-color-surface-lightest,#fff);border-block-start-color:var(--rh-color-text-brand-on-light,#e00);border-block-end:none}:host([color-palette=dark]) button:active{color:var(--rh-color-text-primary-on-dark,#fff)}:host([color-palette=dark]) button[aria-expanded=true]:active{color:var(--rh-color-text-primary-on-light,#151515)}@media screen and (width>=768px){button{margin-inline-end:var(--rh-space-2xl,32px)}#container.expanded ::slotted([slot=nav]){padding: var(--rh-space-2xl,32px)  var(--rh-space-2xl,32px) 0!important}#container.expanded ::slotted([slot=cta]){padding:var(--rh-space-2xl,32px)!important}}@media screen and (width>=992px){:host{--_min-height:86px}#container{height:100%;max-height:initial;overflow-y:initial;grid-template:"logo main"/max-content 1fr}rh-surface{flex-direction:row;justify-content:space-between}#container.expanded ::slotted([slot=nav]){max-height:calc(100vh - var(--_nav-min-height))}button{display:none}}</style><!--lit-part F14sfFx4mhg=-->
+      <!-- summary: main navigation wrapper element
+           description: |
+             The outermost container for the secondary navigation, wrapping all navigation content
+             including logo, menu, and CTA. This part corresponds to a `<div>` element that provides
+             the primary structure and styling for the navigation bar.
+
+             **Styling:**
+             - Use this part to customize the overall navigation appearance
+             - Applies compact mode styles when viewport is mobile-sized
+             - Controls positioning and z-index of navigation elements -->
       <!--lit-node 1--><div part="nav"
            class="  ">
         <!--lit-part--><!--/lit-part-->
-        <!-- container, `<div>` element -->
+        <!-- summary: navigation content container
+             description: |
+               The primary container for navigation links, logo, mobile menu button, and CTA.
+               This part corresponds to a `<div>` element that manages the layout and expansion
+               states of the navigation content.
+
+               **Styling:**
+               - Use this part to customize the navigation content layout
+               - Controls expanded/collapsed states for mobile menu
+               - Manages positioning of navigation items and dropdowns
+               - Contains grid layout for organizing navigation elements -->
         <!--lit-node 4--><div id="container" part="container" class="  ">
-          <!-- Logo added to the main nav bar, expects `<a>Text</a> | <a><svg/></a> | <a><img/></a>` element -->
+          <!-- summary: product logo or name link
+               description: |
+                 Expects an `<a>` element with text, SVG, or image linking to the product
+                 homepage. Screen readers announce the link text or `alt` attribute.
+                 Must be provided. `aria-current="page"` highlights when on the homepage. -->
           <slot name="logo" id="logo"></slot>
           <!--lit-node 7--><button aria-controls="container"
                   aria-expanded="false"
                   ><!--
             Text label for the mobile menu button, for l10n. Defaults to "Menu"
-          --><slot name="mobile-menu">Menu</slot></button>
-          <!--lit-node 10--><rh-surface  color-palette="lighter" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:dark only}:host([color-palette^=light]){color-scheme:light only}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{color:var(--rh-color-text-primary);background-color:var(--rh-color-surface);display:block}</style><!--lit-part z4DDHUphzNk=--><!-- Accepts any content. --><!--lit-node 1--><slot id="slot" ></slot><!--/lit-part--></template>
-            <!-- Navigation list added to the main nav bar, expects `<ul>` element -->
+          --><!-- summary: mobile menu button label
+               description: |
+                 Text label for the mobile hamburger menu button. Defaults to "Menu".
+                 USE this slot for localization/translation of the button text.
+                 Screen readers announce this label with the button's expanded state. -->
+          <slot name="mobile-menu">Menu</slot></button>
+          <!--lit-node 11--><rh-surface  color-palette="lighter" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:dark only}:host([color-palette^=light]){color-scheme:light only}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{color:var(--rh-color-text-primary);background-color:var(--rh-color-surface);display:block}</style><!--lit-part z4DDHUphzNk=--><!-- Accepts any content. --><!--lit-node 1--><slot id="slot" ></slot><!--/lit-part--></template>
+            <!-- summary: navigation link list
+                 description: |
+                   Expects a `<ul>` element containing `<li>` children with links or
+                   `<rh-navigation-secondary-dropdown>` elements. On mobile, hidden behind
+                   the menu button. AVOID more than 5 total items. Screen readers navigate
+                   via list semantics. Tab moves focus through each link or dropdown trigger. -->
             <slot name="nav"></slot>
-            <!-- container, `<div>` element -->
+            <!-- summary: call-to-action container
+                 description: |
+                   Container for the navigation-level call-to-action button. This part corresponds
+                   to a `<div>` element positioned at the end of the navigation bar.
+
+                   **Styling:**
+                   - Use this part to customize the CTA positioning and spacing
+                   - Appears at the rightmost position in desktop view
+                   - Typically contains a single `<rh-cta>` element
+                   - Automatically adjusts color palette in mobile vs desktop views -->
             <div id="cta" part="cta">
-              <!-- Nav bar level CTA, expects `<rh-cta>` element -->
+              <!-- summary: navigation-level call to action
+                   description: |
+                     Optional slot for an `<rh-cta>` element positioned at the end of the
+                     navigation bar. On mobile, appears below the nav list. Screen readers
+                     announce the CTA link text. AVOID long text that reduces nav item space. -->
               <slot name="cta"></slot>
             </div>
           </rh-surface>
         </div>
       </div>
-      <!--lit-node 17--><rh-navigation-secondary-overlay
+      <!--lit-node 18--><rh-navigation-secondary-overlay
           
           
-       defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{background-color:rgb(from var(--rh-color-gray-90,#1f1f1f) r g b / var(--rh-opacity-80,80%));width:100vw;height:100vh;z-index: var(--rh-navigation-secondary-overlay-z-index, var(--rh-secondary-nav-overlay-z-index,-1));position:fixed;top:0}:host([open]){display:block}:host(:not([open])){display:none}</style><!--lit-part--><!--/lit-part--></template></rh-navigation-secondary-overlay>
+       defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{background-color:rgb(from  var(--rh-color-gray-90,#1f1f1f) r g b /  var(--rh-opacity-80,80%));width:100vw;height:100vh;z-index: var(--rh-navigation-secondary-overlay-z-index, var(--rh-secondary-nav-overlay-z-index,-1));position:fixed;top:0}:host([open]){display:block}:host(:not([open])){display:none}</style><!--lit-part--><!--/lit-part--></template></rh-navigation-secondary-overlay>
     <!--/lit-part--></template>
   <a href="#" slot="logo" id="logo-id" aria-current="page">
     Red Hat Ansible Automation Platform
   </a>
   <ul slot="nav" aria-labelledby="logo-id">
     <li>
-      <rh-navigation-secondary-dropdown><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}#container{border-inline-start:var(--rh-border-width-lg,3px) solid transparent;border-inline-end:var(--rh-border-width-sm,1px) solid transparent;height:100%;display:block}#container.expanded{border-inline-start-color:var(--rh-color-text-brand-on-light,#e00);border-inline-end-color:var(--rh-color-border-subtle-on-light,#c7c7c7);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533)}::slotted([slot=link]){--_chevron-color:var(--rh-color-text-primary);justify-content:space-between;gap:calc(var(--rh-font-size-body-text-md,1rem) / 2);background-color:var(--rh-color-surface);position:relative}#container.highlight ::slotted([slot=link]),::slotted([slot=link][aria-current=page]){border-block-start-color:var(--_current-active-child-border-color,#e00)!important}::slotted([slot=link]):after{content:"";width:var(--_chevron-size);height:var(--_chevron-size);border-inline-end:var(--_chevron-thickness) solid var(--_chevron-color);border-block-end:var(--_chevron-thickness) solid var(--_chevron-color);transform:var(--_chevron-transform-collapsed);display:block;box-sizing:content-box!important}#container.expanded ::slotted([slot=link]):after{transform:var(--_chevron-transform-expanded)}@media screen and (width>=992px){#container{border-inline:none}#container.expanded{box-shadow:none}::slotted([slot=link][aria-expanded=true]){border-block-start-color:var(--rh-color-text-brand-on-light,#e00);background:var(--rh-color-surface-lightest,#fff)!important}::slotted([slot=link][aria-expanded=true]):after{--_chevron-color:var(--rh-color-text-primary-on-light,#151515)!important}}</style><!--lit-part r26wHJYngdE=-->
-      <!--lit-node 0--><div id="container" part="container" class="  ">
-        <!-- Link for dropdown, expects `<a>` element -->
+      <rh-navigation-secondary-dropdown><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}#container{border-inline-start: var(--rh-border-width-lg,3px) solid transparent;border-inline-end: var(--rh-border-width-sm,1px) solid transparent;height:100%;display:block}#container.expanded{border-inline-start-color:var(--rh-color-text-brand-on-light,#e00);border-inline-end-color:var(--rh-color-border-subtle-on-light,#c7c7c7);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533)}::slotted([slot=link]){--_chevron-color:var(--rh-color-text-primary);justify-content:space-between;gap:calc(var(--rh-font-size-body-text-md,1rem) / 2);background-color:var(--rh-color-surface);position:relative}#container.highlight ::slotted([slot=link]),::slotted([slot=link][aria-current=page]){border-block-start-color:var(--_current-active-child-border-color,#e00)!important}::slotted([slot=link]):after{content:"";width:var(--_chevron-size);height:var(--_chevron-size);border-inline-end:var(--_chevron-thickness) solid var(--_chevron-color);border-block-end:var(--_chevron-thickness) solid var(--_chevron-color);transform:var(--_chevron-transform-collapsed);display:block;box-sizing:content-box!important}#container.expanded ::slotted([slot=link]):after{transform:var(--_chevron-transform-expanded)}@media screen and (width>=992px){#container{border-inline:none}#container.expanded{box-shadow:none}::slotted([slot=link][aria-expanded=true]){border-block-start-color:var(--rh-color-text-brand-on-light,#e00);background:var(--rh-color-surface-lightest,#fff)!important}::slotted([slot=link][aria-expanded=true]):after{--_chevron-color:var(--rh-color-text-primary-on-light,#151515)!important}}</style><!--lit-part y1O37Ebb8tI=-->
+      <!-- summary: dropdown wrapper container
+           description: |
+             The container for a navigation dropdown item, wrapping both the link and menu.
+             This part corresponds to a `<div>` element that manages the dropdown state and styling.
+
+             **Styling:**
+             - Use this part to customize the dropdown appearance and layout
+             - Applies `.expanded` class when dropdown is open
+             - Applies `.highlight` class when dropdown contains the current page
+             - Controls dropdown link and menu positioning -->
+      <!--lit-node 1--><div id="container" part="container" class="  ">
+        <!-- summary: dropdown trigger link
+             description: |
+               Expects an `<a>` element. Automatically upgraded with `role="button"`,
+               `aria-expanded`, and `aria-controls` for keyboard and screen reader
+               accessibility. Enter/Space toggles the dropdown. -->
         <slot name="link"></slot>
-        <!-- Menu for dropdown, expects `<rh-navigation-secondary-menu>` element -->
+        <!-- summary: dropdown menu panel
+             description: |
+               Expects an `<rh-navigation-secondary-menu>` element. Visibility is
+               toggled when the link slot is activated. Screen readers can navigate
+               menu sections via headings inside the menu. -->
         <slot name="menu"></slot>
       </div>
     <!--/lit-part--></template>
         <a href="#" data-analytics-text="Explore" slot="link">Explore</a>
-        <rh-navigation-secondary-menu  slot="menu" color-palette="lightest" layout="full-width"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:dark only}:host([color-palette^=light]){color-scheme:light only}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{color-scheme:light only;display:block}#container{color:var(--rh-color-text-primary-on-light,#151515);background-color:var(--rh-color-surface-lightest,#fff);position:relative}#container:not(.visible){display:none}#sections{padding:var(--rh-space-xl,24px)}:host(:not([type=fixed-width])) #sections{grid-template-columns: var(--rh-navigation-secondary-menu-section-grid,repeat(auto-fit, minmax(15.5rem, 1fr)));gap: var(--rh-navigation-secondary-menu-section-grid-gap,var(--rh-space-2xl,32px));grid-template-rows:auto;display:grid}::slotted(:is(ul,ol)){gap:var(--rh-font-size-body-text-md,1rem);flex-direction:column;margin:0;padding:0;list-style:none;display:flex}@media screen and (width>=992px){#container.visible{padding:var(--rh-space-4xl,64px) var(--rh-space-2xl,32px) var(--rh-space-3xl,48px);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);z-index:-1;max-height:calc(100vh - (var(--rh-space-4xl,64px)) - var(--_nav-min-height));position:absolute;left:0;right:0;overflow-y:auto}:host([layout=fixed-width]) #container{inset:var(--_nav-height) auto auto auto;margin-top:0;padding:0;position:absolute}#sections{max-width:var(--rh-navigation-secondary-menu-content-max-width,1136px);margin:auto;padding:0}:host([layout=fixed-width]) #sections{padding:var(--rh-space-2xl,32px)}}@media screen and (width>=1200px){#container.visible{padding:var(--rh-space-3xl,48px) var(--rh-space-2xl,32px)}}@media screen and (width>=1440px){#container.visible{padding:var(--rh-space-3xl,48px) var(--rh-space-4xl,64px)}}@media screen and (width>=1600px){#full-width{margin:auto}}</style><!--lit-part Jgnzawe+jNY=-->
+        <rh-navigation-secondary-menu  slot="menu" color-palette="lightest" layout="full-width"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:dark only}:host([color-palette^=light]){color-scheme:light only}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{color-scheme:light only;display:block}#container{color:var(--rh-color-text-primary-on-light,#151515);background-color:var(--rh-color-surface-lightest,#fff);position:relative}#container:not(.visible){display:none}#sections{padding:var(--rh-space-xl,24px)}:host(:not([type=fixed-width])) #sections{grid-template-columns:var(--rh-navigation-secondary-menu-section-grid,repeat(auto-fit, minmax(15.5rem, 1fr)));gap: var(--rh-navigation-secondary-menu-section-grid-gap, var(--rh-space-2xl,32px));grid-template-rows:auto;display:grid}::slotted(:is(ul,ol)){gap:var(--rh-font-size-body-text-md,1rem);flex-direction:column;margin:0;padding:0;list-style:none;display:flex}@media screen and (width>=992px){#container.visible{padding: var(--rh-space-4xl,64px)  var(--rh-space-2xl,32px)  var(--rh-space-3xl,48px);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);z-index:-1;max-height:calc(100vh - (var(--rh-space-4xl,64px)) - var(--_nav-min-height));position:absolute;left:0;right:0;overflow-y:auto}:host([layout=fixed-width]) #container{inset:var(--_nav-height) auto auto auto;margin-top:0;padding:0;position:absolute}#sections{max-width:var(--rh-navigation-secondary-menu-content-max-width,1136px);margin:auto;padding:0}:host([layout=fixed-width]) #sections{padding:var(--rh-space-2xl,32px)}}@media screen and (width>=1200px){#container.visible{padding: var(--rh-space-3xl,48px)  var(--rh-space-2xl,32px)}}@media screen and (width>=1440px){#container.visible{padding: var(--rh-space-3xl,48px)  var(--rh-space-4xl,64px)}}@media screen and (width>=1600px){#full-width{margin:auto}}</style><!--lit-part Jgnzawe+jNY=-->
       <!-- container - `<div>` element, wrapper for menus -->
-      <!--lit-node 1--><div id="container" class="  "><!--lit-part CEwtqGiC8b8=-->
+      <!--lit-node 1--><div id="container" class="  "><!--lit-part CmwC9jppMYw=-->
         <!-- container - `<div>` element, wrapper for full-width menus -->
         <div id="full-width" part="full-width">
           <!-- container - `<div>` element, wrapper for menu sections -->
           <div id="sections" part="sections">
-            <!-- Optional `<rh-navigation-secondary-menu-section>` elements or content following [design guidelines](../guidelines/#expandable-tray) -->
+            <!-- summary: menu content
+                 description: |
+                   Should contain `<rh-navigation-secondary-menu-section>` elements
+                   with headings. Screen readers navigate sections via
+                   `aria-labelledby` associations between headings and link lists. -->
             <slot></slot>
           </div>
         </div><!--/lit-part-->
       </div>
     <!--/lit-part--></template>
-          <rh-navigation-secondary-menu-section><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}::slotted([slot=header]){padding:0}::slotted(:is(h1,h2,h3,h4,h5,h6)){font-family:var(--rh-font-family-heading,RedHatDisplay, "Red Hat Display", Helvetica, Arial, sans-serif)}::slotted([slot=links]:is(ul,ol)){gap:var(--rh-font-size-body-text-md,1rem);flex-direction:column;margin:0;padding:0;list-style:none;display:flex}::slotted([slot=cta]){padding:var(--rh-space-xl,24px) 0 0}::slotted([slot=cta]:last-of-type){padding:var(--rh-space-xl,24px) 0}@media screen and (width>=992px){::slotted([slot=header]){padding:0}::slotted([slot=links]){margin:0;padding:0}}</style><!--lit-part 0trTtL27HXo=-->
-      <!-- container, <section> element -->
+          <rh-navigation-secondary-menu-section><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}::slotted([slot=header]){padding:0}::slotted(:is(h1,h2,h3,h4,h5,h6)){font-family:var(--rh-font-family-heading,RedHatDisplay, "Red Hat Display", Helvetica, Arial, sans-serif)}::slotted([slot=links]:is(ul,ol)){gap:var(--rh-font-size-body-text-md,1rem);flex-direction:column;margin:0;padding:0;list-style:none;display:flex}::slotted([slot=cta]){padding: var(--rh-space-xl,24px) 0 0}::slotted([slot=cta]:last-of-type){padding: var(--rh-space-xl,24px) 0}@media screen and (width>=992px){::slotted([slot=header]){padding:0}::slotted([slot=links]){margin:0;padding:0}}</style><!--lit-part npEPAk8Xzcw=-->
+      <!-- summary: menu section container
+           description: |
+             The semantic container for a menu section, grouping related navigation links
+             under a common header. This part corresponds to a `<section>` element that
+             provides structure and automatic accessibility enhancements.
+
+             **Styling:**
+             - Use this part to customize individual menu section appearance
+             - Controls spacing and layout of header, links, and CTA
+             - Sections are organized in a grid when multiple sections exist
+             - Automatically applies aria-labelledby to link lists
+
+             **Accessibility:**
+             - Automatically associates heading with list using aria-labelledby
+             - Generates IDs for headers if not present
+             - Ensures semantic structure for screen reader users -->
       <section part="container">
-        <!-- Adds a header tag to section, expects `<h1> | <h2> | <h3> | <h4> | <h5> | <h6>` element -->
+        <!-- summary: section heading
+             description: |
+               Expects an `<h1>`-`<h6>` element. Auto-linked to the links list via
+               `aria-labelledby` for screen reader group identification. An `id` is
+               generated if not present. -->
         <slot name="header"></slot>
-        <!-- Adds a ul tag to section, expects `<ul> | <ol>` element -->
+        <!-- summary: section link list
+             description: |
+               Expects a `<ul>` or `<ol>` element with navigation links. Automatically
+               receives `aria-labelledby` pointing to the header for screen readers.
+               Tab navigates through each link in the list. -->
         <slot name="links"></slot>
-        <!-- Adds a section level CTA, expects `<rh-cta>` element -->
+        <!-- summary: section-level call to action
+             description: |
+               Optional slot for an `<rh-cta>` element. Appears after the link list.
+               Screen readers announce the CTA link text in document order. -->
         <slot name="cta"></slot>
       </section>
     <!--/lit-part--></template>
@@ -232,14 +327,40 @@
               </a>
             </rh-cta>
           </rh-navigation-secondary-menu-section>
-          <rh-navigation-secondary-menu-section><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}::slotted([slot=header]){padding:0}::slotted(:is(h1,h2,h3,h4,h5,h6)){font-family:var(--rh-font-family-heading,RedHatDisplay, "Red Hat Display", Helvetica, Arial, sans-serif)}::slotted([slot=links]:is(ul,ol)){gap:var(--rh-font-size-body-text-md,1rem);flex-direction:column;margin:0;padding:0;list-style:none;display:flex}::slotted([slot=cta]){padding:var(--rh-space-xl,24px) 0 0}::slotted([slot=cta]:last-of-type){padding:var(--rh-space-xl,24px) 0}@media screen and (width>=992px){::slotted([slot=header]){padding:0}::slotted([slot=links]){margin:0;padding:0}}</style><!--lit-part 0trTtL27HXo=-->
-      <!-- container, <section> element -->
+          <rh-navigation-secondary-menu-section><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}::slotted([slot=header]){padding:0}::slotted(:is(h1,h2,h3,h4,h5,h6)){font-family:var(--rh-font-family-heading,RedHatDisplay, "Red Hat Display", Helvetica, Arial, sans-serif)}::slotted([slot=links]:is(ul,ol)){gap:var(--rh-font-size-body-text-md,1rem);flex-direction:column;margin:0;padding:0;list-style:none;display:flex}::slotted([slot=cta]){padding: var(--rh-space-xl,24px) 0 0}::slotted([slot=cta]:last-of-type){padding: var(--rh-space-xl,24px) 0}@media screen and (width>=992px){::slotted([slot=header]){padding:0}::slotted([slot=links]){margin:0;padding:0}}</style><!--lit-part npEPAk8Xzcw=-->
+      <!-- summary: menu section container
+           description: |
+             The semantic container for a menu section, grouping related navigation links
+             under a common header. This part corresponds to a `<section>` element that
+             provides structure and automatic accessibility enhancements.
+
+             **Styling:**
+             - Use this part to customize individual menu section appearance
+             - Controls spacing and layout of header, links, and CTA
+             - Sections are organized in a grid when multiple sections exist
+             - Automatically applies aria-labelledby to link lists
+
+             **Accessibility:**
+             - Automatically associates heading with list using aria-labelledby
+             - Generates IDs for headers if not present
+             - Ensures semantic structure for screen reader users -->
       <section part="container">
-        <!-- Adds a header tag to section, expects `<h1> | <h2> | <h3> | <h4> | <h5> | <h6>` element -->
+        <!-- summary: section heading
+             description: |
+               Expects an `<h1>`-`<h6>` element. Auto-linked to the links list via
+               `aria-labelledby` for screen reader group identification. An `id` is
+               generated if not present. -->
         <slot name="header"></slot>
-        <!-- Adds a ul tag to section, expects `<ul> | <ol>` element -->
+        <!-- summary: section link list
+             description: |
+               Expects a `<ul>` or `<ol>` element with navigation links. Automatically
+               receives `aria-labelledby` pointing to the header for screen readers.
+               Tab navigates through each link in the list. -->
         <slot name="links"></slot>
-        <!-- Adds a section level CTA, expects `<rh-cta>` element -->
+        <!-- summary: section-level call to action
+             description: |
+               Optional slot for an `<rh-cta>` element. Appears after the link list.
+               Screen readers announce the CTA link text in document order. -->
         <slot name="cta"></slot>
       </section>
     <!--/lit-part--></template>
@@ -373,23 +494,45 @@
       </rh-navigation-secondary-dropdown>
     </li>
     <li>
-      <rh-navigation-secondary-dropdown><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}#container{border-inline-start:var(--rh-border-width-lg,3px) solid transparent;border-inline-end:var(--rh-border-width-sm,1px) solid transparent;height:100%;display:block}#container.expanded{border-inline-start-color:var(--rh-color-text-brand-on-light,#e00);border-inline-end-color:var(--rh-color-border-subtle-on-light,#c7c7c7);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533)}::slotted([slot=link]){--_chevron-color:var(--rh-color-text-primary);justify-content:space-between;gap:calc(var(--rh-font-size-body-text-md,1rem) / 2);background-color:var(--rh-color-surface);position:relative}#container.highlight ::slotted([slot=link]),::slotted([slot=link][aria-current=page]){border-block-start-color:var(--_current-active-child-border-color,#e00)!important}::slotted([slot=link]):after{content:"";width:var(--_chevron-size);height:var(--_chevron-size);border-inline-end:var(--_chevron-thickness) solid var(--_chevron-color);border-block-end:var(--_chevron-thickness) solid var(--_chevron-color);transform:var(--_chevron-transform-collapsed);display:block;box-sizing:content-box!important}#container.expanded ::slotted([slot=link]):after{transform:var(--_chevron-transform-expanded)}@media screen and (width>=992px){#container{border-inline:none}#container.expanded{box-shadow:none}::slotted([slot=link][aria-expanded=true]){border-block-start-color:var(--rh-color-text-brand-on-light,#e00);background:var(--rh-color-surface-lightest,#fff)!important}::slotted([slot=link][aria-expanded=true]):after{--_chevron-color:var(--rh-color-text-primary-on-light,#151515)!important}}</style><!--lit-part r26wHJYngdE=-->
-      <!--lit-node 0--><div id="container" part="container" class="  ">
-        <!-- Link for dropdown, expects `<a>` element -->
+      <rh-navigation-secondary-dropdown><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}#container{border-inline-start: var(--rh-border-width-lg,3px) solid transparent;border-inline-end: var(--rh-border-width-sm,1px) solid transparent;height:100%;display:block}#container.expanded{border-inline-start-color:var(--rh-color-text-brand-on-light,#e00);border-inline-end-color:var(--rh-color-border-subtle-on-light,#c7c7c7);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533)}::slotted([slot=link]){--_chevron-color:var(--rh-color-text-primary);justify-content:space-between;gap:calc(var(--rh-font-size-body-text-md,1rem) / 2);background-color:var(--rh-color-surface);position:relative}#container.highlight ::slotted([slot=link]),::slotted([slot=link][aria-current=page]){border-block-start-color:var(--_current-active-child-border-color,#e00)!important}::slotted([slot=link]):after{content:"";width:var(--_chevron-size);height:var(--_chevron-size);border-inline-end:var(--_chevron-thickness) solid var(--_chevron-color);border-block-end:var(--_chevron-thickness) solid var(--_chevron-color);transform:var(--_chevron-transform-collapsed);display:block;box-sizing:content-box!important}#container.expanded ::slotted([slot=link]):after{transform:var(--_chevron-transform-expanded)}@media screen and (width>=992px){#container{border-inline:none}#container.expanded{box-shadow:none}::slotted([slot=link][aria-expanded=true]){border-block-start-color:var(--rh-color-text-brand-on-light,#e00);background:var(--rh-color-surface-lightest,#fff)!important}::slotted([slot=link][aria-expanded=true]):after{--_chevron-color:var(--rh-color-text-primary-on-light,#151515)!important}}</style><!--lit-part y1O37Ebb8tI=-->
+      <!-- summary: dropdown wrapper container
+           description: |
+             The container for a navigation dropdown item, wrapping both the link and menu.
+             This part corresponds to a `<div>` element that manages the dropdown state and styling.
+
+             **Styling:**
+             - Use this part to customize the dropdown appearance and layout
+             - Applies `.expanded` class when dropdown is open
+             - Applies `.highlight` class when dropdown contains the current page
+             - Controls dropdown link and menu positioning -->
+      <!--lit-node 1--><div id="container" part="container" class="  ">
+        <!-- summary: dropdown trigger link
+             description: |
+               Expects an `<a>` element. Automatically upgraded with `role="button"`,
+               `aria-expanded`, and `aria-controls` for keyboard and screen reader
+               accessibility. Enter/Space toggles the dropdown. -->
         <slot name="link"></slot>
-        <!-- Menu for dropdown, expects `<rh-navigation-secondary-menu>` element -->
+        <!-- summary: dropdown menu panel
+             description: |
+               Expects an `<rh-navigation-secondary-menu>` element. Visibility is
+               toggled when the link slot is activated. Screen readers can navigate
+               menu sections via headings inside the menu. -->
         <slot name="menu"></slot>
       </div>
     <!--/lit-part--></template>
         <a href="#" slot="link" data-analytics-text="Use cases">Use cases</a>
-        <rh-navigation-secondary-menu  slot="menu" color-palette="lightest" layout="full-width"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:dark only}:host([color-palette^=light]){color-scheme:light only}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{color-scheme:light only;display:block}#container{color:var(--rh-color-text-primary-on-light,#151515);background-color:var(--rh-color-surface-lightest,#fff);position:relative}#container:not(.visible){display:none}#sections{padding:var(--rh-space-xl,24px)}:host(:not([type=fixed-width])) #sections{grid-template-columns: var(--rh-navigation-secondary-menu-section-grid,repeat(auto-fit, minmax(15.5rem, 1fr)));gap: var(--rh-navigation-secondary-menu-section-grid-gap,var(--rh-space-2xl,32px));grid-template-rows:auto;display:grid}::slotted(:is(ul,ol)){gap:var(--rh-font-size-body-text-md,1rem);flex-direction:column;margin:0;padding:0;list-style:none;display:flex}@media screen and (width>=992px){#container.visible{padding:var(--rh-space-4xl,64px) var(--rh-space-2xl,32px) var(--rh-space-3xl,48px);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);z-index:-1;max-height:calc(100vh - (var(--rh-space-4xl,64px)) - var(--_nav-min-height));position:absolute;left:0;right:0;overflow-y:auto}:host([layout=fixed-width]) #container{inset:var(--_nav-height) auto auto auto;margin-top:0;padding:0;position:absolute}#sections{max-width:var(--rh-navigation-secondary-menu-content-max-width,1136px);margin:auto;padding:0}:host([layout=fixed-width]) #sections{padding:var(--rh-space-2xl,32px)}}@media screen and (width>=1200px){#container.visible{padding:var(--rh-space-3xl,48px) var(--rh-space-2xl,32px)}}@media screen and (width>=1440px){#container.visible{padding:var(--rh-space-3xl,48px) var(--rh-space-4xl,64px)}}@media screen and (width>=1600px){#full-width{margin:auto}}</style><!--lit-part Jgnzawe+jNY=-->
+        <rh-navigation-secondary-menu  slot="menu" color-palette="lightest" layout="full-width"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:dark only}:host([color-palette^=light]){color-scheme:light only}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{color-scheme:light only;display:block}#container{color:var(--rh-color-text-primary-on-light,#151515);background-color:var(--rh-color-surface-lightest,#fff);position:relative}#container:not(.visible){display:none}#sections{padding:var(--rh-space-xl,24px)}:host(:not([type=fixed-width])) #sections{grid-template-columns:var(--rh-navigation-secondary-menu-section-grid,repeat(auto-fit, minmax(15.5rem, 1fr)));gap: var(--rh-navigation-secondary-menu-section-grid-gap, var(--rh-space-2xl,32px));grid-template-rows:auto;display:grid}::slotted(:is(ul,ol)){gap:var(--rh-font-size-body-text-md,1rem);flex-direction:column;margin:0;padding:0;list-style:none;display:flex}@media screen and (width>=992px){#container.visible{padding: var(--rh-space-4xl,64px)  var(--rh-space-2xl,32px)  var(--rh-space-3xl,48px);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);z-index:-1;max-height:calc(100vh - (var(--rh-space-4xl,64px)) - var(--_nav-min-height));position:absolute;left:0;right:0;overflow-y:auto}:host([layout=fixed-width]) #container{inset:var(--_nav-height) auto auto auto;margin-top:0;padding:0;position:absolute}#sections{max-width:var(--rh-navigation-secondary-menu-content-max-width,1136px);margin:auto;padding:0}:host([layout=fixed-width]) #sections{padding:var(--rh-space-2xl,32px)}}@media screen and (width>=1200px){#container.visible{padding: var(--rh-space-3xl,48px)  var(--rh-space-2xl,32px)}}@media screen and (width>=1440px){#container.visible{padding: var(--rh-space-3xl,48px)  var(--rh-space-4xl,64px)}}@media screen and (width>=1600px){#full-width{margin:auto}}</style><!--lit-part Jgnzawe+jNY=-->
       <!-- container - `<div>` element, wrapper for menus -->
-      <!--lit-node 1--><div id="container" class="  "><!--lit-part CEwtqGiC8b8=-->
+      <!--lit-node 1--><div id="container" class="  "><!--lit-part CmwC9jppMYw=-->
         <!-- container - `<div>` element, wrapper for full-width menus -->
         <div id="full-width" part="full-width">
           <!-- container - `<div>` element, wrapper for menu sections -->
           <div id="sections" part="sections">
-            <!-- Optional `<rh-navigation-secondary-menu-section>` elements or content following [design guidelines](../guidelines/#expandable-tray) -->
+            <!-- summary: menu content
+                 description: |
+                   Should contain `<rh-navigation-secondary-menu-section>` elements
+                   with headings. Screen readers navigate sections via
+                   `aria-labelledby` associations between headings and link lists. -->
             <slot></slot>
           </div>
         </div><!--/lit-part-->

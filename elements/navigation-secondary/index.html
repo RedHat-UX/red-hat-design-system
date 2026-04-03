@@ -25,8 +25,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
@@ -3818,7 +3818,12 @@
           <a href="#overview">Overview</a>
         </h2>
       </uxdot-copy-permalink>
-      <p>The secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the <a href="../navigation-primary">primary navigation</a>.</p>
+      <p>Persistent wayfinding navigation for linking related pages below
+<code>&lt;rh-navigation-primary&gt;</code>. Provides <code>role="navigation"</code> with a
+configurable <code>aria-label</code> and light/dark color palettes. On mobile,
+items collapse behind a menu button. Keyboard navigation with Tab, Escape,
+Enter/Space. Should contain <code>logo</code>, <code>nav</code> (<code>&lt;ul&gt;</code>), and optional
+<code>cta</code> slots. Avoid using more then 5 nav items.</p>
 
       
       
@@ -4707,12 +4712,17 @@
 <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
           <uxdot-knob-attribute slot="knobs" tag="rh-navigation-secondary" name="color-palette" type="'light' | 'lighter' | 'lightest' | 'dark' | 'darker' | 'darkest'" default="'lighter'">
-            <div slot="description"><p>Color palette dark | lighter (default: lighter)</p>
+            <div slot="description"><p>Controls the visual color palette of the navigation bar. Valid values:
+<code>'lighter'</code> (default) for light environments, <code>'dark'</code> for dark
+environments. Light-family values (<code>'light'</code>, <code>'lightest'</code>) map to
+<code>'lighter'</code>; dark-family values (<code>'darker'</code>, <code>'darkest'</code>) map to <code>'dark'</code>.
+Should match the surrounding page color scheme. Defaults to <code>'lighter'</code>.</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-navigation-secondary" name="accessible-label" type="string" default="'secondary'">
-            <div slot="description"><p>Customize the default <code>aria-label</code> on the <code>&lt;nav&gt;</code> container.
-Defaults to "secondary" if no attribute/property is set.</p>
+            <div slot="description"><p>Sets the <code>aria-label</code> on the internal <code>&lt;nav&gt;</code> element for screen readers.
+USE a descriptive label like the product name (e.g. "OpenShift navigation").
+Must be unique if multiple navigations exist on the page. Defaults to <code>'secondary'</code>.</p>
 </div>
           </uxdot-knob-attribute></uxdot-demo>
         

@@ -25,8 +25,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
@@ -4590,7 +4590,12 @@ when the active page is within a dropdown menu.</p>
         </h2>
       </uxdot-copy-permalink>
 
-      <p>The secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the <a href="../navigation-primary">primary navigation</a>.</p>
+      <p>Persistent wayfinding navigation for linking related pages below
+<code>&lt;rh-navigation-primary&gt;</code>. Provides <code>role="navigation"</code> with a
+configurable <code>aria-label</code> and light/dark color palettes. On mobile,
+items collapse behind a menu button. Keyboard navigation with Tab, Escape,
+Enter/Space. Should contain <code>logo</code>, <code>nav</code> (<code>&lt;ul&gt;</code>), and optional
+<code>cta</code> slots. Avoid using more then 5 nav items.</p>
 
 
       <div class="element-apis">
@@ -4688,9 +4693,11 @@ when the active page is within a dropdown menu.</p>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>product logo or name link</p></td>
                   <td>
-                   <p>Logo added to the main nav bar, expects <code>&lt;a&gt;Text&lt;/a&gt; | &lt;a&gt;&lt;svg/&gt;&lt;/a&gt; | &lt;a&gt;&lt;img/&gt;&lt;/a&gt;</code> element</p>
+                   <p>Expects an <code>&lt;a&gt;</code> element with text, SVG, or image linking to the product
+homepage. Screen readers announce the link text or <code>alt</code> attribute.
+Must be provided. <code>aria-current="page"</code> highlights when on the homepage.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4718,9 +4725,11 @@ when the active page is within a dropdown menu.</p>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>mobile menu button label</p></td>
                   <td>
-                   <p>Text label for the mobile menu button, for l10n. Defaults to "Menu"</p>
+                   <p>Text label for the mobile hamburger menu button. Defaults to "Menu".
+USE this slot for localization/translation of the button text.
+Screen readers announce this label with the button's expanded state.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4748,9 +4757,12 @@ when the active page is within a dropdown menu.</p>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>navigation link list</p></td>
                   <td>
-                   <p>Navigation list added to the main nav bar, expects <code>&lt;ul&gt;</code> element</p>
+                   <p>Expects a <code>&lt;ul&gt;</code> element containing <code>&lt;li&gt;</code> children with links or
+<code>&lt;rh-navigation-secondary-dropdown&gt;</code> elements. On mobile, hidden behind
+the menu button. AVOID more than 5 total items. Screen readers navigate
+via list semantics. Tab moves focus through each link or dropdown trigger.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4778,9 +4790,11 @@ when the active page is within a dropdown menu.</p>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>navigation-level call to action</p></td>
                   <td>
-                   <p>Nav bar level CTA, expects <code>&lt;rh-cta&gt;</code> element</p>
+                   <p>Optional slot for an <code>&lt;rh-cta&gt;</code> element positioned at the end of the
+navigation bar. On mobile, appears below the nav list. Screen readers
+announce the CTA link text. AVOID long text that reduces nav item space.</p>
                   </td>
                 </tr>
               </tbody>
@@ -4886,7 +4900,11 @@ when the active page is within a dropdown menu.</p>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>colorPalette</code></td>
-                  <td><p>Color palette dark | lighter (default: lighter)</p></td>
+                  <td><p>Controls the visual color palette of the navigation bar. Valid values:
+<code>'lighter'</code> (default) for light environments, <code>'dark'</code> for dark
+environments. Light-family values (<code>'light'</code>, <code>'lightest'</code>) map to
+<code>'lighter'</code>; dark-family values (<code>'darker'</code>, <code>'darkest'</code>) map to <code>'dark'</code>.
+Should match the surrounding page color scheme. Defaults to <code>'lighter'</code>.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'light'</span> <span class="token operator">|</span> <span class="token string">'lighter'</span> <span class="token operator">|</span> <span class="token string">'lightest'</span> <span class="token operator">|</span> <span class="token string">'dark'</span> <span class="token operator">|</span> <span class="token string">'darker'</span> <span class="token operator">|</span> <span class="token string">'darkest'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'lighter'</span></code></pre></td>
                 </tr>
@@ -4918,8 +4936,9 @@ when the active page is within a dropdown menu.</p>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>accessibleLabel</code></td>
-                  <td><p>Customize the default <code>aria-label</code> on the <code>&lt;nav&gt;</code> container.
-Defaults to "secondary" if no attribute/property is set.</p></td>
+                  <td><p>Sets the <code>aria-label</code> on the internal <code>&lt;nav&gt;</code> element for screen readers.
+USE a descriptive label like the product name (e.g. "OpenShift navigation").
+Must be unique if multiple navigations exist on the page. Defaults to <code>'secondary'</code>.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'secondary'</span></code></pre></td>
                 </tr>
@@ -5185,9 +5204,8 @@ Toggles overlay to open</p></td>
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td><p>Fires when an dropdown is opened or closed in desktop
-view or when the mobile menu button is toggled in mobile
-view.</p></td>
+                  <td><p>Fires when a dropdown opens/closes
+in desktop view or mobile menu toggles. Detail: <code>open</code> (boolean), <code>toggle</code> (HTMLElement).</p></td>
                 </tr>
               </tbody>
             </table>
@@ -5290,8 +5308,16 @@ view.</p></td>
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
-                  <td><p>container, <code>&lt;nav&gt;</code> element</p></td>
+                  <td><p>main navigation wrapper element</p></td>
+                  <td><p>The outermost container for the secondary navigation, wrapping all navigation content
+including logo, menu, and CTA. This part corresponds to a <code>&lt;div&gt;</code> element that provides
+the primary structure and styling for the navigation bar.</p>
+<p><strong>Styling:</strong></p>
+<ul>
+<li>Use this part to customize the overall navigation appearance</li>
+<li>Applies compact mode styles when viewport is mobile-sized</li>
+<li>Controls positioning and z-index of navigation elements</li>
+</ul></td>
                 </tr>
                 <tr>
                   <td>
@@ -5320,8 +5346,17 @@ view.</p></td>
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
-                  <td><p>container, <code>&lt;div&gt;</code> element</p></td>
+                  <td><p>navigation content container</p></td>
+                  <td><p>The primary container for navigation links, logo, mobile menu button, and CTA.
+This part corresponds to a <code>&lt;div&gt;</code> element that manages the layout and expansion
+states of the navigation content.</p>
+<p><strong>Styling:</strong></p>
+<ul>
+<li>Use this part to customize the navigation content layout</li>
+<li>Controls expanded/collapsed states for mobile menu</li>
+<li>Manages positioning of navigation items and dropdowns</li>
+<li>Contains grid layout for organizing navigation elements</li>
+</ul></td>
                 </tr>
                 <tr>
                   <td>
@@ -5350,8 +5385,16 @@ view.</p></td>
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
-                  <td><p>container, <code>&lt;div&gt;</code> element</p></td>
+                  <td><p>call-to-action container</p></td>
+                  <td><p>Container for the navigation-level call-to-action button. This part corresponds
+to a <code>&lt;div&gt;</code> element positioned at the end of the navigation bar.</p>
+<p><strong>Styling:</strong></p>
+<ul>
+<li>Use this part to customize the CTA positioning and spacing</li>
+<li>Appears at the rightmost position in desktop view</li>
+<li>Typically contains a single <code>&lt;rh-cta&gt;</code> element</li>
+<li>Automatically adjusts color palette in mobile vs desktop views</li>
+</ul></td>
                 </tr>
               </tbody>
             </table>
@@ -5428,7 +5471,19 @@ view.</p></td>
               <tbody>
                 <tr>
                   <td><code>--rh-navigation-secondary-z-index</code></td>
-                  <td><p>z-index of the navigation-secondary</p></td>
+                  <td><p>--rh-navigation-secondary-z-index
+Controls the stacking order of the secondary navigation bar. Defaults to 102 to ensure
+navigation appears above most page content but below modals and overlays.</p>
+<p><strong>Usage guidelines:</strong></p>
+<ul>
+<li>Keep default value (102) for standard page layouts</li>
+<li>Same z-index as primary navigation for consistent stacking</li>
+<li>Increase only when navigation must appear above specific page elements</li>
+<li>Coordinate with --rh-navigation-primary-z-index if using both navigations</li>
+<li>Ensure navigation doesn't overlap modals (typically z-index 1000+)</li>
+</ul>
+<p>z-index of the navigation-secondary</p>
+<p>Navigation container stacking order</p></td>
                   <td>
                     <code>102</code>
                   </td>
@@ -5470,7 +5525,7 @@ view.</p></td>
           use rh-tag instead.
       -->
       <!--lit-node 3--><slot class=" neutral "></slot>
-    <!--/lit-part--></template>17</rh-badge></a>
+    <!--/lit-part--></template>16</rh-badge></a>
             </h3>
           </uxdot-copy-permalink>
           
@@ -5511,7 +5566,8 @@ view.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Navigation dropdown chevron color</p>
+<p>Navigation menu toggle color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5617,7 +5673,7 @@ view.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Navigation current active item border color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5718,118 +5774,13 @@ view.</p></td>
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://ux.redhat.com/tokens/color/#--rh-color-border-subtle">
-                      <code>--rh-color-border-subtle</code>
-                    </a>
-                  </td>
-                  <td>
-                    
-                  </td>
-                  <td data-label="Copy">
-      <div>
-        <uxdot-copy-button   class="icon-only" copy="var(--rh-color-border-subtle, undefined)"><template shadowroot="open" shadowrootmode="open"><style>button{color:inherit;border-radius:var(--rh-border-radius-default);align-items:center;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs);background:0 0;border-width:0;display:inline-flex}code{padding:var(--rh-space-xs) var(--rh-space-md);background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);font-family:var(--rh-font-family-code);line-height:var(--rh-line-height-code)}:host(.icon-only) code,:host(:empty) code,:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{color:var(--rh-color-text-primary);background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;block-size:1px;inline-size:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}</style><!--lit-part zk+fFwx/8Tw=-->
-      <!--lit-node 0--><rh-tooltip  position="left-start" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline}#container{--_floating-arrow-size: var(--rh-tooltip-arrow-size, var(--rh-tooltip__arrow--Width,11px));max-width:100%;display:inline-flex;position:relative}#tooltip,#tooltip:after{position:absolute}#tooltip{opacity:0;pointer-events:none;z-index:10000;transition:opacity 0s 0s, display 0s 0s allow-discrete;text-align:var(--_text-alignment,center);word-break:break-word;translate:var(--_floating-content-translate);transform:translateX(var(--_rh-tooltip-shake-x,0));will-change:opacity;width:max-content;line-height:var(--rh-line-height-body-text,1.5);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);max-width: var(--rh-tooltip-max-width, var(--rh-tooltip--MaxWidth,18.75rem));border-radius:var(--rh-border-radius-default,3px);padding-block: var(--rh-tooltip-content-padding-block-start, var(--rh-tooltip__content--PaddingTop,var(--rh-space-lg,16px)))  var(--rh-tooltip-content-padding-block-end, var(--rh-tooltip__content--PaddingBottom,var(--rh-space-lg,16px)));padding-inline: var(--rh-tooltip-content-padding-inline-start, var(--rh-tooltip__content--PaddingLeft,var(--rh-space-lg,16px)))  var(--rh-tooltip-content-padding-inline-end, var(--rh-tooltip__content--PaddingRight,var(--rh-space-lg,16px)));font-size: var(--rh-tooltip-content-font-size, var(--rh-tooltip__content--FontSize,var(--rh-font-size-body-text-sm,.875rem)));color:light-dark( var(--rh-tooltip-content-color, var(--rh-tooltip__content--Color,var(--rh-color-text-primary-on-light,#151515))), var(--rh-tooltip-content-color,var(--rh-color-text-primary-on-dark,#fff)));background-color:light-dark( var(--rh-tooltip-content-background-color, var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))), var(--rh-tooltip-content-background-color,var(--rh-color-surface-darkest,#151515)));display:none;top:0;left:0}#tooltip.dark{color-scheme:dark}#tooltip.light{color-scheme:light}.initialized #tooltip{display:block}#tooltip:after{content:"";width:var(--_floating-arrow-size);height:var(--_floating-arrow-size);will-change:left top right bottom;background-color:light-dark( var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))), var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515))));display:block;rotate:45deg}.open #tooltip{opacity:1;transition:opacity .3s cubic-bezier(.54, 1.5, .38, 1.11) .3s, display .3s .3s allow-discrete}@starting-style{.open #tooltip{opacity:0}}.left #tooltip:after{inset-inline-end:calc(-.5 * var(--_floating-arrow-size))}.top #tooltip:after{inset-block-end:calc(-.5 * var(--_floating-arrow-size))}.right #tooltip:after{inset-inline-start:calc(-.5 * var(--_floating-arrow-size))}.bottom #tooltip:after{inset-block-start:calc(-.5 * var(--_floating-arrow-size))}.left.center #tooltip:after{inset-block-start:calc(50% - .5 * var(--_floating-arrow-size))}.top.center #tooltip:after{inset-inline-end:calc(50% - .5 * var(--_floating-arrow-size))}.right.center #tooltip:after{inset-block-start:calc(50% - .5 * var(--_floating-arrow-size))}.bottom.center #tooltip:after{inset-inline-end:calc(50% - .5 * var(--_floating-arrow-size))}.left.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.top.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.right.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.bottom.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.left.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.top.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}.right.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.bottom.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}:host([position=left]),:host([position=right]){--_text-alignment:"start"}#container:dir(rtl).left #tooltip:after{inset-inline:calc(-.5 * var(--_floating-arrow-size)) auto}#container:dir(rtl).right #tooltip:after{inset-inline:auto calc(-.5 * var(--_floating-arrow-size))}</style><!--lit-part 98+Q3SU39hY=-->
-      <!--lit-node 0--><div id="container"
-           style=""
-           class=" center ">
-        <div id="invoker">
-          <!-- summary: Invoking element
-               description: |
-                 Place the invoking element here, i.e. the element which
-                 when hovered or focused causes the tooltip to display.
-                 Must be inline, focusable content so that keyboard and
-                 screen reader users can activate the tooltip. -->
-          <slot id="invoker-slot"></slot>
-        </div>
-        <!--lit-node 4--><div id="tooltip" role="status" class=" dark ">
-          <!-- summary: Tooltip content
-               description: |
-                 Place tooltip content here. Overrides the `content`
-                 attribute. Content is announced to screen readers via
-                 a live region unless the `silent` attribute is set. -->
-          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
-        </div>
-      </div>
-    <!--/lit-part--></template>
-        <span id="caption" slot="content"><!--lit-part-->var(--rh-color-border-subtle, undefined)<!--/lit-part--></span>
-        <!--lit-node 3--><button >
-          <code><slot></slot></code>
-          <slot name="extra-content"></slot>
-          <span class="visually-hidden">Click to copy</span>
-          <!--lit-node 8--><rh-icon    aria-hidden="true" set="ui" icon="copy" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part giAImwWJlo8=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M28 7v22.607c0 .768-.622 1.393-1.387 1.393H10a1 1 0 1 1 0-2h16V7a1 1 0 1 1 2 0Zm-6.5 19h-16c-.827 0-1.5-.673-1.5-1.5V8a1.001 1.001 0 0 1 .294-.708l5.998-5.998A1.001 1.001 0 0 1 11 1h10.5c.827 0 1.5.673 1.5 1.5v22c0 .827-.673 1.5-1.5 1.5ZM7.414 7H10V4.414L7.414 7ZM21 3h-9v4.614C12 8.378 11.378 9 10.613 9H6v15h15V3Z"/></svg><!--/lit-part--><!--
-           Container for the fallback (i.e. slotted) content
-        --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
-        --><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-        </button>
-      </rh-tooltip>
-    <!--/lit-part--></template>
-          <span slot="extra-content" class="visually-hidden">
-            Full CSS Variable
-          </span>
-        </uxdot-copy-button>
-        <uxdot-copy-button    class="icon-only" copy="https://ux.redhat.com/tokens/color/#--rh-color-border-subtle" icon="link"><template shadowroot="open" shadowrootmode="open"><style>button{color:inherit;border-radius:var(--rh-border-radius-default);align-items:center;gap:var(--rh-space-xs);padding-inline:var(--rh-space-xs);background:0 0;border-width:0;display:inline-flex}code{padding:var(--rh-space-xs) var(--rh-space-md);background:light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark));font-size:var(--rh-font-size-code-md);font-weight:var(--rh-font-weight-code-regular);font-family:var(--rh-font-family-code);line-height:var(--rh-line-height-code)}:host(.icon-only) code,:host(:empty) code,:is(rh-icon,#caption){display:none}:host(:state(--rendered)) button:is(:focus,:active,:hover),:host(:state(--rendered)) button:is(:focus,:active,:hover) code{color:var(--rh-color-text-primary);background:light-dark(var(--rh-color-blue-20),var(--rh-color-blue-70));opacity:1}:host(:state(--rendered)) :is(rh-icon,#caption){display:initial}.visually-hidden{clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;block-size:1px;inline-size:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}</style><!--lit-part zk+fFwx/8Tw=-->
-      <!--lit-node 0--><rh-tooltip  position="left-start" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline}#container{--_floating-arrow-size: var(--rh-tooltip-arrow-size, var(--rh-tooltip__arrow--Width,11px));max-width:100%;display:inline-flex;position:relative}#tooltip,#tooltip:after{position:absolute}#tooltip{opacity:0;pointer-events:none;z-index:10000;transition:opacity 0s 0s, display 0s 0s allow-discrete;text-align:var(--_text-alignment,center);word-break:break-word;translate:var(--_floating-content-translate);transform:translateX(var(--_rh-tooltip-shake-x,0));will-change:opacity;width:max-content;line-height:var(--rh-line-height-body-text,1.5);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);max-width: var(--rh-tooltip-max-width, var(--rh-tooltip--MaxWidth,18.75rem));border-radius:var(--rh-border-radius-default,3px);padding-block: var(--rh-tooltip-content-padding-block-start, var(--rh-tooltip__content--PaddingTop,var(--rh-space-lg,16px)))  var(--rh-tooltip-content-padding-block-end, var(--rh-tooltip__content--PaddingBottom,var(--rh-space-lg,16px)));padding-inline: var(--rh-tooltip-content-padding-inline-start, var(--rh-tooltip__content--PaddingLeft,var(--rh-space-lg,16px)))  var(--rh-tooltip-content-padding-inline-end, var(--rh-tooltip__content--PaddingRight,var(--rh-space-lg,16px)));font-size: var(--rh-tooltip-content-font-size, var(--rh-tooltip__content--FontSize,var(--rh-font-size-body-text-sm,.875rem)));color:light-dark( var(--rh-tooltip-content-color, var(--rh-tooltip__content--Color,var(--rh-color-text-primary-on-light,#151515))), var(--rh-tooltip-content-color,var(--rh-color-text-primary-on-dark,#fff)));background-color:light-dark( var(--rh-tooltip-content-background-color, var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))), var(--rh-tooltip-content-background-color,var(--rh-color-surface-darkest,#151515)));display:none;top:0;left:0}#tooltip.dark{color-scheme:dark}#tooltip.light{color-scheme:light}.initialized #tooltip{display:block}#tooltip:after{content:"";width:var(--_floating-arrow-size);height:var(--_floating-arrow-size);will-change:left top right bottom;background-color:light-dark( var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))), var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515))));display:block;rotate:45deg}.open #tooltip{opacity:1;transition:opacity .3s cubic-bezier(.54, 1.5, .38, 1.11) .3s, display .3s .3s allow-discrete}@starting-style{.open #tooltip{opacity:0}}.left #tooltip:after{inset-inline-end:calc(-.5 * var(--_floating-arrow-size))}.top #tooltip:after{inset-block-end:calc(-.5 * var(--_floating-arrow-size))}.right #tooltip:after{inset-inline-start:calc(-.5 * var(--_floating-arrow-size))}.bottom #tooltip:after{inset-block-start:calc(-.5 * var(--_floating-arrow-size))}.left.center #tooltip:after{inset-block-start:calc(50% - .5 * var(--_floating-arrow-size))}.top.center #tooltip:after{inset-inline-end:calc(50% - .5 * var(--_floating-arrow-size))}.right.center #tooltip:after{inset-block-start:calc(50% - .5 * var(--_floating-arrow-size))}.bottom.center #tooltip:after{inset-inline-end:calc(50% - .5 * var(--_floating-arrow-size))}.left.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.top.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.right.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.bottom.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.left.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.top.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}.right.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.bottom.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}:host([position=left]),:host([position=right]){--_text-alignment:"start"}#container:dir(rtl).left #tooltip:after{inset-inline:calc(-.5 * var(--_floating-arrow-size)) auto}#container:dir(rtl).right #tooltip:after{inset-inline:auto calc(-.5 * var(--_floating-arrow-size))}</style><!--lit-part 98+Q3SU39hY=-->
-      <!--lit-node 0--><div id="container"
-           style=""
-           class=" center ">
-        <div id="invoker">
-          <!-- summary: Invoking element
-               description: |
-                 Place the invoking element here, i.e. the element which
-                 when hovered or focused causes the tooltip to display.
-                 Must be inline, focusable content so that keyboard and
-                 screen reader users can activate the tooltip. -->
-          <slot id="invoker-slot"></slot>
-        </div>
-        <!--lit-node 4--><div id="tooltip" role="status" class=" dark ">
-          <!-- summary: Tooltip content
-               description: |
-                 Place tooltip content here. Overrides the `content`
-                 attribute. Content is announced to screen readers via
-                 a live region unless the `silent` attribute is set. -->
-          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
-        </div>
-      </div>
-    <!--/lit-part--></template>
-        <span id="caption" slot="content"><!--lit-part-->https://ux.redhat.com/tokens/color/#--rh-color-border-subtle<!--/lit-part--></span>
-        <!--lit-node 3--><button >
-          <code><slot></slot></code>
-          <slot name="extra-content"></slot>
-          <span class="visually-hidden">Click to copy</span>
-          <!--lit-node 8--><rh-icon    aria-hidden="true" set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part 5v6yQu9Xxog=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19.204 12.793c1.417 1.417 2.198 3.3 2.198 5.302s-.781 3.884-2.198 5.302l-5.398 5.41C12.378 30.223 10.494 31 8.497 31s-3.88-.778-5.304-2.19C.274 25.88.274 21.12 3.189 18.194l2.912-2.903a1 1 0 1 1 1.412 1.417l-2.91 2.9c-2.137 2.145-2.137 5.639.002 7.786a5.5 5.5 0 0 0 3.892 1.605c1.465 0 2.85-.572 3.896-1.61l5.396-5.407c1.04-1.04 1.613-2.421 1.613-3.888s-.573-2.849-1.612-3.888a5.356 5.356 0 0 0-1.267-.946 1 1 0 0 1 .947-1.762c.63.338 1.214.774 1.733 1.294Zm9.603-9.603C27.383 1.778 25.499 1 23.503 1s-3.881.778-5.309 2.193l-5.398 5.41c-1.417 1.417-2.198 3.3-2.198 5.302s.781 3.885 2.198 5.302c.52.52 1.104.956 1.733 1.294a1.001 1.001 0 0 0 .948-1.762 5.356 5.356 0 0 1-1.267-.946c-1.039-1.04-1.612-2.42-1.612-3.888s.573-2.848 1.613-3.888l5.396-5.407C20.654 3.572 22.038 3 23.503 3s2.849.572 3.892 1.605c2.139 2.147 2.139 5.642.002 7.786l-2.91 2.9a1 1 0 1 0 1.412 1.417l2.912-2.903c2.915-2.925 2.915-7.686-.004-10.616Z"/></svg><!--/lit-part--><!--
-           Container for the fallback (i.e. slotted) content
-        --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
-        --><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-        </button>
-      </rh-tooltip>
-    <!--/lit-part--></template>
-          <span slot="extra-content" class="visually-hidden">
-            Permalink to this token
-          </span>
-        </uxdot-copy-button>
-      </div>
-    </td>
-                </tr>
-                <tr>
-                  <td>
                     <a href="https://ux.redhat.com/tokens/color/#--rh-color-surface-lighter">
                       <code>--rh-color-surface-lighter</code>
                     </a>
                   </td>
                   <td>
-                    <p>Tertiary surface (light theme)</p>
+                    <p>Navigation bar surface in light mode</p>
+<p>Tertiary surface (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5935,7 +5886,8 @@ view.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Tertiary surface (dark theme)</p>
+                    <p>Navigation bar surface in dark mode</p>
+<p>Tertiary surface (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6041,7 +5993,8 @@ view.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>1px border width; Example: Secondary CTA or Button</p>
+                    <p>Navigation bar bottom border width</p>
+<p>1px border width; Example: Secondary CTA or Button</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6147,7 +6100,8 @@ view.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Body text font family</p>
+                    <p>Navigation menu toggle typeface</p>
+<p>Body text font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6253,7 +6207,8 @@ view.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>16px font size</p>
+                    <p>Navigation menu toggle text size</p>
+<p>16px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6359,7 +6314,8 @@ view.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>3px border width: Example: Expanded Accordion panel</p>
+                    <p>Navigation menu toggle top border width</p>
+<p>3px border width: Example: Expanded Accordion panel</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6465,7 +6421,12 @@ view.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Navigation bar column gap</p>
+<p>Navigation menu expanded inline-end padding</p>
+<p>Navigation menu expanded inline-start padding</p>
+<p>Navigation menu toggle inner spacing</p>
+<p>Navigation menu toggle inline-end margin</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6571,7 +6532,8 @@ view.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>8px spacer</p>
+                    <p>Navigation menu toggle content gap</p>
+<p>8px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6677,7 +6639,7 @@ view.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Navigation menu toggle background</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6889,7 +6851,9 @@ view.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Brand text color for light theme</p>
+                    <p>Navigation menu toggle top accent color</p>
+<p>Navigation menu toggle top accent color</p>
+<p>Brand text color for light theme</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7207,7 +7171,12 @@ view.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>32px spacer</p>
+                    <p>Navigation menu expanded top padding</p>
+<p>Navigation menu toggle inline-end margin at viewport &gt;= md</p>
+<p>Navigation menu expanded top padding at viewport &gt;= md</p>
+<p>Navigation menu expanded inline padding at viewport &gt;= md</p>
+<p>Navigation call to action inner spacing at viewport &gt;= md</p>
+<p>32px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7337,7 +7306,13 @@ view.</p></td>
         </h2>
       </uxdot-copy-permalink>
 
-      <p>Upgrades a top level nav link to include dropdown functionality</p>
+      <p>Wraps a top-level nav link to add expandable dropdown menu functionality.
+Upgrades the slotted <code>&lt;a&gt;</code> with <code>role="button"</code>, <code>aria-expanded</code>, and
+<code>aria-controls</code> for accessibility. Highlights with a red top border when
+the dropdown contains the current page (<code>aria-current="page"</code>). Keyboard:
+Enter/Space toggles the dropdown; Tab moves through menu items; Escape
+closes. Must contain an <code>&lt;a&gt;</code> in the <code>link</code> slot and an
+<code>&lt;rh-navigation-secondary-menu&gt;</code> in the <code>menu</code> slot.</p>
 
 
       <div class="element-apis">
@@ -7435,9 +7410,11 @@ view.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>dropdown trigger link</p></td>
                   <td>
-                   <p>Link for dropdown, expects <code>&lt;a&gt;</code> element</p>
+                   <p>Expects an <code>&lt;a&gt;</code> element. Automatically upgraded with <code>role="button"</code>,
+<code>aria-expanded</code>, and <code>aria-controls</code> for keyboard and screen reader
+accessibility. Enter/Space toggles the dropdown.</p>
                   </td>
                 </tr>
                 <tr>
@@ -7465,9 +7442,11 @@ view.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>dropdown menu panel</p></td>
                   <td>
-                   <p>Menu for dropdown, expects <code>&lt;rh-navigation-secondary-menu&gt;</code> element</p>
+                   <p>Expects an <code>&lt;rh-navigation-secondary-menu&gt;</code> element. Visibility is
+toggled when the link slot is activated. Screen readers can navigate
+menu sections via headings inside the menu.</p>
                   </td>
                 </tr>
               </tbody>
@@ -7644,14 +7623,15 @@ view.</p></td>
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-                      <span id="rh-navigation-secondary-dropdown-events-change">
-                        <a href="#rh-navigation-secondary-dropdown-events-change">
-                          <code>change</code>
+                      <span id="rh-navigation-secondary-dropdown-events-expand-request">
+                        <a href="#rh-navigation-secondary-dropdown-events-expand-request">
+                          <code>expand-request</code>
                         </a>
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td><p>Fires when a dropdown is clicked</p></td>
+                  <td><p>Fires when the dropdown link is
+clicked. Detail: <code>expanded</code> (boolean), <code>toggle</code> (RhNavigationSecondaryDropdown).</p></td>
                 </tr>
               </tbody>
             </table>
@@ -7754,8 +7734,16 @@ view.</p></td>
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
-                  <td></td>
+                  <td><p>dropdown wrapper container</p></td>
+                  <td><p>The container for a navigation dropdown item, wrapping both the link and menu.
+This part corresponds to a <code>&lt;div&gt;</code> element that manages the dropdown state and styling.</p>
+<p><strong>Styling:</strong></p>
+<ul>
+<li>Use this part to customize the dropdown appearance and layout</li>
+<li>Applies <code>.expanded</code> class when dropdown is open</li>
+<li>Applies <code>.highlight</code> class when dropdown contains the current page</li>
+<li>Controls dropdown link and menu positioning</li>
+</ul></td>
                 </tr>
               </tbody>
             </table>
@@ -7876,7 +7864,8 @@ view.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>3px border width: Example: Expanded Accordion panel</p>
+                    <p>Navigation dropdown leading border width</p>
+<p>3px border width: Example: Expanded Accordion panel</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7982,7 +7971,8 @@ view.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>1px border width; Example: Secondary CTA or Button</p>
+                    <p>Navigation dropdown trailing border width</p>
+<p>1px border width; Example: Secondary CTA or Button</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8088,7 +8078,8 @@ view.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Subtle border color (light theme)</p>
+                    <p>Navigation dropdown trailing border color</p>
+<p>Subtle border color (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8194,7 +8185,8 @@ view.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Small box shadow</p>
+                    <p>Navigation dropdown elevation shadow</p>
+<p>Small box shadow</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8300,7 +8292,7 @@ view.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Navigation dropdown chevron color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8512,7 +8504,7 @@ view.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Navigation dropdown link slot background</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8618,7 +8610,9 @@ view.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Brand text color for light theme</p>
+                    <p>Navigation dropdown leading border color</p>
+<p>Navigation dropdown expanded block-start accent color at viewport &gt;= lg</p>
+<p>Brand text color for light theme</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8724,7 +8718,8 @@ view.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Primary surface (light theme)</p>
+                    <p>Navigation dropdown expanded background at viewport &gt;= lg</p>
+<p>Primary surface (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8830,7 +8825,8 @@ view.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Primary text color for light theme</p>
+                    <p>Navigation dropdown expanded chevron color at viewport &gt;= lg</p>
+<p>Primary text color for light theme</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8960,7 +8956,12 @@ view.</p></td>
         </h2>
       </uxdot-copy-permalink>
 
-      <p>A menu section which auto upgrades accessibility for headers and sibling list</p>
+      <p>Groups related links under a heading within a dropdown menu. Automatically
+wires <code>aria-labelledby</code> between the slotted heading and adjacent <code>&lt;ul&gt;</code>/<code>&lt;ol&gt;</code>
+for screen reader navigation. Renders as a <code>&lt;section&gt;</code> element. Must contain
+a heading in the <code>header</code> slot and a list in the <code>links</code> slot. Should
+provide an <code>id</code> on the heading or one will be auto-generated. Tab navigates
+through links; the heading provides group context to assistive technology.</p>
 
 
       <div class="element-apis">
@@ -9058,9 +9059,11 @@ view.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>section heading</p></td>
                   <td>
-                   <p>Adds a header tag to section, expects <code>&lt;h1&gt; | &lt;h2&gt; | &lt;h3&gt; | &lt;h4&gt; | &lt;h5&gt; | &lt;h6&gt;</code> element</p>
+                   <p>Expects an <code>&lt;h1&gt;</code>-<code>&lt;h6&gt;</code> element. Auto-linked to the links list via
+<code>aria-labelledby</code> for screen reader group identification. An <code>id</code> is
+generated if not present.</p>
                   </td>
                 </tr>
                 <tr>
@@ -9088,9 +9091,11 @@ view.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>section link list</p></td>
                   <td>
-                   <p>Adds a ul tag to section, expects <code>&lt;ul&gt; | &lt;ol&gt;</code> element</p>
+                   <p>Expects a <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code> element with navigation links. Automatically
+receives <code>aria-labelledby</code> pointing to the header for screen readers.
+Tab navigates through each link in the list.</p>
                   </td>
                 </tr>
                 <tr>
@@ -9118,9 +9123,10 @@ view.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>section-level call to action</p></td>
                   <td>
-                   <p>Adds a section level CTA, expects <code>&lt;rh-cta&gt;</code> element</p>
+                   <p>Optional slot for an <code>&lt;rh-cta&gt;</code> element. Appears after the link list.
+Screen readers announce the CTA link text in document order.</p>
                   </td>
                 </tr>
               </tbody>
@@ -9346,8 +9352,23 @@ view.</p></td>
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
-                  <td><p>container, </p><section> element</section><p></p></td>
+                  <td><p>menu section container</p></td>
+                  <td><p>The semantic container for a menu section, grouping related navigation links
+under a common header. This part corresponds to a <code>&lt;section&gt;</code> element that
+provides structure and automatic accessibility enhancements.</p>
+<p><strong>Styling:</strong></p>
+<ul>
+<li>Use this part to customize individual menu section appearance</li>
+<li>Controls spacing and layout of header, links, and CTA</li>
+<li>Sections are organized in a grid when multiple sections exist</li>
+<li>Automatically applies aria-labelledby to link lists</li>
+</ul>
+<p><strong>Accessibility:</strong></p>
+<ul>
+<li>Automatically associates heading with list using aria-labelledby</li>
+<li>Generates IDs for headers if not present</li>
+<li>Ensures semantic structure for screen reader users</li>
+</ul></td>
                 </tr>
               </tbody>
             </table>
@@ -9468,7 +9489,8 @@ view.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Heading font family</p>
+                    <p>Navigation menu section typeface</p>
+<p>Heading font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9574,7 +9596,8 @@ view.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>16px font size</p>
+                    <p>Navigation menu section slotted list content gap</p>
+<p>16px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9680,7 +9703,9 @@ view.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>24px spacer</p>
+                    <p>Menu section CTA top spacing</p>
+<p>Menu section CTA block spacing</p>
+<p>24px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9810,7 +9835,12 @@ view.</p></td>
         </h2>
       </uxdot-copy-permalink>
 
-      <p>Dropdown menu for secondary nav, available in full-width and fixed-with sizes</p>
+      <p>Expandable dropdown menu panel for secondary navigation. Provides
+<code>full-width</code> (default) and <code>fixed-width</code> layouts with content
+organized in a CSS grid. Must be placed inside the <code>menu</code> slot of
+an <code>&lt;rh-navigation-secondary-dropdown&gt;</code>. Tab navigates through
+menu content; Escape closes the menu. Screen readers access
+content via section headings and <code>aria-labelledby</code> associations.</p>
 
 
       <div class="element-apis">
@@ -9908,9 +9938,11 @@ view.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>menu content</p></td>
                   <td>
-                   <p>Optional <code>&lt;rh-navigation-secondary-menu-section&gt;</code> elements or content following <a href="../guidelines/#expandable-tray">design guidelines</a> <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Should contain <code>&lt;rh-navigation-secondary-menu-section&gt;</code> elements
+with headings. Screen readers navigate sections via
+<code>aria-labelledby</code> associations between headings and link lists. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -10016,8 +10048,9 @@ view.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>colorPalette</code></td>
-                  <td><p>Color palette (default: lightest)
-Secondary nav menus are always represented on the lightest color palette.</p></td>
+                  <td><p>Color palette for the menu panel surface. Should remain <code>'lightest'</code>
+(default) as secondary nav menus always render on a light surface.
+Defaults to <code>'lightest'</code>.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'light'</span> <span class="token operator">|</span> <span class="token string">'lighter'</span> <span class="token operator">|</span> <span class="token string">'lightest'</span> <span class="token operator">|</span> <span class="token string">'dark'</span> <span class="token operator">|</span> <span class="token string">'darker'</span> <span class="token operator">|</span> <span class="token string">'darkest'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'lightest'</span></code></pre></td>
                 </tr>
@@ -10049,8 +10082,10 @@ Secondary nav menus are always represented on the lightest color palette.</p></t
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>layout</code></td>
-                  <td><p>Layout (default: full-width)
-Secondary nav menus by default are always full-width, but can be set to fixed-width for special cases.</p></td>
+                  <td><p>Controls the menu panel width. <code>'full-width'</code> (default) spans the browser
+width with content in a responsive grid. <code>'fixed-width'</code> constrains the
+panel to its content width, positioned below the trigger link. USE
+<code>'fixed-width'</code> for simple menus with fewer sections. Defaults to <code>'full-width'</code>.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'fixed-width'</span> <span class="token operator">|</span> <span class="token string">'full-width'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'full-width'</span></code></pre></td>
                 </tr>
@@ -10082,7 +10117,10 @@ Secondary nav menus by default are always full-width, but can be set to fixed-wi
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>visible</code></td>
-                  <td><p><code>visible</code> toggles on click (default: false)</p></td>
+                  <td><p>Controls whether the menu panel is visible. Managed automatically by the
+parent <code>&lt;rh-navigation-secondary-dropdown&gt;</code>. When <code>true</code>, the menu is
+displayed; when <code>false</code>, it is hidden. AVOID setting directly.
+Defaults to <code>false</code>.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span></code></pre></td>
                 </tr>
@@ -10407,7 +10445,7 @@ Secondary nav menus by default are always full-width, but can be set to fixed-wi
               <tbody>
                 <tr>
                   <td><code>--rh-navigation-secondary-menu-section-grid</code></td>
-                  <td><p>grid-template-columns for menu sections</p></td>
+                  <td></td>
                   <td>
                     <code>repeat(auto-fit,
       minmax(15.5rem, 1fr))</code>
@@ -10415,14 +10453,14 @@ Secondary nav menus by default are always full-width, but can be set to fixed-wi
                 </tr>
                 <tr>
                   <td><code>--rh-navigation-secondary-menu-section-grid-gap</code></td>
-                  <td><p>grid-gap for menu sections</p></td>
+                  <td><p>Menu section grid gap override</p></td>
                   <td>
                     <code>var(--rh-space-2xl, 32px)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-navigation-secondary-menu-content-max-width</code></td>
-                  <td><p>max-width for menu content</p></td>
+                  <td><p>Navigation maximum width at viewport &gt;= lg</p></td>
                   <td>
                     <code>1136px</code>
                   </td>
@@ -10505,7 +10543,8 @@ Secondary nav menus by default are always full-width, but can be set to fixed-wi
                     </a>
                   </td>
                   <td>
-                    <p>Primary text color for light theme</p>
+                    <p>Navigation menu dropdown text color</p>
+<p>Primary text color for light theme</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -10611,7 +10650,8 @@ Secondary nav menus by default are always full-width, but can be set to fixed-wi
                     </a>
                   </td>
                   <td>
-                    <p>Primary surface (light theme)</p>
+                    <p>Navigation menu dropdown background</p>
+<p>Primary surface (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -10717,7 +10757,8 @@ Secondary nav menus by default are always full-width, but can be set to fixed-wi
                     </a>
                   </td>
                   <td>
-                    <p>24px spacer</p>
+                    <p>Navigation menu sections inner spacing</p>
+<p>24px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -10823,7 +10864,8 @@ Secondary nav menus by default are always full-width, but can be set to fixed-wi
                     </a>
                   </td>
                   <td>
-                    <p>16px font size</p>
+                    <p>Navigation menu slotted list content gap</p>
+<p>16px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -10929,7 +10971,8 @@ Secondary nav menus by default are always full-width, but can be set to fixed-wi
                     </a>
                   </td>
                   <td>
-                    <p>Small box shadow</p>
+                    <p>Navigation menu elevation shadow at viewport &gt;= lg</p>
+<p>Small box shadow</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -11035,7 +11078,10 @@ Secondary nav menus by default are always full-width, but can be set to fixed-wi
                     </a>
                   </td>
                   <td>
-                    <p>32px spacer</p>
+                    <p>Menu section grid gap</p>
+<p>Navigation menu inline padding at viewport &gt;= lg</p>
+<p>Navigation menu inline padding at viewport &gt;= xl</p>
+<p>32px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -11141,7 +11187,10 @@ Secondary nav menus by default are always full-width, but can be set to fixed-wi
                     </a>
                   </td>
                   <td>
-                    <p>48px spacer</p>
+                    <p>Navigation menu block-end padding at viewport &gt;= lg</p>
+<p>Navigation menu block padding at viewport &gt;= xl</p>
+<p>Navigation menu block padding at viewport &gt;= 2xl</p>
+<p>48px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -11247,7 +11296,9 @@ Secondary nav menus by default are always full-width, but can be set to fixed-wi
                     </a>
                   </td>
                   <td>
-                    <p>64px spacer</p>
+                    <p>Navigation menu block-start padding at viewport &gt;= lg</p>
+<p>Navigation menu inline padding at viewport &gt;= 2xl</p>
+<p>64px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -11377,7 +11428,13 @@ Secondary nav menus by default are always full-width, but can be set to fixed-wi
         </h2>
       </uxdot-copy-permalink>
 
-      
+      <p>Semi-transparent backdrop for dimming page content when a secondary
+navigation dropdown or mobile menu is expanded. Provides a click
+target that allows users to close all open menus. Managed
+automatically by <code>&lt;rh-navigation-secondary&gt;</code>; avoid using
+standalone. Screen readers should ignore this element as it serves
+a purely visual purpose. Keyboard: Escape closes the overlay.</p>
+
 
       <div class="element-apis">
         
@@ -11519,7 +11576,9 @@ Secondary nav menus by default are always full-width, but can be set to fixed-wi
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>open</code></td>
-                  <td></td>
+                  <td><p>When <code>true</code>, displays the overlay. Managed automatically by the
+parent <code>&lt;rh-navigation-secondary&gt;</code> when dropdowns or the mobile
+menu expand. Defaults to <code>false</code>.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span></code></pre></td>
                 </tr>
@@ -11732,7 +11791,7 @@ Secondary nav menus by default are always full-width, but can be set to fixed-wi
               <tbody>
                 <tr>
                   <td><code>--rh-navigation-secondary-overlay-z-index</code></td>
-                  <td><p>z-index of the navigation-secondary-overlay</p></td>
+                  <td><p>Overlay stacking order</p></td>
                   <td>
                     <code>var(--rh-secondary-nav-overlay-z-index, -1)</code>
                   </td>
@@ -11905,7 +11964,8 @@ Secondary nav menus by default are always full-width, but can be set to fixed-wi
                     </a>
                   </td>
                   <td>
-                    <p>Secondary surface (dark theme)</p>
+                    <p>Overlay background base color</p>
+<p>Secondary surface (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -12011,7 +12071,9 @@ Secondary nav menus by default are always full-width, but can be set to fixed-wi
                     </a>
                   </td>
                   <td>
-                    <p>80% opacity</p>
+                    <p>Overlay background base color</p>
+<p>Overlay background opacity</p>
+<p>80% opacity</p>
                   </td>
                   <td data-label="Copy">
       <div>

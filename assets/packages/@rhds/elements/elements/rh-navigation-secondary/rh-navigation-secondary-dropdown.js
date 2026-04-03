@@ -21,11 +21,21 @@ export class SecondaryNavDropdownExpandEvent extends ComposedEvent {
 import { css } from "lit";
 const styles = css `:host{display:block}#container{border-inline-start:var(--rh-border-width-lg,3px) solid #0000;border-inline-end:var(--rh-border-width-sm,1px) solid #0000;display:block;height:100%}#container.expanded{border-inline-start-color:var(--rh-color-text-brand-on-light,#e00);border-inline-end-color:var(--rh-color-border-subtle-on-light,#c7c7c7);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533)}::slotted([slot=link]){--_chevron-color:var(--rh-color-text-primary);justify-content:space-between;position:relative;gap:calc(var(--rh-font-size-body-text-md, 1rem)/2);background-color:var(--rh-color-surface)}#container.highlight ::slotted([slot=link]),::slotted([slot=link][aria-current=page]){border-block-start-color:var(--_current-active-child-border-color,#e00)!important}::slotted([slot=link]):after{box-sizing:initial!important;content:"";display:block;width:var(--_chevron-size);height:var(--_chevron-size);border-inline-end:var(--_chevron-thickness) solid var(--_chevron-color);border-block-end:var(--_chevron-thickness) solid var(--_chevron-color);transform:var(--_chevron-transform-collapsed)}#container.expanded ::slotted([slot=link]):after{transform:var(--_chevron-transform-expanded)}@media screen and (min-width:992px){#container{border-inline-start:none;border-inline-end:none}#container.expanded{box-shadow:none}::slotted([slot=link][aria-expanded=true]){border-block-start-color:var(--rh-color-text-brand-on-light,#e00);background:var(--rh-color-surface-lightest,#fff)!important}::slotted([slot=link][aria-expanded=true]):after{--_chevron-color:var(--rh-color-text-primary-on-light,#151515)!important}}`;
 /**
- * Upgrades a top level nav link to include dropdown functionality
+ * Wraps a top-level nav link to add expandable dropdown menu functionality.
+ * Upgrades the slotted `<a>` with `role="button"`, `aria-expanded`, and
+ * `aria-controls` for accessibility. Highlights with a red top border when
+ * the dropdown contains the current page (`aria-current="page"`). Keyboard:
+ * Enter/Space toggles the dropdown; Tab moves through menu items; Escape
+ * closes. Must contain an `<a>` in the `link` slot and an
+ * `<rh-navigation-secondary-menu>` in the `menu` slot.
  *
- * @summary Upgrades a top level nav link to include dropdown functionality
+ * @summary Expandable dropdown wrapper for secondary nav links
  *
- * @fires { SecondaryNavDropdownExpandEvent } change - Fires when a dropdown is clicked
+ * @fires {SecondaryNavDropdownExpandEvent} expand-request - Fires when the dropdown link is
+ *        clicked. Detail: `expanded` (boolean), `toggle` (RhNavigationSecondaryDropdown).
+ *
+ * @slot link - The dropdown trigger link. Expects `<a>` element.
+ * @slot menu - The dropdown menu. Expects `<rh-navigation-secondary-menu>` element.
  */
 let RhNavigationSecondaryDropdown = class RhNavigationSecondaryDropdown extends LitElement {
     constructor() {
@@ -49,10 +59,28 @@ let RhNavigationSecondaryDropdown = class RhNavigationSecondaryDropdown extends 
     render() {
         const classes = { 'expanded': this.expanded, 'highlight': __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_highlight, "f") };
         return html `
+      <!-- summary: dropdown wrapper container
+           description: |
+             The container for a navigation dropdown item, wrapping both the link and menu.
+             This part corresponds to a \`<div>\` element that manages the dropdown state and styling.
+
+             **Styling:**
+             - Use this part to customize the dropdown appearance and layout
+             - Applies \`.expanded\` class when dropdown is open
+             - Applies \`.highlight\` class when dropdown contains the current page
+             - Controls dropdown link and menu positioning -->
       <div id="container" part="container" class="${classMap(classes)}">
-        <!-- Link for dropdown, expects \`<a>\` element -->
+        <!-- summary: dropdown trigger link
+             description: |
+               Expects an \`<a>\` element. Automatically upgraded with \`role="button"\`,
+               \`aria-expanded\`, and \`aria-controls\` for keyboard and screen reader
+               accessibility. Enter/Space toggles the dropdown. -->
         <slot name="link"></slot>
-        <!-- Menu for dropdown, expects \`<rh-navigation-secondary-menu>\` element -->
+        <!-- summary: dropdown menu panel
+             description: |
+               Expects an \`<rh-navigation-secondary-menu>\` element. Visibility is
+               toggled when the link slot is activated. Screen readers can navigate
+               menu sections via headings inside the menu. -->
         <slot name="menu"></slot>
       </div>
     `;

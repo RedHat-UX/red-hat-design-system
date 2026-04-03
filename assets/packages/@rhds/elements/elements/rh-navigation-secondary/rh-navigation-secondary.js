@@ -24,7 +24,7 @@ export class SecondaryNavOverlayChangeEvent extends ComposedEvent {
     }
 }
 import { css } from "lit";
-const styles = css `:host{--_chevron-size:calc(var(--rh-font-size-body-text-md, 1rem)*0.35);--_chevron-thickness:calc(var(--rh-font-size-body-text-md, 1rem)*0.125);--_chevron-up:45deg;--_chevron-down:-135deg;--_chevron-correction-x:calc(var(--rh-font-size-body-text-md, 1rem)*-1/16);--_chevron-correction-y:calc(var(--rh-font-size-body-text-md, 1rem)*-1/16);--_chevron-color:var(--rh-color-text-primary);--_chevron-transform-collapsed:rotate(var(--_chevron-up)) translate(var(--_chevron-correction-x),var(--_chevron-correction-x));--_chevron-transform-expanded:rotate(var(--_chevron-down)) translate(var(--_chevron-correction-y),var(--_chevron-correction-y));--_button-font-color:var(--rh-color-text-primary);--_nav-max-height:var(--_max-height,max-content);--_nav-min-height:var(--_min-height,80px);--_current-active-child-border-color:var(--rh-color-brand-red);--_border-color:light-dark(#0000,var(--rh-color-border-subtle));z-index:var(--rh-navigation-secondary-z-index,102)}:host(:dir(rtl)){--_chevron-transform-collapsed:rotate(calc(var(--_chevron-up)*-1)) translate(calc(var(--_chevron-correction-y)*1),var(--_chevron-correction-y));--_chevron-transform-expanded:rotate(calc(var(--_chevron-down)*-1)) translate(calc(var(--_chevron-correction-x)*1),var(--_chevron-correction-x))}#container,nav{z-index:var(--rh-navigation-secondary-z-index,102)}#container{display:grid;position:absolute;width:100%;background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));gap:0 var(--rh-space-lg,16px);grid-template-rows:minmax(var(--_nav-min-height),var(--_nav-max-height)) max-content max-content;grid-template-columns:1fr max-content;grid-template-areas:"logo menu" "main main";height:fit-content;min-height:100%;max-height:100vh;overflow-y:auto;border-block-end:var(--rh-border-width-sm,1px) solid var(--_border-color)}rh-surface{grid-area:main;display:flex;flex-direction:column;height:100%;width:100%}::slotted([slot=cta]),::slotted([slot=nav]){grid-area:unset!important}#container.expanded ::slotted([slot=cta]),#container.expanded ::slotted([slot=nav]){display:flex!important}#container.expanded ::slotted([slot=nav]){list-style:none;flex-direction:column;padding:2rem 1rem 0;padding:var(--rh-space-2xl,32px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px);margin:0!important}#container.expanded ::slotted([slot=cta]){padding:2rem 1rem}button{grid-area:menu;border:none;display:flex;height:100%;align-items:center;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);padding:var(--rh-space-lg,16px);border-block-start:var(--rh-border-width-lg,3px) solid #0000;margin-inline-end:var(--rh-space-lg,16px);color:var(--_button-font-color);background-color:var(--rh-color-surface);gap:var(--rh-space-md,8px)}button:hover{border-block-start-color:var(--rh-color-text-brand-on-light,#e00)}button:after{box-sizing:initial!important;content:"";display:block;width:var(--_chevron-size);height:var(--_chevron-size);border-inline-end:var(--_chevron-thickness) solid var(--_chevron-color);border-block-end:var(--_chevron-thickness) solid var(--_chevron-color);transform:var(--_chevron-transform-collapsed)}button[aria-expanded=true]:after{transform:var(--_chevron-transform-expanded)}button:focus{border-block-start-color:var(--rh-color-text-brand-on-light,#e00)}:host([color-palette=dark]) button{background-color:var(--rh-color-surface)}:host([color-palette=dark]) button[aria-expanded=true],button:active,button[aria-expanded=true]{--_chevron-color:var(--rh-color-text-primary-on-light,#151515);color:var(--rh-color-text-primary-on-light,#151515);background-color:var(--rh-color-surface-lightest,#fff);border-block-start-color:var(--rh-color-text-brand-on-light,#e00);border-block-end:none}:host([color-palette=dark]) button:active{color:var(--rh-color-text-primary-on-dark,#fff)}:host([color-palette=dark]) button[aria-expanded=true]:active{color:var(--rh-color-text-primary-on-light,#151515)}@media screen and (min-width:768px){button{margin-inline-end:var(--rh-space-2xl,32px)}#container.expanded ::slotted([slot=nav]){padding:var(--rh-space-2xl,32px) var(--rh-space-2xl,32px) 0!important}#container.expanded ::slotted([slot=cta]){padding:var(--rh-space-2xl,32px)!important}}@media screen and (min-width:992px){:host{--_min-height:86px}#container{grid-template-areas:"logo main";grid-template-rows:auto;grid-template-columns:max-content 1fr;height:100%;max-height:none;overflow-y:initial}rh-surface{flex-direction:row;justify-content:space-between}#container.expanded ::slotted([slot=nav]){max-height:calc(100vh - var(--_nav-min-height))}button{display:none}}`;
+const styles = css `:host{--_chevron-size:calc(var(--rh-font-size-body-text-md, 1rem)*0.35);--_chevron-thickness:calc(var(--rh-font-size-body-text-md, 1rem)*0.125);--_chevron-up:45deg;--_chevron-down:-135deg;--_chevron-correction-x:calc(var(--rh-font-size-body-text-md, 1rem)*-1/16);--_chevron-correction-y:calc(var(--rh-font-size-body-text-md, 1rem)*-1/16);--_chevron-color:var(--rh-color-text-primary);--_chevron-transform-collapsed:rotate(var(--_chevron-up)) translate(var(--_chevron-correction-x),var(--_chevron-correction-x));--_chevron-transform-expanded:rotate(var(--_chevron-down)) translate(var(--_chevron-correction-y),var(--_chevron-correction-y));--_button-font-color:var(--rh-color-text-primary);--_nav-max-height:var(--_max-height,max-content);--_nav-min-height:var(--_min-height,80px);--_current-active-child-border-color:var(--rh-color-brand-red);z-index:var(--rh-navigation-secondary-z-index,102)}:host(:dir(rtl)){--_chevron-transform-collapsed:rotate(calc(var(--_chevron-up)*-1)) translate(calc(var(--_chevron-correction-y)*1),var(--_chevron-correction-y));--_chevron-transform-expanded:rotate(calc(var(--_chevron-down)*-1)) translate(calc(var(--_chevron-correction-x)*1),var(--_chevron-correction-x))}#container,nav{z-index:var(--rh-navigation-secondary-z-index,102)}#container{display:grid;position:absolute;width:100%;background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));gap:0 var(--rh-space-lg,16px);grid-template-rows:minmax(var(--_nav-min-height),var(--_nav-max-height)) max-content max-content;grid-template-columns:1fr max-content;grid-template-areas:"logo menu" "main main";height:fit-content;min-height:100%;max-height:100vh;overflow-y:auto;border-block-end:var(--rh-border-width-sm,1px) solid var(--_border-color)}rh-surface{grid-area:main;display:flex;flex-direction:column;height:100%;width:100%}::slotted([slot=cta]),::slotted([slot=nav]){grid-area:unset!important}#container.expanded ::slotted([slot=cta]),#container.expanded ::slotted([slot=nav]){display:flex!important}#container.expanded ::slotted([slot=nav]){list-style:none;flex-direction:column;padding:2rem 1rem 0;padding:var(--rh-space-2xl,32px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px);margin:0!important}#container.expanded ::slotted([slot=cta]){padding:2rem 1rem}button{grid-area:menu;border:none;display:flex;height:100%;align-items:center;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);padding:var(--rh-space-lg,16px);border-block-start:var(--rh-border-width-lg,3px) solid #0000;margin-inline-end:var(--rh-space-lg,16px);color:var(--_button-font-color);background-color:var(--rh-color-surface);gap:var(--rh-space-md,8px)}button:hover{border-block-start-color:var(--rh-color-text-brand-on-light,#e00)}button:after{box-sizing:initial!important;content:"";display:block;width:var(--_chevron-size);height:var(--_chevron-size);border-inline-end:var(--_chevron-thickness) solid var(--_chevron-color);border-block-end:var(--_chevron-thickness) solid var(--_chevron-color);transform:var(--_chevron-transform-collapsed)}button[aria-expanded=true]:after{transform:var(--_chevron-transform-expanded)}button:focus{border-block-start-color:var(--rh-color-text-brand-on-light,#e00)}:host([color-palette=dark]) button{background-color:var(--rh-color-surface)}:host([color-palette=dark]) button[aria-expanded=true],button:active,button[aria-expanded=true]{--_chevron-color:var(--rh-color-text-primary-on-light,#151515);color:var(--rh-color-text-primary-on-light,#151515);background-color:var(--rh-color-surface-lightest,#fff);border-block-start-color:var(--rh-color-text-brand-on-light,#e00);border-block-end:none}:host([color-palette=dark]) button:active{color:var(--rh-color-text-primary-on-dark,#fff)}:host([color-palette=dark]) button[aria-expanded=true]:active{color:var(--rh-color-text-primary-on-light,#151515)}@media screen and (min-width:768px){button{margin-inline-end:var(--rh-space-2xl,32px)}#container.expanded ::slotted([slot=nav]){padding:var(--rh-space-2xl,32px) var(--rh-space-2xl,32px) 0!important}#container.expanded ::slotted([slot=cta]){padding:var(--rh-space-2xl,32px)!important}}@media screen and (min-width:992px){:host{--_min-height:86px}#container{grid-template-areas:"logo main";grid-template-rows:auto;grid-template-columns:max-content 1fr;height:100%;max-height:none;overflow-y:initial}rh-surface{flex-direction:row;justify-content:space-between}#container.expanded ::slotted([slot=nav]){max-height:calc(100vh - var(--_nav-min-height))}button{display:none}}`;
 /* TODO: Abstract this out to a shareable function, should RTI handle something similar? */
 function focusableChildElements(parent) {
     return parent.querySelectorAll(`a,
@@ -37,16 +37,19 @@ function focusableChildElements(parent) {
                                   summary:not(:disabled)`);
 }
 /**
- * The secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [primary navigation](../navigation-primary).
+ * Persistent wayfinding navigation for linking related pages below
+ * `<rh-navigation-primary>`. Provides `role="navigation"` with a
+ * configurable `aria-label` and light/dark color palettes. On mobile,
+ * items collapse behind a menu button. Keyboard navigation with Tab, Escape,
+ * Enter/Space. Should contain `logo`, `nav` (`<ul>`), and optional
+ * `cta` slots. Avoid using more then 5 nav items.
  *
- * @summary Propagates related content across a series of pages
+ * @summary Secondary level navigation bar for linking related pages
  *
  * @alias Navigation (secondary)
  *
- * @fires {SecondaryNavOverlayChangeEvent} overlay-change -
- *                                         Fires when an dropdown is opened or closed in desktop
- *                                         view or when the mobile menu button is toggled in mobile
- *                                         view.
+ * @fires {SecondaryNavOverlayChangeEvent} overlay-change - Fires when a dropdown opens/closes
+ *        in desktop view or mobile menu toggles. Detail: `open` (boolean), `toggle` (HTMLElement).
  */
 let RhNavigationSecondary = RhNavigationSecondary_1 = _a = class RhNavigationSecondary extends LitElement {
     constructor() {
@@ -58,12 +61,17 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = _a = class RhNavigationSec
         _RhNavigationSecondary_compact.set(this, false);
         _RhNavigationSecondary_internals.set(this, InternalsController.of(this, { role: 'navigation' }));
         /**
-         * Color palette dark | lighter (default: lighter)
+         * Controls the visual color palette of the navigation bar. Valid values:
+         * `'lighter'` (default) for light environments, `'dark'` for dark
+         * environments. Light-family values (`'light'`, `'lightest'`) map to
+         * `'lighter'`; dark-family values (`'darker'`, `'darkest'`) map to `'dark'`.
+         * Should match the surrounding page color scheme. Defaults to `'lighter'`.
          */
         this.colorPalette = 'lighter';
         /**
-         * Customize the default `aria-label` on the `<nav>` container.
-         * Defaults to "secondary" if no attribute/property is set.
+         * Sets the `aria-label` on the internal `<nav>` element for screen readers.
+         * USE a descriptive label like the product name (e.g. "OpenShift navigation").
+         * Must be unique if multiple navigations exist on the page. Defaults to `'secondary'`.
          */
         this.accessibleLabel = 'secondary';
         /**
@@ -121,25 +129,71 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = _a = class RhNavigationSec
         // CTA must always be 'lightest' on mobile screens
         const dropdownPalette = __classPrivateFieldGet(this, _RhNavigationSecondary_compact, "f") ? 'lightest' : __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "a", _RhNavigationSecondary_computedPalette_get);
         return html `
-      <!-- container, \`<nav>\` element -->
+      <!-- summary: main navigation wrapper element
+           description: |
+             The outermost container for the secondary navigation, wrapping all navigation content
+             including logo, menu, and CTA. This part corresponds to a \`<div>\` element that provides
+             the primary structure and styling for the navigation bar.
+
+             **Styling:**
+             - Use this part to customize the overall navigation appearance
+             - Applies compact mode styles when viewport is mobile-sized
+             - Controls positioning and z-index of navigation elements -->
       <div part="nav"
            class="${classMap({ compact: __classPrivateFieldGet(this, _RhNavigationSecondary_compact, "f") })}">
         ${__classPrivateFieldGet(this, _RhNavigationSecondary_logoCopy, "f")}
-        <!-- container, \`<div>\` element -->
+        <!-- summary: navigation content container
+             description: |
+               The primary container for navigation links, logo, mobile menu button, and CTA.
+               This part corresponds to a \`<div>\` element that manages the layout and expansion
+               states of the navigation content.
+
+               **Styling:**
+               - Use this part to customize the navigation content layout
+               - Controls expanded/collapsed states for mobile menu
+               - Manages positioning of navigation items and dropdowns
+               - Contains grid layout for organizing navigation elements -->
         <div id="container" part="container" class="${classMap({ expanded })}">
-          <!-- Logo added to the main nav bar, expects \`<a>Text</a> | <a><svg/></a> | <a><img/></a>\` element -->
+          <!-- summary: product logo or name link
+               description: |
+                 Expects an \`<a>\` element with text, SVG, or image linking to the product
+                 homepage. Screen readers announce the link text or \`alt\` attribute.
+                 Must be provided. \`aria-current="page"\` highlights when on the homepage. -->
           <slot name="logo" id="logo"></slot>
           <button aria-controls="container"
                   aria-expanded="${String(expanded)}"
                   @click="${__classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_toggleMobileMenu)}"><!--
             Text label for the mobile menu button, for l10n. Defaults to "Menu"
-          --><slot name="mobile-menu">Menu</slot></button>
+          --><!-- summary: mobile menu button label
+               description: |
+                 Text label for the mobile hamburger menu button. Defaults to "Menu".
+                 USE this slot for localization/translation of the button text.
+                 Screen readers announce this label with the button's expanded state. -->
+          <slot name="mobile-menu">Menu</slot></button>
           <rh-surface color-palette="${dropdownPalette}">
-            <!-- Navigation list added to the main nav bar, expects \`<ul>\` element -->
+            <!-- summary: navigation link list
+                 description: |
+                   Expects a \`<ul>\` element containing \`<li>\` children with links or
+                   \`<rh-navigation-secondary-dropdown>\` elements. On mobile, hidden behind
+                   the menu button. AVOID more than 5 total items. Screen readers navigate
+                   via list semantics. Tab moves focus through each link or dropdown trigger. -->
             <slot name="nav"></slot>
-            <!-- container, \`<div>\` element -->
+            <!-- summary: call-to-action container
+                 description: |
+                   Container for the navigation-level call-to-action button. This part corresponds
+                   to a \`<div>\` element positioned at the end of the navigation bar.
+
+                   **Styling:**
+                   - Use this part to customize the CTA positioning and spacing
+                   - Appears at the rightmost position in desktop view
+                   - Typically contains a single \`<rh-cta>\` element
+                   - Automatically adjusts color palette in mobile vs desktop views -->
             <div id="cta" part="cta">
-              <!-- Nav bar level CTA, expects \`<rh-cta>\` element -->
+              <!-- summary: navigation-level call to action
+                   description: |
+                     Optional slot for an \`<rh-cta>\` element positioned at the end of the
+                     navigation bar. On mobile, appears below the nav list. Screen readers
+                     announce the CTA link text. AVOID long text that reduces nav item space. -->
               <slot name="cta"></slot>
             </div>
           </rh-surface>

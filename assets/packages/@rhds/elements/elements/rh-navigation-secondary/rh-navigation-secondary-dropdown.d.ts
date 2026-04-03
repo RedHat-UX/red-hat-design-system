@@ -6,11 +6,21 @@ export declare class SecondaryNavDropdownExpandEvent extends ComposedEvent {
     constructor(expanded: boolean, toggle: RhNavigationSecondaryDropdown);
 }
 /**
- * Upgrades a top level nav link to include dropdown functionality
+ * Wraps a top-level nav link to add expandable dropdown menu functionality.
+ * Upgrades the slotted `<a>` with `role="button"`, `aria-expanded`, and
+ * `aria-controls` for accessibility. Highlights with a red top border when
+ * the dropdown contains the current page (`aria-current="page"`). Keyboard:
+ * Enter/Space toggles the dropdown; Tab moves through menu items; Escape
+ * closes. Must contain an `<a>` in the `link` slot and an
+ * `<rh-navigation-secondary-menu>` in the `menu` slot.
  *
- * @summary Upgrades a top level nav link to include dropdown functionality
+ * @summary Expandable dropdown wrapper for secondary nav links
  *
- * @fires { SecondaryNavDropdownExpandEvent } change - Fires when a dropdown is clicked
+ * @fires {SecondaryNavDropdownExpandEvent} expand-request - Fires when the dropdown link is
+ *        clicked. Detail: `expanded` (boolean), `toggle` (RhNavigationSecondaryDropdown).
+ *
+ * @slot link - The dropdown trigger link. Expects `<a>` element.
+ * @slot menu - The dropdown menu. Expects `<rh-navigation-secondary-menu>` element.
  */
 export declare class RhNavigationSecondaryDropdown extends LitElement {
     #private;

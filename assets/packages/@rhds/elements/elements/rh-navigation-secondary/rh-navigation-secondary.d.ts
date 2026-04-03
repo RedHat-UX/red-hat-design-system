@@ -11,28 +11,36 @@ export declare class SecondaryNavOverlayChangeEvent extends ComposedEvent {
     constructor(open: boolean, toggle: HTMLElement);
 }
 /**
- * The secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [primary navigation](../navigation-primary).
+ * Persistent wayfinding navigation for linking related pages below
+ * `<rh-navigation-primary>`. Provides `role="navigation"` with a
+ * configurable `aria-label` and light/dark color palettes. On mobile,
+ * items collapse behind a menu button. Keyboard navigation with Tab, Escape,
+ * Enter/Space. Should contain `logo`, `nav` (`<ul>`), and optional
+ * `cta` slots. Avoid using more then 5 nav items.
  *
- * @summary Propagates related content across a series of pages
+ * @summary Secondary level navigation bar for linking related pages
  *
  * @alias Navigation (secondary)
  *
- * @fires {SecondaryNavOverlayChangeEvent} overlay-change -
- *                                         Fires when an dropdown is opened or closed in desktop
- *                                         view or when the mobile menu button is toggled in mobile
- *                                         view.
+ * @fires {SecondaryNavOverlayChangeEvent} overlay-change - Fires when a dropdown opens/closes
+ *        in desktop view or mobile menu toggles. Detail: `open` (boolean), `toggle` (HTMLElement).
  */
 export declare class RhNavigationSecondary extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet[];
     private static instances;
     /**
-     * Color palette dark | lighter (default: lighter)
+     * Controls the visual color palette of the navigation bar. Valid values:
+     * `'lighter'` (default) for light environments, `'dark'` for dark
+     * environments. Light-family values (`'light'`, `'lightest'`) map to
+     * `'lighter'`; dark-family values (`'darker'`, `'darkest'`) map to `'dark'`.
+     * Should match the surrounding page color scheme. Defaults to `'lighter'`.
      */
     colorPalette: ColorPalette;
     /**
-     * Customize the default `aria-label` on the `<nav>` container.
-     * Defaults to "secondary" if no attribute/property is set.
+     * Sets the `aria-label` on the internal `<nav>` element for screen readers.
+     * USE a descriptive label like the product name (e.g. "OpenShift navigation").
+     * Must be unique if multiple navigations exist on the page. Defaults to `'secondary'`.
      */
     accessibleLabel: string;
     /**
