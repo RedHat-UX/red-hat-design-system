@@ -77,7 +77,7 @@ span {
   }
 
   &:focus {
-    /** Focus ring on header toggle */
+    /** Focus ring color on header toggle */
     outline: 2px solid var(--rh-color-interactive-primary-default);
   }
 
