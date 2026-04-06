@@ -25,14 +25,24 @@ export class SecondaryNavDropdownExpandEvent extends ComposedEvent {
 // in the future. Styles or functionality that are specific to rh-navigation-secondary are commented
 // on as such for any future abstraction.
 
-import styles from './rh-navigation-secondary-dropdown.css';
+import styles from './rh-navigation-secondary-dropdown.css' with { type: 'css' };
 
 /**
- * Upgrades a top level nav link to include dropdown functionality
+ * Wraps a top-level nav link to add expandable dropdown menu functionality.
+ * Upgrades the slotted `<a>` with `role="button"`, `aria-expanded`, and
+ * `aria-controls` for accessibility. Highlights with a red top border when
+ * the dropdown contains the current page (`aria-current="page"`). Keyboard:
+ * Enter/Space toggles the dropdown; Tab moves through menu items; Escape
+ * closes. Must contain an `<a>` in the `link` slot and an
+ * `<rh-navigation-secondary-menu>` in the `menu` slot.
  *
- * @summary Upgrades a top level nav link to include dropdown functionality
+ * @summary Expandable dropdown wrapper for secondary nav links
  *
- * @fires { SecondaryNavDropdownExpandEvent } change - Fires when a dropdown is clicked
+ * @fires {SecondaryNavDropdownExpandEvent} expand-request - Fires when the dropdown link is
+ *        clicked. Detail: `expanded` (boolean), `toggle` (RhNavigationSecondaryDropdown).
+ *
+ * @slot link - The dropdown trigger link. Expects `<a>` element.
+ * @slot menu - The dropdown menu. Expects `<rh-navigation-secondary-menu>` element.
  */
 @customElement('rh-navigation-secondary-dropdown')
 export class RhNavigationSecondaryDropdown extends LitElement {
@@ -66,10 +76,28 @@ export class RhNavigationSecondaryDropdown extends LitElement {
     const classes = { 'expanded': this.expanded, 'highlight': this.#highlight };
 
     return html`
+      <!-- summary: dropdown wrapper container
+           description: |
+             The container for a navigation dropdown item, wrapping both the link and menu.
+             This part corresponds to a \`<div>\` element that manages the dropdown state and styling.
+
+             **Styling:**
+             - Use this part to customize the dropdown appearance and layout
+             - Applies \`.expanded\` class when dropdown is open
+             - Applies \`.highlight\` class when dropdown contains the current page
+             - Controls dropdown link and menu positioning -->
       <div id="container" part="container" class="${classMap(classes)}">
-        <!-- Link for dropdown, expects \`<a>\` element -->
+        <!-- summary: dropdown trigger link
+             description: |
+               Expects an \`<a>\` element. Automatically upgraded with \`role="button"\`,
+               \`aria-expanded\`, and \`aria-controls\` for keyboard and screen reader
+               accessibility. Enter/Space toggles the dropdown. -->
         <slot name="link"></slot>
-        <!-- Menu for dropdown, expects \`<rh-navigation-secondary-menu>\` element -->
+        <!-- summary: dropdown menu panel
+             description: |
+               Expects an \`<rh-navigation-secondary-menu>\` element. Visibility is
+               toggled when the link slot is activated. Screen readers can navigate
+               menu sections via headings inside the menu. -->
         <slot name="menu"></slot>
       </div>
     `;

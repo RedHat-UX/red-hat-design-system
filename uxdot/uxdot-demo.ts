@@ -1,11 +1,9 @@
-import { html } from 'lit-html';
-
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
 import styles from './uxdot-demo.css';
 
-import { isServer, LitElement } from 'lit';
 import type { RhCodeBlock } from 'elements/rh-code-block/rh-code-block.js';
 
 @customElement('uxdot-demo')
@@ -70,6 +68,8 @@ export class UxdotDemo extends LitElement {
           <rh-tabs class="code-tabs" active-index="0">
             <rh-tab slot="tab" active>HTML</rh-tab>
             <rh-tab-panel><slot name="html"></slot></rh-tab-panel>
+            <rh-tab slot="tab">React</rh-tab>
+            <rh-tab-panel><slot name="react"></slot></rh-tab-panel>
             <rh-tab slot="tab">CSS</rh-tab>
             <rh-tab-panel><slot name="css"></slot></rh-tab-panel>
             <rh-tab slot="tab">JS</rh-tab>
@@ -85,8 +85,8 @@ export class UxdotDemo extends LitElement {
                      icon="refresh"
                      icon-set="ui"
                      @click="${this.#reloadIframe}">Reload</rh-button>
-          <a slot="footer" href="${this.demoSourceUrl}">View source on GitHub <rh-icon set="ui" icon="code"></rh-icon></a></rh-cta>
-          <a slot="footer" href="${this.demoUrl}" target="_blank">View in new window <rh-icon set="ui" icon="duplicate"></rh-icon></a></rh-cta>
+          <a slot="footer" href="${this.demoSourceUrl}">View source on GitHub <rh-icon set="ui" icon="code"></rh-icon></a>
+          <a slot="footer" href="${this.demoUrl}" target="_blank">View in new window <rh-icon set="ui" icon="duplicate"></rh-icon></a>
         </rh-card>
       </div>
     `;

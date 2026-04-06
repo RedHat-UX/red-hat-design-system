@@ -1,1 +1,0 @@
-Demonstration of the pagination element in a simple Vue 3 application.

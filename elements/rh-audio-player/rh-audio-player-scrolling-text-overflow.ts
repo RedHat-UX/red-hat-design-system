@@ -4,10 +4,17 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-audio-player-scrolling-text-overflow.css';
+import styles from './rh-audio-player-scrolling-text-overflow.css' with { type: 'css' };
 
 /**
- * Audio Player Scrolling Text Overflow
+ * Provides a scrolling text animation for `rh-audio-player` when content
+ * overflows. Reveals full text on hover or focus with a trailing fade
+ * effect. Animation duration scales with character count. Keyboard and
+ * screen reader users can trigger scrolling via focus. Should not be
+ * placed independently in user markup.
+ *
+ * @summary Scrolls overflowing text on hover or focus
+ *
  */
 @customElement('rh-audio-player-scrolling-text-overflow')
 @themable
@@ -49,18 +56,24 @@ export class RhAudioPlayerScrollingTextOverflow extends LitElement {
            @focus=${this.startScrolling}
            @blur=${this.stopScrolling}>
         <div id="inner">
-          <!-- inline text to scroll if wider than host -->
+          <!-- summary: Overflowing inline text
+               description: |
+                 Accepts inline text content such as a heading or title.
+                 Screen readers announce the full text regardless of
+                 whether the scroll animation is active. -->
           <slot class="${classMap({ scrolling, scrollable })}"></slot>
         </div>${!scrollable ? '' : html`
         <span id="fade"></span>`}
       </div>`;
   }
 
+  /** Stops the scrolling text animation and resets to the initial position. */
   stopScrolling() {
     this.#scrolling = false;
     this.requestUpdate();
   }
 
+  /** Starts the scrolling text animation if the content overflows the container. */
   startScrolling() {
     if (this.#isScrollable) {
       this.#scrolling = true;

@@ -4,7 +4,7 @@ import { property } from 'lit/decorators/property.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
-import style from './rh-footer-links.css';
+import style from './rh-footer-links.css' with { type: 'css' };
 
 @customElement('rh-footer-links')
 export class RhFooterLinks extends LitElement {

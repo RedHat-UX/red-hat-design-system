@@ -5,7 +5,7 @@ import { property } from 'lit/decorators/property.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 import { observes } from '@patternfly/pfe-core/decorators.js';
 
-import styles from './rh-scheme-toggle.css';
+import styles from './rh-scheme-toggle.css' with { type: 'css' };
 
 declare global {
   interface Storage {
@@ -13,12 +13,18 @@ declare global {
   }
 }
 
+/** Represents the available color scheme values. */
 type Scheme = 'light' | 'dark' | 'light dark';
 
 /**
- * A scheme toggle switches between light, dark, and system default color schemes.
+ * A scheme toggle provides users with the ability to switch between
+ * light, dark, and system default color schemes. It should be placed
+ * in a visible location for easy access. For WCAG compliance, screen
+ * reader users must be able to identify each option; the component
+ * uses a native fieldset with ARIA-compatible radio buttons. Tab
+ * focuses the group; arrow keys allow selection between schemes.
  *
- * @summary  Switches between a variety of color schemes
+ * @summary Switches between light, dark, and system default color schemes.
  *
  * @alias Scheme toggle
  */
@@ -26,24 +32,46 @@ type Scheme = 'light' | 'dark' | 'light dark';
 export class RhSchemeToggle extends LitElement {
   static styles = [styles];
 
+  /** Whether the light radio button is currently checked. */
   #isLight = false;
+
+  /** Whether the dark radio button is currently checked. */
   #isDark = false;
+
+  /** Whether the system default radio button is currently checked. */
   #isSystem = false;
 
-  /** Current color scheme setting */
+  /**
+   * Current color scheme setting. Reflects to the `scheme` attribute and
+   * initializes from `localStorage.rhdsColorScheme` when available.
+   * When set, applies the value to `document.body.style.colorScheme`
+   * and persists it to `localStorage`.
+   */
   @property({ reflect: true }) scheme?: Scheme = globalThis.localStorage
       ?.rhdsColorScheme as Scheme;
 
-  /** Legend text for the color scheme toggle group */
+  /**
+   * Legend text displayed next to the toggle button group.
+   * Authors should keep this text short (under 20 characters).
+   */
   @property({ attribute: 'legend-text' }) legendText = 'Color scheme';
 
-  /** Label text for the light mode option */
+  /**
+   * Accessible label for the light mode radio button.
+   * Rendered as a visually-hidden span and a `title` tooltip.
+   */
   @property({ attribute: 'light-text' }) lightText = 'Light';
 
-  /** Label text for the dark mode option */
+  /**
+   * Accessible label for the dark mode radio button.
+   * Rendered as a visually-hidden span and a `title` tooltip.
+   */
   @property({ attribute: 'dark-text' }) darkText = 'Dark';
 
-  /** Label text for the system default option */
+  /**
+   * Accessible label for the system default radio button.
+   * Rendered as a visually-hidden span and a `title` tooltip.
+   */
   @property({ attribute: 'system-text' }) systemText = 'System';
 
   connectedCallback(): void {
@@ -85,6 +113,7 @@ export class RhSchemeToggle extends LitElement {
     `;
   }
 
+  /** Handles radio button changes and updates the selected scheme. */
   #onChange(e: Event) {
     if (e.target instanceof HTMLInputElement) {
       this.scheme = e.target.value as Scheme;
@@ -92,6 +121,11 @@ export class RhSchemeToggle extends LitElement {
     this.#schemeCheck();
   }
 
+  /**
+   * Synchronizes the private checked-state flags with the current
+   * `scheme` value and requests a re-render. Treats `undefined` as
+   * equivalent to the system default (`'light dark'`).
+   */
   #schemeCheck() {
     if (!isServer) {
       this.#isLight = this.scheme === 'light';
@@ -103,6 +137,11 @@ export class RhSchemeToggle extends LitElement {
     }
   }
 
+  /**
+   * Observes changes to the `scheme` property. Applies the selected
+   * color scheme to `document.body` and persists it to `localStorage`
+   * so the preference survives page reloads.
+   */
   @observes('scheme')
   private schemeChanged() {
     if (!isServer) {

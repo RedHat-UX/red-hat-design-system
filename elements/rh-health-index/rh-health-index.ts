@@ -7,10 +7,14 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-health-index.css';
+import styles from './rh-health-index.css' with { type: 'css' };
 
 /**
- * Health index displays a health grade (A–F) for a particular item or package.
+ * Health index provides a visual grade (A through F) for communicating the
+ * health or security level of an item. Authors must set the `grade`
+ * attribute and should place it in context that makes its purpose clear.
+ * It uses ARIA `meter` role so screen reader users can read the grade.
+ * This element should not receive keyboard focus, as it is non-interactive.
  *
  * @summary     Displays a health grade for a particular item or package
  *
@@ -24,14 +28,18 @@ export class RhHealthIndex extends LitElement {
   private static grades = 'ABCDEF';
 
   /**
-   * Sets the size of the health index
-   * Defaults to `md`
+   * Sets the visual size of the health index. The `sm` size renders only the
+   * active grade letter. The default `md` size renders all grade boxes without
+   * labels. The `lg` and `xl` sizes render all grade letters with the active
+   * grade highlighted and bordered.
    */
   @property({ reflect: true }) size: 'sm' | 'md' | 'lg' | 'xl' = 'md';
 
   /**
-   * Sets the health grade
-   * Defaults to `A`
+   * Sets the health grade from A (best) to F (worst). Grades A and B use
+   * success status colors, C uses warning, D uses caution, and E and F use
+   * danger. The value is case-insensitive; lowercase input is normalized to
+   * uppercase.
    */
   @property({ reflect: true }) grade: 'A' | 'B' | 'C' | 'D' | 'E' | 'F' = 'A';
 
