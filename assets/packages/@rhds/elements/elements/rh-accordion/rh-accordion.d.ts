@@ -16,17 +16,21 @@ export declare class AccordionCollapseEvent extends ComposedEvent {
     constructor(toggle: RhAccordionHeader, panel: RhAccordionPanel);
 }
 /**
- * An accordion is a stacked list of panels which allows users to expand or collapse information
- * when selected. They feature panels that consist of a section text label and a caret icon that
- * collapses or expands to reveal more information.
+ * Organizes content into expandable panels for scanning and selective
+ * disclosure. Must contain paired `rh-accordion-header` and
+ * `rh-accordion-panel` children. Should have two or more pairs; for a
+ * single section use `rh-disclosure`. Headers use ARIA `role="heading"`
+ * with `aria-expanded`/`aria-controls` for screen readers. Supports
+ * keyboard navigation: Tab to move focus, Enter or Space to toggle.
  *
- * @summary Expands or collapses a stacked list of panels
+ * @summary Organizes content into expandable sections users can open or close
  *
  * @alias accordion
  *
- * @fires {AccordionExpandEvent} expand - when a panel expands
- * @fires {AccordionCollapseEvent} collapse - when a panel collapses
- * @attr  [accents=inline] Position accents in the header either inline or bottom
+ * @fires {AccordionExpandEvent} expand - Fires when a panel expands.
+ *   Event detail: `toggle` (RhAccordionHeader), `panel` (RhAccordionPanel).
+ * @fires {AccordionCollapseEvent} collapse - Fires when a panel collapses.
+ *   Event detail: `toggle` (RhAccordionHeader), `panel` (RhAccordionPanel).
  */
 export declare class RhAccordion extends LitElement {
     #private;
@@ -36,26 +40,29 @@ export declare class RhAccordion extends LitElement {
     static isPanel(target: EventTarget | null): target is RhAccordionPanel;
     static isAccordionChangeEvent(event: Event): event is AccordionHeaderChangeEvent;
     /**
-     * Sets accordion header's accents position to inline or bottom
+     * Position of accent slot content relative to the header title.
+     * Defaults to `inline`. Use `bottom` when accents are numerous or
+     * the title needs more horizontal space.
      */
     accents?: 'inline' | 'bottom';
     /**
-     * If this accordion uses large styles
+     * Switches the accordion to large size, increasing font size and padding.
+     * Avoid on viewports below 576px; the accordion automatically falls back
+     * to small size on mobile breakpoints. Use `large` for page-level content
+     * sections where the accordion is the primary content structure.
      */
     large: boolean;
     /**
-     * Color Palette for this accordion.
+     * Color palette for the accordion and its child headers and panels.
+     * Must match the surrounding surface color to ensure adequate text contrast.
+     * Avoid mixing light and dark palettes within the same page section.
      * @see https://ux.redhat.com/theming/color-palettes/
      */
     colorPalette?: ColorPalette;
     /**
-     * Sets and reflects the currently expanded accordion 0-based indexes.
-     * Use commas to separate multiple indexes.
-     * ```html
-     * <rh-accordion expanded-index="1,2">
-     *   ...
-     * </rh-accordion>
-     * ```
+     * Comma-separated 0-based indexes of initially expanded panels.
+     * Defaults to none (all collapsed). Example: `expanded-index="0,2"`
+     * expands the first and third panels.
      */
     get expandedIndex(): number[];
     set expandedIndex(value: number[]);

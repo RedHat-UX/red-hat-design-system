@@ -27,9 +27,9 @@
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
-    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "lit-element": "/assets/packages/lit-element/index.js",
     "prism-esm": "/assets/packages/prism-esm/prism.js",
@@ -43,8 +43,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
@@ -3902,9 +3902,12 @@
           <a href="#overview">Overview</a>
         </h2>
       </uxdot-copy-permalink>
-      <p>An accordion is a stacked list of panels which allows users to expand or collapse information
-when selected. They feature panels that consist of a section text label and a caret icon that
-collapses or expands to reveal more information.</p>
+      <p>Organizes content into expandable panels for scanning and selective
+disclosure. Must contain paired <code>rh-accordion-header</code> and
+<code>rh-accordion-panel</code> children. Should have two or more pairs; for a
+single section use <code>rh-disclosure</code>. Headers use ARIA <code>role="heading"</code>
+with <code>aria-expanded</code>/<code>aria-controls</code> for screen readers. Supports
+keyboard navigation: Tab to move focus, Enter or Space to toggle.</p>
 
       
       
@@ -4703,24 +4706,29 @@ collapses or expands to reveal more information.</p>
   </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Accordion</span></span><span class="token punctuation">&gt;</span></span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
-          <uxdot-knob-attribute slot="knobs" tag="rh-accordion" name="accents" type="'inline' | 'bottom'" default="inline">
-            <div slot="description"><p>Sets accordion header's accents position to inline or bottom</p>
+          <uxdot-knob-attribute slot="knobs" tag="rh-accordion" name="accents" type="'inline' | 'bottom'">
+            <div slot="description"><p>Position of accent slot content relative to the header title.
+Defaults to <code>inline</code>. Use <code>bottom</code> when accents are numerous or
+the title needs more horizontal space.</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-accordion" name="large" type="boolean" default="false">
-            <div slot="description"><p>If this accordion uses large styles</p>
+            <div slot="description"><p>Switches the accordion to large size, increasing font size and padding.
+Avoid on viewports below 576px; the accordion automatically falls back
+to small size on mobile breakpoints. Use <code>large</code> for page-level content
+sections where the accordion is the primary content structure.</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-accordion" name="color-palette" type="'light' | 'lighter' | 'lightest' | 'dark' | 'darker' | 'darkest'">
-            <div slot="description"><p>Color Palette for this accordion.</p>
+            <div slot="description"><p>Color palette for the accordion and its child headers and panels.
+Must match the surrounding surface color to ensure adequate text contrast.
+Avoid mixing light and dark palettes within the same page section.</p>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-accordion" name="expanded-index">
-            <div slot="description"><p>Sets and reflects the currently expanded accordion 0-based indexes.
-Use commas to separate multiple indexes.</p>
-<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-accordion</span> <span class="token attr-name">expanded-index</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1,2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-...
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-accordion</span><span class="token punctuation">&gt;</span></span></code></pre>
+            <div slot="description"><p>Comma-separated 0-based indexes of initially expanded panels.
+Defaults to none (all collapsed). Example: <code>expanded-index="0,2"</code>
+expands the first and third panels.</p>
 </div>
           </uxdot-knob-attribute></uxdot-demo>
         
