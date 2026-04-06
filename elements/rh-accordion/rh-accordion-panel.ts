@@ -43,7 +43,7 @@ export class RhAccordionPanel extends LitElement {
    * By default, all panels are collapsed (expanded=false). Users expand panels by clicking
    * the header, which animates the caret icon and reveals the content.
    *
-   * @see [Expanding and collapsing panels](https://ux.redhat.com/elements/accordion/guidelines/#expanding-and-collapsing-panels) in Guidelines documentation
+   * See [Expanding and collapsing panels](https://ux.redhat.com/elements/accordion/guidelines/#expanding-and-collapsing-panels) in Guidelines documentation
    */
   @property({ type: Boolean, reflect: true }) expanded = false;
 
