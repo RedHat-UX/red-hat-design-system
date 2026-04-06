@@ -20,7 +20,7 @@ import styles from './rh-accordion-panel.css' with { type: 'css' };
  *
  * Must be a direct child of `rh-accordion`, immediately following its
  * corresponding `rh-accordion-header`. Panel content can include text,
- * cards, images, or nested accordions. Text blocks SHOULD NOT exceed
+ * cards, images, or nested accordions. Text blocks should not exceed
  * 750px width for optimal readability.
  */
 @customElement('rh-accordion-panel')
