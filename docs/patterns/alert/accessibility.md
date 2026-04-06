@@ -73,12 +73,12 @@ important information—for example:
 
 ### Usability concerns
 
-Corner placement can be easy to miss on large displays or under
-screen magnification. Auto-dismiss and tab switching can cause users to lose the
-message. Stacked toasts can obscure primary actions such as submit buttons; see
-[Style — Stacking](/patterns/alert/style/#stacking). Toasts are visually separate
-from what triggered them, which weakens proximity—reinforce important outcomes
-in context when you can.
+- Corner placement can be easy to miss on large displays or under screen magnification.
+- Auto-dismiss and tab switching can cause users to lose the message.
+- Stacked toasts can obscure primary actions such as submit buttons; see
+[Style — Stacking](/patterns/alert/style/#stacking).
+- Toasts are visually separate from what triggered them, which weakens proximity—reinforce
+important outcomes in context when you can.
 
 ## Authoring
 
