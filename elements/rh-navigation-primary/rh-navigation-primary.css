@@ -629,6 +629,10 @@
       /** Subdomain margin inline end */
       margin-inline-end: var(--rh-space-md, 8px);
 
+      @container navigation-primary (min-width: 567px) {
+        font-size: 1.125rem !important; /* non standard for heading */
+      }
+
       @container navigation-primary (min-width: 1200px) {
         /** Subdomain heading font size at containers >= xl */
         font-size: var(--rh-font-size-heading-xs, 1.25rem) !important;
