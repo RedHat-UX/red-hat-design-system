@@ -833,7 +833,7 @@
 
             & ::slotted(rh-navigation-primary-item:nth-last-child(1 of :not([slot]))) {
               border-block-end:
-                /** Opcn compact last item separator width at containers >= xl */
+                /** Open compact last item separator width at containers >= xl */
                 var(--rh-border-width-sm, 1px)
                 solid
                 /** Open compact last item separator color at containers >= xl */
