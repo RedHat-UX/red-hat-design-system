@@ -13,6 +13,7 @@ label,
 }
 
 #download-tooltip {
+  /** Download button inline start margin */
   margin-inline-start: var(--rh-space-md, 8px);
 
   --rh-icon-size: 18px;
@@ -23,6 +24,8 @@ label,
   max-height: 240px;
   overflow-y: auto;
   border: 1px solid var(--_static-border-color);
+
+  /** Cues list padding */
   padding: var(--_player-padding, var(--rh-space-md, 8px));
   color: var(--_static-text-color);
   background-color: var(--_static-surface-color);
