@@ -1,4 +1,5 @@
-import { type CSSResult, LitElement, type TemplateResult, html, isServer, render } from 'lit';
+import type { CSSResult, TemplateResult } from 'lit';
+import { LitElement, html, isServer, render, nothing } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { repeat } from 'lit/directives/repeat.js';
@@ -13,8 +14,8 @@ import '@rhds/elements/rh-surface/rh-surface.js';
 import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 
-import styles from './rh-alert.css';
-import toastStyles from './rh-alert-toast-styles.css';
+import styles from './rh-alert.css' with { type: 'css' };
+import toastStyles from './rh-alert-toast-styles.css' with { type: 'css' };
 
 interface AlertAction {
   action: 'dismiss' | 'confirm' | string;
@@ -215,7 +216,7 @@ export class RhAlert extends LitElement {
                     [state]: true,
                     [variant]: !!variant,
                   })}"
-                  role="alert"
+                  role="${this.variant !== 'toast' ? 'alert' : nothing}"
                   aria-hidden="false">
         <div id="left-column">
           <rh-icon id="icon" set="ui" icon="${this.#icon}"></rh-icon>
@@ -229,7 +230,7 @@ export class RhAlert extends LitElement {
             <div id="header-actions">
               <rh-button id="close-button"
                          variant="close"
-                         accessible-label="Close"
+                         label="Close"
                          confirm
                          @click="${this.#onClose}"></rh-button>
             </div>`}

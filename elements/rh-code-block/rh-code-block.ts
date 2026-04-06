@@ -1,18 +1,21 @@
-import type { DirectiveResult } from 'lit-html/directive.js';
+import type { DirectiveResult } from 'lit/directive.js';
+
 import { CSSResult, LitElement, html, isServer, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
-import { classMap } from 'lit/directives/class-map.js';
-import { styleMap } from 'lit/directives/style-map.js';
 import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
+import { classMap } from 'lit/directives/class-map.js';
+import { styleMap } from 'lit/directives/style-map.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import style from './rh-code-block.css';
+import style from './rh-code-block.css' with { type: 'css' };
+
+import '@rhds/elements/rh-icon/rh-icon.js';
 
 /**
  * Returns a string with common indent stripped from each line. Useful for templating HTML
@@ -32,8 +35,18 @@ interface CodeLineHeightsInfo {
   oneLinerHeight: number;
 }
 
+interface ContentVisibilityAutoStateChangeEvent extends Event {
+  skipped: boolean;
+}
+
 const prismApplyPromises = new WeakMap();
 
+/**
+ * Fired when the user activates the copy button via click, Enter, or Space.
+ * Provides `content` (string) for clipboard use. Listeners SHOULD modify
+ * `content` to strip prompts. MUST call `preventDefault()` to cancel.
+ * Screen reader users activate this via the keyboard-accessible button.
+ */
 export class RhCodeBlockCopyEvent extends Event {
   constructor(
     /** Text content to copy */
@@ -44,45 +57,33 @@ export class RhCodeBlockCopyEvent extends Event {
 }
 
 /**
- * A code block applies special formatting to sections of code.
- *
- * @alias code-block
+ * A code block provides formatted display of code snippets for documentation.
+ * Authors SHOULD provide a `<script type="text/...">` or `<pre>` as slot
+ * content and MUST NOT use executable script types. SHOULD be paired with a
+ * heading so screen reader users understand context. Keyboard users Tab to
+ * action buttons and activate with Enter or Space.
  *
  * @summary Formats code strings within a container
- * @event {RhCodeBlockCopyEvent} copy - fired when the user requests to copy the code block text.
- *                                      Modify the `event.content` field to change the copied text
- *                                      (e.g. to remove a prompt from a shell command)
+ * @alias code-block
+ *
+ * @fires {RhCodeBlockCopyEvent} copy - Fired when the user clicks the copy
+ *        action button or activates it with Enter/Space. The event's
+ *        `content` field (string) contains the text to copy. Listeners MAY
+ *        modify `event.content` to alter the copied text (e.g. to strip a
+ *        shell prompt). Call `event.preventDefault()` to cancel the copy.
  */
 @customElement('rh-code-block')
 @themable
 export class RhCodeBlock extends LitElement {
   private static actionIcons = new Map([
     ['wrap', html`
-      <svg xmlns="http://www.w3.org/2000/svg"
-           role="presentation"
-           fill="currentColor"
-           viewBox="0 0 20 20">
-        <path d="M19 0c.313.039.781-.077 1 .057V20c-.313-.039-.781.077-1-.057V0ZM10.82 4.992C9.877 4.996 8.31 5.57 8.174 6c1.21.03 2.432-.073 3.635.08 2.181.383 3.677 2.796 3.066 4.922-.41 1.753-2.108 2.995-3.877 3.014L11 14H5.207l2.682-2.682-.707-.707L3.293 14.5l3.889 3.889.707-.707L5.207 15h5.736l.004-.008c1.444.005 2.896-.59 3.832-1.722 1.65-1.82 1.612-4.85-.08-6.63A5 5 0 0 0 11 5a1.948 1.948 0 0 0-.18-.008z"/>
-        <path d="M4 5h7c-.039.313.077.781-.057 1H4V5ZM0 0c.313.039.781-.077 1 .057V20c-.313-.039-.781.077-1-.057V0Z"/>
-      </svg>
+      <rh-icon set="ui" icon="wrap-text"></rh-icon>
     `],
     ['wrap-active', html`
-      <svg xmlns="http://www.w3.org/2000/svg"
-           role="presentation"
-           fill="none"
-           viewBox="0 0 21 20">
-        <path fill="currentColor" d="M12 13h1v7h-1zM12 0h1v7h-1z"/>
-        <path stroke="currentColor" d="M16.465 6.464 20 10l-3.535 3.536"/>
-        <path fill="currentColor" d="M3 9.5h17v1H3zM0 0h1v20H0z"/>
-      </svg>
+      <rh-icon set="ui" icon="overflow-text"></rh-icon>
     `],
     ['copy', html`
-      <svg xmlns="http://www.w3.org/2000/svg"
-           version="1.1"
-           viewBox="0 0 20 20">
-        <path fill="currentColor" d="M12 0H2C.9 0 0 .9 0 2v10h1V2c0-.6.4-1 1-1h10V0z"/>
-        <path fill="currentColor" d="M18 20H8c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2zM8 7c-.6 0-1 .4-1 1v10c0 .6.4 1 1 1h10c.6 0 1-.4 1-1V8c0-.6-.4-1-1-1H8z"/>
-      </svg>
+      <rh-icon set="ui" icon="copy"></rh-icon>
     `],
   ]);
 
@@ -154,7 +155,7 @@ export class RhCodeBlock extends LitElement {
   @property({ type: Boolean }) wrap = false;
 
   /** When set to `hidden`, the code block's line numbers are hidden */
-  @property({ reflect: true, attribute: 'line-numbers' }) lineNumbers?: 'hidden';
+  @property({ reflect: true, attribute: 'line-numbers' }) lineNumbers?: 'hidden' | 'visible';
 
   @state() private copyButtonState: 'default' | 'active' | 'failed' = 'default';
 
@@ -173,18 +174,10 @@ export class RhCodeBlock extends LitElement {
 
   #prismOutput?: DirectiveResult;
 
-  #isIntersecting = false;
-  #io = new IntersectionObserver(rs => {
-    const old = this.#isIntersecting;
-    const isIntersecting = rs.some(r => r.isIntersecting);
-    this.#isIntersecting = isIntersecting;
-    if (old !== isIntersecting) {
-      this.requestUpdate();
-    }
-    this.#computeLineNumbers();
-  }, { rootMargin: '50% 0px' });
+  #copyFeedbackTimeout?: ReturnType<typeof setTimeout>;
 
-  #ro = new ResizeObserver(() => this.#computeLineNumbers());
+  #isIntersecting = false;
+  #ro?: ResizeObserver;
 
   #lines: string[] = [];
   #lineHeights: `${string}px`[] = [];
@@ -192,24 +185,23 @@ export class RhCodeBlock extends LitElement {
   override connectedCallback() {
     super.connectedCallback();
     if (!isServer) {
-      this.#ro.observe(this);
-      this.#io.observe(this);
+      this.#updateResizeObserver();
     }
     this.#onSlotChange();
   }
 
   override disconnectedCallback() {
     super.disconnectedCallback();
-    this.#ro.disconnect();
-    this.#io.disconnect();
+    this.#ro?.disconnect();
   }
 
   render() {
     const { fullHeight, wrap, resizable, compact } = this;
+    const lineNumbers = this.lineNumbers !== 'hidden';
     const expandable = this.#lines.length > 5;
     const truncated = expandable && !fullHeight;
     const actions = !!this.actions.length;
-    const isIntersecting = this.#isIntersecting;
+    const isIntersecting = this.#isIntersecting && this.lineNumbers !== 'hidden';
     const actionCopyLabelledBy =
        this.copyButtonState === 'default' ?
          'copy-to-clipboard-label'
@@ -218,8 +210,9 @@ export class RhCodeBlock extends LitElement {
            : 'copy-failed-label';
     return html`
       <div id="container"
-           class="${classMap({ actions, compact, expandable, fullHeight, isIntersecting, resizable, truncated, wrap })}"
-           @code-action="${this.#onCodeAction}">
+           class="${classMap({ actions, compact, expandable, fullHeight, isIntersecting, resizable, truncated, wrap, 'line-numbers': lineNumbers })}"
+           @code-action="${this.#onCodeAction}"
+           @contentvisibilityautostatechange="${this.#onVisibilityChange}">
         <div id="content-lines" tabindex="${ifDefined((!fullHeight || undefined) && 0)}">
           <div id="sizers" aria-hidden="true"></div>
           <ol id="line-numbers" inert aria-hidden="true">${this.#lineHeights.map((height, i) => html`
@@ -232,7 +225,8 @@ export class RhCodeBlock extends LitElement {
             A non-executable script tag containing the sample content. JavaScript
             samples should use the type \`text/sample-javascript\`. HTML samples
             containing script tags must escape the closing \`</script>\` tag. Can
-            also be a \`<pre>\` tag.
+            also be a \`<pre>\` tag. Screen reader users will hear the code as
+            plain text; ensure the surrounding context provides a label or heading.
           -->
           <slot id="content"
                 ?hidden="${!!this.#prismOutput}"
@@ -244,7 +238,7 @@ export class RhCodeBlock extends LitElement {
              @keyup="${this.#onActionsKeyup}">
         ${!this.actions.includes('copy') ? '' : html`
           <rh-tooltip silent>
-            <!-- Tooltip content for the copy action button -->
+            <!-- Tooltip content for the copy action button. Provides the accessible label read by screen readers when the copy button receives focus. -->
             <slot slot="content" name="action-label-copy">
               <span ?hidden="${this.copyButtonState !== 'default'}" id="copy-to-clipboard-label">Copy to Clipboard</span>
               <span ?hidden="${this.copyButtonState !== 'active'}" id="copied-label">Copied!</span>
@@ -259,7 +253,7 @@ export class RhCodeBlock extends LitElement {
           </rh-tooltip>`}
           ${!this.actions.includes('wrap') ? '' : html`
             <rh-tooltip silent>
-             <!-- Tooltip content for the wrap action button -->
+             <!-- Tooltip content for the wrap action button. Provides the accessible label read by screen readers when the wrap button receives focus. -->
              <slot id="label-wrap" slot="content" name="action-label-wrap">
                <span ?hidden="${this.wrap}">Toggle word wrap</span>
                <span ?hidden="${!this.wrap}"
@@ -289,11 +283,7 @@ export class RhCodeBlock extends LitElement {
           <!-- text content for the expandable toggle button when the code block is expanded. -->
             <slot name="show-less">Show less</slot>
           </span>
-          <svg xmlns="http://www.w3.org/2000/svg"
-               fill="currentColor"
-               viewBox="0 0 11 7">
-            <path d="M4.919.239.242 4.847a.801.801 0 0 0 0 1.148l.778.766a.83.83 0 0 0 1.165 0L5.5 3.495 8.815 6.76a.83.83 0 0 0 1.165 0l.778-.766a.802.802 0 0 0 0-1.148L6.08.239a.826.826 0 0 0-1.162 0Z"/>
-          </svg>
+          <rh-icon set="microns" icon="caret-up"></rh-icon>
         </button>
       </div>
 
@@ -303,12 +293,17 @@ export class RhCodeBlock extends LitElement {
   }
 
   protected override firstUpdated(): void {
+    this.#computeLines();
+    // After computing lines, also update line heights if visible
     this.#computeLineNumbers();
   }
 
   protected override updated(changed: PropertyValues<this>): void {
     if (changed.has('wrap')) {
       this.#wrapChanged();
+    }
+    if (changed.has('lineNumbers') && !isServer) {
+      this.#updateResizeObserver();
     }
     if (this.actions.length && !isServer) {
       import('@rhds/elements/rh-tooltip/rh-tooltip.js');
@@ -322,6 +317,8 @@ export class RhCodeBlock extends LitElement {
       // dispatch here off of some supplemental attribute like `tokenizer="highlightjs"`
       case 'prerendered': await this.#applyPrismPrerenderedStyles(); break;
     }
+    await this.#computeLines();
+    // After computing lines, also update line heights if visible
     this.#computeLineNumbers();
   }
 
@@ -358,7 +355,42 @@ export class RhCodeBlock extends LitElement {
     }
   }
 
+  /**
+   * Handle content-visibility auto state changes
+   * When the element is rendered (not skipped), compute line numbers
+   * @param event - The contentvisibilityautostatechange event
+   */
+  #onVisibilityChange(event: Event) {
+    // skipped = true means content is NOT being rendered (off-screen)
+    // skipped = false means content IS being rendered (on/near screen)
+    const { skipped } = event as ContentVisibilityAutoStateChangeEvent;
+    const old = this.#isIntersecting;
+    this.#isIntersecting = !skipped;
+
+    if (old !== this.#isIntersecting) {
+      this.requestUpdate();
+      if (this.#isIntersecting && this.lineNumbers !== 'hidden') {
+        this.#computeLineNumbers();
+      }
+    }
+  }
+
+  #updateResizeObserver() {
+    const shouldHaveObserver = this.wrap && this.lineNumbers !== 'hidden';
+
+    if (!shouldHaveObserver && this.#ro) {
+      // Clean up observer when not needed
+      this.#ro.disconnect();
+      this.#ro = undefined;
+    } else if (shouldHaveObserver && !this.#ro) {
+      // Create observer only when both conditions are met
+      this.#ro = new ResizeObserver(() => this.#computeLineNumbers());
+      this.#ro.observe(this);
+    }
+  }
+
   async #wrapChanged() {
+    this.#updateResizeObserver();
     await this.updateComplete;
     this.#computeLineNumbers();
     this.#setSlottedLabelState('action-label-wrap', this.wrap ? 'active' : undefined);
@@ -383,15 +415,9 @@ export class RhCodeBlock extends LitElement {
   }
 
   /**
-   * Clone the text content and connect it to the document, in order to calculate the number of lines
-   * @license MIT
-   * Portions copyright prism.js authors (MIT license)
+   * Calculate the number of lines in the code block
    */
-  async #computeLineNumbers() {
-    if (!this.#isIntersecting) {
-      return;
-    }
-
+  async #computeLines() {
     await this.updateComplete;
     const codes =
         this.#prismOutput ? [this.shadowRoot?.getElementById('prism-output')].filter(x => !!x)
@@ -400,10 +426,22 @@ export class RhCodeBlock extends LitElement {
     this.#lines = codes.flatMap(element =>
       element.textContent?.split(/\n(?!$)/g) ?? []);
     this.requestUpdate();
+  }
 
-    if (this.lineNumbers === 'hidden') {
+  /**
+   * Calculate line heights for line numbers display
+   * @license MIT
+   * Portions copyright prism.js authors (MIT license)
+   */
+  async #computeLineNumbers() {
+    if (!this.#isIntersecting || this.lineNumbers === 'hidden') {
       return;
     }
+
+    await this.updateComplete;
+    const codes =
+        this.#prismOutput ? [this.shadowRoot?.getElementById('prism-output')].filter(x => !!x)
+      : this.#getSlottedCodeElements();
 
     const infos: CodeLineHeightsInfo[] = codes.map(element => {
       const codeElement = this.#prismOutput ? element.querySelector('code') : element;
@@ -515,6 +553,10 @@ export class RhCodeBlock extends LitElement {
       return;
     }
 
+    // Cancel any previous feedback timeout to prevent stale timers
+    // from interfering when the user clicks copy multiple times
+    clearTimeout(this.#copyFeedbackTimeout);
+
     try {
       tooltip.hide();
       const content = this.#preCopy();
@@ -527,11 +569,21 @@ export class RhCodeBlock extends LitElement {
       this.#setSlottedLabelState('action-label-copy', 'failed');
     }
     tooltip.show();
-    await new Promise(r => setTimeout(r, 5_000));
-    tooltip.hide();
+    await new Promise<void>(r => {
+      this.#copyFeedbackTimeout = setTimeout(r, 5_000);
+    });
+    await tooltip.hide();
+    // Wait for the tooltip's CSS opacity transition to finish
+    // before resetting the label, so the text doesn't flash
+    // from "Copied!" to "Copy to Clipboard" while still visible
+    const tooltipContent = tooltip.shadowRoot?.querySelector('#tooltip');
+    await new Promise<void>(r => {
+      tooltipContent?.addEventListener('transitionend', () => r(), { once: true });
+      // fallback in case no transition fires (e.g. reduced motion)
+      setTimeout(r, 300);
+    });
     this.copyButtonState = 'default';
     this.#setSlottedLabelState('action-label-copy', undefined);
-    tooltip.show();
   }
 }
 

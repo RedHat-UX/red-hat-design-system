@@ -6,7 +6,7 @@ import { ComposedEvent } from '@patternfly/pfe-core';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-sort-button.css';
+import styles from './rh-sort-button.css' with { type: 'css' };
 
 const DIRECTIONS_OPPOSITES = { asc: 'desc', desc: 'asc' } as const;
 

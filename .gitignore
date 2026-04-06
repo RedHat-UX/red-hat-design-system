@@ -108,3 +108,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+profiles/
+
+# Claude
+.claude/settings.local.json

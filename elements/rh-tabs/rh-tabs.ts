@@ -30,7 +30,7 @@ import {
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-tabs.css';
+import styles from './rh-tabs.css' with { type: 'css' };
 
 export { RhTab };
 

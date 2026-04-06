@@ -5,6 +5,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { consume } from '@lit/context';
 
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
@@ -23,8 +24,7 @@ import {
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-tab.css';
-import { ifDefined } from 'lit/directives/if-defined.js';
+import styles from './rh-tab.css' with { type: 'css' };
 
 export class TabExpandEvent extends Event {
   constructor(
