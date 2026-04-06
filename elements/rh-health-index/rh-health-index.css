@@ -10,6 +10,11 @@
   margin-inline-end: var(--rh-space-lg, 16px);
 }
 
+:is(.a, .b, .c, .d, .e, .f) {
+  --_text-sm: var(--rh-color-text-primary);
+  --_text-lg: var(--rh-color-text-primary);
+}
+
 .a {
   --_border-sm: var(--rh-color-status-success);
   --_border-md: transparent;
@@ -17,8 +22,6 @@
   --_fill-sm: var(--rh-color-surface-status-success);
   --_fill-md: var(--rh-color-status-success);
   --_fill-lg: var(--rh-color-surface-status-success);
-  --_text-sm: var(--rh-color-text-primary);
-  --_text-lg: var(--rh-color-text-primary);
   --_accent: var(--rh-color-status-success);
 }
 
@@ -29,8 +32,6 @@
   --_fill-sm: var(--rh-color-surface-status-success);
   --_fill-md: var(--rh-color-status-success);
   --_fill-lg: var(--rh-color-surface-status-success);
-  --_text-sm: var(--rh-color-text-primary);
-  --_text-lg: var(--rh-color-text-primary);
   --_accent: var(--rh-color-status-success);
 }
 
@@ -41,8 +42,6 @@
   --_fill-sm: var(--rh-color-surface-status-warning);
   --_fill-md: var(--rh-color-status-warning);
   --_fill-lg: var(--rh-color-surface-status-warning);
-  --_text-sm: var(--rh-color-text-primary);
-  --_text-lg: var(--rh-color-text-primary);
   --_accent: var(--rh-color-status-warning);
 }
 
@@ -53,8 +52,6 @@
   --_fill-sm: var(--rh-color-surface-status-caution);
   --_fill-md: var(--rh-color-status-caution);
   --_fill-lg: var(--rh-color-surface-status-caution);
-  --_text-sm: var(--rh-color-text-primary);
-  --_text-lg: var(--rh-color-text-primary);
   --_accent: var(--rh-color-status-caution);
 }
 
@@ -65,8 +62,6 @@
   --_fill-sm: var(--rh-color-surface-status-danger);
   --_fill-md: var(--rh-color-status-danger);
   --_fill-lg: var(--rh-color-surface-status-danger);
-  --_text-sm: var(--rh-color-text-primary);
-  --_text-lg: var(--rh-color-text-primary);
   --_accent: var(--rh-color-status-danger);
 }
 
@@ -77,8 +72,6 @@
   --_fill-sm: var(--rh-color-surface-status-danger);
   --_fill-md: var(--rh-color-status-danger);
   --_fill-lg: var(--rh-color-surface-status-danger);
-  --_text-sm: var(--rh-color-text-primary);
-  --_text-lg: var(--rh-color-text-primary);
   --_accent: var(--rh-color-status-danger);
 }
 
