@@ -159,9 +159,9 @@ export class RhAccordion extends LitElement {
            class="${classMap({ large, expanded })}"><!--
         summary: Alternating rh-accordion-header and rh-accordion-panel pairs
         description: |
-          MUST contain paired rh-accordion-header and rh-accordion-panel elements
-          in alternating order. Each header MUST be immediately followed by its
-          corresponding panel. SHOULD contain at least two pairs.
+          Must contain paired rh-accordion-header and rh-accordion-panel elements
+          in alternating order. Each header Must be immediately followed by its
+          corresponding panel. Should contain at least two pairs.
           Headers provide aria-controls linking to their panel for screen readers.
         --><slot></slot></div>
     `;
