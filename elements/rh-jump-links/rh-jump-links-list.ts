@@ -17,8 +17,8 @@ import style from './rh-jump-links-list.css' with { type: 'css' };
 
 /**
  * Provides a nested, expandable group for organizing related
- * `<rh-jump-link>` elements within `<rh-jump-links>`. Slot the
- * parent link into `slot="parent"`. In vertical orientation, child
+ * `<rh-jump-link>` elements within `<rh-jump-links>`. Put the link that
+ * labels this group in `slot="parent"`. In vertical orientation, child
  * links indent beneath the parent; in horizontal orientation the
  * group is hidden. Sets `aria-current="location"` and
  * `role="listitem"` on itself for screen readers. Avoid deeply
