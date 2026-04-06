@@ -27,9 +27,9 @@
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
-    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "lit-element": "/assets/packages/lit-element/index.js",
     "prism-esm": "/assets/packages/prism-esm/prism.js",
@@ -43,8 +43,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
     "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
@@ -13112,10 +13112,21 @@ menu expand. Defaults to <code>false</code>.</p></td>
    }
 </style>
 <script type="module">import '@rhds/elements/rh-back-to-top/rh-back-to-top.js';</script>
-<rh-back-to-top  href="#"><template shadowroot="open" shadowrootmode="open"><style>:host{z-index:1000;position:fixed;inset-block-end:var(--rh-space-xl,24px);inset-inline-end:var(--rh-space-xl,24px)}[part=trigger]{color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));background-color:var(--rh-back-to-top-background-color,var(--rh-color-accent-base));font-size:var(--rh-font-size-body-text-xs,.75rem);padding-inline:var(--rh-space-md,8px);padding-block:var(--rh-space-xs,4px);border-radius:var(--rh-border-radius-pill,64px);justify-content:center;align-items:center;gap:var(--rh-space-xs,4px);line-height:var(--rh-line-height-body-text,1.5);outline:var(--rh-border-width-md,2px) solid transparent;border:var(--rh-border-width-md,2px) solid transparent;pointer-events:all;text-decoration:none;display:inline-flex}[part=trigger]:is(:hover,:focus){outline:var(--rh-border-width-md,2px) solid var(--rh-color-interactive-primary-hover);border:var(--rh-border-width-md,2px) solid light-dark(var(--rh-color-border-strong-on-dark,#fff),var(--rh-color-border-strong-on-light,#151515));background-color:var(--rh-color-interactive-primary-hover)}[part=trigger][hidden]{display:none}rh-icon{--rh-icon-size:var(--rh-font-size-body-text-xs,.75rem);vertical-align:-.125rem}span{justify-content:center;align-items:center;gap:var(--rh-space-xs,4px);display:inline-flex}@media (width>=768px){:host{inset-block-end:var(--rh-space-3xl,48px);inset-inline-end:var(--rh-space-3xl,48px)}}</style><!--lit-part Jvo8EGLpPPY=-->
-      <!-- back to top link anchor element -->
+<rh-back-to-top  href="#"><template shadowroot="open" shadowrootmode="open"><style>:host{z-index:1000;position:fixed;inset-block-end:var(--rh-space-xl,24px);inset-inline-end:var(--rh-space-xl,24px)}@media (width>=768px){:host{inset-block-end:var(--rh-space-3xl,48px);inset-inline-end:var(--rh-space-3xl,48px)}}[part=trigger]{color:light-dark( var(--rh-color-text-primary-on-dark,#fff), var(--rh-color-text-primary-on-light,#151515));background-color: var(--rh-back-to-top-background-color, var(--rh-color-accent-base));font-size:var(--rh-font-size-body-text-xs,.75rem);padding-inline:var(--rh-space-md,8px);padding-block:var(--rh-space-xs,4px);border-radius:var(--rh-border-radius-pill,64px);justify-content:center;align-items:center;gap:var(--rh-space-xs,4px);line-height:var(--rh-line-height-body-text,1.5);outline: var(--rh-border-width-md,2px) solid transparent;border: var(--rh-border-width-md,2px) solid transparent;pointer-events:all;text-decoration:none;display:inline-flex}[part=trigger]:is(:hover,:focus){outline: var(--rh-border-width-md,2px) solid  var(--rh-color-interactive-primary-hover);border: var(--rh-border-width-md,2px) solid light-dark( var(--rh-color-border-strong-on-dark,#fff), var(--rh-color-border-strong-on-light,#151515));background-color:var(--rh-color-interactive-primary-hover)}[part=trigger][hidden]{display:none}rh-icon{--rh-icon-size:var(--rh-font-size-body-text-xs,.75rem);vertical-align:-.125rem}span{justify-content:center;align-items:center;gap:var(--rh-space-xs,4px);display:inline-flex}</style><!--lit-part LiYNwB5qsa4=-->
+      <!-- summary: anchor link that triggers scroll to top
+           description: |
+             The clickable link element that navigates to the top of the page or specified target.
+             This part can be styled to customize the button's appearance including hover states,
+             borders, shadows, and positioning. The button uses a pill shape with the accent color
+             background and includes both text and an upward caret icon. -->
       <!--lit-node 1--><a href="#" hidden part="trigger">
-        <!-- Text for the back to top link -->
+        <!-- summary: link text content (default slot)
+             description: |
+               Text displayed within the back to top button. Defaults to
+               "Back to top" if not provided. Serves as the ARIA accessible
+               name for the anchor link (per WCAG 2.5.3 Label in Name).
+               Use visible, descriptive text so screen readers announce
+               the link purpose; avoid icon-only content without a label. -->
         <slot>Back to top</slot>
         <!--lit-node 4--><rh-icon   set="ui" icon="caret-up" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
       <!--lit-node 0--><div id="container"
