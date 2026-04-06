@@ -18,7 +18,7 @@ import styles from './rh-accordion-panel.css' with { type: 'css' };
  * `rh-accordion-header`. Renders with `role="region"` and
  * `aria-labelledby` linking to its header for screen reader context.
  *
- * MUST be a direct child of `rh-accordion`, immediately following its
+ * Must be a direct child of `rh-accordion`, immediately following its
  * corresponding `rh-accordion-header`. Panel content can include text,
  * cards, images, or nested accordions. Text blocks SHOULD NOT exceed
  * 750px width for optimal readability.
