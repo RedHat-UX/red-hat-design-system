@@ -15,17 +15,38 @@ import { css } from "lit";
 const style = css `:host{display:block;position:relative}.overflow-button{display:hidden}#container{--_bdr:var(--rh-length-4xs,1px) solid var(--rh-color-border-subtle)}:host([orientation=horizontal]){display:flex;justify-content:center}:host([orientation=horizontal]) #container{display:flex;flex-flow:row nowrap;overflow:auto visible}:is(:host([orientation=horizontal]) #container):after,:is(:host([orientation=horizontal]) #container):before{display:block;position:absolute;inset-inline:0;content:""}:is(:host([orientation=horizontal]) #container):before{margin-inline:var(--rh-space-3xl);border-block-start:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}:is(:host([orientation=horizontal]) #container):after{border-block-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);inset-block-end:0}:host([orientation=horizontal]) .overflow-button{flex:none;line-height:1;opacity:1;border:0;padding-block:0;padding-inline:var(--rh-space-lg,16px);background-color:initial;color:var(--_overflow-button-text-color);position:relative;z-index:2}:is(:host([orientation=horizontal]) .overflow-button) rh-icon{pointer-events:none}:is(:is(:host([orientation=horizontal]) .overflow-button) rh-icon):dir(rtl){rotate:180deg}:is(:host([orientation=horizontal]) .overflow-button):first-of-type{margin-inline-end:0;translate:0 0}:is(:host([orientation=horizontal]) .overflow-button):first-of-type:before{border-inline-width:0 1px}:is(:host([orientation=horizontal]) .overflow-button):nth-of-type(2){margin-inline-start:0;translate:0 0;inset-inline-start:-1px}:is(:host([orientation=horizontal]) .overflow-button):nth-of-type(2):before{border-inline-width:1px 0}:is(:host([orientation=horizontal]) .overflow-button):disabled{pointer-events:none;color:light-dark(var(--rh-color-gray-40,#a3a3a3),var(--rh-color-gray-50,#707070))}:is(:host([orientation=horizontal]) .overflow-button):hover{color:var(--rh-color-text-primary)}`;
 import '@rhds/elements/rh-icon/rh-icon.js';
 /**
- * Jump links allow users to navigate sections of content on a page.
+ * Persistent in-page navigation for jumping to content sections.
+ * Renders a `role="navigation"` landmark with `aria-label` from
+ * `accessible-label` (required per WCAG 1.3.6 when multiple nav
+ * landmarks exist). Supports vertical and horizontal orientations
+ * with ScrollSpy auto-highlighting. Avoid nesting more than one
+ * level deep.
  *
  * @alias jump-links
  *
- * @fires toggle - when the `expanded` disclosure widget is toggled
+ * @summary Persistent navigation links to page sections
+ *
+ * @fires toggle - Fired when the `expanded` disclosure widget is toggled.
+ *   Does not carry additional detail data.
  */
 let RhJumpLinks = class RhJumpLinks extends LitElement {
     constructor() {
         super(...arguments);
         _RhJumpLinks_instances.add(this);
-        /** Whether the layout of children is vertical or horizontal. */
+        /**
+         * Controls the layout direction of jump link items.
+         *
+         * - `vertical` (default) - Links are stacked vertically, typically displayed on the side of the page
+         * - `horizontal` - Links are arranged in a row, with overflow scroll controls when needed
+         *
+         * ## Usage guidelines
+         * - Use `vertical` for sidebar navigation on desktop layouts
+         * - Use `horizontal` for mobile-friendly layouts or when space is limited
+         * - When horizontal, scroll buttons appear automatically to navigate overflowing links
+         * - The orientation cascades to child `<rh-jump-link>` and `<rh-jump-links-list>` elements
+         *
+         * @see [Orientation](https://ux.redhat.com/elements/jump-links/style/#orientation) in Style documentation
+         */
         this.orientation = 'vertical';
         _RhJumpLinks_internals.set(this, InternalsController.of(this, { role: 'navigation' }));
         _RhJumpLinks_overflow.set(this, new OverflowController(this));
@@ -71,7 +92,17 @@ let RhJumpLinks = class RhJumpLinks extends LitElement {
         </button>
 
         <div id="container" role="list">
-          <!-- Place \`<rh-jump-link>\` or \`<rh-jump-links-list>\` elements here -->
+          <!-- summary: navigation link items and nested lists (default slot)
+               description: |
+                 Contains \`<rh-jump-link>\` elements and optional
+                 \`<rh-jump-links-list>\` groups. Each child receives
+                 \`role="listitem"\` within the \`role="list"\` container,
+                 forming an accessible navigation structure for screen
+                 readers. Link each item to a section ID (\`href="#id"\`)
+                 corresponding to a heading or landmark on the page.
+                 Place links in page order so assistive technology users
+                 experience a logical sequence. Use nested lists
+                 sparingly to avoid overwhelming users. -->
           <slot></slot>
         </div>
 

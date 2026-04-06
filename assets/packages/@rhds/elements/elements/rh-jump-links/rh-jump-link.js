@@ -13,11 +13,20 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
 const style = css `:host{display:block;position:relative;width:100%}a{color:var(--rh-color-interactive-secondary-default);text-decoration:none;display:inline-block;box-sizing:border-box;white-space:normal;overflow-wrap:break-word}a:before{content:"";display:block;position:absolute}a.vertical{padding-block:var(--rh-space-md,8px);padding-inline:calc(var(--rh-space-lg, 16px) + var(--_padding-inline-start, 0px)) var(--rh-space-lg,16px);border-inline-start:var(--_bdr);max-width:var(--rh-jump-link-max-width,calc(var(--rh-length-md, 8px)*40))}a.horizontal{padding:var(--rh-space-lg,16px);white-space:nowrap}a:focus,a:hover{color:var(--rh-color-text-primary)}a:focus-visible{outline:none}a:focus-visible:after{content:"";display:block;position:absolute;inset:0;border:2px solid var(--rh-color-interactive-primary-default);border-radius:var(--rh-border-radius-default,3px)}a:focus-visible,a:hover{--_bdr-c:var(--rh-color-border-status-neutral)}a.active{color:var(--rh-color-text-primary);--_bdr-c:var(--rh-color-brand-red)}.vertical:is(a:focus-visible,a:hover,a.active):before{height:100%;inset-inline-start:0;inset-block:0;border-inline-start:var(--_active_bdr,var(--rh-border-width-lg,3px) solid var(--_bdr-c,var(--rh-color-border-status-neutral)))}.horizontal:is(a:focus-visible,a:hover,a.active):before{width:100%;inset-block-start:0;inset-inline:0;border-block-start:var(--rh-border-width-lg,3px) solid var(--_bdr-c,var(--rh-color-border-status-neutral))}:host([slot]) a.vertical{border-inline-start:none}`;
 import { rhJumpLinksOrientationContext } from './context.js';
+/**
+ * An individual navigation link within `<rh-jump-links>` that scrolls the
+ * page to a target section. Renders as `role="listitem"` with an internal
+ * anchor. When active, sets `aria-current="location"` for screen readers.
+ * Tab moves focus to the link; Enter or click scrolls to the `href`
+ * target. Must be a child of `<rh-jump-links>` or `<rh-jump-links-list>`.
+ *
+ * @summary A single jump link targeting a page section
+ */
 let RhJumpLink = class RhJumpLink extends LitElement {
     constructor() {
         super(...arguments);
         _RhJumpLink_instances.add(this);
-        /** Whether this item is active. */
+        /** Whether this link represents the currently visible section. When true, a bold border and `aria-current="location"` are applied. Defaults to false. */
         this.active = false;
         _RhJumpLink_internals.set(this, InternalsController.of(this, { role: 'listitem' }));
     }
@@ -32,6 +41,12 @@ let RhJumpLink = class RhJumpLink extends LitElement {
          aria-current="${ifDefined(this.active ? 'location' : undefined)}"
          href="${ifDefined(this.href)}"
          @click="${__classPrivateFieldGet(this, _RhJumpLink_instances, "m", _RhJumpLink_onClick)}">
+        <!-- summary: link label text (default slot)
+             description: |
+               Text content for this jump link. Serves as the accessible
+               name for the internal anchor element, so it should match
+               or closely reflect the target section heading (per WCAG
+               2.4.6 Headings and Labels). Keep text concise. -->
         <slot></slot>
       </a>
     `;
