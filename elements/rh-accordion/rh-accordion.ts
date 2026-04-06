@@ -42,8 +42,8 @@ export class AccordionCollapseEvent extends ComposedEvent {
 
 /**
  * Organizes content into expandable panels for scanning and selective
- * disclosure. MUST contain paired `rh-accordion-header` and
- * `rh-accordion-panel` children. SHOULD have two or more pairs; for a
+ * disclosure. Must contain paired `rh-accordion-header` and
+ * `rh-accordion-panel` children. Should have two or more pairs; for a
  * single section use `rh-disclosure`. Headers use ARIA `role="heading"`
  * with `aria-expanded`/`aria-controls` for screen readers. Supports
  * keyboard navigation: Tab to move focus, Enter or Space to toggle.
