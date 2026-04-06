@@ -33,7 +33,7 @@ export class RhAccordionPanel extends LitElement {
    * When `true`, the panel is expanded and its content is visible.
    * When `false` (default), the panel is collapsed and its content is hidden.
    *
-   * ## Usage guidelines
+   * #### Usage guidelines
    * - Use to draw attention to important content that should be immediately visible
    * - Set on the first panel in a FAQ or help section to show the most common question
    * - Supports multiple panels being expanded simultaneously for content comparison
