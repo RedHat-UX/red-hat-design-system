@@ -96,8 +96,8 @@ export class RhAccordion extends LitElement {
 
   /**
    * Color palette for the accordion and its child headers and panels.
-   * MUST match the surrounding surface color to ensure adequate text contrast.
-   * AVOID mixing light and dark palettes within the same page section.
+   * Must match the surrounding surface color to ensure adequate text contrast.
+   * Avoid mixing light and dark palettes within the same page section.
    * @see https://ux.redhat.com/theming/color-palettes/
    */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
