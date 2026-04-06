@@ -34,8 +34,8 @@ export class AccordionHeaderChangeEvent extends Event {
  * of its adjacent `rh-accordion-panel` sibling. Renders as an accessible button
  * with `role="heading"` at the appropriate aria-level.
  *
- * MUST be a direct child of `rh-accordion`. SHOULD contain concise title text
- * (max 65 characters). AVOID writing titles that sound like calls to action.
+ * Must be a direct child of `rh-accordion`. Should contain concise title text
+ * (max 65 characters). Avoid writing titles that sound like calls to action.
  *
  * Supports keyboard activation with `Enter` or `Space`. Automatically manages
  * `aria-expanded` and `aria-controls` for its associated panel.
