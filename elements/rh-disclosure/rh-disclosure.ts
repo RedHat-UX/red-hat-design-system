@@ -14,6 +14,13 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './rh-disclosure.css' with { type: 'css' };
 
+/**
+ * Fired when a disclosure is opened or closed. The event bubbles and is
+ * cancelable. Calling `preventDefault()` on the event prevents the
+ * disclosure from changing state. The event carries no `detail`
+ * payload; read the `open` property on `event.target` to determine
+ * whether the disclosure is expanding or collapsing.
+ */
 export class DisclosureToggleEvent extends Event {
   constructor() {
     super('toggle', { bubbles: true, cancelable: true });
@@ -21,13 +28,22 @@ export class DisclosureToggleEvent extends Event {
 }
 
 /**
- * A disclosure toggles the visibility of content when triggered.
+ * A disclosure allows users to toggle supplementary content via a
+ * trigger. Authors should provide a title through the `summary`
+ * attribute or slot. It renders a native `<details>`/`<summary>`
+ * pair; screen readers announce state changes. Enter or Space
+ * toggles the panel, Tab moves focus in, and Escape closes it.
+ * Avoid nesting; use `rh-accordion` instead.
  *
  * @summary A disclosure toggles the visibility of content when triggered
  *
  * @alias disclosure
  *
- * @fires {DisclosureToggleEvent} toggle - Fires when a user opens or closes a disclosure.
+ * @fires {DisclosureToggleEvent} toggle - Fires when the disclosure
+ *        opens or closes. The event has no `detail` payload; read
+ *        `event.target.open` to determine the new state. The event
+ *        bubbles and is cancelable — calling `preventDefault()` blocks
+ *        the state change.
  */
 @customElement('rh-disclosure')
 @colorPalettes
@@ -72,7 +88,8 @@ export class RhDisclosure extends LitElement {
    */
   @property({ type: Boolean, reflect: true }) open = false;
 
-  /** Borderless: Removes the outer and left border from the disclosure.
+  /**
+   * Borderless: Removes the outer and left border from the disclosure.
    * The background is `surface-light`/`surface-dark` when expanded.
    * Compact: decreases disclosure padding.
    */
@@ -89,20 +106,43 @@ export class RhDisclosure extends LitElement {
   @query('summary') private summaryEl!: HTMLElement;
 
   render() {
+    const { open, summary, hasJumpLinks } = this;
     return html`
       <details
-          ?open="${this.open}"
-          class=${classMap({ 'has-jump-links': this.hasJumpLinks })}
+          ?open="${open}"
+          class="${classMap({ hasJumpLinks })}"
           @keydown="${this.#onKeydown}"
           @toggle="${this.#onToggle}">
         <summary>
-          <!-- The caret icon in the shadow DOM -->
           <rh-icon id="caret" set="ui" icon="caret-down"></rh-icon>
-          <!-- The title of the disclosure -->
-          <slot name="summary">${this.summary}</slot>
+          <!-- summary: The clickable title text for the disclosure.
+               description: |
+                 Accepts inline text or a heading element (e.g.
+                 \`<h2>\`, \`<h3>\`). When a heading is slotted, it
+                 renders inline. Falls back to the \`summary\` attribute
+                 value when no slot content is provided. Authors should
+                 keep the summary short and descriptive; screen readers
+                 announce it as the accessible name for the disclosure
+                 trigger. When using a heading element, ensure its level
+                 fits the page outline so assistive technology presents
+                 correct heading hierarchy. -->
+          <slot name="summary">${summary}</slot>
         </summary>
         <div id="details-content">
-          <!-- Place the content you want to disclose in the default slot. This content is hidden by default. -->
+          <!-- summary: Content revealed when the disclosure is open.
+               description: |
+                 Accepts block-level elements such as paragraphs, lists,
+                 or nested components. Interactive children receive
+                 focus via Tab when the panel is expanded. Slotted
+                 content should follow WCAG reading order so screen
+                 readers present it logically. Authors should ensure
+                 that interactive elements inside the panel have
+                 visible focus indicators and accessible labels so
+                 keyboard and assistive-technology users can operate
+                 them. The escape key returns focus to the summary
+                 trigger unless the focused element is an input,
+                 select, textarea, or media control, in which case
+                 Escape is passed through to that element. -->
           <slot></slot>
         </div>
       </details>
@@ -110,9 +150,10 @@ export class RhDisclosure extends LitElement {
   }
 
   #onToggle(): void {
-    this.open = this.detailsEl.open;
     const event = new DisclosureToggleEvent();
-    this.dispatchEvent(event);
+    if (this.dispatchEvent(event) && !event.defaultPrevented) {
+      this.open = this.detailsEl.open;
+    }
   }
 
   #onKeydown(event: KeyboardEvent): void {
