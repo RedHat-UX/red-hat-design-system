@@ -28,7 +28,6 @@ a {
       /** Jump link vertical inline-end padding */
       var(--rh-space-lg, 16px);
     border-inline-start: var(--_bdr);
-
     max-width:
       /** Vertical link max width override */
       var(--rh-jump-link-max-width,
@@ -98,8 +97,8 @@ a {
           var(--rh-border-width-lg, 3px)
           solid
           var(--_bdr-c,
-            /** Vertical active border color */
-            var(--rh-color-border-status-neutral)));
+          /** Vertical active border color */
+          var(--rh-color-border-status-neutral)));
     }
 
     &.horizontal:before {
