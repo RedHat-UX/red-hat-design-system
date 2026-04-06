@@ -88,8 +88,8 @@ export class RhAccordion extends LitElement {
 
   /**
    * Switches the accordion to large size, increasing font size and padding.
-   * AVOID on viewports below 576px; the accordion automatically falls back
-   * to small size on mobile breakpoints. Use large for page-level content
+   * Avoid on viewports below 576px; the accordion automatically falls back
+   * to small size on mobile breakpoints. Use `large` for page-level content
    * sections where the accordion is the primary content structure.
    */
   @property({ reflect: true, type: Boolean }) large = false;
