@@ -16,12 +16,13 @@ import { rhJumpLinksOrientationContext } from './context.js';
 import style from './rh-jump-links-list.css' with { type: 'css' };
 
 /**
- * Groups related `<rh-jump-link>` elements into a nested, expandable
- * list within `<rh-jump-links>`. The parent link SHOULD be slotted
- * into `slot="parent"`. In vertical orientation, child links indent
- * beneath the parent; in horizontal orientation, the nested list is
- * hidden. Sets `aria-current="location"` and `role="listitem"` on
- * itself. AVOID deeply nesting multiple `<rh-jump-links-list>` levels.
+ * Provides a nested, expandable group for organizing related
+ * `<rh-jump-link>` elements within `<rh-jump-links>`. Slot the
+ * parent link into `slot="parent"`. In vertical orientation, child
+ * links indent beneath the parent; in horizontal orientation the
+ * group is hidden. Sets `aria-current="location"` and
+ * `role="listitem"` on itself for screen readers. Avoid deeply
+ * nesting multiple levels.
  *
  * @summary Nested group of jump links with an expandable parent
  */

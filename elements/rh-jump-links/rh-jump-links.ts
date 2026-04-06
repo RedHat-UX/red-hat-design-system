@@ -19,13 +19,12 @@ import style from './rh-jump-links.css' with { type: 'css' };
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 /**
- * Provides persistent in-page navigation so users can quickly jump to
- * content sections without scrolling. Renders as a `role="navigation"`
- * landmark; authors MUST set `accessible-label` when multiple nav
- * landmarks exist. Supports vertical (sidebar) and horizontal (inline)
- * orientations. Uses ScrollSpy to auto-highlight the active section.
- * Tab moves focus between links; Enter activates the link and scrolls
- * the page. AVOID placing more than one level of nesting.
+ * Persistent in-page navigation for jumping to content sections.
+ * Renders a `role="navigation"` landmark with `aria-label` from
+ * `accessible-label` (required per WCAG 1.3.6 when multiple nav
+ * landmarks exist). Supports vertical and horizontal orientations
+ * with ScrollSpy auto-highlighting. Avoid nesting more than one
+ * level deep.
  *
  * @alias jump-links
  *
@@ -130,22 +129,15 @@ export class RhJumpLinks extends LitElement {
         <div id="container" role="list">
           <!-- summary: navigation link items and nested lists (default slot)
                description: |
-                 Contains \`<rh-jump-link>\` elements that navigate to sections on the page,
-                 and optional \`<rh-jump-links-list>\` elements to create nested navigation hierarchies.
-
-                 **Common patterns:**
-                 - Individual \`<rh-jump-link>\` elements for flat navigation
-                 - \`<rh-jump-links-list>\` to group related links with expandable sections
-                 - Mix of both for multi-level page navigation
-
-                 **Best practices:**
-                 - Link to sections with IDs (href="#section-id")
-                 - Place links in the order they appear on the page for intuitive navigation
-                 - Use nested lists sparingly to avoid overwhelming users with options
-                 - Each link should correspond to a heading or landmark on the page
-
-                 @see [Jump links](https://ux.redhat.com/elements/jump-links/) documentation
-                 @see [Guidelines](https://ux.redhat.com/elements/jump-links/guidelines/) for usage patterns -->
+                 Contains \`<rh-jump-link>\` elements and optional
+                 \`<rh-jump-links-list>\` groups. Each child receives
+                 \`role="listitem"\` within the \`role="list"\` container,
+                 forming an accessible navigation structure for screen
+                 readers. Link each item to a section ID (\`href="#id"\`)
+                 corresponding to a heading or landmark on the page.
+                 Place links in page order so assistive technology users
+                 experience a logical sequence. Use nested lists
+                 sparingly to avoid overwhelming users. -->
           <slot></slot>
         </div>
 
