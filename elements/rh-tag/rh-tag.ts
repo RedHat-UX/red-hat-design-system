@@ -38,16 +38,16 @@ export class RhTag extends LitElement {
   /**
    * Icon set to display in the tag
    */
-  @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'ui';
+  @property({ attribute: 'icon-set', reflect: true }) iconSet: IconSetName = 'ui';
 
   /** The variant of the tag. */
-  @property() variant?: 'filled' | 'outline' | 'desaturated' = 'filled';
+  @property({ reflect: true }) variant?: 'filled' | 'outline' | 'desaturated' = 'filled';
 
   /** The size of the tag. */
-  @property() size?: 'compact';
+  @property({ reflect: true }) size?: 'compact';
 
   /** optional href for linked tag. */
-  @property() href?: string;
+  @property({ reflect: true }) href?: string;
 
   /**
    * Whether an interactive tag is disabled.
