@@ -5,7 +5,7 @@
 }
 
 :host {
-  --_navbar-height: 74px;
+  --_navbar-height: 50px;
   --_nav-container-z-index: -1;
   --_box-shadow-color: light-dark(rgba(21, 21, 21, 0.2), rgba(0, 0, 0, 0.6));
 
@@ -554,8 +554,6 @@
 }
 
 #container {
-  --_navbar-height: 66px;
-
   display: block;
   position: relative;
   inline-size: 100%;
