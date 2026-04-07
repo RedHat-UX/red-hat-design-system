@@ -17,8 +17,6 @@ a,
   font-size: inherit !important;
   font-weight: inherit !important;
   line-height: inherit !important;
-
-  /** Link and slotted link/button/input text decoration */
   text-decoration: var(--_text-decoration) !important;
   text-underline-offset: var(--_text-underline-offset) !important;
   z-index: 2 !important;
@@ -118,7 +116,9 @@ rh-icon {
   transition: translate var(--_trans);
 
   --_trans:
+    /** Arrow slide animation duration */
     var(--rh-animation-speed, 0.3s)
+    /** Arrow slide animation easing */
     var(--rh-animation-timing, cubic-bezier(0.465, 0.183, 0.153, 0.946));
 }
 
@@ -215,19 +215,10 @@ a:focus-within,
  *****************************************************************************/
 
 :host([variant]) #container {
-  /** Variant text size */
   font-size: var(--rh-font-size-body-text-md, 1rem);
-
-  /** Variant border radius */
   border-radius: var(--rh-border-radius-default, 3px);
-
-  /** Variant border thickness */
   border-width: var(--rh-border-width-sm, 1px);
-
-  /** Variant horizontal padding */
   padding-inline: var(--rh-space-2xl, 32px);
-
-  /** Variant vertical padding */
   padding-block: var(--rh-space-lg, 16px);
 
   & a,
@@ -330,33 +321,38 @@ a:focus-within,
 :host([variant='primary']) #container {
   border-style: solid;
 
-  --_background-color: var(--rh-cta-background-color, var(--rh-color-brand-red));
-  --_border-color: var(--rh-cta-border-color, var(--rh-color-brand-red));
-  --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
-
-  /** Sets the cta color on active */
-  --_active-color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
-  --_hover-background-color:
+  --_background-color: /** Primary variant background color */
+    var(--rh-cta-background-color, var(--rh-color-brand-red));
+  --_border-color: /** Primary variant border color */
+    var(--rh-cta-border-color, var(--rh-color-brand-red));
+  --_color: /** Primary variant text color */
+    var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
+  --_active-color: /** Primary variant active text color */
+    var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
+  --_hover-background-color: /** Primary variant hover background */
     var(--rh-cta-hover-background-color,
       var(--rh-color-brand-red-dark, #a60000));
-  --_hover-border-color: var(--rh-cta-hover-border-color, var(--rh-color-brand-red-dark, #a60000));
-  --_hover-color: var(--rh-cta-hover-color, var(--rh-color-text-primary-on-dark, #ffffff));
-  --_focus-background-color:
+  --_hover-border-color: /** Primary variant hover border color */
+    var(--rh-cta-hover-border-color, var(--rh-color-brand-red-dark, #a60000));
+  --_hover-color: /** Primary variant hover text color */
+    var(--rh-cta-hover-color, var(--rh-color-text-primary-on-dark, #ffffff));
+  --_focus-background-color: /** Primary variant focus background */
     var(--rh-cta-focus-background-color,
       var(--rh-color-brand-red-dark, #a60000));
-  --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-brand-red-dark, #a60000));
-  --_focus-color:
+  --_focus-border-color: /** Primary variant focus border color */
+    var(--rh-cta-focus-border-color, var(--rh-color-brand-red-dark, #a60000));
+  --_focus-color: /** Primary variant focus text color */
     var(--rh-cta-focus-color,
       var(--rh-color-text-primary-on-dark, #ffffff)) !important;
-  --_focus-inner-border-color:
+  --_focus-inner-border-color: /** Primary variant focus inner border color */
     var(--rh-cta-focus-inner-border-color,
       var(--rh-color-text-primary-on-dark, #ffffff));
-  --_focus-text-decoration: var(--rh-cta-focus-text-decoration, none);
-  --_active-background-color:
-    /** Active background color */
+  --_focus-text-decoration: /** Primary variant focus text decoration */
+    var(--rh-cta-focus-text-decoration, none);
+  --_active-background-color: /** Primary variant active background color */
     var(--rh-cta-active-background-color,
       var(--rh-color-brand-red-dark, #a60000));
-  --_active-inner-border-color:
+  --_active-inner-border-color: /** Primary variant active inner border color */
     var(--rh-cta-active-inner-border-color,
       var(--rh-color-text-primary-on-dark, #ffffff));
 }
@@ -368,35 +364,64 @@ a:focus-within,
 :host([variant='secondary']) #container {
   border-style: solid;
 
-  --_background-color: var(--rh-cta-background-color, transparent);
-  --_border-color: var(--rh-cta-border-color, var(--rh-color-border-strong));
+  --_background-color: /** Secondary variant background color */
+    var(--rh-cta-background-color, transparent);
+  --_border-color: /** Secondary variant border color */
+    var(--rh-cta-border-color, var(--rh-color-border-strong));
   --_color:
-    light-dark(var(--rh-cta-color, var(--rh-color-text-primary-on-light, #151515)),
-      var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff)));
+    light-dark(
+        /** Secondary variant text color on light color schemes */
+        var(--rh-cta-color, var(--rh-color-text-primary-on-light, #151515)),
+        /** Secondary variant text color on dark color schemes */
+        var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff))
+      );
   --_hover-background-color:
-    light-dark(var(--rh-cta-hover-background-color, var(--rh-color-surface-darkest, #151515)),
-      var(--rh-cta-hover-background-color, var(--rh-color-surface-lightest, #ffffff)));
-  --_hover-border-color: var(--rh-cta-hover-border-color, var(--rh-color-border-strong));
+    light-dark(
+        /** Secondary variant hover background on light color schemes */
+        var(--rh-cta-hover-background-color, var(--rh-color-surface-darkest, #151515)),
+        /** Secondary variant hover background on dark color schemes */
+        var(--rh-cta-hover-background-color, var(--rh-color-surface-lightest, #ffffff))
+      );
+  --_hover-border-color: /** Secondary variant hover border color */
+    var(--rh-cta-hover-border-color, var(--rh-color-border-strong));
   --_hover-color:
-    light-dark(var(--rh-cta-hover-color, var(--rh-color-text-primary-on-dark, #ffffff)),
-      var(--rh-cta-hover-color, var(--rh-color-text-primary-on-light, #151515)));
+    light-dark(
+        /** Secondary variant hover text color on light color schemes */
+        var(--rh-cta-hover-color, var(--rh-color-text-primary-on-dark, #ffffff)),
+        /** Secondary variant hover text color on dark color schemes */
+        var(--rh-cta-hover-color, var(--rh-color-text-primary-on-light, #151515))
+      );
   --_focus-background-color:
-    light-dark(var(--rh-cta-focus-background-color, var(--rh-color-surface-lighter, #f2f2f2)),
-      var(--rh-cta-focus-background-color, var(--rh-color-surface-dark, #383838)));
-  --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-border-strong));
+    light-dark(
+        /** Secondary variant focus background on light color schemes */
+        var(--rh-cta-focus-background-color, var(--rh-color-surface-lighter, #f2f2f2)),
+        /** Secondary variant focus background on dark color schemes */
+        var(--rh-cta-focus-background-color, var(--rh-color-surface-dark, #383838))
+      );
+  --_focus-border-color: /** Secondary variant focus border color */
+    var(--rh-cta-focus-border-color, var(--rh-color-border-strong));
   --_focus-color: var(--rh-color-text-primary);
-  --_focus-inner-border-color:
+  --_focus-inner-border-color: /** Secondary variant focus inner border color */
     var(--rh-cta-focus-inner-border-color,
       var(--rh-color-border-strong));
-  --_focus-text-decoration: var(--rh-cta-focus-text-decoration, none);
-  --_active-color: /** Secondary active text color */
+  --_focus-text-decoration: /** Secondary variant focus text decoration */
+    var(--rh-cta-focus-text-decoration, none);
+  --_active-color: /** Secondary variant active text color */
     var(--rh-cta-active-color, var(--rh-color-text-primary));
   --_active-background-color:
-    light-dark(var(--rh-cta-active-background-color, var(--rh-color-border-strong)),
-      var(--rh-cta-active-background-color, var(--rh-color-surface-lightest, #ffffff)));
+    light-dark(
+        /** Secondary variant active background on light color schemes */
+        var(--rh-cta-active-background-color, var(--rh-color-border-strong)),
+        /** Secondary variant active background on dark color schemes */
+        var(--rh-cta-active-background-color, var(--rh-color-surface-lightest, #ffffff))
+      );
   --_active-inner-border-color:
-    light-dark(var(--rh-cta-active-inner-border-color, var(--rh-color-surface-light, #e0e0e0)),
-      var(--rh-cta-active-inner-border-color, var(--rh-color-border-strong-on-light, #151515)));
+    light-dark(
+        /** Secondary variant active inner border on light color schemes */
+        var(--rh-cta-active-inner-border-color, var(--rh-color-surface-light, #e0e0e0)),
+        /** Secondary variant active inner border on dark color schemes */
+        var(--rh-cta-active-inner-border-color, var(--rh-color-border-strong-on-light, #151515))
+      );
 }
 
 /*****************************************************************************
@@ -411,48 +436,74 @@ a:focus-within,
   & #container {
     border-style: solid;
 
-    /** Brick typeface */
+    /** Brick variant typeface */
     font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
 
-    /** Brick font weight */
+    /** Brick variant font weight */
     font-weight: var(--rh-font-weight-body-text-regular, 400);
     display: flex;
     flex-flow: row wrap;
 
-    /** Brick content gap */
+    /** Brick variant content gap */
     gap: var(--rh-space-md, 8px);
     justify-content: center;
     align-items: center;
 
-    --_background-color: var(--rh-cta-background-color, transparent);
-    --_border-color: var(--rh-cta-border-color, var(--rh-color-border-subtle));
-    --_color: var(--rh-cta-color, var(--rh-color-interactive-primary-default));
+    --_background-color: /** Brick variant background color */
+      var(--rh-cta-background-color, transparent);
+    --_border-color: /** Brick variant border color */
+      var(--rh-cta-border-color, var(--rh-color-border-subtle));
+    --_color: /** Brick variant text color */
+      var(--rh-cta-color, var(--rh-color-interactive-primary-default));
     --_hover-background-color:
-      light-dark(var(--rh-cta-hover-background-color, var(--rh-color-surface-lighter, #f2f2f2)),
-        var(--rh-cta-hover-background-color, var(--rh-color-surface-darker, #1f1f1f)));
-    --_hover-border-color: var(--rh-cta-hover-border-color, var(--rh-color-border-subtle));
-    --_hover-color: var(--rh-cta-hover-color, var(--rh-color-interactive-primary-hover));
+      light-dark(
+          /** Brick variant hover background on light color schemes */
+          var(--rh-cta-hover-background-color, var(--rh-color-surface-lighter, #f2f2f2)),
+          /** Brick variant hover background on dark color schemes */
+          var(--rh-cta-hover-background-color, var(--rh-color-surface-darker, #1f1f1f))
+        );
+    --_hover-border-color: /** Brick variant hover border color */
+      var(--rh-cta-hover-border-color, var(--rh-color-border-subtle));
+    --_hover-color: /** Brick variant hover text color */
+      var(--rh-cta-hover-color, var(--rh-color-interactive-primary-hover));
     --_hover-text-decoration:
-      light-dark(var(--rh-cta-hover-text-decoration, none),
-        var(--rh-cta-hover-text-decoration, underline));
-    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-interactive-primary-default));
-    --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-border-subtle));
-    --_focus-inner-border-color:
+      light-dark(
+          /** Brick variant hover text decoration on light color schemes */
+          var(--rh-cta-hover-text-decoration, none),
+          /** Brick variant hover text decoration on dark color schemes */
+          var(--rh-cta-hover-text-decoration, underline)
+        );
+    --_focus-color: /** Brick variant focus text color */
+      var(--rh-cta-focus-color, var(--rh-color-interactive-primary-default));
+    --_focus-border-color: /** Brick variant focus border color */
+      var(--rh-cta-focus-border-color, var(--rh-color-border-subtle));
+    --_focus-inner-border-color: /** Brick variant focus inner border color */
       var(--rh-cta-focus-inner-border-color,
         var(--rh-color-border-subtle));
     --_focus-text-decoration:
-      light-dark(var(--rh-cta-focus-text-decoration, none),
-        var(--rh-cta-focus-text-decoration, none));
+      light-dark(
+          /** Brick variant focus text decoration on light color schemes */
+          var(--rh-cta-focus-text-decoration, none),
+          /** Brick variant focus text decoration on dark color schemes */
+          var(--rh-cta-focus-text-decoration, none)
+        );
     --_active-background-color:
-      light-dark(var(--rh-cta-active-background-color,
-        var(--rh-color-surface-lighter, #f2f2f2)),
-        var(--rh-cta-active-background-color, var(--rh-color-surface-darker, #1f1f1f)));
-    --_active-inner-border-color:
+      light-dark(
+          /** Brick variant active background on light color schemes */
+          var(--rh-cta-active-background-color, var(--rh-color-surface-lighter, #f2f2f2)),
+          /** Brick variant active background on dark color schemes */
+          var(--rh-cta-active-background-color, var(--rh-color-surface-darker, #1f1f1f))
+        );
+    --_active-inner-border-color: /** Brick variant active inner border color */
       var(--rh-cta-active-inner-border-color,
         var(--rh-color-border-subtle));
     --_active-text-decoration:
-      light-dark(var(--rh-cta-active-text-decoration, none),
-        var(--rh-cta-active-text-decoration, underline));
+      light-dark(
+          /** Brick variant active text decoration on light color schemes */
+          var(--rh-cta-active-text-decoration, none),
+          /** Brick variant active text decoration on dark color schemes */
+          var(--rh-cta-active-text-decoration, underline)
+        );
 
     &.icon rh-icon {
       margin-inline: 0;
