@@ -45,17 +45,6 @@ subnav:
         height: 100%;
     }
   }
-
-  .example-row {
-    margin-block: var(--rh-space-2xl, 32px);
-  }
-
-  .example-flex {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--rh-space-lg, 16px);
-    align-items: center;
-  }
 </style>
 
 Unified content
@@ -99,6 +88,10 @@ Unified content
 
 <uxdot-pattern src="../patterns/unified-spinner.html">
   <h3 id="unified-spinner" slot="heading">Spinner</h3>
+</uxdot-pattern>
+
+<uxdot-pattern src="../patterns/unified-tag.html">
+  <h3 id="unified-tag" slot="heading">Tags</h3>
 </uxdot-pattern>
 
 <uxdot-pattern src="../patterns/unified-cards-glass.html">

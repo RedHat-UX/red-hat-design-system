@@ -447,7 +447,8 @@
     card,
     cta,
     progress-steppers,
-    spinner;
+    spinner,
+    tag;
 }
 
 /* Element: Button */
@@ -881,5 +882,62 @@
     --rh-color-gray-10: var(--unified-spinner-color-track-on-light);
     --rh-color-gray-70: var(--unified-spinner-color-track-on-dark);
     --rh-color-accent-base: var(--unified-spinner-color);
+  }
+}
+
+/* Element: Tag */
+@layer tag {
+  rh-tag {
+    --rh-size-icon-01: var(--unified-size-icon-00);
+
+    /* All non-status variants use primary text/icon color (gray-95).
+       light-dark() preserves the dark-mode fill value on -70 tokens
+       which are shared between light text and dark fill. */
+    --rh-color-gray-10: var(--unified-color-gray-20);
+    --rh-color-gray-60: var(--unified-color-gray-95);
+    --rh-color-gray-70:
+      light-dark(
+          var(--unified-color-gray-95),
+          var(--unified-color-gray-70)
+        );
+    --rh-color-red-10: var(--rh-color-red-20, #fbc5c5);
+    --rh-color-red-60: var(--unified-color-gray-95);
+    --rh-color-red-70:
+      light-dark(
+          var(--unified-color-gray-95),
+          #5f0000
+        );
+
+    /* Filled: 2px border matching fill color (invisible, no shift on hover) */
+    &:is(:not([variant]), [variant='filled']) {
+      --rh-border-width-sm: var(--unified-border-width-md);
+      --rh-color-gray-30: var(--unified-color-gray-20);
+      --rh-color-gray-50: var(--unified-color-gray-70);
+      --rh-color-red-30: var(--rh-color-red-20, #fbc5c5);
+      --rh-color-red-50: var(--rh-color-red-70, #5f0000);
+    }
+
+    /* Outline: transparent fill, color-specific border */
+    &[variant='outline'] {
+      &[color='red'] {
+        --rh-color-gray-30: var(--rh-color-red-30, #f9a8a8);
+        --rh-color-gray-50: var(--rh-color-red-50, #ee0000);
+      }
+    }
+
+    /* Disabled: plain gray fill, no border, muted text/icon.
+       Overrides variant and color. &[color] raises specificity
+       to beat &[variant='outline'] &[color='red'] (0-3-0). */
+    &[disabled] {
+      --rh-border-width-sm: var(--unified-border-width-md);
+      --rh-color-gray-60: var(--unified-color-gray-50);
+      --rh-color-gray-70: var(--unified-color-gray-70);
+
+      &,
+      &[color] {
+        --rh-color-gray-30: var(--unified-color-gray-20);
+        --rh-color-gray-50: var(--unified-color-gray-70);
+      }
+    }
   }
 }
