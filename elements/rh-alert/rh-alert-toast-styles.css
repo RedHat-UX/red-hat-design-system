@@ -1,12 +1,20 @@
 .rh-alert-toast-group {
   position: fixed;
   z-index: 1000;
+
+  /** Toast group block start offset */
   inset-block-start: var(--rh-space-lg, 16px);
+
+  /** Toast group inline end offset */
   inset-inline-end: var(--rh-space-lg, 16px);
+
+  /** Toast group block end padding */
   padding-block-end: var(--rh-space-4xl, 64px);
   display: grid;
   justify-items: end;
   justify-content: center;
+
+  /** Toast group gap */
   gap: var(--rh-space-lg, 16px);
 
   /* optimizations */
@@ -31,6 +39,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .rh-alert-toast-group rh-alert {
+    /** Slide-in travel distance when motion is allowed */
     --_travel-distance: var(--rh-space-4xl, 64px);
   }
 }
