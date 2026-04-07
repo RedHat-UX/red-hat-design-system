@@ -560,6 +560,10 @@
   block-size: var(--_navbar-height);
   z-index: 2;
 
+  @container navigation-primary (min-width: 480px) {
+    --_navbar-height: 66px;
+  }
+
   @container navigation-primary (min-width: 576px) {
     --_navbar-height: 82px;
   }
