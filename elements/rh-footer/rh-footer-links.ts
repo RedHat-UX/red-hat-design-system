@@ -7,19 +7,13 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import style from './rh-footer-links.css' with { type: 'css' };
 
 /**
- * Groups a set of navigation links under a heading within the footer.
- * Auto-wires `aria-labelledby` between the slotted heading and `<ul>` for
- * screen reader users. Used in both the main footer link columns and social
- * link regions. On mobile, these groups collapse into accordion panels.
- * Tab navigates through links; heading provides group context to assistive
- * technology. MUST contain a `<ul>` with links and SHOULD contain a heading
- * in the `header` slot.
+ * Accessible link group for the footer. Auto-wires `aria-labelledby`
+ * between the heading and `<ul>` for screen readers. Must contain a
+ * `<ul>`; should include a heading in the `header` slot. Tab moves
+ * focus through each link. On mobile, collapses into an accordion
+ * panel.
  *
  * @summary Accessible link group with heading for footer navigation
- *
- * @slot header - Group heading element (h2-h5). Automatically linked via aria-labelledby.
- * @slot panel - Alternative content slot for accordion panel usage.
- * @slot - Default slot for the `<ul>` of links.
  */
 @customElement('rh-footer-links')
 export class RhFooterLinks extends LitElement {
@@ -65,23 +59,23 @@ export class RhFooterLinks extends LitElement {
       <div part="header" class="header">
         <!-- summary: link group heading
              description: |
-               Heading element (h2-h5) labeling this link group. Automatically linked
-               to the \`<ul>\` via \`aria-labelledby\` for screen reader users. Visually
-               hidden when \`header-hidden\` attribute is set. -->
+               Expects a block elements heading (h2-h5) labeling this link group.
+               Automatically linked to the \`<ul>\` via \`aria-labelledby\` for screen
+               reader users. Visually hidden when \`header-hidden\` attribute is set. -->
         <slot name="header"></slot>
       </div>
       <div part="default" class="default">
         <!-- summary: accordion panel content
              description: |
-               Alternative content slot used when links are rendered inside an accordion
-               panel on mobile viewports. Screen readers navigate panel content after
-               the accordion header is expanded. -->
+               Expects block elements. Alternative content slot used when links are
+               rendered inside an accordion panel on mobile viewports. Screen readers
+               navigate panel content after the accordion header is expanded. -->
         <slot name="panel"></slot>
         <!-- summary: link list
              description: |
-               Default slot for the \`<ul>\` of navigation links. Each link is focusable
-               via Tab. The list SHOULD have \`aria-labelledby\` pointing to the header
-               (auto-wired by the component). -->
+               Expects block elements: a \`<ul>\` of navigation links. Each link is
+               focusable via Tab. The list should have \`aria-labelledby\` pointing
+               to the header (auto-wired by the component). -->
         <slot></slot>
       </div>
     `;

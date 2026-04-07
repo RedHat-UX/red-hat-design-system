@@ -14,28 +14,14 @@ import style from './rh-footer.css' with { type: 'css' };
 import './rh-footer-copyright.js';
 
 /**
- * The universal footer bar containing Red Hat global links, logo, copyright,
- * and legal information. Content MUST NOT be customized per-site; it displays
- * the same Red Hat branding across all properties. Renders on the darkest
- * color palette. Detects parent `<footer>` and `<h2>` to avoid duplicate
- * landmarks. Screen readers navigate via heading and link groups. Tab moves
- * through links in primary, secondary, and tertiary regions. MUST include
- * `<rh-footer-copyright>` in the `secondary-start` slot.
+ * Global Red Hat footer bar for consistent branding across all
+ * properties. Authors must not customize content per-site. The
+ * `secondary-start` slot should contain `<rh-footer-copyright>`.
+ * Renders a `<footer>` with ARIA landmark semantics and a
+ * visually-hidden `<h2>` so screen readers can identify the region.
+ * Tab navigates link groups.
  *
  * @summary Global Red Hat universal footer with logo, links, and copyright
- *
- * @slot heading - Visually hidden heading for assistive technology. Defaults to "Red Hat footer".
- * @slot base - Overrides all universal footer content. AVOID using.
- * @slot logo - Red Hat logo. Defaults to the fedora SVG linking to redhat.com.
- * @slot primary - Overrides primary-start, links-primary, and primary-end slots.
- * @slot primary-start - Content before primary links.
- * @slot links-primary - Primary global navigation links.
- * @slot primary-end - Content after primary links.
- * @slot secondary - Overrides secondary-start, links-secondary, and secondary-end slots.
- * @slot secondary-start - Content before secondary links (e.g. copyright).
- * @slot links-secondary - Secondary global navigation links.
- * @slot secondary-end - Content after secondary links.
- * @slot tertiary - Optional third content region (e.g. language selector).
  */
 @customElement('rh-footer-universal')
 @colorPalettes
@@ -83,16 +69,24 @@ export class RhFooterUniversal extends LitElement {
         <h2 id="global-heading" ?hidden="${!!h2}">
           <!-- summary: visually-hidden heading for assistive technology
                description: |
-                 Screen readers use this heading to identify the universal footer region.
-                 Defaults to "Red Hat footer". Hidden if a parent \`<h2>\` already exists. -->
+                 Expects inline text. Screen readers use this heading to identify the
+                 universal footer region. Defaults to "Red Hat footer". Hidden if a
+                 parent \`<h2>\` already exists. -->
           <slot name="heading">Red Hat footer</slot>
         </h2>
-        <!-- base -->
         <div class="section global-base ${classMap({ hasTertiary })}" part="section base">
+          <!-- summary: overrides all universal footer content (base slot)
+               description: |
+                 Expects block elements. Replaces the entire universal footer structure.
+                 Avoid using; bypasses all built-in layout, grid regions, responsive
+                 behavior, and ARIA landmark wiring. -->
           <slot name="base">
-            <!-- logo -->
             <div class="global-logo" part="logo">
-              <!-- logo -->
+              <!-- summary: Red Hat logo (logo slot)
+                   description: |
+                     Expects block elements: an \`<a>\` wrapping an \`<img>\` or \`<svg>\`.
+                     Defaults to the Red Hat logo SVG linking to redhat.com. Screen
+                     readers rely on the anchor \`aria-label\` for identification. -->
               <slot name="logo">
                 <a class="global-logo-anchor"
                     part="logo-anchor"
@@ -118,52 +112,79 @@ export class RhFooterUniversal extends LitElement {
                 </a>
               </slot>
             </div>
-            <!-- primary -->
             <div class="global-primary" part="primary">
-              <!-- primary -->
+              <!-- summary: overrides primary-start, links-primary, and primary-end (primary slot)
+                   description: |
+                     Expects block elements. Replaces the entire primary link region.
+                     Override only when the three sub-slots are insufficient.
+                     Screen readers navigate child links as a group. -->
               <slot name="primary">
-                <!-- primary-start -->
                 <div class="global-primary-start" part="primary-start" ?hidden=${!this.#slots.hasSlotted('primary-start')}>
-                  <!-- primary-start -->
+                  <!-- summary: content before primary links (primary-start slot)
+                       description: |
+                         Expects inline or block elements placed before the primary
+                         global navigation links. Screen readers encounter this
+                         content before the link list. -->
                   <slot name="primary-start"></slot>
                 </div>
-                <!-- links-primary -->
                 <div class="global-links-primary" part="links-primary" ?hidden=${!this.#slots.hasSlotted('links-primary')}>
-                  <!-- links-primary -->
+                  <!-- summary: primary global navigation links (links-primary slot)
+                       description: |
+                         Expects block elements: a \`<ul>\` of \`<li>\` anchor links for
+                         primary global Red Hat navigation. Screen readers announce
+                         the list group; Tab moves through each link. -->
                   <slot name="links-primary"></slot>
                 </div>
-                <!-- primary-end -->
                 <div class="global-primary-end" part="primary-end" ?hidden=${!this.#slots.hasSlotted('primary-end')}>
-                  <!-- primary-end -->
+                  <!-- summary: content after primary links (primary-end slot)
+                       description: |
+                         Expects inline or block elements placed after the primary
+                         global navigation links. Screen readers encounter this
+                         content after the link list. -->
                   <slot name="primary-end"></slot>
                 </div>
               </slot>
             </div>
             <div class="spacer" part="spacer"></div>
-            <!-- secondary -->
             <div class="global-secondary" part="secondary">
-              <!-- secondary -->
+              <!-- summary: overrides secondary-start, links-secondary, and secondary-end (secondary slot)
+                   description: |
+                     Expects block elements. Replaces the entire secondary link region.
+                     Override only when the three sub-slots are insufficient.
+                     Screen readers navigate child links as a group. -->
               <slot name="secondary">
-                <!-- secondary-start -->
                 <div class="global-secondary-start" part="secondary-start" ?hidden=${!this.#slots.hasSlotted('secondary-start')}>
-                  <!-- secondary-start -->
+                  <!-- summary: content before secondary links, e.g. copyright (secondary-start slot)
+                       description: |
+                         Expects block elements such as \`<rh-footer-copyright>\`, placed
+                         before the secondary links. Screen readers announce this
+                         content in DOM order within the footer landmark. -->
                   <slot name="secondary-start"></slot>
                 </div>
-                <!-- links-secondary -->
                 <div class="global-links-secondary" part="links-secondary" ?hidden=${!this.#slots.hasSlotted('links-secondary')}>
-                  <!-- links-secondary -->
+                  <!-- summary: secondary global navigation links (links-secondary slot)
+                       description: |
+                         Expects block elements: a \`<ul>\` of \`<li>\` anchor links for
+                         secondary global Red Hat navigation. Screen readers announce
+                         the list group; Tab moves through each link. -->
                   <slot name="links-secondary"></slot>
                 </div>
-                <!-- secondary-end -->
                 <div class="global-secondary-end" part="secondary-end" ?hidden=${!this.#slots.hasSlotted('secondary-end')}>
-                  <!-- secondary-end -->
+                  <!-- summary: content after secondary links (secondary-end slot)
+                       description: |
+                         Expects inline or block elements placed after the secondary
+                         global navigation links. Screen readers encounter this
+                         content after the secondary link list. -->
                   <slot name="secondary-end"></slot>
                 </div>
               </slot>
             </div>
-            <!-- tertiary -->
             <div class="global-tertiary" part="tertiary" ?hidden=${!this.#slots.hasSlotted('tertiary')}>
-              <!-- tertiary -->
+              <!-- summary: optional third content region (tertiary slot)
+                   description: |
+                     Expects block elements such as a language selector or custom
+                     widget. Hidden when nothing is slotted. Screen readers
+                     encounter this region after the secondary links. -->
               <slot name="tertiary"></slot>
             </div>
           </slot>

@@ -9,16 +9,12 @@ import style from './rh-footer-social-link.css' with { type: 'css' };
 
 
 /**
- * Renders a single social media icon link within the footer social links
- * region. Sets `role="listitem"` on connection for accessible list semantics.
- * MUST provide `accessible-label` for screen readers (e.g. "LinkedIn").
- * USE `icon` to select from the `social` icon set, or slot a custom icon.
- * Tab navigates between social links; `aria-label` on the anchor announces
- * the platform name to assistive technology.
+ * Social media icon link for the footer. Authors must set
+ * `accessible-label` so screen readers announce the platform name
+ * via ARIA. Uses `role="listitem"` for list semantics. Tab
+ * navigates between links; use `icon` or slot a custom SVG.
  *
  * @summary Single social media icon link for the footer
- *
- * @slot - Optional custom icon content. Overrides the `icon` property rendering.
  */
 @customElement('rh-footer-social-link')
 export class RhFooterSocialLink extends LitElement {
@@ -33,14 +29,14 @@ export class RhFooterSocialLink extends LitElement {
 
   /**
    * URL of the social media profile or page. Applied to the anchor element's
-   * `href` attribute. MUST be a valid URL. Defaults to undefined.
+   * `href` attribute. Must be a valid URL. Defaults to undefined.
    */
   @property() href?: string;
 
   /**
    * Accessible text label announced by screen readers for the social link
    * (e.g. "LinkedIn", "YouTube"). Applied as `aria-label` on the anchor.
-   * MUST be provided for accessibility. Defaults to undefined.
+   * Must be provided for accessibility. Defaults to undefined.
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
 
