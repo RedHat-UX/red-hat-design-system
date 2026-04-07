@@ -43,8 +43,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
     "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
@@ -4461,7 +4461,12 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>A call to action is styled text representing a link.</p>
+      <p>Provides a styled link or button for prominent user actions when you need to
+draw attention to a key interaction. Must contain an <code>href</code> attribute or a
+slotted <code>&lt;a&gt;</code> / <code>&lt;button&gt;</code>. Screen readers announce the slotted text. Used
+primarily for linking to other pages. Users should prefer to use the <code>href</code>
+attribute or slotted links with this component. Avoid <code>&lt;button&gt;</code> with the
+default (no variant) style.</p>
 
 
       <div class="element-apis">
@@ -4569,16 +4574,10 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>CTA link text</p></td>
                   <td>
-                   <p>The default slot contains the link text when the <code>href</code>
-attribute is set. In case there is no href attribute, an anchor
-tag (<code>&lt;a href="..."&gt;</code>) should be the first child inside <code>rh-cta</code>
-element. Less preferred but allowed for specific use-cases
-include: <code>&lt;button&gt;</code> (note however that the <code>button</code> tag is not
-supported for the default CTA styles). In case the slotted content is one
-long word (like in some agglutinating languages), users must supply <code>&lt;wbr&gt;</code>
-at appropriate points in the slotted content. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Slot an anchor or button as the first child, or set href on the host. Screen readers
+announce this content as the CTA label. For long words, supply wbr at appropriate break points. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -4694,18 +4693,8 @@ at appropriate points in the slotted content. <br><span class="api-note"><strong
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>variant</code></td>
-                  <td><p>Indicates the importance of this call-to-action in the context of the page.
-Will also influence how the call-to-action is styled.</p>
-<ul>
-<li><strong>Primary</strong>: Use for the primary or most important link. This variant is the highest in
-hierarchy and can also be used to play a video in a Modal or large container.</li>
-<li><strong>Secondary</strong>: Use for secondary or general links. This variant is lower in hierarchy than
-the Primary variant and can be used multiple times in the same container or layout.</li>
-<li><strong>Brick</strong>: Use to group links together. Only the Brick variant can stretch to fit a
-container or grid, otherwise the text label padding in other variants stays the same.</li>
-<li>Default (no variant): Use for tertiary or the least important links. This variant is the
-lowest in hierarchy and can be used multiple times in the same container or layout.</li>
-</ul></td>
+                  <td><p>Visual importance: <code>primary</code> (red fill), <code>secondary</code> (bordered),
+<code>brick</code> (full-width grid), or undefined (default inline link with arrow).</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'primary'</span> <span class="token operator">|</span> <span class="token string">'secondary'</span> <span class="token operator">|</span> <span class="token string">'brick'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4742,7 +4731,7 @@ lowest in hierarchy and can be used multiple times in the same container or layo
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>href</code></td>
-                  <td><p>When set, overrides the default slot. Use <em>instead</em> of a slotted anchor tag</p></td>
+                  <td><p>URL for the CTA link. Renders an internal <code>&lt;a&gt;</code> instead of using a slotted element.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4779,7 +4768,7 @@ lowest in hierarchy and can be used multiple times in the same container or layo
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>download</code></td>
-                  <td><p>when <code>href</code> is set, the link's <code>download</code> attribute</p></td>
+                  <td><p>Triggers a file download when <code>href</code> is set. Passes through to the link.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4816,7 +4805,7 @@ lowest in hierarchy and can be used multiple times in the same container or layo
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>referrerpolicy</code></td>
-                  <td><p>when <code>href</code> is set, the link's <code>referrerpolicy</code> attribute</p></td>
+                  <td><p>Referrer policy when <code>href</code> is set. Passes through to the link.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4853,7 +4842,7 @@ lowest in hierarchy and can be used multiple times in the same container or layo
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>rel</code></td>
-                  <td><p>when <code>href</code> is set, the link's <code>rel</code> attribute</p></td>
+                  <td><p>Link relationship when <code>href</code> is set. Passes through to the link.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4890,7 +4879,7 @@ lowest in hierarchy and can be used multiple times in the same container or layo
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>target</code></td>
-                  <td><p>when <code>href</code> is set, the link's <code>target</code> attribute</p></td>
+                  <td><p>Browsing context when <code>href</code> is set (e.g. <code>_blank</code>). Passes through to the link.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4927,7 +4916,7 @@ lowest in hierarchy and can be used multiple times in the same container or layo
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>icon</code></td>
-                  <td><p>Icon name</p></td>
+                  <td><p>Icon name. Overrides the default trailing arrow, or displays before text in brick variant.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts">IconNameFor<span class="token operator">&lt;</span>IconSetName<span class="token operator">&gt;</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4964,7 +4953,7 @@ lowest in hierarchy and can be used multiple times in the same container or layo
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>iconSet</code></td>
-                  <td><p>Icon set</p></td>
+                  <td><p>Icon set to load from. Defaults to <code>ui</code>.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'ui'</span> <span class="token operator">|</span> <span class="token string">'standard'</span> <span class="token operator">|</span> <span class="token string">'social'</span> <span class="token operator">|</span> <span class="token string">'microns'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'ui'</span></code></pre></td>
                 </tr>
@@ -5316,7 +5305,7 @@ lowest in hierarchy and can be used multiple times in the same container or layo
           use rh-tag instead.
       -->
       <!--lit-node 3--><slot class=" neutral "></slot>
-    <!--/lit-part--></template>23</rh-badge>
+    <!--/lit-part--></template>24</rh-badge>
                 
               </a>
             </h3>
@@ -5354,162 +5343,218 @@ lowest in hierarchy and can be used multiple times in the same container or layo
               <tbody>
                 <tr>
                   <td><code>--rh-icon-size</code></td>
-                  <td></td>
+                  <td><p>Trailing icon dimensions</p></td>
                   <td>
-                    <code>1.125rem</code>
+                    <code>var(--rh-font-size-body-text-lg, 1.125rem)</code>
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>--rh-cta-focus-text-underline-offset</code></td>
+                  <td><p>Focus text underline offset</p></td>
+                  <td>
+                    <code>var(--rh-cta-hover-text-underline-offset)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-cta-focus-container-outline-color</code></td>
-                  <td></td>
+                  <td><p>Container outline color on keyboard focus</p></td>
                   <td>
                     <code>var(--rh-cta-focus-outline-color)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-cta-focus-outline-color</code></td>
-                  <td></td>
+                  <td><p>Inner focus indicator outline color</p></td>
                   <td>
                     <code>—</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-cta-hover-text-underline-offset</code></td>
-                  <td></td>
+                  <td><p>Hover text underline offset</p></td>
                   <td>
                     <code>—</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-cta-font-size-priority</code></td>
-                  <td></td>
+                  <td><p>Primary and secondary variant font size</p></td>
                   <td>
                     <code>var(--rh-font-size-body-text-md, 1rem)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-cta-focus-container-background-color</code></td>
-                  <td><p>Sets the cta container background color on focus</p></td>
+                  <td><p>Container background color on focus</p></td>
                   <td>
                     <code data-color="#73bcf740" style="--color:#73bcf740">#73bcf740</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-cta-active-container-background-color</code></td>
-                  <td><p>Sets the cta container background color on active.
-Applicable only for default variant</p></td>
+                  <td><p>Default active container background</p></td>
                   <td>
                     <code data-color="#73bcf740" style="--color:#73bcf740">#73bcf740</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-cta-focus-background-color</code></td>
-                  <td><p>Sets the cta background color on focus</p></td>
+                  <td><p>Default focus background</p>
+<p>Primary variant focus background</p>
+<p>Secondary variant focus background on light color schemes</p>
+<p>Secondary variant focus background on dark color schemes</p></td>
                   <td>
                     <code>var(--rh-color-surface-dark, #383838)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-cta-active-color</code></td>
-                  <td><p>Sets the cta color on active. Applicable only for secondary variant</p></td>
+                  <td><p>Secondary variant active text color</p></td>
                   <td>
                     <code>var(--rh-color-text-primary)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-cta-background-color</code></td>
-                  <td><p>Sets the cta background color</p></td>
+                  <td><p>Default background color</p>
+<p>Primary variant background color</p>
+<p>Secondary variant background color</p>
+<p>Brick variant background color</p></td>
                   <td>
                     <code>transparent</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-cta-border-color</code></td>
-                  <td><p>Sets the cta border color</p></td>
+                  <td><p>Default border color</p>
+<p>Primary variant border color</p>
+<p>Secondary variant border color</p>
+<p>Brick variant border color</p></td>
                   <td>
                     <code>var(--rh-color-border-subtle)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-cta-color</code></td>
-                  <td><p>Sets the cta color</p></td>
+                  <td><p>Default text color</p>
+<p>Primary variant text color</p>
+<p>Primary variant active text color</p>
+<p>Secondary variant text color on light color schemes</p>
+<p>Secondary variant text color on dark color schemes</p>
+<p>Brick variant text color</p></td>
                   <td>
                     <code>var(--rh-color-interactive-primary-default)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-cta-hover-background-color</code></td>
-                  <td><p>Sets the cta background color on hover</p></td>
+                  <td><p>Default hover background</p>
+<p>Primary variant hover background</p>
+<p>Secondary variant hover background on light color schemes</p>
+<p>Secondary variant hover background on dark color schemes</p>
+<p>Brick variant hover background on light color schemes</p>
+<p>Brick variant hover background on dark color schemes</p></td>
                   <td>
                     <code>var(--rh-color-surface-darker, #1f1f1f)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-cta-hover-border-color</code></td>
-                  <td><p>Sets the cta boder color on hover</p></td>
+                  <td><p>Default hover border color</p>
+<p>Primary variant hover border color</p>
+<p>Secondary variant hover border color</p>
+<p>Brick variant hover border color</p></td>
                   <td>
                     <code>var(--rh-color-border-subtle)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-cta-hover-color</code></td>
-                  <td><p>Sets the cta color on hover</p></td>
+                  <td><p>Default hover text color</p>
+<p>Primary variant hover text color</p>
+<p>Secondary variant hover text color on light color schemes</p>
+<p>Secondary variant hover text color on dark color schemes</p>
+<p>Brick variant hover text color</p></td>
                   <td>
                     <code>var(--rh-color-interactive-primary-hover)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-cta-hover-text-decoration</code></td>
-                  <td><p>Sets the cta text decoration on hover</p></td>
+                  <td><p>Default hover text decoration</p>
+<p>Brick variant hover text decoration on light color schemes</p>
+<p>Brick variant hover text decoration on dark color schemes</p></td>
                   <td>
                     <code>underline</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-cta-focus-color</code></td>
-                  <td><p>Sets the cta color on focus</p></td>
+                  <td><p>Default focus text color</p>
+<p>Primary variant focus text color</p>
+<p>Brick variant focus text color</p></td>
                   <td>
                     <code>var(--rh-color-interactive-primary-default)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-cta-focus-border-color</code></td>
-                  <td><p>Sets the cta border color on focus</p></td>
+                  <td><p>Default focus border color</p>
+<p>Primary variant focus border color</p>
+<p>Secondary variant focus border color</p>
+<p>Brick variant focus border color</p></td>
                   <td>
                     <code>var(--rh-color-border-subtle)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-cta-focus-inner-border-color</code></td>
-                  <td><p>Sets the cta inner border color on focus</p></td>
+                  <td><p>Default focus inner border color</p>
+<p>Primary variant focus inner border color</p>
+<p>Secondary variant focus inner border color</p>
+<p>Brick variant focus inner border color</p></td>
                   <td>
                     <code>var(--rh-color-border-subtle)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-cta-focus-text-decoration</code></td>
-                  <td><p>Sets the cta text decoration on focus</p></td>
+                  <td><p>Default focus text decoration</p>
+<p>Primary variant focus text decoration</p>
+<p>Secondary variant focus text decoration</p>
+<p>Brick variant focus text decoration on light color schemes</p>
+<p>Brick variant focus text decoration on dark color schemes</p></td>
                   <td>
                     <code>none</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-cta-active-background-color</code></td>
-                  <td></td>
+                  <td><p>Primary variant active background color</p>
+<p>Secondary variant active background on light color schemes</p>
+<p>Secondary variant active background on dark color schemes</p>
+<p>Brick variant active background on light color schemes</p>
+<p>Brick variant active background on dark color schemes</p></td>
                   <td>
                     <code>var(--rh-color-surface-darker, #1f1f1f)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-cta-active-inner-border-color</code></td>
-                  <td><p>Sets the cta inner border color on active</p></td>
+                  <td><p>Default active inner border color</p>
+<p>Primary variant active inner border color</p>
+<p>Secondary variant active inner border on light color schemes</p>
+<p>Secondary variant active inner border on dark color schemes</p>
+<p>Brick variant active inner border color</p></td>
                   <td>
                     <code>var(--rh-color-border-subtle)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-cta-active-text-decoration</code></td>
-                  <td><p>Sets the cta text decoration on active</p></td>
+                  <td><p>Default active text decoration</p>
+<p>Brick variant active text decoration on light color schemes</p>
+<p>Brick variant active text decoration on dark color schemes</p></td>
                   <td>
                     <code>underline</code>
                   </td>
@@ -5597,7 +5642,8 @@ Applicable only for default variant</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Heading font family</p>
+                    <p>Container typeface</p>
+<p>Heading font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5713,7 +5759,8 @@ Applicable only for default variant</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Line height for body text</p>
+                    <p>Container line height</p>
+<p>Line height for body text</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5829,7 +5876,8 @@ Applicable only for default variant</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>18px font size</p>
+                    <p>Container text size</p>
+<p>18px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5945,7 +5993,7 @@ Applicable only for default variant</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Arrow slide animation duration</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6061,7 +6109,7 @@ Applicable only for default variant</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Arrow slide animation easing</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6293,7 +6341,8 @@ Applicable only for default variant</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>3px border radius; Example: Card</p>
+                    <p>Container border radius</p>
+<p>3px border radius; Example: Card</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6409,7 +6458,9 @@ Applicable only for default variant</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>1px border width; Example: Secondary CTA or Button</p>
+                    <p>Container border thickness</p>
+<p>Inner border thickness</p>
+<p>1px border width; Example: Secondary CTA or Button</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8265,7 +8316,8 @@ Applicable only for default variant</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Body text font family</p>
+                    <p>Brick variant typeface</p>
+<p>Body text font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8381,7 +8433,8 @@ Applicable only for default variant</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Regular font weight</p>
+                    <p>Brick variant font weight</p>
+<p>Regular font weight</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8497,7 +8550,10 @@ Applicable only for default variant</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>8px spacer</p>
+                    <p>Arrow icon inline start margin</p>
+<p>Variant icon inline start margin</p>
+<p>Brick variant content gap</p>
+<p>8px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
