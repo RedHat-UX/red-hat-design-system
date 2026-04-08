@@ -1,3 +1,13 @@
+<style>
+  #navigation-light {
+    --rh-navigation-primary-z-index: 2;
+  }
+  
+  #navigation-dark {
+    --rh-navigation-primary-z-index: 1;
+  }
+</style>
+
 ## Style
 
 Primary navigation includes the Red Hat logo or a domain name, dropdown menus, event promotions, and utility actions all grouped into a single responsive bar.
@@ -92,7 +102,7 @@ Primary navigation is available in both light and dark color schemes.
 
 ### Dark scheme
 
-<rh-navigation-primary color-palette="darkest" id="navigation-light">
+<rh-navigation-primary color-palette="darkest" id="navigation-dark">
   <rh-navigation-primary-item variant="dropdown">
     <span slot="summary">AI</span> AI Content
   </rh-navigation-primary-item>
