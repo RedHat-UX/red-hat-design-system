@@ -16,7 +16,7 @@ rh-icon {
   color: currentcolor;
 }
 
-/** @summary Base button styles: rounded corners, variant-driven colors */
+/* Base button styles: rounded corners, variant-driven colors */
 button {
   cursor: pointer;
   position: relative;
@@ -24,7 +24,7 @@ button {
   border-width: 0;
   border-style: solid;
 
-  /** @summary Button corner radius; uses --rh-border-radius-default design token */
+  /** Button corner radius */
   border-radius: var(--rh-border-radius-default, 3px);
   color: var(--_color);
   background-color: var(--_background-color);
@@ -71,12 +71,17 @@ button {
     --_border-width: var(--_focus-border-width);
 
     outline:
+      /** Focus outline width */
       var(--rh-border-width-md, 2px)
       solid
+      /** Focus outline color */
       var(--rh-color-interactive-primary-default);
 
     &:after {
-      border-width: var(--_border-width, var(--rh-border-width-md, 2px));
+      border-width:
+        var(--_border-width,
+          /** Focus pseudo-element border width fallback */
+          var(--rh-border-width-md, 2px));
     }
   }
 
@@ -96,90 +101,162 @@ button {
     }
   }
 
-  /**
-   * @summary Primary variant: filled accent background;
-   * uses --rh-color-interactive-primary-default design token
-   */
+  /* Primary variant: filled accent background */
   &.primary {
     --_color:
-      light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
-        var(--rh-color-text-primary-on-light, #151515));
+      light-dark(
+          /** Primary text color in light mode */
+          var(--rh-color-text-primary-on-dark, #ffffff),
+          /** Primary text color in dark mode */
+          var(--rh-color-text-primary-on-light, #151515)
+        );
+
+    /** Primary background color */
     --_background-color: var(--rh-color-interactive-primary-default);
     --_border-color: transparent;
+
+    /** Primary border width */
     --_border-width: var(--rh-border-width-sm, 1px);
+
+    /** Primary active text color */
     --_active-color: var(--rh-color-text-primary-on-dark, #ffffff);
+
+    /** Primary active background color */
     --_active-background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
+
+    /** Primary active border width */
     --_active-border-width: var(--rh-border-width-sm, 1px);
+
+    /** Primary focus text color */
     --_focus-color: var(--rh-color-text-primary-on-dark, #ffffff);
+
+    /** Primary focus background color */
     --_focus-background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
+
+    /** Primary focus border width */
     --_focus-border-width: var(--rh-border-width-md, 2px);
     --_hover-color:
-      light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
-        var(--rh-color-text-primary-on-light, #151515));
+      light-dark(
+          /** Primary hover text color in light mode */
+          var(--rh-color-text-primary-on-dark, #ffffff),
+          /** Primary hover text color in dark mode */
+          var(--rh-color-text-primary-on-light, #151515)
+        );
+
+    /** Primary hover background color */
     --_hover-background-color: var(--rh-color-interactive-primary-hover);
+
+    /** Primary hover border width */
     --_hover-border-width: var(--rh-border-width-sm, 1px);
   }
 
-  /**
-   * @summary Danger variant: red/orange destructive action;
-   * uses --rh-color-status-danger design token
-   */
+  /* Danger variant: red/orange destructive action */
   &.danger {
     --_color:
-      light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
-        var(--rh-color-text-primary-on-light, #151515));
+      light-dark(
+          /** Danger text color in light mode */
+          var(--rh-color-text-primary-on-dark, #ffffff),
+          /** Danger text color in dark mode */
+          var(--rh-color-text-primary-on-light, #151515)
+        );
+
+    /** Danger background color */
     --_background-color: var(--rh-color-status-danger);
     --_border-color: transparent;
+
+    /** Danger border width */
     --_border-width: var(--rh-border-width-sm, 1px);
     --_active-color:
-      light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
-        var(--rh-color-text-primary-on-light, #151515));
+      light-dark(
+          /** Danger active text color in light mode */
+          var(--rh-color-text-primary-on-dark, #ffffff),
+          /** Danger active text color in dark mode */
+          var(--rh-color-text-primary-on-light, #151515)
+        );
     --_active-background-color: light-dark(#a30000, #ff7468); /* WARNING: non-token value */
     --_active-border-color: transparent;
     --_focus-color:
-      light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
-        var(--rh-color-text-primary-on-light, #151515));
+      light-dark(
+          /** Danger focus text color in light mode */
+          var(--rh-color-text-primary-on-dark, #ffffff),
+          /** Danger focus text color in dark mode */
+          var(--rh-color-text-primary-on-light, #151515)
+        );
     --_focus-background-color: light-dark(#a30000, #ff7468);  /* WARNING: non-token value */
     --_focus-border-color: transparent;
+
+    /** Danger focus border width */
     --_focus-border-width: var(--rh-border-width-md, 2px);
     --_hover-color:
-      light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
-        var(--rh-color-text-primary-on-light, #151515));
+      light-dark(
+          /** Danger hover text color in light mode */
+          var(--rh-color-text-primary-on-dark, #ffffff),
+          /** Danger hover text color in dark mode */
+          var(--rh-color-text-primary-on-light, #151515)
+        );
     --_hover-background-color: light-dark(#a30000, #ff7468); /* WARNING: non-token value */
     --_hover-border-color: transparent;
   }
 
-  /**
-   * @summary Secondary variant: outlined with transparent
-   * background; uses --rh-color-interactive-primary-default
-   * design token
-   */
+  /* Secondary variant: outlined with transparent background */
   &.secondary {
+    /** Secondary text color */
     --_color: var(--rh-color-interactive-primary-default);
     --_background-color: transparent;
+
+    /** Secondary border color */
     --_border-color: var(--rh-color-interactive-primary-default);
+
+    /** Secondary border width */
     --_border-width: var(--rh-border-width-sm, 1px);
+
+    /** Secondary active text color */
     --_active-color: var(--rh-color-interactive-primary-default);
     --_active-background-color: transparent;
+
+    /** Secondary active border color */
     --_active-border-color: var(--rh-color-interactive-primary-default);
+
+    /** Secondary active border width */
     --_active-border-width: var(--rh-border-width-md, 2px);
+
+    /** Secondary focus text color */
     --_focus-color: var(--rh-color-interactive-primary-default);
     --_focus-background-color: transparent;
+
+    /** Secondary focus border color */
     --_focus-border-color: var(--rh-color-interactive-primary-default);
+
+    /** Secondary focus border width */
     --_focus-border-width: var(--rh-border-width-md, 2px);
+
+    /** Secondary hover text color */
     --_hover-color: var(--rh-color-interactive-primary-default);
     --_hover-background-color: transparent;
+
+    /** Secondary hover border color */
     --_hover-border-color: var(--rh-color-interactive-primary-default);
+
+    /** Secondary hover border width */
     --_hover-border-width: var(--rh-border-width-md, 2px);
 
     &.danger {
+      /** Secondary danger text color */
       --_color: var(--rh-color-status-danger);
       --_background-color: transparent;
+
+      /** Secondary danger border color */
       --_border-color: var(--rh-color-border-status-danger);
       --_active-color: light-dark(#c9190b, #fe5142);
       --_active-background-color: transparent;
       --_active-border-color: transparent;
-      --_focus-color: light-dark(var(--rh-color-red-60, #a60000), var(--rh-color-red-30, #f9a8a8));
+      --_focus-color:
+        light-dark(
+            /** Secondary danger focus text color in light mode */
+            var(--rh-color-red-60, #a60000),
+            /** Secondary danger focus text color in dark mode */
+            var(--rh-color-red-30, #f9a8a8)
+          );
       --_focus-background-color: transparent;
       --_focus-border-color: transparent;
       --_hover-color: light-dark(#c9190b, #fe5142);
@@ -188,59 +265,103 @@ button {
     }
   }
 
-  /**
-   * @summary Tertiary variant: subtle bordered button;
-   * uses --rh-color-border-strong design token
-   */
+  /* Tertiary variant: subtle bordered button */
   &.tertiary {
+    /** Tertiary text color */
     --_color: var(--rh-color-text-primary);
     --_background-color: transparent;
+
+    /** Tertiary border color */
     --_border-color: var(--rh-color-border-strong);
+
+    /** Tertiary border width */
     --_border-width: var(--rh-border-width-sm, 1px);
+
+    /** Tertiary active text color */
     --_active-color: var(--rh-color-text-primary);
     --_active-background-color: transparent;
+
+    /** Tertiary active border color */
     --_active-border-color: var(--rh-color-border-strong);
+
+    /** Tertiary active border width */
     --_active-border-width: var(--rh-border-width-md, 2px);
+
+    /** Tertiary focus text color */
     --_focus-color: var(--rh-color-text-primary);
     --_focus-background-color: transparent;
+
+    /** Tertiary focus border color */
     --_focus-border-color: var(--rh-color-border-strong);
+
+    /** Tertiary focus border width */
     --_focus-border-width: var(--rh-border-width-md, 2px);
+
+    /** Tertiary hover text color */
     --_hover-color: var(--rh-color-text-primary);
     --_hover-background-color: transparent;
+
+    /** Tertiary hover border color */
     --_hover-border-color: var(--rh-color-border-strong);
+
+    /** Tertiary hover border width */
     --_hover-border-width: var(--rh-border-width-md, 2px);
   }
 
   &.link {
+    /** Link text color */
     --_color: var(--rh-color-interactive-primary-default);
     --_background-color: transparent;
     --_border-color: transparent;
     --_active-color:
-      light-dark(var(--rh-color-blue-70, #003366),
-        var(--rh-color-interactive-primary-hover-on-dark, #b9dafc));
+      light-dark(
+          /** Link active text color in light mode */
+          var(--rh-color-blue-70, #003366),
+          /** Link active text color in dark mode */
+          var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
+        );
     --_active-background-color: transparent;
     --_focus-color:
-      light-dark(var(--rh-color-blue-70, #003366),
-        var(--rh-color-interactive-primary-hover-on-dark, #b9dafc));
+      light-dark(
+          /** Link focus text color in light mode */
+          var(--rh-color-blue-70, #003366),
+          /** Link focus text color in dark mode */
+          var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
+        );
     --_focus-background-color: transparent;
+
+    /** Link focus outline color */
     --_focus-outline-color: var(--rh-color-interactive-primary-default);
     --_hover-color:
-      light-dark(var(--rh-color-blue-70, #003366),
-        var(--rh-color-interactive-primary-hover-on-dark, #b9dafc));
+      light-dark(
+          /** Link hover text color in light mode */
+          var(--rh-color-blue-70, #003366),
+          /** Link hover text color in dark mode */
+          var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
+        );
     --_hover-background-color: transparent;
 
     display: inline-flex;
   }
 
-  /** @summary Close variant: icon-only button for dismissing dialogs/panels */
+  /* Close variant: icon-only button for dismissing dialogs/panels */
   &.close {
+    /** Close icon color */
     --_color: var(--rh-color-icon-secondary);
     --_background-color: transparent;
+
+    /** Close active icon color */
     --_active-color: var(--rh-color-interactive-secondary-active);
     --_active-background-color: transparent;
+
+    /** Close focus icon color */
     --_focus-color: var(--rh-color-interactive-secondary-focus);
     --_focus-background-color: transparent;
+
+    /** Close focus outline color */
     --_focus-outline-color: var(--rh-color-interactive-primary-default);
+
+    /** Close hover icon color */
     --_hover-color: var(--rh-color-interactive-secondary-hover);
     --_hover-background-color: transparent;
 
@@ -253,22 +374,41 @@ button {
     }
   }
 
-  /** @summary Play variant: circular semi-transparent overlay for media playback */
+  /* Play variant: circular semi-transparent overlay for media playback */
   &.play {
+    /** Play icon color */
     --_color: var(--rh-color-icon-secondary-on-dark);
     --_background-color:
-      light-dark(rgba(from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-50, 50%)),
-        rgba(from white r g b / var(--rh-opacity-50, 50%)));
+      light-dark(
+          /** Play overlay background in light mode */
+          rgba(from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-50, 50%)),
+          /** Play overlay background in dark mode */
+          rgba(from white r g b / var(--rh-opacity-50, 50%))
+        );
     --_active-background-color:
-      light-dark(rgba(from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-80, 80%)),
-        rgba(from white r g b / var(--rh-opacity-80, 80%)));
+      light-dark(
+          /** Play active overlay background in light mode */
+          rgba(from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-80, 80%)),
+          /** Play active overlay background in dark mode */
+          rgba(from white r g b / var(--rh-opacity-80, 80%))
+        );
     --_focus-background-color:
-      light-dark(rgba(from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-80, 80%)),
-        rgba(from white r g b / var(--rh-opacity-80, 80%)));
+      light-dark(
+          /** Play focus overlay background in light mode */
+          rgba(from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-80, 80%)),
+          /** Play focus overlay background in dark mode */
+          rgba(from white r g b / var(--rh-opacity-80, 80%))
+        );
+
+    /** Play focus outline color */
     --_focus-outline-color: var(--rh-color-interactive-primary-default);
     --_hover-background-color:
-      light-dark(rgba(from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-80, 80%)),
-        rgba(from white r g b / var(--rh-opacity-80, 80%)));
+      light-dark(
+          /** Play hover overlay background in light mode */
+          rgba(from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-80, 80%)),
+          /** Play hover overlay background in dark mode */
+          rgba(from white r g b / var(--rh-opacity-80, 80%))
+        );
 
     border-radius: 100%;
 
@@ -282,8 +422,12 @@ button {
     & rh-icon {
       translate: 10%; /* perceptually center play icon only */
       color:
-        light-dark(var(--rh-color-icon-secondary-on-dark, #ffffff),
-          var(--rh-color-icon-secondary-on-light, #151515));
+        light-dark(
+            /** Play icon color in light mode */
+            var(--rh-color-icon-secondary-on-dark, #ffffff),
+            /** Play icon color in dark mode */
+            var(--rh-color-icon-secondary-on-light, #151515)
+          );
     }
   }
 
@@ -354,11 +498,19 @@ button {
 button[disabled] {
   /* Remove these two re-declarations when the `status-disabled` variables are defined in tokens */
   --rh-color-text-status-disabled:
-    light-dark(var(--rh-color-gray-50, #707070),
-      var(--rh-color-gray-60, #4d4d4d));
+    light-dark(
+        /** Disabled text color in light mode */
+        var(--rh-color-gray-50, #707070),
+        /** Disabled text color in dark mode */
+        var(--rh-color-gray-60, #4d4d4d)
+      );
   --rh-color-status-disabled:
-    light-dark(var(--rh-color-gray-30, #c7c7c7),
-      var(--rh-color-gray-40, #a3a3a3));
+    light-dark(
+        /** Disabled background color in light mode */
+        var(--rh-color-gray-30, #c7c7c7),
+        /** Disabled background color in dark mode */
+        var(--rh-color-gray-40, #a3a3a3)
+      );
 
   pointer-events: none;
   cursor: default;
