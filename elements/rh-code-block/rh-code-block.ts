@@ -116,7 +116,7 @@ export class RhCodeBlock extends LitElement {
    * and `action-label-wrap` slots for internationalization. The active-state
    * element must have `hidden data-code-block-state="active"`.
    *
-   * @example html```
+   * @example ```html
    *          <rh-code-block actions="copy wrap">
    *            <span slot="action-label-copy">Copy to Clipboard</span>
    *            <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>
