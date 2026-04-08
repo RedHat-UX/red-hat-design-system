@@ -15,9 +15,9 @@ import styles from './rh-button.css' with { type: 'css' };
 
 /**
  * Triggers actions via click, Enter, or Space. USE `variant` to set
- * hierarchy: primary (SHOULD limit one per page), secondary, tertiary,
+ * hierarchy: primary (should limit one per page), secondary, tertiary,
  * or danger. Renders a native `<button>` with `delegatesFocus` for
- * keyboard access. MUST use `label` for icon-only buttons to set the
+ * keyboard access. Must use `label` for icon-only buttons to set the
  * ARIA accessible name. Supports form association (submit/reset).
  *
  * @summary Clickable button that triggers page or form actions
@@ -75,7 +75,7 @@ export class RhButton extends LitElement {
   /**
    * Shorthand for the `icon` slot. Accepts an icon name from the specified
    * icon set (defaults to 'ui'). When set, renders an `<rh-icon>` in the
-   * icon slot. SHOULD use micron icons for best fit. Defaults to undefined.
+   * icon slot. Should use micron icons for best fit. Defaults to undefined.
    */
   @property() icon?: IconNameFor<IconSetName>;
 
@@ -90,7 +90,7 @@ export class RhButton extends LitElement {
   /**
    * Controls the visual hierarchy and style of the button. Accepts
    * ‘primary’ | ‘secondary’ | ‘tertiary’ | ‘close’ | ‘play’. Defaults to
-   * ‘primary’. SHOULD limit primary to one per page. USE secondary for
+   * ‘primary’. Should limit primary to one per page. USE secondary for
    * general actions, tertiary for low-emphasis actions. Close and play
    * variants render icon-only circular buttons with visually hidden text.
    */
@@ -143,7 +143,7 @@ export class RhButton extends LitElement {
         <span aria-hidden="true">
           <!-- summary: icon slot for visual indicators
                description: |
-                 Contains the button's icon or state indicator (e.g. spinner).
+                 Expects an \`rh-icon\` element or inline \`svg\`.
                  Wrapped in aria-hidden span so screen readers skip decorative icons.
                  Close and play variants auto-populate this slot via #renderIcon(). -->
           <slot id="icon"
@@ -152,10 +152,10 @@ export class RhButton extends LitElement {
         </span>
         <span aria-hidden=${String(!!this.label) as 'true' | 'false'}><!-- summary: button text label
                description: |
-                 Text content displayed inside the button. Hidden from screen readers
-                 via aria-hidden when the label attribute is set. For close and play
-                 variants, text is visually hidden but remains accessible. SHOULD
-                 provide concise, action-oriented text (e.g. "Submit", "Delete"). --><slot id="text" ></slot></span>
+                 Expects inline text providing a concise, action-oriented label
+                 (e.g. "Submit", "Delete"). Hidden from screen readers via
+                 aria-hidden when the label attribute is set. For close and play
+                 variants, text is visually hidden but remains accessible. --><slot id="text" ></slot></span>
       </button>
     `;
   }
