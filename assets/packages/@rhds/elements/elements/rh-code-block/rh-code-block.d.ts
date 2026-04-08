@@ -7,30 +7,43 @@ export declare class RhCodeBlockCopyEvent extends Event {
     content: string);
 }
 /**
- * A code block applies special formatting to sections of code.
+ * A read-only code viewer for formatted snippets that allows syntax
+ * highlighting, line numbers, and copy/wrap actions. Source must be
+ * in a `<script type="text/sample-...">` or `<pre>` child. The code
+ * region is keyboard-scrollable; screen readers announce it via ARIA
+ * as a scrollable area. Authors should avoid nesting interactive
+ * elements inside the code slot.
  *
  * @alias code-block
  *
- * @summary Formats code strings within a container
- * @event {RhCodeBlockCopyEvent} copy - fired when the user requests to copy the code block text.
- *                                      Modify the `event.content` field to change the copied text
- *                                      (e.g. to remove a prompt from a shell command)
+ * @summary Displays formatted code with optional actions and line numbers
+ *
+ * @event {RhCodeBlockCopyEvent} copy - Fired when the user clicks the copy
+ *   button or presses Enter/Space on it. The `event.content` property
+ *   contains the text to copy (string). Cancel with `preventDefault()` to
+ *   suppress clipboard write. Mutate `event.content` to alter copied text.
+ *
+ * @cssprop --rh-code-block-callout-size
+ * Width of the callout/notification indicator that appears when highlighting specific lines.
+ * Controls the visual size of line highlight markers or callout indicators.
+ *
+ * @cssprop --rh-code-block-border-block-start-width
+ * Width of the top border for the code block container. Used to visually separate the code
+ * block from surrounding content. Should maintain consistency with design system border widths.
  */
 export declare class RhCodeBlock extends LitElement {
     #private;
     private static actionIcons;
     static styles: CSSStyleSheet[];
     /**
-     * Space- or comma-separated list of code block action buttons to display, containing either 'copy', 'wrap', or both.
-     * 'copy' adds a button that copies the text content to the clipboard. 'wrap' adds a button that toggles line wrap.
+     * Space- or comma-separated list of action buttons to display.
+     * Accepts `'copy'`, `'wrap'`, or both (e.g. `"copy wrap"`). `'copy'` adds a
+     * clipboard button; `'wrap'` adds a word-wrap toggle. Defaults to `[]`
+     * (no actions shown). Labels can be overridden via the `action-label-copy`
+     * and `action-label-wrap` slots for internationalization. The active-state
+     * element must have `hidden data-code-block-state="active"`.
      *
-     * To override the default labels, e.g. for purposes of internationalization, use the
-     * `action-label-copy` and `action-label-wrap` slots. Each slot may receive two elements,
-     * one for the action's default state (e.g. "Copy to clipboard"),
-     * and one for the actions alternative state, e.g. "Copied!".
-     * The active-state element must have the attributes `hidden data-code-block-state="active"`
-     *
-     * @example html```
+     * @example ```html
      *          <rh-code-block actions="copy wrap">
      *            <span slot="action-label-copy">Copy to Clipboard</span>
      *            <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>
@@ -42,24 +55,31 @@ export declare class RhCodeBlock extends LitElement {
      */
     actions: ('copy' | 'wrap')[];
     /**
-     * When set to "client", `<rh-code-block>` will automatically highlight the source using Prism.js
-     * When set to "Prerendered", `<rh-code-block>` will apply supported RHDS styles to children with
-     * prismjs classnames in the element's root.
+     * Controls how syntax highlighting is applied. Accepts `'client'` or
+     * `'prerendered'`. When `'client'`, Prism.js is loaded on-demand and
+     * highlights source from `<script>` children. When `'prerendered'`,
+     * RHDS token colors are applied to existing Prism class names in child
+     * `<pre>` elements. Defaults to `undefined` (no highlighting).
      */
     highlighting?: 'client' | 'prerendered';
-    /** When set along with `highlighting="client"`, this grammar will be used to highlight source code */
+    /**
+     * Specifies the Prism.js grammar for client-side highlighting. Requires
+     * `highlighting="client"`. Accepts `'html'` | `'css'` | `'javascript'` |
+     * `'typescript'` | `'bash'` | `'ruby'` | `'yaml'` | `'json'`. Defaults
+     * to `undefined`. When omitted, no syntax coloring is applied.
+     */
     language?: 'html' | 'css' | 'javascript' | 'typescript' | 'bash' | 'ruby' | 'yaml' | 'json';
-    /** When set, the code block displays with compact spacing */
+    /** When true, reduces internal padding for tighter layouts. Defaults to false. */
     compact: boolean;
-    /** When set, the code block source code will be dedented */
+    /** When true, strips common leading whitespace from source lines before rendering. Defaults to false. */
     dedent: boolean;
-    /** When set, the code block is resizable */
+    /** When true, allows the user to vertically resize the code area by dragging. Defaults to false. */
     resizable: boolean;
-    /** When set, the code block occupies it's full height, without scrolling */
+    /** When true, the code block expands to its full height without scroll truncation. Defaults to false. */
     fullHeight: boolean;
-    /** When set, lines in the code snippet wrap */
+    /** When true, long lines wrap instead of scrolling horizontally. Defaults to false. */
     wrap: boolean;
-    /** When set to `hidden`, the code block's line numbers are hidden */
+    /** Controls line-number visibility. Accepts `'hidden'` or `'visible'`. When `'hidden'`, the gutter column is removed. Defaults to `undefined` (visible). */
     lineNumbers?: 'hidden' | 'visible';
     private copyButtonState;
     connectedCallback(): void;
