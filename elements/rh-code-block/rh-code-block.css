@@ -1,5 +1,5 @@
 :host {
-  /** @summary Size of callout badge indicators; uses --rh-size-icon-02 design token */
+  /** Callout badge indicator size */
   --rh-code-block-callout-size: var(--rh-size-icon-02, 24px);
   --_aspect-ratio: 1;
   --_badge-size: var(--rh-code-block-callout-size);
@@ -34,32 +34,32 @@
   border: none;
   background: transparent;
 
-  /** Code block inner spacing */
+  /** Action button padding */
   padding: var(--rh-space-md, 8px);
 
-  /** Code block corner rounding */
+  /** Action button corner radius */
   border-radius: var(--rh-border-radius-default, 3px);
 
-  /** Code block width */
+  /** Action button width */
   width: var(--rh-length-3xl, 48px);
 
-  /** Code block height */
+  /** Action button height */
   height: var(--rh-length-3xl, 48px);
 }
 
 .shadow-fab:is(:hover, :focus, :active) {
-  /** Code block background */
+  /** Action button hover background */
   background: var(--rh-color-surface);
 }
 
 .shadow-fab svg {
-  /** Code block width */
+  /** Action icon width */
   width: var(--rh-size-icon-02, 24px);
 
-  /** Code block height */
+  /** Action icon height */
   height: var(--rh-size-icon-02, 24px);
 
-  /** Code block text color */
+  /** Action icon color */
   color: var(--rh-color-text-primary);
 }
 
@@ -84,100 +84,230 @@
 
 #container {
   --_code-background-color:
-    light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-      oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h));
+    light-dark(
+        /** Code surface in light mode */
+        var(--rh-color-surface-lighter, #f2f2f2),
+        /** Code surface in dark mode */
+        oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h)
+      );
+
+  /** Container main spacer */
   --_code-main-spacer: var(--rh-space-xl, 24px);
+
+  /** CDATA syntax token color */
   --_cdata-color: var(--rh-color-text-secondary);
+
+  /** Comment syntax token color */
   --_comment-color: var(--rh-color-text-secondary);
+
+  /** Block comment syntax token color */
   --_comment-block-color: var(--rh-color-text-secondary);
+
+  /** Doctype syntax token color */
   --_doctype-color: var(--rh-color-text-secondary);
   --_default-color:
-    light-dark(var(--rh-color-gray-95, #151515),
-      var(--rh-color-gray-20, #e0e0e0));
+    light-dark(
+        /** Default syntax token color in light mode */
+        var(--rh-color-gray-95, #151515),
+        /** Default syntax token color in dark mode */
+        var(--rh-color-gray-20, #e0e0e0)
+      );
   --_selected-text-background:
-    light-dark(var(--rh-color-blue-10, #e0f0ff),
-      var(--rh-color-gray-95, #151515));
+    light-dark(
+        /** Selected text background in light mode */
+        var(--rh-color-blue-10, #e0f0ff),
+        /** Selected text background in dark mode */
+        var(--rh-color-gray-95, #151515)
+      );
   --_punctuation-color:
-    light-dark(var(--rh-color-gray-40, #a3a3a3),
-      var(--rh-color-gray-20, #e0e0e0));
+    light-dark(
+        /** Punctuation token color in light mode */
+        var(--rh-color-gray-40, #a3a3a3),
+        /** Punctuation token color in dark mode */
+        var(--rh-color-gray-20, #e0e0e0)
+      );
   --_namespace-color:
-    light-dark(var(--rh-color-gray-95, #151515),
-      var(--rh-color-red-40, #f56e6e));
+    light-dark(
+        /** Namespace token color in light mode */
+        var(--rh-color-gray-95, #151515),
+        /** Namespace token color in dark mode */
+        var(--rh-color-red-40, #f56e6e)
+      );
   --_property-color:
-    light-dark(var(--rh-color-purple-50, #5e40be),
-      var(--rh-color-yellow-40, #dca614));
+    light-dark(
+        /** Property token color in light mode */
+        var(--rh-color-purple-50, #5e40be),
+        /** Property token color in dark mode */
+        var(--rh-color-yellow-40, #dca614)
+      );
   --_tag-color:
-    light-dark(var(--rh-color-purple-50, #5e40be),
-      var(--rh-color-red-10, #fce3e3));
+    light-dark(
+        /** Tag token color in light mode */
+        var(--rh-color-purple-50, #5e40be),
+        /** Tag token color in dark mode */
+        var(--rh-color-red-10, #fce3e3)
+      );
   --_boolean-color:
-    light-dark(var(--rh-color-purple-50, #5e40be),
-      var(--rh-color-orange-40, #f5921b));
+    light-dark(
+        /** Boolean token color in light mode */
+        var(--rh-color-purple-50, #5e40be),
+        /** Boolean token color in dark mode */
+        var(--rh-color-orange-40, #f5921b)
+      );
   --_number-color:
-    light-dark(var(--rh-color-purple-50, #5e40be),
-      var(--rh-color-orange-40, #f5921b));
+    light-dark(
+        /** Number token color in light mode */
+        var(--rh-color-purple-50, #5e40be),
+        /** Number token color in dark mode */
+        var(--rh-color-orange-40, #f5921b)
+      );
   --_constant-color:
-    light-dark(var(--rh-color-purple-50, #5e40be),
-      var(--rh-color-yellow-40, #dca614));
+    light-dark(
+        /** Constant token color in light mode */
+        var(--rh-color-purple-50, #5e40be),
+        /** Constant token color in dark mode */
+        var(--rh-color-yellow-40, #dca614)
+      );
   --_symbol-color:
-    light-dark(var(--rh-color-purple-50, #5e40be),
-      var(--rh-color-yellow-40, #dca614));
+    light-dark(
+        /** Symbol token color in light mode */
+        var(--rh-color-purple-50, #5e40be),
+        /** Symbol token color in dark mode */
+        var(--rh-color-yellow-40, #dca614)
+      );
   --_deleted-color:
-    light-dark(var(--rh-color-purple-50, #5e40be),
-      var(--rh-color-red-40, #f56e6e));
+    light-dark(
+        /** Deleted token color in light mode */
+        var(--rh-color-purple-50, #5e40be),
+        /** Deleted token color in dark mode */
+        var(--rh-color-red-40, #f56e6e)
+      );
   --_function-name-color:
-    light-dark(var(--rh-color-purple-50, #5e40be),
-      var(--rh-color-teal-20, #b9e5e5));
+    light-dark(
+        /** Function name token color in light mode */
+        var(--rh-color-purple-50, #5e40be),
+        /** Function name token color in dark mode */
+        var(--rh-color-teal-20, #b9e5e5)
+      );
   --_selector-color:
-    light-dark(var(--rh-color-teal-60, #147878),
-      var(--rh-color-purple-30, #b6a6e9));
+    light-dark(
+        /** Selector token color in light mode */
+        var(--rh-color-teal-60, #147878),
+        /** Selector token color in dark mode */
+        var(--rh-color-purple-30, #b6a6e9)
+      );
   --_attr-name-color:
-    light-dark(var(--rh-color-teal-60, #147878),
-      var(--rh-color-red-40, #f56e6e));
+    light-dark(
+        /** Attribute name token color in light mode */
+        var(--rh-color-teal-60, #147878),
+        /** Attribute name token color in dark mode */
+        var(--rh-color-red-40, #f56e6e)
+      );
   --_string-color:
-    light-dark(var(--rh-color-teal-60, #147878),
-      var(--rh-color-green-40, #87bb62));
+    light-dark(
+        /** String token color in light mode */
+        var(--rh-color-teal-60, #147878),
+        /** String token color in dark mode */
+        var(--rh-color-green-40, #87bb62)
+      );
   --_character-color:
-    light-dark(var(--rh-color-teal-60, #147878),
-      var(--rh-color-green-40, #87bb62));
+    light-dark(
+        /** Character token color in light mode */
+        var(--rh-color-teal-60, #147878),
+        /** Character token color in dark mode */
+        var(--rh-color-green-40, #87bb62)
+      );
   --_built-in-color:
-    light-dark(var(--rh-color-teal-60, #147878),
-      var(--rh-color-purple-30, #b6a6e9));
+    light-dark(
+        /** Built-in token color in light mode */
+        var(--rh-color-teal-60, #147878),
+        /** Built-in token color in dark mode */
+        var(--rh-color-purple-30, #b6a6e9)
+      );
   --_inserted-color:
-    light-dark(var(--rh-color-teal-60, #147878),
-      var(--rh-color-green-40, #87bb62));
+    light-dark(
+        /** Inserted token color in light mode */
+        var(--rh-color-teal-60, #147878),
+        /** Inserted token color in dark mode */
+        var(--rh-color-green-40, #87bb62)
+      );
   --_operator-color:
-    light-dark(var(--rh-color-yellow-60, #96640f),
-      var(--rh-color-blue-40, #4394e5));
+    light-dark(
+        /** Operator token color in light mode */
+        var(--rh-color-yellow-60, #96640f),
+        /** Operator token color in dark mode */
+        var(--rh-color-blue-40, #4394e5)
+      );
   --_entity-color:
-    light-dark(var(--rh-color-yellow-60, #96640f),
-      var(--rh-color-blue-40, #4394e5));
+    light-dark(
+        /** Entity token color in light mode */
+        var(--rh-color-yellow-60, #96640f),
+        /** Entity token color in dark mode */
+        var(--rh-color-blue-40, #4394e5)
+      );
   --_url-color:
-    light-dark(var(--rh-color-yellow-60, #96640f),
-      var(--rh-color-blue-40, #4394e5));
+    light-dark(
+        /** URL token color in light mode */
+        var(--rh-color-yellow-60, #96640f),
+        /** URL token color in dark mode */
+        var(--rh-color-blue-40, #4394e5)
+      );
   --_at-rule-color:
-    light-dark(var(--rh-color-blue-60, #004d99),
-      var(--rh-color-purple-30, #b6a6e9));
+    light-dark(
+        /** At-rule token color in light mode */
+        var(--rh-color-blue-60, #004d99),
+        /** At-rule token color in dark mode */
+        var(--rh-color-purple-30, #b6a6e9)
+      );
   --_attr-value-color:
-    light-dark(var(--rh-color-blue-60, #004d99),
-      var(--rh-color-green-40, #87bb62));
+    light-dark(
+        /** Attribute value token color in light mode */
+        var(--rh-color-blue-60, #004d99),
+        /** Attribute value token color in dark mode */
+        var(--rh-color-green-40, #87bb62)
+      );
   --_keyword-color:
-    light-dark(var(--rh-color-blue-60, #004d99),
-      var(--rh-color-purple-30, #b6a6e9));
+    light-dark(
+        /** Keyword token color in light mode */
+        var(--rh-color-blue-60, #004d99),
+        /** Keyword token color in dark mode */
+        var(--rh-color-purple-30, #b6a6e9)
+      );
   --_function-color:
-    light-dark(var(--rh-color-red-60, #a60000),
-      var(--rh-color-orange-40, #f5921b));
+    light-dark(
+        /** Function token color in light mode */
+        var(--rh-color-red-60, #a60000),
+        /** Function token color in dark mode */
+        var(--rh-color-orange-40, #f5921b)
+      );
   --_class-name-color:
-    light-dark(var(--rh-color-red-60, #a60000),
-      var(--rh-color-yellow-40, #dca614));
+    light-dark(
+        /** Class name token color in light mode */
+        var(--rh-color-red-60, #a60000),
+        /** Class name token color in dark mode */
+        var(--rh-color-yellow-40, #dca614)
+      );
   --_regex-color:
-    light-dark(var(--rh-color-orange-60, #9e4a06),
-      var(--rh-color-green-40, #87bb62));
+    light-dark(
+        /** Regex token color in light mode */
+        var(--rh-color-orange-60, #9e4a06),
+        /** Regex token color in dark mode */
+        var(--rh-color-green-40, #87bb62)
+      );
   --_important-color:
-    light-dark(var(--rh-color-orange-60, #9e4a06),
-      var(--rh-color-purple-30, #b6a6e9));
+    light-dark(
+        /** Important token color in light mode */
+        var(--rh-color-orange-60, #9e4a06),
+        /** Important token color in dark mode */
+        var(--rh-color-purple-30, #b6a6e9)
+      );
   --_variable-color:
-    light-dark(var(--rh-color-orange-60, #9e4a06),
-      var(--rh-color-green-40, #87bb62));
+    light-dark(
+        /** Variable token color in light mode */
+        var(--rh-color-orange-60, #9e4a06),
+        /** Variable token color in dark mode */
+        var(--rh-color-green-40, #87bb62)
+      );
 
   display: grid;
   place-items: center;
@@ -189,17 +319,23 @@
   padding-inline-start: var(--_code-main-spacer);
   padding-block-end: var(--_code-main-spacer);
 
-  /** Code block corner rounding */
+  /** Container corner radius */
   border-radius: var(--rh-border-radius-default, 3px);
   background-color: var(--_code-background-color);
 
-  /** Code block text color */
+  /** Container text color */
   color: var(--rh-color-text-primary);
-  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+  border:
+    /** Container border width */
+    var(--rh-border-width-sm, 1px)
+    solid
+    /** Container border color */
+    var(--rh-color-border-subtle);
 
-  /** @summary Top border width; override to add a colored accent bar */
+  /** Top border width override */
   border-block-start-width:
     var(--rh-code-block-border-block-start-width,
+      /** Top border width fallback */
       var(--rh-border-width-sm, 1px));
 
   /* Apply content-visibility here instead of on :host to allow tooltips to overflow */
@@ -231,7 +367,7 @@
 #content {
   display: block;
 
-  /** Code block typeface */
+  /** Code content typeface */
   font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
   z-index: 1;
   place-self: start;
@@ -250,7 +386,7 @@
 #content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
   color: var(--_code-color);
 
-  /** Code block typeface */
+  /** Prerendered code typeface */
   font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
   text-align: left;
   white-space: pre;
@@ -258,7 +394,7 @@
   word-break: normal;
   word-wrap: normal;
 
-  /** Code block line height */
+  /** Prerendered code line height */
   line-height: var(--rh-line-height-code, 1.5);
   tab-size: 4;
   hyphens: none;
@@ -274,14 +410,14 @@
 }
 
 #content::slotted(rh-tag) {
-  /** Code block width */
+  /** Callout tag width */
   width: var(--rh-size-icon-06, 64px);
 }
 
 #content-lines {
   display: grid;
 
-  /** Code block column gap */
+  /** Content lines column gap */
   column-gap: var(--rh-space-lg, 16px);
   grid-area: code;
   grid-template-areas: 'lines code';
@@ -301,7 +437,7 @@
   pointer-events: none;
   z-index: -10000;
 
-  /** Code block line height */
+  /** Sizer line height */
   line-height: var(--rh-line-height-code, 1.5);
 }
 
@@ -312,22 +448,27 @@
   grid-area: lines;
   list-style-type: none;
 
-  /** Code block horizontal spacing */
+  /** Line number inline padding */
   padding-inline: 0 var(--rh-space-md, 8px);
   text-align: end;
 
-  /** Code block typeface */
+  /** Line number typeface */
   font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
 
-  /** Code block text color */
+  /** Line number text color */
   color: var(--rh-color-text-secondary);
 
-  /** Code block font weight */
+  /** Line number font weight */
   font-weight: var(--rh-font-weight-code-regular, 400);
-  border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+  border-inline-end:
+    /** Line number gutter border width */
+    var(--rh-border-width-sm, 1px)
+    solid
+    /** Line number gutter border color */
+    var(--rh-color-border-subtle);
 
   li {
-    /** Code block line height */
+    /** Line number item height */
     line-height: var(--rh-line-height-code, 1.5);
     display: block;
   }
@@ -337,14 +478,14 @@
   display: flex;
   grid-area: actions;
 
-  /** Code block content gap */
+  /** Actions toolbar gap */
   gap: var(--rh-space-md, 8px);
   flex-flow: column;
 
-  /** Code block top margin */
+  /** Actions toolbar block start margin */
   margin-block-start: var(--rh-space-lg, 16px);
 
-  /** Code block end margin */
+  /** Actions toolbar inline end margin */
   margin-inline-end: var(--rh-space-lg, 16px);
   z-index: 2;
   place-self: start center;
@@ -360,6 +501,7 @@
 }
 
 #expand {
+  /** Expand button secondary spacer */
   --_code-secondary-spacer: var(--rh-space-md, 8px);
 
   display: inline-flex;
@@ -368,24 +510,24 @@
   background: transparent;
   grid-area: expand;
 
-  /** Code block content gap */
+  /** Expand button gap */
   gap: var(--rh-space-md, 8px);
   inset-block-end: var(--_code-secondary-spacer);
   margin-block: var(--_code-secondary-spacer);
 
-  /** Code block text color */
+  /** Expand button text color */
   color: var(--rh-color-text-primary);
 
-  /** Code block typeface */
+  /** Expand button typeface */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
 
-  /** Code block text size */
+  /** Expand button text size */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 
-  /** Code block font weight */
+  /** Expand button font weight */
   font-weight: var(--rh-font-weight-body-text-regular, 400);
 
-  /** Code block line height */
+  /** Expand button line height */
   line-height: var(--rh-line-height-body-text, 1.5);
 }
 
@@ -395,12 +537,15 @@
   rotate: var(--_expand-toggle-rotate, 180deg);
   transform: rotate 0.2s ease-in-out;
 
-  /** Code block text color */
+  /** Expand icon color */
   color: var(--rh-color-icon-secondary);
 }
 
 #container.compact {
+  /** Compact main spacer */
   --_code-main-spacer: var(--rh-space-lg, 16px);
+
+  /** Compact secondary spacer */
   --_code-secondary-spacer: var(--rh-space-sm, 6px);
 }
 
@@ -421,7 +566,7 @@
   inset-block-end: 0;
   inset-inline: 0;
 
-  /** Code block height */
+  /** Truncation gradient height */
   height: var(--rh-space-3xl, 48px);
   pointer-events: none;
   grid-column: -1/1;
@@ -445,7 +590,7 @@
   inset-block: 0;
   inset-inline-start: calc(-1 * var(--rh-space-4xl, 64px));
 
-  /** Code block width */
+  /** Overflow gradient width */
   width: var(--rh-space-4xl, 64px);
   pointer-events: none;
   background: var(--_gradient);
@@ -463,9 +608,11 @@
 [name='legend']::slotted(dl) {
   display: grid;
   grid-template-columns: max-content auto;
+
+  /** Legend block margin */
   margin-block: var(--rh-space-lg, 16px);
 
-  /** Code block content gap */
+  /** Legend grid gap */
   gap: var(--rh-space-md, 8px);
 }
 
