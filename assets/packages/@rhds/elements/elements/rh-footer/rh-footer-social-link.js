@@ -6,7 +6,12 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { css } from "lit";
 const style = css `:host{display:block;--rh-icon-size:var(--rh-footer--social-icon--size,var(--rh-size-icon-02,24px))}[hidden]{display:none!important}::slotted(a),a{color:var(--_icon-color)!important}::slotted(a:is(:hover,:focus-within)),a:is(:hover,:focus-within){color:var(--_icon-color-hover)!important}`;
 /**
- * Social media links for Red Hat Footer
+ * Social media icon link for the footer. Authors must set
+ * `accessible-label` so screen readers announce the platform name
+ * via ARIA. Uses `role="listitem"` for list semantics. Tab
+ * navigates between links; use `icon` or slot a custom SVG.
+ *
+ * @summary Single social media icon link for the footer
  */
 let RhFooterSocialLink = class RhFooterSocialLink extends LitElement {
     connectedCallback() {
@@ -16,7 +21,11 @@ let RhFooterSocialLink = class RhFooterSocialLink extends LitElement {
     render() {
         return html `
       <a href="${ifDefined(this.href)}" aria-label="${ifDefined(this.accessibleLabel)}">
-        <!-- Optional icon for social link. Use only when suitable icon is unavailable with \`<rh-icon>\` -->
+        <!-- summary: custom social icon content
+             description: |
+               Optional slot for a custom icon when the built-in \`<rh-icon>\` social set
+               does not include the desired platform. Screen readers rely on the parent
+               anchor's \`aria-label\` rather than this icon content. -->
         <slot>${this.icon ? html `<rh-icon set="social" icon="${this.icon}"></rh-icon>` : ''}</slot>
       </a>
     `;

@@ -43,8 +43,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
@@ -4618,7 +4618,12 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>A footer displays secondary content and legal information to users who reach the bottom of a page.</p>
+      <p>Site footer for navigation links, social icons, and legal content.
+Use when a page needs branded footer navigation. Must slot an
+<code>rh-footer-universal</code> in the <code>universal</code> slot and should contain
+<code>rh-footer-links</code> groups and <code>rh-footer-block</code> sections. Uses a
+<code>&lt;footer&gt;</code> landmark with <code>aria-labelledby</code> auto-wired to headers.
+Tab navigates links. On mobile, collapses to accordion.</p>
 
 
       <div class="element-apis">
@@ -4726,9 +4731,10 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>visually-hidden footer heading for assistive technology</p></td>
                   <td>
-                   <p>text that describes the footer section to assistive technology. Contains default text "Red Hat footer".</p>
+                   <p>Expects inline text. Screen readers announce this heading to identify the
+footer landmark region. Defaults to "Red Hat footer".</p>
                   </td>
                 </tr>
                 <tr>
@@ -4761,9 +4767,11 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>overrides all footer content</p></td>
                   <td>
-                   <p>Overrides everything. Do not use.</p>
+                   <p>Expects block elements. Replaces the entire footer inner structure.
+Avoid using; bypasses all built-in layout, ARIA wiring, and responsive
+behavior.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4798,7 +4806,9 @@
                   </uxdot-copy-permalink></td>
                   <td></td>
                   <td>
-                   <p>Overrides <code>header-*</code>, <code>logo</code>, <code>social-links</code></p>
+                   <p>Expects block elements. Overrides header-primary, logo, and
+social-links slots. Screen readers navigate child links
+as a group.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4833,7 +4843,9 @@
                   </uxdot-copy-permalink></td>
                   <td></td>
                   <td>
-                   <p>primary footer header content, e.g. main logo. Overrides <code>logo</code></p>
+                   <p>Expects block elements. Primary header area, typically the
+site logo. Should contain an accessible <code>&lt;a&gt;</code> linking
+to the homepage. Screen readers use the link text.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4866,9 +4878,11 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>main page or product logo</p></td>
                   <td>
-                   <p>main page or product logo. Defaults to Red Hat corporate logo</p>
+                   <p>Expects block elements: an <code>&lt;a&gt;</code> wrapping an image. Defaults to the
+Red Hat corporate logo. Screen readers rely on the img <code>alt</code> attribute
+or link text for identification.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4903,7 +4917,9 @@
                   </uxdot-copy-permalink></td>
                   <td></td>
                   <td>
-                   <p>secondary footer header content, e.g. social links. Overrides <code>social-links</code></p>
+                   <p>Expects block elements. Overrides social-links slot. Should
+contain <code>&lt;rh-footer-social-link&gt;</code> elements with
+accessible labels for screen readers.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4936,9 +4952,11 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>social media icon links</p></td>
                   <td>
-                   <p>social media links (icons). Contains a default set of links</p>
+                   <p>Expects block elements: <code>&lt;rh-footer-social-link&gt;</code> elements. Each link
+must have an <code>accessible-label</code> for screen reader announcement.
+Rendered as a list with <code>role="list"</code>.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4973,7 +4991,9 @@
                   </uxdot-copy-permalink></td>
                   <td></td>
                   <td>
-                   <p>main footer content. Overrides <code>main-*</code></p>
+                   <p>Expects block elements. Overrides main-primary and
+main-secondary slots. Should contain <code>&lt;rh-footer-links&gt;</code>
+groups. Screen readers use aria-labelledby on each group.</p>
                   </td>
                 </tr>
                 <tr>
@@ -5008,7 +5028,9 @@
                   </uxdot-copy-permalink></td>
                   <td></td>
                   <td>
-                   <p>main footer region. typically a columnar grid</p>
+                   <p>Expects block elements: <code>&lt;rh-footer-links&gt;</code> with heading
+elements. On mobile, collapses to accordion. Screen
+readers use <code>aria-labelledby</code> on each link group.</p>
                   </td>
                 </tr>
                 <tr>
@@ -5043,7 +5065,9 @@
                   </uxdot-copy-permalink></td>
                   <td></td>
                   <td>
-                   <p>typically contains prose or promotional content</p>
+                   <p>Expects block elements: prose, promotional content, or
+<code>&lt;rh-footer-block&gt;</code> elements. Screen readers announce
+content in DOM order.</p>
                   </td>
                 </tr>
                 <tr>
@@ -5076,9 +5100,11 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>universal footer slot</p></td>
                   <td>
-                   <p>must contain <code>&lt;rh-footer-universal&gt;</code></p>
+                   <p>Expects block elements: an <code>&lt;rh-footer-universal&gt;</code> element providing
+global Red Hat links, logo, and copyright. Screen readers navigate
+this as a separate footer landmark region. Must not be omitted.</p>
                   </td>
                 </tr>
               </tbody>
@@ -5431,8 +5457,9 @@ and synchronously update each list and header if we need to.</p></td>
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
-                  <td><p>footer header, typically containing main logo and social links</p></td>
+                  <td><p>footer header with logo and social links</p></td>
+                  <td><p>Contains the site logo and social media links. Screen readers navigate
+these as link groups. Tab moves through logo link and social links.</p></td>
                 </tr>
                 <tr>
                   <td>
@@ -5606,7 +5633,7 @@ and synchronously update each list and header if we need to.</p></td>
                       </span>
                     </uxdot-copy-permalink>
                   </td>
-                  <td></td>
+                  <td><p>footer header with logo and social links</p></td>
                   <td><p>main content container.</p></td>
                 </tr>
                 <tr>
@@ -5791,19 +5818,8 @@ and synchronously update each list and header if we need to.</p></td>
           use rh-tag instead.
       -->
       <!--lit-node 3--><slot class=" neutral "></slot>
-    <!--/lit-part--></template>8</rh-badge>
-                 <rh-badge  state="moderate"><template shadowroot="open" shadowrootmode="open"><style>span,slot{white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px));color:light-dark( var(--rh-color-text-primary-on-dark,#fff), var(--rh-color-text-primary-on-light,#151515));justify-content:center;align-items:center;position:relative}:is(span,slot).neutral{background-color:var(--rh-color-status-neutral)}:is(span,slot).info{background-color:var(--rh-color-status-info)}:is(span,slot).success{background-color:var(--rh-color-status-success)}:is(span,slot).caution{background-color:var(--rh-color-status-caution);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).warning{background-color:var(--rh-color-status-warning);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).danger{background-color:var(--rh-color-status-danger)}span:empty{display:none}slot{display:inline-flex}:host([number]) slot{display:none}:host([number]) span{display:inline-flex}</style><!--lit-part JgNQgDgoEDs=-->
-      <!--lit-node 0--><span class=" moderate "><!--lit-part--><!--/lit-part--></span>
-      <!--
-        summary: Count text (default slot)
-        description: |
-          Put the numeric count in the default slot—the same value as the `number` attribute when
-          you use number. The badge has no implicit accessible name; authors should provide context
-          in surrounding text (labels, headings, table cells, etc.). For longer non-count labels,
-          use rh-tag instead.
-      -->
-      <!--lit-node 3--><slot class=" moderate "></slot>
-    <!--/lit-part--></template>1</rh-badge>
+    <!--/lit-part--></template>9</rh-badge>
+                
               </a>
             </h3>
           </uxdot-copy-permalink>
@@ -5839,38 +5855,59 @@ and synchronously update each list and header if we need to.</p></td>
               </thead>
               <tbody>
                 <tr>
-                  <td><code>--rh-footer-icon-color</code></td>
-                  <td></td>
+                  <td><code>--rh-footer-nojs-min-height</code></td>
+                  <td><p>Minimum height when JavaScript is disabled. @deprecated target <code>rh-footer:not(:defined)</code> directly</p></td>
                   <td>
-                    <code>var(--rh-color-gray-40, #a3a3a3)</code>
+                    <code>—</code>
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>--rh-footer-icon-color</code></td>
+                  <td><p>Default icon color. Uses --rh-color-gray-40 design token</p></td>
+                  <td>
+                    <code>—</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-footer-icon-color-hover</code></td>
-                  <td></td>
+                  <td><p>Icon color on hover/focus. Uses --rh-color-gray-30 design token</p></td>
                   <td>
-                    <code>var(--rh-color-gray-30, #c7c7c7)</code>
+                    <code>—</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-footer-border-color</code></td>
-                  <td></td>
+                  <td><p>Border color for section dividers. Uses --rh-color-border-subtle-on-dark design token</p></td>
                   <td>
-                    <code>var(--rh-color-border-subtle-on-dark, #707070)</code>
+                    <code>—</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-footer-accent-color</code></td>
-                  <td></td>
+                  <td><p>Accent color for emphasis. Uses --rh-color-accent-brand-on-light design token</p></td>
                   <td>
-                    <code>var(--rh-color-accent-brand-on-light, #ee0000)</code>
+                    <code>—</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-footer-section-side-gap</code></td>
-                  <td></td>
+                  <td><p>Horizontal padding for footer sections. Responsive: 16px / 32px / 64px</p></td>
                   <td>
-                    <code>var(--rh-space-lg, 16px)</code>
+                    <code>—</code>
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>--rh-footer-links-gap</code></td>
+                  <td><p>Vertical spacing between footer link items. Defaults to --rh-space-lg</p></td>
+                  <td>
+                    <code>—</code>
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>--rh-footer-link-header-font-size</code></td>
+                  <td><p>Font size for link column headers. Defaults to --rh-font-size-body-text-sm</p></td>
+                  <td>
+                    <code>—</code>
                   </td>
                 </tr>
                 <tr>
@@ -5880,118 +5917,9 @@ and synchronously update each list and header if we need to.</p></td>
                     <code>32px</code>
                   </td>
                 </tr>
-                <tr>
-                  <td><code>--rh-footer-links-gap</code></td>
-                  <td></td>
-                  <td>
-                    <code>var(--rh-space-lg, 16px)</code>
-                  </td>
-                </tr>
-                <tr>
-                  <td><code>--rh-footer-link-header-font-size</code></td>
-                  <td></td>
-                  <td>
-                    <code>var(--rh-font-size-body-text-sm, 0.875rem)</code>
-                  </td>
-                </tr>
               </tbody>
             </table>
           </rh-table>
-          <rh-disclosure  summary="Deprecated CSS Custom Properties"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:dark only}:host([color-palette^=light]){color-scheme:light only}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{border-width:var(--rh-border-width-sm,1px);border-style:solid;border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default,3px);font-family:var(--rh-font-family-body-text);display:block}summary{background-color:var(--rh-color-surface);border-radius:var(--rh-border-radius-default,3px);color:var(--rh-color-text-primary);cursor:pointer;font-size:var(--rh-font-size-body-text-md,1rem);font-weight:var(--rh-font-weight-body-text-medium,500);padding-block:var(--rh-space-lg,16px);padding-inline:var(--rh-space-xl,24px);list-style:none}summary::marker{display:none}summary::-webkit-details-marker{display:none}summary:hover,summary:active,summary:focus{background-color:light-dark( var(--rh-color-surface-lighter,#f2f2f2), var(--rh-color-surface-dark,#383838))}summary:active,summary:focus{outline: var(--rh-border-width-md,2px) solid;outline-color:var(--rh-color-interactive-primary-default);outline-offset:-2px;z-index:2;position:relative}summary ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-weight:var(--rh-font-weight-body-text-medium,500);font-size:var(--rh-font-size-body-text-md,1rem)!important}summary ::slotted([slot=summary]:is(h1,h2,h3,h4,h5,h6)){display:inline}#caret{inline-size:var(--rh-space-lg,16px);block-size:var(--rh-space-lg,16px);will-change:rotate;margin-inline-end:var(--rh-space-md,8px);transition:all .2s;position:relative;inset-block-start:3px}#details-content{background-color:var(--rh-color-surface);border-radius:var(--rh-border-radius-default,3px);color:var(--rh-color-text-primary);font-size:var(--rh-font-size-body-text-md,1rem);line-height:var(--rh-line-height-body-text,1.5);padding-block: var(--rh-space-lg,16px)  var(--rh-space-xl,24px);padding-inline:var(--rh-space-xl,24px)}::slotted(:is(p,h1,h2,h3,h4,h5,h6):first-of-type){margin-block-start:0}::slotted(:is(p,li,dd):last-of-type){margin-block-end:0!important}details[open]{box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);position:relative}details[open] #caret{transform:rotate(-180deg)}details[open]:before{content:"";border-inline-start:3px solid  var(--rh-color-brand-red);z-index:1;border-start-start-radius:var(--rh-border-radius-default,3px);border-end-start-radius:var(--rh-border-radius-default,3px);position:absolute;inset-block:-1px;inset-inline-start:-1px}details[open].hasJumpLinks:before{border-inline-start-color:#0000}:host([variant~=compact]) summary{font-size:var(--rh-font-size-body-text-sm,.875rem);padding: var(--rh-space-md,8px)  var(--rh-space-lg,16px)}:host([variant~=compact]) summary rh-icon{--rh-icon-size:14px}:host([variant~=compact]) #details-content{padding-inline:var(--rh-space-lg,16px)}:host([variant~=borderless]){--_hover-background-color:light-dark( var(--rh-color-surface-lighter,#f2f2f2), var(--rh-color-surface-darker,#1f1f1f));--_open-background-color:var(--_hover-background-color);border:0}:host([variant~=borderless]) summary{color:var(--rh-color-interactive-primary-default)}:host([variant~=borderless]) summary:hover,:host([variant~=borderless]) summary:focus{background-color:var(--_hover-background-color);color:var(--rh-color-interactive-primary-hover)}:host([variant~=borderless]) summary:focus{outline-offset:var(--rh-length-3xs,2px)}:host([variant~=borderless]) details[open]{background-color:var(--_open-background-color);border-radius:var(--rh-border-radius-default,3px);box-shadow:none}:host([variant~=borderless]) details[open]:before{border-inline-start:0}:host([variant~=borderless]) details[open] summary{background-color:var(--_open-background-color)}:host([variant~=borderless]) details[open] summary:hover,:host([variant~=borderless]) details[open] summary:focus{background-color:light-dark( var(--rh-color-surface-light,#e0e0e0), var(--rh-color-surface-dark,#383838))}:host([variant~=borderless]) details[open] #details-content{background-color:#0000}</style><!--lit-part 2e329pB7hhU=-->
-      <!--lit-node 0--><details
-          
-          class="  "
-          
-          >
-        <summary>
-          <!--lit-node 2--><rh-icon    id="caret" set="ui" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part yJXr4tKetXA=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 24.792c-.384 0-.769-.146-1.061-.438L2.293 11.707a.999.999 0 1 1 1.414-1.414L16 22.586l12.293-12.293a.999.999 0 1 1 1.414 1.414L17.061 24.353a1.497 1.497 0 0 1-1.061.438Z"/></svg><!--/lit-part--><!--
-           Container for the fallback (i.e. slotted) content
-        --><!--lit-node 3--><span part="fallback" hidden><!--
-          summary: Fallback content when icon fails to load
-          description: |
-            Displayed only when the icon SVG cannot be resolved.
-            Should contain meaningful text or an alternative image
-            for screen readers if the icon conveys information.
-            Hidden automatically when icon loads successfully.
-        --><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-          <!-- summary: The clickable title text for the disclosure.
-               description: |
-                 Accepts inline text or a heading element (e.g.
-                 `<h2>`, `<h3>`). When a heading is slotted, it
-                 renders inline. Falls back to the `summary` attribute
-                 value when no slot content is provided. Authors should
-                 keep the summary short and descriptive; screen readers
-                 announce it as the accessible name for the disclosure
-                 trigger. When using a heading element, ensure its level
-                 fits the page outline so assistive technology presents
-                 correct heading hierarchy. -->
-          <slot name="summary"><!--lit-part-->Deprecated CSS Custom Properties<!--/lit-part--></slot>
-        </summary>
-        <div id="details-content">
-          <!-- summary: Content revealed when the disclosure is open.
-               description: |
-                 Accepts block-level elements such as paragraphs, lists,
-                 or nested components. Interactive children receive
-                 focus via Tab when the panel is expanded. Slotted
-                 content should follow WCAG reading order so screen
-                 readers present it logically. Authors should ensure
-                 that interactive elements inside the panel have
-                 visible focus indicators and accessible labels so
-                 keyboard and assistive-technology users can operate
-                 them. The escape key returns focus to the summary
-                 trigger unless the focused element is an input,
-                 select, textarea, or media control, in which case
-                 Escape is passed through to that element. -->
-          <slot></slot>
-        </div>
-      </details>
-    <!--/lit-part--></template>
-            <rh-table  compact><template shadowroot="open" shadowrootmode="open"><style>*{box-sizing:border-box}:host{scrollbar-color:var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);width:100%;color:var(--rh-color-text-primary);--_scrollbar-size:calc(10 / 16 * 1rem);--_scrollbar-thumb-color:var(--rh-color-gray-50,#707070);--_scrollbar-track-color:var(--rh-color-border-subtle);--_row-border: var(--rh-table-row-border,var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle-on-light,#c7c7c7));--_row-background-hover-color:light-dark(var(--rh-table-row-background-hover-color,rgba(from var(--rh-color-gray-40,#a3a3a3) r g b / .1)),rgba(from var(--rh-color-white,#fff) r g b / .1));--_column-background-hover-color:light-dark(var(--rh-table-column-background-hover-color,rgba(from var(--rh-color-blue-50,#06c) r g b / .1)),rgba(from var(--rh-color-blue-70,#036) r g b / .3));display:block;position:relative;overflow:auto}:host::-webkit-scrollbar{width:var(--_scrollbar-size);height:var(--_scrollbar-size)}:host::-webkit-scrollbar{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-track{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-thumb{background-color:var(--_scrollbar-thumb-color)}[slot]{display:block}::slotted([slot=summary]){padding:var(--rh-space-xl,24px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px);color:var(--rh-color-text-secondary);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:italic;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5);display:block}</style><!--lit-part DhG3hBsOx/E=-->
-      <div id="container" part="container">
-        <!-- summary: Default slot for the table element
-             description: |
-               Expects a native HTML `<table>` element with semantic
-               markup. Authors must include `<thead>`, `<tbody>`,
-               and scoped `<th>` elements so that screen readers
-               can navigate the table structure. -->
-        <!--lit-node 2--><slot 
-              
-              
-              ></slot>
-        <!-- summary: Summary slot for table description
-             description: |
-               An optional description of the table data displayed
-               below the table. The element links this content to the
-               table via `aria-describedby` for screen reader users.
-               Authors should use inline elements like `<small>`. -->
-        <slot id="summary" name="summary"></slot>
-      </div>
-    <!--/lit-part--></template>
-              <table>
-                <thead>
-                  <tr>
-                    <th scope="col">CSS Property</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Default</th>
-                    <th scope="col">Reason</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><code>--rh-footer-nojs-min-height</code></td>
-                    <td><p>Minimum height for the footer when JavaScript is disabled</p></td>
-                    <td><p>—</p></td>
-                    <td><p>target `rh-footer:not(:defined) directly</p></td>
-                  </tr>
-                </tbody>
-              </table>
-            </rh-table>
-          </rh-disclosure>
         </section>
     
         
@@ -6072,7 +6000,8 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Body text font family</p>
+                    <p>Footer typeface</p>
+<p>Body text font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6188,7 +6117,8 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Line height for body text</p>
+                    <p>Footer line height</p>
+<p>Line height for body text</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6304,7 +6234,8 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Subtle icon (hover state)</p>
+                    <p>Footer icon default on dark</p>
+<p>Subtle icon (hover state)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6420,7 +6351,8 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Subtle borders (light theme)</p>
+                    <p>Footer icon hover default on dark</p>
+<p>Subtle borders (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6536,7 +6468,8 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Subtle border color (dark theme)</p>
+                    <p>Footer border subtle on dark</p>
+<p>Subtle border color (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6652,7 +6585,8 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Brand red (light theme)</p>
+                    <p>Footer accent brand on light</p>
+<p>Brand red (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6768,7 +6702,9 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Lightest surface (light theme) or primary text (dark theme)</p>
+                    <p>Footer text color</p>
+<p>Universal footer accordion surface</p>
+<p>Lightest surface (light theme) or primary text (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6884,7 +6820,8 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>40px icon box</p>
+                    <p>Footer logo width</p>
+<p>40px icon box</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7000,7 +6937,8 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Regular font weight</p>
+                    <p>Footer body text weight</p>
+<p>Regular font weight</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7116,7 +7054,8 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Heading font family</p>
+                    <p>Footer typeface</p>
+<p>Heading font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7232,7 +7171,8 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Line height for headings</p>
+                    <p>Footer line height</p>
+<p>Line height for headings</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7464,7 +7404,8 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>2px length token</p>
+                    <p>Debug mode outline width</p>
+<p>2px length token</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7928,7 +7869,8 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>1px length token</p>
+                    <p>Footer height</p>
+<p>1px length token</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8044,7 +7986,9 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Secondary surface (dark theme)</p>
+                    <p>Footer background</p>
+<p>Footer background</p>
+<p>Secondary surface (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8160,7 +8104,8 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Primary surface (dark theme)</p>
+                    <p>Footer background</p>
+<p>Primary surface (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8276,7 +8221,7 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Footer text color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8392,7 +8337,9 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>8px spacer</p>
+                    <p>Primary global links row gap</p>
+<p>Secondary global links row gap</p>
+<p>8px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8508,7 +8455,8 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>12px font size</p>
+                    <p>Footer text size</p>
+<p>12px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8624,7 +8572,11 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>24px spacer</p>
+                    <p>Footer universal inline gap</p>
+<p>Primary global links column gap</p>
+<p>Secondary global links column gap</p>
+<p>Footer content gap</p>
+<p>24px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8856,7 +8808,10 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Footer section horizontal margin</p>
+<p>Footer content gap</p>
+<p>Desktop link column row gap</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8972,7 +8927,8 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Medium font weight for headings</p>
+                    <p>Footer font weight</p>
+<p>Medium font weight for headings</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9088,7 +9044,8 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>14px font size</p>
+                    <p>Footer link column header size</p>
+<p>14px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9204,7 +9161,7 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Footer text color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9320,7 +9277,13 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>32px spacer</p>
+                    <p>Footer section block padding</p>
+<p>Footer content gap</p>
+<p>Footer content gap</p>
+<p>Footer universal block gap</p>
+<p>Desktop link column inline gap</p>
+<p>Footer main padding block-start at viewport &gt;= md</p>
+<p>32px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9436,7 +9399,8 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>64px spacer</p>
+                    <p>Footer main padding block-end at viewport &gt;= md</p>
+<p>64px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9581,7 +9545,12 @@ and synchronously update each list and header if we need to.</p></td>
         </h2>
       </uxdot-copy-permalink>
 
-      
+      <p>Sidebar content block for prose, promotions, or calls to action
+within <code>&lt;rh-footer&gt;</code>. Use when the footer needs content alongside
+link columns. Should contain a heading in the <code>header</code> slot for
+accessible labeling via <code>aria-labelledby</code>. Tab navigates
+interactive children.</p>
+
 
       <div class="element-apis">
         
@@ -9688,9 +9657,11 @@ and synchronously update each list and header if we need to.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>block heading</p></td>
                   <td>
-                   
+                   <p>Expects a block elements heading (h2-h5) labeling this content block.
+Provides visual and semantic grouping for screen readers. Should be
+provided for accessibility.</p>
                   </td>
                 </tr>
                 <tr>
@@ -9723,9 +9694,11 @@ and synchronously update each list and header if we need to.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>block body content</p></td>
                   <td>
-                   <p>undefined <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Expects block elements: prose text, links, or promotional content.
+Screen readers announce content in DOM order. Tab navigates
+interactive children. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -10294,7 +10267,8 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Medium font weight for headings</p>
+                    <p>Block heading weight</p>
+<p>Medium font weight for headings</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -10410,7 +10384,9 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>14px font size</p>
+                    <p>Block default body size</p>
+<p>Block heading size</p>
+<p>14px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -10526,7 +10502,8 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Block heading bottom spacing</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -10642,7 +10619,9 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Primary text color for dark theme</p>
+                    <p>Block default text on dark</p>
+<p>Block heading text on dark</p>
+<p>Primary text color for dark theme</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -10758,7 +10737,8 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Secondary text color for dark theme</p>
+                    <p>Block secondary text on dark</p>
+<p>Secondary text color for dark theme</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -10874,7 +10854,8 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Body text font family</p>
+                    <p>Block body typeface</p>
+<p>Body text font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -10990,7 +10971,8 @@ and synchronously update each list and header if we need to.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Regular font weight</p>
+                    <p>Block body weight</p>
+<p>Regular font weight</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -11135,7 +11117,9 @@ and synchronously update each list and header if we need to.</p></td>
         </h2>
       </uxdot-copy-permalink>
 
-      
+      <p>Copyright notice for <code>&lt;rh-footer-universal&gt;</code>. Use when the footer
+requires a legal copyright line. Authors should avoid overriding.</p>
+
 
       <div class="element-apis">
         
@@ -11242,9 +11226,12 @@ and synchronously update each list and header if we need to.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>copyright text content (default slot)</p></td>
                   <td>
-                   <p>undefined <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Expects inline text containing the copyright notice. Defaults to
+"© [current year] Red Hat" if not provided. Screen readers announce
+this text within the footer landmark; it is not focusable via Tab.
+Override for a different entity or localized text. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -11556,7 +11543,12 @@ and synchronously update each list and header if we need to.</p></td>
         </h2>
       </uxdot-copy-permalink>
 
-      
+      <p>Accessible link group for the footer. Auto-wires <code>aria-labelledby</code>
+between the heading and <code>&lt;ul&gt;</code> for screen readers. Must contain a
+<code>&lt;ul&gt;</code>; should include a heading in the <code>header</code> slot. Tab moves
+focus through each link. On mobile, collapses into an accordion
+panel.</p>
+
 
       <div class="element-apis">
         
@@ -11663,9 +11655,11 @@ and synchronously update each list and header if we need to.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>link group heading</p></td>
                   <td>
-                   
+                   <p>Expects a block elements heading (h2-h5) labeling this link group.
+Automatically linked to the <code>&lt;ul&gt;</code> via <code>aria-labelledby</code> for screen
+reader users. Visually hidden when <code>header-hidden</code> attribute is set.</p>
                   </td>
                 </tr>
                 <tr>
@@ -11698,9 +11692,11 @@ and synchronously update each list and header if we need to.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>accordion panel content</p></td>
                   <td>
-                   
+                   <p>Expects block elements. Alternative content slot used when links are
+rendered inside an accordion panel on mobile viewports. Screen readers
+navigate panel content after the accordion header is expanded.</p>
                   </td>
                 </tr>
                 <tr>
@@ -11733,9 +11729,11 @@ and synchronously update each list and header if we need to.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>link list</p></td>
                   <td>
-                   <p>undefined <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Expects block elements: a <code>&lt;ul&gt;</code> of navigation links. Each link is
+focusable via Tab. The list should have <code>aria-labelledby</code> pointing
+to the header (auto-wired by the component). <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -11851,8 +11849,10 @@ and synchronously update each list and header if we need to.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>headerHidden</code></td>
-                  <td><p>Cause the header slot to be visually hidden.
-Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
+                  <td><p>Visually hides the header slot content while preserving it for screen
+readers. The <code>aria-labelledby</code> association remains active regardless
+of this setting. USE when the heading should be accessible but not
+visible (e.g. social links group). Defaults to false.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span></code></pre></td>
                 </tr>
@@ -12289,7 +12289,10 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
         </h2>
       </uxdot-copy-permalink>
 
-      <p>Social media links for Red Hat Footer</p>
+      <p>Social media icon link for the footer. Authors must set
+<code>accessible-label</code> so screen readers announce the platform name
+via ARIA. Uses <code>role="listitem"</code> for list semantics. Tab
+navigates between links; use <code>icon</code> or slot a custom SVG.</p>
 
 
       <div class="element-apis">
@@ -12397,9 +12400,11 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>custom social icon content</p></td>
                   <td>
-                   <p>Optional icon for social link. Use only when suitable icon is unavailable with <code>&lt;rh-icon&gt;</code> <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Optional slot for a custom icon when the built-in <code>&lt;rh-icon&gt;</code> social set
+does not include the desired platform. Screen readers rely on the parent
+anchor's <code>aria-label</code> rather than this icon content. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -12515,7 +12520,9 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>icon</code></td>
-                  <td><p>Icon for this social link e.g. <code>'facebook'</code></p></td>
+                  <td><p>Name of the social media icon from the <code>social</code> icon set (e.g.
+<code>'facebook'</code>, <code>'twitter'</code>, <code>'linkedin'</code>). Renders an <code>&lt;rh-icon&gt;</code>
+in the default slot if no custom icon is slotted. Defaults to undefined.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts">IconNameFor<span class="token operator">&lt;</span><span class="token string">'social'</span><span class="token operator">&gt;</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -12552,7 +12559,8 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>href</code></td>
-                  <td><p>Social link address</p></td>
+                  <td><p>URL of the social media profile or page. Applied to the anchor element's
+<code>href</code> attribute. Must be a valid URL. Defaults to undefined.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -12589,7 +12597,9 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>accessibleLabel</code></td>
-                  <td><p>Textual label for the social link e.g. "Instagram"</p></td>
+                  <td><p>Accessible text label announced by screen readers for the social link
+(e.g. "LinkedIn", "YouTube"). Applied as <code>aria-label</code> on the anchor.
+Must be provided for accessibility. Defaults to undefined.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -12811,7 +12821,7 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
               <tbody>
                 <tr>
                   <td><code>--rh-footer--social-icon--size</code></td>
-                  <td></td>
+                  <td><p>Social icon size override</p></td>
                   <td>
                     <code>var(--rh-size-icon-02, 24px)</code>
                   </td>
@@ -12899,7 +12909,8 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>24px icon box</p>
+                    <p>Social icon default size</p>
+<p>24px icon box</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -13044,7 +13055,13 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
         </h2>
       </uxdot-copy-permalink>
 
-      
+      <p>Global Red Hat footer bar for consistent branding across all
+properties. Authors must not customize content per-site. The
+<code>secondary-start</code> slot should contain <code>&lt;rh-footer-copyright&gt;</code>.
+Renders a <code>&lt;footer&gt;</code> with ARIA landmark semantics and a
+visually-hidden <code>&lt;h2&gt;</code> so screen readers can identify the region.
+Tab navigates link groups.</p>
+
 
       <div class="element-apis">
         
@@ -13151,9 +13168,11 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>visually-hidden heading for assistive technology</p></td>
                   <td>
-                   <p>text that describes the footer section to assistive tecchnology. Contains default text "Red Hat footer".</p>
+                   <p>Expects inline text. Screen readers use this heading to identify the
+universal footer region. Defaults to "Red Hat footer". Hidden if a
+parent <code>&lt;h2&gt;</code> already exists.</p>
                   </td>
                 </tr>
                 <tr>
@@ -13186,9 +13205,11 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>overrides all universal footer content (base slot)</p></td>
                   <td>
-                   
+                   <p>Expects block elements. Replaces the entire universal footer structure.
+Avoid using; bypasses all built-in layout, grid regions, responsive
+behavior, and ARIA landmark wiring.</p>
                   </td>
                 </tr>
                 <tr>
@@ -13221,9 +13242,11 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Red Hat logo (logo slot)</p></td>
                   <td>
-                   <p>logo</p>
+                   <p>Expects block elements: an <code>&lt;a&gt;</code> wrapping an <code>&lt;img&gt;</code> or <code>&lt;svg&gt;</code>.
+Defaults to the Red Hat logo SVG linking to redhat.com. Screen
+readers rely on the anchor <code>aria-label</code> for identification.</p>
                   </td>
                 </tr>
                 <tr>
@@ -13256,9 +13279,11 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>overrides primary-start, links-primary, and primary-end (primary slot)</p></td>
                   <td>
-                   <p>primary</p>
+                   <p>Expects block elements. Replaces the entire primary link region.
+Override only when the three sub-slots are insufficient.
+Screen readers navigate child links as a group.</p>
                   </td>
                 </tr>
                 <tr>
@@ -13291,9 +13316,11 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>content before primary links (primary-start slot)</p></td>
                   <td>
-                   <p>primary-start</p>
+                   <p>Expects inline or block elements placed before the primary
+global navigation links. Screen readers encounter this
+content before the link list.</p>
                   </td>
                 </tr>
                 <tr>
@@ -13326,9 +13353,11 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>primary global navigation links (links-primary slot)</p></td>
                   <td>
-                   <p>links-primary</p>
+                   <p>Expects block elements: a <code>&lt;ul&gt;</code> of <code>&lt;li&gt;</code> anchor links for
+primary global Red Hat navigation. Screen readers announce
+the list group; Tab moves through each link.</p>
                   </td>
                 </tr>
                 <tr>
@@ -13361,9 +13390,11 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>content after primary links (primary-end slot)</p></td>
                   <td>
-                   <p>primary-end</p>
+                   <p>Expects inline or block elements placed after the primary
+global navigation links. Screen readers encounter this
+content after the link list.</p>
                   </td>
                 </tr>
                 <tr>
@@ -13396,9 +13427,11 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>overrides secondary-start, links-secondary, and secondary-end (secondary slot)</p></td>
                   <td>
-                   <p>secondary</p>
+                   <p>Expects block elements. Replaces the entire secondary link region.
+Override only when the three sub-slots are insufficient.
+Screen readers navigate child links as a group.</p>
                   </td>
                 </tr>
                 <tr>
@@ -13431,9 +13464,11 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>content before secondary links, e.g. copyright (secondary-start slot)</p></td>
                   <td>
-                   <p>secondary-start</p>
+                   <p>Expects block elements such as <code>&lt;rh-footer-copyright&gt;</code>, placed
+before the secondary links. Screen readers announce this
+content in DOM order within the footer landmark.</p>
                   </td>
                 </tr>
                 <tr>
@@ -13466,9 +13501,11 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>secondary global navigation links (links-secondary slot)</p></td>
                   <td>
-                   <p>links-secondary</p>
+                   <p>Expects block elements: a <code>&lt;ul&gt;</code> of <code>&lt;li&gt;</code> anchor links for
+secondary global Red Hat navigation. Screen readers announce
+the list group; Tab moves through each link.</p>
                   </td>
                 </tr>
                 <tr>
@@ -13501,9 +13538,11 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>content after secondary links (secondary-end slot)</p></td>
                   <td>
-                   <p>secondary-end</p>
+                   <p>Expects inline or block elements placed after the secondary
+global navigation links. Screen readers encounter this
+content after the secondary link list.</p>
                   </td>
                 </tr>
                 <tr>
@@ -13536,9 +13575,11 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>optional third content region (tertiary slot)</p></td>
                   <td>
-                   <p>tertiary</p>
+                   <p>Expects block elements such as a language selector or custom
+widget. Hidden when nothing is slotted. Screen readers
+encounter this region after the secondary links.</p>
                   </td>
                 </tr>
               </tbody>
@@ -13654,7 +13695,9 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>colorPalette</code></td>
-                  <td></td>
+                  <td><p>Color palette for the universal footer. Defaults to <code>'darker'</code>.
+Valid values: <code>'lighter'</code>, <code>'light'</code>, <code>'dark'</code>, <code>'darker'</code>, <code>'darkest'</code>.
+The universal footer typically renders on the darkest surface.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'light'</span> <span class="token operator">|</span> <span class="token string">'lighter'</span> <span class="token operator">|</span> <span class="token string">'lightest'</span> <span class="token operator">|</span> <span class="token string">'dark'</span> <span class="token operator">|</span> <span class="token string">'darker'</span> <span class="token operator">|</span> <span class="token string">'darkest'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'darker'</span></code></pre></td>
                 </tr>
@@ -13862,7 +13905,7 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td></td>
-                  <td><p>base</p></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>
@@ -13897,7 +13940,7 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td></td>
-                  <td><p>base</p></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>
@@ -13932,7 +13975,7 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td></td>
-                  <td><p>logo</p></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>
@@ -14037,7 +14080,7 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td></td>
-                  <td><p>primary</p></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>
@@ -14072,7 +14115,7 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td></td>
-                  <td><p>primary-start</p></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>
@@ -14107,7 +14150,7 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td></td>
-                  <td><p>links-primary</p></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>
@@ -14142,7 +14185,7 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td></td>
-                  <td><p>primary-end</p></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>
@@ -14212,7 +14255,7 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td></td>
-                  <td><p>secondary</p></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>
@@ -14247,7 +14290,7 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td></td>
-                  <td><p>secondary-start</p></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>
@@ -14282,7 +14325,7 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td></td>
-                  <td><p>links-secondary</p></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>
@@ -14317,7 +14360,7 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td></td>
-                  <td><p>secondary-end</p></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>
@@ -14352,7 +14395,7 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </uxdot-copy-permalink>
                   </td>
                   <td></td>
-                  <td><p>tertiary</p></td>
+                  <td></td>
                 </tr>
               </tbody>
             </table>
@@ -14396,19 +14439,8 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
           use rh-tag instead.
       -->
       <!--lit-node 3--><slot class=" neutral "></slot>
-    <!--/lit-part--></template>8</rh-badge>
-                 <rh-badge  state="moderate"><template shadowroot="open" shadowrootmode="open"><style>span,slot{white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px));color:light-dark( var(--rh-color-text-primary-on-dark,#fff), var(--rh-color-text-primary-on-light,#151515));justify-content:center;align-items:center;position:relative}:is(span,slot).neutral{background-color:var(--rh-color-status-neutral)}:is(span,slot).info{background-color:var(--rh-color-status-info)}:is(span,slot).success{background-color:var(--rh-color-status-success)}:is(span,slot).caution{background-color:var(--rh-color-status-caution);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).warning{background-color:var(--rh-color-status-warning);color:var(--rh-color-text-primary-on-light,#151515)}:is(span,slot).danger{background-color:var(--rh-color-status-danger)}span:empty{display:none}slot{display:inline-flex}:host([number]) slot{display:none}:host([number]) span{display:inline-flex}</style><!--lit-part JgNQgDgoEDs=-->
-      <!--lit-node 0--><span class=" moderate "><!--lit-part--><!--/lit-part--></span>
-      <!--
-        summary: Count text (default slot)
-        description: |
-          Put the numeric count in the default slot—the same value as the `number` attribute when
-          you use number. The badge has no implicit accessible name; authors should provide context
-          in surrounding text (labels, headings, table cells, etc.). For longer non-count labels,
-          use rh-tag instead.
-      -->
-      <!--lit-node 3--><slot class=" moderate "></slot>
-    <!--/lit-part--></template>1</rh-badge>
+    <!--/lit-part--></template>9</rh-badge>
+                
               </a>
             </h3>
           </uxdot-copy-permalink>
@@ -14444,36 +14476,43 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
               </thead>
               <tbody>
                 <tr>
+                  <td><code>--rh-footer-nojs-min-height</code></td>
+                  <td><p>Minimum footer height when scripting is disabled</p></td>
+                  <td>
+                    <code>—</code>
+                  </td>
+                </tr>
+                <tr>
                   <td><code>--rh-footer-icon-color</code></td>
-                  <td></td>
+                  <td><p>Footer icon color override</p></td>
                   <td>
                     <code>var(--rh-color-gray-40, #a3a3a3)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-footer-icon-color-hover</code></td>
-                  <td></td>
+                  <td><p>Footer icon hover color override</p></td>
                   <td>
                     <code>var(--rh-color-gray-30, #c7c7c7)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-footer-border-color</code></td>
-                  <td></td>
+                  <td><p>Footer border color override</p></td>
                   <td>
                     <code>var(--rh-color-border-subtle-on-dark, #707070)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-footer-accent-color</code></td>
-                  <td></td>
+                  <td><p>Footer accent color override</p></td>
                   <td>
                     <code>var(--rh-color-accent-brand-on-light, #ee0000)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-footer-section-side-gap</code></td>
-                  <td></td>
+                  <td><p>Footer section horizontal margin override</p></td>
                   <td>
                     <code>var(--rh-space-lg, 16px)</code>
                   </td>
@@ -14487,14 +14526,14 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                 </tr>
                 <tr>
                   <td><code>--rh-footer-links-gap</code></td>
-                  <td></td>
+                  <td><p>Vertical spacing between links in desktop columns</p></td>
                   <td>
                     <code>var(--rh-space-lg, 16px)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-footer-link-header-font-size</code></td>
-                  <td></td>
+                  <td><p>Footer link column header size override</p></td>
                   <td>
                     <code>var(--rh-font-size-body-text-sm, 0.875rem)</code>
                   </td>
@@ -14502,101 +14541,6 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
               </tbody>
             </table>
           </rh-table>
-          <rh-disclosure  summary="Deprecated CSS Custom Properties"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:dark only}:host([color-palette^=light]){color-scheme:light only}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{border-width:var(--rh-border-width-sm,1px);border-style:solid;border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default,3px);font-family:var(--rh-font-family-body-text);display:block}summary{background-color:var(--rh-color-surface);border-radius:var(--rh-border-radius-default,3px);color:var(--rh-color-text-primary);cursor:pointer;font-size:var(--rh-font-size-body-text-md,1rem);font-weight:var(--rh-font-weight-body-text-medium,500);padding-block:var(--rh-space-lg,16px);padding-inline:var(--rh-space-xl,24px);list-style:none}summary::marker{display:none}summary::-webkit-details-marker{display:none}summary:hover,summary:active,summary:focus{background-color:light-dark( var(--rh-color-surface-lighter,#f2f2f2), var(--rh-color-surface-dark,#383838))}summary:active,summary:focus{outline: var(--rh-border-width-md,2px) solid;outline-color:var(--rh-color-interactive-primary-default);outline-offset:-2px;z-index:2;position:relative}summary ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-weight:var(--rh-font-weight-body-text-medium,500);font-size:var(--rh-font-size-body-text-md,1rem)!important}summary ::slotted([slot=summary]:is(h1,h2,h3,h4,h5,h6)){display:inline}#caret{inline-size:var(--rh-space-lg,16px);block-size:var(--rh-space-lg,16px);will-change:rotate;margin-inline-end:var(--rh-space-md,8px);transition:all .2s;position:relative;inset-block-start:3px}#details-content{background-color:var(--rh-color-surface);border-radius:var(--rh-border-radius-default,3px);color:var(--rh-color-text-primary);font-size:var(--rh-font-size-body-text-md,1rem);line-height:var(--rh-line-height-body-text,1.5);padding-block: var(--rh-space-lg,16px)  var(--rh-space-xl,24px);padding-inline:var(--rh-space-xl,24px)}::slotted(:is(p,h1,h2,h3,h4,h5,h6):first-of-type){margin-block-start:0}::slotted(:is(p,li,dd):last-of-type){margin-block-end:0!important}details[open]{box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);position:relative}details[open] #caret{transform:rotate(-180deg)}details[open]:before{content:"";border-inline-start:3px solid  var(--rh-color-brand-red);z-index:1;border-start-start-radius:var(--rh-border-radius-default,3px);border-end-start-radius:var(--rh-border-radius-default,3px);position:absolute;inset-block:-1px;inset-inline-start:-1px}details[open].hasJumpLinks:before{border-inline-start-color:#0000}:host([variant~=compact]) summary{font-size:var(--rh-font-size-body-text-sm,.875rem);padding: var(--rh-space-md,8px)  var(--rh-space-lg,16px)}:host([variant~=compact]) summary rh-icon{--rh-icon-size:14px}:host([variant~=compact]) #details-content{padding-inline:var(--rh-space-lg,16px)}:host([variant~=borderless]){--_hover-background-color:light-dark( var(--rh-color-surface-lighter,#f2f2f2), var(--rh-color-surface-darker,#1f1f1f));--_open-background-color:var(--_hover-background-color);border:0}:host([variant~=borderless]) summary{color:var(--rh-color-interactive-primary-default)}:host([variant~=borderless]) summary:hover,:host([variant~=borderless]) summary:focus{background-color:var(--_hover-background-color);color:var(--rh-color-interactive-primary-hover)}:host([variant~=borderless]) summary:focus{outline-offset:var(--rh-length-3xs,2px)}:host([variant~=borderless]) details[open]{background-color:var(--_open-background-color);border-radius:var(--rh-border-radius-default,3px);box-shadow:none}:host([variant~=borderless]) details[open]:before{border-inline-start:0}:host([variant~=borderless]) details[open] summary{background-color:var(--_open-background-color)}:host([variant~=borderless]) details[open] summary:hover,:host([variant~=borderless]) details[open] summary:focus{background-color:light-dark( var(--rh-color-surface-light,#e0e0e0), var(--rh-color-surface-dark,#383838))}:host([variant~=borderless]) details[open] #details-content{background-color:#0000}</style><!--lit-part 2e329pB7hhU=-->
-      <!--lit-node 0--><details
-          
-          class="  "
-          
-          >
-        <summary>
-          <!--lit-node 2--><rh-icon    id="caret" set="ui" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part yJXr4tKetXA=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 24.792c-.384 0-.769-.146-1.061-.438L2.293 11.707a.999.999 0 1 1 1.414-1.414L16 22.586l12.293-12.293a.999.999 0 1 1 1.414 1.414L17.061 24.353a1.497 1.497 0 0 1-1.061.438Z"/></svg><!--/lit-part--><!--
-           Container for the fallback (i.e. slotted) content
-        --><!--lit-node 3--><span part="fallback" hidden><!--
-          summary: Fallback content when icon fails to load
-          description: |
-            Displayed only when the icon SVG cannot be resolved.
-            Should contain meaningful text or an alternative image
-            for screen readers if the icon conveys information.
-            Hidden automatically when icon loads successfully.
-        --><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-          <!-- summary: The clickable title text for the disclosure.
-               description: |
-                 Accepts inline text or a heading element (e.g.
-                 `<h2>`, `<h3>`). When a heading is slotted, it
-                 renders inline. Falls back to the `summary` attribute
-                 value when no slot content is provided. Authors should
-                 keep the summary short and descriptive; screen readers
-                 announce it as the accessible name for the disclosure
-                 trigger. When using a heading element, ensure its level
-                 fits the page outline so assistive technology presents
-                 correct heading hierarchy. -->
-          <slot name="summary"><!--lit-part-->Deprecated CSS Custom Properties<!--/lit-part--></slot>
-        </summary>
-        <div id="details-content">
-          <!-- summary: Content revealed when the disclosure is open.
-               description: |
-                 Accepts block-level elements such as paragraphs, lists,
-                 or nested components. Interactive children receive
-                 focus via Tab when the panel is expanded. Slotted
-                 content should follow WCAG reading order so screen
-                 readers present it logically. Authors should ensure
-                 that interactive elements inside the panel have
-                 visible focus indicators and accessible labels so
-                 keyboard and assistive-technology users can operate
-                 them. The escape key returns focus to the summary
-                 trigger unless the focused element is an input,
-                 select, textarea, or media control, in which case
-                 Escape is passed through to that element. -->
-          <slot></slot>
-        </div>
-      </details>
-    <!--/lit-part--></template>
-            <rh-table  compact><template shadowroot="open" shadowrootmode="open"><style>*{box-sizing:border-box}:host{scrollbar-color:var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);width:100%;color:var(--rh-color-text-primary);--_scrollbar-size:calc(10 / 16 * 1rem);--_scrollbar-thumb-color:var(--rh-color-gray-50,#707070);--_scrollbar-track-color:var(--rh-color-border-subtle);--_row-border: var(--rh-table-row-border,var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle-on-light,#c7c7c7));--_row-background-hover-color:light-dark(var(--rh-table-row-background-hover-color,rgba(from var(--rh-color-gray-40,#a3a3a3) r g b / .1)),rgba(from var(--rh-color-white,#fff) r g b / .1));--_column-background-hover-color:light-dark(var(--rh-table-column-background-hover-color,rgba(from var(--rh-color-blue-50,#06c) r g b / .1)),rgba(from var(--rh-color-blue-70,#036) r g b / .3));display:block;position:relative;overflow:auto}:host::-webkit-scrollbar{width:var(--_scrollbar-size);height:var(--_scrollbar-size)}:host::-webkit-scrollbar{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-track{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-thumb{background-color:var(--_scrollbar-thumb-color)}[slot]{display:block}::slotted([slot=summary]){padding:var(--rh-space-xl,24px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px);color:var(--rh-color-text-secondary);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:italic;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5);display:block}</style><!--lit-part DhG3hBsOx/E=-->
-      <div id="container" part="container">
-        <!-- summary: Default slot for the table element
-             description: |
-               Expects a native HTML `<table>` element with semantic
-               markup. Authors must include `<thead>`, `<tbody>`,
-               and scoped `<th>` elements so that screen readers
-               can navigate the table structure. -->
-        <!--lit-node 2--><slot 
-              
-              
-              ></slot>
-        <!-- summary: Summary slot for table description
-             description: |
-               An optional description of the table data displayed
-               below the table. The element links this content to the
-               table via `aria-describedby` for screen reader users.
-               Authors should use inline elements like `<small>`. -->
-        <slot id="summary" name="summary"></slot>
-      </div>
-    <!--/lit-part--></template>
-              <table>
-                <thead>
-                  <tr>
-                    <th scope="col">CSS Property</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Default</th>
-                    <th scope="col">Reason</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><code>--rh-footer-nojs-min-height</code></td>
-                    <td><p>Minimum height for the footer when JavaScript is disabled</p></td>
-                    <td><p>—</p></td>
-                    <td><p>target `rh-footer:not(:defined) directly</p></td>
-                  </tr>
-                </tbody>
-              </table>
-            </rh-table>
-          </rh-disclosure>
         </section>
     
         
@@ -14677,7 +14621,8 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Body text font family</p>
+                    <p>Footer typeface</p>
+<p>Body text font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -14793,7 +14738,8 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Line height for body text</p>
+                    <p>Footer line height</p>
+<p>Line height for body text</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -14909,7 +14855,8 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Subtle icon (hover state)</p>
+                    <p>Footer icon default on dark</p>
+<p>Subtle icon (hover state)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -15025,7 +14972,8 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Subtle borders (light theme)</p>
+                    <p>Footer icon hover default on dark</p>
+<p>Subtle borders (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -15141,7 +15089,8 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Subtle border color (dark theme)</p>
+                    <p>Footer border subtle on dark</p>
+<p>Subtle border color (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -15257,7 +15206,8 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Brand red (light theme)</p>
+                    <p>Footer accent brand on light</p>
+<p>Brand red (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -15373,7 +15323,9 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Lightest surface (light theme) or primary text (dark theme)</p>
+                    <p>Footer text color</p>
+<p>Universal footer accordion surface</p>
+<p>Lightest surface (light theme) or primary text (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -15489,7 +15441,8 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>40px icon box</p>
+                    <p>Footer logo width</p>
+<p>40px icon box</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -15605,7 +15558,8 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Regular font weight</p>
+                    <p>Footer body text weight</p>
+<p>Regular font weight</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -15721,7 +15675,8 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Heading font family</p>
+                    <p>Footer typeface</p>
+<p>Heading font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -15837,7 +15792,8 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Line height for headings</p>
+                    <p>Footer line height</p>
+<p>Line height for headings</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -16069,7 +16025,8 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>2px length token</p>
+                    <p>Debug mode outline width</p>
+<p>2px length token</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -16533,7 +16490,8 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>1px length token</p>
+                    <p>Footer height</p>
+<p>1px length token</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -16649,7 +16607,9 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Secondary surface (dark theme)</p>
+                    <p>Footer background</p>
+<p>Footer background</p>
+<p>Secondary surface (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -16765,7 +16725,8 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Primary surface (dark theme)</p>
+                    <p>Footer background</p>
+<p>Primary surface (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -16881,7 +16842,7 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Footer text color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -16997,7 +16958,9 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>8px spacer</p>
+                    <p>Primary global links row gap</p>
+<p>Secondary global links row gap</p>
+<p>8px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -17113,7 +17076,8 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>12px font size</p>
+                    <p>Footer text size</p>
+<p>12px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -17229,7 +17193,11 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>24px spacer</p>
+                    <p>Footer universal inline gap</p>
+<p>Primary global links column gap</p>
+<p>Secondary global links column gap</p>
+<p>Footer content gap</p>
+<p>24px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -17461,7 +17429,10 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Footer section horizontal margin</p>
+<p>Footer content gap</p>
+<p>Desktop link column row gap</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -17577,7 +17548,8 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>Medium font weight for headings</p>
+                    <p>Footer font weight</p>
+<p>Medium font weight for headings</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -17693,7 +17665,8 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>14px font size</p>
+                    <p>Footer link column header size</p>
+<p>14px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -17809,7 +17782,7 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Footer text color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -17925,7 +17898,13 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>32px spacer</p>
+                    <p>Footer section block padding</p>
+<p>Footer content gap</p>
+<p>Footer content gap</p>
+<p>Footer universal block gap</p>
+<p>Desktop link column inline gap</p>
+<p>Footer main padding block-start at viewport &gt;= md</p>
+<p>32px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -18041,7 +18020,8 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                     </a>
                   </td>
                   <td>
-                    <p>64px spacer</p>
+                    <p>Footer main padding block-end at viewport &gt;= md</p>
+<p>64px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -18280,18 +18260,29 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
 </main>
 
 
-<rh-footer-universal  ssr-hint-has-slotted="links-primary,links-secondary,tertiary" color-palette="darker"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:dark only}:host([color-palette^=light]){color-scheme:light only}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{color:var(--rh-color-white,#fff);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);line-height:var(--rh-line-height-body-text,1.5);font-weight:var(--_font-weight);font-size:initial;flex-direction:column;display:flex;color-scheme:dark only!important}@media (scripting:none){:host{min-height:var(--rh-footer-nojs-min-height)}}:host,::slotted(rh-footer-universal){overflow-y:initial;--_fallback-animation:nothing-doing!important;--_fallback-opacity:1!important}footer,.global-base{--_icon-color:var(--rh-footer-icon-color,var(--rh-color-gray-40,#a3a3a3));--_icon-color-hover:var(--rh-footer-icon-color-hover,var(--rh-color-gray-30,#c7c7c7));--_border-color:var(--rh-footer-border-color,var(--rh-color-border-subtle-on-dark,#707070));--_accent-color:var(--rh-footer-accent-color,var(--rh-color-accent-brand-on-light,#e00));--_section-side-gap:var(--rh-footer-section-side-gap,var(--rh-space-lg,16px));--_accordion-background:var(--rh-color-white,#fff);--_logo-width:var(--rh-size-icon-04,40px);--_font-weight:var(--rh-font-weight-body-text-regular,400)}*{box-sizing:border-box}::slotted(:is(h1,h2,h3,h4,h5,h6)){font-family:var(--rh-font-family-heading,RedHatDisplay, "Red Hat Display", Helvetica, Arial, sans-serif)!important;line-height:var(--rh-line-height-heading,1.3)!important}:host([debug]) :not(.spacer,.base,a,svg){min-height:var(--rh-length-xl,24px);outline:var(--rh-length-3xs,2px) dotted red;position:relative}:host([debug]) :not(.spacer,.base,a,svg):after{content:attr(part);color:#fff;padding:var(--rh-space-xs,4px);font-family:var(--rh-font-family-code,RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);font-size:var(--rh-font-size-code-xs,.75rem);background-color:#2f4f4f;display:block;position:absolute;top:0;right:0}.section{padding:var(--rh-space-2xl,32px) var(--_section-side-gap)}.header{background-color:var(--rh-color-surface-darker,#1f1f1f);gap:var(--rh-space-2xl,32px);flex-wrap:wrap;align-items:center;display:flex;position:relative}.header:after{content:"";background-color:var(--_border-color);height:var(--rh-length-4xs,1px);width:calc(100% - var(--_section-side-gap) * 2);bottom:0;left:var(--_section-side-gap);display:none;position:absolute}.header-primary{flex:auto}.header-secondary{flex:0 auto}.main{background-color:var(--rh-color-surface-darker,#1f1f1f);gap:var(--rh-space-2xl,32px);padding-top:0;display:grid}.main-secondary{gap:var(--pf-global--spacer--xl,32px);place-content:start;place-items:baseline;display:grid}.global-base{--rh-footer-link-font-size:var(--rh-font-size-body-text-xs,.75rem);background-color:var(--rh-color-surface-darkest,#151515);gap:var(--rh-space-2xl,32px) var(--rh-space-xl,24px);grid-template-columns:1fr;grid-template-areas:"logo""primary""spacer""secondary""tertiary";line-height:100%;display:grid}.global-logo{width:var(--_logo-width);grid-area:logo}.global-logo-image{fill:var(--_icon-color)}.global-logo-image:is(:hover,:focus-within){fill:var(--_icon-color-hover)}.global-primary{grid-area:primary}.global-secondary{color:var(--rh-color-text-secondary);gap:var(--rh-space-lg,16px);flex-direction:column;grid-area:secondary;justify-content:space-between;display:flex}.global-tertiary{grid-area:tertiary;justify-content:start;align-items:start;display:grid}.global-links-primary,.global-links-secondary{gap:var(--rh-space-md,8px) var(--rh-space-xl,24px);flex-direction:column;display:flex}:is(.global-primary,.global-secondary,.global-tertiary) ::slotted(*){font-size:var(--rh-font-size-body-text-xs,.75rem)!important}.logo{line-height:0}.social-links{margin-inline-start:0;padding-inline-start:0;display:flex}.social-links rh-footer-links,.social-links slot::slotted(rh-footer-links){gap:var(--rh-space-xl,24px);flex-direction:row;display:flex}:is(.links,.global-links-primary,.global-links-secondary) ::slotted(ul){margin:0;padding:0;display:contents}.isMobile .links{--rh-footer-link-header-font-size:var(--rh-font-size-body-text-lg,1.125rem)}.isMobile .links ::slotted(ul){--rh-footer-link-font-size:1em;gap:calc(var(--rh-space-2xl,32px) / 2);grid-template-columns:1fr;display:grid}#heading,#global-heading{width:0;height:0;display:flex;position:absolute;left:-10000000px;overflow:hidden}[part=base]:not(.isMobile) .links{grid-template-columns:repeat(1fr, 25%);gap:var(--rh-space-lg,16px) var(--rh-space-2xl,32px);grid-template-rows:repeat(1,min-content auto);grid-auto-columns:minmax(0,1fr);grid-auto-flow:column;display:grid}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):first-of-type){grid-area:1/1/2/2}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(2)){grid-area:1/2/2/3}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(3)){grid-area:1/3/2/4}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(4)){grid-area:1/4/2/5}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(5)){grid-area:3/1/4/2}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(6)){grid-area:3/2/4/3}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(7)){grid-area:3/3/4/4}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(8)){grid-area:3/4/4/5}[part=base]:not(.isMobile) .links ::slotted(:is(ul:first-of-type)){grid-area:2/1/3/2}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(2))){grid-area:2/2/3/3}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(3))){grid-area:2/3/3/4}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(4))){grid-area:2/4/3/5}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(5))){grid-area:4/1/5/2}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(6))){grid-area:4/2/5/3}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(7))){grid-area:4/3/5/4}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(8))){grid-area:4/4/5/5}[part=base]:not(.isMobile) .links ::slotted(ul){gap:var(--rh-footer-links-gap,var(--rh-space-lg,16px));flex-direction:column;display:flex}#footer-logo{width:var(--_logo-width)}:is(.links,.global-links-primary,.global-links-secondary) ::slotted(:is(h1,h2,h3,h4,h5)){font-weight:var(--rh-font-weight-heading-medium,500)!important;margin-block:0!important;font-size:var(--rh-footer-link-header-font-size,var(--rh-font-size-body-text-sm,.875rem))!important;color:var(--rh-color-text-primary)!important;margin-block-start:var(--_link-header-margin,0)!important}::slotted(rh-footer-copyright){grid-column:-1/1}@media screen and (width>=768px){.global-base{grid-template-columns:4fr 4fr 4fr;grid-template-areas:"logo logo logo""primary primary primary""spacer spacer spacer""secondary secondary secondary"}.global-base.hasTertiary{grid-template-columns:4fr 4fr 4fr;grid-template-areas:"logo logo logo""primary primary primary""spacer spacer spacer""secondary secondary tertiary"}}@media screen and (width>=992px){.global-base:not(.nothing){grid-template:"logo primary tertiary"max-content"logo secondary tertiary"max-content/auto 10fr 2fr;gap:24px 32px}.global-primary{display:flex}}.spacer{border-bottom:1px solid var(--_border-color);grid-area:spacer}@media screen and (width>=992px){.spacer{display:none}.global-tertiary{justify-content:flex-end;align-items:center;display:grid}}@media screen and (width>=320px){.global-links-primary,.global-links-secondary{grid-template-columns:1fr 1fr;display:grid}}@media screen and (width>=768px){.global-links-primary,.global-links-secondary{grid-template-columns:1fr 1fr 1fr;display:grid}.hasTertiary .global-links-secondary{grid-template-columns:1fr 1fr;display:grid}}@media screen and (width>=992px){.global-links-primary{flex-flow:wrap;align-items:center;display:flex}:not(.hasTertiary) .global-links-secondary{flex-flow:wrap;gap:8px 24px;display:flex}}@media screen and (width<=992px){.global-logo{grid-area:logo}.global-primary{grid-area:primary}}@media screen and (width>=992px){.header:after{display:block}.main{padding-top:var(--rh-space-2xl,32px);padding-bottom:var(--rh-space-4xl,64px)}}@media screen and (width>=992px) and (width<=1368px){.header,.main{grid-template-columns:8fr 4fr;display:grid}}@media screen and (width>=1368px){.header,.main{grid-template-columns:8fr 4fr;display:grid}}@media screen and (width>=768px){.isMobile .links ::slotted(ul){grid-template-columns:1fr 1fr}}</style><!--lit-part ytCLYKVlgHQ=-->
+<rh-footer-universal  ssr-hint-has-slotted="links-primary,links-secondary,tertiary" color-palette="darker"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:dark only}:host([color-palette^=light]){color-scheme:light only}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{color:var(--rh-color-white,#fff);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);line-height:var(--rh-line-height-body-text,1.5);font-weight:var(--_font-weight);font-size:initial;flex-direction:column;display:flex;color-scheme:dark only!important}@media (scripting:none){:host{min-height:var(--rh-footer-nojs-min-height)}}:host,::slotted(rh-footer-universal){overflow-y:initial;--_fallback-animation:nothing-doing!important;--_fallback-opacity:1!important}footer,.global-base{--_icon-color: var(--rh-footer-icon-color, var(--rh-color-gray-40,#a3a3a3));--_icon-color-hover: var(--rh-footer-icon-color-hover, var(--rh-color-gray-30,#c7c7c7));--_border-color: var(--rh-footer-border-color, var(--rh-color-border-subtle-on-dark,#707070));--_accent-color: var(--rh-footer-accent-color, var(--rh-color-accent-brand-on-light,#e00));--_section-side-gap: var(--rh-footer-section-side-gap, var(--rh-space-lg,16px));--_accordion-background:var(--rh-color-white,#fff);--_logo-width:var(--rh-size-icon-04,40px);--_font-weight:var(--rh-font-weight-body-text-regular,400)}*{box-sizing:border-box}::slotted(:is(h1,h2,h3,h4,h5,h6)){font-family:var(--rh-font-family-heading,RedHatDisplay, "Red Hat Display", Helvetica, Arial, sans-serif)!important;line-height:var(--rh-line-height-heading,1.3)!important}:host([debug]) :not(.spacer,.base,a,svg){min-height:var(--rh-length-xl,24px);outline: var(--rh-length-3xs,2px) dotted red;position:relative}:host([debug]) :not(.spacer,.base,a,svg):after{content:attr(part);color:#fff;padding:var(--rh-space-xs,4px);font-family:var(--rh-font-family-code,RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);font-size:var(--rh-font-size-code-xs,.75rem);background-color:#2f4f4f;display:block;position:absolute;top:0;right:0}.section{padding: var(--rh-space-2xl,32px) var(--_section-side-gap)}.header{background-color:var(--rh-color-surface-darker,#1f1f1f);gap:var(--rh-space-2xl,32px);flex-wrap:wrap;align-items:center;display:flex;position:relative}.header:after{content:"";background-color:var(--_border-color);height:var(--rh-length-4xs,1px);width:calc(100% - var(--_section-side-gap) * 2);bottom:0;left:var(--_section-side-gap);display:none;position:absolute}.header-primary{flex:auto}.header-secondary{flex:0 auto}.main{background-color:var(--rh-color-surface-darker,#1f1f1f);gap:var(--rh-space-2xl,32px);padding-top:0;display:grid}.main-secondary{gap:var(--pf-global--spacer--xl,32px);place-content:start;place-items:baseline;display:grid}.global-base{--rh-footer-link-font-size:var(--rh-font-size-body-text-xs,.75rem);background-color:var(--rh-color-surface-darkest,#151515);gap: var(--rh-space-2xl,32px)  var(--rh-space-xl,24px);grid-template-columns:1fr;grid-template-areas:"logo""primary""spacer""secondary""tertiary";line-height:100%;display:grid}.global-logo{width:var(--_logo-width);grid-area:logo}.global-logo-image{fill:var(--_icon-color)}.global-logo-image:is(:hover,:focus-within){fill:var(--_icon-color-hover)}.global-primary{grid-area:primary}.global-secondary{color:var(--rh-color-text-secondary);gap:var(--rh-space-lg,16px);flex-direction:column;grid-area:secondary;justify-content:space-between;display:flex}.global-tertiary{grid-area:tertiary;justify-content:start;align-items:start;display:grid}.global-links-primary{gap: var(--rh-space-md,8px)  var(--rh-space-xl,24px);flex-direction:column;display:flex}.global-links-secondary{gap: var(--rh-space-md,8px)  var(--rh-space-xl,24px);flex-direction:column;display:flex}:is(.global-primary,.global-secondary,.global-tertiary) ::slotted(*){font-size:var(--rh-font-size-body-text-xs,.75rem)!important}.logo{line-height:0}.social-links{margin-inline-start:0;padding-inline-start:0;display:flex}.social-links rh-footer-links,.social-links slot::slotted(rh-footer-links){gap:var(--rh-space-xl,24px);flex-direction:row;display:flex}:is(.links,.global-links-primary,.global-links-secondary) ::slotted(ul){margin:0;padding:0;display:contents}.isMobile .links{--rh-footer-link-header-font-size:var(--rh-font-size-body-text-lg,1.125rem)}.isMobile .links ::slotted(ul){--rh-footer-link-font-size:1em;gap:calc(var(--rh-space-2xl,32px) / 2);grid-template-columns:1fr;display:grid}#heading,#global-heading{width:0;height:0;display:flex;position:absolute;left:-10000000px;overflow:hidden}[part=base]:not(.isMobile) .links{grid-template-columns:repeat(1fr, 25%);gap: var(--rh-space-lg,16px)  var(--rh-space-2xl,32px);grid-template-rows:repeat(1,min-content auto);grid-auto-columns:minmax(0,1fr);grid-auto-flow:column;display:grid}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):first-of-type){grid-area:1/1/2/2}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(2)){grid-area:1/2/2/3}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(3)){grid-area:1/3/2/4}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(4)){grid-area:1/4/2/5}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(5)){grid-area:3/1/4/2}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(6)){grid-area:3/2/4/3}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(7)){grid-area:3/3/4/4}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(8)){grid-area:3/4/4/5}[part=base]:not(.isMobile) .links ::slotted(:is(ul:first-of-type)){grid-area:2/1/3/2}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(2))){grid-area:2/2/3/3}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(3))){grid-area:2/3/3/4}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(4))){grid-area:2/4/3/5}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(5))){grid-area:4/1/5/2}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(6))){grid-area:4/2/5/3}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(7))){grid-area:4/3/5/4}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(8))){grid-area:4/4/5/5}[part=base]:not(.isMobile) .links ::slotted(ul){gap:var(--rh-footer-links-gap,var(--rh-space-lg,16px));flex-direction:column;display:flex}#footer-logo{width:var(--_logo-width)}:is(.links,.global-links-primary,.global-links-secondary) ::slotted(:is(h1,h2,h3,h4,h5)){font-weight:var(--rh-font-weight-heading-medium,500)!important;margin-block:0!important;font-size: var(--rh-footer-link-header-font-size, var(--rh-font-size-body-text-sm,.875rem))!important;color:var(--rh-color-text-primary)!important;margin-block-start:var(--_link-header-margin,0)!important}::slotted(rh-footer-copyright){grid-column:-1/1}@media screen and (width>=768px){.global-base{grid-template-columns:4fr 4fr 4fr;grid-template-areas:"logo logo logo""primary primary primary""spacer spacer spacer""secondary secondary secondary"}.global-base.hasTertiary{grid-template-columns:4fr 4fr 4fr;grid-template-areas:"logo logo logo""primary primary primary""spacer spacer spacer""secondary secondary tertiary"}}@media screen and (width>=992px){.global-base:not(.nothing){grid-template:"logo primary tertiary"max-content"logo secondary tertiary"max-content/auto 10fr 2fr;gap:24px 32px}.global-primary{display:flex}}.spacer{border-bottom:1px solid var(--_border-color);grid-area:spacer}@media screen and (width>=992px){.spacer{display:none}.global-tertiary{justify-content:flex-end;align-items:center;display:grid}}@media screen and (width>=320px){.global-links-primary,.global-links-secondary{grid-template-columns:1fr 1fr;display:grid}}@media screen and (width>=768px){.global-links-primary,.global-links-secondary{grid-template-columns:1fr 1fr 1fr;display:grid}.hasTertiary .global-links-secondary{grid-template-columns:1fr 1fr;display:grid}}@media screen and (width>=992px){.global-links-primary{flex-flow:wrap;align-items:center;display:flex}:not(.hasTertiary) .global-links-secondary{flex-flow:wrap;gap:8px 24px;display:flex}}@media screen and (width<=992px){.global-logo{grid-area:logo}.global-primary{grid-area:primary}}@media screen and (width>=992px){.header:after{display:block}.main{padding-top:var(--rh-space-2xl,32px);padding-bottom:var(--rh-space-4xl,64px)}}@media screen and (width>=992px) and (width<=1368px){.header,.main{grid-template-columns:8fr 4fr;display:grid}}@media screen and (width>=1368px){.header,.main{grid-template-columns:8fr 4fr;display:grid}}@media screen and (width>=768px){.isMobile .links ::slotted(ul){grid-template-columns:1fr 1fr}}</style><!--lit-part DCEaeMXxs7I=-->
       <!--lit-node 0--><footer >
         <!--lit-node 1--><h2 id="global-heading" >
-          <!-- text that describes the footer section to assistive tecchnology. Contains default text "Red Hat footer". -->
+          <!-- summary: visually-hidden heading for assistive technology
+               description: |
+                 Expects inline text. Screen readers use this heading to identify the
+                 universal footer region. Defaults to "Red Hat footer". Hidden if a
+                 parent `<h2>` already exists. -->
           <slot name="heading">Red Hat footer</slot>
         </h2>
-        <!-- base -->
-        <!--lit-node 5--><div class="section global-base  hasTertiary " part="section base">
+        <!--lit-node 4--><div class="section global-base  hasTertiary " part="section base">
+          <!-- summary: overrides all universal footer content (base slot)
+               description: |
+                 Expects block elements. Replaces the entire universal footer structure.
+                 Avoid using; bypasses all built-in layout, grid regions, responsive
+                 behavior, and ARIA landmark wiring. -->
           <slot name="base">
-            <!-- logo -->
             <div class="global-logo" part="logo">
-              <!-- logo -->
+              <!-- summary: Red Hat logo (logo slot)
+                   description: |
+                     Expects block elements: an `<a>` wrapping an `<img>` or `<svg>`.
+                     Defaults to the Red Hat logo SVG linking to redhat.com. Screen
+                     readers rely on the anchor `aria-label` for identification. -->
               <slot name="logo">
                 <a class="global-logo-anchor"
                     part="logo-anchor"
@@ -18317,52 +18308,79 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                 </a>
               </slot>
             </div>
-            <!-- primary -->
             <div class="global-primary" part="primary">
-              <!-- primary -->
+              <!-- summary: overrides primary-start, links-primary, and primary-end (primary slot)
+                   description: |
+                     Expects block elements. Replaces the entire primary link region.
+                     Override only when the three sub-slots are insufficient.
+                     Screen readers navigate child links as a group. -->
               <slot name="primary">
-                <!-- primary-start -->
-                <!--lit-node 24--><div class="global-primary-start" part="primary-start" hidden>
-                  <!-- primary-start -->
+                <!--lit-node 21--><div class="global-primary-start" part="primary-start" hidden>
+                  <!-- summary: content before primary links (primary-start slot)
+                       description: |
+                         Expects inline or block elements placed before the primary
+                         global navigation links. Screen readers encounter this
+                         content before the link list. -->
                   <slot name="primary-start"></slot>
                 </div>
-                <!-- links-primary -->
-                <!--lit-node 28--><div class="global-links-primary" part="links-primary" >
-                  <!-- links-primary -->
+                <!--lit-node 24--><div class="global-links-primary" part="links-primary" >
+                  <!-- summary: primary global navigation links (links-primary slot)
+                       description: |
+                         Expects block elements: a `<ul>` of `<li>` anchor links for
+                         primary global Red Hat navigation. Screen readers announce
+                         the list group; Tab moves through each link. -->
                   <slot name="links-primary"></slot>
                 </div>
-                <!-- primary-end -->
-                <!--lit-node 32--><div class="global-primary-end" part="primary-end" hidden>
-                  <!-- primary-end -->
+                <!--lit-node 27--><div class="global-primary-end" part="primary-end" hidden>
+                  <!-- summary: content after primary links (primary-end slot)
+                       description: |
+                         Expects inline or block elements placed after the primary
+                         global navigation links. Screen readers encounter this
+                         content after the link list. -->
                   <slot name="primary-end"></slot>
                 </div>
               </slot>
             </div>
             <div class="spacer" part="spacer"></div>
-            <!-- secondary -->
             <div class="global-secondary" part="secondary">
-              <!-- secondary -->
+              <!-- summary: overrides secondary-start, links-secondary, and secondary-end (secondary slot)
+                   description: |
+                     Expects block elements. Replaces the entire secondary link region.
+                     Override only when the three sub-slots are insufficient.
+                     Screen readers navigate child links as a group. -->
               <slot name="secondary">
-                <!-- secondary-start -->
-                <!--lit-node 41--><div class="global-secondary-start" part="secondary-start" hidden>
-                  <!-- secondary-start -->
+                <!--lit-node 34--><div class="global-secondary-start" part="secondary-start" hidden>
+                  <!-- summary: content before secondary links, e.g. copyright (secondary-start slot)
+                       description: |
+                         Expects block elements such as `<rh-footer-copyright>`, placed
+                         before the secondary links. Screen readers announce this
+                         content in DOM order within the footer landmark. -->
                   <slot name="secondary-start"></slot>
                 </div>
-                <!-- links-secondary -->
-                <!--lit-node 45--><div class="global-links-secondary" part="links-secondary" >
-                  <!-- links-secondary -->
+                <!--lit-node 37--><div class="global-links-secondary" part="links-secondary" >
+                  <!-- summary: secondary global navigation links (links-secondary slot)
+                       description: |
+                         Expects block elements: a `<ul>` of `<li>` anchor links for
+                         secondary global Red Hat navigation. Screen readers announce
+                         the list group; Tab moves through each link. -->
                   <slot name="links-secondary"></slot>
                 </div>
-                <!-- secondary-end -->
-                <!--lit-node 49--><div class="global-secondary-end" part="secondary-end" hidden>
-                  <!-- secondary-end -->
+                <!--lit-node 40--><div class="global-secondary-end" part="secondary-end" hidden>
+                  <!-- summary: content after secondary links (secondary-end slot)
+                       description: |
+                         Expects inline or block elements placed after the secondary
+                         global navigation links. Screen readers encounter this
+                         content after the secondary link list. -->
                   <slot name="secondary-end"></slot>
                 </div>
               </slot>
             </div>
-            <!-- tertiary -->
-            <!--lit-node 53--><div class="global-tertiary" part="tertiary" >
-              <!-- tertiary -->
+            <!--lit-node 43--><div class="global-tertiary" part="tertiary" >
+              <!-- summary: optional third content region (tertiary slot)
+                   description: |
+                     Expects block elements such as a language selector or custom
+                     widget. Hidden when nothing is slotted. Screen readers
+                     encounter this region after the secondary links. -->
               <slot name="tertiary"></slot>
             </div>
           </slot>
@@ -18381,7 +18399,13 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
     <li><a href="https://coolstuff.redhat.com/" data-analytics-category="Footer|Corporate" data-analytics-text="Cool Stuff Store">Cool Stuff Store</a></li>
     <li><a href="https://www.redhat.com/en/summit" data-analytics-category="Footer|Corporate" data-analytics-text="Red Hat Summit">Red Hat Summit</a></li>
   </ul>
-  <rh-footer-copyright  slot="links-secondary"><template shadowroot="open" shadowrootmode="open"><style>:host{flex:auto;width:100%;display:block}</style><!--lit-part y969N7KpXmI=--><slot>&copy; <!--lit-part-->2026<!--/lit-part--> Red Hat</slot><!--/lit-part--></template>© 2026 Red Hat</rh-footer-copyright>
+  <rh-footer-copyright  slot="links-secondary"><template shadowroot="open" shadowrootmode="open"><style>:host{flex:auto;width:100%;display:block}</style><!--lit-part EMyLN9QaMvg=--><!-- summary: copyright text content (default slot)
+         description: |
+           Expects inline text containing the copyright notice. Defaults to
+           "© [current year] Red Hat" if not provided. Screen readers announce
+           this text within the footer landmark; it is not focusable via Tab.
+           Override for a different entity or localized text. -->
+      <slot>&copy; <!--lit-part-->2026<!--/lit-part--> Red Hat</slot><!--/lit-part--></template>© 2026 Red Hat</rh-footer-copyright>
   <h3 slot="links-secondary" data-analytics-text="Red Hat legal and privacy links" hidden="">Red Hat legal and privacy links</h3>
   <ul slot="links-secondary" data-analytics-region="page-footer-bottom-secondary">
     <li><a href="https://redhat.com/en/about/privacy-policy" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Privacy statement">Privacy statement</a></li>
