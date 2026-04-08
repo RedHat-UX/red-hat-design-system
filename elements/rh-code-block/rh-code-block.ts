@@ -49,14 +49,12 @@ export class RhCodeBlockCopyEvent extends Event {
 }
 
 /**
- * Displays read-only code snippets with optional syntax highlighting, line
- * numbers, copy-to-clipboard, and word-wrap controls. Authors MUST place
- * source inside a `<script type="text/sample-...">` or `<pre>` child.
- * Supports client-side Prism.js highlighting or prerendered markup. Users
- * SHOULD provide the `actions` attribute for copy/wrap buttons. The content
- * area is keyboard-scrollable via Tab; action buttons respond to Enter and
- * Space. Screen readers perceive code as a scrollable region. AVOID nesting
- * interactive elements inside the code content slot.
+ * A read-only code viewer for formatted snippets that allows syntax
+ * highlighting, line numbers, and copy/wrap actions. Source must be
+ * in a `<script type="text/sample-...">` or `<pre>` child. The code
+ * region is keyboard-scrollable; screen readers announce it via ARIA
+ * as a scrollable area. Authors should avoid nesting interactive
+ * elements inside the code slot.
  *
  * @alias code-block
  *
@@ -116,7 +114,7 @@ export class RhCodeBlock extends LitElement {
    * clipboard button; `'wrap'` adds a word-wrap toggle. Defaults to `[]`
    * (no actions shown). Labels can be overridden via the `action-label-copy`
    * and `action-label-wrap` slots for internationalization. The active-state
-   * element MUST have `hidden data-code-block-state="active"`.
+   * element must have `hidden data-code-block-state="active"`.
    *
    * @example html```
    *          <rh-code-block actions="copy wrap">
@@ -261,11 +259,11 @@ export class RhCodeBlock extends LitElement {
                ?hidden="${!this.#prismOutput}">${this.#prismOutput}</pre>
           <!-- summary: code content (default slot)
                description: |
-                 A non-executable \`<script type="text/sample-...">\` or \`<pre>\` element
-                 containing the source code to display. JavaScript samples SHOULD use
-                 \`type="text/sample-javascript"\`. HTML samples containing \`</script>\`
-                 MUST escape the closing tag. Screen readers announce the content as a
-                 scrollable code region. -->
+                 Expects a non-executable \`<script type="text/sample-...">\` or \`<pre>\`
+                 element containing source code. JavaScript samples should use
+                 \`type="text/sample-javascript"\`. This region is keyboard-scrollable
+                 and exposed to assistive technology as a scrollable code area;
+                 avoid placing focusable or interactive children here. -->
           <slot id="content"
                 ?hidden="${!!this.#prismOutput}"
                 @slotchange="${this.#onSlotChange}"></slot>
@@ -276,7 +274,11 @@ export class RhCodeBlock extends LitElement {
              @keyup="${this.#onActionsKeyup}">
         ${!this.actions.includes('copy') ? '' : html`
           <rh-tooltip silent>
-            <!-- Tooltip content for the copy action button -->
+            <!-- summary: copy button label (action-label-copy slot)
+                 description: |
+                   Expects inline text or \`<span>\` elements providing labels for
+                   the copy button's default, active, and failed states. Wired to
+                   \`aria-labelledby\` so screen readers announce the current state. -->
             <slot slot="content" name="action-label-copy">
               <span ?hidden="${this.copyButtonState !== 'default'}" id="copy-to-clipboard-label">Copy to Clipboard</span>
               <span ?hidden="${this.copyButtonState !== 'active'}" id="copied-label">Copied!</span>
@@ -291,7 +293,11 @@ export class RhCodeBlock extends LitElement {
           </rh-tooltip>`}
           ${!this.actions.includes('wrap') ? '' : html`
             <rh-tooltip silent>
-             <!-- Tooltip content for the wrap action button -->
+             <!-- summary: wrap button label (action-label-wrap slot)
+                  description: |
+                    Expects inline text or \`<span>\` elements providing labels for
+                    the wrap toggle's default and active states. Wired to
+                    \`aria-labelledby\` so screen readers announce the current state. -->
              <slot id="label-wrap" slot="content" name="action-label-wrap">
                <span ?hidden="${this.wrap}">Toggle word wrap</span>
                <span ?hidden="${!this.wrap}"
@@ -316,15 +322,17 @@ export class RhCodeBlock extends LitElement {
           <span ?hidden="${this.fullHeight}" id="show-more-label">
             <!-- summary: collapsed toggle label (show-more slot)
                  description: |
-                   Text for the expand button when code is collapsed. Defaults to
-                   "Show more". Announced by screen readers as button label. -->
+                   Expects inline text for the expand button when code is collapsed.
+                   Defaults to "Show more". Wired to \`aria-labelledby\` so screen
+                   readers announce it as the button's accessible name. -->
             <slot name="show-more">Show more</slot>
           </span>
           <span ?hidden="${!this.fullHeight}" id="show-less-label">
           <!-- summary: expanded toggle label (show-less slot)
                description: |
-                 Text for the collapse button when code is expanded. Defaults to
-                 "Show less". Announced by screen readers as button label. -->
+                 Expects inline text for the collapse button when code is expanded.
+                 Defaults to "Show less". Wired to \`aria-labelledby\` so screen
+                 readers announce it as the button's accessible name. -->
             <slot name="show-less">Show less</slot>
           </span>
           <svg xmlns="http://www.w3.org/2000/svg"
@@ -337,9 +345,11 @@ export class RhCodeBlock extends LitElement {
 
       <!-- summary: code callout legend (legend slot)
            description: |
-             A \`<dl>\` element containing \`<rh-badge>\` in \`<dt>\` and legend text in
-             \`<dd>\` elements. Provides a key for callout annotations within the
-             code block. Hidden when no content is slotted. -->
+             Expects a \`<dl>\` element containing \`<rh-badge>\` in \`<dt>\` and legend
+             text in \`<dd>\` elements. Provides a key for callout annotations
+             within the code block. Screen readers announce the list structure
+             so users can correlate badges with their descriptions. Hidden when
+             no content is slotted. -->
       <slot name="legend" ?hidden="${this.#slots.isEmpty('legend')}"></slot>
     `;
   }
