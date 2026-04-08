@@ -4,41 +4,67 @@
 
 #container {
   display: inline-flex;
+
+  /** Spacing container padding */
   padding: var(--rh-space-lg, 16px);
+
+  /** Border radius container */
   border-radius: var(--rh-border-radius-default, 3px);
   min-width: 150px;
 
   &.success {
     background-color:
-      light-dark(var(--rh-color-surface-status-success),
-        var(--rh-color-surface-dark, #383838));
+      light-dark(
+          /** Operational state background color on light scheme */
+          var(--rh-color-surface-status-success),
+          /** Operational state background color on dark scheme */
+          var(--rh-color-surface-dark, #383838)
+        );
   }
 
   &.warning {
     background-color:
-      light-dark(var(--rh-color-surface-status-warning),
-        var(--rh-color-surface-dark, #383838));
+      light-dark(
+          /** Degraded state background color on light scheme */
+          var(--rh-color-surface-status-warning),
+          /** Degraded state background color on dark scheme */
+          var(--rh-color-surface-dark, #383838)
+        );
   }
 
   &.danger {
     background-color:
-      light-dark(var(--rh-color-surface-status-danger),
-        var(--rh-color-surface-dark, #383838));
+      light-dark(
+          /** Critical state background color on light scheme */
+          var(--rh-color-surface-status-danger),
+          /** Critical state background color on dark scheme */
+          var(--rh-color-surface-dark, #383838)
+        );
   }
 
   &.loading {
     background-color:
-      light-dark(var(--rh-color-surface-light, #e0e0e0),
-        var(--rh-color-surface-dark, #383838));
+      light-dark(
+          /** Loading background color on light scheme */
+          var(--rh-color-surface-light, #e0e0e0),
+          /** Loading background color on dark scheme */
+          var(--rh-color-surface-dark, #383838)
+        );
   }
 }
 
 a {
   display: inline-flex;
+
+  /** Link font size */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   text-decoration: none;
   align-items: center;
+
+  /** Link gap between text and icon */
   gap: var(--rh-space-md, 8px);
+
+  /** Link font color */
   color: var(--rh-color-text-primary);
   text-transform: lowercase;
 }
@@ -48,7 +74,14 @@ span:first-letter {
 }
 
 a:focus {
-  outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
+  outline:
+    /** Link focus outline */
+    var(--rh-border-width-md, 2px)
+    solid
+    /** Link focus outline color */
+    var(--rh-color-border-interactive);
+
+  /** Link focus border radius */
   border-radius: var(--rh-border-radius-default, 3px);
 }
 
@@ -57,10 +90,27 @@ a:is(:hover,:focus) {
 }
 
 rh-icon {
+  /** Status Icon width */
   width: var(--rh-size-icon-01, 16px);
+
+  /** Status Icon height  */
   height: var(--rh-size-icon-01, 16px);
+
+  /** Status Icon color */
   color: var(--rh-color-white, #ffffff);
-  &.success { color: var(--rh-color-status-success); }
-  &.warning { color: var(--rh-color-status-warning); }
-  &.danger { color: var(--rh-color-status-danger); }
+
+  &.success {
+    /** Operational state icon status color */
+    color: var(--rh-color-status-success);
+  }
+
+  &.warning {
+    /** Degraded state icon status color  */
+    color: var(--rh-color-status-warning);
+  }
+
+  &.danger {
+    /** Critical state icon status color  */
+    color: var(--rh-color-status-danger);
+  }
 }
