@@ -22,11 +22,25 @@ function isHeaderTagName(tagName: string) {
 }
 
 /**
- * A footer displays secondary content and legal information to users who reach the bottom of a page.
+ * Site footer for navigation links, social icons, and legal content.
+ * Use when a page needs branded footer navigation. Must slot an
+ * `rh-footer-universal` in the `universal` slot and should contain
+ * `rh-footer-links` groups and `rh-footer-block` sections. Uses a
+ * `<footer>` landmark with `aria-labelledby` auto-wired to headers.
+ * Tab navigates links. On mobile, collapses to accordion.
  *
- * @summary Displays secondary information at the bottom of a page
+ * @summary Site footer with navigation links, social icons, and legal content
  *
  * @alias footer
+ *
+ * @cssprop --rh-footer-nojs-min-height - Minimum height when JavaScript is disabled. @deprecated target `rh-footer:not(:defined)` directly
+ * @cssprop --rh-footer-icon-color - Default icon color. Uses --rh-color-gray-40 design token
+ * @cssprop --rh-footer-icon-color-hover - Icon color on hover/focus. Uses --rh-color-gray-30 design token
+ * @cssprop --rh-footer-border-color - Border color for section dividers. Uses --rh-color-border-subtle-on-dark design token
+ * @cssprop --rh-footer-accent-color - Accent color for emphasis. Uses --rh-color-accent-brand-on-light design token
+ * @cssprop --rh-footer-section-side-gap - Horizontal padding for footer sections. Responsive: 16px / 32px / 64px
+ * @cssprop --rh-footer-links-gap - Vertical spacing between footer link items. Defaults to --rh-space-lg
+ * @cssprop --rh-footer-link-header-font-size - Font size for link column headers. Defaults to --rh-font-size-body-text-sm
  */
 @customElement('rh-footer')
 export class RhFooter extends LitElement {
@@ -69,20 +83,38 @@ export class RhFooter extends LitElement {
     return html`
       <!-- main footer element, containing all footer content -->
       <footer class="base ${classMap({ isMobile: this.#compact })}" part="base">
-        <h2 id="heading"><!-- text that describes the footer section to assistive technology. Contains default text "Red Hat footer". --><slot name="heading">Red Hat footer</slot></h2>
-        <!-- Overrides everything. Do not use. -->
+        <h2 id="heading"><!-- summary: visually-hidden footer heading for assistive technology
+             description: |
+               Expects inline text. Screen readers announce this heading to identify the
+               footer landmark region. Defaults to "Red Hat footer". --><slot name="heading">Red Hat footer</slot></h2>
+        <!-- summary: overrides all footer content
+             description: |
+               Expects block elements. Replaces the entire footer inner structure.
+               Avoid using; bypasses all built-in layout, ARIA wiring, and responsive
+               behavior. -->
         <slot name="base">
-          <!-- footer header, typically containing main logo and social links -->
+          <!-- summary: footer header with logo and social links
+               description: |
+                 Contains the site logo and social media links. Screen readers navigate
+                 these as link groups. Tab moves through logo link and social links. -->
           <div class="section header" part="section header">
-            <!-- Overrides \`header-*\`, \`logo\`, \`social-links\` -->
+            <!-- Expects block elements. Overrides header-primary, logo, and
+                 social-links slots. Screen readers navigate child links
+                 as a group. -->
             <slot name="header">
               <!-- primary footer header content, e.g. main logo -->
               <div class="header-primary" part="header-primary">
-                <!-- primary footer header content, e.g. main logo. Overrides \`logo\` -->
+                <!-- Expects block elements. Primary header area, typically the
+                     site logo. Should contain an accessible \`<a>\` linking
+                     to the homepage. Screen readers use the link text. -->
                 <slot name="header-primary">
                   <!-- main page or product logo container -->
                   <div class="logo" part="logo">
-                    <!-- main page or product logo. Defaults to Red Hat corporate logo -->
+                    <!-- summary: main page or product logo
+                         description: |
+                           Expects block elements: an \`<a>\` wrapping an image. Defaults to the
+                           Red Hat corporate logo. Screen readers rely on the img \`alt\` attribute
+                           or link text for identification. -->
                     <slot name="logo">
                       <a href="/">
                         <img alt="Red Hat" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg"/>
@@ -93,7 +125,9 @@ export class RhFooter extends LitElement {
               </div>
               <!-- secondary footer header content, e.g. social links -->
               <div class="header-secondary" part="header-secondary">
-                <!-- secondary footer header content, e.g. social links. Overrides \`social-links\` -->
+                <!-- Expects block elements. Overrides social-links slot. Should
+                     contain \`<rh-footer-social-link>\` elements with
+                     accessible labels for screen readers. -->
                 <slot name="header-secondary">
                   <div class="social-links">
                     <!-- social links container \`<rh-footer-links>\` -->
@@ -101,7 +135,11 @@ export class RhFooter extends LitElement {
                                      part="social-links"
                                      role="list"
                                      aria-label="Red Hat social media links">
-                      <!-- social media links (icons). Contains a default set of links -->
+                      <!-- summary: social media icon links
+                         description: |
+                           Expects block elements: \`<rh-footer-social-link>\` elements. Each link
+                           must have an \`accessible-label\` for screen reader announcement.
+                           Rendered as a list with \`role="list"\`. -->
                       <slot name="social-links"></slot>
                     </rh-footer-links>
                   </div>
@@ -111,11 +149,15 @@ export class RhFooter extends LitElement {
           </div>
           <!-- main content container. -->
           <div class="section main" part="section main">
-            <!-- main footer content. Overrides \`main-*\` -->
+            <!-- Expects block elements. Overrides main-primary and
+                 main-secondary slots. Should contain \`<rh-footer-links>\`
+                 groups. Screen readers use aria-labelledby on each group. -->
             <slot name="main">
               <!-- container for main footer links -->
               <div class="main-primary" part="main-primary">
-                <!-- main footer region. typically a columnar grid -->
+                <!-- Expects block elements: \`<rh-footer-links>\` with heading
+                     elements. On mobile, collapses to accordion. Screen
+                     readers use \`aria-labelledby\` on each link group. -->
                 <slot name="main-primary">
                   <!-- container for main footer links -->
                   <div class="links" part="links">
@@ -125,12 +167,18 @@ export class RhFooter extends LitElement {
               </div>
               <!-- container for prose or promotional content -->
               <div class="main-secondary" part="main-secondary">
-                <!-- typically contains prose or promotional content -->
+                <!-- Expects block elements: prose, promotional content, or
+                     \`<rh-footer-block>\` elements. Screen readers announce
+                     content in DOM order. -->
                 <slot name="main-secondary"></slot>
               </div>
             </slot>
           </div>
-          <!-- must contain \`<rh-footer-universal>\` -->
+          <!-- summary: universal footer slot
+               description: |
+                 Expects block elements: an \`<rh-footer-universal>\` element providing
+                 global Red Hat links, logo, and copyright. Screen readers navigate
+                 this as a separate footer landmark region. Must not be omitted. -->
           <slot name="universal"></slot>
         </slot>
       </footer>
