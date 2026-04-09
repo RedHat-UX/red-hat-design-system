@@ -366,6 +366,8 @@ describe('<rh-navigation-primary>', function() {
           });
 
           describe('shift tab to toggle', function() {
+            beforeEach(press('Tab'));
+            beforeEach(async () => await element.updateComplete);
             beforeEach(keydown('Shift'));
             beforeEach(press('Tab'));
             beforeEach(keyup('Shift'));
