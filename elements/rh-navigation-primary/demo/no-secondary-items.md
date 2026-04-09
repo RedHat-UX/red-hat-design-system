@@ -1,1 +1,0 @@
-Demonstrates the navigation without any secondary slot items such as events, links, or dropdowns. Use this configuration when the navigation only needs primary menu items and no utility or promotional actions in the secondary area.

@@ -1,1 +1,0 @@
-Demonstrates the default primary navigation with dropdown menus, secondary links, event promotion, and utility actions. Use this demo as a starting point when implementing a full-featured navigation bar for a site with multiple content areas.

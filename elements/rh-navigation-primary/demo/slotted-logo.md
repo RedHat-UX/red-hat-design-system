@@ -1,1 +1,0 @@
-Demonstrates slotting a custom SVG logo with an animated fedora into the `logo` slot. Use this pattern when the navigation requires a branded logo with custom markup or animation instead of the default logo image.
