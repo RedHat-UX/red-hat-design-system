@@ -22,26 +22,6 @@ const PALETTE_RE = /(er|est)+/g;
  * @summary Groups content previews with optional actions in a contained layout
  *
  * @alias card
- *
- * @cssprop --rh-card-header-background-on-light
- * Background color for the card header in light color palettes.
- * Uses `light-dark()` internally. Defaults to transparent.
- *
- * @cssprop --rh-card-header-background-on-dark
- * Background color for the card header in dark color palettes.
- * Uses `light-dark()` internally. Defaults to transparent.
- *
- * @cssprop --rh-card-heading-font-weight
- * Font weight for heading text. Applies to both header and body headings.
- * Defaults to `--rh-font-weight-body-text-medium` (500).
- *
- * @cssprop --rh-card-heading-font-family
- * Font family for heading text. Defaults to `--rh-font-family-heading`
- * (RedHatDisplay). SHOULD use design system typography tokens.
- *
- * @cssprop --rh-card-heading-font-size
- * Font size for heading text in the card header. Defaults to
- * `--rh-font-size-heading-sm` (1.5rem). Body headings inherit this value.
  */
 @customElement('rh-card')
 @colorPalettes
