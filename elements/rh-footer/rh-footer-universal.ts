@@ -1,10 +1,10 @@
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
@@ -22,6 +22,7 @@ import './rh-footer-copyright.js';
  * Tab navigates link groups.
  *
  * @summary Global Red Hat universal footer with logo, links, and copyright
+ * @alias footer-universal
  */
 @customElement('rh-footer-universal')
 @colorPalettes
@@ -35,6 +36,8 @@ export class RhFooterUniversal extends LitElement {
    */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
 
+  #internals = InternalsController.of(this);
+
   #slots = new SlotController(
     this,
     'primary-start',
@@ -46,27 +49,67 @@ export class RhFooterUniversal extends LitElement {
     'tertiary',
   );
 
-  override render() {
-    const hasTertiary = this.#slots.hasSlotted('tertiary');
+  #hasAncestorH2 = false;
 
-    // determine if footer and h2 already exist
+  override connectedCallback() {
+    super.connectedCallback();
+    this.#updateRole();
+    this.#hasAncestorH2 = this.#detectAncestorH2();
+  }
+
+  /** Check if an h2 already exists in the parent context. */
+  #detectAncestorH2(): boolean {
     let node: HTMLElement | null | undefined = this.parentElement;
-    let footer: HTMLElement | null | undefined = node?.closest('footer');
-    let h2: HTMLElement | null | undefined = null;
-    while (!!node && !footer) {
-      h2 = h2
-        || node?.closest('h2')
+    while (node) {
+      if (node?.closest('h2')
         || node?.querySelector('h2')
-        || node?.shadowRoot?.querySelector('h2');
-      footer = node?.closest('footer')
-        || node?.querySelector('footer')
-        || node?.shadowRoot?.querySelector('footer');
+        || node?.shadowRoot?.querySelector('h2')) {
+        return true;
+      }
+      node = node.parentElement;
+    }
+    return false;
+  }
+
+  /**
+   * Check if this element is nested inside another `<footer>`/`<rh-footer>`.
+   * If not, set role="contentinfo" on the host via InternalsController.
+   * NOTE: Does not check for other custom elements with `role="contentinfo"`
+   */
+  #updateRole() {
+    let node: HTMLElement | null | undefined = this.parentElement;
+    let hasFooterAncestor = false;
+
+    while (node) {
+      if (node.tagName === 'FOOTER') {
+        hasFooterAncestor = true;
+        break;
+      }
+
+      if (node.tagName === 'RH-FOOTER') {
+        hasFooterAncestor = true;
+        break;
+      }
+
+      if (node.shadowRoot?.querySelector('footer')) {
+        hasFooterAncestor = true;
+        break;
+      }
+
       node = node.parentElement;
     }
 
+    if (!hasFooterAncestor) {
+      this.#internals.role = 'contentinfo';
+    }
+  }
+
+  override render() {
+    const hasTertiary = this.#slots.hasSlotted('tertiary');
+
     return html`
-      <footer role="${ifDefined(footer ? 'none' : undefined)}">
-        <h2 id="global-heading" ?hidden="${!!h2}">
+      <div class="footer">
+        <h2 id="global-heading" ?hidden="${this.#hasAncestorH2}">
           <!-- summary: visually-hidden heading for assistive technology
                description: |
                  Expects inline text. Screen readers use this heading to identify the
@@ -74,6 +117,7 @@ export class RhFooterUniversal extends LitElement {
                  parent \`<h2>\` already exists. -->
           <slot name="heading">Red Hat footer</slot>
         </h2>
+        <!-- Wrapper for the universal footer content (logo, primary, secondary, tertiary). -->
         <div class="section global-base ${classMap({ hasTertiary })}" part="section base">
           <!-- summary: overrides all universal footer content (base slot)
                description: |
@@ -81,6 +125,7 @@ export class RhFooterUniversal extends LitElement {
                  Avoid using; bypasses all built-in layout, grid regions, responsive
                  behavior, and ARIA landmark wiring. -->
           <slot name="base">
+            <!-- Container for the logo slot. -->
             <div class="global-logo" part="logo">
               <!-- summary: Red Hat logo (logo slot)
                    description: |
@@ -88,11 +133,18 @@ export class RhFooterUniversal extends LitElement {
                      Defaults to the Red Hat logo SVG linking to redhat.com. Screen
                      readers rely on the anchor \`aria-label\` for identification. -->
               <slot name="logo">
+                <!--
+                  part:
+                    description: Link wrapping the logo; defaults to redhat.com.
+                -->
                 <a class="global-logo-anchor"
                     part="logo-anchor"
                     href="https://redhat.com"
                     aria-label="Visit Red Hat">
-                  <!-- logo-image -->
+                  <!--
+                    part:
+                      description: Logo image or SVG element.
+                  -->
                   <svg class="global-logo-image"
                        part="logo-image"
                        data-name="Layer 1"
@@ -112,6 +164,7 @@ export class RhFooterUniversal extends LitElement {
                 </a>
               </slot>
             </div>
+            <!-- Primary row (start, links, end). -->
             <div class="global-primary" part="primary">
               <!-- summary: overrides primary-start, links-primary, and primary-end (primary slot)
                    description: |
@@ -119,6 +172,7 @@ export class RhFooterUniversal extends LitElement {
                      Override only when the three sub-slots are insufficient.
                      Screen readers navigate child links as a group. -->
               <slot name="primary">
+                <!-- Left area of the primary row. -->
                 <div class="global-primary-start" part="primary-start" ?hidden=${!this.#slots.hasSlotted('primary-start')}>
                   <!-- summary: content before primary links (primary-start slot)
                        description: |
@@ -127,6 +181,7 @@ export class RhFooterUniversal extends LitElement {
                          content before the link list. -->
                   <slot name="primary-start"></slot>
                 </div>
+                <!-- Main link list area in the primary row. -->
                 <div class="global-links-primary" part="links-primary" ?hidden=${!this.#slots.hasSlotted('links-primary')}>
                   <!-- summary: primary global navigation links (links-primary slot)
                        description: |
@@ -135,6 +190,7 @@ export class RhFooterUniversal extends LitElement {
                          the list group; Tab moves through each link. -->
                   <slot name="links-primary"></slot>
                 </div>
+                <!-- Right area of the primary row. -->
                 <div class="global-primary-end" part="primary-end" ?hidden=${!this.#slots.hasSlotted('primary-end')}>
                   <!-- summary: content after primary links (primary-end slot)
                        description: |
@@ -145,7 +201,9 @@ export class RhFooterUniversal extends LitElement {
                 </div>
               </slot>
             </div>
+            <!-- Spacer between primary and secondary rows. -->
             <div class="spacer" part="spacer"></div>
+            <!-- Secondary row (start, links, end). -->
             <div class="global-secondary" part="secondary">
               <!-- summary: overrides secondary-start, links-secondary, and secondary-end (secondary slot)
                    description: |
@@ -153,6 +211,7 @@ export class RhFooterUniversal extends LitElement {
                      Override only when the three sub-slots are insufficient.
                      Screen readers navigate child links as a group. -->
               <slot name="secondary">
+                <!-- Left area of the secondary row. -->
                 <div class="global-secondary-start" part="secondary-start" ?hidden=${!this.#slots.hasSlotted('secondary-start')}>
                   <!-- summary: content before secondary links, e.g. copyright (secondary-start slot)
                        description: |
@@ -161,6 +220,7 @@ export class RhFooterUniversal extends LitElement {
                          content in DOM order within the footer landmark. -->
                   <slot name="secondary-start"></slot>
                 </div>
+                <!-- Main link list area in the secondary row. -->
                 <div class="global-links-secondary" part="links-secondary" ?hidden=${!this.#slots.hasSlotted('links-secondary')}>
                   <!-- summary: secondary global navigation links (links-secondary slot)
                        description: |
@@ -169,6 +229,7 @@ export class RhFooterUniversal extends LitElement {
                          the list group; Tab moves through each link. -->
                   <slot name="links-secondary"></slot>
                 </div>
+                <!-- Right area of the secondary row. -->
                 <div class="global-secondary-end" part="secondary-end" ?hidden=${!this.#slots.hasSlotted('secondary-end')}>
                   <!-- summary: content after secondary links (secondary-end slot)
                        description: |
@@ -179,6 +240,7 @@ export class RhFooterUniversal extends LitElement {
                 </div>
               </slot>
             </div>
+            <!-- Optional bottom section (e.g. copyright, extra text). -->
             <div class="global-tertiary" part="tertiary" ?hidden=${!this.#slots.hasSlotted('tertiary')}>
               <!-- summary: optional third content region (tertiary slot)
                    description: |
@@ -189,7 +251,7 @@ export class RhFooterUniversal extends LitElement {
             </div>
           </slot>
         </div>
-      </footer>
+      </div>
     `;
   }
 }

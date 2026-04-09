@@ -1,13 +1,17 @@
+import type { IconNameFor, IconSetName } from '@rhds/icons';
+
 import { html, isServer, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { consume } from '@lit/context';
 
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
+
 
 import {
   rhTabsActiveTabContext,
@@ -82,6 +86,19 @@ export class RhTab extends LitElement {
    */
   @property({ reflect: true, type: Boolean }) disabled = false;
 
+  /**
+   * Icon name from the specified icon set to display before the tab label.
+   * When set, an `rh-icon` element renders in the icon slot as a
+   * decorative visual. Icons complement the text label but should not
+   * replace it.
+   */
+  @property({ reflect: true }) icon?: IconNameFor<IconSetName>;
+
+  /**
+   * The icon set from which to select the icon. Defaults to `ui`.
+   */
+  @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'ui';
+
   @consume({ context: rhTabsBoxContext, subscribe: true })
   @state() private box = false;
 
@@ -126,7 +143,9 @@ export class RhTab extends LitElement {
                Can contain an \`<svg>\` or \`<rh-icon>\` element
                displayed before the tab label text. -->
         <slot name="icon"
-              part="icon"></slot>
+              part="icon">
+          <rh-icon ?hidden="${!this.icon}" icon="${ifDefined(this.icon)}" set="${ifDefined(this.iconSet)}"></rh-icon>
+        </slot>
         <!-- summary: Tab label
              description: |
                Tab label text. Authors should keep labels short
@@ -162,6 +181,13 @@ export class RhTab extends LitElement {
 
   #activate() {
     this.dispatchEvent(new TabExpandEvent(this.active, this));
+  }
+
+  @observes('icon')
+  protected iconChanged() {
+    if (this.icon) {
+      import('@rhds/elements/rh-icon/rh-icon.js');
+    }
   }
 
   @observes('active')

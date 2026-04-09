@@ -41,7 +41,7 @@ export class RhTag extends LitElement {
   /**
    * The icon set from which to select the icon. Defaults to `ui`.
    */
-  @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'ui';
+  @property({ attribute: 'icon-set', reflect: true }) iconSet: IconSetName = 'ui';
 
   /**
    * The visual style variant of the tag.
@@ -49,19 +49,19 @@ export class RhTag extends LitElement {
    * - `outline`: transparent background with a colored border
    * - `desaturated`: transparent background with a neutral border and text color
    */
-  @property() variant?: 'filled' | 'outline' | 'desaturated' = 'filled';
+  @property({ reflect: true }) variant?: 'filled' | 'outline' | 'desaturated' = 'filled';
 
   /**
    * The size of the tag. When set to `compact`, the tag uses a smaller font
    * size and reduced padding.
    */
-  @property() size?: 'compact';
+  @property({ reflect: true }) size?: 'compact';
 
   /**
    * Optional URL that makes the tag a navigable link. When set, the tag
    * renders an anchor element around its text content.
    */
-  @property() href?: string;
+  @property({ reflect: true }) href?: string;
 
   /**
    * Whether an interactive (linked) tag is disabled. When true, the tag

@@ -185,7 +185,7 @@ export class RhMenuDropdown extends LitElement {
                 <slot name="toggle-label"></slot>
               </span>
               <span class="action-icon">
-                <rh-icon set="microns" icon="${this.open ? 'caret-up' : 'caret-down'}"></rh-icon>
+                <rh-icon set="microns" icon="${this.open ? 'caret-up-fill' : 'caret-down-fill'}"></rh-icon>
               </span>
               `
             }

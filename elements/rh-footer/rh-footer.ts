@@ -3,6 +3,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 export { RhFooterUniversal } from './rh-footer-universal.js';
 
@@ -62,6 +63,8 @@ export class RhFooter extends LitElement {
 
   #compact = false;
 
+  #internals = InternalsController.of(this);
+
   /**
    * ScreenSizeController effects callback to set #compact is true when viewport
    * `(min-width: ${tabletLandscapeBreakpoint})`.
@@ -74,24 +77,53 @@ export class RhFooter extends LitElement {
 
   override connectedCallback() {
     super.connectedCallback();
+    this.#updateRole();
     this.#compact = !this.screenSize.matches.has('md');
     // wire up accessibility aria-labels with unordered lists
     this.updateAccessibility();
   }
 
+  /**
+   * Check if this element is nested inside a `<footer>`.
+   * If not, set role="contentinfo" on the host via InternalsController.
+   * NOTE: Does not check for other custom elements with `role="contentinfo"`
+   */
+  #updateRole() {
+    let node: HTMLElement | null | undefined = this.parentElement;
+    let hasFooterAncestor = false;
+
+    while (node) {
+      if (node.tagName === 'FOOTER') {
+        hasFooterAncestor = true;
+        break;
+      }
+
+      if (node.shadowRoot?.querySelector('footer')) {
+        hasFooterAncestor = true;
+        break;
+      }
+
+      node = node.parentElement;
+    }
+
+    if (!hasFooterAncestor) {
+      this.#internals.role = 'contentinfo';
+    }
+  }
+
   override render() {
     return html`
-      <!-- main footer element, containing all footer content -->
-      <footer class="base ${classMap({ isMobile: this.#compact })}" part="base">
-        <h2 id="heading"><!-- summary: visually-hidden footer heading for assistive technology
-             description: |
-               Expects inline text. Screen readers announce this heading to identify the
-               footer landmark region. Defaults to "Red Hat footer". --><slot name="heading">Red Hat footer</slot></h2>
+      <!-- main footer container, containing all footer content. -->
+      <div class="footer base ${classMap({ isMobile: this.#compact })}" part="base">
+        <h2 id="heading"><!--
+            summary: visually-hidden footer heading for assistive technology
+            description: |
+                Expects inline text. Screen readers announce this heading to identify the
+                footer landmark region. Defaults to "Red Hat footer". --><slot name="heading">Red Hat footer</slot></h2>
         <!-- summary: overrides all footer content
              description: |
                Expects block elements. Replaces the entire footer inner structure.
-               Avoid using; bypasses all built-in layout, ARIA wiring, and responsive
-               behavior. -->
+               Avoid using; bypasses all built-in layout, ARIA wiring, and responsive behavior. -->
         <slot name="base">
           <!-- summary: footer header with logo and social links
                description: |
@@ -181,7 +213,7 @@ export class RhFooter extends LitElement {
                  this as a separate footer landmark region. Must not be omitted. -->
           <slot name="universal"></slot>
         </slot>
-      </footer>
+      </div>
     `;
   }
 
@@ -194,7 +226,7 @@ export class RhFooter extends LitElement {
     children.forEach((child, i) => child.setAttribute('slot', isMobile ? `links-${i}` : 'links'));
 
     return !(isMobile && children) ? html`
-      <!-- main footer links -->
+      <!-- Main footer link columns. Expects alternating headings (e.g. \`<h3>\`) and \`<ul>\` lists. Each heading MUST have a unique id so screen readers announce groups via \`aria-labelledby\`. -->
       <slot name="links"></slot>
       ` : html`
 

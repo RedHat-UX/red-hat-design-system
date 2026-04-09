@@ -372,58 +372,58 @@ svg {
  */
 :host([color-palette^='dark']) {
   /** Interactive color for dark palettes */
-  --_interactive-color: var(--rh-color-border-interactive-on-dark);
+  --_interactive-color: var(--rh-color-border-interactive-on-dark, #92c5f9);
 
   /** Focus interactive color for dark palettes */
-  --_focus-interactive-color: var(--rh-color-interactive-primary-hover-on-dark);
+  --_focus-interactive-color: var(--rh-color-interactive-primary-hover-on-dark, #b9dafc);
 
   /** Secondary text color for dark palettes */
-  --_text-color-secondary: var(--rh-color-text-secondary-on-dark);
+  --_text-color-secondary: var(--rh-color-text-secondary-on-dark, #c7c7c7);
 
   /** Disabled background for dark palettes */
-  --_disabled-background-color: var(--rh-color-surface-dark);
+  --_disabled-background-color: var(--rh-color-surface-dark, #383838);
 
   /** Border color for dark palettes */
-  --_border-color: var(--rh-color-border-subtle-on-dark);
+  --_border-color: var(--rh-color-border-subtle-on-dark, #707070);
 
   /** Text color for dark palettes */
-  color: var(--rh-color-text-primary-on-dark);
+  color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
 /** Darkest palette background */
-:host([color-palette='darkest']) { background-color: var(--rh-color-surface-darkest); }
+:host([color-palette='darkest']) { background-color: var(--rh-color-surface-darkest, #151515); }
 
 /** Darker palette background */
-:host([color-palette='darker']) { background-color: var(--rh-color-surface-darker); }
+:host([color-palette='darker']) { background-color: var(--rh-color-surface-darker, #1f1f1f); }
 
 /** Dark palette background */
-:host([color-palette='dark']) { background-color: var(--rh-color-surface-dark); }
+:host([color-palette='dark']) { background-color: var(--rh-color-surface-dark, #383838); }
 
 :host([color-palette^='light']) {
   /** Interactive color for light palettes */
-  --_interactive-color: var(--rh-color-border-interactive-on-light);
+  --_interactive-color: var(--rh-color-border-interactive-on-light, #0066cc);
 
   /** Focus interactive color for light palettes */
-  --_focus-interactive-color: var(--rh-color-interactive-primary-hover-on-light);
+  --_focus-interactive-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
 
   /** Secondary text color for light palettes */
-  --_text-color-secondary: var(--rh-color-text-secondary-on-light);
+  --_text-color-secondary: var(--rh-color-text-secondary-on-light, #4d4d4d);
 
   /** Disabled background for light palettes */
-  --_disabled-background-color: var(--rh-color-surface-light);
+  --_disabled-background-color: var(--rh-color-surface-light, #e0e0e0);
 
   /** Border color for light palettes */
-  --_border-color: var(--rh-color-border-subtle-on-light);
+  --_border-color: var(--rh-color-border-subtle-on-light, #c7c7c7);
 
   /** Text color for light palettes */
-  color: var(--rh-color-text-primary-on-light);
+  color: var(--rh-color-text-primary-on-light, #151515);
 }
 
 /** Lightest palette background */
-:host([color-palette='lightest']) { background-color: var(--rh-color-surface-lightest); }
+:host([color-palette='lightest']) { background-color: var(--rh-color-surface-lightest, #ffffff); }
 
 /** Lighter palette background */
-:host([color-palette='lighter']) { background-color: var(--rh-color-surface-lighter); }
+:host([color-palette='lighter']) { background-color: var(--rh-color-surface-lighter, #f2f2f2); }
 
 /** Light palette background */
-:host([color-palette='light']) { background-color: var(--rh-color-surface-light); }
+:host([color-palette='light']) { background-color: var(--rh-color-surface-light, #e0e0e0); }

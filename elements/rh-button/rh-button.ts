@@ -17,8 +17,8 @@ import styles from './rh-button.css' with { type: 'css' };
  * Triggers actions via click, Enter, or Space. USE `variant` to set
  * hierarchy: primary (should limit one per page), secondary, tertiary,
  * or danger. Renders a native `<button>` with `delegatesFocus` for
- * keyboard access. Must use `label` for icon-only buttons to set the
- * ARIA accessible name. Supports form association (submit/reset).
+ * keyboard access. Icon-only buttons must set `accessible-label` to
+ * provide an ARIA accessible name. Supports form association (submit/reset).
  *
  * @summary Clickable button that triggers page or form actions
  *
@@ -54,9 +54,15 @@ export class RhButton extends LitElement {
 
   /**
    * Accessible name for the button, applied as `aria-label` on the internal
-   * `<button>`. USE when the button has no visible text (e.g. icon-only
+   * `<button>`. Use when the button has no visible text (e.g. icon-only
    * buttons like close or play). When set, slotted text is hidden with
-   * `aria-hidden="true"`. Defaults to undefined.
+   * `aria-hidden="true"`. Preferred over the deprecated `label` attribute.
+   * Defaults to undefined.
+   */
+  @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
+
+  /**
+   * @deprecated Use `accessible-label` instead.
    */
   @property() label?: string;
 
@@ -89,8 +95,8 @@ export class RhButton extends LitElement {
 
   /**
    * Controls the visual hierarchy and style of the button. Accepts
-   * ‘primary’ | ‘secondary’ | ‘tertiary’ | ‘close’ | ‘play’. Defaults to
-   * ‘primary’. Should limit primary to one per page. USE secondary for
+   * 'primary' | 'secondary' | 'tertiary' | 'close' | 'play'. Defaults to
+   * 'primary'. Should limit primary to one per page. USE secondary for
    * general actions, tertiary for low-emphasis actions. Close and play
    * variants render icon-only circular buttons with visually hidden text.
    */
@@ -129,7 +135,7 @@ export class RhButton extends LitElement {
            description: |
              Native button element that receives focus via delegatesFocus.
              Screen readers announce this as a button with the label or slotted text. -->
-      <button aria-label="${ifDefined(this.label)}"
+      <button aria-label="${ifDefined(this.accessibleLabel || this.label)}"
               class="${classMap({
                 danger,
                 hasIcon,
@@ -150,7 +156,7 @@ export class RhButton extends LitElement {
                 part="icon"
                 name="icon">${this.#renderIcon()}</slot>
         </span>
-        <span aria-hidden=${String(!!this.label) as 'true' | 'false'}><!-- summary: button text label
+        <span aria-hidden=${String(!!this.accessibleLabel || !!this.label) as 'true' | 'false'}><!-- summary: button text label
                description: |
                  Expects inline text providing a concise, action-oriented label
                  (e.g. "Submit", "Delete"). Hidden from screen readers via

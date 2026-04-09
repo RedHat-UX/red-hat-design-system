@@ -78,8 +78,13 @@ export class RhPagination extends LitElement {
   /** Controls pagination size. Accepts `'sm'` for smaller touch targets (WCAG AA) or `null` for default (WCAG AAA). Defaults to `null`. */
   @property({ reflect: true }) size: 'sm' | null = null;
 
-  /** Visual variant. Accepts `'open'` for transparent backgrounds with bottom borders, or `null` for the default box variant. Defaults to `null`. */
-  @property({ reflect: true }) variant?: 'open' | null = null;
+  /** Visual variant. Accepts `'borderless'` for transparent backgrounds with bottom borders, or `null` for the default box variant. Defaults to `null`. */
+  @property({ reflect: true, converter: {
+    fromAttribute(value: string | null) {
+      // Silent aliasing: convert 'open' to 'borderless'
+      return value === 'open' ? 'borderless' : value as 'borderless' | null;
+    },
+  } }) variant?: 'borderless' | null = null;
 
   @query('input') private input?: HTMLInputElement;
 
@@ -127,21 +132,20 @@ export class RhPagination extends LitElement {
   }
 
   override update(changed: PropertyValues<this>): void {
-    if (!isServer) {
-      this.#updateLightDOMRefs();
-      this.overflow = this.#getOverflow();
+    if (!isServer && this.hasUpdated) {
+      this.#setStateFromLightDOM();
     }
     super.update(changed);
   }
 
+  override firstUpdated() {
+    if (!isServer) {
+      this.#setStateFromLightDOM();
+    }
+  }
+
   override updated() {
     if (!isServer && this.hasUpdated) {
-      this.total = this.#links?.length ?? 0;
-      this.firstHref = this.#firstLink?.href;
-      this.lastHref = this.#lastLink?.href;
-      this.prevHref = this.#prevLink?.href;
-      this.nextHref = this.#nextLink?.href;
-      this.currentHref = this.#currentLink?.href;
       this.#checkValidity();
     }
   }
@@ -159,54 +163,19 @@ export class RhPagination extends LitElement {
       lastHref,
     } = this;
     const currentPage = this.#currentPage.toString();
-    const numericContent = html`
-      <!-- shared container for the numeric controls at all widths -->
-      <div id="numeric" part="numeric">
-        <span id="go-to-page" class="xxs-visually-hidden sm-visually-visible">
-          <!-- summary: Page input label
-               description: |
-                 Expects short inline text labeling the page number input.
-                 Defaults to "Page". Should be localized for non-English
-                 contexts. Visually hidden at narrow widths but always
-                 exposed to screen readers via \`aria-labelledby\`. -->
-          <slot name="go-to-page">
-            Page
-          </slot>
-        </span>
-        <input type="number"
-               inputmode="numeric" 
-               required
-               min=1
-               max="${this.total}"
-               aria-labelledby="go-to-page"
-               @change="${this.#onChange}"
-               @keyup="${this.#onKeyup}"
-               .value="${currentPage}">
-        <!-- summary: Preposition between page input and total
-             description: |
-               Expects short inline text (1\u20133 characters) displayed between
-               the current page input and the total page count (e.g.,
-               "Page 3 of 10"). Defaults to "of". Should be localized for
-               non-English contexts. Screen readers announce this text
-               between the input and total, so it must be semantically
-               clear. -->
-        <slot ?hidden="${!this.total}" name="out-of">of</slot>
-        <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
-      </div>
-    `;
 
     return html`
-      <!-- pagination container -->
+      <!-- The outer flex container wrapping stepper buttons, nav, and numeric input -->
       <div id="container" part="container">
         <a id="first"
            class="stepper"
            href="${ifDefined(firstHref)}"
-           .inert="${this.#currentLink === this.#firstLink}"
+           ?inert="${!firstHref || this.#currentLink === this.#firstLink}"
            aria-label="${labelFirst}">${L2}</a>
         <a id="prev"
            class="stepper"
            href="${ifDefined(prevHref)}"
-           .inert="${this.#currentLink === this.#prevLink || this.#currentLink === this.#firstLink}"
+           ?inert="${!prevHref || this.#currentLink === this.#prevLink || this.#currentLink === this.#firstLink}"
            aria-label="${labelPrevious}">${L1}</a>
         <nav aria-label="${label}">
           <!-- summary: Page link list
@@ -221,26 +190,60 @@ export class RhPagination extends LitElement {
                  multiple paginations exist on a page. -->
           <slot></slot>
         </nav>
-        <!-- container for the numeric control at medium screen widths -->
-        <div id="numeric-middle" part="numeric-middle">
-          ${numericContent}
-        </div>
         <a id="next"
            class="stepper"
            href="${ifDefined(nextHref)}"
-           .inert="${this.#currentLink === this.#nextLink || this.#currentLink === this.#lastLink}"
+           ?inert="${!nextHref || this.#currentLink === this.#nextLink || this.#currentLink === this.#lastLink}"
            aria-label="${labelNext}">${L1}</a>
         <a id="last"
            class="stepper"
            href="${ifDefined(lastHref)}"
-           .inert="${this.#currentLink === this.#lastLink}"
+           ?inert="${!lastHref || this.#currentLink === this.#lastLink}"
            aria-label="${labelLast}">${L2}</a>
-        <!-- container for the numeric control at small and large screen widths -->
-        <div id="numeric-end" part="numeric-end">
-          ${numericContent}
+        <!-- The container for the page input, separator text, and total page link -->
+        <div id="numeric" part="numeric">
+          <form @submit="${this.#onSubmit}">
+            <label for="page" class="go-to-page-text">
+              <!-- summary: page input label text (go-to-page slot)
+                   description: |
+                     Label text preceding the page number input field. Defaults to
+                     "Page". Customize for internationalization. Visually hidden at
+                     very small widths but always accessible to screen readers via
+                     \`aria-labelledby\`. -->
+              <slot name="go-to-page">
+                Page
+              </slot>
+            </label>
+            <input id="page"
+                   type="number"
+                   enterkeyhint="go"
+                   required
+                   name="page"
+                   min=1
+                   max="${this.total}"
+                   @click="${this.#onClick}"
+                   .value="${currentPage}">
+          </form>
+        <!-- summary: preposition text between page input and total (default: "of")
+             description: |
+               Contains the text displayed between the current page input field and the total page count.
+               Defaults to "of" but can be customized for internationalization or alternate phrasing. -->
+          <slot ?hidden="${!this.total}" name="out-of">of</slot>
+          <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
         </div>
       </div>
     `;
+  }
+
+  #setStateFromLightDOM() {
+    this.#updateLightDOMRefs();
+    this.total = this.#links?.length ?? 0;
+    this.firstHref = this.#firstLink?.href;
+    this.lastHref = this.#lastLink?.href;
+    this.prevHref = this.#prevLink?.href;
+    this.nextHref = this.#nextLink?.href;
+    this.currentHref = this.#currentLink?.href;
+    this.overflow = this.#getOverflow();
   }
 
   #getOverflow(): 'start' | 'end' | 'both' | null {
@@ -265,22 +268,23 @@ export class RhPagination extends LitElement {
     if (isServer) {
       return null;
     }
-    // if there is an aria-current="page" attribute, use that
-    const ariaCurrent = this.querySelector<HTMLAnchorElement>('li a[aria-current="page"]');
-    if (ariaCurrent) {
-      return ariaCurrent;
-    }
-    // otherwise, use the href to determine the current link
     for (const link of this.#links ?? []) {
-      const url = new URL(link.href);
-      if (url.pathname === location.pathname
-        && url.search === location.search
-        && url.hash === location.hash) {
-        return link;
+      if (!link.href) {
+        continue;
+      }
+      try {
+        const url = new URL(link.href);
+        if (url.pathname === location.pathname
+          && url.search === location.search
+          && url.hash === location.hash) {
+          return link;
+        }
+      } catch {
+        continue;
       }
     }
-    this.#logger.warn('could not determine current link');
-    return null;
+    return this.querySelector<HTMLAnchorElement>('li a[aria-current="page"]')
+      ?? (this.#logger.warn('could not determine current link'), null);
   }
 
   #updateLightDOMRefs(): void {
@@ -331,53 +335,46 @@ export class RhPagination extends LitElement {
     if (message) {
       this.#logger.warn(this.input?.validationMessage || 'could not navigate');
     }
-    this.input?.reportValidity();
     return !message;
   }
 
   /**
-   * 1. Normalize the element state
-   * 2. validate and act on the input
-   * 3. update the element in case a full browser navigation was prevented (e.g. SPA routing)
-   * @param id
+   * Navigate by clicking the corresponding link element.
+   * Numeric ids click light DOM links synchronously (preserving user gesture).
+   * String ids click shadow DOM steppers after rendering ensures their href is set.
+   * After the click, request an update in case a SPA prevented full navigation.
+   * @param id stepper name or 1-based page number
    */
   async #go(id: 'first' | 'prev' | 'next' | 'last' | number) {
-    await this.updateComplete;
     if (typeof id === 'number') {
-      const link = this.#links?.[id - 1];
-      link?.click?.();
+      this.#links?.[id - 1]?.click();
     } else {
+      await this.updateComplete;
       this.shadowRoot?.getElementById(id)?.click();
     }
     this.requestUpdate();
     await this.updateComplete;
-    return this.#currentIndex;
   }
 
-  #onKeyup(event: Event) {
-    if (!(event.target instanceof HTMLInputElement) || !this.#links) {
-      return;
-    }
-    const max = this.total.toString();
-    const input = event.target;
-    if (parseInt(input.value) > parseInt(max)) {
-      input.value = max;
+  /** Firefox does not focus the input when clicking spinner arrows */
+  #onClick(event: Event) {
+    if (event.target instanceof HTMLInputElement) {
+      event.target.focus();
     }
   }
 
-  #onChange(event: Event) {
-    if (!this.input || !this.#links) {
+  #onSubmit(event: Event) {
+    event.preventDefault();
+    const input = (event.target as HTMLFormElement | null)?.querySelector('input');
+    if (!input || !this.#links) {
       return;
     }
-    const newValue = parseInt((event.target as HTMLInputElement).value);
-    const inputNum = parseInt(this.input.value);
-    if (newValue === inputNum) {
-      return;
-    }
-    this.input.value = newValue.toString();
-    this.#currentIndex = parseInt(this.input.value) - 1;
+    const newValue = parseInt(input.value);
+    this.#currentIndex = newValue - 1;
     if (this.#checkValidity()) {
       this.#go(this.#currentPage);
+    } else {
+      input.reportValidity();
     }
   }
 

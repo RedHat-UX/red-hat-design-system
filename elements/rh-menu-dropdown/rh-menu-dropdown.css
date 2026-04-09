@@ -1,3 +1,24 @@
+/**
+ * Styles for `<rh-menu-dropdown>` (shadow root).
+ *
+ * **Purpose:** Formats the [Menu dropdown](https://ux.redhat.com/elements/menu-dropdown/)
+ * visual system—the toggle (default text+caret or compact ellipsis), the floating panel,
+ * slotted label typography, separators, and interaction states (hover, active, focus, disabled)
+ * for light and dark schemes per the Style guidelines.
+ *
+ * **Layout:** `:host` is `inline-block` so width follows context. Authors may set `width` on the
+ * host so the toggle matches the menu panel. `#menu-dropdown-container` is `inline-size: 100%`
+ * so the toggle stretches to the host width. The list panel uses a minimum width for readability
+ * and `max-inline-size: 100%` so it does not overflow small containers.
+ *
+ * **Tokens:** Public-facing values use RHDS design tokens (`--rh-color-*`, `--rh-space-*`, etc.).
+ * Underscored variables below are **private** to this stylesheet (not a public CSS API).
+ *
+ * **Toggle variants:** `#menu-toggle` gains `boxed` (default bordered), `compact`, `open`, and
+ * `disabled` classes from the component; `borderless` omits the boxed treatment via the component’s
+ * `variant` attribute.
+ */
+
 :host {
   --_border:
     /** Menu Dropdown Border width */
@@ -17,6 +38,7 @@
   display: inline-block;
 }
 
+/* Styles floating menu panel */
 #menu-list {
   position: absolute;
   padding:
@@ -50,6 +72,9 @@
   display: block;
 }
 
+/* Styles the slotted toggle label.
+   Must remain readable in both color schemes.
+   May adjust font size if consistency with nearby elements is required. */
 ::slotted([slot='toggle-label']) {
   color: var(--_color);
 
@@ -67,6 +92,11 @@
   line-height: var(--rh-line-height-code, 1.5);
 }
 
+/*
+ * Styles the menu toggle button.
+ * Should meet minimum touch target guidance when used per accessibility docs.
+   Should not be customized, except for styles that affect toggle label's font size.
+ */
 #menu-toggle {
   --_interactive-border-color:
     light-dark(
@@ -112,19 +142,25 @@
       );
   border: none;
 
+  /* Styles contents of a basic menu toggle.
+     Must not be changed to retain consistency with visually similar RHDS elements. */
   .action-icon rh-icon {
-    --rh-icon-size: 12px;
+    --rh-icon-size: 10px;
 
     /** Space between label and caret icon */
     padding-inline-start: var(--rh-space-md, 8px);
   }
 
+  /* Wraps slotted toggle-label (and any leading slotted rh-icon) */
   .info-section {
     display: flex;
     align-items: center;
     justify-content: flex-start;
   }
 
+  /*
+   * Styles “Boxed” toggle (default when `variant` is not `borderless`)
+   */
   &.boxed {
     box-shadow:
       inset 0 0 0 1px
@@ -180,6 +216,10 @@
     }
   }
 
+  /*
+   * Styles compact layout (`layout="compact"`): icon-only trigger (ellipsis). Same min-height
+   * intent as text toggle per spacing guidance.
+   */
   &.compact {
     /** Compact toggle padding */
     padding: var(--rh-space-md, 8px);
@@ -209,6 +249,10 @@
     }
   }
 
+  /*
+   * Disabled toggle:
+   * Suppresses hover/focus/active states so the control reads clearly as unavailable.
+   */
   &.disabled {
     pointer-events: none;
     cursor: not-allowed;
@@ -228,17 +272,20 @@
   }
 }
 
+/* Positions the toggle and anchors the absolutely positioned menu list */
 #menu-dropdown-container {
   inline-size: 100%;
   position: relative;
 }
 
+/* Visual separators between menu groups */
 ::slotted(hr) {
   border: 0;
   border-top: var(--_border);
   inline-size: 100%;
 }
 
+/* Spacing for decorative icons slotted into the toggle */
 ::slotted(rh-icon) {
   /** Space after slotted icon in toggle label */
   margin-inline-end: var(--rh-space-md, 8px);

@@ -1,0 +1,51 @@
+<meta itemprop="description" content="Uses a CSS selector to target a content container. The component counts words and images from the target element to compute reading time.">
+
+<rh-readtime images selector="#article-content">%t min read</rh-readtime>
+
+<article id="article-content">
+  <p>
+    Design systems are a collection of reusable components, guided by clear standards,
+    that can be assembled together to build any number of applications. They help teams
+    build better products faster by making design reusable and development more consistent.
+    A design system is more than a pattern library or a set of guidelines. It is a living,
+    evolving ecosystem that supports both designers and developers in creating cohesive
+    user experiences across products and platforms.
+  </p>
+  <p>
+    The Red Hat Design System provides a set of web components built on open web standards.
+    These components follow Red Hat brand guidelines and are designed to work across any
+    web framework. They are built with accessibility in mind and support theming through
+    design tokens. The system includes components for layout, navigation, content display,
+    forms, and feedback. Each component is documented with usage guidelines, code examples,
+    and accessibility considerations.
+  </p>
+  <p>
+    Web components offer several advantages over traditional framework-specific components.
+    They work natively in the browser without requiring a build step or framework dependency.
+    They encapsulate styles and behavior using the Shadow DOM, preventing conflicts with
+    the rest of the page. They can be used with any JavaScript framework or with no framework
+    at all. This makes them ideal for design systems that need to support multiple teams
+    using different technology stacks.
+  </p>
+  <img src="placeholder-600x300.svg" alt="Placeholder image" width="600" height="300">
+  <p>
+    Reading time estimation is a useful feature for content-heavy pages. It gives readers
+    an expectation of how long an article will take to read, helping them decide whether
+    to read now or save for later. Medium popularized this feature, and it has since become
+    a common pattern on blogs and documentation sites. The algorithm accounts for both
+    text content and images, since images require additional time to process and understand.
+  </p>
+</article>
+
+<style>
+article p {
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+  line-height: var(--rh-line-height-body-text, 1.5);
+  margin-block-end: 1rem;
+}
+</style>
+
+
+<script type="module">
+  import '@rhds/elements/rh-readtime/rh-readtime.js';
+</script>
