@@ -12,12 +12,12 @@ import styles from './rh-card.css' with { type: 'css' };
 const PALETTE_RE = /(er|est)+/g;
 
 /**
- * USE cards to group small previews of content with optional calls to action.
- * Cards SHOULD contain a header with a heading level tag (h1-h6) and MUST NOT
+ * Use cards to group small previews of content with optional calls to action.
+ * Cards should contain a header with a heading level tag (h1-h6) and must not
  * replace primary page content. Cards do not manage focus; interactive elements
- * inside (links, CTAs) MUST be keyboard-accessible via Tab and activated with
+ * inside (links, CTAs) must be keyboard-accessible via Tab and activated with
  * Enter. Screen readers announce card content in DOM order. The `promo` variant
- * SHOULD be used for promotional content separate from the main page flow.
+ * should be used for promotional content separate from the main page flow.
  *
  * @summary Groups content previews with optional actions in a contained layout
  *
@@ -33,7 +33,7 @@ export class RhCard extends LitElement {
    * Sets color palette, which affects the element's styles as well as descendants' color theme.
    * Overrides parent color context. Accepts 'lightest' | 'lighter' | 'light' | 'dark' |
    * 'darker' | 'darkest'. Promo variants automatically compute palette: featured promos
-   * USE the `-est` suffix, standard promos USE the `-er` suffix. Defaults to undefined
+   * use the `-est` suffix, standard promos use the `-er` suffix. Defaults to undefined
    * (inherits from parent context). See [CSS Custom Properties](#css-custom-properties)
    * for default values.
    */
@@ -43,7 +43,7 @@ export class RhCard extends LitElement {
    * Controls the card's visual variant. Accepts 'promo' or undefined.
    * When set to 'promo', the card renders in a promotional layout with
    * grid-based positioning for image, body, and footer. Defaults to
-   * undefined (standard card layout). AVOID mixing promo and standard
+   * undefined (standard card layout). Avoid mixing promo and standard
    * cards in the same group.
    */
   @property({ reflect: true }) variant?: 'promo';
@@ -89,7 +89,7 @@ export class RhCard extends LitElement {
         <!--
           summary: Card header content
           description: |
-            MUST contain a heading level tag (h1-h6) for screen reader
+            Must contain a heading level tag (h1-h6) for screen reader
             navigation. Icons, SVGs, or rh-icon are also valid. Screen
             readers announce this slot content first in the card.
         -->
@@ -103,9 +103,9 @@ export class RhCard extends LitElement {
         <!--
           summary: Card footer content
           description: |
-            USE for calls to action or links anchored to the card bottom.
+            Use for calls to action or links anchored to the card bottom.
             Screen readers announce footer content last. Interactive
-            elements MUST be focusable via Tab and activated with Enter.
+            elements must be focusable via Tab and activated with Enter.
         -->
         <slot name="footer"></slot>
       </div>`;
@@ -129,9 +129,9 @@ export class RhCard extends LitElement {
           <!--
             summary: Promo variant image content
             description: |
-              USE for images or CTAs in the promo variant. Images SHOULD
+              Use for images or CTAs in the promo variant. Images should
               include alt text for screen readers. Decorative images
-              SHOULD use alt="" to be hidden from assistive technology.
+              should use alt="" to be hidden from assistive technology.
           -->
           <slot name="image"></slot>
         </div>
@@ -143,7 +143,7 @@ export class RhCard extends LitElement {
           <!--
             summary: Card body content (default slot)
             description: |
-              Receives all content not assigned to named slots. SHOULD
+              Receives all content not assigned to named slots. Should
               contain descriptive text, headings, or supporting elements.
               Screen readers announce this between header and footer.
           -->
