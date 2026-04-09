@@ -152,6 +152,39 @@ describe('<rh-pagination>', function() {
     });
   });
 
+  describe('with links missing href and aria-current="page" fallback', function() {
+    let element: RhPagination;
+    beforeEach(async function() {
+      /* eslint-disable lit-a11y/anchor-is-valid */
+      element = await createFixture<RhPagination>(html`
+        <rh-pagination>
+          <ol>
+            <li><a>1</a></li>
+            <li><a>2</a></li>
+            <li><a aria-current="page">3</a></li>
+            <li><a>4</a></li>
+            <li><a>5</a></li>
+          </ol>
+        </rh-pagination>
+      `);
+      /* eslint-enable lit-a11y/anchor-is-valid */
+      await element.updateComplete;
+      await nextFrame();
+    });
+
+    it('identifies the current page via aria-current', function() {
+      const current = element.querySelector<HTMLAnchorElement>('a[aria-current="page"]');
+      expect(current).to.exist;
+      expect(current!.textContent).to.equal('3');
+    });
+
+    it('sets data-page="current" on the correct list item', function() {
+      const currentLi = element.querySelector('li[data-page="current"]');
+      expect(currentLi).to.exist;
+      expect(currentLi!.querySelector('a')!.textContent).to.equal('3');
+    });
+  });
+
   describe('with 5 pages', function() {
     let element: RhPagination;
     beforeEach(async function() {
