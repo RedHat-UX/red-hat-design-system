@@ -5,6 +5,7 @@
 }
 
 a {
+  /** Jump link text color */
   color: var(--rh-color-interactive-secondary-default);
   text-decoration: none;
   display: inline-block;
@@ -19,26 +20,36 @@ a {
   }
 
   &.vertical {
+    /** Jump link vertical spacing */
     padding-block: var(--rh-space-md, 8px);
     padding-inline:
+      /** Jump link vertical inline-start padding */
       calc(var(--rh-space-lg, 16px) + var(--_padding-inline-start, 0px))
+      /** Jump link vertical inline-end padding */
       var(--rh-space-lg, 16px);
     border-inline-start: var(--_bdr);
-
-    /** max-width for each vertical jump link */
-    max-width: var(--rh-jump-link-max-width, calc(var(--rh-length-md, 8px) * 40));
+    max-width:
+      /** Vertical link max width override */
+      var(--rh-jump-link-max-width,
+        /** Vertical link max width */
+        calc(var(--rh-length-md, 8px) * 40));
   }
 
   &.horizontal {
+    /** Jump link inner spacing */
     padding: var(--rh-space-lg, 16px);
     white-space: nowrap;
   }
 
   &:hover {
+    /** Jump link hover text color */
     color: var(--rh-color-text-primary);
   }
 
-  &:focus { color: var(--rh-color-text-primary); }
+  &:focus {
+    /** Jump link focus text color */
+    color: var(--rh-color-text-primary);
+  }
 
   &:focus-visible {
     outline: none;
@@ -48,19 +59,28 @@ a {
       display: block;
       position: absolute;
       inset: 0;
-      border: 2px solid var(--rh-color-interactive-primary-default);
+      border:
+        2px
+        solid
+        /** Focus ring color */
+        var(--rh-color-interactive-primary-default);
+
+      /** Jump link corner rounding */
       border-radius: var(--rh-border-radius-default, 3px);
     }
   }
 
   &:hover,
   &:focus-visible {
+    /** Jump link hover/focus border color */
     --_bdr-c: var(--rh-color-border-status-neutral);
   }
 
   &.active {
+    /** Jump link active text color */
     color: var(--rh-color-text-primary);
 
+    /** Jump link active border color */
     --_bdr-c: var(--rh-color-brand-red);
   }
 
@@ -73,9 +93,12 @@ a {
       inset-block: 0;
       border-inline-start:
         var(--_active_bdr,
+          /** Vertical active border width */
           var(--rh-border-width-lg, 3px)
           solid
-          var(--_bdr-c, var(--rh-color-border-status-neutral)));
+          var(--_bdr-c,
+          /** Vertical active border color */
+          var(--rh-color-border-status-neutral)));
     }
 
     &.horizontal:before {
@@ -83,9 +106,12 @@ a {
       inset-block-start: 0;
       inset-inline: 0;
       border-block-start:
+        /** Horizontal active border width */
         var(--rh-border-width-lg, 3px)
         solid
-        var(--_bdr-c, var(--rh-color-border-status-neutral));
+        var(--_bdr-c,
+          /** Horizontal active border color */
+          var(--rh-color-border-status-neutral));
     }
   }
 }

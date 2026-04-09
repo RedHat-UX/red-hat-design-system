@@ -15,7 +15,7 @@ A user should have the ability to navigate to and interact with alerts using the
 | --------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | <kbd>Tab</kbd>                    | Moves focus to the next interactive element (e.g., from the close button to the first action button in the alert)          |
 | <kbd>Shift</kbd> + <kbd>Tab</kbd> | Moves focus to the previous interactive element (e.g., from the first action button in the alert back to the close button) |
-| <kbd>Enter</kbd>                  | Selects the close button, an action button, or link                                                                        |
+| <kbd>Enter</kbd>                  | Triggers the close button, an action button, or link                                                                        |
 
 </rh-table>
 
@@ -29,6 +29,32 @@ A logical focus order helps users understand and operate our websites and produc
        width="456"
        height="276">
 </uxdot-example>
+
+## Toasts
+
+<rh-alert state="caution">
+  <h3 slot="header">Accessibility considerations</h3>
+  <p>There are accessibility considerations to keep in mind when using toasts. See our <a href="/patterns/alert/accessibility/">toast pattern accessibility guidelines</a> for more information.</p>
+</rh-alert>
+
+Toasts created with `RhAlert.toast()` are not the same as inline alerts in how
+assistive technology exposes them.
+
+The toast container uses `role="status"` and `aria-live="polite"`, so updates
+are announced as polite status messages, not as an interrupting `role="alert"`. 
+Inline alerts use `role="alert"` on the alert surface. Do not assume a toast 
+has the same urgency or immediacy as an inline alert.
+
+Toasts render inside a single "toaster" region appended to `document.body`, not
+next to the control that triggered them. That separation affects reading order
+and discovery ([WCAG 1.3.2 Meaningful Sequence](https://www.w3.org/WAI/WCAG21/Understanding/meaningful-sequence.html)).
+Design mitigations (when to use a toast, persistence, redundant in-context feedback)
+are covered at [toast Alert pattern — Accessibility](/patterns/alert/accessibility/).
+
+`RhAlert.toast()` does not move keyboard focus into the toast when it appears.
+Many screen reader users will still hear the announcement; sighted keyboard
+users must <kbd>Tab</kbd> to the toast to reach the dismiss control and any
+actions.
 
 {% include 'partials/accessibility/ariaguide.md' %}
 {% include 'partials/accessibility/wcag.md' %}
