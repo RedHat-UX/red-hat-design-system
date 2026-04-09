@@ -145,7 +145,7 @@ cem generate
 
 [cem]: https://github.com/bennypowers/cem
 [cemdocs]: https://bennypowers.dev/cem/
-[claudecode]: https://claude.ai/claude-code
+[claudecode]: https://claude.com/product/claude-code
 [cursor]: https://cursor.com
 [cursormcp]: https://docs.cursor.com/mcp
 [lspref]: https://bennypowers.dev/cem/docs/reference/lsp/
