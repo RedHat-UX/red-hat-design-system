@@ -24,9 +24,8 @@ import styles from './rh-navigation-primary-item.css' with { type: 'css' };
 /**
  * A navigation item provides an interactive link or dropdown for the
  * primary navigation bar. It must be placed inside
- * `rh-navigation-primary`. When `variant` is `dropdown`, the toggle
- * uses `aria-expanded` for screen readers. Keyboard users press Enter
- * or Space to open; Escape closes and returns focus to the toggle.
+ * `rh-navigation-primary`. Keyboard users press Enter
+ * or Space to open or follow the link. Escape closes and returns focus to the toggle.
  * Link items should contain one `<a>` for an accessible name.
  *
  * @summary Interactive link or dropdown for the primary navigation
