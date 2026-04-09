@@ -151,7 +151,7 @@ export class RhNavigationPrimaryItem extends LitElement {
               -->
               <slot name="summary">${this.summary}</slot>
             </div>
-            <rh-icon icon="caret-down" set="microns" class="${hamburger ? '' : 'hidden'}"></rh-icon>
+            <rh-icon icon="caret-down" set="microns" ?hidden="${!hamburger}"></rh-icon>
           </summary>
           <rh-navigation-primary-item-menu id="details-content">
             <!--
