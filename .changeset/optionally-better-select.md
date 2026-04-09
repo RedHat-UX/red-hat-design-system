@@ -2,7 +2,7 @@
 "@rhds/elements": minor
 ---
 
-✨ Added <rh-select>
+✨ Added `<rh-select>`
 
 A select enables users to select one or more items from a list.
 
