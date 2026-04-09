@@ -2,9 +2,9 @@
 "@rhds/elements": minor
 ---
 
-`<rh-navigation-primary>`: unified navigation design with sub-domain support and collapsible links menu
+`<rh-navigation-primary>`: unified navigation redesign with sub-domain support and collapsible links menu
 
-Added `sub-domain` attribute and slot for displaying sub-domain text alongside the logo lockup. Added `logo-href` attribute to customize the logo link destination. Added `mobile-links-toggle-label` attribute for translatable links menu toggle text. Improved accessibility and keyboard navigation.
+Redesigned the primary navigation to match the unified nav specification: removed pill-shaped nav buttons and gradient borders, reduced padding between items, and removed icon button labels. Secondary links now collapse into a bento-box toggle on narrow viewports via a new collapsible links menu. Added a sub-domain variation (`sub-domain` attribute and `sub-domain` slot) that displays a sub-domain title alongside the Red Hat logo lockup, including a hat-tip hover animation that tilts the Red Hat fedora with `prefers-reduced-motion` respected. Added `logo-href` to customize the logo link destination and `mobile-links-toggle-label` for non-English locales. Improved accessibility and keyboard navigation.
 
 ```html
 <rh-navigation-primary sub-domain logo-href="https://www.redhat.com/en">
