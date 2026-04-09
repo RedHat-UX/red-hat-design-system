@@ -14,16 +14,14 @@ import style from './rh-footer.css' with { type: 'css' };
 import './rh-footer-copyright.js';
 
 /**
- * Abbreviated footer for content shared across all Red Hat sites. Use
- * standalone or inside `<rh-footer>`. MUST NOT be wrapped in a native
- * `<footer>` — when standalone, sets the ARIA `contentinfo` landmark
- * role via ElementInternals. SHOULD include a heading slot for screen
- * readers. Tab moves focus between links. No special keyboard
- * interaction beyond standard link navigation.
+ * Global Red Hat footer bar for consistent branding across all
+ * properties. Authors must not customize content per-site. The
+ * `secondary-start` slot should contain `<rh-footer-copyright>`.
+ * Renders a `<footer>` with ARIA landmark semantics and a
+ * visually-hidden `<h2>` so screen readers can identify the region.
+ * Tab navigates link groups.
  *
- * @summary An abbreviated footer with content that stays the same across all websites
- *
- * @demo https://ux.redhat.com/elements/footer/demo/footer-universal/ - Standalone universal footer
+ * @summary Global Red Hat universal footer with logo, links, and copyright
  * @alias footer-universal
  */
 @customElement('rh-footer-universal')
@@ -32,10 +30,9 @@ export class RhFooterUniversal extends LitElement {
   static readonly styles = [style];
 
   /**
-   * Color palette for the footer surface and text. Use design-system values
-   * (e.g. light, darker). Should contrast with adjacent layout; avoid matching
-   * a dark universal footer to a dark nav bar.
-   * @summary Theme for footer (light/dark); should contrast with adjacent layout.
+   * Color palette for the universal footer. Defaults to `'darker'`.
+   * Valid values: `'lighter'`, `'light'`, `'dark'`, `'darker'`, `'darkest'`.
+   * The universal footer typically renders on the darkest surface.
    */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
 
@@ -113,22 +110,28 @@ export class RhFooterUniversal extends LitElement {
     return html`
       <div class="footer">
         <h2 id="global-heading" ?hidden="${this.#hasAncestorH2}">
-          <!-- Visually-hidden heading announced by screen readers to identify the footer landmark. Expects inline text. Defaults to "Red Hat footer". -->
+          <!-- summary: visually-hidden heading for assistive technology
+               description: |
+                 Expects inline text. Screen readers use this heading to identify the
+                 universal footer region. Defaults to "Red Hat footer". Hidden if a
+                 parent \`<h2>\` already exists. -->
           <slot name="heading">Red Hat footer</slot>
         </h2>
-        <!--
-          part:
-            description: Wrapper for the universal footer content (logo, primary, secondary, tertiary).
-        -->
+        <!-- Wrapper for the universal footer content (logo, primary, secondary, tertiary). -->
         <div class="section global-base ${classMap({ hasTertiary })}" part="section base">
-          <!-- Replaces the default layout. AVOID using; it removes all built-in ARIA structure. Expects block-level elements. -->
+          <!-- summary: overrides all universal footer content (base slot)
+               description: |
+                 Expects block elements. Replaces the entire universal footer structure.
+                 Avoid using; bypasses all built-in layout, grid regions, responsive
+                 behavior, and ARIA landmark wiring. -->
           <slot name="base">
-            <!--
-              part:
-                description: Container for the logo slot.
-            -->
+            <!-- Container for the logo slot. -->
             <div class="global-logo" part="logo">
-              <!-- Logo or brand mark. Expects an anchor wrapping an \`<img>\` or \`<svg>\` with descriptive alt text for screen readers. Defaults to Red Hat logo. -->
+              <!-- summary: Red Hat logo (logo slot)
+                   description: |
+                     Expects block elements: an \`<a>\` wrapping an \`<img>\` or \`<svg>\`.
+                     Defaults to the Red Hat logo SVG linking to redhat.com. Screen
+                     readers rely on the anchor \`aria-label\` for identification. -->
               <slot name="logo">
                 <!--
                   part:
@@ -161,83 +164,89 @@ export class RhFooterUniversal extends LitElement {
                 </a>
               </slot>
             </div>
-            <!--
-              part:
-                description: Primary row (start, links, end).
-            -->
+            <!-- Primary row (start, links, end). -->
             <div class="global-primary" part="primary">
-              <!-- Content for the primary row. Expects block-level elements using the primary-start, links-primary, and primary-end slots. -->
+              <!-- summary: overrides primary-start, links-primary, and primary-end (primary slot)
+                   description: |
+                     Expects block elements. Replaces the entire primary link region.
+                     Override only when the three sub-slots are insufficient.
+                     Screen readers navigate child links as a group. -->
               <slot name="primary">
-                <!--
-                  part:
-                    description: Left area of the primary row.
-                -->
+                <!-- Left area of the primary row. -->
                 <div class="global-primary-start" part="primary-start" ?hidden=${!this.#slots.hasSlotted('primary-start')}>
-                  <!-- Optional content at the start of the primary row. Expects block-level elements. -->
+                  <!-- summary: content before primary links (primary-start slot)
+                       description: |
+                         Expects inline or block elements placed before the primary
+                         global navigation links. Screen readers encounter this
+                         content before the link list. -->
                   <slot name="primary-start"></slot>
                 </div>
-                <!--
-                  part:
-                    description: Main link list area in the primary row.
-                -->
+                <!-- Main link list area in the primary row. -->
                 <div class="global-links-primary" part="links-primary" ?hidden=${!this.#slots.hasSlotted('links-primary')}>
-                  <!-- Primary links (e.g. About, Contact). Expects a heading and \`<ul>\` with \`<a>\` items. Each heading SHOULD have a unique id for \`aria-labelledby\`. -->
+                  <!-- summary: primary global navigation links (links-primary slot)
+                       description: |
+                         Expects block elements: a \`<ul>\` of \`<li>\` anchor links for
+                         primary global Red Hat navigation. Screen readers announce
+                         the list group; Tab moves through each link. -->
                   <slot name="links-primary"></slot>
                 </div>
-                <!--
-                  part:
-                    description: Right area of the primary row.
-                -->
+                <!-- Right area of the primary row. -->
                 <div class="global-primary-end" part="primary-end" ?hidden=${!this.#slots.hasSlotted('primary-end')}>
-                  <!-- Optional content at the end of the primary row (e.g. \`<rh-footer-copyright>\`). Expects block-level elements. -->
+                  <!-- summary: content after primary links (primary-end slot)
+                       description: |
+                         Expects inline or block elements placed after the primary
+                         global navigation links. Screen readers encounter this
+                         content after the link list. -->
                   <slot name="primary-end"></slot>
                 </div>
               </slot>
             </div>
-            <!--
-              part:
-                description: Spacer between primary and secondary rows.
-            -->
+            <!-- Spacer between primary and secondary rows. -->
             <div class="spacer" part="spacer"></div>
-            <!--
-              part:
-                description: Secondary row (start, links, end).
-            -->
+            <!-- Secondary row (start, links, end). -->
             <div class="global-secondary" part="secondary">
-              <!-- Content for the secondary row. Expects block-level elements using the secondary-start, links-secondary, and secondary-end slots. -->
+              <!-- summary: overrides secondary-start, links-secondary, and secondary-end (secondary slot)
+                   description: |
+                     Expects block elements. Replaces the entire secondary link region.
+                     Override only when the three sub-slots are insufficient.
+                     Screen readers navigate child links as a group. -->
               <slot name="secondary">
-                <!--
-                  part:
-                    description: Left area of the secondary row.
-                -->
+                <!-- Left area of the secondary row. -->
                 <div class="global-secondary-start" part="secondary-start" ?hidden=${!this.#slots.hasSlotted('secondary-start')}>
-                  <!-- Optional content at the start of the secondary row. Expects block-level elements. -->
+                  <!-- summary: content before secondary links, e.g. copyright (secondary-start slot)
+                       description: |
+                         Expects block elements such as \`<rh-footer-copyright>\`, placed
+                         before the secondary links. Screen readers announce this
+                         content in DOM order within the footer landmark. -->
                   <slot name="secondary-start"></slot>
                 </div>
-                <!--
-                  part:
-                    description: Main link list area in the secondary row.
-                -->
+                <!-- Main link list area in the secondary row. -->
                 <div class="global-links-secondary" part="links-secondary" ?hidden=${!this.#slots.hasSlotted('links-secondary')}>
-                  <!-- Secondary links (e.g. Privacy, Terms). Expects a heading and \`<ul>\` with \`<a>\` items. Each heading SHOULD have a unique id for \`aria-labelledby\`. -->
+                  <!-- summary: secondary global navigation links (links-secondary slot)
+                       description: |
+                         Expects block elements: a \`<ul>\` of \`<li>\` anchor links for
+                         secondary global Red Hat navigation. Screen readers announce
+                         the list group; Tab moves through each link. -->
                   <slot name="links-secondary"></slot>
                 </div>
-                <!--
-                  part:
-                    description: Right area of the secondary row.
-                -->
+                <!-- Right area of the secondary row. -->
                 <div class="global-secondary-end" part="secondary-end" ?hidden=${!this.#slots.hasSlotted('secondary-end')}>
-                  <!-- Optional content at the end of the secondary row. Expects block-level elements. -->
+                  <!-- summary: content after secondary links (secondary-end slot)
+                       description: |
+                         Expects inline or block elements placed after the secondary
+                         global navigation links. Screen readers encounter this
+                         content after the secondary link list. -->
                   <slot name="secondary-end"></slot>
                 </div>
               </slot>
             </div>
-            <!--
-              part:
-                description: Optional bottom section (e.g. copyright, extra text).
-            -->
+            <!-- Optional bottom section (e.g. copyright, extra text). -->
             <div class="global-tertiary" part="tertiary" ?hidden=${!this.#slots.hasSlotted('tertiary')}>
-              <!-- Tertiary content below primary and secondary rows. Expects block-level elements. -->
+              <!-- summary: optional third content region (tertiary slot)
+                   description: |
+                     Expects block elements such as a language selector or custom
+                     widget. Hidden when nothing is slotted. Screen readers
+                     encounter this region after the secondary links. -->
               <slot name="tertiary"></slot>
             </div>
           </slot>

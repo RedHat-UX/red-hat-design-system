@@ -26,9 +26,21 @@ import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-tab.css' with { type: 'css' };
 
+/**
+ * Fired when a tab is selected. Contains the `active` state and
+ * a reference to the `tab` element. This event bubbles and is
+ * cancelable; calling `preventDefault()` prevents the tab from
+ * activating.
+ *
+ * Event properties:
+ * - `active` {boolean} - whether the tab was already active
+ * - `tab` {RhTab} - the tab element being expanded
+ */
 export class TabExpandEvent extends Event {
   constructor(
+    /** Whether the tab was already active before this event */
     public active: boolean,
+    /** The tab element being expanded */
     public tab: RhTab,
   ) {
     super('expand', { bubbles: true, cancelable: true });
@@ -36,18 +48,42 @@ export class TabExpandEvent extends Event {
 }
 
 /**
- * The tab button for use within a rh-tabs element, must be paired with a rh-tab-panel.
- * @fires { TabExpandEvent } expand - when a tab expands
+ * A tab button for use in an `rh-tabs` element. Each `rh-tab`
+ * must be paired with an `rh-tab-panel`. The ARIA `tab` role
+ * and `aria-selected` state allow screen reader users to
+ * identify the active tab. Authors should keep labels short
+ * and should avoid interactive content inside the tab.
+ *
+ * @summary A single tab within an `rh-tabs` set
+ *
+ * @fires {TabExpandEvent} expand - when a tab expands.
+ *        The event detail shape includes `active` (boolean)
+ *        indicating prior state and `tab` (RhTab) referencing
+ *        the expanded element. Cancelable with
+ *        `preventDefault()`.
+ *
+ * @csspart button - the interactive tab button container
+ * @csspart icon - container for the icon slot
+ * @csspart text - container for the default (text) slot
+ *
  */
 @customElement('rh-tab')
 @themable
 export class RhTab extends LitElement {
   static readonly styles = [styles];
 
-  /** True when the tab is selected */
+  /**
+   * When true, this tab is the currently selected tab. Only one
+   * tab in a set should be active at a time. Screen readers
+   * announce the active state via `aria-selected`.
+   */
   @property({ reflect: true, type: Boolean }) active = false;
 
-  /** True when the tab is disabled */
+  /**
+   * When true, the tab cannot be activated by click, Enter, or
+   * focus. The tab receives `aria-disabled="true"` to communicate
+   * the disabled state to assistive technologies.
+   */
   @property({ reflect: true, type: Boolean }) disabled = false;
 
   /** Icon name to display in the tab */
@@ -95,11 +131,18 @@ export class RhTab extends LitElement {
            part="button"
            ?disabled="${this.disabled}"
            class="${classMap({ active, box, vertical, first, last })}">
+        <!-- summary: Icon
+             description: |
+               Can contain an \`<svg>\` or \`<rh-icon>\` element
+               displayed before the tab label text. -->
         <slot name="icon"
               part="icon">
           <rh-icon ?hidden="${!this.icon}" icon="${ifDefined(this.icon)}" set="${ifDefined(this.iconSet)}"></rh-icon>
-        </slot>    
-        <!-- Tab title text -->
+        </slot>
+        <!-- summary: Tab label
+             description: |
+               Tab label text. Authors should keep labels short
+               and descriptive. -->
         <slot part="text"></slot>
       </div>
     `;

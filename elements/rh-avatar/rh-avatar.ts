@@ -10,11 +10,22 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import styles from './rh-avatar.css' with { type: 'css' };
 
 /**
- * Provides a small thumbnail representation of a user, including image and optional
- * title and subtitle. Use when representing a specific person by image, name, and/or
- * job title.
+ * Provides a circular user thumbnail for mastheads, cards, and attribution when
+ * you need to visually identify a person. Allows an image, a deterministic
+ * pattern, or a default icon. Must not take focus or act as a control; images
+ * carry `role="presentation"`. Authors should provide a name via the
+ * default slot so screen readers have context.
  *
- * @summary Visually represents a user in a masthead or navigation
+ * @summary Circular user thumbnail for mastheads, navigation, and attribution
+ *
+ * @slot - The user's display name — provides the accessible label for screen readers. Accepts text or an anchor for linked names.
+ * @slot subtitle - Auxiliary info such as job title. Accepts text or `<a>` elements. Slotted anchors receive interactive color token styles. Screen readers announce this after the name.
+ *
+ * @csspart canvas - The `<canvas>` used for generated geometric patterns.
+ * @csspart img - The `<img>` or default `<svg>` silhouette icon.
+ *
+ * @cssprop [--rh-avatar-size=var(--rh-size-icon-06, 64px)] - Thumbnail width and height; capped at the `--rh-size-icon-06` token (64px).
+ * @cssprop [--rh-avatar-colors] - Space-separated hex values overriding the built-in light-dark pattern color tokens.
  *
  * @alias avatar
  */
@@ -24,36 +35,47 @@ export class RhAvatar extends LitElement {
   static readonly styles = [styles];
 
   /**
-   * The URL to the user's custom avatar image.
-   *
-   * It will be displayed instead of a random pattern.
+   * URL to a custom avatar image. Replaces the default icon and any
+   * generated pattern. The `<img>` has `role="presentation"`.
    */
   @property({ reflect: true }) src?: string;
 
   /**
-   * The user's name, either given name and family name, or username.
-   *
-   * When displaying a pattern, the name will be used to seed the pattern generator.
-   * When \`plain\` is set, the name and subtitle are used as accessible labels
+   * The user's display name. Falls back as default slot content and
+   * seeds the deterministic pattern generator when `pattern` is set.
    */
   @property({ reflect: true }) name?: string;
 
   /**
-   * Auxiliary information about the user. May be used to add job title, company, etc.
-   * When \`plain\` is set, the name and subtitle are used as accessible labels
+   * Auxiliary text such as job title or company. Falls back as default
+   * content in the `subtitle` slot.
    */
   @property({ reflect: true }) subtitle?: string;
 
-  /** Places avatar on the left or on top of the text. */
+  /**
+   * Thumbnail position relative to text: `'inline'` (default, left of text)
+   * or `'block'` (stacked above). Both collapse to centered block below 576px.
+   */
   @property({ reflect: true }) layout?: 'inline' | 'block';
 
-  /** The type of pattern to display. */
+  /**
+   * Type of geometric pattern (`'squares'` or `'triangles'`). Generated
+   * deterministically from `name` so the same name always yields the same
+   * pattern. Colors come from the `--_colors` CSS custom property.
+   *
+   * @see [Style](https://ux.redhat.com/elements/avatar/style/)
+   */
   @property({ reflect: true }) pattern?: 'squares' | 'triangles';
 
-  /** When true, hides the title and subtitle */
+  /**
+   * When true, visually hides the name and subtitle via CSS clip while
+   * keeping them accessible to screen readers.
+   */
   @property({ reflect: true, type: Boolean }) plain = false;
 
-  /** Adds a subtle border to the avatar image */
+  /**
+   * Adds a subtle border around the thumbnail when set to `'bordered'`.
+   */
   @property({ reflect: true }) variant?: 'bordered';
 
   #style?: CSSStyleDeclaration;
@@ -115,10 +137,8 @@ export class RhAvatar extends LitElement {
   }
 
   /**
-   * Page authors may include whitespace in the element while also using `name`
-   * or `subtitle` attributes to inject default content. In those cases, any
-   * slotted text nodes, even if consisting solely of white-space, will override
-   * the default content (i.e. attribute values)
+   * Trims whitespace-only text nodes so they don't override attribute-driven
+   * default slot content.
    */
   #normalize() {
     for (const node of this.childNodes) {
@@ -139,7 +159,8 @@ export class RhAvatar extends LitElement {
   }
 
   /**
-   * Called when the pattern or name changes
+   * Re-renders the geometric pattern. Called automatically when `pattern`
+   * or `name` change; call manually after updating CSS custom properties.
    * @deprecated a future version will remove this public method
    */
   async updatePattern() {
