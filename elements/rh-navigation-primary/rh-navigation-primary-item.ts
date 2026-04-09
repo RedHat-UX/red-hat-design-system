@@ -34,8 +34,6 @@ import styles from './rh-navigation-primary-item.css' with { type: 'css' };
  * @fires {Event} toggle - Fires when the dropdown opens or closes. The event
  *   has no custom detail; read the element's `open` property for the new state.
  *
- * @demo https://ux.redhat.com/elements/navigation-primary/demo/ - Default navigation with dropdown items
- * @demo https://ux.redhat.com/elements/navigation-primary/demo/links-as-top-level/ - Link variant items
  */
 @themable
 @customElement('rh-navigation-primary-item')

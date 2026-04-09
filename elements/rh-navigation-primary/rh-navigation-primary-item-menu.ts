@@ -18,7 +18,6 @@ import styles from './rh-navigation-primary-item-menu.css' with { type: 'css' };
  *
  * @summary Content container for navigation item dropdowns
  *
- * @demo https://ux.redhat.com/elements/navigation-primary/demo/ - Navigation with dropdown menus
  */
 @customElement('rh-navigation-primary-item-menu')
 export class RhNavigationPrimaryItemMenu extends LitElement {
