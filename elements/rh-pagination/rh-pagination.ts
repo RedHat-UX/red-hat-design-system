@@ -24,11 +24,11 @@ const L2 = html`
   </svg>`;
 
 /**
- * Provides page navigation for content using stepper buttons, numbered
- * links, and a page-input field. Authors MUST provide an `<ol>` with
- * `<li><a>` page links. SHOULD use `aria-current="page"` on the active
- * link. Screen readers announce the `<nav>` landmark via `label`. Tab
- * moves focus through steppers and input; Enter activates.
+ * Pagination allows users to navigate between pages of related content.
+ * Use it when content is too long for a single view. Authors must
+ * provide a single `<ol>` with `<li><a>` page links where the active
+ * page should have `aria-current="page"`. Tab navigates between controls;
+ * Enter activates. Supports box and open variants, default and small sizes.
  *
  * @summary Navigate between pages of content with steppers and input
  *
@@ -60,7 +60,7 @@ export class RhPagination extends LitElement {
    */
   @property({ reflect: true }) overflow: 'start' | 'end' | 'both' | null = null;
 
-  /** Accessible label for the `<nav>` landmark. SHOULD be unique when multiple paginations exist on a page. Defaults to `'Page navigation'`. */
+  /** Accessible label for the `<nav>` landmark. Should be unique when multiple paginations exist on a page. Defaults to `'Page navigation'`. */
   @property() label = 'Page navigation';
 
   /** Accessible label for the first-page stepper button. Used by screen readers. Defaults to `'first page'`. */
@@ -78,7 +78,7 @@ export class RhPagination extends LitElement {
   /** Controls pagination size. Accepts `'sm'` for smaller touch targets (WCAG AA) or `null` for default (WCAG AAA). Defaults to `null`. */
   @property({ reflect: true }) size: 'sm' | null = null;
 
-  /** Visual variant. Accepts `'open'` for transparent backgrounds with bottom borders, or `null` for the default box variant. Defaults to `null`. */
+  /** Visual variant. Accepts `'borderless'` for transparent backgrounds with bottom borders, or `null` for the default box variant. Defaults to `null`. */
   @property({ reflect: true, converter: {
     fromAttribute(value: string | null) {
       // Silent aliasing: convert 'open' to 'borderless'
@@ -178,12 +178,16 @@ export class RhPagination extends LitElement {
            ?inert="${!prevHref || this.#currentLink === this.#prevLink || this.#currentLink === this.#firstLink}"
            aria-label="${labelPrevious}">${L1}</a>
         <nav aria-label="${label}">
-          <!-- summary: page link list (default slot)
+          <!-- summary: Page link list
                description: |
-                 An \`<ol>\` containing \`<li><a>\` elements for each page. The
-                 active page link MUST have \`aria-current="page"\` or match the
-                 current URL. Screen readers announce this as a navigation
-                 landmark labeled by the \`label\` property. -->
+                 Expects a single \`<ol>\` containing \`<li><a>\` block
+                 elements for each page. The active page link must have
+                 \`aria-current="page"\` or match the current URL.
+                 Authors should ensure each link has descriptive text
+                 for assistive technology. The wrapping \`<nav>\` is
+                 announced as a landmark labeled by the \`label\`
+                 property; authors must keep labels unique when
+                 multiple paginations exist on a page. -->
           <slot></slot>
         </nav>
         <a id="next"

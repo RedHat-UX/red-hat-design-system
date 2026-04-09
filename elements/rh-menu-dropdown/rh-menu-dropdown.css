@@ -21,10 +21,17 @@
 
 :host {
   --_border:
-    var(--rh-border-width-sm, 1px) solid light-dark(
+    /** Menu Dropdown Border width */
+    var(--rh-border-width-sm, 1px)
+    solid
+    light-dark(
+        /** Border color in light mode */
         var(--rh-color-gray-30, #c7c7c7),
+        /** Border color in dark mode */
         var(--rh-color-gray-50, #707070)
       );
+
+  /** Default text color */
   --_color: var(--rh-color-text-primary);
 
   position: relative;
@@ -34,17 +41,28 @@
 /* Styles floating menu panel */
 #menu-list {
   position: absolute;
-  padding: var(--rh-space-md, 8px) 0;
+  padding:
+    /** Menu panel block padding */
+    var(--rh-space-md, 8px)
+    0;
   left: 0;
   top: 0;
   z-index: 1000;
   min-inline-size: 18.5rem;
   max-inline-size: 100%;
+
+  /** Menu panel corner rounding */
   border-radius: var(--rh-border-radius-default, 3px);
   border: var(--_border);
   background:
-    light-dark(var(--rh-color-surface-lightest, #ffffff),
-      var(--rh-color-surface-darkest, #151515));
+    light-dark(
+        /** Menu panel background in light mode */
+        var(--rh-color-surface-lightest, #ffffff),
+        /** Menu panel background in dark mode */
+        var(--rh-color-surface-darkest, #151515)
+      );
+
+  /** Menu panel elevation shadow */
   box-shadow: var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25));
   transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
   translate: var(--_floating-content-translate);
@@ -59,10 +77,18 @@
    May adjust font size if consistency with nearby elements is required. */
 ::slotted([slot='toggle-label']) {
   color: var(--_color);
+
+  /** Toggle label font family */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
+  /** Toggle label font size */
   font-size: var(--rh-font-size-body-text-md, 1rem) !important;
   font-style: normal;
+
+  /** Toggle label font weight */
   font-weight: var(--rh-font-weight-body-text-regular, 400);
+
+  /** Toggle label line height */
   line-height: var(--rh-line-height-code, 1.5);
 }
 
@@ -73,25 +99,47 @@
  */
 #menu-toggle {
   --_interactive-border-color:
-    light-dark(var(--rh-color-accent-base-on-light, #0066cc),
-      var(--rh-color-accent-base-on-dark, #92c5f9));
+    light-dark(
+        /** Interactive border color in light mode */
+        var(--rh-color-accent-base-on-light, #0066cc),
+        /** Interactive border color in dark mode */
+        var(--rh-color-accent-base-on-dark, #92c5f9)
+      );
 
   color: var(--_color);
+
+  /** Toggle button font family */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
+  /** Toggle button font size */
   font-size: var(--rh-font-size-body-text-md, 1rem);
   font-style: normal;
+
+  /** Toggle button font weight */
   font-weight: var(--rh-font-weight-body-text-regular, 400);
+
+  /** Toggle button line height */
   line-height: var(--rh-line-height-code, 1.5);
   inline-size: 100%;
-  padding: var(--rh-space-sm, 6px) var(--rh-space-lg, 16px);
+  padding:
+    /** Toggle button block padding */
+    var(--rh-space-sm, 6px)
+    /** Toggle button inline padding */
+    var(--rh-space-lg, 16px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
+
+  /** Toggle button corner rounding */
   border-radius: var(--rh-border-radius-default, 3px);
   background:
-    light-dark(var(--rh-color-surface-lightest, #ffffff),
-      var(--rh-color-surface-darkest, #151515));
+    light-dark(
+        /** Toggle background in light mode */
+        var(--rh-color-surface-lightest, #ffffff),
+        /** Toggle background in dark mode */
+        var(--rh-color-surface-darkest, #151515)
+      );
   border: none;
 
   /* Styles contents of a basic menu toggle.
@@ -99,6 +147,7 @@
   .action-icon rh-icon {
     --rh-icon-size: 10px;
 
+    /** Space between label and caret icon */
     padding-inline-start: var(--rh-space-md, 8px);
   }
 
@@ -114,8 +163,11 @@
    */
   &.boxed {
     box-shadow:
-      inset 0 0 0 1px light-dark(
+      inset 0 0 0 1px
+      light-dark(
+          /** Boxed border color in light mode */
           var(--rh-color-gray-30, #c7c7c7),
+          /** Boxed border color in dark mode */
           var(--rh-color-gray-50, #707070)
         );
 
@@ -125,20 +177,40 @@
       }
 
       &:active {
-        box-shadow: inset 0 0 0 var(--rh-length-3xs, 2px) var(--_interactive-border-color);
+        box-shadow:
+          inset 0 0 0
+          /** Active border spread width */
+          var(--rh-length-3xs, 2px)
+          var(--_interactive-border-color);
       }
 
       &:focus {
-        outline: var(--rh-length-3xs, 2px) solid var(--_interactive-border-color);
+        outline:
+          /** Focus outline width */
+          var(--rh-length-3xs, 2px)
+          solid
+          var(--_interactive-border-color);
+
+        /** Focus outline offset */
         outline-offset: var(--rh-length-3xs, 2px);
       }
     }
 
     &.open {
-      box-shadow: inset 0 0 0 var(--rh-length-3xs, 2px) var(--_interactive-border-color);
+      box-shadow:
+        inset 0 0 0
+        /** Open border spread width */
+        var(--rh-length-3xs, 2px)
+        var(--_interactive-border-color);
 
       &:focus {
-        outline: var(--rh-length-3xs, 2px) solid var(--_interactive-border-color);
+        outline:
+          /** Focus outline width */
+          var(--rh-length-3xs, 2px)
+          solid
+          var(--_interactive-border-color);
+
+        /** Focus outline offset */
         outline-offset: var(--rh-length-3xs, 2px);
       }
     }
@@ -149,6 +221,7 @@
    * intent as text toggle per spacing guidance.
    */
   &.compact {
+    /** Compact toggle padding */
     padding: var(--rh-space-md, 8px);
 
     &:not(.boxed) {
@@ -157,13 +230,21 @@
       &:active,
       &:focus {
         background-color:
-          light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-            var(--rh-color-surface-darker, #1f1f1f));
+          light-dark(
+              /** Compact hover background in light mode */
+              var(--rh-color-surface-lighter, #f2f2f2),
+              /** Compact hover background in dark mode */
+              var(--rh-color-surface-darker, #1f1f1f)
+            );
       }
 
       &:focus,
       &:active {
-        box-shadow: inset 0 0 0 var(--rh-length-3xs, 2px) var(--_interactive-border-color);
+        box-shadow:
+          inset 0 0 0
+          /** Focus/active border spread width */
+          var(--rh-length-3xs, 2px)
+          var(--_interactive-border-color);
       }
     }
   }
@@ -175,7 +256,13 @@
   &.disabled {
     pointer-events: none;
     cursor: not-allowed;
-    background: light-dark(var(--rh-color-gray-30, #c7c7c7), var(--rh-color-gray-40, #a3a3a3));
+    background:
+      light-dark(
+          /** Disabled background in light mode */
+          var(--rh-color-gray-30, #c7c7c7),
+          /** Disabled background in dark mode */
+          var(--rh-color-gray-40, #a3a3a3)
+        );
 
     &:focus,
     &:active,
@@ -200,6 +287,7 @@
 
 /* Spacing for decorative icons slotted into the toggle */
 ::slotted(rh-icon) {
+  /** Space after slotted icon in toggle label */
   margin-inline-end: var(--rh-space-md, 8px);
 }
 
@@ -216,7 +304,11 @@ rh-menu::part(menu) {
   ::slotted([slot='toggle-label']),
   .action-icon rh-icon {
     color:
-      light-dark(var(--rh-color-gray-50, #707070),
-        var(--rh-color-gray-60, #4d4d4d));
+      light-dark(
+          /** Disabled text color in light mode */
+          var(--rh-color-gray-50, #707070),
+          /** Disabled text color in dark mode */
+          var(--rh-color-gray-60, #4d4d4d)
+        );
   }
 }

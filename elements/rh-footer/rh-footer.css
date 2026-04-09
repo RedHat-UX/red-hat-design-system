@@ -1,7 +1,13 @@
 :host {
   /* apply sensible defaults based on redhat standards. */
+
+  /** Footer text color */
   color: var(--rh-color-white, #ffffff);
+
+  /** Footer typeface */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
+  /** Footer line height */
   line-height: var(--rh-line-height-body-text, 1.5);
   font-weight: var(--_font-weight);
   font-size: initial;
@@ -13,8 +19,7 @@
 /* Should only be applied if scripting is disabled */
 @media (scripting: none) {
   :host {
-    /** Minimum height for the footer when JavaScript is disabled
-      * @deprecated  target `rh-footer:not(:defined) directly */
+    /** Minimum footer height when scripting is disabled */
     min-height: var(--rh-footer-nojs-min-height);
   }
 }
@@ -29,37 +34,49 @@
 
 .footer,
 .global-base {
-  /**
-   * Fill color for social-link icons.
-   * Overrides the `--rh-color-gray-40` design token default.
-   */
-  --_icon-color: var(--rh-footer-icon-color, var(--rh-color-gray-40, #a3a3a3));
+  --_icon-color:
+    /** Footer icon color override */
+    var(
+        --rh-footer-icon-color,
+        /** Footer icon default on dark */
+        var(--rh-color-gray-40, #a3a3a3)
+      );
+  --_icon-color-hover:
+    /** Footer icon hover color override */
+    var(
+        --rh-footer-icon-color-hover,
+        /** Footer icon hover default on dark */
+        var(--rh-color-gray-30, #c7c7c7)
+      );
+  --_border-color:
+    /** Footer border color override */
+    var(
+        --rh-footer-border-color,
+        /** Footer border subtle on dark */
+        var(--rh-color-border-subtle-on-dark, #707070)
+      );
+  --_accent-color:
+    /** Footer accent color override */
+    var(
+        --rh-footer-accent-color,
+        /** Footer accent brand on light */
+        var(--rh-color-accent-brand-on-light, #ee0000)
+      );
+  --_section-side-gap:
+    /** Footer section horizontal margin override */
+    var(
+        --rh-footer-section-side-gap,
+        /** Footer section horizontal margin */
+        var(--rh-space-lg, 16px)
+      );
 
-  /**
-   * Fill color for social-link icons on hover or focus.
-   * Overrides the `--rh-color-gray-30` design token default.
-   */
-  --_icon-color-hover: var(--rh-footer-icon-color-hover, var(--rh-color-gray-30, #c7c7c7));
-
-  /**
-   * Color of horizontal rule borders between footer sections.
-   * Overrides the `--rh-color-border-subtle-on-dark` token.
-   */
-  --_border-color: var(--rh-footer-border-color, var(--rh-color-border-subtle-on-dark, #707070));
-
-  /**
-   * Brand accent color used for decorative highlights.
-   * Overrides the `--rh-color-accent-brand-on-light` token.
-   */
-  --_accent-color: var(--rh-footer-accent-color, var(--rh-color-accent-brand-on-light, #ee0000));
-
-  /**
-   * Inline padding on each footer section.
-   * Overrides the `--rh-space-lg` design token default.
-   */
-  --_section-side-gap: var(--rh-footer-section-side-gap, var(--rh-space-lg, 16px));
+  /** Universal footer accordion surface */
   --_accordion-background: var(--rh-color-white, #ffffff);
+
+  /** Footer logo width */
   --_logo-width: var(--rh-size-icon-04, 40px);
+
+  /** Footer body text weight */
   --_font-weight: var(--rh-font-weight-body-text-regular, 400);
 }
 
@@ -67,19 +84,22 @@
   box-sizing: border-box;
 }
 
-::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  /** Footer typeface */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif) !important;
+
+  /** Footer line height */
   line-height: var(--rh-line-height-heading, 1.3) !important;
 }
 
-/**
- * Debugging
- */
+/* Debugging */
 :host([debug]) *:not(.spacer, .base, a, svg) {
-  /* make sure we have some */
+  /** Debug mode minimum height */
   min-height: var(--rh-length-xl, 24px);
   position: relative;
-  outline: var(--rh-length-3xs, 2px) dotted red;
+  outline:
+    /** Debug mode outline width */ var(--rh-length-3xs, 2px) dotted
+    red;
 }
 
 :host([debug]) *:not(.spacer, .base, a, svg):after {
@@ -88,26 +108,35 @@
   position: absolute;
   color: white;
   background-color: darkslategray;
+
+  /** Debug mode label padding */
   padding: var(--rh-space-xs, 4px);
   top: 0;
   right: 0;
+
+  /** Debug mode label typeface */
   font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+
+  /** Debug mode label text size */
   font-size: var(--rh-font-size-code-xs, 0.75rem);
 }
 
-/**
- * Regions
- */
+/* Regions */
 .section {
-  padding: var(--rh-space-2xl, 32px) var(--_section-side-gap);
+  padding:
+    /** Footer section block padding */ var(--rh-space-2xl, 32px)
+    var(--_section-side-gap);
 }
 
 .header {
+  /** Footer background */
   background-color: var(--rh-color-surface-darker, #1f1f1f);
 
   /* children should flex wrap on mobile */
   display: flex;
   flex-wrap: wrap;
+
+  /** Footer content gap */
   gap: var(--rh-space-2xl, 32px);
   align-items: center;
   position: relative;
@@ -117,6 +146,8 @@
   display: none;
   content: '';
   background-color: var(--_border-color);
+
+  /** Footer height */
   height: var(--rh-length-4xs, 1px);
   position: absolute;
   bottom: 0;
@@ -128,16 +159,17 @@
   flex: 1 1 auto;
 }
 
+/* secondary should be push to the end of the line on mobile */
 .header-secondary {
-  /* secondary should be push to the end */
-
-  /* of the line on mobile */
   flex: 0 1 auto;
 }
 
 .main {
+  /** Footer background */
   background-color: var(--rh-color-surface-darker, #1f1f1f);
   display: grid;
+
+  /** Footer content gap */
   gap: var(--rh-space-2xl, 32px);
 
   /* force the mobile links menu to go flush against the header */
@@ -154,10 +186,13 @@
 }
 
 .global-base {
+  /** Reduced font size for universal footer links */
   --rh-footer-link-font-size: var(--rh-font-size-body-text-xs, 0.75rem);
 
   /* reduce the line-height for global links */
   line-height: 100%;
+
+  /** Footer background */
   background-color: var(--rh-color-surface-darkest, #151515);
   display: grid;
   grid-template-columns: 1fr;
@@ -167,7 +202,9 @@
     'spacer'
     'secondary'
     'tertiary';
-  gap: var(--rh-space-2xl, 32px) var(--rh-space-xl, 24px);
+  gap:
+    /** Footer universal block gap */ var(--rh-space-2xl, 32px)
+    /** Footer universal inline gap */ var(--rh-space-xl, 24px);
 }
 
 .global-logo {
@@ -190,13 +227,12 @@
 .global-secondary {
   grid-area: secondary;
 
-  /**
-   * Secondary text color for legal and copyright
-   * content in the universal footer.
-   */
+  /** Footer text color */
   color: var(--rh-color-text-secondary);
   display: flex;
   flex-direction: column;
+
+  /** Footer content gap */
   gap: var(--rh-space-lg, 16px);
   justify-content: space-between;
 }
@@ -211,17 +247,22 @@
 .global-links-primary {
   display: flex;
   flex-direction: column;
-  gap: var(--rh-space-md, 8px) var(--rh-space-xl, 24px);
+  gap:
+    /** Primary global links row gap */ var(--rh-space-md, 8px)
+    /** Primary global links column gap */ var(--rh-space-xl, 24px);
 }
 
 .global-links-secondary {
   display: flex;
   flex-direction: column;
-  gap: var(--rh-space-md, 8px) var(--rh-space-xl, 24px);
+  gap:
+    /** Secondary global links row gap */ var(--rh-space-md, 8px)
+    /** Secondary global links column gap */ var(--rh-space-xl, 24px);
 }
 
 /* reduce the font size of the content in these regions */
 :is(.global-primary, .global-secondary, .global-tertiary) ::slotted(*) {
+  /** Footer text size */
   font-size: var(--rh-font-size-body-text-xs, 0.75rem) !important;
 }
 
@@ -240,6 +281,8 @@
 .social-links slot::slotted(rh-footer-links) {
   display: flex;
   flex-direction: row;
+
+  /** Footer content gap */
   gap: var(--rh-space-xl, 24px);
 }
 
@@ -250,10 +293,7 @@
 }
 
 .isMobile .links {
-  /**
-   * Font size for link-column headings on mobile.
-   * Overrides the `--rh-font-size-body-text-lg` token.
-   */
+  /** Accordion link column header size */
   --rh-footer-link-header-font-size: var(--rh-font-size-body-text-lg, 1.125rem);
 }
 
@@ -262,6 +302,8 @@
 
   display: grid;
   grid-template-columns: 1fr;
+
+  /** Mobile accordion link stack gap */
   gap: calc(var(--rh-space-2xl, 32px) / 2);
 }
 
@@ -280,98 +322,97 @@
   grid-template-columns: repeat(1fr, 25%);
   grid-template-rows: repeat(1, min-content auto);
   grid-auto-columns: minmax(0, 1fr);
-  gap: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+  gap:
+    /** Desktop link column row gap */ var(--rh-space-lg, 16px)
+    /** Desktop link column inline gap */ var(--rh-space-2xl, 32px);
   grid-auto-flow: column;
-}
 
-[part='base']:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(1)) {
-  grid-column: 1/2;
-  grid-row: 1/2;
-}
+  & ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(1)) {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(2)) {
-  grid-column: 2/3;
-  grid-row: 1/2;
-}
+  & ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(2)) {
+    grid-column: 2/3;
+    grid-row: 1/2;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(3)) {
-  grid-column: 3/4;
-  grid-row: 1/2;
-}
+  & ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(3)) {
+    grid-column: 3/4;
+    grid-row: 1/2;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(4)) {
-  grid-column: 4/5;
-  grid-row: 1/2;
-}
+  & ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(4)) {
+    grid-column: 4/5;
+    grid-row: 1/2;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(5)) {
-  grid-column: 1/2;
-  grid-row: 3/4;
-}
+  & ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(5)) {
+    grid-column: 1/2;
+    grid-row: 3/4;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(6)) {
-  grid-column: 2/3;
-  grid-row: 3/4;
-}
+  & ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(6)) {
+    grid-column: 2/3;
+    grid-row: 3/4;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(7)) {
-  grid-column: 3/4;
-  grid-row: 3/4;
-}
+  & ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(7)) {
+    grid-column: 3/4;
+    grid-row: 3/4;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(8)) {
-  grid-column: 4/5;
-  grid-row: 3/4;
-}
+  & ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(8)) {
+    grid-column: 4/5;
+    grid-row: 3/4;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(1))) {
-  grid-column: 1/2;
-  grid-row: 2/3;
-}
+  & ::slotted(:is(ul:nth-of-type(1))) {
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(2))) {
-  grid-column: 2/3;
-  grid-row: 2/3;
-}
+  & ::slotted(:is(ul:nth-of-type(2))) {
+    grid-column: 2/3;
+    grid-row: 2/3;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(3))) {
-  grid-column: 3/4;
-  grid-row: 2/3;
-}
+  & ::slotted(:is(ul:nth-of-type(3))) {
+    grid-column: 3/4;
+    grid-row: 2/3;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(4))) {
-  grid-column: 4/5;
-  grid-row: 2/3;
-}
+  & ::slotted(:is(ul:nth-of-type(4))) {
+    grid-column: 4/5;
+    grid-row: 2/3;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(5))) {
-  grid-column: 1/2;
-  grid-row: 4/5;
-}
+  & ::slotted(:is(ul:nth-of-type(5))) {
+    grid-column: 1/2;
+    grid-row: 4/5;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(6))) {
-  grid-column: 2/3;
-  grid-row: 4/5;
-}
+  & ::slotted(:is(ul:nth-of-type(6))) {
+    grid-column: 2/3;
+    grid-row: 4/5;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(7))) {
-  grid-column: 3/4;
-  grid-row: 4/5;
-}
+  & ::slotted(:is(ul:nth-of-type(7))) {
+    grid-column: 3/4;
+    grid-row: 4/5;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(8))) {
-  grid-column: 4/5;
-  grid-row: 4/5;
-}
+  & ::slotted(:is(ul:nth-of-type(8))) {
+    grid-column: 4/5;
+    grid-row: 4/5;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(ul) {
-  /**
-   * Vertical gap between link items in a column.
-   * Overrides the `--rh-space-lg` design token default.
-   */
-  gap: var(--rh-footer-links-gap, var(--rh-space-lg, 16px));
-  display: flex;
-  flex-direction: column;
+  & ::slotted(ul) {
+    /** Vertical spacing between links in desktop columns */
+    gap: var(--rh-footer-links-gap, var(--rh-space-lg, 16px));
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 #footer-logo {
@@ -379,6 +420,7 @@
 }
 
 :is(.links, .global-links-primary, .global-links-secondary) ::slotted(:is(h1, h2, h3, h4, h5)) {
+  /** Footer font weight */
   font-weight: var(--rh-font-weight-heading-medium, 500) !important;
   margin-block: 0 !important;
   margin-block-start: var(--_link-header-margin, 0) !important;
@@ -388,13 +430,14 @@
    * Overrides the `--rh-font-size-body-text-sm` token.
    */
   font-size:
-    var(--rh-footer-link-header-font-size,
-      var(--rh-font-size-body-text-sm, 0.875rem)) !important;
+    /** Footer link column header size override */
+    var(
+        --rh-footer-link-header-font-size,
+        /** Footer link column header size */
+        var(--rh-font-size-body-text-sm, 0.875rem)
+      ) !important;
 
-  /**
-   * Primary text color for link-column headings.
-   * Uses the `--rh-color-text-primary` design token.
-   */
+  /** Footer text color */
   color: var(--rh-color-text-primary) !important;
 }
 
@@ -519,13 +562,16 @@
   }
 
   .main {
+    /** Footer main padding block-start at viewport >= md */
     padding-top: var(--rh-space-2xl, 32px);
+
+    /** Footer main padding block-end at viewport >= md */
     padding-bottom: var(--rh-space-4xl, 64px);
   }
 }
 
-@media screen and /* --rh-media-md */ (min-width: 992px)
-  and /* WARNING: not an @rhds/tokens media query */ (max-width: 1368px) {
+/* stylelint-disable-next-line @stylistic/max-line-length */
+@media screen and /* --rh-media-md */ (min-width: 992px) and /* WARNING: not an @rhds/tokens media query */ (max-width: 1368px) {
   .header,
   .main {
     /* switch header to use grid instead */

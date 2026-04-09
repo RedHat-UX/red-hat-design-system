@@ -28,10 +28,19 @@ export class MenuDropdownSelectEvent extends Event {
 
 
 /**
- * A menu dropdown presents a list of actions or links in a vertically stacked menu,
- * appearing when a user interacts with a toggle button.
+ * A toggle button that reveals a list of actions or links, for use
+ * when space is limited or context-specific options are needed. Users
+ * must interact with the toggle to expand or collapse the menu.
+ * Supports keyboard navigation: Enter, Space, or ArrowDown opens
+ * the menu; Escape closes it. Screen readers should perceive the
+ * toggle via `aria-haspopup` and `aria-expanded`. Compact variants
+ * must set `accessible-label` for assistive technologies.
  *
  * @summary A collapsible menu for presenting a list of options or actions
+ *
+ * @fires {MenuDropdownSelectEvent} select - Fired when a user selects an
+ *        action or link from the menu. The event detail includes the selected
+ *        `RhMenuItem` element and its text content.
  *
  * @alias menu-dropdown
  */
@@ -166,7 +175,13 @@ export class RhMenuDropdown extends LitElement {
               html`<rh-icon set="ui" accessible-label=${this.accessibleLabel} icon="ellipsis-vertical-fill"></rh-icon>`
               : html` 
               <span class="info-section"> 
-                <!-- Use this slot for the toggle label. Keep toggle labels short and succinct. -->
+                <!-- summary: Toggle label
+                     description: |
+                       Inline content for the toggle button, such as a
+                       \`<span>\` or \`<rh-icon>\`. Should be short and
+                       descriptive. Screen readers announce this as the
+                       accessible name for the menu button. Not used in
+                       compact layout; use \`accessible-label\` instead. -->
                 <slot name="toggle-label"></slot>
               </span>
               <span class="action-icon">
@@ -182,11 +197,13 @@ export class RhMenuDropdown extends LitElement {
              class="${classMap({ [anchor]: !!anchor, [alignment]: !!alignment, open })}"
              @keydown=${this.#onKeyDown}>
           <rh-menu role="menu" aria-labelledby="menu-toggle">
-            <!-- 
-              Use this slot to provide the menu content. Use the "rh-menu" component 
-              for the menu panel, and use "rh-menu-items" to define the individual menu items.
-              To organize menu items into groups, use the "rh-menu-item-group" component.
-            -->
+            <!-- summary: Menu content
+                 description: |
+                   Must contain \`<rh-menu-item>\` elements. May include
+                   \`<hr>\` separators or \`<rh-menu-item-group>\` for
+                   grouped items. Items receive ARIA menuitem role and
+                   focus via roving tabindex for keyboard and screen
+                   reader navigation. -->
             <slot></slot>
           </rh-menu>
         </div>
