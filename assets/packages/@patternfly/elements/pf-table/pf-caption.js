@@ -19,7 +19,7 @@ let PfCaption = class PfCaption extends LitElement {
     }
 };
 PfCaption.styles = [styles];
-PfCaption.version = "4.3.0";
+PfCaption.version = "4.3.1";
 PfCaption = __decorate([
     customElement('pf-caption')
 ], PfCaption);

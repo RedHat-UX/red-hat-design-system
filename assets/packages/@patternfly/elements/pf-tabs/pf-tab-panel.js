@@ -56,7 +56,7 @@ let PfTabPanel = class PfTabPanel extends LitElement {
     }
 };
 PfTabPanel.styles = [styles];
-PfTabPanel.version = "4.3.0";
+PfTabPanel.version = "4.3.1";
 __decorate([
     consume({ context, subscribe: true }),
     state()

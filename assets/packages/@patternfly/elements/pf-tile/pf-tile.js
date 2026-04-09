@@ -180,7 +180,7 @@ let PfTile = class PfTile extends LitElement {
     }
 };
 PfTile.styles = [styles];
-PfTile.version = "4.3.0";
+PfTile.version = "4.3.1";
 __decorate([
     property({ reflect: true, type: Boolean })
 ], PfTile.prototype, "selected", void 0);

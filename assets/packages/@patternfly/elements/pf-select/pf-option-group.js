@@ -55,7 +55,7 @@ let PfOptionGroup = class PfOptionGroup extends LitElement {
 };
 _PfOptionGroup_internals = new WeakMap();
 PfOptionGroup.styles = [styles];
-PfOptionGroup.version = "4.3.0";
+PfOptionGroup.version = "4.3.1";
 __decorate([
     property()
 ], PfOptionGroup.prototype, "label", void 0);

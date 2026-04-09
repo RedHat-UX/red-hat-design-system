@@ -231,7 +231,7 @@ let PfPanel = class PfPanel extends LitElement {
 };
 _PfPanel_slots = new WeakMap();
 PfPanel.styles = [styles];
-PfPanel.version = "4.3.0";
+PfPanel.version = "4.3.1";
 __decorate([
     property({ type: Boolean, reflect: true })
 ], PfPanel.prototype, "scrollable", void 0);

@@ -156,7 +156,7 @@ let PfBanner = class PfBanner extends LitElement {
 };
 _PfBanner_slots = new WeakMap();
 PfBanner.styles = [styles];
-PfBanner.version = "4.3.0";
+PfBanner.version = "4.3.1";
 __decorate([
     property({ reflect: true })
 ], PfBanner.prototype, "variant", void 0);

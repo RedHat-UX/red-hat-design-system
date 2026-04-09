@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
+    <title>Layout Block | Red Hat Design System</title>
+
+    <link rel="preconnect" href="https://ga.jspm.io">
+
+    <link rel="stylesheet" href="/styles/demo/styles.css" media="all">
+
+    <script type="importmap">{
+  "imports": {
+    "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
+    "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "lit-html": "/assets/packages/lit-html/lit-html.js",
+    "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
+    "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
+    "lit-element": "/assets/packages/lit-element/index.js",
+    "prism-esm": "/assets/packages/prism-esm/prism.js",
+    "lit": "/assets/packages/lit/index.js",
+    "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
+    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
+    "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
+    "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "@lit/context": "/assets/packages/@lit/context/index.js",
+    "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
+    "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
+    "lit/": "/assets/packages/lit/",
+    "lit-html/": "/assets/packages/lit-html/",
+    "prism-esm/": "/assets/packages/prism-esm/",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js",
+    "@rhds/tokens/css/": "/assets/packages/@rhds/tokens/css/",
+    "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
+    "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
+    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons": "/assets/packages/@rhds/icons/icons.js",
+    "@rhds/icons/": "/assets/packages/@rhds/icons/",
+    "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
+    "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
+    "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
+    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "@uxdot/elements/": "/assets/packages/@uxdot/elements/"
+  },
+  "scopes": {
+    "/assets/packages/": {
+      "@lit/reactive-element/decorators/": "/assets/packages/@lit/reactive-element/decorators/",
+      "lit-element/lit-element.js": "/assets/packages/lit-element/lit-element.js",
+      "lit-html/": "/assets/packages/lit-html/"
+    }
+  }
+}</script>
+
+    
+      <script type="module">
+    // although we load these ssr support modules elsewhere, we still
+    // need them here to ensure no double-rendering on webkit
+    import '/assets/javascript/ssr-support.js';
+    // include these, which are often internal to elements,
+    // and are definitely required by context-picker and context-demo
+    // to avoid SSR defer-hydration bugs and SSR double-rendering bugs
+    import '@rhds/elements/rh-icon/rh-icon.js';
+    import '@rhds/elements/rh-surface/rh-surface.js';
+    import '@rhds/elements/rh-button/rh-button.js';
+    import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+    import '@rhds/elements/rh-tag/rh-tag.js';
+  </script>
+
+
+    <script type="module">
+      // load up the demo and picker
+      import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+      import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+    </script>
+
+    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
+  </head>
+  <body><meta itemprop="description" content="Avatar using the block layout, which stacks the thumbnail above the name and subtitle text.">
+<rh-avatar    name="John von Neumann" subtitle="Mathematician" layout="block"><template shadowroot="open" shadowrootmode="open"><style>*,:after,:before{box-sizing:border-box}:host{inline-size:100%;display:block;container:avatar/inline-size}:host([plain]){inline-size:var(--rh-avatar-size, var(--rh-size-icon-06,64px))}[hidden]{display:none!important}img,svg{object-fit:cover;object-position:center}canvas,img,svg{inline-size:var(--rh-avatar-size,var(--rh-size-icon-06,64px));max-inline-size:var(--rh-size-icon-06,64px);aspect-ratio:1;border-radius:var(--rh-border-radius-pill,64px);grid-area:a;overflow:hidden}#default{enable-background:new 0 0 36 36}#default .st1{fill-rule:evenodd;clip-rule:evenodd;fill:light-dark(#f0f0f0,#212427)}#default .st2{fill:light-dark(#b8bbbe,#4f5255)}#default .st3{fill-rule:evenodd;clip-rule:evenodd;fill:light-dark(#d2d2d2,#6a6e73)}#default .st4{fill:light-dark(#d2d2d2,#6a6e73)}#title{max-inline-size:250px;font-family:var(--rh-font-family-heading,RedHatDisplay, "Red Hat Display", Helvetica, Arial, sans-serif);font-weight:var(--rh-font-weight-heading-medium,500);font-size:var(--rh-font-size-body-text-sm,.875rem);grid-area:t;align-self:end}#subtitle{max-inline-size:250px;font-weight:var(--rh-font-weight-heading-regular,400);font-size:var(--rh-font-size-body-text-sm,.875rem);grid-area:s;align-self:start}::slotted(a){color:var(--rh-color-interactive-primary-default)}::slotted(a:visited){color:var(--rh-color-interactive-primary-visited-default)}::slotted(a:active),::slotted(a:hover){color:var(--rh-color-interactive-primary-hover)}#container{--_colors: light-dark(var(--rh-avatar-colors,var(--rh-color-blue-30,#92c5f9) var(--rh-color-teal-50,#37a3a3) var(--rh-color-green-60,#3d7317) var(--rh-color-red-40,#f56e6e) var(--rh-color-purple-60,#3d2785)),var(--rh-avatar-colors,var(--rh-color-blue-50,#06c) var(--rh-color-teal-70,#004d4d) var(--rh-color-green-70,#204d00) var(--rh-color-red-50,#e00) var(--rh-color-purple-70,#21134d)));column-gap:var(--rh-space-lg,16px);color:var(--rh-color-text-secondary);grid-template:"a t""a s"/min-content 1fr;display:grid}#container:not(.plain).block{text-align:center;grid-template:"a"1fr"t""s"/auto;place-items:center;gap:0}#container:not(.plain).block :is(img,canvas,svg){margin-block-end:var(--rh-space-lg,16px)}@container avatar (width<=287px){#container:not(.plain):not(.block) :is(img,canvas,svg){margin-block-end:var(--rh-space-lg,16px)}}#container:not(.plain):not(.block){text-align:center;grid-template:"a""t""s"/1fr;place-items:center}@container avatar (width>=288px){#container:not(.plain):not(.block){text-align:start;grid-template:"a t""a s"/min-content 1fr;place-items:start}#container:not(.plain):not(.block) :is(#title,#subtitle){text-align:start}}#container.plain{inline-size:var(--rh-avatar-size,var(--rh-size-icon-06,64px));column-gap:0}#container.plain :is(#title,#subtitle){clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;block-size:1px;inline-size:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}#container.bordered :is(canvas,img,svg){border: var(--rh-border-width-sm,1px) solid  var(--rh-color-border-subtle)}</style><!--lit-part TqtYx0uEDgw=-->
+      <!--lit-node 0--><div id="container"
+           class=" block "><!--lit-part envyS2Gkyso=-->
+        <svg id="default"
+             viewBox="0 0 36 36"
+             role="presentation"
+             part="img">
+          <path d="M0 0h36v36H0z" class="st1"/><path d="M17.7 20.1c-3.5 0-6.4-2.9-6.4-6.4s2.9-6.4 6.4-6.4 6.4 2.9 6.4 6.4-2.8 6.4-6.4 6.4z" class="st3"/>
+          <path d="M13.3 36v-6.7c-2 .4-2.9 1.4-3.1 3.5l-.1 3.2h3.2z" class="st2"/>
+          <path d="m10.1 36 .1-3.2c.2-2.1 1.1-3.1 3.1-3.5V36h9.4v-6.7c2 .4 2.9 1.4 3.1 3.5l.1 3.2h4.7c-.4-3.9-1.3-9-2.9-11-1.1-1.4-2.3-2.2-3.5-2.6s-1.8-.6-6.3-.6-6.1.7-6.1.7c-1.2.4-2.4 1.2-3.4 2.6-1.7 1.9-2.6 7.1-3 10.9h4.7z" class="st4"/>
+          <path d="m25.9 36-.1-3.2c-.2-2.1-1.1-3.1-3.1-3.5V36h3.2z" class="st2"/>
+        </svg>
+        <!--/lit-part-->
+        <div id="title">
+          <!--
+            The subject's name. Should contain inline text, optionally wrapped in a link.
+            When `plain` is set, the name and subtitle are used as accessible labels
+          -->
+          <slot><!--lit-part-->John von Neumann<!--/lit-part--></slot>
+        </div>
+        <div id="subtitle">
+          <!--
+            Auxiliary information about the subject, e.g. job title. Should contain inline text, optional links.
+            When `plain` is set, the name and subtitle are used as accessible labels
+          -->
+          <slot name="subtitle"><!--lit-part-->Mathematician<!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template></rh-avatar>
+
+<script type="module">
+  import '@rhds/elements/rh-avatar/rh-avatar.js';
+</script>
+
+
+</body></html>

@@ -65,6 +65,7 @@ export declare class RhAvatar extends LitElement {
     /**
      * Re-renders the geometric pattern. Called automatically when `pattern`
      * or `name` change; call manually after updating CSS custom properties.
+     * @deprecated a future version will remove this public method
      */
     updatePattern(): Promise<void>;
 }

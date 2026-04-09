@@ -455,7 +455,7 @@ PfModal.shadowRootOptions = {
 PfModal.styles = [style];
 /** Should the dialog close when user clicks outside the dialog? */
 PfModal.closeOnOutsideClick = false;
-PfModal.version = "4.3.0";
+PfModal.version = "4.3.1";
 __decorate([
     property({ reflect: true })
 ], PfModal.prototype, "variant", void 0);

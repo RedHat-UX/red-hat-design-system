@@ -32,33 +32,43 @@
   overflow-y: initial;
 }
 
-footer,
+.footer,
 .global-base {
   --_icon-color:
     /** Footer icon color override */
-    var(--rh-footer-icon-color,
-      /** Footer icon default on dark */
-      var(--rh-color-gray-40, #a3a3a3));
+    var(
+        --rh-footer-icon-color,
+        /** Footer icon default on dark */
+        var(--rh-color-gray-40, #a3a3a3)
+      );
   --_icon-color-hover:
     /** Footer icon hover color override */
-    var(--rh-footer-icon-color-hover,
-      /** Footer icon hover default on dark */
-      var(--rh-color-gray-30, #c7c7c7));
+    var(
+        --rh-footer-icon-color-hover,
+        /** Footer icon hover default on dark */
+        var(--rh-color-gray-30, #c7c7c7)
+      );
   --_border-color:
     /** Footer border color override */
-    var(--rh-footer-border-color,
-      /** Footer border subtle on dark */
-      var(--rh-color-border-subtle-on-dark, #707070));
+    var(
+        --rh-footer-border-color,
+        /** Footer border subtle on dark */
+        var(--rh-color-border-subtle-on-dark, #707070)
+      );
   --_accent-color:
     /** Footer accent color override */
-    var(--rh-footer-accent-color,
-      /** Footer accent brand on light */
-      var(--rh-color-accent-brand-on-light, #ee0000));
+    var(
+        --rh-footer-accent-color,
+        /** Footer accent brand on light */
+        var(--rh-color-accent-brand-on-light, #ee0000)
+      );
   --_section-side-gap:
     /** Footer section horizontal margin override */
-    var(--rh-footer-section-side-gap,
-      /** Footer section horizontal margin */
-      var(--rh-space-lg, 16px));
+    var(
+        --rh-footer-section-side-gap,
+        /** Footer section horizontal margin */
+        var(--rh-space-lg, 16px)
+      );
 
   /** Universal footer accordion surface */
   --_accordion-background: var(--rh-color-white, #ffffff);
@@ -74,7 +84,7 @@ footer,
   box-sizing: border-box;
 }
 
-::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
   /** Footer typeface */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif) !important;
 
@@ -88,9 +98,7 @@ footer,
   min-height: var(--rh-length-xl, 24px);
   position: relative;
   outline:
-    /** Debug mode outline width */
-    var(--rh-length-3xs, 2px)
-    dotted
+    /** Debug mode outline width */ var(--rh-length-3xs, 2px) dotted
     red;
 }
 
@@ -116,8 +124,7 @@ footer,
 /* Regions */
 .section {
   padding:
-    /** Footer section block padding */
-    var(--rh-space-2xl, 32px)
+    /** Footer section block padding */ var(--rh-space-2xl, 32px)
     var(--_section-side-gap);
 }
 
@@ -152,10 +159,8 @@ footer,
   flex: 1 1 auto;
 }
 
+/* secondary should be push to the end of the line on mobile */
 .header-secondary {
-  /* secondary should be push to the end */
-
-  /* of the line on mobile */
   flex: 0 1 auto;
 }
 
@@ -173,6 +178,8 @@ footer,
 
 .main-secondary {
   display: grid;
+
+  /** Gap between promotional blocks in the secondary region */
   gap: var(--pf-global--spacer--xl, 32px);
   place-items: baseline;
   place-content: start;
@@ -196,10 +203,8 @@ footer,
     'secondary'
     'tertiary';
   gap:
-    /** Footer universal block gap */
-    var(--rh-space-2xl, 32px)
-    /** Footer universal inline gap */
-    var(--rh-space-xl, 24px);
+    /** Footer universal block gap */ var(--rh-space-2xl, 32px)
+    /** Footer universal inline gap */ var(--rh-space-xl, 24px);
 }
 
 .global-logo {
@@ -243,20 +248,16 @@ footer,
   display: flex;
   flex-direction: column;
   gap:
-    /** Primary global links row gap */
-    var(--rh-space-md, 8px)
-    /** Primary global links column gap */
-    var(--rh-space-xl, 24px);
+    /** Primary global links row gap */ var(--rh-space-md, 8px)
+    /** Primary global links column gap */ var(--rh-space-xl, 24px);
 }
 
 .global-links-secondary {
   display: flex;
   flex-direction: column;
   gap:
-    /** Secondary global links row gap */
-    var(--rh-space-md, 8px)
-    /** Secondary global links column gap */
-    var(--rh-space-xl, 24px);
+    /** Secondary global links row gap */ var(--rh-space-md, 8px)
+    /** Secondary global links column gap */ var(--rh-space-xl, 24px);
 }
 
 /* reduce the font size of the content in these regions */
@@ -322,98 +323,96 @@ footer,
   grid-template-rows: repeat(1, min-content auto);
   grid-auto-columns: minmax(0, 1fr);
   gap:
-    /** Desktop link column row gap */
-    var(--rh-space-lg, 16px)
-    /** Desktop link column inline gap */
-    var(--rh-space-2xl, 32px);
+    /** Desktop link column row gap */ var(--rh-space-lg, 16px)
+    /** Desktop link column inline gap */ var(--rh-space-2xl, 32px);
   grid-auto-flow: column;
-}
 
-[part='base']:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(1)) {
-  grid-column: 1/2;
-  grid-row: 1/2;
-}
+  & ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(1)) {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(2)) {
-  grid-column: 2/3;
-  grid-row: 1/2;
-}
+  & ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(2)) {
+    grid-column: 2/3;
+    grid-row: 1/2;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(3)) {
-  grid-column: 3/4;
-  grid-row: 1/2;
-}
+  & ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(3)) {
+    grid-column: 3/4;
+    grid-row: 1/2;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(4)) {
-  grid-column: 4/5;
-  grid-row: 1/2;
-}
+  & ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(4)) {
+    grid-column: 4/5;
+    grid-row: 1/2;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(5)) {
-  grid-column: 1/2;
-  grid-row: 3/4;
-}
+  & ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(5)) {
+    grid-column: 1/2;
+    grid-row: 3/4;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(6)) {
-  grid-column: 2/3;
-  grid-row: 3/4;
-}
+  & ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(6)) {
+    grid-column: 2/3;
+    grid-row: 3/4;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(7)) {
-  grid-column: 3/4;
-  grid-row: 3/4;
-}
+  & ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(7)) {
+    grid-column: 3/4;
+    grid-row: 3/4;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(8)) {
-  grid-column: 4/5;
-  grid-row: 3/4;
-}
+  & ::slotted(:is(h2, h3, h4, h5, h6):nth-of-type(8)) {
+    grid-column: 4/5;
+    grid-row: 3/4;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(1))) {
-  grid-column: 1/2;
-  grid-row: 2/3;
-}
+  & ::slotted(:is(ul:nth-of-type(1))) {
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(2))) {
-  grid-column: 2/3;
-  grid-row: 2/3;
-}
+  & ::slotted(:is(ul:nth-of-type(2))) {
+    grid-column: 2/3;
+    grid-row: 2/3;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(3))) {
-  grid-column: 3/4;
-  grid-row: 2/3;
-}
+  & ::slotted(:is(ul:nth-of-type(3))) {
+    grid-column: 3/4;
+    grid-row: 2/3;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(4))) {
-  grid-column: 4/5;
-  grid-row: 2/3;
-}
+  & ::slotted(:is(ul:nth-of-type(4))) {
+    grid-column: 4/5;
+    grid-row: 2/3;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(5))) {
-  grid-column: 1/2;
-  grid-row: 4/5;
-}
+  & ::slotted(:is(ul:nth-of-type(5))) {
+    grid-column: 1/2;
+    grid-row: 4/5;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(6))) {
-  grid-column: 2/3;
-  grid-row: 4/5;
-}
+  & ::slotted(:is(ul:nth-of-type(6))) {
+    grid-column: 2/3;
+    grid-row: 4/5;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(7))) {
-  grid-column: 3/4;
-  grid-row: 4/5;
-}
+  & ::slotted(:is(ul:nth-of-type(7))) {
+    grid-column: 3/4;
+    grid-row: 4/5;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(8))) {
-  grid-column: 4/5;
-  grid-row: 4/5;
-}
+  & ::slotted(:is(ul:nth-of-type(8))) {
+    grid-column: 4/5;
+    grid-row: 4/5;
+  }
 
-[part='base']:not(.isMobile) .links ::slotted(ul) {
-  /** Vertical spacing between links in desktop columns */
-  gap: var(--rh-footer-links-gap, var(--rh-space-lg, 16px));
-  display: flex;
-  flex-direction: column;
+  & ::slotted(ul) {
+    /** Vertical spacing between links in desktop columns */
+    gap: var(--rh-footer-links-gap, var(--rh-space-lg, 16px));
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 #footer-logo {
@@ -425,11 +424,18 @@ footer,
   font-weight: var(--rh-font-weight-heading-medium, 500) !important;
   margin-block: 0 !important;
   margin-block-start: var(--_link-header-margin, 0) !important;
+
+  /**
+   * Font size for link-column headings.
+   * Overrides the `--rh-font-size-body-text-sm` token.
+   */
   font-size:
     /** Footer link column header size override */
-    var(--rh-footer-link-header-font-size,
-      /** Footer link column header size */
-      var(--rh-font-size-body-text-sm, 0.875rem)) !important;
+    var(
+        --rh-footer-link-header-font-size,
+        /** Footer link column header size */
+        var(--rh-font-size-body-text-sm, 0.875rem)
+      ) !important;
 
   /** Footer text color */
   color: var(--rh-color-text-primary) !important;
@@ -564,8 +570,8 @@ footer,
   }
 }
 
-@media screen and /* --rh-media-md */ (min-width: 992px)
-  and /* WARNING: not an @rhds/tokens media query */ (max-width: 1368px) {
+/* stylelint-disable-next-line @stylistic/max-line-length */
+@media screen and /* --rh-media-md */ (min-width: 992px) and /* WARNING: not an @rhds/tokens media query */ (max-width: 1368px) {
   .header,
   .main {
     /* switch header to use grid instead */

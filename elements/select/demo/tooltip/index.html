@@ -1,0 +1,728 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
+    <title>Tooltip | Red Hat Design System</title>
+
+    <link rel="preconnect" href="https://ga.jspm.io">
+
+    <link rel="stylesheet" href="/styles/demo/styles.css" media="all">
+
+    <script type="importmap">{
+  "imports": {
+    "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
+    "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "lit-html": "/assets/packages/lit-html/lit-html.js",
+    "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
+    "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
+    "lit-element": "/assets/packages/lit-element/index.js",
+    "prism-esm": "/assets/packages/prism-esm/prism.js",
+    "lit": "/assets/packages/lit/index.js",
+    "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
+    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
+    "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
+    "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "@lit/context": "/assets/packages/@lit/context/index.js",
+    "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
+    "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
+    "lit/": "/assets/packages/lit/",
+    "lit-html/": "/assets/packages/lit-html/",
+    "prism-esm/": "/assets/packages/prism-esm/",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js",
+    "@rhds/tokens/css/": "/assets/packages/@rhds/tokens/css/",
+    "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
+    "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
+    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons": "/assets/packages/@rhds/icons/icons.js",
+    "@rhds/icons/": "/assets/packages/@rhds/icons/",
+    "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
+    "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
+    "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
+    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "@uxdot/elements/": "/assets/packages/@uxdot/elements/"
+  },
+  "scopes": {
+    "/assets/packages/": {
+      "@lit/reactive-element/decorators/": "/assets/packages/@lit/reactive-element/decorators/",
+      "lit-element/lit-element.js": "/assets/packages/lit-element/lit-element.js",
+      "lit-html/": "/assets/packages/lit-html/"
+    }
+  }
+}</script>
+
+    
+      <script type="module">
+    // although we load these ssr support modules elsewhere, we still
+    // need them here to ensure no double-rendering on webkit
+    import '/assets/javascript/ssr-support.js';
+    // include these, which are often internal to elements,
+    // and are definitely required by context-picker and context-demo
+    // to avoid SSR defer-hydration bugs and SSR double-rendering bugs
+    import '@rhds/elements/rh-icon/rh-icon.js';
+    import '@rhds/elements/rh-surface/rh-surface.js';
+    import '@rhds/elements/rh-button/rh-button.js';
+    import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+    import '@rhds/elements/rh-tag/rh-tag.js';
+  </script>
+
+
+    <script type="module">
+      // load up the demo and picker
+      import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+      import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+    </script>
+
+    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
+  </head>
+  <body><meta itemprop="description" content="Select paired with an rh-tooltip providing additional context about the field.">
+<label for="select-1">
+  Red Hat Products
+</label>
+<rh-tooltip><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline}#container{--_floating-arrow-size: var(--rh-tooltip-arrow-size, var(--rh-tooltip__arrow--Width,11px));max-width:100%;display:inline-flex;position:relative}#tooltip,#tooltip:after{position:absolute}#tooltip{opacity:0;pointer-events:none;z-index:10000;transition:opacity 0s 0s, display 0s 0s allow-discrete;text-align:var(--_text-alignment,center);word-break:break-word;translate:var(--_floating-content-translate);transform:translateX(var(--_rh-tooltip-shake-x,0));will-change:opacity;width:max-content;line-height:var(--rh-line-height-body-text,1.5);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);max-width: var(--rh-tooltip-max-width, var(--rh-tooltip--MaxWidth,18.75rem));border-radius:var(--rh-border-radius-default,3px);padding-block: var(--rh-tooltip-content-padding-block-start, var(--rh-tooltip__content--PaddingTop,var(--rh-space-lg,16px)))  var(--rh-tooltip-content-padding-block-end, var(--rh-tooltip__content--PaddingBottom,var(--rh-space-lg,16px)));padding-inline: var(--rh-tooltip-content-padding-inline-start, var(--rh-tooltip__content--PaddingLeft,var(--rh-space-lg,16px)))  var(--rh-tooltip-content-padding-inline-end, var(--rh-tooltip__content--PaddingRight,var(--rh-space-lg,16px)));font-size: var(--rh-tooltip-content-font-size, var(--rh-tooltip__content--FontSize,var(--rh-font-size-body-text-sm,.875rem)));color:light-dark( var(--rh-tooltip-content-color, var(--rh-tooltip__content--Color,var(--rh-color-text-primary-on-light,#151515))), var(--rh-tooltip-content-color,var(--rh-color-text-primary-on-dark,#fff)));background-color:light-dark( var(--rh-tooltip-content-background-color, var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))), var(--rh-tooltip-content-background-color,var(--rh-color-surface-darkest,#151515)));display:none;top:0;left:0}#tooltip.dark{color-scheme:dark}#tooltip.light{color-scheme:light}.initialized #tooltip{display:block}#tooltip:after{content:"";width:var(--_floating-arrow-size);height:var(--_floating-arrow-size);will-change:left top right bottom;background-color:light-dark( var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))), var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515))));display:block;rotate:45deg}.open #tooltip{opacity:1;transition:opacity .3s cubic-bezier(.54, 1.5, .38, 1.11) .3s, display .3s .3s allow-discrete}@starting-style{.open #tooltip{opacity:0}}.left #tooltip:after{inset-inline-end:calc(-.5 * var(--_floating-arrow-size))}.top #tooltip:after{inset-block-end:calc(-.5 * var(--_floating-arrow-size))}.right #tooltip:after{inset-inline-start:calc(-.5 * var(--_floating-arrow-size))}.bottom #tooltip:after{inset-block-start:calc(-.5 * var(--_floating-arrow-size))}.left.center #tooltip:after{inset-block-start:calc(50% - .5 * var(--_floating-arrow-size))}.top.center #tooltip:after{inset-inline-end:calc(50% - .5 * var(--_floating-arrow-size))}.right.center #tooltip:after{inset-block-start:calc(50% - .5 * var(--_floating-arrow-size))}.bottom.center #tooltip:after{inset-inline-end:calc(50% - .5 * var(--_floating-arrow-size))}.left.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.top.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.right.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.bottom.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.left.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.top.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}.right.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.bottom.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}:host([position=left]),:host([position=right]){--_text-alignment:"start"}#container:dir(rtl).left #tooltip:after{inset-inline:calc(-.5 * var(--_floating-arrow-size)) auto}#container:dir(rtl).right #tooltip:after{inset-inline:auto calc(-.5 * var(--_floating-arrow-size))}</style><!--lit-part 98+Q3SU39hY=-->
+      <!--lit-node 0--><div id="container"
+           style=""
+           class=" center ">
+        <div id="invoker">
+          <!-- summary: Invoking element
+               description: |
+                 Place the invoking element here, i.e. the element which
+                 when hovered or focused causes the tooltip to display.
+                 Must be inline, focusable content so that keyboard and
+                 screen reader users can activate the tooltip. -->
+          <slot id="invoker-slot"></slot>
+        </div>
+        <!--lit-node 4--><div id="tooltip" role="status" class=" dark ">
+          <!-- summary: Tooltip content
+               description: |
+                 Place tooltip content here. Overrides the `content`
+                 attribute. Content is announced to screen readers via
+                 a live region unless the `silent` attribute is set. -->
+          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
+  <button>
+    <rh-icon    set="ui" icon="question-mark-circle" accessible-label="More information"><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part 5fGm/3It3e4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 1C7.729 1 1 7.729 1 16s6.729 15 15 15 15-6.729 15-15S24.271 1 16 1Zm0 28C8.832 29 3 23.168 3 16S8.832 3 16 3s13 5.832 13 13-5.832 13-13 13Zm5-17a5.008 5.008 0 0 1-4 4.899V19a1 1 0 0 1-2 0v-3a1 1 0 0 1 1-1c1.654 0 3-1.346 3-3s-1.346-3-3-3-3 1.346-3 3a1 1 0 0 1-2 0c0-2.757 2.243-5 5-5s5 2.243 5 5Zm-3.25 12a1.75 1.75 0 1 1-3.501-.001A1.75 1.75 0 0 1 17.75 24Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+  </button>
+  <span slot="content">Extra helpful information</span>
+</rh-tooltip>
+<rh-select    id="select-1" placeholder="Select an item" ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{color:var(--rh-color-text-primary);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-sm,.875rem);font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5)}:host,#outer{flex-direction:column;align-items:stretch;display:flex}:host([hidden]),[hidden]{display:none!important}:host([disabled]){pointer-events:none!important}.visually-hidden{clip-path:inset(100%);white-space:nowrap;border:0;block-size:1px;inline-size:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}#outer{border:1px solid #0000;position:relative}#listbox-container{background-color:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));border:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default,3px);box-shadow:var(--rh-box-shadow-sm);padding-block:var(--rh-space-md,8px);opacity:0;display:inline-flex;position:absolute}#outer.expanded #listbox-container{opacity:1;z-index:1000}#listbox{flex-direction:column;inline-size:100%;display:flex;position:relative}#toggle{background-color:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));justify-content:space-between}#toggle,#toggle-button{border-radius:var(--rh-border-radius-default,3px);align-items:center;display:flex}.disabled #toggle{background-color:var(--rh-color-status-disabled,light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-gray-40,#a3a3a3)))}#toggle-button{border:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);color:var(--rh-color-text-primary);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-sm,.875rem);gap:var(--rh-space-md,8px);min-block-size:37px;padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);text-align:start;background-color:#0000;flex:auto}.disabled #toggle-button{color:var(--rh-color-text-status-disabled,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d)));border-color:#0000}#toggle-button:hover,#toggle-button:focus{border-color:var(--rh-color-border-interactive)}#toggle-button:focus,#toggle-button[aria-expanded=true]{outline:var(--rh-border-width-md,2px) solid var(--rh-color-border-interactive);border-color:#0000}#toggle-button:focus-visible{border-color:var(--rh-color-border-interactive);outline:3px solid var(--rh-color-border-interactive);outline-offset:3px}#toggle-text{flex:auto}.disabled #toggle-icon{color:var(--rh-color-icon-status-disabled,light-dark(var(--rh-color-gray-40,#a3a3a3),var(--rh-color-gray-60,#4d4d4d)))}#toggle-button #toggle-icon{--rh-icon-size:10px}::slotted(hr){border:0;inline-size:100%;margin:0}::slotted(hr):after{content:"";background-color:var(--rh-color-border-subtle);block-size:1px;inline-size:100%;display:block}::slotted(rh-option-group){border-block:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}::slotted(rh-option-group:last-child){border-block-end:0}#help-text{align-items:center;gap:var(--rh-space-md,8px);margin-block-start:var(--rh-space-md,8px);display:flex}#help-text ::slotted(*){display:inline-block;font-size:var(--rh-font-size-body-text-sm,.875rem)!important}:is(#toggle-button,#help-text) rh-icon{--rh-icon-size:var(--rh-select-icon-size,14px)}:host([state]) #help-text-content{font-weight:var(--rh-font-weight-body-text-medium,500)!important}:host([state=success]) #toggle-button{border-color:var(--rh-color-border-status-success)}:host([state=warning]) #toggle-button{border-color:var(--rh-color-border-status-warning)}:host([state=danger]) #toggle-button{border-color:var(--rh-color-border-status-danger)}.icon-success{color:var(--rh-color-icon-status-success)}.icon-warning{color:var(--rh-color-icon-status-warning)}.icon-danger{color:var(--rh-color-icon-status-danger)}</style><!--lit-part +HWpz3+y47I=-->
+      <!--lit-node 0--><div id="outer"
+           style=""
+           class=" center ">
+        <div id="toggle">
+          <!--lit-node 2--><button id="toggle-button"
+                  type="button"
+                  >
+            <span id="toggle-text">
+              <!--lit-part-->Select an item<!--/lit-part-->
+            </span>
+            <!--lit-node 5--><rh-icon 
+                     
+                     
+                      class="icon-success" set="ui" icon="check-circle-fill" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part KStlFv8wuOI=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 1C7.729 1 1 7.729 1 16s6.729 15 15 15 15-6.729 15-15S24.271 1 16 1Zm7.795 11.795-8.646 8.646c-.317.317-.733.475-1.149.475s-.832-.158-1.149-.475l-4.646-4.646a1.126 1.126 0 0 1 1.591-1.591l4.205 4.205 8.205-8.205a1.126 1.126 0 0 1 1.591 1.591Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template>
+            </rh-icon>
+            <!--lit-node 6--><rh-icon 
+                     
+                     
+                      class="icon-warning" set="ui" icon="warning-fill" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part 3WxLO4YU2bg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="m31.874 28.514-15.011-27a1.001 1.001 0 0 0-1.748 0l-15.011 27A1 1 0 0 0 .978 30H31a1 1 0 0 0 .874-1.486ZM14.5 12a1.5 1.5 0 0 1 3 0v5a1.5 1.5 0 0 1-3 0v-5ZM16 26.001a2 2 0 1 1-.001-3.999A2 2 0 0 1 16 26.001Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template>
+            </rh-icon>
+            <!--lit-node 7--><rh-icon 
+                     
+                     
+                      class="icon-danger" set="ui" icon="ban-fill" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part NlANnpT7X9k=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 1C7.729 1 1 7.729 1 16s6.729 15 15 15 15-6.729 15-15S24.271 1 16 1Zm6.796 21.795a1.122 1.122 0 0 1-1.592 0l-12-12a1.127 1.127 0 0 1 0-1.591 1.127 1.127 0 0 1 1.592 0l12 12a1.127 1.127 0 0 1 0 1.591Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template>
+            </rh-icon>
+            <!--lit-node 8--><rh-icon    id="toggle-icon" set="microns" icon="caret-down-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" microns "><!--lit-part kWznUK1/eho=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.92 5.62C18.77 5.25 18.4 5 18 5H2a1.003 1.003 0 0 0-.71 1.71l7.65 7.65c.29.29.68.44 1.06.44s.77-.15 1.06-.44l7.65-7.65c.29-.29.37-.72.22-1.09Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+          </button>
+        </div>
+        <!--lit-node 9--><div id="listbox-container"
+             hidden
+             style="margin-block-start:4px;inline-size:auto;">
+          <!--lit-node 10--><div id="listbox"
+               >
+            <!--lit-node 11--><rh-option 
+                       
+                       
+                        role="option" hydrate-internals-role="option" id="placeholder" disabled defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}:host([hidden]),[hidden]{display:none!important}:host([disabled]){pointer-events:none}:host(:focus),:host(:focus-visible){outline:0}:host(:focus) #outer,:host(:hover) #outer{background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}#outer{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);flex-wrap:wrap;justify-content:flex-start;align-items:center;display:flex}:host(:focus) #outer{border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-lg,3px) solid var(--rh-color-border-interactive);outline-offset:calc(var(--rh-border-width-lg,3px) * -1);border:0}:host([disabled]) #outer{color:var(--rh-color-text-status-disabled,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d)))}#label{flex:auto}#label,::slotted([slot=description]),#description{user-select:none}rh-icon[icon=checkmark]{color:var(--rh-color-interactive-primary-default)}#description{flex:1 0 100%;display:block}slot[name=description]{font-size:var(--rh-font-size-body-text-xs,.75rem)}#display-icon{--rh-icon-size:var(--rh-select-icon-size,14px);margin-inline-end:var(--rh-space-md,8px)}</style><!--lit-part zWHWHk43ewM=-->
+      <!--lit-node 0--><div id="outer" class=" disabled ">
+        <!--lit-node 1--><rh-icon 
+                 
+                 
+                  id="display-icon" set="ui" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="false"
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" ><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template>
+        </rh-icon>
+        <span id="label">
+          <!-- Option label as inline text. Screen readers use this content as the accessible name. Falls back to the `label` or `value` attribute when empty. -->
+          <!--lit-node 4--><slot ><!--lit-part--><!--/lit-part--></slot>
+        </span>
+        <!--lit-node 6--><rh-icon 
+                 
+                 
+                  icon="checkmark" set="microns" loading="eager" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" microns "><!--lit-part O9rH2WrTvvk=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 4.27c-.4-.38-1.03-.37-1.41.02L7 14.59 2.71 10.3l-.02-.02c-.4-.38-1.03-.37-1.41.02-.38.4-.37 1.03.02 1.41l4.65 4.65a1.499 1.499 0 0 0 2.12 0L18.72 5.71l.02-.02c.38-.4.37-1.03-.02-1.41Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        <!-- Optional inline or block description text displayed below the option label. Overrides the `description` attribute. Should be a `<span>` or `<p>` element. -->
+        <slot id="description"
+              name="description"><!--lit-part--><!--/lit-part--></slot>
+      </div>
+    <!--/lit-part--></template>
+              <!-- Placeholder inline text for the select. Overrides the `placeholder` attribute. Screen readers announce this text as the default label when no other label is provided. -->
+              <slot name="placeholder"><!--lit-part-->Select an item<!--/lit-part--></slot>
+            </rh-option>
+            <!--lit-part--><!--/lit-part-->
+            <!-- Insert `rh-option` elements and optional `rh-option-group` or `hr` separator elements. Each `rh-option` must have accessible text content (slotted text or `label` attribute) so screen readers can announce it. -->
+            <!--lit-node 17--><slot ></slot>
+          </div>
+        </div>
+        <!--lit-node 18--><div id="help-text" hidden>
+          <!--lit-node 19--><rh-icon 
+                   
+                   
+                    class="icon-success" set="ui" icon="check-circle-fill" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part KStlFv8wuOI=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 1C7.729 1 1 7.729 1 16s6.729 15 15 15 15-6.729 15-15S24.271 1 16 1Zm7.795 11.795-8.646 8.646c-.317.317-.733.475-1.149.475s-.832-.158-1.149-.475l-4.646-4.646a1.126 1.126 0 0 1 1.591-1.591l4.205 4.205 8.205-8.205a1.126 1.126 0 0 1 1.591 1.591Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template>
+          </rh-icon>
+          <!--lit-node 20--><rh-icon 
+                   
+                   
+                    class="icon-warning" set="ui" icon="warning-fill" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part 3WxLO4YU2bg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="m31.874 28.514-15.011-27a1.001 1.001 0 0 0-1.748 0l-15.011 27A1 1 0 0 0 .978 30H31a1 1 0 0 0 .874-1.486ZM14.5 12a1.5 1.5 0 0 1 3 0v5a1.5 1.5 0 0 1-3 0v-5ZM16 26.001a2 2 0 1 1-.001-3.999A2 2 0 0 1 16 26.001Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template>
+          </rh-icon>
+          <!--lit-node 21--><rh-icon 
+                   
+                   
+                    class="icon-danger" set="ui" icon="ban-fill" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part NlANnpT7X9k=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 1C7.729 1 1 7.729 1 16s6.729 15 15 15 15-6.729 15-15S24.271 1 16 1Zm6.796 21.795a1.122 1.122 0 0 1-1.592 0l-12-12a1.127 1.127 0 0 1 0-1.591 1.127 1.127 0 0 1 1.592 0l12 12a1.127 1.127 0 0 1 0 1.591Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template>
+          </rh-icon>
+          <!-- Insert a block element (e.g. `<p>`) with text that helps describe the select. Overrides the `help-text` attribute when slotted. Content is automatically linked to the control via `aria-describedby` so screen readers announce it. -->
+          <slot id="help-text-content" name="help-text"><span aria-hidden="true"><!--lit-part--><!--/lit-part--></span></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
+  <rh-option  role="option" hydrate-internals-role="option" ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}:host([hidden]),[hidden]{display:none!important}:host([disabled]){pointer-events:none}:host(:focus),:host(:focus-visible){outline:0}:host(:focus) #outer,:host(:hover) #outer{background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}#outer{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);flex-wrap:wrap;justify-content:flex-start;align-items:center;display:flex}:host(:focus) #outer{border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-lg,3px) solid var(--rh-color-border-interactive);outline-offset:calc(var(--rh-border-width-lg,3px) * -1);border:0}:host([disabled]) #outer{color:var(--rh-color-text-status-disabled,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d)))}#label{flex:auto}#label,::slotted([slot=description]),#description{user-select:none}rh-icon[icon=checkmark]{color:var(--rh-color-interactive-primary-default)}#description{flex:1 0 100%;display:block}slot[name=description]{font-size:var(--rh-font-size-body-text-xs,.75rem)}#display-icon{--rh-icon-size:var(--rh-select-icon-size,14px);margin-inline-end:var(--rh-space-md,8px)}</style><!--lit-part zWHWHk43ewM=-->
+      <!--lit-node 0--><div id="outer" class="  ">
+        <!--lit-node 1--><rh-icon 
+                 
+                 
+                  id="display-icon" set="ui" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="false"
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" ><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template>
+        </rh-icon>
+        <span id="label">
+          <!-- Option label as inline text. Screen readers use this content as the accessible name. Falls back to the `label` or `value` attribute when empty. -->
+          <!--lit-node 4--><slot ><!--lit-part--><!--/lit-part--></slot>
+        </span>
+        <!--lit-node 6--><rh-icon 
+                 
+                 
+                  icon="checkmark" set="microns" loading="eager" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" microns "><!--lit-part O9rH2WrTvvk=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 4.27c-.4-.38-1.03-.37-1.41.02L7 14.59 2.71 10.3l-.02-.02c-.4-.38-1.03-.37-1.41.02-.38.4-.37 1.03.02 1.41l4.65 4.65a1.499 1.499 0 0 0 2.12 0L18.72 5.71l.02-.02c.38-.4.37-1.03-.02-1.41Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        <!-- Optional inline or block description text displayed below the option label. Overrides the `description` attribute. Should be a `<span>` or `<p>` element. -->
+        <slot id="description"
+              name="description"><!--lit-part--><!--/lit-part--></slot>
+      </div>
+    <!--/lit-part--></template>3scale API Management</rh-option>
+  <rh-option  role="option" hydrate-internals-role="option" ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}:host([hidden]),[hidden]{display:none!important}:host([disabled]){pointer-events:none}:host(:focus),:host(:focus-visible){outline:0}:host(:focus) #outer,:host(:hover) #outer{background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}#outer{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);flex-wrap:wrap;justify-content:flex-start;align-items:center;display:flex}:host(:focus) #outer{border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-lg,3px) solid var(--rh-color-border-interactive);outline-offset:calc(var(--rh-border-width-lg,3px) * -1);border:0}:host([disabled]) #outer{color:var(--rh-color-text-status-disabled,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d)))}#label{flex:auto}#label,::slotted([slot=description]),#description{user-select:none}rh-icon[icon=checkmark]{color:var(--rh-color-interactive-primary-default)}#description{flex:1 0 100%;display:block}slot[name=description]{font-size:var(--rh-font-size-body-text-xs,.75rem)}#display-icon{--rh-icon-size:var(--rh-select-icon-size,14px);margin-inline-end:var(--rh-space-md,8px)}</style><!--lit-part zWHWHk43ewM=-->
+      <!--lit-node 0--><div id="outer" class="  ">
+        <!--lit-node 1--><rh-icon 
+                 
+                 
+                  id="display-icon" set="ui" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="false"
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" ><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template>
+        </rh-icon>
+        <span id="label">
+          <!-- Option label as inline text. Screen readers use this content as the accessible name. Falls back to the `label` or `value` attribute when empty. -->
+          <!--lit-node 4--><slot ><!--lit-part--><!--/lit-part--></slot>
+        </span>
+        <!--lit-node 6--><rh-icon 
+                 
+                 
+                  icon="checkmark" set="microns" loading="eager" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" microns "><!--lit-part O9rH2WrTvvk=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 4.27c-.4-.38-1.03-.37-1.41.02L7 14.59 2.71 10.3l-.02-.02c-.4-.38-1.03-.37-1.41.02-.38.4-.37 1.03.02 1.41l4.65 4.65a1.499 1.499 0 0 0 2.12 0L18.72 5.71l.02-.02c.38-.4.37-1.03-.02-1.41Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        <!-- Optional inline or block description text displayed below the option label. Overrides the `description` attribute. Should be a `<span>` or `<p>` element. -->
+        <slot id="description"
+              name="description"><!--lit-part--><!--/lit-part--></slot>
+      </div>
+    <!--/lit-part--></template>AI Inference Server</rh-option>
+  <rh-option  role="option" hydrate-internals-role="option" ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}:host([hidden]),[hidden]{display:none!important}:host([disabled]){pointer-events:none}:host(:focus),:host(:focus-visible){outline:0}:host(:focus) #outer,:host(:hover) #outer{background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}#outer{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);flex-wrap:wrap;justify-content:flex-start;align-items:center;display:flex}:host(:focus) #outer{border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-lg,3px) solid var(--rh-color-border-interactive);outline-offset:calc(var(--rh-border-width-lg,3px) * -1);border:0}:host([disabled]) #outer{color:var(--rh-color-text-status-disabled,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d)))}#label{flex:auto}#label,::slotted([slot=description]),#description{user-select:none}rh-icon[icon=checkmark]{color:var(--rh-color-interactive-primary-default)}#description{flex:1 0 100%;display:block}slot[name=description]{font-size:var(--rh-font-size-body-text-xs,.75rem)}#display-icon{--rh-icon-size:var(--rh-select-icon-size,14px);margin-inline-end:var(--rh-space-md,8px)}</style><!--lit-part zWHWHk43ewM=-->
+      <!--lit-node 0--><div id="outer" class="  ">
+        <!--lit-node 1--><rh-icon 
+                 
+                 
+                  id="display-icon" set="ui" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="false"
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" ><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template>
+        </rh-icon>
+        <span id="label">
+          <!-- Option label as inline text. Screen readers use this content as the accessible name. Falls back to the `label` or `value` attribute when empty. -->
+          <!--lit-node 4--><slot ><!--lit-part--><!--/lit-part--></slot>
+        </span>
+        <!--lit-node 6--><rh-icon 
+                 
+                 
+                  icon="checkmark" set="microns" loading="eager" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" microns "><!--lit-part O9rH2WrTvvk=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 4.27c-.4-.38-1.03-.37-1.41.02L7 14.59 2.71 10.3l-.02-.02c-.4-.38-1.03-.37-1.41.02-.38.4-.37 1.03.02 1.41l4.65 4.65a1.499 1.499 0 0 0 2.12 0L18.72 5.71l.02-.02c.38-.4.37-1.03-.02-1.41Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        <!-- Optional inline or block description text displayed below the option label. Overrides the `description` attribute. Should be a `<span>` or `<p>` element. -->
+        <slot id="description"
+              name="description"><!--lit-part--><!--/lit-part--></slot>
+      </div>
+    <!--/lit-part--></template>Ansible Automation Platform</rh-option>
+  <rh-option  role="option" hydrate-internals-role="option" ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}:host([hidden]),[hidden]{display:none!important}:host([disabled]){pointer-events:none}:host(:focus),:host(:focus-visible){outline:0}:host(:focus) #outer,:host(:hover) #outer{background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}#outer{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);flex-wrap:wrap;justify-content:flex-start;align-items:center;display:flex}:host(:focus) #outer{border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-lg,3px) solid var(--rh-color-border-interactive);outline-offset:calc(var(--rh-border-width-lg,3px) * -1);border:0}:host([disabled]) #outer{color:var(--rh-color-text-status-disabled,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d)))}#label{flex:auto}#label,::slotted([slot=description]),#description{user-select:none}rh-icon[icon=checkmark]{color:var(--rh-color-interactive-primary-default)}#description{flex:1 0 100%;display:block}slot[name=description]{font-size:var(--rh-font-size-body-text-xs,.75rem)}#display-icon{--rh-icon-size:var(--rh-select-icon-size,14px);margin-inline-end:var(--rh-space-md,8px)}</style><!--lit-part zWHWHk43ewM=-->
+      <!--lit-node 0--><div id="outer" class="  ">
+        <!--lit-node 1--><rh-icon 
+                 
+                 
+                  id="display-icon" set="ui" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="false"
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" ><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template>
+        </rh-icon>
+        <span id="label">
+          <!-- Option label as inline text. Screen readers use this content as the accessible name. Falls back to the `label` or `value` attribute when empty. -->
+          <!--lit-node 4--><slot ><!--lit-part--><!--/lit-part--></slot>
+        </span>
+        <!--lit-node 6--><rh-icon 
+                 
+                 
+                  icon="checkmark" set="microns" loading="eager" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" microns "><!--lit-part O9rH2WrTvvk=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 4.27c-.4-.38-1.03-.37-1.41.02L7 14.59 2.71 10.3l-.02-.02c-.4-.38-1.03-.37-1.41.02-.38.4-.37 1.03.02 1.41l4.65 4.65a1.499 1.499 0 0 0 2.12 0L18.72 5.71l.02-.02c.38-.4.37-1.03-.02-1.41Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        <!-- Optional inline or block description text displayed below the option label. Overrides the `description` attribute. Should be a `<span>` or `<p>` element. -->
+        <slot id="description"
+              name="description"><!--lit-part--><!--/lit-part--></slot>
+      </div>
+    <!--/lit-part--></template>Ansible Lightspeed</rh-option>
+  <rh-option  role="option" hydrate-internals-role="option" ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}:host([hidden]),[hidden]{display:none!important}:host([disabled]){pointer-events:none}:host(:focus),:host(:focus-visible){outline:0}:host(:focus) #outer,:host(:hover) #outer{background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}#outer{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);flex-wrap:wrap;justify-content:flex-start;align-items:center;display:flex}:host(:focus) #outer{border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-lg,3px) solid var(--rh-color-border-interactive);outline-offset:calc(var(--rh-border-width-lg,3px) * -1);border:0}:host([disabled]) #outer{color:var(--rh-color-text-status-disabled,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d)))}#label{flex:auto}#label,::slotted([slot=description]),#description{user-select:none}rh-icon[icon=checkmark]{color:var(--rh-color-interactive-primary-default)}#description{flex:1 0 100%;display:block}slot[name=description]{font-size:var(--rh-font-size-body-text-xs,.75rem)}#display-icon{--rh-icon-size:var(--rh-select-icon-size,14px);margin-inline-end:var(--rh-space-md,8px)}</style><!--lit-part zWHWHk43ewM=-->
+      <!--lit-node 0--><div id="outer" class="  ">
+        <!--lit-node 1--><rh-icon 
+                 
+                 
+                  id="display-icon" set="ui" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="false"
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" ><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template>
+        </rh-icon>
+        <span id="label">
+          <!-- Option label as inline text. Screen readers use this content as the accessible name. Falls back to the `label` or `value` attribute when empty. -->
+          <!--lit-node 4--><slot ><!--lit-part--><!--/lit-part--></slot>
+        </span>
+        <!--lit-node 6--><rh-icon 
+                 
+                 
+                  icon="checkmark" set="microns" loading="eager" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" microns "><!--lit-part O9rH2WrTvvk=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 4.27c-.4-.38-1.03-.37-1.41.02L7 14.59 2.71 10.3l-.02-.02c-.4-.38-1.03-.37-1.41.02-.38.4-.37 1.03.02 1.41l4.65 4.65a1.499 1.499 0 0 0 2.12 0L18.72 5.71l.02-.02c.38-.4.37-1.03-.02-1.41Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        <!-- Optional inline or block description text displayed below the option label. Overrides the `description` attribute. Should be a `<span>` or `<p>` element. -->
+        <slot id="description"
+              name="description"><!--lit-part--><!--/lit-part--></slot>
+      </div>
+    <!--/lit-part--></template>Certificate System</rh-option>
+  <rh-option  role="option" hydrate-internals-role="option" ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}:host([hidden]),[hidden]{display:none!important}:host([disabled]){pointer-events:none}:host(:focus),:host(:focus-visible){outline:0}:host(:focus) #outer,:host(:hover) #outer{background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}#outer{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);flex-wrap:wrap;justify-content:flex-start;align-items:center;display:flex}:host(:focus) #outer{border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-lg,3px) solid var(--rh-color-border-interactive);outline-offset:calc(var(--rh-border-width-lg,3px) * -1);border:0}:host([disabled]) #outer{color:var(--rh-color-text-status-disabled,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d)))}#label{flex:auto}#label,::slotted([slot=description]),#description{user-select:none}rh-icon[icon=checkmark]{color:var(--rh-color-interactive-primary-default)}#description{flex:1 0 100%;display:block}slot[name=description]{font-size:var(--rh-font-size-body-text-xs,.75rem)}#display-icon{--rh-icon-size:var(--rh-select-icon-size,14px);margin-inline-end:var(--rh-space-md,8px)}</style><!--lit-part zWHWHk43ewM=-->
+      <!--lit-node 0--><div id="outer" class="  ">
+        <!--lit-node 1--><rh-icon 
+                 
+                 
+                  id="display-icon" set="ui" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="false"
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" ><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template>
+        </rh-icon>
+        <span id="label">
+          <!-- Option label as inline text. Screen readers use this content as the accessible name. Falls back to the `label` or `value` attribute when empty. -->
+          <!--lit-node 4--><slot ><!--lit-part--><!--/lit-part--></slot>
+        </span>
+        <!--lit-node 6--><rh-icon 
+                 
+                 
+                  icon="checkmark" set="microns" loading="eager" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" microns "><!--lit-part O9rH2WrTvvk=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 4.27c-.4-.38-1.03-.37-1.41.02L7 14.59 2.71 10.3l-.02-.02c-.4-.38-1.03-.37-1.41.02-.38.4-.37 1.03.02 1.41l4.65 4.65a1.499 1.499 0 0 0 2.12 0L18.72 5.71l.02-.02c.38-.4.37-1.03-.02-1.41Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        <!-- Optional inline or block description text displayed below the option label. Overrides the `description` attribute. Should be a `<span>` or `<p>` element. -->
+        <slot id="description"
+              name="description"><!--lit-part--><!--/lit-part--></slot>
+      </div>
+    <!--/lit-part--></template>Connectivity Link</rh-option>
+  <rh-option  role="option" hydrate-internals-role="option" ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}:host([hidden]),[hidden]{display:none!important}:host([disabled]){pointer-events:none}:host(:focus),:host(:focus-visible){outline:0}:host(:focus) #outer,:host(:hover) #outer{background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}#outer{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);flex-wrap:wrap;justify-content:flex-start;align-items:center;display:flex}:host(:focus) #outer{border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-lg,3px) solid var(--rh-color-border-interactive);outline-offset:calc(var(--rh-border-width-lg,3px) * -1);border:0}:host([disabled]) #outer{color:var(--rh-color-text-status-disabled,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d)))}#label{flex:auto}#label,::slotted([slot=description]),#description{user-select:none}rh-icon[icon=checkmark]{color:var(--rh-color-interactive-primary-default)}#description{flex:1 0 100%;display:block}slot[name=description]{font-size:var(--rh-font-size-body-text-xs,.75rem)}#display-icon{--rh-icon-size:var(--rh-select-icon-size,14px);margin-inline-end:var(--rh-space-md,8px)}</style><!--lit-part zWHWHk43ewM=-->
+      <!--lit-node 0--><div id="outer" class="  ">
+        <!--lit-node 1--><rh-icon 
+                 
+                 
+                  id="display-icon" set="ui" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="false"
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" ><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template>
+        </rh-icon>
+        <span id="label">
+          <!-- Option label as inline text. Screen readers use this content as the accessible name. Falls back to the `label` or `value` attribute when empty. -->
+          <!--lit-node 4--><slot ><!--lit-part--><!--/lit-part--></slot>
+        </span>
+        <!--lit-node 6--><rh-icon 
+                 
+                 
+                  icon="checkmark" set="microns" loading="eager" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" microns "><!--lit-part O9rH2WrTvvk=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 4.27c-.4-.38-1.03-.37-1.41.02L7 14.59 2.71 10.3l-.02-.02c-.4-.38-1.03-.37-1.41.02-.38.4-.37 1.03.02 1.41l4.65 4.65a1.499 1.499 0 0 0 2.12 0L18.72 5.71l.02-.02c.38-.4.37-1.03-.02-1.41Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        <!-- Optional inline or block description text displayed below the option label. Overrides the `description` attribute. Should be a `<span>` or `<p>` element. -->
+        <slot id="description"
+              name="description"><!--lit-part--><!--/lit-part--></slot>
+      </div>
+    <!--/lit-part--></template>Data Grid</rh-option>
+</rh-select>
+
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-select/rh-select-lightdom-shim.css">
+
+<script type="module">
+  import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+  import '@rhds/elements/rh-select/rh-select.js';
+</script>
+
+<style>
+  label,
+  rh-select {
+    margin-inline-start: 20px;
+    max-inline-size: 320px;
+  }
+
+  label {
+    display: inline-block;
+    font-family: var(--rh-font-family-body-text);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    margin-block: var(--rh-space-md, 8px);
+  }
+
+  rh-tooltip {
+    font-weight: var(--rh-font-weight-body-text-regular, 400);
+  }
+
+  button {
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    min-block-size: var(--rh-length-xl, 24px);
+    min-inline-size: var(--rh-length-xl, 24px);
+    padding: 0;
+
+    &:hover {
+      color: var(--rh-color-interactive-primary-hover);
+    }
+
+    &:focus-visible {
+      outline-color: var(--rh-color-border-interactive);
+    }
+  }
+</style>
+
+
+</body></html>

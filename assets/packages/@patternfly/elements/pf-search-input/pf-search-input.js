@@ -580,7 +580,7 @@ PfSearchInput.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
-PfSearchInput.version = "4.3.0";
+PfSearchInput.version = "4.3.1";
 __decorate([
     property({ attribute: 'accessible-label' })
 ], PfSearchInput.prototype, "accessibleLabel", void 0);

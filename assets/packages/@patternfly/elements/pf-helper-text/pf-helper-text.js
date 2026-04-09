@@ -90,7 +90,7 @@ let PfHelperText = class PfHelperText extends LitElement {
 };
 _PfHelperText_slots = new WeakMap();
 PfHelperText.styles = [styles];
-PfHelperText.version = "4.3.0";
+PfHelperText.version = "4.3.1";
 __decorate([
     property({ reflect: true })
 ], PfHelperText.prototype, "variant", void 0);

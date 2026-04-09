@@ -148,7 +148,7 @@ _PfBackgroundImage_onSlotChange = function _PfBackgroundImage_onSlotChange() {
     }
 };
 PfBackgroundImage.styles = [styles];
-PfBackgroundImage.version = "4.3.0";
+PfBackgroundImage.version = "4.3.1";
 __decorate([
     property({ reflect: true })
 ], PfBackgroundImage.prototype, "src", void 0);

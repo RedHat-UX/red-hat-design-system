@@ -35,8 +35,8 @@ export declare class RhPagination extends LitElement {
     labelLast: string;
     /** Controls pagination size. Accepts `'sm'` for smaller touch targets (WCAG AA) or `null` for default (WCAG AAA). Defaults to `null`. */
     size: 'sm' | null;
-    /** Visual variant. Accepts `'open'` for transparent backgrounds with bottom borders, or `null` for the default box variant. Defaults to `null`. */
-    variant?: 'open' | null;
+    /** Visual variant. Accepts `'borderless'` for transparent backgrounds with bottom borders, or `null` for the default box variant. Defaults to `null`. */
+    variant?: 'borderless' | null;
     private input?;
     private total;
     private firstHref?;
@@ -47,21 +47,22 @@ export declare class RhPagination extends LitElement {
     connectedCallback(): void;
     disconnectedCallback(): void;
     update(changed: PropertyValues<this>): void;
+    firstUpdated(): void;
     updated(): void;
     render(): import("lit-html").TemplateResult<1>;
     /** Navigate to the first page */
-    first(): Promise<number>;
+    first(): Promise<void>;
     /** Navigate to the previous page */
-    prev(): Promise<number>;
+    prev(): Promise<void>;
     /** Navigate to the next page */
-    next(): Promise<number>;
+    next(): Promise<void>;
     /** Navigate to the last page */
-    last(): Promise<number>;
+    last(): Promise<void>;
     /**
      * Navigate to a specific page
      * @param page
      */
-    go(page: 'first' | 'prev' | 'next' | 'last' | number): Promise<number>;
+    go(page: 'first' | 'prev' | 'next' | 'last' | number): Promise<void>;
 }
 declare global {
     interface HTMLElementTagNameMap {

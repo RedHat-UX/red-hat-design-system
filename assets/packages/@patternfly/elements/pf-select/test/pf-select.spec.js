@@ -65,7 +65,7 @@ describe('<pf-select>', function () {
     describe('with accessible-label attribute and 3 items', function () {
         let element;
         const updateComplete = () => element.updateComplete;
-        const focus = () => element.focus;
+        const focus = () => element.focus();
         beforeEach(async function () {
             element = await createFixture(html `
         <pf-select accessible-label="label">
@@ -127,7 +127,7 @@ describe('<pf-select>', function () {
     describe('with `placeholder` attribute and 3 items', function () {
         let element;
         const updateComplete = () => element.updateComplete;
-        const focus = () => element.focus;
+        const focus = () => element.focus();
         beforeEach(async function () {
             element = await createFixture(html `
         <pf-select placeholder="placeholder">
@@ -206,7 +206,7 @@ describe('<pf-select>', function () {
     describe('with 3 items and associated <label> elements', function () {
         let element;
         const updateComplete = () => element.updateComplete;
-        const focus = () => element.focus;
+        const focus = () => element.focus();
         beforeEach(async function () {
             element = await createFixture(html `
         <pf-select id="select">

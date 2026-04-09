@@ -29,7 +29,7 @@ let PfJumpLinksList = class PfJumpLinksList extends LitElement {
     }
 };
 PfJumpLinksList.styles = [style];
-PfJumpLinksList.version = "4.3.0";
+PfJumpLinksList.version = "4.3.1";
 PfJumpLinksList = __decorate([
     customElement('pf-jump-links-list')
 ], PfJumpLinksList);

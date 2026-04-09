@@ -47,7 +47,7 @@ _PfThead_onSlotchange = function _PfThead_onSlotchange() {
     }
 };
 PfThead.styles = [styles];
-PfThead.version = "4.3.0";
+PfThead.version = "4.3.1";
 __decorate([
     provide({ context: thRoleContext })
 ], PfThead.prototype, "thRowContext", void 0);

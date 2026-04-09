@@ -554,7 +554,7 @@ _PfTable_performSort = function _PfTable_performSort(header, direction) {
     }
 };
 PfTable.styles = [styles];
-PfTable.version = "4.3.0";
+PfTable.version = "4.3.1";
 __decorate([
     state()
 ], PfTable.prototype, "columns", void 0);

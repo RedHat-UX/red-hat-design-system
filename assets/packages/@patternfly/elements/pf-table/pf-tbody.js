@@ -31,7 +31,7 @@ let PfTbody = class PfTbody extends LitElement {
     }
 };
 PfTbody.styles = [styles];
-PfTbody.version = "4.3.0";
+PfTbody.version = "4.3.1";
 PfTbody = __decorate([
     customElement('pf-tbody')
 ], PfTbody);

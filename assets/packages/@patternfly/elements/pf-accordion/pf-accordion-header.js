@@ -309,7 +309,7 @@ PfAccordionHeader.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
-PfAccordionHeader.version = "4.3.0";
+PfAccordionHeader.version = "4.3.1";
 __decorate([
     property({ reflect: true })
 ], PfAccordionHeader.prototype, "bordered", void 0);

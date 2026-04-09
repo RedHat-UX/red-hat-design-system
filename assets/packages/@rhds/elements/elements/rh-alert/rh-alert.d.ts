@@ -1,4 +1,5 @@
-import { LitElement, type TemplateResult } from 'lit';
+import type { TemplateResult } from 'lit';
+import { LitElement } from 'lit';
 import '@rhds/elements/rh-surface/rh-surface.js';
 import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-icon/rh-icon.js';

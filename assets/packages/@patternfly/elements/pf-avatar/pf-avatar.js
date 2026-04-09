@@ -129,7 +129,7 @@ _PfAvatar_onLoad = function _PfAvatar_onLoad(event) {
     this.dispatchEvent(new PfAvatarLoadEvent(event));
 };
 PfAvatar.styles = [style];
-PfAvatar.version = "4.3.0";
+PfAvatar.version = "4.3.1";
 __decorate([
     property()
 ], PfAvatar.prototype, "src", void 0);

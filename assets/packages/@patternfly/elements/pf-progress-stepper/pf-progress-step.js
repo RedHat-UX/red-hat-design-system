@@ -177,7 +177,7 @@ _PfProgressStep_slots = new WeakMap();
 _PfProgressStep_internals = new WeakMap();
 PfProgressStep.parentTagName = 'pf-progress-stepper';
 PfProgressStep.styles = [style];
-PfProgressStep.version = "4.3.0";
+PfProgressStep.version = "4.3.1";
 __decorate([
     property()
 ], PfProgressStep.prototype, "description", void 0);

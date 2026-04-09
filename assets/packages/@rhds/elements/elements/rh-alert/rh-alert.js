@@ -1,6 +1,6 @@
 var _RhAlert_instances, _RhAlert_icon_get, _RhAlert_slots, _RhAlert_onClose, _RhAlert_aliasState, _RhAlert_close, _RhAlert_onActionsClick;
 import { __classPrivateFieldGet, __decorate } from "tslib";
-import { LitElement, html, isServer, render } from 'lit';
+import { LitElement, html, isServer, render, nothing } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { repeat } from 'lit/directives/repeat.js';
@@ -139,7 +139,7 @@ let RhAlert = class RhAlert extends LitElement {
             [state]: true,
             [variant]: !!variant,
         })}"
-                  role="alert"
+                  role="${this.variant !== 'toast' ? 'alert' : nothing}"
                   aria-hidden="false">
         <div id="left-column">
           <rh-icon id="icon" set="ui" icon="${__classPrivateFieldGet(this, _RhAlert_instances, "a", _RhAlert_icon_get)}"></rh-icon>

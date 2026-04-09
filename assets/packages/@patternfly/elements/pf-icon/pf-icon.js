@@ -227,7 +227,7 @@ PfIcon.instances = new Set();
  *          ```
  */
 PfIcon.resolve = PfIcon.defaultResolve;
-PfIcon.version = "4.3.0";
+PfIcon.version = "4.3.1";
 __decorate([
     property()
 ], PfIcon.prototype, "set", void 0);

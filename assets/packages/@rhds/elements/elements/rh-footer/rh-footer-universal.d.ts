@@ -10,6 +10,7 @@ import './rh-footer-copyright.js';
  * Tab navigates link groups.
  *
  * @summary Global Red Hat universal footer with logo, links, and copyright
+ * @alias footer-universal
  */
 export declare class RhFooterUniversal extends LitElement {
     #private;
@@ -20,6 +21,7 @@ export declare class RhFooterUniversal extends LitElement {
      * The universal footer typically renders on the darkest surface.
      */
     colorPalette: ColorPalette;
+    connectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
 }
 declare global {

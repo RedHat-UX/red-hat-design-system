@@ -93,16 +93,16 @@ __decorate([
     property({ reflect: true })
 ], RhTag.prototype, "icon", void 0);
 __decorate([
-    property({ attribute: 'icon-set' })
+    property({ attribute: 'icon-set', reflect: true })
 ], RhTag.prototype, "iconSet", void 0);
 __decorate([
-    property()
+    property({ reflect: true })
 ], RhTag.prototype, "variant", void 0);
 __decorate([
-    property()
+    property({ reflect: true })
 ], RhTag.prototype, "size", void 0);
 __decorate([
-    property()
+    property({ reflect: true })
 ], RhTag.prototype, "href", void 0);
 __decorate([
     property({ type: Boolean, reflect: true })

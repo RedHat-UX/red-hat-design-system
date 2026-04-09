@@ -4,8 +4,8 @@ import { LitElement, type TemplateResult } from 'lit';
  * Triggers actions via click, Enter, or Space. USE `variant` to set
  * hierarchy: primary (should limit one per page), secondary, tertiary,
  * or danger. Renders a native `<button>` with `delegatesFocus` for
- * keyboard access. Must use `label` for icon-only buttons to set the
- * ARIA accessible name. Supports form association (submit/reset).
+ * keyboard access. Icon-only buttons must set `accessible-label` to
+ * provide an ARIA accessible name. Supports form association (submit/reset).
  *
  * @summary Clickable button that triggers page or form actions
  *
@@ -41,9 +41,14 @@ export declare class RhButton extends LitElement {
     type?: 'button' | 'submit' | 'reset';
     /**
      * Accessible name for the button, applied as `aria-label` on the internal
-     * `<button>`. USE when the button has no visible text (e.g. icon-only
+     * `<button>`. Use when the button has no visible text (e.g. icon-only
      * buttons like close or play). When set, slotted text is hidden with
-     * `aria-hidden="true"`. Defaults to undefined.
+     * `aria-hidden="true"`. Preferred over the deprecated `label` attribute.
+     * Defaults to undefined.
+     */
+    accessibleLabel?: string;
+    /**
+     * @deprecated Use `accessible-label` instead.
      */
     label?: string;
     /**
@@ -70,8 +75,8 @@ export declare class RhButton extends LitElement {
     private _button;
     /**
      * Controls the visual hierarchy and style of the button. Accepts
-     * ‘primary’ | ‘secondary’ | ‘tertiary’ | ‘close’ | ‘play’. Defaults to
-     * ‘primary’. Should limit primary to one per page. USE secondary for
+     * 'primary' | 'secondary' | 'tertiary' | 'close' | 'play'. Defaults to
+     * 'primary'. Should limit primary to one per page. USE secondary for
      * general actions, tertiary for low-emphasis actions. Close and play
      * variants render icon-only circular buttons with visually hidden text.
      */

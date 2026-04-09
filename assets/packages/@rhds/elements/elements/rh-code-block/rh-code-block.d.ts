@@ -1,4 +1,11 @@
 import { LitElement, type PropertyValues } from 'lit';
+import '@rhds/elements/rh-icon/rh-icon.js';
+/**
+ * Fired when the user activates the copy button via click, Enter, or Space.
+ * Provides `content` (string) for clipboard use. Listeners SHOULD modify
+ * `content` to strip prompts. MUST call `preventDefault()` to cancel.
+ * Screen reader users activate this via the keyboard-accessible button.
+ */
 export declare class RhCodeBlockCopyEvent extends Event {
     /** Text content to copy */
     content: string;
@@ -14,22 +21,15 @@ export declare class RhCodeBlockCopyEvent extends Event {
  * as a scrollable area. Authors should avoid nesting interactive
  * elements inside the code slot.
  *
+ * @summary Formats code strings within a container
+ *
  * @alias code-block
  *
- * @summary Displays formatted code with optional actions and line numbers
- *
- * @event {RhCodeBlockCopyEvent} copy - Fired when the user clicks the copy
- *   button or presses Enter/Space on it. The `event.content` property
- *   contains the text to copy (string). Cancel with `preventDefault()` to
- *   suppress clipboard write. Mutate `event.content` to alter copied text.
- *
- * @cssprop --rh-code-block-callout-size
- * Width of the callout/notification indicator that appears when highlighting specific lines.
- * Controls the visual size of line highlight markers or callout indicators.
- *
- * @cssprop --rh-code-block-border-block-start-width
- * Width of the top border for the code block container. Used to visually separate the code
- * block from surrounding content. Should maintain consistency with design system border widths.
+ * @fires {RhCodeBlockCopyEvent} copy - Fired when the user clicks the copy
+ *        action button or activates it with Enter/Space. The event's
+ *        `content` field (string) contains the text to copy. Listeners MAY
+ *        modify `event.content` to alter the copied text (e.g. to strip a
+ *        shell prompt). Call `event.preventDefault()` to cancel the copy.
  */
 export declare class RhCodeBlock extends LitElement {
     #private;

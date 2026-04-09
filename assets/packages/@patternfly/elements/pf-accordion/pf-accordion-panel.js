@@ -113,7 +113,7 @@ let PfAccordionPanel = class PfAccordionPanel extends LitElement {
     }
 };
 PfAccordionPanel.styles = [style];
-PfAccordionPanel.version = "4.3.0";
+PfAccordionPanel.version = "4.3.1";
 __decorate([
     property({ type: Boolean, reflect: true })
 ], PfAccordionPanel.prototype, "expanded", void 0);

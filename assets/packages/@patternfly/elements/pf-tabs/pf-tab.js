@@ -326,7 +326,7 @@ _PfTab_activate = async function _PfTab_activate() {
     this.dispatchEvent(new TabExpandEvent(this));
 };
 PfTab.styles = [styles];
-PfTab.version = "4.3.0";
+PfTab.version = "4.3.1";
 __decorate([
     queryAssignedElements({ slot: 'icon', flatten: true })
 ], PfTab.prototype, "icons", void 0);

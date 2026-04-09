@@ -1,0 +1,251 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
+    <title>Layouts In Narrow Containers | Red Hat Design System</title>
+
+    <link rel="preconnect" href="https://ga.jspm.io">
+
+    <link rel="stylesheet" href="/styles/demo/styles.css" media="all">
+
+    <script type="importmap">{
+  "imports": {
+    "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
+    "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "lit-html": "/assets/packages/lit-html/lit-html.js",
+    "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
+    "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
+    "lit-element": "/assets/packages/lit-element/index.js",
+    "prism-esm": "/assets/packages/prism-esm/prism.js",
+    "lit": "/assets/packages/lit/index.js",
+    "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
+    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
+    "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
+    "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "@lit/context": "/assets/packages/@lit/context/index.js",
+    "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
+    "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
+    "lit/": "/assets/packages/lit/",
+    "lit-html/": "/assets/packages/lit-html/",
+    "prism-esm/": "/assets/packages/prism-esm/",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js",
+    "@rhds/tokens/css/": "/assets/packages/@rhds/tokens/css/",
+    "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
+    "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
+    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons": "/assets/packages/@rhds/icons/icons.js",
+    "@rhds/icons/": "/assets/packages/@rhds/icons/",
+    "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
+    "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
+    "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
+    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "@uxdot/elements/": "/assets/packages/@uxdot/elements/"
+  },
+  "scopes": {
+    "/assets/packages/": {
+      "@lit/reactive-element/decorators/": "/assets/packages/@lit/reactive-element/decorators/",
+      "lit-element/lit-element.js": "/assets/packages/lit-element/lit-element.js",
+      "lit-html/": "/assets/packages/lit-html/"
+    }
+  }
+}</script>
+
+    
+      <script type="module">
+    // although we load these ssr support modules elsewhere, we still
+    // need them here to ensure no double-rendering on webkit
+    import '/assets/javascript/ssr-support.js';
+    // include these, which are often internal to elements,
+    // and are definitely required by context-picker and context-demo
+    // to avoid SSR defer-hydration bugs and SSR double-rendering bugs
+    import '@rhds/elements/rh-icon/rh-icon.js';
+    import '@rhds/elements/rh-surface/rh-surface.js';
+    import '@rhds/elements/rh-button/rh-button.js';
+    import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+    import '@rhds/elements/rh-tag/rh-tag.js';
+  </script>
+
+
+    <script type="module">
+      // load up the demo and picker
+      import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+      import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+    </script>
+
+    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
+  </head>
+  <body><div id="test">
+  <label for="repro">
+    <rh-switch  role="switch" hydrate-internals-role="switch" id="repro" aria-description><template shadowroot="open" shadowrootmode="open"><style>:host{vertical-align:top;cursor:pointer;outline:none;display:inline-flex}[hidden]{display:none!important}#container{align-items:center;gap:var(--rh-space-lg,16px);--_margin-inline:5px;--_switch-width:40px;--_switch-height:24px;--_switch-handle-size:14px;--_switch-track-background-color:light-dark( var(--rh-switch-unchecked,var(--rh-color-gray-60,#4d4d4d)), var(--rh-switch-unchecked,var(--rh-color-gray-40,#a3a3a3)));--_switch-handle-color:light-dark( var(--rh-color-surface-lightest,#fff), oklch(from var(--rh-color-surface-dark,#383838) calc(l * .82) c h));display:inline-flex}#container:after{box-shadow:light-dark(none, var(--rh-box-shadow-sm,0 2px 4px 0 #15151533))}#container #switch{width:var(--_switch-width);height:var(--_switch-height);border-radius:var(--rh-border-radius-pill,64px);flex-shrink:0;align-items:center;display:inline-flex;position:relative}#container #switch:before{content:"";border-radius:inherit;background-color:var(--_switch-track-background-color);justify-content:center;align-items:center;width:100%;height:100%;display:flex;position:absolute}#container #switch:after{content:"";height:var(--_switch-handle-size);width:var(--_switch-handle-size);border-radius:var(--rh-border-radius-pill,64px);transform-origin:50%;z-index:0;background-color:var(--_switch-handle-color);margin-inline:var(--_margin-inline);transition:translate .25s;translate:0%}#container .message{color:var(--rh-color-text-secondary)}#container.checked{--_switch-track-background-color:var(--rh-switch-checked,light-dark( var(--rh-color-accent-base-on-light,#06c), var(--rh-color-accent-base-on-dark,#92c5f9)))}#container.checked .message{color:var(--rh-color-text-primary)}#container.checked #switch:after{translate:calc(var(--_switch-width) - (var(--_switch-handle-size) + (var(--_margin-inline) * 2)))}#container.checked #switch:dir(rtl):after{translate:calc(-1 * ( var(--_switch-width) - (var(--_switch-handle-size) + (var(--_margin-inline) * 2)) ))}rh-icon{margin-inline:var(--_margin-inline);color:var(--_switch-handle-color);z-index:1;position:absolute}:host(:is(:focus,:focus-within)) #container #switch{outline: var(--rh-border-width-md,2px) solid  var(--rh-color-border-interactive);outline-offset:var(--rh-space-sm,6px)}:host(:disabled){pointer-events:none;cursor:not-allowed}:host(:disabled) #container .message{color:var(--rh-color-gray-50,#707070)}:host(:disabled) #container ::slotted(*),:host(:disabled) #container span{color:light-dark( var(--rh-color-gray-60,#4d4d4d), var(--rh-color-gray-40,#a3a3a3))}:host(:disabled) #container.checked,:host(:disabled) #container:not(.checked){--_switch-track-background-color:light-dark( var(--rh-switch-disabled,var(--rh-color-gray-30,#c7c7c7)), var(--rh-switch-disabled,var(--rh-color-gray-60,#4d4d4d)))}</style><!--lit-part pkpVKD/QqgE=-->
+      <!-- The outer flex container for the switch and message slots -->
+      <!--lit-node 1--><div id="container"
+           part="container"
+           class="  ">
+        <!--lit-part--><!--/lit-part-->
+        <!-- The toggle track and handle -->
+        <div id="switch"
+             part="switch">
+          <!--lit-node 5--><rh-icon 
+                   
+                   
+                    id="toggle" icon="checkmark" set="microns" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" microns "><!--lit-part O9rH2WrTvvk=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 4.27c-.4-.38-1.03-.37-1.41.02L7 14.59 2.71 10.3l-.02-.02c-.4-.38-1.03-.37-1.41.02-.38.4-.37 1.03.02 1.41l4.65 4.65a1.499 1.499 0 0 0 2.12 0L18.72 5.71l.02-.02c.38-.4.37-1.03-.02-1.41Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        </div>
+        <!--lit-part cLA0sksTnjk=-->
+      <!-- summary: Message content when checked. Overrides the `message-on` attribute.
+           description: |
+             Accepts inline content such as `<span>` elements. Content is
+             exposed to screen readers via `aria-describedby`, so it should
+             be concise and meaningful. -->
+      <!--lit-node 1--><slot class="message" name="message-on" hidden><span aria-hidden="true"><!--lit-part--><!--/lit-part--></span></slot>
+      <!-- summary: Message content when unchecked. Overrides the `message-off` attribute.
+           description: |
+             Accepts inline content such as `<span>` elements. Content is
+             exposed to screen readers via `aria-describedby`, so it should
+             be concise and meaningful. -->
+      <!--lit-node 5--><slot class="message" name="message-off" ><span aria-hidden="true"><!--lit-part--><!--/lit-part--></span></slot><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template></rh-switch>
+    Toggle reproduction
+  </label>
+
+  <rh-avatar   layout="inline" variant="bordered"><template shadowroot="open" shadowrootmode="open"><style>*,:after,:before{box-sizing:border-box}:host{inline-size:100%;display:block;container:avatar/inline-size}:host([plain]){inline-size:var(--rh-avatar-size, var(--rh-size-icon-06,64px))}[hidden]{display:none!important}img,svg{object-fit:cover;object-position:center}canvas,img,svg{inline-size:var(--rh-avatar-size,var(--rh-size-icon-06,64px));max-inline-size:var(--rh-size-icon-06,64px);aspect-ratio:1;border-radius:var(--rh-border-radius-pill,64px);grid-area:a;overflow:hidden}#default{enable-background:new 0 0 36 36}#default .st1{fill-rule:evenodd;clip-rule:evenodd;fill:light-dark(#f0f0f0,#212427)}#default .st2{fill:light-dark(#b8bbbe,#4f5255)}#default .st3{fill-rule:evenodd;clip-rule:evenodd;fill:light-dark(#d2d2d2,#6a6e73)}#default .st4{fill:light-dark(#d2d2d2,#6a6e73)}#title{max-inline-size:250px;font-family:var(--rh-font-family-heading,RedHatDisplay, "Red Hat Display", Helvetica, Arial, sans-serif);font-weight:var(--rh-font-weight-heading-medium,500);font-size:var(--rh-font-size-body-text-sm,.875rem);grid-area:t;align-self:end}#subtitle{max-inline-size:250px;font-weight:var(--rh-font-weight-heading-regular,400);font-size:var(--rh-font-size-body-text-sm,.875rem);grid-area:s;align-self:start}::slotted(a){color:var(--rh-color-interactive-primary-default)}::slotted(a:visited){color:var(--rh-color-interactive-primary-visited-default)}::slotted(a:active),::slotted(a:hover){color:var(--rh-color-interactive-primary-hover)}#container{--_colors: light-dark(var(--rh-avatar-colors,var(--rh-color-blue-30,#92c5f9) var(--rh-color-teal-50,#37a3a3) var(--rh-color-green-60,#3d7317) var(--rh-color-red-40,#f56e6e) var(--rh-color-purple-60,#3d2785)),var(--rh-avatar-colors,var(--rh-color-blue-50,#06c) var(--rh-color-teal-70,#004d4d) var(--rh-color-green-70,#204d00) var(--rh-color-red-50,#e00) var(--rh-color-purple-70,#21134d)));column-gap:var(--rh-space-lg,16px);color:var(--rh-color-text-secondary);grid-template:"a t""a s"/min-content 1fr;display:grid}#container:not(.plain).block{text-align:center;grid-template:"a"1fr"t""s"/auto;place-items:center;gap:0}#container:not(.plain).block :is(img,canvas,svg){margin-block-end:var(--rh-space-lg,16px)}@container avatar (width<=287px){#container:not(.plain):not(.block) :is(img,canvas,svg){margin-block-end:var(--rh-space-lg,16px)}}#container:not(.plain):not(.block){text-align:center;grid-template:"a""t""s"/1fr;place-items:center}@container avatar (width>=288px){#container:not(.plain):not(.block){text-align:start;grid-template:"a t""a s"/min-content 1fr;place-items:start}#container:not(.plain):not(.block) :is(#title,#subtitle){text-align:start}}#container.plain{inline-size:var(--rh-avatar-size,var(--rh-size-icon-06,64px));column-gap:0}#container.plain :is(#title,#subtitle){clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;block-size:1px;inline-size:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}#container.bordered :is(canvas,img,svg){border: var(--rh-border-width-sm,1px) solid  var(--rh-color-border-subtle)}</style><!--lit-part TqtYx0uEDgw=-->
+      <!--lit-node 0--><div id="container"
+           class=" inline bordered "><!--lit-part envyS2Gkyso=-->
+        <svg id="default"
+             viewBox="0 0 36 36"
+             role="presentation"
+             part="img">
+          <path d="M0 0h36v36H0z" class="st1"/><path d="M17.7 20.1c-3.5 0-6.4-2.9-6.4-6.4s2.9-6.4 6.4-6.4 6.4 2.9 6.4 6.4-2.8 6.4-6.4 6.4z" class="st3"/>
+          <path d="M13.3 36v-6.7c-2 .4-2.9 1.4-3.1 3.5l-.1 3.2h3.2z" class="st2"/>
+          <path d="m10.1 36 .1-3.2c.2-2.1 1.1-3.1 3.1-3.5V36h9.4v-6.7c2 .4 2.9 1.4 3.1 3.5l.1 3.2h4.7c-.4-3.9-1.3-9-2.9-11-1.1-1.4-2.3-2.2-3.5-2.6s-1.8-.6-6.3-.6-6.1.7-6.1.7c-1.2.4-2.4 1.2-3.4 2.6-1.7 1.9-2.6 7.1-3 10.9h4.7z" class="st4"/>
+          <path d="m25.9 36-.1-3.2c-.2-2.1-1.1-3.1-3.1-3.5V36h3.2z" class="st2"/>
+        </svg>
+        <!--/lit-part-->
+        <div id="title">
+          <!--
+            The subject's name. Should contain inline text, optionally wrapped in a link.
+            When `plain` is set, the name and subtitle are used as accessible labels
+          -->
+          <slot><!--lit-part--><!--/lit-part--></slot>
+        </div>
+        <div id="subtitle">
+          <!--
+            Auxiliary information about the subject, e.g. job title. Should contain inline text, optional links.
+            When `plain` is set, the name and subtitle are used as accessible labels
+          -->
+          <slot name="subtitle"><!--lit-part--><!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
+    <a href="/en/authors/ana-biazetti">
+      Ana Biazetti
+    </a>
+    <a slot="subtitle" href="/en/authors/ana-biazetti">
+      Senior Principal Engineer, Red Hat AI
+    </a>
+  </rh-avatar>
+  <rh-avatar   layout="inline" variant="bordered"><template shadowroot="open" shadowrootmode="open"><style>*,:after,:before{box-sizing:border-box}:host{inline-size:100%;display:block;container:avatar/inline-size}:host([plain]){inline-size:var(--rh-avatar-size, var(--rh-size-icon-06,64px))}[hidden]{display:none!important}img,svg{object-fit:cover;object-position:center}canvas,img,svg{inline-size:var(--rh-avatar-size,var(--rh-size-icon-06,64px));max-inline-size:var(--rh-size-icon-06,64px);aspect-ratio:1;border-radius:var(--rh-border-radius-pill,64px);grid-area:a;overflow:hidden}#default{enable-background:new 0 0 36 36}#default .st1{fill-rule:evenodd;clip-rule:evenodd;fill:light-dark(#f0f0f0,#212427)}#default .st2{fill:light-dark(#b8bbbe,#4f5255)}#default .st3{fill-rule:evenodd;clip-rule:evenodd;fill:light-dark(#d2d2d2,#6a6e73)}#default .st4{fill:light-dark(#d2d2d2,#6a6e73)}#title{max-inline-size:250px;font-family:var(--rh-font-family-heading,RedHatDisplay, "Red Hat Display", Helvetica, Arial, sans-serif);font-weight:var(--rh-font-weight-heading-medium,500);font-size:var(--rh-font-size-body-text-sm,.875rem);grid-area:t;align-self:end}#subtitle{max-inline-size:250px;font-weight:var(--rh-font-weight-heading-regular,400);font-size:var(--rh-font-size-body-text-sm,.875rem);grid-area:s;align-self:start}::slotted(a){color:var(--rh-color-interactive-primary-default)}::slotted(a:visited){color:var(--rh-color-interactive-primary-visited-default)}::slotted(a:active),::slotted(a:hover){color:var(--rh-color-interactive-primary-hover)}#container{--_colors: light-dark(var(--rh-avatar-colors,var(--rh-color-blue-30,#92c5f9) var(--rh-color-teal-50,#37a3a3) var(--rh-color-green-60,#3d7317) var(--rh-color-red-40,#f56e6e) var(--rh-color-purple-60,#3d2785)),var(--rh-avatar-colors,var(--rh-color-blue-50,#06c) var(--rh-color-teal-70,#004d4d) var(--rh-color-green-70,#204d00) var(--rh-color-red-50,#e00) var(--rh-color-purple-70,#21134d)));column-gap:var(--rh-space-lg,16px);color:var(--rh-color-text-secondary);grid-template:"a t""a s"/min-content 1fr;display:grid}#container:not(.plain).block{text-align:center;grid-template:"a"1fr"t""s"/auto;place-items:center;gap:0}#container:not(.plain).block :is(img,canvas,svg){margin-block-end:var(--rh-space-lg,16px)}@container avatar (width<=287px){#container:not(.plain):not(.block) :is(img,canvas,svg){margin-block-end:var(--rh-space-lg,16px)}}#container:not(.plain):not(.block){text-align:center;grid-template:"a""t""s"/1fr;place-items:center}@container avatar (width>=288px){#container:not(.plain):not(.block){text-align:start;grid-template:"a t""a s"/min-content 1fr;place-items:start}#container:not(.plain):not(.block) :is(#title,#subtitle){text-align:start}}#container.plain{inline-size:var(--rh-avatar-size,var(--rh-size-icon-06,64px));column-gap:0}#container.plain :is(#title,#subtitle){clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;block-size:1px;inline-size:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}#container.bordered :is(canvas,img,svg){border: var(--rh-border-width-sm,1px) solid  var(--rh-color-border-subtle)}</style><!--lit-part TqtYx0uEDgw=-->
+      <!--lit-node 0--><div id="container"
+           class=" inline bordered "><!--lit-part envyS2Gkyso=-->
+        <svg id="default"
+             viewBox="0 0 36 36"
+             role="presentation"
+             part="img">
+          <path d="M0 0h36v36H0z" class="st1"/><path d="M17.7 20.1c-3.5 0-6.4-2.9-6.4-6.4s2.9-6.4 6.4-6.4 6.4 2.9 6.4 6.4-2.8 6.4-6.4 6.4z" class="st3"/>
+          <path d="M13.3 36v-6.7c-2 .4-2.9 1.4-3.1 3.5l-.1 3.2h3.2z" class="st2"/>
+          <path d="m10.1 36 .1-3.2c.2-2.1 1.1-3.1 3.1-3.5V36h9.4v-6.7c2 .4 2.9 1.4 3.1 3.5l.1 3.2h4.7c-.4-3.9-1.3-9-2.9-11-1.1-1.4-2.3-2.2-3.5-2.6s-1.8-.6-6.3-.6-6.1.7-6.1.7c-1.2.4-2.4 1.2-3.4 2.6-1.7 1.9-2.6 7.1-3 10.9h4.7z" class="st4"/>
+          <path d="m25.9 36-.1-3.2c-.2-2.1-1.1-3.1-3.1-3.5V36h3.2z" class="st2"/>
+        </svg>
+        <!--/lit-part-->
+        <div id="title">
+          <!--
+            The subject's name. Should contain inline text, optionally wrapped in a link.
+            When `plain` is set, the name and subtitle are used as accessible labels
+          -->
+          <slot><!--lit-part--><!--/lit-part--></slot>
+        </div>
+        <div id="subtitle">
+          <!--
+            Auxiliary information about the subject, e.g. job title. Should contain inline text, optional links.
+            When `plain` is set, the name and subtitle are used as accessible labels
+          -->
+          <slot name="subtitle"><!--lit-part--><!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
+    <a href="/en/authors/lindani-phiri">
+      Lindani Phiri
+    </a>
+    <a slot="subtitle" href="/en/authors/lindani-phiri">
+      Architect, Red Hat AI
+    </a>
+  </rh-avatar>
+</div>
+
+<style>
+  #test {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: var(--rh-space-xl, 24px);
+    padding: var(--rh-space-xl, 24px);
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-inline-size: 450px;
+
+    &.repro {
+      max-inline-size: 250px;
+    }
+  }
+
+  rh-avatar {
+    --rh-avatar-size: var(--rh-length-3xl, 48px);
+    --rh-color-surface-darker: var(--rh-color-purple-70, #21134d);
+    --rh-color-border-subtle: var(--rh-color-brand-red, light-dark(var(--rh-color-brand-red-on-light, #ee0000), var(--rh-color-brand-red-on-dark, #ee0000)));
+    --rh-color-text-secondary: --var(--rh-color-accent-base, light-dark(var(--rh-color-accent-base-on-light, #0066cc), var(--rh-color-accent-base-on-dark, #92c5f9)));
+    --rh-color-interactive-primary-default-on-dark: var(--rh-color-accent-base, light-dark(var(--rh-color-accent-base-on-light, #0066cc), var(--rh-color-accent-base-on-dark, #92c5f9)));
+    --rh-color-interactive-primary-visited-default-on-dark: var(--rh-color-accent-base, light-dark(var(--rh-color-accent-base-on-light, #0066cc), var(--rh-color-accent-base-on-dark, #92c5f9)));
+    --rh-color-interactive-primary-hover-on-dark: var(--rh-color-accent);
+    --rh-border-width-sm: var(--rh-length-xs, 4px);
+
+    padding: var(--rh-space-lg, 16px);
+    background-color: var(--rh-color-surface-darker, #1f1f1f);
+    color-scheme: dark only;
+    border-radius: var(--rh-border-radius-pill, 64px);
+  }
+</style>
+
+<script type="module">
+  import "@rhds/elements/rh-avatar/rh-avatar.js";
+  import "@rhds/elements/rh-switch/rh-switch.js";
+  const repro = document.getElementById('repro');
+  const test = document.getElementById('test');
+  repro.addEventListener('change', function () {
+    test.classList.toggle('repro');
+  });
+</script>
+
+
+</body></html>

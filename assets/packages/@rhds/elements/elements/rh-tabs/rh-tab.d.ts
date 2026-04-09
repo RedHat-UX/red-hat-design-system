@@ -1,3 +1,4 @@
+import type { IconNameFor, IconSetName } from '@rhds/icons';
 import { LitElement } from 'lit';
 /**
  * Fired when a tab is selected. Contains the `active` state and
@@ -55,6 +56,17 @@ export declare class RhTab extends LitElement {
      * the disabled state to assistive technologies.
      */
     disabled: boolean;
+    /**
+     * Icon name from the specified icon set to display before the tab label.
+     * When set, an `rh-icon` element renders in the icon slot as a
+     * decorative visual. Icons complement the text label but should not
+     * replace it.
+     */
+    icon?: IconNameFor<IconSetName>;
+    /**
+     * The icon set from which to select the icon. Defaults to `ui`.
+     */
+    iconSet: IconSetName;
     private box;
     private vertical;
     private manual;
@@ -63,6 +75,7 @@ export declare class RhTab extends LitElement {
     private lastTab;
     connectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
+    protected iconChanged(): void;
     private activeChanged;
     /**
      * if a tab is disabled, then it is also aria-disabled

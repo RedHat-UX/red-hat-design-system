@@ -516,7 +516,7 @@ PfTextInput.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
-PfTextInput.version = "4.3.0";
+PfTextInput.version = "4.3.1";
 __decorate([
     property({ type: Boolean, reflect: true, attribute: 'left-truncated' })
 ], PfTextInput.prototype, "leftTruncated", void 0);

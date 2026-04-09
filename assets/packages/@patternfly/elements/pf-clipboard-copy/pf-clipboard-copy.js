@@ -460,7 +460,7 @@ PfClipboardCopy.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
-PfClipboardCopy.version = "4.3.0";
+PfClipboardCopy.version = "4.3.1";
 __decorate([
     property({ attribute: 'click-tip' })
 ], PfClipboardCopy.prototype, "clickTip", void 0);

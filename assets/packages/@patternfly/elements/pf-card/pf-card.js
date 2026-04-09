@@ -295,7 +295,7 @@ let PfCard = class PfCard extends LitElement {
 };
 _PfCard_slots = new WeakMap();
 PfCard.styles = [style];
-PfCard.version = "4.3.0";
+PfCard.version = "4.3.1";
 __decorate([
     property({ reflect: true })
 ], PfCard.prototype, "size", void 0);

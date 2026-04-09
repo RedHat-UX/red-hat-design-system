@@ -30,8 +30,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.7/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
@@ -84,13 +84,13 @@
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
   <body><meta itemprop="description" content="Default pagination with page links and numeric input.">
-<rh-pagination><template shadowroot="open" shadowrootmode="open"><style>:host{--_stepper-size:var(--rh-length-3xl,48px);min-block-size:4em;display:block}:host([size=sm]){--_stepper-size:var(--rh-length-2xl,32px)}[hidden]{display:none!important}#container{gap: var(--rh-space-2xl,32px)  calc(var(--rh-space-xs,4px) / 2);--_numeric-a-color: var(--rh-pagination-accent-color, var(--rh-color-interactive-primary-default));--_numeric-a-color-hover:var(--rh-color-interactive-primary-hover);--_numeric-a-color-focus: var(--rh-pagination-accent-color, var(--rh-color-interactive-primary-default));--_numeric-a-color-focus-outline: var(--rh-pagination-accent-color, var(--rh-color-interactive-primary-default));--_numeric-a-color-visited:var(--rh-color-interactive-primary-visited-default);--_numeric-a-color-visited-hover:var(--rh-color-interactive-primary-visited-hover);--_list-a-bg-color:light-dark( var(--rh-color-surface-lighter,#f2f2f2), oklch(from var(--rh-color-surface-dark,#383838) calc(l * .82) c h));--_list-a-current-page-border-color:var(--rh-color-border-subtle);--_list-a-current-page-bg-color:light-dark( var(--rh-color-surface-lightest,#fff), var(--rh-color-surface-darkest,#151515));--_list-a-text-color:var(--rh-color-text-primary);--_stepper-bg-color:light-dark( var(--rh-color-surface-lighter,#f2f2f2), oklch(from var(--rh-color-surface-dark,#383838) calc(l * .82) c h));--_stepper-hover-focus-color:var(--rh-color-text-primary-on-dark,#fff);--_border-top-hover-color:light-dark( var(--rh-color-gray-60,#4d4d4d), var(--rh-color-border-subtle-on-light,#c7c7c7));--rh-pagination-stepper-color:light-dark( var(--rh-color-gray-50,#707070), var(--rh-color-text-secondary-on-dark,#c7c7c7));--rh-color-icon-status-disabled:light-dark( var(--rh-color-gray-40,#a3a3a3), var(--rh-color-gray-60,#4d4d4d));--rh-pagination-background-focused:var(--rh-color-icon-status-disabled);flex-wrap:wrap;display:flex;container:pagination/inline-size}@container pagination (width>=768px){#container{flex-wrap:nowrap}}.visually-hidden{clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;block-size:1px;inline-size:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}@container pagination (width>=344px){.xxs-visually-hidden{clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;block-size:1px;inline-size:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}}@container pagination (width>=768px){.sm-visually-visible{clip:auto;white-space:normal;block-size:auto;inline-size:auto;margin:0;padding:0;position:static;overflow:visible}}nav{display:none}@container pagination (width>=768px){nav{display:contents}}svg{fill:currentColor}.stepper{background-color:var(--_stepper-bg-color);border: var(--rh-border-width-sm,1px) solid transparent;color: var(--rh-pagination-stepper-color, var(--rh-color-gray-50,#707070));font-family:var(--rh-font-family-heading,RedHatDisplay, "Red Hat Display", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-heading-xs,1.25rem);block-size:var(--_stepper-size);inline-size:var(--_stepper-size);place-content:center;text-decoration:none;display:grid;position:relative}.stepper:focus{border-radius:var(--rh-border-radius-default,3px);outline-offset:-2px;outline: var(--rh-border-width-md,2px) solid transparent;outline-color: var(--rh-pagination-accent-color, var(--rh-color-interactive-primary-default))}.stepper:hover:after,.stepper:focus:before,.stepper:focus:after{content:"";border-block-start-style:solid;inline-size:104%;position:absolute;inset-block-start:-1px;inset-inline-start:-1px}.stepper:hover:after,.stepper:focus:before{border-block-color:var(--_border-top-hover-color);border-block-width:var(--rh-border-width-lg,3px)}.stepper:focus:after{border-block-color: var(--rh-pagination-accent-color, var(--rh-color-border-interactive));border-block-width:var(--rh-border-width-md,2px)}.stepper svg{block-size:14px}:is(#next,#last) svg,:not(#next,#last) svg:dir(rtl){rotate:180deg}:is(#next,#last) svg:dir(rtl){rotate:none}.stepper[inert]{pointer-events:none;color:var(--rh-pagination-background-focused);background-color:var(--_stepper-bg-color)}@container pagination (width>=768px){#last{margin-inline-end:var(--rh-space-2xl,32px)}}input{block-size:var(--rh-length-2xl,32px);inline-size:var(--rh-length-4xl,64px);font-size:var(--rh-font-size-body-text-md,1rem);background:light-dark( var(--rh-color-surface-lightest,#fff), var(--rh-color-surface-darkest,#151515));border: var(--rh-border-width-sm,1px) solid  var(--rh-color-border-subtle);border-block-end-color:light-dark( var(--rh-color-gray-40,#a3a3a3), var(--rh-color-gray-60,#4d4d4d));box-sizing:border-box;padding-block:var(--rh-space-sm,6px);padding-inline:var(--rh-space-md,8px);color:var(--rh-color-text-primary)}input:focus{border: var(--rh-border-width-md,2px) solid  var(--rh-pagination-accent-color, var(--rh-color-interactive-primary-default));padding-block:calc(var(--rh-space-sm,6px) - 1px);padding-inline:calc(var(--rh-space-md,8px) - 1px);outline:none}input:invalid{border-block-end-color:light-dark( var(--rh-color-red-60,#a60000), var(--rh-color-red-40,#f56e6e))}input:invalid:focus{border-block-end-width:var(--rh-border-width-md,2px)}#numeric-middle{display:none}#numeric-end{inline-size:100%;display:block}#numeric{font-size:var(--rh-font-size-body-text-md,1rem);margin-block:0;margin-inline:0 var(--rh-space-lg,16px);min-block-size:var(--_stepper-size);flex:0;align-items:center;gap:.5em;inline-size:100%;display:flex}#numeric input{align-self:stretch;block-size:auto}#numeric a{text-decoration:underline dashed  var(--rh-border-width-sm,1px);text-decoration-color:light-dark( var(--rh-color-gray-50), var(--rh-color-gray-40));text-underline-offset:max(5px, .28em);color:var(--_numeric-a-color);transition-property:text-underline-offset,color,text-decoration-color;transition-duration:.3s;transition-timing-function:ease}#numeric a:hover{color:var(--_numeric-a-color-hover);text-decoration-color:inherit;text-underline-offset:max(6px, .33em)}#numeric a:visited{color:var(--_numeric-a-color-visited)}#numeric a:focus{border-radius:var(--rh-border-radius-default,3px);color:var(--_numeric-a-color-focus);outline: var(--rh-border-width-md,2px) solid transparent;outline-color:var(--_numeric-a-color-focus-outline);text-decoration-color:inherit;text-underline-offset:max(6px, .33em)}#numeric a:visited:hover{color:var(--_numeric-a-color-visited-hover)}@container pagination (width>=344px){#numeric-middle{display:contents}#numeric-end{display:none}#numeric{margin-inline-start:var(--rh-space-lg,16px)}}@container pagination (width>=768px){#numeric-middle{display:none}#numeric-end{display:contents}#numeric{margin-inline-start:0}}:host([variant|=open]) .stepper{--_stepper-bg-color:transparent}:host([variant|=open]) .stepper:hover:after,:host([variant|=open]) .stepper:focus:before,:host([variant|=open]) .stepper:focus:after{border-block-style:none solid;inset-block-end:-1px}</style><!--lit-part li2X5DfNRdU=-->
-      <!-- pagination container -->
+<rh-pagination><template shadowroot="open" shadowrootmode="open"><style>*,:before,:after{box-sizing:border-box}:host{--_stepper-size:var(--rh-length-3xl,48px);min-block-size:4em;display:block}:host([size=sm]){--_stepper-size:var(--rh-length-2xl,32px)}.visually-hidden{clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;block-size:1px;inline-size:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}[hidden]{display:none!important}#container{--_numeric-a-color: var(--rh-pagination-accent-color, var(--rh-color-interactive-primary-default));--_numeric-a-color-hover:var(--rh-color-interactive-primary-hover);--_numeric-a-color-focus: var(--rh-pagination-accent-color, var(--rh-color-interactive-primary-default));--_numeric-a-color-focus-outline: var(--rh-pagination-accent-color, var(--rh-color-interactive-primary-default));--_numeric-a-color-visited:var(--rh-color-interactive-primary-visited-default);--_numeric-a-color-visited-hover:var(--rh-color-interactive-primary-visited-hover);--_list-a-bg-color:light-dark( var(--rh-color-surface-lighter,#f2f2f2), oklch(from var(--rh-color-surface-dark,#383838) calc(l * .82) c h));--_list-a-current-page-border-color:var(--rh-color-border-subtle);--_list-a-current-page-bg-color:light-dark( var(--rh-color-surface-lightest,#fff), var(--rh-color-surface-darkest,#151515));--_list-a-text-color:var(--rh-color-text-primary);--_stepper-bg-color:light-dark( var(--rh-color-surface-lighter,#f2f2f2), oklch(from var(--rh-color-surface-dark,#383838) calc(l * .82) c h));--_stepper-hover-focus-color:var(--rh-color-text-primary-on-dark,#fff);--_border-top-hover-color:light-dark( var(--rh-color-gray-60,#4d4d4d), var(--rh-color-border-subtle-on-light,#c7c7c7));--rh-pagination-stepper-color:light-dark( var(--rh-color-gray-50,#707070), var(--rh-color-text-secondary-on-dark,#c7c7c7));--rh-color-icon-status-disabled:light-dark( var(--rh-color-gray-40,#a3a3a3), var(--rh-color-gray-60,#4d4d4d));--rh-pagination-background-focused:var(--rh-color-icon-status-disabled);gap:var(--rh-space-xl,24px) calc(var(--rh-space-xs,4px) / 2);flex-wrap:wrap;display:flex;container:pagination/inline-size}@container pagination (width>=344px){#container{row-gap:var(--rh-space-2xl,32px)}}@container pagination (width>=768px){#container{flex-wrap:nowrap}}nav{display:none}@container pagination (width>=768px){nav{display:contents}}svg{fill:currentColor}.stepper{background-color:var(--_stepper-bg-color);border: var(--rh-border-width-sm,1px) solid transparent;color: var(--rh-pagination-stepper-color, var(--rh-color-gray-50,#707070));font-family:var(--rh-font-family-heading,RedHatDisplay, "Red Hat Display", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-heading-xs,1.25rem);block-size:var(--_stepper-size);inline-size:var(--_stepper-size);place-content:center;text-decoration:none;display:grid;position:relative}.stepper:focus{border-radius:var(--rh-border-radius-default,3px);outline-offset:-2px;outline:var(--rh-border-width-md,2px) solid transparent;outline-color: var(--rh-pagination-accent-color, var(--rh-color-interactive-primary-default))}.stepper:hover:after,.stepper:focus:before,.stepper:focus:after{content:"";border-block-start-style:solid;inline-size:104%;position:absolute;inset-block-start:-1px;inset-inline-start:-1px}.stepper:hover:after,.stepper:focus:before{border-block-color:var(--_border-top-hover-color);border-block-width:var(--rh-border-width-lg,3px)}.stepper:focus:after{border-block-color: var(--rh-pagination-accent-color, var(--rh-color-border-interactive));border-block-width:var(--rh-border-width-md,2px)}.stepper svg{block-size:14px}.stepper[inert]{pointer-events:none;color:var(--rh-pagination-background-focused);background-color:var(--_stepper-bg-color)}:is(#next,#last) svg,:not(#next,#last) svg:dir(rtl){rotate:180deg}:is(#next,#last) svg:dir(rtl){rotate:none}@container pagination (width>=768px){#last{margin-inline-end:var(--rh-space-2xl,32px)}}input{block-size:100%;inline-size:var(--rh-length-4xl,64px);font-size:var(--rh-font-size-body-text-md,1rem);background:light-dark( var(--rh-color-surface-lightest,#fff), var(--rh-color-surface-darkest,#151515));border: var(--rh-border-width-sm,1px) solid  var(--rh-color-border-subtle);border-block-end-color:light-dark( var(--rh-color-gray-40,#a3a3a3), var(--rh-color-gray-60,#4d4d4d));box-sizing:border-box;padding-block:var(--rh-space-sm,6px);padding-inline:var(--rh-space-md,8px);color:var(--rh-color-text-primary)}input:focus{border: var(--rh-border-width-md,2px) solid  var(--rh-pagination-accent-color, var(--rh-color-interactive-primary-default));padding-block:calc(var(--rh-space-sm,6px) - 1px);padding-inline:calc(var(--rh-space-md,8px) - 1px);outline:none}input:invalid{border-block-end-color:light-dark(var(--rh-color-red-60,#a60000),var(--rh-color-red-40,#f56e6e))}input:invalid:focus{border-block-end-width:var(--rh-border-width-md,2px)}#numeric{font-size:var(--rh-font-size-body-text-md,1rem);margin-block:0;margin-inline:0 var(--rh-space-lg,16px);min-block-size:var(--_stepper-size);flex:0;align-items:center;gap:.5em;inline-size:100%;display:flex}#numeric form,#numeric label,#numeric input{min-block-size:var(--_stepper-size);place-content:center;place-items:center}#numeric form{gap:var(--rh-space-md);flex-direction:row;display:flex}#numeric a{text-decoration:underline dashed var(--rh-border-width-sm,1px);text-decoration-color:light-dark( var(--rh-color-gray-50), var(--rh-color-gray-40));text-underline-offset:max(5px, .28em);color:var(--_numeric-a-color);transition-property:text-underline-offset,color,text-decoration-color;transition-duration:.3s;transition-timing-function:ease}#numeric a:hover{color:var(--_numeric-a-color-hover);text-decoration-color:inherit;text-underline-offset:max(6px, .33em)}#numeric a:focus{border-radius:var(--rh-border-radius-default,3px);color:var(--_numeric-a-color-focus);outline:var(--rh-border-width-md,2px) solid transparent;outline-color:var(--_numeric-a-color-focus-outline);text-decoration-color:inherit;text-underline-offset:max(6px, .33em)}#numeric a:visited{color:var(--_numeric-a-color-visited)}#numeric a:visited:hover{color:var(--_numeric-a-color-visited-hover)}@container pagination (width>=344px){.go-to-page-text{clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;block-size:1px;inline-size:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}}@container pagination (width>=768px){.go-to-page-text{clip:auto;white-space:normal;block-size:auto;inline-size:auto;margin:0;padding:0;position:static;overflow:visible}}@container pagination (width>=768px){#numeric{margin-inline-start:0}}:host(:is([variant|=borderless],[variant|=open])) .stepper{--_stepper-bg-color:transparent}:host(:is([variant|=borderless],[variant|=open])) .stepper:hover:after,:host(:is([variant|=borderless],[variant|=open])) .stepper:focus:before,:host(:is([variant|=borderless],[variant|=open])) .stepper:focus:after{border-block-style:none solid;inset-block-end:-1px}</style><!--lit-part lYvMOpha+hU=-->
+      <!-- The outer flex container wrapping stepper buttons, nav, and numeric input -->
       <div id="container" part="container">
         <!--lit-node 2--><a id="first"
            class="stepper"
            
-           
+           inert
            aria-label="first page"><!--lit-part iivazNdYiZQ=-->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.44 14">
     <path d="M8.7 6.26 14.66.3a1.05 1.05 0 0 1 1.49 0l.98.99c.42.4.42 1.07 0 1.48L12.92 7l4.2 4.22c.42.4.42 1.07 0 1.48l-.98 1c-.41.4-1.08.4-1.48 0L8.7 7.73a1.05 1.05 0 0 1 0-1.48zM.3 7.74l5.96 5.95c.4.41 1.07.41 1.48 0l.99-.99c.4-.4.4-1.07 0-1.48L4.52 7l4.21-4.22c.41-.4.41-1.07 0-1.48l-.99-1a1.05 1.05 0 0 0-1.48 0L.31 6.27a1.05 1.05 0 0 0 0 1.48z"/>
@@ -98,7 +98,7 @@
         <!--lit-node 4--><a id="prev"
            class="stepper"
            
-           
+           inert
            aria-label="previous page"><!--lit-part G7qReIJofLQ=-->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 14">
     <path d="M.3 6.26 6.24.3C6.63-.1 7.3-.1 7.7.3l.99.99c.4.4.4 1.07 0 1.48L4.49 7l4.2 4.22c.41.4.41 1.07 0 1.48l-.98 1c-.41.4-1.07.4-1.48 0L.31 7.73a1.05 1.05 0 0 1 0-1.48Z"/>
@@ -116,102 +116,57 @@
                  multiple paginations exist on a page. -->
           <slot></slot>
         </nav>
-        <!-- container for the numeric control at medium screen widths -->
-        <div id="numeric-middle" part="numeric-middle">
-          <!--lit-part XlZt74IrQjs=-->
-      <!-- shared container for the numeric controls at all widths -->
-      <div id="numeric" part="numeric">
-        <span id="go-to-page" class="xxs-visually-hidden sm-visually-visible">
-          <!-- summary: Page input label
-               description: |
-                 Expects short inline text labeling the page number input.
-                 Defaults to "Page". Should be localized for non-English
-                 contexts. Visually hidden at narrow widths but always
-                 exposed to screen readers via `aria-labelledby`. -->
-          <slot name="go-to-page">
-            Page
-          </slot>
-        </span>
-        <!--lit-node 5--><input type="number"
-               inputmode="numeric" 
-               required
-               min=1
-               max="0"
-               aria-labelledby="go-to-page"
-               
-               
-               value="1">
-        <!-- summary: Preposition between page input and total
-             description: |
-               Expects short inline text (1–3 characters) displayed between
-               the current page input and the total page count (e.g.,
-               "Page 3 of 10"). Defaults to "of". Should be localized for
-               non-English contexts. Screen readers announce this text
-               between the input and total, so it must be semantically
-               clear. -->
-        <!--lit-node 7--><slot hidden name="out-of">of</slot>
-        <!--lit-node 8--><a hidden ><!--lit-part-->0<!--/lit-part--></a>
-      </div>
-    <!--/lit-part-->
-        </div>
-        <!--lit-node 12--><a id="next"
+        <!--lit-node 9--><a id="next"
            class="stepper"
            
-           
+           inert
            aria-label="next page"><!--lit-part G7qReIJofLQ=-->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 14">
     <path d="M.3 6.26 6.24.3C6.63-.1 7.3-.1 7.7.3l.99.99c.4.4.4 1.07 0 1.48L4.49 7l4.2 4.22c.41.4.41 1.07 0 1.48l-.98 1c-.41.4-1.07.4-1.48 0L.31 7.73a1.05 1.05 0 0 1 0-1.48Z"/>
   </svg><!--/lit-part--></a>
-        <!--lit-node 14--><a id="last"
+        <!--lit-node 11--><a id="last"
            class="stepper"
            
-           
+           inert
            aria-label="last page"><!--lit-part iivazNdYiZQ=-->
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.44 14">
     <path d="M8.7 6.26 14.66.3a1.05 1.05 0 0 1 1.49 0l.98.99c.42.4.42 1.07 0 1.48L12.92 7l4.2 4.22c.42.4.42 1.07 0 1.48l-.98 1c-.41.4-1.08.4-1.48 0L8.7 7.73a1.05 1.05 0 0 1 0-1.48zM.3 7.74l5.96 5.95c.4.41 1.07.41 1.48 0l.99-.99c.4-.4.4-1.07 0-1.48L4.52 7l4.21-4.22c.41-.4.41-1.07 0-1.48l-.99-1a1.05 1.05 0 0 0-1.48 0L.31 6.27a1.05 1.05 0 0 0 0 1.48z"/>
   </svg><!--/lit-part--></a>
-        <!-- container for the numeric control at small and large screen widths -->
-        <div id="numeric-end" part="numeric-end">
-          <!--lit-part XlZt74IrQjs=-->
-      <!-- shared container for the numeric controls at all widths -->
-      <div id="numeric" part="numeric">
-        <span id="go-to-page" class="xxs-visually-hidden sm-visually-visible">
-          <!-- summary: Page input label
-               description: |
-                 Expects short inline text labeling the page number input.
-                 Defaults to "Page". Should be localized for non-English
-                 contexts. Visually hidden at narrow widths but always
-                 exposed to screen readers via `aria-labelledby`. -->
-          <slot name="go-to-page">
-            Page
-          </slot>
-        </span>
-        <!--lit-node 5--><input type="number"
-               inputmode="numeric" 
-               required
-               min=1
-               max="0"
-               aria-labelledby="go-to-page"
-               
-               
-               value="1">
-        <!-- summary: Preposition between page input and total
+        <!-- The container for the page input, separator text, and total page link -->
+        <div id="numeric" part="numeric">
+          <!--lit-node 15--><form >
+            <label for="page" class="go-to-page-text">
+              <!-- summary: page input label text (go-to-page slot)
+                   description: |
+                     Label text preceding the page number input field. Defaults to
+                     "Page". Customize for internationalization. Visually hidden at
+                     very small widths but always accessible to screen readers via
+                     `aria-labelledby`. -->
+              <slot name="go-to-page">
+                Page
+              </slot>
+            </label>
+            <!--lit-node 19--><input id="page"
+                   type="number"
+                   enterkeyhint="go"
+                   required
+                   name="page"
+                   min=1
+                   max="0"
+                   
+                   value="1">
+          </form>
+        <!-- summary: preposition text between page input and total (default: "of")
              description: |
-               Expects short inline text (1–3 characters) displayed between
-               the current page input and the total page count (e.g.,
-               "Page 3 of 10"). Defaults to "of". Should be localized for
-               non-English contexts. Screen readers announce this text
-               between the input and total, so it must be semantically
-               clear. -->
-        <!--lit-node 7--><slot hidden name="out-of">of</slot>
-        <!--lit-node 8--><a hidden ><!--lit-part-->0<!--/lit-part--></a>
-      </div>
-    <!--/lit-part-->
+               Contains the text displayed between the current page input field and the total page count.
+               Defaults to "of" but can be customized for internationalization or alternate phrasing. -->
+          <!--lit-node 21--><slot hidden name="out-of">of</slot>
+          <!--lit-node 22--><a hidden ><!--lit-part-->0<!--/lit-part--></a>
         </div>
       </div>
     <!--/lit-part--></template>
   <ol>
-    <li><a href="?page=1">1</a></li>
+    <li><a href="./">1</a></li>
     <li><a href="?page=2">2</a></li>
     <li><a href="?page=3">3</a></li>
     <li><a href="?page=4">4</a></li>

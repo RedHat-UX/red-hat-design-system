@@ -245,7 +245,7 @@ _PfTooltip_updateTrigger = function _PfTooltip_updateTrigger() {
     }
 };
 PfTooltip.styles = [styles];
-PfTooltip.version = "4.3.0";
+PfTooltip.version = "4.3.1";
 __decorate([
     property()
 ], PfTooltip.prototype, "position", void 0);

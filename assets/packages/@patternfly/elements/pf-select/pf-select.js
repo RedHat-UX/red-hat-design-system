@@ -713,10 +713,15 @@ let PfSelect = class PfSelect extends LitElement {
         this.value = selected.map(x => x.value).join();
         await this.updateComplete;
         switch (this.variant) {
-            case 'single':
+            case 'single': {
+                // Only focus toggle when closing after user selection; avoid stealing focus on init.
+                const wasExpanded = this.expanded;
                 this.hide();
-                this._toggleButton?.focus();
+                if (wasExpanded) {
+                    this._toggleButton?.focus();
+                }
                 break;
+            }
             case 'typeahead':
                 this._toggleInput.value = this.value;
         }
@@ -838,7 +843,7 @@ PfSelect.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
-PfSelect.version = "4.3.0";
+PfSelect.version = "4.3.1";
 __decorate([
     property()
 ], PfSelect.prototype, "variant", void 0);

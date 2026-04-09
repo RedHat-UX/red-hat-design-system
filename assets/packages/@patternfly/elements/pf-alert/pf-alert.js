@@ -365,7 +365,7 @@ _PfAlert_onToggleClick = function _PfAlert_onToggleClick() {
     this.expanded = !this.expanded;
 };
 PfAlert.styles = [styles];
-PfAlert.version = "4.3.0";
+PfAlert.version = "4.3.1";
 __decorate([
     property({ type: Number })
 ], PfAlert.prototype, "timeout", void 0);

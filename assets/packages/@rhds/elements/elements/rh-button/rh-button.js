@@ -14,8 +14,8 @@ const styles = css `:host{display:inline-block;height:max-content}[hidden]{displ
  * Triggers actions via click, Enter, or Space. USE `variant` to set
  * hierarchy: primary (should limit one per page), secondary, tertiary,
  * or danger. Renders a native `<button>` with `delegatesFocus` for
- * keyboard access. Must use `label` for icon-only buttons to set the
- * ARIA accessible name. Supports form association (submit/reset).
+ * keyboard access. Icon-only buttons must set `accessible-label` to
+ * provide an ARIA accessible name. Supports form association (submit/reset).
  *
  * @summary Clickable button that triggers page or form actions
  *
@@ -34,8 +34,8 @@ let RhButton = class RhButton extends LitElement {
         this.disabled = false;
         /**
          * Controls the visual hierarchy and style of the button. Accepts
-         * ‘primary’ | ‘secondary’ | ‘tertiary’ | ‘close’ | ‘play’. Defaults to
-         * ‘primary’. Should limit primary to one per page. USE secondary for
+         * 'primary' | 'secondary' | 'tertiary' | 'close' | 'play'. Defaults to
+         * 'primary'. Should limit primary to one per page. USE secondary for
          * general actions, tertiary for low-emphasis actions. Close and play
          * variants render icon-only circular buttons with visually hidden text.
          */
@@ -62,7 +62,7 @@ let RhButton = class RhButton extends LitElement {
            description: |
              Native button element that receives focus via delegatesFocus.
              Screen readers announce this as a button with the label or slotted text. -->
-      <button aria-label="${ifDefined(this.label)}"
+      <button aria-label="${ifDefined(this.accessibleLabel || this.label)}"
               class="${classMap({
             danger,
             hasIcon,
@@ -83,7 +83,7 @@ let RhButton = class RhButton extends LitElement {
                 part="icon"
                 name="icon">${__classPrivateFieldGet(this, _RhButton_instances, "m", _RhButton_renderIcon).call(this)}</slot>
         </span>
-        <span aria-hidden=${String(!!this.label)}><!-- summary: button text label
+        <span aria-hidden=${String(!!this.accessibleLabel || !!this.label)}><!-- summary: button text label
                description: |
                  Expects inline text providing a concise, action-oriented label
                  (e.g. "Submit", "Delete"). Hidden from screen readers via
@@ -159,6 +159,9 @@ __decorate([
 __decorate([
     property({ reflect: true })
 ], RhButton.prototype, "type", void 0);
+__decorate([
+    property({ attribute: 'accessible-label' })
+], RhButton.prototype, "accessibleLabel", void 0);
 __decorate([
     property()
 ], RhButton.prototype, "label", void 0);
