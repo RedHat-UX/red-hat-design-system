@@ -53,7 +53,11 @@ export class RhButton extends LitElement {
   @property({ reflect: true }) type?: 'button' | 'submit' | 'reset';
 
   /**
-   * Accessible name for the button, use when the button does not have slotted text.
+   * Accessible name for the button, applied as `aria-label` on the internal
+   * `<button>`. USE when the button has no visible text (e.g. icon-only
+   * buttons like close or play). When set, slotted text is hidden with
+   * `aria-hidden="true"`. Preferred over the deprecated `label` attribute.
+   * Defaults to undefined.
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
 

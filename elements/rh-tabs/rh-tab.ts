@@ -86,10 +86,17 @@ export class RhTab extends LitElement {
    */
   @property({ reflect: true, type: Boolean }) disabled = false;
 
-  /** Icon name to display in the tab */
+  /**
+   * Icon name from the specified icon set to display before the tab label.
+   * When set, an `rh-icon` element renders in the icon slot as a
+   * decorative visual. Icons complement the text label but should not
+   * replace it.
+   */
   @property({ reflect: true }) icon?: IconNameFor<IconSetName>;
 
-  /** Icon set used for displaying the icon */
+  /**
+   * The icon set from which to select the icon. Defaults to `ui`.
+   */
   @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'ui';
 
   @consume({ context: rhTabsBoxContext, subscribe: true })
