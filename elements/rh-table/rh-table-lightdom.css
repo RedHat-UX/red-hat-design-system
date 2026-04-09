@@ -113,7 +113,7 @@ rh-table {
           }
 
           &:hover {
-            background: var(---_column-background-hover-color);
+            background: var(--_column-background-hover-color);
           }
 
           & > * {

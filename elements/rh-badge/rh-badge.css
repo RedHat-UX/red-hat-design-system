@@ -6,41 +6,74 @@ slot {
   white-space: nowrap;
   text-align: center;
   aspect-ratio: var(--_aspect-ratio);
+
+  /** Badge pill border radius */
   border-radius: var(--rh-border-radius-pill, 64px);
+
+  /** Minimum badge width */
   min-width: var(--_badge-size, var(--rh-length-lg, 16px));
+
+  /** Badge text font size */
   font-size: var(--rh-font-size-body-text-xs, 0.75rem);
   font-weight: 700;
+
+  /** Badge line height */
   line-height: var(--rh-line-height-body-text, 1.5);
+
+  /** Badge inline padding */
   padding-inline: var(--_badge-padding, var(--rh-space-md, 8px));
   color:
-    light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
-      var(--rh-color-text-primary-on-light, #151515));
+    light-dark(
+        /** Primary text on dark / saturated surfaces */
+        var(--rh-color-text-primary-on-dark, #ffffff),
+        /** Primary text on light surfaces */
+        var(--rh-color-text-primary-on-light, #151515));
 
-  &.neutral { background-color: var(--rh-color-status-neutral); }
+  &.neutral {
+    /** Neutral status background */
+    background-color: var(--rh-color-status-neutral);
+  }
 
-  &.info { background-color: var(--rh-color-status-info); }
+  &.info {
+    /** Info status background */
+    background-color: var(--rh-color-status-info);
+  }
 
-  &.success { background-color: var(--rh-color-status-success); }
+  &.success {
+    /** Success status background */
+    background-color: var(--rh-color-status-success);
+  }
 
   &.caution {
+    /** Caution status background */
     background-color: var(--rh-color-status-caution);
-    color: var(--rh-color-text-primary-on-light, #151515); /** maintain color contrast */
+
+    /** Caution text color */
+    color: var(--rh-color-text-primary-on-light, #151515);
   }
 
   &.warning {
+    /** Warning status background */
     background-color: var(--rh-color-status-warning);
-    color: var(--rh-color-text-primary-on-light, #151515); /** maintain color contrast */
+
+    /** Warning text color */
+    color: var(--rh-color-text-primary-on-light, #151515);
   }
 
-  &.danger { background-color: var(--rh-color-status-danger); }
+  &.danger {
+    /** Danger status background */
+    background-color: var(--rh-color-status-danger);
+  }
 }
 
+/** Hide empty label span */
 span:empty {
   display: none;
 }
 
 slot { display: inline-flex; }
 
+/** Numeric badge: show counter span only */
 :host([number]) {
   slot { display: none; }
   span { display: inline-flex; }
