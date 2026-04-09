@@ -1,10 +1,10 @@
 <meta itemprop="description" content="Navigation with data-analytics attributes for click and interaction tracking integration.">
 <rh-navigation-primary role="navigation"
-                      sub-domain
+                      site-name="Customer Portal"
+                      site-href="#customer-portal"
                       logo-href="#hat-link"
                       data-analytics-linktype="href"
-                      data-analytics-text="Red Hat Homepage">
-  <a href="#customer-portal" slot="sub-domain">Custo<wbr>mer Portal</a>
+                      data-analytics-text="Red Hat">
   <rh-navigation-primary-item variant="dropdown">
     <span slot="summary">AI</span>
     <h2>AI Content</h2>
@@ -466,19 +466,25 @@
   import 'https://ga.jspm.io/npm:@power-elements/json-viewer@2.1.1/json-viewer.js';
 
   document.addEventListener('click', function (event) {
-    const data = event
-      .composedPath()
-      .reduceRight((acc, node) => {
-        if (node instanceof HTMLElement) {
-          for (const [datakey, value] of Object.entries(node.dataset)) {
-            if (datakey.startsWith('analytics')) {
-              const key = datakey.replace(/^analytics(.)/, (_, m) => m.toLowerCase());
-              acc[key] = `${acc[key] ?? ''}|${value}`.replace(/^\|/, '');
-            }
+    const path = event.composedPath();
+    const anchor = path.find(n => n instanceof HTMLAnchorElement);
+    const data = path.reduceRight((acc, node) => {
+      if (node instanceof HTMLElement) {
+        for (const [datakey, value] of Object.entries(node.dataset)) {
+          if (datakey.startsWith('analytics')) {
+            const key = datakey.replace(/^analytics(.)/, (_, m) => m.toLowerCase());
+            acc[key] = `${acc[key] ?? ''}|${value}`.replace(/^\|/, '');
           }
         }
-        return acc;
-      }, {});
+      }
+      return acc;
+    }, {});
+    if (anchor) {
+      data.href = anchor.href;
+      data.text = data.text
+        ? `${data.text}|${anchor.textContent.trim()}`
+        : anchor.textContent.trim();
+    }
     if (data.linktype === 'href') {
       document
         .querySelector('json-viewer')

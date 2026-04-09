@@ -1,10 +1,10 @@
-import { LitElement, html, isServer } from 'lit';
+import { LitElement, html, nothing, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { state } from 'lit/decorators/state.js';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
-
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { provide } from '@lit/context';
 import { context } from './context.js';
@@ -135,14 +135,20 @@ export class RhNavigationPrimary extends LitElement {
   @property({ attribute: 'accessible-label' }) accessibleLabel = 'Main navigation';
 
   /**
-   * Enables the sub-domain variation, which displays the `sub-domain` slot
-   * alongside the logo lockup. A logo lockup is a fixed, approved arrangement
-   * of a brand’s visual elements—typically the logomark (symbol), logotype (name),
-   * and sometimes a tagline—combined into a single, cohesive unit. must be set to
-   * `true` when slotting content into the `sub-domain` slot otherwise content will
-   * remain hidden. Defaults to `false`.
+   * Sets the visible sub-domain title displayed beside the Red Hat logo
+   * lockup. Both `site-name` and `site-href` must be set to enable the
+   * sub-domain variation; when either is missing the sub-domain area is
+   * hidden. Defaults to `undefined`.
    */
-  @property({ type: Boolean, reflect: true, attribute: 'sub-domain' }) subDomain = false;
+  @property({ reflect: true, attribute: 'site-name' }) siteName?: string;
+
+  /**
+   * Sets the URL for the sub-domain title link. Both `site-href` and
+   * `site-name` must be set to enable the sub-domain variation; when
+   * either is missing the sub-domain area is hidden. Defaults to
+   * `undefined`.
+   */
+  @property({ reflect: true, attribute: 'site-href' }) siteHref?: string;
 
   /**
    * Sets the `href` for the default logo link. Avoid changing this value
@@ -218,10 +224,11 @@ export class RhNavigationPrimary extends LitElement {
 
   render() {
     const { compact } = this;
+    const subdomain = !!(this.siteName && this.siteHref);
     const classes = {
       compact,
       dehydrated: !this.#hydrated,
-      subdomain: this.subDomain,
+      subdomain: subdomain,
     };
 
     const hasSlottedDefault = this.#slots.hasSlotted();
@@ -255,11 +262,9 @@ export class RhNavigationPrimary extends LitElement {
               </slot>
             </div>
             <div id="sub-domain">
-              <!--
-                Accepts inline content such as a link or text label for sub-site
-                branding alongside the logo lockup.
-              -->
-              <slot name="sub-domain"></slot>
+              ${subdomain ?
+                html`<a href="${ifDefined(this.siteHref)}">${this.siteName}</a>`
+                : nothing}
             </div>
           </div>
           <details id="hamburger" ?open="${this._hamburgerOpen}" @toggle="${this.#hamburgerToggle}" @focusout="${this.#onHamburgerFocusOut}" class="${classMap({ 'hidden': !hasSlottedDefault })}">

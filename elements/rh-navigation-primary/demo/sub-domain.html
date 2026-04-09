@@ -1,8 +1,8 @@
 <meta itemprop="description" content="Sub-domain variant with a branded label and link alongside the logo lockup.">
 <rh-navigation-primary role="navigation"
-                      sub-domain
+                      site-name="Customer Portal"
+                      site-href="#customer-portal"
                       logo-href="#hat-link">
-  <a href="#customer-portal" slot="sub-domain">Customer Portal</a>
   <rh-navigation-primary-item variant="dropdown">
     <span slot="summary">AI</span>
     <h2>AI Content</h2>
@@ -459,13 +459,12 @@
   import '@rhds/elements/rh-avatar/rh-avatar.js';
   import '@rhds/elements/rh-button/rh-button.js';
 
-  // when the form value changes update rh-navigation-primary > [slot="sub-domain"] with the value
   document
     .querySelector('form:has([name="subdomain"])')
     .addEventListener('change', function (event) {
-      const subDomainLink = document.querySelector('rh-navigation-primary > [slot="sub-domain"]');
-      if (subDomainLink) {
-        subDomainLink.textContent = event.target.value;
+      const nav = document.querySelector('rh-navigation-primary');
+      if (nav) {
+        nav.setAttribute('site-name', event.target.value);
       }
     });
 </script>

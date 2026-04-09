@@ -662,10 +662,10 @@
         }
       }
 
-      & ::slotted(a) {
+      & a {
         text-decoration: none;
 
-        /** Subdomain slotted link text color */
+        /** Subdomain link text color */
         color: var(--rh-color-text-primary) !important;
         block-size: 100%;
         place-content: center;
