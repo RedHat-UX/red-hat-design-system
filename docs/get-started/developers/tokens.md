@@ -319,7 +319,7 @@ return {
 [asimonimdocs]: https://bennypowers.dev/asimonim/
 [asimonim-lsp]: https://bennypowers.dev/asimonim/docs/lsp/
 [asimonim-mcp]: https://bennypowers.dev/asimonim/docs/reference/commands/mcp/
-[claudecode]: https://claude.ai/claude-code
+[claudecode]: https://claude.com/product/claude-code
 [cursor]: https://cursor.com
 [cursormcp]: https://docs.cursor.com/mcp
 [vscodeext-dt]: https://marketplace.visualstudio.com/items?itemName=pwrs.design-tokens-language-server-vscode
