@@ -12,7 +12,7 @@
   min-block-size: 4em;
 }
 
-:host([size="sm"]) {
+:host([size='sm']) {
   /** Stepper button size at small size */
   --_stepper-size: var(--rh-length-2xl, 32px);
 }
@@ -34,64 +34,68 @@
 }
 
 #container {
-  --_numeric-a-color:  /** Page link color override */ var(
-    --rh-pagination-accent-color,
-    /** Page link color */ var(--rh-color-interactive-primary-default)
-  );
+  --_numeric-a-color:  /** Page link color override */
+    var(
+        --rh-pagination-accent-color,
+        /** Page link color */
+        var(--rh-color-interactive-primary-default)
+      );
   --_numeric-a-color-hover: var(--rh-color-interactive-primary-hover);
   --_numeric-a-color-focus:
-    /** Page link focus color override */ var(
-    --rh-pagination-accent-color,
-    /** Page link focus color */ var(--rh-color-interactive-primary-default)
-  );
+    /** Page link focus color override */
+    var(
+        --rh-pagination-accent-color,
+        /** Page link focus color */
+        var(--rh-color-interactive-primary-default)
+      );
   --_numeric-a-color-focus-outline:
-    /** Page link focus outline color override */ var(
-    --rh-pagination-accent-color,
-    /** Page link focus outline color */
-      var(--rh-color-interactive-primary-default)
-  );
+    /** Page link focus outline color override */
+    var(
+        --rh-pagination-accent-color,
+        /** Page link focus outline color */
+        var(--rh-color-interactive-primary-default)
+      );
 
   /** Page link visited color */
-  --_numeric-a-color-visited: var(
-    --rh-color-interactive-primary-visited-default
-  );
+  --_numeric-a-color-visited: var(--rh-color-interactive-primary-visited-default);
 
   /** Page link visited hover color */
-  --_numeric-a-color-visited-hover: var(
-    --rh-color-interactive-primary-visited-hover
-  );
-  --_list-a-bg-color: light-dark(
-    /** Page link background in light mode */
-      var(--rh-color-surface-lighter, #f2f2f2),
-    /** Page link background in dark mode */
-      oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h)
-  );
+  --_numeric-a-color-visited-hover: var(--rh-color-interactive-primary-visited-hover);
+  --_list-a-bg-color:
+    light-dark(
+        /** Page link background in light mode */
+        var(--rh-color-surface-lighter, #f2f2f2),
+        /** Page link background in dark mode */
+        oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h)
+      );
 
   /** Current page border color */
   --_list-a-current-page-border-color: var(--rh-color-border-subtle);
-  --_list-a-current-page-bg-color: light-dark(
-    /** Current page background in light mode */
-      var(--rh-color-surface-lightest, #ffffff),
-    /** Current page background in dark mode */
-      var(--rh-color-surface-darkest, #151515)
-  );
+  --_list-a-current-page-bg-color:
+    light-dark(
+        /** Current page background in light mode */
+        var(--rh-color-surface-lightest, #ffffff),
+        /** Current page background in dark mode */
+        var(--rh-color-surface-darkest, #151515)
+      );
 
   /** Page link text color */
   --_list-a-text-color: var(--rh-color-text-primary);
-  --_stepper-bg-color: light-dark(
-    /** Stepper background in light mode */
-      var(--rh-color-surface-lighter, #f2f2f2),
-    /** Stepper background in dark mode */
-      oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h)
-  );
+  --_stepper-bg-color:
+    light-dark(
+        /** Stepper background in light mode */
+        var(--rh-color-surface-lighter, #f2f2f2),
+        /** Stepper background in dark mode */
+        oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h)
+      );
 
   /** Stepper hover/focus icon color */
   --_stepper-hover-focus-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  --_border-top-hover-color: light-dark(
-    /** Stepper hover border in light mode */ var(--rh-color-gray-60, #4d4d4d),
-    /** Stepper hover border in dark mode */
-      var(--rh-color-border-subtle-on-light, #c7c7c7)
-  );
+  --_border-top-hover-color:
+    light-dark(
+        /** Stepper hover border in light mode */ var(--rh-color-gray-60, #4d4d4d),
+        /** Stepper hover border in dark mode */ var(--rh-color-border-subtle-on-light, #c7c7c7)
+      );
 
   /**
    * --rh-pagination-stepper-color
@@ -105,20 +109,21 @@
    * - Adjust only when specific brand or contrast requirements exist
    * - Ensure icons remain visible against button background
    */
-  --rh-pagination-stepper-color: light-dark(
-    /** Stepper icon color in light mode */ var(--rh-color-gray-50, #707070),
-    /** Stepper icon color in dark mode */
-      var(--rh-color-text-secondary-on-dark, #c7c7c7)
-  );
+  --rh-pagination-stepper-color:
+    light-dark(
+        /** Stepper icon color in light mode */ var(--rh-color-gray-50, #707070),
+        /** Stepper icon color in dark mode */ var(--rh-color-text-secondary-on-dark, #c7c7c7)
+      );
 
   /**
    * Remove this re-declaration when the status-disabled variable is defined in tokens
    * and deprecate `--rh-pagination-background-focused`.
    */
-  --rh-color-icon-status-disabled: light-dark(
-    /** Disabled icon color in light mode */ var(--rh-color-gray-40, #a3a3a3),
-    /** Disabled icon color in dark mode */ var(--rh-color-gray-60, #4d4d4d)
-  );
+  --rh-color-icon-status-disabled:
+    light-dark(
+        /** Disabled icon color in light mode */ var(--rh-color-gray-40, #a3a3a3),
+        /** Disabled icon color in dark mode */ var(--rh-color-gray-60, #4d4d4d)
+      );
 
   /**
    * --rh-pagination-background-focused
@@ -168,21 +173,16 @@ svg {
     /** Stepper border width */ var(--rh-border-width-sm, 1px) solid
     transparent;
   color:
-    /** Stepper icon color override */ var(
-    --rh-pagination-stepper-color,
-    /** Stepper icon color */ var(--rh-color-gray-50, #707070)
-  );
+    /** Stepper icon color override */
+    var(
+        --rh-pagination-stepper-color,
+        /** Stepper icon color */
+        var(--rh-color-gray-50, #707070)
+      );
   display: grid;
 
   /** Stepper typeface */
-  font-family: var(
-    --rh-font-family-heading,
-    RedHatDisplay,
-    "Red Hat Display",
-    Helvetica,
-    Arial,
-    sans-serif
-  );
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
 
   /** Stepper text size */
   font-size: var(--rh-font-size-heading-xs, 1.25rem);
@@ -199,20 +199,20 @@ svg {
 
     /** Pagination focus outline */
     outline: var(--rh-border-width-md, 2px) solid transparent;
-
     outline-color:
-    /** Sets the accent color for focus outlines */ var(
-      --rh-pagination-accent-color,
-      /** Stepper focus outline color */
-        var(--rh-color-interactive-primary-default)
-    );
+      /** Sets the accent color for focus outlines */
+      var(
+          --rh-pagination-accent-color,
+          /** Stepper focus outline color */
+          var(--rh-color-interactive-primary-default)
+        );
   }
 
   &:hover:after,
   &:focus:before,
   &:focus:after {
     border-block-start-style: solid;
-    content: "";
+    content: '';
     inset-inline-start: -1px;
     position: absolute;
     inset-block-start: -1px;
@@ -222,17 +222,20 @@ svg {
   &:hover:after,
   &:focus:before {
     border-block-color: var(--_border-top-hover-color);
+
     /** Stepper hover/focus border width */
     border-block-width: var(--rh-border-width-lg, 3px);
   }
 
   &:focus:after {
     border-block-color:
-        /** Stepper focus accent border color override */ var(
-      --rh-pagination-accent-color,
-      /** Stepper focus accent border color */
-        var(--rh-color-border-interactive)
-    );
+      /** Stepper focus accent border color override */
+      var(
+          --rh-pagination-accent-color,
+          /** Stepper focus accent border color */
+          var(--rh-color-border-interactive)
+        );
+
     /** Stepper focus accent border width */
     border-block-width: var(--rh-border-width-md, 2px);
   }
@@ -275,19 +278,21 @@ input {
 
   /** Input text size */
   font-size: var(--rh-font-size-body-text-md, 1rem);
-  background: light-dark(
-    /** Input background in light mode */
-      var(--rh-color-surface-lightest, #ffffff),
-    /** Input background in dark mode */
-      var(--rh-color-surface-darkest, #151515)
-  );
+  background:
+    light-dark(
+        /** Input background in light mode */
+        var(--rh-color-surface-lightest, #ffffff),
+        /** Input background in dark mode */
+        var(--rh-color-surface-darkest, #151515)
+      );
   border:
     /** Input border width */ var(--rh-border-width-sm, 1px) solid
     /** Input border color */ var(--rh-color-border-subtle);
-  border-block-end-color: light-dark(
-    /** Input bottom border in light mode */ var(--rh-color-gray-40, #a3a3a3),
-    /** Input bottom border in dark mode */ var(--rh-color-gray-60, #4d4d4d)
-  );
+  border-block-end-color:
+    light-dark(
+        /** Input bottom border in light mode */ var(--rh-color-gray-40, #a3a3a3),
+        /** Input bottom border in dark mode */ var(--rh-color-gray-60, #4d4d4d)
+      );
   box-sizing: border-box;
 
   /** Pagination vertical spacing */
@@ -304,10 +309,10 @@ input {
       /** Input focus border width */ var(--rh-border-width-md, 2px)
       solid /** Input focus border color override */
       var(
-        --rh-pagination-accent-color,
-        /** Input focus border color */
+          --rh-pagination-accent-color,
+          /** Input focus border color */
           var(--rh-color-interactive-primary-default)
-      );
+        );
 
     /** Pagination vertical spacing */
     padding-block: calc(var(--rh-space-sm, 6px) - 1px);
@@ -318,10 +323,11 @@ input {
   }
 
   &:invalid {
-    border-block-end-color: light-dark(
-      var(--rh-color-red-60, #a60000),
-      var(--rh-color-red-40, #f56e6e)
-    );
+    border-block-end-color:
+      light-dark(
+          var(--rh-color-red-60, #a60000),
+          var(--rh-color-red-40, #f56e6e)
+        );
 
     &:focus {
       border-block-end-width: var(--rh-border-width-md, 2px);
@@ -361,11 +367,11 @@ input {
   & a {
     /** Total link underline width */
     text-decoration: underline dashed var(--rh-border-width-sm, 1px);
-
-    text-decoration-color: light-dark(
-      /** Total link underline in light mode */ var(--rh-color-gray-50),
-      /** Total link underline in dark mode */ var(--rh-color-gray-40)
-    );
+    text-decoration-color:
+      light-dark(
+          /** Total link underline in light mode */ var(--rh-color-gray-50),
+          /** Total link underline in dark mode */ var(--rh-color-gray-40)
+        );
     text-underline-offset: max(5px, 0.28em);
     transition-timing-function: ease;
     transition-property: text-underline-offset, color, text-decoration-color;
@@ -438,7 +444,7 @@ input {
 
 /* NOTE: the `open` variant is deprecated but aliased until the next major release. */
 
-:host(:is([variant|="borderless"], [variant|="open"])) {
+:host(:is([variant|='borderless'], [variant|='open'])) {
   & .stepper {
     --_stepper-bg-color: transparent;
 

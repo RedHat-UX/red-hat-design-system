@@ -4,10 +4,11 @@
   --_aspect-ratio: 1;
   --_badge-size: var(--rh-code-block-callout-size);
   --_badge-padding: 0;
-  --_fab-bg-color: light-dark(
-    var(--rh-color-surface-light, #e0e0e0),
-    var(--rh-color-surface-dark, #383838)
-  );
+  --_fab-bg-color:
+    light-dark(
+        var(--rh-color-surface-light, #e0e0e0),
+        var(--rh-color-surface-dark, #383838)
+      );
 
   display: block;
   max-width: 1000px;
@@ -75,11 +76,13 @@
 }
 
 #container {
-  --_code-background-color: light-dark(
-    /** Code surface in light mode */ var(--rh-color-surface-lighter, #f2f2f2),
-    /** Code surface in dark mode */
-      oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h)
-  );
+  --_code-background-color:
+    light-dark(
+        /** Code surface in light mode */
+        var(--rh-color-surface-lighter, #f2f2f2),
+        /** Code surface in dark mode */
+        oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h)
+      );
 
   /** Container main spacer */
   --_code-main-spacer: var(--rh-space-2xl, 32px);
@@ -98,142 +101,216 @@
 
   /** Doctype syntax token color */
   --_doctype-color: var(--rh-color-text-secondary);
-  --_default-color: light-dark(
-    /** Default syntax token color in light mode */
-      var(--rh-color-gray-95, #151515),
-    /** Default syntax token color in dark mode */
-      var(--rh-color-gray-20, #e0e0e0)
-  );
-  --_selected-text-background: light-dark(
-    /** Selected text background in light mode */
-      var(--rh-color-blue-10, #e0f0ff),
-    /** Selected text background in dark mode */
-      var(--rh-color-gray-95, #151515)
-  );
-  --_punctuation-color: light-dark(
-    /** Punctuation token color in light mode */
-      var(--rh-color-gray-40, #a3a3a3),
-    /** Punctuation token color in dark mode */ var(--rh-color-gray-20, #e0e0e0)
-  );
-  --_namespace-color: light-dark(
-    /** Namespace token color in light mode */ var(--rh-color-gray-95, #151515),
-    /** Namespace token color in dark mode */ var(--rh-color-red-40, #f56e6e)
-  );
-  --_property-color: light-dark(
-    /** Property token color in light mode */ var(--rh-color-purple-50, #5e40be),
-    /** Property token color in dark mode */ var(--rh-color-yellow-40, #dca614)
-  );
-  --_tag-color: light-dark(
-    /** Tag token color in light mode */ var(--rh-color-purple-50, #5e40be),
-    /** Tag token color in dark mode */ var(--rh-color-red-10, #fce3e3)
-  );
-  --_boolean-color: light-dark(
-    /** Boolean token color in light mode */ var(--rh-color-purple-50, #5e40be),
-    /** Boolean token color in dark mode */ var(--rh-color-orange-40, #f5921b)
-  );
-  --_number-color: light-dark(
-    /** Number token color in light mode */ var(--rh-color-purple-50, #5e40be),
-    /** Number token color in dark mode */ var(--rh-color-orange-40, #f5921b)
-  );
-  --_constant-color: light-dark(
-    /** Constant token color in light mode */ var(--rh-color-purple-50, #5e40be),
-    /** Constant token color in dark mode */ var(--rh-color-yellow-40, #dca614)
-  );
-  --_symbol-color: light-dark(
-    /** Symbol token color in light mode */ var(--rh-color-purple-50, #5e40be),
-    /** Symbol token color in dark mode */ var(--rh-color-yellow-40, #dca614)
-  );
-  --_deleted-color: light-dark(
-    /** Deleted token color in light mode */ var(--rh-color-purple-50, #5e40be),
-    /** Deleted token color in dark mode */ var(--rh-color-red-40, #f56e6e)
-  );
-  --_function-name-color: light-dark(
-    /** Function name token color in light mode */
-      var(--rh-color-purple-50, #5e40be),
-    /** Function name token color in dark mode */
-      var(--rh-color-teal-20, #b9e5e5)
-  );
-  --_selector-color: light-dark(
-    /** Selector token color in light mode */ var(--rh-color-teal-60, #147878),
-    /** Selector token color in dark mode */ var(--rh-color-purple-30, #b6a6e9)
-  );
-  --_attr-name-color: light-dark(
-    /** Attribute name token color in light mode */
-      var(--rh-color-teal-60, #147878),
-    /** Attribute name token color in dark mode */
-      var(--rh-color-red-40, #f56e6e)
-  );
-  --_string-color: light-dark(
-    /** String token color in light mode */ var(--rh-color-teal-60, #147878),
-    /** String token color in dark mode */ var(--rh-color-green-40, #87bb62)
-  );
-  --_character-color: light-dark(
-    /** Character token color in light mode */ var(--rh-color-teal-60, #147878),
-    /** Character token color in dark mode */ var(--rh-color-green-40, #87bb62)
-  );
-  --_built-in-color: light-dark(
-    /** Built-in token color in light mode */ var(--rh-color-teal-60, #147878),
-    /** Built-in token color in dark mode */ var(--rh-color-purple-30, #b6a6e9)
-  );
-  --_inserted-color: light-dark(
-    /** Inserted token color in light mode */ var(--rh-color-teal-60, #147878),
-    /** Inserted token color in dark mode */ var(--rh-color-green-40, #87bb62)
-  );
-  --_operator-color: light-dark(
-    /** Operator token color in light mode */ var(--rh-color-yellow-60, #96640f),
-    /** Operator token color in dark mode */ var(--rh-color-blue-40, #4394e5)
-  );
-  --_entity-color: light-dark(
-    /** Entity token color in light mode */ var(--rh-color-yellow-60, #96640f),
-    /** Entity token color in dark mode */ var(--rh-color-blue-40, #4394e5)
-  );
-  --_url-color: light-dark(
-    /** URL token color in light mode */ var(--rh-color-yellow-60, #96640f),
-    /** URL token color in dark mode */ var(--rh-color-blue-40, #4394e5)
-  );
-  --_at-rule-color: light-dark(
-    /** At-rule token color in light mode */ var(--rh-color-blue-60, #004d99),
-    /** At-rule token color in dark mode */ var(--rh-color-purple-30, #b6a6e9)
-  );
-  --_attr-value-color: light-dark(
-    /** Attribute value token color in light mode */
-      var(--rh-color-blue-60, #004d99),
-    /** Attribute value token color in dark mode */
-      var(--rh-color-green-40, #87bb62)
-  );
-  --_keyword-color: light-dark(
-    /** Keyword token color in light mode */ var(--rh-color-blue-60, #004d99),
-    /** Keyword token color in dark mode */ var(--rh-color-purple-30, #b6a6e9)
-  );
-  --_function-color: light-dark(
-    /** Function token color in light mode */ var(--rh-color-red-60, #a60000),
-    /** Function token color in dark mode */ var(--rh-color-orange-40, #f5921b)
-  );
-  --_class-name-color: light-dark(
-    /** Class name token color in light mode */ var(--rh-color-red-60, #a60000),
-    /** Class name token color in dark mode */
-      var(--rh-color-yellow-40, #dca614)
-  );
-  --_regex-color: light-dark(
-    /** Regex token color in light mode */ var(--rh-color-orange-60, #9e4a06),
-    /** Regex token color in dark mode */ var(--rh-color-green-40, #87bb62)
-  );
-  --_important-color: light-dark(
-    /** Important token color in light mode */
-      var(--rh-color-orange-60, #9e4a06),
-    /** Important token color in dark mode */ var(--rh-color-purple-30, #b6a6e9)
-  );
-  --_variable-color: light-dark(
-    /** Variable token color in light mode */ var(--rh-color-orange-60, #9e4a06),
-    /** Variable token color in dark mode */ var(--rh-color-green-40, #87bb62)
-  );
+  --_default-color:
+    light-dark(
+        /** Default syntax token color in light mode */
+        var(--rh-color-gray-95, #151515),
+        /** Default syntax token color in dark mode */
+        var(--rh-color-gray-20, #e0e0e0)
+      );
+  --_selected-text-background:
+    light-dark(
+        /** Selected text background in light mode */
+        var(--rh-color-blue-10, #e0f0ff),
+        /** Selected text background in dark mode */
+        var(--rh-color-gray-95, #151515)
+      );
+  --_punctuation-color:
+    light-dark(
+        /** Punctuation token color in light mode */
+        var(--rh-color-gray-40, #a3a3a3),
+        /** Punctuation token color in dark mode */
+        var(--rh-color-gray-20, #e0e0e0)
+      );
+  --_namespace-color:
+    light-dark(
+        /** Namespace token color in light mode */
+        var(--rh-color-gray-95, #151515),
+        /** Namespace token color in dark mode */
+        var(--rh-color-red-40, #f56e6e)
+      );
+  --_property-color:
+    light-dark(
+        /** Property token color in light mode */
+        var(--rh-color-purple-50, #5e40be),
+        /** Property token color in dark mode */
+        var(--rh-color-yellow-40, #dca614)
+      );
+  --_tag-color:
+    light-dark(
+        /** Tag token color in light mode */
+        var(--rh-color-purple-50, #5e40be),
+        /** Tag token color in dark mode */
+        var(--rh-color-red-10, #fce3e3)
+      );
+  --_boolean-color:
+    light-dark(
+        /** Boolean token color in light mode */
+        var(--rh-color-purple-50, #5e40be),
+        /** Boolean token color in dark mode */
+        var(--rh-color-orange-40, #f5921b)
+      );
+  --_number-color:
+    light-dark(
+        /** Number token color in light mode */
+        var(--rh-color-purple-50, #5e40be),
+        /** Number token color in dark mode */
+        var(--rh-color-orange-40, #f5921b)
+      );
+  --_constant-color:
+    light-dark(
+        /** Constant token color in light mode */
+        var(--rh-color-purple-50, #5e40be),
+        /** Constant token color in dark mode */
+        var(--rh-color-yellow-40, #dca614)
+      );
+  --_symbol-color:
+    light-dark(
+        /** Symbol token color in light mode */
+        var(--rh-color-purple-50, #5e40be),
+        /** Symbol token color in dark mode */
+        var(--rh-color-yellow-40, #dca614)
+      );
+  --_deleted-color:
+    light-dark(
+        /** Deleted token color in light mode */
+        var(--rh-color-purple-50, #5e40be),
+        /** Deleted token color in dark mode */
+        var(--rh-color-red-40, #f56e6e)
+      );
+  --_function-name-color:
+    light-dark(
+        /** Function name token color in light mode */
+        var(--rh-color-purple-50, #5e40be),
+        /** Function name token color in dark mode */
+        var(--rh-color-teal-20, #b9e5e5)
+      );
+  --_selector-color:
+    light-dark(
+        /** Selector token color in light mode */
+        var(--rh-color-teal-60, #147878),
+        /** Selector token color in dark mode */
+        var(--rh-color-purple-30, #b6a6e9)
+      );
+  --_attr-name-color:
+    light-dark(
+        /** Attribute name token color in light mode */
+        var(--rh-color-teal-60, #147878),
+        /** Attribute name token color in dark mode */
+        var(--rh-color-red-40, #f56e6e)
+      );
+  --_string-color:
+    light-dark(
+        /** String token color in light mode */
+        var(--rh-color-teal-60, #147878),
+        /** String token color in dark mode */
+        var(--rh-color-green-40, #87bb62)
+      );
+  --_character-color:
+    light-dark(
+        /** Character token color in light mode */
+        var(--rh-color-teal-60, #147878),
+        /** Character token color in dark mode */
+        var(--rh-color-green-40, #87bb62)
+      );
+  --_built-in-color:
+    light-dark(
+        /** Built-in token color in light mode */
+        var(--rh-color-teal-60, #147878),
+        /** Built-in token color in dark mode */
+        var(--rh-color-purple-30, #b6a6e9)
+      );
+  --_inserted-color:
+    light-dark(
+        /** Inserted token color in light mode */
+        var(--rh-color-teal-60, #147878),
+        /** Inserted token color in dark mode */
+        var(--rh-color-green-40, #87bb62)
+      );
+  --_operator-color:
+    light-dark(
+        /** Operator token color in light mode */
+        var(--rh-color-yellow-60, #96640f),
+        /** Operator token color in dark mode */
+        var(--rh-color-blue-40, #4394e5)
+      );
+  --_entity-color:
+    light-dark(
+        /** Entity token color in light mode */
+        var(--rh-color-yellow-60, #96640f),
+        /** Entity token color in dark mode */
+        var(--rh-color-blue-40, #4394e5)
+      );
+  --_url-color:
+    light-dark(
+        /** URL token color in light mode */
+        var(--rh-color-yellow-60, #96640f),
+        /** URL token color in dark mode */
+        var(--rh-color-blue-40, #4394e5)
+      );
+  --_at-rule-color:
+    light-dark(
+        /** At-rule token color in light mode */
+        var(--rh-color-blue-60, #004d99),
+        /** At-rule token color in dark mode */
+        var(--rh-color-purple-30, #b6a6e9)
+      );
+  --_attr-value-color:
+    light-dark(
+        /** Attribute value token color in light mode */
+        var(--rh-color-blue-60, #004d99),
+        /** Attribute value token color in dark mode */
+        var(--rh-color-green-40, #87bb62)
+      );
+  --_keyword-color:
+    light-dark(
+        /** Keyword token color in light mode */
+        var(--rh-color-blue-60, #004d99),
+        /** Keyword token color in dark mode */
+        var(--rh-color-purple-30, #b6a6e9)
+      );
+  --_function-color:
+    light-dark(
+        /** Function token color in light mode */
+        var(--rh-color-red-60, #a60000),
+        /** Function token color in dark mode */
+        var(--rh-color-orange-40, #f5921b)
+      );
+  --_class-name-color:
+    light-dark(
+        /** Class name token color in light mode */
+        var(--rh-color-red-60, #a60000),
+        /** Class name token color in dark mode */
+        var(--rh-color-yellow-40, #dca614)
+      );
+  --_regex-color:
+    light-dark(
+        /** Regex token color in light mode */
+        var(--rh-color-orange-60, #9e4a06),
+        /** Regex token color in dark mode */
+        var(--rh-color-green-40, #87bb62)
+      );
+  --_important-color:
+    light-dark(
+        /** Important token color in light mode */
+        var(--rh-color-orange-60, #9e4a06),
+        /** Important token color in dark mode */
+        var(--rh-color-purple-30, #b6a6e9)
+      );
+  --_variable-color:
+    light-dark(
+        /** Variable token color in light mode */
+        var(--rh-color-orange-60, #9e4a06),
+        /** Variable token color in dark mode */
+        var(--rh-color-green-40, #87bb62)
+      );
 
   display: grid;
   place-items: center;
   grid-template-columns: auto min-content;
   grid-template-areas:
-    "code actions"
-    "expand expand";
+    'code actions'
+    'expand expand';
   column-gap: var(--_code-actions-gap);
   padding-inline-start: var(--_code-main-spacer);
   padding-block-end: var(--_code-main-spacer);
@@ -249,20 +326,23 @@
     /** Container border color */ var(--rh-color-border-subtle);
 
   /** Top border width override */
-  border-block-start-width: var(
-    --rh-code-block-border-block-start-width,
-    /** Top border width fallback */ var(--rh-border-width-sm, 1px)
-  );
+  border-block-start-width:
+    var(
+        --rh-code-block-border-block-start-width,
+        /** Top border width fallback */
+        var(--rh-border-width-sm, 1px)
+      );
 
   /* Apply content-visibility here instead of on :host to allow tooltips to overflow */
   content-visibility: auto;
   contain-intrinsic-block-size: auto 193px;
 
-  --_gradient: linear-gradient(
-    var(--_gradient-angle, 0deg),
-    var(--_code-background-color) 0%,
-    transparent 100%
-  );
+  --_gradient:
+    linear-gradient(
+        var(--_gradient-angle, 0deg),
+        var(--_code-background-color) 0%,
+        transparent 100%
+      );
 
   &:not(.line-numbers) {
     &:not(.isIntersecting) {
@@ -281,14 +361,7 @@
   display: block;
 
   /** Code content typeface */
-  font-family: var(
-    --rh-font-family-code,
-    RedHatMono,
-    "Red Hat Mono",
-    "Courier New",
-    Courier,
-    monospace
-  );
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
   font-size: var(--_code-font-size);
   -webkit-text-size-adjust: 100%; /* stylelint-disable-line property-no-vendor-prefix */
   text-size-adjust: 100%;
@@ -306,18 +379,11 @@
   color: inherit;
 }
 
-#content::slotted(:is(code[class*="language-"], pre[class*="language-"])) {
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
   color: var(--_code-color);
 
   /** Prerendered code typeface */
-  font-family: var(
-    --rh-font-family-code,
-    RedHatMono,
-    "Red Hat Mono",
-    "Courier New",
-    Courier,
-    monospace
-  );
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
   font-size: inherit;
   text-align: left;
   white-space: pre;
@@ -332,9 +398,9 @@
   background: transparent;
 }
 
-:host([highlighting="prerendered"]) {
+:host([highlighting='prerendered']) {
   .wrap {
-    #content::slotted(pre[class*="language-"]) {
+    #content::slotted(pre[class*='language-']) {
       white-space: pre-wrap !important;
     }
   }
@@ -349,7 +415,7 @@
   display: grid;
   column-gap: var(--_line-number-code-gap);
   grid-area: code;
-  grid-template-areas: "lines code";
+  grid-template-areas: 'lines code';
   grid-template-columns: min-content 1fr;
   grid-template-rows: 1fr;
   position: relative;
@@ -380,14 +446,7 @@
   text-align: end;
 
   /** Line number typeface */
-  font-family: var(
-    --rh-font-family-code,
-    RedHatMono,
-    "Red Hat Mono",
-    "Courier New",
-    Courier,
-    monospace
-  );
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
   -webkit-text-size-adjust: 100%; /* stylelint-disable-line property-no-vendor-prefix */
   text-size-adjust: 100%;
 
@@ -401,10 +460,11 @@
   border-inline-end-width: var(--rh-border-width-sm, 1px);
   border-inline-end-style: solid;
 
+  /* stylelint-disable declaration-block-no-redundant-longhand-properties */
+
   /** Separator color between line numbers and code uses the subtle border token */
-  border-inline-end-color: var(
-    --rh-color-border-subtle
-  ); /* stylelint-disable-line max-len declaration-block-no-redundant-longhand-properties */
+  border-inline-end-color: var(--rh-color-border-subtle);
+  /* stylelint-enable declaration-block-no-redundant-longhand-properties */
 
   li {
     /** Line number item height */
@@ -456,14 +516,7 @@
   color: var(--rh-color-text-primary);
 
   /** Expand button typeface */
-  font-family: var(
-    --rh-font-family-body-text,
-    RedHatText,
-    "Red Hat Text",
-    Helvetica,
-    Arial,
-    sans-serif
-  );
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
 
   /** Expand button text size */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
@@ -511,7 +564,7 @@
 }
 
 .truncated #content-lines:before {
-  content: "";
+  content: '';
   display: block;
   position: sticky;
   z-index: 2;
@@ -525,12 +578,12 @@
   background: var(--_gradient);
 }
 
-:host([line-numbers="hidden"]) #content-lines {
-  grid-template-areas: "code";
+:host([line-numbers='hidden']) #content-lines {
+  grid-template-areas: 'code';
   grid-template-columns: 1fr;
 }
 
-:host([line-numbers="hidden"]) #line-numbers {
+:host([line-numbers='hidden']) #line-numbers {
   display: none;
 }
 
@@ -539,7 +592,7 @@
 }
 
 :not(.wrap) #actions:before {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   z-index: 2;
@@ -561,7 +614,7 @@
   --_code-word-wrap: anywhere;
 }
 
-[name="legend"]::slotted(dl) {
+[name='legend']::slotted(dl) {
   display: grid;
   grid-template-columns: max-content auto;
 
@@ -572,6 +625,6 @@
   gap: var(--rh-space-md, 8px);
 }
 
-:host([highlighting="client"]) #content::slotted(:is(script, pre)) {
+:host([highlighting='client']) #content::slotted(:is(script, pre)) {
   display: none;
 }

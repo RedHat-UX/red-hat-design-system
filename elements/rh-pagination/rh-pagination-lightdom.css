@@ -19,14 +19,7 @@ rh-pagination {
       display: grid;
 
       /** Pagination typeface */
-      font-family: var(
-        --rh-font-family-heading,
-        RedHatDisplay,
-        "Red Hat Display",
-        Helvetica,
-        Arial,
-        sans-serif
-      );
+      font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
 
       /** Pagination text size */
       font-size: var(--rh-font-size-body-text-xl, 1.25rem);
@@ -44,19 +37,20 @@ rh-pagination {
         /** Pagination focus outline */
         outline: var(--rh-border-width-md, 2px) solid transparent;
         outline-color:
-          /** Page link focus outline color override */ var(
-          --rh-pagination-accent-color,
-          /** Page link focus outline color */
-            var(--rh-color-interactive-primary-default)
-        );
+          /** Page link focus outline color override */
+          var(
+              --rh-pagination-accent-color,
+              /** Page link focus outline color */
+              var(--rh-color-interactive-primary-default)
+            );
       }
 
       &:hover:after,
       &:focus:before,
       &:focus:after,
-      &[aria-current="page"]:after {
+      &[aria-current='page']:after {
         border-block-start-style: solid;
-        content: "";
+        content: '';
         inset-inline-start: -1px;
         position: absolute;
         inset-block-start: -1px;
@@ -65,7 +59,7 @@ rh-pagination {
 
       &:hover:after,
       &:focus:before,
-      &[aria-current="page"]:after {
+      &[aria-current='page']:after {
         /** Page link hover/focus/active border width */
         border-block-width: var(--rh-border-width-lg, 3px);
       }
@@ -80,25 +74,26 @@ rh-pagination {
         border-block-width: var(--rh-border-width-md, 2px);
       }
 
-      &[aria-current="page"] {
+      &[aria-current='page'] {
         background-color: var(--_list-a-current-page-bg-color);
         border-color: var(--_list-a-current-page-border-color);
         border-block-start-color: transparent;
       }
 
       &:focus:after,
-      &[aria-current="page"]:after {
+      &[aria-current='page']:after {
         border-block-color:
-          /** Page link focus/active accent color override */ var(
-          --rh-pagination-accent-color,
-          /** Page link focus/active accent color */
-            var(--rh-color-border-interactive)
-        );
+          /** Page link focus/active accent color override */
+          var(
+              --rh-pagination-accent-color,
+              /** Page link focus/active accent color */
+              var(--rh-color-border-interactive)
+            );
       }
     }
   }
 
-  &[size="sm"] {
+  &[size='sm'] {
     li > a {
       /** Page link font size at small size */
       font-size: var(--rh-font-size-body-text-md, 1rem);
@@ -107,28 +102,27 @@ rh-pagination {
     --_link-size: var(--_stepper-size);
   }
 
-  &[overflow="start"] li:nth-last-child(n + 6):not(:first-child),
-  &[overflow="end"] li:nth-child(n + 6):not(:last-child),
-  &[overflow="both"] li:nth-last-child(n + 6):not(:first-child),
-  &[overflow="both"] li:nth-child(n + 6):not(:last-child) {
+  &[overflow='start'] li:nth-last-child(n + 6):not(:first-child),
+  &[overflow='end'] li:nth-child(n + 6):not(:last-child),
+  &[overflow='both'] li:nth-last-child(n + 6):not(:first-child),
+  &[overflow='both'] li:nth-child(n + 6):not(:last-child) {
     display: none;
   }
 
-  &[overflow="both"]
-    li:is([data-page="current"], [data-page="previous"], [data-page="next"]) {
+  &[overflow='both'] li:is([data-page='current'], [data-page='previous'], [data-page='next']) {
     display: contents !important;
   }
 
-  &:is([overflow="end"], [overflow="both"]) li:last-child,
-  &:is([overflow="start"], [overflow="both"]) li:first-child {
+  &:is([overflow='end'], [overflow='both']) li:last-child,
+  &:is([overflow='start'], [overflow='both']) li:first-child {
     display: grid;
     grid-template-columns: var(--_link-size) var(--_link-size);
     gap: 4px;
   }
 
-  &:is([overflow="end"], [overflow="both"]) li:last-child:before,
-  &:is([overflow="start"], [overflow="both"]) li:first-child:after {
-    content: "…";
+  &:is([overflow='end'], [overflow='both']) li:last-child:before,
+  &:is([overflow='start'], [overflow='both']) li:first-child:after {
+    content: '…';
     width: var(--_link-size);
     height: var(--_link-size);
     padding-inline-end: 4px;
@@ -144,8 +138,8 @@ rh-pagination {
     align-self: start;
   }
 
-  &[variant|="borderless"],
-  &[variant|="open"] {
+  &[variant|='borderless'],
+  &[variant|='open'] {
     --_list-a-bg-color: transparent;
 
     li > a {
@@ -154,13 +148,13 @@ rh-pagination {
       &:hover:after,
       &:focus:before,
       &:focus:after,
-      &[aria-current="page"]:after {
+      &[aria-current='page']:after {
         border-block-start-style: none;
         border-block-end-style: solid;
         inset-block-end: -1px;
       }
 
-      &[aria-current="page"] {
+      &[aria-current='page'] {
         border-color: transparent; /* NOTE: Keep active/hover borders in-line */
       }
     }
