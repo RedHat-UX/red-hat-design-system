@@ -1,5 +1,105 @@
 # @rhds/elements
 
+## 4.1.0
+### Minor Changes
+
+- 2ab09b5: `<rh-navigation-primary>`: unified navigation redesign with sub-domain support and collapsible links menu
+  
+  Redesigned the primary navigation to match the unified nav specification: removed pill-shaped nav buttons and gradient borders, reduced padding between items, and removed icon button labels. Secondary links now collapse into a bento-box toggle on narrow viewports via a new collapsible links menu. Added a sub-domain variation via `site-name` and `site-href` attributes that displays a sub-domain title alongside the Red Hat logo lockup, including a hat-tip hover animation that tilts the Red Hat fedora with `prefers-reduced-motion` respected. Added `logo-href` to customize the logo link destination and `mobile-links-toggle-label` for non-English locales. Improved keyboard navigation with Escape and Tab-out support for the links menu, and corrected ARIA role handling during SSR hydration.
+  
+  ```html
+  <rh-navigation-primary site-name="Customer Portal"
+                         site-href="https://subdomain.redhat.com"
+                         logo-href="https://www.redhat.com/en">
+    ...
+  </rh-navigation-primary>
+  ```
+- 2ab09b5: ✨ Added `<rh-select>`
+  
+  A select enables users to select one or more items from a list.
+  
+  ```html
+  <label for="my-select">
+    Products
+  </label>
+  <rh-select id="my-select" placeholder="Select an item">
+    <rh-option>Red Hat Lightspeed</rh-option>
+    <rh-option disabled>OpenShift</rh-option>
+    <rh-option>Quay</rh-option>
+  </rh-select>
+  ```
+- 2ab09b5: `<rh-pagination>`: deprecate `variant="open"` in favor of `variant="borderless"`.
+  
+  Before:
+  ```html
+  <rh-pagination variant="open">
+    ...
+  </rh-pagination>
+  ```
+  
+  After:
+  ```html
+  <rh-pagination variant="borderless">
+    ...
+  </rh-pagination>
+  ```
+  
+  NOTE: Even though deprecated, `variant="open"` will continue to work until the next major release.
+- 2ab09b5: `<rh-tabs>`: added support for `icon` and `icon-set` attributes to the `<rh-tab>` element
+- 2ab09b5: ✨ Added `<rh-button-group>`
+  
+  A button group visually organizes multiple related buttons into a single collection.
+  
+  ```html
+  <rh-button-group>
+    <rh-button>Save</rh-button>
+    <rh-button>Cancel</rh-button>
+    <rh-button>Delete</rh-button>
+  </rh-button-group>
+  ```
+- 2ab09b5: `<rh-tag>`: improved element theming capabilities
+- 2ab09b5: `<rh-blockquote>`: added `author` and `subtitle` attribute/slot pairs, and deprecated the `title` attribute.
+- 2ab09b5: `<rh-button>`: deprecate `label` in favor of `accessible-label`.
+  
+  BEFORE:
+  
+  ```html
+  <rh-button label="Search"></rh-button>
+  ```
+  
+  AFTER:
+  
+  ```html
+  <rh-button accessible-label="Search"></rh-button>
+  ```
+  
+  `label` will continue to function until the next major release.
+- 37c33aa: `<rh-table>`: added `accessible-label` slot/attribute pair to `<rh-sort-button>`, for use
+  when localizing tables.
+- 2ab09b5: `<rh-accordion>`: added `rh-accordion-lightdom-shim.css` as an optional file to help ensure content is visible when JavaScript is disabled or fails to load.
+
+### Patch Changes
+
+- 2ab09b5: `<rh-announcement>`: update `<rh-button>` in dismissible announcements to use the `accessible-label`
+  attribute.
+- 2ab09b5: `<rh-pagination>`: corrected fallback when links are missing href to aria-current="page"
+- 2ab09b5: `<rh-code-block>`: update spacing, icons and font size for compact and default code blocks
+- 2ab09b5: `<rh-health-index>`: deduped CSS custom properties for text colors
+- 2ab09b5: `<rh-avatar>`: corrected inline layout switching to block layout on small viewports
+- 2ab09b5: `<rh-code-block>`: corrected font size rendering in iOS based browsers
+- 2ab09b5: `<rh-back-to-top>`: optimized internal styles
+- 2ab09b5: `<rh-menu-dropdown>`: Changed the caret icons for basic toggle from `caret-down` and `caret-up` to `caret-down-fill` and `caret-up-fill`. Decreased the caret icon size to match `<rh-select>`'s.
+- 2ab09b5: `<rh-pagination>`: prevented page number input from receiving focus on page load
+- 2ab09b5: `<rh-pagination>`: improved page number input accessibility and mobile submit behavior
+- 2ab09b5: `<rh-footer>`: remove `<footer>` element from shadowdom, set `role="contentinfo"` on host
+  
+  `<rh-footer-universal>` also removes the `<footer>` element from its shadowdom and sets
+  `role="contentinfo"` on the host if it's not already wrapped in a `<rh-footer>` or `<footer>`
+  element.
+- 2ab09b5: `<rh-alert>`: improve screen reader notification accessibility for toast alerts
+- 2ab09b5: `<rh-switch>`: remove legacy fallback check for `ariaDescribedByElements` and correctly test support for `ariaDescription`
+- 2ab09b5: `<rh-tile>`: fixed `color-palette` rendering when global color tokens are not already defined
+
 ## 4.0.4
 ### Patch Changes
 
