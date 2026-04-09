@@ -201,6 +201,111 @@ vim.g.Hexokinase_palettes = {
 }
 ```
 
+## AI Tooling
+
+[Asimonim][asimonim] is a design tokens multitool that provides
+AI-powered editor features for RHDS tokens. It gives your editor and AI
+assistant structured knowledge of design tokens, including their names,
+values, types, and descriptions.
+
+Asimonim offers two integration modes:
+
+- **LSP** (Language Server Protocol) adds autocomplete, hover
+  documentation, diagnostics, and code actions for design tokens in CSS,
+  HTML, JavaScript, and TypeScript files
+- **MCP** (Model Context Protocol) gives AI assistants direct access to
+  token definitions for searching, validating, and converting tokens
+
+### Install Asimonim
+
+Install using npm:
+
+```shell rhcodeblock
+npm install -g @pwrs/asimonim
+```
+
+Or using Go:
+
+```shell rhcodeblock
+go install bennypowers.dev/asimonim@latest
+```
+
+Verify the installation:
+
+```shell rhcodeblock
+asimonim version
+```
+
+### Claude Code
+
+The Asimonim plugin for [Claude Code][claudecode] provides both LSP and
+MCP support. Install the plugin with two commands:
+
+```text rhcodeblock
+/plugin marketplace add bennypowers/asimonim
+/plugin install asimonim
+```
+
+Once installed, Claude Code gains:
+
+- **Editor intelligence** for CSS, HTML, and JavaScript files, with
+  autocomplete and diagnostics for RHDS tokens
+- **AI-native token understanding**, so Claude can search, validate, and
+  convert design tokens directly
+
+No additional configuration is needed. The plugin discovers token files
+in your project and in `node_modules` automatically.
+
+### Cursor
+
+[Cursor][cursor] supports MCP servers for AI-assisted development. Add
+Asimonim to your Cursor MCP configuration:
+
+```json rhcodeblock
+{
+  "mcpServers": {
+    "asimonim": {
+      "command": "asimonim",
+      "args": ["mcp"]
+    }
+  }
+}
+```
+
+See the [Cursor MCP docs][cursormcp] for the configuration file location
+on your platform.
+
+### VS Code
+
+Install the [Design Tokens Language Server][vscodeext-dt] extension from
+the VS Code marketplace. The extension bundles the language server and
+works out of the box.
+
+For MCP support, add Asimonim to your MCP configuration the same way as
+Cursor (above).
+
+### Neovim
+
+For Neovim 0.11+ with native LSP support, create
+`~/.config/nvim/lsp/asimonim.lua`:
+
+```lua rhcodeblock
+return {
+  cmd = { 'asimonim', 'lsp' },
+  root_markers = { '.git', 'package.json' },
+  filetypes = { 'css', 'html', 'twig', 'php',
+                'javascript', 'javascriptreact',
+                'typescript', 'typescriptreact',
+                'json', 'yaml' },
+}
+```
+
+### Learn more
+
+- [Asimonim documentation][asimonimdocs]
+- [LSP reference][asimonim-lsp]
+- [MCP reference][asimonim-mcp]
+
 <uxdot-feedback>
   <h2>Designers</h2>
   <p>To get started using our design system as a designer, go to the <a href="/get-started/designers">Designers</a> page.</p>
@@ -210,3 +315,11 @@ vim.g.Hexokinase_palettes = {
 [vimhexokinase]: https://github.com/RRethy/vim-hexokinase
 [stylelintpluginreadme]: https://github.com/RedHat-UX/red-hat-design-tokens/blob/main/plugins/stylelint/README.md
 [releasev100]: https://github.com/RedHat-UX/red-hat-design-tokens/releases/tag/v1.0.0
+[asimonim]: https://github.com/bennypowers/asimonim
+[asimonimdocs]: https://bennypowers.dev/asimonim/
+[asimonim-lsp]: https://bennypowers.dev/asimonim/docs/lsp/
+[asimonim-mcp]: https://bennypowers.dev/asimonim/docs/reference/commands/mcp/
+[claudecode]: https://claude.ai/claude-code
+[cursor]: https://cursor.com
+[cursormcp]: https://docs.cursor.com/mcp
+[vscodeext-dt]: https://marketplace.visualstudio.com/items?itemName=pwrs.design-tokens-language-server-vscode
