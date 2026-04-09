@@ -1,27 +1,208 @@
-<meta itemprop="description" content="Internationalization support using translated toggle and accessible label attributes.">
-<rh-navigation-primary role="navigation" mobile-toggle-label="Speisekarte" accessible-label="Hauptnavigation">
+<meta itemprop="description" content="Sub-domain variant with a branded label and link alongside the logo lockup.">
+<rh-navigation-primary role="navigation"
+                      site-name="Customer Portal"
+                      site-href="#customer-portal"
+                      logo-href="#hat-link">
   <rh-navigation-primary-item variant="dropdown">
-    <span slot="summary">KI</span>
-    AI Content
+    <span slot="summary">AI</span>
+    <h2>AI Content</h2>
+    <div class="grid">
+      <div class="column">
+        <ul>
+          <li>
+            <a href="#">Link 1</a>
+          </li>
+          <li>
+            <a href="#">Link 2</a>
+          </li>
+          <li>
+            <a href="#">Link 3</a>
+          </li>
+          <li>
+            <a href="#">Link 4</a>
+          </li>
+          <li>
+            <a href="#">Link 5</a>
+          </li>
+        </ul>
+      </div>
+      <div class="column">
+        <ul>
+          <li>
+            <a href="#">Link 1a</a>
+          </li>
+          <li>
+            <a href="#">Link 2a</a>
+          </li>
+          <li>
+            <a href="#">Link 3a</a>
+          </li>
+          <li>
+            <a href="#">Link 4a</a>
+          </li>
+          <li>
+            <a href="#">Link 5a</a>
+          </li>
+        </ul>
+      </div>
+      <div class="column">
+        <ul>
+          <li>
+            <a href="#">Link 1b</a>
+          </li>
+          <li>
+            <a href="#">Link 2b</a>
+          </li>
+          <li>
+            <a href="#">Link 3b</a>
+          </li>
+          <li>
+            <a href="#">Link 4b</a>
+          </li>
+          <li>
+            <a href="#">Link 5b</a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </rh-navigation-primary-item>
 
   <rh-navigation-primary-item variant="dropdown">
-    <span slot="summary">Hybride Cloud</span>
-    Hybrid Cloud Content
+    <span slot="summary">Hybrid Cloud</span>
+    <h2>Hybrid Cloud Content</h2>
+    <div class="grid">
+      <div class="column">
+        <ul>
+          <li>
+            <a href="#">Link 1</a>
+          </li>
+          <li>
+            <a href="#">Link 2</a>
+          </li>
+          <li>
+            <a href="#">Link 3</a>
+          </li>
+          <li>
+            <a href="#">Link 4</a>
+          </li>
+          <li>
+            <a href="#">Link 5</a>
+          </li>
+        </ul>
+      </div>
+      <div class="column">
+        <ul>
+          <li>
+            <a href="#">Link 1a</a>
+          </li>
+          <li>
+            <a href="#">Link 2a</a>
+          </li>
+          <li>
+            <a href="#">Link 3a</a>
+          </li>
+          <li>
+            <a href="#">Link 4a</a>
+          </li>
+          <li>
+            <a href="#">Link 5a</a>
+          </li>
+        </ul>
+      </div>
+      <div class="column">
+        <ul>
+          <li>
+            <a href="#">Link 1b</a>
+          </li>
+          <li>
+            <a href="#">Link 2b</a>
+          </li>
+          <li>
+            <a href="#">Link 3b</a>
+          </li>
+          <li>
+            <a href="#">Link 4b</a>
+          </li>
+          <li>
+            <a href="#">Link 5b</a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </rh-navigation-primary-item>
 
   <rh-navigation-primary-item variant="dropdown">
-    <span slot="summary">Produkte</span>
-    Products Content
+    <span slot="summary">Products</span>
+    <h2>Products Content</h2>
+    <div class="grid">
+      <div class="column">
+        <ul>
+          <li>
+            <a href="#">Link 1</a>
+          </li>
+          <li>
+            <a href="#">Link 2</a>
+          </li>
+          <li>
+            <a href="#">Link 3</a>
+          </li>
+          <li>
+            <a href="#">Link 4</a>
+          </li>
+          <li>
+            <a href="#">Link 5</a>
+          </li>
+        </ul>
+      </div>
+      <div class="column">
+        <ul>
+          <li>
+            <a href="#">Link 1a</a>
+          </li>
+          <li>
+            <a href="#">Link 2a</a>
+          </li>
+          <li>
+            <a href="#">Link 3a</a>
+          </li>
+          <li>
+            <a href="#">Link 4a</a>
+          </li>
+          <li>
+            <a href="#">Link 5a</a>
+          </li>
+        </ul>
+      </div>
+      <div class="column">
+        <ul>
+          <li>
+            <a href="#">Link 1b</a>
+          </li>
+          <li>
+            <a href="#">Link 2b</a>
+          </li>
+          <li>
+            <a href="#">Link 3b</a>
+          </li>
+          <li>
+            <a href="#">Link 4b</a>
+          </li>
+          <li>
+            <a href="#">Link 5b</a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </rh-navigation-primary-item>
 
   <rh-navigation-primary-item variant="dropdown">
-    <span slot="summary">Lernen</span>
+    <span slot="summary">Learn</span>
     Learn Content
   </rh-navigation-primary-item>
 
-  <rh-navigation-primary-item >
-    <a href="#partners">Partner</a>
+  <rh-navigation-primary-item variant="dropdown">
+    <span slot="summary">Partners</span>
+    Partners Content
   </rh-navigation-primary-item>
 
   <rh-navigation-primary-item slot="event">
@@ -49,22 +230,38 @@
     <a href="#console">Console</a>
   </rh-navigation-primary-item>
   <rh-navigation-primary-item slot="links">
-    <a href="#support">Dokumente</a>
+    <a href="#support">Docs</a>
   </rh-navigation-primary-item>
   <rh-navigation-primary-item slot="links">
-    <a href="#console">Unterstützung</a>
+    <a href="#console">Support</a>
   </rh-navigation-primary-item>
 
   <rh-navigation-primary-item slot="dropdowns" variant="dropdown">
     <rh-icon slot="icon" icon="search" set="ui"></rh-icon>
-    <span slot="summary">Suchen</span>
-    Inhalte durchsuchen
+    <span slot="summary">Search</span>
+    <form>
+      <label for="search">Search</label>
+      <input id="search" type="search">
+      <button>Search</button>
+    </form>
   </rh-navigation-primary-item>
 
   <rh-navigation-primary-item slot="dropdowns" variant="dropdown">
     <rh-icon slot="icon" icon="notification" set="ui"></rh-icon>
-    <span slot="summary">Für sie</span>
-    Für Sie zufrieden
+    <span slot="summary">For you</span>
+    <h2>Recommendations for you</h2>
+    <p>As you browse redhat.com, we'll recommend resources you may like. For now, try these.</p>
+    <ul>
+      <li>
+        <a href="#">All Red Hat products</a>
+      </li>
+      <li>
+        <a href="#">Tech topics</a>
+      </li>
+      <li>
+        <a href="#">Red Hat resources</a>
+      </li>
+    </ul>
   </rh-navigation-primary-item>
 
   <rh-navigation-primary-item slot="dropdowns" variant="dropdown">
@@ -146,8 +343,16 @@
 </rh-navigation-primary>
 
 <div id="mock">
-  <p>Mock Page content <a href="#">Link outside</a>
-  </p>
+  <form>
+    <fieldset>
+      <legend>Select Sub domain</legend>
+      <label><input type="radio" name="subdomain" value="Customer Portal" checked>Customer Portal</label>
+      <label><input type="radio" name="subdomain" value="Ecosystem Catalog">Ecosystem Catalog</label>
+      <label><input type="radio" name="subdomain" value="Partner Connect">Partner Connect</label>
+      <label><input type="radio" name="subdomain" value="Developers">Developers</label>
+      <label><input type="radio" name="subdomain" value="Docs">Docs</label>
+    </fieldset>
+  </form>
 </div>
 
 <link rel="stylesheet" href="../rh-navigation-primary-lightdom.css">
@@ -252,4 +457,14 @@
 <script type="module">
   import '@rhds/elements/rh-navigation-primary/rh-navigation-primary.js';
   import '@rhds/elements/rh-avatar/rh-avatar.js';
+  import '@rhds/elements/rh-button/rh-button.js';
+
+  document
+    .querySelector('form:has([name="subdomain"])')
+    .addEventListener('change', function (event) {
+      const nav = document.querySelector('rh-navigation-primary');
+      if (nav) {
+        nav.setAttribute('site-name', event.target.value);
+      }
+    });
 </script>

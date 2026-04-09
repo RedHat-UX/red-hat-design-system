@@ -2,7 +2,7 @@
 
 - Help users orient themselves after landing
 - Organize content, offers, and other websites in one place
-- Make it easier for users to explore other web domains and systems
+- Make it easier for users to explore other domains
 
 <style>
   rh-navigation-primary {
