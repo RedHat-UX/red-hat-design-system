@@ -25,8 +25,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
@@ -4255,7 +4255,12 @@
         </h2>
       </uxdot-copy-permalink>
 
-      <p>Cards are flexible surfaces used to group information in a small layout. They give small previews of information or provide secondary content in relation to the content it's near. Several cards can be used together to group related information.</p>
+      <p>Use cards to group small previews of content with optional calls to action.
+Cards should contain a header with a heading level tag (h1-h6) and must not
+replace primary page content. Cards do not manage focus; interactive elements
+inside (links, CTAs) must be keyboard-accessible via Tab and activated with
+Enter. Screen readers announce card content in DOM order. The <code>promo</code> variant
+should be used for promotional content separate from the main page flow.</p>
 
 
       <div class="element-apis">
@@ -4363,10 +4368,11 @@
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Card header content</p></td>
                   <td>
-                   <p>If this slot is used, we expect a heading level tag (h1, h2, h3, h4, h5, h6).
-An icon, svg, or use of the icon component are also valid in this region.</p>
+                   <p>Must contain a heading level tag (h1-h6) for screen reader
+navigation. Icons, SVGs, or rh-icon are also valid. Screen
+readers announce this slot content first in the card.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4399,9 +4405,11 @@ An icon, svg, or use of the icon component are also valid in this region.</p>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Card footer content</p></td>
                   <td>
-                   <p>Use this slot for anything that you want to be stuck to the base of the card.</p>
+                   <p>Use for calls to action or links anchored to the card bottom.
+Screen readers announce footer content last. Interactive
+elements must be focusable via Tab and activated with Enter.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4434,9 +4442,11 @@ An icon, svg, or use of the icon component are also valid in this region.</p>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Promo variant image content</p></td>
                   <td>
-                   <p>Use this slot for the promo variant of the card. Images &amp; CTA's are most often slotted here.</p>
+                   <p>Use for images or CTAs in the promo variant. Images should
+include alt text for screen readers. Decorative images
+should use alt="" to be hidden from assistive technology.</p>
                   </td>
                 </tr>
                 <tr>
@@ -4469,9 +4479,11 @@ An icon, svg, or use of the icon component are also valid in this region.</p>
                       </a>
                     </span>
                   </uxdot-copy-permalink></td>
-                  <td></td>
+                  <td><p>Card body content (default slot)</p></td>
                   <td>
-                   <p>Any content that is not designated for the header or footer slot, will go to this slot. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
+                   <p>Receives all content not assigned to named slots. Should
+contain descriptive text, headings, or supporting elements.
+Screen readers announce this between header and footer. <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span></p>
                   </td>
                 </tr>
               </tbody>
@@ -4588,9 +4600,11 @@ An icon, svg, or use of the icon component are also valid in this region.</p>
                   </td>
                   <td><code>colorPalette</code></td>
                   <td><p>Sets color palette, which affects the element's styles as well as descendants' color theme.
-Overrides parent color context.
-Your theme will influence these colors so check there first if you are seeing inconsistencies.
-See <a href="#css-custom-properties">CSS Custom Properties</a> for default values</p></td>
+Overrides parent color context. Accepts 'lightest' | 'lighter' | 'light' | 'dark' |
+'darker' | 'darkest'. Promo variants automatically compute palette: featured promos
+use the <code>-est</code> suffix, standard promos use the <code>-er</code> suffix. Defaults to undefined
+(inherits from parent context). See <a href="#css-custom-properties">CSS Custom Properties</a>
+for default values.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'light'</span> <span class="token operator">|</span> <span class="token string">'lighter'</span> <span class="token operator">|</span> <span class="token string">'lightest'</span> <span class="token operator">|</span> <span class="token string">'dark'</span> <span class="token operator">|</span> <span class="token string">'darker'</span> <span class="token operator">|</span> <span class="token string">'darkest'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4627,7 +4641,11 @@ See <a href="#css-custom-properties">CSS Custom Properties</a> for default value
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>variant</code></td>
-                  <td><p>Change the style of the card to be a "Promo"</p></td>
+                  <td><p>Controls the card's visual variant. Accepts 'promo' or undefined.
+When set to 'promo', the card renders in a promotional layout with
+grid-based positioning for image, body, and footer. Defaults to
+undefined (standard card layout). Avoid mixing promo and standard
+cards in the same group.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'promo'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
@@ -4664,7 +4682,9 @@ See <a href="#css-custom-properties">CSS Custom Properties</a> for default value
                     </uxdot-copy-permalink>
                   </td>
                   <td><code>fullWidth</code></td>
-                  <td><p>Change a promo with an image + body + footer to use the <code>full-width</code> style</p></td>
+                  <td><p>When true, a promo card bleeds to the edges of its container with no border.
+Only applies when <code>variant</code> is 'promo'. Requires the image slot to be populated
+for the full-width grid layout. Defaults to false. Boolean attribute.</p></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">boolean</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token boolean">false</span></code></pre></td>
                 </tr>
@@ -5094,35 +5114,43 @@ See <a href="#css-custom-properties">CSS Custom Properties</a> for default value
               <tbody>
                 <tr>
                   <td><code>--rh-card-header-background-on-light</code></td>
-                  <td></td>
+                  <td><p>Header background in light mode</p></td>
                   <td>
                     <code>transparent</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-card-header-background-on-dark</code></td>
-                  <td></td>
+                  <td><p>Header background in dark mode</p></td>
                   <td>
                     <code>transparent</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-card-heading-font-weight</code></td>
-                  <td><p>The font weight for headings in the header and body</p></td>
+                  <td><p>Header font weight override</p>
+<p>Promo heading font weight override</p></td>
                   <td>
                     <code>var(--rh-font-weight-body-text-medium, 500)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-card-heading-font-family</code></td>
-                  <td><p>The font family for headings in the header and body</p></td>
+                  <td><p>Header font family override</p>
+<p>Promo heading font family override</p>
+<p>Promo standard font family override</p></td>
                   <td>
                     <code>var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif)</code>
                   </td>
                 </tr>
                 <tr>
                   <td><code>--rh-card-heading-font-size</code></td>
-                  <td><p>The font size for headings in the header and body</p></td>
+                  <td><p>Header font size override</p>
+<p>Body heading font size override</p>
+<p>Promo heading font size override</p>
+<p>Full-width promo heading size override</p>
+<p>Promo heading size override at containers &gt;= md</p>
+<p>Full-width promo heading size override at containers &gt;= md</p></td>
                   <td>
                     <code>var(--rh-font-size-heading-md, 1.75rem)</code>
                   </td>
@@ -5210,7 +5238,7 @@ See <a href="#css-custom-properties">CSS Custom Properties</a> for default value
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Link default color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5326,7 +5354,7 @@ See <a href="#css-custom-properties">CSS Custom Properties</a> for default value
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Link hover color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5442,7 +5470,7 @@ See <a href="#css-custom-properties">CSS Custom Properties</a> for default value
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Link focus color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5558,7 +5586,7 @@ See <a href="#css-custom-properties">CSS Custom Properties</a> for default value
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Link active color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5674,7 +5702,7 @@ See <a href="#css-custom-properties">CSS Custom Properties</a> for default value
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Visited link default color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5790,7 +5818,7 @@ See <a href="#css-custom-properties">CSS Custom Properties</a> for default value
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Visited link hover color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -5906,7 +5934,7 @@ See <a href="#css-custom-properties">CSS Custom Properties</a> for default value
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Visited link focus color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6022,7 +6050,7 @@ See <a href="#css-custom-properties">CSS Custom Properties</a> for default value
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Visited link active color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6138,7 +6166,7 @@ See <a href="#css-custom-properties">CSS Custom Properties</a> for default value
                     </a>
                   </td>
                   <td>
-                    <p>Card's default border radius</p>
+                    <p>Card border radius</p>
 <p>3px border radius; Example: Card</p>
                   </td>
                   <td data-label="Copy">
@@ -6255,7 +6283,8 @@ See <a href="#css-custom-properties">CSS Custom Properties</a> for default value
                     </a>
                   </td>
                   <td>
-                    <p>Body text font family</p>
+                    <p>Card typeface</p>
+<p>Body text font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6371,7 +6400,8 @@ See <a href="#css-custom-properties">CSS Custom Properties</a> for default value
                     </a>
                   </td>
                   <td>
-                    <p>Line height for body text</p>
+                    <p>Card line height</p>
+<p>Line height for body text</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6487,7 +6517,8 @@ See <a href="#css-custom-properties">CSS Custom Properties</a> for default value
                     </a>
                   </td>
                   <td>
-                    <p>1px border width; Example: Secondary CTA or Button</p>
+                    <p>Card border thickness</p>
+<p>1px border width; Example: Secondary CTA or Button</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6603,8 +6634,7 @@ See <a href="#css-custom-properties">CSS Custom Properties</a> for default value
                     </a>
                   </td>
                   <td>
-                    <p>Computed from the color context. Intended to be read for
-theming purposes, rather than set in page css.</p>
+                    <p>Card border color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6720,7 +6750,7 @@ theming purposes, rather than set in page css.</p>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Card text color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6836,7 +6866,7 @@ theming purposes, rather than set in page css.</p>
                     </a>
                   </td>
                   <td>
-                    
+                    <p>Card surface color</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -6952,7 +6982,8 @@ theming purposes, rather than set in page css.</p>
                     </a>
                   </td>
                   <td>
-                    <p>h6 heading font size</p>
+                    <p>Promo heading font size</p>
+<p>h6 heading font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7068,7 +7099,9 @@ theming purposes, rather than set in page css.</p>
                     </a>
                   </td>
                   <td>
-                    <p>Primary surface (light theme)</p>
+                    <p>Card surface in light mode</p>
+<p>Promo surface in light mode</p>
+<p>Primary surface (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7184,7 +7217,9 @@ theming purposes, rather than set in page css.</p>
                     </a>
                   </td>
                   <td>
-                    <p>Primary surface (dark theme)</p>
+                    <p>Card surface in dark mode</p>
+<p>Promo surface in dark mode</p>
+<p>Primary surface (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7300,7 +7335,8 @@ theming purposes, rather than set in page css.</p>
                     </a>
                   </td>
                   <td>
-                    <p>Tertiary surface (light theme)</p>
+                    <p>Promo standard surface in light mode</p>
+<p>Tertiary surface (light theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7416,7 +7452,8 @@ theming purposes, rather than set in page css.</p>
                     </a>
                   </td>
                   <td>
-                    <p>Secondary surface (dark theme)</p>
+                    <p>Promo standard surface in dark mode</p>
+<p>Secondary surface (dark theme)</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7532,7 +7569,11 @@ theming purposes, rather than set in page css.</p>
                     </a>
                   </td>
                   <td>
-                    <p>Heading font family</p>
+                    <p>Card heading typeface</p>
+<p>Header font family</p>
+<p>Promo heading font family</p>
+<p>Promo standard font family</p>
+<p>Heading font family</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7648,7 +7689,8 @@ theming purposes, rather than set in page css.</p>
                     </a>
                   </td>
                   <td>
-                    <p>20px font size</p>
+                    <p>Promo standard text size</p>
+<p>20px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7764,7 +7806,10 @@ theming purposes, rather than set in page css.</p>
                     </a>
                   </td>
                   <td>
-                    <p>Medium font weight</p>
+                    <p>Header font weight</p>
+<p>Promo heading font weight</p>
+<p>Promo standard font weight</p>
+<p>Medium font weight</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7880,7 +7925,9 @@ theming purposes, rather than set in page css.</p>
                     </a>
                   </td>
                   <td>
-                    <p>Line height for headings</p>
+                    <p>Card heading line height</p>
+<p>Promo standard heading line height</p>
+<p>Line height for headings</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -7996,7 +8043,10 @@ theming purposes, rather than set in page css.</p>
                     </a>
                   </td>
                   <td>
-                    <p>16px spacer</p>
+                    <p>Header content gap</p>
+<p>Promo paragraph margin-block-end</p>
+<p>Promo header margin-block-end</p>
+<p>16px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8228,7 +8278,8 @@ theming purposes, rather than set in page css.</p>
                     </a>
                   </td>
                   <td>
-                    <p>24px font size</p>
+                    <p>Full-width promo heading size</p>
+<p>24px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8344,7 +8395,10 @@ theming purposes, rather than set in page css.</p>
                     </a>
                   </td>
                   <td>
-                    <p>h5 heading font size</p>
+                    <p>Header font size</p>
+<p>Body heading font size</p>
+<p>Promo heading size at containers &gt;= md</p>
+<p>h5 heading font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8460,7 +8514,9 @@ theming purposes, rather than set in page css.</p>
                     </a>
                   </td>
                   <td>
-                    <p>48px spacer</p>
+                    <p>Promo body margin at containers &gt;= md</p>
+<p>Promo standard inline padding at containers &gt;= md</p>
+<p>48px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8576,7 +8632,14 @@ theming purposes, rather than set in page css.</p>
                     </a>
                   </td>
                   <td>
-                    <p>24px spacer</p>
+                    <p>Card margin inline</p>
+<p>Header margin-block-start</p>
+<p>Body margin-block-end</p>
+<p>Footer margin-block-end</p>
+<p>Body margin block at containers &lt; md</p>
+<p>Promo footer margin-block-start</p>
+<p>Promo standard column gap at containers &gt;= md</p>
+<p>24px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8692,7 +8755,14 @@ theming purposes, rather than set in page css.</p>
                     </a>
                   </td>
                   <td>
-                    <p>32px spacer</p>
+                    <p>Body margin-block-start</p>
+<p>Body margin-block-end</p>
+<p>Card margin inline at containers &gt;= md</p>
+<p>Card margin-block-start at containers &gt;= md</p>
+<p>Card margin-block-end at containers &gt;= md</p>
+<p>Promo standard inline padding</p>
+<p>Promo body margin</p>
+<p>32px spacer</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -8924,7 +8994,8 @@ theming purposes, rather than set in page css.</p>
                     </a>
                   </td>
                   <td>
-                    <p>18px font size</p>
+                    <p>Promo paragraph font size</p>
+<p>18px font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
@@ -9040,7 +9111,8 @@ theming purposes, rather than set in page css.</p>
                     </a>
                   </td>
                   <td>
-                    <p>h4 heading font size</p>
+                    <p>Full-width promo heading size at containers &gt;= md</p>
+<p>h4 heading font size</p>
                   </td>
                   <td data-label="Copy">
       <div>
