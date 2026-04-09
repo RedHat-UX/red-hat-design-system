@@ -158,7 +158,10 @@ export class RhAlert extends LitElement {
    *
    * A Toast alert is used to present a global message about an event,
    * update, or confirmation, like the result of a user action that cannot
-   * be presented within a specific layout or component.
+   * be presented within a specific layout or component. Toast alerts often
+   * appear away from what triggered them, may time out, automatically, and
+   * can be hard to discover in linear reading order. Toast alerts pose
+   * significant accessibility concerns and are **not recommended for use**.
    */
   @property({ reflect: true }) variant?: 'alternate' | 'toast' | 'inline';
 
@@ -357,7 +360,7 @@ async function manageAlertAnimation(event: Event) {
 
 /**
  * @see https://aerotwist.com/blog/flip-your-animations/
- * @param toaster container for toasted alerts
+ * @param toaster container for toast alerts
  */
 function flip(toaster: HTMLElement) {
   const first = toaster.offsetHeight;
