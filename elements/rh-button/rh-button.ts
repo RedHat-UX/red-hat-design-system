@@ -17,8 +17,8 @@ import styles from './rh-button.css' with { type: 'css' };
  * Triggers actions via click, Enter, or Space. USE `variant` to set
  * hierarchy: primary (should limit one per page), secondary, tertiary,
  * or danger. Renders a native `<button>` with `delegatesFocus` for
- * keyboard access. Must use `label` for icon-only buttons to set the
- * ARIA accessible name. Supports form association (submit/reset).
+ * keyboard access. Icon-only buttons must set `accessible-label` to
+ * provide an ARIA accessible name. Supports form association (submit/reset).
  *
  * @summary Clickable button that triggers page or form actions
  *
@@ -53,18 +53,16 @@ export class RhButton extends LitElement {
   @property({ reflect: true }) type?: 'button' | 'submit' | 'reset';
 
   /**
-   * Accessible name for the button, use when the button does not have slotted text.
+   * Accessible name for the button, applied as `aria-label` on the internal
+   * `<button>`. Use when the button has no visible text (e.g. icon-only
+   * buttons like close or play). When set, slotted text is hidden with
+   * `aria-hidden="true"`. Preferred over the deprecated `label` attribute.
+   * Defaults to undefined.
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
 
   /**
-   * Accessible name for the button, applied as `aria-label` on the internal
-   * `<button>`. USE when the button has no visible text (e.g. icon-only
-   * buttons like close or play). When set, slotted text is hidden with
-   * `aria-hidden="true"`. Defaults to undefined.
-   *
-   * Use `accessible-label` instead.
-   * @deprecated
+   * @deprecated Use `accessible-label` instead.
    */
   @property() label?: string;
 
