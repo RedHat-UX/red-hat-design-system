@@ -270,13 +270,17 @@ export class RhPagination extends LitElement {
     }
     for (const link of this.#links ?? []) {
       if (!link.href) {
-        return null;
+        continue;
       }
-      const url = new URL(link.href);
-      if (url.pathname === location.pathname
-        && url.search === location.search
-        && url.hash === location.hash) {
-        return link;
+      try {
+        const url = new URL(link.href);
+        if (url.pathname === location.pathname
+          && url.search === location.search
+          && url.hash === location.hash) {
+          return link;
+        }
+      } catch {
+        continue;
       }
     }
     return this.querySelector<HTMLAnchorElement>('li a[aria-current="page"]')
