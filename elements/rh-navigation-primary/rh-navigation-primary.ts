@@ -373,10 +373,10 @@ export class RhNavigationPrimary extends LitElement {
     );
   }
 
-  #secondaryLinksItems(): RhNavigationPrimaryItem[] {
+  #secondaryLinksItems(): HTMLElement[] {
     return Array.from(
-      this.querySelectorAll(
-        'rh-navigation-primary-item[slot="links"]',
+      this.querySelectorAll<HTMLElement>(
+        ':is(rh-navigation-primary-item, rh-navigation-link)[slot="links"]',
       )
     );
   }
