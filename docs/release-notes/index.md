@@ -63,28 +63,29 @@ Released April 9, 2026
 
 | Change        | Type        | Notes        |
 | ------------- | ----------- | ------------ |
-| `<rh-navigation-primary>`: unified navigation redesign | {{i()}} | Redesigned to match the unified nav spec with sub-domain support via `site-name` and `site-href` attributes, collapsible links menu, and hat-tip hover animation on the Red Hat fedora. |
-| ✨ Added `<rh-select>` | {{i()}} | A select enables users to select one or more items from a list. |
 | ✨ Added `<rh-button-group>` | {{i()}} | A button group visually organizes multiple related buttons into a single collection. |
-| `<rh-tabs>`: added `icon` and `icon-set` attributes | {{i()}} | `<rh-tab>` elements now support `icon` and `icon-set` attributes. |
-| `<rh-pagination>`: deprecate `variant="open"` | {{i()}} | Deprecated `variant="open"` in favor of `variant="borderless"`. |
+| ✨ Added `<rh-readtime>` | {{i()}} | Provides an estimated reading time for content. |
+| ✨ Added `<rh-select>` | {{i()}} | A select enables users to select one or more items from a list. |
+| `<rh-accordion>`: added light DOM shim | {{i()}} | Added `rh-accordion-lightdom-shim.css` to help ensure content is visible when JavaScript is disabled or fails to load. |
 | `<rh-blockquote>`: added `author` and `subtitle` attributes | {{i()}} | Added `author` and `subtitle` attribute/slot pairs; deprecated the `title` attribute. |
 | `<rh-button>`: deprecate `label` attribute | {{i()}} | Deprecated `label` in favor of `accessible-label`. |
+| `<rh-navigation-primary>`: unified navigation redesign | {{i()}} | Redesigned to match the unified nav spec with sub-domain support via `site-name` and `site-href` attributes, collapsible links menu, and hat-tip hover animation on the Red Hat fedora. |
+| `<rh-pagination>`: deprecate `variant="open"` | {{i()}} | Deprecated `variant="open"` in favor of `variant="borderless"`. |
 | `<rh-table>`: added `accessible-label` to `<rh-sort-button>` | {{i()}} | Added `accessible-label` slot/attribute pair for use when localizing tables. |
+| `<rh-tabs>`: added `icon` and `icon-set` attributes | {{i()}} | `<rh-tab>` elements now support `icon` and `icon-set` attributes. |
 | `<rh-tag>`: improved theming | {{i()}} | Improved element theming capabilities. |
-| `<rh-accordion>`: added light DOM shim | {{i()}} | Added `rh-accordion-lightdom-shim.css` to help ensure content is visible when JavaScript is disabled or fails to load. |
-| `<rh-announcement>`: updated accessible label usage | {{p()}} | Updated `<rh-button>` in dismissible announcements to use the `accessible-label` attribute. |
-| `<rh-code-block>`: updated spacing and icons | {{p()}} | Updated spacing, icons, and font size for compact and default code blocks. |
-| `<rh-code-block>`: fixed iOS font rendering | {{p()}} | Corrected font size rendering in iOS-based browsers. |
-| `<rh-pagination>`: corrected fallback behavior | {{p()}} | Corrected fallback when links are missing `href` to `aria-current="page"`. |
-| `<rh-pagination>`: prevented unwanted focus | {{p()}} | Prevented page number input from receiving focus on page load. |
-| `<rh-pagination>`: improved input accessibility | {{p()}} | Improved page number input accessibility and mobile submit behavior. |
-| `<rh-footer>`: improved semantic markup | {{p()}} | Removed `<footer>` from shadow DOM and set `role="contentinfo"` on host for better semantics. |
 | `<rh-alert>`: improved toast accessibility | {{p()}} | Improved screen reader notification accessibility for toast alerts. |
+| `<rh-announcement>`: updated accessible label usage | {{p()}} | Updated `<rh-button>` in dismissible announcements to use the `accessible-label` attribute. |
 | `<rh-avatar>`: corrected layout | {{p()}} | Corrected inline layout switching to block layout on small viewports. |
-| `<rh-health-index>`: deduped CSS properties | {{p()}} | Deduped CSS custom properties for text colors. |
 | `<rh-back-to-top>`: optimized styles | {{p()}} | Optimized internal styles. |
+| `<rh-code-block>`: fixed iOS font rendering | {{p()}} | Corrected font size rendering in iOS-based browsers. |
+| `<rh-code-block>`: updated spacing and icons | {{p()}} | Updated spacing, icons, and font size for compact and default code blocks. |
+| `<rh-footer>`: improved semantic markup | {{p()}} | Removed `<footer>` from shadow DOM and set `role="contentinfo"` on host for better semantics. |
+| `<rh-health-index>`: deduped CSS properties | {{p()}} | Deduped CSS custom properties for text colors. |
 | `<rh-menu-dropdown>`: updated caret icons | {{p()}} | Changed caret icons to filled variants and decreased size to match `<rh-select>`. |
+| `<rh-pagination>`: corrected fallback behavior | {{p()}} | Corrected fallback when links are missing `href` to `aria-current="page"`. |
+| `<rh-pagination>`: improved input accessibility | {{p()}} | Improved page number input accessibility and mobile submit behavior. |
+| `<rh-pagination>`: prevented unwanted focus | {{p()}} | Prevented page number input from receiving focus on page load. |
 | `<rh-switch>`: removed legacy fallback | {{p()}} | Removed legacy fallback check for `ariaDescribedByElements` and correctly tests support for `ariaDescription`. |
 | `<rh-tile>`: fixed `color-palette` rendering | {{p()}} | Fixed `color-palette` rendering when global color tokens are not already defined. |
 
