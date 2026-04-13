@@ -1,7 +1,7 @@
 <style>
   @container host (min-width: 768px) {
     #kbd-interactions td:first-child {
-      width: 33%;
+      width: 25%;
     }
   }
 </style>
@@ -15,18 +15,18 @@
 
 All elements of the primary navigation can be navigated with a keyboard.
 
-<uxdot-example color-palette="lighter" no-border>
-  <img alt="A primary nav with each individual focusable element highlighted by a blue focus ring and the words 'tab' next to each."
-       src="../nav-primary-a11y-keyboard-interactions-a.svg"
-       width="1012"
-       height="228">
+<uxdot-example variant="full" color-palette="lighter" no-border>
+  <img alt="A primary nav with each individual focusable element in each group (logo, menus, links) highlighted by a blue focus ring and the words 'tab' next to each."
+       src="../nav-primary-a11y-keyboard-interactions-1.svg"
+       width="1140"
+       height="330">
 </uxdot-example>
 
-Primary and utility menus can also be expanded or collapsed using the keyboard.
+<p style="margin-block-start: var(--rh-space-3xl);">Primary and utility menus can also be expanded or collapsed using the keyboard.</p>
 
 <uxdot-example color-palette="lighter" no-border>
   <img alt="A primary nav with a dropdown trigger focused with the words 'Enter / Return / Space' next to it."
-       src="../nav-primary-a11y-keyboard-interactions-b.svg"
+       src="../nav-primary-a11y-keyboard-interactions-2.svg"
        width="1012"
        height="370">
 </uxdot-example>
@@ -46,7 +46,7 @@ Primary and utility menus can also be expanded or collapsed using the keyboard.
         <td>
           <ul>
             <li>Moves focus to the next interactive element</li>
-            <li>Moves focus inside of a menu</li>
+            <li>Moves focus inside of a menu if expanded</li>
             <li>Collapses an expanded menu when focus leaves the expanded menu</li>
           </ul>
         </td>
@@ -81,7 +81,9 @@ Primary and utility menus can also be expanded or collapsed using the keyboard.
         <td scope="row"><kbd>Escape</kbd></td>
         <td>
           <ul>
-            <li>Collapses an expanded menu and returns focus to the menu trigger element</li>
+            <li>Moves focus to the next interactive element</li>
+            <li>Moves focus inside of a menu</li>
+            <li>Collapses an expanded menu when focus leaves the expanded menu</li>
           </ul>
         </td>
       </tr>
@@ -93,31 +95,31 @@ Primary and utility menus can also be expanded or collapsed using the keyboard.
 
 A logical focus order helps keyboard users operate our websites. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly.
 
-<uxdot-example color-palette="lighter" no-border>
+<uxdot-example variant="full" color-palette="lighter" no-border>
   <img alt="A nav with numbers 1-12 showing focus moving from the top left to the bottom right in the correct sequence"
-       src="../nav-primary-a11y-focus-order-a.svg"
-       width="1012"
-       height="228">
+       src="../nav-primary-a11y-focus-order-1.svg"
+       width="1140"
+       height="337">
 </uxdot-example>
 
-Focus will move from the menu trigger element to the first interactive element inside of a menu when expanded.
+When a menu is expanded, focus moves from the menu trigger to the first interactive element. When focus is moved away from the last interactive element in a menu, it will collapse. (6)
 
 <uxdot-example color-palette="lighter" no-border>
   <img alt="A nav with the first menu expanded, showing the focus order going into the menu then back out in the correct sequence."
-       src="../nav-primary-a11y-focus-order-b.svg"
+       src="../nav-primary-a11y-focus-order-2.svg"
        width="1012"
-       height="370">
+       height="562">
 </uxdot-example>
 
 ## Touch targets
 
-The large menu trigger element and spacing around links make them easy to select.
+All menu triggers and cross-domain links exceed the WCAG [Level AA success criteria for target size](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html), which calls for touch targets to be at least 24 by 24px.
 
-<uxdot-example color-palette="lighter" no-border>
-  <img alt=""
+<uxdot-example variant="full" color-palette="lighter" no-border>
+  <img alt="Little red 24px semi-transparent circles overtop of each interactive element in a primary navigation showing that each interactive element in the nav is larger than 24px by 24px."
        src="../nav-primary-a11y-touch-targets.svg"
-       width="1012"
-       height="228">
+       width="1140"
+       height="337">
 </uxdot-example>
 
 {% include 'partials/accessibility/ariaguide.md' %}
@@ -127,4 +129,4 @@ The large menu trigger element and spacing around links make them easy to select
 {% include 'partials/accessibility/2.1.1-A.md' %}
 {% include 'partials/accessibility/2.1.3-AAA.md' %}
 {% include 'partials/accessibility/2.4.3-A.md' %}
-{% include 'partials/accessibility/2.5.5-AAA.md' %}
+{% include 'partials/accessibility/2.5.8-AA.md' %}

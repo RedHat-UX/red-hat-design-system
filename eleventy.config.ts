@@ -17,6 +17,7 @@ import DesignTokensPlugin from '#11ty-plugins/tokens.js';
 import RHDSMarkdownItPlugin from '#11ty-plugins/markdown-it.js';
 import ImportMapPlugin from '#11ty-plugins/importMap.js';
 import LargeDemoWorkaroundPlugin from '#11ty-plugins/large-demo-workaround.js';
+import LazyLoadingPlugin from '#11ty-plugins/lazy-loading.js';
 
 export interface GlobalData {
   runMode: 'build' | 'watch' | 'serve';
@@ -78,6 +79,12 @@ export default async function(eleventyConfig: UserConfig) {
   eleventyConfig.addPlugin(EleventyRenderPlugin);
   eleventyConfig.addPlugin(HelmetPlugin);
   eleventyConfig.addPlugin(RHDSMarkdownItPlugin);
+
+  /** Automatically add loading="lazy" to images below the fold */
+  eleventyConfig.addPlugin(LazyLoadingPlugin, {
+    skipFirstImages: 1,
+    excludeSelectors: [],
+  });
 
   /** Table of Contents Shortcode */
   eleventyConfig.addPlugin(TOCPlugin, {
@@ -226,13 +233,14 @@ export default async function(eleventyConfig: UserConfig) {
       'elements/rh-navigation-link/rh-navigation-link.ts',
       'elements/rh-navigation-primary/rh-navigation-primary-item-menu.ts',
       'elements/rh-navigation-primary/rh-navigation-primary-item.ts',
-      'elements/rh-navigation-primary/rh-navigation-primary-overlay.ts',
       'elements/rh-navigation-primary/rh-navigation-primary.ts',
       'elements/rh-navigation-secondary/rh-navigation-secondary.ts',
       'elements/rh-navigation-vertical/rh-navigation-vertical.ts',
       'elements/rh-navigation-vertical/rh-navigation-vertical-list.ts',
       'elements/rh-pagination/rh-pagination.ts',
       'elements/rh-scheme-toggle/rh-scheme-toggle.ts',
+      'elements/rh-select/rh-select.ts',
+      'elements/rh-select/rh-option.ts',
       'elements/rh-site-status/rh-site-status.ts',
       'elements/rh-skip-link/rh-skip-link.ts',
       'elements/rh-spinner/rh-spinner.ts',
@@ -284,6 +292,7 @@ export default async function(eleventyConfig: UserConfig) {
       'rh-dialog',
       'rh-footer',
       'rh-footer-universal',
+      'rh-select',
       'rh-stat',
       'rh-switch',
       'rh-tab',
@@ -294,6 +303,8 @@ export default async function(eleventyConfig: UserConfig) {
       'rh-menu',
       'rh-menu-item',
       'rh-menu-item-group',
+      'rh-navigation-primary',
+      'rh-option',
       'uxdot-pattern',
     ],
     tagsToAlphabetize: [

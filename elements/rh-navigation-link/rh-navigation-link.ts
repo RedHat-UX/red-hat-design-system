@@ -12,9 +12,13 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 import styles from './rh-navigation-link.css' with { type: 'css' };
 
 /**
- * Navigation Link is a link element that is used as a child of the primary, secondary,
- * subnav, and vertical navigation elements. Intrinsically, the Navigation Link is a list
- * item and should not be used outside of navigation elements that define the parent list element.
+ * Navigation Link provides a link for use within Red Hat navigation
+ * components. It must be a child of elements like `rh-subnav` or
+ * `rh-navigation-primary` that provide the parent list context. Authors
+ * should set `href` or slot an `<a>` element directly; authors must not
+ * slot a `<button>`. When `current-page` is set, `aria-current="page"` is
+ * applied so screen readers announce the active page. Uses
+ * `delegatesFocus` so Tab focus passes to the anchor.
  *
  * @summary A link that can be used as a child of navigation elements.
  * @alias navigation-link
@@ -58,24 +62,39 @@ export class RhNavigationLink extends LitElement {
       <div id="container">
         ${this.href ? html`
           <a href="${ifDefined(this.href)}" aria-current="${ifDefined(isCurrentPage)}">
-            <!--
-              Use this slot when the \`icon\` and \`icon-set\` attributes are not set. 
-              Must be used in conjunction with the \`href\` attribute.  
-              Can contain a rh-icon, svg, or img tag.
-            -->
+            <!-- summary: icon, only rendered when \`href\` is set
+                 description: |
+                   Use instead of the \`icon\` and \`icon-set\` attributes.
+                   Accepts \`rh-icon\`, \`svg\`, or \`img\`. Content should
+                   have \`aria-hidden\` or \`alt\` so screen readers skip
+                   decorative images. Not available when slotting
+                   an \`<a>\` directly (without \`href\` on the host). -->
             <slot name="icon">
               ${!this.icon ? html``
                 : html`<rh-icon icon="${ifDefined(this.icon)}" set="${ifDefined(this.iconSet)}"></rh-icon>`
               }
             </slot>
-            <!--
-              The default slot should contain the link text when the \`href\` attribute is set. 
-              Alternatively, an anchor tag (\`<a href="...">\`) should be the first child inside
-              the slot. Slot should never contain a button tag.
-            -->
+            <!-- summary: Link content
+                 description: |
+                   When the \`href\` attribute is set, this slot should
+                   contain inline text for the link label. Alternatively,
+                   an anchor element (\`<a href="...">\`) should be the
+                   first child in this slot when \`href\` is not set.
+                   Screen readers will announce the slotted text as the
+                   accessible name for the link. Authors must not slot a
+                   \`<button>\` element. -->
             <slot></slot>
           </a>`
-          : html`<slot></slot>`
+          : html`<!-- summary: Link content
+                 description: |
+                   When the \`href\` attribute is set, this slot should
+                   contain inline text for the link label. Alternatively,
+                   an anchor element (\`<a href="...">\`) should be the
+                   first child in this slot when \`href\` is not set.
+                   Screen readers will announce the slotted text as the
+                   accessible name for the link. Authors must not slot a
+                   \`<button>\` element. -->
+            <slot></slot>`
         }
       </div>
     `;

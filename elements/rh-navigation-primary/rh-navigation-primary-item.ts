@@ -21,6 +21,19 @@ import './rh-navigation-primary-item-menu.js';
 
 import styles from './rh-navigation-primary-item.css' with { type: 'css' };
 
+/**
+ * A navigation item provides an interactive link or dropdown for the
+ * primary navigation bar. It must be placed inside
+ * `rh-navigation-primary`. Keyboard users press Enter
+ * or Space to open or follow the link. Escape closes and returns focus to the toggle.
+ * Link items should contain one `<a>` for an accessible name.
+ *
+ * @summary Interactive link or dropdown for the primary navigation
+ *
+ * @fires {Event} toggle - Fires when the dropdown opens or closes. The event
+ *   has no custom detail; read the element's `open` property for the new state.
+ *
+ */
 @themable
 @customElement('rh-navigation-primary-item')
 export class RhNavigationPrimaryItem extends LitElement {
@@ -43,25 +56,44 @@ export class RhNavigationPrimaryItem extends LitElement {
   @state()
   private compact?: boolean;
 
+  /** Whether the dropdown is currently expanded. Only applies when `variant` is `dropdown`. */
   @property({ type: Boolean, reflect: true }) open = false;
 
-  /* Summary text for dropdown variants only */
+  /**
+   * Sets the label text for the dropdown toggle. When `variant` is `dropdown`,
+   * either this property or the `summary` slot must be provided so the toggle
+   * has an accessible name.
+   */
   @property() summary?: string;
 
-  /* Variants 'link' | 'dropdown', link is the default if no variant is given */
+  /**
+   * Controls the presentation style of the navigation item. must be set to
+   * `dropdown` when the item provides an expandable menu, otherwise it
+   * should remain `link` for simple anchor-style items. Defaults to `link`.
+   */
   @property() variant?: 'link' | 'dropdown' = 'link';
 
   /**
-   * Hides the element at various container query based breakpoints.
-   * Breakpoints available 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+   * Hides the element below a given container-query breakpoint and reveals it
+   * when the navigation is at or above that width. Allows progressive
+   * disclosure of navigation items at wider viewports. Avoid hiding critical
+   * navigation items, as they will be inaccessible below the breakpoint.
+   * Defaults to `undefined`.
    */
   @property({ reflect: true, attribute: 'hide-at' })
   hideAt?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' = undefined;
 
-  /** Shorthand for the `icon` slot, the value is icon name */
+  /**
+   * Shorthand for the `icon` slot. Sets the icon name from the given icon set.
+   * should be used with the `dropdown` variant for standalone secondary items
+   * such as account or search toggles. Defaults to `undefined`.
+   */
   @property() icon?: IconNameFor<IconSetName>;
 
-  /** Icon set for the `icon` property - 'ui' by default */
+  /**
+   * Icon set for the `icon` property. must match a registered icon set name.
+   * Defaults to `ui`.
+   */
   @property({ attribute: 'icon-set' }) iconSet?: IconSetName;
 
 
@@ -101,16 +133,41 @@ export class RhNavigationPrimaryItem extends LitElement {
     })}">${this.variant === 'dropdown' ? html`
         <details @toggle="${this.#detailsToggle}" ?open="${this.open}">
           <summary>${hamburger ? '' : html`
+            <!--
+              Use this slot to provide a custom icon before the summary text,
+              typically an \`<rh-icon>\` or \`<rh-avatar>\` element. For
+              accessibility, the icon is treated as decorative; the summary
+              slot provides the accessible name for the toggle.
+            -->
             <slot name="icon">${!this.icon ? '' : html`
               <rh-icon icon="${ifDefined(this.icon)}" set="${ifDefined(this.iconSet)}"></rh-icon>`}
             </slot>`}
-            <div id="summary-text"><slot name="summary">${this.summary}</slot></div>
-            <rh-icon icon="caret-down" set="microns"></rh-icon>
+            <div id="summary-text">
+              <!--
+                Use this slot to provide custom label content for the dropdown
+                toggle, typically a \`<span>\` with visible text. For
+                accessibility, this content provides the accessible name read
+                by screen readers; it must not be empty.
+              -->
+              <slot name="summary">${this.summary}</slot>
+            </div>
+            <rh-icon icon="caret-down" set="microns" ?hidden="${!hamburger}"></rh-icon>
           </summary>
           <rh-navigation-primary-item-menu id="details-content">
+            <!--
+              Use this slot for dropdown menu content such as headings,
+              link lists, and structured columns. For accessibility, content
+              is hidden from assistive technology until the dropdown is
+              opened via the disclosure widget.
+            -->
             <slot></slot>
           </rh-navigation-primary-item-menu>
         </details>` : html`
+        <!--
+          Use this slot for link variant content, typically a single \`<a>\`
+          or \`<rh-navigation-link>\` element. For accessibility, the link
+          text provides the accessible name for this navigation item.
+        -->
         <slot></slot>`}
       </div>
     `;
@@ -121,15 +178,15 @@ export class RhNavigationPrimaryItem extends LitElement {
     this.dispatchEvent(new Event('toggle', { bubbles: true }));
   }
 
-  /** @summary hides the dropdown */
-  public async hide() {
+  /** Sets `open` to `false`; only affects `dropdown` items. */
+  public async hide(): Promise<void> {
     this.open = false;
     this.requestUpdate();
     await this.updateComplete;
   }
 
-  /** @summary shows the dropdown */
-  public async show() {
+  /** Sets `open` to `true`; only affects `dropdown` items. */
+  public async show(): Promise<void> {
     this.open = true;
     this.requestUpdate();
     await this.updateComplete;

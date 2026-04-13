@@ -3,6 +3,7 @@ title: Patterns
 sidenavTitle: All Patterns
 summaries:
   accordion: Automatically expand accordions when a URL has hash fragments
+  alert: Show global toast notifications for non-blocking feedback
   announcement: Displays important messages across web properties
   call-to-action: Use theming to create desaturated CTAs
   card: Arranges content and interactive elements in a layout
