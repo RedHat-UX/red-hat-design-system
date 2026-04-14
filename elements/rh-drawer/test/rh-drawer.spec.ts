@@ -183,7 +183,9 @@ describe('<rh-drawer>', function() {
         element = container.querySelector('rh-drawer')!;
       });
       beforeEach(async () => await element.updateComplete);
-      beforeEach(press('Tab'));
+      beforeEach(async function() {
+        element.shadowRoot?.querySelector<HTMLElement>('#close-button')?.focus();
+      });
       beforeEach(press('Escape'));
       beforeEach(async () => await element.updateComplete);
       beforeEach(async () => await element.updateComplete);
