@@ -42,6 +42,20 @@ export class DrawerCloseEvent extends Event {
   }
 }
 
+/**
+ * Fired when the auto variant crosses its breakpoint threshold and
+ * switches between overlay and inline layout modes. Consumers can
+ * listen for this event to show or hide an external trigger button.
+ */
+export class DrawerModeChangeEvent extends Event {
+  constructor(
+    /** The layout mode the drawer just entered. */
+    public mode: 'overlay' | 'inline' | 'collapsible'
+  ) {
+    super('mode-change', { bubbles: true });
+  }
+}
+
 const thresholdBreakpoints: Record<string, number> = {
   'md': parseInt(BreakpointMd),
   'lg': parseInt(BreakpointLg),
@@ -50,41 +64,31 @@ const thresholdBreakpoints: Record<string, number> = {
 };
 
 /**
- * A drawer provides a collapsible side panel for supplementary content
- * or navigation. The `body` slot MUST contain panel content. Authors
- * SHOULD provide a header or `accessible-label` so screen readers can
- * identify the panel per WCAG. Background adapts to the color scheme.
+ * A collapsible side panel that provides supplementary content or
+ * navigation. The `body` slot must contain content and a header or
+ * `accessible-label` should be set so screen readers can identify
+ * the panel per WCAG. Escape closes the dialog when focused. A
+ * closed panel must always allow reopening via `trigger-id` or
+ * `panel="collapsible"`. Tab moves focus through panel controls.
  *
  * @summary Slides a panel in from the side for supplementary content or navigation
  *
  * @alias drawer
  *
  * @slot - Expects block elements such as `div`, `section`, or `article` for page content alongside the drawer panel. Not rendered for fixed or flow variants.
- * @slot header - Expects block elements for the panel header. MAY include a heading (`h1`–`h6`) so screen readers can identify the panel content.
- * @slot body - Expects block elements such as `div`, `nav`, or `rh-navigation-vertical` for panel content. MUST NOT be left empty for accessibility.
+ * @slot header - Expects block elements for the panel header. May include a heading (`h1`–`h6`) so screen readers can identify the panel content.
+ * @slot body - Expects block elements such as `div`, `nav`, or `rh-navigation-vertical` for panel content. Must not be left empty for accessibility.
  * @slot footer - Expects block elements for footer content pinned to the bottom of the panel. Content is visible to screen readers.
- * @slot expand-label-expand - Expects inline text for the expand button when collapsed. Defaults to "Enter full viewport". SHOULD be localized for screen readers.
- * @slot expand-label-collapse - Expects inline text for the expand button when expanded. Defaults to "Exit full viewport". SHOULD be localized for screen readers.
- * @slot close-label - Expects inline text for the close button. Defaults to "Close drawer". SHOULD be localized for screen readers.
- * @slot resize-label - Expects inline text for the resize handle. Defaults to "Resize panel". SHOULD be localized for screen readers.
- * @slot collapse-label-open - Expects inline text for the collapse toggle when open. Defaults to "Collapse panel". SHOULD be localized for screen readers.
- * @slot collapse-label-closed - Expects inline text for the collapse toggle when closed. Defaults to "Expand panel". SHOULD be localized for screen readers.
- *
- * @csspart panel - The sliding panel container. Background adapts to light and dark themes.
- * @csspart header - The panel header area for slotted heading content.
- * @csspart body - The panel body content area.
- * @csspart footer - The panel footer area, pinned to the bottom.
- * @csspart expand-button - The full-viewport expand toggle button.
- * @csspart close-button - The panel close button, visible when not collapsible.
- * @csspart resize-handle - The drag handle for resizing panel width.
- * @csspart collapse-toggle - The round collapse and expand toggle button.
- * @csspart content - The main content area adjacent to the panel.
- *
- * @cssprop [--rh-drawer-panel-padding] - Padding inside the drawer panel. Defaults to `rh-space-lg` (16px).
- * @cssprop [--rh-drawer-content-padding] - Padding for the main content area adjacent to the panel. Responsive defaults use `rh-space-lg`, `rh-space-2xl`, and `rh-space-4xl` tokens at different container widths.
+ * @slot expand-label-expand - Expects inline text for the expand button when collapsed. Defaults to "Enter full viewport". Should be localized for screen readers.
+ * @slot expand-label-collapse - Expects inline text for the expand button when expanded. Defaults to "Exit full viewport". Should be localized for screen readers.
+ * @slot close-label - Expects inline text for the close button. Defaults to "Close drawer". Should be localized for screen readers.
+ * @slot resize-label - Expects inline text for the resize handle. Defaults to "Resize panel". Should be localized for screen readers.
+ * @slot collapse-label-open - Expects inline text for the collapse toggle when open. Defaults to "Collapse panel". Should be localized for screen readers.
+ * @slot collapse-label-closed - Expects inline text for the collapse toggle when closed. Defaults to "Expand panel". Should be localized for screen readers.
  *
  * @fires {DrawerOpenEvent} open - Fires when the drawer panel opens. The event's `trigger` property is the HTMLElement that initiated the action, or `null` when opened via `show()`.
  * @fires {DrawerCloseEvent} close - Fires when the drawer panel closes. No additional data.
+ * @fires {DrawerModeChangeEvent} mode-change - Fires when the layout mode changes. For auto variant, `mode` is `'inline'` (above breakpoint, collapsible toggle visible) or `'overlay'` (below breakpoint, needs external trigger). For overlay variant with collapsible panel, `mode` is `'collapsible'` (above 768px, built-in toggle visible) or `'overlay'` (below 768px, needs external trigger).
  */
 @customElement('rh-drawer')
 @themable
@@ -113,7 +117,12 @@ export class RhDrawer extends LitElement {
   /** Whether the drawer panel is open. */
   @property({ type: Boolean, reflect: true }) open = false;
 
-  /** Optional ID of the external trigger element. */
+  /**
+   * ID of the external trigger element that toggles the drawer open and
+   * closed. Must be set when `panel` is `none` or `resizable` so the panel
+   * can be reopened after closing. The referenced element receives click
+   * handling automatically and receives focus when the panel closes.
+   */
   @property({ attribute: 'trigger-id' }) triggerId?: string;
 
   /** Adds a full-viewport toggle button to the panel actions. */
@@ -132,6 +141,8 @@ export class RhDrawer extends LitElement {
    * - `resizable`: adds a drag bar for manual resizing (fixed and overlay only)
    * Auto and overlay variants default to `collapsible` when not set.
    * Fixed variant ignores `collapsible`.
+   * When set to `none` or `resizable`, `trigger-id` must reference a visible
+   * trigger element so the panel can be reopened after closing.
    */
   @property({ reflect: true }) panel?: 'collapsible' | 'resizable' | 'none';
 
@@ -149,7 +160,7 @@ export class RhDrawer extends LitElement {
 
   @state() private _isFullViewport = false;
   @state() private _isInlineMode = false;
-  @state() private _isNarrowMode = false;
+  @state() private _isNarrowCollapsible = false;
   @state() private _panelWidth: number | null = null;
   @state() private _splitterValue = 0;
   @state() private _suppressTransition = false;
@@ -222,15 +233,13 @@ export class RhDrawer extends LitElement {
   }
 
   render() {
-    const wouldBeCollapsible = !this.triggerId
-      && (this.panel === 'collapsible' || (!this.panel
+    const wouldBeCollapsible =
+      (this.panel === 'collapsible' || (!this.panel
         && this.variant !== 'fixed' && this.variant !== 'flow'))
       && this.variant !== 'fixed' && this.variant !== 'flow';
-    // showCollapsible and showNarrowToggle are mutually exclusive.
-    // Both render slots named collapse-label-open / collapse-label-closed;
-    // only one must be in the DOM at a time to avoid duplicate slot projection.
-    const showCollapsible = wouldBeCollapsible && !this._isNarrowMode;
-    const showNarrowToggle = wouldBeCollapsible && this._isNarrowMode;
+    const showCollapsible = wouldBeCollapsible
+      && (this.variant !== 'auto' || this._isInlineMode)
+      && !(this.variant === 'overlay' && this._isNarrowCollapsible);
     const isResizable = this.panel === 'resizable'
       && (this.variant === 'fixed' || this.variant === 'overlay');
     const hasHeader = this.#slots.hasSlotted('header');
@@ -266,6 +275,7 @@ export class RhDrawer extends LitElement {
     return html`
       <div id="container"
            class=${classMap(classes)}>
+        <!-- csspart panel: The sliding panel container. Background adapts to light and dark themes. -->
         <div id="panel"
              part="panel"
              role="${this.#panelRole}"
@@ -277,6 +287,7 @@ export class RhDrawer extends LitElement {
                ?inert=${!this.open && showCollapsible}>
             <div id="actions" ?hidden="${!this.expand && showCollapsible}">
               ${this.expand ? html`
+                <!-- csspart expand-button: The full-viewport expand toggle button. -->
                 <button id="expand-button"
                         part="expand-button"
                         type="button"
@@ -292,6 +303,7 @@ export class RhDrawer extends LitElement {
                 </span>
               ` : nothing}
               ${!showCollapsible ? html`
+                <!-- csspart close-button: The panel close button, visible when not collapsible. -->
                 <button id="close-button"
                         part="close-button"
                         type="button"
@@ -306,17 +318,21 @@ export class RhDrawer extends LitElement {
               ` : nothing}
             </div>
             <div id="panel-content">
+              <!-- csspart header: The panel header area for slotted heading content. -->
               <div id="header" part="header" ?hidden=${!hasHeader}>
                 <slot name="header"></slot>
               </div>
+              <!-- csspart body: The panel body content area. -->
               <div id="body" part="body" ?hidden=${!hasBody}>
                 <slot name="body"></slot>
               </div>
+              <!-- csspart footer: The panel footer area, pinned to the bottom. -->
               <div id="footer" part="footer" ?hidden=${!hasFooter}>
                 <slot name="footer"></slot>
               </div>
             </div>
             ${isResizable ? html`
+              <!-- csspart resize-handle: The drag handle for resizing panel width. -->
               <div id="resize-handle"
                    part="resize-handle"
                    role="separator"
@@ -336,6 +352,7 @@ export class RhDrawer extends LitElement {
             ` : nothing}
           </div>
           ${showCollapsible ? html`
+            <!-- csspart collapse-toggle: The round collapse and expand toggle button. -->
             <button id="collapse-toggle"
                     part="collapse-toggle"
                     type="button"
@@ -353,23 +370,8 @@ export class RhDrawer extends LitElement {
         </div>
         ${hasContentSlot ? html`
           <div id="content-container">
-            ${showNarrowToggle ? html`
-              <button id="narrow-toggle"
-                      part="narrow-toggle"
-                      type="button"
-                      aria-controls="panel"
-                      aria-expanded="${this.open}"
-                      aria-labelledby="narrow-toggle-label"
-                      @click=${this.toggle}>
-                <rh-icon set="ui" icon="caret-left"></rh-icon>
-              </button>
-              <span id="narrow-toggle-label" class="visually-hidden">
-                <span ?hidden=${!this.open}><slot name="collapse-label-open">Collapse panel</slot></span>
-                <span ?hidden=${this.open}><slot name="collapse-label-closed">Expand panel</slot></span>
-              </span>
-            ` : nothing}
+            <!-- csspart content: The main content area adjacent to the panel. -->
             <div id="content" part="content">
-              <!-- Page content displayed alongside the panel (not used with fixed variant) -->
               <slot></slot>
             </div>
           </div>
@@ -430,6 +432,25 @@ export class RhDrawer extends LitElement {
       this.#store('panelWidth', null);
     }
     this.#store('panel', _new ?? null);
+    if ((this.variant === 'overlay' || this.variant === 'auto') && this.hasUpdated) {
+      const effectivelyCollapsible = _new === 'collapsible' || !_new;
+      if (effectivelyCollapsible) {
+        if (this.variant === 'overlay') {
+          this._isNarrowCollapsible = false;
+          this.#updateInlineMode();
+          this.dispatchEvent(
+            new DrawerModeChangeEvent(this._isNarrowCollapsible ? 'overlay' : 'collapsible'),
+          );
+        } else {
+          this.dispatchEvent(
+            new DrawerModeChangeEvent(this._isInlineMode ? 'inline' : 'overlay'),
+          );
+        }
+      } else {
+        this._isNarrowCollapsible = false;
+        this.dispatchEvent(new DrawerModeChangeEvent('overlay'));
+      }
+    }
   }
 
   @observes('triggerId')
@@ -566,14 +587,29 @@ export class RhDrawer extends LitElement {
   #updateInlineMode() {
     if (this.variant === 'auto' || this.variant === 'overlay') {
       const { width } = this.getBoundingClientRect();
+      const effectivelyCollapsible = this.panel === 'collapsible' || !this.panel;
       const breakpoint = this.variant === 'auto' && this.overlayThreshold != null ?
         thresholdBreakpoints[this.overlayThreshold] ?? 768
         : 768;
       const nextInline = this.variant === 'auto' && width >= breakpoint;
-      const nextNarrow = width < breakpoint;
-      if (nextInline !== this._isInlineMode || nextNarrow !== this._isNarrowMode) {
+      if (nextInline !== this._isInlineMode) {
         this._isInlineMode = nextInline;
-        this._isNarrowMode = nextNarrow;
+        if (this.variant === 'auto' && effectivelyCollapsible) {
+          this.dispatchEvent(
+            new DrawerModeChangeEvent(nextInline ? 'inline' : 'overlay'),
+          );
+        }
+      }
+      if (this.variant === 'overlay') {
+        if (effectivelyCollapsible) {
+          const nextNarrow = width < 768;
+          if (nextNarrow !== this._isNarrowCollapsible) {
+            this._isNarrowCollapsible = nextNarrow;
+            this.dispatchEvent(
+              new DrawerModeChangeEvent(nextNarrow ? 'overlay' : 'collapsible'),
+            );
+          }
+        }
       }
     }
   }
@@ -591,6 +627,24 @@ export class RhDrawer extends LitElement {
       this.#resizeObserver = new ResizeObserver(this.#onContainerResize);
       this.#resizeObserver.observe(this);
       this.#updateInlineMode();
+      const effectivelyCollapsible = this.panel === 'collapsible' || !this.panel;
+      if (this.variant === 'auto') {
+        if (effectivelyCollapsible) {
+          this.dispatchEvent(
+            new DrawerModeChangeEvent(this._isInlineMode ? 'inline' : 'overlay'),
+          );
+        } else {
+          this.dispatchEvent(new DrawerModeChangeEvent('overlay'));
+        }
+      } else if (this.variant === 'overlay') {
+        if (effectivelyCollapsible) {
+          this.dispatchEvent(
+            new DrawerModeChangeEvent(this._isNarrowCollapsible ? 'overlay' : 'collapsible'),
+          );
+        } else {
+          this.dispatchEvent(new DrawerModeChangeEvent('overlay'));
+        }
+      }
     } else if (this.variant === 'flow') {
       const bp = this.overlayThreshold != null ?
         thresholdBreakpoints[this.overlayThreshold] ?? 768
@@ -600,10 +654,8 @@ export class RhDrawer extends LitElement {
       window.addEventListener('resize', this.#onWindowResize);
       this.#onMediaChange();
       this._isInlineMode = this.#mediaQuery.matches;
-      this._isNarrowMode = false;
     } else {
       this._isInlineMode = false;
-      this._isNarrowMode = false;
     }
   }
 

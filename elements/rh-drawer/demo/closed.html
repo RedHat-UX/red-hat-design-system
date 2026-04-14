@@ -1,8 +1,9 @@
 <meta itemprop="description" content="Drawer rendered in a closed state by default, demonstrating the collapse toggle for expanding the panel.">
-<rh-drawer variant="auto">
+<rh-drawer id="drawer" variant="auto" trigger-id="trigger">
   <div slot="header">Header</div>
   <div slot="body">Body</div>
   <div slot="footer">Footer</div>
+  <button id="trigger" hidden aria-controls="drawer" aria-expanded="false">Toggle Drawer</button>
   <div>
     <h3>Documentation</h3>
     <p>This content is pushed aside by the drawer panel. When the panel collapses, this
@@ -17,4 +18,13 @@
 
 <script type="module">
   import '@rhds/elements/rh-drawer/rh-drawer.js';
+
+  const trigger = document.getElementById('trigger');
+  const drawer = document.getElementById('drawer');
+
+  drawer.addEventListener('open', () => trigger.setAttribute('aria-expanded', 'true'));
+  drawer.addEventListener('close', () => trigger.setAttribute('aria-expanded', 'false'));
+  drawer.addEventListener('mode-change', (e) => {
+    trigger.hidden = e.mode !== 'overlay';
+  });
 </script>

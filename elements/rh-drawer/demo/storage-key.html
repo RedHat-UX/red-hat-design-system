@@ -1,8 +1,9 @@
 <meta itemprop="description" content="Session persistence using the storage-key attribute to save and restore open state and panel width across page navigations.">
-<rh-drawer id="drawer" variant="overlay" storage-key="demo-storage">
+<rh-drawer id="drawer" variant="overlay" trigger-id="trigger" storage-key="demo-storage">
   <div slot="header">Header</div>
   <div slot="body">Body</div>
   <div slot="footer">Footer</div>
+  <button id="trigger" hidden aria-controls="drawer" aria-expanded="true">Toggle Drawer</button>
   <div>
     <h3>Content</h3>
     <p>Collapse or resize the drawer, navigate away, then return. The drawer state will
@@ -40,8 +41,6 @@
         <label><input type="radio" name="overlay-threshold" value="2xl"> 2xl (1680px)</label>
       </fieldset>
     </form>
-    <button id="trigger" disabled aria-controls="drawer" aria-expanded="true">Toggle Drawer</button>
-    <div class="help-text">Enabled when panel is resizable or none</div>
   </div>
 </rh-drawer>
 
@@ -59,6 +58,9 @@
 
   drawer.addEventListener('open', () => trigger.setAttribute('aria-expanded', 'true'));
   drawer.addEventListener('close', () => trigger.setAttribute('aria-expanded', 'false'));
+  drawer.addEventListener('mode-change', (e) => {
+    trigger.hidden = e.mode !== 'overlay';
+  });
 
   function saveKnobs() {
     const data = Object.fromEntries(new FormData(form));
@@ -100,15 +102,15 @@
       (canCollapse ? collapsibleInput : noneInput).checked = true;
     }
 
-    const needsTrigger = data.panel === 'resizable' || data.panel === 'none';
-
     drawer.variant = variant;
     drawer.position = data.position;
     drawer.panel = data.panel || undefined;
     drawer.expand = data.expand || undefined;
     drawer.overlayThreshold = data['overlay-threshold'] || undefined;
-    drawer.triggerId = needsTrigger ? 'trigger' : undefined;
-    trigger.disabled = !needsTrigger;
+
+    if (!drawer.open) {
+      drawer.open = true;
+    }
 
     document.getElementById('overlay-threshold-fieldset').disabled = variant !== 'auto';
   }

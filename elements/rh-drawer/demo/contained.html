@@ -1,9 +1,10 @@
 <meta itemprop="description" content="Drawer inside a sized container demonstrating how the component respects its container dimensions rather than the viewport.">
 <div id="container">
-<rh-drawer id="drawer" variant="auto" open>
+<rh-drawer id="drawer" variant="auto" trigger-id="trigger" open>
   <div slot="header">Header</div>
   <div slot="body">Body</div>
   <div slot="footer">Footer</div>
+  <button id="trigger" hidden aria-controls="drawer" aria-expanded="true">Toggle Drawer</button>
   <div>
     <h3>Page Content</h3>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
@@ -33,8 +34,6 @@
         <label><input type="radio" name="expand" value="full-viewport"> full-viewport</label>
       </fieldset>
     </form>
-    <button id="trigger" disabled aria-controls="drawer" aria-expanded="true">Toggle Drawer</button>
-    <div class="help-text">Enabled when panel is resizable or none</div>
   </div>
 </rh-drawer>
 </div>
@@ -72,6 +71,9 @@
 
   drawer.addEventListener('open', () => trigger.setAttribute('aria-expanded', 'true'));
   drawer.addEventListener('close', () => trigger.setAttribute('aria-expanded', 'false'));
+  drawer.addEventListener('mode-change', (e) => {
+    trigger.hidden = e.mode !== 'overlay';
+  });
 
   form.addEventListener('input', function sync() {
     const data = Object.fromEntries(new FormData(form));
@@ -91,14 +93,10 @@
       (canCollapse ? collapsibleInput : noneInput).checked = true;
     }
 
-    const needsTrigger = data.panel === 'resizable' || data.panel === 'none';
-
     drawer.variant = variant;
     drawer.position = data.position;
     drawer.panel = data.panel || undefined;
     drawer.expand = data.expand || undefined;
-    drawer.triggerId = needsTrigger ? 'trigger' : undefined;
-    trigger.disabled = !needsTrigger;
 
     if (!drawer.open) {
       drawer.open = true;

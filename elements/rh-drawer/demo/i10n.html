@@ -1,11 +1,12 @@
 <meta itemprop="description" content="Right-to-left language support demonstrating panel position, toggle icons, and keyboard interactions in RTL context.">
 <div dir="rtl" lang="he">
-  <rh-drawer id="drawer" variant="auto" open>
+  <rh-drawer id="drawer" variant="auto" trigger-id="trigger" open>
     <div slot="header">כותרת</div>
     <div slot="body">
       <p>זהו תוכן הגוף של חלונית המגירה. בשפות מימין לשמאל, החלונית מופיעה בצד הנכון בהתאם לכיוון הטקסט.</p>
     </div>
     <div slot="footer">כותרת תחתונה</div>
+    <button id="trigger" hidden aria-controls="drawer" aria-expanded="true">Toggle Drawer</button>
     <div>
       <h3>תוכן ראשי</h3>
       <p>תוכן זה מכוסה על ידי חלונית המגירה. המגירה תומכת בשפות מימין לשמאל כולל עברית וערבית.</p>
@@ -35,8 +36,6 @@
           <label><input type="radio" name="expand" value="full-viewport"> full-viewport</label>
         </fieldset>
       </form>
-      <button id="trigger" disabled aria-controls="drawer" aria-expanded="true">Toggle Drawer</button>
-      <div class="help-text">Enabled when panel is resizable or none</div>
     </div>
   </rh-drawer>
 </div>
@@ -60,6 +59,9 @@
 
   drawer.addEventListener('open', () => trigger.setAttribute('aria-expanded', 'true'));
   drawer.addEventListener('close', () => trigger.setAttribute('aria-expanded', 'false'));
+  drawer.addEventListener('mode-change', (e) => {
+    trigger.hidden = e.mode !== 'overlay';
+  });
 
   form.addEventListener('input', function sync() {
     const data = Object.fromEntries(new FormData(form));
@@ -79,14 +81,10 @@
       (canCollapse ? collapsibleInput : noneInput).checked = true;
     }
 
-    const needsTrigger = data.panel === 'resizable' || data.panel === 'none';
-
     drawer.variant = variant;
     drawer.position = data.position;
     drawer.panel = data.panel || undefined;
     drawer.expand = data.expand || undefined;
-    drawer.triggerId = needsTrigger ? 'trigger' : undefined;
-    trigger.disabled = !needsTrigger;
 
     if (!drawer.open) {
       drawer.open = true;

@@ -1,37 +1,36 @@
 <meta itemprop="description" content="Demonstrates using the trigger-id attribute to toggle the drawer with an external button element.">
-<button id="trigger" aria-controls="drawer" aria-expanded="false">Toggle Drawer</button>
-
 <rh-drawer id="drawer" variant="auto" trigger-id="trigger">
   <div slot="header">Header</div>
   <div slot="body">Body</div>
   <div slot="footer">Footer</div>
-  <form id="knobs">
-    <fieldset>
-      <legend>Variant</legend>
-      <label><input type="radio" name="variant" value="auto" checked> auto</label>
-      <label><input type="radio" name="variant" value="overlay" > overlay</label>
-    </fieldset>
-    <fieldset>
-      <legend>Position</legend>
-      <label><input type="radio" name="position" value="inline-start" checked> inline-start</label>
-      <label><input type="radio" name="position" value="inline-end"> inline-end</label>
-    </fieldset>
-    <fieldset>
-      <legend>Panel</legend>
-      <label><input type="radio" name="panel" value="none" checked> none</label>
-    </fieldset>
-    <fieldset>
-      <legend>Expand</legend>
-      <label><input type="radio" name="expand" value="" checked> none</label>
-      <label><input type="radio" name="expand" value="full-viewport"> full-viewport</label>
-    </fieldset>
-  </form>
+  <button id="trigger" hidden aria-controls="drawer" aria-expanded="false">Toggle Drawer</button>
   <div>
     <h3>Page Content</h3>
     <p>Use the external trigger button to open and close this drawer.</p>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
       ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
       laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <form id="knobs">
+      <fieldset>
+        <legend>Variant</legend>
+        <label><input type="radio" name="variant" value="auto" checked> auto</label>
+        <label><input type="radio" name="variant" value="overlay"> overlay</label>
+      </fieldset>
+      <fieldset>
+        <legend>Position</legend>
+        <label><input type="radio" name="position" value="inline-start" checked> inline-start</label>
+        <label><input type="radio" name="position" value="inline-end"> inline-end</label>
+      </fieldset>
+      <fieldset>
+        <legend>Panel</legend>
+        <label><input type="radio" name="panel" value="none" checked> none</label>
+      </fieldset>
+      <fieldset>
+        <legend>Expand</legend>
+        <label><input type="radio" name="expand" value="" checked> none</label>
+        <label><input type="radio" name="expand" value="full-viewport"> full-viewport</label>
+      </fieldset>
+    </form>
   </div>
 </rh-drawer>
 
@@ -44,6 +43,9 @@
 
   drawer.addEventListener('open', () => trigger.setAttribute('aria-expanded', 'true'));
   drawer.addEventListener('close', () => trigger.setAttribute('aria-expanded', 'false'));
+  drawer.addEventListener('mode-change', (e) => {
+    trigger.hidden = e.mode !== 'overlay';
+  });
 
   form.addEventListener('input', function sync() {
     const data = Object.fromEntries(new FormData(form));

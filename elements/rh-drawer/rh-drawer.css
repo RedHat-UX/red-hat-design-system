@@ -28,7 +28,7 @@
           var(--rh-color-surface-darker, #1f1f1f)
         );
 
-    /** Slide direction multiplier: -1 for LTR, 1 for RTL */
+    /* Slide direction multiplier: -1 for LTR, 1 for RTL */
     --_slide-dir: -1;
 
     display: block;
@@ -36,7 +36,7 @@
     block-size: 100%;
     min-block-size: 0;
 
-    /** Container query context for responsive layout switching */
+    /* Container query context for responsive layout switching */
     container: drawer / inline-size;
 
     /** Body typography */
@@ -82,7 +82,7 @@
       /** Panel border color */
       var(--rh-color-border-subtle);
 
-    /** Panel shadow; `rh-box-shadow-sm` token */
+    /** Panel shadow */
     box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
     transition: translate var(--_transition-duration) ease-in-out;
 
@@ -98,7 +98,7 @@
     block-size: 100%;
     overflow: hidden auto;
 
-    /** Theme-aware text color; `rh-color-text-primary` token */
+    /** Panel text color */
     color: var(--rh-color-text-primary);
     opacity: 1;
     transition: opacity var(--_transition-duration) ease-in-out;
@@ -113,9 +113,11 @@
     /** Content gap */
     gap: var(--rh-space-lg, 16px);
     min-inline-size: 0;
-
-    /** Panel content padding */
-    padding: var(--rh-drawer-panel-padding, var(--rh-space-lg, 16px));
+    padding:
+      /** Panel content padding override */
+      var(--rh-drawer-panel-padding,
+        /** Panel content padding */
+        var(--rh-space-lg, 16px));
 
     /** Top padding when actions are hidden */
     padding-block-start: var(--rh-space-2xl, 32px);
@@ -241,7 +243,7 @@
     /** Toggle icon color */
     color: var(--rh-color-icon-secondary);
 
-    /** Toggle shadow; `rh-box-shadow-sm` token */
+    /** Toggle shadow */
     box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
 
     &:before {
@@ -270,53 +272,6 @@
         var(--rh-border-width-md, 2px)
         solid
         /** Focus ring color */
-        var(--rh-color-interactive-primary-default);
-      outline-offset: 2px;
-    }
-
-    & rh-icon {
-      transition: rotate var(--_transition-duration) ease-in-out;
-    }
-  }
-
-  #narrow-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    inset-block-start: var(--rh-space-xl, 24px);
-    z-index: 4;
-    border-radius: 50%;
-    border:
-      var(--rh-border-width-sm, 1px)
-      solid
-      var(--rh-color-border-subtle);
-    background-color: var(--_panel-bg);
-    cursor: pointer;
-    padding: var(--rh-space-lg, 16px);
-    color: var(--rh-color-icon-secondary);
-    box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
-
-    &:before {
-      content: '';
-      position: absolute;
-      inset: calc(var(--_resize-handle-width) / -2);
-    }
-
-    &:hover {
-      color: var(--rh-color-interactive-primary-default);
-      background-color:
-        light-dark(
-            var(--rh-color-surface-light, #e0e0e0),
-            var(--rh-color-surface-dark, #383838)
-          );
-    }
-
-    &:is(:focus, :focus-visible) {
-      color: var(--rh-color-interactive-primary-default);
-      outline:
-        var(--rh-border-width-md, 2px)
-        solid
         var(--rh-color-interactive-primary-default);
       outline-offset: 2px;
     }
@@ -388,17 +343,32 @@
     container: content / inline-size;
 
     #content {
-      /** Content padding (narrow) */
-      padding: var(--rh-drawer-content-padding, var(--rh-space-4xl) var(--rh-space-lg, 16px) 0);
+      padding:
+        /** Content padding override */
+        var(--rh-drawer-content-padding,
+          /** Content padding block-start */
+          var(--rh-space-4xl)
+          /** Content padding inline */
+          var(--rh-space-lg, 16px)
+          0);
 
-      @container content (min-width: 567px) {
-        /** Content padding (medium) */
-        padding: var(--rh-drawer-content-padding, var(--rh-space-4xl) var(--rh-space-2xl, 32px) 0);
+      @container content (min-width: 576px) {
+        padding:
+          /** Content padding override at containers >= sm */
+          var(--rh-drawer-content-padding,
+            /** Content padding block-start at containers >= sm */
+            var(--rh-space-4xl)
+            /** Content padding inline at containers >= sm */
+            var(--rh-space-2xl, 32px)
+            0);
       }
 
       @container content (min-width: 768px) {
-        /** Content padding (wide) */
-        padding: var(--rh-drawer-content-padding, var(--rh-space-4xl, 64px));
+        padding:
+          /** Content padding override at containers >= md */
+          var(--rh-drawer-content-padding,
+            /** Content padding at containers >= md */
+            var(--rh-space-4xl, 64px));
       }
     }
   }
@@ -460,6 +430,7 @@
   @layer position-start {
     #container.inline-start {
       &.collapsible #panel {
+        /** Collapsible panel end padding */
         padding-inline-end: var(--rh-space-xl, 24px);
       }
 
@@ -470,14 +441,6 @@
 
       & #collapse-toggle {
         inset-inline-end: calc(var(--_collapse-toggle-size) / -2);
-
-        & rh-icon:dir(rtl) {
-          rotate: 180deg;
-        }
-      }
-
-      & #narrow-toggle {
-        inset-inline-start: var(--rh-space-sm, 6px);
 
         & rh-icon:dir(rtl) {
           rotate: 180deg;
@@ -510,6 +473,7 @@
       }
 
       &.collapsible #panel {
+        /** Collapsible panel start padding */
         padding-inline-start: var(--rh-space-xl, 24px);
       }
 
@@ -520,18 +484,6 @@
 
       & #collapse-toggle {
         inset-inline-start: calc(var(--_collapse-toggle-size) / -2);
-
-        & rh-icon {
-          rotate: 180deg;
-
-          &:where(:dir(rtl)) {
-            rotate: 0deg;
-          }
-        }
-      }
-
-      & #narrow-toggle {
-        inset-inline-end: var(--rh-space-sm, 6px);
 
         & rh-icon {
           rotate: 180deg;
@@ -563,7 +515,7 @@
 
   @layer closed {
     @layer start {
-      #container.closed.inline-start :is(#collapse-toggle, #narrow-toggle) rh-icon {
+      #container.closed.inline-start #collapse-toggle rh-icon {
         rotate: 180deg;
 
         &:dir(rtl) {
@@ -573,7 +525,7 @@
     }
 
     @layer end {
-      #container.closed.inline-end :is(#collapse-toggle, #narrow-toggle) rh-icon {
+      #container.closed.inline-end #collapse-toggle rh-icon {
         rotate: 360deg;
 
         &:dir(rtl) {

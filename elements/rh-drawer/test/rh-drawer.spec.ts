@@ -3,7 +3,7 @@ import { sendKeys, setViewport } from '@web/test-runner-commands';
 import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { html } from 'lit';
 
-import { RhDrawer } from '@rhds/elements/rh-drawer/rh-drawer.js';
+import { RhDrawer, DrawerModeChangeEvent } from '@rhds/elements/rh-drawer/rh-drawer.js';
 
 function press(key: string) {
   return async function() {
@@ -168,13 +168,19 @@ describe('<rh-drawer>', function() {
 
   describe('keyboard interaction', function() {
     describe('pressing Escape when panel role is dialog', function() {
+      let container: HTMLDivElement;
+
       beforeEach(async function() {
-        element = await fixture<RhDrawer>(html`
-          <rh-drawer variant="overlay" open trigger-id="none">
-            <h3 slot="header">Header</h3>
-            <nav slot="body">Body</nav>
-          </rh-drawer>
+        container = await fixture<HTMLDivElement>(html`
+          <div>
+            <button id="trigger" aria-controls="drawer">Toggle</button>
+            <rh-drawer id="drawer" variant="overlay" panel="none" open trigger-id="trigger">
+              <h3 slot="header">Header</h3>
+              <nav slot="body">Body</nav>
+            </rh-drawer>
+          </div>
         `);
+        element = container.querySelector('rh-drawer')!;
       });
       beforeEach(async () => await element.updateComplete);
       beforeEach(press('Tab'));
@@ -308,13 +314,19 @@ describe('<rh-drawer>', function() {
   });
 
   describe('overlay variant with close button', function() {
+    let container: HTMLDivElement;
+
     beforeEach(async function() {
-      element = await fixture<RhDrawer>(html`
-        <rh-drawer variant="overlay" open trigger-id="none">
-          <h3 slot="header">Panel Header</h3>
-          <nav slot="body">Panel Body</nav>
-        </rh-drawer>
+      container = await fixture<HTMLDivElement>(html`
+        <div>
+          <button id="trigger" aria-controls="drawer">Toggle</button>
+          <rh-drawer id="drawer" variant="overlay" panel="none" open trigger-id="trigger">
+            <h3 slot="header">Panel Header</h3>
+            <nav slot="body">Panel Body</nav>
+          </rh-drawer>
+        </div>
       `);
+      element = container.querySelector('rh-drawer')!;
     });
     beforeEach(async () => await element.updateComplete);
 
@@ -409,25 +421,33 @@ describe('<rh-drawer>', function() {
 
   describe('resizable is noop for auto', function() {
     it('should not expose resize handle for auto variant', async function() {
-      element = await fixture<RhDrawer>(html`
-        <rh-drawer variant="auto" panel="resizable" open>
-          <h3 slot="header">Header</h3>
-          <nav slot="body">Body</nav>
-          <div><p>Content</p></div>
-        </rh-drawer>
+      const container = await fixture<HTMLDivElement>(html`
+        <div>
+          <button id="trigger" aria-controls="drawer">Toggle</button>
+          <rh-drawer id="drawer" variant="auto" panel="resizable" open trigger-id="trigger">
+            <h3 slot="header">Header</h3>
+            <nav slot="body">Body</nav>
+            <div><p>Content</p></div>
+          </rh-drawer>
+        </div>
       `);
+      element = container.querySelector('rh-drawer')!;
       await element.updateComplete;
       const snapshot = await a11ySnapshot();
       expect(snapshot).to.not.have.axQuery({ name: 'Resize panel' });
     });
 
     it('should expose resize handle for overlay variant', async function() {
-      element = await fixture<RhDrawer>(html`
-        <rh-drawer variant="overlay" panel="resizable" open trigger-id="none">
-          <h3 slot="header">Header</h3>
-          <nav slot="body">Body</nav>
-        </rh-drawer>
+      const container = await fixture<HTMLDivElement>(html`
+        <div>
+          <button id="trigger" aria-controls="drawer">Toggle</button>
+          <rh-drawer id="drawer" variant="overlay" panel="resizable" open trigger-id="trigger">
+            <h3 slot="header">Header</h3>
+            <nav slot="body">Body</nav>
+          </rh-drawer>
+        </div>
       `);
+      element = container.querySelector('rh-drawer')!;
       await element.updateComplete;
       const snapshot = await a11ySnapshot();
       expect(snapshot).to.have.axQuery({ name: 'Resize panel' });
@@ -472,13 +492,19 @@ describe('<rh-drawer>', function() {
   });
 
   describe('overlay resizable variant', function() {
+    let container: HTMLDivElement;
+
     beforeEach(async function() {
-      element = await fixture<RhDrawer>(html`
-        <rh-drawer variant="overlay" panel="resizable" open trigger-id="none">
-          <h3 slot="header">Panel Header</h3>
-          <nav slot="body">Panel Body</nav>
-        </rh-drawer>
+      container = await fixture<HTMLDivElement>(html`
+        <div>
+          <button id="trigger" aria-controls="drawer">Toggle</button>
+          <rh-drawer id="drawer" variant="overlay" panel="resizable" open trigger-id="trigger">
+            <h3 slot="header">Panel Header</h3>
+            <nav slot="body">Panel Body</nav>
+          </rh-drawer>
+        </div>
       `);
+      element = container.querySelector('rh-drawer')!;
     });
     beforeEach(async () => await element.updateComplete);
 
@@ -587,12 +613,18 @@ describe('<rh-drawer>', function() {
   // roles on shadow DOM elements, so panel role is verified via DOM attribute.
   describe('panel ARIA role', function() {
     describe('fixed variant', function() {
+      let container: HTMLDivElement;
+
       beforeEach(async function() {
-        element = await fixture<RhDrawer>(html`
-          <rh-drawer variant="fixed" open trigger-id="none">
-            <nav slot="body">Body</nav>
-          </rh-drawer>
+        container = await fixture<HTMLDivElement>(html`
+          <div>
+            <button id="trigger" aria-controls="drawer">Toggle</button>
+            <rh-drawer id="drawer" variant="fixed" open trigger-id="trigger">
+              <nav slot="body">Body</nav>
+            </rh-drawer>
+          </div>
         `);
+        element = container.querySelector('rh-drawer')!;
       });
       beforeEach(async () => await element.updateComplete);
 
@@ -635,80 +667,6 @@ describe('<rh-drawer>', function() {
         await element.updateComplete;
         const panel = element.shadowRoot?.querySelector('#panel');
         expect(panel?.getAttribute('role')).to.equal('dialog');
-      });
-    });
-  });
-
-  describe('narrow mode behavior', function() {
-    describe('auto variant in narrow container', function() {
-      let container: HTMLDivElement;
-
-      beforeEach(async function() {
-        container = await fixture<HTMLDivElement>(html`
-          <div style="inline-size: 500px;">
-            <rh-drawer variant="auto" open>
-              <h3 slot="header">Header</h3>
-              <nav slot="body">Body</nav>
-              <div><p>Content</p></div>
-            </rh-drawer>
-          </div>
-        `);
-        element = container.querySelector('rh-drawer')!;
-        await element.updateComplete;
-        await element.updateComplete;
-      });
-
-      it('should show narrow toggle with correct label', async function() {
-        const snapshot = await a11ySnapshot();
-        expect(snapshot).to.have.axQuery({ name: 'Collapse panel' });
-        expect(element.shadowRoot?.querySelector('#collapse-toggle')).to.be.null;
-      });
-
-      it('should show close button in panel', async function() {
-        const snapshot = await a11ySnapshot();
-        expect(snapshot).to.have.axQuery({ name: 'Close drawer' });
-      });
-
-      describe('activating narrow toggle', function() {
-        beforeEach(press('Tab'));
-        beforeEach(press('Tab'));
-        beforeEach(press('Enter'));
-        beforeEach(async () => await element.updateComplete);
-
-        it('should hide close button', async function() {
-          const snapshot = await a11ySnapshot();
-          expect(snapshot).to.not.have.axQuery({ name: 'Close drawer' });
-        });
-      });
-    });
-
-    describe('overlay variant in narrow container', function() {
-      let container: HTMLDivElement;
-
-      beforeEach(async function() {
-        container = await fixture<HTMLDivElement>(html`
-          <div style="inline-size: 500px;">
-            <rh-drawer variant="overlay" open>
-              <h3 slot="header">Header</h3>
-              <nav slot="body">Body</nav>
-              <div><p>Content</p></div>
-            </rh-drawer>
-          </div>
-        `);
-        element = container.querySelector('rh-drawer')!;
-        await element.updateComplete;
-        await element.updateComplete;
-      });
-
-      it('should show narrow toggle with correct label', async function() {
-        const snapshot = await a11ySnapshot();
-        expect(snapshot).to.have.axQuery({ name: 'Collapse panel' });
-        expect(element.shadowRoot?.querySelector('#collapse-toggle')).to.be.null;
-      });
-
-      it('should show close button in panel', async function() {
-        const snapshot = await a11ySnapshot();
-        expect(snapshot).to.have.axQuery({ name: 'Close drawer' });
       });
     });
   });
@@ -784,16 +742,22 @@ describe('<rh-drawer>', function() {
     });
 
     describe('restoring NaN panelWidth', function() {
+      let container: HTMLDivElement;
+
       beforeEach(function() {
         sessionStorage.setItem(`${STORAGE_KEY}:panelWidth`, 'notanumber');
       });
       beforeEach(async function() {
-        element = await fixture<RhDrawer>(html`
-          <rh-drawer storage-key="${STORAGE_KEY}" variant="fixed" panel="resizable"
-                     trigger-id="none" open>
-            <nav slot="body">Body</nav>
-          </rh-drawer>
+        container = await fixture<HTMLDivElement>(html`
+          <div>
+            <button id="trigger" aria-controls="drawer">Toggle</button>
+            <rh-drawer id="drawer" storage-key="${STORAGE_KEY}" variant="fixed" panel="resizable"
+                       trigger-id="trigger" open>
+              <nav slot="body">Body</nav>
+            </rh-drawer>
+          </div>
         `);
+        element = container.querySelector('rh-drawer')!;
       });
       beforeEach(async () => await element.updateComplete);
 
@@ -804,16 +768,22 @@ describe('<rh-drawer>', function() {
     });
 
     describe('restoring panelWidth below minimum', function() {
+      let container: HTMLDivElement;
+
       beforeEach(function() {
         sessionStorage.setItem(`${STORAGE_KEY}:panelWidth`, '100');
       });
       beforeEach(async function() {
-        element = await fixture<RhDrawer>(html`
-          <rh-drawer storage-key="${STORAGE_KEY}" variant="fixed" panel="resizable"
-                     trigger-id="none" open>
-            <nav slot="body">Body</nav>
-          </rh-drawer>
+        container = await fixture<HTMLDivElement>(html`
+          <div>
+            <button id="trigger" aria-controls="drawer">Toggle</button>
+            <rh-drawer id="drawer" storage-key="${STORAGE_KEY}" variant="fixed" panel="resizable"
+                       trigger-id="trigger" open>
+              <nav slot="body">Body</nav>
+            </rh-drawer>
+          </div>
         `);
+        element = container.querySelector('rh-drawer')!;
       });
       beforeEach(async () => await element.updateComplete);
 
@@ -875,14 +845,167 @@ describe('<rh-drawer>', function() {
     });
   });
 
-  describe('flow variant with overlay-threshold', function() {
+  describe('mode-change event', function() {
+    describe('auto variant fires initial event', function() {
+      let lastMode: string | undefined;
+
+      beforeEach(async function() {
+        lastMode = undefined;
+        element = await fixture<RhDrawer>(html`
+          <rh-drawer variant="auto" open>
+            <nav slot="body">Body</nav>
+            <div><p>Content</p></div>
+          </rh-drawer>
+        `);
+        element.addEventListener('mode-change', (e: Event) => {
+          lastMode = (e as DrawerModeChangeEvent).mode;
+        });
+      });
+      beforeEach(async () => await element.updateComplete);
+
+      it('should fire mode-change on setup', async function() {
+        element.variant = 'overlay';
+        await element.updateComplete;
+        element.variant = 'auto';
+        await element.updateComplete;
+        expect(lastMode).to.be.oneOf(['inline', 'overlay']);
+      });
+    });
+
+    describe('auto variant with panel="none" always fires overlay', function() {
+      let container: HTMLDivElement;
+      let lastMode: string | undefined;
+
+      beforeEach(async function() {
+        lastMode = undefined;
+        container = await fixture<HTMLDivElement>(html`
+          <div>
+            <button id="trigger" aria-controls="drawer">Toggle</button>
+            <rh-drawer id="drawer" variant="auto" panel="none" open trigger-id="trigger">
+              <nav slot="body">Body</nav>
+              <div><p>Content</p></div>
+            </rh-drawer>
+          </div>
+        `);
+        element = container.querySelector('rh-drawer')!;
+        element.addEventListener('mode-change', (e: Event) => {
+          lastMode = (e as DrawerModeChangeEvent).mode;
+        });
+      });
+      beforeEach(async () => await element.updateComplete);
+
+      it('should fire overlay mode', async function() {
+        element.variant = 'overlay';
+        await element.updateComplete;
+        element.variant = 'auto';
+        await element.updateComplete;
+        expect(lastMode).to.equal('overlay');
+      });
+    });
+
+    describe('overlay variant fires initial event', function() {
+      let container: HTMLDivElement;
+      let lastMode: string | undefined;
+
+      beforeEach(async function() {
+        lastMode = undefined;
+        container = await fixture<HTMLDivElement>(html`
+          <div>
+            <button id="trigger" aria-controls="drawer">Toggle</button>
+            <rh-drawer id="drawer" variant="overlay" panel="none" open trigger-id="trigger">
+              <nav slot="body">Body</nav>
+            </rh-drawer>
+          </div>
+        `);
+        element = container.querySelector('rh-drawer')!;
+        element.addEventListener('mode-change', (e: Event) => {
+          lastMode = (e as DrawerModeChangeEvent).mode;
+        });
+      });
+      beforeEach(async () => await element.updateComplete);
+
+      it('should fire mode-change on setup', async function() {
+        element.variant = 'fixed';
+        await element.updateComplete;
+        element.variant = 'overlay';
+        await element.updateComplete;
+        expect(lastMode).to.equal('overlay');
+      });
+    });
+
+    describe('panel change on auto triggers mode-change', function() {
+      let lastMode: string | undefined;
+
+      beforeEach(async function() {
+        element = await fixture<RhDrawer>(html`
+          <rh-drawer variant="auto" open>
+            <nav slot="body">Body</nav>
+            <div><p>Content</p></div>
+          </rh-drawer>
+        `);
+        await element.updateComplete;
+        lastMode = undefined;
+        element.addEventListener('mode-change', (e: Event) => {
+          lastMode = (e as DrawerModeChangeEvent).mode;
+        });
+      });
+
+      it('should fire overlay when switching to panel="none"', async function() {
+        element.panel = 'none';
+        await element.updateComplete;
+        expect(lastMode).to.equal('overlay');
+      });
+
+      it('should fire inline or overlay when switching back to collapsible', async function() {
+        element.panel = 'none';
+        await element.updateComplete;
+        lastMode = undefined;
+        element.panel = 'collapsible';
+        await element.updateComplete;
+        expect(lastMode).to.be.oneOf(['inline', 'overlay']);
+      });
+    });
+  });
+
+  describe('collapsible with trigger-id', function() {
+    let container: HTMLDivElement;
+
     beforeEach(async function() {
-      element = await fixture<RhDrawer>(html`
-        <rh-drawer variant="flow" overlay-threshold="xl"
-                   trigger-id="none" open>
-          <nav slot="body">Body</nav>
-        </rh-drawer>
+      container = await fixture<HTMLDivElement>(html`
+        <div>
+          <button id="trigger" aria-controls="drawer">Toggle</button>
+          <rh-drawer id="drawer" variant="auto" panel="collapsible"
+                     trigger-id="trigger" open>
+            <h3 slot="header">Header</h3>
+            <nav slot="body">Body</nav>
+            <div><p>Content</p></div>
+          </rh-drawer>
+        </div>
       `);
+      element = container.querySelector('rh-drawer')!;
+    });
+    beforeEach(async () => await element.updateComplete);
+
+    it('should show collapse toggle when panel is explicitly collapsible', async function() {
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.have.axQuery({ name: 'Collapse panel' });
+    });
+  });
+
+  describe('flow variant with overlay-threshold', function() {
+    let container: HTMLDivElement;
+
+    beforeEach(async function() {
+      container = await fixture<HTMLDivElement>(html`
+        <div>
+          <button id="trigger" aria-controls="drawer">Toggle</button>
+          <rh-drawer id="drawer" variant="flow" overlay-threshold="xl"
+                     trigger-id="trigger" open>
+            <nav slot="body">Body</nav>
+          </rh-drawer>
+        </div>
+      `);
+      element = container.querySelector('rh-drawer')!;
     });
     beforeEach(async () => await element.updateComplete);
 
