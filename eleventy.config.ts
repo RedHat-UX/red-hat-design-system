@@ -291,6 +291,7 @@ export default async function(eleventyConfig: UserConfig) {
       'rh-card',
       'rh-code-block',
       'rh-dialog',
+      'rh-drawer',
       'rh-footer',
       'rh-footer-universal',
       'rh-select',
