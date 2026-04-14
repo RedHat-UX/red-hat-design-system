@@ -1,26 +1,15 @@
-<meta itemprop="description" content="Flow variant with the panel on the inline-end side of the page. Uses overlay-threshold=&quot;xl&quot; to switch from a fixed overlay to an inline grid participant at 1440px. Below the threshold, the panel is toggled by an external trigger button.">
 <div id="container">
-  <div id="page">
-    <div id="mock-nav">
-      <div id="logo">Logo</div>
-
-      <button id="flow-trigger" aria-label="Open drawer" aria-controls="flow-drawer" aria-expanded="true">
-        <rh-icon icon="list" set="ui"></rh-icon>
-      </button>
-    </div>
-
-    <div id="main">
-      <h3>Page Content</h3>
-      <p>At wide viewports (>= 1440px) the panel participates in the grid on the inline-end side.
-        Below that it becomes a fixed overlay toggled by the icon button above.</p>
-    </div>
+  <div id="mock-nav">
+    <button id="nav-trigger" aria-label="Open navigation" aria-controls="side-nav" aria-expanded="true">
+      <rh-icon icon="list" set="ui"></rh-icon>
+    </button>
+    <div id="logo">Logo</div>
   </div>
-  <rh-drawer id="flow-drawer"
-            variant="flow"
-            position="inline-end"
-            overlay-threshold="xl"
-            trigger-id="flow-trigger"
-            open>
+
+  <rh-drawer id="side-nav"
+             variant="flow"
+             trigger-id="nav-trigger"
+             open>
     <rh-navigation-vertical slot="body">
       <rh-navigation-link href="#" current-page>Home</rh-navigation-link>
 
@@ -52,30 +41,37 @@
       <rh-navigation-link href="#get-support">Get Support</rh-navigation-link>
     </rh-navigation-vertical>
   </rh-drawer>
+
+  <div id="main">
+    <h3>Page Content</h3>
+    <p>The side navigation sits inline at wide viewports. Below 768px it becomes
+      a fixed overlay toggled by the menu button above.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat.</p>
+  </div>
 </div>
 
-
-
-<link rel="stylesheet" href="../../rh-navigation-vertical/rh-navigation-vertical-lightdom.css">
+<link rel="stylesheet" href="../../../elements/rh-navigation-vertical/rh-navigation-vertical-lightdom.css">
 
 <style>
   #container {
     display: grid;
-    grid-template-areas: 'page' 'drawer';
+    grid-template-areas: 'mock-nav' 'content';
     grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
     block-size: 100%;
 
-    @media (min-width: 1440px) {
-      grid-template-areas: 'page drawer';
-      grid-template-columns: 1fr 320px ;
+    @media (min-width: 768px) {
+      grid-template-areas: 'mock-nav mock-nav' 'drawer content';
+      grid-template-columns: 320px 1fr;
+      grid-template-rows: auto 1fr;
     }
   }
 
-  #page {
-    grid-area: page;
-  }
-
   #mock-nav {
+    grid-area: mock-nav;
     color-scheme: only dark;
     display: flex;
     flex-direction: row;
@@ -84,7 +80,7 @@
     background-color: var(--rh-color-surface-darkest, #151515);
     padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
 
-    & #flow-trigger {
+    & #nav-trigger {
       display: flex;
       flex-direction: row;
       gap: var(--rh-space-md, 8px);
@@ -98,7 +94,7 @@
         outline-offset: 2px;
       }
 
-      @media (min-width: 1440px) {
+      @media (min-width: 768px) {
         display: none;
       }
     }
@@ -107,14 +103,15 @@
       color: var(--rh-color-text-primary);
     }
   }
+
+  rh-drawer {
+    grid-area: drawer;
+  }
+
   #main {
     grid-area: content;
     padding: var(--rh-space-2xl, 32px);
     background-color: light-dark(var(--rh-color-surface-lightest), var(--rh-color-surface-darker));
-  }
-
-  rh-drawer {
-    grid-area: drawer;
   }
 </style>
 
@@ -123,31 +120,25 @@
   import '@rhds/elements/rh-navigation-vertical/rh-navigation-vertical.js';
   import '@rhds/elements/rh-navigation-link/rh-navigation-link.js';
 
-  const navToggle = document.querySelector('#flow-trigger');
+  const navToggle = document.querySelector('#nav-trigger');
   const toggleIcon = navToggle.querySelector('rh-icon');
   const drawer = document.querySelector('rh-drawer');
 
-  function toggleSetState(state) {
-    if (state === 'open') {
-      toggleIcon.icon = 'close';
-    }
-
-    if (state === 'closed') {
-      toggleIcon.icon = 'list';
-    }
+  function updateToggleIcon(state) {
+    toggleIcon.icon = state === 'open' ? 'close' : 'list';
   }
 
   if (drawer.open) {
-    toggleSetState('open');
+    updateToggleIcon('open');
   }
 
   drawer.addEventListener('open', function() {
     navToggle.setAttribute('aria-expanded', 'true');
-    toggleSetState('open');
+    updateToggleIcon('open');
   });
 
   drawer.addEventListener('close', function() {
     navToggle.setAttribute('aria-expanded', 'false');
-    toggleSetState('closed');
+    updateToggleIcon('closed');
   });
 </script>

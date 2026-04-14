@@ -1,1 +1,0 @@
-Demonstrates the drawer inside a sized container rather than the full viewport. The container constrains the drawer's dimensions. Use the knobs to test position, panel mode, and expand within the bounded area.

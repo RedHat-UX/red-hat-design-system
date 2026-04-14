@@ -1,1 +1,0 @@
-The auto variant is the default behavior of drawer. Behaves as an overlay below 768px container width and switches to inline layout at >= 768px, pushing content aside rather than overlaying it. Use the `overlay-threshold` attribute to customize the breakpoint at which the layout switches between overlay and inline modes.
