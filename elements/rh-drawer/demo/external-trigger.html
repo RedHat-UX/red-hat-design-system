@@ -1,5 +1,5 @@
 <meta itemprop="description" content="Demonstrates using the trigger-id attribute to toggle the drawer with an external button element.">
-<rh-drawer id="drawer" variant="auto" trigger-id="trigger">
+<rh-drawer id="drawer" variant="auto" panel="none" trigger-id="trigger">
   <div slot="header">Header</div>
   <div slot="body">Body</div>
   <div slot="footer">Footer</div>
@@ -24,6 +24,7 @@
       <fieldset>
         <legend>Panel</legend>
         <label><input type="radio" name="panel" value="none" checked> none</label>
+        <label><input type="radio" name="panel" value="resizable"> resizable</label>
       </fieldset>
       <fieldset>
         <legend>Expand</legend>
@@ -47,8 +48,20 @@
     trigger.hidden = e.mode !== 'overlay';
   });
 
+  const resizableInput = form.querySelector('[name="panel"][value="resizable"]');
+  const noneInput = form.querySelector('[name="panel"][value="none"]');
+
   form.addEventListener('input', function sync() {
     const data = Object.fromEntries(new FormData(form));
+    const canResize = data.variant === 'overlay';
+
+    resizableInput.disabled = !canResize;
+
+    if (data.panel === 'resizable' && !canResize) {
+      data.panel = 'none';
+      noneInput.checked = true;
+    }
+
     drawer.variant = data.variant;
     drawer.position = data.position;
     drawer.panel = data.panel || undefined;

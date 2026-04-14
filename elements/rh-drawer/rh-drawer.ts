@@ -1,4 +1,4 @@
-import { LitElement, html, isServer, nothing, type PropertyValues } from 'lit';
+import { LitElement, html, isServer, nothing } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
@@ -6,7 +6,7 @@ import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
 
-import { observes } from '@patternfly/pfe-core/decorators.js';
+import { initializer, observes } from '@patternfly/pfe-core/decorators.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
@@ -31,14 +31,14 @@ export class DrawerOpenEvent extends Event {
   constructor(
     public trigger: HTMLElement | null
   ) {
-    super('open', { bubbles: true, cancelable: true });
+    super('open', { bubbles: true, cancelable: true, composed: true });
   }
 }
 
 /** Fired when the drawer panel closes. */
 export class DrawerCloseEvent extends Event {
   constructor() {
-    super('close', { bubbles: true, cancelable: true });
+    super('close', { bubbles: true, cancelable: true, composed: true });
   }
 }
 
@@ -52,7 +52,7 @@ export class DrawerModeChangeEvent extends Event {
     /** The layout mode the drawer just entered. */
     public mode: 'overlay' | 'inline' | 'collapsible'
   ) {
-    super('mode-change', { bubbles: true });
+    super('mode-change', { bubbles: true, composed: true });
   }
 }
 
@@ -103,10 +103,9 @@ export class RhDrawer extends LitElement {
   #mediaQuery?: MediaQueryList;
   #resizeObserver?: ResizeObserver;
   #resizeTimer?: ReturnType<typeof setTimeout>;
-  #fixedUserState: boolean | null = null;
+  #flowUserState: boolean | null = null;
   #userInteracted = false;
   #reverting = false;
-  #isRtl = false;
 
   /** Controls the layout behavior of the drawer. */
   @property({ reflect: true }) variant: 'auto' | 'fixed' | 'flow' | 'overlay' = 'auto';
@@ -184,31 +183,13 @@ export class RhDrawer extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.addEventListener('keydown', this.#onKeyDown);
     if (!isServer) {
-      this.#isRtl = this.matches(':dir(rtl)');
       document.addEventListener('keydown', this.#onDocumentKeyDown);
     }
   }
 
-  protected override willUpdate(changed: PropertyValues<this>) {
-    if (
-      (changed.has('position') && changed.get('position') != null)
-      || (changed.has('variant') && changed.get('variant') != null)
-    ) {
-      this._suppressTransition = true;
-    }
-  }
-
-  protected override updated() {
-    if (this._suppressTransition) {
-      requestAnimationFrame(() => {
-        this._suppressTransition = false;
-      });
-    }
-  }
-
-  protected override async firstUpdated() {
+  @initializer()
+  protected async _init() {
     await this.updateComplete;
     if (!isServer) {
       this._suppressTransition = true;
@@ -419,9 +400,19 @@ export class RhDrawer extends LitElement {
   }
 
   @observes('variant')
-  protected _variantChanged() {
+  protected _variantChanged(old?: string) {
+    if (old != null) {
+      this.#suppressTransitionBriefly();
+    }
     if (this.hasUpdated) {
       this.#setupVariant();
+    }
+  }
+
+  @observes('position')
+  protected _positionChanged(old?: string) {
+    if (old != null) {
+      this.#suppressTransitionBriefly();
     }
   }
 
@@ -464,6 +455,13 @@ export class RhDrawer extends LitElement {
     }
   }
 
+  #suppressTransitionBriefly() {
+    this._suppressTransition = true;
+    requestAnimationFrame(() => {
+      this._suppressTransition = false;
+    });
+  }
+
   #onTriggerClick = (event: MouseEvent) => {
     event.preventDefault();
     this.toggle();
@@ -471,7 +469,6 @@ export class RhDrawer extends LitElement {
 
   #onPointerDown = (event: PointerEvent) => {
     event.preventDefault();
-    this.#isRtl = this.matches(':dir(rtl)');
     this.#resizing = true;
     document.addEventListener('pointermove', this.#onPointerMove);
     document.addEventListener('pointerup', this.#onPointerUp);
@@ -479,23 +476,23 @@ export class RhDrawer extends LitElement {
   };
 
   #onPointerMove = (event: PointerEvent) => {
-    if (!this.#resizing || !this.panelEl) {
+    if (!this.#resizing || !this.panelEl?.parentElement) {
       return;
     }
     const isFixedPosition = this.variant === 'fixed';
-    const panelOnLeft = (this.position === 'inline-start') !== this.#isRtl;
-    const maxWidth = isFixedPosition ?
-      window.innerWidth
-      : this.panelEl.parentElement!.getBoundingClientRect().width;
+    const isRtl = this.matches(':dir(rtl)');
+    const panelOnLeft = (this.position === 'inline-start') !== isRtl;
+    const containerRect = this.panelEl.parentElement.getBoundingClientRect();
+    const maxWidth = isFixedPosition ? window.innerWidth : containerRect.width;
     let newWidth: number;
     if (panelOnLeft) {
       newWidth = isFixedPosition ?
         event.clientX
-        : event.clientX - this.panelEl.parentElement!.getBoundingClientRect().left;
+        : event.clientX - containerRect.left;
     } else {
       newWidth = isFixedPosition ?
         window.innerWidth - event.clientX
-        : this.panelEl.parentElement!.getBoundingClientRect().right - event.clientX;
+        : containerRect.right - event.clientX;
     }
     this._panelWidth = Math.max(RhDrawer.minPanelWidth, Math.min(newWidth, maxWidth));
     this.#updateSplitterValue();
@@ -511,7 +508,8 @@ export class RhDrawer extends LitElement {
 
   #onResizeKeyDown = (event: KeyboardEvent) => {
     const step = 10;
-    const panelOnLeft = (this.position === 'inline-start') !== this.#isRtl;
+    const isRtl = this.matches(':dir(rtl)');
+    const panelOnLeft = (this.position === 'inline-start') !== isRtl;
     switch (event.key) {
       case 'ArrowLeft':
         event.preventDefault();
@@ -670,13 +668,6 @@ export class RhDrawer extends LitElement {
     }
   };
 
-  #onKeyDown = (event: KeyboardEvent) => {
-    if (event.key === 'Escape' && this.open && this.#panelRole === 'dialog') {
-      event.preventDefault();
-      this.close();
-    }
-  };
-
   #onDocumentKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Escape' && this.open && this.#panelRole === 'dialog') {
       event.preventDefault();
@@ -688,9 +679,9 @@ export class RhDrawer extends LitElement {
     this._isFullViewport = !this._isFullViewport;
   };
 
-  #setFixedUserState(open: boolean) {
+  #setFlowUserState(open: boolean) {
     if (this.variant === 'flow') {
-      this.#fixedUserState = open;
+      this.#flowUserState = open;
     }
   }
 
@@ -715,7 +706,7 @@ export class RhDrawer extends LitElement {
       const open = sessionStorage.getItem(`${this.storageKey}:open`);
       if (open != null) {
         this.open = open === 'true';
-        this.#fixedUserState = this.open;
+        this.#flowUserState = this.open;
       }
       const panel = sessionStorage.getItem(`${this.storageKey}:panel`);
       const validPanels: string[] = ['collapsible', 'resizable', 'none'];
@@ -745,28 +736,28 @@ export class RhDrawer extends LitElement {
         // ignore
       }
     }
-    return this.#fixedUserState;
+    return this.#flowUserState;
   }
 
   /** Opens the drawer panel. */
   show() {
     this.#userInteracted = true;
     this.open = true;
-    this.#setFixedUserState(true);
+    this.#setFlowUserState(true);
   }
 
   /** Closes the drawer panel. */
   close() {
     this.#userInteracted = true;
     this.open = false;
-    this.#setFixedUserState(false);
+    this.#setFlowUserState(false);
   }
 
   /** Toggles the drawer panel open/closed. */
   toggle() {
     this.#userInteracted = true;
     this.open = !this.open;
-    this.#setFixedUserState(this.open);
+    this.#setFlowUserState(this.open);
   }
 }
 
