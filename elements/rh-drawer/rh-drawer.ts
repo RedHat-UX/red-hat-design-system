@@ -666,7 +666,12 @@ export class RhDrawer extends LitElement {
   };
 
   #onDocumentKeyDown = (event: KeyboardEvent) => {
-    if (event.key === 'Escape' && this.open && this.#panelRole === 'dialog') {
+    if (
+      event.key === 'Escape'
+      && this.open
+      && this.#panelRole === 'dialog'
+      && event.composedPath().includes(this)
+    ) {
       event.preventDefault();
       this.close();
     }
