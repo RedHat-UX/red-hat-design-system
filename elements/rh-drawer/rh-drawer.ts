@@ -378,6 +378,7 @@ export class RhDrawer extends LitElement {
       this.open = oldValue;
       await this.updateComplete;
       this.#reverting = false;
+      this.#suppressTransitionBriefly();
       return;
     }
     this.#store('open', newValue);
