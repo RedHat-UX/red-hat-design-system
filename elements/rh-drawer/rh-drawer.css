@@ -747,344 +747,67 @@
         }
       }
 
-      &:not(.threshold-md,
-      .threshold-lg,
-      .threshold-xl,
-      .threshold-2xl) {
-        @container drawer (min-width: 768px) {
-          &:is(.open, .closed).inline-start #panel {
-            position: relative;
-            z-index: 2;
-            inset-block: auto;
-            inset-inline-start: auto;
-            transition:
-              margin var(--_transition-duration) ease-in-out,
-              translate var(--_transition-duration) ease-in-out;
+      &.inline-mode {
+        &:is(.open, .closed).inline-start #panel {
+          position: relative;
+          z-index: 2;
+          inset-block: auto;
+          inset-inline-start: auto;
+          transition:
+            margin var(--_transition-duration) ease-in-out,
+            translate var(--_transition-duration) ease-in-out;
+        }
+
+        &:is(.open, .closed).inline-end #panel {
+          position: relative;
+          z-index: 2;
+          inset-block: auto;
+          inset-inline-end: auto;
+          transition:
+            margin var(--_transition-duration) ease-in-out,
+            translate var(--_transition-duration) ease-in-out;
+        }
+
+        &:is(.open, .closed):is(.inline-start, .inline-end) #content-container {
+          inline-size: auto;
+        }
+
+        &.collapsible {
+          &.inline-start #content-container {
+            padding-inline-start: 0;
           }
 
-          &:is(.open, .closed).inline-end #panel {
-            position: relative;
-            z-index: 2;
-            inset-block: auto;
-            inset-inline-end: auto;
-            transition:
-              margin var(--_transition-duration) ease-in-out,
-              translate var(--_transition-duration) ease-in-out;
-          }
-
-          &:is(.open, .closed):is(.inline-start, .inline-end) #content-container {
-            inline-size: auto;
-          }
-
-          &.collapsible {
-            &.inline-start #content-container {
-              padding-inline-start: 0;
-            }
-
-            &.inline-end #content-container {
-              padding-inline-end: 0;
-            }
-          }
-
-          &.closed {
-            &:not(.collapsible) {
-              &.inline-start #panel {
-                translate: none;
-                margin-inline-start: calc(-1 * var(--_panel-width));
-              }
-
-              &.inline-end #panel {
-                translate: none;
-                margin-inline-end: calc(-1 * var(--_panel-width));
-              }
-
-              &:is(.inline-start, .inline-end) #content-container {
-                inline-size: auto;
-              }
-            }
-
-            &.collapsible {
-              &.inline-start #panel {
-                translate: none;
-                margin-inline-start: calc(var(--_collapse-visible-width) - var(--_panel-width));
-              }
-
-              &.inline-end #panel {
-                translate: none;
-                margin-inline-end: calc(-1 * var(--_panel-width) + var(--_collapse-visible-width));
-              }
-            }
+          &.inline-end #content-container {
+            padding-inline-end: 0;
           }
         }
-      }
 
-      &.threshold-md {
-        @container drawer (min-width: 992px) {
-          &:is(.open, .closed).inline-start #panel {
-            position: relative;
-            z-index: 2;
-            inset-block: auto;
-            inset-inline-start: auto;
-            transition:
-              margin var(--_transition-duration) ease-in-out,
-              translate var(--_transition-duration) ease-in-out;
-          }
+        &.closed {
+          &:not(.collapsible) {
+            &.inline-start #panel {
+              translate: none;
+              margin-inline-start: calc(-1 * var(--_panel-width));
+            }
 
-          &:is(.open, .closed).inline-end #panel {
-            position: relative;
-            z-index: 2;
-            inset-block: auto;
-            inset-inline-end: auto;
-            transition:
-              margin var(--_transition-duration) ease-in-out,
-              translate var(--_transition-duration) ease-in-out;
-          }
+            &.inline-end #panel {
+              translate: none;
+              margin-inline-end: calc(-1 * var(--_panel-width));
+            }
 
-          &:is(.open, .closed):is(.inline-start, .inline-end) #content-container {
-            inline-size: auto;
+            &:is(.inline-start, .inline-end) #content-container {
+              inline-size: auto;
+            }
           }
 
           &.collapsible {
-            &.inline-start #content-container {
-              padding-inline-start: 0;
+            &.inline-start #panel {
+              translate: none;
+              margin-inline-start: calc(var(--_collapse-visible-width) - var(--_panel-width));
             }
 
-            &.inline-end #content-container {
-              padding-inline-end: 0;
-            }
-          }
-
-          &.closed {
-            &:not(.collapsible) {
-              &.inline-start #panel {
-                translate: none;
-                margin-inline-start: calc(-1 * var(--_panel-width));
-              }
-
-              &.inline-end #panel {
-                translate: none;
-                margin-inline-end: calc(-1 * var(--_panel-width));
-              }
-
-              &:is(.inline-start, .inline-end) #content-container {
-                inline-size: auto;
-              }
-            }
-
-            &.collapsible {
-              &.inline-start #panel {
-                translate: none;
-                margin-inline-start: calc(var(--_collapse-visible-width) - var(--_panel-width));
-              }
-
-              &.inline-end #panel {
-                translate: none;
-                margin-inline-end: calc(-1 * var(--_panel-width) + var(--_collapse-visible-width));
-              }
-            }
-          }
-        }
-      }
-
-      &.threshold-lg {
-        @container drawer (min-width: 1200px) {
-          &:is(.open, .closed).inline-start #panel {
-            position: relative;
-            z-index: 2;
-            inset-block: auto;
-            inset-inline-start: auto;
-            transition:
-              margin var(--_transition-duration) ease-in-out,
-              translate var(--_transition-duration) ease-in-out;
-          }
-
-          &:is(.open, .closed).inline-end #panel {
-            position: relative;
-            z-index: 2;
-            inset-block: auto;
-            inset-inline-end: auto;
-            transition:
-              margin var(--_transition-duration) ease-in-out,
-              translate var(--_transition-duration) ease-in-out;
-          }
-
-          &:is(.open, .closed):is(.inline-start, .inline-end) #content-container {
-            inline-size: auto;
-          }
-
-          &.collapsible {
-            &.inline-start #content-container {
-              padding-inline-start: 0;
-            }
-
-            &.inline-end #content-container {
-              padding-inline-end: 0;
-            }
-          }
-
-          &.closed {
-            &:not(.collapsible) {
-              &.inline-start #panel {
-                translate: none;
-                margin-inline-start: calc(-1 * var(--_panel-width));
-              }
-
-              &.inline-end #panel {
-                translate: none;
-                margin-inline-end: calc(-1 * var(--_panel-width));
-              }
-
-              &:is(.inline-start, .inline-end) #content-container {
-                inline-size: auto;
-              }
-            }
-
-            &.collapsible {
-              &.inline-start #panel {
-                translate: none;
-                margin-inline-start: calc(var(--_collapse-visible-width) - var(--_panel-width));
-              }
-
-              &.inline-end #panel {
-                translate: none;
-                margin-inline-end: calc(-1 * var(--_panel-width) + var(--_collapse-visible-width));
-              }
-            }
-          }
-        }
-      }
-
-      &.threshold-xl {
-        @container drawer (min-width: 1440px) {
-          &:is(.open, .closed).inline-start #panel {
-            position: relative;
-            z-index: 2;
-            inset-block: auto;
-            inset-inline-start: auto;
-            transition:
-              margin var(--_transition-duration) ease-in-out,
-              translate var(--_transition-duration) ease-in-out;
-          }
-
-          &:is(.open, .closed).inline-end #panel {
-            position: relative;
-            z-index: 2;
-            inset-block: auto;
-            inset-inline-end: auto;
-            transition:
-              margin var(--_transition-duration) ease-in-out,
-              translate var(--_transition-duration) ease-in-out;
-          }
-
-          &:is(.open, .closed):is(.inline-start, .inline-end) #content-container {
-            inline-size: auto;
-          }
-
-          &.collapsible {
-            &.inline-start #content-container {
-              padding-inline-start: 0;
-            }
-
-            &.inline-end #content-container {
-              padding-inline-end: 0;
-            }
-          }
-
-          &.closed {
-            &:not(.collapsible) {
-              &.inline-start #panel {
-                translate: none;
-                margin-inline-start: calc(-1 * var(--_panel-width));
-              }
-
-              &.inline-end #panel {
-                translate: none;
-                margin-inline-end: calc(-1 * var(--_panel-width));
-              }
-
-              &:is(.inline-start, .inline-end) #content-container {
-                inline-size: auto;
-              }
-            }
-
-            &.collapsible {
-              &.inline-start #panel {
-                translate: none;
-                margin-inline-start: calc(var(--_collapse-visible-width) - var(--_panel-width));
-              }
-
-              &.inline-end #panel {
-                translate: none;
-                margin-inline-end: calc(-1 * var(--_panel-width) + var(--_collapse-visible-width));
-              }
-            }
-          }
-        }
-      }
-
-      &.threshold-2xl {
-        @container drawer (min-width: 1680px) {
-          &:is(.open, .closed).inline-start #panel {
-            position: relative;
-            z-index: 2;
-            inset-block: auto;
-            inset-inline-start: auto;
-            transition:
-              margin var(--_transition-duration) ease-in-out,
-              translate var(--_transition-duration) ease-in-out;
-          }
-
-          &:is(.open, .closed).inline-end #panel {
-            position: relative;
-            z-index: 2;
-            inset-block: auto;
-            inset-inline-end: auto;
-            transition:
-              margin var(--_transition-duration) ease-in-out,
-              translate var(--_transition-duration) ease-in-out;
-          }
-
-          &:is(.open, .closed):is(.inline-start, .inline-end) #content-container {
-            inline-size: auto;
-          }
-
-          &.collapsible {
-            &.inline-start #content-container {
-              padding-inline-start: 0;
-            }
-
-            &.inline-end #content-container {
-              padding-inline-end: 0;
-            }
-          }
-
-          &.closed {
-            &:not(.collapsible) {
-              &.inline-start #panel {
-                translate: none;
-                margin-inline-start: calc(-1 * var(--_panel-width));
-              }
-
-              &.inline-end #panel {
-                translate: none;
-                margin-inline-end: calc(-1 * var(--_panel-width));
-              }
-
-              &:is(.inline-start, .inline-end) #content-container {
-                inline-size: auto;
-              }
-            }
-
-            &.collapsible {
-              &.inline-start #panel {
-                translate: none;
-                margin-inline-start: calc(var(--_collapse-visible-width) - var(--_panel-width));
-              }
-
-              &.inline-end #panel {
-                translate: none;
-                margin-inline-end: calc(-1 * var(--_panel-width) + var(--_collapse-visible-width));
-              }
+            &.inline-end #panel {
+              translate: none;
+              margin-inline-end: calc(-1 * var(--_panel-width) + var(--_collapse-visible-width));
             }
           }
         }

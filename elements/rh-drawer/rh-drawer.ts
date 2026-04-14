@@ -232,7 +232,6 @@ export class RhDrawer extends LitElement {
     const hasContentSlot = this.variant !== 'fixed' && this.variant !== 'flow';
     const isAuto = this.variant === 'auto';
     const isFlow = this.variant === 'flow';
-    const hasThreshold = isAuto || isFlow;
     const classes = {
       'open': this.open,
       'closed': !this.open,
@@ -243,14 +242,11 @@ export class RhDrawer extends LitElement {
       'overlay': this.variant === 'overlay',
       'inline-start': this.position === 'inline-start',
       'inline-end': this.position === 'inline-end',
+      'inline-mode': isAuto && this._isInlineMode,
       'collapsible': showCollapsible,
       'resizable': isResizable,
       'full-viewport': this._isFullViewport,
       'no-transition': this._suppressTransition,
-      'threshold-md': hasThreshold && this.overlayThreshold === 'md',
-      'threshold-lg': hasThreshold && this.overlayThreshold === 'lg',
-      'threshold-xl': hasThreshold && this.overlayThreshold === 'xl',
-      'threshold-2xl': hasThreshold && this.overlayThreshold === '2xl',
     };
 
     return html`
