@@ -212,6 +212,7 @@
     "analyze": {
       "command": "cem generate",
       "files": [
+        "package.json",
         "elements/*/demo/*.html",
         "elements/**/*.{ts,js,map}",
         "elements/**/*.css",
