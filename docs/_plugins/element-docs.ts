@@ -253,7 +253,8 @@ export default function(eleventyConfig: UserConfig): void {
             fileExists: await exists(data.absPath),
             hasLightdom: await exists(join(elDir, `${data.tagName}-lightdom.css`)),
             hasLightdomShim: await exists(join(elDir, `${data.tagName}-lightdom-shim.css`)),
-            mainDemoContent: await exists(demoPath) ? stripFrontmatter(await readFile(demoPath, 'utf8')) : '',
+            mainDemoContent: !await exists(demoPath) ? ''
+              : stripFrontmatter(await readFile(demoPath, 'utf8')),
             overviewImageHref,
             siblingElements: siblingElementsByTagName.get(data.tagName) ?? [],
           };
