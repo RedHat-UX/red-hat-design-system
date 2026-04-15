@@ -11,6 +11,7 @@ import { getAllManifests } from '@patternfly/pfe-tools/custom-elements-manifest/
 import { DocsPage } from '@patternfly/pfe-tools/11ty/DocsPage.js';
 import { $ } from 'execa';
 import { capitalize } from '#11ty-plugins/tokensHelpers.js';
+import { stripFrontmatter } from '#11ty-plugins/frontmatter.js';
 
 interface ElementDocsPageTabData {
   url: string;
@@ -252,7 +253,7 @@ export default function(eleventyConfig: UserConfig): void {
             fileExists: await exists(data.absPath),
             hasLightdom: await exists(join(elDir, `${data.tagName}-lightdom.css`)),
             hasLightdomShim: await exists(join(elDir, `${data.tagName}-lightdom-shim.css`)),
-            mainDemoContent: await exists(demoPath) ? await readFile(demoPath, 'utf8') : '',
+            mainDemoContent: await exists(demoPath) ? stripFrontmatter(await readFile(demoPath, 'utf8')) : '',
             overviewImageHref,
             siblingElements: siblingElementsByTagName.get(data.tagName) ?? [],
           };

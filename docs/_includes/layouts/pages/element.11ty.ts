@@ -20,6 +20,7 @@ import {
   type DemoRecord,
 } from '@patternfly/pfe-tools/custom-elements-manifest/custom-elements-manifest.js';
 import { parseFragment } from 'parse5';
+import { parseFrontmatter, stripFrontmatter } from '#11ty-plugins/frontmatter.js';
 
 const html = String.raw; // for editor highlighting
 const pfeconfig = getPfeConfig();
@@ -888,17 +889,22 @@ export default class ElementsPage extends Renderer<Context> {
   }
 
   async #renderDemoDescription(demo: DemoRecord, ctx: Context) {
-    // Use the same logic as the header to determine the demo name
-    const demoName = demo.filePath?.match(/\/index(\.html|\/)/) ? 'index' : demo.title;
-    const demoDescriptionPath = join(process.cwd(), 'elements', ctx.tagName, 'demo', `${this.slugify(demoName)}.md`);
-    // check if the file exists, if it does return the html
-    try {
-      await access(demoDescriptionPath);
-      const demoDescriptionContent = await this.renderFile(demoDescriptionPath, ctx);
-      return html`${demoDescriptionContent}`;
-    } catch {
-      return '';
+    const parts: string[] = [];
+    // Render CEM description as markdown if available
+    if ('description' in demo && typeof demo.description === 'string') {
+      parts.push(await this.renderTemplate(demo.description, 'md'));
     }
+    // Parse frontmatter doc field for supplementary rich content
+    if (demo.filePath) {
+      try {
+        const content = await readFile(demo.filePath, 'utf8');
+        const { data } = parseFrontmatter(content);
+        if (data.doc) {
+          parts.push(await this.renderTemplate(data.doc, 'md'));
+        }
+      } catch { /* file not found */ }
+    }
+    return parts.join('\n');
   }
 
   async #renderDemo(demo: DemoRecord, ctx: Context, knobs?: string) {
@@ -952,7 +958,8 @@ export default class ElementsPage extends Renderer<Context> {
     }
 
     if (demo.filePath) {
-      const content = await readFile(demo.filePath, 'utf-8');
+      const raw = await readFile(demo.filePath, 'utf-8');
+      const content = stripFrontmatter(raw);
       const fragment = parseFragment(content);
 
       for (const node of Tools.queryAll<Tools.Element>(fragment, Tools.isElementNode)) {
@@ -961,8 +968,6 @@ export default class ElementsPage extends Renderer<Context> {
           updateDemoContentForType('js', node);
         } else if (node.tagName === 'style') {
           updateDemoContentForType('css', node);
-        } else if (node.tagName === 'meta' && node.attrs.some(x => x.name === 'itemprop')) {
-          Tools.removeNode(node);
         }
       }
 
