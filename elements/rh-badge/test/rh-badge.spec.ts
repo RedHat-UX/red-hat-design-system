@@ -41,6 +41,31 @@ type StatusColor =
   | '--rh-color-status-warning'
   | '--rh-color-status-danger';
 
+// deprecated states should map to their modern equivalents
+for (const [deprecatedState, modernState] of Object.entries({
+  moderate: 'warning',
+  important: 'caution',
+  critical: 'danger',
+  note: 'info',
+})) {
+  describe(`deprecated state="${deprecatedState}"`, function() {
+    let element: RhBadge;
+    let styles: CSSStyleDeclaration;
+    beforeEach(async function() {
+      element = await createFixture<RhBadge>(html`
+        <rh-badge state="${deprecatedState}" number="50">50</rh-badge>
+      `);
+    });
+    beforeEach(async function() {
+      styles = getComputedStyle(element.shadowRoot!.querySelector('span')!);
+    });
+    it(`should have a background color matching state="${modernState}"`, async function() {
+      const token = `--rh-color-status-${modernState}-on-light` as const;
+      expect(styles.backgroundColor).to.be.colored(tokens.get(token));
+    });
+  });
+}
+
 for (const [state, token] of Object.entries({
   neutral: '--rh-color-status-neutral',
   info: '--rh-color-status-info',
