@@ -198,7 +198,7 @@ async function processPatternElement(
   // Preserve <link> tags as serialized HTML so they can be included in
   // the demo wrapper, then remove them from the source view.
   for (const node of queryAll(partial, isLink)) {
-    linkTags.push(serialize(node));
+    linkTags.push(serialize(node as Element));
     removeNode(node);
   }
 
@@ -289,7 +289,10 @@ export default function(eleventyConfig: UserConfig) {
       HighlightPairedShortcode ||= await loadHighlighter();
 
       const document = parse(content);
-      const patterns = [...queryAll(document, isUxdotPattern)];
+      const patterns: Element[] = [];
+      for (const node of queryAll(document, isUxdotPattern)) {
+        patterns.push(node as Element);
+      }
 
       if (patterns.length === 0) {
         return content;
