@@ -4,10 +4,16 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-tab-panel.css';
+import styles from './rh-tab-panel.css' with { type: 'css' };
 
 /**
- * The tab panel for use within a rh-tabs element, must be paired with a rh-tab.
+ * A content panel for use in an `rh-tabs` element. Each panel
+ * must be paired with a corresponding `rh-tab`. Authors should
+ * avoid empty panels. The ARIA `tabpanel` role and `tabindex`
+ * allow screen reader and keyboard navigation.
+ *
+ * @summary Content panel paired with an `rh-tab`
+ *
  */
 @customElement('rh-tab-panel')
 @themable
@@ -37,7 +43,11 @@ export class RhTabPanel extends LitElement {
   render() {
     return html`
       <div id="container">
-        <!-- Panel content should follow guidelines for [tab panel content layout](../guidelines) -->
+        <!-- summary: Panel content
+             description: |
+               Content shown when the paired tab is active. Screen
+               reader users navigate here via the ARIA tabpanel
+               role. Authors should ensure keyboard accessibility. -->
         <slot></slot>
       </div>
     `;

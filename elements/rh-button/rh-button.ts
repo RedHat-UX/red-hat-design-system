@@ -11,14 +11,16 @@ import { themable } from '@rhds/elements/lib/themable.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
-import styles from './rh-button.css';
+import styles from './rh-button.css' with { type: 'css' };
 
 /**
- * A button is clickable text or an icon that triggers an action on the page or in the background.
- * Depending on the action, content, and hierarchy, a button can be used on its own or grouped with
- * other buttons.
+ * Triggers actions via click, Enter, or Space. USE `variant` to set
+ * hierarchy: primary (should limit one per page), secondary, tertiary,
+ * or danger. Renders a native `<button>` with `delegatesFocus` for
+ * keyboard access. Icon-only buttons must set `accessible-label` to
+ * provide an ARIA accessible name. Supports form association (submit/reset).
  *
- * @summary Triggers actions on the page or in the background
+ * @summary Clickable button that triggers page or form actions
  *
  * @alias button
  */
@@ -34,41 +36,69 @@ export class RhButton extends LitElement {
     delegatesFocus: true,
   };
 
-  /** Disables the button */
+  /**
+   * Disables the button, preventing user interaction. When true, the button
+   * receives `aria-disabled="true"` and pointer events are suppressed.
+   * Disabled buttons are excluded from tab order unless `aria-disabled` is
+   * used instead of `disabled`. Defaults to false.
+   */
   @property({ reflect: true, type: Boolean }) disabled = false;
 
   /**
-   * button type
+   * Controls the button's behavior within a form context. Accepts 'button'
+   * (no default form behavior), 'submit' (submits the form), or 'reset'
+   * (resets form fields). When omitted, defaults to implicit submit behavior.
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#type
    */
   @property({ reflect: true }) type?: 'button' | 'submit' | 'reset';
 
-  /** Accessible name for the button, use when the button does not have slotted text */
+  /**
+   * Accessible name for the button, applied as `aria-label` on the internal
+   * `<button>`. Use when the button has no visible text (e.g. icon-only
+   * buttons like close or play). When set, slotted text is hidden with
+   * `aria-hidden="true"`. Preferred over the deprecated `label` attribute.
+   * Defaults to undefined.
+   */
+  @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
+
+  /**
+   * @deprecated Use `accessible-label` instead.
+   */
   @property() label?: string;
 
-  /** Form value for the button */
+  /**
+   * Form value submitted with the button when it triggers form submission.
+   * Paired with `name` to create a name/value pair. Defaults to undefined.
+   */
   @property() value?: string;
 
-  /** Form name for the button */
+  /**
+   * Form name for the button, used with `value` to submit data when the
+   * button triggers form submission. Defaults to undefined.
+   */
   @property() name?: string;
 
-  /** Shorthand for the `icon` slot, the value is icon name */
+  /**
+   * Shorthand for the `icon` slot. Accepts an icon name from the specified
+   * icon set (defaults to 'ui'). When set, renders an `<rh-icon>` in the
+   * icon slot. Should use micron icons for best fit. Defaults to undefined.
+   */
   @property() icon?: IconNameFor<IconSetName>;
 
-  /** Icon set for the `icon` property - 'ui' by default */
+  /**
+   * Icon set for the `icon` property. Accepts any registered icon set name.
+   * Defaults to 'ui' when not specified. USE 'microns' for small inline icons.
+   */
   @property({ attribute: 'icon-set' }) iconSet?: IconSetName;
 
   @query('button') private _button!: HTMLButtonElement;
 
   /**
-   * Changes the style of the button.
-   * - Primary: Used for the most important call to action on a page. Try to
-   *   limit primary buttons to one per page.
-   * - Secondary: Use secondary buttons for general actions on a page, that
-   *   don’t require as much emphasis as primary button actions. For example,
-   *   you can use secondary buttons where there are multiple actions, like in
-   *   toolbars or data lists.
-   * - Tertiary: Tertiary buttons are flexible and can be used as needed.
+   * Controls the visual hierarchy and style of the button. Accepts
+   * 'primary' | 'secondary' | 'tertiary' | 'close' | 'play'. Defaults to
+   * 'primary'. Should limit primary to one per page. USE secondary for
+   * general actions, tertiary for low-emphasis actions. Close and play
+   * variants render icon-only circular buttons with visually hidden text.
    */
   @property({ reflect: true }) variant:
     | 'primary'
@@ -78,9 +108,10 @@ export class RhButton extends LitElement {
     | 'play' = 'primary';
 
   /**
-   * Use danger buttons for actions a user can take that are potentially
-   * destructive or difficult/impossible to undo, like deleting or removing
-   * user data.
+   * Applies danger styling for destructive or irreversible actions like
+   * deleting data. Combines with `variant` to produce danger-primary or
+   * danger-secondary styles. AVOID using for non-destructive actions.
+   * Defaults to false.
    */
   @property({ type: Boolean, reflect: true }) danger = false;
 
@@ -100,8 +131,11 @@ export class RhButton extends LitElement {
     const { danger, variant } = this;
     const hasIcon = this.#hasIcon;
     return html`
-      <!-- Internal button element -->
-      <button aria-label="${ifDefined(this.label)}"
+      <!-- summary: internal button element
+           description: |
+             Native button element that receives focus via delegatesFocus.
+             Screen readers announce this as a button with the label or slotted text. -->
+      <button aria-label="${ifDefined(this.accessibleLabel || this.label)}"
               class="${classMap({
                 danger,
                 hasIcon,
@@ -113,17 +147,21 @@ export class RhButton extends LitElement {
               @click="${this.#onClick}"
               aria-disabled=${String(!!this.disabled || !!this.#internals.formDisabled) as 'true' | 'false'}>
         <span aria-hidden="true">
-          <!--
-            slot:
-              description: Contains the button's icon or state indicator, e.g. a spinner.
-            part:
-              description: Container for the icon slot
-          -->
+          <!-- summary: icon slot for visual indicators
+               description: |
+                 Expects an \`rh-icon\` element or inline \`svg\`.
+                 Wrapped in aria-hidden span so screen readers skip decorative icons.
+                 Close and play variants auto-populate this slot via #renderIcon(). -->
           <slot id="icon"
                 part="icon"
                 name="icon">${this.#renderIcon()}</slot>
         </span>
-        <span aria-hidden=${String(!!this.label) as 'true' | 'false'}><!-- Contains button text --><slot id="text" ></slot></span>
+        <span aria-hidden=${String(!!this.accessibleLabel || !!this.label) as 'true' | 'false'}><!-- summary: button text label
+               description: |
+                 Expects inline text providing a concise, action-oriented label
+                 (e.g. "Submit", "Delete"). Hidden from screen readers via
+                 aria-hidden when the label attribute is set. For close and play
+                 variants, text is visually hidden but remains accessible. --><slot id="text" ></slot></span>
       </button>
     `;
   }
@@ -160,6 +198,30 @@ export class RhButton extends LitElement {
     }
   }
 
+  /**
+   * Programmatically moves focus to the button element.
+   *
+   * This method focuses the internal button element, making it the active element
+   * on the page. Useful for managing focus flow after dynamic content changes or
+   * user interactions.
+   *
+   * ## Usage guidelines
+   * - Use to direct user attention after completing an action
+   * - Helpful for accessibility when managing focus programmatically
+   * - Called automatically when the button is the target of a focus navigation
+   * - Can be used after modals close to return focus to a trigger button
+   *
+   * ## Accessibility
+   * - When focus is moved programmatically, ensure users are aware of the change
+   * - Avoid moving focus unexpectedly as it can disorient users
+   * - Moving focus to a button should be deliberate and serve user needs
+   *
+   * @example
+   * ```js
+   * const button = document.querySelector('rh-button');
+   * button.focus();
+   * ```
+   */
   focus() {
     this._button?.focus();
   }

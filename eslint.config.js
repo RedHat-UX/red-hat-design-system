@@ -13,6 +13,7 @@ export default tseslint.config(
       'node_modules/**/*',
       '_site',
       'rhds.min.js',
+      '.claude/**/*',
 
       '**/*.d.ts',
       '**/*.(spec|e2e).js',

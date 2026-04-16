@@ -1,4 +1,5 @@
-import { type CSSResult, LitElement, type TemplateResult, html, isServer, render } from 'lit';
+import type { CSSResult, TemplateResult } from 'lit';
+import { LitElement, html, isServer, render, nothing } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { repeat } from 'lit/directives/repeat.js';
@@ -13,8 +14,8 @@ import '@rhds/elements/rh-surface/rh-surface.js';
 import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 
-import styles from './rh-alert.css';
-import toastStyles from './rh-alert-toast-styles.css';
+import styles from './rh-alert.css' with { type: 'css' };
+import toastStyles from './rh-alert-toast-styles.css' with { type: 'css' };
 
 interface AlertAction {
   action: 'dismiss' | 'confirm' | string;
@@ -44,6 +45,12 @@ const ICONS = new Map(Object.entries({
   danger: 'ban-fill',
 }));
 
+/**
+ * Event fired when a dismissable alert is closed, either by the close button
+ * or by an action button with a `data-action` attribute. The event is
+ * cancelable; calling `preventDefault()` will prevent the alert from being
+ * removed from the DOM.
+ */
 export class AlertCloseEvent extends Event {
   constructor(public action: 'close' | 'confirm' | 'dismiss' | string) {
     super('close', { bubbles: true, cancelable: true });
@@ -55,15 +62,21 @@ let toaster: HTMLElement;
 const toasts = new Set<Required<ToastOptions>>();
 
 /**
- * An alert is a banner used to notify a user about a change in status
- * or communicate other information. It can be generated with or without
- * a user triggering an action first.
+ * An alert provides a banner for status changes or messages.
+ * It uses ARIA `role="alert"` so screen readers must announce
+ * its content. Authors should provide a heading and must avoid
+ * nesting alerts. Users may Tab to interactive elements and
+ * press Enter to activate them. Meets WCAG 2.4.3.
  *
  * @summary Notifies a user without blocking their workflow
  *
  * @alias alert
  *
- * @fires {AlertCloseEvent} close - when the dismissable alert closes
+ * @fires {AlertCloseEvent} close - Fires when dismissed via
+ *        close button or action click. `AlertCloseEvent.action`
+ *        contains the action string (e.g. 'close', 'confirm',
+ *        'dismiss'). Cancelable: call `preventDefault()` to
+ *        keep the alert in the DOM.
  */
 @customElement('rh-alert')
 @themable
@@ -146,7 +159,10 @@ export class RhAlert extends LitElement {
    *
    * A Toast alert is used to present a global message about an event,
    * update, or confirmation, like the result of a user action that cannot
-   * be presented within a specific layout or component.
+   * be presented within a specific layout or component. Toast alerts often
+   * appear away from what triggered them, may time out, automatically, and
+   * can be hard to discover in linear reading order. Toast alerts pose
+   * significant accessibility concerns and are **not recommended for use**.
    */
   @property({ reflect: true }) variant?: 'alternate' | 'toast' | 'inline';
 
@@ -204,7 +220,10 @@ export class RhAlert extends LitElement {
     // eslint-disable-next-line lit-a11y/click-events-have-key-events
     const footer = html`<footer class="${classMap({ hasActions })}"
                   @click="${this.#onActionsClick}">
-            <!-- Provide actions that the user can take for the alert -->
+            <!-- Up to two \`rh-button\` action elements. Each
+                 must have a \`data-action\` attribute. Buttons
+                 are keyboard-focusable via Tab and should use
+                 ARIA labels when text is not descriptive. -->
             <slot name="actions"></slot>
           </footer>`;
     return html`
@@ -215,7 +234,7 @@ export class RhAlert extends LitElement {
                     [state]: true,
                     [variant]: !!variant,
                   })}"
-                  role="alert"
+                  role="${this.variant !== 'toast' ? 'alert' : nothing}"
                   aria-hidden="false">
         <div id="left-column">
           <rh-icon id="icon" set="ui" icon="${this.#icon}"></rh-icon>
@@ -223,19 +242,23 @@ export class RhAlert extends LitElement {
         <div id="middle-column">
           <header ?hidden="${!_isServer && this.#slots.isEmpty('header')}">
             <div id="header">
-              <!-- Provide a header for the alert message. -->
+              <!-- Alert heading; must be a heading element
+                 (e.g. \`<h3>\`) so screen readers convey the
+                 alert's ARIA structure. -->
               <slot name="header"></slot>
             </div>${!this.dismissable && this.variant !== 'toast' ? '' : html`
             <div id="header-actions">
               <rh-button id="close-button"
                          variant="close"
-                         accessible-label="Close"
+                         label="Close"
                          confirm
                          @click="${this.#onClose}"></rh-button>
             </div>`}
           </header>
           <div id="description">
-            <!-- Provide a description for the alert message -->
+            <!-- Body content for the alert; accepts block
+                 elements like \`<p>\`. Should be concise so
+                 screen reader users quickly understand it. -->
             <slot></slot>
           </div>
           ${footer}
@@ -338,7 +361,7 @@ async function manageAlertAnimation(event: Event) {
 
 /**
  * @see https://aerotwist.com/blog/flip-your-animations/
- * @param toaster container for toasted alerts
+ * @param toaster container for toast alerts
  */
 function flip(toaster: HTMLElement) {
   const first = toaster.offsetHeight;

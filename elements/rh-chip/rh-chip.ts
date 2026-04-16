@@ -11,13 +11,20 @@ import { rhChipGroupSizeCtx } from './context.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-chip.css';
+import styles from './rh-chip.css' with { type: 'css' };
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 import { observes } from '@patternfly/pfe-core/decorators.js';
 
+/**
+ * Event fired when a chip's checked state changes.
+ * The `checked` property indicates the chip's state before the change.
+ */
 export class ChipChangeEvent extends Event {
-  constructor(public checked: boolean) {
+  constructor(
+    /** The checked state of the chip before the change occurred. */
+    public checked: boolean,
+  ) {
     super('change', {
       bubbles: true,
       cancelable: true,
@@ -26,12 +33,24 @@ export class ChipChangeEvent extends Event {
 }
 
 /**
- * A chip is used to filter information or indicate that a selection was made.
+ * A chip provides a toggle for filtering content or indicating a selection
+ * when users choose from categories. Each chip must contain short inline
+ * text and may be placed in an `rh-chip-group` of related chips. The
+ * hidden checkbox allows form participation and provides screen reader
+ * accessibility. Keyboard users press Tab to navigate between chips and
+ * use Enter or Space to toggle.
+ *
  * @summary Filter information or indicate that a selection was made
  *
  * @alias chip
  *
- * @fires {ChipCheckedEvent} chip-checked - when chip is checked/unchecked
+ * @fires {ChipChangeEvent} change - Fires when the chip is checked or
+ *        unchecked. The event's `checked` property (boolean) holds the
+ *        chip's state before the change. Cancelable — canceling prevents
+ *        the state change.
+ *
+ * @csspart chip - The outer `<label>` container for the chip,
+ *          styled with the `--rh-border-radius-pill` token.
  */
 @customElement('rh-chip')
 @themable
@@ -73,9 +92,13 @@ export class RhChip extends LitElement {
 
   render() {
     return html`
-      <!-- The main chip container -->
       <label part="chip" class=${classMap({ [`size-${this.size}`]: !!this.size })}>
-        <!-- The label of the checkbox -->
+        <!--
+          summary: Chip label
+          description: |
+            Expects short inline text for the chip label. Should not
+            contain block elements or interactive content.
+        -->
         <slot></slot>
         <input type="checkbox"
                value="${ifDefined(this.value)}"

@@ -3,25 +3,41 @@ import type { IconNameFor } from '@rhds/icons';
 import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
-import style from './rh-footer-social-link.css';
+import style from './rh-footer-social-link.css' with { type: 'css' };
 
 
 /**
- * Social media links for Red Hat Footer
+ * Social media icon link for the footer. Authors must set
+ * `accessible-label` so screen readers announce the platform name
+ * via ARIA. Uses `role="listitem"` for list semantics. Tab
+ * navigates between links; use `icon` or slot a custom SVG.
+ *
+ * @summary Single social media icon link for the footer
  */
 @customElement('rh-footer-social-link')
 export class RhFooterSocialLink extends LitElement {
   static readonly styles = style;
 
-  /** Icon for this social link e.g. `'facebook'` */
+  /**
+   * Name of the social media icon from the `social` icon set (e.g.
+   * `'facebook'`, `'twitter'`, `'linkedin'`). Renders an `<rh-icon>`
+   * in the default slot if no custom icon is slotted. Defaults to undefined.
+   */
   @property() icon?: IconNameFor<'social'>;
 
-  /** Social link address */
+  /**
+   * URL of the social media profile or page. Applied to the anchor element's
+   * `href` attribute. Must be a valid URL. Defaults to undefined.
+   */
   @property() href?: string;
 
-  /** Textual label for the social link e.g. "Instagram" */
+  /**
+   * Accessible text label announced by screen readers for the social link
+   * (e.g. "LinkedIn", "YouTube"). Applied as `aria-label` on the anchor.
+   * Must be provided for accessibility. Defaults to undefined.
+   */
   @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
 
   connectedCallback() {
@@ -32,7 +48,11 @@ export class RhFooterSocialLink extends LitElement {
   render() {
     return html`
       <a href="${ifDefined(this.href)}" aria-label="${ifDefined(this.accessibleLabel)}">
-        <!-- Optional icon for social link. Use only when suitable icon is unavailable with \`<rh-icon>\` -->
+        <!-- summary: custom social icon content
+             description: |
+               Optional slot for a custom icon when the built-in \`<rh-icon>\` social set
+               does not include the desired platform. Screen readers rely on the parent
+               anchor's \`aria-label\` rather than this icon content. -->
         <slot>${this.icon ? html`<rh-icon set="social" icon="${this.icon}"></rh-icon>` : ''}</slot>
       </a>
     `;

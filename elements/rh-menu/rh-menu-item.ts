@@ -1,12 +1,23 @@
 import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
+
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
-import styles from './rh-menu-item.css';
+
+import styles from './rh-menu-item.css' with { type: 'css' };
 
 /**
- * Menu Dropdown Item
+ * A menu item provides a single action or link within an `rh-menu`.
+ * It renders with the ARIA `menuitem` role for screen reader users.
+ * Authors must provide visible text content in the default slot.
+ * When `href` is set, the item behaves as a hyperlink; authors should
+ * set the `external` attribute for links that open in a new tab. Focus
+ * is managed by the parent `rh-menu` via roving tabindex, so keyboard
+ * users can navigate items with Arrow keys.
+ *
+ * @summary A single action or link within a menu
+ *
  * @alias Menu Dropdown Item
  */
 @customElement('rh-menu-item')
@@ -54,9 +65,10 @@ export class RhMenuItem extends LitElement {
       : 'Link';
 
     const label = html`
-      <!-- 
-        Use this slot to provide the text content inside menu item.
-      -->
+      <!-- summary: Menu item label
+           description: |
+             Inline text label for the menu item. Must contain visible
+             text for screen reader accessibility. -->
       <slot></slot>
     `;
     const content = this.href ?
@@ -77,16 +89,20 @@ export class RhMenuItem extends LitElement {
     return html`
       <div aria-disabled="${this.disabled}" class="menu-item-content">
         <div class="menu-item-label">
-          <!-- 
-            Slot for an icon displayed alongside the menu item.
-            The icon will appear to the left of the menu item text in left-to-right (LTR) layouts.
-          -->
+          <!-- summary: Icon slot
+               description: |
+                 An icon displayed alongside the menu item label.
+                 Appears before the text in LTR layouts. Screen reader
+                 users should receive an accessible label via
+                 the icon element itself. -->
           <slot name="icon"></slot>
           ${content}
         </div>
-        <!-- 
-          Use this slot to provide the description inside menu item.
-        -->
+        <!-- summary: Description slot
+             description: |
+               Supplementary description text displayed below the menu
+               item label. Screen reader users will perceive this as
+               additional context for the menu item. -->
         <slot id="description" name="description"></slot>
       </div>
     `;

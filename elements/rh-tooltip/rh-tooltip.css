@@ -8,6 +8,7 @@
   max-width: 100%;
 
   --_floating-arrow-size:
+    /** Arrow indicator size */
     var(--rh-tooltip-arrow-size,
       /** @deprecated use --rh-tooltip-arrow-size */
       var(--rh-tooltip__arrow--Width, 11px));
@@ -23,54 +24,82 @@
   opacity: 0;
   pointer-events: none;
   z-index: 10000;
-  transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
+  transition:
+    opacity 0s 0s,
+    display 0s 0s allow-discrete;
+
+  /** Tooltip text alignment */
   text-align: var(--_text-alignment, center);
   word-break: break-word;
+
+  /** Floating content position offset */
   translate: var(--_floating-content-translate);
+
+  /** Tooltip shake animation offset */
   transform: translateX(var(--_rh-tooltip-shake-x, 0));
   width: max-content;
-  inset-block-start: 0;
-  inset-inline-start: 0;
+
+  /* We need to use top and left instead of inset-block-start and inset-inline-start
+  because of the RTL support and floatingDOM controller */
+  top: 0;
+  left: 0;
   will-change: opacity;
+
+  /** Tooltip content line height */
   line-height: var(--rh-line-height-body-text, 1.5);
+
+  /** Tooltip panel shadow */
   box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
   max-width:
+    /** Maximum inline size of the tooltip panel */
     var(--rh-tooltip-max-width,
       /** @deprecated use --rh-tooltip-max-width */
       var(--rh-tooltip--MaxWidth, 18.75rem)
     );
+
+  /** Tooltip panel border radius */
   border-radius: var(--rh-border-radius-default, 3px);
   padding-block:
+    /** Block-start padding for tooltip content */
     var(--rh-tooltip-content-padding-block-start,
       /** @deprecated use --rh-tooltip-content-padding-block-start */
       var(--rh-tooltip__content--PaddingTop, var(--rh-space-lg, 16px)))
+    /** Block-end padding for tooltip content */
     var(--rh-tooltip-content-padding-block-end,
       /** @deprecated use --rh-tooltip-content-padding-block-end */
       var(--rh-tooltip__content--PaddingBottom, var(--rh-space-lg, 16px)));
   padding-inline:
+    /** Inline-start padding for tooltip content */
     var(--rh-tooltip-content-padding-inline-start,
       /** @deprecated use --rh-tooltip-content-padding-inline-start */
       var(--rh-tooltip__content--PaddingLeft, var(--rh-space-lg, 16px)))
+    /** Inline-end padding for tooltip content */
     var(--rh-tooltip-content-padding-inline-end,
       /** @deprecated use --rh-tooltip-content-padding-inline-end */
       var(--rh-tooltip__content--PaddingRight, var(--rh-space-lg, 16px)));
   font-size:
-    /** Font size */
+    /** Tooltip content font size */
     var(--rh-tooltip-content-font-size,
       /** @deprecated use --rh-tooltip-content-font-size */
       var(--rh-tooltip__content--FontSize, var(--rh-font-size-body-text-sm, 0.875rem)));
   color:
-    /** Color */
-    light-dark(var(--rh-tooltip-content-color,
-      /** @deprecated use --rh-tooltip-content-color */
-      var(--rh-tooltip__content--Color, var(--rh-color-text-primary-on-light, #151515))),
-      var(--rh-tooltip-content-color, var(--rh-color-text-primary-on-dark, #ffffff)));
+    light-dark(
+        /** Tooltip text color in light mode */
+        var(--rh-tooltip-content-color,
+        /** @deprecated use --rh-tooltip-content-color */
+        var(--rh-tooltip__content--Color, var(--rh-color-text-primary-on-light, #151515))),
+        /** Tooltip text color in dark mode */
+        var(--rh-tooltip-content-color, var(--rh-color-text-primary-on-dark, #ffffff))
+      );
   background-color:
-    /** Background color */
-    light-dark(var(--rh-tooltip-content-background-color,
-      /** @deprecated use --rh-tooltip-content-background-color */
-      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-lightest, #ffffff))),
-      var(--rh-tooltip-content-background-color, var(--rh-color-surface-darkest, #151515)));
+    light-dark(
+        /** Tooltip surface in light mode */
+        var(--rh-tooltip-content-background-color,
+        /** @deprecated use --rh-tooltip-content-background-color */
+        var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-lightest, #ffffff))),
+        /** Tooltip surface in dark mode */
+        var(--rh-tooltip-content-background-color, var(--rh-color-surface-darkest, #151515))
+      );
 
   &.dark { color-scheme: dark; }
   &.light { color-scheme: light; }
@@ -84,25 +113,42 @@
   display: block;
   content: '';
   rotate: 45deg;
+
+  /** Arrow width */
   width: var(--_floating-arrow-size);
+
+  /** Arrow height */
   height: var(--_floating-arrow-size);
   will-change: left top right bottom;
   background-color:
-    light-dark(var(--rh-tooltip-content-background-color,
-      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-lightest, #ffffff))),
-      var(--rh-tooltip-content-background-color,
-      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515))));
+    light-dark(
+        /** Arrow surface in light mode */
+        var(--rh-tooltip-content-background-color,
+        var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-lightest, #ffffff))),
+        /** Arrow surface in dark mode */
+        var(--rh-tooltip-content-background-color,
+        var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)))
+      );
 }
 
 .open #tooltip {
   opacity: 1;
+  transition:
+    opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 300ms,
+    display 300ms 300ms allow-discrete;
+}
+
+@starting-style {
+  .open #tooltip {
+    opacity: 0;
+  }
 }
 
 /* PLAIN */
-.left #tooltip:after { inset-inline-start: calc(-0.5 * var(--_floating-arrow-size)); }
-.top #tooltip:after { inset-block-start: calc(100% - 0.5 * var(--_floating-arrow-size)); }
-.right #tooltip:after { inset-inline-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
-.bottom #tooltip:after { inset-block-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+.left #tooltip:after { inset-inline-end: calc(-0.5 * var(--_floating-arrow-size)); }
+.top #tooltip:after { inset-block-end: calc(-0.5 * var(--_floating-arrow-size)); }
+.right #tooltip:after { inset-inline-start: calc(-0.5 * var(--_floating-arrow-size)); }
+.bottom #tooltip:after { inset-block-start: calc(-0.5 * var(--_floating-arrow-size)); }
 
 /* CENTER */
 .left.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
@@ -125,4 +171,15 @@
 :host([position='left']),
 :host([position='right']) {
   --_text-alignment: 'start';
+}
+
+#container:dir(rtl) {
+  /* RTL: Reverse left/right arrow positioning use of inset-inline-start and inset-inline-end */
+  &.left #tooltip:after {
+    inset-inline: calc(-0.5 * var(--_floating-arrow-size)) auto;
+  }
+
+  &.right #tooltip:after {
+    inset-inline: auto calc(-0.5 * var(--_floating-arrow-size));
+  }
 }

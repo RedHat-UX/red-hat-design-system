@@ -6,10 +6,18 @@ import { classMap } from 'lit/directives/class-map.js';
 import { consume } from '@lit/context';
 import { context } from './context.js';
 
-import styles from './rh-navigation-primary-item-menu.css';
+import styles from './rh-navigation-primary-item-menu.css' with { type: 'css' };
 
 /**
- * Navigation Menu
+ * A navigation menu provides a responsive content container for navigation
+ * item dropdowns. This element must be a child of `rh-navigation-primary-item`
+ * and should not be used independently. Slotted content should use semantic
+ * heading and list elements for screen reader navigation. Focus is managed
+ * within this container; Tab moves through focusable children and Escape
+ * closes the parent dropdown.
+ *
+ * @summary Content container for navigation item dropdowns
+ *
  */
 @customElement('rh-navigation-primary-item-menu')
 export class RhNavigationPrimaryItemMenu extends LitElement {
@@ -45,7 +53,15 @@ export class RhNavigationPrimaryItemMenu extends LitElement {
     const compact = !this.#hydrated ? true : this.compact ?? true;
     return html`
       <div id="container" class="${classMap({ compact: compact, dehydrated: !this.#hydrated })}">
-        <!-- Place element content here -->
+        <!--
+          Use this slot for navigation item dropdown content, typically links
+          and nested menus. Content layout adapts based on the primary
+          navigation's compact state. Slotted content should use semantic
+          heading and list elements for screen reader navigation. Avoid
+          placing focusable elements outside of this container, as focus
+          management relies on this boundary to trap and restore focus
+          when the dropdown closes.
+        -->
         <slot></slot>
       </div>
     `;

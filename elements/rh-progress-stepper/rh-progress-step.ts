@@ -14,7 +14,7 @@ import { observes } from '@patternfly/pfe-core/decorators.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from './rh-progress-step.css';
+import styles from './rh-progress-step.css' with { type: 'css' };
 
 /**
  * Available states for a progress step:

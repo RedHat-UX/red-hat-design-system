@@ -10,15 +10,21 @@ import type { IconNameFor, IconSetName } from '@rhds/icons';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import style from './rh-cta.css';
+import style from './rh-cta.css' with { type: 'css' };
 
 function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLButtonElement {
   return el instanceof HTMLAnchorElement || el instanceof HTMLButtonElement;
 }
 
 /**
- * A call to action is styled text representing a link.
- * @summary     A call to action is styled text representing a link.
+ * Provides a styled link or button for prominent user actions when you need to
+ * draw attention to a key interaction. Must contain an `href` attribute or a
+ * slotted `<a>` / `<button>`. Screen readers announce the slotted text. Used
+ * primarily for linking to other pages. Users should prefer to use the `href`
+ * attribute or slotted links with this component. Avoid `<button>` with the
+ * default (no variant) style.
+ *
+ * @summary Styled link or button for prominent user actions
  *
  * @alias call-to-action
  *
@@ -29,40 +35,30 @@ export class RhCta extends LitElement {
   static readonly styles = [style];
 
   /**
-   * Indicates the importance of this call-to-action in the context of the page.
-   * Will also influence how the call-to-action is styled.
-   *   - **Primary**: Use for the primary or most important link. This variant is the highest in
-   *       hierarchy and can also be used to play a video in a Modal or large container.
-   *   - **Secondary**: Use for secondary or general links. This variant is lower in hierarchy than
-   *       the Primary variant and can be used multiple times in the same container or layout.
-   *   - **Brick**: Use to group links together. Only the Brick variant can stretch to fit a
-   *       container or grid, otherwise the text label padding in other variants stays the same.
-   *   - Default (no variant): Use for tertiary or the least important links. This variant is the
-   *       lowest in hierarchy and can be used multiple times in the same container or layout.
+   * Visual importance: `primary` (red fill), `secondary` (bordered),
+   * `brick` (full-width grid), or undefined (default inline link with arrow).
    */
   @property({ reflect: true }) variant?: 'primary' | 'secondary' | 'brick';
 
-  /**
-   * When set, overrides the default slot. Use *instead* of a slotted anchor tag
-   */
+  /** URL for the CTA link. Renders an internal `<a>` instead of using a slotted element. */
   @property({ reflect: true }) href?: string;
 
-  /** when `href` is set, the link's `download` attribute */
+  /** Triggers a file download when `href` is set. Passes through to the link. */
   @property() download?: string;
 
-  /** when `href` is set, the link's `referrerpolicy` attribute */
+  /** Referrer policy when `href` is set. Passes through to the link. */
   @property() referrerpolicy?: string;
 
-  /** when `href` is set, the link's `rel` attribute */
+  /** Link relationship when `href` is set. Passes through to the link. */
   @property() rel?: string;
 
-  /** when `href` is set, the link's `target` attribute */
+  /** Browsing context when `href` is set (e.g. `_blank`). Passes through to the link. */
   @property() target?: string;
 
-  /** Icon name */
+  /** Icon name. Overrides the default trailing arrow, or displays before text in brick variant. */
   @property({ reflect: true }) icon?: IconNameFor<IconSetName>;
 
-  /** Icon set */
+  /** Icon set to load from. Defaults to `ui`. */
   @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'ui';
 
   override async scheduleUpdate() {
@@ -83,19 +79,17 @@ export class RhCta extends LitElement {
     const isDefault = !variant;
     const svg = isDefault;
     const follower =
-        (variant !== 'brick' && icon) ? html`<rh-icon icon=${icon} set=${iconSet ?? 'ui'}></rh-icon>`
+        (variant !== 'brick' && icon) ? html`<rh-icon icon="${icon}" set="${iconSet ?? 'ui'}"></rh-icon>`
       : (variant === undefined) ? html`<rh-icon icon="arrow-right" set="ui"></rh-icon>`
       : '';
     const iconContent =
       !(variant === 'brick' && icon) ? '' : html`<rh-icon .icon=${icon} set="${iconSet ?? 'ui'}"></rh-icon>`;
     const slot = html`<!--
-          The default slot contains the link text when the \`href\`
-          attribute is set. In case there is no href attribute, an anchor
-          tag (\`<a href="...">\`) should be the first child inside \`rh-cta\`
-          element. Less preferred but allowed for specific use-cases
-          include: \`<button>\` (note however that the \`button\` tag is not
-          supported for the default CTA styles).
-    --><slot></slot>${follower}`;
+          summary: CTA link text
+          description: |
+            Slot an anchor or button as the first child, or set href on the host. Screen readers
+            announce this content as the CTA label. For long words, supply wbr at appropriate break points.
+    --><slot></slot>`;
     const linkContent =
         !href ? slot
       : html`<a href=${href}
@@ -108,7 +102,7 @@ export class RhCta extends LitElement {
       <span id="container"
             part="container"
             class=${classMap({ icon: !!icon, svg })}
-            @slotchange=${this.firstUpdated}>${iconContent}${linkContent}</span>`;
+            @slotchange=${this.firstUpdated}>${iconContent}${linkContent}${follower}</span>`;
   }
 
   override firstUpdated() {
