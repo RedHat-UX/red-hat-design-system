@@ -32,10 +32,21 @@ import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 /**
- * An audio player plays audio clips in the browser and includes other features.
- * @summary Plays audio clips and includes other features
+ * An audio player for podcasts and media clips. Users must provide an
+ * `<audio>` element in the `media` slot. Provides playback controls,
+ * seek timeline, and expandable panels. All buttons use ARIA labels
+ * and `rh-tooltip` for screen reader and keyboard accessibility.
+ * Tab and Enter navigate and activate controls.
+ *
+ * @summary Plays audio clips with playback controls, transcript, and panels
  *
  * @alias audio-player
+ *
+ * @csspart toolbar - The main controls toolbar container.
+ * @csspart panel - The expandable content panel below the toolbar.
+ * @csspart about - The about panel slot container.
+ * @csspart subscribe - The subscribe panel slot container.
+ * @csspart transcript - The transcript panel slot container.
  *
  */
 @customElement('rh-audio-player')
@@ -65,37 +76,44 @@ export class RhAudioPlayer extends LitElement {
     'download': 'Download',
   };
 
-  /**  Audio's series name, e.g. Podcast series. */
+  /** Audio series name, e.g. a podcast series title. */
   @property({ reflect: true }) mediaseries?: string;
 
-  /**  Audio's title, e.g. Podcast episode title. */
+  /** Audio track title, e.g. a podcast episode name. */
   @property({ reflect: true }) mediatitle?: string;
 
   /**
-   * Layout:
-   *   - `mini` (default): minimal controls: play/pause, range; volume and other controls hidden behind menu
-   *   - `compact`: artwork and more controls: time, skip, volume
-   *   - `compact-wide`: like compact but full width
-   *   - `full`: maximal controls and artwork
+   * Player layout variant. Users should choose a layout appropriate to
+   * the available width:
+   *   - `mini` (default): play/pause and seek range only; volume and
+   *     other controls are behind the "more options" menu.
+   *   - `compact`: adds artwork, elapsed time, skip buttons, and volume.
+   *   - `compact-wide`: like `compact` but stretches to fill container
+   *     width.
+   *   - `full`: maximal controls including artwork, rewind/forward,
+   *     elapsed/duration display, and inline playback rate stepper.
    */
   @property({ reflect: true }) layout: 'mini' | 'compact' | 'compact-wide' | 'full' = 'mini';
 
-  /** URL to audio's artwork */
+  /** URL to the audio track's artwork image. */
   @property({ reflect: true }) poster?: string;
 
-  /** Playback volume */
+  /** Playback volume from 0 (muted) to 1 (max). */
   @property({ reflect: true, type: Number }) volume = 0.5;
 
-  /** Playback rate */
+  /** Playback speed multiplier, from 0.25 to 2. */
   @property({ reflect: true, type: Number }) playbackRate = 1;
 
+  /** Whether the expandable content panel is open. */
   @property({ reflect: true, type: Boolean }) expanded = false;
 
+  /** Language code for i18n of control labels. */
   @property({ reflect: true }) lang!: string;
 
+  /** Custom microcopy overrides keyed by language code. */
   @property({ attribute: false }) microcopy = {};
 
-  /** Element's color palette */
+  /** Element's color palette. */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   @queryAssignedElements({ slot: 'series' })
@@ -364,7 +382,11 @@ export class RhAudioPlayer extends LitElement {
                 'mobile-safari': !!this.#isMobileSafari,
               })}">
         <input type="hidden" value=${this.#readyState}>
-        <!-- html \`audio\` element -->
+        <!-- summary: html \`audio\` element
+             description: |
+               Must contain an \`<audio>\` block element with source children.
+               The audio element is visually hidden but remains accessible
+               to screen readers for native media controls. -->
         <slot id="media" name="media" @slotchange="${this.#initMediaElement}"></slot>
         <!-- main controls -->
         <div id="toolbar"
@@ -387,11 +409,18 @@ export class RhAudioPlayer extends LitElement {
 
           <div id="full-title">
             <rh-audio-player-scrolling-text-overflow id="mediaseries" ?hidden=${!this.mediaseries}>
-              <!-- optional, name of podcast series -->
+              <!-- summary: optional inline text for podcast series name
+                   description: |
+                     Accepts a \`<p>\` or inline text element. Screen readers
+                     announce the series name before the title for context. -->
               <slot name="series" @slotchange=${this.#onTitleChange}>${this.mediaseries}</slot>
             </rh-audio-player-scrolling-text-overflow>
             <rh-audio-player-scrolling-text-overflow id="mediatitle" ?hidden=${!this.mediatitle}>
-              <!-- optional, title of episode -->
+              <!-- summary: optional heading element for episode title
+                   description: |
+                     Accepts a heading element like \`<h3>\`. Should use an
+                     appropriate heading level for the page. Screen readers
+                     use this as the primary label for the player region. -->
               <slot name="title" @slotchange=${this.#onTitleChange}>${this.mediatitle}</slot>
             </rh-audio-player-scrolling-text-overflow>
           </div>
@@ -439,9 +468,9 @@ export class RhAudioPlayer extends LitElement {
             <input id="volume"
                       class="toolbar-button"
                       aria-label="${this.#translation.get('volume')}"
-                      min=0
+                      min="0"
                       max=${!this.#mediaElement ? 0 : 100}
-                      step=1
+                      step="1"
                       type="range"
                       value=${this.volume * 100}
                       ?disabled="${!this.#mediaElement}"
@@ -559,7 +588,11 @@ export class RhAudioPlayer extends LitElement {
              ?hidden="${!this.expanded || !this.#hasMenu}">
           <!--
             slot:
-              description: optional \`rh-audio-player-about\` panel with attribution
+              summary: optional about panel block element
+              description: |
+                Accepts an \`rh-audio-player-about\` block element with
+                episode description and speaker attribution. Content
+                is accessible to screen readers when the panel is expanded.
             part:
               description: about the episode panel
           -->
@@ -571,7 +604,11 @@ export class RhAudioPlayer extends LitElement {
           </slot>
           <!--
             slot:
-              description: optional \`rh-audio-player-subscribe\` panel with links to subscribe
+              summary: optional subscribe panel block element
+              description: |
+                Accepts an \`rh-audio-player-subscribe\` block element with
+                anchor links to podcast services. Each link should include
+                descriptive alt text on images for screen reader users.
             part:
               description: subscribe panel
           -->
@@ -582,7 +619,11 @@ export class RhAudioPlayer extends LitElement {
           </slot>
           <!--
             slot:
-              description: optional \`rh-transcript\` panel with \`rh-cue\` elements
+              summary: optional transcript panel block element
+              description: |
+                Accepts an \`rh-transcript\` block element containing \`rh-cue\`
+                children. The transcript provides accessible text content
+                that screen readers can navigate. Clicking cues seeks audio.
             part:
               description: transcript panel
           -->

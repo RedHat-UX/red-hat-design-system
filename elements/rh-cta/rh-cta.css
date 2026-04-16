@@ -10,21 +10,16 @@ a,
 ::slotted(:is(a, button, input)) {
   vertical-align: middle !important;
   word-break: break-word !important;
+  white-space: normal !important;
   display: inline !important;
   color: inherit !important;
   font-family: inherit !important;
   font-size: inherit !important;
   font-weight: inherit !important;
   line-height: inherit !important;
-
-  /** Sets the cta text decoration */
   text-decoration: var(--_text-decoration) !important;
   text-underline-offset: var(--_text-underline-offset) !important;
   z-index: 2 !important;
-}
-
-::slotted(:is(a, button, input)) {
-  white-space: break-spaces !important;
 }
 
 a:after,
@@ -49,18 +44,39 @@ a:after,
   position: relative;
   white-space: var(--_rh-cta-white-space, nowrap);
   color: var(--_color);
+
+  /** Container typeface */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+
+  /** Container text size */
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
+
+  /** Container line height */
   line-height: var(--rh-line-height-body-text, 1.5);
   background-color: var(--_background-color);
   border-color: var(--_border-color, transparent);
+
+  /** Container border radius */
   border-radius: var(--rh-border-radius-default, 3px);
+
+  /** Container border thickness */
   border-width: var(--rh-border-width-sm, 1px);
+
+  --_icon-size: /** Trailing icon dimensions */
+  var(--rh-icon-size, var(--rh-font-size-body-text-lg, 1.125rem));
+
+  &:has(rh-icon) {
+    padding-inline-end:
+      /* 2px is a safety margin to not cut off the arrow icon
+*        when the container is just barely too small */
+      calc(
+          var(--rh-icon-size) + var(--rh-space-md, 8px) + 2px
+        );
+  }
 
   --rh-color-surface: var(--_background-color) !important;
   --_arrow-size: 13px;
-  --rh-icon-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_rh-icon-plus-padding: calc(5px + var(--rh-icon-size));
 }
 
@@ -80,15 +96,19 @@ a:after,
   position: absolute;
   top: var(--_offset);
   left: var(--_offset);
+
+  /** Inner border thickness */
   border-width: var(--rh-border-width-sm, 1px);
   border-radius: 2px;
   outline: none;
   pointer-events: none;
 }
 
-/** Default variant arrow icon */
+/** Default variant trailing arrow icon */
 rh-icon {
   vertical-align: middle;
+
+  /** Arrow icon inline start margin */
   margin-inline-start: var(--rh-space-md, 8px);
   display: inline-block;
   fill: currentcolor;
@@ -96,7 +116,9 @@ rh-icon {
   transition: translate var(--_trans);
 
   --_trans:
+    /** Arrow slide animation duration */
     var(--rh-animation-speed, 0.3s)
+    /** Arrow slide animation easing */
     var(--rh-animation-timing, cubic-bezier(0.465, 0.183, 0.153, 0.946));
 }
 
@@ -120,10 +142,10 @@ a:focus-within,
   --_background-color: var(--rh-cta-focus-background-color);
   --_color: var(--_focus-color);
 
-  /** Sets the cta text decoration on focus */
+  /** Focus text decoration */
   --_text-decoration: var(--_focus-text-decoration);
   --_text-underline-offset:
-    /* Sets the `text-underline-offset` for the cta text on focus */
+    /** Focus text underline offset */
     var(--rh-cta-focus-text-underline-offset,
       var(--rh-cta-hover-text-underline-offset));
 
@@ -135,7 +157,10 @@ a:focus-within,
   outline:
     var(--rh-border-width-md, 2px)
     solid
-    var(--rh-cta-focus-container-outline-color, var(--rh-cta-focus-outline-color));
+    /** Container outline color on keyboard focus */
+    var(--rh-cta-focus-container-outline-color,
+      /** Inner focus indicator outline color */
+      var(--rh-cta-focus-outline-color));
   outline-offset: 2px;
 }
 
@@ -153,11 +178,9 @@ a:focus-within,
   border-color: var(--_hover-border-color);
   background-color: var(--_hover-background-color);
 
-  /** Sets the cta text decoration on hover */
   --_text-decoration: var(--rh-cta-hover-text-decoration, var(--_hover-text-decoration));
-
-  /* Sets the `text-underline-offset` for the cta text on hover */
-  --_text-underline-offset: var(--rh-cta-hover-text-underline-offset);
+  --_text-underline-offset: /** Hover text underline offset */
+    var(--rh-cta-hover-text-underline-offset);
 }
 
 :host(:hover) #container rh-icon {
@@ -211,6 +234,7 @@ a:focus-within,
     }
 
     & rh-icon {
+      /** Variant icon inline start margin */
       margin-inline-start: var(--rh-space-md, 8px);
     }
   }
@@ -228,7 +252,10 @@ a:focus-within,
 :host([variant$='ary']) #container {
   & a,
   & ::slotted(:is(a, button, input)) {
-    font-size: var(--rh-cta-font-size-priority, var(--rh-font-size-body-text-md, 1rem));
+    font-size:
+      /** Primary and secondary variant font size */
+      var(--rh-cta-font-size-priority,
+        var(--rh-font-size-body-text-md, 1rem));
   }
 }
 
@@ -237,58 +264,53 @@ a:focus-within,
  *****************************************************************************/
 
 :host(:not([variant])) #container {
-  --_background-color: /** Sets the cta background color */
+  --_background-color: /** Default background color */
     var(--rh-cta-background-color, transparent);
-  --_border-color: /** Sets the cta border color */
+  --_border-color: /** Default border color */
     var(--rh-cta-border-color, transparent);
-  --_color: /** Sets the cta color */
+  --_color: /** Default text color */
     var(--rh-cta-color, var(--rh-color-interactive-primary-default));
-  --_hover-background-color: /** Sets the cta background color on hover */
+  --_hover-background-color: /** Default hover background */
     var(--rh-cta-hover-background-color, transparent);
-  --_hover-border-color: /** Sets the cta boder color on hover */
+  --_hover-border-color: /** Default hover border color */
     var(--rh-cta-hover-border-color, transparent);
-  --_hover-color:
-    /** Sets the cta color on hover */
+  --_hover-color: /** Default hover text color */
     var(--rh-cta-hover-color,
       var(--rh-color-interactive-primary-hover));
-  --_hover-text-decoration: /** Sets the cta text decoration on hover */
+  --_hover-text-decoration: /** Default hover text decoration */
     var(--rh-cta-hover-text-decoration, none);
-  --_focus-background-color: /** Sets the cta background color on focus */
+  --_focus-background-color: /** Default focus background */
     var(--rh-cta-focus-background-color, transparent);
 
   /* --rh-color-border-interactive-on-light with 10% opacity */
 
   --_focus-container-background-color:
     light-dark(
-        /** Sets the cta container background color on focus */
+        /** Container background color on focus */
         var(--rh-cta-focus-container-background-color, #0066cc1a),
         var(--rh-cta-focus-container-background-color, #73bcf740)
       );
-  --_focus-border-color: /** Sets the cta border color on focus */
+  --_focus-border-color: /** Default focus border color */
     var(--rh-cta-focus-border-color, transparent);
-  --_focus-color:
-    /** Sets the cta color on focus */
+  --_focus-color: /** Default focus text color */
     var(--rh-cta-focus-color,
       var(--rh-color-interactive-primary-default));
-  --_focus-inner-border-color: /** Sets the cta inner border color on focus */
+  --_focus-inner-border-color: /** Default focus inner border color */
     var(--rh-cta-focus-inner-border-color, transparent);
-  --_focus-text-decoration: /** Sets the cta text decoration on focus */
+  --_focus-text-decoration: /** Default focus text decoration */
     var(--rh-cta-focus-text-decoration, none);
 
   /* --rh-color-border-interactive-on-light with 10% opacity */
 
   --_active-container-background-color:
     light-dark(
-        /**
-         * Sets the cta container background color on active.
-         * Applicable only for default variant
-         */
+        /** Default active container background */
         var(--rh-cta-active-container-background-color, #0066cc1a),
         var(--rh-cta-active-container-background-color, #73bcf740)
       );
-  --_active-inner-border-color: /** Sets the cta inner border color on active */
+  --_active-inner-border-color: /** Default active inner border color */
     var(--rh-cta-active-inner-border-color, transparent);
-  --_active-text-decoration: /** Sets the cta text decoration on active */
+  --_active-text-decoration: /** Default active text decoration */
     var(--rh-cta-active-text-decoration, none);
 }
 
@@ -299,34 +321,38 @@ a:focus-within,
 :host([variant='primary']) #container {
   border-style: solid;
 
-  --_background-color: var(--rh-cta-background-color, var(--rh-color-brand-red));
-  --_border-color: var(--rh-cta-border-color, var(--rh-color-brand-red));
-  --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
-
-  /** Sets the cta color on active. Applicable only for secondary variant */
-  --_active-color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
-  --_hover-background-color:
+  --_background-color: /** Primary variant background color */
+    var(--rh-cta-background-color, var(--rh-color-brand-red));
+  --_border-color: /** Primary variant border color */
+    var(--rh-cta-border-color, var(--rh-color-brand-red));
+  --_color: /** Primary variant text color */
+    var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
+  --_active-color: /** Primary variant active text color */
+    var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
+  --_hover-background-color: /** Primary variant hover background */
     var(--rh-cta-hover-background-color,
       var(--rh-color-brand-red-dark, #a60000));
-  --_hover-border-color: var(--rh-cta-hover-border-color, var(--rh-color-brand-red-dark, #a60000));
-  --_hover-color: var(--rh-cta-hover-color, var(--rh-color-text-primary-on-dark, #ffffff));
-  --_focus-background-color:
+  --_hover-border-color: /** Primary variant hover border color */
+    var(--rh-cta-hover-border-color, var(--rh-color-brand-red-dark, #a60000));
+  --_hover-color: /** Primary variant hover text color */
+    var(--rh-cta-hover-color, var(--rh-color-text-primary-on-dark, #ffffff));
+  --_focus-background-color: /** Primary variant focus background */
     var(--rh-cta-focus-background-color,
       var(--rh-color-brand-red-dark, #a60000));
-  --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-brand-red-dark, #a60000));
-  --_focus-color:
+  --_focus-border-color: /** Primary variant focus border color */
+    var(--rh-cta-focus-border-color, var(--rh-color-brand-red-dark, #a60000));
+  --_focus-color: /** Primary variant focus text color */
     var(--rh-cta-focus-color,
       var(--rh-color-text-primary-on-dark, #ffffff)) !important;
-  --_focus-inner-border-color:
+  --_focus-inner-border-color: /** Primary variant focus inner border color */
     var(--rh-cta-focus-inner-border-color,
       var(--rh-color-text-primary-on-dark, #ffffff));
-  --_focus-text-decoration: var(--rh-cta-focus-text-decoration, none);
-
-  /** Sets the cta background color on active */
-  --_active-background-color:
+  --_focus-text-decoration: /** Primary variant focus text decoration */
+    var(--rh-cta-focus-text-decoration, none);
+  --_active-background-color: /** Primary variant active background color */
     var(--rh-cta-active-background-color,
       var(--rh-color-brand-red-dark, #a60000));
-  --_active-inner-border-color:
+  --_active-inner-border-color: /** Primary variant active inner border color */
     var(--rh-cta-active-inner-border-color,
       var(--rh-color-text-primary-on-dark, #ffffff));
 }
@@ -338,35 +364,64 @@ a:focus-within,
 :host([variant='secondary']) #container {
   border-style: solid;
 
-  --_background-color: var(--rh-cta-background-color, transparent);
-  --_border-color: var(--rh-cta-border-color, var(--rh-color-border-strong));
+  --_background-color: /** Secondary variant background color */
+    var(--rh-cta-background-color, transparent);
+  --_border-color: /** Secondary variant border color */
+    var(--rh-cta-border-color, var(--rh-color-border-strong));
   --_color:
-    light-dark(var(--rh-cta-color, var(--rh-color-text-primary-on-light, #151515)),
-      var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff)));
+    light-dark(
+        /** Secondary variant text color on light color schemes */
+        var(--rh-cta-color, var(--rh-color-text-primary-on-light, #151515)),
+        /** Secondary variant text color on dark color schemes */
+        var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff))
+      );
   --_hover-background-color:
-    light-dark(var(--rh-cta-hover-background-color, var(--rh-color-surface-darkest, #151515)),
-      var(--rh-cta-hover-background-color, var(--rh-color-surface-lightest, #ffffff)));
-  --_hover-border-color: var(--rh-cta-hover-border-color, var(--rh-color-border-strong));
+    light-dark(
+        /** Secondary variant hover background on light color schemes */
+        var(--rh-cta-hover-background-color, var(--rh-color-surface-darkest, #151515)),
+        /** Secondary variant hover background on dark color schemes */
+        var(--rh-cta-hover-background-color, var(--rh-color-surface-lightest, #ffffff))
+      );
+  --_hover-border-color: /** Secondary variant hover border color */
+    var(--rh-cta-hover-border-color, var(--rh-color-border-strong));
   --_hover-color:
-    light-dark(var(--rh-cta-hover-color, var(--rh-color-text-primary-on-dark, #ffffff)),
-      var(--rh-cta-hover-color, var(--rh-color-text-primary-on-light, #151515)));
+    light-dark(
+        /** Secondary variant hover text color on light color schemes */
+        var(--rh-cta-hover-color, var(--rh-color-text-primary-on-dark, #ffffff)),
+        /** Secondary variant hover text color on dark color schemes */
+        var(--rh-cta-hover-color, var(--rh-color-text-primary-on-light, #151515))
+      );
   --_focus-background-color:
-    light-dark(var(--rh-cta-focus-background-color, var(--rh-color-surface-lighter, #f2f2f2)),
-      var(--rh-cta-focus-background-color, var(--rh-color-surface-dark, #383838)));
-  --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-border-strong));
+    light-dark(
+        /** Secondary variant focus background on light color schemes */
+        var(--rh-cta-focus-background-color, var(--rh-color-surface-lighter, #f2f2f2)),
+        /** Secondary variant focus background on dark color schemes */
+        var(--rh-cta-focus-background-color, var(--rh-color-surface-dark, #383838))
+      );
+  --_focus-border-color: /** Secondary variant focus border color */
+    var(--rh-cta-focus-border-color, var(--rh-color-border-strong));
   --_focus-color: var(--rh-color-text-primary);
-  --_focus-inner-border-color:
+  --_focus-inner-border-color: /** Secondary variant focus inner border color */
     var(--rh-cta-focus-inner-border-color,
       var(--rh-color-border-strong));
-  --_focus-text-decoration: var(--rh-cta-focus-text-decoration, none);
-  --_active-color: /** Sets the cta color on active. Applicable only for secondary variant */
+  --_focus-text-decoration: /** Secondary variant focus text decoration */
+    var(--rh-cta-focus-text-decoration, none);
+  --_active-color: /** Secondary variant active text color */
     var(--rh-cta-active-color, var(--rh-color-text-primary));
   --_active-background-color:
-    light-dark(var(--rh-cta-active-background-color, var(--rh-color-border-strong)),
-      var(--rh-cta-active-background-color, var(--rh-color-surface-lightest, #ffffff)));
+    light-dark(
+        /** Secondary variant active background on light color schemes */
+        var(--rh-cta-active-background-color, var(--rh-color-border-strong)),
+        /** Secondary variant active background on dark color schemes */
+        var(--rh-cta-active-background-color, var(--rh-color-surface-lightest, #ffffff))
+      );
   --_active-inner-border-color:
-    light-dark(var(--rh-cta-active-inner-border-color, var(--rh-color-surface-light, #e0e0e0)),
-      var(--rh-cta-active-inner-border-color, var(--rh-color-border-strong-on-light, #151515)));
+    light-dark(
+        /** Secondary variant active inner border on light color schemes */
+        var(--rh-cta-active-inner-border-color, var(--rh-color-surface-light, #e0e0e0)),
+        /** Secondary variant active inner border on dark color schemes */
+        var(--rh-cta-active-inner-border-color, var(--rh-color-border-strong-on-light, #151515))
+      );
 }
 
 /*****************************************************************************
@@ -380,43 +435,75 @@ a:focus-within,
 
   & #container {
     border-style: solid;
+
+    /** Brick variant typeface */
     font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
+    /** Brick variant font weight */
     font-weight: var(--rh-font-weight-body-text-regular, 400);
     display: flex;
     flex-flow: row wrap;
+
+    /** Brick variant content gap */
     gap: var(--rh-space-md, 8px);
     justify-content: center;
     align-items: center;
 
-    --_background-color: var(--rh-cta-background-color, transparent);
-    --_border-color: var(--rh-cta-border-color, var(--rh-color-border-subtle));
-    --_color: var(--rh-cta-color, var(--rh-color-interactive-primary-default));
+    --_background-color: /** Brick variant background color */
+      var(--rh-cta-background-color, transparent);
+    --_border-color: /** Brick variant border color */
+      var(--rh-cta-border-color, var(--rh-color-border-subtle));
+    --_color: /** Brick variant text color */
+      var(--rh-cta-color, var(--rh-color-interactive-primary-default));
     --_hover-background-color:
-      light-dark(var(--rh-cta-hover-background-color, var(--rh-color-surface-lighter, #f2f2f2)),
-        var(--rh-cta-hover-background-color, var(--rh-color-surface-darker, #1f1f1f)));
-    --_hover-border-color: var(--rh-cta-hover-border-color, var(--rh-color-border-subtle));
-    --_hover-color: var(--rh-cta-hover-color, var(--rh-color-interactive-primary-hover));
+      light-dark(
+          /** Brick variant hover background on light color schemes */
+          var(--rh-cta-hover-background-color, var(--rh-color-surface-lighter, #f2f2f2)),
+          /** Brick variant hover background on dark color schemes */
+          var(--rh-cta-hover-background-color, var(--rh-color-surface-darker, #1f1f1f))
+        );
+    --_hover-border-color: /** Brick variant hover border color */
+      var(--rh-cta-hover-border-color, var(--rh-color-border-subtle));
+    --_hover-color: /** Brick variant hover text color */
+      var(--rh-cta-hover-color, var(--rh-color-interactive-primary-hover));
     --_hover-text-decoration:
-      light-dark(var(--rh-cta-hover-text-decoration, none),
-        var(--rh-cta-hover-text-decoration, underline));
-    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-interactive-primary-default));
-    --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-border-subtle));
-    --_focus-inner-border-color:
+      light-dark(
+          /** Brick variant hover text decoration on light color schemes */
+          var(--rh-cta-hover-text-decoration, none),
+          /** Brick variant hover text decoration on dark color schemes */
+          var(--rh-cta-hover-text-decoration, underline)
+        );
+    --_focus-color: /** Brick variant focus text color */
+      var(--rh-cta-focus-color, var(--rh-color-interactive-primary-default));
+    --_focus-border-color: /** Brick variant focus border color */
+      var(--rh-cta-focus-border-color, var(--rh-color-border-subtle));
+    --_focus-inner-border-color: /** Brick variant focus inner border color */
       var(--rh-cta-focus-inner-border-color,
         var(--rh-color-border-subtle));
     --_focus-text-decoration:
-      light-dark(var(--rh-cta-focus-text-decoration, none),
-        var(--rh-cta-focus-text-decoration, none));
+      light-dark(
+          /** Brick variant focus text decoration on light color schemes */
+          var(--rh-cta-focus-text-decoration, none),
+          /** Brick variant focus text decoration on dark color schemes */
+          var(--rh-cta-focus-text-decoration, none)
+        );
     --_active-background-color:
-      light-dark(var(--rh-cta-active-background-color,
-        var(--rh-color-surface-lighter, #f2f2f2)),
-        var(--rh-cta-active-background-color, var(--rh-color-surface-darker, #1f1f1f)));
-    --_active-inner-border-color:
+      light-dark(
+          /** Brick variant active background on light color schemes */
+          var(--rh-cta-active-background-color, var(--rh-color-surface-lighter, #f2f2f2)),
+          /** Brick variant active background on dark color schemes */
+          var(--rh-cta-active-background-color, var(--rh-color-surface-darker, #1f1f1f))
+        );
+    --_active-inner-border-color: /** Brick variant active inner border color */
       var(--rh-cta-active-inner-border-color,
         var(--rh-color-border-subtle));
     --_active-text-decoration:
-      light-dark(var(--rh-cta-active-text-decoration, none),
-        var(--rh-cta-active-text-decoration, underline));
+      light-dark(
+          /** Brick variant active text decoration on light color schemes */
+          var(--rh-cta-active-text-decoration, none),
+          /** Brick variant active text decoration on dark color schemes */
+          var(--rh-cta-active-text-decoration, underline)
+        );
 
     &.icon rh-icon {
       margin-inline: 0;
