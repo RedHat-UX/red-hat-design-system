@@ -65,7 +65,7 @@ export class RhAudioPlayerAbout extends LitElement {
           ${heading}
         </rh-audio-player-scrolling-text-overflow>
       </hgroup>`}
-      <div part="body" ?hidden="${!hasContent}" tabindex=0>
+      <div part="body" ?hidden="${!hasContent}" tabindex="0">
         <!-- summary: Episode description
              description: |
                Accepts block elements like \`<p>\` for episode show notes

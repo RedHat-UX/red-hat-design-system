@@ -131,7 +131,7 @@ export class RhSubnav extends LitElement {
                   @click="${this.#onClickScroll}">
             <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
           </button>`}
-        <div id="link-container" role="${ifDefined(this.hasNavigationLinks ? 'list' : undefined)}" >
+        <div id="link-container" role="${ifDefined(this.hasNavigationLinks ? 'list' : undefined)}">
           <!--
             part:
               description: The scrollable link list container
