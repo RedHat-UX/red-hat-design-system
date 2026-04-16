@@ -43,8 +43,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.8/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
@@ -3737,7 +3737,7 @@
 </uxdot-copy-permalink>
 <p>Automated tools can help you quickly identify many potential high-impact accessibility issues. Among such tools are free browser extensions like:</p>
 <ul>
-<li>Deque’s aXe DevTools</li>
+<li>Deque’s Axe DevTools</li>
 <li>WebAIM’s WAVE</li>
 <li>IBM's Equal Access Checker</li>
 </ul>
@@ -3765,12 +3765,12 @@
       </button>
     <!--/lit-part--></template>
   <h3 id="deque-axe-devtools" tabindex="-1">
-    <a href="#deque-axe-devtools">Deque aXe DevTools</a><a>
+    <a href="#deque-axe-devtools">Deque Axe DevTools</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>Tucked away in your browser’s DevTools panel after installation, Deque’s aXe DevTools extension scans your page for accessibility issues and best practices, and then returns a text list of results and code callouts. With its ability to export results, aXe DevTools is also useful for documentation, reports, and issue tracking.</p>
-<p>Different WCAG versions (2.0 through 2.2) and conformance levels (A through AAA) can be specified in the extension’s settings. (At Red Hat, we target WCAG 2.2 AA.) And you can toggle best practices results on and off, depending on whether you’re interested solely in strict WCAG conformance. You can read the full list of rules being tested at the <a href="https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md">axe-core GitHub repository</a>.</p>
-<p>The <a href="https://www.deque.com/axe/devtools/">aXe DevTools extension</a> is available for Chrome, Firefox, and Edge. The free version allows you to test entire pages. The paid Pro version adds the capability to specify page sections for testing, provides additional export options, and also includes some guided walkthroughs for further testing.</p>
+<p>Tucked away in your browser’s DevTools panel after installation, Deque’s Axe DevTools extension scans your page for accessibility issues and best practices, and then returns a text list of results and code callouts. With its ability to export results, Axe DevTools is also useful for documentation, reports, and issue tracking.</p>
+<p>Different WCAG versions (2.0 through 2.2) and conformance levels (A through AAA) can be specified in the extension’s settings. (At Red Hat, we target WCAG 2.2 AA.) And you can toggle best practices results on and off, depending on whether you’re interested solely in strict WCAG conformance. You can read the full list of rules being tested at the <a href="https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md">Axe-core GitHub repository</a>.</p>
+<p>The <a href="https://www.deque.com/axe/devtools/">Axe DevTools extension</a> is available for Chrome, Firefox, and Edge. The free version allows you to test entire pages. The paid Pro version adds the capability to specify page sections for testing, provides additional export options, and also includes some guided walkthroughs for further testing.</p>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;margin-block-end:var(--rh-space-lg);display:flex}#signifier{display:var(--perma-signifier-display,none)}#button{border-radius:var(--rh-border-radius-default);background:0 0;border:none;align-items:center;height:1.75rem;display:none}#button:is(:hover,:focus){background:var(--uxdot-copy-permalink-button-background,light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark)));color:var(--rh-color-text-primary)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){color:inherit;text-decoration:inherit;align-items:center;display:flex;margin-block-end:0!important}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -3828,8 +3828,8 @@ The <a href="https://wave.webaim.org/">WAVE browser extension</a> is available f
     <a href="#ibm-equal-access-checker">IBM Equal Access Checker</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>Like aXe DevTools, IBM’s free Equal Access Checker resides in your browser’s DevTools panel after installation. When run, Equal Access Checker returns a text list of detected violations, warnings, and/or recommendations, depending on your preferences.</p>
-<p>Running Equal Access Checker in conjunction with a tool like aXe DevTools can be useful for detecting a wider array of violations than either tool alone. And surfacing violations common to both tools may help you identify higher-risk issues.</p>
+<p>Like Axe DevTools, IBM’s free Equal Access Checker resides in your browser’s DevTools panel after installation. When run, Equal Access Checker returns a text list of detected violations, warnings, and/or recommendations, depending on your preferences.</p>
+<p>Running Equal Access Checker in conjunction with a tool like Axe DevTools can be useful for detecting a wider array of violations than either tool alone. And surfacing violations common to both tools may help you identify higher-risk issues.</p>
 <p>In addition to WCAG versions 2.0, 2.1, and 2.2, Equal Access Checker can run scans based on IBM’s <a href="https://www.ibm.com/able/requirements/requirements/">internal accessibility target</a>. Currently, this target includes WCAG 2.2 AA, plus some additional U.S. (Section 508) and European (EN 301 549) standards not covered by WCAG. IBM has posted the <a href="https://www.ibm.com/able/requirements/checker-rule-sets">Equal Access testing ruleset</a> at their accessibility site.</p>
 <p><a href="https://www.ibm.com/able/toolkit/tools/#develop">Equal Access Checker</a> can be installed as a browser extension in Chrome, Firefox, and Edge. It’s also available as CI/CD Node packages.</p>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;margin-block-end:var(--rh-space-lg);display:flex}#signifier{display:var(--perma-signifier-display,none)}#button{border-radius:var(--rh-border-radius-default);background:0 0;border:none;align-items:center;height:1.75rem;display:none}#button:is(:hover,:focus){background:var(--uxdot-copy-permalink-button-background,light-dark(var(--rh-color-surface-light),var(--rh-color-surface-dark)));color:var(--rh-color-text-primary)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){color:inherit;text-decoration:inherit;align-items:center;display:flex;margin-block-end:0!important}</style><!--lit-part uJX07w0RWL0=-->
