@@ -132,7 +132,7 @@ The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelin
 
 ### Hiding elements
 
-The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelines (WCAG) 2.2 A and AA apply to dyanmic content:
+The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelines (WCAG) 2.2 A and AA apply to dynamic content:
 
 - Ensure content that appears or disappears on changes to mouse hover or keyboard focus is dismissable, hoverable, and persistent. ([1.4.13 Content on Hover or Focus - Level AA][wcag22u1413])
 
