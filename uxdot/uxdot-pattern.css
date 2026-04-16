@@ -62,7 +62,7 @@ h3,
 
 #content {
   display: block;
-  resize: vertical;
+  resize: both;
   overflow: auto;
   grid-area: content;
   padding: var(--rh-space-lg);

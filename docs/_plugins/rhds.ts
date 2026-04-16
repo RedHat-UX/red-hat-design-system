@@ -12,6 +12,7 @@ import slugify from 'slugify';
 import RHDSAlphabetizeTagsPlugin from '#11ty-plugins/alphabetize-tags.js';
 import RHDSElementDocsPlugin from '#11ty-plugins/element-docs.js';
 import RHDSElementDemosPlugin from '#11ty-plugins/element-demos.js';
+import UxdotPatternInlinePlugin from '#11ty-plugins/uxdot-pattern-inline.js';
 import RHDSSSRHintHasSlottedPlugin from '#11ty-plugins/ssr-hints.js';
 import LitSSRPlugin from '#11ty-plugins/lit-ssr/lit.js';
 
