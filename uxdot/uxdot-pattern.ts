@@ -1,11 +1,9 @@
-import { html, isServer } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
-
-import { SSRFailureRecoverableElement } from './ssr-failure-recoverable.js';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
@@ -25,14 +23,12 @@ import '@rhds/elements/rh-tabs/rh-tabs.js';
 
 import { TabExpandEvent } from '@rhds/elements/rh-tabs/rh-tab.js';
 
-import { UxdotPatternSSRController } from './uxdot-pattern-ssr-controller.js';
-
 import styles from './uxdot-pattern.css';
 
 @customElement('uxdot-pattern')
 @colorPalettes
 @themable
-export class UxdotPattern extends SSRFailureRecoverableElement {
+export class UxdotPattern extends LitElement {
   static styles = [styles];
 
   /** Which color palette to apply to the demo surface */
@@ -41,15 +37,6 @@ export class UxdotPattern extends SSRFailureRecoverableElement {
 
   /** The id of the element in shadow DOM which the color picker targets */
   @property({ reflect: true }) target = 'content';
-
-  /** Path to the pattern source file, relative to the input file */
-  @property({ reflect: true }) src?: string;
-
-  /** Path to additional CSS file to include */
-  @property({ reflect: true, attribute: 'css-src' }) cssSrc?: string;
-
-  /** Path to additional JS file to include */
-  @property({ reflect: true, attribute: 'js-src' }) jsSrc?: string;
 
   /** Should the color picker be hidden? */
   @property({ type: Boolean, attribute: 'no-color-picker' }) noColorPicker = false;
@@ -60,7 +47,7 @@ export class UxdotPattern extends SSRFailureRecoverableElement {
   /** Should the code blocks be expanded? */
   @property({ type: Boolean, attribute: 'full-height' }) fullHeight = false;
 
-  /** Should the code blocks be expanded? */
+  /** Which code tab should be active initially? */
   @property({ reflect: true, attribute: 'active-tab' }) activeTab?: 'html' | 'css' | 'js';
 
   /** Which color palettes should be allowed in the picker? (default: all) */
@@ -68,19 +55,20 @@ export class UxdotPattern extends SSRFailureRecoverableElement {
 
   #picked = false;
 
-  ssr = new UxdotPatternSSRController(this);
-
-  #slots = new SlotController(this, null, 'heading');
+  #slots = new SlotController(
+    this,
+    null,
+    'heading',
+    'content',
+    'html-source',
+    'css-source',
+    'js-source',
+  );
 
   render() {
     const { activeTab = 'html' } = this;
-    const { allContent, htmlContent, cssContent, jsContent, hasJs, hasCss } = this.ssr;
-
-    const actionsLabels = html`
-      <span slot="action-label-copy">Copy to Clipboard</span>
-      <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>
-      <span slot="action-label-wrap">Toggle line wrap</span>
-    `;
+    const hasCss = this.#slots.hasSlotted('css-source');
+    const hasJs = this.#slots.hasSlotted('js-source');
 
     return html`
       <div id="container">
@@ -101,40 +89,24 @@ export class UxdotPattern extends SSRFailureRecoverableElement {
           <slot></slot>
         </div>
 
-        <rh-surface id="content">${allContent}</rh-surface>
+        <rh-surface id="content"><slot name="content"></slot></rh-surface>
 
         <rh-tabs id="code-tabs"
                  class="code-tabs"
                  active-index="${ifDefined(!this.#picked ? ['html', 'css', 'js'].indexOf(activeTab) : undefined)}"
                  ?hidden="${this.noCodeTabs}"
                  @expand="${this.#onExpand}">
-          <rh-tab id="html-tab" slot="tab" >HTML</rh-tab>
+          <rh-tab id="html-tab" slot="tab">HTML</rh-tab>
           <rh-tab-panel id="html-panel">
-            <rh-code-block highlighting="prerendered"
-                           line-numbers="visible"
-                           actions="copy wrap"
-                           ?full-height="${this.fullHeight}">
-              ${htmlContent}
-              ${actionsLabels}
-            </rh-code-block>
+            <slot name="html-source"></slot>
           </rh-tab-panel>
-          <rh-tab id="css-tab" slot="tab" .disabled="${!hasCss}" >CSS</rh-tab>
+          <rh-tab id="css-tab" slot="tab" .disabled="${!hasCss}">CSS</rh-tab>
           <rh-tab-panel id="css-panel">
-            <rh-code-block highlighting="prerendered"
-                           actions="copy wrap"
-                           ?full-height="${this.fullHeight}">
-              ${cssContent}
-              ${actionsLabels}
-            </rh-code-block>
+            <slot name="css-source"></slot>
           </rh-tab-panel>
-          <rh-tab id="js-tab" slot="tab" .disabled="${!hasJs}" >JS</rh-tab>
+          <rh-tab id="js-tab" slot="tab" .disabled="${!hasJs}">JS</rh-tab>
           <rh-tab-panel id="js-panel">
-            <rh-code-block highlighting="prerendered"
-                           actions="copy wrap"
-                           ?full-height="${this.fullHeight}">
-              ${jsContent}
-              ${actionsLabels}
-            </rh-code-block>
+            <slot name="js-source"></slot>
           </rh-tab-panel>
         </rh-tabs>
       </div>
