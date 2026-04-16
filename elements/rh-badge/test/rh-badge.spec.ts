@@ -50,18 +50,38 @@ for (const [deprecatedState, modernState] of Object.entries({
 })) {
   describe(`deprecated state="${deprecatedState}"`, function() {
     let element: RhBadge;
-    let styles: CSSStyleDeclaration;
+    let span: HTMLSpanElement;
     beforeEach(async function() {
       element = await createFixture<RhBadge>(html`
         <rh-badge state="${deprecatedState}" number="50">50</rh-badge>
       `);
+      span = element.shadowRoot!.querySelector('span')!;
     });
-    beforeEach(async function() {
-      styles = getComputedStyle(element.shadowRoot!.querySelector('span')!);
+    it(`should normalize state to "${modernState}"`, function() {
+      expect(element.state).to.equal(modernState);
     });
-    it(`should have a background color matching state="${modernState}"`, async function() {
+    it(`should have a background color matching state="${modernState}"`, function() {
       const token = `--rh-color-status-${modernState}-on-light` as const;
-      expect(styles.backgroundColor).to.be.colored(tokens.get(token));
+      expect(getComputedStyle(span).backgroundColor).to.be.colored(tokens.get(token));
+    });
+  });
+
+  // Verify the CSS alias selector for the deprecated class name works
+  // independently of JS normalization. This simulates SSR/pre-hydration
+  // where declarative shadow DOM contains the deprecated class name.
+  describe(`CSS alias class="${deprecatedState}" (SSR)`, function() {
+    let span: HTMLSpanElement;
+    beforeEach(async function() {
+      const element = await createFixture<RhBadge>(html`
+        <rh-badge number="50">50</rh-badge>
+      `);
+      span = element.shadowRoot!.querySelector('span')!;
+      // Directly apply the deprecated class to bypass JS normalization
+      span.className = deprecatedState;
+    });
+    it(`should style .${deprecatedState} with the ${modernState} background color`, function() {
+      const token = `--rh-color-status-${modernState}-on-light` as const;
+      expect(getComputedStyle(span).backgroundColor).to.be.colored(tokens.get(token));
     });
   });
 }
