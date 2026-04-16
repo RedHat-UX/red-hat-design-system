@@ -1,17 +1,31 @@
 import type { RandomPatternController } from './random-pattern-controller.js';
 
+import { LitElement, html, isServer, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { LitElement, html, isServer, type PropertyValues } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
 
-import { themable } from '../../lib/themable.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-avatar.css' with { type: 'css' };
 
 /**
- * An avatar is a small thumbnail representation of a user.
+ * Provides a circular user thumbnail for mastheads, cards, and attribution when
+ * you need to visually identify a person. Allows an image, a deterministic
+ * pattern, or a default icon. Must not take focus or act as a control; images
+ * carry `role="presentation"`. Authors should provide a name via the
+ * default slot so screen readers have context.
  *
- * @summary Visually represents a user in a masthead or navigation
+ * @summary Circular user thumbnail for mastheads, navigation, and attribution
+ *
+ * @slot - The user's display name — provides the accessible label for screen readers. Accepts text or an anchor for linked names.
+ * @slot subtitle - Auxiliary info such as job title. Accepts text or `<a>` elements. Slotted anchors receive interactive color token styles. Screen readers announce this after the name.
+ *
+ * @csspart canvas - The `<canvas>` used for generated geometric patterns.
+ * @csspart img - The `<img>` or default `<svg>` silhouette icon.
+ *
+ * @cssprop [--rh-avatar-size=var(--rh-size-icon-06, 64px)] - Thumbnail width and height; capped at the `--rh-size-icon-06` token (64px).
+ * @cssprop [--rh-avatar-colors] - Space-separated hex values overriding the built-in light-dark pattern color tokens.
  *
  * @alias avatar
  */
@@ -21,38 +35,52 @@ export class RhAvatar extends LitElement {
   static readonly styles = [styles];
 
   /**
-   * The URL to the user's custom avatar image.
-   *
-   * It will be displayed instead of a random pattern.
+   * URL to a custom avatar image. Replaces the default icon and any
+   * generated pattern. The `<img>` has `role="presentation"`.
    */
   @property({ reflect: true }) src?: string;
 
   /**
-   * The user's name, either given name and family name, or username.
-   *
-   * When displaying a pattern, the name will be used to seed the pattern generator.
+   * The user's display name. Falls back as default slot content and
+   * seeds the deterministic pattern generator when `pattern` is set.
    */
   @property({ reflect: true }) name?: string;
 
-  /** The auxiliary information about the user, e.g. job title */
+  /**
+   * Auxiliary text such as job title or company. Falls back as default
+   * content in the `subtitle` slot.
+   */
   @property({ reflect: true }) subtitle?: string;
 
-  /** Places avatar on the left or on top of the text. */
+  /**
+   * Thumbnail position relative to text: `'inline'` (default, left of text)
+   * or `'block'` (stacked above). Both collapse to centered block below 576px.
+   */
   @property({ reflect: true }) layout?: 'inline' | 'block';
 
-  /** The type of pattern to display. */
+  /**
+   * Type of geometric pattern (`'squares'` or `'triangles'`). Generated
+   * deterministically from `name` so the same name always yields the same
+   * pattern. Colors come from the `--_colors` CSS custom property.
+   *
+   * @see [Style](https://ux.redhat.com/elements/avatar/style/)
+   */
   @property({ reflect: true }) pattern?: 'squares' | 'triangles';
 
-  /** When true, hides the title and subtitle */
+  /**
+   * When true, visually hides the name and subtitle via CSS clip while
+   * keeping them accessible to screen readers.
+   */
   @property({ reflect: true, type: Boolean }) plain = false;
 
-  /** Adds a subtle border to the avatar image */
+  /**
+   * Adds a subtle border around the thumbnail when set to `'bordered'`.
+   */
   @property({ reflect: true }) variant?: 'bordered';
 
   #style?: CSSStyleDeclaration;
 
   #pattern?: RandomPatternController;
-
 
   connectedCallback() {
     super.connectedCallback();
@@ -61,11 +89,56 @@ export class RhAvatar extends LitElement {
     }
   }
 
+  render() {
+    const { layout, name, pattern, plain, src, subtitle, variant } = this;
+    const bordered = variant === 'bordered';
+    const inline = layout === 'inline';
+    const block = layout === 'block';
+
+    return html`
+      <div id="container"
+           class="${classMap({ inline, block, plain, bordered })}">${pattern ? html`
+        <!-- Target the canvas element -->
+        <canvas part="canvas"></canvas>` : src ? html`
+        <!-- Targets the img or svg element. Avoid using this part for theming -->
+        <img part="img" src="${src}" role="presentation">` : html`
+        <svg id="default"
+             viewBox="0 0 36 36"
+             role="presentation"
+             part="img">
+          <path d="M0 0h36v36H0z" class="st1"/><path d="M17.7 20.1c-3.5 0-6.4-2.9-6.4-6.4s2.9-6.4 6.4-6.4 6.4 2.9 6.4 6.4-2.8 6.4-6.4 6.4z" class="st3"/>
+          <path d="M13.3 36v-6.7c-2 .4-2.9 1.4-3.1 3.5l-.1 3.2h3.2z" class="st2"/>
+          <path d="m10.1 36 .1-3.2c.2-2.1 1.1-3.1 3.1-3.5V36h9.4v-6.7c2 .4 2.9 1.4 3.1 3.5l.1 3.2h4.7c-.4-3.9-1.3-9-2.9-11-1.1-1.4-2.3-2.2-3.5-2.6s-1.8-.6-6.3-.6-6.1.7-6.1.7c-1.2.4-2.4 1.2-3.4 2.6-1.7 1.9-2.6 7.1-3 10.9h4.7z" class="st4"/>
+          <path d="m25.9 36-.1-3.2c-.2-2.1-1.1-3.1-3.1-3.5V36h3.2z" class="st2"/>
+        </svg>
+        `}
+        <div id="title">
+          <!--
+            The subject's name. Should contain inline text, optionally wrapped in a link.
+            When \`plain\` is set, the name and subtitle are used as accessible labels
+          -->
+          <slot>${name}</slot>
+        </div>
+        <div id="subtitle">
+          <!--
+            Auxiliary information about the subject, e.g. job title. Should contain inline text, optional links.
+            When \`plain\` is set, the name and subtitle are used as accessible labels
+          -->
+          <slot name="subtitle">${subtitle}</slot>
+        </div>
+      </div>
+    `;
+  }
+
+  async updated(changed: PropertyValues<this>) {
+    if ((changed.has('pattern') && this.pattern) || (changed.has('name') && this.#pattern)) {
+      this.updatePattern();
+    }
+  }
+
   /**
-   * Page authors may include whitespace in the element while also using `name`
-   * or `subtitle` attributes to inject default content. In those cases, any
-   * slotted text nodes, even if consisting solely of white-space, will override
-   * the default content (i.e. attribute values)
+   * Trims whitespace-only text nodes so they don't override attribute-driven
+   * default slot content.
    */
   #normalize() {
     for (const node of this.childNodes) {
@@ -74,36 +147,6 @@ export class RhAvatar extends LitElement {
       }
     }
     this.normalize();
-  }
-
-  render() {
-    return html`
-      <div id="container">${this.pattern ? html`
-        <!-- Target the canvas element -->
-        <canvas part="canvas"></canvas>` : this.src ? html`
-        <!-- Targets the img or svg element -->
-        <img src="${this.src}" role="presentation" part="img">` : html`
-        <!-- Targets the img or svg element -->
-        <svg xmlns="http://www.w3.org/2000/svg" style="enable-background:new 0 0 36 36" viewBox="0 0 36 36" role="presentation" part="img" id="default">
-          <path d="M0 0h36v36H0z" class="st1"/><path d="M17.7 20.1c-3.5 0-6.4-2.9-6.4-6.4s2.9-6.4 6.4-6.4 6.4 2.9 6.4 6.4-2.8 6.4-6.4 6.4z" class="st3"/>
-          <path d="M13.3 36v-6.7c-2 .4-2.9 1.4-3.1 3.5l-.1 3.2h3.2z" class="st2"/>
-          <path d="m10.1 36 .1-3.2c.2-2.1 1.1-3.1 3.1-3.5V36h9.4v-6.7c2 .4 2.9 1.4 3.1 3.5l.1 3.2h4.7c-.4-3.9-1.3-9-2.9-11-1.1-1.4-2.3-2.2-3.5-2.6s-1.8-.6-6.3-.6-6.1.7-6.1.7c-1.2.4-2.4 1.2-3.4 2.6-1.7 1.9-2.6 7.1-3 10.9h4.7z" class="st4"/>
-          <path d="m25.9 36-.1-3.2c-.2-2.1-1.1-3.1-3.1-3.5V36h3.2z" class="st2"/>
-        </svg>
-        `}
-        <!-- The subject's name -->
-        <slot id="title">${this.name}</slot>
-        <!-- auxiliary information about the subject, e.g. job title -->
-        <slot id="subtitle" name="subtitle">${this.subtitle}</slot>
-      </div>
-    `;
-  }
-
-  async updated(changed: PropertyValues<this>) {
-    if ((changed.has('pattern') && this.pattern)
-        || (this.#pattern && changed.has('name') || changed.has('on' as keyof RhAvatar))) {
-      this.updatePattern();
-    }
   }
 
   async #initPattern() {
@@ -115,6 +158,11 @@ export class RhAvatar extends LitElement {
     }
   }
 
+  /**
+   * Re-renders the geometric pattern. Called automatically when `pattern`
+   * or `name` change; call manually after updating CSS custom properties.
+   * @deprecated a future version will remove this public method
+   */
   async updatePattern() {
     this.#pattern ??= await this.#initPattern();
     if (this.#pattern) {

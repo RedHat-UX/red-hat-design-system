@@ -17,19 +17,54 @@
   line-height: inherit;
 }
 
-::slotted(a) { color: var(--rh-color-interactive-primary-default); }
-::slotted(a:hover) { color: var(--rh-color-interactive-primary-hover); }
-::slotted(a:focus-within) { color: var(--rh-color-interactive-primary-focus); }
-::slotted(a:active) { color: var(--rh-color-interactive-primary-active); }
-::slotted(a:visited) { color: var(--rh-color-interactive-primary-visited-default); }
-::slotted(a:visited:hover) { color: var(--rh-color-interactive-primary-visited-hover); }
-::slotted(a:visited:focus-within) { color: var(--rh-color-interactive-primary-visited-focus); }
-::slotted(a:visited:active) { color: var(--rh-color-interactive-primary-visited-active); }
+::slotted(a) {
+  /** Link default color */
+  color: var(--rh-color-interactive-primary-default);
+}
+
+::slotted(a:hover) {
+  /** Link hover color */
+  color: var(--rh-color-interactive-primary-hover);
+}
+
+::slotted(a:focus-within) {
+  /** Link focus color */
+  color: var(--rh-color-interactive-primary-focus);
+}
+
+::slotted(a:active) {
+  /** Link active color */
+  color: var(--rh-color-interactive-primary-active);
+}
+
+::slotted(a:visited) {
+  /** Visited link default color */
+  color: var(--rh-color-interactive-primary-visited-default);
+}
+
+::slotted(a:visited:hover) {
+  /** Visited link hover color */
+  color: var(--rh-color-interactive-primary-visited-hover);
+}
+
+::slotted(a:visited:focus-within) {
+  /** Visited link focus color */
+  color: var(--rh-color-interactive-primary-visited-focus);
+}
+
+::slotted(a:visited:active) {
+  /** Visited link active color */
+  color: var(--rh-color-interactive-primary-visited-active);
+}
 
 #container {
   --_header-bg:
-    light-dark(var(--rh-card-header-background-on-light, transparent),
-      var(--rh-card-header-background-on-dark, transparent));
+    light-dark(
+        /** Header background in light mode */
+        var(--rh-card-header-background-on-light, transparent),
+        /** Header background in dark mode */
+        var(--rh-card-header-background-on-dark, transparent)
+      );
 
   align-self: stretch;
   display: flex;
@@ -39,24 +74,37 @@
   border-radius:
     var(
         --_border-radius,
-        /** Card's default border radius */
+        /** Card border radius */
         var(--rh-border-radius-default, 3px)
       );
+
+  /** Card typeface */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif) !important;
+
+  /** Card line height */
   line-height: var(--rh-line-height-body-text, 1.5);
   border-style: solid;
+
+  /** Card border thickness */
   border-width: var(--rh-border-width-sm, 1px);
 
-  /** Computed from the color context. Intended to be read for
-   *              theming purposes, rather than set in page css. */
+  /** Card border color */
   border-color: var(--rh-color-border-subtle);
   width: 100%;
   height: 100%;
 
   /* colors for when `color-palette` inherits from a parent: */
   background-color:
-    light-dark(var(--_card-background, var(--rh-color-surface-lightest, #ffffff)),
-      var(--_card-background, var(--rh-color-surface-darkest, #151515)));
+    light-dark(
+        var(--_card-background,
+        /** Card surface in light mode */
+        var(--rh-color-surface-lightest, #ffffff)),
+        var(--_card-background,
+        /** Card surface in dark mode */
+        var(--rh-color-surface-darkest, #151515))
+      );
+
+  /** Card text color */
   color: var(--rh-color-text-primary);
 
   /* colors for when `color-palette` is applied directly on an rh-card: */
@@ -66,6 +114,7 @@
   &.dark,
   &.darker,
   &.darkest {
+    /** Card surface color */
     --_card-background: var(--rh-color-surface);
   }
 }
@@ -73,11 +122,13 @@
 #header,
 #body,
 #footer {
+  /** Card margin inline */
   margin-inline: var(--rh-space-xl, 24px);
 }
 
 #header ::slotted(:is(h1, h2, h3, h4, h5, h6)),
 #body ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  /** Card heading typeface */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
 }
 
@@ -89,41 +140,59 @@
 #header {
   display: flex;
   flex-direction: column;
+
+  /** Header content gap */
   gap: var(--rh-space-lg, 16px);
   box-sizing: border-box;
-
-  /** The font family for headings in the header and body */
-  font-family: var(--rh-card-heading-font-family, var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif)) !important;
-
-  /** The font size for headings in the header and body */
-  font-size: var(--rh-card-heading-font-size, var(--rh-font-size-heading-sm, 1.5rem));
-
-  /** The font weight for headings in the header and body */
+  font-family:
+    /** Header font family override */
+    var(--rh-card-heading-font-family,
+      /** Header font family */
+      var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif)) !important;
+  font-size:
+    /** Header font size override */
+    var(--rh-card-heading-font-size,
+      /** Header font size */
+      var(--rh-font-size-heading-sm, 1.5rem));
   font-weight:
+    /** Header font weight override */
     var(--rh-card-heading-font-weight,
+      /** Header font weight */
       var(--rh-font-weight-body-text-medium, 500)) !important;
+
+  /** Header margin-block-start */
   margin-block-start: var(--rh-space-xl, 24px);
   background-color: var(--_header-bg, transparent);
 }
 
 #body {
-  margin-block: var(--rh-space-2xl, 32px) var(--rh-space-xl, 24px);
+  margin-block:
+    /** Body margin-block-start */
+    var(--rh-space-2xl, 32px)
+    /** Body margin-block-end */
+    var(--rh-space-xl, 24px);
 }
 
 #body:has(+ .empty) {
+  /** Body margin-block-end */
   margin-block-end: var(--rh-space-2xl, 32px);
 }
 
 #footer {
   display: flex;
   gap: 0.5em;
-  margin-block: auto var(--rh-space-xl, 24px);
+  margin-block:
+    auto
+    /** Footer margin-block-end */
+    var(--rh-space-xl, 24px);
 }
 
 #container #header ::slotted(:is(h1, h2, h3, h4, h5, h6)),
 #container #body ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
   font-family: inherit !important;
   font-weight: inherit !important;
+
+  /** Card heading line height */
   line-height: var(--rh-line-height-heading, 1.3) !important;
 }
 
@@ -133,7 +202,11 @@
 }
 
 #body ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-  font-size: var(--rh-card-heading-font-size, var(--rh-font-size-heading-sm, 1.5rem)) !important;
+  font-size:
+    /** Body heading font size override */
+    var(--rh-card-heading-font-size,
+      /** Body heading font size */
+      var(--rh-font-size-heading-sm, 1.5rem)) !important;
 }
 
 #body ::slotted(:not([slot]):first-child) {
@@ -146,6 +219,7 @@
 
 @container card (max-width: 767px) {
   #body {
+    /** Body margin block at containers < md */
     margin-block: var(--rh-space-xl, 24px);
   }
 }
@@ -154,15 +228,18 @@
   #header,
   #body,
   #footer {
+    /** Card margin inline at containers >= md */
     margin-inline: var(--rh-space-2xl, 32px);
   }
 
   #header,
   #body {
+    /** Card margin-block-start at containers >= md */
     margin-block-start: var(--rh-space-2xl, 32px);
   }
 
   #footer {
+    /** Card margin-block-end at containers >= md */
     margin-block-end: var(--rh-space-2xl, 32px);
   }
 }
@@ -175,16 +252,32 @@
 
 #container.promo {
   --_promo-heading-font-weight:
+    /** Promo heading font weight override */
     var(--rh-card-heading-font-weight,
+      /** Promo heading font weight */
       var(--rh-font-weight-body-text-medium, 500));
-  --_promo-heading-size: var(--rh-card-heading-font-size, var(--rh-font-size-heading-xs, 1.25rem));
+  --_promo-heading-size:
+    /** Promo heading font size override */
+    var(--rh-card-heading-font-size,
+      /** Promo heading font size */
+      var(--rh-font-size-heading-xs, 1.25rem));
+
+  /** Promo paragraph font size */
   --_promo-paragraph-font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+
+  /** Promo paragraph margin-block-end */
   --_promo-paragraph-margin-block-end: var(--rh-space-lg, 16px);
+
+  /** Promo standard inline padding */
   --_promo-standard-inline-padding: var(--rh-space-2xl, 32px);
 
   background-color:
-    light-dark(var(--rh-color-surface-lightest, #ffffff),
-      var(--rh-color-surface-darkest, #151515));
+    light-dark(
+        /** Promo surface in light mode */
+        var(--rh-color-surface-lightest, #ffffff),
+        /** Promo surface in dark mode */
+        var(--rh-color-surface-darkest, #151515)
+      );
   height: auto;
 }
 
@@ -193,6 +286,7 @@
 }
 
 .promo #body {
+  /** Promo body margin */
   margin: var(--rh-space-2xl, 32px);
 }
 
@@ -202,16 +296,25 @@
 
 .promo.header #header {
   margin: 0;
+
+  /** Promo header margin-block-end */
   margin-block-end: var(--rh-space-lg, 16px);
 }
 
 .promo.footer #footer {
-  margin-block: var(--rh-space-xl, 24px) 0;
+  margin-block:
+    /** Promo footer margin-block-start */
+    var(--rh-space-xl, 24px)
+    0;
   margin-inline: 0;
 }
 
 .promo #header ::slotted(*) {
-  font-family: var(--rh-card-heading-font-family, var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif)) !important;
+  font-family:
+    /** Promo heading font family override */
+    var(--rh-card-heading-font-family,
+      /** Promo heading font family */
+      var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif)) !important;
   font-size: var(--_promo-heading-size) !important;
   font-weight: var(--_promo-heading-font-weight) !important;
   margin-block: 0 var(--_promo-heading-margin-block-end) !important;
@@ -224,8 +327,12 @@
 
 #container.promo.standard {
   background-color:
-    light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-      var(--rh-color-surface-darker, #1f1f1f));
+    light-dark(
+        /** Promo standard surface in light mode */
+        var(--rh-color-surface-lighter, #f2f2f2),
+        /** Promo standard surface in dark mode */
+        var(--rh-color-surface-darker, #1f1f1f)
+      );
   display: flex;
   padding: var(--_promo-standard-inline-padding);
   width: auto;
@@ -236,15 +343,29 @@
 }
 
 .promo.standard #body ::slotted(:not([slot])) {
-  font-family: var(--rh-card-heading-font-family, var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif)) !important;
+  font-family:
+    /** Promo standard font family override */
+    var(--rh-card-heading-font-family,
+      /** Promo standard font family */
+      var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif)) !important;
+
+  /** Promo standard text size */
   font-size: var(--rh-font-size-body-text-xl, 1.25rem) !important;
+
+  /** Promo standard font weight */
   font-weight: var(--rh-font-weight-body-text-medium, 500);
+
+  /** Promo standard heading line height */
   line-height: var(--rh-line-height-heading, 1.3) !important;
 }
 
 :host([variant='promo'][full-width]) #container {
   border-color: transparent;
+
+  /** Full-width promo padding block */
   padding-block: var(--rh-space-4xl, 64px);
+
+  /** Full-width promo padding inline */
   padding-inline: var(--rh-space-lg, 16px);
   width: auto;
 }
@@ -254,16 +375,20 @@
 }
 
 :host([variant='promo'][full-width]) #body ::slotted(p) {
+  /** Full-width promo paragraph font size */
   --_promo-paragraph-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 :host([variant='promo'][full-width]) #header ::slotted(*) {
   --_promo-heading-size:
+    /** Full-width promo heading size override */
     var(--rh-card-heading-font-size,
+      /** Full-width promo heading size */
       var(--rh-font-size-body-text-2xl, 1.5rem));
 }
 
 :host([variant='promo'][full-width]) .image #footer {
+  /** Full-width promo image footer margin-block-end */
   margin-block-end: var(--rh-space-2xl, 32px);
 }
 
@@ -280,17 +405,24 @@
   }
 
   .promo #body {
+    /** Promo body margin at containers >= md */
     margin: var(--rh-space-3xl, 48px);
     max-width: 70ch;
   }
 
   .promo #header ::slotted(*) {
-    --_promo-heading-size: var(--rh-card-heading-font-size, var(--rh-font-size-heading-sm, 1.5rem));
+    --_promo-heading-size:
+      /** Promo heading size override at containers >= md */
+      var(--rh-card-heading-font-size,
+        /** Promo heading size at containers >= md */
+        var(--rh-font-size-heading-sm, 1.5rem));
   }
 
   #container.promo.standard {
+    /** Promo standard inline padding at containers >= md */
     --_promo-standard-inline-padding: var(--rh-space-3xl, 48px);
 
+    /** Promo standard column gap at containers >= md */
     column-gap: var(--rh-space-xl, 24px);
     flex-direction: row;
     justify-content: space-between;
@@ -303,18 +435,24 @@
   }
 
   :host([variant='promo'][full-width]) #container {
+    /** Full-width promo column gap at containers >= md */
     column-gap: var(--rh-space-2xl, 32px);
     min-height: auto;
+
+    /** Full-width promo padding inline at containers >= md */
     padding-inline: var(--rh-space-4xl, 64px);
   }
 
   :host([variant='promo'][full-width]) #body ::slotted(p) {
+    /** Full-width promo paragraph font size at containers >= md */
     --_promo-paragraph-font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   }
 
   :host([variant='promo'][full-width]) #header ::slotted(*) {
     --_promo-heading-size:
+      /** Full-width promo heading size override at containers >= md */
       var(--rh-card-heading-font-size,
+        /** Full-width promo heading size at containers >= md */
         var(--rh-font-size-heading-md, 1.75rem));
   }
 
@@ -325,6 +463,7 @@
 
 @container promo (min-width: 1200px) {
   :host([variant='promo'][full-width]) #container {
+    /** Full-width promo padding inline at containers >= xl */
     padding-inline: var(--rh-space-7xl, 128px);
   }
 }

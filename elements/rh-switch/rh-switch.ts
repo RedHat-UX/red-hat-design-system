@@ -14,10 +14,20 @@ import styles from './rh-switch.css' with { type: 'css' };
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 /**
- * A switch toggles the state of a setting (between on and off). Switches and checkboxes can often be used interchangeably, but the switch provides a more explicit, visible representation on a setting.
+ * A switch provides a visible toggle for a setting. Authors must supply
+ * an accessible label via `accessible-label` or a `<label for>`. The
+ * element uses ARIA `role="switch"` with `aria-checked` for screen
+ * readers. Users should toggle with Space or Enter keys. Avoid using
+ * a switch when multiple selections are needed; use checkboxes instead.
+ *
  * @summary  A switch toggles the state of a setting (between on and off).
  *
  * @alias switch
+ *
+ * @fires {Event} change - Fires when the user toggles the switch on or
+ *   off via click, Space, or Enter. Does not fire when disabled. The
+ *   event bubbles and carries no detail; read the `checked` property
+ *   on the target element to determine the new state.
  *
  */
 @customElement('rh-switch')
@@ -39,7 +49,7 @@ export class RhSwitch extends LitElement {
   /** If the checkmark icon should be displayed when the switch is on */
   @property({ reflect: true, type: Boolean, attribute: 'show-check-icon' }) showCheckIcon = false;
 
-  /** If the switch is on */
+  /** Whether the switch is on (checked) */
   @property({ reflect: true, type: Boolean }) checked = false;
 
   /** If the switch is disabled */
@@ -79,7 +89,7 @@ export class RhSwitch extends LitElement {
     const noMessageOn = this.#slots.isEmpty('message-on');
     const noMessageOff = this.#slots.isEmpty('message-off');
     if (noMessageOn || noMessageOff) {
-      if ('ariaDescription' in (globalThis.ElementInternals ?? {})) {
+      if ('ariaDescription' in (globalThis.ElementInternals?.prototype ?? {})) {
         this.#internals.ariaDescription = this.#message ?? '';
       } else {
         this.setAttribute('aria-description', this.#message ?? '');
@@ -90,27 +100,32 @@ export class RhSwitch extends LitElement {
       for (const el of stateEls) {
         el.id ||= getRandomId('rh-switch-message');
       }
-      if ('ariaDescribedByElements' in (globalThis.ElementInternals ?? {})) {
-        // see https://w3c.github.io/aria/#dom-ariamixin
-        this.#internals.ariaDescribedByElements = stateEls;
-      } else {
-        this.setAttribute('aria-describedby', stateEls.map(x => x.id).join(' '));
-      }
+      this.#internals.ariaDescribedByElements = stateEls;
     }
   }
 
   render() {
     const { reversed, checked } = this;
     const slots = html`
-      <!-- message content when checked. Overrides the \`message-on\` attribute. -->
+      <!-- summary: Message content when checked. Overrides the \`message-on\` attribute.
+           description: |
+             Accepts inline content such as \`<span>\` elements. Content is
+             exposed to screen readers via \`aria-describedby\`, so it should
+             be concise and meaningful. -->
       <slot class="message" name="message-on" ?hidden="${!this.checked}"><span aria-hidden="true">${this.messageOn}</span></slot>
-      <!-- message content when unchecked. Overrides the \`message-off\` attribute. -->
+      <!-- summary: Message content when unchecked. Overrides the \`message-off\` attribute.
+           description: |
+             Accepts inline content such as \`<span>\` elements. Content is
+             exposed to screen readers via \`aria-describedby\`, so it should
+             be concise and meaningful. -->
       <slot class="message" name="message-off" ?hidden="${this.checked}"><span aria-hidden="true">${this.messageOff}</span></slot>`;
     return html`
+      <!-- The outer flex container for the switch and message slots -->
       <div id="container"
            part="container"
            class="${classMap({ checked })}">
         ${reversed ? slots : ''}
+        <!-- The toggle track and handle -->
         <div id="switch"
              part="switch">
           <rh-icon id="toggle"

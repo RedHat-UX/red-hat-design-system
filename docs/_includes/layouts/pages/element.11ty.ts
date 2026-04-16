@@ -156,9 +156,15 @@ export default class ElementsPage extends Renderer<Context> {
     try {
       const demoPath = join(process.cwd(), 'elements', tagName, 'demo', `index.html`);
       const demoContent = await readFile(demoPath, 'utf8');
+      const fragment = parseFragment(demoContent);
+      for (const node of Tools.queryAll<Tools.Element>(fragment, Tools.isElementNode)) {
+        if (node.tagName === 'meta' && node.attrs.some(x => x.name === 'itemprop')) {
+          Tools.removeNode(node);
+        }
+      }
       return html`
         <rh-code-block actions="wrap copy" highlighting="prerendered">
-          ${this.highlight('html', demoContent)}
+          ${this.highlight('html', serialize(fragment))}
           ${this.#actionsLabels}
         </rh-code-block>`;
     } catch {
@@ -210,13 +216,13 @@ export default class ElementsPage extends Renderer<Context> {
       ${ctx.doc.planned ? '' : html`
       <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/${ctx.tagName}/">View source on GitHub</rh-cta>`}
       ${this.#header('Status')}
-      <uxdot-repo-status-list 
+      <uxdot-repo-status-list
         figma-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.figma || ''}"
         rhds-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.rhds || ''}"
         shared-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.shared || ''}"></uxdot-repo-status-list>
       ${content}
       ${this.#header('Status checklist')}
-      <uxdot-repo-status-checklist 
+      <uxdot-repo-status-checklist
         figma-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.figma || ''}"
         rhds-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.rhds || ''}"
         shared-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.shared || ''}"></uxdot-repo-status-checklist>
@@ -292,7 +298,7 @@ export default class ElementsPage extends Renderer<Context> {
           </script>`))}
           ${this.#actionsLabels}
         </rh-code-block>
-        <p>To learn more about installing RHDS elements on your site using an import map read our <a href="/get-started/developers/installation/">getting started docs</a>.        
+        <p>To learn more about installing RHDS elements on your site using an import map read our <a href="/get-started/developers/installation/">getting started docs</a>.
       </section>
       `,
       await this.#renderLightdom(ctx),
@@ -827,7 +833,7 @@ export default class ElementsPage extends Renderer<Context> {
           ${!cssProperties.length ? html`
           <p><em>None</em></p>` : html`
           <rh-table compact>
-            <table class=css-custom-properties>
+            <table class="css-custom-properties">
               <thead>
                 <tr>
                   <th scope="col">CSS Property</th>
@@ -1016,6 +1022,8 @@ export default class ElementsPage extends Renderer<Context> {
           updateDemoContentForType('js', node);
         } else if (node.tagName === 'style') {
           updateDemoContentForType('css', node);
+        } else if (node.tagName === 'meta' && node.attrs.some(x => x.name === 'itemprop')) {
+          Tools.removeNode(node);
         }
       }
 

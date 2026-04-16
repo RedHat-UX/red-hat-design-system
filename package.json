@@ -1,6 +1,6 @@
 {
   "name": "@rhds/elements",
-  "version": "4.0.4",
+  "version": "4.1.0",
   "description": "Red Hat Design System Elements",
   "overrides": {
     "playwright": "~1.48.0"
@@ -36,6 +36,7 @@
     "Em Nouveau <enouveau@redhat.com>",
     "Gili Greenberger (https://github.com/Gili-Greenberger)",
     "Hadassah Yelenik",
+    "Sara Dahan (https://github.com/saraDahanCode)",
     "Ivana Rodriguez <ivana@redhat.com>",
     "Kelsey Swanson <kswanson@redhat.com>",
     "Luke Dary <ldary@redhat.com>",
@@ -43,7 +44,8 @@
     "Michael Potter <mpotter@redhat.com",
     "Nikki Massaro Kauffman <nmassaro@redhat.com>",
     "Steven Spriggs <sspriggs@redhat.com>",
-    "Wes Ruvalcaba <wruvalcaba@redhat.com>"
+    "Wes Ruvalcaba <wruvalcaba@redhat.com>",
+    "Hadassah Yelenik <hlyelenik@gmail.com>"
   ],
   "publishConfig": {
     "access": "public",
@@ -288,7 +290,7 @@
   },
   "dependencies": {
     "@lit/context": "^1.1.6",
-    "@patternfly/pfe-core": "^5.0.5",
+    "@patternfly/pfe-core": "^5.0.6",
     "@rhds/icons": "^2.1.0",
     "@rhds/tokens": "^3.0.2",
     "lit": "^3.3.2",
@@ -301,6 +303,7 @@
     "@11ty/eleventy-plugin-rss": "^2.0.4",
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
+    "@html-eslint/eslint-plugin": "^0.59.0",
     "@lit-labs/eleventy-plugin-lit": "^1.0.6",
     "@lit-labs/ssr": "^4.0.0",
     "@lit-labs/ssr-client": "^1.1.8",
@@ -367,5 +370,9 @@
     "@esbuild/darwin-arm64": "^0.27.2",
     "@esbuild/linux-x64": "^0.27.2",
     "@rollup/rollup-darwin-x64": "4.34.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RedHat-UX/red-hat-design-system.git"
   }
 }

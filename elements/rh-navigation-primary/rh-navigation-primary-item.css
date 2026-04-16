@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 :host {
   display: block;
   block-size: 100%;
@@ -51,9 +55,6 @@
 }
 
 #container {
-  --_background-color:
-    light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-      var(--rh-color-surface-darker, #1f1f1f));
   --_box-shadow-color: light-dark(rgba(21, 21, 21, 0.2), rgba(0, 0, 0, 0.6));
 
   display: block;
@@ -70,20 +71,19 @@
 
     & summary {
       --rh-icon-size: 18px /* non standard value */;
-      --rh-avatar-size: var(--rh-size-icon-02, 24px);
+
+      /** Toggle avatar size */
+      --rh-avatar-size: var(--rh-icon-size); /* non standard value */
 
       display: flex;
       list-style: none;
+
+      /** Toggle gap */
       gap: var(--rh-space-md, 8px);
 
       &::marker,
       &::-webkit-details-marker {
         display: none;
-      }
-
-      & ::slotted(rh-icon) {
-        /* need 24px total icons 18px + 3px margin * 2, avatar is 24px */
-        margin-block: calc(var(--rh-space-sm, 6px) / 2);
       }
 
       & rh-icon {
@@ -93,7 +93,13 @@
           /* non standard, this wont take effect though as microns hard stops at 12px */
           --rh-icon-size: 10px;
 
-          color: light-dark(var(--rh-color-gray-40, #a3a3a3), var(--rh-color-icon-subtle));
+          color:
+            light-dark(
+                /** Toggle caret color in light mode */
+                var(--rh-color-gray-40, #a3a3a3),
+                /** Toggle caret color in dark mode */
+                var(--rh-color-icon-subtle)
+              );
           transition: rotate 0.2s;
         }
       }
@@ -113,13 +119,12 @@
       }
 
       @container (min-width: 1200px) {
+        /** Dropdown variant open state active color at containers >= xl */
         border-block-start-color: var(--rh-color-accent-brand);
       }
 
-      & summary {
-        & rh-icon[icon='caret-down'] {
-          rotate: 180deg;
-        }
+      & summary rh-icon[icon='caret-down'] {
+        rotate: 180deg;
       }
     }
 
@@ -138,11 +143,13 @@
         border-block-end: 4px solid transparent; /* Non standard border width */
 
         &:hover {
+          /** Hamburger item hover indicator color at containers >= xl */
           border-block-end-color: var(--rh-color-border-subtle);
         }
 
         &:is(:active, :focus-within, :has(details[open])) {
-          border-image: linear-gradient(to right, var(--_linear-gradient)) 1;
+          /** Hamburger item active indicator color at containers >= xl */
+          border-block-end-color: var(--rh-color-accent-brand);
         }
       }
     }
@@ -151,8 +158,21 @@
   &.dropdown {
     &.hamburger {
       & details {
+        border-inline-start:
+          /** Hamburger dropdown border inline start width */
+          var(--rh-border-width-lg, 3px)
+          solid
+          transparent;
+        border-inline-end:
+          /** Hamburger dropdown border inline end width */
+          var(--rh-border-width-sm, 1px)
+          solid
+          transparent;
+
         & summary {
           list-style: none;
+
+          /** Hamburger dropdown text color */
           color: var(--rh-color-text-primary) !important;
           text-decoration: none !important;
           text-align: center;
@@ -160,23 +180,34 @@
           place-items: center;
           inline-size: 100%;
           block-size: 100%;
-          padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
+          padding:
+            /** Hamburger dropdown block padding */
+            var(--rh-space-lg, 16px)
+            /** Hamburger dropdown inline padding */
+            var(--rh-space-xl, 24px);
           cursor: pointer;
 
           &:focus-visible,
           &:hover:focus-visible {
             outline-offset: -2px;
             outline:
+              /** Hamburger dropdown focus ring width */
               var(--rh-border-width-md, 2px)
               solid
+              /** Hamburger dropdown focus ring color */
               var(--rh-color-interactive-primary-default);
+
+            /** Hamburger dropdown focus ring radius */
             border-radius: var(--rh-border-radius-default, 3px);
           }
         }
 
         &[open] {
-          border-inline-start: var(--rh-border-width-lg, 3px) solid var(--rh-color-accent-brand);
-          border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+          /** Open hamburger dropdown inline start border color */
+          border-inline-start-color: var(--rh-color-accent-brand);
+
+          /** Open hamburger dropdown inline end border color */
+          border-inline-end-color: var(--rh-color-border-subtle);
 
           & summary {
             & rh-icon[icon='caret-down'] {
@@ -186,7 +217,7 @@
         }
       }
 
-      &:not(.compact) {
+      &:where(:not(.compact)) {
         & details {
           @container (min-width: 1200px) {
             border-inline: unset;
@@ -195,7 +226,10 @@
           & summary {
             @container (min-width: 1200px) {
               block-size: calc(100% + 4px);
-              padding: 0 var(--rh-space-lg, 16px);
+              padding:
+                0
+                /** Hamburger dropdown inline padding at containers >= xl */
+                var(--rh-space-lg, 16px);
             }
           }
 
@@ -203,7 +237,15 @@
             @container (min-width: 1200px) {
               position: absolute;
               z-index: -1;
-              background-color: var(--rh-color-surface);
+              background-color:
+                light-dark(
+                    /** Open hamburger dropdown content background
+                    in light mode at containers >= xl */
+                    var(--rh-color-surface-lightest, #ffffff),
+                    /** Open hamburger dropdown content background
+                    in dark mode at containers >= xl */
+                    var(--rh-color-surface-darkest, #151515)
+                  );
               box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
               inset-block-start: 100%;
               inset-inline-start: 0;
@@ -216,79 +258,81 @@
 
     &.standalone {
       & details {
-        /* stylelint-disable-next-line no-descending-specificity */
+        block-size: 100%;
+
         & summary {
           position: relative;
           z-index: 1;
-          block-size: max-content;
+          block-size: 100%;
           inline-size: max-content;
           align-items: center;
-          padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
-          border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
-          border-radius: var(--rh-border-radius-pill, 64px);
+
+          /** Secondary area slotted item toggle padding */
+          padding: var(--rh-space-md, 8px);
+
+          /** Secondary area slotted item toggle border radius */
+          border-radius: var(--rh-border-radius-default, 3px);
+
+          /** Secondary area item font size */
           font-size: var(--rh-font-size-body-text-sm, 0.875rem);
           cursor: pointer;
 
-          &:before {
+          @container navigation-primary (min-width: 480px) {
+            /** Secondary area toggle padding at containers >= 480px (custom) */
+            padding: var(--rh-space-lg, 16px);
+          }
+
+          &:after {
             content: '';
             position: absolute;
-            inset: -1px;
-            z-index: -1;
-            background: transparent;
-            border-radius: inherit;
+            inset: 0;
+            border-block-end: 4px solid transparent;
           }
 
           &:is(:hover, :focus-visible) {
-            background-color:
-              light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-                var(--rh-color-surface-darker, #1f1f1f));
-
-            &:before {
-              border: var(--rh-border-width-sm, 1px) solid transparent;
+            &:after {
+              /** Secondary area slotted item hover indicator color */
+              border-block-end-color: var(--rh-color-border-subtle);
             }
           }
 
-          &:is(:active, :active:hover) {
-            &:before {
-              border: var(--rh-border-width-md, 2px) solid transparent;
-            }
-          }
-
-          &:is(:active, :active:hover, :hover, :focus-visible) {
-            &:before {
-              background:
-                linear-gradient(light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-                  var(--rh-color-surface-darker, #1f1f1f)) 0 0) padding-box,
-                conic-gradient(from var(--_gradient-direction), var(--_conic-gradient)) border-box;
+          &:is(:active, :focus-within) {
+            &:after {
+              /** Secondary area slotted item active indicator color */
+              border-block-end-color: var(--rh-color-accent-brand);
             }
           }
 
           &:is(:focus-visible, :hover:focus-visible) {
             outline:
+              /** Secondary area slotted item focus ring width */
               var(--rh-border-width-md, 2px)
               solid
+              /** Secondary area slotted item focus ring color */
               var(--rh-color-interactive-primary-default);
-            outline-offset: 3px;
+            outline-offset: 2px;
           }
 
           & #summary-text {
             clip-path: inset(50%);
             overflow: hidden;
             position: absolute;
-
-            @container (min-width: 1680px) {
-              clip-path: none;
-              overflow: none;
-              position: static;
-            }
+            block-size: 1px;
+            inline-size: 1px;
+            white-space: nowrap;
           }
         }
 
-        /* stylelint-disable-next-line no-descending-specificity */
         & #details-content {
           position: absolute;
           z-index: -1;
-          background-color: var(--rh-color-surface);
+          background-color:
+            light-dark(
+                /** Standalone dropdown content background in light mode */
+                var(--rh-color-surface-lightest, #ffffff),
+                /** Standalone dropdown content background in dark mode */
+                var(--rh-color-surface-darkest, #151515)
+              );
           box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
           inset-block-start: 100%;
           inset-inline-end: 0;
@@ -298,24 +342,20 @@
 
           @container (min-width: 1200px) {
             inline-size: fit-content;
+
+            /** Standalone dropdown content end rounded corner at containers >= xl */
             border-end-end-radius: calc(var(--rh-border-radius-default, 3px) * 2);
+
+            /** Standalone dropdown content start rounded corner at containers >= xl */
             border-end-start-radius: calc(var(--rh-border-radius-default, 3px) * 2);
           }
         }
 
         &[open] {
           & summary {
-            /* stylelint-disable-next-line no-descending-specificity */
-            &:before {
-              border: var(--rh-border-width-md, 2px) solid transparent;
-              background:
-                linear-gradient(light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-                  var(--rh-color-surface-darker, #1f1f1f)) 0 0) padding-box,
-                conic-gradient(from var(--_gradient-direction), var(--_conic-gradient)) border-box;
-            }
-
-            & rh-icon[icon='caret-down'] {
-              rotate: 180deg;
+            &:after {
+              /** Dropdown variant open state indicator color */
+              border-block-end-color: var(--rh-color-accent-brand);
             }
           }
         }
@@ -329,17 +369,26 @@
     border-block-start: none;
 
     & ::slotted(a) {
-      color: var(--rh-color-text-primary) !important;
+      color:
+        var(--_navigation-link-color,
+          /** Link variant text color */
+          var(--rh-color-text-primary)) !important;
     }
 
     & ::slotted(:is(a:hover, a:focus-visible, :active)) {
-      text-underline-offset: 4px !important;
+      text-underline-offset: var(--_navigation-link-text-underline-offset, 4px) !important;
       text-decoration-color:
-        light-dark(var(--rh-color-gray-50, #707070),
-          var(--rh-color-gray-40, #a3a3a3)) !important;
-      text-decoration-line: underline !important;
-      text-decoration-style: dashed !important;
+        var(--_navigation-link-text-decoration-color,
+          light-dark(
+            /** Link variant hover decoration color in light mode */
+            var(--rh-color-gray-50, #707070),
+            /** Link variant hover decoration color in dark mode */
+            var(--rh-color-gray-40, #a3a3a3))) !important;
+      text-decoration-line: var(--_navigation-link-text-decoration-line, underline) !important;
+      text-decoration-style: var(--_navigation-link-text-decoration-style, dashed) !important;
       text-decoration-skip-ink: auto !important;
+
+      /** Link variant hover text color */
       color: var(--rh-color-interactive-primary-hover) !important;
     }
 
@@ -354,19 +403,35 @@
         display: flex;
         align-items: center;
         block-size: calc(100% + 4px);
+
+        /** Link variant hamburger menu font size */
         font-size: var(--rh-font-size-body-text-md, 1rem);
-        padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
+        padding:
+          /** Hamburger link block padding */
+          var(--rh-space-lg, 16px)
+          /** Hamburger link inline padding */
+          var(--rh-space-xl, 24px);
       }
 
       & ::slotted(a:is(:focus-visible, :hover:focus-visible, :active)) {
         outline-offset: 0;
-        outline: var(--rh-border-width-md, 2px) solid var(--rh-color-interactive-primary-default);
+        outline:
+          /** Link variant focus ring width */
+          var(--rh-border-width-md, 2px)
+          solid
+          /** Link variant focus ring color */
+          var(--rh-color-interactive-primary-default);
+
+        /** Link variant focus ring radius */
         border-radius: var(--rh-border-radius-default, 3px);
       }
 
       @container (min-width: 1200px) {
         & ::slotted(a) {
-          padding: 0 var(--rh-space-lg, 16px);
+          padding:
+            0
+            /** Hamburger link inline padding at containers >= xl */
+            var(--rh-space-lg, 16px);
         }
 
         &:is(:active, :focus-within, :has(details[open])) {
@@ -377,26 +442,45 @@
     }
 
     &.standalone {
-      padding-inline:
-        var(--_padding-inline-start, var(--rh-space-md, 8px))
-        var(--_padding-inline-end, var(--rh-space-md, 8px));
-
       & ::slotted(a) {
-        font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
+        text-decoration: none;
+        font-size:
+          var(--_navigation-link-font-size,
+            /** Standalone link font size */
+            var(--rh-font-size-body-text-sm, 0.875rem)) !important;
         display: inline-flex;
         block-size: auto;
         align-items: center;
-        padding: var(--rh-space-md, 8px) !important;
       }
 
       & ::slotted(a:is(:focus-visible, :hover:focus-visible, :active)) {
-        outline-offset: -2px;
+        outline-offset: 4px;
         outline:
+          /** Standalone link focus ring width */
           var(--rh-border-width-md, 2px)
           solid
+          /** Standalone link focus ring color */
           var(--rh-color-interactive-primary-default);
+
+        /** Standalone link focus ring radius */
         border-radius: var(--rh-border-radius-default, 3px);
       }
+    }
+  }
+}
+
+:host([slot='links']) {
+  & #container {
+    &.compact {
+      min-inline-size: 188px;
+
+      /** Compact links slot inline end padding */
+      padding-inline-end: var(--rh-space-xl, 24px);
+    }
+
+    @container navigation-primary (min-width: 1200px) {
+      min-inline-size: unset;
+      padding-inline-end: 0;
     }
   }
 }

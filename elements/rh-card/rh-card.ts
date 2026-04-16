@@ -12,12 +12,16 @@ import styles from './rh-card.css' with { type: 'css' };
 const PALETTE_RE = /(er|est)+/g;
 
 /**
- * Cards are flexible surfaces used to group information in a small layout. They give small previews of information or provide secondary content in relation to the content it's near. Several cards can be used together to group related information.
+ * Use cards to group small previews of content with optional calls to action.
+ * Cards should contain a header with a heading level tag (h1-h6) and must not
+ * replace primary page content. Cards do not manage focus; interactive elements
+ * inside (links, CTAs) must be keyboard-accessible via Tab and activated with
+ * Enter. Screen readers announce card content in DOM order. The `promo` variant
+ * should be used for promotional content separate from the main page flow.
  *
- * @summary     Arranges content and interactive elements in a layout
+ * @summary Groups content previews with optional actions in a contained layout
  *
  * @alias card
- *
  */
 @customElement('rh-card')
 @colorPalettes
@@ -27,19 +31,27 @@ export class RhCard extends LitElement {
 
   /**
    * Sets color palette, which affects the element's styles as well as descendants' color theme.
-   * Overrides parent color context.
-   * Your theme will influence these colors so check there first if you are seeing inconsistencies.
-   * See [CSS Custom Properties](#css-custom-properties) for default values
+   * Overrides parent color context. Accepts 'lightest' | 'lighter' | 'light' | 'dark' |
+   * 'darker' | 'darkest'. Promo variants automatically compute palette: featured promos
+   * use the `-est` suffix, standard promos use the `-er` suffix. Defaults to undefined
+   * (inherits from parent context). See [CSS Custom Properties](#css-custom-properties)
+   * for default values.
    */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
-   * Change the style of the card to be a "Promo"
+   * Controls the card's visual variant. Accepts 'promo' or undefined.
+   * When set to 'promo', the card renders in a promotional layout with
+   * grid-based positioning for image, body, and footer. Defaults to
+   * undefined (standard card layout). Avoid mixing promo and standard
+   * cards in the same group.
    */
   @property({ reflect: true }) variant?: 'promo';
 
   /**
-   * Change a promo with an image + body + footer to use the `full-width` style
+   * When true, a promo card bleeds to the edges of its container with no border.
+   * Only applies when `variant` is 'promo'. Requires the image slot to be populated
+   * for the full-width grid layout. Defaults to false. Boolean attribute.
    */
   @property({ reflect: true, attribute: 'full-width', type: Boolean }) fullWidth? = false;
 
@@ -75,8 +87,11 @@ export class RhCard extends LitElement {
            part="header"
            class="${classMap({ empty: !hasHeader })}">
         <!--
-          If this slot is used, we expect a heading level tag (h1, h2, h3, h4, h5, h6).
-          An icon, svg, or use of the icon component are also valid in this region.
+          summary: Card header content
+          description: |
+            Must contain a heading level tag (h1-h6) for screen reader
+            navigation. Icons, SVGs, or rh-icon are also valid. Screen
+            readers announce this slot content first in the card.
         -->
         <slot name="header"></slot>
       </div>`;
@@ -85,7 +100,13 @@ export class RhCard extends LitElement {
       <div id="footer"
            part="footer"
            class="${classMap({ empty: !hasFooter })}">
-        <!-- Use this slot for anything that you want to be stuck to the base of the card. -->
+        <!--
+          summary: Card footer content
+          description: |
+            Use for calls to action or links anchored to the card bottom.
+            Screen readers announce footer content last. Interactive
+            elements must be focusable via Tab and activated with Enter.
+        -->
         <slot name="footer"></slot>
       </div>`;
     return html`
@@ -105,7 +126,13 @@ export class RhCard extends LitElement {
         <div id="image"
              part="image"
              class="${classMap({ empty: !hasImage })}">
-          <!-- Use this slot for the promo variant of the card. Images & CTA's are most often slotted here. -->
+          <!--
+            summary: Promo variant image content
+            description: |
+              Use for images or CTAs in the promo variant. Images should
+              include alt text for screen readers. Decorative images
+              should use alt="" to be hidden from assistive technology.
+          -->
           <slot name="image"></slot>
         </div>
         <!-- The body for the card. Contains the default slot. -->
@@ -113,7 +140,13 @@ export class RhCard extends LitElement {
              part="body"
              class="${classMap({ empty: !hasBody })}">
           ${!promo ? '' : header}
-          <!-- Any content that is not designated for the header or footer slot, will go to this slot. -->
+          <!--
+            summary: Card body content (default slot)
+            description: |
+              Receives all content not assigned to named slots. Should
+              contain descriptive text, headings, or supporting elements.
+              Screen readers announce this between header and footer.
+          -->
           <slot></slot>
           ${!promo ? '' : footer}
         </div>

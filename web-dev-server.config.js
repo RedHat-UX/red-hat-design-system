@@ -1,5 +1,6 @@
 // @ts-check
 import { pfeDevServerConfig } from '@patternfly/pfe-tools/dev-server/config.js';
+import { deslugify } from '@patternfly/pfe-tools/config.js';
 import { glob, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { makeDemoEnv } from './scripts/environment.js';
@@ -63,6 +64,12 @@ function injectManuallyResolvedModulesToImportMap(document) {
       '@floating-ui/dom': '/node_modules/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs',
       '@floating-ui/core': '/node_modules/@floating-ui/core/dist/floating-ui.core.browser.min.mjs',
       'vue/dist/vue.esm-browser.js': 'https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js',
+      'prism-esm': '/node_modules/prism-esm/prism.js',
+      'prism-esm/': '/node_modules/prism-esm/',
+      'prism-esm/components/': '/node_modules/prism-esm/components/',
+      'construct-style-sheets-polyfill':
+        '/node_modules/construct-style-sheets-polyfill/dist/adoptedStyleSheets.js',
+      'construct-style-sheets-polyfill/': '/node_modules/construct-style-sheets-polyfill/dist/',
     });
     for (const key of Object.keys(json.scopes ?? {})) {
       json.scopes[key]['@patternfly/pfe-core'] = '/node_modules/@patternfly/pfe-core/core.js';
@@ -227,6 +234,34 @@ export default pfeDevServerConfig({
         console.error(e);
       }
       return;
+    },
+    /**
+     * Serve demo assets for element demo pages.
+     * Demo index pages are served at /elements/<slug>/ so relative asset
+     * references (e.g. src="khayyam.jpg") resolve to /elements/<slug>/asset
+     * instead of /elements/<slug>/demo/asset. This middleware maps those
+     * requests to the actual file in elements/<tagName>/demo/.
+     * @param ctx koa context
+     * @param next next koa middleware
+     */
+    async function(ctx, next) {
+      if (/\.(js|ts|css|html|map)$/i.test(ctx.path)) {
+        return next();
+      }
+      const match = ctx.path.match(/^\/elements\/([\w-]+)\/(?:.*\/)?([\w.-]+\.\w+)$/);
+      if (match) {
+        const [, slug, filename] = match;
+        const tagName = deslugify(slug);
+        const filePath = join(process.cwd(), 'elements', tagName, 'demo', filename);
+        try {
+          ctx.body = await readFile(filePath);
+          ctx.type = filename.split('.').pop() ?? 'bin';
+          return;
+        } catch {
+          // File not found in demo directory, fall through
+        }
+      }
+      return next();
     },
     /**
      * @param ctx koa context

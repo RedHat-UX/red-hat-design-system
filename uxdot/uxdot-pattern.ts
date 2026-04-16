@@ -108,7 +108,7 @@ export class UxdotPattern extends SSRFailureRecoverableElement {
                  active-index="${ifDefined(!this.#picked ? ['html', 'css', 'js'].indexOf(activeTab) : undefined)}"
                  ?hidden="${this.noCodeTabs}"
                  @expand="${this.#onExpand}">
-          <rh-tab id="html-tab" slot="tab" >HTML</rh-tab>
+          <rh-tab id="html-tab" slot="tab">HTML</rh-tab>
           <rh-tab-panel id="html-panel">
             <rh-code-block highlighting="prerendered"
                            line-numbers="visible"
@@ -118,7 +118,7 @@ export class UxdotPattern extends SSRFailureRecoverableElement {
               ${actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
-          <rh-tab id="css-tab" slot="tab" .disabled="${!hasCss}" >CSS</rh-tab>
+          <rh-tab id="css-tab" slot="tab" .disabled="${!hasCss}">CSS</rh-tab>
           <rh-tab-panel id="css-panel">
             <rh-code-block highlighting="prerendered"
                            actions="copy wrap"
@@ -127,7 +127,7 @@ export class UxdotPattern extends SSRFailureRecoverableElement {
               ${actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
-          <rh-tab id="js-tab" slot="tab" .disabled="${!hasJs}" >JS</rh-tab>
+          <rh-tab id="js-tab" slot="tab" .disabled="${!hasJs}">JS</rh-tab>
           <rh-tab-panel id="js-panel">
             <rh-code-block highlighting="prerendered"
                            actions="copy wrap"

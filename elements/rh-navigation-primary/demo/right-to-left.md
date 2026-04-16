@@ -1,1 +1,0 @@
-Right-to-left language support.  Element must be in a `dir="rtl"` context to display correctly. 
