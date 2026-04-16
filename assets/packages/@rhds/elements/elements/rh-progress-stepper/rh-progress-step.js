@@ -81,7 +81,7 @@ let RhProgressStep = class RhProgressStep extends LitElement {
         <!-- summary: Elaborative, optional description for the step
              description: |
                Rich HTML content can be slotted here , to override the (plain text) \`description\` attribute.
-               Avoid slotting links, images, block-level content, etc.: descriptions should be prose only 
+               Avoid slotting links, images, block-level content, etc.: descriptions should be prose only
                (around 40 characters or a max of 2 lines at the 768px breakpoint). -->
         <slot name="description" id="description">${this.description}</slot>
       </div>

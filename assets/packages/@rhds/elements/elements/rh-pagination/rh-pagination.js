@@ -173,7 +173,7 @@ let RhPagination = RhPagination_1 = class RhPagination extends LitElement {
                    enterkeyhint="go"
                    required
                    name="page"
-                   min=1
+                   min="1"
                    max="${this.total}"
                    @click="${__classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_onClick)}"
                    .value="${currentPage}">

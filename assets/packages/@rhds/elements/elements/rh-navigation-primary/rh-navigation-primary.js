@@ -187,7 +187,7 @@ let RhNavigationPrimary = class RhNavigationPrimary extends LitElement {
               <rh-icon icon="menu-bars" set="ui"></rh-icon>
               <div id="summary" class="visually-hidden">${this.mobileToggleLabel}</div>
             </summary>
-            <div id="details-content" role="list" >
+            <div id="details-content" role="list">
               <!--
                 Accepts \`<rh-navigation-primary-item>\` block elements for
                 hamburger menu links and dropdowns. The parent container has

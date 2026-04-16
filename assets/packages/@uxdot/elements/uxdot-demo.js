@@ -23,7 +23,7 @@ let UxdotDemo = UxdotDemo_1 = _a = class UxdotDemo extends LitElement {
                   title="${this.demoTitle}"
                   src="${this.demoUrl}"></iframe>
           <rh-disclosure id="knobs-drawer" summary="Edit element properties">
-            <div id="knobs" role="list"><slot name=knobs></slot></div>
+            <div id="knobs" role="list"><slot name="knobs"></slot></div>
           </rh-disclosure>
         </div>
         <rh-card id="code"

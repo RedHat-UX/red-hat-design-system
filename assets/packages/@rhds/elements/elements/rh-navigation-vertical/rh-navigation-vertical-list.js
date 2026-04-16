@@ -48,9 +48,9 @@ let RhNavigationVerticalList = RhNavigationVerticalList_1 = _a = class RhNavigat
             highlight: !!highlight,
         };
         return html `
-      <details 
+      <details
         class="${classMap(classes)}"
-        @toggle="${__classPrivateFieldGet(this, _RhNavigationVerticalList_instances, "m", _RhNavigationVerticalList_toggle)}" 
+        @toggle="${__classPrivateFieldGet(this, _RhNavigationVerticalList_instances, "m", _RhNavigationVerticalList_toggle)}"
         ?open="${this.open}"
         @keydown="${__classPrivateFieldGet(this, _RhNavigationVerticalList_instances, "m", _RhNavigationVerticalList_onKeydown)}">
         <summary>

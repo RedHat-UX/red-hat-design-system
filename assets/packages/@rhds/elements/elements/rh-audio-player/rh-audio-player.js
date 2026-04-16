@@ -290,9 +290,9 @@ let RhAudioPlayer = RhAudioPlayer_1 = _a = class RhAudioPlayer extends LitElemen
             <input id="volume"
                       class="toolbar-button"
                       aria-label="${__classPrivateFieldGet(this, _RhAudioPlayer_translation, "f").get('volume')}"
-                      min=0
+                      min="0"
                       max=${!__classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f") ? 0 : 100}
-                      step=1
+                      step="1"
                       type="range"
                       value=${this.volume * 100}
                       ?disabled="${!__classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f")}"
