@@ -1,0 +1,259 @@
+:host {
+  /** Primary text color design token for the select control */
+  color: var(--rh-color-text-primary);
+
+  /** Body text font family design token */
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
+  /** Small body text size design token */
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+
+  /** Regular font weight design token */
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
+
+  /** Body text line height design token */
+  line-height: var(--rh-line-height-body-text, 1.5);
+}
+
+:host,
+#outer {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+:host([hidden]),
+*[hidden] {
+  display: none !important;
+}
+
+:host([disabled]) {
+  pointer-events: none !important;
+}
+
+.visually-hidden {
+  border: 0;
+  clip-path: inset(100%);
+  block-size: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  inline-size: 1px;
+}
+
+#outer {
+  position: relative;
+  border: 1px solid transparent;
+}
+
+#listbox-container {
+  display: inline-flex;
+
+  /** Surface color design token for the dropdown, adapts to light/dark theme */
+  background-color:
+    light-dark(
+        var(--rh-color-surface-lightest, #ffffff),
+        var(--rh-color-surface-darkest, #151515)
+      );
+  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+
+  /** Default border radius design token */
+  border-radius: var(--rh-border-radius-default, 3px);
+
+  /** Small shadow design token for dropdown elevation */
+  box-shadow: var(--rh-box-shadow-sm);
+
+  /** Medium spacing design token for vertical padding */
+  padding-block: var(--rh-space-md, 8px);
+  position: absolute;
+  opacity: 0;
+}
+
+#outer.expanded #listbox-container {
+  opacity: 1;
+  z-index: 1000;
+}
+
+#listbox {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  inline-size: 100%;
+}
+
+#toggle {
+  /** Surface color design token for the toggle, adapts to light/dark theme */
+  background-color:
+    light-dark(
+        var(--rh-color-surface-lightest, #ffffff),
+        var(--rh-color-surface-darkest, #151515)
+      );
+  justify-content: space-between;
+}
+
+#toggle,
+#toggle-button {
+  align-items: center;
+  border-radius: var(--rh-border-radius-default, 3px);
+  display: flex;
+}
+
+.disabled #toggle {
+  /* Nix this fallback `light-dark` when the `status-disabled` vars are defined in tokens */
+  /* stylelint-disable-next-line rhds/no-unknown-token-name */
+  background-color:
+    var(--rh-color-status-disabled,
+      light-dark(
+        var(--rh-color-gray-30, #c7c7c7),
+        var(--rh-color-gray-40, #a3a3a3))
+      );
+}
+
+#toggle-button {
+  background-color: transparent;
+  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+
+  /** Primary text color for the toggle button label */
+  color: var(--rh-color-text-primary);
+  flex: 1 1 auto;
+
+  /** Body text font stack for the toggle button */
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
+  /** Small body text size for the toggle button */
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+
+  /** Medium spacing between toggle text and icons */
+  gap: var(--rh-space-md, 8px);
+  min-block-size: 37px;
+  padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+  text-align: start;
+
+  .disabled & {
+    /* Nix this fallback `light-dark` when the `status-disabled` vars are defined in tokens */
+    /* stylelint-disable-next-line rhds/no-unknown-token-name */
+    color:
+      var(--rh-color-text-status-disabled,
+        light-dark(
+          var(--rh-color-gray-50, #707070),
+          var(--rh-color-gray-60, #4d4d4d))
+        );
+    border-color: transparent;
+  }
+
+  &:hover,
+  &:focus {
+    border-color: var(--rh-color-border-interactive);
+  }
+
+  /* NOTE: This is essentially the "selected" and expanded state: */
+  &:focus,
+  &[aria-expanded='true'] {
+    border-color: transparent;
+    outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
+  }
+
+  &:focus-visible {
+    border-color: var(--rh-color-border-interactive);
+    outline: 3px solid var(--rh-color-border-interactive);
+    outline-offset: 3px;
+  }
+}
+
+#toggle-text {
+  flex: 1 1 auto;
+}
+
+.disabled #toggle-icon {
+  /* Nix this fallback `light-dark` when the `status-disabled` vars are defined in tokens */
+  /* stylelint-disable-next-line rhds/no-unknown-token-name */
+  color:
+    var(--rh-color-icon-status-disabled,
+      light-dark(
+        var(--rh-color-gray-40, #a3a3a3),
+        var(--rh-color-gray-60, #4d4d4d))
+      );
+}
+
+#toggle-button #toggle-icon {
+  --rh-icon-size: 10px;
+}
+
+::slotted(hr) {
+  border: 0;
+  inline-size: 100%;
+  margin: 0;
+}
+
+::slotted(hr):after {
+  content: '';
+  background-color: var(--rh-color-border-subtle);
+  block-size: 1px;
+  display: block;
+  inline-size: 100%;
+}
+
+::slotted(rh-option-group) {
+  border-block: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+}
+
+::slotted(rh-option-group:last-child) {
+  border-block-end: 0;
+}
+
+#help-text {
+  align-items: center;
+  display: flex;
+  gap: var(--rh-space-md, 8px);
+  margin-block-start: var(--rh-space-md, 8px);
+}
+
+#help-text ::slotted(*) {
+  display: inline-block;
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
+}
+
+#toggle-button,
+#help-text {
+  rh-icon {
+    /** Overrides the icon size design token for status and caret icons */
+    --rh-icon-size: var(--rh-select-icon-size, 14px);
+  }
+}
+
+/* States: */
+:host([state]) #help-text-content {
+  font-weight: var(--rh-font-weight-body-text-medium, 500) !important;
+}
+
+:host([state='success']) {
+  #toggle-button {
+    border-color: var(--rh-color-border-status-success);
+  }
+}
+
+:host([state='warning']) {
+  #toggle-button {
+    border-color: var(--rh-color-border-status-warning);
+  }
+}
+
+:host([state='danger']) {
+  #toggle-button {
+    border-color: var(--rh-color-border-status-danger);
+  }
+}
+
+.icon-success {
+  color: var(--rh-color-icon-status-success);
+}
+
+.icon-warning {
+  color: var(--rh-color-icon-status-warning);
+}
+
+.icon-danger {
+  color: var(--rh-color-icon-status-danger);
+}

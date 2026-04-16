@@ -3,29 +3,40 @@
   position: relative;
 }
 
-/** Add margin to blocks that aren't first in the sidebar. */
-
-/** Add the separator to blocks in the middle */
+/* Separator line between stacked sidebar blocks */
 :host(:not(:last-of-type, :first-of-type)):after {
   content: '';
   display: block;
   height: 1px;
   width: 100%;
+
+  /** Space above block separator */
   margin-block-start: var(--rh-space-2xl, 32px);
   background: var(--_border-color);
 }
 
 ::slotted(*) {
+  /** Block default text on dark */
   color: var(--rh-color-text-primary-on-dark, #ffffff);
+
+  /** Block default body size */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   text-decoration: none;
   max-width: 650px;
 }
 
 ::slotted(:is(h1, h2, h3, h4, h5)) {
+  /** Block heading weight */
   font-weight: var(--rh-font-weight-heading-medium, 500) !important;
+
+  /** Block heading size */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
-  margin-block: 0 var(--rh-space-lg, 16px) !important;
+  margin-block:
+    0
+    /** Block heading bottom spacing */
+    var(--rh-space-lg, 16px) !important;
+
+  /** Block heading text on dark */
   color: var(--rh-color-text-primary-on-dark, #ffffff) !important;
 }
 
@@ -34,7 +45,12 @@
 }
 
 .content ::slotted(*) {
+  /** Block secondary text on dark */
   color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
+
+  /** Block body typeface */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
+  /** Block body weight */
   font-weight: var(--rh-font-weight-body-text-regular, 400);
 }

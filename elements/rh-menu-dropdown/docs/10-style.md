@@ -1,6 +1,6 @@
 ## Style
 
-The menu dropdown is composed of a toggle, which opens a container with menu items. Menu items are versatile, with optional icons, descriptions, and organizational elements like group headings and separators.
+The menu dropdown is composed of a toggle, which opens a container with menu items. Menu items are versatile with optional icons, descriptions, and organizational elements like group headings and separators.
 
 ### Anatomy
 
@@ -157,14 +157,14 @@ The images below show interaction states for both the menu toggle and menu items
 <uxdot-example color-palette="lightest">
   <img alt="Hover states for menu item types and variants of the collapsed and expanded menu toggles in light scheme."
        src="../menu-dropdown-style-interaction-states-hover-light.svg"
-       width="945"
+       width="943"
        height="272">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest">
   <img alt="Hover states for menu item types and variants of the collapsed and expanded menu toggles in dark scheme."
        src="../menu-dropdown-style-interaction-states-hover-dark.svg"
-       width="945"
+       width="943"
        height="272">
 </uxdot-example>
 
@@ -173,14 +173,14 @@ The images below show interaction states for both the menu toggle and menu items
 <uxdot-example color-palette="lightest">
   <img alt="Active states for menu item types and variants of the collapsed and expanded menu toggles in light scheme."
        src="../menu-dropdown-style-interaction-states-active-light.svg"
-       width="947"
+       width="945"
        height="272">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest">
   <img alt="Active states for menu item types and variants of the collapsed and expanded menu toggles in dark scheme."
        src="../menu-dropdown-style-interaction-states-active-dark.svg"
-       width="947"
+       width="945"
        height="272">
 </uxdot-example>
 
@@ -189,13 +189,13 @@ The images below show interaction states for both the menu toggle and menu items
 <uxdot-example color-palette="lightest">
   <img alt="Focus states for menu item types and variants of the collapsed and expanded menu toggles in light scheme."
        src="../menu-dropdown-style-interaction-states-focus-light.svg"
-       width="959"
+       width="957"
        height="274">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest">
   <img alt="Focus states for menu item types and variants of the collapsed and expanded menu toggles in dark scheme."
        src="../menu-dropdown-style-interaction-states-focus-dark.svg"
-       width="959"
+       width="957"
        height="274">
 </uxdot-example>

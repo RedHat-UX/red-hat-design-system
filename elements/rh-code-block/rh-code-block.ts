@@ -15,6 +15,8 @@ import { themable } from '@rhds/elements/lib/themable.js';
 
 import style from './rh-code-block.css' with { type: 'css' };
 
+import '@rhds/elements/rh-icon/rh-icon.js';
+
 /**
  * Returns a string with common indent stripped from each line. Useful for templating HTML
  * @param str indented string
@@ -39,6 +41,12 @@ interface ContentVisibilityAutoStateChangeEvent extends Event {
 
 const prismApplyPromises = new WeakMap();
 
+/**
+ * Fired when the user activates the copy button via click, Enter, or Space.
+ * Provides `content` (string) for clipboard use. Listeners SHOULD modify
+ * `content` to strip prompts. MUST call `preventDefault()` to cancel.
+ * Screen reader users activate this via the keyboard-accessible button.
+ */
 export class RhCodeBlockCopyEvent extends Event {
   constructor(
     /** Text content to copy */
@@ -49,61 +57,49 @@ export class RhCodeBlockCopyEvent extends Event {
 }
 
 /**
- * A code block applies special formatting to sections of code.
+ * A read-only code viewer for formatted snippets that allows syntax
+ * highlighting, line numbers, and copy/wrap actions. Source must be
+ * in a `<script type="text/sample-...">` or `<pre>` child. The code
+ * region is keyboard-scrollable; screen readers announce it via ARIA
+ * as a scrollable area. Authors should avoid nesting interactive
+ * elements inside the code slot.
+ *
+ * @summary Formats code strings within a container
  *
  * @alias code-block
  *
- * @summary Formats code strings within a container
- * @event {RhCodeBlockCopyEvent} copy - fired when the user requests to copy the code block text.
- *                                      Modify the `event.content` field to change the copied text
- *                                      (e.g. to remove a prompt from a shell command)
+ * @fires {RhCodeBlockCopyEvent} copy - Fired when the user clicks the copy
+ *        action button or activates it with Enter/Space. The event's
+ *        `content` field (string) contains the text to copy. Listeners MAY
+ *        modify `event.content` to alter the copied text (e.g. to strip a
+ *        shell prompt). Call `event.preventDefault()` to cancel the copy.
  */
 @customElement('rh-code-block')
 @themable
 export class RhCodeBlock extends LitElement {
   private static actionIcons = new Map([
     ['wrap', html`
-      <svg xmlns="http://www.w3.org/2000/svg"
-           role="presentation"
-           fill="currentColor"
-           viewBox="0 0 20 20">
-        <path d="M19 0c.313.039.781-.077 1 .057V20c-.313-.039-.781.077-1-.057V0ZM10.82 4.992C9.877 4.996 8.31 5.57 8.174 6c1.21.03 2.432-.073 3.635.08 2.181.383 3.677 2.796 3.066 4.922-.41 1.753-2.108 2.995-3.877 3.014L11 14H5.207l2.682-2.682-.707-.707L3.293 14.5l3.889 3.889.707-.707L5.207 15h5.736l.004-.008c1.444.005 2.896-.59 3.832-1.722 1.65-1.82 1.612-4.85-.08-6.63A5 5 0 0 0 11 5a1.948 1.948 0 0 0-.18-.008z"/>
-        <path d="M4 5h7c-.039.313.077.781-.057 1H4V5ZM0 0c.313.039.781-.077 1 .057V20c-.313-.039-.781.077-1-.057V0Z"/>
-      </svg>
+      <rh-icon set="ui" icon="wrap-text"></rh-icon>
     `],
     ['wrap-active', html`
-      <svg xmlns="http://www.w3.org/2000/svg"
-           role="presentation"
-           fill="none"
-           viewBox="0 0 21 20">
-        <path fill="currentColor" d="M12 13h1v7h-1zM12 0h1v7h-1z"/>
-        <path stroke="currentColor" d="M16.465 6.464 20 10l-3.535 3.536"/>
-        <path fill="currentColor" d="M3 9.5h17v1H3zM0 0h1v20H0z"/>
-      </svg>
+      <rh-icon set="ui" icon="overflow-text"></rh-icon>
     `],
     ['copy', html`
-      <svg xmlns="http://www.w3.org/2000/svg"
-           version="1.1"
-           viewBox="0 0 20 20">
-        <path fill="currentColor" d="M12 0H2C.9 0 0 .9 0 2v10h1V2c0-.6.4-1 1-1h10V0z"/>
-        <path fill="currentColor" d="M18 20H8c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2zM8 7c-.6 0-1 .4-1 1v10c0 .6.4 1 1 1h10c.6 0 1-.4 1-1V8c0-.6-.4-1-1-1H8z"/>
-      </svg>
+      <rh-icon set="ui" icon="copy"></rh-icon>
     `],
   ]);
 
   static styles = [style];
 
   /**
-   * Space- or comma-separated list of code block action buttons to display, containing either 'copy', 'wrap', or both.
-   * 'copy' adds a button that copies the text content to the clipboard. 'wrap' adds a button that toggles line wrap.
+   * Space- or comma-separated list of action buttons to display.
+   * Accepts `'copy'`, `'wrap'`, or both (e.g. `"copy wrap"`). `'copy'` adds a
+   * clipboard button; `'wrap'` adds a word-wrap toggle. Defaults to `[]`
+   * (no actions shown). Labels can be overridden via the `action-label-copy`
+   * and `action-label-wrap` slots for internationalization. The active-state
+   * element must have `hidden data-code-block-state="active"`.
    *
-   * To override the default labels, e.g. for purposes of internationalization, use the
-   * `action-label-copy` and `action-label-wrap` slots. Each slot may receive two elements,
-   * one for the action's default state (e.g. "Copy to clipboard"),
-   * and one for the actions alternative state, e.g. "Copied!".
-   * The active-state element must have the attributes `hidden data-code-block-state="active"`
-   *
-   * @example html```
+   * @example ```html
    *          <rh-code-block actions="copy wrap">
    *            <span slot="action-label-copy">Copy to Clipboard</span>
    *            <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>
@@ -116,9 +112,21 @@ export class RhCodeBlock extends LitElement {
   @property({
     reflect: true,
     converter: {
+      /**
+       * Converts the HTML attribute string to an array of action names.
+       * Splits on spaces or commas, trims whitespace, and filters empty values.
+       * @param value - Attribute string like "copy wrap" or "copy, wrap"
+       * @returns Array of action names
+       */
       fromAttribute(value) {
         return ((value ?? '').split(/\s+|,/) ?? []).map(x => x.trim()).filter(Boolean);
       },
+      /**
+       * Converts the array of action names to an HTML attribute string.
+       * Joins array values with spaces.
+       * @param value - Array of action names
+       * @returns Space-separated string of actions
+       */
       toAttribute(value) {
         return Array.isArray(value) ? value.join(' ') : '';
       },
@@ -126,13 +134,20 @@ export class RhCodeBlock extends LitElement {
   }) actions: ('copy' | 'wrap')[] = [];
 
   /**
-   * When set to "client", `<rh-code-block>` will automatically highlight the source using Prism.js
-   * When set to "Prerendered", `<rh-code-block>` will apply supported RHDS styles to children with
-   * prismjs classnames in the element's root.
+   * Controls how syntax highlighting is applied. Accepts `'client'` or
+   * `'prerendered'`. When `'client'`, Prism.js is loaded on-demand and
+   * highlights source from `<script>` children. When `'prerendered'`,
+   * RHDS token colors are applied to existing Prism class names in child
+   * `<pre>` elements. Defaults to `undefined` (no highlighting).
    */
   @property() highlighting?: 'client' | 'prerendered';
 
-  /** When set along with `highlighting="client"`, this grammar will be used to highlight source code */
+  /**
+   * Specifies the Prism.js grammar for client-side highlighting. Requires
+   * `highlighting="client"`. Accepts `'html'` | `'css'` | `'javascript'` |
+   * `'typescript'` | `'bash'` | `'ruby'` | `'yaml'` | `'json'`. Defaults
+   * to `undefined`. When omitted, no syntax coloring is applied.
+   */
   @property() language?:
     | 'html'
     | 'css'
@@ -143,23 +158,23 @@ export class RhCodeBlock extends LitElement {
     | 'yaml'
     | 'json';
 
-  /** When set, the code block displays with compact spacing */
+  /** When true, reduces internal padding for tighter layouts. Defaults to false. */
   @property({ type: Boolean, reflect: true }) compact = false;
 
-  /** When set, the code block source code will be dedented */
+  /** When true, strips common leading whitespace from source lines before rendering. Defaults to false. */
   @property({ type: Boolean, reflect: true }) dedent = false;
 
-  /** When set, the code block is resizable */
+  /** When true, allows the user to vertically resize the code area by dragging. Defaults to false. */
   @property({ type: Boolean, reflect: true }) resizable = false;
 
-  /** When set, the code block occupies it's full height, without scrolling */
+  /** When true, the code block expands to its full height without scroll truncation. Defaults to false. */
   @property({ type: Boolean, reflect: true, attribute: 'full-height' }) fullHeight = false;
 
-  /** When set, lines in the code snippet wrap */
+  /** When true, long lines wrap instead of scrolling horizontally. Defaults to false. */
   @property({ type: Boolean }) wrap = false;
 
-  /** When set to `hidden`, the code block's line numbers are hidden */
-  @property({ reflect: true, attribute: 'line-numbers' }) lineNumbers?: 'hidden';
+  /** Controls line-number visibility. Accepts `'hidden'` or `'visible'`. When `'hidden'`, the gutter column is removed. Defaults to `undefined` (visible). */
+  @property({ reflect: true, attribute: 'line-numbers' }) lineNumbers?: 'hidden' | 'visible';
 
   @state() private copyButtonState: 'default' | 'active' | 'failed' = 'default';
 
@@ -177,6 +192,8 @@ export class RhCodeBlock extends LitElement {
   );
 
   #prismOutput?: DirectiveResult;
+
+  #copyFeedbackTimeout?: ReturnType<typeof setTimeout>;
 
   #isIntersecting = false;
   #ro?: ResizeObserver;
@@ -223,12 +240,13 @@ export class RhCodeBlock extends LitElement {
           <pre id="prism-output"
                class="language-${this.language}"
                ?hidden="${!this.#prismOutput}">${this.#prismOutput}</pre>
-          <!--
-            A non-executable script tag containing the sample content. JavaScript
-            samples should use the type \`text/sample-javascript\`. HTML samples
-            containing script tags must escape the closing \`</script>\` tag. Can
-            also be a \`<pre>\` tag.
-          -->
+          <!-- summary: code content (default slot)
+               description: |
+                 Expects a non-executable \`<script type="text/sample-...">\` or \`<pre>\`
+                 element containing source code. JavaScript samples should use
+                 \`type="text/sample-javascript"\`. This region is keyboard-scrollable
+                 and exposed to assistive technology as a scrollable code area;
+                 avoid placing focusable or interactive children here. -->
           <slot id="content"
                 ?hidden="${!!this.#prismOutput}"
                 @slotchange="${this.#onSlotChange}"></slot>
@@ -239,7 +257,11 @@ export class RhCodeBlock extends LitElement {
              @keyup="${this.#onActionsKeyup}">
         ${!this.actions.includes('copy') ? '' : html`
           <rh-tooltip silent>
-            <!-- Tooltip content for the copy action button -->
+            <!-- summary: copy button label (action-label-copy slot)
+                 description: |
+                   Expects inline text or \`<span>\` elements providing labels for
+                   the copy button's default, active, and failed states. Wired to
+                   \`aria-labelledby\` so screen readers announce the current state. -->
             <slot slot="content" name="action-label-copy">
               <span ?hidden="${this.copyButtonState !== 'default'}" id="copy-to-clipboard-label">Copy to Clipboard</span>
               <span ?hidden="${this.copyButtonState !== 'active'}" id="copied-label">Copied!</span>
@@ -254,7 +276,11 @@ export class RhCodeBlock extends LitElement {
           </rh-tooltip>`}
           ${!this.actions.includes('wrap') ? '' : html`
             <rh-tooltip silent>
-             <!-- Tooltip content for the wrap action button -->
+             <!-- summary: wrap button label (action-label-wrap slot)
+                  description: |
+                    Expects inline text or \`<span>\` elements providing labels for
+                    the wrap toggle's default and active states. Wired to
+                    \`aria-labelledby\` so screen readers announce the current state. -->
              <slot id="label-wrap" slot="content" name="action-label-wrap">
                <span ?hidden="${this.wrap}">Toggle word wrap</span>
                <span ?hidden="${!this.wrap}"
@@ -277,22 +303,32 @@ export class RhCodeBlock extends LitElement {
                 @click="${this.#onClickExpand}"
                 aria-labelledby="${this.fullHeight === true ? 'show-less-label' : 'show-more-label'}">
           <span ?hidden="${this.fullHeight}" id="show-more-label">
-            <!-- text content for the expandable toggle button when the code block is collapsed. -->
+            <!-- summary: collapsed toggle label (show-more slot)
+                 description: |
+                   Expects inline text for the expand button when code is collapsed.
+                   Defaults to "Show more". Wired to \`aria-labelledby\` so screen
+                   readers announce it as the button's accessible name. -->
             <slot name="show-more">Show more</slot>
           </span>
           <span ?hidden="${!this.fullHeight}" id="show-less-label">
-          <!-- text content for the expandable toggle button when the code block is expanded. -->
+          <!-- summary: expanded toggle label (show-less slot)
+               description: |
+                 Expects inline text for the collapse button when code is expanded.
+                 Defaults to "Show less". Wired to \`aria-labelledby\` so screen
+                 readers announce it as the button's accessible name. -->
             <slot name="show-less">Show less</slot>
           </span>
-          <svg xmlns="http://www.w3.org/2000/svg"
-               fill="currentColor"
-               viewBox="0 0 11 7">
-            <path d="M4.919.239.242 4.847a.801.801 0 0 0 0 1.148l.778.766a.83.83 0 0 0 1.165 0L5.5 3.495 8.815 6.76a.83.83 0 0 0 1.165 0l.778-.766a.802.802 0 0 0 0-1.148L6.08.239a.826.826 0 0 0-1.162 0Z"/>
-          </svg>
+          <rh-icon set="microns" icon="caret-up"></rh-icon>
         </button>
       </div>
 
-      <!-- \`<dl>\` element containing rh-badges in the \`<dt>\` and legend text in the \`<dd>\` elements -->
+      <!-- summary: code callout legend (legend slot)
+           description: |
+             Expects a \`<dl>\` element containing \`<rh-badge>\` in \`<dt>\` and legend
+             text in \`<dd>\` elements. Provides a key for callout annotations
+             within the code block. Screen readers announce the list structure
+             so users can correlate badges with their descriptions. Hidden when
+             no content is slotted. -->
       <slot name="legend" ?hidden="${this.#slots.isEmpty('legend')}"></slot>
     `;
   }
@@ -558,6 +594,10 @@ export class RhCodeBlock extends LitElement {
       return;
     }
 
+    // Cancel any previous feedback timeout to prevent stale timers
+    // from interfering when the user clicks copy multiple times
+    clearTimeout(this.#copyFeedbackTimeout);
+
     try {
       tooltip.hide();
       const content = this.#preCopy();
@@ -570,11 +610,21 @@ export class RhCodeBlock extends LitElement {
       this.#setSlottedLabelState('action-label-copy', 'failed');
     }
     tooltip.show();
-    await new Promise(r => setTimeout(r, 5_000));
-    tooltip.hide();
+    await new Promise<void>(r => {
+      this.#copyFeedbackTimeout = setTimeout(r, 5_000);
+    });
+    await tooltip.hide();
+    // Wait for the tooltip's CSS opacity transition to finish
+    // before resetting the label, so the text doesn't flash
+    // from "Copied!" to "Copy to Clipboard" while still visible
+    const tooltipContent = tooltip.shadowRoot?.querySelector('#tooltip');
+    await new Promise<void>(r => {
+      tooltipContent?.addEventListener('transitionend', () => r(), { once: true });
+      // fallback in case no transition fires (e.g. reduced motion)
+      setTimeout(r, 300);
+    });
     this.copyButtonState = 'default';
     this.#setSlottedLabelState('action-label-copy', undefined);
-    tooltip.show();
   }
 }
 

@@ -156,9 +156,15 @@ export default class ElementsPage extends Renderer<Context> {
     try {
       const demoPath = join(process.cwd(), 'elements', tagName, 'demo', `index.html`);
       const demoContent = await readFile(demoPath, 'utf8');
+      const fragment = parseFragment(demoContent);
+      for (const node of Tools.queryAll<Tools.Element>(fragment, Tools.isElementNode)) {
+        if (node.tagName === 'meta' && node.attrs.some(x => x.name === 'itemprop')) {
+          Tools.removeNode(node);
+        }
+      }
       return html`
         <rh-code-block actions="wrap copy" highlighting="prerendered">
-          ${this.highlight('html', demoContent)}
+          ${this.highlight('html', serialize(fragment))}
           ${this.#actionsLabels}
         </rh-code-block>`;
     } catch {
@@ -207,6 +213,8 @@ export default class ElementsPage extends Renderer<Context> {
       <uxdot-example>${await this.#getOverviewInlineSvg(ctx)}</uxdot-example>
       ` : html`
       <uxdot-example color-palette="lightest"><img src="${ctx.doc.overviewImageHref}" alt="" aria-labelledby="overview-image-description"></uxdot-example>`}
+      ${ctx.doc.planned ? '' : html`
+      <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/${ctx.tagName}/">View source on GitHub</rh-cta>`}
       ${this.#header('Status')}
       <uxdot-repo-status-list 
         figma-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.figma || ''}"
@@ -828,7 +836,7 @@ export default class ElementsPage extends Renderer<Context> {
               <thead>
                 <tr>
                   <th>Token</th>
-                  <th>Summary</th>
+                  <th>Description</th>
                   <th>Copy</th>
                 </tr>
               </thead>
@@ -839,7 +847,9 @@ export default class ElementsPage extends Renderer<Context> {
                       <code>${token.name}</code>
                     </a>
                   </td>
-                  <td>${await this.#innerMD(token.summary ?? '')}</td>
+                  <td>${!token.summary ? '' : await this.#innerMD(token.summary)}
+                    ${!token.description ? '' : await this.#innerMD(token.description)}
+                  </td>
                   ${copyCell(token)}
                 </tr>`))).join('')}
               </tbody>
@@ -951,6 +961,8 @@ export default class ElementsPage extends Renderer<Context> {
           updateDemoContentForType('js', node);
         } else if (node.tagName === 'style') {
           updateDemoContentForType('css', node);
+        } else if (node.tagName === 'meta' && node.attrs.some(x => x.name === 'itemprop')) {
+          Tools.removeNode(node);
         }
       }
 
