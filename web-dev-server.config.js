@@ -46,10 +46,10 @@ async function resolveLocal(pattern, relativeTo = './') {
 function injectManuallyResolvedModulesToImportMap(document) {
   const importMapNode = query(document, node =>
     isElementNode(node)
-    && node.tagName === 'script'
-    && node.attrs.some(attr =>
-      attr.name === 'type'
-      && attr.value === 'importmap'));
+      && node.tagName === 'script'
+      && node.attrs.some(attr =>
+        attr.name === 'type'
+          && attr.value === 'importmap'));
   if (importMapNode && isElementNode(importMapNode)) {
     const json = JSON.parse(getTextContent(importMapNode));
     Object.assign(json.imports, {
@@ -97,14 +97,14 @@ function transformDevServerHTML(document) {
   // add a context picker to header, targeting main
   const header = query(document, x =>
     isElementNode(x)
-    && getAttribute(x, 'id') === 'main-header');
+      && getAttribute(x, 'id') === 'main-header');
   if (header && isElementNode(header)) {
     const picker = createElement('rh-context-picker');
     setAttribute(picker, 'target', surfaceId);
     setAttribute(picker, 'value', '');
     const logoBar = query(header, node =>
       isElementNode(node)
-      && getAttribute(node, 'class') === 'logo-bar');
+        && getAttribute(node, 'class') === 'logo-bar');
     if (logoBar) {
       spliceChildren(logoBar, 4, 0, picker);
     }
@@ -112,8 +112,8 @@ function transformDevServerHTML(document) {
   // import surface and picker
   const module = query(document, x =>
     isElementNode(x)
-    && x.tagName === 'script'
-    && getAttribute(x, 'type') === 'module');
+      && x.tagName === 'script'
+      && getAttribute(x, 'type') === 'module');
   if (module) {
     setTextContent(module, /* js */`${getTextContent(module)}
     import '@rhds/elements/rh-surface/rh-surface.js';
