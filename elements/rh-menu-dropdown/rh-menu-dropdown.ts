@@ -173,8 +173,8 @@ export class RhMenuDropdown extends LitElement {
                 })}">
             ${this.layout === 'compact' ?
               html`<rh-icon set="ui" accessible-label=${this.accessibleLabel} icon="ellipsis-vertical-fill"></rh-icon>`
-              : html` 
-              <span class="info-section"> 
+              : html`
+              <span class="info-section">
                 <!-- summary: Toggle label
                      description: |
                        Inline content for the toggle button, such as a

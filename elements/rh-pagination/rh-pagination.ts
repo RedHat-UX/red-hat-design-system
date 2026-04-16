@@ -219,7 +219,7 @@ export class RhPagination extends LitElement {
                    enterkeyhint="go"
                    required
                    name="page"
-                   min=1
+                   min="1"
                    max="${this.total}"
                    @click="${this.#onClick}"
                    .value="${currentPage}">
