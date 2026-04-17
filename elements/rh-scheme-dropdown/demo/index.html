@@ -1,0 +1,19 @@
+<meta itemprop="description" content="Default scheme dropdown with light, dark, and system options.">
+
+<rh-scheme-dropdown></rh-scheme-dropdown>
+
+<script type="module">
+  import '@rhds/elements/rh-scheme-dropdown/rh-scheme-dropdown.js';
+</script>
+
+<style>
+  body {
+    color-scheme: light dark;
+    background-color: var(--rh-color-surface);
+    color: var(--rh-color-text-primary);
+  }
+
+  rh-scheme-dropdown {
+    padding: var(--rh-space-md, 8px);
+  }
+</style>
