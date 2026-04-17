@@ -1,7 +1,7 @@
 var _RhAccordion_instances, _a, _RhAccordion_expandedIndexSet, _RhAccordion_expanded, _RhAccordion_expandedIndex, _RhAccordion_logger, _RhAccordion_mo, _RhAccordion_makeContext, _RhAccordion_panelForHeader, _RhAccordion_expand, _RhAccordion_collapse, _RhAccordion_onChange, _RhAccordion_allHeaders, _RhAccordion_allPanels, _RhAccordion_getIndex;
 var RhAccordion_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -101,8 +101,10 @@ let RhAccordion = RhAccordion_1 = _a = class RhAccordion extends LitElement {
     connectedCallback() {
         super.connectedCallback();
         this.addEventListener('change', __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_onChange));
-        __classPrivateFieldGet(this, _RhAccordion_mo, "f").observe(this, { childList: true });
-        this.updateAccessibility();
+        if (!isServer) {
+            this.updateAccessibility();
+            __classPrivateFieldGet(this, _RhAccordion_mo, "f").observe(this, { childList: true });
+        }
     }
     render() {
         const { large } = this;
