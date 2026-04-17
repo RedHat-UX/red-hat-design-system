@@ -42,6 +42,10 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  *
  * @alias audio-player
  *
+ * @slot media - Must contain an `<audio>` block element with source children.
+ *               The audio element is visually hidden but remains accessible
+ *               to screen readers for native media controls.
+ *
  * @csspart toolbar - The main controls toolbar container.
  * @csspart panel - The expandable content panel below the toolbar.
  * @csspart about - The about panel slot container.
@@ -468,9 +472,9 @@ export class RhAudioPlayer extends LitElement {
             <input id="volume"
                       class="toolbar-button"
                       aria-label="${this.#translation.get('volume')}"
-                      min=0
+                      min="0"
                       max=${!this.#mediaElement ? 0 : 100}
-                      step=1
+                      step="1"
                       type="range"
                       value=${this.volume * 100}
                       ?disabled="${!this.#mediaElement}"

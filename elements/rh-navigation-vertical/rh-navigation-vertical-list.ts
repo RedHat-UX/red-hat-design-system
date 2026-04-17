@@ -80,9 +80,9 @@ export class RhNavigationVerticalList extends LitElement {
       highlight: !!highlight,
     };
     return html`
-      <details 
+      <details
         class="${classMap(classes)}"
-        @toggle="${this.#toggle}" 
+        @toggle="${this.#toggle}"
         ?open="${this.open}"
         @keydown="${this.#onKeydown}">
         <summary>

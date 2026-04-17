@@ -161,7 +161,7 @@ export class RhButton extends LitElement {
                  Expects inline text providing a concise, action-oriented label
                  (e.g. "Submit", "Delete"). Hidden from screen readers via
                  aria-hidden when the label attribute is set. For close and play
-                 variants, text is visually hidden but remains accessible. --><slot id="text" ></slot></span>
+                 variants, text is visually hidden but remains accessible. --><slot id="text"></slot></span>
       </button>
     `;
   }
