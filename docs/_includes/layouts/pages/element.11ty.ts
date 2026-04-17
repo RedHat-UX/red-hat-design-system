@@ -20,7 +20,7 @@ import {
   type DemoRecord,
 } from '@patternfly/pfe-tools/custom-elements-manifest/custom-elements-manifest.js';
 import { parseFragment } from 'parse5';
-import { parseFrontmatter, stripFrontmatter } from '#11ty-plugins/frontmatter.js';
+import { stripFrontmatter } from '#11ty-plugins/frontmatter.js';
 
 const html = String.raw; // for editor highlighting
 const pfeconfig = getPfeConfig();
@@ -889,22 +889,10 @@ export default class ElementsPage extends Renderer<Context> {
   }
 
   async #renderDemoDescription(demo: DemoRecord, ctx: Context) {
-    const parts: string[] = [];
-    // Render CEM description as markdown if available
     if ('description' in demo && typeof demo.description === 'string') {
-      parts.push(await this.renderTemplate(demo.description, 'md'));
+      return this.renderTemplate(demo.description, 'md');
     }
-    // Parse frontmatter doc field for supplementary rich content
-    if (demo.filePath) {
-      try {
-        const content = await readFile(demo.filePath, 'utf8');
-        const { data } = parseFrontmatter(content);
-        if (data.doc) {
-          parts.push(await this.renderTemplate(data.doc, 'md'));
-        }
-      } catch { /* file not found */ }
-    }
-    return parts.join('\n');
+    return '';
   }
 
   async #renderDemo(demo: DemoRecord, ctx: Context, knobs?: string) {
