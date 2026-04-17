@@ -22,7 +22,7 @@ order: 90
 ### General accessibility testing
 
 - [Web Accessibility Evaluation Tool (WAVE)](https://wave.webaim.org/extension/): browser extension for accessibility evaluation
-- [axe DevTools](https://www.deque.com/axe/devtools/): browser extension for accessibility testing
+- [Axe DevTools](https://www.deque.com/axe/devtools/): browser extension for accessibility testing
 - [IBM’s Equal Access Checker](https://www.ibm.com/able/toolkit/tools/#develop): browser extensions and CI/CD node packages for accessibility testing
 - [TetraLogical A11y Quick Tests](https://www.youtube.com/playlist?list=PLTqm2yVMMUKWTr9XWdW5hJ9tk512Ow0SE): series of very short videos on accessibility testing methods
 

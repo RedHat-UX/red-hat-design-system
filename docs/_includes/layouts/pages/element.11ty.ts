@@ -1,4 +1,4 @@
-import type { ElementDocsPageData } from '#11ty-plugins/element-docs.js';
+import type { ElementDocsPageData, ElementDecoratorData } from '#11ty-plugins/element-docs.js';
 import type * as CEM from 'custom-elements-manifest';
 
 import { tokens } from '@rhds/tokens/meta.js';
@@ -377,6 +377,7 @@ export default class ElementsPage extends Renderer<Context> {
       ${await this.renderTemplate(manifest.getDescription(tagName) ?? '', 'md')}
 
       <div class="element-apis">
+        ${this.#renderTheming(tagName, ctx)}
         ${await this.#renderSlots(tagName, ctx)}
         ${await this.#renderAttributes(tagName, ctx)}
         ${await this.#renderMethods(tagName, ctx)}
@@ -386,6 +387,66 @@ export default class ElementsPage extends Renderer<Context> {
         ${await this.#renderDesignTokens(tagName, ctx)}
       </div>
     `;;
+  }
+
+  #renderTheming(tagName: string, ctx: Context) {
+    const sublevel = (ctx.level) ? ctx.level + 1 : 3;
+    const data: ElementDecoratorData | undefined = ctx.doc.decoratorData?.[tagName];
+    if (!data) {
+      return '';
+    }
+    const { themable, colorPalettes } = data;
+    if (!themable && colorPalettes == null) {
+      return '';
+    }
+
+    const tags: string[] = [];
+    if (themable) {
+      tags.push(html`<rh-tag color="purple" variant="outline">Themable</rh-tag>`);
+    }
+    if (colorPalettes != null) {
+      tags.push(html`<rh-tag color="blue" variant="outline">Color palette</rh-tag>`);
+    }
+
+    let content = html`
+      <section class="theming" aria-labelledby="${tagName}-theming">
+        <uxdot-copy-permalink class="h${sublevel}">
+          <h${sublevel} id="${tagName}-theming">
+            <a href="#${tagName}-theming">Theming</a>
+          </h${sublevel}>
+        </uxdot-copy-permalink>
+        <p>${tags.join(' ')}</p>`;
+
+    if (themable) {
+      content += html`
+        <p>This element uses
+          <a href="/theming/">Red Hat design system theming</a>
+          and can be used in themable contexts.</p>`;
+    }
+
+    if (colorPalettes != null) {
+      if (colorPalettes.length === 0) {
+        content += html`
+          <p>This element is a
+            <a href="/theming/color-palettes/">color palette</a>
+            container and supports all color palettes via
+            the <code>color-palette</code> attribute.</p>`;
+      } else {
+        content += html`
+          <p>This element is a
+            <a href="/theming/color-palettes/">color palette</a>
+            container. It supports the following palettes via the
+            <code>color-palette</code> attribute:</p>
+          <ul>
+            ${colorPalettes.map(p => html`<li><code>${p}</code></li>`).join('\n            ')}
+          </ul>`;
+      }
+    }
+
+    content += html`
+      </section>`;
+
+    return content;
   }
 
   async #renderSlots(tagName: string, ctx: Context) {
