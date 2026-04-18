@@ -165,6 +165,7 @@ async function processPatternElement(
 
   const cssSrc = getAttribute(element, 'css-src');
   const jsSrc = getAttribute(element, 'js-src');
+  const fullHeight = getAttribute(element, 'full-height') !== null;
 
   const filePath = join(dirname(inputPath), src);
   const content = await readFile(filePath, 'utf8');
@@ -217,13 +218,13 @@ async function processPatternElement(
   }
   contentHtml += htmlContent;
 
+  const wrapper = createElement('div');
+  setAttribute(wrapper, 'slot', 'content');
   const contentFragment = parseFragment(contentHtml);
   for (const child of [...contentFragment.childNodes]) {
-    if (isElementNode(child)) {
-      setAttribute(child, 'slot', 'content');
-    }
-    appendChild(element, child);
+    appendChild(wrapper, child);
   }
+  appendChild(element, wrapper);
 
   // Action label markup shared by all code blocks.
   const actionLabels = `
@@ -235,7 +236,7 @@ async function processPatternElement(
   const htmlHighlighted = highlight('html', htmlContent);
   if (htmlHighlighted) {
     const htmlSourceFragment = parseFragment(
-      `<rh-code-block slot="html-source" highlighting="prerendered" line-numbers="visible" actions="copy wrap">${htmlHighlighted}${actionLabels}</rh-code-block>`,
+      `<rh-code-block slot="html-source"${fullHeight ? ' full-height' : ''} highlighting="prerendered" line-numbers="visible" actions="copy wrap">${htmlHighlighted}${actionLabels}</rh-code-block>`,
     );
     for (const child of [...htmlSourceFragment.childNodes]) {
       appendChild(element, child);
@@ -247,7 +248,7 @@ async function processPatternElement(
     const cssHighlighted = highlight('css', cssContent);
     if (cssHighlighted) {
       const cssSourceFragment = parseFragment(
-        `<rh-code-block slot="css-source" highlighting="prerendered" actions="copy wrap">${cssHighlighted}${actionLabels}</rh-code-block>`,
+        `<rh-code-block slot="css-source"${fullHeight ? ' full-height' : ''} highlighting="prerendered" actions="copy wrap">${cssHighlighted}${actionLabels}</rh-code-block>`,
       );
       for (const child of [...cssSourceFragment.childNodes]) {
         appendChild(element, child);
@@ -260,7 +261,7 @@ async function processPatternElement(
     const jsHighlighted = highlight('js', jsContent);
     if (jsHighlighted) {
       const jsSourceFragment = parseFragment(
-        `<rh-code-block slot="js-source" highlighting="prerendered" actions="copy wrap">${jsHighlighted}${actionLabels}</rh-code-block>`,
+        `<rh-code-block slot="js-source"${fullHeight ? ' full-height' : ''} highlighting="prerendered" actions="copy wrap">${jsHighlighted}${actionLabels}</rh-code-block>`,
       );
       for (const child of [...jsSourceFragment.childNodes]) {
         appendChild(element, child);
