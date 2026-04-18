@@ -1,6 +1,7 @@
 import type MarkdownIt from 'markdown-it';
 import type State from 'markdown-it/lib/rules_core/state_core.mjs';
 import type { UserConfig } from '@11ty/eleventy';
+import { markdownItBlockElementInnerMarkdown } from '#11ty-plugins/markdown-it-block-elements.js';
 import anchor from 'markdown-it-anchor';
 import attrs from 'markdown-it-attrs';
 import footnote from 'markdown-it-footnote';
@@ -87,5 +88,6 @@ export default function(eleventyConfig: UserConfig) {
       .use(deflist)
       .use(captions)
       .use(attrs)
-      .use(rhdsCodeBlock));
+      .use(rhdsCodeBlock)
+      .use(markdownItBlockElementInnerMarkdown));
 };
