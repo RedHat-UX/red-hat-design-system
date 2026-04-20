@@ -26,7 +26,7 @@ type Scheme = 'light' | 'dark' | 'light dark';
  * schemes. Users may also select a scheme via the select's typeahead
  * features.
  *
- * @summary Switches between light, dark, and system default color schemes.
+ * @summary Displays a variety of color schemes in a menu dropdown
  *
  * @alias Scheme dropdown
  */
