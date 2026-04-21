@@ -219,4 +219,9 @@ select {
       display: block;
     }
   }
+
+  /* Align picker's inline-end edge with trigger's inline-end edge. */
+  :host([dropdown-placement='inline-end']) select::picker(select) {
+    position-area: block-end span-inline-start;
+  }
 }

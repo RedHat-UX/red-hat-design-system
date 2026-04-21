@@ -73,6 +73,14 @@ export class RhSchemeDropdown extends LitElement {
    */
   @property({ attribute: 'system-text' }) systemText = 'System';
 
+  /**
+   * Controls where the trigger and picker align within the host.
+   * When set to `inline-end`, both shift to the inline-end edge
+   * (right in LTR, left in RTL).
+   */
+  @property({ attribute: 'dropdown-placement', reflect: true })
+  dropdownPlacement?: 'inline-end';
+
   connectedCallback(): void {
     super.connectedCallback();
     this.#schemeCheck();
