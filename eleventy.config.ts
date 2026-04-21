@@ -1,8 +1,5 @@
 Error.stackTraceLimit = 50;
 
-// Must run before any markdown-it import
-import '#11ty-plugins/markdown-it-block-elements.js';
-
 import type { PfeConfig } from '@patternfly/pfe-tools/config.js';
 
 import SyntaxHighlightPlugin from '@11ty/eleventy-plugin-syntaxhighlight';
@@ -16,7 +13,6 @@ import inlineCssPlugin from '#11ty-plugins/inline-css.js';
 import TypescriptAssetsPlugin from '#11ty-plugins/typescript-assets.js';
 import TOCPlugin from '#11ty-plugins/table-of-contents.js';
 import RHDSPlugin from '#11ty-plugins/rhds.js';
-import UxdotPatternInlinePlugin from '#11ty-plugins/uxdot-pattern-inline.js';
 import DesignTokensPlugin from '#11ty-plugins/tokens.js';
 import RHDSMarkdownItPlugin from '#11ty-plugins/markdown-it.js';
 import ImportMapPlugin from '#11ty-plugins/importMap.js';
@@ -206,8 +202,6 @@ export default async function(eleventyConfig: UserConfig) {
   if (!isWatch && !process.env.QUIET) {
     eleventyConfig.addPlugin(DirectoryOutputPlugin);
   }
-
-  eleventyConfig.addPlugin(UxdotPatternInlinePlugin);
 
   await eleventyConfig.addPlugin(RHDSPlugin, {
     tsconfig: './tsconfig.settings.json',

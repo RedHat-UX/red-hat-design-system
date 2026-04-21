@@ -23,22 +23,20 @@ subnav:
 </uxdot-pattern>
 
 <script type="module">
-  // The link-to-tab demo is inlined as slotted light DOM (not inside the shadow root),
-  // so resolve hash targets from the uxdot-pattern host, same as document.querySelector
-  // in the standalone pattern file.
+  // NOTE: the script sample provided in the link-to-tab demo will only work in the 
+  // document, but we present it here in shadow root, so this script specifically
+  // targets the element
   const pattern = document.querySelector('uxdot-pattern[src="./patterns/link-to-tab.html"]')
   await pattern.updateComplete;
   function activateTabByHash() {
     const { hash } = location;
     if (!hash) { return; }
-    const hashTarget = pattern.querySelector(hash);
-    if (!hashTarget) { return; }
+    const hashTarget = pattern.shadowRoot.querySelector(hash);
     const tabs = hashTarget.closest('rh-tabs');
-    if (!tabs) { return; }
     if (hashTarget.localName === 'rh-tab') {
       tabs.select(hashTarget);
     } else {
-      const panel = hashTarget.closest('rh-tab-panel');
+      const panel = hashTarget?.closest('rh-tab-panel');
       const panelIndex = Array.from(tabs.querySelectorAll('rh-tab-panel')).indexOf(panel);
       if (panelIndex >= 0) {
         tabs.select(panelIndex);
