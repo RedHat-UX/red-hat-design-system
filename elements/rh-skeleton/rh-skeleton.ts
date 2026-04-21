@@ -8,7 +8,7 @@ import styles from './rh-skeleton.css' with { type: 'css' };
  * A skeleton provides an animated placeholder for content that is loading
  * progressively. Must not receive focus or keyboard input.
  *
- * @summary A placeholder for content that is loading.
+ * @summary A placeholder for content that is loading
  *
  * @alias skeleton
  */
