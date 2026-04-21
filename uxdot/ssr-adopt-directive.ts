@@ -1,7 +1,7 @@
 import type { ChildPart } from 'lit-html';
 
 import { noChange } from 'lit';
-import { Directive, directive, PartType } from 'lit/directive.js';
+import { Directive, directive, PartType, type PartInfo } from 'lit/directive.js';
 import { digestForTemplateResult } from '@lit-labs/ssr-client';
 
 /** Matches the `HTML_RESULT` constant in lit-html (the `_$litType$` tag). */
@@ -80,7 +80,7 @@ function noopTemplateResult() {
 class SSRAdoptDirective extends Directive {
   #hydrated = false;
 
-  constructor(partInfo: { type: number }) {
+  constructor(partInfo: PartInfo) {
     super(partInfo);
     if (partInfo.type !== PartType.CHILD) {
       throw new Error('ssrAdopt() can only be used in child bindings');
