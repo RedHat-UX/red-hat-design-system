@@ -1,10 +1,10 @@
-import { SSRFailureRecoverableElement } from './ssr-failure-recoverable.js';
+import { LitElement } from 'lit';
 import { type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
 import '@rhds/elements/rh-code-block/rh-code-block.js';
 import '@rhds/elements/rh-tabs/rh-tabs.js';
-export declare class UxdotPattern extends SSRFailureRecoverableElement {
+export declare class UxdotPattern extends LitElement {
     #private;
     static styles: CSSStyleSheet[];
     /** Which color palette to apply to the demo surface */

@@ -1,11 +1,10 @@
 var _UxdotPattern_instances, _UxdotPattern_picked, _UxdotPattern_slots, _UxdotPattern_onExpand, _UxdotPattern_onChange;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
-import { html, isServer } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { SSRFailureRecoverableElement } from './ssr-failure-recoverable.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { colorPalettes } from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
@@ -18,7 +17,7 @@ import { TabExpandEvent } from '@rhds/elements/rh-tabs/rh-tab.js';
 import { UxdotPatternSSRController } from './uxdot-pattern-ssr-controller.js';
 import { css } from "lit";
 const styles = css `@import url("/assets/packages/@rhds/elements/elements/rh-code-block/rh-code-block-lightdom.css");:host{container:host/inline-size;display:block;margin-block-start:var(--rh-space-2xl);max-width:56rem}[hidden]{display:none!important}#container{display:grid;grid-template-columns:auto;grid-template-areas:"heading" "controls" "description" "content" "code";gap:var(--rh-space-2xl) var(--rh-space-4xl)}@container host (width >= 530px){#container{grid-template-columns:auto auto;grid-template-areas:"heading controls" "description description" "content content" "code code"}}@container host (width >= 992px){#container{grid-template-areas:"heading heading" "controls controls" "description description" "content content" "code code"}}#heading{grid-area:heading;display:flex;align-items:center}#description{grid-area:description}#description ::slotted(p){margin-block:0!important}::slotted(h2),::slotted(h3),::slotted(h4),::slotted(h5),::slotted(h6),h3{margin-block:0!important;font-size:var(--rh-font-size-body-text-lg)!important}#content{display:block;resize:vertical;overflow:auto;grid-area:content;padding:var(--rh-space-lg);border:var(--rh-border-width-sm) solid var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);background-color:var(--rh-color-surface);color:var(--rh-color-text-primary);border-color:var(--rh-color-border-subtle)}@container host (width > 300px){#content{padding:var(--rh-space-xl)}}@container host (width > 540px){#content{padding:var(--rh-space-4xl)}}#content>*{margin-inline:auto}#color-picker{grid-area:controls;justify-self:flex-end;display:flex;align-items:center;gap:var(--rh-space-lg,16px)}#code-tabs{border:var(--rh-border-width-sm) solid var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);grid-area:code;background-color:var(--rh-color-surface)}#code-tabs rh-tab-panel{padding:0;border-radius:0}#code-tabs rh-code-block{--rh-border-radius-default:0;--rh-border-width-sm:0px;border-width:0}#description.empty~#content{grid-area:description}#description.empty~#code-tabs{grid-area:content}`;
-let UxdotPattern = class UxdotPattern extends SSRFailureRecoverableElement {
+let UxdotPattern = class UxdotPattern extends LitElement {
     constructor() {
         super(...arguments);
         _UxdotPattern_instances.add(this);
