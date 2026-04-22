@@ -20,7 +20,7 @@ import styles from './rh-navigation-link.css' with { type: 'css' };
  * applied so screen readers announce the active page. Uses
  * `delegatesFocus` so Tab focus passes to the anchor.
  *
- * @summary A link that can be used as a child of navigation elements.
+ * @summary A link that can be used as a child of navigation elements
  * @alias navigation-link
  */
 @customElement('rh-navigation-link')
