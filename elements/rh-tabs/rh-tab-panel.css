@@ -9,7 +9,7 @@
   display: none !important;
 }
 
-:host(:is(:focus, :focus-within)) {
+:host(:focus-visible) {
   /** Focus ring, design token rh-color-interactive-primary */
   outline: 1px auto var(--rh-color-interactive-primary-default);
 }
