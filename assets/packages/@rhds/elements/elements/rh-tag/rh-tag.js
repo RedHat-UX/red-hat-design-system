@@ -17,7 +17,7 @@ const styles = css `:host{display:inline-flex}a{color:inherit;text-decoration:un
  * should provide an `aria-label` on group containers. When disabled, Enter
  * keyboard navigation is suppressed on linked tags.
  *
- * @summary Categorizes content, adds context, or indicates status using a short text label
+ * @summary Categorizes content, adds context, or indicates status
  *
  * @alias tag
  *

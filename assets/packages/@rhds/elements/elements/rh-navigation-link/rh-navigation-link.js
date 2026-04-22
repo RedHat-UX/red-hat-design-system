@@ -18,7 +18,7 @@ const styles = css `:host{display:contents}#container{display:var(--_navigation-
  * applied so screen readers announce the active page. Uses
  * `delegatesFocus` so Tab focus passes to the anchor.
  *
- * @summary A link that can be used as a child of navigation elements.
+ * @summary A link that can be used as a child of navigation elements
  * @alias navigation-link
  */
 let RhNavigationLink = class RhNavigationLink extends LitElement {

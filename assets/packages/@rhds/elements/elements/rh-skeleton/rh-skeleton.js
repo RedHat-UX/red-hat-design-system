@@ -8,7 +8,7 @@ const styles = css `.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:var(
  * A skeleton provides an animated placeholder for content that is loading
  * progressively. Must not receive focus or keyboard input.
  *
- * @summary A placeholder for content that is loading.
+ * @summary A placeholder for content that is loading
  *
  * @alias skeleton
  */

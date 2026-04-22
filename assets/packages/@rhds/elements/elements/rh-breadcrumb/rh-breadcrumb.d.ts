@@ -7,8 +7,8 @@ import { LitElement } from 'lit';
  * Keyboard users navigate breadcrumb links with Tab and activate
  * them with Enter.
  *
- * @summary Displays a hierarchical trail of links showing the user's
- *          location within a site
+ * @summary Displays a hierarchical trail of links showing a location
+ *          on a website
  *
  * @alias breadcrumb
  *

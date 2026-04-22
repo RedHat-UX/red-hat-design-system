@@ -124,7 +124,7 @@ function getReadingTime(words, wpm, imageCount = 0) {
  * ARIA roles. No keyboard interaction is needed as this
  * element is non-interactive display text.
  *
- * @summary Displays estimated reading time for content
+ * @summary Provides an estimated reading time for content
  *
  * @alias readtime
  *

@@ -12,7 +12,7 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  * Overflow scroll buttons appear when links exceed the available space.
  * All links are keyboard accessible via Tab and Enter.
  *
- * @summary Displays a horizontal list of navigation links for related pages.
+ * @summary Displays a horizontal list of navigation links for related pages
  *
  * @alias subnavigation
  *

@@ -25,7 +25,7 @@ const styles = css `:host{display:block}:host([color-palette]){background-color:
  * Overflow scroll buttons appear when links exceed the available space.
  * All links are keyboard accessible via Tab and Enter.
  *
- * @summary Displays a horizontal list of navigation links for related pages.
+ * @summary Displays a horizontal list of navigation links for related pages
  *
  * @alias subnavigation
  *

@@ -6,7 +6,7 @@ import { LitElement, type PropertyValues } from 'lit';
  * carry `role="presentation"`. Authors should provide a name via the
  * default slot so screen readers have context.
  *
- * @summary Circular user thumbnail for mastheads, navigation, and attribution
+ * @summary Circular thumbnail for mastheads, navigation, and attribution
  *
  * @slot - The user's display name — provides the accessible label for screen readers. Accepts text or an anchor for linked names.
  * @slot subtitle - Auxiliary info such as job title. Accepts text or `<a>` elements. Slotted anchors receive interactive color token styles. Screen readers announce this after the name.

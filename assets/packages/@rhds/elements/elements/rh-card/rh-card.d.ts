@@ -8,7 +8,7 @@ import { type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
  * Enter. Screen readers announce card content in DOM order. The `promo` variant
  * should be used for promotional content separate from the main page flow.
  *
- * @summary Groups content previews with optional actions in a contained layout
+ * @summary Groups content and optional actions in a contained layout
  *
  * @alias card
  */

@@ -11,7 +11,7 @@ const styles = css `#container{display:block;z-index:1000}a#container{position:f
  * It should be the first focusable element on the page, and authors
  * must provide either an `href` attribute or a slotted `<a>` element.
  *
- * @summary Allows users to skip repetitive navigation for accessibility.
+ * @summary Allows users to skip repetitive navigation for accessibility
  *
  * @alias skip-link
  */

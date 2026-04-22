@@ -15,7 +15,7 @@ const styles = css `:host{display:block}fieldset{align-items:center;border:0;dis
  * uses a native fieldset with ARIA-compatible radio buttons. Tab
  * focuses the group; arrow keys allow selection between schemes.
  *
- * @summary Switches between light, dark, and system default color schemes.
+ * @summary Switches between light, dark, and system default color schemes
  *
  * @alias Scheme toggle
  */
