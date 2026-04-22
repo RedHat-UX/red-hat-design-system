@@ -1,6 +1,6 @@
 import { expect, html } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
-import { RhSchemeDropdown } from '@rhds/elements/rh-scheme-dropdown/rh-scheme-dropdown.js';
+import { RhSchemeDropdown, SchemeChangedEvent } from '@rhds/elements/rh-scheme-dropdown/rh-scheme-dropdown.js';
 import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 
 /**
@@ -318,6 +318,83 @@ describe('<rh-scheme-dropdown>', function() {
 
     it('should be accessible with custom labels', async function() {
       await expect(element).to.be.accessible();
+    });
+  });
+
+  describe('scheme-changed event', function() {
+    let element: RhSchemeDropdown;
+
+    beforeEach(async function() {
+      localStorage.removeItem('rhdsColorScheme');
+      element = await createFixture<RhSchemeDropdown>(
+        html`<rh-scheme-dropdown></rh-scheme-dropdown>`
+      );
+      await element.updateComplete;
+    });
+
+    it('fires on user interaction via select', async function() {
+      const events: SchemeChangedEvent[] = [];
+      element.addEventListener('scheme-changed', e => events.push(e as SchemeChangedEvent));
+
+      selectScheme(element, 'dark');
+      await element.updateComplete;
+
+      expect(events).to.have.length(1);
+      expect(events[0].scheme).to.equal('dark');
+    });
+
+    it('fires on programmatic property change', async function() {
+      const events: SchemeChangedEvent[] = [];
+      element.addEventListener('scheme-changed', e => events.push(e as SchemeChangedEvent));
+
+      element.scheme = 'dark';
+      await element.updateComplete;
+
+      expect(events).to.have.length(1);
+      expect(events[0].scheme).to.equal('dark');
+    });
+
+    it('does not fire on initial load from localStorage', async function() {
+      const events: SchemeChangedEvent[] = [];
+      localStorage.setItem('rhdsColorScheme', 'dark');
+
+      const el = await createFixture<RhSchemeDropdown>(
+        html`<rh-scheme-dropdown></rh-scheme-dropdown>`
+      );
+      el.addEventListener('scheme-changed', e => events.push(e as SchemeChangedEvent));
+      await el.updateComplete;
+
+      expect(events).to.have.length(0);
+    });
+
+    it('has bubbles and composed set to true', async function() {
+      let event: SchemeChangedEvent | undefined;
+      element.addEventListener('scheme-changed', e => {
+        event = e as SchemeChangedEvent;
+      });
+
+      element.scheme = 'light';
+      await element.updateComplete;
+
+      expect(event).to.exist;
+      expect(event!.bubbles).to.be.true;
+      expect(event!.composed).to.be.true;
+    });
+
+    it('carries the correct scheme for each value', async function() {
+      const schemes: string[] = [];
+      element.addEventListener('scheme-changed', e => {
+        schemes.push((e as SchemeChangedEvent).scheme);
+      });
+
+      element.scheme = 'dark';
+      await element.updateComplete;
+      element.scheme = 'light dark';
+      await element.updateComplete;
+      element.scheme = 'light';
+      await element.updateComplete;
+
+      expect(schemes).to.deep.equal(['dark', 'light dark', 'light']);
     });
   });
 });

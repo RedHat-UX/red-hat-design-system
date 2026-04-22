@@ -17,6 +17,19 @@ declare global {
 type Scheme = 'light' | 'dark' | 'light dark';
 
 /**
+ * Fired when the active color scheme changes, whether by user interaction
+ * or programmatic update. Does not fire on initial load from localStorage.
+ * Listeners can read `event.scheme` to get the new value.
+ */
+export class SchemeChangedEvent extends Event {
+  constructor(
+    public scheme: Scheme,
+  ) {
+    super('scheme-changed', { bubbles: true, composed: true });
+  }
+}
+
+/**
  * A scheme dropdown provides users with the ability to switch between
  * light, dark, and system default color schemes. It should be placed
  * in a visible location for easy access. The component uses a native
@@ -28,11 +41,16 @@ type Scheme = 'light' | 'dark' | 'light dark';
  *
  * @summary Displays a variety of color schemes in a menu dropdown
  *
+ * @fires {SchemeChangedEvent} scheme-changed - Fired when the color scheme changes
+ *
  * @alias Scheme dropdown
  */
 @customElement('rh-scheme-dropdown')
 export class RhSchemeDropdown extends LitElement {
   static styles = [styles];
+
+  /** Guards against dispatching scheme-changed on initial boot. */
+  #initialized = false;
 
   /** Whether the light option is currently selected. */
   #isLight = false;
@@ -84,6 +102,12 @@ export class RhSchemeDropdown extends LitElement {
   connectedCallback(): void {
     super.connectedCallback();
     this.#schemeCheck();
+
+    // Defer until after the first Lit update cycle so @observes('scheme')
+    // doesn't dispatch scheme-changed for the initial localStorage value:
+    this.updateComplete.then(() => {
+      this.#initialized = true;
+    });
   }
 
   render() {
@@ -156,6 +180,9 @@ export class RhSchemeDropdown extends LitElement {
     if (this.scheme) {
       document.body.style.setProperty('color-scheme', this.scheme);
       localStorage.rhdsColorScheme = this.scheme;
+      if (this.#initialized) {
+        this.dispatchEvent(new SchemeChangedEvent(this.scheme));
+      }
     }
   }
 }
