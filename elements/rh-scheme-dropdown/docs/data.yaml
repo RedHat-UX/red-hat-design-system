@@ -12,5 +12,5 @@ libraries:
   docs: ready
 relatedItems:
   - rh-button
-  - rh-select
+  - rh-scheme-toggle
   - rh-switch

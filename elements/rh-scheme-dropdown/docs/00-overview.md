@@ -1,3 +1,3 @@
 ## When to use
 
-- One
+- Allow users to select from a list of predefined color schemes
