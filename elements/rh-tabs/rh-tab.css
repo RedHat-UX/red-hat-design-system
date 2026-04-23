@@ -449,7 +449,7 @@ rh-icon,
   }
 }
 
-:host(:is(:focus, :focus-within)) {
+:host(:is(:focus-visible)) {
   outline: none;
 
   & #button {
