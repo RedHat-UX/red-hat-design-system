@@ -5,7 +5,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
-const styles = css `:host{display:block;padding:var(--_panel-padding,var(--rh-space-2xl,32px))}:host([hidden]){display:none!important}:host(:is(:focus,:focus-within)){outline:1px auto var(--rh-color-interactive-primary-default)}#container{display:contents}`;
+const styles = css `:host{display:block;padding:var(--_panel-padding,var(--rh-space-2xl,32px))}:host([hidden]){display:none!important;position:relative}:host(:focus-visible){border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-lg,3px) solid var(--rh-color-interactive-primary-default);outline-offset:-3px}#container{display:contents}`;
 /**
  * A content panel for use in an `rh-tabs` element. Each panel
  * must be paired with a corresponding `rh-tab`. Authors should
