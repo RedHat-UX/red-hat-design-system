@@ -54,7 +54,9 @@ select {
   /** Select line height */
   line-height: var(--rh-line-height-body-text, 1.5);
   margin: 0;
-  max-inline-size: 102px; /* Must be wider for Safari */
+
+  /** Select fallback browser max-inline-size. Change when customizing option text */
+  max-inline-size: var(--rh-scheme-dropdown-select-inline-size, 102px); /* Safari requires +space */
   padding:
     /** Select block padding */
     var(--rh-space-md, 8px)
@@ -137,7 +139,9 @@ select {
 
       /** Picker top margin */
       margin-block-start: var(--rh-space-sm, 6px);
-      max-inline-size: 145px;
+
+      /** Picker max-inline-size. Change when customizing scheme dropdown option text */
+      max-inline-size: var(--rh-scheme-dropdown-picker-inline-size, 145px);
 
       /** Picker vertical padding */
       padding-block: var(--rh-space-md, 8px);
