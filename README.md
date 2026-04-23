@@ -22,7 +22,7 @@ RHDS provides a collection of ready-made, framework-agnostic Web Components with
 
 ## LGTM Tradition
 
-On this team, PR approvals come with a creative twist — reviewers leave a **backronym** for LGTM (four words starting with L, G, T, M). See [lgtms.md](lgtms.md) for the full collection.
+On this team, PR approvals come with a creative twist — reviewers leave a **backronym** for LGTM (four words starting with L, G, T, M). See [lgtms.md](docs/lgtms.md) for the full collection.
 
 ### Top 10 Leaderboard
 
