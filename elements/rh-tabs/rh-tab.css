@@ -453,8 +453,10 @@ rh-icon,
   outline: none;
 
   & #button {
-    /** Focus outline, adapts to color-palette */
-    outline: 1px auto var(--rh-color-interactive-primary-default);
-    outline-offset: -3px;
+    &:after {
+      /** Focus outline, adapts to color-palette */
+      outline: var(--rh-border-width-lg, 3px) auto var(--rh-color-interactive-primary-default);
+      outline-offset: -6px;
+    }
   }
 }
