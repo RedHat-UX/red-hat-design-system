@@ -188,12 +188,16 @@ describe('<rh-scheme-toggle>', function() {
       const events: SchemeChangedEvent[] = [];
       localStorage.setItem('rhdsColorScheme', 'dark');
 
+      // Listen on document BEFORE fixture — composed event would reach here
+      const handler = (e: Event) => events.push(e as SchemeChangedEvent);
+      document.addEventListener('scheme-changed', handler);
+
       const el = await createFixture<RhSchemeToggle>(
         html`<rh-scheme-toggle></rh-scheme-toggle>`
       );
-      el.addEventListener('scheme-changed', e => events.push(e as SchemeChangedEvent));
       await el.updateComplete;
 
+      document.removeEventListener('scheme-changed', handler);
       expect(events).to.have.length(0);
     });
 
