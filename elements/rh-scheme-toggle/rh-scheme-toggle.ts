@@ -18,8 +18,12 @@ type Scheme = 'light' | 'dark' | 'light dark';
 
 /**
  * Fired when the active color scheme changes, whether by user interaction
- * or programmatic update. Does not fire on initial load from localStorage.
- * Listeners can read `event.scheme` to get the new value.
+ * or programmatic update. This event allows consumers to coordinate UI
+ * updates or analytics when the scheme changes. Listeners should read
+ * `event.scheme` for the new value. Consumers must not rely on this
+ * event firing during initial load from localStorage.
+ *
+ * @summary Fires when the color scheme changes for coordination and analytics.
  */
 export class SchemeChangedEvent extends Event {
   constructor(
@@ -39,7 +43,9 @@ export class SchemeChangedEvent extends Event {
  *
  * @summary Switches between light, dark, and system default color schemes.
  *
- * @fires {SchemeChangedEvent} scheme-changed - Fired when the color scheme changes
+ * @fires {SchemeChangedEvent} scheme-changed - Fired when the color scheme
+ *        changes. Has no `detail` payload; read the new value from
+ *        `event.scheme` (`'light'`, `'dark'`, or `'light dark'`).
  *
  * @alias Scheme toggle
  */
