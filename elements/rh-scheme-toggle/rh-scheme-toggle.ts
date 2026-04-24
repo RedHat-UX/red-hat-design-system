@@ -106,13 +106,15 @@ export class RhSchemeToggle extends LitElement {
    * template always reflects the current `scheme` value.
    */
   protected override willUpdate(): void {
-    if (!isServer) {
-      this.#isLight = this.scheme === 'light';
-      this.#isDark = this.scheme === 'dark';
-      this.#isSystem = (this.scheme?.includes('light')
-        && this.scheme?.includes('dark'))
-        || (this.scheme === undefined);
+    if (isServer) {
+      return;
     }
+
+    this.#isLight = this.scheme === 'light';
+    this.#isDark = this.scheme === 'dark';
+    this.#isSystem = (this.scheme?.includes('light')
+      && this.scheme?.includes('dark'))
+      || (this.scheme === undefined);
   }
 
   render() {
