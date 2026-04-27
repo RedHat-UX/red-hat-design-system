@@ -3,6 +3,9 @@ tagName: rh-tooltip
 name: Tooltip
 type: element
 overallStatus: ready
+aka:
+  - Info tip
+  - Hint
 libraries:
   figma: ready
   rhds: ready

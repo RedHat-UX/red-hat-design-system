@@ -3,6 +3,8 @@ tagName: rh-switch
 name: Switch
 type: element
 overallStatus: new
+aka:
+  - Toggle
 libraries:
   figma: ready
   rhds: ready

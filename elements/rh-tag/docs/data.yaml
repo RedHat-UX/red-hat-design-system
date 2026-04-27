@@ -3,6 +3,9 @@ tagName: rh-tag
 name: Tag
 type: element
 overallStatus: ready
+aka:
+  - Label
+  - Chip
 libraries:
   figma: ready
   rhds: ready

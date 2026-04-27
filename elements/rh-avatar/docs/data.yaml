@@ -3,6 +3,9 @@ tagName: rh-avatar
 name: Avatar
 type: element
 overallStatus: ready
+aka:
+  - Profile picture
+  - User image
 libraries:
   figma: ready
   rhds: ready
