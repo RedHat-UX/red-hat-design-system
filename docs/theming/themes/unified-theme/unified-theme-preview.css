@@ -419,10 +419,29 @@
           var(--unified-color-blue-20),
           var(--unified-color-blue-70)
         );
+    --unified-color-border-control-default:
+      light-dark(
+          var(--unified-color-gray-30),
+          var(--unified-color-gray-50)
+        );
+
+    /* Brand accent */
+    --unified-color-brand-accent:
+      light-dark(
+          var(--unified-color-blue-50),
+          var(--unified-color-blue-30)
+        );
 
     /* Borders */
     --unified-border-radius-default: 16px;
+    --unified-border-radius-large: 24px;
     --unified-border-radius-pill: 64px;
+    --unified-border-radius-action-plain: 6px;
+    --unified-border-radius-menu:
+      calc(
+          var(--unified-border-radius-action-plain)
+          + var(--unified-space-xs)
+        );
     --unified-border-width-sm: 1px;
     --unified-border-width-md: 2px;
     --unified-border-width-lg: 3px;
@@ -443,11 +462,23 @@
 /* Component-specific styles */
 @layer elements {
   @layer
+    accordion,
+    alert,
+    badge,
+    breadcrumb,
     button,
     card,
+    chip,
     cta,
+    dialog,
+    jump-links,
+    menu,
+    navigation-vertical,
     progress-steppers,
     spinner,
+    subnav,
+    switch,
+    tabs,
     tag;
 }
 
@@ -939,5 +970,247 @@
         --rh-color-gray-50: var(--unified-color-gray-70);
       }
     }
+  }
+}
+
+/* Element: Switch
+   NOTE: The unchecked track outline/border shown in the Figma
+   mockup requires element-level changes (no CSS part on #switch). */
+@layer switch {
+  rh-switch {
+    --rh-switch-unchecked:
+      light-dark(
+          var(--unified-color-gray-40),
+          var(--unified-color-gray-50)
+        );
+    --rh-switch-checked: var(--unified-color-interactive-primary-default);
+    --rh-switch-disabled:
+      light-dark(
+          var(--unified-color-gray-30),
+          var(--unified-color-gray-60)
+        );
+
+    --rh-border-width-md: var(--unified-border-width-md);
+    --rh-color-border-interactive: var(--unified-color-interactive-primary-default);
+    --rh-space-sm: var(--unified-space-sm);
+    --rh-color-text-secondary: var(--unified-color-gray-60);
+  }
+}
+
+/* Element: Accordion
+   NOTE: Hover/focus backgrounds with border-radius require
+   element-level changes (no CSS part on #button). */
+@layer accordion {
+  rh-accordion {
+    --unified-accordion-panel-padding: var(--unified-space-xl);
+
+    --rh-color-accent-brand: var(--unified-color-brand-accent);
+    --rh-border-width-lg: var(--unified-border-width-lg);
+    --rh-font-size-body-text-md: var(--unified-font-size-body-text-sm);
+    --rh-space-xl: var(--unified-accordion-panel-padding);
+    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+  }
+}
+
+/* Element: Alert */
+@layer alert {
+  rh-alert {
+    --unified-alert-border-color: var(--rh-color-teal-50, #37a3a3);
+
+    /* Remove the internal container border so we can replace it on the host */
+    --rh-border-width-md: 0;
+
+    border:
+      var(--unified-border-width-md)
+      solid
+      var(--unified-alert-border-color);
+    border-radius: var(--unified-border-radius-default);
+    overflow: hidden;
+
+    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+    --rh-color-interactive-primary-hover: var(--unified-color-interactive-primary-hover);
+
+    &[state='neutral'] {
+      --unified-alert-border-color: var(--rh-color-status-neutral);
+    }
+
+    &[state='info'] {
+      --unified-alert-border-color: var(--rh-color-status-info);
+    }
+
+    &[state='success'] {
+      --unified-alert-border-color: var(--rh-color-status-success);
+    }
+
+    &[state='caution'] {
+      --unified-alert-border-color: var(--rh-color-status-caution);
+    }
+
+    &[state='warning'] {
+      --unified-alert-border-color: var(--rh-color-status-warning);
+    }
+
+    &[state='danger'] {
+      --unified-alert-border-color: var(--rh-color-status-danger);
+    }
+
+    &[variant='toast'] {
+      border-radius: var(--unified-border-radius-large);
+    }
+  }
+}
+
+/* Element: Tabs */
+@layer tabs {
+  rh-tabs {
+    --rh-tabs-active-border-color: var(--unified-color-brand-accent);
+    --rh-color-accent-brand: var(--unified-color-brand-accent);
+    --rh-color-interactive-secondary-default:
+      light-dark(
+          var(--unified-color-gray-40),
+          var(--unified-color-gray-50)
+        );
+    --rh-border-width-lg: var(--unified-border-width-lg);
+    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+  }
+
+  rh-tab::part(button):focus {
+    border-radius: var(--unified-border-radius-action-plain);
+  }
+}
+
+/* Element: Dialog (Modal in PatternFly) */
+@layer dialog {
+  rh-dialog {
+    --rh-border-radius-default: var(--unified-border-radius-large);
+    --rh-color-icon-secondary: var(--unified-color-icon-secondary);
+    --rh-space-xl: var(--unified-space-xl);
+    --rh-space-lg: var(--unified-space-lg);
+
+    &::part(close-button) {
+      --rh-border-radius-default: var(--unified-border-radius-action-plain);
+    }
+  }
+}
+
+/* Element: Chip (selectable Labels in PatternFly) */
+@layer chip {
+  rh-chip {
+    --rh-border-radius-pill: var(--unified-border-radius-pill);
+    --rh-border-width-md: var(--unified-border-width-md);
+    --rh-color-border-interactive: var(--unified-color-interactive-primary-default);
+    --rh-color-border-subtle: var(--unified-color-border-interactive-subtle-default);
+    --rh-color-blue-10: var(--unified-color-blue-10);
+    --rh-color-blue-30: var(--unified-color-blue-30);
+    --rh-color-blue-50: var(--unified-color-blue-50);
+    --rh-color-blue-70: var(--unified-color-blue-70);
+  }
+}
+
+/* Element: Badge */
+@layer badge {
+  rh-badge {
+    --rh-border-radius-pill: var(--unified-border-radius-pill);
+  }
+}
+
+/* Element: Breadcrumb */
+@layer breadcrumb {
+  rh-breadcrumb {
+    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+    --rh-color-interactive-primary-hover: var(--unified-color-interactive-primary-hover);
+    --rh-border-radius-default: var(--unified-border-radius-action-plain);
+    --rh-color-border-interactive: var(--unified-color-interactive-primary-default);
+  }
+}
+
+/* Element: Jump Links */
+@layer jump-links {
+  rh-jump-links {
+    --rh-color-brand-red: var(--unified-color-brand-accent);
+    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+    --rh-color-interactive-secondary-default:
+      light-dark(
+          var(--unified-color-gray-40),
+          var(--unified-color-gray-50)
+        );
+    --rh-border-radius-default: var(--unified-border-radius-action-plain);
+    --rh-border-width-lg: var(--unified-border-width-lg);
+  }
+
+  rh-jump-link {
+    /* Replace the left-border hover indicator with a pill background */
+    --rh-color-border-status-neutral: transparent;
+
+    width: fit-content;
+    margin-inline-start: var(--unified-space-md);
+
+    &:hover {
+      background-color: var(--unified-color-interactive-fill-plain-hover);
+      border-radius: var(--unified-border-radius-pill);
+    }
+  }
+}
+
+/* Element: Menu / Menu Dropdown */
+@layer menu {
+  rh-menu-dropdown {
+    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+    --rh-color-interactive-primary-hover: var(--unified-color-interactive-primary-hover);
+    --rh-border-radius-default: var(--unified-border-radius-menu);
+    --rh-border-radius-pill: var(--unified-border-radius-action-plain);
+  }
+
+  rh-menu {
+    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+    --rh-color-interactive-primary-hover: var(--unified-color-interactive-primary-hover);
+  }
+}
+
+/* Element: Navigation Vertical (Left Navigation in PatternFly) */
+@layer navigation-vertical {
+  rh-navigation-vertical {
+    --rh-color-brand-red: var(--unified-color-brand-accent);
+    --rh-border-width-lg: var(--unified-border-width-lg);
+    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+    --rh-border-radius-default: var(--unified-border-radius-action-plain);
+
+    & rh-navigation-link,
+    & rh-navigation-vertical-list {
+      display: block;
+      margin-inline-start: var(--unified-space-md);
+
+      /* Make the internal hover/selected background transparent
+         so the pill-shaped host background shows instead */
+      --rh-color-surface-lighter: transparent;
+      --rh-color-surface-dark: transparent;
+
+      /* Hide the left-border hover indicator; selected state
+         uses --rh-color-brand-red so it remains visible */
+      --rh-color-border-subtle: transparent;
+
+      &:hover {
+        background-color: var(--unified-color-interactive-fill-plain-hover);
+        border-radius: var(--unified-border-radius-pill);
+      }
+    }
+
+    & rh-navigation-link[current-page] {
+      background-color: var(--unified-color-interactive-fill-plain-hover);
+      border-radius: var(--unified-border-radius-pill);
+      margin-inline-start: 0;
+    }
+  }
+}
+
+/* Element: Subnav (Horizontal Navigation in PatternFly) */
+@layer subnav {
+  rh-subnav {
+    --rh-color-accent-brand: var(--unified-color-brand-accent);
+    --rh-color-brand-red: var(--unified-color-brand-accent);
+    --rh-color-border-interactive: var(--unified-color-interactive-primary-default);
+    --rh-border-width-lg: var(--unified-border-width-lg);
+    --rh-border-width-md: var(--unified-border-width-md);
+    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
   }
 }

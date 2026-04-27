@@ -1,24 +1,18 @@
 ---
-title: Overview
+title: How to use
+heading: How to use
+layout: layouts/pages/has-toc.njk
 order: 1
 tags:
   - theming
+  - themes
+subnav:
+  collection: sortedThemes
+  order: 00
 ---
-<style data-helmet>
-  .card-grid {
-    display: grid;
-    gap: var(--rh-space-2xl, 32px);
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  }
-</style>
-
-<link rel="stylesheet"
-      href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css"
-      data-helmet>
 
 <script type="module" data-helmet>
-  import '@rhds/elements/rh-cta/rh-cta.js';
-  import '@rhds/elements/rh-tile/rh-tile.js';
+  import '@rhds/elements/rh-alert/rh-alert.js';
 </script>
 
 The Red Hat Design System features a powerful, flexible, and easy-to-use theming 
@@ -73,30 +67,8 @@ standard backbone of RHDS' theming engine.
 :  The process by which the appearance of RHDS elements are customized by
    tweaking theme variables. Single elements or entire pages can be themed.
 
-<nav class="card-grid" aria-label="Theming pages">
-  <rh-tile>
-    <img slot="image" src="color-palettes.svg" alt="">
-    <h2 slot="headline">
-      <a href="color-palettes/">Color Palettes</a>
-    </h2>
-    <p>Design system color palettes integrate tokens with elements and
-       patterns to produce striking layouts</p>
-  </rh-tile>
-
-  <rh-tile>
-    <img slot="image" src="customizing.svg" alt="">
-    <h2 slot="headline">
-      <a href="customizing/">Customizing</a>
-    </h2>
-    <p>How named design tokens and semantically-defined color palettes open up
-       theming possibilities</p>
-  </rh-tile>
-
-  <rh-tile>
-    <img slot="image" src="developers.svg" alt="">
-    <h2 slot="headline">
-      <a href="developers/">Developers</a>
-    </h2>
-    <p>Tools and techniques to help you develop custom themes</p>
-  </rh-tile>
-</nav>
+<uxdot-feedback>
+  <h2>Color palettes and color schemes</h2>
+  <p>To learn more about working with color palettes and color schemes,
+     <a href="color-palettes/">click here</a>.</p>
+</uxdot-feedback>

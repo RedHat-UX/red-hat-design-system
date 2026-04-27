@@ -1,9 +1,31 @@
 <link rel="stylesheet" href="/theming/themes/unified-theme/unified-theme-preview.css">
 
+<style>
+  .example-row {
+    margin-block: var(--rh-space-2xl, 32px);
+  }
+
+  .example-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rh-space-lg, 16px);
+    align-items: center;
+  }
+</style>
+
+<h3>Default sizes</h3>
 <div class="example-row example-flex">
   <rh-cta variant="primary" href="#">Primary</rh-cta>
   <rh-cta variant="secondary" href="#">Secondary</rh-cta>
   <rh-cta variant="tertiary" href="#">Tertiary</rh-cta>
   <rh-cta href="#">Default</rh-cta>
   <rh-cta variant="brick" href="#">Brick</rh-cta>
+</div>
+
+<h3>Compact</h3>
+<div class="example-row example-flex">
+  <rh-cta variant="primary" compact href="#">Primary</rh-cta>
+  <rh-cta variant="secondary" compact href="#">Secondary</rh-cta>
+  <rh-cta variant="tertiary" compact href="#">Tertiary</rh-cta>
+  <rh-cta compact href="#">Default</rh-cta>
 </div>

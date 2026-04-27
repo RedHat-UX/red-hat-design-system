@@ -1,6 +1,16 @@
 <link rel="stylesheet" href="/theming/themes/unified-theme/unified-theme-preview.css">
 
-<div class="example-row">
+<style>
+  .example-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rh-space-2xl, 32px);
+    align-items: center;
+  }
+</style>
+
+<div class="example-row example-flex">
+  <rh-spinner size="xl"></rh-spinner>
   <rh-spinner></rh-spinner>
   <rh-spinner size="md"></rh-spinner>
   <rh-spinner size="sm"></rh-spinner>

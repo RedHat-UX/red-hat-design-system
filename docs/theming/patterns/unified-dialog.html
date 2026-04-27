@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="/theming/themes/unified-theme/unified-theme-preview.css">
+
+<style>
+  .example-row {
+    margin-block: var(--rh-space-2xl, 32px);
+  }
+</style>
+
+<div class="example-row">
+  <rh-button id="dialog-trigger">Open dialog</rh-button>
+  <rh-dialog trigger="dialog-trigger" variant="small">
+    <h3 slot="header">Modal title</h3>
+    <p>Content goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <rh-button slot="footer">Confirm</rh-button>
+    <rh-button slot="footer" variant="link">Cancel</rh-button>
+  </rh-dialog>
+</div>

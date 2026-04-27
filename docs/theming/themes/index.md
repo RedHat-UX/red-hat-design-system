@@ -4,9 +4,7 @@ title: Overview
 heading: Themes
 sidenavTitle: Themes
 permalink: /theming/themes/index.html
-tags:
-  - theming
-  - themes
+eleventyExcludeFromCollections: true
 subnav:
   collection: sortedThemes
   order: 00
