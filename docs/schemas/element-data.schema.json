@@ -61,6 +61,21 @@
       "required": ["figma", "rhds", "shared", "docs"],
       "additionalProperties": false
     },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Actions",
+        "Containers",
+        "Emphasis",
+        "Feedback",
+        "Media",
+        "Navigation",
+        "Overlays",
+        "Selection and inputs",
+        "Status"
+      ],
+      "description": "Taxonomy category for grouping on the All Elements page"
+    },
     "relatedItems": {
       "type": "array",
       "description": "List of related elements and patterns that appear in the feedback section",

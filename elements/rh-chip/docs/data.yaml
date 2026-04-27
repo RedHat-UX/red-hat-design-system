@@ -3,6 +3,7 @@ tagName: rh-chip
 name: Chip
 type: element
 overallStatus: ready
+category: Selection and inputs
 libraries:
   figma: ready
   rhds: ready

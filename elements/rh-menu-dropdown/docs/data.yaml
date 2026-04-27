@@ -3,6 +3,7 @@ tagName: rh-menu-dropdown
 name: Menu Dropdown
 type: element
 overallStatus: ready
+category: Navigation
 libraries:
   figma: ready
   rhds: ready

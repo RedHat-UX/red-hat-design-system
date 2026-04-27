@@ -3,6 +3,7 @@ tagName: rh-navigation-primary
 name: Navigation (primary)
 type: element
 overallStatus: ready
+category: Navigation
 libraries:
   figma: ready
   rhds: ready

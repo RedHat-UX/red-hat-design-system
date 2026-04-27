@@ -3,6 +3,7 @@ tagName: rh-table
 name: Table
 type: element
 overallStatus: ready
+category: Containers
 libraries:
   figma: ready
   rhds: ready

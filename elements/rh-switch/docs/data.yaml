@@ -3,6 +3,7 @@ tagName: rh-switch
 name: Switch
 type: element
 overallStatus: new
+category: Selection and inputs
 libraries:
   figma: ready
   rhds: ready

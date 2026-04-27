@@ -3,6 +3,7 @@ tagName: rh-announcement
 name: Announcement
 type: element
 overallStatus: new
+category: Containers
 libraries:
   figma: ready
   rhds: ready

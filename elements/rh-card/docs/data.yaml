@@ -3,6 +3,7 @@ tagName: rh-card
 name: Card
 type: element
 overallStatus: ready
+category: Containers
 libraries:
   figma: ready
   rhds: ready

@@ -3,6 +3,7 @@ tagName: rh-tabs
 name: Tabs
 type: element
 overallStatus: ready
+category: Navigation
 libraries:
   figma: ready
   rhds: ready

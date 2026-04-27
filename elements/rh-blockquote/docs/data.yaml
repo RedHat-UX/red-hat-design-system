@@ -3,6 +3,7 @@ tagName: rh-blockquote
 name: Blockquote
 type: element
 overallStatus: ready
+category: Emphasis
 libraries:
   figma: ready
   rhds: ready

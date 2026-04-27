@@ -3,6 +3,7 @@ tagName: rh-timestamp
 name: Timestamp
 type: element
 overallStatus: ready
+category: Status
 libraries:
   figma: ready
   rhds: ready
