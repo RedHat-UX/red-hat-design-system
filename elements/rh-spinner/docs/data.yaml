@@ -3,6 +3,7 @@ tagName: rh-spinner
 name: Spinner
 type: element
 overallStatus: ready
+category: Feedback
 aka:
   - Loader
   - Loading indicator

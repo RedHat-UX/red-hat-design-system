@@ -3,6 +3,7 @@ tagName: rh-table
 name: Table
 type: element
 overallStatus: ready
+category: Containers
 aka:
   - Data table
   - Grid

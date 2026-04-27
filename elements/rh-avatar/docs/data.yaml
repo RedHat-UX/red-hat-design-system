@@ -3,6 +3,7 @@ tagName: rh-avatar
 name: Avatar
 type: element
 overallStatus: ready
+category: Media
 aka:
   - Profile picture
   - User image
