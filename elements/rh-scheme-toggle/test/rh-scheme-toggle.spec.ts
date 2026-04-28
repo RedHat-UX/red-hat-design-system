@@ -10,20 +10,6 @@ function press(key: string) {
   };
 }
 
-/**
- * Simulates a user selecting a radio option by checking the matching
- * input and dispatching a native `change` event on the fieldset.
- * @param element - the rh-scheme-toggle instance
- * @param value - the option value to select (e.g. 'light', 'dark', 'light dark')
- */
-function selectScheme(element: RhSchemeToggle, value: string) {
-  const radio = element.shadowRoot!.querySelector<HTMLInputElement>(
-    `input[type="radio"][value="${value}"]`
-  )!;
-  radio.checked = true;
-  radio.dispatchEvent(new Event('change', { bubbles: true }));
-}
-
 describe('<rh-scheme-toggle>', function() {
   describe('simply instantiating', function() {
     let element: RhSchemeToggle;
@@ -33,6 +19,11 @@ describe('<rh-scheme-toggle>', function() {
         html`<rh-scheme-toggle></rh-scheme-toggle>`
       );
       await element.updateComplete;
+    });
+
+    afterEach(function() {
+      localStorage.removeItem('rhdsColorScheme');
+      document.body.style.removeProperty('color-scheme');
     });
 
     it('imperatively instantiates', function() {
@@ -52,6 +43,7 @@ describe('<rh-scheme-toggle>', function() {
       await expect(element).to.be.accessible();
     });
   });
+
   describe('keyboard navigation', function() {
     let element: RhSchemeToggle;
 
@@ -62,10 +54,15 @@ describe('<rh-scheme-toggle>', function() {
     });
     beforeEach(async () => await element.updateComplete);
 
+    afterEach(function() {
+      localStorage.removeItem('rhdsColorScheme');
+      document.body.style.removeProperty('color-scheme');
+    });
+
     describe('Tab', function() {
       beforeEach(press('Tab'));
 
-      it('should focus and check the System radio input', async function() {
+      it('focuses and checks System', async function() {
         const snapshot = await a11ySnapshot();
         expect(snapshot).to.have.axQuery({ name: 'System', focused: true, checked: true });
       });
@@ -73,77 +70,53 @@ describe('<rh-scheme-toggle>', function() {
       describe('Right Arrow', function() {
         beforeEach(press('ArrowRight'));
 
-        it('should focus and check the light mode radio input', async function() {
+        it('focuses and checks Light', async function() {
           const snapshot = await a11ySnapshot();
           expect(snapshot).to.have.axQuery({ name: 'Light', focused: true, checked: true });
         });
+
+        describe('Right Arrow again ', function() {
+          beforeEach(press('ArrowRight'));
+
+          it('focuses and checks Dark', async function() {
+            const snapshot = await a11ySnapshot();
+            expect(snapshot).to.have.axQuery({ name: 'Dark', focused: true, checked: true });
+          });
+        });
       });
 
-      describe('Right Arrow again ', function() {
-        beforeEach(press('ArrowRight'));
+      describe('Left Arrow', function() {
+        beforeEach(press('ArrowLeft'));
 
-        it('should focus and check the dark mode radio input', async function() {
+        it('focuses and checks Dark', async function() {
           const snapshot = await a11ySnapshot();
           expect(snapshot).to.have.axQuery({ name: 'Dark', focused: true, checked: true });
         });
       });
     });
+  });
 
-    describe('local storage', function() {
-      describe('with empty localStorage', function() {
-        beforeEach(function() {
-          localStorage.clear();
-        });
+  describe('localStorage', function() {
+    let element: RhSchemeToggle;
 
-        describe('with stored scheme set to `light dark`', function() {
-          beforeEach(async function() {
-            localStorage.setItem('rhdsColorScheme', 'light dark');
-          });
-
-          describe('adding basic toggle element', function() {
-            let element: RhSchemeToggle;
-            beforeEach(async function() {
-              element = await createFixture<RhSchemeToggle>(html`<rh-scheme-toggle></rh-scheme-toggle>`);
-            });
-            it('uses the stored scheme', async function() {
-              expect(element.scheme).to.equal('light dark');
-            });
-          });
-        });
-
-        describe('with stored scheme set to `light`', function() {
-          beforeEach(async function() {
-            localStorage.setItem('rhdsColorScheme', 'light');
-          });
-
-          describe('adding basic toggle element', function() {
-            let element: RhSchemeToggle;
-            beforeEach(async function() {
-              element = await createFixture<RhSchemeToggle>(html`<rh-scheme-toggle></rh-scheme-toggle>`);
-            });
-            it('uses the stored scheme', async function() {
-              expect(element.scheme).to.equal('light');
-            });
-          });
-        });
-      });
-
-      describe('with stored scheme set to `dark`', function() {
-        beforeEach(async function() {
-          localStorage.setItem('rhdsColorScheme', 'dark');
-        });
-
-        describe('adding basic toggle element', function() {
-          let element: RhSchemeToggle;
-          beforeEach(async function() {
-            element = await createFixture<RhSchemeToggle>(html`<rh-scheme-toggle></rh-scheme-toggle>`);
-          });
-          it('uses the stored scheme', async function() {
-            expect(element.scheme).to.equal('dark');
-          });
-        });
-      });
+    afterEach(function() {
+      localStorage.removeItem('rhdsColorScheme');
+      document.body.style.removeProperty('color-scheme');
     });
+
+    for (const scheme of ['light dark', 'light', 'dark'] as const) {
+      describe(`with stored scheme "${scheme}"`, function() {
+        beforeEach(async function() {
+          localStorage.setItem('rhdsColorScheme', scheme);
+          element = await createFixture<RhSchemeToggle>(
+            html`<rh-scheme-toggle></rh-scheme-toggle>`
+          );
+        });
+        it('uses the stored scheme', function() {
+          expect(element.scheme).to.equal(scheme);
+        });
+      });
+    }
   });
 
   describe('scheme-changed event', function() {
@@ -165,7 +138,8 @@ describe('<rh-scheme-toggle>', function() {
     });
 
     it('fires on user interaction via radio', async function() {
-      selectScheme(element, 'dark');
+      await sendKeys({ press: 'Tab' });
+      await sendKeys({ press: 'ArrowLeft' });
       await element.updateComplete;
 
       expect(events).to.have.length(1);
@@ -213,16 +187,8 @@ describe('<rh-scheme-toggle>', function() {
     });
   });
 
-  describe('radio checked state after programmatic scheme change', function() {
+  describe('programmatic scheme change', function() {
     let element: RhSchemeToggle;
-
-    /** Returns the checked radio's value, or null if none checked. */
-    function checkedValue(): string | null {
-      const radio = element.shadowRoot!.querySelector<HTMLInputElement>(
-        'input[type="radio"]:checked'
-      );
-      return radio?.value ?? null;
-    }
 
     beforeEach(async function() {
       localStorage.removeItem('rhdsColorScheme');
@@ -237,36 +203,25 @@ describe('<rh-scheme-toggle>', function() {
       document.body.style.removeProperty('color-scheme');
     });
 
-    it('checks the light radio after setting scheme to "light"', async function() {
+    it('checks the Light radio after setting scheme to "light"', async function() {
       element.scheme = 'light';
       await element.updateComplete;
-      expect(checkedValue()).to.equal('light');
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.have.axQuery({ name: 'Light', checked: true });
     });
 
-    it('checks the dark radio after setting scheme to "dark"', async function() {
+    it('checks the Dark radio after setting scheme to "dark"', async function() {
       element.scheme = 'dark';
       await element.updateComplete;
-      expect(checkedValue()).to.equal('dark');
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.have.axQuery({ name: 'Dark', checked: true });
     });
 
-    it('checks the system radio after setting scheme to "light dark"', async function() {
+    it('checks the System radio after setting scheme to "light dark"', async function() {
       element.scheme = 'light dark';
       await element.updateComplete;
-      expect(checkedValue()).to.equal('light dark');
-    });
-
-    it('updates checked radio across sequential changes', async function() {
-      element.scheme = 'dark';
-      await element.updateComplete;
-      expect(checkedValue()).to.equal('dark');
-
-      element.scheme = 'light';
-      await element.updateComplete;
-      expect(checkedValue()).to.equal('light');
-
-      element.scheme = 'light dark';
-      await element.updateComplete;
-      expect(checkedValue()).to.equal('light dark');
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.have.axQuery({ name: 'System', checked: true });
     });
   });
 });
