@@ -104,7 +104,7 @@ input {
   &:focus-visible {
     outline:
       /** Focus outline width */
-      var(--rh-border-width-md, 2px)
+      var(--rh-border-width-lg, 3px)
       solid
       /** Focus outline color */
       var(--rh-color-border-interactive);
