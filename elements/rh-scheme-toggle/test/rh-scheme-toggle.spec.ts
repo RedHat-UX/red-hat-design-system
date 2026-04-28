@@ -148,11 +148,13 @@ describe('<rh-scheme-toggle>', function() {
 
   describe('scheme-changed event', function() {
     let element: RhSchemeToggle;
+    const events: SchemeChangedEvent[] = [];
 
     beforeEach(async function() {
+      events.length = 0;
       localStorage.removeItem('rhdsColorScheme');
       element = await createFixture<RhSchemeToggle>(
-        html`<rh-scheme-toggle></rh-scheme-toggle>`
+        html`<rh-scheme-toggle @scheme-changed="${(e: SchemeChangedEvent) => events.push(e)}"></rh-scheme-toggle>`
       );
       await element.updateComplete;
     });
@@ -163,9 +165,6 @@ describe('<rh-scheme-toggle>', function() {
     });
 
     it('fires on user interaction via radio', async function() {
-      const events: SchemeChangedEvent[] = [];
-      element.addEventListener('scheme-changed', e => events.push(e as SchemeChangedEvent));
-
       selectScheme(element, 'dark');
       await element.updateComplete;
 
@@ -174,9 +173,6 @@ describe('<rh-scheme-toggle>', function() {
     });
 
     it('fires on programmatic property change', async function() {
-      const events: SchemeChangedEvent[] = [];
-      element.addEventListener('scheme-changed', e => events.push(e as SchemeChangedEvent));
-
       element.scheme = 'dark';
       await element.updateComplete;
 
@@ -185,42 +181,27 @@ describe('<rh-scheme-toggle>', function() {
     });
 
     it('does not fire on initial load from localStorage', async function() {
-      const events: SchemeChangedEvent[] = [];
+      const initEvents: SchemeChangedEvent[] = [];
       localStorage.setItem('rhdsColorScheme', 'dark');
 
-      // Listen on document BEFORE fixture — composed event would reach here
-      const handler = (e: Event) => events.push(e as SchemeChangedEvent);
-      document.addEventListener('scheme-changed', handler);
-
       const el = await createFixture<RhSchemeToggle>(
-        html`<rh-scheme-toggle></rh-scheme-toggle>`
+        html`<rh-scheme-toggle @scheme-changed="${(e: SchemeChangedEvent) => initEvents.push(e)}"></rh-scheme-toggle>`
       );
       await el.updateComplete;
 
-      document.removeEventListener('scheme-changed', handler);
-      expect(events).to.have.length(0);
+      expect(initEvents).to.have.length(0);
     });
 
     it('has bubbles and composed set to true', async function() {
-      let event: SchemeChangedEvent | undefined;
-      element.addEventListener('scheme-changed', e => {
-        event = e as SchemeChangedEvent;
-      });
-
       element.scheme = 'light';
       await element.updateComplete;
 
-      expect(event).to.exist;
-      expect(event!.bubbles).to.be.true;
-      expect(event!.composed).to.be.true;
+      expect(events[0]).to.exist;
+      expect(events[0].bubbles).to.be.true;
+      expect(events[0].composed).to.be.true;
     });
 
     it('carries the correct scheme for each value', async function() {
-      const schemes: string[] = [];
-      element.addEventListener('scheme-changed', e => {
-        schemes.push((e as SchemeChangedEvent).scheme);
-      });
-
       element.scheme = 'dark';
       await element.updateComplete;
       element.scheme = 'light dark';
@@ -228,7 +209,7 @@ describe('<rh-scheme-toggle>', function() {
       element.scheme = 'light';
       await element.updateComplete;
 
-      expect(schemes).to.deep.equal(['dark', 'light dark', 'light']);
+      expect(events.map(e => e.scheme)).to.deep.equal(['dark', 'light dark', 'light']);
     });
   });
 
