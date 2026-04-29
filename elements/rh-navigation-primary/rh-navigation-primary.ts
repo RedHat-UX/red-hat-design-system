@@ -79,6 +79,8 @@ export class RhNavigationPrimary extends LitElement {
   @provide({ context })
   @state() compact = true;
 
+  @state() linksCompact = true;
+
   @state()
   private _overlayOpen = false;
 
@@ -175,6 +177,11 @@ export class RhNavigationPrimary extends LitElement {
               this.#closeOverlay();
             }
           }
+          const linksOldState = this.linksCompact;
+          const linksNewState = contentBoxSize.inlineSize < 1440;
+          if (linksOldState !== linksNewState) {
+            this.linksCompact = linksNewState;
+          }
           // Close links menu when container goes below 320px (where it's hidden via CSS)
           if (contentBoxSize.inlineSize < 320 && this._linksMenuOpen) {
             this.#closeLinksMenu();
@@ -191,9 +198,7 @@ export class RhNavigationPrimary extends LitElement {
       this.#hydrated = true;
       this.compact = this.offsetWidth < 1200;
       // Open links menu at desktop viewport
-      if (!this.compact) {
-        this._linksMenuOpen = true;
-      }
+      this.linksCompact = this.offsetWidth < 1440;
     }
     if (!isServer) {
       if (this._title) {
@@ -646,13 +651,25 @@ export class RhNavigationPrimary extends LitElement {
     // transition into desktop
     if (oldVal && !newVal) {
       this.#openHamburger();
-      this.#openLinksMenu();
     }
     // transition into compact
     if (!oldVal && newVal) {
       if (this.#openPrimaryDropdowns.size === 0) {
         this.#closeHamburger();
-      }
+      };
+    }
+  }
+
+  @observes('linksCompact')
+  protected linksCompactChanged(oldVal: boolean, newVal: boolean) {
+    // transition into desktop
+    if (oldVal && !newVal) {
+      console.log('desktop');
+      this.#openLinksMenu();
+    }
+    // transition into compact
+    if (!oldVal && newVal) {
+      console.log('compact');
       this.#closeLinksMenu();
     }
   }
