@@ -1,26 +1,30 @@
-<meta itemprop="description" content="Demonstrates the scheme-changed event fired when a user changes the color scheme.">
+---
+description: "Demonstrates the scheme-changed event fired when a user changes the color scheme."
+---
+<form id="scheme-dropdown-events">
+  <rh-scheme-dropdown id="scheme-dropdown"></rh-scheme-dropdown>
 
-<rh-scheme-dropdown id="scheme-dropdown"></rh-scheme-dropdown>
+  <p class="container">
+    A <code>scheme-changed</code> event fires whenever the color scheme changes.
+  </p>
 
-<p class="container">
-  A <code>scheme-changed</code> event fires whenever the color scheme changes.
-</p>
-
-<fieldset class="container">
-  <legend>Events Fired</legend>
-  <output name="events">No events yet</output>
-</fieldset>
+  <fieldset class="container">
+    <legend>Events Fired</legend>
+    <output name="events">No events yet</output>
+  </fieldset>
+</form>
 
 <script type="module">
   import '@rhds/elements/rh-scheme-dropdown/rh-scheme-dropdown.js';
 
-  const dropdown = document.querySelector('#scheme-dropdown');
-  const output = document.querySelector('output[name="events"]');
+  const dropdown = document.getElementById('scheme-dropdown');
+  const form = document.getElementById('scheme-dropdown-events');
   const events = [];
+  form.addEventListener('submit', e => e.preventDefault());
 
   dropdown.addEventListener('scheme-changed', event => {
-    events.push(`${event.scheme}`);
-    output.textContent = events.join(', ');
+    events.push(event.scheme);
+    form.elements.events.value = events.join(', ');
   });
 </script>
 
