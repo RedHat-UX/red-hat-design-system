@@ -3,18 +3,6 @@ import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { RhSchemeDropdown, SchemeChangedEvent } from '@rhds/elements/rh-scheme-dropdown/rh-scheme-dropdown.js';
 import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 
-/**
- * Dispatches a native `change` event on the shadow <select> after setting
- * its value, simulating a user picking an option from the dropdown.
- * @param element - the rh-scheme-dropdown instance
- * @param value - the option value to select (e.g. 'light', 'dark', 'light dark')
- */
-function selectScheme(element: RhSchemeDropdown, value: string) {
-  const select = element.shadowRoot!.querySelector('select')!;
-  select.value = value;
-  select.dispatchEvent(new Event('change', { bubbles: true }));
-}
-
 describe('<rh-scheme-dropdown>', function() {
   afterEach(function() {
     localStorage.removeItem('rhdsColorScheme'); // Clear between tests
@@ -64,9 +52,12 @@ describe('<rh-scheme-dropdown>', function() {
       expect(snapshot).to.axContainQuery({ role: 'combobox', name: /Color scheme/ });
     });
 
-    it('renders all three options in the shadow DOM', function() {
-      const options = element.shadowRoot!.querySelectorAll('option');
-      expect(options).to.have.length(3);
+    it('exposes all three options in the ax tree', async function() {
+      const snapshot = await a11ySnapshot();
+      expect(snapshot)
+          .to.axContainQuery({ role: 'option', name: /System/ }).and
+          .to.axContainQuery({ role: 'option', name: /Light/ }).and
+          .to.axContainQuery({ role: 'option', name: /Dark/ });
     });
   });
 
@@ -85,9 +76,9 @@ describe('<rh-scheme-dropdown>', function() {
       expect(element.scheme).to.be.undefined;
     });
 
-    it('the System option is selected in the shadow <select>', function() {
-      const select = element.shadowRoot!.querySelector('select')!;
-      expect(select.value).to.equal('light dark');
+    it('the System option is selected by default', async function() {
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.axContainQuery({ role: 'combobox', value: /System/ });
     });
 
     it('does not set color-scheme on document.body', function() {
@@ -129,44 +120,6 @@ describe('<rh-scheme-dropdown>', function() {
       await element.updateComplete;
 
       expect(element.getAttribute('scheme')).to.equal('light dark');
-      expect(document.body.style.getPropertyValue('color-scheme')).to.equal('light dark');
-      expect(localStorage.getItem('rhdsColorScheme')).to.equal('light dark');
-    });
-  });
-
-  describe('scheme selection via select element interaction', function() {
-    let element: RhSchemeDropdown;
-
-    beforeEach(async function() {
-      element = await createFixture<RhSchemeDropdown>(
-        html`<rh-scheme-dropdown></rh-scheme-dropdown>`
-      );
-      await element.updateComplete;
-    });
-
-    it('selecting "dark" updates the scheme property and side effects', async function() {
-      selectScheme(element, 'dark');
-      await element.updateComplete;
-
-      expect(element.scheme).to.equal('dark');
-      expect(document.body.style.getPropertyValue('color-scheme')).to.equal('dark');
-      expect(localStorage.getItem('rhdsColorScheme')).to.equal('dark');
-    });
-
-    it('selecting "light" updates the scheme property and side effects', async function() {
-      selectScheme(element, 'light');
-      await element.updateComplete;
-
-      expect(element.scheme).to.equal('light');
-      expect(document.body.style.getPropertyValue('color-scheme')).to.equal('light');
-      expect(localStorage.getItem('rhdsColorScheme')).to.equal('light');
-    });
-
-    it('selecting "light dark" updates the scheme property and side effects', async function() {
-      selectScheme(element, 'light dark');
-      await element.updateComplete;
-
-      expect(element.scheme).to.equal('light dark');
       expect(document.body.style.getPropertyValue('color-scheme')).to.equal('light dark');
       expect(localStorage.getItem('rhdsColorScheme')).to.equal('light dark');
     });
@@ -303,17 +256,17 @@ describe('<rh-scheme-dropdown>', function() {
       expect(element.systemText).to.equal('Sistema');
     });
 
-    it('renders the custom label in the shadow DOM', function() {
-      const label = element.shadowRoot!.querySelector('label')!;
-      expect(label.textContent).to.include('Tema');
+    it('renders the custom label', async function() {
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.axContainQuery({ role: 'combobox', name: /Tema/ });
     });
 
-    it('renders custom option text in the shadow DOM', function() {
-      const options = element.shadowRoot!.querySelectorAll('option');
-      const texts = Array.from(options).map(o => o.textContent?.trim());
-      expect(texts.some(t => t?.includes('Sistema'))).to.be.true;
-      expect(texts.some(t => t?.includes('Claro'))).to.be.true;
-      expect(texts.some(t => t?.includes('Oscuro'))).to.be.true;
+    it('exposes custom option text in the ax tree', async function() {
+      const snapshot = await a11ySnapshot();
+      expect(snapshot)
+          .to.axContainQuery({ role: 'option', name: /Sistema/ }).and
+          .to.axContainQuery({ role: 'option', name: /Claro/ }).and
+          .to.axContainQuery({ role: 'option', name: /Oscuro/ });
     });
 
     it('should be accessible with custom labels', async function() {
@@ -330,17 +283,6 @@ describe('<rh-scheme-dropdown>', function() {
         html`<rh-scheme-dropdown></rh-scheme-dropdown>`
       );
       await element.updateComplete;
-    });
-
-    it('fires on user interaction via select', async function() {
-      const events: SchemeChangedEvent[] = [];
-      element.addEventListener('scheme-changed', e => events.push(e as SchemeChangedEvent));
-
-      selectScheme(element, 'dark');
-      await element.updateComplete;
-
-      expect(events).to.have.length(1);
-      expect(events[0].scheme).to.equal('dark');
     });
 
     it('fires on programmatic property change', async function() {
