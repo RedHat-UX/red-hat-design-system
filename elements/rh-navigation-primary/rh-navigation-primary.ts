@@ -664,12 +664,10 @@ export class RhNavigationPrimary extends LitElement {
   protected linksCompactChanged(oldVal: boolean, newVal: boolean) {
     // transition into desktop
     if (oldVal && !newVal) {
-      console.log('desktop');
       this.#openLinksMenu();
     }
     // transition into compact
     if (!oldVal && newVal) {
-      console.log('compact');
       this.#closeLinksMenu();
     }
   }
