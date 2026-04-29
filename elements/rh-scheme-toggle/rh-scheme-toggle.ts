@@ -41,7 +41,7 @@ export class SchemeChangedEvent extends Event {
  * uses a native fieldset with ARIA-compatible radio buttons. Tab
  * focuses the group; arrow keys allow selection between schemes.
  *
- * @summary Switches between light, dark, and system default color schemes.
+ * @summary Switches between light, dark, and system default color schemes
  *
  * @fires {SchemeChangedEvent} scheme-changed - Fired when the color scheme
  *        changes. Has no `detail` payload; read the new value from
