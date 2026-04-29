@@ -40,8 +40,7 @@ export class TileSelectEvent extends Event {
  * should set `accessible-label` when tiles lack text content.
  * Keyboard users activate checkable tiles with Enter or Space.
  *
- * @summary Clickable, contained surface for content with optional
- *          images, icons, and links.
+ * @summary Clickable surface for content like images, icons, and links
  *
  * @alias tile
  *

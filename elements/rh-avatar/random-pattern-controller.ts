@@ -23,7 +23,7 @@ type HSLTriple = [H: number, S: number, L: number];
  *
  * @see http://www.cse.yorku.ca/~oz/hash.html
  * @param  str the string to hash.
- * @return  a positive integer
+ * @returns  a positive integer
  */
 
 function hash(str: string): number {

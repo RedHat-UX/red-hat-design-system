@@ -110,6 +110,7 @@ export default async function(eleventyConfig: UserConfig) {
         'lit-html': '/assets/packages/lit-html/lit-html.js',
         'lit-html/': '/assets/packages/lit-html/',
         'prism-esm/': '/assets/packages/prism-esm/',
+        '@lit-labs/ssr-client': `/assets/packages/@lit-labs/ssr-client/index.js`,
         '@lit-labs/ssr-client/lit-element-hydrate-support.js': `/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js`,
         '@rhds/tokens': '/assets/packages/@rhds/tokens/js/tokens.js',
         '@rhds/tokens/css/': '/assets/packages/@rhds/tokens/css/',
