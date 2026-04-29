@@ -47,7 +47,6 @@
   const ancestorPath = getAncestorPath(drawer);
   const notAncestors = Array.from(document.querySelectorAll('*'))
                         .filter(el => !ancestorPath.includes(el));
-  let isOverlay = false;
 
   function setInert(inert) {
     notAncestors.forEach(el => { el.inert = inert});
