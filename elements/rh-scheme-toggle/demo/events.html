@@ -1,0 +1,49 @@
+---
+description: "Demonstrates the scheme-changed event fired when a user changes the color scheme."
+---
+<form id="scheme-toggle-events">
+  <rh-scheme-toggle id="scheme-toggle"></rh-scheme-toggle>
+
+  <p class="container">
+    A <code>scheme-changed</code> event fires whenever the color scheme changes.
+  </p>
+
+  <fieldset class="container">
+    <legend>Events Fired</legend>
+    <output name="events">No events yet</output>
+  </fieldset>
+</form>
+
+<script type="module">
+  import '@rhds/elements/rh-scheme-toggle/rh-scheme-toggle.js';
+
+  const toggle = document.getElementById('scheme-toggle');
+  const form = document.getElementById('scheme-toggle-events');
+  const events = [];
+  form.addEventListener('submit', e => e.preventDefault());
+
+  toggle.addEventListener('scheme-changed', event => {
+    events.push(event.scheme);
+    form.elements.events.value = events.join(', ');
+  });
+</script>
+
+<style>
+  body {
+    color-scheme: light dark;
+    background-color: light-dark(var(--rh-color-surface-lightest, #ffffff),
+        var(--rh-color-surface-darkest, #151515));
+    color: light-dark(var(--rh-color-text-primary-default-on-light, #151515),
+        var(--rh-color-text-primary-default-on-dark, #ffffff));
+  }
+
+  rh-scheme-toggle {
+    padding: var(--rh-space-md, 8px);
+  }
+
+  .container {
+    margin-inline: 20px;
+    margin-block-end: var(--rh-space-md, 8px);
+    font-family: var(--rh-font-family-body-text);
+  }
+</style>
