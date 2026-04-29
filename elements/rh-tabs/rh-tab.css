@@ -449,12 +449,13 @@ rh-icon,
   }
 }
 
-:host(:is(:focus, :focus-within)) {
+:host(:is(:focus-visible)) {
   outline: none;
 
   & #button {
     /** Focus outline, adapts to color-palette */
-    outline: 1px auto var(--rh-color-interactive-primary-default);
-    outline-offset: -3px;
+    border-radius: var(--rh-border-radius-default, 3px);
+    outline: var(--rh-border-width-lg, 3px) solid var(--rh-color-interactive-primary-default);
+    outline-offset: -7px;
   }
 }

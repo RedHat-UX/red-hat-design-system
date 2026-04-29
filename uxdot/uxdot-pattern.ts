@@ -1,11 +1,9 @@
-import { html, isServer } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
-
-import { SSRFailureRecoverableElement } from './ssr-failure-recoverable.js';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
@@ -32,7 +30,7 @@ import styles from './uxdot-pattern.css';
 @customElement('uxdot-pattern')
 @colorPalettes
 @themable
-export class UxdotPattern extends SSRFailureRecoverableElement {
+export class UxdotPattern extends LitElement {
   static styles = [styles];
 
   /** Which color palette to apply to the demo surface */
