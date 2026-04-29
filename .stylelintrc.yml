@@ -38,6 +38,9 @@ rules:
   # Avoid conflicts with valid descriptors in @font-face (e.g., text-rendering)
   at-rule-descriptor-no-unknown: null
 
+  # The tech() function in @font-face src is valid modern CSS but not yet recognized
+  at-rule-descriptor-value-no-unknown: null
+
   custom-property-pattern: _?[a-z]+[a-z0-9-]*
   declaration-block-no-redundant-longhand-properties:
     - true
