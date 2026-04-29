@@ -185,13 +185,17 @@
         background-color: var(--rh-color-interactive-secondary-active);
       }
 
-      &:is(:focus, :focus-visible) {
+      &:is(:focus-visible) {
         outline:
           /** Focus ring width */
-          var(--rh-border-width-md, 2px)
+          var(--rh-border-width-lg, 3px)
           solid
-          /** Focus ring color */
-          var(--rh-color-interactive-primary-default);
+          light-dark(
+              /** Focus ring color on dark */
+              var(--rh-color-blue-50, #0066cc),
+              /** Focus ring color on light */
+              var(--rh-color-blue-30, #92c5f9)
+            );
         outline-offset: 2px;
       }
     }
@@ -264,15 +268,19 @@
           );
     }
 
-    &:is(:focus, :focus-visible) {
+    &:is(:focus-visible) {
       /** Focus icon color */
       color: var(--rh-color-interactive-primary-default);
       outline:
         /** Focus ring width */
-        var(--rh-border-width-md, 2px)
+        var(--rh-border-width-lg, 3px)
         solid
-        /** Focus ring color */
-        var(--rh-color-interactive-primary-default);
+        light-dark(
+            /** Focus ring color on dark */
+            var(--rh-color-blue-50, #0066cc),
+            /** Focus ring color on light */
+            var(--rh-color-blue-30, #92c5f9)
+          );
       outline-offset: 2px;
     }
 
@@ -317,8 +325,12 @@
         /** Focus ring width */
         var(--rh-border-width-md, 2px)
         solid
-        /** Focus ring color */
-        var(--rh-color-interactive-primary-default);
+        light-dark(
+            /** Focus ring color on dark */
+            var(--rh-color-blue-50, #0066cc),
+            /** Focus ring color on light */
+            var(--rh-color-blue-30, #92c5f9)
+          );
       outline-offset: -2px;
     }
 
@@ -756,6 +768,8 @@
           transition:
             margin var(--_transition-duration) ease-in-out,
             translate var(--_transition-duration) ease-in-out;
+          block-size: -webkit-fill-available;
+          block-size: stretch;
         }
 
         &:is(.open, .closed).inline-end #panel {

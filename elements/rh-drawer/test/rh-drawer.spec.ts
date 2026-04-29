@@ -355,6 +355,46 @@ describe('<rh-drawer>', function() {
     });
   });
 
+  describe('content inert in overlay mode', function() {
+    describe('overlay variant when open', function() {
+      beforeEach(async function() {
+        element = await fixture<RhDrawer>(html`
+          <rh-drawer variant="overlay" open>
+            <h3 slot="header">Header</h3>
+            <nav slot="body">Body</nav>
+            <div><h3>Page Content</h3><button>Interact</button></div>
+          </rh-drawer>
+        `);
+      });
+      beforeEach(async () => await element.updateComplete);
+
+      it('should not expose content behind panel', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.not.have.axQuery({ name: 'Page Content' });
+        expect(snapshot).to.not.have.axQuery({ name: 'Interact' });
+      });
+    });
+
+    describe('auto variant in inline mode when open', function() {
+      beforeEach(async function() {
+        element = await fixture<RhDrawer>(html`
+          <rh-drawer variant="auto" open>
+            <h3 slot="header">Header</h3>
+            <nav slot="body">Body</nav>
+            <div><h3>Page Content</h3><button>Interact</button></div>
+          </rh-drawer>
+        `);
+      });
+      beforeEach(async () => await element.updateComplete);
+
+      it('should expose content alongside panel', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.have.axQuery({ name: 'Page Content' });
+        expect(snapshot).to.have.axQuery({ name: 'Interact' });
+      });
+    });
+  });
+
   describe('collapsible with expand', function() {
     beforeEach(async function() {
       element = await fixture<RhDrawer>(DRAWER_WITH_EXPAND);

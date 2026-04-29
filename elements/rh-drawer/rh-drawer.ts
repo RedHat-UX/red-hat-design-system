@@ -270,6 +270,7 @@ export class RhDrawer extends LitElement {
                         type="button"
                         aria-controls="panel"
                         aria-labelledby="expand-label"
+                        aria-pressed="${this._isFullViewport ? 'true' : 'false'}"
                         @click=${this.#onFullViewportToggle}>
                   <rh-icon set="ui"
                            icon="${this._isFullViewport ? 'arrow-down-left-up-right-to-center' : 'expand-arrows'}"></rh-icon>
@@ -346,7 +347,8 @@ export class RhDrawer extends LitElement {
           ` : nothing}
         </div>
         ${hasContentSlot ? html`
-          <div id="content-container">
+          <div id="content-container"
+               ?inert=${this.open && this.#panelRole === 'dialog'}>
             <!-- csspart content: The main content area adjacent to the panel. -->
             <div id="content" part="content">
               <slot></slot>
@@ -389,6 +391,10 @@ export class RhDrawer extends LitElement {
       }
     } else {
       if (this.#userInteracted) {
+        // Ensure the trigger element does not have inert so its focusable.
+        if (this.#triggerElement?.inert) {
+          this.#triggerElement.inert = false;
+        }
         // TODO: use .focus({ focusVisible: true }) when Baseline
         this.#triggerElement?.focus();
       }
@@ -647,8 +653,11 @@ export class RhDrawer extends LitElement {
       this.#mediaQuery = window.matchMedia(`(min-width: ${bp}px)`);
       this.#mediaQuery.addEventListener('change', this.#onMediaChange);
       window.addEventListener('resize', this.#onWindowResize);
-      this.#onMediaChange();
       this._isInlineMode = this.#mediaQuery.matches;
+      this.#onMediaChange();
+      this.dispatchEvent(
+        new DrawerModeChangeEvent(this._isInlineMode ? 'inline' : 'overlay'),
+      );
     } else {
       this._isInlineMode = false;
     }
@@ -658,7 +667,13 @@ export class RhDrawer extends LitElement {
     if (this.variant !== 'flow' || !this.#mediaQuery) {
       return;
     }
-    this._isInlineMode = this.#mediaQuery.matches;
+    const nextInline = this.#mediaQuery.matches;
+    if (nextInline !== this._isInlineMode) {
+      this._isInlineMode = nextInline;
+      this.dispatchEvent(
+        new DrawerModeChangeEvent(nextInline ? 'inline' : 'overlay'),
+      );
+    }
     const nextOpen = this.#mediaQuery.matches ? true : (this.#getStoredOpen() ?? false);
     if (nextOpen !== this.open) {
       this.open = nextOpen;

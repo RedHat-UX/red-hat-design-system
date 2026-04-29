@@ -28,12 +28,43 @@
 <script type="module">
   import '@rhds/elements/rh-drawer/rh-drawer.js';
 
-  const trigger = document.getElementById('fixed-trigger');
+  const navToggle = document.querySelector('#fixed-trigger')
   const form = document.getElementById('knobs');
   const drawer = document.getElementById('drawer');
 
-  drawer.addEventListener('open', () => trigger.setAttribute('aria-expanded', 'true'));
-  drawer.addEventListener('close', () => trigger.setAttribute('aria-expanded', 'false'));
+  function getAncestorPath(el) {
+    const path = [];
+    while (el) {
+      path.unshift(el); // Adds to the beginning to keep root -> child order
+      el = el.parentElement;
+    }
+    return path;
+  }
+
+  // For optimal results, wrap the content you want to disable in
+  // a single container (like a <main> tag) and toggle inert on that
+  // parent rather than having to target everything not an ancestor.
+  const ancestorPath = getAncestorPath(drawer);
+  const notAncestors = Array.from(document.querySelectorAll('*'))
+                        .filter(el => !ancestorPath.includes(el));
+  let isOverlay = false;
+
+  function setInert(inert) {
+    notAncestors.forEach(el => { el.inert = inert});
+  }
+
+  // When the mode changes place inert on document content containers
+  drawer.addEventListener('open', async function() {
+    navToggle.setAttribute('aria-expanded', 'true');
+    await drawer.updateComplete;
+    setInert(true);
+  });
+
+  drawer.addEventListener('close', async function() {
+    navToggle.setAttribute('aria-expanded', 'false');
+    await drawer.updateComplete;
+    setInert(false);
+  });
 
   form.addEventListener('input', function sync() {
     const data = Object.fromEntries(new FormData(form));
