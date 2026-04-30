@@ -7,7 +7,7 @@ generate:
   noDefaultExcludes: false
   designTokens:
     spec: npm:@rhds/tokens/json/rhds.tokens.json
-    prefix: --rh
+    prefix: rh
   demoDiscovery:
     fileGlob: elements/*/demo/*.html
     urlPattern: elements/:tag/demo/:demo.html

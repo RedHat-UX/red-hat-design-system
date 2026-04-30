@@ -1,9 +1,26 @@
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 import pfe from '@patternfly/eslint-config-elements';
+import htmleslint from '@html-eslint/eslint-plugin';
 
 export default tseslint.config(
   ...pfe,
+  {
+    plugins: {
+      '@html-eslint': htmleslint,
+    },
+    rules: {
+      '@html-eslint/no-trailing-spaces': 'error',
+      '@html-eslint/no-extra-spacing-attrs': 'error',
+      '@html-eslint/no-duplicate-class': 'error',
+      '@html-eslint/no-extra-spacing-text': 'error',
+      '@html-eslint/no-duplicate-attrs': 'error',
+      '@html-eslint/no-abstract-roles': 'error',
+      '@html-eslint/prefer-https': 'error',
+      '@html-eslint/no-target-blank': 'error',
+      '@html-eslint/quotes': 'error',
+    },
+  },
   {
     name: 'local/ignores',
     ignores: [
@@ -13,6 +30,7 @@ export default tseslint.config(
       'node_modules/**/*',
       '_site',
       'rhds.min.js',
+      '.claude/**/*',
 
       '**/*.d.ts',
       '**/*.(spec|e2e).js',

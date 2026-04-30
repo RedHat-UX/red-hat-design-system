@@ -11,12 +11,16 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import styles from './rh-blockquote.css' with { type: 'css' };
 
 /**
- * A blockquote is styled quote text with an icon and attribution text.
+ * Provides a styled blockquote for featuring quotes with an icon
+ * and attribution. Use when highlighting a customer testimonial,
+ * expert opinion, or notable statement. Authors must provide quoted
+ * text and should include an author. Uses `<figure>` semantics
+ * with `<blockquote>` and `<figcaption>`, so screen readers convey the quote
+ * and its source. Avoid placing interactive elements inside.
  *
- * @summary  Highlights quotations and citations with text styles
+ * @summary Highlights quotations and citations with text styles
  *
  * @alias blockquote
- *
  */
 @customElement('rh-blockquote')
 @colorPalettes
@@ -24,27 +28,55 @@ import styles from './rh-blockquote.css' with { type: 'css' };
 export class RhBlockquote extends LitElement {
   static readonly styles = styles;
 
+  /**
+   * The author's name or pseudonym. Overridden by the `author` slot.
+   * Should not contain long strings of text.
+   */
+  @property({ type: String }) author?: string;
+
+  /**
+   * The author's job title or role. Overridden by the `subtitle` slot.
+   * Should not contain long strings of text. May contain links.
+   */
+  @property({ type: String }) subtitle?: string;
+
+  /**
+   * built-in tooltip blockquote figure element.
+   * Defaults to 'Blockquote'.
+   *
+   * @deprecated use subtitle
+   */
   @property({ type: String }) title = 'Blockquote';
 
   /**
-   * Set the colorPalette of the blockquote. Possible values are:
+   * Sets the color palette for the blockquote and its child content.
+   * Adapts text and icon colors for light or dark backgrounds.
+   * Possible values are:
    * - `lightest` (default)
    * - `darkest`
    */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
-   * Set the alignment of the blockquote. Possible values are:
-   * - `left` (default)
+   * Controls the horizontal alignment of the blockquote content.
+   * Use `center` for short quotes in visually prominent layouts.
+   * Avoid centering long text, as it reduces readability.
+   * Possible values are:
+   * - `inline-start` (default)
    * - `center`
    */
   @property({ reflect: true }) align: 'center' | 'inline-start' = 'inline-start';
 
-  /** Optional highlight attribute that, when present, shows a highlight on side of blockquote. */
+  /**
+   * When present, renders a brand-colored emphasis border on the
+   * inline-start side of the blockquote for additional visual prominence.
+   */
   @property({ reflect: true, type: Boolean }) highlight = false;
 
   /**
-   * Set the text size of the blockquote. Possible values are:
+   * Controls the text size of the quoted passage. Use `large` for
+   * short, impactful quotes and `default` for longer passages.
+   * Possible values are:
    * - `default`
    * - `large`
    */
@@ -56,12 +88,29 @@ export class RhBlockquote extends LitElement {
       <figure id="container" class="${classMap({ highlight })}">
         <rh-icon set="standard" icon="quotemark-open"></rh-icon>
         <blockquote id="quote">
-          <!-- Provide a quote for the blockquote -->
+          <!-- Block elements like \`<p>\` for the quoted passage.
+               Screen readers announce this within the \`figure\` landmark. -->
           <slot></slot>
         </blockquote>
         <figcaption>
-          <p id="author"><!-- Provide an author for the blockquote --><slot name="author"></slot></p>
-          <p id="title"><!-- Provide an author title for the blockquote --><slot name="title"></slot></p>
+          <p id="author"><!--
+            Inline text for the quoted person's name.
+            Screen readers announce this as attribution for the quote.
+            Overrides the \`author\` attribute.
+          --><slot name="author">${this.author}</slot></p>
+          <p id="title"><!--
+            Inline text for the author's job title or role.
+            Screen readers announce this in the figcaption.
+            Deprecated: use \`subtitle\`.
+          --><slot name="title"></slot>
+            <!--
+              Inline text for the author's job title or role.
+              Screen readers announce this in the figcaption.
+              Overrides the \`subtitle\` attribute.
+              Should not contain long strings of text. May contain links.
+            -->
+             <slot name="subtitle">${this.subtitle}</slot>
+          </p>
         </figcaption>
       </figure>
     `;

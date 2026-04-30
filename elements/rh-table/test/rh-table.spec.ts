@@ -1,6 +1,7 @@
 import { expect, html, fixture } from '@open-wc/testing';
 import { a11ySnapshot, type A11yTreeSnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { RhTable } from '@rhds/elements/rh-table/rh-table.js';
+import type { RhSortButton } from '@rhds/elements/rh-table/rh-sort-button.js';
 import { sendKeys } from '@web/test-runner-commands';
 
 const takeProps = (props: string[]) => (obj: object) =>
@@ -186,7 +187,7 @@ describe('<rh-table>', async function() {
           role: 'text',
         },
         {
-          name: 'Sort',
+          name: '(sort in descending order)',
           role: 'button',
         },
         {
@@ -248,7 +249,7 @@ describe('<rh-table>', async function() {
           role: 'text',
         },
         {
-          name: 'Sort',
+          name: '(sort in ascending order)',
           role: 'button',
         },
         {
@@ -319,6 +320,66 @@ describe('<rh-table>', async function() {
           it('should not sort', expectA11ySnapshot(snapshots.default));
         });
       });
+    });
+  });
+
+  describe('with accessible-label attribute', function() {
+    let button: RhSortButton;
+
+    beforeEach(async function() {
+      element = await fixture<RhTable>(html`
+        <rh-table>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Name<rh-sort-button accessible-label="Trier"></rh-sort-button></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>A</td></tr>
+            </tbody>
+          </table>
+        </rh-table>
+      `);
+      button = element.querySelector('rh-sort-button')!;
+      await button.updateComplete;
+    });
+
+    it('should use the accessible-label attribute as the button name', async function() {
+      const snapshot = await a11ySnapshot();
+      const buttons = snapshot.children?.filter(x => x.role === 'button');
+      expect(buttons).to.have.lengthOf(1);
+      expect(buttons![0].name).to.equal('Trier');
+    });
+  });
+
+  describe('with accessible-label slot', function() {
+    let button: RhSortButton;
+
+    beforeEach(async function() {
+      element = await fixture<RhTable>(html`
+        <rh-table>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Name<rh-sort-button><span slot="accessible-label">Ordenar</span></rh-sort-button></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>A</td></tr>
+            </tbody>
+          </table>
+        </rh-table>
+      `);
+      button = element.querySelector('rh-sort-button')!;
+      await button.updateComplete;
+    });
+
+    it('should use the slotted content as the button name', async function() {
+      const snapshot = await a11ySnapshot();
+      const buttons = snapshot.children?.filter(x => x.role === 'button');
+      expect(buttons).to.have.lengthOf(1);
+      expect(buttons![0].name).to.equal('Ordenar');
     });
   });
 });

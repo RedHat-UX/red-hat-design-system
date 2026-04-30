@@ -59,7 +59,7 @@ export class UxdotDemo extends LitElement {
                   title="${this.demoTitle}"
                   src="${this.demoUrl}"></iframe>
           <rh-disclosure id="knobs-drawer" summary="Edit element properties">
-            <div id="knobs" role="list"><slot name=knobs></slot></div>
+            <div id="knobs" role="list"><slot name="knobs"></slot></div>
           </rh-disclosure>
         </div>
         <rh-card id="code"
@@ -85,8 +85,8 @@ export class UxdotDemo extends LitElement {
                      icon="refresh"
                      icon-set="ui"
                      @click="${this.#reloadIframe}">Reload</rh-button>
-          <a slot="footer" href="${this.demoSourceUrl}">View source on GitHub <rh-icon set="ui" icon="code"></rh-icon></a></rh-cta>
-          <a slot="footer" href="${this.demoUrl}" target="_blank">View in new window <rh-icon set="ui" icon="duplicate"></rh-icon></a></rh-cta>
+          <a slot="footer" href="${this.demoSourceUrl}">View source on GitHub <rh-icon set="ui" icon="code"></rh-icon></a>
+          <a slot="footer" href="${this.demoUrl}" target="_blank">View in new window <rh-icon set="ui" icon="duplicate"></rh-icon></a>
         </rh-card>
       </div>
     `;

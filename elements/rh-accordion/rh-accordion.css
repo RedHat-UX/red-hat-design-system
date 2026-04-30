@@ -4,6 +4,7 @@
 }
 
 #container {
+  /** Accordion text color */
   color: var(--rh-color-text-primary);
 
   --_accordion-background:
@@ -14,6 +15,7 @@
   &.palette { --_accordion-background: var(--rh-color-surface); }
 
   &.expanded {
+    /** Depth shadow on expanded accordion group */
     box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
   }
 
@@ -30,11 +32,15 @@
 
 ::slotted(rh-accordion-header:first-child) {
   display: block;
+
+  /** Top and bottom border on first header */
   border-block: 1px solid var(--rh-color-border-subtle);
 }
 
 ::slotted(rh-accordion-header:not(:first-child)) {
   display: block;
+
+  /** Bottom border between accordion items */
   border-block-end: 1px solid var(--rh-color-border-subtle);
 }
 
@@ -45,6 +51,10 @@
 
 ::slotted(rh-accordion-panel:is([expanded])) {
   display: block;
+
+  /** Bottom border on expanded panel */
   border-block-end: 1px solid var(--rh-color-border-subtle);
+
+  /** Depth shadow on expanded panel */
   box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
 }

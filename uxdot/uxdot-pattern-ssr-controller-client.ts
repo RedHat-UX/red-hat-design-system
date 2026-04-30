@@ -1,39 +1,21 @@
 import { RHDSSSRController } from '@rhds/elements/lib/ssr-controller.js';
-import { noChange, type LitElement } from 'lit';
+import { ssrAdopt } from './ssr-adopt-directive.js';
 
-/** Hydrate the results of SSR on the client */
 export class UxdotPatternSSRControllerClient extends RHDSSSRController {
-  allContent = noChange;
-  htmlContent = noChange;
-  jsContent = noChange;
-  cssContent = noChange;
-  hasCss = noChange;
-  hasJs = noChange;
-  hasWorkedAroundHydrationWoes = false;
-  async hostConnected() {
-    await this.host.updateComplete;
-    this.host.requestUpdate('colorPalette', null);
-    this.host.requestUpdate('activeTab', null);
-    await this.host.updateComplete;
-    // workaround for awful terrible no good very bad ssr hydration lib problems
-    const containers = this.host.shadowRoot!.querySelectorAll('#container');
-    if (containers.length > 1) {
-      const [, ...rest] = containers;
-      for (const bad of rest) {
-        bad.remove();
-      }
-      for (const sigh of this.host.shadowRoot!.querySelectorAll('[defer-hydration]')) {
-        sigh.removeAttribute('defer-hydration');
-        (sigh as LitElement).requestUpdate?.();
-      }
-      this.host.requestUpdate();
-    }
-    this.hasWorkedAroundHydrationWoes ||= (this.host.requestUpdate(), true);
-  }
+  allContent = ssrAdopt();
+  htmlContent = ssrAdopt();
+  cssContent = ssrAdopt();
+  jsContent = ssrAdopt();
+  hasCss = false;
+  hasJs = false;
 
-  hostUpdated() {
-    if (!this.hasWorkedAroundHydrationWoes) {
-      this.hostConnected();
+  hostConnected() {
+    const root = this.host.shadowRoot;
+    if (!root) {
+      return;
     }
+    this.hasCss = !!root.querySelector('#css-panel rh-code-block pre')?.textContent?.trim();
+    this.hasJs = !!root.querySelector('#js-panel rh-code-block pre')?.textContent?.trim();
+    this.host.requestUpdate();
   }
 }
