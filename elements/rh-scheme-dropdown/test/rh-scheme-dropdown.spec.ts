@@ -225,6 +225,68 @@ describe('<rh-scheme-dropdown>', function() {
     });
   });
 
+  describe('resetting scheme to system default', function() {
+    let element: RhSchemeDropdown;
+
+    beforeEach(async function() {
+      localStorage.removeItem('rhdsColorScheme');
+      element = await createFixture<RhSchemeDropdown>(
+        html`<rh-scheme-dropdown></rh-scheme-dropdown>`
+      );
+      await element.updateComplete;
+    });
+
+    it('setting scheme to undefined clears body style', async function() {
+      element.scheme = 'dark';
+      await element.updateComplete;
+      expect(document.body.style.getPropertyValue('color-scheme')).to.equal('dark');
+
+      element.scheme = undefined;
+      await element.updateComplete;
+      expect(document.body.style.getPropertyValue('color-scheme')).to.equal('');
+    });
+
+    it('setting scheme to undefined clears localStorage', async function() {
+      element.scheme = 'dark';
+      await element.updateComplete;
+      expect(localStorage.getItem('rhdsColorScheme')).to.equal('dark');
+
+      element.scheme = undefined;
+      await element.updateComplete;
+      expect(localStorage.getItem('rhdsColorScheme')).to.be.null;
+    });
+
+    it('removing the attribute clears body style', async function() {
+      element.scheme = 'light';
+      await element.updateComplete;
+      expect(document.body.style.getPropertyValue('color-scheme')).to.equal('light');
+
+      element.removeAttribute('scheme');
+      await element.updateComplete;
+      expect(document.body.style.getPropertyValue('color-scheme')).to.equal('');
+    });
+
+    it('removing the attribute clears localStorage', async function() {
+      element.scheme = 'light';
+      await element.updateComplete;
+      expect(localStorage.getItem('rhdsColorScheme')).to.equal('light');
+
+      element.removeAttribute('scheme');
+      await element.updateComplete;
+      expect(localStorage.getItem('rhdsColorScheme')).to.be.null;
+    });
+
+    it('System option is selected after reset', async function() {
+      element.scheme = 'dark';
+      await element.updateComplete;
+
+      element.scheme = undefined;
+      await element.updateComplete;
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.axContainQuery({ role: 'combobox', value: /System/ });
+    });
+  });
+
   describe('custom text attributes', function() {
     let element: RhSchemeDropdown;
 
