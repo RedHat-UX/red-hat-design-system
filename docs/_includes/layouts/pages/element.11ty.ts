@@ -3,7 +3,7 @@ import type * as CEM from 'custom-elements-manifest';
 
 import { tokens } from '@rhds/tokens/meta.js';
 import { join } from 'node:path';
-import { readFile, access } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
 import { capitalize, copyCell, dedent, getTokenHref } from '#11ty-plugins/tokensHelpers.js';
 import { htmlToReact } from '#11ty-plugins/html-to-react.js';
 import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
@@ -156,13 +156,8 @@ export default class ElementsPage extends Renderer<Context> {
   async #getMainDemoContent(tagName: string) {
     try {
       const demoPath = join(process.cwd(), 'elements', tagName, 'demo', `index.html`);
-      const demoContent = await readFile(demoPath, 'utf8');
+      const demoContent = stripFrontmatter(await readFile(demoPath, 'utf8'));
       const fragment = parseFragment(demoContent);
-      for (const node of Tools.queryAll<Tools.Element>(fragment, Tools.isElementNode)) {
-        if (node.tagName === 'meta' && node.attrs.some(x => x.name === 'itemprop')) {
-          Tools.removeNode(node);
-        }
-      }
       return html`
         <rh-code-block actions="wrap copy" highlighting="prerendered">
           ${this.highlight('html', serialize(fragment))}
@@ -943,13 +938,13 @@ export default class ElementsPage extends Renderer<Context> {
       ${(await Promise.all(demos.map(async demo => `
       ${this.#header(demo.filePath?.match(/\/index(\.html|\/)/) ? this.#getPrettyTagName(ctx)
                    : demo.title, 2, `demo-${this.slugify(demo.title)}`)}
-      ${await this.#renderDemoDescription(demo, ctx)}
+      ${await this.#renderDemoDescription(demo)}
       ${await this.#renderDemo(demo, ctx)}
       `))).filter(Boolean).join('')}
     `;
   }
 
-  async #renderDemoDescription(demo: DemoRecord, ctx: Context) {
+  async #renderDemoDescription(demo: DemoRecord) {
     if ('description' in demo && typeof demo.description === 'string') {
       return this.renderTemplate(demo.description, 'md');
     }
