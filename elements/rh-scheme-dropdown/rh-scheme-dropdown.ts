@@ -120,9 +120,7 @@ export class RhSchemeDropdown extends LitElement {
 
     this.#isLight = this.scheme === 'light';
     this.#isDark = this.scheme === 'dark';
-    this.#isSystem = (this.scheme?.includes('light')
-      && this.scheme?.includes('dark'))
-      || (this.scheme === undefined);
+    this.#isSystem = !this.#isLight && !this.#isDark;
   }
 
   render() {
@@ -179,6 +177,10 @@ export class RhSchemeDropdown extends LitElement {
       if (this.#initialized) {
         this.dispatchEvent(new SchemeChangedEvent(this.scheme));
       }
+    } else {
+      // Reset to system default
+      document.body.style.removeProperty('color-scheme');
+      localStorage.removeItem('rhdsColorScheme');
     }
   }
 }
