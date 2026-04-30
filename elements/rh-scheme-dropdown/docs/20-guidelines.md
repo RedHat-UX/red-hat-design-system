@@ -26,7 +26,7 @@ A scheme dropdown can change the look of a page or interface in one click, so it
   <img alt="Two expanded scheme dropdowns on light and dark color schemes in a bar below a main navigation but shown in a mobile viewport"
        src="../scheme-dropdown-guidelines-layout-3.svg"
        width="1012"
-       height="474">
+       height="272">
 </uxdot-example>
 
 ## Behavior
