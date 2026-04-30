@@ -101,13 +101,28 @@ export class RhSchemeDropdown extends LitElement {
 
   connectedCallback(): void {
     super.connectedCallback();
-    this.#schemeCheck();
 
     // Defer until after the first Lit update cycle so @observes('scheme')
     // doesn't dispatch scheme-changed for the initial localStorage value:
     this.updateComplete.then(() => {
       this.#initialized = true;
     });
+  }
+
+  /**
+   * Syncs the selected-state flags before each render so the
+   * template always reflects the current `scheme` value.
+   */
+  protected override willUpdate(): void {
+    if (isServer) {
+      return;
+    }
+
+    this.#isLight = this.scheme === 'light';
+    this.#isDark = this.scheme === 'dark';
+    this.#isSystem = (this.scheme?.includes('light')
+      && this.scheme?.includes('dark'))
+      || (this.scheme === undefined);
   }
 
   render() {
@@ -139,31 +154,12 @@ export class RhSchemeDropdown extends LitElement {
 
   /**
    * Handles option changes and updates the selected scheme.
-   * @param {Event} e - The change event from the select element.
+   * @param e - The change event from the select element.
    */
   #onChange(e: Event) {
     if (e.target instanceof HTMLSelectElement) {
       this.scheme = e.target.value as Scheme;
     }
-    this.#schemeCheck();
-  }
-
-  /**
-   * Synchronizes the private checked-state flags with the current
-   * `scheme` value and requests a re-render. Treats `undefined` as
-   * equivalent to the system default (`'light dark'`).
-   */
-  #schemeCheck() {
-    if (isServer) {
-      return;
-    }
-
-    this.#isLight = this.scheme === 'light';
-    this.#isDark = this.scheme === 'dark';
-    this.#isSystem = (this.scheme?.includes('light')
-      && this.scheme?.includes('dark'))
-      || (this.scheme === undefined);
-    this.requestUpdate();
   }
 
   /**
