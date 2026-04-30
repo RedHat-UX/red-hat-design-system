@@ -339,4 +339,37 @@ describe('<rh-scheme-dropdown>', function() {
       expect(schemes).to.deep.equal(['dark', 'light dark', 'light']);
     });
   });
+
+  describe('programmatic scheme change updates selected option', function() {
+    let element: RhSchemeDropdown;
+
+    beforeEach(async function() {
+      localStorage.removeItem('rhdsColorScheme');
+      element = await createFixture<RhSchemeDropdown>(
+        html`<rh-scheme-dropdown></rh-scheme-dropdown>`
+      );
+      await element.updateComplete;
+    });
+
+    it('selects Light after setting scheme to "light"', async function() {
+      element.scheme = 'light';
+      await element.updateComplete;
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.axContainQuery({ role: 'combobox', value: /Light/ });
+    });
+
+    it('selects Dark after setting scheme to "dark"', async function() {
+      element.scheme = 'dark';
+      await element.updateComplete;
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.axContainQuery({ role: 'combobox', value: /Dark/ });
+    });
+
+    it('selects System after setting scheme to "light dark"', async function() {
+      element.scheme = 'light dark';
+      await element.updateComplete;
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.axContainQuery({ role: 'combobox', value: /System/ });
+    });
+  });
 });
