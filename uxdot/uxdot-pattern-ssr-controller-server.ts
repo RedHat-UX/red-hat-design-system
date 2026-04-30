@@ -3,8 +3,8 @@ import type { RenderInfo } from '@lit-labs/ssr';
 
 import { URL } from 'node:url';
 
-import { readFile } from 'node:fs/promises';
-import { join, dirname } from 'node:path';
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { join, dirname, basename, relative } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { parseFragment, serialize } from 'parse5';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
@@ -71,6 +71,7 @@ export class UxdotPatternSSRControllerServer extends RHDSSSRController {
   jsContent?: DirectiveResult;
   hasCss = false;
   hasJs = false;
+  viewportSrc?: string;
 
   async #extractInlineContent(kind: 'js' | 'css', partial: Tools.Node, baseUrl: URL) {
     const prop = kind === 'js' ? 'jsSrc' as const : 'cssSrc' as const;
@@ -146,5 +147,54 @@ export class UxdotPatternSSRControllerServer extends RHDSSSRController {
     this.cssContent = unsafeHTML(this.#highlight('css', cssContent));
     this.jsContent = unsafeHTML(this.#highlight('js', jsContent));
     this.htmlContent = unsafeHTML(this.#highlight('html', htmlContent));
+
+    if (this.host.viewport) {
+      await this.#writeViewportPage(allContent, renderInfo);
+    }
+  }
+
+  async #writeViewportPage(content: string, renderInfo: RHDSRenderInfo) {
+    const { src } = this.host;
+    if (!src) {
+      return;
+    }
+    const slug = basename(src, '.html');
+    const outputDir = dirname(renderInfo.page.outputPath);
+    const viewportDir = join(outputDir, '_viewport');
+    const viewportFile = join(viewportDir, `${slug}.html`);
+
+    await mkdir(viewportDir, { recursive: true });
+
+    const { AssetCache } = await import('@11ty/eleventy-fetch');
+    const assetCache = new AssetCache('rhds-ux-dot-import-map');
+    const importMap = assetCache.isCacheValid('1d')
+      ? await assetCache.getCachedValue()
+      : {};
+
+    const page = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="importmap">${JSON.stringify(importMap)}</script>
+  <link rel="stylesheet" href="/assets/packages/@rhds/tokens/css/global.css">
+  <link rel="stylesheet" href="/styles/fonts.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--rh-font-family-body-text);
+    }
+  </style>
+</head>
+<body>
+${content}
+</body>
+</html>`;
+
+    await writeFile(viewportFile, page, 'utf8');
+
+    const siteRoot = join(process.cwd(), '_site');
+    this.viewportSrc = '/' + relative(siteRoot, viewportFile);
   }
 }

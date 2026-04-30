@@ -49,6 +49,9 @@ export class UxdotPattern extends LitElement {
   /** Path to additional JS file to include */
   @property({ reflect: true, attribute: 'js-src' }) jsSrc?: string;
 
+  /** Render pattern in an iframe for proper @media query support */
+  @property({ type: Boolean, reflect: true }) viewport = false;
+
   /** Should the color picker be hidden? */
   @property({ type: Boolean, attribute: 'no-color-picker' }) noColorPicker = false;
 
@@ -85,7 +88,7 @@ export class UxdotPattern extends LitElement {
         <div id="heading"><slot name="heading"></slot></div>
 
         <form id="color-picker"
-              ?hidden="${this.noColorPicker}"
+              ?hidden="${this.noColorPicker || this.viewport}"
               @submit="${(e: Event) => e.preventDefault()}">
           <label for="picker">Color palette</label>
           <rh-context-picker id="picker"
@@ -99,7 +102,11 @@ export class UxdotPattern extends LitElement {
           <slot></slot>
         </div>
 
-        <rh-surface id="content">${allContent}</rh-surface>
+        ${this.viewport
+          ? html`<iframe id="viewport-frame"
+                         src="${ifDefined(this.ssr.viewportSrc)}"
+                         title="${this.src ?? 'Pattern preview'}"></iframe>`
+          : html`<rh-surface id="content">${allContent}</rh-surface>`}
 
         <rh-tabs id="code-tabs"
                  class="code-tabs"

@@ -89,6 +89,17 @@ h3,
   gap: var(--rh-space-lg, 16px);
 }
 
+#viewport-frame {
+  grid-area: content;
+  border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default);
+  resize: both;
+  overflow: auto;
+  inline-size: 100%;
+  min-block-size: 400px;
+  box-sizing: border-box;
+}
+
 #code-tabs {
   border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
   border-radius: var(--rh-border-radius-default);
@@ -109,10 +120,10 @@ h3,
 }
 
 /* When description is empty, move content and code tabs up one area: */
-#description.empty ~ #content {
+:host(:not([viewport])) #description.empty ~ #content {
   grid-area: description;
 }
 
-#description.empty ~ #code-tabs {
+:host(:not([viewport])) #description.empty ~ #code-tabs {
   grid-area: content;
 }
