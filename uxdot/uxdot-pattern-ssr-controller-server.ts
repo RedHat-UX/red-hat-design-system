@@ -160,7 +160,7 @@ export class UxdotPatternSSRControllerServer extends RHDSSSRController {
     }
     const slug = basename(src, '.html');
     const outputDir = dirname(renderInfo.page.outputPath);
-    const viewportDir = join(outputDir, '_viewport');
+    const viewportDir = join(outputDir, '_iframe');
     const viewportFile = join(viewportDir, `${slug}.html`);
 
     await mkdir(viewportDir, { recursive: true });
