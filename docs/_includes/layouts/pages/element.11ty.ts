@@ -210,7 +210,7 @@ export default class ElementsPage extends Renderer<Context> {
       ${this.#header('Overview')}
       ${await this.renderTemplate(description, 'md')}
       ${!aka?.length ? '' : html`
-      <p>Also known as: ${aka.join(', ')}</p>`}
+      <p class="aka">Also known as: ${aka.join(', ')}</p>`}
       ${!ctx.doc.overviewImageHref ? await this.#renderKnobs(ctx)
        : ctx.doc.overviewImageHref.endsWith('svg') ? html`
       <uxdot-example>${await this.#getOverviewInlineSvg(ctx)}</uxdot-example>
