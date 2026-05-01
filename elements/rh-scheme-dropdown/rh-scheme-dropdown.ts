@@ -17,9 +17,10 @@ declare global {
 type Scheme = 'light' | 'dark' | 'light dark';
 
 /**
- * Fired when the active color scheme changes, whether by user interaction
- * or programmatic update. Does not fire on initial load from localStorage.
- * Listeners can read `event.scheme` to get the new value.
+ * Fired when the active color scheme changes by user interaction or
+ * programmatic update. Does not fire on initial load from localStorage.
+ * Bubbles and is composed, so listeners on ancestor elements will
+ * receive it. Read `event.scheme` to get the newly selected value.
  */
 export class SchemeChangedEvent extends Event {
   constructor(
@@ -30,14 +31,11 @@ export class SchemeChangedEvent extends Event {
 }
 
 /**
- * A scheme dropdown provides users with the ability to switch between
- * light, dark, and system default color schemes. It should be placed
- * in a visible location for easy access. The component uses a native
- * custom select menu with option elements. Be sure to customize the
- * `label-text` attribute if your property is offered in multiple
- * languages. Tab focuses the select; arrow keys allow selection between
- * schemes. Users may also select a scheme via the select's typeahead
- * features.
+ * Provides a color scheme picker for switching between light, dark,
+ * and system defaults. Uses a semantic `<select>` with a visually
+ * hidden `<label>` for screen reader accessibility (WCAG 4.1.2).
+ * Authors should set `label-text` for localization. Tab focuses
+ * the select; arrow keys cycle options.
  *
  * @summary Displays a variety of color schemes in a menu dropdown
  *
