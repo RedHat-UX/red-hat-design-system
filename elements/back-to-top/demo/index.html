@@ -12,17 +12,17 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
-    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "lit-element": "/assets/packages/lit-element/index.js",
     "prism-esm": "/assets/packages/prism-esm/prism.js",
     "lit": "/assets/packages/lit/index.js",
-    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
     "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
+    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
     "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
     "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
@@ -84,8 +84,8 @@
 
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
-  <body><meta itemprop="description" content="Default back-to-top button that appears after scrolling past 400px threshold.">
-<div id="overflow">
+  <body>
+    <div id="overflow">
   <p>Scroll down to reveal the back to top element</p>
   <rh-back-to-top  href="#"><template shadowroot="open" shadowrootmode="open"><style>:host{z-index:1000;position:fixed;inset-block-end:var(--rh-space-xl,24px);inset-inline-end:var(--rh-space-xl,24px)}@media (width>=768px){:host{inset-block-end:var(--rh-space-3xl,48px);inset-inline-end:var(--rh-space-3xl,48px)}}[part=trigger]{color:light-dark( var(--rh-color-text-primary-on-dark,#fff), var(--rh-color-text-primary-on-light,#151515));background-color: var(--rh-back-to-top-background-color, var(--rh-color-accent-base));font-size:var(--rh-font-size-body-text-xs,.75rem);padding-inline:var(--rh-space-md,8px);padding-block:var(--rh-space-xs,4px);border-radius:var(--rh-border-radius-pill,64px);justify-content:center;align-items:center;gap:var(--rh-space-xs,4px);line-height:var(--rh-line-height-body-text,1.5);outline: var(--rh-border-width-md,2px) solid transparent;border: var(--rh-border-width-md,2px) solid transparent;pointer-events:all;text-decoration:none;display:inline-flex}[part=trigger]:is(:hover,:focus){outline: var(--rh-border-width-md,2px) solid  var(--rh-color-interactive-primary-hover);border: var(--rh-border-width-md,2px) solid light-dark( var(--rh-color-border-strong-on-dark,#fff), var(--rh-color-border-strong-on-light,#151515));background-color:var(--rh-color-interactive-primary-hover)}[part=trigger][hidden]{display:none}rh-icon{--rh-icon-size:var(--rh-font-size-body-text-xs,.75rem);vertical-align:-.125rem}@media (width>=768px){:host{inset-block-end:var(--rh-space-3xl,48px);inset-inline-end:var(--rh-space-3xl,48px)}}</style><!--lit-part LiYNwB5qsa4=-->
       <!-- summary: anchor link that triggers scroll to top

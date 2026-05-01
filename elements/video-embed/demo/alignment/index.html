@@ -12,17 +12,17 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
-    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "lit-element": "/assets/packages/lit-element/index.js",
     "prism-esm": "/assets/packages/prism-esm/prism.js",
     "lit": "/assets/packages/lit/index.js",
-    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
     "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
+    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
     "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
     "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
@@ -84,8 +84,8 @@
 
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
-  <body><meta itemprop="description" content="Video embed with centered and right-aligned caption text.">
-<div class="wrap">
+  <body>
+    <div class="wrap">
   <rh-video-embed    class="centered" ssr-hint-has-slotted-default ssr-hint-has-slotted="thumbnail,caption"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:flex}:host([hidden]),[hidden]{display:none!important}#video,#consent{flex-direction:column;align-items:center;display:inline-flex}#video{justify-content:stretch;position:relative}figure,::slotted([slot=thumbnail]),::slotted(iframe){max-width:100%}::slotted([slot=thumbnail]){display:block}::slotted(iframe){border:0;width:100%;height:100%;position:absolute;inset-block-start:0;inset-inline-start:0}figure{--_video-focus-border-color:var(--rh-color-border-interactive);--_video-play-btn-bkg-color:light-dark(rgb(31 31 31/var(--rh-opacity-50,50%)),rgb(255 255 255/var(--rh-opacity-20,20%)));--_video-play-btn-interactive-bkg-color:light-dark(rgb(21 21 21/var(--rh-opacity-80,80%)),rgb(255 255 255/var(--rh-opacity-50,50%)));flex-direction:column;margin:0;display:flex}figcaption{margin-block-start:var(--rh-space-lg,16px)}figcaption ::slotted(p){margin-block-start:0!important}::slotted([slot=caption]){color:var(--rh-color-text-secondary);line-height:var(--rh-line-height-body-text,1.5);font-size:var(--rh-font-size-body-text-sm,.875rem)!important}#consent,#watermark{position:absolute;inset:0}#consent{justify-content:center;container:consent/inline-size}#consent-body{text-align:center;z-index:5;flex-direction:column;align-items:center;display:flex;position:relative}#consent-message,::slotted([slot=consent-message]){font-family:var(--rh-font-family-heading,RedHatDisplay, "Red Hat Display", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-heading-xs,1.25rem);line-height:var(--rh-line-height-heading,1.3)}#consent-message,::slotted([slot=consent-message]:last-of-type){margin-block-end:var(--rh-space-lg,16px)}@container consent (width>=576px){#consent-message,::slotted([slot=consent-message]:last-of-type){margin-block-end:var(--rh-space-xl,24px)}#consent-body{padding:var(--rh-space-xl,24px)}#consent-message{font-size:var(--rh-font-size-heading-sm,1.5rem)}}#play{cursor:pointer;width:100%;height:100%;display:block;position:absolute;inset:0}#play:focus-within{border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-lg,3px) solid var(--_video-focus-border-color);outline-offset:var(--rh-border-width-md,2px)}#play::part(button){background-color:var(--_video-play-btn-bkg-color,var(--rh-color-surface-darkest,#151515));inset-block:calc(50% - var(--rh-length-2xl,32px)) 0;width:var(--rh-length-4xl,64px);outline:none;position:absolute;inset-inline:50% 0;transform:translate(-50%)}#play:hover::part(button),#play:focus::part(button),#play:active::part(button){background-color:var(--_video-play-btn-interactive-bkg-color)}#play::part(icon){color:var(--rh-color-surface)}#play[hidden],:is(.video,.consent) ::slotted([slot=thumbnail]){opacity:0;pointer-events:none}.visually-hidden{clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;position:fixed;inset-block-start:0;inset-inline-start:0;overflow:hidden}#autoplay{opacity:0;transition:opacity .2s ease-in;position:absolute;inset:0}.video #autoplay{opacity:1}</style><!--lit-part XquPTVzvT+8=-->
       <!-- The outer container for rh-video-embed -->
       <!--lit-node 1--><figure part="figure" class="  ">

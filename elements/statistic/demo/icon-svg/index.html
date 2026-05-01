@@ -12,17 +12,17 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
-    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "lit-element": "/assets/packages/lit-element/index.js",
     "prism-esm": "/assets/packages/prism-esm/prism.js",
     "lit": "/assets/packages/lit/index.js",
-    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
     "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
+    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
     "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
     "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
@@ -84,8 +84,8 @@
 
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
-  <body><meta itemprop="description" content="Statistic with an rh-icon using the experimental icon.">
-<rh-stat   ssr-hint-has-slotted-default ssr-hint-has-slotted="icon,statistic" top="default" size="default"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}div{--_accent-color:light-dark( var(--rh-color-text-brand-on-light,#e00), var(--rh-color-text-primary-on-dark,#fff));flex-direction:column;place-content:center space-around;align-items:center;width:100%;height:100%;display:flex}span,::slotted(*){text-align:center;display:block}.hasIcon #icon{color:var(--rh-color-icon-secondary)}.md{--rh-icon-size:var(--rh-size-icon-04,40px)}.lg{--rh-icon-size:var(--rh-size-icon-06,64px)}.md ::slotted([slot=icon]){width:var(--rh-size-icon-04,40px);aspect-ratio:1}.lg ::slotted([slot=icon]){width:var(--rh-size-icon-06,64px);aspect-ratio:1}.hasIcon ::slotted([slot=icon]),.hasIcon rh-icon{color:currentColor;fill:currentColor;order:1;margin-bottom:16px;display:block}#title{color:var(--_accent-color);font-size:var(--rh-font-size-body-text-xl,1.25rem);font-family:var(--rh-font-family-heading,RedHatDisplay, "Red Hat Display", Helvetica, Arial, sans-serif);font-weight:var(--rh-font-weight-body-text-regular,400);order:1}#statistic{color:var(--_accent-color);font-size:var(--rh-font-size-heading-lg,2.25rem);font-weight:var(--rh-font-weight-heading-regular,400);font-family:var(--rh-font-family-heading,RedHatDisplay, "Red Hat Display", Helvetica, Arial, sans-serif);order:2}#content{font-size:var(--rh-font-size-body-text-lg,1.125rem);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);margin-top:var(--rh-space-sm,6px);order:3}#cta{font-size:var(--rh-font-size-body-text-lg,1.125rem);font-family:var(--rh-font-family-heading,RedHatDisplay, "Red Hat Display", Helvetica, Arial, sans-serif);margin-top:var(--rh-space-lg,16px);order:4}div:not(.hasIcon) #icon,div:not(.hasStatistic) #statistic,div:not(.hasTitle) #title,div:not(.hasCta) #cta{display:none}.isMobile #content{font-size:var(--rh-font-size-body-text-lg,1.125rem)}.isMobile #statistic{font-size:32px}:host([size=large]) #statistic{font-size:var(--rh-font-size-heading-2xl,3rem)}:host([top=statistic]) #statistic{order:1}:host([top=statistic]) #title{order:2}</style><!--lit-part weVWu5d6V/I=-->
+  <body>
+    <rh-stat   ssr-hint-has-slotted-default ssr-hint-has-slotted="icon,statistic" top="default" size="default"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}div{--_accent-color:light-dark( var(--rh-color-text-brand-on-light,#e00), var(--rh-color-text-primary-on-dark,#fff));flex-direction:column;place-content:center space-around;align-items:center;width:100%;height:100%;display:flex}span,::slotted(*){text-align:center;display:block}.hasIcon #icon{color:var(--rh-color-icon-secondary)}.md{--rh-icon-size:var(--rh-size-icon-04,40px)}.lg{--rh-icon-size:var(--rh-size-icon-06,64px)}.md ::slotted([slot=icon]){width:var(--rh-size-icon-04,40px);aspect-ratio:1}.lg ::slotted([slot=icon]){width:var(--rh-size-icon-06,64px);aspect-ratio:1}.hasIcon ::slotted([slot=icon]),.hasIcon rh-icon{color:currentColor;fill:currentColor;order:1;margin-bottom:16px;display:block}#title{color:var(--_accent-color);font-size:var(--rh-font-size-body-text-xl,1.25rem);font-family:var(--rh-font-family-heading,RedHatDisplay, "Red Hat Display", Helvetica, Arial, sans-serif);font-weight:var(--rh-font-weight-body-text-regular,400);order:1}#statistic{color:var(--_accent-color);font-size:var(--rh-font-size-heading-lg,2.25rem);font-weight:var(--rh-font-weight-heading-regular,400);font-family:var(--rh-font-family-heading,RedHatDisplay, "Red Hat Display", Helvetica, Arial, sans-serif);order:2}#content{font-size:var(--rh-font-size-body-text-lg,1.125rem);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);margin-top:var(--rh-space-sm,6px);order:3}#cta{font-size:var(--rh-font-size-body-text-lg,1.125rem);font-family:var(--rh-font-family-heading,RedHatDisplay, "Red Hat Display", Helvetica, Arial, sans-serif);margin-top:var(--rh-space-lg,16px);order:4}div:not(.hasIcon) #icon,div:not(.hasStatistic) #statistic,div:not(.hasTitle) #title,div:not(.hasCta) #cta{display:none}.isMobile #content{font-size:var(--rh-font-size-body-text-lg,1.125rem)}.isMobile #statistic{font-size:32px}:host([size=large]) #statistic{font-size:var(--rh-font-size-heading-2xl,3rem)}:host([top=statistic]) #statistic{order:1}:host([top=statistic]) #title{order:2}</style><!--lit-part weVWu5d6V/I=-->
       <!--lit-node 0--><div class=" isMobile hasIcon hasStatistic ">
         <!--lit-node 1--><span id="icon" class=" md ">
           <!-- Optional decorative icon above the data value.

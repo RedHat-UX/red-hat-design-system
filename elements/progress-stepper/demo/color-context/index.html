@@ -12,17 +12,17 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
-    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "lit-element": "/assets/packages/lit-element/index.js",
     "prism-esm": "/assets/packages/prism-esm/prism.js",
     "lit": "/assets/packages/lit/index.js",
-    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
     "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
+    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
     "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
     "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
@@ -84,7 +84,8 @@
 
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
-  <body><rh-context-demo>
+  <body>
+    <rh-context-demo>
   <rh-context-picker    id="picker" target="navigation" allow="darkest, lightest"><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-flex;position:relative}*{box-sizing:border-box}#container{--thumb-color:var(--rh-color-interactive-primary-default);display:contents}.darkest{--c:var(--rh-color-surface-darkest,#151515)}.darker{--c:var(--rh-color-surface-darker,#1f1f1f)}.dark{--c:var(--rh-color-surface-dark,#383838)}.light{--c:var(--rh-color-surface-light,#e0e0e0)}.lighter{--c:var(--rh-color-surface-lighter,#f2f2f2)}.lightest{--c:var(--rh-color-surface-lightest,#fff)}:is(.dark,.darker,.darkest){--alt-color:var(--rh-color-surface-light,#e0e0e0)}:is(.light,.lighter,.lightest){--alt-color:var(--rh-color-surface-dark,#383838)}:is(:focus,:hover){--alt-color:var(--thumb-color)}input{appearance:none;width:var(--rh-size-icon-03,32px);height:var(--rh-size-icon-03,32px);border-radius:50%;margin-block:8px;margin-inline:4px;display:block;position:relative}input:before{content:"";background:var(--c);outline:var(--alt-color) solid 2px;border-radius:50%;display:block;position:absolute;inset:0}input:checked:after{content:"";background:var(--alt-color);border-radius:50%;display:block;position:absolute;inset:6px}input:focus{outline:var(--thumb-color) solid 4px}label,rh-tooltip span{text-transform:capitalize}.visually-hidden{clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;position:fixed;top:0;left:0;overflow:hidden}</style><!--lit-part Z/qYP/881j0=-->
       <div id="host-label"
            class="visually-hidden"><!--lit-part--><!--/lit-part--></div>

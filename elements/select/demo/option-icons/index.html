@@ -12,17 +12,17 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
-    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "lit-element": "/assets/packages/lit-element/index.js",
     "prism-esm": "/assets/packages/prism-esm/prism.js",
     "lit": "/assets/packages/lit/index.js",
-    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
     "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
+    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
     "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
     "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
@@ -84,8 +84,8 @@
 
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
-  <body><meta itemprop="description" content="Options with icons using the icon and icon-set attributes on rh-option.">
-<label for="select-2">
+  <body>
+    <label for="select-2">
   With option icons
 </label>
 <rh-select    id="select-2" placeholder="Select an item" ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{color:var(--rh-color-text-primary);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-sm,.875rem);font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5)}:host,#outer{flex-direction:column;align-items:stretch;display:flex}:host([hidden]),[hidden]{display:none!important}:host([disabled]){pointer-events:none!important}.visually-hidden{clip-path:inset(100%);white-space:nowrap;border:0;block-size:1px;inline-size:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}#outer{border:1px solid #0000;position:relative}#listbox-container{background-color:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));border:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default,3px);box-shadow:var(--rh-box-shadow-sm);padding-block:var(--rh-space-md,8px);opacity:0;display:inline-flex;position:absolute}#outer.expanded #listbox-container{opacity:1;z-index:1000}#listbox{flex-direction:column;inline-size:100%;display:flex;position:relative}#toggle{background-color:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));justify-content:space-between}#toggle,#toggle-button{border-radius:var(--rh-border-radius-default,3px);align-items:center;display:flex}.disabled #toggle{background-color:var(--rh-color-status-disabled,light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-gray-40,#a3a3a3)))}#toggle-button{border:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);color:var(--rh-color-text-primary);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-sm,.875rem);gap:var(--rh-space-md,8px);min-block-size:37px;padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);text-align:start;background-color:#0000;flex:auto}.disabled #toggle-button{color:var(--rh-color-text-status-disabled,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d)));border-color:#0000}#toggle-button:hover,#toggle-button:focus{border-color:var(--rh-color-border-interactive)}#toggle-button:focus,#toggle-button[aria-expanded=true]{outline:var(--rh-border-width-md,2px) solid var(--rh-color-border-interactive);border-color:#0000}#toggle-button:focus-visible{border-color:var(--rh-color-border-interactive);outline:3px solid var(--rh-color-border-interactive);outline-offset:3px}#toggle-text{flex:auto}.disabled #toggle-icon{color:var(--rh-color-icon-status-disabled,light-dark(var(--rh-color-gray-40,#a3a3a3),var(--rh-color-gray-60,#4d4d4d)))}#toggle-button #toggle-icon{--rh-icon-size:10px}::slotted(hr){border:0;inline-size:100%;margin:0}::slotted(hr):after{content:"";background-color:var(--rh-color-border-subtle);block-size:1px;inline-size:100%;display:block}::slotted(rh-option-group){border-block:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}::slotted(rh-option-group:last-child){border-block-end:0}#help-text{align-items:center;gap:var(--rh-space-md,8px);margin-block-start:var(--rh-space-md,8px);display:flex}#help-text ::slotted(*){display:inline-block;font-size:var(--rh-font-size-body-text-sm,.875rem)!important}:is(#toggle-button,#help-text) rh-icon{--rh-icon-size:var(--rh-select-icon-size,14px)}:host([state]) #help-text-content{font-weight:var(--rh-font-weight-body-text-medium,500)!important}:host([state=success]) #toggle-button{border-color:var(--rh-color-border-status-success)}:host([state=warning]) #toggle-button{border-color:var(--rh-color-border-status-warning)}:host([state=danger]) #toggle-button{border-color:var(--rh-color-border-status-danger)}.icon-success{color:var(--rh-color-icon-status-success)}.icon-warning{color:var(--rh-color-icon-status-warning)}.icon-danger{color:var(--rh-color-icon-status-danger)}</style><!--lit-part +HWpz3+y47I=-->
