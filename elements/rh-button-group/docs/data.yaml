@@ -3,6 +3,7 @@ tagName: rh-button-group
 name: Button Group
 type: element
 overallStatus: ready
+category: Actions
 libraries:
   figma: ready
   rhds: ready

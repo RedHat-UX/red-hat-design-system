@@ -10,6 +10,16 @@ summaries:
   breadcrumb: Keeps track of location as users move through pages
   footnote: Provides additional information or a source for content
   tile: A form of selection that can be used in place of a link, checkbox, or radio button
+categories:
+  - Actions
+  - Containers
+  - Emphasis
+  - Feedback
+  - Media
+  - Navigation
+  - Overlays
+  - Selection and inputs
+  - Status
 ---
 
 <link rel="stylesheet"
@@ -18,10 +28,12 @@ summaries:
 
 <script type="module" data-helmet>
   import '@rhds/elements/rh-tile/rh-tile.js';
+  import '@rhds/elements/rh-tabs/rh-tabs.js';
 </script>
 
 <style data-helmet>
-  rh-tile h3 {
+  rh-tile h3,
+  rh-tile h4 {
     margin: 0 !important;
   }
   rh-tile p {
@@ -32,9 +44,31 @@ summaries:
     display: flex;
     justify-content: center;
   }
+  rh-tab-panel section {
+    margin-block-end: var(--rh-space-3xl, 48px);
+  }
+
+  rh-tab-panel {
+    padding-inline: 0;
+    padding-block-end: 0;
+  }
 </style>
 
 {# NOTE: all images in this view need to be 340 by 200 px in order to maintain same ratio. #}
+
+{% macro elementTile(doc, slug, tagName, comingSoon, headingLevel=3) %}
+  {%- set title = tagName | getPrettyElementName | makeSentenceCase -%}
+  {%- set summary = doc.docsPage.summary -%}
+  {% if not summary %}
+    {%- set summary = summaries[slug] -%}
+  {% endif %}
+  <rh-tile id="tile-{{ tagName }}" compact bleed {% if comingSoon %}disabled{% endif %}>
+    <uxdot-example slot="image" no-border transparent><img src="{{ doc.screenshotPath }}" alt="{{ title }}"></uxdot-example>
+    <h{{ headingLevel }} slot="headline"><a href="{{ doc.overviewHref | url }}">{{ title }}</a></h{{ headingLevel }}>
+    <p>{{ summary }}</p>
+    {% if comingSoon %}<div slot="footer">Coming Soon</div>{% endif %}
+  </rh-tile>
+{% endmacro %}
 
 <section aria-labelledby="aria__heading-overview">
   <h2 id="aria__heading-overview">Overview</h2>
@@ -44,28 +78,46 @@ summaries:
   together in the same space to create more intuitive user interfaces and
   experiences.</p>
 
+<rh-tabs centered>
+  <rh-tab slot="tab" active>Alphabetical</rh-tab>
+  <rh-tab-panel>
+    <nav class="grid xs-two-columns sm-three-columns" aria-label="Elements">
+      {%- for tagName, docs in collections.elementDocs | groupby('tagName') -%}
+        {%- set doc = docs[0] -%}
+        {%- set slug = doc.slug -%}
+        {%- set comingSoon = tagName in comingSoonItems -%}
+        {%- set hiddenComponent = doc.hidden -%}
+        {% if not hiddenComponent %}
+          {{ elementTile(doc, slug, tagName, comingSoon) }}
+        {% endif %}
+      {% endfor %}
+    </nav>
+  </rh-tab-panel>
 
-<nav class="grid xs-two-columns sm-three-columns" aria-label="Elements">
-  {%- for tagName, docs in collections.elementDocs | groupby('tagName') -%}
-    {%- set doc = docs[0] -%}
-    {%- set slug = doc.slug -%}
-    {%- set title = tagName | getPrettyElementName | makeSentenceCase -%}
-    {%- set comingSoon = tagName in comingSoonItems  -%}
-    {%- set hiddenComponent = doc.hidden  -%}
-    {%- set summary = doc.docsPage.summary -%}
-    {% if not summary %}
-      {%- set summary = summaries[slug] -%}
-    {% endif %}
-    {% if not hiddenComponent %}
-      <rh-tile id="tile-{{ tagName }}" compact bleed {% if comingSoon %}disabled{% endif %}>
-        <uxdot-example slot="image" no-border transparent><img src="{{ doc.screenshotPath }}" alt="{{ title }}"></uxdot-example>
-        <h3 slot="headline"><a href="{{ doc.overviewHref | url }}">{{ title }}</a></h3>
-        <p>{{ summary }}</p>
-        {% if comingSoon %}<div slot="footer">Coming Soon</div>{% endif %}
-      </rh-tile>
-    {% endif %}
-  {% endfor %}
-</nav>
+  <rh-tab slot="tab">Categorical</rh-tab>
+  <rh-tab-panel>
+    {%- for category in categories -%}
+      {%- set catSlug = category | lower | replace(" ", "-") | replace(" ", "-") -%}
+      {%- set catElements = [] -%}
+      {%- for tagName, docs in collections.elementDocs | groupby('tagName') -%}
+        {%- set doc = docs[0] -%}
+        {%- if doc.elementData and doc.elementData.category == category and not doc.hidden -%}
+          {%- set _ = catElements.push({doc: doc, slug: doc.slug, tagName: tagName, comingSoon: tagName in comingSoonItems}) -%}
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if catElements | length > 0 -%}
+      <section aria-labelledby="cat-{{ catSlug }}">
+        <h3 id="cat-{{ catSlug }}">{{ category }} ({{ catElements | length }})</h3>
+        <nav class="grid xs-two-columns sm-three-columns" aria-label="{{ category }} elements">
+          {%- for el in catElements -%}
+            {{ elementTile(el.doc, el.slug, el.tagName, el.comingSoon, 4) }}
+          {%- endfor -%}
+        </nav>
+      </section>
+      {%- endif -%}
+    {%- endfor -%}
+  </rh-tab-panel>
+</rh-tabs>
 </section>
 
 <section aria-labelledby="aria__heading-patterns">

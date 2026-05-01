@@ -3,6 +3,7 @@ tagName: rh-badge
 name: Badge
 type: element
 overallStatus: ready
+category: Feedback
 libraries:
   figma: ready
   rhds: ready

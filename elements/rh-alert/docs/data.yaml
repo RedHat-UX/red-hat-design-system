@@ -3,6 +3,7 @@ tagName: rh-alert
 name: Alert
 type: element
 overallStatus: ready
+category: Feedback
 libraries:
   figma: ready
   rhds: ready

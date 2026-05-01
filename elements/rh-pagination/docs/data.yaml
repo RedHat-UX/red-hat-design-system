@@ -3,6 +3,7 @@ tagName: rh-pagination
 name: Pagination
 type: element
 overallStatus: ready
+category: Navigation
 libraries:
   figma: ready
   rhds: ready

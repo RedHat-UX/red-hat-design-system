@@ -3,6 +3,7 @@ tagName: rh-tile
 name: Tile
 type: element
 overallStatus: ready
+category: Containers
 libraries:
   figma: ready
   rhds: ready

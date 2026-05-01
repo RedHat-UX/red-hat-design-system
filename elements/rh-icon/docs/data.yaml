@@ -3,6 +3,7 @@ tagName: rh-icon
 name: Icon
 type: element
 overallStatus: new
+category: Media
 libraries:
   figma: ready
   rhds: ready

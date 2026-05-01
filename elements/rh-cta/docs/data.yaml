@@ -3,6 +3,7 @@ tagName: rh-cta
 name: Call to Action
 type: element
 overallStatus: ready
+category: Actions
 libraries:
   figma: ready
   rhds: ready

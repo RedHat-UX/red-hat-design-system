@@ -3,6 +3,7 @@ tagName: rh-stat
 name: Statistic
 type: element
 overallStatus: ready
+category: Emphasis
 libraries:
   figma: ready
   rhds: ready

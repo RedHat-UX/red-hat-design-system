@@ -3,6 +3,7 @@ tagName: rh-skip-link
 name: Skip link
 type: element
 overallStatus: ready
+category: Actions
 libraries:
   figma: planned
   rhds: ready

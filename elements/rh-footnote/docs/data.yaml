@@ -3,6 +3,7 @@ tagName: rh-footnote
 name: Footnote
 type: element
 overallStatus: planned
+category: Emphasis
 libraries:
   figma: planned
   rhds: planned

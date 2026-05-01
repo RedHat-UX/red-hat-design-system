@@ -3,6 +3,7 @@ tagName: rh-select
 name: Select
 type: element
 overallStatus: ready
+category: Selection and inputs
 libraries:
   figma: ready
   rhds: ready
