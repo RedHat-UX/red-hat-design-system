@@ -137,12 +137,12 @@ export class UxdotPattern extends LitElement {
           </div>
         </div>
 
-        ${this.viewport
-          ? html`<iframe id="viewport-frame"
-                         style="max-inline-size: ${viewportWidth}"
-                         src="${ifDefined(this.ssr.viewportSrc)}"
-                         title="${this.src ?? 'Pattern preview'}"></iframe>`
-          : html`<rh-surface id="content">${allContent}</rh-surface>`}
+        ${this.viewport ?
+          html`<iframe id="viewport-frame"
+                       style="max-inline-size: ${viewportWidth}"
+                       src="${ifDefined(this.ssr.viewportSrc)}"
+                       title="${this.src ?? 'Pattern preview'}"></iframe>` :
+          html`<rh-surface id="content">${allContent}</rh-surface>`}
 
         <rh-tabs id="code-tabs"
                  class="code-tabs"
