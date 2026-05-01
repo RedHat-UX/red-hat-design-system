@@ -7,8 +7,8 @@ A scheme dropdown is a menu dropdown with icons and text that represent selectab
 <figure>
   <uxdot-example color-palette="lightest">
     <img src="../scheme-dropdown-style-anatomy.svg"
-          alt="1: Scheme dropdown trigger. 2: Light option. 3: Dark option. 4: System option."
-          width="303"
+          alt="1: Scheme dropdown trigger. 2: Light option. 3: Dark option."
+          width="304"
           height="186">
   </uxdot-example>
   <figcaption>
