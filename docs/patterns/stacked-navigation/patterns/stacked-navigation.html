@@ -347,17 +347,30 @@
 <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-navigation-secondary/rh-navigation-secondary-lightdom.css">
 
 <style>
+  /*
+   * Stacked navigation pattern
+   *
+   * Lowers the primary nav z-index when the secondary nav becomes sticky,
+   * so primary dropdowns don't overlay the secondary bar.
+   * Uses CSS scroll-state() where supported, with an IntersectionObserver
+   * fallback (see <script> below).
+   */
+
+  /* Zero-height sentinel sits between primary and secondary navs.
+     The IO fallback watches it to detect when secondary becomes sticky. */
   #sentinel {
     block-size: 0;
     overflow: hidden;
   }
 
-  .nav-wrapper {
-    container-type: scroll-state;
-  }
-
+  /* Default: primary nav sits above secondary (z-index 103) */
   rh-navigation-primary {
     --rh-navigation-primary-z-index: 103;
+  }
+
+  /* When secondary nav is stuck to top, lower primary behind it */
+  .nav-wrapper {
+    container-type: scroll-state;
   }
 
   @container scroll-state(stuck: top) {
@@ -365,6 +378,10 @@
       --rh-navigation-primary-z-index: 1;
     }
   }
+
+  /*
+   * Page content – placeholder layout for scrollable demo
+   */
 
   main {
     max-inline-size: 80ch;
@@ -392,6 +409,11 @@
     margin-block: 0 var(--rh-space-lg, 16px);
   }
 
+  /*
+   * Navigation dropdown content – grid layout for mega-menu panels
+   * and the "My Red Hat" profile panel
+   */
+
   .grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -410,55 +432,62 @@
       gap: var(--rh-space-lg, 16px);
     }
 
-    #profile {
-      margin-inline-start: var(--rh-space-4xl, 64px);
-      display: grid;
-      grid-template-columns: max-content 1fr;
-      grid-template-areas: 'avatar content';
-      grid-template-rows: fit-content;
-      column-gap: var(--rh-space-lg, 16px);
+    & select {
+      width: 100%;
+    }
+  }
 
-      & rh-avatar {
-        --rh-size-icon-06: 72px;
-        grid-area: avatar;
-        display: block;
-      }
+  /* "My Red Hat" profile panel */
+  #profile {
+    margin-inline-start: var(--rh-space-4xl, 64px);
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    grid-template-areas: 'avatar content';
+    grid-template-rows: fit-content;
+    column-gap: var(--rh-space-lg, 16px);
 
-      & .lockup {
-        display: contents;
+    & rh-avatar {
+      --rh-size-icon-06: 72px;
+      grid-area: avatar;
+      display: block;
+    }
 
-        & .account {
-          grid-area: content;
+    & .lockup {
+      display: contents;
 
-          & .name {
-            font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
-            font-size: var(--rh-font-size-heading-sm, 1.5rem);
-          }
+      & .account {
+        grid-area: content;
+
+        & .name {
+          font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+          font-size: var(--rh-font-size-heading-sm, 1.5rem);
         }
-
-        & .info { grid-area: content; grid-row: 2; }
-        & .language { grid-area: content; grid-row: 3; }
-        & .logout { grid-area: content; grid-row: 4; }
       }
-    }
 
-    .content-column {
-      max-width: 320px;
-      margin-block: var(--rh-space-md, 8px);
-      line-height: var(--rh-line-height-body-text, 1.5);
+      & .info { grid-area: content; grid-row: 2; }
+      & .language { grid-area: content; grid-row: 3; }
+      & .logout { grid-area: content; grid-row: 4; }
     }
+  }
 
-    & select { width: 100%; }
+  .content-column {
+    max-width: 320px;
+    margin-block: var(--rh-space-md, 8px);
+    line-height: var(--rh-line-height-body-text, 1.5);
   }
 </style>
 
 <script type="module">
+  /* Component imports */
   import '@rhds/elements/rh-navigation-primary/rh-navigation-primary.js';
   import '@rhds/elements/rh-navigation-secondary/rh-navigation-secondary.js';
   import '@rhds/elements/rh-cta/rh-cta.js';
   import '@rhds/elements/rh-avatar/rh-avatar.js';
   import '@rhds/elements/rh-button/rh-button.js';
 
+  /* IntersectionObserver fallback for browsers without scroll-state() support.
+     Watches the #sentinel element: when it scrolls out of view the secondary
+     nav is stuck, so we lower the primary nav z-index to avoid overlay. */
   if (!CSS.supports('container-type', 'scroll-state')) {
     const sentinel = document.getElementById('sentinel');
     const primary = document.querySelector('rh-navigation-primary');
