@@ -42,7 +42,7 @@ When users interact with either light or dark color schemes, the following shoul
 
 ### System default color scheme
 
-When users select the System default color scheme, the following should happen:
+When users select the <code>System default</code> color scheme, the following should happen:
 
 - The browser or operating system determines the appropriate color scheme
 - The color scheme updates automatically if system preferences change
