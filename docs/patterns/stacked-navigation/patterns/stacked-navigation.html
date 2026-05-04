@@ -242,51 +242,53 @@
 
 <div id="sentinel" aria-hidden="true"></div>
 
-<rh-navigation-secondary>
-  <a href="#" slot="logo" id="logo-id">Red Hat Enterprise Linux</a>
-  <ul slot="nav" aria-labelledby="logo-id">
-    <li>
-      <rh-navigation-secondary-dropdown>
-        <a href="#" slot="link">Features</a>
-        <rh-navigation-secondary-menu slot="menu">
-          <rh-navigation-secondary-menu-section>
-            <h3 slot="header">Platform</h3>
-            <ul slot="links">
-              <li><a href="#">Security</a></li>
-              <li><a href="#">Automation</a></li>
-              <li><a href="#">Edge</a></li>
+<div class="nav-wrapper">
+  <rh-navigation-secondary>
+    <a href="#" slot="logo" id="logo-id">Red Hat Enterprise Linux</a>
+    <ul slot="nav" aria-labelledby="logo-id">
+      <li>
+        <rh-navigation-secondary-dropdown>
+          <a href="#" slot="link">Features</a>
+          <rh-navigation-secondary-menu slot="menu">
+            <rh-navigation-secondary-menu-section>
+              <h3 slot="header">Platform</h3>
+              <ul slot="links">
+                <li><a href="#">Security</a></li>
+                <li><a href="#">Automation</a></li>
+                <li><a href="#">Edge</a></li>
+              </ul>
+            </rh-navigation-secondary-menu-section>
+            <rh-navigation-secondary-menu-section>
+              <h3 slot="header">Ecosystem</h3>
+              <ul slot="links">
+                <li><a href="#">Partners</a></li>
+                <li><a href="#">Integrations</a></li>
+                <li><a href="#">Marketplace</a></li>
+              </ul>
+            </rh-navigation-secondary-menu-section>
+          </rh-navigation-secondary-menu>
+        </rh-navigation-secondary-dropdown>
+      </li>
+      <li>
+        <rh-navigation-secondary-dropdown>
+          <a href="#" slot="link">Resources</a>
+          <rh-navigation-secondary-menu slot="menu">
+            <ul>
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Training</a></li>
+              <li><a href="#">Case studies</a></li>
+              <li><a href="#">Webinars</a></li>
             </ul>
-          </rh-navigation-secondary-menu-section>
-          <rh-navigation-secondary-menu-section>
-            <h3 slot="header">Ecosystem</h3>
-            <ul slot="links">
-              <li><a href="#">Partners</a></li>
-              <li><a href="#">Integrations</a></li>
-              <li><a href="#">Marketplace</a></li>
-            </ul>
-          </rh-navigation-secondary-menu-section>
-        </rh-navigation-secondary-menu>
-      </rh-navigation-secondary-dropdown>
-    </li>
-    <li>
-      <rh-navigation-secondary-dropdown>
-        <a href="#" slot="link">Resources</a>
-        <rh-navigation-secondary-menu slot="menu">
-          <ul>
-            <li><a href="#">Documentation</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Training</a></li>
-            <li><a href="#">Case studies</a></li>
-            <li><a href="#">Webinars</a></li>
-          </ul>
-        </rh-navigation-secondary-menu>
-      </rh-navigation-secondary-dropdown>
-    </li>
-    <li><a href="#">Pricing</a></li>
-    <li><a href="#">Support</a></li>
-  </ul>
-  <rh-cta slot="cta" href="#">Try it free</rh-cta>
-</rh-navigation-secondary>
+          </rh-navigation-secondary-menu>
+        </rh-navigation-secondary-dropdown>
+      </li>
+      <li><a href="#">Pricing</a></li>
+      <li><a href="#">Support</a></li>
+    </ul>
+    <rh-cta slot="cta" href="#">Try it free</rh-cta>
+  </rh-navigation-secondary>
+</div>
 
 <main>
   <section class="page-section">
@@ -350,10 +352,14 @@
   /*
    * Stacked navigation pattern
    *
-   * Lowers the primary nav z-index when the secondary nav becomes sticky,
-   * so primary dropdowns don't overlay the secondary bar.
-   * Uses CSS scroll-state() where supported, with an IntersectionObserver
-   * fallback (see <script> below).
+   * Prevents primary nav dropdowns from overlaying the secondary bar
+   * once the secondary nav becomes sticky.
+   *
+   * CSS path  – scroll-state() on rh-navigation-secondary (the sticky
+   *             element) raises its z-index above the primary nav.
+   * JS path   – IntersectionObserver fallback (see <script>) lowers
+   *             --rh-navigation-primary-z-index when the sentinel
+   *             scrolls out of view.  Gated behind !CSS.supports().
    */
 
   /* Zero-height sentinel sits between primary and secondary navs.
@@ -363,19 +369,25 @@
     overflow: hidden;
   }
 
-  /* Default: primary nav sits above secondary (z-index 103) */
   rh-navigation-primary {
     --rh-navigation-primary-z-index: 103;
   }
 
-  /* When secondary nav is stuck to top, lower primary behind it */
+  /* scroll-state() path: a wrapper becomes the sticky scroll-state
+     container so the query can style rh-navigation-secondary (a descendant). */
   .nav-wrapper {
     container-type: scroll-state;
+    position: sticky;
+    top: 0;
+  }
+
+  .nav-wrapper > rh-navigation-secondary {
+    position: relative;
   }
 
   @container scroll-state(stuck: top) {
-    rh-navigation-primary {
-      --rh-navigation-primary-z-index: 1;
+    rh-navigation-secondary {
+      --rh-navigation-secondary-z-index: 104;
     }
   }
 
