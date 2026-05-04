@@ -137,8 +137,8 @@ export class UxdotPattern extends LitElement {
           </div>
         </div>
 
-        ${this.viewport
-          ? html`<iframe id="viewport-frame"
+        ${this.viewport ?
+          html`<iframe id="viewport-frame"
                        style="max-inline-size: ${viewportWidth}"
                        src="${ifDefined(this.ssr.viewportSrc)}"
                        title="${this.src ?? 'Pattern preview'}"></iframe>`
@@ -208,9 +208,12 @@ export class UxdotPattern extends LitElement {
 
   #postColorPalette(colorPalette: ColorPalette) {
     const iframe = this.shadowRoot?.querySelector<HTMLIFrameElement>('#viewport-frame');
-    iframe?.contentWindow?.postMessage({
-      type: 'uxdot-pattern:color-palette',
-      colorPalette,
-    }, '*');
+    if (iframe?.src) {
+      const { origin } = new URL(iframe.src, location.origin);
+      iframe.contentWindow?.postMessage({
+        type: 'uxdot-pattern:color-palette',
+        colorPalette,
+      }, origin);
+    }
   }
 }

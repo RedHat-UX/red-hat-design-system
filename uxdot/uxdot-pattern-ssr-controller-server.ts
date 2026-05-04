@@ -223,6 +223,9 @@ ${ssrContent}
 <script type="module">
   import '@rhds/elements/rh-surface/rh-surface.js';
   window.addEventListener('message', (event) => {
+    if (event.origin !== location.origin || event.source !== window.parent) {
+      return;
+    }
     if (event.data?.type === 'uxdot-pattern:color-palette') {
       const surface = document.querySelector('rh-surface');
       if (surface) {
