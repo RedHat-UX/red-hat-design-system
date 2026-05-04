@@ -989,7 +989,6 @@
           var(--unified-color-gray-30),
           var(--unified-color-gray-60)
         );
-
     --rh-border-width-md: var(--unified-border-width-md);
     --rh-color-border-interactive: var(--unified-color-interactive-primary-default);
     --rh-space-sm: var(--unified-space-sm);
@@ -1003,7 +1002,6 @@
 @layer accordion {
   rh-accordion {
     --unified-accordion-panel-padding: var(--unified-space-xl);
-
     --rh-color-accent-brand: var(--unified-color-brand-accent);
     --rh-border-width-lg: var(--unified-border-width-lg);
     --rh-font-size-body-text-md: var(--unified-font-size-body-text-sm);
