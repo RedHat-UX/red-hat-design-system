@@ -140,7 +140,7 @@
 @layer navigation-vertical {
   .unified-glass rh-navigation-vertical,
   rh-navigation-vertical.unified-glass {
-    background:  var(--unified-glass-surface-primary);
+    background: var(--unified-glass-surface-primary);
     backdrop-filter: var(--unified-glass-backdrop-filter);
     border-inline-end:
       var(--unified-glass-border-width)
