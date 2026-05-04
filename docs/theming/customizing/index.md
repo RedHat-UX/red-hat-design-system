@@ -2,7 +2,9 @@
 title: Customizing
 bodyClasses: element-docs
 layout: layouts/pages/has-toc.njk
-order: 3
+order: 40
+tags:
+  - theming
 ---
 <link rel="stylesheet"
       data-helmet

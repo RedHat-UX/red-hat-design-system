@@ -3,8 +3,8 @@
 # Top-most EditorConfig file
 root = true
 
-[*.{js,json,sh,html,scss}]
-# 4 space indentation
+[*.{css,js,json,sh,html,scss}]
+# 2 space indentation
 indent_style = space
 indent_size = 2
 # No trailing spaces

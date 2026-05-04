@@ -1,0 +1,165 @@
+@layer
+  tokens,
+  elements;
+
+@layer tokens {
+  :root,
+  :host {
+    /* Glass surface */
+    --unified-glass-backdrop-filter: blur(16px);
+
+    /* Glass border */
+    --unified-glass-border-color:
+      light-dark(
+          #f2f2f2,
+          #383838
+        );
+    --unified-glass-border-width: 1px;
+    --unified-glass-border-radius: 16px;
+
+    /* Glass shadow */
+    --unified-glass-box-shadow: 0 0 10px 0 rgba(41, 41, 41, 0.15);
+    --unified-glass-box-shadow-dark: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+
+    /* Translucent surface overrides (light) */
+    --unified-glass-surface-lightest: rgba(255, 255, 255, 0.6);
+    --unified-glass-surface-lightest-hover: rgba(199, 199, 199, 0.3);
+    --unified-glass-surface-lightest-active: rgba(199, 199, 199, 0.3);
+    --unified-glass-surface-lighter: rgba(199, 199, 199, 0.3);
+    --unified-glass-surface-lighter-hover: rgba(163, 163, 163, 0.3);
+    --unified-glass-surface-lighter-active: rgba(163, 163, 163, 0.3);
+    --unified-glass-surface-light: rgba(199, 199, 199, 0.3);
+    --unified-glass-surface-light-hover: rgba(163, 163, 163, 0.3);
+    --unified-glass-surface-light-active: rgba(163, 163, 163, 0.3);
+
+    /* Translucent surface overrides (dark) */
+    --unified-glass-surface-darkest: rgba(41, 41, 41, 0.5);
+    --unified-glass-surface-darkest-hover: rgba(56, 56, 56, 0.5);
+    --unified-glass-surface-darkest-active: rgba(56, 56, 56, 0.5);
+    --unified-glass-surface-darker: rgba(21, 21, 21, 0.6);
+    --unified-glass-surface-darker-hover: rgba(41, 41, 41, 0.6);
+    --unified-glass-surface-darker-active: rgba(41, 41, 41, 0.6);
+    --unified-glass-surface-dark: rgba(21, 21, 21, 0.6);
+    --unified-glass-surface-dark-hover: rgba(41, 41, 41, 0.6);
+    --unified-glass-surface-dark-active: rgba(41, 41, 41, 0.6);
+
+    /* Translucent primary glass surface */
+    --unified-glass-surface-primary:
+      light-dark(
+          rgba(255, 255, 255, 0.5),
+          rgba(41, 41, 41, 0.5)
+        );
+
+    /* Translucent floating glass surface (for toast/dialog) */
+    --unified-glass-surface-floating:
+      light-dark(
+          rgba(255, 255, 255, 0.6),
+          rgba(41, 41, 41, 0.6)
+        );
+  }
+}
+
+/* Component-specific styles */
+@layer elements {
+  @layer
+    accordion,
+    alert,
+    card,
+    dialog,
+    navigation-vertical,
+    tabs;
+}
+
+/* Element: Card */
+@layer card {
+  .unified-glass rh-card,
+  rh-card.unified-glass {
+    &::part(container) {
+      --rh-color-border-subtle: var(--unified-glass-border-color);
+      --rh-color-surface-lightest: var(--unified-glass-surface-lightest);
+      --rh-color-surface-lighter: var(--unified-glass-surface-lighter);
+      --rh-color-surface-light: var(--unified-glass-surface-light);
+      --rh-color-surface-darkest: var(--unified-glass-surface-darkest);
+      --rh-color-surface-darker: var(--unified-glass-surface-darker);
+      --rh-color-surface-dark: var(--unified-glass-surface-dark);
+
+      backdrop-filter: var(--unified-glass-backdrop-filter);
+      border: var(--unified-glass-border-width) solid var(--unified-glass-border-color);
+      box-shadow: var(--unified-glass-box-shadow);
+    }
+  }
+}
+
+/* Element: Accordion — transparent background so glass shows through */
+@layer accordion {
+  .unified-glass rh-accordion,
+  rh-accordion.unified-glass {
+    --rh-color-surface-lightest: transparent;
+    --rh-color-surface-darkest: transparent;
+    --rh-color-surface-lighter: transparent;
+    --rh-color-surface-dark: transparent;
+    --rh-box-shadow-sm: none;
+  }
+}
+
+/* Element: Alert (toast) — translucent floating background with blur */
+@layer alert {
+  .unified-glass rh-alert[variant='toast'],
+  rh-alert[variant='toast'].unified-glass {
+    --rh-color-surface-lightest: var(--unified-glass-surface-floating);
+    --rh-box-shadow-xl: var(--unified-glass-box-shadow);
+  }
+}
+
+/* Element: Dialog — translucent background with blur */
+@layer dialog {
+  .unified-glass rh-dialog,
+  rh-dialog.unified-glass {
+    &::part(dialog) {
+      background-color: var(--unified-glass-surface-floating);
+      backdrop-filter: var(--unified-glass-backdrop-filter);
+      border: var(--unified-glass-border-width) solid var(--unified-glass-border-color);
+      box-shadow: var(--unified-glass-box-shadow);
+    }
+
+    &::part(header) {
+      background-color: transparent;
+
+      &:before {
+        background-color: transparent;
+      }
+
+      &:after {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+/* Element: Navigation Vertical — translucent sidebar */
+@layer navigation-vertical {
+  .unified-glass rh-navigation-vertical,
+  rh-navigation-vertical.unified-glass {
+    background:  var(--unified-glass-surface-primary);
+    backdrop-filter: var(--unified-glass-backdrop-filter);
+    border-inline-end:
+      var(--unified-glass-border-width)
+      solid
+      var(--unified-glass-border-color);
+    box-shadow: var(--unified-glass-box-shadow);
+
+    --rh-color-surface-lightest: transparent;
+    --rh-color-surface-darker: transparent;
+    --rh-color-surface-lighter: var(--unified-glass-surface-lighter);
+    --rh-color-surface-dark: var(--unified-glass-surface-dark);
+  }
+}
+
+/* Element: Tabs — transparent box tab backgrounds */
+@layer tabs {
+  .unified-glass rh-tabs[box],
+  rh-tabs[box].unified-glass {
+    --rh-color-surface-lighter: transparent;
+    --rh-color-surface-darker: transparent;
+  }
+}

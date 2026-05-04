@@ -1,0 +1,1216 @@
+@layer
+  tokens,
+  elements;
+
+/* Base-level "tokens" / CSS custom props */
+@layer tokens {
+  :root,
+  :host {
+    /* Fonts/Type */
+    --unified-font-size-body-text-sm: 14px;
+    --unified-line-height-body-text: 1.5;
+
+    /* Base colors: Grays */
+    --unified-color-gray-10: #f2f2f2;
+    --unified-color-gray-20: #e0e0e0;
+    --unified-color-gray-30: #c7c7c7;
+    --unified-color-gray-40: #a3a3a3;
+    --unified-color-gray-50: #707070;
+    --unified-color-gray-60: #4d4d4d;
+    --unified-color-gray-70: #383838;
+    --unified-color-gray-90: #1f1f1f;
+    --unified-color-gray-95: #151515;
+
+    /* Base colors: Blues */
+    --unified-color-blue-10: #e0f0ff;
+    --unified-color-blue-20: #b9dafc;
+    --unified-color-blue-30: #92c5f9;
+    --unified-color-blue-40: #4394e5;
+    --unified-color-blue-50: #0066cc;
+    --unified-color-blue-60: #004d99;
+    --unified-color-blue-70: #003366;
+
+    /* Base colors: Red-oranges */
+    --unified-color-red-orange-20: #fbbea8;
+    --unified-color-red-orange-30: #f89b78;
+    --unified-color-red-orange-40: #f4784a;
+    --unified-color-red-orange-50: #f0561d;
+    --unified-color-red-orange-60: #b1380b;
+    --unified-color-red-orange-70: #731f00;
+
+    /* Base colors: Yellows */
+    --unified-color-yellow-20: #ffe072;
+    --unified-color-yellow-40: #dca614;
+
+    /* Base colors: Greens */
+    --unified-color-green-30: #afdc8f;
+    --unified-color-green-70: #204d00;
+
+    /* Base colors: Purples */
+    --unified-color-purple-20: #d0c5f4;
+    --unified-color-purple-60: #3d2785;
+
+    /* Base colors: Teals */
+    --unified-color-teal-30: #9ad8d8;
+    --unified-color-teal-40: #63bdbd;
+    --unified-color-teal-60: #147878;
+    --unified-color-teal-70: #004d4d;
+
+    /* Text color */
+    --unified-color-text-primary-inverse:
+      light-dark(
+          white,
+          var(--unified-color-gray-90)
+        );
+
+    /* Icon colors */
+    --unified-color-icon-secondary:
+      light-dark(
+          var(--unified-color-gray-90),
+          white
+        );
+    --unified-color-icon-secondary-inverse:
+      light-dark(
+          white,
+          var(--unified-color-gray-90)
+        );
+
+    /* Interactive colors */
+    --unified-color-interactive-primary-default:
+      light-dark(
+          var(--unified-color-blue-50),
+          var(--unified-color-blue-30)
+        );
+    --unified-color-interactive-primary-hover:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-20)
+        );
+    --unified-color-interactive-primary-focus:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-20)
+        );
+    --unified-color-interactive-primary-active:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-20)
+        );
+    --unified-color-interactive-fill-plain-on-light: rgba(199, 199, 199, 0.25);
+    --unified-color-interactive-fill-plain-on-dark: rgba(199, 199, 199, 0.15);
+    --unified-color-interactive-fill-plain-default: transparent;
+    --unified-color-interactive-fill-plain-hover:
+      light-dark(
+          var(--unified-color-interactive-fill-plain-on-light),
+          var(--unified-color-interactive-fill-plain-on-dark)
+        );
+    --unified-color-interactive-fill-plain-focus:
+      light-dark(
+          var(--unified-color-interactive-fill-plain-on-light),
+          var(--unified-color-interactive-fill-plain-on-dark)
+        );
+    --unified-color-interactive-fill-plain-active:
+      light-dark(
+          var(--unified-color-interactive-fill-plain-on-light),
+          var(--unified-color-interactive-fill-plain-on-dark)
+        );
+    --unified-color-interactive-fill-plain-clicked:
+      var(
+          --unified-color-interactive-fill-plain-active
+        );
+    --unified-color-text-interactive-default:
+      light-dark(
+          var(--unified-color-blue-50),
+          var(--unified-color-blue-20)
+        );
+    --unified-color-text-interactive-hover:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-10)
+        );
+    --unified-color-text-interactive-focus:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-10)
+        );
+    --unified-color-text-interactive-active:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-10)
+        );
+    --unified-color-icon-interactive-default:
+      light-dark(
+          var(--unified-color-blue-50),
+          var(--unified-color-blue-20)
+        );
+    --unified-color-icon-interactive-hover:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-10)
+        );
+    --unified-color-icon-interactive-focus:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-10)
+        );
+    --unified-color-icon-interactive-active:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-10)
+        );
+    --unified-color-border-interactive-default:
+      light-dark(
+          var(--unified-color-blue-50),
+          var(--unified-color-blue-30)
+        );
+    --unified-color-border-interactive-subtle-default:
+      light-dark(
+          var(--unified-color-gray-30),
+          var(--unified-color-gray-50)
+        );
+    --unified-color-border-interactive-subtle-hover:
+      light-dark(
+          var(--unified-color-blue-40),
+          var(--unified-color-blue-30)
+        );
+
+    /* TODO: Double-check color */
+    --unified-color-border-interactive-subtle-focus:
+      light-dark(
+          var(--unified-color-blue-40),
+          var(--unified-color-blue-30)
+        );
+    --unified-color-border-interactive-subtle-active:
+      light-dark(
+          var(--unified-color-blue-50),
+          var(--unified-color-blue-20)
+        );
+
+    /* Status colors: Disabled */
+    --unified-color-text-status-on-disabled:
+      light-dark(
+          var(--unified-color-gray-50),
+          var(--unified-color-gray-70)
+        );
+    --unified-color-icon-status-on-disabled:
+      light-dark(
+          var(--unified-color-gray-50),
+          var(--unified-color-gray-70)
+        );
+    --unified-color-text-status-disabled:
+      light-dark(
+          var(--unified-color-gray-40),
+          var(--unified-color-gray-50)
+        );
+    --unified-color-icon-status-disabled:
+      light-dark(
+          var(--unified-color-gray-40),
+          var(--unified-color-gray-50)
+        );
+
+    /* Status colors: Danger */
+    --unified-color-status-danger:
+      light-dark(
+          var(--unified-color-red-orange-60),
+          var(--unified-color-red-orange-50)
+        );
+    --unified-color-status-danger-hover:
+      light-dark(
+          var(--unified-color-red-orange-70),
+          var(--unified-color-red-orange-40)
+        );
+    --unified-color-status-danger-focus:
+      light-dark(
+          var(--unified-color-red-orange-70),
+          var(--unified-color-red-orange-40)
+        );
+    --unified-color-status-danger-active:
+      light-dark(
+          var(--unified-color-red-orange-70),
+          var(--unified-color-red-orange-40)
+        );
+    --unified-color-text-status-danger:
+      light-dark(
+          var(--unified-color-red-orange-60),
+          var(--unified-color-red-orange-30)
+        );
+    --unified-color-text-status-danger-hover:
+      light-dark(
+          var(--unified-color-red-orange-70),
+          var(--unified-color-red-orange-20)
+        );
+    --unified-color-text-status-danger-focus:
+      light-dark(
+          var(--unified-color-red-orange-70),
+          var(--unified-color-red-orange-20)
+        );
+    --unified-color-text-status-danger-active:
+      light-dark(
+          var(--unified-color-red-orange-70),
+          var(--unified-color-red-orange-20)
+        );
+    --unified-color-icon-status-danger-hover:
+      light-dark(
+          var(--unified-color-red-orange-70),
+          var(--unified-color-red-orange-40)
+        );
+    --unified-color-icon-status-danger-focus:
+      light-dark(
+          var(--unified-color-red-orange-70),
+          var(--unified-color-red-orange-40)
+        );
+    --unified-color-icon-status-danger-active:
+      light-dark(
+          var(--unified-color-red-orange-70),
+          var(--unified-color-red-orange-40)
+        );
+    --unified-color-border-status-danger-hover:
+      light-dark(
+          var(--unified-color-red-orange-70),
+          var(--unified-color-red-orange-40)
+        );
+    --unified-color-border-status-danger-focus:
+      light-dark(
+          var(--unified-color-red-orange-70),
+          var(--unified-color-red-orange-40)
+        );
+    --unified-color-border-status-danger-active:
+      light-dark(
+          var(--unified-color-red-orange-70),
+          var(--unified-color-red-orange-40)
+        );
+
+    /* Status colors: Warning */
+    --unified-color-status-warning-hover:
+      light-dark(
+          var(--unified-color-yellow-40),
+          var(--unified-color-yellow-20)
+        );
+    --unified-color-status-warning-focus:
+      light-dark(
+          var(--unified-color-yellow-40),
+          var(--unified-color-yellow-20)
+        );
+    --unified-color-status-warning-active:
+      light-dark(
+          var(--unified-color-yellow-40),
+          var(--unified-color-yellow-20)
+        );
+    --unified-color-border-status-warning-hover:
+      light-dark(
+          var(--unified-color-yellow-50),
+          var(--unified-color-yellow-20)
+        );
+    --unified-color-border-status-warning-focus:
+      light-dark(
+          var(--unified-color-yellow-50),
+          var(--unified-color-yellow-20)
+        );
+    --unified-color-border-status-warning-active:
+      light-dark(
+          var(--unified-color-yellow-50),
+          var(--unified-color-yellow-20)
+        );
+
+    /* Status colors: Success */
+    --unified-color-status-success-hover:
+      light-dark(
+          var(--unified-color-green-70),
+          var(--unified-color-green-30)
+        );
+    --unified-color-status-success-focus:
+      light-dark(
+          var(--unified-color-green-70),
+          var(--unified-color-green-30)
+        );
+    --unified-color-status-success-active:
+      light-dark(
+          var(--unified-color-green-70),
+          var(--unified-color-green-30)
+        );
+    --unified-color-border-status-success-hover:
+      light-dark(
+          var(--unified-color-green-70),
+          var(--unified-color-green-30)
+        );
+    --unified-color-border-status-success-focus:
+      light-dark(
+          var(--unified-color-green-70),
+          var(--unified-color-green-30)
+        );
+    --unified-color-border-status-success-active:
+      light-dark(
+          var(--unified-color-green-70),
+          var(--unified-color-green-30)
+        );
+
+    /* Status colors: Info */
+    --unified-color-status-info-hover:
+      light-dark(
+          var(--unified-color-purple-60),
+          var(--unified-color-purple-20)
+        );
+    --unified-color-status-info-focus:
+      light-dark(
+          var(--unified-color-purple-60),
+          var(--unified-color-purple-20)
+        );
+    --unified-color-status-info-active:
+      light-dark(
+          var(--unified-color-purple-60),
+          var(--unified-color-purple-20)
+        );
+    --unified-color-border-status-info-hover:
+      light-dark(
+          var(--unified-color-purple-60),
+          var(--unified-color-purple-20)
+        );
+    --unified-color-border-status-info-focus:
+      light-dark(
+          var(--unified-color-purple-60),
+          var(--unified-color-purple-20)
+        );
+    --unified-color-border-status-info-active:
+      light-dark(
+          var(--unified-color-purple-60),
+          var(--unified-color-purple-20)
+        );
+
+    /* Status colors: Custom */
+    --unified-color-status-custom:
+      light-dark(
+          var(--unified-color-teal-60),
+          var(--unified-color-teal-40)
+        );
+    --unified-color-status-custom-hover:
+      light-dark(
+          var(--unified-color-teal-70),
+          var(--unified-color-teal-30)
+        );
+    --unified-color-status-custom-focus:
+      light-dark(
+          var(--unified-color-teal-70),
+          var(--unified-color-teal-30)
+        );
+    --unified-color-status-custom-active:
+      light-dark(
+          var(--unified-color-teal-70),
+          var(--unified-color-teal-30)
+        );
+    --unified-color-border-status-custom-hover:
+      light-dark(
+          var(--unified-color-teal-70),
+          var(--unified-color-teal-30)
+        );
+    --unified-color-border-status-custom-focus:
+      light-dark(
+          var(--unified-color-teal-70),
+          var(--unified-color-teal-30)
+        );
+    --unified-color-border-status-custom-active:
+      light-dark(
+          var(--unified-color-teal-70),
+          var(--unified-color-teal-30)
+        );
+
+    /* Other border colors */
+    --unified-color-border-track:
+      light-dark(
+          var(--unified-color-blue-20),
+          var(--unified-color-blue-70)
+        );
+    --unified-color-border-control-default:
+      light-dark(
+          var(--unified-color-gray-30),
+          var(--unified-color-gray-50)
+        );
+
+    /* Brand accent */
+    --unified-color-brand-accent:
+      light-dark(
+          var(--unified-color-blue-50),
+          var(--unified-color-blue-30)
+        );
+
+    /* Borders */
+    --unified-border-radius-default: 16px;
+    --unified-border-radius-large: 24px;
+    --unified-border-radius-pill: 64px;
+    --unified-border-radius-action-plain: 6px;
+    --unified-border-radius-menu:
+      calc(
+          var(--unified-border-radius-action-plain)
+          + var(--unified-space-xs)
+        );
+    --unified-border-width-sm: 1px;
+    --unified-border-width-md: 2px;
+    --unified-border-width-lg: 3px;
+
+    /* Dimensions */
+    --unified-size-icon-00: 14px; /* 0.875rem */
+    --unified-space-xs: 4px;
+    --unified-space-sm: 6px;
+    --unified-space-md: 8px;
+    --unified-space-lg: 16px;
+    --unified-space-xl: 24px;
+    --unified-space-2xl: 32px;
+    --unified-space-3xl: 48px;
+    --unified-length-xs: 4px;
+  }
+}
+
+/* Component-specific styles */
+@layer elements {
+  @layer
+    accordion,
+    alert,
+    badge,
+    breadcrumb,
+    button,
+    card,
+    chip,
+    cta,
+    dialog,
+    jump-links,
+    menu,
+    navigation-vertical,
+    progress-steppers,
+    spinner,
+    subnav,
+    switch,
+    tabs,
+    tag;
+}
+
+/* Element: Button */
+@layer button {
+  rh-button {
+    --unified-button-font-size: var(--unified-font-size-body-text-sm);
+    --unified-button-padding-block: var(--unified-space-md);
+    --unified-button-padding-inline: var(--unified-space-xl);
+    --unified-button-padding-block-compact: var(--unified-space-sm);
+    --unified-button-padding-inline-compact: var(--unified-space-lg);
+    --unified-button-border-width-hover: var(--unified-border-width-md);
+    --unified-button-border-width-focus: var(--unified-border-width-md);
+    --unified-button-border-width-focus-ring: var(--unified-border-width-lg);
+    --unified-button-border-width-active: var(--unified-border-width-md);
+    --unified-button-link-color-on-light: var(--unified-color-blue-20);
+    --unified-button-link-color-on-light-hover: var(--unified-color-blue-60);
+
+    /* Directly theme through RH-specific tokens */
+    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+    --rh-border-radius-default: var(--unified-border-radius-pill);
+    --rh-font-size-body-text-md: var(--unified-button-font-size);
+    --rh-space-sm: var(--unified-button-padding-block);
+    --rh-space-lg: var(--unified-button-padding-inline);
+    --rh-icon-size: var(--unified-size-icon-00);
+
+    &::part(button):focus {
+      outline:
+        var(--unified-button-border-width-focus-ring)
+        solid
+        var(--unified-color-interactive-primary-default);
+      outline-offset: var(--unified-button-border-width-focus-ring);
+    }
+
+    &[variant='primary'] {
+      &[danger] {
+        &::part(button):hover {
+          background-color: var(--unified-color-status-danger-hover);
+        }
+
+        &::part(button):active {
+          background-color: var(--unified-color-status-danger-active);
+        }
+      }
+    }
+
+    &[variant='secondary'] {
+      --rh-border-width-sm: var(--unified-border-width-sm);
+
+      &::part(button):hover {
+        --rh-border-width-sm: var(--unified-button-border-width-hover);
+        --rh-color-interactive-primary-default:
+          var(
+              --unified-color-interactive-primary-hover
+            );
+      }
+
+      &::part(button):focus {
+        --rh-color-interactive-primary-default:
+          var(
+              --unified-color-interactive-primary-focus
+            );
+        --rh-border-width-sm: var(--unified-button-border-width-focus);
+      }
+
+      &::part(button):active {
+        --rh-color-interactive-primary-default:
+          var(
+              --unified-color-interactive-primary-active
+            );
+        --rh-border-width-sm: var(--unified-button-border-width-active);
+      }
+
+      &[danger] {
+        --rh-color-status-danger: var(--unified-color-text-status-danger);
+
+        &::part(button):hover {
+          --rh-color-border-status-danger: var(--unified-color-status-danger-hover);
+          --rh-color-status-danger: var(--unified-color-status-danger-hover);
+        }
+
+        &::part(button):focus {
+          --rh-color-border-status-danger: var(--unified-color-status-danger-focus);
+          --rh-color-status-danger: var(--unified-color-status-danger-focus);
+        }
+
+        &::part(button):active {
+          --rh-color-border-status-danger: var(--unified-color-status-danger-hover);
+          --rh-color-status-danger: var(--unified-color-status-danger-hover);
+        }
+      }
+    }
+
+    &[variant='tertiary'] {
+      --rh-color-border-strong: var(--unified-color-border-interactive-subtle-default);
+      --rh-color-text-primary: var(--unified-interactive-primary-default);
+
+      &::part(button):hover {
+        --rh-color-text-primary: var(--unified-color-interactive-primary-hover);
+        --rh-color-border-strong: var(--unified-color-border-interactive-subtle-hover);
+      }
+
+      &::part(button):focus {
+        --rh-color-interactive-primary-default:
+          var(
+              --unified-color-interactive-primary-focus
+            );
+        --rh-border-width-sm: var(--unified-button-border-width-focus);
+        --rh-color-border-strong: var(--unified-color-border-interactive-subtle-focus);
+      }
+
+      &[danger] {
+        --rh-color-border-strong: var(--unified-color-status-danger);
+        --rh-color-text-primary: var(--unified-color-text-status-danger);
+
+        &::part(button):hover {
+          --rh-color-border-status-danger: var(--unified-color-status-danger-hover);
+          --rh-color-text-primary: var(--unified-color-text-status-danger-hover);
+          --rh-color-border-strong: var(--unified-color-status-danger-hover);
+        }
+
+        &::part(button):focus {
+          --rh-color-border-status-danger: var(--unified-color-status-danger-focus);
+          --rh-color-text-primary: var(--unified-color-text-status-danger-focus);
+          --rh-color-border-strong: var(--unified-color-status-danger-focus);
+        }
+
+        &::part(button):active {
+          --rh-color-border-status-danger: var(--unified-color-status-danger-active);
+          --rh-color-status-danger: var(--unified-color-status-danger-active);
+          --rh-color-border-strong: var(--unified-color-status-danger-active);
+        }
+      }
+    }
+
+    &[variant='link'],
+    &[variant='plain'] {
+      &::part(button):hover,
+      &::part(button):focus,
+      &::part(button):active {
+        --rh-color-blue-70: var(--unified-button-link-color-default);
+
+        background-color: var(--unified-color-interactive-fill-plain-hover);
+      }
+
+      &::part(button):active:after,
+      &:disabled::part(button):after {
+        border-color: transparent;
+      }
+
+      &[danger] {
+        --rh-color-interactive-primary-default: var(--unified-color-text-status-danger);
+
+        &::part(button):hover,
+        &::part(button):focus,
+        &::part(button):active {
+          color: var(--unified-color-text-status-danger);
+        }
+      }
+
+      &:disabled::part(button) {
+        background-color: transparent;
+        color: var(--unified-color-text-status-disabled);
+      }
+    }
+
+    &[variant='secondary'],
+    &[variant='tertiary'] {
+      &:disabled::part(button) {
+        background-color: transparent;
+        color: var(--unified-color-text-status-disabled);
+      }
+
+      &:disabled::part(button):after {
+        border-color: var(--unified-color-border-status-disabled);
+      }
+    }
+
+    &[variant='icon'] {
+      --rh-color-text-primary: var(--unified-color-icon-secondary);
+
+      &::part(button) {
+        box-sizing: content-box;
+        display: flex;
+        justify-content: center;
+        padding: var(--unified-button-padding-block);
+        height: calc(var(--unified-button-font-size) * var(--unified-line-height-body-text));
+        width: calc(var(--unified-button-font-size) * var(--unified-line-height-body-text));
+      }
+
+      &::part(button):after {
+        border-color: transparent;
+      }
+
+      &::part(button):hover,
+      &::part(button):focus,
+      &::part(button):active {
+        background-color: var(--unified-color-interactive-fill-plain-hover);
+      }
+
+      &::part(button):active:after,
+      &:disabled::part(button):after {
+        border-color: transparent;
+      }
+
+      &:disabled::part(button) {
+        background-color: transparent;
+        color: var(--unified-color-text-status-disabled);
+      }
+    }
+
+    &::part(button):active {
+      color: var(--unified-color-interactive-primary-active);
+    }
+
+    &::part(button):active:after {
+      border-width: var(--unified-button-border-width-active);
+      border-color: var(--unified-color-border-interactive-subtle-active);
+    }
+
+    &[compact] {
+      --unified-button-padding-block: var(--unified-button-padding-block-compact);
+      --rh-space-sm: var(--unified-button-padding-block-compact);
+      --rh-space-lg: var(--unified-button-padding-inline-compact);
+    }
+  }
+}
+
+/* Element: Card */
+@layer card {
+  rh-card {
+    --unified-card-padding-default: var(--unified-space-xl);
+    --unified-card-padding-compact: var(--unified-space-lg);
+    --unified-card-padding-large: var(--unified-space-2xl);
+
+    /* Directly theme through RH-specific tokens */
+    --rh-border-radius-default: var(--unified-border-radius-default);
+    --rh-space-xl: var(--unified-card-padding-default);
+
+    &[compact],
+    &[size='compact'] {
+      --rh-space-xl: var(--unified-card-padding-compact);
+    }
+
+    &[large],
+    &[size='large'] {
+      --rh-space-xl: var(--unified-card-padding-large);
+    }
+  }
+}
+
+/* Element: Call to action */
+@layer cta {
+  rh-cta {
+    --unified-cta-font-size: var(--unified-font-size-body-text-sm);
+    --unified-cta-padding-block: var(--unified-space-lg);
+    --unified-cta-padding-inline: var(--unified-space-2xl);
+    --unified-cta-padding-block-compact: var(--unified-space-sm);
+    --unified-cta-padding-inline-compact: var(--unified-space-lg);
+    --unified-cta-border-width-hover: var(--unified-border-width-md);
+    --unified-cta-border-width-focus: var(--unified-border-width-md);
+    --unified-cta-border-width-focus-ring: var(--unified-border-width-lg);
+    --unified-cta-border-width-active: var(--unified-border-width-md);
+    --unified-cta-focus-ring-offset: calc(var(--unified-cta-border-width-focus-ring) * 2);
+    --unified-cta-border-offset:
+      calc(
+          var(--unified-cta-border-width-hover)
+          - var(--unified-border-width-sm)
+        );
+    --unified-cta-border-offset-block:
+      calc(
+          var(--rh-space-lg)
+          - var(--unified-cta-border-offset)
+        );
+    --unified-cta-border-offset-inline:
+      calc(
+          var(--rh-space-2xl)
+          - var(--unified-cta-border-offset)
+        );
+    --unified-cta-text-underline-offset: 4px;
+    --unified-cta-text-decoration: underline dashed 1px;
+    --unified-cta-primary-bg-default: #ee0000;
+    --unified-cta-primary-bg-hover: #a60000;
+    --unified-cta-primary-bg-active: #a60000;
+
+    /* Map unified tokens to RH tokens */
+    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+    --rh-color-interactive-primary-hover: var(--unified-color-interactive-primary-hover);
+    --rh-border-radius-default: var(--unified-border-radius-pill);
+    --rh-font-size-body-text-md: var(--unified-cta-font-size);
+    --rh-font-size-body-text-lg: var(--unified-cta-font-size);
+    --rh-space-lg: var(--unified-cta-padding-block);
+    --rh-space-2xl: var(--unified-cta-padding-inline);
+    --rh-cta-focus-inner-border-color: var(--unified-color-interactive-primary-default);
+
+    /* Focus ring pseudo-element (shared across all variants) */
+    &::part(container):after {
+      --rh-border-width-sm: 2px;
+
+      border-width: var(--unified-cta-border-width-focus-ring);
+      border-radius: var(--unified-border-radius-pill);
+      height: calc(100% + var(--unified-cta-focus-ring-offset) * 2);
+      width: calc(100% + var(--unified-cta-focus-ring-offset) * 2);
+      top: calc(var(--unified-cta-focus-ring-offset) * -1);
+      left: calc(var(--unified-cta-focus-ring-offset) * -1);
+    }
+
+    &[variant='primary'] {
+      --rh-color-interactive-primary-default: var(--unified-cta-primary-bg-default);
+      --rh-color-interactive-primary-hover: var(--unified-cta-primary-bg-hover);
+      --rh-cta-hover-text-decoration: var(--unified-cta-text-decoration);
+      --rh-cta-hover-text-underline-offset: var(--unified-cta-text-underline-offset);
+      --rh-cta-focus-text-decoration: var(--unified-cta-text-decoration);
+      --rh-cta-active-text-decoration: var(--unified-cta-text-decoration);
+    }
+
+    &[variant='secondary'] {
+      --rh-cta-hover-background-color: transparent;
+      --rh-cta-hover-color: var(--rh-color-text-primary);
+      --rh-cta-hover-text-decoration: var(--unified-cta-text-decoration);
+      --rh-cta-hover-text-underline-offset: var(--unified-cta-text-underline-offset);
+      --rh-cta-focus-background-color: transparent;
+      --rh-cta-focus-text-decoration: var(--unified-cta-text-decoration);
+      --rh-cta-active-background-color: transparent;
+      --rh-cta-active-text-decoration: var(--unified-cta-text-decoration);
+
+      &::part(container):hover {
+        --rh-border-width-sm: var(--unified-cta-border-width-hover);
+
+        padding-block: var(--unified-cta-border-offset-block);
+        padding-inline: var(--unified-cta-border-offset-inline);
+      }
+
+      &::part(container):focus-within {
+        --rh-border-width-sm: var(--unified-cta-border-width-focus);
+
+        padding-block: var(--unified-cta-border-offset-block);
+        padding-inline: var(--unified-cta-border-offset-inline);
+      }
+
+      &::part(container):active {
+        --rh-border-width-sm: var(--unified-cta-border-width-active);
+
+        padding-block: var(--unified-cta-border-offset-block);
+        padding-inline: var(--unified-cta-border-offset-inline);
+      }
+    }
+
+    &:not([variant]) {
+      --rh-cta-hover-background-color: var(--unified-color-interactive-fill-plain-hover);
+      --rh-cta-hover-text-decoration: var(--unified-cta-text-decoration);
+      --rh-cta-hover-text-underline-offset: var(--unified-cta-text-underline-offset);
+      --rh-cta-focus-container-background-color: var(--unified-color-interactive-fill-plain-focus);
+      --rh-cta-focus-text-decoration: var(--unified-cta-text-decoration);
+      --rh-cta-active-container-background-color:
+        var(
+            --unified-color-interactive-fill-plain-active
+          );
+      --rh-cta-active-text-decoration: var(--unified-cta-text-decoration);
+
+      &::part(container) {
+        padding-block: var(--rh-space-lg);
+        padding-inline: var(--rh-space-2xl);
+      }
+    }
+
+    &:is([variant='tertiary'], [variant='brick']) {
+      --rh-cta-hover-background-color: transparent;
+      --rh-cta-hover-text-decoration: var(--unified-cta-text-decoration);
+      --rh-cta-hover-text-underline-offset: var(--unified-cta-text-underline-offset);
+      --rh-cta-focus-text-decoration: var(--unified-cta-text-decoration);
+      --rh-cta-active-text-decoration: var(--unified-cta-text-decoration);
+
+      &::part(container) {
+        border-style: solid;
+        color: var(--unified-color-text-interactive-default);
+        border-color: var(--unified-color-border-interactive-subtle-default);
+      }
+
+      &::part(container):hover {
+        --rh-border-width-sm: var(--unified-cta-border-width-hover);
+
+        color: var(--unified-color-text-interactive-hover);
+        border-color: var(--unified-color-border-interactive-subtle-default);
+        padding-block: var(--unified-cta-border-offset-block);
+        padding-inline: var(--unified-cta-border-offset-inline);
+      }
+
+      &::part(container):focus-within {
+        --rh-border-width-sm: var(--unified-cta-border-width-focus);
+
+        color: var(--unified-color-text-interactive-focus);
+        border-color: var(--unified-color-border-interactive-subtle-default);
+        padding-block: var(--unified-cta-border-offset-block);
+        padding-inline: var(--unified-cta-border-offset-inline);
+      }
+
+      &::part(container):active {
+        --rh-border-width-sm: var(--unified-cta-border-width-active);
+
+        color: var(--unified-color-text-interactive-active);
+        border-color: var(--unified-color-border-interactive-subtle-default);
+        padding-block: var(--unified-cta-border-offset-block);
+        padding-inline: var(--unified-cta-border-offset-inline);
+      }
+    }
+
+    &[compact] {
+      --rh-space-lg: var(--unified-cta-padding-block-compact);
+      --rh-space-2xl: var(--unified-cta-padding-inline-compact);
+    }
+  }
+}
+
+/* Element: Progress Stepper */
+@layer progress-stepper {
+  rh-progress-stepper {
+    --rh-size-icon-02: calc(var(--unified-size-icon-00) + var(--unified-space-md));
+  }
+}
+
+/* Element: Spinner */
+@layer spinner {
+  rh-spinner {
+    --unified-spinner-stroke-width: var(--unified-length-xs);
+    --unified-spinner-color: var(--unified-color-border-interactive-default);
+    --unified-spinner-color-track-on-light: var(--unified-color-gray-20);
+    --unified-spinner-color-track-on-dark: var(--unified-color-gray-70);
+
+    /* Directly theme through RH-specific tokens */
+    --rh-length-sm: var(--unified-spinner-stroke-width);
+    --rh-color-gray-10: var(--unified-spinner-color-track-on-light);
+    --rh-color-gray-70: var(--unified-spinner-color-track-on-dark);
+    --rh-color-accent-base: var(--unified-spinner-color);
+  }
+}
+
+/* Element: Tag */
+@layer tag {
+  rh-tag {
+    --rh-size-icon-01: var(--unified-size-icon-00);
+
+    /* All non-status variants use primary text/icon color (gray-95).
+       light-dark() preserves the dark-mode fill value on -70 tokens
+       which are shared between light text and dark fill. */
+    --rh-color-gray-10: var(--unified-color-gray-20);
+    --rh-color-gray-60: var(--unified-color-gray-95);
+    --rh-color-gray-70:
+      light-dark(
+          var(--unified-color-gray-95),
+          var(--unified-color-gray-70)
+        );
+    --rh-color-red-10: var(--rh-color-red-20, #fbc5c5);
+    --rh-color-red-60: var(--unified-color-gray-95);
+    --rh-color-red-70:
+      light-dark(
+          var(--unified-color-gray-95),
+          #5f0000
+        );
+
+    /* Filled: 2px border matching fill color (invisible, no shift on hover) */
+    &:is(:not([variant]), [variant='filled']) {
+      --rh-border-width-sm: var(--unified-border-width-md);
+      --rh-color-gray-30: var(--unified-color-gray-20);
+      --rh-color-gray-50: var(--unified-color-gray-70);
+      --rh-color-red-30: var(--rh-color-red-20, #fbc5c5);
+      --rh-color-red-50: var(--rh-color-red-70, #5f0000);
+    }
+
+    /* Outline: transparent fill, color-specific border */
+    &[variant='outline'] {
+      &[color='red'] {
+        --rh-color-gray-30: var(--rh-color-red-30, #f9a8a8);
+        --rh-color-gray-50: var(--rh-color-red-50, #ee0000);
+      }
+    }
+
+    /* Disabled: plain gray fill, no border, muted text/icon.
+       Overrides variant and color. &[color] raises specificity
+       to beat &[variant='outline'] &[color='red'] (0-3-0). */
+    &[disabled] {
+      --rh-border-width-sm: var(--unified-border-width-md);
+      --rh-color-gray-60: var(--unified-color-gray-50);
+      --rh-color-gray-70: var(--unified-color-gray-70);
+
+      &,
+      &[color] {
+        --rh-color-gray-30: var(--unified-color-gray-20);
+        --rh-color-gray-50: var(--unified-color-gray-70);
+      }
+    }
+  }
+}
+
+/* Element: Switch
+   NOTE: The unchecked track outline/border shown in the Figma
+   mockup requires element-level changes (no CSS part on #switch). */
+@layer switch {
+  rh-switch {
+    --rh-switch-unchecked:
+      light-dark(
+          var(--unified-color-gray-40),
+          var(--unified-color-gray-50)
+        );
+    --rh-switch-checked: var(--unified-color-interactive-primary-default);
+    --rh-switch-disabled:
+      light-dark(
+          var(--unified-color-gray-30),
+          var(--unified-color-gray-60)
+        );
+
+    --rh-border-width-md: var(--unified-border-width-md);
+    --rh-color-border-interactive: var(--unified-color-interactive-primary-default);
+    --rh-space-sm: var(--unified-space-sm);
+    --rh-color-text-secondary: var(--unified-color-gray-60);
+  }
+}
+
+/* Element: Accordion
+   NOTE: Hover/focus backgrounds with border-radius require
+   element-level changes (no CSS part on #button). */
+@layer accordion {
+  rh-accordion {
+    --unified-accordion-panel-padding: var(--unified-space-xl);
+
+    --rh-color-accent-brand: var(--unified-color-brand-accent);
+    --rh-border-width-lg: var(--unified-border-width-lg);
+    --rh-font-size-body-text-md: var(--unified-font-size-body-text-sm);
+    --rh-space-xl: var(--unified-accordion-panel-padding);
+    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+  }
+}
+
+/* Element: Alert */
+@layer alert {
+  rh-alert {
+    --unified-alert-border-color: var(--rh-color-teal-50, #37a3a3);
+
+    /* Remove the internal container border so we can replace it on the host */
+    --rh-border-width-md: 0;
+
+    border:
+      var(--unified-border-width-md)
+      solid
+      var(--unified-alert-border-color);
+    border-radius: var(--unified-border-radius-default);
+    overflow: hidden;
+
+    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+    --rh-color-interactive-primary-hover: var(--unified-color-interactive-primary-hover);
+
+    &[state='neutral'] {
+      --unified-alert-border-color: var(--rh-color-status-neutral);
+    }
+
+    &[state='info'] {
+      --unified-alert-border-color: var(--rh-color-status-info);
+    }
+
+    &[state='success'] {
+      --unified-alert-border-color: var(--rh-color-status-success);
+    }
+
+    &[state='caution'] {
+      --unified-alert-border-color: var(--rh-color-status-caution);
+    }
+
+    &[state='warning'] {
+      --unified-alert-border-color: var(--rh-color-status-warning);
+    }
+
+    &[state='danger'] {
+      --unified-alert-border-color: var(--rh-color-status-danger);
+    }
+
+    &[variant='toast'] {
+      border-radius: var(--unified-border-radius-large);
+    }
+  }
+}
+
+/* Element: Tabs */
+@layer tabs {
+  rh-tabs {
+    --rh-tabs-active-border-color: var(--unified-color-brand-accent);
+    --rh-color-accent-brand: var(--unified-color-brand-accent);
+    --rh-color-interactive-secondary-default:
+      light-dark(
+          var(--unified-color-gray-40),
+          var(--unified-color-gray-50)
+        );
+    --rh-border-width-lg: var(--unified-border-width-lg);
+    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+  }
+
+  rh-tab::part(button):focus {
+    border-radius: var(--unified-border-radius-action-plain);
+  }
+}
+
+/* Element: Dialog (Modal in PatternFly) */
+@layer dialog {
+  rh-dialog {
+    --rh-border-radius-default: var(--unified-border-radius-large);
+    --rh-color-icon-secondary: var(--unified-color-icon-secondary);
+    --rh-space-xl: var(--unified-space-xl);
+    --rh-space-lg: var(--unified-space-lg);
+
+    &::part(close-button) {
+      --rh-border-radius-default: var(--unified-border-radius-action-plain);
+    }
+  }
+}
+
+/* Element: Chip (selectable Labels in PatternFly) */
+@layer chip {
+  rh-chip {
+    --rh-border-radius-pill: var(--unified-border-radius-pill);
+    --rh-border-width-md: var(--unified-border-width-md);
+    --rh-color-border-interactive: var(--unified-color-interactive-primary-default);
+    --rh-color-border-subtle: var(--unified-color-border-interactive-subtle-default);
+    --rh-color-blue-10: var(--unified-color-blue-10);
+    --rh-color-blue-30: var(--unified-color-blue-30);
+    --rh-color-blue-50: var(--unified-color-blue-50);
+    --rh-color-blue-70: var(--unified-color-blue-70);
+  }
+}
+
+/* Element: Badge */
+@layer badge {
+  rh-badge {
+    --rh-border-radius-pill: var(--unified-border-radius-pill);
+  }
+}
+
+/* Element: Breadcrumb */
+@layer breadcrumb {
+  rh-breadcrumb {
+    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+    --rh-color-interactive-primary-hover: var(--unified-color-interactive-primary-hover);
+    --rh-border-radius-default: var(--unified-border-radius-action-plain);
+    --rh-color-border-interactive: var(--unified-color-interactive-primary-default);
+  }
+}
+
+/* Element: Jump Links */
+@layer jump-links {
+  rh-jump-links {
+    --rh-color-brand-red: var(--unified-color-brand-accent);
+    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+    --rh-color-interactive-secondary-default:
+      light-dark(
+          var(--unified-color-gray-40),
+          var(--unified-color-gray-50)
+        );
+    --rh-border-radius-default: var(--unified-border-radius-action-plain);
+    --rh-border-width-lg: var(--unified-border-width-lg);
+  }
+
+  rh-jump-link {
+    /* Replace the left-border hover indicator with a pill background */
+    --rh-color-border-status-neutral: transparent;
+
+    width: fit-content;
+    margin-inline-start: var(--unified-space-md);
+
+    &:hover {
+      background-color: var(--unified-color-interactive-fill-plain-hover);
+      border-radius: var(--unified-border-radius-pill);
+    }
+  }
+}
+
+/* Element: Menu / Menu Dropdown */
+@layer menu {
+  rh-menu-dropdown {
+    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+    --rh-color-interactive-primary-hover: var(--unified-color-interactive-primary-hover);
+    --rh-border-radius-default: var(--unified-border-radius-menu);
+    --rh-border-radius-pill: var(--unified-border-radius-action-plain);
+  }
+
+  rh-menu {
+    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+    --rh-color-interactive-primary-hover: var(--unified-color-interactive-primary-hover);
+  }
+}
+
+/* Element: Navigation Vertical (Left Navigation in PatternFly) */
+@layer navigation-vertical {
+  rh-navigation-vertical {
+    --rh-color-brand-red: var(--unified-color-brand-accent);
+    --rh-border-width-lg: var(--unified-border-width-lg);
+    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+    --rh-border-radius-default: var(--unified-border-radius-action-plain);
+
+    & rh-navigation-link,
+    & rh-navigation-vertical-list {
+      display: block;
+      margin-inline-start: var(--unified-space-md);
+
+      /* Make the internal hover/selected background transparent
+         so the pill-shaped host background shows instead */
+      --rh-color-surface-lighter: transparent;
+      --rh-color-surface-dark: transparent;
+
+      /* Hide the left-border hover indicator; selected state
+         uses --rh-color-brand-red so it remains visible */
+      --rh-color-border-subtle: transparent;
+
+      &:hover {
+        background-color: var(--unified-color-interactive-fill-plain-hover);
+        border-radius: var(--unified-border-radius-pill);
+      }
+    }
+
+    & rh-navigation-link[current-page] {
+      background-color: var(--unified-color-interactive-fill-plain-hover);
+      border-radius: var(--unified-border-radius-pill);
+      margin-inline-start: 0;
+    }
+  }
+}
+
+/* Element: Subnav (Horizontal Navigation in PatternFly) */
+@layer subnav {
+  rh-subnav {
+    --rh-color-accent-brand: var(--unified-color-brand-accent);
+    --rh-color-brand-red: var(--unified-color-brand-accent);
+    --rh-color-border-interactive: var(--unified-color-interactive-primary-default);
+    --rh-border-width-lg: var(--unified-border-width-lg);
+    --rh-border-width-md: var(--unified-border-width-md);
+    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+  }
+}
