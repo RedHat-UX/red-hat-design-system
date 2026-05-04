@@ -11,12 +11,20 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 import {
-  ContextChangeEvent,
   ColorPaletteListConverter,
   paletteNames,
 } from '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
 
-export { ContextChangeEvent, ColorPaletteListConverter, paletteNames };
+export { ColorPaletteListConverter, paletteNames };
+
+export class ContextChangeEvent extends Event {
+  constructor(
+    public colorPalette: ColorPalette | null,
+    public provider: HTMLElement | null,
+  ) {
+    super('change', { bubbles: true, cancelable: true });
+  }
+}
 
 import styles from './uxdot-context-select.css';
 
@@ -32,7 +40,7 @@ export class UxdotContextSelect extends LitElement {
   /** ID of context element to toggle (same root) */
   @property() target?: string | HTMLElement;
 
-  @property() value: ColorPalette | '' = '';
+  @property() value: ColorPalette | null = null;
 
   @property({ converter: ColorPaletteListConverter })
   allow = paletteNames;
@@ -60,7 +68,7 @@ export class UxdotContextSelect extends LitElement {
     return html`
       <select aria-label="${label}"
               @change="${this.#onChange}">
-        <option value="" ?selected="${value === ''}">System</option>
+        <option value="" ?selected="${value == null}">System</option>
         ${allow.map(palette => html`
         <option value="${palette}" ?selected="${value === palette}">${palette}</option>`)}
       </select>
@@ -128,22 +136,20 @@ export class UxdotContextSelect extends LitElement {
   }
 
   formStateRestoreCallback(state: string) {
-    if (state) {
-      this.#setValue(state as this['value']);
-    }
+    this.#setValue((state || null) as this['value']);
   }
 
   #onChange(event: Event) {
     if (event.target instanceof HTMLSelectElement) {
       event.stopPropagation();
-      this.#setValue(event.target.value as this['value']);
+      this.#setValue((event.target.value || null) as this['value']);
     }
   }
 
   #setValue(value: this['value']) {
-    this.#internals.setFormValue(value);
+    this.#internals.setFormValue(value ?? '');
     if (value !== this.value
-        && this.dispatchEvent(new ContextChangeEvent(value as ColorPalette, this.#target))) {
+        && this.dispatchEvent(new ContextChangeEvent(value, this.#target))) {
       this.value = value;
       this.sync();
     }

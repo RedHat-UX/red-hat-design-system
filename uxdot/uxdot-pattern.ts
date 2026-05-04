@@ -206,7 +206,7 @@ export class UxdotPattern extends LitElement {
     }
   }
 
-  #postColorPalette(colorPalette: ColorPalette) {
+  #postColorPalette(colorPalette: ColorPalette | null) {
     const iframe = this.shadowRoot?.querySelector<HTMLIFrameElement>('#viewport-frame');
     if (iframe?.src) {
       const { origin } = new URL(iframe.src, location.origin);
