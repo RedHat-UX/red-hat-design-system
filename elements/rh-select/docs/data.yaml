@@ -3,6 +3,9 @@ tagName: rh-select
 name: Select
 type: element
 overallStatus: ready
+aka:
+  - Dropdown
+  - Listbox
 libraries:
   figma: ready
   rhds: ready
