@@ -3,6 +3,9 @@ tagName: rh-stat
 name: Statistic
 type: element
 overallStatus: ready
+aka:
+  - Data point
+  - Key metric
 libraries:
   figma: ready
   rhds: ready

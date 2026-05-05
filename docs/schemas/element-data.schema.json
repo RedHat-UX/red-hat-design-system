@@ -61,6 +61,15 @@
       "required": ["figma", "rhds", "shared", "docs"],
       "additionalProperties": false
     },
+    "aka": {
+      "type": "array",
+      "description": "Alternative names or aliases this element is commonly known as",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
     "relatedItems": {
       "type": "array",
       "description": "List of related elements and patterns that appear in the feedback section",

@@ -3,6 +3,9 @@ tagName: rh-progress-stepper
 name: Progress Steps
 type: element
 overallStatus: ready
+aka:
+  - Wizard
+  - Stepper
 description: >-
   Progress steps guide a user through a task with multiple sequential steps toward the completion of
   a linear process.
