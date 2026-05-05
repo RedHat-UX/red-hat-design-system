@@ -1,0 +1,28 @@
+---
+description: "Textarea rendered across light and dark color contexts to verify surface and text colors adapt correctly."
+---
+<rh-context-demo>
+  <label for="textarea-ctx">
+    Notes
+  </label>
+  <rh-textarea id="textarea-ctx" placeholder="Enter your notes here"></rh-textarea>
+</rh-context-demo>
+
+<script type="module">
+  import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+  import '@rhds/elements/rh-textarea/rh-textarea.js';
+</script>
+
+<style>
+  label,
+  rh-textarea {
+    max-inline-size: 320px;
+  }
+
+  label {
+    display: block;
+    font-family: var(--rh-font-family-body-text);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    margin-block: var(--rh-space-md, 8px);
+  }
+</style>

@@ -1,0 +1,26 @@
+---
+description: "Basic textarea with an external label and placeholder text."
+---
+<label for="my-textarea">
+  Notes
+</label>
+<rh-textarea id="my-textarea" placeholder="Enter your notes here"></rh-textarea>
+
+<script type="module">
+  import '@rhds/elements/rh-textarea/rh-textarea.js';
+</script>
+
+<style>
+  label,
+  rh-textarea {
+    margin-inline: 20px;
+    max-inline-size: 320px;
+  }
+
+  label {
+    display: block;
+    font-family: var(--rh-font-family-body-text);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    margin-block: var(--rh-space-md, 8px);
+  }
+</style>

@@ -1,0 +1,172 @@
+:host {
+  align-items: stretch;
+
+  /** Primary text color design token */
+  color: var(--rh-color-text-primary);
+  display: flex;
+  flex-direction: column;
+
+  /** Body text font family design token */
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
+  /** Small body text size design token, matching rh-select */
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+
+  /** Regular font weight design token */
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
+
+  /** Body text line height design token */
+  line-height: var(--rh-line-height-body-text, 1.5);
+}
+
+:host([hidden]),
+*[hidden] {
+  display: none !important;
+}
+
+:host([disabled]) {
+  pointer-events: none !important;
+}
+
+#input {
+  /** Surface color, adapts to light/dark theme */
+  background-color:
+    light-dark(
+        var(--rh-color-surface-lightest, #ffffff),
+        var(--rh-color-surface-darkest, #151515)
+      );
+
+  /** Border matching rh-select toggle */
+  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+
+  /** Default border radius */
+  border-radius: var(--rh-border-radius-default, 3px);
+
+  /** Primary text color */
+  color: var(--rh-color-text-primary);
+
+  /** Inherit font from host */
+  font: inherit;
+
+  /** Padding matching rh-select toggle */
+  padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+
+  /** Default resize: vertical */
+  resize: vertical;
+}
+
+/** Hover state per form pattern interaction spec */
+#input:hover {
+  border-color: var(--rh-color-border-interactive);
+}
+
+/** Focus state: 2px interactive border (like rh-select toggle focus) */
+#input:focus {
+  border-color: transparent;
+  outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
+}
+
+/** Focus-visible: outer ring for keyboard navigation */
+#input:focus-visible {
+  border-color: var(--rh-color-border-interactive);
+  outline: 3px solid var(--rh-color-border-interactive);
+  outline-offset: 3px;
+}
+
+/* Resize attribute-driven overrides */
+:host([resize='none']) #input {
+  resize: none;
+}
+
+:host([resize='horizontal']) #input {
+  resize: horizontal;
+}
+
+:host([resize='both']) #input {
+  resize: both;
+}
+
+/* Disabled state styling */
+:host([disabled]) #input {
+  /* Nix this fallback `light-dark` when the `status-disabled` vars are defined in tokens */
+  /* stylelint-disable-next-line rhds/no-unknown-token-name */
+  background-color:
+    var(--rh-color-status-disabled,
+      light-dark(
+        var(--rh-color-gray-30, #c7c7c7),
+        var(--rh-color-gray-40, #a3a3a3))
+      );
+  border-color: transparent;
+
+  /* stylelint-disable-next-line rhds/no-unknown-token-name */
+  color:
+    var(--rh-color-text-status-disabled,
+      light-dark(
+        var(--rh-color-gray-50, #707070),
+        var(--rh-color-gray-60, #4d4d4d))
+      );
+}
+
+/* Character count below the textarea */
+#char-count {
+  /** Secondary text color for the counter */
+  color: var(--rh-color-text-secondary);
+
+  /** Extra-small font size for the counter */
+  font-size: var(--rh-font-size-body-text-xs, 0.75rem);
+  margin-block-start: var(--rh-space-xs, 4px);
+}
+
+/* Help text below the character count */
+#help-text {
+  align-items: center;
+  display: flex;
+  gap: var(--rh-space-md, 8px);
+  margin-block-start: var(--rh-space-md, 8px);
+}
+
+#help-text ::slotted(*) {
+  display: inline-block;
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+}
+
+#help-text rh-icon {
+  /** Icon size for status icons, matching rh-select */
+  --rh-icon-size: var(--rh-textarea-icon-size, 14px);
+}
+
+/* State border colors on the textarea */
+:host([state='success']) #input {
+  border-color: var(--rh-color-border-status-success);
+}
+
+:host([state='warning']) #input {
+  border-color: var(--rh-color-border-status-warning);
+}
+
+:host([state='danger']) #input {
+  border-color: var(--rh-color-border-status-danger);
+}
+
+/* Bold help text when a state is active */
+:host([state]) #help-text-content {
+  font-weight: var(--rh-font-weight-body-text-medium, 500);
+}
+
+/* State icon colors */
+.icon-success {
+  color: var(--rh-color-icon-status-success);
+}
+
+.icon-warning {
+  color: var(--rh-color-icon-status-warning);
+}
+
+.icon-danger {
+  color: var(--rh-color-icon-status-danger);
+}
+
+:host([field-sizing='content']) #input {
+  field-sizing: content;
+  min-block-size: var(--rh-length-6xl, 96px);
+}
