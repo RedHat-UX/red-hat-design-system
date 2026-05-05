@@ -3,6 +3,8 @@ tagName: rh-pagination
 name: Pagination
 type: element
 overallStatus: ready
+aka:
+  - Pager
 libraries:
   figma: ready
   rhds: ready

@@ -3,6 +3,8 @@ tagName: rh-card
 name: Card
 type: element
 overallStatus: ready
+aka:
+  - Panel
 libraries:
   figma: ready
   rhds: ready

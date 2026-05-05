@@ -1,11 +1,9 @@
-import { html, isServer } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
-
-import { SSRFailureRecoverableElement } from './ssr-failure-recoverable.js';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
@@ -32,7 +30,7 @@ import styles from './uxdot-pattern.css';
 @customElement('uxdot-pattern')
 @colorPalettes
 @themable
-export class UxdotPattern extends SSRFailureRecoverableElement {
+export class UxdotPattern extends LitElement {
   static styles = [styles];
 
   /** Which color palette to apply to the demo surface */
@@ -108,7 +106,7 @@ export class UxdotPattern extends SSRFailureRecoverableElement {
                  active-index="${ifDefined(!this.#picked ? ['html', 'css', 'js'].indexOf(activeTab) : undefined)}"
                  ?hidden="${this.noCodeTabs}"
                  @expand="${this.#onExpand}">
-          <rh-tab id="html-tab" slot="tab" >HTML</rh-tab>
+          <rh-tab id="html-tab" slot="tab">HTML</rh-tab>
           <rh-tab-panel id="html-panel">
             <rh-code-block highlighting="prerendered"
                            line-numbers="visible"
@@ -118,7 +116,7 @@ export class UxdotPattern extends SSRFailureRecoverableElement {
               ${actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
-          <rh-tab id="css-tab" slot="tab" .disabled="${!hasCss}" >CSS</rh-tab>
+          <rh-tab id="css-tab" slot="tab" .disabled="${!hasCss}">CSS</rh-tab>
           <rh-tab-panel id="css-panel">
             <rh-code-block highlighting="prerendered"
                            actions="copy wrap"
@@ -127,7 +125,7 @@ export class UxdotPattern extends SSRFailureRecoverableElement {
               ${actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
-          <rh-tab id="js-tab" slot="tab" .disabled="${!hasJs}" >JS</rh-tab>
+          <rh-tab id="js-tab" slot="tab" .disabled="${!hasJs}">JS</rh-tab>
           <rh-tab-panel id="js-panel">
             <rh-code-block highlighting="prerendered"
                            actions="copy wrap"

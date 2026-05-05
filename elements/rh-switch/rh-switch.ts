@@ -20,7 +20,7 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  * readers. Users should toggle with Space or Enter keys. Avoid using
  * a switch when multiple selections are needed; use checkboxes instead.
  *
- * @summary  A switch toggles the state of a setting (between on and off).
+ * @summary  A switch toggles the state of a setting (between on and off)
  *
  * @alias switch
  *

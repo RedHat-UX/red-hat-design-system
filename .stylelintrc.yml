@@ -81,7 +81,6 @@ rules:
     - ignorePattern: /(--rh-font-family-|https:\/\/)/
 
   rhds/deprecated: true
-  rhds/token-values: true
 
   rhds/no-unknown-token-name:
     - true
