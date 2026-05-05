@@ -3,7 +3,7 @@ import type * as CEM from 'custom-elements-manifest';
 
 import { tokens } from '@rhds/tokens/meta.js';
 import { join } from 'node:path';
-import { readFile, access } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
 import { capitalize, copyCell, dedent, getTokenHref } from '#11ty-plugins/tokensHelpers.js';
 import { htmlToReact } from '#11ty-plugins/html-to-react.js';
 import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
@@ -20,6 +20,7 @@ import {
   type DemoRecord,
 } from '@patternfly/pfe-tools/custom-elements-manifest/custom-elements-manifest.js';
 import { parseFragment } from 'parse5';
+import { stripFrontmatter } from '#11ty-plugins/frontmatter.js';
 
 const html = String.raw; // for editor highlighting
 const pfeconfig = getPfeConfig();
@@ -155,13 +156,8 @@ export default class ElementsPage extends Renderer<Context> {
   async #getMainDemoContent(tagName: string) {
     try {
       const demoPath = join(process.cwd(), 'elements', tagName, 'demo', `index.html`);
-      const demoContent = await readFile(demoPath, 'utf8');
+      const demoContent = stripFrontmatter(await readFile(demoPath, 'utf8'));
       const fragment = parseFragment(demoContent);
-      for (const node of Tools.queryAll<Tools.Element>(fragment, Tools.isElementNode)) {
-        if (node.tagName === 'meta' && node.attrs.some(x => x.name === 'itemprop')) {
-          Tools.removeNode(node);
-        }
-      }
       return html`
         <rh-code-block actions="wrap copy" highlighting="prerendered">
           ${this.highlight('html', serialize(fragment))}
@@ -203,11 +199,14 @@ export default class ElementsPage extends Renderer<Context> {
 
   async #renderOverviewPage(content: string, ctx: Context) {
     const description = ctx.doc.docsPage.description ?? ctx.doc.description ?? '';
+    const aka = ctx.doc.elementData?.aka;
     return html`${!ctx.doc.planned ? '' : html`
       ${this.#header('Coming soon!')}
       <p>This element is currently in progress and not yet available for use.</p>`}
       ${this.#header('Overview')}
       ${await this.renderTemplate(description, 'md')}
+      ${!aka?.length ? '' : html`
+      <p class="aka">Also known as: ${aka.join(', ')}</p>`}
       ${!ctx.doc.overviewImageHref ? await this.#renderKnobs(ctx)
        : ctx.doc.overviewImageHref.endsWith('svg') ? html`
       <uxdot-example>${await this.#getOverviewInlineSvg(ctx)}</uxdot-example>
@@ -942,24 +941,17 @@ export default class ElementsPage extends Renderer<Context> {
       ${(await Promise.all(demos.map(async demo => `
       ${this.#header(demo.filePath?.match(/\/index(\.html|\/)/) ? this.#getPrettyTagName(ctx)
                    : demo.title, 2, `demo-${this.slugify(demo.title)}`)}
-      ${await this.#renderDemoDescription(demo, ctx)}
+      ${await this.#renderDemoDescription(demo)}
       ${await this.#renderDemo(demo, ctx)}
       `))).filter(Boolean).join('')}
     `;
   }
 
-  async #renderDemoDescription(demo: DemoRecord, ctx: Context) {
-    // Use the same logic as the header to determine the demo name
-    const demoName = demo.filePath?.match(/\/index(\.html|\/)/) ? 'index' : demo.title;
-    const demoDescriptionPath = join(process.cwd(), 'elements', ctx.tagName, 'demo', `${this.slugify(demoName)}.md`);
-    // check if the file exists, if it does return the html
-    try {
-      await access(demoDescriptionPath);
-      const demoDescriptionContent = await this.renderFile(demoDescriptionPath, ctx);
-      return html`${demoDescriptionContent}`;
-    } catch {
-      return '';
+  async #renderDemoDescription(demo: DemoRecord) {
+    if ('description' in demo && typeof demo.description === 'string') {
+      return this.renderTemplate(demo.description, 'md');
     }
+    return '';
   }
 
   async #renderDemo(demo: DemoRecord, ctx: Context, knobs?: string) {
@@ -1013,7 +1005,8 @@ export default class ElementsPage extends Renderer<Context> {
     }
 
     if (demo.filePath) {
-      const content = await readFile(demo.filePath, 'utf-8');
+      const raw = await readFile(demo.filePath, 'utf-8');
+      const content = stripFrontmatter(raw);
       const fragment = parseFragment(content);
 
       for (const node of Tools.queryAll<Tools.Element>(fragment, Tools.isElementNode)) {
@@ -1022,8 +1015,6 @@ export default class ElementsPage extends Renderer<Context> {
           updateDemoContentForType('js', node);
         } else if (node.tagName === 'style') {
           updateDemoContentForType('css', node);
-        } else if (node.tagName === 'meta' && node.attrs.some(x => x.name === 'itemprop')) {
-          Tools.removeNode(node);
         }
       }
 
