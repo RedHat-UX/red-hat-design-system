@@ -1,6 +1,6 @@
 import type { ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 
-import { html, LitElement, isServer } from 'lit';
+import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
@@ -52,29 +52,6 @@ export class UxdotContextSelect extends LitElement {
 
   #target: HTMLElement | null = null;
 
-  /**
-   * Renders a native `<select>` enhanced with `appearance: base-select`.
-   * During SSR the `<select>` is rendered without the base-select children
-   * (`<button>`, `<selectedcontent>`, swatch `<span>`s) because the browser
-   * HTML parser strips non-conforming `<select>` children from SSR markup,
-   * which would cause a Lit hydration mismatch. On first client update the
-   * base-select elements are injected into the live DOM.
-   */
-  render() {
-    const { allow, value } = this;
-    const label = this.accessibleLabel
-                || this.#internals.computedLabelText
-                || 'Color palette';
-    return html`
-      <select aria-label="${label}"
-              @change="${this.#onChange}">
-        <option value="" ?selected="${value == null}">System</option>
-        ${allow.map(palette => html`
-        <option value="${palette}" ?selected="${value === palette}">${palette}</option>`)}
-      </select>
-    `;
-  }
-
   protected override firstUpdated() {
     for (const label of this.#internals.labels) {
       label.addEventListener('click', () => this.focus());
@@ -91,48 +68,47 @@ export class UxdotContextSelect extends LitElement {
     } else {
       this.#target = this.closest('rh-surface');
     }
+    this.requestUpdate();
   }
 
-  protected override updated() {
-    this.#ensureBaseSelectDOM();
-  }
-
-  /** Inject base-select children (`<button>`, `<selectedcontent>`, swatches) into the live DOM */
-  #ensureBaseSelectDOM() {
-    if (isServer) {
-      return;
-    }
-    const select = this.shadowRoot.querySelector('select');
-    if (!select) {
-      return;
-    }
-    if (!select.querySelector(':scope > button')) {
-      const btn = document.createElement('button');
-      btn.setAttribute('type', 'button');
-      const sc = document.createElement('selectedcontent');
-      const caret = document.createElement('rh-icon');
-      caret.setAttribute('set', 'microns');
-      caret.setAttribute('icon', 'caret-down-fill');
-      caret.classList.add('caret');
-      btn.appendChild(sc);
-      btn.appendChild(caret);
-      select.prepend(btn);
-    }
-    for (const option of select.options) {
-      if (!option.querySelector('.swatch') && !option.querySelector('rh-icon')) {
-        if (option.value === '') {
-          const icon = document.createElement('rh-icon');
-          icon.setAttribute('set', 'ui');
-          icon.setAttribute('icon', 'auto-light-dark-mode');
-          icon.classList.add('system-icon');
-          option.prepend(icon);
-        } else {
-          const swatch = document.createElement('span');
-          swatch.className = `swatch ${option.value}`;
-          option.prepend(swatch);
-        }
-      }
-    }
+  /**
+   * Before hydration (`hasUpdated` is false on both server and first
+   * client render), emits a spec-conforming `<select>` with plain text
+   * `<option>` children so HTML parsers won't discard non-conforming
+   * elements. After hydration completes, `firstUpdated` triggers a
+   * second render where `hasUpdated` is true and the full base-select
+   * markup (button, selectedcontent, swatches) is emitted declaratively.
+   */
+  render() {
+    const { allow, value } = this;
+    const label = this.accessibleLabel
+                || this.#internals.computedLabelText
+                || 'Color palette';
+    return this.hasUpdated ? html`
+      <select aria-label="${label}"
+              @change="${this.#onChange}">
+        <button type="button">
+          <selectedcontent></selectedcontent>
+          <rh-icon set="microns" icon="caret-down-fill" class="caret"></rh-icon>
+        </button>
+        <option value="" ?selected="${value == null}">
+          <rh-icon set="ui" icon="auto-light-dark-mode" class="system-icon"></rh-icon>
+          System
+        </option>
+        ${allow.map(palette => html`
+        <option value="${palette}" ?selected="${value === palette}">
+          <span class="swatch ${palette}"></span>
+          ${palette}
+        </option>`)}
+      </select>
+    ` : html`
+      <select aria-label="${label}"
+              @change="${this.#onChange}">
+        <option value="" ?selected="${value == null}">System</option>
+        ${allow.map(palette => html`
+        <option value="${palette}" ?selected="${value === palette}">${palette}</option>`)}
+      </select>
+    `;
   }
 
   formStateRestoreCallback(state: string) {
