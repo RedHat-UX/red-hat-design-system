@@ -3,6 +3,9 @@ tagName: rh-icon
 name: Icon
 type: element
 overallStatus: new
+aka:
+  - Symbol
+  - Glyph
 libraries:
   figma: ready
   rhds: ready

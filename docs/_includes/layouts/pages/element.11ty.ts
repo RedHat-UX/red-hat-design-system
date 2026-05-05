@@ -199,11 +199,14 @@ export default class ElementsPage extends Renderer<Context> {
 
   async #renderOverviewPage(content: string, ctx: Context) {
     const description = ctx.doc.docsPage.description ?? ctx.doc.description ?? '';
+    const aka = ctx.doc.elementData?.aka;
     return html`${!ctx.doc.planned ? '' : html`
       ${this.#header('Coming soon!')}
       <p>This element is currently in progress and not yet available for use.</p>`}
       ${this.#header('Overview')}
       ${await this.renderTemplate(description, 'md')}
+      ${!aka?.length ? '' : html`
+      <p class="aka">Also known as: ${aka.join(', ')}</p>`}
       ${!ctx.doc.overviewImageHref ? await this.#renderKnobs(ctx)
        : ctx.doc.overviewImageHref.endsWith('svg') ? html`
       <uxdot-example>${await this.#getOverviewInlineSvg(ctx)}</uxdot-example>

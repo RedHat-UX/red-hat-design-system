@@ -3,6 +3,8 @@ tagName: rh-subnav
 name: Subnavigation
 type: element
 overallStatus: ready
+aka:
+  - Horizontal navigation
 libraries:
   figma: ready
   rhds: ready

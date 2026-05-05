@@ -3,6 +3,9 @@ tagName: rh-table
 name: Table
 type: element
 overallStatus: ready
+aka:
+  - Data table
+  - Grid
 libraries:
   figma: ready
   rhds: ready

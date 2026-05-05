@@ -3,6 +3,9 @@ tagName: rh-blockquote
 name: Blockquote
 type: element
 overallStatus: ready
+aka:
+  - Quote
+  - Pull quote
 libraries:
   figma: ready
   rhds: ready
