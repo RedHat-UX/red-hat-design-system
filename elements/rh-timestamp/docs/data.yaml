@@ -3,6 +3,9 @@ tagName: rh-timestamp
 name: Timestamp
 type: element
 overallStatus: ready
+aka:
+  - Date
+  - Time
 libraries:
   figma: ready
   rhds: ready
