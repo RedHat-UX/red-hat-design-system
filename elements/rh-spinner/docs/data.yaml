@@ -3,6 +3,9 @@ tagName: rh-spinner
 name: Spinner
 type: element
 overallStatus: ready
+aka:
+  - Loader
+  - Loading indicator
 libraries:
   figma: ready
   rhds: ready

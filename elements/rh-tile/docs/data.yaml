@@ -3,6 +3,8 @@ tagName: rh-tile
 name: Tile
 type: element
 overallStatus: ready
+aka:
+  - Selection card
 libraries:
   figma: ready
   rhds: ready
