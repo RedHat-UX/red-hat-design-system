@@ -262,6 +262,7 @@ export class RhTextarea extends LitElement {
     } else {
       this.#internals.setFormValue(this.value ?? '');
     }
+    this.#updateValidity();
   }
 
   /** Sync aria-required and re-check validity when required changes. */
