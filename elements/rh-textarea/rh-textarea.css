@@ -53,24 +53,24 @@
 
   /** Default resize: vertical */
   resize: vertical;
-}
 
-/** Hover state per form pattern interaction spec */
-#input:hover {
-  border-color: var(--rh-color-border-interactive);
-}
+  /** Hover state per form pattern interaction spec */
+  &:hover {
+    border-color: var(--rh-color-border-interactive);
+  }
 
-/** Focus state: 2px interactive border (like rh-select toggle focus) */
-#input:focus {
-  border-color: transparent;
-  outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
-}
+  /** Focus state: 2px interactive border (like rh-select toggle focus) */
+  &:focus {
+    border-color: transparent;
+    outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
+  }
 
-/** Focus-visible: outer ring for keyboard navigation */
-#input:focus-visible {
-  border-color: var(--rh-color-border-interactive);
-  outline: 3px solid var(--rh-color-border-interactive);
-  outline-offset: 3px;
+  /** Focus-visible: outer ring for keyboard navigation */
+  &:focus-visible {
+    border-color: var(--rh-color-border-interactive);
+    outline: 3px solid var(--rh-color-border-interactive);
+    outline-offset: 3px;
+  }
 }
 
 /* Resize attribute-driven overrides */
@@ -123,16 +123,16 @@
   display: flex;
   gap: var(--rh-space-md, 8px);
   margin-block-start: var(--rh-space-md, 8px);
-}
 
-#help-text ::slotted(*) {
-  display: inline-block;
-  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
-}
+  & ::slotted(*) {
+    display: inline-block;
+    font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+  }
 
-#help-text rh-icon {
-  /** Icon size for status icons, matching rh-select */
-  --rh-icon-size: var(--rh-textarea-icon-size, 14px);
+  & rh-icon {
+    /** Icon size for status icons, matching rh-select */
+    --rh-icon-size: var(--rh-textarea-icon-size, 14px);
+  }
 }
 
 /* State border colors on the textarea */
