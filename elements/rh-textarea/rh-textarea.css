@@ -1,21 +1,21 @@
 :host {
   align-items: stretch;
 
-  /** Primary text color design token */
+  /** Textarea text color */
   color: var(--rh-color-text-primary);
   display: flex;
   flex-direction: column;
 
-  /** Body text font family design token */
+  /** Textarea font family */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
 
-  /** Small body text size design token, matching rh-select */
+  /** Textarea text size */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 
-  /** Regular font weight design token */
+  /** Textarea font weight */
   font-weight: var(--rh-font-weight-body-text-regular, 400);
 
-  /** Body text line height design token */
+  /** Textarea line height */
   line-height: var(--rh-line-height-body-text, 1.5);
 }
 
@@ -44,36 +44,27 @@
 
   /** Primary text color */
   color: var(--rh-color-text-primary);
-
-  /** Inherit font from host */
   font: inherit;
 
   /** Padding matching rh-select toggle */
   padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+  resize: vertical; /* TODO: add public var to customize this */
 
-  /** Default resize: vertical */
-  resize: vertical;
-
-  /** Hover state per form pattern interaction spec */
   &:hover {
     border-color: var(--rh-color-border-interactive);
   }
 
-  /** Focus state: 2px interactive border (like rh-select toggle focus) */
-  &:focus {
-    border-color: transparent;
-    outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
-  }
-
-  /** Focus-visible: outer ring for keyboard navigation */
+  &:focus,
   &:focus-visible {
+    /** Textarea border color when focused */
     border-color: var(--rh-color-border-interactive);
+
+    /** Outer focus ring color when focused */
     outline: 3px solid var(--rh-color-border-interactive);
     outline-offset: 3px;
   }
 }
 
-/* Resize attribute-driven overrides */
 :host([resize='none']) #input {
   resize: none;
 }
@@ -86,7 +77,6 @@
   resize: both;
 }
 
-/* Disabled state styling */
 :host([disabled]) #input {
   /* Nix this fallback `light-dark` when the `status-disabled` vars are defined in tokens */
   /* stylelint-disable-next-line rhds/no-unknown-token-name */
@@ -107,7 +97,6 @@
       );
 }
 
-/* Character count below the textarea */
 #char-count {
   /** Secondary text color for the counter */
   color: var(--rh-color-text-secondary);
@@ -117,7 +106,6 @@
   margin-block-start: var(--rh-space-xs, 4px);
 }
 
-/* Help text below the character count */
 #help-text {
   align-items: center;
   display: flex;
@@ -130,12 +118,11 @@
   }
 
   & rh-icon {
-    /** Icon size for status icons, matching rh-select */
+    /** Icon size for status icons */
     --rh-icon-size: var(--rh-textarea-icon-size, 14px);
   }
 }
 
-/* State border colors on the textarea */
 :host([state='success']) #input {
   border-color: var(--rh-color-border-status-success);
 }
@@ -148,12 +135,10 @@
   border-color: var(--rh-color-border-status-danger);
 }
 
-/* Bold help text when a state is active */
 :host([state]) #help-text-content {
   font-weight: var(--rh-font-weight-body-text-medium, 500);
 }
 
-/* State icon colors */
 .icon-success {
   color: var(--rh-color-icon-status-success);
 }
