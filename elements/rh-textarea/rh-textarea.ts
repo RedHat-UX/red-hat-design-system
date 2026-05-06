@@ -22,6 +22,8 @@ import styles from './rh-textarea.css';
  * @slot help-text - Help or error text displayed below the textarea.
  *                    Overrides the `help-text` attribute.
  * @csspart textarea - The inner native `<textarea>` element
+ *
+ * @alias textarea
  */
 @customElement('rh-textarea')
 @themable
