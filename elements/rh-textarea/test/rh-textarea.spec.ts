@@ -141,6 +141,23 @@ describe('<rh-textarea>', function() {
       const textbox = querySnapshot(snapshot, { role: 'textbox' });
       expect(textbox?.name).to.equal('Custom label');
     });
+
+    it('uses host aria-labelledby when set', async function() {
+      const container = await createFixture<HTMLDivElement>(html`
+        <div>
+          <h2 id="heading">Section title</h2>
+          <rh-textarea aria-labelledby="heading"></rh-textarea>
+        </div>
+      `);
+      const element = container.querySelector('rh-textarea')!;
+      await element.updateComplete;
+      // Query the shadow DOM directly because the test runner's a11y
+      // snapshot does not expose cross-root ariaLabelledByElements wiring.
+      const textarea = element.shadowRoot!.querySelector('textarea')!;
+      const heading = container.querySelector('#heading')!;
+      expect(textarea.hasAttribute('aria-label')).to.be.false;
+      expect(textarea.ariaLabelledByElements).to.include(heading);
+    });
   });
 
   describe('disabled', function() {
