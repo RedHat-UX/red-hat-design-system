@@ -3,6 +3,9 @@ tagName: rh-alert
 name: Alert
 type: element
 overallStatus: ready
+aka:
+  - Notification
+  - Toast
 libraries:
   figma: ready
   rhds: ready

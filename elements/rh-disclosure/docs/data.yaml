@@ -3,6 +3,9 @@ tagName: rh-disclosure
 name: Disclosure
 type: element
 overallStatus: ready
+aka:
+  - Details
+  - Collapsible
 libraries:
   figma: ready
   rhds: ready
