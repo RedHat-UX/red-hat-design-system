@@ -3,14 +3,6 @@
 [build.environment]
   NODE_OPTIONS = "--max_old_space_size=8192"
 
-# Workaround: @pwrs/cem slug filter fails to strip the rh- prefix for
-# rh-textarea, generating demo pages at /elements/rh-textarea/demo/ instead
-# of /elements/textarea/demo/. Rewrite so doc-site links resolve correctly.
-[[redirects]]
-  from = '/elements/textarea/demo/*'
-  to = '/elements/rh-textarea/demo/:splat'
-  status = 200
-
 [[redirects]]
   from = '/components/get-started/*'
   to = '/get-started/'
