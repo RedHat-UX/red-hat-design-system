@@ -412,9 +412,12 @@ export class RhTextarea extends LitElement {
   }
 
   /**
-   * Wires external <label> elements to the inner textarea via
-   * ariaLabelledByElements (cross-root ARIA, Baseline 2025).
-   * Falls back to accessible-label → aria-label when no <label> exists.
+   * Resolves the accessible name for the inner textarea.
+   * Priority:
+   *  1. `aria-label` on host
+   *  2. `aria-labelledby` / `ariaLabelledByElements` on host
+   *  3. Associated `<label>` elements via `for`/`id`
+   *  4. `accessible-label` attribute
    * Only touches the inner textarea element, not InternalsController.
    */
   #syncAccessibleName() {
@@ -428,6 +431,33 @@ export class RhTextarea extends LitElement {
       textarea.setAttribute('aria-label', hostAriaLabel);
       textarea.ariaLabelledByElements = [];
       return;
+    }
+
+    // Check programmatic element refs first:
+    // eg: `textarea.ariaLabelledByElements = [...authorLabelledBy];`
+    const authorLabelledBy = (this as HTMLElement).ariaLabelledByElements;
+    if (authorLabelledBy?.length) {
+      textarea.ariaLabelledByElements = [...authorLabelledBy];
+      textarea.removeAttribute('aria-label');
+      return;
+    }
+
+    // Then fall back to resolving the aria-labelledby attribute IDs:
+    // eg: `<rh-textarea aria-labelledby="my-id"><rh-textarea>`
+    const labelledByAttr = this.getAttribute('aria-labelledby')?.trim();
+    if (labelledByAttr) {
+      const root = this.getRootNode() as Document | ShadowRoot;
+
+      // Split `id`'s on spaces, look up ID,
+      // then filter out any that don't resolve:
+      const resolved = labelledByAttr.split(/\s+/)
+          .map(id => root.getElementById(id))
+          .filter((el): el is HTMLElement => el != null);
+      if (resolved.length) {
+        textarea.ariaLabelledByElements = resolved;
+        textarea.removeAttribute('aria-label');
+        return;
+      }
     }
 
     const labels = InternalsController.getLabels(this);
