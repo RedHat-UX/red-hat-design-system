@@ -63,6 +63,11 @@
     outline: 3px solid var(--rh-color-border-interactive);
     outline-offset: 3px;
   }
+
+  &::placeholder {
+    /** Textarea placeholder text color */
+    color: var(--rh-color-text-secondary);
+  }
 }
 
 :host([resize='none']) #input {
