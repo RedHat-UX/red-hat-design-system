@@ -100,8 +100,7 @@ select {
 }
 
 @supports (appearance: base-select) {
-  :host([scheme]) select,
-  select {
+  #scheme-dropdown {
     background-image: none;
   }
 
