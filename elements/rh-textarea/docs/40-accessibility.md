@@ -11,7 +11,7 @@ Every `<rh-textarea>` must have an accessible name. Use one of the following app
 <rh-textarea accessible-label="Additional comments"></rh-textarea>
 ```
 
-Users may also add an `aria-label` attribute on the host. This will override all other label sources.
+Users may also add an `aria-label` or `aria-labelledby` attribute on the host. `aria-label` overrides all other label sources; `aria-labelledby` takes priority over associated `<label>` elements and `accessible-label`.
 
 ## Disabled vs. readonly
 
@@ -22,7 +22,7 @@ Both `disabled` and `readonly` prevent editing, but they differ in important way
 
 ## ARIA attributes
 
-Always set ARIA attributes (e.g. `aria-invalid`, `aria-label`) on the `<rh-textarea>` host element. The component is a form-associated custom element, so the browser forwards host ARIA attributes to assistive technologies via `ElementInternals`.
+Always set ARIA attributes (e.g. `aria-invalid`, `aria-label`, `aria-labelledby`) on the `<rh-textarea>` host element. The component is a form-associated custom element, so the browser forwards host ARIA attributes to assistive technologies via `ElementInternals`.
 
 ## Validation and error state
 
