@@ -1005,11 +1005,13 @@
     --rh-color-surface-lightest: transparent;
     --rh-color-surface-darkest: transparent;
     --rh-space-xl: var(--unified-space-xl);
+
     font-size: var(--unified-font-size-body-text-sm);
 
     & rh-accordion-header {
       --rh-color-interactive-primary-default: transparent;
       --rh-color-surface-lighter: transparent;
+
       border-inline-end: none;
       border-radius: var(--unified-border-radius-action-plain);
     }
