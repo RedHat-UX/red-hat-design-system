@@ -1121,8 +1121,7 @@
     --rh-border-radius-default: var(--unified-border-radius-action-plain);
     --rh-color-border-interactive: var(--unified-color-interactive-primary-default);
     --rh-font-size-body-text-sm: var(--unified-font-size-body-text-sm);
-    --rh-breadcrumb-caret-image:
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 5 9' fill='none'%3E%3Cpath d='M.5 9a.5.5 0 0 1-.354-.146.5.5 0 0 1 0-.708L3.793 4.5.146.854a.5.5 0 0 1 0-.708.5.5 0 0 1 .708 0l3.823 3.823a.75.75 0 0 1 0 1.061L.854 8.854A.5.5 0 0 1 .5 9Z' fill='%23151515'/%3E%3C/svg%3E");
+    --rh-breadcrumb-caret-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 5 9' fill='none'%3E%3Cpath d='M.5 9a.5.5 0 0 1-.354-.146.5.5 0 0 1 0-.708L3.793 4.5.146.854a.5.5 0 0 1 0-.708.5.5 0 0 1 .708 0l3.823 3.823a.75.75 0 0 1 0 1.061L.854 8.854A.5.5 0 0 1 .5 9Z' fill='%23151515'/%3E%3C/svg%3E"); /* stylelint-disable-line @stylistic/declaration-colon-newline-after */
 
     & > ol > li > a[href]:not([aria-current]) {
       text-decoration: underline var(--unified-border-width-sm) dashed !important;
