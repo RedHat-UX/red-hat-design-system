@@ -126,6 +126,10 @@
     /** Icon size for status icons */
     --rh-icon-size: var(--rh-textarea-icon-size, 14px);
   }
+
+  rh-icon:not([icon]) {
+    display: none;
+  }
 }
 
 :host([state='success']) #input {
@@ -144,15 +148,15 @@
   font-weight: var(--rh-font-weight-body-text-medium, 500);
 }
 
-.icon-success {
+.icon.success {
   color: var(--rh-color-icon-status-success);
 }
 
-.icon-warning {
+.icon.warning {
   color: var(--rh-color-icon-status-warning);
 }
 
-.icon-danger {
+.icon.danger {
   color: var(--rh-color-icon-status-danger);
 }
 

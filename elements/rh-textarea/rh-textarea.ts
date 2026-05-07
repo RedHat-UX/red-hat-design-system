@@ -3,6 +3,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
 import { live } from 'lit/directives/live.js';
+import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
@@ -166,6 +167,13 @@ export class RhTextarea extends LitElement {
   override render() {
     const hideHelpText = this.#slots.isEmpty('help-text') && !this.helpText;
     const showCharCount = this.showCharacterCount && this.maxlength != null;
+    const success = this.state === 'success';
+    const warning = this.state === 'warning';
+    const danger = this.state === 'danger';
+    const helpIcon = success ? 'check-circle-fill'
+        : warning ? 'warning-fill'
+        : danger ? 'ban-fill'
+        : undefined;
 
     return html`
       <textarea id="input"
@@ -188,20 +196,9 @@ export class RhTextarea extends LitElement {
         ${this.value?.length ?? 0}/${this.maxlength}
       </div>
       <div id="help-text" ?hidden="${hideHelpText}">
-        <rh-icon ?hidden="${this.state !== 'success'}"
-                 class="icon-success"
+        <rh-icon class="icon ${classMap({ success, warning, danger })}"
                  set="ui"
-                 icon="check-circle-fill">
-        </rh-icon>
-        <rh-icon ?hidden="${this.state !== 'warning'}"
-                 class="icon-warning"
-                 set="ui"
-                 icon="warning-fill">
-        </rh-icon>
-        <rh-icon ?hidden="${this.state !== 'danger'}"
-                 class="icon-danger"
-                 set="ui"
-                 icon="ban-fill">
+                 icon="${ifDefined(helpIcon)}">
         </rh-icon>
         <slot id="help-text-content"
               name="help-text"><span aria-hidden="true">${this.helpText ?? ''}</span></slot>
