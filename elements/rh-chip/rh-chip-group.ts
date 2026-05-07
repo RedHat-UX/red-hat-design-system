@@ -20,8 +20,6 @@ import styles from './rh-chip-group.css' with { type: 'css' };
  *
  * @csspart legend - The `<legend>` element containing the
  *          accessible label, styled with `--rh-font-size-body-text-md`.
- *
- * @demo https://ux.redhat.com/elements/chip/demo/chip-group/ Chip Group
  */
 @customElement('rh-chip-group')
 export class RhChipGroup extends LitElement {
