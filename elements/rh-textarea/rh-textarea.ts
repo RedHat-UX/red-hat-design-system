@@ -267,7 +267,7 @@ export class RhTextarea extends LitElement {
   /** Sync aria-required and re-check validity when required changes. */
   @observes('required')
   private requiredChanged() {
-    this.#internals.ariaRequired = this.required ? 'true' : 'false';
+    this.#internals.ariaRequired = String(!!this.required);
     this.#updateValidity();
   }
 
