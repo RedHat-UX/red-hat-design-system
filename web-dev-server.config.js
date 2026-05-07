@@ -10,6 +10,7 @@ import {
   getAttribute,
   getTextContent,
   isElementNode,
+  isTextNode,
   query,
   removeAttribute,
   setAttribute,
@@ -123,6 +124,38 @@ function transformDevServerHTML(document) {
   }
 }
 
+
+const FRONTMATTER_RE = /^---\n[\s\S]*?\n---\n?/;
+
+/**
+ * Strip YAML frontmatter from demo HTML served by pfe-tools' template middleware.
+ * pfe-tools reads demo files raw, so frontmatter appears as visible text.
+ *
+ * NB: can be removed once we migrate to cem serve
+ */
+export function stripFrontmatterPlugin() {
+  return {
+    name: 'strip-frontmatter',
+    transform(context) {
+      if (!context.response.is('html') || typeof context.body !== 'string') {
+        return;
+      }
+      const document = parse(context.body);
+      const demoDiv = query(document, node =>
+        isElementNode(node)
+          && node.tagName === 'div'
+          && getAttribute(node, 'data-demo') != null);
+      if (!demoDiv || !isElementNode(demoDiv)) {
+        return;
+      }
+      const firstText = demoDiv.childNodes.find(n => isTextNode(n));
+      if (firstText && isTextNode(firstText) && FRONTMATTER_RE.test(firstText.value)) {
+        firstText.value = firstText.value.replace(FRONTMATTER_RE, '');
+        return { body: serialize(document) };
+      }
+    },
+  };
+}
 
 /**
  * Web dev server plugin to strip CSS import attributes from element source files
@@ -280,6 +313,7 @@ export default pfeDevServerConfig({
     },
   ],
   plugins: [
+    stripFrontmatterPlugin(),
     stripCssImportAttributesPlugin(),
     {
       name: 'watch-demos',
