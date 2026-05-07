@@ -8,3 +8,4 @@ libraries:
   rhds: ready
   shared: ready
   docs: ready
+since: v1.3.0

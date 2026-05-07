@@ -27,6 +27,7 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
+          version: scripts/version.sh
           publish: npx changeset publish
           commit: "chore: prepare release"
           title: "chore: prepare release"
