@@ -1,12 +1,10 @@
-import type { DirectiveResult } from 'lit/directive.js';
-
-import { CSSResult, LitElement, html, isServer, type PropertyValues } from 'lit';
+import { CSSResult, LitElement, type TemplateResult, html, isServer, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { styleMap } from 'lit/directives/style-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -26,17 +24,6 @@ function dedent(str: string) {
   const match = stripped.match(/^\s+/);
   const out = match ? stripped.replace(new RegExp(`^${match[0]}`, 'gm'), '') : str;
   return out.trim();
-}
-
-interface CodeLineHeightsInfo {
-  lines: string[];
-  lineHeights: (number | undefined)[];
-  sizer: HTMLElement;
-  oneLinerHeight: number;
-}
-
-interface ContentVisibilityAutoStateChangeEvent extends Event {
-  skipped: boolean;
 }
 
 const prismApplyPromises = new WeakMap();
@@ -191,27 +178,16 @@ export class RhCodeBlock extends LitElement {
     'legend',
   );
 
-  #prismOutput?: DirectiveResult;
+  #prismHighlightedHtml?: string;
 
   #copyFeedbackTimeout?: ReturnType<typeof setTimeout>;
 
-  #isIntersecting = false;
-  #ro?: ResizeObserver;
-
   #lines: string[] = [];
-  #lineHeights: `${string}px`[] = [];
+  #wrappedLines: TemplateResult[] = [];
 
   override connectedCallback() {
     super.connectedCallback();
-    if (!isServer) {
-      this.#updateResizeObserver();
-    }
     this.#onSlotChange();
-  }
-
-  override disconnectedCallback() {
-    super.disconnectedCallback();
-    this.#ro?.disconnect();
   }
 
   render() {
@@ -220,7 +196,7 @@ export class RhCodeBlock extends LitElement {
     const expandable = this.#lines.length > 5;
     const truncated = expandable && !fullHeight;
     const actions = !!this.actions.length;
-    const isIntersecting = this.#isIntersecting && this.lineNumbers !== 'hidden';
+    const hasWrappedLines = this.#wrappedLines.length > 0;
     const actionCopyLabelledBy =
        this.copyButtonState === 'default' ?
          'copy-to-clipboard-label'
@@ -229,17 +205,14 @@ export class RhCodeBlock extends LitElement {
            : 'copy-failed-label';
     return html`
       <div id="container"
-           class="${classMap({ actions, compact, expandable, fullHeight, isIntersecting, resizable, truncated, wrap, 'line-numbers': lineNumbers })}"
-           @code-action="${this.#onCodeAction}"
-           @contentvisibilityautostatechange="${this.#onVisibilityChange}">
+           class="${classMap({ actions, compact, expandable, fullHeight, resizable, truncated, wrap, 'line-numbers': lineNumbers })}"
+           @code-action="${this.#onCodeAction}">
         <div id="content-lines" tabindex="${ifDefined((!fullHeight || undefined) && 0)}">
-          <div id="sizers" aria-hidden="true"></div>
-          <ol id="line-numbers" inert aria-hidden="true">${this.#lineHeights.map((height, i) => html`
-            <li style="${styleMap({ height })}">${i + 1}</li>`)}
-          </ol>
-          <pre id="prism-output"
+          <div id="code-with-line-numbers"
                class="language-${this.language}"
-               ?hidden="${!this.#prismOutput}">${this.#prismOutput}</pre>
+               ?hidden="${!hasWrappedLines}"
+               aria-hidden="true"
+               inert>${this.#wrappedLines}</div>
           <!-- summary: code content (default slot)
                description: |
                  Expects a non-executable \`<script type="text/sample-...">\` or \`<pre>\`
@@ -248,7 +221,7 @@ export class RhCodeBlock extends LitElement {
                  and exposed to assistive technology as a scrollable code area;
                  avoid placing focusable or interactive children here. -->
           <slot id="content"
-                ?hidden="${!!this.#prismOutput}"
+                ?hidden="${hasWrappedLines}"
                 @slotchange="${this.#onSlotChange}"></slot>
         </div>
 
@@ -335,16 +308,16 @@ export class RhCodeBlock extends LitElement {
 
   protected override firstUpdated(): void {
     this.#computeLines();
-    // After computing lines, also update line heights if visible
-    this.#computeLineNumbers();
+    switch (this.highlighting) {
+      case 'prerendered': this.#wrapPrerenderedLines(); break;
+      case 'client': break;
+      default: this.#wrapDefaultContent(); break;
+    }
   }
 
   protected override updated(changed: PropertyValues<this>): void {
     if (changed.has('wrap')) {
       this.#wrapChanged();
-    }
-    if (changed.has('lineNumbers') && !isServer) {
-      this.#updateResizeObserver();
     }
     if (this.actions.length && !isServer) {
       import('@rhds/elements/rh-tooltip/rh-tooltip.js');
@@ -357,10 +330,12 @@ export class RhCodeBlock extends LitElement {
       // TODO: if we ever support other tokenizers e.g. highlightjs,
       // dispatch here off of some supplemental attribute like `tokenizer="highlightjs"`
       case 'prerendered': await this.#applyPrismPrerenderedStyles(); break;
+      default: this.#wrapDefaultContent(); break;
     }
     await this.#computeLines();
-    // After computing lines, also update line heights if visible
-    this.#computeLineNumbers();
+    if (this.highlighting === 'prerendered') {
+      this.#wrapPrerenderedLines();
+    }
   }
 
   async #applyPrismPrerenderedStyles() {
@@ -390,50 +365,54 @@ export class RhCodeBlock extends LitElement {
       const scripts = this.querySelectorAll('script[type]:not([type="javascript"])');
       const preprocess = this.dedent ? dedent : (x: string) => x;
       const textContent = preprocess(Array.from(scripts, x => x.textContent).join(''));
-      this.#prismOutput = await highlight(textContent, this.language);
-      this.requestUpdate('#prismOutput', {});
+      this.#prismHighlightedHtml = await highlight(textContent, this.language);
+      this.#wrapLinesInSpans(this.#prismHighlightedHtml);
       await this.updateComplete;
     }
   }
 
-  /**
-   * Handle content-visibility auto state changes
-   * When the element is rendered (not skipped), compute line numbers
-   * @param event - The contentvisibilityautostatechange event
-   */
-  #onVisibilityChange(event: Event) {
-    // skipped = true means content is NOT being rendered (off-screen)
-    // skipped = false means content IS being rendered (on/near screen)
-    const { skipped } = event as ContentVisibilityAutoStateChangeEvent;
-    const old = this.#isIntersecting;
-    this.#isIntersecting = !skipped;
+  #wrapLinesInSpans(htmlContent?: string) {
+    if (!htmlContent) {
+      this.#wrappedLines = [];
+      return;
+    }
+    const lines = htmlContent.split('\n');
+    this.#wrappedLines = lines.map(line => html`
+      <span class="line"><span class="line-content">${unsafeHTML(line || ' ')}</span></span>`);
+    this.requestUpdate();
+  }
 
-    if (old !== this.#isIntersecting) {
-      this.requestUpdate();
-      if (this.#isIntersecting && this.lineNumbers !== 'hidden') {
-        this.#computeLineNumbers();
-      }
+  #wrapDefaultContent() {
+    if (isServer) {
+      return;
+    }
+    const scripts = this.querySelectorAll('script[type]:not([type="javascript"])');
+    const preprocess = this.dedent ? dedent : (x: string) => x;
+    const textContent = preprocess(Array.from(scripts, x => x.textContent).join(''));
+    if (textContent) {
+      const div = document.createElement('div');
+      div.textContent = textContent;
+      this.#wrapLinesInSpans(div.innerHTML);
     }
   }
 
-  #updateResizeObserver() {
-    const shouldHaveObserver = this.wrap && this.lineNumbers !== 'hidden';
-
-    if (!shouldHaveObserver && this.#ro) {
-      // Clean up observer when not needed
-      this.#ro.disconnect();
-      this.#ro = undefined;
-    } else if (shouldHaveObserver && !this.#ro) {
-      // Create observer only when both conditions are met
-      this.#ro = new ResizeObserver(() => this.#computeLineNumbers());
-      this.#ro.observe(this);
+  #wrapPrerenderedLines() {
+    if (isServer || this.highlighting !== 'prerendered') {
+      return;
     }
+    const codes = this.querySelectorAll('code[class*="language-"]');
+    if (codes.length !== 1) {
+      return;
+    }
+    const [code] = codes;
+    if (code.querySelector('.rh-code-block-line')) {
+      return;
+    }
+    this.#wrapLinesInSpans(code.innerHTML);
   }
 
   async #wrapChanged() {
-    this.#updateResizeObserver();
     await this.updateComplete;
-    this.#computeLineNumbers();
     this.#setSlottedLabelState('action-label-wrap', this.wrap ? 'active' : undefined);
   }
 
@@ -455,80 +434,16 @@ export class RhCodeBlock extends LitElement {
       : []);
   }
 
-  /**
-   * Calculate the number of lines in the code block
-   */
   async #computeLines() {
     await this.updateComplete;
-    const codes =
-        this.#prismOutput ? [this.shadowRoot?.getElementById('prism-output')].filter(x => !!x)
-      : this.#getSlottedCodeElements();
-
-    this.#lines = codes.flatMap(element =>
-      element.textContent?.split(/\n(?!$)/g) ?? []);
+    if (this.#prismHighlightedHtml) {
+      this.#lines = this.#prismHighlightedHtml.split(/\n(?!$)/g);
+    } else {
+      const codes = this.#getSlottedCodeElements();
+      this.#lines = codes.flatMap(element =>
+        element.textContent?.split(/\n(?!$)/g) ?? []);
+    }
     this.requestUpdate();
-  }
-
-  /**
-   * Calculate line heights for line numbers display
-   * @license MIT
-   * Portions copyright prism.js authors (MIT license)
-   */
-  async #computeLineNumbers() {
-    if (!this.#isIntersecting || this.lineNumbers === 'hidden') {
-      return;
-    }
-
-    await this.updateComplete;
-    const codes =
-        this.#prismOutput ? [this.shadowRoot?.getElementById('prism-output')].filter(x => !!x)
-      : this.#getSlottedCodeElements();
-
-    const infos: CodeLineHeightsInfo[] = codes.map(element => {
-      const codeElement = this.#prismOutput ? element.querySelector('code') : element;
-      if (codeElement) {
-        const sizer = document.createElement('span');
-        sizer.className = 'sizer';
-        sizer.innerText = '0';
-        sizer.style.display = 'block';
-        this.shadowRoot?.getElementById('sizers')?.appendChild(sizer);
-        return {
-          lines: element.textContent?.split(/\n(?!$)/g) ?? [],
-          lineHeights: [],
-          sizer,
-          oneLinerHeight: sizer.getBoundingClientRect().height,
-        };
-      }
-    }).filter(x => !!x);
-
-    for (const { lines, lineHeights, sizer, oneLinerHeight } of infos) {
-      lineHeights[lines.length - 1] = undefined; // why?
-      lines.forEach((line, i) => {
-        if (line.length > 1) {
-          const e = sizer.appendChild(document.createElement('span'));
-          e.style.display = 'block';
-          e.textContent = line;
-        } else {
-          lineHeights[i] = oneLinerHeight;
-        }
-      });
-    }
-
-    for (const { sizer, lineHeights } of infos) {
-      let childIndex = 0;
-      for (let i = 0; i < lineHeights.length; i++) {
-        if (lineHeights[i] === undefined) {
-          lineHeights[i] = sizer.children[childIndex++].getBoundingClientRect()?.height ?? 0;
-        }
-      }
-      sizer.remove();
-    }
-
-    this.#lineHeights = infos.flatMap(x =>
-      x.lineHeights?.map(y =>
-        `${y ?? x.oneLinerHeight}px` as const));
-
-    this.requestUpdate('#linesNumbers', 0);
   }
 
   #onActionsClick(event: Event) {
