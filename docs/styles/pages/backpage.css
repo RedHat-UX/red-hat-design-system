@@ -112,6 +112,10 @@
 
   uxdot-header {
     grid-area: header;
+
+    & > h1 > rh-tag {
+      vertical-align: middle;
+    }
   }
 
   :where(article .container rh-code-block) {

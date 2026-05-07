@@ -79,6 +79,11 @@
         "description": "Element tag name (e.g., 'rh-button') or pattern name (e.g., 'filter', 'link')"
       },
       "uniqueItems": true
+    },
+    "since": {
+      "type": "string",
+      "pattern": "^v\\d+\\.\\d+\\.\\d+$",
+      "description": "The first stable release version that included this element (e.g., 'v1.0.0')"
     }
   },
   "required": ["type", "overallStatus", "libraries"],
