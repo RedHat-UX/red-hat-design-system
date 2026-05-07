@@ -18,6 +18,7 @@
     --unified-color-gray-50: #707070;
     --unified-color-gray-60: #4d4d4d;
     --unified-color-gray-70: #383838;
+    --unified-color-gray-80: #292929;
     --unified-color-gray-90: #1f1f1f;
     --unified-color-gray-95: #151515;
 
@@ -424,6 +425,16 @@
           var(--unified-color-gray-30),
           var(--unified-color-gray-50)
         );
+
+    /* Surface colors */
+    --unified-color-surface-primary:
+      light-dark(
+          white,
+          var(--unified-color-gray-80)
+        );
+
+    /* Box shadows */
+    --unified-box-shadow-floating: 0 0 10px 0 rgba(41, 41, 41, 0.15);
 
     /* Brand accent */
     --unified-color-brand-accent:
@@ -1017,6 +1028,17 @@
 
     /* Remove the internal container border so we can replace it on the host */
     --rh-border-width-md: 0;
+    --rh-length-xl: auto;
+    --rh-color-surface-dark: var(--unified-color-gray-80);
+
+    /* Replace status-specific background tints with primary surface */
+    --rh-color-teal-10: var(--unified-color-surface-primary);
+    --rh-color-surface-status-neutral: var(--unified-color-surface-primary);
+    --rh-color-surface-status-info: var(--unified-color-surface-primary);
+    --rh-color-surface-status-success: var(--unified-color-surface-primary);
+    --rh-color-surface-status-caution: var(--unified-color-surface-primary);
+    --rh-color-surface-status-warning: var(--unified-color-surface-primary);
+    --rh-color-surface-status-danger: var(--unified-color-surface-primary);
 
     border:
       var(--unified-border-width-md)
@@ -1053,7 +1075,10 @@
     }
 
     &[variant='toast'] {
-      border-radius: var(--unified-border-radius-large);
+      --rh-box-shadow-xl: none;
+      --rh-color-surface-lightest: var(--unified-color-surface-primary);
+
+      box-shadow: var(--unified-box-shadow-floating);
     }
   }
 }
