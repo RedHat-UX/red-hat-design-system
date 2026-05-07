@@ -1028,7 +1028,6 @@
 
     /* Remove the internal container border so we can replace it on the host */
     --rh-border-width-md: 0;
-
     --rh-length-xl: auto;
     --rh-color-surface-dark: var(--unified-color-gray-80);
 
