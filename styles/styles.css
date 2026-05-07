@@ -200,6 +200,10 @@
 
   uxdot-sidenav {
     grid-area: nav;
+
+    rh-tag {
+      margin-inline-start: var(--rh-space-md);
+    }
   }
 
   rh-footer-universal {
