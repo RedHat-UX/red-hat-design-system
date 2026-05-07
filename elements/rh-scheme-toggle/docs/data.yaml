@@ -16,3 +16,4 @@ libraries:
 relatedItems:
   - rh-button
   - rh-switch
+since: v3.1.0

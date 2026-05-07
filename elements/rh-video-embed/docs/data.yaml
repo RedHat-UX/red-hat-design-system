@@ -13,3 +13,4 @@ libraries:
 relatedItems:
   - rh-audio-player
   - rh-button
+since: v2.0.0

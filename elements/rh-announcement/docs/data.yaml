@@ -8,3 +8,4 @@ libraries:
   rhds: ready
   shared: planned
   docs: ready
+since: v3.0.0
