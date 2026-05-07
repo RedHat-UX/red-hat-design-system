@@ -240,8 +240,6 @@ export class RhTextarea extends LitElement {
     this.value = this._textarea.value;
   }
 
-  /* --- Form lifecycle callbacks --- */
-
   /**
    * Called when a parent form/fieldset is disabled or re-enabled.
    * @param disabled whether the control should be disabled
@@ -265,8 +263,6 @@ export class RhTextarea extends LitElement {
   protected formStateRestoreCallback(state: string) {
     this.value = state;
   }
-
-  /* --- Reactive property observers --- */
 
   /** Sync form value when the value property changes. */
   @observes('value')
@@ -297,8 +293,6 @@ export class RhTextarea extends LitElement {
     this.#updateValidity();
   }
 
-  /* --- Constraint Validation API --- */
-
   /**
    * Returns true if the element's value passes constraint validation.
    * Updates validity state before checking.
@@ -316,8 +310,6 @@ export class RhTextarea extends LitElement {
     this.#updateValidity();
     return this.#internals.reportValidity();
   }
-
-  /* --- Proxy methods for the inner textarea --- */
 
   /** Selects all text in the textarea. */
   select() {
