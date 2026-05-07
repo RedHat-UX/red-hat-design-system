@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/theming/themes/unified-theme/unified-theme-preview.css">
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-breadcrumb/rh-breadcrumb-lightdom.css">
 
 <style>
   .example-row {
@@ -8,9 +9,11 @@
 
 <div class="example-row">
   <rh-breadcrumb>
-    <a href="#">Home</a>
-    <a href="#">Section</a>
-    <a href="#">Subsection</a>
-    <a>Current page</a>
+    <ol>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Section</a></li>
+      <li><a href="#">Subsection</a></li>
+      <li><a href="#" aria-current="page">Current page</a></li>
+    </ol>
   </rh-breadcrumb>
 </div>
