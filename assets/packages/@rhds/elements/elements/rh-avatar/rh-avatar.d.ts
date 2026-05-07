@@ -16,8 +16,6 @@ import { LitElement, type PropertyValues } from 'lit';
  *
  * @cssprop [--rh-avatar-size=var(--rh-size-icon-06, 64px)] - Thumbnail width and height; capped at the `--rh-size-icon-06` token (64px).
  * @cssprop [--rh-avatar-colors] - Space-separated hex values overriding the built-in light-dark pattern color tokens.
- *
- * @alias avatar
  */
 export declare class RhAvatar extends LitElement {
     #private;

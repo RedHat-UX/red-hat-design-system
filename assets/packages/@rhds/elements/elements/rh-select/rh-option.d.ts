@@ -7,9 +7,6 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  * Must have text content or `label` for screen readers (ARIA `option` role).
  * Press Enter/Space to select; Arrow keys to navigate between options.
  * @summary A selectable option within a select list
- * @alias option
- * @demo https://ux.redhat.com/elements/select/demo/option-icons/ - Options with icons
- * @demo https://ux.redhat.com/elements/select/demo/option-descriptions/ - Options with descriptions
  */
 export declare class RhOption extends LitElement {
     #private;

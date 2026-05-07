@@ -10,8 +10,6 @@ export type SpinnerSize = RhSpinner['size'];
  * the ARIA live region. The element is not keyboard-focusable.
  *
  * @summary Notifies users their action is being processed or loaded
- *
- * @alias spinner
  */
 export declare class RhSpinner extends LitElement {
     static readonly styles: CSSStyleSheet[];

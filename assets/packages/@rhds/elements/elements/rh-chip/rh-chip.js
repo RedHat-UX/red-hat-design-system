@@ -38,8 +38,6 @@ export class ChipChangeEvent extends Event {
  *
  * @summary Filter information or indicate that a selection was made
  *
- * @alias chip
- *
  * @fires {ChipChangeEvent} change - Fires when the chip is checked or
  *        unchecked. The event's `checked` property (boolean) holds the
  *        chip's state before the change. Cancelable — canceling prevents

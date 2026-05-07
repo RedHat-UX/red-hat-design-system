@@ -12,8 +12,6 @@ const styles = css `#container{display:block;z-index:1000}a#container{position:f
  * must provide either an `href` attribute or a slotted `<a>` element.
  *
  * @summary Allows users to skip repetitive navigation for accessibility
- *
- * @alias skip-link
  */
 let RhSkipLink = class RhSkipLink extends LitElement {
     render() {

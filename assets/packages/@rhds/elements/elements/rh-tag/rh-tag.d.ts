@@ -10,9 +10,6 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  * keyboard navigation is suppressed on linked tags.
  *
  * @summary Categorizes content, adds context, or indicates status
- *
- * @alias tag
- *
  */
 export declare class RhTag extends LitElement {
     #private;

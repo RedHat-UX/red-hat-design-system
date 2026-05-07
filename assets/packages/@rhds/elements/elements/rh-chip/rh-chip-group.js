@@ -20,8 +20,6 @@ const styles = css `:host{--_spacer:var(--rh-space-lg,16px);display:block}fields
  *
  * @csspart legend - The `<legend>` element containing the
  *          accessible label, styled with `--rh-font-size-body-text-md`.
- *
- * @demo https://ux.redhat.com/elements/chip/demo/chip-group/ Chip Group
  */
 let RhChipGroup = class RhChipGroup extends LitElement {
     constructor() {

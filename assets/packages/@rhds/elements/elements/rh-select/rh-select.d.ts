@@ -17,7 +17,6 @@ export declare class RhSelectChangeEvent extends Event {
 /**
  * A select element allows users to Select from an expandable list.
  * @summary A control that provides a menu of options
- * @alias select
  * @fires {Event} open - Fires when the dropdown listbox opens. Does not bubble. The event has no `detail` payload.
  * @fires {Event} close - Fires when the dropdown listbox closes. Does not bubble. The event has no `detail` payload.
  * @fires {RhSelectChangeEvent} change - Fires when the selected value changes. Bubbles. The event has no `detail` payload; read the new value from the `value` property.

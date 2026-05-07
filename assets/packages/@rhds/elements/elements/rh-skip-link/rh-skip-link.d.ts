@@ -7,8 +7,6 @@ import { LitElement } from 'lit';
  * must provide either an `href` attribute or a slotted `<a>` element.
  *
  * @summary Allows users to skip repetitive navigation for accessibility
- *
- * @alias skip-link
  */
 export declare class RhSkipLink extends LitElement {
     static shadowRootOptions: {

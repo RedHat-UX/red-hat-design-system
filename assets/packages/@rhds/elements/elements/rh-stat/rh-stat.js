@@ -19,7 +19,7 @@ const styles = css `:host{display:block}div{width:100%;height:100%;display:flex;
  *
  * @summary Showcases a data point or quick fact visually
  *
- * @alias statistic
+ * @alias Statistic
  */
 let RhStat = class RhStat extends LitElement {
     constructor() {

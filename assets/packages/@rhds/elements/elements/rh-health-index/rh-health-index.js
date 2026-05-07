@@ -17,8 +17,6 @@ const styles = css `:host{display:inline-block}[hidden]{display:none!important}#
  * This element should not receive keyboard focus, as it is non-interactive.
  *
  * @summary     Displays a health grade for a particular item or package
- *
- * @alias health-index
  */
 let RhHealthIndex = RhHealthIndex_1 = class RhHealthIndex extends LitElement {
     constructor() {

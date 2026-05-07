@@ -17,8 +17,6 @@ const styles = css `:host{--rh-color-text-status-disabled:light-dark(var(--rh-co
  * `disabled`, all child options are disabled. Arrow keys and Tab navigate
  * through grouped options the same way as ungrouped options.
  * @summary Groups related rh-option elements within a select
- * @alias option-group
- * @demo https://ux.redhat.com/elements/select/demo/option-group/ - Options organized into labeled groups
  */
 let RhOptionGroup = class RhOptionGroup extends LitElement {
     constructor() {

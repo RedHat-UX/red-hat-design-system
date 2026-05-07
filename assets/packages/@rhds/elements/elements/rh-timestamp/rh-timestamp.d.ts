@@ -12,8 +12,6 @@ import { type DateTimeFormat } from '@patternfly/pfe-core/controllers/timestamp-
  * The element is not keyboard-focusable on its own.
  *
  * @summary Displays a formatted date and time value using locale-aware formatting
- *
- * @alias timestamp
  */
 export declare class RhTimestamp extends LitElement {
     #private;

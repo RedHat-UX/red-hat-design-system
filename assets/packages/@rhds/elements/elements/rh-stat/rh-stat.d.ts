@@ -9,7 +9,7 @@ import type { IconNameFor, IconSetName } from '@rhds/icons';
  *
  * @summary Showcases a data point or quick fact visually
  *
- * @alias statistic
+ * @alias Statistic
  */
 export declare class RhStat extends LitElement {
     #private;

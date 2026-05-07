@@ -53,8 +53,6 @@ export class VideoPlayEvent extends Event {
  *
  * @summary Embeds a YouTube video with a thumbnail preview and play button
  *
- * @alias video-embed
- *
  * @csspart figure - The outer `<figure>` container element
  * @csspart video - The container for the video, thumbnail, and play button
  * @csspart caption - The `<figcaption>` element for caption content

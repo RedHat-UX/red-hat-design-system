@@ -15,8 +15,6 @@ import { LitElement } from 'lit';
  * like `999+`.
  *
  * @summary Non-interactive numeric pill badge for counts and status
- *
- * @alias badge
  */
 export declare class RhBadge extends LitElement {
     static readonly styles: CSSStyleSheet[];

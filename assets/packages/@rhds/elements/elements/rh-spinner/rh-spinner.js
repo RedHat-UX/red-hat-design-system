@@ -15,8 +15,6 @@ const styles = css `:host{display:inline-block;text-align:center;width:max-conte
  * the ARIA live region. The element is not keyboard-focusable.
  *
  * @summary Notifies users their action is being processed or loaded
- *
- * @alias spinner
  */
 let RhSpinner = class RhSpinner extends LitElement {
     constructor() {

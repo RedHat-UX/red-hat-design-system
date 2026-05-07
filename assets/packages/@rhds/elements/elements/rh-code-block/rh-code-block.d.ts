@@ -23,8 +23,6 @@ export declare class RhCodeBlockCopyEvent extends Event {
  *
  * @summary Formats code strings within a container
  *
- * @alias code-block
- *
  * @fires {RhCodeBlockCopyEvent} copy - Fired when the user clicks the copy
  *        action button or activates it with Enter/Space. The event's
  *        `content` field (string) contains the text to copy. Listeners MAY

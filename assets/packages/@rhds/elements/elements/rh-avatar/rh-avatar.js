@@ -27,8 +27,6 @@ const styles = css `*,:after,:before{box-sizing:border-box}:host{display:block;c
  *
  * @cssprop [--rh-avatar-size=var(--rh-size-icon-06, 64px)] - Thumbnail width and height; capped at the `--rh-size-icon-06` token (64px).
  * @cssprop [--rh-avatar-colors] - Space-separated hex values overriding the built-in light-dark pattern color tokens.
- *
- * @alias avatar
  */
 let RhAvatar = class RhAvatar extends LitElement {
     constructor() {

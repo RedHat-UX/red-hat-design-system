@@ -7,8 +7,6 @@ import { LitElement, type PropertyValues } from 'lit';
  * This element should not receive keyboard focus, as it is non-interactive.
  *
  * @summary     Displays a health grade for a particular item or package
- *
- * @alias health-index
  */
 export declare class RhHealthIndex extends LitElement {
     #private;

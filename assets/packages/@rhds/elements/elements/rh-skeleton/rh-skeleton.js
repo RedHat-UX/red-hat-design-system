@@ -9,8 +9,6 @@ const styles = css `.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:var(
  * progressively. Must not receive focus or keyboard input.
  *
  * @summary A placeholder for content that is loading
- *
- * @alias skeleton
  */
 let RhSkeleton = class RhSkeleton extends LitElement {
     render() {

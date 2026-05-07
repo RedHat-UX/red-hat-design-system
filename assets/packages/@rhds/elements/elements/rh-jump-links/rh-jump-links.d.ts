@@ -8,8 +8,6 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  * with ScrollSpy auto-highlighting. Avoid nesting more than one
  * level deep.
  *
- * @alias jump-links
- *
  * @summary Persistent navigation links to page sections
  *
  * @fires toggle - Fired when the `expanded` disclosure widget is toggled.

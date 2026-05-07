@@ -10,7 +10,7 @@ import type { IconNameFor, IconSetName } from '@rhds/icons';
  *
  * @summary Styled link or button for prominent user actions
  *
- * @alias call-to-action
+ * @alias Call to action
  *
  */
 export declare class RhCta extends LitElement {

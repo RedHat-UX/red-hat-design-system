@@ -18,8 +18,6 @@ const styles = css `*{box-sizing:border-box}:host{position:relative;display:bloc
  *
  * @summary Organizes and displays information from a data set
  *
- * @alias table
- *
  * @csspart container - The outer wrapper around the table and summary
  *                      slots. Use to customize padding or background.
  *

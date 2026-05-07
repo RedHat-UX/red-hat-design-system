@@ -32,8 +32,6 @@ export { RhTab };
  *
  * @summary Arranges content in a contained view on the same page
  *
- * @alias tabs
- *
  * @fires {TabExpandEvent} expand - when a tab is selected.
  *        The event detail shape includes `active` (boolean)
  *        indicating prior state and `tab` (RhTab) referencing

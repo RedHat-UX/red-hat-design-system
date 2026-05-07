@@ -8,8 +8,6 @@ import { LitElement, type TemplateResult } from 'lit';
  * provide an ARIA accessible name. Supports form association (submit/reset).
  *
  * @summary Clickable button that triggers page or form actions
- *
- * @alias button
  */
 export declare class RhButton extends LitElement {
     #private;

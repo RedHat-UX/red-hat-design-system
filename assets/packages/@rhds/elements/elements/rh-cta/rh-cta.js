@@ -22,7 +22,7 @@ function isSupportedContent(el) {
  *
  * @summary Styled link or button for prominent user actions
  *
- * @alias call-to-action
+ * @alias Call to action
  *
  */
 let RhCta = class RhCta extends LitElement {

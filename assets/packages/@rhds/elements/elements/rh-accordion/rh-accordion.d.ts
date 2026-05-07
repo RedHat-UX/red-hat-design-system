@@ -25,8 +25,6 @@ export declare class AccordionCollapseEvent extends ComposedEvent {
  *
  * @summary Organizes content into expandable sections users can open or close
  *
- * @alias accordion
- *
  * @fires {AccordionExpandEvent} expand - Fires when a panel expands.
  *   Event detail: `toggle` (RhAccordionHeader), `panel` (RhAccordionPanel).
  * @fires {AccordionCollapseEvent} collapse - Fires when a panel collapses.

@@ -10,7 +10,6 @@ import { LitElement, type TemplateResult } from 'lit';
  * `delegatesFocus` so Tab focus passes to the anchor.
  *
  * @summary A link that can be used as a child of navigation elements
- * @alias navigation-link
  */
 export declare class RhNavigationLink extends LitElement {
     #private;

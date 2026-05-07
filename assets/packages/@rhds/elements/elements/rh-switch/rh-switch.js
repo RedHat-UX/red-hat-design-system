@@ -20,8 +20,6 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  *
  * @summary  A switch toggles the state of a setting (between on and off)
  *
- * @alias switch
- *
  * @fires {Event} change - Fires when the user toggles the switch on or
  *   off via click, Space, or Enter. Does not fire when disabled. The
  *   event bubbles and carries no detail; read the `checked` property

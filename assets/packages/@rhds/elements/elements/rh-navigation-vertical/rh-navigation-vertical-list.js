@@ -19,7 +19,6 @@ const styles = css `:host{display:block}details summary{display:flex;flex-direct
  * summary. Uses an ARIA `listitem` role for screen readers.
  *
  * @summary Vertical navigation group
- * @alias navigation-vertical-list
  *
  * @fires {Event} toggle - Fires when the group opens or closes. The
  *        event has no detail; check the `open` property on the element

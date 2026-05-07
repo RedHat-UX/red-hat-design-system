@@ -41,9 +41,6 @@ const L2 = html `
  * Enter activates. Supports box and open variants, default and small sizes.
  *
  * @summary Navigate between pages of content with steppers and input
- *
- * @alias pagination
- *
  */
 let RhPagination = RhPagination_1 = class RhPagination extends LitElement {
     constructor() {

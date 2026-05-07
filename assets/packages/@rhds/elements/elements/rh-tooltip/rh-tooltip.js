@@ -47,9 +47,6 @@ function getBestGuessAccessibleContent(node) {
  * an alternative accessible label.
  *
  * @summary Reveals a small area of information on hover
- *
- * @alias tooltip
- *
  */
 let RhTooltip = RhTooltip_1 = class RhTooltip extends LitElement {
     constructor() {

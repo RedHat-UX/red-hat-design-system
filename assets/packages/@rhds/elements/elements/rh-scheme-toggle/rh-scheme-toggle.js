@@ -16,8 +16,6 @@ const styles = css `:host{display:block}fieldset{align-items:center;border:0;dis
  * focuses the group; arrow keys allow selection between schemes.
  *
  * @summary Switches between light, dark, and system default color schemes
- *
- * @alias Scheme toggle
  */
 let RhSchemeToggle = class RhSchemeToggle extends LitElement {
     constructor() {

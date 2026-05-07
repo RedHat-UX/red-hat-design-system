@@ -59,8 +59,6 @@ const isStatusPageResponse = (data) => {
  * activate the link with Enter or Tab to focus it.
  *
  * @summary Communicates operational status of a website or domain
- *
- * @alias site-status
  */
 let RhSiteStatus = RhSiteStatus_1 = _a = class RhSiteStatus extends LitElement {
     constructor() {

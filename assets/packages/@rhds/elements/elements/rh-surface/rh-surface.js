@@ -16,8 +16,6 @@ const styles = css `:host{display:block;color:var(--rh-color-text-primary);backg
  * Users of AT perceive no additional semantics from this element.
  *
  * @summary Provides background color and theming context for children
- *
- * @alias surface
  */
 let RhSurface = class RhSurface extends LitElement {
     constructor() {

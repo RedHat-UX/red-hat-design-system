@@ -9,10 +9,6 @@ import { LitElement } from 'lit';
  * element is non-interactive display text.
  *
  * @summary Provides an estimated reading time for content
- *
- * @alias readtime
- *
- *
  */
 export declare class RhReadtime extends LitElement {
     #private;

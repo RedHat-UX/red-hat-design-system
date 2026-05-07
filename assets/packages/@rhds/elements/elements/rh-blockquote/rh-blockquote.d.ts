@@ -10,8 +10,6 @@ import { type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
  * and its source. Avoid placing interactive elements inside.
  *
  * @summary Highlights quotations and citations with text styles
- *
- * @alias blockquote
  */
 export declare class RhBlockquote extends LitElement {
     static readonly styles: CSSStyleSheet;

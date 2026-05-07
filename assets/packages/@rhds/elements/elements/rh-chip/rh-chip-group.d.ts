@@ -10,8 +10,6 @@ import { LitElement } from 'lit';
  *
  * @csspart legend - The `<legend>` element containing the
  *          accessible label, styled with `--rh-font-size-body-text-md`.
- *
- * @demo https://ux.redhat.com/elements/chip/demo/chip-group/ Chip Group
  */
 export declare class RhChipGroup extends LitElement {
     #private;

@@ -17,8 +17,6 @@ const styles = css `:host{color:var(--rh-color-text-primary);margin:0 auto;text-
  * and its source. Avoid placing interactive elements inside.
  *
  * @summary Highlights quotations and citations with text styles
- *
- * @alias blockquote
  */
 let RhBlockquote = class RhBlockquote extends LitElement {
     constructor() {

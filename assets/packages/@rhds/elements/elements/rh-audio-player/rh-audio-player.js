@@ -38,8 +38,6 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  *
  * @summary Plays audio clips with playback controls, transcript, and panels
  *
- * @alias audio-player
- *
  * @slot media - Must contain an `<audio>` block element with source children.
  *               The audio element is visually hidden but remains accessible
  *               to screen readers for native media controls.

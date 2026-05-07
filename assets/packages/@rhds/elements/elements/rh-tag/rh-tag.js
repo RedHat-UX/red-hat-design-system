@@ -18,9 +18,6 @@ const styles = css `:host{display:inline-flex}a{color:inherit;text-decoration:un
  * keyboard navigation is suppressed on linked tags.
  *
  * @summary Categorizes content, adds context, or indicates status
- *
- * @alias tag
- *
  */
 let RhTag = class RhTag extends LitElement {
     constructor() {

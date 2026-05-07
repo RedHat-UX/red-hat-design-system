@@ -14,8 +14,6 @@ import { LitElement } from 'lit';
  * For further accessibility details, see the [Accessibility](/elements/button-group/accessibility/) documentation.
  *
  * @summary Organize multiple related buttons into a single collection
- *
- * @alias button-group
  */
 export declare class RhButtonGroup extends LitElement {
     #private;

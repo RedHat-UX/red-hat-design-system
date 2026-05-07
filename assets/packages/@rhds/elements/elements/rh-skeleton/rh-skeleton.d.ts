@@ -4,8 +4,6 @@ import { LitElement } from 'lit';
  * progressively. Must not receive focus or keyboard input.
  *
  * @summary A placeholder for content that is loading
- *
- * @alias skeleton
  */
 export declare class RhSkeleton extends LitElement {
     static readonly styles: CSSStyleSheet[];

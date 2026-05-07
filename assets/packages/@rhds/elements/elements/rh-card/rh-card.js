@@ -21,8 +21,6 @@ const PALETTE_RE = /(er|est)+/g;
  * should be used for promotional content separate from the main page flow.
  *
  * @summary Groups content and optional actions in a contained layout
- *
- * @alias card
  */
 let RhCard = class RhCard extends LitElement {
     constructor() {

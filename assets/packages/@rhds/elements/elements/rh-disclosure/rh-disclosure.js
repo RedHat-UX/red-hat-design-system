@@ -35,8 +35,6 @@ export class DisclosureToggleEvent extends Event {
  *
  * @summary A disclosure toggles the visibility of content when triggered
  *
- * @alias disclosure
- *
  * @fires {DisclosureToggleEvent} toggle - Fires when the disclosure
  *        opens or closes. The event has no `detail` payload; read
  *        `event.target.open` to determine the new state. The event

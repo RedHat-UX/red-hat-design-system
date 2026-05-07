@@ -10,8 +10,6 @@ import { LitElement } from 'lit';
  * @summary Displays a hierarchical trail of links showing a location
  *          on a website
  *
- * @alias breadcrumb
- *
  * @cssprop [--rh-breadcrumb-caret-image={svg encoded as data URI}] -
  *          The `mask-image` separator icon between items; theme by
  *          providing an SVG data URI. Uses `--rh-color-icon-secondary`

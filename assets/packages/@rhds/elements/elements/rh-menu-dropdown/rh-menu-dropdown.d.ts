@@ -23,8 +23,6 @@ export declare class MenuDropdownSelectEvent extends Event {
  * @fires {MenuDropdownSelectEvent} select - Fired when a user selects an
  *        action or link from the menu. The event detail includes the selected
  *        `RhMenuItem` element and its text content.
- *
- * @alias menu-dropdown
  */
 export declare class RhMenuDropdown extends LitElement {
     #private;

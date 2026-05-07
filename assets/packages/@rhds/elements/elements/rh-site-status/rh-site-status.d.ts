@@ -65,8 +65,6 @@ export interface SummaryResponse {
  * activate the link with Enter or Tab to focus it.
  *
  * @summary Communicates operational status of a website or domain
- *
- * @alias site-status
  */
 export declare class RhSiteStatus extends LitElement {
     #private;

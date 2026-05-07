@@ -45,8 +45,6 @@ const toasts = new Set();
  *
  * @summary Notifies a user without blocking their workflow
  *
- * @alias alert
- *
  * @fires {AlertCloseEvent} close - Fires when dismissed via
  *        close button or action click. `AlertCloseEvent.action`
  *        contains the action string (e.g. 'close', 'confirm',

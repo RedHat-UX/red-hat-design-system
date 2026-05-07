@@ -23,8 +23,6 @@ const styles = css `slot,span{align-items:center;justify-content:center;position
  * like `999+`.
  *
  * @summary Non-interactive numeric pill badge for counts and status
- *
- * @alias badge
  */
 let RhBadge = class RhBadge extends LitElement {
     constructor() {

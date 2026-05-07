@@ -14,7 +14,7 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  *
  * @summary Displays a horizontal list of navigation links for related pages
  *
- * @alias subnavigation
+ * @alias Subnavigation
  *
  */
 export declare class RhSubnav extends LitElement {

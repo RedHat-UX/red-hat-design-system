@@ -18,8 +18,6 @@ const styles = css `:host{display:inline-block;height:max-content}[hidden]{displ
  * provide an ARIA accessible name. Supports form association (submit/reset).
  *
  * @summary Clickable button that triggers page or form actions
- *
- * @alias button
  */
 let RhButton = class RhButton extends LitElement {
     constructor() {

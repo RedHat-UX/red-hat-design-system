@@ -8,9 +8,6 @@ import { LitElement } from 'lit';
  * Enter activates. Supports box and open variants, default and small sizes.
  *
  * @summary Navigate between pages of content with steppers and input
- *
- * @alias pagination
- *
  */
 export declare class RhPagination extends LitElement {
     #private;

@@ -9,8 +9,6 @@ import { type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
  * should be used for promotional content separate from the main page flow.
  *
  * @summary Groups content and optional actions in a contained layout
- *
- * @alias card
  */
 export declare class RhCard extends LitElement {
     #private;

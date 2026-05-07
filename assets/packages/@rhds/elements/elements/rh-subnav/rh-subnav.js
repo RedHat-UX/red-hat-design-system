@@ -27,7 +27,7 @@ const styles = css `:host{display:block}:host([color-palette]){background-color:
  *
  * @summary Displays a horizontal list of navigation links for related pages
  *
- * @alias subnavigation
+ * @alias Subnavigation
  *
  */
 let RhSubnav = RhSubnav_1 = class RhSubnav extends LitElement {

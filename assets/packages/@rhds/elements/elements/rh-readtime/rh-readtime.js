@@ -125,10 +125,6 @@ function getReadingTime(words, wpm, imageCount = 0) {
  * element is non-interactive display text.
  *
  * @summary Provides an estimated reading time for content
- *
- * @alias readtime
- *
- *
  */
 let RhReadtime = class RhReadtime extends LitElement {
     constructor() {

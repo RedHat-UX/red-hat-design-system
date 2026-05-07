@@ -8,9 +8,6 @@ import { type Placement } from '@patternfly/pfe-core/controllers/floating-dom-co
  * an alternative accessible label.
  *
  * @summary Reveals a small area of information on hover
- *
- * @alias tooltip
- *
  */
 export declare class RhTooltip extends LitElement {
     #private;

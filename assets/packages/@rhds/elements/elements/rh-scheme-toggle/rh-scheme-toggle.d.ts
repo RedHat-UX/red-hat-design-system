@@ -16,8 +16,6 @@ type Scheme = 'light' | 'dark' | 'light dark';
  * focuses the group; arrow keys allow selection between schemes.
  *
  * @summary Switches between light, dark, and system default color schemes
- *
- * @alias Scheme toggle
  */
 export declare class RhSchemeToggle extends LitElement {
     #private;

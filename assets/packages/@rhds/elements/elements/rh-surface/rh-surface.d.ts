@@ -9,8 +9,6 @@ import { type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
  * Users of AT perceive no additional semantics from this element.
  *
  * @summary Provides background color and theming context for children
- *
- * @alias surface
  */
 export declare class RhSurface extends LitElement {
     #private;
