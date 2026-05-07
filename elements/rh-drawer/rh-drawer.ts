@@ -346,15 +346,15 @@ export class RhDrawer extends LitElement {
             </span>
           ` : nothing}
         </div>
-        ${hasContentSlot ? html`
+        ${!hasContentSlot ? nothing : html`
           <div id="content-container"
-               ?inert=${this.open && this.#panelRole === 'dialog'}>
+               ?inert="${this.open && this.#panelRole === 'dialog'}">
             <!-- csspart content: The main content area adjacent to the panel. -->
             <div id="content" part="content">
               <slot></slot>
             </div>
           </div>
-        ` : nothing}
+        `}
       </div>
     `;
   }
