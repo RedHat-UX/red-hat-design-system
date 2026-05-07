@@ -13,3 +13,4 @@ relatedItems:
   - rh-popover
   - rh-tooltip
   - rh-site-status
+since: v1.0.0

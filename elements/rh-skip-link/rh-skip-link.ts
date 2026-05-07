@@ -13,8 +13,6 @@ import styles from './rh-skip-link.css' with { type: 'css' };
  * must provide either an `href` attribute or a slotted `<a>` element.
  *
  * @summary Allows users to skip repetitive navigation for accessibility
- *
- * @alias skip-link
  */
 @customElement('rh-skip-link')
 export class RhSkipLink extends LitElement {
