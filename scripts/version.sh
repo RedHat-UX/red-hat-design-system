@@ -1,5 +1,5 @@
 #!/usr/bin/bash
 
-set -eou pipefail
+set -euo pipefail
 npx changeset version
 scripts/since.js
