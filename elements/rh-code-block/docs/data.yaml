@@ -14,3 +14,4 @@ relatedItems:
   - rh-blockquote
   - rh-card
   - rh-dialog
+since: v1.1.0
