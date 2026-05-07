@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
@@ -160,6 +160,11 @@ export class RhTextarea extends LitElement {
   /** Tracks whether the default value has been captured */
   #defaultCaptureDone = false;
 
+  /** True when disabled by own property OR by a parent fieldset. */
+  get #disabled() {
+    return (!isServer && this.matches(':disabled')) || this.disabled;
+  }
+
   override connectedCallback() {
     super.connectedCallback();
     if (!this.#defaultCaptureDone) {
@@ -213,8 +218,8 @@ export class RhTextarea extends LitElement {
                 rows="${ifDefined(this.rows)}"
                 wrap="${ifDefined(this.wrap)}"
                 ?required="${this.required}"
-                ?readonly="${this.disabled || this.readonly}"
-                aria-disabled="${String(!!this.disabled) as 'true' | 'false'}"
+                ?readonly="${this.#disabled || this.readonly}"
+                aria-disabled="${String(!!this.#disabled) as 'true' | 'false'}"
                 @input="${this.#onInput}"
                 @change="${this.#onInput}"
       ></textarea>
@@ -242,10 +247,21 @@ export class RhTextarea extends LitElement {
 
   /**
    * Called when a parent form/fieldset is disabled or re-enabled.
-   * @param disabled whether the control should be disabled
+   * Does NOT set this.disabled to avoid the whatwg/html#8365 one-way
+   * trap where reflecting the attribute prevents future callbacks.
+   * Instead re-renders and syncs form value; #disabled checks :disabled.
    */
-  protected formDisabledCallback(disabled: boolean) {
-    this.disabled = disabled;
+  protected async formDisabledCallback(): Promise<void> {
+    await this.updateComplete;
+    // Sync form value because rh-textarea uses aria-disabled (not native
+    // disabled), so the browser won't exclude the value automatically.
+    if (this.#disabled) {
+      this.#internals.setFormValue(null);
+    } else {
+      this.#internals.setFormValue(this.value ?? '');
+    }
+    this.#updateValidity();
+    this.requestUpdate();
   }
 
   /** Called when the parent form is reset. Restores the default value. */
@@ -267,7 +283,7 @@ export class RhTextarea extends LitElement {
   /** Sync form value when the value property changes. */
   @observes('value')
   private valueChanged() {
-    if (this.disabled) {
+    if (this.#disabled) {
       this.#internals.setFormValue(null);
     } else {
       this.#internals.setFormValue(this.value ?? '');
@@ -275,10 +291,10 @@ export class RhTextarea extends LitElement {
     this.#updateValidity();
   }
 
-  /** Re-sync form value and validity when disabled changes. */
+  /** Re-sync form value and validity when the disabled property changes. */
   @observes('disabled')
   private disabledChanged() {
-    if (this.disabled) {
+    if (this.#disabled) {
       this.#internals.setFormValue(null);
     } else {
       this.#internals.setFormValue(this.value ?? '');
@@ -402,7 +418,7 @@ export class RhTextarea extends LitElement {
    */
   #updateValidity() {
     // Disabled controls are barred from constraint validation per HTML spec
-    if (this.disabled) {
+    if (this.#disabled) {
       this.#internals.setValidity({});
       return;
     }
