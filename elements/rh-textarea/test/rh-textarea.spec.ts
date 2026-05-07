@@ -192,6 +192,133 @@ describe('<rh-textarea>', function() {
     });
   });
 
+  describe('in a fieldset', function() {
+    let form: HTMLFormElement;
+    let fieldset: HTMLFieldSetElement;
+    let element: RhTextarea;
+
+    beforeEach(async function() {
+      form = await createFixture<HTMLFormElement>(html`
+        <form>
+          <fieldset>
+            <rh-textarea name="notes" value="hello" accessible-label="Notes"></rh-textarea>
+          </fieldset>
+        </form>
+      `);
+      fieldset = form.querySelector('fieldset')!;
+      element = form.querySelector('rh-textarea')!;
+      await element.updateComplete;
+    });
+
+    describe('disabling the fieldset', function() {
+      beforeEach(async function() {
+        fieldset.disabled = true;
+        await element.updateComplete;
+        await nextFrame();
+      });
+
+      it('matches :disabled pseudo-class', function() {
+        expect(element.matches(':disabled')).to.be.true;
+      });
+
+      it('is disabled in a11y tree', async function() {
+        const snapshot = await a11ySnapshot();
+        const textbox = querySnapshot(snapshot, { role: 'textbox' });
+        expect(textbox?.disabled).to.be.true;
+      });
+
+      it('makes inner textarea readonly', function() {
+        const textarea = element.shadowRoot!.querySelector('textarea')!;
+        expect(textarea.hasAttribute('readonly')).to.be.true;
+      });
+
+      it('excludes value from FormData', function() {
+        const formData = new FormData(form);
+        expect(formData.get('notes')).to.be.null;
+      });
+
+      describe('then re-enabling the fieldset', function() {
+        beforeEach(async function() {
+          fieldset.disabled = false;
+          await element.updateComplete;
+          await nextFrame();
+        });
+
+        it('no longer matches :disabled', function() {
+          expect(element.matches(':disabled')).to.be.false;
+        });
+
+        it('is not disabled in a11y tree', async function() {
+          const snapshot = await a11ySnapshot();
+          const textbox = querySnapshot(snapshot, { role: 'textbox' });
+          expect(textbox?.disabled).to.not.be.true;
+        });
+
+        it('includes value in FormData again', function() {
+          const formData = new FormData(form);
+          expect(formData.get('notes')).to.equal('hello');
+        });
+      });
+
+      // Reproduces the whatwg/html#8365 one-way trap scenario:
+      // disable fieldset -> disable element -> enable element -> enable fieldset
+      describe('then disabling the element', function() {
+        beforeEach(async function() {
+          element.disabled = true;
+          await element.updateComplete;
+        });
+
+        describe('then enabling the element', function() {
+          beforeEach(async function() {
+            element.disabled = false;
+            await element.updateComplete;
+          });
+
+          describe('then enabling the fieldset', function() {
+            beforeEach(async function() {
+              fieldset.disabled = false;
+              await element.updateComplete;
+              await nextFrame();
+            });
+
+            it('is not disabled', function() {
+              expect(element.matches(':disabled')).to.be.false;
+            });
+
+            it('includes value in FormData', function() {
+              const formData = new FormData(form);
+              expect(formData.get('notes')).to.equal('hello');
+            });
+          });
+        });
+      });
+    });
+
+    describe('fieldset-disabled skips validation', function() {
+      let requiredElement: RhTextarea;
+
+      beforeEach(async function() {
+        const requiredForm = await createFixture<HTMLFormElement>(html`
+          <form>
+            <fieldset>
+              <rh-textarea name="notes" required accessible-label="Notes"></rh-textarea>
+            </fieldset>
+          </form>
+        `);
+        const fs = requiredForm.querySelector('fieldset')!;
+        requiredElement = requiredForm.querySelector('rh-textarea')!;
+        await requiredElement.updateComplete;
+        fs.disabled = true;
+        await requiredElement.updateComplete;
+        await nextFrame();
+      });
+
+      it('checkValidity returns true when fieldset-disabled', function() {
+        expect(requiredElement.checkValidity()).to.be.true;
+      });
+    });
+  });
+
   describe('readonly', function() {
     let element: RhTextarea;
 
