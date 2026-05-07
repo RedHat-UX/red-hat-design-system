@@ -125,7 +125,7 @@ function transformDevServerHTML(document) {
 }
 
 
-const FRONTMATTER_RE = /^---\n[\s\S]*?\n---\n?/;
+const FRONTMATTER_RE = /^\s*---\n[\s\S]*?\n---\n?/;
 
 /**
  * Strip YAML frontmatter from demo HTML served by pfe-tools' template middleware.
