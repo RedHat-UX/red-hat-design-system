@@ -68,6 +68,32 @@ export class RhTextarea extends LitElement {
    */
   @property({ attribute: 'help-text' }) helpText?: string;
 
+  /**
+   * Validation message shown when `required` is set and the field is empty.
+   */
+  @property({ attribute: 'value-missing-message' })
+  valueMissingMessage = 'Please fill out this field.';
+
+  /**
+   * Validation message shown when the value is shorter than `minlength`.
+   * Use `{minlength}` and `{length}` as placeholders for the constraint
+   * and current character count. The component will update those
+   * placeholders to their correct respective values.
+   */
+  @property({ attribute: 'too-short-message' })
+  tooShortMessage = 'Please lengthen this text to {minlength} characters or more'
+    + ' (you are currently using {length} characters).';
+
+  /**
+   * Validation message shown when the value exceeds `maxlength`.
+   * Use `{maxlength}` and `{length}` as placeholders for the constraint
+   * and current character count. The component will update those
+   * placeholders to their correct respective values.
+   */
+  @property({ attribute: 'too-long-message' })
+  tooLongMessage = 'Please shorten this text to {maxlength} characters or less'
+    + ' (you are currently using {length} characters).';
+
   /** Maximum number of characters (UTF-16 code units) allowed. */
   @property({ type: Number, reflect: true }) maxlength?: number;
 
@@ -363,7 +389,18 @@ export class RhTextarea extends LitElement {
     return this.#internals.validationMessage;
   }
 
-  /* --- Private methods --- */
+  /**
+   * Replace `{key}` placeholders in a validation message with actual values.
+   * @param message template string containing `{key}` tokens
+   * @param vars map of placeholder names to their replacement values
+   */
+  #interpolate(message: string, vars: Record<string, string | number>): string {
+    let result = message;
+    for (const [key, val] of Object.entries(vars)) {
+      result = result.replace(`{${key}}`, String(val));
+    }
+    return result;
+  }
 
   /**
    * Syncs constraint validity with current state. Checks `required`,
@@ -384,7 +421,7 @@ export class RhTextarea extends LitElement {
     if (this.required && !this.value) {
       this.#internals.setValidity(
         { valueMissing: true },
-        'Please fill out this field.',
+        this.valueMissingMessage,
         anchor,
       );
       return;
@@ -393,7 +430,10 @@ export class RhTextarea extends LitElement {
     if (this.minlength != null && len < this.minlength) {
       this.#internals.setValidity(
         { tooShort: true },
-        `Please lengthen this text to ${this.minlength} characters or more (you are currently using ${len} characters).`,
+        this.#interpolate(this.tooShortMessage, {
+          minlength: this.minlength,
+          length: len,
+        }),
         anchor,
       );
       return;
@@ -402,7 +442,10 @@ export class RhTextarea extends LitElement {
     if (this.maxlength != null && len > this.maxlength) {
       this.#internals.setValidity(
         { tooLong: true },
-        `Please shorten this text to ${this.maxlength} characters or less (you are currently using ${len} characters).`,
+        this.#interpolate(this.tooLongMessage, {
+          maxlength: this.maxlength,
+          length: len,
+        }),
         anchor,
       );
       return;
