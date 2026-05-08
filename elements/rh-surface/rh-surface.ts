@@ -16,8 +16,6 @@ import styles from './rh-surface.css' with { type: 'css' };
  * Users of AT perceive no additional semantics from this element.
  *
  * @summary Provides background color and theming context for children
- *
- * @alias surface
  */
 @customElement('rh-surface')
 @colorPalettes

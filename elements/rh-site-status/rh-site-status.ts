@@ -125,8 +125,6 @@ const isStatusPageResponse = (data: unknown): data is SummaryResponse => {
  * activate the link with Enter or Tab to focus it.
  *
  * @summary Communicates operational status of a website or domain
- *
- * @alias site-status
  */
 @customElement('rh-site-status')
 @themable

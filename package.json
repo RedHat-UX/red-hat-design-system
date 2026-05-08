@@ -1,6 +1,6 @@
 {
   "name": "@rhds/elements",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "Red Hat Design System Elements",
   "overrides": {
     "playwright": "~1.48.0"
@@ -318,7 +318,7 @@
     "@patternfly/icons": "^1.0.3",
     "@patternfly/pfe-tools": "^6.0.1",
     "@playwright/test": "~1.48.0",
-    "@pwrs/cem": "^0.9.19",
+    "@pwrs/cem": "^0.10.3",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@stylistic/eslint-plugin-js": "^2.13.0",
     "@stylistic/stylelint-config": "^2.0.0",

@@ -9,8 +9,6 @@ import styles from './rh-skeleton.css' with { type: 'css' };
  * progressively. Must not receive focus or keyboard input.
  *
  * @summary A placeholder for content that is loading
- *
- * @alias skeleton
  */
 @customElement('rh-skeleton')
 export class RhSkeleton extends LitElement {
