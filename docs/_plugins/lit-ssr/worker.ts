@@ -1,8 +1,8 @@
-import type { CSSResult, CSSResultOrNative, LitElement, ReactiveController } from 'lit';
+import type { CSSResult, LitElement, ReactiveController } from 'lit';
 import type { RenderInfo } from '@lit-labs/ssr';
 import type { RHDSSSRController } from '@rhds/elements/lib/ssr-controller.ts';
 import type { RenderRequestMessage, RenderResponseMessage } from './lit.js';
-import type { Thunk, ThunkedRenderResult } from '@lit-labs/ssr/lib/render-result.js';
+import type { ThunkedRenderResult } from '@lit-labs/ssr/lib/render-result.js';
 
 import '@patternfly/pfe-core/ssr-shims.js';
 
@@ -52,12 +52,20 @@ for (const bareSpec of imports) {
 }
 /* eslint-enable no-console */
 
+const SHEET_MARKER_RE = /^\/\*\s*@sheet:([\w-]+)\s*\*\//;
+const specifierMap = new Map<string, string>();
+
 class RHDSSSRableRenderer extends LitElementRenderer {
-  static styleCache = new Map<string, Thunk>();
+  // Eagerly processed CSS strings, not thunks. connectedCallback() must store
+  // the final CSS in specifierMap before rendering so post-processing can build
+  // the shared <style type="module"> blocks for <head>. A thunk would be too late.
+  static styleCache = new Map<string, string>();
 
   static isRHDSSSRController(ctrl: ReactiveController): ctrl is RHDSSSRController {
     return !!(ctrl as RHDSSSRController).isRHDSSSRController;
   }
+
+  #specifiers: string[] = [];
 
   getControllers() {
     const element = (this.element as LitElement & { _$EO: Set<ReactiveController> });
@@ -65,67 +73,93 @@ class RHDSSSRableRenderer extends LitElementRenderer {
         .filter(RHDSSSRableRenderer.isRHDSSSRController);
   }
 
-  override renderShadow(renderInfo: RenderInfo): ThunkedRenderResult {
-    return [
-      // Render styles.
-      this.#renderStyles(),
-      // Thunk that sets up controllers first, then renders template
-      async () => {
-        for (const controller of this.getControllers()) {
-          if (controller.ssrSetup) {
-            await controller.ssrSetup(renderInfo);
-          }
+  // Extract @sheet: markers from elementStyles after the element is constructed.
+  // Builds #specifiers for this instance's host/template attributes, and populates
+  // the page-level specifierMap so each stylesheet is processed and emitted only once.
+  override connectedCallback() {
+    super.connectedCallback();
+    const styles = (this.element.constructor as typeof LitElement).elementStyles ?? [];
+    for (const style of styles) {
+      const { cssText } = style as CSSResult;
+      const match = cssText.match(SHEET_MARKER_RE);
+      if (match) {
+        const specifier = match[1];
+        this.#specifiers.push(specifier);
+        if (!specifierMap.has(specifier)) {
+          const stripped = cssText.slice(match[0].length).trimStart();
+          specifierMap.set(specifier, this.#processCSS(stripped, specifier));
         }
-        return renderValue(
-          // @ts-expect-error: if upstream can do it, so can we
-          this.element.render(),
-          renderInfo,
-        );
-      },
-    ];
-  }
-
-  #renderStyles(): Thunk {
-    const styles = (this.element.constructor as typeof LitElement).elementStyles;
-    if (styles !== undefined && styles.length > 0) {
-      return () => [
-        '<style>',
-        ...this.thunkStyles(styles),
-        '</style>',
-      ];
-    } else {
-      return () => '';
+      }
     }
   }
 
-  private thunkStyles(styles: CSSResultOrNative[]): Thunk[] {
-    return styles.flatMap(style => {
-      const { cssText } = style as CSSResult;
-      if (!RHDSSSRableRenderer.styleCache.has(cssText)) {
-        const processed = () => {
-          try {
-            const { code } = transform({
-              filename: 'constructed-stylesheet.css',
-              code: Buffer.from(cssText),
-              minify: true,
-              include: Features.Nesting,
-            });
-            // Fix lightningcss normalizing inherit to normal for color-scheme
-            // https://github.com/parcel-bundler/lightningcss/issues/821#issuecomment-3719524299
-            return code
-                .toString()
-                .replaceAll(
-                  'color-scheme:normal',
-                  'color-scheme:inherit',
-                );
-          } catch {
-            return cssText;
-          }
-        };
-        RHDSSSRableRenderer.styleCache.set(cssText, processed);
+  override renderAttributes() {
+    const result = super.renderAttributes();
+    if (this.#specifiers.length > 0) {
+      result.push(` shadowrootadoptedstylesheets="${this.#specifiers.join(' ')}"`);
+    }
+    return result;
+  }
+
+  override renderShadow(renderInfo: RenderInfo): ThunkedRenderResult {
+    const result: ThunkedRenderResult = [];
+
+    if (this.#specifiers.length > 0) {
+      result.push(`<!--@adopted:${this.#specifiers.join(' ')}-->`);
+    }
+
+    // Fallback for styles without @sheet: markers. Marked styles are already in
+    // specifierMap and will be emitted once in <head>. Anything else renders
+    // inline so nothing breaks.
+    const inlineStyles = ((this.element.constructor as typeof LitElement).elementStyles ?? [])
+        .filter(s => !SHEET_MARKER_RE.test((s as CSSResult).cssText));
+    if (inlineStyles.length > 0) {
+      result.push(() => [
+        '<style>',
+        ...inlineStyles.map(s => this.#processCSS((s as CSSResult).cssText)),
+        '</style>',
+      ]);
+    }
+
+    result.push(async () => {
+      for (const controller of this.getControllers()) {
+        if (controller.ssrSetup) {
+          await controller.ssrSetup(renderInfo);
+        }
       }
-      return [RHDSSSRableRenderer.styleCache.get(cssText)!];
+      return renderValue(
+        // @ts-expect-error: if upstream can do it, so can we
+        this.element.render(),
+        renderInfo,
+      );
     });
+
+    return result;
+  }
+
+  #processCSS(cssText: string, cacheKey?: string): string {
+    const key = cacheKey ?? cssText;
+    if (!RHDSSSRableRenderer.styleCache.has(key)) {
+      try {
+        const { code } = transform({
+          filename: 'constructed-stylesheet.css',
+          code: Buffer.from(cssText),
+          minify: true,
+          include: Features.Nesting,
+        });
+        // Fix lightningcss normalizing inherit to normal for color-scheme
+        // https://github.com/parcel-bundler/lightningcss/issues/821#issuecomment-3719524299
+        RHDSSSRableRenderer.styleCache.set(key, code
+            .toString()
+            .replaceAll(
+              'color-scheme:normal',
+              'color-scheme:inherit',
+            ));
+      } catch {
+        RHDSSSRableRenderer.styleCache.set(key, cssText);
+      }
+    }
+    return RHDSSSRableRenderer.styleCache.get(key)!;
   }
 }
 
@@ -142,6 +176,30 @@ class UnsafeHTMLStringsArray extends Array {
   }
 }
 
+function postProcessAdoptedStyleSheets(html: string): string {
+  if (specifierMap.size === 0) {
+    return html;
+  }
+
+  let processed = html.replace(
+    /(<template\s+shadowroot="[^"]*"\s+shadowrootmode="[^"]*"(?:\s+shadowrootdelegatesfocus)?)(>)\s*<!--@adopted:([\w -]+)-->/g,
+    (_, open, close, specs) => `${open} shadowrootadoptedstylesheets="${specs.trim()}"${close}`,
+  );
+
+  const styleBlocks = Array.from(specifierMap.entries())
+      .map(([name, css]) => `<style type="module" specifier="${name}">${css}</style>`)
+      .join('\n');
+
+  const headClose = processed.indexOf('</head>');
+  if (headClose !== -1) {
+    processed = `${processed.slice(0, headClose)}${styleBlocks}\n${processed.slice(headClose)}`;
+  } else {
+    processed = `${styleBlocks}\n${processed}`;
+  }
+
+  return processed;
+}
+
 /**
  * Render a page using lit-ssr
  *
@@ -154,6 +212,7 @@ export default async function renderPage({
   content,
   slotControllerElements,
 }: RenderRequestMessage): Promise<RenderResponseMessage> {
+  specifierMap.clear();
   const start = performance.now();
   const tpl = html(new UnsafeHTMLStringsArray(content));
   const result = render(tpl, {
@@ -162,6 +221,7 @@ export default async function renderPage({
     slotControllerElements,
   } as unknown as RenderInfo);
   const rendered = await collectResult(result);
+  const postProcessed = postProcessAdoptedStyleSheets(rendered);
   const end = performance.now();
-  return { page, rendered, durationMs: end - start };
+  return { page, rendered: postProcessed, durationMs: end - start };
 }

@@ -1,5 +1,6 @@
 import { transform } from '@pwrs/lit-css';
 import { readFile } from 'node:fs/promises';
+import { basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 interface HookContext {
@@ -15,7 +16,12 @@ export async function load(url: string, context: HookContext, nextLoad: LoadFunc
   if (url.endsWith('.css')) {
     if (!cache.has(url)) {
       const filePath = fileURLToPath(new URL(url));
-      const css = await readFile(filePath, 'utf8');
+      const specifier = basename(filePath, '.css');
+      const raw = await readFile(filePath, 'utf8');
+      // Inject a marker so the SSR renderer can identify this stylesheet by name.
+      // CSSResult.cssText carries no filename, so without this the renderer can't
+      // deduplicate styles or assign a specifier for shadowrootadoptedstylesheets.
+      const css = `/* @sheet:${specifier} */${raw}`;
       cache.set(url, await transform({ css, filePath }));
     }
     const format = 'module';
