@@ -776,7 +776,7 @@
 
     /* Focus ring pseudo-element (shared across all variants) */
     &::part(container):after {
-      --rh-border-width-sm: 2px;
+      --rh-border-width-sm: var(--unified-border-width-md);
 
       border-width: var(--unified-cta-border-width-focus-ring);
       border-radius: var(--unified-border-radius-pill);
