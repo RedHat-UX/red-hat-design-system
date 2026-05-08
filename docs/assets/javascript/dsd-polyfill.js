@@ -1,33 +1,29 @@
 if (!('shadowRootAdoptedStyleSheets' in HTMLTemplateElement.prototype)) {
-  (function applyAdoptedStyleSheets(root) {
-    const ATTR = 'shadowrootadoptedstylesheets';
-    const sheets = new Map();
-    root
-        .querySelectorAll('style[type=module][specifier]')
-        .forEach(function(style) {
-          const sheet = new CSSStyleSheet();
-          sheet.replaceSync(style.textContent);
-          sheets.set(style.getAttribute('specifier'), sheet);
-        });
-    (function apply(node) {
-      node.querySelectorAll(`[${ATTR}]`).forEach(function(el) {
-        if (el.shadowRoot) {
-          el.shadowRoot.adoptedStyleSheets.push(
-            ...el
-                .getAttribute(ATTR)
-                .trim()
-                .split(/\s+/)
-                .flatMap(function(n) {
-                  return sheets.get(n) ? [sheets.get(n)] : [];
-                })
-          );
-        }
-      });
-      node.querySelectorAll('*').forEach(function(el) {
-        if (el.shadowRoot) {
-          apply(el.shadowRoot);
-        }
-      });
-    })(root);
-  })(document);
+  const SHEET_ATTR = 'shadowRootAdoptedStyleSheets';
+  const STYLE_SEL = 'style[type="module"][specifier]:not([specifier=""])';
+  const HOST_SEL = `[${SHEET_ATTR}]:not([${SHEET_ATTR}=""])`;
+  const sheets = new Map();
+
+  function deepQuery(sel, root) {
+    const results = [...root.querySelectorAll(sel)];
+    for (const el of root.querySelectorAll('*')) {
+      if (el.localName.includes('-') && el.shadowRoot) {
+        results.push(...deepQuery(sel, el.shadowRoot));
+      }
+    }
+    return results;
+  }
+
+  for (const el of deepQuery(`${STYLE_SEL}, ${HOST_SEL}`, document)) {
+    if (el.localName === 'style') {
+      const sheet = new CSSStyleSheet();
+      sheet.replaceSync(el.textContent);
+      sheets.set(el.getAttribute('specifier').trim(), sheet);
+    } else if (el.shadowRoot) {
+      el.shadowRoot.adoptedStyleSheets.push(
+        ...el.getAttribute(SHEET_ATTR).trim().split(/\s+/)
+            .flatMap(n => sheets.has(n) ? [sheets.get(n)] : [])
+      );
+    }
+  }
 }
