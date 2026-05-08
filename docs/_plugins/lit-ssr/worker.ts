@@ -205,27 +205,17 @@ function postProcessAdoptedStyleSheets(html: string): string {
       `${open} shadowrootadoptedstylesheets="${specs.trim()}"${close}`
   );
 
-  // Emit each <style type="module"> just before the first host element that
-  // references it, so style definitions appear near their consumers in
-  // document order rather than batched in <head>.
-  const emitted = new Set<string>();
-  processed = processed.replace(
-    /(<[\w-]+\s[^>]*shadowrootadoptedstylesheets=")([\w -]+)(")/g,
-    (match, before, specs, after) => {
-      const newBlocks = specs
-          .trim()
-          .split(/\s+/)
-          .filter((s: string) => !emitted.has(s) && specifierMap.has(s))
-          .map((s: string) => {
-            emitted.add(s);
-            return `<style type="module" specifier="${s}">${specifierMap.get(
-              s
-            )}</style>\n`;
-          })
-          .join('');
-      return `${newBlocks}${before}${specs}${after}`;
-    }
-  );
+  const styleBlocks = Array.from(specifierMap.entries())
+      .map(([name, css]) =>
+        `<style type="module" specifier="${name}">${css}</style>`)
+      .join('\n');
+
+  const headClose = processed.indexOf('</head>');
+  if (headClose !== -1) {
+    processed = `${processed.slice(0, headClose)}${styleBlocks}\n${processed.slice(headClose)}`;
+  } else {
+    processed = `${styleBlocks}\n${processed}`;
+  }
 
   return processed;
 }
