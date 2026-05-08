@@ -1,16 +1,31 @@
-if (!('shadowRootMode' in HTMLTemplateElement.prototype)) {
-  (function attachShadowRoots(root) {
-    // find all templates with a shadowrootmode attribute
-    root.querySelectorAll('template[shadowrootmode]').forEach(template => {
-      // get the mode: open or closed
-      const mode = template.getAttribute('shadowrootmode');
-      // attach a shadow to the component
-      const shadowRoot = template.parentNode.attachShadow({ mode });
-      // append the content in the template
-      shadowRoot.appendChild(template.content);
-      // remove the template
-      template.remove();
-      attachShadowRoots(shadowRoot);
-    });
+if (!("shadowRootAdoptedStyleSheets" in HTMLTemplateElement.prototype)) {
+  (function applyAdoptedStyleSheets(root) {
+    const ATTR = "shadowrootadoptedstylesheets";
+    const sheets = new Map();
+    root
+      .querySelectorAll("style[type=module][specifier]")
+      .forEach(function (style) {
+        const sheet = new CSSStyleSheet();
+        sheet.replaceSync(style.textContent);
+        sheets.set(style.getAttribute("specifier"), sheet);
+      });
+    (function apply(node) {
+      node.querySelectorAll("[" + ATTR + "]").forEach(function (el) {
+        if (el.shadowRoot) {
+          el.shadowRoot.adoptedStyleSheets.push(
+            ...el
+              .getAttribute(ATTR)
+              .trim()
+              .split(/\s+/)
+              .flatMap(function (n) {
+                return sheets.get(n) ? [sheets.get(n)] : [];
+              })
+          );
+        }
+      });
+      node.querySelectorAll("*").forEach(function (el) {
+        if (el.shadowRoot) apply(el.shadowRoot);
+      });
+    })(root);
   })(document);
 }
