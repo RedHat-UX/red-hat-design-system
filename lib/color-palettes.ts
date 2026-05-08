@@ -1,8 +1,10 @@
-import { type ReactiveController, type ReactiveElement } from 'lit';
+import { type ReactiveController, type ReactiveElement, unsafeCSS } from 'lit';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import styles from '@rhds/tokens/css/color-palette.css.js';
+import baseStyles from '@rhds/tokens/css/color-palette.css.js';
+
+const styles = unsafeCSS(`/* @sheet:rhds-color-palette */${baseStyles.cssText}`);
 import type { Constructor } from '@lit/reactive-element/decorators/base.js';
 
 type ColorPaletteConstructor = Constructor<ColorPaletteElement> & typeof ReactiveElement;
