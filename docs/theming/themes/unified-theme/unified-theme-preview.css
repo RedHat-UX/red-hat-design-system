@@ -207,6 +207,11 @@
           var(--unified-color-gray-40),
           var(--unified-color-gray-50)
         );
+    --unified-color-border-status-disabled:
+      light-dark(
+          var(--unified-color-gray-40),
+          var(--unified-color-gray-50)
+        );
 
     /* Status colors: Danger */
     --unified-color-status-danger:
@@ -574,7 +579,7 @@
 
     &[variant='tertiary'] {
       --rh-color-border-strong: var(--unified-color-border-interactive-subtle-default);
-      --rh-color-text-primary: var(--unified-interactive-primary-default);
+      --rh-color-text-primary: var(--unified-color-interactive-primary-default);
 
       &::part(button):hover {
         --rh-color-text-primary: var(--unified-color-interactive-primary-hover);
@@ -619,7 +624,7 @@
       &::part(button):hover,
       &::part(button):focus,
       &::part(button):active {
-        --rh-color-blue-70: var(--unified-button-link-color-default);
+        --rh-color-blue-70: var(--unified-color-interactive-primary-default);
 
         background-color: var(--unified-color-interactive-fill-plain-hover);
       }
