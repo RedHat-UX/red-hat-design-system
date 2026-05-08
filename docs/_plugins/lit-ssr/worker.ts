@@ -1,26 +1,26 @@
-import type { CSSResult, LitElement, ReactiveController } from "lit";
-import type { RenderInfo } from "@lit-labs/ssr";
-import type { RHDSSSRController } from "@rhds/elements/lib/ssr-controller.ts";
-import type { RenderRequestMessage, RenderResponseMessage } from "./lit.js";
-import type { ThunkedRenderResult } from "@lit-labs/ssr/lib/render-result.js";
+import type { CSSResult, LitElement, ReactiveController } from 'lit';
+import type { RenderInfo } from '@lit-labs/ssr';
+import type { RHDSSSRController } from '@rhds/elements/lib/ssr-controller.ts';
+import type { RenderRequestMessage, RenderResponseMessage } from './lit.js';
+import type { ThunkedRenderResult } from '@lit-labs/ssr/lib/render-result.js';
 
-import "@patternfly/pfe-core/ssr-shims.js";
+import '@patternfly/pfe-core/ssr-shims.js';
 
-import { LitElementRenderer } from "@lit-labs/ssr/lib/lit-element-renderer.js";
+import { LitElementRenderer } from '@lit-labs/ssr/lib/lit-element-renderer.js';
 
-import { register } from "node:module";
-import { register as registerTS } from "tsx/esm/api";
+import { register } from 'node:module';
+import { register as registerTS } from 'tsx/esm/api';
 
-import { resolve } from "node:path";
-import { pathToFileURL } from "node:url";
+import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
 
-import { html } from "lit";
-import { render } from "@lit-labs/ssr";
-import { collectResult } from "@lit-labs/ssr/lib/render-result.js";
-import { renderValue } from "@lit-labs/ssr/lib/render-value.js";
+import { html } from 'lit';
+import { render } from '@lit-labs/ssr';
+import { collectResult } from '@lit-labs/ssr/lib/render-result.js';
+import { renderValue } from '@lit-labs/ssr/lib/render-value.js';
 
-import Piscina from "piscina";
-import { transform, Features } from "lightningcss";
+import Piscina from 'piscina';
+import { transform, Features } from 'lightningcss';
 
 interface WorkerInitData {
   imports: string[];
@@ -29,18 +29,18 @@ interface WorkerInitData {
 const { imports } = Piscina.workerData as WorkerInitData;
 
 registerTS();
-register("./lit-css-node.ts", import.meta.url);
+register('./lit-css-node.ts', import.meta.url);
 
 /* eslint-disable no-console */
 for (const bareSpec of imports) {
-  const conventionalTagName = bareSpec.split("/")?.pop()?.split(".").shift();
+  const conventionalTagName = bareSpec.split('/')?.pop()?.split('.').shift();
   if (!conventionalTagName) {
     throw new Error(`${bareSpec} does not appear to be an element module`);
   }
   if (!customElements.get(conventionalTagName)) {
     const spec = pathToFileURL(resolve(process.cwd(), bareSpec)).href.replace(
-      ".js",
-      ".ts"
+      '.js',
+      '.ts'
     );
     try {
       await import(spec);
@@ -108,7 +108,7 @@ class RHDSSSRableRenderer extends LitElementRenderer {
     const result = super.renderAttributes();
     if (this.#specifiers.length > 0) {
       result.push(
-        ` shadowrootadoptedstylesheets="${this.#specifiers.join(" ")}"`
+        ` shadowrootadoptedstylesheets="${this.#specifiers.join(' ')}"`
       );
     }
     return result;
@@ -118,7 +118,7 @@ class RHDSSSRableRenderer extends LitElementRenderer {
     const result: ThunkedRenderResult = [];
 
     if (this.#specifiers.length > 0) {
-      result.push(`<!--@adopted:${this.#specifiers.join(" ")}-->`);
+      result.push(`<!--@adopted:${this.#specifiers.join(' ')}-->`);
     }
 
     // Fallback for styles without @sheet: markers. Marked styles are already in
@@ -126,12 +126,12 @@ class RHDSSSRableRenderer extends LitElementRenderer {
     // inline so nothing breaks.
     const inlineStyles = (
       (this.element.constructor as typeof LitElement).elementStyles ?? []
-    ).filter((s) => !SHEET_MARKER_RE.test((s as CSSResult).cssText));
+    ).filter(s => !SHEET_MARKER_RE.test((s as CSSResult).cssText));
     if (inlineStyles.length > 0) {
       result.push(() => [
-        "<style>",
-        ...inlineStyles.map((s) => this.#processCSS((s as CSSResult).cssText)),
-        "</style>",
+        '<style>',
+        ...inlineStyles.map(s => this.#processCSS((s as CSSResult).cssText)),
+        '</style>',
       ]);
     }
 
@@ -156,7 +156,7 @@ class RHDSSSRableRenderer extends LitElementRenderer {
     if (!RHDSSSRableRenderer.styleCache.has(key)) {
       try {
         const { code } = transform({
-          filename: "constructed-stylesheet.css",
+          filename: 'constructed-stylesheet.css',
           code: Buffer.from(cssText),
           minify: true,
           include: Features.Nesting,
@@ -166,8 +166,8 @@ class RHDSSSRableRenderer extends LitElementRenderer {
         RHDSSSRableRenderer.styleCache.set(
           key,
           code
-            .toString()
-            .replaceAll("color-scheme:normal", "color-scheme:inherit")
+              .toString()
+              .replaceAll('color-scheme:normal', 'color-scheme:inherit')
         );
       } catch {
         RHDSSSRableRenderer.styleCache.set(key, cssText);
@@ -194,10 +194,10 @@ function postProcessAdoptedStyleSheets(html: string): string {
   }
 
   const TEMPLATE_RE = new RegExp(
-    '(<template\\s+shadowroot="[^"]*"\\s+shadowrootmode="[^"]*"' +
-      "(?:\\s+shadowrootdelegatesfocus)?)(>)\\s*" +
-      "<!--@adopted:([\\w -]+)-->",
-    "g"
+    '(<template\\s+shadowroot="[^"]*"\\s+shadowrootmode="[^"]*"'
+      + '(?:\\s+shadowrootdelegatesfocus)?)(>)\\s*'
+      + '<!--@adopted:([\\w -]+)-->',
+    'g'
   );
   let processed = html.replace(
     TEMPLATE_RE,
@@ -213,16 +213,16 @@ function postProcessAdoptedStyleSheets(html: string): string {
     /(<[\w-]+\s[^>]*shadowrootadoptedstylesheets=")([\w -]+)(")/g,
     (match, before, specs, after) => {
       const newBlocks = specs
-        .trim()
-        .split(/\s+/)
-        .filter((s: string) => !emitted.has(s) && specifierMap.has(s))
-        .map((s: string) => {
-          emitted.add(s);
-          return `<style type="module" specifier="${s}">${specifierMap.get(
-            s
-          )}</style>\n`;
-        })
-        .join("");
+          .trim()
+          .split(/\s+/)
+          .filter((s: string) => !emitted.has(s) && specifierMap.has(s))
+          .map((s: string) => {
+            emitted.add(s);
+            return `<style type="module" specifier="${s}">${specifierMap.get(
+              s
+            )}</style>\n`;
+          })
+          .join('');
       return `${newBlocks}${before}${specs}${after}`;
     }
   );
