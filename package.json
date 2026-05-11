@@ -310,6 +310,7 @@
     "@lit-labs/ssr-client": "^1.1.8",
     "@lit/reactive-element": "^2.1.2",
     "@lit/ts-transformers": "^2.0.2",
+    "@literals/html-css-minifier": "^4.0.2",
     "@parse5/tools": "^0.7.0",
     "@patternfly/create-element": "^1.0.4",
     "@patternfly/elements": "^4.3.0",

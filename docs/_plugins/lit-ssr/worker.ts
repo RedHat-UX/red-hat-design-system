@@ -30,6 +30,7 @@ const { imports } = Piscina.workerData as WorkerInitData;
 
 registerTS();
 register('./lit-css-node.ts', import.meta.url);
+register('./lit-html-minifier-node.ts', import.meta.url);
 
 /* eslint-disable no-console */
 for (const bareSpec of imports) {
