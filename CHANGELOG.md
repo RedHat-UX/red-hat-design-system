@@ -1,5 +1,10 @@
 # @rhds/elements
 
+## 4.1.2
+### Patch Changes
+
+- cf95f14: `<rh-navigation-primary>`: adjusted links menu to collapse at a wider viewport than main navigation
+
 ## 4.1.1
 ### Patch Changes
 
