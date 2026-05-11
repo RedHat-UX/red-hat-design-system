@@ -38,11 +38,6 @@
     {%- for tag in importElements -%}
     <script type="module">import '@rhds/elements/{{tag}}/{{tag}}.js';</script>
     {%- endfor -%}
-    <style>
-      rh-scheme-toggle:not(:defined) {
-        display: none;
-      }
-    </style>
     <script async src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
   </head>
 

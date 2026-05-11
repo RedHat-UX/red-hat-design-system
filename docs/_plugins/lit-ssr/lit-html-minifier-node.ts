@@ -17,15 +17,15 @@ export async function load(url: string, context: HookContext, nextLoad: LoadFunc
   if (result.format !== 'module' || !ELEMENT_PATH_RE.test(url)) {
     return result;
   }
-  const source = typeof result.source === 'string'
-    ? result.source
+  const source = typeof result.source === 'string' ?
+    result.source
     : result.source?.toString();
   if (!source || !source.includes('html`')) {
     return result;
   }
   if (!cache.has(url)) {
-    const fileName = url.startsWith('file://')
-      ? fileURLToPath(url)
+    const fileName = url.startsWith('file://') ?
+      fileURLToPath(url)
       : url;
     const minified = await minifyHTMLLiterals(source, { fileName });
     cache.set(url, minified?.code ?? source);
