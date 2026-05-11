@@ -126,7 +126,6 @@ export interface Options {
 }
 
 
-
 export default async function(
   eleventyConfig: UserConfig,
   options?: Options,
@@ -165,8 +164,6 @@ export default async function(
   eleventyConfig.addPassthroughCopy(await getFilesToCopy(), {
     filter: (path: string) => !path.endsWith('.html'),
   });
-
-
 
   /** custom-elements.json */
   eleventyConfig.on('eleventy.before', async function({ runMode }) {
