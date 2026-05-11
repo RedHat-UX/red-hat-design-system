@@ -2,7 +2,7 @@ import { minifyHTMLLiterals } from '@literals/html-css-minifier';
 import { fileURLToPath } from 'node:url';
 
 interface HookContext {
-  source: string;
+  source: string | ArrayBuffer;
   format: 'module' | 'commonjs' | 'wasm' | 'json';
 }
 
