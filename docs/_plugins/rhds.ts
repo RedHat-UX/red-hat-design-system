@@ -126,10 +126,6 @@ export interface Options {
 }
 
 
-async function clean() {
-  await $`npx tspc -b elements --clean`;
-  await $`npx tspc -b lib --clean`;
-}
 
 export default async function(
   eleventyConfig: UserConfig,
@@ -171,23 +167,18 @@ export default async function(
   });
 
 
-  let hasCleanedSinceWatchStarted = false;
-  eleventyConfig.on('eleventy.before', async function({ runMode }) {
-    switch (runMode) {
-      case 'build':
-        return clean();
-      default:
-        if (!hasCleanedSinceWatchStarted) {
-          hasCleanedSinceWatchStarted = true;
-          return await clean();
-        }
-    }
-  });
 
   /** custom-elements.json */
   eleventyConfig.on('eleventy.before', async function({ runMode }) {
     if (runMode === 'watch') {
       await $`npm run analyze`;
+    }
+  });
+
+  eleventyConfig.on('eleventy.beforeWatch', async function(changedFiles: string[]) {
+    if (changedFiles.some(f => /elements\/.*\.(ts|css)$/.test(f))) {
+      await $`npx tspc -b --force`;
+      await $`npx tsx scripts/minify-literals.ts`;
     }
   });
 
@@ -317,6 +308,9 @@ export default async function(
 
   eleventyConfig.addWatchTarget('docs/patterns/**/patterns/*.html');
   eleventyConfig.addWatchTarget('docs/theming/**/patterns/*.html');
+
+  eleventyConfig.addWatchTarget('elements/**/*.ts');
+  eleventyConfig.addWatchTarget('elements/**/*.css');
 
   for (const tagName of await readdir(join(cwd, './elements/'))) {
     if (!tagName.includes('.')) {

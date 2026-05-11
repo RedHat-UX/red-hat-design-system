@@ -9,7 +9,6 @@ import '@patternfly/pfe-core/ssr-shims.js';
 import { LitElementRenderer } from '@lit-labs/ssr/lib/lit-element-renderer.js';
 
 import { register } from 'node:module';
-import { register as registerTS } from 'tsx/esm/api';
 
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -28,8 +27,8 @@ interface WorkerInitData {
 
 const { imports } = Piscina.workerData as WorkerInitData;
 
-registerTS();
-register('./lit-css-node.ts', import.meta.url);
+register('./lit-css-node.js', import.meta.url);
+register('./lit-html-minifier-node.js', import.meta.url);
 
 /* eslint-disable no-console */
 for (const bareSpec of imports) {
@@ -39,8 +38,8 @@ for (const bareSpec of imports) {
   }
   if (!customElements.get(conventionalTagName)) {
     const spec = pathToFileURL(resolve(process.cwd(), bareSpec)).href.replace(
-      '.js',
-      '.ts'
+      /\.ts$/,
+      '.js'
     );
     try {
       await import(spec);
