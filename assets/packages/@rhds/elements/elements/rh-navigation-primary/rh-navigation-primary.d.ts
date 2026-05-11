@@ -27,6 +27,7 @@ export declare class RhNavigationPrimary extends LitElement {
      * @internal
      */
     compact: boolean;
+    linksCompact: boolean;
     private _overlayOpen;
     private _hamburgerOpen;
     private _linksMenuOpen;
@@ -85,6 +86,7 @@ export declare class RhNavigationPrimary extends LitElement {
     connectedCallback(): Promise<void>;
     render(): import("lit-html").TemplateResult<1>;
     protected compactChanged(oldVal: boolean, newVal: boolean): void;
+    protected linksCompactChanged(oldVal: boolean, newVal: boolean): void;
     /**
      * Close Menus
      * @param skip Boolean - closes hamburger menu if true and in a small viewport, default false;
