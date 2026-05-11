@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env npx tsx
 import { readFile, writeFile } from 'node:fs/promises';
 import { glob } from 'glob';
 import { minifyHTMLLiterals } from '@literals/html-css-minifier';
@@ -9,7 +9,7 @@ const files = await glob([
 ], { ignore: ['**/node_modules/**'] });
 
 let changed = 0;
-await Promise.all(files.map(async file => {
+await Promise.all(files.map(async (file: string) => {
   const source = await readFile(file, 'utf-8');
   const result = await minifyHTMLLiterals(source, { fileName: file });
   if (result) {
@@ -17,5 +17,3 @@ await Promise.all(files.map(async file => {
     changed++;
   }
 }));
-
-console.log(`Minified template literals in ${changed} of ${files.length} files.`);

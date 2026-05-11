@@ -139,7 +139,7 @@
         "react-wrappers",
         "entrypoint",
         "copy-assets",
-        "compile"
+        "minify-literals"
       ]
     },
     "build:test": {
@@ -147,13 +147,19 @@
         "patch",
         "analyze",
         "copy-assets",
-        "compile"
+        "minify-literals"
       ]
     },
     "test": {
       "command": "wtr --group default",
       "dependencies": [
         "build:test"
+      ]
+    },
+    "minify-literals": {
+      "command": "npx tsx scripts/minify-literals.ts",
+      "dependencies": [
+        "compile"
       ]
     },
     "compile": {
