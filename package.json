@@ -362,7 +362,7 @@
     "ts-blank-space": "^0.6.2",
     "ts-patch": "^3.3.0",
     "tsx": "^4.21.0",
-    "typescript": "^5.9.3",
+    "typescript": "^6.0.3",
     "typescript-transform-lit-css": "^3.0.0",
     "web-dev-server-plugin-lit-css": "^4.0.0",
     "wireit": "^0.14.12"
