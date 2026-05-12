@@ -1,0 +1,105 @@
+<meta itemprop="description" content="Demonstrates the drawer inside a sized container rather than the full viewport. The container constrains the drawer's dimensions. Use the knobs to test position, panel mode, and expand within the bounded area.">
+<div id="container">
+<rh-drawer id="drawer" variant="auto" trigger-id="trigger" open>
+  <div slot="header">Header</div>
+  <div slot="body">Body</div>
+  <div slot="footer">Footer</div>
+  <button id="trigger" hidden aria-controls="drawer" aria-expanded="true">Toggle Drawer</button>
+  <div>
+    <h3>Page Content</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+      ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+      laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+    <form id="knobs">
+      <fieldset>
+        <legend>Variant</legend>
+        <label><input type="radio" name="variant" value="auto" checked> auto</label>
+        <label><input type="radio" name="variant" value="overlay"> overlay</label>
+      </fieldset>
+      <fieldset>
+        <legend>Position</legend>
+        <label><input type="radio" name="position" value="inline-start" checked> inline-start</label>
+        <label><input type="radio" name="position" value="inline-end"> inline-end</label>
+      </fieldset>
+      <fieldset>
+        <legend>Panel</legend>
+        <label><input type="radio" name="panel" value="collapsible" checked> collapsible</label>
+        <label><input type="radio" name="panel" value="resizable"> resizable</label>
+        <label><input type="radio" name="panel" value="none"> none</label>
+      </fieldset>
+      <fieldset>
+        <legend>Expand</legend>
+        <label><input type="radio" name="expand" value="" checked> none</label>
+        <label><input type="radio" name="expand" value="full-viewport"> full-viewport</label>
+      </fieldset>
+    </form>
+  </div>
+</rh-drawer>
+</div>
+
+<style>
+  body{
+    background: var(--rh-color)
+  }
+  #container {
+    margin: var(--rh-space-2xl, 32px) auto;
+    border:
+      var(--rh-border-width-md, 2px)
+      solid
+      var(--rh-color-border-strong,
+        light-dark(
+          var(--rh-color-border-strong-on-light, #151515),
+          var(--rh-color-border-strong-on-dark, #ffffff)
+        )
+      );
+    block-size: 500px;
+    inline-size: 75dvw;
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-drawer/rh-drawer.js';
+
+  const trigger = document.getElementById('trigger');
+  const form = document.getElementById('knobs');
+  const drawer = document.getElementById('drawer');
+
+  const collapsibleInput = form.querySelector('[name="panel"][value="collapsible"]');
+  const resizableInput = form.querySelector('[name="panel"][value="resizable"]');
+  const noneInput = form.querySelector('[name="panel"][value="none"]');
+
+  drawer.addEventListener('open', () => trigger.setAttribute('aria-expanded', 'true'));
+  drawer.addEventListener('close', () => trigger.setAttribute('aria-expanded', 'false'));
+  drawer.addEventListener('mode-change', (e) => {
+    trigger.hidden = e.mode !== 'overlay';
+  });
+
+  form.addEventListener('input', function sync() {
+    const data = Object.fromEntries(new FormData(form));
+    const variant = data.variant;
+
+    const canCollapse = variant !== 'fixed' && variant !== 'flow';
+    const canResize = variant === 'fixed' || variant === 'overlay';
+
+    collapsibleInput.disabled = !canCollapse;
+    resizableInput.disabled = !canResize;
+
+    if (data.panel === 'collapsible' && !canCollapse) {
+      data.panel = canResize ? 'resizable' : 'none';
+      (canResize ? resizableInput : noneInput).checked = true;
+    } else if (data.panel === 'resizable' && !canResize) {
+      data.panel = canCollapse ? 'collapsible' : 'none';
+      (canCollapse ? collapsibleInput : noneInput).checked = true;
+    }
+
+    drawer.variant = variant;
+    drawer.position = data.position;
+    drawer.panel = data.panel || undefined;
+    drawer.expand = data.expand || undefined;
+
+    if (!drawer.open) {
+      drawer.open = true;
+    }
+  });
+</script>

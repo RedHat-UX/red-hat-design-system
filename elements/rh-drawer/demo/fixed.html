@@ -1,0 +1,74 @@
+<meta itemprop="description" content="The panel is always position: fixed, overlaying the page at all viewport sizes. It takes up no space in the document flow and is toggled exclusively by an external trigger. Use the knobs to switch position, enable resizing, or toggle expand mode.">
+<button id="fixed-trigger" aria-controls="drawer" aria-expanded="false">Toggle Drawer</button>
+
+<rh-drawer id="drawer" variant="fixed" trigger-id="fixed-trigger">
+  <div slot="header">Header</div>
+  <div slot="body">Body</div>
+  <div slot="footer">Footer</div>
+</rh-drawer>
+
+<form id="knobs">
+  <fieldset>
+    <legend>Position</legend>
+    <label><input type="radio" name="position" value="inline-start" checked> inline-start</label>
+    <label><input type="radio" name="position" value="inline-end"> inline-end</label>
+  </fieldset>
+  <fieldset>
+    <legend>Panel</legend>
+    <label><input type="radio" name="panel" value="none" checked> none</label>
+    <label><input type="radio" name="panel" value="resizable"> resizable</label>
+  </fieldset>
+  <fieldset>
+    <legend>Expand</legend>
+    <label><input type="radio" name="expand" value="" checked> none</label>
+    <label><input type="radio" name="expand" value="full-viewport"> full-viewport</label>
+  </fieldset>
+</form>
+
+<script type="module">
+  import '@rhds/elements/rh-drawer/rh-drawer.js';
+
+  const navToggle = document.querySelector('#fixed-trigger')
+  const form = document.getElementById('knobs');
+  const drawer = document.getElementById('drawer');
+
+  function getAncestorPath(el) {
+    const path = [];
+    while (el) {
+      path.unshift(el); // Adds to the beginning to keep root -> child order
+      el = el.parentElement;
+    }
+    return path;
+  }
+
+  // For optimal results, wrap the content you want to disable in
+  // a single container (like a <main> tag) and toggle inert on that
+  // parent rather than having to target everything not an ancestor.
+  const ancestorPath = getAncestorPath(drawer);
+  const notAncestors = Array.from(document.querySelectorAll('*'))
+                        .filter(el => !ancestorPath.includes(el));
+
+  function setInert(inert) {
+    notAncestors.forEach(el => { el.inert = inert});
+  }
+
+  // When the mode changes place inert on document content containers
+  drawer.addEventListener('open', async function() {
+    navToggle.setAttribute('aria-expanded', 'true');
+    await drawer.updateComplete;
+    setInert(true);
+  });
+
+  drawer.addEventListener('close', async function() {
+    navToggle.setAttribute('aria-expanded', 'false');
+    await drawer.updateComplete;
+    setInert(false);
+  });
+
+  form.addEventListener('input', function sync() {
+    const data = Object.fromEntries(new FormData(form));
+    drawer.position = data.position;
+    drawer.panel = data.panel || undefined;
+    drawer.expand = data.expand || undefined;
+  });
+</script>

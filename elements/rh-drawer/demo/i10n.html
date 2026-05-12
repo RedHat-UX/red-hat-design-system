@@ -1,0 +1,96 @@
+<meta itemprop="description" content="Demonstrates right-to-left (RTL) language support. The panel position, resize handle, and keyboard interactions all respect the document direction.">
+<div dir="rtl" lang="he">
+  <rh-drawer id="drawer" variant="auto" trigger-id="trigger" open
+             close-label="סגור מגירה"
+             collapse-label-open="כווץ חלונית"
+             collapse-label-closed="הרחב חלונית">
+    <div slot="header">כותרת</div>
+    <div slot="body">
+      <p>זהו תוכן הגוף של חלונית המגירה. בשפות מימין לשמאל, החלונית מופיעה בצד הנכון בהתאם לכיוון הטקסט.</p>
+    </div>
+    <div slot="footer">כותרת תחתונה</div>
+    <button id="trigger" hidden aria-controls="drawer" aria-expanded="true">Toggle Drawer</button>
+    <div>
+      <h3>תוכן ראשי</h3>
+      <p>תוכן זה מכוסה על ידי חלונית המגירה. המגירה תומכת בשפות מימין לשמאל כולל עברית וערבית.</p>
+      <p>לורם איפסום דולור סיט אמט, קונסקטטור אדיפיסינג אלית. סת אלמנקום נימוצינור,, ושמן מעמידושמע
+        ותלמשנותי,, תוצנ, ,, פול, מוסן מנת, נמשח, , תוצנ מוסן מנת, , , דוסי מקנה גלisce לאsjust
+        ליבום סולמיה דימון, , ברומיה, , , .</p>
+      <form id="knobs" dir="ltr">
+        <fieldset>
+          <legend>Variant</legend>
+          <label><input type="radio" name="variant" value="auto" checked> auto</label>
+          <label><input type="radio" name="variant" value="overlay"> overlay</label>
+        </fieldset>
+        <fieldset>
+          <legend>Position</legend>
+          <label><input type="radio" name="position" value="inline-start" checked> inline-start</label>
+          <label><input type="radio" name="position" value="inline-end"> inline-end</label>
+        </fieldset>
+        <fieldset>
+          <legend>Panel</legend>
+          <label><input type="radio" name="panel" value="collapsible" checked> collapsible</label>
+          <label><input type="radio" name="panel" value="resizable"> resizable</label>
+          <label><input type="radio" name="panel" value="none"> none</label>
+        </fieldset>
+        <fieldset>
+          <legend>Expand</legend>
+          <label><input type="radio" name="expand" value="" checked> none</label>
+          <label><input type="radio" name="expand" value="full-viewport"> full-viewport</label>
+        </fieldset>
+      </form>
+    </div>
+  </rh-drawer>
+</div>
+
+<style>
+  div[dir] {
+    block-size: 100%;
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-drawer/rh-drawer.js';
+
+  const trigger = document.getElementById('trigger');
+  const form = document.getElementById('knobs');
+  const drawer = document.getElementById('drawer');
+
+  const collapsibleInput = form.querySelector('[name="panel"][value="collapsible"]');
+  const resizableInput = form.querySelector('[name="panel"][value="resizable"]');
+  const noneInput = form.querySelector('[name="panel"][value="none"]');
+
+  drawer.addEventListener('open', () => trigger.setAttribute('aria-expanded', 'true'));
+  drawer.addEventListener('close', () => trigger.setAttribute('aria-expanded', 'false'));
+  drawer.addEventListener('mode-change', (e) => {
+    trigger.hidden = e.mode !== 'overlay';
+  });
+
+  form.addEventListener('input', function sync() {
+    const data = Object.fromEntries(new FormData(form));
+    const variant = data.variant;
+
+    const canCollapse = variant !== 'fixed' && variant !== 'flow';
+    const canResize = variant === 'fixed' || variant === 'overlay';
+
+    collapsibleInput.disabled = !canCollapse;
+    resizableInput.disabled = !canResize;
+
+    if (data.panel === 'collapsible' && !canCollapse) {
+      data.panel = canResize ? 'resizable' : 'none';
+      (canResize ? resizableInput : noneInput).checked = true;
+    } else if (data.panel === 'resizable' && !canResize) {
+      data.panel = canCollapse ? 'collapsible' : 'none';
+      (canCollapse ? collapsibleInput : noneInput).checked = true;
+    }
+
+    drawer.variant = variant;
+    drawer.position = data.position;
+    drawer.panel = data.panel || undefined;
+    drawer.expand = data.expand || undefined;
+
+    if (!drawer.open) {
+      drawer.open = true;
+    }
+  });
+</script>

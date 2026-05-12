@@ -1,0 +1,153 @@
+<meta itemprop="description" content="Flow variant with the panel on the inline-end side of the page. Uses overlay-threshold=&quot;xl&quot; to switch from a fixed overlay to an inline grid participant at 1440px. Below the threshold, the panel is toggled by an external trigger button.">
+<div id="container">
+  <div id="page">
+    <div id="mock-nav">
+      <div id="logo">Logo</div>
+
+      <button id="flow-trigger" aria-label="Open drawer" aria-controls="flow-drawer" aria-expanded="true">
+        <rh-icon icon="list" set="ui"></rh-icon>
+      </button>
+    </div>
+
+    <div id="main">
+      <h3>Page Content</h3>
+      <p>At wide viewports (>= 1440px) the panel participates in the grid on the inline-end side.
+        Below that it becomes a fixed overlay toggled by the icon button above.</p>
+    </div>
+  </div>
+  <rh-drawer id="flow-drawer"
+            variant="flow"
+            position="inline-end"
+            overlay-threshold="xl"
+            trigger-id="flow-trigger"
+            open>
+    <rh-navigation-vertical slot="body">
+      <rh-navigation-link href="#" current-page>Home</rh-navigation-link>
+
+      <rh-navigation-vertical-list summary="Get Started">
+        <rh-navigation-link href="#get-started">Overview</rh-navigation-link>
+        <rh-navigation-link href="#get-started/designers">Designers</rh-navigation-link>
+        <rh-navigation-link href="#get-started/developers">Developers</rh-navigation-link>
+      </rh-navigation-vertical-list>
+
+      <rh-navigation-vertical-list summary="Foundations">
+        <rh-navigation-link href="#foundations">Overview</rh-navigation-link>
+        <rh-navigation-link href="#foundations/color">Color</rh-navigation-link>
+        <rh-navigation-link href="#foundations/grid">Grid</rh-navigation-link>
+        <rh-navigation-link href="#foundations/spacing">Spacing</rh-navigation-link>
+        <rh-navigation-link href="#foundations/typography">Typography</rh-navigation-link>
+      </rh-navigation-vertical-list>
+
+      <rh-navigation-vertical-list summary="Elements">
+        <rh-navigation-link href="#elements/accordion">Accordion</rh-navigation-link>
+        <rh-navigation-link href="#elements/alert">Alert</rh-navigation-link>
+        <rh-navigation-link href="#elements/button">Button</rh-navigation-link>
+        <rh-navigation-link href="#elements/card">Card</rh-navigation-link>
+        <rh-navigation-link href="#elements/dialog">Dialog</rh-navigation-link>
+        <rh-navigation-link href="#elements/drawer">Drawer</rh-navigation-link>
+        <rh-navigation-link href="#elements/tabs">Tabs</rh-navigation-link>
+      </rh-navigation-vertical-list>
+
+      <rh-navigation-link href="#release-notes">Release Notes</rh-navigation-link>
+      <rh-navigation-link href="#get-support">Get Support</rh-navigation-link>
+    </rh-navigation-vertical>
+  </rh-drawer>
+</div>
+
+
+
+<link rel="stylesheet" href="../../rh-navigation-vertical/rh-navigation-vertical-lightdom.css">
+
+<style>
+  #container {
+    display: grid;
+    grid-template-areas: 'page' 'drawer';
+    grid-template-columns: 1fr;
+    block-size: 100%;
+
+    @media (min-width: 1440px) {
+      grid-template-areas: 'page drawer';
+      grid-template-columns: 1fr 320px ;
+    }
+  }
+
+  #page {
+    grid-area: page;
+  }
+
+  #mock-nav {
+    color-scheme: only dark;
+    display: flex;
+    flex-direction: row;
+    gap: var(--rh-space-md, 8px);
+    align-items: center;
+    background-color: var(--rh-color-surface-darkest, #151515);
+    padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+
+    & #flow-trigger {
+      display: flex;
+      flex-direction: row;
+      gap: var(--rh-space-md, 8px);
+      background-color: transparent;
+      padding: var(--rh-space-md, 8px);
+      border: none;
+
+      &:focus-visible {
+        border-radius: var(--rh-border-radius-default, 3px);
+        outline: var(--rh-border-width-md, 2px) solid var(--rh-color-interactive-primary-default);
+        outline-offset: 2px;
+      }
+
+      @media (min-width: 1440px) {
+        display: none;
+      }
+    }
+
+    & #logo {
+      color: var(--rh-color-text-primary);
+    }
+  }
+  #main {
+    grid-area: content;
+    padding: var(--rh-space-2xl, 32px);
+    background-color: light-dark(var(--rh-color-surface-lightest), var(--rh-color-surface-darker));
+  }
+
+  rh-drawer {
+    grid-area: drawer;
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-drawer/rh-drawer.js';
+  import '@rhds/elements/rh-navigation-vertical/rh-navigation-vertical.js';
+  import '@rhds/elements/rh-navigation-link/rh-navigation-link.js';
+
+  const navToggle = document.querySelector('#flow-trigger');
+  const toggleIcon = navToggle.querySelector('rh-icon');
+  const drawer = document.querySelector('rh-drawer');
+
+  function toggleSetState(state) {
+    if (state === 'open') {
+      toggleIcon.icon = 'close';
+    }
+
+    if (state === 'closed') {
+      toggleIcon.icon = 'list';
+    }
+  }
+
+  if (drawer.open) {
+    toggleSetState('open');
+  }
+
+  drawer.addEventListener('open', function() {
+    navToggle.setAttribute('aria-expanded', 'true');
+    toggleSetState('open');
+  });
+
+  drawer.addEventListener('close', function() {
+    navToggle.setAttribute('aria-expanded', 'false');
+    toggleSetState('closed');
+  });
+</script>

@@ -1,0 +1,1 @@
+Demonstrates using `trigger-id` to toggle the drawer with an external button. When a trigger is set, the collapsible toggle is automatically suppressed. Use the knobs to switch between auto and overlay variants, position, panel mode, and expand mode.
