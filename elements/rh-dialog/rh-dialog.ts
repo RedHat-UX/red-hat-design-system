@@ -51,8 +51,6 @@ async function pauseYoutube(iframe: HTMLIFrameElement) {
  *
  * @summary Modal dialog for confirmations, errors, or required input
  *
- * @alias dialog
- *
  * @fires {DialogOpenEvent} open - Fires when the dialog opens. The event's `trigger`
  *   property (HTMLElement | null) holds the element that opened it.
  * @fires {DialogCloseEvent} close - Fires when the dialog closes via close button

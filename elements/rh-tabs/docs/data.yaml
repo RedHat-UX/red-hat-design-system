@@ -14,3 +14,4 @@ relatedItems:
   - rh-jump-links
   - rh-pagination
   - rh-progress-stepper
+since: v1.0.0
