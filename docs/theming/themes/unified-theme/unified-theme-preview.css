@@ -905,8 +905,8 @@
   rh-spinner {
     --unified-spinner-stroke-width: var(--unified-length-xs);
     --unified-spinner-color: var(--unified-color-border-interactive-default);
-    --unified-spinner-color-track-on-light: var(--unified-color-gray-20);
-    --unified-spinner-color-track-on-dark: var(--unified-color-gray-70);
+    --unified-spinner-color-track-on-light: transparent;
+    --unified-spinner-color-track-on-dark: transparent;
 
     /* Directly theme through RH-specific tokens */
     --rh-length-sm: var(--unified-spinner-stroke-width);
