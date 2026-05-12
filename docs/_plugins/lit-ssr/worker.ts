@@ -92,9 +92,9 @@ class RHDSSSRableRenderer extends LitElementRenderer {
     for (const style of styles) {
       const specifier = styleIdentityMap.get(style)
           ?? (style as CSSResult & { specifier?: string }).specifier
-          ?? (unnamed.length === 1
-            ? this.tagName.toLowerCase()
-            : `${this.tagName.toLowerCase()}-${unnamed.indexOf(style)}`);
+          ?? (unnamed.length === 1 ?
+              this.tagName.toLowerCase()
+              : `${this.tagName.toLowerCase()}-${unnamed.indexOf(style)}`);
       styleIdentityMap.set(style, specifier);
       this.#specifiers.push(specifier);
       if (!specifierMap.has(specifier)) {
