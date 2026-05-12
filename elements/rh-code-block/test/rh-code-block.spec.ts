@@ -43,6 +43,121 @@ describe('<rh-code-block>', function() {
     });
   });
 
+  describe('line numbers', function() {
+    describe('default mode (no highlighting)', function() {
+      let element: RhCodeBlock;
+      beforeEach(async function() {
+        element = await createFixture<RhCodeBlock>(html`
+          <rh-code-block>
+            <script type="text/html">line one
+line two
+line three</script>
+          </rh-code-block>
+        `);
+        await allUpdates(element);
+      });
+
+      it('should render line spans in shadow DOM', function() {
+        const lines = element.shadowRoot!.querySelectorAll('#code-with-line-numbers .line');
+        expect(lines.length).to.equal(3);
+      });
+
+      it('should have line-content spans inside each line', function() {
+        const contents = element.shadowRoot!.querySelectorAll('#code-with-line-numbers .line-content');
+        expect(contents.length).to.equal(3);
+      });
+    });
+
+    describe('client-side highlighting', function() {
+      let element: RhCodeBlock;
+      beforeEach(async function() {
+        element = await createFixture<RhCodeBlock>(html`
+          <rh-code-block highlighting="client" language="css">
+            <script type="text/css">body {
+  color: red;
+}</script>
+          </rh-code-block>
+        `);
+        await allUpdates(element);
+        // Prism loads asynchronously; wait for wrapped lines to render
+        await aTimeout(500);
+        await allUpdates(element);
+      });
+
+      it('should render line spans with highlighted content', function() {
+        const lines = element.shadowRoot!.querySelectorAll('#code-with-line-numbers .line');
+        expect(lines.length).to.be.greaterThan(0);
+      });
+    });
+
+    describe('prerendered highlighting (legacy format)', function() {
+      let element: RhCodeBlock;
+      beforeEach(async function() {
+        element = await createFixture<RhCodeBlock>(html`
+          <rh-code-block highlighting="prerendered">
+            <pre class="language-css"><code class="language-css"><span class="token selector">body</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+          </rh-code-block>
+        `);
+        await allUpdates(element);
+      });
+
+      it('should wrap legacy prerendered content into shadow DOM lines', function() {
+        const lines = element.shadowRoot!.querySelectorAll('#code-with-line-numbers .line');
+        expect(lines.length).to.equal(3);
+      });
+    });
+
+    describe('line-numbers="hidden"', function() {
+      let element: RhCodeBlock;
+      beforeEach(async function() {
+        element = await createFixture<RhCodeBlock>(html`
+          <rh-code-block line-numbers="hidden">
+            <script type="text/html">line one
+line two</script>
+          </rh-code-block>
+        `);
+        await allUpdates(element);
+      });
+
+      it('should still render line spans', function() {
+        const lines = element.shadowRoot!.querySelectorAll('#code-with-line-numbers .line');
+        expect(lines.length).to.equal(2);
+      });
+
+      it('should hide the code-with-line-numbers via CSS', function() {
+        const container = element.shadowRoot!.querySelector('#code-with-line-numbers');
+        const style = getComputedStyle(container!);
+        expect(style.gridTemplateColumns).to.not.include('min-content');
+      });
+    });
+
+    describe('prerendered callout (multiple code elements)', function() {
+      let element: RhCodeBlock;
+      beforeEach(async function() {
+        element = await createFixture<RhCodeBlock>(html`
+          <rh-code-block highlighting="prerendered">
+            <pre class="language-html"><code class="language-html">first block</code></pre>
+            <span>badge</span>
+            <pre class="language-html"><code class="language-html">second block</code></pre>
+          </rh-code-block>
+        `);
+        await allUpdates(element);
+      });
+
+      it('should not pull content into shadow DOM', function() {
+        const lines = element.shadowRoot!.querySelectorAll('#code-with-line-numbers .line');
+        expect(lines.length).to.equal(0);
+      });
+
+      it('should keep slot visible', function() {
+        const slot = element.shadowRoot!.querySelector<HTMLSlotElement>('#content');
+        expect(slot!.hidden).to.be.false;
+      });
+    });
+  });
+
   describe('with copy action', function() {
     let element: RhCodeBlock;
     let tooltip: TooltipLike;
