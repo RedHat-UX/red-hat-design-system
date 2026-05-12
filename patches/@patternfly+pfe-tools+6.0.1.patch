@@ -1,0 +1,32 @@
+diff --git a/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js
+index 2d5ecfe..712a955 100644
+--- a/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js
++++ b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js
+@@ -90,10 +90,10 @@ export class Manifest {
+     /**
+      */
+     getTagNames() {
+-        return this.manifest?.modules
++        return [...new Set(this.manifest?.modules
+             ?.flatMap?.(m => m.exports
+             ?.filter?.(x => x.kind === 'custom-element-definition')
+-            ?.map?.(x => x.name)) ?? [];
++            ?.map?.(x => x.name)) ?? [])];
+     }
+     /**
+      * @param tagName tag to get attributes for
+diff --git a/node_modules/@patternfly/pfe-tools/test/playwright/PfeDemoPage.js b/node_modules/@patternfly/pfe-tools/test/playwright/PfeDemoPage.js
+index e29a423..6232821 100644
+--- a/node_modules/@patternfly/pfe-tools/test/playwright/PfeDemoPage.js
++++ b/node_modules/@patternfly/pfe-tools/test/playwright/PfeDemoPage.js
+@@ -10,8 +10,9 @@ export class PfeDemoPage {
+     async navigate(pathnameOrOptions) {
+         const selectorOverride = typeof pathnameOrOptions === 'string' ? undefined
+             : pathnameOrOptions?.selector;
++        const slug = this.tagName.replace(/^pf-(?:v\d+-)?/, '');
+         const pathname = typeof pathnameOrOptions === 'string' ? pathnameOrOptions
+-            : `${this.workspace}/${this.tagName.replace('pf-', '')}/demo`;
++            : `${this.workspace}/${slug}/demo`;
+         const url = new URL(pathname, this.origin).toString();
+         // eslint-disable-next-line no-console
+         console.log(`NAVIGATING to ${url}`);
