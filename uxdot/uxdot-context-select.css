@@ -43,7 +43,6 @@ select {
       var(--rh-color-border-interactive);
     outline-offset: var(--rh-length-2xs, 3px);
   }
-
 }
 
 @media (prefers-color-scheme: dark) {
