@@ -3,8 +3,14 @@
 }
 
 select {
+  --_caret-light: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_4022_181)'%3E%3Cpath d='M9.46188 2.8086C9.38473 2.6216 9.20213 2.5 8.99998 2.5H0.999976C0.797826 2.5 0.615226 2.6216 0.538076 2.8086C0.460426 2.9956 0.503426 3.21045 0.646476 3.3535L4.46973 7.17675C4.61573 7.32325 4.80813 7.396 4.99998 7.396C5.19183 7.396 5.38428 7.32325 5.53023 7.17675L9.35348 3.3535C9.49653 3.21045 9.53953 2.9956 9.46188 2.8086Z' fill='%23151515'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_4022_181'%3E%3Crect width='10' height='10' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+  --_caret-dark: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_4022_181)'%3E%3Cpath d='M9.46188 2.8086C9.38473 2.6216 9.20213 2.5 8.99998 2.5H0.999976C0.797826 2.5 0.615226 2.6216 0.538076 2.8086C0.460426 2.9956 0.503426 3.21045 0.646476 3.3535L4.46973 7.17675C4.61573 7.32325 4.80813 7.396 4.99998 7.396C5.19183 7.396 5.38428 7.32325 5.53023 7.17675L9.35348 3.3535C9.49653 3.21045 9.53953 2.9956 9.46188 2.8086Z' fill='%23ffffff'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_4022_181'%3E%3Crect width='10' height='10' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+
   appearance: none;
   background-color: var(--rh-color-surface);
+  background-image: var(--_caret-light);
+  background-position: right 12px center;
+  background-repeat: no-repeat;
   border:
     var(--rh-border-width-sm, 1px)
     solid
@@ -37,13 +43,22 @@ select {
       var(--rh-color-border-interactive);
     outline-offset: var(--rh-length-2xs, 3px);
   }
+
+}
+
+@media (prefers-color-scheme: dark) {
+  select {
+    background-image: var(--_caret-dark);
+  }
 }
 
 @supports (appearance: base-select) {
   select {
     align-items: center;
+    background-image: none;
     gap: var(--rh-space-md, 8px);
     padding-inline-end: var(--rh-space-lg, 16px);
+
 
     &,
     &::picker(select) {
