@@ -527,7 +527,7 @@
 
   @layer closed {
     @layer start {
-      #container.closed.inline-start #collapse-toggle rh-icon {
+      #container:not(.open).inline-start #collapse-toggle rh-icon {
         rotate: 180deg;
 
         &:dir(rtl) {
@@ -537,7 +537,7 @@
     }
 
     @layer end {
-      #container.closed.inline-end #collapse-toggle rh-icon {
+      #container:not(.open).inline-end #collapse-toggle rh-icon {
         rotate: 360deg;
 
         &:dir(rtl) {
@@ -546,7 +546,7 @@
       }
     }
 
-    #container.closed.resizable #resize-handle {
+    #container:not(.open).resizable #resize-handle {
       visibility: hidden;
       transition: visibility 0s;
     }
@@ -559,7 +559,7 @@
       overflow: visible;
       block-size: 0;
 
-      &:is(.open, .closed).inline-start #panel {
+      &.inline-start #panel {
         position: fixed;
         z-index: 10;
         inset-block: 0;
@@ -568,7 +568,7 @@
         min-inline-size: var(--_panel-min-width);
       }
 
-      &:is(.open, .closed).inline-end #panel {
+      &.inline-end #panel {
         position: fixed;
         z-index: 10;
         inset-block: 0;
@@ -577,7 +577,7 @@
         min-inline-size: var(--_panel-min-width);
       }
 
-      &.closed {
+      &:not(.open) {
         &.inline-start #panel {
           translate: calc(var(--_slide-dir) * 100%) 0;
         }
@@ -593,7 +593,7 @@
     #container.flow {
       overflow: visible;
 
-      &:is(.open, .closed).inline-start #panel {
+      &.inline-start #panel {
         position: fixed;
         z-index: 10;
         inset-block: 0;
@@ -602,7 +602,7 @@
         min-inline-size: var(--_panel-min-width);
       }
 
-      &:is(.open, .closed).inline-end #panel {
+      &.inline-end #panel {
         position: fixed;
         z-index: 10;
         inset-block: 0;
@@ -611,7 +611,7 @@
         min-inline-size: var(--_panel-min-width);
       }
 
-      &.closed {
+      &:not(.open) {
         &.inline-start #panel {
           translate: calc(var(--_slide-dir) * 100%) 0;
         }
@@ -622,21 +622,21 @@
       }
 
       &.flow-wide {
-        &:is(.open, .closed).inline-start #panel {
+        &.inline-start #panel {
           position: relative;
           z-index: 2;
           inset-block: auto;
           inset-inline-start: auto;
         }
 
-        &:is(.open, .closed).inline-end #panel {
+        &.inline-end #panel {
           position: relative;
           z-index: 2;
           inset-block: auto;
           inset-inline-end: auto;
         }
 
-        &:is(.open, .closed) #close-button {
+        & #close-button {
           display: none;
         }
       }
@@ -645,21 +645,21 @@
 
   @layer overlay {
     #container.overlay {
-      &:is(.open, .closed).inline-start #panel {
+      &.inline-start #panel {
         position: absolute;
         z-index: 10;
         inset-block: 0;
         inset-inline-start: 0;
       }
 
-      &:is(.open, .closed).inline-end #panel {
+      &.inline-end #panel {
         position: absolute;
         z-index: 10;
         inset-block: 0;
         inset-inline-end: 0;
       }
 
-      &.closed {
+      &:not(.open) {
         &:not(.collapsible) {
           &.inline-start #panel {
             translate: calc(var(--_slide-dir) * 100%) 0;
@@ -686,7 +686,7 @@
         }
       }
 
-      &:is(.open, .closed) #content-container {
+      & #content-container {
         inline-size: 100%;
       }
 
@@ -704,21 +704,21 @@
 
   @layer auto {
     #container.auto {
-      &:is(.open, .closed).inline-start #panel {
+      &.inline-start #panel {
         position: absolute;
         z-index: 10;
         inset-block: 0;
         inset-inline-start: 0;
       }
 
-      &:is(.open, .closed).inline-end #panel {
+      &.inline-end #panel {
         position: absolute;
         z-index: 10;
         inset-block: 0;
         inset-inline-end: 0;
       }
 
-      &.closed {
+      &:not(.open) {
         &:not(.collapsible) {
           &.inline-start #panel {
             translate: calc(var(--_slide-dir) * 100%) 0;
@@ -745,7 +745,7 @@
         }
       }
 
-      &:is(.open, .closed) #content-container {
+      & #content-container {
         inline-size: 100%;
       }
 
@@ -760,7 +760,7 @@
       }
 
       &.inline-mode {
-        &:is(.open, .closed).inline-start #panel {
+        &.inline-start #panel {
           position: relative;
           z-index: 2;
           inset-block: auto;
@@ -772,7 +772,7 @@
           block-size: stretch;
         }
 
-        &:is(.open, .closed).inline-end #panel {
+        &.inline-end #panel {
           position: relative;
           z-index: 2;
           inset-block: auto;
@@ -782,7 +782,7 @@
             translate var(--_transition-duration) ease-in-out;
         }
 
-        &:is(.open, .closed):is(.inline-start, .inline-end) #content-container {
+        &:is(.inline-start, .inline-end) #content-container {
           inline-size: auto;
         }
 
@@ -796,7 +796,7 @@
           }
         }
 
-        &.closed {
+        &:not(.open) {
           &:not(.collapsible) {
             &.inline-start #panel {
               translate: none;

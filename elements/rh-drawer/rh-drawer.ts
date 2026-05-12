@@ -252,7 +252,6 @@ export class RhDrawer extends LitElement {
     const isFlow = this.variant === 'flow';
     const classes = {
       'open': this.open,
-      'closed': !this.open,
       'auto': isAuto,
       'fixed': this.variant === 'fixed',
       'flow': isFlow,
