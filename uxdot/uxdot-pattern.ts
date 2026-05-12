@@ -1,7 +1,8 @@
-import { LitElement, html, isServer } from 'lit';
+import { LitElement, html, isServer, nothing } from 'lit';
 
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
 
@@ -14,12 +15,14 @@ import {
   ColorPaletteListConverter,
   ContextChangeEvent,
   paletteNames,
-} from '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+} from './uxdot-context-select.js';
 
-import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+import './uxdot-context-select.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
 import '@rhds/elements/rh-code-block/rh-code-block.js';
 import '@rhds/elements/rh-tabs/rh-tabs.js';
+import '@rhds/elements/rh-button/rh-button.js';
+import '@rhds/elements/rh-button-group/rh-button-group.js';
 
 import { TabExpandEvent } from '@rhds/elements/rh-tabs/rh-tab.js';
 
@@ -35,7 +38,7 @@ export class UxdotPattern extends LitElement {
 
   /** Which color palette to apply to the demo surface */
   @property({ reflect: true, attribute: 'color-palette' })
-  colorPalette: ColorPalette = 'lightest';
+  colorPalette?: ColorPalette;
 
   /** The id of the element in shadow DOM which the color picker targets */
   @property({ reflect: true }) target = 'content';
@@ -48,6 +51,9 @@ export class UxdotPattern extends LitElement {
 
   /** Path to additional JS file to include */
   @property({ reflect: true, attribute: 'js-src' }) jsSrc?: string;
+
+  /** Render pattern in an iframe for proper @media query support */
+  @property({ type: Boolean, reflect: true }) viewport = false;
 
   /** Should the color picker be hidden? */
   @property({ type: Boolean, attribute: 'no-color-picker' }) noColorPicker = false;
@@ -63,6 +69,14 @@ export class UxdotPattern extends LitElement {
 
   /** Which color palettes should be allowed in the picker? (default: all) */
   @property({ converter: ColorPaletteListConverter }) allow = paletteNames;
+
+  readonly #viewportSizes: Record<string, string> = {
+    mobile: '360px',
+    tablet: '768px',
+    desktop: '100%',
+  };
+
+  @state() private _viewportSize: 'mobile' | 'tablet' | 'desktop' = 'desktop';
 
   #picked = false;
 
@@ -80,26 +94,55 @@ export class UxdotPattern extends LitElement {
       <span slot="action-label-wrap">Toggle line wrap</span>
     `;
 
+    const viewportWidth = this.#viewportSizes[this._viewportSize] ?? '100%';
+
     return html`
       <div id="container">
         <div id="heading"><slot name="heading"></slot></div>
-
-        <form id="color-picker"
-              ?hidden="${this.noColorPicker}"
-              @submit="${(e: Event) => e.preventDefault()}">
-          <label for="picker">Color palette</label>
-          <rh-context-picker id="picker"
-                             @change="${this.#onChange}"
-                             value="${this.colorPalette}"
-                             target="${this.target}"
-                             allow="${this.allow}"></rh-context-picker>
-        </form>
 
         <div id="description" class="${classMap({ empty: this.#slots.isEmpty(null) })}">
           <slot></slot>
         </div>
 
-        <rh-surface id="content">${allContent}</rh-surface>
+        <div id="controls-row">
+          ${this.viewport ? html`
+          <rh-button-group id="viewport-controls"
+                           role="toolbar"
+                           aria-label="Viewport size">
+            <rh-button variant="tertiary"
+                       icon="mobile-phone"
+                       accessible-label="Mobile (360px)"
+                       ?active="${this._viewportSize === 'mobile'}"
+                       @click="${() => this.#onViewportSize('mobile')}"></rh-button>
+            <rh-button variant="tertiary"
+                       icon="tablet"
+                       accessible-label="Tablet (768px)"
+                       ?active="${this._viewportSize === 'tablet'}"
+                       @click="${() => this.#onViewportSize('tablet')}"></rh-button>
+            <rh-button variant="tertiary"
+                       icon="desktop"
+                       accessible-label="Desktop (100%)"
+                       ?active="${this._viewportSize === 'desktop'}"
+                       @click="${() => this.#onViewportSize('desktop')}"></rh-button>
+          </rh-button-group>` : nothing}
+
+          <div id="color-picker"
+               ?hidden="${this.noColorPicker}">
+            <uxdot-context-select id="picker"
+                                accessible-label="Color palette"
+                                @change="${this.#onChange}"
+                                value="${ifDefined(this.colorPalette)}"
+                                target="${this.target}"
+                                allow="${this.allow}"></uxdot-context-select>
+          </div>
+        </div>
+
+        ${this.viewport ?
+          html`<iframe id="viewport-frame"
+                       style="max-inline-size: ${viewportWidth}"
+                       src="${ifDefined(this.ssr.viewportSrc)}"
+                       title="${this.src ?? 'Pattern preview'}"></iframe>`
+          : html`<rh-surface id="content">${allContent}</rh-surface>`}
 
         <rh-tabs id="code-tabs"
                  class="code-tabs"
@@ -145,9 +188,32 @@ export class UxdotPattern extends LitElement {
     }
   }
 
+  #onViewportSize(size: 'mobile' | 'tablet' | 'desktop') {
+    this._viewportSize = size;
+  }
+
   #onChange(event: Event) {
     if (event instanceof ContextChangeEvent) {
-      this.colorPalette = event.colorPalette;
+      const codeTabs = this.shadowRoot?.querySelector('#code-tabs');
+      if (event.colorPalette) {
+        codeTabs?.setAttribute('color-palette', event.colorPalette);
+      } else {
+        codeTabs?.removeAttribute('color-palette');
+      }
+      if (this.viewport) {
+        this.#postColorPalette(event.colorPalette);
+      }
+    }
+  }
+
+  #postColorPalette(colorPalette: ColorPalette | null) {
+    const iframe = this.shadowRoot?.querySelector<HTMLIFrameElement>('#viewport-frame');
+    if (iframe?.src) {
+      const { origin } = new URL(iframe.src, location.origin);
+      iframe.contentWindow?.postMessage({
+        type: 'uxdot-pattern:color-palette',
+        colorPalette,
+      }, origin);
     }
   }
 }
