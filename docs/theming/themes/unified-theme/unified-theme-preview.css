@@ -1139,9 +1139,11 @@
   rh-jump-link {
     /* Replace the left-border hover indicator with a pill background */
     --rh-color-border-status-neutral: transparent;
+    --rh-space-lg: var(--unified-space-md);
 
     width: fit-content;
-    margin-inline-start: var(--unified-space-md);
+
+    /* margin-inline-start: 10px; */
 
     &:hover {
       background-color: var(--unified-color-interactive-fill-plain-hover);
