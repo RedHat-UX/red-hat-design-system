@@ -14,6 +14,8 @@ import './rh-footer-social-link.js';
 import './rh-footer-links.js';
 import './rh-footer-block.js';
 
+import { lightdomCSS } from '@rhds/elements/lib/lightdom-css.js';
+
 import style from './rh-footer.css' with { type: 'css' };
 
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
@@ -42,6 +44,7 @@ function isHeaderTagName(tagName: string) {
  * @cssprop --rh-footer-link-header-font-size - Font size for link column headers. Defaults to --rh-font-size-body-text-sm
  */
 @customElement('rh-footer')
+@lightdomCSS(import.meta.url, './rh-footer-lightdom.css')
 export class RhFooter extends LitElement {
   static readonly version = '{{version}}';
 
