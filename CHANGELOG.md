@@ -1,5 +1,19 @@
 # @rhds/elements
 
+## 4.1.2
+### Patch Changes
+
+- cf95f14: `<rh-navigation-primary>`: adjusted links menu to collapse at a wider viewport than main navigation
+
+## 4.1.1
+### Patch Changes
+
+- 3314574: `<rh-accordion>`: fixed server-side rendering compatibility
+- cbadd8d: `<rh-navigation-primary>`: corrected logo accessibility semantics for Safari
+- 2c394b3: `<rh-tabs>`: improved accessibility so only one focus outline is visible at a time when navigating within a tab panel
+- 8880442: `<rh-scheme-toggle>`: corrected checked and hover background colors, improved focus styles
+- 4bc3a7e: `<rh-cta>`: made the text in primary, secondary, and default CTAs bolder
+
 ## 4.1.0
 ### Minor Changes
 
