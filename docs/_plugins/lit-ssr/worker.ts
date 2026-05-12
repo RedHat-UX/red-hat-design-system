@@ -56,8 +56,8 @@ for (const bareSpec of imports) {
 }
 /* eslint-enable no-console */
 
-const SHEET_MARKER_RE = /^\/\*\s*@sheet:([\w-]+)\s*\*\//;
 const specifierMap = new Map<string, string>();
+const styleIdentityMap = new WeakMap<object, string>();
 
 class RHDSSSRableRenderer extends LitElementRenderer {
   // Eagerly processed CSS strings, not thunks. connectedCallback() must store
@@ -82,23 +82,26 @@ class RHDSSSRableRenderer extends LitElementRenderer {
     );
   }
 
-  // Extract @sheet: markers from elementStyles after the element is constructed.
-  // Builds #specifiers for this instance's host/template attributes, and populates
-  // the page-level specifierMap so each stylesheet is processed and emitted only once.
   override connectedCallback() {
     super.connectedCallback();
     const styles =
       (this.element.constructor as typeof LitElement).elementStyles ?? [];
+    const unnamed = styles.filter(s =>
+      !styleIdentityMap.has(s)
+      && !(s as CSSResult & { specifier?: string }).specifier);
     for (const style of styles) {
-      const { cssText } = style as CSSResult;
-      const match = cssText.match(SHEET_MARKER_RE);
-      if (match) {
-        const [, specifier] = match;
-        this.#specifiers.push(specifier);
-        if (!specifierMap.has(specifier)) {
-          const stripped = cssText.slice(match[0].length).trimStart();
-          specifierMap.set(specifier, this.#processCSS(stripped, specifier));
-        }
+      const specifier = styleIdentityMap.get(style)
+          ?? (style as CSSResult & { specifier?: string }).specifier
+          ?? (unnamed.length === 1
+            ? this.tagName.toLowerCase()
+            : `${this.tagName.toLowerCase()}-${unnamed.indexOf(style)}`);
+      styleIdentityMap.set(style, specifier);
+      this.#specifiers.push(specifier);
+      if (!specifierMap.has(specifier)) {
+        specifierMap.set(
+          specifier,
+          this.#processCSS((style as CSSResult).cssText, specifier),
+        );
       }
     }
   }
@@ -118,20 +121,6 @@ class RHDSSSRableRenderer extends LitElementRenderer {
 
     if (this.#specifiers.length > 0) {
       result.push(`<!--@adopted:${this.#specifiers.join(' ')}-->`);
-    }
-
-    // Fallback for styles without @sheet: markers. Marked styles are already in
-    // specifierMap and will be emitted once in <head>. Anything else renders
-    // inline so nothing breaks.
-    const inlineStyles = (
-      (this.element.constructor as typeof LitElement).elementStyles ?? []
-    ).filter(s => !SHEET_MARKER_RE.test((s as CSSResult).cssText));
-    if (inlineStyles.length > 0) {
-      result.push(() => [
-        '<style>',
-        ...inlineStyles.map(s => this.#processCSS((s as CSSResult).cssText)),
-        '</style>',
-      ]);
     }
 
     result.push(async () => {

@@ -4,7 +4,7 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import baseStyles from '@rhds/tokens/css/color-palette.css.js';
 
-const styles = unsafeCSS(`/* @sheet:rhds-color-palette */${baseStyles.cssText}`);
+const styles = Object.assign(unsafeCSS(baseStyles.cssText), { specifier: 'rhds-color-palette' });
 import type { Constructor } from '@lit/reactive-element/decorators/base.js';
 
 type ColorPaletteConstructor = Constructor<ColorPaletteElement> & typeof ReactiveElement;
