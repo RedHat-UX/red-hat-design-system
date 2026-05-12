@@ -134,6 +134,24 @@ export class RhDrawer extends LitElement {
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel = 'Panel';
 
+  /** Label for the close button. Overridden by the `close-label` slot. */
+  @property({ attribute: 'close-label' }) closeLabel?: string;
+
+  /** Label for the expand button when collapsed. Overridden by the `expand-label-expand` slot. */
+  @property({ attribute: 'expand-label-expand' }) expandLabelExpand?: string;
+
+  /** Label for the expand button when expanded. Overridden by the `expand-label-collapse` slot. */
+  @property({ attribute: 'expand-label-collapse' }) expandLabelCollapse?: string;
+
+  /** Label for the resize handle. Overridden by the `resize-label` slot. */
+  @property({ attribute: 'resize-label' }) resizeLabel?: string;
+
+  /** Label for the collapse toggle when open. Overridden by the `collapse-label-open` slot. */
+  @property({ attribute: 'collapse-label-open' }) collapseLabelOpen?: string;
+
+  /** Label for the collapse toggle when closed. Overridden by the `collapse-label-closed` slot. */
+  @property({ attribute: 'collapse-label-closed' }) collapseLabelClosed?: string;
+
   /**
    * Controls the panel edge interaction.
    * - `collapsible`: adds a collapse/expand toggle button (default for auto/overlay)
@@ -276,8 +294,8 @@ export class RhDrawer extends LitElement {
                            icon="${this._isFullViewport ? 'arrow-down-left-up-right-to-center' : 'expand-arrows'}"></rh-icon>
                 </button>
                 <span id="expand-label" class="visually-hidden">
-                  <span ?hidden=${this._isFullViewport}><slot name="expand-label-expand">Enter full viewport</slot></span>
-                  <span ?hidden=${!this._isFullViewport}><slot name="expand-label-collapse">Exit full viewport</slot></span>
+                  <span ?hidden=${this._isFullViewport}><slot name="expand-label-expand">${this.expandLabelExpand ?? 'Enter full viewport'}</slot></span>
+                  <span ?hidden=${!this._isFullViewport}><slot name="expand-label-collapse">${this.expandLabelCollapse ?? 'Exit full viewport'}</slot></span>
                 </span>
               ` : nothing}
               ${!showCollapsible ? html`
@@ -291,7 +309,7 @@ export class RhDrawer extends LitElement {
                   <rh-icon set="microns" icon="close"></rh-icon>
                 </button>
                 <span id="close-label" class="visually-hidden">
-                  <slot name="close-label">Close drawer</slot>
+                  <slot name="close-label">${this.closeLabel ?? 'Close drawer'}</slot>
                 </span>
               ` : nothing}
             </div>
@@ -325,7 +343,7 @@ export class RhDrawer extends LitElement {
                    @keydown=${this.#onResizeKeyDown}></div>
               <span id="resize-label" class="visually-hidden">
                 <!-- Accessible label for the resize handle -->
-                <slot name="resize-label">Resize panel</slot>
+                <slot name="resize-label">${this.resizeLabel ?? 'Resize panel'}</slot>
               </span>
             ` : nothing}
           </div>
@@ -341,8 +359,8 @@ export class RhDrawer extends LitElement {
               <rh-icon set="ui" icon="caret-left"></rh-icon>
             </button>
             <span id="collapse-label" class="visually-hidden">
-              <span ?hidden=${!this.open}><!-- Accessible label for the collapse toggle when panel is open --><slot name="collapse-label-open">Collapse panel</slot></span>
-              <span ?hidden=${this.open}><!-- Accessible label for the collapse toggle when panel is closed --><slot name="collapse-label-closed">Expand panel</slot></span>
+              <span ?hidden=${!this.open}><!-- Accessible label for the collapse toggle when panel is open --><slot name="collapse-label-open">${this.collapseLabelOpen ?? 'Collapse panel'}</slot></span>
+              <span ?hidden=${this.open}><!-- Accessible label for the collapse toggle when panel is closed --><slot name="collapse-label-closed">${this.collapseLabelClosed ?? 'Expand panel'}</slot></span>
             </span>
           ` : nothing}
         </div>
