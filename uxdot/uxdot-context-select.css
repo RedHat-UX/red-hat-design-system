@@ -58,7 +58,6 @@ select {
     gap: var(--rh-space-md, 8px);
     padding-inline-end: var(--rh-space-lg, 16px);
 
-
     &,
     &::picker(select) {
       appearance: base-select;
