@@ -1082,6 +1082,7 @@
   rh-dialog {
     --rh-border-radius-default: var(--unified-border-radius-large);
     --rh-color-icon-secondary: var(--unified-color-icon-secondary);
+    --rh-font-weight-body-text-regular: var(--rh-font-weight-body-text-medium, 500);
     --rh-space-xl: var(--unified-space-xl);
     --rh-space-lg: var(--unified-space-lg);
 
