@@ -64,6 +64,25 @@ slot {
     /** Danger status background */
     background-color: var(--rh-color-status-danger);
   }
+
+  /* deprecated state aliases — remove when deprecated states are removed */
+  &.moderate {
+    background-color: var(--rh-color-status-warning);
+    color: var(--rh-color-text-primary-on-light, #151515);
+  }
+
+  &.important {
+    background-color: var(--rh-color-status-caution);
+    color: var(--rh-color-text-primary-on-light, #151515);
+  }
+
+  &.critical {
+    background-color: var(--rh-color-status-danger);
+  }
+
+  &.note {
+    background-color: var(--rh-color-status-info);
+  }
 }
 
 /** Hide empty label span */

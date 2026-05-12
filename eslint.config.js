@@ -6,6 +6,12 @@ import htmleslint from '@html-eslint/eslint-plugin';
 export default tseslint.config(
   ...pfe,
   {
+    name: 'local/ecmaVersion',
+    languageOptions: {
+      ecmaVersion: 2025,
+    },
+  },
+  {
     plugins: {
       '@html-eslint': htmleslint,
     },

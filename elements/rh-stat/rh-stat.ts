@@ -22,7 +22,7 @@ import styles from './rh-stat.css' with { type: 'css' };
  *
  * @summary Showcases a data point or quick fact visually
  *
- * @alias statistic
+ * @alias Statistic
  */
 @customElement('rh-stat')
 @themable

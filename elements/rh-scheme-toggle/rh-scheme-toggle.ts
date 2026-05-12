@@ -46,8 +46,6 @@ export class SchemeChangedEvent extends Event {
  * @fires {SchemeChangedEvent} scheme-changed - Fired when the color scheme
  *        changes. Has no `detail` payload; read the new value from
  *        `event.scheme` (`'light'`, `'dark'`, or `'light dark'`).
- *
- * @alias Scheme toggle
  */
 @customElement('rh-scheme-toggle')
 export class RhSchemeToggle extends LitElement {

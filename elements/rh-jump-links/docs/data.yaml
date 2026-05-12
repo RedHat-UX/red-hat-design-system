@@ -3,6 +3,9 @@ tagName: rh-jump-links
 name: Jump links
 type: element
 overallStatus: ready
+aka:
+  - Table of contents
+  - Anchor links
 libraries:
   figma: ready
   rhds: ready
@@ -12,3 +15,4 @@ relatedItems:
   - rh-disclosure
   - rh-pagination
   - rh-tabs
+since: v3.0.0

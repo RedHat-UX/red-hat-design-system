@@ -3,6 +3,8 @@ tagName: rh-code-block
 name: Code block
 type: element
 overallStatus: ready
+aka:
+  - Code snippet
 libraries:
   figma: ready
   rhds: ready
@@ -12,3 +14,4 @@ relatedItems:
   - rh-blockquote
   - rh-card
   - rh-dialog
+since: v1.1.0

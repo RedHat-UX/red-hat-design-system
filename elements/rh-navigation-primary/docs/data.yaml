@@ -3,6 +3,9 @@ tagName: rh-navigation-primary
 name: Navigation (primary)
 type: element
 overallStatus: ready
+aka:
+  - Main navigation
+  - Navbar
 libraries:
   figma: ready
   rhds: ready
@@ -12,3 +15,4 @@ relatedItems:
   - rh-footer
   - rh-navigation-secondary
   - rh-skip-link
+since: v3.0.0

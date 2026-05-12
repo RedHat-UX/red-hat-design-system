@@ -3,6 +3,9 @@ tagName: rh-skeleton
 name: Skeleton
 type: element
 overallStatus: ready
+aka:
+  - Placeholder
+  - Shimmer
 libraries:
   figma: ready
   rhds: ready
@@ -10,3 +13,4 @@ libraries:
   docs: ready
 relatedItems:
   - rh-spinner
+since: v3.1.0

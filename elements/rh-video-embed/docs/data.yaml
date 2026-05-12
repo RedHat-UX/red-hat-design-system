@@ -3,6 +3,8 @@ tagName: rh-video-embed
 name: Video embed
 type: element
 overallStatus: new
+aka:
+  - Video player
 libraries:
   figma: ready
   rhds: ready
@@ -11,3 +13,4 @@ libraries:
 relatedItems:
   - rh-audio-player
   - rh-button
+since: v2.0.0

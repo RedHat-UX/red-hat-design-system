@@ -3,6 +3,9 @@ tagName: rh-scheme-toggle
 name: Scheme toggle
 type: element
 overallStatus: ready
+aka:
+  - Theme switcher
+  - Dark mode toggle
 description: >-
   A scheme toggle switches between light, dark, and system default color schemes.
 libraries:
@@ -13,3 +16,4 @@ libraries:
 relatedItems:
   - rh-button
   - rh-switch
+since: v3.1.0

@@ -3,6 +3,9 @@ tagName: rh-tag
 name: Tag
 type: element
 overallStatus: ready
+aka:
+  - Label
+  - Chip
 libraries:
   figma: ready
   rhds: ready
@@ -12,3 +15,4 @@ relatedItems:
   - rh-badge
   - rh-button
   - rh-chip
+since: v1.0.0
