@@ -17,65 +17,52 @@ subnav:
 
 ## Overview
 
-[CEM][cem] (Custom Elements Manifest multitool) provides AI-powered
-editor features for Red Hat Design System components. It gives your
-editor and AI assistant structured knowledge of RHDS elements, including
-their attributes, slots, events, CSS custom properties, and usage
-guidelines.
+Two MCP servers give your AI assistant structured knowledge of
+Red Hat Design System **components** and **design tokens**. Once
+configured, your assistant can generate correct RHDS markup, suggest
+token values, and validate your usage.
 
-CEM offers two integration modes:
+| Server               | What it knows                                                          | Install                   |
+| -------------------- | ---------------------------------------------------------------------- | ------------------------- |
+| [CEM][cem]           | Elements: attributes, slots, events, CSS custom properties, guidelines | `npm i -g @pwrs/cem`      |
+| [Asimonim][asimonim] | Design tokens: colors, spacing, typography, shadows, and more          | `npm i -g @pwrs/asimonim` |
 
-- **LSP** (Language Server Protocol) adds autocomplete, hover
-  documentation, go-to-definition, and validation to your editor
-- **MCP** (Model Context Protocol) gives AI assistants direct access to
-  component manifests for accurate HTML generation and validation
-
-## Install CEM
-
-Install CEM using npm:
-
-```shell rhcodeblock
-npm install -g @pwrs/cem
-```
-
-Or using Go:
+Both are also available via `go install`:
 
 ```shell rhcodeblock
 go install bennypowers.dev/cem@latest
+go install bennypowers.dev/asimonim@latest
 ```
 
-Verify the installation:
+Verify both are installed:
 
 ```shell rhcodeblock
 cem version
+asimonim version
 ```
 
-## Claude Code
+## Setup
 
-The CEM plugin for [Claude Code][claudecode] provides both LSP and MCP
-support. Install the plugin with two commands:
+Pick your editor below and follow the steps. You only need to configure
+one.
+
+### Claude Code
+
+Install both plugins:
 
 ```text rhcodeblock
 /plugin marketplace add bennypowers/cem
 /plugin install cem
+/plugin marketplace add bennypowers/asimonim
+/plugin install asimonim
 ```
 
-Once installed, Claude Code gains:
+No additional configuration needed. Both plugins discover RHDS
+manifests and token files from `node_modules` automatically.
 
-- **Editor intelligence** for HTML, TypeScript, and JavaScript files,
-  with autocomplete and validation for RHDS elements
-- **AI-native component understanding**, so Claude can generate correct
-  HTML using RHDS components with proper slots, attributes, and design
-  tokens
+### Cursor
 
-No additional configuration is needed. The plugin discovers
-`custom-elements.json` manifests in your project and in `node_modules`
-automatically.
-
-## Cursor
-
-[Cursor][cursor] supports MCP servers for AI-assisted development.
-Add CEM to your Cursor MCP configuration:
+Add both servers to your [Cursor MCP config][cursormcp]:
 
 ```json rhcodeblock
 {
@@ -83,29 +70,27 @@ Add CEM to your Cursor MCP configuration:
     "cem": {
       "command": "cem",
       "args": ["mcp"]
+    },
+    "asimonim": {
+      "command": "asimonim",
+      "args": ["mcp"]
     }
   }
 }
 ```
 
-See the [Cursor MCP docs][cursormcp] for the configuration file location
-on your platform.
+### VS Code
 
-For LSP support in Cursor, configure the language server to run
-`cem lsp` for HTML, TypeScript, and JavaScript files.
+For component intelligence, install the [Custom Elements Language
+Server][vscodeext] extension from the marketplace.
 
-## VS Code
+For MCP support, add both servers to your MCP configuration the same
+way as Cursor (above).
 
-Install the [Custom Elements Language Server][vscodeext] extension from
-the VS Code marketplace. The extension bundles the language server and
-works out of the box.
+### Neovim
 
-For MCP support, add CEM to your MCP configuration the same way as
-Cursor (above).
+For Neovim 0.12+ with native LSP support, create two files:
 
-## Neovim
-
-For Neovim 0.12+ with native LSP support, create
 `~/.config/nvim/lsp/cem.lua`:
 
 ```lua rhcodeblock
@@ -116,17 +101,32 @@ return {
 }
 ```
 
+`~/.config/nvim/lsp/asimonim.lua`:
+
+```lua rhcodeblock
+return {
+  cmd = { 'asimonim', 'lsp' },
+  root_markers = { 'package.json', '.git' },
+  filetypes = {
+    'css', 'html', 'twig', 'php',
+    'javascript', 'javascriptreact',
+    'typescript', 'typescriptreact',
+    'json', 'yaml',
+  },
+}
+```
+
 ## Verify your setup
 
-After configuring your editor or AI assistant:
+1. Open an HTML or CSS file in a project that depends on `@rhds/elements`
+2. Type `<rh-` and confirm that autocomplete suggestions appear
+3. In a CSS file, type `--rh-` and confirm that token suggestions appear
+4. If using MCP, ask your AI assistant to generate an RHDS component or
+   list available tokens
 
-1. Open an HTML file in a project that depends on `@rhds/elements`
-2. Start typing `<rh-` and confirm that autocomplete suggestions appear
-3. If using MCP, ask your AI assistant "What RHDS elements are available
-   in this project?"
-
-If completions do not appear, make sure your project has a
-`custom-elements.json` manifest. Generate one with:
+If completions do not appear, make sure your project has `@rhds/elements`
+in its dependencies. If your project has its own web components, you can
+generate a manifest with:
 
 ```shell rhcodeblock
 cem generate
@@ -135,19 +135,18 @@ cem generate
 ## Learn more
 
 - [CEM documentation][cemdocs]
-- [MCP reference][mcpref]
-- [LSP reference][lspref]
+- [Asimonim documentation][asimonimdocs]
 
 <uxdot-feedback>
   <h2>Designers</h2>
   <p>To get started using our design system as a designer, go to the <a href="/get-started/designers">Designers</a> page.</p>
 </uxdot-feedback>
 
+[asimonim]: https://github.com/bennypowers/asimonim
+[asimonimdocs]: https://bennypowers.dev/asimonim/
 [cem]: https://github.com/bennypowers/cem
 [cemdocs]: https://bennypowers.dev/cem/
 [claudecode]: https://claude.com/product/claude-code
 [cursor]: https://cursor.com
 [cursormcp]: https://docs.cursor.com/mcp
-[lspref]: https://bennypowers.dev/cem/docs/reference/lsp/
-[mcpref]: https://bennypowers.dev/cem/docs/reference/mcp/
 [vscodeext]: https://marketplace.visualstudio.com/items?itemName=pwrs.cem-language-server-vscode
