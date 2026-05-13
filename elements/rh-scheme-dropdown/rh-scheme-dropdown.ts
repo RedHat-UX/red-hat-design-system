@@ -39,8 +39,6 @@ export class SchemeChangedEvent extends Event {
  * @summary Displays a variety of color schemes in a menu dropdown
  *
  * @fires {SchemeChangedEvent} scheme-changed - Fired when the color scheme changes
- *
- * @alias Scheme dropdown
  */
 @customElement('rh-scheme-dropdown')
 export class RhSchemeDropdown extends LitElement {
