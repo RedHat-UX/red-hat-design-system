@@ -334,11 +334,6 @@
     margin-inline-start: var(--rh-space-lg, 16px);
   }
 
-  @container navigation-primary (min-width: 1200px) {
-    /** Secondary area spacing between items at containers >= xl */
-    gap: var(--rh-space-xl, 24px);
-  }
-
   #event {
     display: none;
 
@@ -353,10 +348,6 @@
     @container navigation-primary (min-width: 768px) {
       /** Event slot margin end at containers >= md */
       margin-inline-end: var(--rh-space-xl, 24px);
-    }
-
-    @container navigation-primary (min-width: 1200px) {
-      margin-inline-end: 0;
     }
 
     & ::slotted(rh-navigation-primary-item) {
