@@ -293,29 +293,29 @@ describe('<rh-scheme-dropdown>', function() {
     beforeEach(async function() {
       element = await createFixture<RhSchemeDropdown>(html`
         <rh-scheme-dropdown
-          label-text="Tema"
-          light-text="Claro"
-          dark-text="Oscuro"
-          system-text="Sistema"
+          accessible-label="Tema"
+          accessible-label-light="Claro"
+          accessible-label-dark="Oscuro"
+          accessible-label-system="Sistema"
         ></rh-scheme-dropdown>
       `);
       await element.updateComplete;
     });
 
-    it('reflects label-text to the labelText property', function() {
-      expect(element.labelText).to.equal('Tema');
+    it('reflects accessible-label to the accessibleLabel property', function() {
+      expect(element.accessibleLabel).to.equal('Tema');
     });
 
-    it('reflects light-text to the lightText property', function() {
-      expect(element.lightText).to.equal('Claro');
+    it('reflects accessible-label-light to the accessibleLabelLight property', function() {
+      expect(element.accessibleLabelLight).to.equal('Claro');
     });
 
-    it('reflects dark-text to the darkText property', function() {
-      expect(element.darkText).to.equal('Oscuro');
+    it('reflects accessible-label-dark to the accessibleLabelDark property', function() {
+      expect(element.accessibleLabelDark).to.equal('Oscuro');
     });
 
-    it('reflects system-text to the systemText property', function() {
-      expect(element.systemText).to.equal('Sistema');
+    it('reflects accessible-label-system to the accessibleLabelSystem property', function() {
+      expect(element.accessibleLabelSystem).to.equal('Sistema');
     });
 
     it('renders the custom label', async function() {

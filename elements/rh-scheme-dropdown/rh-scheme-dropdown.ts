@@ -34,7 +34,7 @@ export class SchemeChangedEvent extends Event {
  * Provides a color scheme picker for switching between light, dark,
  * and system defaults. Uses a semantic `<select>` with a visually
  * hidden `<label>` for screen reader accessibility (WCAG 4.1.2).
- * Authors should set `label-text` for localization. Tab focuses
+ * Authors should set `accessible-label` for localization. Tab focuses
  * the select; arrow keys cycle options.
  *
  * @summary Displays a variety of color schemes in a menu dropdown
@@ -72,22 +72,22 @@ export class RhSchemeDropdown extends LitElement {
    * Visually hidden accessible label for the scheme dropdown.
    * Authors should keep this text short (under 20 characters).
    */
-  @property({ attribute: 'label-text' }) labelText = 'Color scheme';
+  @property({ attribute: 'accessible-label' }) accessibleLabel = 'Color scheme';
 
   /**
    * Accessible label for the light mode option.
    */
-  @property({ attribute: 'light-text' }) lightText = 'Light';
+  @property({ attribute: 'accessible-label-light' }) accessibleLabelLight = 'Light';
 
   /**
    * Accessible label for the dark mode option.
    */
-  @property({ attribute: 'dark-text' }) darkText = 'Dark';
+  @property({ attribute: 'accessible-label-dark' }) accessibleLabelDark = 'Dark';
 
   /**
    * Accessible label for the system default option.
    */
-  @property({ attribute: 'system-text' }) systemText = 'System';
+  @property({ attribute: 'accessible-label-system' }) accessibleLabelSystem = 'System';
 
   /**
    * Controls where the trigger and picker align within the host.
@@ -123,7 +123,7 @@ export class RhSchemeDropdown extends LitElement {
 
   render() {
     return html`
-      <label for="scheme-dropdown" class="visually-hidden">${this.labelText}:</label>
+      <label for="scheme-dropdown" class="visually-hidden">${this.accessibleLabel}:</label>
       <select id="scheme-dropdown" @change="${this.#onChange}">
         <button type="button">
           <selectedcontent></selectedcontent>
@@ -131,17 +131,17 @@ export class RhSchemeDropdown extends LitElement {
         </button>
         <option value="light dark" ?selected="${this.#isSystem}">
           <rh-icon set="ui" icon="auto-light-dark-mode"></rh-icon>
-          <span class="option-text">${this.systemText}</span>
+          <span class="option-text">${this.accessibleLabelSystem}</span>
           <rh-icon set="ui" icon="check" class="checkmark"></rh-icon>
         </option>
         <option value="light" ?selected="${this.#isLight}">
           <rh-icon set="ui" icon="light-mode"></rh-icon>
-          <span class="option-text">${this.lightText}</span>
+          <span class="option-text">${this.accessibleLabelLight}</span>
           <rh-icon set="ui" icon="check" class="checkmark"></rh-icon>
         </option>
         <option value="dark" ?selected="${this.#isDark}">
           <rh-icon set="ui" icon="dark-mode"></rh-icon>
-          <span class="option-text">${this.darkText}</span>
+          <span class="option-text">${this.accessibleLabelDark}</span>
           <rh-icon set="ui" icon="check" class="checkmark"></rh-icon>
         </option>
       </select>
