@@ -1,0 +1,55 @@
+---
+description: "Demonstrates the input and change events fired by the textarea when a user interacts with it."
+---
+<form>
+  <label for="textarea-events">
+    Events
+  </label>
+  <rh-textarea id="textarea-events" placeholder="Type something here"></rh-textarea>
+
+  <p class="container">
+    An input event fires on each keystroke. A change event fires when the
+    textarea loses focus after its value has changed.
+  </p>
+
+  <fieldset class="container">
+    <legend>Events Fired</legend>
+    <output name="events">No events yet</output>
+  </fieldset>
+</form>
+
+<script type="module">
+  import '@rhds/elements/rh-textarea/rh-textarea.js';
+
+  const textarea = document.querySelector('#textarea-events');
+  const form = document.querySelector('form');
+  const events = [];
+  form.addEventListener('submit', event => event.preventDefault());
+  const onTextareaEvent = (event) => {
+    events.push(event.type);
+    form.elements.events.value = events.join(', ');
+  };
+  textarea.addEventListener('input', onTextareaEvent);
+  textarea.addEventListener('change', onTextareaEvent);
+</script>
+
+<style>
+  label,
+  rh-textarea,
+  .container {
+    margin-inline: 20px;
+    margin-block-end: var(--rh-space-md, 8px);
+  }
+
+  label,
+  rh-textarea {
+    max-inline-size: 320px;
+  }
+
+  label {
+    display: block;
+    font-family: var(--rh-font-family-body-text);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    margin-block: var(--rh-space-md, 8px);
+  }
+</style>

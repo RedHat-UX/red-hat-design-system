@@ -1,0 +1,35 @@
+---
+description: "Disabled textarea demonstrating aria-disabled pattern. Element remains focusable for assistive technology users."
+---
+<label for="textarea-disabled">
+  Disabled textarea
+</label>
+<rh-textarea id="textarea-disabled" disabled placeholder="This textarea is disabled"></rh-textarea>
+
+<label for="textarea-disabled-value">
+  Disabled with value
+</label>
+<rh-textarea id="textarea-disabled-value" disabled value="This text cannot be edited"></rh-textarea>
+
+<script type="module">
+  import '@rhds/elements/rh-textarea/rh-textarea.js';
+</script>
+
+<style>
+  label,
+  rh-textarea {
+    margin-inline: 20px;
+    max-inline-size: 320px;
+  }
+
+  label {
+    display: block;
+    font-family: var(--rh-font-family-body-text);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    margin-block: var(--rh-space-md, 8px);
+  }
+
+  rh-textarea {
+    margin-block-end: var(--rh-space-xl, 24px);
+  }
+</style>

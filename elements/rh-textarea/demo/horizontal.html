@@ -1,0 +1,63 @@
+---
+description: "Horizontal label layout with labels positioned to the left of the textarea using CSS Grid."
+---
+<form class="form-horizontal">
+  <label for="textarea-h1">First name</label>
+  <input type="text" id="textarea-h1" placeholder="First name">
+
+  <label for="textarea-h2">Last name</label>
+  <input type="text" id="textarea-h2" placeholder="Last name">
+
+  <label for="textarea-h3">Additional information</label>
+  <rh-textarea id="textarea-h3" placeholder="Notes"></rh-textarea>
+</form>
+
+<script type="module">
+  import '@rhds/elements/rh-textarea/rh-textarea.js';
+</script>
+
+<style>
+  .form-horizontal {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+    align-items: start;
+    margin: 20px;
+    max-inline-size: 500px;
+  }
+
+  label {
+    font-family: var(--rh-font-family-body-text);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    padding-block-start: var(--rh-space-md, 8px);
+  }
+
+  input {
+    background-color: light-dark(
+      var(--rh-color-surface-lightest, #ffffff),
+      var(--rh-color-surface-darkest, #151515)
+    );
+    border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+    border-radius: var(--rh-border-radius-default, 3px);
+    color: var(--rh-color-text-primary);
+    font-family: var(--rh-font-family-body-text);
+    font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+    line-height: var(--rh-line-height-body-text, 1.5);
+    padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+  }
+
+  input:hover {
+    border-color: var(--rh-color-border-interactive);
+  }
+
+  input:focus {
+    border-color: transparent;
+    outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
+  }
+
+  input:focus-visible {
+    border-color: var(--rh-color-border-interactive);
+    outline: 3px solid var(--rh-color-border-interactive);
+    outline-offset: 3px;
+  }
+</style>
