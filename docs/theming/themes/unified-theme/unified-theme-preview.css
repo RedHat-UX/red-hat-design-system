@@ -1070,10 +1070,23 @@
         );
     --rh-border-width-lg: var(--unified-border-width-lg);
     --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+    --rh-font-size-body-text-md: var(--unified-font-size-body-text-sm);
+  }
+
+  rh-tab::part(button):hover {
+    background-color: var(--unified-color-interactive-fill-plain-hover);
+    border-radius: var(--unified-border-radius-action-plain);
   }
 
   rh-tab::part(button):focus {
+    background-color: var(--unified-color-interactive-fill-plain-hover);
     border-radius: var(--unified-border-radius-action-plain);
+
+    outline:
+      var(--unified-border-width-md)
+      solid
+      var(--unified-color-interactive-primary-default);
+    outline-offset: calc(-1 * var(--unified-border-width-md));
   }
 }
 
