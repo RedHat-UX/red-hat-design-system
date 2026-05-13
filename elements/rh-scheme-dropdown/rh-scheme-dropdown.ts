@@ -47,9 +47,6 @@ export class SchemeChangedEvent extends Event {
 export class RhSchemeDropdown extends LitElement {
   static styles = [styles];
 
-  /** Guards against dispatching scheme-changed on initial boot. */
-  #initialized = false;
-
   /** Whether the light option is currently selected. */
   #isLight = false;
 
@@ -96,16 +93,6 @@ export class RhSchemeDropdown extends LitElement {
    */
   @property({ attribute: 'dropdown-placement', reflect: true })
   dropdownPlacement?: 'inline-end';
-
-  connectedCallback(): void {
-    super.connectedCallback();
-
-    // Defer until after the first Lit update cycle so @observes('scheme')
-    // doesn't dispatch scheme-changed for the initial localStorage value:
-    this.updateComplete.then(() => {
-      this.#initialized = true;
-    });
-  }
 
   /**
    * Syncs the selected-state flags before each render so the
@@ -172,7 +159,7 @@ export class RhSchemeDropdown extends LitElement {
     if (this.scheme) {
       document.body.style.setProperty('color-scheme', this.scheme);
       localStorage.rhdsColorScheme = this.scheme;
-      if (this.#initialized) {
+      if (this.hasUpdated) {
         this.dispatchEvent(new SchemeChangedEvent(this.scheme));
       }
     } else {
