@@ -219,7 +219,7 @@ export class RhTextarea extends LitElement {
                 ?readonly="${this.#disabled || this.readonly}"
                 aria-disabled="${String(!!this.#disabled) as 'true' | 'false'}"
                 @input="${this.#onInput}"
-                @change="${this.#onInput}"
+                @change="${this.#onChange}"
       ></textarea>
       <div id="char-count" ?hidden="${!showCharCount}" aria-hidden="true">
         ${this.value?.length ?? 0}/${this.maxlength}
@@ -236,11 +236,20 @@ export class RhTextarea extends LitElement {
   }
 
   /**
-   * Sync the Lit property with the native textarea value.
-   * Handles both input (every keystroke) and change (blur) events.
+   * Sync value on every keystroke. Native input event is composed and
+   * already bubbles through the shadow boundary.
    */
   #onInput() {
     this.value = this._textarea.value;
+  }
+
+  /**
+   * Sync value on commit (blur). Redispatch change because native change
+   * events are not composed and won't cross the shadow boundary.
+   */
+  #onChange() {
+    this.value = this._textarea.value;
+    this.dispatchEvent(new Event('change', { bubbles: true }));
   }
 
   /**
