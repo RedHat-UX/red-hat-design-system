@@ -1,0 +1,243 @@
+:host {
+  display: inline-block;
+}
+
+.visually-hidden,
+selectedcontent .option-text {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  block-size: 1px;
+  inline-size: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+}
+
+select {
+  --_caret-light: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_4022_181)'%3E%3Cpath d='M9.46188 2.8086C9.38473 2.6216 9.20213 2.5 8.99998 2.5H0.999976C0.797826 2.5 0.615226 2.6216 0.538076 2.8086C0.460426 2.9956 0.503426 3.21045 0.646476 3.3535L4.46973 7.17675C4.61573 7.32325 4.80813 7.396 4.99998 7.396C5.19183 7.396 5.38428 7.32325 5.53023 7.17675L9.35348 3.3535C9.49653 3.21045 9.53953 2.9956 9.46188 2.8086Z' fill='%23151515'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_4022_181'%3E%3Crect width='10' height='10' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+  --_caret-dark: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_4022_181)'%3E%3Cpath d='M9.46188 2.8086C9.38473 2.6216 9.20213 2.5 8.99998 2.5H0.999976C0.797826 2.5 0.615226 2.6216 0.538076 2.8086C0.460426 2.9956 0.503426 3.21045 0.646476 3.3535L4.46973 7.17675C4.61573 7.32325 4.80813 7.396 4.99998 7.396C5.19183 7.396 5.38428 7.32325 5.53023 7.17675L9.35348 3.3535C9.49653 3.21045 9.53953 2.9956 9.46188 2.8086Z' fill='%23ffffff'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_4022_181'%3E%3Crect width='10' height='10' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+
+  appearance: none;
+
+  /** Select surface color; theme-adaptive */
+  background-color: var(--rh-color-surface);
+  background-image: var(--_caret-light);
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  border:
+    /** Select border width */
+    var(--rh-border-width-sm, 1px)
+    solid
+    /** Select border color; theme-adaptive */
+    var(--rh-color-border-subtle);
+
+  /** Select corner radius */
+  border-radius: var(--rh-border-radius-default, 3px);
+  box-sizing: border-box;
+
+  /** Select text color; theme-adaptive for accessible contrast */
+  color: var(--rh-color-text-primary);
+  cursor: default;
+
+  /** Select typeface */
+  font-family: var(--rh-font-family-body-text);
+
+  /** Select text size */
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+
+  /** Select font weight */
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
+  inline-size: 100%;
+
+  /** Select line height */
+  line-height: var(--rh-line-height-body-text, 1.5);
+  margin: 0;
+
+  /** Select fallback browser max-inline-size. Change when customizing option text */
+  max-inline-size: var(--rh-scheme-dropdown-select-inline-size, 102px); /* Safari requires +space */
+  padding:
+    /** Select block padding */
+    var(--rh-space-md, 8px)
+    /** Select inline-end padding; extra room for the caret indicator */
+    var(--rh-space-2xl, 32px)
+    /** Select block padding */
+    var(--rh-space-md, 8px)
+    /** Select inline-start padding */
+    var(--rh-space-lg, 16px);
+
+  &:hover {
+    /** Hover border color; interactive theme color */
+    border-color: var(--rh-color-border-interactive);
+  }
+
+  &:focus {
+    /** Focus border color; interactive theme color */
+    border-color: var(--rh-color-border-interactive);
+    outline:
+      /** Focus outline width */
+      var(--rh-border-width-lg, 3px)
+      solid
+      /** Focus outline color; interactive theme color */
+      var(--rh-color-border-interactive);
+
+    /** Focus outline offset  */
+    outline-offset: var(--rh-length-2xs, 3px);
+  }
+}
+
+:host([scheme='dark']) select {
+  background-image: var(--_caret-dark);
+}
+
+/** OS dark preference when set to "System" or when scheme is unset */
+@media (prefers-color-scheme: dark) {
+  :host([scheme='light dark']) select,
+  :host(:not([scheme])) select {
+    background-image: var(--_caret-dark);
+  }
+}
+
+@supports (appearance: base-select) {
+  #scheme-dropdown {
+    background-image: none;
+  }
+
+  select {
+    align-items: center;
+    block-size: 40px;
+
+    /** Select content gap */
+    gap: var(--rh-space-md, 8px);
+    inline-size: 68px;
+    padding-block: 10px;
+
+    /** Select inline-end padding */
+    padding-inline-end: var(--rh-space-lg, 16px);
+
+    &,
+    &::picker(select) {
+      appearance: base-select;
+    }
+
+    &::picker(select) {
+      border:
+        /** Picker border width */
+        var(--rh-border-width-sm, 1px)
+        solid
+        /** Picker border color; theme-adaptive */
+        var(--rh-color-border-subtle);
+
+      /** Picker corner radius */
+      border-radius: var(--rh-border-radius-default, 3px);
+
+      /** Picker elevation shadow; depth cue for the overlay */
+      box-shadow: var(--rh-box-shadow-sm);
+      inline-size: 100%;
+
+      /** Picker top margin */
+      margin-block-start: var(--rh-space-sm, 6px);
+
+      /** Picker max-inline-size. Change when customizing scheme dropdown option text */
+      max-inline-size: var(--rh-scheme-dropdown-picker-inline-size, 145px);
+
+      /** Picker vertical padding */
+      padding-block: var(--rh-space-md, 8px);
+    }
+
+    &:open {
+      outline:
+        /** Open state outline width */
+        var(--rh-border-width-md, 2px)
+        solid
+        /** Open state outline color; interactive theme color */
+        var(--rh-color-border-interactive);
+    }
+
+    &::picker-icon {
+      display: none; /* Handled via rh-icon in shadowdom */
+    }
+  }
+
+  selectedcontent {
+    align-items: center;
+    display: inline-flex;
+
+    rh-icon.checkmark {
+      display: none; /* Hide checkmark clone inside collapsed button view */
+    }
+  }
+
+  select button > rh-icon {
+    /** Caret icon size; smaller than the default icon size */
+    --rh-icon-size: 10px;
+
+    transition: rotate var(--rh-animation-speed, 0.3s) ease;
+  }
+
+  select:open button > rh-icon {
+    rotate: 180deg;
+  }
+
+  option {
+    align-items: center;
+    padding:
+      /** Option block padding */
+      var(--rh-space-md, 8px)
+      /** Option inline-end padding */
+      var(--rh-space-3xl, 48px)
+      /** Option block padding */
+      var(--rh-space-md, 8px)
+      /** Option inline-start padding */
+      var(--rh-space-lg, 16px);
+    position: relative;
+
+    &:hover,
+    &:focus {
+      background-color:
+        light-dark(
+            /** Option hover surface in light color scheme */
+            var(--rh-color-surface-lighter, #f2f2f2),
+            /** Option hover surface in dark color scheme */
+            var(--rh-color-surface-darker, #1f1f1f)
+          );
+    }
+
+    &:focus {
+      /** Option focus corner radius */
+      border-radius: var(--rh-border-radius-default, 3px);
+      border: 0;
+      outline:
+        /** Option focus outline width */
+        var(--rh-border-width-lg, 3px)
+        solid
+        /** Option focus outline color; interactive theme color */
+        var(--rh-color-border-interactive);
+      outline-offset: -3px;
+    }
+
+    &::checkmark {
+      display: none;
+    }
+
+    & rh-icon.checkmark {
+      /** Checkmark icon color; interactive theme color for selected scheme */
+      color: var(--rh-color-interactive-primary-default);
+      display: none; /* Hide checkmark rh-icon by default, then show it when checked */
+      position: absolute;
+
+      /** Checkmark inline-end offset */
+      inset-inline-end: var(--rh-space-lg, 16px);
+    }
+
+    &:checked rh-icon.checkmark {
+      display: block;
+    }
+  }
+
+  /* Align picker's inline-end edge with trigger's inline-end edge. */
+  :host([dropdown-placement='inline-end']) select::picker(select) {
+    position-area: block-end span-inline-start;
+  }
+}

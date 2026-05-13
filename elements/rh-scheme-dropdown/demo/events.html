@@ -1,0 +1,47 @@
+---
+description: "Demonstrates the scheme-changed event fired when a user changes the color scheme."
+---
+<form id="scheme-dropdown-events">
+  <rh-scheme-dropdown id="scheme-dropdown"></rh-scheme-dropdown>
+
+  <p class="container">
+    A <code>scheme-changed</code> event fires whenever the color scheme changes.
+  </p>
+
+  <fieldset class="container">
+    <legend>Events Fired</legend>
+    <output name="events">No events yet</output>
+  </fieldset>
+</form>
+
+<script type="module">
+  import '@rhds/elements/rh-scheme-dropdown/rh-scheme-dropdown.js';
+
+  const dropdown = document.getElementById('scheme-dropdown');
+  const form = document.getElementById('scheme-dropdown-events');
+  const events = [];
+  form.addEventListener('submit', e => e.preventDefault());
+
+  dropdown.addEventListener('scheme-changed', event => {
+    events.push(event.scheme);
+    form.elements.events.value = events.join(', ');
+  });
+</script>
+
+<style>
+  body {
+    color-scheme: light dark;
+    background-color: var(--rh-color-surface);
+    color: var(--rh-color-text-primary);
+  }
+
+  rh-scheme-dropdown {
+    padding: var(--rh-space-md, 8px);
+  }
+
+  .container {
+    margin-inline: 20px;
+    margin-block-end: var(--rh-space-md, 8px);
+    font-family: var(--rh-font-family-body-text);
+  }
+</style>

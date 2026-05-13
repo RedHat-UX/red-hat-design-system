@@ -1,0 +1,16 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-scheme-dropdown
+name: Scheme dropdown
+type: element
+overallStatus: ready
+description: >-
+  A scheme dropdown switches between light, dark, and system default color schemes.
+libraries:
+  figma: ready
+  rhds: ready
+  shared: planned
+  docs: ready
+relatedItems:
+  - rh-button
+  - rh-scheme-toggle
+  - rh-switch
