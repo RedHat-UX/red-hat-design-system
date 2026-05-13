@@ -106,6 +106,29 @@ describe('<rh-textarea>', function() {
         expect(inputFired).to.be.true;
       });
     });
+
+    describe('change event', function() {
+      it('fires change event on blur', async function() {
+        let changeFired = false;
+        element.addEventListener('change', () => {
+          changeFired = true;
+        });
+        element.focus();
+        await sendKeys({ type: 'hello' });
+        element.blur();
+        expect(changeFired).to.be.true;
+      });
+
+      it('does not fire change on every keystroke', async function() {
+        let changeCount = 0;
+        element.addEventListener('change', () => {
+          changeCount++;
+        });
+        element.focus();
+        await sendKeys({ type: 'abc' });
+        expect(changeCount).to.equal(0);
+      });
+    });
   });
 
   describe('accessible label sources', function() {
