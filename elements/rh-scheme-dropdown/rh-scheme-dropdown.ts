@@ -32,10 +32,9 @@ export class SchemeChangedEvent extends Event {
 
 /**
  * Provides a color scheme picker for switching between light, dark,
- * and system defaults. Uses a semantic `<select>` with a visually
- * hidden `<label>` for screen reader accessibility (WCAG 4.1.2).
- * Authors should set `accessible-label` for localization. Tab focuses
- * the select; arrow keys cycle options.
+ * and system defaults. Accessible by default with a screen-reader
+ * label (WCAG 4.1.2), keyboard navigation, and focus management.
+ * Authors should set `accessible-label` for localization.
  *
  * @summary Displays a variety of color schemes in a menu dropdown
  *
