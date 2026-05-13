@@ -12,3 +12,4 @@ relatedItems:
   - rh-button
   - rh-cta
   - rh-scheme-toggle
+since: v4.0.2

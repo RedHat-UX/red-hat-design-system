@@ -12,3 +12,4 @@ relatedItems:
   - rh-alert
   - rh-footer
   - rh-health-index
+since: v1.4.0

@@ -42,8 +42,6 @@ export class TileSelectEvent extends Event {
  *
  * @summary Clickable surface for content like images, icons, and links
  *
- * @alias tile
- *
  * @fires {TileSelectEvent} select - Fired when a checkable tile is
  *        clicked. The event's `force` property is `true` when the
  *        tile is in a radio group, indicating it must be selected.

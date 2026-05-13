@@ -21,8 +21,6 @@ import styles from './rh-button.css' with { type: 'css' };
  * provide an ARIA accessible name. Supports form association (submit/reset).
  *
  * @summary Clickable button that triggers page or form actions
- *
- * @alias button
  */
 @customElement('rh-button')
 @themable

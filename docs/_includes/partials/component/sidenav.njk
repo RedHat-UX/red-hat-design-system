@@ -29,7 +29,8 @@
                               href="{{ href }}"
                               {{ 'current-page' if active }}>
             {{- doc.alias or (doc.slug | deslugify) -}}
-            {%- if doc.planned -%}<rh-tag icon="notification-fill" color="purple" size="compact">Planned</rh-tag>{%- endif -%}
+            {%- if doc.planned -%}<rh-tag icon="notification-fill" color="purple" size="compact">Planned</rh-tag>
+            {%- elif doc.elementData and doc.elementData.since == "v" + packageinfo.version -%}<rh-tag icon="new" icon-set="ui" color="green" size="compact">New</rh-tag>{%- endif -%}
           </rh-navigation-link>
           {% endif %}
           {%- endfor -%}
