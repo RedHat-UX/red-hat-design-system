@@ -26,6 +26,33 @@ import { capitalize } from '#11ty-plugins/tokensHelpers.js';
 
 const pfeconfig = getPfeConfig();
 
+const AI_GUIDELINES_SLUGS = [
+  'ai-design-principles',
+  'animation',
+  'chatbot-avatars',
+  'color',
+  'iconography',
+  'legal-requirements',
+  'transparency-notices',
+] as const;
+
+async function syncAiGuidelines(destDir: string) {
+  const base = 'https://raw.githubusercontent.com/project-felt/ai-guidelines/main/content';
+  const headers: Record<string, string> = { 'User-Agent': 'red-hat-design-system' };
+  if (process.env.GITHUB_TOKEN) {
+    headers['Authorization'] = `Bearer ${process.env.GITHUB_TOKEN}`;
+  }
+  for (const slug of AI_GUIDELINES_SLUGS) {
+    const res = await fetch(`${base}/${slug}.md`, { headers });
+    if (!res.ok) {
+      console.warn(`[ai-guidelines] Skipping ${slug}.md — ${res.status} ${res.statusText}`);
+      continue;
+    }
+    await writeFile(join(destDir, `${slug}.md`), await res.text(), 'utf8');
+    console.log(`[ai-guidelines] Synced ${slug}.md`);
+  }
+}
+
 /**
  * @param  tagName e.g. pf-jazz-hands
  */
@@ -150,6 +177,7 @@ export default async function(
     { title: 'Patterns', url: '/patterns', collection: 'pattern' },
     { title: 'Personalization', url: '/personalization', collection: 'personalization' },
     { title: 'Accessibility', url: '/accessibility', collection: 'accessibility' },
+    { title: 'AI guidelines', url: '/ai-guidelines', collection: 'sortedAI' },
   ]);
 
   // Add repo status data as global data for components
@@ -181,6 +209,14 @@ export default async function(
           hasCleanedSinceWatchStarted = true;
           return await clean();
         }
+    }
+  });
+
+  let hasSyncedAiGuidelines = false;
+  eleventyConfig.on('eleventy.before', async function({ runMode }) {
+    if (runMode === 'build' || !hasSyncedAiGuidelines) {
+      hasSyncedAiGuidelines = true;
+      await syncAiGuidelines(join(cwd, 'docs/ai-guidelines'));
     }
   });
 
@@ -312,6 +348,17 @@ export default async function(
       } else {
         return 0;
       }
+    });
+  });
+
+  eleventyConfig.addCollection('sortedAI', async function(collectionApi) {
+    return collectionApi.getFilteredByTags('ai').sort((a, b) => {
+      const orderA = a.data.order ?? Infinity;
+      const orderB = b.data.order ?? Infinity;
+      if (orderA !== orderB) {
+        return orderA - orderB;
+      }
+      return (a.data.title ?? '').localeCompare(b.data.title ?? '');
     });
   });
 
