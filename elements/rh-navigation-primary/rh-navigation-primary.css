@@ -20,8 +20,8 @@
   z-index: var(--rh-navigation-primary-z-index, 102);
 
   /**
-   * `rh-navigation-primary-item-menu` padding (inherited by items). Set on `rh-navigation-primary`
-   * to customize dropdown and item menu panels.
+   * CSS custom properties on this host adjust `rh-navigation-primary-item-menu` padding
+   * (inherited through items). Use the variables below to customize dropdown and item menu panels.
    *
    * - `--rh-navigation-primary-item-menu-padding-inline-start` — inline-start at every container
    *   width (defaults to `--rh-space-xl` / 24px, or dropdown tier tokens from `slot="dropdowns"`)
