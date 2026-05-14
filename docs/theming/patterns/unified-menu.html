@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="/theming/themes/unified-theme/unified-theme-preview.css">
+
+<style>
+  .example-row {
+    margin-block: var(--rh-space-2xl, 32px);
+  }
+
+  .example-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rh-space-2xl, 32px);
+    align-items: flex-start;
+  }
+</style>
+
+<h3>Default</h3>
+<div class="example-row example-flex">
+  <rh-menu-dropdown>
+    <span slot="toggle-label">Menu</span>
+    <rh-menu-item href="#">Menu item 1</rh-menu-item>
+    <rh-menu-item href="#">Menu item 2</rh-menu-item>
+    <rh-menu-item href="#">Menu item 3</rh-menu-item>
+  </rh-menu-dropdown>
+</div>
+
+<h3>With disabled item</h3>
+<div class="example-row example-flex">
+  <rh-menu-dropdown>
+    <span slot="toggle-label">Menu</span>
+    <rh-menu-item href="#">Menu item 1</rh-menu-item>
+    <rh-menu-item href="#" disabled>Menu item 2 (disabled)</rh-menu-item>
+    <rh-menu-item href="#">Menu item 3</rh-menu-item>
+  </rh-menu-dropdown>
+</div>
+
+<h3>Borderless</h3>
+<div class="example-row example-flex">
+  <rh-menu-dropdown variant="borderless">
+    <span slot="toggle-label">Borderless</span>
+    <rh-menu-item href="#">Menu item 1</rh-menu-item>
+    <rh-menu-item href="#">Menu item 2</rh-menu-item>
+    <rh-menu-item href="#">Menu item 3</rh-menu-item>
+  </rh-menu-dropdown>
+</div>
