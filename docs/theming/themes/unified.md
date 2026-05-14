@@ -22,6 +22,7 @@ subnav:
   import '@rhds/elements/rh-cta/rh-cta.js';
   import '@rhds/elements/rh-dialog/rh-dialog.js';
   import '@rhds/elements/rh-jump-links/rh-jump-links.js';
+  import '@rhds/elements/rh-menu-dropdown/rh-menu-dropdown.js';
   import '@rhds/elements/rh-navigation-vertical/rh-navigation-vertical.js';
   import '@rhds/elements/rh-progress-stepper/rh-progress-stepper.js';
   import '@rhds/elements/rh-spinner/rh-spinner.js';
@@ -107,9 +108,9 @@ Unified content
   <h3 id="unified-cards" slot="heading">Cards</h3>
 </uxdot-pattern>
 
-<uxdot-pattern src="../patterns/unified-cards-glass.html">
+<!-- <uxdot-pattern src="../patterns/unified-cards-glass.html">
   <h3 id="unified-glass-cards" slot="heading">Cards w/ Glass</h3>
-</uxdot-pattern>
+</uxdot-pattern> -->
 
 <uxdot-pattern src="../patterns/unified-chip.html">
   <h3 id="unified-chip" slot="heading">Chips</h3>
@@ -121,6 +122,10 @@ Unified content
 
 <uxdot-pattern src="../patterns/unified-jump-links.html">
   <h3 id="unified-jump-links" slot="heading">Jump links</h3>
+</uxdot-pattern>
+
+<uxdot-pattern src="../patterns/unified-menu.html">
+  <h3 id="unified-menu" slot="heading">Menu</h3>
 </uxdot-pattern>
 
 <uxdot-pattern src="../patterns/unified-navigation-vertical.html">
