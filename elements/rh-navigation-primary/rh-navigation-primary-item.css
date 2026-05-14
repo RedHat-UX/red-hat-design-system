@@ -471,14 +471,12 @@
 
 :host([slot='links']) {
   & #container {
-    &.compact {
-      min-inline-size: 188px;
+    min-inline-size: 188px;
 
-      /** Compact links slot inline end padding */
-      padding-inline-end: var(--rh-space-xl, 24px);
-    }
+    /** Links slot inline end padding */
+    padding-inline-end: var(--rh-space-xl, 24px);
 
-    @container navigation-primary (min-width: 1200px) {
+    @container navigation-primary (min-width: 1440px) {
       min-inline-size: unset;
       padding-inline-end: 0;
     }
