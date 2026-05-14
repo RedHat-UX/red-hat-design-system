@@ -13,21 +13,55 @@
         var(--rh-color-surface-darkest, #151515)
       );
 
-  /** Content panel block padding */
-  padding-block: var(--rh-space-2xl, 32px);
+  /**
+   * Content panel block padding
+   */
+  padding-block:
+    var(
+        --rh-navigation-primary-item-menu-padding-block-start,
+        var(--rh-space-2xl, 32px)
+      ) var(
+        --rh-navigation-primary-item-menu-padding-block-end,
+        var(--rh-space-3xl, 48px)
+      );
 
-  /** Content panel inline padding */
-  padding-inline: var(--rh-space-xl, 24px);
+  /**
+   * Content panel inline padding
+   */
+  padding-inline:
+    var(
+        --rh-navigation-primary-item-menu-padding-inline-start,
+        var(--_item-menu-padding-inline-sm, var(--rh-space-xl, 24px))
+      ) var(
+        --rh-navigation-primary-item-menu-padding-inline-end,
+        var(--_item-menu-padding-inline-sm, var(--rh-space-xl, 24px))
+      );
+
+  @container navigation-primary (min-width: 576px) {
+    /** Content panel inline padding at containers >= sm */
+    padding-inline:
+      var(
+          --rh-navigation-primary-item-menu-padding-inline-start,
+          var(--_item-menu-padding-inline-lg, var(--rh-space-xl, 24px))
+        ) var(
+          --rh-navigation-primary-item-menu-padding-inline-end,
+          var(--_item-menu-padding-inline-lg, var(--rh-space-xl, 24px))
+        );
+  }
 
   &:not(.compact) {
-    @container (min-width: 1200px) {
+    @container navigation-primary (min-width: 1200px) {
       margin: 0 auto;
       max-width: 1440px;
-      padding:
-        /** Content panel block padding at containers >= xl */
-        var(--rh-space-3xl, 48px)
-        /** Content panel inline padding at containers >= xl */
-        var(--rh-space-2xl, 32px);
+      padding-block: var(--rh-space-3xl, 48px);
+      padding-inline:
+        var(
+            --rh-navigation-primary-item-menu-padding-inline-start,
+            var(--_item-menu-padding-inline-lg, var(--rh-space-2xl, 32px))
+          ) var(
+            --rh-navigation-primary-item-menu-padding-inline-end,
+            var(--_item-menu-padding-inline-lg, var(--rh-space-2xl, 32px))
+          );
     }
   }
 }

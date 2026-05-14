@@ -16,6 +16,11 @@ import styles from './rh-navigation-primary-item-menu.css' with { type: 'css' };
  * within this container; Tab moves through focusable children and Escape
  * closes the parent dropdown.
  *
+ * Padding can be customized from `rh-navigation-primary` using the inherited
+ * custom properties documented on that element (for example
+ * `--rh-navigation-primary-item-menu-padding-inline-start` /
+ * `--rh-navigation-primary-item-menu-padding-inline-end` and block-start / block-end).
+ *
  * @summary Content container for navigation item dropdowns
  *
  */

@@ -40,6 +40,14 @@ export type NavigationPrimaryPalette = Extract<ColorPalette, (
  *
  * @alias Navigation (primary)
  *
+ * CSS custom properties on `rh-navigation-primary` adjust
+ * `rh-navigation-primary-item-menu` padding (inherited through items). See
+ * the `:host` documentation in `rh-navigation-primary.css` for
+ * `--rh-navigation-primary-item-menu-padding-inline-start`,
+ * `--rh-navigation-primary-item-menu-padding-inline-end`,
+ * `--rh-navigation-primary-item-menu-padding-block-start`, and
+ * `--rh-navigation-primary-item-menu-padding-block-end`.
+ *
  */
 @customElement('rh-navigation-primary')
 @colorPalettes
