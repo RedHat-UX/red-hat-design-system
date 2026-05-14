@@ -1001,7 +1001,7 @@
       border: 1px solid var(--unified-color-border-control-default);
     }
 
-    &[checked] {
+    &[checked]:not(:disabled) {
       --rh-color-surface-lightest: #ffffff;
       --rh-color-surface-dark: var(--unified-color-gray-95);
 
