@@ -49,7 +49,6 @@ async function syncAiGuidelines(destDir: string) {
       continue;
     }
     await writeFile(join(destDir, `${slug}.md`), await res.text(), 'utf8');
-    console.log(`[ai-guidelines] Synced ${slug}.md`);
   }
 }
 
