@@ -21,7 +21,9 @@
 
   /**
    * CSS custom properties on this host adjust `rh-navigation-primary-item-menu` padding
-   * (inherited through items). Use the variables below to customize dropdown and item menu panels.
+   * (`#links-menu-content` panels use the same variables). Inherited through primary items for
+   * menus; set on `<rh-navigation-primary>` to customize dropdown, links drawer, and item menu
+   * panels.
    *
    * - `--rh-navigation-primary-item-menu-padding-inline-start`
    * - `--rh-navigation-primary-item-menu-padding-inline-end`
@@ -489,17 +491,39 @@
             );
         box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
         padding-block:
-          /** Links menu content block start padding */
-          var(--rh-space-2xl, 32px)
-          /** Links menu content block end padding */
-          var(--rh-space-3xl, 48px);
+          var(
+              --rh-navigation-primary-item-menu-padding-block-start,
+              var(--rh-space-lg, 16px)
+            )
+          var(
+              --rh-navigation-primary-item-menu-padding-block-end,
+              var(--rh-space-2xl, 32px)
+            );
+        padding-inline:
+          var(
+              --rh-navigation-primary-item-menu-padding-inline-start,
+              var(--_item-menu-padding-inline-sm, var(--rh-space-lg, 16px))
+            )
+          var(
+              --rh-navigation-primary-item-menu-padding-inline-end,
+              var(--_item-menu-padding-inline-sm, var(--rh-space-lg, 16px))
+            );
 
-        /** Links menu content inline padding below sm container width */
-        padding-inline: var(--rh-space-lg, 16px);
-
-        @container navigation-primary (min-width: 576px) {
-          /** Links menu content inline padding at containers >= sm */
-          padding-inline: var(--rh-space-2xl, 32px);
+        @container navigation-primary (min-width: 480px) {
+          padding-block-start:
+            var(
+                --rh-navigation-primary-item-menu-padding-block-start,
+                var(--rh-space-2xl, 32px)
+              );
+          padding-inline:
+            var(
+                --rh-navigation-primary-item-menu-padding-inline-start,
+                var(--_item-menu-padding-inline-lg, var(--rh-space-2xl, 32px))
+              )
+            var(
+                --rh-navigation-primary-item-menu-padding-inline-end,
+                var(--_item-menu-padding-inline-lg, var(--rh-space-2xl, 32px))
+              );
         }
 
         /** Open Links menu start rounded corner */
@@ -788,6 +812,35 @@
         }
       }
     }
+
+    /**
+     * `#links-menu-content` uses the same `--rh-navigation-primary-item-menu-padding-*` stacks as
+     * `rh-navigation-primary-item-menu`.
+     */
+    & #links-menu[open] #links-menu-content {
+      @container navigation-primary (min-width: 1200px) {
+        @container navigation-primary (max-width: 1439px) {
+          padding-block:
+            var(
+                --rh-navigation-primary-item-menu-padding-block-start,
+                var(--rh-space-2xl, 32px)
+              )
+            var(
+                --rh-navigation-primary-item-menu-padding-block-end,
+                var(--rh-space-3xl, 48px)
+              );
+          padding-inline:
+            var(
+                --rh-navigation-primary-item-menu-padding-inline-start,
+                var(--_item-menu-padding-inline-lg, var(--rh-space-2xl, 32px))
+              )
+            var(
+                --rh-navigation-primary-item-menu-padding-inline-end,
+                var(--_item-menu-padding-inline-lg, var(--rh-space-2xl, 32px))
+              );
+        }
+      }
+    }
   }
 
   &.compact {
@@ -902,14 +955,26 @@
                   var(--rh-color-surface-darkest, #151515)
                 );
             box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
-            padding-block:
-              /** Open compact links menu block start padding at containers >= xl */
-              var(--rh-space-2xl, 32px)
-              /** Open compact links menu block end padding at containers >= xl */
-              var(--rh-space-3xl, 48px);
 
-            /** Open compact links menu inline padding at containers >= xl */
-            padding-inline: var(--rh-space-2xl, 32px);
+            /** Same padding variables as utility dropdown menus (`rh-navigation-primary-item-menu`). */
+            padding-block:
+              var(
+                  --rh-navigation-primary-item-menu-padding-block-start,
+                  var(--rh-space-2xl, 32px)
+                )
+              var(
+                  --rh-navigation-primary-item-menu-padding-block-end,
+                  var(--rh-space-3xl, 48px)
+                );
+            padding-inline:
+              var(
+                  --rh-navigation-primary-item-menu-padding-inline-start,
+                  var(--_item-menu-padding-inline-lg, var(--rh-space-2xl, 32px))
+                )
+              var(
+                  --rh-navigation-primary-item-menu-padding-inline-end,
+                  var(--_item-menu-padding-inline-lg, var(--rh-space-2xl, 32px))
+                );
 
             /** Open compact links menu start rounded corner at containers >= xl */
             border-end-start-radius: var(--rh-border-radius-default, 3px);

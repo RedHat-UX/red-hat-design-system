@@ -43,14 +43,15 @@ export type NavigationPrimaryPalette = Extract<ColorPalette, (
  * @cssprop [--rh-navigation-primary-z-index=102] - Stacking order when the navigation overlaps
  *          other fixed or sticky content on the page.
  * @cssprop [--rh-navigation-primary-item-menu-padding-inline-start] -
- *          Inline-start padding on `rh-navigation-primary-item-menu` panels (sets inherit).
- *          Unset: responsive defaults for the `navigation-primary` container.
+ *          Inline-start padding on `rh-navigation-primary-item-menu` and `#links-menu-content`
+ *          panels (sets inherit). Unset: responsive defaults for the `navigation-primary`
+ *          container.
  * @cssprop [--rh-navigation-primary-item-menu-padding-inline-end] -
- *          Inline-end padding on item menu panels (sets inherit).
+ *          Inline-end padding on item menu and `#links-menu-content` panels (sets inherit).
  * @cssprop [--rh-navigation-primary-item-menu-padding-block-start] -
- *          Block-start padding on item menu panels (sets inherit).
+ *          Block-start padding on item menu and `#links-menu-content` panels (sets inherit).
  * @cssprop [--rh-navigation-primary-item-menu-padding-block-end] -
- *          Block-end padding on item menu panels (sets inherit).
+ *          Block-end padding on item menu and `#links-menu-content` panels (sets inherit).
  *
  */
 @customElement('rh-navigation-primary')

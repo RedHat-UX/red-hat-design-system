@@ -31,10 +31,10 @@
   padding-inline:
     var(
         --rh-navigation-primary-item-menu-padding-inline-start,
-        var(--_item-menu-padding-inline-sm, var(--rh-space-xl, 24px))
+        var(--_item-menu-padding-inline-sm, var(--rh-space-lg, 16px))
       ) var(
         --rh-navigation-primary-item-menu-padding-inline-end,
-        var(--_item-menu-padding-inline-sm, var(--rh-space-xl, 24px))
+        var(--_item-menu-padding-inline-sm, var(--rh-space-lg, 16px))
       );
 
   @container navigation-primary (min-width: 480px) {
