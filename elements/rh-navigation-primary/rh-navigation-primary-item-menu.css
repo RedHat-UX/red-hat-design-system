@@ -60,3 +60,48 @@
     }
   }
 }
+
+/**
+ * Padding only for menus under `#secondary`
+ */
+:host-context(#secondary) #container {
+  padding-block:
+    var(
+        --rh-navigation-primary-item-menu-padding-block-start,
+        var(--rh-space-lg, 16px)
+      )
+    var(
+        --rh-navigation-primary-item-menu-padding-block-end,
+        var(--rh-space-2xl, 32px)
+      );
+  padding-inline:
+    var(
+        --rh-navigation-primary-item-menu-padding-inline-start,
+        var(--rh-space-lg, 16px)
+      )
+    var(
+        --rh-navigation-primary-item-menu-padding-inline-end,
+        var(--rh-space-lg, 16px)
+      );
+
+  @container navigation-primary (min-width: 576px) {
+    padding-block:
+      var(
+          --rh-navigation-primary-item-menu-padding-block-start,
+          var(--rh-space-2xl, 32px)
+        )
+      var(
+          --rh-navigation-primary-item-menu-padding-block-end,
+          var(--rh-space-3xl, 48px)
+        );
+    padding-inline:
+      var(
+          --rh-navigation-primary-item-menu-padding-inline-start,
+          var(--rh-space-2xl, 32px)
+        )
+      var(
+          --rh-navigation-primary-item-menu-padding-inline-end,
+          var(--rh-space-2xl, 32px)
+        );
+  }
+}

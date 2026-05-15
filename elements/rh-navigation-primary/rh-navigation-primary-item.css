@@ -363,19 +363,6 @@
     }
   }
 
-  /**
-   * `#secondary` utility dropdown panels (`rh-navigation-primary-item-menu#details-content`).
-   * Padding vars apply inside the menu shadow (`rh-navigation-primary-item-menu.css`).
-   */
-  :host-context(#secondary) #container.dropdown.standalone details #details-content {
-    @container navigation-primary (min-width: 576px) {
-      --rh-navigation-primary-item-menu-padding-inline-start: var(--rh-space-2xl, 32px);
-      --rh-navigation-primary-item-menu-padding-inline-end: var(--rh-space-2xl, 32px);
-      --rh-navigation-primary-item-menu-padding-block-start: var(--rh-space-2xl, 32px);
-      --rh-navigation-primary-item-menu-padding-block-end: var(--rh-space-3xl, 48px);
-    }
-  }
-
   &.link {
     display: inline-block;
     block-size: fit-content;
