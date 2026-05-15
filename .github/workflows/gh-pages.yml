@@ -24,6 +24,8 @@ jobs:
 
       - name: Build
         run: npm run docs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

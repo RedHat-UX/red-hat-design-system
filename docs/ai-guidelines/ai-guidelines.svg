@@ -1,0 +1,21 @@
+<svg width="340" height="200" viewBox="0 0 340 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <!-- Placeholder  replace with final artwork from Brand team -->
+  <rect width="340" height="200" rx="8" fill="#F2F2F2"/>
+  <!-- Chat bubble -->
+  <rect x="80" y="52" width="130" height="80" rx="8" fill="white" stroke="#C7C7C7" stroke-width="1.5"/>
+  <path d="M110 132 L100 148 L130 132" fill="white" stroke="#C7C7C7" stroke-width="1.5" stroke-linejoin="round"/>
+  <!-- Text lines inside bubble -->
+  <rect x="96" y="72" width="98" height="6" rx="3" fill="#C7C7C7"/>
+  <rect x="96" y="86" width="76" height="6" rx="3" fill="#C7C7C7"/>
+  <rect x="96" y="100" width="88" height="6" rx="3" fill="#C7C7C7"/>
+  <!-- AI sparkle  upper-right of bubble -->
+  <g transform="translate(194, 46)">
+    <!-- Sparkle arms -->
+    <line x1="10" y1="0" x2="10" y2="20" stroke="#EE0000" stroke-width="2" stroke-linecap="round"/>
+    <line x1="0" y1="10" x2="20" y2="10" stroke="#EE0000" stroke-width="2" stroke-linecap="round"/>
+    <line x1="2.93" y1="2.93" x2="17.07" y2="17.07" stroke="#EE0000" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="17.07" y1="2.93" x2="2.93" y2="17.07" stroke="#EE0000" stroke-width="1.5" stroke-linecap="round"/>
+    <!-- Sparkle center dot -->
+    <circle cx="10" cy="10" r="3" fill="#EE0000"/>
+  </g>
+</svg>
