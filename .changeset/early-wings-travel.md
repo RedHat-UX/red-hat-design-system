@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-<rh-navigation-primary>: eliminated gap between the cross-domain links' toggle and utility menu buttons at container breakpoints smaller than `--rh-breakpoint-xl` and adjusted dropdown menu padding.
+<rh-navigation-primary>:  corrected visual gap between links and utility menu, and adjusted dropdown menu padding.
