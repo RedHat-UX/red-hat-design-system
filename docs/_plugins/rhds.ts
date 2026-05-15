@@ -45,7 +45,7 @@ async function syncAiGuidelines(destDir: string) {
   for (const slug of AI_GUIDELINES_SLUGS) {
     const res = await fetch(`${base}/${slug}.md`, { headers });
     if (!res.ok) {
-      console.warn(`[ai-guidelines] Skipping ${slug}.md — ${res.status} ${res.statusText}`);
+      // console.warn(`[ai-guidelines] Skipping ${slug}.md — ${res.status} ${res.statusText}`);
       continue;
     }
     await writeFile(join(destDir, `${slug}.md`), await res.text(), 'utf8');
