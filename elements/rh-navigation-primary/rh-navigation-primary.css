@@ -23,13 +23,10 @@
    * CSS custom properties on this host adjust `rh-navigation-primary-item-menu` padding
    * (inherited through items). Use the variables below to customize dropdown and item menu panels.
    *
-   * - `--rh-navigation-primary-item-menu-padding-inline-start` — inline-start at every container
-   *   width (defaults to `--rh-space-xl` / 24px, or dropdown tier tokens from `slot="dropdowns"`)
-   * - `--rh-navigation-primary-item-menu-padding-inline-end` — inline-end (same defaults)
-   * - `--rh-navigation-primary-item-menu-padding-block-start` — block-start (defaults to
-   *   `--rh-space-2xl` / 32px)
-   * - `--rh-navigation-primary-item-menu-padding-block-end` — block-end (defaults to
-   *   `--rh-space-3xl` / 48px)
+   * - `--rh-navigation-primary-item-menu-padding-inline-start`
+   * - `--rh-navigation-primary-item-menu-padding-inline-end`
+   * - `--rh-navigation-primary-item-menu-padding-block-start`
+   * - `--rh-navigation-primary-item-menu-padding-block-end`
    */
 
   /** Body text font family */
@@ -571,8 +568,8 @@
 
     /**
      * Private `--_*` variables (not a public API): inherited tier tokens for
-     * `rh-navigation-primary-item-menu` in this slot only (`--rh-space-lg`, then
-     * `--rh-space-2xl` from 576px). Keeps dropdown defaults in the nav stylesheet;
+     * `rh-navigation-primary-item-menu` in this slot only. 
+     * Keeps dropdown defaults in the nav stylesheet;
      * see `rh-navigation-primary-item-menu.css`.
      */
     & slot[name='dropdowns']::slotted(rh-navigation-primary-item) {

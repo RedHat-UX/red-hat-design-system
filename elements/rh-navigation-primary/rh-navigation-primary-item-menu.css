@@ -19,10 +19,10 @@
   padding-block:
     var(
         --rh-navigation-primary-item-menu-padding-block-start,
-        var(--rh-space-2xl, 32px)
+        var(--rh-space-lg, 16px)
       ) var(
         --rh-navigation-primary-item-menu-padding-block-end,
-        var(--rh-space-3xl, 48px)
+        var(--rh-space-2xl, 32px)
       );
 
   /**
@@ -37,15 +37,19 @@
         var(--_item-menu-padding-inline-sm, var(--rh-space-xl, 24px))
       );
 
-  @container navigation-primary (min-width: 576px) {
-    /** Content panel inline padding at containers >= sm */
+  @container navigation-primary (min-width: 480px) {
+    padding-block-start:
+      var(
+          --rh-navigation-primary-item-menu-padding-block-start,
+          var(--rh-space-2xl, 32px)
+        );
     padding-inline:
       var(
           --rh-navigation-primary-item-menu-padding-inline-start,
-          var(--_item-menu-padding-inline-lg, var(--rh-space-xl, 24px))
+          var(--_item-menu-padding-inline-lg, var(--rh-space-2xl, 32px))
         ) var(
           --rh-navigation-primary-item-menu-padding-inline-end,
-          var(--_item-menu-padding-inline-lg, var(--rh-space-xl, 24px))
+          var(--_item-menu-padding-inline-lg, var(--rh-space-2xl, 32px))
         );
   }
 
@@ -53,7 +57,14 @@
     @container navigation-primary (min-width: 1200px) {
       margin: 0 auto;
       max-width: 1440px;
-      padding-block: var(--rh-space-3xl, 48px);
+      padding-block:
+        var(
+            --rh-navigation-primary-item-menu-padding-block-start,
+            var(--rh-space-2xl, 32px)
+          ) var(
+            --rh-navigation-primary-item-menu-padding-block-end,
+            var(--rh-space-3xl, 48px)
+          );
       padding-inline:
         var(
             --rh-navigation-primary-item-menu-padding-inline-start,
