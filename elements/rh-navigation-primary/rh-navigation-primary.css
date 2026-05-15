@@ -568,7 +568,7 @@
 
     /**
      * Private `--_*` variables (not a public API): inherited tier tokens for
-     * `rh-navigation-primary-item-menu` in this slot only. 
+     * `rh-navigation-primary-item-menu` in this slot only.
      * Keeps dropdown defaults in the nav stylesheet;
      * see `rh-navigation-primary-item-menu.css`.
      */
