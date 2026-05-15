@@ -489,14 +489,16 @@
               var(--rh-color-surface-darkest, #151515)
             );
         box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
+
+        /** Open links menu panel below `navigation-primary` 576px */
         padding-block:
           var(
               --rh-navigation-primary-item-menu-padding-block-start,
-              var(--rh-space-xl, 24px)
+              var(--rh-space-lg, 16px)
             )
           var(
               --rh-navigation-primary-item-menu-padding-block-end,
-              var(--rh-space-xl, 24px)
+              var(--rh-space-2xl, 32px)
             );
         padding-inline:
           var(
@@ -507,6 +509,27 @@
               --rh-navigation-primary-item-menu-padding-inline-end,
               var(--rh-space-lg, 16px)
             );
+
+        @container navigation-primary (min-width: 576px) {
+          padding-block:
+            var(
+                --rh-navigation-primary-item-menu-padding-block-start,
+                var(--rh-space-2xl, 32px)
+              )
+            var(
+                --rh-navigation-primary-item-menu-padding-block-end,
+                var(--rh-space-3xl, 48px)
+              );
+          padding-inline:
+            var(
+                --rh-navigation-primary-item-menu-padding-inline-start,
+                var(--rh-space-2xl, 32px)
+              )
+            var(
+                --rh-navigation-primary-item-menu-padding-inline-end,
+                var(--rh-space-2xl, 32px)
+              );
+        }
 
         /** Open Links menu start rounded corner */
         border-end-start-radius: var(--rh-border-radius-default, 3px);
@@ -854,7 +877,7 @@
           block-size: auto;
           place-items: initial;
 
-          /** Open compact hamburger padding below `navigation-primary` var(--rh-breakpoint-xs, 576px) */
+          /** Open hamburger padding below var(--rh-breakpoint-xs, 576px) */
           padding-block:
             var(
                 --rh-navigation-primary-item-menu-padding-block-start,
