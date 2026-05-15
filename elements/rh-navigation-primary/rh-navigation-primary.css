@@ -19,6 +19,17 @@
    */
   z-index: var(--rh-navigation-primary-z-index, 102);
 
+  /**
+   * CSS custom properties on this host adjust panel padding on `rh-navigation-primary-item-menu`,
+   * `#links-menu-content`, and compact `#details-content` (same variables where wired).
+   * Inherited through primary items for menus; set on `<rh-navigation-primary>` to customize.
+   *
+   * - `--rh-navigation-primary-item-menu-padding-inline-start`
+   * - `--rh-navigation-primary-item-menu-padding-inline-end`
+   * - `--rh-navigation-primary-item-menu-padding-block-start`
+   * - `--rh-navigation-primary-item-menu-padding-block-end`
+   */
+
   /** Body text font family */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif) !important;
 }
@@ -334,7 +345,7 @@
     margin-inline-start: var(--rh-space-lg, 16px);
   }
 
-  @container navigation-primary (min-width: 1200px) {
+  @container navigation-primary (min-width: 1440px) {
     /** Secondary area spacing between items at containers >= xl */
     gap: var(--rh-space-xl, 24px);
   }
@@ -355,7 +366,7 @@
       margin-inline-end: var(--rh-space-xl, 24px);
     }
 
-    @container navigation-primary (min-width: 1200px) {
+    @container navigation-primary (min-width: 1440px) {
       margin-inline-end: 0;
     }
 
@@ -478,14 +489,47 @@
               var(--rh-color-surface-darkest, #151515)
             );
         box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
-        padding-block:
-          /** Links menu content block start padding */
-          var(--rh-space-2xl, 32px)
-          /** Links menu content block end padding */
-          var(--rh-space-3xl, 48px);
 
-        /** Links menu content inline padding */
-        padding-inline: var(--rh-space-2xl, 32px);
+        /** Open links menu panel below `navigation-primary` 576px */
+        padding-block:
+          var(
+              --rh-navigation-primary-item-menu-padding-block-start,
+              var(--rh-space-lg, 16px)
+            )
+          var(
+              --rh-navigation-primary-item-menu-padding-block-end,
+              var(--rh-space-2xl, 32px)
+            );
+        padding-inline:
+          var(
+              --rh-navigation-primary-item-menu-padding-inline-start,
+              var(--rh-space-lg, 16px)
+            )
+          var(
+              --rh-navigation-primary-item-menu-padding-inline-end,
+              var(--rh-space-lg, 16px)
+            );
+
+        @container navigation-primary (min-width: 576px) {
+          padding-block:
+            var(
+                --rh-navigation-primary-item-menu-padding-block-start,
+                var(--rh-space-2xl, 32px)
+              )
+            var(
+                --rh-navigation-primary-item-menu-padding-block-end,
+                var(--rh-space-3xl, 48px)
+              );
+          padding-inline:
+            var(
+                --rh-navigation-primary-item-menu-padding-inline-start,
+                var(--rh-space-2xl, 32px)
+              )
+            var(
+                --rh-navigation-primary-item-menu-padding-inline-end,
+                var(--rh-space-2xl, 32px)
+              );
+        }
 
         /** Open Links menu start rounded corner */
         border-end-start-radius: var(--rh-border-radius-default, 3px);
@@ -550,6 +594,16 @@
     display: flex;
     flex-direction: row;
     block-size: 100%;
+
+    /**
+     * Private `--_*` variables (not a public API): inherited tier tokens for
+     * `rh-navigation-primary-item-menu` in this slot only.
+     * Keeps dropdown defaults in the nav stylesheet;
+     * see `rh-navigation-primary-item-menu.css`.
+     */
+    & slot[name='dropdowns']::slotted(rh-navigation-primary-item) {
+      --_item-menu-padding-inline-lg: var(--rh-space-2xl, 32px);
+    }
   }
 }
 
@@ -762,6 +816,35 @@
         }
       }
     }
+
+    /**
+     * `#links-menu-content` uses the same `--rh-navigation-primary-item-menu-padding-*` stacks as
+     * `rh-navigation-primary-item-menu`.
+     */
+    & #links-menu[open] #links-menu-content {
+      @container navigation-primary (min-width: 1200px) {
+        @container navigation-primary (max-width: 1439px) {
+          padding-block:
+            var(
+                --rh-navigation-primary-item-menu-padding-block-start,
+                var(--rh-space-2xl, 32px)
+              )
+            var(
+                --rh-navigation-primary-item-menu-padding-block-end,
+                var(--rh-space-3xl, 48px)
+              );
+          padding-inline:
+            var(
+                --rh-navigation-primary-item-menu-padding-inline-start,
+                var(--_item-menu-padding-inline-lg, var(--rh-space-2xl, 32px))
+              )
+            var(
+                --rh-navigation-primary-item-menu-padding-inline-end,
+                var(--_item-menu-padding-inline-lg, var(--rh-space-2xl, 32px))
+              );
+        }
+      }
+    }
   }
 
   &.compact {
@@ -794,11 +877,73 @@
           block-size: auto;
           place-items: initial;
 
-          /** Open compact hamburger content padding */
-          padding: var(--rh-space-lg, 16px);
+          /** Open hamburger padding below var(--rh-breakpoint-xs, 576px) */
+          padding-block:
+            var(
+                --rh-navigation-primary-item-menu-padding-block-start,
+                var(--rh-space-lg, 16px)
+              )
+            var(
+                --rh-navigation-primary-item-menu-padding-block-end,
+                var(--rh-space-2xl, 32px)
+              );
+          padding-inline:
+            var(
+                --rh-navigation-primary-item-menu-padding-inline-start,
+                var(--rh-space-lg, 16px)
+              )
+            var(
+                --rh-navigation-primary-item-menu-padding-inline-end,
+                var(--rh-space-lg, 16px)
+              );
+
+          @container navigation-primary (min-width: 576px) {
+            /** Padding overrides from sm breakpoint through compact xl */
+            padding-block:
+              var(
+                  --rh-navigation-primary-item-menu-padding-block-start,
+                  var(--rh-space-2xl, 32px)
+                )
+              var(
+                  --rh-navigation-primary-item-menu-padding-block-end,
+                  var(--rh-space-3xl, 48px)
+                );
+            padding-inline:
+              var(
+                  --rh-navigation-primary-item-menu-padding-inline-start,
+                  var(--rh-space-2xl, 32px)
+                )
+              var(
+                  --rh-navigation-primary-item-menu-padding-inline-end,
+                  var(--rh-space-2xl, 32px)
+                );
+          }
+
           box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
           max-block-size: calc(100dvh - var(--_navbar-height));
           overflow-y: auto;
+
+          @container navigation-primary (min-width: 1200px) {
+            /** Open compact hamburger padding at containers >= xl */
+            padding-block:
+              var(
+                  --rh-navigation-primary-item-menu-padding-block-start,
+                  var(--rh-space-2xl, 32px)
+                )
+              var(
+                  --rh-navigation-primary-item-menu-padding-block-end,
+                  var(--rh-space-3xl, 48px)
+                );
+            padding-inline:
+              var(
+                  --rh-navigation-primary-item-menu-padding-inline-start,
+                  var(--rh-space-2xl, 32px)
+                )
+              var(
+                  --rh-navigation-primary-item-menu-padding-inline-end,
+                  var(--rh-space-2xl, 32px)
+                );
+          }
 
           & ::slotted(rh-navigation-primary-item) {
             border-block-start:
@@ -816,11 +961,6 @@
               solid
               /** Compact last item separator color */
               var(--rh-color-border-subtle);
-          }
-
-          @container navigation-primary (min-width: 320px) {
-            /** Open compact hamburger content padding at containers >= 320px (custom) */
-            padding: var(--rh-space-2xl, 32px);
           }
 
           @container navigation-primary (min-width: 1200px) {
@@ -849,7 +989,7 @@
     & #links-menu {
       /* stylelint-disable-next-line no-descending-specificity */
       & summary {
-        @container navigation-primary (min-width: 14400px) {
+        @container navigation-primary (min-width: 1440px) {
           display: flex;
         }
       }
@@ -874,14 +1014,26 @@
                   var(--rh-color-surface-darkest, #151515)
                 );
             box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
-            padding-block:
-              /** Open compact links menu block start padding at containers >= xl */
-              var(--rh-space-2xl, 32px)
-              /** Open compact links menu block end padding at containers >= xl */
-              var(--rh-space-3xl, 48px);
 
-            /** Open compact links menu inline padding at containers >= xl */
-            padding-inline: var(--rh-space-2xl, 32px);
+            /** Same padding vars as `rh-navigation-primary-item-menu`. */
+            padding-block:
+              var(
+                  --rh-navigation-primary-item-menu-padding-block-start,
+                  var(--rh-space-2xl, 32px)
+                )
+              var(
+                  --rh-navigation-primary-item-menu-padding-block-end,
+                  var(--rh-space-3xl, 48px)
+                );
+            padding-inline:
+              var(
+                  --rh-navigation-primary-item-menu-padding-inline-start,
+                  var(--_item-menu-padding-inline-lg, var(--rh-space-2xl, 32px))
+                )
+              var(
+                  --rh-navigation-primary-item-menu-padding-inline-end,
+                  var(--_item-menu-padding-inline-lg, var(--rh-space-2xl, 32px))
+                );
 
             /** Open compact links menu start rounded corner at containers >= xl */
             border-end-start-radius: var(--rh-border-radius-default, 3px);
