@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-<rh-navigation-primary>: corrected gap between links and utility menu and adjusted dropdown menu padding.
+`<rh-navigation-primary>`: corrected gap between links and utility menu and adjusted dropdown menu padding.
