@@ -19,23 +19,43 @@
   /** Content panel inline padding */
   padding-inline: var(--rh-space-xl, 24px);
 
+  /**
+   * Desktop item-menu panels when `rh-navigation-primary` is not compact (container >= lg).
+   * Hamburger / narrow layouts keep the base padding above; `#secondary` utilities use the
+   * block below instead.
+   */
   &:not(.compact) {
     @container navigation-primary (min-width: 1200px) {
+      /** Center panel content within the nav max width */
       margin: 0 auto;
       max-width: 1440px;
+
+      /** Desktop panel block padding at containers >= xl */
       padding-block: var(--rh-space-2xl, 32px) var(--rh-space-3xl, 48px);
+
+      /** Desktop panel inline padding at containers >= xl */
       padding-inline: var(--rh-space-2xl, 32px);
     }
   }
 }
 
-/** Padding only for menus under `#secondary` */
+/**
+ * Utility dropdown panels in `#secondary` (`slot="dropdowns"`, `slot="links"`,
+ * `slot="event"`). Overrides `#container` padding above; primary hamburger item menus are
+ * unchanged.
+ */
 :host-context(#secondary) #container {
+  /** Secondary panel block padding at containers < xs */
   padding-block: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+
+  /** Secondary panel inline padding at containers < xs */
   padding-inline: var(--rh-space-lg, 16px);
 
   @container navigation-primary (min-width: 576px) {
+    /** Secondary panel block padding at containers >= sm */
     padding-block: var(--rh-space-2xl, 32px) var(--rh-space-3xl, 48px);
+
+    /** Secondary panel inline padding at containers >= sm */
     padding-inline: var(--rh-space-2xl, 32px);
   }
 }
