@@ -19,17 +19,6 @@
    */
   z-index: var(--rh-navigation-primary-z-index, 102);
 
-  /**
-   * CSS custom properties on this host adjust panel padding on `rh-navigation-primary-item-menu`,
-   * `#links-menu-content`, and compact `#details-content` (same variables where wired).
-   * Inherited through primary items for menus; set on `<rh-navigation-primary>` to customize.
-   *
-   * - `--rh-navigation-primary-item-menu-padding-inline-start`
-   * - `--rh-navigation-primary-item-menu-padding-inline-end`
-   * - `--rh-navigation-primary-item-menu-padding-block-start`
-   * - `--rh-navigation-primary-item-menu-padding-block-end`
-   */
-
   /** Body text font family */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif) !important;
 }
@@ -491,44 +480,12 @@
         box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
 
         /** Open links menu panel below `navigation-primary` 576px */
-        padding-block:
-          var(
-              --rh-navigation-primary-item-menu-padding-block-start,
-              var(--rh-space-lg, 16px)
-            )
-          var(
-              --rh-navigation-primary-item-menu-padding-block-end,
-              var(--rh-space-2xl, 32px)
-            );
-        padding-inline:
-          var(
-              --rh-navigation-primary-item-menu-padding-inline-start,
-              var(--rh-space-lg, 16px)
-            )
-          var(
-              --rh-navigation-primary-item-menu-padding-inline-end,
-              var(--rh-space-lg, 16px)
-            );
+        padding-block: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+        padding-inline: var(--rh-space-lg, 16px);
 
         @container navigation-primary (min-width: 576px) {
-          padding-block:
-            var(
-                --rh-navigation-primary-item-menu-padding-block-start,
-                var(--rh-space-2xl, 32px)
-              )
-            var(
-                --rh-navigation-primary-item-menu-padding-block-end,
-                var(--rh-space-3xl, 48px)
-              );
-          padding-inline:
-            var(
-                --rh-navigation-primary-item-menu-padding-inline-start,
-                var(--rh-space-2xl, 32px)
-              )
-            var(
-                --rh-navigation-primary-item-menu-padding-inline-end,
-                var(--rh-space-2xl, 32px)
-              );
+          padding-block: var(--rh-space-2xl, 32px) var(--rh-space-3xl, 48px);
+          padding-inline: var(--rh-space-2xl, 32px);
         }
 
         /** Open Links menu start rounded corner */
@@ -594,16 +551,6 @@
     display: flex;
     flex-direction: row;
     block-size: 100%;
-
-    /**
-     * Private `--_*` variables (not a public API): inherited tier tokens for
-     * `rh-navigation-primary-item-menu` in this slot only.
-     * Keeps dropdown defaults in the nav stylesheet;
-     * see `rh-navigation-primary-item-menu.css`.
-     */
-    & slot[name='dropdowns']::slotted(rh-navigation-primary-item) {
-      --_item-menu-padding-inline-lg: var(--rh-space-2xl, 32px);
-    }
   }
 }
 
@@ -817,31 +764,11 @@
       }
     }
 
-    /**
-     * `#links-menu-content` uses the same `--rh-navigation-primary-item-menu-padding-*` stacks as
-     * `rh-navigation-primary-item-menu`.
-     */
     & #links-menu[open] #links-menu-content {
       @container navigation-primary (min-width: 1200px) {
         @container navigation-primary (max-width: 1439px) {
-          padding-block:
-            var(
-                --rh-navigation-primary-item-menu-padding-block-start,
-                var(--rh-space-2xl, 32px)
-              )
-            var(
-                --rh-navigation-primary-item-menu-padding-block-end,
-                var(--rh-space-3xl, 48px)
-              );
-          padding-inline:
-            var(
-                --rh-navigation-primary-item-menu-padding-inline-start,
-                var(--_item-menu-padding-inline-lg, var(--rh-space-2xl, 32px))
-              )
-            var(
-                --rh-navigation-primary-item-menu-padding-inline-end,
-                var(--_item-menu-padding-inline-lg, var(--rh-space-2xl, 32px))
-              );
+          padding-block: var(--rh-space-2xl, 32px) var(--rh-space-3xl, 48px);
+          padding-inline: var(--rh-space-2xl, 32px);
         }
       }
     }
@@ -877,46 +804,13 @@
           block-size: auto;
           place-items: initial;
 
-          /** Open hamburger padding below var(--rh-breakpoint-xs, 576px) */
-          padding-block:
-            var(
-                --rh-navigation-primary-item-menu-padding-block-start,
-                var(--rh-space-lg, 16px)
-              )
-            var(
-                --rh-navigation-primary-item-menu-padding-block-end,
-                var(--rh-space-2xl, 32px)
-              );
-          padding-inline:
-            var(
-                --rh-navigation-primary-item-menu-padding-inline-start,
-                var(--rh-space-lg, 16px)
-              )
-            var(
-                --rh-navigation-primary-item-menu-padding-inline-end,
-                var(--rh-space-lg, 16px)
-              );
+          /** Open hamburger padding below `navigation-primary` 576px */
+          padding-block: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+          padding-inline: var(--rh-space-lg, 16px);
 
           @container navigation-primary (min-width: 576px) {
-            /** Padding overrides from sm breakpoint through compact xl */
-            padding-block:
-              var(
-                  --rh-navigation-primary-item-menu-padding-block-start,
-                  var(--rh-space-2xl, 32px)
-                )
-              var(
-                  --rh-navigation-primary-item-menu-padding-block-end,
-                  var(--rh-space-3xl, 48px)
-                );
-            padding-inline:
-              var(
-                  --rh-navigation-primary-item-menu-padding-inline-start,
-                  var(--rh-space-2xl, 32px)
-                )
-              var(
-                  --rh-navigation-primary-item-menu-padding-inline-end,
-                  var(--rh-space-2xl, 32px)
-                );
+            padding-block: var(--rh-space-2xl, 32px) var(--rh-space-3xl, 48px);
+            padding-inline: var(--rh-space-2xl, 32px);
           }
 
           box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
@@ -925,24 +819,8 @@
 
           @container navigation-primary (min-width: 1200px) {
             /** Open compact hamburger padding at containers >= xl */
-            padding-block:
-              var(
-                  --rh-navigation-primary-item-menu-padding-block-start,
-                  var(--rh-space-2xl, 32px)
-                )
-              var(
-                  --rh-navigation-primary-item-menu-padding-block-end,
-                  var(--rh-space-3xl, 48px)
-                );
-            padding-inline:
-              var(
-                  --rh-navigation-primary-item-menu-padding-inline-start,
-                  var(--rh-space-2xl, 32px)
-                )
-              var(
-                  --rh-navigation-primary-item-menu-padding-inline-end,
-                  var(--rh-space-2xl, 32px)
-                );
+            padding-block: var(--rh-space-2xl, 32px) var(--rh-space-3xl, 48px);
+            padding-inline: var(--rh-space-2xl, 32px);
           }
 
           & ::slotted(rh-navigation-primary-item) {
@@ -1014,26 +892,8 @@
                   var(--rh-color-surface-darkest, #151515)
                 );
             box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
-
-            /** Same padding vars as `rh-navigation-primary-item-menu`. */
-            padding-block:
-              var(
-                  --rh-navigation-primary-item-menu-padding-block-start,
-                  var(--rh-space-2xl, 32px)
-                )
-              var(
-                  --rh-navigation-primary-item-menu-padding-block-end,
-                  var(--rh-space-3xl, 48px)
-                );
-            padding-inline:
-              var(
-                  --rh-navigation-primary-item-menu-padding-inline-start,
-                  var(--_item-menu-padding-inline-lg, var(--rh-space-2xl, 32px))
-                )
-              var(
-                  --rh-navigation-primary-item-menu-padding-inline-end,
-                  var(--_item-menu-padding-inline-lg, var(--rh-space-2xl, 32px))
-                );
+            padding-block: var(--rh-space-2xl, 32px) var(--rh-space-3xl, 48px);
+            padding-inline: var(--rh-space-2xl, 32px);
 
             /** Open compact links menu start rounded corner at containers >= xl */
             border-end-start-radius: var(--rh-border-radius-default, 3px);
