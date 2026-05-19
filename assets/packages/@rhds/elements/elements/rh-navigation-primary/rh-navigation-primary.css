@@ -849,7 +849,7 @@
     & #links-menu {
       /* stylelint-disable-next-line no-descending-specificity */
       & summary {
-        @container navigation-primary (min-width: 14400px) {
+        @container navigation-primary (min-width: 1440px) {
           display: flex;
         }
       }
