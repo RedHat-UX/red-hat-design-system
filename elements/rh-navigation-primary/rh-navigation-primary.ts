@@ -40,9 +40,6 @@ export type NavigationPrimaryPalette = Extract<ColorPalette, (
  *
  * @alias Navigation (primary)
  *
- * @cssprop [--rh-navigation-primary-z-index=102] - Stacking order when the navigation overlaps
- *          other fixed or sticky content on the page.
- *
  */
 @customElement('rh-navigation-primary')
 @colorPalettes
