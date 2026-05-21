@@ -1,5 +1,11 @@
 # @rhds/elements
 
+## 4.1.3
+### Patch Changes
+
+- 2a7c2a0: `<rh-navigation-primary>`: corrected visual gap between links and utility menu, and adjusted dropdown menu padding.
+- 0aef3c6: `<rh-navigation-primary>`: corrected regression in bento box dropdown behavior
+
 ## 4.1.2
 ### Patch Changes
 
