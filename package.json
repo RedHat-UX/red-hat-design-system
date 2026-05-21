@@ -94,7 +94,8 @@
     "clean": "git clean -dfx -e node_modules -e .husky",
     "clean:nuke": "git clean -fX",
     "lint": "wireit",
-    "validate-element-data": "wireit"
+    "validate-element-data": "wireit",
+    "sync-ai-guidelines": "wireit"
   },
   "wireit": {
     "patch": {
@@ -115,10 +116,7 @@
     },
     "11ty-dev": {
       "service": true,
-      "command": "cross-env NODE_OPTIONS='--import tsx/esm' eleventy --serve --incremental --config=eleventy.config.ts",
-      "dependencies": [
-        "sync-ai-guidelines"
-      ]
+      "command": "cross-env NODE_OPTIONS='--import tsx/esm' eleventy --serve --incremental --config=eleventy.config.ts"
     },
     "dev": {
       "service": true,
@@ -132,8 +130,7 @@
       "service": true,
       "command": "cross-env TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --incremental --serve",
       "dependencies": [
-        "patch",
-        "sync-ai-guidelines"
+        "patch"
       ]
     },
     "build": {
@@ -234,6 +231,7 @@
         "scripts/sync-ai-guidelines.js"
       ],
       "output": [
+        "docs/ai-guidelines/ai-guidelines.11tydata.json",
         "docs/ai-guidelines/ai-design-principles.md",
         "docs/ai-guidelines/animation.md",
         "docs/ai-guidelines/chatbot-avatars.md",
@@ -246,8 +244,7 @@
     "docs": {
       "command": "cross-env TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --incremental",
       "dependencies": [
-        "patch",
-        "sync-ai-guidelines"
+        "patch"
       ],
       "files": [
         "docs"
