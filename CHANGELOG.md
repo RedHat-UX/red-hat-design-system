@@ -1,5 +1,10 @@
 # @rhds/elements
 
+## 4.1.4
+### Patch Changes
+
+- 9865c9c: Ensure that CSS changes are correctly reflected in released files
+
 ## 4.1.3
 ### Patch Changes
 
