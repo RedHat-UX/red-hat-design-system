@@ -160,6 +160,7 @@
       "command": "tspc -b",
       "files": [
         "elements/**/*.ts",
+        "elements/**/*.css",
         "uxdot/*.ts",
         "uxdot/*.css",
         "lib/**/*.css",
