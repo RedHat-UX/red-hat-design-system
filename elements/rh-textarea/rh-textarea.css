@@ -137,7 +137,7 @@
   font-size: var(--rh-font-size-body-text-xs, 0.75rem);
 
   /** Block start margin for the character counter */
-  margin-block-start: var(--rh-space-xs, 4px);
+  margin-block-start: var(--rh-space-md, 8px);
 }
 
 #help-text {
