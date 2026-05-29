@@ -117,7 +117,7 @@ export class RhTextarea extends LitElement {
    * Controls whether the textarea is resizable by the user.
    * Mapped to the CSS `resize` property via attribute selectors.
    */
-  @property({ reflect: true }) resize: 'none' | 'vertical' | 'horizontal' | 'both' = 'vertical';
+  @property({ reflect: true }) resize?: 'none' | 'vertical' | 'horizontal' | 'both';
 
   /**
    * Number of visible text lines. Defaults to 5 for a comfortable

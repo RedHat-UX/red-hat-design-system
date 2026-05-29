@@ -54,7 +54,9 @@
     var(--rh-space-md, 8px)
     /** Left and right padding for input */
     var(--rh-space-lg, 16px);
-  resize: vertical; /* TODO: add public var to customize this */
+
+  /** Sets the resize direction for the textarea / input. Overridden by `resize` attribute. */
+  resize: var(--rh-textarea-resize-direction, vertical);
 
   &:hover {
     /** Input hover border color */
@@ -81,15 +83,15 @@
 }
 
 :host([resize='none']) #input {
-  resize: none;
+  --rh-textarea-resize-direction: none;
 }
 
 :host([resize='horizontal']) #input {
-  resize: horizontal;
+  --rh-textarea-resize-direction: horizontal;
 }
 
 :host([resize='both']) #input {
-  resize: both;
+  --rh-textarea-resize-direction: both;
 }
 
 :host([disabled]) #input {
