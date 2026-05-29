@@ -36,6 +36,14 @@ rh-icon,
   display: none !important;
 }
 
+#content {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--rh-space-md, 8px);
+  position: relative;
+  z-index: 1;
+}
+
 #button {
   margin: 0;
   font-family: inherit;
@@ -44,7 +52,6 @@ rh-icon,
   position: relative;
   display: flex;
   flex: 1;
-  gap: var(--rh-space-md, 8px);
   text-decoration: none;
   cursor: pointer;
   align-items: center;
@@ -78,7 +85,14 @@ rh-icon,
 
   &:before {
     pointer-events: none;
-    border: 0 solid transparent;
+    border: 0 solid var(--_tab-highlight-border-color, transparent);
+    border-radius: var(--_tab-highlight-radius, 0);
+  }
+
+  &:hover:before {
+    inset: var(--_tab-highlight-inset, 0);
+    background-color: var(--_tab-highlight-bg, transparent);
+    border-color: transparent;
   }
 
   &:after {
@@ -147,7 +161,7 @@ rh-icon,
       background-color: transparent;
 
       &:before {
-        border-inline-color: var(--rh-color-border-subtle);
+        border-inline-color: var(--_tab-highlight-border-color, var(--rh-color-border-subtle));
         border-inline-start-width: var(--rh-border-width-sm, 1px);
       }
 
@@ -270,7 +284,7 @@ rh-icon,
   &:not(.active) {
     &.box {
       &:before {
-        border-inline-color: var(--rh-color-border-subtle);
+        border-inline-color: var(--_tab-highlight-border-color, var(--rh-color-border-subtle));
         border-inline-start-width: var(--rh-border-width-sm, 1px);
       }
 
@@ -420,7 +434,15 @@ rh-icon,
   outline: none;
 
   & #button {
-    outline: 1px auto var(--rh-color-interactive-primary-default);
-    outline-offset: -3px;
+    outline: var(--_tab-highlight-outline, 1px auto var(--rh-color-interactive-primary-default));
+    outline-offset: var(--_tab-highlight-outline-offset, -3px);
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  & #button:before {
+    inset: var(--_tab-highlight-inset, 0);
+    background-color: var(--_tab-highlight-bg, transparent);
+    outline: var(--_tab-focus-ring, none);
+    outline-offset: var(--_tab-focus-ring-offset, 0);
   }
 }

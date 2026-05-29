@@ -204,15 +204,15 @@ button {
 
   &:before {
     border-block-start: var(--rh-border-width-sm, 1px) solid transparent;
-    border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
-    border-inline: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+    border-block-end: var(--rh-border-width-sm, 1px) solid var(--_overflow-border-color, var(--rh-color-border-subtle));
+    border-inline: var(--rh-border-width-sm, 1px) solid var(--_overflow-border-color, var(--rh-color-border-subtle));
   }
 
   &:hover {
     color: var(--_overflow-button-hover-text-color, var(--rh-color-text-primary));
 
     &:before {
-      border-block-end: var(--rh-border-width-lg, 3px) solid var(--rh-color-border-subtle);
+      border-block-end: var(--rh-border-width-lg, 3px) solid var(--_overflow-border-color, var(--rh-color-border-subtle));
     }
   }
 
