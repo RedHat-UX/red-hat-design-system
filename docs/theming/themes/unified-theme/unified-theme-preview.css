@@ -1060,33 +1060,193 @@
 
 /* Element: Tabs */
 @layer tabs {
+  /* ── rh-tabs (container) ────────────────────────────── */
   rh-tabs {
     --rh-tabs-active-border-color: var(--unified-color-brand-accent);
     --rh-color-accent-brand: var(--unified-color-brand-accent);
-    --rh-color-interactive-secondary-default:
-      light-dark(
-          var(--unified-color-gray-40),
-          var(--unified-color-gray-50)
-        );
     --rh-border-width-lg: var(--unified-border-width-lg);
     --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
     --rh-font-size-body-text-md: var(--unified-font-size-body-text-sm);
+    --rh-color-icon-status-disabled: var(--unified-color-icon-status-disabled);
+    --rh-color-interactive-secondary-default: transparent;
+    --_overflow-border-color: transparent;
+
+    &[box] {
+      --rh-color-surface-lighter:
+        light-dark(
+            var(--unified-color-gray-10),
+            var(--unified-color-gray-90)
+          );
+
+      &::part(tabs-container) {
+        background-color:
+          light-dark(
+              var(--unified-color-gray-10),
+              var(--unified-color-gray-90)
+            );
+      }
+    }
+
+    &[vertical] {
+      --rh-tabs-link-padding-block-start: 14px;
+      --rh-tabs-link-padding-block-end: 14px;
+      --rh-tabs-link-padding-inline-start: var(--unified-space-lg);
+      --rh-tabs-link-padding-inline-end: var(--unified-space-lg);
+    }
   }
 
-  rh-tab::part(button):hover {
-    background-color: var(--unified-color-interactive-fill-plain-hover);
+  /* ── rh-tab (individual tab) ────────────────────────── */
+
+  rh-tab {
+    /* Suppress the default #button focus outline; the content
+     * span now owns the focus ring via ::part(content). */
+    --_tab-highlight-outline: none;
+
+    &::part(content) {
+      padding:
+        var(--unified-space-sm)
+        var(--unified-space-lg);
+      border-radius: var(--unified-border-radius-action-plain);
+    }
+
+    &[active]::part(button) {
+      color:
+        light-dark(
+            var(--unified-color-gray-95),
+            white
+          );
+    }
+
+    &:not([active], [disabled]) {
+      &::part(button) {
+        color:
+          light-dark(
+              var(--unified-color-gray-60),
+              var(--unified-color-gray-40)
+            );
+      }
+
+      &:hover::part(content) {
+        background-color: var(--unified-color-interactive-fill-plain-hover);
+      }
+    }
+
+    /* Focus: pill background + focus ring */
+    &:not([disabled]):focus-within::part(content) {
+      background-color: var(--unified-color-interactive-fill-plain-hover);
+      outline:
+        var(--unified-border-width-md)
+        solid
+        var(--unified-color-interactive-primary-default);
+      outline-offset: calc(var(--unified-space-xs) - 1px);
+    }
+
+    /* Disabled tab */
+    &:is([disabled], [aria-disabled='true']) {
+      &::part(button) {
+        color: var(--unified-color-text-status-disabled);
+      }
+
+      &:focus-within::part(button) {
+        box-shadow:
+          inset 0
+          calc(-1 * var(--unified-border-width-lg))
+          0 0
+          var(--unified-color-text-status-disabled);
+      }
+    }
+  }
+
+  /* ── Box variant — tab-level overrides ──────────────── */
+
+  rh-tabs[box='inset'] {
+    & rh-tab {
+      --_tab-highlight-border-color: transparent;
+    }
+
+    /* Horizontal box active tab: hide the first/last inline borders. */
+    &:not([vertical]) rh-tab[active] {
+      --rh-color-border-subtle: transparent;
+    }
+
+    & rh-tab[active]::part(button) {
+      background-color:
+        light-dark(
+            white,
+            var(--unified-color-gray-95)
+          );
+    }
+
+    /* Box disabled focused: accent on top edge */
+    & rh-tab:is([disabled], [aria-disabled='true']):focus-within::part(button) {
+      box-shadow:
+        inset 0
+        var(--unified-border-width-lg)
+        0 0
+        var(--unified-color-text-status-disabled);
+    }
+
+    /* Vertical box: add back top and bottom borders */
+    &[vertical] {
+      & rh-tab:first-of-type:not([active])::part(button) {
+        box-shadow:
+          inset 0
+          var(--unified-border-width-sm)
+          0 0
+          var(--rh-color-border-subtle);
+      }
+
+      & rh-tab:last-of-type:not([active])::part(button) {
+        box-shadow:
+          inset 0
+          calc(-1 * var(--unified-border-width-sm))
+          0 0
+          var(--rh-color-border-subtle);
+      }
+    }
+  }
+
+  /* ── Vertical variant — tab-level overrides ─────────── */
+
+  /* Vertical disabled focused */
+  /* stylelint-disable-next-line no-duplicate-selectors */
+  rh-tabs[vertical] {
+
+    /* stylelint-disable-next-line no-descending-specificity */
+    & rh-tab:is([disabled], [aria-disabled='true']):focus-within::part(button) {
+      box-shadow:
+        inset var(--unified-border-width-lg)
+        0 0 0
+        var(--unified-color-text-status-disabled);
+    }
+  }
+
+  /* ── Overflow arrow buttons ─────────────────────────── */
+
+  rh-tabs::part(overflow-button) {
+    align-self: center;
+    padding: var(--unified-space-md);
     border-radius: var(--unified-border-radius-action-plain);
   }
 
-  rh-tab::part(button):focus {
+  rh-tabs::part(overflow-button):hover {
     background-color: var(--unified-color-interactive-fill-plain-hover);
-    border-radius: var(--unified-border-radius-action-plain);
+  }
 
-    outline:
-      var(--unified-border-width-md)
-      solid
-      var(--unified-color-interactive-primary-default);
-    outline-offset: calc(-1 * var(--unified-border-width-md));
+  rh-tabs[box]::part(overflow-button) {
+    background-color:
+      light-dark(
+          var(--unified-color-gray-10),
+          var(--unified-color-gray-90)
+        );
+  }
+
+  rh-tabs[box]::part(overflow-button):hover {
+    background-color:
+      light-dark(
+          white,
+          var(--unified-color-gray-95)
+        );
   }
 }
 
