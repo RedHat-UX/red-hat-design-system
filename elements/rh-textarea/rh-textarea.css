@@ -29,28 +29,35 @@
 }
 
 #input {
-  /** Surface color, adapts to light/dark theme */
   background-color:
     light-dark(
+        /** Input surface color for light schemes */
         var(--rh-color-surface-lightest, #ffffff),
+        /** Input surface color for dark schemes */
         var(--rh-color-surface-darkest, #151515)
       );
-
-  /** Border matching rh-select toggle */
-  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+  border:
+    /** Input border width */
+    var(--rh-border-width-sm, 1px)
+    solid
+    /** Input border color */
+    var(--rh-color-border-subtle);
 
   /** Default border radius */
   border-radius: var(--rh-border-radius-default, 3px);
 
-  /** Primary text color */
+  /** Input text color */
   color: var(--rh-color-text-primary);
   font: inherit;
-
-  /** Padding matching rh-select toggle */
-  padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+  padding:
+    /** Top and bottom padding for input */
+    var(--rh-space-md, 8px)
+    /** Left and right padding for input */
+    var(--rh-space-lg, 16px);
   resize: vertical; /* TODO: add public var to customize this */
 
   &:hover {
+    /** Input hover border color */
     border-color: var(--rh-color-border-interactive);
   }
 
@@ -58,9 +65,12 @@
   &:focus-visible {
     /** Textarea border color when focused */
     border-color: var(--rh-color-border-interactive);
-
-    /** Outer focus ring color when focused */
-    outline: 3px solid var(--rh-color-border-interactive);
+    outline:
+      /** Outer focus ring width when focused */
+      var(--rh-border-width-lg, 3px)
+      solid
+      /** Outer focus ring color when focused */
+      var(--rh-color-border-interactive);
     outline-offset: 3px;
   }
 
@@ -120,22 +130,30 @@
 }
 
 #char-count {
-  /** Secondary text color for the counter */
+  /** Secondary text color for the character counter */
   color: var(--rh-color-text-secondary);
 
-  /** Extra-small font size for the counter */
+  /** Extra-small font size for the character counter */
   font-size: var(--rh-font-size-body-text-xs, 0.75rem);
+
+  /** Block start margin for the character counter */
   margin-block-start: var(--rh-space-xs, 4px);
 }
 
 #help-text {
   align-items: center;
   display: flex;
+
+  /** Help text CSS gap  */
   gap: var(--rh-space-md, 8px);
+
+  /** Help text margin-block-start  */
   margin-block-start: var(--rh-space-md, 8px);
 
   & ::slotted(*) {
     display: inline-block;
+
+    /** Help text slotted elements font size */
     font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   }
 
@@ -150,34 +168,43 @@
 }
 
 :host([state='success']) #input {
+  /** Success state border color */
   border-color: var(--rh-color-border-status-success);
 }
 
 :host([state='warning']) #input {
+  /** Warning state border color */
   border-color: var(--rh-color-border-status-warning);
 }
 
 :host([state='danger']) #input {
+  /** Danger state border color */
   border-color: var(--rh-color-border-status-danger);
 }
 
 :host([state]) #help-text-content {
+  /** Font weight for the help text content when `state` attribute present */
   font-weight: var(--rh-font-weight-body-text-medium, 500);
 }
 
 .icon.success {
+  /** Success icon color design token for the help-text status indicator */
   color: var(--rh-color-icon-status-success);
 }
 
 .icon.warning {
+  /** Warning icon color design token for the help-text status indicator */
   color: var(--rh-color-icon-status-warning);
 }
 
 .icon.danger {
+  /** Danger icon color design token for the help-text status indicator */
   color: var(--rh-color-icon-status-danger);
 }
 
 :host([field-sizing='content']) #input {
   field-sizing: content;
+
+  /** Minimum height for auto-growing textarea input */
   min-block-size: var(--rh-length-6xl, 96px);
 }
