@@ -102,6 +102,23 @@
       );
 }
 
+:host([readonly]) #input {
+  background-color:
+    light-dark(
+        /** Readonly surface color for light schemes */
+        var(--rh-color-surface-lighter),
+        /** Readonly surface color for dark schemes */
+        var(--rh-color-surface-darker)
+      );
+  border-color:
+    light-dark(
+        /** Readonly border in light schemes */
+        var(--rh-color-gray-20, #e0e0e0),
+        /** Readonly border in dark schemes */
+        var(--rh-color-gray-70, #383838)
+      );
+}
+
 #char-count {
   /** Secondary text color for the counter */
   color: var(--rh-color-text-secondary);
