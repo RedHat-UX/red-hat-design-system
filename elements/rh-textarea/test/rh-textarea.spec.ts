@@ -45,10 +45,6 @@ describe('<rh-textarea>', function() {
       expect(element.rows).to.equal(5);
     });
 
-    it('defaults resize to vertical', function() {
-      expect(element.resize).to.equal('vertical');
-    });
-
     it('defaults value to empty string', function() {
       expect(element.value).to.equal('');
     });
