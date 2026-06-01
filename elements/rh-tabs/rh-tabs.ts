@@ -170,7 +170,7 @@ export class RhTabs extends LitElement {
       <div id="container" part="container" class="${classMap({ vertical, box, inset, centered, overflow: this.#overflow.showScrollButtons })}">
         <!-- tabs container -->
         <div part="tabs-container">${!this.#overflow.showScrollButtons ? '' : html`
-          <button id="previous-tab" part="overflow-button" tabindex="-1"
+          <button id="previous-tab" part="overflow-button previous" tabindex="-1"
                   aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll left'}"
                   ?disabled="${!this.#overflow.overflowLeft}"
                   @click="${() => !this.matches(':dir(rtl)') ? this.#overflow.scrollLeft() : this.#overflow.scrollRight()}">
@@ -187,7 +187,7 @@ export class RhTabs extends LitElement {
                   part="tabs"
                   @slotchange="${this.#onSlotchange}"></slot>
           </div>${!this.#overflow.showScrollButtons ? '' : html`
-          <button id="next-tab" part="overflow-button"
+          <button id="next-tab" part="overflow-button next"
                   tabindex="-1"
                   aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll right'}"
                   ?disabled="${!this.#overflow.overflowRight}"
