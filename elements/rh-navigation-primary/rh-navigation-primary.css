@@ -334,7 +334,7 @@
     margin-inline-start: var(--rh-space-lg, 16px);
   }
 
-  @container navigation-primary (min-width: 1200px) {
+  @container navigation-primary (min-width: 1440px) {
     /** Secondary area spacing between items at containers >= xl */
     gap: var(--rh-space-xl, 24px);
   }
@@ -355,7 +355,7 @@
       margin-inline-end: var(--rh-space-xl, 24px);
     }
 
-    @container navigation-primary (min-width: 1200px) {
+    @container navigation-primary (min-width: 1440px) {
       margin-inline-end: 0;
     }
 
@@ -479,13 +479,17 @@
             );
         box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
         padding-block:
-          /** Links menu content block start padding */
-          var(--rh-space-2xl, 32px)
-          /** Links menu content block end padding */
-          var(--rh-space-3xl, 48px);
+          /** Open links menu panel block start padding */
+          var(--rh-space-lg, 16px)
+          /** Open links menu panel block end padding */
+          var(--rh-space-2xl, 32px);
+        padding-inline: /** Open links menu panel inline padding */
+          var(--rh-space-lg, 16px);
 
-        /** Links menu content inline padding */
-        padding-inline: var(--rh-space-2xl, 32px);
+        @container navigation-primary (min-width: 576px) {
+          padding-block: var(--rh-space-2xl, 32px) var(--rh-space-3xl, 48px);
+          padding-inline: var(--rh-space-2xl, 32px);
+        }
 
         /** Open Links menu start rounded corner */
         border-end-start-radius: var(--rh-border-radius-default, 3px);
@@ -762,6 +766,23 @@
         }
       }
     }
+
+    & #links-menu[open] #links-menu-content {
+      @container navigation-primary (min-width: 1200px) {
+        padding-block:
+          /** Open compact links menu panel block start padding at containers >= xl */
+          var(--rh-space-2xl, 32px)
+          /** Open compact links menu panel block end padding at containers >= xl */
+          var(--rh-space-3xl, 48px);
+        padding-inline: /** Open compact links menu panel inline padding at containers >= xl */
+          var(--rh-space-2xl, 32px);
+      }
+
+      @container navigation-primary (min-width: 1440px) {
+        /* match #secondary open-panel rule at xl */
+        padding: 0;
+      }
+    }
   }
 
   &.compact {
@@ -793,12 +814,32 @@
           inline-size: 100%;
           block-size: auto;
           place-items: initial;
+          padding-block:
+            /** Open compact hamburger content block start padding */
+            var(--rh-space-lg, 16px)
+            /** Open compact hamburger content block end padding */
+            var(--rh-space-2xl, 32px);
+          padding-inline: /** Open compact hamburger content inline padding */
+            var(--rh-space-lg, 16px);
 
-          /** Open compact hamburger content padding */
-          padding: var(--rh-space-lg, 16px);
+          @container navigation-primary (min-width: 576px) {
+            padding-block:
+              /** Open compact hamburger content block start padding at containers >= 576px */
+              var(--rh-space-2xl, 32px)
+              /** Open compact hamburger content block end padding at containers >= 576px */
+              var(--rh-space-3xl, 48px);
+            padding-inline: var(--rh-space-2xl, 32px);
+          }
+
           box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
           max-block-size: calc(100dvh - var(--_navbar-height));
           overflow-y: auto;
+
+          @container navigation-primary (min-width: 1200px) {
+            /** Open compact hamburger padding at containers >= xl */
+            padding-block: var(--rh-space-2xl, 32px) var(--rh-space-3xl, 48px);
+            padding-inline: var(--rh-space-2xl, 32px);
+          }
 
           & ::slotted(rh-navigation-primary-item) {
             border-block-start:
@@ -816,11 +857,6 @@
               solid
               /** Compact last item separator color */
               var(--rh-color-border-subtle);
-          }
-
-          @container navigation-primary (min-width: 320px) {
-            /** Open compact hamburger content padding at containers >= 320px (custom) */
-            padding: var(--rh-space-2xl, 32px);
           }
 
           @container navigation-primary (min-width: 1200px) {
@@ -849,7 +885,7 @@
     & #links-menu {
       /* stylelint-disable-next-line no-descending-specificity */
       & summary {
-        @container navigation-primary (min-width: 14400px) {
+        @container navigation-primary (min-width: 1440px) {
           display: flex;
         }
       }
@@ -875,13 +911,12 @@
                 );
             box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
             padding-block:
-              /** Open compact links menu block start padding at containers >= xl */
+              /** Open compact links menu panel block start padding */
               var(--rh-space-2xl, 32px)
-              /** Open compact links menu block end padding at containers >= xl */
+              /** Open compact links menu panel block end padding */
               var(--rh-space-3xl, 48px);
-
-            /** Open compact links menu inline padding at containers >= xl */
-            padding-inline: var(--rh-space-2xl, 32px);
+            padding-inline: /** Open compact links menu panel inline padding */
+              var(--rh-space-2xl, 32px);
 
             /** Open compact links menu start rounded corner at containers >= xl */
             border-end-start-radius: var(--rh-border-radius-default, 3px);
