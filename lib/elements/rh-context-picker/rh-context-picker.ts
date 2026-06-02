@@ -16,8 +16,6 @@ import {
   ColorSurfaceLightest as lightest,
 } from '@rhds/tokens/color.js';
 
-
-
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
