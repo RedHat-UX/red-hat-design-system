@@ -729,6 +729,102 @@ describe('<rh-navigation-primary>', function() {
           });
         });
       });
+
+      describe('bento box behavior', function() {
+        function openBento() {
+          return async function() {
+            const summary = element.shadowRoot?.querySelector<HTMLElement>('#links-menu summary');
+            summary?.focus();
+            await sendKeys({ press: 'Enter' });
+          };
+        }
+
+        describe('opening the bento box', function() {
+          beforeEach(openBento());
+          beforeEach(async () => await element.updateComplete);
+          beforeEach(nextFrame);
+
+          it('should open the bento box', async function() {
+            const snapshot = await a11ySnapshot();
+            expect(snapshot).to.have.axQuery({ name: 'Explore Red Hat', expanded: true });
+          });
+
+          it('should open the overlay', function() {
+            expect(element.shadowRoot?.querySelector('#overlay.open')).to.exist;
+          });
+
+          describe('pressing Escape', function() {
+            beforeEach(press('Escape'));
+            beforeEach(async () => await element.updateComplete);
+            beforeEach(nextFrame);
+
+            it('should close the bento box', async function() {
+              const snapshot = await a11ySnapshot();
+              expect(snapshot).axQuery({ name: 'Explore Red Hat' }).to.not.have.property('expanded', true);
+            });
+
+            it('should close the overlay', function() {
+              expect(element.shadowRoot?.querySelector('#overlay.open')).to.not.exist;
+            });
+
+            it('should return focus to the bento trigger', async function() {
+              const snapshot = await a11ySnapshot();
+              expect(snapshot).to.have.axQuery({ name: 'Explore Red Hat', focused: true });
+            });
+          });
+
+          describe('clicking the overlay', function() {
+            beforeEach(async function() {
+              const overlay = element.shadowRoot?.querySelector<HTMLElement>('#overlay');
+              overlay?.click();
+            });
+            beforeEach(async () => await element.updateComplete);
+            beforeEach(nextFrame);
+
+            it('should close the bento box', async function() {
+              const snapshot = await a11ySnapshot();
+              expect(snapshot).axQuery({ name: 'Explore Red Hat' }).to.not.have.property('expanded', true);
+            });
+
+            it('should close the overlay', function() {
+              expect(element.shadowRoot?.querySelector('#overlay.open')).to.not.exist;
+            });
+          });
+
+          describe('tabbing past the bento box', function() {
+            beforeEach(press('Tab'));
+            beforeEach(press('Tab'));
+            beforeEach(press('Tab'));
+            beforeEach(press('Tab'));
+            beforeEach(async () => await element.updateComplete);
+            beforeEach(nextFrame);
+
+            it('should close the bento box', async function() {
+              const snapshot = await a11ySnapshot();
+              expect(snapshot).axQuery({ name: 'Explore Red Hat' }).to.not.have.property('expanded', true);
+            });
+          });
+
+          describe('opening a primary dropdown', function() {
+            beforeEach(async function() {
+              const navItem = element.querySelector<RhNavigationPrimaryItem>('rh-navigation-primary-item[variant="dropdown"]:not([slot])');
+              navItem?.shadowRoot?.querySelector('details')?.querySelector('summary')?.focus();
+              await sendKeys({ press: 'Enter' });
+            });
+            beforeEach(async () => await element.updateComplete);
+            beforeEach(nextFrame);
+
+            it('should close the bento box', async function() {
+              const snapshot = await a11ySnapshot();
+              expect(snapshot).axQuery({ name: 'Explore Red Hat' }).to.not.have.property('expanded', true);
+            });
+
+            it('should keep the overlay open', function() {
+              expect(element.shadowRoot?.querySelector('#overlay.open')).to.exist;
+            });
+          });
+        });
+      });
     });
   });
 
