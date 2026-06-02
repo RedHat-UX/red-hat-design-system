@@ -15,9 +15,9 @@ import {
   ColorPaletteListConverter,
   ContextChangeEvent,
   paletteNames,
-} from './uxdot-context-select.js';
+} from '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
 
-import './uxdot-context-select.js';
+import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
 import '@rhds/elements/rh-code-block/rh-code-block.js';
 import '@rhds/elements/rh-tabs/rh-tabs.js';
@@ -128,12 +128,12 @@ export class UxdotPattern extends LitElement {
 
           <div id="color-picker"
                ?hidden="${this.noColorPicker}">
-            <uxdot-context-select id="picker"
+            <rh-context-picker id="picker"
                                 accessible-label="Color palette"
                                 @change="${this.#onChange}"
                                 value="${ifDefined(this.colorPalette)}"
                                 target="${this.target}"
-                                allow="${this.allow}"></uxdot-context-select>
+                                allow="${this.allow}"></rh-context-picker>
           </div>
         </div>
 
