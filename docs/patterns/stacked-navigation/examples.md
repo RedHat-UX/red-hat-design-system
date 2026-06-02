@@ -18,7 +18,7 @@ subnav:
   import '@rhds/elements/rh-button/rh-button.js';
 </script>
 
-<uxdot-pattern src="./patterns/stacked-navigation.html" viewport>
+<uxdot-pattern src="./patterns/stacked-navigation.html" viewport="iframe">
   <h2 slot="heading">Stacked navigation</h2>
   <p>A primary navigation stacked above a sticky secondary navigation.
   Scroll within the viewport to see the secondary navigation stick to the top

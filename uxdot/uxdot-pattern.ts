@@ -53,7 +53,7 @@ export class UxdotPattern extends LitElement {
   @property({ reflect: true, attribute: 'js-src' }) jsSrc?: string;
 
   /** Render pattern in an iframe for proper @media query support */
-  @property({ type: Boolean, reflect: true }) viewport = false;
+  @property({ reflect: true }) viewport: 'iframe' | undefined;
 
   /** Should the color picker be hidden? */
   @property({ type: Boolean, attribute: 'no-color-picker' }) noColorPicker = false;
@@ -105,7 +105,7 @@ export class UxdotPattern extends LitElement {
         </div>
 
         <div id="controls-row">
-          ${this.viewport ? html`
+          ${this.viewport === 'iframe' ? html`
           <rh-button-group id="viewport-controls"
                            role="toolbar"
                            aria-label="Viewport size">
@@ -137,7 +137,7 @@ export class UxdotPattern extends LitElement {
           </div>
         </div>
 
-        ${this.viewport ?
+        ${this.viewport === 'iframe' ?
           html`<iframe id="viewport-frame"
                        style="max-inline-size: ${viewportWidth}"
                        src="${ifDefined(this.ssr.viewportSrc)}"
@@ -200,7 +200,7 @@ export class UxdotPattern extends LitElement {
       } else {
         codeTabs?.removeAttribute('color-palette');
       }
-      if (this.viewport) {
+      if (this.viewport === 'iframe') {
         this.#postColorPalette(event.colorPalette);
       }
     }
