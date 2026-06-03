@@ -401,10 +401,15 @@ export class RhNavigationPrimary extends LitElement {
       if (secondaryEventToggle) {
         if (this.compact) {
           this.#closeHamburger();
+        }
+        if (this.linksCompact) {
           this.#closeLinksMenu();
         }
         this.#openSecondaryDropdowns.add(item);
       } else {
+        if (this.linksCompact) {
+          this.#closeLinksMenu();
+        }
         this.#openPrimaryDropdowns.add(item);
       }
       this.#openOverlay();
@@ -421,7 +426,8 @@ export class RhNavigationPrimary extends LitElement {
 
       if (!this.compact
         && this.#openPrimaryDropdowns.size === 0
-        && this.#openSecondaryDropdowns.size === 0) {
+        && this.#openSecondaryDropdowns.size === 0
+        && !this._linksMenuOpen) {
         this.#closeOverlay();
       }
     }
@@ -611,17 +617,20 @@ export class RhNavigationPrimary extends LitElement {
         if (this.compact && this._hamburgerOpen) {
           this.#closeHamburger();
         }
+        // close any open primary dropdowns when links menu opens
+        this.#closePrimaryDropdowns();
         // close any open secondary dropdowns when links menu opens
-        if (this.compact && this.#openSecondaryDropdowns.size > 0) {
+        if (this.linksCompact && this.#openSecondaryDropdowns.size > 0) {
           this.#closeSecondaryDropdowns();
         }
-        // Only open overlay in compact (mobile) mode
-        if (this.compact) {
+        if (this.linksCompact) {
           this.#openOverlay();
         }
       } else {
         this.#closeLinksMenu();
-        if (this.compact && this.#openSecondaryDropdowns.size === 0 && !this._hamburgerOpen) {
+        if (this.linksCompact && this.#openSecondaryDropdowns.size === 0
+            && this.#openPrimaryDropdowns.size === 0
+            && (!this._hamburgerOpen || !this.compact)) {
           this.#closeOverlay();
         }
       }
