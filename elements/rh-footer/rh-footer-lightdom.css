@@ -110,8 +110,16 @@ rh-footer-universal [slot^='links'] a {
   display: block;
   width: auto;
 
-  /** Logo image height */
-  height: var(--rh-size-icon-04, 40px);
+  /** Logo image height for mobile */
+  height: var(--rh-size-icon-02, 24px);
+}
+
+/* (min-width: --rh-breakpoint-sm) */
+@media screen and (min-width: 768px) {
+  :is(rh-footer) a[slot^='logo'] > img {
+    /** Logo image height at viewport >= 768px */
+    height: var(--rh-size-icon-04, 40px);
+  }
 }
 
 :is(rh-footer, rh-footer-universal) :is(h1, h2, h3, h4, h5, h6) {
