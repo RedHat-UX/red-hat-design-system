@@ -11,6 +11,6 @@ await mkdir(dest);
 await cp(src, dest, { recursive: true });
 await writeFile(
   resolve(dest, 'ai-guidelines.11tydata.json'),
-  JSON.stringify({ layout: 'layouts/pages/has-toc.njk' }, null, 2) + '\n',
+  `${JSON.stringify({ layout: 'layouts/pages/has-toc.njk' }, null, 2)}\n`,
   'utf8'
 );
