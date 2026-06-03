@@ -1,0 +1,182 @@
+---
+description: "Subdomain footer for docs or other Red Hat properties. Shows domain name, language/theme switcher placeholders, and fewer navigation columns."
+---
+<rh-footer data-analytics-region="page-footer">
+  <a slot="logo"
+     href="https://docs.redhat.com"
+     data-analytics-category="Footer"
+     data-analytics-text="Logo">
+    <img alt="Red Hat logo"
+         src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg"
+         loading="lazy" />
+  </a>
+  <span slot="header-primary">Docs</span>
+  <div slot="header-secondary" class="switchers">
+    <button type="button" aria-label="Language switcher">
+      <rh-icon set="ui" icon="language"></rh-icon>
+    </button>
+    <button type="button" aria-label="Theme switcher">
+      <rh-icon set="ui" icon="dark-mode"></rh-icon>
+    </button>
+  </div>
+  <h3 slot="links"
+      data-analytics-text="Documentation">Documentation</h3>
+  <ul slot="links">
+    <li><a href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux"
+         data-analytics-category="Footer|Documentation"
+         data-analytics-text="Red Hat Enterprise Linux">Red Hat Enterprise Linux</a></li>
+    <li><a href="https://docs.redhat.com/en/documentation/openshift_container_platform"
+         data-analytics-category="Footer|Documentation"
+         data-analytics-text="OpenShift Container Platform">OpenShift Container Platform</a></li>
+    <li><a href="https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform"
+         data-analytics-category="Footer|Documentation"
+         data-analytics-text="Ansible Automation Platform">Ansible Automation Platform</a></li>
+  </ul>
+  <h3 slot="links"
+      data-analytics-text="Resources">Resources</h3>
+  <ul slot="links">
+    <li><a href="https://access.redhat.com"
+         data-analytics-category="Footer|Resources"
+         data-analytics-text="Customer support">Customer support</a></li>
+    <li><a href="https://developers.redhat.com/"
+         data-analytics-category="Footer|Resources"
+         data-analytics-text="Developer resources">Developer resources</a></li>
+    <li><a href="https://learn.redhat.com/"
+         data-analytics-category="Footer|Resources"
+         data-analytics-text="Learning community">Learning community</a></li>
+  </ul>
+  <h3 slot="links"
+      data-analytics-text="Communicate">Communicate</h3>
+  <ul slot="links">
+    <li><a href="https://redhat.com/en/contact"
+         data-analytics-category="Footer|Communicate"
+         data-analytics-text="Contact sales">Contact sales</a></li>
+    <li><a href="https://redhat.com/en/services/training-and-certification/contact-us"
+         data-analytics-category="Footer|Communicate"
+         data-analytics-text="Contact training">Contact training</a></li>
+  </ul>
+  <rh-footer-block slot="main-secondary">
+    <h3 slot="header"
+        data-analytics-text="About Red Hat Documentation">About Red Hat Documentation</h3>
+    <p>We help Red Hat users innovate and achieve their goals with our products and services with content they can trust. Explore our recent updates.</p>
+  </rh-footer-block>
+  <rh-footer-block slot="main-secondary">
+    <h3 slot="header"
+        data-analytics-text="About Red Hat">About Red Hat</h3>
+    <p>We deliver hardened solutions that make it easier for enterprises to work across platforms and environments, from the core datacenter to the network edge.</p>
+  </rh-footer-block>
+
+  <!-- Universal Footer -->
+  <rh-footer-universal slot="universal">
+    <h3 slot="links-primary"
+        data-analytics-text="Red Hat legal and privacy links"
+        hidden>Red Hat legal and privacy links</h3>
+    <ul slot="links-primary"
+        data-analytics-region="page-footer-bottom-primary">
+      <li><a href="https://redhat.com/en/about/company"
+           data-analytics-category="Footer|Corporate"
+           data-analytics-text="About Red Hat">About Red Hat</a></li>
+      <li><a href="https://redhat.com/en/jobs"
+           data-analytics-category="Footer|Corporate"
+           data-analytics-text="Jobs">Jobs</a></li>
+      <li><a href="https://redhat.com/en/events"
+           data-analytics-category="Footer|Corporate"
+           data-analytics-text="Events">Events</a></li>
+      <li><a href="https://redhat.com/en/about/office-locations"
+           data-analytics-category="Footer|Corporate"
+           data-analytics-text="Locations">Locations</a></li>
+      <li><a href="https://redhat.com/en/contact"
+           data-analytics-category="Footer|Corporate"
+           data-analytics-text="Contact Red Hat">Contact Red Hat</a></li>
+      <li><a href="https://redhat.com/en/blog"
+           data-analytics-category="Footer|Corporate"
+           data-analytics-text="Red Hat Blog">Red Hat Blog</a></li>
+      <li><a href="https://redhat.com/en/about/our-culture/diversity-equity-inclusion"
+           data-analytics-category="Footer|Corporate"
+           data-analytics-text="Diversity equity and inclusion">Diversity, equity, and inclusion</a></li>
+      <li><a href="https://coolstuff.redhat.com/"
+           data-analytics-category="Footer|Corporate"
+           data-analytics-text="Cool Stuff Store">Cool Stuff Store</a></li>
+      <li><a href="https://www.redhat.com/en/summit"
+           data-analytics-category="Footer|Corporate"
+           data-analytics-text="Red Hat Summit">Red Hat Summit</a></li>
+    </ul>
+    <rh-footer-copyright slot="links-secondary">&copy; 2026 Red Hat</rh-footer-copyright>
+    <h3 slot="links-secondary"
+        data-analytics-text="Red Hat legal and privacy links"
+        hidden>Red Hat legal and privacy links</h3>
+    <ul slot="links-secondary"
+        data-analytics-region="page-footer-bottom-secondary">
+      <li><a href="https://redhat.com/en/about/privacy-policy"
+           data-analytics-category="Footer|Red Hat legal and privacy links"
+           data-analytics-text="Privacy statement">Privacy statement</a></li>
+      <li><a href="https://redhat.com/en/about/terms-use"
+           data-analytics-category="Footer|Red Hat legal and privacy links"
+           data-analytics-text="Terms of use">Terms of use</a></li>
+      <li><a href="https://redhat.com/en/about/all-policies-guidelines"
+           data-analytics-category="Footer|Red Hat legal and privacy links"
+           data-analytics-text="All policies and guidelines">All policies and guidelines</a></li>
+      <li><a href="https://redhat.com/en/about/digital-accessibility"
+           data-analytics-category="Footer|Red Hat legal and privacy links"
+           data-analytics-text="Digital accessibility">Digital accessibility</a></li>
+    </ul>
+    <rh-footer-social-link slot="secondary-end"
+                           icon="linkedin"
+                           href="https://www.linkedin.com/company/red-hat"
+                           data-analytics-region="social-links-exit"
+                           data-analytics-category="Footer|social-links"
+                           data-analytics-text="LinkedIn"
+                           accessible-label="LinkedIn"></rh-footer-social-link>
+    <rh-footer-social-link slot="secondary-end"
+                           icon="youtube"
+                           href="https://www.youtube.com/user/RedHatVideos"
+                           data-analytics-region="social-links-exit"
+                           data-analytics-category="Footer|social-links"
+                           data-analytics-text="YouTube"
+                           accessible-label="YouTube"></rh-footer-social-link>
+    <rh-footer-social-link slot="secondary-end"
+                           icon="facebook"
+                           href="https://www.facebook.com/redhatinc"
+                           data-analytics-region="social-links-exit"
+                           data-analytics-category="Footer|social-links"
+                           data-analytics-text="Facebook"
+                           accessible-label="Facebook"></rh-footer-social-link>
+    <rh-footer-social-link slot="secondary-end"
+                           icon="x"
+                           href="https://twitter.com/RedHat"
+                           data-analytics-region="social-links-exit"
+                           data-analytics-category="Footer|social-links"
+                           data-analytics-text="X/Twitter"
+                           accessible-label="X/Twitter"></rh-footer-social-link>
+    <rh-footer-social-link slot="secondary-end"
+                           icon="instagram"
+                           href="https://www.instagram.com/redhat"
+                           data-analytics-region="social-links-exit"
+                           data-analytics-category="Footer|social-links"
+                           data-analytics-text="Instagram"
+                           accessible-label="Instagram"></rh-footer-social-link>
+  </rh-footer-universal>
+</rh-footer>
+
+<link rel="stylesheet"
+      href="../rh-footer-lightdom.css">
+
+<style>
+  /* Implementor spacing for rh-footer-block content */
+  rh-footer-block p {
+    margin-block: 0 var(--rh-space-lg, 16px);
+  }
+
+  rh-footer-block ul {
+    padding-inline-start: 0;
+    margin-block: 0;
+  }
+
+  rh-footer-block ul li {
+    padding-block: var(--rh-space-xs, 4px);
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-footer/rh-footer.js';
+</script>
