@@ -1011,9 +1011,22 @@
     & rh-accordion-header {
       --rh-color-interactive-primary-default: transparent;
       --rh-color-surface-lighter: transparent;
+      --rh-color-surface-dark: transparent;
+      --rh-color-text-primary:
+        light-dark(
+            var(--unified-color-gray-95),
+            var(--unified-color-gray-10)
+          );
+      --rh-space-lg: var(--unified-space-md);
+      --rh-space-xl: var(--unified-space-lg);
 
-      border-inline-end: none;
+      /* !important needed to override shadow DOM :host([expanded]) border */
+      border-inline-end: none !important;
       border-radius: var(--unified-border-radius-action-plain);
+    }
+
+    &[large] rh-accordion-header {
+      --rh-space-lg: var(--unified-space-lg);
     }
 
     & rh-accordion-header:hover {
@@ -1027,6 +1040,7 @@
     & rh-accordion-header:focus-within {
       position: relative;
       z-index: 1;
+      background-color: var(--unified-color-interactive-fill-plain-hover);
       outline:
         var(--unified-border-width-md)
         solid
@@ -1036,21 +1050,33 @@
 
     & rh-accordion-header :is(h1, h2, h3, h4, h5, h6) {
       margin: 0;
+      font-weight: var(--rh-font-weight-body-text-medium, 500);
     }
 
+    & rh-accordion-panel {
+      --rh-space-xl: var(--unified-space-lg);
+      --rh-space-lg: var(--unified-space-xl);
+    }
+
+    /* !important needed to override shadow DOM #container border */
     & rh-accordion-panel::part(container) {
-      border-inline-end: none;
+      border-inline-end: none !important;
     }
 
     &.bordered {
       --rh-color-border-subtle:
         light-dark(
             var(--unified-color-gray-20),
-            var(--unified-color-gray-70)
+            var(--unified-color-gray-60)
           );
 
       & rh-accordion-header {
         border-radius: 0;
+      }
+
+      & rh-accordion-header:first-child {
+        /* !important needed to override shadow DOM ::slotted border-block */
+        border-block-start-color: transparent !important;
       }
 
       & rh-accordion-header[expanded] {
@@ -1059,15 +1085,6 @@
 
       & rh-accordion-header:focus-within {
         outline-offset: calc(-1 * var(--unified-border-width-md));
-      }
-
-      & rh-accordion-panel::part(container) {
-        border-inline-end:
-          1px solid
-          light-dark(
-              var(--unified-color-gray-20),
-              var(--unified-color-gray-70)
-            );
       }
     }
   }
