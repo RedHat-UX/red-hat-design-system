@@ -284,6 +284,8 @@ let RhNavigationPrimary = class RhNavigationPrimary extends LitElement {
         }
         if (this.compact && !skip) {
             __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_closeHamburger).call(this);
+        }
+        if ((this.linksCompact) && !skip) {
             __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_closeLinksMenu).call(this);
         }
         __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_closeOverlay).call(this);
@@ -310,6 +312,8 @@ _RhNavigationPrimary_onOverlayClick = function _RhNavigationPrimary_onOverlayCli
     __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_closeSecondaryDropdowns).call(this);
     if (this.compact) {
         __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_closeHamburger).call(this);
+    }
+    if (this.linksCompact) {
         __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_closeLinksMenu).call(this);
     }
     __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_closeOverlay).call(this);
@@ -362,7 +366,7 @@ _RhNavigationPrimary_onDropdownToggle = async function _RhNavigationPrimary_onDr
         if (!this.compact
             && __classPrivateFieldGet(this, _RhNavigationPrimary_openPrimaryDropdowns, "f").size === 0
             && __classPrivateFieldGet(this, _RhNavigationPrimary_openSecondaryDropdowns, "f").size === 0
-            && !this._linksMenuOpen) {
+            && (!this._linksMenuOpen || !this.linksCompact)) {
             __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_closeOverlay).call(this);
         }
     }
@@ -402,7 +406,7 @@ _RhNavigationPrimary_onLinksMenuSummaryBlur = function _RhNavigationPrimary_onLi
         if (__classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_linksMenuContains).call(this, event.relatedTarget)) {
             return;
         }
-        if (this.compact) {
+        if (this.linksCompact) {
             __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_closeLinksMenu).call(this);
         }
     }
@@ -415,7 +419,7 @@ _RhNavigationPrimary_onLinksMenuFocusOut = function _RhNavigationPrimary_onLinks
         if (__classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_linksMenuContains).call(this, event.relatedTarget)) {
             return;
         }
-        if (this.compact) {
+        if (this.linksCompact) {
             __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_closeLinksMenu).call(this);
         }
     }
@@ -463,7 +467,7 @@ _RhNavigationPrimary_onEscDown = function _RhNavigationPrimary_onEscDown() {
         __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_closeHamburger).call(this);
         this._hamburger.querySelector('summary')?.focus();
     }
-    else if (this._linksMenuOpen && this.compact) {
+    else if (this._linksMenuOpen && (this.linksCompact)) {
         __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_closeLinksMenu).call(this);
         this._linksMenu.querySelector('summary')?.focus();
     }
