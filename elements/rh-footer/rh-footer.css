@@ -270,6 +270,10 @@
   flex-basis: 100%;
 }
 
+.global-tertiary ::slotted(rh-footer-links) {
+  display: contents;
+}
+
 .global-links-primary {
   display: flex;
   flex-direction: column;
