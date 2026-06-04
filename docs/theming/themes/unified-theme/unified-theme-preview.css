@@ -1048,7 +1048,7 @@
       outline-offset: calc(-1 * var(--unified-border-width-md));
     }
 
-    & rh-accordion-header :is(h1, h2, h3, h4, h5, h6) {
+    & :is(h1, h2, h3, h4, h5, h6) {
       margin: 0;
       font-weight: var(--rh-font-weight-body-text-medium, 500);
     }
