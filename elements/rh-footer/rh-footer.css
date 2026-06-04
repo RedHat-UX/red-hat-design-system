@@ -292,9 +292,22 @@
   font-size: var(--rh-font-size-body-text-xs, 0.75rem) !important;
 }
 
-.logo {
-  /* fix wierd problem where there is extra space below logo */
-  line-height: 0px;
+.logo ::slotted(a) {
+  color: var(--rh-color-text-primary-on-dark, #ffffff);
+  font-size: var(--rh-font-size-heading-xs, 1.25rem);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+  font-weight: 800;
+  line-height: var(--rh-line-height-heading, 1.3);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-decoration-thickness: var(--rh-border-width-sm, 1px);
+  text-underline-offset: max(5px, 0.28em);
+}
+
+.logo ::slotted(a:has(img, svg, picture)) {
+  text-decoration: none;
+  line-height: 0px; /* fix wierd problem where there is extra space below logo */
+  font-size: initial;
 }
 
 .social-links {
