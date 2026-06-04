@@ -11,66 +11,80 @@ description: "Subdomain footer for docs or other Red Hat properties. Shows domai
          loading="lazy" />
   </a>
   <span slot="header-primary">Docs</span>
-  <div slot="header-secondary" class="switchers">
-    <button type="button" aria-label="Language switcher">
-      <rh-icon set="ui" icon="language"></rh-icon>
-    </button>
-    <button type="button" aria-label="Theme switcher">
-      <rh-icon set="ui" icon="dark-mode"></rh-icon>
-    </button>
+  <div slot="header-secondary">
+    <label class="visually-hidden" for="select-language">Choose page language:</label>
+    <rh-select id="select-language">
+      <rh-option value="English" icon-set="ui" icon="language">English</rh-option>
+      <rh-option value="French" icon-set="ui" icon="language">French</rh-option>
+      <rh-option value="Spanish" icon-set="ui" icon="language">Spanish</rh-option>
+    </rh-select>
   </div>
   <h3 slot="links"
-      data-analytics-text="Documentation">Documentation</h3>
+      data-analytics-text="Learn">Learn</h3>
   <ul slot="links">
-    <li><a href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux"
-         data-analytics-category="Footer|Documentation"
-         data-analytics-text="Red Hat Enterprise Linux">Red Hat Enterprise Linux</a></li>
-    <li><a href="https://docs.redhat.com/en/documentation/openshift_container_platform"
-         data-analytics-category="Footer|Documentation"
-         data-analytics-text="OpenShift Container Platform">OpenShift Container Platform</a></li>
-    <li><a href="https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform"
-         data-analytics-category="Footer|Documentation"
-         data-analytics-text="Ansible Automation Platform">Ansible Automation Platform</a></li>
-  </ul>
-  <h3 slot="links"
-      data-analytics-text="Resources">Resources</h3>
-  <ul slot="links">
-    <li><a href="https://access.redhat.com"
-         data-analytics-category="Footer|Resources"
-         data-analytics-text="Customer support">Customer support</a></li>
     <li><a href="https://developers.redhat.com/"
-         data-analytics-category="Footer|Resources"
+         data-analytics-category="Footer|Learn"
          data-analytics-text="Developer resources">Developer resources</a></li>
     <li><a href="https://learn.redhat.com/"
-         data-analytics-category="Footer|Resources"
-         data-analytics-text="Learning community">Learning community</a></li>
+         data-analytics-category="Footer|Learn"
+         data-analytics-text="Cloud learning hub">Cloud learning hub</a></li>
+    <li><a href="https://developers.redhat.com/learn"
+         data-analytics-category="Footer|Learn"
+         data-analytics-text="Interactive labs">Interactive labs</a></li>
+    <li><a href="https://redhat.com/en/services/training-and-certification"
+         data-analytics-category="Footer|Learn"
+         data-analytics-text="Training and certification">Training and certification</a></li>
+    <li><a href="https://access.redhat.com"
+         data-analytics-category="Footer|Learn"
+         data-analytics-text="Customer support">Customer support</a></li>
+    <li><a href="https://docs.redhat.com/"
+         data-analytics-category="Footer|Learn"
+         data-analytics-text="See all documentation">See all documentation</a></li>
   </ul>
   <h3 slot="links"
-      data-analytics-text="Communicate">Communicate</h3>
+      data-analytics-text="Try buy sell">Try, buy, &amp; sell</h3>
   <ul slot="links">
-    <li><a href="https://redhat.com/en/contact"
-         data-analytics-category="Footer|Communicate"
-         data-analytics-text="Contact sales">Contact sales</a></li>
-    <li><a href="https://redhat.com/en/services/training-and-certification/contact-us"
-         data-analytics-category="Footer|Communicate"
-         data-analytics-text="Contact training">Contact training</a></li>
+    <li><a href="https://redhat.com/en/products/trials"
+         data-analytics-category="Footer|Try buy sell"
+         data-analytics-text="Product trial center">Product trial center</a></li>
+    <li><a href="https://catalog.redhat.com/"
+         data-analytics-category="Footer|Try buy sell"
+         data-analytics-text="Red Hat Ecosystem Catalog">Red Hat Ecosystem Catalog</a></li>
+    <li><a href="https://www.redhat.com/en/store"
+         data-analytics-category="Footer|Try buy sell"
+         data-analytics-text="Red Hat Store">Red Hat Store</a></li>
+  </ul>
+  <h3 slot="links"
+      data-analytics-text="Communities">Communities</h3>
+  <ul slot="links">
+    <li><a href="https://access.redhat.com/community"
+         data-analytics-category="Footer|Communities"
+         data-analytics-text="Customer Portal Community">Customer Portal Community</a></li>
+    <li><a href="https://redhat.com/en/events"
+         data-analytics-category="Footer|Communities"
+         data-analytics-text="Events">Events</a></li>
+    <li><a href="https://redhat.com/en/about/open-source"
+         data-analytics-category="Footer|Communities"
+         data-analytics-text="How we contribute">How we contribute</a></li>
   </ul>
   <rh-footer-block slot="main-secondary">
     <h3 slot="header"
         data-analytics-text="About Red Hat Documentation">About Red Hat Documentation</h3>
-    <p>We help Red Hat users innovate and achieve their goals with our products and services with content they can trust. Explore our recent updates.</p>
+    <p>We help Red Hat users innovate and achieve their goals with our products and services with content they can trust. <a href="https://docs.redhat.com/en/documentation">Explore our recent updates</a>.</p>
+    <h3 data-analytics-text="Making open source more inclusive">Making open source more inclusive</h3>
+    <p>Red Hat is committed to replacing problematic language in our code, documentation, and web properties. For more details, see the <a href="https://redhat.com/en/blog">Red Hat Blog</a>.</p>
+    <h3 data-analytics-text="About Red Hat">About Red Hat</h3>
+    <p>We deliver hardened solutions that make it easier for enterprises to work across platforms and environments, from the core datacenter to the network edge.</p>
   </rh-footer-block>
   <rh-footer-block slot="main-secondary">
-    <h3 slot="header"
-        data-analytics-text="About Red Hat">About Red Hat</h3>
-    <p>We deliver hardened solutions that make it easier for enterprises to work across platforms and environments, from the core datacenter to the network edge.</p>
+    <rh-site-status></rh-site-status>
   </rh-footer-block>
 
   <!-- Universal Footer -->
   <rh-footer-universal slot="universal">
     <h3 slot="links-primary"
-        data-analytics-text="Red Hat legal and privacy links"
-        hidden>Red Hat legal and privacy links</h3>
+        data-analytics-text="Red Hat corporate links"
+        hidden>Red Hat corporate links</h3>
     <ul slot="links-primary"
         data-analytics-region="page-footer-bottom-primary">
       <li><a href="https://redhat.com/en/about/company"
@@ -93,7 +107,7 @@ description: "Subdomain footer for docs or other Red Hat properties. Shows domai
            data-analytics-text="Red Hat Blog">Red Hat Blog</a></li>
       <li><a href="https://redhat.com/en/about/our-culture/diversity-equity-inclusion"
            data-analytics-category="Footer|Corporate"
-           data-analytics-text="Diversity equity and inclusion">Diversity, equity, and inclusion</a></li>
+           data-analytics-text="Inclusion at Red Hat">Inclusion at Red Hat</a></li>
       <li><a href="https://coolstuff.redhat.com/"
            data-analytics-category="Footer|Corporate"
            data-analytics-text="Cool Stuff Store">Cool Stuff Store</a></li>
@@ -101,7 +115,6 @@ description: "Subdomain footer for docs or other Red Hat properties. Shows domai
            data-analytics-category="Footer|Corporate"
            data-analytics-text="Red Hat Summit">Red Hat Summit</a></li>
     </ul>
-    <rh-footer-copyright slot="links-secondary">&copy; 2026 Red Hat</rh-footer-copyright>
     <h3 slot="links-secondary"
         data-analytics-text="Red Hat legal and privacy links"
         hidden>Red Hat legal and privacy links</h3>
@@ -119,36 +132,40 @@ description: "Subdomain footer for docs or other Red Hat properties. Shows domai
       <li><a href="https://redhat.com/en/about/digital-accessibility"
            data-analytics-category="Footer|Red Hat legal and privacy links"
            data-analytics-text="Digital accessibility">Digital accessibility</a></li>
+      <li><a href="#"
+           data-analytics-category="Footer|Red Hat legal and privacy links"
+           data-analytics-text="Cookie preferences">Cookie preferences</a></li>
     </ul>
-    <rh-footer-social-link slot="secondary-end"
+    <rh-footer-copyright slot="tertiary">&copy; 2026 Red Hat</rh-footer-copyright>
+    <rh-footer-social-link slot="tertiary"
                            icon="linkedin"
                            href="https://www.linkedin.com/company/red-hat"
                            data-analytics-region="social-links-exit"
                            data-analytics-category="Footer|social-links"
                            data-analytics-text="LinkedIn"
                            accessible-label="LinkedIn"></rh-footer-social-link>
-    <rh-footer-social-link slot="secondary-end"
+    <rh-footer-social-link slot="tertiary"
                            icon="youtube"
                            href="https://www.youtube.com/user/RedHatVideos"
                            data-analytics-region="social-links-exit"
                            data-analytics-category="Footer|social-links"
                            data-analytics-text="YouTube"
                            accessible-label="YouTube"></rh-footer-social-link>
-    <rh-footer-social-link slot="secondary-end"
+    <rh-footer-social-link slot="tertiary"
                            icon="facebook"
                            href="https://www.facebook.com/redhatinc"
                            data-analytics-region="social-links-exit"
                            data-analytics-category="Footer|social-links"
                            data-analytics-text="Facebook"
                            accessible-label="Facebook"></rh-footer-social-link>
-    <rh-footer-social-link slot="secondary-end"
+    <rh-footer-social-link slot="tertiary"
                            icon="x"
                            href="https://twitter.com/RedHat"
                            data-analytics-region="social-links-exit"
                            data-analytics-category="Footer|social-links"
                            data-analytics-text="X/Twitter"
                            accessible-label="X/Twitter"></rh-footer-social-link>
-    <rh-footer-social-link slot="secondary-end"
+    <rh-footer-social-link slot="tertiary"
                            icon="instagram"
                            href="https://www.instagram.com/redhat"
                            data-analytics-region="social-links-exit"
@@ -162,21 +179,43 @@ description: "Subdomain footer for docs or other Red Hat properties. Shows domai
       href="../rh-footer-lightdom.css">
 
 <style>
-  /* Implementor spacing for rh-footer-block content */
+  .visually-hidden {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    block-size: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    inline-size: 1px;
+  }
+
+  rh-select {
+    margin-inline-start: auto;
+    max-inline-size: var(--rh-length-7xl, 128px);
+  }
+
   rh-footer-block p {
     margin-block: 0 var(--rh-space-lg, 16px);
   }
 
-  rh-footer-block ul {
-    padding-inline-start: 0;
-    margin-block: 0;
+  rh-footer-block p a {
+    color: var(--rh-color-interactive-primary-default) !important;
+    text-decoration: underline;
+    text-decoration-thickness: var(--rh-border-width-sm, 1px);
+    text-decoration-style: dashed;
+    text-underline-offset: max(5px, 0.28em);
   }
 
-  rh-footer-block ul li {
-    padding-block: var(--rh-space-xs, 4px);
+  rh-footer-block p a:hover {
+    text-decoration-color: inherit;
+    text-underline-offset: max(6px, 0.33em);
   }
 </style>
 
 <script type="module">
   import '@rhds/elements/rh-footer/rh-footer.js';
+  import '@rhds/elements/rh-select/rh-select.js';
+  import '@rhds/elements/rh-site-status/rh-site-status.js';
 </script>
