@@ -12,21 +12,6 @@ const KITCHEN_SINK_TEMPLATE = html`
       <img src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat logo"
         loading="lazy"/>
     </a>
-    <rh-footer-social-link slot="social-links" icon="linkedin">
-      <a href="http://www.linkedin.com/company/red-hat">LinkedIn</a>
-    </rh-footer-social-link>
-    <rh-footer-social-link slot="social-links" icon="youtube">
-      <a href="http://www.youtube.com/user/RedHatVideos">Youtube</a>
-    </rh-footer-social-link>
-    <rh-footer-social-link slot="social-links" icon="facebook">
-      <a href="https://www.facebook.com/redhatinc">Facebook</a>
-    </rh-footer-social-link>
-    <!-- This is commented out because logos are exempt from contrast checks
-     and was throwing an error in automated axe test.
-     https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html
-    <rh-footer-social-link slot="social-links" icon="x">
-      <a href="https://twitter.com/RedHat">Twitter</a>
-    </rh-footer-social-link> -->
     <h3 slot="links">Products</h3>
     <ul slot="links">
       <li><a href="#">Red Hat Ansible Automation Platform</a></li>
@@ -80,7 +65,7 @@ const KITCHEN_SINK_TEMPLATE = html`
     </ul>
     <rh-footer-block slot="main-secondary">
       <h3 slot="header">About Red Hat</h3>
-      <p>We’re the world’s leading provider of enterprise open source solutions―including Linux, cloud, container, and Kubernetes. We deliver hardened solutions that make it easier for enterprises to work across platforms and environments, from the core datacenter to the network edge.</p>
+      <p>We're the world's leading provider of enterprise open source solutions&#x2015;including Linux, cloud, container, and Kubernetes. We deliver hardened solutions that make it easier for enterprises to work across platforms and environments, from the core datacenter to the network edge.</p>
     </rh-footer-block>
     <rh-footer-block slot="main-secondary">
       <h3 slot="header">Subscribe to our free newsletter, Red Hat Shares</h3>
@@ -91,7 +76,7 @@ const KITCHEN_SINK_TEMPLATE = html`
       <p>insert language switcher here...</p>
     </rh-footer-block>
     <rh-footer-universal slot="universal">
-      <h3 slot="links-primary" hidden>Red Hat legal and privacy links</h3>
+      <h3 slot="links-primary" hidden>Red Hat corporate links</h3>
       <ul slot="links-primary">
         <li><a href="#">About Red Hat</a></li>
         <li><a href="#">Jobs</a></li>
@@ -99,10 +84,10 @@ const KITCHEN_SINK_TEMPLATE = html`
         <li><a href="#">Locations</a></li>
         <li><a href="#">Contact Red Hat</a></li>
         <li><a href="#">Red Hat Blog</a></li>
-        <li><a href="#">Cool Stuff Store</a></li>
         <li><a href="#">Diversity, equity, and inclusion</a></li>
+        <li><a href="#">Cool Stuff Store</a></li>
+        <li><a href="#">Red Hat Summit</a></li>
       </ul>
-      <rh-footer-copyright slot="links-secondary"></rh-footer-copyright>
       <h3 slot="links-secondary" hidden>Red Hat legal and privacy links</h3>
       <ul slot="links-secondary">
         <li><a href="#">Privacy statement</a></li>
@@ -111,9 +96,21 @@ const KITCHEN_SINK_TEMPLATE = html`
         <li><a href="#">Digital accessibility</a></li>
         <li><a href="#">Cookie preferences</a></li>
       </ul>
-      <div slot="secondary-end">
-        <a href="#">*We’ve updated our privacy statement effective December 30, 202X.</a>
-      </div>
+      <rh-footer-copyright slot="tertiary"></rh-footer-copyright>
+      <rh-footer-links slot="tertiary" role="list">
+        <rh-footer-social-link icon="linkedin"
+                               href="https://www.linkedin.com/company/red-hat"
+                               accessible-label="LinkedIn"></rh-footer-social-link>
+        <rh-footer-social-link icon="youtube"
+                               href="https://www.youtube.com/user/RedHatVideos"
+                               accessible-label="YouTube"></rh-footer-social-link>
+        <rh-footer-social-link icon="facebook"
+                               href="https://www.facebook.com/redhatinc"
+                               accessible-label="Facebook"></rh-footer-social-link>
+        <rh-footer-social-link icon="x"
+                               href="https://twitter.com/RedHat"
+                               accessible-label="X/Twitter"></rh-footer-social-link>
+      </rh-footer-links>
     </rh-footer-universal>
   </rh-footer>
   <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css">
@@ -121,7 +118,7 @@ const KITCHEN_SINK_TEMPLATE = html`
 
 const UNIVERSAL_FOOTER_TEMPLATE = html`
   <rh-footer-universal>
-    <h3 slot="links-primary" hidden>Red Hat legal and privacy links</h3>
+    <h3 slot="links-primary" hidden>Red Hat corporate links</h3>
     <ul slot="links-primary">
       <li><a href="#">About Red Hat</a></li>
       <li><a href="#">Jobs</a></li>
@@ -129,10 +126,10 @@ const UNIVERSAL_FOOTER_TEMPLATE = html`
       <li><a href="#">Locations</a></li>
       <li><a href="#">Contact Red Hat</a></li>
       <li><a href="#">Red Hat Blog</a></li>
-      <li><a href="#">Cool Stuff Store</a></li>
       <li><a href="#">Diversity, equity, and inclusion</a></li>
+      <li><a href="#">Cool Stuff Store</a></li>
+      <li><a href="#">Red Hat Summit</a></li>
     </ul>
-    <rh-footer-copyright slot="links-secondary"></rh-footer-copyright>
     <h3 slot="links-secondary" hidden>Red Hat legal and privacy links</h3>
     <ul slot="links-secondary">
       <li><a href="#">Privacy statement</a></li>
@@ -141,9 +138,21 @@ const UNIVERSAL_FOOTER_TEMPLATE = html`
       <li><a href="#">Digital accessibility</a></li>
       <li><a href="#">Cookie preferences</a></li>
     </ul>
-    <div slot="secondary-end">
-      <a href="#">*We’ve updated our privacy statement effective December 30, 202X.</a>
-    </div>
+    <rh-footer-copyright slot="tertiary"></rh-footer-copyright>
+    <rh-footer-links slot="tertiary" role="list">
+      <rh-footer-social-link icon="linkedin"
+                             href="https://www.linkedin.com/company/red-hat"
+                             accessible-label="LinkedIn"></rh-footer-social-link>
+      <rh-footer-social-link icon="youtube"
+                             href="https://www.youtube.com/user/RedHatVideos"
+                             accessible-label="YouTube"></rh-footer-social-link>
+      <rh-footer-social-link icon="facebook"
+                             href="https://www.facebook.com/redhatinc"
+                             accessible-label="Facebook"></rh-footer-social-link>
+      <rh-footer-social-link icon="x"
+                             href="https://twitter.com/RedHat"
+                             accessible-label="X/Twitter"></rh-footer-social-link>
+    </rh-footer-links>
   </rh-footer-universal>
   <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css">
 `;
@@ -312,12 +321,12 @@ describe('<rh-footer>', function() {
         await setViewport({ width: 768, height: 800 });
         await element.updateComplete;
 
-        // primary links 3 columns
+        // primary links 2 columns
         expect(getComputedStyle(primaryLinks).getPropertyValue('display')).to.equal('grid');
-        expect(getComputedStyle(primaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(3);
-        // secondary links 3 columns
+        expect(getComputedStyle(primaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(2);
+        // secondary links 2 columns
         expect(getComputedStyle(secondaryLinks).getPropertyValue('display')).to.equal('grid');
-        expect(getComputedStyle(secondaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(3);
+        expect(getComputedStyle(secondaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(2);
       });
 
       it('Tablet, landscape', async function() {
@@ -349,7 +358,7 @@ describe('<rh-footer>', function() {
         logo = universalFooter?.shadowRoot?.querySelector('.global-logo');
         primary = universalFooter?.shadowRoot?.querySelector('.global-primary');
         spacer = universalFooter?.shadowRoot?.querySelector('.spacer');
-        secondaryContent = universalFooter?.querySelector('[slot*=secondary]');
+        secondaryContent = universalFooter?.shadowRoot?.querySelector('.global-links-secondary');
         tertiary = universalFooter?.shadowRoot?.querySelector('.global-tertiary');
         redHatLogo = element.querySelector('[slot*="logo"]');
       });
