@@ -9,6 +9,7 @@
     /* Fonts/Type */
     --unified-font-size-body-text-sm: 14px;
     --unified-line-height-body-text: 1.5;
+    --unified-line-height-body-text-md: 1.5rem;
 
     /* Base colors: Grays */
     --unified-color-gray-10: #f2f2f2;
@@ -1023,6 +1024,7 @@
       /* !important needed to override shadow DOM :host([expanded]) border */
       border-inline-end: none !important;
       border-radius: var(--unified-border-radius-action-plain);
+      line-height: var(--unified-line-height-body-text-md);
     }
 
     &[large] rh-accordion-header {
@@ -1055,7 +1057,6 @@
 
     & rh-accordion-panel {
       --rh-space-xl: var(--unified-space-lg);
-      --rh-space-lg: var(--unified-space-xl);
     }
 
     /* !important needed to override shadow DOM #container border */
