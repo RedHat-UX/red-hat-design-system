@@ -29,11 +29,13 @@ export class RhFooterUniversal extends LitElement {
   static readonly styles = [style];
 
   /**
-   * Color palette for the universal footer. Defaults to `'darker'`.
+   * Color palette for the universal footer.
    * Valid values: `'lighter'`, `'light'`, `'dark'`, `'darker'`, `'darkest'`.
-   * The universal footer typically renders on the darkest surface.
+   * When unset, the universal footer inherits `color-scheme` from its
+   * parent context. Backgrounds use `light-dark()` so they resolve
+   * correctly without an explicit palette.
    */
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   #internals = InternalsController.of(this);
 
@@ -153,7 +155,7 @@ export class RhFooterUniversal extends LitElement {
                     <defs>
                       <style>
                         .band {
-                          fill: transparent;
+                          fill: var(--rh-color-black, #000000);
                         }
                       </style>
                     </defs>

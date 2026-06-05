@@ -1,9 +1,12 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
+
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 
 export { RhFooterUniversal } from './rh-footer-universal.js';
 
@@ -33,19 +36,28 @@ function isHeaderTagName(tagName: string) {
  * @summary Site footer with navigation links, social icons, and legal content
  *
  * @cssprop --rh-footer-nojs-min-height - Minimum height when JavaScript is disabled. @deprecated target `rh-footer:not(:defined)` directly
- * @cssprop --rh-footer-icon-color - Default icon color. Uses --rh-color-gray-40 design token
- * @cssprop --rh-footer-icon-color-hover - Icon color on hover/focus. Uses --rh-color-gray-30 design token
- * @cssprop --rh-footer-border-color - Border color for section dividers. Uses --rh-color-border-subtle-on-dark design token
+ * @cssprop --rh-footer-icon-color - Default icon color. Uses --rh-color-icon-subtle design token
+ * @cssprop --rh-footer-icon-color-hover - Icon color on hover/focus. Uses --rh-color-icon-subtle-hover design token
+ * @cssprop --rh-footer-border-color - Border color for section dividers. Uses --rh-color-border-subtle design token
  * @cssprop --rh-footer-accent-color - Accent color for emphasis. Uses --rh-color-accent-brand-on-light design token
  * @cssprop --rh-footer-section-side-gap - Horizontal padding for footer sections. Responsive: 16px / 32px / 64px
  * @cssprop --rh-footer-links-gap - Vertical spacing between footer link items. Defaults to --rh-space-lg
  * @cssprop --rh-footer-link-header-font-size - Font size for link column headers. Defaults to --rh-font-size-body-text-sm
  */
 @customElement('rh-footer')
+@colorPalettes
 export class RhFooter extends LitElement {
   static readonly version = '{{version}}';
 
   static readonly styles = [style];
+
+  /**
+   * Sets the color palette and color-scheme for the footer.
+   * Footer is generally presented in dark color schemes, but
+   * users can optionally set it to `lighter` should they want to.
+   * @see https://ux.redhat.com/theming/color-palettes/
+   */
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
    * Isomorphic import.meta.url function
@@ -228,7 +240,7 @@ export class RhFooter extends LitElement {
       <slot name="links"></slot>
       ` : html`
 
-      <rh-accordion on="dark" color-palette="darkest">${children.map((child, i) => {
+      <rh-accordion>${children.map((child, i) => {
           const type = isHeaderTagName(child.tagName) ? 'header' : 'panel';
           // SEE https://github.com/asyncLiz/minify-html-literals/issues/37
           switch (type) {

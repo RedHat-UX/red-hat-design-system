@@ -108,7 +108,7 @@ rh-footer-universal [slot^='links'] a {
 
 /* Text-only logo links (no image) render as styled heading text */
 :is(rh-footer, rh-footer-universal) a[slot^='logo']:not(:has(img, svg, picture)) {
-  color: var(--rh-color-text-primary-on-dark, #ffffff);
+  color: var(--rh-color-text-primary);
   font-size: var(--rh-font-size-heading-xs, 1.25rem);
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-weight: 800;
@@ -116,13 +116,13 @@ rh-footer-universal [slot^='links'] a {
   text-decoration: underline;
   text-decoration-style: dotted;
   text-decoration-thickness: var(--rh-border-width-sm, 1px);
-  text-decoration-color: var(--rh-color-gray-40, #a3a3a3);
+  text-decoration-color: var(--rh-color-border-subtle);
   text-underline-offset: max(5px, 0.28em);
   transition: ease all 0.3s;
 }
 
 :is(rh-footer, rh-footer-universal) a[slot^='logo']:not(:has(img, svg, picture)):hover {
-  color: var(--rh-color-text-primary-on-dark, #ffffff);
+  color: var(--rh-color-text-primary);
   text-decoration-color: inherit;
   text-underline-offset: max(6px, 0.33em);
 }
@@ -134,7 +134,7 @@ rh-footer-universal [slot^='links'] a {
   }
 }
 
-:is(rh-footer) a[slot^='logo'] > img {
+:is(rh-footer) a[slot^='logo'] > :is(img, svg) {
   display: block;
   width: auto;
 
@@ -144,7 +144,7 @@ rh-footer-universal [slot^='links'] a {
 
 /* (min-width: --rh-breakpoint-sm) */
 @media screen and (min-width: 768px) {
-  :is(rh-footer) a[slot^='logo'] > img {
+  :is(rh-footer) a[slot^='logo'] > :is(img, svg) {
     /** Logo image height at viewport >= 768px */
     height: var(--rh-size-icon-04, 40px);
   }
@@ -181,7 +181,6 @@ rh-footer [slot='links']:is(h1, h2, h3, h4, h5):nth-of-type(n+5) {
   /** Default footer horizontal gutter */
   --rh-footer-section-side-gap: var(--rh-space-lg, 16px);
 
-  color-scheme: only dark;
   overflow-y: auto;
 }
 
@@ -256,9 +255,12 @@ rh-footer:not(:defined) [slot='social-links'] {
 }
 
 :is(rh-footer, rh-footer-universal):not(:defined) {
+  /* No-JS: force dark since no color-palette attribute is set before JS runs */
+  color-scheme: only dark;
+
   p {
-    /** Footer secondary text on dark */
-    color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
+    /** Footer secondary text — resolves via color-scheme */
+    color: var(--rh-color-text-secondary);
   }
 
   & :is(h1, h2, h3, h4, h5, h6) {
@@ -329,8 +331,8 @@ rh-footer-universal:not(:defined) {
     /** Copyright text size */
     font-size: var(--rh-font-size-body-text-xs, 0.75rem);
 
-    /** Copyright text on dark */
-    color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
+    /** Copyright text — resolves via color-scheme */
+    color: var(--rh-color-text-secondary);
   }
 }
 
@@ -389,8 +391,8 @@ rh-footer:not(:defined) rh-footer-universal:not(:defined) {
       position: relative;
 
       &:before {
-        /** Logo divider color at viewport >= lg */
-        background-color: var(--rh-color-border-subtle-on-dark, #707070);
+        /** Logo divider color at viewport >= lg — resolves via color-scheme */
+        background-color: var(--rh-color-border-subtle);
 
         /** Logo divider thickness at viewport >= lg */
         block-size: var(--rh-length-4xs, 1px);
