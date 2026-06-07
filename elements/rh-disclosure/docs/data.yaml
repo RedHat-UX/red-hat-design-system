@@ -3,7 +3,7 @@ tagName: rh-disclosure
 name: Disclosure
 type: element
 overallStatus: ready
-category: Containers
+category: Structure
 aka:
   - Details
   - Collapsible

@@ -3,7 +3,7 @@ tagName: rh-tile
 name: Tile
 type: element
 overallStatus: ready
-category: Containers
+category: Structure
 aka:
   - Selection card
 libraries:

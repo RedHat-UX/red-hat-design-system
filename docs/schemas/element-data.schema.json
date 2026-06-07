@@ -73,15 +73,17 @@
     "category": {
       "type": "string",
       "enum": [
-        "Actions",
-        "Containers",
+        "Actions and links",
+        "Data",
         "Emphasis",
-        "Feedback",
+        "Imagery",
+        "Inputs",
         "Media",
         "Navigation",
         "Overlays",
-        "Selection and inputs",
-        "Status"
+        "Selection",
+        "Status",
+        "Structure"
       ],
       "description": "Taxonomy category for grouping on the All Elements page"
     },

@@ -3,7 +3,7 @@ tagName: rh-readtime
 name: Read time
 type: element
 overallStatus: ready
-category: Status
+category: Data
 libraries:
   figma: ready
   rhds: ready

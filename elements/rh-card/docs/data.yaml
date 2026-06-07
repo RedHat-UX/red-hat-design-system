@@ -3,7 +3,7 @@ tagName: rh-card
 name: Card
 type: element
 overallStatus: ready
-category: Containers
+category: Structure
 aka:
   - Panel
 libraries:

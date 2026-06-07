@@ -3,7 +3,7 @@ tagName: rh-code-block
 name: Code block
 type: element
 overallStatus: ready
-category: Containers
+category: Structure
 aka:
   - Code snippet
 libraries:

@@ -3,7 +3,7 @@ tagName: rh-back-to-top
 name: Back to top
 type: element
 overallStatus: ready
-category: Actions
+category: Actions and links
 aka:
   - Scroll to top
 libraries:
