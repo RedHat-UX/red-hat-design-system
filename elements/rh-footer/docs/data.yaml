@@ -10,7 +10,6 @@ libraries:
   docs: ready
 relatedItems:
   - rh-accordion
-  - rh-popover
-  - rh-tooltip
+  - rh-navigation-primary
   - rh-site-status
 since: v1.0.0
