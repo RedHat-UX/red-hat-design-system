@@ -75,6 +75,41 @@ export default async function(eleventyConfig: UserConfig) {
 
   eleventyConfig.addGlobalData('isLocal', isLocal);
 
+  eleventyConfig.addGlobalData('eleventyComputed', {
+    layout(data: { layout?: string; page: { inputPath: string } }) {
+      if (!data.layout && data.page.inputPath.includes('/ai-guidelines/content/')) {
+        return 'layouts/pages/ai-guidelines.njk';
+      }
+      return data.layout;
+    },
+    permalink(data: { permalink?: string; page: { inputPath: string; filePathStem: string } }) {
+      if (data.page.inputPath.includes('/ai-guidelines/content/')) {
+        return `${data.page.filePathStem.replace('/ai-guidelines/content/', '/ai-guidelines/')}/index.html`;
+      }
+      return data.permalink;
+    },
+    tags(data: { tags?: string[]; page: { inputPath: string } }) {
+      if (data.page.inputPath.includes('/ai-guidelines/content/')) {
+        return [...new Set([...data.tags ?? [], 'aiGuidelines'])];
+      }
+      return data.tags;
+    },
+  });
+
+  eleventyConfig.addTransform('rh-table-wrap', function(content: string) {
+    if (this.page.inputPath?.includes('/ai-guidelines/content/') && content.includes('<table')) {
+      const wrapped = content
+          .replace(/<table\b/g, '<rh-table><table')
+          .replace(/<\/table>/g, '</table></rh-table>');
+      const lightdomCSS = '<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">';
+      if (!wrapped.includes('rh-table-lightdom.css')) {
+        return wrapped.replace('</head>', `  ${lightdomCSS}\n</head>`);
+      }
+      return wrapped;
+    }
+    return content;
+  });
+
   await eleventyConfig.addPlugin(TypescriptAssetsPlugin);
   eleventyConfig.addPlugin(EleventyRenderPlugin);
   eleventyConfig.addPlugin(HelmetPlugin);
