@@ -95,42 +95,41 @@ rh-alert {
   clear: both;
 }
 
-.container:after {
-  content: '';
-  display: block;
-  clear: both;
-}
-
-@container container (width < 576px) {
-  figure {
-    float: none;
-    width: 100%;
-    padding-inline: 0;
-  }
-}
-
 /* stylelint-disable @stylistic/indentation, @stylistic/max-line-length */
 .page-chatbot-avatars {
-:is(
-  figure[data-type='example']:has(+ figure[data-type='example'] + figure[data-type='example'] + figure[data-type='example']),
-  figure[data-type='example']:has(+ figure[data-type='example'] + figure[data-type='example'] + figure[data-type='example']) + figure[data-type='example'],
-  figure[data-type='example']:has(+ figure[data-type='example'] + figure[data-type='example'] + figure[data-type='example']) + figure[data-type='example'] + figure[data-type='example'],
-  figure[data-type='example']:has(+ figure[data-type='example'] + figure[data-type='example'] + figure[data-type='example']) + figure[data-type='example'] + figure[data-type='example'] + figure[data-type='example']
-) {
-  float: inline-start;
-  width: 25%;
-  box-sizing: border-box;
-  padding-inline-end: var(--rh-space-lg);
-  margin-block-end: var(--rh-space-4xl);
-  text-align: center;
+  :is(
+    figure[data-type='example']:has(+ figure[data-type='example'] + figure[data-type='example'] + figure[data-type='example']),
+    figure[data-type='example']:has(+ figure[data-type='example'] + figure[data-type='example'] + figure[data-type='example']) + figure[data-type='example'],
+    figure[data-type='example']:has(+ figure[data-type='example'] + figure[data-type='example'] + figure[data-type='example']) + figure[data-type='example'] + figure[data-type='example'],
+    figure[data-type='example']:has(+ figure[data-type='example'] + figure[data-type='example'] + figure[data-type='example']) + figure[data-type='example'] + figure[data-type='example'] + figure[data-type='example']) {
+    float: inline-start;
+    width: 25%;
+    box-sizing: border-box;
+    padding-inline-end: var(--rh-space-lg);
+    margin-block-end: var(--rh-space-4xl);
+    text-align: center;
 
-  img {
-    margin: 0 auto;
+    img {
+      margin: 0 auto;
+    }
+
+    &:nth-of-type(4n) {
+      padding-inline-end: 0;
+    }
   }
 
-  &:nth-of-type(4n) {
-    padding-inline-end: 0;
+  .container:after {
+    content: '';
+    display: block;
+    clear: both;
   }
-}
+
+  @container container (width < 576px) {
+    figure {
+      float: none;
+      width: 100%;
+      padding-inline: 0;
+    }
+  }
 }
 /* stylelint-enable @stylistic/indentation, @stylistic/max-line-length */
