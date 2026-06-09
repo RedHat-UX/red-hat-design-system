@@ -1,5 +1,5 @@
 [build]
-  command = "git submodule update --init --recursive && npm run docs"
+  command = "npm run docs"
 [build.environment]
   NODE_OPTIONS = "--max_old_space_size=8192"
 
