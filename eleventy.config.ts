@@ -93,7 +93,12 @@ export default async function(eleventyConfig: UserConfig) {
    *              directory data file inside the submodule
    * - permalink: strips "content/" from URLs so pages render at
    *              /ai-guidelines/<page>/ instead of /ai-guidelines/content/<page>/
-   * - tags:      adds pages to the 'aiGuidelines' collection for the sidenav
+   *
+   * The 'aiGuidelines' collection is created explicitly via addCollection
+   * rather than computed tags, because eleventyComputed set via addGlobalData
+   * doesn't reliably populate collections in all build environments (e.g.
+   * Netlify). The collection filters pages by input path and sorts by the
+   * frontmatter 'order' field, which the sidenav uses for display order.
    */
   eleventyConfig.addGlobalData('eleventyComputed', {
     layout(data: { layout?: string; page: { inputPath: string } }) {
@@ -108,12 +113,14 @@ export default async function(eleventyConfig: UserConfig) {
       }
       return data.permalink;
     },
-    tags(data: { tags?: string[]; page: { inputPath: string } }) {
-      if (data.page.inputPath.includes('/ai-guidelines/content/')) {
-        return [...new Set([...data.tags ?? [], 'aiGuidelines'])];
-      }
-      return data.tags;
-    },
+  });
+
+  eleventyConfig.addCollection('aiGuidelines', collection => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const all: any[] = collection.getAll();
+    return all
+        .filter(item => item.inputPath?.includes('/ai-guidelines/content/'))
+        .sort((a, b) => (a.data?.order ?? 99) - (b.data?.order ?? 99));
   });
 
   /**
