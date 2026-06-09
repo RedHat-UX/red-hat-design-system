@@ -108,20 +108,32 @@ rh-footer-universal [slot^='links'] a {
 
 /* Text-only logo links (no image) render as styled heading text */
 :is(rh-footer, rh-footer-universal) a[slot^='logo']:not(:has(img, svg, picture)) {
+  /** Text-only logo link color */
   color: var(--rh-color-text-primary);
+
+  /** Text-only logo link size */
   font-size: var(--rh-font-size-heading-xs, 1.25rem);
+
+  /** Text-only logo link typeface */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-weight: 800;
+
+  /** Text-only logo link line height */
   line-height: var(--rh-line-height-heading, 1.3);
   text-decoration: underline;
   text-decoration-style: dotted;
+
+  /** Text-only logo link underline thickness */
   text-decoration-thickness: var(--rh-border-width-sm, 1px);
+
+  /** Text-only logo link underline color */
   text-decoration-color: var(--rh-color-border-subtle);
   text-underline-offset: max(5px, 0.28em);
   transition: ease all 0.3s;
 }
 
 :is(rh-footer, rh-footer-universal) a[slot^='logo']:not(:has(img, svg, picture)):hover {
+  /** Text-only logo link hover color */
   color: var(--rh-color-text-primary);
   text-decoration-color: inherit;
   text-underline-offset: max(6px, 0.33em);
@@ -130,6 +142,7 @@ rh-footer-universal [slot^='links'] a {
 /* (min-width: --rh-breakpoint-sm) */
 @media screen and (min-width: 768px) {
   :is(rh-footer, rh-footer-universal) a[slot^='logo']:not(:has(img, svg, picture)) {
+    /** Text-only logo link size at viewport >= sm */
     font-size: var(--rh-font-size-heading-sm, 1.5rem);
   }
 }

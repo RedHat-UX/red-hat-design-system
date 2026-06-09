@@ -72,7 +72,9 @@
   /** Accordion surface — accordion overrides this internally via light-dark() */
   --_accordion-background:
     light-dark(
+        /** Accordion surface in light schemes */
         var(--rh-color-surface-lightest, #ffffff),
+        /** Accordion surface in dark schemes */
         var(--rh-color-surface-darkest, #151515)
       );
 
@@ -135,7 +137,9 @@
   /** Footer background — always darker/lighter regardless of specific palette */
   background-color:
     light-dark(
+        /** Header surface in light schemes */
         var(--rh-color-surface-lighter, #f2f2f2),
+        /** Header surface in dark schemes */
         var(--rh-color-surface-darker, #1f1f1f)
       );
 
@@ -170,7 +174,11 @@
 .header-primary ::slotted(:not(a, img, svg, picture)) {
   /** Domain name size (mobile-first) */
   font-size: var(--rh-font-size-heading-xs, 1.25rem);
+
+  /** Domain name typeface */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+
+  /** Domain name weight */
   font-weight: var(--rh-font-weight-heading-medium, 500);
 }
 
@@ -183,7 +191,9 @@
   /** Footer background — always darker/lighter regardless of specific palette */
   background-color:
     light-dark(
+        /** Main surface in light schemes */
         var(--rh-color-surface-lighter, #f2f2f2),
+        /** Main surface in dark schemes */
         var(--rh-color-surface-darker, #1f1f1f)
       );
   display: grid;
@@ -214,7 +224,9 @@
   /** Footer background — always darkest/lightest regardless of specific palette */
   background-color:
     light-dark(
+        /** Universal footer surface in light schemes */
         var(--rh-color-surface-lightest, #ffffff),
+        /** Universal footer surface in dark schemes */
         var(--rh-color-surface-darkest, #151515)
       );
   display: grid;
@@ -236,7 +248,7 @@
 }
 
 .global-logo-image {
-  /** Red Hat fedora brand color — same in both light and dark modes */
+  /** Red Hat fedora brand color — same in both light and dark schemes */
   fill: var(--rh-color-brand-red, #ee0000);
 }
 
@@ -312,13 +324,22 @@
 }
 
 .logo ::slotted(a) {
+  /** Logo slot link text color */
   color: var(--rh-color-text-primary);
+
+  /** Logo slot link size */
   font-size: var(--rh-font-size-heading-xs, 1.25rem);
+
+  /** Logo slot link typeface */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-weight: 800;
+
+  /** Logo slot link line height */
   line-height: var(--rh-line-height-heading, 1.3);
   text-decoration: underline;
   text-decoration-style: dotted;
+
+  /** Logo slot link underline thickness */
   text-decoration-thickness: var(--rh-border-width-sm, 1px);
   text-underline-offset: max(5px, 0.28em);
 }
