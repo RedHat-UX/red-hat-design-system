@@ -69,7 +69,7 @@ function rhdsGitHubAlerts(md: MarkdownIt) {
   const origClose = md.renderer.rules.blockquote_close;
 
   md.core.ruler.after('block', 'github_alerts', (state: State) => {
-    const tokens = state.tokens;
+    const { tokens } = state;
     for (let i = 0; i < tokens.length; i++) {
       if (tokens[i].type !== 'blockquote_open') {
         continue;
@@ -86,7 +86,7 @@ function rhdsGitHubAlerts(md: MarkdownIt) {
       if (!match) {
         continue;
       }
-      const alertType = match[1];
+      const [, alertType] = match;
       const state_ = ALERT_TYPE_MAP[alertType] ?? 'info';
       const body = inline.content.slice(match[0].length).trim();
 
