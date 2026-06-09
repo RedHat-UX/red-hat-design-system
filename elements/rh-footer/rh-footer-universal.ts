@@ -12,6 +12,9 @@ import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palet
 import style from './rh-footer.css' with { type: 'css' };
 
 import './rh-footer-copyright.js';
+import './rh-footer-links.js';
+import './rh-footer-social-link.js';
+import '@rhds/elements/rh-icon/rh-icon.js';
 
 /**
  * Global Red Hat footer bar for consistent branding across all

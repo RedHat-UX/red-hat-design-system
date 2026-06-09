@@ -109,8 +109,6 @@ improve page loading performance.
 
 ```js
 import '@rhds/elements/rh-footer/rh-footer-universal.js';
-import '@rhds/elements/rh-icon/rh-icon.js';
-import '@rhds/elements/rh-footer/rh-footer-social-link.js';
 ```
 ```html
 <link rel="stylesheet" href="node_modules/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css">
