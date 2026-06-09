@@ -75,6 +75,26 @@ export default async function(eleventyConfig: UserConfig) {
 
   eleventyConfig.addGlobalData('isLocal', isLocal);
 
+  /**
+   * AI guidelines integration
+   *
+   * The AI guidelines content lives in a git submodule at docs/ai-guidelines,
+   * sourced from https://github.com/project-felt/ai-guidelines. The submodule
+   * has its own repo structure (content/, assets/, source/, README, etc.), so
+   * we use computed data to bridge it into the docs site without modifying the
+   * submodule itself. See also .eleventyignore, which excludes the submodule's
+   * root-level markdown and source/ directory to prevent duplicate pages.
+   *
+   * If the submodule's directory structure changes (e.g., content files move
+   * out of content/, or image paths change), these overrides can be reverted
+   * and replaced with standard 11ty data files inside the submodule.
+   *
+   * - layout:    assigns the ai-guidelines template since we can't place a
+   *              directory data file inside the submodule
+   * - permalink: strips "content/" from URLs so pages render at
+   *              /ai-guidelines/<page>/ instead of /ai-guidelines/content/<page>/
+   * - tags:      adds pages to the 'aiGuidelines' collection for the sidenav
+   */
   eleventyConfig.addGlobalData('eleventyComputed', {
     layout(data: { layout?: string; page: { inputPath: string } }) {
       if (!data.layout && data.page.inputPath.includes('/ai-guidelines/content/')) {
@@ -96,14 +116,25 @@ export default async function(eleventyConfig: UserConfig) {
     },
   });
 
+  /**
+   * Wraps <table> elements in <rh-table> for ai-guidelines pages and injects
+   * the rh-table lightdom stylesheet. Only applies to pages sourced from the
+   * ai-guidelines submodule, so other site tables are unaffected.
+   */
   eleventyConfig.addTransform('rh-table-wrap', function(content: string) {
-    if (this.page.inputPath?.includes('/ai-guidelines/content/') && content.includes('<table')) {
+    // eslint-disable-next-line @typescript-eslint/no-invalid-this
+    const inputPath: string = this.page.inputPath ?? '';
+    if (inputPath.includes('/ai-guidelines/content/')
+      && content.includes('<table')) {
       const wrapped = content
           .replace(/<table\b/g, '<rh-table><table')
           .replace(/<\/table>/g, '</table></rh-table>');
-      const lightdomCSS = '<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">';
+      const cssHref = '/assets/packages/@rhds/elements'
+        + '/elements/rh-table/rh-table-lightdom.css';
       if (!wrapped.includes('rh-table-lightdom.css')) {
-        return wrapped.replace('</head>', `  ${lightdomCSS}\n</head>`);
+        const link = `<link rel="stylesheet"`
+          + ` data-helmet href="${cssHref}">`;
+        return wrapped.replace('</head>', `  ${link}\n</head>`);
       }
       return wrapped;
     }
