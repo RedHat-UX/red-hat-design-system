@@ -29,7 +29,7 @@ The footer includes many different interactive elements that can be navigated wi
         <td data-label="Result">Moves the focus to the next interactive element</td>
       </tr>
       <tr>
-        <td data-label="Key"><kbd>Shift</kdb>+<kbd>Tab</kbd></td>
+        <td data-label="Key"><kbd>Shift</kbd>+<kbd>Tab</kbd></td>
         <td data-label="Result">Moves the focus to the previous interactive element</td>
       </tr>
       <tr>
@@ -37,7 +37,7 @@ The footer includes many different interactive elements that can be navigated wi
         <td data-label="Result">Opens the language selector menu</td>
       </tr>
       <tr>
-        <td data-label="Key"><kbd>Up arrow</kdb> / <kbd>Down arrow</kbd></td>
+        <td data-label="Key"><kbd>Up arrow</kbd> / <kbd>Down arrow</kbd></td>
         <td data-label="Result">Moves the focus to each language</td>
       </tr>
       <tr>
