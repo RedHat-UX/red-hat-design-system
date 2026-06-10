@@ -42,7 +42,7 @@ The footer includes many different interactive elements that can be navigated wi
       </tr>
       <tr>
         <td data-label="Key"><kbd>Enter</kbd></td>
-        <td data-label="Result">Selects a language and refreshes the page</td>
+        <td data-label="Result">Selects a language and enables it on the page</td>
       </tr>
       <tr>
         <td data-label="Key"><kbd>Esc</kbd></td>
