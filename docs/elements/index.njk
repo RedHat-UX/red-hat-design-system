@@ -56,7 +56,10 @@ categories:
     margin-block-start: var(--rh-space-2xl, 32px);
   }
   #elements-categories section {
-    margin-block-end: var(--rh-space-3xl, 48px);
+    margin-block-end: var(--rh-space-2xl, 32px);
+  }
+  #elements-categories section h3 {
+    margin-block-start: var(--rh-space-lg, 16px);
   }
   .bottom-links {
     display: grid;
@@ -89,8 +92,8 @@ categories:
   together in the same space to create more intuitive user interfaces and
   experiences.</p>
 
-  <rh-select id="category-filter" accessible-label="Filter elements by category" placeholder="All elements">
-    <rh-option value="">All elements</rh-option>
+  <rh-select id="category-filter" accessible-label="Filter elements by category">
+    <rh-option value="" selected>All elements</rh-option>
     {%- for category in categories -%}
       {%- set catSlug = category | lower | replace(" ", "-") -%}
       <rh-option value="{{ catSlug }}">{{ category }}</rh-option>
