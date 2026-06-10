@@ -91,9 +91,9 @@ function rhdsGitHubAlerts(md: MarkdownIt) {
       const body = inline.content.slice(match[0].length).trim();
 
       let closeIdx = -1;
-      for (let j = i + 1; j < tokens.length; j++) {
-        if (tokens[j].type === 'blockquote_close') {
-          closeIdx = j;
+      for (const [j, t] of tokens.slice(i + 1).entries()) {
+        if (t.type === 'blockquote_close') {
+          closeIdx = i + 1 + j;
           break;
         }
       }
