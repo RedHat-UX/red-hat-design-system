@@ -323,6 +323,11 @@
   font-size: var(--rh-font-size-body-text-xs, 0.75rem) !important;
 }
 
+.logo {
+  /* Eliminates inline image spacing for both fallback and slotted image logos */
+  line-height: 0;
+}
+
 .logo ::slotted(a) {
   /** Logo slot link text color */
   color: var(--rh-color-text-primary);
@@ -348,6 +353,28 @@
   text-decoration: none;
   line-height: 0px; /* fix wierd problem where there is extra space below logo */
   font-size: initial;
+}
+
+/* Fallback logo anchor — targets shadow DOM nodes only (slotted elements not matched) */
+.logo a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+/* Fallback logo image sizing — mirrors lightdom rules for [slot^='logo'] > :is(img, svg) */
+.logo a > :is(img, svg) {
+  display: block;
+  width: auto;
+
+  /** Logo image height for mobile */
+  height: var(--rh-size-icon-02, 24px);
+}
+
+@media screen and /* --rh-media-sm */ (min-width: 768px) {
+  .logo a > :is(img, svg) {
+    /** Logo image height at viewport >= sm */
+    height: var(--rh-size-icon-04, 40px);
+  }
 }
 
 .social-links {
