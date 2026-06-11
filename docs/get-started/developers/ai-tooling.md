@@ -10,22 +10,31 @@ subnav:
   order: 55
 ---
 
+<link data-helmet
+      rel="stylesheet"
+      href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+
 <script type="module" data-helmet>
   import '@rhds/elements/rh-code-block/rh-code-block.js';
   import '@rhds/elements/rh-alert/rh-alert.js';
+  import '@rhds/elements/rh-table/rh-table.js';
 </script>
 
 ## Overview
 
 Two MCP servers give your AI assistant structured knowledge of
-Red Hat Design System **components** and **design tokens**. Once
+Red Hat Design System components and design tokens. Once
 configured, your assistant can generate correct RHDS markup, suggest
 token values, and validate your usage.
+
+<rh-table>
 
 | Server               | What it knows                                                          | Install                   |
 | -------------------- | ---------------------------------------------------------------------- | ------------------------- |
 | [CEM][cem]           | Elements: attributes, slots, events, CSS custom properties, guidelines | `npm i -g @pwrs/cem`      |
 | [Asimonim][asimonim] | Design tokens: colors, spacing, typography, shadows, and more          | `npm i -g @pwrs/asimonim` |
+
+</rh-table>
 
 Both are also available via `go install`:
 
@@ -89,7 +98,7 @@ way as Cursor (above).
 
 ### Neovim
 
-For Neovim 0.12+ with native LSP support, create two files:
+For Neovim 0.11+ with native LSP support, create two files:
 
 `~/.config/nvim/lsp/cem.lua`:
 
@@ -146,7 +155,5 @@ cem generate
 [asimonimdocs]: https://bennypowers.dev/asimonim/
 [cem]: https://github.com/bennypowers/cem
 [cemdocs]: https://bennypowers.dev/cem/
-[claudecode]: https://claude.com/product/claude-code
-[cursor]: https://cursor.com
 [cursormcp]: https://docs.cursor.com/mcp
 [vscodeext]: https://marketplace.visualstudio.com/items?itemName=pwrs.cem-language-server-vscode
