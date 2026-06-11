@@ -1146,7 +1146,6 @@
        No hover interaction — tags are non-interactive in the
        unified theme. Revisit if design adds interactive states. */
     &[variant='outline'] {
-
       &[color='red'] {
         --rh-color-gray-30: var(--rh-color-red-30, #f9a8a8);
         --rh-color-gray-50: var(--rh-color-red-50, #ee0000);
