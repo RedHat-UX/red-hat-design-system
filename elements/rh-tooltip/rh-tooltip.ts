@@ -50,9 +50,6 @@ function getBestGuessAccessibleContent(node: Node): string {
  * an alternative accessible label.
  *
  * @summary Reveals a small area of information on hover
- *
- * @alias tooltip
- *
  */
 @customElement('rh-tooltip')
 @themable

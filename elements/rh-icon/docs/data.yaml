@@ -15,3 +15,4 @@ relatedItems:
   - rh-alert
   - rh-card
   - rh-statistic
+since: v2.0.0

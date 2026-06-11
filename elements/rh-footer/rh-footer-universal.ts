@@ -22,7 +22,6 @@ import './rh-footer-copyright.js';
  * Tab navigates link groups.
  *
  * @summary Global Red Hat universal footer with logo, links, and copyright
- * @alias footer-universal
  */
 @customElement('rh-footer-universal')
 @colorPalettes

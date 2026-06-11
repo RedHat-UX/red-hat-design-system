@@ -31,7 +31,7 @@ type LinkElement = HTMLAnchorElement | RhNavigationLink;
  *
  * @summary Displays a horizontal list of navigation links for related pages
  *
- * @alias subnavigation
+ * @alias Subnavigation
  *
  */
 @customElement('rh-subnav')

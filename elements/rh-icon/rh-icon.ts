@@ -53,8 +53,6 @@ export class IconResolveErrorEvent extends ErrorEvent {
  *
  * @summary Displays Red Hat brand icons with configurable size and loading
  *
- * @alias icon
- *
  * @fires load - Fired when icon SVG content is loaded and rendered. Bubbles.
  *   No detail payload; check the element's `icon` and `set` properties.
  * @fires error - Fired when icon fails to load. Instance of

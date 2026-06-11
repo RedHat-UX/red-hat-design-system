@@ -14,3 +14,4 @@ libraries:
 relatedItems:
   - rh-blockquote
   - rh-statistic
+since: v1.2.0

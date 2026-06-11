@@ -146,10 +146,6 @@ function getReadingTime(words: number, wpm: number, imageCount = 0): number {
  * element is non-interactive display text.
  *
  * @summary Provides an estimated reading time for content
- *
- * @alias readtime
- *
- *
  */
 @customElement('rh-readtime')
 @themable

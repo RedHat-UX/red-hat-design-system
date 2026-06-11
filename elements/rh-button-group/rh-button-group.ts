@@ -20,8 +20,6 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
  * For further accessibility details, see the [Accessibility](/elements/button-group/accessibility/) documentation.
  *
  * @summary Organize multiple related buttons into a single collection
- *
- * @alias button-group
  */
 @customElement('rh-button-group')
 @themable

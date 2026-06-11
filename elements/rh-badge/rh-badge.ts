@@ -24,8 +24,6 @@ import styles from './rh-badge.css' with { type: 'css' };
  * like `999+`.
  *
  * @summary Non-interactive numeric pill badge for counts and status
- *
- * @alias badge
  */
 @customElement('rh-badge')
 @themable

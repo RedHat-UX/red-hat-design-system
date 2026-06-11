@@ -26,7 +26,7 @@ function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLB
  *
  * @summary Styled link or button for prominent user actions
  *
- * @alias call-to-action
+ * @alias Call to action
  *
  */
 @customElement('rh-cta')

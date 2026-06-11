@@ -14,3 +14,4 @@ libraries:
 relatedItems:
   - rh-accordion
   - rh-jump-links
+since: v3.0.0

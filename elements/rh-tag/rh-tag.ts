@@ -23,9 +23,6 @@ import styles from './rh-tag.css' with { type: 'css' };
  * keyboard navigation is suppressed on linked tags.
  *
  * @summary Categorizes content, adds context, or indicates status
- *
- * @alias tag
- *
  */
 @customElement('rh-tag')
 @themable

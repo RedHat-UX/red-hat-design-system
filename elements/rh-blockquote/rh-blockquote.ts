@@ -19,8 +19,6 @@ import styles from './rh-blockquote.css' with { type: 'css' };
  * and its source. Avoid placing interactive elements inside.
  *
  * @summary Highlights quotations and citations with text styles
- *
- * @alias blockquote
  */
 @customElement('rh-blockquote')
 @colorPalettes

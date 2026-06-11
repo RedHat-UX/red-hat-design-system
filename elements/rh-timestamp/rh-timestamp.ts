@@ -28,8 +28,6 @@ const BooleanStringConverter: ComplexAttributeConverter = {
  * The element is not keyboard-focusable on its own.
  *
  * @summary Displays a formatted date and time value using locale-aware formatting
- *
- * @alias timestamp
  */
 @customElement('rh-timestamp')
 export class RhTimestamp extends LitElement {

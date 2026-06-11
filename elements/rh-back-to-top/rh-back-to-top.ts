@@ -17,8 +17,6 @@ import styles from './rh-back-to-top.css' with { type: 'css' };
  *
  * @summary Fixed anchor link for returning to page top on long pages
  *
- * @alias back-to-top
- *
  * @cssprop --rh-back-to-top-background-color
  * Background color for the back to top button. Defaults to `--rh-color-accent-base`,
  * which uses the design system's primary interactive blue color and automatically

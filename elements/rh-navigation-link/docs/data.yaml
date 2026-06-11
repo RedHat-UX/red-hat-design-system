@@ -13,3 +13,4 @@ relatedItems:
   - rh-navigation-secondary
   - rh-navigation-vertical
   - rh-subnav
+since: v4.0.0

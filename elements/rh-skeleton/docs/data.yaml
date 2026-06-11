@@ -13,3 +13,4 @@ libraries:
   docs: ready
 relatedItems:
   - rh-spinner
+since: v3.1.0
