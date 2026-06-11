@@ -11,7 +11,11 @@
   /** Border radius container */
   border-radius: var(--rh-border-radius-default, 3px);
   min-width: 150px;
-  background: light-dark(var(--rh-color-surface-lighter, #f2f2f2), var(--rh-color-surface-darker, #1f1f1f));
+  background:
+    light-dark(
+        var(--rh-color-surface-lighter, #f2f2f2),
+        var(--rh-color-surface-darker, #1f1f1f)
+      );
   border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
 }
 
