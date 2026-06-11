@@ -41,26 +41,36 @@ categories:
   rh-tile h4 {
     margin: 0 !important;
   }
+
+  label {
+    font-weight: var(--rh-font-weight-body-text-medium);
+    margin-block-end: var(--rh-space-md);
+  }
+
   rh-tile p {
     margin-block: 0 0 !important;
   }
+
   uxdot-example {
     height: 216px;
     display: flex;
     justify-content: center;
   }
+
   #category-filter {
     max-inline-size: 358px;
   }
+
   #elements-categories {
     margin-block-start: var(--rh-space-2xl, 32px);
+    section {
+      margin-block-end: var(--rh-space-2xl, 32px);
+      h3 {
+        margin-block-start: var(--rh-space-lg, 16px);
+      }
+    }
   }
-  #elements-categories section {
-    margin-block-end: var(--rh-space-2xl, 32px);
-  }
-  #elements-categories section h3 {
-    margin-block-start: var(--rh-space-lg, 16px);
-  }
+
   .bottom-links {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -92,13 +102,17 @@ categories:
   together in the same space to create more intuitive user interfaces and
   experiences.</p>
 
-  <rh-select id="category-filter" accessible-label="Filter elements by category">
-    <rh-option value="" selected>All elements</rh-option>
-    {%- for category in categories -%}
+  <div>
+    <label for="category-filter">Filter elements by category</label>
+    <rh-select id="category-filter">
+      <rh-option value=""
+                 selected>All elements</rh-option>
+      {%- for category in categories -%}
       {%- set catSlug = category | lower | replace(" ", "-") -%}
       <rh-option value="{{ catSlug }}">{{ category }}</rh-option>
-    {%- endfor -%}
-  </rh-select>
+      {%- endfor -%}
+    </rh-select>
+  </div>
 
   <div id="elements-categories">
     {%- for category in categories -%}
