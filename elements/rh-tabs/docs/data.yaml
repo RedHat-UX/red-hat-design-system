@@ -3,6 +3,7 @@ tagName: rh-tabs
 name: Tabs
 type: element
 overallStatus: ready
+category: Structure
 aka:
   - Tab group
 libraries:

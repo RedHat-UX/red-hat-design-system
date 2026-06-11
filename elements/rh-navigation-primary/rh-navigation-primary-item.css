@@ -142,12 +142,12 @@
       @container (min-width: 1200px) {
         border-block-end: 4px solid transparent; /* Non standard border width */
 
-        &:hover {
+        &:is(:hover, :focus-visible, :focus-within) {
           /** Hamburger item hover indicator color at containers >= xl */
           border-block-end-color: var(--rh-color-border-subtle);
         }
 
-        &:is(:active, :focus-within, :has(details[open])) {
+        &:is(:active, :has(details[open])) {
           /** Hamburger item active indicator color at containers >= xl */
           border-block-end-color: var(--rh-color-accent-brand);
         }
@@ -289,14 +289,14 @@
             border-block-end: 4px solid transparent;
           }
 
-          &:is(:hover, :focus-visible) {
+          &:is(:hover, :focus-visible, :focus-within) {
             &:after {
               /** Secondary area slotted item hover indicator color */
               border-block-end-color: var(--rh-color-border-subtle);
             }
           }
 
-          &:is(:active, :focus-within) {
+          &:is(:active) {
             &:after {
               /** Secondary area slotted item active indicator color */
               border-block-end-color: var(--rh-color-accent-brand);

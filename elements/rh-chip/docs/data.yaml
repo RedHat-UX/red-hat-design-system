@@ -3,6 +3,7 @@ tagName: rh-chip
 name: Chip
 type: element
 overallStatus: ready
+category: Selection
 aka:
   - Filter chip
 libraries:

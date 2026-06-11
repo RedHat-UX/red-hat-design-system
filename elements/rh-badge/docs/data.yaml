@@ -3,6 +3,7 @@ tagName: rh-badge
 name: Badge
 type: element
 overallStatus: ready
+category: Data
 aka:
   - Count
   - Pill
