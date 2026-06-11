@@ -2534,20 +2534,20 @@
               "name": "--pf-c-button--BorderRadius"
             },
             {
-              "name": "--pf-c-button--m-primary--hover--Color",
-              "default": "var(--pf-global--Color--light-100,#fff)"
-            },
-            {
-              "name": "--pf-global--Color--light-100",
-              "default": "#fff"
-            },
-            {
               "name": "--pf-c-button--m-primary--hover--BackgroundColor",
               "default": "var(--pf-global--primary-color--200, #004080)"
             },
             {
               "name": "--pf-global--primary-color--200",
               "default": "#004080"
+            },
+            {
+              "name": "--pf-c-button--m-primary--hover--Color",
+              "default": "var(--pf-global--Color--light-100, #fff)"
+            },
+            {
+              "name": "--pf-global--Color--light-100",
+              "default": "#fff"
             },
             {
               "name": "--pf-c-button--FontSize"
@@ -8817,12 +8817,14 @@
             },
             {
               "name": "label",
-              "description": "Label to add to nav element.",
+              "description": "Label to add to nav element. Required for accessibility.",
               "type": {
                 "text": "string"
               },
+              "default": "'Jump to section'",
               "kind": "field",
-              "attribute": "label"
+              "attribute": "label",
+              "reflects": true
             },
             {
               "return": {
@@ -8878,10 +8880,11 @@
             },
             {
               "name": "label",
-              "description": "Label to add to nav element.",
+              "description": "Label to add to nav element. Required for accessibility.",
               "type": {
                 "text": "string"
               },
+              "default": "'Jump to section'",
               "fieldName": "label"
             }
           ],
@@ -8895,6 +8898,11 @@
             {
               "name": "",
               "description": "Place pf-jump-links-items here"
+            }
+          ],
+          "cssParts": [
+            {
+              "name": "label"
             }
           ],
           "cssProperties": [
@@ -9177,6 +9185,397 @@
     },
     {
       "kind": "javascript-module",
+      "path": "pf-label-group/pf-label-group.js",
+      "declarations": [
+        {
+          "name": "PfLabelGroupExpandEvent",
+          "superclass": {
+            "name": "Event",
+            "package": "global:"
+          },
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/pf-label-group/pf-label-group.ts#L13"
+          },
+          "kind": "class"
+        },
+        {
+          "name": "PfLabelGroupRemoveEvent",
+          "superclass": {
+            "name": "Event",
+            "package": "global:"
+          },
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/pf-label-group/pf-label-group.ts#L19"
+          },
+          "kind": "class"
+        },
+        {
+          "name": "PfLabelGroup",
+          "summary": "Groups multiple labels with overflow, category, and close support.",
+          "description": "A **label group** is a collection of labels that can be grouped by category\nand used to represent one or more values assigned to a single attribute.\nWhen the number of labels exceeds `numLabels`, additional labels will be\nhidden using an overflow label.",
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "members": [
+            {
+              "name": "orientation",
+              "description": "Orientation of the label group.",
+              "type": {
+                "text": "'horizontal' | 'vertical'"
+              },
+              "default": "'horizontal'",
+              "kind": "field",
+              "attribute": "orientation",
+              "reflects": true
+            },
+            {
+              "name": "accessibleLabel",
+              "description": "Accessible label for the label group when no category name is provided.",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "kind": "field",
+              "attribute": "accessible-label"
+            },
+            {
+              "name": "accessibleCloseLabel",
+              "description": "Accessible label for the close button.",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Close'",
+              "kind": "field",
+              "attribute": "accessible-close-label"
+            },
+            {
+              "name": "collapsedText",
+              "description": "Customizable \"more\" template string.\nUse variable `${remaining}` for the overflow label count.",
+              "type": {
+                "text": "string"
+              },
+              "default": "'${remaining} more'",
+              "kind": "field",
+              "attribute": "collapsed-text"
+            },
+            {
+              "name": "expandedText",
+              "description": "Customizable \"show less\" text string.",
+              "type": {
+                "text": "string"
+              },
+              "default": "'show less'",
+              "kind": "field",
+              "attribute": "expanded-text"
+            },
+            {
+              "name": "numLabels",
+              "description": "Number of labels to show before overflow.",
+              "type": {
+                "text": "number"
+              },
+              "default": "3",
+              "kind": "field",
+              "attribute": "num-labels"
+            },
+            {
+              "name": "open",
+              "description": "Whether overflow labels are visible.",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "kind": "field",
+              "attribute": "open",
+              "reflects": true
+            },
+            {
+              "name": "closeable",
+              "description": "Whether the label group can be closed.",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "kind": "field",
+              "attribute": "closeable",
+              "reflects": true
+            },
+            {
+              "name": "_ssrLabelCount",
+              "description": "Label count tracked during SSR via child events.",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "kind": "field"
+            },
+            {
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "name": "labelsChanged",
+              "description": "Updates labels when relevant properties change.",
+              "kind": "method",
+              "privacy": "private"
+            }
+          ],
+          "source": {
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/pf-label-group/pf-label-group.ts#L51"
+          },
+          "kind": "class",
+          "tagName": "pf-label-group",
+          "attributes": [
+            {
+              "name": "orientation",
+              "description": "Orientation of the label group.",
+              "type": {
+                "text": "'horizontal' | 'vertical'"
+              },
+              "default": "'horizontal'",
+              "fieldName": "orientation"
+            },
+            {
+              "name": "accessible-label",
+              "description": "Accessible label for the label group when no category name is provided.",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "accessibleLabel"
+            },
+            {
+              "name": "accessible-close-label",
+              "description": "Accessible label for the close button.",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Close'",
+              "fieldName": "accessibleCloseLabel"
+            },
+            {
+              "name": "collapsed-text",
+              "description": "Customizable \"more\" template string.\nUse variable `${remaining}` for the overflow label count.",
+              "type": {
+                "text": "string"
+              },
+              "default": "'${remaining} more'",
+              "fieldName": "collapsedText"
+            },
+            {
+              "name": "expanded-text",
+              "description": "Customizable \"show less\" text string.",
+              "type": {
+                "text": "string"
+              },
+              "default": "'show less'",
+              "fieldName": "expandedText"
+            },
+            {
+              "name": "num-labels",
+              "description": "Number of labels to show before overflow.",
+              "type": {
+                "text": "number"
+              },
+              "default": "3",
+              "fieldName": "numLabels"
+            },
+            {
+              "name": "open",
+              "description": "Whether overflow labels are visible.",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "open"
+            },
+            {
+              "name": "closeable",
+              "description": "Whether the label group can be closed.",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "closeable"
+            }
+          ],
+          "events": [
+            {
+              "name": "expand",
+              "description": "Fires when label group is expanded to show all labels",
+              "type": {
+                "text": "PfLabelGroupExpandEvent"
+              }
+            },
+            {
+              "name": "remove",
+              "description": "Fires when label group is closed/removed",
+              "type": {
+                "text": "PfLabelGroupRemoveEvent"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "name": "category",
+              "description": "category\nCategory name text for label group category.\nIf this slot is populated, the label group will have category styling applied."
+            },
+            {
+              "name": "",
+              "description": "`\u003cpf-label\u003e` elements."
+            }
+          ],
+          "cssProperties": [
+            {
+              "name": "--pf-global--BackgroundColor--200",
+              "default": "#f0f0f0"
+            },
+            {
+              "name": "--pf-global--spacer--sm",
+              "default": "0.5rem"
+            },
+            {
+              "name": "--pf-global--Color--100",
+              "default": "#151515"
+            },
+            {
+              "name": "--pf-global--spacer--xs",
+              "default": "0.25rem"
+            },
+            {
+              "name": "--pf-global--BorderRadius--sm",
+              "default": "3px"
+            },
+            {
+              "name": "--pf-c-label-group--m-category--PaddingTop"
+            },
+            {
+              "name": "--pf-c-label-group--m-category--PaddingRight"
+            },
+            {
+              "name": "--pf-c-label-group--m-category--PaddingBottom"
+            },
+            {
+              "name": "--pf-c-label-group--m-category--PaddingLeft"
+            },
+            {
+              "name": "--pf-c-label-group--m-category--BackgroundColor"
+            },
+            {
+              "name": "--pf-c-label-group__list--MarginRight"
+            },
+            {
+              "name": "--pf-c-label-group__list--MarginBottom",
+              "default": "calc(var(--pf-global--spacer--xs, 0.25rem) * -1)"
+            },
+            {
+              "name": "--pf-global--FontFamily--sans-serif",
+              "default": "\"RedHatTextUpdated\", \"Overpass\", overpass, helvetica, arial, sans-serif"
+            },
+            {
+              "name": "--pf-global--FontSize--sm",
+              "default": "14px"
+            },
+            {
+              "name": "--pf-global--FontWeight--normal",
+              "default": "400"
+            },
+            {
+              "name": "--pf-c-label-group__list-item--MarginRight"
+            },
+            {
+              "name": "--pf-c-label-group__list-item--MarginBottom"
+            },
+            {
+              "name": "--pf-c-label-group__label--MaxWidth"
+            },
+            {
+              "name": "--pf-c-label-group__label--MarginRight"
+            },
+            {
+              "name": "--pf-c-label-group__label--FontSize"
+            },
+            {
+              "name": "--pf-c-label-group__close--MarginTop"
+            },
+            {
+              "name": "--pf-c-label-group__close--MarginBottom"
+            }
+          ],
+          "demos": [
+            {
+              "url": "https://patternflyelements.org/components/pf-label-group/demo/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/pf-label-group/demo/index.html"
+              }
+            },
+            {
+              "url": "https://patternflyelements.org/components/pf-label-group/demo/label-group-closeable/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/pf-label-group/demo/label-group-closeable.html"
+              }
+            },
+            {
+              "url": "https://patternflyelements.org/components/pf-label-group/demo/label-group-vertical/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/pf-label-group/demo/label-group-vertical.html"
+              }
+            },
+            {
+              "url": "https://patternflyelements.org/components/pf-label-group/demo/label-group-with-a-very-long-name/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/pf-label-group/demo/label-group-with-a-very-long-name.html"
+              }
+            },
+            {
+              "url": "https://patternflyelements.org/components/pf-label-group/demo/label-group-with-overflow-labels/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/pf-label-group/demo/label-group-with-overflow-labels.html"
+              }
+            }
+          ],
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PfLabelGroupExpandEvent",
+          "declaration": {
+            "name": "PfLabelGroupExpandEvent",
+            "module": "pf-label-group/pf-label-group.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PfLabelGroupRemoveEvent",
+          "declaration": {
+            "name": "PfLabelGroupRemoveEvent",
+            "module": "pf-label-group/pf-label-group.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "pf-label-group",
+          "declaration": {
+            "name": "PfLabelGroup",
+            "module": "pf-label-group/pf-label-group.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PfLabelGroup",
+          "declaration": {
+            "name": "PfLabelGroup",
+            "module": "pf-label-group/pf-label-group.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "pf-label/pf-label.js",
       "declarations": [
         {
@@ -9186,7 +9585,7 @@
             "package": "global:"
           },
           "source": {
-            "href": "https://github.com/patternfly/patternfly-elements/tree/main/pf-label/pf-label.ts#L12"
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/pf-label/pf-label.ts#L13"
           },
           "kind": "class"
         },
@@ -9236,10 +9635,20 @@
               },
               "kind": "field",
               "attribute": "close-button-label"
+            },
+            {
+              "name": "href",
+              "description": "When set, the label becomes a link. The label text renders inside an anchor element.",
+              "type": {
+                "text": "string"
+              },
+              "kind": "field",
+              "attribute": "href",
+              "reflects": true
             }
           ],
           "source": {
-            "href": "https://github.com/patternfly/patternfly-elements/tree/main/pf-label/pf-label.ts#L26"
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/pf-label/pf-label.ts#L27"
           },
           "kind": "class",
           "tagName": "pf-label",
@@ -9277,6 +9686,14 @@
                 "text": "string"
               },
               "fieldName": "closeButtonLabel"
+            },
+            {
+              "name": "href",
+              "description": "When set, the label becomes a link. The label text renders inside an anchor element.",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "href"
             }
           ],
           "events": [
@@ -9294,8 +9711,7 @@
               "summary": "Contains the labels's icon, e.g. web-icon-alert-success."
             },
             {
-              "name": "",
-              "summary": "Must contain the text for the label."
+              "name": ""
             }
           ],
           "cssParts": [
@@ -9309,6 +9725,10 @@
             }
           ],
           "cssProperties": [
+            {
+              "name": "--pf-global--BorderColor--200",
+              "default": "#8a8d90"
+            },
             {
               "name": "--pf-c-label--PaddingTop",
               "description": "label top padding",
@@ -9391,6 +9811,14 @@
               "default": "var(--pf-global--spacer--sm, 0.5rem)"
             },
             {
+              "name": "--pf-c-label--m-outline--BackgroundColor",
+              "default": "#ffffff"
+            },
+            {
+              "name": "--pf-global--palette--black-300",
+              "default": "#d2d2d2"
+            },
+            {
               "name": "--pf-c-label--m-blue__content--Color",
               "default": "var(--pf-global--info-color--200, #002952)"
             },
@@ -9415,8 +9843,24 @@
               "default": "#bee1f4"
             },
             {
+              "name": "--pf-c-label--m-blue__content--link--hover--before--BorderColor",
+              "default": "var(--pf-global--primary-color--100, #06c)"
+            },
+            {
+              "name": "--pf-c-label--m-blue__icon--Color",
+              "default": "var(--pf-global--primary-color--100, #06c)"
+            },
+            {
               "name": "--pf-c-label--m-outline--m-blue__content--Color",
               "default": "var(--pf-global--primary-color--100, #06c)"
+            },
+            {
+              "name": "--pf-global--primary-color--100",
+              "default": "#06c"
+            },
+            {
+              "name": "--pf-c-label--m-outline--m-blue__content--link--hover--before--BorderColor",
+              "default": "var(--pf-global--BorderColor--100, #d2d2d2)"
             },
             {
               "name": "--pf-c-label--m-cyan__content--Color",
@@ -9443,12 +9887,28 @@
               "default": "#a2d9d9"
             },
             {
+              "name": "--pf-c-label--m-cyan__content--link--hover--before--BorderColor",
+              "default": "var(--pf-global--default-color--200, #009596)"
+            },
+            {
+              "name": "--pf-c-label--m-cyan__icon--Color",
+              "default": "var(--pf-global--default-color--200, #009596)"
+            },
+            {
+              "name": "--pf-global--default-color--200",
+              "default": "#009596"
+            },
+            {
               "name": "--pf-c-label--m-outline--m-cyan__content--Color",
               "default": "var(--pf-global--palette--cyan-400, #005f60)"
             },
             {
               "name": "--pf-global--palette--cyan-400",
               "default": "#005f60"
+            },
+            {
+              "name": "--pf-c-label--m-outline--m-cyan__content--link--hover--before--BorderColor",
+              "default": "var(--pf-global--BorderColor--100, #d2d2d2)"
             },
             {
               "name": "--pf-c-label--m-green__content--Color",
@@ -9475,8 +9935,24 @@
               "default": "#bde5b8"
             },
             {
+              "name": "--pf-c-label--m-green__content--link--hover--before--BorderColor",
+              "default": "var(--pf-global--success-color--100, #3e8635)"
+            },
+            {
+              "name": "--pf-c-label--m-green__icon--Color",
+              "default": "var(--pf-global--success-color--100, #3e8635)"
+            },
+            {
               "name": "--pf-c-label--m-outline--m-green__content--Color",
               "default": "var(--pf-global--success-color--100, #3e8635)"
+            },
+            {
+              "name": "--pf-global--success-color--100",
+              "default": "#3e8635"
+            },
+            {
+              "name": "--pf-c-label--m-outline--m-green__content--link--hover--before--BorderColor",
+              "default": "var(--pf-global--BorderColor--100, #d2d2d2)"
             },
             {
               "name": "--pf-c-label--m-orange__content--Color",
@@ -9503,12 +9979,28 @@
               "default": "#f4b678"
             },
             {
+              "name": "--pf-c-label--m-orange__content--link--hover--before--BorderColor",
+              "default": "var(--pf-global--palette--orange-300, #ec7a08)"
+            },
+            {
+              "name": "--pf-c-label--m-orange__icon--Color",
+              "default": "var(--pf-global--palette--orange-300, #ec7a08)"
+            },
+            {
+              "name": "--pf-global--palette--orange-300",
+              "default": "#ec7a08"
+            },
+            {
               "name": "--pf-c-label--m-outline--m-orange__content--Color",
               "default": "var(--pf-global--palette--orange-500, #8f4700)"
             },
             {
               "name": "--pf-global--palette--orange-500",
               "default": "#8f4700"
+            },
+            {
+              "name": "--pf-c-label--m-outline--m-orange__content--link--hover--before--BorderColor",
+              "default": "var(--pf-global--BorderColor--100, #d2d2d2)"
             },
             {
               "name": "--pf-c-label--m-purple__content--Color",
@@ -9535,8 +10027,24 @@
               "default": "#cbc1ff"
             },
             {
+              "name": "--pf-c-label--m-purple__content--link--hover--before--BorderColor",
+              "default": "var(--pf-global--palette--purple-500, #6753ac)"
+            },
+            {
+              "name": "--pf-c-label--m-purple__icon--Color",
+              "default": "var(--pf-global--palette--purple-500, #6753ac)"
+            },
+            {
               "name": "--pf-c-label--m-outline--m-purple__content--Color",
               "default": "var(--pf-global--palette--purple-500, #6753ac)"
+            },
+            {
+              "name": "--pf-global--palette--purple-500",
+              "default": "#6753ac"
+            },
+            {
+              "name": "--pf-c-label--m-outline--m-purple__content--link--hover--before--BorderColor",
+              "default": "var(--pf-global--BorderColor--100, #d2d2d2)"
             },
             {
               "name": "--pf-c-label--m-red__content--Color",
@@ -9563,8 +10071,24 @@
               "default": "#c9190b"
             },
             {
+              "name": "--pf-c-label--m-red__content--link--hover--before--BorderColor",
+              "default": "var(--pf-global--danger-color--100, #c9190b)"
+            },
+            {
+              "name": "--pf-c-label--m-red__icon--Color",
+              "default": "var(--pf-global--danger-color--100, #c9190b)"
+            },
+            {
               "name": "--pf-c-label--m-outline--m-red__content--Color",
               "default": "var(--pf-global--danger-color--100, #c9190b)"
+            },
+            {
+              "name": "--pf-global--danger-color--100",
+              "default": "#c9190b"
+            },
+            {
+              "name": "--pf-c-label--m-outline--m-red__content--link--hover--before--BorderColor",
+              "default": "var(--pf-global--BorderColor--100, #d2d2d2)"
             },
             {
               "name": "--pf-c-label--m-gold__content--Color",
@@ -9591,6 +10115,30 @@
               "default": "#f9e0a2"
             },
             {
+              "name": "--pf-c-label__content--link--hover--before--BorderColor",
+              "default": "var(--pf-c-label--m-gold__content--link--hover--before--BorderColor,\n        var(--pf-global--palette--gold-300, #f4c145))"
+            },
+            {
+              "name": "--pf-c-label--m-gold__content--link--hover--before--BorderColor",
+              "default": "var(--pf-global--palette--gold-300, #f4c145)"
+            },
+            {
+              "name": "--pf-global--palette--gold-300",
+              "default": "#f4c145"
+            },
+            {
+              "name": "--pf-c-label__icon--Color",
+              "default": "var(--pf-c-label--m-gold__icon--Color, var(--pf-global--palette--gold-400, #f0ab00))"
+            },
+            {
+              "name": "--pf-c-label--m-gold__icon--Color",
+              "default": "var(--pf-global--palette--gold-400, #f0ab00)"
+            },
+            {
+              "name": "--pf-global--palette--gold-400",
+              "default": "#f0ab00"
+            },
+            {
               "name": "--pf-c-label--m-outline__content--Color",
               "default": "var(--pf-c-label--m-outline--m-gold__content--Color, var(--pf-global--palette--gold-600, #795600))"
             },
@@ -9603,11 +10151,15 @@
               "default": "#795600"
             },
             {
-              "name": "--pf-c-label--m-outline--BackgroundColor",
-              "default": "#ffffff"
+              "name": "--pf-c-label--m-outline__content--link--hover--before--BorderColor",
+              "default": "var(--pf-c-label--m-outline--m-gold__content--link--hover--before--BorderColor,\n        var(--pf-global--BorderColor--100, #d2d2d2))"
             },
             {
-              "name": "--pf-global--palette--black-300",
+              "name": "--pf-c-label--m-outline--m-gold__content--link--hover--before--BorderColor",
+              "default": "var(--pf-global--BorderColor--100, #d2d2d2)"
+            },
+            {
+              "name": "--pf-global--BorderColor--100",
               "default": "#d2d2d2"
             },
             {
@@ -9622,67 +10174,6 @@
             {
               "name": "--pf-c-label__icon--MarginRight",
               "default": "var(--pf-global--spacer--xs, 0.25rem)"
-            },
-            {
-              "name": "--pf-c-label--m-blue__icon--Color",
-              "default": "var(--pf-global--primary-color--100, #06c)"
-            },
-            {
-              "name": "--pf-global--primary-color--100",
-              "default": "#06c"
-            },
-            {
-              "name": "--pf-c-label--m-cyan__icon--Color",
-              "default": "var(--pf-global--default-color--200, #009596)"
-            },
-            {
-              "name": "--pf-global--default-color--200",
-              "default": "#009596"
-            },
-            {
-              "name": "--pf-c-label--m-green__icon--Color",
-              "default": "var(--pf-global--success-color--100, #3e8635)"
-            },
-            {
-              "name": "--pf-global--success-color--100",
-              "default": "#3e8635"
-            },
-            {
-              "name": "--pf-c-label--m-orange__icon--Color",
-              "default": "var(--pf-global--palette--orange-300, #ec7a08)"
-            },
-            {
-              "name": "--pf-global--palette--orange-300",
-              "default": "#ec7a08"
-            },
-            {
-              "name": "--pf-c-label--m-purple__icon--Color",
-              "default": "var(--pf-global--palette--purple-500, #6753ac)"
-            },
-            {
-              "name": "--pf-global--palette--purple-500",
-              "default": "#6753ac"
-            },
-            {
-              "name": "--pf-c-label--m-red__icon--Color",
-              "default": "var(--pf-global--danger-color--100, #c9190b)"
-            },
-            {
-              "name": "--pf-global--danger-color--100",
-              "default": "#c9190b"
-            },
-            {
-              "name": "--pf-c-label__icon--Color",
-              "description": "blue label icon color\n\ncyan label icon color\n\ngreen label icon color\n\norange label icon color\n\npurple label icon color\n\nred label icon color\n\ngold label icon color",
-              "default": "var(--pf-c-label--m-gold__icon--Color, var(--pf-global--palette--gold-400, #f0ab00))"
-            },
-            {
-              "name": "--pf-c-label--m-gold__icon--Color",
-              "default": "var(--pf-global--palette--gold-400, #f0ab00)"
-            },
-            {
-              "name": "--pf-global--palette--gold-400",
-              "default": "#f0ab00"
             },
             {
               "name": "--pf-c-label__c-button--FontSize",
@@ -9731,6 +10222,10 @@
             {
               "name": "--pf-c-label__c-button--MarginLeft",
               "default": "0.25rem"
+            },
+            {
+              "name": "--pf-c-label__content--link--hover--before--BorderWidth",
+              "default": "2px"
             }
           ],
           "demos": [
@@ -9756,6 +10251,12 @@
               "url": "https://patternflyelements.org/components/label/demo/icon/",
               "source": {
                 "href": "https://github.com/patternfly/patternfly-elements/tree/main/pf-label/demo/icon.html"
+              }
+            },
+            {
+              "url": "https://patternflyelements.org/components/label/demo/link/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/pf-label/demo/link.html"
               }
             },
             {
@@ -13755,7 +14256,7 @@
           ],
           "cssProperties": [
             {
-              "name": "--rh-color-gray-20",
+              "name": "--pf-global--BackgroundColor--200",
               "default": "#e0e0e0"
             },
             {
@@ -14182,7 +14683,7 @@
           ],
           "cssProperties": [
             {
-              "name": "--rh-color-gray-20",
+              "name": "--pf-global--BackgroundColor--200",
               "default": "#e0e0e0"
             },
             {
@@ -15460,12 +15961,22 @@
             },
             {
               "name": "label",
-              "description": "Accessible label text for the switch",
+              "type": {
+                "text": "string"
+              },
+              "deprecated": "use `accessible-label` instead",
+              "kind": "field",
+              "attribute": "label",
+              "reflects": true
+            },
+            {
+              "name": "accessibleLabel",
+              "description": "Accessible label for the switch when there is no associated `\u003clabel\u003e` element.\nUpdate this value based on the checked state to communicate the meaning of\neach state to assistive technology users, e.g. \"Wi-Fi on\" / \"Wi-Fi off\".",
               "type": {
                 "text": "string"
               },
               "kind": "field",
-              "attribute": "label",
+              "attribute": "accessible-label",
               "reflects": true
             },
             {
@@ -15518,11 +16029,19 @@
           "attributes": [
             {
               "name": "label",
-              "description": "Accessible label text for the switch",
               "type": {
                 "text": "string"
               },
-              "fieldName": "label"
+              "fieldName": "label",
+              "deprecated": "use `accessible-label` instead"
+            },
+            {
+              "name": "accessible-label",
+              "description": "Accessible label for the switch when there is no associated `\u003clabel\u003e` element.\nUpdate this value based on the checked state to communicate the meaning of\neach state to assistive technology users, e.g. \"Wi-Fi on\" / \"Wi-Fi off\".",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "accessibleLabel"
             },
             {
               "name": "show-check-icon",
@@ -18518,6 +19037,11 @@
               "privacy": "protected"
             },
             {
+              "name": "onScroll",
+              "kind": "method",
+              "privacy": "private"
+            },
+            {
               "parameters": [
                 {
                   "name": "tab",
@@ -18536,7 +19060,7 @@
             }
           ],
           "source": {
-            "href": "https://github.com/patternfly/patternfly-elements/tree/main/pf-tabs/pf-tabs.ts#L30"
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/pf-tabs/pf-tabs.ts#L31"
           },
           "kind": "class",
           "tagName": "pf-tabs",

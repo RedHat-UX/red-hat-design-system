@@ -28,7 +28,7 @@ let PfThead = class PfThead extends LitElement {
     constructor() {
         super(...arguments);
         _PfThead_instances.add(this);
-        this.thRowContext = 'colheader';
+        this.thRowContext = 'columnheader';
     }
     connectedCallback() {
         super.connectedCallback();
@@ -47,7 +47,7 @@ _PfThead_onSlotchange = function _PfThead_onSlotchange() {
     }
 };
 PfThead.styles = [styles];
-PfThead.version = "4.3.1";
+PfThead.version = "4.4.0";
 __decorate([
     provide({ context: thRoleContext })
 ], PfThead.prototype, "thRowContext", void 0);

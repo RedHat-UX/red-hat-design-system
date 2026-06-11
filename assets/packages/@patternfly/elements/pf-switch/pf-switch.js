@@ -190,6 +190,7 @@ let PfSwitch = class PfSwitch extends LitElement {
     willUpdate() {
         __classPrivateFieldGet(this, _PfSwitch_internals, "f").ariaChecked = String(!!this.checked);
         __classPrivateFieldGet(this, _PfSwitch_internals, "f").ariaDisabled = String(!!this.disabled);
+        __classPrivateFieldGet(this, _PfSwitch_internals, "f").ariaLabel = this.accessibleLabel || this.label || null;
     }
     render() {
         return html `
@@ -256,10 +257,13 @@ _PfSwitch_updateLabels = function _PfSwitch_updateLabels() {
 };
 PfSwitch.styles = [styles];
 PfSwitch.formAssociated = true;
-PfSwitch.version = "4.3.1";
+PfSwitch.version = "4.4.0";
 __decorate([
     property({ reflect: true })
 ], PfSwitch.prototype, "label", void 0);
+__decorate([
+    property({ reflect: true, attribute: 'accessible-label' })
+], PfSwitch.prototype, "accessibleLabel", void 0);
 __decorate([
     property({ reflect: true, type: Boolean, attribute: 'show-check-icon' })
 ], PfSwitch.prototype, "showCheckIcon", void 0);

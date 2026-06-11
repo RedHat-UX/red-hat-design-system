@@ -1,6 +1,6 @@
 {
   "name": "@rhds/icons",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Red Hat Icons",
   "main": "icons.js",
   "module": "icons.js",

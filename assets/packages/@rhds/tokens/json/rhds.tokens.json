@@ -53,13 +53,13 @@
       },
       "sm": {
         "$value": "1px",
-        "$description": "1px border width; Example: Secondary CTA or Button",
+        "$description": "Applies a 1px border width to at least 1 side of a container. This shall be the default width for all borders and lines. It should be used to establish baseline thickness or visual separation with a container or thin line. It must not be used for strong directional emphasis like indicating a selected state. Recommended for elements like Button, Card, or Field. Applying to all 4 sides at once is optional.",
         "filePath": "tokens/border.yml",
         "isSource": true,
         "$type": "dimension",
         "original": {
           "$value": "{length.4xs}",
-          "$description": "1px border width; Example: Secondary CTA or Button",
+          "$description": "Applies a 1px border width to at least 1 side of a container. This shall be the default width for all borders and lines. It should be used to establish baseline thickness or visual separation with a container or thin line. It must not be used for strong directional emphasis like indicating a selected state. Recommended for elements like Button, Card, or Field. Applying to all 4 sides at once is optional.",
           "$type": "dimension"
         },
         "name": "rh-border-width-sm",
@@ -77,13 +77,13 @@
       },
       "md": {
         "$value": "2px",
-        "$description": "2px border width: Example: Alert",
+        "$description": "Applies a 2px border width to at least 1 side of a container. It should be used to add emphasis or visual separation beyond a 1px border. Recommended for elements needing extra thickness like Alert or Progress stepper. It must be used to ensure hover, focus, and active states are discernible by more than color alone per WCAG. Applying to all 4 sides at once is optional.",
         "filePath": "tokens/border.yml",
         "isSource": true,
         "$type": "dimension",
         "original": {
           "$value": "{length.3xs}",
-          "$description": "2px border width: Example: Alert",
+          "$description": "Applies a 2px border width to at least 1 side of a container. It should be used to add emphasis or visual separation beyond a 1px border. Recommended for elements needing extra thickness like Alert or Progress stepper. It must be used to ensure hover, focus, and active states are discernible by more than color alone per WCAG. Applying to all 4 sides at once is optional.",
           "$type": "dimension"
         },
         "name": "rh-border-width-md",
@@ -101,13 +101,13 @@
       },
       "lg": {
         "$value": "3px",
-        "$description": "3px border width: Example: Expanded Accordion panel",
+        "$description": "Applies a 3px border width to 1 side of a container. It should be used for strong directional emphasis like indicating a current page, expanded, or selected state. Recommended for elements needing heavy visual weight like Accordion, Navigation, or Tabs. It must also be used for the focus indicator border per WCAG. Except for the focus indicator, it should not be applied to all 4 sides at once.",
         "filePath": "tokens/border.yml",
         "isSource": true,
         "$type": "dimension",
         "original": {
           "$value": "{length.2xs}",
-          "$description": "3px border width: Example: Expanded Accordion panel",
+          "$description": "Applies a 3px border width to 1 side of a container. It should be used for strong directional emphasis like indicating a current page, expanded, or selected state. Recommended for elements needing heavy visual weight like Accordion, Navigation, or Tabs. It must also be used for the focus indicator border per WCAG. Except for the focus indicator, it should not be applied to all 4 sides at once.",
           "$type": "dimension"
         },
         "name": "rh-border-width-lg",
@@ -132,12 +132,12 @@
       },
       "sharp": {
         "$value": "0.0px",
-        "$description": "Border radius reset",
+        "$description": "This token resets the border radius of a container back to 0 or sharp. It must be applied to all 4 corners of a container at once.",
         "filePath": "tokens/border.yml",
         "isSource": true,
         "original": {
           "$value": "0.0px",
-          "$description": "Border radius reset"
+          "$description": "This token resets the border radius of a container back to 0 or sharp. It must be applied to all 4 corners of a container at once."
         },
         "name": "rh-border-radius-sharp",
         "attributes": {
@@ -153,13 +153,13 @@
         ]
       },
       "default": {
-        "$description": "3px border radius; Example: Card",
         "$value": "3px",
+        "$description": "Applies a 3px border radius to at least 1 corner of a container. This shall be the default for all containers needing rounded corners. It should be used to soften a container's visual footprint. Recommended for elements with subtle rounded corners like Button, Card, or Dialog. It must be applied to all 4 corners of a container at once.",
         "filePath": "tokens/border.yml",
         "isSource": true,
         "original": {
-          "$description": "3px border radius; Example: Card",
-          "$value": "{length.2xs}"
+          "$value": "{length.2xs}",
+          "$description": "Applies a 3px border radius to at least 1 corner of a container. This shall be the default for all containers needing rounded corners. It should be used to soften a container's visual footprint. Recommended for elements with subtle rounded corners like Button, Card, or Dialog. It must be applied to all 4 corners of a container at once."
         },
         "name": "rh-border-radius-default",
         "attributes": {
@@ -176,12 +176,12 @@
       },
       "pill": {
         "$value": "64px",
-        "$description": "Pill border radius; Example: Label",
+        "$description": "Applies a 64px border radius to at least 1 corner of a container. It should be used for elements needing a circle or pill-shaped background like Avatar, Badge, or Switch. It may also be used for Hybrid style branding. Applying to all 4 corners at once is optional. It may replace the default 3px radius when not all corners need the same value.",
         "filePath": "tokens/border.yml",
         "isSource": true,
         "original": {
           "$value": "{length.4xl}",
-          "$description": "Pill border radius; Example: Label"
+          "$description": "Applies a 64px border radius to at least 1 corner of a container. It should be used for elements needing a circle or pill-shaped background like Avatar, Badge, or Switch. It may also be used for Hybrid style branding. Applying to all 4 corners at once is optional. It may replace the default 3px radius when not all corners need the same value."
         },
         "name": "rh-border-radius-pill",
         "attributes": {
@@ -7302,7 +7302,7 @@
       }
     },
     "white": {
-      "$description": "Lightest surface (light theme) or primary text (dark theme)",
+      "$description": "Lightest surface (light scheme) or primary text (dark scheme)",
       "$value": "#ffffff",
       "attributes": {
         "type": "gray",
@@ -7332,7 +7332,7 @@
       "isSource": true,
       "$type": "color",
       "original": {
-        "$description": "Lightest surface (light theme) or primary text (dark theme)",
+        "$description": "Lightest surface (light scheme) or primary text (dark scheme)",
         "$value": "#ffffff",
         "attributes": {
           "type": "gray"
@@ -7348,7 +7348,7 @@
     "gray": {
       "10": {
         "$value": "#f2f2f2",
-        "$description": "Tertiary surface (light theme)",
+        "$description": "Tertiary surface (light scheme)",
         "attributes": {
           "type": "gray",
           "category": "color",
@@ -7379,7 +7379,7 @@
         "$type": "color",
         "original": {
           "$value": "#F2F2F2",
-          "$description": "Tertiary surface (light theme)",
+          "$description": "Tertiary surface (light scheme)",
           "attributes": {
             "type": "gray"
           },
@@ -7394,7 +7394,7 @@
       },
       "20": {
         "$value": "#e0e0e0",
-        "$description": "Secondary surface (light theme)",
+        "$description": "Secondary surface (light scheme)",
         "attributes": {
           "type": "gray",
           "category": "color",
@@ -7425,7 +7425,7 @@
         "$type": "color",
         "original": {
           "$value": "#E0E0E0",
-          "$description": "Secondary surface (light theme)",
+          "$description": "Secondary surface (light scheme)",
           "attributes": {
             "type": "gray"
           },
@@ -7440,7 +7440,7 @@
       },
       "30": {
         "$value": "#c7c7c7",
-        "$description": "Subtle borders (light theme)",
+        "$description": "Subtle borders (light scheme)",
         "attributes": {
           "type": "gray",
           "category": "color",
@@ -7471,7 +7471,7 @@
         "$type": "color",
         "original": {
           "$value": "#C7C7C7",
-          "$description": "Subtle borders (light theme)",
+          "$description": "Subtle borders (light scheme)",
           "attributes": {
             "type": "gray"
           },
@@ -7530,6 +7530,52 @@
           "40"
         ]
       },
+      "45": {
+        "$value": "#8c8c8c",
+        "$description": "Call to action text decoration (unified theme)",
+        "attributes": {
+          "type": "gray",
+          "category": "color",
+          "item": "45",
+          "hex": "8c8c8c",
+          "rgb": {
+            "r": 140,
+            "g": 140,
+            "b": 140,
+            "a": 1
+          },
+          "hsl": {
+            "h": 0,
+            "s": 0,
+            "l": 54.90196078431373,
+            "a": 1
+          },
+          "hsv": {
+            "h": 0,
+            "s": 0,
+            "v": 0.5490196078431373,
+            "a": 1
+          },
+          "isLight": true
+        },
+        "filePath": "tokens/color/crayon/gray.yaml",
+        "isSource": true,
+        "$type": "color",
+        "original": {
+          "$value": "#8C8C8C",
+          "$description": "Call to action text decoration (unified theme)",
+          "attributes": {
+            "type": "gray"
+          },
+          "$type": "color"
+        },
+        "name": "rh-color-gray-45",
+        "path": [
+          "color",
+          "gray",
+          "45"
+        ]
+      },
       "50": {
         "$value": "#707070",
         "$description": "Subtle icon",
@@ -7578,7 +7624,7 @@
       },
       "60": {
         "$value": "#4d4d4d",
-        "$description": "Secondary text (light theme)",
+        "$description": "Secondary text (light scheme)",
         "attributes": {
           "type": "gray",
           "category": "color",
@@ -7609,7 +7655,7 @@
         "$type": "color",
         "original": {
           "$value": "#4D4D4D",
-          "$description": "Secondary text (light theme)",
+          "$description": "Secondary text (light scheme)",
           "attributes": {
             "type": "gray"
           },
@@ -7624,7 +7670,7 @@
       },
       "70": {
         "$value": "#383838",
-        "$description": "Tertiary surface (dark theme)",
+        "$description": "Tertiary surface (dark scheme)",
         "attributes": {
           "type": "gray",
           "category": "color",
@@ -7655,7 +7701,7 @@
         "$type": "color",
         "original": {
           "$value": "#383838",
-          "$description": "Tertiary surface (dark theme)",
+          "$description": "Tertiary surface (dark scheme)",
           "attributes": {
             "type": "gray"
           },
@@ -7716,7 +7762,7 @@
       },
       "90": {
         "$value": "#1f1f1f",
-        "$description": "Secondary surface (dark theme)",
+        "$description": "Secondary surface (dark scheme)",
         "attributes": {
           "type": "gray",
           "category": "color",
@@ -7747,7 +7793,7 @@
         "$type": "color",
         "original": {
           "$value": "#1F1F1F",
-          "$description": "Secondary surface (dark theme)",
+          "$description": "Secondary surface (dark scheme)",
           "attributes": {
             "type": "gray"
           },
@@ -7762,7 +7808,7 @@
       },
       "95": {
         "$value": "#151515",
-        "$description": "Primary surface (dark theme) or primary text (light theme)",
+        "$description": "Primary surface (dark scheme) or primary text (light scheme)",
         "attributes": {
           "type": "gray",
           "category": "color",
@@ -7793,7 +7839,7 @@
         "$type": "color",
         "original": {
           "$value": "#151515",
-          "$description": "Primary surface (dark theme) or primary text (light theme)",
+          "$description": "Primary surface (dark scheme) or primary text (light scheme)",
           "attributes": {
             "type": "gray"
           },
@@ -7810,7 +7856,7 @@
         "isCrayon": true,
         "com.redhat.ux": {
           "order": 390,
-          "description": "In addition to white and black, each theme features various shades of gray. Be mindful of accessibility when using text or components on top of shades of gray."
+          "description": "In addition to white and black, each scheme features various shades of gray. Be mindful of accessibility when using text or components on top of shades of gray."
         }
       },
       "10-hsl": {
@@ -8139,6 +8185,88 @@
           "color",
           "gray",
           "40-rgb"
+        ]
+      },
+      "45-hsl": {
+        "$value": "0 0% 54.90196078431373%",
+        "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-gray-45) h s l / 10%)",
+        "$type": "color",
+        "original": {
+          "$value": "{color.gray.45}",
+          "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-gray-45) h s l / 10%)",
+          "$type": "color"
+        },
+        "name": "rh-color-gray-45-hsl",
+        "attributes": {
+          "category": "color",
+          "type": "gray",
+          "item": "45-hsl",
+          "hex": "8c8c8c",
+          "rgb": {
+            "r": 140,
+            "g": 140,
+            "b": 140,
+            "a": 1
+          },
+          "hsl": {
+            "h": 0,
+            "s": 0,
+            "l": 54.90196078431373,
+            "a": 1
+          },
+          "hsv": {
+            "h": 0,
+            "s": 0,
+            "v": 0.5490196078431373,
+            "a": 1
+          },
+          "isLight": true
+        },
+        "path": [
+          "color",
+          "gray",
+          "45-hsl"
+        ]
+      },
+      "45-rgb": {
+        "$value": "140 140 140",
+        "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-gray-45) r g b / 10%)",
+        "$type": "color",
+        "original": {
+          "$value": "{color.gray.45}",
+          "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-gray-45) r g b / 10%)",
+          "$type": "color"
+        },
+        "name": "rh-color-gray-45-rgb",
+        "attributes": {
+          "category": "color",
+          "type": "gray",
+          "item": "45-rgb",
+          "hex": "8c8c8c",
+          "rgb": {
+            "r": 140,
+            "g": 140,
+            "b": 140,
+            "a": 1
+          },
+          "hsl": {
+            "h": 0,
+            "s": 0,
+            "l": 54.90196078431373,
+            "a": 1
+          },
+          "hsv": {
+            "h": 0,
+            "s": 0,
+            "v": 0.5490196078431373,
+            "a": 1
+          },
+          "isLight": true
+        },
+        "path": [
+          "color",
+          "gray",
+          "45-rgb"
         ]
       },
       "50-hsl": {
@@ -10551,6 +10679,47 @@
       }
     },
     "red": {
+      "5": {
+        "$value": "#fef0f0",
+        "filePath": "tokens/color/crayon/red.yaml",
+        "isSource": true,
+        "$type": "color",
+        "original": {
+          "$value": "#FEF0F0",
+          "$type": "color"
+        },
+        "name": "rh-color-red-5",
+        "attributes": {
+          "category": "color",
+          "type": "red",
+          "item": "5",
+          "hex": "fef0f0",
+          "rgb": {
+            "r": 254,
+            "g": 240,
+            "b": 240,
+            "a": 1
+          },
+          "hsl": {
+            "h": 0,
+            "s": 87.50000000000004,
+            "l": 96.86274509803921,
+            "a": 1
+          },
+          "hsv": {
+            "h": 0,
+            "s": 0.0551181102362205,
+            "v": 0.996078431372549,
+            "a": 1
+          },
+          "isLight": true
+        },
+        "path": [
+          "color",
+          "red",
+          "5"
+        ]
+      },
       "10": {
         "$value": "#fce3e3",
         "filePath": "tokens/color/crayon/red.yaml",
@@ -10899,6 +11068,88 @@
           "order": 300,
           "description": "Avoid using *any* red color token for danger or error messaging."
         }
+      },
+      "5-hsl": {
+        "$value": "0 87.50000000000004% 96.86274509803921%",
+        "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-5) h s l / 10%)",
+        "$type": "color",
+        "original": {
+          "$value": "{color.red.5}",
+          "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-5) h s l / 10%)",
+          "$type": "color"
+        },
+        "name": "rh-color-red-5-hsl",
+        "attributes": {
+          "category": "color",
+          "type": "red",
+          "item": "5-hsl",
+          "hex": "fef0f0",
+          "rgb": {
+            "r": 254,
+            "g": 240,
+            "b": 240,
+            "a": 1
+          },
+          "hsl": {
+            "h": 0,
+            "s": 87.50000000000004,
+            "l": 96.86274509803921,
+            "a": 1
+          },
+          "hsv": {
+            "h": 0,
+            "s": 0.0551181102362205,
+            "v": 0.996078431372549,
+            "a": 1
+          },
+          "isLight": true
+        },
+        "path": [
+          "color",
+          "red",
+          "5-hsl"
+        ]
+      },
+      "5-rgb": {
+        "$value": "254 240 240",
+        "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-5) r g b / 10%)",
+        "$type": "color",
+        "original": {
+          "$value": "{color.red.5}",
+          "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-5) r g b / 10%)",
+          "$type": "color"
+        },
+        "name": "rh-color-red-5-rgb",
+        "attributes": {
+          "category": "color",
+          "type": "red",
+          "item": "5-rgb",
+          "hex": "fef0f0",
+          "rgb": {
+            "r": 254,
+            "g": 240,
+            "b": 240,
+            "a": 1
+          },
+          "hsl": {
+            "h": 0,
+            "s": 87.50000000000004,
+            "l": 96.86274509803921,
+            "a": 1
+          },
+          "hsv": {
+            "h": 0,
+            "s": 0.0551181102362205,
+            "v": 0.996078431372549,
+            "a": 1
+          },
+          "isLight": true
+        },
+        "path": [
+          "color",
+          "red",
+          "5-rgb"
+        ]
       },
       "10-hsl": {
         "$value": "0 80.64516129032265% 93.92156862745098%",

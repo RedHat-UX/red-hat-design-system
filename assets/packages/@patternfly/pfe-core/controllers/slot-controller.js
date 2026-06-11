@@ -1,4 +1,4 @@
-var _SlotController_instances, _a, _SlotController_slotRecords, _SlotController_slotNames, _SlotController_deprecations, _SlotController_initSlotMap, _SlotController_mo, _SlotController_initialize, _SlotController_getSlotElement;
+var _SlotController_instances, _a, _SlotController_slotRecords, _SlotController_slotNames, _SlotController_deprecations, _SlotController_initSlotMap, _SlotController_mo, _SlotController_initialize, _SlotController_getSlotElement, _SlotController_getAssignedElements;
 import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
 export function isObjectSpread(config) {
     return config.length === 1 && typeof config[0] === 'object' && config[0] !== null;
@@ -101,10 +101,10 @@ export class SlotController {
      */
     getSlotted(...slotNames) {
         if (!slotNames.length || slotNames.length === 1 && slotNames.at(0) === null) {
-            return (__classPrivateFieldGet(this, _SlotController_slotRecords, "f").get(_a.default)?.elements ?? []);
+            return (__classPrivateFieldGet(this, _SlotController_instances, "m", _SlotController_getAssignedElements).call(this, _a.default));
         }
         else {
-            return slotNames.flatMap(slotName => __classPrivateFieldGet(this, _SlotController_slotRecords, "f").get(slotName ?? _a.default)?.elements ?? []);
+            return slotNames.flatMap(slotName => __classPrivateFieldGet(this, _SlotController_instances, "m", _SlotController_getAssignedElements).call(this, slotName ?? _a.default));
         }
     }
     /**
@@ -151,6 +151,12 @@ _a = SlotController, _SlotController_slotRecords = new WeakMap(), _SlotControlle
 }, _SlotController_getSlotElement = function _SlotController_getSlotElement(slotId) {
     const selector = slotId === _a.default ? 'slot:not([name])' : `slot[name="${slotId}"]`;
     return this.host.shadowRoot?.querySelector?.(selector) ?? null;
+}, _SlotController_getAssignedElements = function _SlotController_getAssignedElements(slotId) {
+    const record = __classPrivateFieldGet(this, _SlotController_slotRecords, "f").get(slotId);
+    if (record) {
+        return record.elements;
+    }
+    return __classPrivateFieldGet(this, _SlotController_instances, "m", _SlotController_getSlotElement).call(this, slotId)?.assignedElements?.() ?? [];
 };
 SlotController.default = Symbol('default slot');
 /** @deprecated use `default` */

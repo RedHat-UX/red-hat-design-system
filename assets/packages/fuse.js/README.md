@@ -7,58 +7,215 @@
 [![Contributors](https://img.shields.io/github/contributors/krisk/fuse.svg)](https://github.com/krisk/Fuse/graphs/contributors)
 ![License](https://img.shields.io/npm/l/fuse.js.svg)
 
-## Supporting Fuse.js
+Fuse.js is a lightweight, zero-dependency fuzzy-search library written in TypeScript. It works in the browser and on the server, and is designed for searching small-to-medium datasets on the client side where you can't rely on a dedicated search backend.
 
-Through contributions, donations, and sponsorship, you allow Fuse.js to thrive. Also, you will be recognized as a beacon of support to open-source developers.
+## ✨ What's New: Token Search
 
-- [Become a backer or sponsor on **GitHub**.](https://github.com/sponsors/krisk)
-- [Become a backer or sponsor on **Patreon**.](https://patreon.com/fusejs)
-- [One-time donation via **PayPal**.](https://www.paypal.me/kirorisk)
+Multi-word fuzzy search with relevance ranking. Type `"javascrpt paterns"` and find `"JavaScript Patterns"` — typo tolerance, multiple words, and smart ranking all at once.
 
----
+```js
+const fuse = new Fuse(docs, {
+  useTokenSearch: true,
+  keys: ['title', 'author', 'description']
+})
 
-<h3 align="center">Sponsors</h3>
-<table>
-<tbody>
-    <tr>
-      <td align="center" valign="middle">
-        <a href="https://www.worksome.com" target="_blank">
-          <img width="222px" src="https://raw.githubusercontent.com/krisk/Fuse/7a0d77d85ac90063575613b6a738f418b624357f/docs/.vuepress/public/assets/img/sponsors/worksome.svg">
-        </a>
-      </td>
-      <td align="center" valign="middle">
-        <a href="https://www.bairesdev.com/sponsoring-open-source-projects/" target="_blank">
-          <img width="222px" src="https://github.com/krisk/Fuse/blob/gh-pages/assets/img/sponsors/bairesdev.png?raw=true">
-        </a>
-      </td>
-      <td align="center" valign="middle">
-        <a href="https://litslink.com/" target="_blank">
-          <img width="222px" src="https://github.com/krisk/Fuse/blob/gh-pages/assets/img/sponsors/litslink.svg?raw=true">
-        </a>
-      </td>
-    </tr>
-</body>
-</table>
+fuse.search('javascrpt paterns')
+// → [{ item: { title: 'JavaScript Patterns', ... } }]
+```
 
----
+See [Token Search](#token-search) below for details.
 
-## Introduction
+## Web Workers
 
-Fuse.js is a lightweight fuzzy-search, in JavaScript, with zero dependencies.
+Search large datasets without freezing the UI. `FuseWorker` splits your data across multiple Web Workers and searches in parallel — ~5x faster on 100K documents.
 
-### Browser Compatibility
+```js
+import { FuseWorker } from 'fuse.js/worker'
 
-Fuse.js supports all browsers that are [ES5-compliant](http://kangax.github.io/compat-table/es5/) (IE8 and below are not supported).
+const fuse = new FuseWorker(docs, {
+  keys: ['title', 'author', 'description']
+})
+
+const results = await fuse.search('query')
+fuse.terminate()
+```
+
+Same options and results as `Fuse` — just async. Function-valued options (`sortFn`, `getFn`, `keys[].getFn`) aren't supported because functions can't be transferred to a worker; everything else carries over. See the [Web Workers docs](https://fusejs.io/web-workers.html) for the interactive demo and full API.
+
+## Installation
+
+```bash
+npm install fuse.js
+```
+
+```bash
+yarn add fuse.js
+```
+
+Or include directly via CDN:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.mjs"></script>
+```
+
+## Quick Start
+
+```js
+import Fuse from 'fuse.js'
+
+const books = [
+  { title: "Old Man's War", author: 'John Scalzi' },
+  { title: 'The Lock Artist', author: 'Steve Hamilton' },
+  { title: 'HTML5', author: 'Remy Sharp' },
+  { title: 'JavaScript: The Good Parts', author: 'Douglas Crockford' }
+]
+
+const fuse = new Fuse(books, {
+  keys: ['title', 'author']
+})
+
+fuse.search('javscript')
+// → [{ item: { title: 'JavaScript: The Good Parts', ... }, ... }]
+```
+
+## Features
+
+### Fuzzy Search
+
+The core of Fuse.js. Uses the [Bitap algorithm](https://en.wikipedia.org/wiki/Bitap_algorithm) for approximate string matching — handles typos, misspellings, and partial matches out of the box.
+
+```js
+fuse.search('javscript')
+// → [{ item: { title: 'JavaScript: The Good Parts', author: 'Douglas Crockford' } }]
+```
+
+### Weighted Keys
+
+Search across multiple fields with different importance levels. Title matches can rank higher than description matches.
+
+```js
+const fuse = new Fuse(docs, {
+  keys: [
+    { name: 'title', weight: 2 },
+    { name: 'description', weight: 1 }
+  ]
+})
+```
+
+### Extended Search
+
+Use operators for precise control: exact match (`=`), prefix (`^`), suffix (`!`), and more. Enable with `useExtendedSearch: true`.
+
+```js
+const fuse = new Fuse(list, {
+  useExtendedSearch: true,
+  keys: ['title']
+})
+
+fuse.search('=exact match')   // exact match
+fuse.search('^prefix')        // starts with
+fuse.search('!term')          // does not include
+```
+
+### Token Search
+
+Splits multi-word queries into individual terms, fuzzy-matches each independently, and ranks results using BM25-style IDF weighting. Enable with `useTokenSearch: true`.
+
+```js
+const fuse = new Fuse(docs, {
+  useTokenSearch: true,
+  keys: ['title', 'body']
+})
+
+fuse.search('express midleware rout')
+// Finds "Express Middleware" and "Express Routing Guide" despite typos
+```
+
+- **Typo tolerance per word** — each term is fuzzy-matched independently
+- **Relevance ranking** — rare terms are weighted higher than common ones
+- **Word order independent** — `"patterns javascript"` and `"javascript patterns"` return identical results
+- **No query length limit** — long multi-word queries work naturally since each term is searched separately
+- **AND or OR** — `tokenMatch: 'all'` returns only records matching *every* word (filtering); the default `'any'` matches any word
+- **Custom tokenizer** — pass a regex or function via `tokenize` for tokens with internal punctuation (`node.js`, `c++`), or use `Intl.Segmenter` for CJK / Thai word segmentation. Unicode-aware by default
+
+Available in the full build. See [the Token Search docs](https://fusejs.io/token-search) for details and performance benchmarks.
+
+### Logical Search
+
+Combine conditions with `$and` and `$or` for complex queries. Available in the full build.
+
+```js
+fuse.search({
+  $and: [
+    { title: 'javascript' },
+    { author: 'crockford' }
+  ]
+})
+```
+
+### Match Highlighting
+
+Get character-level match indices for highlighting search results in your UI.
+
+```js
+const fuse = new Fuse(list, {
+  includeMatches: true,
+  keys: ['title']
+})
+
+const result = fuse.search('javscript')
+// result[0].matches[0].indices → [[0, 9]]
+```
+
+### Single String Matching
+
+Use `Fuse.match()` to fuzzy-match a pattern against a single string without creating an index. Useful for one-off comparisons or custom filtering.
+
+```js
+const result = Fuse.match('javscript', 'JavaScript: The Good Parts')
+// → { isMatch: true, score: 0.04, indices: [[0, 9]] }
+```
+
+`Fuse.match()` does **not** support `useTokenSearch` — token search requires corpus-level statistics (`df`, `fieldCount`) that a one-off string comparison can't provide. Passing `useTokenSearch: true` throws an explicit error. Use `new Fuse(docs, { useTokenSearch: true }).search(query)` for token-search behavior.
+
+### Dynamic Collections
+
+Add and remove documents from a live index without rebuilding.
+
+```js
+fuse.add({ title: 'New Book', author: 'New Author' })
+fuse.remove((doc) => doc.title === 'Old Book')
+```
+
+## Builds
+
+Fuse.js ships in two variants:
+
+| Build | Includes | Min + gzip |
+|---|---|---|
+| **Full** | Fuzzy + Extended + Logical + Token search | ~8.6 kB |
+| **Basic** | Fuzzy search only | ~6.8 kB |
+
+Use the basic build if you only need fuzzy search and want the smallest bundle size.
 
 ## Documentation
 
-To check out a [live demo](https://fusejs.io/demo.html) and docs, visit [fusejs.io](https://fusejs.io).
+For the full API reference, configuration options, scoring theory, and interactive demos, visit **[fusejs.io](https://fusejs.io)**.
+
+## Official ports
+
+- **[fuse-swift](https://github.com/krisk/fuse-swift)**: Swift port for iOS, macOS, tvOS, watchOS, visionOS, and Linux. Byte-equivalent results, idiomatic Swift API, syncs with each upstream release. Currently in 2.0.0-rc.1.
+
+## Supporting Fuse.js
+
+- [Become a backer or sponsor on **GitHub**](https://github.com/sponsors/krisk)
+- [Become a backer or sponsor on **Patreon**](https://patreon.com/fusejs)
+- [One-time donation via **PayPal**](https://www.paypal.me/kirorisk)
 
 ## Develop
 
-Here's a separate document for [developers](https://github.com/krisk/Fuse/blob/master/DEVELOPERS.md).
+See [DEVELOPERS.md](DEVELOPERS.md) for setup, scripts, and project structure.
 
 ## Contribute
 
-We've set up a separate document for our
-[contribution guidelines](https://github.com/krisk/Fuse/blob/master/CONTRIBUTING.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on issues and pull requests.

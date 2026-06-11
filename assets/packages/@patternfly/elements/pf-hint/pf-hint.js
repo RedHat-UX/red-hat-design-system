@@ -172,7 +172,7 @@ let PfHint = class PfHint extends LitElement {
 };
 _PfHint_slots = new WeakMap();
 PfHint.styles = [styles];
-PfHint.version = "4.3.1";
+PfHint.version = "4.4.0";
 PfHint = __decorate([
     customElement('pf-hint')
 ], PfHint);

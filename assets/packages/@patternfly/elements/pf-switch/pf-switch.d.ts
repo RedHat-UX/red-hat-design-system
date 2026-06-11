@@ -11,8 +11,14 @@ export declare class PfSwitch extends LitElement {
     static readonly styles: CSSStyleSheet[];
     static readonly formAssociated = true;
     shadowRoot: ShadowRoot;
-    /** Accessible label text for the switch */
+    /** @deprecated use `accessible-label` instead */
     label?: string;
+    /**
+     * Accessible label for the switch when there is no associated `<label>` element.
+     * Update this value based on the checked state to communicate the meaning of
+     * each state to assistive technology users, e.g. "Wi-Fi on" / "Wi-Fi off".
+     */
+    accessibleLabel?: string;
     /** Flag to show if the switch has a check icon. */
     showCheckIcon: boolean;
     /** Flag to show if the switch is checked. */

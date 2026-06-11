@@ -34,6 +34,9 @@ export declare class PfLabel extends LitElement {
     removable: boolean;
     /** Text label for a removable label's close button */
     closeButtonLabel?: string;
+    /** When set, the label becomes a link. The label text renders inside an anchor element. */
+    href?: string;
+    connectedCallback(): void;
     render(): TemplateResult<1>;
 }
 export type LabelVariant = PfLabel['variant'];

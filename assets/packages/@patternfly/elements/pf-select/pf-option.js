@@ -25,7 +25,7 @@ const styles = css `:host {
 :host(:focus) #outer,
 :host(:hover) #outer,
 #outer.selected {
-  background-color: var(--_pf-option-selected-background-color, var(--rh-color-gray-20, #e0e0e0));
+  background-color: var(--_pf-option-selected-background-color, var(--pf-global--BackgroundColor--200, #e0e0e0));
 }
 
 #outer {
@@ -182,7 +182,7 @@ let PfOption = class PfOption extends LitElement {
 _PfOption_value = new WeakMap();
 _PfOption_internals = new WeakMap();
 PfOption.styles = [styles];
-PfOption.version = "4.3.1";
+PfOption.version = "4.4.0";
 __decorate([
     property({ type: Boolean, reflect: true })
 ], PfOption.prototype, "disabled", void 0);

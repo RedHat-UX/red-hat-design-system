@@ -24,7 +24,7 @@ const styles = css `:host {
 \tcolor: var(--pf-global--Color--100, #151515);
   --_pf-option-checkboxes-display: none;
   --_pf-option-svg-display: block;
-\t--_pf-option-selected-background-color: var(--rh-color-gray-20, #e0e0e0);
+\t--_pf-option-selected-background-color: var(--pf-global--BackgroundColor--200, #e0e0e0);
 \t/** Select toggle top padding */
 \t--pf-c-select__toggle--PaddingTop: var(--pf-global--spacer--form-element, 0.375rem);
 \t/** Select toggle right padding */
@@ -843,7 +843,7 @@ PfSelect.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
-PfSelect.version = "4.3.1";
+PfSelect.version = "4.4.0";
 __decorate([
     property()
 ], PfSelect.prototype, "variant", void 0);

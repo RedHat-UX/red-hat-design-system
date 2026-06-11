@@ -176,7 +176,9 @@ let PfTr = class PfTr extends LitElement {
         <pf-td id="toggle-cell">
           <pf-button id="toggle-button"
                      aria-expanded=${String(this.expanded)}
+                     aria-controls=${ifDefined(this.expanded ? 'expansion' : undefined)}
                      plain
+                     label="Details"
                      @click=${__classPrivateFieldGet(this, _PfTr_instances, "m", _PfTr_onClick)}>
             <pf-icon id="toggle-icon"
                      icon="angle-right"
@@ -225,7 +227,7 @@ _PfTr_onClick = function _PfTr_onClick() {
     this.dispatchEvent(new RequestExpandEvent());
 };
 PfTr.styles = [styles];
-PfTr.version = "4.3.1";
+PfTr.version = "4.4.0";
 __decorate([
     property({
         reflect: true,

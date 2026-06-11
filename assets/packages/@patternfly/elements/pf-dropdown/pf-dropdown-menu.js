@@ -157,7 +157,7 @@ PfDropdownMenu.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
-PfDropdownMenu.version = "4.3.1";
+PfDropdownMenu.version = "4.4.0";
 __decorate([
     consume({ context, subscribe: true }),
     state()

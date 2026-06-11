@@ -18,8 +18,8 @@ export declare class PfJumpLinks extends LitElement {
     centered: boolean;
     /** Offset to add to the scroll position, potentially for a masthead which content scrolls under. */
     offset: number;
-    /** Label to add to nav element. */
-    label?: string;
+    /** Label to add to nav element. Required for accessibility. */
+    label: string;
     protected getUpdateComplete(): Promise<boolean>;
     connectedCallback(): void;
     firstUpdated(): void;

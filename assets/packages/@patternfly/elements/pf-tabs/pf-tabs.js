@@ -2,6 +2,7 @@ var _PfTabs_instances, _PfTabs_activeIndex, _PfTabs_ctx_get, _PfTabs_overflow, _
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
+import { eventOptions } from 'lit/decorators/event-options.js';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
 import { provide } from '@lit/context';
@@ -430,7 +431,7 @@ let PfTabs = class PfTabs extends LitElement {
           <!-- tablist -->
           <div id="tabs" part="tabs" role="tablist">
             <!-- Must contain one or more \`<pf-tab>\` -->
-            <slot name="tab" @slotchange="${__classPrivateFieldGet(this, _PfTabs_instances, "m", _PfTabs_onSlotChange)}" @scroll="${__classPrivateFieldGet(this, _PfTabs_overflow, "f").onScroll}"></slot>
+            <slot name="tab" @slotchange="${__classPrivateFieldGet(this, _PfTabs_instances, "m", _PfTabs_onSlotChange)}" @scroll="${this.onScroll}"></slot>
           </div>
           ${!__classPrivateFieldGet(this, _PfTabs_overflow, "f").showScrollButtons ? '' : html `
           <button id="nextTab" tabindex="-1"
@@ -449,6 +450,9 @@ let PfTabs = class PfTabs extends LitElement {
         <slot part="panels"></slot>
       </div>
     `;
+    }
+    onScroll() {
+        __classPrivateFieldGet(this, _PfTabs_overflow, "f").onScroll();
     }
     select(tab) {
         if (typeof tab === 'number') {
@@ -488,7 +492,7 @@ _PfTabs_onExpand = function _PfTabs_onExpand(event) {
 };
 PfTabs.styles = [styles];
 PfTabs.scrollTimeoutDelay = 150;
-PfTabs.version = "4.3.1";
+PfTabs.version = "4.4.0";
 __decorate([
     property({ reflect: false, attribute: 'label-scroll-left' })
 ], PfTabs.prototype, "labelScrollLeft", void 0);
@@ -525,6 +529,9 @@ __decorate([
 __decorate([
     observes('activeTab')
 ], PfTabs.prototype, "activeTabChanged", null);
+__decorate([
+    eventOptions({ passive: true })
+], PfTabs.prototype, "onScroll", null);
 PfTabs = __decorate([
     customElement('pf-tabs')
 ], PfTabs);

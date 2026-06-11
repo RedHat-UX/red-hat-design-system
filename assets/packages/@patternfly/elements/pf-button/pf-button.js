@@ -1003,7 +1003,7 @@ PfButton.styles = [
     iconStyles,
     styles,
 ];
-PfButton.version = "4.3.1";
+PfButton.version = "4.4.0";
 __decorate([
     property({ reflect: true })
 ], PfButton.prototype, "type", void 0);

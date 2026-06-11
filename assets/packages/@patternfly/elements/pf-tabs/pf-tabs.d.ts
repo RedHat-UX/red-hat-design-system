@@ -54,6 +54,7 @@ export declare class PfTabs extends LitElement {
     protected activeTabChanged(old?: PfTab, activeTab?: PfTab): void;
     protected firstUpdated(): void;
     render(): TemplateResult<1>;
+    private onScroll;
     select(tab: PfTab | number): void;
 }
 declare global {

@@ -2,22 +2,22 @@ snippet rhanimationspeed
   var(--rh-animation-speed${1:, 0.3s})$2
 snippet rhanimationtiming
   var(--rh-animation-timing${1:, cubic-bezier(0.465, 0.183, 0.153, 0.946)})$2
-# 1px border width; Example: Secondary CTA or Button
+# Applies a 1px border width to at least 1 side of a container. This shall be the default width for all borders and lines. It should be used to establish baseline thickness or visual separation with a container or thin line. It must not be used for strong directional emphasis like indicating a selected state. Recommended for elements like Button, Card, or Field. Applying to all 4 sides at once is optional.
 snippet rhborderwidthsm
   var(--rh-border-width-sm${1:, 1px})$2
-# 2px border width: Example: Alert
+# Applies a 2px border width to at least 1 side of a container. It should be used to add emphasis or visual separation beyond a 1px border. Recommended for elements needing extra thickness like Alert or Progress stepper. It must be used to ensure hover, focus, and active states are discernible by more than color alone per WCAG. Applying to all 4 sides at once is optional.
 snippet rhborderwidthmd
   var(--rh-border-width-md${1:, 2px})$2
-# 3px border width: Example: Expanded Accordion panel
+# Applies a 3px border width to 1 side of a container. It should be used for strong directional emphasis like indicating a current page, expanded, or selected state. Recommended for elements needing heavy visual weight like Accordion, Navigation, or Tabs. It must also be used for the focus indicator border per WCAG. Except for the focus indicator, it should not be applied to all 4 sides at once.
 snippet rhborderwidthlg
   var(--rh-border-width-lg${1:, 3px})$2
-# Border radius reset
+# This token resets the border radius of a container back to 0 or sharp. It must be applied to all 4 corners of a container at once.
 snippet rhborderradiussharp
   var(--rh-border-radius-sharp${1:, 0.0px})$2
-# 3px border radius; Example: Card
+# Applies a 3px border radius to at least 1 corner of a container. This shall be the default for all containers needing rounded corners. It should be used to soften a container's visual footprint. Recommended for elements with subtle rounded corners like Button, Card, or Dialog. It must be applied to all 4 corners of a container at once.
 snippet rhborderradiusdefault
   var(--rh-border-radius-default${1:, 3px})$2
-# Pill border radius; Example: Label
+# Applies a 64px border radius to at least 1 corner of a container. It should be used for elements needing a circle or pill-shaped background like Avatar, Badge, or Switch. It may also be used for Hybrid style branding. Applying to all 4 corners at once is optional. It may replace the default 3px radius when not all corners need the same value.
 snippet rhborderradiuspill
   var(--rh-border-radius-pill${1:, 64px})$2
 # Mobile portrait (max-width)
@@ -586,22 +586,22 @@ snippet rhcolorblue70hsl
   var(--rh-color-blue-70-hsl${1:, 210 100% 20%})$2
 snippet rhcolorblue70rgb
   var(--rh-color-blue-70-rgb${1:, 0 51 102})$2
-# Lightest surface (light theme) or primary text (dark theme)
+# Lightest surface (light scheme) or primary text (dark scheme)
 snippet rhcolorwhite
   var(--rh-color-white${1:, #ffffff})$2
 snippet ffffff
   var(--rh-color-white${1:, #ffffff})$2
-# Tertiary surface (light theme)
+# Tertiary surface (light scheme)
 snippet rhcolorgray10
   var(--rh-color-gray-10${1:, #f2f2f2})$2
 snippet f2f2f2
   var(--rh-color-gray-10${1:, #f2f2f2})$2
-# Secondary surface (light theme)
+# Secondary surface (light scheme)
 snippet rhcolorgray20
   var(--rh-color-gray-20${1:, #e0e0e0})$2
 snippet e0e0e0
   var(--rh-color-gray-20${1:, #e0e0e0})$2
-# Subtle borders (light theme)
+# Subtle borders (light scheme)
 snippet rhcolorgray30
   var(--rh-color-gray-30${1:, #c7c7c7})$2
 snippet c7c7c7
@@ -611,17 +611,22 @@ snippet rhcolorgray40
   var(--rh-color-gray-40${1:, #a3a3a3})$2
 snippet a3a3a3
   var(--rh-color-gray-40${1:, #a3a3a3})$2
+# Call to action text decoration (unified theme)
+snippet rhcolorgray45
+  var(--rh-color-gray-45${1:, #8c8c8c})$2
+snippet 8c8c8c
+  var(--rh-color-gray-45${1:, #8c8c8c})$2
 # Subtle icon
 snippet rhcolorgray50
   var(--rh-color-gray-50${1:, #707070})$2
 snippet 707070
   var(--rh-color-gray-50${1:, #707070})$2
-# Secondary text (light theme)
+# Secondary text (light scheme)
 snippet rhcolorgray60
   var(--rh-color-gray-60${1:, #4d4d4d})$2
 snippet 4d4d4d
   var(--rh-color-gray-60${1:, #4d4d4d})$2
-# Tertiary surface (dark theme)
+# Tertiary surface (dark scheme)
 snippet rhcolorgray70
   var(--rh-color-gray-70${1:, #383838})$2
 snippet 383838
@@ -631,12 +636,12 @@ snippet rhcolorgray80
   var(--rh-color-gray-80${1:, #292929})$2
 snippet 292929
   var(--rh-color-gray-80${1:, #292929})$2
-# Secondary surface (dark theme)
+# Secondary surface (dark scheme)
 snippet rhcolorgray90
   var(--rh-color-gray-90${1:, #1f1f1f})$2
 snippet 1f1f1f
   var(--rh-color-gray-90${1:, #1f1f1f})$2
-# Primary surface (dark theme) or primary text (light theme)
+# Primary surface (dark scheme) or primary text (light scheme)
 snippet rhcolorgray95
   var(--rh-color-gray-95${1:, #151515})$2
 snippet 151515
@@ -657,6 +662,10 @@ snippet rhcolorgray40hsl
   var(--rh-color-gray-40-hsl${1:, 0 0% 63.921568627450974%})$2
 snippet rhcolorgray40rgb
   var(--rh-color-gray-40-rgb${1:, 163 163 163})$2
+snippet rhcolorgray45hsl
+  var(--rh-color-gray-45-hsl${1:, 0 0% 54.90196078431373%})$2
+snippet rhcolorgray45rgb
+  var(--rh-color-gray-45-rgb${1:, 140 140 140})$2
 snippet rhcolorgray50hsl
   var(--rh-color-gray-50-hsl${1:, 0 0% 43.92156862745098%})$2
 snippet rhcolorgray50rgb
@@ -811,6 +820,10 @@ snippet rhcolorredorange70hsl
   var(--rh-color-red-orange-70-hsl${1:, 16.17391304347826 100% 22.54901960784314%})$2
 snippet rhcolorredorange70rgb
   var(--rh-color-red-orange-70-rgb${1:, 115 31 0})$2
+snippet rhcolorred5
+  var(--rh-color-red-5${1:, #fef0f0})$2
+snippet fef0f0
+  var(--rh-color-red-5${1:, #fef0f0})$2
 snippet rhcolorred10
   var(--rh-color-red-10${1:, #fce3e3})$2
 snippet fce3e3
@@ -850,6 +863,10 @@ snippet rhcolorred80
   var(--rh-color-red-80${1:, #3f0000})$2
 snippet 3f0000
   var(--rh-color-red-80${1:, #3f0000})$2
+snippet rhcolorred5hsl
+  var(--rh-color-red-5-hsl${1:, 0 87.50000000000004% 96.86274509803921%})$2
+snippet rhcolorred5rgb
+  var(--rh-color-red-5-rgb${1:, 254 240 240})$2
 snippet rhcolorred10hsl
   var(--rh-color-red-10-hsl${1:, 0 80.64516129032265% 93.92156862745098%})$2
 snippet rhcolorred10rgb

@@ -198,6 +198,8 @@ let PfJumpLinks = class PfJumpLinks extends LitElement {
         this.centered = false;
         /** Offset to add to the scroll position, potentially for a masthead which content scrolls under. */
         this.offset = 0;
+        /** Label to add to nav element. Required for accessibility. */
+        this.label = 'Jump to section';
         _PfJumpLinks_kids.set(this, this.querySelectorAll?.(':is(pf-jump-links-item, pf-jump-links-list)'));
         _PfJumpLinks_tabindex.set(this, RovingTabindexController.of(this, {
             getItems: () => __classPrivateFieldGet(this, _PfJumpLinks_instances, "a", _PfJumpLinks_items_get),
@@ -230,11 +232,11 @@ let PfJumpLinks = class PfJumpLinks extends LitElement {
     }
     render() {
         return html `
-      <nav id="container">${this.expandable ? html `
+      <nav id="container" aria-labelledby="label">${this.expandable ? html `
         <details ?open="${this.expanded}" @toggle="${__classPrivateFieldGet(this, _PfJumpLinks_instances, "m", _PfJumpLinks_onToggle)}">
           <summary>
             <pf-icon icon="chevron-right"></pf-icon>
-            <span id="label">${this.label}</span>
+            <span part="label" id="label">${this.label}</span>
           </summary>
           <div role="listbox" aria-labelledby="label">
             <!-- Place pf-jump-links-items here -->
@@ -283,7 +285,7 @@ _PfJumpLinks_onToggle = function _PfJumpLinks_onToggle(event) {
     this.dispatchEvent(new Event('toggle'));
 };
 PfJumpLinks.styles = [style];
-PfJumpLinks.version = "4.3.1";
+PfJumpLinks.version = "4.4.0";
 __decorate([
     property({ reflect: true, type: Boolean })
 ], PfJumpLinks.prototype, "expandable", void 0);
@@ -300,7 +302,7 @@ __decorate([
     property({ type: Number })
 ], PfJumpLinks.prototype, "offset", void 0);
 __decorate([
-    property()
+    property({ reflect: true })
 ], PfJumpLinks.prototype, "label", void 0);
 PfJumpLinks = __decorate([
     customElement('pf-jump-links')

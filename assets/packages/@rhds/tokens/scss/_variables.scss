@@ -5,12 +5,12 @@
 
 $rh-animation-speed: 0.3s;
 $rh-animation-timing: cubic-bezier(0.465, 0.183, 0.153, 0.946);
-$rh-border-width-sm: 1px; // 1px border width; Example: Secondary CTA or Button
-$rh-border-width-md: 2px; // 2px border width: Example: Alert
-$rh-border-width-lg: 3px; // 3px border width: Example: Expanded Accordion panel
-$rh-border-radius-sharp: 0.0px; // Border radius reset
-$rh-border-radius-default: 3px; // 3px border radius; Example: Card
-$rh-border-radius-pill: 64px; // Pill border radius; Example: Label
+$rh-border-width-sm: 1px; // Applies a 1px border width to at least 1 side of a container. This shall be the default width for all borders and lines. It should be used to establish baseline thickness or visual separation with a container or thin line. It must not be used for strong directional emphasis like indicating a selected state. Recommended for elements like Button, Card, or Field. Applying to all 4 sides at once is optional.
+$rh-border-width-md: 2px; // Applies a 2px border width to at least 1 side of a container. It should be used to add emphasis or visual separation beyond a 1px border. Recommended for elements needing extra thickness like Alert or Progress stepper. It must be used to ensure hover, focus, and active states are discernible by more than color alone per WCAG. Applying to all 4 sides at once is optional.
+$rh-border-width-lg: 3px; // Applies a 3px border width to 1 side of a container. It should be used for strong directional emphasis like indicating a current page, expanded, or selected state. Recommended for elements needing heavy visual weight like Accordion, Navigation, or Tabs. It must also be used for the focus indicator border per WCAG. Except for the focus indicator, it should not be applied to all 4 sides at once.
+$rh-border-radius-sharp: 0.0px; // This token resets the border radius of a container back to 0 or sharp. It must be applied to all 4 corners of a container at once.
+$rh-border-radius-default: 3px; // Applies a 3px border radius to at least 1 corner of a container. This shall be the default for all containers needing rounded corners. It should be used to soften a container's visual footprint. Recommended for elements with subtle rounded corners like Button, Card, or Dialog. It must be applied to all 4 corners of a container at once.
+$rh-border-radius-pill: 64px; // Applies a 64px border radius to at least 1 corner of a container. It should be used for elements needing a circle or pill-shaped background like Avatar, Badge, or Switch. It may also be used for Hybrid style branding. Applying to all 4 corners at once is optional. It may replace the default 3px radius when not all corners need the same value.
 $rh-breakpoint-2xs-max: 575px; // Mobile portrait (max-width)
 $rh-breakpoint-xs: 576px; // Mobile portrait
 $rh-breakpoint-xs-max: 767px; // Mobile landscape (max-width)
@@ -147,17 +147,18 @@ $rh-color-blue-60-hsl: 209.80392156862746 100% 30%;
 $rh-color-blue-60-rgb: 0 77 153;
 $rh-color-blue-70-hsl: 210 100% 20%;
 $rh-color-blue-70-rgb: 0 51 102;
-$rh-color-white: #ffffff; // Lightest surface (light theme) or primary text (dark theme)
-$rh-color-gray-10: #f2f2f2; // Tertiary surface (light theme)
-$rh-color-gray-20: #e0e0e0; // Secondary surface (light theme)
-$rh-color-gray-30: #c7c7c7; // Subtle borders (light theme)
+$rh-color-white: #ffffff; // Lightest surface (light scheme) or primary text (dark scheme)
+$rh-color-gray-10: #f2f2f2; // Tertiary surface (light scheme)
+$rh-color-gray-20: #e0e0e0; // Secondary surface (light scheme)
+$rh-color-gray-30: #c7c7c7; // Subtle borders (light scheme)
 $rh-color-gray-40: #a3a3a3; // Subtle icon (hover state)
+$rh-color-gray-45: #8c8c8c; // Call to action text decoration (unified theme)
 $rh-color-gray-50: #707070; // Subtle icon
-$rh-color-gray-60: #4d4d4d; // Secondary text (light theme)
-$rh-color-gray-70: #383838; // Tertiary surface (dark theme)
+$rh-color-gray-60: #4d4d4d; // Secondary text (light scheme)
+$rh-color-gray-70: #383838; // Tertiary surface (dark scheme)
 $rh-color-gray-80: #292929; // Alternative tertiary surface (not available for use with context provider)
-$rh-color-gray-90: #1f1f1f; // Secondary surface (dark theme)
-$rh-color-gray-95: #151515; // Primary surface (dark theme) or primary text (light theme)
+$rh-color-gray-90: #1f1f1f; // Secondary surface (dark scheme)
+$rh-color-gray-95: #151515; // Primary surface (dark scheme) or primary text (light scheme)
 $rh-color-gray-10-hsl: 0 0% 94.90196078431372%;
 $rh-color-gray-10-rgb: 242 242 242;
 $rh-color-gray-20-hsl: 0 0% 87.84313725490196%;
@@ -166,6 +167,8 @@ $rh-color-gray-30-hsl: 0 0% 78.03921568627452%;
 $rh-color-gray-30-rgb: 199 199 199;
 $rh-color-gray-40-hsl: 0 0% 63.921568627450974%;
 $rh-color-gray-40-rgb: 163 163 163;
+$rh-color-gray-45-hsl: 0 0% 54.90196078431373%;
+$rh-color-gray-45-rgb: 140 140 140;
 $rh-color-gray-50-hsl: 0 0% 43.92156862745098%;
 $rh-color-gray-50-rgb: 112 112 112;
 $rh-color-gray-60-hsl: 0 0% 30.19607843137255%;
@@ -224,6 +227,7 @@ $rh-color-red-orange-60-hsl: 16.265060240963855 88.29787234042554% 36.8627450980
 $rh-color-red-orange-60-rgb: 177 56 11;
 $rh-color-red-orange-70-hsl: 16.17391304347826 100% 22.54901960784314%;
 $rh-color-red-orange-70-rgb: 115 31 0;
+$rh-color-red-5: #fef0f0;
 $rh-color-red-10: #fce3e3;
 $rh-color-red-20: #fbc5c5; // Lightest brand red
 $rh-color-red-30: #f9a8a8; // Lighter brand red
@@ -232,6 +236,8 @@ $rh-color-red-50: #ee0000; // Brand red (light and dark theme)
 $rh-color-red-60: #a60000; // Dark brand red
 $rh-color-red-70: #5f0000; // Darker brand red
 $rh-color-red-80: #3f0000; // Darkest brand red
+$rh-color-red-5-hsl: 0 87.50000000000004% 96.86274509803921%;
+$rh-color-red-5-rgb: 254 240 240;
 $rh-color-red-10-hsl: 0 80.64516129032265% 93.92156862745098%;
 $rh-color-red-10-rgb: 252 227 227;
 $rh-color-red-20-hsl: 0 87.09677419354838% 87.84313725490196%;

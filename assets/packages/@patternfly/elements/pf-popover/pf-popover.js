@@ -483,6 +483,9 @@ _PfPopover_triggerChanged = function _PfPopover_triggerChanged() {
     }
 };
 _PfPopover_outsideClick = function _PfPopover_outsideClick(event) {
+    if (__classPrivateFieldGet(this, _PfPopover_hideDialog, "f")) {
+        return;
+    }
     const path = event.composedPath();
     if (!path.includes(this) && !path.includes(__classPrivateFieldGet(this, _PfPopover_referenceTrigger, "f"))) {
         this.hide();
@@ -508,7 +511,7 @@ PfPopover.alertIcons = new Map(Object.entries({
         });
     }
 })();
-PfPopover.version = "4.3.1";
+PfPopover.version = "4.4.0";
 __decorate([
     property({ reflect: true })
 ], PfPopover.prototype, "position", void 0);

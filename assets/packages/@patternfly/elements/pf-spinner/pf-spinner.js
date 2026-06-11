@@ -125,7 +125,7 @@ let PfSpinner = class PfSpinner extends LitElement {
 };
 _PfSpinner_internals = new WeakMap();
 PfSpinner.styles = [styles];
-PfSpinner.version = "4.3.1";
+PfSpinner.version = "4.4.0";
 __decorate([
     property({ reflect: true })
 ], PfSpinner.prototype, "size", void 0);

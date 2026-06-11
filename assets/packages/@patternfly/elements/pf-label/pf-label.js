@@ -1,9 +1,10 @@
 var _PfLabel_instances, _PfLabel_slots, _PfLabel_onClickClose;
 import { __classPrivateFieldGet, __decorate } from "tslib";
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import '@patternfly/elements/pf-button/pf-button.js';
 import { css } from "lit";
@@ -11,6 +12,10 @@ const styles = css `:host {
   position: relative;
   white-space: nowrap;
   border: 0;
+
+  --_label-link-hover-border-color:
+    var(--pf-c-label__content--link--hover--before--BorderColor,
+      var(--pf-global--BorderColor--200, #8a8d90));
 }
 
 pf-icon, ::slotted(pf-icon) {
@@ -25,7 +30,8 @@ pf-icon, ::slotted(pf-icon) {
 }
 
 #container {
-  overflow: hidden;
+  overflow: clip;
+  overflow-clip-margin: 6px;
   text-overflow: ellipsis;
   white-space: nowrap;
   border-width: 0;
@@ -88,6 +94,16 @@ pf-icon, ::slotted(pf-icon) {
   --pf-global--icon--FontSize--sm: 12px;
 }
 
+.outline {
+  /** outline label background color */
+  --pf-c-label--BackgroundColor: var(--pf-c-label--m-outline--BackgroundColor, #ffffff);
+  --pf-c-label__content--before--BorderColor: var(--pf-global--palette--black-300, #d2d2d2);
+
+  --_label-link-hover-border-color:
+    var(--pf-c-label--m-outline__content--link--hover--before--BorderColor,
+      var(--pf-global--BorderColor--100, #d2d2d2));
+}
+
 .blue {
   /** blue label content text color */
   --pf-c-label__content--Color: var(--pf-c-label--m-blue__content--Color, var(--pf-global--info-color--200, #002952));
@@ -95,11 +111,23 @@ pf-icon, ::slotted(pf-icon) {
   --pf-c-label--BackgroundColor: var(--pf-c-label--m-blue--BackgroundColor, var(--pf-global--palette--blue-50, #e7f1fa));
   /** blue label content border color */
   --pf-c-label__content--before--BorderColor: var(--pf-c-label--m-blue__content--before--BorderColor, var(--pf-global--palette--blue-100, #bee1f4));
+
+  --_label-link-hover-border-color:
+    var(--pf-c-label__content--link--hover--before--BorderColor,
+      var(--pf-c-label--m-blue__content--link--hover--before--BorderColor,
+        var(--pf-global--primary-color--100, #06c)));
+
+  --_label-icon-color: var(--pf-c-label__icon--Color, var(--pf-c-label--m-blue__icon--Color, var(--pf-global--primary-color--100, #06c)));
 }
 
 .blue.outline {
   /** outline blue label content text color */
   --pf-c-label__content--Color: var(--pf-c-label--m-outline__content--Color, var(--pf-c-label--m-outline--m-blue__content--Color, var(--pf-global--primary-color--100, #06c)));
+
+  --_label-link-hover-border-color:
+    var(--pf-c-label--m-outline__content--link--hover--before--BorderColor,
+      var(--pf-c-label--m-outline--m-blue__content--link--hover--before--BorderColor,
+        var(--pf-global--BorderColor--100, #d2d2d2)));
 }
 
 .cyan {
@@ -109,11 +137,23 @@ pf-icon, ::slotted(pf-icon) {
   --pf-c-label--BackgroundColor: var(--pf-c-label--m-cyan--BackgroundColor, var(--pf-global--palette--cyan-50, #f2f9f9));
   /** cyan label content border color */
   --pf-c-label__content--before--BorderColor: var(--pf-c-label--m-cyan__content--before--BorderColor, var(--pf-global--palette--cyan-100, #a2d9d9));
+
+  --_label-link-hover-border-color:
+    var(--pf-c-label__content--link--hover--before--BorderColor,
+      var(--pf-c-label--m-cyan__content--link--hover--before--BorderColor,
+        var(--pf-global--default-color--200, #009596)));
+
+  --_label-icon-color: var(--pf-c-label__icon--Color, var(--pf-c-label--m-cyan__icon--Color, var(--pf-global--default-color--200, #009596)));
 }
 
 .cyan.outline {
   /** outline cyan label content text color */
-  --pf-c-label__content--Color: var(--pf-c-label--m-outline__content--Color, var(--pf-c-label--m-outline--m-cyan__content--Color, var(--pf-global--palette--cyan-400, #005f60)))
+  --pf-c-label__content--Color: var(--pf-c-label--m-outline__content--Color, var(--pf-c-label--m-outline--m-cyan__content--Color, var(--pf-global--palette--cyan-400, #005f60)));
+
+  --_label-link-hover-border-color:
+    var(--pf-c-label--m-outline__content--link--hover--before--BorderColor,
+      var(--pf-c-label--m-outline--m-cyan__content--link--hover--before--BorderColor,
+        var(--pf-global--BorderColor--100, #d2d2d2)));
 }
 
 .green {
@@ -123,11 +163,23 @@ pf-icon, ::slotted(pf-icon) {
   --pf-c-label--BackgroundColor: var(--pf-c-label--m-green--BackgroundColor, var(--pf-global--palette--green-50, #f3faf2));
   /** green label content border color */
   --pf-c-label__content--before--BorderColor: var(--pf-c-label--m-green__content--before--BorderColor, var(--pf-global--palette--green-100, #bde5b8));
+
+  --_label-link-hover-border-color:
+    var(--pf-c-label__content--link--hover--before--BorderColor,
+      var(--pf-c-label--m-green__content--link--hover--before--BorderColor,
+        var(--pf-global--success-color--100, #3e8635)));
+
+  --_label-icon-color: var(--pf-c-label__icon--Color, var(--pf-c-label--m-green__icon--Color, var(--pf-global--success-color--100, #3e8635)));
 }
 
-.green.outline{
+.green.outline {
   /** outline green label content text color */
-  --pf-c-label__content--Color: var(--pf-c-label--m-outline__content--Color, var(--pf-c-label--m-outline--m-green__content--Color, var(--pf-global--success-color--100, #3e8635)))
+  --pf-c-label__content--Color: var(--pf-c-label--m-outline__content--Color, var(--pf-c-label--m-outline--m-green__content--Color, var(--pf-global--success-color--100, #3e8635)));
+
+  --_label-link-hover-border-color:
+    var(--pf-c-label--m-outline__content--link--hover--before--BorderColor,
+      var(--pf-c-label--m-outline--m-green__content--link--hover--before--BorderColor,
+        var(--pf-global--BorderColor--100, #d2d2d2)));
 }
 
 .orange {
@@ -137,11 +189,23 @@ pf-icon, ::slotted(pf-icon) {
   --pf-c-label--BackgroundColor: var(--pf-c-label--m-orange--BackgroundColor, var(--pf-global--palette--orange-50, #fff6ec));
   /** orange label content border color */
   --pf-c-label__content--before--BorderColor: var(--pf-c-label--m-orange__content--before--BorderColor, var(--pf-global--palette--orange-100, #f4b678));
+
+  --_label-link-hover-border-color:
+    var(--pf-c-label__content--link--hover--before--BorderColor,
+      var(--pf-c-label--m-orange__content--link--hover--before--BorderColor,
+        var(--pf-global--palette--orange-300, #ec7a08)));
+
+  --_label-icon-color: var(--pf-c-label__icon--Color, var(--pf-c-label--m-orange__icon--Color, var(--pf-global--palette--orange-300, #ec7a08)));
 }
 
 .orange.outline {
   /** outline orange label content text color */
-  --pf-c-label__content--Color: var(--pf-c-label--m-outline__content--Color, var(--pf-c-label--m-outline--m-orange__content--Color, var(--pf-global--palette--orange-500, #8f4700)))
+  --pf-c-label__content--Color: var(--pf-c-label--m-outline__content--Color, var(--pf-c-label--m-outline--m-orange__content--Color, var(--pf-global--palette--orange-500, #8f4700)));
+
+  --_label-link-hover-border-color:
+    var(--pf-c-label--m-outline__content--link--hover--before--BorderColor,
+      var(--pf-c-label--m-outline--m-orange__content--link--hover--before--BorderColor,
+        var(--pf-global--BorderColor--100, #d2d2d2)));
 }
 
 .purple {
@@ -151,11 +215,23 @@ pf-icon, ::slotted(pf-icon) {
   --pf-c-label--BackgroundColor: var(--pf-c-label--m-purple--BackgroundColor, var(--pf-global--palette--purple-50, #f2f0fc));
   /** purple label content border color */
   --pf-c-label__content--before--BorderColor: var(--pf-c-label--m-purple__content--before--BorderColor, var(--pf-global--palette--purple-100, #cbc1ff));
+
+  --_label-link-hover-border-color:
+    var(--pf-c-label__content--link--hover--before--BorderColor,
+      var(--pf-c-label--m-purple__content--link--hover--before--BorderColor,
+        var(--pf-global--palette--purple-500, #6753ac)));
+
+  --_label-icon-color: var(--pf-c-label__icon--Color, var(--pf-c-label--m-purple__icon--Color, var(--pf-global--palette--purple-500, #6753ac)));
 }
 
 .purple.outline {
   /** outline purple label content text color */
-  --pf-c-label__content--Color: var(--pf-c-label--m-outline__content--Color, var(--pf-c-label--m-outline--m-purple__content--Color, var(--pf-global--palette--purple-500, #6753ac)))
+  --pf-c-label__content--Color: var(--pf-c-label--m-outline__content--Color, var(--pf-c-label--m-outline--m-purple__content--Color, var(--pf-global--palette--purple-500, #6753ac)));
+
+  --_label-link-hover-border-color:
+    var(--pf-c-label--m-outline__content--link--hover--before--BorderColor,
+      var(--pf-c-label--m-outline--m-purple__content--link--hover--before--BorderColor,
+        var(--pf-global--BorderColor--100, #d2d2d2)));
 }
 
 .red {
@@ -165,11 +241,23 @@ pf-icon, ::slotted(pf-icon) {
   --pf-c-label--BackgroundColor: var(--pf-c-label--m-red--BackgroundColor, var(--pf-global--palette--red-50, #faeae8));
   /** red label content border color */
   --pf-c-label__content--before--BorderColor: var(--pf-c-label--m-red__content--before--BorderColor, var(--pf-global--palette--red-100, #c9190b));
+
+  --_label-link-hover-border-color:
+    var(--pf-c-label__content--link--hover--before--BorderColor,
+      var(--pf-c-label--m-red__content--link--hover--before--BorderColor,
+        var(--pf-global--danger-color--100, #c9190b)));
+
+  --_label-icon-color: var(--pf-c-label__icon--Color, var(--pf-c-label--m-red__icon--Color, var(--pf-global--danger-color--100, #c9190b)));
 }
 
 .red.outline {
   /** outline red label content text color */
-  --pf-c-label__content--Color: var(--pf-c-label--m-outline__content--Color, var(--pf-c-label--m-outline--m-red__content--Color, var(--pf-global--danger-color--100, #c9190b)))
+  --pf-c-label__content--Color: var(--pf-c-label--m-outline__content--Color, var(--pf-c-label--m-outline--m-red__content--Color, var(--pf-global--danger-color--100, #c9190b)));
+
+  --_label-link-hover-border-color:
+    var(--pf-c-label--m-outline__content--link--hover--before--BorderColor,
+      var(--pf-c-label--m-outline--m-red__content--link--hover--before--BorderColor,
+        var(--pf-global--BorderColor--100, #d2d2d2)));
 }
 
 .gold {
@@ -179,57 +267,30 @@ pf-icon, ::slotted(pf-icon) {
   --pf-c-label--BackgroundColor: var(--pf-c-label--m-gold--BackgroundColor, var(--pf-global--palette--gold-50, #fdf7e7));
   /** gold label content border color */
   --pf-c-label__content--before--BorderColor: var(--pf-c-label--m-gold__content--before--BorderColor, var(--pf-global--palette--gold-100, #f9e0a2));
+
+  --_label-link-hover-border-color:
+    var(--pf-c-label__content--link--hover--before--BorderColor,
+      var(--pf-c-label--m-gold__content--link--hover--before--BorderColor,
+        var(--pf-global--palette--gold-300, #f4c145)));
+
+  --_label-icon-color: var(--pf-c-label__icon--Color, var(--pf-c-label--m-gold__icon--Color, var(--pf-global--palette--gold-400, #f0ab00)));
 }
 
 .gold.outline {
   /** outline gold label content text color */
-  --pf-c-label__content--Color: var(--pf-c-label--m-outline__content--Color, var(--pf-c-label--m-outline--m-gold__content--Color, var(--pf-global--palette--gold-600, #795600)))
-}
+  --pf-c-label__content--Color: var(--pf-c-label--m-outline__content--Color, var(--pf-c-label--m-outline--m-gold__content--Color, var(--pf-global--palette--gold-600, #795600)));
 
-.outline {
-  /** outline label background color */
-  --pf-c-label--BackgroundColor: var(--pf-c-label--m-outline--BackgroundColor, #ffffff);
-  --pf-c-label__content--before--BorderColor: var(--pf-global--palette--black-300, #d2d2d2);
+  --_label-link-hover-border-color:
+    var(--pf-c-label--m-outline__content--link--hover--before--BorderColor,
+      var(--pf-c-label--m-outline--m-gold__content--link--hover--before--BorderColor,
+        var(--pf-global--BorderColor--100, #d2d2d2)));
 }
 
 .hasIcon [part=icon] {
   left: var(--pf-c-label--PaddingLeft, var(--pf-global--spacer--md, 1rem));
   margin-inline-end: var(--pf-c-label__icon--MarginRight, var(--pf-global--spacer--xs, 0.25rem));
-}
-
-.blue .hasIcon [part=icon] {
-  /** blue label icon color */
-  color: var(--pf-c-label__icon--Color, var(--pf-c-label--m-blue__icon--Color, var(--pf-global--primary-color--100, #06c)));
-}
-
-.cyan .hasIcon [part=icon] {
-  /** cyan label icon color */
-  color: var(--pf-c-label__icon--Color, var(--pf-c-label--m-cyan__icon--Color, var(--pf-global--default-color--200, #009596)));
-}
-
-.green .hasIcon [part=icon] {
-  /** green label icon color */
-  color: var(--pf-c-label__icon--Color, var(--pf-c-label--m-green__icon--Color, var(--pf-global--success-color--100, #3e8635)));
-}
-
-.orange .hasIcon [part=icon] {
-  /** orange label icon color */
-  color: var(--pf-c-label__icon--Color, var(--pf-c-label--m-orange__icon--Color, var(--pf-global--palette--orange-300, #ec7a08)));
-}
-
-.purple .hasIcon [part=icon] {
-  /** purple label icon color */
-  color: var(--pf-c-label__icon--Color, var(--pf-c-label--m-purple__icon--Color, var(--pf-global--palette--purple-500, #6753ac)));
-}
-
-.red .hasIcon [part=icon] {
-  /** red label icon color */
-  color: var(--pf-c-label__icon--Color, var(--pf-c-label--m-red__icon--Color, var(--pf-global--danger-color--100, #c9190b)));
-}
-
-.gold .hasIcon [part=icon] {
-  /** gold label icon color */
-  color: var(--pf-c-label__icon--Color, var(--pf-c-label--m-gold__icon--Color, var(--pf-global--palette--gold-400, #f0ab00)));
+  /** label icon color */
+  color: var(--_label-icon-color);
 }
 
 pf-button {
@@ -247,6 +308,18 @@ pf-button {
     margin-right: var(--pf-c-label__c-button--MarginRight, -0.5rem);
     margin-bottom: var(--pf-c-label__c-button--MarginBottom, -0.5rem);
     margin-left: var(--pf-c-label__c-button--MarginLeft, 0.25rem);
+}
+
+#link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#container:has(#link:hover)::before,
+#container:has(#link:focus)::before {
+  border-width: var(--pf-c-label__content--link--hover--before--BorderWidth, 2px);
+  border-color: var(--_label-link-hover-border-color);
 }
 
 svg {
@@ -284,10 +357,17 @@ let PfLabel = class PfLabel extends LitElement {
         /** Represents the state of the anonymous and icon slots */
         _PfLabel_slots.set(this, new SlotController(this, null, 'icon'));
     }
+    connectedCallback() {
+        super.connectedCallback();
+        if (isServer) {
+            this.dispatchEvent(new Event('ssr:label', { bubbles: true }));
+        }
+    }
     render() {
-        const { compact, truncated } = this;
+        const { compact, truncated, href } = this;
         const { variant, color, icon } = this;
         const hasIcon = !!icon || __classPrivateFieldGet(this, _PfLabel_slots, "f").hasSlotted('icon');
+        const isLink = !!href;
         return html `
       <span id="container"
             class="${classMap({
@@ -308,7 +388,11 @@ let PfLabel = class PfLabel extends LitElement {
                    .icon="${this.icon || undefined}"></pf-icon>
         </slot>
         <!-- summary: Must contain the text for the label. -->
+        ${isLink ? html `
+        <a id="link" href="${ifDefined(href)}"><slot id="text"></slot></a>
+        ` : html `
         <slot id="text"></slot>
+        `}
         <!-- summary: container for removable labels' close button -->
         <span part="close-button" ?hidden=${!this.removable}>
           <pf-button plain
@@ -335,7 +419,7 @@ PfLabel.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
-PfLabel.version = "4.3.1";
+PfLabel.version = "4.4.0";
 __decorate([
     property()
 ], PfLabel.prototype, "variant", void 0);
@@ -357,6 +441,9 @@ __decorate([
 __decorate([
     property({ attribute: 'close-button-label' })
 ], PfLabel.prototype, "closeButtonLabel", void 0);
+__decorate([
+    property({ reflect: true })
+], PfLabel.prototype, "href", void 0);
 PfLabel = __decorate([
     customElement('pf-label')
 ], PfLabel);

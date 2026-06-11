@@ -26,7 +26,7 @@ class RefDirective extends AsyncDirective {
     }
     update(part, [ref]) {
         const refChanged = ref !== this._ref;
-        if (refChanged && this._ref !== undefined) {
+        if (refChanged) {
             // The ref passed to the directive has changed;
             // unset the previous ref's value
             this._updateRefValue(undefined);
@@ -41,6 +41,9 @@ class RefDirective extends AsyncDirective {
         return nothing;
     }
     _updateRefValue(element) {
+        if (this._ref === undefined) {
+            return;
+        }
         if (!this.isConnected) {
             element = undefined;
         }

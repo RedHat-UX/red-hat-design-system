@@ -9,7 +9,7 @@ class TokenMetaMap {
   get size(): number { return this.#map.size; }
   [Symbol.iterator]() { return this.#map[Symbol.iterator](); }
   constructor(entries: Record<TokenName, DesignToken>) { this.#map = new Map(Object.entries(entries)) as Map<TokenName, DesignToken>; }
-  get(key: '--rh-animation-speed' | '--rh-animation-timing' | '--rh-border-width-sm' | '--rh-border-width-md' | '--rh-border-width-lg' | '--rh-border-radius-sharp' | '--rh-border-radius-default' | '--rh-border-radius-pill' | '--rh-breakpoint-2xs-max' | '--rh-breakpoint-xs' | '--rh-breakpoint-xs-max' | '--rh-breakpoint-sm' | '--rh-breakpoint-sm-max' | '--rh-breakpoint-md' | '--rh-breakpoint-md-max' | '--rh-breakpoint-lg' | '--rh-breakpoint-lg-max' | '--rh-breakpoint-xl' | '--rh-breakpoint-xl-max' | '--rh-breakpoint-2xl' | '--rh-color-accent-base' | '--rh-color-accent-base-on-light' | '--rh-color-accent-base-on-dark' | '--rh-color-accent-brand' | '--rh-color-accent-brand-on-light' | '--rh-color-accent-brand-on-dark' | '--rh-color-border-strong' | '--rh-color-border-strong-on-light' | '--rh-color-border-strong-on-dark' | '--rh-color-border-subtle' | '--rh-color-border-subtle-on-light' | '--rh-color-border-subtle-on-dark' | '--rh-color-border-interactive' | '--rh-color-border-interactive-on-light' | '--rh-color-border-interactive-on-dark' | '--rh-color-border-destructive' | '--rh-color-border-destructive-on-light' | '--rh-color-border-destructive-on-dark' | '--rh-color-border-status-danger' | '--rh-color-border-status-danger-on-light' | '--rh-color-border-status-danger-on-dark' | '--rh-color-border-status-caution' | '--rh-color-border-status-caution-on-light' | '--rh-color-border-status-caution-on-dark' | '--rh-color-border-status-warning' | '--rh-color-border-status-warning-on-light' | '--rh-color-border-status-warning-on-dark' | '--rh-color-border-status-neutral' | '--rh-color-border-status-neutral-on-light' | '--rh-color-border-status-neutral-on-dark' | '--rh-color-border-status-info' | '--rh-color-border-status-info-on-light' | '--rh-color-border-status-info-on-dark' | '--rh-color-border-status-success' | '--rh-color-border-status-success-on-light' | '--rh-color-border-status-success-on-dark' | '--rh-color-brand-red' | '--rh-color-brand-red-on-light' | '--rh-color-brand-red-on-dark' | '--rh-color-brand-red-lightest' | '--rh-color-brand-red-lighter' | '--rh-color-brand-red-light' | '--rh-color-brand-red-dark' | '--rh-color-brand-red-darker' | '--rh-color-brand-red-darkest' | '--rh-color-green-10' | '--rh-color-green-20' | '--rh-color-green-30' | '--rh-color-green-40' | '--rh-color-green-50' | '--rh-color-green-60' | '--rh-color-green-70' | '--rh-color-green-10-hsl' | '--rh-color-green-10-rgb' | '--rh-color-green-20-hsl' | '--rh-color-green-20-rgb' | '--rh-color-green-30-hsl' | '--rh-color-green-30-rgb' | '--rh-color-green-40-hsl' | '--rh-color-green-40-rgb' | '--rh-color-green-50-hsl' | '--rh-color-green-50-rgb' | '--rh-color-green-60-hsl' | '--rh-color-green-60-rgb' | '--rh-color-green-70-hsl' | '--rh-color-green-70-rgb' | '--rh-color-orange-10' | '--rh-color-orange-20' | '--rh-color-orange-30' | '--rh-color-orange-40' | '--rh-color-orange-50' | '--rh-color-orange-60' | '--rh-color-orange-70' | '--rh-color-orange-80' | '--rh-color-orange-10-hsl' | '--rh-color-orange-10-rgb' | '--rh-color-orange-20-hsl' | '--rh-color-orange-20-rgb' | '--rh-color-orange-30-hsl' | '--rh-color-orange-30-rgb' | '--rh-color-orange-40-hsl' | '--rh-color-orange-40-rgb' | '--rh-color-orange-50-hsl' | '--rh-color-orange-50-rgb' | '--rh-color-orange-60-hsl' | '--rh-color-orange-60-rgb' | '--rh-color-orange-70-hsl' | '--rh-color-orange-70-rgb' | '--rh-color-orange-80-hsl' | '--rh-color-orange-80-rgb' | '--rh-color-icon-primary' | '--rh-color-icon-primary-on-light' | '--rh-color-icon-primary-on-dark' | '--rh-color-icon-secondary' | '--rh-color-icon-secondary-on-light' | '--rh-color-icon-secondary-on-dark' | '--rh-color-icon-subtle' | '--rh-color-icon-subtle-hover' | '--rh-color-icon-status-danger' | '--rh-color-icon-status-danger-on-light' | '--rh-color-icon-status-danger-on-dark' | '--rh-color-icon-status-caution' | '--rh-color-icon-status-caution-on-light' | '--rh-color-icon-status-caution-on-dark' | '--rh-color-icon-status-warning' | '--rh-color-icon-status-warning-on-light' | '--rh-color-icon-status-warning-on-dark' | '--rh-color-icon-status-default' | '--rh-color-icon-status-default-on-light' | '--rh-color-icon-status-default-on-dark' | '--rh-color-icon-status-neutral' | '--rh-color-icon-status-neutral-on-light' | '--rh-color-icon-status-neutral-on-dark' | '--rh-color-icon-status-info' | '--rh-color-icon-status-info-on-light' | '--rh-color-icon-status-info-on-dark' | '--rh-color-icon-status-success' | '--rh-color-icon-status-success-on-light' | '--rh-color-icon-status-success-on-dark' | '--rh-color-canvas-white' | '--rh-color-canvas-black' | '--rh-color-canvas-white-hsl' | '--rh-color-canvas-white-rgb' | '--rh-color-canvas-black-hsl' | '--rh-color-canvas-black-rgb' | '--rh-color-blue-10' | '--rh-color-blue-20' | '--rh-color-blue-30' | '--rh-color-blue-40' | '--rh-color-blue-50' | '--rh-color-blue-60' | '--rh-color-blue-70' | '--rh-color-blue-10-hsl' | '--rh-color-blue-10-rgb' | '--rh-color-blue-20-hsl' | '--rh-color-blue-20-rgb' | '--rh-color-blue-30-hsl' | '--rh-color-blue-30-rgb' | '--rh-color-blue-40-hsl' | '--rh-color-blue-40-rgb' | '--rh-color-blue-50-hsl' | '--rh-color-blue-50-rgb' | '--rh-color-blue-60-hsl' | '--rh-color-blue-60-rgb' | '--rh-color-blue-70-hsl' | '--rh-color-blue-70-rgb' | '--rh-color-white' | '--rh-color-gray-10' | '--rh-color-gray-20' | '--rh-color-gray-30' | '--rh-color-gray-40' | '--rh-color-gray-50' | '--rh-color-gray-60' | '--rh-color-gray-70' | '--rh-color-gray-80' | '--rh-color-gray-90' | '--rh-color-gray-95' | '--rh-color-gray-10-hsl' | '--rh-color-gray-10-rgb' | '--rh-color-gray-20-hsl' | '--rh-color-gray-20-rgb' | '--rh-color-gray-30-hsl' | '--rh-color-gray-30-rgb' | '--rh-color-gray-40-hsl' | '--rh-color-gray-40-rgb' | '--rh-color-gray-50-hsl' | '--rh-color-gray-50-rgb' | '--rh-color-gray-60-hsl' | '--rh-color-gray-60-rgb' | '--rh-color-gray-70-hsl' | '--rh-color-gray-70-rgb' | '--rh-color-gray-80-hsl' | '--rh-color-gray-80-rgb' | '--rh-color-gray-90-hsl' | '--rh-color-gray-90-rgb' | '--rh-color-gray-95-hsl' | '--rh-color-gray-95-rgb' | '--rh-color-black' | '--rh-color-purple-10' | '--rh-color-purple-20' | '--rh-color-purple-30' | '--rh-color-purple-40' | '--rh-color-purple-50' | '--rh-color-purple-60' | '--rh-color-purple-70' | '--rh-color-purple-80' | '--rh-color-purple-10-hsl' | '--rh-color-purple-10-rgb' | '--rh-color-purple-20-hsl' | '--rh-color-purple-20-rgb' | '--rh-color-purple-30-hsl' | '--rh-color-purple-30-rgb' | '--rh-color-purple-40-hsl' | '--rh-color-purple-40-rgb' | '--rh-color-purple-50-hsl' | '--rh-color-purple-50-rgb' | '--rh-color-purple-60-hsl' | '--rh-color-purple-60-rgb' | '--rh-color-purple-70-hsl' | '--rh-color-purple-70-rgb' | '--rh-color-purple-80-hsl' | '--rh-color-purple-80-rgb' | '--rh-color-red-orange-10' | '--rh-color-red-orange-20' | '--rh-color-red-orange-30' | '--rh-color-red-orange-40' | '--rh-color-red-orange-50' | '--rh-color-red-orange-60' | '--rh-color-red-orange-70' | '--rh-color-red-orange-10-hsl' | '--rh-color-red-orange-10-rgb' | '--rh-color-red-orange-20-hsl' | '--rh-color-red-orange-20-rgb' | '--rh-color-red-orange-30-hsl' | '--rh-color-red-orange-30-rgb' | '--rh-color-red-orange-40-hsl' | '--rh-color-red-orange-40-rgb' | '--rh-color-red-orange-50-hsl' | '--rh-color-red-orange-50-rgb' | '--rh-color-red-orange-60-hsl' | '--rh-color-red-orange-60-rgb' | '--rh-color-red-orange-70-hsl' | '--rh-color-red-orange-70-rgb' | '--rh-color-red-10' | '--rh-color-red-20' | '--rh-color-red-30' | '--rh-color-red-40' | '--rh-color-red-50' | '--rh-color-red-60' | '--rh-color-red-70' | '--rh-color-red-80' | '--rh-color-red-10-hsl' | '--rh-color-red-10-rgb' | '--rh-color-red-20-hsl' | '--rh-color-red-20-rgb' | '--rh-color-red-30-hsl' | '--rh-color-red-30-rgb' | '--rh-color-red-40-hsl' | '--rh-color-red-40-rgb' | '--rh-color-red-50-hsl' | '--rh-color-red-50-rgb' | '--rh-color-red-60-hsl' | '--rh-color-red-60-rgb' | '--rh-color-red-70-hsl' | '--rh-color-red-70-rgb' | '--rh-color-red-80-hsl' | '--rh-color-red-80-rgb' | '--rh-color-teal-10' | '--rh-color-teal-20' | '--rh-color-teal-30' | '--rh-color-teal-40' | '--rh-color-teal-50' | '--rh-color-teal-60' | '--rh-color-teal-70' | '--rh-color-teal-80' | '--rh-color-teal-10-hsl' | '--rh-color-teal-10-rgb' | '--rh-color-teal-20-hsl' | '--rh-color-teal-20-rgb' | '--rh-color-teal-30-hsl' | '--rh-color-teal-30-rgb' | '--rh-color-teal-40-hsl' | '--rh-color-teal-40-rgb' | '--rh-color-teal-50-hsl' | '--rh-color-teal-50-rgb' | '--rh-color-teal-60-hsl' | '--rh-color-teal-60-rgb' | '--rh-color-teal-70-hsl' | '--rh-color-teal-70-rgb' | '--rh-color-teal-80-hsl' | '--rh-color-teal-80-rgb' | '--rh-color-yellow-10' | '--rh-color-yellow-20' | '--rh-color-yellow-30' | '--rh-color-yellow-40' | '--rh-color-yellow-50' | '--rh-color-yellow-60' | '--rh-color-yellow-70' | '--rh-color-yellow-80' | '--rh-color-yellow-10-hsl' | '--rh-color-yellow-10-rgb' | '--rh-color-yellow-20-hsl' | '--rh-color-yellow-20-rgb' | '--rh-color-yellow-30-hsl' | '--rh-color-yellow-30-rgb' | '--rh-color-yellow-40-hsl' | '--rh-color-yellow-40-rgb' | '--rh-color-yellow-50-hsl' | '--rh-color-yellow-50-rgb' | '--rh-color-yellow-60-hsl' | '--rh-color-yellow-60-rgb' | '--rh-color-yellow-70-hsl' | '--rh-color-yellow-70-rgb' | '--rh-color-yellow-80-hsl' | '--rh-color-yellow-80-rgb' | '--rh-color-interactive-primary-default' | '--rh-color-interactive-primary-default-on-light' | '--rh-color-interactive-primary-default-on-dark' | '--rh-color-interactive-primary-hover' | '--rh-color-interactive-primary-hover-on-light' | '--rh-color-interactive-primary-hover-on-dark' | '--rh-color-interactive-primary-active' | '--rh-color-interactive-primary-active-on-light' | '--rh-color-interactive-primary-active-on-dark' | '--rh-color-interactive-primary-focus' | '--rh-color-interactive-primary-focus-on-light' | '--rh-color-interactive-primary-focus-on-dark' | '--rh-color-interactive-primary-visited-default' | '--rh-color-interactive-primary-visited-default-on-light' | '--rh-color-interactive-primary-visited-default-on-dark' | '--rh-color-interactive-primary-visited-hover' | '--rh-color-interactive-primary-visited-hover-on-light' | '--rh-color-interactive-primary-visited-hover-on-dark' | '--rh-color-interactive-primary-visited-active' | '--rh-color-interactive-primary-visited-active-on-light' | '--rh-color-interactive-primary-visited-active-on-dark' | '--rh-color-interactive-primary-visited-focus' | '--rh-color-interactive-primary-visited-focus-on-light' | '--rh-color-interactive-primary-visited-focus-on-dark' | '--rh-color-interactive-secondary-default' | '--rh-color-interactive-secondary-default-on-light' | '--rh-color-interactive-secondary-default-on-dark' | '--rh-color-interactive-secondary-hover' | '--rh-color-interactive-secondary-hover-on-light' | '--rh-color-interactive-secondary-hover-on-dark' | '--rh-color-interactive-secondary-active' | '--rh-color-interactive-secondary-active-on-light' | '--rh-color-interactive-secondary-active-on-dark' | '--rh-color-interactive-secondary-focus' | '--rh-color-interactive-secondary-focus-on-light' | '--rh-color-interactive-secondary-focus-on-dark' | '--rh-color-interactive-secondary-visited-default' | '--rh-color-interactive-secondary-visited-default-on-light' | '--rh-color-interactive-secondary-visited-default-on-dark' | '--rh-color-interactive-secondary-visited-hover' | '--rh-color-interactive-secondary-visited-hover-on-light' | '--rh-color-interactive-secondary-visited-hover-on-dark' | '--rh-color-interactive-secondary-visited-active' | '--rh-color-interactive-secondary-visited-active-on-light' | '--rh-color-interactive-secondary-visited-active-on-dark' | '--rh-color-interactive-secondary-visited-focus' | '--rh-color-interactive-secondary-visited-focus-on-light' | '--rh-color-interactive-secondary-visited-focus-on-dark' | '--rh-color-interactive-blue-lightest' | '--rh-color-interactive-blue-lighter' | '--rh-color-interactive-blue-darker' | '--rh-color-interactive-blue-darkest' | '--rh-color-interactive-purple-lightest' | '--rh-color-interactive-purple-lighter' | '--rh-color-interactive-purple-darker' | '--rh-color-interactive-purple-darkest' | '--rh-color-status-danger' | '--rh-color-status-danger-on-light' | '--rh-color-status-danger-on-dark' | '--rh-color-status-caution' | '--rh-color-status-caution-on-light' | '--rh-color-status-caution-on-dark' | '--rh-color-status-warning' | '--rh-color-status-warning-on-light' | '--rh-color-status-warning-on-dark' | '--rh-color-status-neutral' | '--rh-color-status-neutral-on-light' | '--rh-color-status-neutral-on-dark' | '--rh-color-status-note' | '--rh-color-status-note-on-light' | '--rh-color-status-note-on-dark' | '--rh-color-status-info' | '--rh-color-status-info-on-light' | '--rh-color-status-info-on-dark' | '--rh-color-status-success' | '--rh-color-status-success-on-light' | '--rh-color-status-success-on-dark' | '--rh-color-surface' | '--rh-color-surface-lightest' | '--rh-color-surface-lighter' | '--rh-color-surface-light' | '--rh-color-surface-dark' | '--rh-color-surface-dark-alt' | '--rh-color-surface-darker' | '--rh-color-surface-darkest' | '--rh-color-surface-status-danger' | '--rh-color-surface-status-danger-on-light' | '--rh-color-surface-status-danger-on-dark' | '--rh-color-surface-status-caution' | '--rh-color-surface-status-caution-on-light' | '--rh-color-surface-status-caution-on-dark' | '--rh-color-surface-status-warning' | '--rh-color-surface-status-warning-on-light' | '--rh-color-surface-status-warning-on-dark' | '--rh-color-surface-status-default' | '--rh-color-surface-status-default-on-light' | '--rh-color-surface-status-default-on-dark' | '--rh-color-surface-status-neutral' | '--rh-color-surface-status-neutral-on-light' | '--rh-color-surface-status-neutral-on-dark' | '--rh-color-surface-status-info' | '--rh-color-surface-status-info-on-light' | '--rh-color-surface-status-info-on-dark' | '--rh-color-surface-status-success' | '--rh-color-surface-status-success-on-light' | '--rh-color-surface-status-success-on-dark' | '--rh-color-text-primary' | '--rh-color-text-primary-on-light' | '--rh-color-text-primary-on-dark' | '--rh-color-text-secondary' | '--rh-color-text-secondary-on-light' | '--rh-color-text-secondary-on-dark' | '--rh-color-text-brand' | '--rh-color-text-brand-on-light' | '--rh-color-text-brand-on-dark' | '--rh-color-white-hsl' | '--rh-color-white-rgb' | '--rh-color-black-hsl' | '--rh-color-black-rgb' | '--rh-font-family-heading' | '--rh-font-family-body-text' | '--rh-font-family-code' | '--rh-font-family-lang-ar' | '--rh-font-family-lang-he' | '--rh-font-family-lang-ja' | '--rh-font-family-lang-ko' | '--rh-font-family-lang-hi' | '--rh-font-family-lang-th' | '--rh-font-family-lang-zh-cn' | '--rh-font-family-lang-zh-hk' | '--rh-font-size-body-text-xs' | '--rh-font-size-body-text-sm' | '--rh-font-size-body-text-md' | '--rh-font-size-body-text-lg' | '--rh-font-size-body-text-xl' | '--rh-font-size-body-text-2xl' | '--rh-font-size-code-xs' | '--rh-font-size-code-sm' | '--rh-font-size-code-md' | '--rh-font-size-code-lg' | '--rh-font-size-code-xl' | '--rh-font-size-code-2xl' | '--rh-font-size-heading-xs' | '--rh-font-size-heading-sm' | '--rh-font-size-heading-md' | '--rh-font-size-heading-lg' | '--rh-font-size-heading-xl' | '--rh-font-size-heading-2xl' | '--rh-letter-spacing-body-text' | '--rh-size-icon-01' | '--rh-size-icon-02' | '--rh-size-icon-03' | '--rh-size-icon-04' | '--rh-size-icon-05' | '--rh-size-icon-06' | '--rh-size-icon-07' | '--rh-size-icon-08' | '--rh-size-icon-09' | '--rh-media-xs' | '--rh-media-sm' | '--rh-media-md' | '--rh-media-lg' | '--rh-media-xl' | '--rh-media-2xl' | '--rh-opacity-0' | '--rh-opacity-10' | '--rh-opacity-20' | '--rh-opacity-30' | '--rh-opacity-40' | '--rh-opacity-50' | '--rh-opacity-60' | '--rh-opacity-70' | '--rh-opacity-80' | '--rh-opacity-90' | '--rh-opacity-100' | '--rh-box-shadow-sm' | '--rh-box-shadow-md' | '--rh-box-shadow-lg' | '--rh-box-shadow-xl' | '--rh-length-4xs' | '--rh-length-3xs' | '--rh-length-2xs' | '--rh-length-xs' | '--rh-length-sm' | '--rh-length-md' | '--rh-length-lg' | '--rh-length-xl' | '--rh-length-2xl' | '--rh-length-3xl' | '--rh-length-4xl' | '--rh-length-5xl' | '--rh-length-6xl' | '--rh-length-7xl' | '--rh-space-xs' | '--rh-space-sm' | '--rh-space-md' | '--rh-space-lg' | '--rh-space-xl' | '--rh-space-2xl' | '--rh-space-3xl' | '--rh-space-4xl' | '--rh-space-5xl' | '--rh-space-6xl' | '--rh-space-7xl'): DesignToken<string>;
+  get(key: '--rh-animation-speed' | '--rh-animation-timing' | '--rh-border-width-sm' | '--rh-border-width-md' | '--rh-border-width-lg' | '--rh-border-radius-sharp' | '--rh-border-radius-default' | '--rh-border-radius-pill' | '--rh-breakpoint-2xs-max' | '--rh-breakpoint-xs' | '--rh-breakpoint-xs-max' | '--rh-breakpoint-sm' | '--rh-breakpoint-sm-max' | '--rh-breakpoint-md' | '--rh-breakpoint-md-max' | '--rh-breakpoint-lg' | '--rh-breakpoint-lg-max' | '--rh-breakpoint-xl' | '--rh-breakpoint-xl-max' | '--rh-breakpoint-2xl' | '--rh-color-accent-base' | '--rh-color-accent-base-on-light' | '--rh-color-accent-base-on-dark' | '--rh-color-accent-brand' | '--rh-color-accent-brand-on-light' | '--rh-color-accent-brand-on-dark' | '--rh-color-border-strong' | '--rh-color-border-strong-on-light' | '--rh-color-border-strong-on-dark' | '--rh-color-border-subtle' | '--rh-color-border-subtle-on-light' | '--rh-color-border-subtle-on-dark' | '--rh-color-border-interactive' | '--rh-color-border-interactive-on-light' | '--rh-color-border-interactive-on-dark' | '--rh-color-border-destructive' | '--rh-color-border-destructive-on-light' | '--rh-color-border-destructive-on-dark' | '--rh-color-border-status-danger' | '--rh-color-border-status-danger-on-light' | '--rh-color-border-status-danger-on-dark' | '--rh-color-border-status-caution' | '--rh-color-border-status-caution-on-light' | '--rh-color-border-status-caution-on-dark' | '--rh-color-border-status-warning' | '--rh-color-border-status-warning-on-light' | '--rh-color-border-status-warning-on-dark' | '--rh-color-border-status-neutral' | '--rh-color-border-status-neutral-on-light' | '--rh-color-border-status-neutral-on-dark' | '--rh-color-border-status-info' | '--rh-color-border-status-info-on-light' | '--rh-color-border-status-info-on-dark' | '--rh-color-border-status-success' | '--rh-color-border-status-success-on-light' | '--rh-color-border-status-success-on-dark' | '--rh-color-brand-red' | '--rh-color-brand-red-on-light' | '--rh-color-brand-red-on-dark' | '--rh-color-brand-red-lightest' | '--rh-color-brand-red-lighter' | '--rh-color-brand-red-light' | '--rh-color-brand-red-dark' | '--rh-color-brand-red-darker' | '--rh-color-brand-red-darkest' | '--rh-color-green-10' | '--rh-color-green-20' | '--rh-color-green-30' | '--rh-color-green-40' | '--rh-color-green-50' | '--rh-color-green-60' | '--rh-color-green-70' | '--rh-color-green-10-hsl' | '--rh-color-green-10-rgb' | '--rh-color-green-20-hsl' | '--rh-color-green-20-rgb' | '--rh-color-green-30-hsl' | '--rh-color-green-30-rgb' | '--rh-color-green-40-hsl' | '--rh-color-green-40-rgb' | '--rh-color-green-50-hsl' | '--rh-color-green-50-rgb' | '--rh-color-green-60-hsl' | '--rh-color-green-60-rgb' | '--rh-color-green-70-hsl' | '--rh-color-green-70-rgb' | '--rh-color-orange-10' | '--rh-color-orange-20' | '--rh-color-orange-30' | '--rh-color-orange-40' | '--rh-color-orange-50' | '--rh-color-orange-60' | '--rh-color-orange-70' | '--rh-color-orange-80' | '--rh-color-orange-10-hsl' | '--rh-color-orange-10-rgb' | '--rh-color-orange-20-hsl' | '--rh-color-orange-20-rgb' | '--rh-color-orange-30-hsl' | '--rh-color-orange-30-rgb' | '--rh-color-orange-40-hsl' | '--rh-color-orange-40-rgb' | '--rh-color-orange-50-hsl' | '--rh-color-orange-50-rgb' | '--rh-color-orange-60-hsl' | '--rh-color-orange-60-rgb' | '--rh-color-orange-70-hsl' | '--rh-color-orange-70-rgb' | '--rh-color-orange-80-hsl' | '--rh-color-orange-80-rgb' | '--rh-color-icon-primary' | '--rh-color-icon-primary-on-light' | '--rh-color-icon-primary-on-dark' | '--rh-color-icon-secondary' | '--rh-color-icon-secondary-on-light' | '--rh-color-icon-secondary-on-dark' | '--rh-color-icon-subtle' | '--rh-color-icon-subtle-hover' | '--rh-color-icon-status-danger' | '--rh-color-icon-status-danger-on-light' | '--rh-color-icon-status-danger-on-dark' | '--rh-color-icon-status-caution' | '--rh-color-icon-status-caution-on-light' | '--rh-color-icon-status-caution-on-dark' | '--rh-color-icon-status-warning' | '--rh-color-icon-status-warning-on-light' | '--rh-color-icon-status-warning-on-dark' | '--rh-color-icon-status-default' | '--rh-color-icon-status-default-on-light' | '--rh-color-icon-status-default-on-dark' | '--rh-color-icon-status-neutral' | '--rh-color-icon-status-neutral-on-light' | '--rh-color-icon-status-neutral-on-dark' | '--rh-color-icon-status-info' | '--rh-color-icon-status-info-on-light' | '--rh-color-icon-status-info-on-dark' | '--rh-color-icon-status-success' | '--rh-color-icon-status-success-on-light' | '--rh-color-icon-status-success-on-dark' | '--rh-color-canvas-white' | '--rh-color-canvas-black' | '--rh-color-canvas-white-hsl' | '--rh-color-canvas-white-rgb' | '--rh-color-canvas-black-hsl' | '--rh-color-canvas-black-rgb' | '--rh-color-blue-10' | '--rh-color-blue-20' | '--rh-color-blue-30' | '--rh-color-blue-40' | '--rh-color-blue-50' | '--rh-color-blue-60' | '--rh-color-blue-70' | '--rh-color-blue-10-hsl' | '--rh-color-blue-10-rgb' | '--rh-color-blue-20-hsl' | '--rh-color-blue-20-rgb' | '--rh-color-blue-30-hsl' | '--rh-color-blue-30-rgb' | '--rh-color-blue-40-hsl' | '--rh-color-blue-40-rgb' | '--rh-color-blue-50-hsl' | '--rh-color-blue-50-rgb' | '--rh-color-blue-60-hsl' | '--rh-color-blue-60-rgb' | '--rh-color-blue-70-hsl' | '--rh-color-blue-70-rgb' | '--rh-color-white' | '--rh-color-gray-10' | '--rh-color-gray-20' | '--rh-color-gray-30' | '--rh-color-gray-40' | '--rh-color-gray-45' | '--rh-color-gray-50' | '--rh-color-gray-60' | '--rh-color-gray-70' | '--rh-color-gray-80' | '--rh-color-gray-90' | '--rh-color-gray-95' | '--rh-color-gray-10-hsl' | '--rh-color-gray-10-rgb' | '--rh-color-gray-20-hsl' | '--rh-color-gray-20-rgb' | '--rh-color-gray-30-hsl' | '--rh-color-gray-30-rgb' | '--rh-color-gray-40-hsl' | '--rh-color-gray-40-rgb' | '--rh-color-gray-45-hsl' | '--rh-color-gray-45-rgb' | '--rh-color-gray-50-hsl' | '--rh-color-gray-50-rgb' | '--rh-color-gray-60-hsl' | '--rh-color-gray-60-rgb' | '--rh-color-gray-70-hsl' | '--rh-color-gray-70-rgb' | '--rh-color-gray-80-hsl' | '--rh-color-gray-80-rgb' | '--rh-color-gray-90-hsl' | '--rh-color-gray-90-rgb' | '--rh-color-gray-95-hsl' | '--rh-color-gray-95-rgb' | '--rh-color-black' | '--rh-color-purple-10' | '--rh-color-purple-20' | '--rh-color-purple-30' | '--rh-color-purple-40' | '--rh-color-purple-50' | '--rh-color-purple-60' | '--rh-color-purple-70' | '--rh-color-purple-80' | '--rh-color-purple-10-hsl' | '--rh-color-purple-10-rgb' | '--rh-color-purple-20-hsl' | '--rh-color-purple-20-rgb' | '--rh-color-purple-30-hsl' | '--rh-color-purple-30-rgb' | '--rh-color-purple-40-hsl' | '--rh-color-purple-40-rgb' | '--rh-color-purple-50-hsl' | '--rh-color-purple-50-rgb' | '--rh-color-purple-60-hsl' | '--rh-color-purple-60-rgb' | '--rh-color-purple-70-hsl' | '--rh-color-purple-70-rgb' | '--rh-color-purple-80-hsl' | '--rh-color-purple-80-rgb' | '--rh-color-red-orange-10' | '--rh-color-red-orange-20' | '--rh-color-red-orange-30' | '--rh-color-red-orange-40' | '--rh-color-red-orange-50' | '--rh-color-red-orange-60' | '--rh-color-red-orange-70' | '--rh-color-red-orange-10-hsl' | '--rh-color-red-orange-10-rgb' | '--rh-color-red-orange-20-hsl' | '--rh-color-red-orange-20-rgb' | '--rh-color-red-orange-30-hsl' | '--rh-color-red-orange-30-rgb' | '--rh-color-red-orange-40-hsl' | '--rh-color-red-orange-40-rgb' | '--rh-color-red-orange-50-hsl' | '--rh-color-red-orange-50-rgb' | '--rh-color-red-orange-60-hsl' | '--rh-color-red-orange-60-rgb' | '--rh-color-red-orange-70-hsl' | '--rh-color-red-orange-70-rgb' | '--rh-color-red-5' | '--rh-color-red-10' | '--rh-color-red-20' | '--rh-color-red-30' | '--rh-color-red-40' | '--rh-color-red-50' | '--rh-color-red-60' | '--rh-color-red-70' | '--rh-color-red-80' | '--rh-color-red-5-hsl' | '--rh-color-red-5-rgb' | '--rh-color-red-10-hsl' | '--rh-color-red-10-rgb' | '--rh-color-red-20-hsl' | '--rh-color-red-20-rgb' | '--rh-color-red-30-hsl' | '--rh-color-red-30-rgb' | '--rh-color-red-40-hsl' | '--rh-color-red-40-rgb' | '--rh-color-red-50-hsl' | '--rh-color-red-50-rgb' | '--rh-color-red-60-hsl' | '--rh-color-red-60-rgb' | '--rh-color-red-70-hsl' | '--rh-color-red-70-rgb' | '--rh-color-red-80-hsl' | '--rh-color-red-80-rgb' | '--rh-color-teal-10' | '--rh-color-teal-20' | '--rh-color-teal-30' | '--rh-color-teal-40' | '--rh-color-teal-50' | '--rh-color-teal-60' | '--rh-color-teal-70' | '--rh-color-teal-80' | '--rh-color-teal-10-hsl' | '--rh-color-teal-10-rgb' | '--rh-color-teal-20-hsl' | '--rh-color-teal-20-rgb' | '--rh-color-teal-30-hsl' | '--rh-color-teal-30-rgb' | '--rh-color-teal-40-hsl' | '--rh-color-teal-40-rgb' | '--rh-color-teal-50-hsl' | '--rh-color-teal-50-rgb' | '--rh-color-teal-60-hsl' | '--rh-color-teal-60-rgb' | '--rh-color-teal-70-hsl' | '--rh-color-teal-70-rgb' | '--rh-color-teal-80-hsl' | '--rh-color-teal-80-rgb' | '--rh-color-yellow-10' | '--rh-color-yellow-20' | '--rh-color-yellow-30' | '--rh-color-yellow-40' | '--rh-color-yellow-50' | '--rh-color-yellow-60' | '--rh-color-yellow-70' | '--rh-color-yellow-80' | '--rh-color-yellow-10-hsl' | '--rh-color-yellow-10-rgb' | '--rh-color-yellow-20-hsl' | '--rh-color-yellow-20-rgb' | '--rh-color-yellow-30-hsl' | '--rh-color-yellow-30-rgb' | '--rh-color-yellow-40-hsl' | '--rh-color-yellow-40-rgb' | '--rh-color-yellow-50-hsl' | '--rh-color-yellow-50-rgb' | '--rh-color-yellow-60-hsl' | '--rh-color-yellow-60-rgb' | '--rh-color-yellow-70-hsl' | '--rh-color-yellow-70-rgb' | '--rh-color-yellow-80-hsl' | '--rh-color-yellow-80-rgb' | '--rh-color-interactive-primary-default' | '--rh-color-interactive-primary-default-on-light' | '--rh-color-interactive-primary-default-on-dark' | '--rh-color-interactive-primary-hover' | '--rh-color-interactive-primary-hover-on-light' | '--rh-color-interactive-primary-hover-on-dark' | '--rh-color-interactive-primary-active' | '--rh-color-interactive-primary-active-on-light' | '--rh-color-interactive-primary-active-on-dark' | '--rh-color-interactive-primary-focus' | '--rh-color-interactive-primary-focus-on-light' | '--rh-color-interactive-primary-focus-on-dark' | '--rh-color-interactive-primary-visited-default' | '--rh-color-interactive-primary-visited-default-on-light' | '--rh-color-interactive-primary-visited-default-on-dark' | '--rh-color-interactive-primary-visited-hover' | '--rh-color-interactive-primary-visited-hover-on-light' | '--rh-color-interactive-primary-visited-hover-on-dark' | '--rh-color-interactive-primary-visited-active' | '--rh-color-interactive-primary-visited-active-on-light' | '--rh-color-interactive-primary-visited-active-on-dark' | '--rh-color-interactive-primary-visited-focus' | '--rh-color-interactive-primary-visited-focus-on-light' | '--rh-color-interactive-primary-visited-focus-on-dark' | '--rh-color-interactive-secondary-default' | '--rh-color-interactive-secondary-default-on-light' | '--rh-color-interactive-secondary-default-on-dark' | '--rh-color-interactive-secondary-hover' | '--rh-color-interactive-secondary-hover-on-light' | '--rh-color-interactive-secondary-hover-on-dark' | '--rh-color-interactive-secondary-active' | '--rh-color-interactive-secondary-active-on-light' | '--rh-color-interactive-secondary-active-on-dark' | '--rh-color-interactive-secondary-focus' | '--rh-color-interactive-secondary-focus-on-light' | '--rh-color-interactive-secondary-focus-on-dark' | '--rh-color-interactive-secondary-visited-default' | '--rh-color-interactive-secondary-visited-default-on-light' | '--rh-color-interactive-secondary-visited-default-on-dark' | '--rh-color-interactive-secondary-visited-hover' | '--rh-color-interactive-secondary-visited-hover-on-light' | '--rh-color-interactive-secondary-visited-hover-on-dark' | '--rh-color-interactive-secondary-visited-active' | '--rh-color-interactive-secondary-visited-active-on-light' | '--rh-color-interactive-secondary-visited-active-on-dark' | '--rh-color-interactive-secondary-visited-focus' | '--rh-color-interactive-secondary-visited-focus-on-light' | '--rh-color-interactive-secondary-visited-focus-on-dark' | '--rh-color-interactive-blue-lightest' | '--rh-color-interactive-blue-lighter' | '--rh-color-interactive-blue-darker' | '--rh-color-interactive-blue-darkest' | '--rh-color-interactive-purple-lightest' | '--rh-color-interactive-purple-lighter' | '--rh-color-interactive-purple-darker' | '--rh-color-interactive-purple-darkest' | '--rh-color-status-danger' | '--rh-color-status-danger-on-light' | '--rh-color-status-danger-on-dark' | '--rh-color-status-caution' | '--rh-color-status-caution-on-light' | '--rh-color-status-caution-on-dark' | '--rh-color-status-warning' | '--rh-color-status-warning-on-light' | '--rh-color-status-warning-on-dark' | '--rh-color-status-neutral' | '--rh-color-status-neutral-on-light' | '--rh-color-status-neutral-on-dark' | '--rh-color-status-note' | '--rh-color-status-note-on-light' | '--rh-color-status-note-on-dark' | '--rh-color-status-info' | '--rh-color-status-info-on-light' | '--rh-color-status-info-on-dark' | '--rh-color-status-success' | '--rh-color-status-success-on-light' | '--rh-color-status-success-on-dark' | '--rh-color-surface' | '--rh-color-surface-lightest' | '--rh-color-surface-lighter' | '--rh-color-surface-light' | '--rh-color-surface-dark' | '--rh-color-surface-dark-alt' | '--rh-color-surface-darker' | '--rh-color-surface-darkest' | '--rh-color-surface-status-danger' | '--rh-color-surface-status-danger-on-light' | '--rh-color-surface-status-danger-on-dark' | '--rh-color-surface-status-caution' | '--rh-color-surface-status-caution-on-light' | '--rh-color-surface-status-caution-on-dark' | '--rh-color-surface-status-warning' | '--rh-color-surface-status-warning-on-light' | '--rh-color-surface-status-warning-on-dark' | '--rh-color-surface-status-default' | '--rh-color-surface-status-default-on-light' | '--rh-color-surface-status-default-on-dark' | '--rh-color-surface-status-neutral' | '--rh-color-surface-status-neutral-on-light' | '--rh-color-surface-status-neutral-on-dark' | '--rh-color-surface-status-info' | '--rh-color-surface-status-info-on-light' | '--rh-color-surface-status-info-on-dark' | '--rh-color-surface-status-success' | '--rh-color-surface-status-success-on-light' | '--rh-color-surface-status-success-on-dark' | '--rh-color-text-primary' | '--rh-color-text-primary-on-light' | '--rh-color-text-primary-on-dark' | '--rh-color-text-secondary' | '--rh-color-text-secondary-on-light' | '--rh-color-text-secondary-on-dark' | '--rh-color-text-brand' | '--rh-color-text-brand-on-light' | '--rh-color-text-brand-on-dark' | '--rh-color-white-hsl' | '--rh-color-white-rgb' | '--rh-color-black-hsl' | '--rh-color-black-rgb' | '--rh-font-family-heading' | '--rh-font-family-body-text' | '--rh-font-family-code' | '--rh-font-family-lang-ar' | '--rh-font-family-lang-he' | '--rh-font-family-lang-ja' | '--rh-font-family-lang-ko' | '--rh-font-family-lang-hi' | '--rh-font-family-lang-th' | '--rh-font-family-lang-zh-cn' | '--rh-font-family-lang-zh-hk' | '--rh-font-size-body-text-xs' | '--rh-font-size-body-text-sm' | '--rh-font-size-body-text-md' | '--rh-font-size-body-text-lg' | '--rh-font-size-body-text-xl' | '--rh-font-size-body-text-2xl' | '--rh-font-size-code-xs' | '--rh-font-size-code-sm' | '--rh-font-size-code-md' | '--rh-font-size-code-lg' | '--rh-font-size-code-xl' | '--rh-font-size-code-2xl' | '--rh-font-size-heading-xs' | '--rh-font-size-heading-sm' | '--rh-font-size-heading-md' | '--rh-font-size-heading-lg' | '--rh-font-size-heading-xl' | '--rh-font-size-heading-2xl' | '--rh-letter-spacing-body-text' | '--rh-size-icon-01' | '--rh-size-icon-02' | '--rh-size-icon-03' | '--rh-size-icon-04' | '--rh-size-icon-05' | '--rh-size-icon-06' | '--rh-size-icon-07' | '--rh-size-icon-08' | '--rh-size-icon-09' | '--rh-media-xs' | '--rh-media-sm' | '--rh-media-md' | '--rh-media-lg' | '--rh-media-xl' | '--rh-media-2xl' | '--rh-opacity-0' | '--rh-opacity-10' | '--rh-opacity-20' | '--rh-opacity-30' | '--rh-opacity-40' | '--rh-opacity-50' | '--rh-opacity-60' | '--rh-opacity-70' | '--rh-opacity-80' | '--rh-opacity-90' | '--rh-opacity-100' | '--rh-box-shadow-sm' | '--rh-box-shadow-md' | '--rh-box-shadow-lg' | '--rh-box-shadow-xl' | '--rh-length-4xs' | '--rh-length-3xs' | '--rh-length-2xs' | '--rh-length-xs' | '--rh-length-sm' | '--rh-length-md' | '--rh-length-lg' | '--rh-length-xl' | '--rh-length-2xl' | '--rh-length-3xl' | '--rh-length-4xl' | '--rh-length-5xl' | '--rh-length-6xl' | '--rh-length-7xl' | '--rh-space-xs' | '--rh-space-sm' | '--rh-space-md' | '--rh-space-lg' | '--rh-space-xl' | '--rh-space-2xl' | '--rh-space-3xl' | '--rh-space-4xl' | '--rh-space-5xl' | '--rh-space-6xl' | '--rh-space-7xl'): DesignToken<string>;
   get(key: '--rh-font-weight-body-text-regular' | '--rh-font-weight-body-text-medium' | '--rh-font-weight-code-regular' | '--rh-font-weight-code-medium' | '--rh-font-weight-heading-regular' | '--rh-font-weight-heading-medium' | '--rh-font-weight-heading-bold' | '--rh-line-height-heading' | '--rh-line-height-body-text' | '--rh-line-height-code'): DesignToken<number>;
   get(key: TokenName): DesignToken;
   get(key: string): null;
@@ -73,13 +73,13 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-border-width-sm": {
     "$value": "1px",
-    "$description": "1px border width; Example: Secondary CTA or Button",
+    "$description": "Applies a 1px border width to at least 1 side of a container. This shall be the default width for all borders and lines. It should be used to establish baseline thickness or visual separation with a container or thin line. It must not be used for strong directional emphasis like indicating a selected state. Recommended for elements like Button, Card, or Field. Applying to all 4 sides at once is optional.",
     "filePath": "tokens/border.yml",
     "isSource": true,
     "$type": "dimension",
     "original": {
       "$value": "{length.4xs}",
-      "$description": "1px border width; Example: Secondary CTA or Button",
+      "$description": "Applies a 1px border width to at least 1 side of a container. This shall be the default width for all borders and lines. It should be used to establish baseline thickness or visual separation with a container or thin line. It must not be used for strong directional emphasis like indicating a selected state. Recommended for elements like Button, Card, or Field. Applying to all 4 sides at once is optional.",
       "$type": "dimension"
     },
     "name": "rh-border-width-sm",
@@ -98,13 +98,13 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-border-width-md": {
     "$value": "2px",
-    "$description": "2px border width: Example: Alert",
+    "$description": "Applies a 2px border width to at least 1 side of a container. It should be used to add emphasis or visual separation beyond a 1px border. Recommended for elements needing extra thickness like Alert or Progress stepper. It must be used to ensure hover, focus, and active states are discernible by more than color alone per WCAG. Applying to all 4 sides at once is optional.",
     "filePath": "tokens/border.yml",
     "isSource": true,
     "$type": "dimension",
     "original": {
       "$value": "{length.3xs}",
-      "$description": "2px border width: Example: Alert",
+      "$description": "Applies a 2px border width to at least 1 side of a container. It should be used to add emphasis or visual separation beyond a 1px border. Recommended for elements needing extra thickness like Alert or Progress stepper. It must be used to ensure hover, focus, and active states are discernible by more than color alone per WCAG. Applying to all 4 sides at once is optional.",
       "$type": "dimension"
     },
     "name": "rh-border-width-md",
@@ -123,13 +123,13 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-border-width-lg": {
     "$value": "3px",
-    "$description": "3px border width: Example: Expanded Accordion panel",
+    "$description": "Applies a 3px border width to 1 side of a container. It should be used for strong directional emphasis like indicating a current page, expanded, or selected state. Recommended for elements needing heavy visual weight like Accordion, Navigation, or Tabs. It must also be used for the focus indicator border per WCAG. Except for the focus indicator, it should not be applied to all 4 sides at once.",
     "filePath": "tokens/border.yml",
     "isSource": true,
     "$type": "dimension",
     "original": {
       "$value": "{length.2xs}",
-      "$description": "3px border width: Example: Expanded Accordion panel",
+      "$description": "Applies a 3px border width to 1 side of a container. It should be used for strong directional emphasis like indicating a current page, expanded, or selected state. Recommended for elements needing heavy visual weight like Accordion, Navigation, or Tabs. It must also be used for the focus indicator border per WCAG. Except for the focus indicator, it should not be applied to all 4 sides at once.",
       "$type": "dimension"
     },
     "name": "rh-border-width-lg",
@@ -148,12 +148,12 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-border-radius-sharp": {
     "$value": "0.0px",
-    "$description": "Border radius reset",
+    "$description": "This token resets the border radius of a container back to 0 or sharp. It must be applied to all 4 corners of a container at once.",
     "filePath": "tokens/border.yml",
     "isSource": true,
     "original": {
       "$value": "0.0px",
-      "$description": "Border radius reset"
+      "$description": "This token resets the border radius of a container back to 0 or sharp. It must be applied to all 4 corners of a container at once."
     },
     "name": "rh-border-radius-sharp",
     "attributes": {
@@ -170,13 +170,13 @@ exports.tokens = new TokenMetaMap({
     "key": "{border.radius.sharp}"
   },
   "--rh-border-radius-default": {
-    "$description": "3px border radius; Example: Card",
     "$value": "3px",
+    "$description": "Applies a 3px border radius to at least 1 corner of a container. This shall be the default for all containers needing rounded corners. It should be used to soften a container's visual footprint. Recommended for elements with subtle rounded corners like Button, Card, or Dialog. It must be applied to all 4 corners of a container at once.",
     "filePath": "tokens/border.yml",
     "isSource": true,
     "original": {
-      "$description": "3px border radius; Example: Card",
-      "$value": "{length.2xs}"
+      "$value": "{length.2xs}",
+      "$description": "Applies a 3px border radius to at least 1 corner of a container. This shall be the default for all containers needing rounded corners. It should be used to soften a container's visual footprint. Recommended for elements with subtle rounded corners like Button, Card, or Dialog. It must be applied to all 4 corners of a container at once."
     },
     "name": "rh-border-radius-default",
     "attributes": {
@@ -194,12 +194,12 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-border-radius-pill": {
     "$value": "64px",
-    "$description": "Pill border radius; Example: Label",
+    "$description": "Applies a 64px border radius to at least 1 corner of a container. It should be used for elements needing a circle or pill-shaped background like Avatar, Badge, or Switch. It may also be used for Hybrid style branding. Applying to all 4 corners at once is optional. It may replace the default 3px radius when not all corners need the same value.",
     "filePath": "tokens/border.yml",
     "isSource": true,
     "original": {
       "$value": "{length.4xl}",
-      "$description": "Pill border radius; Example: Label"
+      "$description": "Applies a 64px border radius to at least 1 corner of a container. It should be used for elements needing a circle or pill-shaped background like Avatar, Badge, or Switch. It may also be used for Hybrid style branding. Applying to all 4 corners at once is optional. It may replace the default 3px radius when not all corners need the same value."
     },
     "name": "rh-border-radius-pill",
     "attributes": {
@@ -7340,7 +7340,7 @@ exports.tokens = new TokenMetaMap({
     "key": "{color.blue.70-rgb}"
   },
   "--rh-color-white": {
-    "$description": "Lightest surface (light theme) or primary text (dark theme)",
+    "$description": "Lightest surface (light scheme) or primary text (dark scheme)",
     "$value": "#ffffff",
     "attributes": {
       "type": "gray",
@@ -7370,7 +7370,7 @@ exports.tokens = new TokenMetaMap({
     "isSource": true,
     "$type": "color",
     "original": {
-      "$description": "Lightest surface (light theme) or primary text (dark theme)",
+      "$description": "Lightest surface (light scheme) or primary text (dark scheme)",
       "$value": "#ffffff",
       "attributes": {
         "type": "gray"
@@ -7386,7 +7386,7 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-10": {
     "$value": "#f2f2f2",
-    "$description": "Tertiary surface (light theme)",
+    "$description": "Tertiary surface (light scheme)",
     "attributes": {
       "type": "gray",
       "category": "color",
@@ -7417,7 +7417,7 @@ exports.tokens = new TokenMetaMap({
     "$type": "color",
     "original": {
       "$value": "#F2F2F2",
-      "$description": "Tertiary surface (light theme)",
+      "$description": "Tertiary surface (light scheme)",
       "attributes": {
         "type": "gray"
       },
@@ -7433,7 +7433,7 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-20": {
     "$value": "#e0e0e0",
-    "$description": "Secondary surface (light theme)",
+    "$description": "Secondary surface (light scheme)",
     "attributes": {
       "type": "gray",
       "category": "color",
@@ -7464,7 +7464,7 @@ exports.tokens = new TokenMetaMap({
     "$type": "color",
     "original": {
       "$value": "#E0E0E0",
-      "$description": "Secondary surface (light theme)",
+      "$description": "Secondary surface (light scheme)",
       "attributes": {
         "type": "gray"
       },
@@ -7480,7 +7480,7 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-30": {
     "$value": "#c7c7c7",
-    "$description": "Subtle borders (light theme)",
+    "$description": "Subtle borders (light scheme)",
     "attributes": {
       "type": "gray",
       "category": "color",
@@ -7511,7 +7511,7 @@ exports.tokens = new TokenMetaMap({
     "$type": "color",
     "original": {
       "$value": "#C7C7C7",
-      "$description": "Subtle borders (light theme)",
+      "$description": "Subtle borders (light scheme)",
       "attributes": {
         "type": "gray"
       },
@@ -7572,6 +7572,53 @@ exports.tokens = new TokenMetaMap({
     ],
     "key": "{color.gray.40}"
   },
+  "--rh-color-gray-45": {
+    "$value": "#8c8c8c",
+    "$description": "Call to action text decoration (unified theme)",
+    "attributes": {
+      "type": "gray",
+      "category": "color",
+      "item": "45",
+      "hex": "8c8c8c",
+      "rgb": {
+        "r": 140,
+        "g": 140,
+        "b": 140,
+        "a": 1
+      },
+      "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 54.90196078431373,
+        "a": 1
+      },
+      "hsv": {
+        "h": 0,
+        "s": 0,
+        "v": 0.5490196078431373,
+        "a": 1
+      },
+      "isLight": true
+    },
+    "filePath": "tokens/color/crayon/gray.yaml",
+    "isSource": true,
+    "$type": "color",
+    "original": {
+      "$value": "#8C8C8C",
+      "$description": "Call to action text decoration (unified theme)",
+      "attributes": {
+        "type": "gray"
+      },
+      "$type": "color"
+    },
+    "name": "rh-color-gray-45",
+    "path": [
+      "color",
+      "gray",
+      "45"
+    ],
+    "key": "{color.gray.45}"
+  },
   "--rh-color-gray-50": {
     "$value": "#707070",
     "$description": "Subtle icon",
@@ -7621,7 +7668,7 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-60": {
     "$value": "#4d4d4d",
-    "$description": "Secondary text (light theme)",
+    "$description": "Secondary text (light scheme)",
     "attributes": {
       "type": "gray",
       "category": "color",
@@ -7652,7 +7699,7 @@ exports.tokens = new TokenMetaMap({
     "$type": "color",
     "original": {
       "$value": "#4D4D4D",
-      "$description": "Secondary text (light theme)",
+      "$description": "Secondary text (light scheme)",
       "attributes": {
         "type": "gray"
       },
@@ -7668,7 +7715,7 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-70": {
     "$value": "#383838",
-    "$description": "Tertiary surface (dark theme)",
+    "$description": "Tertiary surface (dark scheme)",
     "attributes": {
       "type": "gray",
       "category": "color",
@@ -7699,7 +7746,7 @@ exports.tokens = new TokenMetaMap({
     "$type": "color",
     "original": {
       "$value": "#383838",
-      "$description": "Tertiary surface (dark theme)",
+      "$description": "Tertiary surface (dark scheme)",
       "attributes": {
         "type": "gray"
       },
@@ -7762,7 +7809,7 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-90": {
     "$value": "#1f1f1f",
-    "$description": "Secondary surface (dark theme)",
+    "$description": "Secondary surface (dark scheme)",
     "attributes": {
       "type": "gray",
       "category": "color",
@@ -7793,7 +7840,7 @@ exports.tokens = new TokenMetaMap({
     "$type": "color",
     "original": {
       "$value": "#1F1F1F",
-      "$description": "Secondary surface (dark theme)",
+      "$description": "Secondary surface (dark scheme)",
       "attributes": {
         "type": "gray"
       },
@@ -7809,7 +7856,7 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-95": {
     "$value": "#151515",
-    "$description": "Primary surface (dark theme) or primary text (light theme)",
+    "$description": "Primary surface (dark scheme) or primary text (light scheme)",
     "attributes": {
       "type": "gray",
       "category": "color",
@@ -7840,7 +7887,7 @@ exports.tokens = new TokenMetaMap({
     "$type": "color",
     "original": {
       "$value": "#151515",
-      "$description": "Primary surface (dark theme) or primary text (light theme)",
+      "$description": "Primary surface (dark scheme) or primary text (light scheme)",
       "attributes": {
         "type": "gray"
       },
@@ -8189,6 +8236,90 @@ exports.tokens = new TokenMetaMap({
       "40-rgb"
     ],
     "key": "{color.gray.40-rgb}"
+  },
+  "--rh-color-gray-45-hsl": {
+    "$value": "0 0% 54.90196078431373%",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-gray-45) h s l / 10%)",
+    "$type": "color",
+    "original": {
+      "$value": "{color.gray.45}",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-gray-45) h s l / 10%)",
+      "$type": "color"
+    },
+    "name": "rh-color-gray-45-hsl",
+    "attributes": {
+      "category": "color",
+      "type": "gray",
+      "item": "45-hsl",
+      "hex": "8c8c8c",
+      "rgb": {
+        "r": 140,
+        "g": 140,
+        "b": 140,
+        "a": 1
+      },
+      "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 54.90196078431373,
+        "a": 1
+      },
+      "hsv": {
+        "h": 0,
+        "s": 0,
+        "v": 0.5490196078431373,
+        "a": 1
+      },
+      "isLight": true
+    },
+    "path": [
+      "color",
+      "gray",
+      "45-hsl"
+    ],
+    "key": "{color.gray.45-hsl}"
+  },
+  "--rh-color-gray-45-rgb": {
+    "$value": "140 140 140",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-gray-45) r g b / 10%)",
+    "$type": "color",
+    "original": {
+      "$value": "{color.gray.45}",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-gray-45) r g b / 10%)",
+      "$type": "color"
+    },
+    "name": "rh-color-gray-45-rgb",
+    "attributes": {
+      "category": "color",
+      "type": "gray",
+      "item": "45-rgb",
+      "hex": "8c8c8c",
+      "rgb": {
+        "r": 140,
+        "g": 140,
+        "b": 140,
+        "a": 1
+      },
+      "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 54.90196078431373,
+        "a": 1
+      },
+      "hsv": {
+        "h": 0,
+        "s": 0,
+        "v": 0.5490196078431373,
+        "a": 1
+      },
+      "isLight": true
+    },
+    "path": [
+      "color",
+      "gray",
+      "45-rgb"
+    ],
+    "key": "{color.gray.45-rgb}"
   },
   "--rh-color-gray-50-hsl": {
     "$value": "0 0% 43.92156862745098%",
@@ -10639,6 +10770,48 @@ exports.tokens = new TokenMetaMap({
     ],
     "key": "{color.red-orange.70-rgb}"
   },
+  "--rh-color-red-5": {
+    "$value": "#fef0f0",
+    "filePath": "tokens/color/crayon/red.yaml",
+    "isSource": true,
+    "$type": "color",
+    "original": {
+      "$value": "#FEF0F0",
+      "$type": "color"
+    },
+    "name": "rh-color-red-5",
+    "attributes": {
+      "category": "color",
+      "type": "red",
+      "item": "5",
+      "hex": "fef0f0",
+      "rgb": {
+        "r": 254,
+        "g": 240,
+        "b": 240,
+        "a": 1
+      },
+      "hsl": {
+        "h": 0,
+        "s": 87.50000000000004,
+        "l": 96.86274509803921,
+        "a": 1
+      },
+      "hsv": {
+        "h": 0,
+        "s": 0.0551181102362205,
+        "v": 0.996078431372549,
+        "a": 1
+      },
+      "isLight": true
+    },
+    "path": [
+      "color",
+      "red",
+      "5"
+    ],
+    "key": "{color.red.5}"
+  },
   "--rh-color-red-10": {
     "$value": "#fce3e3",
     "filePath": "tokens/color/crayon/red.yaml",
@@ -10988,6 +11161,90 @@ exports.tokens = new TokenMetaMap({
       "80"
     ],
     "key": "{color.red.80}"
+  },
+  "--rh-color-red-5-hsl": {
+    "$value": "0 87.50000000000004% 96.86274509803921%",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-5) h s l / 10%)",
+    "$type": "color",
+    "original": {
+      "$value": "{color.red.5}",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-5) h s l / 10%)",
+      "$type": "color"
+    },
+    "name": "rh-color-red-5-hsl",
+    "attributes": {
+      "category": "color",
+      "type": "red",
+      "item": "5-hsl",
+      "hex": "fef0f0",
+      "rgb": {
+        "r": 254,
+        "g": 240,
+        "b": 240,
+        "a": 1
+      },
+      "hsl": {
+        "h": 0,
+        "s": 87.50000000000004,
+        "l": 96.86274509803921,
+        "a": 1
+      },
+      "hsv": {
+        "h": 0,
+        "s": 0.0551181102362205,
+        "v": 0.996078431372549,
+        "a": 1
+      },
+      "isLight": true
+    },
+    "path": [
+      "color",
+      "red",
+      "5-hsl"
+    ],
+    "key": "{color.red.5-hsl}"
+  },
+  "--rh-color-red-5-rgb": {
+    "$value": "254 240 240",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-5) r g b / 10%)",
+    "$type": "color",
+    "original": {
+      "$value": "{color.red.5}",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-5) r g b / 10%)",
+      "$type": "color"
+    },
+    "name": "rh-color-red-5-rgb",
+    "attributes": {
+      "category": "color",
+      "type": "red",
+      "item": "5-rgb",
+      "hex": "fef0f0",
+      "rgb": {
+        "r": 254,
+        "g": 240,
+        "b": 240,
+        "a": 1
+      },
+      "hsl": {
+        "h": 0,
+        "s": 87.50000000000004,
+        "l": 96.86274509803921,
+        "a": 1
+      },
+      "hsv": {
+        "h": 0,
+        "s": 0.0551181102362205,
+        "v": 0.996078431372549,
+        "a": 1
+      },
+      "isLight": true
+    },
+    "path": [
+      "color",
+      "red",
+      "5-rgb"
+    ],
+    "key": "{color.red.5-rgb}"
   },
   "--rh-color-red-10-hsl": {
     "$value": "0 80.64516129032265% 93.92156862745098%",
