@@ -3,6 +3,8 @@ tagName: rh-pagination
 name: Pagination
 type: element
 overallStatus: ready
+aka:
+  - Pager
 libraries:
   figma: ready
   rhds: ready
@@ -12,3 +14,4 @@ relatedItems:
   - rh-jump-links
   - rh-progress-stepper
   - rh-tabs
+since: v1.0.0

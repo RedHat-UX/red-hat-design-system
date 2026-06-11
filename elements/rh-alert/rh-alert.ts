@@ -1,4 +1,5 @@
-import { type CSSResult, LitElement, type TemplateResult, html, isServer, render } from 'lit';
+import type { CSSResult, TemplateResult } from 'lit';
+import { LitElement, html, isServer, render, nothing } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { repeat } from 'lit/directives/repeat.js';
@@ -68,8 +69,6 @@ const toasts = new Set<Required<ToastOptions>>();
  * press Enter to activate them. Meets WCAG 2.4.3.
  *
  * @summary Notifies a user without blocking their workflow
- *
- * @alias alert
  *
  * @fires {AlertCloseEvent} close - Fires when dismissed via
  *        close button or action click. `AlertCloseEvent.action`
@@ -233,7 +232,7 @@ export class RhAlert extends LitElement {
                     [state]: true,
                     [variant]: !!variant,
                   })}"
-                  role="alert"
+                  role="${this.variant !== 'toast' ? 'alert' : nothing}"
                   aria-hidden="false">
         <div id="left-column">
           <rh-icon id="icon" set="ui" icon="${this.#icon}"></rh-icon>

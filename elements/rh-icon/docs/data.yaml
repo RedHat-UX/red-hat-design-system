@@ -3,6 +3,9 @@ tagName: rh-icon
 name: Icon
 type: element
 overallStatus: new
+aka:
+  - Symbol
+  - Glyph
 libraries:
   figma: ready
   rhds: ready
@@ -12,3 +15,4 @@ relatedItems:
   - rh-alert
   - rh-card
   - rh-statistic
+since: v2.0.0

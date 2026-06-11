@@ -7,11 +7,14 @@
 
 :host([hidden]) {
   display: none !important;
+  position: relative;
 }
 
-:host(:is(:focus, :focus-within)) {
+:host(:focus-visible) {
   /** Focus ring, design token rh-color-interactive-primary */
-  outline: 1px auto var(--rh-color-interactive-primary-default);
+  border-radius: var(--rh-border-radius-default, 3px);
+  outline: var(--rh-border-width-lg, 3px) solid var(--rh-color-interactive-primary-default);
+  outline-offset: -3px;
 }
 
 #container {

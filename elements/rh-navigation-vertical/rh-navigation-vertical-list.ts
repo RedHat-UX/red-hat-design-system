@@ -19,7 +19,6 @@ import styles from './rh-navigation-vertical-list.css' with { type: 'css' };
  * summary. Uses an ARIA `listitem` role for screen readers.
  *
  * @summary Vertical navigation group
- * @alias navigation-vertical-list
  *
  * @fires {Event} toggle - Fires when the group opens or closes. The
  *        event has no detail; check the `open` property on the element
@@ -80,9 +79,9 @@ export class RhNavigationVerticalList extends LitElement {
       highlight: !!highlight,
     };
     return html`
-      <details 
+      <details
         class="${classMap(classes)}"
-        @toggle="${this.#toggle}" 
+        @toggle="${this.#toggle}"
         ?open="${this.open}"
         @keydown="${this.#onKeydown}">
         <summary>

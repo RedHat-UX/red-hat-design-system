@@ -100,12 +100,9 @@ rh-icon {
   vertical-align: -0.125rem;
 }
 
-/* TODO: remove orphaned CSS */
-span {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  /** Trigger span content gap */
-  gap: var(--rh-space-xs, 4px);
+@media (min-width: 768px) {
+  :host {
+    inset-inline-end: var(--rh-space-3xl, 48px);
+    inset-block-end: var(--rh-space-3xl, 48px);
+  }
 }

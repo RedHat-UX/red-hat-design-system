@@ -41,8 +41,6 @@ export class MenuDropdownSelectEvent extends Event {
  * @fires {MenuDropdownSelectEvent} select - Fired when a user selects an
  *        action or link from the menu. The event detail includes the selected
  *        `RhMenuItem` element and its text content.
- *
- * @alias menu-dropdown
  */
 @customElement('rh-menu-dropdown')
 export class RhMenuDropdown extends LitElement {
@@ -173,8 +171,8 @@ export class RhMenuDropdown extends LitElement {
                 })}">
             ${this.layout === 'compact' ?
               html`<rh-icon set="ui" accessible-label=${this.accessibleLabel} icon="ellipsis-vertical-fill"></rh-icon>`
-              : html` 
-              <span class="info-section"> 
+              : html`
+              <span class="info-section">
                 <!-- summary: Toggle label
                      description: |
                        Inline content for the toggle button, such as a
@@ -185,7 +183,7 @@ export class RhMenuDropdown extends LitElement {
                 <slot name="toggle-label"></slot>
               </span>
               <span class="action-icon">
-                <rh-icon set="microns" icon="${this.open ? 'caret-up' : 'caret-down'}"></rh-icon>
+                <rh-icon set="microns" icon="${this.open ? 'caret-up-fill' : 'caret-down-fill'}"></rh-icon>
               </span>
               `
             }

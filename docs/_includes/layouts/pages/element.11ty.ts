@@ -1,9 +1,9 @@
-import type { ElementDocsPageData } from '#11ty-plugins/element-docs.js';
+import type { ElementDocsPageData, ElementDecoratorData } from '#11ty-plugins/element-docs.js';
 import type * as CEM from 'custom-elements-manifest';
 
 import { tokens } from '@rhds/tokens/meta.js';
 import { join } from 'node:path';
-import { readFile, access } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
 import { capitalize, copyCell, dedent, getTokenHref } from '#11ty-plugins/tokensHelpers.js';
 import { htmlToReact } from '#11ty-plugins/html-to-react.js';
 import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
@@ -20,6 +20,7 @@ import {
   type DemoRecord,
 } from '@patternfly/pfe-tools/custom-elements-manifest/custom-elements-manifest.js';
 import { parseFragment } from 'parse5';
+import { stripFrontmatter } from '#11ty-plugins/frontmatter.js';
 
 const html = String.raw; // for editor highlighting
 const pfeconfig = getPfeConfig();
@@ -155,13 +156,8 @@ export default class ElementsPage extends Renderer<Context> {
   async #getMainDemoContent(tagName: string) {
     try {
       const demoPath = join(process.cwd(), 'elements', tagName, 'demo', `index.html`);
-      const demoContent = await readFile(demoPath, 'utf8');
+      const demoContent = stripFrontmatter(await readFile(demoPath, 'utf8'));
       const fragment = parseFragment(demoContent);
-      for (const node of Tools.queryAll<Tools.Element>(fragment, Tools.isElementNode)) {
-        if (node.tagName === 'meta' && node.attrs.some(x => x.name === 'itemprop')) {
-          Tools.removeNode(node);
-        }
-      }
       return html`
         <rh-code-block actions="wrap copy" highlighting="prerendered">
           ${this.highlight('html', serialize(fragment))}
@@ -203,11 +199,14 @@ export default class ElementsPage extends Renderer<Context> {
 
   async #renderOverviewPage(content: string, ctx: Context) {
     const description = ctx.doc.docsPage.description ?? ctx.doc.description ?? '';
+    const aka = ctx.doc.elementData?.aka;
     return html`${!ctx.doc.planned ? '' : html`
       ${this.#header('Coming soon!')}
       <p>This element is currently in progress and not yet available for use.</p>`}
       ${this.#header('Overview')}
       ${await this.renderTemplate(description, 'md')}
+      ${!aka?.length ? '' : html`
+      <p class="aka">Also known as: ${aka.join(', ')}</p>`}
       ${!ctx.doc.overviewImageHref ? await this.#renderKnobs(ctx)
        : ctx.doc.overviewImageHref.endsWith('svg') ? html`
       <uxdot-example>${await this.#getOverviewInlineSvg(ctx)}</uxdot-example>
@@ -216,13 +215,13 @@ export default class ElementsPage extends Renderer<Context> {
       ${ctx.doc.planned ? '' : html`
       <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/${ctx.tagName}/">View source on GitHub</rh-cta>`}
       ${this.#header('Status')}
-      <uxdot-repo-status-list 
+      <uxdot-repo-status-list
         figma-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.figma || ''}"
         rhds-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.rhds || ''}"
         shared-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.shared || ''}"></uxdot-repo-status-list>
       ${content}
       ${this.#header('Status checklist')}
-      <uxdot-repo-status-checklist 
+      <uxdot-repo-status-checklist
         figma-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.figma || ''}"
         rhds-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.rhds || ''}"
         shared-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.shared || ''}"></uxdot-repo-status-checklist>
@@ -298,7 +297,7 @@ export default class ElementsPage extends Renderer<Context> {
           </script>`))}
           ${this.#actionsLabels}
         </rh-code-block>
-        <p>To learn more about installing RHDS elements on your site using an import map read our <a href="/get-started/developers/installation/">getting started docs</a>.        
+        <p>To learn more about installing RHDS elements on your site using an import map read our <a href="/get-started/developers/installation/">getting started docs</a>.
       </section>
       `,
       await this.#renderLightdom(ctx),
@@ -377,6 +376,7 @@ export default class ElementsPage extends Renderer<Context> {
       ${await this.renderTemplate(manifest.getDescription(tagName) ?? '', 'md')}
 
       <div class="element-apis">
+        ${this.#renderTheming(tagName, ctx)}
         ${await this.#renderSlots(tagName, ctx)}
         ${await this.#renderAttributes(tagName, ctx)}
         ${await this.#renderMethods(tagName, ctx)}
@@ -386,6 +386,66 @@ export default class ElementsPage extends Renderer<Context> {
         ${await this.#renderDesignTokens(tagName, ctx)}
       </div>
     `;;
+  }
+
+  #renderTheming(tagName: string, ctx: Context) {
+    const sublevel = (ctx.level) ? ctx.level + 1 : 3;
+    const data: ElementDecoratorData | undefined = ctx.doc.decoratorData?.[tagName];
+    if (!data) {
+      return '';
+    }
+    const { themable, colorPalettes } = data;
+    if (!themable && colorPalettes == null) {
+      return '';
+    }
+
+    const tags: string[] = [];
+    if (themable) {
+      tags.push(html`<rh-tag color="purple" variant="outline">Themable</rh-tag>`);
+    }
+    if (colorPalettes != null) {
+      tags.push(html`<rh-tag color="blue" variant="outline">Color palette</rh-tag>`);
+    }
+
+    let content = html`
+      <section class="theming" aria-labelledby="${tagName}-theming">
+        <uxdot-copy-permalink class="h${sublevel}">
+          <h${sublevel} id="${tagName}-theming">
+            <a href="#${tagName}-theming">Theming</a>
+          </h${sublevel}>
+        </uxdot-copy-permalink>
+        <p>${tags.join(' ')}</p>`;
+
+    if (themable) {
+      content += html`
+        <p>This element uses
+          <a href="/theming/">Red Hat design system theming</a>
+          and can be used in themable contexts.</p>`;
+    }
+
+    if (colorPalettes != null) {
+      if (colorPalettes.length === 0) {
+        content += html`
+          <p>This element is a
+            <a href="/theming/color-palettes/">color palette</a>
+            container and supports all color palettes via
+            the <code>color-palette</code> attribute.</p>`;
+      } else {
+        content += html`
+          <p>This element is a
+            <a href="/theming/color-palettes/">color palette</a>
+            container. It supports the following palettes via the
+            <code>color-palette</code> attribute:</p>
+          <ul>
+            ${colorPalettes.map(p => html`<li><code>${p}</code></li>`).join('\n            ')}
+          </ul>`;
+      }
+    }
+
+    content += html`
+      </section>`;
+
+    return content;
   }
 
   async #renderSlots(tagName: string, ctx: Context) {
@@ -772,7 +832,7 @@ export default class ElementsPage extends Renderer<Context> {
           ${!cssProperties.length ? html`
           <p><em>None</em></p>` : html`
           <rh-table compact>
-            <table class=css-custom-properties>
+            <table class="css-custom-properties">
               <thead>
                 <tr>
                   <th scope="col">CSS Property</th>
@@ -881,24 +941,17 @@ export default class ElementsPage extends Renderer<Context> {
       ${(await Promise.all(demos.map(async demo => `
       ${this.#header(demo.filePath?.match(/\/index(\.html|\/)/) ? this.#getPrettyTagName(ctx)
                    : demo.title, 2, `demo-${this.slugify(demo.title)}`)}
-      ${await this.#renderDemoDescription(demo, ctx)}
+      ${await this.#renderDemoDescription(demo)}
       ${await this.#renderDemo(demo, ctx)}
       `))).filter(Boolean).join('')}
     `;
   }
 
-  async #renderDemoDescription(demo: DemoRecord, ctx: Context) {
-    // Use the same logic as the header to determine the demo name
-    const demoName = demo.filePath?.match(/\/index(\.html|\/)/) ? 'index' : demo.title;
-    const demoDescriptionPath = join(process.cwd(), 'elements', ctx.tagName, 'demo', `${this.slugify(demoName)}.md`);
-    // check if the file exists, if it does return the html
-    try {
-      await access(demoDescriptionPath);
-      const demoDescriptionContent = await this.renderFile(demoDescriptionPath, ctx);
-      return html`${demoDescriptionContent}`;
-    } catch {
-      return '';
+  async #renderDemoDescription(demo: DemoRecord) {
+    if ('description' in demo && typeof demo.description === 'string') {
+      return this.renderTemplate(demo.description, 'md');
     }
+    return '';
   }
 
   async #renderDemo(demo: DemoRecord, ctx: Context, knobs?: string) {
@@ -952,7 +1005,8 @@ export default class ElementsPage extends Renderer<Context> {
     }
 
     if (demo.filePath) {
-      const content = await readFile(demo.filePath, 'utf-8');
+      const raw = await readFile(demo.filePath, 'utf-8');
+      const content = stripFrontmatter(raw);
       const fragment = parseFragment(content);
 
       for (const node of Tools.queryAll<Tools.Element>(fragment, Tools.isElementNode)) {
@@ -961,8 +1015,6 @@ export default class ElementsPage extends Renderer<Context> {
           updateDemoContentForType('js', node);
         } else if (node.tagName === 'style') {
           updateDemoContentForType('css', node);
-        } else if (node.tagName === 'meta' && node.attrs.some(x => x.name === 'itemprop')) {
-          Tools.removeNode(node);
         }
       }
 

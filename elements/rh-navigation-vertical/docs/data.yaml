@@ -3,6 +3,9 @@ tagName: rh-navigation-vertical
 name: Navigation (vertical)
 type: element
 overallStatus: ready
+aka:
+  - Side navigation
+  - Sidebar navigation
 libraries:
   figma: ready
   rhds: ready
@@ -12,3 +15,4 @@ relatedItems:
   - rh-navigation-primary
   - rh-navigation-secondary
   - rh-subnav
+since: v4.0.0

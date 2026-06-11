@@ -35,8 +35,6 @@ export class MenuToggleEvent extends Event {
  * @fires {MenuToggleEvent} toggle - Fired when the menu opens or closes.
  *        The event detail includes the `open` boolean state and a reference
  *        to the menu element.
- *
- * @alias menu
  */
 @customElement('rh-menu')
 @themable

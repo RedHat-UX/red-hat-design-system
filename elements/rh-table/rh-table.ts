@@ -19,8 +19,6 @@ import styles from './rh-table.css' with { type: 'css' };
  *
  * @summary Organizes and displays information from a data set
  *
- * @alias table
- *
  * @csspart container - The outer wrapper around the table and summary
  *                      slots. Use to customize padding or background.
  *

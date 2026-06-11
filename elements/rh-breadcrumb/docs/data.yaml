@@ -3,6 +3,9 @@ tagName: rh-breadcrumb
 name: Breadcrumb
 type: element
 overallStatus: new
+aka:
+  - Breadcrumbs
+  - Navigation trail
 libraries:
   figma: ready
   rhds: ready
@@ -12,3 +15,4 @@ relatedItems:
   - rh-link
   - rh-navigation-secondary
   - rh-subnav
+since: v2.0.0

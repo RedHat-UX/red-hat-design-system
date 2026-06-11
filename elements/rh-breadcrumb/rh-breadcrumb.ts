@@ -43,10 +43,8 @@ const truncationBtn = html`
  * Keyboard users navigate breadcrumb links with Tab and activate
  * them with Enter.
  *
- * @summary Displays a hierarchical trail of links showing the user's
- *          location within a site
- *
- * @alias breadcrumb
+ * @summary Displays a hierarchical trail of links showing a location
+ *          on a website
  *
  * @cssprop [--rh-breadcrumb-caret-image={svg encoded as data URI}] -
  *          The `mask-image` separator icon between items; theme by

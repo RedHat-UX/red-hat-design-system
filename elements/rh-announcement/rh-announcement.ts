@@ -34,8 +34,6 @@ export class AnnouncementCloseEvent extends Event {
  *
  * @summary Full-width promotional or informational banner
  *
- * @alias announcement
- *
  * @fires {AnnouncementCloseEvent} close - Fires when the user clicks the dismiss button.
  *        Cancelling this event prevents the element from being removed from the page.
  *        When cancelling the event, you must ensure that some UI appears - e.g. a confirm
@@ -126,7 +124,7 @@ export class RhAnnouncement extends LitElement {
              ?hidden="${!this.dismissable}"
              ?inert="${!this.dismissable}">
           <rh-button id="close-button"
-                  label="Close"
+                  accessible-label="Close"
                   confirm
                   variant="close"
                   @click=${this.#closeHandler}></rh-button>

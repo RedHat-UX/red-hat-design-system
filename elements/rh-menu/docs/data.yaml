@@ -9,3 +9,4 @@ libraries:
   rhds: ready
   shared: planned
   docs: planned
+since: v1.1.0

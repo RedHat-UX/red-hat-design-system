@@ -20,6 +20,33 @@ RHDS provides a collection of ready-made, framework-agnostic Web Components with
 </rh-card>
 ```
 
+## LGTM Tradition
+
+On this team, PR approvals come with a creative twist — reviewers leave a **backronym** for LGTM (four words starting with L, G, T, M). See [lgtms.md](docs/lgtms.md) for the full collection.
+
+### Top 10 Leaderboard
+
+| Author | Count |
+|--------|-------|
+| @adamjohnson | 114 |
+| @zeroedin | 87 |
+| @markcaron | 59 |
+| @bennypowers | 32 |
+| @hellogreg | 26 |
+| @nikkimk | 15 |
+| @marionnegp | 10 |
+| @coreyvickery | 4 |
+| @brianferry | 3 |
+| @gradymcgee | 1 |
+
+### Hall of Fame
+
+- **"Leevee Geevee Teevee Meevee"** — @zeroedin
+- **"lines géniales, tooltips magnifiques"** — @hellogreg
+- **"Linux Ghouls Trick Mortals"** — @zeroedin
+- **"Local Grandma Tramples Musician"** — @marionnegp
+- **"Lucid groundhog; tiny meteorologist"** — @nikkimk
+
 ## Contributions are Welcome
 
 Would you like to contribute to the **documentation** or **design specs**? Read [the site contributing guide][contributing].  

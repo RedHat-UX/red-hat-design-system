@@ -1,4 +1,4 @@
-import { LitElement, html, type TemplateResult } from 'lit';
+import { LitElement, html, isServer, type TemplateResult } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -49,8 +49,6 @@ export class AccordionCollapseEvent extends ComposedEvent {
  * keyboard navigation: Tab to move focus, Enter or Space to toggle.
  *
  * @summary Organizes content into expandable sections users can open or close
- *
- * @alias accordion
  *
  * @fires {AccordionExpandEvent} expand - Fires when a panel expands.
  *   Event detail: `toggle` (RhAccordionHeader), `panel` (RhAccordionPanel).
@@ -147,8 +145,10 @@ export class RhAccordion extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener('change', this.#onChange as EventListener);
-    this.#mo.observe(this, { childList: true });
-    this.updateAccessibility();
+    if (!isServer) {
+      this.updateAccessibility();
+      this.#mo.observe(this, { childList: true });
+    }
   }
 
   override render(): TemplateResult {

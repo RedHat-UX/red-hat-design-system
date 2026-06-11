@@ -3,6 +3,8 @@ tagName: rh-popover
 name: Popover
 type: element
 overallStatus: ready
+aka:
+  - Info popup
 description: >-
   A Popover displays content in a non-modal dialog and adds contextual information or provides
   resources via text and links.

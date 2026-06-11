@@ -3,6 +3,8 @@ tagName: rh-chip
 name: Chip
 type: element
 overallStatus: ready
+aka:
+  - Filter chip
 libraries:
   figma: ready
   rhds: ready
@@ -12,3 +14,4 @@ relatedItems:
   - rh-badge
   - filter
   - rh-tag
+since: v3.0.0

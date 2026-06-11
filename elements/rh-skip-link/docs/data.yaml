@@ -3,6 +3,8 @@ tagName: rh-skip-link
 name: Skip link
 type: element
 overallStatus: ready
+aka:
+  - Skip navigation
 libraries:
   figma: planned
   rhds: ready
@@ -12,3 +14,4 @@ relatedItems:
   - rh-navigation
   - rh-navigation-secondary
   - rh-subnav
+since: v1.4.0

@@ -10,3 +10,4 @@ libraries:
   docs: ready
 relatedItems:
   - video-thumbnail
+since: v1.1.0

@@ -1,10 +1,10 @@
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { ifDefined } from 'lit/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
@@ -35,6 +35,8 @@ export class RhFooterUniversal extends LitElement {
    */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
 
+  #internals = InternalsController.of(this);
+
   #slots = new SlotController(
     this,
     'primary-start',
@@ -46,27 +48,67 @@ export class RhFooterUniversal extends LitElement {
     'tertiary',
   );
 
-  override render() {
-    const hasTertiary = this.#slots.hasSlotted('tertiary');
+  #hasAncestorH2 = false;
 
-    // determine if footer and h2 already exist
+  override connectedCallback() {
+    super.connectedCallback();
+    this.#updateRole();
+    this.#hasAncestorH2 = this.#detectAncestorH2();
+  }
+
+  /** Check if an h2 already exists in the parent context. */
+  #detectAncestorH2(): boolean {
     let node: HTMLElement | null | undefined = this.parentElement;
-    let footer: HTMLElement | null | undefined = node?.closest('footer');
-    let h2: HTMLElement | null | undefined = null;
-    while (!!node && !footer) {
-      h2 = h2
-        || node?.closest('h2')
+    while (node) {
+      if (node?.closest('h2')
         || node?.querySelector('h2')
-        || node?.shadowRoot?.querySelector('h2');
-      footer = node?.closest('footer')
-        || node?.querySelector('footer')
-        || node?.shadowRoot?.querySelector('footer');
+        || node?.shadowRoot?.querySelector('h2')) {
+        return true;
+      }
+      node = node.parentElement;
+    }
+    return false;
+  }
+
+  /**
+   * Check if this element is nested inside another `<footer>`/`<rh-footer>`.
+   * If not, set role="contentinfo" on the host via InternalsController.
+   * NOTE: Does not check for other custom elements with `role="contentinfo"`
+   */
+  #updateRole() {
+    let node: HTMLElement | null | undefined = this.parentElement;
+    let hasFooterAncestor = false;
+
+    while (node) {
+      if (node.tagName === 'FOOTER') {
+        hasFooterAncestor = true;
+        break;
+      }
+
+      if (node.tagName === 'RH-FOOTER') {
+        hasFooterAncestor = true;
+        break;
+      }
+
+      if (node.shadowRoot?.querySelector('footer')) {
+        hasFooterAncestor = true;
+        break;
+      }
+
       node = node.parentElement;
     }
 
+    if (!hasFooterAncestor) {
+      this.#internals.role = 'contentinfo';
+    }
+  }
+
+  override render() {
+    const hasTertiary = this.#slots.hasSlotted('tertiary');
+
     return html`
-      <footer role="${ifDefined(footer ? 'none' : undefined)}">
-        <h2 id="global-heading" ?hidden="${!!h2}">
+      <div class="footer">
+        <h2 id="global-heading" ?hidden="${this.#hasAncestorH2}">
           <!-- summary: visually-hidden heading for assistive technology
                description: |
                  Expects inline text. Screen readers use this heading to identify the
@@ -74,6 +116,7 @@ export class RhFooterUniversal extends LitElement {
                  parent \`<h2>\` already exists. -->
           <slot name="heading">Red Hat footer</slot>
         </h2>
+        <!-- Wrapper for the universal footer content (logo, primary, secondary, tertiary). -->
         <div class="section global-base ${classMap({ hasTertiary })}" part="section base">
           <!-- summary: overrides all universal footer content (base slot)
                description: |
@@ -81,6 +124,7 @@ export class RhFooterUniversal extends LitElement {
                  Avoid using; bypasses all built-in layout, grid regions, responsive
                  behavior, and ARIA landmark wiring. -->
           <slot name="base">
+            <!-- Container for the logo slot. -->
             <div class="global-logo" part="logo">
               <!-- summary: Red Hat logo (logo slot)
                    description: |
@@ -88,11 +132,18 @@ export class RhFooterUniversal extends LitElement {
                      Defaults to the Red Hat logo SVG linking to redhat.com. Screen
                      readers rely on the anchor \`aria-label\` for identification. -->
               <slot name="logo">
+                <!--
+                  part:
+                    description: Link wrapping the logo; defaults to redhat.com.
+                -->
                 <a class="global-logo-anchor"
                     part="logo-anchor"
                     href="https://redhat.com"
                     aria-label="Visit Red Hat">
-                  <!-- logo-image -->
+                  <!--
+                    part:
+                      description: Logo image or SVG element.
+                  -->
                   <svg class="global-logo-image"
                        part="logo-image"
                        data-name="Layer 1"
@@ -106,12 +157,13 @@ export class RhFooterUniversal extends LitElement {
                         }
                       </style>
                     </defs>
-                    <path class="band" d="M157.77,62.61a14,14,0,0,1,.31,3.42c0,14.88-18.1,17.46-30.61,17.46C78.83,83.49,42.53,53.26,42.53,44a6.43,6.43,0,0,1,.22-1.94l-3.66,9.06a18.45,18.45,0,0,0-1.51,7.33c0,18.11,41,45.48,87.74,45.48,20.69,0,36.43-7.76,36.43-21.77,0-1.08,0-1.94-1.73-10.13Z" />
-                    <path class="cls-1" d="M127.47,83.49c12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.89,8.69,103.76.5,97.51.5,91.69.5,90,8,83.06,8c-6.68,0-11.64-5.6-17.89-5.6-6,0-9.91,4.09-12.93,12.5,0,0-8.41,23.72-9.49,27.16A6.43,6.43,0,0,0,42.53,44c0,9.22,36.3,39.45,84.94,39.45M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.45,18.45,0,0,1,1.51-7.33C22.27,52,.5,55,.5,74.22c0,31.48,74.59,70.28,133.65,70.28,45.28,0,56.7-20.48,56.7-36.65,0-12.72-11-27.16-30.83-35.78" />
+                    <path class="band" d="M157.77,62.61a14,14,0,0,1,.31,3.42c0,14.88-18.1,17.46-30.61,17.46C78.83,83.49,42.53,53.26,42.53,44a6.43,6.43,0,0,1,.22-1.94l-3.66,9.06a18.45,18.45,0,0,0-1.51,7.33c0,18.11,41,45.48,87.74,45.48,20.69,0,36.43-7.76,36.43-21.77,0-1.08,0-1.94-1.73-10.13Z"/>
+                    <path class="cls-1" d="M127.47,83.49c12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.89,8.69,103.76.5,97.51.5,91.69.5,90,8,83.06,8c-6.68,0-11.64-5.6-17.89-5.6-6,0-9.91,4.09-12.93,12.5,0,0-8.41,23.72-9.49,27.16A6.43,6.43,0,0,0,42.53,44c0,9.22,36.3,39.45,84.94,39.45M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.45,18.45,0,0,1,1.51-7.33C22.27,52,.5,55,.5,74.22c0,31.48,74.59,70.28,133.65,70.28,45.28,0,56.7-20.48,56.7-36.65,0-12.72-11-27.16-30.83-35.78"/>
                   </svg>
                 </a>
               </slot>
             </div>
+            <!-- Primary row (start, links, end). -->
             <div class="global-primary" part="primary">
               <!-- summary: overrides primary-start, links-primary, and primary-end (primary slot)
                    description: |
@@ -119,6 +171,7 @@ export class RhFooterUniversal extends LitElement {
                      Override only when the three sub-slots are insufficient.
                      Screen readers navigate child links as a group. -->
               <slot name="primary">
+                <!-- Left area of the primary row. -->
                 <div class="global-primary-start" part="primary-start" ?hidden=${!this.#slots.hasSlotted('primary-start')}>
                   <!-- summary: content before primary links (primary-start slot)
                        description: |
@@ -127,6 +180,7 @@ export class RhFooterUniversal extends LitElement {
                          content before the link list. -->
                   <slot name="primary-start"></slot>
                 </div>
+                <!-- Main link list area in the primary row. -->
                 <div class="global-links-primary" part="links-primary" ?hidden=${!this.#slots.hasSlotted('links-primary')}>
                   <!-- summary: primary global navigation links (links-primary slot)
                        description: |
@@ -135,6 +189,7 @@ export class RhFooterUniversal extends LitElement {
                          the list group; Tab moves through each link. -->
                   <slot name="links-primary"></slot>
                 </div>
+                <!-- Right area of the primary row. -->
                 <div class="global-primary-end" part="primary-end" ?hidden=${!this.#slots.hasSlotted('primary-end')}>
                   <!-- summary: content after primary links (primary-end slot)
                        description: |
@@ -145,7 +200,9 @@ export class RhFooterUniversal extends LitElement {
                 </div>
               </slot>
             </div>
+            <!-- Spacer between primary and secondary rows. -->
             <div class="spacer" part="spacer"></div>
+            <!-- Secondary row (start, links, end). -->
             <div class="global-secondary" part="secondary">
               <!-- summary: overrides secondary-start, links-secondary, and secondary-end (secondary slot)
                    description: |
@@ -153,6 +210,7 @@ export class RhFooterUniversal extends LitElement {
                      Override only when the three sub-slots are insufficient.
                      Screen readers navigate child links as a group. -->
               <slot name="secondary">
+                <!-- Left area of the secondary row. -->
                 <div class="global-secondary-start" part="secondary-start" ?hidden=${!this.#slots.hasSlotted('secondary-start')}>
                   <!-- summary: content before secondary links, e.g. copyright (secondary-start slot)
                        description: |
@@ -161,6 +219,7 @@ export class RhFooterUniversal extends LitElement {
                          content in DOM order within the footer landmark. -->
                   <slot name="secondary-start"></slot>
                 </div>
+                <!-- Main link list area in the secondary row. -->
                 <div class="global-links-secondary" part="links-secondary" ?hidden=${!this.#slots.hasSlotted('links-secondary')}>
                   <!-- summary: secondary global navigation links (links-secondary slot)
                        description: |
@@ -169,6 +228,7 @@ export class RhFooterUniversal extends LitElement {
                          the list group; Tab moves through each link. -->
                   <slot name="links-secondary"></slot>
                 </div>
+                <!-- Right area of the secondary row. -->
                 <div class="global-secondary-end" part="secondary-end" ?hidden=${!this.#slots.hasSlotted('secondary-end')}>
                   <!-- summary: content after secondary links (secondary-end slot)
                        description: |
@@ -179,6 +239,7 @@ export class RhFooterUniversal extends LitElement {
                 </div>
               </slot>
             </div>
+            <!-- Optional bottom section (e.g. copyright, extra text). -->
             <div class="global-tertiary" part="tertiary" ?hidden=${!this.#slots.hasSlotted('tertiary')}>
               <!-- summary: optional third content region (tertiary slot)
                    description: |
@@ -189,7 +250,7 @@ export class RhFooterUniversal extends LitElement {
             </div>
           </slot>
         </div>
-      </footer>
+      </div>
     `;
   }
 }

@@ -12,9 +12,7 @@ import styles from './rh-skip-link.css' with { type: 'css' };
  * It should be the first focusable element on the page, and authors
  * must provide either an `href` attribute or a slotted `<a>` element.
  *
- * @summary Allows users to skip repetitive navigation for accessibility.
- *
- * @alias skip-link
+ * @summary Allows users to skip repetitive navigation for accessibility
  */
 @customElement('rh-skip-link')
 export class RhSkipLink extends LitElement {

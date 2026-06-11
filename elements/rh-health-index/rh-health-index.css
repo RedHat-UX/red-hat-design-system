@@ -11,6 +11,14 @@
   margin-inline-end: var(--rh-space-lg, 16px);
 }
 
+:is(.a, .b, .c, .d, .e, .f) {
+  /** Small letter color */
+  --_text-sm: var(--rh-color-text-primary);
+
+  /** Large letter color */
+  --_text-lg: var(--rh-color-text-primary);
+}
+
 .a {
   /** A grade small box border color */
   --_border-sm: var(--rh-color-status-success);
@@ -27,12 +35,6 @@
 
   /** A grade large box fill */
   --_fill-lg: var(--rh-color-surface-status-success);
-
-  /** Small letter color */
-  --_text-sm: var(--rh-color-text-primary);
-
-  /** Large letter color */
-  --_text-lg: var(--rh-color-text-primary);
 
   /** A grade accent bar color */
   --_accent: var(--rh-color-status-success);
@@ -55,12 +57,6 @@
   /** B grade large box fill */
   --_fill-lg: var(--rh-color-surface-status-success);
 
-  /** Small letter color */
-  --_text-sm: var(--rh-color-text-primary);
-
-  /** Large letter color */
-  --_text-lg: var(--rh-color-text-primary);
-
   /** B grade accent bar color */
   --_accent: var(--rh-color-status-success);
 }
@@ -81,12 +77,6 @@
 
   /** C grade large box fill */
   --_fill-lg: var(--rh-color-surface-status-warning);
-
-  /** Small letter color */
-  --_text-sm: var(--rh-color-text-primary);
-
-  /** Large letter color */
-  --_text-lg: var(--rh-color-text-primary);
 
   /** C grade accent bar color */
   --_accent: var(--rh-color-status-warning);
@@ -109,12 +99,6 @@
   /** D grade large box fill */
   --_fill-lg: var(--rh-color-surface-status-caution);
 
-  /** Small letter color */
-  --_text-sm: var(--rh-color-text-primary);
-
-  /** Large letter color */
-  --_text-lg: var(--rh-color-text-primary);
-
   /** D grade accent bar color */
   --_accent: var(--rh-color-status-caution);
 }
@@ -136,12 +120,6 @@
   /** E grade large box fill */
   --_fill-lg: var(--rh-color-surface-status-danger);
 
-  /** Small letter color */
-  --_text-sm: var(--rh-color-text-primary);
-
-  /** Large letter color */
-  --_text-lg: var(--rh-color-text-primary);
-
   /** E grade accent bar color */
   --_accent: var(--rh-color-status-danger);
 }
@@ -162,12 +140,6 @@
 
   /** F grade large box fill */
   --_fill-lg: var(--rh-color-surface-status-danger);
-
-  /** Small letter color */
-  --_text-sm: var(--rh-color-text-primary);
-
-  /** Large letter color */
-  --_text-lg: var(--rh-color-text-primary);
 
   /** F grade accent bar color */
   --_accent: var(--rh-color-status-danger);
