@@ -31,6 +31,14 @@
   overflow-y: initial;
 }
 
+.base {
+  border-block-start:
+    /** Width of border running atop the footer */
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--_border-color);
+}
+
 .footer,
 .global-base {
   --_icon-color:
@@ -51,7 +59,7 @@
     /** Footer border color override */
     var(
         --rh-footer-border-color,
-        /** Footer border — resolves via color-scheme */
+        /** Footer border color — resolves via color-scheme */
         var(--rh-color-border-subtle)
       );
   --_accent-color:
