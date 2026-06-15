@@ -1085,10 +1085,8 @@
        32px = 16px icon + 8px padding on each side. */
     --_overflow-icon-size: 32px;
     --_overflow-icon-radius: var(--unified-border-radius-pill);
-    --_overflow-hover-bg:
-      var(--unified-color-interactive-fill-plain-hover);
-    --_overflow-focus-bg:
-      var(--unified-color-interactive-fill-plain-focus);
+    --_overflow-hover-bg: var(--unified-color-interactive-fill-plain-hover);
+    --_overflow-focus-bg: var(--unified-color-interactive-fill-plain-focus);
     --_overflow-focus-outline:
       var(--unified-border-width-lg)
       solid
