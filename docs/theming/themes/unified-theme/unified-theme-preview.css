@@ -1057,11 +1057,21 @@
 
     & rh-accordion-panel {
       --rh-space-xl: var(--unified-space-lg);
+      --rh-color-border-subtle:
+        light-dark(
+            var(--unified-color-gray-30),
+            var(--unified-color-gray-50)
+          );
     }
 
     /* !important needed to override shadow DOM #container border */
     & rh-accordion-panel::part(container) {
       border-inline-end: none !important;
+      background-color:
+        light-dark(
+            var(--rh-color-surface-lightest),
+            var(--rh-color-gray-80)
+          );
     }
 
     &.bordered {
