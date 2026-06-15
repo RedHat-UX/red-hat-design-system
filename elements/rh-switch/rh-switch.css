@@ -1,3 +1,9 @@
+/*
+ * Controls visibility of the checkmark icon inside the switch handle.
+ * Set to `inline-flex` to show the check; `none` to hide it.
+ * Registered as inheritable so themes can override it from outside
+ * Shadow DOM without needing the `show-check-icon` attribute.
+ */
 @property --rh-switch-check-display {
   syntax: 'none | inline-flex';
   inherits: true;
