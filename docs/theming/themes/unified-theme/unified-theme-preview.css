@@ -425,11 +425,6 @@
           #8c8c8c,
           var(--unified-color-gray-40)
         );
-    --unified-color-icon-subtle:
-      light-dark(
-          var(--unified-color-gray-50),
-          var(--unified-color-gray-40)
-        );
 
     /* Brand accent */
     --unified-color-brand-accent:
@@ -995,8 +990,8 @@
     --rh-color-border-interactive: var(--unified-color-interactive-primary-default);
     --rh-space-sm: var(--unified-space-sm);
     --rh-color-text-secondary: var(--unified-color-gray-60);
-    --rh-color-surface-lightest: var(--unified-color-gray-50); /* --unified-color-icon-subtle */
-    --rh-color-surface-dark: var(--unified-color-gray-40); /* --unified-color-icon-subtle */
+    --rh-color-surface-lightest: var(--unified-color-gray-50);
+    --rh-color-surface-dark: var(--unified-color-gray-40);
 
     &::part(switch) {
       border: 1px solid var(--unified-color-border-control-default);
