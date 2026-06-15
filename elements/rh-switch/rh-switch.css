@@ -1,4 +1,12 @@
+@property --rh-switch-check-display {
+  syntax: 'none | inline-flex';
+  inherits: true;
+  initial-value: inline-flex;
+}
+
 :host {
+  --rh-switch-check-display: none;
+
   display: inline-flex;
   outline: none;
   vertical-align: top;
@@ -122,10 +130,15 @@
 }
 
 rh-icon {
+  display: var(--rh-switch-check-display);
   margin-inline: var(--_margin-inline);
   color: var(--_switch-handle-color);
   position: absolute;
   z-index: 1;
+}
+
+:host([show-check-icon]) {
+  --rh-switch-check-display: initial;
 }
 
 :host(:is(:focus, :focus-within)) #container #switch {
