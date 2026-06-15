@@ -56,10 +56,32 @@ subnav:
     }
   `);
 
+  const switchPatch = new CSSStyleSheet();
+  switchPatch.replaceSync(/*css*/`
+    @property --rh-switch-check-display {
+      syntax: 'none | inline-flex';
+      inherits: true;
+      initial-value: inline-flex;
+    }
+
+    rh-icon,
+    rh-icon[hidden] {
+      display: var(--rh-switch-check-display) !important;
+    }
+
+    :host([show-check-icon]) {
+      --rh-switch-check-display: initial;
+    }
+  `);
+
   for (const pattern of document.querySelectorAll('uxdot-pattern')) {
     // rh-accordion-panel
     for (const el of pattern.shadowRoot.querySelectorAll('rh-accordion-panel')) {
       el.shadowRoot.adoptedStyleSheets = [...el.shadowRoot.adoptedStyleSheets, accordionPanelPatch];
+    }
+    // rh-switch
+    for (const el of pattern.shadowRoot.querySelectorAll('rh-switch')) {
+      el.shadowRoot.adoptedStyleSheets = [...el.shadowRoot.adoptedStyleSheets, switchPatch];
     }
   }
 </script>
