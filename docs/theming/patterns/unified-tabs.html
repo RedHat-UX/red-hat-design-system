@@ -1,33 +1,87 @@
 <link rel="stylesheet" href="/theming/themes/unified-theme/unified-theme-preview.css">
 
-<style>
-  .example-row {
-    margin-block: var(--rh-space-2xl, 32px);
-  }
-</style>
+<h2>Horizontal</h2>
+<rh-tabs>
+  <rh-tab id="users"
+          slot="tab"
+          active>Users</rh-tab>
+  <rh-tab-panel>Users</rh-tab-panel>
+  <rh-tab slot="tab">Containers</rh-tab>
+  <rh-tab-panel>Containers <a href="#">Focusable element</a></rh-tab-panel>
+  <rh-tab slot="tab">Database</rh-tab>
+  <rh-tab-panel>Database</rh-tab-panel>
+  <rh-tab slot="tab">Servers</rh-tab>
+  <rh-tab-panel>Servers</rh-tab-panel>
+  <rh-tab slot="tab">Cloud</rh-tab>
+  <rh-tab-panel>Cloud</rh-tab-panel>
+</rh-tabs>
 
-<h3>Default</h3>
-<div class="example-row">
-  <rh-tabs>
-    <rh-tab slot="tab">Tab one</rh-tab>
-    <rh-tab-panel>Panel content for tab one.</rh-tab-panel>
-    <rh-tab slot="tab">Tab two</rh-tab>
-    <rh-tab-panel>Panel content for tab two.</rh-tab-panel>
-    <rh-tab slot="tab">Tab three</rh-tab>
-    <rh-tab-panel>Panel content for tab three.</rh-tab-panel>
-    <rh-tab slot="tab" disabled>Disabled</rh-tab>
-    <rh-tab-panel></rh-tab-panel>
-  </rh-tabs>
-</div>
+<h2>Box Inset</h2>
+<rh-tabs box="inset">
+  <rh-tab slot="tab" active>Users</rh-tab>
+  <rh-tab-panel>Users</rh-tab-panel>
+  <rh-tab slot="tab">Containers</rh-tab>
+  <rh-tab-panel>Containers</rh-tab-panel>
+  <rh-tab slot="tab">Database</rh-tab>
+  <rh-tab-panel>Database</rh-tab-panel>
+  <rh-tab slot="tab">Servers</rh-tab>
+  <rh-tab-panel>Servers</rh-tab-panel>
+  <rh-tab slot="tab">Cloud</rh-tab>
+  <rh-tab-panel>Cloud</rh-tab-panel>
+</rh-tabs>
 
-<h3>Box</h3>
-<div class="example-row">
-  <rh-tabs box>
-    <rh-tab slot="tab">Tab one</rh-tab>
-    <rh-tab-panel>Panel content for tab one.</rh-tab-panel>
-    <rh-tab slot="tab">Tab two</rh-tab>
-    <rh-tab-panel>Panel content for tab two.</rh-tab-panel>
-    <rh-tab slot="tab">Tab three</rh-tab>
-    <rh-tab-panel>Panel content for tab three.</rh-tab-panel>
-  </rh-tabs>
-</div>
+<h2>Vertical</h2>
+<rh-tabs vertical>
+  <rh-tab slot="tab" active>Users</rh-tab>
+  <rh-tab-panel>Inspect parent <code>&lt;uxdot-pattern&gt;</code> and disable <code>max-width</code> to see vertical tabs.</rh-tab-panel>
+  <rh-tab slot="tab">Containers</rh-tab>
+  <rh-tab-panel>Containers <a href="#">Focusable element</a></rh-tab-panel>
+  <rh-tab slot="tab">Database</rh-tab>
+  <rh-tab-panel>Database</rh-tab-panel>
+  <rh-tab slot="tab">Servers</rh-tab>
+  <rh-tab-panel>Servers</rh-tab-panel>
+  <rh-tab slot="tab">Cloud</rh-tab>
+  <rh-tab-panel>Cloud</rh-tab-panel>
+</rh-tabs>
+
+<h2>Overflow</h2>
+<rh-tabs>
+  <rh-tab slot="tab" active>Users</rh-tab>
+  <rh-tab-panel>Users</rh-tab-panel>
+  <rh-tab slot="tab">Containers</rh-tab>
+  <rh-tab-panel>Containers</rh-tab-panel>
+  <rh-tab slot="tab">Database</rh-tab>
+  <rh-tab-panel>Database</rh-tab-panel>
+  <rh-tab slot="tab">Servers</rh-tab>
+  <rh-tab-panel>Servers</rh-tab-panel>
+  <rh-tab slot="tab">Cloud</rh-tab>
+  <rh-tab-panel>Cloud</rh-tab-panel>
+  <rh-tab slot="tab">Network</rh-tab>
+  <rh-tab-panel>Network</rh-tab-panel>
+  <rh-tab slot="tab">Storage</rh-tab>
+  <rh-tab-panel>Storage</rh-tab-panel>
+  <rh-tab slot="tab">Security</rh-tab>
+  <rh-tab-panel>Security</rh-tab-panel>
+  <rh-tab slot="tab">Monitoring</rh-tab>
+  <rh-tab-panel>Monitoring</rh-tab-panel>
+  <rh-tab slot="tab">Logging</rh-tab>
+  <rh-tab-panel>Logging</rh-tab-panel>
+  <rh-tab slot="tab">Alerts</rh-tab>
+  <rh-tab-panel>Alerts</rh-tab-panel>
+  <rh-tab slot="tab">Settings</rh-tab>
+  <rh-tab-panel>Settings</rh-tab-panel>
+</rh-tabs>
+
+<h2>Vertical Box</h2>
+<rh-tabs vertical box="box">
+  <rh-tab slot="tab" active>Users</rh-tab>
+  <rh-tab-panel>Inspect parent <code>&lt;uxdot-pattern&gt;</code> and disable <code>max-width</code> to see vertical tabs.</rh-tab-panel>
+  <rh-tab slot="tab">Containers</rh-tab>
+  <rh-tab-panel>Containers <a href="#">Focusable element</a></rh-tab-panel>
+  <rh-tab slot="tab">Database</rh-tab>
+  <rh-tab-panel>Database</rh-tab-panel>
+  <rh-tab slot="tab">Servers</rh-tab>
+  <rh-tab-panel>Servers</rh-tab-panel>
+  <rh-tab slot="tab">Cloud</rh-tab>
+  <rh-tab-panel>Cloud</rh-tab-panel>
+</rh-tabs>

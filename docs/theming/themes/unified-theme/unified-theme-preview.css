@@ -1062,191 +1062,76 @@
 @layer tabs {
   /* ── rh-tabs (container) ────────────────────────────── */
   rh-tabs {
-    --rh-tabs-active-border-color: var(--unified-color-brand-accent);
-    --rh-color-accent-brand: var(--unified-color-brand-accent);
+    /* Bottom border color under the tab row */
+    --rh-color-border-subtle: var(--unified-color-border-interactive-subtle-default);
+
+    /* Active/selected tab indicator color */
+    --rh-tabs-active-border-color: var(--rh-color-brand-red);
     --rh-border-width-lg: var(--unified-border-width-lg);
+
+    /* Focus ring color (inherited by child rh-tab elements) */
     --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
-    --rh-font-size-body-text-md: var(--unified-font-size-body-text-sm);
-    --rh-color-icon-status-disabled: var(--unified-color-icon-status-disabled);
-    --rh-color-interactive-secondary-default: transparent;
-    --_overflow-border-color: transparent;
 
-    &[box] {
-      --rh-color-surface-lighter:
-        light-dark(
-            var(--unified-color-gray-10),
-            var(--unified-color-gray-90)
-          );
+    /* Overflow buttons: square sizing, hide bottom-border indicator */
+    --_overflow-button-padding-block: var(--unified-space-md);
+    --_overflow-button-padding-inline: var(--unified-space-md);
+    --_overflow-button-min-size: 56px;
+    --_overflow-hover-indicator:
+      var(--unified-border-width-sm)
+      solid
+      var(--unified-color-border-interactive-subtle-default);
 
-      &::part(tabs-container) {
-        background-color:
-          light-dark(
-              var(--unified-color-gray-10),
-              var(--unified-color-gray-90)
-            );
-      }
-    }
-
-    &[vertical] {
-      --rh-tabs-link-padding-block-start: 14px;
-      --rh-tabs-link-padding-block-end: 14px;
-      --rh-tabs-link-padding-inline-start: var(--unified-space-lg);
-      --rh-tabs-link-padding-inline-end: var(--unified-space-lg);
-    }
+    /* Overflow icon wrapper: inset circular pill hover/focus.
+       32px = 16px icon + 8px padding on each side. */
+    --_overflow-icon-size: 32px;
+    --_overflow-icon-radius: var(--unified-border-radius-pill);
+    --_overflow-hover-bg:
+      var(--unified-color-interactive-fill-plain-hover);
+    --_overflow-focus-bg:
+      var(--unified-color-interactive-fill-plain-focus);
+    --_overflow-focus-outline:
+      var(--unified-border-width-lg)
+      solid
+      var(--unified-color-border-interactive-default);
   }
 
-  /* ── rh-tab (individual tab) ────────────────────────── */
-
-  rh-tab {
-    /* Suppress the default #button focus outline; the content
-     * span now owns the focus ring via ::part(content). */
-    --_tab-highlight-outline: none;
-
-    &::part(content) {
-      padding:
-        var(--unified-space-sm)
-        var(--unified-space-lg);
-      border-radius: var(--unified-border-radius-action-plain);
-    }
-
-    &[active]::part(button) {
-      color:
-        light-dark(
-            var(--unified-color-gray-95),
-            white
-          );
-    }
-
-    &:not([active], [disabled]) {
-      &::part(button) {
-        color:
-          light-dark(
-              var(--unified-color-gray-60),
-              var(--unified-color-gray-40)
-            );
-      }
-
-      &:hover::part(content) {
-        background-color: var(--unified-color-interactive-fill-plain-hover);
-      }
-    }
-
-    /* Focus: pill background + focus ring */
-    &:not([disabled]):focus-within::part(content) {
-      background-color: var(--unified-color-interactive-fill-plain-hover);
-      outline:
-        var(--unified-border-width-md)
-        solid
-        var(--unified-color-interactive-primary-default);
-      outline-offset: calc(var(--unified-space-xs) - 1px);
-    }
-
-    /* Disabled tab */
-    &:is([disabled], [aria-disabled='true']) {
-      &::part(button) {
-        color: var(--unified-color-text-status-disabled);
-      }
-
-      &:focus-within::part(button) {
-        box-shadow:
-          inset 0
-          calc(-1 * var(--unified-border-width-lg))
-          0 0
-          var(--unified-color-text-status-disabled);
-      }
-    }
-  }
-
-  /* ── Box variant — tab-level overrides ──────────────── */
-
-  rh-tabs[box='inset'] {
-    & rh-tab {
-      --_tab-highlight-border-color: transparent;
-    }
-
-    /* Horizontal box active tab: hide the first/last inline borders. */
-    &:not([vertical]) rh-tab[active] {
-      --rh-color-border-subtle: transparent;
-    }
-
-    & rh-tab[active]::part(button) {
-      background-color:
-        light-dark(
-            white,
-            var(--unified-color-gray-95)
-          );
-    }
-
-    /* Box disabled focused: accent on top edge */
-    & rh-tab:is([disabled], [aria-disabled='true']):focus-within::part(button) {
-      box-shadow:
-        inset 0
-        var(--unified-border-width-lg)
-        0 0
-        var(--unified-color-text-status-disabled);
-    }
-
-    /* Vertical box: add back top and bottom borders */
-    &[vertical] {
-      & rh-tab:first-of-type:not([active])::part(button) {
-        box-shadow:
-          inset 0
-          var(--unified-border-width-sm)
-          0 0
-          var(--rh-color-border-subtle);
-      }
-
-      & rh-tab:last-of-type:not([active])::part(button) {
-        box-shadow:
-          inset 0
-          calc(-1 * var(--unified-border-width-sm))
-          0 0
-          var(--rh-color-border-subtle);
-      }
-    }
-  }
-
-  /* ── Vertical variant — tab-level overrides ─────────── */
-
-  /* Vertical disabled focused */
-  /* stylelint-disable-next-line no-duplicate-selectors */
+  /* ── rh-tabs vertical: adjust first/last tab margin ──── */
   rh-tabs[vertical] {
-
-    /* stylelint-disable-next-line no-descending-specificity */
-    & rh-tab:is([disabled], [aria-disabled='true']):focus-within::part(button) {
-      box-shadow:
-        inset var(--unified-border-width-lg)
-        0 0 0
-        var(--unified-color-text-status-disabled);
-    }
+    --rh-space-xl: var(--unified-space-2xl);
   }
 
-  /* ── Overflow arrow buttons ─────────────────────────── */
+  /* ── rh-tab (individual tab button) ──────────────────── */
+  rh-tab {
+    /* Shift padding from button to inner pill wrapper.
+       Outer button gets the spacing between tab edge and pill,
+       inner wrapper gets the pill's own internal padding. */
+    --rh-tabs-link-padding-block-start: var(--unified-space-md);
+    --rh-tabs-link-padding-block-end: var(--unified-space-md);
+    --rh-tabs-link-padding-inline-start: var(--unified-space-lg);
+    --rh-tabs-link-padding-inline-end: var(--unified-space-lg);
 
-  rh-tabs::part(overflow-button) {
-    align-self: center;
-    padding: var(--unified-space-md);
-    border-radius: var(--unified-border-radius-action-plain);
+    /* Activate the inner pill wrapper */
+    --_tab-wrapper-radius: var(--unified-border-radius-pill);
+    --_tab-wrapper-padding: var(--unified-space-md) var(--unified-space-lg);
+    --_tab-wrapper-justify: center;
+
+    /* Hover: pill fill, remove default bottom-border indicator */
+    --_tab-hover-background: var(--unified-color-interactive-fill-plain-hover);
+    --rh-color-interactive-secondary-default: transparent;
+
+    /* Focus: pill fill + pill-shaped outline ring,
+       hide the default rectangular button outline */
+    --_tab-focus-background: var(--unified-color-interactive-fill-plain-focus);
+    --_tab-focus-wrapper-outline:
+      var(--unified-border-width-lg)
+      solid
+      var(--unified-color-border-interactive-default);
+    --_tab-focus-button-outline: none;
   }
 
-  rh-tabs::part(overflow-button):hover {
-    background-color: var(--unified-color-interactive-fill-plain-hover);
-  }
-
-  rh-tabs[box]::part(overflow-button) {
-    background-color:
-      light-dark(
-          var(--unified-color-gray-10),
-          var(--unified-color-gray-90)
-        );
-  }
-
-  rh-tabs[box]::part(overflow-button):hover {
-    background-color:
-      light-dark(
-          white,
-          var(--unified-color-gray-95)
-        );
+  /* ── horizontal box: remove side divider borders ────── */
+  rh-tabs:not([vertical]) {
+    --_tab-box-side-border-color: transparent;
   }
 }
 
