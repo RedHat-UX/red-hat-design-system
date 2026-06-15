@@ -23,6 +23,8 @@ rh-icon,
 
 [part='text'] {
   display: inline;
+
+  /** Line height using rh-line-height-heading token */
   line-height: var(--rh-line-height-heading, 1.3);
   text-wrap: balance;
 }
@@ -49,19 +51,20 @@ rh-icon,
   align-items: center;
   background-color: inherit;
 
-  /** Tab link text color */
+  /** Text color, falls back to rh-color-text-secondary */
   color: var(--rh-tabs-link-color, var(--rh-color-text-secondary));
   width: 100%;
   max-width: var(--_tab-max-width, 200px);
   max-height: 100%;
   line-height: 0;
-  padding: /** Tab padding block start */
+  padding:
+    /** Padding above tab label */
     var(--rh-tabs-link-padding-block-start, var(--rh-space-lg, 16px))
-    /** Tab padding inline end */
+    /** Padding after tab label */
     var(--rh-tabs-link-padding-inline-end, var(--rh-space-2xl, 32px))
-    /** Tab padding block end */
+    /** Padding below tab label */
     var(--rh-tabs-link-padding-block-end, var(--rh-space-lg, 16px))
-    /** Tab padding inline start */
+    /** Padding before tab label */
     var(--rh-tabs-link-padding-inline-start, var(--rh-space-2xl, 32px));
 
   &:before,
@@ -83,7 +86,11 @@ rh-icon,
   &:after {
     background-color: transparent;
     border-inline: 0 solid transparent;
+
+    /** Top border uses rh-border-width-lg token */
     border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
+
+    /** Bottom border uses rh-color-border-subtle token */
     border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
   }
 
@@ -277,7 +284,10 @@ rh-icon,
   &:not(.active) {
     &.box {
       &:before {
+        /** Inactive box tab side border color */
         border-inline-color: var(--_tab-box-side-border-color, var(--rh-color-border-subtle));
+
+        /** Inactive box tab side border width */
         border-inline-start-width: var(--rh-border-width-sm, 1px);
       }
 
@@ -289,8 +299,10 @@ rh-icon,
         &:hover {
           &:before {
             border-block-start:
+              /** Vertical tab hover indicator width */
               var(--rh-border-width-lg, 3px)
               solid
+              /** Vertical tab hover indicator color */
               var(--rh-color-interactive-secondary-default);
           }
         }
@@ -299,12 +311,16 @@ rh-icon,
           &:before {
             border-inline-start-color: transparent;
             border-inline-end:
+              /** Vertical box tab trailing border width above sm breakpoint */
               var(--rh-border-width-sm, 1px)
               solid
+              /** Vertical box tab trailing border color above sm breakpoint */
               var(--_tab-box-side-border-color, var(--rh-color-border-subtle));
             border-block-start:
+              /** Vertical box tab top border width above sm breakpoint */
               var(--rh-border-width-sm, 1px)
               solid
+              /** Vertical box tab top border color above sm breakpoint */
               var(--_tab-box-side-border-color, var(--rh-color-border-subtle));
           }
 
@@ -315,16 +331,20 @@ rh-icon,
           &:hover {
             &:before {
               border-inline-start:
+                /** Vertical box tab hover active indicator width above sm breakpoint */
                 var(--rh-border-width-lg, 3px)
                 solid
+                /** Vertical box tab hover active indicator color above sm breakpoint */
                 var(--rh-color-interactive-secondary-default);
               border-block-start: 0;
             }
 
             &:after {
               border-block-start:
+                /** Vertical box tab hover separator width above sm breakpoint */
                 var(--rh-border-width-sm, 1px)
                 solid
+                /** Vertical box tab hover separator color above sm breakpoint */
                 var(--rh-color-border-subtle);
             }
           }
@@ -333,6 +353,8 @@ rh-icon,
             @container (min-width: 768px) {
               &:before {
                 border-block-start: 0 solid transparent;
+
+                /** First vertical box tab trailing border */
                 border-inline-end-color:
                   var(--_tab-box-side-border-color,
                     var(--rh-color-border-subtle));
@@ -354,14 +376,17 @@ rh-icon,
         &:hover {
           &:after {
             border-block-start:
+              /** Horizontal box tab hover indicator width */
               var(--rh-border-width-lg, 3px)
               solid
+              /** Horizontal box tab hover indicator color */
               var(--rh-color-interactive-secondary-default);
           }
         }
 
         @container (min-width: 768px) {
           &:after {
+            /** Horizontal box tab bottom border above sm breakpoint */
             border-block-end-color: var(--rh-color-border-subtle);
           }
         }
@@ -380,8 +405,10 @@ rh-icon,
           @container (max-width: 767px) {
             &:after {
               border-block-end:
+                /** Vertical open tab hover indicator width below sm breakpoint */
                 var(--rh-border-width-lg, 3px)
                 solid
+                /** Vertical open tab hover indicator color below sm breakpoint */
                 var(--rh-color-interactive-secondary-default);
             }
           }
@@ -389,8 +416,10 @@ rh-icon,
           @container (min-width: 768px) {
             &:after {
               border-inline-start:
+                /** Vertical open tab hover indicator width above sm breakpoint */
                 var(--rh-border-width-lg, 3px)
                 solid
+                /** Vertical open tab hover indicator color above sm breakpoint */
                 var(--rh-color-interactive-secondary-default);
               border-block-start: transparent;
               border-block-end: transparent;
@@ -404,8 +433,10 @@ rh-icon,
       &:hover {
         &:before {
           border-block-end:
+            /** Horizontal open tab hover indicator width */
             var(--rh-border-width-lg, 3px)
             solid
+            /** Horizontal open tab hover indicator color */
             var(--rh-color-interactive-secondary-default);
         }
       }
@@ -435,12 +466,18 @@ rh-icon,
   }
 }
 
-:host(:is(:focus, :focus-within)) {
+:host(:is(:focus-visible)) {
   outline: none;
 
   & #button {
-    outline: var(--_tab-focus-button-outline, 1px auto var(--rh-color-interactive-primary-default));
-    outline-offset: var(--_tab-focus-button-outline-offset, -3px);
+    /** Focus outline, adapts to color-palette */
+    border-radius: var(--rh-border-radius-default, 3px);
+    outline:
+      var(--_tab-focus-button-outline,
+        var(--rh-border-width-lg, 3px)
+        solid
+        var(--rh-color-interactive-primary-default));
+    outline-offset: var(--_tab-focus-button-outline-offset, -7px);
   }
 
   & #wrapper {

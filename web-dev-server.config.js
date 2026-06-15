@@ -1,5 +1,6 @@
 // @ts-check
 import { pfeDevServerConfig } from '@patternfly/pfe-tools/dev-server/config.js';
+import { deslugify } from '@patternfly/pfe-tools/config.js';
 import { glob, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { makeDemoEnv } from './scripts/environment.js';
@@ -9,6 +10,7 @@ import {
   getAttribute,
   getTextContent,
   isElementNode,
+  isTextNode,
   query,
   removeAttribute,
   setAttribute,
@@ -63,6 +65,12 @@ function injectManuallyResolvedModulesToImportMap(document) {
       '@floating-ui/dom': '/node_modules/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs',
       '@floating-ui/core': '/node_modules/@floating-ui/core/dist/floating-ui.core.browser.min.mjs',
       'vue/dist/vue.esm-browser.js': 'https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js',
+      'prism-esm': '/node_modules/prism-esm/prism.js',
+      'prism-esm/': '/node_modules/prism-esm/',
+      'prism-esm/components/': '/node_modules/prism-esm/components/',
+      'construct-style-sheets-polyfill':
+        '/node_modules/construct-style-sheets-polyfill/dist/adoptedStyleSheets.js',
+      'construct-style-sheets-polyfill/': '/node_modules/construct-style-sheets-polyfill/dist/',
     });
     for (const key of Object.keys(json.scopes ?? {})) {
       json.scopes[key]['@patternfly/pfe-core'] = '/node_modules/@patternfly/pfe-core/core.js';
@@ -116,6 +124,38 @@ function transformDevServerHTML(document) {
   }
 }
 
+
+const FRONTMATTER_RE = /^\s*---\n[\s\S]*?\n---\n?/;
+
+/**
+ * Strip YAML frontmatter from demo HTML served by pfe-tools' template middleware.
+ * pfe-tools reads demo files raw, so frontmatter appears as visible text.
+ *
+ * NB: can be removed once we migrate to cem serve
+ */
+export function stripFrontmatterPlugin() {
+  return {
+    name: 'strip-frontmatter',
+    transform(context) {
+      if (!context.response.is('html') || typeof context.body !== 'string') {
+        return;
+      }
+      const document = parse(context.body);
+      const demoDiv = query(document, node =>
+        isElementNode(node)
+          && node.tagName === 'div'
+          && getAttribute(node, 'data-demo') != null);
+      if (!demoDiv || !isElementNode(demoDiv)) {
+        return;
+      }
+      const firstText = demoDiv.childNodes.find(n => isTextNode(n));
+      if (firstText && isTextNode(firstText) && FRONTMATTER_RE.test(firstText.value)) {
+        firstText.value = firstText.value.replace(FRONTMATTER_RE, '');
+        return { body: serialize(document) };
+      }
+    },
+  };
+}
 
 /**
  * Web dev server plugin to strip CSS import attributes from element source files
@@ -229,6 +269,34 @@ export default pfeDevServerConfig({
       return;
     },
     /**
+     * Serve demo assets for element demo pages.
+     * Demo index pages are served at /elements/<slug>/ so relative asset
+     * references (e.g. src="khayyam.jpg") resolve to /elements/<slug>/asset
+     * instead of /elements/<slug>/demo/asset. This middleware maps those
+     * requests to the actual file in elements/<tagName>/demo/.
+     * @param ctx koa context
+     * @param next next koa middleware
+     */
+    async function(ctx, next) {
+      if (/\.(js|ts|css|html|map)$/i.test(ctx.path)) {
+        return next();
+      }
+      const match = ctx.path.match(/^\/elements\/([\w-]+)\/(?:.*\/)?([\w.-]+\.\w+)$/);
+      if (match) {
+        const [, slug, filename] = match;
+        const tagName = deslugify(slug);
+        const filePath = join(process.cwd(), 'elements', tagName, 'demo', filename);
+        try {
+          ctx.body = await readFile(filePath);
+          ctx.type = filename.split('.').pop() ?? 'bin';
+          return;
+        } catch {
+          // File not found in demo directory, fall through
+        }
+      }
+      return next();
+    },
+    /**
      * @param ctx koa context
      * @param next next koa middleware
      */
@@ -245,6 +313,7 @@ export default pfeDevServerConfig({
     },
   ],
   plugins: [
+    stripFrontmatterPlugin(),
     stripCssImportAttributesPlugin(),
     {
       name: 'watch-demos',

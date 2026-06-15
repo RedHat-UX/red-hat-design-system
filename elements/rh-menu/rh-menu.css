@@ -11,26 +11,35 @@ slot {
 
 ::slotted(a) {
   padding: 5px !important; /* WARNING: not a token value */
+
+  /** Default link color */
   color: var(--rh-color-interactive-primary-default);
 }
 
 ::slotted(a:hover) {
+  /** Link hover color */
   color: var(--rh-color-interactive-primary-hover) !important;
 }
 
 ::slotted(a:visited) {
+  /** Visited link color */
   color: var(--rh-color-interactive-primary-visited-default) !important;
 }
 
 ::slotted(a:visited:hover) {
+  /** Visited hover link color */
   color: var(--rh-color-interactive-primary-visited-default) !important;
 }
 
 ::slotted(hr) {
   border: 0;
+
+  /** Separator border width */
   border-top:
     var(--rh-border-width-sm, 1px) solid light-dark(
+        /** Light separator color */
         var(--rh-color-gray-30, #c7c7c7),
+        /** Dark separator color */
         var(--rh-color-gray-50, #707070)
       );
   width: 100%;

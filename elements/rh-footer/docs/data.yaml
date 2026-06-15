@@ -3,6 +3,7 @@ tagName: rh-footer
 name: Footer
 type: element
 overallStatus: ready
+category: Navigation
 libraries:
   figma: ready
   rhds: ready
@@ -13,3 +14,4 @@ relatedItems:
   - rh-popover
   - rh-tooltip
   - rh-site-status
+since: v1.0.0

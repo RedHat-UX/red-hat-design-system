@@ -21,7 +21,7 @@ const NAV = html`
     <rh-navigation-vertical-list summary="Group 1">
       <rh-navigation-link href="/group-1/">Group 1 Index</rh-navigation-link>
       <rh-navigation-link href="/group-1/item-1/">Group 1 Item 1</rh-navigation-link>
-      <rh-navigation-link href="/group-1/item-2/">Group 1 Item 2</rh-navigation-link> 
+      <rh-navigation-link href="/group-1/item-2/">Group 1 Item 2</rh-navigation-link>
     </rh-navigation-vertical-list>
 
     <rh-navigation-vertical-list summary="Group 2">

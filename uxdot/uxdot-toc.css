@@ -7,9 +7,10 @@
 
 details {
   display: flex;
+  flex-direction: column;
   padding-inline: var(--rh-space-xl);
   border-inline-start: var(--rh-border-width-lg) solid transparent;
-  border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
+  border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
 }
 
 details[open]:after {
