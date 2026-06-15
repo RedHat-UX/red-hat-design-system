@@ -12,7 +12,17 @@ import styles from './rh-audio-player-about.css' with { type: 'css' };
 import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer.js';
 
 /**
- * Audio Player About Panel
+ * Provides episode details and speaker attribution for `rh-audio-player`.
+ * Use when you need show notes or speaker profiles. Must be placed in
+ * the `about` slot. Authors should provide a heading and may include up
+ * to two `rh-avatar` elements for attribution. Rendered inside an
+ * ARIA dialog panel so screen readers can navigate its content.
+ *
+ * @summary Displays episode description and speaker attribution
+ *
+ * @csspart heading - The panel heading container with scrolling overflow.
+ * @csspart body - The scrollable description content area.
+ * @csspart profile - The speaker profile / avatar area.
  */
 @customElement('rh-audio-player-about')
 export class RhAudioPlayerAbout extends LitElement {
@@ -39,9 +49,12 @@ export class RhAudioPlayerAbout extends LitElement {
     const heading = this.#headings.wrap(mediatitle ?? '');
 
     return html`
-      <!-- panel heading -->
       <rh-audio-player-scrolling-text-overflow id="title" part="heading">
-        <!-- custom heading for panel -->
+        <!-- summary: Panel heading
+             description: |
+               Accepts a heading block element like \`<h3>\` for the panel
+               title. Should use an appropriate heading level for the page
+               so screen readers can navigate the panel hierarchy. -->
         <slot name="heading">${label}</slot>
       </rh-audio-player-scrolling-text-overflow>${!mediatitle ? `` : !mediaseries ? heading : html`
       <hgroup class="media-info" part="heading">${!mediaseries ? '' : html`
@@ -52,15 +65,23 @@ export class RhAudioPlayerAbout extends LitElement {
           ${heading}
         </rh-audio-player-scrolling-text-overflow>
       </hgroup>`}
-      <!-- panel body -->
-      <div part="body" ?hidden="${!hasContent}" tabindex=0><!-- panel content --><slot></slot></div>
+      <div part="body" ?hidden="${!hasContent}" tabindex="0">
+        <!-- summary: Episode description
+             description: |
+               Accepts block elements like \`<p>\` for episode show notes
+               or description text. Content is focusable and scrollable
+               so keyboard and screen reader users can read it. -->
+        <slot></slot>
+      </div>
       <!--
+        slot:
+          summary: Speaker attribution
+          description: |
+            Accepts up to two \`<rh-avatar>\` block elements for speaker
+            attribution. Additional elements beyond two are hidden.
         part:
           description: |
             panel profile / avatar
-        slot:
-          description: |
-            \`<rh-avatar>\` for attribution
       -->
       <slot part="profile" name="profile"></slot>`;
   }
@@ -74,6 +95,7 @@ export class RhAudioPlayerAbout extends LitElement {
     return this.label || this.#label || 'About the episode';
   }
 
+  /** Triggers the scrolling text animation on all panel headings that overflow their container. */
   scrollText() {
     const scrollers = this.shadowRoot?.querySelectorAll('rh-audio-player-scrolling-text-overflow');
     for (const scroller of scrollers ?? []) {
