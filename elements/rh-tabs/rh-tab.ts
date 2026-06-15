@@ -95,12 +95,14 @@ export class RhTab extends LitElement {
            part="button"
            ?disabled="${this.disabled}"
            class="${classMap({ active, box, vertical, first, last })}">
-        <slot name="icon"
-              part="icon">
-          <rh-icon ?hidden="${!this.icon}" icon="${ifDefined(this.icon)}" set="${ifDefined(this.iconSet)}"></rh-icon>
-        </slot>    
-        <!-- Tab title text -->
-        <slot part="text"></slot>
+        <div id="wrapper" part="wrapper">
+          <slot name="icon"
+                part="icon">
+            <rh-icon ?hidden="${!this.icon}" icon="${ifDefined(this.icon)}" set="${ifDefined(this.iconSet)}"></rh-icon>
+          </slot>
+          <!-- Tab title text -->
+          <slot part="text"></slot>
+        </div>
       </div>
     `;
   }
