@@ -96,6 +96,26 @@
           var(--unified-color-blue-60),
           var(--unified-color-blue-20)
         );
+    --unified-color-interactive-tertiary-default:
+      light-dark(
+          var(--unified-color-blue-50),
+          var(--unified-color-blue-20)
+        );
+    --unified-color-interactive-tertiary-hover:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-10)
+        );
+    --unified-color-interactive-tertiary-focus:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-10)
+        );
+    --unified-color-interactive-tertiary-active:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-10)
+        );
     --unified-color-interactive-fill-plain-on-light: rgba(199, 199, 199, 0.25);
     --unified-color-interactive-fill-plain-on-dark: rgba(199, 199, 199, 0.15);
     --unified-color-interactive-fill-plain-default: transparent;
@@ -510,6 +530,19 @@
     --rh-space-lg: var(--unified-button-padding-inline);
     --rh-icon-size: var(--unified-size-icon-00);
 
+    &::part(button) {
+      /* Ripple animation */
+      background-image:
+        radial-gradient(
+            circle,
+            transparent 1%,
+            color-mix(in srgb, currentcolor 15%, transparent) 2%
+          );
+      background-size: 15000% 15000%;
+      background-position: center;
+      transition: background-size 0.45s ease;
+    }
+
     &::part(button):focus {
       outline:
         var(--unified-button-border-width-focus-ring)
@@ -518,7 +551,14 @@
       outline-offset: var(--unified-button-border-width-focus-ring);
     }
 
+    &::part(button):active {
+      background-size: 100% 100%;
+      transition-duration: 0s;
+    }
+
     &[variant='primary'] {
+      --rh-color-text-primary-on-light: var(--rh-color-gray-90);
+
       &[danger] {
         &::part(button):hover {
           background-color: var(--unified-color-status-danger-hover);
@@ -534,26 +574,17 @@
       --rh-border-width-sm: var(--unified-border-width-sm);
 
       &::part(button):hover {
+        --rh-color-text-primary: var(--unified-color-interactive-tertiary-hover);
         --rh-border-width-sm: var(--unified-button-border-width-hover);
-        --rh-color-interactive-primary-default:
-          var(
-              --unified-color-interactive-primary-hover
-            );
       }
 
       &::part(button):focus {
-        --rh-color-interactive-primary-default:
-          var(
-              --unified-color-interactive-primary-focus
-            );
+        --rh-color-text-primary: var(--unified-color-interactive-tertiary-hover);
         --rh-border-width-sm: var(--unified-button-border-width-focus);
       }
 
       &::part(button):active {
-        --rh-color-interactive-primary-default:
-          var(
-              --unified-color-interactive-primary-active
-            );
+        --rh-color-text-primary: var(--unified-color-interactive-tertiary-hover);
         --rh-border-width-sm: var(--unified-button-border-width-active);
       }
 
@@ -579,20 +610,21 @@
 
     &[variant='tertiary'] {
       --rh-color-border-strong: var(--unified-color-border-interactive-subtle-default);
-      --rh-color-text-primary: var(--unified-color-interactive-primary-default);
+      --rh-color-text-primary: var(--unified-color-interactive-tertiary-default);
 
       &::part(button):hover {
-        --rh-color-text-primary: var(--unified-color-interactive-primary-hover);
+        --rh-color-text-primary: var(--unified-color-interactive-tertiary-hover);
         --rh-color-border-strong: var(--unified-color-border-interactive-subtle-hover);
       }
 
       &::part(button):focus {
-        --rh-color-interactive-primary-default:
-          var(
-              --unified-color-interactive-primary-focus
-            );
+        --rh-color-text-primary: var(--unified-color-interactive-tertiary-focus);
         --rh-border-width-sm: var(--unified-button-border-width-focus);
         --rh-color-border-strong: var(--unified-color-border-interactive-subtle-focus);
+      }
+
+      &::part(button):active {
+        --rh-color-text-primary: var(--unified-color-interactive-tertiary-active);
       }
 
       &[danger] {
@@ -621,10 +653,12 @@
 
     &[variant='link'],
     &[variant='plain'] {
+      --rh-color-blue-70: var(--unified-color-interactive-tertiary-default);
+
       &::part(button):hover,
       &::part(button):focus,
       &::part(button):active {
-        --rh-color-blue-70: var(--unified-color-interactive-primary-default);
+        --rh-color-blue-70: var(--unified-color-interactive-tertiary-hover);
 
         background-color: var(--unified-color-interactive-fill-plain-hover);
       }
@@ -693,15 +727,6 @@
         background-color: transparent;
         color: var(--unified-color-text-status-disabled);
       }
-    }
-
-    &::part(button):active {
-      color: var(--unified-color-interactive-primary-active);
-    }
-
-    &::part(button):active:after {
-      border-width: var(--unified-button-border-width-active);
-      border-color: var(--unified-color-border-interactive-subtle-active);
     }
 
     &[compact] {
