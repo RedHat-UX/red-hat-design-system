@@ -3,10 +3,17 @@
   overflow: hidden;
   will-change: height;
 
-  --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
-  --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
-  --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
-  --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
+  /** Panel block-start (top) padding */
+  --rh-accordion-panel-padding-block-start: var(--rh-space-lg, 16px);
+
+  /** Panel inline-end (right) padding */
+  --rh-accordion-panel-padding-inline-end: var(--rh-space-xl, 24px);
+
+  /** Panel block-end (bottom) padding */
+  --rh-accordion-panel-padding-block-end: var(--rh-space-lg, 16px);
+
+  /** Panel inline-start (left) padding */
+  --rh-accordion-panel-padding-inline-start: var(--rh-space-xl, 24px);
 }
 
 :host(:not([expanded])) {
@@ -25,10 +32,10 @@
 }
 
 .large {
-  --_panel-body-padding-block-start: var(--rh-space-xl, 24px);
-  --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
-  --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
-  --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
+  --rh-accordion-panel-padding-block-start: var(--rh-space-xl, 24px);
+  --rh-accordion-panel-padding-inline-end: var(--rh-space-xl, 24px);
+  --rh-accordion-panel-padding-block-end: var(--rh-space-xl, 24px);
+  --rh-accordion-panel-padding-inline-start: var(--rh-space-xl, 24px);
 }
 
 .body {
@@ -36,10 +43,10 @@
   overflow: hidden;
   display: block;
   padding:
-    var(--_panel-body-padding-block-start, var(--rh-space-md, 8px))
-    var(--_panel-body-padding-inline-end, var(--rh-space-lg, 16px))
-    var(--_panel-body-padding-block-end, var(--rh-space-md, 8px))
-    var(--_panel-body-padding-inline-start, var(--rh-space-lg, 16px));
+    var(--rh-accordion-panel-padding-block-start, var(--rh-space-lg, 16px))
+    var(--rh-accordion-panel-padding-inline-end, var(--rh-space-xl, 24px))
+    var(--rh-accordion-panel-padding-block-end, var(--rh-space-lg, 16px))
+    var(--rh-accordion-panel-padding-inline-start, var(--rh-space-xl, 24px));
 }
 
 :host([fixed]) {

@@ -71,17 +71,9 @@ export class RhAccordionPanel extends LitElement {
            class="${classMap({ large, expanded, content: true })}"
            part="container"
            tabindex="-1">
-        <!--
-          slot:
-            summary: panel body content
-            description: |
-              Accepts any basic markup including div, paragraph, or nested
-              accordion panels. Renders inside the wrapper element targeted
-              by the \`body\` CSS part.
-          part:
-            summary: panel body wrapper
-        -->
-        <slot class="body" part="body"></slot>
+        <!-- The content of the accordion panel can be any basic markup including but not limited
+             to div, paragraph, or nested accordion panels. -->
+        <slot class="body"></slot>
       </div>
     `;
   }
