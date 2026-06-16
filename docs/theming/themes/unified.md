@@ -29,6 +29,17 @@ subnav:
   import '@rhds/elements/rh-switch/rh-switch.js';
   import '@rhds/elements/rh-tabs/rh-tabs.js';
   import '@rhds/elements/rh-tag/rh-tag.js';
+
+  // NB: CSS runtime patches to elements
+  // which add features not yet available. 
+  // Check after 5.0 releases.
+
+  for (const pattern of document.querySelectorAll('uxdot-pattern')) {
+    // rh-accordion
+    for (const panel of pattern.shadowRoot.querySelectorAll('rh-accordion-panel')) {
+      panel.shadowRoot?.querySelector('slot.body')?.setAttribute('part', 'body');
+    }
+  }
 </script>
 <style>
   #unified-theme-toggle {

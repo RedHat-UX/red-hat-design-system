@@ -1007,6 +1007,11 @@
     --rh-color-surface-darkest: transparent;
     --rh-space-xl: var(--unified-space-xl);
 
+    background-color:
+      light-dark(
+          var(--rh-color-surface-lightest),
+          var(--rh-color-gray-80)
+        );
     font-size: var(--unified-font-size-body-text-sm);
 
     & rh-accordion-header {
@@ -1016,7 +1021,7 @@
       --rh-color-text-primary:
         light-dark(
             var(--unified-color-gray-95),
-            var(--unified-color-gray-10)
+            var(--rh-color-white)
           );
       --rh-space-lg: var(--unified-space-md);
       --rh-space-xl: var(--unified-space-lg);
@@ -1057,29 +1062,25 @@
 
     & rh-accordion-panel {
       --rh-space-xl: var(--unified-space-lg);
-      --rh-color-border-subtle:
-        light-dark(
-            var(--unified-color-gray-30),
-            var(--unified-color-gray-50)
-          );
     }
 
     /* !important needed to override shadow DOM #container border */
     & rh-accordion-panel::part(container) {
       border-inline-end: none !important;
-      background-color:
-        light-dark(
-            var(--rh-color-surface-lightest),
-            var(--rh-color-gray-80)
-          );
+    }
+
+    & rh-accordion-panel::part(body) {
+      padding-block: var(--rh-space-md, 8px) var(--rh-space-xl, 24px);
     }
 
     &.bordered {
       --rh-color-border-subtle:
         light-dark(
-            var(--unified-color-gray-20),
-            var(--unified-color-gray-60)
+            var(--unified-color-gray-30),
+            var(--unified-color-gray-50)
           );
+
+      background-color: none;
 
       & rh-accordion-header {
         border-radius: 0;
