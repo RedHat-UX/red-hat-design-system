@@ -592,7 +592,8 @@
         --rh-color-status-danger: var(--unified-color-text-status-danger);
 
         &::part(icon) {
-          /* Dark scheme: icon default is red-orange-50; light scheme unchanged (red-orange-60 = text color) */
+          /* Dark scheme: icon default is red-orange-50;
+             light scheme unchanged (red-orange-60 = text color) */
           color: var(--unified-color-status-danger);
         }
 
@@ -637,7 +638,8 @@
         --rh-color-text-primary: var(--unified-color-text-status-danger);
 
         &::part(icon) {
-          /* Dark scheme: icon default is red-orange-50; light scheme unchanged (red-orange-60 = text color) */
+          /* Dark scheme: icon default is red-orange-50;
+             light scheme unchanged (red-orange-60 = text color) */
           color: var(--unified-color-status-danger);
         }
 
@@ -692,7 +694,8 @@
         --rh-color-interactive-primary-default: var(--unified-color-text-status-danger);
 
         &::part(icon) {
-          /* Dark scheme: icon default is red-orange-50; light scheme unchanged (red-orange-60 = text color) */
+          /* Dark scheme: icon default is red-orange-50;
+             light scheme unchanged (red-orange-60 = text color) */
           color: var(--unified-color-status-danger);
         }
 
