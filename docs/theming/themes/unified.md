@@ -34,10 +34,37 @@ subnav:
   // which add features not yet available. 
   // Check after 5.0 releases.
 
+  const accordionPanelPatch = new CSSStyleSheet();
+  accordionPanelPatch.replaceSync(/*css*/`
+    :host {
+      display: none;
+      overflow: hidden;
+      will-change: height;
+    }
+
+    .large {
+      --rh-accordion-panel-padding-block-start: var(--rh-space-xl, 24px);
+      --rh-accordion-panel-padding-inline-end: var(--rh-space-xl, 24px);
+      --rh-accordion-panel-padding-block-end: var(--rh-space-xl, 24px);
+      --rh-accordion-panel-padding-inline-start: var(--rh-space-xl, 24px);
+    }
+
+    .body {
+      position: relative;
+      overflow: hidden;
+      display: block;
+      padding:
+        var(--rh-accordion-panel-padding-block-start, var(--rh-space-lg, 16px))
+        var(--rh-accordion-panel-padding-inline-end, var(--rh-space-xl, 24px))
+        var(--rh-accordion-panel-padding-block-end, var(--rh-space-lg, 16px))
+        var(--rh-accordion-panel-padding-inline-start, var(--rh-space-xl, 24px));
+    }
+  `);
+
   for (const pattern of document.querySelectorAll('uxdot-pattern')) {
-    // rh-accordion
-    for (const panel of pattern.shadowRoot.querySelectorAll('rh-accordion-panel')) {
-      panel.shadowRoot?.querySelector('slot.body')?.setAttribute('part', 'body');
+    // rh-accordion-panel
+    for (const el of pattern.shadowRoot.querySelectorAll('rh-accordion-panel')) {
+      el.shadowRoot.adoptedStyleSheets = [...el.shadowRoot.adoptedStyleSheets, accordionPanelPatch];
     }
   }
 </script>
