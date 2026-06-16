@@ -71,9 +71,13 @@ export class RhAccordionPanel extends LitElement {
            class="${classMap({ large, expanded, content: true })}"
            part="container"
            tabindex="-1">
-        <!-- The content of the accordion panel can be any basic markup including but not limited
-             to div, paragraph, or nested accordion panels. -->
-        <slot class="body"></slot>
+        <!-- summary: the panel body slot. The content of the accordion panel can be any basic
+               markup including but not limited to div, paragraph, or nested accordion panels.
+             description: |
+               The body part wraps the default slot that holds panel content.
+               Use it to override padding, such as block-start and block-end
+               spacing, from outside the shadow DOM via \`::part(body)\`. -->
+        <slot class="body" part="body"></slot>
       </div>
     `;
   }
