@@ -513,7 +513,7 @@
     --unified-button-font-size: var(--unified-font-size-body-text-sm);
     --unified-button-padding-block: var(--unified-space-md);
     --unified-button-padding-inline: var(--unified-space-xl);
-    --unified-button-padding-block-compact: var(--unified-space-sm);
+    --unified-button-padding-block-compact: var(--unified-space-xs);
     --unified-button-padding-inline-compact: var(--unified-space-lg);
     --unified-button-border-width-hover: var(--unified-border-width-md);
     --unified-button-border-width-focus: var(--unified-border-width-md);
@@ -591,6 +591,11 @@
       &[danger] {
         --rh-color-status-danger: var(--unified-color-text-status-danger);
 
+        &::part(icon) {
+          /* Dark scheme: icon default is red-orange-50; light scheme unchanged (red-orange-60 = text color) */
+          color: var(--unified-color-status-danger);
+        }
+
         &::part(button):hover {
           --rh-color-border-status-danger: var(--unified-color-status-danger-hover);
           --rh-color-status-danger: var(--unified-color-status-danger-hover);
@@ -630,6 +635,11 @@
       &[danger] {
         --rh-color-border-strong: var(--unified-color-status-danger);
         --rh-color-text-primary: var(--unified-color-text-status-danger);
+
+        &::part(icon) {
+          /* Dark scheme: icon default is red-orange-50; light scheme unchanged (red-orange-60 = text color) */
+          color: var(--unified-color-status-danger);
+        }
 
         &::part(button):hover {
           --rh-color-border-status-danger: var(--unified-color-status-danger-hover);
@@ -671,10 +681,16 @@
       &[danger] {
         --rh-color-interactive-primary-default: var(--unified-color-text-status-danger);
 
+        &::part(icon) {
+          /* Dark scheme: icon default is red-orange-50; light scheme unchanged (red-orange-60 = text color) */
+          color: var(--unified-color-status-danger);
+        }
+
         &::part(button):hover,
         &::part(button):focus,
         &::part(button):active {
-          color: var(--unified-color-text-status-danger);
+          /* Dark scheme: text in interactive states is red-orange-20 */
+          color: var(--unified-color-text-status-danger-hover);
         }
       }
 
