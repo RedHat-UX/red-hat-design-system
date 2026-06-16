@@ -2,18 +2,6 @@
   display: block;
   overflow: hidden;
   will-change: height;
-
-  /** Panel block-start (top) padding */
-  --rh-accordion-panel-padding-block-start: var(--rh-space-lg, 16px);
-
-  /** Panel inline-end (right) padding */
-  --rh-accordion-panel-padding-inline-end: var(--rh-space-xl, 24px);
-
-  /** Panel block-end (bottom) padding */
-  --rh-accordion-panel-padding-block-end: var(--rh-space-lg, 16px);
-
-  /** Panel inline-start (left) padding */
-  --rh-accordion-panel-padding-inline-start: var(--rh-space-xl, 24px);
 }
 
 :host(:not([expanded])) {
@@ -43,9 +31,13 @@
   overflow: hidden;
   display: block;
   padding:
+    /** Panel block-start (top) padding */
     var(--rh-accordion-panel-padding-block-start, var(--rh-space-lg, 16px))
+    /** Panel inline-end (right) padding */
     var(--rh-accordion-panel-padding-inline-end, var(--rh-space-xl, 24px))
+    /** Panel block-end (bottom) padding */
     var(--rh-accordion-panel-padding-block-end, var(--rh-space-lg, 16px))
+    /** Panel inline-start (left) padding */
     var(--rh-accordion-panel-padding-inline-start, var(--rh-space-xl, 24px));
 }
 
