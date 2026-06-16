@@ -3,6 +3,9 @@ tagName: rh-switch
 name: Switch
 type: element
 overallStatus: new
+category: Selection
+aka:
+  - Toggle
 libraries:
   figma: ready
   rhds: ready
@@ -11,3 +14,4 @@ libraries:
 relatedItems:
   - rh-button
   - form
+since: v2.0.0

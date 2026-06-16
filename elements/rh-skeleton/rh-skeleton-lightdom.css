@@ -1,9 +1,15 @@
 rh-skeleton {
   background: light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1));
+
+  /** Default skeleton height based on medium body text font size and line height */
   block-size: calc(var(--rh-font-size-body-text-md, 1rem) * var(--rh-line-height-body-text, 1.5));
+
+  /** Corner rounding for non-circle skeleton shapes */
   border-radius: var(--rh-border-radius-default, 3px);
   display: block;
   inline-size: 100%;
+
+  /** Vertical spacing between stacked skeleton items */
   margin-block-end: var(--rh-space-xs, 4px);
   overflow: hidden;
   position: relative;
@@ -107,10 +113,12 @@ rh-skeleton[size='2xl'][type='heading']:not([type='circle'], [type='square'], [t
  * Shape Skeletons:
 */
 rh-skeleton:is([type='circle'], [type='square'], [type='rectangle']) {
+  /** Default height for shape skeletons */
   block-size: var(--rh-length-4xl, 64px);
 }
 
 rh-skeleton:is([type='circle'], [type='square']) {
+  /** Default width for circle and square shape skeletons */
   inline-size: var(--rh-length-4xl, 64px);
 }
 
@@ -119,9 +127,11 @@ rh-skeleton[type='circle'] {
 }
 
 rh-skeleton[type='square'] {
+  /** Corner rounding for square shape skeletons */
   border-radius: var(--rh-border-radius-default, 3px);
 }
 
 rh-skeleton[type='rectangle'] {
+  /** Default width for rectangle shape skeletons */
   inline-size: var(--rh-length-7xl, 128px);
 }

@@ -6,7 +6,7 @@ tags:
   - developers
 subnav:
   collection: sortedDevelopers
-  order: 40
+  order: 50
 ---
 
 <script type="module" data-helmet>

@@ -3,8 +3,12 @@ tagName: rh-back-to-top
 name: Back to top
 type: element
 overallStatus: ready
+category: Actions and links
+aka:
+  - Scroll to top
 libraries:
   figma: ready
   rhds: ready
   shared: planned
   docs: inProgress
+since: v1.4.0

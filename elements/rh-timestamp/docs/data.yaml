@@ -3,6 +3,10 @@ tagName: rh-timestamp
 name: Timestamp
 type: element
 overallStatus: ready
+category: Data
+aka:
+  - Date
+  - Time
 libraries:
   figma: ready
   rhds: ready
@@ -11,3 +15,4 @@ libraries:
 relatedItems:
   - rh-blockquote
   - rh-statistic
+since: v1.2.0
