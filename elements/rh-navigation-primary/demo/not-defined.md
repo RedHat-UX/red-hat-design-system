@@ -1,1 +1,0 @@
-Demonstrates the `:not(:defined)` state of the element.  When the navigation element is not defined such as in the event of a javascript error, the content of the hamburger menu is still accessible when the element is Server Side Rendered (<abbr>SSR</abbr>) into a Declarative Shadow DOM element.

@@ -3,8 +3,10 @@ tagName: rh-announcement
 name: Announcement
 type: element
 overallStatus: new
+category: Structure
 libraries:
   figma: ready
   rhds: ready
   shared: planned
   docs: ready
+since: v3.0.0

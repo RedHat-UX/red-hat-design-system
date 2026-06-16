@@ -3,6 +3,10 @@ tagName: rh-badge
 name: Badge
 type: element
 overallStatus: ready
+category: Data
+aka:
+  - Count
+  - Pill
 libraries:
   figma: ready
   rhds: ready
@@ -12,3 +16,4 @@ relatedItems:
   - rh-alert
   - rh-avatar
   - rh-tag
+since: v1.0.0

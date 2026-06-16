@@ -87,6 +87,8 @@ There is an alternate inline alert where the border covers all sides.
 ### Toast
 
 Same as the inline alert, at minimum, the status icon and title need to be visible.
+For when and how to use toast alerts in product UI, see the
+[Alert pattern](/patterns/alert/).
 
 <uxdot-example color-palette="lightest" width-adjustment="456px">
   <img alt="Two examples of a toast alert"

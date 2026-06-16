@@ -69,7 +69,7 @@ describe('<rh-accordion>', function() {
               ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
               rebum.</p>
           </rh-accordion-panel>
-        </rh-accordion>          
+        </rh-accordion>
       `);
       headers = Array.from(element.querySelectorAll('rh-accordion-header'));
       panels = Array.from(element.querySelectorAll('rh-accordion-panel'));

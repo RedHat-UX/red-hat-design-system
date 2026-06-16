@@ -10,10 +10,14 @@ body:
     attributes:
       label: Describe the bug
       description: >-
-        A clear and concise description of the bug
+        A clear and concise description of the bug.
+        Please reproduce the bug with a minimal HTML example,
+        using the [RHDS Codepen Template](https://codepen.io/pen?template=PoLRbxp)
       placeholder: >-
         The arrow icon in the call-to-action button should animate when
-        the user hovers over the CTA, but it doesn't
+        the user hovers over the CTA, but it doesn't.
+
+        See https://codepen.io/XXXXXXX/pen/YYYYYYYY/
     validations:
       required: true
 
@@ -44,7 +48,7 @@ body:
         3.0.3
     validations:
       required: true
-      
+
   - type: textarea
     id: repro
     attributes:
@@ -65,7 +69,7 @@ body:
       description: >-
         A clear and concise description of what you expected to happen
       placeholder: >-
-        The arrow animates to the right on hover, and back to the left when 
+        The arrow animates to the right on hover, and back to the left when
         the cursor leaves the CTA
     validations:
       required: true
@@ -89,7 +93,7 @@ body:
       value:  |
         ---
         ## Browser and System Info
-        
+
         Please fill out more information, including the versions of each browser in which
         the bug was observed, or in the case of Safari iOS, the **device name**, and **OS version**
 

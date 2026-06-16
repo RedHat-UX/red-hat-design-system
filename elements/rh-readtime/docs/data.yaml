@@ -1,0 +1,12 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-readtime
+name: Read time
+type: element
+overallStatus: ready
+category: Data
+libraries:
+  figma: ready
+  rhds: ready
+  shared: planned
+  docs: planned
+since: v4.1.0

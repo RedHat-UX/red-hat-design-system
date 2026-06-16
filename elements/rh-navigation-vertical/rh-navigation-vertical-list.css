@@ -7,11 +7,15 @@ details {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    /** Summary block and inline padding */
     padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
     list-style: none;
     cursor: pointer;
     position: relative;
     place-items: center;
+
+    /** Spacing between summary text and caret icon */
     gap: var(--rh-space-lg, 16px);
 
     &::-webkit-details-marker,
@@ -20,14 +24,20 @@ details {
     }
 
     &:is(:hover,:focus) {
+      /** Summary hover and focus surface, adapts to theme */
       background:
         light-dark(var(--rh-color-surface-lighter, #f2f2f2),
           var(--rh-color-surface-dark, #383838));
     }
 
     & ::slotted([slot='summary']) {
+      /** Summary label typeface */
       font-family: var(--rh-font-family-body-text);
+
+      /** Summary label font size */
       font-size: var(--rh-font-size-body-text-md, 1rem) !important;
+
+      /** Summary label font weight */
       font-weight: var(--rh-font-weight-body-text-regular, 400);
     }
 
@@ -47,13 +57,20 @@ details {
   & #subtree {
     display: flex;
     flex-direction: column;
+
+    /** Spacing between nested navigation items */
     gap: var(--rh-space-xs, 4px);
+
+    /** Nested list inline indentation */
     margin-inline-start: var(--rh-space-lg, 16px);
+
+    /** Nested list block spacing */
     margin-block: var(--rh-space-xs, 4px) var(--_subtree-margin-block-end, var(--rh-space-md, 8px));
   }
 }
 
 ::slotted(rh-navigation-vertical-list) {
+  /** Nested group uses smaller font size */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 
   --_subtree-margin-block-end: 0;
@@ -63,13 +80,23 @@ details {
   --_navigation-link-display: flex;
   --_navigation-link-align-items: center;
   --_navigation-link-inline-size: 100%;
+
+  /** Nested link block and inline padding */
   --_navigation-link-padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+
+  /** Nested link font size */
   --_navigation-link-font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   --_navigation-link-text-decoration: none;
   --_navigation-link-text-decoration-style: none;
   --_navigation-link-text-decoration-line: none;
+
+  /** Nested link text color, inherits from theme */
   --_navigation-link-color: var(--rh-color-text-primary);
+
+  /** Nested link text color on hover, inherits from theme */
   --_navigation-link-color-hover: var(--rh-color-text-primary);
+
+  /** Nested link hover surface, adapts to theme */
   --_navigation-link-hover-background-color:
     light-dark(var(--rh-color-surface-lighter, #f2f2f2),
       var(--rh-color-surface-dark, #383838));
@@ -80,25 +107,35 @@ details {
 }
 
 ::slotted(rh-navigation-link:hover) {
+  /** Nested hover indicator border width */
   --_navigation-link-before-border-inline-start-width: var(--rh-border-width-md, 2px);
+
+  /** Nested hover indicator uses subtle border */
   --_navigation-link-before-border-inline-start-color: var(--rh-color-border-subtle);
 }
 
 ::slotted(rh-navigation-link:active) {
+  /** Active indicator border width */
   --_navigation-link-before-border-inline-start-width: var(--rh-border-width-md, 2px);
+
+  /** Active indicator uses brand accent */
   --_navigation-link-before-border-inline-start-color: var(--rh-color-brand-red);
 }
 
 ::slotted(rh-navigation-link[current-page]) {
+  /** Current page surface, adapts to theme */
   --_navigation-link-background-color:
     light-dark(var(--rh-color-surface-lighter, #f2f2f2),
       var(--rh-color-surface-dark, #383838));
   --_navigation-link-before-border-inline-start-width: var(--rh-border-width-md, 2px);
+
+  /** Current page indicator uses brand accent */
   --_navigation-link-before-border-inline-start-color: var(--rh-color-brand-red);
 }
 
 .highlight {
   & ::slotted(rh-navigation-link:first-child) {
+    /** Highlighted first link uses medium weight */
     --_navigation-link-font-weight: var(--rh-font-weight-body-text-medium, 500);
   }
 }
