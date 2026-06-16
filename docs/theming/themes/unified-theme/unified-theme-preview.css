@@ -665,6 +665,16 @@
     &[variant='plain'] {
       --rh-color-blue-70: var(--unified-color-interactive-tertiary-default);
 
+      &::part(button) {
+        /* Link/plain: equal 8px padding on all sides (no extra inline reduction for icons) */
+        padding: var(--unified-space-md);
+      }
+
+      &[compact]::part(button) {
+        /* Compact link/plain: equal 4px padding on all sides */
+        padding: var(--unified-space-xs);
+      }
+
       &::part(button):hover,
       &::part(button):focus,
       &::part(button):active {
