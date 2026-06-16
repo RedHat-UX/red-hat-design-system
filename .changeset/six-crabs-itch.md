@@ -2,5 +2,5 @@
 "@rhds/elements": minor
 ---
 
-show-check-icon API now customizable with `--rh-switch-check-display` CSS custom property
+`<rh-switch>`: added `--rh-switch-check-display` CSS custom property to control checkmark icon visibility from themes without the `show-check-icon` attribute
   
