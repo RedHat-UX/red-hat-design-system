@@ -1125,30 +1125,128 @@
 /* Element: Jump Links */
 @layer jump-links {
   rh-jump-links {
-    --rh-color-brand-red: var(--unified-color-brand-accent);
     --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
     --rh-color-interactive-secondary-default:
       light-dark(
-          var(--unified-color-gray-40),
-          var(--unified-color-gray-50)
+          var(--unified-color-gray-60),
+          var(--unified-color-gray-40)
         );
-    --rh-border-radius-default: var(--unified-border-radius-action-plain);
+    --rh-border-radius-default: var(--unified-border-radius-pill);
     --rh-border-width-lg: var(--unified-border-width-lg);
   }
 
   rh-jump-link {
-    /* Replace the left-border hover indicator with a pill background */
+    /* Hide shadow DOM ::before indicators -- host border takes over */
+    --_active_bdr: none;
     --rh-color-border-status-neutral: transparent;
+
+    /* Pill padding: 4px block, 8px inline (matching Figma) */
+    --rh-space-md: var(--unified-space-xs);
     --rh-space-lg: var(--unified-space-md);
 
-    width: fit-content;
+    /* Reserve active border width with transparent color to prevent layout shift;
+       the 1px gray track is drawn via box-shadow instead */
+    --rh-jump-link-border:
+      var(--unified-border-width-lg)
+      solid
+      transparent;
 
-    /* margin-inline-start: 10px; */
+    box-shadow:
+      inset var(--unified-border-width-sm) 0 0 0
+      var(--unified-color-border-interactive-subtle-default);
 
-    &:hover {
-      background-color: var(--unified-color-interactive-fill-plain-hover);
-      border-radius: var(--unified-border-radius-pill);
-    }
+    /* Remove track from inner <a> */
+    --rh-jump-link-link-border: none;
+
+    /* Gap between track and pill */
+    --rh-jump-link-gap: var(--unified-space-md);
+
+    /* Pill hover on the <a> */
+    --rh-jump-link-hover-background-color: var(--unified-color-interactive-fill-plain-hover);
+    --rh-jump-link-hover-border-radius: var(--unified-border-radius-pill);
+
+    /* Focus ring offset around pill */
+    --rh-jump-link-focus-inset: -1px;
+
+    /* Vertical spacing between links (8px top + bottom on host) */
+    padding-block: var(--unified-space-md);
+
+    /* Keep text color subtle on hover/focus (same as default) */
+    --rh-color-text-primary:
+      light-dark(
+          var(--unified-color-gray-60),
+          var(--unified-color-gray-40)
+        );
+
+    inline-size: fit-content;
+  }
+
+  rh-jump-link[active] {
+    --rh-jump-link-active-border:
+      var(--unified-border-width-lg)
+      solid
+      #ee0000;
+
+    /* Active text goes dark */
+    --rh-color-text-primary:
+      light-dark(
+          var(--unified-color-gray-95),
+          white
+        );
+  }
+
+  rh-jump-links-list {
+    /* Hide the list-level active indicator; only individual links show red */
+    --rh-color-brand-red: transparent;
+
+    /* Hide the container border AND its 1px width so it takes no space;
+       individual rh-jump-link hosts draw the track instead */
+    --rh-color-border-subtle: transparent;
+    --rh-length-4xs: 0;
+  }
+
+  /* Remove the -1px margin that the default theme uses to overlap
+     the parent link border with the list container border */
+  rh-jump-links-list > rh-jump-link[slot] {
+    margin-inline-start: 0;
+  }
+
+  /* Nested links: move indentation from <a> padding to host gap
+     so the hover pill stays compact.
+     Total inline-start: 3px border + 20px gap + 8px <a> padding = 31px */
+  rh-jump-links-list > rh-jump-link:not([slot]) {
+    --_padding-inline-start: 0px;
+    --rh-jump-link-gap: calc(var(--unified-space-lg) + var(--unified-space-xs));
+  }
+
+  /* Horizontal: hide shadow DOM top/bottom borders, draw top border
+     on the host instead so it spans the full width with no bottom line */
+  rh-jump-links[orientation='horizontal'] {
+    --rh-color-border-subtle: transparent;
+
+    justify-content: start;
+    border-block-start:
+      var(--unified-border-width-sm)
+      solid
+      var(--unified-color-border-interactive-subtle-default);
+  }
+
+  rh-jump-links[orientation='horizontal'] rh-jump-link {
+    --rh-jump-link-border: none;
+    --rh-jump-link-gap: 0;
+    --_active_bdr: initial;
+
+    box-shadow: none;
+    inline-size: auto;
+  }
+
+  /* Horizontal active: no left border; pull the ::before indicator
+     up by the host padding so it aligns with the gray top border,
+     and extend it wider than the pill */
+  rh-jump-links[orientation='horizontal'] rh-jump-link[active] {
+    --rh-jump-link-active-border: none;
+    --rh-jump-link-active-indicator-offset: calc(var(--unified-space-md) * -1);
+    --rh-jump-link-active-indicator-inset-inline: calc(var(--unified-space-xs) * -1);
   }
 }
 
