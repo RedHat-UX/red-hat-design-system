@@ -792,6 +792,7 @@
       --rh-cta-hover-text-decoration: var(--unified-cta-text-decoration);
       --rh-cta-hover-text-underline-offset: var(--unified-cta-text-underline-offset);
       --rh-cta-focus-text-decoration: var(--unified-cta-text-decoration);
+      --rh-cta-active-background-color: var(--unified-cta-primary-bg-active);
       --rh-cta-active-text-decoration: var(--unified-cta-text-decoration);
     }
 
@@ -815,12 +816,14 @@
       &::part(container):focus-within {
         --rh-border-width-sm: var(--unified-cta-border-width-focus);
 
+        outline: none;
         padding-block: var(--unified-cta-border-offset-block);
         padding-inline: var(--unified-cta-border-offset-inline);
       }
 
       &::part(container):active {
         --rh-border-width-sm: var(--unified-cta-border-width-active);
+        --rh-cta-active-inner-border-color: var(--unified-color-interactive-primary-default);
 
         padding-block: var(--unified-cta-border-offset-block);
         padding-inline: var(--unified-cta-border-offset-inline);
@@ -870,7 +873,8 @@
       &::part(container):focus-within {
         --rh-border-width-sm: var(--unified-cta-border-width-focus);
 
-        color: var(--unified-color-text-interactive-focus);
+        outline: none;
+        color: var(--unified-color-interactive-primary-default);
         border-color: var(--unified-color-border-interactive-subtle-default);
         padding-block: var(--unified-cta-border-offset-block);
         padding-inline: var(--unified-cta-border-offset-inline);
