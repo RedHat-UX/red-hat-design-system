@@ -3,6 +3,9 @@ tagName: rh-tabs
 name: Tabs
 type: element
 overallStatus: ready
+category: Structure
+aka:
+  - Tab group
 libraries:
   figma: ready
   rhds: ready
@@ -12,3 +15,4 @@ relatedItems:
   - rh-jump-links
   - rh-pagination
   - rh-progress-stepper
+since: v1.0.0

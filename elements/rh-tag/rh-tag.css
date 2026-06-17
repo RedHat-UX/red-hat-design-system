@@ -5,6 +5,8 @@
 a {
   color: inherit;
   text-decoration: underline dashed;
+
+  /** Offset between the link text and its dashed underline */
   text-underline-offset: var(--rh-length-3xs, 2px);
 
   &:hover,
@@ -19,15 +21,32 @@ a {
 
 #container {
   align-items: center;
-  background-color: var(--_fill-color, var(--rh-color-surface-lighter, #f2f2f2));
+  background-color:
+    var(--_fill-color,
+      /** Tag pill background color, varies by color and variant */
+      var(--rh-color-surface-lighter, #f2f2f2));
+
+  /** Pill-shaped border radius for the tag container */
   border-radius: var(--rh-border-radius-pill, 64px);
   border-width: 0;
+
+  /** Tag text color, varies by color and variant */
   color: var(--_text-color, var(--rh-color-text-primary));
   display: inline-flex;
+
+  /** Text font family */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
+  /** Text size */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+
+  /** Text weight */
   font-weight: var(--rh-font-weight-body-text-regular, 400);
+
+  /** Icon to text gap */
   gap: var(--rh-space-xs, 4px);
+
+  /** Body text line height */
   line-height: var(--rh-line-height-body-text, 1.5);
   max-inline-size: 100%;
   overflow: hidden;
@@ -35,24 +54,30 @@ a {
   text-overflow: ellipsis;
   white-space: nowrap;
   padding-block:
-    /** The padding at the start of the direction perpendicular to the flow of the text. */
+    /** Tag block-start padding */
     var(--rh-tag-padding-block-start, var(--rh-space-xs, 4px))
-    /** The padding at the end of the direction perpendicular to the flow of the text. */
+    /** Tag block-end padding */
     var(--rh-tag-padding-block-end, var(--rh-space-xs, 4px));
   padding-inline:
-    /** The padding at the start of the direction parallel to the flow of the text. */
+    /** Tag inline-start padding */
     var(--rh-tag-padding-inline-start, var(--rh-space-md, 8px))
-    /** The padding at the end of the direction parallel to the flow of the text. */
+    /** Tag inline-end padding */
     var(--rh-tag-padding-inline-end, var(--rh-space-md, 8px));
 
+  /** Decorative icon size */
   --rh-icon-size: var(--rh-size-icon-01, 16px);
   --_icon-color: currentcolor;
 
   &:before {
     border:
+      /** Container border width */
       var(--rh-border-width-sm, 1px)
       solid
-      var(--_border-color, var(--rh-color-border-subtle));
+      var(--_border-color,
+        /** Container border color */
+        var(--rh-color-border-subtle));
+
+    /** Pill-shaped border radius matching the container */
     border-radius: var(--rh-border-radius-pill, 64px);
     content: '';
     inset: 0;
@@ -60,6 +85,7 @@ a {
     position: absolute;
 
     &:hover {
+      /** Thicker border on hover for visual feedback */
       border-width: var(--rh-border-width-md, 2px);
     }
   }
@@ -69,204 +95,533 @@ a {
   }
 
   &:has(a:focus-visible, a:active):after {
+    /** Focus ring border radius for the inner text area */
     border-radius: var(--rh-border-radius-default, 3px);
     content: '';
-    inset: calc(var(--rh-space-xs, 4px) - 1px) calc(var(--rh-space-md, 8px) - 1px);
-    outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
+    inset:
+      /** Focus ring block inset */
+      calc(var(--rh-space-xs, 4px) - 1px)
+      /** Focus ring inline inset */
+      calc(var(--rh-space-md, 8px) - 1px);
+    outline:
+      /** Focus ring outline width */
+      var(--rh-border-width-md, 2px)
+      solid
+      /** Focus ring outline color */
+      var(--rh-color-border-interactive);
     pointer-events: none;
     position: absolute;
   }
 
   &.compact {
+    /** Compact variant uses a smaller text size */
     font-size: var(--rh-font-size-body-text-xs, 0.75rem);
     padding:
+      /** Compact block-start padding */
       var(--rh-tag-padding-block-start, 0)
-      var(--rh-tag-padding-inline-end, var(--rh-space-md, 8px))
+      var(--rh-tag-padding-inline-end,
+        /** Compact inline-end padding */
+        var(--rh-space-md, 8px))
+      /** Compact block-end padding */
       var(--rh-tag-padding-block-end, 0)
-      var(--rh-tag-padding-inline-start, var(--rh-space-md, 8px));
+      var(--rh-tag-padding-inline-start,
+        /** Compact inline-start padding */
+        var(--rh-space-md, 8px));
   }
 
   &.red {
-    --_fill-color: light-dark(var(--rh-color-red-10, #fce3e3), var(--rh-color-red-70, #5f0000));
-    --_border-color: light-dark(var(--rh-color-red-30, #f9a8a8), var(--rh-color-red-50, #ee0000));
-    --_icon-color: light-dark(var(--rh-color-red-60, #a60000), var(--rh-color-red-30, #f9a8a8));
-    --_text-color: light-dark(var(--rh-color-red-70, #5f0000), var(--rh-color-red-10, #fce3e3));
+    --_fill-color:
+      light-dark(
+          /** Red tag fill in light mode */
+          var(--rh-color-red-10, #fce3e3),
+          /** Red tag fill in dark mode */
+          var(--rh-color-red-70, #5f0000)
+        );
+    --_border-color:
+      light-dark(
+          /** Red tag border in light mode */
+          var(--rh-color-red-30, #f9a8a8),
+          /** Red tag border in dark mode */
+          var(--rh-color-red-50, #ee0000)
+        );
+    --_icon-color:
+      light-dark(
+          /** Red icon in light mode */
+          var(--rh-color-red-60, #a60000),
+          /** Red icon in dark mode */
+          var(--rh-color-red-30, #f9a8a8)
+        );
+    --_text-color:
+      light-dark(
+          /** Red text in light mode */
+          var(--rh-color-red-70, #5f0000),
+          /** Red text in dark mode */
+          var(--rh-color-red-10, #fce3e3)
+        );
 
     &.outline {
-      --_icon-color: light-dark(var(--rh-color-red-60, #a60000), var(--rh-color-red-20, #fbc5c5));
-      --_text-color: light-dark(var(--rh-color-red-60, #a60000), var(--rh-color-red-30, #f9a8a8));
+      --_icon-color:
+        light-dark(
+            /** Red outline icon in light mode */
+            var(--rh-color-red-60, #a60000),
+            /** Red outline icon in dark mode */
+            var(--rh-color-red-20, #fbc5c5)
+          );
+      --_text-color:
+        light-dark(
+            /** Red outline text in light mode */
+            var(--rh-color-red-60, #a60000),
+            /** Red outline text in dark mode */
+            var(--rh-color-red-30, #f9a8a8)
+          );
     }
   }
 
   &.red-orange {
     --_fill-color:
-      light-dark(var(--rh-color-red-orange-10, #ffe3d9),
-        var(--rh-color-red-orange-70, #731f00));
+      light-dark(
+          /** Red orange tag fill in light mode */
+          var(--rh-color-red-orange-10, #ffe3d9),
+          /** Red orange tag fill in dark mode */
+          var(--rh-color-red-orange-70, #731f00)
+        );
     --_border-color:
-      light-dark(var(--rh-color-red-orange-30, #f89b78),
-        var(--rh-color-red-orange-50, #f0561d));
+      light-dark(
+          /** Red orange tag border in light mode */
+          var(--rh-color-red-orange-30, #f89b78),
+          /** Red orange tag border in dark mode */
+          var(--rh-color-red-orange-50, #f0561d)
+        );
     --_icon-color:
-      light-dark(var(--rh-color-red-orange-60, #b1380b),
-        var(--rh-color-red-orange-30, #f89b78));
+      light-dark(
+          /** Red orange icon in light mode */
+          var(--rh-color-red-orange-60, #b1380b),
+          /** Red orange icon in dark mode */
+          var(--rh-color-red-orange-30, #f89b78)
+        );
     --_text-color:
-      light-dark(var(--rh-color-red-orange-70, #731f00),
-        var(--rh-color-red-orange-10, #ffe3d9));
+      light-dark(
+          /** Red orange text in light mode */
+          var(--rh-color-red-orange-70, #731f00),
+          /** Red orange text in dark mode */
+          var(--rh-color-red-orange-10, #ffe3d9)
+        );
 
     &.outline {
       --_icon-color:
-        light-dark(var(--rh-color-red-orange-60, #b1380b),
-          var(--rh-color-red-orange-20, #fbbea8));
+        light-dark(
+            /** Red orange outline icon in light mode */
+            var(--rh-color-red-orange-60, #b1380b),
+            /** Red orange outline icon in dark mode */
+            var(--rh-color-red-orange-20, #fbbea8)
+          );
       --_text-color:
-        light-dark(var(--rh-color-red-orange-60, #b1380b),
-          var(--rh-color-red-orange-30, #f89b78));
+        light-dark(
+            /** Red orange outline text in light mode */
+            var(--rh-color-red-orange-60, #b1380b),
+            /** Red orange outline text in dark mode */
+            var(--rh-color-red-orange-30, #f89b78)
+          );
     }
   }
 
   &.orange {
     --_fill-color:
-      light-dark(var(--rh-color-orange-10, #ffe8cc),
-        var(--rh-color-orange-70, #732e00));
+      light-dark(
+          /** Orange tag fill in light mode */
+          var(--rh-color-orange-10, #ffe8cc),
+          /** Orange tag fill in dark mode */
+          var(--rh-color-orange-70, #732e00)
+        );
     --_border-color:
-      light-dark(var(--rh-color-orange-30, #f8ae54),
-        var(--rh-color-orange-50, #ca6c0f));
+      light-dark(
+          /** Orange tag border in light mode */
+          var(--rh-color-orange-30, #f8ae54),
+          /** Orange tag border in dark mode */
+          var(--rh-color-orange-50, #ca6c0f)
+        );
     --_icon-color:
-      light-dark(var(--rh-color-orange-60, #9e4a06),
-        var(--rh-color-orange-30, #f8ae54));
+      light-dark(
+          /** Orange icon in light mode */
+          var(--rh-color-orange-60, #9e4a06),
+          /** Orange icon in dark mode */
+          var(--rh-color-orange-30, #f8ae54)
+        );
     --_text-color:
-      light-dark(var(--rh-color-orange-70, #732e00),
-        var(--rh-color-orange-10, #ffe8cc));
+      light-dark(
+          /** Orange text in light mode */
+          var(--rh-color-orange-70, #732e00),
+          /** Orange text in dark mode */
+          var(--rh-color-orange-10, #ffe8cc)
+        );
 
     &.outline {
       --_icon-color:
-        light-dark(var(--rh-color-orange-60, #9e4a06),
-          var(--rh-color-orange-20, #fccb8f));
+        light-dark(
+            /** Orange outline icon in light mode */
+            var(--rh-color-orange-60, #9e4a06),
+            /** Orange outline icon in dark mode */
+            var(--rh-color-orange-20, #fccb8f)
+          );
       --_text-color:
-        light-dark(var(--rh-color-orange-60, #9e4a06),
-          var(--rh-color-orange-30, #f8ae54));
+        light-dark(
+            /** Orange outline text in light mode */
+            var(--rh-color-orange-60, #9e4a06),
+            /** Orange outline text in dark mode */
+            var(--rh-color-orange-30, #f8ae54)
+          );
     }
   }
 
   &.yellow {
     --_fill-color:
-      light-dark(var(--rh-color-yellow-10, #fff4cc),
-        var(--rh-color-yellow-70, #73480b));
+      light-dark(
+          /** Yellow tag fill in light mode */
+          var(--rh-color-yellow-10, #fff4cc),
+          /** Yellow tag fill in dark mode */
+          var(--rh-color-yellow-70, #73480b)
+        );
     --_border-color:
-      light-dark(var(--rh-color-yellow-30, #ffcc17),
-        var(--rh-color-yellow-50, #b98412));
+      light-dark(
+          /** Yellow tag border in light mode */
+          var(--rh-color-yellow-30, #ffcc17),
+          /** Yellow tag border in dark mode */
+          var(--rh-color-yellow-50, #b98412)
+        );
     --_icon-color:
-      light-dark(var(--rh-color-yellow-60, #96640f),
-        var(--rh-color-yellow-30, #ffcc17));
+      light-dark(
+          /** Yellow icon in light mode */
+          var(--rh-color-yellow-60, #96640f),
+          /** Yellow icon in dark mode */
+          var(--rh-color-yellow-30, #ffcc17)
+        );
     --_text-color:
-      light-dark(var(--rh-color-yellow-70, #73480b),
-        var(--rh-color-yellow-10, #fff4cc));
+      light-dark(
+          /** Yellow text in light mode */
+          var(--rh-color-yellow-70, #73480b),
+          /** Yellow text in dark mode */
+          var(--rh-color-yellow-10, #fff4cc)
+        );
 
     &.outline {
       --_icon-color:
-        light-dark(var(--rh-color-yellow-60, #96640f),
-          var(--rh-color-yellow-20, #ffe072));
+        light-dark(
+            /** Yellow outline icon in light mode */
+            var(--rh-color-yellow-60, #96640f),
+            /** Yellow outline icon in dark mode */
+            var(--rh-color-yellow-20, #ffe072)
+          );
       --_text-color:
-        light-dark(var(--rh-color-yellow-60, #96640f),
-          var(--rh-color-yellow-30, #ffcc17));
+        light-dark(
+            /** Yellow outline text in light mode */
+            var(--rh-color-yellow-60, #96640f),
+            /** Yellow outline text in dark mode */
+            var(--rh-color-yellow-30, #ffcc17)
+          );
     }
   }
 
   &.green {
-    --_fill-color: light-dark(var(--rh-color-green-10, #e9f7df), var(--rh-color-green-70, #204d00));
+    --_fill-color:
+      light-dark(
+          /** Green tag fill in light mode */
+          var(--rh-color-green-10, #e9f7df),
+          /** Green tag fill in dark mode */
+          var(--rh-color-green-70, #204d00)
+        );
     --_border-color:
-      light-dark(var(--rh-color-green-30, #afdc8f),
-        var(--rh-color-green-50, #63993d));
-    --_icon-color: light-dark(var(--rh-color-green-60, #3d7317), var(--rh-color-green-30, #afdc8f));
-    --_text-color: light-dark(var(--rh-color-green-70, #204d00), var(--rh-color-green-10, #e9f7df));
+      light-dark(
+          /** Green tag border in light mode */
+          var(--rh-color-green-30, #afdc8f),
+          /** Green tag border in dark mode */
+          var(--rh-color-green-50, #63993d)
+        );
+    --_icon-color:
+      light-dark(
+          /** Green icon in light mode */
+          var(--rh-color-green-60, #3d7317),
+          /** Green icon in dark mode */
+          var(--rh-color-green-30, #afdc8f)
+        );
+    --_text-color:
+      light-dark(
+          /** Green text in light mode */
+          var(--rh-color-green-70, #204d00),
+          /** Green text in dark mode */
+          var(--rh-color-green-10, #e9f7df)
+        );
 
     &.outline {
       --_icon-color:
-        light-dark(var(--rh-color-green-60, #3d7317),
-          var(--rh-color-green-20, #d1f1bb));
+        light-dark(
+            /** Green outline icon in light mode */
+            var(--rh-color-green-60, #3d7317),
+            /** Green outline icon in dark mode */
+            var(--rh-color-green-20, #d1f1bb)
+          );
       --_text-color:
-        light-dark(var(--rh-color-green-60, #3d7317),
-          var(--rh-color-green-30, #afdc8f));
+        light-dark(
+            /** Green outline text in light mode */
+            var(--rh-color-green-60, #3d7317),
+            /** Green outline text in dark mode */
+            var(--rh-color-green-30, #afdc8f)
+          );
     }
   }
 
   &.teal {
-    --_fill-color: light-dark(var(--rh-color-teal-10, #daf2f2), var(--rh-color-teal-70, #004d4d));
-    --_border-color: light-dark(var(--rh-color-teal-30, #9ad8d8), var(--rh-color-teal-50, #37a3a3));
-    --_icon-color: light-dark(var(--rh-color-teal-60, #147878), var(--rh-color-teal-30, #9ad8d8));
-    --_text-color: light-dark(var(--rh-color-teal-70, #004d4d), var(--rh-color-teal-10, #daf2f2));
+    --_fill-color:
+      light-dark(
+          /** Teal tag fill in light mode */
+          var(--rh-color-teal-10, #daf2f2),
+          /** Teal tag fill in dark mode */
+          var(--rh-color-teal-70, #004d4d)
+        );
+    --_border-color:
+      light-dark(
+          /** Teal tag border in light mode */
+          var(--rh-color-teal-30, #9ad8d8),
+          /** Teal tag border in dark mode */
+          var(--rh-color-teal-50, #37a3a3)
+        );
+    --_icon-color:
+      light-dark(
+          /** Teal icon in light mode */
+          var(--rh-color-teal-60, #147878),
+          /** Teal icon in dark mode */
+          var(--rh-color-teal-30, #9ad8d8)
+        );
+    --_text-color:
+      light-dark(
+          /** Teal text in light mode */
+          var(--rh-color-teal-70, #004d4d),
+          /** Teal text in dark mode */
+          var(--rh-color-teal-10, #daf2f2)
+        );
 
     &.outline {
-      --_icon-color: light-dark(var(--rh-color-teal-60, #147878), var(--rh-color-teal-20, #b9e5e5));
-      --_text-color: light-dark(var(--rh-color-teal-60, #147878), var(--rh-color-teal-30, #9ad8d8));
+      --_icon-color:
+        light-dark(
+            /** Teal outline icon in light mode */
+            var(--rh-color-teal-60, #147878),
+            /** Teal outline icon in dark mode */
+            var(--rh-color-teal-20, #b9e5e5)
+          );
+      --_text-color:
+        light-dark(
+            /** Teal outline text in light mode */
+            var(--rh-color-teal-60, #147878),
+            /** Teal outline text in dark mode */
+            var(--rh-color-teal-30, #9ad8d8)
+          );
     }
   }
 
   &.blue {
-    --_fill-color: light-dark(var(--rh-color-blue-10, #e0f0ff), var(--rh-color-blue-70, #003366));
-    --_border-color: light-dark(var(--rh-color-blue-30, #92c5f9), var(--rh-color-blue-50, #0066cc));
-    --_icon-color: light-dark(var(--rh-color-blue-60, #004d99), var(--rh-color-blue-30, #92c5f9));
-    --_text-color: light-dark(var(--rh-color-blue-70, #003366), var(--rh-color-blue-10, #e0f0ff));
+    --_fill-color:
+      light-dark(
+          /** Blue tag fill in light mode */
+          var(--rh-color-blue-10, #e0f0ff),
+          /** Blue tag fill in dark mode */
+          var(--rh-color-blue-70, #003366)
+        );
+    --_border-color:
+      light-dark(
+          /** Blue tag border in light mode */
+          var(--rh-color-blue-30, #92c5f9),
+          /** Blue tag border in dark mode */
+          var(--rh-color-blue-50, #0066cc)
+        );
+    --_icon-color:
+      light-dark(
+          /** Blue icon in light mode */
+          var(--rh-color-blue-60, #004d99),
+          /** Blue icon in dark mode */
+          var(--rh-color-blue-30, #92c5f9)
+        );
+    --_text-color:
+      light-dark(
+          /** Blue text in light mode */
+          var(--rh-color-blue-70, #003366),
+          /** Blue text in dark mode */
+          var(--rh-color-blue-10, #e0f0ff)
+        );
 
     &.outline {
-      --_icon-color: light-dark(var(--rh-color-blue-60, #004d99), var(--rh-color-blue-20, #b9dafc));
-      --_text-color: light-dark(var(--rh-color-blue-60, #004d99), var(--rh-color-blue-30, #92c5f9));
+      --_icon-color:
+        light-dark(
+            /** Blue outline icon in light mode */
+            var(--rh-color-blue-60, #004d99),
+            /** Blue outline icon in dark mode */
+            var(--rh-color-blue-20, #b9dafc)
+          );
+      --_text-color:
+        light-dark(
+            /** Blue outline text in light mode */
+            var(--rh-color-blue-60, #004d99),
+            /** Blue outline text in dark mode */
+            var(--rh-color-blue-30, #92c5f9)
+          );
     }
   }
 
   &.purple {
     --_fill-color:
-      light-dark(var(--rh-color-purple-10, #ece6ff),
-        var(--rh-color-purple-70, #21134d));
+      light-dark(
+          /** Purple tag fill in light mode */
+          var(--rh-color-purple-10, #ece6ff),
+          /** Purple tag fill in dark mode */
+          var(--rh-color-purple-70, #21134d)
+        );
     --_border-color:
-      light-dark(var(--rh-color-purple-30, #b6a6e9),
-        var(--rh-color-purple-50, #5e40be));
+      light-dark(
+          /** Purple tag border in light mode */
+          var(--rh-color-purple-30, #b6a6e9),
+          /** Purple tag border in dark mode */
+          var(--rh-color-purple-50, #5e40be)
+        );
     --_icon-color:
-      light-dark(var(--rh-color-purple-60, #3d2785),
-        var(--rh-color-purple-30, #b6a6e9));
+      light-dark(
+          /** Purple icon in light mode */
+          var(--rh-color-purple-60, #3d2785),
+          /** Purple icon in dark mode */
+          var(--rh-color-purple-30, #b6a6e9)
+        );
     --_text-color:
-      light-dark(var(--rh-color-purple-70, #21134d),
-        var(--rh-color-purple-10, #ece6ff));
+      light-dark(
+          /** Purple text in light mode */
+          var(--rh-color-purple-70, #21134d),
+          /** Purple text in dark mode */
+          var(--rh-color-purple-10, #ece6ff)
+        );
 
     &.outline {
       --_icon-color:
-        light-dark(var(--rh-color-purple-60, #3d2785),
-          var(--rh-color-purple-20, #d0c5f4));
+        light-dark(
+            /** Purple outline icon in light mode */
+            var(--rh-color-purple-60, #3d2785),
+            /** Purple outline icon in dark mode */
+            var(--rh-color-purple-20, #d0c5f4)
+          );
       --_text-color:
-        light-dark(var(--rh-color-purple-60, #3d2785),
-          var(--rh-color-purple-30, #b6a6e9));
+        light-dark(
+            /** Purple outline text in light mode */
+            var(--rh-color-purple-60, #3d2785),
+            /** Purple outline text in dark mode */
+            var(--rh-color-purple-30, #b6a6e9)
+          );
     }
   }
 
   &.gray {
-    --_fill-color: light-dark(var(--rh-color-gray-10, #f2f2f2), var(--rh-color-gray-70, #383838));
-    --_border-color: light-dark(var(--rh-color-gray-30, #c7c7c7), var(--rh-color-gray-50, #707070));
-    --_icon-color: light-dark(var(--rh-color-gray-60, #4d4d4d), var(--rh-color-gray-30, #c7c7c7));
-    --_text-color: light-dark(var(--rh-color-gray-70, #383838), var(--rh-color-gray-10, #f2f2f2));
+    --_fill-color:
+      light-dark(
+          /** Gray tag fill in light mode */
+          var(--rh-color-gray-10, #f2f2f2),
+          /** Gray tag fill in dark mode */
+          var(--rh-color-gray-70, #383838)
+        );
+    --_border-color:
+      light-dark(
+          /** Gray tag border in light mode */
+          var(--rh-color-gray-30, #c7c7c7),
+          /** Gray tag border in dark mode */
+          var(--rh-color-gray-50, #707070)
+        );
+    --_icon-color:
+      light-dark(
+          /** Gray icon in light mode */
+          var(--rh-color-gray-60, #4d4d4d),
+          /** Gray icon in dark mode */
+          var(--rh-color-gray-30, #c7c7c7)
+        );
+    --_text-color:
+      light-dark(
+          /** Gray text in light mode */
+          var(--rh-color-gray-70, #383838),
+          /** Gray text in dark mode */
+          var(--rh-color-gray-10, #f2f2f2)
+        );
 
     &.outline {
-      --_icon-color: light-dark(var(--rh-color-gray-60, #4d4d4d), var(--rh-color-gray-20, #e0e0e0));
-      --_text-color: light-dark(var(--rh-color-gray-60, #4d4d4d), var(--rh-color-gray-30, #c7c7c7));
+      --_icon-color:
+        light-dark(
+            /** Gray outline icon in light mode */
+            var(--rh-color-gray-60, #4d4d4d),
+            /** Gray outline icon in dark mode */
+            var(--rh-color-gray-20, #e0e0e0)
+          );
+      --_text-color:
+        light-dark(
+            /** Gray outline text in light mode */
+            var(--rh-color-gray-60, #4d4d4d),
+            /** Gray outline text in dark mode */
+            var(--rh-color-gray-30, #c7c7c7)
+          );
     }
   }
 
   &.outline {
-    --_fill-color: light-dark(var(--rh-color-white, #ffffff), var(--rh-color-gray-95, #151515));
-    --_border-color: light-dark(var(--rh-color-gray-30, #c7c7c7), var(--rh-color-gray-50, #707070));
+    --_fill-color:
+      light-dark(
+          /** Outline variant fill in light mode */
+          var(--rh-color-white, #ffffff),
+          /** Outline variant fill in dark mode */
+          var(--rh-color-gray-95, #151515)
+        );
+    --_border-color:
+      light-dark(
+          /** Outline variant border in light mode */
+          var(--rh-color-gray-30, #c7c7c7),
+          /** Outline variant border in dark mode */
+          var(--rh-color-gray-50, #707070)
+        );
   }
 
   &.desaturated {
     --_fill-color: transparent;
+
+    /** Desaturated border color */
     --_border-color: var(--rh-color-text-primary);
+
+    /** Desaturated icon color */
     --_icon-color: var(--rh-color-text-primary);
+
+    /** Desaturated text color */
     --_text-color: var(--rh-color-text-primary);
   }
 
   &.disabled {
     pointer-events: none;
 
-    --_fill-color: light-dark(var(--rh-color-gray-30, #c7c7c7), var(--rh-color-gray-70, #383838));
-    --_border-color: light-dark(var(--rh-color-gray-30, #c7c7c7), var(--rh-color-gray-70, #383838));
-    --_icon-color: light-dark(var(--rh-color-gray-60, #4d4d4d), var(--rh-color-gray-40, #a3a3a3));
-    --_text-color: light-dark(var(--rh-color-gray-60, #4d4d4d), var(--rh-color-gray-40, #a3a3a3));
+    --_fill-color:
+      light-dark(
+          /** Disabled fill in light mode */
+          var(--rh-color-gray-30, #c7c7c7),
+          /** Disabled fill in dark mode */
+          var(--rh-color-gray-70, #383838)
+        );
+    --_border-color:
+      light-dark(
+          /** Disabled border in light mode */
+          var(--rh-color-gray-30, #c7c7c7),
+          /** Disabled border in dark mode */
+          var(--rh-color-gray-70, #383838)
+        );
+    --_icon-color:
+      light-dark(
+          /** Disabled icon in light mode */
+          var(--rh-color-gray-60, #4d4d4d),
+          /** Disabled icon in dark mode */
+          var(--rh-color-gray-40, #a3a3a3)
+        );
+    --_text-color:
+      light-dark(
+          /** Disabled text in light mode */
+          var(--rh-color-gray-60, #4d4d4d),
+          /** Disabled text in dark mode */
+          var(--rh-color-gray-40, #a3a3a3)
+        );
 
     & a {
       text-decoration: none;

@@ -3,6 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import * as Parse5 from 'parse5';
 import * as Tools from '@parse5/tools';
+import { stripFrontmatter } from '#11ty-plugins/frontmatter.js';
 
 /**
  * Workaround for extremely large demo files that cause Nunjucks {% include %} to fail silently.
@@ -52,7 +53,7 @@ export default function(eleventyConfig: UserConfig) {
         if (!hasContent) {
           // Read the demo file directly
           const demoPath = join(process.cwd(), `elements/rh-code-block/demo/${demo.source}`);
-          const demoContent = await readFile(demoPath, 'utf8');
+          const demoContent = stripFrontmatter(await readFile(demoPath, 'utf8'));
 
           // Parse and inject the demo content
           const demoFragment = Parse5.parseFragment(demoContent);
