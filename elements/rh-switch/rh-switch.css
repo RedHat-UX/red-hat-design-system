@@ -11,8 +11,6 @@
 }
 
 :host {
-  --rh-switch-check-display: none;
-
   display: inline-flex;
   outline: none;
   vertical-align: top;
@@ -141,6 +139,10 @@ rh-icon {
   color: var(--_switch-handle-color);
   position: absolute;
   z-index: 1;
+}
+
+:host(:not([show-check-icon])) rh-icon {
+  display: none;
 }
 
 :host([show-check-icon]) {
