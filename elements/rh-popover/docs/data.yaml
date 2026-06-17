@@ -3,6 +3,7 @@ tagName: rh-popover
 name: Popover
 type: element
 overallStatus: ready
+category: Overlays
 aka:
   - Info popup
 description: >-

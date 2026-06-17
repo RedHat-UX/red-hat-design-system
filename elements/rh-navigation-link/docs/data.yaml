@@ -3,6 +3,7 @@ tagName: rh-navigation-link
 name: Navigation Link
 type: element
 overallStatus: ready
+category: Navigation
 libraries:
   figma: ready
   rhds: ready
