@@ -736,8 +736,8 @@
     --unified-cta-font-size: var(--unified-font-size-body-text-sm);
     --unified-cta-padding-block: var(--unified-space-lg);
     --unified-cta-padding-inline: var(--unified-space-2xl);
-    --unified-cta-padding-block-compact: var(--unified-space-sm);
-    --unified-cta-padding-inline-compact: var(--unified-space-lg);
+    --unified-cta-padding-block-compact: var(--unified-space-md);
+    --unified-cta-padding-inline-compact: var(--unified-space-xl);
     --unified-cta-border-width-hover: var(--unified-border-width-md);
     --unified-cta-border-width-focus: var(--unified-border-width-md);
     --unified-cta-border-width-focus-ring: var(--unified-border-width-lg);
@@ -758,7 +758,8 @@
           - var(--unified-cta-border-offset)
         );
     --unified-cta-text-underline-offset: 4px;
-    --unified-cta-text-decoration: underline dashed 1px;
+    --unified-cta-text-decoration-color: currentcolor;
+    --unified-cta-text-decoration: underline dashed 1px var(--unified-cta-text-decoration-color);
     --unified-cta-primary-bg-default: #ee0000;
     --unified-cta-primary-bg-hover: #a60000;
     --unified-cta-primary-bg-active: #a60000;
@@ -811,6 +812,14 @@
     }
 
     &[variant='secondary'] {
+      /* stylelint-disable rhds/no-unknown-token-name -- --rh-color-gray-45 added in RHDS v3.1 */
+      --unified-cta-text-decoration-color:
+        light-dark(
+            var(--rh-color-gray-45, #8c8c8c),
+            var(--rh-color-gray-40, #a3a3a3)
+          );
+      /* stylelint-enable rhds/no-unknown-token-name */
+
       --rh-cta-hover-background-color: transparent;
       --rh-cta-hover-color: var(--rh-color-text-primary);
       --rh-cta-hover-text-decoration: var(--unified-cta-text-decoration);
@@ -863,6 +872,14 @@
     }
 
     &:is([variant='tertiary'], [variant='brick']) {
+      /* stylelint-disable rhds/no-unknown-token-name -- --rh-color-gray-45 added in RHDS v3.1 */
+      --unified-cta-text-decoration-color:
+        light-dark(
+            var(--rh-color-gray-45, #8c8c8c),
+            var(--rh-color-gray-40, #a3a3a3)
+          );
+      /* stylelint-enable rhds/no-unknown-token-name */
+
       --rh-cta-hover-background-color: transparent;
       --rh-cta-hover-text-decoration: var(--unified-cta-text-decoration);
       --rh-cta-hover-text-underline-offset: var(--unified-cta-text-underline-offset);
