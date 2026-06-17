@@ -1,12 +1,26 @@
 :host {
   display: block;
-  padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+  padding:
+    /** Vertical item padding */
+    var(--rh-space-md, 8px)
+    /** Horizontal item padding */
+    var(--rh-space-lg, 16px);
   cursor: pointer;
+
+  /** Body text font family */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
+  /** Body text size */
   font-size: var(--rh-font-size-body-text-md, 1rem);
   font-style: normal;
+
+  /** Body text font weight */
   font-weight: var(--rh-font-weight-body-text-regular, 400);
+
+  /** Body text line height */
   line-height: var(--rh-line-height-code, 1.5);
+
+  /** Surface background color */
   background:
     light-dark(var(--rh-color-surface-lightest, #ffffff),
       var(--rh-color-surface-darkest, #151515));
@@ -43,6 +57,7 @@
   justify-content: flex-start;
 
   ::slotted([slot='icon']) {
+    /** Space between icon and label */
     padding-inline-end: var(--rh-space-md, 8px);
   }
 
@@ -53,8 +68,13 @@
     justify-content: space-between;
 
     rh-icon {
+      /** External link icon color */
       color: var(--rh-color-interactive-secondary-default);
+
+      /** External link icon fill */
       fill: var(--rh-color-interactive-secondary-default);
+
+      /** Space before external icon */
       padding-inline-start: var(--rh-space-md, 8px);
     }
   }
@@ -66,6 +86,7 @@
   justify-content: flex-start;
 
   ::slotted([slot='icon']) {
+    /** Icon spacing in items */
     padding-inline-end: var(--rh-space-md, 8px);
   }
 }
@@ -128,9 +149,14 @@
 }
 
 ::slotted([slot='description']) {
+  /** Description font family */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
+  /** Description font size */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
   font-style: normal;
+
+  /** Description font weight */
   font-weight: var(--rh-font-weight-heading-regular, 400);
   line-height: 21px;
 }

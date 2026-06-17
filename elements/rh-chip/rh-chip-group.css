@@ -1,4 +1,5 @@
 :host {
+  /** Chip group margin block spacing */
   --_spacer: var(--rh-space-lg, 16px);
 
   display: block;
@@ -15,40 +16,79 @@ fieldset {
 
 legend {
   float: left;
+
+  /** Legend body text font family */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
+  /** Legend font size */
   font-size: var(--rh-font-size-body-text-md, 1rem);
+
+  /** Legend inline end spacing */
   margin-inline-end: var(--rh-space-md, 8px);
 }
 
 .btn-link {
   background-color: transparent;
   border: 0;
+
+  /** Clear all button border radius */
   border-radius: var(--rh-border-radius-pill, 64px);
+
+  /** Clear all button text color */
   color: var(--rh-color-interactive-primary-default);
   cursor: pointer;
+
+  /** Clear all button font family */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
+  /** Clear all button font size */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+
+  /** Clear all button line height */
   line-height: var(--rh-line-height-body-text, 1.5);
   margin-block-start: 1px;
-  outline: var(--rh-border-width-sm, 1px) solid transparent;
-  padding: var(--rh-space-xs, 4px) var(--rh-space-md, 8px);
+  outline:
+    /** Clear all button outline width */
+    var(--rh-border-width-sm, 1px)
+    solid
+    transparent;
+  padding:
+    /** Clear all button block padding */
+    var(--rh-space-xs, 4px)
+    /** Clear all button inline padding */
+    var(--rh-space-md, 8px);
   position: relative;
 
   &:hover,
   &:focus {
+    /** Clear all button hover/focus text color */
     color: var(--rh-color-interactive-primary-hover);
+
+    /** Clear all button hover/focus outline color */
     outline-color: var(--rh-color-border-subtle);
   }
 
   &:focus {
+    /** Clear all button focus outline offset */
     outline-offset: var(--rh-border-width-md, 2px);
   }
 
   &:focus:after {
     content: '';
+
+    /** Focus ring border radius */
     border-radius: var(--rh-border-radius-default, 3px);
-    inset: var(--rh-length-4xs, 1px) var(--rh-length-md, 8px);
-    outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
+    inset:
+      /** Focus ring block inset */
+      var(--rh-length-4xs, 1px)
+      /** Focus ring inline inset */
+      var(--rh-length-md, 8px);
+    outline:
+      /** Focus ring outline width */
+      var(--rh-border-width-md, 2px)
+      solid
+      /** Focus ring outline color */
+      var(--rh-color-border-interactive);
     position: absolute;
   }
 }
@@ -60,10 +100,12 @@ legend,
 
 :host([size='sm']) {
   legend {
+    /** Legend font size at small size */
     font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   }
 
   .btn-link {
+    /** Clear all button font size at small size */
     font-size: var(--rh-font-size-body-text-xs, 0.75rem);
   }
 }

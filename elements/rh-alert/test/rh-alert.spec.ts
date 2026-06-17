@@ -75,6 +75,37 @@ describe('<rh-alert>', function() {
     });
   });
 
+  describe('toast variant', function() {
+    let toastElement: RhAlert;
+
+    beforeEach(async function() {
+      toastElement = await createFixture(html`
+        <rh-alert variant="toast" state="success">
+          <h3 slot="header">Toast</h3>
+          <p>Toast message</p>
+        </rh-alert>
+      `);
+    });
+
+    it('should not have role="alert" on the inner rh-surface', function() {
+      const container = toastElement.shadowRoot!.getElementById('container')!;
+      expect(container.getAttribute('role')).to.not.equal('alert');
+    });
+  });
+
+  describe('inline variant', function() {
+    it('should have role="alert" on the inner rh-surface', async function() {
+      const inlineElement = await createFixture(html`
+        <rh-alert state="info">
+          <h3 slot="header">Inline</h3>
+          <p>Inline message</p>
+        </rh-alert>
+      `);
+      const container = inlineElement.shadowRoot!.getElementById('container')!;
+      expect(container.getAttribute('role')).to.equal('alert');
+    });
+  });
+
   for (const [state, bgtoken] of Object.entries({
     neutral: '--rh-color-surface-status-neutral',
     info: '--rh-color-surface-status-info',
