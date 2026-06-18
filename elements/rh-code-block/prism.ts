@@ -1,7 +1,5 @@
 import type { RhCodeBlock } from './rh-code-block.js';
 import { Prism } from 'prism-esm';
-import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import { html } from 'lit';
 
 const prism = new Prism({ manual: true });
 
@@ -35,8 +33,7 @@ async function autoloader(language: RhCodeBlock['language']) {
  */
 export async function highlight(textContent: string, language: RhCodeBlock['language']) {
   await autoloader(language);
-  const highlighted = prism.highlight(textContent, prism.languages[language!], language!);
-  return html`<code class="language-${language}">${unsafeHTML(highlighted)}</code>`;
+  return prism.highlight(textContent, prism.languages[language!], language!);
 }
 
 export { prismStyles, preRenderedLightDomStyles } from './prism.css.js';

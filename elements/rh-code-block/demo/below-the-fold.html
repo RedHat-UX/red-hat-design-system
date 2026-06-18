@@ -1,9 +1,8 @@
 ---
-description: Code block positioned below the fold to test content-visibility optimization.
+description: Code block positioned below the fold to test CSS counter line numbers with content-visibility.
 ---
 <section class="tall-as-screen">
-  <p>Expect line numbers to not be calculated until just before code block scrolls into view</p>
-  <p>Expect line numbers to appear without flash when scrolling down to view codeblock</p>
+  <p>CSS counter line numbers render automatically via content-visibility, no JS timing dependency</p>
   <p><strong>Scroll down to view code block</strong></p>
 </section>
 
@@ -21,9 +20,7 @@ description: Code block positioned below the fold to test content-visibility opt
 </rh-code-block>
 
 <section class="tall-as-screen">
-  <p>Expect only the first code block to have computed line numbers</p>
-  <p>Expect second block's line numbers to compute only just before it scrolls into view</p>
-  <p><strong>Scroll down to view code block</strong></p>
+  <p><strong>Scroll down to view second code block</strong></p>
 </section>
 
 <rh-code-block>
@@ -41,28 +38,6 @@ description: Code block positioned below the fold to test content-visibility opt
 
 <script type="module">
   import '@rhds/elements/rh-code-block/rh-code-block.js';
-  import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js'
-  import { html } from 'lit';
-  RhAlert.toast({
-    persistent: true,
-    state: 'info',
-    message: html`
-      <dl>
-        <dt>1st code block:</dt>
-        <dd><em>Pending</em></dd>
-        <dt>2nd code block:</dt>
-        <dd><em>Pending</em></dd>
-      </dl>
-    `,
-  });
-
-  const [fst, snd] = document.querySelectorAll('rh-code-block');
-  const [fstP, sndP] = document.querySelectorAll('rh-alert dd em');
-
-  addEventListener('scroll', function() {
-    fstP.textContent = fst.shadowRoot.querySelectorAll('#line-numbers li').length ? 'Computed' : 'Pending'
-    sndP.textContent = snd.shadowRoot.querySelectorAll('#line-numbers li').length ? 'Computed' : 'Pending'
-  }, { passive: true });
 </script>
 
 <style>

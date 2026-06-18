@@ -54,6 +54,19 @@ const rhdsPermalink = makePermalink((_slug, _opts, _anchorOpts, state, idx) => {
   );
 });
 
+function wrapCodeLines(codeHtml: string): string {
+  return codeHtml.replace(
+    /(<code[^>]*>)([\s\S]*?)(<\/code>)/,
+    (_, open: string, content: string, close: string) => {
+      const lines = content.split('\n');
+      const wrapped = lines.map(line =>
+        `<span class="rh-code-block-line"><span class="rh-code-block-line-content">${line || ' '}</span></span>`,
+      ).join('\n');
+      return `${open}${wrapped}${close}`;
+    },
+  );
+}
+
 function rhdsCodeBlock(md: MarkdownIt) {
   const orig = md.renderer.rules.fence;
   // custom renderer for fences
@@ -67,12 +80,13 @@ function rhdsCodeBlock(md: MarkdownIt) {
     const normalized = block?.replaceAll('-', '');
     if (normalized?.endsWith('codeblock')) {
       const redactedToken = Object.assign(token, { info });
+      const wrapped = wrapCodeLines(rendered);
       return html`
         <rh-code-block ${normalized.startsWith('rh' ) ? 'full-height' : ''}
                        dedent
                        actions="${actions.join(' ')}"
                        highlighting="prerendered"
-                       ${slf.renderAttrs(redactedToken)}>${rendered}</rh-code-block>`.trim();
+                       ${slf.renderAttrs(redactedToken)}>${wrapped}</rh-code-block>`.trim();
     } else {
       return rendered;
     }

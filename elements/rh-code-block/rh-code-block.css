@@ -59,20 +59,8 @@
 #container,
 #content-lines,
 #content,
-#prism-output,
-#sizers {
+#code-with-line-numbers {
   max-width: 100%;
-}
-
-#prism-output {
-  margin: 0;
-
-  & code {
-    font-size: inherit;
-    font-family: inherit;
-    font-weight: inherit;
-    line-height: inherit;
-  }
 }
 
 #container {
@@ -344,19 +332,9 @@
         transparent 100%
       );
 
-  &:not(.line-numbers) {
-    &:not(.isIntersecting) {
-      content-visibility: visible;
-    }
-  }
-
-  &.isIntersecting {
-    content-visibility: visible;
-  }
 }
 
-#sizers,
-#prism-output,
+#code-with-line-numbers,
 #content {
   display: block;
 
@@ -370,8 +348,6 @@
   grid-area: code;
 }
 
-#sizers,
-#prism-output,
 #content::slotted(:is(script, pre)) {
   display: inline;
   white-space: var(--_code-white-space, pre);
@@ -424,52 +400,43 @@
   width: 100%;
 }
 
-#sizers {
-  position: absolute;
-  min-width: 100%;
-  width: 100%;
-  opacity: 0;
-  pointer-events: none;
-  z-index: -10000;
+#code-with-line-numbers {
+  counter-reset: line-number;
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  column-gap: var(--_line-number-code-gap);
+  align-items: start;
 
-  /** Sizer line height */
+  /** Code line height */
   line-height: var(--rh-line-height-code, 1.5);
-}
 
-#line-numbers {
-  pointer-events: none;
-  overflow-y: hidden;
-  margin: 0;
-  grid-area: lines;
-  list-style-type: none;
-  padding-inline: 0 var(--_line-number-code-gap);
-  text-align: end;
+  & .line {
+    counter-increment: line-number;
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / -1;
 
-  /** Line number typeface */
-  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
-  -webkit-text-size-adjust: 100%; /* stylelint-disable-line property-no-vendor-prefix */
-  text-size-adjust: 100%;
+    &::before {
+      content: counter(line-number);
+      text-align: end;
+      padding-inline-end: var(--_line-number-code-gap);
 
-  /** Line number text uses the secondary text design token for reduced emphasis */
-  color: var(--rh-color-text-secondary);
+      /** Line number text uses the secondary text design token for reduced emphasis */
+      color: var(--rh-color-text-secondary);
 
-  /** Line number font weight */
-  font-weight: var(--rh-font-weight-code-regular, 400);
+      /** Line number font weight */
+      font-weight: var(--rh-font-weight-code-regular, 400);
 
-  /** Separator width between line numbers and code content */
-  border-inline-end-width: var(--rh-border-width-sm, 1px);
-  border-inline-end-style: solid;
+      /** Separator width between line numbers and code content */
+      border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+      user-select: none;
+      pointer-events: none;
+    }
+  }
 
-  /* stylelint-disable declaration-block-no-redundant-longhand-properties */
-
-  /** Separator color between line numbers and code uses the subtle border token */
-  border-inline-end-color: var(--rh-color-border-subtle);
-  /* stylelint-enable declaration-block-no-redundant-longhand-properties */
-
-  li {
-    /** Line number item height */
-    line-height: var(--rh-line-height-code, 1.5);
-    display: block;
+  & .line-content {
+    white-space: var(--_code-white-space, pre);
+    word-wrap: var(--_code-word-wrap, initial);
   }
 }
 
@@ -583,8 +550,12 @@
   grid-template-columns: 1fr;
 }
 
-:host([line-numbers='hidden']) #line-numbers {
-  display: none;
+:host([line-numbers='hidden']) #code-with-line-numbers {
+  grid-template-columns: 1fr;
+
+  & .line::before {
+    display: none;
+  }
 }
 
 #container.expandable #content-lines {
