@@ -37,6 +37,7 @@ a,
   text-decoration: var(--_navigation-link-text-decoration, none) !important;
   gap: var(--_navigation-link-gap, initial);
   background-color: var(--_navigation-link-background-color, transparent);
+  border-radius: var(--_navigation-link-border-radius, 0);
 }
 
 a:before,
