@@ -19,9 +19,9 @@ layout: layouts/base.njk
 
 {% include 'partials/component/sidenav.njk' %}
 <main id="main">
-  <article class="{{ 'has-toc' if table.length > 0 else '' }}">
+  <article class="{{ 'has-toc' if table.length > 0 and not hideToc else '' }}">
   {% include 'partials/component/header.njk' %}
-  {% if table.length > 0 %}
+  {% if table.length > 0 and not hideToc %}
   <div class="aside">
     <uxdot-toc summary="On this page">
       {{ table | safe }}

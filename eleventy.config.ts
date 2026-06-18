@@ -93,6 +93,8 @@ export default async function(eleventyConfig: UserConfig) {
    *              directory data file inside the submodule
    * - permalink: strips "content/" from URLs so pages render at
    *              /ai-guidelines/<page>/ instead of /ai-guidelines/content/<page>/
+   * - hideToc:   suppresses the table of contents for pages that are too short
+   *              to benefit from one (e.g. legal-requirements)
    *
    * The 'aiGuidelines' collection is created explicitly via addCollection
    * rather than computed tags, because eleventyComputed set via addGlobalData
@@ -112,6 +114,12 @@ export default async function(eleventyConfig: UserConfig) {
         return `${data.page.filePathStem.replace('/ai-guidelines/content/', '/ai-guidelines/')}/index.html`;
       }
       return data.permalink;
+    },
+    hideToc(data: { hideToc?: boolean; page: { inputPath: string } }) {
+      if (data.page.inputPath.includes('/ai-guidelines/content/legal-requirements')) {
+        return true;
+      }
+      return data.hideToc;
     },
   });
 
