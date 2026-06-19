@@ -1,44 +1,47 @@
 <link rel="stylesheet" href="/theming/themes/unified-theme/unified-theme-preview.css">
 
 <style>
-  .example-row {
-    margin-block: var(--rh-space-2xl, 32px);
-  }
+  #menu-dropdown-container {
+    h3 {
+      margin-block: 1.5rem 0.5rem !important;
+    }
 
-  .example-flex {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--rh-space-2xl, 32px);
-    align-items: flex-start;
+    rh-menu-dropdown:not([layout="compact"]) {
+      width: 296px;
+    }
   }
 </style>
 
-<h3>Default</h3>
-<div class="example-row example-flex">
+<div id="menu-dropdown-container">
+  <h3>Basic</h3>
   <rh-menu-dropdown>
-    <span slot="toggle-label">Menu</span>
-    <rh-menu-item href="#">Menu item 1</rh-menu-item>
-    <rh-menu-item href="#">Menu item 2</rh-menu-item>
-    <rh-menu-item href="#">Menu item 3</rh-menu-item>
+    <span slot="toggle-label">Basic toggle</span>
+    <rh-menu-item>Action one</rh-menu-item>
+    <rh-menu-item>Action two</rh-menu-item>
+    <rh-menu-item>Action three</rh-menu-item>
+    <rh-menu-item disabled>Disabled Action</rh-menu-item>
+    <hr/>
+    <rh-menu-item>Separated action</rh-menu-item>
   </rh-menu-dropdown>
-</div>
 
-<h3>With disabled item</h3>
-<div class="example-row example-flex">
+  <h3>Items with descriptions</h3>
   <rh-menu-dropdown>
-    <span slot="toggle-label">Menu</span>
-    <rh-menu-item href="#">Menu item 1</rh-menu-item>
-    <rh-menu-item href="#" disabled>Menu item 2 (disabled)</rh-menu-item>
-    <rh-menu-item href="#">Menu item 3</rh-menu-item>
+    <span slot="toggle-label">With descriptions</span>
+    <rh-menu-item>Action one <p slot="description">Description for the 1st action</p></rh-menu-item>
+    <rh-menu-item>Action two <p slot="description">Description for the 2nd action</p></rh-menu-item>
+    <rh-menu-item>Action three <p slot="description">Description for the 3rd action</p></rh-menu-item>
+    <rh-menu-item disabled>Disabled Action <p slot="description">Description for a disabled action</p></rh-menu-item>
+    <hr/>
+    <rh-menu-item>Separated action <p slot="description">Description for a separate action</p></rh-menu-item>
   </rh-menu-dropdown>
-</div>
 
-<h3>Borderless</h3>
-<div class="example-row example-flex">
-  <rh-menu-dropdown variant="borderless">
-    <span slot="toggle-label">Borderless</span>
-    <rh-menu-item href="#">Menu item 1</rh-menu-item>
-    <rh-menu-item href="#">Menu item 2</rh-menu-item>
-    <rh-menu-item href="#">Menu item 3</rh-menu-item>
+  <h3>Compact</h3>
+  <rh-menu-dropdown variant="borderless" layout="compact" accessible-label="Toggle menu">
+    <rh-menu-item>Action one</rh-menu-item>
+    <rh-menu-item>Action two</rh-menu-item>
+    <rh-menu-item>Action three</rh-menu-item>
+    <rh-menu-item disabled>Disabled Action</rh-menu-item>
+    <hr/>
+    <rh-menu-item>Separated action</rh-menu-item>
   </rh-menu-dropdown>
 </div>
