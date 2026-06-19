@@ -1,11 +1,23 @@
+/* Light DOM link styles for footer */
 :is(rh-footer, rh-footer-universal) a {
+  /** Footer link default color */
   color: var(--rh-color-interactive-primary-default);
   text-decoration: none;
 }
 
 :is(rh-footer, rh-footer-universal) :is(rh-footer-block) a {
-  text-decoration: underline var(--rh-border-width-sm, 1px) dashed;
-  text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40)) !important;
+  text-decoration:
+    underline
+    /** Footer block link underline width */
+    var(--rh-border-width-sm, 1px)
+    dashed;
+  text-decoration-color:
+    light-dark(
+        /** Footer block link underline in light mode */
+        var(--rh-color-gray-50),
+        /** Footer block link underline in dark mode */
+        var(--rh-color-gray-40)
+      ) !important;
   text-underline-offset: max(5px, 0.28em);
   transition-timing-function: ease;
   transition-property: text-underline-offset, color, text-decoration-color;
@@ -13,13 +25,23 @@
 }
 
 rh-footer [slot^='links'] a {
-  gap: var(--rh-footer-links-gap, var(--rh-space-md, 8px));
+  gap:
+    /** Footer link stack gap override */
+    var(--rh-footer-links-gap,
+      /** Footer link stack gap */
+      var(--rh-space-md, 8px));
 }
 
 :is(rh-footer, rh-footer-universal) [slot^='links'] a {
   display: block;
+
+  /** Footer link column text color */
   color: var(--rh-color-text-primary) !important;
-  font-size: var(--rh-footer-link-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size:
+    /** Footer link size override */
+    var(--rh-footer-link-font-size,
+      /** Footer link body size */
+      var(--rh-font-size-body-text-sm, 0.875rem));
   width: fit-content;
 }
 
@@ -28,8 +50,13 @@ rh-footer-universal [slot^='links'] a {
 }
 
 :is(rh-footer, rh-footer-universal) a:hover {
+  /** Footer link hover color */
   color: var(--rh-color-interactive-primary-hover);
-  text-decoration: underline var(--rh-border-width-sm, 1px) dashed;
+  text-decoration:
+    underline
+    /** Footer link hover underline width */
+    var(--rh-border-width-sm, 1px)
+    dashed;
   text-decoration-color: inherit;
   text-underline-offset: max(5px, 0.28em);
   transition-timing-function: ease;
@@ -38,8 +65,13 @@ rh-footer-universal [slot^='links'] a {
 }
 
 :is(rh-footer, rh-footer-universal) a:is(:focus, :focus-within) {
+  /** Footer link focus color */
   color: var(--rh-color-interactive-primary-hover);
-  text-decoration: underline dashed var(--rh-border-width-sm, 1px);
+  text-decoration:
+    underline
+    dashed
+    /** Footer link focus underline width */
+    var(--rh-border-width-sm, 1px);
   text-decoration-color: inherit;
   text-underline-offset: max(5px, 0.28em);
   transition-timing-function: ease;
@@ -48,11 +80,12 @@ rh-footer-universal [slot^='links'] a {
 }
 
 :is(rh-footer, rh-footer-universal) a:visited {
+  /** Footer link visited color */
   color: var(--rh-color-interactive-primary-hover);
   text-decoration: none;
 }
 
-/* adds underlines to inline links in rh-footer-block only */
+/* Underlines on inline links in rh-footer-block */
 
 :is(rh-footer, rh-footer-universal) :is(rh-footer-block) a:hover {
   text-decoration-color: inherit !important;
@@ -68,7 +101,7 @@ rh-footer-universal [slot^='links'] a {
   text-decoration-color: inherit;
 }
 
-/* ensure links fully wrap img tags */
+/* Logo links wrap image content */
 :is(rh-footer, rh-footer-universal) a[slot^='logo'] {
   display: block;
 }
@@ -76,18 +109,29 @@ rh-footer-universal [slot^='links'] a {
 :is(rh-footer) a[slot^='logo'] > img {
   display: block;
   width: auto;
-  height: 100%;
+
+  /** Logo image height */
   height: var(--rh-size-icon-04, 40px);
 }
 
 :is(rh-footer, rh-footer-universal) :is(h1, h2, h3, h4, h5, h6) {
+  /** Footer heading text color */
   color: var(--rh-color-text-primary);
+
+  /** Footer typeface */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+
+  /** Footer line height */
   line-height: var(--rh-line-height-heading, 1.3);
 }
 
 rh-footer [slot='links']:is(h1, h2, h3, h4, h5):nth-of-type(n+5) {
-  --_link-header-margin: calc(var(--rh-space-2xl, 32px) - var(--rh-space-lg, 16px));
+  --_link-header-margin:
+    calc(
+        /** Link column header offset large */
+        var(--rh-space-2xl, 32px) -
+        /** Link column header offset small */
+        var(--rh-space-lg, 16px));
 }
 
 :is(rh-footer, rh-footer-universal) [slot^='links'] li {
@@ -96,10 +140,9 @@ rh-footer [slot='links']:is(h1, h2, h3, h4, h5):nth-of-type(n+5) {
   display: contents;
 }
 
-/**
- * Section side gap
- */
+/* Section horizontal gutter */
 :is(rh-footer, rh-footer-universal) {
+  /** Default footer horizontal gutter */
   --rh-footer-section-side-gap: var(--rh-space-lg, 16px);
 
   color-scheme: only dark;
@@ -109,6 +152,7 @@ rh-footer [slot='links']:is(h1, h2, h3, h4, h5):nth-of-type(n+5) {
 /* (min-width: --rh-breakpoint-sm) */
 @media screen and (min-width: 768px) {
   :is(rh-footer, rh-footer-universal) {
+    /** Footer horizontal gutter at viewport >= md */
     --rh-footer-section-side-gap: var(--rh-space-2xl, 32px);
   }
 }
@@ -116,16 +160,17 @@ rh-footer [slot='links']:is(h1, h2, h3, h4, h5):nth-of-type(n+5) {
 /* (min-width: --rh-breakpoint-xl) */
 @media screen and (min-width: 1440px) {
   :is(rh-footer, rh-footer-universal) {
+    /** Footer horizontal gutter at viewport >= 2xl */
     --rh-footer-section-side-gap: var(--rh-space-4xl, 64px);
   }
 }
 
-/**
- * No JS Experience
- */
+/* No-JS experience */
 rh-footer:not(:defined) {
+  /** No-JS section horizontal inset */
   --_section-side-gap: var(--rh-space-lg, 16px);
 
+  /** Footer surface without JS */
   background-color: var(--rh-color-surface-darker, #1f1f1f);
   width: 100%;
   display: grid;
@@ -134,7 +179,7 @@ rh-footer:not(:defined) {
     'global';
   grid-template-rows: 1fr auto;
 
-  /** @deprecated  target `rh-footer:not(:defined) directly */
+  /** Minimum height without JS; prefer `rh-footer:not(:defined)` in CSS */
   min-height: var(--rh-footer-nojs-min-height);
 
   & > *:not(rh-footer-universal) {
@@ -142,45 +187,69 @@ rh-footer:not(:defined) {
   }
 
   a[slot='logo'] {
+    /** Footer vertical spacing */
     padding-block: var(--rh-space-2xl, 32px);
   }
 
   ul[slot='links'] {
     display: flex;
     flex-direction: column;
-    gap: var(--rh-footer-links-gap, var(--rh-space-md, 8px));
+    gap:
+      /** No-JS link stack gap override */
+      var(--rh-footer-links-gap,
+        /** No-JS link stack gap */
+        var(--rh-space-md, 8px));
+
+    /** Link list bottom margin without JS */
     margin-block-end: var(--rh-space-3xl, 48px);
   }
 
   [slot='links'] a {
-    font-size: var(--rh-footer-link-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+    font-size:
+      /** No-JS link size override */
+      var(--rh-footer-link-font-size,
+        /** No-JS link body size */
+        var(--rh-font-size-body-text-sm, 0.875rem));
   }
 }
 
 rh-footer-social-link:not(:defined),
 rh-footer:not(:defined) [slot='social-links'] {
-  display: none; /* Hide footer-social-link before/sans JS */
+  /* Hide social links before JS */
+  display: none;
 }
 
 :is(rh-footer, rh-footer-universal):not(:defined) {
   p {
+    /** Footer secondary text on dark */
     color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
   }
 
   & :is(h1, h2, h3, h4, h5, h6) {
     &[slot='links'],
     &[slot='header'] {
-      font-size: var(--rh-footer-link-header-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+      font-size:
+        /** Link column header size override */
+        var(--rh-footer-link-header-font-size,
+          /** Link column header size */
+          var(--rh-font-size-body-text-sm, 0.875rem));
+
+      /** Footer font weight */
       font-weight: var(--rh-font-weight-heading-medium, 500);
     }
   }
 }
 
 rh-footer-universal:not(:defined) {
+  /** Universal footer surface without JS */
   background-color: var(--rh-color-surface-darkest, #151515);
   display: block;
   width: 100%;
-  padding: var(--rh-space-2xl, 32px) var(--rh-space-lg, 16px);
+  padding:
+    /** Universal footer block padding without JS */
+    var(--rh-space-2xl, 32px)
+    /** Universal footer inline padding without JS */
+    var(--rh-space-lg, 16px);
 
   &:before {
     grid-area: global;
@@ -190,13 +259,17 @@ rh-footer-universal:not(:defined) {
   & [slot='links-secondary'] {
     display: flex;
     flex-flow: column wrap;
+
+    /** Footer content gap */
     gap: var(--rh-space-md, 8px);
+
+    /** Footer text size */
     font-size: var(--rh-font-size-body-text-xs, 0.75rem);
     margin: 0;
     padding: 0;
   }
 
-  /* No JS + DSD: */
+  /* No-JS + DSD */
   &[ssr-hint-has-slotted] :is(h2, h3, h4)[hidden] {
     border: 0;
     clip: rect(0, 0, 0, 0);
@@ -211,36 +284,57 @@ rh-footer-universal:not(:defined) {
 
   & rh-footer-copyright:not(:defined) {
     grid-column: -1/1;
-    padding-block: var(--rh-space-2xl, 32px) var(--rh-space-md, 8px);
+    padding-block:
+      /** Copyright block-start padding without JS */
+      var(--rh-space-2xl, 32px)
+      /** Copyright block-end padding without JS */
+      var(--rh-space-md, 8px);
+
+    /** Copyright text size */
     font-size: var(--rh-font-size-body-text-xs, 0.75rem);
+
+    /** Copyright text on dark */
     color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
   }
 }
 
 rh-footer-block:not(:defined) {
   :is(h1, h2, h3, h4, h5, h6) {
-    font-size: var(--rh-footer-link-header-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+    font-size:
+      /** Footer block header size override */
+      var(--rh-footer-link-header-font-size,
+        /** Footer block header size */
+        var(--rh-font-size-body-text-sm, 0.875rem));
+
+    /** Footer font weight */
     font-weight: var(--rh-font-weight-heading-medium, 500);
+
+    /** Footer bottom margin */
     margin-block-end: var(--rh-space-lg, 16px);
 
     &:not(:first-of-type) {
+      /** Footer top margin */
       margin-block-start: var(--rh-space-lg, 16px);
     }
   }
 
   &:not(:first-of-type) {
+    /** Footer top margin */
     margin-block-start: var(--rh-space-2xl, 32px);
   }
 }
 
 rh-footer:not(:defined) rh-footer-universal:not(:defined) {
-  /* Only apply space when universal footer is inside rh-footer */
+  /* Spacing when universal footer is nested in rh-footer */
+
+  /** Nested universal footer top margin */
   margin-block-start: var(--rh-space-2xl, 32px);
 }
 
 /* (min-width: --rh-breakpoint-sm) */
 @media screen and (min-width: 768px) {
   rh-footer:not(:defined) {
+    /** No-JS section horizontal inset at viewport >= md */
     --_section-side-gap: var(--rh-space-2xl, 32px);
   }
 }
@@ -248,14 +342,21 @@ rh-footer:not(:defined) rh-footer-universal:not(:defined) {
 /* (min-width: --rh-breakpoint-md) */
 @media screen and (min-width: 992px) {
   rh-footer:not(:defined) {
-    gap: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+    gap:
+      /** No-JS footer grid row gap at viewport >= lg */
+      var(--rh-space-lg, 16px)
+      /** No-JS footer grid column gap at viewport >= lg */
+      var(--rh-space-2xl, 32px);
     grid-template-columns: repeat(12, minmax(0, 1fr));
 
     a[slot='logo'] {
       position: relative;
 
       &:before {
+        /** Logo divider color at viewport >= lg */
         background-color: var(--rh-color-border-subtle-on-dark, #707070);
+
+        /** Logo divider thickness at viewport >= lg */
         block-size: var(--rh-length-4xs, 1px);
         content: '';
         inline-size: calc(100% - var(--_section-side-gap) * 2);
@@ -284,7 +385,11 @@ rh-footer:not(:defined) rh-footer-universal:not(:defined) {
     }
 
     ul[slot='links'] {
-      gap: var(--rh-footer-links-gap, var(--rh-space-lg, 16px));
+      gap:
+        /** No-JS link column gap override at viewport >= lg */
+        var(--rh-footer-links-gap,
+          /** No-JS link column gap at viewport >= lg */
+          var(--rh-space-lg, 16px));
       grid-row: 3 / span 2;
       margin: 0;
     }
@@ -328,12 +433,18 @@ rh-footer:not(:defined) rh-footer-universal:not(:defined) {
 
   rh-footer:not(:defined) :is(h2, h3)[slot='links'],
   rh-footer-block:not(:defined):first-of-type {
+    /** Link column header top margin at viewport >= lg */
     margin-block-start: var(--rh-space-lg, 16px);
   }
 
   rh-footer-universal:not(:defined) {
+    /** Universal footer block padding at viewport >= lg */
     padding-block: var(--rh-space-2xl, 32px);
-    padding-inline: var(--rh-space-7xl, 128px) var(--rh-space-4xl, 64px);
+    padding-inline:
+      /** Universal footer inline padding start at viewport >= lg */
+      var(--rh-space-7xl, 128px)
+      /** Universal footer inline padding end at viewport >= lg */
+      var(--rh-space-4xl, 64px);
 
     &[ssr-hint-has-slotted] {
       padding-inline: 0;
@@ -342,14 +453,20 @@ rh-footer:not(:defined) rh-footer-universal:not(:defined) {
     & ul[slot='links-primary'],
     & ul[slot='links-secondary'] {
       flex-direction: row;
-      gap: var(--rh-space-md, 8px) var(--rh-space-xl, 24px);
+      gap:
+        /** Global link row gap at viewport >= lg */
+        var(--rh-space-md, 8px)
+        /** Global link column gap at viewport >= lg */
+        var(--rh-space-xl, 24px);
     }
 
     & ul[slot='links-primary'] {
+      /** Primary link list bottom margin at viewport >= lg */
       margin-block-end: var(--rh-space-xl, 24px);
     }
 
     & rh-footer-copyright:not(:defined) {
+      /** Copyright block padding at viewport >= lg */
       padding-block: var(--rh-space-md, 8px);
     }
   }
@@ -364,6 +481,7 @@ rh-footer:not(:defined) rh-footer-universal:not(:defined) {
 /* (min-width: --rh-breakpoint-xl) */
 @media screen and (min-width: 1440px) {
   rh-footer:not(:defined) {
+    /** No-JS section horizontal inset at viewport >= 2xl */
     --_section-side-gap: var(--rh-space-4xl, 64px);
   }
 }

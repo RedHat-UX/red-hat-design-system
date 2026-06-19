@@ -173,6 +173,7 @@ declare module '@11ty/eleventy/src/UserConfig.js' {
       initֵArguments?: Opts;
       configFunction: PluginFunction<Opts>;
     }, opts?: Opts): void | Promise<void>;
+    addShortcode(name: string, callback: (...args: any[]) => string | Promise<string>): void;
     addTransform(name: string, callback: TransformCallback): void;
     addWatchTarget(name: string, opts?: { resetConfig: boolean }): void;
     amendLibrary(md: 'md', callback: ((md: MarkdownIt) => MarkdownIt)): void;

@@ -9,9 +9,19 @@ export default {
     size: 1,
     // because cem generate includes *all* demos that use a given tag name,
     // even if it doesn't live in that tag's directory
-    before: demos =>
-      demos.filter(demo =>
-        demo.filePath?.split('/').includes(demo.tagName)),
+    before: demos => {
+      const seen = new Set();
+      return demos.filter(demo => {
+        if (!demo.filePath?.split('/').includes(demo.tagName)) {
+          return false;
+        }
+        if (seen.has(demo.permalink)) {
+          return false;
+        }
+        seen.add(demo.permalink);
+        return true;
+      });
+    },
   },
   tags: [
     'demo',

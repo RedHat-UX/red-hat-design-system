@@ -7,6 +7,7 @@
 }
 
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+  /** Navigation menu section typeface */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
 }
 
@@ -16,15 +17,24 @@
   padding: 0;
   display: flex;
   flex-direction: column;
+
+  /** Navigation menu section slotted list content gap */
   gap: var(--rh-font-size-body-text-md, 1rem);
 }
 
 ::slotted([slot='cta']) {
-  padding: var(--rh-space-xl, 24px) 0 0;
+  padding:
+    /** Menu section CTA top spacing */
+    var(--rh-space-xl, 24px)
+    0
+    0;
 }
 
 ::slotted([slot='cta']:last-of-type) {
-  padding: var(--rh-space-xl, 24px) 0;
+  padding:
+    /** Menu section CTA block spacing */
+    var(--rh-space-xl, 24px)
+    0;
 }
 
 @media screen and (min-width: 992px) {

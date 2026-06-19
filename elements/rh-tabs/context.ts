@@ -15,7 +15,7 @@ export const rhTabsBoxContext =
   createContextWithRoot<'box' | 'inset' | undefined>(Symbol('rh-tabs-box'));
 
 export const rhTabsVerticalContext =
-  createContextWithRoot<boolean>(Symbol('rh-tabs-vertcal'));
+  createContextWithRoot<boolean>(Symbol('rh-tabs-vertical'));
 
 export const rhTabsManualContext =
   createContextWithRoot<boolean>(Symbol('rh-tabs-manual'));

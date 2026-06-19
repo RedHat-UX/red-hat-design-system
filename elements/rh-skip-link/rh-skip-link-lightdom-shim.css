@@ -4,26 +4,45 @@ rh-skip-link:not(:defined) {
 }
 
 rh-skip-link:not(:defined) > a {
+  /** Skip link background color */
   background-color: var(--rh-color-surface-lightest, #ffffff);
   border-block-start-width: 0;
   border-block-end:
+    /** Skip link border block end width */
     var(--rh-border-width-sm, 1px)
     solid
+    /** Skip link border block end color */
     var(--rh-color-border-interactive-on-light, #0066cc);
   border-inline-start:
+    /** Skip link border inline start width */
     var(--rh-border-width-sm, 1px)
     solid
+    /** Skip link border inline start color */
     var(--rh-color-border-interactive-on-light, #0066cc);
   border-inline-end:
+    /** Skip link border inline end width */
     var(--rh-border-width-sm, 1px)
     solid
+    /** Skip link border inline end color */
     var(--rh-color-border-interactive-on-light, #0066cc);
+
+  /** Skip link bottom-start corner radius */
   border-end-start-radius: var(--rh-border-radius-default, 3px);
+
+  /** Skip link bottom-end corner radius */
   border-end-end-radius: var(--rh-border-radius-default, 3px);
   clip: rect(0, 0, 0, 0);
+
+  /** Skip link text color */
   color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
+
+  /** Skip link font family */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+
+  /** Skip link font size */
   font-size: var(--rh-font-size-body-text-md, 1rem);
+
+  /** Skip link font weight */
   font-weight: var(--rh-font-weight-heading-bold, 700);
   height: 1px;
   left: 50%;
@@ -41,12 +60,17 @@ rh-skip-link:not(:defined) > a {
 }
 
 rh-skip-link:not(:defined) > a:is(:active, :focus) {
+  /** Skip link focus border width */
   border-width: var(--rh-border-width-md, 2px);
   clip: auto;
   height: auto;
   margin: 0;
   overflow: visible;
-  padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+  padding:
+    /** Skip link focus padding block */
+    var(--rh-space-lg, 16px)
+    /** Skip link focus padding inline */
+    var(--rh-space-2xl, 32px);
   top: 0;
   white-space: inherit;
   width: auto;
@@ -56,6 +80,8 @@ rh-skip-link:not(:defined) > a:is(:active, :hover) {
   text-decoration: underline;
   text-decoration-style: dashed;
   text-decoration-color: inherit;
+
+  /** Skip link hover underline thickness */
   text-decoration-thickness: var(--rh-border-width-sm, 1px);
   text-underline-offset: max(5px, 0.28em);
   transition-timing-function: ease;

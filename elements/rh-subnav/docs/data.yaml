@@ -3,6 +3,9 @@ tagName: rh-subnav
 name: Subnavigation
 type: element
 overallStatus: ready
+category: Navigation
+aka:
+  - Horizontal navigation
 libraries:
   figma: ready
   rhds: ready
@@ -12,3 +15,4 @@ relatedItems:
   - rh-navigation
   - rh-navigation-secondary
   - skip-navigation
+since: v1.0.0
