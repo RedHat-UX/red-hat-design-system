@@ -54,6 +54,71 @@ const rhdsPermalink = makePermalink((_slug, _opts, _anchorOpts, state, idx) => {
   );
 });
 
+const ALERT_TYPE_MAP: Record<string, string> = {
+  NOTE: 'info',
+  TIP: 'success',
+  WARNING: 'warning',
+  CAUTION: 'caution',
+  IMPORTANT: 'danger',
+};
+
+const ALERT_RE = /^\[!(NOTE|TIP|WARNING|CAUTION|IMPORTANT)\]\n?/;
+
+function rhdsGitHubAlerts(md: MarkdownIt) {
+  const orig = md.renderer.rules.blockquote_open;
+  const origClose = md.renderer.rules.blockquote_close;
+
+  md.core.ruler.after('block', 'github_alerts', (state: State) => {
+    const { tokens } = state;
+    for (let i = 0; i < tokens.length; i++) {
+      if (tokens[i].type !== 'blockquote_open') {
+        continue;
+      }
+      const inner = tokens[i + 1];
+      if (inner?.type !== 'paragraph_open') {
+        continue;
+      }
+      const inline = tokens[i + 2];
+      if (inline?.type !== 'inline' || !inline.content) {
+        continue;
+      }
+      const match = inline.content.match(ALERT_RE);
+      if (!match) {
+        continue;
+      }
+      const [, alertType] = match;
+      const state_ = ALERT_TYPE_MAP[alertType] ?? 'info';
+      const body = inline.content.slice(match[0].length).trim();
+
+      let closeIdx = -1;
+      for (const [j, t] of tokens.slice(i + 1).entries()) {
+        if (t.type === 'blockquote_close') {
+          closeIdx = i + 1 + j;
+          break;
+        }
+      }
+      if (closeIdx === -1) {
+        continue;
+      }
+
+      tokens[i] = Object.assign(new state.Token('html_block', '', 0), {
+        content: `<rh-alert state="${state_}">\n  <h4 slot="header">${alertType.charAt(0) + alertType.slice(1).toLowerCase()}</h4>\n`,
+      });
+
+      if (body) {
+        inline.content = body;
+      } else {
+        tokens.splice(i + 1, 2);
+        closeIdx -= 2;
+      }
+
+      tokens[closeIdx] = Object.assign(new state.Token('html_block', '', 0), {
+        content: '</rh-alert>\n',
+      });
+    }
+  });
+}
+
 function rhdsCodeBlock(md: MarkdownIt) {
   const orig = md.renderer.rules.fence;
   // custom renderer for fences
@@ -87,5 +152,6 @@ export default function(eleventyConfig: UserConfig) {
       .use(deflist)
       .use(captions)
       .use(attrs)
+      .use(rhdsGitHubAlerts)
       .use(rhdsCodeBlock));
 };
