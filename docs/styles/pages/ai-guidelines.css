@@ -151,6 +151,7 @@ ul:is([data-type='dos-donts'], [data-type='examples']) {
     grid-column: 1 / -1;
   }
 
+  /* stylelint-disable-next-line no-descending-specificity */
   figure:is([data-type*='landscape']) {
     width: 100%;
     max-width: 100%;
