@@ -194,11 +194,10 @@
           var(--unified-color-blue-30)
         );
 
-    /* TODO: Double-check color */
     --unified-color-border-interactive-subtle-focus:
       light-dark(
-          var(--unified-color-blue-40),
-          var(--unified-color-blue-30)
+          var(--unified-color-blue-50),
+          var(--unified-color-blue-20)
         );
     --unified-color-border-interactive-subtle-active:
       light-dark(
@@ -559,9 +558,25 @@
     &[variant='primary'] {
       --rh-color-text-primary-on-light: var(--rh-color-gray-90);
 
+      &::part(button):hover {
+        background-color: var(--unified-color-interactive-primary-hover);
+      }
+
+      &::part(button):focus {
+        background-color: var(--unified-color-interactive-primary-focus);
+      }
+
+      &::part(button):active {
+        background-color: var(--unified-color-interactive-primary-active);
+      }
+
       &[danger] {
         &::part(button):hover {
           background-color: var(--unified-color-status-danger-hover);
+        }
+
+        &::part(button):focus {
+          background-color: var(--unified-color-status-danger-focus);
         }
 
         &::part(button):active {
@@ -574,22 +589,25 @@
       --rh-border-width-sm: var(--unified-border-width-sm);
 
       &::part(button):hover {
-        --rh-color-text-primary: var(--unified-color-interactive-tertiary-hover);
+        --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-hover);
+        --rh-color-text-primary: var(--unified-color-text-interactive-hover);
         --rh-border-width-sm: var(--unified-button-border-width-hover);
       }
 
       &::part(button):focus {
-        --rh-color-text-primary: var(--unified-color-interactive-tertiary-hover);
+        --rh-color-text-primary: var(unified-color-text-interactive-hover-focus);
         --rh-border-width-sm: var(--unified-button-border-width-focus);
       }
 
       &::part(button):active {
-        --rh-color-text-primary: var(--unified-color-interactive-tertiary-hover);
+        --rh-color-text-primary: var(unified-color-text-interactive-active);
         --rh-border-width-sm: var(--unified-button-border-width-active);
       }
 
       &[danger] {
         --rh-color-status-danger: var(--unified-color-text-status-danger);
+        --rh-color-text-primary: var(--unified-color-text-status-danger);
+        --rh-color-border-status-danger: var(--unified-color-status-danger);
 
         &::part(icon) {
           /* Dark scheme: icon default is red-orange-50;
@@ -599,17 +617,19 @@
 
         &::part(button):hover {
           --rh-color-border-status-danger: var(--unified-color-status-danger-hover);
-          --rh-color-status-danger: var(--unified-color-status-danger-hover);
+          --rh-color-status-danger: var(--unified-color-text-status-danger-hover);
+          --rh-color-text-primary: var(--unified-color-text-status-danger-hover);
         }
 
         &::part(button):focus {
           --rh-color-border-status-danger: var(--unified-color-status-danger-focus);
-          --rh-color-status-danger: var(--unified-color-status-danger-focus);
+          --rh-color-status-danger: var(--unified-color-text-status-danger-focus);
+          --rh-color-text-primary: var(--unified-color-text-status-danger-focus);
         }
 
         &::part(button):active {
-          --rh-color-border-status-danger: var(--unified-color-status-danger-hover);
-          --rh-color-status-danger: var(--unified-color-status-danger-hover);
+          --rh-color-border-status-danger: var(--unified-color-status-danger-active);
+          --rh-color-text-primary: var(--unified-color-text-status-danger-active);
         }
       }
     }
@@ -645,19 +665,21 @@
 
         &::part(button):hover {
           --rh-color-border-status-danger: var(--unified-color-status-danger-hover);
+          --rh-color-status-danger: var(--unified-color-status-danger-hover);
           --rh-color-text-primary: var(--unified-color-text-status-danger-hover);
           --rh-color-border-strong: var(--unified-color-status-danger-hover);
         }
 
         &::part(button):focus {
           --rh-color-border-status-danger: var(--unified-color-status-danger-focus);
+          --rh-color-status-danger: var(--unified-color-status-danger-focus);
           --rh-color-text-primary: var(--unified-color-text-status-danger-focus);
           --rh-color-border-strong: var(--unified-color-status-danger-focus);
         }
 
         &::part(button):active {
           --rh-color-border-status-danger: var(--unified-color-status-danger-active);
-          --rh-color-status-danger: var(--unified-color-status-danger-active);
+          --rh-color-text-primary: var(--unified-color-text-status-danger-active);
           --rh-color-border-strong: var(--unified-color-status-danger-active);
         }
       }
