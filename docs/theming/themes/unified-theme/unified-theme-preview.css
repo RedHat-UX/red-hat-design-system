@@ -979,7 +979,7 @@
    mockup requires element-level changes (no CSS part on #switch). */
 @layer switch {
   rh-switch {
-    --rh-switch-check-display: initial !important;
+    --rh-switch-show-check: true;
     --rh-switch-unchecked: transparent;
     --rh-switch-checked: var(--unified-color-interactive-primary-default);
     --rh-switch-disabled:

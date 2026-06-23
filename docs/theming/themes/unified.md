@@ -58,19 +58,15 @@ subnav:
 
   const switchPatch = new CSSStyleSheet();
   switchPatch.replaceSync(/*css*/`
-    @property --rh-switch-check-display {
-      syntax: 'none | inline-flex';
-      inherits: true;
-      initial-value: inline-flex;
+    :host {
+      container-type: style;
     }
 
-    rh-icon,
-    rh-icon[hidden] {
-      display: var(--rh-switch-check-display) !important;
-    }
-
-    :host([show-check-icon]) {
-      --rh-switch-check-display: initial;
+    @container style(--rh-switch-show-check: true) {
+      rh-icon,
+      rh-icon[hidden] {
+        display: inline-flex !important;
+      }
     }
   `);
 
