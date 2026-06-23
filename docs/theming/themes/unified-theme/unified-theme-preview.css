@@ -193,7 +193,6 @@
           var(--unified-color-blue-40),
           var(--unified-color-blue-30)
         );
-
     --unified-color-border-interactive-subtle-focus:
       light-dark(
           var(--unified-color-blue-50),
@@ -625,7 +624,7 @@
         &::part(button):hover {
           --rh-color-border-status-danger: var(--unified-color-status-danger-hover);
           --rh-color-status-danger: var(--unified-color-text-status-danger-hover);
-          --rh-color-text-primary: var(--unified-color-text-status-danger-hover);
+
         }
 
         &::part(button):focus {
@@ -670,9 +669,9 @@
           color: var(--unified-color-status-danger);
         }
 
-           &:is(:hover, :focus-within, :active) {
-            --rh-button-icon-color: var(--unified-color-icon-status-danger-hover);
-          }
+        &:is(:hover, :focus-within, :active) {
+          --rh-button-icon-color: var(--unified-color-icon-status-danger-hover);
+        }
 
         &::part(button):hover {
           --rh-color-border-status-danger: var(--unified-color-status-danger-hover);
