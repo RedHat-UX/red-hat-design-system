@@ -205,11 +205,6 @@ rh-alert {
   margin-block: var(--rh-space-3xl);
 }
 
-/* Denote VPN / RH Internal links */
-a[href*='url.corp.redhat.com']:after {
-  content: ' (requires Red Hat login)';
-}
-
 /**
  *
  * Chatbot avatar images block:
