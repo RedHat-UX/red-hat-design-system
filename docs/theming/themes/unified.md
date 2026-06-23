@@ -29,6 +29,30 @@ subnav:
   import '@rhds/elements/rh-switch/rh-switch.js';
   import '@rhds/elements/rh-tabs/rh-tabs.js';
   import '@rhds/elements/rh-tag/rh-tag.js';
+
+  /**
+   * Button icon color patch
+   *
+   * rh-icon inherits color via currentcolor from the button's internal --_color
+   * custom property. There is no way to set a distinct icon color in
+   * hover/active/focus states from outside the shadow DOM using ::part() —
+   * ::part(icon):hover only fires when the icon itself is hovered, not the button.
+   * This patch injects directly into each rh-button shadow root to work around
+   * the limitation until a dedicated --rh-button-icon-color property is added
+   * to the element.
+   */
+  const buttonPatch = new CSSStyleSheet();
+  buttonPatch.replaceSync(/*css*/`
+    rh-icon {
+      color: var(--rh-button-icon-color, currentcolor);
+    }
+  `);
+
+  for (const pattern of document.querySelectorAll('uxdot-pattern')) {
+    for (const el of pattern.shadowRoot.querySelectorAll('rh-button')) {
+      el.shadowRoot.adoptedStyleSheets = [...el.shadowRoot.adoptedStyleSheets, buttonPatch];
+    }
+  }
 </script>
 <style>
   #unified-theme-toggle {
