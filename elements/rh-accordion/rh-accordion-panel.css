@@ -20,25 +20,20 @@
 }
 
 .large {
-  --rh-accordion-panel-padding-block-start: var(--rh-space-xl, 24px);
-  --rh-accordion-panel-padding-inline-end: var(--rh-space-xl, 24px);
-  --rh-accordion-panel-padding-block-end: var(--rh-space-xl, 24px);
-  --rh-accordion-panel-padding-inline-start: var(--rh-space-xl, 24px);
+  --rh-accordion-panel-padding-block: var(--rh-space-xl, 24px);
+  --rh-accordion-panel-padding-inline: var(--rh-space-xl, 24px);
 }
 
 .body {
   position: relative;
   overflow: hidden;
   display: block;
-  padding:
-    /** Panel block-start (top) padding */
-    var(--rh-accordion-panel-padding-block-start, var(--rh-space-lg, 16px))
-    /** Panel inline-end (right) padding */
-    var(--rh-accordion-panel-padding-inline-end, var(--rh-space-xl, 24px))
-    /** Panel block-end (bottom) padding */
-    var(--rh-accordion-panel-padding-block-end, var(--rh-space-lg, 16px))
-    /** Panel inline-start (left) padding */
-    var(--rh-accordion-panel-padding-inline-start, var(--rh-space-xl, 24px));
+
+  /** Panel block (top and bottom) padding */
+  padding-block: var(--rh-accordion-panel-padding-block, var(--rh-space-lg, 16px));
+
+  /** Panel inline (left and right) padding */
+  padding-inline: var(--rh-accordion-panel-padding-inline, var(--rh-space-xl, 24px));
 }
 
 :host([fixed]) {
