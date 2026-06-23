@@ -624,7 +624,6 @@
         &::part(button):hover {
           --rh-color-border-status-danger: var(--unified-color-status-danger-hover);
           --rh-color-status-danger: var(--unified-color-text-status-danger-hover);
-
         }
 
         &::part(button):focus {
