@@ -43,21 +43,16 @@ subnav:
     }
 
     .large {
-      --rh-accordion-panel-padding-block-start: var(--rh-space-xl, 24px);
-      --rh-accordion-panel-padding-inline-end: var(--rh-space-xl, 24px);
-      --rh-accordion-panel-padding-block-end: var(--rh-space-xl, 24px);
-      --rh-accordion-panel-padding-inline-start: var(--rh-space-xl, 24px);
+      --rh-accordion-panel-padding-block: var(--rh-space-xl, 24px);
+      --rh-accordion-panel-padding-inline: var(--rh-space-xl, 24px);
     }
 
     .body {
       position: relative;
       overflow: hidden;
       display: block;
-      padding:
-        var(--rh-accordion-panel-padding-block-start, var(--rh-space-lg, 16px))
-        var(--rh-accordion-panel-padding-inline-end, var(--rh-space-xl, 24px))
-        var(--rh-accordion-panel-padding-block-end, var(--rh-space-lg, 16px))
-        var(--rh-accordion-panel-padding-inline-start, var(--rh-space-xl, 24px));
+      padding-block: var(--rh-accordion-panel-padding-block, var(--rh-space-lg, 16px));
+      padding-inline: var(--rh-accordion-panel-padding-inline, var(--rh-space-xl, 24px));
     }
   `);
 

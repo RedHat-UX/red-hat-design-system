@@ -1061,18 +1061,13 @@
     }
 
     & rh-accordion-panel {
-      --rh-space-xl: var(--unified-space-lg);
-      --rh-accordion-panel-padding-block-start: var(--unified-space-md);
-      --rh-accordion-panel-padding-block-end: var(--unified-space-xl);
+      --rh-accordion-panel-padding-block: var(--unified-space-md) var(--unified-space-xl);
+      --rh-accordion-panel-padding-inline: var(--unified-space-lg);
     }
 
     /* !important needed to override shadow DOM #container border */
     & rh-accordion-panel::part(container) {
       border-inline-end: none !important;
-    }
-
-    & rh-accordion-panel::part(body) {
-      padding-block: var(--rh-space-md, 8px) var(--rh-space-xl, 24px);
     }
 
     &.bordered {
