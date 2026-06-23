@@ -615,6 +615,13 @@
           color: var(--unified-color-status-danger);
         }
 
+        /* Set --rh-button-icon-color on the host so it reliably inherits
+           into the shadow DOM; ::part() custom props may not cascade to
+           shadow-DOM descendants of the targeted part. */
+        &:is(:hover, :focus-within, :active) {
+          --rh-button-icon-color: var(--unified-color-icon-status-danger-hover);
+        }
+
         &::part(button):hover {
           --rh-color-border-status-danger: var(--unified-color-status-danger-hover);
           --rh-color-status-danger: var(--unified-color-text-status-danger-hover);
@@ -662,6 +669,10 @@
              light scheme unchanged (red-orange-60 = text color) */
           color: var(--unified-color-status-danger);
         }
+
+           &:is(:hover, :focus-within, :active) {
+            --rh-button-icon-color: var(--unified-color-icon-status-danger-hover);
+          }
 
         &::part(button):hover {
           --rh-color-border-status-danger: var(--unified-color-status-danger-hover);
