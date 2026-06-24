@@ -43,10 +43,11 @@ if (otelEndpoint) {
   let validatedEndpoint: string;
   try {
     const u = new URL(otelEndpoint);
-    if (u.protocol !== 'https:') throw new Error('OTEL endpoint must use https://');
+    if (u.protocol !== 'https:') {
+      throw new Error('OTEL endpoint must use https://');
+    }
     validatedEndpoint = u.origin;
   } catch {
-    console.error('[rhds-mcp] Invalid OTEL_EXPORTER_OTLP_ENDPOINT — tracing disabled');
     validatedEndpoint = '';
   }
   if (validatedEndpoint) {
@@ -175,9 +176,10 @@ function createMcpServer(): McpServer {
       ].join(' '),
       mimeType: 'application/json',
     },
-    async (uri) => {
+    async uri => {
       const params = new URL(uri.href.replace('cem://', 'mcp://host/')).searchParams;
-      const limit = Math.min(100, Math.max(1, parseInt(params.get('limit') ?? String(DEFAULT_PAGE_LIMIT), 10)));
+      const rawLimit = parseInt(params.get('limit') ?? String(DEFAULT_PAGE_LIMIT), 10);
+      const limit = Math.min(100, Math.max(1, rawLimit));
       const cursor = Math.max(0, parseInt(params.get('cursor') ?? '0', 10));
       const page = allTagNames.slice(cursor, cursor + limit);
       const nextCursor = cursor + limit < allTagNames.length ? cursor + limit : null;
@@ -284,10 +286,8 @@ export default async (req: Request): Promise<Response> => {
     span.recordException(err instanceof Error ? err : new Error(String(err)));
     span.setStatus({ code: SpanStatusCode.ERROR });
     // Return a sanitized error rather than rethrowing raw exception details (Finding 4)
-    return new Response(
-      JSON.stringify({ jsonrpc: '2.0', error: { code: -32603, message: 'Internal error' }, id: null }),
-      { status: 500, headers: { 'Content-Type': 'application/json' } },
-    );
+    const body = JSON.stringify({ jsonrpc: '2.0', error: { code: -32603, message: 'Internal error' }, id: null });
+    return new Response(body, { status: 500, headers: { 'Content-Type': 'application/json' } });
   } finally {
     span.end();
     // Force-flush traces before the serverless function returns
