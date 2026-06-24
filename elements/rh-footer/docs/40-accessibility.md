@@ -6,7 +6,14 @@ If a `<rh-footer>` or `<rh-footer-universal>` is placed inside an existing `<foo
 
 ## Keyboard interactions
 
-Most elements in a footer are links, so users can press `Tab` to navigate from region to region.
+The footer includes many different interactive elements that can be navigated with a keyboard.
+
+<uxdot-example width-adjustment="1140px" variant="full" alignment="left" no-border>
+  <img src="../footer-a11y-keyboard-interactions.svg"
+        alt="A footer showing light blue focus rings and dotted underlines on links in a dark color scheme footer"
+        width="1140"
+        height="743">
+</uxdot-example>
 
 <rh-table>
   <table>
@@ -19,19 +26,27 @@ Most elements in a footer are links, so users can press `Tab` to navigate from r
     <tbody>
       <tr>
         <td data-label="Key"><kbd>Tab</kbd></td>
-        <td data-label="Result">Moves the focus to the next interactive element or section</td>
+        <td data-label="Result">Moves the focus to the next interactive element</td>
       </tr>
       <tr>
-        <td data-label="Key"><kbd>Shift</kdb>+<kbd>Tab</kbd></td>
-        <td data-label="Result">Moves the focus to the previous interactive element or section</td>
+        <td data-label="Key"><kbd>Shift</kbd>+<kbd>Tab</kbd></td>
+        <td data-label="Result">Moves the focus to the previous interactive element</td>
+      </tr>
+      <tr>
+        <td data-label="Key"><kbd>Space</kbd></td>
+        <td data-label="Result">Opens the language selector menu</td>
+      </tr>
+      <tr>
+        <td data-label="Key"><kbd>Up arrow</kbd> / <kbd>Down arrow</kbd></td>
+        <td data-label="Result">Moves the focus to each language</td>
       </tr>
       <tr>
         <td data-label="Key"><kbd>Enter</kbd></td>
-        <td data-label="Result">Opens or closes the language selector menu</td>
+        <td data-label="Result">Selects a language and enables it on the page</td>
       </tr>
       <tr>
         <td data-label="Key"><kbd>Esc</kbd></td>
-        <td data-label="Result">Closes the language selector menu if a language has focus</td>
+        <td data-label="Result">Closes the language selector menu</td>
       </tr>
     </tbody>
   </table>
@@ -41,47 +56,12 @@ Most elements in a footer are links, so users can press `Tab` to navigate from r
 
 A logical focus order helps keyboard users operate our websites. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly. The focus moves across regions of a footer from left to right and top to bottom.
 
-<rh-alert state="info">
-  <h3 slot="header">Helpful tip</h3>
-  <p>Users can skip opening the language selector menu, but the trigger still receives focus.</p>
-</rh-alert>
-
-<uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="../footer-a11y-focus-order.avif"
-        alt="Image of a footer showing groups of focus indicators in different regions with annotation numbers"
-        width="968"
-        height="796">
+<uxdot-example width-adjustment="1140px" variant="full" alignment="left" no-border>
+  <img src="../footer-a11y-focus-order.svg"
+        alt="A footer showing groups of focus indicators in different regions with annotation numbers"
+        width="1140"
+        height="743">
 </uxdot-example>
-
-
-### Language selector
-
-Users can open the language selector menu by pressing `Enter` if the trigger has focus. If they do, they can press `Tab` to move focus to the first language. Each language can receive focus from left to right and top to bottom.
-
-<uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="../footer-a11y-language-selector-a.avif"
-        alt="Image of a footer with the language selector menu open showing the focus order of languages"
-        width="968"
-        height="796">
-</uxdot-example>
-
-When the focus is moved outside of the menu, the menu closes.
-
-<uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="../footer-a11y-language-selector-b.avif"
-        alt="Image of a footer with the language selector menu open showing the menu closing when focus is moved"
-        width="968"
-        height="796">
-</uxdot-example>
-
-
-#### Additional guidelines
-
-- Content outside of a dialog cannot be interacted with or navigated to while the dialog is open
-- The `Escape` key should close the dialog
-- There should be at least one clickable button that closes the dialog
-- Long dialog content can still receive focus via keyboard if it overflows and a scrollbar appears
-- When a dialog closes, focus should return to the last focused item before the dialog was opened
 
 {% include 'partials/accessibility/ariaguide.md' %}
 {% include 'partials/accessibility/wcag.md' %}
