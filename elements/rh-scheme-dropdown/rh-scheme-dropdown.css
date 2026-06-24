@@ -134,7 +134,6 @@ select {
 
       /** Picker elevation shadow; depth cue for the overlay */
       box-shadow: var(--rh-box-shadow-sm);
-      inline-size: 100%;
 
       /** Picker top margin */
       margin-block-start: var(--rh-space-sm, 6px);
@@ -144,6 +143,9 @@ select {
 
       /** Picker vertical padding */
       padding-block: var(--rh-space-md, 8px);
+
+      /* When scheme-dropdown is right aligned, right align dropdown content */
+      position-try-fallbacks: flip-inline;
     }
 
     &:open {
@@ -234,10 +236,5 @@ select {
     &:checked rh-icon.checkmark {
       display: block;
     }
-  }
-
-  /* Align picker's inline-end edge with trigger's inline-end edge. */
-  :host([dropdown-placement='inline-end']) select::picker(select) {
-    position-area: block-end span-inline-start;
   }
 }

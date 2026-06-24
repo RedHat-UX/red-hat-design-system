@@ -84,14 +84,6 @@ export class RhSchemeDropdown extends LitElement {
   @property({ attribute: 'accessible-label-system' }) accessibleLabelSystem = 'System';
 
   /**
-   * Controls where the trigger and picker align within the host.
-   * When set to `inline-end`, both shift to the inline-end edge
-   * (right in LTR, left in RTL).
-   */
-  @property({ attribute: 'dropdown-placement', reflect: true })
-  dropdownPlacement?: 'inline-end';
-
-  /**
    * Syncs the selected-state flags before each render so the
    * template always reflects the current `scheme` value.
    */

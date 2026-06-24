@@ -1,7 +1,11 @@
 ---
-description: "Scheme dropdown with inline-end placement, aligning picker to the right."
+description: "Two scheme dropdowns demonsrating dropdown positioning aligning on the left and right."
 ---
-<rh-scheme-dropdown dropdown-placement="inline-end"></rh-scheme-dropdown>
+
+<div id="container">
+  <rh-scheme-dropdown id="left"></rh-scheme-dropdown>
+  <rh-scheme-dropdown id="right"></rh-scheme-dropdown>
+</div>
 
 <script type="module">
   import '@rhds/elements/rh-scheme-dropdown/rh-scheme-dropdown.js';
@@ -10,18 +14,17 @@ description: "Scheme dropdown with inline-end placement, aligning picker to the 
 <style>
   body {
     color-scheme: light dark;
+  }
+
+  #container {
     background-color: var(--rh-color-surface);
     color: var(--rh-color-text-primary);
+    display: flex;
+    justify-content: space-between;
+    padding: var(--rh-space-lg, 16px);
   }
 
   rh-scheme-dropdown {
     padding: var(--rh-space-md, 8px);
-    
-    /** 
-     * NOTE: ensure the scheme dropdown has enough space on the
-     * inline-start axis to allow the picker to be fully visible
-     * when it's expanded.
-    */
-    margin-inline-start: var(--rh-space-5xl, 80px);
   }
 </style>
