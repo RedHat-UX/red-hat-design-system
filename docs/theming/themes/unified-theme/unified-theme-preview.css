@@ -605,7 +605,6 @@
 
       &[danger] {
         --rh-color-status-danger: var(--unified-color-text-status-danger);
-        --rh-color-text-primary: var(--unified-color-text-status-danger);
         --rh-color-border-status-danger: var(--unified-color-status-danger);
 
         &::part(icon) {
@@ -629,12 +628,11 @@
         &::part(button):focus {
           --rh-color-border-status-danger: var(--unified-color-status-danger-focus);
           --rh-color-status-danger: var(--unified-color-text-status-danger-focus);
-          --rh-color-text-primary: var(--unified-color-text-status-danger-focus);
         }
 
         &::part(button):active {
           --rh-color-border-status-danger: var(--unified-color-status-danger-active);
-          --rh-color-text-primary: var(--unified-color-text-status-danger-active);
+          --rh-color-status-danger: var(--unified-color-text-status-danger-active);
         }
       }
     }
