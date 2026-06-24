@@ -26,7 +26,9 @@ import cemJson from '../../custom-elements.json' with { type: 'json' };
 // CEM manifest types (subset used by this server)
 // ---------------------------------------------------------------------------
 
-interface CemType { text: string }
+interface CemType {
+  text: string;
+}
 
 interface CemAttribute {
   name: string;
@@ -189,7 +191,7 @@ function createMcpServer(): McpServer {
 export default async (req: Request): Promise<Response> => {
   const transport = new WebStandardStreamableHTTPServerTransport({
     sessionIdGenerator: undefined, // stateless — no cross-request session state
-    enableJsonResponse: true,      // plain JSON responses; no SSE (serverless-safe)
+    enableJsonResponse: true, // plain JSON responses; no SSE (serverless-safe)
   });
 
   const server = createMcpServer();
@@ -201,7 +203,7 @@ export default async (req: Request): Promise<Response> => {
 export const config: Config = {
   path: '/mcp',
   rateLimit: {
-    windowSize: 60,  // seconds
+    windowSize: 60, // seconds
     maxRequests: 30, // per IP per window
   },
 };
