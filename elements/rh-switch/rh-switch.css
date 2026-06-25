@@ -3,6 +3,12 @@
   outline: none;
   vertical-align: top;
   cursor: pointer;
+
+  /**
+   * Set --rh-switch-show-check: true to show the check icon without
+   * the show-check-icon attribute (e.g. from a theme stylesheet).
+   */
+  container-type: style;
 }
 
 [hidden] {
@@ -122,10 +128,21 @@
 }
 
 rh-icon {
+  display: none;
   margin-inline: var(--_margin-inline);
   color: var(--_switch-handle-color);
   position: absolute;
   z-index: 1;
+}
+
+:host([show-check-icon]) {
+  --rh-switch-show-check: true;
+}
+
+@container style(--rh-switch-show-check: true) {
+  rh-icon {
+    display: inline-flex;
+  }
 }
 
 :host(:is(:focus, :focus-within)) #container #switch {
