@@ -213,11 +213,8 @@
 }
 
 .global-logo-image {
-  fill: var(--_icon-color);
-}
-
-.global-logo-image:is(:hover, :focus-within) {
-  fill: var(--_icon-color-hover);
+  /** Red Hat fedora brand color */
+  fill: var(--rh-color-brand-red, #ee0000);
 }
 
 .global-primary {
