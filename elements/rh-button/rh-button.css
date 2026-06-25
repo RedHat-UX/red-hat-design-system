@@ -13,7 +13,8 @@
 }
 
 rh-icon {
-  color: currentcolor;
+  /** Set on the rh-button host to give the icon a distinct color from the button text. */
+  color: var(--rh-button-icon-color, currentcolor);
 }
 
 /* Base button styles: rounded corners, variant-driven colors */
