@@ -1,21 +1,9 @@
-@property --rh-switch-check-display {
-  syntax: 'none | inline-flex';
-  inherits: true;
-  initial-value: inline-flex;
-}
-
 :host {
   display: inline-flex;
   outline: none;
   vertical-align: top;
   cursor: pointer;
   container-type: style;
-
-  /**
-   * Set `--rh-switch-show-check: true` to show the check icon without
-   * the show-check-icon attribute (e.g. from a theme stylesheet).
-   */
-  --rh-switch-check-display: none;
 }
 
 [hidden] {
@@ -140,14 +128,13 @@ rh-icon {
   color: var(--_switch-handle-color);
   position: absolute;
   z-index: 1;
-  display: var(--rh-switch-check-display);
 }
 
 :host([show-check-icon]) {
-  --rh-switch-check-display: initial;
-}
-
-:host([show-check-icon]) {
+  /**
+   * Set --rh-switch-show-check: true to show the check icon without
+   * the show-check-icon attribute (e.g. from a theme stylesheet).
+   */
   --rh-switch-show-check: true;
 }
 
@@ -202,3 +189,4 @@ rh-icon {
     }
   }
 }
+
