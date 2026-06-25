@@ -1183,6 +1183,7 @@
 /* Element: Chip (selectable Labels in PatternFly) */
 @layer chip {
   rh-chip {
+    --rh-size-icon-01: var(--unified-size-icon-00);
     --rh-border-radius-pill: var(--unified-border-radius-pill);
     --rh-border-width-md: var(--unified-border-width-md);
     --rh-color-border-interactive: var(--unified-color-interactive-primary-default);
