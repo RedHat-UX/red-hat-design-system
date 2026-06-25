@@ -1,5 +1,35 @@
 # @rhds/elements
 
+## 4.1.5
+### Patch Changes
+
+- e4f28d3: `<rh-navigation-primary>`: corrected overlay closure regression on large viewport dropdown toggle
+
+## 4.1.4
+### Patch Changes
+
+- 9865c9c: Ensure that CSS changes are correctly reflected in released files
+
+## 4.1.3
+### Patch Changes
+
+- 2a7c2a0: `<rh-navigation-primary>`: corrected visual gap between links and utility menu, and adjusted dropdown menu padding.
+- 0aef3c6: `<rh-navigation-primary>`: corrected regression in bento box dropdown behavior
+
+## 4.1.2
+### Patch Changes
+
+- cf95f14: `<rh-navigation-primary>`: adjusted links menu to collapse at a wider viewport than main navigation
+
+## 4.1.1
+### Patch Changes
+
+- 3314574: `<rh-accordion>`: fixed server-side rendering compatibility
+- cbadd8d: `<rh-navigation-primary>`: corrected logo accessibility semantics for Safari
+- 2c394b3: `<rh-tabs>`: improved accessibility so only one focus outline is visible at a time when navigating within a tab panel
+- 8880442: `<rh-scheme-toggle>`: corrected checked and hover background colors, improved focus styles
+- 4bc3a7e: `<rh-cta>`: made the text in primary, secondary, and default CTAs bolder
+
 ## 4.1.0
 ### Minor Changes
 

@@ -75,6 +75,87 @@ export default async function(eleventyConfig: UserConfig) {
 
   eleventyConfig.addGlobalData('isLocal', isLocal);
 
+  /**
+   * AI guidelines integration
+   *
+   * The AI guidelines content lives in a git submodule at docs/ai-guidelines,
+   * sourced from https://github.com/project-felt/ai-guidelines. The submodule
+   * has its own repo structure (content/, assets/, source/, README, etc.), so
+   * we use computed data to bridge it into the docs site without modifying the
+   * submodule itself. See also .eleventyignore, which excludes the submodule's
+   * root-level markdown and source/ directory to prevent duplicate pages.
+   *
+   * If the submodule's directory structure changes (e.g., content files move
+   * out of content/, or image paths change), these overrides can be reverted
+   * and replaced with standard 11ty data files inside the submodule.
+   *
+   * - layout:    assigns the ai-guidelines template since we can't place a
+   *              directory data file inside the submodule
+   * - permalink: strips "content/" from URLs so pages render at
+   *              /ai-guidelines/<page>/ instead of /ai-guidelines/content/<page>/
+   * - hideToc:   suppresses the table of contents for pages that are too short
+   *              to benefit from one (e.g. legal-requirements)
+   *
+   * The 'aiGuidelines' collection is created explicitly via addCollection
+   * rather than computed tags, because eleventyComputed set via addGlobalData
+   * doesn't reliably populate collections in all build environments (e.g.
+   * Netlify). The collection filters pages by input path and sorts by the
+   * frontmatter 'order' field, which the sidenav uses for display order.
+   */
+  eleventyConfig.addGlobalData('eleventyComputed', {
+    layout(data: { layout?: string; page: { inputPath: string } }) {
+      if (!data.layout && data.page.inputPath.includes('/ai-guidelines/content/')) {
+        return 'layouts/pages/ai-guidelines.njk';
+      }
+      return data.layout;
+    },
+    permalink(data: { permalink?: string; page: { inputPath: string; filePathStem: string } }) {
+      if (data.page.inputPath.includes('/ai-guidelines/content/')) {
+        return `${data.page.filePathStem.replace('/ai-guidelines/content/', '/ai-guidelines/')}/index.html`;
+      }
+      return data.permalink;
+    },
+    hideToc(data: { hideToc?: boolean; page: { inputPath: string } }) {
+      if (data.page.inputPath.includes('/ai-guidelines/content/legal-requirements')) {
+        return true;
+      }
+      return data.hideToc;
+    },
+  });
+
+  eleventyConfig.addCollection('aiGuidelines', collection => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const all: any[] = collection.getAll();
+    return all
+        .filter(item => item.inputPath?.includes('/ai-guidelines/content/'))
+        .sort((a, b) => (a.data?.order ?? 99) - (b.data?.order ?? 99));
+  });
+
+  /**
+   * Wraps <table> elements in <rh-table> for ai-guidelines pages and injects
+   * the rh-table lightdom stylesheet. Only applies to pages sourced from the
+   * ai-guidelines submodule, so other site tables are unaffected.
+   */
+  eleventyConfig.addTransform('rh-table-wrap', function(content: string) {
+    // eslint-disable-next-line @typescript-eslint/no-invalid-this
+    const inputPath: string = this.page.inputPath ?? '';
+    if (inputPath.includes('/ai-guidelines/content/')
+      && content.includes('<table')) {
+      const wrapped = content
+          .replace(/<table\b/g, '<rh-table><table')
+          .replace(/<\/table>/g, '</table></rh-table>');
+      const cssHref = '/assets/packages/@rhds/elements'
+        + '/elements/rh-table/rh-table-lightdom.css';
+      if (!wrapped.includes('rh-table-lightdom.css')) {
+        const link = `<link rel="stylesheet"`
+          + ` data-helmet href="${cssHref}">`;
+        return wrapped.replace('</head>', `  ${link}\n</head>`);
+      }
+      return wrapped;
+    }
+    return content;
+  });
+
   await eleventyConfig.addPlugin(TypescriptAssetsPlugin);
   eleventyConfig.addPlugin(EleventyRenderPlugin);
   eleventyConfig.addPlugin(HelmetPlugin);
