@@ -1193,6 +1193,14 @@
     --rh-color-blue-50: var(--unified-color-blue-50);
     --rh-color-blue-70: var(--unified-color-blue-70);
   }
+
+  rh-chip-group[size='sm'] rh-chip {
+    --rh-icon-size: 12px;
+  }
+
+  rh-chip-group[size='sm'] rh-chip::part(chip) {
+    padding-block: 0;
+  }
 }
 
 /* Element: Badge */
