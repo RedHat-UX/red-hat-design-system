@@ -56,28 +56,10 @@ subnav:
     }
   `);
 
-  const switchPatch = new CSSStyleSheet();
-  switchPatch.replaceSync(/*css*/`
-    :host {
-      container-type: style;
-    }
-
-    @container style(--rh-switch-show-check: true) {
-      rh-icon,
-      rh-icon[hidden] {
-        display: inline-flex !important;
-      }
-    }
-  `);
-
   for (const pattern of document.querySelectorAll('uxdot-pattern')) {
     // rh-accordion-panel
     for (const el of pattern.shadowRoot.querySelectorAll('rh-accordion-panel')) {
       el.shadowRoot.adoptedStyleSheets = [...el.shadowRoot.adoptedStyleSheets, accordionPanelPatch];
-    }
-    // rh-switch
-    for (const el of pattern.shadowRoot.querySelectorAll('rh-switch')) {
-      el.shadowRoot.adoptedStyleSheets = [...el.shadowRoot.adoptedStyleSheets, switchPatch];
     }
   }
 </script>
