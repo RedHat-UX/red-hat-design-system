@@ -3,8 +3,10 @@ tagName: rh-surface
 name: Surface
 type: element
 overallStatus: ready
+category: Structure
 libraries:
   figma: ready
   rhds: ready
   shared: ready
   docs: ready
+since: v1.3.0

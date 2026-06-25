@@ -1,12 +1,16 @@
 :host {
   --_button-size: 40px;
+
+  /** Default icon size */
   --rh-icon-size: var(--rh-size-icon-03, 32px);
 }
 
 #container {
   --_outline:
+    /** Focus outline width */
     var(--rh-border-width-md, 2px)
     solid
+    /** Focus outline color */
     var(--rh-color-border-interactive);
 }
 

@@ -3,6 +3,7 @@ tagName: rh-site-status
 name: Site status
 type: element
 overallStatus: ready
+category: Status
 libraries:
   figma: ready
   rhds: ready
@@ -12,3 +13,4 @@ relatedItems:
   - rh-alert
   - rh-footer
   - rh-health-index
+since: v1.4.0

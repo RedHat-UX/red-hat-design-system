@@ -10,31 +10,89 @@ summaries:
   breadcrumb: Keeps track of location as users move through pages
   footnote: Provides additional information or a source for content
   tile: A form of selection that can be used in place of a link, checkbox, or radio button
+categories:
+  - Actions and links
+  - Data
+  - Emphasis
+  - Imagery
+  - Inputs
+  - Media
+  - Navigation
+  - Overlays
+  - Selection
+  - Status
+  - Structure
 ---
 
 <link rel="stylesheet"
       href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css"
       data-helmet>
+<link rel="stylesheet"
+      href="/assets/packages/@rhds/elements/elements/rh-select/rh-select-lightdom-shim.css"
+      data-helmet>
 
 <script type="module" data-helmet>
   import '@rhds/elements/rh-tile/rh-tile.js';
+  import '@rhds/elements/rh-select/rh-select.js';
 </script>
 
 <style data-helmet>
-  rh-tile h3 {
+  rh-tile h3,
+  rh-tile h4 {
     margin: 0 !important;
   }
+
+  label {
+    font-weight: var(--rh-font-weight-body-text-medium);
+    margin-block-end: var(--rh-space-md);
+  }
+
   rh-tile p {
     margin-block: 0 0 !important;
   }
+
   uxdot-example {
     height: 216px;
     display: flex;
     justify-content: center;
   }
+
+  #category-filter {
+    max-inline-size: 358px;
+  }
+
+  #elements-categories {
+    margin-block-start: var(--rh-space-2xl, 32px);
+    section {
+      margin-block-end: var(--rh-space-3xl, 48px);
+      h3 {
+        margin-block-start: var(--rh-space-lg, 16px);
+      }
+    }
+  }
+
+  .bottom-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--rh-space-2xl, 32px);
+  }
 </style>
 
 {# NOTE: all images in this view need to be 340 by 200 px in order to maintain same ratio. #}
+
+{% macro elementTile(doc, slug, tagName, comingSoon, headingLevel=4) %}
+  {%- set title = tagName | getPrettyElementName | makeSentenceCase -%}
+  {%- set summary = doc.docsPage.summary -%}
+  {% if not summary %}
+    {%- set summary = summaries[slug] -%}
+  {% endif %}
+  <rh-tile id="tile-{{ tagName }}" compact bleed {% if comingSoon %}disabled{% endif %}>
+    <uxdot-example slot="image" no-border transparent><img src="{{ doc.screenshotPath }}" alt="{{ title }}"></uxdot-example>
+    <h{{ headingLevel }} slot="headline"><a href="{{ doc.overviewHref | url }}">{{ title }}</a></h{{ headingLevel }}>
+    <p>{{ summary }}</p>
+    {% if comingSoon %}<div slot="footer">Coming Soon</div>{% endif %}
+  </rh-tile>
+{% endmacro %}
 
 <section aria-labelledby="aria__heading-overview">
   <h2 id="aria__heading-overview">Overview</h2>
@@ -44,28 +102,40 @@ summaries:
   together in the same space to create more intuitive user interfaces and
   experiences.</p>
 
+  <div>
+    <label for="category-filter">Filter elements by category</label>
+    <rh-select id="category-filter">
+      <rh-option value=""
+                 selected>All elements</rh-option>
+      {%- for category in categories -%}
+      {%- set catSlug = category | lower | replace(" ", "-") -%}
+      <rh-option value="{{ catSlug }}">{{ category }}</rh-option>
+      {%- endfor -%}
+    </rh-select>
+  </div>
 
-<nav class="grid xs-two-columns sm-three-columns" aria-label="Elements">
-  {%- for tagName, docs in collections.elementDocs | groupby('tagName') -%}
-    {%- set doc = docs[0] -%}
-    {%- set slug = doc.slug -%}
-    {%- set title = tagName | getPrettyElementName | makeSentenceCase -%}
-    {%- set comingSoon = tagName in comingSoonItems  -%}
-    {%- set hiddenComponent = doc.hidden  -%}
-    {%- set summary = doc.docsPage.summary -%}
-    {% if not summary %}
-      {%- set summary = summaries[slug] -%}
-    {% endif %}
-    {% if not hiddenComponent %}
-      <rh-tile id="tile-{{ tagName }}" compact bleed {% if comingSoon %}disabled{% endif %}>
-        <uxdot-example slot="image" no-border transparent><img src="{{ doc.screenshotPath }}" alt="{{ title }}"></uxdot-example>
-        <h3 slot="headline"><a href="{{ doc.overviewHref | url }}">{{ title }}</a></h3>
-        <p>{{ summary }}</p>
-        {% if comingSoon %}<div slot="footer">Coming Soon</div>{% endif %}
-      </rh-tile>
-    {% endif %}
-  {% endfor %}
-</nav>
+  <div id="elements-categories">
+    {%- for category in categories -%}
+      {%- set catSlug = category | lower | replace(" ", "-") -%}
+      {%- set catElements = [] -%}
+      {%- for tagName, docs in collections.elementDocs | groupby('tagName') -%}
+        {%- set doc = docs[0] -%}
+        {%- if doc.elementData and doc.elementData.category == category and not doc.hidden -%}
+          {%- set _ = catElements.push({doc: doc, slug: doc.slug, tagName: tagName, comingSoon: tagName in comingSoonItems}) -%}
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if catElements | length > 0 -%}
+      <section data-category="{{ catSlug }}" aria-labelledby="cat-{{ catSlug }}">
+        <h3 id="cat-{{ catSlug }}">{{ category }} ({{ catElements | length }})</h3>
+        <nav class="grid xs-two-columns sm-three-columns" aria-label="{{ category }} elements">
+          {%- for el in catElements -%}
+            {{ elementTile(el.doc, el.slug, el.tagName, el.comingSoon) }}
+          {%- endfor -%}
+        </nav>
+      </section>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
 </section>
 
 <section aria-labelledby="aria__heading-make-a-request">
@@ -73,7 +143,25 @@ summaries:
   <p>To request a new element or if updates need to be made to an existing element, <a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose">create a GitHub issue</a> or <a href="/support">contact us</a>.</p>
 </section>
 
-<uxdot-feedback>
-  <h2>Elements</h2>
-  <p>To learn how to use our elements in your designs, visit the <a href="/elements/">Elements</a> section.</p>
-</uxdot-feedback>
+<div class="bottom-links">
+  <section aria-labelledby="aria__heading-patterns">
+    <h2 id="aria__heading-patterns">Patterns</h2>
+    <p>Do you need to use patterns instead? <a href="/patterns/">See all of our patterns</a>.</p>
+  </section>
+
+  <section aria-labelledby="aria__heading-feedback">
+    <h2 id="aria__heading-feedback">Feedback</h2>
+    <p>To give feedback about anything on this page, <a href="/support">contact us</a>.</p>
+  </section>
+</div>
+
+<script type="module" data-helmet>
+  const filter = document.getElementById('category-filter');
+  const sections = document.querySelectorAll('#elements-categories section[data-category]');
+  filter?.addEventListener('change', function() {
+    const value = filter.value;
+    for (const section of sections) {
+      section.hidden = value !== '' && section.dataset.category !== value;
+    }
+  });
+</script>

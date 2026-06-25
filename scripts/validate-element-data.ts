@@ -136,11 +136,13 @@ async function validateElementData(): Promise<ValidationResult> {
         });
       }
 
-      // Check if element has implementation but is marked as 'planned'
+      // Element has implementation but is still marked as 'planned'
       if (hasImpl && yamlData.libraries.rhds === 'planned') {
-        result.warnings.push({
+        result.valid = false;
+        result.errors.push({
           tagName,
-          message: 'Element has implementation files but is marked as planned in RHDS',
+          type: 'consistency',
+          message: 'Element has implementation files but libraries.rhds is still "planned"',
         });
       }
     } else {
