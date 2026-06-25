@@ -1,0 +1,3 @@
+[submodule "docs/ai-guidelines"]
+	path = docs/ai-guidelines
+	url = https://github.com/project-felt/ai-guidelines.git
