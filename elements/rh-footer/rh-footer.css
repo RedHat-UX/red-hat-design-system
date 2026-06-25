@@ -32,6 +32,14 @@
   overflow-y: initial;
 }
 
+.base {
+  border-block-start:
+    /** Width of border running atop the footer */
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--_border-color);
+}
+
 .footer,
 .global-base {
   --_icon-color:
