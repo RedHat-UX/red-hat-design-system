@@ -1117,7 +1117,16 @@
   rh-breadcrumb {
     --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
     --rh-color-interactive-primary-hover: var(--unified-color-interactive-primary-hover);
-    --rh-color-interactive-primary-visited-hover: var(--unified-color-interactive-primary-hover);
+    --rh-color-interactive-primary-visited-default:
+      light-dark(
+          var(--rh-color-interactive-primary-visited-default-on-light),
+          var(--rh-color-interactive-primary-visited-default-on-dark)
+        );
+    --rh-color-interactive-primary-visited-hover:
+      light-dark(
+          var(--rh-color-interactive-primary-visited-hover-on-light),
+          var(--rh-color-interactive-primary-visited-hover-on-dark)
+        );
     --rh-border-radius-default: var(--unified-border-radius-action-plain);
     --rh-color-border-interactive: var(--unified-color-interactive-primary-default);
     --rh-font-size-body-text-sm: var(--unified-font-size-body-text-sm);
