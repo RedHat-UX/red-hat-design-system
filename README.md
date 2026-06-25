@@ -47,6 +47,32 @@ On this team, PR approvals come with a creative twist — reviewers leave a **ba
 - **"Local Grandma Tramples Musician"** — @marionnegp
 - **"Lucid groundhog; tiny meteorologist"** — @nikkimk
 
+## Submodules
+
+This repo uses a [git submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules) for the AI guidelines content at `docs/ai-guidelines`, sourced from [project-felt/ai-guidelines](https://github.com/project-felt/ai-guidelines).
+
+**Cloning:** include `--recurse-submodules` to pull the submodule content automatically:
+
+```bash
+git clone --recurse-submodules https://github.com/RedHat-UX/red-hat-design-system.git
+```
+
+If you've already cloned without it, run:
+
+```bash
+git submodule update --init
+```
+
+**Updating:** to pull the latest content from the ai-guidelines repo:
+
+```bash
+cd docs/ai-guidelines
+git pull origin main
+cd ../..
+git add docs/ai-guidelines
+git commit -m "chore: update ai-guidelines submodule"
+```
+
 ## Contributions are Welcome
 
 Would you like to contribute to the **documentation** or **design specs**? Read [the site contributing guide][contributing].  
