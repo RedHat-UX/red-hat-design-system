@@ -29,6 +29,39 @@ subnav:
   import '@rhds/elements/rh-switch/rh-switch.js';
   import '@rhds/elements/rh-tabs/rh-tabs.js';
   import '@rhds/elements/rh-tag/rh-tag.js';
+
+  // NB: CSS runtime patches to elements
+  // which add features not yet available. 
+  // Check after 5.0 releases.
+
+  const accordionPanelPatch = new CSSStyleSheet();
+  accordionPanelPatch.replaceSync(/*css*/`
+    :host {
+      display: none;
+      overflow: hidden;
+      will-change: height;
+    }
+
+    .large {
+      --rh-accordion-panel-padding-block: var(--rh-space-xl, 24px);
+      --rh-accordion-panel-padding-inline: var(--rh-space-xl, 24px);
+    }
+
+    .body {
+      position: relative;
+      overflow: hidden;
+      display: block;
+      padding-block: var(--rh-accordion-panel-padding-block, var(--rh-space-lg, 16px));
+      padding-inline: var(--rh-accordion-panel-padding-inline, var(--rh-space-xl, 24px));
+    }
+  `);
+
+  for (const pattern of document.querySelectorAll('uxdot-pattern')) {
+    // rh-accordion-panel
+    for (const el of pattern.shadowRoot.querySelectorAll('rh-accordion-panel')) {
+      el.shadowRoot.adoptedStyleSheets = [...el.shadowRoot.adoptedStyleSheets, accordionPanelPatch];
+    }
+  }
 </script>
 <style>
   #unified-theme-toggle {
