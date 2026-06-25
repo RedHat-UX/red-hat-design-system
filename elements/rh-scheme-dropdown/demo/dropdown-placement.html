@@ -1,0 +1,31 @@
+---
+description: "Two scheme dropdowns demonstrating dropdown positioning aligning on the left and right."
+---
+
+<div id="container">
+  <rh-scheme-dropdown id="left"></rh-scheme-dropdown>
+  <rh-scheme-dropdown id="right"></rh-scheme-dropdown>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-scheme-dropdown/rh-scheme-dropdown.js';
+</script>
+
+<style>
+  body {
+    color-scheme: light dark;
+  }
+
+  #container {
+    background-color: var(--rh-color-surface);
+    color: var(--rh-color-text-primary);
+    display: flex;
+    block-size: 100svh;
+    justify-content: space-between;
+    padding: var(--rh-space-lg, 16px);
+  }
+
+  rh-scheme-dropdown {
+    padding: var(--rh-space-md, 8px);
+  }
+</style>
