@@ -3,6 +3,10 @@ tagName: rh-cta
 name: Call to Action
 type: element
 overallStatus: ready
+category: Actions and links
+aka:
+  - Action link
+  - Styled link
 libraries:
   figma: ready
   rhds: ready
@@ -12,3 +16,4 @@ relatedItems:
   - rh-button
   - link
   - link-with-icon
+since: v1.0.0

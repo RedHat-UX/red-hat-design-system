@@ -109,3 +109,6 @@ $RECYCLE.BIN/
 *.lnk
 
 profiles/
+
+# Claude
+.claude/settings.local.json

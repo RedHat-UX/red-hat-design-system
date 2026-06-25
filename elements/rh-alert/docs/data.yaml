@@ -3,6 +3,10 @@ tagName: rh-alert
 name: Alert
 type: element
 overallStatus: ready
+category: Status
+aka:
+  - Notification
+  - Toast
 libraries:
   figma: ready
   rhds: ready
@@ -12,3 +16,4 @@ relatedItems:
   - rh-button
   - rh-badge
   - rh-popover
+since: v1.0.0
