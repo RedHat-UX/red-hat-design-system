@@ -3,15 +3,63 @@
 }
 
 #container {
+  /** Content panel text color */
   color: var(--rh-color-text-primary);
-  background-color: var(--rh-color-surface);
-  padding: var(--rh-space-2xl, 32px) var(--rh-space-xl, 24px);
+  background-color:
+    light-dark(
+        /** Content panel background in light mode */
+        var(--rh-color-surface-lightest, #ffffff),
+        /** Content panel background in dark mode */
+        var(--rh-color-surface-darkest, #151515)
+      );
+  padding-block:
+    /** Content panel block start padding */
+    var(--rh-space-lg, 16px)
+    /** Content panel block end padding */
+    var(--rh-space-xl, 24px);
+  padding-inline: /** Content panel inline padding */
+    var(--rh-space-xl, 24px);
 
+  /**
+   * Desktop item-menu panels when `rh-navigation-primary` is not compact (container >= lg).
+   * Hamburger / narrow layouts keep the base padding above; `#secondary` utilities use the
+   * block below instead.
+   */
   &:not(.compact) {
-    @container (min-width: 1200px) {
+    @container navigation-primary (min-width: 1200px) {
+      /** Center panel content within the nav max width */
       margin: 0 auto;
       max-width: 1440px;
-      padding: var(--rh-space-3xl, 48px) var(--rh-space-2xl, 32px);
+      padding-block:
+        /** Content panel block start padding at containers >= xl */
+        var(--rh-space-2xl, 32px)
+        /** Content panel block end padding at containers >= xl */
+        var(--rh-space-3xl, 48px);
+      padding-inline: /** Content panel inline padding at containers >= xl */
+        var(--rh-space-2xl, 32px);
     }
+  }
+}
+
+/**
+ * Utility dropdown panels in `#secondary` (`slot="dropdowns"`, `slot="links"`,
+ * `slot="event"`). Overrides `#container` padding above; primary hamburger item menus are
+ * unchanged.
+ */
+:host-context(#secondary) #container {
+  padding-block:
+    /** Secondary panel block start padding at containers < xs */
+    var(--rh-space-lg, 16px)
+    /** Secondary panel block end padding at containers < xs */
+    var(--rh-space-2xl, 32px);
+  padding-inline: /** Secondary panel inline padding at containers < xs */
+    var(--rh-space-lg, 16px);
+
+  @container navigation-primary (min-width: 576px) {
+    /** Secondary panel block padding at containers >= sm */
+    padding-block: var(--rh-space-2xl, 32px) var(--rh-space-3xl, 48px);
+
+    /** Secondary panel inline padding at containers >= sm */
+    padding-inline: var(--rh-space-2xl, 32px);
   }
 }

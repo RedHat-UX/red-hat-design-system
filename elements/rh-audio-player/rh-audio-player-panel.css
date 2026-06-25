@@ -9,6 +9,7 @@
 }
 
 [part='heading'] {
+  /** Heading block margin */
   margin: var(--rh-space-lg, 16px) 0;
   height: 26px;
 }
@@ -22,21 +23,36 @@ slot[name='heading'] *,
 slot[name='heading'] *,
 ::slotted([slot='heading']),
 ::slotted([slot='title']) {
+  /** Panel heading font family */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+
+  /** Panel heading font size */
   font-size: var(--rh-font-size-heading-xs, 1.25rem);
+
+  /** Panel heading font weight */
   font-weight: var(--rh-font-weight-heading-medium, 500);
+
+  /** Panel heading line height */
   line-height: var(--rh-line-height-heading, 1.3);
 }
 
 ::slotted([slot='title']) {
+  /** Title block end margin */
   margin: 0 0 var(--rh-space-lg, 16px);
   padding: 0;
 }
 
 ::slotted([slot='series']) {
+  /** Series letter spacing */
   letter-spacing: var(--rh-letter-spacing-body-text, 0.0125rem);
+
+  /** Series font size */
   font-size: var(--rh-font-size-body-text-xs, 0.75rem);
+
+  /** Series font weight */
   font-weight: var(--rh-font-weight-heading-medium, 500);
+
+  /** Series block end margin */
   margin: 0 0 var(--rh-space-md, 8px);
   padding: 0;
 }

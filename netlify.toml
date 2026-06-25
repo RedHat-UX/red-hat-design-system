@@ -121,3 +121,9 @@
 [[redirects]]
   from = '/foundations/personalization/*'
   to = '/personalization/:splat'
+[[redirects]]
+  from = '/ai-guidelines'
+  to = '/ai-guidelines/ai-design-principles/'
+[[redirects]]
+  from = '/ai-guidelines/'
+  to = '/ai-guidelines/ai-design-principles/'

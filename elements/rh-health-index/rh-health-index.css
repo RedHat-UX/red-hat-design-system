@@ -7,87 +7,153 @@
 }
 
 #grade {
+  /** Grade label inline end spacing */
   margin-inline-end: var(--rh-space-lg, 16px);
 }
 
+:is(.a, .b, .c, .d, .e, .f) {
+  /** Small letter color */
+  --_text-sm: var(--rh-color-text-primary);
+
+  /** Large letter color */
+  --_text-lg: var(--rh-color-text-primary);
+}
+
 .a {
+  /** A grade small box border color */
   --_border-sm: var(--rh-color-status-success);
   --_border-md: transparent;
+
+  /** A grade large box border color */
   --_border-lg: var(--rh-color-status-success);
+
+  /** A grade small box fill */
   --_fill-sm: var(--rh-color-surface-status-success);
+
+  /** A grade medium box fill */
   --_fill-md: var(--rh-color-status-success);
+
+  /** A grade large box fill */
   --_fill-lg: var(--rh-color-surface-status-success);
-  --_text-sm: var(--rh-color-text-primary);
-  --_text-lg: var(--rh-color-text-primary);
+
+  /** A grade accent bar color */
   --_accent: var(--rh-color-status-success);
 }
 
 .b {
+  /** B grade small box border color */
   --_border-sm: var(--rh-color-status-success);
   --_border-md: transparent;
+
+  /** B grade large box border color */
   --_border-lg: var(--rh-color-status-success);
+
+  /** B grade small box fill */
   --_fill-sm: var(--rh-color-surface-status-success);
+
+  /** B grade medium box fill */
   --_fill-md: var(--rh-color-status-success);
+
+  /** B grade large box fill */
   --_fill-lg: var(--rh-color-surface-status-success);
-  --_text-sm: var(--rh-color-text-primary);
-  --_text-lg: var(--rh-color-text-primary);
+
+  /** B grade accent bar color */
   --_accent: var(--rh-color-status-success);
 }
 
 .c {
+  /** C grade small box border color */
   --_border-sm: var(--rh-color-status-warning);
   --_border-md: transparent;
+
+  /** C grade large box border color */
   --_border-lg: var(--rh-color-status-warning);
+
+  /** C grade small box fill */
   --_fill-sm: var(--rh-color-surface-status-warning);
+
+  /** C grade medium box fill */
   --_fill-md: var(--rh-color-status-warning);
+
+  /** C grade large box fill */
   --_fill-lg: var(--rh-color-surface-status-warning);
-  --_text-sm: var(--rh-color-text-primary);
-  --_text-lg: var(--rh-color-text-primary);
+
+  /** C grade accent bar color */
   --_accent: var(--rh-color-status-warning);
 }
 
 .d {
+  /** D grade small box border color */
   --_border-sm: var(--rh-color-status-caution);
   --_border-md: transparent;
+
+  /** D grade large box border color */
   --_border-lg: var(--rh-color-status-caution);
+
+  /** D grade small box fill */
   --_fill-sm: var(--rh-color-surface-status-caution);
+
+  /** D grade medium box fill */
   --_fill-md: var(--rh-color-status-caution);
+
+  /** D grade large box fill */
   --_fill-lg: var(--rh-color-surface-status-caution);
-  --_text-sm: var(--rh-color-text-primary);
-  --_text-lg: var(--rh-color-text-primary);
+
+  /** D grade accent bar color */
   --_accent: var(--rh-color-status-caution);
 }
 
 .e {
+  /** E grade small box border color */
   --_border-sm: var(--rh-color-status-danger);
   --_border-md: transparent;
+
+  /** E grade large box border color */
   --_border-lg: var(--rh-color-status-danger);
+
+  /** E grade small box fill */
   --_fill-sm: var(--rh-color-surface-status-danger);
+
+  /** E grade medium box fill */
   --_fill-md: var(--rh-color-status-danger);
+
+  /** E grade large box fill */
   --_fill-lg: var(--rh-color-surface-status-danger);
-  --_text-sm: var(--rh-color-text-primary);
-  --_text-lg: var(--rh-color-text-primary);
+
+  /** E grade accent bar color */
   --_accent: var(--rh-color-status-danger);
 }
 
 .f {
+  /** F grade small box border color */
   --_border-sm: var(--rh-color-status-danger);
   --_border-md: transparent;
+
+  /** F grade large box border color */
   --_border-lg: var(--rh-color-status-danger);
+
+  /** F grade small box fill */
   --_fill-sm: var(--rh-color-surface-status-danger);
+
+  /** F grade medium box fill */
   --_fill-md: var(--rh-color-status-danger);
+
+  /** F grade large box fill */
   --_fill-lg: var(--rh-color-surface-status-danger);
-  --_text-sm: var(--rh-color-text-primary);
-  --_text-lg: var(--rh-color-text-primary);
+
+  /** F grade accent bar color */
   --_accent: var(--rh-color-status-danger);
 }
 
 #container {
-  /* sizing */
+  /** Default box size */
   --_box-size: var(--rh-space-xl, 24px);
 
   &.xl {
+    /** Extra-large box size */
     --_box-size: var(--rh-space-2xl, 32px);
+
+    /** Extra-large grade font size */
     --_font-size: var(--rh-font-size-body-text-xl, 1.25rem);
   }
 
@@ -95,8 +161,16 @@
   scale: 1;
   align-items: center;
   width: max-content;
-  font-size: var(--_font-size, var(--rh-font-size-body-text-md, 1rem));
+
+  /** Grade letter font size */
+  font-size:
+    var(--_font-size,
+      var(--rh-font-size-body-text-md, 1rem));
+
+  /** Grade letter font family */
   font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+
+  /** Grade letter line height */
   line-height: var(--_box-size);
   text-transform: uppercase;
 
@@ -108,6 +182,7 @@
 
   &.sm,
   &.md {
+    /** Small and medium variant height */
     height: var(--_box-size);
   }
 
@@ -115,15 +190,30 @@
   &.xl {
     display: flex;
     margin: 0;
-    border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+    border:
+      /** Container border width */
+      var(--rh-border-width-sm, 1px)
+      solid
+      /** Container border color */
+      var(--rh-color-border-subtle);
   }
 }
 
 .box {
-  border: var(--rh-border-width-sm, 1px) solid transparent;
+  border:
+    /** Grade box border width */
+    var(--rh-border-width-sm, 1px)
+    solid
+    transparent;
   background-color:
-    light-dark(var(--rh-color-surface-lightest, #ffffff),
-      oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h));
+    light-dark(
+        /** Grade box surface in light mode */
+        var(--rh-color-surface-lightest, #ffffff),
+        /** Grade box surface in dark mode */
+        oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h)
+      );
+
+  /** Grade box width */
   width: var(--_box-size);
   display: flex;
   flex-flow: column nowrap;
@@ -136,27 +226,53 @@
   }
 
   &.active {
+    /** Active grade text color */
     color: var(--rh-color-text-primary);
     z-index: 1;
   }
 
   &.sm {
-    color: light-dark(var(--_text-sm), var(--rh-color-text-primary));
+    color:
+      light-dark(
+          /** Small grade letter color in light mode */
+          var(--_text-sm),
+          /** Small grade letter color in dark mode */
+          var(--rh-color-text-primary)
+        );
+
+    /** Small box border color */
     border-color: var(--_border-sm);
-    background-color: light-dark(var(--_fill-sm), var(--rh-color-surface-darkest, #151515));
+    background-color:
+      light-dark(
+          /** Small box fill in light mode */
+          var(--_fill-sm),
+          /** Small box fill in dark mode */
+          var(--rh-color-surface-darkest, #151515)
+        );
   }
 
   &.md {
     border-color:
-      light-dark(var(--rh-color-border-subtle-on-light, #c7c7c7),
-        var(--rh-color-icon-subtle, #707070));
+      light-dark(
+          /** Medium box border in light mode */
+          var(--rh-color-border-subtle-on-light, #c7c7c7),
+          /** Medium box border in dark mode */
+          var(--rh-color-icon-subtle, #707070)
+        );
     background-color:
-      light-dark(var(--rh-color-surface-lightest, #ffffff),
-        var(--rh-color-surface-darkest, #151515));
+      light-dark(
+          /** Medium box fill in light mode */
+          var(--rh-color-surface-lightest, #ffffff),
+          /** Medium box fill in dark mode */
+          var(--rh-color-surface-darkest, #151515)
+        );
     height: 100%;
 
     &.active {
+      /** Active medium box border color */
       border-color: var(--_border-md);
+
+      /** Active medium box fill */
       background-color: var(--_fill-md);
     }
   }
@@ -166,24 +282,38 @@
     border: none;
     margin: 1px;
     display: inline-block;
+
+    /** Large box line height */
     line-height: var(--_box-size);
+
+    /** Large box width */
     width: var(--_box-size);
     text-align: center;
     padding-inline: 2px;
+
+    /** Large letter color */
     color: var(--_text-lg);
 
     &:after {
       display: block;
       content: '';
+
+      /** Accent bar height */
       min-height: var(--rh-length-xs, 4px);
       z-index: 1;
+
+      /** Accent bar fill */
       background-color: var(--_accent);
     }
 
     &.active {
       position: relative;
       margin: -1px;
+
+      /** Active grade letter weight */
       font-weight: var(--rh-font-weight-code-medium, 500);
+
+      /** Active grade text color */
       color: var(--rh-color-text-primary);
 
       &:before {
@@ -192,8 +322,19 @@
         inset: -2px -1px;
         z-index: -1;
         position: absolute;
-        background-color: light-dark(var(--_fill-lg), var(--rh-color-surface-darkest, #151515));
-        border: var(--rh-border-width-sm, 1px) solid var(--_border-lg);
+        background-color:
+          light-dark(
+              /** Active box fill in light mode */
+              var(--_fill-lg),
+              /** Active box fill in dark mode */
+              var(--rh-color-surface-darkest, #151515)
+            );
+        border:
+          /** Active box border width */
+          var(--rh-border-width-sm, 1px)
+          solid
+          /** Active box border color */
+          var(--_border-lg);
       }
     }
   }
