@@ -1245,6 +1245,10 @@
       text-decoration-color: var(--unified-color-blue-40) !important;
     }
 
+    & > ol > li > a[href]:not([aria-current]):visited:hover {
+      text-decoration-color: var(--rh-color-interactive-primary-visited-hover) !important;
+    }
+
     & > ol > li > a[aria-current='page'] {
       text-decoration: none !important;
     }
