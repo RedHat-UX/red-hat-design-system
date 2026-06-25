@@ -1,9 +1,9 @@
-import type { ElementDocsPageData } from '#11ty-plugins/element-docs.js';
+import type { ElementDocsPageData, ElementDecoratorData } from '#11ty-plugins/element-docs.js';
 import type * as CEM from 'custom-elements-manifest';
 
 import { tokens } from '@rhds/tokens/meta.js';
 import { join } from 'node:path';
-import { readFile, access } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
 import { capitalize, copyCell, dedent, getTokenHref } from '#11ty-plugins/tokensHelpers.js';
 import { htmlToReact } from '#11ty-plugins/html-to-react.js';
 import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
@@ -20,6 +20,7 @@ import {
   type DemoRecord,
 } from '@patternfly/pfe-tools/custom-elements-manifest/custom-elements-manifest.js';
 import { parseFragment } from 'parse5';
+import { stripFrontmatter } from '#11ty-plugins/frontmatter.js';
 
 const html = String.raw; // for editor highlighting
 const pfeconfig = getPfeConfig();
@@ -155,10 +156,11 @@ export default class ElementsPage extends Renderer<Context> {
   async #getMainDemoContent(tagName: string) {
     try {
       const demoPath = join(process.cwd(), 'elements', tagName, 'demo', `index.html`);
-      const demoContent = await readFile(demoPath, 'utf8');
+      const demoContent = stripFrontmatter(await readFile(demoPath, 'utf8'));
+      const fragment = parseFragment(demoContent);
       return html`
         <rh-code-block actions="wrap copy" highlighting="prerendered">
-          ${this.highlight('html', demoContent)}
+          ${this.highlight('html', serialize(fragment))}
           ${this.#actionsLabels}
         </rh-code-block>`;
     } catch {
@@ -197,24 +199,29 @@ export default class ElementsPage extends Renderer<Context> {
 
   async #renderOverviewPage(content: string, ctx: Context) {
     const description = ctx.doc.docsPage.description ?? ctx.doc.description ?? '';
+    const aka = ctx.doc.elementData?.aka;
     return html`${!ctx.doc.planned ? '' : html`
       ${this.#header('Coming soon!')}
       <p>This element is currently in progress and not yet available for use.</p>`}
       ${this.#header('Overview')}
       ${await this.renderTemplate(description, 'md')}
+      ${!aka?.length ? '' : html`
+      <p class="aka">Also known as: ${aka.join(', ')}</p>`}
       ${!ctx.doc.overviewImageHref ? await this.#renderKnobs(ctx)
        : ctx.doc.overviewImageHref.endsWith('svg') ? html`
       <uxdot-example>${await this.#getOverviewInlineSvg(ctx)}</uxdot-example>
       ` : html`
       <uxdot-example color-palette="lightest"><img src="${ctx.doc.overviewImageHref}" alt="" aria-labelledby="overview-image-description"></uxdot-example>`}
+      ${ctx.doc.planned ? '' : html`
+      <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/${ctx.tagName}/">View source on GitHub</rh-cta>`}
       ${this.#header('Status')}
-      <uxdot-repo-status-list 
+      <uxdot-repo-status-list
         figma-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.figma || ''}"
         rhds-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.rhds || ''}"
         shared-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.shared || ''}"></uxdot-repo-status-list>
       ${content}
       ${this.#header('Status checklist')}
-      <uxdot-repo-status-checklist 
+      <uxdot-repo-status-checklist
         figma-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.figma || ''}"
         rhds-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.rhds || ''}"
         shared-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.shared || ''}"></uxdot-repo-status-checklist>
@@ -290,7 +297,7 @@ export default class ElementsPage extends Renderer<Context> {
           </script>`))}
           ${this.#actionsLabels}
         </rh-code-block>
-        <p>To learn more about installing RHDS elements on your site using an import map read our <a href="/get-started/developers/installation/">getting started docs</a>.        
+        <p>To learn more about installing RHDS elements on your site using an import map read our <a href="/get-started/developers/installation/">getting started docs</a>.
       </section>
       `,
       await this.#renderLightdom(ctx),
@@ -368,7 +375,8 @@ export default class ElementsPage extends Renderer<Context> {
 
       ${await this.renderTemplate(manifest.getDescription(tagName) ?? '', 'md')}
 
-      <rh-accordion box>
+      <div class="element-apis">
+        ${this.#renderTheming(tagName, ctx)}
         ${await this.#renderSlots(tagName, ctx)}
         ${await this.#renderAttributes(tagName, ctx)}
         ${await this.#renderMethods(tagName, ctx)}
@@ -376,12 +384,72 @@ export default class ElementsPage extends Renderer<Context> {
         ${await this.#renderCssParts(tagName, ctx)}
         ${await this.#renderCssCustomProperties(tagName, ctx)}
         ${await this.#renderDesignTokens(tagName, ctx)}
-      </rh-accordion>
+      </div>
     `;;
   }
 
+  #renderTheming(tagName: string, ctx: Context) {
+    const sublevel = (ctx.level) ? ctx.level + 1 : 3;
+    const data: ElementDecoratorData | undefined = ctx.doc.decoratorData?.[tagName];
+    if (!data) {
+      return '';
+    }
+    const { themable, colorPalettes } = data;
+    if (!themable && colorPalettes == null) {
+      return '';
+    }
+
+    const tags: string[] = [];
+    if (themable) {
+      tags.push(html`<rh-tag color="purple" variant="outline">Themable</rh-tag>`);
+    }
+    if (colorPalettes != null) {
+      tags.push(html`<rh-tag color="blue" variant="outline">Color palette</rh-tag>`);
+    }
+
+    let content = html`
+      <section class="theming" aria-labelledby="${tagName}-theming">
+        <uxdot-copy-permalink class="h${sublevel}">
+          <h${sublevel} id="${tagName}-theming">
+            <a href="#${tagName}-theming">Theming</a>
+          </h${sublevel}>
+        </uxdot-copy-permalink>
+        <p>${tags.join(' ')}</p>`;
+
+    if (themable) {
+      content += html`
+        <p>This element uses
+          <a href="/theming/">Red Hat design system theming</a>
+          and can be used in themable contexts.</p>`;
+    }
+
+    if (colorPalettes != null) {
+      if (colorPalettes.length === 0) {
+        content += html`
+          <p>This element is a
+            <a href="/theming/color-palettes/">color palette</a>
+            container and supports all color palettes via
+            the <code>color-palette</code> attribute.</p>`;
+      } else {
+        content += html`
+          <p>This element is a
+            <a href="/theming/color-palettes/">color palette</a>
+            container. It supports the following palettes via the
+            <code>color-palette</code> attribute:</p>
+          <ul>
+            ${colorPalettes.map(p => html`<li><code>${p}</code></li>`).join('\n            ')}
+          </ul>`;
+      }
+    }
+
+    content += html`
+      </section>`;
+
+    return content;
+  }
+
   async #renderSlots(tagName: string, ctx: Context) {
-    const level = ctx.level ?? 2;
+    const sublevel = (ctx.level) ? ctx.level + 1 : 3;
     const allSlots = ctx.doc.docsPage.manifest.getSlots(tagName) ?? [];
     const slots = allSlots.filter(x => !x.deprecated);
     const deprecated = allSlots.filter(x => x.deprecated);
@@ -389,15 +457,17 @@ export default class ElementsPage extends Renderer<Context> {
     const deprecatedSlotCount = deprecated.length;
 
     return html`
-      <rh-accordion-header id="${tagName}-slots" ${!count ? '' : 'expanded'}>Slots
-        <rh-badge>${count}</rh-badge>
-        ${deprecatedSlotCount > 0 ? html`<rh-badge state="moderate">${deprecatedSlotCount}</rh-badge>` : ``}
-      </rh-accordion-header>
-      <rh-accordion-panel>
-        <section class="slots">
+        <section class="slots" aria-labelledby="${tagName}-slots">
+          <uxdot-copy-permalink class="h${sublevel}">
+            <h${sublevel} id="${tagName}-slots">
+              <a href="#${tagName}-slots">Slots <rh-badge>${count}</rh-badge>
+                ${deprecatedSlotCount > 0 ? html` <rh-badge state="moderate">${deprecatedSlotCount}</rh-badge>` : ``}
+              </a>
+            </h${sublevel}>
+          </uxdot-copy-permalink>
           ${!slots.length ? html`
           <em>None</em>` : html`
-          <rh-table>
+          <rh-table compact>
             <table>
               <thead>
                 <tr>
@@ -418,14 +488,14 @@ export default class ElementsPage extends Renderer<Context> {
                   </uxdot-copy-permalink></td>
                   <td>${await this.#innerMD(slot.summary)}</td>
                   <td>
-                   ${slot.name === '' ? await this.#innerMD(`${slot.description} <br><span style="font-size: var(--rh-font-size-body-text-md);"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span>`) : await this.#innerMD(slot.description)}
+                   ${slot.name === '' ? await this.#innerMD(`${slot.description} <br><span class="api-note"><strong>Note: </strong>[default] <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/slot#attributes">unnamed slots</a> do not have a slot="name" attribute.</span>`) : await this.#innerMD(slot.description)}
                   </td>
                 </tr>`))).join('')}
               </tbody>
             </table>
           </rh-table>`}${!deprecated.length ? '' : /* NB: we need to use our own stuff. don't replace with details */ html`
           <rh-disclosure summary="Deprecated Slots">
-            <rh-table>
+            <rh-table compact>
               <table>
                 <thead>
                   <tr>
@@ -447,12 +517,11 @@ export default class ElementsPage extends Renderer<Context> {
               </table>
             </rh-table>
           </rh-disclosure>`}
-        </section>
-      </rh-accordion-panel>`;
+        </section>`;
   }
 
   async #renderAttributes(tagName: string, ctx: Context) {
-    const level = ctx.level ?? 2;
+    const sublevel = (ctx.level) ? ctx.level + 1 : 3;
     const _attrs = (ctx.doc.docsPage.manifest.getAttributes(tagName) ?? []);
     const deprecated = _attrs.filter(x => x.deprecated);
     const attributes = _attrs.filter(x => !x.deprecated);
@@ -460,14 +529,17 @@ export default class ElementsPage extends Renderer<Context> {
     const deprecatedAttrCount = deprecated.length;
 
     return html`
-      <rh-accordion-header id="${tagName}-attributes" ${!count ? '' : 'expanded'}>Attributes
-        <rh-badge>${count}</rh-badge>
-        ${deprecatedAttrCount > 0 ? html`<rh-badge state="moderate">${deprecatedAttrCount}</rh-badge>` : ``}
-      </rh-accordion-header>
-      <rh-accordion-panel>
-        <section class="attributes">${!attributes.length ? html`
-          <em>None</em>` : html`
-          <rh-table>
+      <section class="attributes" aria-labelledby="${tagName}-attributes">
+        <uxdot-copy-permalink class="h${sublevel}">
+          <h${sublevel} id="${tagName}-attributes">
+            <a href="#${tagName}-attributes">Attributes <rh-badge>${count}</rh-badge>
+              ${deprecatedAttrCount > 0 ? html` <rh-badge state="moderate">${deprecatedAttrCount}</rh-badge>` : ``}
+            </a>
+          </h${sublevel}>
+        </uxdot-copy-permalink>
+        ${!attributes.length ? html`
+          <p><em>None</em></p>` : html`
+          <rh-table compact>
             <table>
               <thead>
                 <tr>
@@ -500,7 +572,7 @@ export default class ElementsPage extends Renderer<Context> {
           </rh-table>`}
           ${!deprecated.length ? '' : /* NB: we need to use our own stuff. don't replace with details */ html`
           <rh-disclosure summary="Deprecated Attributes">
-            <rh-table>
+            <rh-table compact>
               <table>
                 <thead>
                   <tr>
@@ -524,13 +596,11 @@ export default class ElementsPage extends Renderer<Context> {
               </table>
             </rh-table>
           </rh-disclosure>`}
-        </section>
-      </rh-accordion-panel>
-    `;
+        </section>`;
   }
 
   async #renderMethods(tagName: string, ctx: Context) {
-    const level = ctx.level ?? 2;
+    const sublevel = (ctx.level) ? ctx.level + 1 : 3;
     const allMethods = ctx.doc.docsPage.manifest.getMethods(tagName) ?? [];
     const deprecated = allMethods.filter(x => x.deprecated);
     const methods = allMethods.filter(x => !x.deprecated);
@@ -539,15 +609,17 @@ export default class ElementsPage extends Renderer<Context> {
 
     // TODO: inline code highlighting for type and default: render the markdown to html and extract the `<code>` from the `<pre>`
     return html`
-      <rh-accordion-header id="${tagName}-methods" ${!count ? '' : 'expanded'}>Methods
-        <rh-badge>${count}</rh-badge>
-        ${deprecatedMethodsCount > 0 ? html`<rh-badge state="moderate">${deprecatedMethodsCount}</rh-badge>` : ``}
-      </rh-accordion-header>
-      <rh-accordion-panel>
-        <section class="methods">
+        <section class="methods" aria-labelledby="${tagName}-methods">
+          <uxdot-copy-permalink class="h${sublevel}">
+            <h${sublevel} id="${tagName}-methods">
+              <a href="#${tagName}-methods">Methods <rh-badge>${count}</rh-badge>
+                ${deprecatedMethodsCount > 0 ? html` <rh-badge state="moderate">${deprecatedMethodsCount}</rh-badge>` : ``}
+              </a>
+            </h${sublevel}>
+          </uxdot-copy-permalink>
           ${!methods.length ? html`
-          <em>None</em>` : html`
-          <rh-table>
+          <p><em>None</em></p>` : html`
+          <rh-table compact>
             <table>
               <thead>
                 <tr>
@@ -573,7 +645,7 @@ export default class ElementsPage extends Renderer<Context> {
             </table>
           </rh-table>`}${!deprecated.length ? '' : /* NB: we need to use our own stuff. don't replace with details */ html`
           <rh-disclosure summary="Deprecated Methods">
-            <rh-table>
+            <rh-table compact>
               <table>
                 <thead>
                   <tr>
@@ -594,12 +666,11 @@ export default class ElementsPage extends Renderer<Context> {
             </rh-table>
           </rh-disclosure>`}
         </section>
-      </rh-accordion-panel>
     `;
   }
 
   async #renderEvents(tagName: string, ctx: Context) {
-    const level = ctx.level ?? 2;
+    const sublevel = (ctx.level) ? ctx.level + 1 : 3;
     const _events = ctx.doc.docsPage.manifest.getEvents(tagName) ?? [];
     const deprecated = _events.filter(x => x.deprecated);
     const events = _events.filter(x => !x.deprecated);
@@ -607,15 +678,17 @@ export default class ElementsPage extends Renderer<Context> {
     const deprecatedEventsCount = deprecated.length;
 
     return html`
-      <rh-accordion-header id="${tagName}-events" ${!count ? '' : 'expanded'}>Events
-        <rh-badge>${count}</rh-badge>
-        ${deprecatedEventsCount > 0 ? html`<rh-badge state="moderate">${deprecatedEventsCount}</rh-badge>` : ``}
-      </rh-accordion-header>
-      <rh-accordion-panel>
-        <section class="events">
+      <section class="events" aria-labelledby="${tagName}-events">
+        <uxdot-copy-permalink class="h${sublevel}">
+            <h${sublevel} id="${tagName}-events">
+              <a href="#${tagName}-events">Events <rh-badge>${count}</rh-badge>
+                ${deprecatedEventsCount > 0 ? html` <rh-badge state="moderate">${deprecatedEventsCount}</rh-badge>` : ``}
+              </a>
+            </h${sublevel}>
+          </uxdot-copy-permalink>
           ${!events.length ? html`
-          <em>None</em>` : html`
-          <rh-table>
+          <p><em>None</em></p>` : html`
+          <rh-table compact>
             <table>
               <thead>
                 <tr>
@@ -641,7 +714,7 @@ export default class ElementsPage extends Renderer<Context> {
             </table>
           </rh-table>`}${!deprecated.length ? '' : /* NB: we need to use our own stuff. don't replace with details */ html`
           <rh-disclosure summary="Deprecated Events">
-            <rh-table>
+            <rh-table compact>
               <table>
                 <thead>
                   <tr>
@@ -662,12 +735,11 @@ export default class ElementsPage extends Renderer<Context> {
             </rh-table>
           </rh-disclosure>`}
         </section>
-      </rh-accordion-panel>
     `;
   }
 
   async #renderCssParts(tagName: string, ctx: Context) {
-    const level = ctx.level ?? 2;
+    const sublevel = (ctx.level) ? ctx.level + 1 : 3;
     const allParts = ctx.doc.docsPage.manifest.getCssParts(tagName) ?? [];
     const parts = allParts.filter(x => !x.deprecated);
     const deprecated = allParts.filter(x => x.deprecated);
@@ -675,15 +747,17 @@ export default class ElementsPage extends Renderer<Context> {
     const deprecatedCssPartsCount = deprecated.length;
 
     return html`
-      <rh-accordion-header id="${tagName}-css-parts" ${!count ? '' : 'expanded'}>CSS Shadow Parts
-        <rh-badge>${count}</rh-badge>
-        ${deprecatedCssPartsCount > 0 ? html`<rh-badge state="moderate">${deprecatedCssPartsCount}</rh-badge>` : ``}
-      </rh-accordion-header>
-      <rh-accordion-panel>
-        <section class="css-shadow-parts">
+    <section class="css-shadow-parts" aria-labelledby="${tagName}-css-parts">
+        <uxdot-copy-permalink class="h${sublevel}">
+            <h${sublevel} id="${tagName}-css-parts">
+              <a href="#${tagName}-css-parts">CSS Shadow Parts <rh-badge>${count}</rh-badge>
+                ${deprecatedCssPartsCount > 0 ? html` <rh-badge state="moderate">${deprecatedCssPartsCount}</rh-badge>` : ``}
+              </a>
+            </h${sublevel}>
+          </uxdot-copy-permalink>
           ${!parts.length ? html`
-          <em>None</em>` : html`
-          <rh-table>
+          <p><em>None</em></p>` : html`
+          <rh-table compact>
             <table>
               <thead>
                 <tr>
@@ -711,7 +785,7 @@ export default class ElementsPage extends Renderer<Context> {
             </table>
           </rh-table>`}${!deprecated.length ? '' : /* NB: we need to use our own stuff. don't replace with details */ html`
           <rh-disclosure summary="Deprecated CSS Shadow Parts">
-            <rh-table>
+            <rh-table compact>
               <table>
                 <thead>
                   <tr>
@@ -734,12 +808,11 @@ export default class ElementsPage extends Renderer<Context> {
             </rh-table>
           </rh-disclosure>`}
         </section>
-      </rh-accordion-panel>
     `;
   }
 
   async #renderCssCustomProperties(tagName: string, ctx: Context) {
-    const level = ctx.level ?? 2;
+    const sublevel = (ctx.level) ? ctx.level + 1 : 3;
     const allCssProperties = (ctx.doc.docsPage.manifest.getCssCustomProperties(tagName) ?? [])
         .filter(x => !tokens.has(x.name));
     const cssProperties = allCssProperties.filter(x => !x.deprecated);
@@ -748,16 +821,18 @@ export default class ElementsPage extends Renderer<Context> {
     const deprecatedCssPropertiesCount = deprecated.length;
 
     return html`
-      <rh-accordion-header id="${tagName}-css-properties" ${!count ? '' : 'expanded'}>CSS Custom Properties
-        <rh-badge>${count}</rh-badge>
-        ${deprecatedCssPropertiesCount > 0 ? html`<rh-badge state="moderate">${deprecatedCssPropertiesCount}</rh-badge>` : ``}
-      </rh-accordion-header>
-      <rh-accordion-panel>
-        <section class="css-custom-properties">
+      <section class="css-custom-properties" aria-labelledby="${tagName}-css-properties">
+        <uxdot-copy-permalink class="h${sublevel}">
+            <h${sublevel} id="${tagName}-css-properties">
+              <a href="#${tagName}-css-properties">CSS Custom Properties <rh-badge>${count}</rh-badge>
+                ${deprecatedCssPropertiesCount > 0 ? html` <rh-badge state="moderate">${deprecatedCssPropertiesCount}</rh-badge>` : ``}
+              </a>
+            </h${sublevel}>
+          </uxdot-copy-permalink>
           ${!cssProperties.length ? html`
-          <em>None</em>` : html`
-          <rh-table>
-            <table class=css-custom-properties>
+          <p><em>None</em></p>` : html`
+          <rh-table compact>
+            <table class="css-custom-properties">
               <thead>
                 <tr>
                   <th scope="col">CSS Property</th>
@@ -777,7 +852,7 @@ export default class ElementsPage extends Renderer<Context> {
             </table>
           </rh-table>`}${!deprecated.length ? '' : /* NB: we need to use our own stuff. don't replace with details */ html`
           <rh-disclosure summary="Deprecated CSS Custom Properties">
-            <rh-table>
+            <rh-table compact>
               <table>
                 <thead>
                   <tr>
@@ -799,28 +874,29 @@ export default class ElementsPage extends Renderer<Context> {
             </rh-table>
           </rh-disclosure>`}
         </section>
-      </rh-accordion-panel>
     `;
   }
 
   async #renderDesignTokens(tagName: string, ctx: Context) {
+    const sublevel = (ctx.level) ? ctx.level + 1 : 3;
     const designTokens = (ctx.doc.docsPage.manifest.getCssCustomProperties(tagName) ?? [])
         .filter(x => tokens.has(x.name));
     const count = designTokens.length;
     return html`
-      <rh-accordion-header id="${tagName}-design-tokens" ${!count ? '' : 'expanded'}>Design Tokens
-        <rh-badge>${count}</rh-badge>
-      </rh-accordion-header>
-      <rh-accordion-panel>
-        <section class="design-tokens">
+      <section class="design-tokens" aria-labelledby="${tagName}-design-tokens">
+        <uxdot-copy-permalink class="h${sublevel}">
+            <h${sublevel} id="${tagName}-design-tokens">
+              <a href="#${tagName}-design-tokens">Design Tokens <rh-badge>${count}</rh-badge></a>
+            </h${sublevel}>
+          </uxdot-copy-permalink>
           ${!designTokens.length ? html`
-          <em>None</em>` : html`
-          <rh-table>
+          <p><em>None</em></p>` : html`
+          <rh-table compact>
             <table>
               <thead>
                 <tr>
                   <th>Token</th>
-                  <th>Summary</th>
+                  <th>Description</th>
                   <th>Copy</th>
                 </tr>
               </thead>
@@ -831,14 +907,15 @@ export default class ElementsPage extends Renderer<Context> {
                       <code>${token.name}</code>
                     </a>
                   </td>
-                  <td>${await this.#innerMD(token.summary ?? '')}</td>
+                  <td>${!token.summary ? '' : await this.#innerMD(token.summary)}
+                    ${!token.description ? '' : await this.#innerMD(token.description)}
+                  </td>
                   ${copyCell(token)}
                 </tr>`))).join('')}
               </tbody>
             </table>
           </rh-table>`}
         </section>
-      </rh-accordion-panel>
     `;
   }
 
@@ -864,24 +941,17 @@ export default class ElementsPage extends Renderer<Context> {
       ${(await Promise.all(demos.map(async demo => `
       ${this.#header(demo.filePath?.match(/\/index(\.html|\/)/) ? this.#getPrettyTagName(ctx)
                    : demo.title, 2, `demo-${this.slugify(demo.title)}`)}
-      ${await this.#renderDemoDescription(demo, ctx)}
+      ${await this.#renderDemoDescription(demo)}
       ${await this.#renderDemo(demo, ctx)}
       `))).filter(Boolean).join('')}
     `;
   }
 
-  async #renderDemoDescription(demo: DemoRecord, ctx: Context) {
-    // Use the same logic as the header to determine the demo name
-    const demoName = demo.filePath?.match(/\/index(\.html|\/)/) ? 'index' : demo.title;
-    const demoDescriptionPath = join(process.cwd(), 'elements', ctx.tagName, 'demo', `${this.slugify(demoName)}.md`);
-    // check if the file exists, if it does return the html
-    try {
-      await access(demoDescriptionPath);
-      const demoDescriptionContent = await this.renderFile(demoDescriptionPath, ctx);
-      return html`${demoDescriptionContent}`;
-    } catch {
-      return '';
+  async #renderDemoDescription(demo: DemoRecord) {
+    if ('description' in demo && typeof demo.description === 'string') {
+      return this.renderTemplate(demo.description, 'md');
     }
+    return '';
   }
 
   async #renderDemo(demo: DemoRecord, ctx: Context, knobs?: string) {
@@ -935,7 +1005,8 @@ export default class ElementsPage extends Renderer<Context> {
     }
 
     if (demo.filePath) {
-      const content = await readFile(demo.filePath, 'utf-8');
+      const raw = await readFile(demo.filePath, 'utf-8');
+      const content = stripFrontmatter(raw);
       const fragment = parseFragment(content);
 
       for (const node of Tools.queryAll<Tools.Element>(fragment, Tools.isElementNode)) {

@@ -3,6 +3,7 @@ tagName: rh-button-group
 name: Button Group
 type: element
 overallStatus: ready
+category: Actions and links
 libraries:
   figma: ready
   rhds: ready
@@ -12,3 +13,4 @@ relatedItems:
   - rh-button
   - rh-cta
   - rh-scheme-toggle
+since: v4.0.2
