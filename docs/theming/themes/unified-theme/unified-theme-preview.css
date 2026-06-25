@@ -422,7 +422,7 @@
         );
     --unified-color-border-control-default:
       light-dark(
-          #8c8c8c,
+          var(--unified-color-gray-30),
           var(--unified-color-gray-40)
         );
 
