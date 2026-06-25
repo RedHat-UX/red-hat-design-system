@@ -53,7 +53,7 @@ a:before,
   inset: 0;
 
   /** Indicator inline-start offset */
-  inset-inline-start: var(--rh-navigation-link-indicator-offset, 0);
+  inset-inline-start: var(--rh-navigation-link-inset-inline-start, 0);
   border-inline-start:
     /** Indicator border width */
     var(--rh-navigation-link-border-inline-start-width,
