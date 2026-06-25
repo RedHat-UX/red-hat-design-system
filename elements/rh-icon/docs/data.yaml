@@ -3,6 +3,7 @@ tagName: rh-icon
 name: Icon
 type: element
 overallStatus: new
+category: Imagery
 aka:
   - Symbol
   - Glyph

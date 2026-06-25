@@ -3,6 +3,7 @@ tagName: rh-audio-player
 name: Audio player
 type: element
 overallStatus: ready
+category: Media
 libraries:
   figma: ready
   rhds: ready
