@@ -10,6 +10,7 @@ export { RhFooterUniversal } from './rh-footer-universal.js';
 import '@rhds/elements/rh-accordion/rh-accordion.js';
 
 import './rh-footer-links.js';
+import './rh-footer-social-link.js';
 import './rh-footer-block.js';
 
 import style from './rh-footer.css' with { type: 'css' };
