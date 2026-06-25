@@ -153,7 +153,8 @@ export class RhFooterUniversal extends LitElement {
                     <defs>
                       <style>
                         .band {
-                          fill: transparent;
+                          /** Fedora band background fill */
+                          fill: var(--rh-color-black, #000000);
                         }
                       </style>
                     </defs>
