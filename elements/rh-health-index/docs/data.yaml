@@ -3,6 +3,7 @@ tagName: rh-health-index
 name: Health index
 type: element
 overallStatus: new
+category: Status
 libraries:
   figma: ready
   rhds: ready

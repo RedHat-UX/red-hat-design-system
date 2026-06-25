@@ -3,6 +3,7 @@ tagName: rh-button
 name: Button
 type: element
 overallStatus: ready
+category: Actions and links
 aka:
   - Action
 libraries:

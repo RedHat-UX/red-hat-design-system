@@ -3,6 +3,7 @@ tagName: rh-timestamp
 name: Timestamp
 type: element
 overallStatus: ready
+category: Data
 aka:
   - Date
   - Time
