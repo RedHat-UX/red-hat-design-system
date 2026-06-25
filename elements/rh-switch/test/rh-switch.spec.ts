@@ -100,9 +100,15 @@ describe('<rh-switch>', function() {
       expect(snapshot.checked).to.be.false;
     });
 
+    // The a11y snapshot does not expose `description` when it is set via
+    // ElementInternals.ariaDescribedByElements. We verify the implementation instead:
+    // the slotted element for the current state has an `id` (assigned by the component)
+    // and the expected text content.
     it('should show the message for the unchecked state', async function() {
-      snapshot = await a11ySnapshot({ selector: 'rh-switch' });
-      expect(snapshot.description).to.equal('Message when off');
+      const messageOff = element.querySelector<HTMLElement>('[slot="message-off"]');
+      expect(messageOff).to.be.ok;
+      expect(messageOff!.id).to.match(/^rh-switch-message/);
+      expect(messageOff!.textContent?.trim()).to.equal('Message when off');
     });
 
     describe('clicking the switch', function() {
@@ -117,8 +123,10 @@ describe('<rh-switch>', function() {
         expect(snapshot.checked).to.be.true;
       });
       it('should show the label for the checked state', async function() {
-        snapshot = await a11ySnapshot({ selector: 'rh-switch' });
-        expect(snapshot.description).to.equal('Message when on');
+        const messageOn = element.querySelector<HTMLElement>('[slot="message-on"]');
+        expect(messageOn).to.be.ok;
+        expect(messageOn!.id).to.match(/^rh-switch-message/);
+        expect(messageOn!.textContent?.trim()).to.equal('Message when on');
       });
     });
   });

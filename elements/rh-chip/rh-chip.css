@@ -1,62 +1,131 @@
 :host {
+  /** Chip label block end margin */
   --_spacer: var(--rh-space-lg, 16px);
 
   display: inline-block;
+
+  /** Chip body text font family */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif) !important;
+
+  /** Chip body text line height */
   line-height: var(--rh-line-height-body-text, 1.5) !important;
   margin-block: 2px;
+
+  /** Chip inline end spacing */
   margin-inline-end: var(--rh-space-md, 8px);
 }
 
 label {
+  /** Chip pill border radius */
   border-radius: var(--rh-border-radius-pill, 64px);
   display: flex;
   margin-block-end: var(--_spacer);
-  outline: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
-  padding: var(--rh-space-xs, 4px) var(--rh-space-md, 8px);
+  outline:
+    /** Chip outline width */
+    var(--rh-border-width-sm, 1px)
+    solid
+    /** Chip outline color */
+    var(--rh-color-border-subtle);
+  padding:
+    /** Chip block padding */
+    var(--rh-space-xs, 4px)
+    /** Chip inline padding */
+    var(--rh-space-md, 8px);
   position: relative;
   text-wrap: balance;
+
+  /** Chip label font size */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
 
   &.size-sm {
+    /** Small size chip label font size */
     font-size: var(--rh-font-size-body-text-xs, 0.75rem) !important;
   }
 
   &:hover,
   &:focus-within {
     cursor: pointer;
+
+    /** Chip hover/focus outline width */
     outline-width: var(--rh-border-width-md, 2px);
   }
 
   &:focus-within:after {
     content: '';
+
+    /** Focus ring border radius */
     border-radius: var(--rh-border-radius-default, 3px);
-    inset: var(--rh-length-3xs, 2px) var(--rh-length-md, 8px);
-    outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
+    inset:
+      /** Focus ring block inset */
+      var(--rh-length-3xs, 2px)
+      /** Focus ring inline inset */
+      var(--rh-length-md, 8px);
+    outline:
+      /** Focus ring outline width */
+      var(--rh-border-width-md, 2px)
+      solid
+      /** Focus ring outline color */
+      var(--rh-color-border-interactive);
     position: absolute;
   }
 
   &:has(input[aria-disabled='true']),
   &:has(input[aria-disabled='true']:checked) {
     background-color:
-      light-dark(var(--rh-color-gray-30, #c7c7c7),
-        var(--rh-color-surface-dark, #383838));
-    color: light-dark(var(--rh-color-text-secondary), var(--rh-color-gray-40, #a3a3a3));
+      light-dark(
+          /** Disabled chip background in light mode */
+          var(--rh-color-gray-30, #c7c7c7),
+          /** Disabled chip background in dark mode */
+          var(--rh-color-surface-dark, #383838)
+        );
+    color:
+      light-dark(
+          /** Disabled chip text color in light mode */
+          var(--rh-color-text-secondary),
+          /** Disabled chip text color in dark mode */
+          var(--rh-color-gray-40, #a3a3a3)
+        );
     outline-color:
-      light-dark(var(--rh-color-gray-30, #c7c7c7),
-        var(--rh-color-surface-dark, #383838));
+      light-dark(
+          /** Disabled chip outline in light mode */
+          var(--rh-color-gray-30, #c7c7c7),
+          /** Disabled chip outline in dark mode */
+          var(--rh-color-surface-dark, #383838)
+        );
     pointer-events: none;
   }
 
   &:has(input:checked) {
     background-color:
-      light-dark(var(--rh-color-blue-10, #e0f0ff),
-        var(--rh-color-blue-70, #003366));
-    color: light-dark(var(--rh-color-blue-70, #003366), var(--rh-color-blue-10, #e0f0ff));
-    outline-color: light-dark(var(--rh-color-blue-30, #92c5f9), var(--rh-color-blue-50, #0066cc));
+      light-dark(
+          /** Checked chip background in light mode */
+          var(--rh-color-blue-10, #e0f0ff),
+          /** Checked chip background in dark mode */
+          var(--rh-color-blue-70, #003366)
+        );
+    color:
+      light-dark(
+          /** Checked chip text color in light mode */
+          var(--rh-color-blue-70, #003366),
+          /** Checked chip text color in dark mode */
+          var(--rh-color-blue-10, #e0f0ff)
+        );
+    outline-color:
+      light-dark(
+          /** Checked chip outline in light mode */
+          var(--rh-color-blue-30, #92c5f9),
+          /** Checked chip outline in dark mode */
+          var(--rh-color-blue-50, #0066cc)
+        );
 
     &:hover {
-      outline-color: light-dark(var(--rh-color-blue-30, #92c5f9), var(--rh-color-blue-50, #0066cc));
+      outline-color:
+        light-dark(
+            /** Checked chip hover outline in light mode */
+            var(--rh-color-blue-30, #92c5f9),
+            /** Checked chip hover outline in dark mode */
+            var(--rh-color-blue-50, #0066cc)
+          );
     }
   }
 }
@@ -83,6 +152,8 @@ input {
   &:checked + #close-icon {
     block-size: auto;
     inline-size: auto;
+
+    /** Close icon inline start spacing */
     margin-inline-start: var(--rh-space-md, 8px);
     opacity: 1;
   }

@@ -61,6 +61,32 @@
       "required": ["figma", "rhds", "shared", "docs"],
       "additionalProperties": false
     },
+    "aka": {
+      "type": "array",
+      "description": "Alternative names or aliases this element is commonly known as",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Actions and links",
+        "Data",
+        "Emphasis",
+        "Imagery",
+        "Inputs",
+        "Media",
+        "Navigation",
+        "Overlays",
+        "Selection",
+        "Status",
+        "Structure"
+      ],
+      "description": "Taxonomy category for grouping on the All Elements page"
+    },
     "relatedItems": {
       "type": "array",
       "description": "List of related elements and patterns that appear in the feedback section",
@@ -70,6 +96,11 @@
         "description": "Element tag name (e.g., 'rh-button') or pattern name (e.g., 'filter', 'link')"
       },
       "uniqueItems": true
+    },
+    "since": {
+      "type": "string",
+      "pattern": "^v\\d+\\.\\d+\\.\\d+$",
+      "description": "The first stable release version that included this element (e.g., 'v1.0.0')"
     }
   },
   "required": ["type", "overallStatus", "libraries"],
