@@ -904,16 +904,20 @@
 /* Element: Spinner */
 @layer spinner {
   rh-spinner {
-    --unified-spinner-stroke-width: var(--unified-length-xs);
-    --unified-spinner-color: var(--unified-color-border-interactive-default);
-    --unified-spinner-color-track-on-light: transparent;
-    --unified-spinner-color-track-on-dark: transparent;
-
-    /* Directly theme through RH-specific tokens */
-    --rh-length-sm: var(--unified-spinner-stroke-width);
-    --rh-color-gray-10: var(--unified-spinner-color-track-on-light);
-    --rh-color-gray-70: var(--unified-spinner-color-track-on-dark);
-    --rh-color-accent-base: var(--unified-spinner-color);
+    --rh-spinner-track-display: none;
+    --rh-spinner-vector-effect: none;
+    --rh-spinner-stroke-width: 10;
+    --rh-spinner-circle-radius: 45;
+    --rh-spinner-container-animation-name: felt-rotate;
+    --rh-spinner-container-animation-duration: 2.8s;
+    --rh-spinner-animation-name: felt-dash;
+    --rh-spinner-animation-duration: 1.4s;
+    --rh-spinner-animation-timing: ease-in-out;
+    --rh-spinner-rotate-start: 0deg;
+    --rh-spinner-sm-animation-name: felt-dash;
+    --rh-spinner-sm-dash-array: 283;
+    --rh-spinner-sm-dash-offset: 280;
+    --rh-color-accent-base: var(--unified-color-border-interactive-default);
   }
 }
 
