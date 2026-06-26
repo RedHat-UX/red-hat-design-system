@@ -1,3 +1,9 @@
+## Landmark roles
+
+`<rh-footer>` and `<rh-footer-universal>` (when used outside of `<rh-footer>`) already include a [`contentinfo`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/contentinfo_role) landmark role and therefore do not need to be wrapped in a native `<footer>` element. This `contentinfo` role is applied automatically through the [ElementInternals API](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals).
+
+If a `<rh-footer>` or `<rh-footer-universal>` is placed inside an existing `<footer>` element, the custom element will not receive the `contentinfo` role. In those cases, implementors should remove the surrounding `<footer>` element and rely on the role applied directly to the custom element via ElementInternals.
+
 ## Keyboard interactions
 
 Most elements in a footer are links, so users can press `Tab` to navigate from region to region.
@@ -49,6 +55,7 @@ A logical focus order helps keyboard users operate our websites. Elements need t
 
 
 ### Language selector
+
 Users can open the language selector menu by pressing `Enter` if the trigger has focus. If they do, they can press `Tab` to move focus to the first language. Each language can receive focus from left to right and top to bottom.
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
@@ -68,7 +75,8 @@ When the focus is moved outside of the menu, the menu closes.
 </uxdot-example>
 
 
-## Additional guidelines
+#### Additional guidelines
+
 - Content outside of a dialog cannot be interacted with or navigated to while the dialog is open
 - The `Escape` key should close the dialog
 - There should be at least one clickable button that closes the dialog

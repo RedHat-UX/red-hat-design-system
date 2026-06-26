@@ -45,8 +45,11 @@ span {
 }
 
 #button {
+  /** Header toggle text color */
   color: var(--rh-color-text-primary);
   background-color: var(--_accordion-background);
+
+  /** Header toggle text weight */
   font-weight: var(--rh-font-weight-body-text-medium, 500);
   width: 100%;
   padding:
@@ -54,6 +57,8 @@ span {
     var(--_padding-inline-end)
     var(--_padding-block-end)
     var(--_padding-inline-start);
+
+  /** Header toggle typeface */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   font-size: var(--_header-font-size);
 
@@ -72,11 +77,14 @@ span {
   }
 
   &:focus {
+    /** Focus ring color on header toggle */
     outline: 2px solid var(--rh-color-interactive-primary-default);
   }
 
   &:after {
     inset-block-start: -1px;
+
+    /** Accent bar thickness */
     width: var(--rh-border-width-lg, 3px);
     background-color: var(--_after-background-color);
   }
@@ -96,6 +104,8 @@ span {
 
 #header-container {
   display: flex;
+
+  /** Gap between title and accents */
   gap: var(--rh-space-md, 8px);
 
   &.bottom {
@@ -104,12 +114,15 @@ span {
 }
 
 #header-text {
+  /** Header title text weight */
   font-weight: var(--rh-font-weight-body-text-medium, 500);
 }
 
 [part='accents'] {
   display: flex;
   flex-wrap: wrap;
+
+  /** Spacing between accent items */
   gap: var(--rh-space-md, 8px);
 }
 
