@@ -1331,7 +1331,7 @@
     --rh-subnav-indicator-gap: var(--unified-space-xs);
 
     /* Spacing around and between nav items */
-    --rh-subnav-items-padding-block-start: var(--unified-space-xs);
+    --rh-subnav-items-padding-block: var(--unified-space-xs) 0;
     --rh-subnav-items-padding-inline: var(--unified-space-md);
     --rh-subnav-link-gap: var(--unified-space-md);
 
