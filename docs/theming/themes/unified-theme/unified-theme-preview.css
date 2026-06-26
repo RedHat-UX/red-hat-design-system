@@ -176,25 +176,25 @@
           var(--unified-color-blue-30)
         );
     --unified-color-interactive-secondary-underline-default:
-    light-dark(
-        var(--unified-color-gray-45),
-        var(--unified-color-gray-40)
-      );
+      light-dark(
+          var(--unified-color-gray-45),
+          var(--unified-color-gray-40)
+        );
     --unified-color-interactive-secondary-underline-hover:
-    light-dark(
-        var(--unified-color-gray-45),
-        var(--unified-color-gray-40)
-      );
+      light-dark(
+          var(--unified-color-gray-45),
+          var(--unified-color-gray-40)
+        );
     --unified-color-interactive-secondary-underline-active:
-    light-dark(
-        var(--unified-color-gray-45),
-        var(--unified-color-gray-40)
-      );
+      light-dark(
+          var(--unified-color-gray-45),
+          var(--unified-color-gray-40)
+        );
     --unified-color-interactive-secondary-underline-focus:
-    light-dark(
-        var(--unified-color-gray-45),
-        var(--unified-color-gray-40)
-      );
+      light-dark(
+          var(--unified-color-gray-45),
+          var(--unified-color-gray-40)
+        );
 
     /* TODO: Double-check color */
     --unified-color-border-interactive-subtle-focus:
@@ -1259,7 +1259,9 @@
 
     & > ol > li > a[href]:not([aria-current]) {
       text-decoration: underline var(--unified-border-width-sm) dashed !important;
+      /* stylelint-disable @stylistic/declaration-colon-newline-after, @stylistic/max-line-length */
       text-decoration-color: var(--unified-color-interactive-secondary-underline-default) !important;
+      /* stylelint-enable @stylistic/declaration-colon-newline-after, @stylistic/max-line-length */
       text-underline-offset: max(5px, 0.28em) !important;
     }
 
