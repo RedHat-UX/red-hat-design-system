@@ -61,6 +61,24 @@
       color: var(--rh-color-interactive-primary-visited-default);
       &:hover { color: var(--rh-color-interactive-primary-visited-hover); }
     }
+
+    /* Denote VPN / RH Internal links */
+    &[href*='url.corp.redhat.com']:after {
+      content: ' (requires Red Hat login)';
+      overflow: hidden;
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      margin-left: var(--rh-space-sm);
+      vertical-align: baseline;
+      text-indent: -99999em;
+      background-color: currentcolor;
+
+      /* Using lock-fill Micron for icon */
+      mask-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIgZmlsbD0ibm9uZSI+CiAgPGcgY2xpcC1wYXRoPSJ1cmwoI2EpIj4KICAgIDxwYXRoIGZpbGw9IiMxNTE1MTUiIGQ9Ik04IDMuNWgtLjV2LTFDNy41IDEuMTIyIDYuMzc4IDAgNSAwYTIuNTAzIDIuNTAzIDAgMCAwLTIuNSAyLjV2MUgyYS41LjUgMCAwIDAtLjUuNXY1YS41LjUgMCAwIDAgLjUuNWg2YS41LjUgMCAwIDAgLjUtLjVWNGEuNS41IDAgMCAwLS41LS41bS00LjUtMUMzLjUgMS42NzMgNC4xNzMgMSA1IDFzMS41LjY3MyAxLjUgMS41djFoLTN6Ii8+CiAgPC9nPgogIDxkZWZzPgogICAgPGNsaXBQYXRoIGlkPSJhIj4KICAgICAgPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTAgMGgxMHYxMEgweiIvPgogICAgPC9jbGlwUGF0aD4KICA8L2RlZnM+Cjwvc3ZnPgo=');
+      mask-size: contain;
+      mask-repeat: no-repeat;
+    }
   }
 
   hr {
