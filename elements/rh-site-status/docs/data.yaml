@@ -3,6 +3,7 @@ tagName: rh-site-status
 name: Site status
 type: element
 overallStatus: ready
+category: Status
 libraries:
   figma: ready
   rhds: ready
