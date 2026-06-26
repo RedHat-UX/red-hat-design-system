@@ -726,6 +726,10 @@
     --rh-card-heading-font-size: var(--rh-font-size-heading-xs);
     --rh-color-border-subtle: var(--unified-color-border-subtle);
 
+    &::part(body) {
+      font-size: var(--rh-font-size-body-text-md);
+    }
+
     &[compact],
     &[size='compact'] {
       --rh-space-xl: var(--unified-card-padding-compact);
@@ -739,6 +743,11 @@
     &[large],
     &[size='large'] {
       --rh-space-xl: var(--unified-card-padding-large);
+      --rh-card-heading-font-size: var(--rh-font-size-heading-sm);
+
+      &::part(body) {
+        font-size: var(--rh-font-size-body-text-lg);
+      }
     }
 
     &[variant='plain'] {
