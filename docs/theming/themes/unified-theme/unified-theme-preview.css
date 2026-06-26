@@ -423,7 +423,7 @@
     --unified-color-border-control-default:
       light-dark(
           var(--unified-color-gray-30),
-          var(--unified-color-gray-50)
+          var(--unified-color-gray-40)
         );
 
     /* Brand accent */
@@ -1022,11 +1022,8 @@
    mockup requires element-level changes (no CSS part on #switch). */
 @layer switch {
   rh-switch {
-    --rh-switch-unchecked:
-      light-dark(
-          var(--unified-color-gray-40),
-          var(--unified-color-gray-50)
-        );
+    --rh-switch-show-check: true;
+    --rh-switch-unchecked: transparent;
     --rh-switch-checked: var(--unified-color-interactive-primary-default);
     --rh-switch-disabled:
       light-dark(
@@ -1037,6 +1034,21 @@
     --rh-color-border-interactive: var(--unified-color-interactive-primary-default);
     --rh-space-sm: var(--unified-space-sm);
     --rh-color-text-secondary: var(--unified-color-gray-60);
+    --rh-color-surface-lightest: var(--unified-color-gray-50);
+    --rh-color-surface-dark: var(--unified-color-gray-40);
+
+    &::part(switch) {
+      border: 1px solid var(--unified-color-border-control-default);
+    }
+
+    &[checked]:not(:disabled) {
+      --rh-color-surface-lightest: #ffffff;
+      --rh-color-surface-dark: var(--unified-color-gray-95);
+
+      &::part(switch) {
+        border-color: var(--unified-color-interactive-primary-default);
+      }
+    }
   }
 }
 
