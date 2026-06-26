@@ -11,7 +11,7 @@
   display: flex;
 
   /** Container pill border radius */
-  border-radius: var(--rh-subnav-container-border-radius, 0);
+  border-radius: var(--rh-subnav-border-radius, 0);
   overflow: hidden;
 }
 
@@ -127,7 +127,7 @@
       light-dark(transparent, transparent));
 
   /** Navigation link pill border radius */
-  --_navigation-link-border-radius: var(--rh-subnav-link-border-radius, 0);
+  --_navigation-link-border-radius: var(--rh-subnav-border-radius, 0);
   --_navigation-link-container-display: flex;
   --_navigation-link-container-align-items: center;
   --_navigation-link-container-position: relative;
@@ -226,8 +226,8 @@ button {
 
 #previous {
   /** Scroll-back button start-side border radius */
-  border-start-start-radius: var(--rh-subnav-container-border-radius, 0);
-  border-end-start-radius: var(--rh-subnav-container-border-radius, 0);
+  border-start-start-radius: var(--rh-subnav-border-radius, 0);
+  border-end-start-radius: var(--rh-subnav-border-radius, 0);
   border-inline-end:
     /** Previous button border inline end width */
     var(--rh-border-width-sm, 1px)
@@ -238,8 +238,8 @@ button {
 
 #next {
   /** Scroll-forward button end-side border radius */
-  border-start-end-radius: var(--rh-subnav-container-border-radius, 0);
-  border-end-end-radius: var(--rh-subnav-container-border-radius, 0);
+  border-start-end-radius: var(--rh-subnav-border-radius, 0);
+  border-end-end-radius: var(--rh-subnav-border-radius, 0);
   border-inline-start:
     /** Next button border inline start width */
     var(--rh-border-width-sm, 1px)
