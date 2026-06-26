@@ -1315,7 +1315,7 @@
     /* Pill background for active/hovered items */
     --rh-subnav-link-background-color-active: light-dark(white, var(--unified-color-gray-70));
     --rh-subnav-link-background-color-hover: var(--unified-color-interactive-fill-plain-hover);
-    --rh-subnav-link-border-radius: var(--unified-border-radius-pill);
+    --rh-subnav-border-radius: var(--unified-border-radius-pill);
 
     /* Reduced padding per Figma spec: 4px block, 16px inline */
     --rh-subnav-link-padding: var(--unified-space-xs) var(--unified-space-lg);
@@ -1334,9 +1334,6 @@
     --rh-subnav-items-padding-block: var(--unified-space-xs) 0;
     --rh-subnav-items-padding-inline: var(--unified-space-md);
     --rh-subnav-link-gap: var(--unified-space-md);
-
-    /* Pill-shaped container */
-    --rh-subnav-container-border-radius: var(--unified-border-radius-pill);
 
     background-color: light-dark(var(--unified-color-gray-10), var(--unified-color-gray-95));
     border-radius: var(--unified-border-radius-pill);
