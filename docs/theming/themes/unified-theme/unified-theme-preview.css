@@ -9,6 +9,7 @@
     /* Fonts/Type */
     --unified-font-size-body-text-sm: 14px;
     --unified-line-height-body-text: 1.5;
+    --unified-line-height-body-text-md: 1.5rem;
 
     /* Base colors: Grays */
     --unified-color-gray-10: #f2f2f2;
@@ -445,7 +446,7 @@
     --unified-color-border-control-default:
       light-dark(
           var(--unified-color-gray-30),
-          var(--unified-color-gray-50)
+          var(--unified-color-gray-40)
         );
 
     /* Brand accent */
@@ -1073,11 +1074,8 @@
    mockup requires element-level changes (no CSS part on #switch). */
 @layer switch {
   rh-switch {
-    --rh-switch-unchecked:
-      light-dark(
-          var(--unified-color-gray-40),
-          var(--unified-color-gray-50)
-        );
+    --rh-switch-show-check: true;
+    --rh-switch-unchecked: transparent;
     --rh-switch-checked: var(--unified-color-interactive-primary-default);
     --rh-switch-disabled:
       light-dark(
@@ -1088,20 +1086,123 @@
     --rh-color-border-interactive: var(--unified-color-interactive-primary-default);
     --rh-space-sm: var(--unified-space-sm);
     --rh-color-text-secondary: var(--unified-color-gray-60);
+    --rh-color-surface-lightest: var(--unified-color-gray-50);
+    --rh-color-surface-dark: var(--unified-color-gray-40);
+
+    &::part(switch) {
+      border: 1px solid var(--unified-color-border-control-default);
+    }
+
+    &[checked]:not(:disabled) {
+      --rh-color-surface-lightest: #ffffff;
+      --rh-color-surface-dark: var(--unified-color-gray-95);
+
+      &::part(switch) {
+        border-color: var(--unified-color-interactive-primary-default);
+      }
+    }
   }
 }
 
-/* Element: Accordion
-   NOTE: Hover/focus backgrounds with border-radius require
-   element-level changes (no CSS part on #button). */
+/* Element: Accordion */
 @layer accordion {
   rh-accordion {
-    --unified-accordion-panel-padding: var(--unified-space-xl);
-    --rh-color-accent-brand: var(--unified-color-brand-accent);
-    --rh-border-width-lg: var(--unified-border-width-lg);
-    --rh-font-size-body-text-md: var(--unified-font-size-body-text-sm);
-    --rh-space-xl: var(--unified-accordion-panel-padding);
-    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+    --rh-color-accent-brand: transparent;
+    --rh-box-shadow-sm: none;
+    --rh-color-border-subtle: transparent;
+    --rh-color-surface-lightest: transparent;
+    --rh-color-surface-darkest: transparent;
+    --rh-space-xl: var(--unified-space-xl);
+
+    background-color:
+      light-dark(
+          var(--rh-color-surface-lightest),
+          var(--rh-color-gray-80)
+        );
+    font-size: var(--unified-font-size-body-text-sm);
+
+    & rh-accordion-header {
+      --rh-color-interactive-primary-default: transparent;
+      --rh-color-surface-lighter: transparent;
+      --rh-color-surface-dark: transparent;
+      --rh-color-text-primary:
+        light-dark(
+            var(--unified-color-gray-95),
+            var(--rh-color-white)
+          );
+      --rh-space-lg: var(--unified-space-md);
+      --rh-space-xl: var(--unified-space-lg);
+
+      /* !important needed to override shadow DOM :host([expanded]) border */
+      border-inline-end: none !important;
+      border-radius: var(--unified-border-radius-action-plain);
+      line-height: var(--unified-line-height-body-text-md);
+    }
+
+    &[large] rh-accordion-header {
+      --rh-space-lg: var(--unified-space-lg);
+    }
+
+    & rh-accordion-header:hover {
+      background-color: var(--unified-color-interactive-fill-plain-hover);
+    }
+
+    & rh-accordion-header[expanded] {
+      background-color: var(--unified-color-interactive-fill-plain-hover);
+    }
+
+    & rh-accordion-header:focus-within {
+      position: relative;
+      z-index: 1;
+      background-color: var(--unified-color-interactive-fill-plain-hover);
+      outline:
+        var(--unified-border-width-md)
+        solid
+        var(--unified-color-interactive-primary-default);
+      outline-offset: calc(-1 * var(--unified-border-width-md));
+    }
+
+    & :is(h1, h2, h3, h4, h5, h6) {
+      margin: 0;
+      font-weight: var(--rh-font-weight-body-text-medium, 500);
+    }
+
+    & rh-accordion-panel {
+      --rh-accordion-panel-padding-block: var(--unified-space-md) var(--unified-space-xl);
+      --rh-accordion-panel-padding-inline: var(--unified-space-lg);
+    }
+
+    /* !important needed to override shadow DOM #container border */
+    & rh-accordion-panel::part(container) {
+      border-inline-end: none !important;
+    }
+
+    &.bordered {
+      --rh-color-border-subtle:
+        light-dark(
+            var(--unified-color-gray-30),
+            var(--unified-color-gray-50)
+          );
+
+      background-color: none;
+
+      & rh-accordion-header {
+        border-radius: 0;
+      }
+
+      & rh-accordion-header:first-child {
+        /* !important needed to override shadow DOM ::slotted border-block */
+        border-block-start-color: transparent !important;
+      }
+
+      & rh-accordion-header[expanded] {
+        border-radius: 0;
+      }
+
+      & rh-accordion-header:focus-within {
+        outline-offset: calc(-1 * var(--unified-border-width-md));
+      }
+    }
   }
 }
 
