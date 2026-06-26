@@ -16,7 +16,7 @@ layout: layouts/base.njk
 
 {% include 'partials/component/sidenav.njk' %}
 <main id="main">
-  <article class="has-toc">
+  <article class="{{ 'has-toc' if table.length > 0 else '' }}">
   {% include 'partials/component/header.njk' %}
   {% if table.length > 0 %}
   <div class="aside">

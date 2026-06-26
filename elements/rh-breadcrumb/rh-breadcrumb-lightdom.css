@@ -5,17 +5,32 @@
 
 rh-breadcrumb {
   --_breadcrumb-caret-image-default:
+    /** Separator caret icon override */
     var(--rh-breadcrumb-caret-image,
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='15' viewBox='0 0 10 15' fill='none'%3E%3Cg clip-path='url(%23clip0_232_19576)'%3E%3Cpath d='M2.5 14.5L0.5 12.5L5.5 7.5L0.5 2.5L2.5 0.5L9.5 7.5L2.5 14.5Z'  fill='red' /%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_232_19576'%3E%3Crect width='10' height='14' fill='white' transform='matrix(-1 0 0 1 10 0.5)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E")); /* stylelint-disable-line @stylistic/declaration-colon-newline-after */
 
   --_breadcrumb-link-color:
+    /** Link color override */
     var(--rh-breadcrumb-link-color,
+      /** Link color */
       var(--rh-color-interactive-primary-default));
+
+  /** Current page link color */
   --_breadcrumb-link-color-current-page: var(--rh-color-text-primary);
+
+  /** Current page subtle variant link color */
   --_breadcrumb-link-color-current-page-subtle: var(--rh-color-text-secondary);
+
+  /** Link hover color */
   --_breadcrumb-link-color-hover: var(--rh-color-interactive-primary-hover);
+
+  /** Visited link color */
   --_breadcrumb-link-color-visited: var(--rh-color-interactive-primary-visited-hover);
+
+  /** Visited link hover color */
   --_breadcrumb-link-color-visited-hover: var(--rh-color-interactive-primary-visited-hover);
+
+  /** Link focus outline color */
   --_breadcrumb-link-focus-outline-color: var(--rh-color-border-interactive);
 
   display: block;
@@ -27,28 +42,44 @@ rh-breadcrumb {
   & > ol {
     container-type: inline-size;
     container-name: breadcrumbs-list;
+
+    /** List font size */
     font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+
+    /** List line height */
     line-height: var(--rh-line-height-body-text, 1.5);
     margin-block: 0;
     padding-inline-start: 0;
 
     & > li {
       display: inline-flex;
+
+      /** Item bottom margin */
       margin-block-end: var(--rh-space-md, 8px);
       padding-inline-end:
+        /** Item inline end padding override */
         var(--rh-breadcrumb-li-padding-inline-end,
+          /** Item inline end padding */
           var(--rh-space-lg, 16px));
       vertical-align: bottom;
       align-items: center;
+
+      /** Item gap */
       gap: var(--rh-space-lg, 16px);
 
       &:not(:first-of-type):before {
         display: inline-block;
+
+        /** Separator icon color */
         background-color: var(--rh-color-icon-secondary);
         mask-image: var(--_breadcrumb-caret-image-default);
         mask-position: center center;
         mask-repeat: no-repeat;
+
+        /** Separator icon block size */
         block-size: var(--rh-font-size-body-text-sm, 0.875rem);
+
+        /** Separator icon inline size */
         inline-size: var(--rh-font-size-body-text-sm, 0.875rem);
         content: '';
       }
@@ -71,7 +102,11 @@ rh-breadcrumb {
 
         &:is(:hover, :focus, :active) {
           color: var(--_breadcrumb-link-color-hover);
-          text-decoration: underline var(--rh-border-width-sm, 1px) dashed;
+          text-decoration:
+            underline
+            /** Link hover underline thickness */
+            var(--rh-border-width-sm, 1px)
+            dashed;
           text-decoration-color: inherit;
           text-underline-offset: max(5px, 0.28em);
           transition-timing-function: ease;
@@ -80,6 +115,7 @@ rh-breadcrumb {
         }
 
         &:is(:focus, :focus-visible) {
+          /** Link focus border radius */
           border-radius: var(--rh-border-radius-default, 3px);
           outline: 2px solid var(--_breadcrumb-link-focus-outline-color);
         }
@@ -90,7 +126,11 @@ rh-breadcrumb {
 
         &:visited:hover {
           color: var(--_breadcrumb-link-color-visited-hover);
-          text-decoration: underline var(--rh-border-width-sm, 1px) dashed;
+          text-decoration:
+            underline
+            /** Visited link hover underline thickness */
+            var(--rh-border-width-sm, 1px)
+            dashed;
           text-decoration-color: inherit;
           text-underline-offset: max(5px, 0.28em);
           transition-timing-function: ease;
@@ -119,6 +159,7 @@ rh-breadcrumb {
 
   &[variant='subtle'] > ol > li {
     &:not(:first-of-type):before {
+      /** Subtle variant separator icon color */
       background-color: var(--rh-color-icon-subtle, #707070);
     }
 
@@ -133,6 +174,8 @@ rh-breadcrumb {
     border: 0;
     color: var(--_breadcrumb-link-color);
     cursor: pointer;
+
+    /** Truncation button minimum inline size */
     min-inline-size: var(--rh-length-xl, 24px);
     padding: 0;
     text-decoration: none;
@@ -143,6 +186,7 @@ rh-breadcrumb {
     }
 
     &:focus {
+      /** Truncation button focus border radius */
       border-radius: var(--rh-border-radius-default, 3px);
       outline: 2px solid var(--_breadcrumb-link-focus-outline-color);
     }

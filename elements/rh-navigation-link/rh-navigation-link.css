@@ -23,7 +23,10 @@ a,
 ::slotted(a) {
   position: relative;
   display: var(--_navigation-link-display, inline);
-  color: var(--_navigation-link-color, var(--rh-color-text-primary)) !important;
+  color:
+    var(--_navigation-link-color,
+      /** Link text color */
+      var(--rh-color-text-primary)) !important;
   font-size: var(--_navigation-link-font-size, 1rem) !important;
   font-weight: var(--_navigation-link-font-weight, initial) !important;
   block-size: var(--_navigation-link-block-size, auto);
@@ -54,13 +57,19 @@ a:is(:hover, :hover:focus-visible, :focus-visible, :active),
       light-dark(transparent, transparent)) !important;
   --_navigation-link-color:
     var(--_navigation-link-color-hover,
+      /* Navigation Link hover, focus, active text color */
       var(--rh-color-interactive-primary-hover)) !important;
 
   text-underline-offset: var(--_navigation-link-text-underline-offset, 4px) !important;
   text-decoration-color:
     var(--_navigation-link-text-decoration-color,
-      light-dark(var(--rh-color-gray-50, #707070),
-      var(--rh-color-gray-40, #a3a3a3))) !important;
+      light-dark(
+        /* Navigation Link hover, focus, active text decoration color on light */
+        var(--rh-color-gray-50, #707070),
+        /* Navigation Link hover, focus, active text decoration color on dark */
+        var(--rh-color-gray-40, #a3a3a3)
+      )
+    ) !important;
   text-decoration-line: var(--_navigation-link-text-decoration-line, underline) !important;
   text-decoration-style: var(--_navigation-link-text-decoration-style, dashed) !important;
   text-decoration-skip-ink: auto !important;
@@ -69,6 +78,13 @@ a:is(:hover, :hover:focus-visible, :focus-visible, :active),
 a:is(:focus-visible, :hover:focus-visible, :focus-visible, :active),
 ::slotted(a:is(:focus-visible, :hover:focus-visible, :focus-visible, :active)) {
   outline-offset: var(--_navigation-link-focus-outline-offset, 0);
-  outline: var(--rh-border-width-md, 2px) solid var(--rh-color-interactive-primary-default);
+  outline:
+    /** Focus outline color */
+    var(--rh-color-interactive-primary-default)
+    solid
+    /** Focus outline width  */
+    var(--rh-border-width-md, 2px);
+
+  /** Focus border radius  */
   border-radius: var(--rh-border-radius-default, 3px);
 }

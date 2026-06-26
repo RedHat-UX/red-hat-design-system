@@ -1,3 +1,6 @@
+---
+description: "Default scheme toggle with light, dark, and system options."
+---
 <rh-scheme-toggle></rh-scheme-toggle>
 
 <script type="module">
@@ -11,5 +14,9 @@
         var(--rh-color-surface-darkest, #151515));
     color: light-dark(var(--rh-color-text-primary-default-on-light, #151515),
         var(--rh-color-text-primary-default-on-dark, #ffffff));
+  }
+
+  rh-scheme-toggle {
+    margin-block-start: var(--rh-space-md, 8px);
   }
 </style>

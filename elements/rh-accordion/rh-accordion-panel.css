@@ -1,12 +1,11 @@
 :host {
-  display: none;
+  display: block;
   overflow: hidden;
   will-change: height;
+}
 
-  --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
-  --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
-  --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
-  --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
+:host(:not([expanded])) {
+  display: none;
 }
 
 ::slotted(*:not(rh-accordion)) {
@@ -16,25 +15,25 @@
 }
 
 :host ::slotted(*:not(:first-child)) {
+  /** Vertical spacing between stacked panel children */
   padding-block-start: var(--rh-space-xl, 24px);
 }
 
 .large {
-  --_panel-body-padding-block-start: var(--rh-space-xl, 24px);
-  --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
-  --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
-  --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
+  --rh-accordion-panel-padding-block: var(--rh-space-xl, 24px);
+  --rh-accordion-panel-padding-inline: var(--rh-space-xl, 24px);
 }
 
 .body {
   position: relative;
   overflow: hidden;
   display: block;
-  padding:
-    var(--_panel-body-padding-block-start, var(--rh-space-md, 8px))
-    var(--_panel-body-padding-inline-end, var(--rh-space-lg, 16px))
-    var(--_panel-body-padding-block-end, var(--rh-space-md, 8px))
-    var(--_panel-body-padding-inline-start, var(--rh-space-lg, 16px));
+
+  /** Panel block (top and bottom) padding */
+  padding-block: var(--rh-accordion-panel-padding-block, var(--rh-space-lg, 16px));
+
+  /** Panel inline (left and right) padding */
+  padding-inline: var(--rh-accordion-panel-padding-inline, var(--rh-space-xl, 24px));
 }
 
 :host([fixed]) {
@@ -49,6 +48,7 @@
 }
 
 #container {
+  /** Panel trailing border */
   border-inline-end: 1px solid var(--rh-color-border-subtle);
   background-color: var(--_accordion-background);
 }
@@ -59,13 +59,18 @@
   top: 0;
   bottom: 0;
   left: 0;
+
+  /** Accent bar thickness */
   width: var(--rh-border-width-lg, 3px);
+
+  /** Expanded panel accent bar color */
   background-color: var(--rh-color-accent-brand);
   inset-block: 0;
   inset-inline-start: 0;
 }
 
 .content {
+  /** Panel content text color */
   color: var(--rh-color-text-primary);
   font-size: var(--_panel-font-size);
 }

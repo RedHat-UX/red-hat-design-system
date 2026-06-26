@@ -1,0 +1,15 @@
+:host {
+  display: inline;
+
+  /** Sets the body text font family using the `--rh-font-family-body-text` design token */
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
+  /** Sets the body text size using the `--rh-font-size-body-text-md` design token */
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+
+  /** Sets the body text weight using the `--rh-font-weight-body-text-regular` design token */
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
+
+  /** Sets the body text line height using the `--rh-line-height-body-text` design token */
+  line-height: var(--rh-line-height-body-text, 1.5);
+}

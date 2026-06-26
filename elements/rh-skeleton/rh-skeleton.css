@@ -1,11 +1,15 @@
 .visually-hidden {
   border: 0;
   clip: rect(0, 0, 0, 0);
+
+  /** Minimum dimension for visually hidden content */
   block-size: var(--rh-length-4xs, 1px);
   margin: -1px;
   overflow: hidden;
   padding: 0;
   position: absolute;
   white-space: nowrap;
+
+  /** Minimum dimension for visually hidden content */
   inline-size: var(--rh-length-4xs, 1px);
 }

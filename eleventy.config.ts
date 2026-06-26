@@ -17,6 +17,7 @@ import DesignTokensPlugin from '#11ty-plugins/tokens.js';
 import RHDSMarkdownItPlugin from '#11ty-plugins/markdown-it.js';
 import ImportMapPlugin from '#11ty-plugins/importMap.js';
 import LargeDemoWorkaroundPlugin from '#11ty-plugins/large-demo-workaround.js';
+import LazyLoadingPlugin from '#11ty-plugins/lazy-loading.js';
 
 export interface GlobalData {
   runMode: 'build' | 'watch' | 'serve';
@@ -74,10 +75,97 @@ export default async function(eleventyConfig: UserConfig) {
 
   eleventyConfig.addGlobalData('isLocal', isLocal);
 
+  /**
+   * AI guidelines integration
+   *
+   * The AI guidelines content lives in a git submodule at docs/ai-guidelines,
+   * sourced from https://github.com/project-felt/ai-guidelines. The submodule
+   * has its own repo structure (content/, assets/, source/, README, etc.), so
+   * we use computed data to bridge it into the docs site without modifying the
+   * submodule itself. See also .eleventyignore, which excludes the submodule's
+   * root-level markdown and source/ directory to prevent duplicate pages.
+   *
+   * If the submodule's directory structure changes (e.g., content files move
+   * out of content/, or image paths change), these overrides can be reverted
+   * and replaced with standard 11ty data files inside the submodule.
+   *
+   * - layout:    assigns the ai-guidelines template since we can't place a
+   *              directory data file inside the submodule
+   * - permalink: strips "content/" from URLs so pages render at
+   *              /ai-guidelines/<page>/ instead of /ai-guidelines/content/<page>/
+   * - hideToc:   suppresses the table of contents for pages that are too short
+   *              to benefit from one (e.g. legal-requirements)
+   *
+   * The 'aiGuidelines' collection is created explicitly via addCollection
+   * rather than computed tags, because eleventyComputed set via addGlobalData
+   * doesn't reliably populate collections in all build environments (e.g.
+   * Netlify). The collection filters pages by input path and sorts by the
+   * frontmatter 'order' field, which the sidenav uses for display order.
+   */
+  eleventyConfig.addGlobalData('eleventyComputed', {
+    layout(data: { layout?: string; page: { inputPath: string } }) {
+      if (!data.layout && data.page.inputPath.includes('/ai-guidelines/content/')) {
+        return 'layouts/pages/ai-guidelines.njk';
+      }
+      return data.layout;
+    },
+    permalink(data: { permalink?: string; page: { inputPath: string; filePathStem: string } }) {
+      if (data.page.inputPath.includes('/ai-guidelines/content/')) {
+        return `${data.page.filePathStem.replace('/ai-guidelines/content/', '/ai-guidelines/')}/index.html`;
+      }
+      return data.permalink;
+    },
+    hideToc(data: { hideToc?: boolean; page: { inputPath: string } }) {
+      if (data.page.inputPath.includes('/ai-guidelines/content/legal-requirements')) {
+        return true;
+      }
+      return data.hideToc;
+    },
+  });
+
+  eleventyConfig.addCollection('aiGuidelines', collection => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const all: any[] = collection.getAll();
+    return all
+        .filter(item => item.inputPath?.includes('/ai-guidelines/content/'))
+        .sort((a, b) => (a.data?.order ?? 99) - (b.data?.order ?? 99));
+  });
+
+  /**
+   * Wraps <table> elements in <rh-table> for ai-guidelines pages and injects
+   * the rh-table lightdom stylesheet. Only applies to pages sourced from the
+   * ai-guidelines submodule, so other site tables are unaffected.
+   */
+  eleventyConfig.addTransform('rh-table-wrap', function(content: string) {
+    // eslint-disable-next-line @typescript-eslint/no-invalid-this
+    const inputPath: string = this.page.inputPath ?? '';
+    if (inputPath.includes('/ai-guidelines/content/')
+      && content.includes('<table')) {
+      const wrapped = content
+          .replace(/<table\b/g, '<rh-table><table')
+          .replace(/<\/table>/g, '</table></rh-table>');
+      const cssHref = '/assets/packages/@rhds/elements'
+        + '/elements/rh-table/rh-table-lightdom.css';
+      if (!wrapped.includes('rh-table-lightdom.css')) {
+        const link = `<link rel="stylesheet"`
+          + ` data-helmet href="${cssHref}">`;
+        return wrapped.replace('</head>', `  ${link}\n</head>`);
+      }
+      return wrapped;
+    }
+    return content;
+  });
+
   await eleventyConfig.addPlugin(TypescriptAssetsPlugin);
   eleventyConfig.addPlugin(EleventyRenderPlugin);
   eleventyConfig.addPlugin(HelmetPlugin);
   eleventyConfig.addPlugin(RHDSMarkdownItPlugin);
+
+  /** Automatically add loading="lazy" to images below the fold */
+  eleventyConfig.addPlugin(LazyLoadingPlugin, {
+    skipFirstImages: 1,
+    excludeSelectors: [],
+  });
 
   /** Table of Contents Shortcode */
   eleventyConfig.addPlugin(TOCPlugin, {
@@ -103,6 +191,7 @@ export default async function(eleventyConfig: UserConfig) {
         'lit-html': '/assets/packages/lit-html/lit-html.js',
         'lit-html/': '/assets/packages/lit-html/',
         'prism-esm/': '/assets/packages/prism-esm/',
+        '@lit-labs/ssr-client': `/assets/packages/@lit-labs/ssr-client/index.js`,
         '@lit-labs/ssr-client/lit-element-hydrate-support.js': `/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js`,
         '@rhds/tokens': '/assets/packages/@rhds/tokens/js/tokens.js',
         '@rhds/tokens/css/': '/assets/packages/@rhds/tokens/css/',
@@ -225,13 +314,14 @@ export default async function(eleventyConfig: UserConfig) {
       'elements/rh-navigation-link/rh-navigation-link.ts',
       'elements/rh-navigation-primary/rh-navigation-primary-item-menu.ts',
       'elements/rh-navigation-primary/rh-navigation-primary-item.ts',
-      'elements/rh-navigation-primary/rh-navigation-primary-overlay.ts',
       'elements/rh-navigation-primary/rh-navigation-primary.ts',
       'elements/rh-navigation-secondary/rh-navigation-secondary.ts',
       'elements/rh-navigation-vertical/rh-navigation-vertical.ts',
       'elements/rh-navigation-vertical/rh-navigation-vertical-list.ts',
       'elements/rh-pagination/rh-pagination.ts',
       'elements/rh-scheme-toggle/rh-scheme-toggle.ts',
+      'elements/rh-select/rh-select.ts',
+      'elements/rh-select/rh-option.ts',
       'elements/rh-site-status/rh-site-status.ts',
       'elements/rh-skip-link/rh-skip-link.ts',
       'elements/rh-spinner/rh-spinner.ts',
@@ -271,6 +361,7 @@ export default async function(eleventyConfig: UserConfig) {
       // still not working nicely with ssr
       // 'elements/rh-audio-player/rh-audio-player.ts',
       // 'elements/rh-footer/rh-footer.ts',
+      // 'elements/rh-scheme-dropdown/rh-scheme-dropdown.ts',
     ],
     slotControllerElements: [
       'rh-alert',
@@ -283,6 +374,7 @@ export default async function(eleventyConfig: UserConfig) {
       'rh-dialog',
       'rh-footer',
       'rh-footer-universal',
+      'rh-select',
       'rh-stat',
       'rh-switch',
       'rh-tab',
@@ -293,6 +385,8 @@ export default async function(eleventyConfig: UserConfig) {
       'rh-menu',
       'rh-menu-item',
       'rh-menu-item-group',
+      'rh-navigation-primary',
+      'rh-option',
       'uxdot-pattern',
     ],
     tagsToAlphabetize: [
