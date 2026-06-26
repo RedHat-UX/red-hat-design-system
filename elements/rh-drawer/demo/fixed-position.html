@@ -1,0 +1,51 @@
+<meta itemprop="description" content="Overlay drawer with fixed positioning. The panel is fixed to the viewport rather than a parent container.">
+<div id="container">
+  <rh-drawer id="drawer" trigger-id="trigger" position="fixed">
+    <p>Panel content slotted here.</p>
+  </rh-drawer>
+  <div id="main">
+    <button id="trigger" aria-controls="drawer" aria-expanded="false">Toggle Drawer</button>
+
+    <p>Click the trigger to open the drawer. The panel will be fixed to the viewport edge regardless of scroll position or container context.</p>
+    <form id="knobs">
+      <fieldset>
+        <legend>Inline</legend>
+        <label><input type="radio" name="inline" value="start" checked> start</label>
+        <label><input type="radio" name="inline" value="end"> end</label>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+<style>
+  #container {
+    position: relative;
+    display: grid;
+    block-size: 100%;
+  }
+
+  rh-drawer,
+  #main {
+    grid-area: 1 / 1;
+  }
+
+  #main {
+    padding: var(--rh-space-2xl, 32px);
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-drawer/rh-drawer.js';
+
+  const trigger = document.getElementById('trigger');
+  const drawer = document.getElementById('drawer');
+  const form = document.getElementById('knobs');
+
+  drawer.addEventListener('open', () => trigger.setAttribute('aria-expanded', 'true'));
+  drawer.addEventListener('close', () => trigger.setAttribute('aria-expanded', 'false'));
+
+  form.addEventListener('input', () => {
+    const data = Object.fromEntries(new FormData(form));
+    drawer.inline = data.inline;
+  });
+</script>

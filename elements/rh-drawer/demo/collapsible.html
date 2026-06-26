@@ -1,0 +1,38 @@
+<meta itemprop="description" content="Collapsible drawer without container context. Always inline push mode with no responsive behavior.">
+<div id="container">
+  <rh-drawer id="drawer" collapsible open>
+    <p>Panel content slotted here.</p>
+  </rh-drawer>
+  <div id="main">
+    <rh-alert state="warning">
+      <h4 slot="header">Not recommended for responsive layouts</h4>
+      <p>This usage always pushes content regardless of viewport width, which can compress page content on narrow screens. For most use cases, prefer the <a href="../responsive-collapsible/">responsive collapsible</a> pattern, which switches to an overlap panel at narrow widths.</p>
+    </rh-alert>
+
+    <p>This drawer has no container context on its parent, so it stays in inline push mode at any width.</p>
+  </div>
+</div>
+
+<style>
+  #container {
+    display: grid;
+    grid-template-areas: 'drawer main';
+    grid-template-columns: auto 1fr;
+    block-size: 100%;
+  }
+
+  rh-drawer {
+    grid-area: drawer;
+  }
+
+  #main {
+    grid-area: main;
+    padding: var(--rh-space-2xl, 32px);
+    overflow: auto;
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-drawer/rh-drawer.js';
+  import '@rhds/elements/rh-alert/rh-alert.js';
+</script>

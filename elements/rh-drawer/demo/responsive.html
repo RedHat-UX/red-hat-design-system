@@ -1,0 +1,69 @@
+<meta itemprop="description" content="Responsive inline-to-overlay drawer. Always visible at wide container widths, collapses to an overlay at narrow widths.">
+<div id="container" class="layout-inline">
+  <rh-drawer id="drawer" trigger-id="trigger">
+    <p>Panel content slotted here.</p>
+  </rh-drawer>
+  <div id="main">
+    <button id="trigger" aria-controls="drawer" aria-expanded="false" hidden>Toggle Drawer</button>
+
+    <p>At wide container widths the drawer is always visible. At narrow widths it becomes an overlay toggled by the button above.</p>
+  </div>
+</div>
+
+<style>
+  #container {
+    container-type: inline-size;
+    display: grid;
+    block-size: 100%;
+  }
+
+  #container.layout-inline {
+    grid-template-areas: 'drawer main';
+    grid-template-columns: auto 1fr;
+  }
+
+  #container.layout-overlay {
+    grid-template-areas: 'content';
+    grid-template-columns: 1fr;
+  }
+
+  #container.layout-overlay rh-drawer,
+  #container.layout-overlay #main {
+    grid-area: content;
+  }
+
+  #container.layout-inline rh-drawer {
+    grid-area: drawer;
+  }
+
+  #container.layout-inline #main {
+    grid-area: main;
+  }
+
+  #main {
+    padding: var(--rh-space-2xl, 32px);
+    overflow: auto;
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-drawer/rh-drawer.js';
+
+  const trigger = document.getElementById('trigger');
+  const drawer = document.getElementById('drawer');
+  const container = document.getElementById('container');
+
+  drawer.addEventListener('open', () => trigger.setAttribute('aria-expanded', 'true'));
+  drawer.addEventListener('close', () => trigger.setAttribute('aria-expanded', 'false'));
+
+  const ro = new ResizeObserver(entries => {
+    const width = entries[0].contentBoxSize[0].inlineSize;
+    if (width < 992) {
+      container.classList.replace('layout-inline', 'layout-overlay');
+    } else {
+      container.classList.replace('layout-overlay', 'layout-inline');
+    }
+    trigger.hidden = width >= 992;
+  });
+  ro.observe(container);
+</script>

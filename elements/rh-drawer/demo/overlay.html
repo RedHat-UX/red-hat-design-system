@@ -1,0 +1,51 @@
+<meta itemprop="description" content="Simple overlay drawer with no container context. Click the trigger to open the panel.">
+<div id="container">
+  <rh-drawer id="drawer" trigger-id="trigger" inline="end">
+    <p>Panel content slotted here.</p>
+  </rh-drawer>
+  <div id="main">
+    <button id="trigger" aria-controls="drawer" aria-expanded="false">Toggle Drawer</button>
+
+    <p>Click the trigger to open the drawer panel.</p>
+    <form id="knobs">
+      <fieldset>
+        <legend>Inline</legend>
+        <label><input type="radio" name="inline" value="start"> start</label>
+        <label><input type="radio" name="inline" value="end" checked> end</label>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+<style>
+  #container {
+    position: relative;
+    display: grid;
+    block-size: 100%;
+  }
+
+  rh-drawer,
+  #main {
+    grid-area: 1 / 1;
+  }
+
+  #main {
+    padding: var(--rh-space-2xl, 32px);
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-drawer/rh-drawer.js';
+
+  const trigger = document.getElementById('trigger');
+  const drawer = document.getElementById('drawer');
+  const form = document.getElementById('knobs');
+
+  drawer.addEventListener('open', () => trigger.setAttribute('aria-expanded', 'true'));
+  drawer.addEventListener('close', () => trigger.setAttribute('aria-expanded', 'false'));
+
+  form.addEventListener('input', () => {
+    const data = Object.fromEntries(new FormData(form));
+    drawer.inline = data.inline;
+  });
+</script>

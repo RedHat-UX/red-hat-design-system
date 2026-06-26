@@ -1,0 +1,54 @@
+<meta itemprop="description" content="Persists drawer open/closed state using sessionStorage. Collapse the panel and refresh to see the state restored.">
+<div id="container" class="layout-inline">
+  <rh-drawer id="drawer" collapsible open>
+    <p>Collapse this panel, then refresh the page.
+      The open/closed state will be restored from session storage.</p>
+  </rh-drawer>
+  <div id="main">
+
+    <p>Toggle the drawer, then refresh to verify state is restored.</p>
+    <p><small>Open/closed state persists in sessionStorage under key
+      <code>"demo-drawer:open"</code>.</small></p>
+  </div>
+</div>
+
+<style>
+  #container {
+    container-type: inline-size;
+    display: grid;
+    block-size: 100%;
+  }
+
+  #container.layout-inline {
+    grid-template-areas: 'drawer main';
+    grid-template-columns: auto 1fr;
+  }
+
+  #container.layout-inline rh-drawer {
+    grid-area: drawer;
+  }
+
+  #container.layout-inline #main {
+    grid-area: main;
+  }
+
+  #main {
+    padding: var(--rh-space-2xl, 32px);
+    overflow: auto;
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-drawer/rh-drawer.js';
+
+  const drawer = document.getElementById('drawer');
+  const STORAGE_KEY = 'demo-drawer:open';
+
+  const stored = sessionStorage.getItem(STORAGE_KEY);
+  if (stored !== null) {
+    drawer.open = stored === 'true';
+  }
+
+  drawer.addEventListener('open', () => sessionStorage.setItem(STORAGE_KEY, 'true'));
+  drawer.addEventListener('close', () => sessionStorage.setItem(STORAGE_KEY, 'false'));
+</script>
