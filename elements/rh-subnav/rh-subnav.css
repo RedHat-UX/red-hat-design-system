@@ -25,11 +25,9 @@
 
   /** Gap between navigation link items */
   gap: var(--rh-subnav-link-gap, 0);
-  padding-block:
-    /** Navigation items container block padding start */
-    var(--rh-subnav-items-padding-block-start, 0)
-    /** Navigation items container block padding end */
-    var(--rh-subnav-items-padding-block-end, 0);
+
+  /** Navigation items container block padding */
+  padding-block: var(--rh-subnav-items-padding-block, 0);
 
   /** Navigation items container inline padding */
   padding-inline: var(--rh-subnav-items-padding-inline, 0);
