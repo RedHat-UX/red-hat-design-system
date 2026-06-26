@@ -16,6 +16,7 @@
     --unified-color-gray-20: #e0e0e0;
     --unified-color-gray-30: #c7c7c7;
     --unified-color-gray-40: #a3a3a3;
+    --unified-color-gray-45: #8c8c8c;
     --unified-color-gray-50: #707070;
     --unified-color-gray-60: #4d4d4d;
     --unified-color-gray-70: #383838;
@@ -68,11 +69,11 @@
     --unified-color-icon-secondary:
       light-dark(
           var(--unified-color-gray-90),
-          white
+          var(--unified-color-gray-10)
         );
     --unified-color-icon-secondary-inverse:
       light-dark(
-          white,
+          var(--unified-color-gray-10),
           var(--unified-color-gray-90)
         );
 
@@ -174,6 +175,26 @@
           var(--unified-color-blue-40),
           var(--unified-color-blue-30)
         );
+    --unified-color-interactive-secondary-underline-default:
+    light-dark(
+        var(--unified-color-gray-45),
+        var(--unified-color-gray-40)
+      );
+    --unified-color-interactive-secondary-underline-hover:
+    light-dark(
+        var(--unified-color-gray-45),
+        var(--unified-color-gray-40)
+      );
+    --unified-color-interactive-secondary-underline-active:
+    light-dark(
+        var(--unified-color-gray-45),
+        var(--unified-color-gray-40)
+      );
+    --unified-color-interactive-secondary-underline-focus:
+    light-dark(
+        var(--unified-color-gray-45),
+        var(--unified-color-gray-40)
+      );
 
     /* TODO: Double-check color */
     --unified-color-border-interactive-subtle-focus:
@@ -1238,7 +1259,7 @@
 
     & > ol > li > a[href]:not([aria-current]) {
       text-decoration: underline var(--unified-border-width-sm) dashed !important;
-      text-decoration-color: currentcolor !important;
+      text-decoration-color: var(--unified-color-interactive-secondary-underline-default) !important;
       text-underline-offset: max(5px, 0.28em) !important;
     }
 
