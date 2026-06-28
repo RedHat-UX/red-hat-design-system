@@ -195,7 +195,7 @@ circle.track {
   }
 
   15% {
-    stroke-width: calc(var(--rh-spinner-stroke-width) - 4);
+    stroke-width: calc(var(--rh-spinner-stroke-width) - 4px);
   }
 
   40% {
