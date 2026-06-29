@@ -1168,10 +1168,6 @@
 /* Element: Accordion */
 @layer accordion {
   rh-accordion {
-    --unified-accordion-panel-padding: var(--unified-space-xl);
-    --rh-border-width-lg: var(--unified-border-width-lg);
-    --rh-font-size-body-text-md: var(--unified-font-size-body-text-sm);
-    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
     --rh-color-accent-brand: transparent;
     --rh-box-shadow-sm: none;
     --rh-color-border-subtle: transparent;
