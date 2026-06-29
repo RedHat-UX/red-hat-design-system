@@ -42,9 +42,8 @@
 #menu-list {
   position: absolute;
   padding:
-    /** Menu panel block padding */
-    var(--rh-space-md, 8px)
-    0;
+    var(--rh-menu-dropdown-panel-padding,
+      var(--rh-space-md, 8px) 0);
   left: 0;
   top: 0;
   z-index: 1000;
@@ -52,8 +51,14 @@
   max-inline-size: 100%;
 
   /** Menu panel corner rounding */
-  border-radius: var(--rh-border-radius-default, 3px);
-  border: var(--_border);
+  border-radius:
+    var(--rh-menu-dropdown-panel-border-radius,
+      var(--rh-border-radius-default, 3px));
+
+  /** Menu panel border */
+  border:
+    var(--rh-menu-dropdown-panel-border,
+      var(--_border));
   background:
     light-dark(
         /** Menu panel background in light mode */
@@ -145,7 +150,8 @@
   /* Styles contents of a basic menu toggle.
      Must not be changed to retain consistency with visually similar RHDS elements. */
   .action-icon rh-icon {
-    --rh-icon-size: 10px;
+    /** Caret icon size */
+    --rh-icon-size: var(--rh-menu-dropdown-caret-size, 10px);
 
     /** Space between label and caret icon */
     padding-inline-start: var(--rh-space-md, 8px);
@@ -164,12 +170,12 @@
   &.boxed {
     box-shadow:
       inset 0 0 0 1px
-      light-dark(
-          /** Boxed border color in light mode */
+      /** Toggle default border color */
+      var(--rh-menu-dropdown-toggle-border-color,
+        light-dark(
           var(--rh-color-gray-30, #c7c7c7),
-          /** Boxed border color in dark mode */
           var(--rh-color-gray-50, #707070)
-        );
+        ));
 
     &:not(.open) {
       &:hover {
@@ -238,11 +244,18 @@
             );
       }
 
-      &:focus,
+      &:focus {
+        outline:
+          var(--rh-length-3xs, 2px)
+          solid
+          var(--_interactive-border-color);
+        outline-offset: var(--rh-length-3xs, 2px);
+      }
+
       &:active {
         box-shadow:
           inset 0 0 0
-          /** Focus/active border spread width */
+          /** Active border spread width */
           var(--rh-length-3xs, 2px)
           var(--_interactive-border-color);
       }
