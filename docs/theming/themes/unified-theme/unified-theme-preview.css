@@ -855,10 +855,11 @@
     }
 
     &:not([variant]) {
-      --rh-cta-hover-background-color: var(--unified-color-interactive-fill-plain-hover);
+      --rh-border-radius-default: var(--unified-border-radius-action-plain);
+      --rh-cta-hover-background-color: transparent;
       --rh-cta-hover-text-decoration: var(--unified-cta-text-decoration);
       --rh-cta-hover-text-underline-offset: var(--unified-cta-text-underline-offset);
-      --rh-cta-focus-container-background-color: var(--unified-color-interactive-fill-plain-focus);
+      --rh-cta-focus-container-background-color: transparent;
       --rh-cta-focus-text-decoration: var(--unified-cta-text-decoration);
       --rh-cta-active-container-background-color:
         var(
@@ -867,11 +868,16 @@
       --rh-cta-active-text-decoration: var(--unified-cta-text-decoration);
 
       &::part(container) {
-        padding-block: var(--rh-space-lg);
-        padding-inline: var(--rh-space-2xl);
+        padding-block: 2px;
+        padding-inline: var(--rh-space-xs);
+      }
+
+      &:focus-within {
+        border-radius: var(--unified-border-radius-action-plain);
       }
     }
 
+    /* stylelint-disable-next-line no-descending-specificity */
     &:is([variant='tertiary'], [variant='brick']) {
       /* stylelint-disable rhds/no-unknown-token-name -- --rh-color-gray-45 added in RHDS v3.1 */
       --unified-cta-text-decoration-color:
