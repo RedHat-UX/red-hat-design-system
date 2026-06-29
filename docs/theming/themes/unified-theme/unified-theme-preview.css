@@ -16,6 +16,7 @@
     --unified-color-gray-20: #e0e0e0;
     --unified-color-gray-30: #c7c7c7;
     --unified-color-gray-40: #a3a3a3;
+    --unified-color-gray-45: #8c8c8c;
     --unified-color-gray-50: #707070;
     --unified-color-gray-60: #4d4d4d;
     --unified-color-gray-70: #383838;
@@ -68,11 +69,11 @@
     --unified-color-icon-secondary:
       light-dark(
           var(--unified-color-gray-90),
-          white
+          var(--unified-color-gray-10)
         );
     --unified-color-icon-secondary-inverse:
       light-dark(
-          white,
+          var(--unified-color-gray-10),
           var(--unified-color-gray-90)
         );
 
@@ -194,6 +195,28 @@
           var(--unified-color-blue-40),
           var(--unified-color-blue-30)
         );
+    --unified-color-interactive-secondary-underline-default:
+      light-dark(
+          var(--unified-color-gray-45),
+          var(--unified-color-gray-40)
+        );
+    --unified-color-interactive-secondary-underline-hover:
+      light-dark(
+          var(--unified-color-gray-45),
+          var(--unified-color-gray-40)
+        );
+    --unified-color-interactive-secondary-underline-active:
+      light-dark(
+          var(--unified-color-gray-45),
+          var(--unified-color-gray-40)
+        );
+    --unified-color-interactive-secondary-underline-focus:
+      light-dark(
+          var(--unified-color-gray-45),
+          var(--unified-color-gray-40)
+        );
+
+    /* TODO: Double-check color */
     --unified-color-border-interactive-subtle-focus:
       light-dark(
           var(--unified-color-blue-50),
@@ -1311,10 +1334,50 @@
 /* Element: Breadcrumb */
 @layer breadcrumb {
   rh-breadcrumb {
-    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
-    --rh-color-interactive-primary-hover: var(--unified-color-interactive-primary-hover);
+    --rh-color-interactive-primary-default: var(--unified-color-text-interactive-default);
+    --rh-color-interactive-primary-hover: var(--unified-color-text-interactive-hover);
+    --rh-color-interactive-primary-visited-default:
+      light-dark(
+          var(--rh-color-interactive-primary-visited-default-on-light),
+          var(--rh-color-interactive-primary-visited-default-on-dark)
+        );
+    --rh-color-interactive-primary-visited-hover:
+      light-dark(
+          var(--rh-color-interactive-primary-visited-hover-on-light),
+          var(--rh-color-interactive-primary-visited-hover-on-dark)
+        );
     --rh-border-radius-default: var(--unified-border-radius-action-plain);
-    --rh-color-border-interactive: var(--unified-color-interactive-primary-default);
+    --rh-color-border-interactive: var(--unified-color-text-interactive-default);
+    --rh-font-size-body-text-sm: var(--unified-font-size-body-text-sm);
+    --rh-color-icon-secondary: var(--unified-color-icon-secondary);
+    /* stylelint-disable @stylistic/declaration-colon-newline-after, @stylistic/max-line-length */
+    --rh-breadcrumb-caret-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 5 9' fill='none'%3E%3Cpath d='M.5 9a.5.5 0 0 1-.354-.146.5.5 0 0 1 0-.708L3.793 4.5.146.854a.5.5 0 0 1 0-.708.5.5 0 0 1 .708 0l3.823 3.823a.75.75 0 0 1 0 1.061L.854 8.854A.5.5 0 0 1 .5 9Z' fill='black'/%3E%3C/svg%3E");
+    /* stylelint-enable @stylistic/declaration-colon-newline-after, @stylistic/max-line-length */
+
+    & > ol > li > a[href]:not([aria-current]) {
+      text-decoration: underline var(--unified-border-width-sm) dashed !important;
+      /* stylelint-disable @stylistic/declaration-colon-newline-after, @stylistic/max-line-length */
+      text-decoration-color: var(--unified-color-interactive-secondary-underline-default) !important;
+      /* stylelint-enable @stylistic/declaration-colon-newline-after, @stylistic/max-line-length */
+      text-underline-offset: max(5px, 0.28em) !important;
+    }
+
+    & > ol > li > a[href]:not([aria-current]):is(:hover, :focus, :active) {
+      text-decoration-color: currentcolor !important;
+    }
+
+    & > ol > li > a[href]:not([aria-current]):visited:hover {
+      text-decoration-color: var(--rh-color-interactive-primary-visited-hover) !important;
+    }
+
+    & > ol > li > a[aria-current='page'] {
+      text-decoration: none !important;
+    }
+
+    & > ol > li:not(:first-of-type):before {
+      block-size: 12px !important;
+      inline-size: 12px !important;
+    }
   }
 }
 
