@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/styles/demo/styles.css" media="all">
 <link rel="stylesheet" href="/theming/themes/unified-theme/unified-theme-preview.css">
 
 <style>
@@ -7,9 +8,30 @@
 </style>
 
 <div class="example-row">
-  <rh-button id="dialog-trigger">Open dialog</rh-button>
-  <rh-dialog trigger="dialog-trigger" variant="small">
+  <rh-button id="dialog-trigger-sm">Open small dialog</rh-button>
+  <rh-button id="dialog-trigger-md">Open medium dialog</rh-button>
+  <rh-button id="dialog-trigger-lg">Open large dialog</rh-button>
+  <rh-button id="dialog-trigger-nh">Open no-header dialog</rh-button>
+
+  <rh-dialog trigger="dialog-trigger-sm" variant="small">
     <h3 slot="header">Modal title</h3>
+    <p>Content goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <rh-button slot="footer">Confirm</rh-button>
+    <rh-button slot="footer" variant="link">Cancel</rh-button>
+  </rh-dialog>
+  <rh-dialog trigger="dialog-trigger-md" variant="medium">
+    <h3 slot="header">Modal title</h3>
+    <p>Content goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <rh-button slot="footer">Confirm</rh-button>
+    <rh-button slot="footer" variant="link">Cancel</rh-button>
+  </rh-dialog>
+  <rh-dialog trigger="dialog-trigger-lg" variant="large">
+    <h3 slot="header">Modal title</h3>
+    <p>Content goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <rh-button slot="footer">Confirm</rh-button>
+    <rh-button slot="footer" variant="link">Cancel</rh-button>
+  </rh-dialog>
+  <rh-dialog trigger="dialog-trigger-nh">
     <p>Content goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     <rh-button slot="footer">Confirm</rh-button>
     <rh-button slot="footer" variant="link">Cancel</rh-button>

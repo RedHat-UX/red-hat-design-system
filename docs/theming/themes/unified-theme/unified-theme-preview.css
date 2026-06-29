@@ -1342,9 +1342,28 @@
   rh-dialog {
     --rh-border-radius-default: var(--unified-border-radius-large);
     --rh-color-icon-secondary: var(--unified-color-icon-secondary);
-    --rh-font-weight-body-text-regular: var(--rh-font-weight-body-text-medium, 500);
     --rh-space-xl: var(--unified-space-xl);
     --rh-space-lg: var(--unified-space-lg);
+    --rh-button-close-width: 100%;
+    --rh-button-close-radius: 50%;
+    --rh-button-close-hover-background: var(--unified-color-interactive-fill-plain-hover);
+    --rh-button-close-focus-background: var(--unified-color-interactive-fill-plain-focus);
+    --rh-button-close-active-background: var(--unified-color-interactive-fill-plain-active);
+    --unified-dialog-header-sm: var(--rh-font-size-body-text-xl);
+    --unified-dialog-header-md: var(--rh-font-size-body-text-2xl);
+    --unified-dialog-header-lg: 28px; /* no 3xl */
+
+    &[variant='small'] [slot='header'] {
+      --rh-font-size-body-text-lg: var(--unified-dialog-header-sm);
+    }
+
+    &[variant='medium'] [slot='header'] {
+      --rh-font-size-body-text-lg: var(--unified-dialog-header-md);
+    }
+
+    &[variant='large'] [slot='header'] {
+      --rh-font-size-body-text-lg: var(--unified-dialog-header-lg);
+    }
 
     &::part(close-button) {
       --rh-border-radius-default: var(--unified-border-radius-action-plain);
