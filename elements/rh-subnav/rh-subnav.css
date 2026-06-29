@@ -9,6 +9,10 @@
 
 [part='container'] {
   display: flex;
+
+  /** Container pill border radius */
+  border-radius: var(--rh-subnav-border-radius, 0);
+  overflow: hidden;
 }
 
 #link-container {
@@ -18,6 +22,15 @@
   overflow-x: auto;
   scrollbar-width: none;
   max-width: 100%;
+
+  /** Gap between navigation link items */
+  gap: var(--rh-subnav-link-gap, 0);
+
+  /** Navigation items container block padding */
+  padding-block: var(--rh-subnav-items-padding-block, 0);
+
+  /** Navigation items container inline padding */
+  padding-inline: var(--rh-subnav-items-padding-inline, 0);
 }
 
 ::slotted(a) {
@@ -90,10 +103,9 @@
   --_navigation-link-align-items: center;
   --_navigation-link-inline-size: 100%;
   --_navigation-link-padding:
-    /** Navigation link block padding */
-    var(--rh-space-lg, 16px)
-    /** Navigation link inline padding */
-    var(--rh-space-2xl, 32px);
+    /** Navigation link block and inline padding */
+    var(--rh-subnav-link-padding,
+      var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px));
 
   /** Navigation link font size */
   --_navigation-link-font-size: var(--rh-font-size-body-text-md);
@@ -102,18 +114,41 @@
   --_navigation-link-text-decoration-line: none;
 
   /** Navigation link text color */
-  --_navigation-link-color: var(--rh-color-text-primary);
+  --_navigation-link-color: var(--rh-subnav-link-color, var(--rh-color-text-primary));
 
   /** Navigation link hover text color */
   --_navigation-link-color-hover: var(--rh-color-text-primary);
+
+  /** Navigation link hover background color */
+  --_navigation-link-hover-background-color:
+    var(--rh-subnav-link-background-color-hover,
+      light-dark(transparent, transparent));
+
+  /** Navigation link pill border radius */
+  --_navigation-link-border-radius: var(--rh-subnav-border-radius, 0);
   --_navigation-link-container-display: flex;
   --_navigation-link-container-align-items: center;
   --_navigation-link-container-position: relative;
   --_navigation-link-container-inline-size: 100%;
   --_navigation-link-focus-outline-offset: -2px;
 
+  /** Space between link pill background and active indicator */
+  padding-block-end: var(--rh-subnav-indicator-gap, 0);
   position: relative;
   display: flex;
+}
+
+::slotted(rh-navigation-link[current-page]) {
+  /** Navigation link active/current-page background color */
+  --_navigation-link-background-color:
+    var(--rh-subnav-link-background-color-active,
+      transparent);
+  --_navigation-link-hover-background-color:
+    var(--rh-subnav-link-background-color-active,
+      transparent);
+
+  /** Navigation link active/current-page text color */
+  --_navigation-link-color: var(--rh-color-text-primary);
 }
 
 ::slotted(rh-navigation-link):after {
@@ -131,11 +166,15 @@
 }
 
 ::slotted(rh-navigation-link:hover):after {
-  /** Navigation link hover subtle border block end color */
-  border-block-end-color: var(--rh-color-border-subtle);
+  /** Navigation link hover indicator border block end color */
+  border-block-end-color: var(--rh-subnav-link-border-color-hover, var(--rh-color-border-subtle));
 }
 
-::slotted(rh-navigation-link:active):after,
+::slotted(rh-navigation-link:active):after {
+  /** Navigation link active (pressed) indicator color */
+  border-block-end-color: var(--rh-subnav-link-border-color-active, var(--rh-color-brand-red));
+}
+
 ::slotted(rh-navigation-link[current-page]):after {
   /** Current page border block end color */
   border-block-end-color: var(--rh-color-brand-red);
@@ -184,6 +223,9 @@ button {
 }
 
 #previous {
+  /** Scroll-back button start-side border radius */
+  border-start-start-radius: var(--rh-subnav-border-radius, 0);
+  border-end-start-radius: var(--rh-subnav-border-radius, 0);
   border-inline-end:
     /** Previous button border inline end width */
     var(--rh-border-width-sm, 1px)
@@ -193,6 +235,9 @@ button {
 }
 
 #next {
+  /** Scroll-forward button end-side border radius */
+  border-start-end-radius: var(--rh-subnav-border-radius, 0);
+  border-end-end-radius: var(--rh-subnav-border-radius, 0);
   border-inline-start:
     /** Next button border inline start width */
     var(--rh-border-width-sm, 1px)
@@ -208,7 +253,7 @@ button {
     var(--rh-border-width-sm, 1px)
     solid
     /** Scroll button border block end color */
-    var(--rh-color-border-subtle);
+    var(--rh-subnav-button-border-block-end-color, var(--rh-color-border-subtle));
 
   & rh-icon {
     pointer-events: none;
