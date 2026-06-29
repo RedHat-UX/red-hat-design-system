@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="/theming/themes/unified-theme/unified-theme-preview.css">
+
+<style>
+  .example-row {
+    margin-block: var(--rh-space-2xl, 32px);
+  }
+
+  .example-flex {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rh-space-lg, 16px);
+  }
+</style>
+
+<h3>Inline alerts</h3>
+<div class="example-row example-flex">
+  <rh-alert>
+    <h4 slot="header">Default alert</h4>
+    <p>This is the default alert description.</p>
+  </rh-alert>
+  <rh-alert state="success">
+    <h4 slot="header">Success alert</h4>
+    <p>This is a success alert description.</p>
+  </rh-alert>
+  <rh-alert state="warning">
+    <h4 slot="header">Warning alert</h4>
+    <p>This is a warning alert description.</p>
+  </rh-alert>
+  <rh-alert state="danger">
+    <h4 slot="header">Danger alert</h4>
+    <p>This is a danger alert description.</p>
+  </rh-alert>
+  <rh-alert state="info">
+    <h4 slot="header">Info alert</h4>
+    <p>This is an info alert description.</p>
+  </rh-alert>
+</div>
+
+<h3>Toast alerts</h3>
+<div class="example-row example-flex">
+  <rh-alert variant="toast">
+    <h4 slot="header">Default toast</h4>
+    <p>This is a toast alert description.</p>
+  </rh-alert>
+  <rh-alert variant="toast" state="success">
+    <h4 slot="header">Success toast</h4>
+    <p>This is a success toast description.</p>
+  </rh-alert>
+  <rh-alert variant="toast" state="danger">
+    <h4 slot="header">Danger toast</h4>
+    <p>This is a danger toast description.</p>
+  </rh-alert>
+</div>

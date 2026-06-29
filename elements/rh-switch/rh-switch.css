@@ -3,11 +3,6 @@
   outline: none;
   vertical-align: top;
   cursor: pointer;
-
-  /**
-   * Set --rh-switch-show-check: true to show the check icon without
-   * the show-check-icon attribute (e.g. from a theme stylesheet).
-   */
   container-type: style;
 }
 
@@ -136,6 +131,10 @@ rh-icon {
 }
 
 :host([show-check-icon]) {
+  /**
+   * Set --rh-switch-show-check: true to show the check icon without
+   * the show-check-icon attribute (e.g. from a theme stylesheet).
+   */
   --rh-switch-show-check: true;
 }
 

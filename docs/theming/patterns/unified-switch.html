@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="/theming/themes/unified-theme/unified-theme-preview.css">
+
+<style>
+  .example-row {
+    margin-block: var(--rh-space-2xl, 32px);
+  }
+
+  .example-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rh-space-2xl, 32px);
+    align-items: center;
+  }
+</style>
+
+<h3>Default</h3>
+<div class="example-row example-flex">
+  <rh-switch message-on="On" message-off="Off"></rh-switch>
+  <rh-switch checked message-on="On" message-off="Off"></rh-switch>
+</div>
+
+<h3>With labels</h3>
+<div class="example-row example-flex">
+  <rh-switch message-on="Enabled" message-off="Disabled"></rh-switch>
+  <rh-switch checked message-on="Enabled" message-off="Disabled"></rh-switch>
+</div>
+
+<h3>Disabled</h3>
+<div class="example-row example-flex">
+  <rh-switch disabled message-on="On" message-off="Off"></rh-switch>
+  <rh-switch disabled checked message-on="On" message-off="Off"></rh-switch>
+</div>

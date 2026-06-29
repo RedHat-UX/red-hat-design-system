@@ -1,0 +1,71 @@
+<style>
+  @import "../../../styles/grid.css";
+  
+  .example-row {
+    margin-block: var(--rh-space-2xl, 32px);
+  }
+
+  .example-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rh-space-lg, 16px);
+    align-items: center;
+  }
+</style>
+
+<link rel="stylesheet" href="/theming/themes/unified-theme/unified-theme-preview.css">
+
+<h3>Filled (gray)</h3>
+<div class="example-row example-flex">
+  <rh-tag>Gray</rh-tag>
+  <rh-tag icon="information-fill">Gray</rh-tag>
+  <rh-tag href="#">Gray</rh-tag>
+  <rh-tag size="compact">Gray</rh-tag>
+  <rh-tag icon="information-fill" size="compact">Gray</rh-tag>
+</div>
+
+<h3>Filled (red)</h3>
+<div class="example-row example-flex">
+  <rh-tag color="red">Red</rh-tag>
+  <rh-tag color="red" icon="information-fill">Red</rh-tag>
+  <rh-tag color="red" href="#">Red</rh-tag>
+  <rh-tag color="red" size="compact">Red</rh-tag>
+  <rh-tag color="red" icon="information-fill" size="compact">Red</rh-tag>
+</div>
+
+<h3>Outline (gray)</h3>
+<div class="example-row example-flex">
+  <rh-tag variant="outline">Gray</rh-tag>
+  <rh-tag variant="outline" icon="information-fill">Gray</rh-tag>
+  <rh-tag variant="outline" href="#">Gray</rh-tag>
+  <rh-tag variant="outline" size="compact">Gray</rh-tag>
+  <rh-tag variant="outline" icon="information-fill" size="compact">Gray</rh-tag>
+</div>
+
+<h3>Outline (red)</h3>
+<div class="example-row example-flex">
+  <rh-tag variant="outline" color="red">Red</rh-tag>
+  <rh-tag variant="outline" color="red" icon="information-fill">Red</rh-tag>
+  <rh-tag variant="outline" color="red" href="#">Red</rh-tag>
+  <rh-tag variant="outline" color="red" size="compact">Red</rh-tag>
+  <rh-tag variant="outline" color="red" icon="information-fill" size="compact">Red</rh-tag>
+</div>
+
+<h3>Disabled</h3>
+<div class="example-row example-flex">
+  <rh-tag disabled href="#">Gray</rh-tag>
+  <rh-tag disabled color="red" href="#">Red</rh-tag>
+  <rh-tag disabled variant="outline" href="#">Gray outline</rh-tag>
+  <rh-tag disabled variant="outline" color="red" href="#">Red outline</rh-tag>
+</div>
+
+<h3>Other colors (not yet themed)</h3>
+<div class="example-row example-flex">
+  <rh-tag color="red-orange">Red Orange</rh-tag>
+  <rh-tag color="orange">Orange</rh-tag>
+  <rh-tag color="yellow">Yellow</rh-tag>
+  <rh-tag color="green">Green</rh-tag>
+  <rh-tag color="teal">Teal</rh-tag>
+  <rh-tag color="blue">Blue</rh-tag>
+  <rh-tag color="purple">Purple</rh-tag>
+</div>
