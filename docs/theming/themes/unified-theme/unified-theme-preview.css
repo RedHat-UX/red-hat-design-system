@@ -141,6 +141,7 @@
       var(
           --unified-color-interactive-fill-plain-active
         );
+    --unified-color-interactive-fill-plain-alt-hover: light-dark(#ffffff, #292929);
     --unified-color-text-interactive-default:
       light-dark(
           var(--unified-color-blue-50),
