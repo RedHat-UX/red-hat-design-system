@@ -29,61 +29,6 @@ subnav:
   import '@rhds/elements/rh-switch/rh-switch.js';
   import '@rhds/elements/rh-tabs/rh-tabs.js';
   import '@rhds/elements/rh-tag/rh-tag.js';
-
-  /**
-   * Button icon color patch
-   *
-   * rh-icon inherits color via currentcolor from the button's internal --_color
-   * custom property. There is no way to set a distinct icon color in
-   * hover/active/focus states from outside the shadow DOM using ::part() —
-   * ::part(icon):hover only fires when the icon itself is hovered, not the button.
-   * This patch injects directly into each rh-button shadow root to work around
-   * the limitation until a dedicated --rh-button-icon-color property is added
-   * to the element.
-   */
-  const buttonPatch = new CSSStyleSheet();
-  buttonPatch.replaceSync(/*css*/`
-    rh-icon {
-      color: var(--rh-button-icon-color, currentcolor);
-    }
-  `);  
-  
-  // NB: CSS runtime patches to elements
-  // which add features not yet available. 
-  // Check after 5.0 releases.
-
-  const accordionPanelPatch = new CSSStyleSheet();
-  accordionPanelPatch.replaceSync(/*css*/`
-    :host {
-      display: none;
-      overflow: hidden;
-      will-change: height;
-    }
-
-    .large {
-      --rh-accordion-panel-padding-block: var(--rh-space-xl, 24px);
-      --rh-accordion-panel-padding-inline: var(--rh-space-xl, 24px);
-    }
-
-    .body {
-      position: relative;
-      overflow: hidden;
-      display: block;
-      padding-block: var(--rh-accordion-panel-padding-block, var(--rh-space-lg, 16px));
-      padding-inline: var(--rh-accordion-panel-padding-inline, var(--rh-space-xl, 24px));
-    }
-  `);
-
-  for (const pattern of document.querySelectorAll('uxdot-pattern')) {
-    for (const el of pattern.shadowRoot.querySelectorAll('rh-button')) {
-      el.shadowRoot.adoptedStyleSheets = [...el.shadowRoot.adoptedStyleSheets, buttonPatch];
-    }
-
-    // rh-accordion-panel
-    for (const el of pattern.shadowRoot.querySelectorAll('rh-accordion-panel')) {
-      el.shadowRoot.adoptedStyleSheets = [...el.shadowRoot.adoptedStyleSheets, accordionPanelPatch];
-    }
-  }
 </script>
 <style>
   #unified-theme-toggle {
