@@ -160,52 +160,6 @@ Unified content
 </uxdot-feedback>
 
 <script type="module">
-  // NB: CSS runtime patches to elements
-  // which add features not yet available.
-  // Check after 5.0 releases.
-
-  // --rh-alert-border-width is not yet in rh-alert (PR #3062).
-  // Remove this patch once it merges.
-  const alertPatch = new CSSStyleSheet();
-  alertPatch.replaceSync(/*css*/`
-    #container {
-      border-width: var(--rh-alert-border-width, var(--rh-border-width-md, 2px));
-    }
-  `);
-
-  // --rh-button-close-*-background props are not yet in rh-button (PR #3063).
-  // Close button padding and border-radius also lack a public API.
-  // Remove this patch once both PRs merge.
-  const closeButtonPatch = new CSSStyleSheet();
-  closeButtonPatch.replaceSync(/*css*/`
-    button.close {
-      --_hover-background-color: var(--rh-button-close-hover-background, transparent);
-      --_focus-background-color: var(--rh-button-close-focus-background, transparent);
-      --_active-background-color: var(--rh-button-close-active-background, transparent);
-
-      border-radius: var(--rh-button-close-radius, var(--rh-border-radius-default, 3px));
-      width: var(--rh-button-close-width, var(--rh-length-lg,16px));
-    }
-  `);
-
-  for (const pattern of document.querySelectorAll('uxdot-pattern')) {
-    // rh-alert border-width and close button
-    for (const alert of pattern.shadowRoot.querySelectorAll('rh-alert')) {
-      alert.shadowRoot.adoptedStyleSheets = [
-        ...alert.shadowRoot.adoptedStyleSheets,
-        alertPatch,
-      ];
-      const closeBtn = alert.shadowRoot?.querySelector('rh-button#close-button');
-      if (closeBtn) {
-        await closeBtn.updateComplete;
-        closeBtn.shadowRoot.adoptedStyleSheets = [
-          ...closeBtn.shadowRoot.adoptedStyleSheets,
-          closeButtonPatch,
-        ];
-      }
-    }
-  }
-
   async function getCssFileAsString(url) {
     try {
         const response = await fetch(url);
@@ -218,24 +172,4 @@ Unified content
         console.error("Could not fetch the CSS file:", error);
     }
   }
-  const rhSwitch = document.querySelector('#unified-page-switch');
-    const stylesheet = new CSSStyleSheet(); 
-    const cssFile = await getCssFileAsString("/theming/themes/unified-theme/unified-theme-preview.css");
-    rhSwitch.addEventListener('change', function() {
-        if (rhSwitch.checked) {
-            stylesheet
-            .replace(cssFile)
-            .catch((err) => {
-                console.error("Failed to replace styles:", err);
-            });
-            document.adoptedStyleSheets.push(stylesheet);
-        } else {
-            stylesheet
-            .replace("")
-            .catch((err) => {
-                console.error("Failed to clear styles:", err);
-            });
-            document.adoptedStyleSheets.push(stylesheet);
-        }
-    });
 </script>
