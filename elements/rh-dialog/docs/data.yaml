@@ -3,6 +3,10 @@ tagName: rh-dialog
 name: Dialog
 type: element
 overallStatus: ready
+category: Overlays
+aka:
+  - Modal
+  - Lightbox
 libraries:
   figma: ready
   rhds: ready
@@ -12,3 +16,4 @@ relatedItems:
   - announcement
   - sticky-banner
   - sticky-card
+since: v1.0.0

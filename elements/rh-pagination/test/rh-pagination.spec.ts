@@ -1,5 +1,6 @@
-import { expect, html } from '@open-wc/testing';
+import { expect, html, nextFrame, aTimeout } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
+import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { RhPagination } from '@rhds/elements/rh-pagination/rh-pagination.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { stub, type SinonStub } from 'sinon';
@@ -21,6 +22,77 @@ describe('<rh-pagination>', function() {
         .to.be.an.instanceOf(klass)
         .and
         .to.be.an.instanceOf(RhPagination);
+  });
+
+  describe('after initial render', function() {
+    let element: RhPagination;
+    beforeEach(async function() {
+      element = await createFixture<RhPagination>(html`
+        <rh-pagination>
+          <ol>
+            <li><a href="#1">1</a></li>
+            <li><a href="#2">2</a></li>
+            <li><a href="#3">3</a></li>
+            <li><a href="#4">4</a></li>
+            <li><a href="#5">5</a></li>
+          </ol>
+        </rh-pagination>
+      `);
+      await element.updateComplete;
+      await nextFrame();
+    });
+
+    afterEach(function() {
+      history.replaceState(null, '', location.pathname + location.search);
+    });
+
+    it('should be accessible', async function() {
+      await expect(element).to.be.accessible();
+    });
+
+    it('does not focus the page number input', async function() {
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.not.have.axQuery({ role: 'spinbutton', focused: true });
+    });
+
+    it('has a page number input', async function() {
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.have.axQuery({ role: 'spinbutton', name: /Page/ });
+    });
+
+    describe('submitting the numeric input with a valid page number', function() {
+      beforeEach(async function() {
+        const input = element.shadowRoot!.querySelector('input')!;
+        const form = element.shadowRoot!.querySelector('form')!;
+        input.value = '3';
+        form.requestSubmit();
+        await aTimeout(50);
+        await element.updateComplete;
+        await nextFrame();
+      });
+
+      it('navigates to the entered page', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.have.axQuery({ role: 'spinbutton', value: 3 });
+      });
+    });
+
+    describe('submitting the numeric input with an out-of-range page number', function() {
+      beforeEach(async function() {
+        const input = element.shadowRoot!.querySelector('input')!;
+        const form = element.shadowRoot!.querySelector('form')!;
+        input.value = '99';
+        form.requestSubmit();
+        await aTimeout(50);
+        await element.updateComplete;
+        await nextFrame();
+      });
+
+      it('marks the input as invalid', function() {
+        const input = element.shadowRoot!.querySelector('input')!;
+        expect(input.validity.valid).to.be.false;
+      });
+    });
   });
 
   describe('with slotted i18n content', function() {
@@ -47,6 +119,11 @@ describe('<rh-pagination>', function() {
     it('does not log a content validation warning', function() {
       expect(Logger.prototype.warn).to.not.have.been.called;
     });
+
+    it('labels the page number input with the slotted text', async function() {
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.have.axQuery({ role: 'spinbutton', name: /עבור לדף/ });
+    });
   });
 
   describe('with invalid slotted content', function() {
@@ -72,6 +149,39 @@ describe('<rh-pagination>', function() {
     });
     it('logs a content validation warning', function() {
       expect(Logger.prototype.warn).to.have.been.calledWith('must have a single <ol> element as it\'s only child');
+    });
+  });
+
+  describe('with links missing href and aria-current="page" fallback', function() {
+    let element: RhPagination;
+    beforeEach(async function() {
+      /* eslint-disable lit-a11y/anchor-is-valid */
+      element = await createFixture<RhPagination>(html`
+        <rh-pagination>
+          <ol>
+            <li><a>1</a></li>
+            <li><a>2</a></li>
+            <li><a aria-current="page">3</a></li>
+            <li><a>4</a></li>
+            <li><a>5</a></li>
+          </ol>
+        </rh-pagination>
+      `);
+      /* eslint-enable lit-a11y/anchor-is-valid */
+      await element.updateComplete;
+      await nextFrame();
+    });
+
+    it('identifies the current page via aria-current', function() {
+      const current = element.querySelector<HTMLAnchorElement>('a[aria-current="page"]');
+      expect(current).to.exist;
+      expect(current!.textContent).to.equal('3');
+    });
+
+    it('sets data-page="current" on the correct list item', function() {
+      const currentLi = element.querySelector('li[data-page="current"]');
+      expect(currentLi).to.exist;
+      expect(currentLi!.querySelector('a')!.textContent).to.equal('3');
     });
   });
 
@@ -137,6 +247,7 @@ describe('<rh-pagination>', function() {
       it('should overflow', function() {
         expect(element.getAttribute('overflow'), 'overflow attr').to.equal('end');
       });
+
 
       it('should show first 5 items', function() {
         for (const i of [1, 2, 3, 4, 5]) {

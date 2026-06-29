@@ -1,6 +1,8 @@
 import type { UserConfig } from '@11ty/eleventy';
 import * as Parse5 from 'parse5';
 import * as Tools from '@parse5/tools';
+import { readFile } from 'node:fs/promises';
+import { stripFrontmatter } from '#11ty-plugins/frontmatter.js';
 
 // Match relative lightdom CSS paths (../rh-foo-lightdom.css),
 // but skip already-transformed asset paths (/assets/packages/...)
@@ -13,13 +15,20 @@ const LIGHTDOM_HREF_RE = /href="((?!\/assets)[./].*-lightdom.*\.css)"/g;
 export default function(eleventyConfig: UserConfig) {
   eleventyConfig.addPassthroughCopy('docs/demo.{js,map,ts}');
 
+  /** Read a demo file and return its content with YAML frontmatter stripped */
+  eleventyConfig.addShortcode('renderDemoFile', async function(filePath: string) {
+    const content = await readFile(filePath, 'utf8');
+    return stripFrontmatter(content);
+  });
+
   eleventyConfig.addTransform('demo-subresources', function demoPaths(this, content) {
     const { outputPath, inputPath } = this.page;
     if (!outputPath) {
       return '';
     }
     const isNested = outputPath.match(/demo\/.+\/index\.html$/);
-    if (inputPath === './docs/elements/demos.html') {
+    if (inputPath === './docs/elements/demos.html'
+      || inputPath === './docs/elements/demo.html') {
       const document = Parse5.parse(content);
       for (const node of Tools.queryAll(document, node =>
         Tools.isElementNode(node)

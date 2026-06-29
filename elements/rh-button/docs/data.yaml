@@ -3,6 +3,9 @@ tagName: rh-button
 name: Button
 type: element
 overallStatus: ready
+category: Actions and links
+aka:
+  - Action
 libraries:
   figma: ready
   rhds: ready
@@ -12,3 +15,4 @@ relatedItems:
   - rh-alert
   - rh-cta
   - search-bar
+since: v1.0.0
