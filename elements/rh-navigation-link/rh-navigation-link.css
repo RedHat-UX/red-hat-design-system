@@ -27,7 +27,11 @@ a,
     var(--_navigation-link-color,
       /** Link text color */
       var(--rh-color-text-primary)) !important;
-  font-size: var(--_navigation-link-font-size, 1rem) !important;
+
+  /** Link font size */
+  font-size:
+    var(--rh-navigation-link-font-size,
+      var(--_navigation-link-font-size, 1rem)) !important;
   font-weight: var(--_navigation-link-font-weight, initial) !important;
   block-size: var(--_navigation-link-block-size, auto);
   inline-size: var(--_navigation-link-inline-size, auto);
@@ -37,7 +41,9 @@ a,
   text-decoration: var(--_navigation-link-text-decoration, none) !important;
   gap: var(--_navigation-link-gap, initial);
   background-color: var(--_navigation-link-background-color, transparent);
-  border-radius: var(--_navigation-link-border-radius, 0);
+
+  /** Link border radius */
+  border-radius: var(--rh-navigation-link-border-radius, 0);
 }
 
 a:before,
@@ -45,8 +51,13 @@ a:before,
   content: '';
   position: absolute;
   inset: 0;
+
+  /** Indicator inline-start offset */
+  inset-inline-start: var(--rh-navigation-link-inset-inline-start, 0);
   border-inline-start:
-    var(--_navigation-link-before-border-inline-start-width, 0)
+    /** Indicator border width */
+    var(--rh-navigation-link-border-inline-start-width,
+      var(--_navigation-link-before-border-inline-start-width, 0))
     solid
     var(--_navigation-link-before-border-inline-start-color, transparent);
 }
@@ -86,6 +97,6 @@ a:is(:focus-visible, :hover:focus-visible, :focus-visible, :active),
     /** Focus outline width  */
     var(--rh-border-width-md, 2px);
 
-  /** Focus border radius  */
-  border-radius: var(--rh-border-radius-default, 3px);
+  /** Focus ring border radius */
+  border-radius: var(--rh-navigation-link-border-radius, var(--rh-border-radius-default, 3px));
 }
