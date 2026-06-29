@@ -437,10 +437,10 @@ describe('<rh-footer>', function() {
         expect(Math.abs(lastChild.getBoundingClientRect().bottom - block.getBoundingClientRect().bottom) < 5).to.be.true;
       });
 
-      it('has a max-width for contents', async function() {
+      it('has no max-width constraint on contents', async function() {
         const element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
         const block = element.querySelector('rh-footer-block');
-        expect(getComputedStyle(block?.querySelector('p') as Element)?.maxWidth).to.equal('650px');
+        expect(getComputedStyle(block?.querySelector('p') as Element)?.maxWidth).to.equal('none');
       });
     });
 
