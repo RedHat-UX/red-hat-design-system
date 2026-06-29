@@ -19,7 +19,7 @@ details {
     place-items: center;
 
     /** Summary border radius */
-    border-radius: var(--rh-navigation-vertical-summary-border-radius, 0);
+    border-radius: var(--rh-navigation-vertical-list-summary-border-radius, 0);
 
     /** Spacing between summary text and caret icon */
     gap: var(--rh-space-lg, 16px);
