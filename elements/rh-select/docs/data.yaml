@@ -3,6 +3,7 @@ tagName: rh-select
 name: Select
 type: element
 overallStatus: ready
+category: Selection
 aka:
   - Dropdown
   - Listbox

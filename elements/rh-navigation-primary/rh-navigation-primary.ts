@@ -79,6 +79,8 @@ export class RhNavigationPrimary extends LitElement {
   @provide({ context })
   @state() compact = true;
 
+  @state() linksCompact = true;
+
   @state()
   private _overlayOpen = false;
 
@@ -175,6 +177,11 @@ export class RhNavigationPrimary extends LitElement {
               this.#closeOverlay();
             }
           }
+          const linksOldState = this.linksCompact;
+          const linksNewState = contentBoxSize.inlineSize < 1440;
+          if (linksOldState !== linksNewState) {
+            this.linksCompact = linksNewState;
+          }
           // Close links menu when container goes below 320px (where it's hidden via CSS)
           if (contentBoxSize.inlineSize < 320 && this._linksMenuOpen) {
             this.#closeLinksMenu();
@@ -191,9 +198,7 @@ export class RhNavigationPrimary extends LitElement {
       this.#hydrated = true;
       this.compact = this.offsetWidth < 1200;
       // Open links menu at desktop viewport
-      if (!this.compact) {
-        this._linksMenuOpen = true;
-      }
+      this.linksCompact = this.offsetWidth < 1440;
     }
     if (!isServer) {
       if (this._title) {
@@ -351,6 +356,8 @@ export class RhNavigationPrimary extends LitElement {
 
     if (this.compact) {
       this.#closeHamburger();
+    }
+    if (this.linksCompact) {
       this.#closeLinksMenu();
     }
 
@@ -396,10 +403,15 @@ export class RhNavigationPrimary extends LitElement {
       if (secondaryEventToggle) {
         if (this.compact) {
           this.#closeHamburger();
+        }
+        if (this.linksCompact) {
           this.#closeLinksMenu();
         }
         this.#openSecondaryDropdowns.add(item);
       } else {
+        if (this.linksCompact) {
+          this.#closeLinksMenu();
+        }
         this.#openPrimaryDropdowns.add(item);
       }
       this.#openOverlay();
@@ -416,7 +428,8 @@ export class RhNavigationPrimary extends LitElement {
 
       if (!this.compact
         && this.#openPrimaryDropdowns.size === 0
-        && this.#openSecondaryDropdowns.size === 0) {
+        && this.#openSecondaryDropdowns.size === 0
+        && (!this._linksMenuOpen || !this.linksCompact)) {
         this.#closeOverlay();
       }
     }
@@ -461,7 +474,7 @@ export class RhNavigationPrimary extends LitElement {
       if (this.#linksMenuContains(event.relatedTarget as Node)) {
         return;
       }
-      if (this.compact) {
+      if (this.linksCompact) {
         this.#closeLinksMenu();
       }
     }
@@ -475,7 +488,7 @@ export class RhNavigationPrimary extends LitElement {
       if (this.#linksMenuContains(event.relatedTarget as Node)) {
         return;
       }
-      if (this.compact) {
+      if (this.linksCompact) {
         this.#closeLinksMenu();
       }
     }
@@ -523,7 +536,7 @@ export class RhNavigationPrimary extends LitElement {
     } else if (this._hamburgerOpen && this.compact) {
       this.#closeHamburger();
       this._hamburger.querySelector('summary')?.focus();
-    } else if (this._linksMenuOpen && this.compact) {
+    } else if (this._linksMenuOpen && (this.linksCompact)) {
       this.#closeLinksMenu();
       this._linksMenu.querySelector('summary')?.focus();
     }
@@ -606,17 +619,20 @@ export class RhNavigationPrimary extends LitElement {
         if (this.compact && this._hamburgerOpen) {
           this.#closeHamburger();
         }
+        // close any open primary dropdowns when links menu opens
+        this.#closePrimaryDropdowns();
         // close any open secondary dropdowns when links menu opens
-        if (this.compact && this.#openSecondaryDropdowns.size > 0) {
+        if (this.linksCompact && this.#openSecondaryDropdowns.size > 0) {
           this.#closeSecondaryDropdowns();
         }
-        // Only open overlay in compact (mobile) mode
-        if (this.compact) {
+        if (this.linksCompact) {
           this.#openOverlay();
         }
       } else {
         this.#closeLinksMenu();
-        if (this.compact && this.#openSecondaryDropdowns.size === 0 && !this._hamburgerOpen) {
+        if (this.linksCompact && this.#openSecondaryDropdowns.size === 0
+            && this.#openPrimaryDropdowns.size === 0
+            && (!this._hamburgerOpen || !this.compact)) {
           this.#closeOverlay();
         }
       }
@@ -646,13 +662,23 @@ export class RhNavigationPrimary extends LitElement {
     // transition into desktop
     if (oldVal && !newVal) {
       this.#openHamburger();
-      this.#openLinksMenu();
     }
     // transition into compact
     if (!oldVal && newVal) {
       if (this.#openPrimaryDropdowns.size === 0) {
         this.#closeHamburger();
-      }
+      };
+    }
+  }
+
+  @observes('linksCompact')
+  protected linksCompactChanged(oldVal: boolean, newVal: boolean) {
+    // transition into desktop
+    if (oldVal && !newVal) {
+      this.#openLinksMenu();
+    }
+    // transition into compact
+    if (!oldVal && newVal) {
       this.#closeLinksMenu();
     }
   }
@@ -669,6 +695,8 @@ export class RhNavigationPrimary extends LitElement {
     }
     if (this.compact && !skip) {
       this.#closeHamburger();
+    }
+    if ((this.linksCompact) && !skip) {
       this.#closeLinksMenu();
     }
     this.#closeOverlay();

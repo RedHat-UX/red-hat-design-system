@@ -3,6 +3,7 @@ tagName: rh-menu-dropdown
 name: Menu Dropdown
 type: element
 overallStatus: ready
+category: Actions and links
 aka:
   - Dropdown menu
   - Action menu

@@ -17,6 +17,7 @@ export interface RepoStatusRecord {
     docs: LibraryStatus;
   };
   aka?: string[];
+  category?: string;
   relatedItems?: string[];
   description?: string;
 }
