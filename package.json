@@ -250,6 +250,9 @@
     },
     "stylelint": {
       "command": "stylelint 'elements/**/*.css' 'lib/**/*.css' 'docs/**/*.scss' 'docs/**/*.css' 'uxdot/**/*.css'",
+      "dependencies": [
+        "analyze"
+      ],
       "files": [
         "docs/**/*.scss",
         "elements/**/*.css",

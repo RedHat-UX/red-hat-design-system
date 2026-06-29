@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/styles/demo/styles.css" media="all">
 <link rel="stylesheet" href="/theming/themes/unified-theme/unified-theme-preview.css">
 
 <style>
@@ -9,17 +10,17 @@
 <h3>Default</h3>
 <div class="card-grid example-row">
   <rh-card>
-      <h4 slot="header">Example card</h4>
+      <h4 slot="header">Example card - default</h4>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.</p>
       <rh-cta href="#" slot="footer" variant="primary">Call to action</rh-cta>
   </rh-card>
-  <rh-card>
-      <h4 slot="header">Example card</h4>
+  <rh-card variant="secondary">
+      <h4 slot="header">Example card - secondary</h4>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.</p>
       <rh-cta href="#" slot="footer">Call to action</rh-cta>
   </rh-card>
-  <rh-card>
-      <h4 slot="header">Example card</h4>
+  <rh-card variant="plain">
+      <h4 slot="header">Example card - plain</h4>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.</p>
       <rh-cta href="#" slot="footer">Call to action</rh-cta>
   </rh-card>
@@ -28,27 +29,37 @@
 <h3>Compact</h3>
 <div class="card-grid example-row">
   <rh-card size="compact">
-      <h4 slot="header">Compact card</h4>
+      <h4 slot="header">Compact card - default</h4>
       <p>Tighter padding for compact layouts.</p>
       <rh-cta href="#" slot="footer">Call to action</rh-cta>
   </rh-card>
-  <rh-card size="compact">
-      <h4 slot="header">Compact card</h4>
+  <rh-card size="compact" variant="secondary">
+      <h4 slot="header">Compact card - secondary</h4>
       <p>Tighter padding for compact layouts.</p>
       <rh-cta href="#" slot="footer">Call to action</rh-cta>
   </rh-card>
+  <rh-card size="compact" variant="plain">
+    <h4 slot="header">Compact card - plain</h4>
+    <p>Tighter padding for compact layouts.</p>
+    <rh-cta href="#" slot="footer">Call to action</rh-cta>
+</rh-card>
 </div>
 
 <h3>Large</h3>
 <div class="card-grid example-row">
   <rh-card size="large">
-      <h4 slot="header">Large card</h4>
+      <h4 slot="header">Large card - default</h4>
       <p>Extra padding for spacious layouts. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       <rh-cta href="#" slot="footer" variant="primary">Call to action</rh-cta>
   </rh-card>
-  <rh-card size="large">
-      <h4 slot="header">Large card</h4>
-      <p>Extra padding for spacious layouts. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      <rh-cta href="#" slot="footer">Call to action</rh-cta>
-  </rh-card>
+  <rh-card size="large" variant="secondary">
+    <h4 slot="header">Large card - secondary</h4>
+    <p>Extra padding for spacious layouts. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <rh-cta href="#" slot="footer">Call to action</rh-cta>
+</rh-card>
+<rh-card size="large" variant="plain">
+  <h4 slot="header">Large card - plain</h4>
+  <p>Extra padding for spacious layouts. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  <rh-cta href="#" slot="footer">Call to action</rh-cta>
+</rh-card>
 </div>
