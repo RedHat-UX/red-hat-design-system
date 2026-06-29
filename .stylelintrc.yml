@@ -82,12 +82,7 @@ rules:
 
   rhds/deprecated: true
 
-  rhds/no-unknown-token-name:
-    - true
-    - allowed:
-      - --rh-icon-size
-      - --rh-navigation-active-item-color
-      - --rh-jump-link-max-width
+  rhds/no-unknown-token-name: true
 
 overrides:
   - files:
