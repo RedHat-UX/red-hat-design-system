@@ -9,9 +9,9 @@ description: "Subdomain footer for docs or other Red Hat properties. Shows domai
   <div slot="header-secondary" class="header-controls">
     <label class="visually-hidden" for="select-language">Choose page language:</label>
     <rh-select id="select-language">
-      <rh-option value="English" icon-set="ui" icon="language">English</rh-option>
-      <rh-option value="French" icon-set="ui" icon="language">French</rh-option>
-      <rh-option value="Spanish" icon-set="ui" icon="language">Spanish</rh-option>
+      <rh-option value="English">English</rh-option>
+      <rh-option value="French">French</rh-option>
+      <rh-option value="Spanish">Spanish</rh-option>
     </rh-select>
     <rh-scheme-dropdown></rh-scheme-dropdown>
   </div>
@@ -190,12 +190,11 @@ description: "Subdomain footer for docs or other Red Hat properties. Shows domai
 
   rh-select {
     margin-inline-start: auto;
-    min-inline-size: var(--rh-length-7xl, 128px);;
     inline-size: fit-content;
   }
 
   rh-footer-block p {
-    margin-block: 0 var(--rh-space-lg, 16px);
+    margin-block: 0 var(--rh-space-2xl, 32px);
   }
 
   rh-footer-block p a {

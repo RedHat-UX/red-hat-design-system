@@ -228,12 +228,15 @@
 
 .global-logo {
   grid-area: logo;
-  width: var(--_logo-width);
+  width: auto;
+  height: var(--rh-size-icon-02, 24px);
 }
 
 .global-logo-image {
   /** Red Hat fedora brand color */
   fill: var(--rh-color-brand-red, #ee0000);
+  height: 100%;
+  width: auto;
 }
 
 .global-primary {
@@ -519,6 +522,10 @@
 
   .logo a > :is(img, svg) {
     /** Logo image height (desktop) */
+    height: var(--rh-size-icon-04, 40px);
+  }
+
+  .global-logo {
     height: var(--rh-size-icon-04, 40px);
   }
 
