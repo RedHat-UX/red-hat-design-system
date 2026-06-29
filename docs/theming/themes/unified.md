@@ -197,29 +197,37 @@ Unified content
   // which add features not yet available.
   // Check after 5.0 releases.
 
+  // --rh-alert-border-width is not yet in rh-alert (PR #3062).
+  // Remove this patch once it merges.
+  const alertPatch = new CSSStyleSheet();
+  alertPatch.replaceSync(/*css*/`
+    #container {
+      border-width: var(--rh-alert-border-width, var(--rh-border-width-md, 2px));
+    }
+  `);
+
+  // --rh-button-close-*-background props are not yet in rh-button (PR #3063).
+  // Close button padding and border-radius also lack a public API.
+  // Remove this patch once both PRs merge.
   const closeButtonPatch = new CSSStyleSheet();
   closeButtonPatch.replaceSync(/*css*/`
     button.close {
-      border-radius: var(--rh-border-radius-default, 3px);
-      padding: var(--rh-space-xs, 4px);
-    }
-
-    button.close:hover {
       --_hover-background-color: var(--rh-button-close-hover-background, transparent);
-    }
-
-    button.close:focus-visible {
       --_focus-background-color: var(--rh-button-close-focus-background, transparent);
-    }
-
-    button.close:active {
       --_active-background-color: var(--rh-button-close-active-background, transparent);
+
+      border-radius: var(--rh-button-close-radius, var(--rh-border-radius-default, 3px));
+      width: var(--rh-button-close-width, var(--rh-length-lg,16px));
     }
   `);
 
   for (const pattern of document.querySelectorAll('uxdot-pattern')) {
-    // rh-alert close button
+    // rh-alert border-width and close button
     for (const alert of pattern.shadowRoot.querySelectorAll('rh-alert')) {
+      alert.shadowRoot.adoptedStyleSheets = [
+        ...alert.shadowRoot.adoptedStyleSheets,
+        alertPatch,
+      ];
       const closeBtn = alert.shadowRoot?.querySelector('rh-button#close-button');
       if (closeBtn) {
         await closeBtn.updateComplete;

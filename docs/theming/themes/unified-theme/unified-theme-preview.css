@@ -1126,6 +1126,9 @@
 @layer alert {
   rh-alert {
     --unified-alert-border-color: var(--rh-color-teal-50, #37a3a3);
+    --rh-alert-border-width: 0;
+    --rh-button-close-width: 100%;
+    --rh-button-close-radius: 50%;
     --rh-color-surface-dark: var(--unified-color-gray-80);
 
     /* Replace status-specific background tints with primary surface */
