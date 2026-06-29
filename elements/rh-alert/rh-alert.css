@@ -70,7 +70,7 @@ footer ::slotted(rh-button[variant='link' i]) {
   --_icon-color: var(--rh-color-teal-50, #37a3a3);
 
   /** Alert border width */
-  border-width: var(--rh-border-width-md, 2px);
+  border-width: var(--rh-alert-border-width, var(--rh-border-width-md, 2px));
   border-style: solid;
   border-color: var(--_border-color);
   border-inline-start-color: transparent;
