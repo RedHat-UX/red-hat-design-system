@@ -73,18 +73,11 @@ a {
   }
 
   &:focus-visible {
-    outline: none;
+    /** Jump links focus outline color **/
+    outline: 2px solid var(--rh-color-interactive-primary-default);
 
-    &:after {
-      content: '';
-      display: block;
-      position: absolute;
-
-      /** Inset of the focus ring. Use negative values for outline offset. */
-      inset: var(--rh-jump-link-focus-inset, 0);
-      border: 2px solid var(--rh-color-interactive-primary-default);
-      border-radius: var(--rh-border-radius-default, 3px);
-    }
+    /** Jump links focus ouline radius */
+    border-radius: var(--rh-border-radius-default, 3px);
   }
 
   &.active {
