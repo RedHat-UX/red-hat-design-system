@@ -353,18 +353,24 @@ button {
 
     /** Close active icon color */
     --_active-color: var(--rh-color-interactive-secondary-active);
-    --_active-background-color: transparent;
+
+    /** @csspart close - Close button active background color */
+    --_active-background-color: var(--rh-button-close-active-background, transparent);
 
     /** Close focus icon color */
     --_focus-color: var(--rh-color-interactive-secondary-focus);
-    --_focus-background-color: transparent;
+
+    /** @csspart close - Close button focus background color */
+    --_focus-background-color: var(--rh-button-close-focus-background, transparent);
 
     /** Close focus outline color */
     --_focus-outline-color: var(--rh-color-interactive-primary-default);
 
     /** Close hover icon color */
     --_hover-color: var(--rh-color-interactive-secondary-hover);
-    --_hover-background-color: transparent;
+
+    /** @csspart close - Close button hover background color */
+    --_hover-background-color: var(--rh-button-close-hover-background, transparent);
 
     /** Button width */
     width: var(--rh-length-lg, 16px);
