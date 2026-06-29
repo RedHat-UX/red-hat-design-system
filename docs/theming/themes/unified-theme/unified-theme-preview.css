@@ -98,6 +98,26 @@
           var(--unified-color-blue-60),
           var(--unified-color-blue-20)
         );
+    --unified-color-interactive-tertiary-default:
+      light-dark(
+          var(--unified-color-blue-50),
+          var(--unified-color-blue-20)
+        );
+    --unified-color-interactive-tertiary-hover:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-10)
+        );
+    --unified-color-interactive-tertiary-focus:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-10)
+        );
+    --unified-color-interactive-tertiary-active:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-10)
+        );
     --unified-color-interactive-fill-plain-on-light: rgba(199, 199, 199, 0.25);
     --unified-color-interactive-fill-plain-on-dark: rgba(199, 199, 199, 0.15);
     --unified-color-interactive-fill-plain-default: transparent;
@@ -199,8 +219,8 @@
     /* TODO: Double-check color */
     --unified-color-border-interactive-subtle-focus:
       light-dark(
-          var(--unified-color-blue-40),
-          var(--unified-color-blue-30)
+          var(--unified-color-blue-50),
+          var(--unified-color-blue-20)
         );
     --unified-color-border-interactive-subtle-active:
       light-dark(
@@ -225,6 +245,11 @@
           var(--unified-color-gray-50)
         );
     --unified-color-icon-status-disabled:
+      light-dark(
+          var(--unified-color-gray-40),
+          var(--unified-color-gray-50)
+        );
+    --unified-color-border-status-disabled:
       light-dark(
           var(--unified-color-gray-40),
           var(--unified-color-gray-50)
@@ -515,7 +540,7 @@
     --unified-button-font-size: var(--unified-font-size-body-text-sm);
     --unified-button-padding-block: var(--unified-space-md);
     --unified-button-padding-inline: var(--unified-space-xl);
-    --unified-button-padding-block-compact: var(--unified-space-sm);
+    --unified-button-padding-block-compact: var(--unified-space-xs);
     --unified-button-padding-inline-compact: var(--unified-space-lg);
     --unified-button-border-width-hover: var(--unified-border-width-md);
     --unified-button-border-width-focus: var(--unified-border-width-md);
@@ -532,6 +557,19 @@
     --rh-space-lg: var(--unified-button-padding-inline);
     --rh-icon-size: var(--unified-size-icon-00);
 
+    &::part(button) {
+      /* Ripple animation */
+      background-image:
+        radial-gradient(
+            circle,
+            transparent 1%,
+            color-mix(in srgb, currentcolor 15%, transparent) 2%
+          );
+      background-size: 15000% 15000%;
+      background-position: center;
+      transition: background-size 0.45s ease;
+    }
+
     &::part(button):focus {
       outline:
         var(--unified-button-border-width-focus-ring)
@@ -540,10 +578,33 @@
       outline-offset: var(--unified-button-border-width-focus-ring);
     }
 
+    &::part(button):active {
+      background-size: 100% 100%;
+      transition-duration: 0s;
+    }
+
     &[variant='primary'] {
+      --rh-color-text-primary-on-light: var(--rh-color-gray-90);
+
+      &::part(button):hover {
+        background-color: var(--unified-color-interactive-primary-hover);
+      }
+
+      &::part(button):focus {
+        background-color: var(--unified-color-interactive-primary-focus);
+      }
+
+      &::part(button):active {
+        background-color: var(--unified-color-interactive-primary-active);
+      }
+
       &[danger] {
         &::part(button):hover {
           background-color: var(--unified-color-status-danger-hover);
+        }
+
+        &::part(button):focus {
+          background-color: var(--unified-color-status-danger-focus);
         }
 
         &::part(button):active {
@@ -556,86 +617,105 @@
       --rh-border-width-sm: var(--unified-border-width-sm);
 
       &::part(button):hover {
+        --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-hover);
+        --rh-color-text-primary: var(--unified-color-text-interactive-hover);
         --rh-border-width-sm: var(--unified-button-border-width-hover);
-        --rh-color-interactive-primary-default:
-          var(
-              --unified-color-interactive-primary-hover
-            );
       }
 
       &::part(button):focus {
-        --rh-color-interactive-primary-default:
-          var(
-              --unified-color-interactive-primary-focus
-            );
+        --rh-color-text-primary: var(unified-color-text-interactive-hover-focus);
         --rh-border-width-sm: var(--unified-button-border-width-focus);
       }
 
       &::part(button):active {
-        --rh-color-interactive-primary-default:
-          var(
-              --unified-color-interactive-primary-active
-            );
+        --rh-color-text-primary: var(unified-color-text-interactive-active);
         --rh-border-width-sm: var(--unified-button-border-width-active);
       }
 
       &[danger] {
         --rh-color-status-danger: var(--unified-color-text-status-danger);
+        --rh-color-border-status-danger: var(--unified-color-status-danger);
+
+        &::part(icon) {
+          /* Dark scheme: icon default is red-orange-50;
+             light scheme unchanged (red-orange-60 = text color) */
+          color: var(--unified-color-status-danger);
+        }
+
+        /* Set --rh-button-icon-color on the host so it reliably inherits
+           into the shadow DOM; ::part() custom props may not cascade to
+           shadow-DOM descendants of the targeted part. */
+        &:is(:hover, :focus-within, :active) {
+          --rh-button-icon-color: var(--unified-color-icon-status-danger-hover);
+        }
 
         &::part(button):hover {
           --rh-color-border-status-danger: var(--unified-color-status-danger-hover);
-          --rh-color-status-danger: var(--unified-color-status-danger-hover);
+          --rh-color-status-danger: var(--unified-color-text-status-danger-hover);
         }
 
         &::part(button):focus {
           --rh-color-border-status-danger: var(--unified-color-status-danger-focus);
-          --rh-color-status-danger: var(--unified-color-status-danger-focus);
+          --rh-color-status-danger: var(--unified-color-text-status-danger-focus);
         }
 
         &::part(button):active {
-          --rh-color-border-status-danger: var(--unified-color-status-danger-hover);
-          --rh-color-status-danger: var(--unified-color-status-danger-hover);
+          --rh-color-border-status-danger: var(--unified-color-status-danger-active);
+          --rh-color-status-danger: var(--unified-color-text-status-danger-active);
         }
       }
     }
 
     &[variant='tertiary'] {
       --rh-color-border-strong: var(--unified-color-border-interactive-subtle-default);
-      --rh-color-text-primary: var(--unified-interactive-primary-default);
+      --rh-color-text-primary: var(--unified-color-interactive-tertiary-default);
 
       &::part(button):hover {
-        --rh-color-text-primary: var(--unified-color-interactive-primary-hover);
+        --rh-color-text-primary: var(--unified-color-interactive-tertiary-hover);
         --rh-color-border-strong: var(--unified-color-border-interactive-subtle-hover);
       }
 
       &::part(button):focus {
-        --rh-color-interactive-primary-default:
-          var(
-              --unified-color-interactive-primary-focus
-            );
+        --rh-color-text-primary: var(--unified-color-interactive-tertiary-focus);
         --rh-border-width-sm: var(--unified-button-border-width-focus);
         --rh-color-border-strong: var(--unified-color-border-interactive-subtle-focus);
+      }
+
+      &::part(button):active {
+        --rh-color-text-primary: var(--unified-color-interactive-tertiary-active);
       }
 
       &[danger] {
         --rh-color-border-strong: var(--unified-color-status-danger);
         --rh-color-text-primary: var(--unified-color-text-status-danger);
 
+        &::part(icon) {
+          /* Dark scheme: icon default is red-orange-50;
+             light scheme unchanged (red-orange-60 = text color) */
+          color: var(--unified-color-status-danger);
+        }
+
+        &:is(:hover, :focus-within, :active) {
+          --rh-button-icon-color: var(--unified-color-icon-status-danger-hover);
+        }
+
         &::part(button):hover {
           --rh-color-border-status-danger: var(--unified-color-status-danger-hover);
+          --rh-color-status-danger: var(--unified-color-status-danger-hover);
           --rh-color-text-primary: var(--unified-color-text-status-danger-hover);
           --rh-color-border-strong: var(--unified-color-status-danger-hover);
         }
 
         &::part(button):focus {
           --rh-color-border-status-danger: var(--unified-color-status-danger-focus);
+          --rh-color-status-danger: var(--unified-color-status-danger-focus);
           --rh-color-text-primary: var(--unified-color-text-status-danger-focus);
           --rh-color-border-strong: var(--unified-color-status-danger-focus);
         }
 
         &::part(button):active {
           --rh-color-border-status-danger: var(--unified-color-status-danger-active);
-          --rh-color-status-danger: var(--unified-color-status-danger-active);
+          --rh-color-text-primary: var(--unified-color-text-status-danger-active);
           --rh-color-border-strong: var(--unified-color-status-danger-active);
         }
       }
@@ -643,10 +723,22 @@
 
     &[variant='link'],
     &[variant='plain'] {
+      --rh-color-blue-70: var(--unified-color-interactive-tertiary-default);
+
+      &::part(button) {
+        /* Link/plain: equal 8px padding on all sides (no extra inline reduction for icons) */
+        padding: var(--unified-space-md);
+      }
+
+      &[compact]::part(button) {
+        /* Compact link/plain: equal 4px padding on all sides */
+        padding: var(--unified-space-xs);
+      }
+
       &::part(button):hover,
       &::part(button):focus,
       &::part(button):active {
-        --rh-color-blue-70: var(--unified-button-link-color-default);
+        --rh-color-blue-70: var(--unified-color-interactive-tertiary-hover);
 
         background-color: var(--unified-color-interactive-fill-plain-hover);
       }
@@ -659,10 +751,24 @@
       &[danger] {
         --rh-color-interactive-primary-default: var(--unified-color-text-status-danger);
 
+        &::part(icon) {
+          /* Dark scheme: icon default is red-orange-50;
+             light scheme unchanged (red-orange-60 = text color) */
+          color: var(--unified-color-status-danger);
+        }
+
+        /* Set --rh-button-icon-color on the host so it reliably inherits
+           into the shadow DOM; ::part() custom props may not cascade to
+           shadow-DOM descendants of the targeted part. */
+        &:is(:hover, :focus-within, :active) {
+          --rh-button-icon-color: var(--unified-color-icon-status-danger-hover);
+        }
+
         &::part(button):hover,
         &::part(button):focus,
         &::part(button):active {
-          color: var(--unified-color-text-status-danger);
+          /* Dark scheme: text in interactive states is red-orange-20 */
+          color: var(--unified-color-text-status-danger-hover);
         }
       }
 
@@ -715,15 +821,6 @@
         background-color: transparent;
         color: var(--unified-color-text-status-disabled);
       }
-    }
-
-    &::part(button):active {
-      color: var(--unified-color-interactive-primary-active);
-    }
-
-    &::part(button):active:after {
-      border-width: var(--unified-button-border-width-active);
-      border-color: var(--unified-color-border-interactive-subtle-active);
     }
 
     &[compact] {
