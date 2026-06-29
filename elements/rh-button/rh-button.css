@@ -48,12 +48,6 @@ button {
   /** Button focus ring offset */
   outline-offset: var(--rh-length-4xs, 1px);
 
-  &:active {
-    --_color: var(--_active-color);
-    --_background-color: var(--_active-background-color);
-    --_border-width: var(--_active-border-width);
-  }
-
   &:after {
     position: absolute;
     inset: 0;
@@ -64,26 +58,6 @@ button {
 
     /** Button corner rounding */
     border-radius: var(--rh-border-radius-default, 3px);
-  }
-
-  &:focus {
-    --_color: var(--_focus-color);
-    --_background-color: var(--_focus-background-color);
-    --_border-width: var(--_focus-border-width);
-
-    outline:
-      /** Focus outline width */
-      var(--rh-border-width-md, 2px)
-      solid
-      /** Focus outline color */
-      var(--rh-color-interactive-primary-default);
-
-    &:after {
-      border-width:
-        var(--_border-width,
-          /** Focus pseudo-element border width fallback */
-          var(--rh-border-width-md, 2px));
-    }
   }
 
   &.hasIcon {
@@ -466,6 +440,32 @@ button {
     --_color: var(--_hover-color);
     --_background-color: var(--_hover-background-color);
     --_border-width: var(--_hover-border-width);
+  }
+
+  &:focus {
+    --_color: var(--_focus-color);
+    --_background-color: var(--_focus-background-color);
+    --_border-width: var(--_focus-border-width);
+
+    outline:
+      /** Focus outline width */
+      var(--rh-border-width-md, 2px)
+      solid
+      /** Focus outline color */
+      var(--rh-color-interactive-primary-default);
+
+    &:after {
+      border-width:
+        var(--_border-width,
+          /** Focus pseudo-element border width fallback */
+          var(--rh-border-width-md, 2px));
+    }
+  }
+
+  &:active {
+    --_color: var(--_active-color);
+    --_background-color: var(--_active-background-color);
+    --_border-width: var(--_active-border-width);
   }
 
   & > span {
