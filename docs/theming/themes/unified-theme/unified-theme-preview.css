@@ -1022,11 +1022,6 @@
           );
       --rh-cta-active-text-decoration: var(--unified-cta-text-decoration);
 
-      &::part(container) {
-        padding-block: 2px;
-        padding-inline: var(--rh-space-xs);
-      }
-
       &:focus-within {
         border-radius: var(--unified-border-radius-action-plain);
       }
