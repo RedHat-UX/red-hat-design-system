@@ -346,8 +346,11 @@ button {
     /** @csspart close - Close button hover background color */
     --_hover-background-color: var(--rh-button-close-hover-background, transparent);
 
-    /** Button width */
+    /** Close button width */
     width: var(--rh-button-close-width, var(--rh-length-lg, 16px));
+
+    /** Close button radius */
+    border-radius: var(--rh-button-close-radius, var(--rh-border-radius-default, 3px));
     aspect-ratio: 1;
 
     rh-icon {
