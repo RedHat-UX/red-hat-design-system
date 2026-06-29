@@ -193,6 +193,44 @@ Unified content
 </uxdot-feedback>
 
 <script type="module">
+  // NB: CSS runtime patches to elements
+  // which add features not yet available.
+  // Check after 5.0 releases.
+
+  const closeButtonPatch = new CSSStyleSheet();
+  closeButtonPatch.replaceSync(/*css*/`
+    button.close {
+      border-radius: var(--rh-border-radius-default, 3px);
+      padding: var(--rh-space-xs, 4px);
+    }
+
+    button.close:hover {
+      --_hover-background-color: var(--rh-button-close-hover-background, transparent);
+    }
+
+    button.close:focus-visible {
+      --_focus-background-color: var(--rh-button-close-focus-background, transparent);
+    }
+
+    button.close:active {
+      --_active-background-color: var(--rh-button-close-active-background, transparent);
+    }
+  `);
+
+  for (const pattern of document.querySelectorAll('uxdot-pattern')) {
+    // rh-alert close button
+    for (const alert of pattern.shadowRoot.querySelectorAll('rh-alert')) {
+      const closeBtn = alert.shadowRoot?.querySelector('rh-button#close-button');
+      if (closeBtn) {
+        await closeBtn.updateComplete;
+        closeBtn.shadowRoot.adoptedStyleSheets = [
+          ...closeBtn.shadowRoot.adoptedStyleSheets,
+          closeButtonPatch,
+        ];
+      }
+    }
+  }
+
   async function getCssFileAsString(url) {
     try {
         const response = await fetch(url);

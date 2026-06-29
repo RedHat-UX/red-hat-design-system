@@ -1126,10 +1126,6 @@
 @layer alert {
   rh-alert {
     --unified-alert-border-color: var(--rh-color-teal-50, #37a3a3);
-
-    /* Remove the internal container border so we can replace it on the host */
-    --rh-border-width-md: 0;
-    --rh-length-xl: auto;
     --rh-color-surface-dark: var(--unified-color-gray-80);
 
     /* Replace status-specific background tints with primary surface */
@@ -1150,6 +1146,9 @@
 
     --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
     --rh-color-interactive-primary-hover: var(--unified-color-interactive-primary-hover);
+    --rh-button-close-hover-background: var(--unified-color-interactive-fill-plain-hover);
+    --rh-button-close-focus-background: var(--unified-color-interactive-fill-plain-focus);
+    --rh-button-close-active-background: var(--unified-color-interactive-fill-plain-active);
 
     &[state='neutral'] {
       --unified-alert-border-color: var(--rh-color-status-neutral);
