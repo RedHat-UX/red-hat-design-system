@@ -80,7 +80,7 @@ const KITCHEN_SINK_TEMPLATE = html`
     </ul>
     <rh-footer-block slot="main-secondary">
       <h3 slot="header">About Red Hat</h3>
-      <p>We’re the world’s leading provider of enterprise open source solutions―including Linux, cloud, container, and Kubernetes. We deliver hardened solutions that make it easier for enterprises to work across platforms and environments, from the core datacenter to the network edge.</p>
+      <p>We’re the world’s leading provider of enterprise open source solutions&#x2015;including Linux, cloud, container, and Kubernetes. We deliver hardened solutions that make it easier for enterprises to work across platforms and environments, from the core datacenter to the network edge.</p>
     </rh-footer-block>
     <rh-footer-block slot="main-secondary">
       <h3 slot="header">Subscribe to our free newsletter, Red Hat Shares</h3>
@@ -91,7 +91,7 @@ const KITCHEN_SINK_TEMPLATE = html`
       <p>insert language switcher here...</p>
     </rh-footer-block>
     <rh-footer-universal slot="universal">
-      <h3 slot="links-primary" hidden>Red Hat legal and privacy links</h3>
+      <h3 slot="links-primary" hidden>Red Hat corporate links</h3>
       <ul slot="links-primary">
         <li><a href="#">About Red Hat</a></li>
         <li><a href="#">Jobs</a></li>
@@ -99,8 +99,9 @@ const KITCHEN_SINK_TEMPLATE = html`
         <li><a href="#">Locations</a></li>
         <li><a href="#">Contact Red Hat</a></li>
         <li><a href="#">Red Hat Blog</a></li>
-        <li><a href="#">Cool Stuff Store</a></li>
         <li><a href="#">Diversity, equity, and inclusion</a></li>
+        <li><a href="#">Cool Stuff Store</a></li>
+        <li><a href="#">Red Hat Summit</a></li>
       </ul>
       <rh-footer-copyright slot="links-secondary"></rh-footer-copyright>
       <h3 slot="links-secondary" hidden>Red Hat legal and privacy links</h3>
@@ -111,9 +112,6 @@ const KITCHEN_SINK_TEMPLATE = html`
         <li><a href="#">Digital accessibility</a></li>
         <li><a href="#">Cookie preferences</a></li>
       </ul>
-      <div slot="secondary-end">
-        <a href="#">*We’ve updated our privacy statement effective December 30, 202X.</a>
-      </div>
     </rh-footer-universal>
   </rh-footer>
   <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css">
@@ -121,7 +119,7 @@ const KITCHEN_SINK_TEMPLATE = html`
 
 const UNIVERSAL_FOOTER_TEMPLATE = html`
   <rh-footer-universal>
-    <h3 slot="links-primary" hidden>Red Hat legal and privacy links</h3>
+    <h3 slot="links-primary" hidden>Red Hat corporate links</h3>
     <ul slot="links-primary">
       <li><a href="#">About Red Hat</a></li>
       <li><a href="#">Jobs</a></li>
@@ -129,8 +127,9 @@ const UNIVERSAL_FOOTER_TEMPLATE = html`
       <li><a href="#">Locations</a></li>
       <li><a href="#">Contact Red Hat</a></li>
       <li><a href="#">Red Hat Blog</a></li>
-      <li><a href="#">Cool Stuff Store</a></li>
       <li><a href="#">Diversity, equity, and inclusion</a></li>
+      <li><a href="#">Cool Stuff Store</a></li>
+      <li><a href="#">Red Hat Summit</a></li>
     </ul>
     <rh-footer-copyright slot="links-secondary"></rh-footer-copyright>
     <h3 slot="links-secondary" hidden>Red Hat legal and privacy links</h3>
@@ -141,9 +140,6 @@ const UNIVERSAL_FOOTER_TEMPLATE = html`
       <li><a href="#">Digital accessibility</a></li>
       <li><a href="#">Cookie preferences</a></li>
     </ul>
-    <div slot="secondary-end">
-      <a href="#">*We’ve updated our privacy statement effective December 30, 202X.</a>
-    </div>
   </rh-footer-universal>
   <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css">
 `;

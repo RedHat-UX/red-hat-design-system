@@ -16,6 +16,7 @@
     --unified-color-gray-20: #e0e0e0;
     --unified-color-gray-30: #c7c7c7;
     --unified-color-gray-40: #a3a3a3;
+    --unified-color-gray-45: #8c8c8c;
     --unified-color-gray-50: #707070;
     --unified-color-gray-60: #4d4d4d;
     --unified-color-gray-70: #383838;
@@ -68,11 +69,11 @@
     --unified-color-icon-secondary:
       light-dark(
           var(--unified-color-gray-90),
-          white
+          var(--unified-color-gray-10)
         );
     --unified-color-icon-secondary-inverse:
       light-dark(
-          white,
+          var(--unified-color-gray-10),
           var(--unified-color-gray-90)
         );
 
@@ -96,6 +97,26 @@
       light-dark(
           var(--unified-color-blue-60),
           var(--unified-color-blue-20)
+        );
+    --unified-color-interactive-tertiary-default:
+      light-dark(
+          var(--unified-color-blue-50),
+          var(--unified-color-blue-20)
+        );
+    --unified-color-interactive-tertiary-hover:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-10)
+        );
+    --unified-color-interactive-tertiary-focus:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-10)
+        );
+    --unified-color-interactive-tertiary-active:
+      light-dark(
+          var(--unified-color-blue-60),
+          var(--unified-color-blue-10)
         );
     --unified-color-interactive-fill-plain-on-light: rgba(199, 199, 199, 0.25);
     --unified-color-interactive-fill-plain-on-dark: rgba(199, 199, 199, 0.15);
@@ -174,12 +195,32 @@
           var(--unified-color-blue-40),
           var(--unified-color-blue-30)
         );
+    --unified-color-interactive-secondary-underline-default:
+      light-dark(
+          var(--unified-color-gray-45),
+          var(--unified-color-gray-40)
+        );
+    --unified-color-interactive-secondary-underline-hover:
+      light-dark(
+          var(--unified-color-gray-45),
+          var(--unified-color-gray-40)
+        );
+    --unified-color-interactive-secondary-underline-active:
+      light-dark(
+          var(--unified-color-gray-45),
+          var(--unified-color-gray-40)
+        );
+    --unified-color-interactive-secondary-underline-focus:
+      light-dark(
+          var(--unified-color-gray-45),
+          var(--unified-color-gray-40)
+        );
 
     /* TODO: Double-check color */
     --unified-color-border-interactive-subtle-focus:
       light-dark(
-          var(--unified-color-blue-40),
-          var(--unified-color-blue-30)
+          var(--unified-color-blue-50),
+          var(--unified-color-blue-20)
         );
     --unified-color-border-interactive-subtle-active:
       light-dark(
@@ -204,6 +245,11 @@
           var(--unified-color-gray-50)
         );
     --unified-color-icon-status-disabled:
+      light-dark(
+          var(--unified-color-gray-40),
+          var(--unified-color-gray-50)
+        );
+    --unified-color-border-status-disabled:
       light-dark(
           var(--unified-color-gray-40),
           var(--unified-color-gray-50)
@@ -425,6 +471,11 @@
           var(--unified-color-gray-30),
           var(--unified-color-gray-40)
         );
+    --unified-color-border-subtle:
+      light-dark(
+          var(--unified-color-gray-20),
+          var(--unified-color-gray-60)
+        );
 
     /* Brand accent */
     --unified-color-brand-accent:
@@ -489,7 +540,7 @@
     --unified-button-font-size: var(--unified-font-size-body-text-sm);
     --unified-button-padding-block: var(--unified-space-md);
     --unified-button-padding-inline: var(--unified-space-xl);
-    --unified-button-padding-block-compact: var(--unified-space-sm);
+    --unified-button-padding-block-compact: var(--unified-space-xs);
     --unified-button-padding-inline-compact: var(--unified-space-lg);
     --unified-button-border-width-hover: var(--unified-border-width-md);
     --unified-button-border-width-focus: var(--unified-border-width-md);
@@ -506,6 +557,19 @@
     --rh-space-lg: var(--unified-button-padding-inline);
     --rh-icon-size: var(--unified-size-icon-00);
 
+    &::part(button) {
+      /* Ripple animation */
+      background-image:
+        radial-gradient(
+            circle,
+            transparent 1%,
+            color-mix(in srgb, currentcolor 15%, transparent) 2%
+          );
+      background-size: 15000% 15000%;
+      background-position: center;
+      transition: background-size 0.45s ease;
+    }
+
     &::part(button):focus {
       outline:
         var(--unified-button-border-width-focus-ring)
@@ -514,10 +578,33 @@
       outline-offset: var(--unified-button-border-width-focus-ring);
     }
 
+    &::part(button):active {
+      background-size: 100% 100%;
+      transition-duration: 0s;
+    }
+
     &[variant='primary'] {
+      --rh-color-text-primary-on-light: var(--rh-color-gray-90);
+
+      &::part(button):hover {
+        background-color: var(--unified-color-interactive-primary-hover);
+      }
+
+      &::part(button):focus {
+        background-color: var(--unified-color-interactive-primary-focus);
+      }
+
+      &::part(button):active {
+        background-color: var(--unified-color-interactive-primary-active);
+      }
+
       &[danger] {
         &::part(button):hover {
           background-color: var(--unified-color-status-danger-hover);
+        }
+
+        &::part(button):focus {
+          background-color: var(--unified-color-status-danger-focus);
         }
 
         &::part(button):active {
@@ -530,86 +617,105 @@
       --rh-border-width-sm: var(--unified-border-width-sm);
 
       &::part(button):hover {
+        --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-hover);
+        --rh-color-text-primary: var(--unified-color-text-interactive-hover);
         --rh-border-width-sm: var(--unified-button-border-width-hover);
-        --rh-color-interactive-primary-default:
-          var(
-              --unified-color-interactive-primary-hover
-            );
       }
 
       &::part(button):focus {
-        --rh-color-interactive-primary-default:
-          var(
-              --unified-color-interactive-primary-focus
-            );
+        --rh-color-text-primary: var(unified-color-text-interactive-hover-focus);
         --rh-border-width-sm: var(--unified-button-border-width-focus);
       }
 
       &::part(button):active {
-        --rh-color-interactive-primary-default:
-          var(
-              --unified-color-interactive-primary-active
-            );
+        --rh-color-text-primary: var(unified-color-text-interactive-active);
         --rh-border-width-sm: var(--unified-button-border-width-active);
       }
 
       &[danger] {
         --rh-color-status-danger: var(--unified-color-text-status-danger);
+        --rh-color-border-status-danger: var(--unified-color-status-danger);
+
+        &::part(icon) {
+          /* Dark scheme: icon default is red-orange-50;
+             light scheme unchanged (red-orange-60 = text color) */
+          color: var(--unified-color-status-danger);
+        }
+
+        /* Set --rh-button-icon-color on the host so it reliably inherits
+           into the shadow DOM; ::part() custom props may not cascade to
+           shadow-DOM descendants of the targeted part. */
+        &:is(:hover, :focus-within, :active) {
+          --rh-button-icon-color: var(--unified-color-icon-status-danger-hover);
+        }
 
         &::part(button):hover {
           --rh-color-border-status-danger: var(--unified-color-status-danger-hover);
-          --rh-color-status-danger: var(--unified-color-status-danger-hover);
+          --rh-color-status-danger: var(--unified-color-text-status-danger-hover);
         }
 
         &::part(button):focus {
           --rh-color-border-status-danger: var(--unified-color-status-danger-focus);
-          --rh-color-status-danger: var(--unified-color-status-danger-focus);
+          --rh-color-status-danger: var(--unified-color-text-status-danger-focus);
         }
 
         &::part(button):active {
-          --rh-color-border-status-danger: var(--unified-color-status-danger-hover);
-          --rh-color-status-danger: var(--unified-color-status-danger-hover);
+          --rh-color-border-status-danger: var(--unified-color-status-danger-active);
+          --rh-color-status-danger: var(--unified-color-text-status-danger-active);
         }
       }
     }
 
     &[variant='tertiary'] {
       --rh-color-border-strong: var(--unified-color-border-interactive-subtle-default);
-      --rh-color-text-primary: var(--unified-interactive-primary-default);
+      --rh-color-text-primary: var(--unified-color-interactive-tertiary-default);
 
       &::part(button):hover {
-        --rh-color-text-primary: var(--unified-color-interactive-primary-hover);
+        --rh-color-text-primary: var(--unified-color-interactive-tertiary-hover);
         --rh-color-border-strong: var(--unified-color-border-interactive-subtle-hover);
       }
 
       &::part(button):focus {
-        --rh-color-interactive-primary-default:
-          var(
-              --unified-color-interactive-primary-focus
-            );
+        --rh-color-text-primary: var(--unified-color-interactive-tertiary-focus);
         --rh-border-width-sm: var(--unified-button-border-width-focus);
         --rh-color-border-strong: var(--unified-color-border-interactive-subtle-focus);
+      }
+
+      &::part(button):active {
+        --rh-color-text-primary: var(--unified-color-interactive-tertiary-active);
       }
 
       &[danger] {
         --rh-color-border-strong: var(--unified-color-status-danger);
         --rh-color-text-primary: var(--unified-color-text-status-danger);
 
+        &::part(icon) {
+          /* Dark scheme: icon default is red-orange-50;
+             light scheme unchanged (red-orange-60 = text color) */
+          color: var(--unified-color-status-danger);
+        }
+
+        &:is(:hover, :focus-within, :active) {
+          --rh-button-icon-color: var(--unified-color-icon-status-danger-hover);
+        }
+
         &::part(button):hover {
           --rh-color-border-status-danger: var(--unified-color-status-danger-hover);
+          --rh-color-status-danger: var(--unified-color-status-danger-hover);
           --rh-color-text-primary: var(--unified-color-text-status-danger-hover);
           --rh-color-border-strong: var(--unified-color-status-danger-hover);
         }
 
         &::part(button):focus {
           --rh-color-border-status-danger: var(--unified-color-status-danger-focus);
+          --rh-color-status-danger: var(--unified-color-status-danger-focus);
           --rh-color-text-primary: var(--unified-color-text-status-danger-focus);
           --rh-color-border-strong: var(--unified-color-status-danger-focus);
         }
 
         &::part(button):active {
           --rh-color-border-status-danger: var(--unified-color-status-danger-active);
-          --rh-color-status-danger: var(--unified-color-status-danger-active);
+          --rh-color-text-primary: var(--unified-color-text-status-danger-active);
           --rh-color-border-strong: var(--unified-color-status-danger-active);
         }
       }
@@ -617,10 +723,22 @@
 
     &[variant='link'],
     &[variant='plain'] {
+      --rh-color-blue-70: var(--unified-color-interactive-tertiary-default);
+
+      &::part(button) {
+        /* Link/plain: equal 8px padding on all sides (no extra inline reduction for icons) */
+        padding: var(--unified-space-md);
+      }
+
+      &[compact]::part(button) {
+        /* Compact link/plain: equal 4px padding on all sides */
+        padding: var(--unified-space-xs);
+      }
+
       &::part(button):hover,
       &::part(button):focus,
       &::part(button):active {
-        --rh-color-blue-70: var(--unified-button-link-color-default);
+        --rh-color-blue-70: var(--unified-color-interactive-tertiary-hover);
 
         background-color: var(--unified-color-interactive-fill-plain-hover);
       }
@@ -633,10 +751,24 @@
       &[danger] {
         --rh-color-interactive-primary-default: var(--unified-color-text-status-danger);
 
+        &::part(icon) {
+          /* Dark scheme: icon default is red-orange-50;
+             light scheme unchanged (red-orange-60 = text color) */
+          color: var(--unified-color-status-danger);
+        }
+
+        /* Set --rh-button-icon-color on the host so it reliably inherits
+           into the shadow DOM; ::part() custom props may not cascade to
+           shadow-DOM descendants of the targeted part. */
+        &:is(:hover, :focus-within, :active) {
+          --rh-button-icon-color: var(--unified-color-icon-status-danger-hover);
+        }
+
         &::part(button):hover,
         &::part(button):focus,
         &::part(button):active {
-          color: var(--unified-color-text-status-danger);
+          /* Dark scheme: text in interactive states is red-orange-20 */
+          color: var(--unified-color-text-status-danger-hover);
         }
       }
 
@@ -691,15 +823,6 @@
       }
     }
 
-    &::part(button):active {
-      color: var(--unified-color-interactive-primary-active);
-    }
-
-    &::part(button):active:after {
-      border-width: var(--unified-button-border-width-active);
-      border-color: var(--unified-color-border-interactive-subtle-active);
-    }
-
     &[compact] {
       --unified-button-padding-block: var(--unified-button-padding-block-compact);
       --rh-space-sm: var(--unified-button-padding-block-compact);
@@ -718,15 +841,47 @@
     /* Directly theme through RH-specific tokens */
     --rh-border-radius-default: var(--unified-border-radius-default);
     --rh-space-xl: var(--unified-card-padding-default);
+    --rh-card-heading-font-size: var(--rh-font-size-heading-xs);
+    --rh-color-border-subtle: var(--unified-color-border-subtle);
+
+    &::part(body) {
+      font-size: var(--rh-font-size-body-text-md);
+    }
 
     &[compact],
     &[size='compact'] {
       --rh-space-xl: var(--unified-card-padding-compact);
+      --rh-card-heading-font-size: var(--rh-font-size-body-text-md);
+
+      &::part(body) {
+        font-size: var(--rh-font-size-body-text-sm);
+      }
     }
 
     &[large],
     &[size='large'] {
       --rh-space-xl: var(--unified-card-padding-large);
+      --rh-card-heading-font-size: var(--rh-font-size-heading-sm);
+
+      &::part(body) {
+        font-size: var(--rh-font-size-body-text-lg);
+      }
+    }
+
+    &[variant='plain'] {
+      &::part(container) {
+        border-color: transparent;
+      }
+    }
+
+    &[variant='secondary'] {
+      &::part(container) {
+        background-color:
+          light-dark(
+              var(--rh-color-surface-lighter),
+              var(--rh-color-surface-darker)
+            );
+      }
     }
   }
 }
@@ -904,16 +1059,20 @@
 /* Element: Spinner */
 @layer spinner {
   rh-spinner {
-    --unified-spinner-stroke-width: var(--unified-length-xs);
-    --unified-spinner-color: var(--unified-color-border-interactive-default);
-    --unified-spinner-color-track-on-light: var(--unified-color-gray-20);
-    --unified-spinner-color-track-on-dark: var(--unified-color-gray-70);
-
-    /* Directly theme through RH-specific tokens */
-    --rh-length-sm: var(--unified-spinner-stroke-width);
-    --rh-color-gray-10: var(--unified-spinner-color-track-on-light);
-    --rh-color-gray-70: var(--unified-spinner-color-track-on-dark);
-    --rh-color-accent-base: var(--unified-spinner-color);
+    --rh-spinner-track-display: none;
+    --rh-spinner-vector-effect: none;
+    --rh-spinner-stroke-width: 10;
+    --rh-spinner-circle-radius: 45;
+    --rh-spinner-container-animation-name: felt-rotate;
+    --rh-spinner-container-animation-duration: 2.8s;
+    --rh-spinner-animation-name: felt-dash;
+    --rh-spinner-animation-duration: 1.4s;
+    --rh-spinner-animation-timing: ease-in-out;
+    --rh-spinner-rotate-start: 0deg;
+    --rh-spinner-sm-animation-name: felt-dash;
+    --rh-spinner-sm-dash-array: 283;
+    --rh-spinner-sm-dash-offset: 280;
+    --rh-color-accent-base: var(--unified-color-border-interactive-default);
   }
 }
 
@@ -1281,10 +1440,50 @@
 /* Element: Breadcrumb */
 @layer breadcrumb {
   rh-breadcrumb {
-    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
-    --rh-color-interactive-primary-hover: var(--unified-color-interactive-primary-hover);
+    --rh-color-interactive-primary-default: var(--unified-color-text-interactive-default);
+    --rh-color-interactive-primary-hover: var(--unified-color-text-interactive-hover);
+    --rh-color-interactive-primary-visited-default:
+      light-dark(
+          var(--rh-color-interactive-primary-visited-default-on-light),
+          var(--rh-color-interactive-primary-visited-default-on-dark)
+        );
+    --rh-color-interactive-primary-visited-hover:
+      light-dark(
+          var(--rh-color-interactive-primary-visited-hover-on-light),
+          var(--rh-color-interactive-primary-visited-hover-on-dark)
+        );
     --rh-border-radius-default: var(--unified-border-radius-action-plain);
-    --rh-color-border-interactive: var(--unified-color-interactive-primary-default);
+    --rh-color-border-interactive: var(--unified-color-text-interactive-default);
+    --rh-font-size-body-text-sm: var(--unified-font-size-body-text-sm);
+    --rh-color-icon-secondary: var(--unified-color-icon-secondary);
+    /* stylelint-disable @stylistic/declaration-colon-newline-after, @stylistic/max-line-length */
+    --rh-breadcrumb-caret-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 5 9' fill='none'%3E%3Cpath d='M.5 9a.5.5 0 0 1-.354-.146.5.5 0 0 1 0-.708L3.793 4.5.146.854a.5.5 0 0 1 0-.708.5.5 0 0 1 .708 0l3.823 3.823a.75.75 0 0 1 0 1.061L.854 8.854A.5.5 0 0 1 .5 9Z' fill='black'/%3E%3C/svg%3E");
+    /* stylelint-enable @stylistic/declaration-colon-newline-after, @stylistic/max-line-length */
+
+    & > ol > li > a[href]:not([aria-current]) {
+      text-decoration: underline var(--unified-border-width-sm) dashed !important;
+      /* stylelint-disable @stylistic/declaration-colon-newline-after, @stylistic/max-line-length */
+      text-decoration-color: var(--unified-color-interactive-secondary-underline-default) !important;
+      /* stylelint-enable @stylistic/declaration-colon-newline-after, @stylistic/max-line-length */
+      text-underline-offset: max(5px, 0.28em) !important;
+    }
+
+    & > ol > li > a[href]:not([aria-current]):is(:hover, :focus, :active) {
+      text-decoration-color: currentcolor !important;
+    }
+
+    & > ol > li > a[href]:not([aria-current]):visited:hover {
+      text-decoration-color: var(--rh-color-interactive-primary-visited-hover) !important;
+    }
+
+    & > ol > li > a[aria-current='page'] {
+      text-decoration: none !important;
+    }
+
+    & > ol > li:not(:first-of-type):before {
+      block-size: 12px !important;
+      inline-size: 12px !important;
+    }
   }
 }
 
