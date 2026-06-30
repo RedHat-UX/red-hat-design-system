@@ -209,7 +209,7 @@ export class RhTabs extends LitElement {
                   aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll left'}"
                   ?disabled="${!this.#overflow.overflowLeft}"
                   @click="${() => !this.matches(':dir(rtl)') ? this.#overflow.scrollLeft() : this.#overflow.scrollRight()}">
-            <span class="overflow-icon"><rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon></span>
+            <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
           </button>`}
           <div id="tablist" role="tablist">
             <!-- summary: Tab elements
@@ -227,7 +227,7 @@ export class RhTabs extends LitElement {
                   aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll right'}"
                   ?disabled="${!this.#overflow.overflowRight}"
                   @click="${() => !this.matches(':dir(rtl)') ? this.#overflow.scrollRight() : this.#overflow.scrollLeft()}">
-            <span class="overflow-icon"><rh-icon set="ui" icon="caret-right" loading="eager"></rh-icon></span>
+             <rh-icon set="ui" icon="caret-right" loading="eager"></rh-icon>
           </button>`}
         </div>
         <!-- summary: Panel elements

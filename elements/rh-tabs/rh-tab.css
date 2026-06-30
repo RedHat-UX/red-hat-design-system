@@ -46,6 +46,9 @@ rh-icon,
   position: relative;
   display: flex;
   flex: 1;
+
+  /** Gap between icon and label using rh-space-md */
+  gap: var(--rh-space-md, 8px);
   text-decoration: none;
   cursor: pointer;
   align-items: center;
@@ -153,7 +156,7 @@ rh-icon,
       background-color: transparent;
 
       &:before {
-        border-inline-color: var(--_tab-box-side-border-color, var(--rh-color-border-subtle));
+        border-inline-color: var(--rh-color-border-subtle);
         border-inline-start-width: var(--rh-border-width-sm, 1px);
       }
 
@@ -164,18 +167,14 @@ rh-icon,
 
       &.first {
         &:before {
-          border-inline-start-color:
-            var(--_tab-box-side-border-color,
-              var(--rh-color-border-subtle));
+          border-inline-start-color: var(--rh-color-border-subtle);
           border-inline-start-width: var(--rh-border-width-sm, 1px);
         }
       }
 
       &.last {
         &:before {
-          border-inline-end-color:
-            var(--_tab-box-side-border-color,
-              var(--rh-color-border-subtle));
+          border-inline-end-color: var(--rh-color-border-subtle);
           border-inline-end-width: var(--rh-border-width-sm, 1px);
         }
       }
@@ -225,9 +224,7 @@ rh-icon,
         &.first {
           @container (min-width: 768px) {
             &:before {
-              border-inline-start-color:
-                var(--_tab-box-side-border-color,
-                  var(--rh-color-border-subtle));
+              border-inline-start-color: var(--rh-color-border-subtle);
               border-inline-start-width: var(--rh-border-width-sm, 1px);
             }
           }
@@ -236,9 +233,7 @@ rh-icon,
         &.last {
           @container (min-width: 768px) {
             &:before {
-              border-inline-end-color:
-                var(--_tab-box-side-border-color,
-                  var(--rh-color-border-subtle));
+              border-inline-end-color: var(--rh-color-border-subtle);
               border-inline-end-width: var(--rh-border-width-sm, 1px);
             }
           }
@@ -285,7 +280,7 @@ rh-icon,
     &.box {
       &:before {
         /** Inactive box tab side border color */
-        border-inline-color: var(--_tab-box-side-border-color, var(--rh-color-border-subtle));
+        border-inline-color: var(--rh-color-border-subtle);
 
         /** Inactive box tab side border width */
         border-inline-start-width: var(--rh-border-width-sm, 1px);
@@ -315,13 +310,13 @@ rh-icon,
               var(--rh-border-width-sm, 1px)
               solid
               /** Vertical box tab trailing border color above sm breakpoint */
-              var(--_tab-box-side-border-color, var(--rh-color-border-subtle));
+              var(--rh-color-border-subtle);
             border-block-start:
               /** Vertical box tab top border width above sm breakpoint */
               var(--rh-border-width-sm, 1px)
               solid
               /** Vertical box tab top border color above sm breakpoint */
-              var(--_tab-box-side-border-color, var(--rh-color-border-subtle));
+              var(--rh-color-border-subtle);
           }
 
           &:after {
@@ -355,9 +350,7 @@ rh-icon,
                 border-block-start: 0 solid transparent;
 
                 /** First vertical box tab trailing border */
-                border-inline-end-color:
-                  var(--_tab-box-side-border-color,
-                    var(--rh-color-border-subtle));
+                border-inline-end-color: var(--rh-color-border-subtle);
               }
             }
           }
@@ -444,16 +437,6 @@ rh-icon,
   }
 }
 
-/* Inner wrapper for pill-shaped hover/focus backgrounds (unified theme) */
-#wrapper {
-  display: flex;
-  gap: var(--rh-space-md, 8px);
-  align-items: center;
-  border-radius: var(--_tab-wrapper-radius, 0);
-  padding: var(--_tab-wrapper-padding, 0);
-  justify-content: var(--_tab-wrapper-justify, initial);
-}
-
 :host(:disabled) {
   & #button {
     pointer-events: none;
@@ -472,21 +455,7 @@ rh-icon,
   & #button {
     /** Focus outline, adapts to color-palette */
     border-radius: var(--rh-border-radius-default, 3px);
-    outline:
-      var(--_tab-focus-button-outline,
-        var(--rh-border-width-lg, 3px)
-        solid
-        var(--rh-color-interactive-primary-default));
-    outline-offset: var(--_tab-focus-button-outline-offset, -7px);
+    outline: var(--rh-border-width-lg, 3px) solid var(--rh-color-interactive-primary-default);
+    outline-offset: -7px;
   }
-
-  & #wrapper {
-    background-color: var(--_tab-focus-background, transparent);
-    outline: var(--_tab-focus-wrapper-outline, none);
-    outline-offset: var(--_tab-focus-wrapper-outline-offset, 0);
-  }
-}
-
-:host(:hover:not([disabled], [aria-disabled='true'])) #button:not(.active) #wrapper {
-  background-color: var(--_tab-hover-background, transparent);
 }
