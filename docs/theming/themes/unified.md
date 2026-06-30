@@ -196,24 +196,4 @@ Unified content
         console.error("Could not fetch the CSS file:", error);
     }
   }
-  const rhSwitch = document.querySelector('#unified-page-switch');
-    const stylesheet = new CSSStyleSheet(); 
-    const cssFile = await getCssFileAsString("/theming/themes/unified-theme/unified-theme-preview.css");
-    rhSwitch.addEventListener('change', function() {
-        if (rhSwitch.checked) {
-            stylesheet
-            .replace(cssFile)
-            .catch((err) => {
-                console.error("Failed to replace styles:", err);
-            });
-            document.adoptedStyleSheets.push(stylesheet);
-        } else {
-            stylesheet
-            .replace("")
-            .catch((err) => {
-                console.error("Failed to clear styles:", err);
-            });
-            document.adoptedStyleSheets.push(stylesheet);
-        }
-    });
 </script>

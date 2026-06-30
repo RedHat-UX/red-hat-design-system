@@ -20,6 +20,7 @@
     --unified-color-gray-50: #707070;
     --unified-color-gray-60: #4d4d4d;
     --unified-color-gray-70: #383838;
+    --unified-color-gray-80: #292929;
     --unified-color-gray-90: #1f1f1f;
     --unified-color-gray-95: #151515;
 
@@ -261,6 +262,7 @@
           var(--unified-color-red-orange-60),
           var(--unified-color-red-orange-50)
         );
+    --unified-color-text-status-on-danger: white;
     --unified-color-status-danger-hover:
       light-dark(
           var(--unified-color-red-orange-70),
@@ -328,6 +330,8 @@
         );
 
     /* Status colors: Warning */
+    --unified-color-status-warning: var(--rh-color-yellow-30, #ffcc17);
+    --unified-color-text-status-on-warning: var(--unified-color-gray-95, #151515);
     --unified-color-status-warning-hover:
       light-dark(
           var(--unified-color-yellow-40),
@@ -360,6 +364,8 @@
         );
 
     /* Status colors: Success */
+    --unified-color-status-success: var(--rh-color-green-60, #3d7317);
+    --unified-color-text-status-on-success: white;
     --unified-color-status-success-hover:
       light-dark(
           var(--unified-color-green-70),
@@ -392,6 +398,8 @@
         );
 
     /* Status colors: Info */
+    --unified-color-status-info: var(--rh-color-purple-50, #5e40be);
+    --unified-color-text-status-on-info: white;
     --unified-color-status-info-hover:
       light-dark(
           var(--unified-color-purple-60),
@@ -429,6 +437,7 @@
           var(--unified-color-teal-60),
           var(--unified-color-teal-40)
         );
+    --unified-color-text-status-on-custom: white;
     --unified-color-status-custom-hover:
       light-dark(
           var(--unified-color-teal-70),
@@ -476,6 +485,16 @@
           var(--unified-color-gray-20),
           var(--unified-color-gray-60)
         );
+
+    /* Surface colors */
+    --unified-color-surface-primary:
+      light-dark(
+          white,
+          var(--unified-color-gray-80)
+        );
+
+    /* Box shadows */
+    --unified-box-shadow-floating: 0 0 10px 0 rgba(41, 41, 41, 0.15);
 
     /* Brand accent */
     --unified-color-brand-accent:
@@ -1129,48 +1148,306 @@
   rh-tag {
     --rh-size-icon-01: var(--unified-size-icon-00);
 
-    /* All non-status variants use primary text/icon color (gray-95).
-       light-dark() preserves the dark-mode fill value on -70 tokens
-       which are shared between light text and dark fill. */
-    --rh-color-gray-10: var(--unified-color-gray-20);
+    /* Filled tags look the same in both light and dark modes:
+       pastel fill, dark text/icon. Nested light-dark() ensures
+       the outer light-dark() in rh-tag.css resolves to the same
+       visual in both color schemes. -60 stays a flat gray-95
+       (always dark). Outlined tags are unaffected because their
+       text/icon tokens (-20, -30 at base) are not overridden. */
+
+    /* Gray */
+    --rh-color-gray-10:
+      light-dark(
+          var(--unified-color-gray-20),
+          var(--unified-color-gray-95)
+        );
     --rh-color-gray-60: var(--unified-color-gray-95);
     --rh-color-gray-70:
       light-dark(
           var(--unified-color-gray-95),
-          var(--unified-color-gray-70)
+          var(--unified-color-gray-20)
         );
-    --rh-color-red-10: var(--rh-color-red-20, #fbc5c5);
+
+    /* Red */
+    --rh-color-red-10:
+      light-dark(
+          var(--rh-color-red-20, #fbc5c5),
+          var(--unified-color-gray-95)
+        );
     --rh-color-red-60: var(--unified-color-gray-95);
     --rh-color-red-70:
       light-dark(
           var(--unified-color-gray-95),
-          #5f0000
+          var(--rh-color-red-20, #fbc5c5)
         );
 
-    /* Filled: 2px border matching fill color (invisible, no shift on hover) */
+    /* Red-orange */
+    --rh-color-red-orange-10:
+      light-dark(
+          var(--rh-color-red-orange-20, #fbbea8),
+          var(--unified-color-gray-95)
+        );
+    --rh-color-red-orange-60: var(--unified-color-gray-95);
+    --rh-color-red-orange-70:
+      light-dark(
+          var(--unified-color-gray-95),
+          var(--rh-color-red-orange-20, #fbbea8)
+        );
+
+    /* Orange */
+    --rh-color-orange-10:
+      light-dark(
+          var(--rh-color-orange-20, #fccb8f),
+          var(--unified-color-gray-95)
+        );
+    --rh-color-orange-60: var(--unified-color-gray-95);
+    --rh-color-orange-70:
+      light-dark(
+          var(--unified-color-gray-95),
+          var(--rh-color-orange-20, #fccb8f)
+        );
+
+    /* Yellow (Figma: "Gold") */
+    --rh-color-yellow-10:
+      light-dark(
+          var(--rh-color-yellow-20, #ffe072),
+          var(--unified-color-gray-95)
+        );
+    --rh-color-yellow-60: var(--unified-color-gray-95);
+    --rh-color-yellow-70:
+      light-dark(
+          var(--unified-color-gray-95),
+          var(--rh-color-yellow-20, #ffe072)
+        );
+
+    /* Green */
+    --rh-color-green-10:
+      light-dark(
+          var(--rh-color-green-20, #d1f1bb),
+          var(--unified-color-gray-95)
+        );
+    --rh-color-green-60: var(--unified-color-gray-95);
+    --rh-color-green-70:
+      light-dark(
+          var(--unified-color-gray-95),
+          var(--rh-color-green-20, #d1f1bb)
+        );
+
+    /* Teal (Figma: "Cyan") */
+    --rh-color-teal-10:
+      light-dark(
+          var(--rh-color-teal-20, #b9e5e5),
+          var(--unified-color-gray-95)
+        );
+    --rh-color-teal-60: var(--unified-color-gray-95);
+    --rh-color-teal-70:
+      light-dark(
+          var(--unified-color-gray-95),
+          var(--rh-color-teal-20, #b9e5e5)
+        );
+
+    /* Blue */
+    --rh-color-blue-10:
+      light-dark(
+          var(--rh-color-blue-20, #b9dafc),
+          var(--unified-color-gray-95)
+        );
+    --rh-color-blue-60: var(--unified-color-gray-95);
+    --rh-color-blue-70:
+      light-dark(
+          var(--unified-color-gray-95),
+          var(--rh-color-blue-20, #b9dafc)
+        );
+
+    /* Purple */
+    --rh-color-purple-10:
+      light-dark(
+          var(--rh-color-purple-20, #d0c5f4),
+          var(--unified-color-gray-95)
+        );
+    --rh-color-purple-60: var(--unified-color-gray-95);
+    --rh-color-purple-70:
+      light-dark(
+          var(--unified-color-gray-95),
+          var(--rh-color-purple-20, #d0c5f4)
+        );
+
+    /* Filled: 2px border matching fill (invisible) in both modes.
+       -30/-50 are always overridden (not hover-scoped) because -30
+       also controls the dark-mode icon color in rh-tag.css. */
     &:is(:not([variant]), [variant='filled']) {
       --rh-border-width-sm: var(--unified-border-width-md);
-      --rh-color-gray-30: var(--unified-color-gray-20);
-      --rh-color-gray-50: var(--unified-color-gray-70);
-      --rh-color-red-30: var(--rh-color-red-20, #fbc5c5);
-      --rh-color-red-50: var(--rh-color-red-70, #5f0000);
+      --rh-color-gray-30:
+        light-dark(
+            var(--unified-color-gray-20),
+            var(--unified-color-gray-95)
+          );
+      --rh-color-gray-50:
+        light-dark(
+            var(--unified-color-gray-95),
+            var(--unified-color-gray-20)
+          );
+      --rh-color-red-30:
+        light-dark(
+            var(--rh-color-red-20, #fbc5c5),
+            var(--unified-color-gray-95)
+          );
+      --rh-color-red-50:
+        light-dark(
+            var(--unified-color-gray-95),
+            var(--rh-color-red-20, #fbc5c5)
+          );
+      --rh-color-red-orange-30:
+        light-dark(
+            var(--rh-color-red-orange-20, #fbbea8),
+            var(--unified-color-gray-95)
+          );
+      --rh-color-red-orange-50:
+        light-dark(
+            var(--unified-color-gray-95),
+            var(--rh-color-red-orange-20, #fbbea8)
+          );
+      --rh-color-orange-30:
+        light-dark(
+            var(--rh-color-orange-20, #fccb8f),
+            var(--unified-color-gray-95)
+          );
+      --rh-color-orange-50:
+        light-dark(
+            var(--unified-color-gray-95),
+            var(--rh-color-orange-20, #fccb8f)
+          );
+      --rh-color-yellow-30:
+        light-dark(
+            var(--rh-color-yellow-20, #ffe072),
+            var(--unified-color-gray-95)
+          );
+      --rh-color-yellow-50:
+        light-dark(
+            var(--unified-color-gray-95),
+            var(--rh-color-yellow-20, #ffe072)
+          );
+      --rh-color-green-30:
+        light-dark(
+            var(--rh-color-green-20, #d1f1bb),
+            var(--unified-color-gray-95)
+          );
+      --rh-color-green-50:
+        light-dark(
+            var(--unified-color-gray-95),
+            var(--rh-color-green-20, #d1f1bb)
+          );
+      --rh-color-teal-30:
+        light-dark(
+            var(--rh-color-teal-20, #b9e5e5),
+            var(--unified-color-gray-95)
+          );
+      --rh-color-teal-50:
+        light-dark(
+            var(--unified-color-gray-95),
+            var(--rh-color-teal-20, #b9e5e5)
+          );
+      --rh-color-blue-30:
+        light-dark(
+            var(--rh-color-blue-20, #b9dafc),
+            var(--unified-color-gray-95)
+          );
+      --rh-color-blue-50:
+        light-dark(
+            var(--unified-color-gray-95),
+            var(--rh-color-blue-20, #b9dafc)
+          );
+      --rh-color-purple-30:
+        light-dark(
+            var(--rh-color-purple-20, #d0c5f4),
+            var(--unified-color-gray-95)
+          );
+      --rh-color-purple-50:
+        light-dark(
+            var(--unified-color-gray-95),
+            var(--rh-color-purple-20, #d0c5f4)
+          );
     }
 
-    /* Outline: transparent fill, color-specific border */
+    /* Outline: transparent fill, color-specific border.
+       No hover interaction — tags are non-interactive in the
+       unified theme. Revisit if design adds interactive states. */
     &[variant='outline'] {
       &[color='red'] {
         --rh-color-gray-30: var(--rh-color-red-30, #f9a8a8);
         --rh-color-gray-50: var(--rh-color-red-50, #ee0000);
       }
+
+      &[color='red-orange'] {
+        --rh-color-gray-30: var(--rh-color-red-orange-30, #f89b78);
+        --rh-color-gray-50: var(--rh-color-red-orange-50, #f0561d);
+      }
+
+      &[color='orange'] {
+        --rh-color-gray-30: var(--rh-color-orange-30, #f8ae54);
+        --rh-color-gray-50: var(--rh-color-orange-50, #ca6c0f);
+      }
+
+      &[color='yellow'] {
+        --rh-color-gray-30: var(--rh-color-yellow-30, #ffcc17);
+        --rh-color-gray-50: var(--rh-color-yellow-50, #b98412);
+      }
+
+      &[color='green'] {
+        --rh-color-gray-30: var(--rh-color-green-30, #afdc8f);
+        --rh-color-gray-50: var(--rh-color-green-50, #63993d);
+      }
+
+      &[color='teal'] {
+        --rh-color-gray-30: var(--rh-color-teal-30, #9ad8d8);
+        --rh-color-gray-50: var(--rh-color-teal-50, #37a3a3);
+      }
+
+      &[color='blue'] {
+        --rh-color-gray-30: var(--rh-color-blue-30, #92c5f9);
+        --rh-color-gray-50: var(--rh-color-blue-50, #0066cc);
+      }
+
+      &[color='purple'] {
+        --rh-color-gray-30: var(--rh-color-purple-30, #b6a6e9);
+        --rh-color-gray-50: var(--rh-color-purple-50, #5e40be);
+      }
     }
 
-    /* Disabled: plain gray fill, no border, muted text/icon.
-       Overrides variant and color. &[color] raises specificity
-       to beat &[variant='outline'] &[color='red'] (0-3-0). */
+    /* Disabled: plain gray fill, muted text/icon.
+       -60 mutes light-mode text/icon. -20/-30 mute dark-mode
+       outline text/icon (which the shadow DOM's .color.outline
+       class reads at higher specificity than .disabled).
+       &[color] raises specificity to beat &[variant='outline']
+       &[color='…'] (0-3-0). */
     &[disabled] {
       --rh-border-width-sm: var(--unified-border-width-md);
-      --rh-color-gray-60: var(--unified-color-gray-50);
+      --rh-color-gray-60: var(--unified-color-icon-status-disabled);
       --rh-color-gray-70: var(--unified-color-gray-70);
+      --rh-color-red-60: var(--unified-color-icon-status-disabled);
+      --rh-color-red-20: var(--unified-color-icon-status-disabled);
+      --rh-color-red-30: var(--unified-color-icon-status-disabled);
+      --rh-color-red-orange-60: var(--unified-color-icon-status-disabled);
+      --rh-color-red-orange-20: var(--unified-color-icon-status-disabled);
+      --rh-color-red-orange-30: var(--unified-color-icon-status-disabled);
+      --rh-color-orange-60: var(--unified-color-icon-status-disabled);
+      --rh-color-orange-20: var(--unified-color-icon-status-disabled);
+      --rh-color-orange-30: var(--unified-color-icon-status-disabled);
+      --rh-color-yellow-60: var(--unified-color-icon-status-disabled);
+      --rh-color-yellow-20: var(--unified-color-icon-status-disabled);
+      --rh-color-yellow-30: var(--unified-color-icon-status-disabled);
+      --rh-color-green-60: var(--unified-color-icon-status-disabled);
+      --rh-color-green-20: var(--unified-color-icon-status-disabled);
+      --rh-color-green-30: var(--unified-color-icon-status-disabled);
+      --rh-color-teal-60: var(--unified-color-icon-status-disabled);
+      --rh-color-teal-20: var(--unified-color-icon-status-disabled);
+      --rh-color-teal-30: var(--unified-color-icon-status-disabled);
+      --rh-color-blue-60: var(--unified-color-icon-status-disabled);
+      --rh-color-blue-20: var(--unified-color-icon-status-disabled);
+      --rh-color-blue-30: var(--unified-color-icon-status-disabled);
+      --rh-color-purple-60: var(--unified-color-icon-status-disabled);
+      --rh-color-purple-20: var(--unified-color-icon-status-disabled);
+      --rh-color-purple-30: var(--unified-color-icon-status-disabled);
 
       &,
       &[color] {
@@ -1322,9 +1599,19 @@
 @layer alert {
   rh-alert {
     --unified-alert-border-color: var(--rh-color-teal-50, #37a3a3);
+    --rh-alert-border-width: 0;
+    --rh-button-close-width: 100%;
+    --rh-button-close-radius: 50%;
+    --rh-color-surface-dark: var(--unified-color-gray-80);
 
-    /* Remove the internal container border so we can replace it on the host */
-    --rh-border-width-md: 0;
+    /* Replace status-specific background tints with primary surface */
+    --rh-color-teal-10: var(--unified-color-surface-primary);
+    --rh-color-surface-status-neutral: var(--unified-color-surface-primary);
+    --rh-color-surface-status-info: var(--unified-color-surface-primary);
+    --rh-color-surface-status-success: var(--unified-color-surface-primary);
+    --rh-color-surface-status-caution: var(--unified-color-surface-primary);
+    --rh-color-surface-status-warning: var(--unified-color-surface-primary);
+    --rh-color-surface-status-danger: var(--unified-color-surface-primary);
 
     border:
       var(--unified-border-width-md)
@@ -1335,6 +1622,9 @@
 
     --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
     --rh-color-interactive-primary-hover: var(--unified-color-interactive-primary-hover);
+    --rh-button-close-hover-background: var(--unified-color-interactive-fill-plain-hover);
+    --rh-button-close-focus-background: var(--unified-color-interactive-fill-plain-focus);
+    --rh-button-close-active-background: var(--unified-color-interactive-fill-plain-active);
 
     &[state='neutral'] {
       --unified-alert-border-color: var(--rh-color-status-neutral);
@@ -1361,7 +1651,10 @@
     }
 
     &[variant='toast'] {
-      border-radius: var(--unified-border-radius-large);
+      --rh-box-shadow-xl: none;
+      --rh-color-surface-lightest: var(--unified-color-surface-primary);
+
+      box-shadow: var(--unified-box-shadow-floating);
     }
   }
 }
