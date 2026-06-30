@@ -908,16 +908,15 @@
 /* Element: Call to action */
 @layer cta {
   rh-cta {
-    --unified-cta-font-size: var(--unified-font-size-body-text-sm);
+    --unified-cta-font-size: var(--unified-font-size-body-text-md);
     --unified-cta-padding-block: var(--unified-space-lg);
     --unified-cta-padding-inline: var(--unified-space-2xl);
-    --unified-cta-padding-block-compact: var(--unified-space-sm);
-    --unified-cta-padding-inline-compact: var(--unified-space-lg);
+    --unified-cta-padding-block-compact: var(--unified-space-md);
+    --unified-cta-padding-inline-compact: var(--unified-space-xl);
     --unified-cta-border-width-hover: var(--unified-border-width-md);
     --unified-cta-border-width-focus: var(--unified-border-width-md);
     --unified-cta-border-width-focus-ring: var(--unified-border-width-lg);
     --unified-cta-border-width-active: var(--unified-border-width-md);
-    --unified-cta-focus-ring-offset: calc(var(--unified-cta-border-width-focus-ring) * 2);
     --unified-cta-border-offset:
       calc(
           var(--unified-cta-border-width-hover)
@@ -934,7 +933,8 @@
           - var(--unified-cta-border-offset)
         );
     --unified-cta-text-underline-offset: 4px;
-    --unified-cta-text-decoration: underline dashed 1px;
+    --unified-cta-text-decoration-color: currentcolor;
+    --unified-cta-text-decoration: underline dashed 1px var(--unified-cta-text-decoration-color);
     --unified-cta-primary-bg-default: #ee0000;
     --unified-cta-primary-bg-hover: #a60000;
     --unified-cta-primary-bg-active: #a60000;
@@ -947,18 +947,22 @@
     --rh-font-size-body-text-lg: var(--unified-cta-font-size);
     --rh-space-lg: var(--unified-cta-padding-block);
     --rh-space-2xl: var(--unified-cta-padding-inline);
-    --rh-cta-focus-inner-border-color: var(--unified-color-interactive-primary-default);
 
-    /* Focus ring pseudo-element (shared across all variants) */
-    &::part(container):after {
-      --rh-border-width-sm: 2px;
+    /* Suppress the component's native container outline; the host outline below is the ring */
+    --rh-cta-focus-container-outline-color: transparent;
 
-      border-width: var(--unified-cta-border-width-focus-ring);
+    /* Focus ring on the host via box-shadow — outline: none !important is set on
+       :host(:focus-within) in the component's shadow DOM and cannot be overridden
+       from the light DOM. box-shadow is unaffected and follows border-radius.
+       Two layers: inner Canvas-colored shadow = visual gap, outer = the ring. */
+    &:focus-within {
+      --unified-cta-focus-ring-color: var(--unified-color-interactive-primary-default);
+      --unified-cta-focus-ring-size: calc(var(--unified-cta-border-width-focus-ring) * 2);
+
       border-radius: var(--unified-border-radius-pill);
-      height: calc(100% + var(--unified-cta-focus-ring-offset) * 2);
-      width: calc(100% + var(--unified-cta-focus-ring-offset) * 2);
-      top: calc(var(--unified-cta-focus-ring-offset) * -1);
-      left: calc(var(--unified-cta-focus-ring-offset) * -1);
+      box-shadow:
+        0 0 0 var(--unified-cta-border-width-focus-ring) Canvas,
+        0 0 0 var(--unified-cta-focus-ring-size) var(--unified-cta-focus-ring-color);
     }
 
     &[variant='primary'] {
@@ -967,10 +971,30 @@
       --rh-cta-hover-text-decoration: var(--unified-cta-text-decoration);
       --rh-cta-hover-text-underline-offset: var(--unified-cta-text-underline-offset);
       --rh-cta-focus-text-decoration: var(--unified-cta-text-decoration);
+      --rh-cta-active-background-color: var(--unified-cta-primary-bg-active);
       --rh-cta-active-text-decoration: var(--unified-cta-text-decoration);
+      --rh-cta-focus-inner-border-color: transparent;
+      --rh-cta-active-inner-border-color: transparent;
+
+      /* --rh-cta-background-color sits at the top of the fallback chain in the
+         component's primary --_background-color definition, so it wins over the
+         active-specific token that the component's cascade ordering would otherwise
+         override with the default bright-red value. */
+      &:active {
+        --rh-cta-background-color: var(--unified-cta-primary-bg-active);
+        --rh-cta-border-color: var(--unified-cta-primary-bg-active);
+      }
     }
 
     &[variant='secondary'] {
+      /* stylelint-disable rhds/no-unknown-token-name -- --rh-color-gray-45 added in RHDS v3.1 */
+      --unified-cta-text-decoration-color:
+        light-dark(
+            var(--rh-color-gray-45, #8c8c8c),
+            var(--rh-color-gray-40, #a3a3a3)
+          );
+      /* stylelint-enable rhds/no-unknown-token-name */
+
       --rh-cta-hover-background-color: transparent;
       --rh-cta-hover-color: var(--rh-color-text-primary);
       --rh-cta-hover-text-decoration: var(--unified-cta-text-decoration);
@@ -980,33 +1004,37 @@
       --rh-cta-active-background-color: transparent;
       --rh-cta-active-text-decoration: var(--unified-cta-text-decoration);
 
-      &::part(container):hover {
-        --rh-border-width-sm: var(--unified-cta-border-width-hover);
+      /* Suppress the component's inner ::after border on focus/active;
+         the host outline ring handles the focus indicator */
+      --rh-cta-focus-inner-border-color: transparent;
+      --rh-cta-active-inner-border-color: transparent;
 
+      &::part(container):hover {
+        border-width: var(--unified-cta-border-width-hover);
         padding-block: var(--unified-cta-border-offset-block);
         padding-inline: var(--unified-cta-border-offset-inline);
       }
 
       &::part(container):focus-within {
-        --rh-border-width-sm: var(--unified-cta-border-width-focus);
-
+        border-width: var(--unified-cta-border-width-focus);
         padding-block: var(--unified-cta-border-offset-block);
         padding-inline: var(--unified-cta-border-offset-inline);
       }
 
       &::part(container):active {
-        --rh-border-width-sm: var(--unified-cta-border-width-active);
-
+        border-width: var(--unified-cta-border-width-active);
         padding-block: var(--unified-cta-border-offset-block);
         padding-inline: var(--unified-cta-border-offset-inline);
       }
     }
 
     &:not([variant]) {
-      --rh-cta-hover-background-color: var(--unified-color-interactive-fill-plain-hover);
+      --rh-border-radius-default: var(--unified-border-radius-action-plain);
+      --rh-cta-hover-background-color: transparent;
       --rh-cta-hover-text-decoration: var(--unified-cta-text-decoration);
       --rh-cta-hover-text-underline-offset: var(--unified-cta-text-underline-offset);
-      --rh-cta-focus-container-background-color: var(--unified-color-interactive-fill-plain-focus);
+      --rh-cta-focus-container-background-color: transparent;
+      --rh-cta-focus-color: var(--unified-color-text-interactive-focus);
       --rh-cta-focus-text-decoration: var(--unified-cta-text-decoration);
       --rh-cta-active-container-background-color:
         var(
@@ -1014,18 +1042,33 @@
           );
       --rh-cta-active-text-decoration: var(--unified-cta-text-decoration);
 
-      &::part(container) {
-        padding-block: var(--rh-space-lg);
-        padding-inline: var(--rh-space-2xl);
+      &:focus-within {
+        border-radius: var(--unified-border-radius-action-plain);
       }
     }
 
+    /* stylelint-disable-next-line no-descending-specificity */
     &:is([variant='tertiary'], [variant='brick']) {
+      /* stylelint-disable rhds/no-unknown-token-name -- --rh-color-gray-45 added in RHDS v3.1 */
+      --unified-cta-text-decoration-color:
+        light-dark(
+            var(--rh-color-gray-45, #8c8c8c),
+            var(--rh-color-gray-40, #a3a3a3)
+          );
+      /* stylelint-enable rhds/no-unknown-token-name */
+
       --rh-cta-hover-background-color: transparent;
       --rh-cta-hover-text-decoration: var(--unified-cta-text-decoration);
       --rh-cta-hover-text-underline-offset: var(--unified-cta-text-underline-offset);
+      --rh-cta-focus-color: var(--unified-color-text-interactive-focus);
       --rh-cta-focus-text-decoration: var(--unified-cta-text-decoration);
+      --rh-cta-focus-text-underline-offset: var(--unified-cta-text-underline-offset);
       --rh-cta-active-text-decoration: var(--unified-cta-text-decoration);
+
+      /* Suppress the component's inner ::after border on focus/active;
+         the host outline ring handles the focus indicator */
+      --rh-cta-focus-inner-border-color: transparent;
+      --rh-cta-active-inner-border-color: transparent;
 
       &::part(container) {
         border-style: solid;
@@ -1033,9 +1076,15 @@
         border-color: var(--unified-color-border-interactive-subtle-default);
       }
 
-      &::part(container):hover {
-        --rh-border-width-sm: var(--unified-cta-border-width-hover);
+      /* The component's shadow DOM has no --_focus-inner-border-color mapping for
+         unrecognized variants (tertiary), so the ::after falls back to currentColor
+         (blue). Suppress border-style on the part to prevent it from showing. */
+      &::part(container):after {
+        border-style: none;
+      }
 
+      &::part(container):hover {
+        border-width: var(--unified-cta-border-width-hover);
         color: var(--unified-color-text-interactive-hover);
         border-color: var(--unified-color-border-interactive-subtle-default);
         padding-block: var(--unified-cta-border-offset-block);
@@ -1043,8 +1092,7 @@
       }
 
       &::part(container):focus-within {
-        --rh-border-width-sm: var(--unified-cta-border-width-focus);
-
+        border-width: var(--unified-cta-border-width-focus);
         color: var(--unified-color-text-interactive-focus);
         border-color: var(--unified-color-border-interactive-subtle-default);
         padding-block: var(--unified-cta-border-offset-block);
@@ -1052,8 +1100,7 @@
       }
 
       &::part(container):active {
-        --rh-border-width-sm: var(--unified-cta-border-width-active);
-
+        border-width: var(--unified-cta-border-width-active);
         color: var(--unified-color-text-interactive-active);
         border-color: var(--unified-color-border-interactive-subtle-default);
         padding-block: var(--unified-cta-border-offset-block);
@@ -1064,6 +1111,7 @@
     &[compact] {
       --rh-space-lg: var(--unified-cta-padding-block-compact);
       --rh-space-2xl: var(--unified-cta-padding-inline-compact);
+      --unified-cta-font-size: var(--unified-font-size-body-text-sm);
     }
   }
 }
