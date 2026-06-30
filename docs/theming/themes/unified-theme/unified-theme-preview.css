@@ -1192,6 +1192,7 @@
       var(--unified-border-width-lg)
       solid
       var(--unified-color-border-interactive-default);
+    --_overflow-focus-outline-offset: 3px;
   }
 
   /* ── rh-tabs vertical: adjust first/last tab margin ──── */
@@ -1201,6 +1202,9 @@
 
   /* ── rh-tab (individual tab button) ──────────────────── */
   rh-tab {
+    /* Dark box tab background: gray-80 not gray-90 */
+    --rh-color-surface-darker: var(--rh-color-gray-80, #292929);
+
     /* Shift padding from button to inner pill wrapper.
        Outer button gets the spacing between tab edge and pill,
        inner wrapper gets the pill's own internal padding. */
@@ -1226,6 +1230,11 @@
       solid
       var(--unified-color-border-interactive-default);
     --_tab-focus-button-outline: none;
+  }
+
+  /* ── disabled tab: text and icon use disabled tokens ── */
+  rh-tab[disabled] {
+    --rh-tabs-link-color: var(--unified-color-text-status-disabled);
   }
 
   /* ── horizontal box: remove side divider borders ────── */
