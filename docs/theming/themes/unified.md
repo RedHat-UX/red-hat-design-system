@@ -175,6 +175,17 @@ Unified content
     }
   `);
 
+  // rh-cta focus state reads --_focus-text-decoration (private) instead of
+  // --rh-cta-focus-text-decoration (public) directly, unlike hover which
+  // reads --rh-cta-hover-text-decoration. This patch mirrors hover's pattern
+  // for focus. Remove once rh-cta fixes this in the base component.
+  const ctaFocusPatch = new CSSStyleSheet();
+  ctaFocusPatch.replaceSync(/*css*/`
+    :host(:is(:focus, :focus-within)) #container {
+      --_text-decoration: var(--rh-cta-focus-text-decoration, var(--_focus-text-decoration));
+    }
+  `);
+
   for (const pattern of document.querySelectorAll('uxdot-pattern')) {
     for (const chip of pattern.shadowRoot.querySelectorAll('rh-chip')) {
       chip.shadowRoot.adoptedStyleSheets = [
@@ -182,6 +193,7 @@ Unified content
         chipCloseIconPatch,
       ];
     }
+
     // rh-chip-group .btn-link has no CSS part exposed.
     // Add part="btn-link" so the unified theme can style it.
     // Remove once rh-chip-group exposes it natively.
@@ -190,6 +202,12 @@ Unified content
       if (btn) {
         btn.setAttribute('part', 'btn-link');
       }
+    }
+    for (const cta of pattern.shadowRoot.querySelectorAll('rh-cta')) {
+      cta.shadowRoot.adoptedStyleSheets = [
+        ...cta.shadowRoot.adoptedStyleSheets,
+        ctaFocusPatch,
+      ];
     }
   }
 
