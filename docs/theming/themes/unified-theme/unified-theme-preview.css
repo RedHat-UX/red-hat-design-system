@@ -889,7 +889,7 @@
 /* Element: Call to action */
 @layer cta {
   rh-cta {
-    --unified-cta-font-size: var(--unified-font-size-body-text-sm);
+    --unified-cta-font-size: var(--unified-font-size-body-text-md);
     --unified-cta-padding-block: var(--unified-space-lg);
     --unified-cta-padding-inline: var(--unified-space-2xl);
     --unified-cta-padding-block-compact: var(--unified-space-md);
@@ -928,6 +928,7 @@
     --rh-font-size-body-text-lg: var(--unified-cta-font-size);
     --rh-space-lg: var(--unified-cta-padding-block);
     --rh-space-2xl: var(--unified-cta-padding-inline);
+    --rh-space-md: var(--unified-space-xs);
 
     /* Suppress the component's native container outline; the host outline below is the ring */
     --rh-cta-focus-container-outline-color: transparent;
@@ -1089,6 +1090,7 @@
     &[compact] {
       --rh-space-lg: var(--unified-cta-padding-block-compact);
       --rh-space-2xl: var(--unified-cta-padding-inline-compact);
+      --unified-cta-font-size: var(--unified-font-size-body-text-sm);
     }
   }
 }
