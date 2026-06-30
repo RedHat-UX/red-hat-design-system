@@ -1497,6 +1497,14 @@
       background-color: var(--unified-color-interactive-fill-plain-hover);
       border-radius: var(--unified-border-radius-pill);
       margin-inline-start: 0;
+
+      /* Pill-shaped indicator: use background instead of border */
+      --_navigation-link-before-border-inline-start-width: 0;
+      --_navigation-link-before-inset-block: 4px;
+      --_navigation-link-before-inset-inline-end: auto;
+      --_navigation-link-before-inline-size: 3px;
+      --_navigation-link-before-background-color: var(--rh-color-brand-red);
+      --_navigation-link-before-border-radius: var(--unified-border-radius-pill);
     }
   }
 }
