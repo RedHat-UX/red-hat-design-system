@@ -70,7 +70,7 @@ export class RhChipGroup extends LitElement {
             Each chip must have a unique text label for screen readers.
         -->
         <slot></slot>
-        <button class="btn-link" type="button" @click="${this.#uncheckAllChips}">
+        <button class="btn-link" part="btn-link" type="button" @click="${this.#uncheckAllChips}">
           <!--
             summary: Clear all button label
             description: |
