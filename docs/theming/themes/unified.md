@@ -160,6 +160,39 @@ Unified content
 </uxdot-feedback>
 
 <script type="module">
+  // NB: CSS runtime patches to elements
+  // which add features not yet available.
+  // Check after 5.0 releases.
+
+  // Chip close icon animates both block-size and inline-size (0 → auto),
+  // causing an arc motion. Keep block-size at auto so it only slides in
+  // horizontally. Remove once rh-chip fixes this in the base component.
+  const chipCloseIconPatch = new CSSStyleSheet();
+  chipCloseIconPatch.replaceSync(/*css*/`
+    #close-icon {
+      block-size: auto;
+      transition-property: inline-size, opacity, margin-inline-start;
+    }
+  `);
+
+  for (const pattern of document.querySelectorAll('uxdot-pattern')) {
+    for (const chip of pattern.shadowRoot.querySelectorAll('rh-chip')) {
+      chip.shadowRoot.adoptedStyleSheets = [
+        ...chip.shadowRoot.adoptedStyleSheets,
+        chipCloseIconPatch,
+      ];
+    }
+    // rh-chip-group .btn-link has no CSS part exposed.
+    // Add part="btn-link" so the unified theme can style it.
+    // Remove once rh-chip-group exposes it natively.
+    for (const group of pattern.shadowRoot.querySelectorAll('rh-chip-group')) {
+      const btn = group.shadowRoot?.querySelector('.btn-link');
+      if (btn) {
+        btn.setAttribute('part', 'btn-link');
+      }
+    }
+  }
+
   async function getCssFileAsString(url) {
     try {
         const response = await fetch(url);
