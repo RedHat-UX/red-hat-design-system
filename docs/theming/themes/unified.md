@@ -160,6 +160,30 @@ Unified content
 </uxdot-feedback>
 
 <script type="module">
+  // NB: CSS runtime patches to elements
+  // which add features not yet available.
+  // Check after 5.0 releases.
+
+  // rh-cta focus state reads --_focus-text-decoration (private) instead of
+  // --rh-cta-focus-text-decoration (public) directly, unlike hover which
+  // reads --rh-cta-hover-text-decoration. This patch mirrors hover's pattern
+  // for focus. Remove once rh-cta fixes this in the base component.
+  const ctaFocusPatch = new CSSStyleSheet();
+  ctaFocusPatch.replaceSync(/*css*/`
+    :host(:is(:focus, :focus-within)) #container {
+      --_text-decoration: var(--rh-cta-focus-text-decoration, var(--_focus-text-decoration));
+    }
+  `);
+
+  for (const pattern of document.querySelectorAll('uxdot-pattern')) {
+    for (const cta of pattern.shadowRoot.querySelectorAll('rh-cta')) {
+      cta.shadowRoot.adoptedStyleSheets = [
+        ...cta.shadowRoot.adoptedStyleSheets,
+        ctaFocusPatch,
+      ];
+    }
+  }
+
   async function getCssFileAsString(url) {
     try {
         const response = await fetch(url);
@@ -172,24 +196,4 @@ Unified content
         console.error("Could not fetch the CSS file:", error);
     }
   }
-  const rhSwitch = document.querySelector('#unified-page-switch');
-    const stylesheet = new CSSStyleSheet(); 
-    const cssFile = await getCssFileAsString("/theming/themes/unified-theme/unified-theme-preview.css");
-    rhSwitch.addEventListener('change', function() {
-        if (rhSwitch.checked) {
-            stylesheet
-            .replace(cssFile)
-            .catch((err) => {
-                console.error("Failed to replace styles:", err);
-            });
-            document.adoptedStyleSheets.push(stylesheet);
-        } else {
-            stylesheet
-            .replace("")
-            .catch((err) => {
-                console.error("Failed to clear styles:", err);
-            });
-            document.adoptedStyleSheets.push(stylesheet);
-        }
-    });
 </script>
