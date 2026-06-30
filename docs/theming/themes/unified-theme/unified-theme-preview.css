@@ -1015,6 +1015,7 @@
       --rh-cta-hover-text-decoration: var(--unified-cta-text-decoration);
       --rh-cta-hover-text-underline-offset: var(--unified-cta-text-underline-offset);
       --rh-cta-focus-container-background-color: transparent;
+      --rh-cta-focus-color: var(--unified-color-text-interactive-focus);
       --rh-cta-focus-text-decoration: var(--unified-cta-text-decoration);
       --rh-cta-active-container-background-color:
         var(
@@ -1040,7 +1041,9 @@
       --rh-cta-hover-background-color: transparent;
       --rh-cta-hover-text-decoration: var(--unified-cta-text-decoration);
       --rh-cta-hover-text-underline-offset: var(--unified-cta-text-underline-offset);
+      --rh-cta-focus-color: var(--unified-color-text-interactive-focus);
       --rh-cta-focus-text-decoration: var(--unified-cta-text-decoration);
+      --rh-cta-focus-text-underline-offset: var(--unified-cta-text-underline-offset);
       --rh-cta-active-text-decoration: var(--unified-cta-text-decoration);
 
       /* Suppress the component's inner ::after border on focus/active;
@@ -1071,7 +1074,7 @@
 
       &::part(container):focus-within {
         border-width: var(--unified-cta-border-width-focus);
-        color: var(--unified-color-interactive-primary-default);
+        color: var(--unified-color-text-interactive-focus);
         border-color: var(--unified-color-border-interactive-subtle-default);
         padding-block: var(--unified-cta-border-offset-block);
         padding-inline: var(--unified-cta-border-offset-inline);
