@@ -261,6 +261,7 @@
           var(--unified-color-red-orange-60),
           var(--unified-color-red-orange-50)
         );
+    --unified-color-text-status-on-danger: white;
     --unified-color-status-danger-hover:
       light-dark(
           var(--unified-color-red-orange-70),
@@ -328,6 +329,8 @@
         );
 
     /* Status colors: Warning */
+    --unified-color-status-warning: var(--rh-color-yellow-30, #ffcc17);
+    --unified-color-text-status-on-warning: var(--unified-color-gray-95, #151515);
     --unified-color-status-warning-hover:
       light-dark(
           var(--unified-color-yellow-40),
@@ -360,6 +363,8 @@
         );
 
     /* Status colors: Success */
+    --unified-color-status-success: var(--rh-color-green-60, #3d7317);
+    --unified-color-text-status-on-success: white;
     --unified-color-status-success-hover:
       light-dark(
           var(--unified-color-green-70),
@@ -392,6 +397,8 @@
         );
 
     /* Status colors: Info */
+    --unified-color-status-info: var(--rh-color-purple-50, #5e40be);
+    --unified-color-text-status-on-info: white;
     --unified-color-status-info-hover:
       light-dark(
           var(--unified-color-purple-60),
@@ -429,6 +436,7 @@
           var(--unified-color-teal-60),
           var(--unified-color-teal-40)
         );
+    --unified-color-text-status-on-custom: white;
     --unified-color-status-custom-hover:
       light-dark(
           var(--unified-color-teal-70),
@@ -1769,4 +1777,74 @@
     --rh-border-width-md: var(--unified-border-width-md);
     --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
   }
+}
+
+/* Status tag overrides (un-layered to beat @layer tag rules).
+   Wrapper spans use display:contents for flex layout. */
+.unified-tag-status-danger,
+.unified-tag-status-warning,
+.unified-tag-status-success,
+.unified-tag-status-info,
+.unified-tag-status-custom {
+  display: contents;
+}
+
+.unified-tag-status-danger > rh-tag:is(:not([variant]), [variant="filled"]) {
+  --rh-color-red-orange-10: var(--unified-color-status-danger) !important;
+  --rh-color-red-orange-70: var(--unified-color-text-status-on-danger) !important;
+  --rh-color-red-orange-60: var(--unified-color-text-status-on-danger) !important;
+  --rh-color-red-orange-30: var(--unified-color-status-danger) !important;
+}
+
+.unified-tag-status-warning > rh-tag:is(:not([variant]), [variant="filled"]) {
+  --rh-color-yellow-10: var(--unified-color-status-warning) !important;
+  --rh-color-yellow-70: var(--unified-color-text-status-on-warning) !important;
+  --rh-color-yellow-60: var(--unified-color-text-status-on-warning) !important;
+  --rh-color-yellow-30: var(--unified-color-status-warning) !important;
+}
+
+.unified-tag-status-success > rh-tag:is(:not([variant]), [variant="filled"]) {
+  --rh-color-green-10: var(--unified-color-status-success) !important;
+  --rh-color-green-70: var(--unified-color-text-status-on-success) !important;
+  --rh-color-green-60: var(--unified-color-text-status-on-success) !important;
+  --rh-color-green-30: var(--unified-color-status-success) !important;
+}
+
+.unified-tag-status-info > rh-tag:is(:not([variant]), [variant="filled"]) {
+  --rh-color-purple-10: var(--unified-color-status-info) !important;
+  --rh-color-purple-70: var(--unified-color-text-status-on-info) !important;
+  --rh-color-purple-60: var(--unified-color-text-status-on-info) !important;
+  --rh-color-purple-30: var(--unified-color-status-info) !important;
+}
+
+.unified-tag-status-custom > rh-tag:is(:not([variant]), [variant="filled"]) {
+  --rh-color-teal-10: var(--unified-color-status-custom) !important;
+  --rh-color-teal-70: var(--unified-color-text-status-on-custom) !important;
+  --rh-color-teal-60: var(--unified-color-text-status-on-custom) !important;
+  --rh-color-teal-30: var(--unified-color-status-custom) !important;
+}
+
+.unified-tag-status-danger > rh-tag[variant="outline"] {
+  --rh-color-gray-30: var(--unified-color-status-danger) !important;
+  --rh-color-gray-50: var(--unified-color-status-danger) !important;
+}
+
+.unified-tag-status-warning > rh-tag[variant="outline"] {
+  --rh-color-gray-30: var(--unified-color-status-warning) !important;
+  --rh-color-gray-50: var(--unified-color-status-warning) !important;
+}
+
+.unified-tag-status-success > rh-tag[variant="outline"] {
+  --rh-color-gray-30: var(--unified-color-status-success) !important;
+  --rh-color-gray-50: var(--unified-color-status-success) !important;
+}
+
+.unified-tag-status-info > rh-tag[variant="outline"] {
+  --rh-color-gray-30: var(--unified-color-status-info) !important;
+  --rh-color-gray-50: var(--unified-color-status-info) !important;
+}
+
+.unified-tag-status-custom > rh-tag[variant="outline"] {
+  --rh-color-gray-30: var(--unified-color-status-custom) !important;
+  --rh-color-gray-50: var(--unified-color-status-custom) !important;
 }
