@@ -43,6 +43,7 @@ a,
   background-color:
     var(--rh-navigation-link-background-color,
       var(--_navigation-link-background-color, transparent));
+  white-space: var(--rh-navigation-link-white-space, initial);
 
   /** Link border radius */
   border-radius: var(--rh-navigation-link-border-radius, 0);
