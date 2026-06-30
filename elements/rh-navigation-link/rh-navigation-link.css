@@ -43,7 +43,7 @@ a,
   background-color: var(--_navigation-link-background-color, transparent);
 
   /** Link border radius */
-  border-radius: var(--rh-navigation-link-border-radius, var(--_navigation-link-border-radius, 0));
+  border-radius: var(--rh-navigation-link-border-radius, 0);
 }
 
 a:before,
@@ -52,29 +52,14 @@ a:before,
   position: absolute;
   inset: 0;
 
-  /** Indicator block inset */
-  inset-block: var(--_navigation-link-before-inset-block, 0);
-
   /** Indicator inline-start offset */
   inset-inline-start: var(--rh-navigation-link-inset-inline-start, 0);
-
-  /** Indicator inline-end offset */
-  inset-inline-end: var(--_navigation-link-before-inset-inline-end, 0);
-
-  /** Indicator inline size */
-  inline-size: var(--_navigation-link-before-inline-size, auto);
   border-inline-start:
     /** Indicator border width */
     var(--rh-navigation-link-border-inline-start-width,
       var(--_navigation-link-before-border-inline-start-width, 0))
     solid
     var(--_navigation-link-before-border-inline-start-color, transparent);
-
-  /** Indicator background color */
-  background-color: var(--_navigation-link-before-background-color, transparent);
-
-  /** Indicator border radius */
-  border-radius: var(--_navigation-link-before-border-radius, 0);
 }
 
 a:is(:hover, :hover:focus-visible, :focus-visible, :active),
