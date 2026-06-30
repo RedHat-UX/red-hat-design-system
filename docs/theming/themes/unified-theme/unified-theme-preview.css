@@ -1749,6 +1749,13 @@
     inset-block: 0 auto;
   }
 
+  /* Box-inset only: the inset margins expose the container bottom border under
+     the active tab. Restore the surface-color "open" border on the button itself
+     (not ::after, which is now only 3px tall) so it covers the container line. */
+  rh-tabs[box='inset']:not([vertical]) rh-tab[active]::part(button) {
+    border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-surface);
+  }
+
   rh-tabs[vertical] rh-tab[active]::part(button):after {
     block-size: auto;
     inline-size: var(--rh-border-width-lg, 3px);
