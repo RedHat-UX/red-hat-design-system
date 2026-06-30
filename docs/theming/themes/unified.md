@@ -31,6 +31,85 @@ subnav:
   import '@rhds/elements/rh-tabs/rh-tabs.js';
   import '@rhds/elements/rh-tag/rh-tag.js';
 </script>
+<script type="module" data-helmet>
+  /**
+   * Menu dropdown interactive border patch
+   *
+   * The element uses a single private --_interactive-border-color for all
+   * interactive states, so per-state unified border colors cannot be set
+   * from the light DOM. This patch directly overrides the box-shadow/outline
+   * per state inside the shadow root.
+   */
+  const menuPatch = new CSSStyleSheet();
+  menuPatch.replaceSync(/*css*/`
+    /* 5. Toggle background: white in light, gray-70 in dark (all non-disabled states).
+          .disabled has higher specificity (0-2-0 vs 0-1-0) so it overrides this safely. */
+    #menu-toggle {
+      background: var(--rh-menu-dropdown-toggle-background,
+        light-dark(
+          var(--rh-color-surface-lightest, #ffffff),
+          var(--rh-color-surface-darkest, #151515)
+        ));
+    }
+
+    #menu-toggle.boxed:not(.open):hover {
+      box-shadow:
+        inset 0 0 0 1px
+        var(--rh-menu-dropdown-hover-border-color, var(--_interactive-border-color));
+    }
+
+    #menu-toggle.boxed:not(.open):active {
+      box-shadow:
+        inset 0 0 0 2px
+        var(--rh-menu-dropdown-active-border-color, var(--_interactive-border-color));
+    }
+
+    #menu-toggle.boxed:not(.open):focus,
+    #menu-toggle.boxed.open:focus {
+      outline:
+        2px solid
+        var(--rh-menu-dropdown-focus-border-color, var(--_interactive-border-color));
+      outline-offset: 2px;
+    }
+
+    #menu-toggle.boxed.open {
+      box-shadow:
+        inset 0 0 0 2px
+        var(--rh-menu-dropdown-open-border-color, var(--_interactive-border-color));
+    }
+
+    /* 4. Disabled: override the inherited boxed border */
+    #menu-toggle.boxed.disabled {
+      box-shadow: var(--rh-menu-dropdown-disabled-box-shadow, inset 0 0 0 1px var(--_interactive-border-color));
+    }
+
+    /* 8. Disabled compact: transparent background and disabled icon color */
+    #menu-toggle.compact.disabled {
+      background: var(--rh-menu-dropdown-compact-disabled-background,
+        light-dark(
+          var(--rh-color-gray-30, #c7c7c7),
+          var(--rh-color-gray-40, #a3a3a3)
+        ));
+    }
+
+    #menu-toggle.compact.disabled .action-icon rh-icon {
+      color: var(--rh-menu-dropdown-compact-disabled-icon-color, inherit);
+    }
+
+    /* 6. Compact: enforce square sizing and optionally center the lone icon */
+    #menu-toggle.compact {
+      min-block-size: var(--rh-menu-dropdown-compact-size, auto);
+      min-inline-size: var(--rh-menu-dropdown-compact-size, auto);
+      justify-content: var(--rh-menu-dropdown-compact-justify, space-between);
+    }
+  `);
+
+  for (const pattern of document.querySelectorAll('uxdot-pattern')) {
+    for (const el of pattern.shadowRoot.querySelectorAll('rh-menu-dropdown')) {
+      el.shadowRoot.adoptedStyleSheets = [...el.shadowRoot.adoptedStyleSheets, menuPatch];
+    }
+  }
+</script>
 <style>
   #unified-theme-toggle {
     margin-block-end: var(--rh-space-2xl, 32px);

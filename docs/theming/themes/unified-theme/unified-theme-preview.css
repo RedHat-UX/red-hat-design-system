@@ -1869,6 +1869,28 @@
     --rh-border-radius-default: var(--unified-border-radius-pill);
     --rh-border-radius-pill: var(--unified-border-radius-action-plain);
 
+    /* 1. Toggle label font size: 14px */
+    --rh-font-size-body-text-md: var(--unified-font-size-body-text-sm);
+
+    /* 2. Padding-block 8px (toggle uses --rh-space-sm for block padding) */
+    --rh-space-sm: var(--unified-space-md);
+
+    /* 3. Per-state interactive border colors (consumed by shadow DOM patch in unified.md) */
+    --rh-menu-dropdown-hover-border-color: var(--unified-color-border-interactive-subtle-hover);
+    --rh-menu-dropdown-active-border-color: var(--unified-color-border-interactive-subtle-active);
+    --rh-menu-dropdown-focus-border-color: var(--unified-color-border-interactive-subtle-focus);
+    --rh-menu-dropdown-open-border-color: var(--unified-color-border-interactive-subtle-hover);
+
+    /* 4. Disabled: remove border to match PF docs */
+    --rh-menu-dropdown-disabled-box-shadow: none;
+
+    /* 5. Dark scheme toggle background: gray-70 instead of surface-darkest */
+    --rh-menu-dropdown-toggle-background:
+      light-dark(
+          var(--rh-color-surface-lightest, #ffffff),
+          var(--unified-color-gray-70)
+        );
+
     /* Toggle border color */
     --rh-menu-dropdown-toggle-border-color: var(--unified-color-border-control-default);
     --rh-menu-dropdown-caret-size: var(--unified-size-icon-00);
@@ -1877,6 +1899,14 @@
     --rh-menu-dropdown-panel-border-radius: var(--unified-border-radius-menu);
     --rh-menu-dropdown-panel-padding: var(--unified-space-xs);
     --rh-menu-dropdown-panel-border: none;
+
+    /* 9. Dark scheme needs a stronger shadow; light mode keeps the default.
+          TODO: convert to tokens once rh-box-shadow light-dark variants exist. */
+    --rh-box-shadow-md:
+      light-dark(
+          0 4px 6px 1px rgba(21, 21, 21, 0.25),
+          0px 4px 10px 0px rgba(0, 0, 0, 0.5)
+        );
   }
 
   rh-menu {
@@ -1915,9 +1945,17 @@
 
   /* Compact (icon-only toggle) */
   rh-menu-dropdown[layout='compact'] {
-    --rh-border-radius-default: var(--unified-border-radius-action-plain);
+    /* 7. Border-radius: pill (base rh-menu-dropdown already sets pill; no override needed) */
     --rh-color-surface-lighter: var(--unified-color-interactive-fill-plain-on-light);
     --rh-color-surface-darker: var(--unified-color-interactive-fill-plain-on-dark);
+
+    /* 6. Compact: 37px square, icon centered */
+    --rh-menu-dropdown-compact-size: 37px;
+    --rh-menu-dropdown-compact-justify: center;
+
+    /* 8. Disabled compact: transparent bg, muted icon */
+    --rh-menu-dropdown-compact-disabled-background: transparent;
+    --rh-menu-dropdown-compact-disabled-icon-color: var(--unified-color-icon-status-disabled);
   }
 }
 
