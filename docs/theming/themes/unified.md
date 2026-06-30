@@ -147,6 +147,10 @@ Unified content
   <h3 id="unified-tabs" slot="heading">Tabs</h3>
 </uxdot-pattern>
 
+<uxdot-pattern src="../patterns/unified-tabs-vertical.html" style="max-width: none">
+  <h3 id="unified-tabs-vertical" slot="heading">Tabs (vertical)</h3>
+</uxdot-pattern>
+
 <uxdot-pattern src="../patterns/unified-tag.html">
   <h3 id="unified-tag" slot="heading">Tags</h3>
 </uxdot-pattern>

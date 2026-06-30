@@ -1703,7 +1703,7 @@
   /* ── rh-tab (individual tab button) ──────────────────── */
   rh-tab {
     /* Dark box tab background: gray-80 not gray-90 */
-    --rh-color-surface-darker: var(--rh-color-gray-80, #292929);
+    --rh-color-surface-darker: var(--unified-color-gray-80);
 
     /* Shift padding from button to inner pill wrapper.
        Outer button gets the spacing between tab edge and pill,
@@ -1735,6 +1735,25 @@
   /* ── disabled tab: text and icon use disabled tokens ── */
   rh-tab[disabled] {
     --rh-tabs-link-color: var(--unified-color-text-status-disabled);
+  }
+
+  rh-tab[active]::part(button):after {
+    border-block: none;
+    background-color: var(--rh-tabs-active-border-color);
+    block-size: var(--rh-border-width-lg, 3px);
+    inset-block-start: auto;
+    border-radius: var(--unified-border-radius-pill);
+  }
+
+  rh-tabs[box] rh-tab[active]::part(button):after {
+    inset-block: 0 auto;
+  }
+
+  rh-tabs[vertical] rh-tab[active]::part(button):after {
+    block-size: auto;
+    inline-size: var(--rh-border-width-lg, 3px);
+    inset-block: 0;
+    inset-inline-end: auto;
   }
 
   /* ── horizontal box: remove side divider borders ────── */
