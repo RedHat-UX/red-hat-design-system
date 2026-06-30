@@ -928,7 +928,6 @@
     --rh-font-size-body-text-lg: var(--unified-cta-font-size);
     --rh-space-lg: var(--unified-cta-padding-block);
     --rh-space-2xl: var(--unified-cta-padding-inline);
-    --rh-space-md: var(--unified-space-xs);
 
     /* Suppress the component's native container outline; the host outline below is the ring */
     --rh-cta-focus-container-outline-color: transparent;
