@@ -9,7 +9,7 @@ details {
     justify-content: space-between;
 
     /** Summary background color */
-    background: var(--rh-navigation-vertical-list-summary-background, transparent);
+    background: var(--rh-navigation-vertical-list-summary-background-color, transparent);
 
     /** Summary block and inline padding */
     padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
@@ -31,7 +31,7 @@ details {
 
     &:is(:hover,:focus) {
       background:
-        var(--rh-navigation-vertical-list-summary-background,
+        var(--rh-navigation-vertical-list-summary-background-color-hover,
           light-dark(
             var(--rh-color-surface-lighter, #f2f2f2),
             var(--rh-color-surface-dark, #383838)

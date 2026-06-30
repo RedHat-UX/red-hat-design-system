@@ -40,7 +40,9 @@ a,
   padding: var(--_navigation-link-padding, 0);
   text-decoration: var(--_navigation-link-text-decoration, none) !important;
   gap: var(--_navigation-link-gap, initial);
-  background-color: var(--_navigation-link-background-color, transparent);
+  background-color:
+    var(--rh-navigation-link-background-color,
+      var(--_navigation-link-background-color, transparent));
 
   /** Link border radius */
   border-radius: var(--rh-navigation-link-border-radius, 0);
@@ -54,19 +56,20 @@ a:before,
 
   /** Indicator inline-start offset */
   inset-inline-start: var(--rh-navigation-link-inset-inline-start, 0);
-  border-inline-start:
-    /** Indicator border width */
+  width:
     var(--rh-navigation-link-border-inline-start-width,
-      var(--_navigation-link-before-border-inline-start-width, 0))
-    solid
-    var(--_navigation-link-before-border-inline-start-color, transparent);
+      var(--_navigation-link-before-border-inline-start-width));
+  height: 100%;
+  background-color: var(--_navigation-link-before-border-inline-start-color, transparent);
+  border-radius: var(--rh-navigation-link-indicator-border-radius, 0);
 }
 
 a:is(:hover, :hover:focus-visible, :focus-visible, :active),
 ::slotted(:is(a:hover, a:hover:focus-visible, :focus-visible, :active)) {
   --_navigation-link-background-color:
-    var(--_navigation-link-hover-background-color,
-      light-dark(transparent, transparent)) !important;
+    var(--rh-navigation-link-background-color-hover,
+      var(--_navigation-link-hover-background-color,
+      light-dark(transparent, transparent))) !important;
   --_navigation-link-color:
     var(--_navigation-link-color-hover,
       /* Navigation Link hover, focus, active text color */
@@ -87,8 +90,8 @@ a:is(:hover, :hover:focus-visible, :focus-visible, :active),
   text-decoration-skip-ink: auto !important;
 }
 
-a:is(:focus-visible, :hover:focus-visible, :focus-visible, :active),
-::slotted(a:is(:focus-visible, :hover:focus-visible, :focus-visible, :active)) {
+a:is(:focus-visible, :hover:focus-visible),
+::slotted(a:is(:focus-visible, :hover:focus-visible)) {
   outline-offset: var(--_navigation-link-focus-outline-offset, 0);
   outline:
     /** Focus outline color */
