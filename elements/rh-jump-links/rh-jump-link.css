@@ -61,8 +61,7 @@ a {
   &.vertical {
     /** Jump link vertical container padding */
     padding-block: var(--rh-jump-link-container-padding-block, 0);
-    padding-inline:
-      var(--rh-jump-link-container-padding-inline, 0);
+    padding-inline: var(--rh-jump-link-container-padding-inline, 0);
 
     /** Border shorthand for the inner link element. Override to `none` to disable. */
     border-inline-start: var(--rh-jump-link-link-border, var(--_bdr));
@@ -71,6 +70,7 @@ a {
       /** max-width for each vertical jump link */
       max-width: var(--rh-jump-link-max-width, calc(var(--rh-length-md, 8px) * 40));
       min-width: max-content;
+
       /** Jump link vertical link padding */
       padding-block: var(--rh-jump-link-href-padding-block, var(--rh-space-md, 8px));
       padding-inline:
@@ -89,6 +89,7 @@ a {
 
     & a {
       white-space: nowrap;
+
       /** Jump link href padding */
       padding-block: var(--rh-jump-link-href-padding-block, var(--rh-space-lg, 16px));
       padding-inline: var(--rh-jump-link-href-padding-inline, var(--rh-space-lg, 16px));
