@@ -160,57 +160,6 @@ Unified content
 </uxdot-feedback>
 
 <script type="module">
-  // NB: CSS runtime patches to elements
-  // which add features not yet available.
-  // Check after 5.0 releases.
-
-  // Chip close icon animates both block-size and inline-size (0 → auto),
-  // causing an arc motion. Keep block-size at auto so it only slides in
-  // horizontally. Remove once rh-chip fixes this in the base component.
-  const chipCloseIconPatch = new CSSStyleSheet();
-  chipCloseIconPatch.replaceSync(/*css*/`
-    #close-icon {
-      block-size: auto;
-      transition-property: inline-size, opacity, margin-inline-start;
-    }
-  `);
-
-  // rh-cta focus state reads --_focus-text-decoration (private) instead of
-  // --rh-cta-focus-text-decoration (public) directly, unlike hover which
-  // reads --rh-cta-hover-text-decoration. This patch mirrors hover's pattern
-  // for focus. Remove once rh-cta fixes this in the base component.
-  const ctaFocusPatch = new CSSStyleSheet();
-  ctaFocusPatch.replaceSync(/*css*/`
-    :host(:is(:focus, :focus-within)) #container {
-      --_text-decoration: var(--rh-cta-focus-text-decoration, var(--_focus-text-decoration));
-    }
-  `);
-
-  for (const pattern of document.querySelectorAll('uxdot-pattern')) {
-    for (const chip of pattern.shadowRoot.querySelectorAll('rh-chip')) {
-      chip.shadowRoot.adoptedStyleSheets = [
-        ...chip.shadowRoot.adoptedStyleSheets,
-        chipCloseIconPatch,
-      ];
-    }
-
-    // rh-chip-group .btn-link has no CSS part exposed.
-    // Add part="btn-link" so the unified theme can style it.
-    // Remove once rh-chip-group exposes it natively.
-    for (const group of pattern.shadowRoot.querySelectorAll('rh-chip-group')) {
-      const btn = group.shadowRoot?.querySelector('.btn-link');
-      if (btn) {
-        btn.setAttribute('part', 'btn-link');
-      }
-    }
-    for (const cta of pattern.shadowRoot.querySelectorAll('rh-cta')) {
-      cta.shadowRoot.adoptedStyleSheets = [
-        ...cta.shadowRoot.adoptedStyleSheets,
-        ctaFocusPatch,
-      ];
-    }
-  }
-
   async function getCssFileAsString(url) {
     try {
         const response = await fetch(url);
