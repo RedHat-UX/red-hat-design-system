@@ -1,6 +1,6 @@
 :host {
-  /** Stroke width of the spinner circle */
-  --rh-spinner-stroke-width: var(--rh-length-sm, 6px);
+  /** Stroke width of the spinner circle, in unitless SVG user units */
+  --rh-spinner-stroke-width: 6;
 
   display: inline-block;
   text-align: center;
@@ -101,7 +101,7 @@ circle.track {
 
 :host([size='lg']) {
   /** Large spinner circle stroke width */
-  --rh-spinner-stroke-width: var(--rh-length-sm, 6px);
+  --rh-spinner-stroke-width: 6;
 
   & svg {
     /** Large spinner circle diameter */
@@ -116,7 +116,7 @@ circle.track {
 
 :host([size='md']) {
   /** Medium spinner circle stroke width */
-  --rh-spinner-stroke-width: var(--rh-length-xs, 4px);
+  --rh-spinner-stroke-width: 4;
 
   & svg {
     /** Medium spinner circle diameter */
@@ -131,7 +131,7 @@ circle.track {
 
 :host([size='sm']) {
   /** Small spinner circle stroke width */
-  --rh-spinner-stroke-width: var(--rh-length-2xs, 3px);
+  --rh-spinner-stroke-width: 3;
 
   & svg {
     /** Small spinner circle diameter */
@@ -195,7 +195,7 @@ circle.track {
   }
 
   15% {
-    stroke-width: calc(var(--rh-spinner-stroke-width) - 4px);
+    stroke-width: calc(var(--rh-spinner-stroke-width) - 4);
   }
 
   40% {
