@@ -215,12 +215,12 @@ button {
 
 /* OVERFLOW BUTTONS */
 :is(#previous-tab, #next-tab) {
-  padding-block: 0;
-
-  /** Scroll button inline padding */
-  padding-inline: var(--rh-space-lg, 16px);
-
-  /** Scroll button background, adapts to color-palette */
+  padding-block: var(--_overflow-button-padding-block, 0);
+  padding-inline:
+    var(--_overflow-button-padding-inline,
+      var(--rh-space-lg, 16px));
+  border-radius: var(--_overflow-button-radius, 0);
+  min-width: var(--_overflow-button-min-size, auto);
   background-color: var(--rh-color-surface);
   color: var(--_overflow-button-text-color);
   position: relative;
@@ -228,21 +228,55 @@ button {
 
   &:before {
     border-block-start: var(--rh-border-width-sm, 1px) solid transparent;
-    border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
-    border-inline: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+    border-block-end:
+      var(--rh-border-width-sm, 1px)
+      solid
+      var(--_overflow-border-color, var(--rh-color-border-subtle));
+    border-inline:
+      var(--rh-border-width-sm, 1px)
+      solid
+      var(--_overflow-border-color, var(--rh-color-border-subtle));
   }
 
   &:hover {
     color: var(--_overflow-button-hover-text-color, var(--rh-color-text-primary));
 
     &:before {
-      border-block-end: var(--rh-border-width-lg, 3px) solid var(--rh-color-border-subtle);
+      border-block-end:
+        var(--_overflow-hover-indicator,
+          var(--rh-border-width-lg, 3px)
+          solid
+          var(--rh-color-border-subtle));
     }
+  }
+
+  &:focus {
+    outline: none;
   }
 
   &:disabled {
     color: var(--_overflow-button-disabled-text-color);
   }
+}
+
+/* Inner wrapper for hover/focus pill on overflow buttons */
+.overflow-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--_overflow-icon-size, auto);
+  height: var(--_overflow-icon-size, auto);
+  border-radius: var(--_overflow-icon-radius, 0);
+}
+
+:is(#previous-tab, #next-tab):hover .overflow-icon {
+  background-color: var(--_overflow-hover-bg, transparent);
+}
+
+:is(#previous-tab, #next-tab):focus .overflow-icon {
+  background-color: var(--_overflow-focus-bg, transparent);
+  outline: var(--_overflow-focus-outline, none);
+  outline-offset: var(--_overflow-focus-outline-offset, 0);
 }
 
 #next-tab {
