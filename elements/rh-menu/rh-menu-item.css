@@ -1,4 +1,6 @@
 :host {
+  /** Item corner rounding */
+  border-radius: var(--rh-menu-item-border-radius, 0);
   display: block;
   padding:
     /** Vertical item padding */
@@ -114,11 +116,9 @@
   &:after {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 4px;
-    transform: translateY(-50%);
-    width: calc(100% - 8px);
-    height: calc(100% - 6px);
+
+    /** Focus ring inset */
+    inset: var(--rh-menu-item-focus-inset, 3px 4px);
     background-color: transparent;
     border:
       var(--rh-border-width-md, 2px) solid light-dark(var(--rh-color-accent-base-on-light, #0066cc),
@@ -159,6 +159,7 @@
   /** Description font weight */
   font-weight: var(--rh-font-weight-heading-regular, 400);
   line-height: 21px;
+  margin: 0;
 }
 
 .menu-item-content:focus-visible {
