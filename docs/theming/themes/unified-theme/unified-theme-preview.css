@@ -1750,6 +1750,26 @@
     --rh-color-icon-secondary: var(--unified-color-icon-secondary);
     --rh-space-xl: var(--unified-space-xl);
     --rh-space-lg: var(--unified-space-lg);
+    --rh-button-close-width: 100%;
+    --rh-button-close-radius: 50%;
+    --rh-button-close-hover-background: var(--unified-color-interactive-fill-plain-hover);
+    --rh-button-close-focus-background: var(--unified-color-interactive-fill-plain-focus);
+    --rh-button-close-active-background: var(--unified-color-interactive-fill-plain-active);
+    --unified-dialog-header-sm: var(--rh-font-size-body-text-xl);
+    --unified-dialog-header-md: var(--rh-font-size-body-text-2xl);
+    --unified-dialog-header-lg: 28px; /* no 3xl */
+
+    &[variant='small'] [slot='header'] {
+      --rh-font-size-body-text-lg: var(--unified-dialog-header-sm);
+    }
+
+    &[variant='medium'] [slot='header'] {
+      --rh-font-size-body-text-lg: var(--unified-dialog-header-md);
+    }
+
+    &[variant='large'] [slot='header'] {
+      --rh-font-size-body-text-lg: var(--unified-dialog-header-lg);
+    }
 
     &::part(close-button) {
       --rh-border-radius-default: var(--unified-border-radius-action-plain);
@@ -1760,6 +1780,7 @@
 /* Element: Chip (selectable Labels in PatternFly) */
 @layer chip {
   rh-chip {
+    --rh-size-icon-01: var(--unified-size-icon-00);
     --rh-border-radius-pill: var(--unified-border-radius-pill);
     --rh-border-width-md: var(--unified-border-width-md);
     --rh-color-border-interactive: var(--unified-color-interactive-primary-default);
@@ -1768,6 +1789,50 @@
     --rh-color-blue-30: var(--unified-color-blue-30);
     --rh-color-blue-50: var(--unified-color-blue-50);
     --rh-color-blue-70: var(--unified-color-blue-70);
+
+    &::part(chip) {
+      white-space: nowrap;
+    }
+  }
+
+  rh-chip-group::part(btn-link):hover,
+  rh-chip-group::part(btn-link):focus {
+    outline-width: var(--rh-border-width-md, 2px);
+  }
+
+  rh-chip-group::part(btn-link):focus {
+    outline-offset: -1px;
+  }
+
+  rh-chip::part(chip):after {
+    border-radius:
+      calc(
+          var(--unified-border-radius-action-plain)
+          + var(--unified-border-width-lg) * 2
+        );
+    outline-offset: var(--unified-border-radius-action-plain);
+    width: calc(100% - var(--unified-space-xs));
+    translate: calc(-1 * var(--unified-border-radius-action-plain));
+    outline-width: var(--unified-border-width-lg);
+  }
+
+  rh-chip-group::part(btn-link):after {
+    inset: -1px;
+    width: auto;
+    translate: none;
+    outline-width: var(--unified-border-width-lg);
+    outline-offset: calc(var(--unified-space-xs) - var(--unified-border-width-md));
+    border-radius: var(--unified-border-radius-pill);
+  }
+
+  rh-chip-group[size='sm'] rh-chip {
+    --rh-icon-size: 12px;
+  }
+
+  rh-chip-group[size='sm'] rh-chip::part(chip),
+  rh-chip-group[size='sm']::part(btn-link) {
+    padding-block: 0;
+    margin-block-start: 0;
   }
 }
 
