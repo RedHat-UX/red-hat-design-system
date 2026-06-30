@@ -1378,8 +1378,7 @@
     outline-offset: -1px;
   }
 
-  rh-chip::part(chip):after,
-  rh-chip-group::part(btn-link):after {
+  rh-chip::part(chip):after {
     border-radius:
       calc(
           var(--unified-border-radius-action-plain)
@@ -1395,6 +1394,7 @@
     inset: -1px;
     width: auto;
     translate: none;
+    outline-width: var(--unified-border-width-lg);
     outline-offset: calc(var(--unified-space-xs) - var(--unified-border-width-md));
     border-radius: var(--unified-border-radius-pill);
   }
