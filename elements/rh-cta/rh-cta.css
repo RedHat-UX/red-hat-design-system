@@ -139,7 +139,7 @@ a:focus-within,
   --_color: var(--_focus-color);
 
   /** Focus text decoration */
-  --_text-decoration: var(--_focus-text-decoration);
+  --_text-decoration: var(--rh-cta-focus-text-decoration, var(--_focus-text-decoration));
   --_text-underline-offset:
     /** Focus text underline offset */
     var(--rh-cta-focus-text-underline-offset,
