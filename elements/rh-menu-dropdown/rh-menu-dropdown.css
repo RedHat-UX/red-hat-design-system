@@ -41,6 +41,7 @@
 /* Styles floating menu panel */
 #menu-list {
   position: absolute;
+
   /** Menu panel padding */
   padding:
     var(--rh-menu-dropdown-panel-padding,
