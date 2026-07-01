@@ -153,7 +153,7 @@ rh-icon,
       background-color: transparent;
 
       &:before {
-        border-inline-color: var(--_tab-box-side-border-color, var(--rh-color-border-subtle));
+        border-inline-color: var(--rh-tabs-box-border-color, var(--rh-color-border-subtle));
         border-inline-start-width: var(--rh-border-width-sm, 1px);
       }
 
@@ -165,7 +165,7 @@ rh-icon,
       &.first {
         &:before {
           border-inline-start-color:
-            var(--_tab-box-side-border-color,
+            var(--rh-tabs-box-border-color,
               var(--rh-color-border-subtle));
           border-inline-start-width: var(--rh-border-width-sm, 1px);
         }
@@ -174,7 +174,7 @@ rh-icon,
       &.last {
         &:before {
           border-inline-end-color:
-            var(--_tab-box-side-border-color,
+            var(--rh-tabs-box-border-color,
               var(--rh-color-border-subtle));
           border-inline-end-width: var(--rh-border-width-sm, 1px);
         }
@@ -226,7 +226,7 @@ rh-icon,
           @container (min-width: 768px) {
             &:before {
               border-inline-start-color:
-                var(--_tab-box-side-border-color,
+                var(--rh-tabs-box-border-color,
                   var(--rh-color-border-subtle));
               border-inline-start-width: var(--rh-border-width-sm, 1px);
             }
@@ -237,7 +237,7 @@ rh-icon,
           @container (min-width: 768px) {
             &:before {
               border-inline-end-color:
-                var(--_tab-box-side-border-color,
+                var(--rh-tabs-box-border-color,
                   var(--rh-color-border-subtle));
               border-inline-end-width: var(--rh-border-width-sm, 1px);
             }
@@ -284,7 +284,7 @@ rh-icon,
   &:not(.active) {
     &.box {
       &:before {
-        border-inline-color: var(--_tab-box-side-border-color, var(--rh-color-border-subtle));
+        border-inline-color: var(--rh-tabs-box-border-color, var(--rh-color-border-subtle));
 
         /** Inactive box tab side border width */
         border-inline-start-width: var(--rh-border-width-sm, 1px);
@@ -313,12 +313,12 @@ rh-icon,
               /** Vertical box tab trailing border width above sm breakpoint */
               var(--rh-border-width-sm, 1px)
               solid
-              var(--_tab-box-side-border-color, var(--rh-color-border-subtle));
+              var(--rh-tabs-box-border-color, var(--rh-color-border-subtle));
             border-block-start:
               /** Vertical box tab top border width above sm breakpoint */
               var(--rh-border-width-sm, 1px)
               solid
-              var(--_tab-box-side-border-color, var(--rh-color-border-subtle));
+              var(--rh-tabs-box-border-color, var(--rh-color-border-subtle));
           }
 
           &:after {
@@ -440,14 +440,37 @@ rh-icon,
 }
 
 /* Inner wrapper for pill-shaped hover/focus backgrounds (unified theme) */
+/* stylelint-disable rhds/no-unknown-token-name -- new component tokens, not yet in registry */
 #wrapper {
   display: flex;
   gap: var(--rh-space-md, 8px);
   align-items: center;
-  border-radius: var(--_tab-wrapper-radius, 0);
-  padding: var(--_tab-wrapper-padding, 0);
-  justify-content: var(--_tab-wrapper-justify, initial);
+  border-radius: var(--rh-tabs-link-inner-radius, 0);
+  padding: var(--rh-tabs-link-inner-padding, 0);
+  justify-content: var(--rh-tabs-link-inner-justify, initial);
 }
+
+:host(:is(:focus-visible)) {
+  outline: none;
+
+  & #button {
+    outline:
+      var(--rh-tabs-link-focus-outline,
+        1px auto var(--rh-color-interactive-primary-default));
+    outline-offset: var(--rh-tabs-link-focus-outline-offset, -3px);
+  }
+
+  & #wrapper {
+    background-color: var(--rh-tabs-link-focus-background, transparent);
+    outline: var(--rh-tabs-link-focus-inner-outline, none);
+    outline-offset: var(--rh-tabs-link-focus-inner-outline-offset, 0);
+  }
+}
+
+:host(:hover:not([disabled], [aria-disabled='true'])) #button:not(.active) #wrapper {
+  background-color: var(--rh-tabs-link-hover-background, transparent);
+}
+/* stylelint-enable rhds/no-unknown-token-name */
 
 :host(:disabled) {
   & #button {
@@ -459,23 +482,4 @@ rh-icon,
   & #button {
     cursor: default;
   }
-}
-
-:host(:is(:focus-visible)) {
-  outline: none;
-
-  & #button {
-    outline: var(--_tab-focus-button-outline, 1px auto var(--rh-color-interactive-primary-default));
-    outline-offset: var(--_tab-focus-button-outline-offset, -3px);
-  }
-
-  & #wrapper {
-    background-color: var(--_tab-focus-background, transparent);
-    outline: var(--_tab-focus-wrapper-outline, none);
-    outline-offset: var(--_tab-focus-wrapper-outline-offset, 0);
-  }
-}
-
-:host(:hover:not([disabled], [aria-disabled='true'])) #button:not(.active) #wrapper {
-  background-color: var(--_tab-hover-background, transparent);
 }

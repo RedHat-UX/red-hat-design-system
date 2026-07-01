@@ -215,12 +215,12 @@ button {
 
 /* OVERFLOW BUTTONS */
 :is(#previous-tab, #next-tab) {
-  padding-block: var(--_overflow-button-padding-block, 0);
+  padding-block: var(--rh-tabs-overflow-button-padding-block, 0);
   padding-inline:
-    var(--_overflow-button-padding-inline,
+    var(--rh-tabs-overflow-button-padding-inline,
       var(--rh-space-lg, 16px));
-  border-radius: var(--_overflow-button-radius, 0);
-  min-width: var(--_overflow-button-min-size, auto);
+  border-radius: var(--rh-tabs-overflow-button-radius, 0);
+  min-width: var(--rh-tabs-overflow-button-min-size, auto);
   background-color: var(--rh-color-surface);
   color: var(--_overflow-button-text-color);
   position: relative;
@@ -231,11 +231,11 @@ button {
     border-block-end:
       var(--rh-border-width-sm, 1px)
       solid
-      var(--_overflow-border-color, var(--rh-color-border-subtle));
+      var(--rh-tabs-overflow-border-color, var(--rh-color-border-subtle));
     border-inline:
       var(--rh-border-width-sm, 1px)
       solid
-      var(--_overflow-border-color, var(--rh-color-border-subtle));
+      var(--rh-tabs-overflow-border-color, var(--rh-color-border-subtle));
   }
 
   &:hover {
@@ -243,7 +243,7 @@ button {
 
     &:before {
       border-block-end:
-        var(--_overflow-hover-indicator,
+        var(--rh-tabs-overflow-hover-indicator,
           var(--rh-border-width-lg, 3px)
           solid
           var(--rh-color-border-subtle));
@@ -264,19 +264,19 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--_overflow-icon-size, auto);
-  height: var(--_overflow-icon-size, auto);
-  border-radius: var(--_overflow-icon-radius, 0);
+  width: var(--rh-tabs-overflow-icon-size, auto);
+  height: var(--rh-tabs-overflow-icon-size, auto);
+  border-radius: var(--rh-tabs-overflow-icon-radius, 0);
 }
 
 :is(#previous-tab, #next-tab):hover .overflow-icon {
-  background-color: var(--_overflow-hover-bg, transparent);
+  background-color: var(--rh-tabs-overflow-hover-background, transparent);
 }
 
 :is(#previous-tab, #next-tab):focus .overflow-icon {
-  background-color: var(--_overflow-focus-bg, transparent);
-  outline: var(--_overflow-focus-outline, none);
-  outline-offset: var(--_overflow-focus-outline-offset, 0);
+  background-color: var(--rh-tabs-overflow-focus-background, transparent);
+  outline: var(--rh-tabs-overflow-focus-outline, none);
+  outline-offset: var(--rh-tabs-overflow-focus-outline-offset, 0);
 }
 
 #next-tab {
