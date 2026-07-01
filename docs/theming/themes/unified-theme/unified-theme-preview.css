@@ -1765,7 +1765,7 @@
 
   /* ── horizontal box: remove side divider borders ────── */
   rh-tabs:not([vertical]) {
-    --_tab-box-side-border-color: transparent;
+    --rh-tabs-box-side-border-color: transparent;
   }
 }
 
