@@ -477,7 +477,12 @@
         );
     --unified-color-border-control-default:
       light-dark(
-          var(--unified-color-gray-30),
+          #8c8c8c,
+          var(--unified-color-gray-40)
+        );
+    --unified-color-icon-subtle:
+      light-dark(
+          var(--unified-color-gray-50),
           var(--unified-color-gray-40)
         );
     --unified-color-border-subtle:
@@ -1952,13 +1957,112 @@
   rh-menu-dropdown {
     --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
     --rh-color-interactive-primary-hover: var(--unified-color-interactive-primary-hover);
-    --rh-border-radius-default: var(--unified-border-radius-menu);
+    --rh-border-radius-default: var(--unified-border-radius-pill);
     --rh-border-radius-pill: var(--unified-border-radius-action-plain);
+
+    /* 1. Toggle label font size: 14px */
+    --rh-font-size-body-text-md: var(--unified-font-size-body-text-sm);
+
+    /* 2. Padding-block 8px (toggle uses --rh-space-sm for block padding) */
+    --rh-space-sm: var(--unified-space-md);
+
+    /* 3. Per-state interactive border colors (consumed by shadow DOM patch in unified.md) */
+    --rh-menu-dropdown-hover-border-color: var(--unified-color-border-interactive-subtle-hover);
+    --rh-menu-dropdown-active-border-color: var(--unified-color-border-interactive-subtle-active);
+    --rh-menu-dropdown-focus-border-color: var(--unified-color-border-interactive-subtle-focus);
+    --rh-menu-dropdown-open-border-color: var(--unified-color-border-interactive-subtle-hover);
+
+    /* 4. Disabled: remove border to match PF docs */
+    --rh-menu-dropdown-disabled-box-shadow: none;
+
+    /* 5. Dark scheme toggle background: gray-70 instead of surface-darkest */
+    --rh-menu-dropdown-toggle-background:
+      light-dark(
+          var(--rh-color-surface-lightest, #ffffff),
+          var(--unified-color-gray-70)
+        );
+
+    /* Toggle border color */
+    --rh-menu-dropdown-toggle-border-color: var(--unified-color-border-control-default);
+    --rh-menu-dropdown-caret-size: var(--unified-size-icon-00);
+
+    /* Panel overrides */
+    --rh-menu-dropdown-panel-border-radius: var(--unified-border-radius-menu);
+    --rh-menu-dropdown-panel-padding: var(--unified-space-xs);
+    --rh-menu-dropdown-panel-border: none;
+    --rh-menu-dropdown-panel-background:
+      light-dark(
+          var(--rh-color-surface-lightest, #ffffff),
+          var(--unified-color-gray-70)
+        );
+
+    /* light-dark() only valid for the color position; geometry is the same both modes */
+    --rh-menu-dropdown-panel-box-shadow:
+      0 4px 10px 0
+      light-dark(rgba(21, 21, 21, 0.25), rgba(0, 0, 0, 0.5));
   }
 
   rh-menu {
     --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
     --rh-color-interactive-primary-hover: var(--unified-color-interactive-primary-hover);
+    --rh-border-radius-default: var(--unified-border-radius-menu);
+  }
+
+  rh-menu-dropdown rh-menu-item {
+    --rh-menu-item-border-radius: var(--unified-border-radius-action-plain);
+    --rh-border-radius-default: var(--unified-border-radius-action-plain);
+    --rh-menu-item-focus-inset: 0;
+    --rh-font-size-body-text-md: var(--unified-font-size-body-text-sm);
+    --rh-font-size-body-text-sm: 12px;
+
+    /* Default item background must match the panel background so items blend in.
+       rh-menu-item uses surface-lightest (light) / surface-darkest (dark) for its
+       default state; override surface-darkest to gray-70 so it matches the panel. */
+    --rh-color-surface-lightest: var(--rh-color-surface-lightest, #ffffff);
+    --rh-color-surface-darkest: var(--unified-color-gray-70);
+
+    /* Hover/focus state */
+    --rh-color-surface-lighter: var(--unified-color-interactive-fill-plain-on-light);
+    --rh-color-surface-darker: var(--unified-color-interactive-fill-plain-on-dark);
+
+    [slot='description'] {
+      line-height: 18px;
+    }
+
+    &:not([disabled]) [slot='description'] {
+      color: light-dark(var(--unified-color-gray-60), var(--unified-color-gray-30));
+    }
+  }
+
+  rh-menu-dropdown rh-menu-item[disabled] {
+    /* Light: gray-50 → gray-40 (#a3a3a3); Dark: gray-60 → gray-40 (#a3a3a3).
+       gray-40 matches --unified-color-text-status-disabled light value and
+       reads clearly on the gray-70 panel in dark mode. */
+    --rh-color-gray-50: var(--unified-color-gray-40);
+    --rh-color-gray-60: var(--unified-color-gray-40);
+  }
+
+  /* Group headings */
+  rh-menu-dropdown rh-menu-item-group {
+    --rh-font-weight-body-text-regular: 500;
+  }
+
+  /* Compact (icon-only toggle) */
+  rh-menu-dropdown[layout='compact'] {
+    /* 7. Border-radius: pill (base rh-menu-dropdown already sets pill; no override needed) */
+
+    /* Compact default state: transparent bg (hover/focus states from element CSS take over) */
+    --rh-menu-dropdown-toggle-background: transparent;
+    --rh-color-surface-lighter: var(--unified-color-interactive-fill-plain-on-light);
+    --rh-color-surface-darker: var(--unified-color-interactive-fill-plain-on-dark);
+
+    /* 6. Compact: 37px square, icon centered */
+    --rh-menu-dropdown-compact-size: 37px;
+    --rh-menu-dropdown-compact-justify: center;
+
+    /* 8. Disabled compact: transparent bg, muted icon */
+    --rh-menu-dropdown-compact-disabled-background: transparent;
+    --rh-menu-dropdown-compact-disabled-icon-color: var(--unified-color-icon-status-disabled);
   }
 }
 
