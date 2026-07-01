@@ -36,6 +36,8 @@ subnav:
   import '@rhds/elements/rh-tag/rh-tag.js';
 </script>
 
+<link rel="stylesheet" data-helmet href="/theming/themes/unified-theme/unified-theme-preview.css">
+
 ## Try it out
 
 To apply the Project Felt theme to all of the elements below, toggle the switch.
@@ -131,30 +133,21 @@ To apply the Project Felt theme to all of the elements below, toggle the switch.
 <script type="module">
   const feltSwitch = document.querySelector('#felt-theme-switch');
   if (feltSwitch) {
-    const stylesheet = new CSSStyleSheet();
     const response = await fetch('/theming/themes/unified-theme/unified-theme-preview.css');
     const cssText = response.ok ? await response.text() : '';
+    const sheet = new CSSStyleSheet();
+    await sheet.replace(cssText);
+    for (const pattern of document.querySelectorAll('uxdot-pattern')) {
+      const root = pattern.shadowRoot;
+      if (root && !root.adoptedStyleSheets.includes(sheet)) {
+        root.adoptedStyleSheets = [...root.adoptedStyleSheets, sheet];
+      }
+    }
     feltSwitch.addEventListener('change', function() {
-      const demosSection = document.querySelector('#demos');
-      if (!demosSection) return;
-      const patterns = demosSection.parentElement.querySelectorAll(
-        '#demos ~ uxdot-pattern'
-      );
-      if (feltSwitch.checked) {
-        stylesheet.replace(cssText);
-        for (const pattern of patterns) {
-          const root = pattern.shadowRoot;
-          if (root && !root.adoptedStyleSheets.includes(stylesheet)) {
-            root.adoptedStyleSheets = [...root.adoptedStyleSheets, stylesheet];
-          }
-        }
-      } else {
-        for (const pattern of patterns) {
-          const root = pattern.shadowRoot;
-          if (root) {
-            root.adoptedStyleSheets = root.adoptedStyleSheets.filter(s => s !== stylesheet);
-          }
-        }
+      for (const pattern of document.querySelectorAll('uxdot-pattern')) {
+        pattern.shadowRoot
+          ?.querySelector('#content')
+          ?.classList.toggle('felt-preview', feltSwitch.checked);
       }
     });
   }

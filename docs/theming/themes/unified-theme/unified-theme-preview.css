@@ -1,567 +1,538 @@
-@layer
-  tokens,
-  elements;
-
 /* Base-level "tokens" / CSS custom props */
-@layer tokens {
-  :root {
-    /* Fonts/Type */
-    --felt-preview-font-size-body-text-sm: 14px;
-    --felt-preview-font-size-body-text-md: 16px;
-    --felt-preview-line-height-body-text: 1.5;
-    --felt-preview-line-height-body-text-md: 1.5rem;
+:root {
+  /* Fonts/Type */
+  --felt-preview-font-size-body-text-sm: 14px;
+  --felt-preview-font-size-body-text-md: 16px;
+  --felt-preview-line-height-body-text: 1.5;
+  --felt-preview-line-height-body-text-md: 1.5rem;
 
-    /* Base colors: Grays */
-    --felt-preview-color-gray-10: #f2f2f2;
-    --felt-preview-color-gray-20: #e0e0e0;
-    --felt-preview-color-gray-30: #c7c7c7;
-    --felt-preview-color-gray-40: #a3a3a3;
-    --felt-preview-color-gray-45: #8c8c8c;
-    --felt-preview-color-gray-50: #707070;
-    --felt-preview-color-gray-60: #4d4d4d;
-    --felt-preview-color-gray-70: #383838;
-    --felt-preview-color-gray-80: #292929;
-    --felt-preview-color-gray-90: #1f1f1f;
-    --felt-preview-color-gray-95: #151515;
+  /* Base colors: Grays */
+  --felt-preview-color-gray-10: #f2f2f2;
+  --felt-preview-color-gray-20: #e0e0e0;
+  --felt-preview-color-gray-30: #c7c7c7;
+  --felt-preview-color-gray-40: #a3a3a3;
+  --felt-preview-color-gray-45: #8c8c8c;
+  --felt-preview-color-gray-50: #707070;
+  --felt-preview-color-gray-60: #4d4d4d;
+  --felt-preview-color-gray-70: #383838;
+  --felt-preview-color-gray-80: #292929;
+  --felt-preview-color-gray-90: #1f1f1f;
+  --felt-preview-color-gray-95: #151515;
 
-    /* Base colors: Blues */
-    --felt-preview-color-blue-10: #e0f0ff;
-    --felt-preview-color-blue-20: #b9dafc;
-    --felt-preview-color-blue-30: #92c5f9;
-    --felt-preview-color-blue-40: #4394e5;
-    --felt-preview-color-blue-50: #0066cc;
-    --felt-preview-color-blue-60: #004d99;
-    --felt-preview-color-blue-70: #003366;
+  /* Base colors: Blues */
+  --felt-preview-color-blue-10: #e0f0ff;
+  --felt-preview-color-blue-20: #b9dafc;
+  --felt-preview-color-blue-30: #92c5f9;
+  --felt-preview-color-blue-40: #4394e5;
+  --felt-preview-color-blue-50: #0066cc;
+  --felt-preview-color-blue-60: #004d99;
+  --felt-preview-color-blue-70: #003366;
 
-    /* Base colors: Red-oranges */
-    --felt-preview-color-red-orange-20: #fbbea8;
-    --felt-preview-color-red-orange-30: #f89b78;
-    --felt-preview-color-red-orange-40: #f4784a;
-    --felt-preview-color-red-orange-50: #f0561d;
-    --felt-preview-color-red-orange-60: #b1380b;
-    --felt-preview-color-red-orange-70: #731f00;
+  /* Base colors: Red-oranges */
+  --felt-preview-color-red-orange-20: #fbbea8;
+  --felt-preview-color-red-orange-30: #f89b78;
+  --felt-preview-color-red-orange-40: #f4784a;
+  --felt-preview-color-red-orange-50: #f0561d;
+  --felt-preview-color-red-orange-60: #b1380b;
+  --felt-preview-color-red-orange-70: #731f00;
 
-    /* Base colors: Yellows */
-    --felt-preview-color-yellow-20: #ffe072;
-    --felt-preview-color-yellow-40: #dca614;
+  /* Base colors: Yellows */
+  --felt-preview-color-yellow-20: #ffe072;
+  --felt-preview-color-yellow-40: #dca614;
 
-    /* Base colors: Greens */
-    --felt-preview-color-green-30: #afdc8f;
-    --felt-preview-color-green-70: #204d00;
+  /* Base colors: Greens */
+  --felt-preview-color-green-30: #afdc8f;
+  --felt-preview-color-green-70: #204d00;
 
-    /* Base colors: Purples */
-    --felt-preview-color-purple-20: #d0c5f4;
-    --felt-preview-color-purple-60: #3d2785;
+  /* Base colors: Purples */
+  --felt-preview-color-purple-20: #d0c5f4;
+  --felt-preview-color-purple-60: #3d2785;
 
-    /* Base colors: Teals */
-    --felt-preview-color-teal-30: #9ad8d8;
-    --felt-preview-color-teal-40: #63bdbd;
-    --felt-preview-color-teal-60: #147878;
-    --felt-preview-color-teal-70: #004d4d;
+  /* Base colors: Teals */
+  --felt-preview-color-teal-30: #9ad8d8;
+  --felt-preview-color-teal-40: #63bdbd;
+  --felt-preview-color-teal-60: #147878;
+  --felt-preview-color-teal-70: #004d4d;
 
-    /* Text color */
-    --felt-preview-color-text-primary-inverse:
-      light-dark(
-          white,
-          var(--felt-preview-color-gray-90)
-        );
+  /* Text color */
+  --felt-preview-color-text-primary-inverse:
+    light-dark(
+        white,
+        var(--felt-preview-color-gray-90)
+      );
 
-    /* Icon colors */
-    --felt-preview-color-icon-secondary:
-      light-dark(
-          var(--felt-preview-color-gray-90),
-          var(--felt-preview-color-gray-10)
-        );
-    --felt-preview-color-icon-secondary-inverse:
-      light-dark(
-          var(--felt-preview-color-gray-10),
-          var(--felt-preview-color-gray-90)
-        );
+  /* Icon colors */
+  --felt-preview-color-icon-secondary:
+    light-dark(
+        var(--felt-preview-color-gray-90),
+        var(--felt-preview-color-gray-10)
+      );
+  --felt-preview-color-icon-secondary-inverse:
+    light-dark(
+        var(--felt-preview-color-gray-10),
+        var(--felt-preview-color-gray-90)
+      );
 
-    /* Interactive colors */
-    --felt-preview-color-interactive-primary-default:
-      light-dark(
-          var(--felt-preview-color-blue-50),
-          var(--felt-preview-color-blue-30)
-        );
-    --felt-preview-color-interactive-primary-hover:
-      light-dark(
-          var(--felt-preview-color-blue-60),
-          var(--felt-preview-color-blue-20)
-        );
-    --felt-preview-color-interactive-primary-focus:
-      light-dark(
-          var(--felt-preview-color-blue-60),
-          var(--felt-preview-color-blue-20)
-        );
-    --felt-preview-color-interactive-primary-active:
-      light-dark(
-          var(--felt-preview-color-blue-60),
-          var(--felt-preview-color-blue-20)
-        );
-    --felt-preview-color-interactive-tertiary-default:
-      light-dark(
-          var(--felt-preview-color-blue-50),
-          var(--felt-preview-color-blue-20)
-        );
-    --felt-preview-color-interactive-tertiary-hover:
-      light-dark(
-          var(--felt-preview-color-blue-60),
-          var(--felt-preview-color-blue-10)
-        );
-    --felt-preview-color-interactive-tertiary-focus:
-      light-dark(
-          var(--felt-preview-color-blue-60),
-          var(--felt-preview-color-blue-10)
-        );
-    --felt-preview-color-interactive-tertiary-active:
-      light-dark(
-          var(--felt-preview-color-blue-60),
-          var(--felt-preview-color-blue-10)
-        );
-    --felt-preview-color-interactive-fill-plain-on-light: rgba(199, 199, 199, 0.25);
-    --felt-preview-color-interactive-fill-plain-on-dark: rgba(199, 199, 199, 0.15);
-    --felt-preview-color-interactive-fill-plain-default: transparent;
-    --felt-preview-color-interactive-fill-plain-hover:
-      light-dark(
-          var(--felt-preview-color-interactive-fill-plain-on-light),
-          var(--felt-preview-color-interactive-fill-plain-on-dark)
-        );
-    --felt-preview-color-interactive-fill-plain-focus:
-      light-dark(
-          var(--felt-preview-color-interactive-fill-plain-on-light),
-          var(--felt-preview-color-interactive-fill-plain-on-dark)
-        );
-    --felt-preview-color-interactive-fill-plain-active:
-      light-dark(
-          var(--felt-preview-color-interactive-fill-plain-on-light),
-          var(--felt-preview-color-interactive-fill-plain-on-dark)
-        );
-    --felt-preview-color-interactive-fill-plain-clicked:
-      var(
-          --felt-preview-color-interactive-fill-plain-active
-        );
-    --felt-preview-color-interactive-fill-plain-alt-hover: light-dark(#ffffff, #292929);
-    --felt-preview-color-text-interactive-default:
-      light-dark(
-          var(--felt-preview-color-blue-50),
-          var(--felt-preview-color-blue-20)
-        );
-    --felt-preview-color-text-interactive-hover:
-      light-dark(
-          var(--felt-preview-color-blue-60),
-          var(--felt-preview-color-blue-10)
-        );
-    --felt-preview-color-text-interactive-focus:
-      light-dark(
-          var(--felt-preview-color-blue-60),
-          var(--felt-preview-color-blue-10)
-        );
-    --felt-preview-color-text-interactive-active:
-      light-dark(
-          var(--felt-preview-color-blue-60),
-          var(--felt-preview-color-blue-10)
-        );
-    --felt-preview-color-icon-interactive-default:
-      light-dark(
-          var(--felt-preview-color-blue-50),
-          var(--felt-preview-color-blue-20)
-        );
-    --felt-preview-color-icon-interactive-hover:
-      light-dark(
-          var(--felt-preview-color-blue-60),
-          var(--felt-preview-color-blue-10)
-        );
-    --felt-preview-color-icon-interactive-focus:
-      light-dark(
-          var(--felt-preview-color-blue-60),
-          var(--felt-preview-color-blue-10)
-        );
-    --felt-preview-color-icon-interactive-active:
-      light-dark(
-          var(--felt-preview-color-blue-60),
-          var(--felt-preview-color-blue-10)
-        );
-    --felt-preview-color-border-interactive-default:
-      light-dark(
-          var(--felt-preview-color-blue-50),
-          var(--felt-preview-color-blue-30)
-        );
-    --felt-preview-color-border-interactive-subtle-default:
-      light-dark(
-          var(--felt-preview-color-gray-30),
-          var(--felt-preview-color-gray-50)
-        );
-    --felt-preview-color-border-interactive-subtle-hover:
-      light-dark(
-          var(--felt-preview-color-blue-40),
-          var(--felt-preview-color-blue-30)
-        );
-    --felt-preview-color-interactive-secondary-underline-default:
-      light-dark(
-          var(--felt-preview-color-gray-45),
-          var(--felt-preview-color-gray-40)
-        );
-    --felt-preview-color-interactive-secondary-underline-hover:
-      light-dark(
-          var(--felt-preview-color-gray-45),
-          var(--felt-preview-color-gray-40)
-        );
-    --felt-preview-color-interactive-secondary-underline-active:
-      light-dark(
-          var(--felt-preview-color-gray-45),
-          var(--felt-preview-color-gray-40)
-        );
-    --felt-preview-color-interactive-secondary-underline-focus:
-      light-dark(
-          var(--felt-preview-color-gray-45),
-          var(--felt-preview-color-gray-40)
-        );
+  /* Interactive colors */
+  --felt-preview-color-interactive-primary-default:
+    light-dark(
+        var(--felt-preview-color-blue-50),
+        var(--felt-preview-color-blue-30)
+      );
+  --felt-preview-color-interactive-primary-hover:
+    light-dark(
+        var(--felt-preview-color-blue-60),
+        var(--felt-preview-color-blue-20)
+      );
+  --felt-preview-color-interactive-primary-focus:
+    light-dark(
+        var(--felt-preview-color-blue-60),
+        var(--felt-preview-color-blue-20)
+      );
+  --felt-preview-color-interactive-primary-active:
+    light-dark(
+        var(--felt-preview-color-blue-60),
+        var(--felt-preview-color-blue-20)
+      );
+  --felt-preview-color-interactive-tertiary-default:
+    light-dark(
+        var(--felt-preview-color-blue-50),
+        var(--felt-preview-color-blue-20)
+      );
+  --felt-preview-color-interactive-tertiary-hover:
+    light-dark(
+        var(--felt-preview-color-blue-60),
+        var(--felt-preview-color-blue-10)
+      );
+  --felt-preview-color-interactive-tertiary-focus:
+    light-dark(
+        var(--felt-preview-color-blue-60),
+        var(--felt-preview-color-blue-10)
+      );
+  --felt-preview-color-interactive-tertiary-active:
+    light-dark(
+        var(--felt-preview-color-blue-60),
+        var(--felt-preview-color-blue-10)
+      );
+  --felt-preview-color-interactive-fill-plain-on-light: rgba(199, 199, 199, 0.25);
+  --felt-preview-color-interactive-fill-plain-on-dark: rgba(199, 199, 199, 0.15);
+  --felt-preview-color-interactive-fill-plain-default: transparent;
+  --felt-preview-color-interactive-fill-plain-hover:
+    light-dark(
+        var(--felt-preview-color-interactive-fill-plain-on-light),
+        var(--felt-preview-color-interactive-fill-plain-on-dark)
+      );
+  --felt-preview-color-interactive-fill-plain-focus:
+    light-dark(
+        var(--felt-preview-color-interactive-fill-plain-on-light),
+        var(--felt-preview-color-interactive-fill-plain-on-dark)
+      );
+  --felt-preview-color-interactive-fill-plain-active:
+    light-dark(
+        var(--felt-preview-color-interactive-fill-plain-on-light),
+        var(--felt-preview-color-interactive-fill-plain-on-dark)
+      );
+  --felt-preview-color-interactive-fill-plain-clicked:
+    var(
+        --felt-preview-color-interactive-fill-plain-active
+      );
+  --felt-preview-color-interactive-fill-plain-alt-hover: light-dark(#ffffff, #292929);
+  --felt-preview-color-text-interactive-default:
+    light-dark(
+        var(--felt-preview-color-blue-50),
+        var(--felt-preview-color-blue-20)
+      );
+  --felt-preview-color-text-interactive-hover:
+    light-dark(
+        var(--felt-preview-color-blue-60),
+        var(--felt-preview-color-blue-10)
+      );
+  --felt-preview-color-text-interactive-focus:
+    light-dark(
+        var(--felt-preview-color-blue-60),
+        var(--felt-preview-color-blue-10)
+      );
+  --felt-preview-color-text-interactive-active:
+    light-dark(
+        var(--felt-preview-color-blue-60),
+        var(--felt-preview-color-blue-10)
+      );
+  --felt-preview-color-icon-interactive-default:
+    light-dark(
+        var(--felt-preview-color-blue-50),
+        var(--felt-preview-color-blue-20)
+      );
+  --felt-preview-color-icon-interactive-hover:
+    light-dark(
+        var(--felt-preview-color-blue-60),
+        var(--felt-preview-color-blue-10)
+      );
+  --felt-preview-color-icon-interactive-focus:
+    light-dark(
+        var(--felt-preview-color-blue-60),
+        var(--felt-preview-color-blue-10)
+      );
+  --felt-preview-color-icon-interactive-active:
+    light-dark(
+        var(--felt-preview-color-blue-60),
+        var(--felt-preview-color-blue-10)
+      );
+  --felt-preview-color-border-interactive-default:
+    light-dark(
+        var(--felt-preview-color-blue-50),
+        var(--felt-preview-color-blue-30)
+      );
+  --felt-preview-color-border-interactive-subtle-default:
+    light-dark(
+        var(--felt-preview-color-gray-30),
+        var(--felt-preview-color-gray-50)
+      );
+  --felt-preview-color-border-interactive-subtle-hover:
+    light-dark(
+        var(--felt-preview-color-blue-40),
+        var(--felt-preview-color-blue-30)
+      );
+  --felt-preview-color-interactive-secondary-underline-default:
+    light-dark(
+        var(--felt-preview-color-gray-45),
+        var(--felt-preview-color-gray-40)
+      );
+  --felt-preview-color-interactive-secondary-underline-hover:
+    light-dark(
+        var(--felt-preview-color-gray-45),
+        var(--felt-preview-color-gray-40)
+      );
+  --felt-preview-color-interactive-secondary-underline-active:
+    light-dark(
+        var(--felt-preview-color-gray-45),
+        var(--felt-preview-color-gray-40)
+      );
+  --felt-preview-color-interactive-secondary-underline-focus:
+    light-dark(
+        var(--felt-preview-color-gray-45),
+        var(--felt-preview-color-gray-40)
+      );
 
-    /* TODO: Double-check color */
-    --felt-preview-color-border-interactive-subtle-focus:
-      light-dark(
-          var(--felt-preview-color-blue-50),
-          var(--felt-preview-color-blue-20)
-        );
-    --felt-preview-color-border-interactive-subtle-active:
-      light-dark(
-          var(--felt-preview-color-blue-50),
-          var(--felt-preview-color-blue-20)
-        );
+  /* TODO: Double-check color */
+  --felt-preview-color-border-interactive-subtle-focus:
+    light-dark(
+        var(--felt-preview-color-blue-50),
+        var(--felt-preview-color-blue-20)
+      );
+  --felt-preview-color-border-interactive-subtle-active:
+    light-dark(
+        var(--felt-preview-color-blue-50),
+        var(--felt-preview-color-blue-20)
+      );
 
-    /* Status colors: Disabled */
-    --felt-preview-color-text-status-on-disabled:
-      light-dark(
-          var(--felt-preview-color-gray-50),
-          var(--felt-preview-color-gray-70)
-        );
-    --felt-preview-color-icon-status-on-disabled:
-      light-dark(
-          var(--felt-preview-color-gray-50),
-          var(--felt-preview-color-gray-70)
-        );
-    --felt-preview-color-text-status-disabled:
-      light-dark(
-          var(--felt-preview-color-gray-40),
-          var(--felt-preview-color-gray-50)
-        );
-    --felt-preview-color-icon-status-disabled:
-      light-dark(
-          var(--felt-preview-color-gray-40),
-          var(--felt-preview-color-gray-50)
-        );
-    --felt-preview-color-border-status-disabled:
-      light-dark(
-          var(--felt-preview-color-gray-40),
-          var(--felt-preview-color-gray-50)
-        );
+  /* Status colors: Disabled */
+  --felt-preview-color-text-status-on-disabled:
+    light-dark(
+        var(--felt-preview-color-gray-50),
+        var(--felt-preview-color-gray-70)
+      );
+  --felt-preview-color-icon-status-on-disabled:
+    light-dark(
+        var(--felt-preview-color-gray-50),
+        var(--felt-preview-color-gray-70)
+      );
+  --felt-preview-color-text-status-disabled:
+    light-dark(
+        var(--felt-preview-color-gray-40),
+        var(--felt-preview-color-gray-50)
+      );
+  --felt-preview-color-icon-status-disabled:
+    light-dark(
+        var(--felt-preview-color-gray-40),
+        var(--felt-preview-color-gray-50)
+      );
+  --felt-preview-color-border-status-disabled:
+    light-dark(
+        var(--felt-preview-color-gray-40),
+        var(--felt-preview-color-gray-50)
+      );
 
-    /* Status colors: Danger */
-    --felt-preview-color-status-danger:
-      light-dark(
-          var(--felt-preview-color-red-orange-60),
-          var(--felt-preview-color-red-orange-50)
-        );
-    --felt-preview-color-text-status-on-danger: white;
-    --felt-preview-color-status-danger-hover:
-      light-dark(
-          var(--felt-preview-color-red-orange-70),
-          var(--felt-preview-color-red-orange-40)
-        );
-    --felt-preview-color-status-danger-focus:
-      light-dark(
-          var(--felt-preview-color-red-orange-70),
-          var(--felt-preview-color-red-orange-40)
-        );
-    --felt-preview-color-status-danger-active:
-      light-dark(
-          var(--felt-preview-color-red-orange-70),
-          var(--felt-preview-color-red-orange-40)
-        );
-    --felt-preview-color-text-status-danger:
-      light-dark(
-          var(--felt-preview-color-red-orange-60),
-          var(--felt-preview-color-red-orange-30)
-        );
-    --felt-preview-color-text-status-danger-hover:
-      light-dark(
-          var(--felt-preview-color-red-orange-70),
-          var(--felt-preview-color-red-orange-20)
-        );
-    --felt-preview-color-text-status-danger-focus:
-      light-dark(
-          var(--felt-preview-color-red-orange-70),
-          var(--felt-preview-color-red-orange-20)
-        );
-    --felt-preview-color-text-status-danger-active:
-      light-dark(
-          var(--felt-preview-color-red-orange-70),
-          var(--felt-preview-color-red-orange-20)
-        );
-    --felt-preview-color-icon-status-danger-hover:
-      light-dark(
-          var(--felt-preview-color-red-orange-70),
-          var(--felt-preview-color-red-orange-40)
-        );
-    --felt-preview-color-icon-status-danger-focus:
-      light-dark(
-          var(--felt-preview-color-red-orange-70),
-          var(--felt-preview-color-red-orange-40)
-        );
-    --felt-preview-color-icon-status-danger-active:
-      light-dark(
-          var(--felt-preview-color-red-orange-70),
-          var(--felt-preview-color-red-orange-40)
-        );
-    --felt-preview-color-border-status-danger-hover:
-      light-dark(
-          var(--felt-preview-color-red-orange-70),
-          var(--felt-preview-color-red-orange-40)
-        );
-    --felt-preview-color-border-status-danger-focus:
-      light-dark(
-          var(--felt-preview-color-red-orange-70),
-          var(--felt-preview-color-red-orange-40)
-        );
-    --felt-preview-color-border-status-danger-active:
-      light-dark(
-          var(--felt-preview-color-red-orange-70),
-          var(--felt-preview-color-red-orange-40)
-        );
+  /* Status colors: Danger */
+  --felt-preview-color-status-danger:
+    light-dark(
+        var(--felt-preview-color-red-orange-60),
+        var(--felt-preview-color-red-orange-50)
+      );
+  --felt-preview-color-text-status-on-danger: white;
+  --felt-preview-color-status-danger-hover:
+    light-dark(
+        var(--felt-preview-color-red-orange-70),
+        var(--felt-preview-color-red-orange-40)
+      );
+  --felt-preview-color-status-danger-focus:
+    light-dark(
+        var(--felt-preview-color-red-orange-70),
+        var(--felt-preview-color-red-orange-40)
+      );
+  --felt-preview-color-status-danger-active:
+    light-dark(
+        var(--felt-preview-color-red-orange-70),
+        var(--felt-preview-color-red-orange-40)
+      );
+  --felt-preview-color-text-status-danger:
+    light-dark(
+        var(--felt-preview-color-red-orange-60),
+        var(--felt-preview-color-red-orange-30)
+      );
+  --felt-preview-color-text-status-danger-hover:
+    light-dark(
+        var(--felt-preview-color-red-orange-70),
+        var(--felt-preview-color-red-orange-20)
+      );
+  --felt-preview-color-text-status-danger-focus:
+    light-dark(
+        var(--felt-preview-color-red-orange-70),
+        var(--felt-preview-color-red-orange-20)
+      );
+  --felt-preview-color-text-status-danger-active:
+    light-dark(
+        var(--felt-preview-color-red-orange-70),
+        var(--felt-preview-color-red-orange-20)
+      );
+  --felt-preview-color-icon-status-danger-hover:
+    light-dark(
+        var(--felt-preview-color-red-orange-70),
+        var(--felt-preview-color-red-orange-40)
+      );
+  --felt-preview-color-icon-status-danger-focus:
+    light-dark(
+        var(--felt-preview-color-red-orange-70),
+        var(--felt-preview-color-red-orange-40)
+      );
+  --felt-preview-color-icon-status-danger-active:
+    light-dark(
+        var(--felt-preview-color-red-orange-70),
+        var(--felt-preview-color-red-orange-40)
+      );
+  --felt-preview-color-border-status-danger-hover:
+    light-dark(
+        var(--felt-preview-color-red-orange-70),
+        var(--felt-preview-color-red-orange-40)
+      );
+  --felt-preview-color-border-status-danger-focus:
+    light-dark(
+        var(--felt-preview-color-red-orange-70),
+        var(--felt-preview-color-red-orange-40)
+      );
+  --felt-preview-color-border-status-danger-active:
+    light-dark(
+        var(--felt-preview-color-red-orange-70),
+        var(--felt-preview-color-red-orange-40)
+      );
 
-    /* Status colors: Warning */
-    --felt-preview-color-status-warning: var(--rh-color-yellow-30, #ffcc17);
-    --felt-preview-color-text-status-on-warning: var(--felt-preview-color-gray-95, #151515);
-    --felt-preview-color-status-warning-hover:
-      light-dark(
-          var(--felt-preview-color-yellow-40),
-          var(--felt-preview-color-yellow-20)
-        );
-    --felt-preview-color-status-warning-focus:
-      light-dark(
-          var(--felt-preview-color-yellow-40),
-          var(--felt-preview-color-yellow-20)
-        );
-    --felt-preview-color-status-warning-active:
-      light-dark(
-          var(--felt-preview-color-yellow-40),
-          var(--felt-preview-color-yellow-20)
-        );
-    --felt-preview-color-border-status-warning-hover:
-      light-dark(
-          var(--felt-preview-color-yellow-50),
-          var(--felt-preview-color-yellow-20)
-        );
-    --felt-preview-color-border-status-warning-focus:
-      light-dark(
-          var(--felt-preview-color-yellow-50),
-          var(--felt-preview-color-yellow-20)
-        );
-    --felt-preview-color-border-status-warning-active:
-      light-dark(
-          var(--felt-preview-color-yellow-50),
-          var(--felt-preview-color-yellow-20)
-        );
+  /* Status colors: Warning */
+  --felt-preview-color-status-warning: var(--rh-color-yellow-30, #ffcc17);
+  --felt-preview-color-text-status-on-warning: var(--felt-preview-color-gray-95, #151515);
+  --felt-preview-color-status-warning-hover:
+    light-dark(
+        var(--felt-preview-color-yellow-40),
+        var(--felt-preview-color-yellow-20)
+      );
+  --felt-preview-color-status-warning-focus:
+    light-dark(
+        var(--felt-preview-color-yellow-40),
+        var(--felt-preview-color-yellow-20)
+      );
+  --felt-preview-color-status-warning-active:
+    light-dark(
+        var(--felt-preview-color-yellow-40),
+        var(--felt-preview-color-yellow-20)
+      );
+  --felt-preview-color-border-status-warning-hover:
+    light-dark(
+        var(--felt-preview-color-yellow-50),
+        var(--felt-preview-color-yellow-20)
+      );
+  --felt-preview-color-border-status-warning-focus:
+    light-dark(
+        var(--felt-preview-color-yellow-50),
+        var(--felt-preview-color-yellow-20)
+      );
+  --felt-preview-color-border-status-warning-active:
+    light-dark(
+        var(--felt-preview-color-yellow-50),
+        var(--felt-preview-color-yellow-20)
+      );
 
-    /* Status colors: Success */
-    --felt-preview-color-status-success: var(--rh-color-green-60, #3d7317);
-    --felt-preview-color-text-status-on-success: white;
-    --felt-preview-color-status-success-hover:
-      light-dark(
-          var(--felt-preview-color-green-70),
-          var(--felt-preview-color-green-30)
-        );
-    --felt-preview-color-status-success-focus:
-      light-dark(
-          var(--felt-preview-color-green-70),
-          var(--felt-preview-color-green-30)
-        );
-    --felt-preview-color-status-success-active:
-      light-dark(
-          var(--felt-preview-color-green-70),
-          var(--felt-preview-color-green-30)
-        );
-    --felt-preview-color-border-status-success-hover:
-      light-dark(
-          var(--felt-preview-color-green-70),
-          var(--felt-preview-color-green-30)
-        );
-    --felt-preview-color-border-status-success-focus:
-      light-dark(
-          var(--felt-preview-color-green-70),
-          var(--felt-preview-color-green-30)
-        );
-    --felt-preview-color-border-status-success-active:
-      light-dark(
-          var(--felt-preview-color-green-70),
-          var(--felt-preview-color-green-30)
-        );
+  /* Status colors: Success */
+  --felt-preview-color-status-success: var(--rh-color-green-60, #3d7317);
+  --felt-preview-color-text-status-on-success: white;
+  --felt-preview-color-status-success-hover:
+    light-dark(
+        var(--felt-preview-color-green-70),
+        var(--felt-preview-color-green-30)
+      );
+  --felt-preview-color-status-success-focus:
+    light-dark(
+        var(--felt-preview-color-green-70),
+        var(--felt-preview-color-green-30)
+      );
+  --felt-preview-color-status-success-active:
+    light-dark(
+        var(--felt-preview-color-green-70),
+        var(--felt-preview-color-green-30)
+      );
+  --felt-preview-color-border-status-success-hover:
+    light-dark(
+        var(--felt-preview-color-green-70),
+        var(--felt-preview-color-green-30)
+      );
+  --felt-preview-color-border-status-success-focus:
+    light-dark(
+        var(--felt-preview-color-green-70),
+        var(--felt-preview-color-green-30)
+      );
+  --felt-preview-color-border-status-success-active:
+    light-dark(
+        var(--felt-preview-color-green-70),
+        var(--felt-preview-color-green-30)
+      );
 
-    /* Status colors: Info */
-    --felt-preview-color-status-info: var(--rh-color-purple-50, #5e40be);
-    --felt-preview-color-text-status-on-info: white;
-    --felt-preview-color-status-info-hover:
-      light-dark(
-          var(--felt-preview-color-purple-60),
-          var(--felt-preview-color-purple-20)
-        );
-    --felt-preview-color-status-info-focus:
-      light-dark(
-          var(--felt-preview-color-purple-60),
-          var(--felt-preview-color-purple-20)
-        );
-    --felt-preview-color-status-info-active:
-      light-dark(
-          var(--felt-preview-color-purple-60),
-          var(--felt-preview-color-purple-20)
-        );
-    --felt-preview-color-border-status-info-hover:
-      light-dark(
-          var(--felt-preview-color-purple-60),
-          var(--felt-preview-color-purple-20)
-        );
-    --felt-preview-color-border-status-info-focus:
-      light-dark(
-          var(--felt-preview-color-purple-60),
-          var(--felt-preview-color-purple-20)
-        );
-    --felt-preview-color-border-status-info-active:
-      light-dark(
-          var(--felt-preview-color-purple-60),
-          var(--felt-preview-color-purple-20)
-        );
+  /* Status colors: Info */
+  --felt-preview-color-status-info: var(--rh-color-purple-50, #5e40be);
+  --felt-preview-color-text-status-on-info: white;
+  --felt-preview-color-status-info-hover:
+    light-dark(
+        var(--felt-preview-color-purple-60),
+        var(--felt-preview-color-purple-20)
+      );
+  --felt-preview-color-status-info-focus:
+    light-dark(
+        var(--felt-preview-color-purple-60),
+        var(--felt-preview-color-purple-20)
+      );
+  --felt-preview-color-status-info-active:
+    light-dark(
+        var(--felt-preview-color-purple-60),
+        var(--felt-preview-color-purple-20)
+      );
+  --felt-preview-color-border-status-info-hover:
+    light-dark(
+        var(--felt-preview-color-purple-60),
+        var(--felt-preview-color-purple-20)
+      );
+  --felt-preview-color-border-status-info-focus:
+    light-dark(
+        var(--felt-preview-color-purple-60),
+        var(--felt-preview-color-purple-20)
+      );
+  --felt-preview-color-border-status-info-active:
+    light-dark(
+        var(--felt-preview-color-purple-60),
+        var(--felt-preview-color-purple-20)
+      );
 
-    /* Status colors: Custom */
-    --felt-preview-color-status-custom:
-      light-dark(
-          var(--felt-preview-color-teal-60),
-          var(--felt-preview-color-teal-40)
-        );
-    --felt-preview-color-text-status-on-custom: white;
-    --felt-preview-color-status-custom-hover:
-      light-dark(
-          var(--felt-preview-color-teal-70),
-          var(--felt-preview-color-teal-30)
-        );
-    --felt-preview-color-status-custom-focus:
-      light-dark(
-          var(--felt-preview-color-teal-70),
-          var(--felt-preview-color-teal-30)
-        );
-    --felt-preview-color-status-custom-active:
-      light-dark(
-          var(--felt-preview-color-teal-70),
-          var(--felt-preview-color-teal-30)
-        );
-    --felt-preview-color-border-status-custom-hover:
-      light-dark(
-          var(--felt-preview-color-teal-70),
-          var(--felt-preview-color-teal-30)
-        );
-    --felt-preview-color-border-status-custom-focus:
-      light-dark(
-          var(--felt-preview-color-teal-70),
-          var(--felt-preview-color-teal-30)
-        );
-    --felt-preview-color-border-status-custom-active:
-      light-dark(
-          var(--felt-preview-color-teal-70),
-          var(--felt-preview-color-teal-30)
-        );
+  /* Status colors: Custom */
+  --felt-preview-color-status-custom:
+    light-dark(
+        var(--felt-preview-color-teal-60),
+        var(--felt-preview-color-teal-40)
+      );
+  --felt-preview-color-text-status-on-custom: white;
+  --felt-preview-color-status-custom-hover:
+    light-dark(
+        var(--felt-preview-color-teal-70),
+        var(--felt-preview-color-teal-30)
+      );
+  --felt-preview-color-status-custom-focus:
+    light-dark(
+        var(--felt-preview-color-teal-70),
+        var(--felt-preview-color-teal-30)
+      );
+  --felt-preview-color-status-custom-active:
+    light-dark(
+        var(--felt-preview-color-teal-70),
+        var(--felt-preview-color-teal-30)
+      );
+  --felt-preview-color-border-status-custom-hover:
+    light-dark(
+        var(--felt-preview-color-teal-70),
+        var(--felt-preview-color-teal-30)
+      );
+  --felt-preview-color-border-status-custom-focus:
+    light-dark(
+        var(--felt-preview-color-teal-70),
+        var(--felt-preview-color-teal-30)
+      );
+  --felt-preview-color-border-status-custom-active:
+    light-dark(
+        var(--felt-preview-color-teal-70),
+        var(--felt-preview-color-teal-30)
+      );
 
-    /* Other border colors */
-    --felt-preview-color-border-track:
-      light-dark(
-          var(--felt-preview-color-blue-20),
-          var(--felt-preview-color-blue-70)
-        );
-    --felt-preview-color-border-control-default:
-      light-dark(
-          #8c8c8c,
-          var(--felt-preview-color-gray-40)
-        );
-    --felt-preview-color-icon-subtle:
-      light-dark(
-          var(--felt-preview-color-gray-50),
-          var(--felt-preview-color-gray-40)
-        );
-    --felt-preview-color-border-subtle:
-      light-dark(
-          var(--felt-preview-color-gray-20),
-          var(--felt-preview-color-gray-60)
-        );
+  /* Other border colors */
+  --felt-preview-color-border-track:
+    light-dark(
+        var(--felt-preview-color-blue-20),
+        var(--felt-preview-color-blue-70)
+      );
+  --felt-preview-color-border-control-default:
+    light-dark(
+        #8c8c8c,
+        var(--felt-preview-color-gray-40)
+      );
+  --felt-preview-color-icon-subtle:
+    light-dark(
+        var(--felt-preview-color-gray-50),
+        var(--felt-preview-color-gray-40)
+      );
+  --felt-preview-color-border-subtle:
+    light-dark(
+        var(--felt-preview-color-gray-20),
+        var(--felt-preview-color-gray-60)
+      );
 
-    /* Surface colors */
-    --felt-preview-color-surface-primary:
-      light-dark(
-          white,
-          var(--felt-preview-color-gray-80)
-        );
+  /* Surface colors */
+  --felt-preview-color-surface-primary:
+    light-dark(
+        white,
+        var(--felt-preview-color-gray-80)
+      );
 
-    /* Box shadows */
-    --felt-preview-box-shadow-floating: 0 0 10px 0 rgba(41, 41, 41, 0.15);
+  /* Box shadows */
+  --felt-preview-box-shadow-floating: 0 0 10px 0 rgba(41, 41, 41, 0.15);
 
-    /* Brand accent */
-    --felt-preview-color-brand-accent:
-      light-dark(
-          var(--felt-preview-color-blue-50),
-          var(--felt-preview-color-blue-30)
-        );
+  /* Brand accent */
+  --felt-preview-color-brand-accent:
+    light-dark(
+        var(--felt-preview-color-blue-50),
+        var(--felt-preview-color-blue-30)
+      );
 
-    /* Borders */
-    --felt-preview-border-radius-default: 16px;
-    --felt-preview-border-radius-large: 24px;
-    --felt-preview-border-radius-pill: 64px;
-    --felt-preview-border-radius-action-plain: 6px;
-    --felt-preview-border-radius-menu:
-      calc(
-          var(--felt-preview-border-radius-action-plain)
-          + var(--felt-preview-space-xs)
-        );
-    --felt-preview-border-width-sm: 1px;
-    --felt-preview-border-width-md: 2px;
-    --felt-preview-border-width-lg: 3px;
+  /* Borders */
+  --felt-preview-border-radius-default: 16px;
+  --felt-preview-border-radius-large: 24px;
+  --felt-preview-border-radius-pill: 64px;
+  --felt-preview-border-radius-action-plain: 6px;
+  --felt-preview-border-radius-menu:
+    calc(
+        var(--felt-preview-border-radius-action-plain)
+        + var(--felt-preview-space-xs)
+      );
+  --felt-preview-border-width-sm: 1px;
+  --felt-preview-border-width-md: 2px;
+  --felt-preview-border-width-lg: 3px;
 
-    /* Dimensions */
-    --felt-preview-size-icon-00: 14px; /* 0.875rem */
-    --felt-preview-space-xs: 4px;
-    --felt-preview-space-sm: 6px;
-    --felt-preview-space-md: 8px;
-    --felt-preview-space-lg: 16px;
-    --felt-preview-space-xl: 24px;
-    --felt-preview-space-2xl: 32px;
-    --felt-preview-space-3xl: 48px;
-    --felt-preview-length-xs: 4px;
-  }
+  /* Dimensions */
+  --felt-preview-size-icon-00: 14px; /* 0.875rem */
+  --felt-preview-space-xs: 4px;
+  --felt-preview-space-sm: 6px;
+  --felt-preview-space-md: 8px;
+  --felt-preview-space-lg: 16px;
+  --felt-preview-space-xl: 24px;
+  --felt-preview-space-2xl: 32px;
+  --felt-preview-space-3xl: 48px;
+  --felt-preview-length-xs: 4px;
 }
 
-/* Component-specific styles */
-@layer elements {
-  @layer
-    accordion,
-    alert,
-    badge,
-    breadcrumb,
-    button,
-    card,
-    chip,
-    cta,
-    dialog,
-    jump-links,
-    menu,
-    navigation-vertical,
-    progress-stepper,
-    spinner,
-    subnav,
-    switch,
-    tabs,
-    tag;
-}
-
-/* Element: Button */
-@layer button {
-  rh-button {
+.felt-preview {
+  /* Element: Button */
+  & rh-button {
     --felt-preview-button-font-size: var(--felt-preview-font-size-body-text-sm);
     --felt-preview-button-padding-block: var(--felt-preview-space-md);
     --felt-preview-button-padding-inline: var(--felt-preview-space-xl);
@@ -856,11 +827,9 @@
       --rh-space-lg: var(--felt-preview-button-padding-inline-compact);
     }
   }
-}
 
-/* Element: Card */
-@layer card {
-  rh-card {
+  /* Element: Card */
+  & rh-card {
     --felt-preview-card-padding-default: var(--felt-preview-space-xl);
     --felt-preview-card-padding-compact: var(--felt-preview-space-lg);
     --felt-preview-card-padding-large: var(--felt-preview-space-2xl);
@@ -911,11 +880,9 @@
       }
     }
   }
-}
 
-/* Element: Call to action */
-@layer cta {
-  rh-cta {
+  /* Element: Call to action */
+  & rh-cta {
     --felt-preview-cta-font-size: var(--felt-preview-font-size-body-text-md);
     --felt-preview-cta-padding-block: var(--felt-preview-space-lg);
     --felt-preview-cta-padding-inline: var(--felt-preview-space-2xl);
@@ -1123,18 +1090,14 @@
       --felt-preview-cta-font-size: var(--felt-preview-font-size-body-text-sm);
     }
   }
-}
 
-/* Element: Progress Stepper */
-@layer progress-stepper {
-  rh-progress-stepper {
+  /* Element: Progress Stepper */
+  & rh-progress-stepper {
     --rh-size-icon-02: calc(var(--felt-preview-size-icon-00) + var(--felt-preview-space-md));
   }
-}
 
-/* Element: Spinner */
-@layer spinner {
-  rh-spinner {
+  /* Element: Spinner */
+  & rh-spinner {
     --rh-spinner-track-display: none;
     --rh-spinner-vector-effect: none;
     --rh-spinner-stroke-width: 10;
@@ -1150,11 +1113,9 @@
     --rh-spinner-sm-dash-offset: 280;
     --rh-color-accent-base: var(--felt-preview-color-border-interactive-default);
   }
-}
 
-/* Element: Tag */
-@layer tag {
-  rh-tag {
+  /* Element: Tag */
+  & rh-tag {
     --rh-size-icon-01: var(--felt-preview-size-icon-00);
 
     /* Filled tags look the same in both light and dark modes:
@@ -1465,13 +1426,11 @@
       }
     }
   }
-}
 
-/* Element: Switch
-   NOTE: The unchecked track outline/border shown in the Figma
-   mockup requires element-level changes (no CSS part on #switch). */
-@layer switch {
-  rh-switch {
+  /* Element: Switch
+     NOTE: The unchecked track outline/border shown in the Figma
+     mockup requires element-level changes (no CSS part on #switch). */
+  & rh-switch {
     --rh-switch-show-check: true;
     --rh-switch-unchecked: transparent;
     --rh-switch-checked: var(--felt-preview-color-interactive-primary-default);
@@ -1500,11 +1459,9 @@
       }
     }
   }
-}
 
-/* Element: Accordion */
-@layer accordion {
-  rh-accordion {
+  /* Element: Accordion */
+  & rh-accordion {
     --rh-color-accent-brand: transparent;
     --rh-box-shadow-sm: none;
     --rh-color-border-subtle: transparent;
@@ -1602,11 +1559,9 @@
       }
     }
   }
-}
 
-/* Element: Alert */
-@layer alert {
-  rh-alert {
+  /* Element: Alert */
+  & rh-alert {
     --felt-preview-alert-border-color: var(--rh-color-teal-50, #37a3a3);
     --rh-alert-border-width: 0;
     --rh-button-close-width: 100%;
@@ -1666,12 +1621,10 @@
       box-shadow: var(--felt-preview-box-shadow-floating);
     }
   }
-}
 
-/* Element: Tabs */
-@layer tabs {
-  /* ── rh-tabs (container) ────────────────────────────── */
-  rh-tabs {
+  /* Element: Tabs
+     ── rh-tabs (container) ────────────────────────────── */
+  & rh-tabs {
     /* Bottom border color under the tab row */
     --rh-color-border-subtle: var(--felt-preview-color-border-interactive-subtle-default);
 
@@ -1705,12 +1658,12 @@
   }
 
   /* ── rh-tabs vertical: adjust first/last tab margin ──── */
-  rh-tabs[vertical] {
+  & rh-tabs[vertical] {
     --rh-space-xl: var(--felt-preview-space-2xl);
   }
 
   /* ── rh-tab (individual tab button) ──────────────────── */
-  rh-tab {
+  & rh-tab {
     /* Dark box tab background: gray-80 not gray-90 */
     --rh-color-surface-darker: var(--felt-preview-color-gray-80);
 
@@ -1742,11 +1695,11 @@
   }
 
   /* ── disabled tab: text and icon use disabled tokens ── */
-  rh-tab[disabled] {
+  & rh-tab[disabled] {
     --rh-tabs-link-color: var(--felt-preview-color-text-status-disabled);
   }
 
-  rh-tab[active]::part(button):after {
+  & rh-tab[active]::part(button):after {
     border-block: none;
     background-color: var(--rh-tabs-active-border-color);
     block-size: var(--rh-border-width-lg, 3px);
@@ -1754,18 +1707,18 @@
     border-radius: var(--felt-preview-border-radius-pill);
   }
 
-  rh-tabs[box] rh-tab[active]::part(button):after {
+  & rh-tabs[box] rh-tab[active]::part(button):after {
     inset-block: 0 auto;
   }
 
   /* Box-inset only: the inset margins expose the container bottom border under
      the active tab. Restore the surface-color "open" border on the button itself
      (not ::after, which is now only 3px tall) so it covers the container line. */
-  rh-tabs[box='inset']:not([vertical]) rh-tab[active]::part(button) {
+  & rh-tabs[box='inset']:not([vertical]) rh-tab[active]::part(button) {
     border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-surface);
   }
 
-  rh-tabs[vertical] rh-tab[active]::part(button):after {
+  & rh-tabs[vertical] rh-tab[active]::part(button):after {
     block-size: auto;
     inline-size: var(--rh-border-width-lg, 3px);
     inset-block: 0;
@@ -1773,14 +1726,12 @@
   }
 
   /* ── horizontal box: remove side divider borders ────── */
-  rh-tabs:not([vertical]) {
+  & rh-tabs:not([vertical]) {
     --rh-tabs-box-border-color: transparent;
   }
-}
 
-/* Element: Dialog (Modal in PatternFly) */
-@layer dialog {
-  rh-dialog {
+  /* Element: Dialog (Modal in PatternFly) */
+  & rh-dialog {
     --rh-border-radius-default: var(--felt-preview-border-radius-large);
     --rh-color-icon-secondary: var(--felt-preview-color-icon-secondary);
     --rh-space-xl: var(--felt-preview-space-xl);
@@ -1810,11 +1761,9 @@
       --rh-border-radius-default: var(--felt-preview-border-radius-action-plain);
     }
   }
-}
 
-/* Element: Chip (selectable Labels in PatternFly) */
-@layer chip {
-  rh-chip {
+  /* Element: Chip (selectable Labels in PatternFly) */
+  & rh-chip {
     --rh-size-icon-01: var(--felt-preview-size-icon-00);
     --rh-border-radius-pill: var(--felt-preview-border-radius-pill);
     --rh-border-width-md: var(--felt-preview-border-width-md);
@@ -1830,16 +1779,16 @@
     }
   }
 
-  rh-chip-group::part(btn-link):hover,
-  rh-chip-group::part(btn-link):focus {
+  & rh-chip-group::part(btn-link):hover,
+  & rh-chip-group::part(btn-link):focus {
     outline-width: var(--rh-border-width-md, 2px);
   }
 
-  rh-chip-group::part(btn-link):focus {
+  & rh-chip-group::part(btn-link):focus {
     outline-offset: -1px;
   }
 
-  rh-chip::part(chip):after {
+  & rh-chip::part(chip):after {
     border-radius:
       calc(
           var(--felt-preview-border-radius-action-plain)
@@ -1851,7 +1800,7 @@
     outline-width: var(--felt-preview-border-width-lg);
   }
 
-  rh-chip-group::part(btn-link):after {
+  & rh-chip-group::part(btn-link):after {
     inset: -1px;
     width: auto;
     translate: none;
@@ -1860,27 +1809,23 @@
     border-radius: var(--felt-preview-border-radius-pill);
   }
 
-  rh-chip-group[size='sm'] rh-chip {
+  & rh-chip-group[size='sm'] rh-chip {
     --rh-icon-size: 12px;
   }
 
-  rh-chip-group[size='sm'] rh-chip::part(chip),
-  rh-chip-group[size='sm']::part(btn-link) {
+  & rh-chip-group[size='sm'] rh-chip::part(chip),
+  & rh-chip-group[size='sm']::part(btn-link) {
     padding-block: 0;
     margin-block-start: 0;
   }
-}
 
-/* Element: Badge */
-@layer badge {
-  rh-badge {
+  /* Element: Badge */
+  & rh-badge {
     --rh-border-radius-pill: var(--felt-preview-border-radius-pill);
   }
-}
 
-/* Element: Breadcrumb */
-@layer breadcrumb {
-  rh-breadcrumb {
+  /* Element: Breadcrumb */
+  & rh-breadcrumb {
     --rh-color-interactive-primary-default: var(--felt-preview-color-text-interactive-default);
     --rh-color-interactive-primary-hover: var(--felt-preview-color-text-interactive-hover);
     --rh-color-interactive-primary-visited-default:
@@ -1926,11 +1871,9 @@
       inline-size: 12px !important;
     }
   }
-}
 
-/* Element: Jump Links */
-@layer jump-links {
-  rh-jump-links {
+  /* Element: Jump Links */
+  & rh-jump-links {
     --rh-color-interactive-primary-default: var(--felt-preview-color-interactive-primary-default);
     --rh-color-interactive-secondary-default:
       light-dark(
@@ -1941,7 +1884,7 @@
     --rh-border-width-lg: var(--felt-preview-border-width-lg);
   }
 
-  rh-jump-link {
+  & rh-jump-link {
     --rh-color-brand-red: #ee0000;
     --rh-color-border-status-neutral: transparent;
     --rh-jump-link-indicator-border-radius: var(--felt-preview-border-radius-pill);
@@ -1981,7 +1924,7 @@
     inline-size: fit-content;
   }
 
-  rh-jump-link[active] {
+  & rh-jump-link[active] {
     --rh-jump-link-active-border:
       var(--felt-preview-border-width-lg)
       solid
@@ -1995,7 +1938,7 @@
         );
   }
 
-  rh-jump-links-list {
+  & rh-jump-links-list {
     /* Hide the list-level active indicator; only individual links show red */
     --rh-color-brand-red: transparent;
 
@@ -2007,18 +1950,18 @@
 
   /* Remove the -1px margin that the default theme uses to overlap
      the parent link border with the list container border */
-  rh-jump-links-list > rh-jump-link[slot] {
+  & rh-jump-links-list > rh-jump-link[slot] {
     margin-inline-start: 0;
   }
 
   /* Nested links: move indentation from <a> padding to host gap
      so the hover pill stays compact.
      Total inline-start: 3px border + 20px gap + 8px <a> padding = 31px */
-  rh-jump-links-list > rh-jump-link:not([slot]) {
+  & rh-jump-links-list > rh-jump-link:not([slot]) {
     --rh-jump-link-gap: calc(var(--felt-preview-space-lg) + var(--felt-preview-space-xs));
   }
 
-  rh-jump-links[orientation='horizontal'] rh-jump-link {
+  & rh-jump-links[orientation='horizontal'] rh-jump-link {
     --rh-jump-link-border: none;
     --rh-jump-link-gap: 0;
 
@@ -2026,8 +1969,8 @@
     inline-size: auto;
   }
 
-  rh-jump-links:not([orientation]),
-  rh-jump-links[orientation='vertical'] {
+  & rh-jump-links:not([orientation]),
+  & rh-jump-links[orientation='vertical'] {
     --rh-jump-link-item-padding-block: var(--felt-preview-space-sm);
     --rh-jump-link-item-padding-inline: var(--felt-preview-space-sm);
     --rh-jump-link-link-padding-block: var(--felt-preview-space-xs);
@@ -2040,7 +1983,7 @@
 
   /* Horizontal: hide shadow DOM top/bottom borders, draw top border
      on the host instead so it spans the full width with no bottom line */
-  rh-jump-links[orientation='horizontal'] {
+  & rh-jump-links[orientation='horizontal'] {
     --rh-color-border-subtle: transparent;
     --rh-jump-link-item-padding-block: var(--felt-preview-space-sm);
     --rh-jump-link-item-padding-inline: var(--felt-preview-space-sm);
@@ -2057,14 +2000,12 @@
   /* Horizontal active: no left border; pull the ::before indicator
      up by the host padding so it aligns with the gray top border,
      and extend it wider than the pill */
-  rh-jump-links[orientation='horizontal'] rh-jump-link[active] {
+  & rh-jump-links[orientation='horizontal'] rh-jump-link[active] {
     --rh-jump-link-active-border: none;
   }
-}
 
-/* Element: Menu / Menu Dropdown */
-@layer menu {
-  rh-menu-dropdown {
+  /* Element: Menu / Menu Dropdown */
+  & rh-menu-dropdown {
     --rh-color-interactive-primary-default: var(--felt-preview-color-interactive-primary-default);
     --rh-color-interactive-primary-hover: var(--felt-preview-color-interactive-primary-hover);
     --rh-border-radius-default: var(--felt-preview-border-radius-pill);
@@ -2113,13 +2054,13 @@
       light-dark(rgba(21, 21, 21, 0.25), rgba(0, 0, 0, 0.5));
   }
 
-  rh-menu {
+  & rh-menu {
     --rh-color-interactive-primary-default: var(--felt-preview-color-interactive-primary-default);
     --rh-color-interactive-primary-hover: var(--felt-preview-color-interactive-primary-hover);
     --rh-border-radius-default: var(--felt-preview-border-radius-menu);
   }
 
-  rh-menu-dropdown rh-menu-item {
+  & rh-menu-dropdown rh-menu-item {
     --rh-menu-item-border-radius: var(--felt-preview-border-radius-action-plain);
     --rh-border-radius-default: var(--felt-preview-border-radius-action-plain);
     --rh-menu-item-focus-inset: 0;
@@ -2145,7 +2086,7 @@
     }
   }
 
-  rh-menu-dropdown rh-menu-item[disabled] {
+  & rh-menu-dropdown rh-menu-item[disabled] {
     /* Light: gray-50 → gray-40 (#a3a3a3); Dark: gray-60 → gray-40 (#a3a3a3).
        gray-40 matches --felt-preview-color-text-status-disabled light value and
        reads clearly on the gray-70 panel in dark mode. */
@@ -2154,12 +2095,12 @@
   }
 
   /* Group headings */
-  rh-menu-dropdown rh-menu-item-group {
+  & rh-menu-dropdown rh-menu-item-group {
     --rh-font-weight-body-text-regular: 500;
   }
 
   /* Compact (icon-only toggle) */
-  rh-menu-dropdown[layout='compact'] {
+  & rh-menu-dropdown[layout='compact'] {
     /* 7. Border-radius: pill (base rh-menu-dropdown already sets pill; no override needed) */
 
     /* Compact default state: transparent bg (hover/focus states from element CSS take over) */
@@ -2175,11 +2116,9 @@
     --rh-menu-dropdown-compact-disabled-background: transparent;
     --rh-menu-dropdown-compact-disabled-icon-color: var(--felt-preview-color-icon-status-disabled);
   }
-}
 
-/* Element: Navigation Vertical (Left Navigation in PatternFly) */
-@layer navigation-vertical {
-  rh-navigation-vertical {
+  /* Element: Navigation Vertical (Left Navigation in PatternFly) */
+  & rh-navigation-vertical {
     --rh-border-width-lg: var(--felt-preview-border-width-lg);
     --rh-color-interactive-primary-default: var(--felt-preview-color-interactive-primary-default);
     --rh-border-radius-default: var(--felt-preview-border-radius-action-plain);
@@ -2217,6 +2156,7 @@
       --rh-navigation-link-border-inline-start-width: var(--felt-preview-border-width-lg);
     }
 
+    /* stylelint-disable-next-line no-descending-specificity */
     & rh-navigation-link,
     & rh-navigation-vertical-list {
       --rh-color-border-subtle: transparent;
@@ -2226,11 +2166,9 @@
       }
     }
   }
-}
 
-/* Element: Subnav (Horizontal Navigation in PatternFly) */
-@layer subnav {
-  rh-subnav {
+  /* Element: Subnav (Horizontal Navigation in PatternFly) */
+  & rh-subnav {
     --rh-navigation-link-font-size: var(--felt-preview-font-size-body-text-sm);
     --rh-navigation-link-border-radius: var(--felt-preview-border-radius-pill);
     /* stylelint-disable @stylistic/declaration-colon-newline-after, @stylistic/max-line-length */
@@ -2257,6 +2195,7 @@
       padding: 0 var(--felt-preview-space-xs);
     }
 
+    /* stylelint-disable-next-line no-descending-specificity */
     & rh-navigation-link {
       row-gap: calc(var(--felt-preview-space-xs) / 2);
 
