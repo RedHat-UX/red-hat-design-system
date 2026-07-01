@@ -66,6 +66,17 @@ export class TabExpandEvent extends Event {
  * @csspart icon - container for the icon slot
  * @csspart text - container for the default (text) slot
  *
+ * @cssprop {<length>} [--rh-tabs-link-inner-radius=0] - Border radius of the inner pill wrapper
+ * @cssprop {<length>+} [--rh-tabs-link-inner-padding=0] - Padding inside the inner pill wrapper
+ * @cssprop {<string>} [--rh-tabs-link-inner-justify=initial] - Justify-content for the inner pill wrapper
+ * @cssprop {<color>} [--rh-tabs-link-hover-background=transparent] - Background color of the inner pill on hover
+ * @cssprop {<color>} [--rh-tabs-link-focus-background=transparent] - Background color of the inner pill on focus
+ * @cssprop [--rh-tabs-link-focus-outline] - Outline shorthand for the button on focus
+ * @cssprop {<length>} [--rh-tabs-link-focus-outline-offset=-3px] - Outline offset for the button on focus
+ * @cssprop [--rh-tabs-link-focus-inner-outline=none] - Outline shorthand for the inner pill on focus
+ * @cssprop {<length>} [--rh-tabs-link-focus-inner-outline-offset=0] - Outline offset for the inner pill on focus
+ * @cssprop {<color>} [--rh-tabs-box-border-color] - Side border color for box-style tabs; defaults to `--rh-color-border-subtle`
+ *
  */
 @customElement('rh-tab')
 @themable
@@ -139,11 +150,18 @@ export class RhTab extends LitElement {
            ?disabled="${this.disabled}"
            class="${classMap({ active, box, vertical, first, last })}">
         <div id="wrapper">
+          <!-- summary: Icon
+               description: |
+                 Can contain an \`<svg>\` or \`<rh-icon>\` element
+                 displayed before the tab label text. -->
           <slot name="icon"
                 part="icon">
             <rh-icon ?hidden="${!this.icon}" icon="${ifDefined(this.icon)}" set="${ifDefined(this.iconSet)}"></rh-icon>
           </slot>
-          <!-- Tab title text -->
+          <!-- summary: Tab label
+               description: |
+                 Tab label text. Authors should keep labels short
+                 and descriptive. -->
           <slot part="text"></slot>
         </div>
       </div>

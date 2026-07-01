@@ -153,6 +153,7 @@ rh-icon,
       background-color: transparent;
 
       &:before {
+        /** Box tab side border color */
         border-inline-color: var(--rh-tabs-box-border-color, var(--rh-color-border-subtle));
         border-inline-start-width: var(--rh-border-width-sm, 1px);
       }
@@ -445,8 +446,14 @@ rh-icon,
   display: flex;
   gap: var(--rh-space-md, 8px);
   align-items: center;
+
+  /** Inner pill border radius */
   border-radius: var(--rh-tabs-link-inner-radius, 0);
+
+  /** Inner pill padding */
   padding: var(--rh-tabs-link-inner-padding, 0);
+
+  /** Inner pill content alignment */
   justify-content: var(--rh-tabs-link-inner-justify, initial);
 }
 
@@ -454,20 +461,29 @@ rh-icon,
   outline: none;
 
   & #button {
+    /** Focus outline on the outer button */
     outline:
       var(--rh-tabs-link-focus-outline,
         1px auto var(--rh-color-interactive-primary-default));
+
+    /** Focus outline offset on the outer button */
     outline-offset: var(--rh-tabs-link-focus-outline-offset, -3px);
   }
 
   & #wrapper {
+    /** Focus background on the inner pill */
     background-color: var(--rh-tabs-link-focus-background, transparent);
+
+    /** Focus outline on the inner pill */
     outline: var(--rh-tabs-link-focus-inner-outline, none);
+
+    /** Focus outline offset on the inner pill */
     outline-offset: var(--rh-tabs-link-focus-inner-outline-offset, 0);
   }
 }
 
 :host(:hover:not([disabled], [aria-disabled='true'])) #button:not(.active) #wrapper {
+  /** Hover background on the inner pill */
   background-color: var(--rh-tabs-link-hover-background, transparent);
 }
 /* stylelint-enable rhds/no-unknown-token-name */
