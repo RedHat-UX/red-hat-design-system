@@ -30,6 +30,170 @@ subnav:
   import '@rhds/elements/rh-tabs/rh-tabs.js';
   import '@rhds/elements/rh-tag/rh-tag.js';
 </script>
+<script type="module" data-helmet>
+  /**
+   * Tabs bridge patch (remove when feat/tabs-unified-updates merges)
+   *
+   * The feat branch adds #wrapper to rh-tab and .overflow-icon to rh-tabs.
+   * This patch injects both the structural HTML and CSS into shadow roots
+   * to replicate that behavior until the feat branch merges.
+   */
+
+  /* ── rh-tab: CSS for #wrapper and focus/hover ─────────── */
+  const tabPatch = new CSSStyleSheet();
+  tabPatch.replaceSync(/*css*/`
+    #button {
+      gap: 0;
+    }
+
+    #wrapper {
+      display: flex;
+      gap: var(--rh-space-md, 8px);
+      align-items: center;
+      border-radius: var(--rh-tabs-link-inner-radius, 0);
+      padding: var(--rh-tabs-link-inner-padding, 0);
+      justify-content: var(--rh-tabs-link-inner-justify, initial);
+    }
+
+    #button.box:not(.active):before {
+      border-inline-color:
+        var(--rh-tabs-box-border-color, var(--rh-color-border-subtle));
+    }
+
+    #button.box.active:before {
+      border-inline-color:
+        var(--rh-tabs-box-border-color, var(--rh-color-border-subtle));
+    }
+
+    #button.box.first.active:before {
+      border-inline-start-color:
+        var(--rh-tabs-box-border-color, var(--rh-color-border-subtle));
+    }
+
+    #button.box.last.active:before {
+      border-inline-end-color:
+        var(--rh-tabs-box-border-color, var(--rh-color-border-subtle));
+    }
+
+    :host(:is(:focus-visible)) #button {
+      outline: var(--rh-tabs-link-focus-outline,
+        1px auto var(--rh-color-interactive-primary-default));
+      outline-offset: -3px;
+    }
+
+    :host(:is(:focus-visible)) #wrapper {
+      background-color:
+        var(--rh-tabs-link-focus-background, transparent);
+      outline: var(--rh-tabs-link-focus-inner-outline, none);
+      outline-offset: 0;
+    }
+
+    :host(:hover:not([disabled], [aria-disabled='true']))
+      #button:not(.active) #wrapper {
+      background-color:
+        var(--rh-tabs-link-hover-background, transparent);
+    }
+  `);
+
+  /* ── rh-tabs: CSS for overflow buttons + .overflow-icon ── */
+  const tabsPatch = new CSSStyleSheet();
+  tabsPatch.replaceSync(/*css*/`
+    :is(#previous-tab, #next-tab) {
+      padding-block:
+        var(--rh-tabs-overflow-button-padding-block, 0);
+      padding-inline:
+        var(--rh-tabs-overflow-button-padding-inline,
+          var(--rh-space-lg, 16px));
+      border-radius: var(--rh-tabs-overflow-button-radius, 0);
+      min-width: var(--rh-tabs-overflow-button-min-size, auto);
+    }
+
+    :is(#previous-tab, #next-tab):before {
+      border-block-end-color:
+        var(--rh-tabs-overflow-border-color,
+          var(--rh-color-border-subtle));
+      border-inline-color:
+        var(--rh-tabs-overflow-border-color,
+          var(--rh-color-border-subtle));
+    }
+
+    :is(#previous-tab, #next-tab):hover:before {
+      border-block-end:
+        var(--rh-tabs-overflow-hover-indicator,
+          var(--rh-border-width-lg, 3px) solid
+            var(--rh-color-border-subtle));
+    }
+
+    :is(#previous-tab, #next-tab):focus {
+      outline: none;
+    }
+
+    .overflow-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: var(--rh-tabs-overflow-icon-size, auto);
+      height: var(--rh-tabs-overflow-icon-size, auto);
+      border-radius: var(--rh-tabs-overflow-icon-radius, 0);
+    }
+
+    :is(#previous-tab, #next-tab):hover .overflow-icon {
+      background-color:
+        var(--rh-tabs-overflow-hover-background, transparent);
+    }
+
+    :is(#previous-tab, #next-tab):focus .overflow-icon {
+      background-color:
+        var(--rh-tabs-overflow-focus-background, transparent);
+      outline: var(--rh-tabs-overflow-focus-outline, none);
+      outline-offset:
+        var(--rh-tabs-overflow-focus-outline-offset, 0);
+    }
+  `);
+
+  /* ── Inject structure + styles ───────────────────────────── */
+  for (const pattern of document.querySelectorAll('uxdot-pattern')) {
+    /* rh-tab: inject #wrapper around icon + text slots */
+    for (const tab of pattern.shadowRoot.querySelectorAll('rh-tab')) {
+      const root = tab.shadowRoot;
+      const button = root.querySelector('#button');
+      if (button && !root.querySelector('#wrapper')) {
+        const wrapper = document.createElement('div');
+        wrapper.id = 'wrapper';
+        wrapper.setAttribute('part', 'wrapper');
+        while (button.firstChild) {
+          wrapper.appendChild(button.firstChild);
+        }
+        button.appendChild(wrapper);
+      }
+      root.adoptedStyleSheets = [...root.adoptedStyleSheets, tabPatch];
+    }
+
+    /* rh-tabs: inject .overflow-icon spans around rh-icon.
+       Overflow buttons render conditionally after layout measurement,
+       so we observe the shadow root for their appearance. */
+    for (const tabs of pattern.shadowRoot.querySelectorAll('rh-tabs')) {
+      const root = tabs.shadowRoot;
+      root.adoptedStyleSheets = [...root.adoptedStyleSheets, tabsPatch];
+
+      function patchOverflowButtons() {
+        for (const btn of root.querySelectorAll('#previous-tab, #next-tab')) {
+          const icon = btn.querySelector('rh-icon');
+          if (icon && !btn.querySelector('.overflow-icon')) {
+            const span = document.createElement('span');
+            span.className = 'overflow-icon';
+            btn.replaceChild(span, icon);
+            span.appendChild(icon);
+          }
+        }
+      }
+
+      patchOverflowButtons();
+      new MutationObserver(patchOverflowButtons)
+        .observe(root, { childList: true, subtree: true });
+    }
+  }
+</script>
 <style>
   #unified-theme-toggle {
     margin-block-end: var(--rh-space-2xl, 32px);

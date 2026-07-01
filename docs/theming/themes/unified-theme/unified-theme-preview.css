@@ -1674,25 +1674,25 @@
     --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
 
     /* Overflow buttons: square sizing, hide bottom-border indicator */
-    --_overflow-button-padding-block: var(--unified-space-md);
-    --_overflow-button-padding-inline: var(--unified-space-md);
-    --_overflow-button-min-size: 56px;
-    --_overflow-hover-indicator:
+    --rh-tabs-overflow-button-padding-block: var(--unified-space-md);
+    --rh-tabs-overflow-button-padding-inline: var(--unified-space-md);
+    --rh-tabs-overflow-button-min-size: 56px;
+    --rh-tabs-overflow-hover-indicator:
       var(--unified-border-width-sm)
       solid
       var(--unified-color-border-interactive-subtle-default);
 
     /* Overflow icon wrapper: inset circular pill hover/focus.
        32px = 16px icon + 8px padding on each side. */
-    --_overflow-icon-size: 32px;
-    --_overflow-icon-radius: var(--unified-border-radius-pill);
-    --_overflow-hover-bg: var(--unified-color-interactive-fill-plain-hover);
-    --_overflow-focus-bg: var(--unified-color-interactive-fill-plain-focus);
-    --_overflow-focus-outline:
+    --rh-tabs-overflow-icon-size: 32px;
+    --rh-tabs-overflow-icon-radius: var(--unified-border-radius-pill);
+    --rh-tabs-overflow-hover-background: var(--unified-color-interactive-fill-plain-hover);
+    --rh-tabs-overflow-focus-background: var(--unified-color-interactive-fill-plain-focus);
+    --rh-tabs-overflow-focus-outline:
       var(--unified-border-width-lg)
       solid
       var(--unified-color-border-interactive-default);
-    --_overflow-focus-outline-offset: 3px;
+    --rh-tabs-overflow-focus-outline-offset: 3px;
   }
 
   /* ── rh-tabs vertical: adjust first/last tab margin ──── */
@@ -1714,22 +1714,22 @@
     --rh-tabs-link-padding-inline-end: var(--unified-space-lg);
 
     /* Activate the inner pill wrapper */
-    --_tab-wrapper-radius: var(--unified-border-radius-pill);
-    --_tab-wrapper-padding: var(--unified-space-md) var(--unified-space-lg);
-    --_tab-wrapper-justify: center;
+    --rh-tabs-link-inner-radius: var(--unified-border-radius-pill);
+    --rh-tabs-link-inner-padding: var(--unified-space-md) var(--unified-space-lg);
+    --rh-tabs-link-inner-justify: center;
 
     /* Hover: pill fill, remove default bottom-border indicator */
-    --_tab-hover-background: var(--unified-color-interactive-fill-plain-hover);
+    --rh-tabs-link-hover-background: var(--unified-color-interactive-fill-plain-hover);
     --rh-color-interactive-secondary-default: transparent;
 
     /* Focus: pill fill + pill-shaped outline ring,
        hide the default rectangular button outline */
-    --_tab-focus-background: var(--unified-color-interactive-fill-plain-focus);
-    --_tab-focus-wrapper-outline:
+    --rh-tabs-link-focus-background: var(--unified-color-interactive-fill-plain-focus);
+    --rh-tabs-link-focus-inner-outline:
       var(--unified-border-width-lg)
       solid
       var(--unified-color-border-interactive-default);
-    --_tab-focus-button-outline: none;
+    --rh-tabs-link-focus-outline: none;
   }
 
   /* ── disabled tab: text and icon use disabled tokens ── */
@@ -1765,7 +1765,7 @@
 
   /* ── horizontal box: remove side divider borders ────── */
   rh-tabs:not([vertical]) {
-    --rh-tabs-box-side-border-color: transparent;
+    --rh-tabs-box-border-color: transparent;
   }
 }
 
