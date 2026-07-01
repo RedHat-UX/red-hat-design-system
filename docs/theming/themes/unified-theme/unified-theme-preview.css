@@ -2228,11 +2228,52 @@
 /* Element: Subnav (Horizontal Navigation in PatternFly) */
 @layer subnav {
   rh-subnav {
-    --rh-color-accent-brand: var(--unified-color-brand-accent);
-    --rh-color-brand-red: var(--unified-color-brand-accent);
-    --rh-color-border-interactive: var(--unified-color-interactive-primary-default);
-    --rh-border-width-lg: var(--unified-border-width-lg);
-    --rh-border-width-md: var(--unified-border-width-md);
-    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+    --rh-navigation-link-font-size: var(--unified-font-size-body-text-sm);
+    --rh-navigation-link-border-radius: var(--unified-border-radius-pill);
+    /* stylelint-disable @stylistic/declaration-colon-newline-after, @stylistic/max-line-length */
+    --rh-navigation-link-hover-background-color: var(--unified-color-interactive-fill-plain-alt-hover);
+    --rh-navigation-link-indicator-border-radius: var(--unified-border-radius-pill);
+    --rh-navigation-link-white-space: nowrap;
+    --rh-subnav-indicator-inset: auto 0 0 0;
+    --rh-subnav-link-padding-block: 4px;
+    --rh-subnav-link-padding-inline: 16px;
+    --rh-subnav-scroll-buttons-border-block-end: none;
+    --rh-subnav-scroll-buttons-padding: var(--unified-space-md);
+
+    background-color: light-dark(var(--unified-color-gray-10), var(--unified-color-gray-95));
+    border-radius: var(--unified-border-radius-pill);
+    padding-inline: var(--unified-space-md);
+
+    &::part(container) {
+      padding: var(--unified-space-xs) 0 0 0;
+    }
+
+    &::part(links) {
+      display: flex;
+      gap: var(--unified-space-xs);
+      padding: 0 var(--unified-space-xs);
+    }
+
+    & rh-navigation-link {
+      row-gap: calc(var(--unified-space-xs) / 2);
+
+      &:is(:focus-within) {
+        --rh-navigation-link-hover-background-color: var(--unified-color-interactive-fill-plain-alt-hover);
+      }
+
+      &:hover:not([current-page]) {
+        &:after {
+          display: none;
+        }
+      }
+
+      &[current-page] {
+        --rh-navigation-link-background-color: var(--unified-color-interactive-fill-plain-alt-hover);
+
+        &:after {
+          border-radius: var(--unified-border-radius-pill);
+        }
+      }
+    }
   }
 }
