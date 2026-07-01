@@ -46,9 +46,6 @@ rh-icon,
   position: relative;
   display: flex;
   flex: 1;
-
-  /** Gap between icon and label using rh-space-md */
-  gap: var(--rh-space-md, 8px);
   text-decoration: none;
   cursor: pointer;
   align-items: center;
@@ -156,7 +153,8 @@ rh-icon,
       background-color: transparent;
 
       &:before {
-        border-inline-color: var(--rh-color-border-subtle);
+        /** Box tab side border color */
+        border-inline-color: var(--rh-tabs-box-border-color, var(--rh-color-border-subtle));
         border-inline-start-width: var(--rh-border-width-sm, 1px);
       }
 
@@ -167,14 +165,18 @@ rh-icon,
 
       &.first {
         &:before {
-          border-inline-start-color: var(--rh-color-border-subtle);
+          border-inline-start-color:
+            var(--rh-tabs-box-border-color,
+              var(--rh-color-border-subtle));
           border-inline-start-width: var(--rh-border-width-sm, 1px);
         }
       }
 
       &.last {
         &:before {
-          border-inline-end-color: var(--rh-color-border-subtle);
+          border-inline-end-color:
+            var(--rh-tabs-box-border-color,
+              var(--rh-color-border-subtle));
           border-inline-end-width: var(--rh-border-width-sm, 1px);
         }
       }
@@ -224,7 +226,9 @@ rh-icon,
         &.first {
           @container (min-width: 768px) {
             &:before {
-              border-inline-start-color: var(--rh-color-border-subtle);
+              border-inline-start-color:
+                var(--rh-tabs-box-border-color,
+                  var(--rh-color-border-subtle));
               border-inline-start-width: var(--rh-border-width-sm, 1px);
             }
           }
@@ -233,7 +237,9 @@ rh-icon,
         &.last {
           @container (min-width: 768px) {
             &:before {
-              border-inline-end-color: var(--rh-color-border-subtle);
+              border-inline-end-color:
+                var(--rh-tabs-box-border-color,
+                  var(--rh-color-border-subtle));
               border-inline-end-width: var(--rh-border-width-sm, 1px);
             }
           }
@@ -279,8 +285,7 @@ rh-icon,
   &:not(.active) {
     &.box {
       &:before {
-        /** Inactive box tab side border color */
-        border-inline-color: var(--rh-color-border-subtle);
+        border-inline-color: var(--rh-tabs-box-border-color, var(--rh-color-border-subtle));
 
         /** Inactive box tab side border width */
         border-inline-start-width: var(--rh-border-width-sm, 1px);
@@ -309,14 +314,12 @@ rh-icon,
               /** Vertical box tab trailing border width above sm breakpoint */
               var(--rh-border-width-sm, 1px)
               solid
-              /** Vertical box tab trailing border color above sm breakpoint */
-              var(--rh-color-border-subtle);
+              var(--rh-tabs-box-border-color, var(--rh-color-border-subtle));
             border-block-start:
               /** Vertical box tab top border width above sm breakpoint */
               var(--rh-border-width-sm, 1px)
               solid
-              /** Vertical box tab top border color above sm breakpoint */
-              var(--rh-color-border-subtle);
+              var(--rh-tabs-box-border-color, var(--rh-color-border-subtle));
           }
 
           &:after {
@@ -437,6 +440,52 @@ rh-icon,
   }
 }
 
+/* Inner wrapper for pill-shaped hover/focus backgrounds (unified theme) */
+/* stylelint-disable rhds/no-unknown-token-name -- new component tokens, not yet in registry */
+#wrapper {
+  display: flex;
+  gap: var(--rh-space-md, 8px);
+  align-items: center;
+
+  /** Inner pill border radius */
+  border-radius: var(--rh-tabs-link-inner-radius, 0);
+
+  /** Inner pill padding */
+  padding: var(--rh-tabs-link-inner-padding, 0);
+
+  /** Inner pill content alignment */
+  justify-content: var(--rh-tabs-link-inner-justify, initial);
+}
+
+:host(:is(:focus-visible)) {
+  outline: none;
+
+  & #button {
+    border-radius: var(--rh-border-radius-default, 3px);
+    outline:
+      var(--rh-tabs-link-focus-outline,
+        var(--rh-border-width-lg, 3px) solid var(--rh-color-interactive-primary-default));
+    outline-offset: var(--rh-tabs-link-focus-outline-offset, -7px);
+  }
+
+  & #wrapper {
+    /** Focus background on the inner pill */
+    background-color: var(--rh-tabs-link-focus-background, transparent);
+
+    /** Focus outline on the inner pill */
+    outline: var(--rh-tabs-link-focus-inner-outline, none);
+
+    /** Focus outline offset on the inner pill */
+    outline-offset: var(--rh-tabs-link-focus-inner-outline-offset, 0);
+  }
+}
+
+:host(:hover:not([disabled], [aria-disabled='true'])) #button:not(.active) #wrapper {
+  /** Hover background on the inner pill */
+  background-color: var(--rh-tabs-link-hover-background, transparent);
+}
+/* stylelint-enable rhds/no-unknown-token-name */
+
 :host(:disabled) {
   & #button {
     pointer-events: none;
@@ -446,16 +495,5 @@ rh-icon,
 :host([aria-disabled='true']) {
   & #button {
     cursor: default;
-  }
-}
-
-:host(:is(:focus-visible)) {
-  outline: none;
-
-  & #button {
-    /** Focus outline, adapts to color-palette */
-    border-radius: var(--rh-border-radius-default, 3px);
-    outline: var(--rh-border-width-lg, 3px) solid var(--rh-color-interactive-primary-default);
-    outline-offset: -7px;
   }
 }
