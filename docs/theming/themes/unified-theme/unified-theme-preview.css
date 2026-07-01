@@ -823,7 +823,9 @@
         display: flex;
         justify-content: center;
         padding: var(--felt-preview-button-padding-block);
+        /* stylelint-disable-next-line @stylistic/max-line-length */
         height: calc(var(--felt-preview-button-font-size) * var(--felt-preview-line-height-body-text));
+        /* stylelint-disable-next-line @stylistic/max-line-length */
         width: calc(var(--felt-preview-button-font-size) * var(--felt-preview-line-height-body-text));
       }
 
@@ -940,6 +942,7 @@
         );
     --felt-preview-cta-text-underline-offset: 4px;
     --felt-preview-cta-text-decoration-color: currentcolor;
+    /* stylelint-disable-next-line @stylistic/max-line-length */
     --felt-preview-cta-text-decoration: underline dashed 1px var(--felt-preview-cta-text-decoration-color);
     --felt-preview-cta-primary-bg-default: #ee0000;
     --felt-preview-cta-primary-bg-hover: #a60000;
@@ -2073,11 +2076,12 @@
     /* 2. Padding-block 8px (toggle uses --rh-space-sm for block padding) */
     --rh-space-sm: var(--felt-preview-space-md);
 
-    /* 3. Per-state interactive border colors (consumed by shadow DOM patch in unified.md) */
+    /* stylelint-disable @stylistic/max-line-length */
     --rh-menu-dropdown-hover-border-color: var(--felt-preview-color-border-interactive-subtle-hover);
     --rh-menu-dropdown-active-border-color: var(--felt-preview-color-border-interactive-subtle-active);
     --rh-menu-dropdown-focus-border-color: var(--felt-preview-color-border-interactive-subtle-focus);
     --rh-menu-dropdown-open-border-color: var(--felt-preview-color-border-interactive-subtle-hover);
+    /* stylelint-enable @stylistic/max-line-length */
 
     /* 4. Disabled: remove border to match PF docs */
     --rh-menu-dropdown-disabled-box-shadow: none;

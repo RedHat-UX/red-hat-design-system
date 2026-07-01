@@ -43,6 +43,7 @@ export default function inlineCssPlugin(
       const fullPath = path.resolve(base, filename);
 
       if (!fullPath.startsWith(base + path.sep) && fullPath !== base) {
+        // eslint-disable-next-line no-console
         console.error(`[eleventy-plugin-inline-css] Path traversal blocked: ${filename}`);
         callback(null, '');
         return;
