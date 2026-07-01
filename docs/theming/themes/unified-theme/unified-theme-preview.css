@@ -2078,9 +2078,11 @@
     --rh-navigation-link-border-radius: var(--unified-border-radius-pill);
     --rh-navigation-link-inset-inline-start: calc(var(--unified-space-md) * -1);
     --rh-navigation-vertical-list-nested-margin-inline: var(--unified-space-lg) 0;
-    --rh-navigation-vertical-list-nested-margin-block:
-      var(--unified-space-md)
-      var(--unified-space-md);
+    --rh-navigation-vertical-list-nested-margin-block: var(--unified-space-md);
+    --rh-navigation-vertical-list-summary-background-color: transparent;
+    --rh-navigation-vertical-list-summary-hover-background-color: var(--unified-color-interactive-fill-plain-alt-hover);
+    --rh-navigation-link-hover-background-color: var(--unified-color-interactive-fill-plain-alt-hover);
+    --rh-navigation-link-indicator-border-radius: var(--unified-border-radius-pill);
 
     padding-inline-start: var(--unified-space-md);
     background:
@@ -2092,7 +2094,8 @@
       display: block;
 
       &[current-page] {
-        background-color: var(--unified-color-interactive-fill-plain-alt-hover);
+        --rh-navigation-link-background-color: var(--unified-color-interactive-fill-plain-alt-hover);
+
         border-radius: var(--unified-border-radius-pill);
       }
     }
@@ -2107,15 +2110,8 @@
       --rh-color-border-subtle: transparent;
 
       &:hover {
-        --rh-color-surface-lighter: var(--unified-color-interactive-fill-plain-alt-hover);
-
         border-radius: var(--unified-border-radius-pill);
       }
-    }
-
-    & rh-navigation-vertical-list:active:not(:has(:active)) {
-      /* stylelint-disable-next-line @stylistic/max-line-length */
-      --rh-navigation-vertical-list-summary-background: var(--unified-color-interactive-fill-plain-alt-hover);
     }
   }
 }
