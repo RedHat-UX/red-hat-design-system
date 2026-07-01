@@ -42,6 +42,21 @@ subnav:
    */
   const menuPatch = new CSSStyleSheet();
   menuPatch.replaceSync(/*css*/`
+    /* 9. Panel background and shadow.
+          --rh-menu-dropdown-panel-background: background token (light-dark <color> is valid).
+          --rh-menu-dropdown-panel-box-shadow: geometry is fixed; only the color
+          component uses light-dark(), which is the only valid use of light-dark()
+          inside a box-shadow value. */
+    #menu-list {
+      background: var(--rh-menu-dropdown-panel-background,
+        light-dark(
+          var(--rh-color-surface-lightest, #ffffff),
+          var(--rh-color-surface-darkest, #151515)
+        ));
+      box-shadow: var(--rh-menu-dropdown-panel-box-shadow,
+        0 4px 6px 1px rgba(21, 21, 21, 0.25));
+    }
+
     /* 5. Toggle background: white in light, gray-70 in dark (all non-disabled states).
           .disabled has higher specificity (0-2-0 vs 0-1-0) so it overrides this safely. */
     #menu-toggle {
