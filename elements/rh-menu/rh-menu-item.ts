@@ -19,10 +19,6 @@ import styles from './rh-menu-item.css' with { type: 'css' };
  * @summary A single action or link within a menu
  *
  * @alias Menu Dropdown Item
- *
- * @cssprop {<length>} [--rh-menu-item-border-radius=0] - Item corner rounding
- * @cssprop [--rh-menu-item-focus-inset=3px 4px] - Focus ring inset offset
- *
  */
 @customElement('rh-menu-item')
 export class RhMenuItem extends LitElement {
