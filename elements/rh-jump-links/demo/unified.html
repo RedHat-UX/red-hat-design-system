@@ -1618,20 +1618,20 @@ description: Horizontal jump links layout with overflow scroll buttons.
 
   rh-jump-links:not([orientation]),
   rh-jump-links[orientation='vertical'] {
-    --rh-jump-link-container-padding-block: var(--unified-space-sm);
-    --rh-jump-link-container-padding-inline: var(--unified-space-sm);
-    --rh-jump-link-href-padding-block: var(--unified-space-xs);
-    --rh-jump-link-href-padding-inline: var(--unified-space-md);
+    --rh-jump-link-item-padding-block: var(--unified-space-sm);
+    --rh-jump-link-item-padding-inline: var(--unified-space-sm);
+    --rh-jump-link-link-padding-block: var(--unified-space-xs);
+    --rh-jump-link-link-padding-inline: var(--unified-space-md);
   }
 
   /* Horizontal: hide shadow DOM top/bottom borders, draw top border
      on the host instead so it spans the full width with no bottom line */
   rh-jump-links[orientation='horizontal'] {
     --rh-color-border-subtle: transparent;
-    --rh-jump-link-container-padding-block: var(--unified-space-sm);
-    --rh-jump-link-container-padding-inline: var(--unified-space-sm);
-    --rh-jump-link-href-padding-block: var(--unified-space-xs);
-    --rh-jump-link-href-padding-inline: var(--unified-space-md);
+    --rh-jump-link-item-padding-block: var(--unified-space-sm);
+    --rh-jump-link-item-padding-inline: var(--unified-space-sm);
+    --rh-jump-link-link-padding-block: var(--unified-space-xs);
+    --rh-jump-link-link-padding-inline: var(--unified-space-md);
 
     justify-content: start;
     border-block-start:

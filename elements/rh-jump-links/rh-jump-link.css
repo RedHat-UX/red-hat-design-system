@@ -3,7 +3,19 @@
   position: relative;
   width: 100%;
 
-  /** Border shorthand for the track line on the component root. */
+  /** Jump link item block padding */
+  --_item-padding-block: var(--rh-jump-link-item-padding-block, 0);
+
+  /** Jump link item inline padding */
+  --_item-padding-inline: var(--rh-jump-link-item-padding-inline, 0);
+
+  /** Jump link block padding */
+  --_link-padding-block: var(--rh-jump-link-link-padding-block);
+
+  /** Jump link inline padding */
+  --_link-padding-inline: var(--rh-jump-link-link-padding-inline);
+
+  /** Border shorthand for the track line on the component root */
   border-inline-start: var(--rh-jump-link-border, none);
 }
 
@@ -54,45 +66,51 @@ a {
     display: block;
     position: absolute;
     inset: 0;
+
+    /** Active indicator border radius */
     border-radius: var(--rh-jump-link-indicator-border-radius, 0);
     background-color: transparent;
   }
 
   &.vertical {
-    /** Jump link vertical container padding */
-    padding-block: var(--rh-jump-link-container-padding-block, 0);
-    padding-inline: var(--rh-jump-link-container-padding-inline, 0);
+    padding-block: var(--_item-padding-block);
+    padding-inline: var(--_item-padding-inline);
 
-    /** Border shorthand for the inner link element. Override to `none` to disable. */
+    /** Border shorthand for the inner link element */
     border-inline-start: var(--rh-jump-link-link-border, var(--_bdr));
 
     & a {
-      /** max-width for each vertical jump link */
+      /** Maximum width for each vertical jump link */
       max-width: var(--rh-jump-link-max-width, calc(var(--rh-length-md, 8px) * 40));
       min-width: max-content;
-
-      /** Jump link vertical link padding */
-      padding-block: var(--rh-jump-link-href-padding-block, var(--rh-space-md, 8px));
+      padding-block:
+        var(--_link-padding-block,
+          /** Vertical link block padding */
+          var(--rh-space-md, 8px));
       padding-inline:
-        var(--rh-jump-link-href-padding-inline,
-          /** Jump link vertical inline-start padding */
-          calc(var(--rh-space-lg, 16px) + var(--_padding-inline-start, 0px))
-          /** Jump link vertical inline-end padding */
-          var(--rh-space-lg, 16px));
+        var(--_link-padding-inline,
+          calc(
+            /** Vertical link inline-start padding */
+            var(--rh-space-lg, 16px) + var(--_padding-inline-start, 0px))
+            /** Vertical link inline-end padding */
+            var(--rh-space-lg, 16px));
     }
   }
 
   &.horizontal {
-    /** Jump link container padding */
-    padding-block: var(--rh-jump-link-container-padding-block, 0);
-    padding-inline: var(--rh-jump-link-container-padding-inline, 0);
+    padding-block: var(--_item-padding-block);
+    padding-inline: var(--_item-padding-inline);
 
     & a {
       white-space: nowrap;
-
-      /** Jump link href padding */
-      padding-block: var(--rh-jump-link-href-padding-block, var(--rh-space-lg, 16px));
-      padding-inline: var(--rh-jump-link-href-padding-inline, var(--rh-space-lg, 16px));
+      padding-block:
+        var(--_link-padding-block,
+          /** Horizontal link block padding */
+          var(--rh-space-lg, 16px));
+      padding-inline:
+        var(--_link-padding-inline,
+          /** Horizontal link inline padding */
+          var(--rh-space-lg, 16px));
     }
   }
 
