@@ -54,18 +54,19 @@ export class RhJumpLink extends LitElement {
   render(): TemplateResult<1> {
     const { active, orientation = 'vertical' } = this;
     return html`
-      <a class="${classMap({ active, [orientation]: true })}"
-         aria-current="${ifDefined(this.active ? 'location' : undefined)}"
-         href="${ifDefined(this.href)}"
-         @click="${this.#onClick}">
-        <!-- summary: link label text (default slot)
-             description: |
-               Text content for this jump link. Serves as the accessible
-               name for the internal anchor element, so it should match
-               or closely reflect the target section heading (per WCAG
-               2.4.6 Headings and Labels). Keep text concise. -->
-        <slot></slot>
-      </a>
+      <div id="container" class="${classMap({ active, [orientation]: true })}">
+        <a aria-current="${ifDefined(this.active ? 'location' : undefined)}"
+          href="${ifDefined(this.href)}"
+          @click="${this.#onClick}">
+          <!-- summary: link label text (default slot)
+              description: |
+                Text content for this jump link. Serves as the accessible
+                name for the internal anchor element, so it should match
+                or closely reflect the target section heading (per WCAG
+                2.4.6 Headings and Labels). Keep text concise. -->
+          <slot></slot>
+        </a>
+      </div>
     `;
   }
 

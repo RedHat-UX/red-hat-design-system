@@ -8,6 +8,7 @@
   :host {
     /* Fonts/Type */
     --unified-font-size-body-text-sm: 14px;
+    --unified-font-size-body-text-md: 16px;
     --unified-line-height-body-text: 1.5;
     --unified-line-height-body-text-md: 1.5rem;
 
@@ -141,6 +142,7 @@
       var(
           --unified-color-interactive-fill-plain-active
         );
+    --unified-color-interactive-fill-plain-alt-hover: light-dark(#ffffff, #292929);
     --unified-color-text-interactive-default:
       light-dark(
           var(--unified-color-blue-50),
@@ -2069,35 +2071,50 @@
 /* Element: Navigation Vertical (Left Navigation in PatternFly) */
 @layer navigation-vertical {
   rh-navigation-vertical {
-    --rh-color-brand-red: var(--unified-color-brand-accent);
     --rh-border-width-lg: var(--unified-border-width-lg);
     --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
     --rh-border-radius-default: var(--unified-border-radius-action-plain);
+    --rh-navigation-vertical-list-summary-border-radius: var(--unified-border-radius-pill);
+    --rh-navigation-link-border-radius: var(--unified-border-radius-pill);
+    --rh-navigation-link-inset-inline-start: calc(var(--unified-space-md) * -1);
+    --rh-navigation-vertical-list-nested-margin-inline: var(--unified-space-lg) 0;
+    --rh-navigation-vertical-list-nested-margin-block: var(--unified-space-md);
+    --rh-navigation-vertical-list-summary-background-color: transparent;
+    /* stylelint-disable @stylistic/max-line-length */
+    --rh-navigation-vertical-list-summary-hover-background-color: var(--unified-color-interactive-fill-plain-alt-hover);
+    --rh-navigation-link-hover-background-color: var(--unified-color-interactive-fill-plain-alt-hover);
+    /* stylelint-enable @stylistic/max-line-length */
+    --rh-navigation-link-indicator-border-radius: var(--unified-border-radius-pill);
 
-    & rh-navigation-link,
-    & rh-navigation-vertical-list {
+    padding-inline-start: var(--unified-space-md);
+    background:
+      light-dark(var(--unified-color-gray-10),
+        var(--unified-color-gray-95)
+      );
+
+    & rh-navigation-link {
       display: block;
-      margin-inline-start: var(--unified-space-md);
 
-      /* Make the internal hover/selected background transparent
-         so the pill-shaped host background shows instead */
-      --rh-color-surface-lighter: transparent;
-      --rh-color-surface-dark: transparent;
+      &[current-page] {
+        /* stylelint-disable-next-line @stylistic/max-line-length */
+        --rh-navigation-link-background-color: var(--unified-color-interactive-fill-plain-alt-hover);
 
-      /* Hide the left-border hover indicator; selected state
-         uses --rh-color-brand-red so it remains visible */
-      --rh-color-border-subtle: transparent;
-
-      &:hover {
-        background-color: var(--unified-color-interactive-fill-plain-hover);
         border-radius: var(--unified-border-radius-pill);
       }
     }
 
-    & rh-navigation-link[current-page] {
-      background-color: var(--unified-color-interactive-fill-plain-hover);
-      border-radius: var(--unified-border-radius-pill);
-      margin-inline-start: 0;
+    & rh-navigation-vertical-list > rh-navigation-link {
+      --rh-navigation-link-font-size: var(--unified-font-size-body-text-md);
+      --rh-navigation-link-border-inline-start-width: var(--unified-border-width-lg);
+    }
+
+    & rh-navigation-link,
+    & rh-navigation-vertical-list {
+      --rh-color-border-subtle: transparent;
+
+      &:hover {
+        border-radius: var(--unified-border-radius-pill);
+      }
     }
   }
 }
