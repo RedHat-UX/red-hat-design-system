@@ -4,536 +4,535 @@
 
 /* Base-level "tokens" / CSS custom props */
 @layer tokens {
-  :root,
-  :host {
+  :root {
     /* Fonts/Type */
-    --unified-font-size-body-text-sm: 14px;
-    --unified-font-size-body-text-md: 16px;
-    --unified-line-height-body-text: 1.5;
-    --unified-line-height-body-text-md: 1.5rem;
+    --felt-preview-font-size-body-text-sm: 14px;
+    --felt-preview-font-size-body-text-md: 16px;
+    --felt-preview-line-height-body-text: 1.5;
+    --felt-preview-line-height-body-text-md: 1.5rem;
 
     /* Base colors: Grays */
-    --unified-color-gray-10: #f2f2f2;
-    --unified-color-gray-20: #e0e0e0;
-    --unified-color-gray-30: #c7c7c7;
-    --unified-color-gray-40: #a3a3a3;
-    --unified-color-gray-45: #8c8c8c;
-    --unified-color-gray-50: #707070;
-    --unified-color-gray-60: #4d4d4d;
-    --unified-color-gray-70: #383838;
-    --unified-color-gray-80: #292929;
-    --unified-color-gray-90: #1f1f1f;
-    --unified-color-gray-95: #151515;
+    --felt-preview-color-gray-10: #f2f2f2;
+    --felt-preview-color-gray-20: #e0e0e0;
+    --felt-preview-color-gray-30: #c7c7c7;
+    --felt-preview-color-gray-40: #a3a3a3;
+    --felt-preview-color-gray-45: #8c8c8c;
+    --felt-preview-color-gray-50: #707070;
+    --felt-preview-color-gray-60: #4d4d4d;
+    --felt-preview-color-gray-70: #383838;
+    --felt-preview-color-gray-80: #292929;
+    --felt-preview-color-gray-90: #1f1f1f;
+    --felt-preview-color-gray-95: #151515;
 
     /* Base colors: Blues */
-    --unified-color-blue-10: #e0f0ff;
-    --unified-color-blue-20: #b9dafc;
-    --unified-color-blue-30: #92c5f9;
-    --unified-color-blue-40: #4394e5;
-    --unified-color-blue-50: #0066cc;
-    --unified-color-blue-60: #004d99;
-    --unified-color-blue-70: #003366;
+    --felt-preview-color-blue-10: #e0f0ff;
+    --felt-preview-color-blue-20: #b9dafc;
+    --felt-preview-color-blue-30: #92c5f9;
+    --felt-preview-color-blue-40: #4394e5;
+    --felt-preview-color-blue-50: #0066cc;
+    --felt-preview-color-blue-60: #004d99;
+    --felt-preview-color-blue-70: #003366;
 
     /* Base colors: Red-oranges */
-    --unified-color-red-orange-20: #fbbea8;
-    --unified-color-red-orange-30: #f89b78;
-    --unified-color-red-orange-40: #f4784a;
-    --unified-color-red-orange-50: #f0561d;
-    --unified-color-red-orange-60: #b1380b;
-    --unified-color-red-orange-70: #731f00;
+    --felt-preview-color-red-orange-20: #fbbea8;
+    --felt-preview-color-red-orange-30: #f89b78;
+    --felt-preview-color-red-orange-40: #f4784a;
+    --felt-preview-color-red-orange-50: #f0561d;
+    --felt-preview-color-red-orange-60: #b1380b;
+    --felt-preview-color-red-orange-70: #731f00;
 
     /* Base colors: Yellows */
-    --unified-color-yellow-20: #ffe072;
-    --unified-color-yellow-40: #dca614;
+    --felt-preview-color-yellow-20: #ffe072;
+    --felt-preview-color-yellow-40: #dca614;
 
     /* Base colors: Greens */
-    --unified-color-green-30: #afdc8f;
-    --unified-color-green-70: #204d00;
+    --felt-preview-color-green-30: #afdc8f;
+    --felt-preview-color-green-70: #204d00;
 
     /* Base colors: Purples */
-    --unified-color-purple-20: #d0c5f4;
-    --unified-color-purple-60: #3d2785;
+    --felt-preview-color-purple-20: #d0c5f4;
+    --felt-preview-color-purple-60: #3d2785;
 
     /* Base colors: Teals */
-    --unified-color-teal-30: #9ad8d8;
-    --unified-color-teal-40: #63bdbd;
-    --unified-color-teal-60: #147878;
-    --unified-color-teal-70: #004d4d;
+    --felt-preview-color-teal-30: #9ad8d8;
+    --felt-preview-color-teal-40: #63bdbd;
+    --felt-preview-color-teal-60: #147878;
+    --felt-preview-color-teal-70: #004d4d;
 
     /* Text color */
-    --unified-color-text-primary-inverse:
+    --felt-preview-color-text-primary-inverse:
       light-dark(
           white,
-          var(--unified-color-gray-90)
+          var(--felt-preview-color-gray-90)
         );
 
     /* Icon colors */
-    --unified-color-icon-secondary:
+    --felt-preview-color-icon-secondary:
       light-dark(
-          var(--unified-color-gray-90),
-          var(--unified-color-gray-10)
+          var(--felt-preview-color-gray-90),
+          var(--felt-preview-color-gray-10)
         );
-    --unified-color-icon-secondary-inverse:
+    --felt-preview-color-icon-secondary-inverse:
       light-dark(
-          var(--unified-color-gray-10),
-          var(--unified-color-gray-90)
+          var(--felt-preview-color-gray-10),
+          var(--felt-preview-color-gray-90)
         );
 
     /* Interactive colors */
-    --unified-color-interactive-primary-default:
+    --felt-preview-color-interactive-primary-default:
       light-dark(
-          var(--unified-color-blue-50),
-          var(--unified-color-blue-30)
+          var(--felt-preview-color-blue-50),
+          var(--felt-preview-color-blue-30)
         );
-    --unified-color-interactive-primary-hover:
+    --felt-preview-color-interactive-primary-hover:
       light-dark(
-          var(--unified-color-blue-60),
-          var(--unified-color-blue-20)
+          var(--felt-preview-color-blue-60),
+          var(--felt-preview-color-blue-20)
         );
-    --unified-color-interactive-primary-focus:
+    --felt-preview-color-interactive-primary-focus:
       light-dark(
-          var(--unified-color-blue-60),
-          var(--unified-color-blue-20)
+          var(--felt-preview-color-blue-60),
+          var(--felt-preview-color-blue-20)
         );
-    --unified-color-interactive-primary-active:
+    --felt-preview-color-interactive-primary-active:
       light-dark(
-          var(--unified-color-blue-60),
-          var(--unified-color-blue-20)
+          var(--felt-preview-color-blue-60),
+          var(--felt-preview-color-blue-20)
         );
-    --unified-color-interactive-tertiary-default:
+    --felt-preview-color-interactive-tertiary-default:
       light-dark(
-          var(--unified-color-blue-50),
-          var(--unified-color-blue-20)
+          var(--felt-preview-color-blue-50),
+          var(--felt-preview-color-blue-20)
         );
-    --unified-color-interactive-tertiary-hover:
+    --felt-preview-color-interactive-tertiary-hover:
       light-dark(
-          var(--unified-color-blue-60),
-          var(--unified-color-blue-10)
+          var(--felt-preview-color-blue-60),
+          var(--felt-preview-color-blue-10)
         );
-    --unified-color-interactive-tertiary-focus:
+    --felt-preview-color-interactive-tertiary-focus:
       light-dark(
-          var(--unified-color-blue-60),
-          var(--unified-color-blue-10)
+          var(--felt-preview-color-blue-60),
+          var(--felt-preview-color-blue-10)
         );
-    --unified-color-interactive-tertiary-active:
+    --felt-preview-color-interactive-tertiary-active:
       light-dark(
-          var(--unified-color-blue-60),
-          var(--unified-color-blue-10)
+          var(--felt-preview-color-blue-60),
+          var(--felt-preview-color-blue-10)
         );
-    --unified-color-interactive-fill-plain-on-light: rgba(199, 199, 199, 0.25);
-    --unified-color-interactive-fill-plain-on-dark: rgba(199, 199, 199, 0.15);
-    --unified-color-interactive-fill-plain-default: transparent;
-    --unified-color-interactive-fill-plain-hover:
+    --felt-preview-color-interactive-fill-plain-on-light: rgba(199, 199, 199, 0.25);
+    --felt-preview-color-interactive-fill-plain-on-dark: rgba(199, 199, 199, 0.15);
+    --felt-preview-color-interactive-fill-plain-default: transparent;
+    --felt-preview-color-interactive-fill-plain-hover:
       light-dark(
-          var(--unified-color-interactive-fill-plain-on-light),
-          var(--unified-color-interactive-fill-plain-on-dark)
+          var(--felt-preview-color-interactive-fill-plain-on-light),
+          var(--felt-preview-color-interactive-fill-plain-on-dark)
         );
-    --unified-color-interactive-fill-plain-focus:
+    --felt-preview-color-interactive-fill-plain-focus:
       light-dark(
-          var(--unified-color-interactive-fill-plain-on-light),
-          var(--unified-color-interactive-fill-plain-on-dark)
+          var(--felt-preview-color-interactive-fill-plain-on-light),
+          var(--felt-preview-color-interactive-fill-plain-on-dark)
         );
-    --unified-color-interactive-fill-plain-active:
+    --felt-preview-color-interactive-fill-plain-active:
       light-dark(
-          var(--unified-color-interactive-fill-plain-on-light),
-          var(--unified-color-interactive-fill-plain-on-dark)
+          var(--felt-preview-color-interactive-fill-plain-on-light),
+          var(--felt-preview-color-interactive-fill-plain-on-dark)
         );
-    --unified-color-interactive-fill-plain-clicked:
+    --felt-preview-color-interactive-fill-plain-clicked:
       var(
-          --unified-color-interactive-fill-plain-active
+          --felt-preview-color-interactive-fill-plain-active
         );
-    --unified-color-interactive-fill-plain-alt-hover: light-dark(#ffffff, #292929);
-    --unified-color-text-interactive-default:
+    --felt-preview-color-interactive-fill-plain-alt-hover: light-dark(#ffffff, #292929);
+    --felt-preview-color-text-interactive-default:
       light-dark(
-          var(--unified-color-blue-50),
-          var(--unified-color-blue-20)
+          var(--felt-preview-color-blue-50),
+          var(--felt-preview-color-blue-20)
         );
-    --unified-color-text-interactive-hover:
+    --felt-preview-color-text-interactive-hover:
       light-dark(
-          var(--unified-color-blue-60),
-          var(--unified-color-blue-10)
+          var(--felt-preview-color-blue-60),
+          var(--felt-preview-color-blue-10)
         );
-    --unified-color-text-interactive-focus:
+    --felt-preview-color-text-interactive-focus:
       light-dark(
-          var(--unified-color-blue-60),
-          var(--unified-color-blue-10)
+          var(--felt-preview-color-blue-60),
+          var(--felt-preview-color-blue-10)
         );
-    --unified-color-text-interactive-active:
+    --felt-preview-color-text-interactive-active:
       light-dark(
-          var(--unified-color-blue-60),
-          var(--unified-color-blue-10)
+          var(--felt-preview-color-blue-60),
+          var(--felt-preview-color-blue-10)
         );
-    --unified-color-icon-interactive-default:
+    --felt-preview-color-icon-interactive-default:
       light-dark(
-          var(--unified-color-blue-50),
-          var(--unified-color-blue-20)
+          var(--felt-preview-color-blue-50),
+          var(--felt-preview-color-blue-20)
         );
-    --unified-color-icon-interactive-hover:
+    --felt-preview-color-icon-interactive-hover:
       light-dark(
-          var(--unified-color-blue-60),
-          var(--unified-color-blue-10)
+          var(--felt-preview-color-blue-60),
+          var(--felt-preview-color-blue-10)
         );
-    --unified-color-icon-interactive-focus:
+    --felt-preview-color-icon-interactive-focus:
       light-dark(
-          var(--unified-color-blue-60),
-          var(--unified-color-blue-10)
+          var(--felt-preview-color-blue-60),
+          var(--felt-preview-color-blue-10)
         );
-    --unified-color-icon-interactive-active:
+    --felt-preview-color-icon-interactive-active:
       light-dark(
-          var(--unified-color-blue-60),
-          var(--unified-color-blue-10)
+          var(--felt-preview-color-blue-60),
+          var(--felt-preview-color-blue-10)
         );
-    --unified-color-border-interactive-default:
+    --felt-preview-color-border-interactive-default:
       light-dark(
-          var(--unified-color-blue-50),
-          var(--unified-color-blue-30)
+          var(--felt-preview-color-blue-50),
+          var(--felt-preview-color-blue-30)
         );
-    --unified-color-border-interactive-subtle-default:
+    --felt-preview-color-border-interactive-subtle-default:
       light-dark(
-          var(--unified-color-gray-30),
-          var(--unified-color-gray-50)
+          var(--felt-preview-color-gray-30),
+          var(--felt-preview-color-gray-50)
         );
-    --unified-color-border-interactive-subtle-hover:
+    --felt-preview-color-border-interactive-subtle-hover:
       light-dark(
-          var(--unified-color-blue-40),
-          var(--unified-color-blue-30)
+          var(--felt-preview-color-blue-40),
+          var(--felt-preview-color-blue-30)
         );
-    --unified-color-interactive-secondary-underline-default:
+    --felt-preview-color-interactive-secondary-underline-default:
       light-dark(
-          var(--unified-color-gray-45),
-          var(--unified-color-gray-40)
+          var(--felt-preview-color-gray-45),
+          var(--felt-preview-color-gray-40)
         );
-    --unified-color-interactive-secondary-underline-hover:
+    --felt-preview-color-interactive-secondary-underline-hover:
       light-dark(
-          var(--unified-color-gray-45),
-          var(--unified-color-gray-40)
+          var(--felt-preview-color-gray-45),
+          var(--felt-preview-color-gray-40)
         );
-    --unified-color-interactive-secondary-underline-active:
+    --felt-preview-color-interactive-secondary-underline-active:
       light-dark(
-          var(--unified-color-gray-45),
-          var(--unified-color-gray-40)
+          var(--felt-preview-color-gray-45),
+          var(--felt-preview-color-gray-40)
         );
-    --unified-color-interactive-secondary-underline-focus:
+    --felt-preview-color-interactive-secondary-underline-focus:
       light-dark(
-          var(--unified-color-gray-45),
-          var(--unified-color-gray-40)
+          var(--felt-preview-color-gray-45),
+          var(--felt-preview-color-gray-40)
         );
 
     /* TODO: Double-check color */
-    --unified-color-border-interactive-subtle-focus:
+    --felt-preview-color-border-interactive-subtle-focus:
       light-dark(
-          var(--unified-color-blue-50),
-          var(--unified-color-blue-20)
+          var(--felt-preview-color-blue-50),
+          var(--felt-preview-color-blue-20)
         );
-    --unified-color-border-interactive-subtle-active:
+    --felt-preview-color-border-interactive-subtle-active:
       light-dark(
-          var(--unified-color-blue-50),
-          var(--unified-color-blue-20)
+          var(--felt-preview-color-blue-50),
+          var(--felt-preview-color-blue-20)
         );
 
     /* Status colors: Disabled */
-    --unified-color-text-status-on-disabled:
+    --felt-preview-color-text-status-on-disabled:
       light-dark(
-          var(--unified-color-gray-50),
-          var(--unified-color-gray-70)
+          var(--felt-preview-color-gray-50),
+          var(--felt-preview-color-gray-70)
         );
-    --unified-color-icon-status-on-disabled:
+    --felt-preview-color-icon-status-on-disabled:
       light-dark(
-          var(--unified-color-gray-50),
-          var(--unified-color-gray-70)
+          var(--felt-preview-color-gray-50),
+          var(--felt-preview-color-gray-70)
         );
-    --unified-color-text-status-disabled:
+    --felt-preview-color-text-status-disabled:
       light-dark(
-          var(--unified-color-gray-40),
-          var(--unified-color-gray-50)
+          var(--felt-preview-color-gray-40),
+          var(--felt-preview-color-gray-50)
         );
-    --unified-color-icon-status-disabled:
+    --felt-preview-color-icon-status-disabled:
       light-dark(
-          var(--unified-color-gray-40),
-          var(--unified-color-gray-50)
+          var(--felt-preview-color-gray-40),
+          var(--felt-preview-color-gray-50)
         );
-    --unified-color-border-status-disabled:
+    --felt-preview-color-border-status-disabled:
       light-dark(
-          var(--unified-color-gray-40),
-          var(--unified-color-gray-50)
+          var(--felt-preview-color-gray-40),
+          var(--felt-preview-color-gray-50)
         );
 
     /* Status colors: Danger */
-    --unified-color-status-danger:
+    --felt-preview-color-status-danger:
       light-dark(
-          var(--unified-color-red-orange-60),
-          var(--unified-color-red-orange-50)
+          var(--felt-preview-color-red-orange-60),
+          var(--felt-preview-color-red-orange-50)
         );
-    --unified-color-text-status-on-danger: white;
-    --unified-color-status-danger-hover:
+    --felt-preview-color-text-status-on-danger: white;
+    --felt-preview-color-status-danger-hover:
       light-dark(
-          var(--unified-color-red-orange-70),
-          var(--unified-color-red-orange-40)
+          var(--felt-preview-color-red-orange-70),
+          var(--felt-preview-color-red-orange-40)
         );
-    --unified-color-status-danger-focus:
+    --felt-preview-color-status-danger-focus:
       light-dark(
-          var(--unified-color-red-orange-70),
-          var(--unified-color-red-orange-40)
+          var(--felt-preview-color-red-orange-70),
+          var(--felt-preview-color-red-orange-40)
         );
-    --unified-color-status-danger-active:
+    --felt-preview-color-status-danger-active:
       light-dark(
-          var(--unified-color-red-orange-70),
-          var(--unified-color-red-orange-40)
+          var(--felt-preview-color-red-orange-70),
+          var(--felt-preview-color-red-orange-40)
         );
-    --unified-color-text-status-danger:
+    --felt-preview-color-text-status-danger:
       light-dark(
-          var(--unified-color-red-orange-60),
-          var(--unified-color-red-orange-30)
+          var(--felt-preview-color-red-orange-60),
+          var(--felt-preview-color-red-orange-30)
         );
-    --unified-color-text-status-danger-hover:
+    --felt-preview-color-text-status-danger-hover:
       light-dark(
-          var(--unified-color-red-orange-70),
-          var(--unified-color-red-orange-20)
+          var(--felt-preview-color-red-orange-70),
+          var(--felt-preview-color-red-orange-20)
         );
-    --unified-color-text-status-danger-focus:
+    --felt-preview-color-text-status-danger-focus:
       light-dark(
-          var(--unified-color-red-orange-70),
-          var(--unified-color-red-orange-20)
+          var(--felt-preview-color-red-orange-70),
+          var(--felt-preview-color-red-orange-20)
         );
-    --unified-color-text-status-danger-active:
+    --felt-preview-color-text-status-danger-active:
       light-dark(
-          var(--unified-color-red-orange-70),
-          var(--unified-color-red-orange-20)
+          var(--felt-preview-color-red-orange-70),
+          var(--felt-preview-color-red-orange-20)
         );
-    --unified-color-icon-status-danger-hover:
+    --felt-preview-color-icon-status-danger-hover:
       light-dark(
-          var(--unified-color-red-orange-70),
-          var(--unified-color-red-orange-40)
+          var(--felt-preview-color-red-orange-70),
+          var(--felt-preview-color-red-orange-40)
         );
-    --unified-color-icon-status-danger-focus:
+    --felt-preview-color-icon-status-danger-focus:
       light-dark(
-          var(--unified-color-red-orange-70),
-          var(--unified-color-red-orange-40)
+          var(--felt-preview-color-red-orange-70),
+          var(--felt-preview-color-red-orange-40)
         );
-    --unified-color-icon-status-danger-active:
+    --felt-preview-color-icon-status-danger-active:
       light-dark(
-          var(--unified-color-red-orange-70),
-          var(--unified-color-red-orange-40)
+          var(--felt-preview-color-red-orange-70),
+          var(--felt-preview-color-red-orange-40)
         );
-    --unified-color-border-status-danger-hover:
+    --felt-preview-color-border-status-danger-hover:
       light-dark(
-          var(--unified-color-red-orange-70),
-          var(--unified-color-red-orange-40)
+          var(--felt-preview-color-red-orange-70),
+          var(--felt-preview-color-red-orange-40)
         );
-    --unified-color-border-status-danger-focus:
+    --felt-preview-color-border-status-danger-focus:
       light-dark(
-          var(--unified-color-red-orange-70),
-          var(--unified-color-red-orange-40)
+          var(--felt-preview-color-red-orange-70),
+          var(--felt-preview-color-red-orange-40)
         );
-    --unified-color-border-status-danger-active:
+    --felt-preview-color-border-status-danger-active:
       light-dark(
-          var(--unified-color-red-orange-70),
-          var(--unified-color-red-orange-40)
+          var(--felt-preview-color-red-orange-70),
+          var(--felt-preview-color-red-orange-40)
         );
 
     /* Status colors: Warning */
-    --unified-color-status-warning: var(--rh-color-yellow-30, #ffcc17);
-    --unified-color-text-status-on-warning: var(--unified-color-gray-95, #151515);
-    --unified-color-status-warning-hover:
+    --felt-preview-color-status-warning: var(--rh-color-yellow-30, #ffcc17);
+    --felt-preview-color-text-status-on-warning: var(--felt-preview-color-gray-95, #151515);
+    --felt-preview-color-status-warning-hover:
       light-dark(
-          var(--unified-color-yellow-40),
-          var(--unified-color-yellow-20)
+          var(--felt-preview-color-yellow-40),
+          var(--felt-preview-color-yellow-20)
         );
-    --unified-color-status-warning-focus:
+    --felt-preview-color-status-warning-focus:
       light-dark(
-          var(--unified-color-yellow-40),
-          var(--unified-color-yellow-20)
+          var(--felt-preview-color-yellow-40),
+          var(--felt-preview-color-yellow-20)
         );
-    --unified-color-status-warning-active:
+    --felt-preview-color-status-warning-active:
       light-dark(
-          var(--unified-color-yellow-40),
-          var(--unified-color-yellow-20)
+          var(--felt-preview-color-yellow-40),
+          var(--felt-preview-color-yellow-20)
         );
-    --unified-color-border-status-warning-hover:
+    --felt-preview-color-border-status-warning-hover:
       light-dark(
-          var(--unified-color-yellow-50),
-          var(--unified-color-yellow-20)
+          var(--felt-preview-color-yellow-50),
+          var(--felt-preview-color-yellow-20)
         );
-    --unified-color-border-status-warning-focus:
+    --felt-preview-color-border-status-warning-focus:
       light-dark(
-          var(--unified-color-yellow-50),
-          var(--unified-color-yellow-20)
+          var(--felt-preview-color-yellow-50),
+          var(--felt-preview-color-yellow-20)
         );
-    --unified-color-border-status-warning-active:
+    --felt-preview-color-border-status-warning-active:
       light-dark(
-          var(--unified-color-yellow-50),
-          var(--unified-color-yellow-20)
+          var(--felt-preview-color-yellow-50),
+          var(--felt-preview-color-yellow-20)
         );
 
     /* Status colors: Success */
-    --unified-color-status-success: var(--rh-color-green-60, #3d7317);
-    --unified-color-text-status-on-success: white;
-    --unified-color-status-success-hover:
+    --felt-preview-color-status-success: var(--rh-color-green-60, #3d7317);
+    --felt-preview-color-text-status-on-success: white;
+    --felt-preview-color-status-success-hover:
       light-dark(
-          var(--unified-color-green-70),
-          var(--unified-color-green-30)
+          var(--felt-preview-color-green-70),
+          var(--felt-preview-color-green-30)
         );
-    --unified-color-status-success-focus:
+    --felt-preview-color-status-success-focus:
       light-dark(
-          var(--unified-color-green-70),
-          var(--unified-color-green-30)
+          var(--felt-preview-color-green-70),
+          var(--felt-preview-color-green-30)
         );
-    --unified-color-status-success-active:
+    --felt-preview-color-status-success-active:
       light-dark(
-          var(--unified-color-green-70),
-          var(--unified-color-green-30)
+          var(--felt-preview-color-green-70),
+          var(--felt-preview-color-green-30)
         );
-    --unified-color-border-status-success-hover:
+    --felt-preview-color-border-status-success-hover:
       light-dark(
-          var(--unified-color-green-70),
-          var(--unified-color-green-30)
+          var(--felt-preview-color-green-70),
+          var(--felt-preview-color-green-30)
         );
-    --unified-color-border-status-success-focus:
+    --felt-preview-color-border-status-success-focus:
       light-dark(
-          var(--unified-color-green-70),
-          var(--unified-color-green-30)
+          var(--felt-preview-color-green-70),
+          var(--felt-preview-color-green-30)
         );
-    --unified-color-border-status-success-active:
+    --felt-preview-color-border-status-success-active:
       light-dark(
-          var(--unified-color-green-70),
-          var(--unified-color-green-30)
+          var(--felt-preview-color-green-70),
+          var(--felt-preview-color-green-30)
         );
 
     /* Status colors: Info */
-    --unified-color-status-info: var(--rh-color-purple-50, #5e40be);
-    --unified-color-text-status-on-info: white;
-    --unified-color-status-info-hover:
+    --felt-preview-color-status-info: var(--rh-color-purple-50, #5e40be);
+    --felt-preview-color-text-status-on-info: white;
+    --felt-preview-color-status-info-hover:
       light-dark(
-          var(--unified-color-purple-60),
-          var(--unified-color-purple-20)
+          var(--felt-preview-color-purple-60),
+          var(--felt-preview-color-purple-20)
         );
-    --unified-color-status-info-focus:
+    --felt-preview-color-status-info-focus:
       light-dark(
-          var(--unified-color-purple-60),
-          var(--unified-color-purple-20)
+          var(--felt-preview-color-purple-60),
+          var(--felt-preview-color-purple-20)
         );
-    --unified-color-status-info-active:
+    --felt-preview-color-status-info-active:
       light-dark(
-          var(--unified-color-purple-60),
-          var(--unified-color-purple-20)
+          var(--felt-preview-color-purple-60),
+          var(--felt-preview-color-purple-20)
         );
-    --unified-color-border-status-info-hover:
+    --felt-preview-color-border-status-info-hover:
       light-dark(
-          var(--unified-color-purple-60),
-          var(--unified-color-purple-20)
+          var(--felt-preview-color-purple-60),
+          var(--felt-preview-color-purple-20)
         );
-    --unified-color-border-status-info-focus:
+    --felt-preview-color-border-status-info-focus:
       light-dark(
-          var(--unified-color-purple-60),
-          var(--unified-color-purple-20)
+          var(--felt-preview-color-purple-60),
+          var(--felt-preview-color-purple-20)
         );
-    --unified-color-border-status-info-active:
+    --felt-preview-color-border-status-info-active:
       light-dark(
-          var(--unified-color-purple-60),
-          var(--unified-color-purple-20)
+          var(--felt-preview-color-purple-60),
+          var(--felt-preview-color-purple-20)
         );
 
     /* Status colors: Custom */
-    --unified-color-status-custom:
+    --felt-preview-color-status-custom:
       light-dark(
-          var(--unified-color-teal-60),
-          var(--unified-color-teal-40)
+          var(--felt-preview-color-teal-60),
+          var(--felt-preview-color-teal-40)
         );
-    --unified-color-text-status-on-custom: white;
-    --unified-color-status-custom-hover:
+    --felt-preview-color-text-status-on-custom: white;
+    --felt-preview-color-status-custom-hover:
       light-dark(
-          var(--unified-color-teal-70),
-          var(--unified-color-teal-30)
+          var(--felt-preview-color-teal-70),
+          var(--felt-preview-color-teal-30)
         );
-    --unified-color-status-custom-focus:
+    --felt-preview-color-status-custom-focus:
       light-dark(
-          var(--unified-color-teal-70),
-          var(--unified-color-teal-30)
+          var(--felt-preview-color-teal-70),
+          var(--felt-preview-color-teal-30)
         );
-    --unified-color-status-custom-active:
+    --felt-preview-color-status-custom-active:
       light-dark(
-          var(--unified-color-teal-70),
-          var(--unified-color-teal-30)
+          var(--felt-preview-color-teal-70),
+          var(--felt-preview-color-teal-30)
         );
-    --unified-color-border-status-custom-hover:
+    --felt-preview-color-border-status-custom-hover:
       light-dark(
-          var(--unified-color-teal-70),
-          var(--unified-color-teal-30)
+          var(--felt-preview-color-teal-70),
+          var(--felt-preview-color-teal-30)
         );
-    --unified-color-border-status-custom-focus:
+    --felt-preview-color-border-status-custom-focus:
       light-dark(
-          var(--unified-color-teal-70),
-          var(--unified-color-teal-30)
+          var(--felt-preview-color-teal-70),
+          var(--felt-preview-color-teal-30)
         );
-    --unified-color-border-status-custom-active:
+    --felt-preview-color-border-status-custom-active:
       light-dark(
-          var(--unified-color-teal-70),
-          var(--unified-color-teal-30)
+          var(--felt-preview-color-teal-70),
+          var(--felt-preview-color-teal-30)
         );
 
     /* Other border colors */
-    --unified-color-border-track:
+    --felt-preview-color-border-track:
       light-dark(
-          var(--unified-color-blue-20),
-          var(--unified-color-blue-70)
+          var(--felt-preview-color-blue-20),
+          var(--felt-preview-color-blue-70)
         );
-    --unified-color-border-control-default:
+    --felt-preview-color-border-control-default:
       light-dark(
           #8c8c8c,
-          var(--unified-color-gray-40)
+          var(--felt-preview-color-gray-40)
         );
-    --unified-color-icon-subtle:
+    --felt-preview-color-icon-subtle:
       light-dark(
-          var(--unified-color-gray-50),
-          var(--unified-color-gray-40)
+          var(--felt-preview-color-gray-50),
+          var(--felt-preview-color-gray-40)
         );
-    --unified-color-border-subtle:
+    --felt-preview-color-border-subtle:
       light-dark(
-          var(--unified-color-gray-20),
-          var(--unified-color-gray-60)
+          var(--felt-preview-color-gray-20),
+          var(--felt-preview-color-gray-60)
         );
 
     /* Surface colors */
-    --unified-color-surface-primary:
+    --felt-preview-color-surface-primary:
       light-dark(
           white,
-          var(--unified-color-gray-80)
+          var(--felt-preview-color-gray-80)
         );
 
     /* Box shadows */
-    --unified-box-shadow-floating: 0 0 10px 0 rgba(41, 41, 41, 0.15);
+    --felt-preview-box-shadow-floating: 0 0 10px 0 rgba(41, 41, 41, 0.15);
 
     /* Brand accent */
-    --unified-color-brand-accent:
+    --felt-preview-color-brand-accent:
       light-dark(
-          var(--unified-color-blue-50),
-          var(--unified-color-blue-30)
+          var(--felt-preview-color-blue-50),
+          var(--felt-preview-color-blue-30)
         );
 
     /* Borders */
-    --unified-border-radius-default: 16px;
-    --unified-border-radius-large: 24px;
-    --unified-border-radius-pill: 64px;
-    --unified-border-radius-action-plain: 6px;
-    --unified-border-radius-menu:
+    --felt-preview-border-radius-default: 16px;
+    --felt-preview-border-radius-large: 24px;
+    --felt-preview-border-radius-pill: 64px;
+    --felt-preview-border-radius-action-plain: 6px;
+    --felt-preview-border-radius-menu:
       calc(
-          var(--unified-border-radius-action-plain)
-          + var(--unified-space-xs)
+          var(--felt-preview-border-radius-action-plain)
+          + var(--felt-preview-space-xs)
         );
-    --unified-border-width-sm: 1px;
-    --unified-border-width-md: 2px;
-    --unified-border-width-lg: 3px;
+    --felt-preview-border-width-sm: 1px;
+    --felt-preview-border-width-md: 2px;
+    --felt-preview-border-width-lg: 3px;
 
     /* Dimensions */
-    --unified-size-icon-00: 14px; /* 0.875rem */
-    --unified-space-xs: 4px;
-    --unified-space-sm: 6px;
-    --unified-space-md: 8px;
-    --unified-space-lg: 16px;
-    --unified-space-xl: 24px;
-    --unified-space-2xl: 32px;
-    --unified-space-3xl: 48px;
-    --unified-length-xs: 4px;
+    --felt-preview-size-icon-00: 14px; /* 0.875rem */
+    --felt-preview-space-xs: 4px;
+    --felt-preview-space-sm: 6px;
+    --felt-preview-space-md: 8px;
+    --felt-preview-space-lg: 16px;
+    --felt-preview-space-xl: 24px;
+    --felt-preview-space-2xl: 32px;
+    --felt-preview-space-3xl: 48px;
+    --felt-preview-length-xs: 4px;
   }
 }
 
@@ -552,7 +551,7 @@
     jump-links,
     menu,
     navigation-vertical,
-    progress-steppers,
+    progress-stepper,
     spinner,
     subnav,
     switch,
@@ -563,25 +562,25 @@
 /* Element: Button */
 @layer button {
   rh-button {
-    --unified-button-font-size: var(--unified-font-size-body-text-sm);
-    --unified-button-padding-block: var(--unified-space-md);
-    --unified-button-padding-inline: var(--unified-space-xl);
-    --unified-button-padding-block-compact: var(--unified-space-xs);
-    --unified-button-padding-inline-compact: var(--unified-space-lg);
-    --unified-button-border-width-hover: var(--unified-border-width-md);
-    --unified-button-border-width-focus: var(--unified-border-width-md);
-    --unified-button-border-width-focus-ring: var(--unified-border-width-lg);
-    --unified-button-border-width-active: var(--unified-border-width-md);
-    --unified-button-link-color-on-light: var(--unified-color-blue-20);
-    --unified-button-link-color-on-light-hover: var(--unified-color-blue-60);
+    --felt-preview-button-font-size: var(--felt-preview-font-size-body-text-sm);
+    --felt-preview-button-padding-block: var(--felt-preview-space-md);
+    --felt-preview-button-padding-inline: var(--felt-preview-space-xl);
+    --felt-preview-button-padding-block-compact: var(--felt-preview-space-xs);
+    --felt-preview-button-padding-inline-compact: var(--felt-preview-space-lg);
+    --felt-preview-button-border-width-hover: var(--felt-preview-border-width-md);
+    --felt-preview-button-border-width-focus: var(--felt-preview-border-width-md);
+    --felt-preview-button-border-width-focus-ring: var(--felt-preview-border-width-lg);
+    --felt-preview-button-border-width-active: var(--felt-preview-border-width-md);
+    --felt-preview-button-link-color-on-light: var(--felt-preview-color-blue-20);
+    --felt-preview-button-link-color-on-light-hover: var(--felt-preview-color-blue-60);
 
     /* Directly theme through RH-specific tokens */
-    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
-    --rh-border-radius-default: var(--unified-border-radius-pill);
-    --rh-font-size-body-text-md: var(--unified-button-font-size);
-    --rh-space-sm: var(--unified-button-padding-block);
-    --rh-space-lg: var(--unified-button-padding-inline);
-    --rh-icon-size: var(--unified-size-icon-00);
+    --rh-color-interactive-primary-default: var(--felt-preview-color-interactive-primary-default);
+    --rh-border-radius-default: var(--felt-preview-border-radius-pill);
+    --rh-font-size-body-text-md: var(--felt-preview-button-font-size);
+    --rh-space-sm: var(--felt-preview-button-padding-block);
+    --rh-space-lg: var(--felt-preview-button-padding-inline);
+    --rh-icon-size: var(--felt-preview-size-icon-00);
 
     &::part(button) {
       /* Ripple animation */
@@ -598,10 +597,10 @@
 
     &::part(button):focus {
       outline:
-        var(--unified-button-border-width-focus-ring)
+        var(--felt-preview-button-border-width-focus-ring)
         solid
-        var(--unified-color-interactive-primary-default);
-      outline-offset: var(--unified-button-border-width-focus-ring);
+        var(--felt-preview-color-interactive-primary-default);
+      outline-offset: var(--felt-preview-button-border-width-focus-ring);
     }
 
     &::part(button):active {
@@ -613,160 +612,160 @@
       --rh-color-text-primary-on-light: var(--rh-color-gray-90);
 
       &::part(button):hover {
-        background-color: var(--unified-color-interactive-primary-hover);
+        background-color: var(--felt-preview-color-interactive-primary-hover);
       }
 
       &::part(button):focus {
-        background-color: var(--unified-color-interactive-primary-focus);
+        background-color: var(--felt-preview-color-interactive-primary-focus);
       }
 
       &::part(button):active {
-        background-color: var(--unified-color-interactive-primary-active);
+        background-color: var(--felt-preview-color-interactive-primary-active);
       }
 
       &[danger] {
         &::part(button):hover {
-          background-color: var(--unified-color-status-danger-hover);
+          background-color: var(--felt-preview-color-status-danger-hover);
         }
 
         &::part(button):focus {
-          background-color: var(--unified-color-status-danger-focus);
+          background-color: var(--felt-preview-color-status-danger-focus);
         }
 
         &::part(button):active {
-          background-color: var(--unified-color-status-danger-active);
+          background-color: var(--felt-preview-color-status-danger-active);
         }
       }
     }
 
     &[variant='secondary'] {
-      --rh-border-width-sm: var(--unified-border-width-sm);
+      --rh-border-width-sm: var(--felt-preview-border-width-sm);
 
       &::part(button):hover {
-        --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-hover);
-        --rh-color-text-primary: var(--unified-color-text-interactive-hover);
-        --rh-border-width-sm: var(--unified-button-border-width-hover);
+        --rh-color-interactive-primary-default: var(--felt-preview-color-interactive-primary-hover);
+        --rh-color-text-primary: var(--felt-preview-color-text-interactive-hover);
+        --rh-border-width-sm: var(--felt-preview-button-border-width-hover);
       }
 
       &::part(button):focus {
         --rh-color-text-primary: var(unified-color-text-interactive-hover-focus);
-        --rh-border-width-sm: var(--unified-button-border-width-focus);
+        --rh-border-width-sm: var(--felt-preview-button-border-width-focus);
       }
 
       &::part(button):active {
         --rh-color-text-primary: var(unified-color-text-interactive-active);
-        --rh-border-width-sm: var(--unified-button-border-width-active);
+        --rh-border-width-sm: var(--felt-preview-button-border-width-active);
       }
 
       &[danger] {
-        --rh-color-status-danger: var(--unified-color-text-status-danger);
-        --rh-color-border-status-danger: var(--unified-color-status-danger);
+        --rh-color-status-danger: var(--felt-preview-color-text-status-danger);
+        --rh-color-border-status-danger: var(--felt-preview-color-status-danger);
 
         &::part(icon) {
           /* Dark scheme: icon default is red-orange-50;
              light scheme unchanged (red-orange-60 = text color) */
-          color: var(--unified-color-status-danger);
+          color: var(--felt-preview-color-status-danger);
         }
 
         /* Set --rh-button-icon-color on the host so it reliably inherits
            into the shadow DOM; ::part() custom props may not cascade to
            shadow-DOM descendants of the targeted part. */
         &:is(:hover, :focus-within, :active) {
-          --rh-button-icon-color: var(--unified-color-icon-status-danger-hover);
+          --rh-button-icon-color: var(--felt-preview-color-icon-status-danger-hover);
         }
 
         &::part(button):hover {
-          --rh-color-border-status-danger: var(--unified-color-status-danger-hover);
-          --rh-color-status-danger: var(--unified-color-text-status-danger-hover);
+          --rh-color-border-status-danger: var(--felt-preview-color-status-danger-hover);
+          --rh-color-status-danger: var(--felt-preview-color-text-status-danger-hover);
         }
 
         &::part(button):focus {
-          --rh-color-border-status-danger: var(--unified-color-status-danger-focus);
-          --rh-color-status-danger: var(--unified-color-text-status-danger-focus);
+          --rh-color-border-status-danger: var(--felt-preview-color-status-danger-focus);
+          --rh-color-status-danger: var(--felt-preview-color-text-status-danger-focus);
         }
 
         &::part(button):active {
-          --rh-color-border-status-danger: var(--unified-color-status-danger-active);
-          --rh-color-status-danger: var(--unified-color-text-status-danger-active);
+          --rh-color-border-status-danger: var(--felt-preview-color-status-danger-active);
+          --rh-color-status-danger: var(--felt-preview-color-text-status-danger-active);
         }
       }
     }
 
     &[variant='tertiary'] {
-      --rh-color-border-strong: var(--unified-color-border-interactive-subtle-default);
-      --rh-color-text-primary: var(--unified-color-interactive-tertiary-default);
+      --rh-color-border-strong: var(--felt-preview-color-border-interactive-subtle-default);
+      --rh-color-text-primary: var(--felt-preview-color-interactive-tertiary-default);
 
       &::part(button):hover {
-        --rh-color-text-primary: var(--unified-color-interactive-tertiary-hover);
-        --rh-color-border-strong: var(--unified-color-border-interactive-subtle-hover);
+        --rh-color-text-primary: var(--felt-preview-color-interactive-tertiary-hover);
+        --rh-color-border-strong: var(--felt-preview-color-border-interactive-subtle-hover);
       }
 
       &::part(button):focus {
-        --rh-color-text-primary: var(--unified-color-interactive-tertiary-focus);
-        --rh-border-width-sm: var(--unified-button-border-width-focus);
-        --rh-color-border-strong: var(--unified-color-border-interactive-subtle-focus);
+        --rh-color-text-primary: var(--felt-preview-color-interactive-tertiary-focus);
+        --rh-border-width-sm: var(--felt-preview-button-border-width-focus);
+        --rh-color-border-strong: var(--felt-preview-color-border-interactive-subtle-focus);
       }
 
       &::part(button):active {
-        --rh-color-text-primary: var(--unified-color-interactive-tertiary-active);
+        --rh-color-text-primary: var(--felt-preview-color-interactive-tertiary-active);
       }
 
       &[danger] {
-        --rh-color-border-strong: var(--unified-color-status-danger);
-        --rh-color-text-primary: var(--unified-color-text-status-danger);
+        --rh-color-border-strong: var(--felt-preview-color-status-danger);
+        --rh-color-text-primary: var(--felt-preview-color-text-status-danger);
 
         &::part(icon) {
           /* Dark scheme: icon default is red-orange-50;
              light scheme unchanged (red-orange-60 = text color) */
-          color: var(--unified-color-status-danger);
+          color: var(--felt-preview-color-status-danger);
         }
 
         &:is(:hover, :focus-within, :active) {
-          --rh-button-icon-color: var(--unified-color-icon-status-danger-hover);
+          --rh-button-icon-color: var(--felt-preview-color-icon-status-danger-hover);
         }
 
         &::part(button):hover {
-          --rh-color-border-status-danger: var(--unified-color-status-danger-hover);
-          --rh-color-status-danger: var(--unified-color-status-danger-hover);
-          --rh-color-text-primary: var(--unified-color-text-status-danger-hover);
-          --rh-color-border-strong: var(--unified-color-status-danger-hover);
+          --rh-color-border-status-danger: var(--felt-preview-color-status-danger-hover);
+          --rh-color-status-danger: var(--felt-preview-color-status-danger-hover);
+          --rh-color-text-primary: var(--felt-preview-color-text-status-danger-hover);
+          --rh-color-border-strong: var(--felt-preview-color-status-danger-hover);
         }
 
         &::part(button):focus {
-          --rh-color-border-status-danger: var(--unified-color-status-danger-focus);
-          --rh-color-status-danger: var(--unified-color-status-danger-focus);
-          --rh-color-text-primary: var(--unified-color-text-status-danger-focus);
-          --rh-color-border-strong: var(--unified-color-status-danger-focus);
+          --rh-color-border-status-danger: var(--felt-preview-color-status-danger-focus);
+          --rh-color-status-danger: var(--felt-preview-color-status-danger-focus);
+          --rh-color-text-primary: var(--felt-preview-color-text-status-danger-focus);
+          --rh-color-border-strong: var(--felt-preview-color-status-danger-focus);
         }
 
         &::part(button):active {
-          --rh-color-border-status-danger: var(--unified-color-status-danger-active);
-          --rh-color-text-primary: var(--unified-color-text-status-danger-active);
-          --rh-color-border-strong: var(--unified-color-status-danger-active);
+          --rh-color-border-status-danger: var(--felt-preview-color-status-danger-active);
+          --rh-color-text-primary: var(--felt-preview-color-text-status-danger-active);
+          --rh-color-border-strong: var(--felt-preview-color-status-danger-active);
         }
       }
     }
 
     &[variant='link'],
     &[variant='plain'] {
-      --rh-color-blue-70: var(--unified-color-interactive-tertiary-default);
+      --rh-color-blue-70: var(--felt-preview-color-interactive-tertiary-default);
 
       &::part(button) {
         /* Link/plain: equal 8px padding on all sides (no extra inline reduction for icons) */
-        padding: var(--unified-space-md);
+        padding: var(--felt-preview-space-md);
       }
 
       &[compact]::part(button) {
         /* Compact link/plain: equal 4px padding on all sides */
-        padding: var(--unified-space-xs);
+        padding: var(--felt-preview-space-xs);
       }
 
       &::part(button):hover,
       &::part(button):focus,
       &::part(button):active {
-        --rh-color-blue-70: var(--unified-color-interactive-tertiary-hover);
+        --rh-color-blue-70: var(--felt-preview-color-interactive-tertiary-hover);
 
-        background-color: var(--unified-color-interactive-fill-plain-hover);
+        background-color: var(--felt-preview-color-interactive-fill-plain-hover);
       }
 
       &::part(button):active:after,
@@ -775,32 +774,32 @@
       }
 
       &[danger] {
-        --rh-color-interactive-primary-default: var(--unified-color-text-status-danger);
+        --rh-color-interactive-primary-default: var(--felt-preview-color-text-status-danger);
 
         &::part(icon) {
           /* Dark scheme: icon default is red-orange-50;
              light scheme unchanged (red-orange-60 = text color) */
-          color: var(--unified-color-status-danger);
+          color: var(--felt-preview-color-status-danger);
         }
 
         /* Set --rh-button-icon-color on the host so it reliably inherits
            into the shadow DOM; ::part() custom props may not cascade to
            shadow-DOM descendants of the targeted part. */
         &:is(:hover, :focus-within, :active) {
-          --rh-button-icon-color: var(--unified-color-icon-status-danger-hover);
+          --rh-button-icon-color: var(--felt-preview-color-icon-status-danger-hover);
         }
 
         &::part(button):hover,
         &::part(button):focus,
         &::part(button):active {
           /* Dark scheme: text in interactive states is red-orange-20 */
-          color: var(--unified-color-text-status-danger-hover);
+          color: var(--felt-preview-color-text-status-danger-hover);
         }
       }
 
       &:disabled::part(button) {
         background-color: transparent;
-        color: var(--unified-color-text-status-disabled);
+        color: var(--felt-preview-color-text-status-disabled);
       }
     }
 
@@ -808,24 +807,24 @@
     &[variant='tertiary'] {
       &:disabled::part(button) {
         background-color: transparent;
-        color: var(--unified-color-text-status-disabled);
+        color: var(--felt-preview-color-text-status-disabled);
       }
 
       &:disabled::part(button):after {
-        border-color: var(--unified-color-border-status-disabled);
+        border-color: var(--felt-preview-color-border-status-disabled);
       }
     }
 
     &[variant='icon'] {
-      --rh-color-text-primary: var(--unified-color-icon-secondary);
+      --rh-color-text-primary: var(--felt-preview-color-icon-secondary);
 
       &::part(button) {
         box-sizing: content-box;
         display: flex;
         justify-content: center;
-        padding: var(--unified-button-padding-block);
-        height: calc(var(--unified-button-font-size) * var(--unified-line-height-body-text));
-        width: calc(var(--unified-button-font-size) * var(--unified-line-height-body-text));
+        padding: var(--felt-preview-button-padding-block);
+        height: calc(var(--felt-preview-button-font-size) * var(--felt-preview-line-height-body-text));
+        width: calc(var(--felt-preview-button-font-size) * var(--felt-preview-line-height-body-text));
       }
 
       &::part(button):after {
@@ -835,7 +834,7 @@
       &::part(button):hover,
       &::part(button):focus,
       &::part(button):active {
-        background-color: var(--unified-color-interactive-fill-plain-hover);
+        background-color: var(--felt-preview-color-interactive-fill-plain-hover);
       }
 
       &::part(button):active:after,
@@ -845,14 +844,14 @@
 
       &:disabled::part(button) {
         background-color: transparent;
-        color: var(--unified-color-text-status-disabled);
+        color: var(--felt-preview-color-text-status-disabled);
       }
     }
 
     &[compact] {
-      --unified-button-padding-block: var(--unified-button-padding-block-compact);
-      --rh-space-sm: var(--unified-button-padding-block-compact);
-      --rh-space-lg: var(--unified-button-padding-inline-compact);
+      --felt-preview-button-padding-block: var(--felt-preview-button-padding-block-compact);
+      --rh-space-sm: var(--felt-preview-button-padding-block-compact);
+      --rh-space-lg: var(--felt-preview-button-padding-inline-compact);
     }
   }
 }
@@ -860,15 +859,15 @@
 /* Element: Card */
 @layer card {
   rh-card {
-    --unified-card-padding-default: var(--unified-space-xl);
-    --unified-card-padding-compact: var(--unified-space-lg);
-    --unified-card-padding-large: var(--unified-space-2xl);
+    --felt-preview-card-padding-default: var(--felt-preview-space-xl);
+    --felt-preview-card-padding-compact: var(--felt-preview-space-lg);
+    --felt-preview-card-padding-large: var(--felt-preview-space-2xl);
 
     /* Directly theme through RH-specific tokens */
-    --rh-border-radius-default: var(--unified-border-radius-default);
-    --rh-space-xl: var(--unified-card-padding-default);
+    --rh-border-radius-default: var(--felt-preview-border-radius-default);
+    --rh-space-xl: var(--felt-preview-card-padding-default);
     --rh-card-heading-font-size: var(--rh-font-size-heading-xs);
-    --rh-color-border-subtle: var(--unified-color-border-subtle);
+    --rh-color-border-subtle: var(--felt-preview-color-border-subtle);
 
     &::part(body) {
       font-size: var(--rh-font-size-body-text-md);
@@ -876,7 +875,7 @@
 
     &[compact],
     &[size='compact'] {
-      --rh-space-xl: var(--unified-card-padding-compact);
+      --rh-space-xl: var(--felt-preview-card-padding-compact);
       --rh-card-heading-font-size: var(--rh-font-size-body-text-md);
 
       &::part(body) {
@@ -886,7 +885,7 @@
 
     &[large],
     &[size='large'] {
-      --rh-space-xl: var(--unified-card-padding-large);
+      --rh-space-xl: var(--felt-preview-card-padding-large);
       --rh-card-heading-font-size: var(--rh-font-size-heading-sm);
 
       &::part(body) {
@@ -915,45 +914,45 @@
 /* Element: Call to action */
 @layer cta {
   rh-cta {
-    --unified-cta-font-size: var(--unified-font-size-body-text-md);
-    --unified-cta-padding-block: var(--unified-space-lg);
-    --unified-cta-padding-inline: var(--unified-space-2xl);
-    --unified-cta-padding-block-compact: var(--unified-space-md);
-    --unified-cta-padding-inline-compact: var(--unified-space-xl);
-    --unified-cta-border-width-hover: var(--unified-border-width-md);
-    --unified-cta-border-width-focus: var(--unified-border-width-md);
-    --unified-cta-border-width-focus-ring: var(--unified-border-width-lg);
-    --unified-cta-border-width-active: var(--unified-border-width-md);
-    --unified-cta-border-offset:
+    --felt-preview-cta-font-size: var(--felt-preview-font-size-body-text-md);
+    --felt-preview-cta-padding-block: var(--felt-preview-space-lg);
+    --felt-preview-cta-padding-inline: var(--felt-preview-space-2xl);
+    --felt-preview-cta-padding-block-compact: var(--felt-preview-space-md);
+    --felt-preview-cta-padding-inline-compact: var(--felt-preview-space-xl);
+    --felt-preview-cta-border-width-hover: var(--felt-preview-border-width-md);
+    --felt-preview-cta-border-width-focus: var(--felt-preview-border-width-md);
+    --felt-preview-cta-border-width-focus-ring: var(--felt-preview-border-width-lg);
+    --felt-preview-cta-border-width-active: var(--felt-preview-border-width-md);
+    --felt-preview-cta-border-offset:
       calc(
-          var(--unified-cta-border-width-hover)
-          - var(--unified-border-width-sm)
+          var(--felt-preview-cta-border-width-hover)
+          - var(--felt-preview-border-width-sm)
         );
-    --unified-cta-border-offset-block:
+    --felt-preview-cta-border-offset-block:
       calc(
           var(--rh-space-lg)
-          - var(--unified-cta-border-offset)
+          - var(--felt-preview-cta-border-offset)
         );
-    --unified-cta-border-offset-inline:
+    --felt-preview-cta-border-offset-inline:
       calc(
           var(--rh-space-2xl)
-          - var(--unified-cta-border-offset)
+          - var(--felt-preview-cta-border-offset)
         );
-    --unified-cta-text-underline-offset: 4px;
-    --unified-cta-text-decoration-color: currentcolor;
-    --unified-cta-text-decoration: underline dashed 1px var(--unified-cta-text-decoration-color);
-    --unified-cta-primary-bg-default: #ee0000;
-    --unified-cta-primary-bg-hover: #a60000;
-    --unified-cta-primary-bg-active: #a60000;
+    --felt-preview-cta-text-underline-offset: 4px;
+    --felt-preview-cta-text-decoration-color: currentcolor;
+    --felt-preview-cta-text-decoration: underline dashed 1px var(--felt-preview-cta-text-decoration-color);
+    --felt-preview-cta-primary-bg-default: #ee0000;
+    --felt-preview-cta-primary-bg-hover: #a60000;
+    --felt-preview-cta-primary-bg-active: #a60000;
 
     /* Map unified tokens to RH tokens */
-    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
-    --rh-color-interactive-primary-hover: var(--unified-color-interactive-primary-hover);
-    --rh-border-radius-default: var(--unified-border-radius-pill);
-    --rh-font-size-body-text-md: var(--unified-cta-font-size);
-    --rh-font-size-body-text-lg: var(--unified-cta-font-size);
-    --rh-space-lg: var(--unified-cta-padding-block);
-    --rh-space-2xl: var(--unified-cta-padding-inline);
+    --rh-color-interactive-primary-default: var(--felt-preview-color-interactive-primary-default);
+    --rh-color-interactive-primary-hover: var(--felt-preview-color-interactive-primary-hover);
+    --rh-border-radius-default: var(--felt-preview-border-radius-pill);
+    --rh-font-size-body-text-md: var(--felt-preview-cta-font-size);
+    --rh-font-size-body-text-lg: var(--felt-preview-cta-font-size);
+    --rh-space-lg: var(--felt-preview-cta-padding-block);
+    --rh-space-2xl: var(--felt-preview-cta-padding-inline);
 
     /* Suppress the component's native container outline; the host outline below is the ring */
     --rh-cta-focus-container-outline-color: transparent;
@@ -963,23 +962,23 @@
        from the light DOM. box-shadow is unaffected and follows border-radius.
        Two layers: inner Canvas-colored shadow = visual gap, outer = the ring. */
     &:focus-within {
-      --unified-cta-focus-ring-color: var(--unified-color-interactive-primary-default);
-      --unified-cta-focus-ring-size: calc(var(--unified-cta-border-width-focus-ring) * 2);
+      --felt-preview-cta-focus-ring-color: var(--felt-preview-color-interactive-primary-default);
+      --felt-preview-cta-focus-ring-size: calc(var(--felt-preview-cta-border-width-focus-ring) * 2);
 
-      border-radius: var(--unified-border-radius-pill);
+      border-radius: var(--felt-preview-border-radius-pill);
       box-shadow:
-        0 0 0 var(--unified-cta-border-width-focus-ring) Canvas,
-        0 0 0 var(--unified-cta-focus-ring-size) var(--unified-cta-focus-ring-color);
+        0 0 0 var(--felt-preview-cta-border-width-focus-ring) Canvas,
+        0 0 0 var(--felt-preview-cta-focus-ring-size) var(--felt-preview-cta-focus-ring-color);
     }
 
     &[variant='primary'] {
-      --rh-color-interactive-primary-default: var(--unified-cta-primary-bg-default);
-      --rh-color-interactive-primary-hover: var(--unified-cta-primary-bg-hover);
-      --rh-cta-hover-text-decoration: var(--unified-cta-text-decoration);
-      --rh-cta-hover-text-underline-offset: var(--unified-cta-text-underline-offset);
-      --rh-cta-focus-text-decoration: var(--unified-cta-text-decoration);
-      --rh-cta-active-background-color: var(--unified-cta-primary-bg-active);
-      --rh-cta-active-text-decoration: var(--unified-cta-text-decoration);
+      --rh-color-interactive-primary-default: var(--felt-preview-cta-primary-bg-default);
+      --rh-color-interactive-primary-hover: var(--felt-preview-cta-primary-bg-hover);
+      --rh-cta-hover-text-decoration: var(--felt-preview-cta-text-decoration);
+      --rh-cta-hover-text-underline-offset: var(--felt-preview-cta-text-underline-offset);
+      --rh-cta-focus-text-decoration: var(--felt-preview-cta-text-decoration);
+      --rh-cta-active-background-color: var(--felt-preview-cta-primary-bg-active);
+      --rh-cta-active-text-decoration: var(--felt-preview-cta-text-decoration);
       --rh-cta-focus-inner-border-color: transparent;
       --rh-cta-active-inner-border-color: transparent;
 
@@ -988,14 +987,14 @@
          active-specific token that the component's cascade ordering would otherwise
          override with the default bright-red value. */
       &:active {
-        --rh-cta-background-color: var(--unified-cta-primary-bg-active);
-        --rh-cta-border-color: var(--unified-cta-primary-bg-active);
+        --rh-cta-background-color: var(--felt-preview-cta-primary-bg-active);
+        --rh-cta-border-color: var(--felt-preview-cta-primary-bg-active);
       }
     }
 
     &[variant='secondary'] {
       /* stylelint-disable rhds/no-unknown-token-name -- --rh-color-gray-45 added in RHDS v3.1 */
-      --unified-cta-text-decoration-color:
+      --felt-preview-cta-text-decoration-color:
         light-dark(
             var(--rh-color-gray-45, #8c8c8c),
             var(--rh-color-gray-40, #a3a3a3)
@@ -1004,12 +1003,12 @@
 
       --rh-cta-hover-background-color: transparent;
       --rh-cta-hover-color: var(--rh-color-text-primary);
-      --rh-cta-hover-text-decoration: var(--unified-cta-text-decoration);
-      --rh-cta-hover-text-underline-offset: var(--unified-cta-text-underline-offset);
+      --rh-cta-hover-text-decoration: var(--felt-preview-cta-text-decoration);
+      --rh-cta-hover-text-underline-offset: var(--felt-preview-cta-text-underline-offset);
       --rh-cta-focus-background-color: transparent;
-      --rh-cta-focus-text-decoration: var(--unified-cta-text-decoration);
+      --rh-cta-focus-text-decoration: var(--felt-preview-cta-text-decoration);
       --rh-cta-active-background-color: transparent;
-      --rh-cta-active-text-decoration: var(--unified-cta-text-decoration);
+      --rh-cta-active-text-decoration: var(--felt-preview-cta-text-decoration);
 
       /* Suppress the component's inner ::after border on focus/active;
          the host outline ring handles the focus indicator */
@@ -1017,47 +1016,47 @@
       --rh-cta-active-inner-border-color: transparent;
 
       &::part(container):hover {
-        border-width: var(--unified-cta-border-width-hover);
-        padding-block: var(--unified-cta-border-offset-block);
-        padding-inline: var(--unified-cta-border-offset-inline);
+        border-width: var(--felt-preview-cta-border-width-hover);
+        padding-block: var(--felt-preview-cta-border-offset-block);
+        padding-inline: var(--felt-preview-cta-border-offset-inline);
       }
 
       &::part(container):focus-within {
-        border-width: var(--unified-cta-border-width-focus);
-        padding-block: var(--unified-cta-border-offset-block);
-        padding-inline: var(--unified-cta-border-offset-inline);
+        border-width: var(--felt-preview-cta-border-width-focus);
+        padding-block: var(--felt-preview-cta-border-offset-block);
+        padding-inline: var(--felt-preview-cta-border-offset-inline);
       }
 
       &::part(container):active {
-        border-width: var(--unified-cta-border-width-active);
-        padding-block: var(--unified-cta-border-offset-block);
-        padding-inline: var(--unified-cta-border-offset-inline);
+        border-width: var(--felt-preview-cta-border-width-active);
+        padding-block: var(--felt-preview-cta-border-offset-block);
+        padding-inline: var(--felt-preview-cta-border-offset-inline);
       }
     }
 
     &:not([variant]) {
-      --rh-border-radius-default: var(--unified-border-radius-action-plain);
+      --rh-border-radius-default: var(--felt-preview-border-radius-action-plain);
       --rh-cta-hover-background-color: transparent;
-      --rh-cta-hover-text-decoration: var(--unified-cta-text-decoration);
-      --rh-cta-hover-text-underline-offset: var(--unified-cta-text-underline-offset);
+      --rh-cta-hover-text-decoration: var(--felt-preview-cta-text-decoration);
+      --rh-cta-hover-text-underline-offset: var(--felt-preview-cta-text-underline-offset);
       --rh-cta-focus-container-background-color: transparent;
-      --rh-cta-focus-color: var(--unified-color-text-interactive-focus);
-      --rh-cta-focus-text-decoration: var(--unified-cta-text-decoration);
+      --rh-cta-focus-color: var(--felt-preview-color-text-interactive-focus);
+      --rh-cta-focus-text-decoration: var(--felt-preview-cta-text-decoration);
       --rh-cta-active-container-background-color:
         var(
-            --unified-color-interactive-fill-plain-active
+            --felt-preview-color-interactive-fill-plain-active
           );
-      --rh-cta-active-text-decoration: var(--unified-cta-text-decoration);
+      --rh-cta-active-text-decoration: var(--felt-preview-cta-text-decoration);
 
       &:focus-within {
-        border-radius: var(--unified-border-radius-action-plain);
+        border-radius: var(--felt-preview-border-radius-action-plain);
       }
     }
 
     /* stylelint-disable-next-line no-descending-specificity */
     &:is([variant='tertiary'], [variant='brick']) {
       /* stylelint-disable rhds/no-unknown-token-name -- --rh-color-gray-45 added in RHDS v3.1 */
-      --unified-cta-text-decoration-color:
+      --felt-preview-cta-text-decoration-color:
         light-dark(
             var(--rh-color-gray-45, #8c8c8c),
             var(--rh-color-gray-40, #a3a3a3)
@@ -1065,12 +1064,12 @@
       /* stylelint-enable rhds/no-unknown-token-name */
 
       --rh-cta-hover-background-color: transparent;
-      --rh-cta-hover-text-decoration: var(--unified-cta-text-decoration);
-      --rh-cta-hover-text-underline-offset: var(--unified-cta-text-underline-offset);
-      --rh-cta-focus-color: var(--unified-color-text-interactive-focus);
-      --rh-cta-focus-text-decoration: var(--unified-cta-text-decoration);
-      --rh-cta-focus-text-underline-offset: var(--unified-cta-text-underline-offset);
-      --rh-cta-active-text-decoration: var(--unified-cta-text-decoration);
+      --rh-cta-hover-text-decoration: var(--felt-preview-cta-text-decoration);
+      --rh-cta-hover-text-underline-offset: var(--felt-preview-cta-text-underline-offset);
+      --rh-cta-focus-color: var(--felt-preview-color-text-interactive-focus);
+      --rh-cta-focus-text-decoration: var(--felt-preview-cta-text-decoration);
+      --rh-cta-focus-text-underline-offset: var(--felt-preview-cta-text-underline-offset);
+      --rh-cta-active-text-decoration: var(--felt-preview-cta-text-decoration);
 
       /* Suppress the component's inner ::after border on focus/active;
          the host outline ring handles the focus indicator */
@@ -1079,8 +1078,8 @@
 
       &::part(container) {
         border-style: solid;
-        color: var(--unified-color-text-interactive-default);
-        border-color: var(--unified-color-border-interactive-subtle-default);
+        color: var(--felt-preview-color-text-interactive-default);
+        border-color: var(--felt-preview-color-border-interactive-subtle-default);
       }
 
       /* The component's shadow DOM has no --_focus-inner-border-color mapping for
@@ -1091,34 +1090,34 @@
       }
 
       &::part(container):hover {
-        border-width: var(--unified-cta-border-width-hover);
-        color: var(--unified-color-text-interactive-hover);
-        border-color: var(--unified-color-border-interactive-subtle-default);
-        padding-block: var(--unified-cta-border-offset-block);
-        padding-inline: var(--unified-cta-border-offset-inline);
+        border-width: var(--felt-preview-cta-border-width-hover);
+        color: var(--felt-preview-color-text-interactive-hover);
+        border-color: var(--felt-preview-color-border-interactive-subtle-default);
+        padding-block: var(--felt-preview-cta-border-offset-block);
+        padding-inline: var(--felt-preview-cta-border-offset-inline);
       }
 
       &::part(container):focus-within {
-        border-width: var(--unified-cta-border-width-focus);
-        color: var(--unified-color-text-interactive-focus);
-        border-color: var(--unified-color-border-interactive-subtle-default);
-        padding-block: var(--unified-cta-border-offset-block);
-        padding-inline: var(--unified-cta-border-offset-inline);
+        border-width: var(--felt-preview-cta-border-width-focus);
+        color: var(--felt-preview-color-text-interactive-focus);
+        border-color: var(--felt-preview-color-border-interactive-subtle-default);
+        padding-block: var(--felt-preview-cta-border-offset-block);
+        padding-inline: var(--felt-preview-cta-border-offset-inline);
       }
 
       &::part(container):active {
-        border-width: var(--unified-cta-border-width-active);
-        color: var(--unified-color-text-interactive-active);
-        border-color: var(--unified-color-border-interactive-subtle-default);
-        padding-block: var(--unified-cta-border-offset-block);
-        padding-inline: var(--unified-cta-border-offset-inline);
+        border-width: var(--felt-preview-cta-border-width-active);
+        color: var(--felt-preview-color-text-interactive-active);
+        border-color: var(--felt-preview-color-border-interactive-subtle-default);
+        padding-block: var(--felt-preview-cta-border-offset-block);
+        padding-inline: var(--felt-preview-cta-border-offset-inline);
       }
     }
 
     &[compact] {
-      --rh-space-lg: var(--unified-cta-padding-block-compact);
-      --rh-space-2xl: var(--unified-cta-padding-inline-compact);
-      --unified-cta-font-size: var(--unified-font-size-body-text-sm);
+      --rh-space-lg: var(--felt-preview-cta-padding-block-compact);
+      --rh-space-2xl: var(--felt-preview-cta-padding-inline-compact);
+      --felt-preview-cta-font-size: var(--felt-preview-font-size-body-text-sm);
     }
   }
 }
@@ -1126,7 +1125,7 @@
 /* Element: Progress Stepper */
 @layer progress-stepper {
   rh-progress-stepper {
-    --rh-size-icon-02: calc(var(--unified-size-icon-00) + var(--unified-space-md));
+    --rh-size-icon-02: calc(var(--felt-preview-size-icon-00) + var(--felt-preview-space-md));
   }
 }
 
@@ -1146,14 +1145,14 @@
     --rh-spinner-sm-animation-name: felt-dash;
     --rh-spinner-sm-dash-array: 283;
     --rh-spinner-sm-dash-offset: 280;
-    --rh-color-accent-base: var(--unified-color-border-interactive-default);
+    --rh-color-accent-base: var(--felt-preview-color-border-interactive-default);
   }
 }
 
 /* Element: Tag */
 @layer tag {
   rh-tag {
-    --rh-size-icon-01: var(--unified-size-icon-00);
+    --rh-size-icon-01: var(--felt-preview-size-icon-00);
 
     /* Filled tags look the same in both light and dark modes:
        pastel fill, dark text/icon. Nested light-dark() ensures
@@ -1165,26 +1164,26 @@
     /* Gray */
     --rh-color-gray-10:
       light-dark(
-          var(--unified-color-gray-20),
-          var(--unified-color-gray-95)
+          var(--felt-preview-color-gray-20),
+          var(--felt-preview-color-gray-95)
         );
-    --rh-color-gray-60: var(--unified-color-gray-95);
+    --rh-color-gray-60: var(--felt-preview-color-gray-95);
     --rh-color-gray-70:
       light-dark(
-          var(--unified-color-gray-95),
-          var(--unified-color-gray-20)
+          var(--felt-preview-color-gray-95),
+          var(--felt-preview-color-gray-20)
         );
 
     /* Red */
     --rh-color-red-10:
       light-dark(
           var(--rh-color-red-20, #fbc5c5),
-          var(--unified-color-gray-95)
+          var(--felt-preview-color-gray-95)
         );
-    --rh-color-red-60: var(--unified-color-gray-95);
+    --rh-color-red-60: var(--felt-preview-color-gray-95);
     --rh-color-red-70:
       light-dark(
-          var(--unified-color-gray-95),
+          var(--felt-preview-color-gray-95),
           var(--rh-color-red-20, #fbc5c5)
         );
 
@@ -1192,12 +1191,12 @@
     --rh-color-red-orange-10:
       light-dark(
           var(--rh-color-red-orange-20, #fbbea8),
-          var(--unified-color-gray-95)
+          var(--felt-preview-color-gray-95)
         );
-    --rh-color-red-orange-60: var(--unified-color-gray-95);
+    --rh-color-red-orange-60: var(--felt-preview-color-gray-95);
     --rh-color-red-orange-70:
       light-dark(
-          var(--unified-color-gray-95),
+          var(--felt-preview-color-gray-95),
           var(--rh-color-red-orange-20, #fbbea8)
         );
 
@@ -1205,12 +1204,12 @@
     --rh-color-orange-10:
       light-dark(
           var(--rh-color-orange-20, #fccb8f),
-          var(--unified-color-gray-95)
+          var(--felt-preview-color-gray-95)
         );
-    --rh-color-orange-60: var(--unified-color-gray-95);
+    --rh-color-orange-60: var(--felt-preview-color-gray-95);
     --rh-color-orange-70:
       light-dark(
-          var(--unified-color-gray-95),
+          var(--felt-preview-color-gray-95),
           var(--rh-color-orange-20, #fccb8f)
         );
 
@@ -1218,12 +1217,12 @@
     --rh-color-yellow-10:
       light-dark(
           var(--rh-color-yellow-20, #ffe072),
-          var(--unified-color-gray-95)
+          var(--felt-preview-color-gray-95)
         );
-    --rh-color-yellow-60: var(--unified-color-gray-95);
+    --rh-color-yellow-60: var(--felt-preview-color-gray-95);
     --rh-color-yellow-70:
       light-dark(
-          var(--unified-color-gray-95),
+          var(--felt-preview-color-gray-95),
           var(--rh-color-yellow-20, #ffe072)
         );
 
@@ -1231,12 +1230,12 @@
     --rh-color-green-10:
       light-dark(
           var(--rh-color-green-20, #d1f1bb),
-          var(--unified-color-gray-95)
+          var(--felt-preview-color-gray-95)
         );
-    --rh-color-green-60: var(--unified-color-gray-95);
+    --rh-color-green-60: var(--felt-preview-color-gray-95);
     --rh-color-green-70:
       light-dark(
-          var(--unified-color-gray-95),
+          var(--felt-preview-color-gray-95),
           var(--rh-color-green-20, #d1f1bb)
         );
 
@@ -1244,12 +1243,12 @@
     --rh-color-teal-10:
       light-dark(
           var(--rh-color-teal-20, #b9e5e5),
-          var(--unified-color-gray-95)
+          var(--felt-preview-color-gray-95)
         );
-    --rh-color-teal-60: var(--unified-color-gray-95);
+    --rh-color-teal-60: var(--felt-preview-color-gray-95);
     --rh-color-teal-70:
       light-dark(
-          var(--unified-color-gray-95),
+          var(--felt-preview-color-gray-95),
           var(--rh-color-teal-20, #b9e5e5)
         );
 
@@ -1257,12 +1256,12 @@
     --rh-color-blue-10:
       light-dark(
           var(--rh-color-blue-20, #b9dafc),
-          var(--unified-color-gray-95)
+          var(--felt-preview-color-gray-95)
         );
-    --rh-color-blue-60: var(--unified-color-gray-95);
+    --rh-color-blue-60: var(--felt-preview-color-gray-95);
     --rh-color-blue-70:
       light-dark(
-          var(--unified-color-gray-95),
+          var(--felt-preview-color-gray-95),
           var(--rh-color-blue-20, #b9dafc)
         );
 
@@ -1270,12 +1269,12 @@
     --rh-color-purple-10:
       light-dark(
           var(--rh-color-purple-20, #d0c5f4),
-          var(--unified-color-gray-95)
+          var(--felt-preview-color-gray-95)
         );
-    --rh-color-purple-60: var(--unified-color-gray-95);
+    --rh-color-purple-60: var(--felt-preview-color-gray-95);
     --rh-color-purple-70:
       light-dark(
-          var(--unified-color-gray-95),
+          var(--felt-preview-color-gray-95),
           var(--rh-color-purple-20, #d0c5f4)
         );
 
@@ -1283,95 +1282,95 @@
        -30/-50 are always overridden (not hover-scoped) because -30
        also controls the dark-mode icon color in rh-tag.css. */
     &:is(:not([variant]), [variant='filled']) {
-      --rh-border-width-sm: var(--unified-border-width-md);
+      --rh-border-width-sm: var(--felt-preview-border-width-md);
       --rh-color-gray-30:
         light-dark(
-            var(--unified-color-gray-20),
-            var(--unified-color-gray-95)
+            var(--felt-preview-color-gray-20),
+            var(--felt-preview-color-gray-95)
           );
       --rh-color-gray-50:
         light-dark(
-            var(--unified-color-gray-95),
-            var(--unified-color-gray-20)
+            var(--felt-preview-color-gray-95),
+            var(--felt-preview-color-gray-20)
           );
       --rh-color-red-30:
         light-dark(
             var(--rh-color-red-20, #fbc5c5),
-            var(--unified-color-gray-95)
+            var(--felt-preview-color-gray-95)
           );
       --rh-color-red-50:
         light-dark(
-            var(--unified-color-gray-95),
+            var(--felt-preview-color-gray-95),
             var(--rh-color-red-20, #fbc5c5)
           );
       --rh-color-red-orange-30:
         light-dark(
             var(--rh-color-red-orange-20, #fbbea8),
-            var(--unified-color-gray-95)
+            var(--felt-preview-color-gray-95)
           );
       --rh-color-red-orange-50:
         light-dark(
-            var(--unified-color-gray-95),
+            var(--felt-preview-color-gray-95),
             var(--rh-color-red-orange-20, #fbbea8)
           );
       --rh-color-orange-30:
         light-dark(
             var(--rh-color-orange-20, #fccb8f),
-            var(--unified-color-gray-95)
+            var(--felt-preview-color-gray-95)
           );
       --rh-color-orange-50:
         light-dark(
-            var(--unified-color-gray-95),
+            var(--felt-preview-color-gray-95),
             var(--rh-color-orange-20, #fccb8f)
           );
       --rh-color-yellow-30:
         light-dark(
             var(--rh-color-yellow-20, #ffe072),
-            var(--unified-color-gray-95)
+            var(--felt-preview-color-gray-95)
           );
       --rh-color-yellow-50:
         light-dark(
-            var(--unified-color-gray-95),
+            var(--felt-preview-color-gray-95),
             var(--rh-color-yellow-20, #ffe072)
           );
       --rh-color-green-30:
         light-dark(
             var(--rh-color-green-20, #d1f1bb),
-            var(--unified-color-gray-95)
+            var(--felt-preview-color-gray-95)
           );
       --rh-color-green-50:
         light-dark(
-            var(--unified-color-gray-95),
+            var(--felt-preview-color-gray-95),
             var(--rh-color-green-20, #d1f1bb)
           );
       --rh-color-teal-30:
         light-dark(
             var(--rh-color-teal-20, #b9e5e5),
-            var(--unified-color-gray-95)
+            var(--felt-preview-color-gray-95)
           );
       --rh-color-teal-50:
         light-dark(
-            var(--unified-color-gray-95),
+            var(--felt-preview-color-gray-95),
             var(--rh-color-teal-20, #b9e5e5)
           );
       --rh-color-blue-30:
         light-dark(
             var(--rh-color-blue-20, #b9dafc),
-            var(--unified-color-gray-95)
+            var(--felt-preview-color-gray-95)
           );
       --rh-color-blue-50:
         light-dark(
-            var(--unified-color-gray-95),
+            var(--felt-preview-color-gray-95),
             var(--rh-color-blue-20, #b9dafc)
           );
       --rh-color-purple-30:
         light-dark(
             var(--rh-color-purple-20, #d0c5f4),
-            var(--unified-color-gray-95)
+            var(--felt-preview-color-gray-95)
           );
       --rh-color-purple-50:
         light-dark(
-            var(--unified-color-gray-95),
+            var(--felt-preview-color-gray-95),
             var(--rh-color-purple-20, #d0c5f4)
           );
     }
@@ -1428,38 +1427,38 @@
        &[color] raises specificity to beat &[variant='outline']
        &[color='…'] (0-3-0). */
     &[disabled] {
-      --rh-border-width-sm: var(--unified-border-width-md);
-      --rh-color-gray-60: var(--unified-color-icon-status-disabled);
-      --rh-color-gray-70: var(--unified-color-gray-70);
-      --rh-color-red-60: var(--unified-color-icon-status-disabled);
-      --rh-color-red-20: var(--unified-color-icon-status-disabled);
-      --rh-color-red-30: var(--unified-color-icon-status-disabled);
-      --rh-color-red-orange-60: var(--unified-color-icon-status-disabled);
-      --rh-color-red-orange-20: var(--unified-color-icon-status-disabled);
-      --rh-color-red-orange-30: var(--unified-color-icon-status-disabled);
-      --rh-color-orange-60: var(--unified-color-icon-status-disabled);
-      --rh-color-orange-20: var(--unified-color-icon-status-disabled);
-      --rh-color-orange-30: var(--unified-color-icon-status-disabled);
-      --rh-color-yellow-60: var(--unified-color-icon-status-disabled);
-      --rh-color-yellow-20: var(--unified-color-icon-status-disabled);
-      --rh-color-yellow-30: var(--unified-color-icon-status-disabled);
-      --rh-color-green-60: var(--unified-color-icon-status-disabled);
-      --rh-color-green-20: var(--unified-color-icon-status-disabled);
-      --rh-color-green-30: var(--unified-color-icon-status-disabled);
-      --rh-color-teal-60: var(--unified-color-icon-status-disabled);
-      --rh-color-teal-20: var(--unified-color-icon-status-disabled);
-      --rh-color-teal-30: var(--unified-color-icon-status-disabled);
-      --rh-color-blue-60: var(--unified-color-icon-status-disabled);
-      --rh-color-blue-20: var(--unified-color-icon-status-disabled);
-      --rh-color-blue-30: var(--unified-color-icon-status-disabled);
-      --rh-color-purple-60: var(--unified-color-icon-status-disabled);
-      --rh-color-purple-20: var(--unified-color-icon-status-disabled);
-      --rh-color-purple-30: var(--unified-color-icon-status-disabled);
+      --rh-border-width-sm: var(--felt-preview-border-width-md);
+      --rh-color-gray-60: var(--felt-preview-color-icon-status-disabled);
+      --rh-color-gray-70: var(--felt-preview-color-gray-70);
+      --rh-color-red-60: var(--felt-preview-color-icon-status-disabled);
+      --rh-color-red-20: var(--felt-preview-color-icon-status-disabled);
+      --rh-color-red-30: var(--felt-preview-color-icon-status-disabled);
+      --rh-color-red-orange-60: var(--felt-preview-color-icon-status-disabled);
+      --rh-color-red-orange-20: var(--felt-preview-color-icon-status-disabled);
+      --rh-color-red-orange-30: var(--felt-preview-color-icon-status-disabled);
+      --rh-color-orange-60: var(--felt-preview-color-icon-status-disabled);
+      --rh-color-orange-20: var(--felt-preview-color-icon-status-disabled);
+      --rh-color-orange-30: var(--felt-preview-color-icon-status-disabled);
+      --rh-color-yellow-60: var(--felt-preview-color-icon-status-disabled);
+      --rh-color-yellow-20: var(--felt-preview-color-icon-status-disabled);
+      --rh-color-yellow-30: var(--felt-preview-color-icon-status-disabled);
+      --rh-color-green-60: var(--felt-preview-color-icon-status-disabled);
+      --rh-color-green-20: var(--felt-preview-color-icon-status-disabled);
+      --rh-color-green-30: var(--felt-preview-color-icon-status-disabled);
+      --rh-color-teal-60: var(--felt-preview-color-icon-status-disabled);
+      --rh-color-teal-20: var(--felt-preview-color-icon-status-disabled);
+      --rh-color-teal-30: var(--felt-preview-color-icon-status-disabled);
+      --rh-color-blue-60: var(--felt-preview-color-icon-status-disabled);
+      --rh-color-blue-20: var(--felt-preview-color-icon-status-disabled);
+      --rh-color-blue-30: var(--felt-preview-color-icon-status-disabled);
+      --rh-color-purple-60: var(--felt-preview-color-icon-status-disabled);
+      --rh-color-purple-20: var(--felt-preview-color-icon-status-disabled);
+      --rh-color-purple-30: var(--felt-preview-color-icon-status-disabled);
 
       &,
       &[color] {
-        --rh-color-gray-30: var(--unified-color-gray-20);
-        --rh-color-gray-50: var(--unified-color-gray-70);
+        --rh-color-gray-30: var(--felt-preview-color-gray-20);
+        --rh-color-gray-50: var(--felt-preview-color-gray-70);
       }
     }
   }
@@ -1472,29 +1471,29 @@
   rh-switch {
     --rh-switch-show-check: true;
     --rh-switch-unchecked: transparent;
-    --rh-switch-checked: var(--unified-color-interactive-primary-default);
+    --rh-switch-checked: var(--felt-preview-color-interactive-primary-default);
     --rh-switch-disabled:
       light-dark(
-          var(--unified-color-gray-30),
-          var(--unified-color-gray-60)
+          var(--felt-preview-color-gray-30),
+          var(--felt-preview-color-gray-60)
         );
-    --rh-border-width-md: var(--unified-border-width-md);
-    --rh-color-border-interactive: var(--unified-color-interactive-primary-default);
-    --rh-space-sm: var(--unified-space-sm);
-    --rh-color-text-secondary: var(--unified-color-gray-60);
-    --rh-color-surface-lightest: var(--unified-color-gray-50);
-    --rh-color-surface-dark: var(--unified-color-gray-40);
+    --rh-border-width-md: var(--felt-preview-border-width-md);
+    --rh-color-border-interactive: var(--felt-preview-color-interactive-primary-default);
+    --rh-space-sm: var(--felt-preview-space-sm);
+    --rh-color-text-secondary: var(--felt-preview-color-gray-60);
+    --rh-color-surface-lightest: var(--felt-preview-color-gray-50);
+    --rh-color-surface-dark: var(--felt-preview-color-gray-40);
 
     &::part(switch) {
-      border: 1px solid var(--unified-color-border-control-default);
+      border: 1px solid var(--felt-preview-color-border-control-default);
     }
 
     &[checked]:not(:disabled) {
       --rh-color-surface-lightest: #ffffff;
-      --rh-color-surface-dark: var(--unified-color-gray-95);
+      --rh-color-surface-dark: var(--felt-preview-color-gray-95);
 
       &::part(switch) {
-        border-color: var(--unified-color-interactive-primary-default);
+        border-color: var(--felt-preview-color-interactive-primary-default);
       }
     }
   }
@@ -1508,14 +1507,14 @@
     --rh-color-border-subtle: transparent;
     --rh-color-surface-lightest: transparent;
     --rh-color-surface-darkest: transparent;
-    --rh-space-xl: var(--unified-space-xl);
+    --rh-space-xl: var(--felt-preview-space-xl);
 
     background-color:
       light-dark(
           var(--rh-color-surface-lightest),
           var(--rh-color-gray-80)
         );
-    font-size: var(--unified-font-size-body-text-sm);
+    font-size: var(--felt-preview-font-size-body-text-sm);
 
     & rh-accordion-header {
       --rh-color-interactive-primary-default: transparent;
@@ -1523,39 +1522,39 @@
       --rh-color-surface-dark: transparent;
       --rh-color-text-primary:
         light-dark(
-            var(--unified-color-gray-95),
+            var(--felt-preview-color-gray-95),
             var(--rh-color-white)
           );
-      --rh-space-lg: var(--unified-space-md);
-      --rh-space-xl: var(--unified-space-lg);
+      --rh-space-lg: var(--felt-preview-space-md);
+      --rh-space-xl: var(--felt-preview-space-lg);
 
       /* !important needed to override shadow DOM :host([expanded]) border */
       border-inline-end: none !important;
-      border-radius: var(--unified-border-radius-action-plain);
-      line-height: var(--unified-line-height-body-text-md);
+      border-radius: var(--felt-preview-border-radius-action-plain);
+      line-height: var(--felt-preview-line-height-body-text-md);
     }
 
     &[large] rh-accordion-header {
-      --rh-space-lg: var(--unified-space-lg);
+      --rh-space-lg: var(--felt-preview-space-lg);
     }
 
     & rh-accordion-header:hover {
-      background-color: var(--unified-color-interactive-fill-plain-hover);
+      background-color: var(--felt-preview-color-interactive-fill-plain-hover);
     }
 
     & rh-accordion-header[expanded] {
-      background-color: var(--unified-color-interactive-fill-plain-hover);
+      background-color: var(--felt-preview-color-interactive-fill-plain-hover);
     }
 
     & rh-accordion-header:focus-within {
       position: relative;
       z-index: 1;
-      background-color: var(--unified-color-interactive-fill-plain-hover);
+      background-color: var(--felt-preview-color-interactive-fill-plain-hover);
       outline:
-        var(--unified-border-width-md)
+        var(--felt-preview-border-width-md)
         solid
-        var(--unified-color-interactive-primary-default);
-      outline-offset: calc(-1 * var(--unified-border-width-md));
+        var(--felt-preview-color-interactive-primary-default);
+      outline-offset: calc(-1 * var(--felt-preview-border-width-md));
     }
 
     & :is(h1, h2, h3, h4, h5, h6) {
@@ -1564,8 +1563,8 @@
     }
 
     & rh-accordion-panel {
-      --rh-accordion-panel-padding-block: var(--unified-space-md) var(--unified-space-xl);
-      --rh-accordion-panel-padding-inline: var(--unified-space-lg);
+      --rh-accordion-panel-padding-block: var(--felt-preview-space-md) var(--felt-preview-space-xl);
+      --rh-accordion-panel-padding-inline: var(--felt-preview-space-lg);
     }
 
     /* !important needed to override shadow DOM #container border */
@@ -1576,8 +1575,8 @@
     &.bordered {
       --rh-color-border-subtle:
         light-dark(
-            var(--unified-color-gray-30),
-            var(--unified-color-gray-50)
+            var(--felt-preview-color-gray-30),
+            var(--felt-preview-color-gray-50)
           );
 
       background-color: none;
@@ -1596,7 +1595,7 @@
       }
 
       & rh-accordion-header:focus-within {
-        outline-offset: calc(-1 * var(--unified-border-width-md));
+        outline-offset: calc(-1 * var(--felt-preview-border-width-md));
       }
     }
   }
@@ -1605,63 +1604,63 @@
 /* Element: Alert */
 @layer alert {
   rh-alert {
-    --unified-alert-border-color: var(--rh-color-teal-50, #37a3a3);
+    --felt-preview-alert-border-color: var(--rh-color-teal-50, #37a3a3);
     --rh-alert-border-width: 0;
     --rh-button-close-width: 100%;
     --rh-button-close-radius: 50%;
-    --rh-color-surface-dark: var(--unified-color-gray-80);
+    --rh-color-surface-dark: var(--felt-preview-color-gray-80);
 
     /* Replace status-specific background tints with primary surface */
-    --rh-color-teal-10: var(--unified-color-surface-primary);
-    --rh-color-surface-status-neutral: var(--unified-color-surface-primary);
-    --rh-color-surface-status-info: var(--unified-color-surface-primary);
-    --rh-color-surface-status-success: var(--unified-color-surface-primary);
-    --rh-color-surface-status-caution: var(--unified-color-surface-primary);
-    --rh-color-surface-status-warning: var(--unified-color-surface-primary);
-    --rh-color-surface-status-danger: var(--unified-color-surface-primary);
+    --rh-color-teal-10: var(--felt-preview-color-surface-primary);
+    --rh-color-surface-status-neutral: var(--felt-preview-color-surface-primary);
+    --rh-color-surface-status-info: var(--felt-preview-color-surface-primary);
+    --rh-color-surface-status-success: var(--felt-preview-color-surface-primary);
+    --rh-color-surface-status-caution: var(--felt-preview-color-surface-primary);
+    --rh-color-surface-status-warning: var(--felt-preview-color-surface-primary);
+    --rh-color-surface-status-danger: var(--felt-preview-color-surface-primary);
 
     border:
-      var(--unified-border-width-md)
+      var(--felt-preview-border-width-md)
       solid
-      var(--unified-alert-border-color);
-    border-radius: var(--unified-border-radius-default);
+      var(--felt-preview-alert-border-color);
+    border-radius: var(--felt-preview-border-radius-default);
     overflow: hidden;
 
-    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
-    --rh-color-interactive-primary-hover: var(--unified-color-interactive-primary-hover);
-    --rh-button-close-hover-background: var(--unified-color-interactive-fill-plain-hover);
-    --rh-button-close-focus-background: var(--unified-color-interactive-fill-plain-focus);
-    --rh-button-close-active-background: var(--unified-color-interactive-fill-plain-active);
+    --rh-color-interactive-primary-default: var(--felt-preview-color-interactive-primary-default);
+    --rh-color-interactive-primary-hover: var(--felt-preview-color-interactive-primary-hover);
+    --rh-button-close-hover-background: var(--felt-preview-color-interactive-fill-plain-hover);
+    --rh-button-close-focus-background: var(--felt-preview-color-interactive-fill-plain-focus);
+    --rh-button-close-active-background: var(--felt-preview-color-interactive-fill-plain-active);
 
     &[state='neutral'] {
-      --unified-alert-border-color: var(--rh-color-status-neutral);
+      --felt-preview-alert-border-color: var(--rh-color-status-neutral);
     }
 
     &[state='info'] {
-      --unified-alert-border-color: var(--rh-color-status-info);
+      --felt-preview-alert-border-color: var(--rh-color-status-info);
     }
 
     &[state='success'] {
-      --unified-alert-border-color: var(--rh-color-status-success);
+      --felt-preview-alert-border-color: var(--rh-color-status-success);
     }
 
     &[state='caution'] {
-      --unified-alert-border-color: var(--rh-color-status-caution);
+      --felt-preview-alert-border-color: var(--rh-color-status-caution);
     }
 
     &[state='warning'] {
-      --unified-alert-border-color: var(--rh-color-status-warning);
+      --felt-preview-alert-border-color: var(--rh-color-status-warning);
     }
 
     &[state='danger'] {
-      --unified-alert-border-color: var(--rh-color-status-danger);
+      --felt-preview-alert-border-color: var(--rh-color-status-danger);
     }
 
     &[variant='toast'] {
       --rh-box-shadow-xl: none;
-      --rh-color-surface-lightest: var(--unified-color-surface-primary);
+      --rh-color-surface-lightest: var(--felt-preview-color-surface-primary);
 
-      box-shadow: var(--unified-box-shadow-floating);
+      box-shadow: var(--felt-preview-box-shadow-floating);
     }
   }
 }
@@ -1671,77 +1670,77 @@
   /* ── rh-tabs (container) ────────────────────────────── */
   rh-tabs {
     /* Bottom border color under the tab row */
-    --rh-color-border-subtle: var(--unified-color-border-interactive-subtle-default);
+    --rh-color-border-subtle: var(--felt-preview-color-border-interactive-subtle-default);
 
     /* Active/selected tab indicator color */
     --rh-tabs-active-border-color: var(--rh-color-brand-red);
-    --rh-border-width-lg: var(--unified-border-width-lg);
+    --rh-border-width-lg: var(--felt-preview-border-width-lg);
 
     /* Focus ring color (inherited by child rh-tab elements) */
-    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+    --rh-color-interactive-primary-default: var(--felt-preview-color-interactive-primary-default);
 
     /* Overflow buttons: square sizing, hide bottom-border indicator */
-    --rh-tabs-overflow-button-padding-block: var(--unified-space-md);
-    --rh-tabs-overflow-button-padding-inline: var(--unified-space-md);
+    --rh-tabs-overflow-button-padding-block: var(--felt-preview-space-md);
+    --rh-tabs-overflow-button-padding-inline: var(--felt-preview-space-md);
     --rh-tabs-overflow-button-min-size: 56px;
     --rh-tabs-overflow-hover-indicator:
-      var(--unified-border-width-sm)
+      var(--felt-preview-border-width-sm)
       solid
-      var(--unified-color-border-interactive-subtle-default);
+      var(--felt-preview-color-border-interactive-subtle-default);
 
     /* Overflow icon wrapper: inset circular pill hover/focus.
        32px = 16px icon + 8px padding on each side. */
     --rh-tabs-overflow-icon-size: 32px;
-    --rh-tabs-overflow-icon-radius: var(--unified-border-radius-pill);
-    --rh-tabs-overflow-hover-background: var(--unified-color-interactive-fill-plain-hover);
-    --rh-tabs-overflow-focus-background: var(--unified-color-interactive-fill-plain-focus);
+    --rh-tabs-overflow-icon-radius: var(--felt-preview-border-radius-pill);
+    --rh-tabs-overflow-hover-background: var(--felt-preview-color-interactive-fill-plain-hover);
+    --rh-tabs-overflow-focus-background: var(--felt-preview-color-interactive-fill-plain-focus);
     --rh-tabs-overflow-focus-outline:
-      var(--unified-border-width-lg)
+      var(--felt-preview-border-width-lg)
       solid
-      var(--unified-color-border-interactive-default);
+      var(--felt-preview-color-border-interactive-default);
     --rh-tabs-overflow-focus-outline-offset: 3px;
   }
 
   /* ── rh-tabs vertical: adjust first/last tab margin ──── */
   rh-tabs[vertical] {
-    --rh-space-xl: var(--unified-space-2xl);
+    --rh-space-xl: var(--felt-preview-space-2xl);
   }
 
   /* ── rh-tab (individual tab button) ──────────────────── */
   rh-tab {
     /* Dark box tab background: gray-80 not gray-90 */
-    --rh-color-surface-darker: var(--unified-color-gray-80);
+    --rh-color-surface-darker: var(--felt-preview-color-gray-80);
 
     /* Shift padding from button to inner pill wrapper.
        Outer button gets the spacing between tab edge and pill,
        inner wrapper gets the pill's own internal padding. */
-    --rh-tabs-link-padding-block-start: var(--unified-space-md);
-    --rh-tabs-link-padding-block-end: var(--unified-space-md);
-    --rh-tabs-link-padding-inline-start: var(--unified-space-lg);
-    --rh-tabs-link-padding-inline-end: var(--unified-space-lg);
+    --rh-tabs-link-padding-block-start: var(--felt-preview-space-md);
+    --rh-tabs-link-padding-block-end: var(--felt-preview-space-md);
+    --rh-tabs-link-padding-inline-start: var(--felt-preview-space-lg);
+    --rh-tabs-link-padding-inline-end: var(--felt-preview-space-lg);
 
     /* Activate the inner pill wrapper */
-    --rh-tabs-link-inner-radius: var(--unified-border-radius-pill);
-    --rh-tabs-link-inner-padding: var(--unified-space-md) var(--unified-space-lg);
+    --rh-tabs-link-inner-radius: var(--felt-preview-border-radius-pill);
+    --rh-tabs-link-inner-padding: var(--felt-preview-space-md) var(--felt-preview-space-lg);
     --rh-tabs-link-inner-justify: center;
 
     /* Hover: pill fill, remove default bottom-border indicator */
-    --rh-tabs-link-hover-background: var(--unified-color-interactive-fill-plain-hover);
+    --rh-tabs-link-hover-background: var(--felt-preview-color-interactive-fill-plain-hover);
     --rh-color-interactive-secondary-default: transparent;
 
     /* Focus: pill fill + pill-shaped outline ring,
        hide the default rectangular button outline */
-    --rh-tabs-link-focus-background: var(--unified-color-interactive-fill-plain-focus);
+    --rh-tabs-link-focus-background: var(--felt-preview-color-interactive-fill-plain-focus);
     --rh-tabs-link-focus-inner-outline:
-      var(--unified-border-width-lg)
+      var(--felt-preview-border-width-lg)
       solid
-      var(--unified-color-border-interactive-default);
+      var(--felt-preview-color-border-interactive-default);
     --rh-tabs-link-focus-outline: none;
   }
 
   /* ── disabled tab: text and icon use disabled tokens ── */
   rh-tab[disabled] {
-    --rh-tabs-link-color: var(--unified-color-text-status-disabled);
+    --rh-tabs-link-color: var(--felt-preview-color-text-status-disabled);
   }
 
   rh-tab[active]::part(button):after {
@@ -1749,7 +1748,7 @@
     background-color: var(--rh-tabs-active-border-color);
     block-size: var(--rh-border-width-lg, 3px);
     inset-block-start: auto;
-    border-radius: var(--unified-border-radius-pill);
+    border-radius: var(--felt-preview-border-radius-pill);
   }
 
   rh-tabs[box] rh-tab[active]::part(button):after {
@@ -1779,33 +1778,33 @@
 /* Element: Dialog (Modal in PatternFly) */
 @layer dialog {
   rh-dialog {
-    --rh-border-radius-default: var(--unified-border-radius-large);
-    --rh-color-icon-secondary: var(--unified-color-icon-secondary);
-    --rh-space-xl: var(--unified-space-xl);
-    --rh-space-lg: var(--unified-space-lg);
+    --rh-border-radius-default: var(--felt-preview-border-radius-large);
+    --rh-color-icon-secondary: var(--felt-preview-color-icon-secondary);
+    --rh-space-xl: var(--felt-preview-space-xl);
+    --rh-space-lg: var(--felt-preview-space-lg);
     --rh-button-close-width: 100%;
     --rh-button-close-radius: 50%;
-    --rh-button-close-hover-background: var(--unified-color-interactive-fill-plain-hover);
-    --rh-button-close-focus-background: var(--unified-color-interactive-fill-plain-focus);
-    --rh-button-close-active-background: var(--unified-color-interactive-fill-plain-active);
-    --unified-dialog-header-sm: var(--rh-font-size-body-text-xl);
-    --unified-dialog-header-md: var(--rh-font-size-body-text-2xl);
-    --unified-dialog-header-lg: 28px; /* no 3xl */
+    --rh-button-close-hover-background: var(--felt-preview-color-interactive-fill-plain-hover);
+    --rh-button-close-focus-background: var(--felt-preview-color-interactive-fill-plain-focus);
+    --rh-button-close-active-background: var(--felt-preview-color-interactive-fill-plain-active);
+    --felt-preview-dialog-header-sm: var(--rh-font-size-body-text-xl);
+    --felt-preview-dialog-header-md: var(--rh-font-size-body-text-2xl);
+    --felt-preview-dialog-header-lg: 28px; /* no 3xl */
 
     &[variant='small'] [slot='header'] {
-      --rh-font-size-body-text-lg: var(--unified-dialog-header-sm);
+      --rh-font-size-body-text-lg: var(--felt-preview-dialog-header-sm);
     }
 
     &[variant='medium'] [slot='header'] {
-      --rh-font-size-body-text-lg: var(--unified-dialog-header-md);
+      --rh-font-size-body-text-lg: var(--felt-preview-dialog-header-md);
     }
 
     &[variant='large'] [slot='header'] {
-      --rh-font-size-body-text-lg: var(--unified-dialog-header-lg);
+      --rh-font-size-body-text-lg: var(--felt-preview-dialog-header-lg);
     }
 
     &::part(close-button) {
-      --rh-border-radius-default: var(--unified-border-radius-action-plain);
+      --rh-border-radius-default: var(--felt-preview-border-radius-action-plain);
     }
   }
 }
@@ -1813,15 +1812,15 @@
 /* Element: Chip (selectable Labels in PatternFly) */
 @layer chip {
   rh-chip {
-    --rh-size-icon-01: var(--unified-size-icon-00);
-    --rh-border-radius-pill: var(--unified-border-radius-pill);
-    --rh-border-width-md: var(--unified-border-width-md);
-    --rh-color-border-interactive: var(--unified-color-interactive-primary-default);
-    --rh-color-border-subtle: var(--unified-color-border-interactive-subtle-default);
-    --rh-color-blue-10: var(--unified-color-blue-10);
-    --rh-color-blue-30: var(--unified-color-blue-30);
-    --rh-color-blue-50: var(--unified-color-blue-50);
-    --rh-color-blue-70: var(--unified-color-blue-70);
+    --rh-size-icon-01: var(--felt-preview-size-icon-00);
+    --rh-border-radius-pill: var(--felt-preview-border-radius-pill);
+    --rh-border-width-md: var(--felt-preview-border-width-md);
+    --rh-color-border-interactive: var(--felt-preview-color-interactive-primary-default);
+    --rh-color-border-subtle: var(--felt-preview-color-border-interactive-subtle-default);
+    --rh-color-blue-10: var(--felt-preview-color-blue-10);
+    --rh-color-blue-30: var(--felt-preview-color-blue-30);
+    --rh-color-blue-50: var(--felt-preview-color-blue-50);
+    --rh-color-blue-70: var(--felt-preview-color-blue-70);
 
     &::part(chip) {
       white-space: nowrap;
@@ -1840,22 +1839,22 @@
   rh-chip::part(chip):after {
     border-radius:
       calc(
-          var(--unified-border-radius-action-plain)
-          + var(--unified-border-width-lg) * 2
+          var(--felt-preview-border-radius-action-plain)
+          + var(--felt-preview-border-width-lg) * 2
         );
-    outline-offset: var(--unified-border-radius-action-plain);
-    width: calc(100% - var(--unified-space-xs));
-    translate: calc(-1 * var(--unified-border-radius-action-plain));
-    outline-width: var(--unified-border-width-lg);
+    outline-offset: var(--felt-preview-border-radius-action-plain);
+    width: calc(100% - var(--felt-preview-space-xs));
+    translate: calc(-1 * var(--felt-preview-border-radius-action-plain));
+    outline-width: var(--felt-preview-border-width-lg);
   }
 
   rh-chip-group::part(btn-link):after {
     inset: -1px;
     width: auto;
     translate: none;
-    outline-width: var(--unified-border-width-lg);
-    outline-offset: calc(var(--unified-space-xs) - var(--unified-border-width-md));
-    border-radius: var(--unified-border-radius-pill);
+    outline-width: var(--felt-preview-border-width-lg);
+    outline-offset: calc(var(--felt-preview-space-xs) - var(--felt-preview-border-width-md));
+    border-radius: var(--felt-preview-border-radius-pill);
   }
 
   rh-chip-group[size='sm'] rh-chip {
@@ -1872,15 +1871,15 @@
 /* Element: Badge */
 @layer badge {
   rh-badge {
-    --rh-border-radius-pill: var(--unified-border-radius-pill);
+    --rh-border-radius-pill: var(--felt-preview-border-radius-pill);
   }
 }
 
 /* Element: Breadcrumb */
 @layer breadcrumb {
   rh-breadcrumb {
-    --rh-color-interactive-primary-default: var(--unified-color-text-interactive-default);
-    --rh-color-interactive-primary-hover: var(--unified-color-text-interactive-hover);
+    --rh-color-interactive-primary-default: var(--felt-preview-color-text-interactive-default);
+    --rh-color-interactive-primary-hover: var(--felt-preview-color-text-interactive-hover);
     --rh-color-interactive-primary-visited-default:
       light-dark(
           var(--rh-color-interactive-primary-visited-default-on-light),
@@ -1891,18 +1890,18 @@
           var(--rh-color-interactive-primary-visited-hover-on-light),
           var(--rh-color-interactive-primary-visited-hover-on-dark)
         );
-    --rh-border-radius-default: var(--unified-border-radius-action-plain);
-    --rh-color-border-interactive: var(--unified-color-text-interactive-default);
-    --rh-font-size-body-text-sm: var(--unified-font-size-body-text-sm);
-    --rh-color-icon-secondary: var(--unified-color-icon-secondary);
+    --rh-border-radius-default: var(--felt-preview-border-radius-action-plain);
+    --rh-color-border-interactive: var(--felt-preview-color-text-interactive-default);
+    --rh-font-size-body-text-sm: var(--felt-preview-font-size-body-text-sm);
+    --rh-color-icon-secondary: var(--felt-preview-color-icon-secondary);
     /* stylelint-disable @stylistic/declaration-colon-newline-after, @stylistic/max-line-length */
     --rh-breadcrumb-caret-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 5 9' fill='none'%3E%3Cpath d='M.5 9a.5.5 0 0 1-.354-.146.5.5 0 0 1 0-.708L3.793 4.5.146.854a.5.5 0 0 1 0-.708.5.5 0 0 1 .708 0l3.823 3.823a.75.75 0 0 1 0 1.061L.854 8.854A.5.5 0 0 1 .5 9Z' fill='black'/%3E%3C/svg%3E");
     /* stylelint-enable @stylistic/declaration-colon-newline-after, @stylistic/max-line-length */
 
     & > ol > li > a[href]:not([aria-current]) {
-      text-decoration: underline var(--unified-border-width-sm) dashed !important;
+      text-decoration: underline var(--felt-preview-border-width-sm) dashed !important;
       /* stylelint-disable @stylistic/declaration-colon-newline-after, @stylistic/max-line-length */
-      text-decoration-color: var(--unified-color-interactive-secondary-underline-default) !important;
+      text-decoration-color: var(--felt-preview-color-interactive-secondary-underline-default) !important;
       /* stylelint-enable @stylistic/declaration-colon-newline-after, @stylistic/max-line-length */
       text-underline-offset: max(5px, 0.28em) !important;
     }
@@ -1929,51 +1928,51 @@
 /* Element: Jump Links */
 @layer jump-links {
   rh-jump-links {
-    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+    --rh-color-interactive-primary-default: var(--felt-preview-color-interactive-primary-default);
     --rh-color-interactive-secondary-default:
       light-dark(
-          var(--unified-color-gray-60),
-          var(--unified-color-gray-40)
+          var(--felt-preview-color-gray-60),
+          var(--felt-preview-color-gray-40)
         );
-    --rh-border-radius-default: var(--unified-border-radius-pill);
-    --rh-border-width-lg: var(--unified-border-width-lg);
+    --rh-border-radius-default: var(--felt-preview-border-radius-pill);
+    --rh-border-width-lg: var(--felt-preview-border-width-lg);
   }
 
   rh-jump-link {
     --rh-color-brand-red: #ee0000;
     --rh-color-border-status-neutral: transparent;
-    --rh-jump-link-indicator-border-radius: var(--unified-border-radius-pill);
+    --rh-jump-link-indicator-border-radius: var(--felt-preview-border-radius-pill);
 
     /* Pill padding: 4px block, 8px inline (matching Figma) */
-    --rh-space-md: var(--unified-space-xs);
-    --rh-space-lg: var(--unified-space-md);
+    --rh-space-md: var(--felt-preview-space-xs);
+    --rh-space-lg: var(--felt-preview-space-md);
 
     /* Reserve active border width with transparent color to prevent layout shift;
        the 1px gray track is drawn via box-shadow instead */
     --rh-jump-link-border:
-      var(--unified-border-width-lg)
+      var(--felt-preview-border-width-lg)
       solid
       transparent;
 
     box-shadow:
-      inset var(--unified-border-width-sm) 0 0 0
-      var(--unified-color-border-interactive-subtle-default);
+      inset var(--felt-preview-border-width-sm) 0 0 0
+      var(--felt-preview-color-border-interactive-subtle-default);
 
     /* Remove track from inner <a> */
     --rh-jump-link-link-border: none;
 
     /* Gap between track and pill */
-    --rh-jump-link-gap: var(--unified-space-md);
+    --rh-jump-link-gap: var(--felt-preview-space-md);
 
     /* Pill hover on the <a> */
-    --rh-jump-link-hover-background-color: var(--unified-color-interactive-fill-plain-hover);
-    --rh-jump-link-hover-border-radius: var(--unified-border-radius-pill);
+    --rh-jump-link-hover-background-color: var(--felt-preview-color-interactive-fill-plain-hover);
+    --rh-jump-link-hover-border-radius: var(--felt-preview-border-radius-pill);
 
     /* Keep text color subtle on hover/focus (same as default) */
     --rh-color-text-primary:
       light-dark(
-          var(--unified-color-gray-60),
-          var(--unified-color-gray-40)
+          var(--felt-preview-color-gray-60),
+          var(--felt-preview-color-gray-40)
         );
 
     inline-size: fit-content;
@@ -1981,14 +1980,14 @@
 
   rh-jump-link[active] {
     --rh-jump-link-active-border:
-      var(--unified-border-width-lg)
+      var(--felt-preview-border-width-lg)
       solid
       #ee0000;
 
     /* Active text goes dark */
     --rh-color-text-primary:
       light-dark(
-          var(--unified-color-gray-95),
+          var(--felt-preview-color-gray-95),
           white
         );
   }
@@ -2013,7 +2012,7 @@
      so the hover pill stays compact.
      Total inline-start: 3px border + 20px gap + 8px <a> padding = 31px */
   rh-jump-links-list > rh-jump-link:not([slot]) {
-    --rh-jump-link-gap: calc(var(--unified-space-lg) + var(--unified-space-xs));
+    --rh-jump-link-gap: calc(var(--felt-preview-space-lg) + var(--felt-preview-space-xs));
   }
 
   rh-jump-links[orientation='horizontal'] rh-jump-link {
@@ -2026,13 +2025,13 @@
 
   rh-jump-links:not([orientation]),
   rh-jump-links[orientation='vertical'] {
-    --rh-jump-link-item-padding-block: var(--unified-space-sm);
-    --rh-jump-link-item-padding-inline: var(--unified-space-sm);
-    --rh-jump-link-link-padding-block: var(--unified-space-xs);
-    --rh-jump-link-link-padding-inline: var(--unified-space-md);
+    --rh-jump-link-item-padding-block: var(--felt-preview-space-sm);
+    --rh-jump-link-item-padding-inline: var(--felt-preview-space-sm);
+    --rh-jump-link-link-padding-block: var(--felt-preview-space-xs);
+    --rh-jump-link-link-padding-inline: var(--felt-preview-space-md);
 
     rh-jump-links-list > rh-jump-link:not([slot='parent']) {
-      --rh-jump-link-item-padding-inline: var(--unified-space-xl);
+      --rh-jump-link-item-padding-inline: var(--felt-preview-space-xl);
     }
   }
 
@@ -2040,16 +2039,16 @@
      on the host instead so it spans the full width with no bottom line */
   rh-jump-links[orientation='horizontal'] {
     --rh-color-border-subtle: transparent;
-    --rh-jump-link-item-padding-block: var(--unified-space-sm);
-    --rh-jump-link-item-padding-inline: var(--unified-space-sm);
-    --rh-jump-link-link-padding-block: var(--unified-space-xs);
-    --rh-jump-link-link-padding-inline: var(--unified-space-md);
+    --rh-jump-link-item-padding-block: var(--felt-preview-space-sm);
+    --rh-jump-link-item-padding-inline: var(--felt-preview-space-sm);
+    --rh-jump-link-link-padding-block: var(--felt-preview-space-xs);
+    --rh-jump-link-link-padding-inline: var(--felt-preview-space-md);
 
     justify-content: start;
     border-block-start:
-      var(--unified-border-width-sm)
+      var(--felt-preview-border-width-sm)
       solid
-      var(--unified-color-border-interactive-subtle-default);
+      var(--felt-preview-color-border-interactive-subtle-default);
   }
 
   /* Horizontal active: no left border; pull the ::before indicator
@@ -2063,22 +2062,22 @@
 /* Element: Menu / Menu Dropdown */
 @layer menu {
   rh-menu-dropdown {
-    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
-    --rh-color-interactive-primary-hover: var(--unified-color-interactive-primary-hover);
-    --rh-border-radius-default: var(--unified-border-radius-pill);
-    --rh-border-radius-pill: var(--unified-border-radius-action-plain);
+    --rh-color-interactive-primary-default: var(--felt-preview-color-interactive-primary-default);
+    --rh-color-interactive-primary-hover: var(--felt-preview-color-interactive-primary-hover);
+    --rh-border-radius-default: var(--felt-preview-border-radius-pill);
+    --rh-border-radius-pill: var(--felt-preview-border-radius-action-plain);
 
     /* 1. Toggle label font size: 14px */
-    --rh-font-size-body-text-md: var(--unified-font-size-body-text-sm);
+    --rh-font-size-body-text-md: var(--felt-preview-font-size-body-text-sm);
 
     /* 2. Padding-block 8px (toggle uses --rh-space-sm for block padding) */
-    --rh-space-sm: var(--unified-space-md);
+    --rh-space-sm: var(--felt-preview-space-md);
 
     /* 3. Per-state interactive border colors (consumed by shadow DOM patch in unified.md) */
-    --rh-menu-dropdown-hover-border-color: var(--unified-color-border-interactive-subtle-hover);
-    --rh-menu-dropdown-active-border-color: var(--unified-color-border-interactive-subtle-active);
-    --rh-menu-dropdown-focus-border-color: var(--unified-color-border-interactive-subtle-focus);
-    --rh-menu-dropdown-open-border-color: var(--unified-color-border-interactive-subtle-hover);
+    --rh-menu-dropdown-hover-border-color: var(--felt-preview-color-border-interactive-subtle-hover);
+    --rh-menu-dropdown-active-border-color: var(--felt-preview-color-border-interactive-subtle-active);
+    --rh-menu-dropdown-focus-border-color: var(--felt-preview-color-border-interactive-subtle-focus);
+    --rh-menu-dropdown-open-border-color: var(--felt-preview-color-border-interactive-subtle-hover);
 
     /* 4. Disabled: remove border to match PF docs */
     --rh-menu-dropdown-disabled-box-shadow: none;
@@ -2087,21 +2086,21 @@
     --rh-menu-dropdown-toggle-background:
       light-dark(
           var(--rh-color-surface-lightest, #ffffff),
-          var(--unified-color-gray-70)
+          var(--felt-preview-color-gray-70)
         );
 
     /* Toggle border color */
-    --rh-menu-dropdown-toggle-border-color: var(--unified-color-border-control-default);
-    --rh-menu-dropdown-caret-size: var(--unified-size-icon-00);
+    --rh-menu-dropdown-toggle-border-color: var(--felt-preview-color-border-control-default);
+    --rh-menu-dropdown-caret-size: var(--felt-preview-size-icon-00);
 
     /* Panel overrides */
-    --rh-menu-dropdown-panel-border-radius: var(--unified-border-radius-menu);
-    --rh-menu-dropdown-panel-padding: var(--unified-space-xs);
+    --rh-menu-dropdown-panel-border-radius: var(--felt-preview-border-radius-menu);
+    --rh-menu-dropdown-panel-padding: var(--felt-preview-space-xs);
     --rh-menu-dropdown-panel-border: none;
     --rh-menu-dropdown-panel-background:
       light-dark(
           var(--rh-color-surface-lightest, #ffffff),
-          var(--unified-color-gray-70)
+          var(--felt-preview-color-gray-70)
         );
 
     /* light-dark() only valid for the color position; geometry is the same both modes */
@@ -2111,43 +2110,43 @@
   }
 
   rh-menu {
-    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
-    --rh-color-interactive-primary-hover: var(--unified-color-interactive-primary-hover);
-    --rh-border-radius-default: var(--unified-border-radius-menu);
+    --rh-color-interactive-primary-default: var(--felt-preview-color-interactive-primary-default);
+    --rh-color-interactive-primary-hover: var(--felt-preview-color-interactive-primary-hover);
+    --rh-border-radius-default: var(--felt-preview-border-radius-menu);
   }
 
   rh-menu-dropdown rh-menu-item {
-    --rh-menu-item-border-radius: var(--unified-border-radius-action-plain);
-    --rh-border-radius-default: var(--unified-border-radius-action-plain);
+    --rh-menu-item-border-radius: var(--felt-preview-border-radius-action-plain);
+    --rh-border-radius-default: var(--felt-preview-border-radius-action-plain);
     --rh-menu-item-focus-inset: 0;
-    --rh-font-size-body-text-md: var(--unified-font-size-body-text-sm);
+    --rh-font-size-body-text-md: var(--felt-preview-font-size-body-text-sm);
     --rh-font-size-body-text-sm: 12px;
 
     /* Default item background must match the panel background so items blend in.
        rh-menu-item uses surface-lightest (light) / surface-darkest (dark) for its
        default state; override surface-darkest to gray-70 so it matches the panel. */
     --rh-color-surface-lightest: var(--rh-color-surface-lightest, #ffffff);
-    --rh-color-surface-darkest: var(--unified-color-gray-70);
+    --rh-color-surface-darkest: var(--felt-preview-color-gray-70);
 
     /* Hover/focus state */
-    --rh-color-surface-lighter: var(--unified-color-interactive-fill-plain-on-light);
-    --rh-color-surface-darker: var(--unified-color-interactive-fill-plain-on-dark);
+    --rh-color-surface-lighter: var(--felt-preview-color-interactive-fill-plain-on-light);
+    --rh-color-surface-darker: var(--felt-preview-color-interactive-fill-plain-on-dark);
 
     [slot='description'] {
       line-height: 18px;
     }
 
     &:not([disabled]) [slot='description'] {
-      color: light-dark(var(--unified-color-gray-60), var(--unified-color-gray-30));
+      color: light-dark(var(--felt-preview-color-gray-60), var(--felt-preview-color-gray-30));
     }
   }
 
   rh-menu-dropdown rh-menu-item[disabled] {
     /* Light: gray-50 → gray-40 (#a3a3a3); Dark: gray-60 → gray-40 (#a3a3a3).
-       gray-40 matches --unified-color-text-status-disabled light value and
+       gray-40 matches --felt-preview-color-text-status-disabled light value and
        reads clearly on the gray-70 panel in dark mode. */
-    --rh-color-gray-50: var(--unified-color-gray-40);
-    --rh-color-gray-60: var(--unified-color-gray-40);
+    --rh-color-gray-50: var(--felt-preview-color-gray-40);
+    --rh-color-gray-60: var(--felt-preview-color-gray-40);
   }
 
   /* Group headings */
@@ -2161,8 +2160,8 @@
 
     /* Compact default state: transparent bg (hover/focus states from element CSS take over) */
     --rh-menu-dropdown-toggle-background: transparent;
-    --rh-color-surface-lighter: var(--unified-color-interactive-fill-plain-on-light);
-    --rh-color-surface-darker: var(--unified-color-interactive-fill-plain-on-dark);
+    --rh-color-surface-lighter: var(--felt-preview-color-interactive-fill-plain-on-light);
+    --rh-color-surface-darker: var(--felt-preview-color-interactive-fill-plain-on-dark);
 
     /* 6. Compact: 37px square, icon centered */
     --rh-menu-dropdown-compact-size: 37px;
@@ -2170,32 +2169,32 @@
 
     /* 8. Disabled compact: transparent bg, muted icon */
     --rh-menu-dropdown-compact-disabled-background: transparent;
-    --rh-menu-dropdown-compact-disabled-icon-color: var(--unified-color-icon-status-disabled);
+    --rh-menu-dropdown-compact-disabled-icon-color: var(--felt-preview-color-icon-status-disabled);
   }
 }
 
 /* Element: Navigation Vertical (Left Navigation in PatternFly) */
 @layer navigation-vertical {
   rh-navigation-vertical {
-    --rh-border-width-lg: var(--unified-border-width-lg);
-    --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
-    --rh-border-radius-default: var(--unified-border-radius-action-plain);
-    --rh-navigation-vertical-list-summary-border-radius: var(--unified-border-radius-pill);
-    --rh-navigation-link-border-radius: var(--unified-border-radius-pill);
-    --rh-navigation-link-inset-inline-start: calc(var(--unified-space-md) * -1);
-    --rh-navigation-vertical-list-nested-margin-inline: var(--unified-space-lg) 0;
-    --rh-navigation-vertical-list-nested-margin-block: var(--unified-space-md);
+    --rh-border-width-lg: var(--felt-preview-border-width-lg);
+    --rh-color-interactive-primary-default: var(--felt-preview-color-interactive-primary-default);
+    --rh-border-radius-default: var(--felt-preview-border-radius-action-plain);
+    --rh-navigation-vertical-list-summary-border-radius: var(--felt-preview-border-radius-pill);
+    --rh-navigation-link-border-radius: var(--felt-preview-border-radius-pill);
+    --rh-navigation-link-inset-inline-start: calc(var(--felt-preview-space-md) * -1);
+    --rh-navigation-vertical-list-nested-margin-inline: var(--felt-preview-space-lg) 0;
+    --rh-navigation-vertical-list-nested-margin-block: var(--felt-preview-space-md);
     --rh-navigation-vertical-list-summary-background-color: transparent;
     /* stylelint-disable @stylistic/max-line-length */
-    --rh-navigation-vertical-list-summary-hover-background-color: var(--unified-color-interactive-fill-plain-alt-hover);
-    --rh-navigation-link-hover-background-color: var(--unified-color-interactive-fill-plain-alt-hover);
+    --rh-navigation-vertical-list-summary-hover-background-color: var(--felt-preview-color-interactive-fill-plain-alt-hover);
+    --rh-navigation-link-hover-background-color: var(--felt-preview-color-interactive-fill-plain-alt-hover);
     /* stylelint-enable @stylistic/max-line-length */
-    --rh-navigation-link-indicator-border-radius: var(--unified-border-radius-pill);
+    --rh-navigation-link-indicator-border-radius: var(--felt-preview-border-radius-pill);
 
-    padding-inline-start: var(--unified-space-md);
+    padding-inline-start: var(--felt-preview-space-md);
     background:
-      light-dark(var(--unified-color-gray-10),
-        var(--unified-color-gray-95)
+      light-dark(var(--felt-preview-color-gray-10),
+        var(--felt-preview-color-gray-95)
       );
 
     & rh-navigation-link {
@@ -2203,15 +2202,15 @@
 
       &[current-page] {
         /* stylelint-disable-next-line @stylistic/max-line-length */
-        --rh-navigation-link-background-color: var(--unified-color-interactive-fill-plain-alt-hover);
+        --rh-navigation-link-background-color: var(--felt-preview-color-interactive-fill-plain-alt-hover);
 
-        border-radius: var(--unified-border-radius-pill);
+        border-radius: var(--felt-preview-border-radius-pill);
       }
     }
 
     & rh-navigation-vertical-list > rh-navigation-link {
-      --rh-navigation-link-font-size: var(--unified-font-size-body-text-md);
-      --rh-navigation-link-border-inline-start-width: var(--unified-border-width-lg);
+      --rh-navigation-link-font-size: var(--felt-preview-font-size-body-text-md);
+      --rh-navigation-link-border-inline-start-width: var(--felt-preview-border-width-lg);
     }
 
     & rh-navigation-link,
@@ -2219,7 +2218,7 @@
       --rh-color-border-subtle: transparent;
 
       &:hover {
-        border-radius: var(--unified-border-radius-pill);
+        border-radius: var(--felt-preview-border-radius-pill);
       }
     }
   }
@@ -2228,37 +2227,37 @@
 /* Element: Subnav (Horizontal Navigation in PatternFly) */
 @layer subnav {
   rh-subnav {
-    --rh-navigation-link-font-size: var(--unified-font-size-body-text-sm);
-    --rh-navigation-link-border-radius: var(--unified-border-radius-pill);
+    --rh-navigation-link-font-size: var(--felt-preview-font-size-body-text-sm);
+    --rh-navigation-link-border-radius: var(--felt-preview-border-radius-pill);
     /* stylelint-disable @stylistic/declaration-colon-newline-after, @stylistic/max-line-length */
-    --rh-navigation-link-hover-background-color: var(--unified-color-interactive-fill-plain-alt-hover);
-    --rh-navigation-link-indicator-border-radius: var(--unified-border-radius-pill);
+    --rh-navigation-link-hover-background-color: var(--felt-preview-color-interactive-fill-plain-alt-hover);
+    --rh-navigation-link-indicator-border-radius: var(--felt-preview-border-radius-pill);
     --rh-navigation-link-white-space: nowrap;
     --rh-subnav-indicator-inset: auto 0 0 0;
     --rh-subnav-link-padding-block: 4px;
     --rh-subnav-link-padding-inline: 16px;
     --rh-subnav-scroll-buttons-border-block-end: none;
-    --rh-subnav-scroll-buttons-padding: var(--unified-space-md);
+    --rh-subnav-scroll-buttons-padding: var(--felt-preview-space-md);
 
-    background-color: light-dark(var(--unified-color-gray-10), var(--unified-color-gray-95));
-    border-radius: var(--unified-border-radius-pill);
-    padding-inline: var(--unified-space-md);
+    background-color: light-dark(var(--felt-preview-color-gray-10), var(--felt-preview-color-gray-95));
+    border-radius: var(--felt-preview-border-radius-pill);
+    padding-inline: var(--felt-preview-space-md);
 
     &::part(container) {
-      padding: var(--unified-space-xs) 0 0 0;
+      padding: var(--felt-preview-space-xs) 0 0 0;
     }
 
     &::part(links) {
       display: flex;
-      gap: var(--unified-space-xs);
-      padding: 0 var(--unified-space-xs);
+      gap: var(--felt-preview-space-xs);
+      padding: 0 var(--felt-preview-space-xs);
     }
 
     & rh-navigation-link {
-      row-gap: calc(var(--unified-space-xs) / 2);
+      row-gap: calc(var(--felt-preview-space-xs) / 2);
 
       &:is(:focus-within) {
-        --rh-navigation-link-hover-background-color: var(--unified-color-interactive-fill-plain-alt-hover);
+        --rh-navigation-link-hover-background-color: var(--felt-preview-color-interactive-fill-plain-alt-hover);
       }
 
       &:hover:not([current-page]) {
@@ -2268,10 +2267,10 @@
       }
 
       &[current-page] {
-        --rh-navigation-link-background-color: var(--unified-color-interactive-fill-plain-alt-hover);
+        --rh-navigation-link-background-color: var(--felt-preview-color-interactive-fill-plain-alt-hover);
 
         &:after {
-          border-radius: var(--unified-border-radius-pill);
+          border-radius: var(--felt-preview-border-radius-pill);
         }
       }
     }

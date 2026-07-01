@@ -1,0 +1,161 @@
+---
+layout: layouts/pages/has-toc.njk
+title: Demos
+heading: Project Felt
+permalink: /theming/themes/project-felt/demos/index.html
+tocTags:
+  - h2
+  - h3
+order: 20
+tags:
+  - projectFelt
+subnav:
+  collection: sortedProjectFelt
+  order: 20
+---
+<script type="module" data-helmet>
+  import '@uxdot/elements/uxdot-pattern.js';
+  import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+  import '@rhds/elements/rh-accordion/rh-accordion.js';
+  import '@rhds/elements/rh-alert/rh-alert.js';
+  import '@rhds/elements/rh-badge/rh-badge.js';
+  import '@rhds/elements/rh-breadcrumb/rh-breadcrumb.js';
+  import '@rhds/elements/rh-button/rh-button.js';
+  import '@rhds/elements/rh-card/rh-card.js';
+  import '@rhds/elements/rh-chip/rh-chip.js';
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-dialog/rh-dialog.js';
+  import '@rhds/elements/rh-jump-links/rh-jump-links.js';
+  import '@rhds/elements/rh-menu-dropdown/rh-menu-dropdown.js';
+  import '@rhds/elements/rh-navigation-vertical/rh-navigation-vertical.js';
+  import '@rhds/elements/rh-progress-stepper/rh-progress-stepper.js';
+  import '@rhds/elements/rh-spinner/rh-spinner.js';
+  import '@rhds/elements/rh-subnav/rh-subnav.js';
+  import '@rhds/elements/rh-switch/rh-switch.js';
+  import '@rhds/elements/rh-tabs/rh-tabs.js';
+  import '@rhds/elements/rh-tag/rh-tag.js';
+</script>
+
+## Try it out
+
+To apply the Project Felt theme to all of the elements below, toggle the switch.
+
+<rh-switch id="felt-theme-switch"
+            message-on="Project Felt theme"
+            message-off="Off"></rh-switch>
+
+## Demos
+
+<uxdot-pattern src="../../patterns/unified-accordion.html">
+  <uxdot-copy-permalink slot="heading"><h3 id="accordion"><a href="#accordion">Accordion</a></h3></uxdot-copy-permalink>
+</uxdot-pattern>
+
+<uxdot-pattern src="../../patterns/unified-alert.html">
+  <uxdot-copy-permalink slot="heading"><h3 id="alert"><a href="#alert">Alerts</a></h3></uxdot-copy-permalink>
+</uxdot-pattern>
+
+<uxdot-pattern src="../../patterns/unified-badge.html">
+  <uxdot-copy-permalink slot="heading"><h3 id="badge"><a href="#badge">Badge</a></h3></uxdot-copy-permalink>
+</uxdot-pattern>
+
+<uxdot-pattern src="../../patterns/unified-breadcrumb.html">
+  <uxdot-copy-permalink slot="heading"><h3 id="breadcrumb"><a href="#breadcrumb">Breadcrumb</a></h3></uxdot-copy-permalink>
+</uxdot-pattern>
+
+<uxdot-pattern src="../../patterns/unified-buttons.html">
+  <uxdot-copy-permalink slot="heading"><h3 id="button"><a href="#button">Button</a></h3></uxdot-copy-permalink>
+</uxdot-pattern>
+
+<uxdot-pattern src="../../patterns/unified-ctas.html">
+  <uxdot-copy-permalink slot="heading"><h3 id="call-to-action"><a href="#call-to-action">Call to action</a></h3></uxdot-copy-permalink>
+</uxdot-pattern>
+
+<uxdot-pattern src="../../patterns/unified-cards.html">
+  <uxdot-copy-permalink slot="heading"><h3 id="card"><a href="#card">Card</a></h3></uxdot-copy-permalink>
+</uxdot-pattern>
+
+<uxdot-pattern src="../../patterns/unified-chip.html">
+  <uxdot-copy-permalink slot="heading"><h3 id="chip"><a href="#chip">Chips</a></h3></uxdot-copy-permalink>
+</uxdot-pattern>
+
+<uxdot-pattern src="../../patterns/unified-dialog.html">
+  <uxdot-copy-permalink slot="heading"><h3 id="dialog"><a href="#dialog">Dialog</a></h3></uxdot-copy-permalink>
+</uxdot-pattern>
+
+<uxdot-pattern src="../../patterns/unified-jump-links.html">
+  <uxdot-copy-permalink slot="heading"><h3 id="jump-links"><a href="#jump-links">Jump links</a></h3></uxdot-copy-permalink>
+</uxdot-pattern>
+
+<uxdot-pattern src="../../patterns/unified-menu.html">
+  <uxdot-copy-permalink slot="heading"><h3 id="menu"><a href="#menu">Menu</a></h3></uxdot-copy-permalink>
+</uxdot-pattern>
+
+<uxdot-pattern src="../../patterns/unified-navigation-vertical.html">
+  <uxdot-copy-permalink slot="heading"><h3 id="navigation-vertical"><a href="#navigation-vertical">Navigation (vertical)</a></h3></uxdot-copy-permalink>
+</uxdot-pattern>
+
+<uxdot-pattern src="../../patterns/unified-progress-stepper.html">
+  <uxdot-copy-permalink slot="heading"><h3 id="progress-stepper"><a href="#progress-stepper">Progress stepper</a></h3></uxdot-copy-permalink>
+</uxdot-pattern>
+
+<uxdot-pattern src="../../patterns/unified-spinner.html">
+  <uxdot-copy-permalink slot="heading"><h3 id="spinner"><a href="#spinner">Spinner</a></h3></uxdot-copy-permalink>
+</uxdot-pattern>
+
+<uxdot-pattern src="../../patterns/unified-subnav.html">
+  <uxdot-copy-permalink slot="heading"><h3 id="subnav"><a href="#subnav">Subnav</a></h3></uxdot-copy-permalink>
+</uxdot-pattern>
+
+<uxdot-pattern src="../../patterns/unified-switch.html">
+  <uxdot-copy-permalink slot="heading"><h3 id="switch"><a href="#switch">Switch</a></h3></uxdot-copy-permalink>
+</uxdot-pattern>
+
+<uxdot-pattern src="../../patterns/unified-tabs.html">
+  <uxdot-copy-permalink slot="heading"><h3 id="tabs"><a href="#tabs">Tabs</a></h3></uxdot-copy-permalink>
+</uxdot-pattern>
+
+<uxdot-pattern src="../../patterns/unified-tabs-vertical.html" style="max-width: none">
+  <uxdot-copy-permalink slot="heading"><h3 id="tabs-vertical"><a href="#tabs-vertical">Tabs (vertical)</a></h3></uxdot-copy-permalink>
+</uxdot-pattern>
+
+<uxdot-pattern src="../../patterns/unified-tag.html">
+  <uxdot-copy-permalink slot="heading"><h3 id="tag"><a href="#tag">Tags</a></h3></uxdot-copy-permalink>
+</uxdot-pattern>
+
+<uxdot-feedback>
+  <h2>Other available themes</h2>
+  <p>If the Project Felt theme does not fit your user needs right now,
+     <a href="/elements/">view all RHDS elements</a> with default styles.</p>
+</uxdot-feedback>
+
+<script type="module">
+  const feltSwitch = document.querySelector('#felt-theme-switch');
+  if (feltSwitch) {
+    const stylesheet = new CSSStyleSheet();
+    const response = await fetch('/theming/themes/unified-theme/unified-theme-preview.css');
+    const cssText = response.ok ? await response.text() : '';
+    feltSwitch.addEventListener('change', function() {
+      const demosSection = document.querySelector('#demos');
+      if (!demosSection) return;
+      const patterns = demosSection.parentElement.querySelectorAll(
+        '#demos ~ uxdot-pattern'
+      );
+      if (feltSwitch.checked) {
+        stylesheet.replace(cssText);
+        for (const pattern of patterns) {
+          const root = pattern.shadowRoot;
+          if (root && !root.adoptedStyleSheets.includes(stylesheet)) {
+            root.adoptedStyleSheets = [...root.adoptedStyleSheets, stylesheet];
+          }
+        }
+      } else {
+        for (const pattern of patterns) {
+          const root = pattern.shadowRoot;
+          if (root) {
+            root.adoptedStyleSheets = root.adoptedStyleSheets.filter(s => s !== stylesheet);
+          }
+        }
+      }
+    });
+  }
+</script>

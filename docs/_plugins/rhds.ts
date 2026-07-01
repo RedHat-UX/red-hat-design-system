@@ -329,6 +329,19 @@ export default async function(
     });
   });
 
+  eleventyConfig.addCollection('sortedProjectFelt', async function(collectionApi) {
+    const projectFeltCollection = collectionApi.getFilteredByTags('projectFelt');
+    return projectFeltCollection.sort((a, b) => {
+      if (a.data.order > b.data.order) {
+        return 1;
+      } else if (a.data.order < b.data.order) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
+  });
+
   eleventyConfig.addWatchTarget('docs/patterns/**/patterns/*.html');
   eleventyConfig.addWatchTarget('docs/theming/**/patterns/*.html');
 

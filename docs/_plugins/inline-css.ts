@@ -39,12 +39,16 @@ export default function inlineCssPlugin(
   }).addNunjucksAsyncFilter(
     'inlineCss',
     async (filename: string, callback: NunjucksAsyncCallback): Promise<void> => {
-      // Construct the full path to the CSS file
-      const fullPath = path.join(process.cwd(), settings.cssSourcePath, filename);
+      const base = path.resolve(process.cwd(), settings.cssSourcePath);
+      const fullPath = path.resolve(base, filename);
+
+      if (!fullPath.startsWith(base + path.sep) && fullPath !== base) {
+        console.error(`[eleventy-plugin-inline-css] Path traversal blocked: ${filename}`);
+        callback(null, '');
+        return;
+      }
 
       try {
-        // Read the file asynchronously and return its content as a string (utf8)
-        // The `await` keyword pauses execution until the file is read.
         const cssContent = await readFile(fullPath, 'utf8');
 
         // Pass the result back to the template via the callback.
