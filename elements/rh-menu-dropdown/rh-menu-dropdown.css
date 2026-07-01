@@ -41,6 +41,8 @@
 /* Styles floating menu panel */
 #menu-list {
   position: absolute;
+
+  /** Menu panel padding */
   padding:
     var(--rh-menu-dropdown-panel-padding,
       var(--rh-space-md, 8px) 0);
@@ -59,16 +61,21 @@
   border:
     var(--rh-menu-dropdown-panel-border,
       var(--_border));
+
+  /** Menu panel background */
   background:
-    light-dark(
+    var(--rh-menu-dropdown-panel-background,
+      light-dark(
         /** Menu panel background in light mode */
         var(--rh-color-surface-lightest, #ffffff),
         /** Menu panel background in dark mode */
         var(--rh-color-surface-darkest, #151515)
-      );
+      ));
 
   /** Menu panel elevation shadow */
-  box-shadow: var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25));
+  box-shadow:
+    var(--rh-menu-dropdown-panel-box-shadow,
+      var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25)));
   transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
   translate: var(--_floating-content-translate);
 }
@@ -138,19 +145,22 @@
 
   /** Toggle button corner rounding */
   border-radius: var(--rh-border-radius-default, 3px);
+
+  /** Toggle button background */
   background:
-    light-dark(
+    var(--rh-menu-dropdown-toggle-background,
+      light-dark(
         /** Toggle background in light mode */
         var(--rh-color-surface-lightest, #ffffff),
         /** Toggle background in dark mode */
         var(--rh-color-surface-darkest, #151515)
-      );
+      ));
   border: none;
 
   /* Styles contents of a basic menu toggle.
      Must not be changed to retain consistency with visually similar RHDS elements. */
   .action-icon rh-icon {
-    /** Caret icon size */
+    /** Toggle caret icon dimensions */
     --rh-icon-size: var(--rh-menu-dropdown-caret-size, 10px);
 
     /** Space between label and caret icon */
@@ -179,7 +189,10 @@
 
     &:not(.open) {
       &:hover {
-        box-shadow: inset 0 0 0 1px var(--_interactive-border-color);
+        box-shadow:
+          inset 0 0 0 1px
+          /** Toggle hover border color */
+          var(--rh-menu-dropdown-hover-border-color, var(--_interactive-border-color));
       }
 
       &:active {
@@ -187,7 +200,8 @@
           inset 0 0 0
           /** Active border spread width */
           var(--rh-length-3xs, 2px)
-          var(--_interactive-border-color);
+          /** Toggle active border color */
+          var(--rh-menu-dropdown-active-border-color, var(--_interactive-border-color));
       }
 
       &:focus {
@@ -195,7 +209,8 @@
           /** Focus outline width */
           var(--rh-length-3xs, 2px)
           solid
-          var(--_interactive-border-color);
+          /** Toggle focus border color */
+          var(--rh-menu-dropdown-focus-border-color, var(--_interactive-border-color));
 
         /** Focus outline offset */
         outline-offset: var(--rh-length-3xs, 2px);
@@ -207,18 +222,29 @@
         inset 0 0 0
         /** Open border spread width */
         var(--rh-length-3xs, 2px)
-        var(--_interactive-border-color);
+        /** Toggle open border color */
+        var(--rh-menu-dropdown-open-border-color, var(--_interactive-border-color));
 
       &:focus {
         outline:
           /** Focus outline width */
           var(--rh-length-3xs, 2px)
           solid
-          var(--_interactive-border-color);
+          /** Toggle focus border color */
+          var(--rh-menu-dropdown-focus-border-color, var(--_interactive-border-color));
 
         /** Focus outline offset */
         outline-offset: var(--rh-length-3xs, 2px);
       }
+    }
+
+    &.disabled {
+      /** Disabled toggle border; default preserves the boxed border */
+      box-shadow:
+        var(--rh-menu-dropdown-disabled-box-shadow,
+          inset 0 0 0 1px
+          var(--rh-menu-dropdown-toggle-border-color,
+          light-dark(var(--rh-color-gray-30, #c7c7c7), var(--rh-color-gray-50, #707070))));
     }
   }
 
@@ -229,6 +255,13 @@
   &.compact {
     /** Compact toggle padding */
     padding: var(--rh-space-md, 8px);
+
+    /** Compact toggle minimum square dimensions */
+    min-block-size: var(--rh-menu-dropdown-compact-size, auto);
+    min-inline-size: var(--rh-menu-dropdown-compact-size, auto);
+
+    /** Compact toggle content alignment */
+    justify-content: var(--rh-menu-dropdown-compact-justify, space-between);
 
     &:not(.boxed) {
       &.open,
@@ -258,6 +291,25 @@
           /** Active border spread width */
           var(--rh-length-3xs, 2px)
           var(--_interactive-border-color);
+      }
+    }
+
+    &.disabled {
+      /** Disabled compact toggle background */
+      background:
+        var(--rh-menu-dropdown-compact-disabled-background,
+          light-dark(
+            /** Disabled compact background in light mode */
+            var(--rh-color-gray-30, #c7c7c7),
+            /** Disabled compact background in dark mode */
+            var(--rh-color-gray-40, #a3a3a3)
+          ));
+
+      .action-icon rh-icon {
+        /** Disabled compact icon color */
+        color:
+          var(--rh-menu-dropdown-compact-disabled-icon-color,
+            light-dark(var(--rh-color-gray-50, #707070), var(--rh-color-gray-60, #4d4d4d)));
       }
     }
   }

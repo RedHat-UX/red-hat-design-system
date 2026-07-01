@@ -3,16 +3,20 @@
   position: relative;
   width: 100%;
 
-  /** Border shorthand for the track line on the component root. */
+  /** Jump link item block padding */
+  --_item-padding-block: var(--rh-jump-link-item-padding-block, 0);
+
+  /** Jump link item inline padding */
+  --_item-padding-inline: var(--rh-jump-link-item-padding-inline, 0);
+
+  /** Jump link block padding */
+  --_link-padding-block: var(--rh-jump-link-link-padding-block);
+
+  /** Jump link inline padding */
+  --_link-padding-inline: var(--rh-jump-link-link-padding-inline);
+
+  /** Border shorthand for the track line on the component root */
   border-inline-start: var(--rh-jump-link-border, none);
-
-  /** Spacing between the track border and the link content. */
-  padding-inline-start: var(--rh-jump-link-gap, 0);
-}
-
-:host([active]) {
-  /** Border shorthand for the active state indicator on the component root. */
-  border-inline-start: var(--rh-jump-link-active-border, none);
 }
 
 a {
@@ -24,48 +28,6 @@ a {
   white-space: normal;
   overflow-wrap: break-word;
   position: relative;
-
-  &:before {
-    content: '';
-    display: block;
-    position: absolute;
-  }
-
-  &.vertical {
-    /** Jump link vertical spacing */
-    padding-block: var(--rh-space-md, 8px);
-    padding-inline:
-      /** Jump link vertical inline-start padding */
-      calc(var(--rh-space-lg, 16px) + var(--_padding-inline-start, 0px))
-      /** Jump link vertical inline-end padding */
-      var(--rh-space-lg, 16px);
-
-    /** Border shorthand for the inner link element. Override to `none` to disable. */
-    border-inline-start: var(--rh-jump-link-link-border, var(--_bdr));
-
-    /** max-width for each vertical jump link */
-    max-width: var(--rh-jump-link-max-width, calc(var(--rh-length-md, 8px) * 40));
-  }
-
-  &.horizontal {
-    /** Jump link inner spacing */
-    padding: var(--rh-space-lg, 16px);
-    white-space: nowrap;
-  }
-
-  &:hover,
-  &:focus-visible {
-    /** Jump link hover/focus text color */
-    color: var(--rh-color-text-primary);
-
-    --_bdr-c: var(--rh-color-border-status-neutral);
-
-    /** Background color of the link on hover. */
-    background-color: var(--rh-jump-link-hover-background-color, transparent);
-
-    /** Border radius of the link on hover. */
-    border-radius: var(--rh-jump-link-hover-border-radius, 0);
-  }
 
   &:focus {
     /** Jump link focus text color */
@@ -79,11 +41,76 @@ a {
       content: '';
       display: block;
       position: absolute;
-
-      /** Inset of the focus ring. Use negative values for outline offset. */
-      inset: var(--rh-jump-link-focus-inset, 0);
+      inset: 0;
       border: 2px solid var(--rh-color-interactive-primary-default);
       border-radius: var(--rh-border-radius-default, 3px);
+    }
+  }
+
+  &:hover,
+  &:focus-visible {
+    /** Jump link hover/focus text color */
+    color: var(--rh-color-text-primary);
+
+    /** Background color of the link on hover. */
+    background-color: var(--rh-jump-link-hover-background-color, transparent);
+
+    /** Border radius of the link on hover. */
+    border-radius: var(--rh-jump-link-hover-border-radius, 0);
+  }
+}
+
+#container {
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
+
+    /** Active indicator border radius */
+    border-radius: var(--rh-jump-link-indicator-border-radius, 0);
+    background-color: transparent;
+  }
+
+  &.vertical {
+    padding-block: var(--_item-padding-block);
+    padding-inline: var(--_item-padding-inline);
+
+    /** Border shorthand for the inner link element */
+    border-inline-start: var(--rh-jump-link-link-border, var(--_bdr));
+
+    & a {
+      /** Maximum width for each vertical jump link */
+      max-width: var(--rh-jump-link-max-width, calc(var(--rh-length-md, 8px) * 40));
+      min-width: max-content;
+      padding-block:
+        var(--_link-padding-block,
+          /** Vertical link block padding */
+          var(--rh-space-md, 8px));
+      padding-inline:
+        var(--_link-padding-inline,
+          calc(
+            /** Vertical link inline-start padding */
+            var(--rh-space-lg, 16px) + var(--_padding-inline-start, 0px))
+            /** Vertical link inline-end padding */
+            var(--rh-space-lg, 16px));
+    }
+  }
+
+  &.horizontal {
+    padding-block: var(--_item-padding-block);
+    padding-inline: var(--_item-padding-inline);
+
+    & a {
+      white-space: nowrap;
+      padding-block:
+        var(--_link-padding-block,
+          /** Horizontal link block padding */
+          var(--rh-space-lg, 16px));
+      padding-inline:
+        var(--_link-padding-inline,
+          /** Horizontal link inline padding */
+          var(--rh-space-lg, 16px));
     }
   }
 
@@ -95,40 +122,26 @@ a {
     --_bdr-c: var(--rh-color-brand-red);
   }
 
-  &:focus-visible,
-  &:hover,
-  &.active {
-    &.vertical:before {
-      height: 100%;
-      inset-inline-start: 0;
-      inset-block: 0;
-      border-inline-start:
-        var(--_active_bdr,
-          /** Vertical active border width */
-          var(--rh-border-width-lg, 3px)
-          solid
-          var(--_bdr-c,
-          /** Vertical active border color */
-          var(--rh-color-border-status-neutral)));
+  &.active:has(a),
+  &:has(a:focus-visible, a:hover) {
+    &.vertical {
+      &:before {
+        width: var(--rh-border-width-lg, 3px);
+        height: 100%;
+        background-color: var(--_bdr-c, var(--rh-color-border-status-neutral));
+      }
     }
 
-    &.horizontal:before {
-      /** Block-start offset for the horizontal active indicator. */
-      inset-block-start: var(--rh-jump-link-active-indicator-offset, 0);
-
-      /** Inline inset for the horizontal active indicator. Use negative values to extend wider. */
-      inset-inline: var(--rh-jump-link-active-indicator-inset-inline, 0);
-      border-block-start:
-        /** Horizontal active border width */
-        var(--rh-border-width-lg, 3px)
-        solid
-        var(--_bdr-c,
-          /** Horizontal active border color */
-          var(--rh-color-border-status-neutral));
+    &.horizontal {
+      &:before {
+        height: var(--rh-border-width-lg, 3px);
+        width: auto;
+        background-color: var(--_bdr-c, var(--rh-color-border-status-neutral));
+      }
     }
   }
 }
 
-:host([slot]) a.vertical {
+:host([slot]) #container.vertical {
   border-inline-start: none;
 }
