@@ -1,17 +1,73 @@
 <link rel="stylesheet" href="/theming/themes/unified-theme/unified-theme-preview.css">
 
 <style>
-  .example-row {
-    margin-block: var(--rh-space-2xl, 32px);
-    max-width: 300px;
+  #jump-links-demo-container {
+    display: grid;
+    grid-template-columns: max-content auto;
+    gap: var(--rh-space-2xl, 32px);
+    padding: var(--rh-space-lg, 16px);
+
+    aside {
+      h2 {
+        font-weight: var(--rh-font-weight-heading-medium);
+        font-family: var(--rh-font-family-body-text);
+        font-size: var(--rh-font-size-body-text-md);
+        line-height: var(--rh-line-height-body-text, 1.5);
+        margin-block-end: var(--rh-space-lg);
+      }
+    }
+  }
+
+  #horizontal-demo {
+    padding: var(--rh-space-lg, 16px);
+
+    h2 {
+      font-weight: var(--rh-font-weight-heading-medium);
+      font-family: var(--rh-font-family-body-text);
+      font-size: var(--rh-font-size-body-text-md);
+      line-height: var(--rh-line-height-body-text, 1.5);
+      margin-block-end: var(--rh-space-lg);
+    }
   }
 </style>
 
-<div class="example-row">
-  <rh-jump-links>
-    <rh-jump-link href="#section-1" active>Section one</rh-jump-link>
-    <rh-jump-link href="#section-2">Section two</rh-jump-link>
-    <rh-jump-link href="#section-3">Section three</rh-jump-link>
-    <rh-jump-link href="#section-4">Section four</rh-jump-link>
+<div id="jump-links-demo-container">
+  <aside>
+    <h2 id="sections">Vertical</h2>
+    <rh-jump-links aria-labelledby="sections">
+      <rh-jump-link href="#section-1">Section 1</rh-jump-link>
+      <rh-jump-link href="#section-2" active>Section 2</rh-jump-link>
+      <rh-jump-link href="#section-3">Section 3</rh-jump-link>
+      <rh-jump-link href="#section-4">Section 4</rh-jump-link>
+      <rh-jump-link href="#section-5">Section 5</rh-jump-link>
+    </rh-jump-links>
+
+    <h2 id="nested-sections">Nested</h2>
+    <rh-jump-links aria-labelledby="nested-sections">
+      <rh-jump-link href="#section-1">Jump link</rh-jump-link>
+      <rh-jump-links-list active>
+        <rh-jump-link slot="parent"
+                      href="#section-2">Jump link with active subsection</rh-jump-link>
+        <rh-jump-link href="#section-2a" active>Jump link subsection</rh-jump-link>
+        <rh-jump-link href="#section-2b">Jump link subsection</rh-jump-link>
+      </rh-jump-links-list>
+      <rh-jump-link href="#section-3">Jump link</rh-jump-link>
+      <rh-jump-link href="#section-4">Jump link</rh-jump-link>
+    </rh-jump-links>
+  </aside>
+</div>
+
+<div id="horizontal-demo">
+  <h2 id="horizontal-sections">Horizontal</h2>
+  <rh-jump-links orientation="horizontal"
+                 aria-labelledby="horizontal-sections">
+    <rh-jump-link href="#section-1">Jump link</rh-jump-link>
+    <rh-jump-link href="#section-2" active>Jump link</rh-jump-link>
+    <rh-jump-link href="#section-3">Jump link</rh-jump-link>
+    <rh-jump-link href="#section-4">Jump link</rh-jump-link>
+    <rh-jump-link href="#section-5">Jump link</rh-jump-link>
+    <rh-jump-link href="#section-6">Jump link</rh-jump-link>
+    <rh-jump-link href="#section-7">Jump link</rh-jump-link>
+    <rh-jump-link href="#section-8">Jump link</rh-jump-link>
   </rh-jump-links>
 </div>
