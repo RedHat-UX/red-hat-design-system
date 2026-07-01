@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-footer>`: updated fedora logo to brand red, added a top border, responsive link header font sizes, and updated content for both footer and universal footer
+`<rh-footer>`: updated visual design with top border, responsive link header font sizes, and brand-red Fedora logo
