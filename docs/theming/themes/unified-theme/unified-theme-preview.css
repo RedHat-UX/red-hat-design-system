@@ -2114,16 +2114,15 @@
 @layer subnav {
   rh-subnav {
     --rh-navigation-link-border-radius: var(--unified-border-radius-pill);
+    /* stylelint-disable @stylistic/declaration-colon-newline-after, @stylistic/max-line-length */
     --rh-navigation-link-hover-background-color: var(--unified-color-interactive-fill-plain-alt-hover);
     --rh-navigation-link-indicator-border-radius: var(--unified-border-radius-pill);
     --rh-navigation-link-white-space: nowrap;
-
     --rh-subnav-indicator-inset: auto 0 0 0;
     --rh-subnav-link-padding-block: 4px;
     --rh-subnav-link-padding-inline: 16px;
     --rh-subnav-scroll-buttons-border-block-end: none;
     --rh-subnav-scroll-buttons-padding: var(--unified-space-md);
-
 
     background-color: light-dark(var(--unified-color-gray-10), var(--unified-color-gray-95));
     border-radius: var(--unified-border-radius-pill);
@@ -2149,7 +2148,8 @@
       }
 
       &[current-page] {
-        --rh-navigation-link-background-color: var(--unified-color-interactive-fill-plain-alt-hover);
+        --rh-navigation-link-background-color:
+          var(--unified-color-interactive-fill-plain-alt-hover);
 
         &:after {
           border-radius: var(--unified-border-radius-pill);
