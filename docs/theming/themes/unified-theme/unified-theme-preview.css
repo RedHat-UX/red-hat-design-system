@@ -2148,8 +2148,7 @@
       }
 
       &[current-page] {
-        --rh-navigation-link-background-color:
-          var(--unified-color-interactive-fill-plain-alt-hover);
+        --rh-navigation-link-background-color: var(--unified-color-interactive-fill-plain-alt-hover);
 
         &:after {
           border-radius: var(--unified-border-radius-pill);
