@@ -1668,20 +1668,111 @@
 
 /* Element: Tabs */
 @layer tabs {
+  /* ── rh-tabs (container) ────────────────────────────── */
   rh-tabs {
-    --rh-tabs-active-border-color: var(--unified-color-brand-accent);
-    --rh-color-accent-brand: var(--unified-color-brand-accent);
-    --rh-color-interactive-secondary-default:
-      light-dark(
-          var(--unified-color-gray-40),
-          var(--unified-color-gray-50)
-        );
+    /* Bottom border color under the tab row */
+    --rh-color-border-subtle: var(--unified-color-border-interactive-subtle-default);
+
+    /* Active/selected tab indicator color */
+    --rh-tabs-active-border-color: var(--rh-color-brand-red);
     --rh-border-width-lg: var(--unified-border-width-lg);
+
+    /* Focus ring color (inherited by child rh-tab elements) */
     --rh-color-interactive-primary-default: var(--unified-color-interactive-primary-default);
+
+    /* Overflow buttons: square sizing, hide bottom-border indicator */
+    --rh-tabs-overflow-button-padding-block: var(--unified-space-md);
+    --rh-tabs-overflow-button-padding-inline: var(--unified-space-md);
+    --rh-tabs-overflow-button-min-size: 56px;
+    --rh-tabs-overflow-hover-indicator:
+      var(--unified-border-width-sm)
+      solid
+      var(--unified-color-border-interactive-subtle-default);
+
+    /* Overflow icon wrapper: inset circular pill hover/focus.
+       32px = 16px icon + 8px padding on each side. */
+    --rh-tabs-overflow-icon-size: 32px;
+    --rh-tabs-overflow-icon-radius: var(--unified-border-radius-pill);
+    --rh-tabs-overflow-hover-background: var(--unified-color-interactive-fill-plain-hover);
+    --rh-tabs-overflow-focus-background: var(--unified-color-interactive-fill-plain-focus);
+    --rh-tabs-overflow-focus-outline:
+      var(--unified-border-width-lg)
+      solid
+      var(--unified-color-border-interactive-default);
+    --rh-tabs-overflow-focus-outline-offset: 3px;
   }
 
-  rh-tab::part(button):focus {
-    border-radius: var(--unified-border-radius-action-plain);
+  /* ── rh-tabs vertical: adjust first/last tab margin ──── */
+  rh-tabs[vertical] {
+    --rh-space-xl: var(--unified-space-2xl);
+  }
+
+  /* ── rh-tab (individual tab button) ──────────────────── */
+  rh-tab {
+    /* Dark box tab background: gray-80 not gray-90 */
+    --rh-color-surface-darker: var(--unified-color-gray-80);
+
+    /* Shift padding from button to inner pill wrapper.
+       Outer button gets the spacing between tab edge and pill,
+       inner wrapper gets the pill's own internal padding. */
+    --rh-tabs-link-padding-block-start: var(--unified-space-md);
+    --rh-tabs-link-padding-block-end: var(--unified-space-md);
+    --rh-tabs-link-padding-inline-start: var(--unified-space-lg);
+    --rh-tabs-link-padding-inline-end: var(--unified-space-lg);
+
+    /* Activate the inner pill wrapper */
+    --rh-tabs-link-inner-radius: var(--unified-border-radius-pill);
+    --rh-tabs-link-inner-padding: var(--unified-space-md) var(--unified-space-lg);
+    --rh-tabs-link-inner-justify: center;
+
+    /* Hover: pill fill, remove default bottom-border indicator */
+    --rh-tabs-link-hover-background: var(--unified-color-interactive-fill-plain-hover);
+    --rh-color-interactive-secondary-default: transparent;
+
+    /* Focus: pill fill + pill-shaped outline ring,
+       hide the default rectangular button outline */
+    --rh-tabs-link-focus-background: var(--unified-color-interactive-fill-plain-focus);
+    --rh-tabs-link-focus-inner-outline:
+      var(--unified-border-width-lg)
+      solid
+      var(--unified-color-border-interactive-default);
+    --rh-tabs-link-focus-outline: none;
+  }
+
+  /* ── disabled tab: text and icon use disabled tokens ── */
+  rh-tab[disabled] {
+    --rh-tabs-link-color: var(--unified-color-text-status-disabled);
+  }
+
+  rh-tab[active]::part(button):after {
+    border-block: none;
+    background-color: var(--rh-tabs-active-border-color);
+    block-size: var(--rh-border-width-lg, 3px);
+    inset-block-start: auto;
+    border-radius: var(--unified-border-radius-pill);
+  }
+
+  rh-tabs[box] rh-tab[active]::part(button):after {
+    inset-block: 0 auto;
+  }
+
+  /* Box-inset only: the inset margins expose the container bottom border under
+     the active tab. Restore the surface-color "open" border on the button itself
+     (not ::after, which is now only 3px tall) so it covers the container line. */
+  rh-tabs[box='inset']:not([vertical]) rh-tab[active]::part(button) {
+    border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-surface);
+  }
+
+  rh-tabs[vertical] rh-tab[active]::part(button):after {
+    block-size: auto;
+    inline-size: var(--rh-border-width-lg, 3px);
+    inset-block: 0;
+    inset-inline-end: auto;
+  }
+
+  /* ── horizontal box: remove side divider borders ────── */
+  rh-tabs:not([vertical]) {
+    --rh-tabs-box-border-color: transparent;
   }
 }
 
