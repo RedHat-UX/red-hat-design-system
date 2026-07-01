@@ -55,6 +55,22 @@ export { RhTab };
  * @csspart tabs-container - wrapper around the tab list and scroll buttons
  * @csspart tabs - the scrollable tab list (has `role="tablist"`)
  * @csspart panels - container for `rh-tab-panel` elements
+ * @csspart overflow-button - both overflow scroll buttons
+ * @csspart overflow-button previous - the scroll-left overflow button
+ * @csspart overflow-button next - the scroll-right overflow button
+ *
+ * @cssprop {<length>} [--rh-tabs-overflow-button-padding-block=0] - Block padding for overflow scroll buttons
+ * @cssprop {<length>} [--rh-tabs-overflow-button-padding-inline] - Inline padding for overflow scroll buttons; defaults to `--rh-space-lg`
+ * @cssprop {<length>} [--rh-tabs-overflow-button-radius=0] - Border radius for overflow scroll buttons
+ * @cssprop {<length>} [--rh-tabs-overflow-button-min-size=auto] - Minimum width for overflow scroll buttons
+ * @cssprop {<color>} [--rh-tabs-overflow-border-color] - Border color for overflow button edges; defaults to `--rh-color-border-subtle`
+ * @cssprop [--rh-tabs-overflow-hover-indicator] - Bottom border shorthand on overflow button hover
+ * @cssprop {<length>} [--rh-tabs-overflow-icon-size=auto] - Width and height of the overflow icon pill area
+ * @cssprop {<length>} [--rh-tabs-overflow-icon-radius=0] - Border radius of the overflow icon pill area
+ * @cssprop {<color>} [--rh-tabs-overflow-hover-background=transparent] - Background color of the overflow icon pill on hover
+ * @cssprop {<color>} [--rh-tabs-overflow-focus-background=transparent] - Background color of the overflow icon pill on focus
+ * @cssprop [--rh-tabs-overflow-focus-outline=none] - Outline shorthand for the overflow icon pill on focus
+ * @cssprop {<length>} [--rh-tabs-overflow-focus-outline-offset=0] - Outline offset for the overflow icon pill on focus
  *
  */
 @customElement('rh-tabs')
@@ -205,11 +221,11 @@ export class RhTabs extends LitElement {
       <div id="container" part="container" class="${classMap({ vertical, box, inset, centered, overflow: this.#overflow.showScrollButtons })}">
         <!-- tabs container -->
         <div part="tabs-container">${!this.#overflow.showScrollButtons ? '' : html`
-          <button id="previous-tab" tabindex="-1"
+          <button id="previous-tab" part="overflow-button previous" tabindex="-1"
                   aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll left'}"
                   ?disabled="${!this.#overflow.overflowLeft}"
                   @click="${() => !this.matches(':dir(rtl)') ? this.#overflow.scrollLeft() : this.#overflow.scrollRight()}">
-            <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
+            <span class="overflow-icon"><rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon></span>
           </button>`}
           <div id="tablist" role="tablist">
             <!-- summary: Tab elements
@@ -222,12 +238,12 @@ export class RhTabs extends LitElement {
                   part="tabs"
                   @slotchange="${this.#onSlotchange}"></slot>
           </div>${!this.#overflow.showScrollButtons ? '' : html`
-          <button id="next-tab"
+          <button id="next-tab" part="overflow-button next"
                   tabindex="-1"
                   aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll right'}"
                   ?disabled="${!this.#overflow.overflowRight}"
                   @click="${() => !this.matches(':dir(rtl)') ? this.#overflow.scrollRight() : this.#overflow.scrollLeft()}">
-             <rh-icon set="ui" icon="caret-right" loading="eager"></rh-icon>
+            <span class="overflow-icon"><rh-icon set="ui" icon="caret-right" loading="eager"></rh-icon></span>
           </button>`}
         </div>
         <!-- summary: Panel elements
