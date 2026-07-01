@@ -2140,7 +2140,7 @@
     }
 
     & rh-navigation-link {
-      row-gap: var(--unified-space-xs);
+      row-gap: calc(var(--unified-space-xs) / 2);
 
       &:is(:focus-within) {
         --rh-navigation-link-hover-background-color: var(--unified-color-interactive-fill-plain-alt-hover);
