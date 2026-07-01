@@ -2114,6 +2114,7 @@
 /* Element: Subnav (Horizontal Navigation in PatternFly) */
 @layer subnav {
   rh-subnav {
+    --rh-navigation-link-font-size: var(--unified-font-size-body-text-sm);
     --rh-navigation-link-border-radius: var(--unified-border-radius-pill);
     /* stylelint-disable @stylistic/declaration-colon-newline-after, @stylistic/max-line-length */
     --rh-navigation-link-hover-background-color: var(--unified-color-interactive-fill-plain-alt-hover);
