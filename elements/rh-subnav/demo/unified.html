@@ -522,13 +522,12 @@ description: Block-end pill indicator on rh-navigation-link inside rh-subnav, us
     --rh-navigation-link-indicator-border-radius: var(--unified-border-radius-pill);
     --rh-navigation-link-white-space: nowrap;
 
-    --rh-subnav-link-container-gap: 4px;
     --rh-subnav-indicator-inset: auto 0 0 0;
     --rh-subnav-link-padding-block: 4px;
     --rh-subnav-link-padding-inline: 16px;
     --rh-subnav-scroll-buttons-border-block-end: none;
     --rh-subnav-scroll-buttons-padding: var(--unified-space-md);
-    --rh-subnav-link-container-padding: 0 var(--unified-space-xs);
+
 
     background-color: light-dark(var(--unified-color-gray-10), var(--unified-color-gray-95));
     border-radius: var(--unified-border-radius-pill);
@@ -538,8 +537,14 @@ description: Block-end pill indicator on rh-navigation-link inside rh-subnav, us
       padding: var(--unified-space-xs) 0 0 0;
     }
 
+    &::part(links) {
+      display: flex;
+      gap: var(--unified-space-xs);
+      padding: 0 var(--unified-space-xs);
+    }
+
     & rh-navigation-link {
-      row-gap: 4px;
+      row-gap: var(--unified-space-xs);
 
       &:hover {
         border-radius: var(--unified-border-radius-pill);

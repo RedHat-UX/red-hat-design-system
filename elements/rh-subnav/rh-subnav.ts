@@ -143,7 +143,9 @@ export class RhSubnav extends LitElement {
                 for screen readers. Slotting \`<a>\` elements is
                 deprecated; use \`<rh-navigation-link>\` instead.
           -->
-          <slot @slotchange="${this.#onSlotchange}" part="links"></slot>
+          <div part="links">
+            <slot @slotchange="${this.#onSlotchange}"></slot>
+          </div>
         </div>
         ${!this.#overflow.showScrollButtons ? '' : html`
           <button id="next"

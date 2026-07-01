@@ -11,15 +11,19 @@
   display: flex;
 }
 
+[part='links'] {
+  display: contents;
+}
+
 #link-container {
   display: flex;
-  gap: var(--rh-subnav-link-container-gap, 0);
+  gap: 0;
   position: relative;
   bottom: 0;
   overflow-x: auto;
   scrollbar-width: none;
   max-width: 100%;
-  padding: var(--rh-subnav-link-container-padding, 0);
+  padding: 0;
 }
 
 ::slotted(a) {
