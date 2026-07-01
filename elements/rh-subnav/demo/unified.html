@@ -547,13 +547,17 @@ description: Block-end pill indicator on rh-navigation-link inside rh-subnav, us
       row-gap: var(--unified-space-xs);
 
       &:hover {
-        border-radius: var(--unified-border-radius-pill);
+        &:after {
+          border-radius: var(--unified-border-radius-pill);
+        }
       }
 
       &[current-page] {
         --rh-navigation-link-background-color: var(--unified-color-interactive-fill-plain-alt-hover);
 
-        border-radius: var(--unified-border-radius-pill);
+        &:after {
+          border-radius: var(--unified-border-radius-pill);
+        }
       }
     }
   }
