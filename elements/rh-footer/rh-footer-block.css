@@ -22,7 +22,7 @@
   /** Footer block default font size */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
   text-decoration: none;
-  max-width: 650px;
+  max-width: none;
 }
 
 ::slotted(:is(h1, h2, h3, h4, h5)) {

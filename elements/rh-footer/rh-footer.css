@@ -228,12 +228,15 @@
 
 .global-logo {
   grid-area: logo;
-  width: var(--_logo-width);
+  width: auto;
+  height: var(--rh-size-icon-02, 24px);
 }
 
 .global-logo-image {
   /** Red Hat fedora brand color */
   fill: var(--rh-color-brand-red, #ee0000);
+  height: 100%;
+  width: auto;
 }
 
 .global-primary {
@@ -253,11 +256,36 @@
   justify-content: space-between;
 }
 
+.global-secondary-end {
+  display: flex;
+
+  /** Social links gap in universal footer */
+  gap: var(--rh-space-xl, 24px);
+  align-items: center;
+}
+
 .global-tertiary {
   grid-area: tertiary;
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: start;
-  align-items: start;
+  align-items: center;
+
+  /** Gap between copyright and social icons row */
+  gap: var(--rh-space-lg, 16px);
+}
+
+::slotted(rh-footer-copyright) {
+  grid-column: -1/1;
+}
+
+/* Copyright takes full width so social icons flow to the next line */
+.global-tertiary ::slotted(rh-footer-copyright) {
+  flex-basis: 100%;
+}
+
+.global-tertiary ::slotted(rh-footer-links) {
+  display: contents;
 }
 
 .global-links-primary {
@@ -322,8 +350,8 @@
   display: block;
   width: auto;
 
-  /** Logo image height (mobile) */
-  height: var(--rh-size-icon-02, 24px);
+  /** Logo image height */
+  height: var(--rh-size-icon-03, 32px);
 }
 
 .social-links {
@@ -486,10 +514,6 @@
   color: var(--rh-color-text-primary) !important;
 }
 
-::slotted(rh-footer-copyright) {
-  grid-column: -1/1;
-}
-
 @media screen and (min-width: 768px) {
   .header-primary ::slotted(:not(a, img, svg, picture)) {
     /** Subdomain name font size (desktop) */
@@ -498,6 +522,10 @@
 
   .logo a > :is(img, svg) {
     /** Logo image height (desktop) */
+    height: var(--rh-size-icon-03, 32px);
+  }
+
+  .global-logo {
     height: var(--rh-size-icon-04, 40px);
   }
 
@@ -519,32 +547,43 @@
       'logo      logo      logo'
       'primary   primary   primary'
       'spacer    spacer    spacer'
-      'secondary secondary secondary';
-  }
-
-  .global-base:is(.hasTertiary) {
-    grid-template-columns: 4fr 4fr 4fr;
-    grid-template-areas:
-      'logo      logo      logo'
-      'primary   primary   primary'
-      'spacer    spacer    spacer'
-      'secondary secondary tertiary';
+      'secondary secondary secondary'
+      'tertiary  tertiary  tertiary';
   }
 }
 
 @media screen and /* --rh-media-md */ (min-width: 992px) {
-  /* :not(.nothing) is a hack to match CSS specificity with :is(.hasTertiary) */
+  /* Match CSS specificity with :is(.hasTertiary) */
   .global-base:not(.nothing) {
-    grid-template-columns: auto 10fr 2fr;
-    grid-template-rows: max-content max-content;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: max-content max-content auto;
     grid-template-areas:
-      'logo primary  tertiary'
-      'logo secondary tertiary';
-    gap: 24px 32px;
+      'logo    primary'
+      'logo    secondary'
+      '.       tertiary';
+    gap: var(--rh-space-xl, 24px) var(--rh-space-2xl, 32px);
   }
 
   .global-primary {
     display: flex;
+  }
+}
+
+@media screen and /* WARNING: not an @rhds/tokens media query */ (min-width: 1200px) {
+  .global-base:not(.nothing) {
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: max-content max-content;
+    grid-template-areas:
+      'logo primary  tertiary'
+      'logo secondary tertiary';
+  }
+
+  .global-tertiary {
+    place-content: center flex-end;
+  }
+
+  .global-tertiary ::slotted(rh-footer-copyright) {
+    text-align: end;
   }
 }
 
@@ -560,10 +599,17 @@
 }
 
 @media screen and /* --rh-media-md */ (min-width: 992px) {
-  .global-tertiary {
-    display: grid;
-    justify-content: flex-end;
+  .global-secondary {
+    flex-flow: row wrap;
     align-items: center;
+  }
+
+  .global-links-secondary {
+    flex: 0 1 auto;
+  }
+
+  .global-secondary-end {
+    margin-inline-start: auto;
   }
 }
 
@@ -589,11 +635,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
   }
-
-  .hasTertiary .global-links-secondary {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
 @media screen and /* --rh-media-md */ (min-width: 992px) {
@@ -605,7 +646,7 @@
 }
 
 @media screen and /* --rh-media-md */ (min-width: 992px) {
-  :not(.hasTertiary) .global-links-secondary {
+  .global-links-secondary {
     display: flex;
     flex-flow: row wrap;
     gap: 8px 24px;
