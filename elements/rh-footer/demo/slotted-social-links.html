@@ -10,26 +10,14 @@ description: Footer using slotted anchor elements inside rh-footer-social-link i
          src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg"
          loading="lazy" />
   </a>
-  <rh-footer-social-link slot="social-links"
-                         icon="linkedin"><a href="https://www.linkedin.com/company/red-hat"
-       data-analytics-region="social-links-exit"
-       data-analytics-category="Footer|social-links"
-       data-analytics-text="LinkedIn">LinkedIn</a></rh-footer-social-link>
-  <rh-footer-social-link slot="social-links"
-                         icon="youtube"><a href="https://www.youtube.com/user/RedHatVideos"
-       data-analytics-region="social-links-exit"
-       data-analytics-category="Footer|social-links"
-       data-analytics-text="YouTube">YouTube</a></rh-footer-social-link>
-  <rh-footer-social-link slot="social-links"
-                         icon="facebook"><a href="https://www.facebook.com/redhatinc"
-       data-analytics-region="social-links-exit"
-       data-analytics-category="Footer|social-links"
-       data-analytics-text="Facebook">Facebook</a></rh-footer-social-link>
-  <rh-footer-social-link slot="social-links"
-                         icon="x"><a href="https://twitter.com/RedHat"
-       data-analytics-region="social-links-exit"
-       data-analytics-category="Footer|social-links"
-       data-analytics-text="Twitter">X/Twitter</a></rh-footer-social-link>
+  <div slot="header-secondary">
+    <label class="visually-hidden" for="select-language">Choose page language:</label>
+    <rh-select id="select-language">
+      <rh-option value="English">English</rh-option>
+      <rh-option value="French">French</rh-option>
+      <rh-option value="Spanish">Spanish</rh-option>
+    </rh-select>
+  </div>
   <h3 slot="links"
       data-analytics-text="Platforms">Platforms</h3>
   <ul slot="links">
@@ -170,7 +158,6 @@ description: Footer using slotted anchor elements inside rh-footer-social-link i
            data-analytics-category="Footer|Corporate"
            data-analytics-text="Red Hat Summit">Red Hat Summit</a></li>
     </ul>
-    <rh-footer-copyright slot="links-secondary">© 2026 Red Hat</rh-footer-copyright>
     <h3 slot="links-secondary"
         data-analytics-text="Red Hat legal and privacy links"
         hidden>Red Hat legal and privacy links</h3>
@@ -192,6 +179,30 @@ description: Footer using slotted anchor elements inside rh-footer-social-link i
            data-analytics-category="Footer|Red Hat legal and privacy links"
            data-analytics-text="Cookie preferences">Cookie preferences</a></li>
     </ul>
+    <rh-footer-copyright slot="tertiary">&copy; 2026 Red Hat</rh-footer-copyright>
+    <!-- Slotted <a> pattern: anchor elements inside rh-footer-social-link -->
+    <rh-footer-links slot="tertiary" role="list">
+      <rh-footer-social-link icon="linkedin"><a href="https://www.linkedin.com/company/red-hat"
+         data-analytics-region="social-links-exit"
+         data-analytics-category="Footer|social-links"
+         data-analytics-text="LinkedIn">LinkedIn</a></rh-footer-social-link>
+      <rh-footer-social-link icon="youtube"><a href="https://www.youtube.com/user/RedHatVideos"
+         data-analytics-region="social-links-exit"
+         data-analytics-category="Footer|social-links"
+         data-analytics-text="YouTube">YouTube</a></rh-footer-social-link>
+      <rh-footer-social-link icon="facebook"><a href="https://www.facebook.com/redhatinc"
+         data-analytics-region="social-links-exit"
+         data-analytics-category="Footer|social-links"
+         data-analytics-text="Facebook">Facebook</a></rh-footer-social-link>
+      <rh-footer-social-link icon="x"><a href="https://twitter.com/RedHat"
+         data-analytics-region="social-links-exit"
+         data-analytics-category="Footer|social-links"
+         data-analytics-text="X/Twitter">X/Twitter</a></rh-footer-social-link>
+      <rh-footer-social-link icon="instagram"><a href="https://www.instagram.com/redhat"
+         data-analytics-region="social-links-exit"
+         data-analytics-category="Footer|social-links"
+         data-analytics-text="Instagram">Instagram</a></rh-footer-social-link>
+    </rh-footer-links>
   </rh-footer-universal>
 </rh-footer>
 
@@ -199,6 +210,23 @@ description: Footer using slotted anchor elements inside rh-footer-social-link i
       href="../rh-footer-lightdom.css">
 
 <style>
+  .visually-hidden {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    block-size: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    inline-size: 1px;
+  }
+
+  rh-select {
+    margin-inline-start: auto;
+    inline-size: fit-content;
+  }
+
   rh-footer-block p {
     margin-block: 0 var(--rh-space-2xl, 32px);
   }
@@ -248,4 +276,5 @@ description: Footer using slotted anchor elements inside rh-footer-social-link i
 
 <script type="module">
   import '@rhds/elements/rh-footer/rh-footer.js';
+  import '@rhds/elements/rh-select/rh-select.js';
 </script>

@@ -12,21 +12,6 @@ const KITCHEN_SINK_TEMPLATE = html`
       <img src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat logo"
         loading="lazy"/>
     </a>
-    <rh-footer-social-link slot="social-links" icon="linkedin">
-      <a href="http://www.linkedin.com/company/red-hat">LinkedIn</a>
-    </rh-footer-social-link>
-    <rh-footer-social-link slot="social-links" icon="youtube">
-      <a href="http://www.youtube.com/user/RedHatVideos">Youtube</a>
-    </rh-footer-social-link>
-    <rh-footer-social-link slot="social-links" icon="facebook">
-      <a href="https://www.facebook.com/redhatinc">Facebook</a>
-    </rh-footer-social-link>
-    <!-- This is commented out because logos are exempt from contrast checks
-     and was throwing an error in automated axe test.
-     https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html
-    <rh-footer-social-link slot="social-links" icon="x">
-      <a href="https://twitter.com/RedHat">Twitter</a>
-    </rh-footer-social-link> -->
     <h3 slot="links">Products</h3>
     <ul slot="links">
       <li><a href="#">Red Hat Ansible Automation Platform</a></li>
@@ -103,7 +88,6 @@ const KITCHEN_SINK_TEMPLATE = html`
         <li><a href="#">Cool Stuff Store</a></li>
         <li><a href="#">Red Hat Summit</a></li>
       </ul>
-      <rh-footer-copyright slot="links-secondary"></rh-footer-copyright>
       <h3 slot="links-secondary" hidden>Red Hat legal and privacy links</h3>
       <ul slot="links-secondary">
         <li><a href="#">Privacy statement</a></li>
@@ -112,6 +96,21 @@ const KITCHEN_SINK_TEMPLATE = html`
         <li><a href="#">Digital accessibility</a></li>
         <li><a href="#">Cookie preferences</a></li>
       </ul>
+      <rh-footer-copyright slot="tertiary"></rh-footer-copyright>
+      <rh-footer-links slot="tertiary" role="list">
+        <rh-footer-social-link icon="linkedin"
+                               href="https://www.linkedin.com/company/red-hat"
+                               accessible-label="LinkedIn"></rh-footer-social-link>
+        <rh-footer-social-link icon="youtube"
+                               href="https://www.youtube.com/user/RedHatVideos"
+                               accessible-label="YouTube"></rh-footer-social-link>
+        <rh-footer-social-link icon="facebook"
+                               href="https://www.facebook.com/redhatinc"
+                               accessible-label="Facebook"></rh-footer-social-link>
+        <rh-footer-social-link icon="x"
+                               href="https://twitter.com/RedHat"
+                               accessible-label="X/Twitter"></rh-footer-social-link>
+      </rh-footer-links>
     </rh-footer-universal>
   </rh-footer>
   <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css">
@@ -131,7 +130,6 @@ const UNIVERSAL_FOOTER_TEMPLATE = html`
       <li><a href="#">Cool Stuff Store</a></li>
       <li><a href="#">Red Hat Summit</a></li>
     </ul>
-    <rh-footer-copyright slot="links-secondary"></rh-footer-copyright>
     <h3 slot="links-secondary" hidden>Red Hat legal and privacy links</h3>
     <ul slot="links-secondary">
       <li><a href="#">Privacy statement</a></li>
@@ -140,6 +138,21 @@ const UNIVERSAL_FOOTER_TEMPLATE = html`
       <li><a href="#">Digital accessibility</a></li>
       <li><a href="#">Cookie preferences</a></li>
     </ul>
+    <rh-footer-copyright slot="tertiary"></rh-footer-copyright>
+    <rh-footer-links slot="tertiary" role="list">
+      <rh-footer-social-link icon="linkedin"
+                             href="https://www.linkedin.com/company/red-hat"
+                             accessible-label="LinkedIn"></rh-footer-social-link>
+      <rh-footer-social-link icon="youtube"
+                             href="https://www.youtube.com/user/RedHatVideos"
+                             accessible-label="YouTube"></rh-footer-social-link>
+      <rh-footer-social-link icon="facebook"
+                             href="https://www.facebook.com/redhatinc"
+                             accessible-label="Facebook"></rh-footer-social-link>
+      <rh-footer-social-link icon="x"
+                             href="https://twitter.com/RedHat"
+                             accessible-label="X/Twitter"></rh-footer-social-link>
+    </rh-footer-links>
   </rh-footer-universal>
   <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css">
 `;
@@ -345,7 +358,7 @@ describe('<rh-footer>', function() {
         logo = universalFooter?.shadowRoot?.querySelector('.global-logo');
         primary = universalFooter?.shadowRoot?.querySelector('.global-primary');
         spacer = universalFooter?.shadowRoot?.querySelector('.spacer');
-        secondaryContent = universalFooter?.querySelector('[slot*=secondary]');
+        secondaryContent = universalFooter?.shadowRoot?.querySelector('.global-links-secondary');
         tertiary = universalFooter?.shadowRoot?.querySelector('.global-tertiary');
         redHatLogo = element.querySelector('[slot*="logo"]');
       });
@@ -424,10 +437,10 @@ describe('<rh-footer>', function() {
         expect(Math.abs(lastChild.getBoundingClientRect().bottom - block.getBoundingClientRect().bottom) < 5).to.be.true;
       });
 
-      it('has a max-width for contents', async function() {
+      it('has no max-width constraint on contents', async function() {
         const element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
         const block = element.querySelector('rh-footer-block');
-        expect(getComputedStyle(block?.querySelector('p') as Element)?.maxWidth).to.equal('650px');
+        expect(getComputedStyle(block?.querySelector('p') as Element)?.maxWidth).to.equal('none');
       });
     });
 
