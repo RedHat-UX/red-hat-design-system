@@ -2142,9 +2142,13 @@
     & rh-navigation-link {
       row-gap: var(--unified-space-xs);
 
+      &:is(:focus-within) {
+        --rh-navigation-link-hover-background-color: var(--unified-color-interactive-fill-plain-alt-hover);
+      }
+
       &:hover {
         &:after {
-          border-radius: var(--unified-border-radius-pill);
+          display: none;
         }
       }
 
