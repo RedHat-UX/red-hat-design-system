@@ -214,11 +214,21 @@ button {
 }
 
 /* OVERFLOW BUTTONS */
+/* stylelint-disable rhds/no-unknown-token-name -- new component tokens, not yet in registry */
 :is(#previous-tab, #next-tab) {
-  padding-block: 0;
+  /** Overflow button block padding */
+  padding-block: var(--rh-tabs-overflow-button-padding-block, 0);
 
-  /** Scroll button inline padding */
-  padding-inline: var(--rh-space-lg, 16px);
+  /** Overflow button inline padding */
+  padding-inline:
+    var(--rh-tabs-overflow-button-padding-inline,
+      var(--rh-space-lg, 16px));
+
+  /** Overflow button border radius */
+  border-radius: var(--rh-tabs-overflow-button-radius, 0);
+
+  /** Overflow button minimum width */
+  min-width: var(--rh-tabs-overflow-button-min-size, auto);
 
   /** Scroll button background, adapts to color-palette */
   background-color: var(--rh-color-surface);
@@ -228,22 +238,72 @@ button {
 
   &:before {
     border-block-start: var(--rh-border-width-sm, 1px) solid transparent;
-    border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
-    border-inline: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+
+    /** Overflow button bottom border color */
+    border-block-end:
+      var(--rh-border-width-sm, 1px)
+      solid
+      var(--rh-tabs-overflow-border-color, var(--rh-color-border-subtle));
+
+    /** Overflow button inline border color */
+    border-inline:
+      var(--rh-border-width-sm, 1px)
+      solid
+      var(--rh-tabs-overflow-border-color, var(--rh-color-border-subtle));
   }
 
   &:hover {
     color: var(--_overflow-button-hover-text-color, var(--rh-color-text-primary));
 
     &:before {
-      border-block-end: var(--rh-border-width-lg, 3px) solid var(--rh-color-border-subtle);
+      /** Overflow button hover bottom indicator */
+      border-block-end:
+        var(--rh-tabs-overflow-hover-indicator,
+          var(--rh-border-width-lg, 3px)
+          solid
+          var(--rh-color-border-subtle));
     }
+  }
+
+  &:focus {
+    outline: none;
   }
 
   &:disabled {
     color: var(--_overflow-button-disabled-text-color);
   }
 }
+
+/* Inner wrapper for hover/focus pill on overflow buttons */
+.overflow-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /** Overflow icon pill width and height */
+  width: var(--rh-tabs-overflow-icon-size, auto);
+  height: var(--rh-tabs-overflow-icon-size, auto);
+
+  /** Overflow icon pill border radius */
+  border-radius: var(--rh-tabs-overflow-icon-radius, 0);
+}
+
+:is(#previous-tab, #next-tab):hover .overflow-icon {
+  /** Overflow icon pill hover background */
+  background-color: var(--rh-tabs-overflow-hover-background, transparent);
+}
+
+:is(#previous-tab, #next-tab):focus .overflow-icon {
+  /** Overflow icon pill focus background */
+  background-color: var(--rh-tabs-overflow-focus-background, transparent);
+
+  /** Overflow icon pill focus outline */
+  outline: var(--rh-tabs-overflow-focus-outline, none);
+
+  /** Overflow icon pill focus outline offset */
+  outline-offset: var(--rh-tabs-overflow-focus-outline-offset, 0);
+}
+/* stylelint-enable rhds/no-unknown-token-name */
 
 #next-tab {
   inset-inline-start: -1px;
