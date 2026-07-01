@@ -68,7 +68,7 @@ a:before,
 a:is(:hover, :hover:focus-visible, :focus-visible, :active),
 ::slotted(:is(a:hover, a:hover:focus-visible, :focus-visible, :active)) {
   --_navigation-link-background-color:
-    var(--rh-navigation-link-background-color-hover,
+    var(--rh-navigation-link-hover-background-color,
       var(--_navigation-link-hover-background-color,
       light-dark(transparent, transparent))) !important;
   --_navigation-link-color:
