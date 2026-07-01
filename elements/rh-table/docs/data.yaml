@@ -3,6 +3,7 @@ tagName: rh-table
 name: Table
 type: element
 overallStatus: ready
+category: Data
 aka:
   - Data table
   - Grid
