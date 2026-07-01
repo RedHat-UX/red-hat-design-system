@@ -350,8 +350,8 @@
   display: block;
   width: auto;
 
-  /** Logo image height (mobile) */
-  height: var(--rh-size-icon-02, 24px);
+  /** Logo image height */
+  height: var(--rh-size-icon-03, 32px);
 }
 
 .social-links {
@@ -522,7 +522,7 @@
 
   .logo a > :is(img, svg) {
     /** Logo image height (desktop) */
-    height: var(--rh-size-icon-04, 40px);
+    height: var(--rh-size-icon-03, 32px);
   }
 
   .global-logo {

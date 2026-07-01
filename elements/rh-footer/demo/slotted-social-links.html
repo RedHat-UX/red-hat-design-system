@@ -13,9 +13,9 @@ description: Footer using slotted anchor elements inside rh-footer-social-link i
   <div slot="header-secondary">
     <label class="visually-hidden" for="select-language">Choose page language:</label>
     <rh-select id="select-language">
-      <rh-option value="English" icon-set="ui" icon="language">English</rh-option>
-      <rh-option value="French" icon-set="ui" icon="language">French</rh-option>
-      <rh-option value="Spanish" icon-set="ui" icon="language">Spanish</rh-option>
+      <rh-option value="English">English</rh-option>
+      <rh-option value="French">French</rh-option>
+      <rh-option value="Spanish">Spanish</rh-option>
     </rh-select>
   </div>
   <h3 slot="links"
@@ -224,7 +224,7 @@ description: Footer using slotted anchor elements inside rh-footer-social-link i
 
   rh-select {
     margin-inline-start: auto;
-    max-inline-size: var(--rh-length-7xl, 128px);
+    inline-size: fit-content;
   }
 
   rh-footer-block p {
