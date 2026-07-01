@@ -1845,6 +1845,7 @@
     /* Hide shadow DOM ::before indicators -- host border takes over */
     --_active_bdr: none;
     --rh-color-border-status-neutral: transparent;
+    --rh-jump-link-indicator-border-radius: var(--unified-border-radius-pill);
 
     /* Pill padding: 4px block, 8px inline (matching Figma) */
     --rh-space-md: var(--unified-space-xs);
@@ -1870,12 +1871,6 @@
     /* Pill hover on the <a> */
     --rh-jump-link-hover-background-color: var(--unified-color-interactive-fill-plain-hover);
     --rh-jump-link-hover-border-radius: var(--unified-border-radius-pill);
-
-    /* Focus ring offset around pill */
-    --rh-jump-link-focus-inset: -1px;
-
-    /* Vertical spacing between links (8px top + bottom on host) */
-    padding-block: var(--unified-space-md);
 
     /* Keep text color subtle on hover/focus (same as default) */
     --rh-color-text-primary:
@@ -1925,10 +1920,22 @@
     --rh-jump-link-gap: calc(var(--unified-space-lg) + var(--unified-space-xs));
   }
 
+  rh-jump-links:not([orientation]),
+  rh-jump-links[orientation='vertical'] {
+    --rh-jump-link-item-padding-block: var(--unified-space-sm);
+    --rh-jump-link-item-padding-inline: var(--unified-space-sm);
+    --rh-jump-link-link-padding-block: var(--unified-space-xs);
+    --rh-jump-link-link-padding-inline: var(--unified-space-md);
+  }
+
   /* Horizontal: hide shadow DOM top/bottom borders, draw top border
      on the host instead so it spans the full width with no bottom line */
   rh-jump-links[orientation='horizontal'] {
     --rh-color-border-subtle: transparent;
+    --rh-jump-link-item-padding-block: var(--unified-space-sm);
+    --rh-jump-link-item-padding-inline: var(--unified-space-sm);
+    --rh-jump-link-link-padding-block: var(--unified-space-xs);
+    --rh-jump-link-link-padding-inline: var(--unified-space-md);
 
     justify-content: start;
     border-block-start:
@@ -1951,8 +1958,6 @@
      and extend it wider than the pill */
   rh-jump-links[orientation='horizontal'] rh-jump-link[active] {
     --rh-jump-link-active-border: none;
-    --rh-jump-link-active-indicator-offset: calc(var(--unified-space-md) * -1);
-    --rh-jump-link-active-indicator-inset-inline: calc(var(--unified-space-xs) * -1);
   }
 }
 
