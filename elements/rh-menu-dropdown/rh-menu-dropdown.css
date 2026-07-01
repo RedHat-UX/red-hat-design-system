@@ -41,6 +41,7 @@
 /* Styles floating menu panel */
 #menu-list {
   position: absolute;
+  /** Menu panel padding */
   padding:
     var(--rh-menu-dropdown-panel-padding,
       var(--rh-space-md, 8px) 0);
@@ -158,7 +159,7 @@
   /* Styles contents of a basic menu toggle.
      Must not be changed to retain consistency with visually similar RHDS elements. */
   .action-icon rh-icon {
-    /** Caret icon size */
+    /** Toggle caret icon dimensions */
     --rh-icon-size: var(--rh-menu-dropdown-caret-size, 10px);
 
     /** Space between label and caret icon */

@@ -41,6 +41,25 @@ export class MenuDropdownSelectEvent extends Event {
  * @fires {MenuDropdownSelectEvent} select - Fired when a user selects an
  *        action or link from the menu. The event detail includes the selected
  *        `RhMenuItem` element and its text content.
+ *
+ * @cssprop [--rh-menu-dropdown-panel-padding] - Menu panel padding; defaults to `--rh-space-md` block, `0` inline
+ * @cssprop {<length>} [--rh-menu-dropdown-panel-border-radius] - Menu panel corner rounding; defaults to `--rh-border-radius-default`
+ * @cssprop [--rh-menu-dropdown-panel-border] - Menu panel border shorthand
+ * @cssprop {<color>} [--rh-menu-dropdown-panel-background] - Menu panel background color
+ * @cssprop [--rh-menu-dropdown-panel-box-shadow] - Menu panel elevation shadow; defaults to `--rh-box-shadow-md`
+ * @cssprop {<length>} [--rh-menu-dropdown-caret-size=10px] - Toggle caret icon dimensions
+ * @cssprop {<color>} [--rh-menu-dropdown-toggle-border-color] - Toggle default border color
+ * @cssprop {<color>} [--rh-menu-dropdown-hover-border-color] - Toggle hover border color
+ * @cssprop {<color>} [--rh-menu-dropdown-active-border-color] - Toggle active border color
+ * @cssprop {<color>} [--rh-menu-dropdown-open-border-color] - Toggle open state border color
+ * @cssprop {<color>} [--rh-menu-dropdown-focus-border-color] - Toggle focus border color
+ * @cssprop [--rh-menu-dropdown-disabled-box-shadow] - Disabled toggle border; preserves boxed border appearance
+ * @cssprop {<length>} [--rh-menu-dropdown-compact-size] - Compact toggle minimum square dimensions
+ * @cssprop [--rh-menu-dropdown-compact-justify] - Compact toggle content alignment
+ * @cssprop {<color>} [--rh-menu-dropdown-compact-disabled-background] - Disabled compact toggle background
+ * @cssprop {<color>} [--rh-menu-dropdown-compact-disabled-icon-color] - Disabled compact icon color
+ * @cssprop {<color>} [--rh-menu-dropdown-toggle-background] - Toggle button background color
+ *
  */
 @customElement('rh-menu-dropdown')
 export class RhMenuDropdown extends LitElement {
