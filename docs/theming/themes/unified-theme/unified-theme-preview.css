@@ -1940,8 +1940,7 @@
   }
 
   rh-jump-link {
-    /* Hide shadow DOM ::before indicators -- host border takes over */
-    --_active_bdr: none;
+    --rh-color-brand-red: #ee0000;
     --rh-color-border-status-neutral: transparent;
     --rh-jump-link-indicator-border-radius: var(--unified-border-radius-pill);
 
@@ -2014,8 +2013,15 @@
      so the hover pill stays compact.
      Total inline-start: 3px border + 20px gap + 8px <a> padding = 31px */
   rh-jump-links-list > rh-jump-link:not([slot]) {
-    --_padding-inline-start: 0px;
     --rh-jump-link-gap: calc(var(--unified-space-lg) + var(--unified-space-xs));
+  }
+
+  rh-jump-links[orientation='horizontal'] rh-jump-link {
+    --rh-jump-link-border: none;
+    --rh-jump-link-gap: 0;
+
+    box-shadow: none;
+    inline-size: auto;
   }
 
   rh-jump-links:not([orientation]),
@@ -2024,6 +2030,10 @@
     --rh-jump-link-item-padding-inline: var(--unified-space-sm);
     --rh-jump-link-link-padding-block: var(--unified-space-xs);
     --rh-jump-link-link-padding-inline: var(--unified-space-md);
+
+    rh-jump-links-list > rh-jump-link:not([slot='parent']) {
+      --rh-jump-link-item-padding-inline: var(--unified-space-xl);
+    }
   }
 
   /* Horizontal: hide shadow DOM top/bottom borders, draw top border
@@ -2040,15 +2050,6 @@
       var(--unified-border-width-sm)
       solid
       var(--unified-color-border-interactive-subtle-default);
-  }
-
-  rh-jump-links[orientation='horizontal'] rh-jump-link {
-    --rh-jump-link-border: none;
-    --rh-jump-link-gap: 0;
-    --_active_bdr: initial;
-
-    box-shadow: none;
-    inline-size: auto;
   }
 
   /* Horizontal active: no left border; pull the ::before indicator
