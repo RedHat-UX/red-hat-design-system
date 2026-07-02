@@ -60,6 +60,7 @@ circle {
 circle.dash {
   /* circumference = 2π × r (r="40" in the SVG template) */
   --_circumference: round(nearest, 2 * pi * 40, 1);
+
   transform-origin: 50% 50%;
 
   /** Dash circle animation name */
