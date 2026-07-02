@@ -225,12 +225,12 @@ export default pfeDevServerConfig({
       }
     },
     /**
-     * redirect requests for /assets/ css to /docs/assets/
+     * redirect requests for /styles/ and /theming/ to /docs/
      * @param ctx koa context
      * @param next next koa middleware
      */
     function(ctx, next) {
-      if (ctx.path.startsWith('/styles/')) {
+      if (ctx.path.startsWith('/styles/') || ctx.path.startsWith('/theming/')) {
         ctx.redirect(`/docs${ctx.path}`);
       } else {
         return next();
