@@ -72,8 +72,8 @@
 
 /* Element: Card */
 @layer card {
-  .unified-glass rh-card,
-  rh-card.unified-glass {
+  .felt-preview-glass rh-card,
+  rh-card.felt-preview-glass {
     &::part(container) {
       --rh-color-border-subtle: var(--felt-preview-glass-border-color);
       --rh-color-surface-lightest: var(--felt-preview-glass-surface-lightest);
@@ -92,8 +92,8 @@
 
 /* Element: Accordion — transparent background so glass shows through */
 @layer accordion {
-  .unified-glass rh-accordion,
-  rh-accordion.unified-glass {
+  .felt-preview-glass rh-accordion,
+  rh-accordion.felt-preview-glass {
     --rh-color-surface-lightest: transparent;
     --rh-color-surface-darkest: transparent;
     --rh-color-surface-lighter: transparent;
@@ -104,8 +104,8 @@
 
 /* Element: Alert (toast) — translucent floating background with blur */
 @layer alert {
-  .unified-glass rh-alert[variant='toast'],
-  rh-alert[variant='toast'].unified-glass {
+  .felt-preview-glass rh-alert[variant='toast'],
+  rh-alert[variant='toast'].felt-preview-glass {
     --rh-color-surface-lightest: var(--felt-preview-glass-surface-floating);
     --rh-box-shadow-xl: var(--felt-preview-glass-box-shadow);
   }
@@ -113,8 +113,8 @@
 
 /* Element: Dialog — translucent background with blur */
 @layer dialog {
-  .unified-glass rh-dialog,
-  rh-dialog.unified-glass {
+  .felt-preview-glass rh-dialog,
+  rh-dialog.felt-preview-glass {
     &::part(dialog) {
       background-color: var(--felt-preview-glass-surface-floating);
       backdrop-filter: var(--felt-preview-glass-backdrop-filter);
@@ -138,8 +138,8 @@
 
 /* Element: Navigation Vertical — translucent sidebar */
 @layer navigation-vertical {
-  .unified-glass rh-navigation-vertical,
-  rh-navigation-vertical.unified-glass {
+  .felt-preview-glass rh-navigation-vertical,
+  rh-navigation-vertical.felt-preview-glass {
     background: var(--felt-preview-glass-surface-primary);
     backdrop-filter: var(--felt-preview-glass-backdrop-filter);
     border-inline-end:
@@ -157,8 +157,8 @@
 
 /* Element: Tabs — transparent box tab backgrounds */
 @layer tabs {
-  .unified-glass rh-tabs[box],
-  rh-tabs[box].unified-glass {
+  .felt-preview-glass rh-tabs[box],
+  rh-tabs[box].felt-preview-glass {
     --rh-color-surface-lighter: transparent;
     --rh-color-surface-darker: transparent;
   }
