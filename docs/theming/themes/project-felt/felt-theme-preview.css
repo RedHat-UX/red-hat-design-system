@@ -1110,14 +1110,15 @@
     --rh-color-accent-base: var(--felt-preview-color-border-interactive-default);
 
     /* size small */
-    &[size="sm"] {
+    &[size='sm'] {
       --rh-size-icon-01: 12px;
     }
 
     /* size medium */
-    &[size="md"] {
+    &[size='md'] {
       --rh-size-icon-04: 20px;
     }
+
     /* size large (default) */
     &:not([size]),
     &[size='lg'] {
@@ -1125,7 +1126,7 @@
     }
 
     /* size extra large */
-    &[size="xl"] {
+    &[size='xl'] {
       --rh-length-4xl: 58px;
     }
   }
