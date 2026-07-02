@@ -88,21 +88,25 @@ theme variables. Single elements or entire pages can be themed.
 
 <div class="theme-cards">
   <rh-card>
+    <img slot="header" src="theming-project-felt-theme.png" alt="">
     <h3 slot="header">Project Felt theme</h3>
     <p>Cross-team initiative to unify the Red Hat brand, marketing experiences, and product UIs.</p>
     <rh-cta slot="footer"><a href="themes/project-felt/">Learn more</a></rh-cta>
   </rh-card>
   <rh-card>
+    <img slot="header" src="theming-color-palettes.png" alt="">
     <h3 slot="header">Color palettes</h3>
     <p>Design system color palettes integrate tokens with elements and patterns to produce striking layouts.</p>
     <rh-cta slot="footer"><a href="color-palettes/">Learn more</a></rh-cta>
   </rh-card>
   <rh-card>
+    <img slot="header" src="theming-customizing.png" alt="">
     <h3 slot="header">Customizing</h3>
     <p>How named design tokens and semantically-defined color palettes open up theming possibilities.</p>
     <rh-cta slot="footer"><a href="customizing/">Learn more</a></rh-cta>
   </rh-card>
   <rh-card>
+    <img slot="header" src="theming-developer.png" alt="">
     <h3 slot="header">Developer</h3>
     <p>Tools and techniques to help you develop custom themes.</p>
     <rh-cta slot="footer"><a href="developers/">Learn more</a></rh-cta>

@@ -26,6 +26,19 @@ This new theme is part of Project Felt, which is an ongoing cross-team initiativ
 
 Here is how it came together and where we are taking it next.
 
+<div class="grid sm-two-columns gapless">
+  <uxdot-example no-border>
+    <img alt="Mock screenshot of a UI designed with PatternFly 6"
+        src="theming-patternfly.png"
+        width="570">
+  </uxdot-example>
+  <uxdot-example no-border>
+    <img alt="Mock screenshot of a UI designed with Red Hat Design System"
+        src="theming-rhds.png"
+        width="576">
+  </uxdot-example>
+</div>
+
 ## Envisioning a seamless journey
 
 This theming effort started as a cross-team workshop between maintainers of the PatternFly and Red Hat design systems, and the Red Hat brand team. Together, we tackled this shared challenge:
@@ -46,6 +59,19 @@ The result of this workshop laid the groundwork for many of the styles we are sh
 
 The Project Felt theme is our first theme variant and a step towards a unified Red Hat identity. Named after the material of the iconic Red Hat fedora, our new Project Felt theme is Red Hat through and through. It expands on leveraging Red Hat red as a primary accent color and introduces pill-shaped borders for buttons, controls, containers, and more.
 
+<div class="grid sm-two-columns">
+  <uxdot-example no-border>
+    <img alt="Base RHDS theme on elements"
+        src="theming-base.png"
+        width="530">
+  </uxdot-example>
+  <uxdot-example no-border>
+    <img alt="Project Felt preview theme on elements"
+        src="theming-project-felt.png"
+        width="530"> 
+  </uxdot-example>
+</div>
+
 The result is marketing experiences and product interfaces that are more visually aligned and recognizably Red Hat. For teams building things where continuity matters, the Project Felt theme makes it easier to deliver that familiarity for users.
 
 Because the Project Felt theme is built entirely on our design token system, you can adopt it without breaking changes.
@@ -59,7 +85,7 @@ Because the Project Felt theme is built entirely on our design token system, you
 
 The path to production will be incremental to minimize disruption.
 
-- RHDS components will be built to allow engineers to toggle between base RHDS styles and the new Project Felt theme by using a style sheet that will ship with RHDS v4.2.0 ("Growlithe").
+- RHDS components will be built to allow engineers to toggle between base RHDS styles and the new Project Felt theme by using a stylesheet that will ship with RHDS v4.2.0 ("Growlithe").
 - The new theme will be delivered as a non-breaking update for both RHDS and PatternFly.
 - Workshops across teams are planned to dive deeper into integrating the unified theme in code.
 
@@ -71,6 +97,12 @@ The path to production will be incremental to minimize disruption.
 ## Enablement in Figma
 
 In the RHDS Figma library, we added a property called "Theme". It gives users the ability to toggle between base RHDS styles and Project Felt theme styles. Additionally, the semantic tokens for this new theme will be available in a separate "Semantic tokens - Project Felt theme" collection.
+
+<uxdot-example no-border>
+  <img alt="Screenshot of Figma interface, showing the selection of Project Felt as a theme on the Button component"
+       src="theming-felt-figma-enablement.png"
+       width="500">
+</uxdot-example>
 
 ## Timeline
 
