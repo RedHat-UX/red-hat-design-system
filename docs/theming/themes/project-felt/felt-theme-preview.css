@@ -1101,17 +1101,33 @@
     --rh-spinner-track-display: none;
     --rh-spinner-vector-effect: none;
     --rh-spinner-stroke-width: 10;
-    --rh-spinner-circle-radius: 45;
     --rh-spinner-container-animation-name: felt-rotate;
     --rh-spinner-container-animation-duration: 2.8s;
     --rh-spinner-animation-name: felt-dash;
     --rh-spinner-animation-duration: 1.4s;
     --rh-spinner-animation-timing: ease-in-out;
     --rh-spinner-rotate-start: 0deg;
-    --rh-spinner-sm-animation-name: felt-dash;
-    --rh-spinner-sm-dash-array: 283;
-    --rh-spinner-sm-dash-offset: 280;
     --rh-color-accent-base: var(--felt-preview-color-border-interactive-default);
+
+    /* size small */
+    &[size="sm"] {
+      --rh-size-icon-01: 12px;
+    }
+
+    /* size medium */
+    &[size="md"] {
+      --rh-size-icon-04: 20px;
+    }
+    /* size large (default) */
+    &:not([size]),
+    &[size='lg'] {
+      --rh-size-icon-06: 26px;
+    }
+
+    /* size extra large */
+    &[size="xl"] {
+      --rh-length-4xl: 58px;
+    }
   }
 
   /* Element: Tag */

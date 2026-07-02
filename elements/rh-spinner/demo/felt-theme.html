@@ -1,0 +1,26 @@
+---
+description: Spinner with Project Felt theme applied.
+---
+<link rel="stylesheet" href="/docs/theming/themes/project-felt/felt-theme-preview.css">
+
+<style>
+  .example-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rh-space-2xl, 32px);
+    align-items: center;
+  }
+</style>
+
+<div class="felt-preview">
+  <div class="example-flex">
+    <rh-spinner size="xl"></rh-spinner>
+    <rh-spinner></rh-spinner>
+    <rh-spinner size="md"></rh-spinner>
+    <rh-spinner size="sm"></rh-spinner>
+  </div>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-spinner/rh-spinner.js';
+</script>

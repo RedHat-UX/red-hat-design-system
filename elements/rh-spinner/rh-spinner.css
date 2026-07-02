@@ -51,9 +51,6 @@ svg {
 circle {
   width: 100%;
   height: 100%;
-
-  /** Circle radius in SVG user units */
-  r: var(--rh-spinner-circle-radius, 40);
   stroke-linecap: round;
 
   /** SVG vector-effect for stroke scaling behavior */
@@ -140,13 +137,13 @@ circle.track {
 
   & circle.dash {
     /** Small dash circle animation name */
-    animation-name: var(--rh-spinner-sm-animation-name, rh-spinner-small-animation-dash);
+    animation-name: var(--rh-spinner-animation-name, rh-spinner-small-animation-dash);
 
     /** Small dash circle stroke-dasharray value */
-    stroke-dasharray: var(--rh-spinner-sm-dash-array, 71);
+    stroke-dasharray: var(--rh-spinner-dash-array, 71);
 
     /** Small dash circle stroke-dashoffset value */
-    stroke-dashoffset: var(--rh-spinner-sm-dash-offset, 71);
+    stroke-dashoffset: var(--rh-spinner-dash-offset, 71);
   }
 
   & ::slotted(p) {
@@ -188,23 +185,63 @@ circle.track {
   100% { transform: rotate(360deg); }
 }
 
+/*
+ * felt-dash — mirrors @patternfly/elements pf-c-spinner-animation-dash.
+ *
+ * All values are hardcoded because var() inside @keyframes breaks in
+ * Firefox (https://bugzilla.mozilla.org/show_bug.cgi?id=1763376).
+ *
+ * How the arc is drawn:
+ *   stroke-dasharray sets the length of the visible dash (and gap).
+ *   stroke-dashoffset shifts the dash backward along the path.
+ *   visible arc = dasharray − dashoffset
+ *
+ * Why not just set r=45 to match PatternFly?
+ *   Firefox requires units on the CSS `r` property (e.g. r: 45px),
+ *   but SVG `r` is a unitless attribute. A CSS `r: 45` is silently
+ *   ignored in Firefox (https://bugzilla.mozilla.org/show_bug.cgi?id=1787374),
+ *   so we can't override the SVG attribute via a custom property.
+ *   We keep the SVG attribute r="40" and recalculate the animation
+ *   values instead.
+ *
+ * PatternFly vs RHDS + Felt — different radius, same proportions:
+ *   PatternFly uses r=45 → circumference = 2π × 45 ≈ 283
+ *   RHDS uses r=40       → circumference = 2π × 40 ≈ 251
+ *
+ *   dasharray and dashoffset are absolute SVG path units, not
+ *   percentages, so PatternFly's raw values would produce slightly
+ *   different arc proportions on our smaller circle. The values
+ *   below are recalculated for r=40 to preserve the same visual
+ *   proportions as PatternFly's animation:
+ *
+ *   PatternFly (r=45)       RHDS Felt Theme (r=40)
+ *   ────────────────────────       ──────────────────────
+ *   dasharray  283 (C)             251 (C)
+ *   dashoffset 280 (C−3, ~1%)      248 (C−3, ~1%)
+ *   dasharray  220 (0.78×C)        195 (0.78×C)
+ *   dashoffset 150 (arc=70, 25%)   133 (arc=62, 25%)
+ *   stroke-width 6 (10−4)          6 (10−4)
+ *   rotate 720deg (2 turns)        720deg (2 turns)
+ */
 @keyframes felt-dash {
   0% {
-    stroke-dashoffset: 280;
+    stroke-dasharray: 251;   /* C: full circumference */
+    stroke-dashoffset: 248;  /* C − 3: ~1% visible arc (tiny tail) */
     transform: rotate(0deg);
   }
 
   15% {
-    stroke-width: calc(var(--rh-spinner-stroke-width) - 4);
+    stroke-width: 6;         /* stroke-width (10) minus 4 */
   }
 
   40% {
-    stroke-dasharray: 220;
-    stroke-dashoffset: 150;
+    stroke-dasharray: 195;   /* 0.78 × C: shorter dash */
+    stroke-dashoffset: 133;  /* 195 − 133 = 62 units (~25% arc) */
   }
 
   100% {
-    stroke-dashoffset: 280;
-    transform: rotate(720deg);
+    stroke-dasharray: 251;   /* C: back to full circumference */
+    stroke-dashoffset: 248;  /* C − 3: back to tiny tail */
+    transform: rotate(720deg); /* 2 full rotations */
   }
 }
