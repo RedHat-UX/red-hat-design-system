@@ -58,9 +58,6 @@ circle {
 }
 
 circle.dash {
-  /* circumference = 2π × r (r="40" in the SVG template) */
-  --_circumference: round(nearest, 2 * pi * 40, 1);
-
   transform-origin: 50% 50%;
 
   /** Dash circle animation name */
@@ -196,15 +193,17 @@ circle.track {
  *   stroke-dashoffset shifts the dash backward along the path.
  *   visible arc = dasharray − dashoffset
  *
- * --_circumference (circumference, 2πr) is set on circle.dash. All proportions
- * below are derived from it so the animation adapts if r changes.
+ * dasharray and dashoffset values are hardcoded because Firefox
+ * does not resolve var() for those SVG properties inside @keyframes
+ * (https://bugzilla.mozilla.org/show_bug.cgi?id=1763376).
+ * stroke-width works fine with calc(var(...)) in keyframes.
  *
  * Why not just set r=45 to match PatternFly?
  *   Firefox requires units on the CSS `r` property (e.g. r: 45px),
  *   but SVG `r` is a unitless attribute. A CSS `r: 45` is silently
  *   ignored in Firefox (https://bugzilla.mozilla.org/show_bug.cgi?id=1787374),
  *   so we can't override the SVG attribute via a custom property.
- *   We keep the SVG attribute r="40" and recalculate --_circumference instead.
+ *   We keep the SVG attribute r="40" and recalculate the values below.
  *
  * PatternFly vs RHDS + Felt — different radius, same proportions:
  *   PatternFly uses r=45 → circumference = 2π × 45 ≈ 283
@@ -212,23 +211,23 @@ circle.track {
  *
  *   dasharray and dashoffset are absolute SVG path units, not
  *   percentages, so PatternFly's raw values would produce slightly
- *   different arc proportions on our smaller circle. The values
- *   below are recalculated for r=40 to preserve the same visual
- *   proportions as PatternFly's animation:
+ *   different arc proportions on our smaller circle. To recalculate:
+ *   take PatternFly's value, divide by their circumference (283) to
+ *   get the proportion, then multiply by our circumference (251).
  *
- *   PatternFly (r=45)               RHDS Felt Theme (r=40)
+ *   PatternFly (r=45, C=283)        RHDS Felt Theme (r=40, C=251)
  *   ──────────────────────          ──────────────────────
  *   dasharray  283 (C)              251 (C)
- *   dashoffset 280 (C−3, ~1%)       248 (C−3, ~1%)
- *   dasharray  220 (0.78×C)         195 (0.78×C)
- *   dashoffset 150 (arc=70, 25%)    133 (arc=62, 25%)
+ *   dashoffset 280 (C−3)            248 (C−3)
+ *   dasharray  220 (220/283×251)    195 (0.78×C)
+ *   dashoffset 150 (150/283×251)    133 (0.53×C)
  *   stroke-width 6 (10−4)           6 (10−4)
  *   rotate 720deg (2 turns)         720deg (2 turns)
  */
 @keyframes felt-dash {
   0% {
-    stroke-dasharray: var(--_circumference);
-    stroke-dashoffset: calc(var(--_circumference) - 3);
+    stroke-dasharray: 251; /* C (2π × 40) */
+    stroke-dashoffset: 248; /* C − 3: nearly full circle, tiny visible tail */
     transform: rotate(0deg);
   }
 
@@ -237,13 +236,13 @@ circle.track {
   }
 
   40% {
-    stroke-dasharray: calc(var(--_circumference) * 0.78);
-    stroke-dashoffset: calc(var(--_circumference) * 0.53);
+    stroke-dasharray: 195; /* 0.78 × C */
+    stroke-dashoffset: 133; /* 0.53 × C */
   }
 
   100% {
-    stroke-dasharray: var(--_circumference);
-    stroke-dashoffset: calc(var(--_circumference) - 3);
+    stroke-dasharray: 251; /* C (2π × 40) */
+    stroke-dashoffset: 248; /* C − 3: back to tiny visible tail */
     transform: rotate(720deg);
   }
 }
