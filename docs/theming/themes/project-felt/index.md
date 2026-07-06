@@ -12,6 +12,12 @@ subnav:
   order: 10
 ---
 
+<style>
+  #theming-screenshots {
+    margin-block-end: 0;
+  }
+</style>
+
 ## Harmonizing the Red Hat experience
 
 ### Our new theme is built for journeys
@@ -26,18 +32,11 @@ This new theme is part of Project Felt, which is an ongoing cross-team initiativ
 
 Here is how it came together and where we are taking it next.
 
-<div class="grid sm-two-columns gapless">
-  <uxdot-example no-border>
-    <img alt="Mock screenshot of a UI designed with PatternFly 6"
-        src="theming-patternfly.png"
-        width="570">
-  </uxdot-example>
-  <uxdot-example no-border>
-    <img alt="Mock screenshot of a UI designed with Red Hat Design System"
-        src="theming-rhds.png"
-        width="576">
-  </uxdot-example>
-</div>
+<uxdot-example no-border id="theming-screenshots">
+  <img alt="Mock screenshots of a UI designed with PatternFly 6 side-by-side to one with Red Hat Design System"
+      src="project-felt-themes.png"
+      width="1146">
+</uxdot-example>
 
 ## Envisioning a seamless journey
 
@@ -93,16 +92,6 @@ The path to production will be incremental to minimize disruption.
   <h4 slot="header">Helpful to know</h4>
   <p>RHDS will continue to update the original Figma library, which will include elements styled with the default, base RHDS theme and the Project Felt theme.</p>
 </rh-alert>
-
-## Enablement in Figma
-
-In the RHDS Figma library, we added a property called "Theme". It gives users the ability to toggle between base RHDS styles and Project Felt theme styles. Additionally, the semantic tokens for this new theme will be available in a separate "Semantic tokens - Project Felt theme" collection.
-
-<uxdot-example no-border>
-  <img alt="Screenshot of Figma interface, showing the selection of Project Felt as a theme on the Button component"
-       src="theming-felt-figma-enablement.png"
-       width="500">
-</uxdot-example>
 
 ## Timeline
 

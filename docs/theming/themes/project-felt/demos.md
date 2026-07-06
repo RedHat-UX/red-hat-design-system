@@ -49,11 +49,11 @@ To apply the Project Felt theme to all of the elements below, toggle the switch.
 ## Demos
 
 <uxdot-pattern src="../../patterns/felt-preview-accordion.html">
-  <uxdot-copy-permalink slot="heading"><h3 id="accordion"><a href="#accordion">Accordion</a></h3></uxdot-copy-permalink>
+  <uxdot-copy-permalink slot="heading"><h3 id="accordion" class="toc"><a href="#accordion">Accordion</a></h3></uxdot-copy-permalink>
 </uxdot-pattern>
 
 <uxdot-pattern src="../../patterns/felt-preview-alert.html">
-  <uxdot-copy-permalink slot="heading"><h3 id="alert"><a href="#alert">Alerts</a></h3></uxdot-copy-permalink>
+  <uxdot-copy-permalink slot="heading"><h3 id="alert" class="toc"><a href="#alert">Alerts</a></h3></uxdot-copy-permalink>
 </uxdot-pattern>
 
 <uxdot-pattern src="../../patterns/felt-preview-badge.html">
