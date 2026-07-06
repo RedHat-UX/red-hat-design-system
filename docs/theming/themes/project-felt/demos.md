@@ -40,60 +40,92 @@ subnav:
 
 <style>
   #demos-nav {
-    display: none;
+    display: block;
+    padding-block-end: var(--rh-space-2xl, 32px);
   }
 
-  @container main (min-width: 576px) and (max-width: 1439px) {
-    #demos-nav {
-      display: block;
-      padding-block-end: var(--rh-space-2xl, 32px);
-    }
+  #demos-nav ul {
+    columns: 2;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 
-    #demos-nav ul {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--rh-space-md, 8px);
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
+  #demos-nav li {
+    break-inside: avoid;
+    margin: 0;
+    padding: 0;
+    padding-block-end: var(--rh-space-md, 8px);
 
-    #demos-nav li {
-      margin: 0;
-      padding: 0;
-    }
-
-    #demos-nav li::before {
+    &:before {
       content: "•";
       margin-inline-end: var(--rh-space-md, 8px);
       color: var(--rh-color-interactive-primary-default);
     }
+  }
 
-    #demos-nav a {
-      color: var(--rh-color-interactive-primary-default);
-      text-decoration: none;
-    }
+  #demos-nav a {
+    color: var(--rh-color-interactive-primary-default);
+    text-decoration: none;
 
-    #demos-nav a:hover {
+    &:hover {
       color: var(--rh-color-interactive-primary-hover);
       text-decoration: underline dashed 1px;
       text-decoration-color: inherit;
       text-underline-offset: max(5px, 0.28em);
     }
 
-    #demos-nav a:focus-within {
+    &:focus-within {
       color: var(--rh-color-interactive-primary-focus);
       text-decoration: underline dashed 1px;
       text-decoration-color: inherit;
       text-underline-offset: max(5px, 0.28em);
     }
 
-    #demos-nav a:visited {
+    &:visited {
       color: var(--rh-color-interactive-primary-visited-default);
+      &:hover { color: var(--rh-color-interactive-primary-visited-hover); }
+    }
+  }
+
+  @container main (min-width: 768px) {
+    #demos-nav ul {
+      columns: 3;
+    }
+  }
+
+  @container main (min-width: 992px) {
+    #demos-nav ul {
+      columns: 4;
+    }
+  }
+
+  .back-to-demos {
+    display: inline-block;
+    margin-block: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+    color: var(--rh-color-interactive-primary-default);
+    text-decoration: none;
+    font-size: var(--rh-font-size-body-text-sm, 14px);
+
+    &:before {
+      display: inline-block;
+      content: '⌃';
+      margin-inline-end: var(--rh-space-md, 8px);
+      color: var(--rh-color-interactive-primary-default);
     }
 
-    #demos-nav a:visited:hover {
-      color: var(--rh-color-interactive-primary-visited-hover);
+    &:hover {
+      color: var(--rh-color-interactive-primary-hover);
+      text-decoration: underline dashed 1px;
+      text-decoration-color: inherit;
+      text-underline-offset: max(5px, 0.28em);
+    }
+  }
+
+  @container main (min-width: 1440px) {
+    #demos-nav,
+    .back-to-demos {
+      display: none;
     }
   }
 </style>
@@ -223,5 +255,10 @@ To apply the Project Felt theme to all of the elements below, toggle the switch.
       nav.innerHTML = `<ul>${items}</ul>`;
       nav.hidden = false;
     }
+  }
+
+  for (const pattern of document.querySelectorAll('uxdot-pattern')) {
+    pattern.insertAdjacentHTML('afterend',
+      `<a href="#demos" class="back-to-demos">Back to demos list</a>`);
   }
 </script>
