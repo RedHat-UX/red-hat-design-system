@@ -30,11 +30,6 @@ a {
     min-width: 16px;
   }
 
-  &:before {
-    /* Toggles display for sub TOC items */
-    content: var(--_uxdot-toc-item-bullet, none);
-  }
-
   &:hover { color: var(--rh-color-interactive-primary-hover); }
   &:focus-within { color: var(--rh-color-interactive-primary-focus); }
   &:active { color: var(--rh-color-interactive-primary-active); }
@@ -73,10 +68,9 @@ slot[name='expanded'] {
 }
 
 ::slotted(uxdot-toc-list) {
-  --_uxdot-toc-item-padding-block-end: 0;
+  --_uxdot-toc-item-padding-block-end: var(--rh-space-md);
   --_uxdot-toc-item-first-padding-block-start: 0;
   --_uxdot-toc-item-show-arrow: none;
-  --_uxdot-toc-item-bullet: '○'; /* open bullet */
   --_uxdot-toc-item-font-size: var(--rh-font-size-body-text-md);
 
   margin-block-start: 0;

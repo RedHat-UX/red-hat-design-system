@@ -38,6 +38,66 @@ subnav:
 
 <link rel="stylesheet" data-helmet href="/theming/themes/project-felt/felt-theme-preview.css">
 
+<style>
+  #demos-nav {
+    display: none;
+  }
+
+  @container main (min-width: 576px) and (max-width: 1439px) {
+    #demos-nav {
+      display: block;
+      padding-block-end: var(--rh-space-2xl, 32px);
+    }
+
+    #demos-nav ul {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--rh-space-md, 8px);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    #demos-nav li {
+      margin: 0;
+      padding: 0;
+    }
+
+    #demos-nav li::before {
+      content: "•";
+      margin-inline-end: var(--rh-space-md, 8px);
+      color: var(--rh-color-interactive-primary-default);
+    }
+
+    #demos-nav a {
+      color: var(--rh-color-interactive-primary-default);
+      text-decoration: none;
+    }
+
+    #demos-nav a:hover {
+      color: var(--rh-color-interactive-primary-hover);
+      text-decoration: underline dashed 1px;
+      text-decoration-color: inherit;
+      text-underline-offset: max(5px, 0.28em);
+    }
+
+    #demos-nav a:focus-within {
+      color: var(--rh-color-interactive-primary-focus);
+      text-decoration: underline dashed 1px;
+      text-decoration-color: inherit;
+      text-underline-offset: max(5px, 0.28em);
+    }
+
+    #demos-nav a:visited {
+      color: var(--rh-color-interactive-primary-visited-default);
+    }
+
+    #demos-nav a:visited:hover {
+      color: var(--rh-color-interactive-primary-visited-hover);
+    }
+  }
+</style>
+
 ## Try it out
 
 To apply the Project Felt theme to all of the elements below, toggle the switch.
@@ -47,6 +107,8 @@ To apply the Project Felt theme to all of the elements below, toggle the switch.
             message-off="Off"></rh-switch>
 
 ## Demos
+
+<nav id="demos-nav" aria-label="Demo components" hidden></nav>
 
 <uxdot-pattern src="../../patterns/felt-preview-accordion.html">
   <uxdot-copy-permalink slot="heading"><h3 id="accordion" class="toc"><a href="#accordion">Accordion</a></h3></uxdot-copy-permalink>
@@ -150,5 +212,16 @@ To apply the Project Felt theme to all of the elements below, toggle the switch.
           ?.classList.toggle('felt-preview', feltSwitch.checked);
       }
     });
+  }
+
+  const nav = document.querySelector('#demos-nav');
+  if (nav) {
+    const items = [...document.querySelectorAll('uxdot-pattern h3[id]')]
+      .map(h3 => `<li><a href="#${h3.id}">${h3.textContent.trim()}</a></li>`)
+      .join('');
+    if (items) {
+      nav.innerHTML = `<ul>${items}</ul>`;
+      nav.hidden = false;
+    }
   }
 </script>
