@@ -822,7 +822,7 @@ describe('<rh-drawer>', function() {
 
     it('should not close when clicking inside the panel', async function() {
       expect(element.open).to.be.true;
-      const panel = element.shadowRoot?.querySelector('#panel')!;
+      const panel = element.shadowRoot!.querySelector('#panel')!;
       panel.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, composed: true }));
       await element.updateComplete;
       await element.updateComplete;
