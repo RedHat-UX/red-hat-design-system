@@ -1,3 +1,9 @@
+/**
+ * Felt Preview Theme
+ * Version: preview
+ * Compatible with: @rhds/elements >=4.2.0
+ */
+
 /* Base-level "tokens" / CSS custom props */
 :root {
   /* Fonts/Type */
