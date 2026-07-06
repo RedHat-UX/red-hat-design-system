@@ -4,6 +4,7 @@ import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { html } from 'lit';
 
 import { RhDrawer } from '@rhds/elements/rh-drawer/rh-drawer.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 function press(key: string) {
   return async function() {
@@ -92,7 +93,6 @@ describe('<rh-drawer>', function() {
         await expect(element).to.be.accessible();
       });
     });
-
   });
 
   describe('inline variant behavior', function() {
@@ -103,7 +103,7 @@ describe('<rh-drawer>', function() {
 
     it('should show collapse toggle', async function() {
       const snapshot = await a11ySnapshot();
-      expect(snapshot).to.have.axQuery({ name: 'Collapse panel' });
+      expect(snapshot).to.have.axQuery({ name: 'Toggle panel' });
     });
 
     it('should not show close button', async function() {
@@ -112,8 +112,7 @@ describe('<rh-drawer>', function() {
     });
 
     it('should have role complementary', function() {
-      const panel = element.shadowRoot?.querySelector('#panel');
-      expect(panel?.getAttribute('role')).to.equal('complementary');
+      expect(InternalsController.of(element).role).to.equal('complementary');
     });
 
     describe('closing via collapse toggle', function() {
@@ -121,10 +120,13 @@ describe('<rh-drawer>', function() {
       beforeEach(press('Enter'));
       beforeEach(async () => await element.updateComplete);
 
-      it('should show expand label', async function() {
+      it('should close the drawer', function() {
+        expect(element.open).to.be.false;
+      });
+
+      it('should still show toggle button', async function() {
         const snapshot = await a11ySnapshot();
-        expect(snapshot).to.have.axQuery({ name: 'Expand panel' });
-        expect(snapshot).to.not.have.axQuery({ name: 'Collapse panel' });
+        expect(snapshot).to.have.axQuery({ name: 'Toggle panel' });
       });
     });
 
@@ -137,10 +139,13 @@ describe('<rh-drawer>', function() {
       beforeEach(press('Enter'));
       beforeEach(async () => await element.updateComplete);
 
-      it('should show collapse label', async function() {
+      it('should open the drawer', function() {
+        expect(element.open).to.be.true;
+      });
+
+      it('should still show toggle button', async function() {
         const snapshot = await a11ySnapshot();
-        expect(snapshot).to.have.axQuery({ name: 'Collapse panel' });
-        expect(snapshot).to.not.have.axQuery({ name: 'Expand panel' });
+        expect(snapshot).to.have.axQuery({ name: 'Toggle panel' });
       });
     });
   });
@@ -156,8 +161,8 @@ describe('<rh-drawer>', function() {
 
     it('should not show collapse toggle', async function() {
       const snapshot = await a11ySnapshot();
-      expect(snapshot).to.not.have.axQuery({ name: 'Collapse panel' });
-      expect(snapshot).to.not.have.axQuery({ name: 'Expand panel' });
+      expect(snapshot).to.not.have.axQuery({ name: 'Toggle panel' });
+      expect(snapshot).to.not.have.axQuery({ name: 'Toggle panel' });
     });
 
     it('should not show close button', async function() {
@@ -166,8 +171,7 @@ describe('<rh-drawer>', function() {
     });
 
     it('should have role complementary', function() {
-      const panel = element.shadowRoot?.querySelector('#panel');
-      expect(panel?.getAttribute('role')).to.equal('complementary');
+      expect(InternalsController.of(element).role).to.equal('complementary');
     });
 
     it('should render slotted content', async function() {
@@ -204,12 +208,11 @@ describe('<rh-drawer>', function() {
 
     it('should not show collapse toggle', async function() {
       const snapshot = await a11ySnapshot();
-      expect(snapshot).to.not.have.axQuery({ name: 'Collapse panel' });
+      expect(snapshot).to.not.have.axQuery({ name: 'Toggle panel' });
     });
 
     it('should have role dialog', function() {
-      const panel = element.shadowRoot?.querySelector('#panel');
-      expect(panel?.getAttribute('role')).to.equal('dialog');
+      expect(InternalsController.of(element).role).to.equal('dialog');
     });
 
     describe('closing via close button', function() {
@@ -305,7 +308,7 @@ describe('<rh-drawer>', function() {
 
       it('should show collapse label', async function() {
         const snapshot = await a11ySnapshot();
-        expect(snapshot).to.have.axQuery({ name: 'Collapse panel' });
+        expect(snapshot).to.have.axQuery({ name: 'Toggle panel' });
       });
     });
 
@@ -315,10 +318,8 @@ describe('<rh-drawer>', function() {
         await element.updateComplete;
       });
 
-      it('should show expand label', async function() {
-        const snapshot = await a11ySnapshot();
-        expect(snapshot).to.have.axQuery({ name: 'Expand panel' });
-        expect(snapshot).to.not.have.axQuery({ name: 'Collapse panel' });
+      it('should close the drawer', function() {
+        expect(element.open).to.be.false;
       });
     });
 
@@ -329,9 +330,8 @@ describe('<rh-drawer>', function() {
           await element.updateComplete;
         });
 
-        it('should show expand label', async function() {
-          const snapshot = await a11ySnapshot();
-          expect(snapshot).to.have.axQuery({ name: 'Expand panel' });
+        it('should close the drawer', function() {
+          expect(element.open).to.be.false;
         });
       });
 
@@ -343,9 +343,8 @@ describe('<rh-drawer>', function() {
           await element.updateComplete;
         });
 
-        it('should show collapse label', async function() {
-          const snapshot = await a11ySnapshot();
-          expect(snapshot).to.have.axQuery({ name: 'Collapse panel' });
+        it('should open the drawer', function() {
+          expect(element.open).to.be.true;
         });
       });
     });
@@ -363,10 +362,8 @@ describe('<rh-drawer>', function() {
       });
       beforeEach(async () => await element.updateComplete);
 
-      it('should not be open', async function() {
-        const snapshot = await a11ySnapshot();
-        expect(snapshot).to.have.axQuery({ name: 'Expand panel' });
-        expect(snapshot).to.not.have.axQuery({ name: 'Collapse panel' });
+      it('should not be open', function() {
+        expect(element.open).to.be.false;
       });
 
       it('is accessible', async function() {
@@ -386,7 +383,7 @@ describe('<rh-drawer>', function() {
 
     it('should not show panel content when closed', async function() {
       const snapshot = await a11ySnapshot();
-      expect(snapshot).to.not.have.axQuery({ name: 'Collapse panel' });
+      expect(snapshot).to.not.have.axQuery({ name: 'Toggle panel' });
       expect(snapshot).to.not.have.axQuery({ name: 'Close drawer' });
     });
 
@@ -403,17 +400,14 @@ describe('<rh-drawer>', function() {
 
       it('should not show collapse toggle', async function() {
         const snapshot = await a11ySnapshot();
-        expect(snapshot).to.not.have.axQuery({ name: 'Collapse panel' });
+        expect(snapshot).to.not.have.axQuery({ name: 'Toggle panel' });
       });
     });
   });
 
-  // Playwright's page.accessibility.snapshot() flattens landmark and dialog
-  // roles — their children are promoted directly under WebArea. Widget roles
-  // (menu, menuitem, spinbutton) do appear. Because of this, role and
-  // aria-modal checks use getAttribute on the shadow DOM #panel element.
-  // The collapsible overlap test uses axe-core (`is accessible`) to verify
-  // the role/aria-modal combination is valid.
+  // CDP snapshots don't reliably report ElementInternals ARIA, so these
+  // tests query InternalsController directly. axe-core (`is accessible`)
+  // validates the browser's actual accessibility tree.
   describe('panel ARIA role', function() {
     describe('overlay variant', function() {
       let container: HTMLDivElement;
@@ -432,13 +426,7 @@ describe('<rh-drawer>', function() {
       beforeEach(async () => await element.updateComplete);
 
       it('should have role dialog', function() {
-        const panel = element.shadowRoot?.querySelector('#panel');
-        expect(panel?.getAttribute('role')).to.equal('dialog');
-      });
-
-      it('should have aria-modal true', function() {
-        const panel = element.shadowRoot?.querySelector('#panel');
-        expect(panel?.getAttribute('aria-modal')).to.equal('true');
+        expect(InternalsController.of(element).role).to.equal('dialog');
       });
     });
 
@@ -458,13 +446,7 @@ describe('<rh-drawer>', function() {
       beforeEach(async () => await element.updateComplete);
 
       it('should have role complementary', function() {
-        const panel = element.shadowRoot?.querySelector('#panel');
-        expect(panel?.getAttribute('role')).to.equal('complementary');
-      });
-
-      it('should not have aria-modal', function() {
-        const panel = element.shadowRoot?.querySelector('#panel');
-        expect(panel?.hasAttribute('aria-modal')).to.be.false;
+        expect(InternalsController.of(element).role).to.equal('complementary');
       });
     });
 
@@ -491,13 +473,7 @@ describe('<rh-drawer>', function() {
       });
 
       it('should have role dialog', function() {
-        const panel = element.shadowRoot?.querySelector('#panel');
-        expect(panel?.getAttribute('role')).to.equal('dialog');
-      });
-
-      it('should have aria-modal true', function() {
-        const panel = element.shadowRoot?.querySelector('#panel');
-        expect(panel?.getAttribute('aria-modal')).to.equal('true');
+        expect(InternalsController.of(element).role).to.equal('dialog');
       });
 
       it('is accessible', async function() {
@@ -528,8 +504,7 @@ describe('<rh-drawer>', function() {
       });
 
       it('should have complementary role', function() {
-        const panel = element.shadowRoot?.querySelector('#panel');
-        expect(panel?.getAttribute('role')).to.equal('complementary');
+        expect(InternalsController.of(element).role).to.equal('complementary');
       });
     });
 
@@ -856,7 +831,7 @@ describe('<rh-drawer>', function() {
   });
 
   describe('accessible-label attribute', function() {
-    describe('default value', function() {
+    describe('default value with no heading', function() {
       beforeEach(async function() {
         element = await fixture<RhDrawer>(html`
           <rh-drawer collapsible open>
@@ -866,9 +841,8 @@ describe('<rh-drawer>', function() {
       });
       beforeEach(async () => await element.updateComplete);
 
-      it('should have default aria-label of Panel', function() {
-        const panel = element.shadowRoot?.querySelector('#panel');
-        expect(panel?.getAttribute('aria-label')).to.equal('Panel');
+      it('should fall back to accessible name Panel', function() {
+        expect(InternalsController.of(element).ariaLabel).to.equal('Panel');
       });
     });
 
@@ -882,9 +856,82 @@ describe('<rh-drawer>', function() {
       });
       beforeEach(async () => await element.updateComplete);
 
-      it('should use custom aria-label', function() {
-        const panel = element.shadowRoot?.querySelector('#panel');
-        expect(panel?.getAttribute('aria-label')).to.equal('Side Navigation');
+      it('should use custom accessible name', function() {
+        expect(InternalsController.of(element).ariaLabel).to.equal('Side Navigation');
+      });
+    });
+
+    describe('accessible-label takes precedence over slotted heading', function() {
+      beforeEach(async function() {
+        element = await fixture<RhDrawer>(html`
+          <rh-drawer collapsible open accessible-label="Custom Label">
+            <h2>Slotted Heading</h2>
+            <nav>Body</nav>
+          </rh-drawer>
+        `);
+      });
+      beforeEach(async () => await element.updateComplete);
+
+      it('should use accessible-label not heading text', function() {
+        const internals = InternalsController.of(element);
+        expect(internals.ariaLabel).to.equal('Custom Label');
+        expect(internals.ariaLabelledByElements).to.be.null;
+      });
+    });
+  });
+
+  describe('aria-labelledby slotted heading', function() {
+    describe('with a slotted heading and no accessible-label', function() {
+      beforeEach(async function() {
+        element = await fixture<RhDrawer>(html`
+          <rh-drawer collapsible open>
+            <h2>Navigation</h2>
+            <nav>Body</nav>
+          </rh-drawer>
+        `);
+      });
+      beforeEach(async () => await element.updateComplete);
+
+      it('should derive accessible name from the heading', function() {
+        const internals = InternalsController.of(element);
+        expect(internals.ariaLabel).to.be.null;
+        const heading = element.querySelector('h2');
+        expect(internals.ariaLabelledByElements).to.deep.equal([heading]);
+      });
+    });
+
+    describe('with multiple headings', function() {
+      beforeEach(async function() {
+        element = await fixture<RhDrawer>(html`
+          <rh-drawer collapsible open>
+            <h2>First Heading</h2>
+            <h3>Second Heading</h3>
+            <nav>Body</nav>
+          </rh-drawer>
+        `);
+      });
+      beforeEach(async () => await element.updateComplete);
+
+      it('should use the first heading as accessible name', function() {
+        const internals = InternalsController.of(element);
+        expect(internals.ariaLabel).to.be.null;
+        const heading = element.querySelector('h2');
+        expect(internals.ariaLabelledByElements).to.deep.equal([heading]);
+      });
+    });
+
+    describe('with no heading and no accessible-label', function() {
+      beforeEach(async function() {
+        element = await fixture<RhDrawer>(html`
+          <rh-drawer collapsible open>
+            <nav>Body</nav>
+          </rh-drawer>
+        `);
+      });
+      beforeEach(async () => await element.updateComplete);
+
+      it('should fall back to accessible name Panel', function() {
+        expect(InternalsController.of(element).ariaLabel).to.equal('Panel');
       });
     });
   });
@@ -912,37 +959,20 @@ describe('<rh-drawer>', function() {
       });
     });
 
-    describe('collapse-label-open attribute', function() {
+    describe('collapse-label attribute', function() {
       beforeEach(async function() {
         element = await fixture<RhDrawer>(html`
-          <rh-drawer collapsible open collapse-label-open="Hide drawer">
+          <rh-drawer collapsible open collapse-label="Side panel">
             <nav>Body</nav>
           </rh-drawer>
         `);
       });
       beforeEach(async () => await element.updateComplete);
 
-      it('should use custom collapse open label', async function() {
+      it('should use custom collapse label', async function() {
         const snapshot = await a11ySnapshot();
-        expect(snapshot).to.have.axQuery({ name: 'Hide drawer' });
-        expect(snapshot).to.not.have.axQuery({ name: 'Collapse panel' });
-      });
-    });
-
-    describe('collapse-label-closed attribute', function() {
-      beforeEach(async function() {
-        element = await fixture<RhDrawer>(html`
-          <rh-drawer collapsible collapse-label-closed="Show drawer">
-            <nav>Body</nav>
-          </rh-drawer>
-        `);
-      });
-      beforeEach(async () => await element.updateComplete);
-
-      it('should use custom collapse closed label', async function() {
-        const snapshot = await a11ySnapshot();
-        expect(snapshot).to.have.axQuery({ name: 'Show drawer' });
-        expect(snapshot).to.not.have.axQuery({ name: 'Expand panel' });
+        expect(snapshot).to.have.axQuery({ name: 'Side panel' });
+        expect(snapshot).to.not.have.axQuery({ name: 'Toggle panel' });
       });
     });
   });

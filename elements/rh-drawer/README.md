@@ -12,26 +12,11 @@ import '@rhds/elements/rh-drawer/rh-drawer.js';
 
 ## Usage
 
-### Overlay (default)
-
-A dialog panel that slides over page content with a close button:
+Paste the following HTML into your project:
 
 ```html
-<button id="trigger" aria-controls="drawer">Toggle Drawer</button>
-<rh-drawer id="drawer" variant="overlay" trigger-id="trigger">
-  <h3>Panel Header</h3>
-  <nav>Panel navigation content</nav>
-</rh-drawer>
-```
-
-### Inline
-
-A complementary panel with a collapse toggle, always visible on the edge:
-
-```html
-<rh-drawer variant="inline" open>
-  <h3>Panel Header</h3>
-  <nav>Panel navigation content</nav>
+<rh-drawer open accessible-label="Navigation">
+  <nav>Panel content</nav>
 </rh-drawer>
 ```
 

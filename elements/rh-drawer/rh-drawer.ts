@@ -6,6 +6,7 @@ import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { initializer, observes } from '@patternfly/pfe-core/decorators.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
@@ -20,16 +21,19 @@ import styles from './rh-drawer.css' with { type: 'css' };
  */
 export class DrawerOpenEvent extends Event {
   constructor(
-    public trigger: HTMLElement | null
+    public trigger: HTMLElement | null,
+    { cancelable = true } = {},
   ) {
-    super('open', { bubbles: true, cancelable: true, composed: true });
+    super('open', { bubbles: true, cancelable, composed: true });
   }
 }
 
 /** Fired when the drawer panel closes. */
 export class DrawerCloseEvent extends Event {
-  constructor() {
-    super('close', { bubbles: true, cancelable: true, composed: true });
+  constructor(
+    { cancelable = true } = {},
+  ) {
+    super('close', { bubbles: true, cancelable, composed: true });
   }
 }
 
@@ -48,11 +52,6 @@ export class DrawerCloseEvent extends Event {
  *
  * @alias drawer
  *
- * @slot - Expects block elements for panel content such as `div`, `nav`, headings, or `rh-navigation-vertical`.
- * @slot close-label - Expects inline text for the close button. Defaults to "Close drawer". Should be localized for screen readers.
- * @slot collapse-label-open - Expects inline text for the collapse toggle when open. Defaults to "Collapse panel". Should be localized for screen readers.
- * @slot collapse-label-closed - Expects inline text for the collapse toggle when closed. Defaults to "Expand panel". Should be localized for screen readers.
- *
  * @fires {DrawerOpenEvent} open - Fires when the drawer panel opens. The event's `trigger` property is the HTMLElement that initiated the action, or `null` when opened via `show()`.
  * @fires {DrawerCloseEvent} close - Fires when the drawer panel closes. No additional data.
  */
@@ -65,9 +64,11 @@ export class RhDrawer extends LitElement {
   /** When true, _openChanged moves focus. Prevents focus theft on programmatic changes. */
   #userInteracted = false;
   #reverting = false;
+  #modeChange = false;
   #hasContainerContext = false;
   #resizeObserver?: ResizeObserver;
   #inertedElements = new Set<Element>();
+  #internals = InternalsController.of(this);
 
   /** Which side the panel appears on. */
   @property({ reflect: true }) inline: 'start' | 'end' = 'start';
@@ -92,25 +93,25 @@ export class RhDrawer extends LitElement {
   @property({ attribute: 'trigger-id' }) triggerId?: string;
 
   /**
-   * Accessible label for the drawer panel. Used as `aria-label` on the
-   * panel element. Defaults to 'Panel'.
+   * Accessible label for the drawer panel. When set, used as `aria-label`
+   * on the panel. When omitted, the panel uses `aria-labelledby` referencing
+   * the first heading found in slotted content.
    */
-  @property({ attribute: 'accessible-label' }) accessibleLabel = 'Panel';
+  @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
 
   /** Label for the close button. Overridden by the `close-label` slot. */
   @property({ attribute: 'close-label' }) closeLabel?: string;
 
-  /** Label for the collapse toggle when open. Overridden by the `collapse-label-open` slot. */
-  @property({ attribute: 'collapse-label-open' }) collapseLabelOpen?: string;
+  /** Label for the collapse toggle. Overridden by the `collapse-label` slot. */
+  @property({ attribute: 'collapse-label' }) collapseLabel?: string;
 
-  /** Label for the collapse toggle when closed. Overridden by the `collapse-label-closed` slot. */
-  @property({ attribute: 'collapse-label-closed' }) collapseLabelClosed?: string;
-
-  @state() private _suppressTransition = false;
-  @state() private _narrowContainer = false;
+  @state() protected _suppressTransition = false;
+  @state() protected _narrowContainer = false;
 
   @query('#close-button') private closeButton!: HTMLElement;
   @query('#collapse-toggle') private collapseToggle!: HTMLElement;
+
+  @state() private _hasHeading = false;
 
   get #isEffectiveOverlay(): boolean {
     if (this.collapsible) {
@@ -126,9 +127,6 @@ export class RhDrawer extends LitElement {
     return this.collapsible && this._narrowContainer;
   }
 
-  get #panelRole(): 'dialog' | 'complementary' {
-    return (this.#isEffectiveOverlay || this.#isCollapsibleOverlap) ? 'dialog' : 'complementary';
-  }
 
   connectedCallback() {
     super.connectedCallback();
@@ -153,6 +151,7 @@ export class RhDrawer extends LitElement {
         }
         ancestor = ancestor.parentElement;
       }
+      this.#syncHostAria();
     }
   }
 
@@ -161,6 +160,9 @@ export class RhDrawer extends LitElement {
     await this.updateComplete;
     if (!isServer) {
       this.#suppressTransitionBriefly();
+      this.#triggerElement?.setAttribute('aria-expanded', String(!!this.open));
+      this.#syncOverlayState();
+      this.#syncHostAria();
     }
   }
 
@@ -170,9 +172,9 @@ export class RhDrawer extends LitElement {
     this.#resizeObserver?.disconnect();
     this.#restoreInertedContent();
     if (!isServer) {
-      document.body.style.overflow = '';
+      this.#unlockScroll();
       document.removeEventListener('keydown', this.#onDocumentKeyDown);
-      document.removeEventListener('pointerdown', this.#onDocumentPointerDown);
+      this.#removeClickOutsideListener();
     }
   }
 
@@ -194,9 +196,6 @@ export class RhDrawer extends LitElement {
            class=${classMap(classes)}>
         <div id="panel"
              part="panel"
-             role="${this.#panelRole}"
-             aria-label="${this.accessibleLabel}"
-             aria-modal="${(isEffectiveOverlay || isCollapsibleOverlap) || nothing}"
              ?inert=${!this.open && isEffectiveOverlay}>
           ${isEffectiveOverlay ? html`
             <button id="close-button"
@@ -208,11 +207,24 @@ export class RhDrawer extends LitElement {
               <rh-icon set="microns" icon="close"></rh-icon>
             </button>
             <span id="close-label" class="visually-hidden">
+              <!--
+                summary: Close button label
+                description: |
+                  Inline text for the close button. Defaults to
+                  "Close drawer". Should be localized for non-English
+                  contexts. Also available as the \`close-label\` attribute.
+              -->
               <slot name="close-label">${this.closeLabel ?? 'Close drawer'}</slot>
             </span>
           ` : nothing}
           <div id="content" ?inert=${!this.open && this.collapsible}>
-            <slot></slot>
+            <!--
+              summary: Panel content
+              description: |
+                Expects block elements for panel content such as
+                \`div\`, \`nav\`, headings, or \`rh-navigation-vertical\`.
+            -->
+            <slot @slotchange=${this.#onDefaultSlotChange}></slot>
           </div>
           ${this.collapsible ? html`
             <button id="collapse-toggle"
@@ -225,8 +237,14 @@ export class RhDrawer extends LitElement {
               <rh-icon set="ui" icon="caret-left"></rh-icon>
             </button>
             <span id="collapse-label" class="visually-hidden">
-              <span ?hidden=${!this.open}><slot name="collapse-label-open">${this.collapseLabelOpen ?? 'Collapse panel'}</slot></span>
-              <span ?hidden=${this.open}><slot name="collapse-label-closed">${this.collapseLabelClosed ?? 'Expand panel'}</slot></span>
+              <!--
+                summary: Collapse toggle label
+                description: |
+                  Inline text for the collapse toggle button. Defaults to
+                  "Toggle panel". Should be localized for non-English
+                  contexts. Also available as the \`collapse-label\` attribute.
+              -->
+              <slot name="collapse-label">${this.collapseLabel ?? 'Toggle panel'}</slot>
             </span>
           ` : nothing}
         </div>
@@ -240,9 +258,10 @@ export class RhDrawer extends LitElement {
       return;
     }
     await this.updateComplete;
+    const cancelable = !this.#modeChange;
     const event = newValue ?
-      new DrawerOpenEvent(this.#triggerElement)
-      : new DrawerCloseEvent();
+      new DrawerOpenEvent(this.#triggerElement, { cancelable })
+      : new DrawerCloseEvent({ cancelable });
     if (!this.dispatchEvent(event)) {
       this.#reverting = true;
       this._suppressTransition = true;
@@ -253,12 +272,8 @@ export class RhDrawer extends LitElement {
       return;
     }
     this.#triggerElement?.setAttribute('aria-expanded', String(!!newValue));
+    this.#syncOverlayState();
     if (newValue) {
-      if (this.#isEffectiveOverlay || this.#isCollapsibleOverlap) {
-        this.#inertSurroundingContent();
-        document.body.style.overflow = 'hidden';
-        document.addEventListener('pointerdown', this.#onDocumentPointerDown);
-      }
       if (this.#userInteracted) {
         if (this.#isEffectiveOverlay) {
           this.closeButton?.focus();
@@ -267,9 +282,6 @@ export class RhDrawer extends LitElement {
         }
       }
     } else {
-      this.#restoreInertedContent();
-      document.body.style.overflow = '';
-      document.removeEventListener('pointerdown', this.#onDocumentPointerDown);
       if (this.#userInteracted) {
         if (this.#triggerElement?.inert) {
           this.#triggerElement.inert = false;
@@ -287,16 +299,21 @@ export class RhDrawer extends LitElement {
     }
   }
 
+  @observes('accessibleLabel')
+  protected _accessibleLabelChanged() {
+    this.#syncHostAria();
+  }
+
   @observes('_narrowContainer')
   protected _narrowContainerChanged(old?: boolean, value?: boolean) {
     if (old == null || value == null || old === value) {
       return;
     }
-    this.#restoreInertedContent();
-    document.body.style.overflow = '';
-    document.removeEventListener('pointerdown', this.#onDocumentPointerDown);
     this.#suppressTransitionBriefly();
+    this.#modeChange = true;
     this.open = !value;
+    this.#modeChange = false;
+    this.#syncHostAria();
   }
 
   @observes('triggerId')
@@ -322,6 +339,51 @@ export class RhDrawer extends LitElement {
       (el as HTMLElement).inert = true;
       this.#inertedElements.add(el);
     }
+  }
+
+  #syncOverlayState() {
+    if (this.open && (this.#isEffectiveOverlay || this.#isCollapsibleOverlap)) {
+      this.#inertSurroundingContent();
+      this.#lockScroll();
+      this.#addClickOutsideListener();
+    } else {
+      this.#restoreInertedContent();
+      this.#unlockScroll();
+      this.#removeClickOutsideListener();
+    }
+  }
+
+  #syncHostAria() {
+    const isOverlay = this.#isEffectiveOverlay || this.#isCollapsibleOverlap;
+    this.#internals.role = isOverlay ? 'dialog' : 'complementary';
+    this.#internals.ariaModal = isOverlay ? 'true' : null;
+    if (this.accessibleLabel) {
+      this.#internals.ariaLabel = this.accessibleLabel;
+      this.#internals.ariaLabelledByElements = null;
+    } else if (this._hasHeading) {
+      this.#internals.ariaLabel = null;
+      const heading = this.querySelector(':is(h1,h2,h3,h4,h5,h6):not([slot])');
+      this.#internals.ariaLabelledByElements = heading ? [heading] : null;
+    } else {
+      this.#internals.ariaLabel = 'Panel';
+      this.#internals.ariaLabelledByElements = null;
+    }
+  }
+
+  #lockScroll() {
+    document.body.style.overflow = 'hidden';
+  }
+
+  #unlockScroll() {
+    document.body.style.overflow = '';
+  }
+
+  #addClickOutsideListener() {
+    document.addEventListener('pointerdown', this.#onDocumentPointerDown);
+  }
+
+  #removeClickOutsideListener() {
+    document.removeEventListener('pointerdown', this.#onDocumentPointerDown);
   }
 
   #restoreInertedContent() {
@@ -355,6 +417,12 @@ export class RhDrawer extends LitElement {
         this._suppressTransition = false;
       });
     });
+  }
+
+  #onDefaultSlotChange() {
+    const heading = this.querySelector(':is(h1,h2,h3,h4,h5,h6):not([slot])');
+    this._hasHeading = !!heading;
+    this.#syncHostAria();
   }
 
   #onTriggerClick = (event: MouseEvent) => {

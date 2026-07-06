@@ -5,8 +5,8 @@
     <rh-navigation-primary role="navigation"></rh-navigation-primary>
 
     <rh-drawer id="side-nav"
-               collapsible open
-               accessible-label="Navigation">
+               collapsible open>
+      <h2 class="visually-hidden">Navigation</h2>
       <rh-navigation-vertical>
         <rh-navigation-link href="#" current-page>Home</rh-navigation-link>
 
@@ -67,6 +67,14 @@
   rh-navigation-vertical {
     overflow-y: auto;
     padding-block-start: var(--rh-space-3xl, 48px);
+  }
+
+  .visually-hidden {
+    position: fixed;
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
+    white-space: nowrap;
+    border: 0;
   }
 </style>
 
