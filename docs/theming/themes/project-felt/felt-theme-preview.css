@@ -1527,6 +1527,7 @@
 
     & rh-accordion-header[expanded] {
       background-color: var(--felt-preview-color-interactive-fill-plain-hover);
+      border-block-end: 1px solid transparent !important;
     }
 
     & rh-accordion-header:focus-within {
