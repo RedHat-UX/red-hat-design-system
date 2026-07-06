@@ -304,7 +304,7 @@ export class RhDrawer extends LitElement {
     this.#syncHostAria();
   }
 
-  @observes('_narrowContainer')
+  @observes('_narrowContainer' as keyof RhDrawer)
   protected _narrowContainerChanged(old?: boolean, value?: boolean) {
     if (old == null || value == null || old === value) {
       return;
