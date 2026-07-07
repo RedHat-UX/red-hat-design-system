@@ -49,10 +49,8 @@ For Red Hat websites and applications, we recommend linking the Project Felt the
 
 If you'd prefer to include the theme preview stylesheet in your build process, you can request the CSS from the [CDN URL][cdncss]:
 
-``` rhcodeblock {compact=true}
-GET /dssf-001/gh/rhds/themes/project-felt/felt-theme-preview.css HTTP/1.1
-Host: www.redhatstatic.com
-Accept: text/css
+```css rhcodeblock {compact=true}
+https://www.redhatstatic.com/dssf-001/gh/rhds/themes/project-felt/felt-theme-preview.css
 ```
 
 ### 2. Add theme preview class
