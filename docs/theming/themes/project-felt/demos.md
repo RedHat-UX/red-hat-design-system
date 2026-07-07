@@ -132,10 +132,10 @@ subnav:
 
 ## Try it out
 
-To apply the Project Felt theme to all of the elements below, toggle the switch.
+To apply the Project Felt preview theme to all of the elements below, toggle the switch.
 
 <rh-switch id="felt-theme-switch"
-            message-on="Project Felt theme"
+            message-on="Project Felt preview theme"
             message-off="Off"></rh-switch>
 
 ## Demos
