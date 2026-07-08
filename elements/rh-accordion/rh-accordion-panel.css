@@ -2,11 +2,6 @@
   display: block;
   overflow: hidden;
   will-change: height;
-
-  --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
-  --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
-  --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
-  --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
 }
 
 :host(:not([expanded])) {
@@ -25,21 +20,20 @@
 }
 
 .large {
-  --_panel-body-padding-block-start: var(--rh-space-xl, 24px);
-  --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
-  --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
-  --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
+  --rh-accordion-panel-padding-block: var(--rh-space-xl, 24px);
+  --rh-accordion-panel-padding-inline: var(--rh-space-xl, 24px);
 }
 
 .body {
   position: relative;
   overflow: hidden;
   display: block;
-  padding:
-    var(--_panel-body-padding-block-start, var(--rh-space-md, 8px))
-    var(--_panel-body-padding-inline-end, var(--rh-space-lg, 16px))
-    var(--_panel-body-padding-block-end, var(--rh-space-md, 8px))
-    var(--_panel-body-padding-inline-start, var(--rh-space-lg, 16px));
+
+  /** Panel block (top and bottom) padding */
+  padding-block: var(--rh-accordion-panel-padding-block, var(--rh-space-lg, 16px));
+
+  /** Panel inline (left and right) padding */
+  padding-inline: var(--rh-accordion-panel-padding-inline, var(--rh-space-xl, 24px));
 }
 
 :host([fixed]) {

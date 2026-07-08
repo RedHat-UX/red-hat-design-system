@@ -8,12 +8,18 @@ details {
     flex-direction: row;
     justify-content: space-between;
 
+    /** Summary background color */
+    background: var(--rh-navigation-vertical-list-summary-background-color, transparent);
+
     /** Summary block and inline padding */
     padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
     list-style: none;
     cursor: pointer;
     position: relative;
     place-items: center;
+
+    /** Summary border radius */
+    border-radius: var(--rh-navigation-vertical-list-summary-border-radius, 0);
 
     /** Spacing between summary text and caret icon */
     gap: var(--rh-space-lg, 16px);
@@ -24,10 +30,13 @@ details {
     }
 
     &:is(:hover,:focus) {
-      /** Summary hover and focus surface, adapts to theme */
       background:
-        light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-          var(--rh-color-surface-dark, #383838));
+        var(--rh-navigation-vertical-list-summary-hover-background-color,
+          light-dark(
+            var(--rh-color-surface-lighter, #f2f2f2),
+            var(--rh-color-surface-dark, #383838)
+          )
+        );
     }
 
     & ::slotted([slot='summary']) {
@@ -62,10 +71,16 @@ details {
     gap: var(--rh-space-xs, 4px);
 
     /** Nested list inline indentation */
-    margin-inline-start: var(--rh-space-lg, 16px);
+    margin-inline:
+      var(--rh-navigation-vertical-list-nested-margin-inline,
+        var(--rh-space-lg, 16px) 0);
 
     /** Nested list block spacing */
-    margin-block: var(--rh-space-xs, 4px) var(--_subtree-margin-block-end, var(--rh-space-md, 8px));
+    margin-block:
+      var(--rh-navigation-vertical-list-nested-margin-block,
+        var(--rh-space-xs, 4px)
+        var(--_subtree-margin-block-end, var(--rh-space-md, 8px))
+      );
   }
 }
 

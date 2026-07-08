@@ -12,6 +12,7 @@ import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palet
 import style from './rh-footer.css' with { type: 'css' };
 
 import './rh-footer-copyright.js';
+import '@rhds/elements/rh-icon/rh-icon.js';
 
 /**
  * Global Red Hat footer bar for consistent branding across all
@@ -153,7 +154,8 @@ export class RhFooterUniversal extends LitElement {
                     <defs>
                       <style>
                         .band {
-                          fill: transparent;
+                          /** Fedora band background fill */
+                          fill: var(--rh-color-black, #000000);
                         }
                       </style>
                     </defs>
