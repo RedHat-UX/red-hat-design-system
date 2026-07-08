@@ -1,5 +1,10 @@
 # @rhds/elements
 
+## 4.1.5
+### Patch Changes
+
+- e4f28d3: `<rh-navigation-primary>`: corrected overlay closure regression on large viewport dropdown toggle
+
 ## 4.1.4
 ### Patch Changes
 

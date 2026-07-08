@@ -3,6 +3,7 @@ tagName: rh-scheme-toggle
 name: Scheme toggle
 type: element
 overallStatus: ready
+category: Selection
 aka:
   - Theme switcher
   - Dark mode toggle
