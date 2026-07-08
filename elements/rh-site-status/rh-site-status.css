@@ -19,6 +19,7 @@
         var(--rh-color-surface-darker, #1f1f1f)
       );
   border:
+    /** Container border size */
     var(--rh-border-width-sm, 1px)
     solid
     /** Container border color */
