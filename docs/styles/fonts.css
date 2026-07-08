@@ -1,5 +1,6 @@
 @font-face {
   font-family: RedHatDisplay;
+  /* stylelint-disable-next-line at-rule-descriptor-value-no-unknown */
   src: url('../assets/fonts/RedHatDisplay/RedHatDisplay-VF.woff2') format(woff2) tech(variations);
   font-weight: 300 900;
   font-style: normal;
@@ -8,6 +9,7 @@
 
 @font-face {
   font-family: RedHatDisplay;
+  /* stylelint-disable-next-line at-rule-descriptor-value-no-unknown */
   src: url('../assets/fonts/RedHatDisplay/RedHatDisplay-Italic-VF.woff2') format(woff2) tech(variations);
   font-weight: 300 900;
   font-style: italic;
@@ -16,6 +18,7 @@
 
 @font-face {
   font-family: RedHatText;
+  /* stylelint-disable-next-line at-rule-descriptor-value-no-unknown */
   src: url('../assets/fonts/RedHatText/RedHatText-VF.woff2') format(woff2) tech(variations);
   font-weight: 300 700;
   font-style: normal;
@@ -24,6 +27,7 @@
 
 @font-face {
   font-family: RedHatText;
+  /* stylelint-disable-next-line at-rule-descriptor-value-no-unknown */
   src: url('../assets/fonts/RedHatText/RedHatText-Italic-VF.woff2') format(woff2) tech(variations);
   font-weight: 300 700;
   font-style: italic;
@@ -32,6 +36,7 @@
 
 @font-face {
   font-family: RedHatMono;
+  /* stylelint-disable-next-line at-rule-descriptor-value-no-unknown */
   src: url('../assets/fonts/RedHatMono/RedHatMono-VF.woff2') format(woff2) tech(variations);
   font-weight: 300 700;
   font-style: normal;
@@ -40,6 +45,7 @@
 
 @font-face {
   font-family: RedHatMono;
+  /* stylelint-disable-next-line at-rule-descriptor-value-no-unknown */
   src: url('../assets/fonts/RedHatMono/RedHatMono-Italic-VF.woff2') format(woff2) tech(variations);
   font-weight: 300 700;
   font-style: italic;
