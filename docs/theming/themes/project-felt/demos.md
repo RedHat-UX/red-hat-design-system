@@ -100,7 +100,8 @@ subnav:
     }
   }
 
-  .back-to-demos {
+  .back-to-demos,
+  .back-to-top {
     display: inline-block;
     margin-block: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
     color: var(--rh-color-interactive-primary-default);
@@ -122,10 +123,22 @@ subnav:
     }
   }
 
+  .back-to-top {
+    display: none;
+  }
+
+  #page-toc:focus {
+    outline: none;
+  }
+
   @container main (min-width: 1440px) {
     #demos-nav,
     .back-to-demos {
       display: none;
+    }
+
+    .back-to-top {
+      display: inline-block;
     }
   }
 </style>
@@ -259,6 +272,12 @@ To apply the Project Felt preview theme to all of the elements below, toggle the
 
   for (const pattern of document.querySelectorAll('uxdot-pattern')) {
     pattern.insertAdjacentHTML('afterend',
-      `<a href="#demos" class="back-to-demos">Back to demos list</a>`);
+      `<a href="#demos" class="back-to-demos">Back to demos list</a>` +
+      `<a href="#page-toc" class="back-to-top">Back to page links</a>`);
+  }
+
+  const pageToc = document.querySelector('#page-toc');
+  if (pageToc) {
+    pageToc.setAttribute('tabindex', '-1');
   }
 </script>
