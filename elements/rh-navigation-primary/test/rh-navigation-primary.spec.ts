@@ -490,6 +490,341 @@ describe('<rh-navigation-primary>', function() {
           });
         });
       });
+
+      describe('overlay behavior', function() {
+        async function toggleDropdown(item: RhNavigationPrimaryItem | null) {
+          item?.shadowRoot?.querySelector('details')?.querySelector('summary')?.focus();
+          await sendKeys({ press: 'Enter' });
+        }
+
+        describe('primary dropdown', function() {
+          let navItem: RhNavigationPrimaryItem | null;
+
+          beforeEach(function() {
+            navItem = element.querySelector<RhNavigationPrimaryItem>('rh-navigation-primary-item[variant="dropdown"]:not([slot])');
+          });
+
+          it('overlay should be closed initially', function() {
+            expect(element.shadowRoot?.querySelector('#overlay.open')).to.not.exist;
+          });
+
+          describe('opening a dropdown', function() {
+            beforeEach(async function() {
+              await toggleDropdown(navItem);
+              await nextFrame();
+            });
+            beforeEach(async () => await element.updateComplete);
+
+            it('should open the overlay', function() {
+              expect(element.shadowRoot?.querySelector('#overlay.open')).to.exist;
+            });
+
+            it('should expand the dropdown', async function() {
+              const snapshot = await a11ySnapshot();
+              expect(snapshot).to.have.axQuery({ name: HamburgerItem1Name, expanded: true });
+            });
+
+            describe('pressing Enter again', function() {
+              beforeEach(async function() {
+                await toggleDropdown(navItem);
+                await nextFrame();
+              });
+              beforeEach(async () => await element.updateComplete);
+
+              it('should close the overlay', function() {
+                expect(element.shadowRoot?.querySelector('#overlay.open')).to.not.exist;
+              });
+
+              it('should collapse the dropdown', async function() {
+                const snapshot = await a11ySnapshot();
+                expect(snapshot).to.not.have.axQuery({ name: HamburgerItem1Name, expanded: true });
+              });
+            });
+
+            describe('pressing Escape', function() {
+              beforeEach(async function() {
+                await sendKeys({ press: 'Escape' });
+                await nextFrame();
+              });
+              beforeEach(async () => await element.updateComplete);
+
+              it('should close the overlay', function() {
+                expect(element.shadowRoot?.querySelector('#overlay.open')).to.not.exist;
+              });
+
+              it('should collapse the dropdown', async function() {
+                const snapshot = await a11ySnapshot();
+                expect(snapshot).to.not.have.axQuery({ name: HamburgerItem1Name, expanded: true });
+              });
+
+              it('should return focus to the toggle', async function() {
+                const snapshot = await a11ySnapshot();
+                expect(snapshot).to.have.axQuery({ name: HamburgerItem1Name, focused: true });
+              });
+            });
+
+            describe('closing via hide()', function() {
+              beforeEach(async function() {
+                navItem!.hide();
+                await nextFrame();
+              });
+              beforeEach(async () => await element.updateComplete);
+
+              it('should close the overlay', function() {
+                expect(element.shadowRoot?.querySelector('#overlay.open')).to.not.exist;
+              });
+            });
+
+            describe('opening another primary dropdown', function() {
+              beforeEach(async function() {
+                const items = element.querySelectorAll<RhNavigationPrimaryItem>('rh-navigation-primary-item[variant="dropdown"]:not([slot])');
+                await toggleDropdown(items[1]);
+                await nextFrame();
+              });
+              beforeEach(async () => await element.updateComplete);
+
+              it('should keep the overlay open', function() {
+                expect(element.shadowRoot?.querySelector('#overlay.open')).to.exist;
+              });
+
+              it('should expand the second dropdown', async function() {
+                const snapshot = await a11ySnapshot();
+                expect(snapshot).to.have.axQuery({ name: HamburgerItem2Name, expanded: true });
+              });
+
+              it('should collapse the first dropdown', async function() {
+                const snapshot = await a11ySnapshot();
+                expect(snapshot).to.not.have.axQuery({ name: HamburgerItem1Name, expanded: true });
+              });
+
+              describe('pressing Enter on second dropdown', function() {
+                beforeEach(async function() {
+                  const items = element.querySelectorAll<RhNavigationPrimaryItem>('rh-navigation-primary-item[variant="dropdown"]:not([slot])');
+                  await toggleDropdown(items[1]);
+                  await nextFrame();
+                });
+                beforeEach(async () => await element.updateComplete);
+
+                it('should close the overlay', function() {
+                  expect(element.shadowRoot?.querySelector('#overlay.open')).to.not.exist;
+                });
+              });
+
+              describe('pressing Escape', function() {
+                beforeEach(async function() {
+                  await sendKeys({ press: 'Escape' });
+                  await nextFrame();
+                });
+                beforeEach(async () => await element.updateComplete);
+
+                it('should close the overlay', function() {
+                  expect(element.shadowRoot?.querySelector('#overlay.open')).to.not.exist;
+                });
+              });
+            });
+          });
+        });
+
+        describe('secondary dropdown', function() {
+          describe('opening a secondary dropdown', function() {
+            beforeEach(async function() {
+              const item = element.querySelector<RhNavigationPrimaryItem>('rh-navigation-primary-item[slot="dropdowns"][variant="dropdown"]');
+              await toggleDropdown(item);
+              await nextFrame();
+            });
+            beforeEach(async () => await element.updateComplete);
+
+            it('should open the overlay', function() {
+              expect(element.shadowRoot?.querySelector('#overlay.open')).to.exist;
+            });
+
+            it('should expand the dropdown', async function() {
+              const snapshot = await a11ySnapshot();
+              expect(snapshot).to.have.axQuery({ name: 'Item 6', expanded: true });
+            });
+
+            describe('pressing Enter again', function() {
+              beforeEach(async function() {
+                const item = element.querySelector<RhNavigationPrimaryItem>('rh-navigation-primary-item[slot="dropdowns"][variant="dropdown"]');
+                await toggleDropdown(item);
+                await nextFrame();
+              });
+              beforeEach(async () => await element.updateComplete);
+
+              it('should close the overlay', function() {
+                expect(element.shadowRoot?.querySelector('#overlay.open')).to.not.exist;
+              });
+            });
+
+            describe('pressing Escape', function() {
+              beforeEach(async function() {
+                await sendKeys({ press: 'Escape' });
+                await nextFrame();
+              });
+              beforeEach(async () => await element.updateComplete);
+
+              it('should close the overlay', function() {
+                expect(element.shadowRoot?.querySelector('#overlay.open')).to.not.exist;
+              });
+
+              it('should collapse the dropdown', async function() {
+                const snapshot = await a11ySnapshot();
+                expect(snapshot).to.not.have.axQuery({ name: 'Item 6', expanded: true });
+              });
+            });
+          });
+        });
+      });
+    });
+
+    describe('medium viewport (1200-1440px)', function() {
+      beforeEach(async function() {
+        await setViewport({ width: 1300, height: 800 });
+      });
+      beforeEach(async () => await element.updateComplete);
+      beforeEach(nextFrame);
+
+      describe('overlay behavior', function() {
+        async function toggleDropdown(item: RhNavigationPrimaryItem | null) {
+          item?.shadowRoot?.querySelector('details')?.querySelector('summary')?.focus();
+          await sendKeys({ press: 'Enter' });
+        }
+
+        describe('opening a primary dropdown', function() {
+          let navItem: RhNavigationPrimaryItem | null;
+
+          beforeEach(async function() {
+            navItem = element.querySelector<RhNavigationPrimaryItem>('rh-navigation-primary-item[variant="dropdown"]:not([slot])');
+            await toggleDropdown(navItem);
+            await nextFrame();
+          });
+          beforeEach(async () => await element.updateComplete);
+
+          it('should open the overlay', function() {
+            expect(element.shadowRoot?.querySelector('#overlay.open')).to.exist;
+          });
+
+          describe('pressing Enter again', function() {
+            beforeEach(async function() {
+              await toggleDropdown(navItem);
+              await nextFrame();
+            });
+            beforeEach(async () => await element.updateComplete);
+
+            it('should close the overlay', function() {
+              expect(element.shadowRoot?.querySelector('#overlay.open')).to.not.exist;
+            });
+          });
+
+          describe('pressing Escape', function() {
+            beforeEach(async function() {
+              await sendKeys({ press: 'Escape' });
+              await nextFrame();
+            });
+            beforeEach(async () => await element.updateComplete);
+
+            it('should close the overlay', function() {
+              expect(element.shadowRoot?.querySelector('#overlay.open')).to.not.exist;
+            });
+          });
+        });
+      });
+
+      describe('bento box behavior', function() {
+        function openBento() {
+          return async function() {
+            const summary = element.shadowRoot?.querySelector<HTMLElement>('#links-menu summary');
+            summary?.focus();
+            await sendKeys({ press: 'Enter' });
+          };
+        }
+
+        describe('opening the bento box', function() {
+          beforeEach(openBento());
+          beforeEach(async () => await element.updateComplete);
+          beforeEach(nextFrame);
+
+          it('should open the bento box', async function() {
+            const snapshot = await a11ySnapshot();
+            expect(snapshot).to.have.axQuery({ name: 'Explore Red Hat', expanded: true });
+          });
+
+          it('should open the overlay', function() {
+            expect(element.shadowRoot?.querySelector('#overlay.open')).to.exist;
+          });
+
+          describe('pressing Escape', function() {
+            beforeEach(press('Escape'));
+            beforeEach(async () => await element.updateComplete);
+            beforeEach(nextFrame);
+
+            it('should close the bento box', async function() {
+              const snapshot = await a11ySnapshot();
+              expect(snapshot).axQuery({ name: 'Explore Red Hat' }).to.not.have.property('expanded', true);
+            });
+
+            it('should close the overlay', function() {
+              expect(element.shadowRoot?.querySelector('#overlay.open')).to.not.exist;
+            });
+
+            it('should return focus to the bento trigger', async function() {
+              const snapshot = await a11ySnapshot();
+              expect(snapshot).to.have.axQuery({ name: 'Explore Red Hat', focused: true });
+            });
+          });
+
+          describe('clicking the overlay', function() {
+            beforeEach(async function() {
+              const overlay = element.shadowRoot?.querySelector<HTMLElement>('#overlay');
+              overlay?.click();
+            });
+            beforeEach(async () => await element.updateComplete);
+            beforeEach(nextFrame);
+
+            it('should close the bento box', async function() {
+              const snapshot = await a11ySnapshot();
+              expect(snapshot).axQuery({ name: 'Explore Red Hat' }).to.not.have.property('expanded', true);
+            });
+
+            it('should close the overlay', function() {
+              expect(element.shadowRoot?.querySelector('#overlay.open')).to.not.exist;
+            });
+          });
+
+          describe('tabbing past the bento box', function() {
+            beforeEach(press('Tab'));
+            beforeEach(press('Tab'));
+            beforeEach(press('Tab'));
+            beforeEach(press('Tab'));
+            beforeEach(async () => await element.updateComplete);
+            beforeEach(nextFrame);
+
+            it('should close the bento box', async function() {
+              const snapshot = await a11ySnapshot();
+              expect(snapshot).axQuery({ name: 'Explore Red Hat' }).to.not.have.property('expanded', true);
+            });
+          });
+
+          describe('opening a primary dropdown', function() {
+            beforeEach(async function() {
+              const navItem = element.querySelector<RhNavigationPrimaryItem>('rh-navigation-primary-item[variant="dropdown"]:not([slot])');
+              navItem?.shadowRoot?.querySelector('details')?.querySelector('summary')?.focus();
+              await sendKeys({ press: 'Enter' });
+            });
+            beforeEach(async () => await element.updateComplete);
+            beforeEach(nextFrame);
+
+            it('should close the bento box', async function() {
+              const snapshot = await a11ySnapshot();
+              expect(snapshot).axQuery({ name: 'Explore Red Hat' }).to.not.have.property('expanded', true);
+            });
+
+            it('should keep the overlay open', function() {
+              expect(element.shadowRoot?.querySelector('#overlay.open')).to.exist;
+            });
+          });
+        });
+      });
     });
   });
 
