@@ -14,7 +14,11 @@ subnav:
 
 <style>
   #theming-screenshots {
-    margin-block-end: 0;
+    margin-block: var(--rh-space-2xl) var(--rh-space-4xl);
+  }
+
+  #theming-screenshots::part(container) {
+    padding: 0;
   }
 </style>
 

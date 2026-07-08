@@ -210,7 +210,7 @@ To apply the Project Felt preview theme to all of the elements below, toggle the
   <uxdot-copy-permalink slot="heading"><h3 id="tabs"><a href="#tabs">Tabs</a></h3></uxdot-copy-permalink>
 </uxdot-pattern>
 
-<uxdot-pattern src="../../patterns/felt-preview-tabs-vertical.html" style="max-width: none">
+<uxdot-pattern src="../../patterns/felt-preview-tabs-vertical.html">
   <uxdot-copy-permalink slot="heading"><h3 id="tabs-vertical"><a href="#tabs-vertical">Tabs (vertical)</a></h3></uxdot-copy-permalink>
 </uxdot-pattern>
 
