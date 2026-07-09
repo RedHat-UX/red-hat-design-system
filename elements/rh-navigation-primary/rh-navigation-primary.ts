@@ -157,7 +157,7 @@ export class RhNavigationPrimary extends LitElement {
    * unless the site requires a non-root landing page for the logo. Defaults
    * to `'/'`.
    */
-  @property({ attribute: 'logo-href' }) logoHref = '/';
+  @property({ attribute: 'logo-href' }) logoHref = 'https://www.redhat.com/en/';
 
   constructor() {
     super();
