@@ -82,21 +82,7 @@ rules:
 
   rhds/deprecated: true
 
-  rhds/no-unknown-token-name:
-    - true
-    - allowed:
-      - --rh-icon-size
-      - --rh-navigation-active-item-color
-      - --rh-jump-link-max-width
-      - --rh-jump-link-border
-      - --rh-jump-link-gap
-      - --rh-jump-link-active-border
-      - --rh-jump-link-link-border
-      - --rh-jump-link-hover-background-color
-      - --rh-jump-link-hover-border-radius
-      - --rh-jump-link-focus-inset
-      - --rh-jump-link-active-indicator-offset
-      - --rh-jump-link-active-indicator-inset-inline
+  rhds/no-unknown-token-name: true
 
 overrides:
   - files:
