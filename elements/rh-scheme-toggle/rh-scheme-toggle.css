@@ -5,7 +5,7 @@
 fieldset {
   /**
    * Fieldset flex layout direction.
-   * Set to `column` to position the legend above the button group.
+   * Set to `column` to position the legend "stacked" above the button group.
    * @cssprop --rh-scheme-toggle-flex-flow
    */
   flex-flow: var(--rh-scheme-toggle-flex-flow, row nowrap);
