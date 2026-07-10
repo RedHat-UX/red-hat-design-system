@@ -6,11 +6,29 @@
   height: max-content;
 }
 
-#header.empty,
-#image.empty,
-#footer.empty,
-#body.empty {
-  display: none !important;
+/* :host(:has()) can query light DOM children from shadow CSS in Safari and
+ * Firefox but fails in Chromium. The @scope block below duplicates the rule
+ * using :scope (which resolves to the shadow host inside a bare @scope) so
+ * Chromium can evaluate the same condition.
+ * https://daverupert.com/2026/06/fix-for-host-has-slot/ */
+:host(:has(> [slot="header"])) #header { display: flex; }
+:host(:has(> [slot="image"])) #image { display: block; }
+:host(:has(> [slot="footer"])) #footer { display: flex; }
+:host(:has(> :not([slot]))) #body { display: block; }
+
+:host(:not(:has(> [slot="footer"]))) #body {
+  margin-block-end: var(--rh-space-2xl, 32px);
+}
+
+@scope {
+  :scope:has(> [slot="header"]) #header { display: flex; }
+  :scope:has(> [slot="image"]) #image { display: block; }
+  :scope:has(> [slot="footer"]) #footer { display: flex; }
+  :scope:has(> :not([slot])) #body { display: block; }
+
+  :scope:not(:has(> [slot="footer"])) #body {
+    margin-block-end: var(--rh-space-2xl, 32px);
+  }
 }
 
 ::slotted(*) {
@@ -132,13 +150,17 @@
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
 }
 
+#image {
+  display: none;
+}
+
 #image ::slotted(*) {
   display: block;
   max-width: 100%;
 }
 
 #header {
-  display: flex;
+  display: none;
   flex-direction: column;
 
   /** Header content gap */
@@ -166,6 +188,7 @@
 }
 
 #body {
+  display: none;
   margin-block:
     /** Body margin-block-start */
     var(--rh-space-2xl, 32px)
@@ -173,13 +196,8 @@
     var(--rh-space-xl, 24px);
 }
 
-#body:has(+ .empty) {
-  /** Body margin-block-end */
-  margin-block-end: var(--rh-space-2xl, 32px);
-}
-
 #footer {
-  display: flex;
+  display: none;
   gap: 0.5em;
   margin-block:
     auto
@@ -281,8 +299,14 @@
   height: auto;
 }
 
-#container.promo:not(.standard, .image) {
+:host([variant='promo']:not(:has(> [slot='image']))) #container.promo:not(.standard) {
   grid-template-columns: auto;
+}
+
+@scope {
+  :scope[variant='promo']:not(:has(> [slot='image'])) #container.promo:not(.standard) {
+    grid-template-columns: auto;
+  }
 }
 
 .promo #body {
@@ -290,23 +314,48 @@
   margin: var(--rh-space-2xl, 32px);
 }
 
-.promo.image #body {
+:host([variant='promo']:has(> [slot='image'])) #body {
   order: -5;
 }
 
-.promo.header #header {
+@scope {
+  :scope[variant='promo']:has(> [slot='image']) #body {
+    order: -5;
+  }
+}
+
+:host([variant='promo']:has(> [slot='header'])) #header {
   margin: 0;
 
   /** Promo header margin-block-end */
   margin-block-end: var(--rh-space-lg, 16px);
 }
 
-.promo.footer #footer {
+@scope {
+  :scope[variant='promo']:has(> [slot='header']) #header {
+    margin: 0;
+
+    /** Promo header margin-block-end */
+    margin-block-end: var(--rh-space-lg, 16px);
+  }
+}
+
+:host([variant='promo']:has(> [slot='footer'])) #footer {
   margin-block:
     /** Promo footer margin-block-start */
     var(--rh-space-xl, 24px)
     0;
   margin-inline: 0;
+}
+
+@scope {
+  :scope[variant='promo']:has(> [slot='footer']) #footer {
+    margin-block:
+      /** Promo footer margin-block-start */
+      var(--rh-space-xl, 24px)
+      0;
+    margin-inline: 0;
+  }
 }
 
 .promo #header ::slotted(*) {
@@ -320,9 +369,16 @@
   margin-block: 0 var(--_promo-heading-margin-block-end) !important;
 }
 
-.promo:is(.image, .header) #body ::slotted(p) {
+:host([variant='promo']:has(> [slot='image'], > [slot='header'])) #body ::slotted(p) {
   font-size: var(--_promo-paragraph-font-size) !important;
   margin-block-end: var(--_promo-paragraph-margin-block-end) !important;
+}
+
+@scope {
+  :scope[variant='promo']:has(> [slot='image'], > [slot='header']) #body ::slotted(p) {
+    font-size: var(--_promo-paragraph-font-size) !important;
+    margin-block-end: var(--_promo-paragraph-margin-block-end) !important;
+  }
 }
 
 #container.promo.standard {
@@ -387,9 +443,16 @@
       var(--rh-font-size-body-text-2xl, 1.5rem));
 }
 
-:host([variant='promo'][full-width]) .image #footer {
+:host([variant='promo'][full-width]:has(> [slot='image'])) #footer {
   /** Full-width promo image footer margin-block-end */
   margin-block-end: var(--rh-space-2xl, 32px);
+}
+
+@scope {
+  :scope[variant='promo'][full-width]:has(> [slot='image']) #footer {
+    /** Full-width promo image footer margin-block-end */
+    margin-block-end: var(--rh-space-2xl, 32px);
+  }
 }
 
 @container promo (min-width: 768px) {
@@ -456,8 +519,16 @@
         var(--rh-font-size-heading-md, 1.75rem));
   }
 
-  :host([variant='promo'][full-width]) .image #footer {
+  :host([variant='promo'][full-width]:has(> [slot='image'])) #footer {
     margin-block-end: 0;
+  }
+}
+
+@container promo (min-width: 768px) {
+  @scope {
+    :scope[variant='promo'][full-width]:has(> [slot='image']) #footer {
+      margin-block-end: 0;
+    }
   }
 }
 
