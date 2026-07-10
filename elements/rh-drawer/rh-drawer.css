@@ -33,14 +33,7 @@
     font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   }
 
-  :host(:not([collapsible])) {
-    overflow: clip;
-    pointer-events: none;
-  }
 
-  :host(:dir(rtl)) {
-    --_slide-dir: 1;
-  }
 
   [hidden] {
     display: none !important;
@@ -190,6 +183,15 @@
     block-size: 100%;
     position: relative;
     overflow: hidden;
+
+    &:dir(rtl) {
+      --_slide-dir: 1;
+    }
+
+    &:not(.collapsible, .open) {
+      overflow: clip;
+      pointer-events: none;
+    }
   }
 }
 
@@ -261,6 +263,7 @@
       position: static;
 
       & #panel {
+        max-inline-size: none;
         box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
       }
 
@@ -298,7 +301,7 @@
 
   @layer inline {
     @container (min-width: 992px) {
-      :host(:not([collapsible])) {
+      #container:not(.collapsible) {
         overflow: visible;
         pointer-events: auto;
       }
