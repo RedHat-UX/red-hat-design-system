@@ -1,0 +1,34 @@
+---
+description: "Readonly textarea with pre-filled value. Content is not editable but the value is submitted with the form."
+---
+<form>
+  <label for="textarea-readonly">
+    Readonly notes
+  </label>
+  <rh-textarea id="textarea-readonly" readonly name="notes" value="This content is read-only. It cannot be edited by the user, but it is still submitted with the form."></rh-textarea>
+  <button type="submit">Submit</button>
+</form>
+
+<script type="module">
+  import '@rhds/elements/rh-textarea/rh-textarea.js';
+</script>
+
+<style>
+  label,
+  rh-textarea,
+  button {
+    margin-inline: 20px;
+    max-inline-size: 320px;
+  }
+
+  label {
+    display: block;
+    font-family: var(--rh-font-family-body-text);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    margin-block: var(--rh-space-md, 8px);
+  }
+
+  button {
+    margin-block-start: var(--rh-space-md, 8px);
+  }
+</style>

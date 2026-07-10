@@ -1,0 +1,80 @@
+---
+description: "Localized validation messages using the property-based i18n pattern. Demonstrates Spanish and Hebrew (RTL) overrides."
+---
+
+<!-- Spanish example -->
+<section lang="es">
+  <h3>Spanish</h3>
+  <form>
+    <label for="es-textarea">
+      Notas <span class="required" aria-label="Campo obligatorio">*</span>
+    </label>
+    <rh-textarea required
+                 minlength="10"
+                 id="es-textarea"
+                 name="notas"
+                 placeholder="Escriba sus notas aquí"
+                 value-missing-message="Por favor, complete este campo."
+                 too-short-message="Amplíe este texto a {minlength} caracteres o más (actualmente usa {length} caracteres)."
+                 too-long-message="Reduzca este texto a {maxlength} caracteres o menos (actualmente usa {length} caracteres).">
+    </rh-textarea>
+    <button type="submit">Enviar</button>
+  </form>
+</section>
+
+<!-- Hebrew (RTL) example -->
+<section lang="he" dir="rtl">
+  <h3>Hebrew (RTL)</h3>
+  <form>
+    <label for="he-textarea">
+      הערות <span class="required" aria-label="שדה חובה">*</span>
+    </label>
+    <rh-textarea required
+                 minlength="10"
+                 id="he-textarea"
+                 name="notes"
+                 placeholder="הזינו את ההערות שלכם כאן"
+                 value-missing-message="נא למלא שדה זה."
+                 too-short-message="נא להאריך את הטקסט ל-{minlength} תווים לפחות (כרגע {length} תווים)."
+                 too-long-message="נא לקצר את הטקסט ל-{maxlength} תווים לכל היותר (כרגע {length} תווים).">
+    </rh-textarea>
+    <button type="submit">שלח</button>
+  </form>
+</section>
+
+<script type="module">
+  import '@rhds/elements/rh-textarea/rh-textarea.js';
+</script>
+
+<style>
+  section {
+    margin-block-end: var(--rh-space-2xl, 32px);
+  }
+
+  h3 {
+    font-family: var(--rh-font-family-heading);
+    margin-block-end: var(--rh-space-md, 8px);
+  }
+
+  label,
+  rh-textarea,
+  button {
+    margin-inline: 20px;
+    max-inline-size: 320px;
+  }
+
+  label {
+    display: block;
+    font-family: var(--rh-font-family-body-text);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    margin-block: var(--rh-space-md, 8px);
+  }
+
+  button {
+    margin-block-start: var(--rh-space-md, 8px);
+  }
+
+  .required {
+    color: var(--rh-color-status-danger);
+  }
+</style>

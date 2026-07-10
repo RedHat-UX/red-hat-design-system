@@ -1,0 +1,14 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-textarea
+name: Textarea
+type: element
+overallStatus: new
+libraries:
+  figma: planned
+  rhds: ready
+  shared: planned
+  docs: planned
+relatedItems:
+  - rh-select
+  - rh-switch
+  - rh-scheme-dropdown

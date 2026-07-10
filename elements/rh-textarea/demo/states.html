@@ -1,0 +1,52 @@
+---
+description: "Textarea controls in success, warning, danger, and default states with help text displayed below each."
+---
+<label for="textarea-success">
+  Success
+</label>
+<rh-textarea id="textarea-success" placeholder="Enter text" state="success" help-text="Success message"></rh-textarea>
+
+<label for="textarea-warning">
+  Warning
+</label>
+<rh-textarea id="textarea-warning" placeholder="Enter text" state="warning" help-text="Warning message"></rh-textarea>
+
+<label for="textarea-danger">
+  Danger
+</label>
+<rh-textarea id="textarea-danger" placeholder="Enter text" state="danger" help-text="Danger message"></rh-textarea>
+
+<label for="textarea-default">
+  Default
+</label>
+<rh-textarea id="textarea-default" placeholder="Enter text" help-text="Help text"></rh-textarea>
+
+<label for="textarea-slotted">
+  Slotted help text
+</label>
+<rh-textarea id="textarea-slotted" placeholder="Enter text">
+  <p slot="help-text">Slotted help text</p>
+</rh-textarea>
+
+<script type="module">
+  import '@rhds/elements/rh-textarea/rh-textarea.js';
+</script>
+
+<style>
+  label,
+  rh-textarea {
+    margin-inline: 20px;
+    max-inline-size: 320px;
+  }
+
+  label {
+    display: block;
+    font-family: var(--rh-font-family-body-text);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    margin-block: var(--rh-space-md, 8px);
+  }
+
+  rh-textarea {
+    margin-block-end: var(--rh-space-xl, 24px);
+  }
+</style>

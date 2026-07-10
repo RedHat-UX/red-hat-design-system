@@ -1,0 +1,34 @@
+---
+description: "Auto-growing textarea using the field-sizing attribute. Not supported in Firefox, where the textarea falls back to fixed height."
+---
+<label for="textarea-grow">
+  Auto-growing textarea
+</label>
+<rh-textarea id="textarea-grow" field-sizing="content" placeholder="Type — the textarea grows with your content" rows="2"></rh-textarea>
+
+<script type="module">
+  import '@rhds/elements/rh-textarea/rh-textarea.js';
+</script>
+
+<style>
+  label,
+  rh-textarea {
+    margin-inline: 20px;
+    max-inline-size: 320px;
+  }
+
+  rh-textarea::part(textarea) {
+    min-block-size: 120px;
+  }
+
+  label {
+    display: block;
+    font-family: var(--rh-font-family-body-text);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    margin-block: var(--rh-space-md, 8px);
+  }
+
+  rh-textarea {
+    margin-block-end: var(--rh-space-xl, 24px);
+  }
+</style>

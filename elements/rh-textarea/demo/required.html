@@ -1,0 +1,38 @@
+---
+description: "Required textarea within a form that validates on submit and shows a browser validation message when empty."
+---
+<form>
+  <label for="my-textarea">
+    Notes <span class="required" aria-label="Required field">*</span>
+  </label>
+  <rh-textarea required id="my-textarea" name="notes" placeholder="Enter your notes here"></rh-textarea>
+  <button type="submit">Submit</button>
+</form>
+
+<script type="module">
+  import '@rhds/elements/rh-textarea/rh-textarea.js';
+</script>
+
+<style>
+  label,
+  rh-textarea,
+  button {
+    margin-inline: 20px;
+    max-inline-size: 320px;
+  }
+
+  label {
+    display: block;
+    font-family: var(--rh-font-family-body-text);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    margin-block: var(--rh-space-md, 8px);
+  }
+
+  button {
+    margin-block-start: var(--rh-space-md, 8px);
+  }
+
+  .required {
+    color: var(--rh-color-status-danger);
+  }
+</style>

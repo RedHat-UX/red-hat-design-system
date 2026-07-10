@@ -1,0 +1,212 @@
+:host {
+  align-items: stretch;
+
+  /** Textarea text color */
+  color: var(--rh-color-text-primary);
+  display: flex;
+  flex-direction: column;
+
+  /** Textarea font family */
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
+  /** Textarea text size */
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+
+  /** Textarea font weight */
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
+
+  /** Textarea line height */
+  line-height: var(--rh-line-height-body-text, 1.5);
+}
+
+:host([hidden]),
+*[hidden] {
+  display: none !important;
+}
+
+:host([disabled]) {
+  pointer-events: none !important;
+}
+
+#input {
+  background-color:
+    light-dark(
+        /** Input surface color for light schemes */
+        var(--rh-color-surface-lightest, #ffffff),
+        /** Input surface color for dark schemes */
+        var(--rh-color-surface-darkest, #151515)
+      );
+  border:
+    /** Input border width */
+    var(--rh-border-width-sm, 1px)
+    solid
+    /** Input border color */
+    var(--rh-color-border-subtle);
+
+  /** Default border radius */
+  border-radius: var(--rh-border-radius-default, 3px);
+
+  /** Input text color */
+  color: var(--rh-color-text-primary);
+  font: inherit;
+  padding:
+    /** Top and bottom padding for input */
+    var(--rh-space-md, 8px)
+    /** Left and right padding for input */
+    var(--rh-space-lg, 16px);
+
+  /** Sets the resize direction for the textarea / input. Overridden by `resize` attribute. */
+  resize: var(--rh-textarea-resize-direction, vertical);
+
+  &:hover {
+    /** Input hover border color */
+    border-color: var(--rh-color-border-interactive);
+  }
+
+  &:focus,
+  &:focus-visible {
+    /** Textarea border color when focused */
+    border-color: var(--rh-color-border-interactive);
+    outline:
+      /** Outer focus ring width when focused */
+      var(--rh-border-width-lg, 3px)
+      solid
+      /** Outer focus ring color when focused */
+      var(--rh-color-border-interactive);
+    outline-offset: 3px;
+  }
+
+  &::placeholder {
+    /** Textarea placeholder text color */
+    color: var(--rh-color-text-secondary);
+  }
+}
+
+:host([resize='none']) #input {
+  --rh-textarea-resize-direction: none;
+}
+
+:host([resize='horizontal']) #input {
+  --rh-textarea-resize-direction: horizontal;
+}
+
+:host([resize='both']) #input {
+  --rh-textarea-resize-direction: both;
+}
+
+:host([disabled]) #input {
+  /* Nix this fallback `light-dark` when the `status-disabled` vars are defined in tokens */
+  /* stylelint-disable-next-line rhds/no-unknown-token-name */
+  background-color:
+    var(--rh-color-status-disabled,
+      light-dark(
+        var(--rh-color-gray-30, #c7c7c7),
+        var(--rh-color-gray-40, #a3a3a3))
+      );
+  border-color: transparent;
+
+  /* stylelint-disable-next-line rhds/no-unknown-token-name */
+  color:
+    var(--rh-color-text-status-disabled,
+      light-dark(
+        var(--rh-color-gray-50, #707070),
+        var(--rh-color-gray-60, #4d4d4d))
+      );
+}
+
+:host([readonly]) #input {
+  background-color:
+    light-dark(
+        /** Readonly surface color for light schemes */
+        var(--rh-color-surface-lighter),
+        /** Readonly surface color for dark schemes */
+        var(--rh-color-surface-darker)
+      );
+  border-color:
+    light-dark(
+        /** Readonly border in light schemes */
+        var(--rh-color-gray-20, #e0e0e0),
+        /** Readonly border in dark schemes */
+        var(--rh-color-gray-70, #383838)
+      );
+}
+
+#char-count {
+  /** Secondary text color for the character counter */
+  color: var(--rh-color-text-secondary);
+
+  /** Extra-small font size for the character counter */
+  font-size: var(--rh-font-size-body-text-xs, 0.75rem);
+
+  /** Block start margin for the character counter */
+  margin-block-start: var(--rh-space-md, 8px);
+}
+
+#help-text {
+  align-items: center;
+  display: flex;
+
+  /** Help text CSS gap  */
+  gap: var(--rh-space-md, 8px);
+
+  /** Help text margin-block-start  */
+  margin-block-start: var(--rh-space-md, 8px);
+
+  & ::slotted(*) {
+    display: inline-block;
+
+    /** Help text slotted elements font size */
+    font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+  }
+
+  & rh-icon {
+    /** Icon size for status icons */
+    --rh-icon-size: var(--rh-textarea-icon-size, 14px);
+  }
+
+  rh-icon:not([icon]) {
+    display: none;
+  }
+}
+
+:host([state='success']) #input {
+  /** Success state border color */
+  border-color: var(--rh-color-border-status-success);
+}
+
+:host([state='warning']) #input {
+  /** Warning state border color */
+  border-color: var(--rh-color-border-status-warning);
+}
+
+:host([state='danger']) #input {
+  /** Danger state border color */
+  border-color: var(--rh-color-border-status-danger);
+}
+
+:host([state]) #help-text-content {
+  /** Font weight for the help text content when `state` attribute present */
+  font-weight: var(--rh-font-weight-body-text-medium, 500);
+}
+
+.icon.success {
+  /** Success icon color design token for the help-text status indicator */
+  color: var(--rh-color-icon-status-success);
+}
+
+.icon.warning {
+  /** Warning icon color design token for the help-text status indicator */
+  color: var(--rh-color-icon-status-warning);
+}
+
+.icon.danger {
+  /** Danger icon color design token for the help-text status indicator */
+  color: var(--rh-color-icon-status-danger);
+}
+
+:host([field-sizing='content']) #input {
+  field-sizing: content;
+
+  /** Minimum height for auto-growing textarea input */
+  min-block-size: var(--rh-length-6xl, 96px);
+}
