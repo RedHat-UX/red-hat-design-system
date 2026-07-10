@@ -14,11 +14,18 @@
       );
   padding-block:
     /** Content panel block start padding */
-    var(--rh-space-lg, 16px)
+    var(--rh-navigation-primary-item-menu-padding-block-start,
+      var(--rh-space-lg, 16px))
     /** Content panel block end padding */
-    var(--rh-space-xl, 24px);
-  padding-inline: /** Content panel inline padding */
-    var(--rh-space-xl, 24px);
+    var(--rh-navigation-primary-item-menu-padding-block-end,
+      var(--rh-space-xl, 24px));
+  padding-inline:
+    /** Content panel inline start padding */
+    var(--rh-navigation-primary-item-menu-padding-inline-start,
+      var(--rh-space-xl, 24px))
+    /** Content panel inline end padding */
+    var(--rh-navigation-primary-item-menu-padding-inline-end,
+      var(--rh-space-xl, 24px));
 
   /**
    * Desktop item-menu panels when `rh-navigation-primary` is not compact (container >= lg).
@@ -32,11 +39,19 @@
       max-width: 1440px;
       padding-block:
         /** Content panel block start padding at containers >= xl */
-        var(--rh-space-2xl, 32px)
+        var(--rh-navigation-primary-item-menu-padding-block-start,
+          var(--rh-space-2xl, 32px))
         /** Content panel block end padding at containers >= xl */
-        var(--rh-space-3xl, 48px);
-      padding-inline: /** Content panel inline padding at containers >= xl */
-        var(--rh-space-2xl, 32px);
+        var(--rh-navigation-primary-item-menu-padding-block-end,
+          var(--rh-space-3xl, 48px));
+      padding-inline:
+        /** Content panel inline padding at containers >= xl */
+        var(--rh-navigation-primary-item-menu-padding-inline-start,
+          /**  */
+          var(--rh-space-2xl, 32px))
+        /** Content panel inline padding at containers >= xl */
+        var(--rh-navigation-primary-item-menu-padding-inline-end,
+          var(--rh-space-2xl, 32px));
     }
   }
 }
