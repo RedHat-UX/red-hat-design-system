@@ -33,8 +33,6 @@
     font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   }
 
-
-
   [hidden] {
     display: none !important;
   }
