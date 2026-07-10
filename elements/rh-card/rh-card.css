@@ -6,31 +6,6 @@
   height: max-content;
 }
 
-/* :host(:has()) can query light DOM children from shadow CSS in Safari and
- * Firefox but fails in Chromium. The @scope block below duplicates the rule
- * using :scope (which resolves to the shadow host inside a bare @scope) so
- * Chromium can evaluate the same condition.
- * https://daverupert.com/2026/06/fix-for-host-has-slot/ */
-:host(:has(> [slot="header"])) #header { display: flex; }
-:host(:has(> [slot="image"])) #image { display: block; }
-:host(:has(> [slot="footer"])) #footer { display: flex; }
-:host(:has(> :not([slot]))) #body { display: block; }
-
-:host(:not(:has(> [slot="footer"]))) #body {
-  margin-block-end: var(--rh-space-2xl, 32px);
-}
-
-@scope {
-  :scope:has(> [slot="header"]) #header { display: flex; }
-  :scope:has(> [slot="image"]) #image { display: block; }
-  :scope:has(> [slot="footer"]) #footer { display: flex; }
-  :scope:has(> :not([slot])) #body { display: block; }
-
-  :scope:not(:has(> [slot="footer"])) #body {
-    margin-block-end: var(--rh-space-2xl, 32px);
-  }
-}
-
 ::slotted(*) {
   line-height: inherit;
 }
@@ -299,63 +274,9 @@
   height: auto;
 }
 
-:host([variant='promo']:not(:has(> [slot='image']))) #container.promo:not(.standard) {
-  grid-template-columns: auto;
-}
-
-@scope {
-  :scope[variant='promo']:not(:has(> [slot='image'])) #container.promo:not(.standard) {
-    grid-template-columns: auto;
-  }
-}
-
 .promo #body {
   /** Promo body margin */
   margin: var(--rh-space-2xl, 32px);
-}
-
-:host([variant='promo']:has(> [slot='image'])) #body {
-  order: -5;
-}
-
-@scope {
-  :scope[variant='promo']:has(> [slot='image']) #body {
-    order: -5;
-  }
-}
-
-:host([variant='promo']:has(> [slot='header'])) #header {
-  margin: 0;
-
-  /** Promo header margin-block-end */
-  margin-block-end: var(--rh-space-lg, 16px);
-}
-
-@scope {
-  :scope[variant='promo']:has(> [slot='header']) #header {
-    margin: 0;
-
-    /** Promo header margin-block-end */
-    margin-block-end: var(--rh-space-lg, 16px);
-  }
-}
-
-:host([variant='promo']:has(> [slot='footer'])) #footer {
-  margin-block:
-    /** Promo footer margin-block-start */
-    var(--rh-space-xl, 24px)
-    0;
-  margin-inline: 0;
-}
-
-@scope {
-  :scope[variant='promo']:has(> [slot='footer']) #footer {
-    margin-block:
-      /** Promo footer margin-block-start */
-      var(--rh-space-xl, 24px)
-      0;
-    margin-inline: 0;
-  }
 }
 
 .promo #header ::slotted(*) {
@@ -369,18 +290,6 @@
   margin-block: 0 var(--_promo-heading-margin-block-end) !important;
 }
 
-:host([variant='promo']:has(> [slot='image'], > [slot='header'])) #body ::slotted(p) {
-  font-size: var(--_promo-paragraph-font-size) !important;
-  margin-block-end: var(--_promo-paragraph-margin-block-end) !important;
-}
-
-@scope {
-  :scope[variant='promo']:has(> [slot='image'], > [slot='header']) #body ::slotted(p) {
-    font-size: var(--_promo-paragraph-font-size) !important;
-    margin-block-end: var(--_promo-paragraph-margin-block-end) !important;
-  }
-}
-
 #container.promo.standard {
   background-color:
     light-dark(
@@ -392,10 +301,6 @@
   display: flex;
   padding: var(--_promo-standard-inline-padding);
   width: auto;
-}
-
-.promo.standard #body {
-  display: contents;
 }
 
 .promo.standard #body ::slotted(:not([slot])) {
@@ -426,10 +331,6 @@
   width: auto;
 }
 
-:host([variant='promo'][full-width]) #body {
-  margin: 0;
-}
-
 :host([variant='promo'][full-width]) #body ::slotted(p) {
   /** Full-width promo paragraph font size */
   --_promo-paragraph-font-size: var(--rh-font-size-body-text-md, 1rem);
@@ -441,18 +342,6 @@
     var(--rh-card-heading-font-size,
       /** Full-width promo heading size */
       var(--rh-font-size-body-text-2xl, 1.5rem));
-}
-
-:host([variant='promo'][full-width]:has(> [slot='image'])) #footer {
-  /** Full-width promo image footer margin-block-end */
-  margin-block-end: var(--rh-space-2xl, 32px);
-}
-
-@scope {
-  :scope[variant='promo'][full-width]:has(> [slot='image']) #footer {
-    /** Full-width promo image footer margin-block-end */
-    margin-block-end: var(--rh-space-2xl, 32px);
-  }
 }
 
 @container promo (min-width: 768px) {
@@ -518,10 +407,123 @@
         /** Full-width promo heading size at containers >= md */
         var(--rh-font-size-heading-md, 1.75rem));
   }
+}
 
+@container promo (min-width: 1200px) {
+  :host([variant='promo'][full-width]) #container {
+    /** Full-width promo padding inline at containers >= xl */
+    padding-inline: var(--rh-space-7xl, 128px);
+  }
+}
+
+/* :host(:has()) can query light DOM children from shadow CSS in Safari and
+ * Firefox but fails in Chromium. The @scope block below duplicates the rule
+ * using :scope (which resolves to the shadow host inside a bare @scope) so
+ * Chromium can evaluate the same condition.
+ * https://daverupert.com/2026/06/fix-for-host-has-slot/ */
+
+:host(:has(> [slot='header'])) #header { display: flex; }
+:host(:has(> [slot='image'])) #image { display: block; }
+:host(:has(> [slot='footer'])) #footer { display: flex; }
+:host(:has(> :not([slot]))) #body { display: block; }
+
+:host(:not(:has(> [slot='footer']), [variant='promo'])) #body {
+  margin-block-end: var(--rh-space-2xl, 32px);
+}
+
+.promo.standard #body {
+  display: contents;
+}
+
+:host([variant='promo']:not(:has(> [slot='image']))) #container.promo:not(.standard) {
+  grid-template-columns: auto;
+}
+
+:host([variant='promo']:has(> [slot='image'])) #body {
+  order: -5;
+}
+
+:host([variant='promo']:has(> [slot='header'])) #header {
+  margin: 0;
+
+  /** Promo header margin-block-end */
+  margin-block-end: var(--rh-space-lg, 16px);
+}
+
+:host([variant='promo']:has(> [slot='footer'])) #footer {
+  margin-block:
+    /** Promo footer margin-block-start */
+    var(--rh-space-xl, 24px)
+    0;
+  margin-inline: 0;
+}
+
+:host([variant='promo']:has(> [slot='image'], > [slot='header'])) #body ::slotted(p) {
+  font-size: var(--_promo-paragraph-font-size) !important;
+  margin-block-end: var(--_promo-paragraph-margin-block-end) !important;
+}
+
+:host([variant='promo'][full-width]:has(> [slot='image'])) #footer {
+  /** Full-width promo image footer margin-block-end */
+  margin-block-end: var(--rh-space-2xl, 32px);
+}
+
+@container promo (min-width: 768px) {
   :host([variant='promo'][full-width]:has(> [slot='image'])) #footer {
     margin-block-end: 0;
   }
+}
+
+@scope {
+  :scope:has(> [slot='header']) #header { display: flex; }
+  :scope:has(> [slot='image']) #image { display: block; }
+  :scope:has(> [slot='footer']) #footer { display: flex; }
+  :scope:has(> :not([slot])) #body { display: block; }
+
+  :scope:not(:has(> [slot='footer']), [variant='promo']) #body {
+    margin-block-end: var(--rh-space-2xl, 32px);
+  }
+
+  .promo.standard #body {
+    display: contents;
+  }
+
+  :scope[variant='promo']:not(:has(> [slot='image'])) #container.promo:not(.standard) {
+    grid-template-columns: auto;
+  }
+
+  :scope[variant='promo']:has(> [slot='image']) #body {
+    order: -5;
+  }
+
+  :scope[variant='promo']:has(> [slot='header']) #header {
+    margin: 0;
+
+    /** Promo header margin-block-end */
+    margin-block-end: var(--rh-space-lg, 16px);
+  }
+
+  :scope[variant='promo']:has(> [slot='footer']) #footer {
+    margin-block:
+      /** Promo footer margin-block-start */
+      var(--rh-space-xl, 24px)
+      0;
+    margin-inline: 0;
+  }
+
+  :scope[variant='promo']:has(> [slot='image'], > [slot='header']) #body ::slotted(p) {
+    font-size: var(--_promo-paragraph-font-size) !important;
+    margin-block-end: var(--_promo-paragraph-margin-block-end) !important;
+  }
+
+  :scope[variant='promo'][full-width]:has(> [slot='image']) #footer {
+    /** Full-width promo image footer margin-block-end */
+    margin-block-end: var(--rh-space-2xl, 32px);
+  }
+}
+
+:host([variant='promo'][full-width]) #body {
+  margin: 0;
 }
 
 @container promo (min-width: 768px) {
@@ -529,12 +531,5 @@
     :scope[variant='promo'][full-width]:has(> [slot='image']) #footer {
       margin-block-end: 0;
     }
-  }
-}
-
-@container promo (min-width: 1200px) {
-  :host([variant='promo'][full-width]) #container {
-    /** Full-width promo padding inline at containers >= xl */
-    padding-inline: var(--rh-space-7xl, 128px);
   }
 }
