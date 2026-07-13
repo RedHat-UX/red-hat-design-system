@@ -65,20 +65,20 @@ Released July 13, 2026
 | ------------- | ----------- | ------------ |
 | ✨ Added `<rh-scheme-dropdown>` | {{i()}} | A dropdown that switches between light, dark, and system default color schemes. |
 | 🎨 Project Felt theming support | {{i()}} | Added CSS custom properties across 19 components to enable the [Project Felt theme](/theming/themes/project-felt/). |
-| `<rh-footer-universal>`: added `tertiary` slot | {{i()}} | Added `tertiary` slot for social links and copyright. The previous slot pattern continues to work. |
-| `<rh-scheme-toggle>`: added `scheme-changed` event | {{i()}} | Fires when the color scheme changes for coordination and analytics. |
-| `<rh-scheme-toggle>`: added layout CSS custom properties | {{i()}} | Added `--rh-scheme-toggle-flex-flow`, `--rh-scheme-toggle-align-items`, and `--rh-scheme-toggle-gap` for positioning the legend above the button group. |
+| `<rh-alert>`: added `--rh-alert-border-width` | {{i()}} | Added CSS custom property for alert border width. |
 | `<rh-button>`: added icon and close variant theming | {{i()}} | Added `--rh-button-icon-color` and close variant CSS custom properties for background, width, and radius. |
-| `<rh-tabs>`: added theming CSS custom properties | {{i()}} | Added `--rh-tabs-link-*` and `--rh-tabs-overflow-*` CSS custom properties and `overflow-button` CSS parts for pill radius, padding, hover/focus backgrounds, and focus outlines. |
 | `<rh-chip>`: exposed `btn-link` CSS part | {{i()}} | Fixed close icon animation arc and exposed the `btn-link` CSS part. |
 | `<rh-cta>`: added hover and focus theming | {{i()}} | Improved focus ring for forced-colors compatibility. Added `--rh-cta-hover-background-color` and `--rh-cta-focus-text-decoration`. |
-| `<rh-alert>`: added `--rh-alert-border-width` | {{i()}} | Added CSS custom property for alert border width. |
-| `<rh-switch>`: added `--rh-switch-show-check` | {{i()}} | Added CSS custom property to control checkmark icon visibility without requiring the `show-check-icon` attribute. |
+| `<rh-footer-universal>`: added `tertiary` slot | {{i()}} | Added `tertiary` slot for social links and copyright. The previous slot pattern continues to work. |
 | `<rh-navigation-primary>`: added menu padding CSS custom properties | {{i()}} | Added `--rh-navigation-primary-item-menu-padding-block` and `--rh-navigation-primary-item-menu-padding-inline`. |
+| `<rh-scheme-toggle>`: added layout CSS custom properties | {{i()}} | Added `--rh-scheme-toggle-flex-flow`, `--rh-scheme-toggle-align-items`, and `--rh-scheme-toggle-gap` for positioning the legend above the button group. |
+| `<rh-scheme-toggle>`: added `scheme-changed` event | {{i()}} | Fires when the color scheme changes for coordination and analytics. |
+| `<rh-switch>`: added `--rh-switch-show-check` | {{i()}} | Added CSS custom property to control checkmark icon visibility without requiring the `show-check-icon` attribute. |
+| `<rh-tabs>`: added theming CSS custom properties | {{i()}} | Added `--rh-tabs-link-*` and `--rh-tabs-overflow-*` CSS custom properties and `overflow-button` CSS parts for pill radius, padding, hover/focus backgrounds, and focus outlines. |
 | `<rh-footer>`: updated visual design | {{p()}} | Updated with top border, responsive link header font sizes, and brand-red fedora logo. |
+| `<rh-navigation-primary>`: corrected default logo link | {{p()}} | Corrected default logo link destination to point to redhat.com/en. |
 | `<rh-site-status>`: improved visual style | {{p()}} | Updated visual styling. |
 | `<rh-skip-link>`: added dark scheme support | {{p()}} | Added support for dark color scheme. |
-| `<rh-navigation-primary>`: corrected default logo link | {{p()}} | Corrected default logo link destination to point to redhat.com/en. |
 
 </rh-table>
 
