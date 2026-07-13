@@ -75,7 +75,7 @@ Released July 13, 2026
 | `<rh-alert>`: added `--rh-alert-border-width` | {{i()}} | Added CSS custom property for alert border width. |
 | `<rh-switch>`: added `--rh-switch-show-check` | {{i()}} | Added CSS custom property to control checkmark icon visibility without requiring the `show-check-icon` attribute. |
 | `<rh-navigation-primary>`: added menu padding CSS custom properties | {{i()}} | Added `--rh-navigation-primary-item-menu-padding-block` and `--rh-navigation-primary-item-menu-padding-inline`. |
-| `<rh-footer>`: updated visual design | {{p()}} | Updated with top border, responsive link header font sizes, and brand-red Fedora logo. |
+| `<rh-footer>`: updated visual design | {{p()}} | Updated with top border, responsive link header font sizes, and brand-red fedora logo. |
 | `<rh-site-status>`: improved visual style | {{p()}} | Updated visual styling. |
 | `<rh-skip-link>`: added dark scheme support | {{p()}} | Added support for dark color scheme. |
 | `<rh-navigation-primary>`: corrected default logo link | {{p()}} | Corrected default logo link destination to point to redhat.com/en. |
@@ -83,49 +83,6 @@ Released July 13, 2026
 </rh-table>
 
 <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.2.0">View all version 4.2 release notes</rh-cta>
-
-</section>
-
-<section aria-labelledby="version-4.1">
-
-## Version 4.1
-Released April 9, 2026
-
-### Highlights
-
-<rh-table>
-
-| Change        | Type        | Notes        |
-| ------------- | ----------- | ------------ |
-| ✨ Added `<rh-button-group>` | {{i()}} | A button group visually organizes multiple related buttons into a single collection. |
-| ✨ Added `<rh-readtime>` | {{i()}} | Provides an estimated reading time for content. |
-| ✨ Added `<rh-select>` | {{i()}} | A select enables users to select one or more items from a list. |
-| `<rh-accordion>`: added light DOM shim | {{i()}} | Added `rh-accordion-lightdom-shim.css` to help ensure content is visible when JavaScript is disabled or fails to load. |
-| `<rh-blockquote>`: added `author` and `subtitle` attributes | {{i()}} | Added `author` and `subtitle` attribute/slot pairs; deprecated the `title` attribute. |
-| `<rh-button>`: deprecate `label` attribute | {{i()}} | Deprecated `label` in favor of `accessible-label`. |
-| `<rh-navigation-primary>`: unified navigation redesign | {{i()}} | Redesigned to match the unified nav spec with sub-domain support via `site-name` and `site-href` attributes, collapsible links menu, and hat-tip hover animation on the Red Hat fedora. |
-| `<rh-pagination>`: deprecate `variant="open"` | {{i()}} | Deprecated `variant="open"` in favor of `variant="borderless"`. |
-| `<rh-table>`: added `accessible-label` to `<rh-sort-button>` | {{i()}} | Added `accessible-label` slot/attribute pair for use when localizing tables. |
-| `<rh-tabs>`: added `icon` and `icon-set` attributes | {{i()}} | `<rh-tab>` elements now support `icon` and `icon-set` attributes. |
-| `<rh-tag>`: improved theming | {{i()}} | Improved element theming capabilities. |
-| `<rh-alert>`: improved toast accessibility | {{p()}} | Improved screen reader notification accessibility for toast alerts. |
-| `<rh-announcement>`: updated accessible label usage | {{p()}} | Updated `<rh-button>` in dismissible announcements to use the `accessible-label` attribute. |
-| `<rh-avatar>`: corrected layout | {{p()}} | Corrected inline layout switching to block layout on small viewports. |
-| `<rh-back-to-top>`: optimized styles | {{p()}} | Optimized internal styles. |
-| `<rh-code-block>`: fixed iOS font rendering | {{p()}} | Corrected font size rendering in iOS-based browsers. |
-| `<rh-code-block>`: updated spacing and icons | {{p()}} | Updated spacing, icons, and font size for compact and default code blocks. |
-| `<rh-footer>`: improved semantic markup | {{p()}} | Removed `<footer>` from shadow DOM and set `role="contentinfo"` on host for better semantics. |
-| `<rh-health-index>`: deduped CSS properties | {{p()}} | Deduped CSS custom properties for text colors. |
-| `<rh-menu-dropdown>`: updated caret icons | {{p()}} | Changed caret icons to filled variants and decreased size to match `<rh-select>`. |
-| `<rh-pagination>`: corrected fallback behavior | {{p()}} | Corrected fallback when links are missing `href` to `aria-current="page"`. |
-| `<rh-pagination>`: improved input accessibility | {{p()}} | Improved page number input accessibility and mobile submit behavior. |
-| `<rh-pagination>`: prevented unwanted focus | {{p()}} | Prevented page number input from receiving focus on page load. |
-| `<rh-switch>`: removed legacy fallback | {{p()}} | Removed legacy fallback check for `ariaDescribedByElements` and correctly tests support for `ariaDescription`. |
-| `<rh-tile>`: fixed `color-palette` rendering | {{p()}} | Fixed `color-palette` rendering when global color tokens are not already defined. |
-
-</rh-table>
-
-<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.1.0">View all version 4.1 release notes</rh-cta>
 
 ### Patches from version 4.1.5
 
@@ -194,7 +151,94 @@ Released April 9, 2026
 
 </section>
 
+<section aria-labelledby="version-4.1">
+
+## Version 4.1
+Released April 9, 2026
+
+### Highlights
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| ✨ Added `<rh-button-group>` | {{i()}} | A button group visually organizes multiple related buttons into a single collection. |
+| ✨ Added `<rh-readtime>` | {{i()}} | Provides an estimated reading time for content. |
+| ✨ Added `<rh-select>` | {{i()}} | A select enables users to select one or more items from a list. |
+| `<rh-accordion>`: added light DOM shim | {{i()}} | Added `rh-accordion-lightdom-shim.css` to help ensure content is visible when JavaScript is disabled or fails to load. |
+| `<rh-blockquote>`: added `author` and `subtitle` attributes | {{i()}} | Added `author` and `subtitle` attribute/slot pairs; deprecated the `title` attribute. |
+| `<rh-button>`: deprecate `label` attribute | {{i()}} | Deprecated `label` in favor of `accessible-label`. |
+| `<rh-navigation-primary>`: unified navigation redesign | {{i()}} | Redesigned to match the unified nav spec with sub-domain support via `site-name` and `site-href` attributes, collapsible links menu, and hat-tip hover animation on the Red Hat fedora. |
+| `<rh-pagination>`: deprecate `variant="open"` | {{i()}} | Deprecated `variant="open"` in favor of `variant="borderless"`. |
+| `<rh-table>`: added `accessible-label` to `<rh-sort-button>` | {{i()}} | Added `accessible-label` slot/attribute pair for use when localizing tables. |
+| `<rh-tabs>`: added `icon` and `icon-set` attributes | {{i()}} | `<rh-tab>` elements now support `icon` and `icon-set` attributes. |
+| `<rh-tag>`: improved theming | {{i()}} | Improved element theming capabilities. |
+| `<rh-alert>`: improved toast accessibility | {{p()}} | Improved screen reader notification accessibility for toast alerts. |
+| `<rh-announcement>`: updated accessible label usage | {{p()}} | Updated `<rh-button>` in dismissible announcements to use the `accessible-label` attribute. |
+| `<rh-avatar>`: corrected layout | {{p()}} | Corrected inline layout switching to block layout on small viewports. |
+| `<rh-back-to-top>`: optimized styles | {{p()}} | Optimized internal styles. |
+| `<rh-code-block>`: fixed iOS font rendering | {{p()}} | Corrected font size rendering in iOS-based browsers. |
+| `<rh-code-block>`: updated spacing and icons | {{p()}} | Updated spacing, icons, and font size for compact and default code blocks. |
+| `<rh-footer>`: improved semantic markup | {{p()}} | Removed `<footer>` from shadow DOM and set `role="contentinfo"` on host for better semantics. |
+| `<rh-health-index>`: deduped CSS properties | {{p()}} | Deduped CSS custom properties for text colors. |
+| `<rh-menu-dropdown>`: updated caret icons | {{p()}} | Changed caret icons to filled variants and decreased size to match `<rh-select>`. |
+| `<rh-pagination>`: corrected fallback behavior | {{p()}} | Corrected fallback when links are missing `href` to `aria-current="page"`. |
+| `<rh-pagination>`: improved input accessibility | {{p()}} | Improved page number input accessibility and mobile submit behavior. |
+| `<rh-pagination>`: prevented unwanted focus | {{p()}} | Prevented page number input from receiving focus on page load. |
+| `<rh-switch>`: removed legacy fallback | {{p()}} | Removed legacy fallback check for `ariaDescribedByElements` and correctly tests support for `ariaDescription`. |
+| `<rh-tile>`: fixed `color-palette` rendering | {{p()}} | Fixed `color-palette` rendering when global color tokens are not already defined. |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.1.0">View all version 4.1 release notes</rh-cta>
+
+</section>
+
 <section aria-labelledby="version-4.0">
+
+### Patches from version 4.0.4
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| `<rh-jump-links>`: fixed active state race conditions | {{p()}} | Fixed active state race conditions during rapid clicks and smooth scrolling. |
+| `<rh-code-block>`: fixed tooltip reappearance | {{p()}} | Prevented tooltip from unexpectedly reappearing. |
+| `<rh-cta>`: fixed default variant arrow on Firefox | {{p()}} | Ensured default variant's arrow consistently follows text on Firefox. |
+| `<rh-switch>`: fixed rendering on some browsers | {{p()}} | Fixed switch rendering on some browsers in light/dark schemes. |
+| `<rh-tooltip>`: corrected hover delay | {{p()}} | Corrected the intentionality delay for triggering the tooltip. |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.0.4">View all version 4.0.4 release notes</rh-cta>
+
+### Patches from version 4.0.3
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| `<rh-code-block>`: added `visible` type for `line-numbers` | {{p()}} | Added `visible` value to TypeScript types for the `line-numbers` attribute. |
+| Corrected `lit` import paths | {{p()}} | Corrected import paths for `lit` dependencies. |
+| `<rh-navigation-primary>`: fixed Safari 26.2 rendering | {{p()}} | Corrected rendering issue for Safari 26.2. |
+| Updated `@rhds/icons` to v2.1 | {{p()}} | Added 82 new icons to the UI and Standard sets. |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.0.3">View all version 4.0.3 release notes</rh-cta>
+
+### Patches from version 4.0.2
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| Updated Lit and other dependencies | {{p()}} | Updated Lit and other dependencies. |
+| `<rh-tile>`: decreased compact heading font size | {{p()}} | Decreased font size of compact and checkable Tile headings. |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.0.2">View all version 4.0.2 release notes</rh-cta>
 
 ## Version 4.0
 Released October 31, 2025 🎃
@@ -240,50 +284,6 @@ Released October 31, 2025 🎃
 </rh-table>
 
 <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.0.0">View all version 4.0 release notes</rh-cta>
-
-### Patches from version 4.0.4
-
-<rh-table>
-
-| Change        | Type        | Notes        |
-| ------------- | ----------- | ------------ |
-| `<rh-jump-links>`: fixed active state race conditions | {{p()}} | Fixed active state race conditions during rapid clicks and smooth scrolling. |
-| `<rh-code-block>`: fixed tooltip reappearance | {{p()}} | Prevented tooltip from unexpectedly reappearing. |
-| `<rh-cta>`: fixed default variant arrow on Firefox | {{p()}} | Ensured default variant's arrow consistently follows text on Firefox. |
-| `<rh-switch>`: fixed rendering on some browsers | {{p()}} | Fixed switch rendering on some browsers in light/dark schemes. |
-| `<rh-tooltip>`: corrected hover delay | {{p()}} | Corrected the intentionality delay for triggering the tooltip. |
-
-</rh-table>
-
-<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.0.4">View all version 4.0.4 release notes</rh-cta>
-
-### Patches from version 4.0.3
-
-<rh-table>
-
-| Change        | Type        | Notes        |
-| ------------- | ----------- | ------------ |
-| `<rh-code-block>`: added `visible` type for `line-numbers` | {{p()}} | Added `visible` value to TypeScript types for the `line-numbers` attribute. |
-| Corrected `lit` import paths | {{p()}} | Corrected import paths for `lit` dependencies. |
-| `<rh-navigation-primary>`: fixed Safari 26.2 rendering | {{p()}} | Corrected rendering issue for Safari 26.2. |
-| Updated `@rhds/icons` to v2.1 | {{p()}} | Added 82 new icons to the UI and Standard sets. |
-
-</rh-table>
-
-<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.0.3">View all version 4.0.3 release notes</rh-cta>
-
-### Patches from version 4.0.2
-
-<rh-table>
-
-| Change        | Type        | Notes        |
-| ------------- | ----------- | ------------ |
-| Updated Lit and other dependencies | {{p()}} | Updated Lit and other dependencies. |
-| `<rh-tile>`: decreased compact heading font size | {{p()}} | Decreased font size of compact and checkable Tile headings. |
-
-</rh-table>
-
-<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.0.2">View all version 4.0.2 release notes</rh-cta>
 
 </section>
 
