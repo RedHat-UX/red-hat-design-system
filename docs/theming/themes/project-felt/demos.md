@@ -36,7 +36,7 @@ subnav:
   import '@rhds/elements/rh-tag/rh-tag.js';
 </script>
 
-<link rel="stylesheet" data-helmet href="/theming/themes/project-felt/felt-theme-preview.css">
+<link rel="stylesheet" data-helmet href="/theming/themes/project-felt/preview/felt-theme-preview.css">
 
 <style>
   #demos-nav {
@@ -240,7 +240,7 @@ To apply the Project Felt preview theme to all of the elements below, toggle the
 <script type="module">
   const feltSwitch = document.querySelector('#felt-theme-switch');
   if (feltSwitch) {
-    const response = await fetch('/theming/themes/project-felt/felt-theme-preview.css');
+    const response = await fetch('/theming/themes/project-felt/preview/felt-theme-preview.css');
     const cssText = response.ok ? await response.text() : '';
     const sheet = new CSSStyleSheet();
     await sheet.replace(cssText);
