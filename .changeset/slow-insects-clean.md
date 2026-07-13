@@ -2,7 +2,7 @@
 "@rhds/elements": minor
 ---
 
-`<rh-button>`: deprecate `label` in favor of `accessible-label`.
+`<rh-button>`: deprecated `label` in favor of `accessible-label`.
 
 BEFORE:
 
