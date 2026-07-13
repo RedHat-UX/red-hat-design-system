@@ -513,7 +513,7 @@ function getNearestOverflowAncestor(node) {
 function getOverflowAncestors(node, list = [], traverseIframes = true) {
     const scrollableAncestor = getNearestOverflowAncestor(node);
     const isBody = scrollableAncestor === node.ownerDocument?.body;
-    const win = window;
+    const win = scrollableAncestor.ownerDocument?.defaultView ?? window;
     if (isBody) {
         const frameElement = getFrameElement(win);
         return list.concat(win, win.visualViewport || [], isOverflowElement(scrollableAncestor) ? scrollableAncestor : [], frameElement && traverseIframes ? getOverflowAncestors(frameElement) : []);
@@ -838,8 +838,8 @@ function getScale(element) {
  * @param element - The element to get visual offsets for
  * @returns Coordinates object with x and y offsets
  */
-function getVisualOffsets() {
-    const win = window;
+function getVisualOffsets(element) {
+    const win = element.ownerDocument?.defaultView ?? window;
     if (!isWebKit() || !win.visualViewport) {
         return noOffsets;
     }
@@ -883,16 +883,17 @@ function getBoundingClientRect(element, includeScale = false, isFixedStrategy = 
         }
     }
     const visualOffsets = shouldAddVisualOffsets(isFixedStrategy, offsetParent) ?
-        getVisualOffsets()
+        getVisualOffsets(element)
         : createCoords(0);
     let x = (clientRect.left + visualOffsets.x) / scale.x;
     let y = (clientRect.top + visualOffsets.y) / scale.y;
     let width = clientRect.width / scale.x;
     let height = clientRect.height / scale.y;
     if (element) {
-        const win = window;
-        const offsetWin = offsetParent
-            && isElement(offsetParent) ? window : offsetParent;
+        const win = element.ownerDocument?.defaultView ?? window;
+        const offsetWin = offsetParent && isElement(offsetParent) ?
+            offsetParent.ownerDocument?.defaultView ?? window
+            : offsetParent;
         let currentWin = win;
         let currentIFrame = getFrameElement(currentWin);
         while (currentIFrame && offsetParent && offsetWin !== currentWin) {
@@ -909,7 +910,7 @@ function getBoundingClientRect(element, includeScale = false, isFixedStrategy = 
             height *= iframeScale.y;
             x += left;
             y += top;
-            currentWin = window;
+            currentWin = currentIFrame.ownerDocument?.defaultView ?? window;
             currentIFrame = getFrameElement(currentWin);
         }
     }
@@ -1031,7 +1032,7 @@ function getDocumentRect(element) {
  * @returns Rect object with viewport dimensions and position
  */
 function getViewportRect(element, strategy) {
-    const win = window;
+    const win = element.ownerDocument?.defaultView ?? window;
     const html = getDocumentElement(element);
     const { visualViewport } = win;
     const width = visualViewport ? visualViewport.width : html.clientWidth;
@@ -1093,7 +1094,7 @@ function getClientRectFromClippingAncestor(element, clippingAncestor, strategy) 
         rect = getInnerBoundingClientRect(clippingAncestor, strategy);
     }
     else {
-        const visualOffsets = getVisualOffsets();
+        const visualOffsets = getVisualOffsets(element);
         rect = {
             x: clippingAncestor.x - visualOffsets.x,
             y: clippingAncestor.y - visualOffsets.y,
@@ -1293,7 +1294,7 @@ function getTrueOffsetParent(element, polyfill) {
  * @returns The offset parent element or window
  */
 function getOffsetParent(element, polyfill) {
-    const win = window;
+    const win = element.ownerDocument?.defaultView ?? window;
     if (isTopLayer(element)) {
         return win;
     }

@@ -1,7 +1,6 @@
-var _a;
 import {} from './slot-controller.js';
 export class SlotController {
-    constructor(host, ..._) {
+    constructor(host, ..._args) {
         this.host = host;
         host.addController(this);
     }
@@ -10,12 +9,12 @@ export class SlotController {
             .split(/[, ]/)
             .map(x => x.trim());
     }
-    getSlotted(..._) {
+    getSlotted(..._names) {
         return [];
     }
     hasSlotted(...names) {
-        const attr = this.host.getAttribute(_a.attribute);
-        const anon = this.host.hasAttribute(_a.anonymousAttribute);
+        const attr = this.host.getAttribute(SlotController.attribute);
+        const anon = this.host.hasAttribute(SlotController.anonymousAttribute);
         const hints = new Set(this.fromAttribute(attr));
         if (!names.length) {
             names.push(null);
@@ -26,10 +25,7 @@ export class SlotController {
         return !this.hasSlotted(...names);
     }
 }
-_a = SlotController;
 SlotController.default = Symbol('default slot');
-/** @deprecated use `default` */
-SlotController.anonymous = _a.default;
 SlotController.attribute = 'ssr-hint-has-slotted';
 SlotController.anonymousAttribute = 'ssr-hint-has-slotted-default';
 //# sourceMappingURL=slot-controller-server.js.map

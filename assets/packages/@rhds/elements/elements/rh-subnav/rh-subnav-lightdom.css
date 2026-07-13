@@ -1,15 +1,21 @@
 rh-subnav {
-  & rh-navigation-link:focus-visible:after,
-  & rh-navigation-link:has(a:focus-visible):after {
-    border-block-end-color: var(--rh-color-border-subtle) !important;
+  & rh-navigation-link:not([current-page]):active:after {
+    border-block-end-color:
+      var(--rh-subnav-link-border-color-active,
+        var(--rh-color-brand-red)) !important;
   }
 
-  & rh-navigation-link:focus-within:after {
-    border-block-end-color: var(--rh-color-border-subtle) !important;
+  & rh-navigation-link:not([current-page]):focus-visible:after,
+  & rh-navigation-link:not([current-page]):has(a:focus-visible):after {
+    border-block-end-color:
+      var(--rh-subnav-link-border-color-hover,
+        var(--rh-color-border-subtle)) !important;
   }
 
-  & rh-navigation-link:active:after {
-    border-block-end-color: var(--rh-color-brand-red) !important;
+  & rh-navigation-link:not([current-page]):focus-within:after {
+    border-block-end-color:
+      var(--rh-subnav-link-border-color-hover,
+        var(--rh-color-border-subtle)) !important;
   }
 
   /* This will move to the shim file in the future */

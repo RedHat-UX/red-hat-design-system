@@ -1,0 +1,738 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
+    <title>Subdomain | Red Hat Design System</title>
+
+    <link rel="preconnect" href="https://ga.jspm.io">
+
+    <link rel="stylesheet" href="/styles/demo/styles.css" media="all">
+
+    <script type="importmap">{
+  "imports": {
+    "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
+    "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
+    "lit-html": "/assets/packages/lit-html/lit-html.js",
+    "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
+    "lit-element": "/assets/packages/lit-element/index.js",
+    "prism-esm": "/assets/packages/prism-esm/prism.js",
+    "lit": "/assets/packages/lit/index.js",
+    "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
+    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
+    "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
+    "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "@lit/context": "/assets/packages/@lit/context/index.js",
+    "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@6.0.0/core.js",
+    "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
+    "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
+    "lit/": "/assets/packages/lit/",
+    "lit-html/": "/assets/packages/lit-html/",
+    "prism-esm/": "/assets/packages/prism-esm/",
+    "@lit-labs/ssr-client": "/assets/packages/@lit-labs/ssr-client/index.js",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js",
+    "@rhds/tokens/css/": "/assets/packages/@rhds/tokens/css/",
+    "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
+    "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
+    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons": "/assets/packages/@rhds/icons/icons.js",
+    "@rhds/icons/": "/assets/packages/@rhds/icons/",
+    "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
+    "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
+    "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
+    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "@uxdot/elements/": "/assets/packages/@uxdot/elements/"
+  },
+  "scopes": {
+    "/assets/packages/": {
+      "@lit/reactive-element/decorators/": "/assets/packages/@lit/reactive-element/decorators/",
+      "lit-element/lit-element.js": "/assets/packages/lit-element/lit-element.js",
+      "lit-html/": "/assets/packages/lit-html/"
+    }
+  }
+}</script>
+
+    
+      <script type="module">
+    // although we load these ssr support modules elsewhere, we still
+    // need them here to ensure no double-rendering on webkit
+    import '/assets/javascript/ssr-support.js';
+    // include these, which are often internal to elements,
+    // and are definitely required by context-picker and context-demo
+    // to avoid SSR defer-hydration bugs and SSR double-rendering bugs
+    import '@rhds/elements/rh-icon/rh-icon.js';
+    import '@rhds/elements/rh-surface/rh-surface.js';
+    import '@rhds/elements/rh-button/rh-button.js';
+    import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+    import '@rhds/elements/rh-tag/rh-tag.js';
+  </script>
+
+
+    <script type="module">
+      // load up the demo and picker
+      import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+      import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+    </script>
+
+    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
+  </head>
+  <body>
+    <rh-footer data-analytics-region="page-footer" ssr-hint-has-slotted="logo,header-secondary,links,main-secondary,universal">
+  <a slot="logo" href="https://docs.redhat.com" data-analytics-category="Footer" data-analytics-text="Logo">Docs</a>
+  <div slot="header-secondary" class="header-controls">
+    <label class="visually-hidden" for="select-language">Choose page language:</label>
+    <rh-select   id="select-language" ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{color:var(--rh-color-text-primary);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-sm,.875rem);font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5)}:host,#outer{flex-direction:column;align-items:stretch;display:flex}:host([hidden]),[hidden]{display:none!important}:host([disabled]){pointer-events:none!important}.visually-hidden{clip-path:inset(100%);white-space:nowrap;border:0;block-size:1px;inline-size:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}#outer{border:1px solid #0000;position:relative}#listbox-container{background-color:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));border:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default,3px);box-shadow:var(--rh-box-shadow-sm);padding-block:var(--rh-space-md,8px);opacity:0;display:inline-flex;position:absolute}#outer.expanded #listbox-container{opacity:1;z-index:1000}#listbox{flex-direction:column;inline-size:100%;display:flex;position:relative}#toggle{background-color:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));justify-content:space-between}#toggle,#toggle-button{border-radius:var(--rh-border-radius-default,3px);align-items:center;display:flex}.disabled #toggle{background-color:var(--rh-color-status-disabled,light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-gray-40,#a3a3a3)))}#toggle-button{border:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);color:var(--rh-color-text-primary);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-sm,.875rem);gap:var(--rh-space-md,8px);min-block-size:37px;padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);text-align:start;background-color:#0000;flex:auto}.disabled #toggle-button{color:var(--rh-color-text-status-disabled,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d)));border-color:#0000}#toggle-button:hover,#toggle-button:focus{border-color:var(--rh-color-border-interactive)}#toggle-button:focus,#toggle-button[aria-expanded=true]{outline:var(--rh-border-width-md,2px) solid var(--rh-color-border-interactive);border-color:#0000}#toggle-button:focus-visible{border-color:var(--rh-color-border-interactive);outline:3px solid var(--rh-color-border-interactive);outline-offset:3px}#toggle-text{flex:auto}.disabled #toggle-icon{color:var(--rh-color-icon-status-disabled,light-dark(var(--rh-color-gray-40,#a3a3a3),var(--rh-color-gray-60,#4d4d4d)))}#toggle-button #toggle-icon{--rh-icon-size:10px}::slotted(hr){border:0;inline-size:100%;margin:0}::slotted(hr):after{content:"";background-color:var(--rh-color-border-subtle);block-size:1px;inline-size:100%;display:block}::slotted(rh-option-group){border-block:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}::slotted(rh-option-group:last-child){border-block-end:0}#help-text{align-items:center;gap:var(--rh-space-md,8px);margin-block-start:var(--rh-space-md,8px);display:flex}#help-text ::slotted(*){display:inline-block;font-size:var(--rh-font-size-body-text-sm,.875rem)!important}:is(#toggle-button,#help-text) rh-icon{--rh-icon-size:var(--rh-select-icon-size,14px)}:host([state]) #help-text-content{font-weight:var(--rh-font-weight-body-text-medium,500)!important}:host([state=success]) #toggle-button{border-color:var(--rh-color-border-status-success)}:host([state=warning]) #toggle-button{border-color:var(--rh-color-border-status-warning)}:host([state=danger]) #toggle-button{border-color:var(--rh-color-border-status-danger)}.icon-success{color:var(--rh-color-icon-status-success)}.icon-warning{color:var(--rh-color-icon-status-warning)}.icon-danger{color:var(--rh-color-icon-status-danger)}</style><!--lit-part +HWpz3+y47I=-->
+      <!--lit-node 0--><div id="outer"
+           style=""
+           class=" center ">
+        <div id="toggle">
+          <!--lit-node 2--><button id="toggle-button"
+                  type="button"
+                  >
+            <span id="toggle-text">
+              <!--lit-part-->Select a value<!--/lit-part-->
+            </span>
+            <!--lit-node 5--><rh-icon 
+                     
+                     
+                      class="icon-success" set="ui" icon="check-circle-fill" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part KStlFv8wuOI=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 1C7.729 1 1 7.729 1 16s6.729 15 15 15 15-6.729 15-15S24.271 1 16 1Zm7.795 11.795-8.646 8.646c-.317.317-.733.475-1.149.475s-.832-.158-1.149-.475l-4.646-4.646a1.126 1.126 0 0 1 1.591-1.591l4.205 4.205 8.205-8.205a1.126 1.126 0 0 1 1.591 1.591Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template>
+            </rh-icon>
+            <!--lit-node 6--><rh-icon 
+                     
+                     
+                      class="icon-warning" set="ui" icon="warning-fill" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part 3WxLO4YU2bg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="m31.874 28.514-15.011-27a1.001 1.001 0 0 0-1.748 0l-15.011 27A1 1 0 0 0 .978 30H31a1 1 0 0 0 .874-1.486ZM14.5 12a1.5 1.5 0 0 1 3 0v5a1.5 1.5 0 0 1-3 0v-5ZM16 26.001a2 2 0 1 1-.001-3.999A2 2 0 0 1 16 26.001Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template>
+            </rh-icon>
+            <!--lit-node 7--><rh-icon 
+                     
+                     
+                      class="icon-danger" set="ui" icon="ban-fill" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part NlANnpT7X9k=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 1C7.729 1 1 7.729 1 16s6.729 15 15 15 15-6.729 15-15S24.271 1 16 1Zm6.796 21.795a1.122 1.122 0 0 1-1.592 0l-12-12a1.127 1.127 0 0 1 0-1.591 1.127 1.127 0 0 1 1.592 0l12 12a1.127 1.127 0 0 1 0 1.591Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template>
+            </rh-icon>
+            <!--lit-node 8--><rh-icon    id="toggle-icon" set="microns" icon="caret-down-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" microns "><!--lit-part nH3s/FzI+3A=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="m17.65 8.76-6.674 5.72a1.496 1.496 0 0 1-.976.365c-.347 0-.694-.122-.978-.366l-6.673-5.72A1 1 0 0 1 3 7h14a1 1 0 0 1 .65 1.76Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+          </button>
+        </div>
+        <!--lit-node 9--><div id="listbox-container"
+             hidden
+             style="margin-block-start:4px;inline-size:auto;">
+          <!--lit-node 10--><div id="listbox"
+               >
+            <!--lit-node 11--><rh-option 
+                       
+                       
+                        role="option" hydrate-internals-role="option" id="placeholder" disabled inert hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}:host([hidden]),[hidden]{display:none!important}:host([disabled]){pointer-events:none}:host(:focus),:host(:focus-visible){outline:0}:host(:focus) #outer,:host(:hover) #outer{background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}#outer{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);flex-wrap:wrap;justify-content:flex-start;align-items:center;display:flex}:host(:focus) #outer{border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-lg,3px) solid var(--rh-color-border-interactive);outline-offset:calc(var(--rh-border-width-lg,3px) * -1);border:0}:host([disabled]) #outer{color:var(--rh-color-text-status-disabled,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d)))}#label{flex:auto}#label,::slotted([slot=description]),#description{user-select:none}rh-icon[icon=checkmark]{color:var(--rh-color-interactive-primary-default)}#description{flex:1 0 100%;display:block}slot[name=description]{font-size:var(--rh-font-size-body-text-xs,.75rem)}#display-icon{--rh-icon-size:var(--rh-select-icon-size,14px);margin-inline-end:var(--rh-space-md,8px)}</style><!--lit-part zWHWHk43ewM=-->
+      <!--lit-node 0--><div id="outer" class=" disabled ">
+        <!--lit-node 1--><rh-icon 
+                 
+                 
+                  id="display-icon" set="ui" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="false"
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" ><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template>
+        </rh-icon>
+        <span id="label">
+          <!-- Option label as inline text. Screen readers use this content as the accessible name. Falls back to the `label` or `value` attribute when empty. -->
+          <!--lit-node 4--><slot ><!--lit-part--><!--/lit-part--></slot>
+        </span>
+        <!--lit-node 6--><rh-icon 
+                 
+                 
+                  icon="checkmark" set="microns" loading="eager" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" microns "><!--lit-part O9rH2WrTvvk=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 4.27c-.4-.38-1.03-.37-1.41.02L7 14.59 2.71 10.3l-.02-.02c-.4-.38-1.03-.37-1.41.02-.38.4-.37 1.03.02 1.41l4.65 4.65a1.499 1.499 0 0 0 2.12 0L18.72 5.71l.02-.02c.38-.4.37-1.03-.02-1.41Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        <!-- Optional inline or block description text displayed below the option label. Overrides the `description` attribute. Should be a `<span>` or `<p>` element. -->
+        <slot id="description"
+              name="description"><!--lit-part--><!--/lit-part--></slot>
+      </div>
+    <!--/lit-part--></template>
+              <!-- Placeholder inline text for the select. Overrides the `placeholder` attribute. Screen readers announce this text as the default label when no other label is provided. -->
+              <slot name="placeholder"><!--lit-part--><!--/lit-part--></slot>
+            </rh-option>
+            <!--lit-part--><!--/lit-part-->
+            <!-- Insert `rh-option` elements and optional `rh-option-group` or `hr` separator elements. Each `rh-option` must have accessible text content (slotted text or `label` attribute) so screen readers can announce it. -->
+            <!--lit-node 17--><slot ></slot>
+          </div>
+        </div>
+        <!--lit-node 18--><div id="help-text" hidden>
+          <!--lit-node 19--><rh-icon 
+                   
+                   
+                    class="icon-success" set="ui" icon="check-circle-fill" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part KStlFv8wuOI=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 1C7.729 1 1 7.729 1 16s6.729 15 15 15 15-6.729 15-15S24.271 1 16 1Zm7.795 11.795-8.646 8.646c-.317.317-.733.475-1.149.475s-.832-.158-1.149-.475l-4.646-4.646a1.126 1.126 0 0 1 1.591-1.591l4.205 4.205 8.205-8.205a1.126 1.126 0 0 1 1.591 1.591Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template>
+          </rh-icon>
+          <!--lit-node 20--><rh-icon 
+                   
+                   
+                    class="icon-warning" set="ui" icon="warning-fill" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part 3WxLO4YU2bg=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="m31.874 28.514-15.011-27a1.001 1.001 0 0 0-1.748 0l-15.011 27A1 1 0 0 0 .978 30H31a1 1 0 0 0 .874-1.486ZM14.5 12a1.5 1.5 0 0 1 3 0v5a1.5 1.5 0 0 1-3 0v-5ZM16 26.001a2 2 0 1 1-.001-3.999A2 2 0 0 1 16 26.001Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template>
+          </rh-icon>
+          <!--lit-node 21--><rh-icon 
+                   
+                   
+                    class="icon-danger" set="ui" icon="ban-fill" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part NlANnpT7X9k=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 1C7.729 1 1 7.729 1 16s6.729 15 15 15 15-6.729 15-15S24.271 1 16 1Zm6.796 21.795a1.122 1.122 0 0 1-1.592 0l-12-12a1.127 1.127 0 0 1 0-1.591 1.127 1.127 0 0 1 1.592 0l12 12a1.127 1.127 0 0 1 0 1.591Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template>
+          </rh-icon>
+          <!-- Insert a block element (e.g. `<p>`) with text that helps describe the select. Overrides the `help-text` attribute when slotted. Content is automatically linked to the control via `aria-describedby` so screen readers announce it. -->
+          <slot id="help-text-content" name="help-text"><span aria-hidden="true"><!--lit-part--><!--/lit-part--></span></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
+      <rh-option   role="option" hydrate-internals-role="option" value="English" ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}:host([hidden]),[hidden]{display:none!important}:host([disabled]){pointer-events:none}:host(:focus),:host(:focus-visible){outline:0}:host(:focus) #outer,:host(:hover) #outer{background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}#outer{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);flex-wrap:wrap;justify-content:flex-start;align-items:center;display:flex}:host(:focus) #outer{border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-lg,3px) solid var(--rh-color-border-interactive);outline-offset:calc(var(--rh-border-width-lg,3px) * -1);border:0}:host([disabled]) #outer{color:var(--rh-color-text-status-disabled,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d)))}#label{flex:auto}#label,::slotted([slot=description]),#description{user-select:none}rh-icon[icon=checkmark]{color:var(--rh-color-interactive-primary-default)}#description{flex:1 0 100%;display:block}slot[name=description]{font-size:var(--rh-font-size-body-text-xs,.75rem)}#display-icon{--rh-icon-size:var(--rh-select-icon-size,14px);margin-inline-end:var(--rh-space-md,8px)}</style><!--lit-part zWHWHk43ewM=-->
+      <!--lit-node 0--><div id="outer" class="  ">
+        <!--lit-node 1--><rh-icon 
+                 
+                 
+                  id="display-icon" set="ui" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="false"
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" ><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template>
+        </rh-icon>
+        <span id="label">
+          <!-- Option label as inline text. Screen readers use this content as the accessible name. Falls back to the `label` or `value` attribute when empty. -->
+          <!--lit-node 4--><slot ><!--lit-part-->English<!--/lit-part--></slot>
+        </span>
+        <!--lit-node 6--><rh-icon 
+                 
+                 
+                  icon="checkmark" set="microns" loading="eager" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" microns "><!--lit-part O9rH2WrTvvk=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 4.27c-.4-.38-1.03-.37-1.41.02L7 14.59 2.71 10.3l-.02-.02c-.4-.38-1.03-.37-1.41.02-.38.4-.37 1.03.02 1.41l4.65 4.65a1.499 1.499 0 0 0 2.12 0L18.72 5.71l.02-.02c.38-.4.37-1.03-.02-1.41Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        <!-- Optional inline or block description text displayed below the option label. Overrides the `description` attribute. Should be a `<span>` or `<p>` element. -->
+        <slot id="description"
+              name="description"><!--lit-part--><!--/lit-part--></slot>
+      </div>
+    <!--/lit-part--></template>English</rh-option>
+      <rh-option   role="option" hydrate-internals-role="option" value="French" ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}:host([hidden]),[hidden]{display:none!important}:host([disabled]){pointer-events:none}:host(:focus),:host(:focus-visible){outline:0}:host(:focus) #outer,:host(:hover) #outer{background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}#outer{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);flex-wrap:wrap;justify-content:flex-start;align-items:center;display:flex}:host(:focus) #outer{border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-lg,3px) solid var(--rh-color-border-interactive);outline-offset:calc(var(--rh-border-width-lg,3px) * -1);border:0}:host([disabled]) #outer{color:var(--rh-color-text-status-disabled,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d)))}#label{flex:auto}#label,::slotted([slot=description]),#description{user-select:none}rh-icon[icon=checkmark]{color:var(--rh-color-interactive-primary-default)}#description{flex:1 0 100%;display:block}slot[name=description]{font-size:var(--rh-font-size-body-text-xs,.75rem)}#display-icon{--rh-icon-size:var(--rh-select-icon-size,14px);margin-inline-end:var(--rh-space-md,8px)}</style><!--lit-part zWHWHk43ewM=-->
+      <!--lit-node 0--><div id="outer" class="  ">
+        <!--lit-node 1--><rh-icon 
+                 
+                 
+                  id="display-icon" set="ui" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="false"
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" ><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template>
+        </rh-icon>
+        <span id="label">
+          <!-- Option label as inline text. Screen readers use this content as the accessible name. Falls back to the `label` or `value` attribute when empty. -->
+          <!--lit-node 4--><slot ><!--lit-part-->French<!--/lit-part--></slot>
+        </span>
+        <!--lit-node 6--><rh-icon 
+                 
+                 
+                  icon="checkmark" set="microns" loading="eager" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" microns "><!--lit-part O9rH2WrTvvk=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 4.27c-.4-.38-1.03-.37-1.41.02L7 14.59 2.71 10.3l-.02-.02c-.4-.38-1.03-.37-1.41.02-.38.4-.37 1.03.02 1.41l4.65 4.65a1.499 1.499 0 0 0 2.12 0L18.72 5.71l.02-.02c.38-.4.37-1.03-.02-1.41Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        <!-- Optional inline or block description text displayed below the option label. Overrides the `description` attribute. Should be a `<span>` or `<p>` element. -->
+        <slot id="description"
+              name="description"><!--lit-part--><!--/lit-part--></slot>
+      </div>
+    <!--/lit-part--></template>French</rh-option>
+      <rh-option   role="option" hydrate-internals-role="option" value="Spanish" ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}:host([hidden]),[hidden]{display:none!important}:host([disabled]){pointer-events:none}:host(:focus),:host(:focus-visible){outline:0}:host(:focus) #outer,:host(:hover) #outer{background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}#outer{padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);flex-wrap:wrap;justify-content:flex-start;align-items:center;display:flex}:host(:focus) #outer{border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-lg,3px) solid var(--rh-color-border-interactive);outline-offset:calc(var(--rh-border-width-lg,3px) * -1);border:0}:host([disabled]) #outer{color:var(--rh-color-text-status-disabled,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d)))}#label{flex:auto}#label,::slotted([slot=description]),#description{user-select:none}rh-icon[icon=checkmark]{color:var(--rh-color-interactive-primary-default)}#description{flex:1 0 100%;display:block}slot[name=description]{font-size:var(--rh-font-size-body-text-xs,.75rem)}#display-icon{--rh-icon-size:var(--rh-select-icon-size,14px);margin-inline-end:var(--rh-space-md,8px)}</style><!--lit-part zWHWHk43ewM=-->
+      <!--lit-node 0--><div id="outer" class="  ">
+        <!--lit-node 1--><rh-icon 
+                 
+                 
+                  id="display-icon" set="ui" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="false"
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" ><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template>
+        </rh-icon>
+        <span id="label">
+          <!-- Option label as inline text. Screen readers use this content as the accessible name. Falls back to the `label` or `value` attribute when empty. -->
+          <!--lit-node 4--><slot ><!--lit-part-->Spanish<!--/lit-part--></slot>
+        </span>
+        <!--lit-node 6--><rh-icon 
+                 
+                 
+                  icon="checkmark" set="microns" loading="eager" hidden defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" microns "><!--lit-part O9rH2WrTvvk=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 4.27c-.4-.38-1.03-.37-1.41.02L7 14.59 2.71 10.3l-.02-.02c-.4-.38-1.03-.37-1.41.02-.38.4-.37 1.03.02 1.41l4.65 4.65a1.499 1.499 0 0 0 2.12 0L18.72 5.71l.02-.02c.38-.4.37-1.03-.02-1.41Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        <!-- Optional inline or block description text displayed below the option label. Overrides the `description` attribute. Should be a `<span>` or `<p>` element. -->
+        <slot id="description"
+              name="description"><!--lit-part--><!--/lit-part--></slot>
+      </div>
+    <!--/lit-part--></template>Spanish</rh-option>
+    </rh-select>
+    <rh-scheme-dropdown></rh-scheme-dropdown>
+  </div>
+  <h3 slot="links" data-analytics-text="Learn">Learn</h3>
+  <ul slot="links">
+    <li><a href="https://developers.redhat.com/" data-analytics-category="Footer|Learn" data-analytics-text="Developer resources">Developer resources</a></li>
+    <li><a href="https://learn.redhat.com/" data-analytics-category="Footer|Learn" data-analytics-text="Cloud learning hub">Cloud learning hub</a></li>
+    <li><a href="https://developers.redhat.com/learn" data-analytics-category="Footer|Learn" data-analytics-text="Interactive labs">Interactive labs</a></li>
+    <li><a href="https://redhat.com/en/services/training-and-certification" data-analytics-category="Footer|Learn" data-analytics-text="Training and certification">Training and certification</a></li>
+    <li><a href="https://access.redhat.com" data-analytics-category="Footer|Learn" data-analytics-text="Customer support">Customer support</a></li>
+    <li><a href="https://docs.redhat.com/" data-analytics-category="Footer|Learn" data-analytics-text="See all documentation">See all documentation</a></li>
+  </ul>
+  <h3 slot="links" data-analytics-text="Try buy sell">Try, buy, &amp; sell</h3>
+  <ul slot="links">
+    <li><a href="https://redhat.com/en/products/trials" data-analytics-category="Footer|Try buy sell" data-analytics-text="Product trial center">Product trial center</a></li>
+    <li><a href="https://catalog.redhat.com/" data-analytics-category="Footer|Try buy sell" data-analytics-text="Red Hat Ecosystem Catalog">Red Hat Ecosystem Catalog</a></li>
+    <li><a href="https://www.redhat.com/en/store" data-analytics-category="Footer|Try buy sell" data-analytics-text="Red Hat Store">Red Hat Store</a></li>
+  </ul>
+  <h3 slot="links" data-analytics-text="Communities">Communities</h3>
+  <ul slot="links">
+    <li><a href="https://access.redhat.com/community" data-analytics-category="Footer|Communities" data-analytics-text="Customer Portal Community">Customer Portal Community</a></li>
+    <li><a href="https://redhat.com/en/events" data-analytics-category="Footer|Communities" data-analytics-text="Events">Events</a></li>
+    <li><a href="https://redhat.com/en/about/open-source" data-analytics-category="Footer|Communities" data-analytics-text="How we contribute">How we contribute</a></li>
+  </ul>
+  <rh-footer-block slot="main-secondary">
+    <h3 slot="header" data-analytics-text="About Red Hat Documentation">About Red Hat Documentation</h3>
+    <p>We help Red Hat users innovate and achieve their goals with our products and services with content they can trust. <a href="https://docs.redhat.com/en/documentation">Explore our recent updates</a>.</p>
+    <h3 data-analytics-text="Making open source more inclusive">Making open source more inclusive</h3>
+    <p>Red Hat is committed to replacing problematic language in our code, documentation, and web properties. For more details, see the <a href="https://redhat.com/en/blog">Red Hat Blog</a>.</p>
+    <h3 data-analytics-text="About Red Hat">About Red Hat</h3>
+    <p>We deliver hardened solutions that make it easier for enterprises to work across platforms and environments, from the core datacenter to the network edge.</p>
+    <rh-site-status><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block}#container{padding:var(--rh-space-lg,16px);border-radius:var(--rh-border-radius-default,3px);background:light-dark( var(--rh-color-surface-lighter,#f2f2f2), var(--rh-color-surface-darker,#1f1f1f));border: var(--rh-border-width-sm,1px) solid  var(--rh-color-border-subtle);min-width:150px;display:inline-flex}a{font-size:var(--rh-font-size-body-text-sm,.875rem);align-items:center;gap:var(--rh-space-md,8px);color:var(--rh-color-text-primary);text-transform:lowercase;text-decoration:none;display:inline-flex}span:first-letter{text-transform:uppercase}a:focus{outline: var(--rh-border-width-md,2px) solid  var(--rh-color-border-interactive);border-radius:var(--rh-border-radius-default,3px)}a:is(:hover,:focus){text-decoration:underline}rh-icon{width:var(--rh-size-icon-01,16px);height:var(--rh-size-icon-01,16px);color:var(--rh-color-white,#fff)}rh-icon.success{color:var(--rh-color-status-success)}rh-icon.warning{color:var(--rh-color-status-warning)}rh-icon.danger{color:var(--rh-color-status-danger)}</style><!--lit-part Ym8fcu1O9Y0=-->
+      <!--lit-node 0--><div id="container" class=" loading danger ">
+        <!--lit-node 1--><a href="https://status.redhat.com/"
+           aria-busy="true"
+           aria-live="polite"><!--lit-part +2nuFWF/22g=-->
+          <!--lit-node 0--><rh-spinner  size="sm" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{--rh-spinner-stroke-width:6;text-align:center;width:max-content;min-height:0;display:inline-block}::slotted(*){margin-top:var(--rh-space-lg,16px)}::slotted(p){font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5)}svg{aspect-ratio:1;width:var(--rh-length-4xl,64px);stroke-width:var(--rh-spinner-stroke-width);animation-name:var(--rh-spinner-container-animation-name,none);animation-duration:var(--rh-spinner-container-animation-duration,0s);animation-timing-function:var(--rh-spinner-container-animation-timing,linear);margin-left:auto;margin-right:auto;animation-iteration-count:infinite;display:block;overflow:hidden}circle{stroke-linecap:round;vector-effect:var(--rh-spinner-vector-effect,non-scaling-stroke);width:100%;height:100%}circle.dash{transform-origin:50%;animation-name:var(--rh-spinner-animation-name,rh-spinner-animation-dash);animation-duration:var(--rh-spinner-animation-duration,1.4s);animation-timing-function:var(--rh-spinner-animation-timing,ease-out);stroke:var(--rh-color-accent-base);stroke-dasharray:var(--rh-spinner-dash-array,283);stroke-dashoffset:var(--rh-spinner-dash-offset,280);transform:rotate(var(--rh-spinner-rotate-start,-90deg));animation-iteration-count:infinite}circle.track{display:var(--rh-spinner-track-display,revert);stroke:light-dark( var(--rh-color-gray-10,#f2f2f2), var(--rh-color-gray-70,#383838));animation-duration:0}:host([size=lg]){--rh-spinner-stroke-width:6}:host([size=lg]) svg{width:var(--rh-size-icon-06,64px)}:host([size=lg]) ::slotted(p){font-size:var(--rh-font-size-body-text-lg,1.125rem)}:host([size=md]){--rh-spinner-stroke-width:4}:host([size=md]) svg{width:var(--rh-size-icon-04,40px)}:host([size=md]) ::slotted(p){font-size:var(--rh-font-size-body-text-md,1rem)}:host([size=sm]){--rh-spinner-stroke-width:3}:host([size=sm]) svg{width:var(--rh-size-icon-01,16px)}:host([size=sm]) circle.dash{animation-name:var(--rh-spinner-animation-name,rh-spinner-small-animation-dash);stroke-dasharray:var(--rh-spinner-dash-array,71);stroke-dashoffset:var(--rh-spinner-dash-offset,71)}:host([size=sm]) ::slotted(p){font-size:var(--rh-font-size-body-text-sm,.875rem)}@keyframes rh-spinner-animation-dash{50%{stroke-dashoffset:0}75%{transform:rotate(280deg)}to{stroke-dashoffset:-283px}}@keyframes rh-spinner-small-animation-dash{50%{stroke-dashoffset:0}75%{transform:rotate(280deg)}to{stroke-dashoffset:-71px}}@keyframes felt-rotate{0%{transform:rotate(0)}to{transform:rotate(360deg)}}@keyframes felt-dash{0%{stroke-dasharray:251;stroke-dashoffset:248px;transform:rotate(0)}15%{stroke-width:calc(var(--rh-spinner-stroke-width) - 4)}40%{stroke-dasharray:195;stroke-dashoffset:133px}to{stroke-dasharray:251;stroke-dashoffset:248px;transform:rotate(720deg)}}</style><!--lit-part JyBpEkNmHas=-->
+      <svg role="status" viewBox="0 0 100 100" aria-live="polite">
+        <circle class="track" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke"/>
+        <circle class="dash" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke"/>
+      </svg>
+      <!-- Optional text label displayed below the animated circle.
+           Use a `<p>` element with a brief loading message (e.g. "Loading..."). -->
+      <slot></slot>
+    <!--/lit-part--></template></rh-spinner>
+          <span><!-- Localized loading text for screen reader
+                    announcement via aria-live polite region -->
+            <slot name="loading-text">Loading</slot></span><!--/lit-part-->
+        </a>
+      </div>
+    <!--/lit-part--></template></rh-site-status>
+  </rh-footer-block>
+
+  <!-- Universal Footer -->
+  <rh-footer-universal   slot="universal" ssr-hint-has-slotted="links-primary,links-secondary,tertiary" color-palette="darker"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:dark only}:host([color-palette^=light]){color-scheme:light only}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{color:var(--rh-color-white,#fff);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);line-height:var(--rh-line-height-body-text,1.5);font-weight:var(--_font-weight);font-size:initial;flex-direction:column;display:flex;color-scheme:dark only!important}@media (scripting:none){:host{min-height:var(--rh-footer-nojs-min-height)}}:host,::slotted(rh-footer-universal){overflow-y:initial;--_fallback-animation:nothing-doing!important;--_fallback-opacity:1!important}.base{border-block-start: var(--rh-border-width-sm,1px) solid var(--_border-color)}.footer,.global-base{--_icon-color: var(--rh-footer-icon-color, var(--rh-color-gray-40,#a3a3a3));--_icon-color-hover: var(--rh-footer-icon-color-hover, var(--rh-color-gray-30,#c7c7c7));--_border-color: var(--rh-footer-border-color, var(--rh-color-border-subtle-on-dark,#707070));--_accent-color: var(--rh-footer-accent-color, var(--rh-color-accent-brand-on-light,#e00));--_section-side-gap: var(--rh-footer-section-side-gap, var(--rh-space-lg,16px));--_accordion-background:var(--rh-color-white,#fff);--_logo-width:var(--rh-size-icon-04,40px);--_font-weight:var(--rh-font-weight-body-text-regular,400)}*{box-sizing:border-box}::slotted(:is(h1,h2,h3,h4,h5,h6)){font-family:var(--rh-font-family-heading,RedHatDisplay, "Red Hat Display", Helvetica, Arial, sans-serif)!important;line-height:var(--rh-line-height-heading,1.3)!important}:host([debug]) :not(.spacer,.base,a,svg){min-height:var(--rh-length-xl,24px);outline: var(--rh-length-3xs,2px) dotted red;position:relative}:host([debug]) :not(.spacer,.base,a,svg):after{content:attr(part);color:#fff;padding:var(--rh-space-xs,4px);font-family:var(--rh-font-family-code,RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);font-size:var(--rh-font-size-code-xs,.75rem);background-color:#2f4f4f;display:block;position:absolute;top:0;right:0}.section{padding: var(--rh-space-2xl,32px) var(--_section-side-gap)}.header{background-color:var(--rh-color-surface-darker,#1f1f1f);gap:var(--rh-space-2xl,32px);flex-wrap:wrap;align-items:center;display:flex;position:relative}.header:after{content:"";background-color:var(--_border-color);height:var(--rh-length-4xs,1px);width:calc(100% - var(--_section-side-gap) * 2);bottom:0;left:var(--_section-side-gap);display:none;position:absolute}.header-primary{flex:auto}.header-primary ::slotted(:not(a,img,svg,picture)){font-size:var(--rh-font-size-heading-xs,1.25rem);font-family:var(--rh-font-family-heading,RedHatDisplay, "Red Hat Display", Helvetica, Arial, sans-serif);font-weight:var(--rh-font-weight-heading-medium,500)}.header-secondary{flex:0 auto}.main{background-color:var(--rh-color-surface-darker,#1f1f1f);gap:var(--rh-space-2xl,32px);padding-top:0;display:grid}.main-secondary{gap:var(--pf-global--spacer--xl,32px);place-content:start;place-items:baseline;display:grid}.global-base{--rh-footer-link-font-size:var(--rh-font-size-body-text-xs,.75rem);background-color:var(--rh-color-surface-darkest,#151515);gap: var(--rh-space-2xl,32px)  var(--rh-space-xl,24px);grid-template-columns:1fr;grid-template-areas:"logo""primary""spacer""secondary""tertiary";line-height:100%;display:grid}.global-logo{width:auto;height:var(--rh-size-icon-02,24px);grid-area:logo}.global-logo-image{fill:var(--rh-color-brand-red,#e00);width:auto;height:100%}.global-primary{grid-area:primary}.global-secondary{color:var(--rh-color-text-secondary);gap:var(--rh-space-lg,16px);flex-direction:column;grid-area:secondary;justify-content:space-between;display:flex}.global-secondary-end{gap:var(--rh-space-xl,24px);align-items:center;display:flex}.global-tertiary{justify-content:start;align-items:center;gap:var(--rh-space-lg,16px);flex-wrap:wrap;grid-area:tertiary;display:flex}::slotted(rh-footer-copyright){grid-column:-1/1}.global-tertiary ::slotted(rh-footer-copyright){flex-basis:100%}.global-tertiary ::slotted(rh-footer-links){display:contents}.global-links-primary{gap: var(--rh-space-md,8px)  var(--rh-space-xl,24px);flex-direction:column;display:flex}.global-links-secondary{gap: var(--rh-space-md,8px)  var(--rh-space-xl,24px);flex-direction:column;display:flex}:is(.global-primary,.global-secondary,.global-tertiary) ::slotted(*){font-size:var(--rh-font-size-body-text-xs,.75rem)!important}.logo{line-height:0}.logo ::slotted(a){color:var(--rh-color-text-primary);font-size:var(--rh-font-size-heading-xs,1.25rem);font-family:var(--rh-font-family-heading,RedHatDisplay, "Red Hat Display", Helvetica, Arial, sans-serif);font-weight:800;line-height:var(--rh-line-height-heading,1.3);text-decoration:underline dotted;text-decoration-thickness:var(--rh-border-width-sm,1px);text-underline-offset:max(5px, .28em)}.logo ::slotted(a:has(img,svg,picture)){line-height:0;font-size:initial;text-decoration:none}.logo a{text-decoration:none;display:inline-block}.logo a>:is(img,svg){width:auto;height:var(--rh-size-icon-03,32px);display:block}.social-links{margin-inline-start:0;padding-inline-start:0;display:flex}.social-links rh-footer-links,.social-links slot::slotted(rh-footer-links){gap:var(--rh-space-xl,24px);flex-direction:row;display:flex}:is(.links,.global-links-primary,.global-links-secondary) ::slotted(ul){margin:0;padding:0;display:contents}.isMobile .links ::slotted(ul){--rh-footer-link-font-size:1em;gap:calc(var(--rh-space-2xl,32px) / 2);grid-template-columns:1fr;display:grid}#heading,#global-heading{width:0;height:0;display:flex;position:absolute;left:-10000000px;overflow:hidden}[part=base]:not(.isMobile) .links{grid-template-columns:repeat(1fr, 25%);gap: var(--rh-space-lg,16px)  var(--rh-space-2xl,32px);grid-template-rows:repeat(1,min-content auto);grid-auto-columns:minmax(0,1fr);grid-auto-flow:column;display:grid}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):first-of-type){grid-area:1/1/2/2}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(2)){grid-area:1/2/2/3}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(3)){grid-area:1/3/2/4}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(4)){grid-area:1/4/2/5}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(5)){grid-area:3/1/4/2}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(6)){grid-area:3/2/4/3}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(7)){grid-area:3/3/4/4}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(8)){grid-area:3/4/4/5}[part=base]:not(.isMobile) .links ::slotted(:is(ul:first-of-type)){grid-area:2/1/3/2}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(2))){grid-area:2/2/3/3}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(3))){grid-area:2/3/3/4}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(4))){grid-area:2/4/3/5}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(5))){grid-area:4/1/5/2}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(6))){grid-area:4/2/5/3}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(7))){grid-area:4/3/5/4}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(8))){grid-area:4/4/5/5}[part=base]:not(.isMobile) .links ::slotted(ul){gap:var(--rh-footer-links-gap,var(--rh-space-lg,16px));flex-direction:column;display:flex}#footer-logo{width:var(--_logo-width)}:is(.links,.global-links-primary,.global-links-secondary) ::slotted(:is(h1,h2,h3,h4,h5)){font-weight:var(--rh-font-weight-heading-medium,500)!important;margin-block:0!important;font-size:var(--rh-footer-link-header-font-size,var(--rh-font-size-body-text-md,1rem))!important;color:var(--rh-color-text-primary)!important;margin-block-start:var(--_link-header-margin,0)!important}@media screen and (width>=768px){.header-primary ::slotted(:not(a,img,svg,picture)){font-size:var(--rh-font-size-heading-sm,1.5rem)}.logo a>:is(img,svg){height:var(--rh-size-icon-03,32px)}.global-logo{height:var(--rh-size-icon-04,40px)}:is(.links,.global-links-primary,.global-links-secondary) ::slotted(:is(h1,h2,h3,h4,h5)){font-size:var(--rh-footer-link-header-font-size,var(--rh-font-size-body-text-lg,1.125rem))!important}.global-base{grid-template-columns:4fr 4fr 4fr;grid-template-areas:"logo logo logo""primary primary primary""spacer spacer spacer""secondary secondary secondary""tertiary tertiary tertiary"}}@media screen and (width>=992px){.global-base:not(.nothing){gap:var(--rh-space-xl,24px) var(--rh-space-2xl,32px);grid-template:"logo primary"max-content"logo secondary"max-content".tertiary"/auto 1fr}.global-primary{display:flex}}@media screen and (width>=1200px){.global-base:not(.nothing){grid-template:"logo primary tertiary"max-content"logo secondary tertiary"max-content/auto 1fr auto}.global-tertiary{place-content:center flex-end}.global-tertiary ::slotted(rh-footer-copyright){text-align:end}}.spacer{border-bottom:1px solid var(--_border-color);grid-area:spacer}@media screen and (width>=992px){.spacer{display:none}.global-secondary{flex-flow:wrap;align-items:center}.global-links-secondary{flex:0 auto}.global-secondary-end{margin-inline-start:auto}}@media screen and (width>=320px){.global-links-primary,.global-links-secondary{grid-template-columns:1fr 1fr;display:grid}}@media screen and (width>=768px){.global-links-primary,.global-links-secondary{grid-template-columns:1fr 1fr 1fr;display:grid}}@media screen and (width>=992px){.global-links-primary{flex-flow:wrap;align-items:center;display:flex}.global-links-secondary{flex-flow:wrap;gap:8px 24px;display:flex}}@media screen and (width<=992px){.global-logo{grid-area:logo}.global-primary{grid-area:primary}}@media screen and (width>=992px){.header:after{display:block}.main{padding-top:var(--rh-space-2xl,32px);padding-bottom:var(--rh-space-4xl,64px)}}@media screen and (width>=992px) and (width<=1368px){.header,.main{grid-template-columns:8fr 4fr;display:grid}}@media screen and (width>=1368px){.header,.main{grid-template-columns:8fr 4fr;display:grid}}@media screen and (width>=768px){.isMobile .links ::slotted(ul){grid-template-columns:1fr 1fr}}</style><!--lit-part mRsJaRgvN6k=-->
+      <div class="footer">
+        <!--lit-node 1--><h2 id="global-heading" >
+          <!-- summary: visually-hidden heading for assistive technology
+               description: |
+                 Expects inline text. Screen readers use this heading to identify the
+                 universal footer region. Defaults to "Red Hat footer". Hidden if a
+                 parent `<h2>` already exists. -->
+          <slot name="heading">Red Hat footer</slot>
+        </h2>
+        <!-- Wrapper for the universal footer content (logo, primary, secondary, tertiary). -->
+        <!--lit-node 5--><div class="section global-base  hasTertiary " part="section base">
+          <!-- summary: overrides all universal footer content (base slot)
+               description: |
+                 Expects block elements. Replaces the entire universal footer structure.
+                 Avoid using; bypasses all built-in layout, grid regions, responsive
+                 behavior, and ARIA landmark wiring. -->
+          <slot name="base">
+            <!-- Container for the logo slot. -->
+            <div class="global-logo" part="logo">
+              <!-- summary: Red Hat logo (logo slot)
+                   description: |
+                     Expects block elements: an `<a>` wrapping an `<img>` or `<svg>`.
+                     Defaults to the Red Hat logo SVG linking to redhat.com. Screen
+                     readers rely on the anchor `aria-label` for identification. -->
+              <slot name="logo">
+                <!--
+                  part:
+                    description: Link wrapping the logo; defaults to redhat.com.
+                -->
+                <a class="global-logo-anchor"
+                    part="logo-anchor"
+                    href="https://redhat.com"
+                    aria-label="Visit Red Hat">
+                  <!--
+                    part:
+                      description: Logo image or SVG element.
+                  -->
+                  <svg class="global-logo-image"
+                       part="logo-image"
+                       data-name="Layer 1"
+                       xmlns="http://www.w3.org/2000/svg"
+                       viewBox="0 0 192 145">
+                      <title>Red Hat logo</title>
+                    <defs>
+                      <style>
+                        .band {
+                          /** Fedora band background fill */
+                          fill: var(--rh-color-black, #000000);
+                        }
+                      </style>
+                    </defs>
+                    <path class="band" d="M157.77,62.61a14,14,0,0,1,.31,3.42c0,14.88-18.1,17.46-30.61,17.46C78.83,83.49,42.53,53.26,42.53,44a6.43,6.43,0,0,1,.22-1.94l-3.66,9.06a18.45,18.45,0,0,0-1.51,7.33c0,18.11,41,45.48,87.74,45.48,20.69,0,36.43-7.76,36.43-21.77,0-1.08,0-1.94-1.73-10.13Z"/>
+                    <path class="cls-1" d="M127.47,83.49c12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.89,8.69,103.76.5,97.51.5,91.69.5,90,8,83.06,8c-6.68,0-11.64-5.6-17.89-5.6-6,0-9.91,4.09-12.93,12.5,0,0-8.41,23.72-9.49,27.16A6.43,6.43,0,0,0,42.53,44c0,9.22,36.3,39.45,84.94,39.45M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.45,18.45,0,0,1,1.51-7.33C22.27,52,.5,55,.5,74.22c0,31.48,74.59,70.28,133.65,70.28,45.28,0,56.7-20.48,56.7-36.65,0-12.72-11-27.16-30.83-35.78"/>
+                  </svg>
+                </a>
+              </slot>
+            </div>
+            <!-- Primary row (start, links, end). -->
+            <div class="global-primary" part="primary">
+              <!-- summary: overrides primary-start, links-primary, and primary-end (primary slot)
+                   description: |
+                     Expects block elements. Replaces the entire primary link region.
+                     Override only when the three sub-slots are insufficient.
+                     Screen readers navigate child links as a group. -->
+              <slot name="primary">
+                <!-- Left area of the primary row. -->
+                <!--lit-node 26--><div class="global-primary-start" part="primary-start" hidden>
+                  <!-- summary: content before primary links (primary-start slot)
+                       description: |
+                         Expects inline or block elements placed before the primary
+                         global navigation links. Screen readers encounter this
+                         content before the link list. -->
+                  <slot name="primary-start"></slot>
+                </div>
+                <!-- Main link list area in the primary row. -->
+                <!--lit-node 30--><div class="global-links-primary" part="links-primary" >
+                  <!-- summary: primary global navigation links (links-primary slot)
+                       description: |
+                         Expects block elements: a `<ul>` of `<li>` anchor links for
+                         primary global Red Hat navigation. Screen readers announce
+                         the list group; Tab moves through each link. -->
+                  <slot name="links-primary"></slot>
+                </div>
+                <!-- Right area of the primary row. -->
+                <!--lit-node 34--><div class="global-primary-end" part="primary-end" hidden>
+                  <!-- summary: content after primary links (primary-end slot)
+                       description: |
+                         Expects inline or block elements placed after the primary
+                         global navigation links. Screen readers encounter this
+                         content after the link list. -->
+                  <slot name="primary-end"></slot>
+                </div>
+              </slot>
+            </div>
+            <!-- Spacer between primary and secondary rows. -->
+            <div class="spacer" part="spacer"></div>
+            <!-- Secondary row (start, links, end). -->
+            <div class="global-secondary" part="secondary">
+              <!-- summary: overrides secondary-start, links-secondary, and secondary-end (secondary slot)
+                   description: |
+                     Expects block elements. Replaces the entire secondary link region.
+                     Override only when the three sub-slots are insufficient.
+                     Screen readers navigate child links as a group. -->
+              <slot name="secondary">
+                <!-- Left area of the secondary row. -->
+                <!--lit-node 44--><div class="global-secondary-start" part="secondary-start" hidden>
+                  <!-- summary: content before secondary links, e.g. copyright (secondary-start slot)
+                       description: |
+                         Expects block elements such as `<rh-footer-copyright>`, placed
+                         before the secondary links. Screen readers announce this
+                         content in DOM order within the footer landmark. -->
+                  <slot name="secondary-start"></slot>
+                </div>
+                <!-- Main link list area in the secondary row. -->
+                <!--lit-node 48--><div class="global-links-secondary" part="links-secondary" >
+                  <!-- summary: secondary global navigation links (links-secondary slot)
+                       description: |
+                         Expects block elements: a `<ul>` of `<li>` anchor links for
+                         secondary global Red Hat navigation. Screen readers announce
+                         the list group; Tab moves through each link. -->
+                  <slot name="links-secondary"></slot>
+                </div>
+                <!-- Right area of the secondary row. -->
+                <!--lit-node 52--><div class="global-secondary-end" part="secondary-end" hidden>
+                  <!-- summary: content after secondary links (secondary-end slot)
+                       description: |
+                         Expects inline or block elements placed after the secondary
+                         global navigation links. Screen readers encounter this
+                         content after the secondary link list. -->
+                  <slot name="secondary-end"></slot>
+                </div>
+              </slot>
+            </div>
+            <!-- Optional bottom section (e.g. copyright, extra text). -->
+            <!--lit-node 56--><div class="global-tertiary" part="tertiary" >
+              <!-- summary: optional third content region (tertiary slot)
+                   description: |
+                     Expects block elements such as a language selector or custom
+                     widget. Hidden when nothing is slotted. Screen readers
+                     encounter this region after the secondary links. -->
+              <slot name="tertiary"></slot>
+            </div>
+          </slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
+    <h3 slot="links-primary" data-analytics-text="Red Hat corporate links" hidden="">Red Hat corporate links</h3>
+    <ul slot="links-primary" data-analytics-region="page-footer-bottom-primary">
+      <li><a href="https://redhat.com/en/about/company" data-analytics-category="Footer|Corporate" data-analytics-text="About Red Hat">About Red Hat</a></li>
+      <li><a href="https://redhat.com/en/jobs" data-analytics-category="Footer|Corporate" data-analytics-text="Jobs">Jobs</a></li>
+      <li><a href="https://redhat.com/en/events" data-analytics-category="Footer|Corporate" data-analytics-text="Events">Events</a></li>
+      <li><a href="https://redhat.com/en/about/office-locations" data-analytics-category="Footer|Corporate" data-analytics-text="Locations">Locations</a></li>
+      <li><a href="https://redhat.com/en/contact" data-analytics-category="Footer|Corporate" data-analytics-text="Contact Red Hat">Contact Red Hat</a></li>
+      <li><a href="https://redhat.com/en/blog" data-analytics-category="Footer|Corporate" data-analytics-text="Red Hat Blog">Red Hat Blog</a></li>
+      <li><a href="https://redhat.com/en/about/our-culture/diversity-equity-inclusion" data-analytics-category="Footer|Corporate" data-analytics-text="Inclusion at Red Hat">Inclusion at Red Hat</a></li>
+      <li><a href="https://coolstuff.redhat.com/" data-analytics-category="Footer|Corporate" data-analytics-text="Cool Stuff Store">Cool Stuff Store</a></li>
+      <li><a href="https://www.redhat.com/en/summit" data-analytics-category="Footer|Corporate" data-analytics-text="Red Hat Summit">Red Hat Summit</a></li>
+    </ul>
+    <h3 slot="links-secondary" data-analytics-text="Red Hat legal and privacy links" hidden="">Red Hat legal and privacy links</h3>
+    <ul slot="links-secondary" data-analytics-region="page-footer-bottom-secondary">
+      <li><a href="https://redhat.com/en/about/privacy-policy" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Privacy statement">Privacy statement</a></li>
+      <li><a href="https://redhat.com/en/about/terms-use" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Terms of use">Terms of use</a></li>
+      <li><a href="https://redhat.com/en/about/all-policies-guidelines" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="All policies and guidelines">All policies and guidelines</a></li>
+      <li><a href="https://redhat.com/en/about/digital-accessibility" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Digital accessibility">Digital accessibility</a></li>
+      <li><a href="#" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Cookie preferences">Cookie preferences</a></li>
+    </ul>
+    <rh-footer-copyright  slot="tertiary"><template shadowroot="open" shadowrootmode="open"><style>:host{flex:auto;width:100%;display:block}</style><!--lit-part EMyLN9QaMvg=--><!-- summary: copyright text content (default slot)
+         description: |
+           Expects inline text containing the copyright notice. Defaults to
+           "© [current year] Red Hat" if not provided. Screen readers announce
+           this text within the footer landmark; it is not focusable via Tab.
+           Override for a different entity or localized text. -->
+      <slot>&copy; <!--lit-part-->2026<!--/lit-part--> Red Hat</slot><!--/lit-part--></template>© 2026 Red Hat</rh-footer-copyright>
+    <rh-footer-links slot="tertiary" role="list">
+      <rh-footer-social-link icon="linkedin" href="https://www.linkedin.com/company/red-hat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="LinkedIn" accessible-label="LinkedIn"></rh-footer-social-link>
+      <rh-footer-social-link icon="youtube" href="https://www.youtube.com/user/RedHatVideos" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="YouTube" accessible-label="YouTube"></rh-footer-social-link>
+      <rh-footer-social-link icon="facebook" href="https://www.facebook.com/redhatinc" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="Facebook" accessible-label="Facebook"></rh-footer-social-link>
+      <rh-footer-social-link icon="x" href="https://twitter.com/RedHat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="X/Twitter" accessible-label="X/Twitter"></rh-footer-social-link>
+      <rh-footer-social-link icon="instagram" href="https://www.instagram.com/redhat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="Instagram" accessible-label="Instagram"></rh-footer-social-link>
+    </rh-footer-links>
+  </rh-footer-universal>
+</rh-footer>
+
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css">
+
+<style>
+  .visually-hidden {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    block-size: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    inline-size: 1px;
+  }
+
+  .header-controls {
+    display: flex;
+    align-items: stretch;
+    gap: var(--rh-space-lg, 16px);
+  }
+
+  rh-select {
+    margin-inline-start: auto;
+    inline-size: fit-content;
+  }
+
+  rh-footer-block p {
+    margin-block: 0 var(--rh-space-2xl, 32px);
+  }
+
+  rh-footer-block p a {
+    color: var(--rh-color-interactive-primary-default) !important;
+    text-decoration: underline;
+    text-decoration-thickness: var(--rh-border-width-sm, 1px);
+    text-decoration-style: dashed;
+    text-underline-offset: max(5px, 0.28em);
+  }
+
+  rh-footer-block p a:hover {
+    text-decoration-color: inherit;
+    text-underline-offset: max(6px, 0.33em);
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-footer/rh-footer.js';
+  import '@rhds/elements/rh-select/rh-select.js';
+  import '@rhds/elements/rh-scheme-dropdown/rh-scheme-dropdown.js';
+  import '@rhds/elements/rh-site-status/rh-site-status.js';
+</script>
+
+
+</body></html>

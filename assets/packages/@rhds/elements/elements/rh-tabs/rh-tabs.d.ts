@@ -25,6 +25,22 @@ export { RhTab };
  * @csspart tabs-container - wrapper around the tab list and scroll buttons
  * @csspart tabs - the scrollable tab list (has `role="tablist"`)
  * @csspart panels - container for `rh-tab-panel` elements
+ * @csspart overflow-button - both overflow scroll buttons
+ * @csspart overflow-button previous - the scroll-left overflow button
+ * @csspart overflow-button next - the scroll-right overflow button
+ *
+ * @cssprop {<length>} [--rh-tabs-overflow-button-padding-block=0] - Block padding for overflow scroll buttons
+ * @cssprop {<length>} [--rh-tabs-overflow-button-padding-inline] - Inline padding for overflow scroll buttons; defaults to `--rh-space-lg`
+ * @cssprop {<length>} [--rh-tabs-overflow-button-radius=0] - Border radius for overflow scroll buttons
+ * @cssprop {<length>} [--rh-tabs-overflow-button-min-size=auto] - Minimum width for overflow scroll buttons
+ * @cssprop {<color>} [--rh-tabs-overflow-border-color] - Border color for overflow button edges; defaults to `--rh-color-border-subtle`
+ * @cssprop [--rh-tabs-overflow-hover-indicator] - Bottom border shorthand on overflow button hover
+ * @cssprop {<length>} [--rh-tabs-overflow-icon-size=auto] - Width and height of the overflow icon pill area
+ * @cssprop {<length>} [--rh-tabs-overflow-icon-radius=0] - Border radius of the overflow icon pill area
+ * @cssprop {<color>} [--rh-tabs-overflow-hover-background=transparent] - Background color of the overflow icon pill on hover
+ * @cssprop {<color>} [--rh-tabs-overflow-focus-background=transparent] - Background color of the overflow icon pill on focus
+ * @cssprop [--rh-tabs-overflow-focus-outline=none] - Outline shorthand for the overflow icon pill on focus
+ * @cssprop {<length>} [--rh-tabs-overflow-focus-outline-offset=0] - Outline offset for the overflow icon pill on focus
  *
  */
 export declare class RhTabs extends LitElement {

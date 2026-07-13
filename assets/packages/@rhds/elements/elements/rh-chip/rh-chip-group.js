@@ -56,7 +56,7 @@ let RhChipGroup = class RhChipGroup extends LitElement {
             Each chip must have a unique text label for screen readers.
         -->
         <slot></slot>
-        <button class="btn-link" type="button" @click="${__classPrivateFieldGet(this, _RhChipGroup_instances, "m", _RhChipGroup_uncheckAllChips)}">
+        <button class="btn-link" part="btn-link" type="button" @click="${__classPrivateFieldGet(this, _RhChipGroup_instances, "m", _RhChipGroup_uncheckAllChips)}">
           <!--
             summary: Clear all button label
             description: |

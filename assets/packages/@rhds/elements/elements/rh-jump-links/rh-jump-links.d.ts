@@ -9,9 +9,6 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  * level deep.
  *
  * @summary Persistent navigation links to page sections
- *
- * @fires toggle - Fired when the `expanded` disclosure widget is toggled.
- *   Does not carry additional detail data.
  */
 export declare class RhJumpLinks extends LitElement {
     #private;

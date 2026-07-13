@@ -1,0 +1,377 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
+    <title>Legacy | Red Hat Design System</title>
+
+    <link rel="preconnect" href="https://ga.jspm.io">
+
+    <link rel="stylesheet" href="/styles/demo/styles.css" media="all">
+
+    <script type="importmap">{
+  "imports": {
+    "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
+    "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
+    "lit-html": "/assets/packages/lit-html/lit-html.js",
+    "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
+    "lit-element": "/assets/packages/lit-element/index.js",
+    "prism-esm": "/assets/packages/prism-esm/prism.js",
+    "lit": "/assets/packages/lit/index.js",
+    "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
+    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
+    "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
+    "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "@lit/context": "/assets/packages/@lit/context/index.js",
+    "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@6.0.0/core.js",
+    "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
+    "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
+    "lit/": "/assets/packages/lit/",
+    "lit-html/": "/assets/packages/lit-html/",
+    "prism-esm/": "/assets/packages/prism-esm/",
+    "@lit-labs/ssr-client": "/assets/packages/@lit-labs/ssr-client/index.js",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js",
+    "@rhds/tokens/css/": "/assets/packages/@rhds/tokens/css/",
+    "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
+    "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
+    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons": "/assets/packages/@rhds/icons/icons.js",
+    "@rhds/icons/": "/assets/packages/@rhds/icons/",
+    "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
+    "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
+    "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
+    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "@uxdot/elements/": "/assets/packages/@uxdot/elements/"
+  },
+  "scopes": {
+    "/assets/packages/": {
+      "@lit/reactive-element/decorators/": "/assets/packages/@lit/reactive-element/decorators/",
+      "lit-element/lit-element.js": "/assets/packages/lit-element/lit-element.js",
+      "lit-html/": "/assets/packages/lit-html/"
+    }
+  }
+}</script>
+
+    
+      <script type="module">
+    // although we load these ssr support modules elsewhere, we still
+    // need them here to ensure no double-rendering on webkit
+    import '/assets/javascript/ssr-support.js';
+    // include these, which are often internal to elements,
+    // and are definitely required by context-picker and context-demo
+    // to avoid SSR defer-hydration bugs and SSR double-rendering bugs
+    import '@rhds/elements/rh-icon/rh-icon.js';
+    import '@rhds/elements/rh-surface/rh-surface.js';
+    import '@rhds/elements/rh-button/rh-button.js';
+    import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+    import '@rhds/elements/rh-tag/rh-tag.js';
+  </script>
+
+
+    <script type="module">
+      // load up the demo and picker
+      import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+      import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+    </script>
+
+    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
+  </head>
+  <body>
+    <p><strong>Note:</strong> This demo uses the legacy slot pattern. Social links are in <code>slot="social-links"</code> and copyright is in <code>slot="links-secondary"</code>. Users should migrate to the new pattern where both move to <code>slot="tertiary"</code> inside <code>&lt;rh-footer-universal&gt;</code>. See the <a href="/elements/footer/">default demo</a> for the current recommended pattern.</p>
+
+<rh-footer data-analytics-region="page-footer" ssr-hint-has-slotted="logo,social-links,links,main-secondary,universal">
+  <a slot="logo" href="https://redhat.com/en" data-analytics-category="Footer" data-analytics-text="Logo">
+    <img alt="Red Hat logo" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" loading="lazy">
+  </a>
+  <rh-footer-social-link slot="social-links" icon="linkedin" href="https://www.linkedin.com/company/red-hat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="LinkedIn" accessible-label="LinkedIn"></rh-footer-social-link>
+  <rh-footer-social-link slot="social-links" icon="youtube" href="https://www.youtube.com/user/RedHatVideos" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="YouTube" accessible-label="YouTube"></rh-footer-social-link>
+  <rh-footer-social-link slot="social-links" icon="facebook" href="https://www.facebook.com/redhatinc" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="Facebook" accessible-label="Facebook"></rh-footer-social-link>
+  <rh-footer-social-link slot="social-links" icon="x" href="https://twitter.com/RedHat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="Twitter" accessible-label="X/Twitter"></rh-footer-social-link>
+  <h3 slot="links" data-analytics-text="Platforms">Platforms</h3>
+  <ul slot="links">
+    <li><a href="https://redhat.com/en/technologies/cloud-computing/openshift/lightspeed" data-analytics-category="Footer|Platforms" data-analytics-text="Red Hat AI">Red Hat AI</a></li>
+    <li><a href="https://redhat.com/en/technologies/linux-platforms/enterprise-linux" data-analytics-category="Footer|Platforms" data-analytics-text="Red Hat Enterprise Linux">Red Hat Enterprise Linux</a></li>
+    <li><a href="https://redhat.com/en/technologies/cloud-computing/openshift" data-analytics-category="Footer|Platforms" data-analytics-text="Red Hat OpenShift">Red Hat OpenShift</a></li>
+    <li><a href="https://redhat.com/en/technologies/management/ansible" data-analytics-category="Footer|Platforms" data-analytics-text="Red Hat Ansible Automation Platform">Red Hat Ansible Automation Platform</a></li>
+    <li><a href="https://redhat.com/en/technologies/all-products" data-analytics-category="Footer|Platforms" data-analytics-text="See all products">See all products</a></li>
+  </ul>
+  <h3 slot="links" data-analytics-text="Tools">Tools</h3>
+  <ul slot="links">
+    <li><a href="https://redhat.com/en/services/training-and-certification" data-analytics-category="Footer|Tools" data-analytics-text="Training and certification">Training and certification</a></li>
+    <li><a href="https://sso.redhat.com" data-analytics-category="Footer|Tools" data-analytics-text="My account">My account</a></li>
+    <li><a href="https://access.redhat.com" data-analytics-category="Footer|Tools" data-analytics-text="Customer support">Customer support</a></li>
+    <li><a href="https://developers.redhat.com/" data-analytics-category="Footer|Tools" data-analytics-text="Developer resources">Developer resources</a></li>
+    <li><a href="http://redhat.force.com/finder/" data-analytics-category="Footer|Tools" data-analytics-text="Find a partner">Find a partner</a></li>
+    <li><a href="https://catalog.redhat.com/" data-analytics-category="Footer|Tools" data-analytics-text="Red Hat Ecosystem Catalog">Red Hat Ecosystem Catalog</a></li>
+    <li><a href="https://docs.redhat.com/" data-analytics-category="Footer|Tools" data-analytics-text="Documentation">Documentation</a></li>
+  </ul>
+  <h3 slot="links" data-analytics-text="Try buy sell">Try, buy, &amp; sell</h3>
+  <ul slot="links">
+    <li><a href="https://redhat.com/en/products/trials" data-analytics-category="Footer|Try buy sell" data-analytics-text="Product trial center">Product trial center</a></li>
+    <li><a href="https://www.redhat.com/en/store" data-analytics-category="Footer|Try buy sell" data-analytics-text="Red Hat Store">Red Hat Store</a></li>
+    <li><a href="https://cloud.redhat.com/" data-analytics-category="Footer|Try buy sell" data-analytics-text="Console">Console</a></li>
+  </ul>
+  <h3 slot="links" data-analytics-text="Communicate">Communicate</h3>
+  <ul slot="links">
+    <li><a href="https://redhat.com/en/contact" data-analytics-category="Footer|Communicate" data-analytics-text="Contact sales">Contact sales</a></li>
+    <li><a href="https://redhat.com/en/services/support" data-analytics-category="Footer|Communicate" data-analytics-text="Contact customer service">Contact customer service</a></li>
+    <li><a href="https://redhat.com/en/services/training-and-certification/contact-us" data-analytics-category="Footer|Communicate" data-analytics-text="Contact training">Contact training</a></li>
+    <li><a href="https://redhat.com/en/about/social" data-analytics-category="Footer|Communicate" data-analytics-text="Social">Social</a></li>
+  </ul>
+  <rh-footer-block slot="main-secondary">
+    <h3 slot="header" data-analytics-text="About Red Hat">About Red Hat</h3>
+    <p>Red Hat is an open hybrid cloud technology leader, delivering a consistent, comprehensive foundation for transformative IT and artificial intelligence (AI) applications in the enterprise. As a <a href="https://redhat.com/en/about/company">trusted adviser to the Fortune 500</a>, Red Hat offers cloud, developer, Linux, automation, and application platform technologies, as well as <a href="https://redhat.com/en/about/our-culture/awards">award-winning</a> services.</p>
+    <ul>
+      <li><a href="https://redhat.com/en/about/company" data-analytics-category="Footer|About Red Hat" data-analytics-text="Our company">Our company</a></li>
+      <li><a href="https://redhat.com/en/about/newsroom" data-analytics-category="Footer|About Red Hat" data-analytics-text="Newsroom">Newsroom</a></li>
+      <li><a href="https://redhat.com/en/about/development-model" data-analytics-category="Footer|About Red Hat" data-analytics-text="How we work">How we work</a></li>
+      <li><a href="https://redhat.com/en/about/open-source" data-analytics-category="Footer|About Red Hat" data-analytics-text="Open source commitments">Open source commitments</a></li>
+      <li><a href="https://redhat.com/en/success-stories" data-analytics-category="Footer|About Red Hat" data-analytics-text="Customer success stories">Customer success stories</a></li>
+      <li><a href="https://redhat.com/en/about/social-responsibility" data-analytics-category="Footer|About Red Hat" data-analytics-text="Our social impact">Our social impact</a></li>
+      <li><a href="https://redhat.com/en/about/analyst-relations" data-analytics-category="Footer|About Red Hat" data-analytics-text="Analyst relations">Analyst relations</a></li>
+      <li><a href="https://redhat.com/en/jobs" data-analytics-category="Footer|About Red Hat" data-analytics-text="Jobs">Jobs</a></li>
+    </ul>
+  </rh-footer-block>
+
+  <!-- Universal Footer -->
+  <rh-footer-universal   slot="universal" ssr-hint-has-slotted="links-primary,links-secondary" color-palette="darker"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:dark only}:host([color-palette^=light]){color-scheme:light only}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{color:var(--rh-color-white,#fff);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);line-height:var(--rh-line-height-body-text,1.5);font-weight:var(--_font-weight);font-size:initial;flex-direction:column;display:flex;color-scheme:dark only!important}@media (scripting:none){:host{min-height:var(--rh-footer-nojs-min-height)}}:host,::slotted(rh-footer-universal){overflow-y:initial;--_fallback-animation:nothing-doing!important;--_fallback-opacity:1!important}.base{border-block-start: var(--rh-border-width-sm,1px) solid var(--_border-color)}.footer,.global-base{--_icon-color: var(--rh-footer-icon-color, var(--rh-color-gray-40,#a3a3a3));--_icon-color-hover: var(--rh-footer-icon-color-hover, var(--rh-color-gray-30,#c7c7c7));--_border-color: var(--rh-footer-border-color, var(--rh-color-border-subtle-on-dark,#707070));--_accent-color: var(--rh-footer-accent-color, var(--rh-color-accent-brand-on-light,#e00));--_section-side-gap: var(--rh-footer-section-side-gap, var(--rh-space-lg,16px));--_accordion-background:var(--rh-color-white,#fff);--_logo-width:var(--rh-size-icon-04,40px);--_font-weight:var(--rh-font-weight-body-text-regular,400)}*{box-sizing:border-box}::slotted(:is(h1,h2,h3,h4,h5,h6)){font-family:var(--rh-font-family-heading,RedHatDisplay, "Red Hat Display", Helvetica, Arial, sans-serif)!important;line-height:var(--rh-line-height-heading,1.3)!important}:host([debug]) :not(.spacer,.base,a,svg){min-height:var(--rh-length-xl,24px);outline: var(--rh-length-3xs,2px) dotted red;position:relative}:host([debug]) :not(.spacer,.base,a,svg):after{content:attr(part);color:#fff;padding:var(--rh-space-xs,4px);font-family:var(--rh-font-family-code,RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);font-size:var(--rh-font-size-code-xs,.75rem);background-color:#2f4f4f;display:block;position:absolute;top:0;right:0}.section{padding: var(--rh-space-2xl,32px) var(--_section-side-gap)}.header{background-color:var(--rh-color-surface-darker,#1f1f1f);gap:var(--rh-space-2xl,32px);flex-wrap:wrap;align-items:center;display:flex;position:relative}.header:after{content:"";background-color:var(--_border-color);height:var(--rh-length-4xs,1px);width:calc(100% - var(--_section-side-gap) * 2);bottom:0;left:var(--_section-side-gap);display:none;position:absolute}.header-primary{flex:auto}.header-primary ::slotted(:not(a,img,svg,picture)){font-size:var(--rh-font-size-heading-xs,1.25rem);font-family:var(--rh-font-family-heading,RedHatDisplay, "Red Hat Display", Helvetica, Arial, sans-serif);font-weight:var(--rh-font-weight-heading-medium,500)}.header-secondary{flex:0 auto}.main{background-color:var(--rh-color-surface-darker,#1f1f1f);gap:var(--rh-space-2xl,32px);padding-top:0;display:grid}.main-secondary{gap:var(--pf-global--spacer--xl,32px);place-content:start;place-items:baseline;display:grid}.global-base{--rh-footer-link-font-size:var(--rh-font-size-body-text-xs,.75rem);background-color:var(--rh-color-surface-darkest,#151515);gap: var(--rh-space-2xl,32px)  var(--rh-space-xl,24px);grid-template-columns:1fr;grid-template-areas:"logo""primary""spacer""secondary""tertiary";line-height:100%;display:grid}.global-logo{width:auto;height:var(--rh-size-icon-02,24px);grid-area:logo}.global-logo-image{fill:var(--rh-color-brand-red,#e00);width:auto;height:100%}.global-primary{grid-area:primary}.global-secondary{color:var(--rh-color-text-secondary);gap:var(--rh-space-lg,16px);flex-direction:column;grid-area:secondary;justify-content:space-between;display:flex}.global-secondary-end{gap:var(--rh-space-xl,24px);align-items:center;display:flex}.global-tertiary{justify-content:start;align-items:center;gap:var(--rh-space-lg,16px);flex-wrap:wrap;grid-area:tertiary;display:flex}::slotted(rh-footer-copyright){grid-column:-1/1}.global-tertiary ::slotted(rh-footer-copyright){flex-basis:100%}.global-tertiary ::slotted(rh-footer-links){display:contents}.global-links-primary{gap: var(--rh-space-md,8px)  var(--rh-space-xl,24px);flex-direction:column;display:flex}.global-links-secondary{gap: var(--rh-space-md,8px)  var(--rh-space-xl,24px);flex-direction:column;display:flex}:is(.global-primary,.global-secondary,.global-tertiary) ::slotted(*){font-size:var(--rh-font-size-body-text-xs,.75rem)!important}.logo{line-height:0}.logo ::slotted(a){color:var(--rh-color-text-primary);font-size:var(--rh-font-size-heading-xs,1.25rem);font-family:var(--rh-font-family-heading,RedHatDisplay, "Red Hat Display", Helvetica, Arial, sans-serif);font-weight:800;line-height:var(--rh-line-height-heading,1.3);text-decoration:underline dotted;text-decoration-thickness:var(--rh-border-width-sm,1px);text-underline-offset:max(5px, .28em)}.logo ::slotted(a:has(img,svg,picture)){line-height:0;font-size:initial;text-decoration:none}.logo a{text-decoration:none;display:inline-block}.logo a>:is(img,svg){width:auto;height:var(--rh-size-icon-03,32px);display:block}.social-links{margin-inline-start:0;padding-inline-start:0;display:flex}.social-links rh-footer-links,.social-links slot::slotted(rh-footer-links){gap:var(--rh-space-xl,24px);flex-direction:row;display:flex}:is(.links,.global-links-primary,.global-links-secondary) ::slotted(ul){margin:0;padding:0;display:contents}.isMobile .links ::slotted(ul){--rh-footer-link-font-size:1em;gap:calc(var(--rh-space-2xl,32px) / 2);grid-template-columns:1fr;display:grid}#heading,#global-heading{width:0;height:0;display:flex;position:absolute;left:-10000000px;overflow:hidden}[part=base]:not(.isMobile) .links{grid-template-columns:repeat(1fr, 25%);gap: var(--rh-space-lg,16px)  var(--rh-space-2xl,32px);grid-template-rows:repeat(1,min-content auto);grid-auto-columns:minmax(0,1fr);grid-auto-flow:column;display:grid}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):first-of-type){grid-area:1/1/2/2}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(2)){grid-area:1/2/2/3}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(3)){grid-area:1/3/2/4}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(4)){grid-area:1/4/2/5}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(5)){grid-area:3/1/4/2}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(6)){grid-area:3/2/4/3}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(7)){grid-area:3/3/4/4}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(8)){grid-area:3/4/4/5}[part=base]:not(.isMobile) .links ::slotted(:is(ul:first-of-type)){grid-area:2/1/3/2}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(2))){grid-area:2/2/3/3}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(3))){grid-area:2/3/3/4}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(4))){grid-area:2/4/3/5}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(5))){grid-area:4/1/5/2}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(6))){grid-area:4/2/5/3}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(7))){grid-area:4/3/5/4}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(8))){grid-area:4/4/5/5}[part=base]:not(.isMobile) .links ::slotted(ul){gap:var(--rh-footer-links-gap,var(--rh-space-lg,16px));flex-direction:column;display:flex}#footer-logo{width:var(--_logo-width)}:is(.links,.global-links-primary,.global-links-secondary) ::slotted(:is(h1,h2,h3,h4,h5)){font-weight:var(--rh-font-weight-heading-medium,500)!important;margin-block:0!important;font-size:var(--rh-footer-link-header-font-size,var(--rh-font-size-body-text-md,1rem))!important;color:var(--rh-color-text-primary)!important;margin-block-start:var(--_link-header-margin,0)!important}@media screen and (width>=768px){.header-primary ::slotted(:not(a,img,svg,picture)){font-size:var(--rh-font-size-heading-sm,1.5rem)}.logo a>:is(img,svg){height:var(--rh-size-icon-03,32px)}.global-logo{height:var(--rh-size-icon-04,40px)}:is(.links,.global-links-primary,.global-links-secondary) ::slotted(:is(h1,h2,h3,h4,h5)){font-size:var(--rh-footer-link-header-font-size,var(--rh-font-size-body-text-lg,1.125rem))!important}.global-base{grid-template-columns:4fr 4fr 4fr;grid-template-areas:"logo logo logo""primary primary primary""spacer spacer spacer""secondary secondary secondary""tertiary tertiary tertiary"}}@media screen and (width>=992px){.global-base:not(.nothing){gap:var(--rh-space-xl,24px) var(--rh-space-2xl,32px);grid-template:"logo primary"max-content"logo secondary"max-content".tertiary"/auto 1fr}.global-primary{display:flex}}@media screen and (width>=1200px){.global-base:not(.nothing){grid-template:"logo primary tertiary"max-content"logo secondary tertiary"max-content/auto 1fr auto}.global-tertiary{place-content:center flex-end}.global-tertiary ::slotted(rh-footer-copyright){text-align:end}}.spacer{border-bottom:1px solid var(--_border-color);grid-area:spacer}@media screen and (width>=992px){.spacer{display:none}.global-secondary{flex-flow:wrap;align-items:center}.global-links-secondary{flex:0 auto}.global-secondary-end{margin-inline-start:auto}}@media screen and (width>=320px){.global-links-primary,.global-links-secondary{grid-template-columns:1fr 1fr;display:grid}}@media screen and (width>=768px){.global-links-primary,.global-links-secondary{grid-template-columns:1fr 1fr 1fr;display:grid}}@media screen and (width>=992px){.global-links-primary{flex-flow:wrap;align-items:center;display:flex}.global-links-secondary{flex-flow:wrap;gap:8px 24px;display:flex}}@media screen and (width<=992px){.global-logo{grid-area:logo}.global-primary{grid-area:primary}}@media screen and (width>=992px){.header:after{display:block}.main{padding-top:var(--rh-space-2xl,32px);padding-bottom:var(--rh-space-4xl,64px)}}@media screen and (width>=992px) and (width<=1368px){.header,.main{grid-template-columns:8fr 4fr;display:grid}}@media screen and (width>=1368px){.header,.main{grid-template-columns:8fr 4fr;display:grid}}@media screen and (width>=768px){.isMobile .links ::slotted(ul){grid-template-columns:1fr 1fr}}</style><!--lit-part mRsJaRgvN6k=-->
+      <div class="footer">
+        <!--lit-node 1--><h2 id="global-heading" >
+          <!-- summary: visually-hidden heading for assistive technology
+               description: |
+                 Expects inline text. Screen readers use this heading to identify the
+                 universal footer region. Defaults to "Red Hat footer". Hidden if a
+                 parent `<h2>` already exists. -->
+          <slot name="heading">Red Hat footer</slot>
+        </h2>
+        <!-- Wrapper for the universal footer content (logo, primary, secondary, tertiary). -->
+        <!--lit-node 5--><div class="section global-base   " part="section base">
+          <!-- summary: overrides all universal footer content (base slot)
+               description: |
+                 Expects block elements. Replaces the entire universal footer structure.
+                 Avoid using; bypasses all built-in layout, grid regions, responsive
+                 behavior, and ARIA landmark wiring. -->
+          <slot name="base">
+            <!-- Container for the logo slot. -->
+            <div class="global-logo" part="logo">
+              <!-- summary: Red Hat logo (logo slot)
+                   description: |
+                     Expects block elements: an `<a>` wrapping an `<img>` or `<svg>`.
+                     Defaults to the Red Hat logo SVG linking to redhat.com. Screen
+                     readers rely on the anchor `aria-label` for identification. -->
+              <slot name="logo">
+                <!--
+                  part:
+                    description: Link wrapping the logo; defaults to redhat.com.
+                -->
+                <a class="global-logo-anchor"
+                    part="logo-anchor"
+                    href="https://redhat.com"
+                    aria-label="Visit Red Hat">
+                  <!--
+                    part:
+                      description: Logo image or SVG element.
+                  -->
+                  <svg class="global-logo-image"
+                       part="logo-image"
+                       data-name="Layer 1"
+                       xmlns="http://www.w3.org/2000/svg"
+                       viewBox="0 0 192 145">
+                      <title>Red Hat logo</title>
+                    <defs>
+                      <style>
+                        .band {
+                          /** Fedora band background fill */
+                          fill: var(--rh-color-black, #000000);
+                        }
+                      </style>
+                    </defs>
+                    <path class="band" d="M157.77,62.61a14,14,0,0,1,.31,3.42c0,14.88-18.1,17.46-30.61,17.46C78.83,83.49,42.53,53.26,42.53,44a6.43,6.43,0,0,1,.22-1.94l-3.66,9.06a18.45,18.45,0,0,0-1.51,7.33c0,18.11,41,45.48,87.74,45.48,20.69,0,36.43-7.76,36.43-21.77,0-1.08,0-1.94-1.73-10.13Z"/>
+                    <path class="cls-1" d="M127.47,83.49c12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.89,8.69,103.76.5,97.51.5,91.69.5,90,8,83.06,8c-6.68,0-11.64-5.6-17.89-5.6-6,0-9.91,4.09-12.93,12.5,0,0-8.41,23.72-9.49,27.16A6.43,6.43,0,0,0,42.53,44c0,9.22,36.3,39.45,84.94,39.45M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.45,18.45,0,0,1,1.51-7.33C22.27,52,.5,55,.5,74.22c0,31.48,74.59,70.28,133.65,70.28,45.28,0,56.7-20.48,56.7-36.65,0-12.72-11-27.16-30.83-35.78"/>
+                  </svg>
+                </a>
+              </slot>
+            </div>
+            <!-- Primary row (start, links, end). -->
+            <div class="global-primary" part="primary">
+              <!-- summary: overrides primary-start, links-primary, and primary-end (primary slot)
+                   description: |
+                     Expects block elements. Replaces the entire primary link region.
+                     Override only when the three sub-slots are insufficient.
+                     Screen readers navigate child links as a group. -->
+              <slot name="primary">
+                <!-- Left area of the primary row. -->
+                <!--lit-node 26--><div class="global-primary-start" part="primary-start" hidden>
+                  <!-- summary: content before primary links (primary-start slot)
+                       description: |
+                         Expects inline or block elements placed before the primary
+                         global navigation links. Screen readers encounter this
+                         content before the link list. -->
+                  <slot name="primary-start"></slot>
+                </div>
+                <!-- Main link list area in the primary row. -->
+                <!--lit-node 30--><div class="global-links-primary" part="links-primary" >
+                  <!-- summary: primary global navigation links (links-primary slot)
+                       description: |
+                         Expects block elements: a `<ul>` of `<li>` anchor links for
+                         primary global Red Hat navigation. Screen readers announce
+                         the list group; Tab moves through each link. -->
+                  <slot name="links-primary"></slot>
+                </div>
+                <!-- Right area of the primary row. -->
+                <!--lit-node 34--><div class="global-primary-end" part="primary-end" hidden>
+                  <!-- summary: content after primary links (primary-end slot)
+                       description: |
+                         Expects inline or block elements placed after the primary
+                         global navigation links. Screen readers encounter this
+                         content after the link list. -->
+                  <slot name="primary-end"></slot>
+                </div>
+              </slot>
+            </div>
+            <!-- Spacer between primary and secondary rows. -->
+            <div class="spacer" part="spacer"></div>
+            <!-- Secondary row (start, links, end). -->
+            <div class="global-secondary" part="secondary">
+              <!-- summary: overrides secondary-start, links-secondary, and secondary-end (secondary slot)
+                   description: |
+                     Expects block elements. Replaces the entire secondary link region.
+                     Override only when the three sub-slots are insufficient.
+                     Screen readers navigate child links as a group. -->
+              <slot name="secondary">
+                <!-- Left area of the secondary row. -->
+                <!--lit-node 44--><div class="global-secondary-start" part="secondary-start" hidden>
+                  <!-- summary: content before secondary links, e.g. copyright (secondary-start slot)
+                       description: |
+                         Expects block elements such as `<rh-footer-copyright>`, placed
+                         before the secondary links. Screen readers announce this
+                         content in DOM order within the footer landmark. -->
+                  <slot name="secondary-start"></slot>
+                </div>
+                <!-- Main link list area in the secondary row. -->
+                <!--lit-node 48--><div class="global-links-secondary" part="links-secondary" >
+                  <!-- summary: secondary global navigation links (links-secondary slot)
+                       description: |
+                         Expects block elements: a `<ul>` of `<li>` anchor links for
+                         secondary global Red Hat navigation. Screen readers announce
+                         the list group; Tab moves through each link. -->
+                  <slot name="links-secondary"></slot>
+                </div>
+                <!-- Right area of the secondary row. -->
+                <!--lit-node 52--><div class="global-secondary-end" part="secondary-end" hidden>
+                  <!-- summary: content after secondary links (secondary-end slot)
+                       description: |
+                         Expects inline or block elements placed after the secondary
+                         global navigation links. Screen readers encounter this
+                         content after the secondary link list. -->
+                  <slot name="secondary-end"></slot>
+                </div>
+              </slot>
+            </div>
+            <!-- Optional bottom section (e.g. copyright, extra text). -->
+            <!--lit-node 56--><div class="global-tertiary" part="tertiary" hidden>
+              <!-- summary: optional third content region (tertiary slot)
+                   description: |
+                     Expects block elements such as a language selector or custom
+                     widget. Hidden when nothing is slotted. Screen readers
+                     encounter this region after the secondary links. -->
+              <slot name="tertiary"></slot>
+            </div>
+          </slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
+    <h3 slot="links-primary" data-analytics-text="Red Hat corporate links" hidden="">Red Hat corporate links</h3>
+    <ul slot="links-primary" data-analytics-region="page-footer-bottom-primary">
+      <li><a href="https://redhat.com/en/about/company" data-analytics-category="Footer|Corporate" data-analytics-text="About Red Hat">About Red Hat</a></li>
+      <li><a href="https://redhat.com/en/jobs" data-analytics-category="Footer|Corporate" data-analytics-text="Jobs">Jobs</a></li>
+      <li><a href="https://redhat.com/en/events" data-analytics-category="Footer|Corporate" data-analytics-text="Events">Events</a></li>
+      <li><a href="https://redhat.com/en/about/office-locations" data-analytics-category="Footer|Corporate" data-analytics-text="Locations">Locations</a></li>
+      <li><a href="https://redhat.com/en/contact" data-analytics-category="Footer|Corporate" data-analytics-text="Contact Red Hat">Contact Red Hat</a></li>
+      <li><a href="https://redhat.com/en/blog" data-analytics-category="Footer|Corporate" data-analytics-text="Red Hat Blog">Red Hat Blog</a></li>
+      <li><a href="https://redhat.com/en/about/our-culture/diversity-equity-inclusion" data-analytics-category="Footer|Corporate" data-analytics-text="Diversity equity and inclusion">Diversity, equity, and inclusion</a></li>
+      <li><a href="https://coolstuff.redhat.com/" data-analytics-category="Footer|Corporate" data-analytics-text="Cool Stuff Store">Cool Stuff Store</a></li>
+      <li><a href="https://www.redhat.com/en/summit" data-analytics-category="Footer|Corporate" data-analytics-text="Red Hat Summit">Red Hat Summit</a></li>
+    </ul>
+    <rh-footer-copyright  slot="links-secondary"><template shadowroot="open" shadowrootmode="open"><style>:host{flex:auto;width:100%;display:block}</style><!--lit-part EMyLN9QaMvg=--><!-- summary: copyright text content (default slot)
+         description: |
+           Expects inline text containing the copyright notice. Defaults to
+           "© [current year] Red Hat" if not provided. Screen readers announce
+           this text within the footer landmark; it is not focusable via Tab.
+           Override for a different entity or localized text. -->
+      <slot>&copy; <!--lit-part-->2026<!--/lit-part--> Red Hat</slot><!--/lit-part--></template>© 2026 Red Hat</rh-footer-copyright>
+    <h3 slot="links-secondary" data-analytics-text="Red Hat legal and privacy links" hidden="">Red Hat legal and privacy links</h3>
+    <ul slot="links-secondary" data-analytics-region="page-footer-bottom-secondary">
+      <li><a href="https://redhat.com/en/about/privacy-policy" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Privacy statement">Privacy statement</a></li>
+      <li><a href="https://redhat.com/en/about/terms-use" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Terms of use">Terms of use</a></li>
+      <li><a href="https://redhat.com/en/about/all-policies-guidelines" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="All policies and guidelines">All policies and guidelines</a></li>
+      <li><a href="https://redhat.com/en/about/digital-accessibility" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Digital accessibility">Digital accessibility</a></li>
+      <li><a href="#" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Cookie preferences">Cookie preferences</a></li>
+    </ul>
+  </rh-footer-universal>
+</rh-footer>
+
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css">
+
+<style>
+  rh-footer-block p {
+    margin-block: 0 var(--rh-space-2xl, 32px);
+  }
+
+  rh-footer-block ul {
+    padding-inline-start: 0;
+    margin-block: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--rh-space-md, 8px) var(--rh-space-2xl, 32px);
+  }
+
+  rh-footer-block p a {
+    color: var(--rh-color-interactive-primary-default) !important;
+    text-decoration: underline;
+    text-decoration-thickness: var(--rh-border-width-sm, 1px);
+    text-decoration-style: dashed;
+    text-underline-offset: max(5px, 0.28em);
+  }
+
+  rh-footer-block p a:hover {
+    text-decoration-color: inherit;
+    text-underline-offset: max(6px, 0.33em);
+  }
+
+  rh-footer-block ul a {
+    color: var(--rh-color-text-primary);
+    display: inline-block;
+    font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+    padding-block: var(--rh-space-xs, 4px);
+    text-decoration: none;
+    transition-timing-function: ease;
+    transition-property: text-underline-offset, color, text-decoration-color;
+    transition-duration: 0.3s;
+  }
+
+  rh-footer-block ul a:is(:hover, :focus, :focus-visible) {
+    color: var(--rh-color-text-primary);
+    text-decoration:
+      underline
+      var(--rh-border-width-sm, 1px)
+      dashed;
+    text-decoration-color: inherit;
+    text-underline-offset: max(5px, 0.28em);
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-footer/rh-footer.js';
+</script>
+
+
+</body></html>

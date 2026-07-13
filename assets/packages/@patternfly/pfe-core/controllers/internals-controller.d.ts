@@ -126,6 +126,7 @@ export declare class InternalsController implements ReactiveController, ARIAMixi
 }
 /** @see https://w3c.github.io/aria/#ref-for-dom-ariamixin-ariaactivedescendantelement-1 */
 declare global {
+    var _elementInternals: WeakMap<Element, ElementInternals>;
     interface ARIAMixin {
         ariaActiveDescendantElement: Element | null;
         ariaControlsElements: readonly Element[] | null;

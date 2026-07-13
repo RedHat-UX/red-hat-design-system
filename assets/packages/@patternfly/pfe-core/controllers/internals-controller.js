@@ -1,11 +1,12 @@
 var _InternalsController_instances, _InternalsController_polyfillDisabledPseudo;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { isServer, } from 'lit';
+const protos = new WeakMap();
+let constructingAllowed = false;
+globalThis._elementInternals ?? (globalThis._elementInternals = new WeakMap());
 function isARIAMixinProp(key) {
     return key === 'role' || key.startsWith('aria');
 }
-const protos = new WeakMap();
-let constructingAllowed = false;
 /**
  * reactively forward the internals object's aria mixin prototype
  * @param target
@@ -217,6 +218,8 @@ export class InternalsController {
         this.initializeOptions(options);
         InternalsController.instances.set(host, this);
         __classPrivateFieldGet(this, _InternalsController_instances, "m", _InternalsController_polyfillDisabledPseudo).call(this);
+        // Expose internals to aXe Core
+        globalThis._elementInternals.set(this.host, this.internals);
     }
     /**
      * Typescript (with experimental decorators) will compile the class

@@ -72,8 +72,6 @@ export declare class SlotController implements SlotControllerPublicAPI {
     #private;
     host: ReactiveElement;
     static default: symbol;
-    /** @deprecated use `default` */
-    static anonymous: symbol;
     constructor(host: ReactiveElement, ...args: SlotControllerArgs);
     hostConnected(): Promise<void>;
     hostDisconnected(): void;

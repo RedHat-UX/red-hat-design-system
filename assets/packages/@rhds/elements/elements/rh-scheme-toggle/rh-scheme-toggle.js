@@ -1,4 +1,4 @@
-var _RhSchemeToggle_instances, _RhSchemeToggle_isLight, _RhSchemeToggle_isDark, _RhSchemeToggle_isSystem, _RhSchemeToggle_onChange, _RhSchemeToggle_schemeCheck;
+var _RhSchemeToggle_instances, _RhSchemeToggle_initialized, _RhSchemeToggle_isLight, _RhSchemeToggle_isDark, _RhSchemeToggle_isSystem, _RhSchemeToggle_onChange;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { html, isServer, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -6,7 +6,22 @@ import { property } from 'lit/decorators/property.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 import { observes } from '@patternfly/pfe-core/decorators.js';
 import { css } from "lit";
-const styles = css `:host{display:block}fieldset{align-items:center;border:0;display:flex;flex-flow:row nowrap;gap:var(--rh-space-lg,16px);margin:0;padding:0}fieldset legend{float:inline-start}fieldset #button-group{--rh-icon-size:var(--rh-size-icon-01,16px);display:flex}label{align-items:center;background-color:initial;border-width:var(--rh-border-width-sm,1px);border-style:solid;border-color:var(--rh-color-border-subtle);display:flex;height:var(--rh-space-2xl,32px);justify-content:center;position:relative;width:var(--rh-space-3xl,48px)}label:not(:first-of-type){margin-inline-start:-1px}label:first-of-type{border-start-start-radius:var(--rh-border-radius-default,3px);border-end-start-radius:var(--rh-border-radius-default,3px)}label:last-of-type{border-start-end-radius:var(--rh-border-radius-default,3px);border-end-end-radius:var(--rh-border-radius-default,3px)}label:focus-within,label:hover{background-color:light-dark(var(--rh-color-surface-light,#e0e0e0),var(--rh-color-surface-dark,#383838))}label:has(input:checked){background-color:var(--rh-color-interactive-primary-default);border-color:var(--rh-color-border-interactive);color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));z-index:1}input{appearance:none;border-radius:inherit;inset:0;margin:0;outline-offset:4px;padding:0;position:absolute}input:focus-visible{outline:var(--rh-border-width-lg,3px) solid var(--rh-color-border-interactive);transition:none}rh-icon{z-index:2}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}`;
+const styles = css `:host{display:block}fieldset{flex-flow:var(--rh-scheme-toggle-flex-flow,row nowrap);align-items:var(--rh-scheme-toggle-align-items,center);gap:var(--rh-scheme-toggle-gap,var(--rh-space-lg,16px));border:0;display:flex;margin:0;padding:0}fieldset legend{float:inline-start}fieldset #button-group{--rh-icon-size:var(--rh-size-icon-01,16px);display:flex}label{align-items:center;background-color:initial;border-width:var(--rh-border-width-sm,1px);border-style:solid;border-color:var(--rh-color-border-subtle);display:flex;height:var(--rh-space-2xl,32px);justify-content:center;position:relative;width:var(--rh-space-3xl,48px)}label:not(:first-of-type){margin-inline-start:-1px}label:first-of-type{border-start-start-radius:var(--rh-border-radius-default,3px);border-end-start-radius:var(--rh-border-radius-default,3px)}label:last-of-type{border-start-end-radius:var(--rh-border-radius-default,3px);border-end-end-radius:var(--rh-border-radius-default,3px)}label:focus-within,label:hover{background-color:light-dark(var(--rh-color-surface-light,#e0e0e0),var(--rh-color-surface-dark,#383838))}label:has(input:checked){background-color:var(--rh-color-interactive-primary-default);border-color:var(--rh-color-border-interactive);color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));z-index:1}input{appearance:none;border-radius:inherit;inset:0;margin:0;outline-offset:4px;padding:0;position:absolute}input:focus-visible{outline:var(--rh-border-width-lg,3px) solid var(--rh-color-border-interactive);transition:none}rh-icon{z-index:2}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}`;
+/**
+ * Fired when the active color scheme changes, whether by user interaction
+ * or programmatic update. This event allows consumers to coordinate UI
+ * updates or analytics when the scheme changes. Listeners should read
+ * `event.scheme` for the new value. Consumers must not rely on this
+ * event firing during initial load from localStorage.
+ *
+ * @summary Fires when the color scheme changes for coordination and analytics.
+ */
+export class SchemeChangedEvent extends Event {
+    constructor(scheme) {
+        super('scheme-changed', { bubbles: true, composed: true });
+        this.scheme = scheme;
+    }
+}
 /**
  * A scheme toggle provides users with the ability to switch between
  * light, dark, and system default color schemes. It should be placed
@@ -16,11 +31,17 @@ const styles = css `:host{display:block}fieldset{align-items:center;border:0;dis
  * focuses the group; arrow keys allow selection between schemes.
  *
  * @summary Switches between light, dark, and system default color schemes
+ *
+ * @fires {SchemeChangedEvent} scheme-changed - Fired when the color scheme
+ *        changes. Has no `detail` payload; read the new value from
+ *        `event.scheme` (`'light'`, `'dark'`, or `'light dark'`).
  */
 let RhSchemeToggle = class RhSchemeToggle extends LitElement {
     constructor() {
         super(...arguments);
         _RhSchemeToggle_instances.add(this);
+        /** Guards against dispatching scheme-changed on initial boot. */
+        _RhSchemeToggle_initialized.set(this, false);
         /** Whether the light radio button is currently checked. */
         _RhSchemeToggle_isLight.set(this, false);
         /** Whether the dark radio button is currently checked. */
@@ -58,7 +79,25 @@ let RhSchemeToggle = class RhSchemeToggle extends LitElement {
     }
     connectedCallback() {
         super.connectedCallback();
-        __classPrivateFieldGet(this, _RhSchemeToggle_instances, "m", _RhSchemeToggle_schemeCheck).call(this);
+        // Defer until after the first Lit update cycle so @observes('scheme')
+        // doesn't dispatch scheme-changed for the initial localStorage value.
+        this.updateComplete.then(() => {
+            __classPrivateFieldSet(this, _RhSchemeToggle_initialized, true, "f");
+        });
+    }
+    /**
+     * Syncs the radio checked-state flags before each render so the
+     * template always reflects the current `scheme` value.
+     */
+    willUpdate() {
+        if (isServer) {
+            return;
+        }
+        __classPrivateFieldSet(this, _RhSchemeToggle_isLight, this.scheme === 'light', "f");
+        __classPrivateFieldSet(this, _RhSchemeToggle_isDark, this.scheme === 'dark', "f");
+        __classPrivateFieldSet(this, _RhSchemeToggle_isSystem, (this.scheme?.includes('light')
+            && this.scheme?.includes('dark'))
+            || (this.scheme === undefined), "f");
     }
     render() {
         return html `
@@ -70,7 +109,7 @@ let RhSchemeToggle = class RhSchemeToggle extends LitElement {
             <input type="radio"
                    name="scheme"
                    value="light"
-                   ?checked="${__classPrivateFieldGet(this, _RhSchemeToggle_isLight, "f")}">
+                   .checked="${__classPrivateFieldGet(this, _RhSchemeToggle_isLight, "f")}">
             <rh-icon set="ui" icon="light-mode"></rh-icon>
           </label>
           <label title="${this.darkText}">
@@ -78,7 +117,7 @@ let RhSchemeToggle = class RhSchemeToggle extends LitElement {
             <input type="radio"
                    name="scheme"
                    value="dark"
-                   ?checked="${__classPrivateFieldGet(this, _RhSchemeToggle_isDark, "f")}">
+                   .checked="${__classPrivateFieldGet(this, _RhSchemeToggle_isDark, "f")}">
             <rh-icon set="ui" icon="dark-mode"></rh-icon>
           </label>
           <label title="${this.systemText}">
@@ -86,7 +125,7 @@ let RhSchemeToggle = class RhSchemeToggle extends LitElement {
             <input type="radio"
                    name="scheme"
                    value="light dark"
-                   ?checked="${__classPrivateFieldGet(this, _RhSchemeToggle_isSystem, "f")}">
+                   .checked="${__classPrivateFieldGet(this, _RhSchemeToggle_isSystem, "f")}">
             <rh-icon set="ui" icon="auto-light-dark-mode"></rh-icon>
           </label>
         </div>
@@ -99,16 +138,19 @@ let RhSchemeToggle = class RhSchemeToggle extends LitElement {
      * so the preference survives page reloads.
      */
     schemeChanged() {
-        if (!isServer) {
-            if (this.scheme) {
-                document.body.style.setProperty('color-scheme', this.scheme);
-                if (!isServer) {
-                    localStorage.rhdsColorScheme = this.scheme;
-                }
+        if (isServer) {
+            return;
+        }
+        if (this.scheme) {
+            document.body.style.setProperty('color-scheme', this.scheme);
+            localStorage.rhdsColorScheme = this.scheme;
+            if (__classPrivateFieldGet(this, _RhSchemeToggle_initialized, "f")) {
+                this.dispatchEvent(new SchemeChangedEvent(this.scheme));
             }
         }
     }
 };
+_RhSchemeToggle_initialized = new WeakMap();
 _RhSchemeToggle_isLight = new WeakMap();
 _RhSchemeToggle_isDark = new WeakMap();
 _RhSchemeToggle_isSystem = new WeakMap();
@@ -116,17 +158,6 @@ _RhSchemeToggle_instances = new WeakSet();
 _RhSchemeToggle_onChange = function _RhSchemeToggle_onChange(e) {
     if (e.target instanceof HTMLInputElement) {
         this.scheme = e.target.value;
-    }
-    __classPrivateFieldGet(this, _RhSchemeToggle_instances, "m", _RhSchemeToggle_schemeCheck).call(this);
-};
-_RhSchemeToggle_schemeCheck = function _RhSchemeToggle_schemeCheck() {
-    if (!isServer) {
-        __classPrivateFieldSet(this, _RhSchemeToggle_isLight, this.scheme === 'light', "f");
-        __classPrivateFieldSet(this, _RhSchemeToggle_isDark, this.scheme === 'dark', "f");
-        __classPrivateFieldSet(this, _RhSchemeToggle_isSystem, (this.scheme?.includes('light')
-            && this.scheme?.includes('dark'))
-            || (this.scheme === undefined), "f");
-        this.requestUpdate();
     }
 };
 RhSchemeToggle.styles = [styles];

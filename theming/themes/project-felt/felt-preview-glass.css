@@ -1,0 +1,165 @@
+@layer
+  tokens,
+  elements;
+
+@layer tokens {
+  :root,
+  :host {
+    /* Glass surface */
+    --felt-preview-glass-backdrop-filter: blur(16px);
+
+    /* Glass border */
+    --felt-preview-glass-border-color:
+      light-dark(
+          #f2f2f2,
+          #383838
+        );
+    --felt-preview-glass-border-width: 1px;
+    --felt-preview-glass-border-radius: 16px;
+
+    /* Glass shadow */
+    --felt-preview-glass-box-shadow: 0 0 10px 0 rgba(41, 41, 41, 0.15);
+    --felt-preview-glass-box-shadow-dark: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+
+    /* Translucent surface overrides (light) */
+    --felt-preview-glass-surface-lightest: rgba(255, 255, 255, 0.6);
+    --felt-preview-glass-surface-lightest-hover: rgba(199, 199, 199, 0.3);
+    --felt-preview-glass-surface-lightest-active: rgba(199, 199, 199, 0.3);
+    --felt-preview-glass-surface-lighter: rgba(199, 199, 199, 0.3);
+    --felt-preview-glass-surface-lighter-hover: rgba(163, 163, 163, 0.3);
+    --felt-preview-glass-surface-lighter-active: rgba(163, 163, 163, 0.3);
+    --felt-preview-glass-surface-light: rgba(199, 199, 199, 0.3);
+    --felt-preview-glass-surface-light-hover: rgba(163, 163, 163, 0.3);
+    --felt-preview-glass-surface-light-active: rgba(163, 163, 163, 0.3);
+
+    /* Translucent surface overrides (dark) */
+    --felt-preview-glass-surface-darkest: rgba(41, 41, 41, 0.5);
+    --felt-preview-glass-surface-darkest-hover: rgba(56, 56, 56, 0.5);
+    --felt-preview-glass-surface-darkest-active: rgba(56, 56, 56, 0.5);
+    --felt-preview-glass-surface-darker: rgba(21, 21, 21, 0.6);
+    --felt-preview-glass-surface-darker-hover: rgba(41, 41, 41, 0.6);
+    --felt-preview-glass-surface-darker-active: rgba(41, 41, 41, 0.6);
+    --felt-preview-glass-surface-dark: rgba(21, 21, 21, 0.6);
+    --felt-preview-glass-surface-dark-hover: rgba(41, 41, 41, 0.6);
+    --felt-preview-glass-surface-dark-active: rgba(41, 41, 41, 0.6);
+
+    /* Translucent primary glass surface */
+    --felt-preview-glass-surface-primary:
+      light-dark(
+          rgba(255, 255, 255, 0.5),
+          rgba(41, 41, 41, 0.5)
+        );
+
+    /* Translucent floating glass surface (for toast/dialog) */
+    --felt-preview-glass-surface-floating:
+      light-dark(
+          rgba(255, 255, 255, 0.6),
+          rgba(41, 41, 41, 0.6)
+        );
+  }
+}
+
+/* Component-specific styles */
+@layer elements {
+  @layer
+    accordion,
+    alert,
+    card,
+    dialog,
+    navigation-vertical,
+    tabs;
+}
+
+/* Element: Card */
+@layer card {
+  .felt-preview-glass rh-card,
+  rh-card.felt-preview-glass {
+    &::part(container) {
+      --rh-color-border-subtle: var(--felt-preview-glass-border-color);
+      --rh-color-surface-lightest: var(--felt-preview-glass-surface-lightest);
+      --rh-color-surface-lighter: var(--felt-preview-glass-surface-lighter);
+      --rh-color-surface-light: var(--felt-preview-glass-surface-light);
+      --rh-color-surface-darkest: var(--felt-preview-glass-surface-darkest);
+      --rh-color-surface-darker: var(--felt-preview-glass-surface-darker);
+      --rh-color-surface-dark: var(--felt-preview-glass-surface-dark);
+
+      backdrop-filter: var(--felt-preview-glass-backdrop-filter);
+      border: var(--felt-preview-glass-border-width) solid var(--felt-preview-glass-border-color);
+      box-shadow: var(--felt-preview-glass-box-shadow);
+    }
+  }
+}
+
+/* Element: Accordion — transparent background so glass shows through */
+@layer accordion {
+  .felt-preview-glass rh-accordion,
+  rh-accordion.felt-preview-glass {
+    --rh-color-surface-lightest: transparent;
+    --rh-color-surface-darkest: transparent;
+    --rh-color-surface-lighter: transparent;
+    --rh-color-surface-dark: transparent;
+    --rh-box-shadow-sm: none;
+  }
+}
+
+/* Element: Alert (toast) — translucent floating background with blur */
+@layer alert {
+  .felt-preview-glass rh-alert[variant='toast'],
+  rh-alert[variant='toast'].felt-preview-glass {
+    --rh-color-surface-lightest: var(--felt-preview-glass-surface-floating);
+    --rh-box-shadow-xl: var(--felt-preview-glass-box-shadow);
+  }
+}
+
+/* Element: Dialog — translucent background with blur */
+@layer dialog {
+  .felt-preview-glass rh-dialog,
+  rh-dialog.felt-preview-glass {
+    &::part(dialog) {
+      background-color: var(--felt-preview-glass-surface-floating);
+      backdrop-filter: var(--felt-preview-glass-backdrop-filter);
+      border: var(--felt-preview-glass-border-width) solid var(--felt-preview-glass-border-color);
+      box-shadow: var(--felt-preview-glass-box-shadow);
+    }
+
+    &::part(header) {
+      background-color: transparent;
+
+      &:before {
+        background-color: transparent;
+      }
+
+      &:after {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+/* Element: Navigation Vertical — translucent sidebar */
+@layer navigation-vertical {
+  .felt-preview-glass rh-navigation-vertical,
+  rh-navigation-vertical.felt-preview-glass {
+    background: var(--felt-preview-glass-surface-primary);
+    backdrop-filter: var(--felt-preview-glass-backdrop-filter);
+    border-inline-end:
+      var(--felt-preview-glass-border-width)
+      solid
+      var(--felt-preview-glass-border-color);
+    box-shadow: var(--felt-preview-glass-box-shadow);
+
+    --rh-color-surface-lightest: transparent;
+    --rh-color-surface-darker: transparent;
+    --rh-color-surface-lighter: var(--felt-preview-glass-surface-lighter);
+    --rh-color-surface-dark: var(--felt-preview-glass-surface-dark);
+  }
+}
+
+/* Element: Tabs — transparent box tab backgrounds */
+@layer tabs {
+  .felt-preview-glass rh-tabs[box],
+  rh-tabs[box].felt-preview-glass {
+    --rh-color-surface-lighter: transparent;
+    --rh-color-surface-darker: transparent;
+  }
+}

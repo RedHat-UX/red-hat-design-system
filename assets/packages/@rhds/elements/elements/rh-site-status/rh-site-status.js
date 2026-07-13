@@ -16,7 +16,7 @@ import '@rhds/icons/ui/error.js';
 import '@rhds/icons/ui/error-fill.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
-const styles = css `:host{display:inline-block}#container{display:inline-flex;padding:var(--rh-space-lg,16px);border-radius:var(--rh-border-radius-default,3px);min-width:150px}#container.success{background-color:light-dark(var(--rh-color-surface-status-success),var(--rh-color-surface-dark,#383838))}#container.warning{background-color:light-dark(var(--rh-color-surface-status-warning),var(--rh-color-surface-dark,#383838))}#container.danger{background-color:light-dark(var(--rh-color-surface-status-danger),var(--rh-color-surface-dark,#383838))}#container.loading{background-color:light-dark(var(--rh-color-surface-light,#e0e0e0),var(--rh-color-surface-dark,#383838))}a{display:inline-flex;font-size:var(--rh-font-size-body-text-sm,.875rem);text-decoration:none;align-items:center;gap:var(--rh-space-md,8px);color:var(--rh-color-text-primary);text-transform:lowercase}span:first-letter{text-transform:uppercase}a:focus{outline:var(--rh-border-width-md,2px) solid var(--rh-color-border-interactive);border-radius:var(--rh-border-radius-default,3px)}a:is(:hover,:focus){text-decoration:underline}rh-icon{width:var(--rh-size-icon-01,16px);height:var(--rh-size-icon-01,16px);color:var(--rh-color-white,#fff)}rh-icon.success{color:var(--rh-color-status-success)}rh-icon.warning{color:var(--rh-color-status-warning)}rh-icon.danger{color:var(--rh-color-status-danger)}`;
+const styles = css `:host{display:inline-block}#container{padding:var(--rh-space-lg,16px);border-radius:var(--rh-border-radius-default,3px);min-width:150px;background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f));border:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}#container,a{display:inline-flex}a{font-size:var(--rh-font-size-body-text-sm,.875rem);text-decoration:none;align-items:center;gap:var(--rh-space-md,8px);color:var(--rh-color-text-primary);text-transform:lowercase}span:first-letter{text-transform:uppercase}a:focus{outline:var(--rh-border-width-md,2px) solid var(--rh-color-border-interactive);border-radius:var(--rh-border-radius-default,3px)}a:is(:hover,:focus){text-decoration:underline}rh-icon{width:var(--rh-size-icon-01,16px);height:var(--rh-size-icon-01,16px);color:var(--rh-color-white,#fff)}rh-icon.success{color:var(--rh-color-status-success)}rh-icon.warning{color:var(--rh-color-status-warning)}rh-icon.danger{color:var(--rh-color-status-danger)}`;
 // map statuspage.io's text to our text; at least one of their status
 // strings is too long for the space we have
 const TEXT_MAP = Object.freeze({
@@ -108,12 +108,12 @@ _RhSiteStatus_icon_get = function _RhSiteStatus_icon_get() {
             return { icon: 'check-circle-fill', status: 'success' };
         case 'degraded_performance':
         case 'partial_outage':
-        case 'major_outage':
-        case 'major':
         case 'minor':
             return { icon: 'warning-fill', status: 'warning' };
+        case 'major_outage':
+        case 'major':
         default:
-            return { icon: 'error-fill', status: 'danger' };
+            return { icon: 'ban-fill', status: 'danger' };
     }
 };
 _RhSiteStatus_text_get = function _RhSiteStatus_text_get() {

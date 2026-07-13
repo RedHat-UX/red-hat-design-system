@@ -8,6 +8,19 @@ declare global {
 /** Represents the available color scheme values. */
 type Scheme = 'light' | 'dark' | 'light dark';
 /**
+ * Fired when the active color scheme changes, whether by user interaction
+ * or programmatic update. This event allows consumers to coordinate UI
+ * updates or analytics when the scheme changes. Listeners should read
+ * `event.scheme` for the new value. Consumers must not rely on this
+ * event firing during initial load from localStorage.
+ *
+ * @summary Fires when the color scheme changes for coordination and analytics.
+ */
+export declare class SchemeChangedEvent extends Event {
+    scheme: Scheme;
+    constructor(scheme: Scheme);
+}
+/**
  * A scheme toggle provides users with the ability to switch between
  * light, dark, and system default color schemes. It should be placed
  * in a visible location for easy access. For WCAG compliance, screen
@@ -16,6 +29,10 @@ type Scheme = 'light' | 'dark' | 'light dark';
  * focuses the group; arrow keys allow selection between schemes.
  *
  * @summary Switches between light, dark, and system default color schemes
+ *
+ * @fires {SchemeChangedEvent} scheme-changed - Fired when the color scheme
+ *        changes. Has no `detail` payload; read the new value from
+ *        `event.scheme` (`'light'`, `'dark'`, or `'light dark'`).
  */
 export declare class RhSchemeToggle extends LitElement {
     #private;
@@ -48,6 +65,11 @@ export declare class RhSchemeToggle extends LitElement {
      */
     systemText: string;
     connectedCallback(): void;
+    /**
+     * Syncs the radio checked-state flags before each render so the
+     * template always reflects the current `scheme` value.
+     */
+    protected willUpdate(): void;
     render(): import("lit-html").TemplateResult<1>;
     /**
      * Observes changes to the `scheme` property. Applies the selected

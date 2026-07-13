@@ -1,6 +1,6 @@
 var _a;
 import { __decorate } from "tslib";
-import { expect, fixture, nextFrame } from '@open-wc/testing';
+import { expect, fixture } from '@open-wc/testing';
 import { sendKeys } from '@web/test-runner-commands';
 import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -125,10 +125,9 @@ class TestCombobox extends ReactiveElement {
                             expect(element.selected.at(0)).to.have.text('1');
                         });
                         it('collapses the listbox', async function () {
-                            expect(await a11ySnapshot())
-                                .to.not.axContainRole('listbox')
-                                .and
-                                .to.axContainQuery({ role: 'combobox', expanded: false });
+                            const snapshot = await a11ySnapshot();
+                            expect(snapshot).to.not.axContainRole('listbox');
+                            expect(snapshot).to.axContainQuery({ role: 'combobox', expanded: false });
                         });
                     });
                 });
@@ -136,10 +135,9 @@ class TestCombobox extends ReactiveElement {
                     beforeEach(press('Escape'));
                     beforeEach(updateComplete);
                     it('collapses the listbox', async function () {
-                        expect(await a11ySnapshot())
-                            .to.not.axContainRole('listbox')
-                            .and
-                            .to.axContainQuery({ role: 'combobox', expanded: false });
+                        const snapshot = await a11ySnapshot();
+                        expect(snapshot).to.not.axContainRole('listbox');
+                        expect(snapshot).to.axContainQuery({ role: 'combobox', expanded: false });
                     });
                     it('maintains DOM focus on the combobox', async function () {
                         expect(await a11ySnapshot()).axTreeFocusedNode.to.have.axRole('combobox');

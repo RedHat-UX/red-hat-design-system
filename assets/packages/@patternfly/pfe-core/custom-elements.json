@@ -161,228 +161,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "controllers/cascade-controller.js",
-      "declarations": [
-        {
-          "name": "CascadeController",
-          "members": [
-            {
-              "name": "class",
-              "type": {
-                "text": "typeof ReactiveElement"
-              },
-              "kind": "field",
-              "privacy": "private"
-            },
-            {
-              "name": "logger",
-              "type": {
-                "text": "Logger"
-              },
-              "kind": "field",
-              "privacy": "private"
-            },
-            {
-              "name": "instances",
-              "type": {
-                "text": "WeakMap\u003cReactiveElement, CascadeController\u003cReactiveElement\u003e\u003e"
-              },
-              "default": "new WeakMap\u003cReactiveElement, CascadeController\u003cReactiveElement\u003e\u003e()",
-              "kind": "field",
-              "static": true
-            },
-            {
-              "name": "mo",
-              "type": {
-                "text": "MutationObserver"
-              },
-              "default": "new MutationObserver(this.parse)",
-              "kind": "field"
-            },
-            {
-              "name": "cache",
-              "type": {
-                "text": "Map\u003cstring, string[]\u003e"
-              },
-              "default": "new Map\u003cstring, string[]\u003e()",
-              "kind": "field"
-            },
-            {
-              "name": "host",
-              "type": {
-                "text": "E"
-              },
-              "kind": "field"
-            },
-            {
-              "name": "options",
-              "type": {
-                "text": "Options\u003cE\u003e | undefined"
-              },
-              "kind": "field"
-            },
-            {
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "name": "hostUpdated",
-              "kind": "method"
-            },
-            {
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "name": "hostConnected",
-              "kind": "method"
-            },
-            {
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "name": "hostDisconnected",
-              "kind": "method"
-            },
-            {
-              "parameters": [
-                {
-                  "name": "nodeList",
-                  "type": {
-                    "text": "HTMLCollection | NodeList"
-                  }
-                }
-              ],
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "name": "cascadeProperties",
-              "description": "Handles the cascading of properties to nested components when new elements are added\nAttribute updates/additions are handled by the attribute callback",
-              "kind": "method"
-            },
-            {
-              "parameters": [
-                {
-                  "name": "propName",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "cascade",
-                  "type": {
-                    "text": "string | string[]"
-                  }
-                }
-              ],
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "name": "initProp",
-              "description": "Gets the configured attribute name for the decorated property,\nfalling back to the lowercased property name, and caches the attribute name\nwith it's designated child selectors for value-propagation on change",
-              "kind": "method"
-            },
-            {
-              "parameters": [
-                {
-                  "name": "mutations",
-                  "type": {
-                    "text": "MutationRecord[]"
-                  }
-                }
-              ],
-              "name": "parse",
-              "kind": "method",
-              "privacy": "private"
-            },
-            {
-              "parameters": [
-                {
-                  "name": "name",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "el",
-                  "type": {
-                    "text": "Element"
-                  }
-                }
-              ],
-              "name": "_copyAttribute",
-              "description": "Copy the named attribute to a target element.",
-              "kind": "method",
-              "privacy": "private"
-            },
-            {
-              "parameters": [
-                {
-                  "name": "selectors",
-                  "type": {
-                    "text": "IterableIterator\u003cstring\u003e"
-                  }
-                },
-                {
-                  "name": "set",
-                  "type": {
-                    "text": "this['cache']"
-                  }
-                }
-              ],
-              "name": "_cascadeAttributes",
-              "kind": "method",
-              "privacy": "private"
-            },
-            {
-              "parameters": [
-                {
-                  "name": "name",
-                  "type": {
-                    "text": "string"
-                  }
-                },
-                {
-                  "name": "to",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ],
-              "name": "_cascadeAttribute",
-              "description": "Trigger a cascade of the named attribute to any child elements that match\nthe `to` selector.  The selector can match elements in the light DOM and\nshadow DOM.",
-              "kind": "method",
-              "privacy": "private"
-            }
-          ],
-          "source": {
-            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/cascade-controller.ts#L18"
-          },
-          "kind": "class",
-          "deprecated": "use context, especially via `@patternfly/pfe-core/functions/context.js`;"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "CascadeController",
-          "declaration": {
-            "name": "CascadeController",
-            "module": "controllers/cascade-controller.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "controllers/combobox-controller.js",
       "declarations": [
         {
@@ -1559,7 +1337,7 @@
             }
           ],
           "source": {
-            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/internals-controller.ts#L72"
+            "href": "https://github.com/patternfly/patternfly-elements/tree/main/controllers/internals-controller.ts#L74"
           },
           "kind": "class"
         }
@@ -2630,16 +2408,6 @@
               "static": true
             },
             {
-              "name": "anonymous",
-              "type": {
-                "text": "symbol"
-              },
-              "default": "this.default",
-              "deprecated": "use `default`",
-              "kind": "field",
-              "static": true
-            },
-            {
               "name": "attribute",
               "type": {
                 "text": "string"
@@ -2680,7 +2448,7 @@
             {
               "parameters": [
                 {
-                  "name": "_",
+                  "name": "_names",
                   "type": {
                     "text": "(string | null)[]"
                   },
@@ -2839,16 +2607,6 @@
             {
               "name": "default",
               "default": "Symbol('default slot') satisfies symbol as symbol",
-              "kind": "field",
-              "static": true
-            },
-            {
-              "name": "anonymous",
-              "type": {
-                "text": "symbol"
-              },
-              "default": "this.default",
-              "deprecated": "use `default`",
               "kind": "field",
               "static": true
             },
@@ -3230,40 +2988,6 @@
           "declaration": {
             "name": "bound",
             "module": "decorators/bound.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "decorators/cascades.js",
-      "declarations": [
-        {
-          "parameters": [
-            {
-              "name": "items",
-              "type": {
-                "text": "string[]"
-              },
-              "rest": true
-            }
-          ],
-          "name": "cascades",
-          "description": "Cascades the decorated attribute to children",
-          "deprecated": "use context, especially via `@patternfly/pfe-core/functions/context.js`;",
-          "kind": "function",
-          "source": {
-            "href": "https://github.com/patternfly/patternfly-elements/tree/main/decorators/cascades.ts#L10"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "cascades",
-          "declaration": {
-            "name": "cascades",
-            "module": "decorators/cascades.js"
           }
         }
       ]

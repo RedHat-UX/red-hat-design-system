@@ -159,6 +159,4 @@ _a = SlotController, _SlotController_slotRecords = new WeakMap(), _SlotControlle
     return __classPrivateFieldGet(this, _SlotController_instances, "m", _SlotController_getSlotElement).call(this, slotId)?.assignedElements?.() ?? [];
 };
 SlotController.default = Symbol('default slot');
-/** @deprecated use `default` */
-SlotController.anonymous = _a.default;
 //# sourceMappingURL=slot-controller.js.map

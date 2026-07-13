@@ -1,6 +1,7 @@
 import { LitElement } from 'lit';
 import { type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import './rh-footer-copyright.js';
+import '@rhds/elements/rh-icon/rh-icon.js';
 /**
  * Global Red Hat footer bar for consistent branding across all
  * properties. Authors must not customize content per-site. The
