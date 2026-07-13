@@ -1,0 +1,32 @@
+<style>
+  @import "../../../styles/grid.css";
+  
+  rh-surface {
+    background: url('../project-felt/felt-preview-bg-light.jpg') no-repeat center center;
+    background-size: cover;
+
+    &[color-palette^='dark'] {
+      background-image: url('../project-felt/felt-preview-bg-dark.jpg')
+    }
+  }
+</style>
+<link rel="stylesheet" href="/theming/themes/project-felt/preview/felt-theme-preview.css">
+<link rel="stylesheet" href="/theming/themes/project-felt/felt-preview-glass.css">
+
+<div class="card-grid example-row felt-preview-glass">
+  <rh-card>
+      <h4 slot="header">Example card</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.</p>
+      <rh-cta href="#" slot="footer" variant="primary">Call to action</rh-cta>
+  </rh-card>
+  <rh-card>
+      <h4 slot="header">Example card</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.</p>
+      <rh-cta href="#" slot="footer">Call to action</rh-cta>
+  </rh-card>
+  <rh-card>
+      <h4 slot="header">Example card</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.</p>
+      <rh-cta href="#" slot="footer">Call to action</rh-cta>
+  </rh-card>
+</div>

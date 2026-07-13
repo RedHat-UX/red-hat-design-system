@@ -128,8 +128,7 @@ export class RhSwitch extends LitElement {
              part="switch">
           <rh-icon id="toggle"
                    icon="checkmark"
-                   set="microns"
-                   ?hidden="${!this.showCheckIcon}"></rh-icon>
+                   set="microns"></rh-icon>
         </div>
         ${reversed ? '' : slots}
       </div>

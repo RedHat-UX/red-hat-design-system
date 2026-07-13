@@ -11,13 +11,19 @@
   display: flex;
 }
 
+[part='links'] {
+  display: contents;
+}
+
 #link-container {
   display: flex;
+  gap: 0;
   position: relative;
   bottom: 0;
   overflow-x: auto;
   scrollbar-width: none;
   max-width: 100%;
+  padding: 0;
 }
 
 ::slotted(a) {
@@ -91,9 +97,9 @@
   --_navigation-link-inline-size: 100%;
   --_navigation-link-padding:
     /** Navigation link block padding */
-    var(--rh-space-lg, 16px)
+    var(--rh-subnav-link-padding-block, var(--rh-space-lg, 16px))
     /** Navigation link inline padding */
-    var(--rh-space-2xl, 32px);
+    var(--rh-subnav-link-padding-inline, var(--rh-space-2xl, 32px));
 
   /** Navigation link font size */
   --_navigation-link-font-size: var(--rh-font-size-body-text-md);
@@ -114,39 +120,39 @@
 
   position: relative;
   display: flex;
+  flex-direction: column;
 }
 
 ::slotted(rh-navigation-link):after {
+  display: block;
   content: '';
-  position: absolute;
   z-index: 1;
-  inset: 0;
   width: 100%;
-  border-block-end:
-    /** Navigation link state indicator border block */
-    var(--rh-border-width-lg, 3px)
-    solid
-    transparent;
+
+  /** Navigation link state indicator border block */
+  block-size: var(--rh-border-width-lg, 3px);
+  background-color: transparent;
   pointer-events: none;
 }
 
 ::slotted(rh-navigation-link:hover):after {
   /** Navigation link hover subtle border block end color */
-  border-block-end-color: var(--rh-color-border-subtle);
+  background-color: var(--rh-color-border-subtle);
 }
 
 ::slotted(rh-navigation-link:active):after,
 ::slotted(rh-navigation-link[current-page]):after {
   /** Current page border block end color */
-  border-block-end-color: var(--rh-color-brand-red);
+  background-color: var(--rh-color-brand-red);
 }
 
 button {
   position: relative;
   padding:
-    0
-    /** Scroll button inline padding */
-    var(--rh-space-lg, 16px);
+    var(--rh-subnav-scroll-buttons-padding,
+      0
+      /** Scroll button inline padding */
+      var(--rh-space-lg, 16px));
   margin: 0;
   background-color: transparent;
   border: none;
@@ -204,11 +210,12 @@ button {
 #next,
 #previous {
   border-block-end:
-    /** Scroll button border block end width */
-    var(--rh-border-width-sm, 1px)
-    solid
-    /** Scroll button border block end color */
-    var(--rh-color-border-subtle);
+    var(--rh-subnav-scroll-buttons-border-block-end,
+      /** Scroll button border block end width */
+      var(--rh-border-width-sm, 1px)
+      solid
+      /** Scroll button border block end color */
+      var(--rh-color-border-subtle));
 
   & rh-icon {
     pointer-events: none;

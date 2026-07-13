@@ -13,7 +13,8 @@
 }
 
 rh-icon {
-  color: currentcolor;
+  /** Set on the rh-button host to give the icon a distinct color from the button text. */
+  color: var(--rh-button-icon-color, currentcolor);
 }
 
 /* Base button styles: rounded corners, variant-driven colors */
@@ -47,12 +48,6 @@ button {
   /** Button focus ring offset */
   outline-offset: var(--rh-length-4xs, 1px);
 
-  &:active {
-    --_color: var(--_active-color);
-    --_background-color: var(--_active-background-color);
-    --_border-width: var(--_active-border-width);
-  }
-
   &:after {
     position: absolute;
     inset: 0;
@@ -63,26 +58,6 @@ button {
 
     /** Button corner rounding */
     border-radius: var(--rh-border-radius-default, 3px);
-  }
-
-  &:focus {
-    --_color: var(--_focus-color);
-    --_background-color: var(--_focus-background-color);
-    --_border-width: var(--_focus-border-width);
-
-    outline:
-      /** Focus outline width */
-      var(--rh-border-width-md, 2px)
-      solid
-      /** Focus outline color */
-      var(--rh-color-interactive-primary-default);
-
-    &:after {
-      border-width:
-        var(--_border-width,
-          /** Focus pseudo-element border width fallback */
-          var(--rh-border-width-md, 2px));
-    }
   }
 
   &.hasIcon {
@@ -352,21 +327,30 @@ button {
 
     /** Close active icon color */
     --_active-color: var(--rh-color-interactive-secondary-active);
-    --_active-background-color: transparent;
+
+    /** @csspart close - Close button active background color */
+    --_active-background-color: var(--rh-button-close-active-background, transparent);
 
     /** Close focus icon color */
     --_focus-color: var(--rh-color-interactive-secondary-focus);
-    --_focus-background-color: transparent;
+
+    /** @csspart close - Close button focus background color */
+    --_focus-background-color: var(--rh-button-close-focus-background, transparent);
 
     /** Close focus outline color */
     --_focus-outline-color: var(--rh-color-interactive-primary-default);
 
     /** Close hover icon color */
     --_hover-color: var(--rh-color-interactive-secondary-hover);
-    --_hover-background-color: transparent;
 
-    /** Button width */
-    width: var(--rh-length-lg, 16px);
+    /** @csspart close - Close button hover background color */
+    --_hover-background-color: var(--rh-button-close-hover-background, transparent);
+
+    /** Close button width */
+    width: var(--rh-button-close-width, var(--rh-length-lg, 16px));
+
+    /** Close button radius */
+    border-radius: var(--rh-button-close-radius, var(--rh-border-radius-default, 3px));
     aspect-ratio: 1;
 
     rh-icon {
@@ -459,6 +443,32 @@ button {
     --_color: var(--_hover-color);
     --_background-color: var(--_hover-background-color);
     --_border-width: var(--_hover-border-width);
+  }
+
+  &:focus {
+    --_color: var(--_focus-color);
+    --_background-color: var(--_focus-background-color);
+    --_border-width: var(--_focus-border-width);
+
+    outline:
+      /** Focus outline width */
+      var(--rh-border-width-md, 2px)
+      solid
+      /** Focus outline color */
+      var(--rh-color-interactive-primary-default);
+
+    &:after {
+      border-width:
+        var(--_border-width,
+          /** Focus pseudo-element border width fallback */
+          var(--rh-border-width-md, 2px));
+    }
+  }
+
+  &:active {
+    --_color: var(--_active-color);
+    --_background-color: var(--_active-background-color);
+    --_border-width: var(--_active-border-width);
   }
 
   & > span {

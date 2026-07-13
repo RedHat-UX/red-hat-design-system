@@ -3,13 +3,28 @@
 }
 
 fieldset {
-  align-items: center;
+  /**
+   * Fieldset flex layout direction.
+   * Set to `column` to position the legend "stacked" above the button group.
+   * @cssprop --rh-scheme-toggle-flex-flow
+   */
+  flex-flow: var(--rh-scheme-toggle-flex-flow, row nowrap);
+
+  /**
+   * Cross-axis alignment of legend and button group.
+   * In row layout, this vertically centers the legend with the buttons.
+   * In column layout, controls horizontal alignment.
+   * @cssprop --rh-scheme-toggle-align-items
+   */
+  align-items: var(--rh-scheme-toggle-align-items, center);
+
+  /**
+   * Gap between the legend and the button group.
+   * @cssprop --rh-scheme-toggle-gap
+   */
+  gap: var(--rh-scheme-toggle-gap, var(--rh-space-lg, 16px));
   border: 0;
   display: flex;
-  flex-flow: row nowrap;
-
-  /** Fieldset legend-to-group gap */
-  gap: var(--rh-space-lg, 16px);
   margin: 0;
   padding: 0;
 

@@ -1,4 +1,7 @@
 :host {
+  /** Stroke width of the spinner circle, in unitless SVG user units */
+  --rh-spinner-stroke-width: 6;
+
   display: inline-block;
   text-align: center;
   width: max-content;
@@ -28,31 +31,61 @@ svg {
   width: var(--rh-length-4xl, 64px);
 
   /** Default spinner circle stroke width */
-  stroke-width: var(--rh-length-sm, 6px);
+  stroke-width: var(--rh-spinner-stroke-width);
   overflow: hidden;
   display: block;
   margin-left: auto;
   margin-right: auto;
+
+  /** Container animation name for the SVG element */
+  animation-name: var(--rh-spinner-container-animation-name, none);
+
+  /** Container animation duration for the SVG element */
+  animation-duration: var(--rh-spinner-container-animation-duration, 0s);
+
+  /** Container animation timing function for the SVG element */
+  animation-timing-function: var(--rh-spinner-container-animation-timing, linear);
+  animation-iteration-count: infinite;
 }
 
 circle {
   width: 100%;
   height: 100%;
   stroke-linecap: round;
+
+  /** SVG vector-effect for stroke scaling behavior */
+  vector-effect: var(--rh-spinner-vector-effect, non-scaling-stroke);
 }
 
 circle.dash {
   transform-origin: 50% 50%;
-  animation: rh-spinner-animation-dash 1.4s ease-out infinite;
+
+  /** Dash circle animation name */
+  animation-name: var(--rh-spinner-animation-name, rh-spinner-animation-dash);
+
+  /** Dash circle animation duration */
+  animation-duration: var(--rh-spinner-animation-duration, 1.4s);
+
+  /** Dash circle animation timing function */
+  animation-timing-function: var(--rh-spinner-animation-timing, ease-out);
+  animation-iteration-count: infinite;
 
   /** Animated indicator stroke color */
   stroke: var(--rh-color-accent-base);
-  stroke-dasharray: 283;
-  stroke-dashoffset: 280;
-  transform: rotate(-90deg);
+
+  /** Dash circle stroke-dasharray value */
+  stroke-dasharray: var(--rh-spinner-dash-array, 283);
+
+  /** Dash circle stroke-dashoffset value */
+  stroke-dashoffset: var(--rh-spinner-dash-offset, 280);
+
+  /** Dash circle initial rotation */
+  transform: rotate(var(--rh-spinner-rotate-start, -90deg));
 }
 
 circle.track {
+  /** Track circle display property */
+  display: var(--rh-spinner-track-display, revert);
   stroke:
     light-dark(
         /** Track stroke color in light mode */
@@ -63,49 +96,60 @@ circle.track {
   animation-duration: 0;
 }
 
-:host([size='lg']) svg {
-  /** Large spinner circle diameter */
-  width: var(--rh-size-icon-06, 64px);
-
+:host([size='lg']) {
   /** Large spinner circle stroke width */
-  stroke-width: var(--rh-length-sm, 6px);
+  --rh-spinner-stroke-width: 6;
+
+  & svg {
+    /** Large spinner circle diameter */
+    width: var(--rh-size-icon-06, 64px);
+  }
+
+  & ::slotted(p) {
+    /** Large spinner text label font size */
+    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  }
 }
 
-:host([size='lg']) ::slotted(p) {
-  /** Large spinner text label font size */
-  font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-}
-
-:host([size='md']) svg {
-  /** Medium spinner circle diameter */
-  width: var(--rh-size-icon-04, 40px);
-
+:host([size='md']) {
   /** Medium spinner circle stroke width */
-  stroke-width: var(--rh-length-xs, 4px);
+  --rh-spinner-stroke-width: 4;
+
+  & svg {
+    /** Medium spinner circle diameter */
+    width: var(--rh-size-icon-04, 40px);
+  }
+
+  & ::slotted(p) {
+    /** Medium spinner text label font size */
+    font-size: var(--rh-font-size-body-text-md, 1rem);
+  }
 }
 
-:host([size='md']) ::slotted(p) {
-  /** Medium spinner text label font size */
-  font-size: var(--rh-font-size-body-text-md, 1rem);
-}
-
-:host([size='sm']) svg {
-  /** Small spinner circle diameter */
-  width: var(--rh-size-icon-01, 16px);
-
+:host([size='sm']) {
   /** Small spinner circle stroke width */
-  stroke-width: var(--rh-length-2xs, 3px);
-}
+  --rh-spinner-stroke-width: 3;
 
-:host([size='sm']) circle.dash {
-  animation-name: rh-spinner-small-animation-dash;
-  stroke-dasharray: 71;
-  stroke-dashoffset: 71;
-}
+  & svg {
+    /** Small spinner circle diameter */
+    width: var(--rh-size-icon-01, 16px);
+  }
 
-:host([size='sm']) ::slotted(p) {
-  /** Small spinner text label font size */
-  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+  & circle.dash {
+    /** Small dash circle animation name */
+    animation-name: var(--rh-spinner-animation-name, rh-spinner-small-animation-dash);
+
+    /** Small dash circle stroke-dasharray value */
+    stroke-dasharray: var(--rh-spinner-dash-array, 71);
+
+    /** Small dash circle stroke-dashoffset value */
+    stroke-dashoffset: var(--rh-spinner-dash-offset, 71);
+  }
+
+  & ::slotted(p) {
+    /** Small spinner text label font size */
+    font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+  }
 }
 
 @keyframes rh-spinner-animation-dash {
@@ -133,5 +177,72 @@ circle.track {
 
   100% {
     stroke-dashoffset: -71;
+  }
+}
+
+@keyframes felt-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/*
+ * felt-dash — mirrors @patternfly/elements pf-c-spinner-animation-dash.
+ *
+ * How the arc is drawn:
+ *   stroke-dasharray sets the length of the visible dash (and gap).
+ *   stroke-dashoffset shifts the dash backward along the path.
+ *   visible arc = dasharray − dashoffset
+ *
+ * dasharray and dashoffset values are hardcoded because Firefox
+ * does not resolve var() for those SVG properties inside @keyframes
+ * (https://bugzilla.mozilla.org/show_bug.cgi?id=1763376).
+ * stroke-width works fine with calc(var(...)) in keyframes.
+ *
+ * Why not just set r=45 to match PatternFly?
+ *   Firefox requires units on the CSS `r` property (e.g. r: 45px),
+ *   but SVG `r` is a unitless attribute. A CSS `r: 45` is silently
+ *   ignored in Firefox (https://bugzilla.mozilla.org/show_bug.cgi?id=1787374),
+ *   so we can't override the SVG attribute via a custom property.
+ *   We keep the SVG attribute r="40" and recalculate the values below.
+ *
+ * PatternFly vs RHDS + Felt — different radius, same proportions:
+ *   PatternFly uses r=45 → circumference = 2π × 45 ≈ 283
+ *   RHDS uses r=40       → circumference = 2π × 40 ≈ 251
+ *
+ *   dasharray and dashoffset are absolute SVG path units, not
+ *   percentages, so PatternFly's raw values would produce slightly
+ *   different arc proportions on our smaller circle. To recalculate:
+ *   take PatternFly's value, divide by their circumference (283) to
+ *   get the proportion, then multiply by our circumference (251).
+ *
+ *   PatternFly (r=45, C=283)        RHDS Felt Theme (r=40, C=251)
+ *   ──────────────────────          ──────────────────────
+ *   dasharray  283 (C)              251 (C)
+ *   dashoffset 280 (C−3)            248 (C−3)
+ *   dasharray  220 (220/283×251)    195 (0.78×C)
+ *   dashoffset 150 (150/283×251)    133 (0.53×C)
+ *   stroke-width 6 (10−4)           6 (10−4)
+ *   rotate 720deg (2 turns)         720deg (2 turns)
+ */
+@keyframes felt-dash {
+  0% {
+    stroke-dasharray: 251; /* C (2π × 40) */
+    stroke-dashoffset: 248; /* C − 3: nearly full circle, tiny visible tail */
+    transform: rotate(0deg);
+  }
+
+  15% {
+    stroke-width: calc(var(--rh-spinner-stroke-width) - 4);
+  }
+
+  40% {
+    stroke-dasharray: 195; /* 0.78 × C */
+    stroke-dashoffset: 133; /* 0.53 × C */
+  }
+
+  100% {
+    stroke-dasharray: 251; /* C (2π × 40) */
+    stroke-dashoffset: 248; /* C − 3: back to tiny visible tail */
+    transform: rotate(720deg);
   }
 }
