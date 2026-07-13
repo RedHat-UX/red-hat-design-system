@@ -14,26 +14,26 @@ div#container {
 a,
 ::slotted(a) {
   /** Skip link background color */
-  background-color: var(--rh-color-surface-lightest, #ffffff) !important;
+  background-color: var(--rh-color-surface) !important;
   border-block-start-width: 0 !important;
   border-block-end:
     /** Skip link border block end width */
     var(--rh-border-width-sm, 1px)
     solid
     /** Skip link border block end color */
-    var(--rh-color-border-interactive-on-light, #0066cc);
+    var(--rh-color-border-interactive);
   border-inline-start:
     /** Skip link border inline start width */
     var(--rh-border-width-sm, 1px)
     solid
     /** Skip link border inline start color */
-    var(--rh-color-border-interactive-on-light, #0066cc);
+    var(--rh-color-border-interactive);
   border-inline-end:
     /** Skip link border inline end width */
     var(--rh-border-width-sm, 1px)
     solid
     /** Skip link border inline end color */
-    var(--rh-color-border-interactive-on-light, #0066cc);
+    var(--rh-color-border-interactive);
 
   /** Skip link bottom-start corner radius */
   border-end-start-radius: var(--rh-border-radius-default, 3px) !important;
@@ -43,7 +43,7 @@ a,
   clip: rect(0, 0, 0, 0) !important;
 
   /** Skip link text color */
-  color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
+  color: var(--rh-color-interactive-primary-default);
 
   /** Skip link font family */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif) !important;
@@ -108,19 +108,19 @@ a:is(:active, :hover),
     var(--rh-border-width-sm, 1px)
     solid
     /** Skip link hover border block end color */
-    var(--rh-color-interactive-primary-hover-on-light, #003366);
+    var(--rh-color-interactive-primary-hover);
   border-inline-start:
     /** Skip link hover border inline start width */
     var(--rh-border-width-sm, 1px)
     solid
     /** Skip link hover border inline start color */
-    var(--rh-color-interactive-primary-hover-on-light, #003366);
+    var(--rh-color-interactive-primary-hover);
   border-inline-end:
     /** Skip link hover border inline end width */
     var(--rh-border-width-sm, 1px)
     solid
     /** Skip link hover border inline end color */
-    var(--rh-color-interactive-primary-hover-on-light, #003366);
+    var(--rh-color-interactive-primary-hover);
 }
 
 @media (prefers-reduced-motion: reduce) {
