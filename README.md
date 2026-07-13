@@ -28,24 +28,24 @@ On this team, PR approvals come with a creative twist — reviewers leave a **ba
 
 | Author | Count |
 |--------|-------|
-| @adamjohnson | 114 |
-| @zeroedin | 87 |
-| @markcaron | 59 |
-| @bennypowers | 32 |
-| @hellogreg | 26 |
+| @adamjohnson | 126 |
+| @zeroedin | 92 |
+| @markcaron | 68 |
+| @bennypowers | 34 |
+| @hellogreg | 30 |
 | @nikkimk | 15 |
 | @marionnegp | 10 |
-| @coreyvickery | 4 |
+| @coreyvickery | 5 |
 | @brianferry | 3 |
 | @gradymcgee | 1 |
 
 ### Hall of Fame
 
-- **"Leevee Geevee Teevee Meevee"** — @zeroedin
-- **"lines géniales, tooltips magnifiques"** — @hellogreg
-- **"Linux Ghouls Trick Mortals"** — @zeroedin
-- **"Local Grandma Tramples Musician"** — @marionnegp
-- **"Lucid groundhog; tiny meteorologist"** — @nikkimk
+- **"Looping Gizmo Throbbing Monotonously"** — @markcaron
+- **"Legacy Garbage Tossed Mercilessly"** — @adamjohnson
+- **"Legend Gets Toggle Mechanics"** — @zeroedin
+- **"luxury grouped tab management"** — @bennypowers
+- **"last growlithe tasks managed"** — @hellogreg
 
 ## Submodules
 
