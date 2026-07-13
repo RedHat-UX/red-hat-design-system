@@ -52,6 +52,105 @@ or anything else, please submit a [GitHub issue][issues].
   <a slot="headline" href="https://github.com/RedHat-UX/red-hat-design-system/releases">Changelog</a>
 </rh-tile>
 
+<section aria-labelledby="version-4.2">
+
+## Version 4.2
+Released July 13, 2026
+
+### Highlights
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| ✨ Added `<rh-scheme-dropdown>` | {{i()}} | A dropdown that switches between light, dark, and system default color schemes. |
+| 🎨 Project Felt theming support | {{i()}} | Added CSS custom properties across 19 components to enable the [Project Felt theme](/theming/themes/project-felt/). |
+| `<rh-footer-universal>`: added `tertiary` slot | {{i()}} | Added `tertiary` slot for social links and copyright. The previous slot pattern continues to work. |
+| `<rh-scheme-toggle>`: added `scheme-changed` event | {{i()}} | Fires when the color scheme changes for coordination and analytics. |
+| `<rh-scheme-toggle>`: added layout CSS custom properties | {{i()}} | Added `--rh-scheme-toggle-flex-flow`, `--rh-scheme-toggle-align-items`, and `--rh-scheme-toggle-gap` for positioning the legend above the button group. |
+| `<rh-button>`: added icon and close variant theming | {{i()}} | Added `--rh-button-icon-color` and close variant CSS custom properties for background, width, and radius. |
+| `<rh-tabs>`: added theming CSS custom properties | {{i()}} | Added `--rh-tabs-link-*` and `--rh-tabs-overflow-*` CSS custom properties and `overflow-button` CSS parts for pill radius, padding, hover/focus backgrounds, and focus outlines. |
+| `<rh-chip>`: exposed `btn-link` CSS part | {{i()}} | Fixed close icon animation arc and exposed the `btn-link` CSS part. |
+| `<rh-cta>`: added hover and focus theming | {{i()}} | Improved focus ring for forced-colors compatibility. Added `--rh-cta-hover-background-color` and `--rh-cta-focus-text-decoration`. |
+| `<rh-alert>`: added `--rh-alert-border-width` | {{i()}} | Added CSS custom property for alert border width. |
+| `<rh-switch>`: added `--rh-switch-show-check` | {{i()}} | Added CSS custom property to control checkmark icon visibility without requiring the `show-check-icon` attribute. |
+| `<rh-navigation-primary>`: added menu padding CSS custom properties | {{i()}} | Added `--rh-navigation-primary-item-menu-padding-block` and `--rh-navigation-primary-item-menu-padding-inline`. |
+| `<rh-footer>`: updated visual design | {{p()}} | Updated with top border, responsive link header font sizes, and brand-red fedora logo. |
+| `<rh-site-status>`: improved visual style | {{p()}} | Updated visual styling. |
+| `<rh-skip-link>`: added dark scheme support | {{p()}} | Added support for dark color scheme. |
+| `<rh-navigation-primary>`: corrected default logo link | {{p()}} | Corrected default logo link destination to point to redhat.com/en. |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.2.0">View all version 4.2 release notes</rh-cta>
+
+### Patches from version 4.1.5
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| `<rh-navigation-primary>`: corrected overlay closure | {{p()}} | Corrected overlay closure regression on large viewport dropdown toggle. |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.1.5">View all version 4.1.5 release notes</rh-cta>
+
+### Patches from version 4.1.4
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| CSS release fix | {{p()}} | Ensure that CSS changes are correctly reflected in released files. |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.1.4">View all version 4.1.4 release notes</rh-cta>
+
+### Patches from version 4.1.3
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| `<rh-navigation-primary>`: corrected visual gap | {{p()}} | Corrected visual gap between links and utility menu, and adjusted dropdown menu padding. |
+| `<rh-navigation-primary>`: corrected bento box dropdown | {{p()}} | Corrected regression in bento box dropdown behavior. |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.1.3">View all version 4.1.3 release notes</rh-cta>
+
+### Patches from version 4.1.2
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| `<rh-navigation-primary>`: adjusted collapse breakpoint | {{p()}} | Adjusted links menu to collapse at a wider viewport than main navigation. |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.1.2">View all version 4.1.2 release notes</rh-cta>
+
+### Patches from version 4.1.1
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| `<rh-accordion>`: fixed SSR compatibility | {{p()}} | Fixed server-side rendering compatibility. |
+| `<rh-navigation-primary>`: corrected logo accessibility | {{p()}} | Corrected logo accessibility semantics for Safari. |
+| `<rh-tabs>`: improved focus accessibility | {{p()}} | Improved accessibility so only one focus outline is visible at a time when navigating within a tab panel. |
+| `<rh-scheme-toggle>`: corrected colors and focus | {{p()}} | Corrected checked and hover background colors, improved focus styles. |
+| `<rh-cta>`: improved text weight | {{p()}} | Made text in primary, secondary, and default CTAs bolder. |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.1.1">View all version 4.1.1 release notes</rh-cta>
+
+</section>
+
 <section aria-labelledby="version-4.1">
 
 ## Version 4.1
@@ -96,6 +195,50 @@ Released April 9, 2026
 </section>
 
 <section aria-labelledby="version-4.0">
+
+### Patches from version 4.0.4
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| `<rh-jump-links>`: fixed active state race conditions | {{p()}} | Fixed active state race conditions during rapid clicks and smooth scrolling. |
+| `<rh-code-block>`: fixed tooltip reappearance | {{p()}} | Prevented tooltip from unexpectedly reappearing. |
+| `<rh-cta>`: fixed default variant arrow on Firefox | {{p()}} | Ensured default variant's arrow consistently follows text on Firefox. |
+| `<rh-switch>`: fixed rendering on some browsers | {{p()}} | Fixed switch rendering on some browsers in light/dark schemes. |
+| `<rh-tooltip>`: corrected hover delay | {{p()}} | Corrected the intentionality delay for triggering the tooltip. |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.0.4">View all version 4.0.4 release notes</rh-cta>
+
+### Patches from version 4.0.3
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| `<rh-code-block>`: added `visible` type for `line-numbers` | {{p()}} | Added `visible` value to TypeScript types for the `line-numbers` attribute. |
+| Corrected `lit` import paths | {{p()}} | Corrected import paths for `lit` dependencies. |
+| `<rh-navigation-primary>`: fixed Safari 26.2 rendering | {{p()}} | Corrected rendering issue for Safari 26.2. |
+| Updated `@rhds/icons` to v2.1 | {{p()}} | Added 82 new icons to the UI and Standard sets. |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.0.3">View all version 4.0.3 release notes</rh-cta>
+
+### Patches from version 4.0.2
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| Updated Lit and other dependencies | {{p()}} | Updated Lit and other dependencies. |
+| `<rh-tile>`: decreased compact heading font size | {{p()}} | Decreased font size of compact and checkable Tile headings. |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.0.2">View all version 4.0.2 release notes</rh-cta>
 
 ## Version 4.0
 Released October 31, 2025 🎃
