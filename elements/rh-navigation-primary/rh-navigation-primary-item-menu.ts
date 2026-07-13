@@ -17,7 +17,6 @@ import styles from './rh-navigation-primary-item-menu.css' with { type: 'css' };
  * closes the parent dropdown.
  *
  * @summary Content container for navigation item dropdowns
- *
  */
 @customElement('rh-navigation-primary-item-menu')
 export class RhNavigationPrimaryItemMenu extends LitElement {
