@@ -38,7 +38,7 @@
       padding-inline:
         /* Content panel inline padding at containers >= xl */
         var(--rh-navigation-primary-item-menu-padding-inline,
-          var(--rh-space-2xl, 32px) var(--rh-space-2xl, 32px));
+          var(--rh-space-2xl, 32px));
     }
   }
 }
