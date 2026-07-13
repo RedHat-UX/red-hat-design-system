@@ -30,6 +30,8 @@ In the RHDS Figma library, we added a property called "Theme". It gives users th
 
 ## Developer usage
 
+The Project Felt preview theme CSS is compatible with [Red Hat Design System version 4.2.0](https://ux.redhat.com/release-notes/#version-4.2) and above.
+
 ### 1. Include the stylesheet
 
 There are a couple options for linking to the Project Felt preview theme:
