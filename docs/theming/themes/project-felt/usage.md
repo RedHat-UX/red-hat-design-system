@@ -42,7 +42,7 @@ There are a couple options for linking to the Project Felt preview theme:
 For Red Hat websites and applications, we recommend linking the Project Felt theme preview stylesheet through the [Red Hat Digital Experience CDN][cdn].
 
 ```html rhcodeblock {compact=true}
-<link href="https://www.redhatstatic.com/dssf-001/gh/rhds/themes/project-felt/felt-theme-preview.css" rel="stylesheet">
+<link href="https://www.redhatstatic.com/dssf-001/gh/rhds/themes/project-felt/preview/felt-theme-preview.css" rel="stylesheet">
 ```
 
 #### Include in your build process
@@ -50,7 +50,7 @@ For Red Hat websites and applications, we recommend linking the Project Felt the
 If you'd prefer to include the theme preview stylesheet in your build process, you can request the CSS from the [CDN URL][cdncss]:
 
 ```css rhcodeblock {compact=true}
-https://www.redhatstatic.com/dssf-001/gh/rhds/themes/project-felt/felt-theme-preview.css
+https://www.redhatstatic.com/dssf-001/gh/rhds/themes/project-felt/preview/felt-theme-preview.css
 ```
 
 ### 2. Add theme preview class
@@ -64,4 +64,4 @@ After linking the Project Felt preview theme CSS file, you must apply the `felt-
 ```
 
 [cdn]: https://www.redhatstatic.com/dssf-001
-[cdncss]: https://www.redhatstatic.com/dssf-001/gh/rhds/themes/project-felt/felt-theme-preview.css
+[cdncss]: https://www.redhatstatic.com/dssf-001/gh/rhds/themes/project-felt/preview/felt-theme-preview.css
