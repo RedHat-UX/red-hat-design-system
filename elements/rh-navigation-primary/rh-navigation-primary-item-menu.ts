@@ -18,14 +18,12 @@ import styles from './rh-navigation-primary-item-menu.css' with { type: 'css' };
  *
  * @summary Content container for navigation item dropdowns
  *
- * @cssprop [--rh-navigation-primary-item-menu-padding-block-start] -
- *          Block-start padding of the content panel
- * @cssprop [--rh-navigation-primary-item-menu-padding-block-end] -
- *          Block-end padding of the content panel.
- * @cssprop [--rh-navigation-primary-item-menu-padding-inline-start] -
- *          Inline-start padding of the content panel.
- * @cssprop [--rh-navigation-primary-item-menu-padding-inline-end] -
- *          Inline-end padding of the content panel.
+ * @cssprop [--rh-navigation-primary-item-menu-padding-block] -
+ *          Block-start and block-end padding of the content panel, as a
+ *          `padding-block` shorthand pair.
+ * @cssprop [--rh-navigation-primary-item-menu-padding-inline] -
+ *          Inline-start and inline-end padding of the content panel, as a
+ *          `padding-inline` shorthand pair.
  */
 @customElement('rh-navigation-primary-item-menu')
 export class RhNavigationPrimaryItemMenu extends LitElement {
