@@ -14,3 +14,4 @@ relatedItems:
   - rh-button
   - rh-scheme-toggle
   - rh-switch
+since: v4.2.0

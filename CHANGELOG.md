@@ -1,5 +1,112 @@
 # @rhds/elements
 
+## 4.2.0
+### Minor Changes
+
+- 6761889: `<rh-spinner>`: added CSS custom properties for theme-based animation overrides. Added `--rh-spinner-stroke-width`, `--rh-spinner-vector-effect`, `--rh-spinner-container-animation-name`, `--rh-spinner-container-animation-duration`, `--rh-spinner-container-animation-timing`, `--rh-spinner-animation-name`, `--rh-spinner-animation-duration`, `--rh-spinner-animation-timing`, `--rh-spinner-dash-array`, `--rh-spinner-dash-offset`, `--rh-spinner-rotate-start`, and `--rh-spinner-track-display`.
+  Includes `felt-dash` and `felt-rotate` keyframes in the shadow root for Felt theme compatibility.
+- 6761889: ✨ Added `<rh-scheme-dropdown>`
+  
+  A scheme dropdown switches between light, dark, and system default color schemes.
+  
+  ```html
+  <rh-scheme-dropdown></rh-scheme-dropdown>
+  ```
+- 6761889: `<rh-button>`: added `--rh-button-icon-color` CSS custom property to allow theming the icon color independently from the button text color
+- 6761889: `<rh-subnav>`: added new public CSS custom properties (`--rh-subnav-link-padding-block`, `--rh-subnav-link-padding-inline`, `--rh-subnav-scroll-buttons-padding`, `--rh-subnav-scroll-buttons-border-block-end`)
+- 6761889: `<rh-button>`: added close variant background colors (`--rh-button-close-active-background`, `--rh-button-close-focus-background`, and `--rh-button-close-hover-background`) plus `--rh-button-close-width` and `--rh-button-close-radius` props, fix `:focus`/`:active` source-order specificity
+- 6761889: `<rh-jump-links>`: added new CSS custom properties (`--rh-jump-link-border`, `--rh-jump-link-link-border`, `--rh-jump-link-hover-background-color`, `--rh-jump-link-hover-border-radius`, `--rh-jump-link-max-width`, `--rh-jump-link-item-padding-block`, `--rh-jump-link-item-padding-inline`, `--rh-jump-link-link-padding-block`, `--rh-jump-link-link-padding-inline`, `--rh-jump-link-indicator-border-radius`)
+- 6761889: `<rh-menu-item>`: added new CSS custom properties (`--rh-menu-item-border-radius`, `--rh-menu-item-focus-inset`)
+- 6761889: `<rh-menu-dropdown>`: added new CSS custom properties (`--rh-menu-dropdown-panel-padding`, `--rh-menu-dropdown-panel-border-radius`, `--rh-menu-dropdown-panel-border`, `--rh-menu-dropdown-panel-background`, `--rh-menu-dropdown-panel-box-shadow`, `--rh-menu-dropdown-caret-size`, `--rh-menu-dropdown-toggle-border-color`, `--rh-menu-dropdown-toggle-background`, `--rh-menu-dropdown-hover-border-color`, `--rh-menu-dropdown-active-border-color`, `--rh-menu-dropdown-focus-border-color`, `--rh-menu-dropdown-open-border-color`, `--rh-menu-dropdown-disabled-box-shadow`, `--rh-menu-dropdown-compact-size`, `--rh-menu-dropdown-compact-justify`, `--rh-menu-dropdown-compact-disabled-background`, `--rh-menu-dropdown-compact-disabled-icon-color`)
+- 6761889: `<rh-footer-universal>`: added `tertiary` slot for social links and copyright. The previous slot pattern continues to work for backward compatibility.
+  
+  ### Migration
+  
+  1. Move `<rh-footer-social-link>` elements from `slot="social-links"` on `<rh-footer>` into a `<rh-footer-links slot="tertiary">` inside `<rh-footer-universal>`.
+  2. Move `<rh-footer-copyright>` from `slot="links-secondary"` to `slot="tertiary"` inside `<rh-footer-universal>`.
+  
+  ```html
+  <rh-footer-universal slot="universal">
+    <!-- ...links-primary, links-secondary... -->
+    <rh-footer-copyright slot="tertiary">&copy; 2026 Red Hat</rh-footer-copyright>
+    <rh-footer-links slot="tertiary" role="list">
+      <rh-footer-social-link icon="linkedin" href="..." accessible-label="LinkedIn"></rh-footer-social-link>
+    </rh-footer-links>
+  </rh-footer-universal>
+  ```
+- 6761889: `<rh-accordion>`: added new CSS custom properties (`--rh-accordion-panel-padding-block-start`, `--rh-accordion-panel-padding-inline-end`, `--rh-accordion-panel-padding-block-end`, `--rh-accordion-panel-padding-inline-start`)
+- 6761889: `<rh-scheme-toggle>`: added the `scheme-changed` event that fires whenever a user changes the color scheme.
+- 6761889: `<rh-tab>`: added `--rh-tabs-link-*` CSS custom properties for theming the inner tab link area (pill radius, padding, hover/focus backgrounds, focus outlines). Add `--rh-tabs-box-border-color` for box-style tab side borders.
+  
+  `<rh-tabs>`: added `overflow-button`, `overflow-button previous`, and `overflow-button next` CSS parts on the overflow scroll buttons. Add `--rh-tabs-overflow-*` CSS custom properties for overflow button padding, sizing, border radius, hover/focus backgrounds, and focus outlines.
+- 6761889: `<rh-pagination>`: deprecated `variant="open"` in favor of `variant="borderless"`.
+  
+  Before:
+  ```html
+  <rh-pagination variant="open">
+    ...
+  </rh-pagination>
+  ```
+  
+  After:
+  ```html
+  <rh-pagination variant="borderless">
+    ...
+  </rh-pagination>
+  ```
+  
+  NOTE: Even though deprecated, `variant="open"` will continue to work until the next major release.
+- 6761889: `<rh-tabs>`: added support for `icon` and `icon-set` attributes to the `<rh-tab>` element
+- 6761889: ✨ Added `<rh-button-group>`
+  
+  A button group visually organizes multiple related buttons into a single collection.
+  
+  ```html
+  <rh-button-group>
+    <rh-button>Save</rh-button>
+    <rh-button>Cancel</rh-button>
+    <rh-button>Delete</rh-button>
+  </rh-button-group>
+  ```
+- 6761889: `<rh-switch>`: added `--rh-switch-show-check` CSS custom property to control checkmark icon visibility, without requiring the `show-check-icon` attribute on each selected element
+  
+  ```css
+  .themed-container {
+    --rh-switch-check-display: true;
+  }
+  ```
+- 466eea1: `<rh-navigation-primary>`: Added two CSS custom properties allowing customization of menu padding: `--rh-navigation-primary-item-menu-padding-block`, `--rh-navigation-primary-item-menu-padding-inline`
+- 6761889: `<rh-button>`: deprecated `label` in favor of `accessible-label`.
+  
+  BEFORE:
+  
+  ```html
+  <rh-button label="Search"></rh-button>
+  ```
+  
+  AFTER:
+  
+  ```html
+  <rh-button accessible-label="Search"></rh-button>
+  ```
+  
+  `label` will continue to function until the next major release.
+- 6761889: `<rh-alert>`: added `--rh-alert-border-width` CSS custom property
+- 6761889: `<rh-chip>`: fixed the close icon animation arc and exposed the `btn-link` CSS part
+- 6761889: `<rh-scheme-toggle>`: added new public CSS custom properties (`--rh-scheme-toggle-flex-flow`, `--rh-scheme-toggle-align-items`, `--rh-scheme-toggle-gap`) to control fieldset layout direction, alignment, and spacing. Set `--rh-scheme-toggle-flex-flow: column` to position the legend above the button group.
+- 6761889: `<rh-cta>`: improved focus ring rendering for better forced-colors (high contrast mode) compatibility. Added `--rh-cta-hover-background-color` and `--rh-cta-focus-text-decoration` CSS custom props for hover and focus state theming.
+- 6761889: `<rh-navigation-link>`: added new public CSS custom properties (`--rh-navigation-link-font-size`, `--rh-navigation-link-border-radius`, `--rh-navigation-link-inset-inline-start`, `--rh-navigation-link-border-inline-start-width`, `--rh-navigation-link-background-color`, `--rh-navigation-link-hover-background-color`, `--rh-navigation-link-indicator-border-radius`, `--rh-navigation-link-white-space`)
+- 6761889: `<rh-navigation-vertical-list>`: added new public CSS custom properties (`--rh-navigation-vertical-list-summary-background-color`, `--rh-navigation-vertical-list-summary-hover-background-color`, `--rh-navigation-vertical-list-summary-border-radius`, `--rh-navigation-vertical-list-nested-margin-inline`, `--rh-navigation-vertical-list-nested-margin-block`)
+
+### Patch Changes
+
+- 6761889: `<rh-site-status>`: improved visual style
+- 6761889: `<rh-skip-link>`: added support for dark scheme
+- 6761889: `<rh-announcement>`: update `<rh-button>` in dismissible announcements to use the `accessible-label`
+  attribute.
+- 6761889: `<rh-navigation-primary>`: corrected default logo link destination to point to redhat.com/en
+- 6761889: `<rh-footer>`: updated visual design with top border, responsive link header font sizes, and brand-red Fedora logo
+
 ## 4.1.5
 ### Patch Changes
 
