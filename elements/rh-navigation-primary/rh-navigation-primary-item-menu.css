@@ -19,7 +19,7 @@
   padding-inline:
     /** Content panel inline padding */
     var(--rh-navigation-primary-item-menu-padding-inline,
-      var(--rh-space-xl, 24px) var(--rh-space-xl, 24px));
+      var(--rh-space-xl, 24px));
 
   /**
    * Desktop item-menu panels when `rh-navigation-primary` is not compact (container >= lg).
