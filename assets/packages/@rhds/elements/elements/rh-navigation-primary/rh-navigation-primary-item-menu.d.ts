@@ -8,7 +8,6 @@ import { LitElement } from 'lit';
  * closes the parent dropdown.
  *
  * @summary Content container for navigation item dropdowns
- *
  */
 export declare class RhNavigationPrimaryItemMenu extends LitElement {
     #private;

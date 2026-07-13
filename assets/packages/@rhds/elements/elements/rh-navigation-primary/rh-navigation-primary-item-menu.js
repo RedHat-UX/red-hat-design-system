@@ -7,7 +7,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { consume } from '@lit/context';
 import { context } from './context.js';
 import { css } from "lit";
-const styles = css `:host{display:block}#container{color:var(--rh-color-text-primary);background-color:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));padding-block:var(--rh-space-lg,16px) var(--rh-space-xl,24px);padding-inline:var(--rh-space-xl,24px)}@container navigation-primary (min-width: 1200px){#container:not(.compact){margin:0 auto;max-width:1440px;padding-block:var(--rh-space-2xl,32px) var(--rh-space-3xl,48px);padding-inline:var(--rh-space-2xl,32px)}}:host-context(#secondary) #container{padding-block:var(--rh-space-lg,16px) var(--rh-space-2xl,32px);padding-inline:var(--rh-space-lg,16px)}@container navigation-primary (min-width: 576px){:host-context(#secondary) #container{padding-block:var(--rh-space-2xl,32px) var(--rh-space-3xl,48px);padding-inline:var(--rh-space-2xl,32px)}}`;
+const styles = css `:host{display:block}#container{color:var(--rh-color-text-primary);background-color:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));padding-block:var(--rh-navigation-primary-item-menu-padding-block,var(--rh-space-lg,16px) var(--rh-space-xl,24px));padding-inline:var(--rh-navigation-primary-item-menu-padding-inline,var(--rh-space-xl,24px))}@container navigation-primary (min-width: 1200px){#container:not(.compact){margin:0 auto;max-width:1440px;padding-block:var(--rh-navigation-primary-item-menu-padding-block,var(--rh-space-2xl,32px) var(--rh-space-3xl,48px));padding-inline:var(--rh-navigation-primary-item-menu-padding-inline,var(--rh-space-2xl,32px))}}:host-context(#secondary) #container{padding-block:var(--rh-space-lg,16px) var(--rh-space-2xl,32px);padding-inline:var(--rh-space-lg,16px)}@container navigation-primary (min-width: 576px){:host-context(#secondary) #container{padding-block:var(--rh-space-2xl,32px) var(--rh-space-3xl,48px);padding-inline:var(--rh-space-2xl,32px)}}`;
 /**
  * A navigation menu provides a responsive content container for navigation
  * item dropdowns. This element must be a child of `rh-navigation-primary-item`
@@ -17,7 +17,6 @@ const styles = css `:host{display:block}#container{color:var(--rh-color-text-pri
  * closes the parent dropdown.
  *
  * @summary Content container for navigation item dropdowns
- *
  */
 let RhNavigationPrimaryItemMenu = class RhNavigationPrimaryItemMenu extends LitElement {
     constructor() {
