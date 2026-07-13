@@ -1,0 +1,131 @@
+---
+description: Navigation with overridden CSS custom properties for the dropdown content panel's padding, using different block-start/end spacing tokens and matching inline-start/end spacing tokens.
+---
+<rh-navigation-primary role="navigation">
+  <rh-navigation-primary-item variant="dropdown">
+    <span slot="summary">AI</span>
+    <h2>AI Content</h2>
+    <div class="grid">
+      <div class="column">
+        <ul>
+          <li>
+            <a href="#">Link 1</a>
+          </li>
+          <li>
+            <a href="#">Link 2</a>
+          </li>
+          <li>
+            <a href="#">Link 3</a>
+          </li>
+        </ul>
+      </div>
+      <div class="column">
+        <ul>
+          <li>
+            <a href="#">Link 1a</a>
+          </li>
+          <li>
+            <a href="#">Link 2a</a>
+          </li>
+          <li>
+            <a href="#">Link 3a</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </rh-navigation-primary-item>
+
+  <rh-navigation-primary-item variant="dropdown">
+    <span slot="summary">Hybrid Cloud</span>
+    <h2>Hybrid Cloud Content</h2>
+    <div class="grid">
+      <div class="column">
+        <ul>
+          <li>
+            <a href="#">Link 1</a>
+          </li>
+          <li>
+            <a href="#">Link 2</a>
+          </li>
+          <li>
+            <a href="#">Link 3</a>
+          </li>
+        </ul>
+      </div>
+      <div class="column">
+        <ul>
+          <li>
+            <a href="#">Link 1a</a>
+          </li>
+          <li>
+            <a href="#">Link 2a</a>
+          </li>
+          <li>
+            <a href="#">Link 3a</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </rh-navigation-primary-item>
+
+  <rh-navigation-primary-item variant="dropdown">
+    <span slot="summary">Learn</span>
+    Learn Content
+  </rh-navigation-primary-item>
+</rh-navigation-primary>
+
+<div id="mock">
+  <p>Mock Page content <a href="#">Link outside</a>
+  </p>
+</div>
+
+<link rel="stylesheet" href="../rh-navigation-primary-lightdom.css">
+
+<style>
+  /* styles for mock content */
+  #mock {
+    margin-block: var(--rh-space-4xl, 64px);
+    padding-inline: var(--rh-space-lg, 16px);
+    @media (min-width: 768px) {
+      padding-inline: var(--rh-space-2xl, 32px);
+    }
+  }
+
+  /*
+   * Override the dropdown content panel's padding. Custom properties
+   * penetrate shadow boundaries, so setting them here on the light DOM
+   * host cascades down into the nested rh-navigation-primary-item-menu.
+   */
+  rh-navigation-primary {
+    /** Smaller padding above the panel content, much larger padding below it */
+    --rh-navigation-primary-item-menu-padding-block: var(--rh-space-lg, 16px) var(--rh-space-4xl, 64px);
+    /** Larger padding on both inline sides of the panel content */
+    --rh-navigation-primary-item-menu-padding-inline: var(--rh-space-3xl, 48px) var(--rh-space-3xl, 48px);
+  }
+
+  /* panel grid */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--rh-space-4xl);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+    font-size: var(--rh-font-size-body-text-md, 1rem);
+
+    @container (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    & ul {
+      display: flex;
+      flex-direction: column;
+      gap: var(--rh-space-2xl);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-navigation-primary/rh-navigation-primary.js';
+</script>
