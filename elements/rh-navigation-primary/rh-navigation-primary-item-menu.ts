@@ -17,13 +17,6 @@ import styles from './rh-navigation-primary-item-menu.css' with { type: 'css' };
  * closes the parent dropdown.
  *
  * @summary Content container for navigation item dropdowns
- *
- * @cssprop [--rh-navigation-primary-item-menu-padding-block] -
- *          Block-start and block-end padding of the content panel, as a
- *          `padding-block` shorthand pair.
- * @cssprop [--rh-navigation-primary-item-menu-padding-inline] -
- *          Inline-start and inline-end padding of the content panel, as a
- *          `padding-inline` shorthand pair.
  */
 @customElement('rh-navigation-primary-item-menu')
 export class RhNavigationPrimaryItemMenu extends LitElement {

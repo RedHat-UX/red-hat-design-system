@@ -32,11 +32,11 @@
       margin: 0 auto;
       max-width: 1440px;
       padding-block:
-        /** Content panel block padding */
+        /* Content panel block padding at containers >= xl */
         var(--rh-navigation-primary-item-menu-padding-block,
           var(--rh-space-2xl, 32px) var(--rh-space-3xl, 48px));
       padding-inline:
-        /** Content panel inline padding */
+        /* Content panel inline padding at containers >= xl */
         var(--rh-navigation-primary-item-menu-padding-inline,
           var(--rh-space-2xl, 32px) var(--rh-space-2xl, 32px));
     }
