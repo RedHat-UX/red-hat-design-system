@@ -2,7 +2,7 @@
 "@rhds/elements": minor
 ---
 
-`<rh-pagination>`: deprecate `variant="open"` in favor of `variant="borderless"`.
+`<rh-pagination>`: deprecated `variant="open"` in favor of `variant="borderless"`.
 
 Before:
 ```html

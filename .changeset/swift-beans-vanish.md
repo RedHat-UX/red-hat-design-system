@@ -2,5 +2,5 @@
 "@rhds/elements": minor
 ---
 
-`<rh-chip>`: fix close icon animation arc and expose `btn-link` CSS part
+`<rh-chip>`: fixed the close icon animation arc and exposed the `btn-link` CSS part
   
