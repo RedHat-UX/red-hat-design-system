@@ -218,10 +218,10 @@ Released April 9, 2026
 
 | Change        | Type        | Notes        |
 | ------------- | ----------- | ------------ |
-| `<rh-code-block>`: added `visible` type for `line-numbers` | {{p()}} | Added `visible` value to TypeScript types for the `line-numbers` attribute. |
 | Corrected `lit` import paths | {{p()}} | Corrected import paths for `lit` dependencies. |
-| `<rh-navigation-primary>`: fixed Safari 26.2 rendering | {{p()}} | Corrected rendering issue for Safari 26.2. |
 | Updated `@rhds/icons` to v2.1 | {{p()}} | Added 82 new icons to the UI and Standard sets. |
+| `<rh-code-block>`: added `visible` type for `line-numbers` | {{p()}} | Added `visible` value to TypeScript types for the `line-numbers` attribute. |
+| `<rh-navigation-primary>`: fixed Safari 26.2 rendering | {{p()}} | Corrected rendering issue for Safari 26.2. |
 
 </rh-table>
 
