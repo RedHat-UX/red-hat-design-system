@@ -712,11 +712,11 @@ Released January 11, 2024
 | Change                                  | Type    | Notes                                                                                                      |
 | --------------------------------------- | ------- | ---------------------------------------------------------------------------------------------------------- |
 | Added `<rh-surface>`                    | {{i()}} | a content container that provides accessible background and font color theming for its child elements.     |
-| Updated to `RH Tokens 2.0`              | {{i()}} | Uses RHDS Tokens version 2.0. [See v1.3 release notes][tokens13] for important info regarding this update. |
-| Updated `<rh-tabs-panel>`               | {{i()}} | Tab Panels can now have their margin and padding overridden.                                               |
-| Updated `<rh-pagination>`               | {{i()}} | Added `numeric` CSS shadow part.                                                                           |
 | Added `accessible-label` to `<rh-tile>` | {{i()}} | Tile's form control labels can now be customized.                                                          |
 | Fixed `<rh-tile>` radio and checkboxes  | {{i()}} | Radio and checkbox tiles now submit their values in `<form>` elements.                                     |
+| Updated `<rh-pagination>`               | {{i()}} | Added `numeric` CSS shadow part.                                                                           |
+| Updated `<rh-tabs-panel>`               | {{i()}} | Tab Panels can now have their margin and padding overridden.                                               |
+| Updated to `RH Tokens 2.0`              | {{i()}} | Uses RHDS Tokens version 2.0. [See v1.3 release notes][tokens13] for important info regarding this update. |
 
 </rh-table>
 
