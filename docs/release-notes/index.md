@@ -762,8 +762,8 @@ Released July 5, 2023
 
 | Change                                             | Type    | Notes |
 | ---------------------------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Added `<rh-card>`                                  | {{i()}} | Card creates a component with a header, body, and footer. The header and footer are optional.                            |
 | Added `<rh-audio-player>`                          | {{i()}} | Audio-player creates a custom UI for audio files.                                                                        |
+| Added `<rh-card>`                                  | {{i()}} | Card creates a component with a header, body, and footer. The header and footer are optional.                            |
 | Added `<rh-code-block>`                            | {{i()}} | A container for a block of code. May be composed into a toolbar or contain copy buttons or other interactive components. |
 | Added new CSS custom properties for `<rh-tooltip>` | {{i()}} | New CSS custom properties, like `--rh-tooltip-arrow-size`, `--rh-tooltip-content-background-color`, and more!            |
 | Added outline variant for `<rh-tag>`               | {{i()}} | Now you can use `variant="outline"`.                                                                                     |
