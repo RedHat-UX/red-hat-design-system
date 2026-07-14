@@ -737,13 +737,13 @@ Released October 16, 2023
 
 | Change                                                           | Type    | Notes                                                                                                                           |
 | ---------------------------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Added `<rh-navigation-secondary>` current page indicator support | {{i()}} | Updated support for a current page indicator using `aria-current="page"`.                                                       |
 | Added `<rh-table>`                                               | {{i()}} | A table is a container for displaying information. It allows a user to scan, examine, and compare large amounts of data.        |
 | Added `<rh-tile>`                                                | {{i()}} | A tile is a flexible layout with a clickable and contained surface.                                                             |
 | Added `<rh-timestamp>`                                           | {{i()}} | Provides consistent formats for displaying date and time values.                                                                |
-| Added `<rh-navigation-secondary>` current page indicator support | {{i()}} | Updated support for a current page indicator using `aria-current="page"`.                                                       |
 | Fixed `<rh-card>` `header` slot                                  | {{i()}} | Card's header slot now displays items vertically instead of stacking, allowing for more than one item to display in the header. |
-| Improved keyboard navigation on `<rh-navigation-secondary>`      | {{p()}} | Secondary Navigation now has improved keyboard navigation.                                                                      |
 | Fixed `<rh-cta>` `brick` variant                                 | {{p()}} | Brick variants of calls to action (CTAs) are now full width.                                                                    |
+| Improved keyboard navigation on `<rh-navigation-secondary>`      | {{p()}} | Secondary Navigation now has improved keyboard navigation.                                                                      |
 
 </rh-table>
 
