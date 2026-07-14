@@ -681,16 +681,16 @@ Released April 22, 2024
 
 | Change                              | Type    | Notes |
 | ---------------------------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Added `<rh-site-status>`            | {{i()}} | Website status communicates the operational status of a website or domain using a status icon and link. It is usually located in the Footer component.                                  |
 | Added `<rh-back-to-top>`            | {{i()}} | Back to top component is a fragment link that allows users to quickly navigate to the top of a lengthy content.                                                                         |
+| Added `<rh-site-status>`            | {{i()}} | Website status communicates the operational status of a website or domain using a status icon and link. It is usually located in the Footer component.                                  |
 | Added `<rh-skip-link>`              | {{i()}} | A skip link is used to skip repetitive content on a page. It is hidden by default and can be activated by hitting the <span class="kbd">Tab</span> key after loading/refreshing a page. |
 | Updated `<rh-code-block>`           | {{i()}} | Added line numbers option, "Show more" toggle, copy and wrap actions, to `<rh-code-block>`                                                                                              |
-| Updated `<rh-menu>`                 | {{p()}} | Improved focus accessibility for keyboard navigation users on Firefox.                                                                                                                  |
-| Updated `<rh-button>`               | {{p()}} | Improved focus accessibility on Firefox.                                                                                                                                                |
+| Updated PatternFly Elements tooling | {{i()}} | [Patch update to dependencies][pfepatchlit3], including Lit version 3.                                                                                                                  |
 | Updated `<rh-accordion>`            | {{p()}} | Added an accents slot with placement options as inline and bottom.                                                                                                                      |
 | Updated `<rh-alert>`                | {{p()}} | Make sure alerts always have to correct (lightest) color palette.                                                                                                                       |
+| Updated `<rh-button>`               | {{p()}} | Improved focus accessibility on Firefox.                                                                                                                                                |
+| Updated `<rh-menu>`                 | {{p()}} | Improved focus accessibility for keyboard navigation users on Firefox.                                                                                                                  |
 | Updated `<rh-tabs>`                 | {{p()}} | Allow tabs with long text content to fit into different-sized containers.                                                                                                               |
-| Updated PatternFly Elements tooling | {{i()}} | [Patch update to dependencies][pfepatchlit3], including Lit version 3.                                                                                                                  |
 
 </rh-table>
 
