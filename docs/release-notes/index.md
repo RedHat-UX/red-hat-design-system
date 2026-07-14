@@ -567,15 +567,15 @@ Released April 7, 2025
 
 | Change        | Type        | Notes        |
 | ------------- | ----------- | ------------ |
-| Color Context: SSR support | {{p()}} | Prevent errors in certain Server-side Rendered (SSR) scenarios. |
+| `<rh-alert>`: corrected heading colors | {{p()}} | Change heading color for all states of alert to make them all the same. |
 | `<rh-alert>`: layout improvements | {{p()}} | Corrected typography and layouts. |
 | `<rh-code-block>`: code highlighting improvements | {{p()}} | Ensure that syntax colors and styles are applied when the element upgrades. |
-| `<rh-tabs>`: SSR fix | {{p()}} | Corrects active tab styles in SSR scenarios |
+| `<rh-cta>`: SSR fix | {{p()}} | Fix some errors when hydrating in SSR scenarios. |
 | `<rh-navigation-secondary>`: dark color scheme fix | {{p()}} | Corrected style regression in dark color palettes. |
 | `<rh-surface>`: fixed themed text color | {{p()}} | Corrected themed text color. |
-| `<rh-alert>`: corrected heading colors | {{p()}} | Change heading color for all states of alert to make them all the same. |
 | `<rh-table>`: SSR support | {{p()}} | Improved SSR support. |
-| `<rh-cta>`: SSR fix | {{p()}} | Fix some errors when hydrating in SSR scenarios. |
+| `<rh-tabs>`: SSR fix | {{p()}} | Corrects active tab styles in SSR scenarios |
+| Color Context: SSR support | {{p()}} | Prevent errors in certain Server-side Rendered (SSR) scenarios. |
 
 </rh-table>
 
