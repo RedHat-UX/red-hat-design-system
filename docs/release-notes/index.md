@@ -202,9 +202,9 @@ Released April 9, 2026
 
 | Change        | Type        | Notes        |
 | ------------- | ----------- | ------------ |
-| `<rh-jump-links>`: fixed active state race conditions | {{p()}} | Fixed active state race conditions during rapid clicks and smooth scrolling. |
 | `<rh-code-block>`: fixed tooltip reappearance | {{p()}} | Prevented tooltip from unexpectedly reappearing. |
 | `<rh-cta>`: fixed default variant arrow on Firefox | {{p()}} | Ensured default variant's arrow consistently follows text on Firefox. |
+| `<rh-jump-links>`: fixed active state race conditions | {{p()}} | Fixed active state race conditions during rapid clicks and smooth scrolling. |
 | `<rh-switch>`: fixed rendering on some browsers | {{p()}} | Fixed switch rendering on some browsers in light/dark schemes. |
 | `<rh-tooltip>`: corrected hover delay | {{p()}} | Corrected the intentionality delay for triggering the tooltip. |
 
