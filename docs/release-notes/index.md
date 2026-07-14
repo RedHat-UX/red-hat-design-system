@@ -140,10 +140,10 @@ Released July 13, 2026
 | Change        | Type        | Notes        |
 | ------------- | ----------- | ------------ |
 | `<rh-accordion>`: fixed SSR compatibility | {{p()}} | Fixed server-side rendering compatibility. |
-| `<rh-navigation-primary>`: corrected logo accessibility | {{p()}} | Corrected logo accessibility semantics for Safari. |
-| `<rh-tabs>`: improved focus accessibility | {{p()}} | Improved accessibility so only one focus outline is visible at a time when navigating within a tab panel. |
-| `<rh-scheme-toggle>`: corrected colors and focus | {{p()}} | Corrected checked and hover background colors, improved focus styles. |
 | `<rh-cta>`: improved text weight | {{p()}} | Made text in primary, secondary, and default CTAs bolder. |
+| `<rh-navigation-primary>`: corrected logo accessibility | {{p()}} | Corrected logo accessibility semantics for Safari. |
+| `<rh-scheme-toggle>`: corrected colors and focus | {{p()}} | Corrected checked and hover background colors, improved focus styles. |
+| `<rh-tabs>`: improved focus accessibility | {{p()}} | Improved accessibility so only one focus outline is visible at a time when navigating within a tab panel. |
 
 </rh-table>
 
