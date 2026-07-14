@@ -1,18 +1,12 @@
 {%- if pathfinder and subnav and subnav.collection -%}
-{%- set pages = collections[subnav.collection] | sort(attribute = "data.subnav.order") -%}
-{%- for item in pages -%}
-  {%- if item.url == page.url -%}
-    {%- set prev = pages[loop.index0 - 1] if loop.index0 > 0 -%}
-    {%- set next = pages[loop.index0 + 1] -%}
-  {%- endif -%}
-{%- endfor -%}
-{%- if prev or next -%}
+{%- set links = collections[subnav.collection] | pathfinderLinks(page.url) -%}
+{%- if links.prev or links.next -%}
 <uxdot-pathfinder>
-  {%- if prev %}
-  <a href="{{ prev.url }}" slot="previous">{{ prev.data.title }}</a>
+  {%- if links.prev %}
+  <a href="{{ links.prev.url }}" slot="previous">{{ links.prev.data.title }}</a>
   {%- endif %}
-  {%- if next %}
-  <a href="{{ next.url }}" slot="next">{{ next.data.title }}</a>
+  {%- if links.next %}
+  <a href="{{ links.next.url }}" slot="next">{{ links.next.data.title }}</a>
   {%- endif %}
 </uxdot-pathfinder>
 {%- endif -%}

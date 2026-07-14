@@ -139,8 +139,8 @@ export default class ElementsPage extends Renderer<Context> {
       : isDemoPage ? await this.#renderDemos(content, ctx)
       : content}
 
-      ${this.#renderPathfinder(ctx)}
       ${await this.renderFile('./docs/_includes/partials/component/feedback.11ty.ts', ctx)}
+      ${this.#renderPathfinder(ctx)}
     `;
   }
 
