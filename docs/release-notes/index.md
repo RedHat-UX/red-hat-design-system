@@ -299,8 +299,8 @@ Released October 24, 2025
 | Change        | Type        | Notes        |
 | ------------- | ----------- | ------------ |
 | `<rh-code-block>`: added `copy` event | {{i()}} | Modify the `event.content` field to change the text to be copied |
-| `<rh-tooltip>`: add `silent` attribute | {{i()}} | Add the `silent` attribute to hide tooltip content from screen readers |
 | `<rh-progress-stepper>`: documentation improvements | {{p()}} | Improved online documentation |
+| `<rh-tooltip>`: add `silent` attribute | {{i()}} | Add the `silent` attribute to hide tooltip content from screen readers |
 
 </rh-table>
 
