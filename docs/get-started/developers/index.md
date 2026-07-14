@@ -7,6 +7,7 @@ tags:
   - getstarted
   - developers
 permalink: /get-started/developers/index.html
+pathfinder: true
 subnav:
   collection: sortedDevelopers
   order: 00
@@ -18,7 +19,7 @@ order: 20
       data-helmet>
 
 <script type="module" data-helmet>
-  import '@uxdot/elements/uxdot-pathfinder.js';
+
   import '@rhds/elements/rh-card/rh-card.js';
   import '@rhds/elements/rh-tile/rh-tile.js';
   import '@rhds/elements/rh-cta/rh-cta.js';
@@ -182,10 +183,6 @@ We anticipate that if HTML modules and CSS modules become widely implemented in 
   <h2>Designers</h2>
   <p>To get started using our design system as a designer, go to the <a href="../designers/">Designers</a> page.</p>
 </uxdot-feedback>
-
-<uxdot-pathfinder>
-  <a href="/get-started/developers/installation/" slot="next">Installation</a>
-</uxdot-pathfinder>
 
 [ce]: https://html.spec.whatwg.org/dev/custom-elements.html#custom-elements
 [sd]: https://dom.spec.whatwg.org/#shadow-trees

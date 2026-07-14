@@ -5,6 +5,7 @@ heading: Developers
 permalink: /get-started/developers/tokens/index.html
 tags:
   - developers
+pathfinder: true
 subnav:
   collection: sortedDevelopers
   order: 30
@@ -19,7 +20,7 @@ subnav:
 
 <script type="module" data-helmet>
   import '@uxdot/elements/uxdot-example.js';
-  import '@uxdot/elements/uxdot-pathfinder.js';
+
   import '@rhds/elements/rh-code-block/rh-code-block.js';
   import '@rhds/elements/rh-tabs/rh-tabs.js';
 </script>
@@ -311,11 +312,6 @@ return {
   <h2>Designers</h2>
   <p>To get started using our design system as a designer, go to the <a href="/get-started/designers">Designers</a> page.</p>
 </uxdot-feedback>
-
-<uxdot-pathfinder>
-  <a href="/get-started/developers/usage/" slot="previous">Usage</a>
-  <a href="/get-started/developers/css-foundations/" slot="next">CSS foundations</a>
-</uxdot-pathfinder>
 
 [styledictionary]: https://amzn.github.io/style-dictionary/
 [vimhexokinase]: https://github.com/RRethy/vim-hexokinase

@@ -5,6 +5,7 @@ heading: Designers
 permalink: /get-started/designers/figma-variables-and-styles.html
 tags:
   - designers
+pathfinder: true
 subnav:
   collection: sortedDesigners
   order: 30
@@ -16,7 +17,7 @@ subnav:
 
 <script type="module" data-helmet>
   import '@uxdot/elements/uxdot-example.js';
-  import '@uxdot/elements/uxdot-pathfinder.js';
+
   import '@rhds/elements/rh-alert/rh-alert.js';
   import '@rhds/elements/rh-table/rh-table.js';
 </script>
@@ -290,8 +291,3 @@ For support using Figma variables and styles, you can get answers faster if you 
   <h2>Developers</h2>
   <p>To get started using our design system as a developer, go to the <a href="get-started/developers">Developers</a> page.</p>
 </uxdot-feedback>
-
-<uxdot-pathfinder>
-  <a href="/get-started/designers/figma-library/" slot="previous">Figma library</a>
-  <a href="/get-started/designers/github/" slot="next">GitHub</a>
-</uxdot-pathfinder>
