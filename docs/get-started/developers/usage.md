@@ -12,6 +12,7 @@ subnav:
 
 <script type="module" data-helmet>
   import '@uxdot/elements/uxdot-example.js';
+  import '@uxdot/elements/uxdot-pathfinder.js';
   import '@rhds/elements/rh-code-block/rh-code-block.js';
 </script>
 
@@ -108,6 +109,11 @@ export default {
   <h2>Designers</h2>
   <p>To get started using our design system as a designer, go to the <a href="/get-started/designers">Designers</a> page.</p>
 </uxdot-feedback>
+
+<uxdot-pathfinder>
+  <a href="/get-started/developers/installation/" slot="previous">Installation</a>
+  <a href="/get-started/developers/tokens/" slot="next">Tokens</a>
+</uxdot-pathfinder>
 
 [vite]: https://vitejs.dev/guide/#scaffolding-your-first-vite-project
 [redhatdesignsystemwiki]: https://github.com/RedHat-UX/red-hat-design-system/wiki

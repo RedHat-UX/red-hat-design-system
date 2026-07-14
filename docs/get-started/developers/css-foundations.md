@@ -19,6 +19,7 @@ subnav:
 
 <script type="module" data-helmet>
   import '@uxdot/elements/uxdot-example.js';
+  import '@uxdot/elements/uxdot-pathfinder.js';
   import '@rhds/elements/rh-code-block/rh-code-block.js';
   import '@rhds/elements/rh-accordion/rh-accordion.js';
 </script>
@@ -107,3 +108,8 @@ Here are some frequently asked questions we get about our CSS patterns and other
     <p>We'd like to encourage teams to move towards a more semantic, high-level approach to web design and development. Ideally, teams would block-out experiences using semantic, design system elements and patterns, and then make adjustments using the design system's <a href="/theming/">theming features</a>, <a href="/theming/color-palettes/">color palettes</a>, attributes, and variants which the design team designers and engineers have prepared for those very purposes. In doing so, teams can make their design knowledge <em>portable</em> across different projects, and they can be confident that they are shipping experiences which align with Red Hat's Brand standards.</p>
   </rh-accordion-panel>
 </rh-accordion>
+
+<uxdot-pathfinder>
+  <a href="/get-started/developers/tokens/" slot="previous">Tokens</a>
+  <a href="/get-started/developers/contributing/" slot="next">Contributing</a>
+</uxdot-pathfinder>

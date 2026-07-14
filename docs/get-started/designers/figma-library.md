@@ -16,6 +16,7 @@ subnav:
 
 <script type="module" data-helmet>
   import '@uxdot/elements/uxdot-example.js';
+  import '@uxdot/elements/uxdot-pathfinder.js';
   import '@rhds/elements/rh-alert/rh-alert.js';
   import '@rhds/elements/rh-accordion/rh-accordion.js';
   import '@rhds/elements/rh-table/rh-table.js';
@@ -92,5 +93,10 @@ or edited, create a
   <h2>Developers</h2>
   <p>To get started using our design system as a developer, go to the <a href="get-started/developers">Developers</a> page.</p>
 </uxdot-feedback>
+
+<uxdot-pathfinder>
+  <a href="/get-started/designers/" slot="previous">Overview</a>
+  <a href="/get-started/designers/figma-variables-and-styles/" slot="next">Figma variables and styles</a>
+</uxdot-pathfinder>
 
 [patternfly]: https://www.patternfly.org/

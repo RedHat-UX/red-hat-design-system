@@ -10,6 +10,7 @@ subnav:
 ---
 
 <script type="module" data-helmet>
+  import '@uxdot/elements/uxdot-pathfinder.js';
   import '@rhds/elements/rh-code-block/rh-code-block.js';
   import '@rhds/elements/rh-tag/rh-tag.js';
 </script>
@@ -180,6 +181,11 @@ Before pushing your code please read our
   <h2>Designers</h2>
   <p>To get started using our design system as a designer, go to the <a href="/get-started/designers">Designers</a> page.</p>
 </uxdot-feedback>
+
+<uxdot-pathfinder>
+  <a href="/get-started/developers/css-foundations/" slot="previous">CSS foundations</a>
+  <a href="/get-started/developers/ai-tooling/" slot="next">AI Tooling</a>
+</uxdot-pathfinder>
 
 [addingnewcomponents]: https://github.com/RedHat-UX/red-hat-design-system/wiki/Adding-New-Components
 [chai]: https://www.chaijs.com/

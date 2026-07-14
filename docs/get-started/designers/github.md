@@ -10,6 +10,10 @@ subnav:
   order: 40
 ---
 
+<script type="module" data-helmet>
+  import '@uxdot/elements/uxdot-pathfinder.js';
+</script>
+
 ## Getting familiar with GitHub
 
 [GitHub](https://github.com/RedHat-UX/red-hat-design-system) is how we maintain our 
@@ -47,3 +51,8 @@ options. When we receive your request, we will discuss as a team and get back to
   <h2>Developers</h2>
   <p>To get started using our design system as a developer, go to the <a href="/get-started/developers">Developers</a> page.</p>
 </uxdot-feedback>
+
+<uxdot-pathfinder>
+  <a href="/get-started/designers/figma-variables-and-styles/" slot="previous">Figma variables and styles</a>
+  <a href="/get-started/designers/faqs/" slot="next">FAQs</a>
+</uxdot-pathfinder>

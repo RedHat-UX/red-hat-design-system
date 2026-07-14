@@ -11,6 +11,7 @@ subnav:
 ---
 
 <script type="module" data-helmet>
+  import '@uxdot/elements/uxdot-pathfinder.js';
   import '@rhds/elements/rh-accordion/rh-accordion.js';
 </script>
 
@@ -82,3 +83,7 @@ subnav:
   <h2>Developers</h2>
   <p>To get started using our design system as a developer, go to the <a href="get-started/developers">Developers</a> page.</p>
 </uxdot-feedback>
+
+<uxdot-pathfinder>
+  <a href="/get-started/designers/github/" slot="previous">GitHub</a>
+</uxdot-pathfinder>

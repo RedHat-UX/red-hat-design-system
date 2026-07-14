@@ -15,6 +15,7 @@ subnav:
       href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 
 <script type="module" data-helmet>
+  import '@uxdot/elements/uxdot-pathfinder.js';
   import '@rhds/elements/rh-code-block/rh-code-block.js';
   import '@rhds/elements/rh-alert/rh-alert.js';
   import '@rhds/elements/rh-table/rh-table.js';
@@ -150,6 +151,10 @@ cem generate
   <h2>Designers</h2>
   <p>To get started using our design system as a designer, go to the <a href="/get-started/designers">Designers</a> page.</p>
 </uxdot-feedback>
+
+<uxdot-pathfinder>
+  <a href="/get-started/developers/contributing/" slot="previous">Contributing</a>
+</uxdot-pathfinder>
 
 [asimonim]: https://github.com/bennypowers/asimonim
 [asimonimdocs]: https://bennypowers.dev/asimonim/
