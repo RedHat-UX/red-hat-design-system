@@ -1,20 +1,20 @@
 # LGTM Backronyms
 
 Collected from PR reviews in [RedHat-UX/red-hat-design-system](https://github.com/RedHat-UX/red-hat-design-system).
-Scanned through PR #1179. **352 backronyms found.**
+Scanned through PR #3097. **385 backronyms found.**
 
 ## Leaderboard
 
 | Author | Count |
 |--------|-------|
-| @adamjohnson | 114 |
-| @zeroedin | 87 |
-| @markcaron | 59 |
-| @bennypowers | 32 |
-| @hellogreg | 26 |
+| @adamjohnson | 126 |
+| @zeroedin | 92 |
+| @markcaron | 68 |
+| @bennypowers | 34 |
+| @hellogreg | 30 |
 | @nikkimk | 15 |
 | @marionnegp | 10 |
-| @coreyvickery | 4 |
+| @coreyvickery | 5 |
 | @brianferry | 3 |
 | @gradymcgee | 1 |
 | @kylebuch8 | 1 |
@@ -23,6 +23,39 @@ Scanned through PR #1179. **352 backronyms found.**
 
 | PR | Author | Backronym |
 |----|--------|-----------|
+| [#3097](https://github.com/RedHat-UX/red-hat-design-system/pull/3097) | @hellogreg | last growlithe tasks managed |
+| [#3096](https://github.com/RedHat-UX/red-hat-design-system/pull/3096) | @adamjohnson | Lost Git Tangle Mended |
+| [#3094](https://github.com/RedHat-UX/red-hat-design-system/pull/3094) | @adamjohnson | Launch Growlithe To Mainline |
+| [#3093](https://github.com/RedHat-UX/red-hat-design-system/pull/3093) | @adamjohnson | Legacy Garbage Tossed Mercilessly |
+| [#3092](https://github.com/RedHat-UX/red-hat-design-system/pull/3092) | @adamjohnson | Library Guidance Tracks Minimums |
+| [#3085](https://github.com/RedHat-UX/red-hat-design-system/pull/3085) | @markcaron | Layout Gutter Tokens, Marionne. |
+| [#3082](https://github.com/RedHat-UX/red-hat-design-system/pull/3082) | @markcaron | Levitating Globs Track Midair |
+| [#3081](https://github.com/RedHat-UX/red-hat-design-system/pull/3081) | @zeroedin | Legend Gets Toggle Mechanics |
+| [#3080](https://github.com/RedHat-UX/red-hat-design-system/pull/3080) | @hellogreg | logo graphic title modified |
+| [#3080](https://github.com/RedHat-UX/red-hat-design-system/pull/3080) | @adamjohnson | Link Goes To Main |
+| [#3079](https://github.com/RedHat-UX/red-hat-design-system/pull/3079) | @markcaron | Looping Gizmo Throbbing Monotonously |
+| [#3075](https://github.com/RedHat-UX/red-hat-design-system/pull/3075) | @bennypowers | luxury grouped tab management |
+| [#3070](https://github.com/RedHat-UX/red-hat-design-system/pull/3070) | @markcaron | Links Gump; Tomahto? Mispronounced |
+| [#3064](https://github.com/RedHat-UX/red-hat-design-system/pull/3064) | @markcaron | List Gets Theming Modifier |
+| [#3056](https://github.com/RedHat-UX/red-hat-design-system/pull/3056) | @markcaron | Let's Go; Toggle Merged |
+| [#3055](https://github.com/RedHat-UX/red-hat-design-system/pull/3055) | @zeroedin | Lightweight Graduation To Modern-outlines |
+| [#3041](https://github.com/RedHat-UX/red-hat-design-system/pull/3041) | @bennypowers | loosening guarded trim margins |
+| [#3028](https://github.com/RedHat-UX/red-hat-design-system/pull/3028) | @adamjohnson | Lingering Grayness Thoroughly Mitigated |
+| [#3021](https://github.com/RedHat-UX/red-hat-design-system/pull/3021) | @adamjohnson | Links Group Together Magnificently |
+| [#3021](https://github.com/RedHat-UX/red-hat-design-system/pull/3021) | @zeroedin | Launching Greatly Timed Modifications |
+| [#3016](https://github.com/RedHat-UX/red-hat-design-system/pull/3016) | @zeroedin | Layout Gaps Totally Mended |
+| [#3014](https://github.com/RedHat-UX/red-hat-design-system/pull/3014) | @markcaron | Logically Generated Tooling Manual |
+| [#3009](https://github.com/RedHat-UX/red-hat-design-system/pull/3009) | @zeroedin | Lines Gracefully Trimmed, Merging |
+| [#3008](https://github.com/RedHat-UX/red-hat-design-system/pull/3008) | @adamjohnson | Less goofiness, tidy manifest |
+| [#3007](https://github.com/RedHat-UX/red-hat-design-system/pull/3007) | @hellogreg | latest, greatest tag maker |
+| [#2985](https://github.com/RedHat-UX/red-hat-design-system/pull/2985) | @markcaron | Let Growlithe Totally Merge |
+| [#2979](https://github.com/RedHat-UX/red-hat-design-system/pull/2979) | @adamjohnson | Lists Grouped Through Metadata |
+| [#2973](https://github.com/RedHat-UX/red-hat-design-system/pull/2973) | @adamjohnson | Logos Gain True Meaning |
+| [#2971](https://github.com/RedHat-UX/red-hat-design-system/pull/2971) | @hellogreg | line glitch triggered multiples |
+| [#2971](https://github.com/RedHat-UX/red-hat-design-system/pull/2971) | @adamjohnson | Less Glare, Tabs Managed |
+| [#2966](https://github.com/RedHat-UX/red-hat-design-system/pull/2966) | @adamjohnson | Lifting Glyphs Typography Matured |
+| [#2959](https://github.com/RedHat-UX/red-hat-design-system/pull/2959) | @coreyvickery | @adamjohnson Large goat tames man. |
+| [#2958](https://github.com/RedHat-UX/red-hat-design-system/pull/2958) | @markcaron | Logging Great Things Merged |
 | [#2954](https://github.com/RedHat-UX/red-hat-design-system/pull/2954) | @zeroedin | Lit Guarded; Timely Manipulation |
 | [#2953](https://github.com/RedHat-UX/red-hat-design-system/pull/2953) | @zeroedin | Layered Granular Text: Media |
 | [#2945](https://github.com/RedHat-UX/red-hat-design-system/pull/2945) | @hellogreg | Like gnarly, totally major! |

@@ -1,0 +1,39 @@
+diff --git a/node_modules/@rhds/tokens/plugins/stylelint/rules/no-unknown-token-name.js b/node_modules/@rhds/tokens/plugins/stylelint/rules/no-unknown-token-name.js
+index 5c51f5f..6395960 100644
+--- a/node_modules/@rhds/tokens/plugins/stylelint/rules/no-unknown-token-name.js
++++ b/node_modules/@rhds/tokens/plugins/stylelint/rules/no-unknown-token-name.js
+@@ -11,7 +11,7 @@ const meta = {
+     fixable: true,
+ };
+ const ruleFunction = (_, opts) => {
+-    return (root, result) => {
++    return async (root, result) => {
+         // here we assume a file structure of */rh-tagname/rh-tagname.css
+         const tagName = dirname(root.source.input.file)
+             .split(sep)
+@@ -22,6 +22,25 @@ const ruleFunction = (_, opts) => {
+         }
+         const migrations = new Map(Object.entries(opts?.migrations ?? {}));
+         const allowed = new Set(opts?.allowed ?? []);
++        try {
++          const pkgjson = await import('../../../../../../package.json', { with: { type: 'json' } })
++          if (pkgjson?.default.name === '@rhds/elements') {
++            const cem = await import('../../../../../../custom-elements.json', { with: { type: 'json' } })
++            for (const mod of cem.default?.modules) {
++              for (const decl of mod.declarations ?? []) {
++                if (decl.customElement) {
++                  for (const cssProp of decl.cssProperties ?? []) {
++                    if (cssProp.name.startsWith('--rh')) {
++                      allowed.add(cssProp.name);
++                    }
++                  }
++                }
++              }
++            }
++          }
++        } catch (e) {
++          console.log(e);
++        }
+         root.walk(node => {
+             if (node.type === 'decl') {
+                 const parsedValue = parser(node.value);

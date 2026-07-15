@@ -20,7 +20,7 @@ layout: layouts/base.njk
   {% include 'partials/component/header.njk' %}
   {% if table.length > 0 %}
   <div class="aside">
-    <uxdot-toc summary="On this page">
+    <uxdot-toc id="page-toc" summary="On this page">
       {{ table | safe }}
     </uxdot-toc>
   </div>

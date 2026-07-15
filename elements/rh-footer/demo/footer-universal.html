@@ -3,8 +3,8 @@ description: Standalone universal footer used on orphan pages or landing pages w
 ---
 <rh-footer-universal>
   <h3 slot="links-primary"
-      data-analytics-text="Red Hat legal and privacy links"
-      hidden>Red Hat legal and privacy links</h3>
+      data-analytics-text="Red Hat corporate links"
+      hidden>Red Hat corporate links</h3>
   <ul slot="links-primary"
       data-analytics-region="page-footer-bottom-primary">
     <li><a href="https://redhat.com/en/about/company"
@@ -35,7 +35,6 @@ description: Standalone universal footer used on orphan pages or landing pages w
          data-analytics-category="Footer|Corporate"
          data-analytics-text="Red Hat Summit">Red Hat Summit</a></li>
   </ul>
-  <rh-footer-copyright slot="links-secondary">© 2026 Red Hat</rh-footer-copyright>
   <h3 slot="links-secondary"
       data-analytics-text="Red Hat legal and privacy links"
       hidden>Red Hat legal and privacy links</h3>
@@ -52,11 +51,44 @@ description: Standalone universal footer used on orphan pages or landing pages w
          data-analytics-text="All policies and guidelines">All policies and guidelines</a></li>
     <li><a href="https://redhat.com/en/about/digital-accessibility"
          data-analytics-category="Footer|Red Hat legal and privacy links"
-         data-analytics-text="Digital accessibility"
-         class="active">Digital accessibility</a></li>
-    <!-- If your website supports trustarc include this item to add Cookie Preferences to your site. -->
-    <!-- <li><span id="teconsent"> </span></li> -->
-  </ul>
+         data-analytics-text="Digital accessibility">Digital accessibility</a></li>
+    <li><a href="#"
+         data-analytics-category="Footer|Red Hat legal and privacy links"
+         data-analytics-text="Cookie preferences">Cookie preferences</a></li>
+    </ul>
+  <rh-footer-copyright slot="tertiary">&copy; 2026 Red Hat</rh-footer-copyright>
+  <rh-footer-links slot="tertiary" role="list">
+    <rh-footer-social-link icon="linkedin"
+                           href="https://www.linkedin.com/company/red-hat"
+                           data-analytics-region="social-links-exit"
+                           data-analytics-category="Footer|social-links"
+                           data-analytics-text="LinkedIn"
+                           accessible-label="LinkedIn"></rh-footer-social-link>
+    <rh-footer-social-link icon="youtube"
+                           href="https://www.youtube.com/user/RedHatVideos"
+                           data-analytics-region="social-links-exit"
+                           data-analytics-category="Footer|social-links"
+                           data-analytics-text="YouTube"
+                           accessible-label="YouTube"></rh-footer-social-link>
+    <rh-footer-social-link icon="facebook"
+                           href="https://www.facebook.com/redhatinc"
+                           data-analytics-region="social-links-exit"
+                           data-analytics-category="Footer|social-links"
+                           data-analytics-text="Facebook"
+                           accessible-label="Facebook"></rh-footer-social-link>
+    <rh-footer-social-link icon="x"
+                           href="https://twitter.com/RedHat"
+                           data-analytics-region="social-links-exit"
+                           data-analytics-category="Footer|social-links"
+                           data-analytics-text="X/Twitter"
+                           accessible-label="X/Twitter"></rh-footer-social-link>
+    <rh-footer-social-link icon="instagram"
+                           href="https://www.instagram.com/redhat"
+                           data-analytics-region="social-links-exit"
+                           data-analytics-category="Footer|social-links"
+                           data-analytics-text="Instagram"
+                           accessible-label="Instagram"></rh-footer-social-link>
+  </rh-footer-links>
 </rh-footer-universal>
 
 <link rel="stylesheet"
@@ -64,4 +96,6 @@ description: Standalone universal footer used on orphan pages or landing pages w
 
 <script type="module">
   import '@rhds/elements/rh-footer/rh-footer-universal.js';
+  import '@rhds/elements/rh-footer/rh-footer-links.js';
+  import '@rhds/elements/rh-footer/rh-footer-social-link.js';
 </script>
