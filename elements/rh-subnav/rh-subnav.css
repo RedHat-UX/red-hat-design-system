@@ -89,9 +89,8 @@
 }
 
 ::slotted(rh-navigation-link) {
-  white-space: nowrap;
+  --rh-navigation-link-white-space: nowrap;
   --_navigation-link-display: flex;
-
   /** Navigation link gap between text and icon */
   --_navigation-link-gap: var(--rh-space-xs, 4px);
   --_navigation-link-align-items: center;
