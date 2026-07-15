@@ -6,8 +6,8 @@
 }
 
 nav {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-wrap: wrap;
   gap: var(--rh-space-lg, 16px);
 }
 
@@ -15,7 +15,12 @@ nav {
 #next {
   display: none;
   position: relative;
+  box-sizing: border-box;
   align-items: center;
+  /* stylelint-disable-next-line @stylistic/declaration-colon-space-after */
+  min-inline-size:
+    min(var(--uxdot-pathfinder-min-inline-size, 220px), 100%);
+  max-inline-size: var(--uxdot-pathfinder-max-inline-size, 360px);
   gap: var(--rh-space-lg, 16px);
   padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
   border-width: var(--rh-border-width-sm, 1px);
@@ -79,8 +84,11 @@ rh-icon {
 }
 
 #previous {
-  grid-column: 1;
-  justify-self: start;
+  justify-content: flex-end;
+
+  & rh-icon {
+    margin-inline-end: auto;
+  }
 
   & .text {
     text-align: end;
@@ -88,8 +96,11 @@ rh-icon {
 }
 
 #next {
-  grid-column: -1;
-  justify-self: end;
+  margin-inline-start: auto;
+
+  & rh-icon {
+    margin-inline-start: auto;
+  }
 
   & .text {
     text-align: start;
@@ -167,9 +178,3 @@ rh-icon {
 
 #previous:focus-within rh-icon { translate: -3px 0; }
 #next:focus-within rh-icon { translate: 3px 0; }
-
-@container pathfinder (min-width: 576px) {
-  nav {
-    grid-template-columns: 1fr 1fr;
-  }
-}
