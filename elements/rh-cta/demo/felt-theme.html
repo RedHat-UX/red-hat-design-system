@@ -1,0 +1,59 @@
+---
+description: "CTA variants and compact sizes with the Project Felt preview theme applied. Note: `variant=\"tertiary\"` and the `compact` attribute are Felt-specific and not yet part of the element's public API."
+---
+<link rel="stylesheet" href="/theming/themes/project-felt/preview/felt-theme-preview.css">
+
+<style>
+  .example-row {
+    margin-block: var(--rh-space-2xl, 32px);
+  }
+
+  .example-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rh-space-lg, 16px);
+    align-items: center;
+  }
+  .felt-preview {
+    padding: var(--rh-space-2xl, 32px);
+  }
+</style>
+
+<div class="felt-preview">
+  <h3>Default sizes</h3>
+  <div class="example-row example-flex">
+    <rh-cta variant="primary" href="#">Primary</rh-cta>
+    <rh-cta variant="secondary" href="#">Secondary</rh-cta>
+    <rh-cta variant="tertiary" href="#">Tertiary</rh-cta>
+    <rh-cta href="#">Default</rh-cta>
+    <rh-cta variant="brick" href="#">Brick</rh-cta>
+  </div>
+
+  <div class="example-row example-flex">
+    <rh-cta variant="primary" icon="play-circle" href="#">Primary</rh-cta>
+    <rh-cta variant="secondary" icon="play-circle" href="#">Secondary</rh-cta>
+    <rh-cta variant="tertiary" icon="play-circle" href="#">Tertiary</rh-cta>
+    <rh-cta icon="play-circle" href="#">Default</rh-cta>
+    <rh-cta icon="play-circle" variant="brick" href="#">Brick</rh-cta>
+  </div>
+
+  <h3>Compact</h3>
+  <div class="example-row example-flex">
+    <rh-cta variant="primary" compact href="#">Primary</rh-cta>
+    <rh-cta variant="secondary" compact href="#">Secondary</rh-cta>
+    <rh-cta variant="tertiary" compact href="#">Tertiary</rh-cta>
+    <rh-cta compact href="#">Default</rh-cta>
+  </div>
+
+  <div class="example-row example-flex">
+    <rh-cta variant="primary" compact icon="play-circle" href="#">Primary</rh-cta>
+    <rh-cta variant="secondary" compact icon="play-circle" href="#">Secondary</rh-cta>
+    <rh-cta variant="tertiary" compact icon="play-circle" href="#">Tertiary</rh-cta>
+    <rh-cta icon="play-circle" compact href="#">Default</rh-cta>
+    <rh-cta compact icon="play-circle" variant="brick" href="#">Brick</rh-cta>
+  </div>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-cta/rh-cta.js';
+</script>

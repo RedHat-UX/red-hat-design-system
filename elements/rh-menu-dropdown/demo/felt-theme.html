@@ -1,0 +1,59 @@
+---
+description: Basic, descriptive, and compact menu dropdowns with the Project Felt preview theme applied.
+---
+<link rel="stylesheet" href="/theming/themes/project-felt/preview/felt-theme-preview.css">
+
+<style>
+  #menu-dropdown-container {
+    h3 {
+      margin-block: 1.5rem 0.5rem !important;
+    }
+
+    rh-menu-dropdown:not([layout="compact"]) {
+      width: 296px;
+    }
+  }
+  .felt-preview {
+    padding: var(--rh-space-2xl, 32px);
+  }
+</style>
+
+<div class="felt-preview">
+  <div id="menu-dropdown-container">
+    <h3>Basic</h3>
+    <rh-menu-dropdown>
+      <span slot="toggle-label">Basic toggle</span>
+      <rh-menu-item>Action one</rh-menu-item>
+      <rh-menu-item>Action two</rh-menu-item>
+      <rh-menu-item>Action three</rh-menu-item>
+      <rh-menu-item disabled>Disabled Action</rh-menu-item>
+      <hr/>
+      <rh-menu-item>Separated action</rh-menu-item>
+    </rh-menu-dropdown>
+
+    <h3>Items with descriptions</h3>
+    <rh-menu-dropdown>
+      <span slot="toggle-label">With descriptions</span>
+      <rh-menu-item>Action one <p slot="description">Description for the 1st action</p></rh-menu-item>
+      <rh-menu-item>Action two <p slot="description">Description for the 2nd action</p></rh-menu-item>
+      <rh-menu-item>Action three <p slot="description">Description for the 3rd action</p></rh-menu-item>
+      <rh-menu-item disabled>Disabled Action <p slot="description">Description for a disabled action</p></rh-menu-item>
+      <hr/>
+      <rh-menu-item>Separated action <p slot="description">Description for a separate action</p></rh-menu-item>
+    </rh-menu-dropdown>
+
+    <h3>Compact</h3>
+    <rh-menu-dropdown variant="borderless" layout="compact" accessible-label="Toggle menu">
+      <rh-menu-item>Action one</rh-menu-item>
+      <rh-menu-item>Action two</rh-menu-item>
+      <rh-menu-item>Action three</rh-menu-item>
+      <rh-menu-item disabled>Disabled Action</rh-menu-item>
+      <hr/>
+      <rh-menu-item>Separated action</rh-menu-item>
+    </rh-menu-dropdown>
+  </div>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-menu-dropdown/rh-menu-dropdown.js';
+</script>

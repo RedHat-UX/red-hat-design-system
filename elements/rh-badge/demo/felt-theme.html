@@ -1,0 +1,31 @@
+---
+description: Badge states with the Project Felt preview theme applied.
+---
+<link rel="stylesheet" href="/theming/themes/project-felt/preview/felt-theme-preview.css">
+
+<style>
+  .example-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rh-space-lg, 16px);
+    align-items: center;
+  }
+  .felt-preview {
+    padding: var(--rh-space-2xl, 32px);
+  }
+</style>
+
+<div class="felt-preview">
+  <div class="example-flex">
+    <rh-badge number="7">7</rh-badge>
+    <rh-badge state="info" number="24">24</rh-badge>
+    <rh-badge state="success" number="12">12</rh-badge>
+    <rh-badge state="caution" number="3">3</rh-badge>
+    <rh-badge state="warning" number="5">5</rh-badge>
+    <rh-badge state="danger" number="99">99</rh-badge>
+  </div>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-badge/rh-badge.js';
+</script>

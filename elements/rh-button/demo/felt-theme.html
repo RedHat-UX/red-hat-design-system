@@ -1,0 +1,78 @@
+---
+description: All button variants, danger states, icon buttons, compact sizes, and disabled states with the Project Felt preview theme applied.
+---
+<link rel="stylesheet" href="/theming/themes/project-felt/preview/felt-theme-preview.css">
+
+<style>
+  .example-row {
+    margin-block: var(--rh-space-2xl, 32px);
+  }
+
+  .example-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rh-space-lg, 16px);
+    align-items: center;
+  }
+  .felt-preview {
+    padding: var(--rh-space-2xl, 32px);
+  }
+</style>
+
+<div class="felt-preview">
+  <div class="example-row example-flex">
+    <rh-button>Primary</rh-button>
+    <rh-button variant="secondary">Secondary</rh-button>
+    <rh-button variant="tertiary">Tertiary</rh-button>
+    <rh-button variant="link">Link</rh-button>
+    <rh-button icon="ellipsis-vertical-fill" variant="icon" aria-label="Menu"></rh-button>
+    <rh-button icon="close" icon-set="microns" variant="icon" aria-label="Close"></rh-button>
+  </div>
+  <div class="example-row example-flex">
+    <rh-button danger>Primary danger</rh-button>
+    <rh-button variant="secondary" danger>Secondary danger</rh-button>
+    <rh-button variant="tertiary" danger>Tertiary danger</rh-button>
+    <rh-button variant="link" danger>Link danger</rh-button>
+  </div>
+  <div class="example-row example-flex">
+    <rh-button icon="add-circle">Primary</rh-button>
+    <rh-button icon="add-circle" variant="secondary">Secondary</rh-button>
+    <rh-button icon="add-circle" variant="tertiary">Tertiary</rh-button>
+    <rh-button icon="add-circle" variant="link">Link</rh-button>
+  </div>
+  <div class="example-row example-flex">
+    <rh-button icon="warning-fill" danger>Primary</rh-button>
+    <rh-button icon="warning-fill" variant="secondary" danger>Secondary</rh-button>
+    <rh-button icon="warning-fill" variant="tertiary" danger>Tertiary</rh-button>
+    <rh-button icon="warning-fill" variant="link" danger>Link</rh-button>
+  </div>
+  <div class="example-row example-flex">
+    <rh-button disabled>Disabled</rh-button>
+    <rh-button disabled variant="secondary">Disabled</rh-button>
+    <rh-button disabled variant="tertiary">Disabled</rh-button>
+    <rh-button disabled variant="link">Disabled</rh-button>
+    <rh-button disabled icon="ellipsis-vertical-fill" variant="icon" aria-label="Menu"></rh-button>
+    <rh-button disabled icon="close" icon-set="microns" variant="icon" aria-label="Close"></rh-button>
+  </div>
+  <div class="example-row example-flex">
+    <rh-button compact>Compact 1º</rh-button>
+    <rh-button compact variant="secondary">Compact 2º</rh-button>
+    <rh-button compact variant="tertiary">Compact 3º</rh-button>
+    <rh-button compact variant="link">Compact link</rh-button>
+    <rh-button compact icon="ellipsis-vertical-fill" variant="icon" aria-label="Menu"></rh-button>
+    <rh-button compact icon="close" icon-set="microns" variant="icon" aria-label="Close"></rh-button>
+  </div>
+  <div class="example-row example-flex">
+    <rh-button compact danger>Compact 1º danger</rh-button>
+    <rh-button compact variant="secondary" danger>Compact 2º danger</rh-button>
+    <rh-button compact variant="link" danger>Compact link danger</rh-button>
+  </div>
+  <div class="example-row example-flex">
+    <rh-button variant="close" accessible-label="Close"></rh-button>
+    <rh-button variant="play">Play</rh-button>
+  </div>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-button/rh-button.js';
+</script>
