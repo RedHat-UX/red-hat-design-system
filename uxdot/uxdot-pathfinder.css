@@ -138,12 +138,12 @@ rh-icon {
 #next:hover rh-icon { translate: 3px 0; }
 
 /* -----------------------------------------------------------------------
- * Focus — must use :host(:has()) because focus lives on the light DOM <a>,
- * not the shadow card div. Duplicated in @scope for Chromium.
+ * Focus — :focus-within follows the flat/composed tree, so slotted <a>
+ * focus propagates to the card div without :host(:has()) or @scope.
  * ----------------------------------------------------------------------- */
 
-:host(:has(> [slot='previous']:focus-visible)) #previous,
-:host(:has(> [slot='next']:focus-visible)) #next {
+#previous:focus-within,
+#next:focus-within {
   outline:
     var(--rh-border-width-lg, 3px)
     solid
@@ -165,46 +165,8 @@ rh-icon {
         var(--rh-color-text-primary-on-light, #151515));
 }
 
-:host(:has(> [slot='previous']:focus-visible)) #previous rh-icon {
-  translate: -3px 0;
-}
-
-:host(:has(> [slot='next']:focus-visible)) #next rh-icon {
-  translate: 3px 0;
-}
-
-@scope {
-  :scope:has(> [slot='previous']:focus-visible) #previous,
-  :scope:has(> [slot='next']:focus-visible) #next {
-    outline:
-      var(--rh-border-width-lg, 3px)
-      solid
-      light-dark(
-          var(--rh-color-interactive-primary-default-on-light, #0066cc),
-          var(--rh-color-interactive-primary-default-on-dark, #92c5f9));
-    outline-offset: var(--rh-border-width-sm, 1px);
-    background:
-      light-dark(
-          var(--rh-color-interactive-primary-hover-on-light, #004080),
-          var(--rh-color-interactive-primary-hover-on-dark, #b9d7f7));
-    border-color:
-      light-dark(
-          var(--rh-color-interactive-primary-hover-on-light, #004080),
-          var(--rh-color-interactive-primary-hover-on-dark, #b9d7f7));
-    color:
-      light-dark(
-          var(--rh-color-text-primary-on-dark, #ffffff),
-          var(--rh-color-text-primary-on-light, #151515));
-  }
-
-  :scope:has(> [slot='previous']:focus-visible) #previous rh-icon {
-    translate: -3px 0;
-  }
-
-  :scope:has(> [slot='next']:focus-visible) #next rh-icon {
-    translate: 3px 0;
-  }
-}
+#previous:focus-within rh-icon { translate: -3px 0; }
+#next:focus-within rh-icon { translate: 3px 0; }
 
 @container pathfinder (min-width: 576px) {
   nav {
