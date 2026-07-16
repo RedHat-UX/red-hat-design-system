@@ -6,8 +6,8 @@
 }
 
 nav {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: var(--rh-space-lg, 16px);
 }
 
@@ -17,12 +17,8 @@ nav {
   position: relative;
   box-sizing: border-box;
   align-items: center;
-  /* stylelint-disable-next-line @stylistic/declaration-colon-space-after */
-  min-inline-size:
-    min(var(--uxdot-pathfinder-min-inline-size, 220px), 100%);
-  max-inline-size: var(--uxdot-pathfinder-max-inline-size, 360px);
   gap: var(--rh-space-lg, 16px);
-  padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
+  padding: var(--rh-space-lg, 16px);
   border-width: var(--rh-border-width-sm, 1px);
   border-style: solid;
   border-color:
@@ -48,14 +44,14 @@ nav {
 
 .label {
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
-  font-size: var(--rh-font-size-body-text-md, 1rem);
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   font-weight: var(--rh-font-weight-heading-bold, 700);
   line-height: var(--rh-line-height-heading, 1.3);
 }
 
 ::slotted(a) {
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
-  font-size: var(--rh-font-size-body-text-md, 1rem);
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   font-weight: var(--rh-font-weight-body-text-regular, 400);
   line-height: var(--rh-line-height-body-text, 1.5);
   color: inherit !important;
@@ -84,6 +80,8 @@ rh-icon {
 }
 
 #previous {
+  grid-column: 1;
+  justify-self: start;
   justify-content: flex-end;
 
   & rh-icon {
@@ -96,7 +94,8 @@ rh-icon {
 }
 
 #next {
-  margin-inline-start: auto;
+  grid-column: 2;
+  justify-self: end;
 
   & rh-icon {
     margin-inline-start: auto;
