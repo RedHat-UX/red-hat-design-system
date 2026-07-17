@@ -1,0 +1,298 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
+    <title>Felt Theme | Red Hat Design System</title>
+
+    <link rel="preconnect" href="https://ga.jspm.io">
+
+    <link rel="stylesheet" href="/styles/demo/styles.css" media="all">
+
+    <script type="importmap">{
+  "imports": {
+    "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
+    "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "lit-html": "/assets/packages/lit-html/lit-html.js",
+    "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
+    "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
+    "lit-element": "/assets/packages/lit-element/index.js",
+    "prism-esm": "/assets/packages/prism-esm/prism.js",
+    "lit": "/assets/packages/lit/index.js",
+    "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
+    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
+    "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
+    "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "@lit/context": "/assets/packages/@lit/context/index.js",
+    "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@6.0.0/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
+    "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
+    "lit/": "/assets/packages/lit/",
+    "lit-html/": "/assets/packages/lit-html/",
+    "prism-esm/": "/assets/packages/prism-esm/",
+    "@lit-labs/ssr-client": "/assets/packages/@lit-labs/ssr-client/index.js",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js",
+    "@rhds/tokens/css/": "/assets/packages/@rhds/tokens/css/",
+    "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
+    "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
+    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons": "/assets/packages/@rhds/icons/icons.js",
+    "@rhds/icons/": "/assets/packages/@rhds/icons/",
+    "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
+    "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
+    "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
+    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "@uxdot/elements/": "/assets/packages/@uxdot/elements/"
+  },
+  "scopes": {
+    "/assets/packages/": {
+      "@lit/reactive-element/decorators/": "/assets/packages/@lit/reactive-element/decorators/",
+      "lit-element/lit-element.js": "/assets/packages/lit-element/lit-element.js",
+      "lit-html/": "/assets/packages/lit-html/"
+    }
+  }
+}</script>
+
+    
+      <script type="module">
+    // although we load these ssr support modules elsewhere, we still
+    // need them here to ensure no double-rendering on webkit
+    import '/assets/javascript/ssr-support.js';
+    // include these, which are often internal to elements,
+    // and are definitely required by context-picker and context-demo
+    // to avoid SSR defer-hydration bugs and SSR double-rendering bugs
+    import '@rhds/elements/rh-icon/rh-icon.js';
+    import '@rhds/elements/rh-surface/rh-surface.js';
+    import '@rhds/elements/rh-button/rh-button.js';
+    import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+    import '@rhds/elements/rh-tag/rh-tag.js';
+  </script>
+
+
+    <script type="module">
+      // load up the demo and picker
+      import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+      import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+    </script>
+
+    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
+  </head>
+  <body>
+    <link rel="stylesheet" href="/theming/themes/project-felt/preview/felt-theme-preview.css">
+
+<style>
+  .example-row {
+    margin-block: var(--rh-space-2xl, 32px);
+    max-width: 300px;
+  }
+  .felt-preview {
+    padding: var(--rh-space-2xl, 32px);
+  }
+</style>
+
+<div class="felt-preview">
+  <div class="example-row">
+    <rh-navigation-vertical  role="navigation" hydrate-internals-role="navigation" accessible-label="Example side nav"><template shadowroot="open" shadowrootmode="open"><style>:host{background:light-dark(var(--rh-color-surface-lightest),var(--rh-color-surface-darker,#1f1f1f));display:block}.visually-hidden{clip:rect(1px, 1px, 1px, 1px);clip-path:inset(50%);white-space:nowrap;border:0;block-size:1px;inline-size:1px;overflow:hidden;margin:-1px!important;padding:0!important;position:absolute!important}#container{gap:var(--rh-space-xs,4px);line-height:var(--rh-line-height-body-text,1.5);flex-direction:column;display:flex}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-md,1rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-lg,3px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-lg,3px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-lg,3px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}</style><!--lit-part qbJunynC2SA=-->
+      <h2 class="visually-hidden"><!--lit-part-->Example side nav<!--/lit-part--></h2>
+      <div id="container" role="list">
+        <!-- summary: Navigation items
+             description: |
+               Place `<rh-navigation-link>` or `<rh-navigation-vertical-list>`
+               elements. Each item receives an ARIA listitem role for
+               screen reader accessibility. -->
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+      <rh-navigation-link  role="listitem" hydrate-internals-role="listitem" href="#"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}#container{display:var(--_navigation-link-container-display,block);inline-size:var(--_navigation-link-container-inline-size,fit-content);block-size:var(--_navigation-link-container-block-size,auto);padding:var(--_navigation-link-container-padding,initial);align-items:var(--_navigation-link-container-align-items,initial);position:var(--_navigation-link-container-position,initial)}a,::slotted(a){display:var(--_navigation-link-display,inline);block-size:var(--_navigation-link-block-size,auto);inline-size:var(--_navigation-link-inline-size,auto);align-items:var(--_navigation-link-align-items,initial);align-content:var(--_navigation-link-align-content,initial);padding:var(--_navigation-link-padding,0);gap:var(--_navigation-link-gap,initial);background-color:var(--rh-navigation-link-background-color,var(--_navigation-link-background-color,transparent));white-space:var(--rh-navigation-link-white-space,initial);border-radius:var(--rh-navigation-link-border-radius,0);position:relative;color:var(--_navigation-link-color, var(--rh-color-text-primary))!important;font-size:var(--rh-navigation-link-font-size,var(--_navigation-link-font-size,1rem))!important;font-weight:var(--_navigation-link-font-weight,initial)!important;text-decoration:var(--_navigation-link-text-decoration,none)!important}a:before,::slotted(a):before{content:"";inset:0;width:var(--rh-navigation-link-border-inline-start-width,var(--_navigation-link-before-border-inline-start-width));background-color:var(--_navigation-link-before-border-inline-start-color,transparent);border-radius:var(--rh-navigation-link-indicator-border-radius,0);height:100%;position:absolute;inset-inline-start:var(--rh-navigation-link-inset-inline-start,0)}a:is(:hover,:hover:focus-visible,:focus-visible,:active),::slotted(:is(a:hover,a:hover:focus-visible,:focus-visible,:active)){--_navigation-link-background-color:var(--rh-navigation-link-hover-background-color,var(--_navigation-link-hover-background-color,light-dark(#0000,#0000)))!important;--_navigation-link-color:var(--_navigation-link-color-hover, var(--rh-color-interactive-primary-hover))!important;text-underline-offset:var(--_navigation-link-text-underline-offset,4px)!important;text-decoration-color:var(--_navigation-link-text-decoration-color,light-dark( var(--rh-color-gray-50,#707070), var(--rh-color-gray-40,#a3a3a3)))!important;text-decoration-line:var(--_navigation-link-text-decoration-line,underline)!important;text-decoration-style:var(--_navigation-link-text-decoration-style,dashed)!important;text-decoration-skip-ink:auto!important}a:is(:focus-visible,:hover:focus-visible),::slotted(a:is(:focus-visible,:hover:focus-visible)){outline-offset:var(--_navigation-link-focus-outline-offset,0);outline: var(--rh-color-interactive-primary-default) solid  var(--rh-border-width-md,2px);border-radius:var(--rh-navigation-link-border-radius,var(--rh-border-radius-default,3px))}</style><!--lit-part VSLkVO1xlKQ=-->
+      <div id="container">
+        <!--lit-part 353KEdOMCY8=-->
+          <!--lit-node 0--><a href="#" >
+            <!-- summary: icon, only rendered when `href` is set
+                 description: |
+                   Use instead of the `icon` and `icon-set` attributes.
+                   Accepts `rh-icon`, `svg`, or `img`. Content should
+                   have `aria-hidden` or `alt` so screen readers skip
+                   decorative images. Not available when slotting
+                   an `<a>` directly (without `href` on the host). -->
+            <slot name="icon">
+              <!--lit-part BRUAAAUVAAA=--><?><!--/lit-part-->
+            </slot>
+            <!-- summary: Link content
+                 description: |
+                   When the `href` attribute is set, this slot should
+                   contain inline text for the link label. Alternatively,
+                   an anchor element (`<a href="...">`) should be the
+                   first child in this slot when `href` is not set.
+                   Screen readers will announce the slotted text as the
+                   accessible name for the link. Authors must not slot a
+                   `<button>` element. -->
+            <slot></slot>
+          </a><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template>Nav item 1</rh-navigation-link>
+      <rh-navigation-link   role="listitem" hydrate-internals-role="listitem" href="#" current-page><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}#container{display:var(--_navigation-link-container-display,block);inline-size:var(--_navigation-link-container-inline-size,fit-content);block-size:var(--_navigation-link-container-block-size,auto);padding:var(--_navigation-link-container-padding,initial);align-items:var(--_navigation-link-container-align-items,initial);position:var(--_navigation-link-container-position,initial)}a,::slotted(a){display:var(--_navigation-link-display,inline);block-size:var(--_navigation-link-block-size,auto);inline-size:var(--_navigation-link-inline-size,auto);align-items:var(--_navigation-link-align-items,initial);align-content:var(--_navigation-link-align-content,initial);padding:var(--_navigation-link-padding,0);gap:var(--_navigation-link-gap,initial);background-color:var(--rh-navigation-link-background-color,var(--_navigation-link-background-color,transparent));white-space:var(--rh-navigation-link-white-space,initial);border-radius:var(--rh-navigation-link-border-radius,0);position:relative;color:var(--_navigation-link-color, var(--rh-color-text-primary))!important;font-size:var(--rh-navigation-link-font-size,var(--_navigation-link-font-size,1rem))!important;font-weight:var(--_navigation-link-font-weight,initial)!important;text-decoration:var(--_navigation-link-text-decoration,none)!important}a:before,::slotted(a):before{content:"";inset:0;width:var(--rh-navigation-link-border-inline-start-width,var(--_navigation-link-before-border-inline-start-width));background-color:var(--_navigation-link-before-border-inline-start-color,transparent);border-radius:var(--rh-navigation-link-indicator-border-radius,0);height:100%;position:absolute;inset-inline-start:var(--rh-navigation-link-inset-inline-start,0)}a:is(:hover,:hover:focus-visible,:focus-visible,:active),::slotted(:is(a:hover,a:hover:focus-visible,:focus-visible,:active)){--_navigation-link-background-color:var(--rh-navigation-link-hover-background-color,var(--_navigation-link-hover-background-color,light-dark(#0000,#0000)))!important;--_navigation-link-color:var(--_navigation-link-color-hover, var(--rh-color-interactive-primary-hover))!important;text-underline-offset:var(--_navigation-link-text-underline-offset,4px)!important;text-decoration-color:var(--_navigation-link-text-decoration-color,light-dark( var(--rh-color-gray-50,#707070), var(--rh-color-gray-40,#a3a3a3)))!important;text-decoration-line:var(--_navigation-link-text-decoration-line,underline)!important;text-decoration-style:var(--_navigation-link-text-decoration-style,dashed)!important;text-decoration-skip-ink:auto!important}a:is(:focus-visible,:hover:focus-visible),::slotted(a:is(:focus-visible,:hover:focus-visible)){outline-offset:var(--_navigation-link-focus-outline-offset,0);outline: var(--rh-color-interactive-primary-default) solid  var(--rh-border-width-md,2px);border-radius:var(--rh-navigation-link-border-radius,var(--rh-border-radius-default,3px))}</style><!--lit-part VSLkVO1xlKQ=-->
+      <div id="container">
+        <!--lit-part 353KEdOMCY8=-->
+          <!--lit-node 0--><a href="#" aria-current="page">
+            <!-- summary: icon, only rendered when `href` is set
+                 description: |
+                   Use instead of the `icon` and `icon-set` attributes.
+                   Accepts `rh-icon`, `svg`, or `img`. Content should
+                   have `aria-hidden` or `alt` so screen readers skip
+                   decorative images. Not available when slotting
+                   an `<a>` directly (without `href` on the host). -->
+            <slot name="icon">
+              <!--lit-part BRUAAAUVAAA=--><?><!--/lit-part-->
+            </slot>
+            <!-- summary: Link content
+                 description: |
+                   When the `href` attribute is set, this slot should
+                   contain inline text for the link label. Alternatively,
+                   an anchor element (`<a href="...">`) should be the
+                   first child in this slot when `href` is not set.
+                   Screen readers will announce the slotted text as the
+                   accessible name for the link. Authors must not slot a
+                   `<button>` element. -->
+            <slot></slot>
+          </a><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template>Nav item 2</rh-navigation-link>
+      <rh-navigation-vertical-list  role="listitem" hydrate-internals-role="listitem" summary="Nav group"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}details summary{background:var(--rh-navigation-vertical-list-summary-background-color,transparent);padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);cursor:pointer;border-radius:var(--rh-navigation-vertical-list-summary-border-radius,0);justify-content:space-between;place-items:center;gap:var(--rh-space-lg,16px);flex-direction:row;list-style:none;display:flex;position:relative}details summary::marker{display:none}details summary::-webkit-details-marker{display:none}details summary:is(:hover,:focus){background:var(--rh-navigation-vertical-list-summary-hover-background-color,light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838)))}details summary ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-weight:var(--rh-font-weight-body-text-regular,400);font-size:var(--rh-font-size-body-text-md,1rem)!important}details summary rh-icon{will-change:rotate;transition:all .2s;position:relative}details[open] rh-icon{transform:rotate(-180deg)}details #subtree{gap:var(--rh-space-xs,4px);margin-inline:var(--rh-navigation-vertical-list-nested-margin-inline,var(--rh-space-lg,16px) 0);margin-block:var(--rh-navigation-vertical-list-nested-margin-block,var(--rh-space-xs,4px) var(--_subtree-margin-block-end,var(--rh-space-md,8px)));flex-direction:column;display:flex}::slotted(rh-navigation-vertical-list){font-size:var(--rh-font-size-body-text-sm,.875rem);--_subtree-margin-block-end:0}::slotted(rh-navigation-link){--_navigation-link-display:flex;--_navigation-link-align-items:center;--_navigation-link-inline-size:100%;--_navigation-link-padding:var(--rh-space-md,8px) var(--rh-space-lg,16px);--_navigation-link-font-size:var(--rh-font-size-body-text-sm,.875rem);--_navigation-link-text-decoration:none;--_navigation-link-text-decoration-style:none;--_navigation-link-text-decoration-line:none;--_navigation-link-color:var(--rh-color-text-primary);--_navigation-link-color-hover:var(--rh-color-text-primary);--_navigation-link-hover-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-container-display:flex;--_navigation-link-container-align-items:center;--_navigation-link-container-position:relative;--_navigation-link-container-inline-size:100%}::slotted(rh-navigation-link:hover){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-border-subtle)}::slotted(rh-navigation-link:active){--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}::slotted(rh-navigation-link[current-page]){--_navigation-link-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838));--_navigation-link-before-border-inline-start-width:var(--rh-border-width-md,2px);--_navigation-link-before-border-inline-start-color:var(--rh-color-brand-red)}.highlight ::slotted(rh-navigation-link:first-child){--_navigation-link-font-weight:var(--rh-font-weight-body-text-medium,500)}</style><!--lit-part xFpxSMni8b4=-->
+      <!--lit-node 0--><details
+        class="  "
+        
+        
+        >
+        <summary>
+          <!-- summary: Group heading label
+               description: |
+                 Accepts inline text or a `<span>`. Overrides the
+                 `summary` attribute. Screen readers use this as
+                 the ARIA label for the disclosure toggle. -->
+          <slot name="summary"><!--lit-part-->Nav group<!--/lit-part--></slot>
+          <!--lit-node 5--><rh-icon   set="microns" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" microns "><!--lit-part vJ13JnWXULs=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18.71 5.29a.996.996 0 0 0-1.41 0l-7.29 7.29-7.3-7.29a.987.987 0 0 0-1.41-.02.987.987 0 0 0-.02 1.41l.02.02 7.65 7.65c.29.29.68.44 1.06.44s.77-.15 1.06-.44l7.65-7.65a.996.996 0 0 0 0-1.41Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        </summary>
+        <div id="subtree" role="list">
+          <!-- summary: Navigation group items
+               description: |
+                 Place `<rh-navigation-link>` or nested
+                 `<rh-navigation-vertical-list>` elements. ARIA
+                 listitem role provides screen reader context.
+                 Avoid nesting deeper than five levels. -->
+          <slot></slot>
+        </div>
+      </details>
+      <!--/lit-part--></template>
+        <rh-navigation-link  role="listitem" hydrate-internals-role="listitem" href="#"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}#container{display:var(--_navigation-link-container-display,block);inline-size:var(--_navigation-link-container-inline-size,fit-content);block-size:var(--_navigation-link-container-block-size,auto);padding:var(--_navigation-link-container-padding,initial);align-items:var(--_navigation-link-container-align-items,initial);position:var(--_navigation-link-container-position,initial)}a,::slotted(a){display:var(--_navigation-link-display,inline);block-size:var(--_navigation-link-block-size,auto);inline-size:var(--_navigation-link-inline-size,auto);align-items:var(--_navigation-link-align-items,initial);align-content:var(--_navigation-link-align-content,initial);padding:var(--_navigation-link-padding,0);gap:var(--_navigation-link-gap,initial);background-color:var(--rh-navigation-link-background-color,var(--_navigation-link-background-color,transparent));white-space:var(--rh-navigation-link-white-space,initial);border-radius:var(--rh-navigation-link-border-radius,0);position:relative;color:var(--_navigation-link-color, var(--rh-color-text-primary))!important;font-size:var(--rh-navigation-link-font-size,var(--_navigation-link-font-size,1rem))!important;font-weight:var(--_navigation-link-font-weight,initial)!important;text-decoration:var(--_navigation-link-text-decoration,none)!important}a:before,::slotted(a):before{content:"";inset:0;width:var(--rh-navigation-link-border-inline-start-width,var(--_navigation-link-before-border-inline-start-width));background-color:var(--_navigation-link-before-border-inline-start-color,transparent);border-radius:var(--rh-navigation-link-indicator-border-radius,0);height:100%;position:absolute;inset-inline-start:var(--rh-navigation-link-inset-inline-start,0)}a:is(:hover,:hover:focus-visible,:focus-visible,:active),::slotted(:is(a:hover,a:hover:focus-visible,:focus-visible,:active)){--_navigation-link-background-color:var(--rh-navigation-link-hover-background-color,var(--_navigation-link-hover-background-color,light-dark(#0000,#0000)))!important;--_navigation-link-color:var(--_navigation-link-color-hover, var(--rh-color-interactive-primary-hover))!important;text-underline-offset:var(--_navigation-link-text-underline-offset,4px)!important;text-decoration-color:var(--_navigation-link-text-decoration-color,light-dark( var(--rh-color-gray-50,#707070), var(--rh-color-gray-40,#a3a3a3)))!important;text-decoration-line:var(--_navigation-link-text-decoration-line,underline)!important;text-decoration-style:var(--_navigation-link-text-decoration-style,dashed)!important;text-decoration-skip-ink:auto!important}a:is(:focus-visible,:hover:focus-visible),::slotted(a:is(:focus-visible,:hover:focus-visible)){outline-offset:var(--_navigation-link-focus-outline-offset,0);outline: var(--rh-color-interactive-primary-default) solid  var(--rh-border-width-md,2px);border-radius:var(--rh-navigation-link-border-radius,var(--rh-border-radius-default,3px))}</style><!--lit-part VSLkVO1xlKQ=-->
+      <div id="container">
+        <!--lit-part 353KEdOMCY8=-->
+          <!--lit-node 0--><a href="#" >
+            <!-- summary: icon, only rendered when `href` is set
+                 description: |
+                   Use instead of the `icon` and `icon-set` attributes.
+                   Accepts `rh-icon`, `svg`, or `img`. Content should
+                   have `aria-hidden` or `alt` so screen readers skip
+                   decorative images. Not available when slotting
+                   an `<a>` directly (without `href` on the host). -->
+            <slot name="icon">
+              <!--lit-part BRUAAAUVAAA=--><?><!--/lit-part-->
+            </slot>
+            <!-- summary: Link content
+                 description: |
+                   When the `href` attribute is set, this slot should
+                   contain inline text for the link label. Alternatively,
+                   an anchor element (`<a href="...">`) should be the
+                   first child in this slot when `href` is not set.
+                   Screen readers will announce the slotted text as the
+                   accessible name for the link. Authors must not slot a
+                   `<button>` element. -->
+            <slot></slot>
+          </a><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template>Sub item 1</rh-navigation-link>
+        <rh-navigation-link  role="listitem" hydrate-internals-role="listitem" href="#"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}#container{display:var(--_navigation-link-container-display,block);inline-size:var(--_navigation-link-container-inline-size,fit-content);block-size:var(--_navigation-link-container-block-size,auto);padding:var(--_navigation-link-container-padding,initial);align-items:var(--_navigation-link-container-align-items,initial);position:var(--_navigation-link-container-position,initial)}a,::slotted(a){display:var(--_navigation-link-display,inline);block-size:var(--_navigation-link-block-size,auto);inline-size:var(--_navigation-link-inline-size,auto);align-items:var(--_navigation-link-align-items,initial);align-content:var(--_navigation-link-align-content,initial);padding:var(--_navigation-link-padding,0);gap:var(--_navigation-link-gap,initial);background-color:var(--rh-navigation-link-background-color,var(--_navigation-link-background-color,transparent));white-space:var(--rh-navigation-link-white-space,initial);border-radius:var(--rh-navigation-link-border-radius,0);position:relative;color:var(--_navigation-link-color, var(--rh-color-text-primary))!important;font-size:var(--rh-navigation-link-font-size,var(--_navigation-link-font-size,1rem))!important;font-weight:var(--_navigation-link-font-weight,initial)!important;text-decoration:var(--_navigation-link-text-decoration,none)!important}a:before,::slotted(a):before{content:"";inset:0;width:var(--rh-navigation-link-border-inline-start-width,var(--_navigation-link-before-border-inline-start-width));background-color:var(--_navigation-link-before-border-inline-start-color,transparent);border-radius:var(--rh-navigation-link-indicator-border-radius,0);height:100%;position:absolute;inset-inline-start:var(--rh-navigation-link-inset-inline-start,0)}a:is(:hover,:hover:focus-visible,:focus-visible,:active),::slotted(:is(a:hover,a:hover:focus-visible,:focus-visible,:active)){--_navigation-link-background-color:var(--rh-navigation-link-hover-background-color,var(--_navigation-link-hover-background-color,light-dark(#0000,#0000)))!important;--_navigation-link-color:var(--_navigation-link-color-hover, var(--rh-color-interactive-primary-hover))!important;text-underline-offset:var(--_navigation-link-text-underline-offset,4px)!important;text-decoration-color:var(--_navigation-link-text-decoration-color,light-dark( var(--rh-color-gray-50,#707070), var(--rh-color-gray-40,#a3a3a3)))!important;text-decoration-line:var(--_navigation-link-text-decoration-line,underline)!important;text-decoration-style:var(--_navigation-link-text-decoration-style,dashed)!important;text-decoration-skip-ink:auto!important}a:is(:focus-visible,:hover:focus-visible),::slotted(a:is(:focus-visible,:hover:focus-visible)){outline-offset:var(--_navigation-link-focus-outline-offset,0);outline: var(--rh-color-interactive-primary-default) solid  var(--rh-border-width-md,2px);border-radius:var(--rh-navigation-link-border-radius,var(--rh-border-radius-default,3px))}</style><!--lit-part VSLkVO1xlKQ=-->
+      <div id="container">
+        <!--lit-part 353KEdOMCY8=-->
+          <!--lit-node 0--><a href="#" >
+            <!-- summary: icon, only rendered when `href` is set
+                 description: |
+                   Use instead of the `icon` and `icon-set` attributes.
+                   Accepts `rh-icon`, `svg`, or `img`. Content should
+                   have `aria-hidden` or `alt` so screen readers skip
+                   decorative images. Not available when slotting
+                   an `<a>` directly (without `href` on the host). -->
+            <slot name="icon">
+              <!--lit-part BRUAAAUVAAA=--><?><!--/lit-part-->
+            </slot>
+            <!-- summary: Link content
+                 description: |
+                   When the `href` attribute is set, this slot should
+                   contain inline text for the link label. Alternatively,
+                   an anchor element (`<a href="...">`) should be the
+                   first child in this slot when `href` is not set.
+                   Screen readers will announce the slotted text as the
+                   accessible name for the link. Authors must not slot a
+                   `<button>` element. -->
+            <slot></slot>
+          </a><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template>Sub item 2</rh-navigation-link>
+      </rh-navigation-vertical-list>
+      <rh-navigation-link  role="listitem" hydrate-internals-role="listitem" href="#"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}#container{display:var(--_navigation-link-container-display,block);inline-size:var(--_navigation-link-container-inline-size,fit-content);block-size:var(--_navigation-link-container-block-size,auto);padding:var(--_navigation-link-container-padding,initial);align-items:var(--_navigation-link-container-align-items,initial);position:var(--_navigation-link-container-position,initial)}a,::slotted(a){display:var(--_navigation-link-display,inline);block-size:var(--_navigation-link-block-size,auto);inline-size:var(--_navigation-link-inline-size,auto);align-items:var(--_navigation-link-align-items,initial);align-content:var(--_navigation-link-align-content,initial);padding:var(--_navigation-link-padding,0);gap:var(--_navigation-link-gap,initial);background-color:var(--rh-navigation-link-background-color,var(--_navigation-link-background-color,transparent));white-space:var(--rh-navigation-link-white-space,initial);border-radius:var(--rh-navigation-link-border-radius,0);position:relative;color:var(--_navigation-link-color, var(--rh-color-text-primary))!important;font-size:var(--rh-navigation-link-font-size,var(--_navigation-link-font-size,1rem))!important;font-weight:var(--_navigation-link-font-weight,initial)!important;text-decoration:var(--_navigation-link-text-decoration,none)!important}a:before,::slotted(a):before{content:"";inset:0;width:var(--rh-navigation-link-border-inline-start-width,var(--_navigation-link-before-border-inline-start-width));background-color:var(--_navigation-link-before-border-inline-start-color,transparent);border-radius:var(--rh-navigation-link-indicator-border-radius,0);height:100%;position:absolute;inset-inline-start:var(--rh-navigation-link-inset-inline-start,0)}a:is(:hover,:hover:focus-visible,:focus-visible,:active),::slotted(:is(a:hover,a:hover:focus-visible,:focus-visible,:active)){--_navigation-link-background-color:var(--rh-navigation-link-hover-background-color,var(--_navigation-link-hover-background-color,light-dark(#0000,#0000)))!important;--_navigation-link-color:var(--_navigation-link-color-hover, var(--rh-color-interactive-primary-hover))!important;text-underline-offset:var(--_navigation-link-text-underline-offset,4px)!important;text-decoration-color:var(--_navigation-link-text-decoration-color,light-dark( var(--rh-color-gray-50,#707070), var(--rh-color-gray-40,#a3a3a3)))!important;text-decoration-line:var(--_navigation-link-text-decoration-line,underline)!important;text-decoration-style:var(--_navigation-link-text-decoration-style,dashed)!important;text-decoration-skip-ink:auto!important}a:is(:focus-visible,:hover:focus-visible),::slotted(a:is(:focus-visible,:hover:focus-visible)){outline-offset:var(--_navigation-link-focus-outline-offset,0);outline: var(--rh-color-interactive-primary-default) solid  var(--rh-border-width-md,2px);border-radius:var(--rh-navigation-link-border-radius,var(--rh-border-radius-default,3px))}</style><!--lit-part VSLkVO1xlKQ=-->
+      <div id="container">
+        <!--lit-part 353KEdOMCY8=-->
+          <!--lit-node 0--><a href="#" >
+            <!-- summary: icon, only rendered when `href` is set
+                 description: |
+                   Use instead of the `icon` and `icon-set` attributes.
+                   Accepts `rh-icon`, `svg`, or `img`. Content should
+                   have `aria-hidden` or `alt` so screen readers skip
+                   decorative images. Not available when slotting
+                   an `<a>` directly (without `href` on the host). -->
+            <slot name="icon">
+              <!--lit-part BRUAAAUVAAA=--><?><!--/lit-part-->
+            </slot>
+            <!-- summary: Link content
+                 description: |
+                   When the `href` attribute is set, this slot should
+                   contain inline text for the link label. Alternatively,
+                   an anchor element (`<a href="...">`) should be the
+                   first child in this slot when `href` is not set.
+                   Screen readers will announce the slotted text as the
+                   accessible name for the link. Authors must not slot a
+                   `<button>` element. -->
+            <slot></slot>
+          </a><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template>Nav item 3</rh-navigation-link>
+    </rh-navigation-vertical>
+  </div>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-navigation-vertical/rh-navigation-vertical.js';
+</script>
+
+
+</body></html>

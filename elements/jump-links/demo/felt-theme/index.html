@@ -1,0 +1,651 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
+    <title>Felt Theme | Red Hat Design System</title>
+
+    <link rel="preconnect" href="https://ga.jspm.io">
+
+    <link rel="stylesheet" href="/styles/demo/styles.css" media="all">
+
+    <script type="importmap">{
+  "imports": {
+    "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
+    "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "lit-html": "/assets/packages/lit-html/lit-html.js",
+    "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
+    "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
+    "lit-element": "/assets/packages/lit-element/index.js",
+    "prism-esm": "/assets/packages/prism-esm/prism.js",
+    "lit": "/assets/packages/lit/index.js",
+    "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
+    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
+    "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
+    "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "@lit/context": "/assets/packages/@lit/context/index.js",
+    "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@6.0.0/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
+    "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
+    "lit/": "/assets/packages/lit/",
+    "lit-html/": "/assets/packages/lit-html/",
+    "prism-esm/": "/assets/packages/prism-esm/",
+    "@lit-labs/ssr-client": "/assets/packages/@lit-labs/ssr-client/index.js",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js",
+    "@rhds/tokens/css/": "/assets/packages/@rhds/tokens/css/",
+    "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
+    "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
+    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons": "/assets/packages/@rhds/icons/icons.js",
+    "@rhds/icons/": "/assets/packages/@rhds/icons/",
+    "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
+    "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
+    "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
+    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "@uxdot/elements/": "/assets/packages/@uxdot/elements/"
+  },
+  "scopes": {
+    "/assets/packages/": {
+      "@lit/reactive-element/decorators/": "/assets/packages/@lit/reactive-element/decorators/",
+      "lit-element/lit-element.js": "/assets/packages/lit-element/lit-element.js",
+      "lit-html/": "/assets/packages/lit-html/"
+    }
+  }
+}</script>
+
+    
+      <script type="module">
+    // although we load these ssr support modules elsewhere, we still
+    // need them here to ensure no double-rendering on webkit
+    import '/assets/javascript/ssr-support.js';
+    // include these, which are often internal to elements,
+    // and are definitely required by context-picker and context-demo
+    // to avoid SSR defer-hydration bugs and SSR double-rendering bugs
+    import '@rhds/elements/rh-icon/rh-icon.js';
+    import '@rhds/elements/rh-surface/rh-surface.js';
+    import '@rhds/elements/rh-button/rh-button.js';
+    import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+    import '@rhds/elements/rh-tag/rh-tag.js';
+  </script>
+
+
+    <script type="module">
+      // load up the demo and picker
+      import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+      import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+    </script>
+
+    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
+  </head>
+  <body>
+    <link rel="stylesheet" href="/theming/themes/project-felt/preview/felt-theme-preview.css">
+
+<style>
+  #jump-links-demo-container {
+    display: grid;
+    grid-template-columns: max-content auto;
+    gap: var(--rh-space-2xl, 32px);
+    padding: var(--rh-space-lg, 16px);
+
+    aside {
+      h2 {
+        font-weight: var(--rh-font-weight-heading-medium);
+        font-family: var(--rh-font-family-body-text);
+        font-size: var(--rh-font-size-body-text-md);
+        line-height: var(--rh-line-height-body-text, 1.5);
+        margin-block-end: var(--rh-space-lg);
+      }
+    }
+  }
+
+  #horizontal-demo {
+    padding: var(--rh-space-lg, 16px);
+
+    h2 {
+      font-weight: var(--rh-font-weight-heading-medium);
+      font-family: var(--rh-font-family-body-text);
+      font-size: var(--rh-font-size-body-text-md);
+      line-height: var(--rh-line-height-body-text, 1.5);
+      margin-block-end: var(--rh-space-lg);
+    }
+  }
+  .felt-preview {
+    padding: var(--rh-space-2xl, 32px);
+  }
+</style>
+
+<div class="felt-preview">
+  <div id="jump-links-demo-container">
+    <aside>
+      <h2 id="sections">Vertical</h2>
+      <rh-jump-links  role="navigation" hydrate-internals-role="navigation" aria-labelledby="sections" orientation="vertical"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;position:relative}.overflow-button{display:hidden}#container{--_bdr: var(--rh-length-4xs,1px) solid  var(--rh-color-border-subtle)}:host([orientation=horizontal]){justify-content:center;display:flex}:host([orientation=horizontal]) #container{flex-flow:row;display:flex;overflow:auto visible}:host([orientation=horizontal]) #container:after,:host([orientation=horizontal]) #container:before{content:"";display:block;position:absolute;inset-inline:0}:host([orientation=horizontal]) #container:before{margin-inline:var(--rh-space-3xl);border-block-start: var(--rh-border-width-sm,1px) solid  var(--rh-color-border-subtle)}:host([orientation=horizontal]) #container:after{border-block-end: var(--rh-border-width-sm,1px) solid  var(--rh-color-border-subtle);inset-block-end:0}:host([orientation=horizontal]) .overflow-button{opacity:1;padding-block:0;padding-inline:var(--rh-space-lg,16px);color:var(--_overflow-button-text-color);z-index:2;background-color:#0000;border:0;flex:none;line-height:1;position:relative}:host([orientation=horizontal]) .overflow-button rh-icon{pointer-events:none}:host([orientation=horizontal]) .overflow-button rh-icon:dir(rtl){rotate:180deg}:host([orientation=horizontal]) .overflow-button:first-of-type{margin-inline-end:0;translate:0}:host([orientation=horizontal]) .overflow-button:first-of-type:before{border-inline-width:0 1px}:host([orientation=horizontal]) .overflow-button:nth-of-type(2){margin-inline-start:0;inset-inline-start:-1px;translate:0}:host([orientation=horizontal]) .overflow-button:nth-of-type(2):before{border-inline-width:1px 0}:host([orientation=horizontal]) .overflow-button:disabled{pointer-events:none;color:light-dark( var(--rh-color-gray-40,#a3a3a3), var(--rh-color-gray-50,#707070))}:host([orientation=horizontal]) .overflow-button:hover{color:var(--rh-color-text-primary)}</style><!--lit-part Vqpuljk6/Ok=-->
+        <!--lit-node 0--><button id="scroll-start"
+                class="overflow-button"
+                hidden
+                tabindex="-1"
+                data-direction="start"
+                aria-label="Scroll back"
+                disabled
+                >
+          <!--lit-node 1--><rh-icon    set="ui" icon="caret-left" loading="eager" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part v6+vs33eA0I=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M21 30a.997.997 0 0 1-.707-.293L7.647 17.061a1.501 1.501 0 0 1 0-2.121L20.293 2.293a.999.999 0 1 1 1.414 1.414L9.414 16l12.293 12.293A.999.999 0 0 1 21 30Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        </button>
+
+        <div id="container" role="list">
+          <!-- summary: navigation link items and nested lists (default slot)
+               description: |
+                 Contains `<rh-jump-link>` elements and optional
+                 `<rh-jump-links-list>` groups. Each child receives
+                 `role="listitem"` within the `role="list"` container,
+                 forming an accessible navigation structure for screen
+                 readers. Link each item to a section ID (`href="#id"`)
+                 corresponding to a heading or landmark on the page.
+                 Place links in page order so assistive technology users
+                 experience a logical sequence. Use nested lists
+                 sparingly to avoid overwhelming users. -->
+          <slot></slot>
+        </div>
+
+        <!--lit-node 5--><button id="scroll-end"
+                class="overflow-button"
+                hidden
+                tabindex="-1"
+                data-direction="end"
+                aria-label="Scroll forward"
+                disabled
+                >
+           <!--lit-node 6--><rh-icon    set="ui" icon="caret-right" loading="eager" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part sMbW+yHuspE=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M11 30a.999.999 0 0 1-.707-1.707L22.586 16 10.293 3.707a.999.999 0 1 1 1.414-1.414l12.646 12.646a1.501 1.501 0 0 1 0 2.121L11.707 29.706a.997.997 0 0 1-.707.293Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        </button>
+    <!--/lit-part--></template>
+        <rh-jump-link  role="listitem" hydrate-internals-role="listitem" href="#section-1"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_item-padding-block:var(--rh-jump-link-item-padding-block,0);--_item-padding-inline:var(--rh-jump-link-item-padding-inline,0);--_link-padding-block:var(--rh-jump-link-link-padding-block);--_link-padding-inline:var(--rh-jump-link-link-padding-inline);border-inline-start:var(--rh-jump-link-border,none);width:100%;display:block;position:relative}a{color:var(--rh-color-interactive-secondary-default);box-sizing:border-box;white-space:normal;overflow-wrap:break-word;text-decoration:none;display:inline-block;position:relative}a:focus{color:var(--rh-color-text-primary)}a:focus-visible{outline:none}a:focus-visible:after{content:"";border:2px solid var(--rh-color-interactive-primary-default);border-radius:var(--rh-border-radius-default,3px);display:block;position:absolute;inset:0}a:hover,a:focus-visible{color:var(--rh-color-text-primary);background-color:var(--rh-jump-link-hover-background-color,transparent);border-radius:var(--rh-jump-link-hover-border-radius,0)}#container:before{content:"";border-radius:var(--rh-jump-link-indicator-border-radius,0);background-color:#0000;display:block;position:absolute;inset:0}#container.vertical{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline);border-inline-start:var(--rh-jump-link-link-border,var(--_bdr))}#container.vertical a{max-width:var(--rh-jump-link-max-width,calc(var(--rh-length-md,8px) * 40));min-width:max-content;padding-block:var(--_link-padding-block, var(--rh-space-md,8px));padding-inline:var(--_link-padding-inline,calc( var(--rh-space-lg,16px) + var(--_padding-inline-start,0px))  var(--rh-space-lg,16px))}#container.horizontal{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline)}#container.horizontal a{white-space:nowrap;padding-block:var(--_link-padding-block, var(--rh-space-lg,16px));padding-inline:var(--_link-padding-inline, var(--rh-space-lg,16px))}#container.active{color:var(--rh-color-text-primary);--_bdr-c:var(--rh-color-brand-red)}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).vertical:before{width:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));height:100%}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).horizontal:before{height:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));width:auto}:host([slot]) #container.vertical{border-inline-start:none}</style><!--lit-part 1oFQ8ldr4Cg=-->
+      <!--lit-node 0--><div id="container" class=" vertical ">
+        <!--lit-node 1--><a 
+          href="#section-1"
+          >
+          <!-- summary: link label text (default slot)
+              description: |
+                Text content for this jump link. Serves as the accessible
+                name for the internal anchor element, so it should match
+                or closely reflect the target section heading (per WCAG
+                2.4.6 Headings and Labels). Keep text concise. -->
+          <slot></slot>
+        </a>
+      </div>
+    <!--/lit-part--></template>Section 1</rh-jump-link>
+        <rh-jump-link   role="listitem" hydrate-internals-role="listitem" href="#section-2" active><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_item-padding-block:var(--rh-jump-link-item-padding-block,0);--_item-padding-inline:var(--rh-jump-link-item-padding-inline,0);--_link-padding-block:var(--rh-jump-link-link-padding-block);--_link-padding-inline:var(--rh-jump-link-link-padding-inline);border-inline-start:var(--rh-jump-link-border,none);width:100%;display:block;position:relative}a{color:var(--rh-color-interactive-secondary-default);box-sizing:border-box;white-space:normal;overflow-wrap:break-word;text-decoration:none;display:inline-block;position:relative}a:focus{color:var(--rh-color-text-primary)}a:focus-visible{outline:none}a:focus-visible:after{content:"";border:2px solid var(--rh-color-interactive-primary-default);border-radius:var(--rh-border-radius-default,3px);display:block;position:absolute;inset:0}a:hover,a:focus-visible{color:var(--rh-color-text-primary);background-color:var(--rh-jump-link-hover-background-color,transparent);border-radius:var(--rh-jump-link-hover-border-radius,0)}#container:before{content:"";border-radius:var(--rh-jump-link-indicator-border-radius,0);background-color:#0000;display:block;position:absolute;inset:0}#container.vertical{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline);border-inline-start:var(--rh-jump-link-link-border,var(--_bdr))}#container.vertical a{max-width:var(--rh-jump-link-max-width,calc(var(--rh-length-md,8px) * 40));min-width:max-content;padding-block:var(--_link-padding-block, var(--rh-space-md,8px));padding-inline:var(--_link-padding-inline,calc( var(--rh-space-lg,16px) + var(--_padding-inline-start,0px))  var(--rh-space-lg,16px))}#container.horizontal{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline)}#container.horizontal a{white-space:nowrap;padding-block:var(--_link-padding-block, var(--rh-space-lg,16px));padding-inline:var(--_link-padding-inline, var(--rh-space-lg,16px))}#container.active{color:var(--rh-color-text-primary);--_bdr-c:var(--rh-color-brand-red)}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).vertical:before{width:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));height:100%}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).horizontal:before{height:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));width:auto}:host([slot]) #container.vertical{border-inline-start:none}</style><!--lit-part 1oFQ8ldr4Cg=-->
+      <!--lit-node 0--><div id="container" class=" active vertical ">
+        <!--lit-node 1--><a aria-current="location"
+          href="#section-2"
+          >
+          <!-- summary: link label text (default slot)
+              description: |
+                Text content for this jump link. Serves as the accessible
+                name for the internal anchor element, so it should match
+                or closely reflect the target section heading (per WCAG
+                2.4.6 Headings and Labels). Keep text concise. -->
+          <slot></slot>
+        </a>
+      </div>
+    <!--/lit-part--></template>Section 2</rh-jump-link>
+        <rh-jump-link  role="listitem" hydrate-internals-role="listitem" href="#section-3"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_item-padding-block:var(--rh-jump-link-item-padding-block,0);--_item-padding-inline:var(--rh-jump-link-item-padding-inline,0);--_link-padding-block:var(--rh-jump-link-link-padding-block);--_link-padding-inline:var(--rh-jump-link-link-padding-inline);border-inline-start:var(--rh-jump-link-border,none);width:100%;display:block;position:relative}a{color:var(--rh-color-interactive-secondary-default);box-sizing:border-box;white-space:normal;overflow-wrap:break-word;text-decoration:none;display:inline-block;position:relative}a:focus{color:var(--rh-color-text-primary)}a:focus-visible{outline:none}a:focus-visible:after{content:"";border:2px solid var(--rh-color-interactive-primary-default);border-radius:var(--rh-border-radius-default,3px);display:block;position:absolute;inset:0}a:hover,a:focus-visible{color:var(--rh-color-text-primary);background-color:var(--rh-jump-link-hover-background-color,transparent);border-radius:var(--rh-jump-link-hover-border-radius,0)}#container:before{content:"";border-radius:var(--rh-jump-link-indicator-border-radius,0);background-color:#0000;display:block;position:absolute;inset:0}#container.vertical{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline);border-inline-start:var(--rh-jump-link-link-border,var(--_bdr))}#container.vertical a{max-width:var(--rh-jump-link-max-width,calc(var(--rh-length-md,8px) * 40));min-width:max-content;padding-block:var(--_link-padding-block, var(--rh-space-md,8px));padding-inline:var(--_link-padding-inline,calc( var(--rh-space-lg,16px) + var(--_padding-inline-start,0px))  var(--rh-space-lg,16px))}#container.horizontal{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline)}#container.horizontal a{white-space:nowrap;padding-block:var(--_link-padding-block, var(--rh-space-lg,16px));padding-inline:var(--_link-padding-inline, var(--rh-space-lg,16px))}#container.active{color:var(--rh-color-text-primary);--_bdr-c:var(--rh-color-brand-red)}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).vertical:before{width:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));height:100%}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).horizontal:before{height:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));width:auto}:host([slot]) #container.vertical{border-inline-start:none}</style><!--lit-part 1oFQ8ldr4Cg=-->
+      <!--lit-node 0--><div id="container" class=" vertical ">
+        <!--lit-node 1--><a 
+          href="#section-3"
+          >
+          <!-- summary: link label text (default slot)
+              description: |
+                Text content for this jump link. Serves as the accessible
+                name for the internal anchor element, so it should match
+                or closely reflect the target section heading (per WCAG
+                2.4.6 Headings and Labels). Keep text concise. -->
+          <slot></slot>
+        </a>
+      </div>
+    <!--/lit-part--></template>Section 3</rh-jump-link>
+        <rh-jump-link  role="listitem" hydrate-internals-role="listitem" href="#section-4"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_item-padding-block:var(--rh-jump-link-item-padding-block,0);--_item-padding-inline:var(--rh-jump-link-item-padding-inline,0);--_link-padding-block:var(--rh-jump-link-link-padding-block);--_link-padding-inline:var(--rh-jump-link-link-padding-inline);border-inline-start:var(--rh-jump-link-border,none);width:100%;display:block;position:relative}a{color:var(--rh-color-interactive-secondary-default);box-sizing:border-box;white-space:normal;overflow-wrap:break-word;text-decoration:none;display:inline-block;position:relative}a:focus{color:var(--rh-color-text-primary)}a:focus-visible{outline:none}a:focus-visible:after{content:"";border:2px solid var(--rh-color-interactive-primary-default);border-radius:var(--rh-border-radius-default,3px);display:block;position:absolute;inset:0}a:hover,a:focus-visible{color:var(--rh-color-text-primary);background-color:var(--rh-jump-link-hover-background-color,transparent);border-radius:var(--rh-jump-link-hover-border-radius,0)}#container:before{content:"";border-radius:var(--rh-jump-link-indicator-border-radius,0);background-color:#0000;display:block;position:absolute;inset:0}#container.vertical{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline);border-inline-start:var(--rh-jump-link-link-border,var(--_bdr))}#container.vertical a{max-width:var(--rh-jump-link-max-width,calc(var(--rh-length-md,8px) * 40));min-width:max-content;padding-block:var(--_link-padding-block, var(--rh-space-md,8px));padding-inline:var(--_link-padding-inline,calc( var(--rh-space-lg,16px) + var(--_padding-inline-start,0px))  var(--rh-space-lg,16px))}#container.horizontal{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline)}#container.horizontal a{white-space:nowrap;padding-block:var(--_link-padding-block, var(--rh-space-lg,16px));padding-inline:var(--_link-padding-inline, var(--rh-space-lg,16px))}#container.active{color:var(--rh-color-text-primary);--_bdr-c:var(--rh-color-brand-red)}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).vertical:before{width:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));height:100%}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).horizontal:before{height:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));width:auto}:host([slot]) #container.vertical{border-inline-start:none}</style><!--lit-part 1oFQ8ldr4Cg=-->
+      <!--lit-node 0--><div id="container" class=" vertical ">
+        <!--lit-node 1--><a 
+          href="#section-4"
+          >
+          <!-- summary: link label text (default slot)
+              description: |
+                Text content for this jump link. Serves as the accessible
+                name for the internal anchor element, so it should match
+                or closely reflect the target section heading (per WCAG
+                2.4.6 Headings and Labels). Keep text concise. -->
+          <slot></slot>
+        </a>
+      </div>
+    <!--/lit-part--></template>Section 4</rh-jump-link>
+        <rh-jump-link  role="listitem" hydrate-internals-role="listitem" href="#section-5"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_item-padding-block:var(--rh-jump-link-item-padding-block,0);--_item-padding-inline:var(--rh-jump-link-item-padding-inline,0);--_link-padding-block:var(--rh-jump-link-link-padding-block);--_link-padding-inline:var(--rh-jump-link-link-padding-inline);border-inline-start:var(--rh-jump-link-border,none);width:100%;display:block;position:relative}a{color:var(--rh-color-interactive-secondary-default);box-sizing:border-box;white-space:normal;overflow-wrap:break-word;text-decoration:none;display:inline-block;position:relative}a:focus{color:var(--rh-color-text-primary)}a:focus-visible{outline:none}a:focus-visible:after{content:"";border:2px solid var(--rh-color-interactive-primary-default);border-radius:var(--rh-border-radius-default,3px);display:block;position:absolute;inset:0}a:hover,a:focus-visible{color:var(--rh-color-text-primary);background-color:var(--rh-jump-link-hover-background-color,transparent);border-radius:var(--rh-jump-link-hover-border-radius,0)}#container:before{content:"";border-radius:var(--rh-jump-link-indicator-border-radius,0);background-color:#0000;display:block;position:absolute;inset:0}#container.vertical{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline);border-inline-start:var(--rh-jump-link-link-border,var(--_bdr))}#container.vertical a{max-width:var(--rh-jump-link-max-width,calc(var(--rh-length-md,8px) * 40));min-width:max-content;padding-block:var(--_link-padding-block, var(--rh-space-md,8px));padding-inline:var(--_link-padding-inline,calc( var(--rh-space-lg,16px) + var(--_padding-inline-start,0px))  var(--rh-space-lg,16px))}#container.horizontal{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline)}#container.horizontal a{white-space:nowrap;padding-block:var(--_link-padding-block, var(--rh-space-lg,16px));padding-inline:var(--_link-padding-inline, var(--rh-space-lg,16px))}#container.active{color:var(--rh-color-text-primary);--_bdr-c:var(--rh-color-brand-red)}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).vertical:before{width:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));height:100%}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).horizontal:before{height:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));width:auto}:host([slot]) #container.vertical{border-inline-start:none}</style><!--lit-part 1oFQ8ldr4Cg=-->
+      <!--lit-node 0--><div id="container" class=" vertical ">
+        <!--lit-node 1--><a 
+          href="#section-5"
+          >
+          <!-- summary: link label text (default slot)
+              description: |
+                Text content for this jump link. Serves as the accessible
+                name for the internal anchor element, so it should match
+                or closely reflect the target section heading (per WCAG
+                2.4.6 Headings and Labels). Keep text concise. -->
+          <slot></slot>
+        </a>
+      </div>
+    <!--/lit-part--></template>Section 5</rh-jump-link>
+      </rh-jump-links>
+
+      <h2 id="nested-sections">Nested</h2>
+      <rh-jump-links  role="navigation" hydrate-internals-role="navigation" aria-labelledby="nested-sections" orientation="vertical"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;position:relative}.overflow-button{display:hidden}#container{--_bdr: var(--rh-length-4xs,1px) solid  var(--rh-color-border-subtle)}:host([orientation=horizontal]){justify-content:center;display:flex}:host([orientation=horizontal]) #container{flex-flow:row;display:flex;overflow:auto visible}:host([orientation=horizontal]) #container:after,:host([orientation=horizontal]) #container:before{content:"";display:block;position:absolute;inset-inline:0}:host([orientation=horizontal]) #container:before{margin-inline:var(--rh-space-3xl);border-block-start: var(--rh-border-width-sm,1px) solid  var(--rh-color-border-subtle)}:host([orientation=horizontal]) #container:after{border-block-end: var(--rh-border-width-sm,1px) solid  var(--rh-color-border-subtle);inset-block-end:0}:host([orientation=horizontal]) .overflow-button{opacity:1;padding-block:0;padding-inline:var(--rh-space-lg,16px);color:var(--_overflow-button-text-color);z-index:2;background-color:#0000;border:0;flex:none;line-height:1;position:relative}:host([orientation=horizontal]) .overflow-button rh-icon{pointer-events:none}:host([orientation=horizontal]) .overflow-button rh-icon:dir(rtl){rotate:180deg}:host([orientation=horizontal]) .overflow-button:first-of-type{margin-inline-end:0;translate:0}:host([orientation=horizontal]) .overflow-button:first-of-type:before{border-inline-width:0 1px}:host([orientation=horizontal]) .overflow-button:nth-of-type(2){margin-inline-start:0;inset-inline-start:-1px;translate:0}:host([orientation=horizontal]) .overflow-button:nth-of-type(2):before{border-inline-width:1px 0}:host([orientation=horizontal]) .overflow-button:disabled{pointer-events:none;color:light-dark( var(--rh-color-gray-40,#a3a3a3), var(--rh-color-gray-50,#707070))}:host([orientation=horizontal]) .overflow-button:hover{color:var(--rh-color-text-primary)}</style><!--lit-part Vqpuljk6/Ok=-->
+        <!--lit-node 0--><button id="scroll-start"
+                class="overflow-button"
+                hidden
+                tabindex="-1"
+                data-direction="start"
+                aria-label="Scroll back"
+                disabled
+                >
+          <!--lit-node 1--><rh-icon    set="ui" icon="caret-left" loading="eager" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part v6+vs33eA0I=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M21 30a.997.997 0 0 1-.707-.293L7.647 17.061a1.501 1.501 0 0 1 0-2.121L20.293 2.293a.999.999 0 1 1 1.414 1.414L9.414 16l12.293 12.293A.999.999 0 0 1 21 30Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        </button>
+
+        <div id="container" role="list">
+          <!-- summary: navigation link items and nested lists (default slot)
+               description: |
+                 Contains `<rh-jump-link>` elements and optional
+                 `<rh-jump-links-list>` groups. Each child receives
+                 `role="listitem"` within the `role="list"` container,
+                 forming an accessible navigation structure for screen
+                 readers. Link each item to a section ID (`href="#id"`)
+                 corresponding to a heading or landmark on the page.
+                 Place links in page order so assistive technology users
+                 experience a logical sequence. Use nested lists
+                 sparingly to avoid overwhelming users. -->
+          <slot></slot>
+        </div>
+
+        <!--lit-node 5--><button id="scroll-end"
+                class="overflow-button"
+                hidden
+                tabindex="-1"
+                data-direction="end"
+                aria-label="Scroll forward"
+                disabled
+                >
+           <!--lit-node 6--><rh-icon    set="ui" icon="caret-right" loading="eager" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part sMbW+yHuspE=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M11 30a.999.999 0 0 1-.707-1.707L22.586 16 10.293 3.707a.999.999 0 1 1 1.414-1.414l12.646 12.646a1.501 1.501 0 0 1 0 2.121L11.707 29.706a.997.997 0 0 1-.707.293Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        </button>
+    <!--/lit-part--></template>
+        <rh-jump-link  role="listitem" hydrate-internals-role="listitem" href="#section-1"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_item-padding-block:var(--rh-jump-link-item-padding-block,0);--_item-padding-inline:var(--rh-jump-link-item-padding-inline,0);--_link-padding-block:var(--rh-jump-link-link-padding-block);--_link-padding-inline:var(--rh-jump-link-link-padding-inline);border-inline-start:var(--rh-jump-link-border,none);width:100%;display:block;position:relative}a{color:var(--rh-color-interactive-secondary-default);box-sizing:border-box;white-space:normal;overflow-wrap:break-word;text-decoration:none;display:inline-block;position:relative}a:focus{color:var(--rh-color-text-primary)}a:focus-visible{outline:none}a:focus-visible:after{content:"";border:2px solid var(--rh-color-interactive-primary-default);border-radius:var(--rh-border-radius-default,3px);display:block;position:absolute;inset:0}a:hover,a:focus-visible{color:var(--rh-color-text-primary);background-color:var(--rh-jump-link-hover-background-color,transparent);border-radius:var(--rh-jump-link-hover-border-radius,0)}#container:before{content:"";border-radius:var(--rh-jump-link-indicator-border-radius,0);background-color:#0000;display:block;position:absolute;inset:0}#container.vertical{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline);border-inline-start:var(--rh-jump-link-link-border,var(--_bdr))}#container.vertical a{max-width:var(--rh-jump-link-max-width,calc(var(--rh-length-md,8px) * 40));min-width:max-content;padding-block:var(--_link-padding-block, var(--rh-space-md,8px));padding-inline:var(--_link-padding-inline,calc( var(--rh-space-lg,16px) + var(--_padding-inline-start,0px))  var(--rh-space-lg,16px))}#container.horizontal{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline)}#container.horizontal a{white-space:nowrap;padding-block:var(--_link-padding-block, var(--rh-space-lg,16px));padding-inline:var(--_link-padding-inline, var(--rh-space-lg,16px))}#container.active{color:var(--rh-color-text-primary);--_bdr-c:var(--rh-color-brand-red)}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).vertical:before{width:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));height:100%}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).horizontal:before{height:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));width:auto}:host([slot]) #container.vertical{border-inline-start:none}</style><!--lit-part 1oFQ8ldr4Cg=-->
+      <!--lit-node 0--><div id="container" class=" vertical ">
+        <!--lit-node 1--><a 
+          href="#section-1"
+          >
+          <!-- summary: link label text (default slot)
+              description: |
+                Text content for this jump link. Serves as the accessible
+                name for the internal anchor element, so it should match
+                or closely reflect the target section heading (per WCAG
+                2.4.6 Headings and Labels). Keep text concise. -->
+          <slot></slot>
+        </a>
+      </div>
+    <!--/lit-part--></template>Jump link</rh-jump-link>
+        <rh-jump-links-list  role="listitem" hydrate-internals-role="listitem" active><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;position:relative}#list{padding-inline-end:var(--rh-space-lg,16px)}#container{--_bdr: var(--rh-length-4xs,1px) solid  var(--rh-color-border-subtle)}#container.vertical{border-inline-start:var(--_bdr)}#container.vertical ::slotted(rh-jump-link[slot][active]),#container.vertical ::slotted(rh-jump-link[slot]){--_bdr-c:none;margin-left:-1px}#container.vertical ::slotted(rh-jump-link:not([slot])){--_padding-inline-start:var(--rh-space-lg,16px);--_bdr:none;--_active_bdr:none}#container.horizontal{border-block-start:var(--_bdr);display:contents}#container.vertical.active{--_active_bdr:none}#container.active:before{content:"";display:block;position:absolute}#container.active.vertical:before{border-inline-start: var(--rh-length-xs,4px) solid  var(--rh-color-brand-red);height:100%;inset-block:0;inset-inline-start:0}#container.active.horizontal:before{border-block-start: var(--rh-length-xs,4px) solid  var(--rh-color-brand-red);width:100%;inset-block-start:0;inset-inline:0}</style><!--lit-part PMldToSi8jA=-->
+      <!--lit-node 0--><div id="container" class=" active vertical ">
+        <!-- summary: parent link for this nested group (parent slot)
+             description: |
+               A single `<rh-jump-link>` that labels this group. When clicked,
+               the nested list expands in vertical orientation. Screen readers
+               announce it as a list item within the navigation landmark. -->
+        <slot name="parent"></slot>
+        <!--lit-node 3--><div id="list"
+             
+             role="list">
+          <!-- summary: child jump links (default slot)
+               description: |
+                 One or more `<rh-jump-link>` children that appear nested under
+                 the parent link. In vertical mode, these indent with additional
+                 padding. Hidden in horizontal orientation. Each child has
+                 `role="listitem"` for screen readers. -->
+          <slot></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
+          <rh-jump-link   role="listitem" hydrate-internals-role="listitem" slot="parent" href="#section-2"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_item-padding-block:var(--rh-jump-link-item-padding-block,0);--_item-padding-inline:var(--rh-jump-link-item-padding-inline,0);--_link-padding-block:var(--rh-jump-link-link-padding-block);--_link-padding-inline:var(--rh-jump-link-link-padding-inline);border-inline-start:var(--rh-jump-link-border,none);width:100%;display:block;position:relative}a{color:var(--rh-color-interactive-secondary-default);box-sizing:border-box;white-space:normal;overflow-wrap:break-word;text-decoration:none;display:inline-block;position:relative}a:focus{color:var(--rh-color-text-primary)}a:focus-visible{outline:none}a:focus-visible:after{content:"";border:2px solid var(--rh-color-interactive-primary-default);border-radius:var(--rh-border-radius-default,3px);display:block;position:absolute;inset:0}a:hover,a:focus-visible{color:var(--rh-color-text-primary);background-color:var(--rh-jump-link-hover-background-color,transparent);border-radius:var(--rh-jump-link-hover-border-radius,0)}#container:before{content:"";border-radius:var(--rh-jump-link-indicator-border-radius,0);background-color:#0000;display:block;position:absolute;inset:0}#container.vertical{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline);border-inline-start:var(--rh-jump-link-link-border,var(--_bdr))}#container.vertical a{max-width:var(--rh-jump-link-max-width,calc(var(--rh-length-md,8px) * 40));min-width:max-content;padding-block:var(--_link-padding-block, var(--rh-space-md,8px));padding-inline:var(--_link-padding-inline,calc( var(--rh-space-lg,16px) + var(--_padding-inline-start,0px))  var(--rh-space-lg,16px))}#container.horizontal{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline)}#container.horizontal a{white-space:nowrap;padding-block:var(--_link-padding-block, var(--rh-space-lg,16px));padding-inline:var(--_link-padding-inline, var(--rh-space-lg,16px))}#container.active{color:var(--rh-color-text-primary);--_bdr-c:var(--rh-color-brand-red)}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).vertical:before{width:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));height:100%}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).horizontal:before{height:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));width:auto}:host([slot]) #container.vertical{border-inline-start:none}</style><!--lit-part 1oFQ8ldr4Cg=-->
+      <!--lit-node 0--><div id="container" class=" vertical ">
+        <!--lit-node 1--><a 
+          href="#section-2"
+          >
+          <!-- summary: link label text (default slot)
+              description: |
+                Text content for this jump link. Serves as the accessible
+                name for the internal anchor element, so it should match
+                or closely reflect the target section heading (per WCAG
+                2.4.6 Headings and Labels). Keep text concise. -->
+          <slot></slot>
+        </a>
+      </div>
+    <!--/lit-part--></template>Jump link with active subsection</rh-jump-link>
+          <rh-jump-link   role="listitem" hydrate-internals-role="listitem" href="#section-2a" active><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_item-padding-block:var(--rh-jump-link-item-padding-block,0);--_item-padding-inline:var(--rh-jump-link-item-padding-inline,0);--_link-padding-block:var(--rh-jump-link-link-padding-block);--_link-padding-inline:var(--rh-jump-link-link-padding-inline);border-inline-start:var(--rh-jump-link-border,none);width:100%;display:block;position:relative}a{color:var(--rh-color-interactive-secondary-default);box-sizing:border-box;white-space:normal;overflow-wrap:break-word;text-decoration:none;display:inline-block;position:relative}a:focus{color:var(--rh-color-text-primary)}a:focus-visible{outline:none}a:focus-visible:after{content:"";border:2px solid var(--rh-color-interactive-primary-default);border-radius:var(--rh-border-radius-default,3px);display:block;position:absolute;inset:0}a:hover,a:focus-visible{color:var(--rh-color-text-primary);background-color:var(--rh-jump-link-hover-background-color,transparent);border-radius:var(--rh-jump-link-hover-border-radius,0)}#container:before{content:"";border-radius:var(--rh-jump-link-indicator-border-radius,0);background-color:#0000;display:block;position:absolute;inset:0}#container.vertical{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline);border-inline-start:var(--rh-jump-link-link-border,var(--_bdr))}#container.vertical a{max-width:var(--rh-jump-link-max-width,calc(var(--rh-length-md,8px) * 40));min-width:max-content;padding-block:var(--_link-padding-block, var(--rh-space-md,8px));padding-inline:var(--_link-padding-inline,calc( var(--rh-space-lg,16px) + var(--_padding-inline-start,0px))  var(--rh-space-lg,16px))}#container.horizontal{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline)}#container.horizontal a{white-space:nowrap;padding-block:var(--_link-padding-block, var(--rh-space-lg,16px));padding-inline:var(--_link-padding-inline, var(--rh-space-lg,16px))}#container.active{color:var(--rh-color-text-primary);--_bdr-c:var(--rh-color-brand-red)}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).vertical:before{width:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));height:100%}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).horizontal:before{height:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));width:auto}:host([slot]) #container.vertical{border-inline-start:none}</style><!--lit-part 1oFQ8ldr4Cg=-->
+      <!--lit-node 0--><div id="container" class=" active vertical ">
+        <!--lit-node 1--><a aria-current="location"
+          href="#section-2a"
+          >
+          <!-- summary: link label text (default slot)
+              description: |
+                Text content for this jump link. Serves as the accessible
+                name for the internal anchor element, so it should match
+                or closely reflect the target section heading (per WCAG
+                2.4.6 Headings and Labels). Keep text concise. -->
+          <slot></slot>
+        </a>
+      </div>
+    <!--/lit-part--></template>Jump link subsection</rh-jump-link>
+          <rh-jump-link  role="listitem" hydrate-internals-role="listitem" href="#section-2b"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_item-padding-block:var(--rh-jump-link-item-padding-block,0);--_item-padding-inline:var(--rh-jump-link-item-padding-inline,0);--_link-padding-block:var(--rh-jump-link-link-padding-block);--_link-padding-inline:var(--rh-jump-link-link-padding-inline);border-inline-start:var(--rh-jump-link-border,none);width:100%;display:block;position:relative}a{color:var(--rh-color-interactive-secondary-default);box-sizing:border-box;white-space:normal;overflow-wrap:break-word;text-decoration:none;display:inline-block;position:relative}a:focus{color:var(--rh-color-text-primary)}a:focus-visible{outline:none}a:focus-visible:after{content:"";border:2px solid var(--rh-color-interactive-primary-default);border-radius:var(--rh-border-radius-default,3px);display:block;position:absolute;inset:0}a:hover,a:focus-visible{color:var(--rh-color-text-primary);background-color:var(--rh-jump-link-hover-background-color,transparent);border-radius:var(--rh-jump-link-hover-border-radius,0)}#container:before{content:"";border-radius:var(--rh-jump-link-indicator-border-radius,0);background-color:#0000;display:block;position:absolute;inset:0}#container.vertical{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline);border-inline-start:var(--rh-jump-link-link-border,var(--_bdr))}#container.vertical a{max-width:var(--rh-jump-link-max-width,calc(var(--rh-length-md,8px) * 40));min-width:max-content;padding-block:var(--_link-padding-block, var(--rh-space-md,8px));padding-inline:var(--_link-padding-inline,calc( var(--rh-space-lg,16px) + var(--_padding-inline-start,0px))  var(--rh-space-lg,16px))}#container.horizontal{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline)}#container.horizontal a{white-space:nowrap;padding-block:var(--_link-padding-block, var(--rh-space-lg,16px));padding-inline:var(--_link-padding-inline, var(--rh-space-lg,16px))}#container.active{color:var(--rh-color-text-primary);--_bdr-c:var(--rh-color-brand-red)}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).vertical:before{width:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));height:100%}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).horizontal:before{height:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));width:auto}:host([slot]) #container.vertical{border-inline-start:none}</style><!--lit-part 1oFQ8ldr4Cg=-->
+      <!--lit-node 0--><div id="container" class=" vertical ">
+        <!--lit-node 1--><a 
+          href="#section-2b"
+          >
+          <!-- summary: link label text (default slot)
+              description: |
+                Text content for this jump link. Serves as the accessible
+                name for the internal anchor element, so it should match
+                or closely reflect the target section heading (per WCAG
+                2.4.6 Headings and Labels). Keep text concise. -->
+          <slot></slot>
+        </a>
+      </div>
+    <!--/lit-part--></template>Jump link subsection</rh-jump-link>
+        </rh-jump-links-list>
+        <rh-jump-link  role="listitem" hydrate-internals-role="listitem" href="#section-3"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_item-padding-block:var(--rh-jump-link-item-padding-block,0);--_item-padding-inline:var(--rh-jump-link-item-padding-inline,0);--_link-padding-block:var(--rh-jump-link-link-padding-block);--_link-padding-inline:var(--rh-jump-link-link-padding-inline);border-inline-start:var(--rh-jump-link-border,none);width:100%;display:block;position:relative}a{color:var(--rh-color-interactive-secondary-default);box-sizing:border-box;white-space:normal;overflow-wrap:break-word;text-decoration:none;display:inline-block;position:relative}a:focus{color:var(--rh-color-text-primary)}a:focus-visible{outline:none}a:focus-visible:after{content:"";border:2px solid var(--rh-color-interactive-primary-default);border-radius:var(--rh-border-radius-default,3px);display:block;position:absolute;inset:0}a:hover,a:focus-visible{color:var(--rh-color-text-primary);background-color:var(--rh-jump-link-hover-background-color,transparent);border-radius:var(--rh-jump-link-hover-border-radius,0)}#container:before{content:"";border-radius:var(--rh-jump-link-indicator-border-radius,0);background-color:#0000;display:block;position:absolute;inset:0}#container.vertical{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline);border-inline-start:var(--rh-jump-link-link-border,var(--_bdr))}#container.vertical a{max-width:var(--rh-jump-link-max-width,calc(var(--rh-length-md,8px) * 40));min-width:max-content;padding-block:var(--_link-padding-block, var(--rh-space-md,8px));padding-inline:var(--_link-padding-inline,calc( var(--rh-space-lg,16px) + var(--_padding-inline-start,0px))  var(--rh-space-lg,16px))}#container.horizontal{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline)}#container.horizontal a{white-space:nowrap;padding-block:var(--_link-padding-block, var(--rh-space-lg,16px));padding-inline:var(--_link-padding-inline, var(--rh-space-lg,16px))}#container.active{color:var(--rh-color-text-primary);--_bdr-c:var(--rh-color-brand-red)}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).vertical:before{width:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));height:100%}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).horizontal:before{height:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));width:auto}:host([slot]) #container.vertical{border-inline-start:none}</style><!--lit-part 1oFQ8ldr4Cg=-->
+      <!--lit-node 0--><div id="container" class=" vertical ">
+        <!--lit-node 1--><a 
+          href="#section-3"
+          >
+          <!-- summary: link label text (default slot)
+              description: |
+                Text content for this jump link. Serves as the accessible
+                name for the internal anchor element, so it should match
+                or closely reflect the target section heading (per WCAG
+                2.4.6 Headings and Labels). Keep text concise. -->
+          <slot></slot>
+        </a>
+      </div>
+    <!--/lit-part--></template>Jump link</rh-jump-link>
+        <rh-jump-link  role="listitem" hydrate-internals-role="listitem" href="#section-4"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_item-padding-block:var(--rh-jump-link-item-padding-block,0);--_item-padding-inline:var(--rh-jump-link-item-padding-inline,0);--_link-padding-block:var(--rh-jump-link-link-padding-block);--_link-padding-inline:var(--rh-jump-link-link-padding-inline);border-inline-start:var(--rh-jump-link-border,none);width:100%;display:block;position:relative}a{color:var(--rh-color-interactive-secondary-default);box-sizing:border-box;white-space:normal;overflow-wrap:break-word;text-decoration:none;display:inline-block;position:relative}a:focus{color:var(--rh-color-text-primary)}a:focus-visible{outline:none}a:focus-visible:after{content:"";border:2px solid var(--rh-color-interactive-primary-default);border-radius:var(--rh-border-radius-default,3px);display:block;position:absolute;inset:0}a:hover,a:focus-visible{color:var(--rh-color-text-primary);background-color:var(--rh-jump-link-hover-background-color,transparent);border-radius:var(--rh-jump-link-hover-border-radius,0)}#container:before{content:"";border-radius:var(--rh-jump-link-indicator-border-radius,0);background-color:#0000;display:block;position:absolute;inset:0}#container.vertical{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline);border-inline-start:var(--rh-jump-link-link-border,var(--_bdr))}#container.vertical a{max-width:var(--rh-jump-link-max-width,calc(var(--rh-length-md,8px) * 40));min-width:max-content;padding-block:var(--_link-padding-block, var(--rh-space-md,8px));padding-inline:var(--_link-padding-inline,calc( var(--rh-space-lg,16px) + var(--_padding-inline-start,0px))  var(--rh-space-lg,16px))}#container.horizontal{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline)}#container.horizontal a{white-space:nowrap;padding-block:var(--_link-padding-block, var(--rh-space-lg,16px));padding-inline:var(--_link-padding-inline, var(--rh-space-lg,16px))}#container.active{color:var(--rh-color-text-primary);--_bdr-c:var(--rh-color-brand-red)}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).vertical:before{width:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));height:100%}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).horizontal:before{height:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));width:auto}:host([slot]) #container.vertical{border-inline-start:none}</style><!--lit-part 1oFQ8ldr4Cg=-->
+      <!--lit-node 0--><div id="container" class=" vertical ">
+        <!--lit-node 1--><a 
+          href="#section-4"
+          >
+          <!-- summary: link label text (default slot)
+              description: |
+                Text content for this jump link. Serves as the accessible
+                name for the internal anchor element, so it should match
+                or closely reflect the target section heading (per WCAG
+                2.4.6 Headings and Labels). Keep text concise. -->
+          <slot></slot>
+        </a>
+      </div>
+    <!--/lit-part--></template>Jump link</rh-jump-link>
+      </rh-jump-links>
+    </aside>
+  </div>
+
+  <div id="horizontal-demo">
+    <h2 id="horizontal-sections">Horizontal</h2>
+    <rh-jump-links   role="navigation" hydrate-internals-role="navigation" orientation="horizontal" aria-labelledby="horizontal-sections"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;position:relative}.overflow-button{display:hidden}#container{--_bdr: var(--rh-length-4xs,1px) solid  var(--rh-color-border-subtle)}:host([orientation=horizontal]){justify-content:center;display:flex}:host([orientation=horizontal]) #container{flex-flow:row;display:flex;overflow:auto visible}:host([orientation=horizontal]) #container:after,:host([orientation=horizontal]) #container:before{content:"";display:block;position:absolute;inset-inline:0}:host([orientation=horizontal]) #container:before{margin-inline:var(--rh-space-3xl);border-block-start: var(--rh-border-width-sm,1px) solid  var(--rh-color-border-subtle)}:host([orientation=horizontal]) #container:after{border-block-end: var(--rh-border-width-sm,1px) solid  var(--rh-color-border-subtle);inset-block-end:0}:host([orientation=horizontal]) .overflow-button{opacity:1;padding-block:0;padding-inline:var(--rh-space-lg,16px);color:var(--_overflow-button-text-color);z-index:2;background-color:#0000;border:0;flex:none;line-height:1;position:relative}:host([orientation=horizontal]) .overflow-button rh-icon{pointer-events:none}:host([orientation=horizontal]) .overflow-button rh-icon:dir(rtl){rotate:180deg}:host([orientation=horizontal]) .overflow-button:first-of-type{margin-inline-end:0;translate:0}:host([orientation=horizontal]) .overflow-button:first-of-type:before{border-inline-width:0 1px}:host([orientation=horizontal]) .overflow-button:nth-of-type(2){margin-inline-start:0;inset-inline-start:-1px;translate:0}:host([orientation=horizontal]) .overflow-button:nth-of-type(2):before{border-inline-width:1px 0}:host([orientation=horizontal]) .overflow-button:disabled{pointer-events:none;color:light-dark( var(--rh-color-gray-40,#a3a3a3), var(--rh-color-gray-50,#707070))}:host([orientation=horizontal]) .overflow-button:hover{color:var(--rh-color-text-primary)}</style><!--lit-part Vqpuljk6/Ok=-->
+        <!--lit-node 0--><button id="scroll-start"
+                class="overflow-button"
+                hidden
+                tabindex="-1"
+                data-direction="start"
+                aria-label="Scroll back"
+                disabled
+                >
+          <!--lit-node 1--><rh-icon    set="ui" icon="caret-left" loading="eager" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part v6+vs33eA0I=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M21 30a.997.997 0 0 1-.707-.293L7.647 17.061a1.501 1.501 0 0 1 0-2.121L20.293 2.293a.999.999 0 1 1 1.414 1.414L9.414 16l12.293 12.293A.999.999 0 0 1 21 30Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        </button>
+
+        <div id="container" role="list">
+          <!-- summary: navigation link items and nested lists (default slot)
+               description: |
+                 Contains `<rh-jump-link>` elements and optional
+                 `<rh-jump-links-list>` groups. Each child receives
+                 `role="listitem"` within the `role="list"` container,
+                 forming an accessible navigation structure for screen
+                 readers. Link each item to a section ID (`href="#id"`)
+                 corresponding to a heading or landmark on the page.
+                 Place links in page order so assistive technology users
+                 experience a logical sequence. Use nested lists
+                 sparingly to avoid overwhelming users. -->
+          <slot></slot>
+        </div>
+
+        <!--lit-node 5--><button id="scroll-end"
+                class="overflow-button"
+                hidden
+                tabindex="-1"
+                data-direction="end"
+                aria-label="Scroll forward"
+                disabled
+                >
+           <!--lit-node 6--><rh-icon    set="ui" icon="caret-right" loading="eager" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part sMbW+yHuspE=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M11 30a.999.999 0 0 1-.707-1.707L22.586 16 10.293 3.707a.999.999 0 1 1 1.414-1.414l12.646 12.646a1.501 1.501 0 0 1 0 2.121L11.707 29.706a.997.997 0 0 1-.707.293Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        </button>
+    <!--/lit-part--></template>
+      <rh-jump-link  role="listitem" hydrate-internals-role="listitem" href="#section-1"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_item-padding-block:var(--rh-jump-link-item-padding-block,0);--_item-padding-inline:var(--rh-jump-link-item-padding-inline,0);--_link-padding-block:var(--rh-jump-link-link-padding-block);--_link-padding-inline:var(--rh-jump-link-link-padding-inline);border-inline-start:var(--rh-jump-link-border,none);width:100%;display:block;position:relative}a{color:var(--rh-color-interactive-secondary-default);box-sizing:border-box;white-space:normal;overflow-wrap:break-word;text-decoration:none;display:inline-block;position:relative}a:focus{color:var(--rh-color-text-primary)}a:focus-visible{outline:none}a:focus-visible:after{content:"";border:2px solid var(--rh-color-interactive-primary-default);border-radius:var(--rh-border-radius-default,3px);display:block;position:absolute;inset:0}a:hover,a:focus-visible{color:var(--rh-color-text-primary);background-color:var(--rh-jump-link-hover-background-color,transparent);border-radius:var(--rh-jump-link-hover-border-radius,0)}#container:before{content:"";border-radius:var(--rh-jump-link-indicator-border-radius,0);background-color:#0000;display:block;position:absolute;inset:0}#container.vertical{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline);border-inline-start:var(--rh-jump-link-link-border,var(--_bdr))}#container.vertical a{max-width:var(--rh-jump-link-max-width,calc(var(--rh-length-md,8px) * 40));min-width:max-content;padding-block:var(--_link-padding-block, var(--rh-space-md,8px));padding-inline:var(--_link-padding-inline,calc( var(--rh-space-lg,16px) + var(--_padding-inline-start,0px))  var(--rh-space-lg,16px))}#container.horizontal{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline)}#container.horizontal a{white-space:nowrap;padding-block:var(--_link-padding-block, var(--rh-space-lg,16px));padding-inline:var(--_link-padding-inline, var(--rh-space-lg,16px))}#container.active{color:var(--rh-color-text-primary);--_bdr-c:var(--rh-color-brand-red)}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).vertical:before{width:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));height:100%}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).horizontal:before{height:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));width:auto}:host([slot]) #container.vertical{border-inline-start:none}</style><!--lit-part 1oFQ8ldr4Cg=-->
+      <!--lit-node 0--><div id="container" class=" horizontal ">
+        <!--lit-node 1--><a 
+          href="#section-1"
+          >
+          <!-- summary: link label text (default slot)
+              description: |
+                Text content for this jump link. Serves as the accessible
+                name for the internal anchor element, so it should match
+                or closely reflect the target section heading (per WCAG
+                2.4.6 Headings and Labels). Keep text concise. -->
+          <slot></slot>
+        </a>
+      </div>
+    <!--/lit-part--></template>Jump link</rh-jump-link>
+      <rh-jump-link   role="listitem" hydrate-internals-role="listitem" href="#section-2" active><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_item-padding-block:var(--rh-jump-link-item-padding-block,0);--_item-padding-inline:var(--rh-jump-link-item-padding-inline,0);--_link-padding-block:var(--rh-jump-link-link-padding-block);--_link-padding-inline:var(--rh-jump-link-link-padding-inline);border-inline-start:var(--rh-jump-link-border,none);width:100%;display:block;position:relative}a{color:var(--rh-color-interactive-secondary-default);box-sizing:border-box;white-space:normal;overflow-wrap:break-word;text-decoration:none;display:inline-block;position:relative}a:focus{color:var(--rh-color-text-primary)}a:focus-visible{outline:none}a:focus-visible:after{content:"";border:2px solid var(--rh-color-interactive-primary-default);border-radius:var(--rh-border-radius-default,3px);display:block;position:absolute;inset:0}a:hover,a:focus-visible{color:var(--rh-color-text-primary);background-color:var(--rh-jump-link-hover-background-color,transparent);border-radius:var(--rh-jump-link-hover-border-radius,0)}#container:before{content:"";border-radius:var(--rh-jump-link-indicator-border-radius,0);background-color:#0000;display:block;position:absolute;inset:0}#container.vertical{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline);border-inline-start:var(--rh-jump-link-link-border,var(--_bdr))}#container.vertical a{max-width:var(--rh-jump-link-max-width,calc(var(--rh-length-md,8px) * 40));min-width:max-content;padding-block:var(--_link-padding-block, var(--rh-space-md,8px));padding-inline:var(--_link-padding-inline,calc( var(--rh-space-lg,16px) + var(--_padding-inline-start,0px))  var(--rh-space-lg,16px))}#container.horizontal{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline)}#container.horizontal a{white-space:nowrap;padding-block:var(--_link-padding-block, var(--rh-space-lg,16px));padding-inline:var(--_link-padding-inline, var(--rh-space-lg,16px))}#container.active{color:var(--rh-color-text-primary);--_bdr-c:var(--rh-color-brand-red)}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).vertical:before{width:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));height:100%}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).horizontal:before{height:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));width:auto}:host([slot]) #container.vertical{border-inline-start:none}</style><!--lit-part 1oFQ8ldr4Cg=-->
+      <!--lit-node 0--><div id="container" class=" active horizontal ">
+        <!--lit-node 1--><a aria-current="location"
+          href="#section-2"
+          >
+          <!-- summary: link label text (default slot)
+              description: |
+                Text content for this jump link. Serves as the accessible
+                name for the internal anchor element, so it should match
+                or closely reflect the target section heading (per WCAG
+                2.4.6 Headings and Labels). Keep text concise. -->
+          <slot></slot>
+        </a>
+      </div>
+    <!--/lit-part--></template>Jump link</rh-jump-link>
+      <rh-jump-link  role="listitem" hydrate-internals-role="listitem" href="#section-3"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_item-padding-block:var(--rh-jump-link-item-padding-block,0);--_item-padding-inline:var(--rh-jump-link-item-padding-inline,0);--_link-padding-block:var(--rh-jump-link-link-padding-block);--_link-padding-inline:var(--rh-jump-link-link-padding-inline);border-inline-start:var(--rh-jump-link-border,none);width:100%;display:block;position:relative}a{color:var(--rh-color-interactive-secondary-default);box-sizing:border-box;white-space:normal;overflow-wrap:break-word;text-decoration:none;display:inline-block;position:relative}a:focus{color:var(--rh-color-text-primary)}a:focus-visible{outline:none}a:focus-visible:after{content:"";border:2px solid var(--rh-color-interactive-primary-default);border-radius:var(--rh-border-radius-default,3px);display:block;position:absolute;inset:0}a:hover,a:focus-visible{color:var(--rh-color-text-primary);background-color:var(--rh-jump-link-hover-background-color,transparent);border-radius:var(--rh-jump-link-hover-border-radius,0)}#container:before{content:"";border-radius:var(--rh-jump-link-indicator-border-radius,0);background-color:#0000;display:block;position:absolute;inset:0}#container.vertical{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline);border-inline-start:var(--rh-jump-link-link-border,var(--_bdr))}#container.vertical a{max-width:var(--rh-jump-link-max-width,calc(var(--rh-length-md,8px) * 40));min-width:max-content;padding-block:var(--_link-padding-block, var(--rh-space-md,8px));padding-inline:var(--_link-padding-inline,calc( var(--rh-space-lg,16px) + var(--_padding-inline-start,0px))  var(--rh-space-lg,16px))}#container.horizontal{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline)}#container.horizontal a{white-space:nowrap;padding-block:var(--_link-padding-block, var(--rh-space-lg,16px));padding-inline:var(--_link-padding-inline, var(--rh-space-lg,16px))}#container.active{color:var(--rh-color-text-primary);--_bdr-c:var(--rh-color-brand-red)}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).vertical:before{width:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));height:100%}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).horizontal:before{height:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));width:auto}:host([slot]) #container.vertical{border-inline-start:none}</style><!--lit-part 1oFQ8ldr4Cg=-->
+      <!--lit-node 0--><div id="container" class=" horizontal ">
+        <!--lit-node 1--><a 
+          href="#section-3"
+          >
+          <!-- summary: link label text (default slot)
+              description: |
+                Text content for this jump link. Serves as the accessible
+                name for the internal anchor element, so it should match
+                or closely reflect the target section heading (per WCAG
+                2.4.6 Headings and Labels). Keep text concise. -->
+          <slot></slot>
+        </a>
+      </div>
+    <!--/lit-part--></template>Jump link</rh-jump-link>
+      <rh-jump-link  role="listitem" hydrate-internals-role="listitem" href="#section-4"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_item-padding-block:var(--rh-jump-link-item-padding-block,0);--_item-padding-inline:var(--rh-jump-link-item-padding-inline,0);--_link-padding-block:var(--rh-jump-link-link-padding-block);--_link-padding-inline:var(--rh-jump-link-link-padding-inline);border-inline-start:var(--rh-jump-link-border,none);width:100%;display:block;position:relative}a{color:var(--rh-color-interactive-secondary-default);box-sizing:border-box;white-space:normal;overflow-wrap:break-word;text-decoration:none;display:inline-block;position:relative}a:focus{color:var(--rh-color-text-primary)}a:focus-visible{outline:none}a:focus-visible:after{content:"";border:2px solid var(--rh-color-interactive-primary-default);border-radius:var(--rh-border-radius-default,3px);display:block;position:absolute;inset:0}a:hover,a:focus-visible{color:var(--rh-color-text-primary);background-color:var(--rh-jump-link-hover-background-color,transparent);border-radius:var(--rh-jump-link-hover-border-radius,0)}#container:before{content:"";border-radius:var(--rh-jump-link-indicator-border-radius,0);background-color:#0000;display:block;position:absolute;inset:0}#container.vertical{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline);border-inline-start:var(--rh-jump-link-link-border,var(--_bdr))}#container.vertical a{max-width:var(--rh-jump-link-max-width,calc(var(--rh-length-md,8px) * 40));min-width:max-content;padding-block:var(--_link-padding-block, var(--rh-space-md,8px));padding-inline:var(--_link-padding-inline,calc( var(--rh-space-lg,16px) + var(--_padding-inline-start,0px))  var(--rh-space-lg,16px))}#container.horizontal{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline)}#container.horizontal a{white-space:nowrap;padding-block:var(--_link-padding-block, var(--rh-space-lg,16px));padding-inline:var(--_link-padding-inline, var(--rh-space-lg,16px))}#container.active{color:var(--rh-color-text-primary);--_bdr-c:var(--rh-color-brand-red)}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).vertical:before{width:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));height:100%}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).horizontal:before{height:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));width:auto}:host([slot]) #container.vertical{border-inline-start:none}</style><!--lit-part 1oFQ8ldr4Cg=-->
+      <!--lit-node 0--><div id="container" class=" horizontal ">
+        <!--lit-node 1--><a 
+          href="#section-4"
+          >
+          <!-- summary: link label text (default slot)
+              description: |
+                Text content for this jump link. Serves as the accessible
+                name for the internal anchor element, so it should match
+                or closely reflect the target section heading (per WCAG
+                2.4.6 Headings and Labels). Keep text concise. -->
+          <slot></slot>
+        </a>
+      </div>
+    <!--/lit-part--></template>Jump link</rh-jump-link>
+      <rh-jump-link  role="listitem" hydrate-internals-role="listitem" href="#section-5"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_item-padding-block:var(--rh-jump-link-item-padding-block,0);--_item-padding-inline:var(--rh-jump-link-item-padding-inline,0);--_link-padding-block:var(--rh-jump-link-link-padding-block);--_link-padding-inline:var(--rh-jump-link-link-padding-inline);border-inline-start:var(--rh-jump-link-border,none);width:100%;display:block;position:relative}a{color:var(--rh-color-interactive-secondary-default);box-sizing:border-box;white-space:normal;overflow-wrap:break-word;text-decoration:none;display:inline-block;position:relative}a:focus{color:var(--rh-color-text-primary)}a:focus-visible{outline:none}a:focus-visible:after{content:"";border:2px solid var(--rh-color-interactive-primary-default);border-radius:var(--rh-border-radius-default,3px);display:block;position:absolute;inset:0}a:hover,a:focus-visible{color:var(--rh-color-text-primary);background-color:var(--rh-jump-link-hover-background-color,transparent);border-radius:var(--rh-jump-link-hover-border-radius,0)}#container:before{content:"";border-radius:var(--rh-jump-link-indicator-border-radius,0);background-color:#0000;display:block;position:absolute;inset:0}#container.vertical{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline);border-inline-start:var(--rh-jump-link-link-border,var(--_bdr))}#container.vertical a{max-width:var(--rh-jump-link-max-width,calc(var(--rh-length-md,8px) * 40));min-width:max-content;padding-block:var(--_link-padding-block, var(--rh-space-md,8px));padding-inline:var(--_link-padding-inline,calc( var(--rh-space-lg,16px) + var(--_padding-inline-start,0px))  var(--rh-space-lg,16px))}#container.horizontal{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline)}#container.horizontal a{white-space:nowrap;padding-block:var(--_link-padding-block, var(--rh-space-lg,16px));padding-inline:var(--_link-padding-inline, var(--rh-space-lg,16px))}#container.active{color:var(--rh-color-text-primary);--_bdr-c:var(--rh-color-brand-red)}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).vertical:before{width:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));height:100%}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).horizontal:before{height:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));width:auto}:host([slot]) #container.vertical{border-inline-start:none}</style><!--lit-part 1oFQ8ldr4Cg=-->
+      <!--lit-node 0--><div id="container" class=" horizontal ">
+        <!--lit-node 1--><a 
+          href="#section-5"
+          >
+          <!-- summary: link label text (default slot)
+              description: |
+                Text content for this jump link. Serves as the accessible
+                name for the internal anchor element, so it should match
+                or closely reflect the target section heading (per WCAG
+                2.4.6 Headings and Labels). Keep text concise. -->
+          <slot></slot>
+        </a>
+      </div>
+    <!--/lit-part--></template>Jump link</rh-jump-link>
+      <rh-jump-link  role="listitem" hydrate-internals-role="listitem" href="#section-6"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_item-padding-block:var(--rh-jump-link-item-padding-block,0);--_item-padding-inline:var(--rh-jump-link-item-padding-inline,0);--_link-padding-block:var(--rh-jump-link-link-padding-block);--_link-padding-inline:var(--rh-jump-link-link-padding-inline);border-inline-start:var(--rh-jump-link-border,none);width:100%;display:block;position:relative}a{color:var(--rh-color-interactive-secondary-default);box-sizing:border-box;white-space:normal;overflow-wrap:break-word;text-decoration:none;display:inline-block;position:relative}a:focus{color:var(--rh-color-text-primary)}a:focus-visible{outline:none}a:focus-visible:after{content:"";border:2px solid var(--rh-color-interactive-primary-default);border-radius:var(--rh-border-radius-default,3px);display:block;position:absolute;inset:0}a:hover,a:focus-visible{color:var(--rh-color-text-primary);background-color:var(--rh-jump-link-hover-background-color,transparent);border-radius:var(--rh-jump-link-hover-border-radius,0)}#container:before{content:"";border-radius:var(--rh-jump-link-indicator-border-radius,0);background-color:#0000;display:block;position:absolute;inset:0}#container.vertical{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline);border-inline-start:var(--rh-jump-link-link-border,var(--_bdr))}#container.vertical a{max-width:var(--rh-jump-link-max-width,calc(var(--rh-length-md,8px) * 40));min-width:max-content;padding-block:var(--_link-padding-block, var(--rh-space-md,8px));padding-inline:var(--_link-padding-inline,calc( var(--rh-space-lg,16px) + var(--_padding-inline-start,0px))  var(--rh-space-lg,16px))}#container.horizontal{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline)}#container.horizontal a{white-space:nowrap;padding-block:var(--_link-padding-block, var(--rh-space-lg,16px));padding-inline:var(--_link-padding-inline, var(--rh-space-lg,16px))}#container.active{color:var(--rh-color-text-primary);--_bdr-c:var(--rh-color-brand-red)}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).vertical:before{width:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));height:100%}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).horizontal:before{height:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));width:auto}:host([slot]) #container.vertical{border-inline-start:none}</style><!--lit-part 1oFQ8ldr4Cg=-->
+      <!--lit-node 0--><div id="container" class=" horizontal ">
+        <!--lit-node 1--><a 
+          href="#section-6"
+          >
+          <!-- summary: link label text (default slot)
+              description: |
+                Text content for this jump link. Serves as the accessible
+                name for the internal anchor element, so it should match
+                or closely reflect the target section heading (per WCAG
+                2.4.6 Headings and Labels). Keep text concise. -->
+          <slot></slot>
+        </a>
+      </div>
+    <!--/lit-part--></template>Jump link</rh-jump-link>
+      <rh-jump-link  role="listitem" hydrate-internals-role="listitem" href="#section-7"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_item-padding-block:var(--rh-jump-link-item-padding-block,0);--_item-padding-inline:var(--rh-jump-link-item-padding-inline,0);--_link-padding-block:var(--rh-jump-link-link-padding-block);--_link-padding-inline:var(--rh-jump-link-link-padding-inline);border-inline-start:var(--rh-jump-link-border,none);width:100%;display:block;position:relative}a{color:var(--rh-color-interactive-secondary-default);box-sizing:border-box;white-space:normal;overflow-wrap:break-word;text-decoration:none;display:inline-block;position:relative}a:focus{color:var(--rh-color-text-primary)}a:focus-visible{outline:none}a:focus-visible:after{content:"";border:2px solid var(--rh-color-interactive-primary-default);border-radius:var(--rh-border-radius-default,3px);display:block;position:absolute;inset:0}a:hover,a:focus-visible{color:var(--rh-color-text-primary);background-color:var(--rh-jump-link-hover-background-color,transparent);border-radius:var(--rh-jump-link-hover-border-radius,0)}#container:before{content:"";border-radius:var(--rh-jump-link-indicator-border-radius,0);background-color:#0000;display:block;position:absolute;inset:0}#container.vertical{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline);border-inline-start:var(--rh-jump-link-link-border,var(--_bdr))}#container.vertical a{max-width:var(--rh-jump-link-max-width,calc(var(--rh-length-md,8px) * 40));min-width:max-content;padding-block:var(--_link-padding-block, var(--rh-space-md,8px));padding-inline:var(--_link-padding-inline,calc( var(--rh-space-lg,16px) + var(--_padding-inline-start,0px))  var(--rh-space-lg,16px))}#container.horizontal{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline)}#container.horizontal a{white-space:nowrap;padding-block:var(--_link-padding-block, var(--rh-space-lg,16px));padding-inline:var(--_link-padding-inline, var(--rh-space-lg,16px))}#container.active{color:var(--rh-color-text-primary);--_bdr-c:var(--rh-color-brand-red)}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).vertical:before{width:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));height:100%}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).horizontal:before{height:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));width:auto}:host([slot]) #container.vertical{border-inline-start:none}</style><!--lit-part 1oFQ8ldr4Cg=-->
+      <!--lit-node 0--><div id="container" class=" horizontal ">
+        <!--lit-node 1--><a 
+          href="#section-7"
+          >
+          <!-- summary: link label text (default slot)
+              description: |
+                Text content for this jump link. Serves as the accessible
+                name for the internal anchor element, so it should match
+                or closely reflect the target section heading (per WCAG
+                2.4.6 Headings and Labels). Keep text concise. -->
+          <slot></slot>
+        </a>
+      </div>
+    <!--/lit-part--></template>Jump link</rh-jump-link>
+      <rh-jump-link  role="listitem" hydrate-internals-role="listitem" href="#section-8"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_item-padding-block:var(--rh-jump-link-item-padding-block,0);--_item-padding-inline:var(--rh-jump-link-item-padding-inline,0);--_link-padding-block:var(--rh-jump-link-link-padding-block);--_link-padding-inline:var(--rh-jump-link-link-padding-inline);border-inline-start:var(--rh-jump-link-border,none);width:100%;display:block;position:relative}a{color:var(--rh-color-interactive-secondary-default);box-sizing:border-box;white-space:normal;overflow-wrap:break-word;text-decoration:none;display:inline-block;position:relative}a:focus{color:var(--rh-color-text-primary)}a:focus-visible{outline:none}a:focus-visible:after{content:"";border:2px solid var(--rh-color-interactive-primary-default);border-radius:var(--rh-border-radius-default,3px);display:block;position:absolute;inset:0}a:hover,a:focus-visible{color:var(--rh-color-text-primary);background-color:var(--rh-jump-link-hover-background-color,transparent);border-radius:var(--rh-jump-link-hover-border-radius,0)}#container:before{content:"";border-radius:var(--rh-jump-link-indicator-border-radius,0);background-color:#0000;display:block;position:absolute;inset:0}#container.vertical{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline);border-inline-start:var(--rh-jump-link-link-border,var(--_bdr))}#container.vertical a{max-width:var(--rh-jump-link-max-width,calc(var(--rh-length-md,8px) * 40));min-width:max-content;padding-block:var(--_link-padding-block, var(--rh-space-md,8px));padding-inline:var(--_link-padding-inline,calc( var(--rh-space-lg,16px) + var(--_padding-inline-start,0px))  var(--rh-space-lg,16px))}#container.horizontal{padding-block:var(--_item-padding-block);padding-inline:var(--_item-padding-inline)}#container.horizontal a{white-space:nowrap;padding-block:var(--_link-padding-block, var(--rh-space-lg,16px));padding-inline:var(--_link-padding-inline, var(--rh-space-lg,16px))}#container.active{color:var(--rh-color-text-primary);--_bdr-c:var(--rh-color-brand-red)}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).vertical:before{width:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));height:100%}:is(#container.active:has(a),#container:has(a:focus-visible,a:hover)).horizontal:before{height:var(--rh-border-width-lg,3px);background-color:var(--_bdr-c,var(--rh-color-border-status-neutral));width:auto}:host([slot]) #container.vertical{border-inline-start:none}</style><!--lit-part 1oFQ8ldr4Cg=-->
+      <!--lit-node 0--><div id="container" class=" horizontal ">
+        <!--lit-node 1--><a 
+          href="#section-8"
+          >
+          <!-- summary: link label text (default slot)
+              description: |
+                Text content for this jump link. Serves as the accessible
+                name for the internal anchor element, so it should match
+                or closely reflect the target section heading (per WCAG
+                2.4.6 Headings and Labels). Keep text concise. -->
+          <slot></slot>
+        </a>
+      </div>
+    <!--/lit-part--></template>Jump link</rh-jump-link>
+    </rh-jump-links>
+  </div>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-jump-links/rh-jump-links.js';
+</script>
+
+
+</body></html>

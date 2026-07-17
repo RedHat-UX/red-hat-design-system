@@ -1,0 +1,771 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
+    <title>Felt Theme | Red Hat Design System</title>
+
+    <link rel="preconnect" href="https://ga.jspm.io">
+
+    <link rel="stylesheet" href="/styles/demo/styles.css" media="all">
+
+    <script type="importmap">{
+  "imports": {
+    "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
+    "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "lit-html": "/assets/packages/lit-html/lit-html.js",
+    "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
+    "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
+    "lit-element": "/assets/packages/lit-element/index.js",
+    "prism-esm": "/assets/packages/prism-esm/prism.js",
+    "lit": "/assets/packages/lit/index.js",
+    "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
+    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
+    "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
+    "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "@lit/context": "/assets/packages/@lit/context/index.js",
+    "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@6.0.0/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "vue/dist/vue.esm-browser.js": "https://ga.jspm.io/npm:vue@3.5.21/dist/vue.esm-browser.js",
+    "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
+    "lit/": "/assets/packages/lit/",
+    "lit-html/": "/assets/packages/lit-html/",
+    "prism-esm/": "/assets/packages/prism-esm/",
+    "@lit-labs/ssr-client": "/assets/packages/@lit-labs/ssr-client/index.js",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js",
+    "@rhds/tokens/css/": "/assets/packages/@rhds/tokens/css/",
+    "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
+    "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
+    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons": "/assets/packages/@rhds/icons/icons.js",
+    "@rhds/icons/": "/assets/packages/@rhds/icons/",
+    "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
+    "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
+    "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
+    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "@uxdot/elements/": "/assets/packages/@uxdot/elements/"
+  },
+  "scopes": {
+    "/assets/packages/": {
+      "@lit/reactive-element/decorators/": "/assets/packages/@lit/reactive-element/decorators/",
+      "lit-element/lit-element.js": "/assets/packages/lit-element/lit-element.js",
+      "lit-html/": "/assets/packages/lit-html/"
+    }
+  }
+}</script>
+
+    
+      <script type="module">
+    // although we load these ssr support modules elsewhere, we still
+    // need them here to ensure no double-rendering on webkit
+    import '/assets/javascript/ssr-support.js';
+    // include these, which are often internal to elements,
+    // and are definitely required by context-picker and context-demo
+    // to avoid SSR defer-hydration bugs and SSR double-rendering bugs
+    import '@rhds/elements/rh-icon/rh-icon.js';
+    import '@rhds/elements/rh-surface/rh-surface.js';
+    import '@rhds/elements/rh-button/rh-button.js';
+    import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+    import '@rhds/elements/rh-tag/rh-tag.js';
+  </script>
+
+
+    <script type="module">
+      // load up the demo and picker
+      import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+      import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+    </script>
+
+    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
+  </head>
+  <body>
+    <link rel="stylesheet" href="/theming/themes/project-felt/preview/felt-theme-preview.css">
+
+<style>
+  #menu-dropdown-container {
+    h3 {
+      margin-block: 1.5rem 0.5rem !important;
+    }
+
+    rh-menu-dropdown:not([layout="compact"]) {
+      width: 296px;
+    }
+  }
+  .felt-preview {
+    padding: var(--rh-space-2xl, 32px);
+  }
+</style>
+
+<div class="felt-preview">
+  <div id="menu-dropdown-container">
+    <h3>Basic</h3>
+    <rh-menu-dropdown   ssr-hint-has-slotted-default ssr-hint-has-slotted="toggle-label" accessible-label="Toggle menu"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_border: var(--rh-border-width-sm,1px) solid light-dark( var(--rh-color-gray-30,#c7c7c7), var(--rh-color-gray-50,#707070));--_color:var(--rh-color-text-primary);display:inline-block;position:relative}#menu-list{padding:var(--rh-menu-dropdown-panel-padding,var(--rh-space-md,8px) 0);z-index:1000;border-radius:var(--rh-menu-dropdown-panel-border-radius,var(--rh-border-radius-default,3px));border:var(--rh-menu-dropdown-panel-border,var(--_border));background:var(--rh-menu-dropdown-panel-background,light-dark( var(--rh-color-surface-lightest,#fff), var(--rh-color-surface-darkest,#151515)));min-inline-size:18.5rem;max-inline-size:100%;box-shadow:var(--rh-menu-dropdown-panel-box-shadow,var(--rh-box-shadow-md,0 4px 6px 1px #15151540));translate:var(--_floating-content-translate);transition:opacity .3s cubic-bezier(.54,1.5,.38,1.11);position:absolute;top:0;left:0}.visible{display:block}::slotted([slot=toggle-label]){color:var(--_color);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);font-size:var(--rh-font-size-body-text-md,1rem)!important}#menu-toggle{--_interactive-border-color:light-dark( var(--rh-color-accent-base-on-light,#06c), var(--rh-color-accent-base-on-dark,#92c5f9));color:var(--_color);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);inline-size:100%;padding: var(--rh-space-sm,6px)  var(--rh-space-lg,16px);box-sizing:border-box;border-radius:var(--rh-border-radius-default,3px);background:var(--rh-menu-dropdown-toggle-background,light-dark( var(--rh-color-surface-lightest,#fff), var(--rh-color-surface-darkest,#151515)));border:none;justify-content:space-between;align-items:center;display:flex}#menu-toggle .action-icon rh-icon{--rh-icon-size:var(--rh-menu-dropdown-caret-size,10px);padding-inline-start:var(--rh-space-md,8px)}#menu-toggle .info-section{justify-content:flex-start;align-items:center;display:flex}#menu-toggle.boxed{box-shadow:inset 0 0 0 1px  var(--rh-menu-dropdown-toggle-border-color,light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-gray-50,#707070)))}#menu-toggle.boxed:not(.open):hover{box-shadow:inset 0 0 0 1px  var(--rh-menu-dropdown-hover-border-color,var(--_interactive-border-color))}#menu-toggle.boxed:not(.open):active{box-shadow:inset 0 0 0  var(--rh-length-3xs,2px)  var(--rh-menu-dropdown-active-border-color,var(--_interactive-border-color))}#menu-toggle.boxed:not(.open):focus{outline: var(--rh-length-3xs,2px) solid  var(--rh-menu-dropdown-focus-border-color,var(--_interactive-border-color));outline-offset:var(--rh-length-3xs,2px)}#menu-toggle.boxed.open{box-shadow:inset 0 0 0  var(--rh-length-3xs,2px)  var(--rh-menu-dropdown-open-border-color,var(--_interactive-border-color))}#menu-toggle.boxed.open:focus{outline: var(--rh-length-3xs,2px) solid  var(--rh-menu-dropdown-focus-border-color,var(--_interactive-border-color));outline-offset:var(--rh-length-3xs,2px)}#menu-toggle.boxed.disabled{box-shadow:var(--rh-menu-dropdown-disabled-box-shadow,inset 0 0 0 1px var(--rh-menu-dropdown-toggle-border-color,light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-gray-50,#707070))))}#menu-toggle.compact{padding:var(--rh-space-md,8px);min-block-size:var(--rh-menu-dropdown-compact-size,auto);min-inline-size:var(--rh-menu-dropdown-compact-size,auto);justify-content:var(--rh-menu-dropdown-compact-justify,space-between)}#menu-toggle.compact:not(.boxed).open,#menu-toggle.compact:not(.boxed):hover,#menu-toggle.compact:not(.boxed):active,#menu-toggle.compact:not(.boxed):focus{background-color:light-dark( var(--rh-color-surface-lighter,#f2f2f2), var(--rh-color-surface-darker,#1f1f1f))}#menu-toggle.compact:not(.boxed):focus{outline:var(--rh-length-3xs,2px) solid var(--_interactive-border-color);outline-offset:var(--rh-length-3xs,2px)}#menu-toggle.compact:not(.boxed):active{box-shadow:inset 0 0 0  var(--rh-length-3xs,2px) var(--_interactive-border-color)}#menu-toggle.compact.disabled{background:var(--rh-menu-dropdown-compact-disabled-background,light-dark( var(--rh-color-gray-30,#c7c7c7), var(--rh-color-gray-40,#a3a3a3)))}#menu-toggle.compact.disabled .action-icon rh-icon{color:var(--rh-menu-dropdown-compact-disabled-icon-color,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d)))}#menu-toggle.disabled{pointer-events:none;cursor:not-allowed;background:light-dark( var(--rh-color-gray-30,#c7c7c7), var(--rh-color-gray-40,#a3a3a3))}#menu-toggle.disabled:focus,#menu-toggle.disabled:active,#menu-toggle.disabled:hover{box-shadow:none}#menu-dropdown-container{inline-size:100%;position:relative}::slotted(hr){border:0;border-top:var(--_border);inline-size:100%}::slotted(rh-icon){margin-inline-end:var(--rh-space-md,8px)}rh-menu::part(menu){inline-size:100%}:host([aria-disabled=true]){pointer-events:none;cursor:not-allowed}:host([disabled]) ::slotted([slot=toggle-label]),:host([disabled]) .action-icon rh-icon{color:light-dark( var(--rh-color-gray-50,#707070), var(--rh-color-gray-60,#4d4d4d))}</style><!--lit-part dg+mm7jIG64=-->
+      <!--lit-node 0--><div  id="menu-dropdown-container">
+        <!--lit-node 1--><button id="menu-toggle"
+                type="button"
+                aria-haspopup="menu"
+                aria-expanded="false"
+                
+                aria-controls="menu-list"
+                aria-disabled="false"
+                
+                class=" boxed ">
+            <!--lit-part 5IhNoP+i+Nc=-->
+              <span class="info-section">
+                <!-- summary: Toggle label
+                     description: |
+                       Inline content for the toggle button, such as a
+                       `<span>` or `<rh-icon>`. Should be short and
+                       descriptive. Screen readers announce this as the
+                       accessible name for the menu button. Not used in
+                       compact layout; use `accessible-label` instead. -->
+                <slot name="toggle-label"></slot>
+              </span>
+              <span class="action-icon">
+                <!--lit-node 4--><rh-icon   set="microns" icon="caret-down-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" microns "><!--lit-part nH3s/FzI+3A=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="m17.65 8.76-6.674 5.72a1.496 1.496 0 0 1-.976.365c-.347 0-.694-.122-.978-.366l-6.673-5.72A1 1 0 0 1 3 7h14a1 1 0 0 1 .65 1.76Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+              </span>
+              <!--/lit-part-->
+        </button>
+        <!--lit-node 3--><div id="menu-list"
+             hidden
+             
+             style=""
+             class=" center "
+             >
+          <!--lit-node 4--><rh-menu   role="menu" hydrate-internals-role="menubar" aria-labelledby="menu-toggle" defer-hydration><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}slot{flex-direction:column;align-items:stretch;width:100%;display:inline-flex}::slotted(a){color:var(--rh-color-interactive-primary-default);padding:5px!important}::slotted(a:hover){color:var(--rh-color-interactive-primary-hover)!important}::slotted(a:visited),::slotted(a:visited:hover){color:var(--rh-color-interactive-primary-visited-default)!important}::slotted(hr){border:0;border-top:var(--rh-border-width-sm,1px) solid light-dark( var(--rh-color-gray-30,#c7c7c7), var(--rh-color-gray-50,#707070));width:100%}</style><!--lit-part 9T7XVkAB3Zs=-->
+      <!-- summary: Menu items
+           description: |
+             Accepts `rh-menu-item`, `rh-menu-item-group`, anchor, or
+             `<hr>` elements. Screen reader users perceive these as
+             menubar items. Authors should not place non-interactive
+             content in this slot. -->
+      <!--lit-node 1--><slot  part="menu"></slot>
+    <!--/lit-part--></template>
+            <!-- summary: Menu content
+                 description: |
+                   Must contain `<rh-menu-item>` elements. May include
+                   `<hr>` separators or `<rh-menu-item-group>` for
+                   grouped items. Items receive ARIA menuitem role and
+                   focus via roving tabindex for keyboard and screen
+                   reader navigation. -->
+            <slot></slot>
+          </rh-menu>
+        </div>
+      </div>
+    
+    <!--/lit-part--></template>
+      <span slot="toggle-label">Basic toggle</span>
+      <rh-menu-item  ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open"><style>:host{border-radius:var(--rh-menu-item-border-radius,0);padding: var(--rh-space-md,8px)  var(--rh-space-lg,16px);cursor:pointer;font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));display:block}:host a{color:light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));text-decoration:none;display:inline-block;position:relative}:host a:after{content:"";inline-size:100%;border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3));height:2px;position:absolute;bottom:0;left:0}:host a:focus{outline:none}.menu-item-label{justify-content:flex-start;align-items:center;display:flex}.menu-item-label ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}.menu-item-label #menu-link{justify-content:space-between;align-items:center;inline-size:100%;display:flex}.menu-item-label #menu-link rh-icon{color:var(--rh-color-interactive-secondary-default);fill:var(--rh-color-interactive-secondary-default);padding-inline-start:var(--rh-space-md,8px)}#item{justify-content:flex-start;align-items:center;display:flex}#item ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}:host(:hover),:host(:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}:is(:host(:hover),:host(:focus)) a{color:var(--rh-color-interactive-primary-hover)}:is(:host(:hover),:host(:focus)) a:after{border-bottom-color:var(--rh-color-interactive-primary-hover)}:host(:focus){box-sizing:border-box;outline:none;position:relative}:host(:focus):after{content:"";inset:var(--rh-menu-item-focus-inset,3px 4px);border:var(--rh-border-width-md,2px) solid light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));border-radius:var(--rh-border-radius-default,3px);background-color:#0000;position:absolute}:host(:focus) #item{outline:none}:host([disabled]),:host([disabled]) a{color:light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d));cursor:default;pointer-events:none}:host([disabled]) a:after{border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d))}::slotted([slot=description]){font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-style:normal;font-weight:var(--rh-font-weight-heading-regular,400);margin:0;line-height:21px;font-size:var(--rh-font-size-body-text-sm,.875rem)!important}.menu-item-content:focus-visible{outline:none}.visually-hidden{clip:rect(0 0 0 0);white-space:nowrap;border:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}</style><!--lit-part CHh10dUN3TQ=-->
+      <!--lit-node 0--><div aria-disabled="false" class="menu-item-content">
+        <div class="menu-item-label">
+          <!-- summary: Icon slot
+               description: |
+                 An icon displayed alongside the menu item label.
+                 Appears before the text in LTR layouts. Screen reader
+                 users should receive an accessible label via
+                 the icon element itself. -->
+          <slot name="icon"></slot>
+          <!--lit-part X2r1wtWE6RE=-->
+        <div id="item">
+        <!--lit-part 4mn3l46zJWA=-->
+      <!-- summary: Menu item label
+           description: |
+             Inline text label for the menu item. Must contain visible
+             text for screen reader accessibility. -->
+      <slot></slot>
+    <!--/lit-part-->
+        </div>
+      <!--/lit-part-->
+        </div>
+        <!-- summary: Description slot
+             description: |
+               Supplementary description text displayed below the menu
+               item label. Screen reader users will perceive this as
+               additional context for the menu item. -->
+        <slot id="description" name="description"></slot>
+      </div>
+    <!--/lit-part--></template>Action one</rh-menu-item>
+      <rh-menu-item  ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open"><style>:host{border-radius:var(--rh-menu-item-border-radius,0);padding: var(--rh-space-md,8px)  var(--rh-space-lg,16px);cursor:pointer;font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));display:block}:host a{color:light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));text-decoration:none;display:inline-block;position:relative}:host a:after{content:"";inline-size:100%;border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3));height:2px;position:absolute;bottom:0;left:0}:host a:focus{outline:none}.menu-item-label{justify-content:flex-start;align-items:center;display:flex}.menu-item-label ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}.menu-item-label #menu-link{justify-content:space-between;align-items:center;inline-size:100%;display:flex}.menu-item-label #menu-link rh-icon{color:var(--rh-color-interactive-secondary-default);fill:var(--rh-color-interactive-secondary-default);padding-inline-start:var(--rh-space-md,8px)}#item{justify-content:flex-start;align-items:center;display:flex}#item ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}:host(:hover),:host(:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}:is(:host(:hover),:host(:focus)) a{color:var(--rh-color-interactive-primary-hover)}:is(:host(:hover),:host(:focus)) a:after{border-bottom-color:var(--rh-color-interactive-primary-hover)}:host(:focus){box-sizing:border-box;outline:none;position:relative}:host(:focus):after{content:"";inset:var(--rh-menu-item-focus-inset,3px 4px);border:var(--rh-border-width-md,2px) solid light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));border-radius:var(--rh-border-radius-default,3px);background-color:#0000;position:absolute}:host(:focus) #item{outline:none}:host([disabled]),:host([disabled]) a{color:light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d));cursor:default;pointer-events:none}:host([disabled]) a:after{border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d))}::slotted([slot=description]){font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-style:normal;font-weight:var(--rh-font-weight-heading-regular,400);margin:0;line-height:21px;font-size:var(--rh-font-size-body-text-sm,.875rem)!important}.menu-item-content:focus-visible{outline:none}.visually-hidden{clip:rect(0 0 0 0);white-space:nowrap;border:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}</style><!--lit-part CHh10dUN3TQ=-->
+      <!--lit-node 0--><div aria-disabled="false" class="menu-item-content">
+        <div class="menu-item-label">
+          <!-- summary: Icon slot
+               description: |
+                 An icon displayed alongside the menu item label.
+                 Appears before the text in LTR layouts. Screen reader
+                 users should receive an accessible label via
+                 the icon element itself. -->
+          <slot name="icon"></slot>
+          <!--lit-part X2r1wtWE6RE=-->
+        <div id="item">
+        <!--lit-part 4mn3l46zJWA=-->
+      <!-- summary: Menu item label
+           description: |
+             Inline text label for the menu item. Must contain visible
+             text for screen reader accessibility. -->
+      <slot></slot>
+    <!--/lit-part-->
+        </div>
+      <!--/lit-part-->
+        </div>
+        <!-- summary: Description slot
+             description: |
+               Supplementary description text displayed below the menu
+               item label. Screen reader users will perceive this as
+               additional context for the menu item. -->
+        <slot id="description" name="description"></slot>
+      </div>
+    <!--/lit-part--></template>Action two</rh-menu-item>
+      <rh-menu-item  ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open"><style>:host{border-radius:var(--rh-menu-item-border-radius,0);padding: var(--rh-space-md,8px)  var(--rh-space-lg,16px);cursor:pointer;font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));display:block}:host a{color:light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));text-decoration:none;display:inline-block;position:relative}:host a:after{content:"";inline-size:100%;border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3));height:2px;position:absolute;bottom:0;left:0}:host a:focus{outline:none}.menu-item-label{justify-content:flex-start;align-items:center;display:flex}.menu-item-label ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}.menu-item-label #menu-link{justify-content:space-between;align-items:center;inline-size:100%;display:flex}.menu-item-label #menu-link rh-icon{color:var(--rh-color-interactive-secondary-default);fill:var(--rh-color-interactive-secondary-default);padding-inline-start:var(--rh-space-md,8px)}#item{justify-content:flex-start;align-items:center;display:flex}#item ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}:host(:hover),:host(:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}:is(:host(:hover),:host(:focus)) a{color:var(--rh-color-interactive-primary-hover)}:is(:host(:hover),:host(:focus)) a:after{border-bottom-color:var(--rh-color-interactive-primary-hover)}:host(:focus){box-sizing:border-box;outline:none;position:relative}:host(:focus):after{content:"";inset:var(--rh-menu-item-focus-inset,3px 4px);border:var(--rh-border-width-md,2px) solid light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));border-radius:var(--rh-border-radius-default,3px);background-color:#0000;position:absolute}:host(:focus) #item{outline:none}:host([disabled]),:host([disabled]) a{color:light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d));cursor:default;pointer-events:none}:host([disabled]) a:after{border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d))}::slotted([slot=description]){font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-style:normal;font-weight:var(--rh-font-weight-heading-regular,400);margin:0;line-height:21px;font-size:var(--rh-font-size-body-text-sm,.875rem)!important}.menu-item-content:focus-visible{outline:none}.visually-hidden{clip:rect(0 0 0 0);white-space:nowrap;border:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}</style><!--lit-part CHh10dUN3TQ=-->
+      <!--lit-node 0--><div aria-disabled="false" class="menu-item-content">
+        <div class="menu-item-label">
+          <!-- summary: Icon slot
+               description: |
+                 An icon displayed alongside the menu item label.
+                 Appears before the text in LTR layouts. Screen reader
+                 users should receive an accessible label via
+                 the icon element itself. -->
+          <slot name="icon"></slot>
+          <!--lit-part X2r1wtWE6RE=-->
+        <div id="item">
+        <!--lit-part 4mn3l46zJWA=-->
+      <!-- summary: Menu item label
+           description: |
+             Inline text label for the menu item. Must contain visible
+             text for screen reader accessibility. -->
+      <slot></slot>
+    <!--/lit-part-->
+        </div>
+      <!--/lit-part-->
+        </div>
+        <!-- summary: Description slot
+             description: |
+               Supplementary description text displayed below the menu
+               item label. Screen reader users will perceive this as
+               additional context for the menu item. -->
+        <slot id="description" name="description"></slot>
+      </div>
+    <!--/lit-part--></template>Action three</rh-menu-item>
+      <rh-menu-item   disabled ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open"><style>:host{border-radius:var(--rh-menu-item-border-radius,0);padding: var(--rh-space-md,8px)  var(--rh-space-lg,16px);cursor:pointer;font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));display:block}:host a{color:light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));text-decoration:none;display:inline-block;position:relative}:host a:after{content:"";inline-size:100%;border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3));height:2px;position:absolute;bottom:0;left:0}:host a:focus{outline:none}.menu-item-label{justify-content:flex-start;align-items:center;display:flex}.menu-item-label ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}.menu-item-label #menu-link{justify-content:space-between;align-items:center;inline-size:100%;display:flex}.menu-item-label #menu-link rh-icon{color:var(--rh-color-interactive-secondary-default);fill:var(--rh-color-interactive-secondary-default);padding-inline-start:var(--rh-space-md,8px)}#item{justify-content:flex-start;align-items:center;display:flex}#item ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}:host(:hover),:host(:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}:is(:host(:hover),:host(:focus)) a{color:var(--rh-color-interactive-primary-hover)}:is(:host(:hover),:host(:focus)) a:after{border-bottom-color:var(--rh-color-interactive-primary-hover)}:host(:focus){box-sizing:border-box;outline:none;position:relative}:host(:focus):after{content:"";inset:var(--rh-menu-item-focus-inset,3px 4px);border:var(--rh-border-width-md,2px) solid light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));border-radius:var(--rh-border-radius-default,3px);background-color:#0000;position:absolute}:host(:focus) #item{outline:none}:host([disabled]),:host([disabled]) a{color:light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d));cursor:default;pointer-events:none}:host([disabled]) a:after{border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d))}::slotted([slot=description]){font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-style:normal;font-weight:var(--rh-font-weight-heading-regular,400);margin:0;line-height:21px;font-size:var(--rh-font-size-body-text-sm,.875rem)!important}.menu-item-content:focus-visible{outline:none}.visually-hidden{clip:rect(0 0 0 0);white-space:nowrap;border:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}</style><!--lit-part CHh10dUN3TQ=-->
+      <!--lit-node 0--><div aria-disabled="true" class="menu-item-content">
+        <div class="menu-item-label">
+          <!-- summary: Icon slot
+               description: |
+                 An icon displayed alongside the menu item label.
+                 Appears before the text in LTR layouts. Screen reader
+                 users should receive an accessible label via
+                 the icon element itself. -->
+          <slot name="icon"></slot>
+          <!--lit-part X2r1wtWE6RE=-->
+        <div id="item">
+        <!--lit-part 4mn3l46zJWA=-->
+      <!-- summary: Menu item label
+           description: |
+             Inline text label for the menu item. Must contain visible
+             text for screen reader accessibility. -->
+      <slot></slot>
+    <!--/lit-part-->
+        </div>
+      <!--/lit-part-->
+        </div>
+        <!-- summary: Description slot
+             description: |
+               Supplementary description text displayed below the menu
+               item label. Screen reader users will perceive this as
+               additional context for the menu item. -->
+        <slot id="description" name="description"></slot>
+      </div>
+    <!--/lit-part--></template>Disabled Action</rh-menu-item>
+      <hr>
+      <rh-menu-item  ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open"><style>:host{border-radius:var(--rh-menu-item-border-radius,0);padding: var(--rh-space-md,8px)  var(--rh-space-lg,16px);cursor:pointer;font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));display:block}:host a{color:light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));text-decoration:none;display:inline-block;position:relative}:host a:after{content:"";inline-size:100%;border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3));height:2px;position:absolute;bottom:0;left:0}:host a:focus{outline:none}.menu-item-label{justify-content:flex-start;align-items:center;display:flex}.menu-item-label ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}.menu-item-label #menu-link{justify-content:space-between;align-items:center;inline-size:100%;display:flex}.menu-item-label #menu-link rh-icon{color:var(--rh-color-interactive-secondary-default);fill:var(--rh-color-interactive-secondary-default);padding-inline-start:var(--rh-space-md,8px)}#item{justify-content:flex-start;align-items:center;display:flex}#item ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}:host(:hover),:host(:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}:is(:host(:hover),:host(:focus)) a{color:var(--rh-color-interactive-primary-hover)}:is(:host(:hover),:host(:focus)) a:after{border-bottom-color:var(--rh-color-interactive-primary-hover)}:host(:focus){box-sizing:border-box;outline:none;position:relative}:host(:focus):after{content:"";inset:var(--rh-menu-item-focus-inset,3px 4px);border:var(--rh-border-width-md,2px) solid light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));border-radius:var(--rh-border-radius-default,3px);background-color:#0000;position:absolute}:host(:focus) #item{outline:none}:host([disabled]),:host([disabled]) a{color:light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d));cursor:default;pointer-events:none}:host([disabled]) a:after{border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d))}::slotted([slot=description]){font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-style:normal;font-weight:var(--rh-font-weight-heading-regular,400);margin:0;line-height:21px;font-size:var(--rh-font-size-body-text-sm,.875rem)!important}.menu-item-content:focus-visible{outline:none}.visually-hidden{clip:rect(0 0 0 0);white-space:nowrap;border:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}</style><!--lit-part CHh10dUN3TQ=-->
+      <!--lit-node 0--><div aria-disabled="false" class="menu-item-content">
+        <div class="menu-item-label">
+          <!-- summary: Icon slot
+               description: |
+                 An icon displayed alongside the menu item label.
+                 Appears before the text in LTR layouts. Screen reader
+                 users should receive an accessible label via
+                 the icon element itself. -->
+          <slot name="icon"></slot>
+          <!--lit-part X2r1wtWE6RE=-->
+        <div id="item">
+        <!--lit-part 4mn3l46zJWA=-->
+      <!-- summary: Menu item label
+           description: |
+             Inline text label for the menu item. Must contain visible
+             text for screen reader accessibility. -->
+      <slot></slot>
+    <!--/lit-part-->
+        </div>
+      <!--/lit-part-->
+        </div>
+        <!-- summary: Description slot
+             description: |
+               Supplementary description text displayed below the menu
+               item label. Screen reader users will perceive this as
+               additional context for the menu item. -->
+        <slot id="description" name="description"></slot>
+      </div>
+    <!--/lit-part--></template>Separated action</rh-menu-item>
+    </rh-menu-dropdown>
+
+    <h3>Items with descriptions</h3>
+    <rh-menu-dropdown   ssr-hint-has-slotted-default ssr-hint-has-slotted="toggle-label" accessible-label="Toggle menu"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_border: var(--rh-border-width-sm,1px) solid light-dark( var(--rh-color-gray-30,#c7c7c7), var(--rh-color-gray-50,#707070));--_color:var(--rh-color-text-primary);display:inline-block;position:relative}#menu-list{padding:var(--rh-menu-dropdown-panel-padding,var(--rh-space-md,8px) 0);z-index:1000;border-radius:var(--rh-menu-dropdown-panel-border-radius,var(--rh-border-radius-default,3px));border:var(--rh-menu-dropdown-panel-border,var(--_border));background:var(--rh-menu-dropdown-panel-background,light-dark( var(--rh-color-surface-lightest,#fff), var(--rh-color-surface-darkest,#151515)));min-inline-size:18.5rem;max-inline-size:100%;box-shadow:var(--rh-menu-dropdown-panel-box-shadow,var(--rh-box-shadow-md,0 4px 6px 1px #15151540));translate:var(--_floating-content-translate);transition:opacity .3s cubic-bezier(.54,1.5,.38,1.11);position:absolute;top:0;left:0}.visible{display:block}::slotted([slot=toggle-label]){color:var(--_color);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);font-size:var(--rh-font-size-body-text-md,1rem)!important}#menu-toggle{--_interactive-border-color:light-dark( var(--rh-color-accent-base-on-light,#06c), var(--rh-color-accent-base-on-dark,#92c5f9));color:var(--_color);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);inline-size:100%;padding: var(--rh-space-sm,6px)  var(--rh-space-lg,16px);box-sizing:border-box;border-radius:var(--rh-border-radius-default,3px);background:var(--rh-menu-dropdown-toggle-background,light-dark( var(--rh-color-surface-lightest,#fff), var(--rh-color-surface-darkest,#151515)));border:none;justify-content:space-between;align-items:center;display:flex}#menu-toggle .action-icon rh-icon{--rh-icon-size:var(--rh-menu-dropdown-caret-size,10px);padding-inline-start:var(--rh-space-md,8px)}#menu-toggle .info-section{justify-content:flex-start;align-items:center;display:flex}#menu-toggle.boxed{box-shadow:inset 0 0 0 1px  var(--rh-menu-dropdown-toggle-border-color,light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-gray-50,#707070)))}#menu-toggle.boxed:not(.open):hover{box-shadow:inset 0 0 0 1px  var(--rh-menu-dropdown-hover-border-color,var(--_interactive-border-color))}#menu-toggle.boxed:not(.open):active{box-shadow:inset 0 0 0  var(--rh-length-3xs,2px)  var(--rh-menu-dropdown-active-border-color,var(--_interactive-border-color))}#menu-toggle.boxed:not(.open):focus{outline: var(--rh-length-3xs,2px) solid  var(--rh-menu-dropdown-focus-border-color,var(--_interactive-border-color));outline-offset:var(--rh-length-3xs,2px)}#menu-toggle.boxed.open{box-shadow:inset 0 0 0  var(--rh-length-3xs,2px)  var(--rh-menu-dropdown-open-border-color,var(--_interactive-border-color))}#menu-toggle.boxed.open:focus{outline: var(--rh-length-3xs,2px) solid  var(--rh-menu-dropdown-focus-border-color,var(--_interactive-border-color));outline-offset:var(--rh-length-3xs,2px)}#menu-toggle.boxed.disabled{box-shadow:var(--rh-menu-dropdown-disabled-box-shadow,inset 0 0 0 1px var(--rh-menu-dropdown-toggle-border-color,light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-gray-50,#707070))))}#menu-toggle.compact{padding:var(--rh-space-md,8px);min-block-size:var(--rh-menu-dropdown-compact-size,auto);min-inline-size:var(--rh-menu-dropdown-compact-size,auto);justify-content:var(--rh-menu-dropdown-compact-justify,space-between)}#menu-toggle.compact:not(.boxed).open,#menu-toggle.compact:not(.boxed):hover,#menu-toggle.compact:not(.boxed):active,#menu-toggle.compact:not(.boxed):focus{background-color:light-dark( var(--rh-color-surface-lighter,#f2f2f2), var(--rh-color-surface-darker,#1f1f1f))}#menu-toggle.compact:not(.boxed):focus{outline:var(--rh-length-3xs,2px) solid var(--_interactive-border-color);outline-offset:var(--rh-length-3xs,2px)}#menu-toggle.compact:not(.boxed):active{box-shadow:inset 0 0 0  var(--rh-length-3xs,2px) var(--_interactive-border-color)}#menu-toggle.compact.disabled{background:var(--rh-menu-dropdown-compact-disabled-background,light-dark( var(--rh-color-gray-30,#c7c7c7), var(--rh-color-gray-40,#a3a3a3)))}#menu-toggle.compact.disabled .action-icon rh-icon{color:var(--rh-menu-dropdown-compact-disabled-icon-color,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d)))}#menu-toggle.disabled{pointer-events:none;cursor:not-allowed;background:light-dark( var(--rh-color-gray-30,#c7c7c7), var(--rh-color-gray-40,#a3a3a3))}#menu-toggle.disabled:focus,#menu-toggle.disabled:active,#menu-toggle.disabled:hover{box-shadow:none}#menu-dropdown-container{inline-size:100%;position:relative}::slotted(hr){border:0;border-top:var(--_border);inline-size:100%}::slotted(rh-icon){margin-inline-end:var(--rh-space-md,8px)}rh-menu::part(menu){inline-size:100%}:host([aria-disabled=true]){pointer-events:none;cursor:not-allowed}:host([disabled]) ::slotted([slot=toggle-label]),:host([disabled]) .action-icon rh-icon{color:light-dark( var(--rh-color-gray-50,#707070), var(--rh-color-gray-60,#4d4d4d))}</style><!--lit-part dg+mm7jIG64=-->
+      <!--lit-node 0--><div  id="menu-dropdown-container">
+        <!--lit-node 1--><button id="menu-toggle"
+                type="button"
+                aria-haspopup="menu"
+                aria-expanded="false"
+                
+                aria-controls="menu-list"
+                aria-disabled="false"
+                
+                class=" boxed ">
+            <!--lit-part 5IhNoP+i+Nc=-->
+              <span class="info-section">
+                <!-- summary: Toggle label
+                     description: |
+                       Inline content for the toggle button, such as a
+                       `<span>` or `<rh-icon>`. Should be short and
+                       descriptive. Screen readers announce this as the
+                       accessible name for the menu button. Not used in
+                       compact layout; use `accessible-label` instead. -->
+                <slot name="toggle-label"></slot>
+              </span>
+              <span class="action-icon">
+                <!--lit-node 4--><rh-icon   set="microns" icon="caret-down-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" microns "><!--lit-part nH3s/FzI+3A=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="m17.65 8.76-6.674 5.72a1.496 1.496 0 0 1-.976.365c-.347 0-.694-.122-.978-.366l-6.673-5.72A1 1 0 0 1 3 7h14a1 1 0 0 1 .65 1.76Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+              </span>
+              <!--/lit-part-->
+        </button>
+        <!--lit-node 3--><div id="menu-list"
+             hidden
+             
+             style=""
+             class=" center "
+             >
+          <!--lit-node 4--><rh-menu   role="menu" hydrate-internals-role="menubar" aria-labelledby="menu-toggle" defer-hydration><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}slot{flex-direction:column;align-items:stretch;width:100%;display:inline-flex}::slotted(a){color:var(--rh-color-interactive-primary-default);padding:5px!important}::slotted(a:hover){color:var(--rh-color-interactive-primary-hover)!important}::slotted(a:visited),::slotted(a:visited:hover){color:var(--rh-color-interactive-primary-visited-default)!important}::slotted(hr){border:0;border-top:var(--rh-border-width-sm,1px) solid light-dark( var(--rh-color-gray-30,#c7c7c7), var(--rh-color-gray-50,#707070));width:100%}</style><!--lit-part 9T7XVkAB3Zs=-->
+      <!-- summary: Menu items
+           description: |
+             Accepts `rh-menu-item`, `rh-menu-item-group`, anchor, or
+             `<hr>` elements. Screen reader users perceive these as
+             menubar items. Authors should not place non-interactive
+             content in this slot. -->
+      <!--lit-node 1--><slot  part="menu"></slot>
+    <!--/lit-part--></template>
+            <!-- summary: Menu content
+                 description: |
+                   Must contain `<rh-menu-item>` elements. May include
+                   `<hr>` separators or `<rh-menu-item-group>` for
+                   grouped items. Items receive ARIA menuitem role and
+                   focus via roving tabindex for keyboard and screen
+                   reader navigation. -->
+            <slot></slot>
+          </rh-menu>
+        </div>
+      </div>
+    
+    <!--/lit-part--></template>
+      <span slot="toggle-label">With descriptions</span>
+      <rh-menu-item   ssr-hint-has-slotted-default ssr-hint-has-slotted="description"><template shadowroot="open" shadowrootmode="open"><style>:host{border-radius:var(--rh-menu-item-border-radius,0);padding: var(--rh-space-md,8px)  var(--rh-space-lg,16px);cursor:pointer;font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));display:block}:host a{color:light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));text-decoration:none;display:inline-block;position:relative}:host a:after{content:"";inline-size:100%;border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3));height:2px;position:absolute;bottom:0;left:0}:host a:focus{outline:none}.menu-item-label{justify-content:flex-start;align-items:center;display:flex}.menu-item-label ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}.menu-item-label #menu-link{justify-content:space-between;align-items:center;inline-size:100%;display:flex}.menu-item-label #menu-link rh-icon{color:var(--rh-color-interactive-secondary-default);fill:var(--rh-color-interactive-secondary-default);padding-inline-start:var(--rh-space-md,8px)}#item{justify-content:flex-start;align-items:center;display:flex}#item ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}:host(:hover),:host(:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}:is(:host(:hover),:host(:focus)) a{color:var(--rh-color-interactive-primary-hover)}:is(:host(:hover),:host(:focus)) a:after{border-bottom-color:var(--rh-color-interactive-primary-hover)}:host(:focus){box-sizing:border-box;outline:none;position:relative}:host(:focus):after{content:"";inset:var(--rh-menu-item-focus-inset,3px 4px);border:var(--rh-border-width-md,2px) solid light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));border-radius:var(--rh-border-radius-default,3px);background-color:#0000;position:absolute}:host(:focus) #item{outline:none}:host([disabled]),:host([disabled]) a{color:light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d));cursor:default;pointer-events:none}:host([disabled]) a:after{border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d))}::slotted([slot=description]){font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-style:normal;font-weight:var(--rh-font-weight-heading-regular,400);margin:0;line-height:21px;font-size:var(--rh-font-size-body-text-sm,.875rem)!important}.menu-item-content:focus-visible{outline:none}.visually-hidden{clip:rect(0 0 0 0);white-space:nowrap;border:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}</style><!--lit-part CHh10dUN3TQ=-->
+      <!--lit-node 0--><div aria-disabled="false" class="menu-item-content">
+        <div class="menu-item-label">
+          <!-- summary: Icon slot
+               description: |
+                 An icon displayed alongside the menu item label.
+                 Appears before the text in LTR layouts. Screen reader
+                 users should receive an accessible label via
+                 the icon element itself. -->
+          <slot name="icon"></slot>
+          <!--lit-part X2r1wtWE6RE=-->
+        <div id="item">
+        <!--lit-part 4mn3l46zJWA=-->
+      <!-- summary: Menu item label
+           description: |
+             Inline text label for the menu item. Must contain visible
+             text for screen reader accessibility. -->
+      <slot></slot>
+    <!--/lit-part-->
+        </div>
+      <!--/lit-part-->
+        </div>
+        <!-- summary: Description slot
+             description: |
+               Supplementary description text displayed below the menu
+               item label. Screen reader users will perceive this as
+               additional context for the menu item. -->
+        <slot id="description" name="description"></slot>
+      </div>
+    <!--/lit-part--></template>Action one <p slot="description">Description for the 1st action</p></rh-menu-item>
+      <rh-menu-item   ssr-hint-has-slotted-default ssr-hint-has-slotted="description"><template shadowroot="open" shadowrootmode="open"><style>:host{border-radius:var(--rh-menu-item-border-radius,0);padding: var(--rh-space-md,8px)  var(--rh-space-lg,16px);cursor:pointer;font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));display:block}:host a{color:light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));text-decoration:none;display:inline-block;position:relative}:host a:after{content:"";inline-size:100%;border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3));height:2px;position:absolute;bottom:0;left:0}:host a:focus{outline:none}.menu-item-label{justify-content:flex-start;align-items:center;display:flex}.menu-item-label ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}.menu-item-label #menu-link{justify-content:space-between;align-items:center;inline-size:100%;display:flex}.menu-item-label #menu-link rh-icon{color:var(--rh-color-interactive-secondary-default);fill:var(--rh-color-interactive-secondary-default);padding-inline-start:var(--rh-space-md,8px)}#item{justify-content:flex-start;align-items:center;display:flex}#item ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}:host(:hover),:host(:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}:is(:host(:hover),:host(:focus)) a{color:var(--rh-color-interactive-primary-hover)}:is(:host(:hover),:host(:focus)) a:after{border-bottom-color:var(--rh-color-interactive-primary-hover)}:host(:focus){box-sizing:border-box;outline:none;position:relative}:host(:focus):after{content:"";inset:var(--rh-menu-item-focus-inset,3px 4px);border:var(--rh-border-width-md,2px) solid light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));border-radius:var(--rh-border-radius-default,3px);background-color:#0000;position:absolute}:host(:focus) #item{outline:none}:host([disabled]),:host([disabled]) a{color:light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d));cursor:default;pointer-events:none}:host([disabled]) a:after{border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d))}::slotted([slot=description]){font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-style:normal;font-weight:var(--rh-font-weight-heading-regular,400);margin:0;line-height:21px;font-size:var(--rh-font-size-body-text-sm,.875rem)!important}.menu-item-content:focus-visible{outline:none}.visually-hidden{clip:rect(0 0 0 0);white-space:nowrap;border:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}</style><!--lit-part CHh10dUN3TQ=-->
+      <!--lit-node 0--><div aria-disabled="false" class="menu-item-content">
+        <div class="menu-item-label">
+          <!-- summary: Icon slot
+               description: |
+                 An icon displayed alongside the menu item label.
+                 Appears before the text in LTR layouts. Screen reader
+                 users should receive an accessible label via
+                 the icon element itself. -->
+          <slot name="icon"></slot>
+          <!--lit-part X2r1wtWE6RE=-->
+        <div id="item">
+        <!--lit-part 4mn3l46zJWA=-->
+      <!-- summary: Menu item label
+           description: |
+             Inline text label for the menu item. Must contain visible
+             text for screen reader accessibility. -->
+      <slot></slot>
+    <!--/lit-part-->
+        </div>
+      <!--/lit-part-->
+        </div>
+        <!-- summary: Description slot
+             description: |
+               Supplementary description text displayed below the menu
+               item label. Screen reader users will perceive this as
+               additional context for the menu item. -->
+        <slot id="description" name="description"></slot>
+      </div>
+    <!--/lit-part--></template>Action two <p slot="description">Description for the 2nd action</p></rh-menu-item>
+      <rh-menu-item   ssr-hint-has-slotted-default ssr-hint-has-slotted="description"><template shadowroot="open" shadowrootmode="open"><style>:host{border-radius:var(--rh-menu-item-border-radius,0);padding: var(--rh-space-md,8px)  var(--rh-space-lg,16px);cursor:pointer;font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));display:block}:host a{color:light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));text-decoration:none;display:inline-block;position:relative}:host a:after{content:"";inline-size:100%;border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3));height:2px;position:absolute;bottom:0;left:0}:host a:focus{outline:none}.menu-item-label{justify-content:flex-start;align-items:center;display:flex}.menu-item-label ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}.menu-item-label #menu-link{justify-content:space-between;align-items:center;inline-size:100%;display:flex}.menu-item-label #menu-link rh-icon{color:var(--rh-color-interactive-secondary-default);fill:var(--rh-color-interactive-secondary-default);padding-inline-start:var(--rh-space-md,8px)}#item{justify-content:flex-start;align-items:center;display:flex}#item ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}:host(:hover),:host(:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}:is(:host(:hover),:host(:focus)) a{color:var(--rh-color-interactive-primary-hover)}:is(:host(:hover),:host(:focus)) a:after{border-bottom-color:var(--rh-color-interactive-primary-hover)}:host(:focus){box-sizing:border-box;outline:none;position:relative}:host(:focus):after{content:"";inset:var(--rh-menu-item-focus-inset,3px 4px);border:var(--rh-border-width-md,2px) solid light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));border-radius:var(--rh-border-radius-default,3px);background-color:#0000;position:absolute}:host(:focus) #item{outline:none}:host([disabled]),:host([disabled]) a{color:light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d));cursor:default;pointer-events:none}:host([disabled]) a:after{border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d))}::slotted([slot=description]){font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-style:normal;font-weight:var(--rh-font-weight-heading-regular,400);margin:0;line-height:21px;font-size:var(--rh-font-size-body-text-sm,.875rem)!important}.menu-item-content:focus-visible{outline:none}.visually-hidden{clip:rect(0 0 0 0);white-space:nowrap;border:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}</style><!--lit-part CHh10dUN3TQ=-->
+      <!--lit-node 0--><div aria-disabled="false" class="menu-item-content">
+        <div class="menu-item-label">
+          <!-- summary: Icon slot
+               description: |
+                 An icon displayed alongside the menu item label.
+                 Appears before the text in LTR layouts. Screen reader
+                 users should receive an accessible label via
+                 the icon element itself. -->
+          <slot name="icon"></slot>
+          <!--lit-part X2r1wtWE6RE=-->
+        <div id="item">
+        <!--lit-part 4mn3l46zJWA=-->
+      <!-- summary: Menu item label
+           description: |
+             Inline text label for the menu item. Must contain visible
+             text for screen reader accessibility. -->
+      <slot></slot>
+    <!--/lit-part-->
+        </div>
+      <!--/lit-part-->
+        </div>
+        <!-- summary: Description slot
+             description: |
+               Supplementary description text displayed below the menu
+               item label. Screen reader users will perceive this as
+               additional context for the menu item. -->
+        <slot id="description" name="description"></slot>
+      </div>
+    <!--/lit-part--></template>Action three <p slot="description">Description for the 3rd action</p></rh-menu-item>
+      <rh-menu-item    disabled ssr-hint-has-slotted-default ssr-hint-has-slotted="description"><template shadowroot="open" shadowrootmode="open"><style>:host{border-radius:var(--rh-menu-item-border-radius,0);padding: var(--rh-space-md,8px)  var(--rh-space-lg,16px);cursor:pointer;font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));display:block}:host a{color:light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));text-decoration:none;display:inline-block;position:relative}:host a:after{content:"";inline-size:100%;border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3));height:2px;position:absolute;bottom:0;left:0}:host a:focus{outline:none}.menu-item-label{justify-content:flex-start;align-items:center;display:flex}.menu-item-label ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}.menu-item-label #menu-link{justify-content:space-between;align-items:center;inline-size:100%;display:flex}.menu-item-label #menu-link rh-icon{color:var(--rh-color-interactive-secondary-default);fill:var(--rh-color-interactive-secondary-default);padding-inline-start:var(--rh-space-md,8px)}#item{justify-content:flex-start;align-items:center;display:flex}#item ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}:host(:hover),:host(:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}:is(:host(:hover),:host(:focus)) a{color:var(--rh-color-interactive-primary-hover)}:is(:host(:hover),:host(:focus)) a:after{border-bottom-color:var(--rh-color-interactive-primary-hover)}:host(:focus){box-sizing:border-box;outline:none;position:relative}:host(:focus):after{content:"";inset:var(--rh-menu-item-focus-inset,3px 4px);border:var(--rh-border-width-md,2px) solid light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));border-radius:var(--rh-border-radius-default,3px);background-color:#0000;position:absolute}:host(:focus) #item{outline:none}:host([disabled]),:host([disabled]) a{color:light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d));cursor:default;pointer-events:none}:host([disabled]) a:after{border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d))}::slotted([slot=description]){font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-style:normal;font-weight:var(--rh-font-weight-heading-regular,400);margin:0;line-height:21px;font-size:var(--rh-font-size-body-text-sm,.875rem)!important}.menu-item-content:focus-visible{outline:none}.visually-hidden{clip:rect(0 0 0 0);white-space:nowrap;border:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}</style><!--lit-part CHh10dUN3TQ=-->
+      <!--lit-node 0--><div aria-disabled="true" class="menu-item-content">
+        <div class="menu-item-label">
+          <!-- summary: Icon slot
+               description: |
+                 An icon displayed alongside the menu item label.
+                 Appears before the text in LTR layouts. Screen reader
+                 users should receive an accessible label via
+                 the icon element itself. -->
+          <slot name="icon"></slot>
+          <!--lit-part X2r1wtWE6RE=-->
+        <div id="item">
+        <!--lit-part 4mn3l46zJWA=-->
+      <!-- summary: Menu item label
+           description: |
+             Inline text label for the menu item. Must contain visible
+             text for screen reader accessibility. -->
+      <slot></slot>
+    <!--/lit-part-->
+        </div>
+      <!--/lit-part-->
+        </div>
+        <!-- summary: Description slot
+             description: |
+               Supplementary description text displayed below the menu
+               item label. Screen reader users will perceive this as
+               additional context for the menu item. -->
+        <slot id="description" name="description"></slot>
+      </div>
+    <!--/lit-part--></template>Disabled Action <p slot="description">Description for a disabled action</p></rh-menu-item>
+      <hr>
+      <rh-menu-item   ssr-hint-has-slotted-default ssr-hint-has-slotted="description"><template shadowroot="open" shadowrootmode="open"><style>:host{border-radius:var(--rh-menu-item-border-radius,0);padding: var(--rh-space-md,8px)  var(--rh-space-lg,16px);cursor:pointer;font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));display:block}:host a{color:light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));text-decoration:none;display:inline-block;position:relative}:host a:after{content:"";inline-size:100%;border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3));height:2px;position:absolute;bottom:0;left:0}:host a:focus{outline:none}.menu-item-label{justify-content:flex-start;align-items:center;display:flex}.menu-item-label ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}.menu-item-label #menu-link{justify-content:space-between;align-items:center;inline-size:100%;display:flex}.menu-item-label #menu-link rh-icon{color:var(--rh-color-interactive-secondary-default);fill:var(--rh-color-interactive-secondary-default);padding-inline-start:var(--rh-space-md,8px)}#item{justify-content:flex-start;align-items:center;display:flex}#item ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}:host(:hover),:host(:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}:is(:host(:hover),:host(:focus)) a{color:var(--rh-color-interactive-primary-hover)}:is(:host(:hover),:host(:focus)) a:after{border-bottom-color:var(--rh-color-interactive-primary-hover)}:host(:focus){box-sizing:border-box;outline:none;position:relative}:host(:focus):after{content:"";inset:var(--rh-menu-item-focus-inset,3px 4px);border:var(--rh-border-width-md,2px) solid light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));border-radius:var(--rh-border-radius-default,3px);background-color:#0000;position:absolute}:host(:focus) #item{outline:none}:host([disabled]),:host([disabled]) a{color:light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d));cursor:default;pointer-events:none}:host([disabled]) a:after{border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d))}::slotted([slot=description]){font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-style:normal;font-weight:var(--rh-font-weight-heading-regular,400);margin:0;line-height:21px;font-size:var(--rh-font-size-body-text-sm,.875rem)!important}.menu-item-content:focus-visible{outline:none}.visually-hidden{clip:rect(0 0 0 0);white-space:nowrap;border:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}</style><!--lit-part CHh10dUN3TQ=-->
+      <!--lit-node 0--><div aria-disabled="false" class="menu-item-content">
+        <div class="menu-item-label">
+          <!-- summary: Icon slot
+               description: |
+                 An icon displayed alongside the menu item label.
+                 Appears before the text in LTR layouts. Screen reader
+                 users should receive an accessible label via
+                 the icon element itself. -->
+          <slot name="icon"></slot>
+          <!--lit-part X2r1wtWE6RE=-->
+        <div id="item">
+        <!--lit-part 4mn3l46zJWA=-->
+      <!-- summary: Menu item label
+           description: |
+             Inline text label for the menu item. Must contain visible
+             text for screen reader accessibility. -->
+      <slot></slot>
+    <!--/lit-part-->
+        </div>
+      <!--/lit-part-->
+        </div>
+        <!-- summary: Description slot
+             description: |
+               Supplementary description text displayed below the menu
+               item label. Screen reader users will perceive this as
+               additional context for the menu item. -->
+        <slot id="description" name="description"></slot>
+      </div>
+    <!--/lit-part--></template>Separated action <p slot="description">Description for a separate action</p></rh-menu-item>
+    </rh-menu-dropdown>
+
+    <h3>Compact</h3>
+    <rh-menu-dropdown     variant="borderless" layout="compact" accessible-label="Toggle menu" ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_border: var(--rh-border-width-sm,1px) solid light-dark( var(--rh-color-gray-30,#c7c7c7), var(--rh-color-gray-50,#707070));--_color:var(--rh-color-text-primary);display:inline-block;position:relative}#menu-list{padding:var(--rh-menu-dropdown-panel-padding,var(--rh-space-md,8px) 0);z-index:1000;border-radius:var(--rh-menu-dropdown-panel-border-radius,var(--rh-border-radius-default,3px));border:var(--rh-menu-dropdown-panel-border,var(--_border));background:var(--rh-menu-dropdown-panel-background,light-dark( var(--rh-color-surface-lightest,#fff), var(--rh-color-surface-darkest,#151515)));min-inline-size:18.5rem;max-inline-size:100%;box-shadow:var(--rh-menu-dropdown-panel-box-shadow,var(--rh-box-shadow-md,0 4px 6px 1px #15151540));translate:var(--_floating-content-translate);transition:opacity .3s cubic-bezier(.54,1.5,.38,1.11);position:absolute;top:0;left:0}.visible{display:block}::slotted([slot=toggle-label]){color:var(--_color);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);font-size:var(--rh-font-size-body-text-md,1rem)!important}#menu-toggle{--_interactive-border-color:light-dark( var(--rh-color-accent-base-on-light,#06c), var(--rh-color-accent-base-on-dark,#92c5f9));color:var(--_color);font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);inline-size:100%;padding: var(--rh-space-sm,6px)  var(--rh-space-lg,16px);box-sizing:border-box;border-radius:var(--rh-border-radius-default,3px);background:var(--rh-menu-dropdown-toggle-background,light-dark( var(--rh-color-surface-lightest,#fff), var(--rh-color-surface-darkest,#151515)));border:none;justify-content:space-between;align-items:center;display:flex}#menu-toggle .action-icon rh-icon{--rh-icon-size:var(--rh-menu-dropdown-caret-size,10px);padding-inline-start:var(--rh-space-md,8px)}#menu-toggle .info-section{justify-content:flex-start;align-items:center;display:flex}#menu-toggle.boxed{box-shadow:inset 0 0 0 1px  var(--rh-menu-dropdown-toggle-border-color,light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-gray-50,#707070)))}#menu-toggle.boxed:not(.open):hover{box-shadow:inset 0 0 0 1px  var(--rh-menu-dropdown-hover-border-color,var(--_interactive-border-color))}#menu-toggle.boxed:not(.open):active{box-shadow:inset 0 0 0  var(--rh-length-3xs,2px)  var(--rh-menu-dropdown-active-border-color,var(--_interactive-border-color))}#menu-toggle.boxed:not(.open):focus{outline: var(--rh-length-3xs,2px) solid  var(--rh-menu-dropdown-focus-border-color,var(--_interactive-border-color));outline-offset:var(--rh-length-3xs,2px)}#menu-toggle.boxed.open{box-shadow:inset 0 0 0  var(--rh-length-3xs,2px)  var(--rh-menu-dropdown-open-border-color,var(--_interactive-border-color))}#menu-toggle.boxed.open:focus{outline: var(--rh-length-3xs,2px) solid  var(--rh-menu-dropdown-focus-border-color,var(--_interactive-border-color));outline-offset:var(--rh-length-3xs,2px)}#menu-toggle.boxed.disabled{box-shadow:var(--rh-menu-dropdown-disabled-box-shadow,inset 0 0 0 1px var(--rh-menu-dropdown-toggle-border-color,light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-gray-50,#707070))))}#menu-toggle.compact{padding:var(--rh-space-md,8px);min-block-size:var(--rh-menu-dropdown-compact-size,auto);min-inline-size:var(--rh-menu-dropdown-compact-size,auto);justify-content:var(--rh-menu-dropdown-compact-justify,space-between)}#menu-toggle.compact:not(.boxed).open,#menu-toggle.compact:not(.boxed):hover,#menu-toggle.compact:not(.boxed):active,#menu-toggle.compact:not(.boxed):focus{background-color:light-dark( var(--rh-color-surface-lighter,#f2f2f2), var(--rh-color-surface-darker,#1f1f1f))}#menu-toggle.compact:not(.boxed):focus{outline:var(--rh-length-3xs,2px) solid var(--_interactive-border-color);outline-offset:var(--rh-length-3xs,2px)}#menu-toggle.compact:not(.boxed):active{box-shadow:inset 0 0 0  var(--rh-length-3xs,2px) var(--_interactive-border-color)}#menu-toggle.compact.disabled{background:var(--rh-menu-dropdown-compact-disabled-background,light-dark( var(--rh-color-gray-30,#c7c7c7), var(--rh-color-gray-40,#a3a3a3)))}#menu-toggle.compact.disabled .action-icon rh-icon{color:var(--rh-menu-dropdown-compact-disabled-icon-color,light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d)))}#menu-toggle.disabled{pointer-events:none;cursor:not-allowed;background:light-dark( var(--rh-color-gray-30,#c7c7c7), var(--rh-color-gray-40,#a3a3a3))}#menu-toggle.disabled:focus,#menu-toggle.disabled:active,#menu-toggle.disabled:hover{box-shadow:none}#menu-dropdown-container{inline-size:100%;position:relative}::slotted(hr){border:0;border-top:var(--_border);inline-size:100%}::slotted(rh-icon){margin-inline-end:var(--rh-space-md,8px)}rh-menu::part(menu){inline-size:100%}:host([aria-disabled=true]){pointer-events:none;cursor:not-allowed}:host([disabled]) ::slotted([slot=toggle-label]),:host([disabled]) .action-icon rh-icon{color:light-dark( var(--rh-color-gray-50,#707070), var(--rh-color-gray-60,#4d4d4d))}</style><!--lit-part dg+mm7jIG64=-->
+      <!--lit-node 0--><div  id="menu-dropdown-container">
+        <!--lit-node 1--><button id="menu-toggle"
+                type="button"
+                aria-haspopup="menu"
+                aria-expanded="false"
+                
+                aria-controls="menu-list"
+                aria-disabled="false"
+                
+                class=" compact ">
+            <!--lit-part N7BVxPWQIMA=--><!--lit-node 0--><rh-icon    set="ui" icon="ellipsis-vertical-fill" accessible-label="Toggle menu" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1;place-content:center;line-height:0;display:inline-flex}#container{display:contents}svg{width: var(--rh-icon-size, var(--rh-size-icon-01,16px));fill:currentColor;aspect-ratio:1}.standard svg{width: var(--rh-icon-size, var(--rh-size-icon-04,40px))}.microns svg{min-width:8px;max-width:12px;width:var(--rh-icon-size,12px)}</style><!--lit-part fYEDUe8xiro=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part WuDwWyKYo2Y=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M12.25 5c0-2.068 1.683-3.75 3.75-3.75S19.75 2.932 19.75 5 18.067 8.75 16 8.75 12.25 7.068 12.25 5ZM16 12.25c-2.067 0-3.75 1.682-3.75 3.75s1.683 3.75 3.75 3.75 3.75-1.682 3.75-3.75-1.683-3.75-3.75-3.75Zm0 11c-2.067 0-3.75 1.682-3.75 3.75s1.683 3.75 3.75 3.75 3.75-1.682 3.75-3.75-1.683-3.75-3.75-3.75Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          summary: Fallback content when icon fails to load
+          description: |
+            Displayed only when the icon SVG cannot be resolved.
+            Should contain meaningful text or an alternative image
+            for screen readers if the icon conveys information.
+            Hidden automatically when icon loads successfully.
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--/lit-part-->
+        </button>
+        <!--lit-node 3--><div id="menu-list"
+             hidden
+             
+             style=""
+             class=" center "
+             >
+          <!--lit-node 4--><rh-menu   role="menu" hydrate-internals-role="menubar" aria-labelledby="menu-toggle" defer-hydration><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:contents}slot{flex-direction:column;align-items:stretch;width:100%;display:inline-flex}::slotted(a){color:var(--rh-color-interactive-primary-default);padding:5px!important}::slotted(a:hover){color:var(--rh-color-interactive-primary-hover)!important}::slotted(a:visited),::slotted(a:visited:hover){color:var(--rh-color-interactive-primary-visited-default)!important}::slotted(hr){border:0;border-top:var(--rh-border-width-sm,1px) solid light-dark( var(--rh-color-gray-30,#c7c7c7), var(--rh-color-gray-50,#707070));width:100%}</style><!--lit-part 9T7XVkAB3Zs=-->
+      <!-- summary: Menu items
+           description: |
+             Accepts `rh-menu-item`, `rh-menu-item-group`, anchor, or
+             `<hr>` elements. Screen reader users perceive these as
+             menubar items. Authors should not place non-interactive
+             content in this slot. -->
+      <!--lit-node 1--><slot  part="menu"></slot>
+    <!--/lit-part--></template>
+            <!-- summary: Menu content
+                 description: |
+                   Must contain `<rh-menu-item>` elements. May include
+                   `<hr>` separators or `<rh-menu-item-group>` for
+                   grouped items. Items receive ARIA menuitem role and
+                   focus via roving tabindex for keyboard and screen
+                   reader navigation. -->
+            <slot></slot>
+          </rh-menu>
+        </div>
+      </div>
+    
+    <!--/lit-part--></template>
+      <rh-menu-item  ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open"><style>:host{border-radius:var(--rh-menu-item-border-radius,0);padding: var(--rh-space-md,8px)  var(--rh-space-lg,16px);cursor:pointer;font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));display:block}:host a{color:light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));text-decoration:none;display:inline-block;position:relative}:host a:after{content:"";inline-size:100%;border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3));height:2px;position:absolute;bottom:0;left:0}:host a:focus{outline:none}.menu-item-label{justify-content:flex-start;align-items:center;display:flex}.menu-item-label ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}.menu-item-label #menu-link{justify-content:space-between;align-items:center;inline-size:100%;display:flex}.menu-item-label #menu-link rh-icon{color:var(--rh-color-interactive-secondary-default);fill:var(--rh-color-interactive-secondary-default);padding-inline-start:var(--rh-space-md,8px)}#item{justify-content:flex-start;align-items:center;display:flex}#item ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}:host(:hover),:host(:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}:is(:host(:hover),:host(:focus)) a{color:var(--rh-color-interactive-primary-hover)}:is(:host(:hover),:host(:focus)) a:after{border-bottom-color:var(--rh-color-interactive-primary-hover)}:host(:focus){box-sizing:border-box;outline:none;position:relative}:host(:focus):after{content:"";inset:var(--rh-menu-item-focus-inset,3px 4px);border:var(--rh-border-width-md,2px) solid light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));border-radius:var(--rh-border-radius-default,3px);background-color:#0000;position:absolute}:host(:focus) #item{outline:none}:host([disabled]),:host([disabled]) a{color:light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d));cursor:default;pointer-events:none}:host([disabled]) a:after{border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d))}::slotted([slot=description]){font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-style:normal;font-weight:var(--rh-font-weight-heading-regular,400);margin:0;line-height:21px;font-size:var(--rh-font-size-body-text-sm,.875rem)!important}.menu-item-content:focus-visible{outline:none}.visually-hidden{clip:rect(0 0 0 0);white-space:nowrap;border:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}</style><!--lit-part CHh10dUN3TQ=-->
+      <!--lit-node 0--><div aria-disabled="false" class="menu-item-content">
+        <div class="menu-item-label">
+          <!-- summary: Icon slot
+               description: |
+                 An icon displayed alongside the menu item label.
+                 Appears before the text in LTR layouts. Screen reader
+                 users should receive an accessible label via
+                 the icon element itself. -->
+          <slot name="icon"></slot>
+          <!--lit-part X2r1wtWE6RE=-->
+        <div id="item">
+        <!--lit-part 4mn3l46zJWA=-->
+      <!-- summary: Menu item label
+           description: |
+             Inline text label for the menu item. Must contain visible
+             text for screen reader accessibility. -->
+      <slot></slot>
+    <!--/lit-part-->
+        </div>
+      <!--/lit-part-->
+        </div>
+        <!-- summary: Description slot
+             description: |
+               Supplementary description text displayed below the menu
+               item label. Screen reader users will perceive this as
+               additional context for the menu item. -->
+        <slot id="description" name="description"></slot>
+      </div>
+    <!--/lit-part--></template>Action one</rh-menu-item>
+      <rh-menu-item  ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open"><style>:host{border-radius:var(--rh-menu-item-border-radius,0);padding: var(--rh-space-md,8px)  var(--rh-space-lg,16px);cursor:pointer;font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));display:block}:host a{color:light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));text-decoration:none;display:inline-block;position:relative}:host a:after{content:"";inline-size:100%;border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3));height:2px;position:absolute;bottom:0;left:0}:host a:focus{outline:none}.menu-item-label{justify-content:flex-start;align-items:center;display:flex}.menu-item-label ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}.menu-item-label #menu-link{justify-content:space-between;align-items:center;inline-size:100%;display:flex}.menu-item-label #menu-link rh-icon{color:var(--rh-color-interactive-secondary-default);fill:var(--rh-color-interactive-secondary-default);padding-inline-start:var(--rh-space-md,8px)}#item{justify-content:flex-start;align-items:center;display:flex}#item ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}:host(:hover),:host(:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}:is(:host(:hover),:host(:focus)) a{color:var(--rh-color-interactive-primary-hover)}:is(:host(:hover),:host(:focus)) a:after{border-bottom-color:var(--rh-color-interactive-primary-hover)}:host(:focus){box-sizing:border-box;outline:none;position:relative}:host(:focus):after{content:"";inset:var(--rh-menu-item-focus-inset,3px 4px);border:var(--rh-border-width-md,2px) solid light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));border-radius:var(--rh-border-radius-default,3px);background-color:#0000;position:absolute}:host(:focus) #item{outline:none}:host([disabled]),:host([disabled]) a{color:light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d));cursor:default;pointer-events:none}:host([disabled]) a:after{border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d))}::slotted([slot=description]){font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-style:normal;font-weight:var(--rh-font-weight-heading-regular,400);margin:0;line-height:21px;font-size:var(--rh-font-size-body-text-sm,.875rem)!important}.menu-item-content:focus-visible{outline:none}.visually-hidden{clip:rect(0 0 0 0);white-space:nowrap;border:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}</style><!--lit-part CHh10dUN3TQ=-->
+      <!--lit-node 0--><div aria-disabled="false" class="menu-item-content">
+        <div class="menu-item-label">
+          <!-- summary: Icon slot
+               description: |
+                 An icon displayed alongside the menu item label.
+                 Appears before the text in LTR layouts. Screen reader
+                 users should receive an accessible label via
+                 the icon element itself. -->
+          <slot name="icon"></slot>
+          <!--lit-part X2r1wtWE6RE=-->
+        <div id="item">
+        <!--lit-part 4mn3l46zJWA=-->
+      <!-- summary: Menu item label
+           description: |
+             Inline text label for the menu item. Must contain visible
+             text for screen reader accessibility. -->
+      <slot></slot>
+    <!--/lit-part-->
+        </div>
+      <!--/lit-part-->
+        </div>
+        <!-- summary: Description slot
+             description: |
+               Supplementary description text displayed below the menu
+               item label. Screen reader users will perceive this as
+               additional context for the menu item. -->
+        <slot id="description" name="description"></slot>
+      </div>
+    <!--/lit-part--></template>Action two</rh-menu-item>
+      <rh-menu-item  ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open"><style>:host{border-radius:var(--rh-menu-item-border-radius,0);padding: var(--rh-space-md,8px)  var(--rh-space-lg,16px);cursor:pointer;font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));display:block}:host a{color:light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));text-decoration:none;display:inline-block;position:relative}:host a:after{content:"";inline-size:100%;border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3));height:2px;position:absolute;bottom:0;left:0}:host a:focus{outline:none}.menu-item-label{justify-content:flex-start;align-items:center;display:flex}.menu-item-label ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}.menu-item-label #menu-link{justify-content:space-between;align-items:center;inline-size:100%;display:flex}.menu-item-label #menu-link rh-icon{color:var(--rh-color-interactive-secondary-default);fill:var(--rh-color-interactive-secondary-default);padding-inline-start:var(--rh-space-md,8px)}#item{justify-content:flex-start;align-items:center;display:flex}#item ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}:host(:hover),:host(:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}:is(:host(:hover),:host(:focus)) a{color:var(--rh-color-interactive-primary-hover)}:is(:host(:hover),:host(:focus)) a:after{border-bottom-color:var(--rh-color-interactive-primary-hover)}:host(:focus){box-sizing:border-box;outline:none;position:relative}:host(:focus):after{content:"";inset:var(--rh-menu-item-focus-inset,3px 4px);border:var(--rh-border-width-md,2px) solid light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));border-radius:var(--rh-border-radius-default,3px);background-color:#0000;position:absolute}:host(:focus) #item{outline:none}:host([disabled]),:host([disabled]) a{color:light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d));cursor:default;pointer-events:none}:host([disabled]) a:after{border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d))}::slotted([slot=description]){font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-style:normal;font-weight:var(--rh-font-weight-heading-regular,400);margin:0;line-height:21px;font-size:var(--rh-font-size-body-text-sm,.875rem)!important}.menu-item-content:focus-visible{outline:none}.visually-hidden{clip:rect(0 0 0 0);white-space:nowrap;border:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}</style><!--lit-part CHh10dUN3TQ=-->
+      <!--lit-node 0--><div aria-disabled="false" class="menu-item-content">
+        <div class="menu-item-label">
+          <!-- summary: Icon slot
+               description: |
+                 An icon displayed alongside the menu item label.
+                 Appears before the text in LTR layouts. Screen reader
+                 users should receive an accessible label via
+                 the icon element itself. -->
+          <slot name="icon"></slot>
+          <!--lit-part X2r1wtWE6RE=-->
+        <div id="item">
+        <!--lit-part 4mn3l46zJWA=-->
+      <!-- summary: Menu item label
+           description: |
+             Inline text label for the menu item. Must contain visible
+             text for screen reader accessibility. -->
+      <slot></slot>
+    <!--/lit-part-->
+        </div>
+      <!--/lit-part-->
+        </div>
+        <!-- summary: Description slot
+             description: |
+               Supplementary description text displayed below the menu
+               item label. Screen reader users will perceive this as
+               additional context for the menu item. -->
+        <slot id="description" name="description"></slot>
+      </div>
+    <!--/lit-part--></template>Action three</rh-menu-item>
+      <rh-menu-item   disabled ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open"><style>:host{border-radius:var(--rh-menu-item-border-radius,0);padding: var(--rh-space-md,8px)  var(--rh-space-lg,16px);cursor:pointer;font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));display:block}:host a{color:light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));text-decoration:none;display:inline-block;position:relative}:host a:after{content:"";inline-size:100%;border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3));height:2px;position:absolute;bottom:0;left:0}:host a:focus{outline:none}.menu-item-label{justify-content:flex-start;align-items:center;display:flex}.menu-item-label ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}.menu-item-label #menu-link{justify-content:space-between;align-items:center;inline-size:100%;display:flex}.menu-item-label #menu-link rh-icon{color:var(--rh-color-interactive-secondary-default);fill:var(--rh-color-interactive-secondary-default);padding-inline-start:var(--rh-space-md,8px)}#item{justify-content:flex-start;align-items:center;display:flex}#item ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}:host(:hover),:host(:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}:is(:host(:hover),:host(:focus)) a{color:var(--rh-color-interactive-primary-hover)}:is(:host(:hover),:host(:focus)) a:after{border-bottom-color:var(--rh-color-interactive-primary-hover)}:host(:focus){box-sizing:border-box;outline:none;position:relative}:host(:focus):after{content:"";inset:var(--rh-menu-item-focus-inset,3px 4px);border:var(--rh-border-width-md,2px) solid light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));border-radius:var(--rh-border-radius-default,3px);background-color:#0000;position:absolute}:host(:focus) #item{outline:none}:host([disabled]),:host([disabled]) a{color:light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d));cursor:default;pointer-events:none}:host([disabled]) a:after{border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d))}::slotted([slot=description]){font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-style:normal;font-weight:var(--rh-font-weight-heading-regular,400);margin:0;line-height:21px;font-size:var(--rh-font-size-body-text-sm,.875rem)!important}.menu-item-content:focus-visible{outline:none}.visually-hidden{clip:rect(0 0 0 0);white-space:nowrap;border:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}</style><!--lit-part CHh10dUN3TQ=-->
+      <!--lit-node 0--><div aria-disabled="true" class="menu-item-content">
+        <div class="menu-item-label">
+          <!-- summary: Icon slot
+               description: |
+                 An icon displayed alongside the menu item label.
+                 Appears before the text in LTR layouts. Screen reader
+                 users should receive an accessible label via
+                 the icon element itself. -->
+          <slot name="icon"></slot>
+          <!--lit-part X2r1wtWE6RE=-->
+        <div id="item">
+        <!--lit-part 4mn3l46zJWA=-->
+      <!-- summary: Menu item label
+           description: |
+             Inline text label for the menu item. Must contain visible
+             text for screen reader accessibility. -->
+      <slot></slot>
+    <!--/lit-part-->
+        </div>
+      <!--/lit-part-->
+        </div>
+        <!-- summary: Description slot
+             description: |
+               Supplementary description text displayed below the menu
+               item label. Screen reader users will perceive this as
+               additional context for the menu item. -->
+        <slot id="description" name="description"></slot>
+      </div>
+    <!--/lit-part--></template>Disabled Action</rh-menu-item>
+      <hr>
+      <rh-menu-item  ssr-hint-has-slotted-default><template shadowroot="open" shadowrootmode="open"><style>:host{border-radius:var(--rh-menu-item-border-radius,0);padding: var(--rh-space-md,8px)  var(--rh-space-lg,16px);cursor:pointer;font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:normal;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-code,1.5);background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));display:block}:host a{color:light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));text-decoration:none;display:inline-block;position:relative}:host a:after{content:"";inline-size:100%;border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-40,#a3a3a3));height:2px;position:absolute;bottom:0;left:0}:host a:focus{outline:none}.menu-item-label{justify-content:flex-start;align-items:center;display:flex}.menu-item-label ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}.menu-item-label #menu-link{justify-content:space-between;align-items:center;inline-size:100%;display:flex}.menu-item-label #menu-link rh-icon{color:var(--rh-color-interactive-secondary-default);fill:var(--rh-color-interactive-secondary-default);padding-inline-start:var(--rh-space-md,8px)}#item{justify-content:flex-start;align-items:center;display:flex}#item ::slotted([slot=icon]){padding-inline-end:var(--rh-space-md,8px)}:host(:hover),:host(:focus){background:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-darker,#1f1f1f))}:is(:host(:hover),:host(:focus)) a{color:var(--rh-color-interactive-primary-hover)}:is(:host(:hover),:host(:focus)) a:after{border-bottom-color:var(--rh-color-interactive-primary-hover)}:host(:focus){box-sizing:border-box;outline:none;position:relative}:host(:focus):after{content:"";inset:var(--rh-menu-item-focus-inset,3px 4px);border:var(--rh-border-width-md,2px) solid light-dark(var(--rh-color-accent-base-on-light,#06c),var(--rh-color-accent-base-on-dark,#92c5f9));border-radius:var(--rh-border-radius-default,3px);background-color:#0000;position:absolute}:host(:focus) #item{outline:none}:host([disabled]),:host([disabled]) a{color:light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d));cursor:default;pointer-events:none}:host([disabled]) a:after{border-bottom:1px dashed light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-gray-60,#4d4d4d))}::slotted([slot=description]){font-family:var(--rh-font-family-body-text,RedHatText, "Red Hat Text", Helvetica, Arial, sans-serif);font-style:normal;font-weight:var(--rh-font-weight-heading-regular,400);margin:0;line-height:21px;font-size:var(--rh-font-size-body-text-sm,.875rem)!important}.menu-item-content:focus-visible{outline:none}.visually-hidden{clip:rect(0 0 0 0);white-space:nowrap;border:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}</style><!--lit-part CHh10dUN3TQ=-->
+      <!--lit-node 0--><div aria-disabled="false" class="menu-item-content">
+        <div class="menu-item-label">
+          <!-- summary: Icon slot
+               description: |
+                 An icon displayed alongside the menu item label.
+                 Appears before the text in LTR layouts. Screen reader
+                 users should receive an accessible label via
+                 the icon element itself. -->
+          <slot name="icon"></slot>
+          <!--lit-part X2r1wtWE6RE=-->
+        <div id="item">
+        <!--lit-part 4mn3l46zJWA=-->
+      <!-- summary: Menu item label
+           description: |
+             Inline text label for the menu item. Must contain visible
+             text for screen reader accessibility. -->
+      <slot></slot>
+    <!--/lit-part-->
+        </div>
+      <!--/lit-part-->
+        </div>
+        <!-- summary: Description slot
+             description: |
+               Supplementary description text displayed below the menu
+               item label. Screen reader users will perceive this as
+               additional context for the menu item. -->
+        <slot id="description" name="description"></slot>
+      </div>
+    <!--/lit-part--></template>Separated action</rh-menu-item>
+    </rh-menu-dropdown>
+  </div>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-menu-dropdown/rh-menu-dropdown.js';
+</script>
+
+
+</body></html>
