@@ -1,5 +1,11 @@
 # @rhds/elements
 
+## 4.2.1
+### Patch Changes
+
+- a24182d: `<rh-navigation-primary>`: improved accessibility by ensuring event slot remains hidden when nothing is slotted
+- 208d00a: `<rh-subnav>`: correct slotted `<rh-navigation-link>` text wrapping when long link text is used
+
 ## 4.2.0
 ### Minor Changes
 
