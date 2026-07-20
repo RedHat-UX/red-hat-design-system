@@ -1,0 +1,26 @@
+---
+description: Breadcrumb navigation with the [Project Felt](/theming/themes/project-felt/) preview theme applied.
+---
+<link rel="stylesheet" href="/theming/themes/project-felt/preview/felt-theme-preview.css">
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-breadcrumb/rh-breadcrumb-lightdom.css">
+
+<style>
+  .felt-preview {
+    padding: var(--rh-space-2xl, 32px);
+  }
+</style>
+
+<div class="felt-preview">
+  <rh-breadcrumb>
+    <ol>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Section</a></li>
+      <li><a href="#">Subsection</a></li>
+      <li><a href="#" aria-current="page">Current page</a></li>
+    </ol>
+  </rh-breadcrumb>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-breadcrumb/rh-breadcrumb.js';
+</script>
