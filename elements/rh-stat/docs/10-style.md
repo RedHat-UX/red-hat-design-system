@@ -9,11 +9,11 @@ additional emphasis or context.
 ### Anatomy
 
 <figure>
-  <uxdot-example color-palette="lightest" width-adjustment="388px">
+  <uxdot-example color-palette="lightest" width-adjustment="321px">
     <img alt="Anatomy of a statistic with annotations; number 1 is pointing to an optional icon, number 2 is pointing to optional title text, number 3 is pointing to data text, number 4 is pointing to body text, and number 5 is pointing to an optional call to action"
-         src="../stat-anatomy.png"
-         width="388"
-         height="271">
+         src="../stat-style-anatomy.svg"
+         width="321"
+         height="214">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -31,11 +31,11 @@ additional emphasis or context.
 There are two available sizes and the only difference is the size of some 
 elements.
 
-<uxdot-example color-palette="lightest" width-adjustment="772px">
+<uxdot-example color-palette="lightest" width-adjustment="580px">
   <img alt="Default size and Large size statistics both with icons and body text; text under the default size says ‘Default size’ and text under the large size says ‘Large size’"
-       src="../stat-sizes.png"
-       width="772"
-       height="228">
+       src="../stat-style-sizes.svg"
+       width="580"
+       height="247">
 </uxdot-example>
 
 <rh-table>
@@ -59,21 +59,21 @@ requirements.
 
 ### Light scheme
 
-<uxdot-example color-palette="lightest" width-adjustment="346px">
+<uxdot-example color-palette="lightest" width-adjustment="266px">
   <img alt="Light scheme statistic with a red icon, red data text, and black body text"
-       src="../stat-theme-light.png"
-       width="346"
-       height="154">
+       src="../stat-style-scheme-light.svg"
+       width="266"
+       height="151">
 </uxdot-example>
 
 
 ### Dark scheme
 
-<uxdot-example color-palette="darkest" width-adjustment="346px">
+<uxdot-example color-palette="darkest" width-adjustment="266px">
   <img alt="Dark scheme statistic with a white icon and white text styles to meet accessibility contrast requirements"
-       src="../stat-theme-dark.png"
-       width="346"
-       height="154">
+       src="../stat-style-scheme-dark.svg"
+       width="266"
+       height="151">
 </uxdot-example>
 
 
@@ -86,11 +86,11 @@ vertically aligned. In some situations, it is acceptable to align elements to
 the left, for example if grouped statistics are used in several rows or if 
 surrounding content is all left aligned.
 
-<uxdot-example color-palette="lightest" width-adjustment="346px">
+<uxdot-example color-palette="lightest" width-adjustment="266px">
   <img alt="Statistic with a dotted vertical line through it"
-       src="../stat-configuration.png"
-       width="346"
-       height="154">
+       src="../stat-style-configuration.svg"
+       width="266"
+       height="151">
 </uxdot-example>
 
 
@@ -99,11 +99,11 @@ A statistic was designed to be read from top to bottom. If certain optional
 elements are included, the order will change.
 
 <figure>
-  <uxdot-example color-palette="lightest" width-adjustment="346px">
+  <uxdot-example color-palette="lightest" width-adjustment="348px">
     <img alt="Statistic with boxes around each element slot, there are also numbers next to each box arranged 1 to 4 from top to bottom"
-         src="../stat-configuration-order.png"
-         width="416"
-         height="271">
+         src="../stat-style-order.svg"
+         width="348"
+         height="215">
   </uxdot-example>
   <figcaption>
   <ol>
@@ -122,11 +122,11 @@ Space values are the same for both Default and Large sizes and on all
 breakpoints. To see space values when statistics are used in a layout,
 go to the [Guidelines](/elements/statistic/guidelines/) page.
 
-<uxdot-example color-palette="lightest" width-adjustment="800px">
+<uxdot-example color-palette="lightest" width-adjustment="640px">
   <img alt="Default and Large size spacing between all elements"
-       src="../stat-space.png"
-       width="800"
-       height="271">
+       src="../stat-style-space.svg"
+       width="640"
+       height="286">
 </uxdot-example>
 
 <uxdot-spacer-tokens-table tokens="md, xl"></uxdot-spacer-tokens-table>
