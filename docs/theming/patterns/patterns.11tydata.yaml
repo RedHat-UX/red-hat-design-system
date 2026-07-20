@@ -1,1 +1,2 @@
 eleventyExcludeFromCollections: true
+layout: layouts/pattern.njk

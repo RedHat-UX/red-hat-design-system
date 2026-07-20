@@ -1,0 +1,133 @@
+---
+description: Horizontal, box inset, overflow, vertical, and vertical box tabs with the [Project Felt](/theming/themes/project-felt/) preview theme applied.
+---
+<link rel="stylesheet" href="/theming/themes/project-felt/preview/felt-theme-preview.css">
+
+<style>
+  .felt-preview {
+    padding: var(--rh-space-2xl, 32px);
+  }
+</style>
+
+<div class="felt-preview">
+  <h2>Horizontal</h2>
+  <rh-tabs>
+    <rh-tab id="users"
+            slot="tab"
+            active>Users <rh-icon slot="icon"
+               icon="users"
+               set="ui"></rh-icon></rh-tab>
+    <rh-tab-panel>Users</rh-tab-panel>
+    <rh-tab slot="tab">Containers <rh-icon slot="icon"
+               icon="container"></rh-icon></rh-tab>
+    <rh-tab-panel>Containers <a href="#">Focusable element</a></rh-tab-panel>
+    <rh-tab slot="tab">Database <rh-icon slot="icon"
+               icon="datacenter"></rh-icon></rh-tab>
+    <rh-tab-panel>Database</rh-tab-panel>
+    <rh-tab slot="tab">Servers <rh-icon slot="icon"
+               icon="server"></rh-icon></rh-tab>
+    <rh-tab-panel>Servers</rh-tab-panel>
+    <rh-tab slot="tab" disabled>Cloud <rh-icon slot="icon"
+               icon="cloud"></rh-icon></rh-tab>
+    <rh-tab-panel>Cloud</rh-tab-panel>
+  </rh-tabs>
+
+  <h2>Box Inset</h2>
+  <rh-tabs box="inset">
+    <rh-tab slot="tab" active>Users <rh-icon slot="icon"
+               icon="users"
+               set="ui"></rh-icon></rh-tab>
+    <rh-tab-panel>Users</rh-tab-panel>
+    <rh-tab slot="tab">Containers <rh-icon slot="icon"
+               icon="container"></rh-icon></rh-tab>
+    <rh-tab-panel>Containers</rh-tab-panel>
+    <rh-tab slot="tab">Database <rh-icon slot="icon"
+               icon="datacenter"></rh-icon></rh-tab>
+    <rh-tab-panel>Database</rh-tab-panel>
+    <rh-tab slot="tab">Servers <rh-icon slot="icon"
+               icon="server"></rh-icon></rh-tab>
+    <rh-tab-panel>Servers</rh-tab-panel>
+    <rh-tab slot="tab" disabled>Cloud <rh-icon slot="icon"
+               icon="cloud"></rh-icon></rh-tab>
+    <rh-tab-panel>Cloud</rh-tab-panel>
+  </rh-tabs>
+
+  <h2>Overflow</h2>
+  <rh-tabs>
+    <rh-tab slot="tab" active>Users <rh-icon slot="icon"
+               icon="users"
+               set="ui"></rh-icon></rh-tab>
+    <rh-tab-panel>Users</rh-tab-panel>
+    <rh-tab slot="tab">Containers <rh-icon slot="icon"
+               icon="container"></rh-icon></rh-tab>
+    <rh-tab-panel>Containers</rh-tab-panel>
+    <rh-tab slot="tab">Database <rh-icon slot="icon"
+               icon="datacenter"></rh-icon></rh-tab>
+    <rh-tab-panel>Database</rh-tab-panel>
+    <rh-tab slot="tab">Servers <rh-icon slot="icon"
+               icon="server"></rh-icon></rh-tab>
+    <rh-tab-panel>Servers</rh-tab-panel>
+    <rh-tab slot="tab">Cloud</rh-tab>
+    <rh-tab-panel>Cloud</rh-tab-panel>
+    <rh-tab slot="tab">Network</rh-tab>
+    <rh-tab-panel>Network</rh-tab-panel>
+    <rh-tab slot="tab">Storage</rh-tab>
+    <rh-tab-panel>Storage</rh-tab-panel>
+    <rh-tab slot="tab">Security</rh-tab>
+    <rh-tab-panel>Security</rh-tab-panel>
+    <rh-tab slot="tab">Monitoring</rh-tab>
+    <rh-tab-panel>Monitoring</rh-tab-panel>
+    <rh-tab slot="tab">Logging</rh-tab>
+    <rh-tab-panel>Logging</rh-tab-panel>
+    <rh-tab slot="tab" disabled>Alerts <rh-icon slot="icon"
+               icon="bell"
+               set="ui"></rh-icon></rh-tab>
+    <rh-tab-panel>Alerts</rh-tab-panel>
+    <rh-tab slot="tab">Settings</rh-tab>
+    <rh-tab-panel>Settings</rh-tab-panel>
+  </rh-tabs>
+
+  <h2>Vertical</h2>
+  <rh-tabs vertical>
+    <rh-tab slot="tab" active>Users <rh-icon slot="icon"
+               icon="users"
+               set="ui"></rh-icon></rh-tab>
+    <rh-tab-panel>Users</rh-tab-panel>
+    <rh-tab slot="tab">Containers <rh-icon slot="icon"
+               icon="container"></rh-icon></rh-tab>
+    <rh-tab-panel>Containers <a href="#">Focusable element</a></rh-tab-panel>
+    <rh-tab slot="tab">Database <rh-icon slot="icon"
+               icon="datacenter"></rh-icon></rh-tab>
+    <rh-tab-panel>Database</rh-tab-panel>
+    <rh-tab slot="tab">Servers <rh-icon slot="icon"
+               icon="server"></rh-icon></rh-tab>
+    <rh-tab-panel>Servers</rh-tab-panel>
+    <rh-tab slot="tab" disabled>Cloud <rh-icon slot="icon"
+               icon="cloud"></rh-icon></rh-tab>
+    <rh-tab-panel>Cloud</rh-tab-panel>
+  </rh-tabs>
+
+  <h2>Vertical Box</h2>
+  <rh-tabs vertical box="box">
+    <rh-tab slot="tab" active>Users <rh-icon slot="icon"
+               icon="users"
+               set="ui"></rh-icon></rh-tab>
+    <rh-tab-panel>Users</rh-tab-panel>
+    <rh-tab slot="tab">Containers <rh-icon slot="icon"
+               icon="container"></rh-icon></rh-tab>
+    <rh-tab-panel>Containers <a href="#">Focusable element</a></rh-tab-panel>
+    <rh-tab slot="tab">Database <rh-icon slot="icon"
+               icon="datacenter"></rh-icon></rh-tab>
+    <rh-tab-panel>Database</rh-tab-panel>
+    <rh-tab slot="tab">Servers <rh-icon slot="icon"
+               icon="server"></rh-icon></rh-tab>
+    <rh-tab-panel>Servers</rh-tab-panel>
+    <rh-tab slot="tab" disabled>Cloud <rh-icon slot="icon"
+               icon="cloud"></rh-icon></rh-tab>
+    <rh-tab-panel>Cloud</rh-tab-panel>
+  </rh-tabs>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-tabs/rh-tabs.js';
+</script>

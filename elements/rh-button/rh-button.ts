@@ -128,12 +128,13 @@ export class RhButton extends LitElement {
   override render() {
     const { danger, variant } = this;
     const hasIcon = this.#hasIcon;
+    const label = this.accessibleLabel || this.label;
     return html`
       <!-- summary: internal button element
            description: |
              Native button element that receives focus via delegatesFocus.
              Screen readers announce this as a button with the label or slotted text. -->
-      <button aria-label="${ifDefined(this.accessibleLabel || this.label)}"
+      <button aria-label="${ifDefined(label)}"
               class="${classMap({
                 danger,
                 hasIcon,
@@ -154,7 +155,7 @@ export class RhButton extends LitElement {
                 part="icon"
                 name="icon">${this.#renderIcon()}</slot>
         </span>
-        <span aria-hidden=${String(!!this.accessibleLabel || !!this.label) as 'true' | 'false'}><!-- summary: button text label
+        <span aria-hidden=${String(!!label) as 'true' | 'false'}><!-- summary: button text label
                description: |
                  Expects inline text providing a concise, action-oriented label
                  (e.g. "Submit", "Delete"). Hidden from screen readers via
