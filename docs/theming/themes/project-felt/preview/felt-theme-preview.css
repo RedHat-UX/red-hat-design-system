@@ -7,10 +7,10 @@
 /* Base-level "tokens" / CSS custom props */
 :root {
   /* Fonts/Type */
-  --felt-preview-font-size-body-text-sm: 14px;
-  --felt-preview-font-size-body-text-md: 16px;
+  --felt-preview-font-size-body-text-sm: 0.875rem;
+  --felt-preview-font-size-body-text-md: 1rem;
   --felt-preview-line-height-body-text: 1.5;
-  --felt-preview-line-height-body-text-md: 1.5rem;
+  --felt-preview-line-height-body-text-md: 1.5;
 
   /* Base colors: Grays */
   --felt-preview-color-gray-10: #f2f2f2;
@@ -1767,7 +1767,7 @@
     --rh-button-close-active-background: var(--felt-preview-color-interactive-fill-plain-active);
     --felt-preview-dialog-header-sm: var(--rh-font-size-body-text-xl);
     --felt-preview-dialog-header-md: var(--rh-font-size-body-text-2xl);
-    --felt-preview-dialog-header-lg: 28px; /* no 3xl */
+    --felt-preview-dialog-header-lg: 1.75rem; /* no 3xl */
 
     &[variant='small'] [slot='header'] {
       --rh-font-size-body-text-lg: var(--felt-preview-dialog-header-sm);
@@ -2089,7 +2089,7 @@
     --rh-border-radius-default: var(--felt-preview-border-radius-action-plain);
     --rh-menu-item-focus-inset: 0;
     --rh-font-size-body-text-md: var(--felt-preview-font-size-body-text-sm);
-    --rh-font-size-body-text-sm: 12px;
+    --rh-font-size-body-text-sm: 0.75rem;
 
     /* Default item background must match the panel background so items blend in.
        rh-menu-item uses surface-lightest (light) / surface-darkest (dark) for its
@@ -2102,7 +2102,7 @@
     --rh-color-surface-darker: var(--felt-preview-color-interactive-fill-plain-on-dark);
 
     [slot='description'] {
-      line-height: 18px;
+      line-height: 1.5;
     }
 
     &:not([disabled]) [slot='description'] {
