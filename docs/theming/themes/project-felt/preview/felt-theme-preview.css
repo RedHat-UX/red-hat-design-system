@@ -625,12 +625,12 @@
       }
 
       &::part(button):focus {
-        --rh-color-text-primary: var(unified-color-text-interactive-hover-focus);
+        --rh-color-text-primary: var(--felt-preview-color-text-interactive-focus);
         --rh-border-width-sm: var(--felt-preview-button-border-width-focus);
       }
 
       &::part(button):active {
-        --rh-color-text-primary: var(unified-color-text-interactive-active);
+        --rh-color-text-primary: var(--felt-preview-color-text-interactive-active);
         --rh-border-width-sm: var(--felt-preview-button-border-width-active);
       }
 
@@ -921,7 +921,7 @@
     --felt-preview-cta-primary-bg-hover: #a60000;
     --felt-preview-cta-primary-bg-active: #a60000;
 
-    /* Map unified tokens to RH tokens */
+    /* Map Project Felt preview tokens to RH tokens */
     --rh-color-interactive-primary-default: var(--felt-preview-color-interactive-primary-default);
     --rh-color-interactive-primary-hover: var(--felt-preview-color-interactive-primary-hover);
     --rh-border-radius-default: var(--felt-preview-border-radius-pill);
@@ -1364,7 +1364,7 @@
 
     /* Outline: transparent fill, color-specific border.
        No hover interaction — tags are non-interactive in the
-       unified theme. Revisit if design adds interactive states. */
+       Project Felt preview theme. Revisit if design adds interactive states. */
     &[variant='outline'] {
       &[color='red'] {
         --rh-color-gray-30: var(--rh-color-red-30, #f9a8a8);
