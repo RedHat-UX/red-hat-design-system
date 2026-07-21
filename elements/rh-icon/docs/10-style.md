@@ -45,12 +45,12 @@ square container to make each icon a standard size.
 
 <rh-table>
 
-| Icon Set           | Size range        |
+| Icon set           | Size range        |
 |--------------------|-------------------|
-| Standard (default) | 24px - 100 pixels |
-| UI                 | 14px - 24 pixels  |
-| Micron             | 8px - 12 pixels   |
-| Social media       | 14px - 24 pixels  |
+| Standard (default) | 24px - 128px      |
+| UI                 | 16px - 24 pixels  |
+| Micron             | 8px - 12px        |
+| Social media       | 16px - 24 pixels  |
 
 </rh-table>
 
