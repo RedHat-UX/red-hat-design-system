@@ -5,6 +5,17 @@
   position: relative;
 }
 
+#container {
+  /* TODO: This style is specific to the implementation on ux.redhat.com,
+   * not ideal for the component lightdom files, maybe this is a
+   * pattern level style that should be in the pattern layer.
+   */
+  @container main (min-width: 1440px) {
+    height: calc(100dvh - (var(--uxdot-masthead-max-height) + var(--rh-space-2xl) * 5));
+    overflow-y: scroll;
+  }
+}
+
 details {
   display: flex;
   flex-direction: column;

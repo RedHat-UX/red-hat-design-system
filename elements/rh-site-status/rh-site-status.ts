@@ -160,12 +160,12 @@ export class RhSiteStatus extends LitElement {
         return { icon: 'check-circle-fill', status: 'success' };
       case 'degraded_performance':
       case 'partial_outage':
-      case 'major_outage':
-      case 'major':
       case 'minor':
         return { icon: 'warning-fill', status: 'warning' };
+      case 'major_outage':
+      case 'major':
       default:
-        return { icon: 'error-fill', status: 'danger' };
+        return { icon: 'ban-fill', status: 'danger' };
     }
   }
 

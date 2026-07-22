@@ -4,6 +4,9 @@
   z-index: 0;
   align-items: center;
   max-width: max-content;
+
+  /** Host border radius to match container (used by focus outline) */
+  border-radius: var(--rh-border-radius-default, 3px);
 }
 
 a,
@@ -86,26 +89,6 @@ a:after,
   text-align: right;
 }
 
-/** Inner border */
-#container:after {
-  --_offset: 2px;
-
-  content: '';
-  display: block;
-  height: calc(100% - var(--_offset) * 2);
-  width: calc(100% - var(--_offset) * 2);
-  box-sizing: border-box;
-  position: absolute;
-  top: var(--_offset);
-  left: var(--_offset);
-
-  /** Inner border thickness */
-  border-width: var(--rh-border-width-sm, 1px);
-  border-radius: 2px;
-  outline: none;
-  pointer-events: none;
-}
-
 /** Default variant trailing arrow icon */
 rh-icon {
   vertical-align: middle;
@@ -132,7 +115,6 @@ rh-icon {
  * FOCUS STATE                                                               *
  *****************************************************************************/
 
-:host(:is(:focus, :focus-within)),
 :host(:is(:focus, :focus-within)) ::slotted(:is(a, button, input)),
 a:focus,
 a:focus-within,
@@ -140,12 +122,24 @@ a:focus-within,
   outline: none !important;
 }
 
+:host(:is(:focus, :focus-within)) {
+  /** Outer focus ring */
+  outline:
+    var(--rh-border-width-md, 2px)
+    solid
+    /** Container outline color on keyboard focus */
+    var(--rh-cta-focus-container-outline-color,
+      /** Focus indicator outline color */
+      var(--rh-cta-focus-outline-color));
+  outline-offset: 2px;
+}
+
 :host(:is(:focus, :focus-within)) #container {
   --_background-color: var(--rh-cta-focus-background-color);
   --_color: var(--_focus-color);
 
   /** Focus text decoration */
-  --_text-decoration: var(--_focus-text-decoration);
+  --_text-decoration: var(--rh-cta-focus-text-decoration, var(--_focus-text-decoration));
   --_text-underline-offset:
     /** Focus text underline offset */
     var(--rh-cta-focus-text-underline-offset,
@@ -156,19 +150,10 @@ a:focus-within,
     var(--_focus-container-background-color,
       var(--_focus-background-color));
   color: var(--rh-cta-focus-color, var(--_color));
-  outline:
-    var(--rh-border-width-md, 2px)
-    solid
-    /** Container outline color on keyboard focus */
-    var(--rh-cta-focus-container-outline-color,
-      /** Inner focus indicator outline color */
-      var(--rh-cta-focus-outline-color));
-  outline-offset: 2px;
-}
 
-:host(:is(:focus, :focus-within)) #container:after {
-  border-style: solid;
-  border-color: var(--_focus-inner-border-color);
+  /** Inner focus ring */
+  outline: var(--rh-border-width-sm, 1px) solid var(--_focus-inner-border-color);
+  outline-offset: -3px;
 }
 
 /*****************************************************************************
@@ -178,7 +163,7 @@ a:focus-within,
 :host(:hover) #container {
   color: var(--_hover-color);
   border-color: var(--_hover-border-color);
-  background-color: var(--_hover-background-color);
+  background-color: var(--rh-cta-hover-background-color, var(--_hover-background-color));
 
   --_text-decoration: var(--rh-cta-hover-text-decoration, var(--_hover-text-decoration));
   --_text-underline-offset: /** Hover text underline offset */
@@ -205,11 +190,10 @@ a:focus-within,
     var(--rh-cta-background-color,
       var(--rh-cta-active-container-background-color,
       var(--rh-cta-active-background-color)));
-}
 
-:host(:active) #container:after {
-  border-style: solid;
-  border-color: var(--_active-inner-border-color) !important;
+  /** Inner active ring */
+  outline: var(--rh-border-width-sm, 1px) solid var(--_active-inner-border-color);
+  outline-offset: -3px;
 }
 
 /*****************************************************************************

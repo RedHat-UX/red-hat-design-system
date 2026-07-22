@@ -1,0 +1,51 @@
+---
+description: Dialog size variants with the [Project Felt](/theming/themes/project-felt/) preview theme applied.
+---
+<link rel="stylesheet" href="/theming/themes/project-felt/preview/felt-theme-preview.css">
+
+<style>
+  .example-row {
+    margin-block: var(--rh-space-2xl, 32px);
+  }
+  .felt-preview {
+    padding: var(--rh-space-2xl, 32px);
+  }
+</style>
+
+<div class="felt-preview">
+  <div class="example-row">
+    <rh-button id="dialog-trigger-sm">Open small dialog</rh-button>
+    <rh-button id="dialog-trigger-md">Open medium dialog</rh-button>
+    <rh-button id="dialog-trigger-lg">Open large dialog</rh-button>
+    <rh-button id="dialog-trigger-nh">Open no-header dialog</rh-button>
+
+    <rh-dialog trigger="dialog-trigger-sm" variant="small">
+      <h3 slot="header">Modal title</h3>
+      <p>Content goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <rh-button slot="footer">Confirm</rh-button>
+      <rh-button slot="footer" variant="link">Cancel</rh-button>
+    </rh-dialog>
+    <rh-dialog trigger="dialog-trigger-md" variant="medium">
+      <h3 slot="header">Modal title</h3>
+      <p>Content goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <rh-button slot="footer">Confirm</rh-button>
+      <rh-button slot="footer" variant="link">Cancel</rh-button>
+    </rh-dialog>
+    <rh-dialog trigger="dialog-trigger-lg" variant="large">
+      <h3 slot="header">Modal title</h3>
+      <p>Content goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <rh-button slot="footer">Confirm</rh-button>
+      <rh-button slot="footer" variant="link">Cancel</rh-button>
+    </rh-dialog>
+    <rh-dialog trigger="dialog-trigger-nh">
+      <p>Content goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <rh-button slot="footer">Confirm</rh-button>
+      <rh-button slot="footer" variant="link">Cancel</rh-button>
+    </rh-dialog>
+  </div>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-dialog/rh-dialog.js';
+  import '@rhds/elements/rh-button/rh-button.js';
+</script>

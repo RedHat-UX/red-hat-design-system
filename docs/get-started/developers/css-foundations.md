@@ -30,7 +30,7 @@ We also have element-specific patterns for extending our design system elements 
 ## Reset
 
 
-```css code-block {dedent: true, language: "css", highlighting: "prerendered"}
+```css code-block {dedent=true language="css" highlighting="prerendered"}
 {% set cssContent = "./docs/styles/reset.css" | inlineCss %}{{ cssContent | safe }}
 ```
 
@@ -40,7 +40,7 @@ We also have element-specific patterns for extending our design system elements 
 
 If you are on a `*.redhat.com` domain, you can use our CDN to access the Red Hat fonts:
 
-```html code-block {dedent: true, language: "css", highlighting: "prerendered"}
+```html code-block {dedent=true language="html" highlighting="prerendered"}
 <link rel="stylesheet" href="https://www.redhatstatic.com/dssf-001/v2/@redhat/redhat-font@4.1.0/font.min.css">
 ```
 
@@ -48,7 +48,7 @@ If you are on a `*.redhat.com` domain, you can use our CDN to access the Red Hat
 
 Optionally, you can [download the Red Hat fonts](https://github.com/RedHatOfficial/RedHatFont) and include them directly in your project. Below is an example of how you might reference them in CSS:
 
-```css code-block {dedent: true, language: "css", highlighting: "prerendered"}
+```css code-block {dedent=true language="css" highlighting="prerendered"}
 {% set cssContent = "./docs/assets/examples/css/fonts.css" | inlineCss %}{{ cssContent | safe }}
 ```
 
@@ -56,7 +56,7 @@ Optionally, you can [download the Red Hat fonts](https://github.com/RedHatOffici
 
 We highly recommend [using our tokens](/get-started/developers/tokens/#how-to-install-tokens) in your project, so that you can take full advantage of their utility throughout your code. Here is an example of how to set typography using our tokens:
 
-```css code-block {dedent: true, language: "css", highlighting: "prerendered"}
+```css code-block {dedent=true language="css" highlighting="prerendered"}
 {% set cssContent = "./docs/assets/examples/css/typography.css" | inlineCss %}{{ cssContent | safe }}
 ```
 

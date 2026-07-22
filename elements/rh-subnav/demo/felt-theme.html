@@ -1,0 +1,23 @@
+---
+description: Horizontal subnav with the [Project Felt](/theming/themes/project-felt/) preview theme applied.
+---
+<link rel="stylesheet" href="/theming/themes/project-felt/preview/felt-theme-preview.css">
+
+<style>
+  .felt-preview {
+    padding: var(--rh-space-2xl, 32px);
+  }
+</style>
+
+<div class="felt-preview">
+  <rh-subnav accessible-label="Example subnav">
+    <rh-navigation-link href="#">Nav item 1</rh-navigation-link>
+    <rh-navigation-link href="#" current-page>Nav item 2</rh-navigation-link>
+    <rh-navigation-link href="#">Nav item 3</rh-navigation-link>
+    <rh-navigation-link href="#">Nav item 4</rh-navigation-link>
+  </rh-subnav>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-subnav/rh-subnav.js';
+</script>

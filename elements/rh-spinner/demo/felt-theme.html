@@ -1,0 +1,46 @@
+---
+description: Spinner with [Project Felt](/theming/themes/project-felt/) theme applied.
+---
+<link rel="stylesheet" href="/theming/themes/project-felt/preview/felt-theme-preview.css">
+
+<style>
+  .example-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rh-space-2xl, 32px);
+    align-items: center;
+  }
+  .felt-preview {
+    padding: var(--rh-space-2xl, 32px);
+  }
+</style>
+
+<div class="felt-preview">
+  <div class="example-flex">
+    <rh-spinner size="xl"></rh-spinner>
+    <rh-spinner></rh-spinner>
+    <rh-spinner size="md"></rh-spinner>
+    <rh-spinner size="sm"></rh-spinner>
+  </div>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-spinner/rh-spinner.js';
+
+  // Temporary test: validate stroke-width pulse works at 15% keyframe.
+  // If var() were used inside @keyframes, this would fail in Firefox (bug 1763376).
+  (async () => {
+    const spinner = document.querySelector('rh-spinner:not([size])');
+    await customElements.whenDefined('rh-spinner');
+    await spinner.updateComplete;
+    const circle = spinner.shadowRoot.querySelector('circle.dash');
+    circle.style.animationPlayState = 'paused';
+    circle.style.animationDelay = '-0.21s'; // 15% of 1.4s
+    await new Promise(r => requestAnimationFrame(r));
+    const sw = parseFloat(getComputedStyle(circle).strokeWidth);
+    console.log(`[felt-dash test] stroke-width at 15%: ${sw} (expected 6)`);
+    console.assert(sw === 6, `FAIL: stroke-width is ${sw}, expected 6`);
+    circle.style.animationPlayState = '';
+    circle.style.animationDelay = '';
+  })();
+</script>
