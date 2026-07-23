@@ -937,7 +937,6 @@ export default class ElementsPage extends Renderer<Context> {
         import '@rhds/elements/rh-tabs/rh-tabs.js';
       </script>
       ${content}
-      ${!ctx.doc.fileExists ? '' : await this.renderFile(ctx.doc.filePath, ctx)}
       ${(await Promise.all(demos.map(async demo => `
       ${this.#header(demo.filePath?.match(/\/index(\.html|\/)/) ? this.#getPrettyTagName(ctx)
                    : demo.title, 2, `demo-${this.slugify(demo.title)}`)}
