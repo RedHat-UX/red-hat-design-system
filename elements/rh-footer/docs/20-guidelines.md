@@ -59,7 +59,7 @@ The footer was designed with flexibility to be applied to all Red Hat web proper
 In some rare cases, the Universal footer may be used by itself.
 
 <uxdot-example width-adjustment="1140px" variant="full" alignment="left" no-border>
-  <img src="../footer-guidelines-variants-universal.svg"
+  <img src="../footer-guidelines-layout-universal.svg"
         alt="The universal footer showing two lines of links and linked social media icons"
         width="1140"
         height="221">
