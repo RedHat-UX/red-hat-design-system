@@ -48,7 +48,7 @@ square container to make each icon a standard size.
 | Icon set           | Size range     |
 |--------------------|----------------|
 | Standard (default) | 24px - 128px   |
-| UI                 | 16px - 24px    |
+| UI                 | 14px - 24px    |
 | Micron             | 8px - 12px     |
 | Social media       | 16px - 24px    |
 
