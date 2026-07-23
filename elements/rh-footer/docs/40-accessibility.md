@@ -12,7 +12,7 @@ The footer includes many different interactive elements that can be navigated wi
   <img src="../footer-a11y-keyboard-interactions.svg"
         alt="A footer showing light blue focus rings and dotted underlines on links in a dark color scheme footer"
         width="1140"
-        height="743">
+        height="744">
 </uxdot-example>
 
 <rh-table>
@@ -60,7 +60,7 @@ A logical focus order helps keyboard users operate our websites. Elements need t
   <img src="../footer-a11y-focus-order.svg"
         alt="A footer showing groups of focus indicators in different regions with annotation numbers"
         width="1140"
-        height="743">
+        height="744">
 </uxdot-example>
 
 {% include 'partials/accessibility/ariaguide.md' %}
