@@ -13,11 +13,11 @@ Include a footnote on every page especially if a statistic comes from an
 external source. Doing this increases the credibility of the statistic and 
 better integrates the data with the rest of the page content.
 
-<uxdot-example width-adjustment="369px" color-palette="lightest">
-  <img src="../stat-footnote.png"
+<uxdot-example width-adjustment="870x" color-palette="lightest">
+  <img src="../stat-guidelines-footnote.svg"
         alt="A statistic with a small text footnote underneath"
-        width="369"
-        height="215">
+        width="870"
+        height="195">
 </uxdot-example>
 
 
@@ -26,11 +26,11 @@ better integrates the data with the rest of the page content.
 Use an icon to add visual context and emphasis while helping to explain a 
 statistic further.
 
-<uxdot-example color-palette="lightest" width-adjustment="800px">
-  <img alt="Two statistics with icons; the left statistic has a fighter jet icon on top whereas the right has a wrench"
-       src="../stat-icon-regular.png"
-       width="800"
-       height="194">
+<uxdot-example color-palette="lightest" width-adjustment="638px">
+  <img alt="Two statistics with icons; the left statistic has a plane icon on top whereas the right has a car"
+       src="../stat-guidelines-icons.svg"
+       width="638"
+       height="151">
 </uxdot-example>
 
 
@@ -41,11 +41,11 @@ data point is written into the body text. This is an edge case, so work with a
 content strategist to write short data text and body text or use another element 
 instead.
 
-<uxdot-example color-palette="lightest" width-adjustment="872px">
+<uxdot-example color-palette="lightest" width-adjustment="870px">
   <img alt="Three statistics with large icons and body text"
-       src="../stat-icon-large.png"
-       width="872"
-       height="208">
+       src="../stat-guidelines-large-icons.svg"
+       width="870"
+       height="180">
 </uxdot-example>
 
 
@@ -89,11 +89,11 @@ sense.
   <p>Title text can be positioned above or below data text even if statistics are grouped.</p>
 </rh-alert>
 
-<uxdot-example color-palette="lightest" width-adjustment="760px">
+<uxdot-example color-palette="lightest" width-adjustment="624px">
   <img alt="Two statistics, one with title text above the data text and the other with title text below data text"
-       src="../stat-text-slot-title.png"
-       width="760"
-       height="132">
+       src="../stat-guidelines-title-text.svg"
+       width="624"
+       height="133">
 </uxdot-example>
 
 
@@ -101,11 +101,11 @@ sense.
 
 Data text is the number or percent that represents data.
 
-<uxdot-example color-palette="lightest" width-adjustment="760px">
+<uxdot-example color-palette="lightest" width-adjustment="626px">
   <img alt="Two statistics with different data text percents"
-       src="../stat-text-slot-data.png"
-       width="664"
-       height="95">
+       src="../stat-guidelines-data-text.svg"
+       width="626"
+       height="98">
 </uxdot-example>
 
 
@@ -114,11 +114,11 @@ Data text is the number or percent that represents data.
 Body text explains data text. A percent or number means nothing without 
 something that explains the rest of the statistic.
 
-<uxdot-example color-palette="lightest" width-adjustment="760px">
+<uxdot-example color-palette="lightest" width-adjustment="748px">
   <img alt="Two statistics with different body text examples"
-       src="../stat-text-slot-body.png"
-       width="780"
-       height="95">
+       src="../stat-guidelines-body-text.svg"
+       width="748"
+       height="98">
 </uxdot-example>
 
 
@@ -128,11 +128,11 @@ Use a call to action to entice users to learn more after they read a statistic.
 If statistics are grouped, it is not mandatory for each statistic to include a 
 call to action.
 
-<uxdot-example color-palette="lightest" width-adjustment="340px">
+<uxdot-example color-palette="lightest" width-adjustment="288px">
   <img alt="Statistic with a call to action"
-       src="../stat-text-slot-cta.png"
-       width="340"
-       height="199">
+       src="../stat-guidelines-cta-text.svg"
+       width="288"
+       height="160">
 </uxdot-example>
 
 
@@ -144,18 +144,11 @@ This is important for statistics used in groups as more words will cause them to
 be arranged closer to each other therefore reducing any comfortable spacing 
 around them.
 
-<uxdot-example color-palette="lightest" width-adjustment="348px">
+<uxdot-example color-palette="lightest" width-adjustment="288px">
   <img alt="Two statistics with English on top and German on the bottom; the English statistic has two lines of body text whereas the German has three"
-       src="../stat-i18n-a.png"
-       width="348"
-       height="330">
-</uxdot-example>
-
-<uxdot-example color-palette="lightest" width-adjustment="516px">
-  <img alt="Two statistics with English on top and Chinese on the bottom; the English statistic body text is wider whereas the Chinese is thinner"
-       src="../stat-i18n-b.png"
-       width="516"
-       height="225">
+       src="../stat-guidelines-internationalization.svg"
+       width="288"
+       height="318">
 </uxdot-example>
 
 
@@ -166,11 +159,11 @@ around them.
 The minimum number of statistics per row is one and the maximum is four 
 regardless if they are in a container or not.
 
-<uxdot-example color-palette="lightest" width-adjustment="1000px">
+<uxdot-example color-palette="lightest" width-adjustment="870px">
   <img alt="Four statistics arranged evenly-spaced on a 12-column grid"
-       src="../stat-layout-grouping.png"
-       width="992"
-       height="133">
+       src="../stat-guidelines-layout-grouping.svg"
+       width="870"
+       height="135">
 </uxdot-example>
 
 
@@ -179,11 +172,11 @@ regardless if they are in a container or not.
 A statistic can be placed in a card if the body text or other text styles are 
 short enough. Otherwise, keep them on the page to avoid readability issues.
 
-<uxdot-example color-palette="lightest" width-adjustment="1000px">
-  <img alt="Four statistics placed in cards and arranged evenly-spaced on a 12-column grid"
-       src="../stat-layout-card.png"
-       width="1000"
-       height="170">
+<uxdot-example color-palette="lightest" width-adjustment="870px">
+  <img alt="Three statistics placed in cards and arranged evenly-spaced on a 12-column grid"
+       src="../stat-guidelines-layout-card.svg"
+       width="870"
+       height="191">
 </uxdot-example>
 
 
@@ -192,11 +185,11 @@ short enough. Otherwise, keep them on the page to avoid readability issues.
 By default, a statistic is always center aligned. However, a statistic may be 
 left aligned if grouped and if the surrounding content is also left aligned.
 
-<uxdot-example color-palette="lightest" width-adjustment="926px">
+<uxdot-example color-palette="lightest" width-adjustment="870px">
   <img alt="Three statistics left aligned with vertical dashed lines on the left side of each"
-       src="../stat-layout-alignment.png"
-       width="926"
-       height="194">
+       src="../stat-guidelines-layout-alignment.svg"
+       width="870"
+       height="151">
 </uxdot-example>
 
 
@@ -206,11 +199,11 @@ The page grid usually determines the space between blocks or containers of
 content, but in most situations, it is 32px on large breakpoints. On small 
 breakpoints, the padding is 48px for better vertical rhythm.
 
-<uxdot-example color-palette="lightest" width-adjustment="1000px">
+<uxdot-example color-palette="lightest" width-adjustment="870px">
   <img alt="Two groups of statistics; one group has 32px of padding with text underneath that says ‘Large breakpoints’, the other group has 48px of padding with text underneath that says ‘Small breakpoints’"
-       src="../stat-layout-padding.png"
-       width="1000"
-       height="282">
+       src="../stat-guidelines-layout-padding.svg"
+       width="870"
+       height="304">
 </uxdot-example>
 
 
@@ -220,11 +213,11 @@ breakpoints, the padding is 48px for better vertical rhythm.
 
 If only one statistic is used, it can span a maximum of six columns.
 
-<uxdot-example color-palette="lightest" width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img alt="Statistic spanning less than six columns with a box around the body copy spanning six columns"
-       src="../stat-breakpoint-large.png"
-       width="992"
-       height="244">
+<uxdot-example color-palette="lightest" width-adjustment="1140px" variant="full" alignment="left" no-border>
+  <img alt="Statistic spanning fewer than six columns with a box around the body copy spanning six columns"
+       src="../stat-guidelines-responsive-large.svg"
+       width="1140"
+       height="208">
 </uxdot-example>
 
 
@@ -236,7 +229,7 @@ typography scale](https://ux.redhat.com/foundations/typography/).
 
 <uxdot-example color-palette="lightest" width-adjustment="360px" variant="full" alignment="left" no-border>
   <img alt="Three statistics spanning the width of one column on mobile"
-       src="../stat-breakpoint-small.png"
+       src="../stat-guidelines-responsive-small.svg"
        width="360"
        height="357">
 </uxdot-example>
@@ -244,51 +237,72 @@ typography scale](https://ux.redhat.com/foundations/typography/).
 
 ## Best practices
 
-### Custom statistic
+### Customizing statistics
 
-Do not duplicate or rearrange any element to create a custom statistic.
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example color-palette="lightest" width-adjustment="288px" slot="image">
+      <img alt="Statistic with an icon, title text, data text, body text, and a cta in the right order"
+           src="../stat-guidelines-best-practice-customizing-do.svg"
+           width="288"
+           height="208">
+    </uxdot-example>
+    <p>Do use the layout options and the order of parts that are already available in a statistic.</p>
+  </uxdot-best-practice>
 
-<uxdot-example color-palette="lightest" width-adjustment="452px" danger>
-  <img alt="Statistic with some elements arranged horizontally and some vertically which is incorrect usage"
-       src="../stat-best-practice-1.png"
-       width="452"
-       height="201">
-</uxdot-example>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example color-palette="lightest" width-adjustment="288px" slot="image">
+      <img alt="Statistic with title text and data text on the same line and in the same type style, an icon, body text, and a cta"
+           src="../stat-guidelines-best-practice-customizing-dont.svg"
+           width="288"
+           height="208">
+    </uxdot-example>
+    <p>Do not rearrange the prescribed layout to create a custom statistic.</p>
+  </uxdot-best-practice>
+</div>
 
+### Layout consistency
 
-### Unrelated icon
+  <uxdot-best-practice variant="do">
+    <uxdot-example color-palette="lightest" width-adjustment=870px" slot="image">
+      <img alt="Three stats, all with icon, data text, and body text"
+           src="../stat-guidelines-best-practice-layout-consistency-do.svg"
+           width="870"
+           height="151">
+    </uxdot-example>
+    <p>Keep the layouts of each statistic consistent when grouping.</p>
+  </uxdot-best-practice>
 
-Do not use an icon that is unrelated to the rest of the statistic content.
+  <uxdot-best-practice variant="dont">
+    <uxdot-example color-palette="lightest" width-adjustment="870px" slot="image">
+      <img alt="Stat with icon, data text, and body text; stat with only data and body text; and a stat with icon, data text, body text, and cta"
+           src="../stat-guidelines-best-practice-layout-consistency-dont.svg"
+           width="870"
+           height="186">
+    </uxdot-example>
+    <p>Do not use an inconsistent number of parts for statistics in a group.</p>
+  </uxdot-best-practice>
 
-<uxdot-example color-palette="lightest" width-adjustment="452px" danger>
-  <img alt="Statistic with a crab icon on top of text which is incorrect usage"
-       src="../stat-best-practice-2.png"
-       width="452"
-       height="193">
-</uxdot-example>
+### Body copy
 
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example color-palette="lightest" width-adjustment=288px" slot="image">
+      <img alt="Statistic with body text shorter than 40 characters"
+           src="../stat-guidelines-best-practice-body-copy-length-do.svg"
+           width="288"
+           height="181">
+    </uxdot-example>
+    <p>Use the body copy to clarify briefly a single data point.</p>
+  </uxdot-best-practice>
 
-### Inconsistent elements
-Keep statistics consistent when grouping. Either use the same number of elements 
-for all statistics or do not use them at all. For example, if a statistic has an 
-icon and the others do not, either remove the icon or ensure they all have an 
-icon.
-
-<uxdot-example color-palette="lightest" width-adjustment="872px" danger>
-  <img alt="Three statistics with different element combinations with is incorrect usage"
-       src="../stat-best-practice-3.png"
-       width="872"
-       height="199">
-</uxdot-example>
-
-
-### Too much text
-Do not include too much body text, a statistic should clarify a single data 
-point quickly and with impact, not tell a long story.
-
-<uxdot-example color-palette="lightest" width-adjustment="476px" danger>
-  <img alt="Statistic with data text and long lines of body text which is incorrect usage"
-       src="../stat-best-practice-4.png"
-       width="476"
-       height="175">
-</uxdot-example>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example color-palette="lightest" width-adjustment="288px" slot="image">
+      <img alt="Statistic with data text and long lines of body text"
+           src="../stat-guidelines-best-practice-body-copy-length-dont.svg"
+           width="288"
+           height="181">
+    </uxdot-example>
+    <p>Do not include too much body text, which could reduce the data’s impact.</p>
+  </uxdot-best-practice>
+</div>
