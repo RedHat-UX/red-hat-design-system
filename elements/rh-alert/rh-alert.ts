@@ -173,7 +173,7 @@ export class RhAlert extends LitElement {
   @property({ reflect: true, type: Boolean }) dismissable = false;
 
   /** Accessible label for the close button, used for localization. */
-  @property() closeLabel = 'Close';
+  @property({ attribute: 'close-label' }) closeLabel = 'Close';
 
   #slots = new SlotController(this, 'header', null, 'actions');
 
