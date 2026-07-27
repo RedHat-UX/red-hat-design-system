@@ -251,7 +251,7 @@ export class RhAlert extends LitElement {
             <div id="header-actions">
               <rh-button id="close-button"
                          variant="close"
-                         label="${this.closeLabel}"
+                         accessible-label="${this.closeLabel}"
                          confirm
                          @click="${this.#onClose}"></rh-button>
             </div>`}
