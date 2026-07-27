@@ -586,7 +586,7 @@
     }
 
     &[variant='primary'] {
-      --rh-color-text-primary-on-light: var(--rh-color-gray-90);
+      --rh-color-text-primary-on-light: var(--rh-color-gray-90, #1f1f1f);
 
       &::part(button):hover {
         background-color: var(--felt-preview-color-interactive-primary-hover);
@@ -843,30 +843,30 @@
     /* Directly theme through RH-specific tokens */
     --rh-border-radius-default: var(--felt-preview-border-radius-default);
     --rh-space-xl: var(--felt-preview-card-padding-default);
-    --rh-card-heading-font-size: var(--rh-font-size-heading-xs);
+    --rh-card-heading-font-size: var(--rh-font-size-heading-xs, 1.25rem);
     --rh-color-border-subtle: var(--felt-preview-color-border-subtle);
 
     &::part(body) {
-      font-size: var(--rh-font-size-body-text-md);
+      font-size: var(--rh-font-size-body-text-md, 1rem);
     }
 
     &[compact],
     &[size='compact'] {
       --rh-space-xl: var(--felt-preview-card-padding-compact);
-      --rh-card-heading-font-size: var(--rh-font-size-body-text-md);
+      --rh-card-heading-font-size: var(--rh-font-size-body-text-md, 1rem);
 
       &::part(body) {
-        font-size: var(--rh-font-size-body-text-sm);
+        font-size: var(--rh-font-size-body-text-sm, 0.875rem);
       }
     }
 
     &[large],
     &[size='large'] {
       --rh-space-xl: var(--felt-preview-card-padding-large);
-      --rh-card-heading-font-size: var(--rh-font-size-heading-sm);
+      --rh-card-heading-font-size: var(--rh-font-size-heading-sm, 1.5rem);
 
       &::part(body) {
-        font-size: var(--rh-font-size-body-text-lg);
+        font-size: var(--rh-font-size-body-text-lg, 1.125rem);
       }
     }
 
@@ -880,8 +880,8 @@
       &::part(container) {
         background-color:
           light-dark(
-              var(--rh-color-surface-lighter),
-              var(--rh-color-surface-darker)
+              var(--rh-color-surface-lighter, #f2f2f2),
+              var(--rh-color-surface-darker, #1f1f1f)
             );
       }
     }
@@ -905,12 +905,12 @@
         );
     --felt-preview-cta-border-offset-block:
       calc(
-          var(--rh-space-lg)
+          var(--rh-space-lg, 16px)
           - var(--felt-preview-cta-border-offset)
         );
     --felt-preview-cta-border-offset-inline:
       calc(
-          var(--rh-space-2xl)
+          var(--rh-space-2xl, 32px)
           - var(--felt-preview-cta-border-offset)
         );
     --felt-preview-cta-text-underline-offset: 4px;
@@ -978,7 +978,14 @@
       /* stylelint-enable rhds/no-unknown-token-name */
 
       --rh-cta-hover-background-color: transparent;
-      --rh-cta-hover-color: var(--rh-color-text-primary);
+      --rh-cta-hover-color:
+        var(
+            --rh-color-text-primary,
+            light-dark(
+              var(--rh-color-text-primary-on-light, #151515),
+              var(--rh-color-text-primary-on-dark, #ffffff)
+            )
+          );
       --rh-cta-hover-text-decoration: var(--felt-preview-cta-text-decoration);
       --rh-cta-hover-text-underline-offset: var(--felt-preview-cta-text-underline-offset);
       --rh-cta-focus-background-color: transparent;
@@ -1494,8 +1501,8 @@
 
     background-color:
       light-dark(
-          var(--rh-color-surface-lightest),
-          var(--rh-color-gray-80)
+          var(--rh-color-surface-lightest, #ffffff),
+          var(--rh-color-gray-80, #292929)
         );
     font-size: var(--felt-preview-font-size-body-text-sm);
 
@@ -1506,7 +1513,7 @@
       --rh-color-text-primary:
         light-dark(
             var(--felt-preview-color-gray-95),
-            var(--rh-color-white)
+            var(--rh-color-white, #ffffff)
           );
       --rh-space-lg: var(--felt-preview-space-md);
       --rh-space-xl: var(--felt-preview-space-lg);
@@ -1615,27 +1622,69 @@
     --rh-button-close-active-background: var(--felt-preview-color-interactive-fill-plain-active);
 
     &[state='neutral'] {
-      --felt-preview-alert-border-color: var(--rh-color-status-neutral);
+      --felt-preview-alert-border-color:
+        var(
+            --rh-color-status-neutral,
+            light-dark(
+              var(--rh-color-status-neutral-on-light, #4d4d4d),
+              var(--rh-color-status-neutral-on-dark, #c7c7c7)
+            )
+          );
     }
 
     &[state='info'] {
-      --felt-preview-alert-border-color: var(--rh-color-status-info);
+      --felt-preview-alert-border-color:
+        var(
+            --rh-color-status-info,
+            light-dark(
+              var(--rh-color-status-info-on-light, #5e40be),
+              var(--rh-color-status-info-on-dark, #b6a6e9)
+            )
+          );
     }
 
     &[state='success'] {
-      --felt-preview-alert-border-color: var(--rh-color-status-success);
+      --felt-preview-alert-border-color:
+        var(
+            --rh-color-status-success,
+            light-dark(
+              var(--rh-color-status-success-on-light, #3d7317),
+              var(--rh-color-status-success-on-dark, #87bb62)
+            )
+          );
     }
 
     &[state='caution'] {
-      --felt-preview-alert-border-color: var(--rh-color-status-caution);
+      --felt-preview-alert-border-color:
+        var(
+            --rh-color-status-caution,
+            light-dark(
+              var(--rh-color-status-caution-on-light, #ca6c0f),
+              var(--rh-color-status-caution-on-dark, #f5921b)
+            )
+          );
     }
 
     &[state='warning'] {
-      --felt-preview-alert-border-color: var(--rh-color-status-warning);
+      --felt-preview-alert-border-color:
+        var(
+            --rh-color-status-warning,
+            light-dark(
+              var(--rh-color-status-warning-on-light, #dca614),
+              var(--rh-color-status-warning-on-dark, #ffcc17)
+            )
+          );
     }
 
     &[state='danger'] {
-      --felt-preview-alert-border-color: var(--rh-color-status-danger);
+      --felt-preview-alert-border-color:
+        var(
+            --rh-color-status-danger,
+            light-dark(
+              var(--rh-color-status-danger-on-light, #b1380b),
+              var(--rh-color-status-danger-on-dark, #f0561d)
+            )
+          );
     }
 
     &[variant='toast'] {
@@ -1653,7 +1702,14 @@
     --rh-color-border-subtle: var(--felt-preview-color-border-interactive-subtle-default);
 
     /* Active/selected tab indicator color */
-    --rh-tabs-active-border-color: var(--rh-color-brand-red);
+    --rh-tabs-active-border-color:
+      var(
+          --rh-color-brand-red,
+          light-dark(
+            var(--rh-color-brand-red-on-light, #ee0000),
+            var(--rh-color-brand-red-on-dark, #ee0000)
+          )
+        );
     --rh-border-width-lg: var(--felt-preview-border-width-lg);
 
     /* Focus ring color (inherited by child rh-tab elements) */
@@ -1725,7 +1781,9 @@
 
   & rh-tab[active]::part(button):after {
     border-block: none;
-    background-color: var(--rh-tabs-active-border-color);
+
+    /* stylelint-disable-next-line rhds/no-unknown-token-name -- rh-tabs component prop */
+    background-color: var(--rh-tabs-active-border-color, #ee0000);
     block-size: var(--rh-border-width-lg, 3px);
     inset-block-start: auto;
     border-radius: var(--felt-preview-border-radius-pill);
@@ -1739,7 +1797,16 @@
      the active tab. Restore the surface-color "open" border on the button itself
      (not ::after, which is now only 3px tall) so it covers the container line. */
   & rh-tabs[box='inset']:not([vertical]) rh-tab[active]::part(button) {
-    border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-surface);
+    border-block-end:
+      var(--rh-border-width-sm, 1px)
+      solid
+      var(
+          --rh-color-surface,
+          light-dark(
+            var(--rh-color-surface-lightest, #ffffff),
+            var(--rh-color-surface-darkest, #151515)
+          )
+        );
   }
 
   & rh-tabs[vertical] rh-tab[active]::part(button):after {
@@ -1765,8 +1832,8 @@
     --rh-button-close-hover-background: var(--felt-preview-color-interactive-fill-plain-hover);
     --rh-button-close-focus-background: var(--felt-preview-color-interactive-fill-plain-focus);
     --rh-button-close-active-background: var(--felt-preview-color-interactive-fill-plain-active);
-    --felt-preview-dialog-header-sm: var(--rh-font-size-body-text-xl);
-    --felt-preview-dialog-header-md: var(--rh-font-size-body-text-2xl);
+    --felt-preview-dialog-header-sm: var(--rh-font-size-body-text-xl, 1.25rem);
+    --felt-preview-dialog-header-md: var(--rh-font-size-body-text-2xl, 1.5rem);
     --felt-preview-dialog-header-lg: 28px; /* no 3xl */
 
     &[variant='small'] [slot='header'] {
@@ -1854,13 +1921,13 @@
     --rh-color-interactive-primary-hover: var(--felt-preview-color-text-interactive-hover);
     --rh-color-interactive-primary-visited-default:
       light-dark(
-          var(--rh-color-interactive-primary-visited-default-on-light),
-          var(--rh-color-interactive-primary-visited-default-on-dark)
+          var(--rh-color-interactive-primary-visited-default-on-light, #5e40be),
+          var(--rh-color-interactive-primary-visited-default-on-dark, #b6a6e9)
         );
     --rh-color-interactive-primary-visited-hover:
       light-dark(
-          var(--rh-color-interactive-primary-visited-hover-on-light),
-          var(--rh-color-interactive-primary-visited-hover-on-dark)
+          var(--rh-color-interactive-primary-visited-hover-on-light, #21134d),
+          var(--rh-color-interactive-primary-visited-hover-on-dark, #ece6ff)
         );
     --rh-border-radius-default: var(--felt-preview-border-radius-action-plain);
     --rh-color-border-interactive: var(--felt-preview-color-text-interactive-default);
@@ -1883,7 +1950,15 @@
     }
 
     & > ol > li > a[href]:not([aria-current]):visited:hover {
-      text-decoration-color: var(--rh-color-interactive-primary-visited-hover) !important;
+      /* Canonical RHDS fallback when primitives are not loaded */
+      text-decoration-color:
+        var(
+            --rh-color-interactive-primary-visited-hover,
+            light-dark(
+              var(--rh-color-interactive-primary-visited-hover-on-light, #21134d),
+              var(--rh-color-interactive-primary-visited-hover-on-dark, #ece6ff)
+            )
+          ) !important;
     }
 
     & > ol > li > a[aria-current='page'] {
