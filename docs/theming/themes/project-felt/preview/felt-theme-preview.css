@@ -625,12 +625,12 @@
       }
 
       &::part(button):focus {
-        --rh-color-text-primary: var(unified-color-text-interactive-hover-focus);
+        --rh-color-text-primary: var(--felt-preview-color-text-interactive-focus);
         --rh-border-width-sm: var(--felt-preview-button-border-width-focus);
       }
 
       &::part(button):active {
-        --rh-color-text-primary: var(unified-color-text-interactive-active);
+        --rh-color-text-primary: var(--felt-preview-color-text-interactive-active);
         --rh-border-width-sm: var(--felt-preview-button-border-width-active);
       }
 
