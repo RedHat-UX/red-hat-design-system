@@ -2,11 +2,11 @@
 
 Only the call to action can receive focus if included.
 
-<uxdot-example width-adjustment="340px" color-palette="lightest">
+<uxdot-example width-adjustment="288px" color-palette="lightest">
   <img alt="Statistic keyboard interactions; pressing Tab will focus the call to action if included and pressing Tab again will move focus to the next interactive element"
-       src="../stat-keyboard-interactions.png"
-       width="340"
-       height="248">
+       src="../stat-accessibility-keyboard-interactions.svg"
+       width="288"
+       height="215">
 </uxdot-example>
 
 <rh-table>
@@ -23,11 +23,11 @@ Only the call to action can receive focus if included.
 
 Only the call to action is selectable if included.
 
-<uxdot-example width-adjustment="340px" color-palette="lightest">
+<uxdot-example width-adjustment="288px" color-palette="lightest">
   <img alt="Statistic showing touch target size for call to action if included"
-       src="../stat-a11y-touch-targets.png"
-       width="340"
-       height="208">
+       src="../stat-accessibility-touch-targets.svg"
+       width="288"
+       height="163">
 </uxdot-example>
 
 {% include 'partials/accessibility/ariaguide.md' %}
