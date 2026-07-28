@@ -51,7 +51,7 @@ The footer was designed with flexibility to be applied to all Red Hat web proper
   <img src="../footer-guidelines-domain-developer.svg"
         alt="The Footer customized with developer.redhat.com content."
         width="1140"
-        height="644">
+        height="641">
 </uxdot-example>
 
 ### Universal footer
