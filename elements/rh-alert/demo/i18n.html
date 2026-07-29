@@ -1,0 +1,26 @@
+---
+description: "Internationalized alert with Hebrew text and a localized close button label."
+---
+<section dir="rtl" lang="he">
+  <rh-alert dismissable close-label="סגור">
+    <h3 slot="header">ברירת מחדל</h3>
+    <p>המנוי שלך יתחדש בעוד 30 יום. בדקו את פרטי התשלום כדי לוודא שהם מעודכנים.</p>
+    <rh-button slot="actions" variant="secondary">אישור</rh-button>
+    <rh-button slot="actions" variant="link">ביטול</rh-button>
+  </rh-alert>
+
+  <rh-alert state="success" dismissable close-label="סגור">
+    <h3 slot="header">הצלחה</h3>
+    <p>ההגדרות שלך נשמרו בהצלחה.</p>
+  </rh-alert>
+
+  <rh-alert state="warning" dismissable close-label="סגור">
+    <h3 slot="header">אזהרה</h3>
+    <p>תוקף הסיסמה שלך יפוג בעוד 5 ימים. עדכנו את הסיסמה כדי להימנע מהפרעה בשירות.</p>
+  </rh-alert>
+</section>
+
+<script type="module">
+  import '@rhds/elements/rh-alert/rh-alert.js';
+  import '@rhds/elements/rh-button/rh-button.js';
+</script>
