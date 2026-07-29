@@ -12,6 +12,7 @@ layout: layouts/base.njk
   // need them here to ensure no double-rendering on webkit
   import '/assets/javascript/ssr-support.js';
   import '@uxdot/elements/uxdot-toc.js';
+  import '@uxdot/elements/uxdot-pathfinder.js';
 </script>
 
 {% include 'partials/component/sidenav.njk' %}
@@ -27,6 +28,7 @@ layout: layouts/base.njk
   {% endif %}
   <div class="container">
     {{ content | safe }}
+    {% include "partials/component/pathfinder.njk" %}
     {% include "partials/component/edit-this-page.njk" %}
   </div>
   </article>
