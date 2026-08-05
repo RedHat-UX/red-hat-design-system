@@ -32,11 +32,16 @@
         margin: 0;
         margin-block-end: var(--rh-space-md, 8px);
         padding-block-end: var(--rh-space-lg, 16px);
-        border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+        border-block-end:
+          var(--rh-border-width-sm, 1px) solid
+          var(--rh-color-border-subtle,
+            light-dark(
+              var(--rh-color-border-subtle-on-light, #c7c7c7),
+              var(--rh-color-border-subtle-on-dark, #707070)));
       }
     }
 
-    /* For this Pokémon example */   
+    /* For this Pokémon example */
     &::part(container) {
       display: grid;
       grid-template-areas: 'image' 'header' 'body' 'footer';
@@ -44,7 +49,7 @@
       place-items: start stretch;
       gap: var(--rh-space-2xl, 32px);
     }
-    
+
     @container (min-width: 576px) {
       &::part(container) {
         grid-template-areas: 'image header' 'image body' 'image footer';
@@ -58,4 +63,3 @@
     }
   }
 </style>
-

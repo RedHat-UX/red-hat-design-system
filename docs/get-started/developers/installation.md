@@ -10,12 +10,7 @@ subnav:
   order: 10
 ---
 
-<style data-helmet>
-  .code-tabs rh-tab-panel {
-    padding-block-end: 0;
-    padding-inline: 0;
-  }
-</style>
+<link rel="stylesheet" href="installation.css" data-helmet>
 
 <script type="module" data-helmet>
   import '@uxdot/elements/uxdot-example.js';

@@ -1,0 +1,28 @@
+#crayons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+
+  @container (min-width: 576px) and (max-width: 746px) {
+    grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
+  }
+
+  gap: var(--rh-space-4xl, 64px) var(--rh-space-2xl, 32px);
+
+  & .crayons-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    & li {
+      padding: 0;
+      margin: 0;
+
+      & samp {
+        display: block;
+        font-size: var(--rh-font-size-body-text-md, 1rem);
+        font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+        padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+      }
+    }
+  }
+}

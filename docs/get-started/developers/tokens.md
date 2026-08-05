@@ -10,12 +10,7 @@ subnav:
   order: 30
 ---
 
-<style data-helmet>
-  .code-tabs rh-tab-panel {
-    padding-block-end: 0;
-    padding-inline: 0;
-  }
-</style>
+<link rel="stylesheet" href="tokens.css" data-helmet>
 
 <script type="module" data-helmet>
   import '@uxdot/elements/uxdot-example.js';
@@ -87,13 +82,7 @@ Apply defaults to the document root by importing the global stylesheet as seen a
 tokens in your CSS:
 
 ```html rhcodeblock
-<style>
-  :is(h1, h2, h3, h4, h5, h6) {
-    color: var(--rh-color-text-primary);
-    font-family: var(--rh-font-family-heading);
-    margin-block-end: var(--rh-space-xl);
-  }
-</style>
+
 ```
 
 ### Reset the shadowroot
