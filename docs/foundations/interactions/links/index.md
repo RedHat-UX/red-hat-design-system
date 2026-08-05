@@ -156,6 +156,54 @@ When these links receive a mouse cursor hover, link colors and underline styles 
   </table>
 </rh-table>
 
+### Focus
+
+When a link receives keyboard focus, it should show both:
+
+1. The standard [focus indicator][focusindicators] (outline)
+2. The same text and underline styles as [hover](#hover)
+
+Use the focus interactive tokens for the text and underline. Those values match hover, so focused and hovered links look the same aside from the focus ring.
+
+<rh-table>
+  <table>
+    <colgroup>
+      <col>
+      <col>
+      <col>
+    </colgroup>
+    <thead>
+      <tr>
+        <th scope="col">Property</th>
+        <th scope="col">Light scheme</th>
+        <th scope="col">Dark scheme</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Focus ring color</td>
+        <td><code>--rh-color-border-interactive</code></td>
+        <td><code>--rh-color-border-interactive</code></td>
+      </tr>
+      <tr>
+        <td>Color - text</td>
+        <td><code>--rh-color-interactive-primary-focus</code></td>
+        <td><code>--rh-color-interactive-primary-focus</code></td>
+      </tr>
+      <tr>
+        <td>Underline - color</td>
+        <td><code>--rh-color-interactive-primary-focus</code></td>
+        <td><code>--rh-color-interactive-primary-focus</code></td>
+      </tr>
+      <tr>
+        <td>Underline - offset</td>
+        <td>6px</td>
+        <td>6px</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
+
 ### Visited state
 
 Visited links will change colors to one of our [interactive visited tokens][interactivevisitedtokens].
@@ -283,7 +331,7 @@ A user should have the ability to navigate to and interact with links using thei
 
 ### Tab order
 
-When the Tab key is pressed repeatedly, the focus highlights links in order, from left to right and top to bottom.
+When the Tab key is pressed repeatedly, focus moves through links in order, from left to right and top to bottom. Each focused link shows the [focus indicator][focusindicators] and [hover styles](#hover).
 
 <uxdot-example color-palette="lightest" width-adjustment="606px" slot="image">
   <img src="./a11y-tab-order-A.svg"
@@ -377,5 +425,6 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
 
 [linkwithicon]: /patterns/link-with-icon/
 [ctas]: /elements/call-to-action/
+[focusindicators]: /foundations/interactions/focus-indicators/
 [interactivevisitedtokens]: /tokens/color/#color-interactive-primary-visited
 [redhat]: https://www.redhat.com
