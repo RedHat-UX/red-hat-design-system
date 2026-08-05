@@ -1,25 +1,35 @@
 diff --git a/node_modules/@rhds/tokens/plugins/stylelint/rules/no-unknown-token-name.js b/node_modules/@rhds/tokens/plugins/stylelint/rules/no-unknown-token-name.js
-index 5c51f5f..6395960 100644
+index 5c51f5f..86fc42b 100644
 --- a/node_modules/@rhds/tokens/plugins/stylelint/rules/no-unknown-token-name.js
 +++ b/node_modules/@rhds/tokens/plugins/stylelint/rules/no-unknown-token-name.js
-@@ -11,7 +11,7 @@ const meta = {
-     fixable: true,
- };
+@@ -1,4 +1,5 @@
+-import { dirname, sep } from 'node:path';
++import { readFileSync } from 'node:fs';
++import { dirname, join, sep } from 'node:path';
+ import { tokens } from '@rhds/tokens';
+ import stylelint from 'stylelint';
+ import parser from 'postcss-value-parser';
+@@ -13,15 +14,34 @@ const meta = {
  const ruleFunction = (_, opts) => {
--    return (root, result) => {
-+    return async (root, result) => {
+     return (root, result) => {
          // here we assume a file structure of */rh-tagname/rh-tagname.css
-         const tagName = dirname(root.source.input.file)
-             .split(sep)
-@@ -22,6 +22,25 @@ const ruleFunction = (_, opts) => {
+-        const tagName = dirname(root.source.input.file)
+-            .split(sep)
+-            .findLast(x => x.startsWith('rh-'));
++        const tagName = root.source?.input?.file
++            ? dirname(root.source.input.file).split(sep).findLast(x => x.startsWith('rh-'))
++            : undefined;
+         const validOptions = stylelint.utils.validateOptions(result, ruleName);
+         if (!validOptions) {
+             return;
          }
          const migrations = new Map(Object.entries(opts?.migrations ?? {}));
          const allowed = new Set(opts?.allowed ?? []);
-+        try {
-+          const pkgjson = await import('../../../../../../package.json', { with: { type: 'json' } })
-+          if (pkgjson?.default.name === '@rhds/elements') {
-+            const cem = await import('../../../../../../custom-elements.json', { with: { type: 'json' } })
-+            for (const mod of cem.default?.modules) {
++        if (opts?.cem) {
++          try {
++            const cemPath = join(process.cwd(), opts.cem);
++            const cem = JSON.parse(readFileSync(cemPath, 'utf8'));
++            for (const mod of cem?.modules ?? []) {
 +              for (const decl of mod.declarations ?? []) {
 +                if (decl.customElement) {
 +                  for (const cssProp of decl.cssProperties ?? []) {
@@ -30,10 +40,68 @@ index 5c51f5f..6395960 100644
 +                }
 +              }
 +            }
++          } catch {
++            // CEM file not found at provided path
 +          }
-+        } catch (e) {
-+          console.log(e);
 +        }
          root.walk(node => {
              if (node.type === 'decl') {
                  const parsedValue = parser(node.value);
+diff --git a/node_modules/@rhds/tokens/plugins/stylelint/rules/token-values.js b/node_modules/@rhds/tokens/plugins/stylelint/rules/token-values.js
+index bf431df..861702e 100644
+--- a/node_modules/@rhds/tokens/plugins/stylelint/rules/token-values.js
++++ b/node_modules/@rhds/tokens/plugins/stylelint/rules/token-values.js
+@@ -14,6 +14,24 @@ function isVarCall(parsedNode) {
+         && parsedNode.value === 'var'
+         && parsedNode.nodes.length > 1;
+ }
++function extractLightDarkParts(parsed) {
++    const ld = parsed.nodes?.find(n => n.type === 'function' && n.value === 'light-dark');
++    if (!ld) return null;
++    const varNodes = ld.nodes.filter(n => n.type === 'function' && n.value === 'var');
++    if (varNodes.length !== 2) return null;
++    return varNodes.map(v => {
++        const [nameNode, , ...fallbackNodes] = v.nodes;
++        return { name: nameNode.value, fallback: parser.stringify(fallbackNodes) };
++    });
++}
++function lightDarkMatches(actual, expected) {
++    const expectedParts = extractLightDarkParts(parser(expected));
++    if (!expectedParts) return null;
++    const actualParts = extractLightDarkParts(parser(actual));
++    if (!actualParts) return false;
++    return expectedParts.every((exp, i) =>
++        actualParts[i]?.name === exp.name && actualParts[i]?.fallback === exp.fallback);
++}
+ const ruleFunction = () => {
+     return (root, result) => {
+         const validOptions = stylelint.utils.validateOptions(result, ruleName);
+@@ -30,6 +48,28 @@ const ruleFunction = () => {
+                         if (tokens.has(name)) {
+                             const actual = parser.stringify(values);
+                             const expected = tokens.get(name);
++                            if (typeof expected === 'string' && expected.startsWith('light-dark(')) {
++                                const match = lightDarkMatches(actual, expected);
++                                if (match === true) return;
++                                if (match === false) {
++                                    stylelint.utils.report({
++                                        node,
++                                        message: `Expected ${name} fallback to be ${expected}`,
++                                        ruleName,
++                                        result,
++                                        word: name,
++                                        index: value.sourceIndex,
++                                        endIndex: value.sourceEndIndex,
++                                        fix() {
++                                            const prefix = node.value.slice(0, parsedNode.sourceIndex);
++                                            const infix = `var(${name}, ${expected})`;
++                                            const suffix = node.value.slice(parsedNode.sourceEndIndex);
++                                            node.value = `${prefix}${infix}${suffix}`;
++                                        },
++                                    });
++                                }
++                                return;
++                            }
+                             if (expected === null && actual == null) {
+                                 return;
+                             }
