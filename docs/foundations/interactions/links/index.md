@@ -27,24 +27,6 @@ subnav:
   import "@uxdot/elements/uxdot-pattern.js";
 </script>
 
-<style>
-.underline-exception {
-    display: block;
-    margin-block: var(--rh-space-2xl);
-    & span {
-        font-family: var(--rh-font-family-heading);
-        font-size: var(--rh-font-size-heading-xs);
-        font-weight: var(--rh-font-weight-heading-medium);
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: var(--rh-space-md);
-        color: var(--rh-color-status-danger);
-        margin-block: var(--rh-space-2xl) var(--rh-space-lg);
-    }
-}
-</style>
-
 ## Types of links
 
 Links are interactive elements that connect users to another page or page section. Outside of navigation elements, most links will appear as one of the following types:
@@ -214,45 +196,35 @@ The following elements are exempt from underlining requirements and should not h
 ### Exceptions
 
 <div class="grid sm-two-columns">
-
-  <figure class="underline-exception">
+  <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lighter" width-adjustment="482px" slot="image">
       <img src="./underlining-exceptions-1.svg"
             alt="Recommendations menu with list of links that aren't underlined"
             width="482"
             height="342">
     </uxdot-example>
-    <figcaption>
-        <span><rh-icon set="ui" size="md" icon="close-circle-fill" defer-hydration=""></rh-icon>Don't underline</span>
-        <p>Do not underline links within visually distinct navigation groupings like menus and breadcrumbs.</p>
-    </figcaption>
-  </figure>
+    <p>Do not underline links within visually distinct navigation groupings like menus and breadcrumbs.</p>
+  </uxdot-best-practice>
 
-  <figure class="underline-exception">
+  <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
       <img src="./underlining-exceptions-2.svg"
             alt="Heading, body copy, and call to action with an arrow but without an underline"
             width="482"
             height="342">
     </uxdot-example>
-    <figcaption>
-        <span><rh-icon set="ui" size="md" icon="close-circle-fill" defer-hydration=""></rh-icon>Don't underline</span>
-      <p>Do not underline links accompanied by visual cues (e.g., call to action arrows) that indicate their interactivity.</p>
-    </figcaption>
-  </figure>
+    <p>Do not underline links accompanied by visual cues (e.g., call to action arrows) that indicate their interactivity.</p>
+  </uxdot-best-practice>
 
-  <figure class="underline-exception">
+  <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
       <img src="./underlining-exceptions-3.svg"
             alt="List of links "
             width="482"
             height="268">
     </uxdot-example>
-    <figcaption>
-        <span><rh-icon set="ui" size="md" icon="close-circle-fill" defer-hydration=""></rh-icon>Don't underline</span>
-      <p>Do not underline links that will not appear alongside non-link text like a list of links within a card.</p>
-    </figcpation>
-  </figure>
+    <p>Do not underline links that will not appear alongside non-link text like a list of links within a card.</p>
+  </uxdot-best-practice>
 </div>
 
 ### Example CSS
@@ -372,8 +344,6 @@ When the Tab key is pressed repeatedly, focus moves through links in order, from
   </uxdot-best-practice>
 </div>
 
-For more guidance, see [Writing accessible link text][accessiblelinktext].
-
 ### Long links
 
 <div class="grid sm-two-columns">
@@ -425,6 +395,5 @@ For more guidance, see [Writing accessible link text][accessiblelinktext].
 [linkwithicon]: /patterns/link-with-icon/
 [ctas]: /elements/call-to-action/
 [focusindicators]: /foundations/interactions/focus-indicators/
-[accessiblelinktext]: /accessibility/content/#link-text
 [interactivevisitedtokens]: /tokens/color/#color-interactive-primary-visited
 [redhat]: https://www.redhat.com
