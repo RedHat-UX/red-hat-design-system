@@ -23,7 +23,6 @@ subnav:
   import '@rhds/elements/rh-alert/rh-alert.js';
   import '@rhds/elements/rh-code-block/rh-code-block.js';
   import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
-  import '@rhds/elements/rh-cta/rh-cta.js';
   import '@rhds/elements/rh-table/rh-table.js';
   import "@uxdot/elements/uxdot-pattern.js";
 </script>
@@ -373,7 +372,7 @@ When the Tab key is pressed repeatedly, focus moves through links in order, from
   </uxdot-best-practice>
 </div>
 
-<rh-cta href="/accessibility/content/#link-text">Writing accessible link text</rh-cta>
+For more guidance, see [Writing accessible link text][accessiblelinktext].
 
 ### Long links
 
@@ -426,5 +425,6 @@ When the Tab key is pressed repeatedly, focus moves through links in order, from
 [linkwithicon]: /patterns/link-with-icon/
 [ctas]: /elements/call-to-action/
 [focusindicators]: /foundations/interactions/focus-indicators/
+[accessiblelinktext]: /accessibility/content/#link-text
 [interactivevisitedtokens]: /tokens/color/#color-interactive-primary-visited
 [redhat]: https://www.redhat.com
