@@ -44,6 +44,7 @@ export default tseslint.config(
       'elements/**/*.js',
       'uxdot/**/*.js',
       'lib/**/*.js',
+      '.stylelint/**/*.js',
 
       'docs/demo.js',
       'docs/pfe.min.js',
