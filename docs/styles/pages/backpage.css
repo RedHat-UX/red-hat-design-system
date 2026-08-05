@@ -6,7 +6,7 @@
     grid-template-areas:
       'header'
       'content';
-    row-gap: var(--rh-space-4xl);
+    row-gap: var(--rh-space-4xl, 64px);
 
     &.has-toc {
       grid-template-areas:
@@ -19,7 +19,7 @@
       grid-area: aside;
 
       @container main (width >= 1440px) {
-        padding-inline: 0 var(--rh-space-2xl);
+        padding-inline: 0 var(--rh-space-2xl, 32px);
       }
     }
 
@@ -29,7 +29,7 @@
       container-name: container;
 
       & > section {
-        margin-block-start: var(--rh-space-6xl);
+        margin-block-start: var(--rh-space-6xl, 96px);
       }
 
       & > section:first-of-type {
@@ -38,17 +38,17 @@
 
       & h2,
       uxdot-copy-permalink h2 {
-        font-size: var(--rh-font-size-heading-md);  /* RHDS h4 heading font size */
+        font-size: var(--rh-font-size-heading-md, 1.75rem);  /* RHDS h4 heading font size */
       }
 
       & h3,
       uxdot-copy-permalink h3 {
-        font-size: var(--rh-font-size-heading-sm);  /* RHDS h5 heading font size */
+        font-size: var(--rh-font-size-heading-sm, 1.5rem);  /* RHDS h5 heading font size */
       }
 
       & h4,
       uxdot-copy-permalink h4 {
-        font-size: var(--rh-font-size-heading-xs);  /* RHDS h6 heading font size */
+        font-size: var(--rh-font-size-heading-xs, 1.25rem);  /* RHDS h6 heading font size */
       }
 
       & h5,
@@ -69,7 +69,7 @@
       & > :where(uxdot-copy-permalink.h2, h2),
       & > :not(section, uxdot-copy-permalink) > :where(uxdot-copy-permalink.h2, h2),
       & > section > :where(uxdot-copy-permalink.h2, h2) {
-        margin-block-start: var(--rh-space-6xl);
+        margin-block-start: var(--rh-space-6xl, 96px);
       }
 
       /**
@@ -94,7 +94,7 @@
       & > :where(uxdot-copy-permalink.h3, h3),
       & > :not(section, uxdot-copy-permalink) > :where(uxdot-copy-permalink.h3, h3),
       & > section > :where(uxdot-copy-permalink.h3, h3) {
-        margin-block-start: var(--rh-space-4xl);
+        margin-block-start: var(--rh-space-4xl, 64px);
       }
 
       /**
@@ -105,7 +105,7 @@
       & > :where(uxdot-copy-permalink.h4, h4),
       & > :not(section, uxdot-copy-permalink) > :where(uxdot-copy-permalink.h4, h4),
       & > section > :where(uxdot-copy-permalink.h4, h4) {
-        margin-block-start: var(--rh-space-3xl);
+        margin-block-start: var(--rh-space-3xl, 48px);
       }
     }
   }
@@ -124,19 +124,19 @@
 
   uxdot-toc {
     @container main (width < 576px) {
-      margin-inline: var(--rh-space-lg);
+      margin-inline: var(--rh-space-lg, 16px);
     }
 
     @container main (width >= 576px) {
-      padding-inline: var(--rh-space-2xl);
+      padding-inline: var(--rh-space-2xl, 32px);
     }
 
     @container main (width >= 768px) {
-      padding-inline: var(--rh-space-3xl);
+      padding-inline: var(--rh-space-3xl, 48px);
     }
 
     @container main (width >= 992px) {
-      padding-inline: var(--rh-space-6xl);
+      padding-inline: var(--rh-space-6xl, 96px);
     }
 
     @container main (width >= 1440px) {
@@ -146,7 +146,7 @@
 
   @container main (width >= 992px) {
     article {
-      row-gap: var(--rh-space-6xl);
+      row-gap: var(--rh-space-6xl, 96px);
     }
   }
 
@@ -170,7 +170,7 @@
           max-width: 320px;
           position: sticky;
           height: max-content;
-          top: calc(var(--uxdot-masthead-max-height) + var(--rh-space-2xl) * 3);
+          top: calc(var(--uxdot-masthead-max-height) + var(--rh-space-2xl, 32px) * 3);
         }
       }
     }

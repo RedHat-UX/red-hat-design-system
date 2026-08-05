@@ -1,19 +1,19 @@
 dl {
-  margin: 0 0 var(--rh-space-2xl);
+  margin: 0 0 var(--rh-space-2xl, 32px);
 
   dt {
-    margin-block: var(--rh-space-lg);
+    margin-block: var(--rh-space-lg, 16px);
     font-weight: bold;
   }
 
   dd {
-    margin-block: var(--rh-space-lg);
-    padding-inline-start: var(--rh-space-2xl);
+    margin-block: var(--rh-space-lg, 16px);
+    padding-inline-start: var(--rh-space-2xl, 32px);
   }
 }
 
 rh-alert + rh-card {
-  margin-block-start: var(--rh-space-2xl);
+  margin-block-start: var(--rh-space-2xl, 32px);
 }
 
 .container > rh-alert {
@@ -35,14 +35,14 @@ rh-alert + rh-card {
   display: grid;
   padding: 0;
   list-style-type: none;
-  gap: var(--rh-space-xl);
+  gap: var(--rh-space-xl, 24px);
   grid-template-columns: 1fr 1fr 1fr;
   text-align: center;
 }
 
 .icon-card {
   &::part(header) {
-    margin-block: var(--rh-space-2xl) 1rem;
+    margin-block: var(--rh-space-2xl, 32px) 1rem;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -53,7 +53,7 @@ rh-alert + rh-card {
   }
 
   & rh-icon {
-    width: var(--rh-size-icon-04);
+    width: var(--rh-size-icon-04, 40px);
 
     --rh-icon-size: 100%;
   }
@@ -65,15 +65,15 @@ rh-alert + rh-card {
 
 .surface-grid {
   grid-template-columns: 1fr 1fr;
-  margin-block: var(--rh-space-lg) var(--rh-space-2xl);
+  margin-block: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
 
   rh-card {
     p {
-      margin-block-start: var(--rh-space-2xl);
-      font-size: var(--rh-font-size-body-text-sm);
+      margin-block-start: var(--rh-space-2xl, 32px);
+      font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 
       code {
-        font-size: var(--rh-font-size-code-sm);
+        font-size: var(--rh-font-size-code-sm, 0.875rem);
       }
     }
   }
@@ -81,13 +81,13 @@ rh-alert + rh-card {
 
 .color-palette-grid rh-surface {
   padding: 2rem;
-  border-radius: var(--rh-border-radius-default);
-  border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default, 3px);
+  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle, light-dark(var(--rh-color-border-subtle-on-light, #c7c7c7), var(--rh-color-border-subtle-on-dark, #707070)));
 }
 
 .pullquote-card {
   min-width: 360px;
-  margin: var(--rh-space-2xl);
+  margin: var(--rh-space-2xl, 32px);
 
   &.right {
     float: right;
@@ -100,5 +100,5 @@ rh-audio-player::part(toolbar) {
 }
 
 label + rh-switch {
-  margin-inline-start: var(--rh-space-md);
+  margin-inline-start: var(--rh-space-md, 8px);
 }

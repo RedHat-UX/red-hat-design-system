@@ -21,10 +21,10 @@ body {
 }
 
 figure[data-type*='example'] {
-  margin-block: var(--rh-space-3xl);
+  margin-block: var(--rh-space-3xl, 48px);
 
   figcaption {
-    margin-block-start: var(--rh-space-xl);
+    margin-block-start: var(--rh-space-xl, 24px);
 
     :is(p, ul, ol) {
       margin-block-start: 0;
@@ -34,7 +34,7 @@ figure[data-type*='example'] {
   &:is([data-type*='landscape']) {
     img {
       display: block;
-      margin-block-end: var(--rh-space-xl);
+      margin-block-end: var(--rh-space-xl, 24px);
     }
   }
 
@@ -43,7 +43,7 @@ figure[data-type*='example'] {
     &:has(> :nth-child(2):not(figcaption)) {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: var(--rh-space-2xl);
+      gap: var(--rh-space-2xl, 32px);
     }
 
     /* has only 3 images or more than 5 */
@@ -61,7 +61,7 @@ figure[data-type*='example'] {
 /* Adds the "Do" & "Don't" tags with icons to the do/dont <figure> types */
 figure[data-type='do'],
 figure[data-type='dont'] {
-  margin-block: var(--rh-space-3xl);
+  margin-block: var(--rh-space-3xl, 48px);
 
   /* stylelint-disable-next-line no-descending-specificity */
   figcaption {
@@ -71,12 +71,12 @@ figure[data-type='dont'] {
     &:before {
       display: block;
       content: 'Do';
-      margin-inline-start: calc(var(--rh-size-icon-01) + var(--rh-space-md));
-      margin-block-end: var(--rh-space-lg);
-      color: var(--rh-color-status-success);
-      font-family: var(--rh-font-family-heading);
-      font-size: var(--rh-font-size-heading-xs);
-      font-weight: var(--rh-font-weight-heading-medium);
+      margin-inline-start: calc(var(--rh-size-icon-01, 16px) + var(--rh-space-md, 8px));
+      margin-block-end: var(--rh-space-lg, 16px);
+      color: var(--rh-color-status-success, light-dark(var(--rh-color-status-success-on-light, #3d7317), var(--rh-color-status-success-on-dark, #87bb62)));
+      font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+      font-size: var(--rh-font-size-heading-xs, 1.25rem);
+      font-weight: var(--rh-font-weight-heading-medium, 500);
     }
 
     &:after {
@@ -86,10 +86,10 @@ figure[data-type='dont'] {
       transform: translateY(50%);
       display: block;
       content: '';
-      width: var(--rh-size-icon-01);
-      height: var(--rh-size-icon-01);
+      width: var(--rh-size-icon-01, 16px);
+      height: var(--rh-size-icon-01, 16px);
       mask-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%20fill%3D%22var(--rh-color-gray-95)%22%3E%3Cpath%20d%3D%22M16%201C7.729%201%201%207.729%201%2016s6.729%2015%2015%2015%2015-6.729%2015-15S24.271%201%2016%201Zm7.795%2011.795-8.646%208.646c-.317.317-.733.475-1.149.475s-.832-.158-1.149-.475l-4.646-4.646a1.126%201.126%200%200%201%201.591-1.591l4.205%204.205%208.205-8.205a1.126%201.126%200%200%201%201.591%201.591Z%22%2F%3E%3C%2Fsvg%3E');
-      background-color: var(--rh-color-status-success);
+      background-color: var(--rh-color-status-success, light-dark(var(--rh-color-status-success-on-light, #3d7317), var(--rh-color-status-success-on-dark, #87bb62)));
     }
   }
 }
@@ -98,12 +98,12 @@ figure:is([data-type='dont']) {
   figcaption {
     &:before {
       content: "Don't";
-      color: var(--rh-color-status-danger);
+      color: var(--rh-color-status-danger, light-dark(var(--rh-color-status-danger-on-light, #b1380b), var(--rh-color-status-danger-on-dark, #f0561d)));
     }
 
     &:after {
       mask-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%20fill%3D%22var(--rh-color-gray-95)%22%3E%3Cpath%20d%3D%22M16%201C7.729%201%201%207.729%201%2016s6.729%2015%2015%2015%2015-6.729%2015-15S24.271%201%2016%201Zm6.796%2020.205A1.127%201.127%200%200%201%2022%2023.126c-.288%200-.576-.11-.796-.33L16%2017.592l-5.204%205.204a1.122%201.122%200%200%201-1.592%200%201.127%201.127%200%200%201%200-1.591L14.409%2016l-5.205-5.205a1.127%201.127%200%200%201%200-1.591%201.127%201.127%200%200%201%201.592%200L16%2014.408l5.204-5.204a1.127%201.127%200%200%201%201.592%200%201.127%201.127%200%200%201%200%201.591L17.591%2016l5.205%205.205Z%22%2F%3E%3C%2Fsvg%3E');
-      background-color: var(--rh-color-status-danger);
+      background-color: var(--rh-color-status-danger, light-dark(var(--rh-color-status-danger-on-light, #b1380b), var(--rh-color-status-danger-on-dark, #f0561d)));
     }
   }
 }
@@ -112,7 +112,7 @@ figure:is([data-type='dont']) {
 ul:is([data-type='dos-donts'], [data-type='examples']) {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--rh-space-2xl);
+  gap: var(--rh-space-2xl, 32px);
   width: 100%;
   margin: 0;
   padding: 0;
@@ -136,7 +136,7 @@ ul:is([data-type='dos-donts'], [data-type='examples']) {
     flex-direction: column;
     flex: 1;
     width: 100%;
-    margin: 0 0 var(--rh-space-2xl);
+    margin: 0 0 var(--rh-space-2xl, 32px);
 
     /* stylelint-disable-next-line no-descending-specificity */
     & img {
@@ -146,7 +146,7 @@ ul:is([data-type='dos-donts'], [data-type='examples']) {
 
     /* stylelint-disable-next-line no-descending-specificity */
     figcaption {
-      margin-block-start: var(--rh-space-xl);
+      margin-block-start: var(--rh-space-xl, 24px);
 
       ul p:last-child {
         margin-block-end: 0;
@@ -176,8 +176,8 @@ ul:is([data-type='dos-donts'], [data-type='examples']) {
 ul:has(> li > img[src*='rh-ui-icon-']) {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--rh-space-2xl);
-  margin-block: var(--rh-space-2xl);
+  gap: var(--rh-space-2xl, 32px);
+  margin-block: var(--rh-space-2xl, 32px);
   margin-inline: 0;
   padding-inline: 0;
 
@@ -197,12 +197,12 @@ ul:has(> li > img[src*='rh-ui-icon-']) {
 img[src*='rh-ui-icon-'] {
   filter: var(--ui-icon-filter);
   transition: filter 0s ease;
-  margin-block-end: var(--rh-space-lg);
+  margin-block-end: var(--rh-space-lg, 16px);
   max-width: 48px;
 }
 
 rh-alert {
-  margin-block: var(--rh-space-3xl);
+  margin-block: var(--rh-space-3xl, 48px);
 }
 
 /**
