@@ -25,6 +25,7 @@ elements/*/test/*.js
 uxdot/*.js
 react
 lib/**/*.js
+.stylelint/**/*.js
 *.tsbuildinfo
 *.map
 *.d.ts
