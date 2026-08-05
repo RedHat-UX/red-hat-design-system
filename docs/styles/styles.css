@@ -32,11 +32,19 @@
   }
 
   body {
-    color: var(--rh-color-text-primary, light-dark(var(--rh-color-text-primary-on-light, #151515), var(--rh-color-text-primary-on-dark, #ffffff)));
+    color:
+      var(--rh-color-text-primary,
+        light-dark(
+          var(--rh-color-text-primary-on-light, #151515),
+          var(--rh-color-text-primary-on-dark, #ffffff)));
   }
 
   a {
-    color: var(--rh-color-interactive-primary-default, light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc), var(--rh-color-interactive-primary-default-on-dark, #92c5f9)));
+    color:
+      var(--rh-color-interactive-primary-default,
+        light-dark(
+          var(--rh-color-interactive-primary-default-on-light, #0066cc),
+          var(--rh-color-interactive-primary-default-on-dark, #92c5f9)));
     text-decoration: underline dashed 1px;
     text-decoration-color:
       light-dark(var(--rh-color-gray-50, #707070),
@@ -45,21 +53,47 @@
     transition: ease text-underline-offset 0.3s;
 
     &:hover {
-      color: var(--rh-color-interactive-primary-hover, light-dark(var(--rh-color-interactive-primary-hover-on-light, #003366), var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)));
+      color:
+        var(--rh-color-interactive-primary-hover,
+          light-dark(
+            var(--rh-color-interactive-primary-hover-on-light, #003366),
+            var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)));
       text-decoration-color: inherit;
       text-underline-offset: max(6px, 0.33em);
     }
 
     &:focus-within {
-      color: var(--rh-color-interactive-primary-focus, light-dark(var(--rh-color-interactive-primary-focus-on-light, #003366), var(--rh-color-interactive-primary-focus-on-dark, #b9dafc)));
+      color:
+        var(--rh-color-interactive-primary-focus,
+          light-dark(
+            var(--rh-color-interactive-primary-focus-on-light, #003366),
+            var(--rh-color-interactive-primary-focus-on-dark, #b9dafc)));
       text-decoration-color: inherit;
       text-underline-offset: max(6px, 0.33em);
-      &:hover { color: var(--rh-color-interactive-primary-focus, light-dark(var(--rh-color-interactive-primary-focus-on-light, #003366), var(--rh-color-interactive-primary-focus-on-dark, #b9dafc))); }
+
+      &:hover {
+        color:
+          var(--rh-color-interactive-primary-focus,
+            light-dark(
+              var(--rh-color-interactive-primary-focus-on-light, #003366),
+              var(--rh-color-interactive-primary-focus-on-dark, #b9dafc)));
+      }
     }
 
     &:visited { /* stylelint-disable-line no-descending-specificity */
-      color: var(--rh-color-interactive-primary-visited-default, light-dark(var(--rh-color-interactive-primary-visited-default-on-light, #5e40be), var(--rh-color-interactive-primary-visited-default-on-dark, #b6a6e9)));
-      &:hover { color: var(--rh-color-interactive-primary-visited-hover, light-dark(var(--rh-color-interactive-primary-visited-hover-on-light, #21134d), var(--rh-color-interactive-primary-visited-hover-on-dark, #ece6ff))); }
+      color:
+        var(--rh-color-interactive-primary-visited-default,
+          light-dark(
+            var(--rh-color-interactive-primary-visited-default-on-light, #5e40be),
+            var(--rh-color-interactive-primary-visited-default-on-dark, #b6a6e9)));
+
+      &:hover {
+        color:
+          var(--rh-color-interactive-primary-visited-hover,
+            light-dark(
+              var(--rh-color-interactive-primary-visited-hover-on-light, #21134d),
+              var(--rh-color-interactive-primary-visited-hover-on-dark, #ece6ff)));
+      }
     }
 
     /* Denote VPN / RH Internal links */
@@ -82,7 +116,12 @@
   }
 
   hr {
-    border-block-start: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle, light-dark(var(--rh-color-border-subtle-on-light, #c7c7c7), var(--rh-color-border-subtle-on-dark, #707070)));
+    border-block-start:
+      var(--rh-border-width-sm, 1px) solid
+      var(--rh-color-border-subtle,
+        light-dark(
+          var(--rh-color-border-subtle-on-light, #c7c7c7),
+          var(--rh-color-border-subtle-on-dark, #707070)));
     border-inline: none;
     border-block-end: none;
     margin-block-end: var(--rh-space-2xl, 32px);
@@ -98,7 +137,11 @@
   }
 
   figcaption {
-    color: var(--rh-color-text-secondary, light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d), var(--rh-color-text-secondary-on-dark, #c7c7c7)));
+    color:
+      var(--rh-color-text-secondary,
+        light-dark(
+          var(--rh-color-text-secondary-on-light, #4d4d4d),
+          var(--rh-color-text-secondary-on-dark, #c7c7c7)));
   }
 
   .visually-hidden {
@@ -329,7 +372,11 @@
 
   uxdot-example + figcaption ol,
   uxdot-example + figcaption p {
-    color: var(--rh-color-text-secondary, light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d), var(--rh-color-text-secondary-on-dark, #c7c7c7)));
+    color:
+      var(--rh-color-text-secondary,
+        light-dark(
+          var(--rh-color-text-secondary-on-light, #4d4d4d),
+          var(--rh-color-text-secondary-on-dark, #c7c7c7)));
     font-size: var(--rh-font-size-body-text-sm, 0.875rem);
     line-height: var(--rh-line-height-body-text, 1.5);
   }
@@ -379,8 +426,19 @@
   :where(code:not([class^='language-'])) {
     padding-inline: var(--rh-space-xs, 4px);
     background:
-      light-dark(oklch(from var(--rh-color-surface, light-dark(var(--rh-color-surface-lightest, #ffffff), var(--rh-color-surface-darkest, #151515))) calc(l - 0.05) c h),
-        oklch(from var(--rh-color-surface, light-dark(var(--rh-color-surface-lightest, #ffffff), var(--rh-color-surface-darkest, #151515))) calc(l + 0.1) c h));
+      light-dark(
+          oklch(from
+          var(--rh-color-surface,
+          light-dark(
+            var(--rh-color-surface-lightest, #ffffff),
+            var(--rh-color-surface-darkest, #151515)))
+            calc(l - 0.05) c h),
+            oklch(from
+            var(--rh-color-surface,
+            light-dark(
+              var(--rh-color-surface-lightest, #ffffff),
+              var(--rh-color-surface-darkest, #151515)))
+              calc(l + 0.1) c h));
     border-radius: var(--rh-border-radius-default, 3px);
     font-size: var(--rh-font-size-code-md, 1rem);
     font-weight: var(--rh-font-weight-code-regular, 400);
@@ -396,13 +454,21 @@
   }
 
   :where(kbd) {
-    --_uxdot-kbd-color-border: var(--rh-color-border-subtle, light-dark(var(--rh-color-border-subtle-on-light, #c7c7c7), var(--rh-color-border-subtle-on-dark, #707070)));
+    --_uxdot-kbd-color-border:
+      var(--rh-color-border-subtle,
+        light-dark(
+          var(--rh-color-border-subtle-on-light, #c7c7c7),
+          var(--rh-color-border-subtle-on-dark, #707070)));
 
     background-color:
       light-dark(
           var(--rh-color-surface-lightest, #ffffff),
           var(--rh-color-surface-darkest, #151515));
-    color: var(--rh-color-text-primary, light-dark(var(--rh-color-text-primary-on-light, #151515), var(--rh-color-text-primary-on-dark, #ffffff)));
+    color:
+      var(--rh-color-text-primary,
+        light-dark(
+          var(--rh-color-text-primary-on-light, #151515),
+          var(--rh-color-text-primary-on-dark, #ffffff)));
     border-radius: var(--rh-border-radius-default, 3px);
     border: var(--rh-border-width-sm, 1px) solid var(--_uxdot-kbd-color-border);
     box-shadow: 0 2px 0 1px var(--_uxdot-kbd-color-border);
@@ -457,7 +523,12 @@
   }
 
   #edit-this-page {
-    border-block-start: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle, light-dark(var(--rh-color-border-subtle-on-light, #c7c7c7), var(--rh-color-border-subtle-on-dark, #707070)));
+    border-block-start:
+      var(--rh-border-width-sm, 1px) solid
+      var(--rh-color-border-subtle,
+        light-dark(
+          var(--rh-color-border-subtle-on-light, #c7c7c7),
+          var(--rh-color-border-subtle-on-dark, #707070)));
     margin-block-start: var(--rh-space-6xl, 96px);
     padding-block-start: var(--rh-space-lg, 16px);
   }

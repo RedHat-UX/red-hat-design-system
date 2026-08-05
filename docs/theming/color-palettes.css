@@ -82,7 +82,12 @@ rh-alert + rh-card {
 .color-palette-grid rh-surface {
   padding: 2rem;
   border-radius: var(--rh-border-radius-default, 3px);
-  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle, light-dark(var(--rh-color-border-subtle-on-light, #c7c7c7), var(--rh-color-border-subtle-on-dark, #707070)));
+  border:
+    var(--rh-border-width-sm, 1px) solid
+    var(--rh-color-border-subtle,
+      light-dark(
+        var(--rh-color-border-subtle-on-light, #c7c7c7),
+        var(--rh-color-border-subtle-on-dark, #707070)));
 }
 
 .pullquote-card {
