@@ -7,13 +7,7 @@ tags:
   - accessibility
 ---
 
-<style data-helmet>
-  rh-blockquote {
-    display: block;
-    margin-block: 2rem;
-    margin-inline-start: 2.5rem;
-  }
-</style>
+<link rel="stylesheet" href="manual-testing.css" data-helmet>
 
 <script type="module" data-helmet>
   import '@rhds/elements/rh-blockquote/rh-blockquote.js';

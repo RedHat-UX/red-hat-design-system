@@ -14,12 +14,7 @@ subnav:
   import '@rhds/elements/rh-accordion/rh-accordion.js';
 </script>
 
-<style data-helmet>
-  rh-accordion {
-    display: block;
-    margin-block: var(--rh-space-2xl, 32px);
-  }
-</style>
+<link rel="stylesheet" href="faqs.css" data-helmet>
 
 ## Frequently asked questions
 

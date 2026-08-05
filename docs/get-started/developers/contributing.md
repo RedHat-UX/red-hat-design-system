@@ -14,11 +14,7 @@ subnav:
   import '@rhds/elements/rh-tag/rh-tag.js';
 </script>
 
-<style data-helmet>
-  rh-code-block + rh-code-block {
-    margin-block-start: var(--rh-spacer-2xl, 32px);
-  }
-</style>
+<link rel="stylesheet" href="contributing.css" data-helmet>
 
 ## Install Project
 

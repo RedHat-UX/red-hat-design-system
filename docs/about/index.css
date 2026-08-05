@@ -1,0 +1,24 @@
+.red-heading {
+  color: var(--rh-color-text-brand-on-light, #ee0000);
+  font-size: var(--rh-font-size-heading-xl, 2.5rem);
+}
+
+rh-card rh-icon {
+  --rh-icon-size: var(--rh-size-icon-07, 80px);
+
+  color:
+    var(--rh-color-icon-primary,
+      light-dark(
+        var(--rh-color-icon-primary-on-light, #ee0000),
+        var(--rh-color-icon-primary-on-dark, #ee0000)));
+  width: var(--rh-icon-size);
+}
+
+.intro h2 {
+  font-size: var(--rh-font-size-heading-xl, 2.5rem);
+  color:
+    var(--rh-color-text-brand,
+      light-dark(
+        var(--rh-color-text-brand-on-light, #ee0000),
+        var(--rh-color-text-brand-on-dark, #ee0000)));
+}

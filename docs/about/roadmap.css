@@ -1,0 +1,12 @@
+rh-tile {
+  margin-block: var(--rh-space-3xl, 48px);
+  max-width: 320px;
+
+  & [slot='headline'] {
+    font-weight: var(--rh-font-weight-heading-bold, 700);
+  }
+
+  & [icon='github'] {
+    --rh-icon-size: var(--rh-size-icon-03, 32px);
+  }
+}

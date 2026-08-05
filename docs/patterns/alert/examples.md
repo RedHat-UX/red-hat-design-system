@@ -251,8 +251,6 @@ document.addEventListener('close', function(event) {
 });
 ```
 
-<style data-helmet>
-rh-code-block + rh-code-block { margin-block-start: var(--rh-space-xl); }
-</style>
+<link rel="stylesheet" href="examples.css" data-helmet>
 
 {% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}

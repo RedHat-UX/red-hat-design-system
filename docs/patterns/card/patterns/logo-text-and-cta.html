@@ -19,12 +19,17 @@
 <style>
   .example-logo-text-and-cta {
     inline-size: 360px;
+
     & svg {
-      color: var(--rh-color-text-primary);
+      color:
+        var(--rh-color-text-primary,
+          light-dark(
+            var(--rh-color-text-primary-on-light, #151515),
+            var(--rh-color-text-primary-on-dark, #ffffff)));
     }
+
     & h3 {
       margin-block-end: var(--rh-space-lg, 16px);
     }
   }
 </style>
-

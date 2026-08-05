@@ -1,0 +1,11 @@
+#patterns-nav {
+  margin-block: var(--rh-space-2xl, 32px);
+}
+
+rh-tile h3 {
+  margin: 0 !important;
+}
+
+rh-tile p {
+  margin-block: 0 !important;
+}

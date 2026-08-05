@@ -21,11 +21,7 @@ subnav:
   import '@rhds/elements/rh-table/rh-table.js';
 </script>
 
-<style data-helmet>
-  rh-table a {
-    text-decoration: underline dashed 1px;
-  }
-</style>
+<link rel="stylesheet" href="figma-library.css" data-helmet>
 
 ## Accessing our Figma library
 
