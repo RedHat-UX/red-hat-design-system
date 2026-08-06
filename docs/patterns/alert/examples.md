@@ -251,6 +251,6 @@ document.addEventListener('close', function(event) {
 });
 ```
 
-<link rel="stylesheet" href="examples.css" data-helmet>
+<link rel="stylesheet" href="../examples.css" data-helmet>
 
 {% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}

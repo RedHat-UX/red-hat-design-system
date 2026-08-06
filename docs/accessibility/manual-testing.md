@@ -7,7 +7,7 @@ tags:
   - accessibility
 ---
 
-<link rel="stylesheet" href="manual-testing.css" data-helmet>
+<link rel="stylesheet" href="../manual-testing.css" data-helmet>
 
 <script type="module" data-helmet>
   import '@rhds/elements/rh-blockquote/rh-blockquote.js';

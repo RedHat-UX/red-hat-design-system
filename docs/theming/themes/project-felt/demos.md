@@ -38,7 +38,7 @@ subnav:
 
 <link rel="stylesheet" data-helmet href="/theming/themes/project-felt/preview/felt-theme-preview.css">
 
-<link rel="stylesheet" href="demos.css" data-helmet>
+<link rel="stylesheet" href="../demos.css" data-helmet>
 
 ## Try it out
 

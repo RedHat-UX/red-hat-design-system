@@ -10,7 +10,7 @@ subnav:
   order: 10
 ---
 
-<link rel="stylesheet" href="installation.css" data-helmet>
+<link rel="stylesheet" href="../installation.css" data-helmet>
 
 <script type="module" data-helmet>
   import '@uxdot/elements/uxdot-example.js';

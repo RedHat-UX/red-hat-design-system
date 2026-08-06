@@ -15,7 +15,7 @@ order: 40
   import '@rhds/elements/rh-table/rh-table.js';
 </script>
 
-<link rel="stylesheet" href="content.css" data-helmet>
+<link rel="stylesheet" href="../content.css" data-helmet>
 
 ## Overview
 

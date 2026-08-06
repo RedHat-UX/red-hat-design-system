@@ -14,7 +14,7 @@ subnav:
   import '@rhds/elements/rh-accordion/rh-accordion.js';
 </script>
 
-<link rel="stylesheet" href="faqs.css" data-helmet>
+<link rel="stylesheet" href="../faqs.css" data-helmet>
 
 ## Frequently asked questions
 
