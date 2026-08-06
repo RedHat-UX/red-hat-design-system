@@ -146,7 +146,7 @@ Note that there may be cases where a focus ring appears against a light backgrou
 ### Technical notes on the CSS
 
 - We use the <code>color-scheme</code> property on our websites, which allows us to use the <code>light-dark()</code> function. If your website does not use <code>color-scheme</code>, you can separate out the dark mode focus ring color into another selector or query. The good news is that, even if you do not have a <code>color-scheme</code> and you do not account for this, the fallback ring color of <code>--rh-color-blue-50</code> is **WCAG conformant** against both our dark and light backgrounds.
-- The <code>:is(\*, :hover)</code> pseudo-class prevents potential hover state style conflicts from making the focus outline disappear, for cases where an element has both keyboard focus and mouse cursor hover.
+- The <code>:is(*, :hover)</code> pseudo-class prevents potential hover state style conflicts from making the focus outline disappear, for cases where an element has both keyboard focus and mouse cursor hover.
 - WCAG 2.2 requires 2px outlines for AAA conformance when focus is offset. However, **inset** focus must be greater than 2px. So, for the sake of consistency, we go with 3px in **all cases**.
 - We add a <code>transition: none</code> property to **temporarily remove any animations** that may be on the element, so the focus ring appearance does not animate.
 - Inset focus rings receive a negative <code>outline-offset</code> just large enough to leave some whitespace between the ring and the border of the element.
