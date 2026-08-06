@@ -62,7 +62,7 @@ In CSS terms, here is some minimal code that meets these requirements:
   transition: none;
 }
 
-:where(*, :hover):focus-visible {
+:where(:focus-visible) {
   border-radius: 3px;
 }
 ```
@@ -114,7 +114,7 @@ Note that there may be cases where a focus ring appears against a light backgrou
   transition: none;
 }
 
-:where(*, :hover):focus-visible {
+:where(:focus-visible) {
   border-radius: 3px;
 }
 
