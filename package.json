@@ -248,10 +248,20 @@
         "**/*.html"
       ]
     },
+    "compile:stylelint-plugin": {
+      "command": "tsc .stylelint/require-token-fallback.ts --outDir .stylelint --module nodenext --moduleResolution nodenext --esModuleInterop --skipLibCheck",
+      "files": [
+        ".stylelint/**/*.ts"
+      ],
+      "output": [
+        ".stylelint/**/*.js"
+      ]
+    },
     "stylelint": {
       "command": "stylelint 'elements/**/*.css' 'lib/**/*.css' 'docs/**/*.scss' 'docs/**/*.css' 'uxdot/**/*.css'",
       "dependencies": [
-        "analyze"
+        "analyze",
+        "compile:stylelint-plugin"
       ],
       "files": [
         "docs/**/*.scss",
