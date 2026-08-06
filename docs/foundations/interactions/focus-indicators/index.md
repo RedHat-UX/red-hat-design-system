@@ -118,6 +118,10 @@ Note that there may be cases where a focus ring appears against a light backgrou
   border-radius: 3px;
 }
 
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
 /* Placeholder `.inset` class for inset focus. */
 .inset:is(*, :hover):focus-visible {
   outline-offset: -7px;
@@ -136,10 +140,6 @@ Note that there may be cases where a focus ring appears against a light backgrou
 /* Placeholder `.dark-bg` class for focus against dark backgrounds. */
 .dark-bg:is(*, :hover):focus-visible {
   outline-color: --rh-color-blue-30;
-}
-
-:focus:not(:focus-visible) {
-  outline: none;
 }
 ```
 
