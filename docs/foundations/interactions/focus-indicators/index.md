@@ -45,7 +45,7 @@ When focus is applied to an interactive element, we apply an outline that:
 - is solid (not dashed or dotted).
 - is 3px thick.
 - is offset from the element by 3px.
-- has a default border radius of 3px (unless the element already has a specified radius).
+- has a default border radius of 3px (which is overridden if the element already has a specified radius).
 - has 3:1 or greater contrast from the background colors just outside and inside of it.
 - temporarily disables any transition animations on the element (so entering or exiting the focus state is not distracting).
 
