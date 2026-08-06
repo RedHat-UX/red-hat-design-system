@@ -28,7 +28,6 @@ subnav:
   import "@uxdot/elements/uxdot-pattern.js";
 </script>
 
-
 ## Focus indicator styles
 
 Focus styles visually indicate when interactive elements like links and buttons are selected (usually via keyboard) and ready to receive input. **All interactive elements are required** to have a [visible focus indicator](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html) to conform with the Web Content Accessibility Guidelines (WCAG).
@@ -46,9 +45,9 @@ When focus is applied to an interactive element, we apply an outline that:
 - is solid (not dashed or dotted).
 - is 3px thick.
 - is offset from the element by 3px.
+- has a default border radius of 3px (_unless the element already has a specified radius_).
 - has 3:1 or greater contrast from the background colors just outside and inside of it.
 - temporarily disables any transition animations on the element (so entering or exiting the focus state is not distracting).
-
 
 ### Basic CSS
 
@@ -60,7 +59,11 @@ In CSS terms, here is some minimal code that meets these requirements:
   outline-offset: 3px;
   outline-style: solid;
   outline-width: 3px;
-  transition: none; 
+  transition: none;
+}
+
+:where(*, :hover):focus-visible {
+  border-radius: 3px;
 }
 ```
 
@@ -94,22 +97,25 @@ We have designated focus ring colors that align with our brand standards for bot
   </table>
 </rh-table>
 
-
 #### Styling considerations
 
 Note that there may be cases where a focus ring appears against a light background in dark mode and vice versa. For example, an inset focus ring for a text field may appear against a white background, even in dark mode. In these cases, you may need to manually override the default dark scheme ring color (<code>--rh-color-blue-30</code>) with the light scheme color (<code>--rh-color-blue-50</code>).
 
 <img src="./focus-styling-considerations-demo.svg" alt="Demo of how inset ring colors should be set based on their background color and not the page theme" style="max-width: 100%;">
 
+## Full example CSS
 
-## Example CSS
 ```css rh-code-block
 :is(*, :hover):focus-visible {
   outline-color: light-dark(--rh-color-blue-50, --rh-color-blue-30);
   outline-offset: 3px;
   outline-style: solid;
   outline-width: 3px;
-  transition: none; 
+  transition: none;
+}
+
+:where(*, :hover):focus-visible {
+  border-radius: 3px;
 }
 
 /* Placeholder `.inset` class for inset focus. */
@@ -140,15 +146,13 @@ Note that there may be cases where a focus ring appears against a light backgrou
 ### Technical notes on the CSS
 
 - We use the <code>color-scheme</code> property on our websites, which allows us to use the <code>light-dark()</code> function. If your website does not use <code>color-scheme</code>, you can separate out the dark mode focus ring color into another selector or query. The good news is that, even if you do not have a <code>color-scheme</code> and you do not account for this, the fallback ring color of <code>--rh-color-blue-50</code> is **WCAG conformant** against both our dark and light backgrounds.
-- The <code>:is(*, :hover)</code> pseudo-class prevents potential hover state style conflicts from making the focus outline disappear, for cases where an element has both keyboard focus and mouse cursor hover.
+- The <code>:is(\*, :hover)</code> pseudo-class prevents potential hover state style conflicts from making the focus outline disappear, for cases where an element has both keyboard focus and mouse cursor hover.
 - WCAG 2.2 requires 2px outlines for AAA conformance when focus is offset. However, **inset** focus must be greater than 2px. So, for the sake of consistency, we go with 3px in **all cases**.
 - We add a <code>transition: none</code> property to **temporarily remove any animations** that may be on the element, so the focus ring appearance does not animate.
 - Inset focus rings receive a negative <code>outline-offset</code> just large enough to leave some whitespace between the ring and the border of the element.
 - Note that we prefer <code>:focus-visible</code> to <code>:focus</code>. **Avoid using the latter**. In fact, our code above disables the latter.
 
-
 ## Best Practices
-
 
 ### Custom focus indicator styles
 
