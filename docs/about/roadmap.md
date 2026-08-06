@@ -13,7 +13,7 @@ tags:
 
 <link data-helmet rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
 
-<link rel="stylesheet" href="roadmap.css" data-helmet>
+<link rel="stylesheet" href="../roadmap.css" data-helmet>
 
 
 Our roadmap is an up-to-date outline of what we're working on and what we're planning to do in the Red Hat Design System over the next 2–3 quarters (6-9 months). You can follow along through [our open source roadmap on GitHub](https://github.com/orgs/RedHat-UX/projects/7/).

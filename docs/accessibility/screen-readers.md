@@ -15,7 +15,7 @@ order: 100
       data-helmet
       href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
 
-<link rel="stylesheet" href="screen-readers.css" data-helmet>
+<link rel="stylesheet" href="../screen-readers.css" data-helmet>
 
 ## Why test with screen readers?
 

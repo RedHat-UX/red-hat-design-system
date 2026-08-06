@@ -18,7 +18,7 @@ subnav:
   import '@rhds/elements/rh-table/rh-table.js';
 </script>
 
-<link rel="stylesheet" href="accessibility.css" data-helmet>
+<link rel="stylesheet" href="../accessibility.css" data-helmet>
 
 ## Approach
 

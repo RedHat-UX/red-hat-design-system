@@ -10,7 +10,7 @@ subnav:
   order: 40
 ---
 
-<link rel="stylesheet" href="css-foundations.css" data-helmet>
+<link rel="stylesheet" href="../css-foundations.css" data-helmet>
 
 <script type="module" data-helmet>
   import '@uxdot/elements/uxdot-example.js';

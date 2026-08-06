@@ -21,7 +21,7 @@ subnav:
   import '@rhds/elements/rh-table/rh-table.js';
 </script>
 
-<link rel="stylesheet" href="figma-library.css" data-helmet>
+<link rel="stylesheet" href="../figma-library.css" data-helmet>
 
 ## Accessing our Figma library
 

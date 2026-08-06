@@ -14,7 +14,7 @@ subnav:
   import '@rhds/elements/rh-tag/rh-tag.js';
 </script>
 
-<link rel="stylesheet" href="contributing.css" data-helmet>
+<link rel="stylesheet" href="../contributing.css" data-helmet>
 
 ## Install Project
 
