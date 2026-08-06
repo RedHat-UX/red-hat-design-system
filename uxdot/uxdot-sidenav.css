@@ -1,6 +1,6 @@
 :host {
-  --_padding-start: var(--uxdot-sidenav-padding-start, var(--rh-space-2xl));
-  --_padding-end: var(--uxdot-sidenav-padding-end, var(--rh-space-2xl));
+  --_padding-start: var(--uxdot-sidenav-padding-start, var(--rh-space-2xl, 32px));
+  --_padding-end: var(--uxdot-sidenav-padding-end, var(--rh-space-2xl, 32px));
   --_max-height: 100dvh;
   --_sidenav_width: var(--uxdot-sidenav-width, 320px);
 
@@ -25,12 +25,12 @@
   background-color: transparent;
   border: none;
   margin: 0;
-  padding: var(--rh-space-md);
+  padding: var(--rh-space-md, 8px);
   line-height: 0 !important;
 }
 
 #content {
-  padding: var(--rh-space-lg);
+  padding: var(--rh-space-lg, 16px);
 }
 
 #container {
@@ -43,13 +43,13 @@
 }
 
 #close-button-container {
-  padding-inline: var(--rh-space-md);
-  padding-block: var(--rh-space-lg);
+  padding-inline: var(--rh-space-md, 8px);
+  padding-block: var(--rh-space-lg, 16px);
   max-block-size: var(--uxdot-masthead-max-height, 72px);
 }
 
 #close-button:focus {
-  outline: var(--rh-border-width-md) solid var(--rh-color-border-interactive);
+  outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
   border-radius: var(--rh-border-radius-default, 3px);
 }
 
@@ -67,7 +67,7 @@
 
 [part='overlay'] {
   display: none;
-  background-color: rgb(from var(---rh-color-gray-90) / var(--rh-opacity-60));
+  background-color: rgb(from var(---rh-color-gray-90) / var(--rh-opacity-60, 60%));
   position: fixed;
   inset-block-start: 0;
   block-size: 100dvh;
@@ -82,14 +82,16 @@
 @media (min-width: 320px) {
   :host {
     inline-size: var(--_sidenav_width);
-    box-shadow: var(--rh-box-shadow-lg);
+    box-shadow: var(--rh-box-shadow-lg, 0 6px 8px 2px rgba(21, 21, 21, 0.3));
   }
 }
 
 @media (min-width: 576px) {
   #close-button-container {
-    padding-block: calc(var(--rh-space-lg) + var(--rh-space-xs)) var(--rh-space-lg);
-    padding-inline: var(--rh-space-lg);
+    padding-block:
+      calc(var(--rh-space-lg, 16px) + var(--rh-space-xs, 4px))
+      var(--rh-space-lg, 16px);
+    padding-inline: var(--rh-space-lg, 16px);
   }
 }
 
@@ -100,7 +102,7 @@
     position: fixed;
     inset-block-start: var(--uxdot-masthead-max-height, 72px);
     block-size: calc(var(--_max-height) - var(--uxdot-masthead-max-height, 72px));
-    border-inline-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+    border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
     box-shadow: unset;
   }
 

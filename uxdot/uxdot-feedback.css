@@ -4,17 +4,17 @@
   display: block;
   container-type: inline-size;
   container-name: host;
-  margin-block-start: var(--rh-space-5xl);
+  margin-block-start: var(--rh-space-5xl, 80px);
 }
 
 #container {
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: var(--rh-space-3xl);
-  margin-block-end: var(--rh-space-3xl);
+  grid-gap: var(--rh-space-3xl, 48px);
+  margin-block-end: var(--rh-space-3xl, 48px);
 
   :is(*, :hover):focus-visible {
-    border-radius: var(--rh-border-radius-default);
+    border-radius: var(--rh-border-radius-default, 3px);
     outline-color:
       light-dark(
           --rh-color-border-interactive-on-light,
@@ -32,15 +32,15 @@
 
 h2,
 ::slotted(h2) {
-  font-family: var(--rh-font-family-heading);
-  font-size: var(--rh-font-size-heading-md) !important;
-  font-weight: var(--rh-font-weight-heading-medium);
-  line-height: var(--rh-line-height-heading);
-  margin: var(--rh-space-2xl) 0 !important;
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-heading-md, 1.75rem) !important;
+  font-weight: var(--rh-font-weight-heading-medium, 500);
+  line-height: var(--rh-line-height-heading, 1.3);
+  margin: var(--rh-space-2xl, 32px) 0 !important;
 }
 
 p {
-  font-size: var(--rh-font-size-body-text-lg);
+  font-size: var(--rh-font-size-body-text-lg, 1.125rem);
 }
 
 a {
@@ -48,7 +48,10 @@ a {
     light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc),
       var(--rh-color-interactive-primary-default-on-dark, #92c5f9));
   text-decoration: underline dashed 1px;
-  text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40));
+  text-decoration-color:
+    light-dark(
+        var(--rh-color-gray-50, #707070),
+        var(--rh-color-gray-40, #a3a3a3));
   text-underline-offset: max(5px, 0.28em);
   transition: ease all 0.3s;
 

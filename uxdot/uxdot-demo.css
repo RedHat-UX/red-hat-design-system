@@ -3,7 +3,7 @@
 }
 
 iframe {
-  border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
   block-size: 400px;
   max-block-size: var(--height);
   inline-size: 100%;
@@ -15,7 +15,7 @@ iframe {
 
   display: flex;
   flex-direction: column;
-  gap: var(--rh-space-2xl);
+  gap: var(--rh-space-2xl, 32px);
 
   &:not(:defined) {
     opacity: 0;
@@ -35,19 +35,19 @@ iframe {
   &::part(body) {
     margin: 0;
     border-block-end:
-      var(--rh-border-width-sm) solid
+      var(--rh-border-width-sm, 1px) solid
       var(--rh-color-border-subtle);
   }
 
   &::part(footer) {
     margin: 0;
     flex-flow: row wrap;
-    gap: var(--rh-space-md);
-    padding: var(--rh-space-md);
+    gap: var(--rh-space-md, 8px);
+    padding: var(--rh-space-md, 8px);
 
     @container (min-width: 992px) {
-      gap: var(--rh-space-lg);
-      padding: var(--rh-space-lg);
+      gap: var(--rh-space-lg, 16px);
+      padding: var(--rh-space-lg, 16px);
     }
   }
 
@@ -63,9 +63,9 @@ iframe {
     display: inline-flex;
     align-items: center;
     white-space: nowrap;
-    gap: var(--rh-space-sm);
-    padding-inline: calc(var(--rh-space-lg) * 0.75) var(--rh-space-lg);
-    padding-block: var(--rh-space-sm);
+    gap: var(--rh-space-sm, 6px);
+    padding-inline: calc(var(--rh-space-lg, 16px) * 0.75) var(--rh-space-lg, 16px);
+    padding-block: var(--rh-space-sm, 6px);
     text-decoration: none;
 
     &:focus-visible {
@@ -98,14 +98,14 @@ iframe {
     position: relative;
     display: block;
     margin-block-start: -1px;
-    border-end-start-radius: var(--rh-border-radius-default);
-    border-end-end-radius: var(--rh-border-radius-default);
+    border-end-start-radius: var(--rh-border-radius-default, 3px);
+    border-end-end-radius: var(--rh-border-radius-default, 3px);
   }
 
   & #knobs {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--rh-space-2xl);
+    gap: var(--rh-space-2xl, 32px);
 
     /* var(--rh-breakpoint-sm, 768px) */
     @media (min-width: 768px) {
@@ -132,12 +132,12 @@ iframe {
 
     & .code-tabs {
       border: 0;
-      border-radius: var(--rh-border-radius-default);
+      border-radius: var(--rh-border-radius-default, 3px);
 
       &::part(tabs-container) {
         background:
-          light-dark(var(--rh-color-surface-lightest),
-            var(--rh-color-surface-darker));
+          light-dark(var(--rh-color-surface-lightest, #ffffff),
+            var(--rh-color-surface-darker, #1f1f1f));
       }
 
       & rh-tab-panel {

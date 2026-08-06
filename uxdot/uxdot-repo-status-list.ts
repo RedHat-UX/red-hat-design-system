@@ -2,11 +2,14 @@ import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import { legend } from './uxdot-repo.js';
 import type { RepoStatus } from '../docs/_plugins/types.js';
 
 import style from './uxdot-repo-status-list.css';
 
+@themable
 @customElement('uxdot-repo-status-list')
 export class UxdotRepoStatusList extends LitElement {
   static styles = [style];
