@@ -83,9 +83,14 @@ rules:
 
   rhds/deprecated: true
 
-  rhds/no-unknown-token-name: true
+  rhds/no-unknown-token-name:
+    - true
+    - cem: ./custom-elements.json
 
   rhds/require-token-fallback: true
+
+  rhds/token-values: true
+
 overrides:
   - files:
       - docs/**/*.scss
