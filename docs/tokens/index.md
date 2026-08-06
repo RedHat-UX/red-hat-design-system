@@ -14,24 +14,7 @@ tokenPage: true
   import '@rhds/elements/rh-code-block/rh-code-block.js';
 </script>
 
-<style data-helmet>
-  .page-overvie .container .grid {
-    margin-block: var(--rh-space--2xl, 32px);
-  }
-
-  uxdot-example::part(container) {
-    /*background: transparent;*/
-  }
-
-  rh-tile [slot="headline"] h3,
-  rh-tile [slot="image"] {
-     margin-block: 0 !important;
-  }
-
-  rh-card {
-    height: auto;
-  }
-</style>
+<link rel="stylesheet" href="index.css" data-helmet>
 
 ## Introduction
 

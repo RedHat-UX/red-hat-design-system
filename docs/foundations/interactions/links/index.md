@@ -28,23 +28,7 @@ subnav:
   import "@uxdot/elements/uxdot-pattern.js";
 </script>
 
-<style>
-.underline-exception {
-    display: block;
-    margin-block: var(--rh-space-2xl);
-    & span {
-        font-family: var(--rh-font-family-heading);
-        font-size: var(--rh-font-size-heading-xs);
-        font-weight: var(--rh-font-weight-heading-medium);
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: var(--rh-space-md);
-        color: var(--rh-color-status-danger);
-        margin-block: var(--rh-space-2xl) var(--rh-space-lg);
-    }
-}
-</style>
+<link rel="stylesheet" href="index.css" data-helmet>
 
 ## Types of links
 

@@ -18,15 +18,7 @@ subnav:
   import '@rhds/elements/rh-table/rh-table.js';
 </script>
 
-<style data-helmet>
-  .pass { color: var(--rh-color-status-success); }
-  .fail { color: var(--rh-color-status-danger); }
-  figcaption { 
-    margin-block-start: var(--rh-space-lg);
-    color: var(--rh-color-text-secondary-on-light);
-    font-size: var(--rh-font-size-body-text-sm);
-  }
-</style>
+<link rel="stylesheet" href="../accessibility.css" data-helmet>
 
 ## Approach
 

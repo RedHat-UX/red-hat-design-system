@@ -10,24 +10,33 @@
 <style>
   .example-card-list-with-dividers {
     inline-size: 360px;
+
     & ul {
       display: flex;
       flex-flow: column;
       margin: 0;
       padding: 0;
       list-style-type: none;
+
       & li {
         margin-block: 0;
-        padding-block: var(--rh-space-lg);
-        border-block-end: 1px solid var(--rh-color-border-subtle);
+        padding-block: var(--rh-space-lg, 16px);
+        border-block-end:
+          1px solid
+          var(--rh-color-border-subtle,
+            light-dark(
+              var(--rh-color-border-subtle-on-light, #c7c7c7),
+              var(--rh-color-border-subtle-on-dark, #707070)));
+
         &:last-child {
           padding-block-end: 0;
           border-block-end: none;
         }
       }
     }
+
     & h3 {
-      margin-block-end: var(--rh-space-lg);
+      margin-block-end: var(--rh-space-lg, 16px);
     }
   }
 </style>
