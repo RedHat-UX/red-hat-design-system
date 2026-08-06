@@ -3,13 +3,18 @@ samp:not(.swatch) {
   /* Lengths */
   &.length {
     width: var(--samp-length-size);
-    background-color: var(--rh-color-surface-darkest);
+    background-color: var(--rh-color-surface-darkest, #151515);
 
     /* Linting rule issue */
     /* stylelint-disable-next-line rhds/token-values */
-    opacity: var(--rh-opacity-60);
+    opacity: var(--rh-opacity-60, 0.6);
     display: block;
-    border-bottom: 2px solid var(--rh-color-border-strong);
+    border-bottom:
+      2px solid
+      var(--rh-color-border-strong,
+        light-dark(
+          var(--rh-color-border-strong-on-light, #151515),
+          var(--rh-color-border-strong-on-dark, #ffffff)));
     position: relative;
 
     &:before,
@@ -17,12 +22,16 @@ samp:not(.swatch) {
       content: ' ';
       position: absolute;
       display: block;
-      height: var(--rh-length-xs);
+      height: var(--rh-length-xs, 4px);
       width: 0;
-      inset-block: calc(-1 * var(--rh-length-xs));
+      inset-block: calc(-1 * var(--rh-length-xs, 4px));
       border-style: solid;
-      border-inline-width: var(--rh-border-width-md) 0;
-      border-color: var(--rh-color-border-interactive);
+      border-inline-width: var(--rh-border-width-md, 2px) 0;
+      border-color:
+        var(--rh-color-border-interactive,
+          light-dark(
+            var(--rh-color-border-interactive-on-light, #0066cc),
+            var(--rh-color-border-interactive-on-dark, #92c5f9)));
     }
 
     &:before {
@@ -39,22 +48,27 @@ samp:not(.swatch) {
     aspect-ratio: 1;
     display: block;
     width: var(--samp-icon-size);
-    border: var(--rh-border-width-md) dotted var(--rh-color-border-strong);
+    border:
+      var(--rh-border-width-md, 2px) dotted
+      var(--rh-color-border-strong,
+        light-dark(
+          var(--rh-color-border-strong-on-light, #151515),
+          var(--rh-color-border-strong-on-dark, #ffffff)));
   }
 
   /* Fonts */
   &.font {
-    font-size: var(--samp-font-size, var(--rh-font-size-body-text-md));
-    font-family: var(--samp-font-family, var(--rh-font-family-body-text));
-    font-weight: var(--samp-font-weight, var(--rh-font-weight-body-text-regular));
+    font-size: var(--samp-font-size, var(--rh-font-size-body-text-md, 1rem));
+    font-family: var(--samp-font-family, var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif));
+    font-weight: var(--samp-font-weight, var(--rh-font-weight-body-text-regular, 400));
 
     &.heading {
-      font-size: var(--samp-font-size, var(--rh-font-size-heading-md));
-      font-family: var(--rh-font-family-heading);
+      font-size: var(--samp-font-size, var(--rh-font-size-heading-md, 1.75rem));
+      font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
     }
 
     &.code {
-      font-family: var(--rh-font-family-code);
+      font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
     }
   }
 
@@ -64,7 +78,7 @@ samp:not(.swatch) {
 
     &:not(.border, .text) {
       aspect-ratio: 1;
-      height: var(--rh-length-xl);
+      height: var(--rh-length-xl, 24px);
       display: block;
       border-radius: 100%;
       border: 1px solid transparent;
@@ -72,7 +86,11 @@ samp:not(.swatch) {
     }
 
     &:not(.border, .text, .dark) {
-      border-color: var(--rh-color-border-strong);
+      border-color:
+        var(--rh-color-border-strong,
+          light-dark(
+            var(--rh-color-border-strong-on-light, #151515),
+            var(--rh-color-border-strong-on-dark, #ffffff)));
     }
   }
 
@@ -83,33 +101,38 @@ samp:not(.swatch) {
 
   /* Box shadow */
   &.box-shadow {
-    height: var(--rh-length-2xl);
+    height: var(--rh-length-2xl, 32px);
     aspect-ratio: 1;
-    border-radius: var(--rh-border-radius-default);
+    border-radius: var(--rh-border-radius-default, 3px);
     box-shadow: var(--samp-box-shadow);
     display: block;
   }
 
   /* Border */
   &.border {
-    width: var(--rh-length-2xl);
+    width: var(--rh-length-2xl, 32px);
     aspect-ratio: 2;
     display: block;
     border-style: solid;
-    border-width: var(--samp-space-size, var(--rh-border-width-md));
-    border-color: var(--samp-color, var(--rh-color-border-strong));
-    border-radius: var(--samp-radius, var(--rh-border-radius-default));
+    border-width: var(--samp-space-size, var(--rh-border-width-md, 2px));
+    border-color:
+      var(--samp-color,
+        var(--rh-color-border-strong,
+        light-dark(
+          var(--rh-color-border-strong-on-light, #151515),
+          var(--rh-color-border-strong-on-dark, #ffffff))));
+    border-radius: var(--samp-radius, var(--rh-border-radius-default, 3px));
 
     &.sm {
-      border-width: var(--samp-space-size, var(--rh-border-width-sm));
+      border-width: var(--samp-space-size, var(--rh-border-width-sm, 1px));
     }
 
     &.md {
-      border-width: var(--samp-space-size, var(--rh-border-width-md));
+      border-width: var(--samp-space-size, var(--rh-border-width-md, 2px));
     }
 
     &.lg {
-      border-width: var(--samp-space-size, var(--rh-border-width-lg));
+      border-width: var(--samp-space-size, var(--rh-border-width-lg, 3px));
     }
   }
 
@@ -118,23 +141,23 @@ samp:not(.swatch) {
     opacity: var(--samp-opacity);
     background-color: black;
     display: block;
-    width: var(--rh-length-xl);
+    width: var(--rh-length-xl, 24px);
     aspect-ratio: 1;
   }
 
   /* Breakpoints */
   &.breakpoint img {
-    max-height: var(--rh-length-3xl);
+    max-height: var(--rh-length-3xl, 48px);
   }
 }
 
 samp.swatch {
   width: max-content;
-  border-radius: var(--rh-border-radius-pill);
-  border-width: var(--rh-border-width-sm);
+  border-radius: var(--rh-border-radius-pill, 64px);
+  border-width: var(--rh-border-width-sm, 1px);
   border-style: solid;
   border-color: oklch(from var(--swatch-color) calc(l + var(--_offset)) c h);
-  padding: var(--rh-space-xs) var(--rh-space-md);
+  padding: var(--rh-space-xs, 4px) var(--rh-space-md, 8px);
   display: inline;
   position: relative;
 
@@ -148,43 +171,48 @@ samp.swatch {
 
   &.color {
     transition-property: background-color, border-color;
-    transition-duration: var(--rh-animation-speed);
-    transition-timing-function: var(--rh-animation-timing);
+    transition-duration: var(--rh-animation-speed, 0.3s);
+    transition-timing-function:
+      var(--rh-animation-timing,
+        cubic-bezier(0.465, 0.183, 0.153, 0.946));
     background-color: var(--swatch-color);
-    font-family: var(--rh-font-family-body-text);
-    font-size: var(--rh-font-size-body-text-sm);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+    font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 
     &.isLight {
-      color: var(--rh-color-text-primary-on-light);
+      color: var(--rh-color-text-primary-on-light, #151515);
     }
 
     &.isDark {
-      color: var(--rh-color-text-primary-on-dark);
+      color: var(--rh-color-text-primary-on-dark, #ffffff);
     }
   }
 
   &.font {
     color: var(--swatch-color);
-    transition: color var(--rh-animation-speed) var(--rh-animation-timing);
-    font-size: var(--rh-font-size-heading-lg);
-    font-weight: var(--rh-font-weight-heading-bold);
-    border-radius: var(--rh-border-radius-default);
-    padding: var(--rh-space-sm) var(--rh-space-md);
+    transition:
+      color
+      var(--rh-animation-speed, 0.3s)
+      var(--rh-animation-timing, cubic-bezier(0.465, 0.183, 0.153, 0.946));
+    font-size: var(--rh-font-size-heading-lg, 2.25rem);
+    font-weight: var(--rh-font-weight-heading-bold, 700);
+    border-radius: var(--rh-border-radius-default, 3px);
+    padding: var(--rh-space-sm, 6px) var(--rh-space-md, 8px);
 
     & span:last-child {
-      font-size: var(--rh-font-size-body-text-md);
+      font-size: var(--rh-font-size-body-text-md, 1rem);
     }
   }
 
   &.border {
     border-color: var(--swatch-color);
-    border-width: var(--rh-border-width-lg);
+    border-width: var(--rh-border-width-lg, 3px);
   }
 
   &.icon {
     display: inline-flex;
     align-items: center;
-    gap: var(--rh-space-xs);
+    gap: var(--rh-space-xs, 4px);
 
     & rh-icon {
       color: var(--swatch-color);
