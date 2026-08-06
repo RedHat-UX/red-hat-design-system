@@ -1,0 +1,86 @@
+<meta itemprop="description" content="Pattern-style responsive collapsible with navigation-primary and navigation-vertical. Mirrors the docs pattern layout to isolate SSR issues.">
+
+<div id="collapsible-container">
+  <div id="collapsible-layout">
+    <rh-navigation-primary role="navigation"></rh-navigation-primary>
+
+    <rh-drawer id="side-nav"
+               collapsible open>
+      <h2 class="visually-hidden">Navigation</h2>
+      <rh-navigation-vertical>
+        <rh-navigation-link href="#" current-page>Home</rh-navigation-link>
+
+        <rh-navigation-vertical-list summary="Get Started">
+          <rh-navigation-link href="#get-started">Overview</rh-navigation-link>
+          <rh-navigation-link href="#get-started/designers">Designers</rh-navigation-link>
+          <rh-navigation-link href="#get-started/developers">Developers</rh-navigation-link>
+        </rh-navigation-vertical-list>
+
+        <rh-navigation-vertical-list summary="Foundations">
+          <rh-navigation-link href="#foundations">Overview</rh-navigation-link>
+          <rh-navigation-link href="#foundations/color">Color</rh-navigation-link>
+          <rh-navigation-link href="#foundations/spacing">Spacing</rh-navigation-link>
+        </rh-navigation-vertical-list>
+
+        <rh-navigation-link href="#release-notes">Release Notes</rh-navigation-link>
+      </rh-navigation-vertical>
+    </rh-drawer>
+
+    <div id="main">
+      <p>At wide container widths the drawer pushes content aside with a
+        collapse toggle. At narrow widths it overlaps content instead.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  @import url('/assets/packages/@rhds/elements/elements/rh-navigation-primary/rh-navigation-primary-lightdom.css');
+  @import url('/assets/packages/@rhds/elements/elements/rh-navigation-vertical/rh-navigation-vertical-lightdom.css');
+
+  #collapsible-container {
+    container: collapsible-layout / inline-size;
+    height: 100%;
+  }
+
+  #collapsible-layout {
+    display: grid;
+    height: 100%;
+    grid-template-areas: 'mock-nav mock-nav' 'drawer content';
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+    min-block-size: 400px;
+  }
+
+  rh-navigation-primary {
+    grid-area: mock-nav;
+  }
+
+  rh-drawer {
+    grid-area: drawer;
+  }
+
+  #main {
+    grid-area: content;
+    padding: var(--rh-space-2xl, 32px);
+  }
+
+  rh-navigation-vertical {
+    overflow-y: auto;
+    padding-block-start: var(--rh-space-3xl, 48px);
+  }
+
+  .visually-hidden {
+    position: fixed;
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-drawer/rh-drawer.js';
+  import '@rhds/elements/rh-navigation-primary/rh-navigation-primary.js';
+  import '@rhds/elements/rh-navigation-vertical/rh-navigation-vertical.js';
+  import '@rhds/elements/rh-navigation-link/rh-navigation-link.js';
+</script>

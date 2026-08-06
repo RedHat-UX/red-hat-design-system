@@ -1,0 +1,399 @@
+@layer base, states, variants, animation;
+
+@layer base {
+  *,
+  *:after,
+  *:before {
+    box-sizing: border-box;
+  }
+
+  :host {
+    --_panel-width: 320px;
+
+    /** Collapse toggle button size */
+    --_collapse-toggle-size: var(--rh-length-3xl, 48px);
+
+    /** Visible width reserved for the collapse toggle when the panel is closed */
+    --_collapse-visible-width: var(--rh-space-2xl, 32px);
+    --_z-index: var(--rh-drawer-z-index, 10);
+    --_transition-duration: 0.3s;
+    --_panel-bg:
+      light-dark(
+          var(--rh-color-surface-lightest, #ffffff),
+          var(--rh-color-surface-darker, #1f1f1f)
+        );
+
+    /* Slide direction multiplier: -1 for LTR, 1 for RTL */
+    --_slide-dir: -1;
+
+    display: block;
+    position: relative;
+    block-size: 100%;
+    min-block-size: 0;
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+
+  .visually-hidden {
+    block-size: 1px;
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    inline-size: 1px;
+    margin: -1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+  }
+
+  #panel {
+    inline-size: var(--_panel-width);
+    min-inline-size: 0;
+    max-inline-size: 100%;
+    block-size: 100%;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+    background-color: var(--_panel-bg);
+    border-inline-end:
+      var(--rh-border-width-sm, 1px)
+      solid
+      var(--rh-color-border-subtle);
+    overflow: visible;
+    color: var(--rh-color-text-primary);
+    opacity: 1;
+    transform: translateX(0);
+    transition:
+      opacity var(--_transition-duration) ease-in-out,
+      transform var(--_transition-duration) ease-in-out;
+    padding: var(--rh-drawer-panel-padding, var(--rh-space-lg, 16px));
+  }
+
+  #content {
+    display: grid;
+    grid-template-rows: var(--rh-drawer-content-rows, 1fr);
+    block-size: 100%;
+    overflow: hidden;
+  }
+
+  slot {
+    display: contents;
+  }
+
+  ::slotted(*) {
+    text-align: start;
+    min-block-size: 0;
+  }
+
+  #close-button {
+    position: absolute;
+    inset-block-start: var(--rh-space-2xl, 32px);
+    inset-inline-end: var(--rh-space-2xl, 32px);
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--_panel-bg);
+    border: 0;
+    padding: var(--rh-space-md, 8px);
+    cursor: pointer;
+    color: var(--rh-color-icon-secondary);
+    border-radius: var(--rh-border-radius-default, 3px);
+
+    &:hover {
+      color: var(--rh-color-text-secondary);
+      background-color:
+        light-dark(
+            var(--rh-color-surface-light, #e0e0e0),
+            var(--rh-color-surface-dark, #383838)
+          );
+    }
+
+    &:active {
+      color:
+        light-dark(
+            var(--rh-color-text-secondary-on-dark, #c7c7c7),
+            var(--rh-color-text-secondary-on-light, #4d4d4d)
+          );
+      background-color: var(--rh-color-interactive-secondary-active);
+    }
+
+    &:is(:focus-visible) {
+      outline:
+        var(--rh-border-width-lg, 3px)
+        solid
+        light-dark(
+            var(--rh-color-blue-50, #0066cc),
+            var(--rh-color-blue-30, #92c5f9)
+          );
+      outline-offset: 2px;
+    }
+  }
+
+  #collapse-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    inset-block-start: var(--rh-space-xl, 24px);
+    border-radius: 50%;
+    border:
+      var(--rh-border-width-sm, 1px)
+      solid
+      var(--rh-color-border-subtle);
+    background-color: var(--_panel-bg);
+    cursor: pointer;
+    z-index: 4;
+    padding: var(--rh-space-lg, 16px);
+    color: var(--rh-color-icon-secondary);
+    box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
+
+    &:hover {
+      color: var(--rh-color-interactive-primary-default);
+      background-color:
+        light-dark(
+            var(--rh-color-surface-light, #e0e0e0),
+            var(--rh-color-surface-dark, #383838)
+          );
+    }
+
+    &:is(:focus-visible) {
+      color: var(--rh-color-interactive-primary-default);
+      outline:
+        var(--rh-border-width-lg, 3px)
+        solid
+        light-dark(
+            var(--rh-color-blue-50, #0066cc),
+            var(--rh-color-blue-30, #92c5f9)
+          );
+      outline-offset: 2px;
+    }
+
+    & rh-icon {
+      transition: rotate var(--_transition-duration) ease-in-out;
+    }
+  }
+
+  #container {
+    display: flex;
+    block-size: 100%;
+    position: relative;
+    overflow: hidden;
+
+    &:dir(rtl) {
+      --_slide-dir: 1;
+    }
+
+    &:not(.collapsible, .open) {
+      overflow: clip;
+      pointer-events: none;
+    }
+  }
+}
+
+@layer states {
+  #container.inline-end {
+    flex-direction: row-reverse;
+
+    & #panel {
+      border-inline-end: 0;
+      border-inline-start:
+        var(--rh-border-width-sm, 1px)
+        solid
+        var(--rh-color-border-subtle);
+    }
+
+    & #collapse-toggle {
+      inset-inline-start: calc(var(--_collapse-toggle-size) / -2);
+    }
+
+    &.collapsible #panel {
+      padding-inline-start: var(--rh-space-xl, 24px);
+    }
+
+    & #collapse-toggle rh-icon {
+      rotate: 180deg;
+
+      &:where(:dir(rtl)) {
+        rotate: 0deg;
+      }
+    }
+  }
+
+  #container:not(.inline-end) {
+    & #collapse-toggle {
+      inset-inline-end: calc(var(--_collapse-toggle-size) / -2);
+    }
+
+    &.collapsible #panel {
+      padding-inline-end: var(--rh-space-xl, 24px);
+    }
+  }
+
+  #container:not(.open, .inline-end) #collapse-toggle rh-icon {
+    rotate: 180deg;
+
+    &:dir(rtl) {
+      rotate: 360deg;
+    }
+  }
+
+  #container:not(.inline-end) #collapse-toggle rh-icon:dir(rtl) {
+    rotate: 180deg;
+  }
+
+  #container:not(.open).inline-end #collapse-toggle rh-icon {
+    rotate: 360deg;
+
+    &:dir(rtl) {
+      rotate: 180deg;
+    }
+  }
+}
+
+@layer variants {
+  @layer overlay {
+    #container.overlay {
+      overflow: visible;
+      block-size: 0;
+      position: static;
+
+      & #panel {
+        max-inline-size: none;
+      }
+
+      &:not(.inline-end) #panel {
+        position: absolute;
+        z-index: var(--_z-index);
+        inset-block: 0;
+        inset-inline-start: 0;
+        pointer-events: auto;
+      }
+
+      &.inline-end #panel {
+        position: absolute;
+        z-index: var(--_z-index);
+        inset-block: 0;
+        inset-inline-end: 0;
+        pointer-events: auto;
+      }
+
+      &.fixed #panel {
+        position: fixed;
+      }
+
+      &:not(.open) {
+        &:not(.inline-end) #panel {
+          transform: translateX(calc(var(--_slide-dir) * 100%));
+        }
+
+        &.inline-end #panel {
+          transform: translateX(calc(var(--_slide-dir) * -100%));
+        }
+      }
+    }
+  }
+
+  @layer inline {
+    @container (min-width: 992px) {
+      #container:not(.collapsible) {
+        overflow: visible;
+        pointer-events: auto;
+      }
+    }
+
+    #container:not(.overlay) {
+      & #panel {
+        position: relative;
+        z-index: 2;
+        block-size: -webkit-fill-available;
+        block-size: stretch;
+      }
+
+      &.collapsible {
+        overflow: visible;
+
+        & #panel {
+          max-inline-size: none;
+          transition: margin var(--_transition-duration) ease-in-out;
+        }
+
+        &:not(.open) {
+          &:not(.inline-end) #panel {
+            margin-inline-start: calc(var(--_collapse-visible-width) - var(--_panel-width));
+          }
+
+          &.inline-end #panel {
+            margin-inline-end: calc(var(--_collapse-visible-width) - var(--_panel-width));
+          }
+
+          & #content {
+            opacity: 0;
+            transition: opacity var(--_transition-duration) ease-out;
+          }
+        }
+      }
+    }
+  }
+
+  @layer overlap {
+    #container.collapsible.overlap {
+      inline-size: var(--_collapse-visible-width);
+      overflow: visible;
+
+      & #panel {
+        position: absolute;
+        z-index: var(--_z-index);
+        inset-block: 0;
+        pointer-events: auto;
+        margin: 0;
+        transition: transform var(--_transition-duration) ease-in-out;
+      }
+
+      &:not(.inline-end) #panel {
+        inset-inline-start: 0;
+      }
+
+      &.inline-end #panel {
+        inset-inline-end: 0;
+      }
+
+      &:not(.open) {
+        &:not(.inline-end) #panel {
+          transform:
+            translateX(calc(
+                var(--_slide-dir) *
+                (var(--_panel-width) - var(--_collapse-visible-width))
+              ));
+        }
+
+        &.inline-end #panel {
+          transform:
+            translateX(calc(
+                var(--_slide-dir) *
+                (var(--_panel-width) - var(--_collapse-visible-width)) *
+                -1
+              ));
+        }
+
+        & #content {
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
+
+@layer animation {
+  #container.no-transition #panel {
+    transition: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #panel {
+      transition: none;
+    }
+  }
+}

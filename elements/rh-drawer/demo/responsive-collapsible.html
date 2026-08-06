@@ -1,0 +1,62 @@
+<meta itemprop="description" content="Responsive collapsible drawer. Pushes content at wide container widths, overlaps at narrow widths.">
+<div id="container" class="layout-inline">
+  <rh-drawer id="drawer" collapsible open>
+    <p>Panel content slotted here.</p>
+  </rh-drawer>
+  <div id="main">
+
+    <p>At wide container widths the drawer pushes this content aside. At narrow widths it overlaps.</p>
+    <form id="knobs">
+      <fieldset>
+        <legend>Inline</legend>
+        <label><input type="radio" name="inline" value="start" checked> start</label>
+        <label><input type="radio" name="inline" value="end"> end</label>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+<style>
+  #container {
+    container-type: inline-size;
+    display: grid;
+    block-size: 100%;
+  }
+
+  #container.layout-inline {
+    grid-template-areas: 'drawer main';
+    grid-template-columns: auto 1fr;
+  }
+
+  #container.layout-inline.end {
+    grid-template-areas: 'main drawer';
+    grid-template-columns: 1fr auto;
+  }
+
+  #container.layout-inline rh-drawer {
+    grid-area: drawer;
+  }
+
+  #container.layout-inline #main {
+    grid-area: main;
+  }
+
+  #main {
+    padding: var(--rh-space-2xl, 32px);
+    overflow: auto;
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-drawer/rh-drawer.js';
+
+  const form = document.getElementById('knobs');
+  const drawer = document.getElementById('drawer');
+  const container = document.getElementById('container');
+
+  form.addEventListener('input', () => {
+    const data = Object.fromEntries(new FormData(form));
+    drawer.inline = data.inline;
+    container.classList.toggle('end', data.inline === 'end');
+  });
+</script>

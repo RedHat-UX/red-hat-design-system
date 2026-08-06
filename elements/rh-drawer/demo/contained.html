@@ -1,0 +1,81 @@
+<meta itemprop="description" content="Drawer inside a resizable container. Drag the resize handle to see the drawer respond to container width.">
+<div id="wrapper">
+  <p>Drag the bottom-right corner of the box below to resize it. The drawer responds to the container width &mdash; inline at wide widths, overlay at narrow.</p>
+  <div id="container" class="layout-inline">
+    <rh-drawer id="drawer" trigger-id="trigger" open>
+      <p>Panel content slotted here.</p>
+    </rh-drawer>
+    <div id="main">
+      <button id="trigger" aria-controls="drawer" aria-expanded="true" hidden>Toggle Drawer</button>
+
+      <p>At wide container widths the drawer is always visible. Resize the container below 992px to see it switch to overlay mode.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  #wrapper {
+    padding: var(--rh-space-2xl, 32px);
+  }
+
+  #container {
+    container-type: inline-size;
+    display: grid;
+    inline-size: 100%;
+    block-size: 400px;
+    resize: horizontal;
+    overflow: hidden;
+    border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+    border-radius: var(--rh-border-radius-default, 3px);
+  }
+
+  #container.layout-inline {
+    grid-template-areas: 'drawer main';
+    grid-template-columns: auto 1fr;
+  }
+
+  #container.layout-overlay {
+    grid-template-areas: 'content';
+    grid-template-columns: 1fr;
+  }
+
+  #container.layout-overlay rh-drawer,
+  #container.layout-overlay #main {
+    grid-area: content;
+  }
+
+  #container.layout-inline rh-drawer {
+    grid-area: drawer;
+  }
+
+  #container.layout-inline #main {
+    grid-area: main;
+  }
+
+  #main {
+    padding: var(--rh-space-2xl, 32px);
+    overflow: auto;
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-drawer/rh-drawer.js';
+
+  const trigger = document.getElementById('trigger');
+  const drawer = document.getElementById('drawer');
+  const container = document.getElementById('container');
+
+  drawer.addEventListener('open', () => trigger.setAttribute('aria-expanded', 'true'));
+  drawer.addEventListener('close', () => trigger.setAttribute('aria-expanded', 'false'));
+
+  const ro = new ResizeObserver(entries => {
+    const width = entries[0].contentBoxSize[0].inlineSize;
+    if (width < 992) {
+      container.classList.replace('layout-inline', 'layout-overlay');
+    } else {
+      container.classList.replace('layout-overlay', 'layout-inline');
+    }
+    trigger.hidden = width >= 992;
+  });
+  ro.observe(container);
+</script>
