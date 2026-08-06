@@ -8,6 +8,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
 
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { lightdomCSS } from '@rhds/elements/lib/lightdom-css.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import { FloatingDOMController } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
@@ -54,6 +55,7 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 @customElement('rh-audio-player')
 @colorPalettes
 @themable
+@lightdomCSS(import.meta.url, './rh-audio-player-lightdom.css')
 export class RhAudioPlayer extends LitElement {
   static readonly styles = [buttonStyles, styles, rangeStyles];
 
