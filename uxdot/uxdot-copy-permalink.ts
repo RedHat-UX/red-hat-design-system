@@ -6,8 +6,11 @@ import { property } from 'lit/decorators/property.js';
 import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import styles from './uxdot-copy-permalink.css';
 
+@themable
 @customElement('uxdot-copy-permalink')
 export class UxdotCopyPermalink extends LitElement {
   static styles = [styles];
