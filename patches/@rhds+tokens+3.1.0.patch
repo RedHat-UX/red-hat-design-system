@@ -1,5 +1,5 @@
 diff --git a/node_modules/@rhds/tokens/plugins/stylelint/rules/no-unknown-token-name.js b/node_modules/@rhds/tokens/plugins/stylelint/rules/no-unknown-token-name.js
-index 5c51f5f..86fc42b 100644
+index 5c51f5f..0a61471 100644
 --- a/node_modules/@rhds/tokens/plugins/stylelint/rules/no-unknown-token-name.js
 +++ b/node_modules/@rhds/tokens/plugins/stylelint/rules/no-unknown-token-name.js
 @@ -1,4 +1,5 @@
@@ -9,7 +9,35 @@ index 5c51f5f..86fc42b 100644
  import { tokens } from '@rhds/tokens';
  import stylelint from 'stylelint';
  import parser from 'postcss-value-parser';
-@@ -13,15 +14,34 @@ const meta = {
+@@ -10,18 +11,48 @@ const meta = {
+     url: 'https://github.com/RedHat-UX/red-hat-design-tokens/tree/main/plugins/stylelint/rules/no-unknown-token-name.ts',
+     fixable: true,
+ };
++const cemCache = new Map();
++function getCemAllowed(cemPath) {
++    if (cemCache.has(cemPath)) {
++        return cemCache.get(cemPath);
++    }
++    const allowed = new Set();
++    try {
++        const cem = JSON.parse(readFileSync(cemPath, 'utf8'));
++        for (const mod of cem?.modules ?? []) {
++            for (const decl of mod.declarations ?? []) {
++                if (decl.customElement) {
++                    for (const cssProp of decl.cssProperties ?? []) {
++                        if (cssProp.name.startsWith('--rh')) {
++                            allowed.add(cssProp.name);
++                        }
++                    }
++                }
++            }
++        }
++    } catch {
++        // CEM file not found at provided path
++    }
++    cemCache.set(cemPath, allowed);
++    return allowed;
++}
  const ruleFunction = (_, opts) => {
      return (root, result) => {
          // here we assume a file structure of */rh-tagname/rh-tagname.css
@@ -26,29 +54,15 @@ index 5c51f5f..86fc42b 100644
          const migrations = new Map(Object.entries(opts?.migrations ?? {}));
          const allowed = new Set(opts?.allowed ?? []);
 +        if (opts?.cem) {
-+          try {
-+            const cemPath = join(process.cwd(), opts.cem);
-+            const cem = JSON.parse(readFileSync(cemPath, 'utf8'));
-+            for (const mod of cem?.modules ?? []) {
-+              for (const decl of mod.declarations ?? []) {
-+                if (decl.customElement) {
-+                  for (const cssProp of decl.cssProperties ?? []) {
-+                    if (cssProp.name.startsWith('--rh')) {
-+                      allowed.add(cssProp.name);
-+                    }
-+                  }
-+                }
-+              }
++            for (const name of getCemAllowed(join(process.cwd(), opts.cem))) {
++                allowed.add(name);
 +            }
-+          } catch {
-+            // CEM file not found at provided path
-+          }
 +        }
          root.walk(node => {
              if (node.type === 'decl') {
                  const parsedValue = parser(node.value);
 diff --git a/node_modules/@rhds/tokens/plugins/stylelint/rules/token-values.js b/node_modules/@rhds/tokens/plugins/stylelint/rules/token-values.js
-index bf431df..861702e 100644
+index bf431df..81cf845 100644
 --- a/node_modules/@rhds/tokens/plugins/stylelint/rules/token-values.js
 +++ b/node_modules/@rhds/tokens/plugins/stylelint/rules/token-values.js
 @@ -14,6 +14,24 @@ function isVarCall(parsedNode) {
@@ -99,8 +113,8 @@ index bf431df..861702e 100644
 +                                            node.value = `${prefix}${infix}${suffix}`;
 +                                        },
 +                                    });
++                                    return;
 +                                }
-+                                return;
 +                            }
                              if (expected === null && actual == null) {
                                  return;
