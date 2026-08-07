@@ -52,9 +52,9 @@ or anything else, please submit a [GitHub issue][issues].
   <a slot="headline" href="https://github.com/RedHat-UX/red-hat-design-system/releases">Changelog</a>
 </rh-tile>
 
-<section aria-labelledby="version-4.2">
+<section aria-labelledby="version-4.2.x">
 
-## Version 4.2
+## Version 4.2.x
 
 ### Version 4.2.1
 
@@ -99,9 +99,9 @@ Released July 13, 2026
 
 </section>
 
-<section aria-labelledby="version-4.1">
+<section aria-labelledby="version-4.1.x">
 
-## Version 4.1
+## Version 4.1.x
 
 ### Version 4.1.5
 
@@ -207,9 +207,9 @@ Released April 9, 2026
 
 </section>
 
-<section aria-labelledby="version-4.0">
+<section aria-labelledby="version-4.0.x">
 
-## Version 4.0
+## Version 4.0.x
 
 ### Version 4.0.4
 
@@ -300,9 +300,9 @@ Released October 31, 2025 🎃
 
 </section>
 
-<section aria-labelledby="version-3.2">
+<section aria-labelledby="version-3.2.x">
 
-## Version 3.2
+## Version 3.2.x
 
 ### Version 3.2.0
 Released October 24, 2025
@@ -321,9 +321,9 @@ Released October 24, 2025
 
 </section>
 
-<section aria-labelledby="version-3.1">
+<section aria-labelledby="version-3.1.x">
 
-## Version 3.1
+## Version 3.1.x
 
 ### Version 3.1.3
 
@@ -399,9 +399,9 @@ Released August 6, 2025
 
 </section>
 
-<section aria-labelledby="version-3.0">
+<section aria-labelledby="version-3.0.x">
 
-## Version 3.0
+## Version 3.0.x
 
 ### Version 3.0.4
 
@@ -547,9 +547,9 @@ Released April 7, 2025
 
 </section>
 
-<section aria-labelledby="version-2.1">
+<section aria-labelledby="version-2.1.x">
 
-## Version 2.1
+## Version 2.1.x
 
 ### Version 2.1.2
 
@@ -630,9 +630,9 @@ Released October 1, 2024
 
 </section>
 
-<section aria-labelledby="version-2.0">
+<section aria-labelledby="version-2.0.x">
 
-## Version 2.0
+## Version 2.0.x
 
 ### Version 2.0.0
 Released August 27, 2024
@@ -683,9 +683,9 @@ Released August 27, 2024
 
 </section>
 
-<section aria-labelledby="version-1.4">
+<section aria-labelledby="version-1.4.x">
 
-## Version 1.4
+## Version 1.4.x
 
 ### Version 1.4.0
 Released April 22, 2024
@@ -713,9 +713,9 @@ Released April 22, 2024
 
 </section>
 
-<section aria-labelledby="version-1.3">
+<section aria-labelledby="version-1.3.x">
 
-## Version 1.3
+## Version 1.3.x
 
 ### Version 1.3.0
 Released January 11, 2024
@@ -739,9 +739,9 @@ Released January 11, 2024
 
 </section>
 
-<section aria-labelledby="version-1.2">
+<section aria-labelledby="version-1.2.x">
 
-## Version 1.2
+## Version 1.2.x
 
 ### Version 1.2.0
 Released October 16, 2023
@@ -764,9 +764,9 @@ Released October 16, 2023
 
 </section>
 
-<section aria-labelledby="version-1.1">
+<section aria-labelledby="version-1.1.x">
 
-## Version 1.1
+## Version 1.1.x
 
 ### Version 1.1.0
 Released July 5, 2023
@@ -789,9 +789,9 @@ View all version 1.1.0 release notes
 
 </section>
 
-<section aria-labelledby="version-1.0">
+<section aria-labelledby="version-1.0.x">
 
-## Version 1.0
+## Version 1.0.x
 
 ### Version 1.0.0
 Released April 3, 2023
