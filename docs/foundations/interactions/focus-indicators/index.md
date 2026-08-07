@@ -28,7 +28,6 @@ subnav:
   import "@uxdot/elements/uxdot-pattern.js";
 </script>
 
-
 ## Focus indicator styles
 
 Focus styles visually indicate when interactive elements like links and buttons are selected (usually via keyboard) and ready to receive input. **All interactive elements are required** to have a [visible focus indicator](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html) to conform with the Web Content Accessibility Guidelines (WCAG).
@@ -41,14 +40,14 @@ To view keyboard focus states on a computer, open a web page in your browser and
 
 Users who depend on focus indicators need styles that are **clear and consistent**, so they always know where they are in an experience. Our focus styles align with our [brand standards](https://www.redhat.com/en/about/brand/standards) and the latest [WCAG guidance](https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance).
 
-When focus is applied to an interactive element, we apply an outline that:
+When focus is applied to an interactive element, apply an outline that:
 
 - is solid (not dashed or dotted).
 - is 3px thick.
 - is offset from the element by 3px.
+- has a border radius of 3px, unless the element already has a specified radius.
 - has 3:1 or greater contrast from the background colors just outside and inside of it.
 - temporarily disables any transition animations on the element (so entering or exiting the focus state is not distracting).
-
 
 ### Basic CSS
 
@@ -56,11 +55,15 @@ In CSS terms, here is some minimal code that meets these requirements:
 
 ```css rh-code-block
 :is(*, :hover):focus-visible {
-  outline-color: light-dark(--rh-color-blue-50, --rh-color-blue-30);
+  outline-color: light-dark(var(--rh-color-blue-50), var(--rh-color-blue-30));
   outline-offset: 3px;
   outline-style: solid;
   outline-width: 3px;
-  transition: none; 
+  transition: none;
+}
+
+:where(:focus-visible) {
+  border-radius: 3px;
 }
 ```
 
@@ -94,22 +97,31 @@ We have designated focus ring colors that align with our brand standards for bot
   </table>
 </rh-table>
 
-
 #### Styling considerations
 
 Note that there may be cases where a focus ring appears against a light background in dark mode and vice versa. For example, an inset focus ring for a text field may appear against a white background, even in dark mode. In these cases, you may need to manually override the default dark scheme ring color (<code>--rh-color-blue-30</code>) with the light scheme color (<code>--rh-color-blue-50</code>).
 
 <img src="./focus-styling-considerations-demo.svg" alt="Demo of how inset ring colors should be set based on their background color and not the page theme" style="max-width: 100%;">
 
+## Full example CSS
 
-## Example CSS
+This code includes the basic code above, plus options for inset indicators, indicators with no offset at all, and forced light or dark indicators.
+
 ```css rh-code-block
 :is(*, :hover):focus-visible {
-  outline-color: light-dark(--rh-color-blue-50, --rh-color-blue-30);
+  outline-color: light-dark(var(--rh-color-blue-50), var(--rh-color-blue-30));
   outline-offset: 3px;
   outline-style: solid;
   outline-width: 3px;
-  transition: none; 
+  transition: none;
+}
+
+:where(:focus-visible) {
+  border-radius: 3px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
 }
 
 /* Placeholder `.inset` class for inset focus. */
@@ -131,10 +143,6 @@ Note that there may be cases where a focus ring appears against a light backgrou
 .dark-bg:is(*, :hover):focus-visible {
   outline-color: --rh-color-blue-30;
 }
-
-:focus:not(:focus-visible) {
-  outline: none;
-}
 ```
 
 ### Technical notes on the CSS
@@ -146,9 +154,7 @@ Note that there may be cases where a focus ring appears against a light backgrou
 - Inset focus rings receive a negative <code>outline-offset</code> just large enough to leave some whitespace between the ring and the border of the element.
 - Note that we prefer <code>:focus-visible</code> to <code>:focus</code>. **Avoid using the latter**. In fact, our code above disables the latter.
 
-
 ## Best Practices
-
 
 ### Custom focus indicator styles
 
