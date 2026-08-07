@@ -258,11 +258,16 @@ Released April 9, 2026
 ### Version 4.0.0
 Released October 31, 2025 🎃
 
+<rh-alert state="info">
+  <h4 slot="header">Upgrading?</h4>
+  <p>If you're upgrading to version 4.0, <a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.0.0">read our v4.0 changelog</a> for upgrade instructions.</p>
+</rh-alert>
+
 <rh-table>
 
 | Change        | Type        | Notes        |
 | ------------- | ----------- | ------------ |
-| 🎨 Icons: Updated @rhds/icons to version 2.0 | {{j()}} | Added 191 new UI icons, including new `ai-experience` icons and many `-fill` variations, and removed `auto-light-dark-mode-fill` icon. Please see [official 4.0 release notes](https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.0.0) for details on breaking changes. |
+| 🎨 Icons: Updated @rhds/icons to version 2.0 | {{j()}} | Added 191 new UI icons, including new `ai-experience` icons and many `-fill` variations, and removed `auto-light-dark-mode-fill` icon. |
 | ✨ Added `<rh-menu-dropdown>` | {{i()}} | A UI component designed for presenting a set of related actions or commands. It consists of two parts: a menu toggle, which users interact with to open or close the menu, and a menu list that contains actionable items. |
 | ✨ Added `<rh-navigation-vertical>` | {{i()}} | A vertical navigation list containing top-level navigation items and grouped navigation items, typically used in a side navigation pattern. |
 | ✨ Added `<rh-navigation-link>` | {{i()}} | A styled link that is used as a slotted child of navigation elements. Can be used in the primary, secondary, subnav, and vertical navigation elements. |
