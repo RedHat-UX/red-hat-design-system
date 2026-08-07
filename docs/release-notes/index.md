@@ -490,7 +490,7 @@ Released August 6, 2025
 Released April 7, 2025
 
 <rh-alert state="info">
-  <h3 slot="header">Upgrading?</h3>
+  <h4 slot="header">Upgrading?</h4>
   <p>If you're upgrading to version 3.0, <a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.0.0">read our v3.0 changelog</a> for upgrade instructions.</p>
 </rh-alert>
 
@@ -638,7 +638,7 @@ Released October 1, 2024
 Released August 27, 2024
 
 <rh-alert state="info">
-  <h3 slot="header">Upgrading?</h3>
+  <h4 slot="header">Upgrading?</h4>
   <p>If you're upgrading to version 2.0, <a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.0.0">read our v2.0 changelog</a> for upgrade instructions.</p>
 </rh-alert>
 
