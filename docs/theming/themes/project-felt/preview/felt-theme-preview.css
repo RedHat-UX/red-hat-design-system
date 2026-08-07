@@ -2011,7 +2011,7 @@
 
     /* Pill hover on the <a> */
     --rh-jump-link-hover-background-color: var(--felt-preview-color-interactive-fill-plain-hover);
-    --rh-jump-link-hover-border-radius: var(--felt-preview-border-radius-pill);
+    --rh-jump-link-hover-border-radius: var(--felt-preview-border-radius-default);
 
     /* Keep text color subtle on hover/focus (same as default) */
     --rh-color-text-primary:
