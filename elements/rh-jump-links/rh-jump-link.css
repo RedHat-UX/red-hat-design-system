@@ -82,7 +82,6 @@ a {
     & a {
       /** Maximum width for each vertical jump link */
       max-width: var(--rh-jump-link-max-width, calc(var(--rh-length-md, 8px) * 40));
-      min-width: max-content;
       padding-block:
         var(--_link-padding-block,
           /** Vertical link block padding */
