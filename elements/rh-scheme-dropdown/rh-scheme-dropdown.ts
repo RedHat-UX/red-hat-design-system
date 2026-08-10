@@ -45,6 +45,11 @@ export class SchemeChangedEvent extends Event {
 export class RhSchemeDropdown extends LitElement {
   static styles = [styles];
 
+  static override readonly shadowRootOptions: ShadowRootInit = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+  };
+
   /** Whether the light option is currently selected. */
   #isLight = false;
 
