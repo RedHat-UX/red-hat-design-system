@@ -119,6 +119,25 @@ export class RhSchemeDropdown extends LitElement {
   }
 
   /**
+   * Syncs `select.value` to `scheme` prop so the control matches after SSR hydration.
+   * @param changed - Reactive properties that changed this update cycle
+   */
+  protected override updated(changed: Map<PropertyKey, unknown>): void {
+    super.updated(changed);
+    if (isServer) {
+      return;
+    }
+
+    const select = this.shadowRoot?.querySelector('select');
+    if (select) {
+      const value = this.scheme ?? 'light dark';
+      if (select.value !== value) {
+        select.value = value;
+      }
+    }
+  }
+
+  /**
    * Escapes author-facing localization strings before inlining them
    * with unsafeStatic. Required because unsafeStatic inserts raw
    * HTML into the template.
