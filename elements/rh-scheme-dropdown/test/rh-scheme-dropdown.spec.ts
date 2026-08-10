@@ -433,5 +433,53 @@ describe('<rh-scheme-dropdown>', function() {
       const snapshot = await a11ySnapshot();
       expect(snapshot).to.axContainQuery({ role: 'combobox', value: /System/ });
     });
+
+    /** Option values that currently have the `selected` content attribute. */
+    function selectedAttrValues(el: RhSchemeDropdown): string[] {
+      const select = el.shadowRoot!.querySelector('select')!;
+      return [...select.options]
+          .filter(option => option.hasAttribute('selected'))
+          .map(option => option.value);
+    }
+
+    it('moves the selected content attribute to Light', async function() {
+      element.scheme = 'light';
+      await element.updateComplete;
+      expect(selectedAttrValues(element)).to.deep.equal(['light']);
+    });
+
+    it('moves the selected content attribute to Dark', async function() {
+      element.scheme = 'dark';
+      await element.updateComplete;
+      expect(selectedAttrValues(element)).to.deep.equal(['dark']);
+    });
+
+    it('moves the selected content attribute to System', async function() {
+      element.scheme = 'dark';
+      await element.updateComplete;
+      element.scheme = 'light dark';
+      await element.updateComplete;
+      expect(selectedAttrValues(element)).to.deep.equal(['light dark']);
+    });
+
+    it('repairs a stale selected attribute after requestUpdate', async function() {
+      element.scheme = 'light';
+      await element.updateComplete;
+
+      // Stale selected attr (SSR / Lit hydration quirk)
+      const select = element.shadowRoot!.querySelector('select')!;
+      for (const option of select.options) {
+        if (option.value === 'light dark') {
+          option.setAttribute('selected', '');
+        } else {
+          option.removeAttribute('selected');
+        }
+      }
+      expect(selectedAttrValues(element)).to.deep.equal(['light dark']);
+
+      element.requestUpdate();
+      await element.updateComplete;
+      expect(selectedAttrValues(element)).to.deep.equal(['light']);
+    });
   });
 });
