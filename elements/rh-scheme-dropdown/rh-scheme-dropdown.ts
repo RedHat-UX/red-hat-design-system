@@ -50,15 +50,6 @@ export class RhSchemeDropdown extends LitElement {
     delegatesFocus: true,
   };
 
-  /** Whether the light option is currently selected. */
-  #isLight = false;
-
-  /** Whether the dark option is currently selected. */
-  #isDark = false;
-
-  /** Whether the system default option is currently selected. */
-  #isSystem = false;
-
   /**
    * Current color scheme setting. Reflects to the `scheme` attribute and
    * initializes from `localStorage.rhdsColorScheme` when available.
@@ -89,20 +80,6 @@ export class RhSchemeDropdown extends LitElement {
    */
   @property({ attribute: 'accessible-label-system' }) accessibleLabelSystem = 'System';
 
-  /**
-   * Syncs the selected-state flags before each render so the
-   * template always reflects the current `scheme` value.
-   */
-  protected override willUpdate(): void {
-    if (isServer) {
-      return;
-    }
-
-    this.#isLight = this.scheme === 'light';
-    this.#isDark = this.scheme === 'dark';
-    this.#isSystem = !this.#isLight && !this.#isDark;
-  }
-
   render() {
     // IMPORTANT: do not put Lit child bindings (${...}) inside <option>.
     // In Custom Select browsers, <selectedcontent> cloneNode()'s the selected
@@ -121,17 +98,18 @@ export class RhSchemeDropdown extends LitElement {
           <selectedcontent></selectedcontent>
           <rh-icon set="microns" icon="caret-down-fill"></rh-icon>
         </button>
-        <option value="light dark" ?selected="${this.#isSystem}">
+        <option value="light dark"
+                ?selected="${this.scheme !== 'light' && this.scheme !== 'dark'}">
           <rh-icon set="ui" icon="auto-light-dark-mode"></rh-icon>
           <span class="option-text">${labelSystem}</span>
           <rh-icon set="ui" icon="check" class="checkmark"></rh-icon>
         </option>
-        <option value="light" ?selected="${this.#isLight}">
+        <option value="light" ?selected="${this.scheme === 'light'}">
           <rh-icon set="ui" icon="light-mode"></rh-icon>
           <span class="option-text">${labelLight}</span>
           <rh-icon set="ui" icon="check" class="checkmark"></rh-icon>
         </option>
-        <option value="dark" ?selected="${this.#isDark}">
+        <option value="dark" ?selected="${this.scheme === 'dark'}">
           <rh-icon set="ui" icon="dark-mode"></rh-icon>
           <span class="option-text">${labelDark}</span>
           <rh-icon set="ui" icon="check" class="checkmark"></rh-icon>
