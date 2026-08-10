@@ -119,7 +119,8 @@ export class RhSchemeDropdown extends LitElement {
   }
 
   /**
-   * Syncs `select.value` to `scheme` prop so the control matches after SSR hydration.
+   * Syncs `select.value` and option `selected` attrs to `scheme` after SSR
+   * hydration. Lit's `?selected` on `<option>` can stay stale otherwise.
    * @param changed - Reactive properties that changed this update cycle
    */
   protected override updated(changed: Map<PropertyKey, unknown>): void {
@@ -133,6 +134,15 @@ export class RhSchemeDropdown extends LitElement {
       const value = this.scheme ?? 'light dark';
       if (select.value !== value) {
         select.value = value;
+      }
+
+      // Realign `selected` attribute even when select.value already matches.
+      for (const option of select.options) {
+        if (option.value === value) {
+          option.setAttribute('selected', '');
+        } else {
+          option.removeAttribute('selected');
+        }
       }
     }
   }
