@@ -1,4 +1,5 @@
-import { html, isServer, LitElement } from 'lit';
+import { isServer, LitElement } from 'lit';
+import { html, unsafeStatic } from 'lit/static-html.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
@@ -98,6 +99,16 @@ export class RhSchemeDropdown extends LitElement {
   }
 
   render() {
+    // IMPORTANT: do not put Lit child bindings (${...}) inside <option>.
+    // In Custom Select browsers, <selectedcontent> cloneNode()'s the selected
+    // option — including Lit's <!--?lit--> markers — which desyncs template
+    // parts and renders boolean values as labels ("false"). See lit#5349.
+    // unsafeStatic inlines escaped label text with no ChildPart markers.
+    // Author-facing strings must be HTML-escaped before unsafeStatic.
+    const labelSystem = unsafeStatic(this.#escapeHtml(this.accessibleLabelSystem));
+    const labelLight = unsafeStatic(this.#escapeHtml(this.accessibleLabelLight));
+    const labelDark = unsafeStatic(this.#escapeHtml(this.accessibleLabelDark));
+
     return html`
       <label for="scheme-dropdown" class="visually-hidden">${this.accessibleLabel}:</label>
       <select id="scheme-dropdown" @change="${this.#onChange}">
@@ -107,21 +118,35 @@ export class RhSchemeDropdown extends LitElement {
         </button>
         <option value="light dark" ?selected="${this.#isSystem}">
           <rh-icon set="ui" icon="auto-light-dark-mode"></rh-icon>
-          <span class="option-text">${this.accessibleLabelSystem}</span>
+          <span class="option-text">${labelSystem}</span>
           <rh-icon set="ui" icon="check" class="checkmark"></rh-icon>
         </option>
         <option value="light" ?selected="${this.#isLight}">
           <rh-icon set="ui" icon="light-mode"></rh-icon>
-          <span class="option-text">${this.accessibleLabelLight}</span>
+          <span class="option-text">${labelLight}</span>
           <rh-icon set="ui" icon="check" class="checkmark"></rh-icon>
         </option>
         <option value="dark" ?selected="${this.#isDark}">
           <rh-icon set="ui" icon="dark-mode"></rh-icon>
-          <span class="option-text">${this.accessibleLabelDark}</span>
+          <span class="option-text">${labelDark}</span>
           <rh-icon set="ui" icon="check" class="checkmark"></rh-icon>
         </option>
       </select>
     `;
+  }
+
+  /**
+   * Escapes author-facing localization strings before inlining them
+   * with unsafeStatic. Required because unsafeStatic inserts raw
+   * HTML into the template.
+   * @param text - Plain text to escape for safe HTML inlining.
+   */
+  #escapeHtml(text: string): string {
+    return text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
   }
 
   /**
