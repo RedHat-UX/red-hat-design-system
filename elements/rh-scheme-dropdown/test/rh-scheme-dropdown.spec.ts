@@ -334,6 +334,22 @@ describe('<rh-scheme-dropdown>', function() {
     it('should be accessible with custom labels', async function() {
       await expect(element).to.be.accessible();
     });
+
+    // Class field defaults only apply at construction; clearing labels at runtime
+    // (i18n load gap, or attribute removal) must not throw in render().
+    it('falls back to English option labels when accessible labels are cleared', async function() {
+      // Cast: public props are typed as string, but Lit/JS can set nullish at runtime.
+      element.accessibleLabelSystem = undefined as unknown as string;
+      element.accessibleLabelLight = undefined as unknown as string;
+      element.accessibleLabelDark = undefined as unknown as string;
+      await element.updateComplete;
+
+      const snapshot = await a11ySnapshot();
+      expect(snapshot)
+          .to.axContainQuery({ role: 'option', name: /System/ }).and
+          .to.axContainQuery({ role: 'option', name: /Light/ }).and
+          .to.axContainQuery({ role: 'option', name: /Dark/ });
+    });
   });
 
   describe('scheme-changed event', function() {
