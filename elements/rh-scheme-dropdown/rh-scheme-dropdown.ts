@@ -84,10 +84,10 @@ export class RhSchemeDropdown extends LitElement {
     // IMPORTANT: no Lit child bindings (`${...}`) inside `<option>` — `<selectedcontent>`
     // `cloneNode()` copies `<!--?lit-->` markers and breaks the template (lit#5349).
     // Escaped `unsafeStatic` inlines labels without markers; Cannot use `.textContent`
-    // bindings because they flatten rich option content under appearance: base-select.
-    const labelSystem = unsafeStatic(this.#escapeHtml(this.accessibleLabelSystem));
-    const labelLight = unsafeStatic(this.#escapeHtml(this.accessibleLabelLight));
-    const labelDark = unsafeStatic(this.#escapeHtml(this.accessibleLabelDark));
+    // bindings because they flatten rich option content under `appearance: base-select`.
+    const labelSystem = unsafeStatic(this.#escapeHtml(this.accessibleLabelSystem ?? 'System'));
+    const labelLight = unsafeStatic(this.#escapeHtml(this.accessibleLabelLight ?? 'Light'));
+    const labelDark = unsafeStatic(this.#escapeHtml(this.accessibleLabelDark ?? 'Dark'));
 
     return html`
       <label for="scheme-dropdown" class="visually-hidden">${this.accessibleLabel}:</label>
@@ -148,11 +148,12 @@ export class RhSchemeDropdown extends LitElement {
   /**
    * Escapes author-facing localization strings before inlining them
    * with unsafeStatic. Required because unsafeStatic inserts raw
-   * HTML into the template.
-   * @param text - Plain text to escape for safe HTML inlining.
+   * HTML into the template. Nullish values fall back to English defaults
+   * via nullish coalescing (`??`).
+   * @param text - Plain text to escape for safe HTML inlining; nullish becomes ''.
    */
-  #escapeHtml(text: string): string {
-    return text
+  #escapeHtml(text?: string | null): string {
+    return String(text ?? '')
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
