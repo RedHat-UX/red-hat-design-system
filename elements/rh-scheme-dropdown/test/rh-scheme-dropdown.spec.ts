@@ -497,5 +497,20 @@ describe('<rh-scheme-dropdown>', function() {
       await element.updateComplete;
       expect(selectedAttrValues(element)).to.deep.equal(['light']);
     });
+
+    it('keeps System selected for an unexpected scheme value', async function() {
+      element.scheme = 'light';
+      await element.updateComplete;
+
+      // Malformed non-null string must fall back to System (same as render()).
+      element.scheme = 'not-a-scheme' as typeof element.scheme;
+      await element.updateComplete;
+
+      const select = element.shadowRoot!.querySelector('select')!;
+      expect(select.value).to.equal('light dark');
+      expect(selectedAttrValues(element)).to.deep.equal(['light dark']);
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.axContainQuery({ role: 'combobox', value: /System/ });
+    });
   });
 });
