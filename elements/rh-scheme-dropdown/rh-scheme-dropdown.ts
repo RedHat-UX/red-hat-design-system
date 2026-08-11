@@ -81,12 +81,10 @@ export class RhSchemeDropdown extends LitElement {
   @property({ attribute: 'accessible-label-system' }) accessibleLabelSystem = 'System';
 
   render() {
-    // IMPORTANT: do not put Lit child bindings (${...}) inside <option>.
-    // In Custom Select browsers, <selectedcontent> cloneNode()'s the selected
-    // option — including Lit's <!--?lit--> markers — which desyncs template
-    // parts and renders boolean values as labels ("false"). See lit#5349.
-    // unsafeStatic inlines escaped label text with no ChildPart markers.
-    // Author-facing strings must be HTML-escaped before unsafeStatic.
+    // IMPORTANT: no Lit child bindings (`${...}`) inside `<option>` — `<selectedcontent>`
+    // `cloneNode()` copies `<!--?lit-->` markers and breaks the template (lit#5349).
+    // Escaped `unsafeStatic` inlines labels without markers; Cannot use `.textContent`
+    // bindings because they flatten rich option content under appearance: base-select.
     const labelSystem = unsafeStatic(this.#escapeHtml(this.accessibleLabelSystem));
     const labelLight = unsafeStatic(this.#escapeHtml(this.accessibleLabelLight));
     const labelDark = unsafeStatic(this.#escapeHtml(this.accessibleLabelDark));
