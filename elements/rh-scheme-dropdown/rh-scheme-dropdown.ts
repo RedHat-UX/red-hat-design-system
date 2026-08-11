@@ -80,6 +80,16 @@ export class RhSchemeDropdown extends LitElement {
    */
   @property({ attribute: 'accessible-label-system' }) accessibleLabelSystem = 'System';
 
+  /**
+   * Valid `<select>` value for the current `scheme`. Unknown or nullish
+   * values map to System (`light dark`) so `render()` and `updated()` stay aligned.
+   */
+  get #resolvedScheme(): Scheme {
+    return this.scheme === 'light' || this.scheme === 'dark' ?
+      this.scheme
+      : 'light dark';
+  }
+
   render() {
     // IMPORTANT: no Lit child bindings (`${...}`) inside `<option>` — `<selectedcontent>`
     // `cloneNode()` copies `<!--?lit-->` markers and breaks the template (lit#5349).
@@ -97,17 +107,17 @@ export class RhSchemeDropdown extends LitElement {
           <rh-icon set="microns" icon="caret-down-fill"></rh-icon>
         </button>
         <option value="light dark"
-                ?selected="${this.scheme !== 'light' && this.scheme !== 'dark'}">
+                ?selected="${this.#resolvedScheme === 'light dark'}">
           <rh-icon set="ui" icon="auto-light-dark-mode"></rh-icon>
           <span class="option-text">${labelSystem}</span>
           <rh-icon set="ui" icon="check" class="checkmark"></rh-icon>
         </option>
-        <option value="light" ?selected="${this.scheme === 'light'}">
+        <option value="light" ?selected="${this.#resolvedScheme === 'light'}">
           <rh-icon set="ui" icon="light-mode"></rh-icon>
           <span class="option-text">${labelLight}</span>
           <rh-icon set="ui" icon="check" class="checkmark"></rh-icon>
         </option>
-        <option value="dark" ?selected="${this.scheme === 'dark'}">
+        <option value="dark" ?selected="${this.#resolvedScheme === 'dark'}">
           <rh-icon set="ui" icon="dark-mode"></rh-icon>
           <span class="option-text">${labelDark}</span>
           <rh-icon set="ui" icon="check" class="checkmark"></rh-icon>
@@ -117,7 +127,7 @@ export class RhSchemeDropdown extends LitElement {
   }
 
   /**
-   * Syncs `select.value` and option `selected` attrs to `scheme` after SSR
+   * Syncs `select.value` and option `selected` attrs to `#resolvedScheme` after SSR
    * hydration. Lit's `?selected` on `<option>` can stay stale otherwise.
    * @param changed - Reactive properties that changed this update cycle
    */
@@ -129,7 +139,8 @@ export class RhSchemeDropdown extends LitElement {
 
     const select = this.shadowRoot?.querySelector('select');
     if (select) {
-      const value = this.scheme ?? 'light dark';
+      // Use the same fallback as render() so malformed scheme values keep System selected.
+      const value = this.#resolvedScheme;
       if (select.value !== value) {
         select.value = value;
       }
