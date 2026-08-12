@@ -246,7 +246,7 @@ Developers can use the following CSS as a starting point for link underlining:
       transition-timing-function: ease;
       transition-property: text-underline-offset, color, text-decoration-color;
       transition-duration: 0.3s;
-      &:hover {
+      &:is(:hover, :focus-within) {
         text-decoration-color: inherit;
         text-underline-offset: max(6px, 0.33em);
       }
