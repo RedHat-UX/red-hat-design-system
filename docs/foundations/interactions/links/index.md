@@ -227,17 +227,40 @@ The following elements are exempt from underlining requirements and should not h
   </uxdot-best-practice>
 </div>
 
-### Example CSS
+## Example CSS
 
-Developers can use the following CSS as a starting point for link underlining:
+Developers can use the following CSS as a starting point for link styling.
 
-- In practice, you will probably want to use a more specific selector than `:is(p, ul, ol, dl) a`, because this example selector applies to all links in paragraphs or lists on a page.
-- This example adds a `max()` function to the `text-underline-offset` property, allowing this value to grow proportionally at large font sizes.
-- As of this writing, Safari has some issues with the `text-decoration` shorthand property, so we separated it out into its component options `(-color, -line, -style, and -thickness)`.
+### Link colors
 
-<rh-code-block actions="wrap copy">
+Base color tokens for all links, including hover, focus, and visited states:
+
+<rh-code-block actions="wrap copy" highlighting="client" language="css" full-height>
   <script type="text/css">
-    :is(p, ul, ol, dl) a {
+    a {
+      color: var(--rh-color-interactive-primary-default);
+      &:hover {
+        color: var(--rh-color-interactive-primary-hover);
+      }
+      &:focus-within {
+        color: var(--rh-color-interactive-primary-focus);
+        &:hover { color: var(--rh-color-interactive-primary-focus); }
+      }
+      &:visited {
+        color: var(--rh-color-interactive-primary-visited-default);
+        &:hover { color: var(--rh-color-interactive-primary-visited-hover); }
+      }
+    }
+  </script>
+</rh-code-block>
+
+### Inline link underlines
+
+When links appear in content (paragraphs, lists, etc.), add dashed underlines that solidify on hover or focus:
+
+<rh-code-block actions="wrap copy" highlighting="client" language="css" full-height>
+  <script type="text/css">
+    :where(p, ul, ol, dl) a {
       text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40));
       text-decoration-line: underline;
       text-decoration-style: dashed;
@@ -253,6 +276,11 @@ Developers can use the following CSS as a starting point for link underlining:
     }
   </script>
 </rh-code-block>
+
+- The sample selector is broad by design. Scope it to contexts where inline link underlining applies, links that appear alongside non-link text and lack other visual affordance (see [Exceptions](#exceptions) above).
+- The `max()` function on `text-underline-offset` allows the underline gap to grow proportionally at large font size
+s.
+- Older versions of Safari may still have difficulty with the `text-decoration` shorthand property, so we separated it out into its longhand options (`-color`, `-line`, `-style`, and `-thickness`).
 
 ## Behavior
 
