@@ -9,7 +9,7 @@
         text-decoration-thickness: 1px;
         text-underline-offset: max(5px, 0.28em);
         transition: ease all 0.3s;
-        &:hover {
+        &:is(:hover, :focus-within) {
           text-decoration-color: inherit;
           text-underline-offset: max(6px, 0.33em);
         }
