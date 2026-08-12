@@ -251,13 +251,16 @@ Preview the Project Felt theme on the elements below. Toggle the switch to compa
         root.adoptedStyleSheets = [...root.adoptedStyleSheets, sheet];
       }
     }
-    feltSwitch.addEventListener('change', function() {
+    function applyFeltTheme() {
       for (const pattern of document.querySelectorAll('uxdot-pattern')) {
         pattern.shadowRoot
           ?.querySelector('#content')
           ?.classList.toggle('felt-preview', feltSwitch.checked);
       }
-    });
+    }
+
+    applyFeltTheme();
+    feltSwitch.addEventListener('change', applyFeltTheme);
   }
 
   const nav = document.querySelector('#demos-nav');
