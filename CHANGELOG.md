@@ -1,5 +1,11 @@
 # @rhds/elements
 
+## 4.2.2
+### Patch Changes
+
+- 597ee63: `<rh-scheme-dropdown>`: fix custom select option label names
+- 0eb4dd9: `<rh-jump-links>`: correct text wrapping when long link text is used
+
 ## 4.2.1
 ### Patch Changes
 
