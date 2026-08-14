@@ -1,6 +1,7 @@
-var _RhSchemeDropdown_instances, _RhSchemeDropdown_isLight, _RhSchemeDropdown_isDark, _RhSchemeDropdown_isSystem, _RhSchemeDropdown_onChange;
-import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
-import { html, isServer, LitElement } from 'lit';
+var _RhSchemeDropdown_instances, _RhSchemeDropdown_resolvedScheme_get, _RhSchemeDropdown_escapeHtml, _RhSchemeDropdown_onChange;
+import { __classPrivateFieldGet, __decorate } from "tslib";
+import { isServer, LitElement } from 'lit';
+import { html, unsafeStatic } from 'lit/static-html.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
@@ -33,12 +34,6 @@ let RhSchemeDropdown = class RhSchemeDropdown extends LitElement {
     constructor() {
         super(...arguments);
         _RhSchemeDropdown_instances.add(this);
-        /** Whether the light option is currently selected. */
-        _RhSchemeDropdown_isLight.set(this, false);
-        /** Whether the dark option is currently selected. */
-        _RhSchemeDropdown_isDark.set(this, false);
-        /** Whether the system default option is currently selected. */
-        _RhSchemeDropdown_isSystem.set(this, false);
         /**
          * Current color scheme setting. Reflects to the `scheme` attribute and
          * initializes from `localStorage.rhdsColorScheme` when available.
@@ -65,19 +60,14 @@ let RhSchemeDropdown = class RhSchemeDropdown extends LitElement {
          */
         this.accessibleLabelSystem = 'System';
     }
-    /**
-     * Syncs the selected-state flags before each render so the
-     * template always reflects the current `scheme` value.
-     */
-    willUpdate() {
-        if (isServer) {
-            return;
-        }
-        __classPrivateFieldSet(this, _RhSchemeDropdown_isLight, this.scheme === 'light', "f");
-        __classPrivateFieldSet(this, _RhSchemeDropdown_isDark, this.scheme === 'dark', "f");
-        __classPrivateFieldSet(this, _RhSchemeDropdown_isSystem, !__classPrivateFieldGet(this, _RhSchemeDropdown_isLight, "f") && !__classPrivateFieldGet(this, _RhSchemeDropdown_isDark, "f"), "f");
-    }
     render() {
+        // IMPORTANT: no Lit child bindings (`${...}`) inside `<option>` — `<selectedcontent>`
+        // `cloneNode()` copies `<!--?lit-->` markers and breaks the template (lit#5349).
+        // Escaped `unsafeStatic` inlines labels without markers; Cannot use `.textContent`
+        // bindings because they flatten rich option content under `appearance: base-select`.
+        const labelSystem = unsafeStatic(__classPrivateFieldGet(this, _RhSchemeDropdown_instances, "m", _RhSchemeDropdown_escapeHtml).call(this, this.accessibleLabelSystem ?? 'System'));
+        const labelLight = unsafeStatic(__classPrivateFieldGet(this, _RhSchemeDropdown_instances, "m", _RhSchemeDropdown_escapeHtml).call(this, this.accessibleLabelLight ?? 'Light'));
+        const labelDark = unsafeStatic(__classPrivateFieldGet(this, _RhSchemeDropdown_instances, "m", _RhSchemeDropdown_escapeHtml).call(this, this.accessibleLabelDark ?? 'Dark'));
         return html `
       <label for="scheme-dropdown" class="visually-hidden">${this.accessibleLabel}:</label>
       <select id="scheme-dropdown" @change="${__classPrivateFieldGet(this, _RhSchemeDropdown_instances, "m", _RhSchemeDropdown_onChange)}">
@@ -85,23 +75,52 @@ let RhSchemeDropdown = class RhSchemeDropdown extends LitElement {
           <selectedcontent></selectedcontent>
           <rh-icon set="microns" icon="caret-down-fill"></rh-icon>
         </button>
-        <option value="light dark" ?selected="${__classPrivateFieldGet(this, _RhSchemeDropdown_isSystem, "f")}">
+        <option value="light dark"
+                ?selected="${__classPrivateFieldGet(this, _RhSchemeDropdown_instances, "a", _RhSchemeDropdown_resolvedScheme_get) === 'light dark'}">
           <rh-icon set="ui" icon="auto-light-dark-mode"></rh-icon>
-          <span class="option-text">${this.accessibleLabelSystem}</span>
+          <span class="option-text">${labelSystem}</span>
           <rh-icon set="ui" icon="check" class="checkmark"></rh-icon>
         </option>
-        <option value="light" ?selected="${__classPrivateFieldGet(this, _RhSchemeDropdown_isLight, "f")}">
+        <option value="light" ?selected="${__classPrivateFieldGet(this, _RhSchemeDropdown_instances, "a", _RhSchemeDropdown_resolvedScheme_get) === 'light'}">
           <rh-icon set="ui" icon="light-mode"></rh-icon>
-          <span class="option-text">${this.accessibleLabelLight}</span>
+          <span class="option-text">${labelLight}</span>
           <rh-icon set="ui" icon="check" class="checkmark"></rh-icon>
         </option>
-        <option value="dark" ?selected="${__classPrivateFieldGet(this, _RhSchemeDropdown_isDark, "f")}">
+        <option value="dark" ?selected="${__classPrivateFieldGet(this, _RhSchemeDropdown_instances, "a", _RhSchemeDropdown_resolvedScheme_get) === 'dark'}">
           <rh-icon set="ui" icon="dark-mode"></rh-icon>
-          <span class="option-text">${this.accessibleLabelDark}</span>
+          <span class="option-text">${labelDark}</span>
           <rh-icon set="ui" icon="check" class="checkmark"></rh-icon>
         </option>
       </select>
     `;
+    }
+    /**
+     * Syncs `select.value` and option `selected` attrs to `#resolvedScheme` after SSR
+     * hydration. Lit's `?selected` on `<option>` can stay stale otherwise.
+     * @param changed - Reactive properties that changed this update cycle
+     */
+    updated(changed) {
+        super.updated(changed);
+        if (isServer) {
+            return;
+        }
+        const select = this.shadowRoot?.querySelector('select');
+        if (select) {
+            // Use the same fallback as render() so malformed scheme values keep System selected.
+            const value = __classPrivateFieldGet(this, _RhSchemeDropdown_instances, "a", _RhSchemeDropdown_resolvedScheme_get);
+            if (select.value !== value) {
+                select.value = value;
+            }
+            // Realign `selected` attribute even when select.value already matches.
+            for (const option of select.options) {
+                if (option.value === value) {
+                    option.setAttribute('selected', '');
+                }
+                else {
+                    option.removeAttribute('selected');
+                }
+            }
+        }
     }
     /**
      * Observes changes to the `scheme` property. Applies the selected
@@ -126,16 +145,29 @@ let RhSchemeDropdown = class RhSchemeDropdown extends LitElement {
         }
     }
 };
-_RhSchemeDropdown_isLight = new WeakMap();
-_RhSchemeDropdown_isDark = new WeakMap();
-_RhSchemeDropdown_isSystem = new WeakMap();
 _RhSchemeDropdown_instances = new WeakSet();
+_RhSchemeDropdown_resolvedScheme_get = function _RhSchemeDropdown_resolvedScheme_get() {
+    return this.scheme === 'light' || this.scheme === 'dark' ?
+        this.scheme
+        : 'light dark';
+};
+_RhSchemeDropdown_escapeHtml = function _RhSchemeDropdown_escapeHtml(text) {
+    return String(text ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+};
 _RhSchemeDropdown_onChange = function _RhSchemeDropdown_onChange(e) {
     if (e.target instanceof HTMLSelectElement) {
         this.scheme = e.target.value;
     }
 };
 RhSchemeDropdown.styles = [styles];
+RhSchemeDropdown.shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+};
 __decorate([
     property({ reflect: true })
 ], RhSchemeDropdown.prototype, "scheme", void 0);

@@ -30,6 +30,7 @@ export declare class SchemeChangedEvent extends Event {
 export declare class RhSchemeDropdown extends LitElement {
     #private;
     static styles: CSSStyleSheet[];
+    static readonly shadowRootOptions: ShadowRootInit;
     /**
      * Current color scheme setting. Reflects to the `scheme` attribute and
      * initializes from `localStorage.rhdsColorScheme` when available.
@@ -54,12 +55,13 @@ export declare class RhSchemeDropdown extends LitElement {
      * Accessible label for the system default option.
      */
     accessibleLabelSystem: string;
+    render(): import("lit-html").TemplateResult;
     /**
-     * Syncs the selected-state flags before each render so the
-     * template always reflects the current `scheme` value.
+     * Syncs `select.value` and option `selected` attrs to `#resolvedScheme` after SSR
+     * hydration. Lit's `?selected` on `<option>` can stay stale otherwise.
+     * @param changed - Reactive properties that changed this update cycle
      */
-    protected willUpdate(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    protected updated(changed: Map<PropertyKey, unknown>): void;
     /**
      * Observes changes to the `scheme` property. Applies the selected
      * color scheme to `document.body` and persists it to `localStorage`

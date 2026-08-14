@@ -17,9 +17,9 @@
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "prism-esm": "/assets/packages/prism-esm/prism.js",
     "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
     "lit-element": "/assets/packages/lit-element/index.js",
-    "prism-esm": "/assets/packages/prism-esm/prism.js",
     "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
     "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
@@ -87,8 +87,56 @@
   <body>
     
 <div id="container">
-  <rh-scheme-dropdown id="left"></rh-scheme-dropdown>
-  <rh-scheme-dropdown id="right"></rh-scheme-dropdown>
+  <rh-scheme-dropdown  id="left"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:inline-block}.visually-hidden,selectedcontent .option-text{clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;block-size:1px;inline-size:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}select{--_caret-light:url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_4022_181)'%3E%3Cpath d='M9.46188 2.8086C9.38473 2.6216 9.20213 2.5 8.99998 2.5H0.999976C0.797826 2.5 0.615226 2.6216 0.538076 2.8086C0.460426 2.9956 0.503426 3.21045 0.646476 3.3535L4.46973 7.17675C4.61573 7.32325 4.80813 7.396 4.99998 7.396C5.19183 7.396 5.38428 7.32325 5.53023 7.17675L9.35348 3.3535C9.49653 3.21045 9.53953 2.9956 9.46188 2.8086Z' fill='%23151515'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_4022_181'%3E%3Crect width='10' height='10' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");--_caret-dark:url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_4022_181)'%3E%3Cpath d='M9.46188 2.8086C9.38473 2.6216 9.20213 2.5 8.99998 2.5H0.999976C0.797826 2.5 0.615226 2.6216 0.538076 2.8086C0.460426 2.9956 0.503426 3.21045 0.646476 3.3535L4.46973 7.17675C4.61573 7.32325 4.80813 7.396 4.99998 7.396C5.19183 7.396 5.38428 7.32325 5.53023 7.17675L9.35348 3.3535C9.49653 3.21045 9.53953 2.9956 9.46188 2.8086Z' fill='%23ffffff'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_4022_181'%3E%3Crect width='10' height='10' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");appearance:none;background-color:var(--rh-color-surface);background-image:var(--_caret-light);border: var(--rh-border-width-sm,1px) solid  var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default,3px);box-sizing:border-box;color:var(--rh-color-text-primary);cursor:default;font-family:var(--rh-font-family-body-text);font-size:var(--rh-font-size-body-text-md,1rem);font-weight:var(--rh-font-weight-body-text-regular,400);inline-size:100%;line-height:var(--rh-line-height-body-text,1.5);max-inline-size:var(--rh-scheme-dropdown-select-inline-size,102px);padding: var(--rh-space-md,8px)  var(--rh-space-2xl,32px)  var(--rh-space-md,8px)  var(--rh-space-lg,16px);background-position:right 12px center;background-repeat:no-repeat;margin:0}select:hover{border-color:var(--rh-color-border-interactive)}select:focus{border-color:var(--rh-color-border-interactive);outline: var(--rh-border-width-lg,3px) solid  var(--rh-color-border-interactive);outline-offset:var(--rh-length-2xs,3px)}:host([scheme=dark]) select{background-image:var(--_caret-dark)}@media (prefers-color-scheme:dark){:host([scheme=light\ dark]) select,:host(:not([scheme])) select{background-image:var(--_caret-dark)}}@supports (appearance:base-select){#scheme-dropdown{background-image:none}select{align-items:center;gap:var(--rh-space-md,8px);block-size:40px;inline-size:68px;padding-block:10px;padding-inline-end:var(--rh-space-lg,16px)}select,select::picker(select){appearance:base-select}select::picker(select){border: var(--rh-border-width-sm,1px) solid  var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default,3px);box-shadow:var(--rh-box-shadow-sm);max-inline-size:var(--rh-scheme-dropdown-picker-inline-size,145px);padding-block:var(--rh-space-md,8px);position-try-fallbacks:flip-inline;margin-block-start:var(--rh-space-sm,6px)}select:open{outline: var(--rh-border-width-md,2px) solid  var(--rh-color-border-interactive)}select::picker-icon{display:none}selectedcontent{align-items:center;display:inline-flex}selectedcontent rh-icon.checkmark{display:none}select button>rh-icon{--rh-icon-size:10px;transition:rotate var(--rh-animation-speed,.3s) ease}select:open button>rh-icon{rotate:180deg}option{padding: var(--rh-space-md,8px)  var(--rh-space-3xl,48px)  var(--rh-space-md,8px)  var(--rh-space-lg,16px);align-items:center;position:relative}option:hover,option:focus{background-color:light-dark( var(--rh-color-surface-lighter,#f2f2f2), var(--rh-color-surface-darker,#1f1f1f))}option:focus{border-radius:var(--rh-border-radius-default,3px);outline: var(--rh-border-width-lg,3px) solid  var(--rh-color-border-interactive);outline-offset:-3px;border:0}option::checkmark{display:none}option rh-icon.checkmark{color:var(--rh-color-interactive-primary-default);display:none;position:absolute;inset-inline-end:var(--rh-space-lg,16px)}option:checked rh-icon.checkmark{display:block}}</style><!--lit-part c3LB4GJbNsg=-->
+      <label for="scheme-dropdown" class="visually-hidden"><!--lit-part-->Color scheme<!--/lit-part-->:</label>
+      <!--lit-node 2--><select id="scheme-dropdown" >
+        <button type="button">
+          <selectedcontent></selectedcontent>
+          <rh-icon set="microns" icon="caret-down-fill"></rh-icon>
+        </button>
+        <!--lit-node 3--><option value="light dark"
+                selected>
+          <rh-icon set="ui" icon="auto-light-dark-mode"></rh-icon>
+          <span class="option-text">System</span>
+          <rh-icon set="ui" icon="check" class="checkmark"></rh-icon>
+        </option>
+        <!--lit-node 4--><option value="light" >
+          <rh-icon set="ui" icon="light-mode"></rh-icon>
+          <span class="option-text">Light</span>
+          <rh-icon set="ui" icon="check" class="checkmark"></rh-icon>
+        </option>
+        <!--lit-node 5--><option value="dark" >
+          <rh-icon set="ui" icon="dark-mode"></rh-icon>
+          <span class="option-text">Dark</span>
+          <rh-icon set="ui" icon="check" class="checkmark"></rh-icon>
+        </option>
+      </select>
+    <!--/lit-part--></template></rh-scheme-dropdown>
+  <rh-scheme-dropdown  id="right"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:inline-block}.visually-hidden,selectedcontent .option-text{clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;block-size:1px;inline-size:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}select{--_caret-light:url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_4022_181)'%3E%3Cpath d='M9.46188 2.8086C9.38473 2.6216 9.20213 2.5 8.99998 2.5H0.999976C0.797826 2.5 0.615226 2.6216 0.538076 2.8086C0.460426 2.9956 0.503426 3.21045 0.646476 3.3535L4.46973 7.17675C4.61573 7.32325 4.80813 7.396 4.99998 7.396C5.19183 7.396 5.38428 7.32325 5.53023 7.17675L9.35348 3.3535C9.49653 3.21045 9.53953 2.9956 9.46188 2.8086Z' fill='%23151515'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_4022_181'%3E%3Crect width='10' height='10' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");--_caret-dark:url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_4022_181)'%3E%3Cpath d='M9.46188 2.8086C9.38473 2.6216 9.20213 2.5 8.99998 2.5H0.999976C0.797826 2.5 0.615226 2.6216 0.538076 2.8086C0.460426 2.9956 0.503426 3.21045 0.646476 3.3535L4.46973 7.17675C4.61573 7.32325 4.80813 7.396 4.99998 7.396C5.19183 7.396 5.38428 7.32325 5.53023 7.17675L9.35348 3.3535C9.49653 3.21045 9.53953 2.9956 9.46188 2.8086Z' fill='%23ffffff'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_4022_181'%3E%3Crect width='10' height='10' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");appearance:none;background-color:var(--rh-color-surface);background-image:var(--_caret-light);border: var(--rh-border-width-sm,1px) solid  var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default,3px);box-sizing:border-box;color:var(--rh-color-text-primary);cursor:default;font-family:var(--rh-font-family-body-text);font-size:var(--rh-font-size-body-text-md,1rem);font-weight:var(--rh-font-weight-body-text-regular,400);inline-size:100%;line-height:var(--rh-line-height-body-text,1.5);max-inline-size:var(--rh-scheme-dropdown-select-inline-size,102px);padding: var(--rh-space-md,8px)  var(--rh-space-2xl,32px)  var(--rh-space-md,8px)  var(--rh-space-lg,16px);background-position:right 12px center;background-repeat:no-repeat;margin:0}select:hover{border-color:var(--rh-color-border-interactive)}select:focus{border-color:var(--rh-color-border-interactive);outline: var(--rh-border-width-lg,3px) solid  var(--rh-color-border-interactive);outline-offset:var(--rh-length-2xs,3px)}:host([scheme=dark]) select{background-image:var(--_caret-dark)}@media (prefers-color-scheme:dark){:host([scheme=light\ dark]) select,:host(:not([scheme])) select{background-image:var(--_caret-dark)}}@supports (appearance:base-select){#scheme-dropdown{background-image:none}select{align-items:center;gap:var(--rh-space-md,8px);block-size:40px;inline-size:68px;padding-block:10px;padding-inline-end:var(--rh-space-lg,16px)}select,select::picker(select){appearance:base-select}select::picker(select){border: var(--rh-border-width-sm,1px) solid  var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default,3px);box-shadow:var(--rh-box-shadow-sm);max-inline-size:var(--rh-scheme-dropdown-picker-inline-size,145px);padding-block:var(--rh-space-md,8px);position-try-fallbacks:flip-inline;margin-block-start:var(--rh-space-sm,6px)}select:open{outline: var(--rh-border-width-md,2px) solid  var(--rh-color-border-interactive)}select::picker-icon{display:none}selectedcontent{align-items:center;display:inline-flex}selectedcontent rh-icon.checkmark{display:none}select button>rh-icon{--rh-icon-size:10px;transition:rotate var(--rh-animation-speed,.3s) ease}select:open button>rh-icon{rotate:180deg}option{padding: var(--rh-space-md,8px)  var(--rh-space-3xl,48px)  var(--rh-space-md,8px)  var(--rh-space-lg,16px);align-items:center;position:relative}option:hover,option:focus{background-color:light-dark( var(--rh-color-surface-lighter,#f2f2f2), var(--rh-color-surface-darker,#1f1f1f))}option:focus{border-radius:var(--rh-border-radius-default,3px);outline: var(--rh-border-width-lg,3px) solid  var(--rh-color-border-interactive);outline-offset:-3px;border:0}option::checkmark{display:none}option rh-icon.checkmark{color:var(--rh-color-interactive-primary-default);display:none;position:absolute;inset-inline-end:var(--rh-space-lg,16px)}option:checked rh-icon.checkmark{display:block}}</style><!--lit-part c3LB4GJbNsg=-->
+      <label for="scheme-dropdown" class="visually-hidden"><!--lit-part-->Color scheme<!--/lit-part-->:</label>
+      <!--lit-node 2--><select id="scheme-dropdown" >
+        <button type="button">
+          <selectedcontent></selectedcontent>
+          <rh-icon set="microns" icon="caret-down-fill"></rh-icon>
+        </button>
+        <!--lit-node 3--><option value="light dark"
+                selected>
+          <rh-icon set="ui" icon="auto-light-dark-mode"></rh-icon>
+          <span class="option-text">System</span>
+          <rh-icon set="ui" icon="check" class="checkmark"></rh-icon>
+        </option>
+        <!--lit-node 4--><option value="light" >
+          <rh-icon set="ui" icon="light-mode"></rh-icon>
+          <span class="option-text">Light</span>
+          <rh-icon set="ui" icon="check" class="checkmark"></rh-icon>
+        </option>
+        <!--lit-node 5--><option value="dark" >
+          <rh-icon set="ui" icon="dark-mode"></rh-icon>
+          <span class="option-text">Dark</span>
+          <rh-icon set="ui" icon="check" class="checkmark"></rh-icon>
+        </option>
+      </select>
+    <!--/lit-part--></template></rh-scheme-dropdown>
 </div>
 
 <script type="module">
