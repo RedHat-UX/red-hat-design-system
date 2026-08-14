@@ -107,7 +107,7 @@ Note that there may be cases where a focus ring appears against a light backgrou
 <img src="./focus-styling-considerations-demo.svg" alt="Demo of how inset ring colors should be set based on their background color and not the page theme" style="max-width: 100%;">
 
 
-## Example CSS
+## Full example CSS
 ```css rh-code-block
 :is(*, :hover):focus-visible {
   outline-color: light-dark(
