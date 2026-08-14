@@ -65,7 +65,7 @@ In CSS terms, here is some minimal code that meets these requirements:
 }
 
 :where(:focus-visible) {
-  border-radius: 3px;
+  border-radius: var(--rh-border-width-lg, 3px);
 }
 ```
 
@@ -121,7 +121,7 @@ Note that there may be cases where a focus ring appears against a light backgrou
 }
 
 :where(:focus-visible) {
-  border-radius: 3px;
+  border-radius: var(--rh-border-width-lg, 3px);
 }
 
 /* Placeholder `.inset` class for inset focus. */
