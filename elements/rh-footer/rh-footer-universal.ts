@@ -140,7 +140,7 @@ export class RhFooterUniversal extends LitElement {
                 <a class="global-logo-anchor"
                     part="logo-anchor"
                     href="https://www.redhat.com/en"
-                    aria-label="Visit Red Hat">
+                    aria-label="Red Hat">
                   <!--
                     part:
                       description: Logo image or SVG element.
