@@ -36,6 +36,14 @@ export class RhFooterUniversal extends LitElement {
    */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
 
+  /**
+   * Sets the `href` for the default Red Hat logo link. Has no effect when
+   * the `logo` slot is overridden. Avoid changing this value except for a
+   * locale-specific redhat.com homepage (e.g. `https://www.redhat.com/ja`).
+   * Defaults to `'https://www.redhat.com/en'`.
+   */
+  @property({ attribute: 'logo-href' }) logoHref = 'https://www.redhat.com/en';
+
   #internals = InternalsController.of(this);
 
   #slots = new SlotController(
@@ -130,6 +138,7 @@ export class RhFooterUniversal extends LitElement {
               <!-- summary: Red Hat logo (logo slot)
                    description: |
                      Expects block elements: an \`<a>\` wrapping an \`<img>\` or \`<svg>\`.
+                     Replaces the default link, so \`logo-href\` no longer applies.
                      Defaults to the Red Hat logo SVG linking to redhat.com. Screen
                      readers rely on the anchor \`aria-label\` for identification. -->
               <slot name="logo">
@@ -139,7 +148,7 @@ export class RhFooterUniversal extends LitElement {
                 -->
                 <a class="global-logo-anchor"
                     part="logo-anchor"
-                    href="https://www.redhat.com/en"
+                    href="${this.logoHref}"
                     aria-label="Red Hat">
                   <!--
                     part:
