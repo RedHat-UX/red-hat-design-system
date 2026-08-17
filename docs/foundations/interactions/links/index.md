@@ -278,8 +278,7 @@ When links appear in content (paragraphs, lists, etc.), add dashed underlines th
 </rh-code-block>
 
 - The sample selector is broad by design. Scope it to contexts where inline link underlining applies, links that appear alongside non-link text and lack other visual affordance (see [Exceptions](#exceptions) above).
-- The `max()` function on `text-underline-offset` allows the underline gap to grow proportionally at large font size
-s.
+- The `max()` function on `text-underline-offset` allows the underline gap to grow proportionally at large font sizes.
 - Older versions of Safari may still have difficulty with the `text-decoration` shorthand property, so we separated it out into its longhand options (`-color`, `-line`, `-style`, and `-thickness`).
 
 ## Behavior
