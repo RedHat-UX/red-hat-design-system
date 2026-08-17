@@ -139,12 +139,12 @@ export class RhFooterUniversal extends LitElement {
                    description: |
                      Expects block elements: an \`<a>\` wrapping an \`<img>\` or \`<svg>\`.
                      Replaces the default link, so \`logo-href\` no longer applies.
-                     Defaults to the Red Hat logo SVG linking to redhat.com. Screen
+                     Defaults to the Red Hat logo SVG linking to https://www.redhat.com/en. Screen
                      readers rely on the anchor \`aria-label\` for identification. -->
               <slot name="logo">
                 <!--
                   part:
-                    description: Link wrapping the logo; defaults to redhat.com.
+                    description: Link wrapping the logo; defaults to https://www.redhat.com/en.
                 -->
                 <a class="global-logo-anchor"
                     part="logo-anchor"
