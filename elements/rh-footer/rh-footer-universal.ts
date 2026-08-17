@@ -14,6 +14,9 @@ import style from './rh-footer.css' with { type: 'css' };
 import './rh-footer-copyright.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 
+/** Default Red Hat homepage URL for the logo link and empty `logo-href` fallback. */
+const DEFAULT_LOGO_HREF = 'https://www.redhat.com/en';
+
 /**
  * Global Red Hat footer bar for consistent branding across all
  * properties. Authors must not customize content per-site. The
@@ -42,7 +45,7 @@ export class RhFooterUniversal extends LitElement {
    * locale-specific redhat.com homepage (e.g. `https://www.redhat.com/ja`).
    * Defaults to `'https://www.redhat.com/en'`.
    */
-  @property({ attribute: 'logo-href' }) logoHref = 'https://www.redhat.com/en';
+  @property({ attribute: 'logo-href' }) logoHref = DEFAULT_LOGO_HREF;
 
   #internals = InternalsController.of(this);
 
@@ -148,7 +151,7 @@ export class RhFooterUniversal extends LitElement {
                 -->
                 <a class="global-logo-anchor"
                     part="logo-anchor"
-                    href="${this.logoHref}"
+                    href="${this.logoHref?.trim() || DEFAULT_LOGO_HREF}"
                     aria-label="Red Hat">
                   <!--
                     part:
