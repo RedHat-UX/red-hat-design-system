@@ -269,7 +269,7 @@ describe('<rh-footer>', function() {
     describe('footer-universal behaviors', function() {
       it('logo anchor tag should always link to redhat.com', async function() {
         const universalElement = await fixture<RhFooterUniversal>(UNIVERSAL_FOOTER_TEMPLATE);
-        expect(universalElement.shadowRoot?.querySelector('slot[name="logo"] a')?.getAttribute('href')).to.equal('https://redhat.com');
+        expect(universalElement.shadowRoot?.querySelector('slot[name="logo"] a')?.getAttribute('href')).to.equal('https://www.redhat.com/en');
       });
     });
 
