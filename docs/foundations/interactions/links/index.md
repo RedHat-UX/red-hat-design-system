@@ -238,17 +238,45 @@ Base color tokens for all links, including hover, focus, and visited states:
 <rh-code-block actions="wrap copy" highlighting="client" language="css" full-height>
   <script type="text/css">
     a {
-      color: var(--rh-color-interactive-primary-default);
+      color: var(--rh-color-interactive-primary-default, 
+        light-dark(
+          var(--rh-color-interactive-primary-default-on-light, #0066cc),
+          var(--rh-color-interactive-primary-default-on-dark, #92c5f9)
+        ));
       &:hover {
-        color: var(--rh-color-interactive-primary-hover);
+        color: var(--rh-color-interactive-primary-hover,
+          light-dark(
+            var(--rh-color-interactive-primary-hover-on-light, #003366),
+            var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
+        ));
       }
       &:focus-within {
-        color: var(--rh-color-interactive-primary-focus);
-        &:hover { color: var(--rh-color-interactive-primary-focus); }
+        color: var(--rh-color-interactive-primary-focus,
+          light-dark(
+            var(--rh-color-interactive-primary-focus-on-light, #003366),
+            var(--rh-color-interactive-primary-focus-on-dark, #b9dafc)
+          ));
+        &:hover {
+          color: var(--rh-color-interactive-primary-focus,
+            light-dark(
+              var(--rh-color-interactive-primary-focus-on-light, #003366),
+              var(--rh-color-interactive-primary-focus-on-dark, #b9dafc)
+            ));
+        }
       }
       &:visited {
-        color: var(--rh-color-interactive-primary-visited-default);
-        &:hover { color: var(--rh-color-interactive-primary-visited-hover); }
+        color: var(--rh-color-interactive-primary-visited-default,
+          light-dark(
+            var(--rh-color-interactive-primary-visited-default-on-light, #5e40be),
+            var(--rh-color-interactive-primary-visited-default-on-dark, #b6a6e9)
+          ));
+        &:hover {
+          color: var(--rh-color-interactive-primary-visited-hover,
+            light-dark(
+              var(--rh-color-interactive-primary-visited-hover-on-light, #21134d),
+              var(--rh-color-interactive-primary-visited-hover-on-dark, #ece6ff)
+            ));
+        }
       }
     }
   </script>
@@ -261,7 +289,7 @@ When links appear in content (paragraphs, lists, etc.), add dashed underlines th
 <rh-code-block actions="wrap copy" highlighting="client" language="css" full-height>
   <script type="text/css">
     :where(p, ul, ol, dl) a {
-      text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40));
+      text-decoration-color: light-dark(var(--rh-color-gray-50, #707070), var(--rh-color-gray-40, #a3a3a3));
       text-decoration-line: underline;
       text-decoration-style: dashed;
       text-decoration-thickness: var(--rh-border-width-sm, 1px);
