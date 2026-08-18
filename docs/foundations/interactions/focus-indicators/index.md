@@ -46,6 +46,7 @@ When focus is applied to an interactive element, we apply an outline that:
 - is solid (not dashed or dotted).
 - is 3px thick.
 - is offset from the element by 3px.
+- has a border radius of 3px, unless the element already has a specified radius.
 - has 3:1 or greater contrast from the background colors just outside and inside of it.
 - temporarily disables any transition animations on the element (so entering or exiting the focus state is not distracting).
 
@@ -61,6 +62,10 @@ In CSS terms, here is some minimal code that meets these requirements:
   outline-style: solid;
   outline-width: var(--rh-border-width-lg, 3px);
   transition: none;
+}
+
+:where(:focus-visible) {
+  border-radius: var(--rh-border-width-lg, 3px);
 }
 ```
 
@@ -102,7 +107,7 @@ Note that there may be cases where a focus ring appears against a light backgrou
 <img src="./focus-styling-considerations-demo.svg" alt="Demo of how inset ring colors should be set based on their background color and not the page theme" style="max-width: 100%;">
 
 
-## Example CSS
+## Full example CSS
 ```css rh-code-block
 :is(*, :hover):focus-visible {
   outline-color: light-dark(
@@ -113,6 +118,10 @@ Note that there may be cases where a focus ring appears against a light backgrou
   outline-style: solid;
   outline-width: var(--rh-border-width-lg, 3px);
   transition: none;
+}
+
+:where(:focus-visible) {
+  border-radius: var(--rh-border-width-lg, 3px);
 }
 
 /* Placeholder `.inset` class for inset focus. */
