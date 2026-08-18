@@ -227,18 +227,69 @@ The following elements are exempt from underlining requirements and should not h
   </uxdot-best-practice>
 </div>
 
-### Example CSS
+## Example CSS
 
-Developers can use the following CSS as a starting point for link underlining:
+Developers can use the following CSS as a starting point for link styling.
 
-- In practice, you will probably want to use a more specific selector than `:is(p, ul, ol, dl) a`, because this example selector applies to all links in paragraphs or lists on a page.
-- This example adds a `max()` function to the `text-underline-offset` property, allowing this value to grow proportionally at large font sizes.
-- As of this writing, Safari has some issues with the `text-decoration` shorthand property, so we separated it out into its component options `(-color, -line, -style, and -thickness)`.
+### Link colors
 
-<rh-code-block actions="wrap copy">
+Base color tokens for all links, including hover, focus, and visited states:
+
+<rh-code-block actions="wrap copy" highlighting="client" language="css" full-height>
   <script type="text/css">
-    :is(p, ul, ol, dl) a {
-      text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40));
+    a {
+      color: var(--rh-color-interactive-primary-default, 
+        light-dark(
+          var(--rh-color-interactive-primary-default-on-light, #0066cc),
+          var(--rh-color-interactive-primary-default-on-dark, #92c5f9)
+        ));
+      &:hover {
+        color: var(--rh-color-interactive-primary-hover,
+          light-dark(
+            var(--rh-color-interactive-primary-hover-on-light, #003366),
+            var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
+        ));
+      }
+      &:focus-within {
+        color: var(--rh-color-interactive-primary-focus,
+          light-dark(
+            var(--rh-color-interactive-primary-focus-on-light, #003366),
+            var(--rh-color-interactive-primary-focus-on-dark, #b9dafc)
+          ));
+        &:hover {
+          color: var(--rh-color-interactive-primary-focus,
+            light-dark(
+              var(--rh-color-interactive-primary-focus-on-light, #003366),
+              var(--rh-color-interactive-primary-focus-on-dark, #b9dafc)
+            ));
+        }
+      }
+      &:visited {
+        color: var(--rh-color-interactive-primary-visited-default,
+          light-dark(
+            var(--rh-color-interactive-primary-visited-default-on-light, #5e40be),
+            var(--rh-color-interactive-primary-visited-default-on-dark, #b6a6e9)
+          ));
+        &:hover {
+          color: var(--rh-color-interactive-primary-visited-hover,
+            light-dark(
+              var(--rh-color-interactive-primary-visited-hover-on-light, #21134d),
+              var(--rh-color-interactive-primary-visited-hover-on-dark, #ece6ff)
+            ));
+        }
+      }
+    }
+  </script>
+</rh-code-block>
+
+### Inline link underlines
+
+When links appear in content (paragraphs, lists, etc.), add dashed underlines that solidify on hover or focus:
+
+<rh-code-block actions="wrap copy" highlighting="client" language="css" full-height>
+  <script type="text/css">
+    :where(p, ul, ol, dl) a {
+      text-decoration-color: light-dark(var(--rh-color-gray-50, #707070), var(--rh-color-gray-40, #a3a3a3));
       text-decoration-line: underline;
       text-decoration-style: dashed;
       text-decoration-thickness: var(--rh-border-width-sm, 1px);
@@ -253,6 +304,10 @@ Developers can use the following CSS as a starting point for link underlining:
     }
   </script>
 </rh-code-block>
+
+- The sample selector is broad by design. Scope it to contexts where inline link underlining applies, links that appear alongside non-link text and lack other visual affordance (see [Exceptions](#exceptions) above).
+- The `max()` function on `text-underline-offset` allows the underline gap to grow proportionally at large font sizes.
+- Older versions of Safari may still have difficulty with the `text-decoration` shorthand property, so we separated it out into its longhand options (`-color`, `-line`, `-style`, and `-thickness`).
 
 ## Behavior
 
