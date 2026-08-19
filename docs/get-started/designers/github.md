@@ -5,6 +5,7 @@ heading: Designers
 permalink: /get-started/designers/github.html
 tags:
   - designers
+pathfinder: true
 subnav:
   collection: sortedDesigners
   order: 40

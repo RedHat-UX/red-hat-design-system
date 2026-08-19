@@ -117,6 +117,7 @@ export default class ElementsPage extends Renderer<Context> {
         import '@uxdot/elements/uxdot-best-practice.js';
         import '@uxdot/elements/uxdot-repo-status-checklist.js';
         import '@uxdot/elements/uxdot-repo-status-list.js';
+        import '@uxdot/elements/uxdot-pathfinder.js';
         import '@rhds/elements/rh-alert/rh-alert.js';
         import '@rhds/elements/rh-cta/rh-cta.js';
         import '@rhds/elements/rh-surface/rh-surface.js';
@@ -139,6 +140,7 @@ export default class ElementsPage extends Renderer<Context> {
       : content}
 
       ${await this.renderFile('./docs/_includes/partials/component/feedback.11ty.ts', ctx)}
+      ${this.#renderPathfinder(ctx)}
     `;
   }
 
@@ -195,6 +197,24 @@ export default class ElementsPage extends Renderer<Context> {
           <a href="#${id}">${text}</a>
         </h${level}>
       </uxdot-copy-permalink>`;
+  }
+
+  #renderPathfinder(ctx: Context) {
+    const { tabs, pageSlug } = ctx.doc;
+    const idx = tabs.findIndex(t => t.pageSlug === pageSlug);
+    if (idx < 0) {
+      return '';
+    }
+    const prev = idx > 0 ? tabs[idx - 1] : undefined;
+    const next = idx < tabs.length - 1 ? tabs[idx + 1] : undefined;
+    if (!prev && !next) {
+      return '';
+    }
+    return html`
+      <uxdot-pathfinder>
+        ${!prev ? '' : html`<a href="${prev.url}" slot="previous">${prev.pageTitle}</a>`}
+        ${!next ? '' : html`<a href="${next.url}" slot="next">${next.pageTitle}</a>`}
+      </uxdot-pathfinder>`;
   }
 
   async #renderOverviewPage(content: string, ctx: Context) {
