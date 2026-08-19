@@ -13,24 +13,16 @@
 
 #container {
   display: grid;
-  grid-template-columns: auto;
-  grid-template-areas: 'heading' 'controls' 'description' 'content' 'code';
-  gap: var(--rh-space-2xl) var(--rh-space-4xl);
+  grid-template-columns: 1fr;
+  grid-template-areas: 'heading' 'description' 'controls' 'content' 'code';
+  gap: var(--rh-space-2xl);
 
   @container host (width >= 530px) {
-    grid-template-columns: auto auto;
-    grid-template-areas:
-      'heading controls'
-      'description description'
-      'content content'
-      'code code';
-  }
-
-  @container host (width >= 992px) {
+    grid-template-columns: 1fr 1fr;
     grid-template-areas:
       'heading heading'
-      'controls controls'
       'description description'
+      'controls controls'
       'content content'
       'code code';
   }
@@ -81,12 +73,32 @@ h3,
   }
 }
 
-#color-picker {
+#controls-row {
   grid-area: controls;
-  justify-self: flex-end;
   display: flex;
   align-items: center;
-  gap: var(--rh-space-lg, 16px);
+  gap: var(--rh-space-lg);
+  flex-wrap: wrap;
+}
+
+#color-picker {
+  margin-inline-start: auto;
+}
+
+#viewport-frame {
+  grid-area: content;
+  border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default);
+  resize: both;
+  overflow: auto;
+  inline-size: 100%;
+  min-block-size: 400px;
+  box-sizing: border-box;
+  transition: max-inline-size 0.3s ease;
+}
+
+#viewport-controls {
+  margin: 0;
 }
 
 #code-tabs {
@@ -108,11 +120,7 @@ h3,
   }
 }
 
-/* When description is empty, move content and code tabs up one area: */
-#description.empty ~ #content {
-  grid-area: description;
-}
-
-#description.empty ~ #code-tabs {
-  grid-area: content;
+/* When description is empty, collapse the gap visually */
+#description.empty {
+  display: none;
 }
