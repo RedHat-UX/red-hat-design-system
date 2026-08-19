@@ -420,7 +420,6 @@ export default class TokensPage extends Renderer<Data> {
     const seenPaths = new Set<string>();
     const options: Options = { tokens, name, path, slug, level: 1, exclude, include, seenPaths };
     return html`
-      <link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
       <link rel="stylesheet" data-helmet href="/styles/samp.css">
       <link rel="stylesheet" data-helmet href="/styles/pages/tokens.css">
       <script type="module" data-helmet>
