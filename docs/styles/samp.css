@@ -6,8 +6,7 @@ samp:not(.swatch) {
     background-color: var(--rh-color-surface-darkest, #151515);
 
     /* Linting rule issue */
-    /* stylelint-disable-next-line rhds/token-values */
-    opacity: var(--rh-opacity-60, 0.6);
+    opacity: var(--rh-opacity-60, 60%);
     display: block;
     border-bottom:
       2px solid
