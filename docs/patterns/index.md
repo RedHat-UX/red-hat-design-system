@@ -31,17 +31,7 @@ tags:
       href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
 
 
-<style data-helmet>
-  #patterns-nav {
-    margin-block: var(--rh-space--2xl, 32px);
-  }
-    rh-tile h3 {
-    margin: 0 !important;
-  }
-  rh-tile p {
-    margin-block: 0 0 !important;
-  }
-</style>
+<link rel="stylesheet" href="index.css" data-helmet>
 
 <script data-helmet type="module">
   import '@rhds/elements/rh-tile/rh-tile.js';

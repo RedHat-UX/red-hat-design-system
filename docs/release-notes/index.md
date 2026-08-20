@@ -10,25 +10,7 @@ title: Release notes
       rel="stylesheet"
       href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 
-<style data-helmet>
-  rh-tile {
-    margin-block: var(--rh-space-3xl, 48px);
-    max-inline-size: 320px;
-  }
-
-  rh-tile [icon="github"] {
-    --rh-icon-size: var(--rh-size-icon-03, 32px);
-  }
-
-  @container host (max-width: 768px) {
-    rh-table thead ~ tbody tr :is(th, td) {
-      display: block;
-    }
-    rh-table thead ~ tbody tr :is(td,th):before {
-      margin-inline-end: var(--rh-length-2xs, 3px);
-    }
-  }
-</style>
+<link rel="stylesheet" href="index.css" data-helmet>
 
 <script data-helmet type="module">
   import '@rhds/elements/rh-tile/rh-tile.js';

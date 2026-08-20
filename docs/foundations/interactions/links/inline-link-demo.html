@@ -2,42 +2,93 @@
 <p>This is body text with another <a href="#">inline link</a>. Hover over, tab to, or click the inline links in this demo. Use the color palette picker to see what inline links look like in dark contexts.</p>
 
 <style>
-  :is(p, ul, ol, dl, h1, h2, h3, h4, h5, h6) a {
-        text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40));
-        text-decoration-line: underline;
-        text-decoration-style: dashed;
-        text-decoration-thickness: 1px;
-        text-underline-offset: max(5px, 0.28em);
-        transition: ease all 0.3s;
-        &:hover {
-          text-decoration-color: inherit;
-          text-underline-offset: max(6px, 0.33em);
-        }
-      }
+  /* stylelint-disable no-descending-specificity --
+   * CSS nesting creates a false positive: &:hover inside &:visited
+   * is a different selector than &:hover at the top level, but
+   * stylelint cannot distinguish them.
+   * See https://github.com/stylelint/stylelint/issues/4271 */
   a {
-    color: var(--rh-color-interactive-primary-default);
-    &:hover { color: var(--rh-color-interactive-primary-hover); }
+    color:
+      var(--rh-color-interactive-primary-default,
+        light-dark(
+          var(--rh-color-interactive-primary-default-on-light, #0066cc),
+          var(--rh-color-interactive-primary-default-on-dark, #92c5f9)));
 
-    &:focus-within {
-      color: var(--rh-color-interactive-primary-focus);
-      &:hover { color: var(--rh-color-interactive-primary-focus); }
+    &:hover {
+      color:
+        var(--rh-color-interactive-primary-hover,
+          light-dark(
+            var(--rh-color-interactive-primary-hover-on-light, #003366),
+            var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)));
     }
 
     &:visited {
-      color: var(--rh-color-interactive-primary-visited-default);
-      &:hover { color: var(--rh-color-interactive-primary-visited-hover); }
+      color:
+        var(--rh-color-interactive-primary-visited-default,
+          light-dark(
+            var(--rh-color-interactive-primary-visited-default-on-light, #5e40be),
+            var(--rh-color-interactive-primary-visited-default-on-dark, #b6a6e9)));
+
+      &:hover {
+        color:
+          var(--rh-color-interactive-primary-visited-hover,
+            light-dark(
+              var(--rh-color-interactive-primary-visited-hover-on-light, #21134d),
+              var(--rh-color-interactive-primary-visited-hover-on-dark, #ece6ff)));
+      }
+    }
+
+    &:focus-within {
+      color:
+        var(--rh-color-interactive-primary-focus,
+          light-dark(
+            var(--rh-color-interactive-primary-focus-on-light, #003366),
+            var(--rh-color-interactive-primary-focus-on-dark, #b9dafc)));
+
+      &:hover {
+        color:
+          var(--rh-color-interactive-primary-focus,
+            light-dark(
+              var(--rh-color-interactive-primary-focus-on-light, #003366),
+              var(--rh-color-interactive-primary-focus-on-dark, #b9dafc)));
+      }
     }
   }
 
-  /*The following CSS is not related to link styling */
-  h2 {
-    font-family: var(--rh-font-family-heading);
-    color: var(--rh-color-text-primary);
-    font-size: var(--rh-font-size-heading-sm);
-    font-weight: var(--rh-font-weight-heading-medium);
+  :is(p, ul, ol, dl, h1, h2, h3, h4, h5, h6) a {
+    text-decoration:
+      underline dashed
+      light-dark(
+          var(--rh-color-gray-50, #707070),
+          var(--rh-color-gray-40, #a3a3a3))
+      1px;
+    text-underline-offset: max(5px, 0.28em);
+    transition: ease all 0.3s;
+
+    &:hover {
+      text-decoration-color: inherit;
+      text-underline-offset: max(6px, 0.33em);
+    }
   }
+
+  /* The following CSS is not related to link styling */
+  h2 {
+    font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+    color:
+      var(--rh-color-text-primary,
+        light-dark(
+          var(--rh-color-text-primary-on-light, #151515),
+          var(--rh-color-text-primary-on-dark, #ffffff)));
+    font-size: var(--rh-font-size-heading-sm, 1.5rem);
+    font-weight: var(--rh-font-weight-heading-medium, 500);
+  }
+
   p {
-    color: var(--rh-color-text-primary);
-    font-size: var(--rh-font-size-body-text-lg);
+    color:
+      var(--rh-color-text-primary,
+        light-dark(
+          var(--rh-color-text-primary-on-light, #151515),
+          var(--rh-color-text-primary-on-dark, #ffffff)));
+    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   }
 </style>

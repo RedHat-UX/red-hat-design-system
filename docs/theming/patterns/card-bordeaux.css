@@ -1,0 +1,143 @@
+.theme-bordeaux {
+  /* first, define some custom theme colors */
+  --bordeaux-darkest: #19050a;
+  --bordeaux-darker: #260710;
+  --bordeaux-dark: #330915;
+  --bordeaux-brand-dark: #7f1734;
+  --bordeaux-brand-light: #d52757;
+  --bordeaux-light: #a55d71;
+  --bordeaux-lighter: #d9b9c2;
+  --bordeaux-lightest: #f2e8eb;
+
+  /* next, apply those colors to RHDS' theming tokens */
+  --rh-color-surface-darkest: var(--bordeaux-darkest);
+  --rh-color-surface-darker: var(--bordeaux-darker);
+  --rh-color-surface-dark: var(--bordeaux-dark);
+  --rh-color-surface-light: var(--bordeaux-light);
+  --rh-color-surface-lighter: var(--bordeaux-lighter);
+  --rh-color-surface-lightest: var(--bordeaux-lightest);
+  --rh-color-border-interactive:
+    light-dark(
+        var(--bordeaux-darkest),
+        var(--bordeaux-lightest));
+  --rh-color-interactive-primary-default:
+    light-dark(
+        var(--bordeaux-darker),
+        var(--bordeaux-lighter));
+  --rh-color-interactive-primary-hover:
+    light-dark(
+        var(--bordeaux-dark),
+        var(--bordeaux-light));
+  --rh-color-interactive-primary-focus:
+    light-dark(
+        var(--bordeaux-dark),
+        var(--bordeaux-light));
+  --rh-color-interactive-primary-active:
+    light-dark(
+        var(--bordeaux-dark),
+        var(--bordeaux-light));
+  --rh-color-border-subtle:
+    light-dark(
+        var(--bordeaux-darker),
+        var(--bordeaux-lighter));
+  --rh-color-icon-primary:
+    light-dark(
+        var(--bordeaux-brand-dark),
+        var(--bordeaux-brand-light));
+}
+
+.list-with-dividers {
+  margin-block-end: var(--rh-space-lg, 16px);
+
+  & ul {
+    display: flex;
+    flex-flow: column;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    & li {
+      margin-block: 0;
+      padding-block: var(--rh-space-lg, 16px);
+      border-block-end:
+        1px solid
+        var(--rh-color-border-subtle,
+          light-dark(
+            var(--rh-color-border-subtle-on-light, #c7c7c7),
+            var(--rh-color-border-subtle-on-dark, #707070)));
+
+      &:last-child {
+        padding-block-end: 0;
+        border-block-end: none;
+      }
+    }
+  }
+
+  & h3 {
+    margin-block-end: var(--rh-space-lg, 16px);
+  }
+}
+
+a {
+  color:
+    var(--rh-color-interactive-primary-default,
+      light-dark(
+        var(--rh-color-interactive-primary-default-on-light, #0066cc),
+        var(--rh-color-interactive-primary-default-on-dark, #92c5f9)));
+
+  &:hover {
+    color:
+      var(--rh-color-interactive-primary-hover,
+        light-dark(
+          var(--rh-color-interactive-primary-hover-on-light, #003366),
+          var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)));
+  }
+
+  &:focus-within {
+    color:
+      var(--rh-color-interactive-primary-focus,
+        light-dark(
+          var(--rh-color-interactive-primary-focus-on-light, #003366),
+          var(--rh-color-interactive-primary-focus-on-dark, #b9dafc)));
+  }
+
+  &:active {
+    color:
+      var(--rh-color-interactive-primary-active,
+        light-dark(
+          var(--rh-color-interactive-primary-active-on-light, #003366),
+          var(--rh-color-interactive-primary-active-on-dark, #b9dafc)));
+  }
+
+  &:visited {
+    color:
+      var(--rh-color-interactive-primary-visited-default,
+        light-dark(
+          var(--rh-color-interactive-primary-visited-default-on-light, #5e40be),
+          var(--rh-color-interactive-primary-visited-default-on-dark, #b6a6e9)));
+
+    &:hover {
+      color:
+        var(--rh-color-interactive-primary-visited-hover,
+          light-dark(
+            var(--rh-color-interactive-primary-visited-hover-on-light, #21134d),
+            var(--rh-color-interactive-primary-visited-hover-on-dark, #ece6ff)));
+    }
+
+    &:focus-within {
+      color:
+        var(--rh-color-interactive-primary-visited-focus,
+          light-dark(
+            var(--rh-color-interactive-primary-visited-focus-on-light, #21134d),
+            var(--rh-color-interactive-primary-visited-focus-on-dark, #ece6ff)));
+    }
+
+    &:active {
+      color:
+        var(--rh-color-interactive-primary-visited-active,
+          light-dark(
+            var(--rh-color-interactive-primary-visited-active-on-light, #21134d),
+            var(--rh-color-interactive-primary-visited-active-on-dark, #ece6ff)));
+    }
+  }
+}

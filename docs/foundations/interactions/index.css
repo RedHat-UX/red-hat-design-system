@@ -1,0 +1,13 @@
+.large-red-text {
+  grid-area: h;
+  font-size: var(--rh-font-size-heading-2xl, 3rem);
+  font-weight: var(--rh-font-weight-heading-regular, 400);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+  line-height: var(--rh-line-height-heading, 1.3);
+  color:
+    var(--rh-color-brand-red,
+      light-dark(
+        var(--rh-color-brand-red-on-light, #ee0000),
+        var(--rh-color-brand-red-on-dark, #ee0000)));
+  margin-block-end: var(--rh-space-xl, 24px);
+}

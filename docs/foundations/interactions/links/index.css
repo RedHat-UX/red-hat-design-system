@@ -1,0 +1,20 @@
+.underline-exception {
+  display: block;
+  margin-block: var(--rh-space-2xl, 32px);
+
+  & span {
+    font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+    font-size: var(--rh-font-size-heading-xs, 1.25rem);
+    font-weight: var(--rh-font-weight-heading-medium, 500);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--rh-space-md, 8px);
+    color:
+      var(--rh-color-status-danger,
+        light-dark(
+          var(--rh-color-status-danger-on-light, #b1380b),
+          var(--rh-color-status-danger-on-dark, #f0561d)));
+    margin-block: var(--rh-space-2xl, 32px) var(--rh-space-lg, 16px);
+  }
+}
