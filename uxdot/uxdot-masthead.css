@@ -3,8 +3,8 @@
 :host {
   color-scheme: only dark;
   display: block;
-  background-color: var(--rh-color-surface-darkest);
-  color: var(--rh-color-text-primary-on-dark);
+  background-color: var(--rh-color-surface-darkest, #151515);
+  color: var(--rh-color-text-primary-on-dark, #ffffff);
   height: max-content;
   container-type: inline-size;
   container-name: uxdot-masthead;
@@ -12,16 +12,16 @@
 
 #container {
   display: grid;
-  column-gap: var(--rh-space-lg);
+  column-gap: var(--rh-space-lg, 16px);
   grid-template-columns: max-content 1fr 1fr;
   max-height: var(--uxdot-masthead-max-height, 72px);
-  margin-inline: var(--rh-space-md);
-  margin-block: var(--rh-space-lg);
+  margin-inline: var(--rh-space-md, 8px);
+  margin-block: var(--rh-space-lg, 16px);
   #scheme { display: none; }
 
   @container (min-width: 576px) {
-    gap: var(--rh-space-2xl);
-    margin: var(--rh-space-lg);
+    gap: var(--rh-space-2xl, 32px);
+    margin: var(--rh-space-lg, 16px);
   }
 
   @container (min-width: 992px) {
@@ -30,7 +30,7 @@
   }
 
   :is(*, :hover):focus-visible {
-    border-radius: var(--rh-border-radius-default);
+    border-radius: var(--rh-border-radius-default, 3px);
     outline-color:
       light-dark(
           --rh-color-border-interactive-on-light,
@@ -50,7 +50,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--rh-space-md);
+  gap: var(--rh-space-md, 8px);
   justify-content: center;
 
   @container (min-width: 992px) {
@@ -58,11 +58,11 @@
   }
 
   &::slotted(button) {
-    color: var(--rh-color-text-primary-on-dark);
+    color: var(--rh-color-text-primary-on-dark, #ffffff);
     background-color: transparent;
     border: none;
     margin: 0;
-    padding: var(--rh-space-md);
+    padding: var(--rh-space-md, 8px);
     line-height: 0 !important;
   }
 
@@ -70,12 +70,14 @@
   &::slotted(button:hover),
   &::slotted(button:active),
   &::slotted(button:focus) {
-    color: var(--rh-color-icon-subtle-hover);
+    color: var(--rh-color-icon-subtle-hover, #a3a3a3);
   }
 
   &::slotted(button:focus) {
-    outline: var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);
-    border-radius: var(--rh-border-radius-default);
+    outline:
+      var(--rh-border-width-md, 2px) solid
+      var(--rh-color-border-interactive-on-dark, #92c5f9);
+    border-radius: var(--rh-border-radius-default, 3px);
   }
 }
 
@@ -84,10 +86,10 @@
   flex-direction: row;
   align-items: center;
   justify-self: flex-start;
-  gap: var(--rh-space-md);
+  gap: var(--rh-space-md, 8px);
 
   @container (min-width: 992px) {
-    margin-inline-start: var(--rh-space-lg);
+    margin-inline-start: var(--rh-space-lg, 16px);
   }
 }
 
@@ -97,16 +99,19 @@
   display: flex;
   flex-direction: row;
   justify-self: end;
-  column-gap: var(--rh-space-lg);
+  column-gap: var(--rh-space-lg, 16px);
 
   a {
     display: flex;
     flex-direction: row;
-    gap: var(--rh-space-lg);
+    gap: var(--rh-space-lg, 16px);
     align-items: center;
     color: var(--rh-color-text-primary-on-dark, #ffffff) !important;
     text-decoration: underline dashed 1px;
-    text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40));
+    text-decoration-color:
+      light-dark(
+          var(--rh-color-gray-50, #707070),
+          var(--rh-color-gray-40, #a3a3a3));
     text-underline-offset: max(5px, 0.28em);
     transition: ease all 0.3s;
 

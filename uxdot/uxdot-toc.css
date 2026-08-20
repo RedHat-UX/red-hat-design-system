@@ -11,7 +11,7 @@
    * pattern level style that should be in the pattern layer.
    */
   @container main (min-width: 1440px) {
-    height: calc(100dvh - (var(--uxdot-masthead-max-height) + var(--rh-space-2xl) * 5));
+    height: calc(100dvh - (var(--uxdot-masthead-max-height) + var(--rh-space-2xl, 32px) * 5));
     overflow-y: scroll;
   }
 }
@@ -19,9 +19,9 @@
 details {
   display: flex;
   flex-direction: column;
-  padding-inline: var(--rh-space-xl);
-  border-inline-start: var(--rh-border-width-lg) solid transparent;
-  border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+  padding-inline: var(--rh-space-xl, 24px);
+  border-inline-start: var(--rh-border-width-lg, 3px) solid transparent;
+  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
 }
 
 details[open]:after {
@@ -30,23 +30,23 @@ details[open]:after {
   inset-block: 0;
   inset-inline-start: 0;
   inset-block-start: -1px;
-  width: var(--rh-border-width-lg);
-  background-color: var(--rh-color-brand-red-on-light);
+  width: var(--rh-border-width-lg, 3px);
+  background-color: var(--rh-color-brand-red-on-light, #ee0000);
 }
 
 summary {
   list-style: none;
   display: inline-flex;
-  gap: var(--rh-space-sm);
+  gap: var(--rh-space-sm, 6px);
   align-items: center;
-  padding-block: var(--rh-space-lg);
+  padding-block: var(--rh-space-lg, 16px);
 }
 
 summary,
 .summary {
-  font-family: var(--rh-font-family-body-text);
-  font-size: var(--rh-font-size-body-text-xl) !important;
-  font-weight: var(--rh-font-weight-body-text-medium);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-body-text-xl, 1.25rem) !important;
+  font-weight: var(--rh-font-weight-body-text-medium, 500);
 }
 
 summary:before {
@@ -69,7 +69,7 @@ details[open] > summary:before {
 }
 
 nav {
-  margin-block-end: var(--rh-space-lg);
+  margin-block-end: var(--rh-space-lg, 16px);
 }
 
 #expanded {
