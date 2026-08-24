@@ -256,7 +256,7 @@ export default async function(
     // tag pages `color` (e.g. AI guidelines Color), which would otherwise
     // leak into Overview / Usage / Accessibility.
     const colorCollection = collectionApi.getFilteredByTags('color')
-        .filter(item => item.url?.startsWith('/foundations/color/'));
+        .filter(item => typeof item.url === 'string' && item.url.startsWith('/foundations/color/'));
     return colorCollection.sort((a, b) => {
       if (a.data.order > b.data.order) {
         return 1;
