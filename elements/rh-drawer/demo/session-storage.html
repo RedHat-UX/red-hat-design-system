@@ -45,6 +45,9 @@
   const drawer = document.getElementById('drawer');
   const STORAGE_KEY = 'demo-drawer:open';
 
+  await customElements.whenDefined('rh-drawer');
+  await drawer.updateComplete;
+
   const stored = sessionStorage.getItem(STORAGE_KEY);
   if (stored !== null) {
     drawer.open = stored === 'true';

@@ -166,10 +166,17 @@ export class RhDrawer extends LitElement {
     super.connectedCallback();
     if (!isServer) {
       document.addEventListener('keydown', this.#onDocumentKeyDown);
+    }
+  }
+
+  @initializer()
+  protected async _init() {
+    await this.updateComplete;
+    if (!isServer) {
       // Walk light DOM ancestors looking for a named container context.
-      // The ancestor must have container-name including 'rh-drawer' and
-      // container-type: inline-size. This prevents the drawer from
-      // accidentally picking up unrelated container contexts.
+      // Runs in _init (after updateComplete) rather than connectedCallback
+      // so that stylesheets are parsed and getComputedStyle returns correct
+      // values — critical for SSR hydration.
       // parentElement does not cross shadow boundaries, so a container
       // set outside a shadow root that hosts this element won't be found.
       let ancestor: Element | null = this.parentElement;
@@ -179,6 +186,7 @@ export class RhDrawer extends LitElement {
             && styles.containerName.split(/\s+/).includes('rh-drawer')) {
           this.#hasContainerContext = true;
           this.#containerElement = ancestor;
+          this._narrowContainer = ancestor.getBoundingClientRect().width < 992;
           this.#resizeObserver = new ResizeObserver(entries => {
             const [entry] = entries;
             if (entry) {
@@ -193,15 +201,8 @@ export class RhDrawer extends LitElement {
         }
         ancestor = ancestor.parentElement;
       }
-      this.#syncHostAria();
-    }
-  }
-
-  @initializer()
-  protected async _init() {
-    await this.updateComplete;
-    if (!isServer) {
       this.#suppressTransitionBriefly();
+      this.#syncHostAria();
       if (this.#hasContainerContext) {
         this.dispatchEvent(
           new DrawerThresholdEvent(this._narrowContainer ? 'below' : 'above'),
