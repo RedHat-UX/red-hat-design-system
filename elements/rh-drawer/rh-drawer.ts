@@ -376,6 +376,7 @@ export class RhDrawer extends LitElement {
       this.#triggerElement =
         (this.getRootNode() as Document | ShadowRoot).getElementById(this.triggerId);
       this.#triggerElement?.addEventListener('click', this.#onTriggerClick);
+      this.#triggerElement?.setAttribute('aria-expanded', String(!!this.open));
     }
   }
 

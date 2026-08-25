@@ -261,16 +261,16 @@
     }
   }
 
-  #container.open:not(.inline-end) #collapse-toggle rh-icon:dir(rtl) {
-    rotate: 180deg;
-  }
-
   #container:not(.open).inline-end #collapse-toggle rh-icon {
     rotate: 360deg;
 
     &:dir(rtl) {
       rotate: 180deg;
     }
+  }
+
+  #container.open:not(.inline-end) #collapse-toggle rh-icon:dir(rtl) {
+    rotate: 180deg;
   }
 }
 
