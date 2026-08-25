@@ -20,7 +20,7 @@ const INLINE_DRAWER = html`
 `;
 
 const STATIC_INLINE_DRAWER = html`
-  <div style="container-type: inline-size; width: 1200px;">
+  <div style="container: rh-drawer / inline-size; width: 1200px;">
     <rh-drawer open>
       <h3>Panel Header</h3>
       <nav>Panel Navigation</nav>
@@ -435,7 +435,7 @@ describe('<rh-drawer>', function() {
 
       beforeEach(async function() {
         container = await fixture<HTMLDivElement>(html`
-          <div style="container-type: inline-size; width: 1200px;">
+          <div style="container: rh-drawer / inline-size; width: 1200px;">
             <rh-drawer open>
               <nav>Body</nav>
             </rh-drawer>
@@ -455,7 +455,7 @@ describe('<rh-drawer>', function() {
 
       beforeEach(async function() {
         container = await fixture<HTMLDivElement>(html`
-          <div style="container-type: inline-size; width: 600px;">
+          <div style="container: rh-drawer / inline-size; width: 600px;">
             <rh-drawer collapsible>
               <nav>Body</nav>
             </rh-drawer>
@@ -488,7 +488,7 @@ describe('<rh-drawer>', function() {
 
       beforeEach(async function() {
         container = await fixture<HTMLDivElement>(html`
-          <div dir="rtl" style="container-type: inline-size; width: 1200px;">
+          <div dir="rtl" style="container: rh-drawer / inline-size; width: 1200px;">
             <rh-drawer open>
               <h3>Header</h3>
               <nav>Body</nav>
@@ -513,7 +513,7 @@ describe('<rh-drawer>', function() {
 
       beforeEach(async function() {
         container = await fixture<HTMLDivElement>(html`
-          <div dir="rtl" style="container-type: inline-size; width: 1200px;">
+          <div dir="rtl" style="container: rh-drawer / inline-size; width: 1200px;">
             <rh-drawer inline="end" open>
               <h3>Header</h3>
               <nav>Body</nav>
@@ -744,7 +744,7 @@ describe('<rh-drawer>', function() {
 
       beforeEach(async function() {
         container = await fixture<HTMLDivElement>(html`
-          <div style="container-type: inline-size; width: 1200px;">
+          <div style="container: rh-drawer / inline-size; width: 1200px;">
             <div id="sibling">Sibling content</div>
             <rh-drawer open>
               <nav>Body</nav>
@@ -814,7 +814,7 @@ describe('<rh-drawer>', function() {
 
     it('should close when clicking outside the panel', async function() {
       expect(element.open).to.be.true;
-      document.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, composed: true }));
+      document.dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
       await element.updateComplete;
       await element.updateComplete;
       expect(element.open).to.be.false;
@@ -823,7 +823,7 @@ describe('<rh-drawer>', function() {
     it('should not close when clicking inside the panel', async function() {
       expect(element.open).to.be.true;
       const panel = element.shadowRoot!.querySelector('#panel')!;
-      panel.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, composed: true }));
+      panel.dispatchEvent(new MouseEvent('click', { bubbles: true, composed: true }));
       await element.updateComplete;
       await element.updateComplete;
       expect(element.open).to.be.true;
@@ -977,7 +977,7 @@ describe('<rh-drawer>', function() {
     });
   });
 
-  describe('position="fixed" inert scope', function() {
+  describe('position="viewport" inert scope', function() {
     let wrapper: HTMLDivElement;
     let outerSibling: HTMLDivElement;
     let innerSibling: HTMLDivElement;
@@ -995,7 +995,7 @@ describe('<rh-drawer>', function() {
       wrapper = await fixture<HTMLDivElement>(html`
         <div>
           <div id="inner-sibling">Inner sibling</div>
-          <rh-drawer id="drawer" position="fixed">
+          <rh-drawer id="drawer" position="viewport">
             <nav>Body</nav>
           </rh-drawer>
         </div>
@@ -1016,8 +1016,8 @@ describe('<rh-drawer>', function() {
       expect(outerSibling.inert).to.be.true;
     });
 
-    it('should not inert parent-level siblings', function() {
-      expect(innerSibling.inert).to.be.false;
+    it('should also inert parent-level siblings', function() {
+      expect(innerSibling.inert).to.be.true;
     });
 
     describe('then closing', function() {
