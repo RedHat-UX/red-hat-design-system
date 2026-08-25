@@ -1,7 +1,7 @@
 <meta itemprop="description" content="Pattern-style responsive side navigation with navigation-primary and navigation-vertical. At wide widths the drawer is always visible; at narrow widths it switches to an overlay triggered by a menu button.">
 
-<div id="responsive-container">
-  <div id="responsive-layout">
+<div id="page">
+  <div id="layout">
     <rh-navigation-primary role="navigation">
       <div id="logo-trigger" slot="logo">
         <button id="nav-trigger" aria-label="Open navigation" aria-controls="side-nav" aria-expanded="false">
@@ -20,72 +20,94 @@
       </div>
     </rh-navigation-primary>
 
-    <rh-drawer id="side-nav"
-               trigger-id="nav-trigger"
-               accessible-label="Navigation">
-      <rh-navigation-vertical>
-        <rh-navigation-link href="#" current-page>Home</rh-navigation-link>
+    <div id="drawer-context">
+      <rh-drawer id="side-nav"
+                 trigger-id="nav-trigger"
+                 accessible-label="Navigation">
+        <rh-navigation-vertical>
+          <rh-navigation-link href="#" current-page>Home</rh-navigation-link>
 
-        <rh-navigation-vertical-list summary="Get Started">
-          <rh-navigation-link href="#get-started">Overview</rh-navigation-link>
-          <rh-navigation-link href="#get-started/designers">Designers</rh-navigation-link>
-          <rh-navigation-link href="#get-started/developers">Developers</rh-navigation-link>
-        </rh-navigation-vertical-list>
+          <rh-navigation-vertical-list summary="Get Started">
+            <rh-navigation-link href="#get-started">Overview</rh-navigation-link>
+            <rh-navigation-link href="#get-started/designers">Designers</rh-navigation-link>
+            <rh-navigation-link href="#get-started/developers">Developers</rh-navigation-link>
+          </rh-navigation-vertical-list>
 
-        <rh-navigation-vertical-list summary="Foundations">
-          <rh-navigation-link href="#foundations">Overview</rh-navigation-link>
-          <rh-navigation-link href="#foundations/color">Color</rh-navigation-link>
-          <rh-navigation-link href="#foundations/spacing">Spacing</rh-navigation-link>
-        </rh-navigation-vertical-list>
+          <rh-navigation-vertical-list summary="Foundations">
+            <rh-navigation-link href="#foundations">Overview</rh-navigation-link>
+            <rh-navigation-link href="#foundations/color">Color</rh-navigation-link>
+            <rh-navigation-link href="#foundations/spacing">Spacing</rh-navigation-link>
+          </rh-navigation-vertical-list>
 
-        <rh-navigation-link href="#release-notes">Release Notes</rh-navigation-link>
-      </rh-navigation-vertical>
-    </rh-drawer>
+          <rh-navigation-link href="#release-notes">Release Notes</rh-navigation-link>
+        </rh-navigation-vertical>
+      </rh-drawer>
 
-    <div id="main">
-      <p>At wide container widths the drawer is always visible alongside page
-        content. At narrow widths it switches to an overlay triggered by the
-        menu button.</p>
+      <div id="main">
+        <p>At wide container widths the drawer is always visible alongside page
+          content. At narrow widths it switches to an overlay triggered by the
+          menu button.</p>
+      </div>
     </div>
   </div>
 </div>
 
 <style>
+  @import url("/assets/packages/@rhds/elements/elements/rh-drawer/rh-drawer-lightdom-shim.css");
   @import url('/assets/packages/@rhds/elements/elements/rh-navigation-primary/rh-navigation-primary-lightdom.css');
   @import url('/assets/packages/@rhds/elements/elements/rh-navigation-vertical/rh-navigation-vertical-lightdom.css');
 
-  #responsive-container {
-    container: responsive-layout / inline-size;
+  #page {
+    container: page / inline-size;
     height: 100%;
   }
 
-  #responsive-layout {
+  #layout {
     position: relative;
     display: grid;
     height: 100%;
-    grid-template-areas: 'mock-nav' 'content';
+    grid-template-areas: 'nav' 'content';
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
     min-block-size: 400px;
 
-    @container responsive-layout (min-width: 992px) {
-      grid-template-areas: 'mock-nav mock-nav' 'drawer content';
+    @container page (min-width: 992px) {
+      grid-template-areas: 'nav nav' 'content content';
       grid-template-columns: auto 1fr;
     }
   }
 
-  rh-drawer {
+  #drawer-context {
+    container: rh-drawer / inline-size;
     grid-area: content;
+    display: grid;
+    grid-template-columns: 1fr;
+    position: relative;
+    height: 100%;
+
+    @container page (min-width: 992px) {
+      grid-column: 1 / -1;
+      grid-template-columns: auto 1fr;
+    }
   }
 
-  @container responsive-layout (min-width: 992px) {
+  rh-drawer,
+  #main {
+    grid-area: 1 / 1;
+  }
+
+  @container page (min-width: 992px) {
     rh-drawer {
-      grid-area: drawer;
+      grid-column: 1;
+    }
+
+    #main {
+      grid-column: 2;
     }
   }
 
   rh-navigation-primary {
-    grid-area: mock-nav;
+    grid-area: nav;
   }
 
   #logo-trigger {
@@ -131,7 +153,7 @@
         outline-offset: 3px;
       }
 
-      @container responsive-layout (min-width: 992px) {
+      @container page (min-width: 992px) {
         display: none;
       }
     }
@@ -160,11 +182,11 @@
       inline-size: 32px;
       overflow: visible;
 
-      @container responsive-layout (min-width: 1200px) {
+      @container page (min-width: 1200px) {
         inline-size: 102px;
       }
 
-      @container responsive-layout (min-width: 1440px) {
+      @container page (min-width: 1440px) {
         block-size: 30px;
         inline-size: 127px;
       }
@@ -178,7 +200,7 @@
       & #wordmark {
         display: none;
 
-        @container responsive-layout (min-width: 1200px) {
+        @container page (min-width: 1200px) {
           display: revert;
         }
       }
@@ -186,7 +208,6 @@
   }
 
   #main {
-    grid-area: content;
     padding: var(--rh-space-2xl, 32px);
   }
 

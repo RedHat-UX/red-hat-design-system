@@ -6,9 +6,9 @@
   <div id="main">
     <rh-alert state="warning">
       <h4 slot="header">Not recommended for responsive layouts</h4>
-      <p>This usage always pushes content regardless of viewport width, which can compress page content on narrow screens. For most use cases, prefer the <a href="../responsive-collapsible/">responsive collapsible</a> pattern, which switches to an overlap panel at narrow widths.</p>
+      <p>This usage always pushes content regardless of viewport width, which can compress page content on narrow screens.</p>
+      <p>Prefer the <a href="../responsive-switch/">responsive switch</a> pattern, which switches to a toggle + overlay panel at narrow widths.</p>
     </rh-alert>
-
     <p>This drawer has no container context on its parent, so it stays in inline push mode at any width.</p>
   </div>
 </div>
@@ -29,6 +29,10 @@
     grid-area: main;
     padding: var(--rh-space-2xl, 32px);
     overflow: auto;
+
+    & rh-alert {
+      margin-block-end: var(--rh-space-2xl, 32px);
+    }
   }
 </style>
 

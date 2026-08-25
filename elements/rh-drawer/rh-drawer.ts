@@ -37,6 +37,15 @@ export class DrawerCloseEvent extends Event {
   }
 }
 
+/** Fired once on connection and when the container crosses the responsive breakpoint. */
+export class DrawerThresholdEvent extends Event {
+  constructor(
+    public direction: 'above' | 'below',
+  ) {
+    super('threshold', { bubbles: true, composed: true });
+  }
+}
+
 /**
  * A side panel that provides supplementary content or navigation.
  * The default slot holds all panel content and an `accessible-label`
@@ -54,6 +63,7 @@ export class DrawerCloseEvent extends Event {
  *
  * @fires {DrawerOpenEvent} open - Fires when the drawer panel opens. The event's `trigger` property is the HTMLElement that initiated the action, or `null` when opened via `show()`.
  * @fires {DrawerCloseEvent} close - Fires when the drawer panel closes. No additional data.
+ * @fires {DrawerThresholdEvent} threshold - Fires once on connection with the initial state, and on each subsequent responsive breakpoint crossing. The `direction` property is `'above'` or `'below'`.
  */
 @customElement('rh-drawer')
 @themable
@@ -65,16 +75,36 @@ export class RhDrawer extends LitElement {
   #userInteracted = false;
   #reverting = false;
   #modeChange = false;
+  /*
+   * Whether an ancestor has `container-name: rh-drawer` with
+   * `container-type: inline-size`.
+   * Detected once in connectedCallback by walking the light DOM tree and
+   * checking `getComputedStyle(ancestor).containerType`. This cannot be
+   * done in CSS — shadow DOM `@container` queries match when a context
+   * exists but cannot branch on its absence. The flag drives the overlay
+   * vs inline mode decision: without a container context the drawer is
+   * always overlay; with one it switches between inline (wide) and
+   * overlay (narrow). JS detection remains necessary even where CSS
+   * `@container` queries could handle layout, because overlay mode
+   * requires ARIA role changes, inert management, focus handling,
+   * and scroll locking that CSS cannot perform.
+   */
   #hasContainerContext = false;
+  #containerElement: Element | null = null;
   #resizeObserver?: ResizeObserver;
   #inertedElements = new Set<Element>();
   #internals = InternalsController.of(this);
 
   /** Which side the panel appears on. */
-  @property({ reflect: true }) inline: 'start' | 'end' = 'start';
+  @property() inline: 'start' | 'end' = 'start';
 
-  /** CSS positioning mode for the overlay panel. */
-  @property({ reflect: false }) position: 'absolute' | 'fixed' = 'absolute';
+  /**
+   * Overlay positioning mode. `viewport` fixes the panel to the viewport.
+   * `contained` positions it within the nearest positioned ancestor.
+   * When unset, auto-derived: `contained` if a named container context
+   * exists, `viewport` otherwise.
+   */
+  @property() position?: 'viewport' | 'contained';
 
   /**
    * Adds a collapse toggle so the panel can be expanded and collapsed.
@@ -127,16 +157,28 @@ export class RhDrawer extends LitElement {
     return this.collapsible && this._narrowContainer;
   }
 
+  get #effectivePosition(): 'viewport' | 'contained' {
+    return this.position ?? (this.#hasContainerContext ? 'contained' : 'viewport');
+  }
+
 
   connectedCallback() {
     super.connectedCallback();
     if (!isServer) {
       document.addEventListener('keydown', this.#onDocumentKeyDown);
+      // Walk light DOM ancestors looking for a named container context.
+      // The ancestor must have container-name including 'rh-drawer' and
+      // container-type: inline-size. This prevents the drawer from
+      // accidentally picking up unrelated container contexts.
+      // parentElement does not cross shadow boundaries, so a container
+      // set outside a shadow root that hosts this element won't be found.
       let ancestor: Element | null = this.parentElement;
       while (ancestor) {
-        const ct = getComputedStyle(ancestor).containerType;
-        if (ct === 'inline-size' || ct === 'size') {
+        const styles = getComputedStyle(ancestor);
+        if (styles.containerType === 'inline-size'
+            && styles.containerName.split(/\s+/).includes('rh-drawer')) {
           this.#hasContainerContext = true;
+          this.#containerElement = ancestor;
           this.#resizeObserver = new ResizeObserver(entries => {
             const [entry] = entries;
             if (entry) {
@@ -160,6 +202,14 @@ export class RhDrawer extends LitElement {
     await this.updateComplete;
     if (!isServer) {
       this.#suppressTransitionBriefly();
+      if (this.#hasContainerContext) {
+        this.dispatchEvent(
+          new DrawerThresholdEvent(this._narrowContainer ? 'below' : 'above'),
+        );
+        if (!this._narrowContainer && !this.collapsible) {
+          this.open = true;
+        }
+      }
       this.#triggerElement?.setAttribute('aria-expanded', String(!!this.open));
       this.#syncOverlayState();
       this.#syncHostAria();
@@ -187,7 +237,7 @@ export class RhDrawer extends LitElement {
       'collapsible': this.collapsible,
       'overlap': isCollapsibleOverlap,
       'inline-end': this.inline === 'end',
-      'fixed': this.position === 'fixed',
+      'viewport': this.#effectivePosition === 'viewport',
       'no-transition': this._suppressTransition,
     };
 
@@ -276,9 +326,9 @@ export class RhDrawer extends LitElement {
     if (newValue) {
       if (this.#userInteracted) {
         if (this.#isEffectiveOverlay) {
-          this.closeButton?.focus();
+          this.closeButton?.focus({ preventScroll: true });
         } else if (this.collapsible) {
-          this.collapseToggle?.focus();
+          this.collapseToggle?.focus({ preventScroll: true });
         }
       }
     } else {
@@ -314,6 +364,7 @@ export class RhDrawer extends LitElement {
     this.open = !value;
     this.#modeChange = false;
     this.#syncHostAria();
+    this.dispatchEvent(new DrawerThresholdEvent(value ? 'below' : 'above'));
   }
 
   @observes('triggerId')
@@ -328,10 +379,11 @@ export class RhDrawer extends LitElement {
   }
 
   #inertSurroundingContent() {
-    const elements =
-      this.position === 'fixed' ?
-        this.#getDocumentSiblings()
-        : Array.from(this.parentElement?.children ?? []);
+    const scope = this.#containerElement ?? this.parentElement;
+    const elements = [
+      ...Array.from(scope?.children ?? []),
+      ...(this.#effectivePosition === 'viewport' ? this.#getDocumentSiblings() : []),
+    ];
     for (const el of elements) {
       if (el === this || (el as HTMLElement).inert) {
         continue;
@@ -379,11 +431,11 @@ export class RhDrawer extends LitElement {
   }
 
   #addClickOutsideListener() {
-    document.addEventListener('pointerdown', this.#onDocumentPointerDown);
+    document.addEventListener('click', this.#onDocumentClickOutside);
   }
 
   #removeClickOutsideListener() {
-    document.removeEventListener('pointerdown', this.#onDocumentPointerDown);
+    document.removeEventListener('click', this.#onDocumentClickOutside);
   }
 
   #restoreInertedContent() {
@@ -402,7 +454,7 @@ export class RhDrawer extends LitElement {
     return Array.from(document.body.children).filter(el => !ancestors.has(el));
   }
 
-  #onDocumentPointerDown = (event: PointerEvent) => {
+  #onDocumentClickOutside = (event: MouseEvent) => {
     const path = event.composedPath();
     const panel = this.shadowRoot?.querySelector('#panel');
     if (panel && !path.includes(panel) && !path.includes(this.#triggerElement!)) {

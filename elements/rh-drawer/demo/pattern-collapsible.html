@@ -1,67 +1,197 @@
-<meta itemprop="description" content="Pattern-style responsive collapsible with navigation-primary and navigation-vertical. Mirrors the docs pattern layout to isolate SSR issues.">
+<meta itemprop="description" content="Pattern-style responsive collapsible navigation with navigation-primary and navigation-vertical. At wide widths the drawer is collapsible and pushes content inline. At narrow widths it switches to an overlay triggered by a menu button.">
 
-<div id="collapsible-container">
-  <div id="collapsible-layout">
-    <rh-navigation-primary role="navigation"></rh-navigation-primary>
+<div id="page">
+  <div id="layout">
+    <rh-navigation-primary role="navigation">
+      <div id="logo-trigger" slot="logo">
+        <button id="nav-trigger" aria-label="Open navigation" aria-controls="side-nav" aria-expanded="false">
+          <rh-icon icon="menu-bars" set="ui"></rh-icon>
+        </button>
+        <a href="#">
+          <svg preserveAspectRatio="xMinYMid slice" viewBox="0 0 613 145" role="img" aria-labelledby="logo-title">
+            <title id="logo-title">Red Hat</title>
+            <g id="fedora">
+              <path id="hat" fill="var(--rh-color-brand-red, #ee0000)" d="M127.47,83.49c12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.89,8.69,103.76.5,97.51.5,91.69.5,90,8,83.06,8c-6.68,0-11.64-5.6-17.89-5.6-6,0-9.91,4.09-12.93,12.5,0,0-8.41,23.72-9.49,27.16A6.43,6.43,0,0,0,42.53,44c0,9.22,36.3,39.45,84.94,39.45M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.45,18.45,0,0,1,1.51-7.33C22.27,52,.5,55,.5,74.22c0,31.48,74.59,70.28,133.65,70.28,45.28,0,56.7-20.48,56.7-36.65,0-12.72-11-27.16-30.83-35.78"></path>
+              <path id="band" d="M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.45,18.45,0,0,1,1.51-7.33l3.66-9.06A6.43,6.43,0,0,0,42.53,44c0,9.22,36.3,39.45,84.94,39.45,12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42Z"></path>
+            </g>
+            <path id="wordmark" fill="light-dark(var(--rh-color-text-primary-on-light, #151515), var(--rh-color-text-primary-on-dark, #ffffff))" d="M579.74,92.8c0,11.89,7.15,17.67,20.19,17.67a52.11,52.11,0,0,0,11.89-1.68V95a24.84,24.84,0,0,1-7.68,1.16c-5.37,0-7.36-1.68-7.36-6.73V68.3h15.56V54.1H596.78v-18l-17,3.68V54.1H568.49V68.3h11.25Zm-53,.32c0-3.68,3.69-5.47,9.26-5.47a43.12,43.12,0,0,1,10.1,1.26v7.15a21.51,21.51,0,0,1-10.63,2.63c-5.46,0-8.73-2.1-8.73-5.57m5.2,17.56c6,0,10.84-1.26,15.36-4.31v3.37h16.82V74.08c0-13.56-9.14-21-24.39-21-8.52,0-16.94,2-26,6.1l6.1,12.52c6.52-2.74,12-4.42,16.83-4.42,7,0,10.62,2.73,10.62,8.31v2.73a49.53,49.53,0,0,0-12.62-1.58c-14.31,0-22.93,6-22.93,16.73,0,9.78,7.78,17.24,20.19,17.24m-92.44-.94h18.09V80.92h30.29v28.82H506V36.12H487.93V64.41H457.64V36.12H439.55ZM370.62,81.87c0-8,6.31-14.1,14.62-14.1A17.22,17.22,0,0,1,397,72.09V91.54A16.36,16.36,0,0,1,385.24,96c-8.2,0-14.62-6.1-14.62-14.09m26.61,27.87h16.83V32.44l-17,3.68V57.05a28.3,28.3,0,0,0-14.2-3.68c-16.19,0-28.92,12.51-28.92,28.5a28.25,28.25,0,0,0,28.4,28.6,25.12,25.12,0,0,0,14.93-4.83ZM320,67c5.36,0,9.88,3.47,11.67,8.83H308.47C310.15,70.3,314.36,67,320,67M291.33,82c0,16.2,13.25,28.82,30.28,28.82,9.36,0,16.2-2.53,23.25-8.42l-11.26-10c-2.63,2.74-6.52,4.21-11.14,4.21a14.39,14.39,0,0,1-13.68-8.83h39.65V83.55c0-17.67-11.88-30.39-28.08-30.39a28.57,28.57,0,0,0-29,28.81M262,51.58c6,0,9.36,3.78,9.36,8.31S268,68.2,262,68.2H244.11V51.58Zm-36,58.16h18.09V82.92h13.77l13.89,26.82H292l-16.2-29.45a22.27,22.27,0,0,0,13.88-20.72c0-13.25-10.41-23.45-26-23.45H226Z"></path>
+          </svg>
+        </a>
+      </div>
+    </rh-navigation-primary>
 
-    <rh-drawer id="side-nav"
-               collapsible open>
-      <h2 class="visually-hidden">Navigation</h2>
-      <rh-navigation-vertical>
-        <rh-navigation-link href="#" current-page>Home</rh-navigation-link>
+    <div id="drawer-context">
+      <rh-drawer id="side-nav"
+                 trigger-id="nav-trigger"
+                 accessible-label="Navigation">
+        <rh-navigation-vertical>
+          <rh-navigation-link href="#" current-page>Home</rh-navigation-link>
 
-        <rh-navigation-vertical-list summary="Get Started">
-          <rh-navigation-link href="#get-started">Overview</rh-navigation-link>
-          <rh-navigation-link href="#get-started/designers">Designers</rh-navigation-link>
-          <rh-navigation-link href="#get-started/developers">Developers</rh-navigation-link>
-        </rh-navigation-vertical-list>
+          <rh-navigation-vertical-list summary="Get Started">
+            <rh-navigation-link href="#get-started">Overview</rh-navigation-link>
+            <rh-navigation-link href="#get-started/designers">Designers</rh-navigation-link>
+            <rh-navigation-link href="#get-started/developers">Developers</rh-navigation-link>
+          </rh-navigation-vertical-list>
 
-        <rh-navigation-vertical-list summary="Foundations">
-          <rh-navigation-link href="#foundations">Overview</rh-navigation-link>
-          <rh-navigation-link href="#foundations/color">Color</rh-navigation-link>
-          <rh-navigation-link href="#foundations/spacing">Spacing</rh-navigation-link>
-        </rh-navigation-vertical-list>
+          <rh-navigation-vertical-list summary="Foundations">
+            <rh-navigation-link href="#foundations">Overview</rh-navigation-link>
+            <rh-navigation-link href="#foundations/color">Color</rh-navigation-link>
+            <rh-navigation-link href="#foundations/spacing">Spacing</rh-navigation-link>
+          </rh-navigation-vertical-list>
 
-        <rh-navigation-link href="#release-notes">Release Notes</rh-navigation-link>
-      </rh-navigation-vertical>
-    </rh-drawer>
+          <rh-navigation-link href="#release-notes">Release Notes</rh-navigation-link>
+        </rh-navigation-vertical>
+      </rh-drawer>
 
-    <div id="main">
-      <p>At wide container widths the drawer pushes content aside with a
-        collapse toggle. At narrow widths it overlaps content instead.</p>
+      <div id="main">
+        <p>At wide container widths the drawer pushes content aside with a
+          collapse toggle. At narrow widths it switches to an overlay triggered
+          by the menu button.</p>
+      </div>
     </div>
   </div>
 </div>
 
 <style>
+  @import url("/assets/packages/@rhds/elements/elements/rh-drawer/rh-drawer-lightdom-shim.css");
   @import url('/assets/packages/@rhds/elements/elements/rh-navigation-primary/rh-navigation-primary-lightdom.css');
   @import url('/assets/packages/@rhds/elements/elements/rh-navigation-vertical/rh-navigation-vertical-lightdom.css');
 
-  #collapsible-container {
-    container: collapsible-layout / inline-size;
+  #page {
+    container: page / inline-size;
     height: 100%;
   }
 
-  #collapsible-layout {
+  #layout {
+    position: relative;
     display: grid;
     height: 100%;
-    grid-template-areas: 'mock-nav mock-nav' 'drawer content';
-    grid-template-columns: auto 1fr;
+    grid-template-areas: 'nav' 'content';
+    grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
     min-block-size: 400px;
   }
 
   rh-navigation-primary {
-    grid-area: mock-nav;
+    grid-area: nav;
   }
 
-  rh-drawer {
-    grid-area: drawer;
+  #drawer-context {
+    container: rh-drawer / inline-size;
+    grid-area: content;
+    display: grid;
+    grid-template-columns: 1fr;
+    position: relative;
+    height: 100%;
+
+    @container page (min-width: 992px) {
+      grid-column: 1 / -1;
+      grid-template-columns: auto 1fr;
+    }
+  }
+
+  rh-drawer,
+  #main {
+    grid-area: 1 / 1;
+  }
+
+  @container page (min-width: 992px) {
+    rh-drawer {
+      grid-column: 1;
+    }
+
+    #main {
+      grid-column: 2;
+    }
   }
 
   #main {
-    grid-area: content;
     padding: var(--rh-space-2xl, 32px);
+  }
+
+  #logo-trigger {
+    display: flex;
+    align-items: center;
+    column-gap: var(--rh-space-xl, 24px);
+    block-size: 100%;
+
+    & #nav-trigger {
+      position: relative;
+      display: flex;
+      align-items: center;
+      block-size: 100%;
+      background-color: transparent;
+      padding: var(--rh-space-md, 8px);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+
+      & rh-icon {
+        --rh-icon-size: 18px;
+        color: var(--rh-color-icon-secondary);
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-block-end: 4px solid transparent;
+      }
+
+      &:hover::after,
+      &:focus-visible::after {
+        border-block-end-color: var(--rh-color-border-subtle);
+      }
+
+      &:active::after {
+        border-block-end-color: var(--rh-color-accent-brand);
+      }
+
+      &:focus-visible {
+        outline: var(--rh-border-width-md, 2px) solid var(--rh-color-interactive-primary-default);
+        outline-offset: 3px;
+      }
+
+      @container page (min-width: 992px) {
+        display: none;
+      }
+    }
+
+    & a {
+      display: flex;
+      align-items: center;
+      block-size: 100%;
+      line-height: 0;
+
+      &:focus-visible {
+        outline: var(--rh-border-width-md, 2px) solid var(--rh-color-interactive-primary-default);
+        outline-offset: -2px;
+        border-radius: var(--rh-border-radius-default, 3px);
+      }
+    }
+
+    & svg {
+      block-size: 24px;
+      inline-size: 32px;
+      overflow: visible;
+
+      @container page (min-width: 1200px) {
+        inline-size: 102px;
+      }
+
+      @container page (min-width: 1440px) {
+        block-size: 30px;
+        inline-size: 127px;
+      }
+
+      & #wordmark {
+        display: none;
+
+        @container page (min-width: 1200px) {
+          display: revert;
+        }
+      }
+    }
   }
 
   rh-navigation-vertical {
@@ -83,4 +213,20 @@
   import '@rhds/elements/rh-navigation-primary/rh-navigation-primary.js';
   import '@rhds/elements/rh-navigation-vertical/rh-navigation-vertical.js';
   import '@rhds/elements/rh-navigation-link/rh-navigation-link.js';
+
+  const drawer = document.getElementById('side-nav');
+  const trigger = document.getElementById('nav-trigger');
+
+  drawer.addEventListener('open', () => trigger.setAttribute('aria-expanded', 'true'));
+  drawer.addEventListener('close', () => trigger.setAttribute('aria-expanded', 'false'));
+
+  drawer.addEventListener('threshold', (e) => {
+    if (e.direction === 'above') {
+      drawer.collapsible = true;
+      drawer.open = true;
+    } else {
+      drawer.collapsible = false;
+      drawer.open = false;
+    }
+  });
 </script>

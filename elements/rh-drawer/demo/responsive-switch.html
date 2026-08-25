@@ -18,8 +18,9 @@
 </div>
 
 <style>
+  @import url("/assets/packages/@rhds/elements/elements/rh-drawer/rh-drawer-lightdom-shim.css");
   #container {
-    container-type: inline-size;
+    container: rh-drawer / inline-size;
     display: grid;
     grid-template-areas: 'drawer main';
     grid-template-columns: auto 1fr;
@@ -35,7 +36,7 @@
     padding: var(--rh-space-2xl, 32px);
   }
 
-  @container (min-width: 992px) {
+  @container rh-drawer (min-width: 992px) {
     #trigger {
       display: none;
     }
@@ -53,18 +54,15 @@
 <script type="module">
   import '@rhds/elements/rh-drawer/rh-drawer.js';
 
-  const container = document.getElementById('container');
   const drawer = document.getElementById('drawer');
 
-  const ro = new ResizeObserver(([entry]) => {
-    const wide = entry.contentBoxSize[0].inlineSize >= 992;
-    if (wide && !drawer.collapsible) {
+  drawer.addEventListener('threshold', (e) => {
+    if (e.direction === 'above') {
       drawer.collapsible = true;
       drawer.open = true;
-    } else if (!wide && drawer.collapsible) {
+    } else {
       drawer.collapsible = false;
       drawer.open = false;
     }
   });
-  ro.observe(container);
 </script>

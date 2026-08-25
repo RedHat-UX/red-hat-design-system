@@ -4,7 +4,11 @@
     <p>Panel content slotted here.</p>
   </rh-drawer>
   <div id="main">
-
+    <rh-alert state="warning">
+      <h4 slot="header">Narrow viewport Warning</h4>
+      <p>This usage always pushes content regardless of viewport width, which can compress page content on narrow screens. </p>
+      <p>For most use cases, prefer the <a href="../responsive-switch/">responsive switch</a> pattern, which switches to a toggle + overlay panel at narrow widths.</p>
+    </rh-alert>
     <p>At wide container widths the drawer pushes this content aside. At narrow widths it overlaps.</p>
     <form id="knobs">
       <fieldset>
@@ -17,8 +21,9 @@
 </div>
 
 <style>
+  @import url("/assets/packages/@rhds/elements/elements/rh-drawer/rh-drawer-lightdom-shim.css");
   #container {
-    container-type: inline-size;
+    container: rh-drawer / inline-size;
     display: grid;
     block-size: 100%;
   }
@@ -44,11 +49,16 @@
   #main {
     padding: var(--rh-space-2xl, 32px);
     overflow: auto;
+
+    & rh-alert {
+      margin-block-end: var(--rh-space-2xl, 32px);
+    }
   }
 </style>
 
 <script type="module">
   import '@rhds/elements/rh-drawer/rh-drawer.js';
+  import '@rhds/elements/rh-alert/rh-alert.js';
 
   const form = document.getElementById('knobs');
   const drawer = document.getElementById('drawer');

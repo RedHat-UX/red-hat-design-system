@@ -1,0 +1,45 @@
+<meta itemprop="description" content="The drawer renders in a closed state by default when the open attribute is not set. The collapse toggle allows users to expand the panel to reveal its content.">
+<div id="container">
+  <rh-drawer id="drawer" trigger-id="trigger" open>
+    Slotted Content
+  </rh-drawer>
+
+  <div>
+    <button id="trigger" aria-controls="drawer" aria-expanded="false">Toggle Drawer</button>
+
+    <p>This content is pushed aside by the drawer panel. When the panel collapses, this
+      content expands to fill the full width.</p>
+  </div>
+</div>
+
+<style>
+  @import url("/assets/packages/@rhds/elements/elements/rh-drawer/rh-drawer-lightdom-shim.css");
+  #container {
+    container: rh-drawer / inline-size;
+    display: flex;
+  }
+
+  #container > :not(rh-drawer) {
+    padding: var(--rh-space-2xl, 32px);
+  }
+
+  #container > div {
+    flex: 1;
+  }
+
+  @container rh-drawer (min-width: 992px) {
+    #trigger {
+      display: none;
+    }
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-drawer/rh-drawer.js';
+
+  const trigger = document.getElementById('trigger');
+  const drawer = document.getElementById('drawer');
+
+  drawer.addEventListener('open', () => trigger.setAttribute('aria-expanded', 'true'));
+  drawer.addEventListener('close', () => trigger.setAttribute('aria-expanded', 'false'));
+</script>

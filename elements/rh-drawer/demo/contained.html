@@ -6,7 +6,7 @@
       <p>Panel content slotted here.</p>
     </rh-drawer>
     <div id="main">
-      <button id="trigger" aria-controls="drawer" aria-expanded="true" hidden>Toggle Drawer</button>
+      <button id="trigger" aria-controls="drawer" aria-expanded="true">Toggle Drawer</button>
 
       <p>At wide container widths the drawer is always visible. Resize the container below 992px to see it switch to overlay mode.</p>
     </div>
@@ -14,12 +14,13 @@
 </div>
 
 <style>
+  @import url("/assets/packages/@rhds/elements/elements/rh-drawer/rh-drawer-lightdom-shim.css");
   #wrapper {
     padding: var(--rh-space-2xl, 32px);
   }
 
   #container {
-    container-type: inline-size;
+    container: rh-drawer / inline-size;
     display: grid;
     inline-size: 100%;
     block-size: 400px;
@@ -56,6 +57,12 @@
     padding: var(--rh-space-2xl, 32px);
     overflow: auto;
   }
+
+  @container rh-drawer (min-width: 992px) {
+    #trigger {
+      display: none;
+    }
+  }
 </style>
 
 <script type="module">
@@ -68,14 +75,11 @@
   drawer.addEventListener('open', () => trigger.setAttribute('aria-expanded', 'true'));
   drawer.addEventListener('close', () => trigger.setAttribute('aria-expanded', 'false'));
 
-  const ro = new ResizeObserver(entries => {
-    const width = entries[0].contentBoxSize[0].inlineSize;
-    if (width < 992) {
-      container.classList.replace('layout-inline', 'layout-overlay');
-    } else {
+  drawer.addEventListener('threshold', (e) => {
+    if (e.direction === 'above') {
       container.classList.replace('layout-overlay', 'layout-inline');
+    } else {
+      container.classList.replace('layout-inline', 'layout-overlay');
     }
-    trigger.hidden = width >= 992;
   });
-  ro.observe(container);
 </script>
