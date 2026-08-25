@@ -215,10 +215,6 @@
   import '@rhds/elements/rh-navigation-link/rh-navigation-link.js';
 
   const drawer = document.getElementById('side-nav');
-  const trigger = document.getElementById('nav-trigger');
-
-  drawer.addEventListener('open', () => trigger.setAttribute('aria-expanded', 'true'));
-  drawer.addEventListener('close', () => trigger.setAttribute('aria-expanded', 'false'));
 
   drawer.addEventListener('threshold', (e) => {
     if (e.direction === 'above') {

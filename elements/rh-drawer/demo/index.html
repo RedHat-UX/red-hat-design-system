@@ -11,17 +11,6 @@
 </div>
 
 <style>
-  #container {
-    position: relative;
-    display: grid;
-    block-size: 100%;
-  }
-
-  rh-drawer,
-  #main {
-    grid-area: 1 / 1;
-  }
-
   #main {
     padding: var(--rh-space-2xl, 32px);
   }
@@ -29,10 +18,4 @@
 
 <script type="module">
   import '@rhds/elements/rh-drawer/rh-drawer.js';
-
-  const trigger = document.getElementById('trigger');
-  const drawer = document.getElementById('drawer');
-
-  drawer.addEventListener('open', () => trigger.setAttribute('aria-expanded', 'true'));
-  drawer.addEventListener('close', () => trigger.setAttribute('aria-expanded', 'false'));
 </script>

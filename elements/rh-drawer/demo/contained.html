@@ -1,7 +1,7 @@
 <meta itemprop="description" content="Drawer inside a resizable container. Drag the resize handle to see the drawer respond to container width.">
 <div id="wrapper">
   <p>Drag the bottom-right corner of the box below to resize it. The drawer responds to the container width &mdash; inline at wide widths, overlay at narrow.</p>
-  <div id="container" class="layout-inline">
+  <div id="container">
     <rh-drawer id="drawer" trigger-id="trigger" open>
       <p>Panel content slotted here.</p>
     </rh-drawer>
@@ -15,13 +15,14 @@
 
 <style>
   @import url("/assets/packages/@rhds/elements/elements/rh-drawer/rh-drawer-lightdom-shim.css");
+
   #wrapper {
     padding: var(--rh-space-2xl, 32px);
   }
 
   #container {
     container: rh-drawer / inline-size;
-    display: grid;
+    display: flex;
     inline-size: 100%;
     block-size: 400px;
     resize: horizontal;
@@ -30,27 +31,8 @@
     border-radius: var(--rh-border-radius-default, 3px);
   }
 
-  #container.layout-inline {
-    grid-template-areas: 'drawer main';
-    grid-template-columns: auto 1fr;
-  }
-
-  #container.layout-overlay {
-    grid-template-areas: 'content';
-    grid-template-columns: 1fr;
-  }
-
-  #container.layout-overlay rh-drawer,
-  #container.layout-overlay #main {
-    grid-area: content;
-  }
-
-  #container.layout-inline rh-drawer {
-    grid-area: drawer;
-  }
-
-  #container.layout-inline #main {
-    grid-area: main;
+  #container > :not(rh-drawer) {
+    flex: 1;
   }
 
   #main {
@@ -67,19 +49,4 @@
 
 <script type="module">
   import '@rhds/elements/rh-drawer/rh-drawer.js';
-
-  const trigger = document.getElementById('trigger');
-  const drawer = document.getElementById('drawer');
-  const container = document.getElementById('container');
-
-  drawer.addEventListener('open', () => trigger.setAttribute('aria-expanded', 'true'));
-  drawer.addEventListener('close', () => trigger.setAttribute('aria-expanded', 'false'));
-
-  drawer.addEventListener('threshold', (e) => {
-    if (e.direction === 'above') {
-      container.classList.replace('layout-overlay', 'layout-inline');
-    } else {
-      container.classList.replace('layout-inline', 'layout-overlay');
-    }
-  });
 </script>
