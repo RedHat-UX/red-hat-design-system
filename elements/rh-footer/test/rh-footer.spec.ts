@@ -199,6 +199,80 @@ describe('<rh-footer>', function() {
     });
   });
 
+  describe('logo-href', function() {
+    /**
+     * Default logo anchor in shadow DOM.
+     * Fallback content only; not assigned when authors slot `logo`.
+     * @param el universal footer under test
+     */
+    function logoAnchor(el: RhFooterUniversal) {
+      return el.shadowRoot?.querySelector<HTMLAnchorElement>('a[part="logo-anchor"]');
+    }
+
+    describe('with no attribute', function() {
+      beforeEach(async function() {
+        universalFooter = await fixture<RhFooterUniversal>(html`<rh-footer-universal></rh-footer-universal>`);
+      });
+
+      it('uses the default Red Hat homepage URL', function() {
+        expect(logoAnchor(universalFooter)?.getAttribute('href')).to.equal('https://www.redhat.com/en');
+      });
+    });
+
+    describe('with a locale homepage', function() {
+      beforeEach(async function() {
+        universalFooter = await fixture<RhFooterUniversal>(html`
+          <rh-footer-universal logo-href="https://www.redhat.com/ja"></rh-footer-universal>
+        `);
+      });
+
+      it('updates the default logo link', function() {
+        expect(logoAnchor(universalFooter)?.getAttribute('href')).to.equal('https://www.redhat.com/ja');
+      });
+    });
+
+    describe('when empty', function() {
+      beforeEach(async function() {
+        universalFooter = await fixture<RhFooterUniversal>(html`
+          <rh-footer-universal logo-href=""></rh-footer-universal>
+        `);
+      });
+
+      it('falls back to the default Red Hat homepage URL', function() {
+        expect(logoAnchor(universalFooter)?.getAttribute('href')).to.equal('https://www.redhat.com/en');
+      });
+    });
+
+    describe('when whitespace only', function() {
+      beforeEach(async function() {
+        universalFooter = await fixture<RhFooterUniversal>(html`
+          <rh-footer-universal logo-href="   "></rh-footer-universal>
+        `);
+      });
+
+      it('falls back to the default Red Hat homepage URL', function() {
+        expect(logoAnchor(universalFooter)?.getAttribute('href')).to.equal('https://www.redhat.com/en');
+      });
+    });
+
+    describe('with a slotted logo', function() {
+      beforeEach(async function() {
+        universalFooter = await fixture<RhFooterUniversal>(html`
+          <rh-footer-universal logo-href="https://www.redhat.com/ja">
+            <a slot="logo" href="https://example.com/">Custom logo</a>
+          </rh-footer-universal>
+        `);
+      });
+
+      it('does not apply logo-href to the slotted link', function() {
+        const slotted = universalFooter.querySelector('[slot="logo"]');
+        expect(slotted).to.have.attribute('href', 'https://example.com/');
+        const slot = universalFooter.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="logo"]');
+        expect(slot?.assignedElements()[0]).to.equal(slotted);
+      });
+    });
+  });
+
   describe('adjusting window size', function() {
     beforeEach(async function() {
       element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
@@ -267,9 +341,9 @@ describe('<rh-footer>', function() {
     });
 
     describe('footer-universal behaviors', function() {
-      it('logo anchor tag should always link to redhat.com', async function() {
+      it('logo anchor tag should always link to www.redhat.com/en', async function() {
         const universalElement = await fixture<RhFooterUniversal>(UNIVERSAL_FOOTER_TEMPLATE);
-        expect(universalElement.shadowRoot?.querySelector('slot[name="logo"] a')?.getAttribute('href')).to.equal('https://redhat.com');
+        expect(universalElement.shadowRoot?.querySelector('slot[name="logo"] a')?.getAttribute('href')).to.equal('https://www.redhat.com/en');
       });
     });
 
