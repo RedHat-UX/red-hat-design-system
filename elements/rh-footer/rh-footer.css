@@ -225,7 +225,6 @@
 
   /* reduce the line-height for global links */
   line-height: 100%;
-
   background-color:
     light-dark(
         /** Universal footer surface in light color schemes */
