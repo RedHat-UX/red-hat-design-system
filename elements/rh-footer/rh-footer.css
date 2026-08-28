@@ -2,7 +2,7 @@
   /* apply sensible defaults based on redhat standards. */
 
   /** Footer text color */
-  color: var(--rh-color-white, #ffffff);
+  color: var(--rh-color-text-primary);
 
   /** Footer typeface */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
@@ -13,7 +13,6 @@
   font-size: initial;
   display: flex;
   flex-direction: column;
-  color-scheme: only dark !important;
 }
 
 /* Should only be applied if scripting is disabled */
@@ -46,22 +45,22 @@
     /** Footer icon color override */
     var(
         --rh-footer-icon-color,
-        /** Footer icon default on dark */
-        var(--rh-color-gray-40, #a3a3a3)
+        /** Footer icon color */
+        var(--rh-color-icon-subtle, #707070)
       );
   --_icon-color-hover:
     /** Footer icon hover color override */
     var(
         --rh-footer-icon-color-hover,
-        /** Footer icon hover default on dark */
-        var(--rh-color-gray-30, #c7c7c7)
+        /** Footer icon hover color */
+        var(--rh-color-icon-subtle-hover, #a3a3a3)
       );
   --_border-color:
     /** Footer border color override */
     var(
         --rh-footer-border-color,
-        /** Footer border subtle on dark */
-        var(--rh-color-border-subtle-on-dark, #707070)
+        /** Footer border color */
+        var(--rh-color-border-subtle)
       );
   --_accent-color:
     /** Footer accent color override */
@@ -78,8 +77,14 @@
         var(--rh-space-lg, 16px)
       );
 
-  /** Universal footer accordion surface */
-  --_accordion-background: var(--rh-color-white, #ffffff);
+  /* Accordion surface follows the footer color-scheme */
+  --_accordion-background:
+    light-dark(
+        /** Accordion surface in light color schemes */
+        var(--rh-color-surface-lightest, #ffffff),
+        /** Accordion surface in dark color schemes */
+        var(--rh-color-surface-darkest, #151515)
+      );
 
   /** Footer logo width */
   --_logo-width: var(--rh-size-icon-04, 40px);
@@ -137,8 +142,13 @@
 }
 
 .header {
-  /** Footer background */
-  background-color: var(--rh-color-surface-darker, #1f1f1f);
+  background-color:
+    light-dark(
+        /** Domain footer surface in light color schemes */
+        var(--rh-color-surface-lighter, #f2f2f2),
+        /** Domain footer surface in dark color schemes */
+        var(--rh-color-surface-darker, #1f1f1f)
+      );
 
   /* children should flex wrap on mobile */
   display: flex;
@@ -184,8 +194,13 @@
 }
 
 .main {
-  /** Footer background */
-  background-color: var(--rh-color-surface-darker, #1f1f1f);
+  background-color:
+    light-dark(
+        /** Domain footer surface in light color schemes */
+        var(--rh-color-surface-lighter, #f2f2f2),
+        /** Domain footer surface in dark color schemes */
+        var(--rh-color-surface-darker, #1f1f1f)
+      );
   display: grid;
 
   /** Footer content gap */
@@ -211,8 +226,13 @@
   /* reduce the line-height for global links */
   line-height: 100%;
 
-  /** Footer background */
-  background-color: var(--rh-color-surface-darkest, #151515);
+  background-color:
+    light-dark(
+        /** Universal footer surface in light color schemes */
+        var(--rh-color-surface-lightest, #ffffff),
+        /** Universal footer surface in dark color schemes */
+        var(--rh-color-surface-darkest, #151515)
+      );
   display: grid;
   grid-template-columns: 1fr;
   grid-template-areas:

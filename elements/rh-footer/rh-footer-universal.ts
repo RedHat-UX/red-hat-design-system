@@ -8,6 +8,7 @@ import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import style from './rh-footer.css' with { type: 'css' };
 
@@ -29,15 +30,20 @@ const DEFAULT_LOGO_HREF = 'https://www.redhat.com/en';
  */
 @customElement('rh-footer-universal')
 @colorPalettes
+@themable
 export class RhFooterUniversal extends LitElement {
   static readonly styles = [style];
 
   /**
-   * Color palette for the universal footer. Defaults to `'darker'`.
-   * Valid values: `'lighter'`, `'light'`, `'dark'`, `'darker'`, `'darkest'`.
-   * The universal footer typically renders on the darkest surface.
+   * Sets color palette, which affects the universal footer's styles and
+   * descendants' color scheme. Overrides parent color context. Accepts all
+   * six palettes. Surfaces collapse via `light-dark()` to lightest (light)
+   * / darkest (dark). Defaults to undefined so a nested universal footer
+   * inherits from `<rh-footer>`. Standalone use may set the attribute.
+   * Apply `color-palette="darkest"` to keep a dark footer.
+   * @see https://ux.redhat.com/theming/color-palettes/
    */
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
    * Sets the `href` for the default Red Hat logo link. Has no effect when
