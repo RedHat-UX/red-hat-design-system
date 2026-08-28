@@ -319,6 +319,7 @@ export default async function(eleventyConfig: UserConfig) {
       'elements/rh-navigation-vertical/rh-navigation-vertical.ts',
       'elements/rh-navigation-vertical/rh-navigation-vertical-list.ts',
       'elements/rh-pagination/rh-pagination.ts',
+      'elements/rh-scheme-dropdown/rh-scheme-dropdown.ts',
       'elements/rh-scheme-toggle/rh-scheme-toggle.ts',
       'elements/rh-select/rh-select.ts',
       'elements/rh-select/rh-option.ts',
@@ -361,7 +362,6 @@ export default async function(eleventyConfig: UserConfig) {
       // still not working nicely with ssr
       // 'elements/rh-audio-player/rh-audio-player.ts',
       // 'elements/rh-footer/rh-footer.ts',
-      // 'elements/rh-scheme-dropdown/rh-scheme-dropdown.ts',
     ],
     slotControllerElements: [
       'rh-alert',

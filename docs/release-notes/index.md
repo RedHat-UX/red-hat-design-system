@@ -52,12 +52,25 @@ or anything else, please submit a [GitHub issue][issues].
   <a slot="headline" href="https://github.com/RedHat-UX/red-hat-design-system/releases">Changelog</a>
 </rh-tile>
 
-<section aria-labelledby="version-4.2">
+<section aria-labelledby="version-4.2.x">
 
-## Version 4.2
+## Version 4.2.x
+
+### Version 4.2.1
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| `<rh-navigation-primary>`: improved event slot accessibility | {{p()}} | Ensured the event slot remains hidden when nothing is slotted. |
+| `<rh-subnav>`: corrected long link text wrapping | {{p()}} | Corrected slotted `<rh-navigation-link>` text wrapping when long link text is used. |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.2.1">View all version 4.2.1 release notes</rh-cta>
+
+### Version 4.2.0
 Released July 13, 2026
-
-### Highlights
 
 <rh-table>
 
@@ -82,9 +95,15 @@ Released July 13, 2026
 
 </rh-table>
 
-<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.2.0">View all version 4.2 release notes</rh-cta>
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.2.0">View all version 4.2.0 release notes</rh-cta>
 
-### Patches from version 4.1.5
+</section>
+
+<section aria-labelledby="version-4.1.x">
+
+## Version 4.1.x
+
+### Version 4.1.5
 
 <rh-table>
 
@@ -96,7 +115,7 @@ Released July 13, 2026
 
 <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.1.5">View all version 4.1.5 release notes</rh-cta>
 
-### Patches from version 4.1.4
+### Version 4.1.4
 
 <rh-table>
 
@@ -108,7 +127,7 @@ Released July 13, 2026
 
 <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.1.4">View all version 4.1.4 release notes</rh-cta>
 
-### Patches from version 4.1.3
+### Version 4.1.3
 
 <rh-table>
 
@@ -121,7 +140,7 @@ Released July 13, 2026
 
 <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.1.3">View all version 4.1.3 release notes</rh-cta>
 
-### Patches from version 4.1.2
+### Version 4.1.2
 
 <rh-table>
 
@@ -133,7 +152,7 @@ Released July 13, 2026
 
 <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.1.2">View all version 4.1.2 release notes</rh-cta>
 
-### Patches from version 4.1.1
+### Version 4.1.1
 
 <rh-table>
 
@@ -149,14 +168,8 @@ Released July 13, 2026
 
 <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.1.1">View all version 4.1.1 release notes</rh-cta>
 
-</section>
-
-<section aria-labelledby="version-4.1">
-
-## Version 4.1
+### Version 4.1.0
 Released April 9, 2026
-
-### Highlights
 
 <rh-table>
 
@@ -190,13 +203,15 @@ Released April 9, 2026
 
 </rh-table>
 
-<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.1.0">View all version 4.1 release notes</rh-cta>
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.1.0">View all version 4.1.0 release notes</rh-cta>
 
 </section>
 
-<section aria-labelledby="version-4.0">
+<section aria-labelledby="version-4.0.x">
 
-### Patches from version 4.0.4
+## Version 4.0.x
+
+### Version 4.0.4
 
 <rh-table>
 
@@ -212,7 +227,7 @@ Released April 9, 2026
 
 <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.0.4">View all version 4.0.4 release notes</rh-cta>
 
-### Patches from version 4.0.3
+### Version 4.0.3
 
 <rh-table>
 
@@ -227,7 +242,7 @@ Released April 9, 2026
 
 <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.0.3">View all version 4.0.3 release notes</rh-cta>
 
-### Patches from version 4.0.2
+### Version 4.0.2
 
 <rh-table>
 
@@ -240,16 +255,19 @@ Released April 9, 2026
 
 <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.0.2">View all version 4.0.2 release notes</rh-cta>
 
-## Version 4.0
+### Version 4.0.0
 Released October 31, 2025 🎃
 
-### Highlights
+<rh-alert state="info">
+  <h4 slot="header">Upgrading?</h4>
+  <p>If you're upgrading to version 4.0, <a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.0.0">read our v4.0 changelog</a> for upgrade instructions.</p>
+</rh-alert>
 
 <rh-table>
 
 | Change        | Type        | Notes        |
 | ------------- | ----------- | ------------ |
-| 🎨 Icons: Updated @rhds/icons to version 2.0 | {{j()}} | Added 191 new UI icons, including new `ai-experience` icons and many `-fill` variations, and removed `auto-light-dark-mode-fill` icon. Please see [official 4.0 release notes](https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.0.0) for details on breaking changes. |
+| 🎨 Icons: Updated @rhds/icons to version 2.0 | {{j()}} | Added 191 new UI icons, including new `ai-experience` icons and many `-fill` variations, and removed `auto-light-dark-mode-fill` icon. |
 | ✨ Added `<rh-menu-dropdown>` | {{i()}} | A UI component designed for presenting a set of related actions or commands. It consists of two parts: a menu toggle, which users interact with to open or close the menu, and a menu list that contains actionable items. |
 | ✨ Added `<rh-navigation-vertical>` | {{i()}} | A vertical navigation list containing top-level navigation items and grouped navigation items, typically used in a side navigation pattern. |
 | ✨ Added `<rh-navigation-link>` | {{i()}} | A styled link that is used as a slotted child of navigation elements. Can be used in the primary, secondary, subnav, and vertical navigation elements. |
@@ -283,16 +301,16 @@ Released October 31, 2025 🎃
 
 </rh-table>
 
-<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.0.0">View all version 4.0 release notes</rh-cta>
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.0.0">View all version 4.0.0 release notes</rh-cta>
 
 </section>
 
-<section aria-labelledby="version-3.2">
+<section aria-labelledby="version-3.2.x">
 
-## Version 3.2
+## Version 3.2.x
+
+### Version 3.2.0
 Released October 24, 2025
-
-### Highlights
 
 <rh-table>
 
@@ -304,13 +322,15 @@ Released October 24, 2025
 
 </rh-table>
 
-<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.2.0">View all version 3.2 release notes</rh-cta>
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.2.0">View all version 3.2.0 release notes</rh-cta>
 
 </section>
 
-<section aria-labelledby="version-3.1.0">
+<section aria-labelledby="version-3.1.x">
 
-### Patches from version 3.1.3
+## Version 3.1.x
+
+### Version 3.1.3
 
 <rh-table>
 
@@ -322,7 +342,7 @@ Released October 24, 2025
 
 <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.1.3">View all version 3.1.3 release notes</rh-cta>
 
-### Patches from version 3.1.2
+### Version 3.1.2
 
 <rh-table>
 
@@ -334,7 +354,7 @@ Released October 24, 2025
 
 <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.1.2">View all version 3.1.2 release notes</rh-cta>
 
-### Patches from version 3.1.1
+### Version 3.1.1
 
 <rh-table>
 
@@ -349,10 +369,8 @@ Released October 24, 2025
 <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.1.1">View all version 3.1.1 release notes</rh-cta>
 
 
-## Version 3.1.0
+### Version 3.1.0
 Released August 6, 2025
-
-### Highlights
 
 <rh-table>
 
@@ -382,13 +400,15 @@ Released August 6, 2025
 
 </rh-table>
 
-<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.1.0">View all version 3.1 release notes</rh-cta>
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.1.0">View all version 3.1.0 release notes</rh-cta>
 
 </section>
 
-<section aria-labelledby="version-3.0.0">
+<section aria-labelledby="version-3.0.x">
 
-### Patches from version 3.0.4
+## Version 3.0.x
+
+### Version 3.0.4
 
 <rh-table>
 
@@ -402,7 +422,7 @@ Released August 6, 2025
 
 <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.0.4">View all version 3.0.4 release notes</rh-cta>
 
-### Patches from version 3.0.3
+### Version 3.0.3
 
 <rh-table>
 
@@ -415,7 +435,7 @@ Released August 6, 2025
 
 <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.0.3">View all version 3.0.3 release notes</rh-cta>
 
-### Patches from version 3.0.2
+### Version 3.0.2
 
 <rh-table>
 
@@ -453,7 +473,7 @@ Released August 6, 2025
 
 <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.0.2">View all version 3.0.2 release notes</rh-cta>
 
-### Patches from version 3.0.1
+### Version 3.0.1
 
 <rh-table>
 
@@ -471,15 +491,13 @@ Released August 6, 2025
 
 <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.0.1">View all version 3.0.1 release notes</rh-cta>
 
-## Version 3.0.0
+### Version 3.0.0
 Released April 7, 2025
 
 <rh-alert state="info">
-  <h3 slot="header">Upgrading?</h3>
+  <h4 slot="header">Upgrading?</h4>
   <p>If you're upgrading to version 3.0, <a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.0.0">read our v3.0 changelog</a> for upgrade instructions.</p>
 </rh-alert>
-
-### Highlights
 
 <rh-table>
 
@@ -530,13 +548,15 @@ Released April 7, 2025
 
 </rh-table>
 
-<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.0.0">View all version 3.0 release notes</rh-cta>
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.0.0">View all version 3.0.0 release notes</rh-cta>
 
 </section>
 
-<section aria-labelledby="version-2.1.0">
+<section aria-labelledby="version-2.1.x">
 
-### Patches from version 2.1.2
+## Version 2.1.x
+
+### Version 2.1.2
 
 <rh-table>
 
@@ -561,7 +581,7 @@ Released April 7, 2025
 
 <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.1.2">View all version 2.1.2 release notes</rh-cta>
 
-### Patches from version 2.1.1
+### Version 2.1.1
 
 <rh-table>
 
@@ -581,10 +601,8 @@ Released April 7, 2025
 
 <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.1.1">View all version 2.1.1 release notes</rh-cta>
 
-## Version 2.1.0
+### Version 2.1.0
 Released October 1, 2024
-
-### Highlights
 
 <rh-table>
 
@@ -613,21 +631,21 @@ Released October 1, 2024
 
 </rh-table>
 
-<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.1.0">View all version 2.1 release notes</rh-cta>
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.1.0">View all version 2.1.0 release notes</rh-cta>
 
 </section>
 
-<section aria-labelledby="version-2.0.0">
+<section aria-labelledby="version-2.0.x">
 
-## Version 2.0.0
+## Version 2.0.x
+
+### Version 2.0.0
 Released August 27, 2024
 
 <rh-alert state="info">
-  <h3 slot="header">Upgrading?</h3>
+  <h4 slot="header">Upgrading?</h4>
   <p>If you're upgrading to version 2.0, <a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.0.0">read our v2.0 changelog</a> for upgrade instructions.</p>
 </rh-alert>
-
-### Highlights
 
 <rh-table>
 
@@ -666,16 +684,16 @@ Released August 27, 2024
 
 </rh-table>
 
-<rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.0.0">View all version 2.0 release notes</a></rh-cta>
+<rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.0.0">View all version 2.0.0 release notes</a></rh-cta>
 
 </section>
 
-<section aria-labelledby="version-1.4.0">
+<section aria-labelledby="version-1.4.x">
 
-## Version 1.4.0
+## Version 1.4.x
+
+### Version 1.4.0
 Released April 22, 2024
-
-### Highlights
 
 <rh-table>
 
@@ -696,16 +714,16 @@ Released April 22, 2024
 
 [pfepatchlit3]: https://github.com/patternfly/patternfly-elements/releases/tag/%40patternfly%2Fpfe-core%403.0.0
 
-<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.4.0">View all version 1.4 release notes</rh-cta>
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.4.0">View all version 1.4.0 release notes</rh-cta>
 
 </section>
 
-<section aria-labelledby="version-1.3.0">
+<section aria-labelledby="version-1.3.x">
 
-## Version 1.3.0
+## Version 1.3.x
+
+### Version 1.3.0
 Released January 11, 2024
-
-### Highlights
 
 <rh-table>
 
@@ -722,16 +740,16 @@ Released January 11, 2024
 
 [tokens13]: https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.3.0
 
-<rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.3.0">View all version 1.3 release notes</a></rh-cta>
+<rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.3.0">View all version 1.3.0 release notes</a></rh-cta>
 
 </section>
 
-<section aria-labelledby="version-1.2.0">
+<section aria-labelledby="version-1.2.x">
 
-## Version 1.2.0
+## Version 1.2.x
+
+### Version 1.2.0
 Released October 16, 2023
-
-### Highlights
 
 <rh-table>
 
@@ -747,16 +765,16 @@ Released October 16, 2023
 
 </rh-table>
 
-<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.2.0">View all version 1.2 release notes</rh-cta>
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.2.0">View all version 1.2.0 release notes</rh-cta>
 
 </section>
 
-<section aria-labelledby="version-1.1.0">
+<section aria-labelledby="version-1.1.x">
 
-## Version 1.1.0
+## Version 1.1.x
+
+### Version 1.1.0
 Released July 5, 2023
-
-### Highlights
 
 <rh-table>
 
@@ -771,17 +789,17 @@ Released July 5, 2023
 </rh-table>
 
 <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.1.0">
-View all version 1.1 release notes
+View all version 1.1.0 release notes
 </rh-cta>
 
 </section>
 
-<section aria-labelledby="version-1.0.0">
+<section aria-labelledby="version-1.0.x">
 
-## Version 1.0.0
+## Version 1.0.x
+
+### Version 1.0.0
 Released April 3, 2023
-
-### Highlights
 
 <rh-table>
 
@@ -809,7 +827,7 @@ Released April 3, 2023
  
 </rh-table>
 
-<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.0.0">View all version 1.0 release notes</rh-cta>
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.0.0">View all version 1.0.0 release notes</rh-cta>
 
 </section>
 

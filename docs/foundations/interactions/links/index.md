@@ -23,28 +23,9 @@ subnav:
   import '@rhds/elements/rh-alert/rh-alert.js';
   import '@rhds/elements/rh-code-block/rh-code-block.js';
   import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
-  import '@rhds/elements/rh-cta/rh-cta.js';
   import '@rhds/elements/rh-table/rh-table.js';
   import "@uxdot/elements/uxdot-pattern.js";
 </script>
-
-<style>
-.underline-exception {
-    display: block;
-    margin-block: var(--rh-space-2xl);
-    & span {
-        font-family: var(--rh-font-family-heading);
-        font-size: var(--rh-font-size-heading-xs);
-        font-weight: var(--rh-font-weight-heading-medium);
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: var(--rh-space-md);
-        color: var(--rh-color-status-danger);
-        margin-block: var(--rh-space-2xl) var(--rh-space-lg);
-    }
-}
-</style>
 
 ## Types of links
 
@@ -156,6 +137,54 @@ When these links receive a mouse cursor hover, link colors and underline styles 
   </table>
 </rh-table>
 
+### Focus
+
+When a link receives keyboard focus, it should show both:
+
+1. The standard [focus indicator][focusindicators] (outline)
+2. The same text and underline styles as [hover](#hover)
+
+Use the focus interactive tokens for the text and underline. Those values match hover, so focused and hovered links look the same aside from the focus ring.
+
+<rh-table>
+  <table>
+    <colgroup>
+      <col>
+      <col>
+      <col>
+    </colgroup>
+    <thead>
+      <tr>
+        <th scope="col">Property</th>
+        <th scope="col">Light scheme</th>
+        <th scope="col">Dark scheme</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Focus ring color</td>
+        <td><code>--rh-color-border-interactive</code></td>
+        <td><code>--rh-color-border-interactive</code></td>
+      </tr>
+      <tr>
+        <td>Color - text</td>
+        <td><code>--rh-color-interactive-primary-focus</code></td>
+        <td><code>--rh-color-interactive-primary-focus</code></td>
+      </tr>
+      <tr>
+        <td>Underline - color</td>
+        <td><code>--rh-color-interactive-primary-focus</code></td>
+        <td><code>--rh-color-interactive-primary-focus</code></td>
+      </tr>
+      <tr>
+        <td>Underline - offset</td>
+        <td>6px</td>
+        <td>6px</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
+
 ### Visited state
 
 Visited links will change colors to one of our [interactive visited tokens][interactivevisitedtokens].
@@ -167,59 +196,100 @@ The following elements are exempt from underlining requirements and should not h
 ### Exceptions
 
 <div class="grid sm-two-columns">
-
-  <figure class="underline-exception">
+  <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lighter" width-adjustment="482px" slot="image">
       <img src="./underlining-exceptions-1.svg"
             alt="Recommendations menu with list of links that aren't underlined"
             width="482"
             height="342">
     </uxdot-example>
-    <figcaption>
-        <span><rh-icon set="ui" size="md" icon="close-circle-fill" defer-hydration=""></rh-icon>Don't underline</span>
-        <p>Do not underline links within visually distinct navigation groupings like menus and breadcrumbs.</p>
-    </figcaption>
-  </figure>
+    <p>Do not underline links within visually distinct navigation groupings like menus and breadcrumbs.</p>
+  </uxdot-best-practice>
 
-  <figure class="underline-exception">
+  <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
       <img src="./underlining-exceptions-2.svg"
             alt="Heading, body copy, and call to action with an arrow but without an underline"
             width="482"
             height="342">
     </uxdot-example>
-    <figcaption>
-        <span><rh-icon set="ui" size="md" icon="close-circle-fill" defer-hydration=""></rh-icon>Don't underline</span>
-      <p>Do not underline links accompanied by visual cues (e.g., call to action arrows) that indicate their interactivity.</p>
-    </figcaption>
-  </figure>
+    <p>Do not underline links accompanied by visual cues (e.g., call to action arrows) that indicate their interactivity.</p>
+  </uxdot-best-practice>
 
-  <figure class="underline-exception">
+  <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
       <img src="./underlining-exceptions-3.svg"
             alt="List of links "
             width="482"
             height="268">
     </uxdot-example>
-    <figcaption>
-        <span><rh-icon set="ui" size="md" icon="close-circle-fill" defer-hydration=""></rh-icon>Don't underline</span>
-      <p>Do not underline links that will not appear alongside non-link text like a list of links within a card.</p>
-    </figcpation>
-  </figure>
+    <p>Do not underline links that will not appear alongside non-link text like a list of links within a card.</p>
+  </uxdot-best-practice>
 </div>
 
-### Example CSS
+## Example CSS
 
-Developers can use the following CSS as a starting point for link underlining:
+Developers can use the following CSS as a starting point for link styling.
 
-- In practice, you will probably want to use a more specific selector than `:is(p, ul, ol, dl) a`, because this example selector applies to all links in paragraphs or lists on a page.
-- This example adds a `max()` function to the `text-underline-offset` property, allowing this value to grow proportionally at large font sizes.
-- As of this writing, Safari has some issues with the `text-decoration` shorthand property, so we separated it out into its component options `(-color, -line, -style, and -thickness)`.
+### Link colors
 
-<rh-code-block actions="wrap copy">
+Base color tokens for all links, including hover, focus, and visited states:
+
+<rh-code-block actions="wrap copy" highlighting="client" language="css" full-height>
   <script type="text/css">
-    :is(p, ul, ol, dl) a {
-      text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40));
+    a {
+      color: var(--rh-color-interactive-primary-default, 
+        light-dark(
+          var(--rh-color-interactive-primary-default-on-light, #0066cc),
+          var(--rh-color-interactive-primary-default-on-dark, #92c5f9)
+        ));
+      &:hover {
+        color: var(--rh-color-interactive-primary-hover,
+          light-dark(
+            var(--rh-color-interactive-primary-hover-on-light, #003366),
+            var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
+        ));
+      }
+      &:focus-within {
+        color: var(--rh-color-interactive-primary-focus,
+          light-dark(
+            var(--rh-color-interactive-primary-focus-on-light, #003366),
+            var(--rh-color-interactive-primary-focus-on-dark, #b9dafc)
+          ));
+        &:hover {
+          color: var(--rh-color-interactive-primary-focus,
+            light-dark(
+              var(--rh-color-interactive-primary-focus-on-light, #003366),
+              var(--rh-color-interactive-primary-focus-on-dark, #b9dafc)
+            ));
+        }
+      }
+      &:visited {
+        color: var(--rh-color-interactive-primary-visited-default,
+          light-dark(
+            var(--rh-color-interactive-primary-visited-default-on-light, #5e40be),
+            var(--rh-color-interactive-primary-visited-default-on-dark, #b6a6e9)
+          ));
+        &:hover {
+          color: var(--rh-color-interactive-primary-visited-hover,
+            light-dark(
+              var(--rh-color-interactive-primary-visited-hover-on-light, #21134d),
+              var(--rh-color-interactive-primary-visited-hover-on-dark, #ece6ff)
+            ));
+        }
+      }
+    }
+  </script>
+</rh-code-block>
+
+### Inline link underlines
+
+When links appear in content (paragraphs, lists, etc.), add dashed underlines that solidify on hover or focus:
+
+<rh-code-block actions="wrap copy" highlighting="client" language="css" full-height>
+  <script type="text/css">
+    :where(p, ul, ol, dl) a {
+      text-decoration-color: light-dark(var(--rh-color-gray-50, #707070), var(--rh-color-gray-40, #a3a3a3));
       text-decoration-line: underline;
       text-decoration-style: dashed;
       text-decoration-thickness: var(--rh-border-width-sm, 1px);
@@ -227,13 +297,17 @@ Developers can use the following CSS as a starting point for link underlining:
       transition-timing-function: ease;
       transition-property: text-underline-offset, color, text-decoration-color;
       transition-duration: 0.3s;
-      &:hover {
+      &:is(:hover, :focus-within) {
         text-decoration-color: inherit;
         text-underline-offset: max(6px, 0.33em);
       }
     }
   </script>
 </rh-code-block>
+
+- The sample selector is broad by design. Scope it to contexts where inline link underlining applies, links that appear alongside non-link text and lack other visual affordance (see [Exceptions](#exceptions) above).
+- The `max()` function on `text-underline-offset` allows the underline gap to grow proportionally at large font sizes.
+- Older versions of Safari may still have difficulty with the `text-decoration` shorthand property, so we separated it out into its longhand options (`-color`, `-line`, `-style`, and `-thickness`).
 
 ## Behavior
 
@@ -283,7 +357,7 @@ A user should have the ability to navigate to and interact with links using thei
 
 ### Tab order
 
-When the Tab key is pressed repeatedly, the focus highlights links in order, from left to right and top to bottom.
+When the Tab key is pressed repeatedly, focus moves through links in order, from left to right and top to bottom. Each focused link shows the [focus indicator][focusindicators] and [hover styles](#hover).
 
 <uxdot-example color-palette="lightest" width-adjustment="606px" slot="image">
   <img src="./a11y-tab-order-A.svg"
@@ -324,8 +398,6 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
     <p>Do not use ambiguous phrases or a full website URL in body text.</p>
   </uxdot-best-practice>
 </div>
-
-<rh-cta href="/accessibility/content/#link-text">Writing accessible link text</rh-cta>
 
 ### Long links
 
@@ -377,5 +449,6 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
 
 [linkwithicon]: /patterns/link-with-icon/
 [ctas]: /elements/call-to-action/
+[focusindicators]: /foundations/interactions/focus-indicators/
 [interactivevisitedtokens]: /tokens/color/#color-interactive-primary-visited
 [redhat]: https://www.redhat.com
