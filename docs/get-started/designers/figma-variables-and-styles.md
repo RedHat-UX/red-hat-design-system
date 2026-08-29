@@ -5,6 +5,7 @@ heading: Designers
 permalink: /get-started/designers/figma-variables-and-styles.html
 tags:
   - designers
+pathfinder: true
 subnav:
   collection: sortedDesigners
   order: 30
@@ -16,6 +17,7 @@ subnav:
 
 <script type="module" data-helmet>
   import '@uxdot/elements/uxdot-example.js';
+
   import '@rhds/elements/rh-alert/rh-alert.js';
   import '@rhds/elements/rh-table/rh-table.js';
 </script>
