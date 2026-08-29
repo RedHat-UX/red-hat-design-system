@@ -1,0 +1,66 @@
+<meta itemprop="description" content="Right-to-left (RTL) responsive collapsible drawer. Pushes content at wide widths, overlaps at narrow widths. Panel position and collapse toggle respect document direction.">
+<div id="container" class="layout-inline" dir="rtl" lang="he">
+  <rh-drawer id="drawer" collapsible open
+             collapse-label-open="כווץ חלונית"
+             collapse-label-closed="הרחב חלונית">
+    <h3>כותרת</h3>
+    <p>זהו תוכן הגוף של חלונית המגירה. בשפות מימין לשמאל, החלונית מופיעה בצד הנכון בהתאם לכיוון הטקסט.</p>
+  </rh-drawer>
+  <div id="main">
+    <h3>תוכן העמוד</h3>
+    <p>השתמש בלחצן ההקטנה כדי לכווץ ולהרחיב את החלונית.</p>
+    <form id="knobs" dir="ltr" lang="en">
+      <fieldset>
+        <legend>Inline</legend>
+        <label><input type="radio" name="inline" value="start" checked> start</label>
+        <label><input type="radio" name="inline" value="end"> end</label>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+<style>
+  @import url("/assets/packages/@rhds/elements/elements/rh-drawer/rh-drawer-lightdom-shim.css");
+  #container {
+    container: rh-drawer / inline-size;
+    display: grid;
+    block-size: 100%;
+  }
+
+  #container.layout-inline {
+    grid-template-areas: 'drawer main';
+    grid-template-columns: auto 1fr;
+  }
+
+  #container.layout-inline.end {
+    grid-template-areas: 'main drawer';
+    grid-template-columns: 1fr auto;
+  }
+
+  #container.layout-inline rh-drawer {
+    grid-area: drawer;
+  }
+
+  #container.layout-inline #main {
+    grid-area: main;
+  }
+
+  #main {
+    padding: var(--rh-space-2xl, 32px);
+    overflow: auto;
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-drawer/rh-drawer.js';
+
+  const form = document.getElementById('knobs');
+  const drawer = document.getElementById('drawer');
+  const container = document.getElementById('container');
+
+  form.addEventListener('input', () => {
+    const data = Object.fromEntries(new FormData(form));
+    drawer.inline = data.inline;
+    container.classList.toggle('end', data.inline === 'end');
+  });
+</script>
