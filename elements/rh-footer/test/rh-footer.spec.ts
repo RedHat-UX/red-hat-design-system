@@ -7,7 +7,7 @@ import { RhFooter, RhFooterUniversal } from '../rh-footer.js';
 import '@patternfly/pfe-tools/test/stub-logger.js';
 
 const KITCHEN_SINK_TEMPLATE = html`
-  <rh-footer>
+  <rh-footer color-palette="darkest">
     <a slot="logo" href="/">
       <img src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat logo"
         loading="lazy"/>
@@ -117,7 +117,7 @@ const KITCHEN_SINK_TEMPLATE = html`
 `;
 
 const UNIVERSAL_FOOTER_TEMPLATE = html`
-  <rh-footer-universal>
+  <rh-footer-universal color-palette="darkest">
     <h3 slot="links-primary" hidden>Red Hat corporate links</h3>
     <ul slot="links-primary">
       <li><a href="#">About Red Hat</a></li>
@@ -269,6 +269,99 @@ describe('<rh-footer>', function() {
         expect(slotted).to.have.attribute('href', 'https://example.com/');
         const slot = universalFooter.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="logo"]');
         expect(slot?.assignedElements()[0]).to.equal(slotted);
+      });
+    });
+  });
+
+  describe('color palette', function() {
+    const lighter = 'rgb(242, 242, 242)'; /* --rh-color-surface-lighter #f2f2f2 */
+    const darker = 'rgb(31, 31, 31)'; /* --rh-color-surface-darker #1f1f1f */
+    const lightest = 'rgb(255, 255, 255)'; /* --rh-color-surface-lightest #ffffff */
+    const darkest = 'rgb(21, 21, 21)'; /* --rh-color-surface-darkest #151515 */
+
+    function headerBackground(el: RhFooter) {
+      return getComputedStyle(el.shadowRoot!.querySelector('.header')!).backgroundColor;
+    }
+
+    function universalBackground(el: RhFooterUniversal) {
+      return getComputedStyle(el.shadowRoot!.querySelector('.global-base')!).backgroundColor;
+    }
+
+    describe('when color-palette is omitted', function() {
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(html`
+          <rh-footer>
+            <rh-footer-universal slot="universal"></rh-footer-universal>
+          </rh-footer>
+        `);
+        universalFooter = element.querySelector('rh-footer-universal')!;
+        await element.updateComplete;
+        await universalFooter.updateComplete;
+      });
+
+      it('renders the domain footer on the lighter surface', function() {
+        expect(headerBackground(element)).to.equal(lighter);
+      });
+
+      it('renders the nested universal footer on the lightest surface', function() {
+        expect(universalBackground(universalFooter)).to.equal(lightest);
+      });
+    });
+
+    describe('when color-palette is darkest', function() {
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(html`
+          <rh-footer color-palette="darkest">
+            <rh-footer-universal slot="universal"></rh-footer-universal>
+          </rh-footer>
+        `);
+        universalFooter = element.querySelector('rh-footer-universal')!;
+        await element.updateComplete;
+        await universalFooter.updateComplete;
+      });
+
+      it('renders the domain footer on the darker surface', function() {
+        expect(headerBackground(element)).to.equal(darker);
+      });
+
+      it('nested universal without color-palette inherits dark scheme', function() {
+        expect(universalFooter.hasAttribute('color-palette')).to.be.false;
+        expect(universalBackground(universalFooter)).to.equal(darkest);
+      });
+    });
+
+    describe('standalone universal with color-palette="darkest"', function() {
+      beforeEach(async function() {
+        universalFooter = await fixture<RhFooterUniversal>(html`
+          <rh-footer-universal color-palette="darkest"></rh-footer-universal>
+        `);
+        await universalFooter.updateComplete;
+      });
+
+      it('renders on the darkest surface', function() {
+        expect(universalBackground(universalFooter)).to.equal(darkest);
+      });
+    });
+
+    describe('mobile accordion', function() {
+      beforeEach(async function() {
+        await setViewport({ width: 300, height: 800 });
+        element = await fixture<RhFooter>(html`
+          <rh-footer color-palette="lightest">
+            <h3 slot="links">Products</h3>
+            <ul slot="links"><li><a href="#">Red Hat Enterprise Linux</a></li></ul>
+            <rh-footer-universal slot="universal"></rh-footer-universal>
+          </rh-footer>
+        `);
+        await element.updateComplete;
+        await aTimeout(500);
+      });
+
+      it('does not hardcode a dark palette on the accordion', function() {
+        const accordion = element.shadowRoot?.querySelector('rh-accordion');
+        expect(accordion).to.exist;
+        expect(accordion).not.to.have.attribute('color-palette');
+        expect(accordion).not.to.have.attribute('on');
       });
     });
   });
