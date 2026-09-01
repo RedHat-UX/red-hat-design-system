@@ -31,3 +31,15 @@ If using a standalone `<rh-footer-universal>`, add `color-palette="darkest"` to 
   </rh-footer-universal>
 </rh-footer>
 ```
+
+**Optional, but recommended**
+
+Slotted `logo--on-dark.svg` images still work on a dark footer. To be light footer friendly, replace the slotted `<img>` with an inline SVG whose wordmark fill uses `light-dark()`. Copy the SVG from our [`<rh-footer>` demos](https://ux.redhat.com/elements/footer/demos/#demo-footer).
+
+```html
+<!-- before: raster that only works on dark -->
+<img alt="Red Hat" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" />
+
+<!-- after: inline SVG with light-dark() wordmark fill; copy from the `<rh-footer>` demos -->
+<svg>…</svg>
+```
