@@ -12,10 +12,11 @@
 
 pre[class*='language-'],
 :not(pre) > code[class*='language-'] {
-  color: var(--rh-color-text-primary);
-  background:
-    light-dark(var(--rh-color-surface-lighter),
-      var(--rh-color-surface-dark));
+  color:
+    var(--rh-color-text-primary,
+      light-dark(
+        var(--rh-color-text-primary-on-light, #151515),
+        var(--rh-color-text-primary-on-dark, #ffffff)));
   background: none;
   font-size: 1em;
   text-align: start;
