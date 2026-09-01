@@ -2,10 +2,13 @@ import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import styles from './uxdot-demo.css';
 
 import type { RhCodeBlock } from 'elements/rh-code-block/rh-code-block.js';
 
+@themable
 @customElement('uxdot-demo')
 export class UxdotDemo extends LitElement {
   static styles = [styles];
