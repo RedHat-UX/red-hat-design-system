@@ -10,17 +10,18 @@
 <style>
   .example-card-list-flat {
     inline-size: 360px;
+
     & ul {
       display: flex;
       flex-flow: column;
-      gap: var(--rh-space-lg);
+      gap: var(--rh-space-lg, 16px);
       margin: 0;
       padding: 0;
       list-style-type: none;
+
       & h3 {
-        margin-block-end: var(--rh-space-lg);
+        margin-block-end: var(--rh-space-lg, 16px);
       }
     }
   }
 </style>
-

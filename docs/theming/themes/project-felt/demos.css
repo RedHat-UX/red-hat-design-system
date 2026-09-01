@@ -1,0 +1,141 @@
+#demos-nav {
+  display: block;
+  padding-block-end: var(--rh-space-2xl, 32px);
+
+  & ul {
+    columns: 2;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  & li {
+    break-inside: avoid;
+    margin: 0;
+    padding: 0;
+    padding-block-end: var(--rh-space-md, 8px);
+
+    &:before {
+      content: '•';
+      margin-inline-end: var(--rh-space-md, 8px);
+      color:
+        var(--rh-color-interactive-primary-default,
+          light-dark(
+            var(--rh-color-interactive-primary-default-on-light, #0066cc),
+            var(--rh-color-interactive-primary-default-on-dark, #92c5f9)));
+    }
+  }
+
+  & a {
+    color:
+      var(--rh-color-interactive-primary-default,
+        light-dark(
+          var(--rh-color-interactive-primary-default-on-light, #0066cc),
+          var(--rh-color-interactive-primary-default-on-dark, #92c5f9)));
+    text-decoration: none;
+
+    &:hover {
+      color:
+        var(--rh-color-interactive-primary-hover,
+          light-dark(
+            var(--rh-color-interactive-primary-hover-on-light, #003366),
+            var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)));
+      text-decoration: underline dashed 1px;
+      text-decoration-color: inherit;
+      text-underline-offset: max(5px, 0.28em);
+    }
+
+    &:focus-within {
+      color:
+        var(--rh-color-interactive-primary-focus,
+          light-dark(
+            var(--rh-color-interactive-primary-focus-on-light, #003366),
+            var(--rh-color-interactive-primary-focus-on-dark, #b9dafc)));
+      text-decoration: underline dashed 1px;
+      text-decoration-color: inherit;
+      text-underline-offset: max(5px, 0.28em);
+    }
+
+    &:visited {
+      color:
+        var(--rh-color-interactive-primary-visited-default,
+          light-dark(
+            var(--rh-color-interactive-primary-visited-default-on-light, #5e40be),
+            var(--rh-color-interactive-primary-visited-default-on-dark, #b6a6e9)));
+
+      &:hover {
+        color:
+          var(--rh-color-interactive-primary-visited-hover,
+            light-dark(
+              var(--rh-color-interactive-primary-visited-hover-on-light, #21134d),
+              var(--rh-color-interactive-primary-visited-hover-on-dark, #ece6ff)));
+      }
+    }
+  }
+
+  @container main (min-width: 768px) {
+    & ul {
+      columns: 3;
+    }
+  }
+
+  @container main (min-width: 992px) {
+    & ul {
+      columns: 4;
+    }
+  }
+}
+
+.back-to-toc {
+  display: none;
+}
+
+.back-to-demos,
+.back-to-toc {
+  display: inline-block;
+  margin-block: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+  color:
+    var(--rh-color-interactive-primary-default,
+      light-dark(
+        var(--rh-color-interactive-primary-default-on-light, #0066cc),
+        var(--rh-color-interactive-primary-default-on-dark, #92c5f9)));
+  text-decoration: none;
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+
+  &:before {
+    display: inline-block;
+    content: '⌃';
+    margin-inline-end: var(--rh-space-md, 8px);
+    color:
+      var(--rh-color-interactive-primary-default,
+        light-dark(
+          var(--rh-color-interactive-primary-default-on-light, #0066cc),
+          var(--rh-color-interactive-primary-default-on-dark, #92c5f9)));
+  }
+
+  &:hover {
+    color:
+      var(--rh-color-interactive-primary-hover,
+        light-dark(
+          var(--rh-color-interactive-primary-hover-on-light, #003366),
+          var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)));
+    text-decoration: underline dashed 1px;
+    text-decoration-color: inherit;
+    text-underline-offset: max(5px, 0.28em);
+  }
+}
+
+#page-toc:focus {
+  outline: none;
+}
+
+@container main (min-width: 1440px) {
+  #demos-nav,
+  .back-to-demos {
+    display: none;
+  }
+
+  .back-to-toc {
+    display: inline-block;
+  }
+}

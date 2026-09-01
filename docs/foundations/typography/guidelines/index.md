@@ -16,36 +16,7 @@ subnav:
   import '@rhds/elements/rh-icon/rh-icon.js';
 </script>
 
-<style>
-rh-card {
-    height: 100%;
-
-    & p {
-        font-family: var(--rh-font-family-heading);
-        font-size: var(--rh-font-size-body-text-xl);
-        font-weight: var(--rh-font-weight-heading-medium);
-        margin-block: 0;
-    }
-
-    &::part(header) {
-        display: block;
-    }
-}
-
-rh-card.do {
-    & rh-icon {
-        color: var(--rh-color-icon-status-success);
-        --rh-icon-size: var(--rh-size-icon-03);
-    }
-}
-
-rh-card.dont {
-    & rh-icon {
-        color: var(--rh-color-icon-status-danger);
-        --rh-icon-size: var(--rh-size-icon-03);
-    }
-}
-</style>
+<link rel="stylesheet" href="index.css" data-helmet>
 
 ## General guidelines
 

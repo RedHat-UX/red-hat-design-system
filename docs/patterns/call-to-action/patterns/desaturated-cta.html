@@ -18,9 +18,21 @@
     margin-block: 1rem;
 
     &.desaturated {
-      --rh-cta-color: var(--rh-color-text-primary);
-      --rh-cta-hover-color: var(--rh-color-text-primary);
-      --rh-cta-focus-border-color: var(--rh-color-border-interactive);
+      --rh-cta-color:
+        var(--rh-color-text-primary,
+          light-dark(
+            var(--rh-color-text-primary-on-light, #151515),
+            var(--rh-color-text-primary-on-dark, #ffffff)));
+      --rh-cta-hover-color:
+        var(--rh-color-text-primary,
+          light-dark(
+            var(--rh-color-text-primary-on-light, #151515),
+            var(--rh-color-text-primary-on-dark, #ffffff)));
+      --rh-cta-focus-border-color:
+        var(--rh-color-border-interactive,
+          light-dark(
+            var(--rh-color-border-interactive-on-light, #0066cc),
+            var(--rh-color-border-interactive-on-dark, #92c5f9)));
       --rh-cta-hover-text-underline-offset: 5px; /* NOTE: new property that needs added via doduo! */
       --desaturated-cta-text-decoration: underline dashed 1px;
       --desaturated-cta-text-color:
@@ -44,11 +56,17 @@
       &:hover,
       &:focus-within {
         --rh-cta-hover-text-decoration: var(--desaturated-cta-text-decoration);
-        --rh-cta-focus-text-decoration: var(--desaturated-cta-text-decoration); /* NOTE: property added to primary and secondary ctas in rh-cta.css, needs added via doduo */
+
+        /* NOTE: property added to primary and secondary ctas in rh-cta.css, needs added via doduo */
+        --rh-cta-focus-text-decoration: var(--desaturated-cta-text-decoration);
       }
 
       &:focus-within {
-        border-color: var(--rh-color-border-interactive) !important;
+        border-color:
+          var(--rh-color-border-interactive,
+            light-dark(
+              var(--rh-color-border-interactive-on-light, #0066cc),
+              var(--rh-color-border-interactive-on-dark, #92c5f9))) !important;
         border-radius: var(--rh-border-radius-default, 3px);
       }
 
@@ -64,7 +82,11 @@
         --rh-cta-background-color: var(--desaturated-cta-bg-color);
         --rh-cta-hover-background-color: var(--desaturated-cta-hover-bg-color);
         --rh-cta-focus-background-color: var(--desaturated-cta-hover-bg-color);
-        --rh-cta-border-color: var(--rh-color-border-strong);
+        --rh-cta-border-color:
+          var(--rh-color-border-strong,
+            light-dark(
+              var(--rh-color-border-strong-on-light, #151515),
+              var(--rh-color-border-strong-on-dark, #ffffff)));
         --rh-cta-hover-border-color:
           light-dark(
               var(--rh-color-surface-darker, #1f1f1f),
@@ -81,7 +103,12 @@
         }
 
         &:focus-within:before {
-          border: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
+          border:
+            var(--rh-border-width-md, 2px) solid
+            var(--rh-color-border-interactive,
+              light-dark(
+                var(--rh-color-border-interactive-on-light, #0066cc),
+                var(--rh-color-border-interactive-on-dark, #92c5f9)));
           border-radius: var(--rh-border-radius-default, 3px);
           content: '';
           inset: -3px;
@@ -90,25 +117,73 @@
       }
 
       &[variant='secondary'] {
-        --rh-cta-background-color: var(--rh-color-surface);
-        --rh-cta-hover-background-color: var(--rh-color-surface);
-        --rh-cta-focus-background-color: var(--rh-color-surface);
-        --rh-cta-focus-inner-border-color: var(--rh-color-border-subtle);
-        --rh-cta-active-inner-border-color: var(--rh-color-border-subtle);
+        --rh-cta-background-color:
+          var(--rh-color-surface,
+            light-dark(
+              var(--rh-color-surface-lightest, #ffffff),
+              var(--rh-color-surface-darkest, #151515)));
+        --rh-cta-hover-background-color:
+          var(--rh-color-surface,
+            light-dark(
+              var(--rh-color-surface-lightest, #ffffff),
+              var(--rh-color-surface-darkest, #151515)));
+        --rh-cta-focus-background-color:
+          var(--rh-color-surface,
+            light-dark(
+              var(--rh-color-surface-lightest, #ffffff),
+              var(--rh-color-surface-darkest, #151515)));
+        --rh-cta-focus-inner-border-color:
+          var(--rh-color-border-subtle,
+            light-dark(
+              var(--rh-color-border-subtle-on-light, #c7c7c7),
+              var(--rh-color-border-subtle-on-dark, #707070)));
+        --rh-cta-active-inner-border-color:
+          var(--rh-color-border-subtle,
+            light-dark(
+              var(--rh-color-border-subtle-on-light, #c7c7c7),
+              var(--rh-color-border-subtle-on-dark, #707070)));
 
         &:hover,
         &:focus-within {
-          --rh-cta-hover-border-color: var(--rh-color-border-subtle);
+          --rh-cta-hover-border-color:
+            var(--rh-color-border-subtle,
+              light-dark(
+                var(--rh-color-border-subtle-on-light, #c7c7c7),
+                var(--rh-color-border-subtle-on-dark, #707070)));
         }
       }
 
       &[variant='brick'] {
-        --rh-cta-background-color: var(--rh-color-surface);
-        --rh-cta-border-color: var(--rh-color-border-strong);
-        --rh-cta-hover-background-color: var(--rh-color-surface);
-        --rh-cta-hover-border-color: var(--rh-color-border-strong);
-        --rh-cta-focus-inner-border-color: var(--rh-color-border-strong);
-        --rh-cta-active-inner-border-color: var(--rh-color-border-strong);
+        --rh-cta-background-color:
+          var(--rh-color-surface,
+            light-dark(
+              var(--rh-color-surface-lightest, #ffffff),
+              var(--rh-color-surface-darkest, #151515)));
+        --rh-cta-border-color:
+          var(--rh-color-border-strong,
+            light-dark(
+              var(--rh-color-border-strong-on-light, #151515),
+              var(--rh-color-border-strong-on-dark, #ffffff)));
+        --rh-cta-hover-background-color:
+          var(--rh-color-surface,
+            light-dark(
+              var(--rh-color-surface-lightest, #ffffff),
+              var(--rh-color-surface-darkest, #151515)));
+        --rh-cta-hover-border-color:
+          var(--rh-color-border-strong,
+            light-dark(
+              var(--rh-color-border-strong-on-light, #151515),
+              var(--rh-color-border-strong-on-dark, #ffffff)));
+        --rh-cta-focus-inner-border-color:
+          var(--rh-color-border-strong,
+            light-dark(
+              var(--rh-color-border-strong-on-light, #151515),
+              var(--rh-color-border-strong-on-dark, #ffffff)));
+        --rh-cta-active-inner-border-color:
+          var(--rh-color-border-strong,
+            light-dark(
+              var(--rh-color-border-strong-on-light, #151515),
+              var(--rh-color-border-strong-on-dark, #ffffff)));
 
         &:focus-within {
           text-decoration: var(--rh-cta-focus-text-decoration);
@@ -118,7 +193,6 @@
     }
   }
 </style>
-
 <script type="module">
   import "@rhds/elements/rh-card/rh-card.js";
   import "@rhds/elements/rh-cta/rh-cta.js";

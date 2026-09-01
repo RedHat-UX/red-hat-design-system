@@ -21,17 +21,7 @@ subnav:
   import '@rhds/elements/rh-table/rh-table.js';
 </script>
 
-<style data-helmet>
-  .large-red-text {
-    grid-area: h;
-    font-size: var(--rh-font-size-heading-2xl);
-    font-weight: var(--rh-font-weight-heading-regular);
-    font-family: var(--rh-font-family-heading);
-    line-height: var(--rh-line-height-heading);
-    color: var(--rh-color-brand-red);
-    margin-block-end: var(--rh-space-xl);
-  }
-</style>
+<link rel="stylesheet" href="index.css" data-helmet>
 
 <h2 class="large-red-text">The fonts we use affects the way our audience perceives our brand just as much as the words that we write.</h2>
 

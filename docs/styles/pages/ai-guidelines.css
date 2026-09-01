@@ -78,9 +78,7 @@ figure[data-type='dont'] {
           light-dark(
             var(--rh-color-status-success-on-light, #3d7317),
             var(--rh-color-status-success-on-dark, #87bb62)));
-      font-family:
-        var(--rh-font-family-heading,
-          RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+      font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
       font-size: var(--rh-font-size-heading-xs, 1.25rem);
       font-weight: var(--rh-font-weight-heading-medium, 500);
     }
