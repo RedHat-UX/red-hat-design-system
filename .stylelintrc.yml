@@ -5,6 +5,7 @@ extends:
 plugins:
   - ./node_modules/@rhds/tokens/plugins/stylelint.js
   - '@stylistic/stylelint-plugin'
+  - ./.stylelint/require-token-fallback.js
 
 ignoreFiles:
   - node_modules/**/*
@@ -84,6 +85,7 @@ rules:
 
   rhds/no-unknown-token-name: true
 
+  rhds/require-token-fallback: true
 overrides:
   - files:
       - docs/**/*.scss
