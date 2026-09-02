@@ -56,6 +56,19 @@ or anything else, please submit a [GitHub issue][issues].
 
 ## Version 4.2.x
 
+### Version 4.2.2
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| `<rh-jump-links>`: corrected text wrapping | {{p()}} | Corrected text wrapping when long link text is used. |
+| `<rh-scheme-dropdown>`: fixed custom select option labels | {{p()}} | Corrected option label names in the custom select. |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v4.2.2">View all version 4.2.2 release notes</rh-cta>
+
 ### Version 4.2.1
 
 <rh-table>
