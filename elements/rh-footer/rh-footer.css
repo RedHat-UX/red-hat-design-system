@@ -229,6 +229,8 @@
 .global-logo {
   grid-area: logo;
   width: auto;
+
+  /** Universal footer fedora logo height */
   height: var(--rh-size-icon-02, 24px);
 }
 
@@ -351,7 +353,7 @@
   width: auto;
 
   /** Logo image height */
-  height: var(--rh-size-icon-03, 32px);
+  height: var(--rh-size-icon-02, 24px);
 }
 
 .social-links {
@@ -514,21 +516,24 @@
   color: var(--rh-color-text-primary) !important;
 }
 
-@media screen and (min-width: 768px) {
-  .header-primary ::slotted(:not(a, img, svg, picture)) {
-    /** Subdomain name font size (desktop) */
-    font-size: var(--rh-font-size-heading-sm, 1.5rem);
-  }
-
+@media screen and (min-width: 576px) {
   .logo a > :is(img, svg) {
-    /** Logo image height (desktop) */
+    /** Logo image height at viewport >= xs */
     height: var(--rh-size-icon-03, 32px);
   }
 
   .global-logo {
-    height: var(--rh-size-icon-04, 40px);
+    /** Universal footer fedora logo height at viewport >= xs */
+    height: var(--rh-size-icon-03, 32px);
   }
 
+  .header-primary ::slotted(:not(a, img, svg, picture)) {
+    /** Subdomain name font size at viewport >= xs */
+    font-size: var(--rh-font-size-heading-sm, 1.5rem);
+  }
+}
+
+@media screen and (min-width: 768px) {
   /* stylelint-disable-next-line @stylistic/max-line-length */
   :is(.links, .global-links-primary, .global-links-secondary) ::slotted(:is(h1, h2, h3, h4, h5)) {
     /** Link header font size (desktop) */
