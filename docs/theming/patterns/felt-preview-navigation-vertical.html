@@ -9,12 +9,16 @@
 
 <div class="example-row">
   <rh-navigation-vertical accessible-label="Example side nav">
-    <rh-navigation-link href="#">Nav item 1</rh-navigation-link>
-    <rh-navigation-link href="#" current-page>Nav item 2</rh-navigation-link>
-    <rh-navigation-vertical-list summary="Nav group">
-      <rh-navigation-link href="#">Sub item 1</rh-navigation-link>
-      <rh-navigation-link href="#">Sub item 2</rh-navigation-link>
+    <rh-navigation-link href="#">Nav item 1 (level 1)</rh-navigation-link>
+    <rh-navigation-link href="#" current-page>Nav item 2 (level 1)</rh-navigation-link>
+    <rh-navigation-vertical-list summary="Nav group (level 2)" open>
+      <rh-navigation-link href="#">Sub item 1 (level 2)</rh-navigation-link>
+      <rh-navigation-vertical-list summary="Nav group (level 3)" open>
+        <rh-navigation-link href="#">Sub item 1 (level 3)</rh-navigation-link>
+        <rh-navigation-link href="#">Sub item 2 (level 3)</rh-navigation-link>
+      </rh-navigation-vertical-list>
+      <rh-navigation-link href="#">Sub item 2 (level 2)</rh-navigation-link>
     </rh-navigation-vertical-list>
-    <rh-navigation-link href="#">Nav item 3</rh-navigation-link>
+    <rh-navigation-link href="#">Nav item 3 (level 1)</rh-navigation-link>
   </rh-navigation-vertical>
 </div>
