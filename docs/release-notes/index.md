@@ -62,7 +62,6 @@ or anything else, please submit a [GitHub issue][issues].
 
 | Change        | Type        | Notes        |
 | ------------- | ----------- | ------------ |
-| `<rh-scheme-dropdown>`: fixed custom select option labels | {{p()}} | Corrected option label names in the custom select. |
 | `<rh-jump-links>`: corrected text wrapping | {{p()}} | Corrected text wrapping when long link text is used. |
 | `<rh-scheme-dropdown>`: fixed custom select option labels | {{p()}} | Corrected option label names in the custom select. |
 
