@@ -47,9 +47,15 @@ label {
   /** Toggle button border width */
   border-width: var(--rh-border-width-sm, 1px);
   border-style: solid;
-
-  /** Toggle button border color */
-  border-color: var(--rh-color-border-subtle);
+  border-color:
+    /** Toggle button border color; theme-adaptive */
+    var(--rh-color-border-subtle,
+      light-dark(
+        /** Toggle button border color for light color schemes */
+        var(--rh-color-border-subtle-on-light, #c7c7c7),
+        /** Toggle button border color for dark color schemes */
+        var(--rh-color-border-subtle-on-dark, #707070)
+      ));
   display: flex;
 
   /** Toggle button height */
@@ -82,25 +88,39 @@ label {
 
   &:focus-within,
   &:hover {
-    /** Toggle button hover/focus background */
     background-color:
       light-dark(
+          /** Toggle button hover/focus background for light color schemes */
           var(--rh-color-surface-light, #e0e0e0),
+          /** Toggle button hover/focus background for dark color schemes */
           var(--rh-color-surface-dark, #383838)
         );
   }
 
   &:has(input:checked) {
-    /** Selected toggle button background */
-    background-color: var(--rh-color-interactive-primary-default);
-
-    /** Selected toggle button border color */
-    border-color: var(--rh-color-border-interactive);
+    background-color:
+      /** Selected toggle button background; theme-adaptive */
+      var(--rh-color-interactive-primary-default,
+        light-dark(
+          /** Selected toggle button background for light color schemes */
+          var(--rh-color-interactive-primary-default-on-light, #0066cc),
+          /** Selected toggle button background for dark color schemes */
+          var(--rh-color-interactive-primary-default-on-dark, #92c5f9)
+        ));
+    border-color:
+      /** Selected toggle button border color; theme-adaptive */
+      var(--rh-color-border-interactive,
+        light-dark(
+          /** Selected toggle button border color for light color schemes */
+          var(--rh-color-border-interactive-on-light, #0066cc),
+          /** Selected toggle button border color for dark color schemes */
+          var(--rh-color-border-interactive-on-dark, #92c5f9)
+        ));
     color:
       light-dark(
-          /** Selected toggle button icon color in light mode */
+          /** Selected toggle button icon color for light color schemes */
           var(--rh-color-text-primary-on-dark, #ffffff),
-          /** Selected toggle button icon color in dark mode */
+          /** Selected toggle button icon color for dark color schemes */
           var(--rh-color-text-primary-on-light, #151515)
         );
     z-index: 1;
@@ -121,8 +141,14 @@ input {
       /** Focus outline width */
       var(--rh-border-width-lg, 3px)
       solid
-      /** Focus outline color */
-      var(--rh-color-border-interactive);
+      /** Focus outline color; theme-adaptive */
+      var(--rh-color-border-interactive,
+        light-dark(
+          /** Focus outline color for light color schemes */
+          var(--rh-color-border-interactive-on-light, #0066cc),
+          /** Focus outline color for dark color schemes */
+          var(--rh-color-border-interactive-on-dark, #92c5f9)
+        ));
     transition: none;
   }
 }
