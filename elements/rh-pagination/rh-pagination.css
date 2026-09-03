@@ -361,7 +361,7 @@ input {
   form {
     display: flex;
     flex-direction: row;
-    gap: var(--rh-space-md);
+    gap: var(--rh-space-md, 8px);
   }
 
   & a {
@@ -369,8 +369,8 @@ input {
     text-decoration: underline dashed var(--rh-border-width-sm, 1px);
     text-decoration-color:
       light-dark(
-          /** Total link underline in light mode */ var(--rh-color-gray-50),
-          /** Total link underline in dark mode */ var(--rh-color-gray-40)
+          /** Total link underline in light mode */ var(--rh-color-gray-50, #707070),
+          /** Total link underline in dark mode */ var(--rh-color-gray-40, #a3a3a3)
         );
     text-underline-offset: max(5px, 0.28em);
     transition-timing-function: ease;
