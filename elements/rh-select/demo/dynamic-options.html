@@ -153,7 +153,7 @@ description: "Select with buttons to dynamically add and remove options at the t
 
   label {
     display: block;
-    font-family: var(--rh-font-family-body-text);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-body-text-medium, 500);
     margin-block: var(--rh-space-md, 8px);
   }
@@ -161,27 +161,32 @@ description: "Select with buttons to dynamically add and remove options at the t
   .button-group {
     display: flex;
     flex-direction: column;
-    gap: var(--rh-space-sm, 8px);
+    gap: var(--rh-space-sm, 6px);
     margin-inline: 20px;
     margin-block-start: var(--rh-space-lg, 16px);
   }
 
   .button-group-label {
-    font-family: var(--rh-font-family-body-text);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-size: var(--rh-font-size-body-text-sm, 0.875rem);
     font-weight: var(--rh-font-weight-body-text-medium, 500);
-    color: var(--rh-color-text-secondary, #6a6e73);
+    color:
+      var(--rh-color-text-secondary,
+        light-dark(
+          var(--rh-color-text-secondary-on-light, #4d4d4d),
+          var(--rh-color-text-secondary-on-dark, #c7c7c7)
+        ));
   }
 
   .button-row {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--rh-space-sm, 8px);
+    gap: var(--rh-space-sm, 6px);
   }
 
   .button-row button {
-    font-family: var(--rh-font-family-body-text);
-    padding: var(--rh-space-sm, 8px) var(--rh-space-md, 16px);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+    padding: var(--rh-space-sm, 6px) var(--rh-space-md, 8px);
   }
 
   .button-row button:disabled {
