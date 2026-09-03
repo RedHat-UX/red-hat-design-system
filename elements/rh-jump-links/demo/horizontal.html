@@ -249,28 +249,33 @@ description: Horizontal jump links layout with overflow scroll buttons.
 
     #jump-links-container,
     article {
-      background-color: var(--rh-color-surface);
+      background-color:
+        var(--rh-color-surface,
+          light-dark(
+            var(--rh-color-surface-lightest, #ffffff),
+            var(--rh-color-surface-darkest, #151515)
+          ));
     }
 
     article {
-      padding: var(--rh-space-2xl);
+      padding: var(--rh-space-2xl, 32px);
     }
 
     #jump-links-container {
       position: sticky;
-      padding-inline: var(--rh-space-2xl);
-      padding-block-start: var(--rh-space-2xl);
+      padding-inline: var(--rh-space-2xl, 32px);
+      padding-block-start: var(--rh-space-2xl, 32px);
       inset-block-start: 0;
     }
 
     #jump-links-title {
-      font-weight: var(--rh-font-weight-heading-medium);
-      font-family: var(--rh-font-family-body-text);
-      font-size: var(--rh-font-size-body-text-md);
+      font-weight: var(--rh-font-weight-heading-medium, 500);
+      font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+      font-size: var(--rh-font-size-body-text-md, 1rem);
       line-height: var(--rh-line-height-body-text, 1.5);
       text-align: center;
       margin: 0 auto;
-      margin-block-end: var(--rh-space-lg);
+      margin-block-end: var(--rh-space-lg, 16px);
     }
 
     h2 {
