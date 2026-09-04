@@ -19,7 +19,12 @@ rh-announcement[image-position='inline-start']:not(:defined) p {
 }
 
 rh-announcement[color-palette*='dark']:not(:defined) {
-  background-color: var(--rh-color-surface);
+  background-color:
+    var(--rh-color-surface,
+      light-dark(
+        var(--rh-color-surface-lightest, #ffffff),
+        var(--rh-color-surface-darkest, #151515)
+      ));
 }
 
 rh-announcement[image-position='inline-start']:not(:defined) {
