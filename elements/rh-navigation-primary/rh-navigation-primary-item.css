@@ -95,7 +95,9 @@
 
           color:
             light-dark(
+                /** Toggle caret color light mode */
                 var(--rh-color-gray-40, #a3a3a3),
+                /** Toggle caret color dark mode */
                 var(--rh-color-icon-subtle, #707070)
               );
           transition: rotate 0.2s;
