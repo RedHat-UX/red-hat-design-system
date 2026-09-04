@@ -16,13 +16,22 @@ rh-navigation-primary {
 
     &:not([slot='links']) {
       /** Navigation item text color */
-      color: var(--rh-color-text-primary) !important;
+      color:
+        var(--rh-color-text-primary,
+          light-dark(
+            var(--rh-color-text-primary-on-light, #151515),
+            var(--rh-color-text-primary-on-dark, #ffffff)
+          )) !important;
 
       & a {
         /** Navigation link font size */
         font-size: var(--rh-font-size-body-text-md, 1rem);
-        /* stylelint-disable-next-line @stylistic/max-line-length */
-        color: var(--rh-color-interactive-primary-default, light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc), var(--rh-color-interactive-primary-default-on-dark, #92c5f9))) !important;
+        color:
+          var(--rh-color-interactive-primary-default,
+            light-dark(
+              var(--rh-color-interactive-primary-default-on-light, #0066cc),
+              var(--rh-color-interactive-primary-default-on-dark, #92c5f9)
+            )) !important;
         inline-size: 100%;
         text-decoration: none;
 
@@ -40,7 +49,12 @@ rh-navigation-primary {
           text-underline-offset: max(6px, 0.33em);
 
           /** Link hover text color */
-          color: var(--rh-color-interactive-primary-hover) !important;
+          color:
+            var(--rh-color-interactive-primary-hover,
+              light-dark(
+                var(--rh-color-interactive-primary-hover-on-light, #003366),
+                var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
+              )) !important;
         }
       }
     }
@@ -58,8 +72,11 @@ rh-navigation-primary {
         /** Navigation link separator width */
         var(--rh-border-width-sm, 1px)
         solid
-        /** Navigation link separator color */
-        var(--rh-color-border-subtle);
+        var(--rh-color-border-subtle,
+          light-dark(
+            var(--rh-color-border-subtle-on-light, #c7c7c7),
+            var(--rh-color-border-subtle-on-dark, #707070)
+          ));
 
       @container (min-width: 1200px) {
         --_navigation-link-container-inline-size: fit-content;
@@ -77,8 +94,11 @@ rh-navigation-primary {
         /** Last navigation link separator width */
         var(--rh-border-width-sm, 1px)
         solid
-        /** Last navigation link separator color */
-        var(--rh-color-border-subtle);
+        var(--rh-color-border-subtle,
+          light-dark(
+            var(--rh-color-border-subtle-on-light, #c7c7c7),
+            var(--rh-color-border-subtle-on-dark, #707070)
+          ));
 
       @container (min-width: 1200px) {
         border-block-end: none;

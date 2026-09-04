@@ -3,6 +3,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
 
+import { themable } from '@rhds/elements/lib/themable.js';
 import { consume } from '@lit/context';
 import { context } from './context.js';
 
@@ -19,6 +20,7 @@ import styles from './rh-navigation-primary-item-menu.css' with { type: 'css' };
  * @summary Content container for navigation item dropdowns
  */
 @customElement('rh-navigation-primary-item-menu')
+@themable
 export class RhNavigationPrimaryItemMenu extends LitElement {
   static readonly styles = [styles];
 
