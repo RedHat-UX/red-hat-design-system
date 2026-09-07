@@ -53,7 +53,7 @@ export class RhCard extends LitElement {
    */
   @property({ reflect: true, attribute: 'full-width', type: Boolean }) fullWidth? = false;
 
-  #slots = new SlotController(this, 'header', 'image', null, 'footer');
+  #slots = new SlotController(this, 'header', 'image', null);
 
   override render() {
     const isPromo = this.variant === 'promo';
@@ -75,15 +75,10 @@ export class RhCard extends LitElement {
     const promo = this.variant === 'promo';
     const standard = isStandardPromo;
     const { variant = '' } = this;
-    const hasHeader = this.#slots.hasSlotted('header');
-    const hasFooter = this.#slots.hasSlotted('footer');
-    const hasImage = this.#slots.hasSlotted('image');
-    const hasBody = this.#slots.hasSlotted(null);
     const header = html`
       <!-- The header for the card. Contains the header slot. -->
       <div id="header"
-           part="header"
-           class="${classMap({ empty: !hasHeader })}">
+           part="header">
         <!--
           summary: Card header content
           description: |
@@ -96,8 +91,7 @@ export class RhCard extends LitElement {
     const footer = html`
       <!-- The footer for the card. Contains the footer slot. -->
       <div id="footer"
-           part="footer"
-           class="${classMap({ empty: !hasFooter })}">
+           part="footer">
         <!--
           summary: Card footer content
           description: |
@@ -113,17 +107,12 @@ export class RhCard extends LitElement {
           part="container"
           class="${classMap({
             standard,
-            body: hasBody,
-            header: hasHeader,
-            footer: hasFooter,
-            image: hasImage,
             [variant]: !!variant,
             [computedPalette ?? '']: !!computedPalette,
           })}">${promo ? '' : header}
         <!-- The image for the promo variant for the card. Contains the image slot. -->
         <div id="image"
-             part="image"
-             class="${classMap({ empty: !hasImage })}">
+             part="image">
           <!--
             summary: Promo variant image content
             description: |
@@ -135,8 +124,7 @@ export class RhCard extends LitElement {
         </div>
         <!-- The body for the card. Contains the default slot. -->
         <div id="body"
-             part="body"
-             class="${classMap({ empty: !hasBody })}">
+             part="body">
           ${!promo ? '' : header}
           <!--
             summary: Card body content (default slot)
