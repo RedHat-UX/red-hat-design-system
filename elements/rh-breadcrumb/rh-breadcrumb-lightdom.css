@@ -12,6 +12,7 @@ rh-breadcrumb {
   --_breadcrumb-link-color:
     /** Link color override */
     var(--rh-breadcrumb-link-color,
+      /** Link color */
       var(--rh-color-interactive-primary-default,
         light-dark(
           var(--rh-color-interactive-primary-default-on-light, #0066cc),
