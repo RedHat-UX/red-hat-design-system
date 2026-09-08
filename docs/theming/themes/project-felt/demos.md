@@ -34,6 +34,8 @@ subnav:
   import '@rhds/elements/rh-switch/rh-switch.js';
   import '@rhds/elements/rh-tabs/rh-tabs.js';
   import '@rhds/elements/rh-tag/rh-tag.js';
+  import '@rhds/elements/rh-tile/rh-tile.js';
+  import '@rhds/elements/rh-tile/rh-tile-group.js';
 </script>
 
 <link rel="stylesheet" data-helmet href="/theming/themes/project-felt/preview/felt-theme-preview.css">
@@ -230,6 +232,10 @@ Preview the Project Felt theme on the elements below. Toggle the switch to compa
 
 <uxdot-pattern src="../../patterns/felt-preview-tag.html">
   <uxdot-copy-permalink slot="heading"><h3 id="tag"><a href="#tag">Tags</a></h3></uxdot-copy-permalink>
+</uxdot-pattern>
+
+<uxdot-pattern src="../../patterns/felt-preview-tile.html">
+  <uxdot-copy-permalink slot="heading"><h3 id="tile" class="toc"><a href="#tile">Tile</a></h3></uxdot-copy-permalink>
 </uxdot-pattern>
 
 <uxdot-feedback>

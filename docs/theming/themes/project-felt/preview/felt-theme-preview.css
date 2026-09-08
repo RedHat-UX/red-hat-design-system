@@ -2317,4 +2317,68 @@
       }
     }
   }
+
+  /* Element: Tile */
+  & rh-tile {
+    /* Border radius → Felt 16px rounded */
+    --rh-border-radius-default: var(--felt-preview-border-radius-default);
+
+    /* Default border: subtle gray, 1px */
+    --rh-tile-border-color: var(--felt-preview-color-border-interactive-subtle-default);
+
+    /* Border thickens to 2px on hover/focus/active */
+    --rh-tile-focus-border-width: var(--felt-preview-border-width-md);
+
+    /* Hover border: lighter blue */
+    --rh-tile-hover-border-color:
+      var(--felt-preview-color-border-interactive-subtle-hover);
+
+    /* Active/focus border: darker blue */
+    --rh-tile-active-border-color:
+      var(--felt-preview-color-border-interactive-subtle-active);
+
+    /* Interactive color (icons, arrow, focus ring) */
+    --rh-tile-interactive-color: var(--felt-preview-color-interactive-primary-default);
+
+    /* Hover/focus/active interactive color */
+    --rh-tile-focus-interactive-color: var(--felt-preview-color-interactive-primary-hover);
+
+    /* Default heading/link color */
+    --rh-tile-link-color: var(--felt-preview-color-text-interactive-default);
+
+    /* Hover/focus surface stays flat (no gray shift) */
+    --rh-tile-focus-background-color: var(--felt-preview-color-surface-primary);
+
+    /* Disabled surface: gray-30 light / gray-60 dark */
+    --rh-tile-disabled-background-color:
+      light-dark(
+          var(--felt-preview-color-gray-30),
+          var(--felt-preview-color-gray-60)
+        );
+
+    /* Disabled text color */
+    --rh-tile-disabled-text-color:
+      var(--felt-preview-color-text-status-on-disabled);
+
+    /* Focus ring matches active/focus border color */
+    --rh-tile-focus-outline-color:
+      var(--felt-preview-color-border-interactive-subtle-active);
+
+    /* Suppress headline link outline (tile shows its own focus ring) */
+    & [slot="headline"] a:focus {
+      outline: none;
+    }
+
+    /*
+     * Bleed image fix: the component's --_bleed only offsets padding,
+     * not the border width, leaving a gap at the border edge.
+     * Clip at the host level so the image fills to the outer border.
+     * TODO: remove once rh-tile accounts for border in --_bleed calc.
+     */
+    &[bleed] {
+      overflow: hidden;
+      border-radius:
+        calc(var(--felt-preview-border-radius-default) - 1px);
+    }
+  }
 }
