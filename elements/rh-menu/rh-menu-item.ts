@@ -5,6 +5,8 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import styles from './rh-menu-item.css' with { type: 'css' };
 
 /**
@@ -21,6 +23,7 @@ import styles from './rh-menu-item.css' with { type: 'css' };
  * @alias Menu Dropdown Item
  */
 @customElement('rh-menu-item')
+@themable
 export class RhMenuItem extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
 
