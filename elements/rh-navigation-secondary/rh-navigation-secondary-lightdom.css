@@ -3,13 +3,28 @@ rh-navigation-secondary {
   --_min-height: 80px;
 
   /** Navigation link text color */
-  --_nav-link-color: var(--rh-color-text-primary);
+  --_nav-link-color:
+    var(--rh-color-text-primary,
+      light-dark(
+        var(--rh-color-text-primary-on-light, #151515),
+        var(--rh-color-text-primary-on-dark, #ffffff)
+      ));
 
   /** Navigation logo link text color */
-  --_logo-link-color: var(--rh-color-text-primary);
+  --_logo-link-color:
+    var(--rh-color-text-primary,
+      light-dark(
+        var(--rh-color-text-primary-on-light, #151515),
+        var(--rh-color-text-primary-on-dark, #ffffff)
+      ));
 
   /** Navigation dropdown chevron indicators */
-  --_nav-chevron-color: var(--rh-color-text-primary);
+  --_nav-chevron-color:
+    var(--rh-color-text-primary,
+      light-dark(
+        var(--rh-color-text-primary-on-light, #151515),
+        var(--rh-color-text-primary-on-dark, #ffffff)
+      ));
   --rh-color-surface:
     light-dark(
         /** Navigation bar surface in light mode */
@@ -23,7 +38,12 @@ rh-navigation-secondary {
   top: 0;
 
   /** Navigation bar background */
-  background-color: var(--rh-color-surface);
+  background-color:
+    var(--rh-color-surface,
+      light-dark(
+        var(--rh-color-surface-lightest, #ffffff),
+        var(--rh-color-surface-darkest, #151515)
+      ));
   border-block-end:
     /** Navigation bar block-end border width */
     var(--rh-border-width-sm, 1px)
@@ -93,7 +113,12 @@ rh-navigation-secondary {
 
     &[aria-current='page'] {
       /** Navigation logo current-page block-start accent color */
-      border-block-start-color: var(--rh-color-brand-red);
+      border-block-start-color:
+        var(--rh-color-brand-red,
+          light-dark(
+            var(--rh-color-brand-red-on-light, #ee0000),
+            var(--rh-color-brand-red-on-dark, #ee0000)
+          ));
     }
   }
 
@@ -212,13 +237,23 @@ rh-navigation-secondary-dropdown > a {
 
 rh-navigation-secondary [slot='nav'] > li > a[aria-current='page'] {
   /** Navigation current-page link block-start accent color */
-  border-block-start-color: var(--rh-color-brand-red);
+  border-block-start-color:
+    var(--rh-color-brand-red,
+      light-dark(
+        var(--rh-color-brand-red-on-light, #ee0000),
+        var(--rh-color-brand-red-on-dark, #ee0000)
+      ));
 }
 
 rh-navigation-secondary [slot='nav'] > li > rh-navigation-link[current-page],
 rh-navigation-secondary [slot='nav'] > li > rh-navigation-link:has(a[aria-current='page']) {
   /** Navigation current-page link block-start accent color */
-  border-block-start-color: var(--rh-color-brand-red);
+  border-block-start-color:
+    var(--rh-color-brand-red,
+      light-dark(
+        var(--rh-color-brand-red-on-light, #ee0000),
+        var(--rh-color-brand-red-on-dark, #ee0000)
+      ));
 }
 
 rh-navigation-secondary > [slot='nav'] > li > a:hover,
@@ -284,7 +319,12 @@ rh-navigation-secondary > [slot='nav'] > li > rh-navigation-link {
   --_navigation-link-text-decoration-line: none;
 
   /** Navigation slotted rh-navigation-link color */
-  --_navigation-link-color-hover: var(--rh-color-text-primary);
+  --_navigation-link-color-hover:
+    var(--rh-color-text-primary,
+      light-dark(
+        var(--rh-color-text-primary-on-light, #151515),
+        var(--rh-color-text-primary-on-dark, #ffffff)
+      ));
 
   display: flex;
   block-size: 100%;
@@ -307,7 +347,12 @@ rh-navigation-secondary > [slot='nav'] > li > rh-navigation-link {
 
     &:hover {
       /** Navigation link hovered block-start accent color at viewport >= lg */
-      border-block-start-color: var(--rh-color-text-brand);
+      border-block-start-color:
+        var(--rh-color-text-brand,
+          light-dark(
+            var(--rh-color-text-brand-on-light, #ee0000),
+            var(--rh-color-text-brand-on-dark, #ee0000)
+          ));
     }
   }
 }
