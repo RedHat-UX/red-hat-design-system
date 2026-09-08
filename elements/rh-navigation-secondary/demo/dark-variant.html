@@ -203,11 +203,11 @@ description: Secondary navigation demo using the dark color palette variant.
     & .grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: var(--rh-space-lg);
-      margin-block: var(--rh-space-2xl);
+      gap: var(--rh-space-lg, 16px);
+      margin-block: var(--rh-space-2xl, 32px);
 
       & .grid-item:last-child {
-        padding: var(--rh-space-2xl);
+        padding: var(--rh-space-2xl, 32px);
       }
 
       @media (min-width: 992px) {
