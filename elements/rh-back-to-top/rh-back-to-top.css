@@ -33,8 +33,14 @@
   background-color:
     /** Trigger background color override */
     var(--rh-back-to-top-background-color,
-      /** Trigger background color */
-      var(--rh-color-accent-base));
+      /** Trigger background color; theme-adaptive */
+      var(--rh-color-accent-base,
+      light-dark(
+        /** Trigger background color for light color schemes */
+        var(--rh-color-accent-base-on-light, #0066cc),
+        /** Trigger background color for dark color schemes */
+        var(--rh-color-accent-base-on-dark, #92c5f9)
+      )));
   text-decoration: none;
 
   /** Trigger text size */
@@ -72,8 +78,14 @@
     /** Trigger hover/focus outline width */
     var(--rh-border-width-md, 2px)
     solid
-    /** Trigger hover/focus outline color */
-    var(--rh-color-interactive-primary-hover);
+    /** Trigger hover/focus outline color; theme-adaptive */
+    var(--rh-color-interactive-primary-hover,
+      light-dark(
+        /** Trigger hover/focus outline color for light color schemes */
+        var(--rh-color-interactive-primary-hover-on-light, #003366),
+        /** Trigger hover/focus outline color for dark color schemes */
+        var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
+      ));
   border:
     /** Trigger hover/focus border width */
     var(--rh-border-width-md, 2px)
@@ -84,9 +96,15 @@
         /** Trigger hover/focus border color in dark mode */
         var(--rh-color-border-strong-on-light, #151515)
       );
-
-  /** Trigger hover/focus background color */
-  background-color: var(--rh-color-interactive-primary-hover);
+  background-color:
+    /** Trigger hover/focus background color; theme-adaptive */
+    var(--rh-color-interactive-primary-hover,
+      light-dark(
+        /** Trigger hover/focus background color for light color schemes */
+        var(--rh-color-interactive-primary-hover-on-light, #003366),
+        /** Trigger hover/focus background color for dark color schemes */
+        var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
+      ));
 }
 
 [part='trigger'][hidden] {
