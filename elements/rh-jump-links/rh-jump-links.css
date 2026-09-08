@@ -35,7 +35,7 @@
       /* scroll button width */
 
       /** Jump link horizontal margin */
-      margin-inline: var(--rh-space-3xl);
+      margin-inline: var(--rh-space-3xl, 48px);
       border-block-start:
         /** Horizontal top border width */
         var(--rh-border-width-sm, 1px)
