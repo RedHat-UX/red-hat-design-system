@@ -67,13 +67,13 @@ description: Code block positioned below the fold to test content-visibility opt
 
 <style>
   .tall-as-screen {
-    padding: var(--rh-length-lg);
+    padding: var(--rh-length-lg, 16px);
     min-height: calc(100vh + 500px);
   }
   rh-alert dl {
     display: grid;
-    font-family: var(--rh-font-family-code);
+    font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
     grid-template-columns: auto auto;
-    gap: var(--rh-space-md);
+    gap: var(--rh-space-md, 8px);
   }
 </style>
