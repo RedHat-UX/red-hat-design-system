@@ -26,6 +26,7 @@ rh-navigation-primary {
       & a {
         /** Navigation link font size */
         font-size: var(--rh-font-size-body-text-md, 1rem);
+        /** Navigation link font color */
         color:
           var(--rh-color-interactive-primary-default,
             light-dark(
@@ -72,6 +73,7 @@ rh-navigation-primary {
         /** Navigation link separator width */
         var(--rh-border-width-sm, 1px)
         solid
+        /** Navigation link separator color */
         var(--rh-color-border-subtle,
           light-dark(
             var(--rh-color-border-subtle-on-light, #c7c7c7),
