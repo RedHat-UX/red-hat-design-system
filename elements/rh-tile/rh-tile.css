@@ -87,19 +87,31 @@
   /** Tile border color */
   --_border-color: var(--rh-tile-border-color, var(--rh-color-border-subtle));
 
+  /** Tile border width */
+  --_border-width: var(--rh-tile-border-width, var(--rh-border-width-sm, 1px));
+
+  /** Border width on hover/focus/active */
+  --_focus-border-width:
+    var(--rh-tile-focus-border-width,
+      var(--rh-tile-border-width, var(--rh-border-width-sm, 1px)));
+
   /** Tile link color */
   --_link-color: var(--rh-tile-link-color, var(--_interactive-color));
 
   position: relative;
   padding: var(--_padding);
 
+  /** Border color on hover */
+  --_hover-border-color:
+    var(--rh-tile-hover-border-color, var(--_focus-interactive-color));
+
+  /** Border color on active/focus */
+  --_active-border-color:
+    var(--rh-tile-active-border-color, var(--_hover-border-color));
+
   /** Tile border radius */
   border-radius: var(--rh-border-radius-default, 3px);
-  border:
-    /** Tile border width */
-    var(--rh-border-width-sm, 1px)
-    solid
-    var(--_border-color);
+  border: var(--_border-width) solid var(--_border-color);
 
   /** Tile text color */
   color: var(--rh-tile-text-color, var(--rh-color-text-primary));
@@ -188,6 +200,25 @@
   &:focus,
   &:focus-within {
     --_interactive-color: var(--_focus-interactive-color);
+    --_link-color: var(--_focus-interactive-color);
+  }
+
+  &:hover {
+    border-color: var(--_hover-border-color);
+    box-shadow:
+      inset 0 0 0
+      calc(var(--_focus-border-width) - var(--_border-width))
+      var(--_hover-border-color);
+  }
+
+  &:active,
+  &:focus,
+  &:focus-within {
+    border-color: var(--_active-border-color);
+    box-shadow:
+      inset 0 0 0
+      calc(var(--_focus-border-width) - var(--_border-width))
+      var(--_active-border-color);
   }
 
   &:is(.desaturated, .checkable) {
@@ -252,7 +283,9 @@
 
   &.disabled {
     pointer-events: none !important;
-    color: var(--_text-color-secondary) !important;
+    color:
+      var(--rh-tile-disabled-text-color,
+        var(--_text-color-secondary)) !important;
     background-color: var(--_disabled-background-color) !important;
 
     --_interactive-color: var(--_text-color-secondary) !important;
@@ -260,8 +293,15 @@
 }
 
 :host(:focus-within) #outer {
-  outline: 3px solid var(--_interactive-color);
+  outline:
+    3px solid
+    var(--rh-tile-focus-outline-color, var(--_interactive-color));
   outline-offset: 2px;
+  border-color: var(--_active-border-color);
+  box-shadow:
+    inset 0 0 0
+    calc(var(--_focus-border-width) - var(--_border-width))
+    var(--_active-border-color);
 }
 
 :host(:is(:hover, :focus-within)) #outer {
