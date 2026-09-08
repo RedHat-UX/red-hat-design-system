@@ -17,8 +17,14 @@ rh-audio-player {
   color:
     /** Player text color override */
     var(--rh-audio-player-text-color,
-      /** Player text color */
-      var(--rh-color-text-primary));
+      /** Player text color; theme-adaptive */
+      var(--rh-color-text-primary,
+      light-dark(
+        /** Player text color for light color schemes */
+        var(--rh-color-text-primary-on-light, #151515),
+        /** Player text color for dark color schemes */
+        var(--rh-color-text-primary-on-dark, #ffffff)
+      )));
 
   &[color-palette^='dark'] > * {
     background-color:
