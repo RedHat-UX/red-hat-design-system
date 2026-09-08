@@ -2,14 +2,18 @@ rh-announcement:not(:defined) {
   align-items: center;
   display: flex;
   flex-direction: column;
+  /** Not defined Font family */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   justify-content: center;
+  /** Not defined Line contain-intrinsic-height: ; */
   line-height: var(--rh-line-height-body-text, 1.5);
+  /** Not defined padding */
   padding: var(--rh-space-lg, 16px);
   text-align: center;
 }
 
 rh-announcement:not(:defined) p {
+  /** Not defined margin block */
   margin-block: 0 var(--rh-space-md, 8px);
   max-inline-size: 896px;
 }
@@ -19,6 +23,7 @@ rh-announcement[image-position='inline-start']:not(:defined) p {
 }
 
 rh-announcement[color-palette*='dark']:not(:defined) {
+  /** Not defined Surface color */
   background-color:
     var(--rh-color-surface,
       light-dark(
@@ -41,12 +46,14 @@ rh-announcement[image-position='block-start']:not(:defined) {
 rh-announcement:not(:defined) :is(img, svg) {
   display: block;
   flex-shrink: 0;
+  /** Not defined imge margin-block-end */
   margin-block-end: var(--rh-space-lg, 16px);
   min-inline-size: max-content;
 }
 
 rh-announcement[image-position='inline-start']:not(:defined) :is(img, svg) {
   margin-block-end: 0;
+  /** Not defined image-position=inline-start image margin-inline-end */
   margin-inline-end: var(--rh-space-lg, 16px);
 }
 
@@ -59,6 +66,7 @@ rh-announcement:not(:defined) rh-cta:not(:defined) {
 @media (min-width: 768px) {
   rh-announcement:not(:defined) {
     flex-direction: row;
+    /** Not defined grid gap */
     gap: var(--rh-space-lg, 16px);
     justify-content: center;
     margin-inline: auto;
@@ -79,6 +87,7 @@ rh-announcement:not(:defined) rh-cta:not(:defined) {
   }
 
   rh-announcement:not(:defined) p {
+    /** Not defined font size */
     font-size: var(--rh-font-size-body-text-lg, 1.125rem) !important;
     text-align: start;
   }
@@ -86,6 +95,7 @@ rh-announcement:not(:defined) rh-cta:not(:defined) {
 
 @media (min-width: 992px) {
   rh-announcement:not(:defined) {
+    /** Not defined grid gap >= 992px */
     gap: var(--rh-space-2xl, 32px);
   }
 }
