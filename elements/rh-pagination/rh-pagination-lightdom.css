@@ -38,11 +38,15 @@ rh-pagination {
         outline: var(--rh-border-width-md, 2px) solid transparent;
         outline-color:
           /** Page link focus outline color override */
-          var(
-              --rh-pagination-accent-color,
-              /** Page link focus outline color */
-              var(--rh-color-interactive-primary-default)
-            );
+          var(--rh-pagination-accent-color,
+            /** Page link focus outline color; theme-adaptive */
+            var(--rh-color-interactive-primary-default,
+            light-dark(
+              /** Page link focus outline color in light mode */
+              var(--rh-color-interactive-primary-default-on-light, #0066cc),
+              /** Page link focus outline color in dark mode */
+              var(--rh-color-interactive-primary-default-on-dark, #92c5f9)
+            )));
       }
 
       &:hover:after,
@@ -84,11 +88,15 @@ rh-pagination {
       &[aria-current='page']:after {
         border-block-color:
           /** Page link focus/active accent color override */
-          var(
-              --rh-pagination-accent-color,
-              /** Page link focus/active accent color */
-              var(--rh-color-border-interactive)
-            );
+          var(--rh-pagination-accent-color,
+            /** Page link focus/active accent color; theme-adaptive */
+            var(--rh-color-border-interactive,
+            light-dark(
+              /** Page link focus/active accent color in light mode */
+              var(--rh-color-border-interactive-on-light, #0066cc),
+              /** Page link focus/active accent color in dark mode */
+              var(--rh-color-border-interactive-on-dark, #92c5f9)
+            )));
       }
     }
   }
