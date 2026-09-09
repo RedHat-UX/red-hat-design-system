@@ -11,6 +11,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
+import { lightdomCSS } from '@rhds/elements/lib/lightdom-css.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import style from './rh-code-block.css' with { type: 'css' };
@@ -74,6 +75,7 @@ export class RhCodeBlockCopyEvent extends Event {
  */
 @customElement('rh-code-block')
 @themable
+@lightdomCSS(import.meta.url, './rh-code-block-lightdom.css')
 export class RhCodeBlock extends LitElement {
   private static actionIcons = new Map([
     ['wrap', html`
