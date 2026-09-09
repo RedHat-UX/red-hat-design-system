@@ -4,12 +4,14 @@ heading: Developers
 layout: layouts/pages/has-toc.njk
 tags:
   - developers
+pathfinder: true
 subnav:
   collection: sortedDevelopers
   order: 50
 ---
 
 <script type="module" data-helmet>
+
   import '@rhds/elements/rh-code-block/rh-code-block.js';
   import '@rhds/elements/rh-tag/rh-tag.js';
 </script>

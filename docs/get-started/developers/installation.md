@@ -5,6 +5,7 @@ heading: Developers
 tags:
   - developers
 permalink: /get-started/developers/installation/index.html
+pathfinder: true
 subnav:
   collection: sortedDevelopers
   order: 10
@@ -19,6 +20,7 @@ subnav:
 
 <script type="module" data-helmet>
   import '@uxdot/elements/uxdot-example.js';
+
   import '@rhds/elements/rh-code-block/rh-code-block.js';
   import '@rhds/elements/rh-alert/rh-alert.js';
   import '@rhds/elements/rh-tabs/rh-tabs.js';
