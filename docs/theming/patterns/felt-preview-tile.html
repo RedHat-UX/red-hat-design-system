@@ -1,6 +1,8 @@
 <link rel="stylesheet" href="/styles/demo/styles.css" media="all">
 <link rel="stylesheet" href="/theming/themes/project-felt/preview/felt-theme-preview.css">
-<link rel="stylesheet" href="/elements/rh-tile/rh-tile-lightdom.css">
+<style>
+@import url('/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css');
+</style>
 
 <style>
   .example-row {
@@ -213,19 +215,19 @@
 <h3>Selectable tile (radio)</h3>
 <div class="tile-grid example-row">
   <rh-tile-group radio>
-    <rh-tile name="radio">
+    <rh-tile checkable name="radio">
       <h2 slot="headline">Headline</h2>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       <div slot="footer">Footer</div>
     </rh-tile>
 
-    <rh-tile name="radio" checked>
+    <rh-tile checkable name="radio" checked>
       <h2 slot="headline">Headline</h2>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       <div slot="footer">Footer</div>
     </rh-tile>
 
-    <rh-tile name="radio" disabled>
+    <rh-tile checkable name="radio" disabled>
       <h2 slot="headline">Headline</h2>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       <div slot="footer">Footer</div>
