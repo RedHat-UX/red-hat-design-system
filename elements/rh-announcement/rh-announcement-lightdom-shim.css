@@ -23,11 +23,13 @@ rh-announcement[image-position='inline-start']:not(:defined) p {
 }
 
 rh-announcement[color-palette*='dark']:not(:defined) {
-  /** Not defined Surface color */
   background-color:
+    /** Not defined Surface color */
     var(--rh-color-surface,
       light-dark(
+        /** Not defined Surface color on light scheme */
         var(--rh-color-surface-lightest, #ffffff),
+        /** Not defined Surface color on dark scheme */
         var(--rh-color-surface-darkest, #151515)
       ));
 }
