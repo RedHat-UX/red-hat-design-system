@@ -48,12 +48,13 @@ rh-navigation-primary {
           transition-property: text-underline-offset, color, text-decoration-color;
           transition-duration: 0.3s;
           text-underline-offset: max(6px, 0.33em);
-
-          /** Link hover text color */
           color:
+            /** Link hover text color */
             var(--rh-color-interactive-primary-hover,
               light-dark(
+                /** Link hover text color on light scheme */
                 var(--rh-color-interactive-primary-hover-on-light, #003366),
+                /** Link hover text color on dark scheme */
                 var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
               )) !important;
         }
@@ -76,7 +77,9 @@ rh-navigation-primary {
         /** Navigation link separator color */
         var(--rh-color-border-subtle,
           light-dark(
+            /** Navigation link separator color on light scheme */
             var(--rh-color-border-subtle-on-light, #c7c7c7),
+            /** Navigation link separator color on dark scheme */
             var(--rh-color-border-subtle-on-dark, #707070)
           ));
 
@@ -96,9 +99,12 @@ rh-navigation-primary {
         /** Last navigation link separator width */
         var(--rh-border-width-sm, 1px)
         solid
+        /** Last navigation link separator color */
         var(--rh-color-border-subtle,
           light-dark(
+            /** Last navigation link separator color on light scheme */
             var(--rh-color-border-subtle-on-light, #c7c7c7),
+            /** Last navigation link separator color on dark scheme */
             var(--rh-color-border-subtle-on-dark, #707070)
           ));
 
