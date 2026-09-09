@@ -1,16 +1,40 @@
 rh-disclosure:not(:defined) {
   --rh-color-border-subtle: var(--rh-color-gray-30, #c7c7c7);
 
-  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+  border:
+    /** Not defined border width */
+    var(--rh-border-width-sm, 1px)
+    solid
+     /** Not defined border color */
+    var(--rh-color-border-subtle,
+      light-dark(
+        var(--rh-color-border-subtle-on-light, #c7c7c7),
+        var(--rh-color-border-subtle-on-dark, #707070)
+      ));
+   /** Not defined box shadow */
   box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
   display: block;
-  font-family: var(--rh-font-family-body-text);
-  padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
+   /** Not defined font family */
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  padding:
+    /** Not defined block padding */
+    var(--rh-space-lg, 16px)
+    /** Not defined inline padding */
+    var(--rh-space-xl, 24px);
   position: relative;
 
   &:before {
     content: '';
-    border-inline-start: 3px solid var(--rh-color-brand-red);
+    border-inline-start:
+      /** Not defined border size */
+      var(--rh-border-width-lg, 3px)
+      solid
+      /** Not defined border color */
+      var(--rh-color-brand-red,
+        light-dark(
+          var(--rh-color-brand-red-on-light, #ee0000),
+          var(--rh-color-brand-red-on-dark, #ee0000)
+        ));
     position: absolute;
     z-index: 1;
     inset-inline-start: -1px;
@@ -19,22 +43,31 @@ rh-disclosure:not(:defined) {
 
   > [slot='summary'] {
     display: block;
+    /** Not defined summary font size */
     font-size: var(--rh-font-size-body-text-md, 1rem);
+    /** Not defined summary font weight */
     font-weight: var(--rh-font-weight-body-text-medium, 500);
-    font-family: var(--rh-font-family-body-text);
+    /** Not defined summary font family */
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     padding-block-end: var(--rh-space-2xl, 32px);
   }
 }
 
 /* Variants */
 rh-disclosure[variant~='compact']:not(:defined) {
-  padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+  padding:
+    /** Compact block padding */
+    var(--rh-space-md, 8px)
+    /** Compact inline padding */
+    var(--rh-space-lg, 16px);
 }
 
 rh-disclosure[variant~='borderless']:not(:defined) {
   background-color:
     light-dark(
+        /** Borderless surface in light scheme */
         var(--rh-color-surface-lighter, #f2f2f2),
+        /** Borderless surface in dark scheme */
         var(--rh-color-surface-darker, #1f1f1f)
       );
   border: 0;
