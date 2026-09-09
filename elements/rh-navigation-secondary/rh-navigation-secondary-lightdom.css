@@ -5,26 +5,30 @@ rh-navigation-secondary {
     /** Navigation link text color; theme-adaptive */
     var(--rh-color-text-primary,
       light-dark(
-        /** Navigation link text color for light color schemes */
+        /** Navigation link text color on light scheme */
         var(--rh-color-text-primary-on-light, #151515),
-        /** Navigation link text color for dark color schemes */
+        /** Navigation link text color on dark scheme */
         var(--rh-color-text-primary-on-dark, #ffffff)
       ));
   --_logo-link-color:
     /** Navigation logo link text color */
     var(--rh-color-text-primary,
       light-dark(
+        /** Navigation logo link text color on light scheme */
         var(--rh-color-text-primary-on-light, #151515),
+        /** Navigation logo link text color on dark scheme */
         var(--rh-color-text-primary-on-dark, #ffffff)
       ));
   --_nav-chevron-color:
     /** Navigation dropdown chevron indicators */
     var(--rh-color-text-primary,
       light-dark(
+        /** Navigation dropdown chevron indicators on light scheme */
         var(--rh-color-text-primary-on-light, #151515),
+        /** Navigation dropdown chevron indicators on dark scheme */
         var(--rh-color-text-primary-on-dark, #ffffff)
       ));
-  --rh-color-surface:
+  --_nav-background:
     light-dark(
         /** Navigation bar surface in light mode */
         var(--rh-color-surface-lighter, #f2f2f2),
@@ -35,14 +39,7 @@ rh-navigation-secondary {
   display: block;
   position: sticky;
   top: 0;
-
-  /** Navigation bar background */
-  background-color:
-    var(--rh-color-surface,
-      light-dark(
-        var(--rh-color-surface-lightest, #ffffff),
-        var(--rh-color-surface-darkest, #151515)
-      ));
+  background-color: var(--_nav-background);
   border-block-end:
     /** Navigation bar block-end border width */
     var(--rh-border-width-sm, 1px)
