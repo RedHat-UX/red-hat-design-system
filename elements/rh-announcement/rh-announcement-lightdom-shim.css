@@ -2,10 +2,10 @@ rh-announcement:not(:defined) {
   align-items: center;
   display: flex;
   flex-direction: column;
-  /** Not defined Font family */
+  /** Not defined font family */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   justify-content: center;
-  /** Not defined Line contain-intrinsic-height: ; */
+  /** Not defined line height */
   line-height: var(--rh-line-height-body-text, 1.5);
   /** Not defined padding */
   padding: var(--rh-space-lg, 16px);
@@ -24,7 +24,7 @@ rh-announcement[image-position='inline-start']:not(:defined) p {
 
 rh-announcement[color-palette*='dark']:not(:defined) {
   background-color:
-    /** Not defined Surface color */
+    /** Not defined surface color */
     var(--rh-color-surface,
       light-dark(
         /** Not defined Surface color on light scheme */
