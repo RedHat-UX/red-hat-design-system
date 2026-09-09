@@ -944,10 +944,7 @@
     &:focus-within:after {
       content: '';
       position: absolute;
-      top: -2px;
-      bottom: -2px;
-      left: -2px;
-      right: -2px;
+      inset: -2px;
       outline: var(--felt-preview-cta-border-width-focus-ring) solid var(--felt-preview-color-interactive-primary-default);
       border-radius: var(--felt-preview-border-radius-pill);
       pointer-events: none;
