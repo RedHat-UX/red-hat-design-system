@@ -290,4 +290,23 @@ Preview the Project Felt theme on the elements below. Toggle the switch to compa
   if (pageToc) {
     pageToc.setAttribute('tabindex', '-1');
   }
+
+  // Force radio tile groups to set radioGroup on their tiles.
+  // In the SSR/uxdot-pattern context, rh-tile-group's firstUpdated
+  // fires before its children are adopted, and its slotchange listener
+  // (non-composed) never reaches the host. Set the property directly.
+  await customElements.whenDefined('rh-tile-group');
+  await customElements.whenDefined('rh-tile');
+  for (const pattern of document.querySelectorAll('uxdot-pattern')) {
+    for (const group of pattern.shadowRoot?.querySelectorAll('rh-tile-group[radio]') ?? []) {
+      await group.updateComplete;
+      for (const tile of group.querySelectorAll('rh-tile')) {
+        await tile.updateComplete;
+        tile.checkable = true;
+        tile.radioGroup = true;
+        tile.requestUpdate();
+        await tile.updateComplete;
+      }
+    }
+  }
 </script>
