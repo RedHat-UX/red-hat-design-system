@@ -41,7 +41,14 @@ description: Card with title bar pattern using icon and label in the header.
 
 <style>
   svg.sample {
-    border: 1px dashed var(--rh-color-border-interactive);
+    border:
+      1px
+      dashed
+      var(--rh-color-border-interactive,
+        light-dark(
+          var(--rh-color-border-interactive-on-light, #0066cc),
+          var(--rh-color-border-interactive-on-dark, #92c5f9)
+        ));
     & rect { width: 100%; height: 100%; fill: rgba(0 102 204 / 0.10) }
   }
   #card-pattern-title {
@@ -63,13 +70,13 @@ description: Card with title bar pattern using icon and label in the header.
         flex-flow: column;
       }
       & h2 {
-        font-family: var(--rh-font-family-body-text);
-        font-size: var(--rh-font-size-body-text-md);
-        font-weight: var(--rh-font-weight-body-text-regular);
+        font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif;);
+        font-size: var(--rh-font-size-body-text-md, 1rem);
+        font-weight: var(--rh-font-weight-body-text-regular, 400);
       }
       & svg {
         align-self: center;
-        margin-block-end: var(--rh-space-2xl);
+        margin-block-end: var(--rh-space-2xl, 32px);
       }
     }
   }

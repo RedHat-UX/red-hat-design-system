@@ -28,16 +28,16 @@ description: Sticky card pattern that persists on the side of the page.
 <style>
   #card-pattern-sticky {
     display: grid;
-    gap: var(--rh-space-md);
+    gap: var(--rh-space-md, 8px);
     grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
     & rh-card {
       &::part(header) {
-        gap: var(--rh-space-xl);
+        gap: var(--rh-space-xl, 24px);
         flex-flow: column;
       }
       & .title {
-        font-family: var(--rh-font-family-body-text);
-        font-size: var(--rh-font-size-body-text-md);
+        font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+        font-size: var(--rh-font-size-body-text-md, 1rem);
       }
       & > p {
         margin-block: 0;
