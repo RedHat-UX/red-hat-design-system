@@ -938,13 +938,19 @@
        from the light DOM. box-shadow is unaffected and follows border-radius.
        Two layers: inner Canvas-colored shadow = visual gap, outer = the ring. */
     &:focus-within {
-      --felt-preview-cta-focus-ring-color: var(--felt-preview-color-interactive-primary-default);
-      --felt-preview-cta-focus-ring-size: calc(var(--felt-preview-cta-border-width-focus-ring) * 2);
+      position: relative;
+    }
 
+    &:focus-within:after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      bottom: -2px;
+      left: -2px;
+      right: -2px;
+      outline: var(--felt-preview-cta-border-width-focus-ring) solid var(--felt-preview-color-interactive-primary-default);
       border-radius: var(--felt-preview-border-radius-pill);
-      box-shadow:
-        0 0 0 var(--felt-preview-cta-border-width-focus-ring) Canvas,
-        0 0 0 var(--felt-preview-cta-focus-ring-size) var(--felt-preview-cta-focus-ring-color);
+      pointer-events: none;
     }
 
     &[variant='primary'] {
