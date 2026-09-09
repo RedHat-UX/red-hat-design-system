@@ -4,6 +4,12 @@
   NODE_OPTIONS = "--max_old_space_size=8192"
 
 [[redirects]]
+  from = '/v1/*'
+  to = 'https://release-v1.4.5--red-hat-design-system.netlify.app/:splat'
+  status = 200
+  force = true
+
+[[redirects]]
   from = '/components/get-started/*'
   to = '/get-started/'
 [[redirects]]
