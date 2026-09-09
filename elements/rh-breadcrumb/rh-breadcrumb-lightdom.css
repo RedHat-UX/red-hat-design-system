@@ -15,55 +15,69 @@ rh-breadcrumb {
       /** Link color */
       var(--rh-color-interactive-primary-default,
         light-dark(
+          /** Link color on light scheme */
           var(--rh-color-interactive-primary-default-on-light, #0066cc),
+          /** Link color on dark scheme */
           var(--rh-color-interactive-primary-default-on-dark, #92c5f9)
         )));
 
-  /** Current page link color */
   --_breadcrumb-link-color-current-page:
+    /** Current page link color */
     var(--rh-color-text-primary,
       light-dark(
+        /** Current page link color on light scheme */
         var(--rh-color-text-primary-on-light, #151515),
+        /** Current page link color on dark scheme */
         var(--rh-color-text-primary-on-dark, #ffffff)
       ));
 
-  /** Current page subtle variant link color */
   --_breadcrumb-link-color-current-page-subtle:
+    /** Current page subtle variant link color */
     var(--rh-color-text-secondary,
       light-dark(
+        /** Current page subtle variant link color on light scheme */
         var(--rh-color-text-secondary-on-light, #4d4d4d),
+        /** Current page subtle variant link color on dark scheme */
         var(--rh-color-text-secondary-on-dark, #c7c7c7)
       ));
 
-  /** Link hover color */
   --_breadcrumb-link-color-hover:
+    /** Link hover color */
     var(--rh-color-interactive-primary-hover,
       light-dark(
+        /** Link hover color on light scheme */
         var(--rh-color-interactive-primary-hover-on-light, #003366),
+        /** Link hover color on dark scheme */
         var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
       ));
 
-  /** Visited link color */
   --_breadcrumb-link-color-visited:
+    /** Visited link color */
     var(--rh-color-interactive-primary-visited-hover,
       light-dark(
+        /** Visited link color on light scheme */
         var(--rh-color-interactive-primary-visited-hover-on-light, #21134d),
+        /** Visited link color on dark scheme */
         var(--rh-color-interactive-primary-visited-hover-on-dark, #ece6ff)
       ));
 
-  /** Visited link hover color */
   --_breadcrumb-link-color-visited-hover:
+    /** Visited link hover color */
     var(--rh-color-interactive-primary-visited-hover,
       light-dark(
+        /** Visited link hover color on light scheme */
         var(--rh-color-interactive-primary-visited-hover-on-light, #21134d),
+        /** Visited link hover color on dark scheme */
         var(--rh-color-interactive-primary-visited-hover-on-dark, #ece6ff)
       ));
 
-  /** Link focus outline color */
   --_breadcrumb-link-focus-outline-color:
+    /** Link focus outline color */
     var(--rh-color-border-interactive,
       light-dark(
+        /** Link focus outline color on light scheme */
         var(--rh-color-border-interactive-on-light, #0066cc),
+        /** Link focus outline color on dark scheme */
         var(--rh-color-border-interactive-on-dark, #92c5f9)
       ));
 
@@ -103,12 +117,13 @@ rh-breadcrumb {
 
       &:not(:first-of-type):before {
         display: inline-block;
-
-        /** Separator icon color */
         background-color:
+          /** Separator icon color */
           var(--rh-color-icon-secondary,
             light-dark(
+              /** Separator icon color on light scheme */
               var(--rh-color-icon-secondary-on-light, #151515),
+              /** Separator icon color on dark scheme */
               var(--rh-color-icon-secondary-on-dark, #ffffff)
             ));
         mask-image: var(--_breadcrumb-caret-image-default);
