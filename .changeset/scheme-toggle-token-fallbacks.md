@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-scheme-toggle>`: add default fallbacks for each RHDS token used
+`<rh-scheme-toggle>`: improved theming support
