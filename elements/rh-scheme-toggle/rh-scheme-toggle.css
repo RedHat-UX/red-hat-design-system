@@ -47,15 +47,9 @@ label {
   /** Toggle button border width */
   border-width: var(--rh-border-width-sm, 1px);
   border-style: solid;
-  border-color:
-    /** Toggle button border color; theme-adaptive */
-    var(--rh-color-border-subtle,
-      light-dark(
-        /** Toggle button border color for light color schemes */
-        var(--rh-color-border-subtle-on-light, #c7c7c7),
-        /** Toggle button border color for dark color schemes */
-        var(--rh-color-border-subtle-on-dark, #707070)
-      ));
+
+  /** Toggle button border color */
+  border-color: var(--rh-color-border-subtle);
   display: flex;
 
   /** Toggle button height */
@@ -98,24 +92,11 @@ label {
   }
 
   &:has(input:checked) {
-    background-color:
-      /** Selected toggle button background; theme-adaptive */
-      var(--rh-color-interactive-primary-default,
-        light-dark(
-          /** Selected toggle button background for light color schemes */
-          var(--rh-color-interactive-primary-default-on-light, #0066cc),
-          /** Selected toggle button background for dark color schemes */
-          var(--rh-color-interactive-primary-default-on-dark, #92c5f9)
-        ));
-    border-color:
-      /** Selected toggle button border color; theme-adaptive */
-      var(--rh-color-border-interactive,
-        light-dark(
-          /** Selected toggle button border color for light color schemes */
-          var(--rh-color-border-interactive-on-light, #0066cc),
-          /** Selected toggle button border color for dark color schemes */
-          var(--rh-color-border-interactive-on-dark, #92c5f9)
-        ));
+    /** Selected toggle button background */
+    background-color: var(--rh-color-interactive-primary-default);
+
+    /** Selected toggle button border color */
+    border-color: var(--rh-color-border-interactive);
     color:
       light-dark(
           /** Selected toggle button icon color for light color schemes */
@@ -141,14 +122,8 @@ input {
       /** Focus outline width */
       var(--rh-border-width-lg, 3px)
       solid
-      /** Focus outline color; theme-adaptive */
-      var(--rh-color-border-interactive,
-        light-dark(
-          /** Focus outline color for light color schemes */
-          var(--rh-color-border-interactive-on-light, #0066cc),
-          /** Focus outline color for dark color schemes */
-          var(--rh-color-border-interactive-on-dark, #92c5f9)
-        ));
+      /** Focus outline color */
+      var(--rh-color-border-interactive);
     transition: none;
   }
 }
