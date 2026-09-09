@@ -945,7 +945,10 @@
       content: '';
       position: absolute;
       inset: -2px;
-      outline: var(--felt-preview-cta-border-width-focus-ring) solid var(--felt-preview-color-interactive-primary-default);
+      outline:
+        var(--felt-preview-cta-border-width-focus-ring)
+        solid
+        var(--felt-preview-color-interactive-primary-default);
       border-radius: var(--felt-preview-border-radius-action-plain);
       pointer-events: none;
     }
