@@ -48,7 +48,7 @@ rh-announcement[image-position='block-start']:not(:defined) {
 rh-announcement:not(:defined) :is(img, svg) {
   display: block;
   flex-shrink: 0;
-  /** Not defined imge margin-block-end */
+  /** Not defined image margin-block-end */
   margin-block-end: var(--rh-space-lg, 16px);
   min-inline-size: max-content;
 }
