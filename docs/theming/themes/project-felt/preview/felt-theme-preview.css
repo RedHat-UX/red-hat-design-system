@@ -2331,11 +2331,15 @@
 
     /* Hover border: lighter blue */
     --rh-tile-hover-border-color:
-      var(--felt-preview-color-border-interactive-subtle-hover);
+      var(
+          --felt-preview-color-border-interactive-subtle-hover
+        );
 
     /* Active/focus border: darker blue */
     --rh-tile-active-border-color:
-      var(--felt-preview-color-border-interactive-subtle-active);
+      var(
+          --felt-preview-color-border-interactive-subtle-active
+        );
 
     /* Interactive color (icons, arrow, focus ring) */
     --rh-tile-interactive-color: var(--felt-preview-color-interactive-primary-default);
@@ -2358,27 +2362,31 @@
 
     /* Disabled text color */
     --rh-tile-disabled-text-color:
-      var(--felt-preview-color-text-status-on-disabled);
+      var(
+          --felt-preview-color-text-status-on-disabled
+        );
 
     /* Focus ring matches active/focus border color */
     --rh-tile-focus-outline-color:
-      var(--felt-preview-color-border-interactive-subtle-active);
+      var(
+          --felt-preview-color-border-interactive-subtle-active
+        );
 
     /* Suppress headline link outline (tile shows its own focus ring) */
-    & [slot="headline"] a:focus {
+    & [slot='headline'] a:focus {
       outline: none;
     }
 
-    /*
-     * Bleed image fix: the component's --_bleed only offsets padding,
-     * not the border width, leaving a gap at the border edge.
-     * Clip at the host level so the image fills to the outer border.
-     * TODO: remove once rh-tile accounts for border in --_bleed calc.
-     */
-    &[bleed] {
-      overflow: hidden;
-      border-radius:
-        calc(var(--felt-preview-border-radius-default) - 1px);
+    /* Round bleed image top corners to match the tile's inner border radius */
+    &[bleed] [slot='image'] {
+      border-start-start-radius:
+        calc(
+            var(--felt-preview-border-radius-default) - 1px
+          );
+      border-start-end-radius:
+        calc(
+            var(--felt-preview-border-radius-default) - 1px
+          );
     }
   }
 }

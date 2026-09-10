@@ -103,11 +103,13 @@
 
   /** Border color on hover */
   --_hover-border-color:
-    var(--rh-tile-hover-border-color, var(--_focus-interactive-color));
+    var(--rh-tile-hover-border-color,
+      var(--_focus-interactive-color));
 
   /** Border color on active/focus */
   --_active-border-color:
-    var(--rh-tile-active-border-color, var(--_hover-border-color));
+    var(--rh-tile-active-border-color,
+      var(--_hover-border-color));
 
   /** Tile border radius */
   border-radius: var(--rh-border-radius-default, 3px);
