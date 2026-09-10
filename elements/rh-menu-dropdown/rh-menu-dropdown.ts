@@ -14,6 +14,8 @@ import '@rhds/elements/rh-menu/rh-menu.js';
 
 import { RhMenuItem } from '../rh-menu/rh-menu-item.js';
 
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import styles from './rh-menu-dropdown.css' with { type: 'css' };
 
 /** Fired when a user selects an action or link from the menu */
@@ -43,6 +45,7 @@ export class MenuDropdownSelectEvent extends Event {
  *        `RhMenuItem` element and its text content.
  */
 @customElement('rh-menu-dropdown')
+@themable
 export class RhMenuDropdown extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
   private static instances = new Set<RhMenuDropdown>();
