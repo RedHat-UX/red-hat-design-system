@@ -30,15 +30,9 @@
         /** Border color in dark mode */
         var(--rh-color-gray-50, #707070)
       );
-  --_color:
-    /** Default text color; theme-adaptive */
-    var(--rh-color-text-primary,
-      light-dark(
-        /** Default text color for light color schemes */
-        var(--rh-color-text-primary-on-light, #151515),
-        /** Default text color for dark color schemes */
-        var(--rh-color-text-primary-on-dark, #ffffff)
-      ));
+
+  /** Default text color */
+  --_color: var(--rh-color-text-primary);
 
   position: relative;
   display: inline-block;
