@@ -164,7 +164,12 @@ description: Footer rendered inside an rh-context-demo wrapper to test color con
   }
 
   rh-footer-block p a {
-    color: var(--rh-color-interactive-primary-default) !important;
+    color:
+      var(--rh-color-interactive-primary-default,
+        light-dark(
+          var(--rh-color-interactive-primary-default-on-light, #0066cc),
+          var(--rh-color-interactive-primary-default-on-dark, #92c5f9)
+        )) !important;
     text-decoration: underline;
     text-decoration-thickness: var(--rh-border-width-sm, 1px);
     text-decoration-style: dashed;
@@ -172,7 +177,12 @@ description: Footer rendered inside an rh-context-demo wrapper to test color con
   }
 
   rh-footer-block ul a {
-    color: var(--rh-color-text-primary);
+    color:
+      var(--rh-color-text-primary,
+        light-dark(
+          var(--rh-color-text-primary-on-light, #151515),
+          var(--rh-color-text-primary-on-dark, #ffffff)
+        ));
     display: inline-block;
     font-size: var(--rh-font-size-body-text-sm, 0.875rem);
     padding-block: var(--rh-space-xs, 4px);
