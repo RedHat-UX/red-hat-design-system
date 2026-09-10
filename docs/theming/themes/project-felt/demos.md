@@ -291,21 +291,21 @@ Preview the Project Felt theme on the elements below. Toggle the switch to compa
     pageToc.setAttribute('tabindex', '-1');
   }
 
-  // Force radio tile groups to set radioGroup on their tiles.
-  // In the SSR/uxdot-pattern context, rh-tile-group's firstUpdated
-  // fires before its children are adopted, and its slotchange listener
-  // (non-composed) never reaches the host. Set the property directly.
+  // Fix radio tile groups in uxdot-pattern SSR context.
+  // Lit's hydration caches the initial input type="checkbox" and
+  // doesn't re-render when radioGroup changes post-hydration.
+  // Patch the shadow DOM input type directly.
   await customElements.whenDefined('rh-tile-group');
   await customElements.whenDefined('rh-tile');
+  await new Promise(r => setTimeout(r, 0));
   for (const pattern of document.querySelectorAll('uxdot-pattern')) {
-    for (const group of pattern.shadowRoot?.querySelectorAll('rh-tile-group[radio]') ?? []) {
-      await group.updateComplete;
+    const root = pattern.shadowRoot;
+    if (!root) continue;
+    for (const group of root.querySelectorAll('rh-tile-group[radio]')) {
+      group.updateItems();
       for (const tile of group.querySelectorAll('rh-tile')) {
-        await tile.updateComplete;
-        tile.checkable = true;
-        tile.radioGroup = true;
-        tile.requestUpdate();
-        await tile.updateComplete;
+        const input = tile.shadowRoot?.querySelector('#input');
+        if (input) input.type = 'radio';
       }
     }
   }
