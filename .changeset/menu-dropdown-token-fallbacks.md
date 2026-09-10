@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-menu-dropdown>`: add default fallbacks for each RHDS token used
+`<rh-menu-dropdown>`: improved theming support
