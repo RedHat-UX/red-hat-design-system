@@ -14,9 +14,9 @@
   text-decoration-color:
     light-dark(
         /** Footer block link underline in light color schemes */
-        var(--rh-color-gray-50),
+        var(--rh-color-gray-50, #707070),
         /** Footer block link underline in dark color schemes */
-        var(--rh-color-gray-40)
+        var(--rh-color-gray-40, #a3a3a3)
       ) !important;
   text-underline-offset: max(5px, 0.28em);
   transition-timing-function: ease;
