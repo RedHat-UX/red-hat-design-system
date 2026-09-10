@@ -5,6 +5,8 @@ import { property } from 'lit/decorators/property.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 import { observes } from '@patternfly/pfe-core/decorators.js';
 
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import styles from './rh-scheme-toggle.css' with { type: 'css' };
 
 declare global {
@@ -48,6 +50,7 @@ export class SchemeChangedEvent extends Event {
  *        `event.scheme` (`'light'`, `'dark'`, or `'light dark'`).
  */
 @customElement('rh-scheme-toggle')
+@themable
 export class RhSchemeToggle extends LitElement {
   static styles = [styles];
 
