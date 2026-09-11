@@ -1,35 +1,76 @@
 rh-subnav {
   & rh-navigation-link:not([current-page]):active:after {
     border-block-end-color:
+      /** Link not current-page page border color override */
       var(--rh-subnav-link-border-color-active,
-        var(--rh-color-brand-red)) !important;
+        /** Link not current-page border color */
+        var(--rh-color-brand-red,
+        light-dark(
+          /** Link not current-page border color on light scheme */
+          var(--rh-color-brand-red-on-light, #ee0000),
+          /** Link not current-page border color on dark scheme */
+          var(--rh-color-brand-red-on-dark, #ee0000))
+        )) !important;
   }
 
   & rh-navigation-link:not([current-page]):focus-visible:after,
   & rh-navigation-link:not([current-page]):has(a:focus-visible):after {
     border-block-end-color:
+      /** Link not current-page with focus border color override */
       var(--rh-subnav-link-border-color-hover,
-        var(--rh-color-border-subtle)) !important;
+        /** Link not current-page with focus border color */
+        var(--rh-color-border-subtle,
+        light-dark(
+          /** Link not current-page with focus border color on light scheme */
+          var(--rh-color-border-subtle-on-light, #c7c7c7),
+          /** Link not current-page with focus border color on dark scheme */
+          var(--rh-color-border-subtle-on-dark, #707070))
+        )) !important;
   }
 
   & rh-navigation-link:not([current-page]):focus-within:after {
     border-block-end-color:
+      /** Link not current-page hover border color override */
       var(--rh-subnav-link-border-color-hover,
-        var(--rh-color-border-subtle)) !important;
+        /** Link not current-page hover border color */
+        var(--rh-color-border-subtle,
+        light-dark(
+          /** Link not current-page hover border color on light scheme */
+          var(--rh-color-border-subtle-on-light, #c7c7c7),
+          /** Link not current-page hover border color on dark scheme */
+          var(--rh-color-border-subtle-on-dark, #707070))
+        )) !important;
   }
 
   /* This will move to the shim file in the future */
   &:not(:defined) {
     block-size: 56px;
     display: flex;
-    background-color: var(--rh-color-surface);
+    background-color:
+      /** Not defined surface color */
+      var(--rh-color-surface,
+        light-dark(
+          /** Not defined surface color on light scheme */
+          var(--rh-color-surface-lightest, #ffffff),
+          /** Not defined surface color on dark scheme */
+          var(--rh-color-surface-darkest, #151515)
+        ));
 
     & a {
       display: block !important;
       white-space: nowrap !important;
+      /** Not defined link padding */
       padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px) !important;
       text-decoration: none !important;
-      color: var(--rh-color-text-secondary) !important;
+      color:
+        /** Not defined font color */
+        var(--rh-color-text-secondary,
+          light-dark(
+            /** Not defined font color on light scheme */
+            var(--rh-color-text-secondary-on-light, #4d4d4d),
+            /** Not defined font color on dark scheme */
+            var(--rh-color-text-secondary-on-dark, #c7c7c7)
+          )) !important;
       position: relative !important;
 
       &:after {
@@ -41,7 +82,15 @@ rh-subnav {
       }
 
       &:is([active], [aria-current='page']):after {
-        border-block-end-color: var(--rh-color-accent-brand) !important;
+        border-block-end-color:
+          /** Not defined active or current page border-block-end color */
+          var(--rh-color-accent-brand,
+            light-dark(
+              /** Not defined active or current page border-block-end color on light scheme */
+              var(--rh-color-accent-brand-on-light, #ee0000),
+              /** Not defined active or current page border-block-end color on dark scheme */
+              var(--rh-color-accent-brand-on-dark, #ee0000)
+            )) !important;
       }
     }
   }
