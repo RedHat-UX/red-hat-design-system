@@ -124,7 +124,8 @@
       "service": true,
       "command": "cross-env TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --incremental --serve",
       "dependencies": [
-        "patch"
+        "patch",
+        "minify-literals"
       ]
     },
     "build": {
@@ -134,7 +135,7 @@
         "react-wrappers",
         "entrypoint",
         "copy-assets",
-        "compile"
+        "minify-literals"
       ]
     },
     "build:test": {
@@ -142,13 +143,19 @@
         "patch",
         "analyze",
         "copy-assets",
-        "compile"
+        "minify-literals"
       ]
     },
     "test": {
       "command": "wtr --group default",
       "dependencies": [
         "build:test"
+      ]
+    },
+    "minify-literals": {
+      "command": "npx tsx scripts/minify-literals.ts",
+      "dependencies": [
+        "compile"
       ]
     },
     "compile": {
@@ -222,7 +229,8 @@
     "docs": {
       "command": "cross-env TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --incremental",
       "dependencies": [
-        "patch"
+        "patch",
+        "minify-literals"
       ],
       "files": [
         "docs"
@@ -309,6 +317,7 @@
     "@lit-labs/ssr-client": "^1.1.8",
     "@lit/reactive-element": "^2.1.2",
     "@lit/ts-transformers": "^2.0.2",
+    "@literals/html-css-minifier": "^4.0.2",
     "@parse5/tools": "^0.7.0",
     "@patternfly/create-element": "^1.0.6",
     "@patternfly/elements": "^4.4.0",

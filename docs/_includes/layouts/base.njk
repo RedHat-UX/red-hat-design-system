@@ -15,6 +15,7 @@
         background-color: light-dark(white, var(--rh-color-surface-darker, #1f1f1f));
       }
     </style>
+    <script src="/assets/javascript/shadowroot-adopted-stylesheets.js"></script>
     <link rel="stylesheet" href="/styles/styles.css">
 
     <script type="importmap">{{ importMap | dump(2) | safe }}</script>
@@ -37,7 +38,6 @@
     {%- for tag in importElements -%}
     <script type="module">import '@rhds/elements/{{tag}}/{{tag}}.js';</script>
     {%- endfor -%}
-
     <script async src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
   </head>
 
