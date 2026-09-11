@@ -1,7 +1,7 @@
 ---
 description: "Subdomain footer for docs or other Red Hat properties. Shows domain name, language/theme switcher placeholders, and fewer navigation columns."
 ---
-<rh-footer data-analytics-region="page-footer">
+<rh-footer color-palette="darkest" data-analytics-region="page-footer">
   <a slot="logo"
      href="https://docs.redhat.com"
      data-analytics-category="Footer"
@@ -198,7 +198,12 @@ description: "Subdomain footer for docs or other Red Hat properties. Shows domai
   }
 
   rh-footer-block p a {
-    color: var(--rh-color-interactive-primary-default) !important;
+    color:
+      var(--rh-color-interactive-primary-default,
+        light-dark(
+          var(--rh-color-interactive-primary-default-on-light, #0066cc),
+          var(--rh-color-interactive-primary-default-on-dark, #92c5f9)
+        )) !important;
     text-decoration: underline;
     text-decoration-thickness: var(--rh-border-width-sm, 1px);
     text-decoration-style: dashed;
