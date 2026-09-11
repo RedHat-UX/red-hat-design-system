@@ -1,18 +1,36 @@
 rh-navigation-secondary {
   --_max-height: max-content;
   --_min-height: 80px;
-
-  /** Navigation link text color */
-  --_nav-link-color: var(--rh-color-text-primary);
-
-  /** Navigation logo link text color */
-  --_logo-link-color: var(--rh-color-text-primary);
-
-  /** Navigation dropdown chevron indicators */
-  --_nav-chevron-color: var(--rh-color-text-primary);
-  --rh-color-surface:
+  --_nav-link-color:
+    /** Navigation link text color; theme-adaptive */
+    var(--rh-color-text-primary,
+      light-dark(
+        /** Navigation link text color on light scheme */
+        var(--rh-color-text-primary-on-light, #151515),
+        /** Navigation link text color on dark scheme */
+        var(--rh-color-text-primary-on-dark, #ffffff)
+      ));
+  --_logo-link-color:
+    /** Navigation logo link text color */
+    var(--rh-color-text-primary,
+      light-dark(
+        /** Navigation logo link text color on light scheme */
+        var(--rh-color-text-primary-on-light, #151515),
+        /** Navigation logo link text color on dark scheme */
+        var(--rh-color-text-primary-on-dark, #ffffff)
+      ));
+  --_nav-chevron-color:
+    /** Navigation dropdown chevron indicators */
+    var(--rh-color-text-primary,
+      light-dark(
+        /** Navigation dropdown chevron indicators on light scheme */
+        var(--rh-color-text-primary-on-light, #151515),
+        /** Navigation dropdown chevron indicators on dark scheme */
+        var(--rh-color-text-primary-on-dark, #ffffff)
+      ));
+  --_nav-background:
     light-dark(
-        /** Navigation bar surface in light mode */
+        /** Navigation bar surface on light scheme  */
         var(--rh-color-surface-lighter, #f2f2f2),
         /** Navigation bar surface in dark mode */
         var(--rh-color-surface-dark, #383838)
@@ -21,9 +39,7 @@ rh-navigation-secondary {
   display: block;
   position: sticky;
   top: 0;
-
-  /** Navigation bar background */
-  background-color: var(--rh-color-surface);
+  background-color: var(--_nav-background);
   border-block-end:
     /** Navigation bar block-end border width */
     var(--rh-border-width-sm, 1px)
@@ -92,8 +108,15 @@ rh-navigation-secondary {
     }
 
     &[aria-current='page'] {
-      /** Navigation logo current-page block-start accent color */
-      border-block-start-color: var(--rh-color-brand-red);
+      border-block-start-color:
+        /** Navigation logo current-page block-start accent color */
+        var(--rh-color-brand-red,
+          light-dark(
+            /** Navigation logo current-page block-start accent color on light scheme */
+            var(--rh-color-brand-red-on-light, #ee0000),
+            /** Navigation logo current-page block-start accent color on dark scheme */
+            var(--rh-color-brand-red-on-dark, #ee0000)
+          ));
     }
   }
 
@@ -211,14 +234,28 @@ rh-navigation-secondary-dropdown > a {
 }
 
 rh-navigation-secondary [slot='nav'] > li > a[aria-current='page'] {
-  /** Navigation current-page link block-start accent color */
-  border-block-start-color: var(--rh-color-brand-red);
+  border-block-start-color:
+     /** Navigation current-page link block-start accent color */
+    var(--rh-color-brand-red,
+      light-dark(
+        /** Navigation current-page link block-start accent color on light scheme */
+        var(--rh-color-brand-red-on-light, #ee0000),
+        /** Navigation current-page link block-start accent color on dark scheme */
+        var(--rh-color-brand-red-on-dark, #ee0000)
+      ));
 }
 
 rh-navigation-secondary [slot='nav'] > li > rh-navigation-link[current-page],
 rh-navigation-secondary [slot='nav'] > li > rh-navigation-link:has(a[aria-current='page']) {
-  /** Navigation current-page link block-start accent color */
-  border-block-start-color: var(--rh-color-brand-red);
+  border-block-start-color:
+    /** Navigation current-page link block-start accent color */
+    var(--rh-color-brand-red,
+      light-dark(
+        /** Navigation current-page link block-start accent color on light scheme */
+        var(--rh-color-brand-red-on-light, #ee0000),
+        /** Navigation current-page link block-start accent color on dark scheme */
+        var(--rh-color-brand-red-on-dark, #ee0000)
+      ));
 }
 
 rh-navigation-secondary > [slot='nav'] > li > a:hover,
@@ -282,9 +319,15 @@ rh-navigation-secondary > [slot='nav'] > li > rh-navigation-link {
     var(--rh-space-xl, 24px);
   --_navigation-link-font-weight: 500;
   --_navigation-link-text-decoration-line: none;
-
-  /** Navigation slotted rh-navigation-link color */
-  --_navigation-link-color-hover: var(--rh-color-text-primary);
+  --_navigation-link-color-hover:
+    /** Navigation slotted rh-navigation-link color */
+    var(--rh-color-text-primary,
+      light-dark(
+        /** Navigation slotted rh-navigation-link color on light scheme */
+        var(--rh-color-text-primary-on-light, #151515),
+        /** Navigation slotted rh-navigation-link color on dark scheme */
+        var(--rh-color-text-primary-on-dark, #ffffff)
+      ));
 
   display: flex;
   block-size: 100%;
@@ -306,8 +349,15 @@ rh-navigation-secondary > [slot='nav'] > li > rh-navigation-link {
       transparent;
 
     &:hover {
-      /** Navigation link hovered block-start accent color at viewport >= lg */
-      border-block-start-color: var(--rh-color-text-brand);
+      border-block-start-color:
+        /** Navigation link hovered block-start accent color at viewport >= lg */
+        var(--rh-color-text-brand,
+          light-dark(
+            /** Navigation link hovered block-start accent color on light scheme at viewport >= lg */
+            var(--rh-color-text-brand-on-light, #ee0000),
+            /** Navigation link hovered block-start accent color on dark scheme at viewport >= lg */
+            var(--rh-color-text-brand-on-dark, #ee0000)
+          ));
     }
   }
 }
