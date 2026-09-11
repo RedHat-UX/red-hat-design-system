@@ -211,9 +211,6 @@ rh-footer:not(:defined) {
     'global';
   grid-template-rows: 1fr auto;
 
-  /** Minimum height without JS; prefer `rh-footer:not(:defined)` in CSS */
-  min-height: var(--rh-footer-nojs-min-height);
-
   & > *:not(rh-footer-universal) {
     padding-inline: var(--_section-side-gap);
   }
