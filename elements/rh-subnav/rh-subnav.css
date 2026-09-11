@@ -103,7 +103,7 @@
     var(--rh-subnav-link-padding-inline, var(--rh-space-2xl, 32px));
 
   /** Navigation link font size */
-  --_navigation-link-font-size: var(--rh-font-size-body-text-md);
+  --_navigation-link-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_navigation-link-text-decoration: none;
   --_navigation-link-text-decoration-style: none;
   --_navigation-link-text-decoration-line: none;

@@ -148,19 +148,19 @@ description: Card visual variants including standard and promo styles.
   }
 
   rh-card.bar {
-    --rh-card-heading-font-family: var(--rh-font-family-body-text);
-    --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular);
-    --rh-card-heading-font-size: var(--rh-font-size-body-text-md);
+    --rh-card-heading-font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+    --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular, 400);
+    --rh-card-heading-font-size: var(--rh-font-size-body-text-md, 1rem);
     &::part(header) {
       margin: 0;
-      padding: var(--rh-space-lg) var(--rh-space-xl);
-      background-color: var(--_header-bg, var(--rh-color-surface-light));
+      padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
+      background-color: var(--_header-bg, var(--rh-color-surface-light, #e0e0e0));
     }
   }
 
   rh-card.image {
-    --rh-card-heading-font-weight: var(--rh-font-weight-heading-medium);
-    --rh-card-heading-font-size: var(--rh-font-size-heading-md);
+    --rh-card-heading-font-weight: var(--rh-font-weight-heading-medium, 500);
+    --rh-card-heading-font-size: var(--rh-font-size-heading-md, 1rem);
     &::part(header) {
       margin: 0;
     }
@@ -174,7 +174,7 @@ description: Card visual variants including standard and promo styles.
     &.heading {
       & h2 {
         margin-block-start: 0;
-        margin-block-end: var(--rh-space-lg);
+        margin-block-end: var(--rh-space-lg, 16px);
       }
     }
   }
