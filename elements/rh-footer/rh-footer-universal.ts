@@ -14,6 +14,9 @@ import style from './rh-footer.css' with { type: 'css' };
 import './rh-footer-copyright.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 
+/** Default Red Hat homepage URL for the logo link and empty `logo-href` fallback. */
+const DEFAULT_LOGO_HREF = 'https://www.redhat.com/en';
+
 /**
  * Global Red Hat footer bar for consistent branding across all
  * properties. Authors must not customize content per-site. The
@@ -35,6 +38,14 @@ export class RhFooterUniversal extends LitElement {
    * The universal footer typically renders on the darkest surface.
    */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
+
+  /**
+   * Sets the `href` for the default Red Hat logo link. Has no effect when
+   * the `logo` slot is overridden. Avoid changing this value except for a
+   * locale-specific redhat.com homepage (e.g. `https://www.redhat.com/ja`).
+   * Defaults to `'https://www.redhat.com/en'`.
+   */
+  @property({ attribute: 'logo-href' }) logoHref = DEFAULT_LOGO_HREF;
 
   #internals = InternalsController.of(this);
 
@@ -130,17 +141,18 @@ export class RhFooterUniversal extends LitElement {
               <!-- summary: Red Hat logo (logo slot)
                    description: |
                      Expects block elements: an \`<a>\` wrapping an \`<img>\` or \`<svg>\`.
-                     Defaults to the Red Hat logo SVG linking to redhat.com. Screen
+                     Replaces the default link, so \`logo-href\` no longer applies.
+                     Defaults to the Red Hat logo SVG linking to https://www.redhat.com/en. Screen
                      readers rely on the anchor \`aria-label\` for identification. -->
               <slot name="logo">
                 <!--
                   part:
-                    description: Link wrapping the logo; defaults to redhat.com.
+                    description: Link wrapping the logo; defaults to https://www.redhat.com/en.
                 -->
                 <a class="global-logo-anchor"
                     part="logo-anchor"
-                    href="https://redhat.com"
-                    aria-label="Visit Red Hat">
+                    href="${this.logoHref?.trim() || DEFAULT_LOGO_HREF}"
+                    aria-label="Red Hat">
                   <!--
                     part:
                       description: Logo image or SVG element.
