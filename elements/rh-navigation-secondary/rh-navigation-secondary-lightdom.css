@@ -232,11 +232,13 @@ rh-navigation-secondary-dropdown > a {
 }
 
 rh-navigation-secondary [slot='nav'] > li > a[aria-current='page'] {
-  /** Navigation current-page link block-start accent color */
   border-block-start-color:
+     /** Navigation current-page link block-start accent color */
     var(--rh-color-brand-red,
       light-dark(
+        /** Navigation current-page link block-start accent color on light scheme */
         var(--rh-color-brand-red-on-light, #ee0000),
+        /** Navigation current-page link block-start accent color on dark scheme */
         var(--rh-color-brand-red-on-dark, #ee0000)
       ));
 }
