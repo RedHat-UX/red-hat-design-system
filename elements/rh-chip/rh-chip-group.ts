@@ -7,6 +7,8 @@ import { query } from 'lit/decorators/query.js';
 
 import { RhChip, ChipChangeEvent } from './rh-chip.js';
 
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import styles from './rh-chip-group.css' with { type: 'css' };
 
 /**
@@ -22,6 +24,7 @@ import styles from './rh-chip-group.css' with { type: 'css' };
  *          accessible label, styled with `--rh-font-size-body-text-md`.
  */
 @customElement('rh-chip-group')
+@themable
 export class RhChipGroup extends LitElement {
   static readonly styles = [styles];
 
