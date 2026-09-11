@@ -98,7 +98,7 @@ a:is(:active, :hover),
   text-decoration-color: inherit !important;
 
   /** Skip link hover underline thickness */
-  text-decoration-thickness: var(--rh-border-width-sm) !important;
+  text-decoration-thickness: var(--rh-border-width-sm, 1px) !important;
   text-underline-offset: max(5px, 0.28em) !important;
   transition-timing-function: ease;
   transition-property: text-underline-offset, color, text-decoration-color;
