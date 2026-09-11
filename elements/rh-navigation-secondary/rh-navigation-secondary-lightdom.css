@@ -30,7 +30,7 @@ rh-navigation-secondary {
       ));
   --_nav-background:
     light-dark(
-        /** Navigation bar surface in light mode */
+        /** Navigation bar surface on light scheme  */
         var(--rh-color-surface-lighter, #f2f2f2),
         /** Navigation bar surface in dark mode */
         var(--rh-color-surface-dark, #383838)
