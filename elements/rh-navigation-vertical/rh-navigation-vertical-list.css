@@ -41,7 +41,7 @@ details {
 
     & ::slotted([slot='summary']) {
       /** Summary label typeface */
-      font-family: var(--rh-font-family-body-text);
+      font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
 
       /** Summary label font size */
       font-size: var(--rh-font-size-body-text-md, 1rem) !important;
