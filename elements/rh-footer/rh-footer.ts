@@ -1,5 +1,6 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
@@ -45,6 +46,25 @@ export class RhFooter extends LitElement {
   static readonly version = '{{version}}';
 
   static readonly styles = [style];
+
+  /**
+   * Accessible name for the default social links list (`slot="social-links"`).
+   * Applied as `accessible-label` on the inner `<rh-footer-links>`. Localize
+   * surrounding words; keep "Red Hat" except in Simplified Chinese (`红帽`).
+   * Override only when the accounts are not corporate Red Hat. Has no effect
+   * when authors replace `header-secondary` or put social links in the
+   * universal `tertiary` slot. Defaults to `'Red Hat social media links'`.
+   */
+  @property({ attribute: 'social-links-label' }) socialLinksLabel = 'Red Hat social media links';
+
+  /**
+   * Accessible name for the default logo link. Applied as `aria-label` on the
+   * fallback logo `<a>` when the `logo` slot is empty. Keep "Red Hat" except
+   * in Simplified Chinese (`红帽`). Has no effect when authors slot a custom
+   * logo; use `alt` or `aria-label` on that slotted content instead.
+   * Defaults to `'Red Hat'`.
+   */
+  @property({ attribute: 'logo-label' }) logoLabel = 'Red Hat';
 
   /**
    * Isomorphic import.meta.url function
@@ -143,9 +163,9 @@ export class RhFooter extends LitElement {
                          description: |
                            Expects block elements: an \`<a>\` wrapping an image. Defaults to the
                            Red Hat corporate logo. Screen readers rely on the img \`alt\` attribute
-                           or link text for identification. -->
+                           or the default link \`logo-label\` for identification. -->
                     <slot name="logo">
-                      <a href="https://www.redhat.com/en" aria-label="Red Hat">
+                      <a href="https://www.redhat.com/en" aria-label="${this.logoLabel}">
                         <svg preserveAspectRatio="xMinYMid slice" viewBox="0 0 613 145" role="img" aria-hidden="true">
                           <path fill="var(--rh-color-brand-red, #ee0000)" d="M127.47,83.49c12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.89,8.69,103.76.5,97.51.5,91.69.5,90,8,83.06,8c-6.68,0-11.64-5.6-17.89-5.6-6,0-9.91,4.09-12.93,12.5,0,0-8.41,23.72-9.49,27.16A6.43,6.43,0,0,0,42.53,44c0,9.22,36.3,39.45,84.94,39.45M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.45,18.45,0,0,1,1.51-7.33C22.27,52,.5,55,.5,74.22c0,31.48,74.59,70.28,133.65,70.28,45.28,0,56.7-20.48,56.7-36.65,0-12.72-11-27.16-30.83-35.78"/>
                           <path d="M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.45,18.45,0,0,1,1.51-7.33l3.66-9.06A6.43,6.43,0,0,0,42.53,44c0,9.22,36.3,39.45,84.94,39.45,12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42Z"/>
@@ -167,7 +187,7 @@ export class RhFooter extends LitElement {
                     <rh-footer-links class="social-links-item"
                                      part="social-links"
                                      role="list"
-                                     aria-label="Red Hat social media links">
+                                     accessible-label="${this.socialLinksLabel}">
                       <!-- summary: social media icon links
                          description: |
                            Expects block elements: \`<rh-footer-social-link>\` elements. Each link
