@@ -364,6 +364,88 @@ describe('<rh-footer>', function() {
         expect(ul).to.have.attribute('aria-labelledby', header?.id);
       });
     });
+
+    describe('after removing accessible-label', function() {
+      let links: RhFooterLinks;
+
+      beforeEach(async function() {
+        links = await fixture<RhFooterLinks>(html`
+          <rh-footer-links role="list" accessible-label="Red Hat social media links">
+            <rh-footer-social-link icon="linkedin"
+                                   href="#"
+                                   accessible-label="LinkedIn"></rh-footer-social-link>
+          </rh-footer-links>
+        `);
+        await links.updateComplete;
+        links.removeAttribute('accessible-label');
+        await links.updateComplete;
+      });
+
+      it('removes the host aria-label it applied', function() {
+        expect(links.hasAttribute('aria-label')).to.be.false;
+      });
+    });
+
+    describe('after slotting a header over an applied label', function() {
+      let links: RhFooterLinks;
+
+      beforeEach(async function() {
+        links = await fixture<RhFooterLinks>(html`
+          <rh-footer-links role="list" accessible-label="Red Hat social media links">
+            <rh-footer-social-link icon="linkedin"
+                                   href="#"
+                                   accessible-label="LinkedIn"></rh-footer-social-link>
+          </rh-footer-links>
+        `);
+        await links.updateComplete;
+        const header = document.createElement('h3');
+        header.slot = 'header';
+        header.textContent = 'Social';
+        const ul = document.createElement('ul');
+        ul.innerHTML = '<li><a href="#">One</a></li>';
+        links.append(header, ul);
+        await links.updateComplete;
+        await nextFrame();
+      });
+
+      it('removes the host aria-label it applied', function() {
+        expect(links.hasAttribute('aria-label')).to.be.false;
+      });
+
+      it('wires aria-labelledby from the header to the list', function() {
+        const header = links.querySelector('[slot="header"]');
+        const ul = links.querySelector('ul');
+        expect(ul).to.have.attribute('aria-labelledby', header?.id);
+      });
+    });
+
+    describe('with a native aria-label and no accessible-label', function() {
+      let links: RhFooterLinks;
+
+      beforeEach(async function() {
+        links = await fixture<RhFooterLinks>(html`
+          <rh-footer-links role="list" aria-label="Native">
+            <rh-footer-social-link icon="linkedin"
+                                   href="#"
+                                   accessible-label="LinkedIn"></rh-footer-social-link>
+          </rh-footer-links>
+        `);
+        await links.updateComplete;
+        const header = document.createElement('h3');
+        header.slot = 'header';
+        header.textContent = 'Social';
+        links.append(header);
+        await links.updateComplete;
+        await nextFrame();
+        header.remove();
+        await links.updateComplete;
+        await nextFrame();
+      });
+
+      it('does not delete the native aria-label', function() {
+        expect(links.getAttribute('aria-label')).to.equal('Native');
+      });
+    });
   });
 
   describe('logo-label', function() {
