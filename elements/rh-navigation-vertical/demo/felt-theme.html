@@ -16,13 +16,17 @@ description: Vertical navigation with nested groups and the [Project Felt](/them
 <div class="felt-preview">
   <div class="example-row">
     <rh-navigation-vertical accessible-label="Example side nav">
-      <rh-navigation-link href="#">Nav item 1</rh-navigation-link>
-      <rh-navigation-link href="#" current-page>Nav item 2</rh-navigation-link>
-      <rh-navigation-vertical-list summary="Nav group">
-        <rh-navigation-link href="#">Sub item 1</rh-navigation-link>
-        <rh-navigation-link href="#">Sub item 2</rh-navigation-link>
+      <rh-navigation-link href="#">Home</rh-navigation-link>
+      <rh-navigation-link href="#" current-page>About</rh-navigation-link>
+      <rh-navigation-vertical-list summary="Get started" open>
+        <rh-navigation-link href="#">Overview</rh-navigation-link>
+        <rh-navigation-vertical-list summary="Developers" open>
+          <rh-navigation-link href="#">Installation</rh-navigation-link>
+          <rh-navigation-link href="#">Usage</rh-navigation-link>
+        </rh-navigation-vertical-list>
+        <rh-navigation-link href="#">Designers</rh-navigation-link>
       </rh-navigation-vertical-list>
-      <rh-navigation-link href="#">Nav item 3</rh-navigation-link>
+      <rh-navigation-link href="#">Get support</rh-navigation-link>
     </rh-navigation-vertical>
   </div>
 </div>
