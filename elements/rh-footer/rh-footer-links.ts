@@ -43,6 +43,13 @@ export class RhFooterLinks extends LitElement {
 
   #mo = new MutationObserver(() => this.updateAccessibility());
 
+  /**
+   * Last host `aria-label` this component wrote from `accessible-label`.
+   * Used so we remove only our own value and must not strip an author-set
+   * native `aria-label`.
+   */
+  #appliedAriaLabel?: string;
+
   protected slots = new SlotController(this, 'header');
 
   connectedCallback() {
@@ -63,9 +70,22 @@ export class RhFooterLinks extends LitElement {
       ul.setAttribute('aria-labelledby', header.id);
     }
     // Name the host list from accessible-label when authors did not slot a
-    // header. Do not strip a native aria-label if the property is unset.
+    // header. Record the value we wrote so later updates can clear it.
+    // Do not strip a native aria-label if the property is unset or a header
+    // is slotted later — only remove aria-label when it still matches what
+    // we applied.
     if (!header && this.accessibleLabel) {
       this.setAttribute('aria-label', this.accessibleLabel);
+      this.#appliedAriaLabel = this.accessibleLabel;
+    } else {
+      // Header present, or accessible-label empty/unset: drop our generated
+      // name if it is still the current host aria-label. Leave an author-set
+      // native label alone.
+      if (this.getAttribute('aria-label') === this.#appliedAriaLabel) {
+        this.removeAttribute('aria-label');
+      }
+      // Forget the recorded value so a later coincidental match is not ours.
+      this.#appliedAriaLabel = undefined;
     }
   }
 
