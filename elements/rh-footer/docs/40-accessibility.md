@@ -1,3 +1,11 @@
+## Social links and logo names
+
+Name the social links list so screen readers can distinguish it from other groups. On the current pattern, set `accessible-label` on `<rh-footer-links role="list">`. On the legacy `slot="social-links"` pattern, set `social-links-label` on `<rh-footer>` (default: "Red Hat social media links").
+
+Localize the surrounding words. Keep the brand as "Red Hat" except in Simplified Chinese, where it is `红帽`. Override the group name only when the accounts are not corporate Red Hat.
+
+The default logo link is named with `logo-label` (default: "Red Hat") when the `logo` slot is empty. Slotted logos should keep using `alt` or `aria-label` on the slotted content; `logo-label` does not apply to them.
+
 ## Landmark roles
 
 `<rh-footer>` and `<rh-footer-universal>` (when used outside of `<rh-footer>`) already include a [`contentinfo`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/contentinfo_role) landmark role and therefore do not need to be wrapped in a native `<footer>` element. This `contentinfo` role is applied automatically through the [ElementInternals API](https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals).

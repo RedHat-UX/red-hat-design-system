@@ -47,6 +47,15 @@ export class RhFooterUniversal extends LitElement {
    */
   @property({ attribute: 'logo-href' }) logoHref = DEFAULT_LOGO_HREF;
 
+  /**
+   * Accessible name for the default logo link. Applied as `aria-label` on the
+   * fallback logo `<a>` when the `logo` slot is empty. Keep "Red Hat" except
+   * in Simplified Chinese (`红帽`). Has no effect when authors slot a custom
+   * logo; use `alt` or `aria-label` on that slotted content instead.
+   * Defaults to `'Red Hat'`.
+   */
+  @property({ attribute: 'logo-label' }) logoLabel = 'Red Hat';
+
   #internals = InternalsController.of(this);
 
   #slots = new SlotController(
@@ -143,7 +152,7 @@ export class RhFooterUniversal extends LitElement {
                      Expects block elements: an \`<a>\` wrapping an \`<img>\` or \`<svg>\`.
                      Replaces the default link, so \`logo-href\` no longer applies.
                      Defaults to the Red Hat logo SVG linking to https://www.redhat.com/en. Screen
-                     readers rely on the anchor \`aria-label\` for identification. -->
+                     readers rely on the anchor \`aria-label\` (\`logo-label\`) for identification. -->
               <slot name="logo">
                 <!--
                   part:
@@ -152,7 +161,7 @@ export class RhFooterUniversal extends LitElement {
                 <a class="global-logo-anchor"
                     part="logo-anchor"
                     href="${this.logoHref?.trim() || DEFAULT_LOGO_HREF}"
-                    aria-label="Red Hat">
+                    aria-label="${this.logoLabel}">
                   <!--
                     part:
                       description: Logo image or SVG element.
@@ -161,8 +170,8 @@ export class RhFooterUniversal extends LitElement {
                        part="logo-image"
                        data-name="Layer 1"
                        xmlns="http://www.w3.org/2000/svg"
-                       viewBox="0 0 192 145">
-                      <title>Red Hat logo</title>
+                       viewBox="0 0 192 145"
+                       aria-hidden="true">
                     <defs>
                       <style>
                         .band {
