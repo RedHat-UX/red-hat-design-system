@@ -53,7 +53,7 @@ export class RhNavigationVertical extends LitElement {
 
   render(): TemplateResult<1> {
     return html`
-      <h2 class="visually-hidden">${this.accessibleLabel}</h2>
+      <h2 id="title" class="visually-hidden">${this.accessibleLabel}</h2>
       <div id="container" role="list">
         <!-- summary: Navigation items
              description: |
