@@ -378,12 +378,15 @@
 
 #heading,
 #global-heading {
-  position: absolute;
-  left: -9999999px;
-  width: 0;
-  height: 0;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  block-size: 1px;
+  margin: -1px;
   overflow: hidden;
-  display: flex;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  inline-size: 1px;
 }
 
 [part='base']:not(.isMobile) .links {
