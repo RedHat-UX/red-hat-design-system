@@ -1,7 +1,7 @@
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
@@ -65,9 +65,13 @@ export class RhFooterUniversal extends LitElement {
   override connectedCallback() {
     super.connectedCallback();
     this.#updateRole();
-    // Light-DOM parent is available here. `closest` walks ancestors only,
-    // so a page `<h2>` elsewhere does not hide this heading.
-    this.#isNestedInRhFooter = !!this.closest('rh-footer');
+
+    // On the client, `.closest()` walks light-DOM ancestors only, so a page
+    // `<h2>` elsewhere does not hide this heading.
+    if (!isServer) {
+      this.#isNestedInRhFooter = !!this.closest('rh-footer');
+    }
+
     // Reconnect (SPA move, late slotting) must refresh `?hidden` on the heading.
     this.requestUpdate();
   }
@@ -79,6 +83,10 @@ export class RhFooterUniversal extends LitElement {
    * Does not check for other custom elements with `role="contentinfo"`.
    */
   #updateRole() {
+    if (isServer) {
+      this.#internals.role = 'contentinfo';
+      return;
+    }
     const hasFooterAncestor = !!this.closest('footer, rh-footer');
     this.#internals.role = hasFooterAncestor ? null : 'contentinfo';
   }

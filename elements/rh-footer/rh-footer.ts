@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 
@@ -83,8 +83,13 @@ export class RhFooter extends LitElement {
    * Set `role="contentinfo"` on the host when this element is the page footer.
    * Clear the `contentinfo` role when already nested inside a native `<footer>`.
    * Does not check for other custom elements with `role="contentinfo"`.
+   * Skip `closest()` during Lit SSR; that API is not on the server render root.
    */
   #updateRole() {
+    if (isServer) {
+      this.#internals.role = 'contentinfo';
+      return;
+    }
     const hasFooterAncestor = !!this.closest('footer');
     this.#internals.role = hasFooterAncestor ? null : 'contentinfo';
   }
