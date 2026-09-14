@@ -4,8 +4,6 @@
 
 If a `<rh-footer>` or `<rh-footer-universal>` is placed inside an existing `<footer>` element, the custom element will not receive the `contentinfo` role. In those cases, implementors should remove the surrounding `<footer>` element and rely on the role applied directly to the custom element via ElementInternals.
 
-When `<rh-footer-universal>` is nested inside `<rh-footer>`, it hides its own visually-hidden heading because `<rh-footer>` already provides one for the landmark.
-
 ## Keyboard interactions
 
 The footer includes many different interactive elements that can be navigated with a keyboard.
