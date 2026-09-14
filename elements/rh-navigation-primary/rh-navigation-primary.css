@@ -107,9 +107,23 @@
   display: flex;
   flex-direction: column;
   border-block-end: none;
+  block-size: 100%;
+  place-content: center;
 
   @container navigation-primary (min-width: 576px) {
     border-block-end-color: transparent;
+  }
+
+  & ::slotted(svg, img),
+  & svg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    block-size: -webkit-fill-available;
+    block-size: -moz-available;
+    block-size: fill-available;
+    block-size: 100%;
+    line-height: 0;
   }
 
   & svg {
@@ -142,6 +156,8 @@
   }
 
   & a {
+    line-height: 0;
+
     &:is(:hover, :focus) {
       & svg #fedora {
         @media (prefers-reduced-motion: no-preference) {
@@ -149,33 +165,19 @@
         }
       }
     }
-  }
 
-  & ::slotted(a),
-  & a {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    block-size: -webkit-fill-available;
-    block-size: -moz-available;
-    block-size: fill-available;
-    block-size: 100%;
-    line-height: 0;
-  }
+    &:is(:focus-visible, :hover:focus-visible) {
+      outline-offset: 4px;
+      outline:
+        /** Logo focus ring width */
+        var(--rh-border-width-md, 2px)
+        solid
+        /** Logo focus ring color */
+        var(--rh-color-interactive-primary-default);
 
-  & ::slotted(a:focus-visible),
-  & ::slotted(:hover:focus-visible),
-  & a:is(:focus-visible, :hover:focus-visible) {
-    outline-offset: -2px;
-    outline:
-      /** Logo focus ring width */
-      var(--rh-border-width-md, 2px)
-      solid
-      /** Logo focus ring color */
-      var(--rh-color-interactive-primary-default);
-
-    /** Logo focus ring radius */
-    border-radius: var(--rh-border-radius-default, 3px);
+      /** Logo focus ring radius */
+      border-radius: var(--rh-border-radius-default, 3px);
+    }
   }
 }
 
@@ -586,8 +588,6 @@
     }
 
     & #logo {
-      display: flex;
-
       & svg {
         block-size: 18px;
         inline-size: 24px;
@@ -605,12 +605,6 @@
         & #wordmark {
           display: none;
         }
-      }
-
-      & ::slotted(a:focus-visible),
-      & ::slotted(:hover:focus-visible),
-      & a:is(:focus-visible, :hover:focus-visible) {
-        outline-offset: 4px;
       }
     }
 
