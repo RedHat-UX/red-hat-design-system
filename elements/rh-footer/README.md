@@ -91,11 +91,13 @@ import '@rhds/elements/rh-footer/rh-footer.js';
       <li><a href="#" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Cookie preferences">Cookie preferences</a></li>
     </ul>
     <rh-footer-copyright slot="tertiary">&copy; 2026 Red Hat</rh-footer-copyright>
-    <rh-footer-social-link slot="tertiary" icon="linkedin" href="https://www.linkedin.com/company/red-hat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="LinkedIn" accessible-label="LinkedIn"></rh-footer-social-link>
-    <rh-footer-social-link slot="tertiary" icon="youtube" href="https://www.youtube.com/user/RedHatVideos" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="YouTube" accessible-label="YouTube"></rh-footer-social-link>
-    <rh-footer-social-link slot="tertiary" icon="facebook" href="https://www.facebook.com/redhatinc" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="Facebook" accessible-label="Facebook"></rh-footer-social-link>
-    <rh-footer-social-link slot="tertiary" icon="x" href="https://twitter.com/RedHat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="X/Twitter" accessible-label="X/Twitter"></rh-footer-social-link>
-    <rh-footer-social-link slot="tertiary" icon="instagram" href="https://www.instagram.com/redhat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="Instagram" accessible-label="Instagram"></rh-footer-social-link>
+    <rh-footer-links slot="tertiary" role="list" accessible-label="Red Hat social media links">
+      <rh-footer-social-link icon="linkedin" href="https://www.linkedin.com/company/red-hat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="LinkedIn" accessible-label="LinkedIn"></rh-footer-social-link>
+      <rh-footer-social-link icon="youtube" href="https://www.youtube.com/user/RedHatVideos" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="YouTube" accessible-label="YouTube"></rh-footer-social-link>
+      <rh-footer-social-link icon="facebook" href="https://www.facebook.com/redhatinc" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="Facebook" accessible-label="Facebook"></rh-footer-social-link>
+      <rh-footer-social-link icon="x" href="https://twitter.com/RedHat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="X/Twitter" accessible-label="X/Twitter"></rh-footer-social-link>
+      <rh-footer-social-link icon="instagram" href="https://www.instagram.com/redhat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="Instagram" accessible-label="Instagram"></rh-footer-social-link>
+    </rh-footer-links>
   </rh-footer-universal>
 </rh-footer>
 ```
@@ -137,11 +139,13 @@ import '@rhds/elements/rh-footer/rh-footer-universal.js';
     <li><a href="#" data-analytics-category="Footer|Red Hat legal and privacy links" data-analytics-text="Cookie preferences">Cookie preferences</a></li>
   </ul>
   <rh-footer-copyright slot="tertiary">&copy; 2026 Red Hat</rh-footer-copyright>
-  <rh-footer-social-link slot="tertiary" icon="linkedin" href="https://www.linkedin.com/company/red-hat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="LinkedIn" accessible-label="LinkedIn"></rh-footer-social-link>
-  <rh-footer-social-link slot="tertiary" icon="youtube" href="https://www.youtube.com/user/RedHatVideos" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="YouTube" accessible-label="YouTube"></rh-footer-social-link>
-  <rh-footer-social-link slot="tertiary" icon="facebook" href="https://www.facebook.com/redhatinc" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="Facebook" accessible-label="Facebook"></rh-footer-social-link>
-  <rh-footer-social-link slot="tertiary" icon="x" href="https://twitter.com/RedHat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="X/Twitter" accessible-label="X/Twitter"></rh-footer-social-link>
-  <rh-footer-social-link slot="tertiary" icon="instagram" href="https://www.instagram.com/redhat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="Instagram" accessible-label="Instagram"></rh-footer-social-link>
+  <rh-footer-links slot="tertiary" role="list" accessible-label="Red Hat social media links">
+    <rh-footer-social-link icon="linkedin" href="https://www.linkedin.com/company/red-hat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="LinkedIn" accessible-label="LinkedIn"></rh-footer-social-link>
+    <rh-footer-social-link icon="youtube" href="https://www.youtube.com/user/RedHatVideos" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="YouTube" accessible-label="YouTube"></rh-footer-social-link>
+    <rh-footer-social-link icon="facebook" href="https://www.facebook.com/redhatinc" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="Facebook" accessible-label="Facebook"></rh-footer-social-link>
+    <rh-footer-social-link icon="x" href="https://twitter.com/RedHat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="X/Twitter" accessible-label="X/Twitter"></rh-footer-social-link>
+    <rh-footer-social-link icon="instagram" href="https://www.instagram.com/redhat" data-analytics-region="social-links-exit" data-analytics-category="Footer|social-links" data-analytics-text="Instagram" accessible-label="Instagram"></rh-footer-social-link>
+  </rh-footer-links>
 </rh-footer-universal>
 ```
 
