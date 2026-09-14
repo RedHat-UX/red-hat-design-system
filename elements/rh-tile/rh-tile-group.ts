@@ -2,12 +2,15 @@ import { LitElement, html, type PropertyValues } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
+import { provide } from '@lit/context';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 
 import { RhTile, TileSelectEvent } from './rh-tile.js';
+import { rhTileGroupContext, type RhTileGroupContext } from './context.js';
 
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
@@ -53,6 +56,15 @@ export class RhTileGroup extends LitElement {
 
   #tiles: RhTile[] = [];
 
+  @queryAssignedElements({ selector: 'rh-tile', flatten: true })
+  private slottedTiles!: RhTile[];
+
+  @provide({ context: rhTileGroupContext })
+  private groupContext: Readonly<RhTileGroupContext> = Object.freeze({
+    disabled: false,
+    radio: false,
+  });
+
   #tabindex = RovingTabindexController.of(this, {
     getItems: () => this.#tiles,
   });
@@ -77,8 +89,12 @@ export class RhTileGroup extends LitElement {
 
   constructor() {
     super();
-    this.addEventListener('slotchange', this.#onSlotchange);
     this.addEventListener('select', this.#onSelect);
+  }
+
+  override connectedCallback() {
+    super.connectedCallback();
+    this.#updateGroupContext();
   }
 
   override firstUpdated(): void {
@@ -86,20 +102,17 @@ export class RhTileGroup extends LitElement {
   }
 
   override willUpdate(changed: PropertyValues<this>) {
+    if (changed.has('disabled') || changed.has('radio')) {
+      this.#updateGroupContext();
+    }
     this.#internals.ariaDisabled = String(!!this.disabled);
     this.#internals.role = this.radio ? 'radiogroup' : null;
     let selected: RhTile | undefined;
     for (const tile of this.#tiles) {
       if (changed.has('radio')) {
-        // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
-        tile.radioGroup = this.radio;
         if (this.radio && !selected && tile.checked) {
           selected = tile;
         }
-      }
-      if (changed.has('disabled')) {
-        // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
-        tile.disabledGroup = this.disabled;
       }
     }
     if (changed.has('radio')) {
@@ -112,8 +125,16 @@ export class RhTileGroup extends LitElement {
     return html`
       <!-- Place \`rh-tile\` elements here. Each tile must have a
            headline slot with descriptive text for screen readers. -->
-      <slot class="${classMap({ radio })}"></slot>
+      <slot class="${classMap({ radio })}"
+            @slotchange="${this.#onSlotchange}"></slot>
     `;
+  }
+
+  #updateGroupContext() {
+    this.groupContext = Object.freeze({
+      disabled: this.disabled,
+      radio: this.radio,
+    });
   }
 
   #selectTile(tileToSelect: RhTile, force?: boolean) {
@@ -127,7 +148,7 @@ export class RhTileGroup extends LitElement {
   }
 
   #onSelect(event: Event) {
-    if (event instanceof TileSelectEvent) {
+    if (event instanceof TileSelectEvent && this.#tiles.includes(event.target)) {
       if (this.disabled) {
         event.preventDefault();
         return false;
@@ -171,19 +192,19 @@ export class RhTileGroup extends LitElement {
     }
   }
 
-  /**
-   * Updates slotted tiles to set properties and keyboard navigation
-   */
+  /** Updates slotted tiles and keyboard navigation. */
   updateItems() {
-    this.#tiles = [...this.querySelectorAll('rh-tile')];
-    this.#tiles.forEach(tile => {
-      tile.checkable = true;
-      // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
-      tile.radioGroup = this.radio;
-      // @ts-expect-error: internal use of private prop. replace with context. see rh-tile.ts
-      tile.disabledGroup = this.disabled;
+    const tiles = this.slottedTiles;
+
+    this.#tiles = tiles;
+    this.#tabindex.items = tiles;
+
+    for (const tile of tiles) {
+      if (tile.parentElement !== this) {
+        continue;
+      }
       tile.id ||= getRandomId('rh-tile');
-    });
+    }
   }
 }
 

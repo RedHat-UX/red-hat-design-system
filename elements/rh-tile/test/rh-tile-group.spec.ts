@@ -11,6 +11,16 @@ describe('<rh-tile-group>', function() {
   let tile2: RhTile;
   let tile3: RhTile;
 
+  // `element.updateComplete` waits only for `<rh-tile-group>`. Context delivery
+  // can schedule another update on each `<rh-tile>` in the following microtask,
+  // so wait for the tiles again before asserting.
+  async function updateComplete() {
+    await element.updateComplete;
+    await Promise.all(element.tiles.map(tile => tile.updateComplete));
+    await Promise.resolve();
+    await Promise.all(element.tiles.map(tile => tile.updateComplete));
+  }
+
   function press(press: string) {
     return async function() {
       await sendKeys({ press });
@@ -43,11 +53,35 @@ describe('<rh-tile-group>', function() {
         </rh-tile-group>
       `);
       [tile1, tile2, tile3] = element.querySelectorAll('rh-tile');
+      await updateComplete();
       element.focus();
+    });
+
+    it('updates tiles when slotted content changes', async function() {
+      const tile4 = document.createElement('rh-tile');
+
+      tile4.textContent = 'Tile 4';
+      element.append(tile4);
+      await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+      await updateComplete();
+
+      expect(element.tiles).to.deep.equal([tile1, tile2, tile3, tile4]);
+      expect(tile4.checkable).to.be.false;
+      expect(tile4.tabIndex).to.equal(-1);
+      expect(await a11ySnapshot())
+          .to.axContainQuery({ role: 'radio', name: 'Tile 4', checked: false });
     });
 
     it('is accessible', async function() {
       await expect(element).to.be.accessible();
+    });
+
+    it('provides disabled state to its tiles', async function() {
+      element.disabled = true;
+      await updateComplete();
+
+      expect(await a11ySnapshot())
+          .to.axContainQuery({ role: 'radio', name: 'Tile 1', disabled: true });
     });
 
     it('exposes radio roles to the ax tree', async function() {
