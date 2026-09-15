@@ -5,6 +5,8 @@ import { property } from 'lit/decorators/property.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 import { observes } from '@patternfly/pfe-core/decorators.js';
 
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import styles from './rh-scheme-dropdown.css' with { type: 'css' };
 
 declare global {
@@ -41,6 +43,7 @@ export class SchemeChangedEvent extends Event {
  * @fires {SchemeChangedEvent} scheme-changed - Fired when the color scheme changes
  */
 @customElement('rh-scheme-dropdown')
+@themable
 export class RhSchemeDropdown extends LitElement {
   static styles = [styles];
 
