@@ -6,6 +6,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
 import { classMap } from 'lit/directives/class-map.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
@@ -16,7 +17,16 @@ import './rh-footer-copyright.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 /** Default Red Hat homepage URL for the logo link and empty `logo-href` fallback. */
-const DEFAULT_LOGO_HREF = 'https://www.redhat.com/en';
+export const DEFAULT_LOGO_HREF = 'https://www.redhat.com/en';
+
+/**
+ * Trim a string attribute. Empty or whitespace-only values become undefined
+ * so `ifDefined` omits the attribute from the inner logo `<a>`.
+ * @param value - Host attribute to copy onto the inner logo link
+ */
+export function optionalLogoAttr(value?: string) {
+  return value?.trim() || undefined;
+}
 
 /**
  * Global Red Hat footer bar for consistent branding across all
@@ -46,12 +56,32 @@ export class RhFooterUniversal extends LitElement {
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
-   * Sets the `href` for the default Red Hat logo link. Has no effect when
-   * the `logo` slot is overridden. Avoid changing this value except for a
-   * locale-specific redhat.com homepage (e.g. `https://www.redhat.com/ja`).
-   * Defaults to `'https://www.redhat.com/en'`.
+   * Sets the `href` for the logo link. Applies whether or not the `logo` slot
+   * is overridden. Avoid changing this value except for a locale-specific
+   * redhat.com homepage (e.g. `https://www.redhat.com/ja`). Defaults to
+   * `'https://www.redhat.com/en'`.
    */
   @property({ attribute: 'logo-href' }) logoHref = DEFAULT_LOGO_HREF;
+
+  /**
+   * Optional accessible name for the logo link. When set, applied as
+   * `aria-label` on the wrapping `<a>` and overrides slotted text, SVG
+   * `<title>`, or `img` `alt`. Leave unset so the slotted mark or the
+   * default SVG title names the link. Defaults to `''`.
+   */
+  @property({ attribute: 'logo-label' }) logoLabel = '';
+
+  /**
+   * Copied onto the inner logo `<a>` as `data-analytics-category`. Leave
+   * unset to omit the attribute. Defaults to `''`.
+   */
+  @property({ attribute: 'logo-analytics-category' }) logoAnalyticsCategory = '';
+
+  /**
+   * Copied onto the inner logo `<a>` as `data-analytics-text`. Leave unset
+   * to omit the attribute. Defaults to `''`.
+   */
+  @property({ attribute: 'logo-analytics-text' }) logoAnalyticsText = '';
 
   #internals = InternalsController.of(this);
 
@@ -144,31 +174,35 @@ export class RhFooterUniversal extends LitElement {
           <slot name="base">
             <!-- Container for the logo slot. -->
             <div class="global-logo" part="logo">
-              <!-- summary: Red Hat logo (logo slot)
-                   description: |
-                     Expects block elements: an \`<a>\` wrapping an \`<img>\` or \`<svg>\`.
-                     Replaces the default link, so \`logo-href\` no longer applies.
-                     Defaults to the Red Hat logo SVG linking to https://www.redhat.com/en. Screen
-                     readers rely on the anchor \`aria-label\` for identification. -->
-              <slot name="logo">
-                <!--
-                  part:
-                    description: Link wrapping the logo; defaults to https://www.redhat.com/en.
-                -->
-                <a class="global-logo-anchor"
-                    part="logo-anchor"
-                    href="${this.logoHref?.trim() || DEFAULT_LOGO_HREF}"
-                    aria-label="Red Hat">
+              <!--
+                part:
+                  description: Link wrapping the logo; href comes from logo-href.
+              -->
+              <a class="global-logo-anchor"
+                 part="logo-anchor"
+                 href="${this.logoHref?.trim() || DEFAULT_LOGO_HREF}"
+                 aria-label="${ifDefined(optionalLogoAttr(this.logoLabel))}"
+                 data-analytics-category="${ifDefined(optionalLogoAttr(this.logoAnalyticsCategory))}"
+                 data-analytics-text="${ifDefined(optionalLogoAttr(this.logoAnalyticsText))}">
+                <!-- summary: Red Hat fedora logo (logo slot)
+                     description: |
+                       Expects an inline SVG, \`<img>\`, or \`<picture>\`. Defaults to the
+                       Red Hat fedora SVG. Slotted SVGs should include a \`<title>\`;
+                       slotted images should include \`alt\`, unless \`logo-label\` is set.
+                       \`logo-href\` still applies when this slot is overridden. -->
+                <slot name="logo">
                   <!--
                     part:
                       description: Logo image or SVG element.
                   -->
                   <svg class="global-logo-image"
                        part="logo-image"
+                       role="img"
+                       aria-labelledby="global-logo-title"
                        data-name="Layer 1"
                        xmlns="http://www.w3.org/2000/svg"
                        viewBox="0 0 192 145">
-                      <title>Red Hat logo</title>
+                    <title id="global-logo-title">Red Hat</title>
                     <defs>
                       <style>
                         .band {
@@ -180,8 +214,8 @@ export class RhFooterUniversal extends LitElement {
                     <path class="band" d="M157.77,62.61a14,14,0,0,1,.31,3.42c0,14.88-18.1,17.46-30.61,17.46C78.83,83.49,42.53,53.26,42.53,44a6.43,6.43,0,0,1,.22-1.94l-3.66,9.06a18.45,18.45,0,0,0-1.51,7.33c0,18.11,41,45.48,87.74,45.48,20.69,0,36.43-7.76,36.43-21.77,0-1.08,0-1.94-1.73-10.13Z"/>
                     <path class="cls-1" d="M127.47,83.49c12.51,0,30.61-2.58,30.61-17.46a14,14,0,0,0-.31-3.42l-7.45-32.36c-1.72-7.12-3.23-10.35-15.73-16.6C124.89,8.69,103.76.5,97.51.5,91.69.5,90,8,83.06,8c-6.68,0-11.64-5.6-17.89-5.6-6,0-9.91,4.09-12.93,12.5,0,0-8.41,23.72-9.49,27.16A6.43,6.43,0,0,0,42.53,44c0,9.22,36.3,39.45,84.94,39.45M160,72.07c1.73,8.19,1.73,9.05,1.73,10.13,0,14-15.74,21.77-36.43,21.77C78.54,104,37.58,76.6,37.58,58.49a18.45,18.45,0,0,1,1.51-7.33C22.27,52,.5,55,.5,74.22c0,31.48,74.59,70.28,133.65,70.28,45.28,0,56.7-20.48,56.7-36.65,0-12.72-11-27.16-30.83-35.78"/>
                   </svg>
-                </a>
-              </slot>
+                </slot>
+              </a>
             </div>
             <!-- Primary row (start, links, end). -->
             <div class="global-primary" part="primary">

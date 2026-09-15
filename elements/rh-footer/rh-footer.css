@@ -242,9 +242,18 @@
   height: var(--rh-size-icon-02, 24px);
 }
 
+.global-logo a {
+  display: inline-block;
+  height: 100%;
+}
+
 .global-logo-image {
   /** Red Hat fedora brand color */
   fill: var(--rh-color-brand-red, #ee0000);
+}
+
+.global-logo ::slotted(:is(img, svg, picture)),
+.global-logo svg {
   height: 100%;
   width: auto;
 }
@@ -324,7 +333,8 @@
   line-height: 0;
 }
 
-.logo ::slotted(a) {
+/* Text logos (e.g. a subdomain name) keep heading styles and a dotted underline. */
+.logo ::slotted(:not(img, svg, picture)) {
   /** Logo link text color */
   color: var(--rh-color-text-primary);
 
@@ -342,13 +352,14 @@
 
   /** Logo link underline thickness */
   text-decoration-thickness: var(--rh-border-width-sm, 1px);
+  text-decoration-color: var(--rh-color-border-subtle);
   text-underline-offset: max(5px, 0.28em);
 }
 
-.logo ::slotted(a:has(img, svg, picture)) {
-  text-decoration: none;
-  line-height: 0px;
-  font-size: initial;
+/* Hover/focus lives on the wrapping <a>, not on the slotted mark. */
+.logo a:is(:hover, :focus) ::slotted(:not(img, svg, picture)) {
+  text-decoration-color: inherit;
+  text-underline-offset: max(6px, 0.33em);
 }
 
 .logo a {
@@ -356,7 +367,9 @@
   text-decoration: none;
 }
 
-.logo a > :is(img, svg) {
+/* Fallback SVG is a descendant of the wrapping <a>, not a direct child. */
+.logo ::slotted(:is(img, svg, picture)),
+.logo svg {
   display: block;
   width: auto;
 
@@ -525,7 +538,8 @@
 }
 
 @media screen and (min-width: 576px) {
-  .logo a > :is(img, svg) {
+  .logo ::slotted(:is(img, svg, picture)),
+  .logo svg {
     /** Logo image height at viewport >= xs */
     height: var(--rh-size-icon-03, 32px);
   }

@@ -101,48 +101,53 @@ rh-footer-universal [slot^='links'] a {
   text-decoration-color: inherit;
 }
 
-/* Logo links wrap image content */
-:is(rh-footer, rh-footer-universal) a[slot^='logo'] {
+/* Slotted logo mark or text. The wrapping <a> lives in shadow DOM. */
+:is(rh-footer, rh-footer-universal) [slot^='logo'] {
   display: inline-block;
-}
 
-:is(rh-footer, rh-footer-universal) a[slot^='logo']:not(:has(img, svg, picture)) {
-  color: var(--rh-color-text-primary);
-  font-size: var(--rh-font-size-heading-xs, 1.25rem);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
-  font-weight: 800;
-  line-height: var(--rh-line-height-heading, 1.3);
-  text-decoration: underline;
-  text-decoration-style: dotted;
-  text-decoration-thickness: var(--rh-border-width-sm, 1px);
-  text-decoration-color: var(--rh-color-border-subtle);
-  text-underline-offset: max(5px, 0.28em);
-  transition: ease all 0.3s;
-}
+  /* Text logos (span, etc.) keep heading styles and a dotted underline. */
+  &:not(:is(img, svg, picture)) {
+    color: var(--rh-color-text-primary);
+    font-size: var(--rh-font-size-heading-xs, 1.25rem);
+    font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+    font-weight: 800;
+    line-height: var(--rh-line-height-heading, 1.3);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-thickness: var(--rh-border-width-sm, 1px);
+    text-decoration-color: var(--rh-color-border-subtle);
+    text-underline-offset: max(5px, 0.28em);
+    transition: ease all 0.3s;
 
-:is(rh-footer, rh-footer-universal) a[slot^='logo']:not(:has(img, svg, picture)):hover {
-  color: var(--rh-color-text-primary);
-  text-decoration-color: inherit;
-  text-underline-offset: max(6px, 0.33em);
-}
+    &:hover {
+      color: var(--rh-color-text-primary);
+      text-decoration-color: inherit;
+      text-underline-offset: max(6px, 0.33em);
+    }
+  }
 
-:is(rh-footer, rh-footer-universal) a[slot^='logo'] > :is(img, svg) {
-  display: block;
-  width: auto;
+  &:is(img, svg),
+  & > :is(img, svg) {
+    display: block;
+    width: auto;
 
-  /** Logo image height */
-  height: var(--rh-size-icon-02, 24px);
+    /** Logo image height */
+    height: var(--rh-size-icon-02, 24px);
+  }
 }
 
 @media screen and (min-width: 576px) {
-  :is(rh-footer, rh-footer-universal) a[slot^='logo'] > :is(img, svg) {
-    /** Logo image height at viewport >= xs */
-    height: var(--rh-size-icon-03, 32px);
-  }
+  :is(rh-footer, rh-footer-universal) [slot^='logo'] {
+    &:is(img, svg),
+    & > :is(img, svg) {
+      /** Logo image height at viewport >= xs */
+      height: var(--rh-size-icon-03, 32px);
+    }
 
-  :is(rh-footer, rh-footer-universal) a[slot^='logo']:not(:has(img, svg, picture)) {
-    /** Subdomain name font size at viewport >= xs */
-    font-size: var(--rh-font-size-heading-sm, 1.5rem);
+    &:not(:is(img, svg, picture)) {
+      /** Subdomain name font size at viewport >= xs */
+      font-size: var(--rh-font-size-heading-sm, 1.5rem);
+    }
   }
 }
 
@@ -214,7 +219,7 @@ rh-footer:not(:defined) {
     padding-inline: var(--_section-side-gap);
   }
 
-  a[slot='logo'] {
+  [slot='logo'] {
     /** Footer vertical spacing */
     padding-block: var(--rh-space-2xl, 32px);
   }
@@ -380,7 +385,7 @@ rh-footer:not(:defined) rh-footer-universal:not(:defined) {
       var(--rh-space-2xl, 32px);
     grid-template-columns: repeat(12, minmax(0, 1fr));
 
-    a[slot='logo'] {
+    [slot='logo'] {
       position: relative;
 
       &:before {
@@ -400,7 +405,7 @@ rh-footer:not(:defined) rh-footer-universal:not(:defined) {
       padding: 0;
     }
 
-    a[slot='logo'],
+    [slot='logo'],
     :is(h2, h3)[slot='links']:first-of-type,
     ul[slot='links']:first-of-type {
       padding-inline-start: var(--_section-side-gap);
@@ -426,7 +431,7 @@ rh-footer:not(:defined) rh-footer-universal:not(:defined) {
     }
   }
 
-  rh-footer:not(:defined) a[slot='logo'],
+  rh-footer:not(:defined) [slot='logo'],
   rh-footer-universal:not(:defined) {
     grid-column-start: span 12;
   }
