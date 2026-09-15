@@ -4,7 +4,6 @@ import type { ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import { html, LitElement, type ComplexAttributeConverter } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { classMap } from 'lit/directives/class-map.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
@@ -17,21 +16,11 @@ import {
   ColorSurfaceLightest as lightest,
 } from '@rhds/tokens/color.js';
 
-import '@rhds/elements/rh-tooltip/rh-tooltip.js';
-
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import style from './rh-context-picker.css';
+import '@rhds/elements/rh-icon/rh-icon.js';
 
-export class ContextChangeEvent extends Event {
-  constructor(
-    public colorPalette: ColorPalette,
-    /** the context provider targeted by this element */
-    public provider: HTMLElement | null,
-  ) {
-    super('change', { bubbles: true, cancelable: true });
-  }
-}
+import styles from './rh-context-picker.css';
 
 export const ColorPaletteListConverter: ComplexAttributeConverter = {
   fromAttribute(list: string) {
@@ -55,57 +44,41 @@ export const paletteMap = new Map<ColorPalette, Color>(Object.entries({
 
 export const paletteNames = Array.from(paletteMap, ([name]) => name);
 
+export class ContextChangeEvent extends Event {
+  constructor(
+    public colorPalette: ColorPalette | null,
+    /** the context provider targeted by this element */
+    public provider: HTMLElement | null,
+  ) {
+    super('change', { bubbles: true, cancelable: true });
+  }
+}
+
 @customElement('rh-context-picker')
 @themable
 export class RhContextPicker extends LitElement {
   static formAssociated = true;
 
-  static readonly styles = [style];
+  static readonly styles = [styles];
 
   declare shadowRoot: ShadowRoot;
 
   /** ID of context element to toggle (same root) */
   @property() target?: string | HTMLElement;
 
-  @property() value: ColorPalette = 'darkest';
+  @property() value: ColorPalette | null = null;
 
   @property({ converter: ColorPaletteListConverter })
   allow = paletteNames;
+
+  /** Accessible label for the select */
+  @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
 
   #internals = InternalsController.of(this);
 
   #target: HTMLElement | null = null;
 
-  render() {
-    const { allow, value } = this;
-    return html`
-      <div id="host-label"
-           class="visually-hidden">${this.#internals.computedLabelText}</div>
-      <div id="container"
-           @input="${this.#onInput}">
-        ${allow.map(palette => html`
-        <label for="radio-${palette}" class="visually-hidden">${palette}</label>
-        <rh-tooltip>
-          <span slot="content">${palette}</span>
-          <input id="radio-${palette}"
-                 class="${classMap({ [palette]: true })}"
-                 name="palette"
-                 type="radio"
-                 value="${palette}"
-                 aria-describedby="host-label"
-                 ?checked="${value === palette}">
-        </rh-tooltip>`)}
-      </div>
-    `;
-  }
-
-  formStateRestoreCallback(state: string) {
-    if (state) {
-      this.#setValue(state as this['value']);
-    }
-  }
-
-  firstUpdated() {
+  protected override firstUpdated() {
     for (const label of this.#internals.labels) {
       label.addEventListener('click', () => this.focus());
     }
@@ -121,36 +94,84 @@ export class RhContextPicker extends LitElement {
     } else {
       this.#target = this.closest('rh-surface');
     }
+    this.requestUpdate();
   }
 
-  #onInput(event: Event) {
-    if (event.target instanceof HTMLInputElement && event.target.checked) {
+  /**
+   * Before hydration (`hasUpdated` is false on both server and first
+   * client render), emits a spec-conforming `<select>` with plain text
+   * `<option>` children so HTML parsers won't discard non-conforming
+   * elements. After hydration completes, `firstUpdated` triggers a
+   * second render where `hasUpdated` is true and the full base-select
+   * markup (button, selectedcontent, swatches) is emitted declaratively.
+   */
+  render() {
+    const { allow, value } = this;
+    const label = this.accessibleLabel
+                || this.#internals.computedLabelText
+                || 'Color palette';
+    return this.hasUpdated ? html`
+      <select aria-label="${label}"
+              @change="${this.#onChange}">
+        <button type="button">
+          <selectedcontent></selectedcontent>
+          <rh-icon set="microns" icon="caret-down-fill" class="caret"></rh-icon>
+        </button>
+        <option value="" ?selected="${value == null}">
+          <rh-icon set="ui" icon="auto-light-dark-mode" class="system-icon"></rh-icon>
+          System
+        </option>
+        ${allow.map(palette => html`
+        <option value="${palette}" ?selected="${value === palette}">
+          <span class="swatch ${palette}"></span>
+          ${palette}
+        </option>`)}
+      </select>
+    ` : html`
+      <select aria-label="${label}"
+              @change="${this.#onChange}">
+        <option value="" ?selected="${value == null}">System</option>
+        ${allow.map(palette => html`
+        <option value="${palette}" ?selected="${value === palette}">${palette}</option>`)}
+      </select>
+    `;
+  }
+
+  formStateRestoreCallback(state: string) {
+    this.#setValue((state || null) as this['value']);
+  }
+
+  #onChange(event: Event) {
+    if (event.target instanceof HTMLSelectElement) {
       event.stopPropagation();
-      const { value } = event.target;
-      if (value) {
-        this.#setValue(value as this['value']);
-      }
+      this.#setValue((event.target.value || null) as this['value']);
     }
   }
 
   #setValue(value: this['value']) {
-    this.#internals.setFormValue(value);
-    if (value !== this.value && this.dispatchEvent(new ContextChangeEvent(value, this.#target))) {
+    this.#internals.setFormValue(value ?? '');
+    if (value !== this.value
+        && this.dispatchEvent(new ContextChangeEvent(value, this.#target))) {
       this.value = value;
       this.sync();
     }
   }
 
   override focus() {
-    const input: HTMLInputElement | null =
-         this.shadowRoot.querySelector('input[checked]')
-      ?? this.shadowRoot.querySelector('input');
-    input?.focus();
+    this.shadowRoot.querySelector('select')?.focus();
   }
 
   sync() {
     if (this.value) {
       this.#target?.setAttribute('color-palette', this.value);
+    } else {
+      this.#target?.removeAttribute('color-palette');
     }
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'rh-context-picker': RhContextPicker;
   }
 }

@@ -8,6 +8,7 @@ export class UxdotPatternSSRControllerClient extends RHDSSSRController {
   jsContent = ssrAdopt();
   hasCss = false;
   hasJs = false;
+  viewportSrc?: string;
 
   hostConnected() {
     const root = this.host.shadowRoot;
@@ -16,6 +17,7 @@ export class UxdotPatternSSRControllerClient extends RHDSSSRController {
     }
     this.hasCss = !!root.querySelector('#css-panel rh-code-block pre')?.textContent?.trim();
     this.hasJs = !!root.querySelector('#js-panel rh-code-block pre')?.textContent?.trim();
+    this.viewportSrc = root.querySelector<HTMLIFrameElement>('#viewport-frame')?.src;
     this.host.requestUpdate();
   }
 }

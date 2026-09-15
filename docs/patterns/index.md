@@ -13,6 +13,7 @@ summaries:
   link: Directs users to other domains or pages
   link-with-icon: Adds additional context or decoration to a link
   logo-wall: Visual arrangement of logos representing various brands, companies, or organizations
+  stacked-navigation: Primary and secondary navigation with sticky scroll and z-index coordination
   search-bar: Performs a search and displays relevant content
   skip-navigation: Moves a user down to content by keyboard input
   sticky-banner: Anchors an offer to the bottom edge of a page
