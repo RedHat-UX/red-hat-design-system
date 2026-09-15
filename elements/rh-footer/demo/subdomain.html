@@ -1,11 +1,12 @@
 ---
 description: "Subdomain footer for docs or other Red Hat properties. Shows domain name, language/theme switcher placeholders, and fewer navigation columns."
 ---
-<rh-footer color-palette="darkest" data-analytics-region="page-footer">
-  <a slot="logo"
-     href="https://docs.redhat.com"
-     data-analytics-category="Footer"
-     data-analytics-text="Logo">Docs</a>
+<rh-footer color-palette="darkest"
+           data-analytics-region="page-footer"
+           logo-href="https://docs.redhat.com/en"
+           logo-analytics-category="Footer"
+           logo-analytics-text="Logo">
+  <span slot="logo">Docs</span>
   <div slot="header-secondary" class="header-controls">
     <label class="visually-hidden" for="select-language">Choose page language:</label>
     <rh-select id="select-language">
