@@ -3,6 +3,14 @@
 [build.environment]
   NODE_OPTIONS = "--max_old_space_size=8192"
 
+[dev]
+  command = "npm run serve"
+  targetPort = 8080
+  publish = "_site"
+
+[functions]
+  directory = "netlify/functions"
+
 [[redirects]]
   from = '/components/get-started/*'
   to = '/get-started/'
