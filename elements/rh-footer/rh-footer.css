@@ -16,19 +16,8 @@
   color-scheme: only dark !important;
 }
 
-/* Should only be applied if scripting is disabled */
-@media (scripting: none) {
-  :host {
-    /** Minimum footer height when scripting is disabled */
-    min-height: var(--rh-footer-nojs-min-height);
-  }
-}
-
 :host,
 ::slotted(rh-footer-universal) {
-  --_fallback-animation: nothing-doing !important;
-  --_fallback-opacity: 1 !important;
-
   overflow-y: initial;
 }
 
