@@ -10,6 +10,7 @@
 
   /** Tile line height */
   line-height: var(--rh-line-height-body-text, 1.5);
+
 }
 
 [hidden] {
@@ -92,6 +93,14 @@
 
   position: relative;
   padding: var(--_padding);
+
+  /** Default surface: lightest in light scheme, darkest in dark */
+  background-color:
+    var(--_background-color,
+      light-dark(
+          var(--rh-color-surface-lightest, #ffffff),
+          var(--rh-color-surface-darkest, #151515)
+        ));
 
   /** Tile border radius */
   border-radius: var(--rh-border-radius-default, 3px);
@@ -391,13 +400,13 @@ svg {
 }
 
 /** Darkest palette background */
-:host([color-palette='darkest']) { background-color: var(--rh-color-surface-darkest, #151515); }
+:host([color-palette='darkest']) { --_background-color: var(--rh-color-surface-darkest, #151515); }
 
 /** Darker palette background */
-:host([color-palette='darker']) { background-color: var(--rh-color-surface-darker, #1f1f1f); }
+:host([color-palette='darker']) { --_background-color: var(--rh-color-surface-darker, #1f1f1f); }
 
 /** Dark palette background */
-:host([color-palette='dark']) { background-color: var(--rh-color-surface-dark, #383838); }
+:host([color-palette='dark']) { --_background-color: var(--rh-color-surface-dark, #383838); }
 
 :host([color-palette^='light']) {
   /** Interactive color for light palettes */
@@ -420,10 +429,10 @@ svg {
 }
 
 /** Lightest palette background */
-:host([color-palette='lightest']) { background-color: var(--rh-color-surface-lightest, #ffffff); }
+:host([color-palette='lightest']) { --_background-color: var(--rh-color-surface-lightest, #ffffff); }
 
 /** Lighter palette background */
-:host([color-palette='lighter']) { background-color: var(--rh-color-surface-lighter, #f2f2f2); }
+:host([color-palette='lighter']) { --_background-color: var(--rh-color-surface-lighter, #f2f2f2); }
 
 /** Light palette background */
-:host([color-palette='light']) { background-color: var(--rh-color-surface-light, #e0e0e0); }
+:host([color-palette='light']) { --_background-color: var(--rh-color-surface-light, #e0e0e0); }
