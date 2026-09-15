@@ -1,0 +1,179 @@
+:host {
+  display: block;
+  container-type: inline-size;
+  container-name: pathfinder;
+  margin-block-start: var(--rh-space-4xl, 64px);
+}
+
+nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--rh-space-lg, 16px);
+}
+
+#previous,
+#next {
+  display: none;
+  position: relative;
+  box-sizing: border-box;
+  align-items: center;
+  gap: var(--rh-space-lg, 16px);
+  padding: var(--rh-space-lg, 16px);
+  border-width: var(--rh-border-width-sm, 1px);
+  border-style: solid;
+  border-color:
+    light-dark(
+        var(--rh-color-interactive-primary-default-on-light, #0066cc),
+        var(--rh-color-interactive-primary-default-on-dark, #92c5f9));
+  border-radius: var(--rh-border-radius-default, 3px);
+  color:
+    light-dark(
+        var(--rh-color-interactive-primary-default-on-light, #0066cc),
+        var(--rh-color-interactive-primary-default-on-dark, #92c5f9));
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-xs, 4px);
+}
+
+.label {
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+  font-weight: var(--rh-font-weight-heading-bold, 700);
+  line-height: var(--rh-line-height-heading, 1.3);
+}
+
+::slotted(a) {
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
+  line-height: var(--rh-line-height-body-text, 1.5);
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+::slotted(a):after {
+  display: block;
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+::slotted(a:focus-visible) {
+  outline: none !important;
+}
+
+rh-icon {
+  flex-shrink: 0;
+  translate: 0 0;
+  transition:
+    translate
+    var(--rh-animation-speed, 0.3s)
+    var(--rh-animation-timing, cubic-bezier(0.465, 0.183, 0.153, 0.946));
+}
+
+#previous {
+  grid-column: 1;
+  justify-self: start;
+  justify-content: flex-end;
+
+  & rh-icon {
+    margin-inline-end: auto;
+  }
+
+  & .text {
+    text-align: end;
+  }
+}
+
+#next {
+  grid-column: 2;
+  justify-self: end;
+
+  & rh-icon {
+    margin-inline-start: auto;
+  }
+
+  & .text {
+    text-align: start;
+  }
+}
+
+/* -----------------------------------------------------------------------
+ * Slot detection: :host(:has()) queries light DOM children from shadow CSS
+ * in Safari/Firefox but fails in Chromium. The @scope block duplicates
+ * each rule using :scope for Chromium.
+ * https://daverupert.com/2026/06/fix-for-host-has-slot/
+ * ----------------------------------------------------------------------- */
+
+:host(:has(> [slot='previous'])) #previous { display: flex; }
+:host(:has(> [slot='next'])) #next { display: flex; }
+
+@scope {
+  :scope:has(> [slot='previous']) #previous { display: flex; }
+  :scope:has(> [slot='next']) #next { display: flex; }
+}
+
+/* -----------------------------------------------------------------------
+ * Hover — uses direct :hover on the shadow card div, which is reliable
+ * because the stretched ::after on the slotted <a> keeps pointer events
+ * within the card's bounding box.
+ * ----------------------------------------------------------------------- */
+
+#previous:hover,
+#next:hover {
+  cursor: pointer;
+  background:
+    light-dark(
+        var(--rh-color-interactive-primary-hover-on-light, #004080),
+        var(--rh-color-interactive-primary-hover-on-dark, #b9d7f7));
+  border-color:
+    light-dark(
+        var(--rh-color-interactive-primary-hover-on-light, #004080),
+        var(--rh-color-interactive-primary-hover-on-dark, #b9d7f7));
+  color:
+    light-dark(
+        var(--rh-color-text-primary-on-dark, #ffffff),
+        var(--rh-color-text-primary-on-light, #151515));
+}
+
+#previous:hover rh-icon { translate: -3px 0; }
+#next:hover rh-icon { translate: 3px 0; }
+
+/* -----------------------------------------------------------------------
+ * Focus — :focus-within follows the flat/composed tree, so slotted <a>
+ * focus propagates to the card div without :host(:has()) or @scope.
+ * ----------------------------------------------------------------------- */
+
+#previous:focus-within,
+#next:focus-within {
+  outline:
+    var(--rh-border-width-lg, 3px)
+    solid
+    light-dark(
+        var(--rh-color-interactive-primary-default-on-light, #0066cc),
+        var(--rh-color-interactive-primary-default-on-dark, #92c5f9));
+  outline-offset: var(--rh-border-width-sm, 1px);
+  background:
+    light-dark(
+        var(--rh-color-interactive-primary-hover-on-light, #004080),
+        var(--rh-color-interactive-primary-hover-on-dark, #b9d7f7));
+  border-color:
+    light-dark(
+        var(--rh-color-interactive-primary-hover-on-light, #004080),
+        var(--rh-color-interactive-primary-hover-on-dark, #b9d7f7));
+  color:
+    light-dark(
+        var(--rh-color-text-primary-on-dark, #ffffff),
+        var(--rh-color-text-primary-on-light, #151515));
+}
+
+#previous:focus-within rh-icon { translate: -3px 0; }
+#next:focus-within rh-icon { translate: 3px 0; }

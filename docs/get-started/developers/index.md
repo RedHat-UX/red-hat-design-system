@@ -7,6 +7,7 @@ tags:
   - getstarted
   - developers
 permalink: /get-started/developers/index.html
+pathfinder: true
 subnav:
   collection: sortedDevelopers
   order: 00
@@ -18,6 +19,7 @@ order: 20
       data-helmet>
 
 <script type="module" data-helmet>
+
   import '@rhds/elements/rh-card/rh-card.js';
   import '@rhds/elements/rh-tile/rh-tile.js';
   import '@rhds/elements/rh-cta/rh-cta.js';
