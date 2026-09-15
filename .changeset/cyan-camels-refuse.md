@@ -2,5 +2,5 @@
 "@rhds/elements": patch
 ---
 
-`<rh-tile>`: added default background color (`surface-lightest`/`surface-darkest`) so tiles are no longer transparent
+`<rh-tile>`: ensured tiles have a visible background when no `color-palette` is specified.
   
