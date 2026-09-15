@@ -9,6 +9,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
+import { lightdomCSS } from '@rhds/elements/lib/lightdom-css.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-pagination.css' with { type: 'css' };
@@ -34,6 +35,7 @@ const L2 = html`
  */
 @customElement('rh-pagination')
 @themable
+@lightdomCSS(import.meta.url, './rh-pagination-lightdom.css')
 export class RhPagination extends LitElement {
   static readonly styles = [styles];
 
