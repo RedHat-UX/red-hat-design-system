@@ -40,28 +40,31 @@ description: "Legacy footer slot pattern. Demonstrates backward compatibility wi
                          data-analytics-category="Footer|social-links"
                          data-analytics-text="Twitter"
                          accessible-label="X/Twitter"></rh-footer-social-link>
-  <h3 slot="links"
-      data-analytics-text="Platforms">Platforms</h3>
-  <ul slot="links">
-    <li><a href="https://redhat.com/en/technologies/cloud-computing/openshift/lightspeed"
-         data-analytics-category="Footer|Platforms"
-         data-analytics-text="Red Hat AI">Red Hat AI</a></li>
-    <li><a href="https://redhat.com/en/technologies/linux-platforms/enterprise-linux"
-         data-analytics-category="Footer|Platforms"
-         data-analytics-text="Red Hat Enterprise Linux">Red Hat Enterprise Linux</a></li>
-    <li><a href="https://redhat.com/en/technologies/cloud-computing/openshift"
-         data-analytics-category="Footer|Platforms"
-         data-analytics-text="Red Hat OpenShift">Red Hat OpenShift</a></li>
-    <li><a href="https://redhat.com/en/technologies/management/ansible"
-         data-analytics-category="Footer|Platforms"
-         data-analytics-text="Red Hat Ansible Automation Platform">Red Hat Ansible Automation Platform</a></li>
-    <li><a href="https://redhat.com/en/technologies/all-products"
-         data-analytics-category="Footer|Platforms"
-         data-analytics-text="See all products">See all products</a></li>
-  </ul>
-  <h3 slot="links"
+  <rh-footer-links slot="links">
+    <h3 slot="header"
+        data-analytics-text="Platforms">Platforms</h3>
+    <ul>
+      <li><a href="https://redhat.com/en/technologies/cloud-computing/openshift/lightspeed"
+          data-analytics-category="Footer|Platforms"
+          data-analytics-text="Red Hat AI">Red Hat AI</a></li>
+      <li><a href="https://redhat.com/en/technologies/linux-platforms/enterprise-linux"
+          data-analytics-category="Footer|Platforms"
+          data-analytics-text="Red Hat Enterprise Linux">Red Hat Enterprise Linux</a></li>
+      <li><a href="https://redhat.com/en/technologies/cloud-computing/openshift"
+          data-analytics-category="Footer|Platforms"
+          data-analytics-text="Red Hat OpenShift">Red Hat OpenShift</a></li>
+      <li><a href="https://redhat.com/en/technologies/management/ansible"
+          data-analytics-category="Footer|Platforms"
+          data-analytics-text="Red Hat Ansible Automation Platform">Red Hat Ansible Automation Platform</a></li>
+      <li><a href="https://redhat.com/en/technologies/all-products"
+          data-analytics-category="Footer|Platforms"
+          data-analytics-text="See all products">See all products</a></li>
+    </ul>
+  </rh-footer-links>
+  <rh-footer-links slot="links">
+  <h3 slot="header"
       data-analytics-text="Tools">Tools</h3>
-  <ul slot="links">
+  <ul>
     <li><a href="https://redhat.com/en/services/training-and-certification"
          data-analytics-category="Footer|Tools"
          data-analytics-text="Training and certification">Training and certification</a></li>
@@ -84,9 +87,11 @@ description: "Legacy footer slot pattern. Demonstrates backward compatibility wi
          data-analytics-category="Footer|Tools"
          data-analytics-text="Documentation">Documentation</a></li>
   </ul>
-  <h3 slot="links"
+  </rh-footer-links>
+  <rh-footer-links slot="links">
+  <h3 slot="header"
       data-analytics-text="Try buy sell">Try, buy, &amp; sell</h3>
-  <ul slot="links">
+  <ul>
     <li><a href="https://redhat.com/en/products/trials"
          data-analytics-category="Footer|Try buy sell"
          data-analytics-text="Product trial center">Product trial center</a></li>
@@ -97,9 +102,11 @@ description: "Legacy footer slot pattern. Demonstrates backward compatibility wi
          data-analytics-category="Footer|Try buy sell"
          data-analytics-text="Console">Console</a></li>
   </ul>
-  <h3 slot="links"
+  </rh-footer-links>
+  <rh-footer-links slot="links">
+  <h3 slot="header"
       data-analytics-text="Communicate">Communicate</h3>
-  <ul slot="links">
+  <ul>
     <li><a href="https://redhat.com/en/contact"
          data-analytics-category="Footer|Communicate"
          data-analytics-text="Contact sales">Contact sales</a></li>
@@ -113,7 +120,8 @@ description: "Legacy footer slot pattern. Demonstrates backward compatibility wi
          data-analytics-category="Footer|Communicate"
          data-analytics-text="Social">Social</a></li>
   </ul>
-  <rh-footer-block slot="main-secondary">
+  </rh-footer-links>
+  <rh-footer-block slot="aside">
     <h3 slot="header"
         data-analytics-text="About Red Hat">About Red Hat</h3>
     <p>Red Hat is an open hybrid cloud technology leader, delivering a consistent, comprehensive foundation for transformative IT and artificial intelligence (AI) applications in the enterprise. As a <a href="https://redhat.com/en/about/company">trusted adviser to the Fortune 500</a>, Red Hat offers cloud, developer, Linux, automation, and application platform technologies, as well as <a href="https://redhat.com/en/about/our-culture/awards">award-winning</a> services.</p>
