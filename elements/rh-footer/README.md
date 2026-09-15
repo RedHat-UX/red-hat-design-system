@@ -32,16 +32,19 @@ import '@rhds/elements/rh-footer/rh-footer.js';
       <rh-option value="Spanish" icon-set="ui" icon="language">Spanish</rh-option>
     </rh-select>
   </div>
-  <h3 slot="links" data-analytics-text="Platforms">Platforms</h3>
-  <ul slot="links">
+  <rh-footer-links slot="links">
+  <h3 slot="header" data-analytics-text="Platforms">Platforms</h3>
+  <ul>
     <li><a href="https://redhat.com/en/technologies/cloud-computing/openshift/lightspeed" data-analytics-category="Footer|Platforms" data-analytics-text="Red Hat AI">Red Hat AI</a></li>
     <li><a href="https://redhat.com/en/technologies/linux-platforms/enterprise-linux" data-analytics-category="Footer|Platforms" data-analytics-text="Red Hat Enterprise Linux">Red Hat Enterprise Linux</a></li>
     <li><a href="https://redhat.com/en/technologies/cloud-computing/openshift" data-analytics-category="Footer|Platforms" data-analytics-text="Red Hat OpenShift">Red Hat OpenShift</a></li>
     <li><a href="https://redhat.com/en/technologies/management/ansible" data-analytics-category="Footer|Platforms" data-analytics-text="Red Hat Ansible Automation Platform">Red Hat Ansible Automation Platform</a></li>
     <li><a href="https://redhat.com/en/technologies/all-products" data-analytics-category="Footer|Platforms" data-analytics-text="See all products">See all products</a></li>
   </ul>
-  <h3 slot="links" data-analytics-text="Tools">Tools</h3>
-  <ul slot="links">
+  </rh-footer-links>
+  <rh-footer-links slot="links">
+  <h3 slot="header" data-analytics-text="Tools">Tools</h3>
+  <ul>
     <li><a href="https://redhat.com/en/services/training-and-certification" data-analytics-category="Footer|Tools" data-analytics-text="Training and certification">Training and certification</a></li>
     <li><a href="https://sso.redhat.com" data-analytics-category="Footer|Tools" data-analytics-text="My account">My account</a></li>
     <li><a href="https://access.redhat.com" data-analytics-category="Footer|Tools" data-analytics-text="Customer support">Customer support</a></li>
@@ -50,20 +53,25 @@ import '@rhds/elements/rh-footer/rh-footer.js';
     <li><a href="https://catalog.redhat.com/" data-analytics-category="Footer|Tools" data-analytics-text="Red Hat Ecosystem Catalog">Red Hat Ecosystem Catalog</a></li>
     <li><a href="https://docs.redhat.com/" data-analytics-category="Footer|Tools" data-analytics-text="Documentation">Documentation</a></li>
   </ul>
-  <h3 slot="links" data-analytics-text="Try buy sell">Try, buy, &amp; sell</h3>
-  <ul slot="links">
+  </rh-footer-links>
+  <rh-footer-links slot="links">
+  <h3 slot="header" data-analytics-text="Try buy sell">Try, buy, &amp; sell</h3>
+  <ul>
     <li><a href="https://redhat.com/en/products/trials" data-analytics-category="Footer|Try buy sell" data-analytics-text="Product trial center">Product trial center</a></li>
     <li><a href="https://www.redhat.com/en/store" data-analytics-category="Footer|Try buy sell" data-analytics-text="Red Hat Store">Red Hat Store</a></li>
     <li><a href="https://cloud.redhat.com/" data-analytics-category="Footer|Try buy sell" data-analytics-text="Console">Console</a></li>
   </ul>
-  <h3 slot="links" data-analytics-text="Communicate">Communicate</h3>
-  <ul slot="links">
+  </rh-footer-links>
+  <rh-footer-links slot="links">
+  <h3 slot="header" data-analytics-text="Communicate">Communicate</h3>
+  <ul>
     <li><a href="https://redhat.com/en/contact" data-analytics-category="Footer|Communicate" data-analytics-text="Contact sales">Contact sales</a></li>
     <li><a href="https://redhat.com/en/services/support" data-analytics-category="Footer|Communicate" data-analytics-text="Contact customer service">Contact customer service</a></li>
     <li><a href="https://redhat.com/en/services/training-and-certification/contact-us" data-analytics-category="Footer|Communicate" data-analytics-text="Contact training">Contact training</a></li>
     <li><a href="https://redhat.com/en/about/social" data-analytics-category="Footer|Communicate" data-analytics-text="Social">Social</a></li>
   </ul>
-  <rh-footer-block slot="main-secondary">
+  </rh-footer-links>
+  <rh-footer-block slot="aside">
     <h3 slot="header" data-analytics-text="About Red Hat">About Red Hat</h3>
     <p>Red Hat is an open hybrid cloud technology leader, delivering a consistent, comprehensive foundation for transformative IT and artificial intelligence (AI) applications in the enterprise.</p>
   </rh-footer-block>

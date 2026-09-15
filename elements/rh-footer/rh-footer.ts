@@ -1,33 +1,26 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
-import { classMap } from 'lit/directives/class-map.js';
+import { state } from 'lit/decorators/state.js';
+import { provide } from '@lit/context';
 
-import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 export { RhFooterUniversal } from './rh-footer-universal.js';
 
-import '@rhds/elements/rh-accordion/rh-accordion.js';
-
-import './rh-footer-links.js';
+import { RhFooterLinks } from './rh-footer-links.js';
 import './rh-footer-social-link.js';
 import './rh-footer-block.js';
 
 import style from './rh-footer.css' with { type: 'css' };
-
-import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
-
-function isHeaderTagName(tagName: string) {
-  return !!tagName.match(/^H[1-6]$/i);
-}
+import { compactContext } from './context.js';
 
 /**
  * Site footer for navigation links, social icons, and legal content.
  * Use when a page needs branded footer navigation. Must slot an
  * `rh-footer-universal` in the `universal` slot and should contain
  * `rh-footer-links` groups and `rh-footer-block` sections. Uses a
- * `<footer>` landmark with `aria-labelledby` auto-wired to headers.
- * Tab navigates links. On mobile, collapses to accordion.
+ * `<footer>` landmark with explicit navigation groups. Tab navigates links.
+ * On mobile, each navigation group is a native disclosure.
  *
  * @summary Site footer with navigation links, social icons, and legal content
  *
@@ -48,6 +41,7 @@ export class RhFooter extends LitElement {
   /**
    * Isomorphic import.meta.url function
    * Requires a node.js dom shim that sets window.location
+   * @param relativeLocation URL to resolve from this module
    */
   static getImportURL(relativeLocation: string | URL): string | URL {
     const url = new URL(relativeLocation, import.meta.url);
@@ -57,26 +51,56 @@ export class RhFooter extends LitElement {
     return url;
   }
 
-  #compact = false;
-
   #internals = InternalsController.of(this);
 
-  /**
-   * ScreenSizeController effects callback to set #compact is true when viewport
-   * `(min-width: ${tabletLandscapeBreakpoint})`.
-   */
-  protected screenSize = new ScreenSizeController(this, 'md', {
-    onChange: matches => {
-      this.#compact = !matches;
-    },
-  });
+  #compactQuery?: MediaQueryList;
+
+  #expandedGroup?: RhFooterLinks;
+
+  #onCompactChange = (event: MediaQueryListEvent) => {
+    this.compact = event.matches;
+  };
+
+  #onNavigationGroupOpen = (event: Event) => {
+    if (!this.compact || !(event.target instanceof RhFooterLinks)) {
+      return;
+    }
+    if (this.#expandedGroup !== event.target) {
+      if (this.#expandedGroup) {
+        this.#expandedGroup.open = false;
+      }
+      this.#expandedGroup = event.target;
+    }
+  };
+
+  /** Start mobile-first so SSR and hydration produce the same template. */
+  @provide({ context: compactContext })
+  @state() compact = true;
+
+  constructor() {
+    super();
+    if (!isServer) {
+      this.#compactQuery = matchMedia('(max-width: 991px)');
+    }
+  }
 
   override connectedCallback() {
     super.connectedCallback();
     this.#updateRole();
-    this.#compact = !this.screenSize.matches.has('md');
-    // wire up accessibility aria-labels with unordered lists
-    this.updateAccessibility();
+    this.#compactQuery?.addEventListener('change', this.#onCompactChange);
+    this.addEventListener('rh-footer-links-open', this.#onNavigationGroupOpen);
+  }
+
+  override disconnectedCallback() {
+    super.disconnectedCallback();
+    this.#compactQuery?.removeEventListener('change', this.#onCompactChange);
+    this.removeEventListener('rh-footer-links-open', this.#onNavigationGroupOpen);
+  }
+
+  protected override firstUpdated() {
+    if (!isServer) {
+      this.compact = this.#compactQuery?.matches ?? true;
+    }
   }
 
   /**
@@ -110,7 +134,7 @@ export class RhFooter extends LitElement {
   override render() {
     return html`
       <!-- main footer container, containing all footer content. -->
-      <div class="footer base ${classMap({ isMobile: this.#compact })}" part="base">
+      <div class="footer base" part="base">
         <h2 id="heading"><!--
             summary: visually-hidden footer heading for assistive technology
             description: |
@@ -182,19 +206,19 @@ export class RhFooter extends LitElement {
           <!-- main content container. -->
           <div class="section main" part="section main">
             <!-- Expects block elements. Overrides main-primary and
-                 main-secondary slots. Should contain \`<rh-footer-links>\`
+                 aside slots. Should contain \`<rh-footer-links>\`
                  groups. Screen readers use aria-labelledby on each group. -->
             <slot name="main">
               <!-- container for main footer links -->
               <div class="main-primary" part="main-primary">
                 <!-- Expects block elements: \`<rh-footer-links>\` with heading
-                     elements. On mobile, collapses to accordion. Screen
+                     elements. On mobile, each group is a native disclosure. Screen
                      readers use \`aria-labelledby\` on each link group. -->
                 <slot name="main-primary">
                   <!-- container for main footer links -->
-                  <div class="links" part="links">
-                    ${this.#renderLinksTemplate(this.#compact)}
-                  </div>
+                  <nav class="links" part="links" aria-labelledby="heading">
+                    <slot name="links"></slot>
+                  </nav>
                 </slot>
               </div>
               <!-- container for prose or promotional content -->
@@ -202,7 +226,7 @@ export class RhFooter extends LitElement {
                 <!-- Expects block elements: prose, promotional content, or
                      \`<rh-footer-block>\` elements. Screen readers announce
                      content in DOM order. -->
-                <slot name="main-secondary"></slot>
+                <slot name="aside"><slot name="main-secondary"></slot></slot>
               </div>
             </slot>
           </div>
@@ -215,68 +239,6 @@ export class RhFooter extends LitElement {
         </slot>
       </div>
     `;
-  }
-
-  #renderLinksTemplate(isMobile = false) {
-    // gather all of the links that need to be wrapped into the accordion
-    // give them a designation of either 'header' or 'panel'
-    const children = Array.from(this.querySelectorAll?.(':scope > [slot^=links]') ?? []);
-
-    // Update the dynamic slot names if on mobile
-    children.forEach((child, i) => child.setAttribute('slot', isMobile ? `links-${i}` : 'links'));
-
-    return !(isMobile && children) ? html`
-      <!-- Main footer link columns. Expects alternating headings (e.g. \`<h3>\`) and \`<ul>\` lists. Each heading MUST have a unique id so screen readers announce groups via \`aria-labelledby\`. -->
-      <slot name="links"></slot>
-      ` : html`
-
-      <rh-accordion on="dark" color-palette="darkest">${children.map((child, i) => {
-          const type = isHeaderTagName(child.tagName) ? 'header' : 'panel';
-          // SEE https://github.com/asyncLiz/minify-html-literals/issues/37
-          switch (type) {
-            case 'header': return html`
-              <!-- mobile links accordion header element -->
-              <rh-accordion-header part="links-accordion-header">
-                <slot name="links-${i}"></slot>
-              </rh-accordion-header>`;
-            case 'panel': return html`
-              <!-- mobile links panel container element -->
-              <rh-accordion-panel part="links-accordion-panel">
-                <slot name="links-${i}"></slot>
-              </rh-accordion-panel>`;
-          }
-        })}
-      </rh-accordion>
-    `;
-  }
-
-  private static LISTS_SELECTOR =
-    ':is([slot^=links],[slot=footer-links-primary],[slot=footer-links-secondary]):is(ul)';
-
-  /**
-   * Get any `<ul>`s that are in the designated link slots
-   * and synchronously update each list and header if we need to.
-   */
-  public updateAccessibility(): void {
-    for (const list of this.querySelectorAll?.(RhFooter.LISTS_SELECTOR) ?? []) {
-      // if we already have a label then we assume that the user
-      // has wired this up themselves.
-      if (!list.hasAttribute('aria-labelledby')) {
-        // get the corresponding header that should be the previous sibling
-        const header =
-          isHeaderTagName(list.previousElementSibling?.tagName ?? '') ?
-            list.previousElementSibling
-            : null;
-        if (!header) {
-          return;
-        } else {
-          // add an ID to the header if we need it
-          header.id ||= getRandomId('rh-footer');
-          // add that header id to the aria-labelledby attribute
-          list.setAttribute('aria-labelledby', header.id);
-        }
-      }
-    }
   }
 }
 

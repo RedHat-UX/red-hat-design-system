@@ -15,9 +15,10 @@ description: "Subdomain footer for docs or other Red Hat properties. Shows domai
     </rh-select>
     <rh-scheme-dropdown></rh-scheme-dropdown>
   </div>
-  <h3 slot="links"
+  <rh-footer-links slot="links">
+  <h3 slot="header"
       data-analytics-text="Learn">Learn</h3>
-  <ul slot="links">
+  <ul>
     <li><a href="https://developers.redhat.com/"
          data-analytics-category="Footer|Learn"
          data-analytics-text="Developer resources">Developer resources</a></li>
@@ -37,9 +38,11 @@ description: "Subdomain footer for docs or other Red Hat properties. Shows domai
          data-analytics-category="Footer|Learn"
          data-analytics-text="See all documentation">See all documentation</a></li>
   </ul>
-  <h3 slot="links"
+  </rh-footer-links>
+  <rh-footer-links slot="links">
+  <h3 slot="header"
       data-analytics-text="Try buy sell">Try, buy, &amp; sell</h3>
-  <ul slot="links">
+  <ul>
     <li><a href="https://redhat.com/en/products/trials"
          data-analytics-category="Footer|Try buy sell"
          data-analytics-text="Product trial center">Product trial center</a></li>
@@ -50,9 +53,11 @@ description: "Subdomain footer for docs or other Red Hat properties. Shows domai
          data-analytics-category="Footer|Try buy sell"
          data-analytics-text="Red Hat Store">Red Hat Store</a></li>
   </ul>
-  <h3 slot="links"
+  </rh-footer-links>
+  <rh-footer-links slot="links">
+  <h3 slot="header"
       data-analytics-text="Communities">Communities</h3>
-  <ul slot="links">
+  <ul>
     <li><a href="https://access.redhat.com/community"
          data-analytics-category="Footer|Communities"
          data-analytics-text="Customer Portal Community">Customer Portal Community</a></li>
@@ -63,7 +68,8 @@ description: "Subdomain footer for docs or other Red Hat properties. Shows domai
          data-analytics-category="Footer|Communities"
          data-analytics-text="How we contribute">How we contribute</a></li>
   </ul>
-  <rh-footer-block slot="main-secondary">
+  </rh-footer-links>
+  <rh-footer-block slot="aside">
     <h3 slot="header"
         data-analytics-text="About Red Hat Documentation">About Red Hat Documentation</h3>
     <p>We help Red Hat users innovate and achieve their goals with our products and services with content they can trust. <a href="https://docs.redhat.com/en/documentation">Explore our recent updates</a>.</p>

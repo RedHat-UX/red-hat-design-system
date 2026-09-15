@@ -4,15 +4,129 @@
   gap: 0.625em;
 }
 
-[part] {
+:host(:not([slot='links'])) [part] {
   display: contents;
 }
 
+:host([slot='links']) {
+  display: block;
+  min-inline-size: 0;
+}
+
+details {
+  background-color: var(--rh-color-surface-darkest, #151515);
+  border-block-end:
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--rh-color-border-subtle-on-dark, #707070);
+}
+
+:host([slot='links']:first-of-type) details {
+  border-block-start:
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--rh-color-border-subtle-on-dark, #707070);
+}
+
+summary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--rh-space-lg, 16px);
+  padding:
+    var(--rh-space-lg, 16px)
+    var(--rh-space-xl, 24px);
+  cursor: pointer;
+  list-style: none;
+  background-color: var(--rh-color-surface-darkest, #151515);
+}
+
+summary::marker,
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary rh-icon {
+  --rh-icon-size: var(--rh-size-icon-01, 16px);
+
+  flex: none;
+  transition: rotate 0.2s ease;
+}
+
+summary:after,
+#details-content:after {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: var(--rh-border-width-lg, 3px);
+  content: '';
+  background-color: transparent;
+}
+
+@media screen and (max-width: 991px) {
+  summary:is(:hover, :active, :focus-visible) {
+    background-color:
+      light-dark(
+          var(--rh-color-surface-lighter, #f2f2f2),
+          oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h)
+        );
+  }
+
+  summary:focus-visible {
+    outline: 2px solid var(--rh-color-interactive-primary-default);
+    outline-offset: -2px;
+  }
+}
+
+details[open] summary rh-icon {
+  rotate: 180deg;
+}
+
+details[open] {
+  border-inline-end:
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--rh-color-border-subtle-on-dark, #707070);
+  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
+}
+
+details[open] :is(summary, #details-content):after {
+  background-color: var(--rh-color-accent-brand, #ee0000);
+}
+
+#details-content {
+  position: relative;
+  background-color: var(--rh-color-surface-darkest, #151515);
+  padding:
+    var(--rh-space-lg, 16px)
+    var(--rh-space-xl, 24px);
+}
+
+details:not([open]) #details-content {
+  visibility: hidden;
+}
+
+::slotted(ul) {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--rh-footer-links-gap, var(--rh-space-lg, 16px));
+  padding: 0;
+  margin: 0;
+}
+
 ::slotted(:is(h1, h2, h3, h4, h5)) {
-  font-weight: 500;
-  font-size: 0.875em;
-  margin-top: 0;
-  margin-bottom: 0;
+  color: var(--rh-color-text-primary) !important;
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+  font-weight: var(--rh-font-weight-heading-medium, 500) !important;
+  font-size:
+    var(
+        --rh-footer-link-header-font-size,
+        var(--rh-font-size-body-text-md, 1rem)
+      ) !important;
+  line-height: var(--rh-line-height-heading, 1.3) !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 :host([header-hidden]) .header ::slotted(*) {
@@ -25,4 +139,70 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+@media screen and (min-width: 768px) {
+  ::slotted(:is(h1, h2, h3, h4, h5)) {
+    font-size:
+      var(
+          --rh-footer-link-header-font-size,
+          var(--rh-font-size-body-text-lg, 1.125rem)
+        ) !important;
+  }
+
+  ::slotted(ul) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (min-width: 992px) {
+  ::slotted(ul) {
+    grid-template-columns: 1fr;
+  }
+
+  details {
+    background-color: transparent;
+    border-block-end: 0;
+  }
+
+  details[open] {
+    border-inline-end: 0;
+    box-shadow: none;
+  }
+
+  :host([slot='links']:first-of-type) details {
+    border-block-start: 0;
+  }
+
+  summary {
+    padding: 0 0 var(--rh-space-lg, 16px);
+    pointer-events: none;
+    cursor: default;
+    background-color: transparent;
+  }
+
+  summary rh-icon {
+    display: none;
+  }
+
+  #details-content {
+    padding: 0;
+    background-color: transparent;
+  }
+
+  summary:after,
+  #details-content:after {
+    display: none;
+  }
+
+  /* Show the server-rendered mobile-first disclosure before JS sets `open`. */
+  details:not([open]) #details-content {
+    display: block;
+    visibility: visible;
+  }
+
+  details:not([open])::details-content {
+    display: contents;
+    content-visibility: visible;
+  }
 }
