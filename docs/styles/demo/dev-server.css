@@ -21,6 +21,12 @@
     --pf-theme--color--surface--accent: black;
     --pf-theme--color--accent: black;
   }
+
+  /* Override upstream PFE dev server's hardcoded text-align: left for RTL support */
+  html,
+  body {
+    text-align: start;
+  }
 }
 
 @layer layout {
@@ -31,6 +37,8 @@
   }
 
   #sidebar {
+    position: relative;
+    z-index: 9;
     height: calc(100dvh - var(--pf-demo-header-height, 4.375rem));
   }
 

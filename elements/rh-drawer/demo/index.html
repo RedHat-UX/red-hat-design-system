@@ -1,0 +1,21 @@
+<meta itemprop="description" content="Minimal drawer. Click the trigger to slide the panel open.">
+<div id="container">
+  <rh-drawer id="drawer" trigger-id="trigger">
+    <p>Panel content slotted here.</p>
+  </rh-drawer>
+  <div id="main">
+    <button id="trigger" aria-controls="drawer" aria-expanded="false">Toggle Drawer</button>
+
+    <p>Click the trigger to open the drawer panel.</p>
+  </div>
+</div>
+
+<style>
+  #main {
+    padding: var(--rh-space-2xl, 32px);
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-drawer/rh-drawer.js';
+</script>
