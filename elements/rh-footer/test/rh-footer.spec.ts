@@ -7,11 +7,11 @@ import { RhFooter, RhFooterUniversal } from '../rh-footer.js';
 import '@patternfly/pfe-tools/test/stub-logger.js';
 
 const KITCHEN_SINK_TEMPLATE = html`
-  <rh-footer color-palette="darkest">
-    <a slot="logo" href="/">
-      <img src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat logo"
-        loading="lazy"/>
-    </a>
+  <rh-footer color-palette="darkest" logo-href="/">
+    <img slot="logo"
+         src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg"
+         alt="Red Hat logo"
+         loading="lazy"/>
     <h3 slot="links">Products</h3>
     <ul slot="links">
       <li><a href="#">Red Hat Ansible Automation Platform</a></li>
@@ -202,7 +202,7 @@ describe('<rh-footer>', function() {
   describe('logo-href', function() {
     /**
      * Default logo anchor in shadow DOM.
-     * Fallback content only; not assigned when authors slot `logo`.
+     * Wraps the logo slot; `logo-href` always applies.
      * @param el universal footer under test
      */
     function logoAnchor(el: RhFooterUniversal) {
@@ -259,16 +259,132 @@ describe('<rh-footer>', function() {
       beforeEach(async function() {
         universalFooter = await fixture<RhFooterUniversal>(html`
           <rh-footer-universal logo-href="https://www.redhat.com/ja">
-            <a slot="logo" href="https://example.com/">Custom logo</a>
+            <img slot="logo" src="https://example.com/logo.svg" alt="Custom logo">
           </rh-footer-universal>
         `);
       });
 
-      it('does not apply logo-href to the slotted link', function() {
+      it('still applies logo-href to the inner logo link', function() {
+        expect(logoAnchor(universalFooter)?.getAttribute('href')).to.equal('https://www.redhat.com/ja');
         const slotted = universalFooter.querySelector('[slot="logo"]');
-        expect(slotted).to.have.attribute('href', 'https://example.com/');
         const slot = universalFooter.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="logo"]');
         expect(slot?.assignedElements()[0]).to.equal(slotted);
+      });
+    });
+  });
+
+  describe('domain footer logo-href', function() {
+    function domainLogoAnchor(el: RhFooter) {
+      return el.shadowRoot?.querySelector<HTMLAnchorElement>('.logo a');
+    }
+
+    describe('with no attribute', function() {
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(html`<rh-footer></rh-footer>`);
+      });
+
+      it('uses the default Red Hat homepage URL', function() {
+        expect(domainLogoAnchor(element)?.getAttribute('href')).to.equal('https://www.redhat.com/en');
+      });
+    });
+
+    describe('with a custom href', function() {
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(html`
+          <rh-footer logo-href="/"></rh-footer>
+        `);
+      });
+
+      it('updates the inner logo link', function() {
+        expect(domainLogoAnchor(element)?.getAttribute('href')).to.equal('/');
+      });
+    });
+  });
+
+  describe('logo-label', function() {
+    function domainLogoAnchor(el: RhFooter) {
+      return el.shadowRoot?.querySelector<HTMLAnchorElement>('.logo a');
+    }
+
+    describe('when unset', function() {
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(html`<rh-footer></rh-footer>`);
+      });
+
+      it('omits aria-label so the SVG title names the link', function() {
+        expect(domainLogoAnchor(element)?.hasAttribute('aria-label')).to.be.false;
+        expect(element.shadowRoot?.querySelector('.logo svg title')?.textContent).to.equal('Red Hat');
+      });
+    });
+
+    describe('when set', function() {
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(html`
+          <rh-footer logo-label="Docs">
+            <span slot="logo">Docs</span>
+          </rh-footer>
+        `);
+      });
+
+      it('sets aria-label on the inner logo link', function() {
+        expect(domainLogoAnchor(element)?.getAttribute('aria-label')).to.equal('Docs');
+      });
+    });
+
+    describe('when empty', function() {
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(html`
+          <rh-footer logo-label=""></rh-footer>
+        `);
+      });
+
+      it('omits aria-label', function() {
+        expect(domainLogoAnchor(element)?.hasAttribute('aria-label')).to.be.false;
+      });
+    });
+
+    describe('when whitespace only', function() {
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(html`
+          <rh-footer logo-label="   "></rh-footer>
+        `);
+      });
+
+      it('omits aria-label', function() {
+        expect(domainLogoAnchor(element)?.hasAttribute('aria-label')).to.be.false;
+      });
+    });
+  });
+
+  describe('logo analytics', function() {
+    function domainLogoAnchor(el: RhFooter) {
+      return el.shadowRoot?.querySelector<HTMLAnchorElement>('.logo a');
+    }
+
+    describe('when unset', function() {
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(html`<rh-footer></rh-footer>`);
+      });
+
+      it('omits data-analytics attributes on the inner logo link', function() {
+        const a = domainLogoAnchor(element);
+        expect(a?.hasAttribute('data-analytics-category')).to.be.false;
+        expect(a?.hasAttribute('data-analytics-text')).to.be.false;
+      });
+    });
+
+    describe('when set', function() {
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(html`
+          <rh-footer logo-analytics-category="Footer"
+                     logo-analytics-text="Logo"></rh-footer>
+        `);
+      });
+
+      it('copies analytics attributes onto the inner logo link', function() {
+        const a = domainLogoAnchor(element);
+        expect(a?.getAttribute('data-analytics-category')).to.equal('Footer');
+        expect(a?.getAttribute('data-analytics-text')).to.equal('Logo');
       });
     });
   });
@@ -409,7 +525,7 @@ describe('<rh-footer>', function() {
       let fedora: SVGElement;
 
       beforeEach(function() {
-        wordmark = element.querySelector('a[slot="logo"] img')!;
+        wordmark = element.querySelector('img[slot="logo"]')!;
         fedora = element.querySelector('rh-footer-universal')!
             .shadowRoot!
             .querySelector('.global-logo-image')!;
@@ -475,7 +591,7 @@ describe('<rh-footer>', function() {
     describe('footer-universal behaviors', function() {
       it('logo anchor tag should always link to www.redhat.com/en', async function() {
         const universalElement = await fixture<RhFooterUniversal>(UNIVERSAL_FOOTER_TEMPLATE);
-        expect(universalElement.shadowRoot?.querySelector('slot[name="logo"] a')?.getAttribute('href')).to.equal('https://www.redhat.com/en');
+        expect(universalElement.shadowRoot?.querySelector('a[part="logo-anchor"]')?.getAttribute('href')).to.equal('https://www.redhat.com/en');
       });
     });
 
