@@ -10,7 +10,6 @@
 
   /** Tile line height */
   line-height: var(--rh-line-height-body-text, 1.5);
-
 }
 
 [hidden] {
@@ -96,11 +95,13 @@
 
   /** Default surface: lightest in light scheme, darkest in dark */
   background-color:
-    var(--_background-color,
-      light-dark(
+    var(
+        --_background-color,
+        light-dark(
           var(--rh-color-surface-lightest, #ffffff),
           var(--rh-color-surface-darkest, #151515)
-        ));
+        )
+      );
 
   /** Tile border radius */
   border-radius: var(--rh-border-radius-default, 3px);
@@ -429,7 +430,9 @@ svg {
 }
 
 /** Lightest palette background */
-:host([color-palette='lightest']) { --_background-color: var(--rh-color-surface-lightest, #ffffff); }
+:host([color-palette='lightest']) {
+  --_background-color: var(--rh-color-surface-lightest, #ffffff);
+}
 
 /** Lighter palette background */
 :host([color-palette='lighter']) { --_background-color: var(--rh-color-surface-lighter, #f2f2f2); }
