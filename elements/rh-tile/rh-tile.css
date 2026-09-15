@@ -123,7 +123,7 @@
   }
 
   & #image {
-    --_bleed: calc(0px - var(--_padding) + var(--rh-border-width-sm, 1px));
+    --_bleed: calc(0px - var(--_padding));
 
     & > *,
     &::slotted(*) {
@@ -184,16 +184,18 @@
 
     & > *,
     &::slotted(*) {
-      border-start-start-radius:
-        calc(
-            var(--rh-border-radius-default, 3px)
-            - var(--rh-border-width-sm, 1px)
+      /** Bleed image border radius */
+      --_bleed-radius:
+        max(
+            0px,
+            calc(
+              var(--rh-border-radius-default, 3px) -
+              var(--rh-border-width-sm, 1px)
+            )
           );
-      border-start-end-radius:
-        calc(
-            var(--rh-border-radius-default, 3px)
-            - var(--rh-border-width-sm, 1px)
-          );
+
+      border-start-start-radius: var(--_bleed-radius);
+      border-start-end-radius: var(--_bleed-radius);
     }
   }
 
