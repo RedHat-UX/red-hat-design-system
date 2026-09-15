@@ -944,7 +944,7 @@
     &:focus-within:after {
       content: '';
       position: absolute;
-      inset: -2px;
+      inset: calc(var(--felt-preview-border-width-lg, 3px) * -1);
       outline:
         var(--felt-preview-cta-border-width-focus-ring)
         solid
