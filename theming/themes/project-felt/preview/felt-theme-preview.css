@@ -2251,7 +2251,7 @@
     }
 
     & rh-navigation-vertical-list > rh-navigation-link {
-      --rh-navigation-link-font-size: var(--felt-preview-font-size-body-text-md);
+      --rh-navigation-link-font-size: var(--felt-preview-font-size-body-text-sm);
       --rh-navigation-link-border-inline-start-width: var(--felt-preview-border-width-lg);
     }
 
