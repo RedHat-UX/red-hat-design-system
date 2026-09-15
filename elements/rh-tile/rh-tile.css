@@ -10,6 +10,15 @@
 
   /** Tile line height */
   line-height: var(--rh-line-height-body-text, 1.5);
+  background-color:
+    /** Default surface, set by color-palette attribute */
+    var(--rh-color-surface,
+      light-dark(
+        /** Default surface for light scheme */
+        var(--rh-color-surface-lightest, #ffffff),
+        /** Default surface for dark scheme */
+        var(--rh-color-surface-darkest, #151515)
+      ));
 }
 
 [hidden] {
@@ -92,16 +101,6 @@
 
   position: relative;
   padding: var(--_padding);
-
-  /** Default surface: lightest in light scheme, darkest in dark */
-  background-color:
-    var(
-        --_background-color,
-        light-dark(
-          var(--rh-color-surface-lightest, #ffffff),
-          var(--rh-color-surface-darkest, #151515)
-        )
-      );
 
   /** Tile border radius */
   border-radius: var(--rh-border-radius-default, 3px);
@@ -400,15 +399,6 @@ svg {
   color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
-/** Darkest palette background */
-:host([color-palette='darkest']) { --_background-color: var(--rh-color-surface-darkest, #151515); }
-
-/** Darker palette background */
-:host([color-palette='darker']) { --_background-color: var(--rh-color-surface-darker, #1f1f1f); }
-
-/** Dark palette background */
-:host([color-palette='dark']) { --_background-color: var(--rh-color-surface-dark, #383838); }
-
 :host([color-palette^='light']) {
   /** Interactive color for light palettes */
   --_interactive-color: var(--rh-color-border-interactive-on-light, #0066cc);
@@ -428,14 +418,3 @@ svg {
   /** Text color for light palettes */
   color: var(--rh-color-text-primary-on-light, #151515);
 }
-
-/** Lightest palette background */
-:host([color-palette='lightest']) {
-  --_background-color: var(--rh-color-surface-lightest, #ffffff);
-}
-
-/** Lighter palette background */
-:host([color-palette='lighter']) { --_background-color: var(--rh-color-surface-lighter, #f2f2f2); }
-
-/** Light palette background */
-:host([color-palette='light']) { --_background-color: var(--rh-color-surface-light, #e0e0e0); }
