@@ -27,7 +27,7 @@ rh-navigation-primary {
         /** Navigation link font size */
         font-size: var(--rh-font-size-body-text-md, 1rem);
         color:
-           /** Navigation link font color */
+           /** Navigation link font color; theme adaptive */
           var(--rh-color-interactive-primary-default,
             light-dark(
                /** Navigation link font color on light scheme */
