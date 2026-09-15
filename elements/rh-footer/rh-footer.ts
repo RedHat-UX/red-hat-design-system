@@ -35,7 +35,6 @@ function isHeaderTagName(tagName: string) {
  *
  * @summary Site footer with navigation links, social icons, and legal content
  *
- * @cssprop --rh-footer-nojs-min-height - Minimum height when JavaScript is disabled. @deprecated target `rh-footer:not(:defined)` directly
  * @cssprop --rh-footer-icon-color - Default icon color. Uses --rh-color-icon-subtle design token
  * @cssprop --rh-footer-icon-color-hover - Icon color on hover/focus. Uses --rh-color-icon-subtle-hover design token
  * @cssprop --rh-footer-border-color - Border color for section dividers. Uses --rh-color-border-subtle design token
