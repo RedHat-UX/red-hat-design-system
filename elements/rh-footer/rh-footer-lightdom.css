@@ -208,8 +208,13 @@ rh-footer:not(:defined) {
   /** No-JS section horizontal inset */
   --_section-side-gap: var(--rh-space-lg, 16px);
 
-  /** Footer surface without JS */
-  background-color: var(--rh-color-surface-darker, #1f1f1f);
+  background-color:
+    light-dark(
+        /** Domain footer surface without JS in light color schemes */
+        var(--rh-color-surface-lighter, #f2f2f2),
+        /** Domain footer surface without JS in dark color schemes */
+        var(--rh-color-surface-darker, #1f1f1f)
+      );
   width: 100%;
   display: grid;
   grid-template-areas:
@@ -255,8 +260,14 @@ rh-footer:not(:defined) [slot='social-links'] {
 }
 
 :is(rh-footer, rh-footer-universal):not(:defined) {
-  /* No-JS: force dark since no color-palette attribute is set before JS runs */
-  color-scheme: only dark;
+  /* Default to dark before upgrade; dark footers are recommended. */
+  &:is(rh-footer:not([color-palette]), [color-palette^='dark']) {
+    color-scheme: only dark;
+  }
+
+  &[color-palette^='light'] {
+    color-scheme: only light;
+  }
 
   p {
     /** Footer secondary text */
@@ -279,8 +290,13 @@ rh-footer:not(:defined) [slot='social-links'] {
 }
 
 rh-footer-universal:not(:defined) {
-  /** Universal footer surface without JS */
-  background-color: var(--rh-color-surface-darkest, #151515);
+  background-color:
+    light-dark(
+        /** Universal footer surface without JS in light color schemes */
+        var(--rh-color-surface-lightest, #ffffff),
+        /** Universal footer surface without JS in dark color schemes */
+        var(--rh-color-surface-darkest, #151515)
+      );
   display: block;
   width: 100%;
   padding:
