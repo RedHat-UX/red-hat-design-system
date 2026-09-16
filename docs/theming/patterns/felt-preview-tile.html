@@ -54,7 +54,91 @@
   </rh-tile>
 </div>
 
-<h3>Link tile with image</h3>
+<h3>Link tile (large)</h3>
+<div class="tile-grid example-row">
+  <rh-tile class="large">
+    <rh-icon slot="icon" set="standard" icon="cloud-automation"></rh-icon>
+    <div slot="title">Title</div>
+    <h2 slot="headline"><a href="#top">Heading</a></h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Nullam eleifend elit sed est egestas.
+    <div slot="footer">Footer</div>
+  </rh-tile>
+
+  <rh-tile class="large" desaturated>
+    <rh-icon slot="icon" set="standard" icon="cloud-automation"></rh-icon>
+    <div slot="title">Title</div>
+    <h2 slot="headline"><a href="#top">Heading</a></h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Nullam eleifend elit sed est egestas.
+    <div slot="footer">Footer</div>
+  </rh-tile>
+
+  <rh-tile class="large" disabled>
+    <rh-icon slot="icon" set="standard" icon="cloud-automation"></rh-icon>
+    <div slot="title">Title</div>
+    <h2 slot="headline"><a href="#top">Heading</a></h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Nullam eleifend elit sed est egestas.
+    <div slot="footer">Footer</div>
+  </rh-tile>
+</div>
+
+<h3>Link tile with padded image</h3>
+<div class="tile-grid example-row">
+  <rh-tile>
+    <svg slot="image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200" width="100%">
+      <title>Placeholder image</title>
+      <rect x="0" y="0" width="99%" height="99%"
+            fill="none"
+            stroke="var(--rh-color-icon-primary)"
+            stroke-width="1"
+            stroke-dasharray="1 1" />
+    </svg>
+    <rh-icon slot="icon" set="standard" icon="cloud-automation"></rh-icon>
+    <div slot="title">Title</div>
+    <h2 slot="headline"><a href="#top">Heading</a></h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Nullam eleifend elit sed est egestas.
+    <div slot="footer">Footer</div>
+  </rh-tile>
+
+  <rh-tile desaturated>
+    <svg slot="image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200" width="100%">
+      <title>Placeholder image</title>
+      <rect x="0" y="0" width="99%" height="99%"
+            fill="none"
+            stroke="var(--rh-color-icon-primary)"
+            stroke-width="1"
+            stroke-dasharray="1 1" />
+    </svg>
+    <rh-icon slot="icon" set="standard" icon="cloud-automation"></rh-icon>
+    <div slot="title">Title</div>
+    <h2 slot="headline"><a href="#top">Heading</a></h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Nullam eleifend elit sed est egestas.
+    <div slot="footer">Footer</div>
+  </rh-tile>
+
+  <rh-tile disabled>
+    <svg slot="image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200" width="100%">
+      <title>Placeholder image</title>
+      <rect x="0" y="0" width="99%" height="99%"
+            fill="none"
+            stroke="var(--rh-color-icon-primary)"
+            stroke-width="1"
+            stroke-dasharray="1 1" />
+    </svg>
+    <rh-icon slot="icon" set="standard" icon="cloud-automation"></rh-icon>
+    <div slot="title">Title</div>
+    <h2 slot="headline"><a href="#top">Heading</a></h2>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Nullam eleifend elit sed est egestas.
+    <div slot="footer">Footer</div>
+  </rh-tile>
+</div>
+
+<h3>Link tile with bleed image</h3>
 <div class="tile-grid example-row">
   <rh-tile bleed>
     <svg slot="image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200" width="100%">
