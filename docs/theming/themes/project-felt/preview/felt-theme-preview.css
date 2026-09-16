@@ -2397,11 +2397,13 @@
       --rh-space-2xl: 32px;
       --rh-font-size-heading-xs:
         var(
-            --rh-font-size-heading-sm, 1.5rem
+            --rh-font-size-heading-sm,
+            1.5rem
           );
       --rh-font-size-body-text-md:
         var(
-            --rh-font-size-body-text-lg, 1.125rem
+            --rh-font-size-body-text-lg,
+            1.125rem
           );
     }
 
