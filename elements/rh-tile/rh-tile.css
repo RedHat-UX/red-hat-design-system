@@ -11,14 +11,12 @@
   /** Tile line height */
   line-height: var(--rh-line-height-body-text, 1.5);
   background-color:
-    /** Default surface, set by color-palette attribute */
-    var(--rh-color-surface,
-      light-dark(
+    light-dark(
         /** Default surface for light scheme */
         var(--rh-color-surface-lightest, #ffffff),
         /** Default surface for dark scheme */
         var(--rh-color-surface-darkest, #151515)
-      ));
+      );
 }
 
 [hidden] {
