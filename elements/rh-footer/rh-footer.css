@@ -254,6 +254,7 @@
 
 .global-logo ::slotted(:is(img, svg, picture)),
 .global-logo svg {
+  display: block;
   height: 100%;
   width: auto;
 }
@@ -367,7 +368,6 @@
   text-decoration: none;
 }
 
-/* Fallback SVG is a descendant of the wrapping <a>, not a direct child. */
 .logo ::slotted(:is(img, svg, picture)),
 .logo svg {
   display: block;
