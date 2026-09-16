@@ -12,7 +12,7 @@ emphasis.
 ### Button vs. call to action
 
 Do not use buttons as navigational elements. Instead, use a 
-[link](/patterns/link/) or [call to action](/elements/call-to-action/) when the 
+[link](/foundations/interactions/links/) or [call to action](/elements/call-to-action/) when the 
 desired action is to take users to a new page. Consider using a checkbox, 
 switch, or control when you need to capture two togglable states.
 
