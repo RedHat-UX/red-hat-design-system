@@ -260,8 +260,7 @@ rh-footer:not(:defined) [slot='social-links'] {
 }
 
 :is(rh-footer, rh-footer-universal):not(:defined) {
-  /* Default to dark before upgrade; dark footers are recommended. */
-  &:is(rh-footer:not([color-palette]), [color-palette^='dark']) {
+  &[color-palette^='dark'] {
     color-scheme: only dark;
   }
 
