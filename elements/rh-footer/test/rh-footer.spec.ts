@@ -157,6 +157,37 @@ const UNIVERSAL_FOOTER_TEMPLATE = html`
   <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css">
 `;
 
+/* Picture logos: ::slotted() cannot size the nested fallback img, so
+   lightdom.css must measure that inner img, not the picture box. */
+const PICTURE_LOGO_TEMPLATE = html`
+  <rh-footer color-palette="darkest">
+    <picture slot="logo">
+      <img src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg"
+           alt="Red Hat logo">
+    </picture>
+    <h3 slot="links">Products</h3>
+    <ul slot="links">
+      <li><a href="#">Red Hat Enterprise Linux</a></li>
+    </ul>
+    <rh-footer-universal slot="universal">
+      <picture slot="logo">
+        <img src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg"
+             alt="Red Hat logo">
+      </picture>
+      <h3 slot="links-primary" hidden>Red Hat corporate links</h3>
+      <ul slot="links-primary">
+        <li><a href="#">About Red Hat</a></li>
+      </ul>
+      <h3 slot="links-secondary" hidden>Red Hat legal and privacy links</h3>
+      <ul slot="links-secondary">
+        <li><a href="#">Privacy statement</a></li>
+      </ul>
+      <rh-footer-copyright slot="tertiary"></rh-footer-copyright>
+    </rh-footer-universal>
+  </rh-footer>
+  <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css">
+`;
+
 describe('<rh-footer>', function() {
   let element: RhFooter;
   let universalFooter: RhFooterUniversal;
@@ -777,6 +808,49 @@ describe('<rh-footer>', function() {
           expect(getComputedStyle(icon).height).to.equal(tokens.get('--rh-size-icon-02'));
         }
       });
+    });
+  });
+
+  describe('slotted picture logo heights', function() {
+    let domainImg: HTMLImageElement;
+    let universalImg: HTMLImageElement;
+
+    beforeEach(async function() {
+      // Measure the nested fallback img, not the picture element.
+      element = await fixture<RhFooter>(PICTURE_LOGO_TEMPLATE);
+      universalFooter = element.querySelector('rh-footer-universal')!;
+      domainImg = element.querySelector('picture[slot="logo"] img')!;
+      universalImg = universalFooter.querySelector('picture[slot="logo"] img')!;
+      await element.updateComplete;
+      await universalFooter.updateComplete;
+      await aTimeout(200);
+    });
+
+    it('Mobile, portrait: both picture logos are --rh-size-icon-02', async function() {
+      await setViewport({ width: 360, height: 800 });
+      await element.updateComplete;
+      await aTimeout(200);
+
+      expect(getComputedStyle(domainImg).height).to.equal(tokens.get('--rh-size-icon-02'));
+      expect(getComputedStyle(universalImg).height).to.equal(tokens.get('--rh-size-icon-02'));
+    });
+
+    it('Mobile, landscape: both picture logos are --rh-size-icon-03', async function() {
+      await setViewport({ width: parseInt(tokens.get('--rh-breakpoint-xs')), height: 800 });
+      await element.updateComplete;
+      await aTimeout(200);
+
+      expect(getComputedStyle(domainImg).height).to.equal(tokens.get('--rh-size-icon-03'));
+      expect(getComputedStyle(universalImg).height).to.equal(tokens.get('--rh-size-icon-03'));
+    });
+
+    it('Desktop: both picture logos remain --rh-size-icon-03', async function() {
+      await setViewport({ width: 1200, height: 800 });
+      await element.updateComplete;
+      await aTimeout(200);
+
+      expect(getComputedStyle(domainImg).height).to.equal(tokens.get('--rh-size-icon-03'));
+      expect(getComputedStyle(universalImg).height).to.equal(tokens.get('--rh-size-icon-03'));
     });
   });
 });
