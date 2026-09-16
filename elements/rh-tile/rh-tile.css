@@ -188,6 +188,22 @@
 
   &.bleed #image {
     margin: var(--_bleed) var(--_bleed) 0;
+
+    & > *,
+    &::slotted(*) {
+      /** Bleed image border radius */
+      --_bleed-radius:
+        max(
+            0px,
+            calc(
+              var(--rh-border-radius-default, 3px) -
+              var(--rh-border-width-sm, 1px)
+            )
+          );
+
+      border-start-start-radius: var(--_bleed-radius);
+      border-start-end-radius: var(--_bleed-radius);
+    }
   }
 
   &:active,
