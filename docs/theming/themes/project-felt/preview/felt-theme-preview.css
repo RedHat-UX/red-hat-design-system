@@ -2420,9 +2420,17 @@
 
     &[disabled] {
       --rh-tile-border-color: transparent;
+      --rh-tile-link-color:
+        var(
+            --felt-preview-color-text-status-on-disabled
+          );
       --rh-tile-interactive-color:
         var(
             --felt-preview-color-icon-status-on-disabled
+          );
+      --rh-color-text-secondary:
+        var(
+            --felt-preview-color-text-status-on-disabled
           );
     }
 
