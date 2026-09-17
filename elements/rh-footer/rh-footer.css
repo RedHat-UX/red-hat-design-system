@@ -69,9 +69,9 @@
   /* Accordion surface follows the footer color-scheme */
   --_accordion-background:
     light-dark(
-        /** Accordion surface in light color schemes */
+        /** Accordion surface in light color scheme */
         var(--rh-color-surface-lightest, #ffffff),
-        /** Accordion surface in dark color schemes */
+        /** Accordion surface in dark color scheme */
         var(--rh-color-surface-darkest, #151515)
       );
 
@@ -133,9 +133,9 @@
 .header {
   background-color:
     light-dark(
-        /** Domain footer surface in light color schemes */
+        /** Domain footer surface in light color scheme */
         var(--rh-color-surface-lighter, #f2f2f2),
-        /** Domain footer surface in dark color schemes */
+        /** Domain footer surface in dark color scheme */
         var(--rh-color-surface-darker, #1f1f1f)
       );
 
@@ -185,9 +185,9 @@
 .main {
   background-color:
     light-dark(
-        /** Domain footer surface in light color schemes */
+        /** Domain footer surface in light color scheme */
         var(--rh-color-surface-lighter, #f2f2f2),
-        /** Domain footer surface in dark color schemes */
+        /** Domain footer surface in dark color scheme */
         var(--rh-color-surface-darker, #1f1f1f)
       );
   display: grid;
@@ -216,9 +216,9 @@
   line-height: 100%;
   background-color:
     light-dark(
-        /** Universal footer surface in light color schemes */
+        /** Universal footer surface in light color scheme */
         var(--rh-color-surface-lightest, #ffffff),
-        /** Universal footer surface in dark color schemes */
+        /** Universal footer surface in dark color scheme */
         var(--rh-color-surface-darkest, #151515)
       );
   display: grid;
@@ -248,8 +248,15 @@
 }
 
 .global-logo-image {
-  /** Red Hat fedora brand color */
-  fill: var(--rh-color-brand-red, #ee0000);
+  fill:
+    /** Red Hat fedora brand color; theme-adaptive */
+    var(--rh-color-brand-red,
+      light-dark(
+        /** Red Hat fedora brand color for light color scheme */
+        var(--rh-color-brand-red-on-light, #ee0000),
+        /** Red Hat fedora brand color for dark color scheme */
+        var(--rh-color-brand-red-on-dark, #ee0000)
+      ));
 }
 
 .global-logo ::slotted(:is(img, svg, picture)),
