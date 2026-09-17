@@ -260,7 +260,7 @@ export class RhNavigationPrimary extends LitElement {
                 <!--
                   Accepts an inline \`<svg>\`, \`<img>\`, \`<picture>\` to override the default Red Hat logo.
                   Slotted images should be swapped on scheme change or support light-dark()
-                  such as in an inline SVG.  Slotted \`<img>\` elements should include meaningful \`alt\` text;
+                  such as in an inline SVG. Slotted \`<img>\` elements should include meaningful \`alt\` text;
                   inline SVGs should include a meaningful \`<title>\`. Use \`logo-label\`
                   to provide or override the accessible name for the logo link.
                 -->
