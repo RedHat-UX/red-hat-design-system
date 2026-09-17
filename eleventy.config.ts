@@ -361,7 +361,7 @@ export default async function(eleventyConfig: UserConfig) {
 
       // still not working nicely with ssr
       // 'elements/rh-audio-player/rh-audio-player.ts',
-      // 'elements/rh-footer/rh-footer.ts',
+      'elements/rh-footer/rh-footer.ts',
     ],
     slotControllerElements: [
       'rh-alert',

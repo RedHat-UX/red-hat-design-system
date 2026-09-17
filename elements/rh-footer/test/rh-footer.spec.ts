@@ -12,8 +12,9 @@ const KITCHEN_SINK_TEMPLATE = html`
       <img src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat logo"
         loading="lazy"/>
     </a>
-    <h3 slot="links">Products</h3>
-    <ul slot="links">
+    <rh-footer-links slot="links">
+    <h3 slot="header">Products</h3>
+    <ul>
       <li><a href="#">Red Hat Ansible Automation Platform</a></li>
       <li><a href="#">Red Hat Enterprise Linux</a></li>
       <li><a href="#">Red Hat OpenShift</a></li>
@@ -21,8 +22,10 @@ const KITCHEN_SINK_TEMPLATE = html`
       <li><a href="#">Red Hat OpenStack Platform</a></li>
       <li><a href="#">See all products</a></li>
     </ul>
-    <h3 slot="links">Tools</h3>
-    <ul slot="links">
+    </rh-footer-links>
+    <rh-footer-links slot="links">
+    <h3 slot="header">Tools</h3>
+    <ul>
       <li><a href="#">My account</a></li>
       <li><a href="#">Customer support</a></li>
       <li><a href="#">Red Hat OpenShift</a></li>
@@ -30,8 +33,10 @@ const KITCHEN_SINK_TEMPLATE = html`
       <li><a href="#">Red Hat OpenStack Platform</a></li>
       <li><a href="#">See all products</a></li>
     </ul>
-    <h3 slot="links">Try, buy, sell</h3>
-    <ul slot="links">
+    </rh-footer-links>
+    <rh-footer-links slot="links">
+    <h3 slot="header">Try, buy, sell</h3>
+    <ul>
       <li><a href="#">Red Hat Store</a></li>
       <li><a href="#">Red Hat Enterprise Linux</a></li>
       <li><a href="#">Red Hat OpenShift</a></li>
@@ -39,39 +44,46 @@ const KITCHEN_SINK_TEMPLATE = html`
       <li><a href="#">Red Hat OpenStack Platform</a></li>
       <li><a href="#">See all products</a></li>
     </ul>
-    <h3 id="communicate" slot="links">Communicate</h3>
-    <ul slot="links">
+    </rh-footer-links>
+    <rh-footer-links slot="links">
+    <h3 id="communicate" slot="header">Communicate</h3>
+    <ul>
       <li><a href="#">Contact us</a></li>
       <li><a href="#">Feedback</a></li>
       <li><a href="#">Social</a></li>
       <li><a href="#">Red Hat newsletter</a></li>
       <li><a href="#">Email preferences</a></li>
     </ul>
-    <h3 id="lorem" slot="links">Lorem ipsum</h3>
-    <ul slot="links">
+    </rh-footer-links>
+    <rh-footer-links slot="links">
+    <h3 id="lorem" slot="header">Lorem ipsum</h3>
+    <ul>
       <li><a href="#">Lorem ipsum</a></li>
       <li><a href="#">Lorem ipsum</a></li>
       <li><a href="#">Lorem ipsum</a></li>
       <li><a href="#">Lorem ipsum</a></li>
       <li><a href="#">Lorem ipsum</a></li>
     </ul>
-    <h3 id="ipsum" slot="links">Lorem ipsum</h3>
-    <ul slot="links">
+    </rh-footer-links>
+    <rh-footer-links slot="links">
+    <h3 id="ipsum" slot="header">Lorem ipsum</h3>
+    <ul>
       <li><a href="#">Lorem ipsum</a></li>
       <li><a href="#">Lorem ipsum</a></li>
       <li><a href="#">Lorem ipsum</a></li>
       <li><a href="#">Lorem ipsum</a></li>
       <li><a href="#">Lorem ipsum</a></li>
     </ul>
-    <rh-footer-block slot="main-secondary">
+    </rh-footer-links>
+    <rh-footer-block slot="aside">
       <h3 slot="header">About Red Hat</h3>
       <p>We’re the world’s leading provider of enterprise open source solutions&#x2015;including Linux, cloud, container, and Kubernetes. We deliver hardened solutions that make it easier for enterprises to work across platforms and environments, from the core datacenter to the network edge.</p>
     </rh-footer-block>
-    <rh-footer-block slot="main-secondary">
+    <rh-footer-block slot="aside">
       <h3 slot="header">Subscribe to our free newsletter, Red Hat Shares</h3>
       <rh-cta><a href="#blocks">Sign up now</a></rh-cta>
     </rh-footer-block>
-    <rh-footer-block slot="main-secondary">
+    <rh-footer-block slot="aside">
       <h3 slot="header">Select a language</h3>
       <p>insert language switcher here...</p>
     </rh-footer-block>
@@ -286,8 +298,12 @@ describe('<rh-footer>', function() {
         await aTimeout(200);
       });
 
-      it('does not use accordion', function() {
-        expect(element.shadowRoot?.querySelectorAll('rh-accordion')?.length).to.equal(0);
+      it('forces every navigation disclosure open', function() {
+        const groups = element.querySelectorAll('rh-footer-links[slot="links"]');
+        expect(groups).to.have.length(6);
+        for (const group of groups) {
+          expect(group.shadowRoot?.querySelector('details')).to.have.attribute('open');
+        }
       });
 
       it('is accessible', function() {
@@ -302,8 +318,44 @@ describe('<rh-footer>', function() {
         await aTimeout(500);
       });
 
-      it('uses accordion', function() {
-        expect(element.shadowRoot?.querySelectorAll('rh-accordion')?.length).to.equal(1);
+      it('uses closed native disclosures', function() {
+        const groups = element.querySelectorAll('rh-footer-links[slot="links"]');
+        expect(groups).to.have.length(6);
+        for (const group of groups) {
+          expect(group.shadowRoot?.querySelector('details')).not.to.have.attribute('open');
+        }
+      });
+
+      it('allows only one navigation disclosure to be open', async function() {
+        const groups = element.querySelectorAll('rh-footer-links[slot="links"]');
+        const first = groups[0].shadowRoot!.querySelector('details')!;
+        const second = groups[1].shadowRoot!.querySelector('details')!;
+
+        first.querySelector('summary')!.click();
+        await aTimeout(0);
+        expect(first).to.have.attribute('open');
+
+        second.querySelector('summary')!.click();
+        await aTimeout(0);
+        expect(first).not.to.have.attribute('open');
+        expect(second).to.have.attribute('open');
+      });
+
+      it('matches the compact accordion surface and spacing', function() {
+        const group = element.querySelector('rh-footer-links[slot="links"]')!;
+        const details = group.shadowRoot!.querySelector('details')!;
+        const summary = details.querySelector('summary')!;
+        const content = details.querySelector<HTMLElement>('#details-content')!;
+        const heading = group.querySelector('[slot="header"]')!;
+        const summaryStyles = getComputedStyle(summary);
+        const contentStyles = getComputedStyle(content);
+
+        expect(summaryStyles.backgroundColor).to.equal('rgb(21, 21, 21)');
+        expect(summaryStyles.paddingBlockStart).to.equal(tokens.get('--rh-space-lg'));
+        expect(summaryStyles.paddingInlineStart).to.equal(tokens.get('--rh-space-xl'));
+        expect(contentStyles.paddingBlockStart).to.equal(tokens.get('--rh-space-lg'));
+        expect(contentStyles.paddingInlineStart).to.equal(tokens.get('--rh-space-xl'));
+        expect(getComputedStyle(heading).fontSize).to.equal('16px');
       });
 
       it('is accessible', function() {
@@ -363,19 +415,32 @@ describe('<rh-footer>', function() {
       beforeEach(nextFrame);
 
       it('distributes links horizontally', function() {
-        const firstPrimaryLink = element.querySelector('ul[slot=links]:first-of-type');
-        const secondPrimaryLink = element.querySelector('h3[slot=links]:nth-of-type(n+2)');
+        const firstPrimaryLink = element.querySelector('rh-footer-links[slot=links]:first-of-type ul');
+        const secondPrimaryLink = element.querySelector('rh-footer-links[slot=links]:nth-of-type(2) h3');
         const d = Math.abs(firstPrimaryLink!.getBoundingClientRect().right - secondPrimaryLink!.getBoundingClientRect().left);
         // 32px between the link items
         expect(d).to.equal(parseInt(tokens.get('--rh-space-2xl')), '--rh-space-2xl');
       });
 
       it('distributes links vertically', function() {
-        const firstPrimaryLink = element.querySelector('ul[slot=links]:first-of-type');
-        const fifthPrimaryLink = element.querySelector('h3[slot=links]:nth-of-type(n+5)');
+        const firstPrimaryLink = element.querySelector('rh-footer-links[slot=links]:first-of-type ul');
+        const fifthPrimaryLink = element.querySelector('rh-footer-links[slot=links]:nth-of-type(5) h3');
         const d = Math.abs(firstPrimaryLink!.getBoundingClientRect().bottom - fifthPrimaryLink!.getBoundingClientRect().top);
         // 32px between the first and second row
         expect(d).to.equal(parseInt(tokens.get('--rh-space-2xl')), '--rh-space-2xl');
+      });
+    });
+
+    describe('tablet navigation disclosures', function() {
+      beforeEach(async function() {
+        await setViewport({ width: 768, height: 800 });
+        element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
+        await element.updateComplete;
+      });
+
+      it('lays panel links out in two columns', function() {
+        const list = element.querySelector('rh-footer-links[slot="links"] ul')!;
+        expect(getComputedStyle(list).gridTemplateColumns.split(' ')).to.have.length(2);
       });
     });
 
