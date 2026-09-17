@@ -153,6 +153,14 @@ export class RhNavigationPrimary extends LitElement {
   @property({ reflect: true, attribute: 'site-href' }) siteHref?: string;
 
   /**
+   * Optional accessible name for the logo link. When set, applied as
+   * `aria-label` on the wrapping `<a>` and overrides slotted text, SVG
+   * `<title>`, or `img` `alt`. Leave unset so the slotted mark or the
+   * default SVG title names the link. Defaults to `''`.
+   */
+  @property({ attribute: 'logo-label' }) logoLabel = '';
+
+  /**
    * Sets the `href` for the default logo link. Avoid changing this value
    * unless the site requires a non-root landing page for the logo. Defaults
    * to `'/'`.
@@ -247,7 +255,8 @@ export class RhNavigationPrimary extends LitElement {
         <div id="bar">
           <div id="lockup">
             <div id="logo">
-              <a href="${this.logoHref}">
+              <a href="${this.logoHref.trim()}"
+                aria-label="${this.logoLabel?.trim() || nothing}">
                 <!--
                   Accepts an inline SVG or \`<img>\` to override the default Red Hat logo.
                   Slotted images should be swapped on scheme change or support light-dark()
