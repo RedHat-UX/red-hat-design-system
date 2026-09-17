@@ -2,7 +2,7 @@
   /* apply sensible defaults based on redhat standards. */
 
   /** Footer text color */
-  color: var(--rh-color-white, #ffffff);
+  color: var(--rh-color-text-primary);
 
   /** Footer typeface */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
@@ -13,22 +13,10 @@
   font-size: initial;
   display: flex;
   flex-direction: column;
-  color-scheme: only dark !important;
-}
-
-/* Should only be applied if scripting is disabled */
-@media (scripting: none) {
-  :host {
-    /** Minimum footer height when scripting is disabled */
-    min-height: var(--rh-footer-nojs-min-height);
-  }
 }
 
 :host,
 ::slotted(rh-footer-universal) {
-  --_fallback-animation: nothing-doing !important;
-  --_fallback-opacity: 1 !important;
-
   overflow-y: initial;
 }
 
@@ -46,22 +34,22 @@
     /** Footer icon color override */
     var(
         --rh-footer-icon-color,
-        /** Footer icon default on dark */
-        var(--rh-color-gray-40, #a3a3a3)
+        /** Footer icon color */
+        var(--rh-color-icon-subtle, #707070)
       );
   --_icon-color-hover:
     /** Footer icon hover color override */
     var(
         --rh-footer-icon-color-hover,
-        /** Footer icon hover default on dark */
-        var(--rh-color-gray-30, #c7c7c7)
+        /** Footer icon hover color */
+        var(--rh-color-icon-subtle-hover, #a3a3a3)
       );
   --_border-color:
     /** Footer border color override */
     var(
         --rh-footer-border-color,
-        /** Footer border subtle on dark */
-        var(--rh-color-border-subtle-on-dark, #707070)
+        /** Footer border color */
+        var(--rh-color-border-subtle)
       );
   --_accent-color:
     /** Footer accent color override */
@@ -78,8 +66,14 @@
         var(--rh-space-lg, 16px)
       );
 
-  /** Universal footer accordion surface */
-  --_accordion-background: var(--rh-color-white, #ffffff);
+  /* Accordion surface follows the footer color-scheme */
+  --_accordion-background:
+    light-dark(
+        /** Accordion surface in light color schemes */
+        var(--rh-color-surface-lightest, #ffffff),
+        /** Accordion surface in dark color schemes */
+        var(--rh-color-surface-darkest, #151515)
+      );
 
   /** Footer logo width */
   --_logo-width: var(--rh-size-icon-04, 40px);
@@ -137,8 +131,13 @@
 }
 
 .header {
-  /** Footer background */
-  background-color: var(--rh-color-surface-darker, #1f1f1f);
+  background-color:
+    light-dark(
+        /** Domain footer surface in light color schemes */
+        var(--rh-color-surface-lighter, #f2f2f2),
+        /** Domain footer surface in dark color schemes */
+        var(--rh-color-surface-darker, #1f1f1f)
+      );
 
   /* children should flex wrap on mobile */
   display: flex;
@@ -184,8 +183,13 @@
 }
 
 .main {
-  /** Footer background */
-  background-color: var(--rh-color-surface-darker, #1f1f1f);
+  background-color:
+    light-dark(
+        /** Domain footer surface in light color schemes */
+        var(--rh-color-surface-lighter, #f2f2f2),
+        /** Domain footer surface in dark color schemes */
+        var(--rh-color-surface-darker, #1f1f1f)
+      );
   display: grid;
 
   /** Footer content gap */
@@ -210,9 +214,13 @@
 
   /* reduce the line-height for global links */
   line-height: 100%;
-
-  /** Footer background */
-  background-color: var(--rh-color-surface-darkest, #151515);
+  background-color:
+    light-dark(
+        /** Universal footer surface in light color schemes */
+        var(--rh-color-surface-lightest, #ffffff),
+        /** Universal footer surface in dark color schemes */
+        var(--rh-color-surface-darkest, #151515)
+      );
   display: grid;
   grid-template-columns: 1fr;
   grid-template-areas:
@@ -229,12 +237,24 @@
 .global-logo {
   grid-area: logo;
   width: auto;
+
+  /** Universal footer fedora logo height */
   height: var(--rh-size-icon-02, 24px);
+}
+
+.global-logo a {
+  display: inline-block;
+  height: 100%;
 }
 
 .global-logo-image {
   /** Red Hat fedora brand color */
   fill: var(--rh-color-brand-red, #ee0000);
+}
+
+.global-logo ::slotted(:is(img, svg, picture)),
+.global-logo svg {
+  display: block;
   height: 100%;
   width: auto;
 }
@@ -314,7 +334,8 @@
   line-height: 0;
 }
 
-.logo ::slotted(a) {
+/* Text logos (e.g. a subdomain name) keep heading styles and a dotted underline. */
+.logo ::slotted(:not(img, svg, picture)) {
   /** Logo link text color */
   color: var(--rh-color-text-primary);
 
@@ -332,13 +353,14 @@
 
   /** Logo link underline thickness */
   text-decoration-thickness: var(--rh-border-width-sm, 1px);
+  text-decoration-color: var(--rh-color-border-subtle);
   text-underline-offset: max(5px, 0.28em);
 }
 
-.logo ::slotted(a:has(img, svg, picture)) {
-  text-decoration: none;
-  line-height: 0px;
-  font-size: initial;
+/* Hover/focus lives on the wrapping <a>, not on the slotted mark. */
+.logo a:is(:hover, :focus) ::slotted(:not(img, svg, picture)) {
+  text-decoration-color: inherit;
+  text-underline-offset: max(6px, 0.33em);
 }
 
 .logo a {
@@ -346,12 +368,13 @@
   text-decoration: none;
 }
 
-.logo a > :is(img, svg) {
+.logo ::slotted(:is(img, svg, picture)),
+.logo svg {
   display: block;
   width: auto;
 
   /** Logo image height */
-  height: var(--rh-size-icon-03, 32px);
+  height: var(--rh-size-icon-02, 24px);
 }
 
 .social-links {
@@ -514,21 +537,25 @@
   color: var(--rh-color-text-primary) !important;
 }
 
-@media screen and (min-width: 768px) {
-  .header-primary ::slotted(:not(a, img, svg, picture)) {
-    /** Subdomain name font size (desktop) */
-    font-size: var(--rh-font-size-heading-sm, 1.5rem);
-  }
-
-  .logo a > :is(img, svg) {
-    /** Logo image height (desktop) */
+@media screen and (min-width: 576px) {
+  .logo ::slotted(:is(img, svg, picture)),
+  .logo svg {
+    /** Logo image height at viewport >= xs */
     height: var(--rh-size-icon-03, 32px);
   }
 
   .global-logo {
-    height: var(--rh-size-icon-04, 40px);
+    /** Universal footer fedora logo height at viewport >= xs */
+    height: var(--rh-size-icon-03, 32px);
   }
 
+  .header-primary ::slotted(:not(a, img, svg, picture)) {
+    /** Subdomain name font size at viewport >= xs */
+    font-size: var(--rh-font-size-heading-sm, 1.5rem);
+  }
+}
+
+@media screen and (min-width: 768px) {
   /* stylelint-disable-next-line @stylistic/max-line-length */
   :is(.links, .global-links-primary, .global-links-secondary) ::slotted(:is(h1, h2, h3, h4, h5)) {
     /** Link header font size (desktop) */

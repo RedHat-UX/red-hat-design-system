@@ -334,6 +334,22 @@ describe('<rh-scheme-dropdown>', function() {
     it('should be accessible with custom labels', async function() {
       await expect(element).to.be.accessible();
     });
+
+    // Class field defaults only apply at construction; clearing labels at runtime
+    // (i18n load gap, or attribute removal) must not throw in render().
+    it('falls back to English option labels when accessible labels are cleared', async function() {
+      // Cast: public props are typed as string, but Lit/JS can set nullish at runtime.
+      element.accessibleLabelSystem = undefined as unknown as string;
+      element.accessibleLabelLight = undefined as unknown as string;
+      element.accessibleLabelDark = undefined as unknown as string;
+      await element.updateComplete;
+
+      const snapshot = await a11ySnapshot();
+      expect(snapshot)
+          .to.axContainQuery({ role: 'option', name: /System/ }).and
+          .to.axContainQuery({ role: 'option', name: /Light/ }).and
+          .to.axContainQuery({ role: 'option', name: /Dark/ });
+    });
   });
 
   describe('scheme-changed event', function() {
@@ -430,6 +446,69 @@ describe('<rh-scheme-dropdown>', function() {
     it('selects System after setting scheme to "light dark"', async function() {
       element.scheme = 'light dark';
       await element.updateComplete;
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.axContainQuery({ role: 'combobox', value: /System/ });
+    });
+
+    /** Option values that currently have the `selected` content attribute. */
+    function selectedAttrValues(el: RhSchemeDropdown): string[] {
+      const select = el.shadowRoot!.querySelector('select')!;
+      return [...select.options]
+          .filter(option => option.hasAttribute('selected'))
+          .map(option => option.value);
+    }
+
+    it('moves the selected content attribute to Light', async function() {
+      element.scheme = 'light';
+      await element.updateComplete;
+      expect(selectedAttrValues(element)).to.deep.equal(['light']);
+    });
+
+    it('moves the selected content attribute to Dark', async function() {
+      element.scheme = 'dark';
+      await element.updateComplete;
+      expect(selectedAttrValues(element)).to.deep.equal(['dark']);
+    });
+
+    it('moves the selected content attribute to System', async function() {
+      element.scheme = 'dark';
+      await element.updateComplete;
+      element.scheme = 'light dark';
+      await element.updateComplete;
+      expect(selectedAttrValues(element)).to.deep.equal(['light dark']);
+    });
+
+    it('repairs a stale selected attribute after requestUpdate', async function() {
+      element.scheme = 'light';
+      await element.updateComplete;
+
+      // Stale selected attr (SSR / Lit hydration quirk)
+      const select = element.shadowRoot!.querySelector('select')!;
+      for (const option of select.options) {
+        if (option.value === 'light dark') {
+          option.setAttribute('selected', '');
+        } else {
+          option.removeAttribute('selected');
+        }
+      }
+      expect(selectedAttrValues(element)).to.deep.equal(['light dark']);
+
+      element.requestUpdate();
+      await element.updateComplete;
+      expect(selectedAttrValues(element)).to.deep.equal(['light']);
+    });
+
+    it('keeps System selected for an unexpected scheme value', async function() {
+      element.scheme = 'light';
+      await element.updateComplete;
+
+      // Malformed non-null string must fall back to System (same as render()).
+      element.scheme = 'not-a-scheme' as typeof element.scheme;
+      await element.updateComplete;
+
+      const select = element.shadowRoot!.querySelector('select')!;
+      expect(select.value).to.equal('light dark');
+      expect(selectedAttrValues(element)).to.deep.equal(['light dark']);
       const snapshot = await a11ySnapshot();
       expect(snapshot).to.axContainQuery({ role: 'combobox', value: /System/ });
     });

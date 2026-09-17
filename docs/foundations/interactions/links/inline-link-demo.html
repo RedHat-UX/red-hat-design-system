@@ -55,17 +55,14 @@
     }
   }
 
-  :is(p, ul, ol, dl, h1, h2, h3, h4, h5, h6) a {
-    text-decoration:
-      underline dashed
-      light-dark(
-          var(--rh-color-gray-50, #707070),
-          var(--rh-color-gray-40, #a3a3a3))
-      1px;
+  :where(p, ul, ol, dl, h1, h2, h3, h4, h5, h6) a {
+    text-decoration-color: light-dark(var(--rh-color-gray-50, #707070), var(--rh-color-gray-40, #a3a3a3));
+    text-decoration-line: underline;
+    text-decoration-style: dashed;
+    text-decoration-thickness: 1px;
     text-underline-offset: max(5px, 0.28em);
     transition: ease all 0.3s;
-
-    &:hover {
+    &:is(:hover, :focus-within) {
       text-decoration-color: inherit;
       text-underline-offset: max(6px, 0.33em);
     }

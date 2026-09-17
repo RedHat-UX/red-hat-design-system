@@ -1,0 +1,26 @@
+---
+description: "Scheme dropdown with Spanish accessible labels for light, dark, and system options."
+---
+<rh-scheme-dropdown accessible-label="Tema"
+                    accessible-label-light="Claro"
+                    accessible-label-dark="Oscuro"
+                    accessible-label-system="Sistema"></rh-scheme-dropdown>
+
+<script type="module">
+  import '@rhds/elements/rh-scheme-dropdown/rh-scheme-dropdown.js';
+</script>
+
+<style>
+  body {
+    color-scheme: light dark;
+    background-color: var(--rh-color-surface);
+    color: var(--rh-color-text-primary);
+  }
+
+  rh-scheme-dropdown {
+    /* Wider than the English defaults so Spanish option text fits. */
+    --rh-scheme-dropdown-select-inline-size: 120px;
+    --rh-scheme-dropdown-picker-inline-size: 160px;
+    padding: var(--rh-space-md, 8px);
+  }
+</style>
