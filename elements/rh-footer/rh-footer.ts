@@ -92,18 +92,6 @@ export class RhFooter extends LitElement {
    */
   @property({ attribute: 'logo-label' }) logoLabel = '';
 
-  /**
-   * Copied onto the inner logo `<a>` as `data-analytics-category`. Leave
-   * unset to omit the attribute. Defaults to `''`.
-   */
-  @property({ attribute: 'logo-analytics-category' }) logoAnalyticsCategory = '';
-
-  /**
-   * Copied onto the inner logo `<a>` as `data-analytics-text`. Leave unset
-   * to omit the attribute. Defaults to `''`.
-   */
-  @property({ attribute: 'logo-analytics-text' }) logoAnalyticsText = '';
-
   #compact = false;
 
   #internals = InternalsController.of(this);
@@ -186,9 +174,7 @@ export class RhFooter extends LitElement {
                   <!-- main page or product logo container -->
                   <div class="logo" part="logo">
                     <a href="${this.logoHref?.trim() || DEFAULT_LOGO_HREF}"
-                       aria-label="${ifDefined(optionalLogoAttr(this.logoLabel))}"
-                       data-analytics-category="${ifDefined(optionalLogoAttr(this.logoAnalyticsCategory))}"
-                       data-analytics-text="${ifDefined(optionalLogoAttr(this.logoAnalyticsText))}">
+                       aria-label="${ifDefined(optionalLogoAttr(this.logoLabel))}">
                       <!-- summary: main page or product logo
                            description: |
                              Expects an inline SVG, \`<img>\`, \`<picture>\`, or text.

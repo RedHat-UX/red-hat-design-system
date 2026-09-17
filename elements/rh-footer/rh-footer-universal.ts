@@ -71,18 +71,6 @@ export class RhFooterUniversal extends LitElement {
    */
   @property({ attribute: 'logo-label' }) logoLabel = '';
 
-  /**
-   * Copied onto the inner logo `<a>` as `data-analytics-category`. Leave
-   * unset to omit the attribute. Defaults to `''`.
-   */
-  @property({ attribute: 'logo-analytics-category' }) logoAnalyticsCategory = '';
-
-  /**
-   * Copied onto the inner logo `<a>` as `data-analytics-text`. Leave unset
-   * to omit the attribute. Defaults to `''`.
-   */
-  @property({ attribute: 'logo-analytics-text' }) logoAnalyticsText = '';
-
   #internals = InternalsController.of(this);
 
   #slots = new SlotController(
@@ -181,9 +169,7 @@ export class RhFooterUniversal extends LitElement {
               <a class="global-logo-anchor"
                  part="logo-anchor"
                  href="${this.logoHref?.trim() || DEFAULT_LOGO_HREF}"
-                 aria-label="${ifDefined(optionalLogoAttr(this.logoLabel))}"
-                 data-analytics-category="${ifDefined(optionalLogoAttr(this.logoAnalyticsCategory))}"
-                 data-analytics-text="${ifDefined(optionalLogoAttr(this.logoAnalyticsText))}">
+                 aria-label="${ifDefined(optionalLogoAttr(this.logoLabel))}">
                 <!-- summary: Red Hat fedora logo (logo slot)
                      description: |
                        Expects an inline SVG, \`<img>\`, or \`<picture>\`. Defaults to the

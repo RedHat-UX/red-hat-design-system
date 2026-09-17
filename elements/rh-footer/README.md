@@ -24,9 +24,7 @@ inline SVG from the [slotted logo demo][slotted-logo].
 
 ```html
 <rh-footer color-palette="darkest"
-           data-analytics-region="page-footer"
-           logo-analytics-category="Footer"
-           logo-analytics-text="Logo">
+           data-analytics-region="page-footer">
   <div slot="header-secondary">
     <label class="visually-hidden" for="select-language">Choose page language:</label>
     <rh-select id="select-language">

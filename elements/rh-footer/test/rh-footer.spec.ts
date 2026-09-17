@@ -387,39 +387,6 @@ describe('<rh-footer>', function() {
     });
   });
 
-  describe('logo analytics', function() {
-    function domainLogoAnchor(el: RhFooter) {
-      return el.shadowRoot?.querySelector<HTMLAnchorElement>('.logo a');
-    }
-
-    describe('when unset', function() {
-      beforeEach(async function() {
-        element = await fixture<RhFooter>(html`<rh-footer></rh-footer>`);
-      });
-
-      it('omits data-analytics attributes on the inner logo link', function() {
-        const a = domainLogoAnchor(element);
-        expect(a?.hasAttribute('data-analytics-category')).to.be.false;
-        expect(a?.hasAttribute('data-analytics-text')).to.be.false;
-      });
-    });
-
-    describe('when set', function() {
-      beforeEach(async function() {
-        element = await fixture<RhFooter>(html`
-          <rh-footer logo-analytics-category="Footer"
-                     logo-analytics-text="Logo"></rh-footer>
-        `);
-      });
-
-      it('copies analytics attributes onto the inner logo link', function() {
-        const a = domainLogoAnchor(element);
-        expect(a?.getAttribute('data-analytics-category')).to.equal('Footer');
-        expect(a?.getAttribute('data-analytics-text')).to.equal('Logo');
-      });
-    });
-  });
-
   describe('color palette', function() {
     const lighter = 'rgb(242, 242, 242)'; /* --rh-color-surface-lighter #f2f2f2 */
     const darker = 'rgb(31, 31, 31)'; /* --rh-color-surface-darker #1f1f1f */
