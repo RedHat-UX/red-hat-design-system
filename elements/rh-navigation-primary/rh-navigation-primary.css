@@ -114,15 +114,11 @@
     border-block-end-color: transparent;
   }
 
-  & ::slotted(svg, img),
+  & ::slotted(:is(svg, img, picture)),
   & svg {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    block-size: -webkit-fill-available;
-    block-size: -moz-available;
-    block-size: fill-available;
-    block-size: 100%;
     line-height: 0;
   }
 
