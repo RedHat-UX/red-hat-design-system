@@ -2,7 +2,7 @@
 "@rhds/elements": major
 ---
 
-`<rh-footer>` and `<rh-footer-universal>`: changed the `logo` slot to accept an inline SVG, `<img>`, `<picture>`, or text instead of an anchor wrapping the logo. Use `logo-href` to set the logo link destination. Use optional `logo-label` to override the accessible name. See #3240.
+`<rh-footer>` and `<rh-footer-universal>`: changed the `logo` slot to accept an inline SVG, `<img>`, `<picture>`, or text instead of an anchor wrapping the logo. Use `logo-href` to set the logo link destination. Use optional `logo-label` to override the accessible name.
 
 This change does not affect implementations that already used the default logo and did not override the slot.
 
