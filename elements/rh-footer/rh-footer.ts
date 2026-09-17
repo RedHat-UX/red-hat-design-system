@@ -1,8 +1,7 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, nothing } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
@@ -10,7 +9,7 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import { DEFAULT_LOGO_HREF, optionalLogoAttr } from './rh-footer-universal.js';
+import { DEFAULT_LOGO_HREF } from './rh-footer-universal.js';
 export { RhFooterUniversal } from './rh-footer-universal.js';
 
 import '@rhds/elements/rh-accordion/rh-accordion.js';
@@ -174,7 +173,7 @@ export class RhFooter extends LitElement {
                   <!-- main page or product logo container -->
                   <div class="logo" part="logo">
                     <a href="${this.logoHref?.trim() || DEFAULT_LOGO_HREF}"
-                       aria-label="${ifDefined(optionalLogoAttr(this.logoLabel))}">
+                       aria-label="${this.logoLabel?.trim() || nothing}">
                       <!-- summary: main page or product logo
                            description: |
                              Expects an inline SVG, \`<img>\`, \`<picture>\`, or text.

@@ -1,12 +1,11 @@
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
-import { LitElement, html } from 'lit';
+import { LitElement, html, nothing } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
 import { classMap } from 'lit/directives/class-map.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
@@ -18,15 +17,6 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 
 /** Default Red Hat homepage URL for the logo link and empty `logo-href` fallback. */
 export const DEFAULT_LOGO_HREF = 'https://www.redhat.com/en';
-
-/**
- * Trim a string attribute. Empty or whitespace-only values become undefined
- * so `ifDefined` omits the attribute from the inner logo `<a>`.
- * @param value - Host attribute to copy onto the inner logo link
- */
-export function optionalLogoAttr(value?: string) {
-  return value?.trim() || undefined;
-}
 
 /**
  * Global Red Hat footer bar for consistent branding across all
@@ -169,7 +159,7 @@ export class RhFooterUniversal extends LitElement {
               <a class="global-logo-anchor"
                  part="logo-anchor"
                  href="${this.logoHref?.trim() || DEFAULT_LOGO_HREF}"
-                 aria-label="${ifDefined(optionalLogoAttr(this.logoLabel))}">
+                 aria-label="${this.logoLabel?.trim() || nothing}">
                 <!-- summary: Red Hat fedora logo (logo slot)
                      description: |
                        Expects an inline SVG, \`<img>\`, or \`<picture>\`. Defaults to the
