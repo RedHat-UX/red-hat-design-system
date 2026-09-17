@@ -41,6 +41,20 @@ describe('<rh-tile-group>', function() {
           .and
           .to.be.an.instanceOf(RhTileGroup);
     });
+
+    it('manages tiles inside wrapper elements', async function() {
+      element = await createFixture<RhTileGroup>(html`
+        <rh-tile-group radio>
+          <div>
+            <rh-tile>Tile 1</rh-tile>
+            <rh-tile>Tile 2</rh-tile>
+          </div>
+        </rh-tile-group>
+      `);
+      await updateComplete();
+
+      expect(element.tiles).to.have.length(2);
+    });
   });
 
   describe('as a radio group', async function() {

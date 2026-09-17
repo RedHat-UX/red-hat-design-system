@@ -2,7 +2,6 @@ import { LitElement, html, type PropertyValues } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { provide } from '@lit/context';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
@@ -55,9 +54,6 @@ export class RhTileGroup extends LitElement {
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   #tiles: RhTile[] = [];
-
-  @queryAssignedElements({ selector: 'rh-tile', flatten: true })
-  private slottedTiles!: RhTile[];
 
   @provide({ context: rhTileGroupContext })
   private groupContext: Readonly<RhTileGroupContext> = Object.freeze({
@@ -194,15 +190,14 @@ export class RhTileGroup extends LitElement {
 
   /** Updates slotted tiles and keyboard navigation. */
   updateItems() {
-    const tiles = this.slottedTiles;
+    // A descendant query is used instead of @queryAssignedElements so tiles can
+    // be placed inside ordinary wrapper elements while still belonging to the group.
+    const tiles = [...this.querySelectorAll('rh-tile')];
 
     this.#tiles = tiles;
     this.#tabindex.items = tiles;
 
     for (const tile of tiles) {
-      if (tile.parentElement !== this) {
-        continue;
-      }
       tile.id ||= getRandomId('rh-tile');
     }
   }
