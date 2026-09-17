@@ -34,7 +34,7 @@ If using a standalone `<rh-footer-universal>`, add `color-palette="darkest"` to 
 
 **Optional, but recommended**
 
-Slotted `logo--on-dark.svg` images still work on a dark footer. To be light footer friendly, replace the slotted `<img>` with an inline SVG whose wordmark fill uses `light-dark()`. Copy the SVG from the [`<rh-footer>` slotted logo demo](https://ux.redhat.com/elements/footer/demos/#demo-slotted-logo).
+Slotted images that use `<img>` are not compatible with `light-dark()` CSS, to support user preference/switched light and dark schemes when a preset `color-palette` attribute is not present we suggest replacing the slotted `<img>` with a compatible inline `<svg>`.  For an example see the SVG from the [`<rh-footer>` slotted logo demo](https://ux.redhat.com/elements/footer/demos/#demo-slotted-logo).
 
 ```html
 <!-- before: raster that only works on dark -->
