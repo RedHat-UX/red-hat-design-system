@@ -258,7 +258,7 @@ export class RhNavigationPrimary extends LitElement {
               <a href="${this.logoHref.trim()}"
                 aria-label="${this.logoLabel?.trim() || nothing}">
                 <!--
-                  Accepts an inline SVG or \`<img>\` to override the default Red Hat logo.
+                  Accepts an inline \`<svg>\`, \`<img>\`, \`<picture>\` to override the default Red Hat logo.
                   Slotted images should be swapped on scheme change or support light-dark()
                   such as in an inline SVG.
                 -->
