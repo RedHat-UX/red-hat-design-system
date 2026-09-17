@@ -2,7 +2,7 @@
 "@rhds/elements": major
 ---
 
-`<rh-navigation-primary>`: changed the `logo` slot to accept an inline SVG or `<img>` instead of an anchor wrapping the logo. Use the `logo-href` attribute to set the custom logo link destination.
+`<rh-navigation-primary>`: changed the `logo` slot to accept an inline SVG or `<img>` instead of an anchor wrapping the logo. Use the `logo-href` attribute to set the custom logo link destination. Use optional `logo-label` to override the logo's accessible name.
 
 This change does not affect implementations that already used the default logo and did not override the slot.
 
