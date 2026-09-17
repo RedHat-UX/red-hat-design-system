@@ -17,13 +17,14 @@ import '@rhds/elements/rh-footer/rh-footer.js';
 <link rel="stylesheet" href="node_modules/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css" />
 ```
 
+The default Red Hat wordmark is built in. To slot a custom mark, copy the
+inline SVG from the [slotted logo demo][slotted-logo].
+
 ## Example
 
 ```html
-<rh-footer data-analytics-region="page-footer">
-  <a slot="logo" href="https://redhat.com/en" data-analytics-category="Footer" data-analytics-text="Logo">
-    <img alt="Red Hat logo" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" loading="lazy" />
-  </a>
+<rh-footer color-palette="darkest"
+           data-analytics-region="page-footer">
   <div slot="header-secondary">
     <label class="visually-hidden" for="select-language">Choose page language:</label>
     <rh-select id="select-language">
@@ -115,7 +116,7 @@ import '@rhds/elements/rh-footer/rh-footer-universal.js';
 ```
 
 ```html
-<rh-footer-universal>
+<rh-footer-universal color-palette="darkest">
   <h3 slot="links-primary" data-analytics-text="Red Hat corporate links" hidden>Red Hat corporate links</h3>
   <ul slot="links-primary" data-analytics-region="page-footer-bottom-primary">
     <li><a href="https://redhat.com/en/about/company" data-analytics-category="Footer|Corporate" data-analytics-text="About Red Hat">About Red Hat</a></li>
@@ -152,4 +153,5 @@ Please [open a discussion thread][qa] here on GitHub. The Design Systems team
 will help.
 
 [spec]: https://ux.redhat.com/elements/footer/
+[slotted-logo]: https://ux.redhat.com/elements/footer/demo/slotted-logo/
 [qa]: https://github.com/orgs/RedHat-UX/discussions/categories/q-a
