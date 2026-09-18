@@ -1,0 +1,88 @@
+#theming-screenshots {
+  margin-block: var(--rh-space-2xl, 32px) var(--rh-space-4xl, 64px);
+
+  &::part(container) {
+    padding: 0;
+  }
+}
+
+svg.theming-example {
+  & .fill-brand {
+    fill:
+      var(--rh-color-brand-red,
+        light-dark(
+          var(--rh-color-brand-red-on-light, #ee0000),
+          var(--rh-color-brand-red-on-dark, #ee0000)));
+  }
+
+  & .fill-interactive {
+    fill:
+      var(--rh-color-interactive-primary-default,
+        light-dark(
+          var(--rh-color-interactive-primary-default-on-light, #0066cc),
+          var(--rh-color-interactive-primary-default-on-dark, #92c5f9)));
+  }
+
+  & .fill-text-primary {
+    fill:
+      var(--rh-color-text-primary,
+        light-dark(
+          var(--rh-color-text-primary-on-light, #151515),
+          var(--rh-color-text-primary-on-dark, #ffffff)));
+  }
+
+  & .fill-text-secondary {
+    fill:
+      var(--rh-color-text-secondary,
+        light-dark(
+          var(--rh-color-text-secondary-on-light, #4d4d4d),
+          var(--rh-color-text-secondary-on-dark, #c7c7c7)));
+  }
+
+  & .fill-surface {
+    fill:
+      var(--rh-color-surface,
+        light-dark(
+          var(--rh-color-surface-lightest, #ffffff),
+          var(--rh-color-surface-darkest, #151515)));
+  }
+
+  & .fill-border-subtle {
+    fill:
+      var(--rh-color-border-subtle,
+        light-dark(
+          var(--rh-color-border-subtle-on-light, #c7c7c7),
+          var(--rh-color-border-subtle-on-dark, #707070)));
+  }
+
+  & .fill-surface-secondary {
+    fill:
+      light-dark(
+          var(--rh-color-surface-light, #e0e0e0),
+          var(--rh-color-surface-dark, #383838));
+  }
+
+  & .stroke-border-subtle {
+    stroke:
+      var(--rh-color-border-subtle,
+        light-dark(
+          var(--rh-color-border-subtle-on-light, #c7c7c7),
+          var(--rh-color-border-subtle-on-dark, #707070)));
+  }
+
+  & .stroke-brand {
+    stroke:
+      var(--rh-color-brand-red,
+        light-dark(
+          var(--rh-color-brand-red-on-light, #ee0000),
+          var(--rh-color-brand-red-on-dark, #ee0000)));
+  }
+
+  & .stroke-surface {
+    stroke:
+      var(--rh-color-surface,
+        light-dark(
+          var(--rh-color-surface-lightest, #ffffff),
+          var(--rh-color-surface-darkest, #151515)));
+  }
+}

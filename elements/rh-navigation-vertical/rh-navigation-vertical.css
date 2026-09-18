@@ -1,10 +1,12 @@
 :host {
   display: block;
-
-  /** Navigation surface, adapts to light or dark theme */
   background:
-    light-dark(var(--rh-color-surface-lightest),
-      var(--rh-color-surface-darker, #1f1f1f));
+    light-dark(
+      /** Navigation surface color on light scheme */
+      var(--rh-color-surface-lightest, #ffffff),
+      /** Navigation surface color on dark scheme */
+      var(--rh-color-surface-darker, #1f1f1f)
+    );
 }
 
 .visually-hidden {

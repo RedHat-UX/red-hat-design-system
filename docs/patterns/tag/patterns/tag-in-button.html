@@ -26,10 +26,14 @@
     padding: 0;
 
     &:focus-visible {
-      outline-width: var(--rh-border-width-md, 2px);
-      outline-style: solid;
-      outline-color: var(--rh-color-interactive-primary-default);
+      outline:
+        var(--rh-color-interactive-primary-default,
+          light-dark(
+            var(--rh-color-interactive-primary-default-on-light, #0066cc),
+            var(--rh-color-interactive-primary-default-on-dark, #92c5f9)))
+        solid var(--rh-border-width-md, 2px);
       outline-offset: var(--rh-length-3xs, 2px);
+
       --rh-border-width-sm: var(--rh-border-width-md, 2px);
     }
 

@@ -1,0 +1,25 @@
+rh-blockquote {
+  display: block;
+  margin-block: 2rem;
+  margin-inline-start: 2.5rem;
+}
+
+.limit-width {
+  max-width: 56rem;
+}
+
+#func-img {
+  outline:
+    var(--rh-border-width-sm, 1px) solid
+    var(--rh-color-border-subtle,
+      light-dark(
+        var(--rh-color-border-subtle-on-light, #c7c7c7),
+        var(--rh-color-border-subtle-on-dark, #707070)));
+  width: 50%;
+}
+
+@container container (min-width: 576px) {
+  #func-img {
+    padding: var(--rh-space-3xl, 48px);
+  }
+}

@@ -4,11 +4,14 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import styles from './uxdot-toc.css';
 import listStyles from './uxdot-toc-list.css';
 import itemStyles from './uxdot-toc-item.css';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
+@themable
 @customElement('uxdot-toc')
 export class UxdotToc extends LitElement {
   static styles = [styles];
@@ -47,6 +50,7 @@ export class UxdotTocList extends LitElement {
 }
 
 
+@themable
 @customElement('uxdot-toc-item')
 export class UxdotTocItem extends LitElement {
   static styles = [itemStyles];

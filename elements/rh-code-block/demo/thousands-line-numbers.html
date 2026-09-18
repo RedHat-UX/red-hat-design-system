@@ -5,7 +5,7 @@ description: This demo loads 1000+ code blocks with line numbers and wrap action
   import '@rhds/elements/rh-code-block/rh-code-block.js';
 </script>
 
-<style>rh-code-block { margin-block-end: var(--rh-length-lg); }</style>
+<style>rh-code-block { margin-block-end: var(--rh-length-lg, 16px); }</style>
 
 <rh-code-block highlighting="prerendered" language="shell-session" actions="copy wrap">
 <pre class="language-shell-session" tabindex="-1"><code class="language-shell-session"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">oc <span class="token parameter variable">-n</span> openshift-kube-apiserver-operator get secret kube-apiserver-to-kubelet-signer <span class="token parameter variable">-o</span> <span class="token assign-left variable">jsonpath</span><span class="token operator">=</span><span class="token string">'{.metadata.annotations.auth\.openshift\.io/certificate-not-after}'</span></span></span></code></pre>

@@ -16,11 +16,7 @@ tags:
 </script>
 
 
-<style data-helmet>
-  rh-tile img[slot="image"] {
-    height: auto;
-  }
-</style>
+<link rel="stylesheet" href="index.css" data-helmet>
 
 <section aria-labelledby="overview">
 
