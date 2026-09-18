@@ -313,7 +313,9 @@
         var(--_text-color-secondary)) !important;
     background-color: var(--_disabled-background-color) !important;
 
+    /* Keep icon and link colors muted even while hovered/focused/active */
     --_interactive-color: var(--_text-color-secondary) !important;
+    --_link-color: var(--_text-color-secondary) !important;
   }
 }
 
