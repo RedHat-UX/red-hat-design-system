@@ -1,9 +1,10 @@
-import { LitElement, html, type PropertyValues } from 'lit';
+import { LitElement, html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { consume } from '@lit/context';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
@@ -17,6 +18,7 @@ import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palet
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-tile.css' with { type: 'css' };
+import { rhTileGroupContext, type RhTileGroupContext } from './context.js';
 
 /**
  * Fired when a checkable tile is selected or deselected.
@@ -140,11 +142,9 @@ export class RhTile extends LitElement {
   /** When set to "private", the icon representing the link changes from an arrow to a padlock */
   @property() link?: 'private' | 'public' | 'external';
 
-  // TODO(bennyp): https://lit.dev/docs/data/context/#content
-  @state() private disabledGroup = false;
-
-  // TODO(bennyp): https://lit.dev/docs/data/context/#content
-  @state() private radioGroup = false;
+  @consume({ context: rhTileGroupContext, subscribe: true })
+  @state()
+  private tileGroupContext?: Readonly<RhTileGroupContext>;
 
   #internals = InternalsController.of(this);
 
@@ -152,8 +152,20 @@ export class RhTile extends LitElement {
 
   #slots = new SlotController(this, 'image', 'icon', 'title', 'headline', null, 'footer');
 
+  get #isGroupMember() {
+    return this.tileGroupContext !== undefined;
+  }
+
+  get #disabledGroup() {
+    return this.#isGroupMember && !!this.tileGroupContext?.disabled;
+  }
+
+  get #radioGroup() {
+    return this.#isGroupMember && !!this.tileGroupContext?.radio;
+  }
+
   get #isCheckable() {
-    return !!this.radioGroup || this.checkable;
+    return this.#isGroupMember || this.checkable;
   }
 
   get #input(): HTMLInputElement | null {
@@ -167,33 +179,39 @@ export class RhTile extends LitElement {
     this.addEventListener('click', this.#onClick);
   }
 
+  override connectedCallback() {
+    super.connectedCallback();
+    if (this.hasUpdated) {
+      this.requestUpdate();
+    }
+  }
+
   /**
    * Update the internal accessible representation of the element's state
-   * @param changed - the reactive properties which changed this cycle, and their old values
    */
-  override async willUpdate(changed: PropertyValues<this>) {
-    this.#internals.role = this.radioGroup ? 'radio' : this.checkable ? 'checkbox' : null;
+  override async willUpdate() {
+    this.#internals.role = this.#radioGroup ? 'radio' : this.#isCheckable ? 'checkbox' : null;
     this.#internals.ariaChecked = !this.#isCheckable ? null : String(!!this.checked);
-    this.#internals.ariaDisabled = !this.#isCheckable ? null : String(!!this.disabled);
+    this.#internals.ariaDisabled = !this.#isCheckable ? null
+      : String(!!(this.#disabledGroup || this.disabled));
     this.#internals.ariaLabel =
       !(this.#isCheckable && this.accessibleLabel) ? null : this.accessibleLabel;
-    if (changed.has('value') || changed.has('checked')) {
-      const formValue = this.#isCheckable && this.checked ? this.value ?? null : null;
-      this.#internals.setFormValue(formValue);
-    }
-    if (this.checkable && !this.radioGroup) {
+    const formValue = this.#isCheckable && this.checked ? this.value ?? null : null;
+    this.#internals.setFormValue(formValue);
+    if (this.#isCheckable && !this.#radioGroup) {
       this.setAttribute('tabindex', '0');
-    } else if (!this.radioGroup) {
+    } else if (!this.#radioGroup) {
       this.removeAttribute('tabindex');
     }
   }
 
   render() {
-    const { bleed, compact, checkable, checked, desaturated } = this;
-    const disabled = this.disabledGroup || this.disabled || this.#internals.formDisabled;
+    const { bleed, compact, checked, desaturated } = this;
+    const checkable = this.#isCheckable;
+    const disabled = this.#disabledGroup || this.disabled || this.#internals.formDisabled;
     const hasSlottedIcon = this.#slots.hasSlotted('icon');
     const linkIcon =
-        this.checkable ? ''
+        checkable ? ''
       : this.disabled ? 'ban'
       : this.link === 'private' ? 'lock'
       : this.link === 'external' ? 'external-link'
@@ -206,7 +224,7 @@ export class RhTile extends LitElement {
              Hidden when the tile is checkable. -->
         <slot id="image"
               name="image"
-              ?hidden="${this.checkable}"
+              ?hidden="${checkable}"
         ></slot>
         <div id="inner">
           <!-- Place an inline rh-icon or svg element here.
@@ -223,14 +241,14 @@ export class RhTile extends LitElement {
                    the headline. Hidden when checkable or compact. -->
               <slot id="title"
                     name="title"
-                    ?hidden="${this.checkable || this.compact}"></slot>
+                    ?hidden="${checkable || this.compact}"></slot>
               <!-- Block heading element. In a link tile, must
                    contain an anchor. In a checkable tile, this
                    labels the ARIA form control for screen readers. -->
               <slot id="headline" name="headline"></slot>
               <div id="input-outer" aria-hidden="true" ?hidden="${!this.#isCheckable}" ?inert="${!this.#isCheckable}">
                 <input id="input"
-                       type="${this.radioGroup ? 'radio' : 'checkbox'}"
+                       type="${this.#radioGroup ? 'radio' : 'checkbox'}"
                        tabindex="-1"
                        ?checked="${checked}"
                        ?disabled="${disabled}"></input>
@@ -256,10 +274,10 @@ export class RhTile extends LitElement {
   }
 
   async formStateRestoreCallback(state: string, mode: string) {
-    if (this.checkable && mode === 'restore') {
+    if (this.#isCheckable && mode === 'restore') {
       const [maybeControlMode, maybeValue] = state.split('/');
       if (maybeValue ?? maybeControlMode === this.value) {
-        this.#requestSelect(!!this.radioGroup);
+        this.#requestSelect(!!this.#radioGroup);
       }
     }
   }
@@ -300,10 +318,10 @@ export class RhTile extends LitElement {
   }
 
   #requestSelect(force?: boolean) {
-    if (this.checkable
+    if (this.#isCheckable
         && !this.disabled
-        && !this.disabledGroup) {
-      if (this.radioGroup) {
+        && !this.#disabledGroup) {
+      if (this.#radioGroup) {
         this.dispatchEvent(new TileSelectEvent(force));
       } else {
         this.checked = !this.checked;
@@ -318,7 +336,7 @@ export class RhTile extends LitElement {
   #onKeydown(event: KeyboardEvent) {
     switch (event.key) {
       case ' ':
-        if (event.target === this && this.checkable) {
+        if (event.target === this && this.#isCheckable) {
           event.preventDefault();
           event.stopImmediatePropagation();
         }
