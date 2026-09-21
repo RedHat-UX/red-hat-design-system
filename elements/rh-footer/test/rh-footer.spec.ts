@@ -305,295 +305,295 @@ describe('<rh-footer>', function() {
     });
   });
 
-describe('domain footer logo-href', function() {
-  function domainLogoAnchor(el: RhFooter) {
-    return el.shadowRoot?.querySelector<HTMLAnchorElement>('.logo a');
-  }
+  describe('domain footer logo-href', function() {
+    function domainLogoAnchor(el: RhFooter) {
+      return el.shadowRoot?.querySelector<HTMLAnchorElement>('.logo a');
+    }
 
-  describe('with no attribute', function() {
-    beforeEach(async function() {
-      element = await fixture<RhFooter>(html`<rh-footer></rh-footer>`);
+    describe('with no attribute', function() {
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(html`<rh-footer></rh-footer>`);
+      });
+
+      it('uses the default Red Hat homepage URL', function() {
+        expect(domainLogoAnchor(element)?.getAttribute('href')).to.equal('https://www.redhat.com/en');
+      });
     });
 
-    it('uses the default Red Hat homepage URL', function() {
-      expect(domainLogoAnchor(element)?.getAttribute('href')).to.equal('https://www.redhat.com/en');
-    });
-  });
+    describe('with a custom href', function() {
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(html`
+          <rh-footer logo-href="/"></rh-footer>
+        `);
+      });
 
-  describe('with a custom href', function() {
-    beforeEach(async function() {
-      element = await fixture<RhFooter>(html`
-        <rh-footer logo-href="/"></rh-footer>
-      `);
-    });
-
-    it('updates the inner logo link', function() {
-      expect(domainLogoAnchor(element)?.getAttribute('href')).to.equal('/');
-    });
-  });
-});
-
-describe('logo-label', function() {
-  function domainLogoAnchor(el: RhFooter) {
-    return el.shadowRoot?.querySelector<HTMLAnchorElement>('.logo a');
-  }
-
-  describe('when unset', function() {
-    beforeEach(async function() {
-      element = await fixture<RhFooter>(html`<rh-footer></rh-footer>`);
-    });
-
-    it('omits aria-label so the SVG title names the link', function() {
-      expect(domainLogoAnchor(element)?.hasAttribute('aria-label')).to.be.false;
-      expect(element.shadowRoot?.querySelector('.logo svg title')?.textContent).to.equal('Red Hat');
+      it('updates the inner logo link', function() {
+        expect(domainLogoAnchor(element)?.getAttribute('href')).to.equal('/');
+      });
     });
   });
 
-  describe('when set', function() {
-    beforeEach(async function() {
-      element = await fixture<RhFooter>(html`
-        <rh-footer logo-label="Docs">
-          <span slot="logo">Docs</span>
-        </rh-footer>
-      `);
+  describe('logo-label', function() {
+    function domainLogoAnchor(el: RhFooter) {
+      return el.shadowRoot?.querySelector<HTMLAnchorElement>('.logo a');
+    }
+
+    describe('when unset', function() {
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(html`<rh-footer></rh-footer>`);
+      });
+
+      it('omits aria-label so the SVG title names the link', function() {
+        expect(domainLogoAnchor(element)?.hasAttribute('aria-label')).to.be.false;
+        expect(element.shadowRoot?.querySelector('.logo svg title')?.textContent).to.equal('Red Hat');
+      });
     });
 
-    it('sets aria-label on the inner logo link', function() {
-      expect(domainLogoAnchor(element)?.getAttribute('aria-label')).to.equal('Docs');
-    });
-  });
+    describe('when set', function() {
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(html`
+          <rh-footer logo-label="Docs">
+            <span slot="logo">Docs</span>
+          </rh-footer>
+        `);
+      });
 
-  describe('when empty', function() {
-    beforeEach(async function() {
-      element = await fixture<RhFooter>(html`
-        <rh-footer logo-label=""></rh-footer>
-      `);
-    });
-
-    it('omits aria-label', function() {
-      expect(domainLogoAnchor(element)?.hasAttribute('aria-label')).to.be.false;
-    });
-  });
-
-  describe('when whitespace only', function() {
-    beforeEach(async function() {
-      element = await fixture<RhFooter>(html`
-        <rh-footer logo-label="   "></rh-footer>
-      `);
+      it('sets aria-label on the inner logo link', function() {
+        expect(domainLogoAnchor(element)?.getAttribute('aria-label')).to.equal('Docs');
+      });
     });
 
-    it('omits aria-label', function() {
-      expect(domainLogoAnchor(element)?.hasAttribute('aria-label')).to.be.false;
-    });
-  });
-});
+    describe('when empty', function() {
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(html`
+          <rh-footer logo-label=""></rh-footer>
+        `);
+      });
 
-describe('color palette', function() {
-  const lighter = 'rgb(242, 242, 242)'; /* --rh-color-surface-lighter #f2f2f2 */
-  const darker = 'rgb(31, 31, 31)'; /* --rh-color-surface-darker #1f1f1f */
-  const lightest = 'rgb(255, 255, 255)'; /* --rh-color-surface-lightest #ffffff */
-  const darkest = 'rgb(21, 21, 21)'; /* --rh-color-surface-darkest #151515 */
-
-  function headerBackground(el: RhFooter) {
-    return getComputedStyle(el.shadowRoot!.querySelector('.header')!).backgroundColor;
-  }
-
-  function universalBackground(el: RhFooterUniversal) {
-    return getComputedStyle(el.shadowRoot!.querySelector('.global-base')!).backgroundColor;
-  }
-
-  describe('when color-palette is omitted', function() {
-    beforeEach(async function() {
-      element = await fixture<RhFooter>(html`
-        <rh-footer>
-          <rh-footer-universal slot="universal"></rh-footer-universal>
-        </rh-footer>
-      `);
-      universalFooter = element.querySelector('rh-footer-universal')!;
-      await element.updateComplete;
-      await universalFooter.updateComplete;
+      it('omits aria-label', function() {
+        expect(domainLogoAnchor(element)?.hasAttribute('aria-label')).to.be.false;
+      });
     });
 
-    it('renders the domain footer on the lighter surface', function() {
-      expect(headerBackground(element)).to.equal(lighter);
-    });
+    describe('when whitespace only', function() {
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(html`
+          <rh-footer logo-label="   "></rh-footer>
+        `);
+      });
 
-    it('renders the nested universal footer on the lightest surface', function() {
-      expect(universalBackground(universalFooter)).to.equal(lightest);
+      it('omits aria-label', function() {
+        expect(domainLogoAnchor(element)?.hasAttribute('aria-label')).to.be.false;
+      });
     });
   });
 
-  describe('when color-palette is darkest', function() {
-    beforeEach(async function() {
-      element = await fixture<RhFooter>(html`
-        <rh-footer color-palette="darkest">
-          <rh-footer-universal slot="universal"></rh-footer-universal>
-        </rh-footer>
-      `);
-      universalFooter = element.querySelector('rh-footer-universal')!;
-      await element.updateComplete;
-      await universalFooter.updateComplete;
+  describe('color palette', function() {
+    const lighter = 'rgb(242, 242, 242)'; /* --rh-color-surface-lighter #f2f2f2 */
+    const darker = 'rgb(31, 31, 31)'; /* --rh-color-surface-darker #1f1f1f */
+    const lightest = 'rgb(255, 255, 255)'; /* --rh-color-surface-lightest #ffffff */
+    const darkest = 'rgb(21, 21, 21)'; /* --rh-color-surface-darkest #151515 */
+
+    function headerBackground(el: RhFooter) {
+      return getComputedStyle(el.shadowRoot!.querySelector('.header')!).backgroundColor;
+    }
+
+    function universalBackground(el: RhFooterUniversal) {
+      return getComputedStyle(el.shadowRoot!.querySelector('.global-base')!).backgroundColor;
+    }
+
+    describe('when color-palette is omitted', function() {
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(html`
+          <rh-footer>
+            <rh-footer-universal slot="universal"></rh-footer-universal>
+          </rh-footer>
+        `);
+        universalFooter = element.querySelector('rh-footer-universal')!;
+        await element.updateComplete;
+        await universalFooter.updateComplete;
+      });
+
+      it('renders the domain footer on the lighter surface', function() {
+        expect(headerBackground(element)).to.equal(lighter);
+      });
+
+      it('renders the nested universal footer on the lightest surface', function() {
+        expect(universalBackground(universalFooter)).to.equal(lightest);
+      });
     });
 
-    it('renders the domain footer on the darker surface', function() {
-      expect(headerBackground(element)).to.equal(darker);
+    describe('when color-palette is darkest', function() {
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(html`
+          <rh-footer color-palette="darkest">
+            <rh-footer-universal slot="universal"></rh-footer-universal>
+          </rh-footer>
+        `);
+        universalFooter = element.querySelector('rh-footer-universal')!;
+        await element.updateComplete;
+        await universalFooter.updateComplete;
+      });
+
+      it('renders the domain footer on the darker surface', function() {
+        expect(headerBackground(element)).to.equal(darker);
+      });
+
+      it('nested universal without color-palette inherits dark scheme', function() {
+        expect(universalFooter.hasAttribute('color-palette')).to.be.false;
+        expect(universalBackground(universalFooter)).to.equal(darkest);
+      });
     });
 
-    it('nested universal without color-palette inherits dark scheme', function() {
-      expect(universalFooter.hasAttribute('color-palette')).to.be.false;
-      expect(universalBackground(universalFooter)).to.equal(darkest);
-    });
-  });
+    describe('standalone universal with color-palette="darkest"', function() {
+      beforeEach(async function() {
+        universalFooter = await fixture<RhFooterUniversal>(html`
+          <rh-footer-universal color-palette="darkest"></rh-footer-universal>
+        `);
+        await universalFooter.updateComplete;
+      });
 
-  describe('standalone universal with color-palette="darkest"', function() {
-    beforeEach(async function() {
-      universalFooter = await fixture<RhFooterUniversal>(html`
-        <rh-footer-universal color-palette="darkest"></rh-footer-universal>
-      `);
-      await universalFooter.updateComplete;
-    });
-
-    it('renders on the darkest surface', function() {
-      expect(universalBackground(universalFooter)).to.equal(darkest);
-    });
-  });
-
-  describe('mobile accordion', function() {
-    beforeEach(async function() {
-      await setViewport({ width: 300, height: 800 });
-      element = await fixture<RhFooter>(html`
-        <rh-footer color-palette="lightest">
-          <h3 slot="links">Products</h3>
-          <ul slot="links"><li><a href="#">Red Hat Enterprise Linux</a></li></ul>
-          <rh-footer-universal slot="universal"></rh-footer-universal>
-        </rh-footer>
-      `);
-      await element.updateComplete;
-      await aTimeout(500);
+      it('renders on the darkest surface', function() {
+        expect(universalBackground(universalFooter)).to.equal(darkest);
+      });
     });
 
-    it('does not hardcode a dark palette on the accordion', function() {
-      const accordion = element.shadowRoot?.querySelector('rh-accordion');
-      expect(accordion).to.exist;
-      expect(accordion).not.to.have.attribute('color-palette');
-      expect(accordion).not.to.have.attribute('on');
-    });
-  });
-});
+    describe('mobile accordion', function() {
+      beforeEach(async function() {
+        await setViewport({ width: 300, height: 800 });
+        element = await fixture<RhFooter>(html`
+          <rh-footer color-palette="lightest">
+            <h3 slot="links">Products</h3>
+            <ul slot="links"><li><a href="#">Red Hat Enterprise Linux</a></li></ul>
+            <rh-footer-universal slot="universal"></rh-footer-universal>
+          </rh-footer>
+        `);
+        await element.updateComplete;
+        await aTimeout(500);
+      });
 
-describe('ancestor detection', function() {
-  /**
-   * Visually-hidden region heading in rh-footer-universal shadow.
-   * @param el universal footer under test
-   */
-  function globalHeading(el: RhFooterUniversal) {
-    return el.shadowRoot?.querySelector<HTMLHeadingElement>('#global-heading');
-  }
-
-  /**
-   * ElementInternals role via the same InternalsController instance.
-   * attachInternals() can only run once per host, so read through the controller.
-   * @param el footer host under test
-   */
-  function internalsRole(el: RhFooter | RhFooterUniversal) {
-    return InternalsController.of(el).role;
-  }
-
-  describe('standalone with a page h2', function() {
-    beforeEach(async function() {
-      const wrapper = await fixture(html`
-        <div>
-          <h2>Page</h2>
-          <rh-footer-universal></rh-footer-universal>
-        </div>
-      `);
-      universalFooter = wrapper.querySelector('rh-footer-universal')!;
-      await universalFooter.updateComplete;
-    });
-
-    it('does not hide the region heading because of an unrelated page h2', function() {
-      expect(globalHeading(universalFooter)?.hidden).to.be.false;
-    });
-
-    it('sets contentinfo on the host', function() {
-      expect(internalsRole(universalFooter)).to.equal('contentinfo');
+      it('does not hardcode a dark palette on the accordion', function() {
+        const accordion = element.shadowRoot?.querySelector('rh-accordion');
+        expect(accordion).to.exist;
+        expect(accordion).not.to.have.attribute('color-palette');
+        expect(accordion).not.to.have.attribute('on');
+      });
     });
   });
 
-  describe('nested in rh-footer', function() {
-    beforeEach(async function() {
-      element = await fixture<RhFooter>(html`
-        <rh-footer>
-          <rh-footer-universal slot="universal"></rh-footer-universal>
-        </rh-footer>
-      `);
-      universalFooter = element.querySelector('rh-footer-universal')!;
-      await element.updateComplete;
-      await universalFooter.updateComplete;
-    });
+  describe('ancestor detection', function() {
+    /**
+     * Visually-hidden region heading in rh-footer-universal shadow.
+     * @param el universal footer under test
+     */
+    function globalHeading(el: RhFooterUniversal) {
+      return el.shadowRoot?.querySelector<HTMLHeadingElement>('#global-heading');
+    }
 
-    it('hides the duplicate region heading', function() {
-      expect(globalHeading(universalFooter)?.hidden).to.be.true;
-    });
+    /**
+     * ElementInternals role via the same InternalsController instance.
+     * attachInternals() can only run once per host, so read through the controller.
+     * @param el footer host under test
+     */
+    function internalsRole(el: RhFooter | RhFooterUniversal) {
+      return InternalsController.of(el).role;
+    }
 
-    it('removes the duplicate heading from layout so AT skips it', function() {
-      expect(getComputedStyle(globalHeading(universalFooter)!).display).to.equal('none');
-    });
-
-    it('does not set contentinfo on the nested universal host', function() {
-      expect(internalsRole(universalFooter)).to.equal(null);
-    });
-
-    it('sets contentinfo on rh-footer', function() {
-      expect(internalsRole(element)).to.equal('contentinfo');
-    });
-  });
-
-  describe('wrapped in a native footer', function() {
-    beforeEach(async function() {
-      const wrapper = await fixture(html`
-        <footer>
-          <rh-footer-universal></rh-footer-universal>
-        </footer>
-      `);
-      universalFooter = wrapper.querySelector('rh-footer-universal')!;
-      await universalFooter.updateComplete;
-    });
-
-    it('does not hide the region heading', function() {
-      expect(globalHeading(universalFooter)?.hidden).to.be.false;
-    });
-
-    it('does not set contentinfo on the nested universal host', function() {
-      expect(internalsRole(universalFooter)).to.equal(null);
-    });
-  });
-
-  describe('inside extra wrapper divs', function() {
-    beforeEach(async function() {
-      const wrapper = await fixture(html`
-        <div>
+    describe('standalone with a page h2', function() {
+      beforeEach(async function() {
+        const wrapper = await fixture(html`
           <div>
             <h2>Page</h2>
+            <rh-footer-universal></rh-footer-universal>
+          </div>
+        `);
+        universalFooter = wrapper.querySelector('rh-footer-universal')!;
+        await universalFooter.updateComplete;
+      });
+
+      it('does not hide the region heading because of an unrelated page h2', function() {
+        expect(globalHeading(universalFooter)?.hidden).to.be.false;
+      });
+
+      it('sets contentinfo on the host', function() {
+        expect(internalsRole(universalFooter)).to.equal('contentinfo');
+      });
+    });
+
+    describe('nested in rh-footer', function() {
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(html`
+          <rh-footer>
+            <rh-footer-universal slot="universal"></rh-footer-universal>
+          </rh-footer>
+        `);
+        universalFooter = element.querySelector('rh-footer-universal')!;
+        await element.updateComplete;
+        await universalFooter.updateComplete;
+      });
+
+      it('hides the duplicate region heading', function() {
+        expect(globalHeading(universalFooter)?.hidden).to.be.true;
+      });
+
+      it('removes the duplicate heading from layout so AT skips it', function() {
+        expect(getComputedStyle(globalHeading(universalFooter)!).display).to.equal('none');
+      });
+
+      it('does not set contentinfo on the nested universal host', function() {
+        expect(internalsRole(universalFooter)).to.equal(null);
+      });
+
+      it('sets contentinfo on rh-footer', function() {
+        expect(internalsRole(element)).to.equal('contentinfo');
+      });
+    });
+
+    describe('wrapped in a native footer', function() {
+      beforeEach(async function() {
+        const wrapper = await fixture(html`
+          <footer>
+            <rh-footer-universal></rh-footer-universal>
+          </footer>
+        `);
+        universalFooter = wrapper.querySelector('rh-footer-universal')!;
+        await universalFooter.updateComplete;
+      });
+
+      it('does not hide the region heading', function() {
+        expect(globalHeading(universalFooter)?.hidden).to.be.false;
+      });
+
+      it('does not set contentinfo on the nested universal host', function() {
+        expect(internalsRole(universalFooter)).to.equal(null);
+      });
+    });
+
+    describe('inside extra wrapper divs', function() {
+      beforeEach(async function() {
+        const wrapper = await fixture(html`
+          <div>
             <div>
-              <rh-footer-universal></rh-footer-universal>
+              <h2>Page</h2>
+              <div>
+                <rh-footer-universal></rh-footer-universal>
+              </div>
             </div>
           </div>
-        </div>
-      `);
-      universalFooter = wrapper.querySelector('rh-footer-universal')!;
-      await universalFooter.updateComplete;
-    });
+        `);
+        universalFooter = wrapper.querySelector('rh-footer-universal')!;
+        await universalFooter.updateComplete;
+      });
 
-    it('does not hide the region heading', function() {
-      expect(globalHeading(universalFooter)?.hidden).to.be.false;
-    });
+      it('does not hide the region heading', function() {
+        expect(globalHeading(universalFooter)?.hidden).to.be.false;
+      });
 
-    it('sets contentinfo on the host', function() {
-      expect(internalsRole(universalFooter)).to.equal('contentinfo');
+      it('sets contentinfo on the host', function() {
+        expect(internalsRole(universalFooter)).to.equal('contentinfo');
+      });
     });
   });
-});
 
   describe('adjusting window size', function() {
     beforeEach(async function() {
