@@ -33,9 +33,52 @@ description: Tiles with full-width (bleed) images that extend to the tile edges.
   <div slot="footer">Suspendisse eu turpis elementum</div>
 </rh-tile>
 
+<rh-tile bleed>
+  <svg slot="image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="100%">
+    <title>Placeholder image with rounded corners</title>
+    <rect width="100%" height="100%"
+          fill="var(--rh-color-brand-red-on-light, #ee0000)" />
+  </svg>
+  <h2 slot="headline"><a href="#top">24px radius, 8px border</a></h2>
+  The bleed image radius is calculated as <code>24px - 8px = 16px</code>.
+</rh-tile>
+
+<rh-tile class="radius-clamped" bleed>
+  <svg slot="image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="100%">
+    <title>Placeholder image with a clamped corner radius</title>
+    <rect width="100%" height="100%"
+          fill="var(--rh-color-brand-red-on-light, #ee0000)" />
+  </svg>
+  <h2 slot="headline"><a href="#top">4px radius, 8px border</a></h2>
+  The border width is larger than the radius, so <code>4px - 8px</code>
+  is clamped to <code>0px</code>.
+</rh-tile>
+
 <link rel="stylesheet" href="../rh-tile-lightdom.css">
 
 <script type="module">
   import '@rhds/elements/rh-tile/rh-tile.js';
   import '@rhds/elements/rh-icon/rh-icon.js';
 </script>
+
+<style>
+  rh-tile {
+    margin-inline-end: var(--rh-space-md, 8px);
+    margin-block-end: var(--rh-space-md, 8px);
+  }
+
+  rh-tile:last-of-type,
+  rh-tile:nth-last-of-type(2) {
+    --rh-border-radius-default: 24px;
+    --rh-border-width-sm: 8px;
+    display: inline-block;
+    width: 320px;
+    margin-inline-end: var(--rh-space-md, 8px);
+    margin-block-end: var(--rh-space-md, 8px);
+    vertical-align: top;
+  }
+
+  rh-tile.radius-clamped {
+    --rh-border-radius-default: 4px;
+  }
+</style>
