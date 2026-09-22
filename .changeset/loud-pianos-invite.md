@@ -3,8 +3,7 @@
 ---
 
 `<rh-footer-links>`: added `accessible-label` for the link group name
-`<rh-footer>`: added `social-links-label` and `logo-label`
-`<rh-footer-universal>`: added `logo-label`
+`<rh-footer>`: added `social-links-label`
 
 If you slot social links in the `tertiary` slot, add `accessible-label` on
 `<rh-footer-links role="list">` so the group has an accessible name. See
