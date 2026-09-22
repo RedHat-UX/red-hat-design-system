@@ -34,6 +34,8 @@ subnav:
   import '@rhds/elements/rh-switch/rh-switch.js';
   import '@rhds/elements/rh-tabs/rh-tabs.js';
   import '@rhds/elements/rh-tag/rh-tag.js';
+  import '@rhds/elements/rh-tile/rh-tile.js';
+  import '@rhds/elements/rh-tile/rh-tile-group.js';
 </script>
 
 <link rel="stylesheet" data-helmet href="/theming/themes/project-felt/preview/felt-theme-preview.css">
@@ -232,6 +234,10 @@ Preview the Project Felt theme on the elements below. Toggle the switch to compa
   <uxdot-copy-permalink slot="heading"><h3 id="tag"><a href="#tag">Tags</a></h3></uxdot-copy-permalink>
 </uxdot-pattern>
 
+<uxdot-pattern src="../../patterns/felt-preview-tile.html">
+  <uxdot-copy-permalink slot="heading"><h3 id="tile" class="toc"><a href="#tile">Tile</a></h3></uxdot-copy-permalink>
+</uxdot-pattern>
+
 <uxdot-feedback>
   <h2>Other available themes</h2>
   <p>If the Project Felt theme does not fit your user needs right now,
@@ -283,5 +289,24 @@ Preview the Project Felt theme on the elements below. Toggle the switch to compa
   const pageToc = document.querySelector('#page-toc');
   if (pageToc) {
     pageToc.setAttribute('tabindex', '-1');
+  }
+
+  // Fix radio tile groups in uxdot-pattern SSR context.
+  // Lit's hydration caches the initial input type="checkbox" and
+  // doesn't re-render when radioGroup changes post-hydration.
+  // Patch the shadow DOM input type directly.
+  await customElements.whenDefined('rh-tile-group');
+  await customElements.whenDefined('rh-tile');
+  await new Promise(r => setTimeout(r, 0));
+  for (const pattern of document.querySelectorAll('uxdot-pattern')) {
+    const root = pattern.shadowRoot;
+    if (!root) continue;
+    for (const group of root.querySelectorAll('rh-tile-group[radio]')) {
+      group.updateItems();
+      for (const tile of group.querySelectorAll('rh-tile')) {
+        const input = tile.shadowRoot?.querySelector('#input');
+        if (input) input.type = 'radio';
+      }
+    }
   }
 </script>
