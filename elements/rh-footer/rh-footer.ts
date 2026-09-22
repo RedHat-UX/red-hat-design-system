@@ -63,15 +63,6 @@ export class RhFooter extends LitElement {
   @property({ attribute: 'social-links-label' }) socialLinksLabel = 'Red Hat social media links';
 
   /**
-   * Accessible name for the default logo link. Applied as `aria-label` on the
-   * fallback logo `<a>` when the `logo` slot is empty. Keep "Red Hat" except
-   * in Simplified Chinese (`红帽`). Has no effect when authors slot a custom
-   * logo; use `alt` or `aria-label` on that slotted content instead.
-   * Defaults to `'Red Hat'`.
-   */
-  @property({ attribute: 'logo-label' }) logoLabel = 'Red Hat';
-
-  /**
    * Isomorphic import.meta.url function
    * Requires a node.js dom shim that sets window.location
    */
