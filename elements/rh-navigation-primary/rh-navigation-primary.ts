@@ -161,9 +161,10 @@ export class RhNavigationPrimary extends LitElement {
   @property({ attribute: 'logo-label' }) logoLabel = '';
 
   /**
-   * Sets the `href` for the default logo link. Avoid changing this value
-   * unless the site requires a non-root landing page for the logo. Defaults
-   * to `'https://www.redhat.com/en'`.
+   * Sets the `href` for the logo link. Applies whether or not the `logo` slot
+   * is overridden. Avoid changing this value except for a locale-specific
+   * redhat.com homepage (e.g. `https://www.redhat.com/ja`). Defaults to
+   * `'https://www.redhat.com/en'`.
    */
   @property({ attribute: 'logo-href' }) logoHref = 'https://www.redhat.com/en';
 
