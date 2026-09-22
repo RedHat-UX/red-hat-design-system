@@ -50,6 +50,13 @@ export class RhFooterLinks extends LitElement {
    */
   #appliedAriaLabel?: string;
 
+  /**
+   * Last list `aria-labelledby` id this component wrote from a slotted
+   * header. Used so we remove only our own association and must not strip
+   * an author-set native `aria-labelledby`.
+   */
+  #appliedLabelledBy?: string;
+
   protected slots = new SlotController(this, 'header');
 
   connectedCallback() {
@@ -64,29 +71,61 @@ export class RhFooterLinks extends LitElement {
     // ensure we've rendered to our shadowroot
     const header = this.querySelector('[slot="header"]');
     const ul = this.querySelector('ul');
+    this.#syncListLabelledBy(header, ul);
+    this.#syncHostAriaLabel(header);
+  }
+
+  /**
+   * Wire `aria-labelledby` from a slotted header to the inner list,
+   * OR drop the association we wrote when that header is gone.
+   * Leave an author-set labelledby alone.
+   * @param header slotted header element, or null if none
+   * @param ul inner list, or null if none
+   */
+  #syncListLabelledBy(header: Element | null, ul: HTMLUListElement | null) {
+    // Case 1: Header and list exist:
+    // Wire aria-labelledby and remember the id we wrote.
     if (header && ul) {
-      // ensure there is an id on the header slot
       header.id ||= getRandomId('rh-footer-links');
       ul.setAttribute('aria-labelledby', header.id);
+      this.#appliedLabelledBy = header.id;
+      return;
     }
-    // Name the host list from accessible-label when authors did not slot a
-    // header. Record the value we wrote so later updates can clear it.
-    // Do not strip a native aria-label if the property is unset or a header
-    // is slotted later — only remove aria-label when it still matches what
-    // we applied.
+
+    // Case 2: Header gone:
+    // Drop our generated labelledby if it is still on this list.
+    // Leave an author-set native labelledby alone.
+    if (ul && this.#appliedLabelledBy
+        && ul.getAttribute('aria-labelledby') === this.#appliedLabelledBy) {
+      ul.removeAttribute('aria-labelledby');
+    }
+    this.#appliedLabelledBy = undefined;
+  }
+
+  /**
+   * Name the host list from accessible-label when authors did not slot a
+   * header. Record the value we wrote so later updates can clear it.
+   * Do not strip a native aria-label if the property is unset or a header
+   * is slotted later — only remove aria-label when it still matches what
+   * we applied.
+   * @param header slotted header element, or null if none
+   */
+  #syncHostAriaLabel(header: Element | null) {
+    // Case 1: accessible-label exists but no header:
     if (!header && this.accessibleLabel) {
       this.setAttribute('aria-label', this.accessibleLabel);
       this.#appliedAriaLabel = this.accessibleLabel;
-    } else {
-      // Header present, or accessible-label empty/unset: drop our generated
-      // name if it is still the current host aria-label. Leave an author-set
-      // native label alone.
-      if (this.getAttribute('aria-label') === this.#appliedAriaLabel) {
-        this.removeAttribute('aria-label');
-      }
-      // Forget the recorded value so a later coincidental match is not ours.
-      this.#appliedAriaLabel = undefined;
+      return;
     }
+
+    // Case 2: Header present or there is no accessible-label.
+    // Drop our generated name if it is still the current host aria-label.
+    // Leave an author-set native label alone.
+    if (this.getAttribute('aria-label') === this.#appliedAriaLabel) {
+      this.removeAttribute('aria-label');
+    }
+    // Forget the recorded value so a later coincidental match is not ours.
+    this.#appliedAriaLabel = undefined;
   }
 
   override updated() {
