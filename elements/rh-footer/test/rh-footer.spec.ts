@@ -450,6 +450,45 @@ describe('<rh-footer>', function() {
       });
     });
 
+    describe('after removing a wired header while keeping the list', function() {
+      let links: RhFooterLinks;
+
+      beforeEach(async function() {
+        links = await fixture<RhFooterLinks>(html`
+          <rh-footer-links role="list" accessible-label="Red Hat social media links">
+            <h3 slot="header">Social</h3>
+            <ul>
+              <li><a href="#">One</a></li>
+            </ul>
+          </rh-footer-links>
+        `);
+        await links.updateComplete;
+      });
+
+      it('wires aria-labelledby from the header to the list', function() {
+        const header = links.querySelector('[slot="header"]');
+        const ul = links.querySelector('ul');
+        expect(ul).to.have.attribute('aria-labelledby', header?.id);
+      });
+
+      describe('once the header is removed', function() {
+        beforeEach(async function() {
+          links.querySelector('[slot="header"]')?.remove();
+          await links.updateComplete;
+          await nextFrame();
+        });
+
+        it('removes the list aria-labelledby it applied', function() {
+          const ul = links.querySelector('ul');
+          expect(ul).to.not.have.attribute('aria-labelledby');
+        });
+
+        it('sets aria-label on the host from accessible-label', function() {
+          expect(links.getAttribute('aria-label')).to.equal('Red Hat social media links');
+        });
+      });
+    });
+
     describe('with a native aria-label and no accessible-label', function() {
       let links: RhFooterLinks;
 
