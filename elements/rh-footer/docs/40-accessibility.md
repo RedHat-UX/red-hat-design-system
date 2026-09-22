@@ -4,7 +4,7 @@ Name the social links list so screen readers can distinguish it from other group
 
 Localize the surrounding words. Keep the brand as "Red Hat" except in Simplified Chinese, where it is `红帽`. Override the group name only when the accounts are not corporate Red Hat.
 
-The default logo link is named with `logo-label` (default: "Red Hat") when the `logo` slot is empty. Slotted logos should keep using `alt` or `aria-label` on the slotted content; `logo-label` does not apply to them.
+The logo link uses optional `logo-label` (default empty). Leave it unset so the slotted mark or the default SVG `<title>` names the link. When set, it becomes `aria-label` on the wrapping `<a>` and overrides slotted text, SVG `<title>`, or `img` `alt`.
 
 ## Landmark roles
 
