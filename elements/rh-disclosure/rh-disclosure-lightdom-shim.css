@@ -5,16 +5,18 @@ rh-disclosure:not(:defined) {
     /** Not defined border width */
     var(--rh-border-width-sm, 1px)
     solid
-     /** Not defined border color */
+    /** Not defined border color */
     var(--rh-color-border-subtle,
       light-dark(
         var(--rh-color-border-subtle-on-light, #c7c7c7),
         var(--rh-color-border-subtle-on-dark, #707070)
       ));
-   /** Not defined box shadow */
+
+  /** Not defined box shadow */
   box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
   display: block;
-   /** Not defined font family */
+
+  /** Not defined font family */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   padding:
     /** Not defined block padding */
@@ -43,10 +45,13 @@ rh-disclosure:not(:defined) {
 
   > [slot='summary'] {
     display: block;
+
     /** Not defined summary font size */
     font-size: var(--rh-font-size-body-text-md, 1rem);
+
     /** Not defined summary font weight */
     font-weight: var(--rh-font-weight-body-text-medium, 500);
+
     /** Not defined summary font family */
     font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     padding-block-end: var(--rh-space-2xl, 32px);

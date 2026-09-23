@@ -59,6 +59,7 @@ rh-subnav {
     & a {
       display: block !important;
       white-space: nowrap !important;
+
       /** Not defined link padding */
       padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px) !important;
       text-decoration: none !important;

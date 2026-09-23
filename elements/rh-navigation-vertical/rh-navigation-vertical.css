@@ -2,11 +2,11 @@
   display: block;
   background:
     light-dark(
-      /** Navigation surface color on light scheme */
-      var(--rh-color-surface-lightest, #ffffff),
-      /** Navigation surface color on dark scheme */
-      var(--rh-color-surface-darker, #1f1f1f)
-    );
+        /** Navigation surface color on light scheme */
+        var(--rh-color-surface-lightest, #ffffff),
+        /** Navigation surface color on dark scheme */
+        var(--rh-color-surface-darker, #1f1f1f)
+      );
 }
 
 .visually-hidden {
