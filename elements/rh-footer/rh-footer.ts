@@ -53,6 +53,16 @@ export class RhFooter extends LitElement {
   static readonly styles = [style];
 
   /**
+   * Accessible name for the default social links list (`slot="social-links"`).
+   * Applied as `accessible-label` on the inner `<rh-footer-links>`. Localize
+   * surrounding words; keep "Red Hat" except in Simplified Chinese (`红帽`).
+   * Override only when the accounts are not corporate Red Hat. Has no effect
+   * when authors replace `header-secondary` or put social links in the
+   * universal `tertiary` slot. Defaults to `'Red Hat social media links'`.
+   */
+  @property({ attribute: 'social-links-label' }) socialLinksLabel = 'Red Hat social media links';
+
+  /**
    * Isomorphic import.meta.url function
    * Requires a node.js dom shim that sets window.location
    */
@@ -195,7 +205,7 @@ export class RhFooter extends LitElement {
                     <rh-footer-links class="social-links-item"
                                      part="social-links"
                                      role="list"
-                                     aria-label="Red Hat social media links">
+                                     accessible-label="${this.socialLinksLabel}">
                       <!-- summary: social media icon links
                          description: |
                            Expects block elements: \`<rh-footer-social-link>\` elements. Each link
