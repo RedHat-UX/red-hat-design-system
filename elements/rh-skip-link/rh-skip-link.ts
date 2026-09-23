@@ -3,6 +3,8 @@ import { customElement } from 'lit/decorators/custom-element.js';
 
 import { property } from 'lit/decorators/property.js';
 
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import styles from './rh-skip-link.css' with { type: 'css' };
 
 /**
@@ -15,6 +17,7 @@ import styles from './rh-skip-link.css' with { type: 'css' };
  * @summary Allows users to skip repetitive navigation for accessibility
  */
 @customElement('rh-skip-link')
+@themable
 export class RhSkipLink extends LitElement {
   static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 
