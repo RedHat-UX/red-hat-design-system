@@ -1,7 +1,6 @@
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
-
-import { LitElement, html, nothing } from 'lit';
+import { LitElement, html, nothing, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
@@ -74,59 +73,35 @@ export class RhFooterUniversal extends LitElement {
     'tertiary',
   );
 
-  #hasAncestorH2 = false;
+  #isNestedInRhFooter = false;
 
   override connectedCallback() {
     super.connectedCallback();
     this.#updateRole();
-    this.#hasAncestorH2 = this.#detectAncestorH2();
-  }
 
-  /** Check if an h2 already exists in the parent context. */
-  #detectAncestorH2(): boolean {
-    let node: HTMLElement | null | undefined = this.parentElement;
-    while (node) {
-      if (node?.closest('h2')
-        || node?.querySelector('h2')
-        || node?.shadowRoot?.querySelector('h2')) {
-        return true;
-      }
-      node = node.parentElement;
+    // On the client, `.closest()` walks light-DOM ancestors only, so a page
+    // `<h2>` elsewhere does not hide this heading.
+    if (!isServer) {
+      this.#isNestedInRhFooter = !!this.closest('rh-footer');
     }
-    return false;
+
+    // Reconnect (SPA move, late slotting) must refresh `?hidden` on the heading.
+    this.requestUpdate();
   }
 
   /**
-   * Check if this element is nested inside another `<footer>`/`<rh-footer>`.
-   * If not, set role="contentinfo" on the host via InternalsController.
-   * NOTE: Does not check for other custom elements with `role="contentinfo"`
+   * Set `role="contentinfo"` on the host when this element is the page footer.
+   * Nested landmarks are invalid, so skip (and clear) the role when already
+   * inside a native `<footer>` or `<rh-footer>`.
+   * Does not check for other custom elements with `role="contentinfo"`.
    */
   #updateRole() {
-    let node: HTMLElement | null | undefined = this.parentElement;
-    let hasFooterAncestor = false;
-
-    while (node) {
-      if (node.tagName === 'FOOTER') {
-        hasFooterAncestor = true;
-        break;
-      }
-
-      if (node.tagName === 'RH-FOOTER') {
-        hasFooterAncestor = true;
-        break;
-      }
-
-      if (node.shadowRoot?.querySelector('footer')) {
-        hasFooterAncestor = true;
-        break;
-      }
-
-      node = node.parentElement;
-    }
-
-    if (!hasFooterAncestor) {
+    if (isServer) {
       this.#internals.role = 'contentinfo';
+      return;
     }
+    const hasFooterAncestor = !!this.closest('footer, rh-footer');
+    this.#internals.role = hasFooterAncestor ? null : 'contentinfo';
   }
 
   override render() {
@@ -134,12 +109,12 @@ export class RhFooterUniversal extends LitElement {
 
     return html`
       <div class="footer">
-        <h2 id="global-heading" ?hidden="${this.#hasAncestorH2}">
+        <h2 id="global-heading" ?hidden="${this.#isNestedInRhFooter}">
           <!-- summary: visually-hidden heading for assistive technology
                description: |
                  Expects inline text. Screen readers use this heading to identify the
-                 universal footer region. Defaults to "Red Hat footer". Hidden if a
-                 parent \`<h2>\` already exists. -->
+                 universal footer region. Defaults to "Red Hat footer". Hidden when
+                 nested in \`<rh-footer>\`, which already provides the region heading. -->
           <slot name="heading">Red Hat footer</slot>
         </h2>
         <!-- Wrapper for the universal footer content (logo, primary, secondary, tertiary). -->

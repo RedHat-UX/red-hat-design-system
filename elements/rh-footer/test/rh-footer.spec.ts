@@ -1,6 +1,7 @@
 import { html } from 'lit';
 import { fixture, expect, aTimeout, nextFrame } from '@open-wc/testing';
 import { setViewport } from '@web/test-runner-commands';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { tokens } from '@rhds/tokens';
 import { RhFooter, RhFooterUniversal } from '../rh-footer.js';
 import { RhFooterLinks } from '../rh-footer-links.js';
@@ -690,6 +691,120 @@ describe('<rh-footer>', function() {
         expect(accordion).to.exist;
         expect(accordion).not.to.have.attribute('color-palette');
         expect(accordion).not.to.have.attribute('on');
+      });
+    });
+  });
+
+  describe('ancestor detection', function() {
+    /**
+     * Visually-hidden region heading in rh-footer-universal shadow.
+     * @param el universal footer under test
+     */
+    function globalHeading(el: RhFooterUniversal) {
+      return el.shadowRoot?.querySelector<HTMLHeadingElement>('#global-heading');
+    }
+
+    /**
+     * ElementInternals role via the same InternalsController instance.
+     * attachInternals() can only run once per host, so read through the controller.
+     * @param el footer host under test
+     */
+    function internalsRole(el: RhFooter | RhFooterUniversal) {
+      return InternalsController.of(el).role;
+    }
+
+    describe('standalone with a page h2', function() {
+      beforeEach(async function() {
+        const wrapper = await fixture(html`
+          <div>
+            <h2>Page</h2>
+            <rh-footer-universal></rh-footer-universal>
+          </div>
+        `);
+        universalFooter = wrapper.querySelector('rh-footer-universal')!;
+        await universalFooter.updateComplete;
+      });
+
+      it('does not hide the region heading because of an unrelated page h2', function() {
+        expect(globalHeading(universalFooter)?.hidden).to.be.false;
+      });
+
+      it('sets contentinfo on the host', function() {
+        expect(internalsRole(universalFooter)).to.equal('contentinfo');
+      });
+    });
+
+    describe('nested in rh-footer', function() {
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(html`
+          <rh-footer>
+            <rh-footer-universal slot="universal"></rh-footer-universal>
+          </rh-footer>
+        `);
+        universalFooter = element.querySelector('rh-footer-universal')!;
+        await element.updateComplete;
+        await universalFooter.updateComplete;
+      });
+
+      it('hides the duplicate region heading', function() {
+        expect(globalHeading(universalFooter)?.hidden).to.be.true;
+      });
+
+      it('removes the duplicate heading from layout so AT skips it', function() {
+        expect(getComputedStyle(globalHeading(universalFooter)!).display).to.equal('none');
+      });
+
+      it('does not set contentinfo on the nested universal host', function() {
+        expect(internalsRole(universalFooter)).to.equal(null);
+      });
+
+      it('sets contentinfo on rh-footer', function() {
+        expect(internalsRole(element)).to.equal('contentinfo');
+      });
+    });
+
+    describe('wrapped in a native footer', function() {
+      beforeEach(async function() {
+        const wrapper = await fixture(html`
+          <footer>
+            <rh-footer-universal></rh-footer-universal>
+          </footer>
+        `);
+        universalFooter = wrapper.querySelector('rh-footer-universal')!;
+        await universalFooter.updateComplete;
+      });
+
+      it('does not hide the region heading', function() {
+        expect(globalHeading(universalFooter)?.hidden).to.be.false;
+      });
+
+      it('does not set contentinfo on the nested universal host', function() {
+        expect(internalsRole(universalFooter)).to.equal(null);
+      });
+    });
+
+    describe('inside extra wrapper divs', function() {
+      beforeEach(async function() {
+        const wrapper = await fixture(html`
+          <div>
+            <div>
+              <h2>Page</h2>
+              <div>
+                <rh-footer-universal></rh-footer-universal>
+              </div>
+            </div>
+          </div>
+        `);
+        universalFooter = wrapper.querySelector('rh-footer-universal')!;
+        await universalFooter.updateComplete;
+      });
+
+      it('does not hide the region heading', function() {
+        expect(globalHeading(universalFooter)?.hidden).to.be.false;
+      });
+
+      it('sets contentinfo on the host', function() {
+        expect(internalsRole(universalFooter)).to.equal('contentinfo');
       });
     });
   });
