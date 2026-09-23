@@ -2,7 +2,7 @@
 "@rhds/elements": minor
 ---
 
-`<rh-footer-links>`: added `accessible-label` for the link group name
+`<rh-footer-links>`: added `accessible-label` to provide an accessible name for link groups.
 `<rh-footer>`: added `social-links-label`
 
 If you slot social links in the `tertiary` slot, add `accessible-label` on
