@@ -27,12 +27,12 @@ rh-navigation-primary {
         /** Navigation link font size */
         font-size: var(--rh-font-size-body-text-md, 1rem);
         color:
-           /** Navigation link font color; theme adaptive */
+          /** Navigation link font color; theme adaptive */
           var(--rh-color-interactive-primary-default,
             light-dark(
-               /** Navigation link font color on light scheme */
+              /** Navigation link font color on light scheme */
               var(--rh-color-interactive-primary-default-on-light, #0066cc),
-               /** Navigation link font color on dark scheme */
+              /** Navigation link font color on dark scheme */
               var(--rh-color-interactive-primary-default-on-dark, #92c5f9)
             )) !important;
         inline-size: 100%;
