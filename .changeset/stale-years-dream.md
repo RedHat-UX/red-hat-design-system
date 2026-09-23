@@ -2,5 +2,5 @@
 "@rhds/elements": patch
 ---
 
-`<rh-skip-link>: improved theming support
+`<rh-skip-link>`: improved theming support
   
