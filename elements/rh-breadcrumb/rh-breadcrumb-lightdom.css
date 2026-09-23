@@ -14,13 +14,12 @@ rh-breadcrumb {
     var(--rh-breadcrumb-link-color,
       /** Link color */
       var(--rh-color-interactive-primary-default,
-        light-dark(
-          /** Link color on light scheme */
-          var(--rh-color-interactive-primary-default-on-light, #0066cc),
-          /** Link color on dark scheme */
-          var(--rh-color-interactive-primary-default-on-dark, #92c5f9)
-        )));
-
+      light-dark(
+        /** Link color on light scheme */
+        var(--rh-color-interactive-primary-default-on-light, #0066cc),
+        /** Link color on dark scheme */
+        var(--rh-color-interactive-primary-default-on-dark, #92c5f9)
+      )));
   --_breadcrumb-link-color-current-page:
     /** Current page link color */
     var(--rh-color-text-primary,
@@ -30,7 +29,6 @@ rh-breadcrumb {
         /** Current page link color on dark scheme */
         var(--rh-color-text-primary-on-dark, #ffffff)
       ));
-
   --_breadcrumb-link-color-current-page-subtle:
     /** Current page subtle variant link color */
     var(--rh-color-text-secondary,
@@ -40,7 +38,6 @@ rh-breadcrumb {
         /** Current page subtle variant link color on dark scheme */
         var(--rh-color-text-secondary-on-dark, #c7c7c7)
       ));
-
   --_breadcrumb-link-color-hover:
     /** Link hover color */
     var(--rh-color-interactive-primary-hover,
@@ -50,7 +47,6 @@ rh-breadcrumb {
         /** Link hover color on dark scheme */
         var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
       ));
-
   --_breadcrumb-link-color-visited:
     /** Visited link color */
     var(--rh-color-interactive-primary-visited-hover,
@@ -60,7 +56,6 @@ rh-breadcrumb {
         /** Visited link color on dark scheme */
         var(--rh-color-interactive-primary-visited-hover-on-dark, #ece6ff)
       ));
-
   --_breadcrumb-link-color-visited-hover:
     /** Visited link hover color */
     var(--rh-color-interactive-primary-visited-hover,
@@ -70,7 +65,6 @@ rh-breadcrumb {
         /** Visited link hover color on dark scheme */
         var(--rh-color-interactive-primary-visited-hover-on-dark, #ece6ff)
       ));
-
   --_breadcrumb-link-focus-outline-color:
     /** Link focus outline color */
     var(--rh-color-border-interactive,
