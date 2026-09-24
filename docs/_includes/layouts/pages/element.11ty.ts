@@ -55,11 +55,12 @@ interface Context extends EleventyPageRenderData {
 const [manifest] = getAllManifests();
 
 class NoElementInDemoError extends Error {
-  constructor(
-    public tagName: string,
-    public filePath: string,
-  ) {
+  tagName: string;
+  filePath: string;
+  constructor(tagName: string, filePath: string) {
     super(`ENOTAG: ${filePath} does not contain ${tagName}`);
+    this.tagName = tagName;
+    this.filePath = filePath;
   }
 }
 
@@ -91,9 +92,7 @@ export default class ElementsPage extends Renderer<Context> {
     const isOverviewPage = pageSlug === 'overview';
     const content = fileExists ? await this.renderFile(filePath, ctx) : '';
     const stylesheets = [
-      '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css',
       '/styles/samp.css',
-      ctx.doc.hasLightdom && `/assets/packages/@rhds/elements/elements/${tagName}/${tagName}-lightdom.css`,
       isCodePage && '/styles/pages/code.css',
     ].filter(Boolean);
 
@@ -315,24 +314,16 @@ export default class ElementsPage extends Renderer<Context> {
   async #renderLightdom(ctx: Context) {
     const { docsPage } = ctx.doc;
     let content = '';
-    // TODO: revisit after implementing auto-loaded light-dom css
     if (ctx.doc.hasLightdom) {
       content += html`
         ${this.#header('Lightdom CSS', 3)}
 
-        <p>This element requires you to load "Lightdom CSS" stylesheets for styling
-           deeply slotted elements.</p>
-
-        <rh-alert state="info">
-          <h4 id="lightdom-css-note" slot="header">Note</h4>
-          <p>Replace <code>/path/to/</code> with path to the CSS file, whether local or CDN.</p>
-        </rh-alert>
-
-        <rh-code-block actions="copy" highlighting="prerendered">
-          ${this.highlight('html', html`
-          <link rel="stylesheet" href="/path/to/${docsPage.tagName}/${docsPage.tagName}-lightdom.css">
-          `.trim())}
-        </rh-code-block>
+        <p>This element uses a "Lightdom CSS" stylesheet for styling deeply slotted
+           elements. The stylesheet is automatically loaded into the element's root
+           node when the element connects. Adding a <code>&lt;link&gt;</code> tag
+           is optional. See
+           <a href="/get-started/developers/installation/#lightdom-css">Lightdom CSS</a>
+           for details.</p>
       `;
     }
     if (ctx.doc.hasLightdomShim) {

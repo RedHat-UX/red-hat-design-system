@@ -207,11 +207,23 @@ block rendering.
 
 ## Lightdom CSS
 
-Some elements require you to load "Lightdom CSS" stylesheets, which are necessary
-for styling deeply slotted child elements. In some cases, these may also help reduce
-some [Cumulative Layout Shift (CLS)][cls] experience before the element has fully
-initialized, but are not intended to be used without initializing the element or by
-themselves to prevent CLS.
+Some elements use "Lightdom CSS" stylesheets to style deeply slotted child
+elements. These stylesheets are **automatically loaded** when the element
+connects to the DOM, so adding `<link>` tags for them is optional.
+
+You may still choose to add a `<link>` tag manually, for example to ensure
+styles are available before JavaScript runs. If the link points to the same
+URL that the element would fetch, the browser cache will deduplicate the
+request.
+
+SSR routines [may automatically emit][ssr-lightdom] an inline `<style>` tag
+with the lightdom CSS content during server-side rendering, so the styles are
+present in the initial HTML even with JavaScript disabled.
+
+The element adopts the stylesheet into its root node (the document, or the
+shadow root if it is placed inside one), so lightdom styles apply correctly
+regardless of where the element is used. Each stylesheet is loaded once per
+root, even if multiple instances of the element are present.
 
 <rh-tabs class="code-tabs">
   <rh-tab slot="tab" active>Red Hat CDN</rh-tab>
@@ -231,14 +243,8 @@ themselves to prevent CLS.
       href="https://cdn.jsdelivr.net/npm/@rhds/elements@{{ pkg.version }}/elements/rh-footer/rh-footer-lightdom.css">
 ```
 
-If you're looking for lightdom stylesheets on a third party CDN, the URL patterns follow a similar
-convention.
-
   </rh-tab-panel>
 </rh-tabs>
-
-<rh-alert>Note: a future version of RHDS will remove the requirement to manually
-load these stylesheets</rh-alert>
 
 ## Lightdom CSS shims
 
@@ -268,3 +274,4 @@ no longer be needed and will become deprecated.
 [barespec]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
 [cls]: https://web.dev/cls/
 [dsd]: https://web.dev/articles/declarative-shadow-dom
+[ssr-lightdom]: https://github.com/RedHat-UX/red-hat-design-system/blob/main/docs/_plugins/lit-ssr/worker.ts

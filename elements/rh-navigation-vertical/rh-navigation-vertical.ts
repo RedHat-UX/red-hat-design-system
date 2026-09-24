@@ -3,6 +3,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
 
+import { lightdomCSS } from '@rhds/elements/lib/lightdom-css.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
@@ -26,6 +27,7 @@ import styles from './rh-navigation-vertical.css' with { type: 'css' };
  */
 @customElement('rh-navigation-vertical')
 @themable
+@lightdomCSS(import.meta.url, './rh-navigation-vertical-lightdom.css')
 export class RhNavigationVertical extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
 
