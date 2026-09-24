@@ -1,8 +1,10 @@
 import { html } from 'lit';
 import { fixture, expect, aTimeout, nextFrame } from '@open-wc/testing';
 import { setViewport } from '@web/test-runner-commands';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { tokens } from '@rhds/tokens';
 import { RhFooter, RhFooterUniversal } from '../rh-footer.js';
+import { RhFooterLinks } from '../rh-footer-links.js';
 
 import '@patternfly/pfe-tools/test/stub-logger.js';
 
@@ -97,7 +99,7 @@ const KITCHEN_SINK_TEMPLATE = html`
         <li><a href="#">Cookie preferences</a></li>
       </ul>
       <rh-footer-copyright slot="tertiary"></rh-footer-copyright>
-      <rh-footer-links slot="tertiary" role="list">
+      <rh-footer-links slot="tertiary" role="list" accessible-label="Red Hat social media links">
         <rh-footer-social-link icon="linkedin"
                                href="https://www.linkedin.com/company/red-hat"
                                accessible-label="LinkedIn"></rh-footer-social-link>
@@ -139,7 +141,7 @@ const UNIVERSAL_FOOTER_TEMPLATE = html`
       <li><a href="#">Cookie preferences</a></li>
     </ul>
     <rh-footer-copyright slot="tertiary"></rh-footer-copyright>
-    <rh-footer-links slot="tertiary" role="list">
+    <rh-footer-links slot="tertiary" role="list" accessible-label="Red Hat social media links">
       <rh-footer-social-link icon="linkedin"
                              href="https://www.linkedin.com/company/red-hat"
                              accessible-label="LinkedIn"></rh-footer-social-link>
@@ -300,6 +302,219 @@ describe('<rh-footer>', function() {
         const slotted = universalFooter.querySelector('[slot="logo"]');
         const slot = universalFooter.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="logo"]');
         expect(slot?.assignedElements()[0]).to.equal(slotted);
+      });
+    });
+  });
+
+  describe('social-links-label', function() {
+    /**
+     * Default social links list in rh-footer shadow DOM.
+     * Fallback content only; used when authors slot `social-links`.
+     * @param el footer under test
+     */
+    function socialLinks(el: RhFooter) {
+      return el.shadowRoot?.querySelector<RhFooterLinks>('rh-footer-links[part="social-links"]');
+    }
+
+    describe('with no attribute', function() {
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(html`
+          <rh-footer>
+            <rh-footer-social-link slot="social-links"
+                                   icon="linkedin"
+                                   href="#"
+                                   accessible-label="LinkedIn"></rh-footer-social-link>
+          </rh-footer>
+        `);
+        await element.updateComplete;
+        await socialLinks(element)?.updateComplete;
+        expect(socialLinks(element)?.getAttribute('aria-label'))
+            .to.equal('Red Hat social media links');
+      });
+    });
+
+    describe('with a custom label', function() {
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(html`
+          <rh-footer social-links-label="OpenShift social media links">
+            <rh-footer-social-link slot="social-links"
+                                   icon="linkedin"
+                                   href="#"
+                                   accessible-label="LinkedIn"></rh-footer-social-link>
+          </rh-footer>
+        `);
+        await element.updateComplete;
+        await socialLinks(element)?.updateComplete;
+        expect(socialLinks(element)?.getAttribute('aria-label'))
+            .to.equal('OpenShift social media links');
+      });
+    });
+  });
+
+  describe('accessible-label on rh-footer-links', function() {
+    describe('with accessible-label and no header', function() {
+      let links: RhFooterLinks;
+
+      beforeEach(async function() {
+        links = await fixture<RhFooterLinks>(html`
+          <rh-footer-links role="list" accessible-label="Red Hat social media links">
+            <rh-footer-social-link icon="linkedin"
+                                   href="#"
+                                   accessible-label="LinkedIn"></rh-footer-social-link>
+          </rh-footer-links>
+        `);
+        await links.updateComplete;
+      });
+
+      it('sets aria-label on the host', function() {
+        expect(links.getAttribute('aria-label')).to.equal('Red Hat social media links');
+      });
+    });
+
+    describe('with a slotted header', function() {
+      let links: RhFooterLinks;
+
+      beforeEach(async function() {
+        links = await fixture<RhFooterLinks>(html`
+          <rh-footer-links accessible-label="Should not apply">
+            <h3 slot="header">Social</h3>
+            <ul>
+              <li><a href="#">One</a></li>
+            </ul>
+          </rh-footer-links>
+        `);
+        await links.updateComplete;
+      });
+
+      it('does not set aria-label from accessible-label', function() {
+        expect(links.hasAttribute('aria-label')).to.be.false;
+      });
+
+      it('wires aria-labelledby from the header to the list', function() {
+        const header = links.querySelector('[slot="header"]');
+        const ul = links.querySelector('ul');
+        expect(ul).to.have.attribute('aria-labelledby', header?.id);
+      });
+    });
+
+    describe('after removing accessible-label', function() {
+      let links: RhFooterLinks;
+
+      beforeEach(async function() {
+        links = await fixture<RhFooterLinks>(html`
+          <rh-footer-links role="list" accessible-label="Red Hat social media links">
+            <rh-footer-social-link icon="linkedin"
+                                   href="#"
+                                   accessible-label="LinkedIn"></rh-footer-social-link>
+          </rh-footer-links>
+        `);
+        await links.updateComplete;
+        links.removeAttribute('accessible-label');
+        await links.updateComplete;
+      });
+
+      it('removes the host aria-label it applied', function() {
+        expect(links.hasAttribute('aria-label')).to.be.false;
+      });
+    });
+
+    describe('after slotting a header over an applied label', function() {
+      let links: RhFooterLinks;
+
+      beforeEach(async function() {
+        links = await fixture<RhFooterLinks>(html`
+          <rh-footer-links role="list" accessible-label="Red Hat social media links">
+            <rh-footer-social-link icon="linkedin"
+                                   href="#"
+                                   accessible-label="LinkedIn"></rh-footer-social-link>
+          </rh-footer-links>
+        `);
+        await links.updateComplete;
+        const header = document.createElement('h3');
+        header.slot = 'header';
+        header.textContent = 'Social';
+        const ul = document.createElement('ul');
+        ul.innerHTML = '<li><a href="#">One</a></li>';
+        links.append(header, ul);
+        await links.updateComplete;
+        await nextFrame();
+      });
+
+      it('removes the host aria-label it applied', function() {
+        expect(links.hasAttribute('aria-label')).to.be.false;
+      });
+
+      it('wires aria-labelledby from the header to the list', function() {
+        const header = links.querySelector('[slot="header"]');
+        const ul = links.querySelector('ul');
+        expect(ul).to.have.attribute('aria-labelledby', header?.id);
+      });
+    });
+
+    describe('after removing a wired header while keeping the list', function() {
+      let links: RhFooterLinks;
+
+      beforeEach(async function() {
+        links = await fixture<RhFooterLinks>(html`
+          <rh-footer-links role="list" accessible-label="Red Hat social media links">
+            <h3 slot="header">Social</h3>
+            <ul>
+              <li><a href="#">One</a></li>
+            </ul>
+          </rh-footer-links>
+        `);
+        await links.updateComplete;
+      });
+
+      it('wires aria-labelledby from the header to the list', function() {
+        const header = links.querySelector('[slot="header"]');
+        const ul = links.querySelector('ul');
+        expect(ul).to.have.attribute('aria-labelledby', header?.id);
+      });
+
+      describe('once the header is removed', function() {
+        beforeEach(async function() {
+          links.querySelector('[slot="header"]')?.remove();
+          await links.updateComplete;
+          await nextFrame();
+        });
+
+        it('removes the list aria-labelledby it applied', function() {
+          const ul = links.querySelector('ul');
+          expect(ul).to.not.have.attribute('aria-labelledby');
+        });
+
+        it('sets aria-label on the host from accessible-label', function() {
+          expect(links.getAttribute('aria-label')).to.equal('Red Hat social media links');
+        });
+      });
+    });
+
+    describe('with a native aria-label and no accessible-label', function() {
+      let links: RhFooterLinks;
+
+      beforeEach(async function() {
+        links = await fixture<RhFooterLinks>(html`
+          <rh-footer-links role="list" aria-label="Native">
+            <rh-footer-social-link icon="linkedin"
+                                   href="#"
+                                   accessible-label="LinkedIn"></rh-footer-social-link>
+          </rh-footer-links>
+        `);
+        await links.updateComplete;
+        const header = document.createElement('h3');
+        header.slot = 'header';
+        header.textContent = 'Social';
+        links.append(header);
+        await links.updateComplete;
+        await nextFrame();
+        header.remove();
+        await links.updateComplete;
+        await nextFrame();
+      });
+
+      it('does not delete the native aria-label', function() {
+        expect(links.getAttribute('aria-label')).to.equal('Native');
       });
     });
   });
@@ -476,6 +691,120 @@ describe('<rh-footer>', function() {
         expect(accordion).to.exist;
         expect(accordion).not.to.have.attribute('color-palette');
         expect(accordion).not.to.have.attribute('on');
+      });
+    });
+  });
+
+  describe('ancestor detection', function() {
+    /**
+     * Visually-hidden region heading in rh-footer-universal shadow.
+     * @param el universal footer under test
+     */
+    function globalHeading(el: RhFooterUniversal) {
+      return el.shadowRoot?.querySelector<HTMLHeadingElement>('#global-heading');
+    }
+
+    /**
+     * ElementInternals role via the same InternalsController instance.
+     * attachInternals() can only run once per host, so read through the controller.
+     * @param el footer host under test
+     */
+    function internalsRole(el: RhFooter | RhFooterUniversal) {
+      return InternalsController.of(el).role;
+    }
+
+    describe('standalone with a page h2', function() {
+      beforeEach(async function() {
+        const wrapper = await fixture(html`
+          <div>
+            <h2>Page</h2>
+            <rh-footer-universal></rh-footer-universal>
+          </div>
+        `);
+        universalFooter = wrapper.querySelector('rh-footer-universal')!;
+        await universalFooter.updateComplete;
+      });
+
+      it('does not hide the region heading because of an unrelated page h2', function() {
+        expect(globalHeading(universalFooter)?.hidden).to.be.false;
+      });
+
+      it('sets contentinfo on the host', function() {
+        expect(internalsRole(universalFooter)).to.equal('contentinfo');
+      });
+    });
+
+    describe('nested in rh-footer', function() {
+      beforeEach(async function() {
+        element = await fixture<RhFooter>(html`
+          <rh-footer>
+            <rh-footer-universal slot="universal"></rh-footer-universal>
+          </rh-footer>
+        `);
+        universalFooter = element.querySelector('rh-footer-universal')!;
+        await element.updateComplete;
+        await universalFooter.updateComplete;
+      });
+
+      it('hides the duplicate region heading', function() {
+        expect(globalHeading(universalFooter)?.hidden).to.be.true;
+      });
+
+      it('removes the duplicate heading from layout so AT skips it', function() {
+        expect(getComputedStyle(globalHeading(universalFooter)!).display).to.equal('none');
+      });
+
+      it('does not set contentinfo on the nested universal host', function() {
+        expect(internalsRole(universalFooter)).to.equal(null);
+      });
+
+      it('sets contentinfo on rh-footer', function() {
+        expect(internalsRole(element)).to.equal('contentinfo');
+      });
+    });
+
+    describe('wrapped in a native footer', function() {
+      beforeEach(async function() {
+        const wrapper = await fixture(html`
+          <footer>
+            <rh-footer-universal></rh-footer-universal>
+          </footer>
+        `);
+        universalFooter = wrapper.querySelector('rh-footer-universal')!;
+        await universalFooter.updateComplete;
+      });
+
+      it('does not hide the region heading', function() {
+        expect(globalHeading(universalFooter)?.hidden).to.be.false;
+      });
+
+      it('does not set contentinfo on the nested universal host', function() {
+        expect(internalsRole(universalFooter)).to.equal(null);
+      });
+    });
+
+    describe('inside extra wrapper divs', function() {
+      beforeEach(async function() {
+        const wrapper = await fixture(html`
+          <div>
+            <div>
+              <h2>Page</h2>
+              <div>
+                <rh-footer-universal></rh-footer-universal>
+              </div>
+            </div>
+          </div>
+        `);
+        universalFooter = wrapper.querySelector('rh-footer-universal')!;
+        await universalFooter.updateComplete;
+      });
+
+      it('does not hide the region heading', function() {
+        expect(globalHeading(universalFooter)?.hidden).to.be.false;
+      });
+
+      it('sets contentinfo on the host', function() {
+        expect(internalsRole(universalFooter)).to.equal('contentinfo');
       });
     });
   });

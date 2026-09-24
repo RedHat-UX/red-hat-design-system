@@ -1,4 +1,4 @@
-import { LitElement, html, nothing } from 'lit';
+import { LitElement, html, nothing, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -51,6 +51,16 @@ export class RhFooter extends LitElement {
   static readonly version = '{{version}}';
 
   static readonly styles = [style];
+
+  /**
+   * Accessible name for the default social links list (`slot="social-links"`).
+   * Applied as `accessible-label` on the inner `<rh-footer-links>`. Localize
+   * surrounding words; keep "Red Hat" except in Simplified Chinese (`红帽`).
+   * Override only when the accounts are not corporate Red Hat. Has no effect
+   * when authors replace `header-secondary` or put social links in the
+   * universal `tertiary` slot. Defaults to `'Red Hat social media links'`.
+   */
+  @property({ attribute: 'social-links-label' }) socialLinksLabel = 'Red Hat social media links';
 
   /**
    * Isomorphic import.meta.url function
@@ -114,31 +124,18 @@ export class RhFooter extends LitElement {
   }
 
   /**
-   * Check if this element is nested inside a `<footer>`.
-   * If not, set role="contentinfo" on the host via InternalsController.
-   * NOTE: Does not check for other custom elements with `role="contentinfo"`
+   * Set `role="contentinfo"` on the host when this element is the page footer.
+   * Clear the `contentinfo` role when already nested inside a native `<footer>`.
+   * Does not check for other custom elements with `role="contentinfo"`.
+   * Skip `closest()` during Lit SSR; that API is not on the server render root.
    */
   #updateRole() {
-    let node: HTMLElement | null | undefined = this.parentElement;
-    let hasFooterAncestor = false;
-
-    while (node) {
-      if (node.tagName === 'FOOTER') {
-        hasFooterAncestor = true;
-        break;
-      }
-
-      if (node.shadowRoot?.querySelector('footer')) {
-        hasFooterAncestor = true;
-        break;
-      }
-
-      node = node.parentElement;
-    }
-
-    if (!hasFooterAncestor) {
+    if (isServer) {
       this.#internals.role = 'contentinfo';
+      return;
     }
+    const hasFooterAncestor = !!this.closest('footer');
+    this.#internals.role = hasFooterAncestor ? null : 'contentinfo';
   }
 
   override render() {
@@ -208,7 +205,7 @@ export class RhFooter extends LitElement {
                     <rh-footer-links class="social-links-item"
                                      part="social-links"
                                      role="list"
-                                     aria-label="Red Hat social media links">
+                                     accessible-label="${this.socialLinksLabel}">
                       <!-- summary: social media icon links
                          description: |
                            Expects block elements: \`<rh-footer-social-link>\` elements. Each link
