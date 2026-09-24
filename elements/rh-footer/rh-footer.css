@@ -1,20 +1,3 @@
-:host {
-  /* apply sensible defaults based on redhat standards. */
-
-  /** Footer text color */
-  color: var(--rh-color-text-primary);
-
-  /** Footer typeface */
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-
-  /** Footer line height */
-  line-height: var(--rh-line-height-body-text, 1.5);
-  font-weight: var(--_font-weight);
-  font-size: initial;
-  display: flex;
-  flex-direction: column;
-}
-
 :host,
 ::slotted(rh-footer-universal) {
   overflow-y: initial;
@@ -26,108 +9,6 @@
     var(--rh-border-width-sm, 1px)
     solid
     var(--_border-color);
-}
-
-.footer,
-.global-base {
-  --_icon-color:
-    /** Footer icon color override */
-    var(
-        --rh-footer-icon-color,
-        /** Footer icon color */
-        var(--rh-color-icon-subtle, #707070)
-      );
-  --_icon-color-hover:
-    /** Footer icon hover color override */
-    var(
-        --rh-footer-icon-color-hover,
-        /** Footer icon hover color */
-        var(--rh-color-icon-subtle-hover, #a3a3a3)
-      );
-  --_border-color:
-    /** Footer border color override */
-    var(
-        --rh-footer-border-color,
-        /** Footer border color */
-        var(--rh-color-border-subtle)
-      );
-  --_accent-color:
-    /** Footer accent color override */
-    var(
-        --rh-footer-accent-color,
-        /** Footer accent brand on light */
-        var(--rh-color-accent-brand-on-light, #ee0000)
-      );
-  --_section-side-gap:
-    /** Footer section horizontal margin override */
-    var(
-        --rh-footer-section-side-gap,
-        /** Footer section horizontal margin */
-        var(--rh-space-lg, 16px)
-      );
-
-  /* Accordion surface follows the footer color-scheme */
-  --_accordion-background:
-    light-dark(
-        /** Accordion surface in light color schemes */
-        var(--rh-color-surface-lightest, #ffffff),
-        /** Accordion surface in dark color schemes */
-        var(--rh-color-surface-darkest, #151515)
-      );
-
-  /** Footer logo width */
-  --_logo-width: var(--rh-size-icon-04, 40px);
-
-  /** Footer body text weight */
-  --_font-weight: var(--rh-font-weight-body-text-regular, 400);
-}
-
-* {
-  box-sizing: border-box;
-}
-
-::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-  /** Footer typeface */
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif) !important;
-
-  /** Footer line height */
-  line-height: var(--rh-line-height-heading, 1.3) !important;
-}
-
-/* Debugging */
-:host([debug]) *:not(.spacer, .base, a, svg) {
-  /** Debug mode minimum height */
-  min-height: var(--rh-length-xl, 24px);
-  position: relative;
-  outline:
-    /** Debug mode outline width */ var(--rh-length-3xs, 2px) dotted
-    red;
-}
-
-:host([debug]) *:not(.spacer, .base, a, svg):after {
-  content: attr(part);
-  display: block;
-  position: absolute;
-  color: white;
-  background-color: darkslategray;
-
-  /** Debug mode label padding */
-  padding: var(--rh-space-xs, 4px);
-  top: 0;
-  right: 0;
-
-  /** Debug mode label typeface */
-  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
-
-  /** Debug mode label text size */
-  font-size: var(--rh-font-size-code-xs, 0.75rem);
-}
-
-/* Regions */
-.section {
-  padding:
-    /** Footer section block padding */ var(--rh-space-2xl, 32px)
-    var(--_section-side-gap);
 }
 
 .header {
@@ -208,128 +89,6 @@
   place-content: start;
 }
 
-.global-base {
-  /** Reduced font size for universal footer links */
-  --rh-footer-link-font-size: var(--rh-font-size-body-text-xs, 0.75rem);
-
-  /* reduce the line-height for global links */
-  line-height: 100%;
-  background-color:
-    light-dark(
-        /** Universal footer surface in light color schemes */
-        var(--rh-color-surface-lightest, #ffffff),
-        /** Universal footer surface in dark color schemes */
-        var(--rh-color-surface-darkest, #151515)
-      );
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-areas:
-    'logo'
-    'primary'
-    'spacer'
-    'secondary'
-    'tertiary';
-  gap:
-    /** Footer universal block gap */ var(--rh-space-2xl, 32px)
-    /** Footer universal inline gap */ var(--rh-space-xl, 24px);
-}
-
-.global-logo {
-  grid-area: logo;
-  width: auto;
-
-  /** Universal footer fedora logo height */
-  height: var(--rh-size-icon-02, 24px);
-}
-
-.global-logo a {
-  display: inline-block;
-  height: 100%;
-}
-
-.global-logo-image {
-  /** Red Hat fedora brand color */
-  fill: var(--rh-color-brand-red, #ee0000);
-}
-
-.global-logo ::slotted(:is(img, svg, picture)),
-.global-logo svg {
-  display: block;
-  height: 100%;
-  width: auto;
-}
-
-.global-primary {
-  grid-area: primary;
-}
-
-.global-secondary {
-  grid-area: secondary;
-
-  /** Footer text color */
-  color: var(--rh-color-text-secondary);
-  display: flex;
-  flex-direction: column;
-
-  /** Footer content gap */
-  gap: var(--rh-space-lg, 16px);
-  justify-content: space-between;
-}
-
-.global-secondary-end {
-  display: flex;
-
-  /** Social links gap in universal footer */
-  gap: var(--rh-space-xl, 24px);
-  align-items: center;
-}
-
-.global-tertiary {
-  grid-area: tertiary;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: start;
-  align-items: center;
-
-  /** Gap between copyright and social icons row */
-  gap: var(--rh-space-lg, 16px);
-}
-
-::slotted(rh-footer-copyright) {
-  grid-column: -1/1;
-}
-
-/* Copyright takes full width so social icons flow to the next line */
-.global-tertiary ::slotted(rh-footer-copyright) {
-  flex-basis: 100%;
-}
-
-.global-tertiary ::slotted(rh-footer-links) {
-  display: contents;
-}
-
-.global-links-primary {
-  display: flex;
-  flex-direction: column;
-  gap:
-    /** Primary global links row gap */ var(--rh-space-md, 8px)
-    /** Primary global links column gap */ var(--rh-space-xl, 24px);
-}
-
-.global-links-secondary {
-  display: flex;
-  flex-direction: column;
-  gap:
-    /** Secondary global links row gap */ var(--rh-space-md, 8px)
-    /** Secondary global links column gap */ var(--rh-space-xl, 24px);
-}
-
-/* reduce the font size of the content in these regions */
-:is(.global-primary, .global-secondary, .global-tertiary) ::slotted(*) {
-  /** Footer text size */
-  font-size: var(--rh-font-size-body-text-xs, 0.75rem) !important;
-}
-
 .logo {
   line-height: 0;
 }
@@ -392,7 +151,7 @@
   gap: var(--rh-space-xl, 24px);
 }
 
-:is(.links, .global-links-primary, .global-links-secondary) ::slotted(ul) {
+.links ::slotted(ul) {
   padding: 0;
   margin: 0;
   display: contents;
@@ -408,8 +167,7 @@
   gap: calc(var(--rh-space-2xl, 32px) / 2);
 }
 
-#heading,
-#global-heading {
+#heading {
   border: 0;
   clip: rect(0, 0, 0, 0);
   block-size: 1px;
@@ -523,7 +281,7 @@
   width: var(--_logo-width);
 }
 
-:is(.links, .global-links-primary, .global-links-secondary) ::slotted(:is(h1, h2, h3, h4, h5)) {
+.links ::slotted(:is(h1, h2, h3, h4, h5)) {
   /** Footer font weight */
   font-weight: var(--rh-font-weight-heading-medium, 500) !important;
   margin-block: 0 !important;
@@ -547,11 +305,6 @@
     height: var(--rh-size-icon-03, 32px);
   }
 
-  .global-logo {
-    /** Universal footer fedora logo height at viewport >= xs */
-    height: var(--rh-size-icon-03, 32px);
-  }
-
   .header-primary ::slotted(:not(a, img, svg, picture)) {
     /** Subdomain name font size at viewport >= xs */
     font-size: var(--rh-font-size-heading-sm, 1.5rem);
@@ -560,136 +313,13 @@
 
 @media screen and (min-width: 768px) {
   /* stylelint-disable-next-line @stylistic/max-line-length */
-  :is(.links, .global-links-primary, .global-links-secondary) ::slotted(:is(h1, h2, h3, h4, h5)) {
+  .links ::slotted(:is(h1, h2, h3, h4, h5)) {
     /** Link header font size (desktop) */
     font-size:
       var(
           --rh-footer-link-header-font-size,
           var(--rh-font-size-body-text-lg, 1.125rem)
         ) !important;
-  }
-}
-
-@media screen and /* --rh-media-sm */ (min-width: 768px) {
-  .global-base {
-    grid-template-columns: 4fr 4fr 4fr;
-    grid-template-areas:
-      'logo      logo      logo'
-      'primary   primary   primary'
-      'spacer    spacer    spacer'
-      'secondary secondary secondary'
-      'tertiary  tertiary  tertiary';
-  }
-}
-
-@media screen and /* --rh-media-md */ (min-width: 992px) {
-  /* Match CSS specificity with :is(.hasTertiary) */
-  .global-base:not(.nothing) {
-    grid-template-columns: auto 1fr;
-    grid-template-rows: max-content max-content auto;
-    grid-template-areas:
-      'logo    primary'
-      'logo    secondary'
-      '.       tertiary';
-    gap: var(--rh-space-xl, 24px) var(--rh-space-2xl, 32px);
-  }
-
-  .global-primary {
-    display: flex;
-  }
-}
-
-@media screen and /* WARNING: not an @rhds/tokens media query */ (min-width: 1200px) {
-  .global-base:not(.nothing) {
-    grid-template-columns: auto 1fr auto;
-    grid-template-rows: max-content max-content;
-    grid-template-areas:
-      'logo primary  tertiary'
-      'logo secondary tertiary';
-  }
-
-  .global-tertiary {
-    place-content: center flex-end;
-  }
-
-  .global-tertiary ::slotted(rh-footer-copyright) {
-    text-align: end;
-  }
-}
-
-.spacer {
-  grid-area: spacer;
-  border-bottom: 1px solid var(--_border-color);
-}
-
-@media screen and /* --rh-media-md */ (min-width: 992px) {
-  .spacer {
-    display: none;
-  }
-}
-
-@media screen and /* --rh-media-md */ (min-width: 992px) {
-  .global-secondary {
-    flex-flow: row wrap;
-    align-items: center;
-  }
-
-  .global-links-secondary {
-    flex: 0 1 auto;
-  }
-
-  .global-secondary-end {
-    margin-inline-start: auto;
-  }
-}
-
-@media screen and /* WARNING: not a recognized @rhds/token media query */ (min-width: 320px) {
-  .global-links-primary {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .global-links-secondary {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media screen and /* --rh-media-sm */ (min-width: 768px) {
-  .global-links-primary {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  .global-links-secondary {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-
-@media screen and /* --rh-media-md */ (min-width: 992px) {
-  .global-links-primary {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-  }
-}
-
-@media screen and /* --rh-media-md */ (min-width: 992px) {
-  .global-links-secondary {
-    display: flex;
-    flex-flow: row wrap;
-    gap: 8px 24px;
-  }
-}
-
-@media screen and /* --rh-media-md */ (max-width: 992px) {
-  .global-logo {
-    grid-area: logo;
-  }
-
-  .global-primary {
-    grid-area: primary;
   }
 }
 

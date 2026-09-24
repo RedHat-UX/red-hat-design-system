@@ -1,0 +1,331 @@
+/* Light DOM link styles for footer */
+:is(rh-footer, rh-footer-universal) a {
+  /** Footer link default color */
+  color: var(--rh-color-interactive-primary-default);
+  text-decoration: none;
+}
+
+:is(rh-footer, rh-footer-universal) :is(rh-footer-block) a {
+  text-decoration:
+    underline
+    /** Footer block link underline width */
+    var(--rh-border-width-sm, 1px)
+    dashed;
+  text-decoration-color:
+    light-dark(
+        /** Footer block link underline in light color schemes */
+        var(--rh-color-gray-50, #707070),
+        /** Footer block link underline in dark color schemes */
+        var(--rh-color-gray-40, #a3a3a3)
+      ) !important;
+  text-underline-offset: max(5px, 0.28em);
+  transition-timing-function: ease;
+  transition-property: text-underline-offset, color, text-decoration-color;
+  transition-duration: 0.3s;
+}
+
+:is(rh-footer, rh-footer-universal) [slot^='links'] a {
+  display: block;
+
+  /** Footer link column text color */
+  color: var(--rh-color-text-primary) !important;
+  font-size:
+    /** Footer link size override */
+    var(--rh-footer-link-font-size,
+      /** Footer link body size */
+      var(--rh-font-size-body-text-sm, 0.875rem));
+  width: fit-content;
+}
+
+rh-footer-universal [slot^='links'] a {
+  font-size: inherit;
+}
+
+:is(rh-footer, rh-footer-universal) a:hover {
+  /** Footer link hover color */
+  color: var(--rh-color-interactive-primary-hover);
+  text-decoration:
+    underline
+    /** Footer link hover underline width */
+    var(--rh-border-width-sm, 1px)
+    dashed;
+  text-decoration-color: inherit;
+  text-underline-offset: max(5px, 0.28em);
+  transition-timing-function: ease;
+  transition-property: text-underline-offset, color, text-decoration-color;
+  transition-duration: 0.3s;
+}
+
+:is(rh-footer, rh-footer-universal) a:is(:focus, :focus-within) {
+  /** Footer link focus color */
+  color: var(--rh-color-interactive-primary-hover);
+  text-decoration:
+    underline
+    dashed
+    /** Footer link focus underline width */
+    var(--rh-border-width-sm, 1px);
+  text-decoration-color: inherit;
+  text-underline-offset: max(5px, 0.28em);
+  transition-timing-function: ease;
+  transition-property: text-underline-offset, color, text-decoration-color;
+  transition-duration: 0.3s;
+}
+
+:is(rh-footer, rh-footer-universal) a:visited {
+  /** Footer link visited color */
+  color: var(--rh-color-interactive-primary-hover);
+  text-decoration: none;
+}
+
+/* Underlines on inline links in rh-footer-block */
+
+:is(rh-footer, rh-footer-universal) :is(rh-footer-block) a:hover {
+  text-decoration-color: inherit !important;
+  text-underline-offset: max(6px, 0.33em);
+}
+
+:is(rh-footer, rh-footer-universal) :is(rh-footer-block) a:is(:focus, :focus-within) {
+  text-decoration-color: inherit !important;
+  text-underline-offset: max(6px, 0.33em);
+}
+
+:is(rh-footer, rh-footer-universal) :is(rh-footer-block) a:visited {
+  text-decoration-color: inherit;
+}
+
+/* Slotted logo mark or text. The wrapping <a> lives in shadow DOM. */
+:is(rh-footer, rh-footer-universal) [slot^='logo'] {
+  display: inline-block;
+
+  /* Text logos (span, etc.) keep heading styles and a dotted underline. */
+  &:not(:is(img, svg, picture)) {
+    color: var(--rh-color-text-primary);
+    font-size: var(--rh-font-size-heading-xs, 1.25rem);
+    font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+    font-weight: 800;
+    line-height: var(--rh-line-height-heading, 1.3);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-thickness: var(--rh-border-width-sm, 1px);
+    text-decoration-color: var(--rh-color-border-subtle);
+    text-underline-offset: max(5px, 0.28em);
+    transition: ease all 0.3s;
+
+    &:hover {
+      color: var(--rh-color-text-primary);
+      text-decoration-color: inherit;
+      text-underline-offset: max(6px, 0.33em);
+    }
+  }
+
+  &:is(img, svg, picture),
+  &:is(picture) > img,
+  & > :is(img, svg) {
+    display: block;
+    width: auto;
+
+    /** Logo image height */
+    height: var(--rh-size-icon-02, 24px);
+  }
+}
+
+@media screen and (min-width: 576px) {
+  :is(rh-footer, rh-footer-universal) [slot^='logo'] {
+    &:is(img, svg, picture),
+    &:is(picture) > img,
+    & > :is(img, svg) {
+      /** Logo image height at viewport >= xs */
+      height: var(--rh-size-icon-03, 32px);
+    }
+
+    &:not(:is(img, svg, picture)) {
+      /** Subdomain name font size at viewport >= xs */
+      font-size: var(--rh-font-size-heading-sm, 1.5rem);
+    }
+  }
+}
+
+:is(rh-footer, rh-footer-universal) :is(h1, h2, h3, h4, h5, h6) {
+  /** Footer heading text color */
+  color: var(--rh-color-text-primary);
+
+  /** Footer typeface */
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+
+  /** Footer line height */
+  line-height: var(--rh-line-height-heading, 1.3);
+}
+
+:is(rh-footer, rh-footer-universal) [slot^='links'] li {
+  margin: 0;
+  padding: 0;
+  display: contents;
+}
+
+/* Section horizontal gutter */
+:is(rh-footer, rh-footer-universal) {
+  /** Default footer horizontal gutter */
+  --rh-footer-section-side-gap: var(--rh-space-lg, 16px);
+
+  overflow-y: auto;
+}
+
+/* (min-width: --rh-breakpoint-sm) */
+@media screen and (min-width: 768px) {
+  :is(rh-footer, rh-footer-universal) {
+    /** Footer horizontal gutter at viewport >= md */
+    --rh-footer-section-side-gap: var(--rh-space-2xl, 32px);
+  }
+}
+
+/* (min-width: --rh-breakpoint-xl) */
+@media screen and (min-width: 1440px) {
+  :is(rh-footer, rh-footer-universal) {
+    /** Footer horizontal gutter at viewport >= 2xl */
+    --rh-footer-section-side-gap: var(--rh-space-4xl, 64px);
+  }
+}
+
+:is(rh-footer, rh-footer-universal):not(:defined) {
+  &[color-palette^='dark'] {
+    color-scheme: only dark;
+  }
+
+  &[color-palette^='light'] {
+    color-scheme: only light;
+  }
+
+  p {
+    /** Footer secondary text */
+    color: var(--rh-color-text-secondary);
+  }
+
+  & :is(h1, h2, h3, h4, h5, h6) {
+    &[slot='links'],
+    &[slot='header'] {
+      font-size:
+        /** Link column header size override */
+        var(--rh-footer-link-header-font-size,
+          /** Link column header size */
+          var(--rh-font-size-body-text-sm, 0.875rem));
+
+      /** Footer font weight */
+      font-weight: var(--rh-font-weight-heading-medium, 500);
+    }
+  }
+}
+
+rh-footer-universal:not(:defined) {
+  background-color:
+    light-dark(
+        /** Universal footer surface without JS in light color schemes */
+        var(--rh-color-surface-lightest, #ffffff),
+        /** Universal footer surface without JS in dark color schemes */
+        var(--rh-color-surface-darkest, #151515)
+      );
+  display: block;
+  width: 100%;
+  padding:
+    /** Universal footer block padding without JS */
+    var(--rh-space-2xl, 32px)
+    /** Universal footer inline padding without JS */
+    var(--rh-space-lg, 16px);
+
+  &:before {
+    grid-area: global;
+  }
+
+  & [slot='links-primary'],
+  & [slot='links-secondary'] {
+    display: flex;
+    flex-flow: column wrap;
+
+    /** Footer content gap */
+    gap: var(--rh-space-md, 8px);
+
+    /** Footer text size */
+    font-size: var(--rh-font-size-body-text-xs, 0.75rem);
+    margin: 0;
+    padding: 0;
+  }
+
+  /* No-JS + DSD */
+  &[ssr-hint-has-slotted] :is(h2, h3, h4)[hidden] {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    block-size: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    inline-size: 1px;
+  }
+
+  & rh-footer-copyright:not(:defined) {
+    grid-column: -1/1;
+    padding-block:
+      /** Copyright block-start padding without JS */
+      var(--rh-space-2xl, 32px)
+      /** Copyright block-end padding without JS */
+      var(--rh-space-md, 8px);
+
+    /** Copyright text size */
+    font-size: var(--rh-font-size-body-text-xs, 0.75rem);
+
+    /** Copyright text */
+    color: var(--rh-color-text-secondary);
+  }
+}
+
+rh-footer:not(:defined) rh-footer-universal:not(:defined) {
+  /* Spacing when universal footer is nested in rh-footer */
+
+  /** Nested universal footer top margin */
+  margin-block-start: var(--rh-space-2xl, 32px);
+}
+
+/* (min-width: --rh-breakpoint-md) */
+@media screen and (min-width: 992px) {
+  rh-footer-universal:not(:defined) {
+    grid-column-start: span 12;
+
+    /** Universal footer block padding at viewport >= lg */
+    padding-block: var(--rh-space-2xl, 32px);
+    padding-inline:
+      /** Universal footer inline padding start at viewport >= lg */
+      var(--rh-space-7xl, 128px)
+      /** Universal footer inline padding end at viewport >= lg */
+      var(--rh-space-4xl, 64px);
+
+    &[ssr-hint-has-slotted] {
+      padding-inline: 0;
+    }
+
+    & ul[slot='links-primary'],
+    & ul[slot='links-secondary'] {
+      flex-direction: row;
+      gap:
+        /** Global link row gap at viewport >= lg */
+        var(--rh-space-md, 8px)
+        /** Global link column gap at viewport >= lg */
+        var(--rh-space-xl, 24px);
+    }
+
+    & ul[slot='links-primary'] {
+      /** Primary link list bottom margin at viewport >= lg */
+      margin-block-end: var(--rh-space-xl, 24px);
+    }
+
+    & rh-footer-copyright:not(:defined) {
+      /** Copyright block padding at viewport >= lg */
+      padding-block: var(--rh-space-md, 8px);
+    }
+  }
+
+  rh-footer:not(:defined) rh-footer-universal:not(:defined) {
+    --_grid-row-max: 8;
+
+    grid-row: var(--_grid-row-max) / var(--_grid-row-max);
+  }
+}
