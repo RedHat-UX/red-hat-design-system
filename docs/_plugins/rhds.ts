@@ -346,6 +346,23 @@ export default async function(
     });
   });
 
+  // @ts-expect-error: Nunjucks filter returns an object, not string
+  eleventyConfig.addFilter('pathfinderLinks', function(
+    collection: { url: string; data?: { subnav?: { order?: number } } }[],
+    url: string,
+  ) {
+    const sorted = [...collection].sort((a, b) => {
+      const aOrder = a.data?.subnav?.order ?? 0;
+      const bOrder = b.data?.subnav?.order ?? 0;
+      return aOrder > bOrder ? 1 : aOrder < bOrder ? -1 : 0;
+    });
+    const idx = sorted.findIndex(p => p.url === url);
+    return {
+      prev: idx > 0 ? sorted[idx - 1] : null,
+      next: idx >= 0 && idx < sorted.length - 1 ? sorted[idx + 1] : null,
+    };
+  });
+
   eleventyConfig.addWatchTarget('docs/patterns/**/patterns/*.html');
   eleventyConfig.addWatchTarget('docs/theming/**/patterns/*.html');
 
