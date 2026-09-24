@@ -94,6 +94,9 @@ export default class ElementsPage extends Renderer<Context> {
       '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css',
       '/styles/samp.css',
       ctx.doc.hasLightdom && `/assets/packages/@rhds/elements/elements/${tagName}/${tagName}-lightdom.css`,
+      // Footer universal has its own lightdom CSS:
+      tagName === 'rh-footer'
+        && '/assets/packages/@rhds/elements/elements/rh-footer/rh-footer-universal-lightdom.css',
       isCodePage && '/styles/pages/code.css',
     ].filter(Boolean);
 
@@ -317,11 +320,21 @@ export default class ElementsPage extends Renderer<Context> {
     let content = '';
     // TODO: revisit after implementing auto-loaded light-dom css
     if (ctx.doc.hasLightdom) {
+      // `<rh-footer>` loads two lightdom stylesheets:
+      const isFooter = docsPage.tagName === 'rh-footer';
+      const stylesheetLinks = isFooter ? html`
+          <link rel="stylesheet" href="/path/to/rh-footer/rh-footer-lightdom.css">
+          <link rel="stylesheet" href="/path/to/rh-footer/rh-footer-universal-lightdom.css">` : html`
+          <link rel="stylesheet" href="/path/to/${docsPage.tagName}/${docsPage.tagName}-lightdom.css">`;
       content += html`
         ${this.#header('Lightdom CSS', 3)}
 
         <p>This element requires you to load "Lightdom CSS" stylesheets for styling
            deeply slotted elements.</p>
+
+        ${isFooter ? html`
+        <p>Load both for <code>&lt;rh-footer&gt;</code>; load only <code>rh-footer-universal-lightdom.css</code> when using <code>&lt;rh-footer-universal&gt;</code> alone.</p>
+        ` : ''}
 
         <rh-alert state="info">
           <h4 id="lightdom-css-note" slot="header">Note</h4>
@@ -329,9 +342,7 @@ export default class ElementsPage extends Renderer<Context> {
         </rh-alert>
 
         <rh-code-block actions="copy" highlighting="prerendered">
-          ${this.highlight('html', html`
-          <link rel="stylesheet" href="/path/to/${docsPage.tagName}/${docsPage.tagName}-lightdom.css">
-          `.trim())}
+          ${this.highlight('html', dedent(stylesheetLinks))}
         </rh-code-block>
       `;
     }
