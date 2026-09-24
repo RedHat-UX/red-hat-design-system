@@ -62,13 +62,11 @@
     var(--rh-tile-text-color-secondary,
       var(--rh-color-text-secondary));
   --_background-color:
-    light-dark(
-        /** Default surface color override in light mode */
-        var(--rh-tile-background-color,
+    /** Default surface color override */
+    var(--rh-tile-background-color,
+      light-dark(
         /** Default surface for light scheme */
-        var(--rh-color-surface-lightest, #ffffff)),
-        /** Default surface color override in dark mode */
-        var(--rh-tile-background-color,
+        var(--rh-color-surface-lightest, #ffffff),
         /** Default surface for dark scheme */
         var(--rh-color-surface-darkest, #151515))
       );
@@ -112,8 +110,7 @@
   position: relative;
   padding: var(--_padding);
 
-  /** Tile background color (kept on #outer, not :host, so it's
-      clipped by the same rounded corners as the border) */
+  /** Tile background color */
   background-color: var(--_background-color);
 
   /** Border color on hover */
