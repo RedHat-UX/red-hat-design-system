@@ -1,0 +1,46 @@
+rh-navigation-secondary:not(:defined) {
+  display: grid;
+  position: relative;
+  gap:
+    0
+    /** Navigation bar grid column gap */
+    var(--rh-space-2xl, 32px);
+  grid-template-rows: minmax(var(--_min-height), var(--_max-height)) max-content max-content;
+  grid-template-columns: 1fr max-content;
+  grid-template-areas:
+    'logo logo'
+    'nav nav'
+    'cta cta';
+}
+
+/* If the component isn't defined display top level links */
+rh-navigation-secondary:not(:defined) > [slot='nav'],
+rh-navigation-secondary:not(:defined) > [slot='cta'] {
+  display: flex;
+}
+
+/* If the component isn't defined hide any sub menus */
+rh-navigation-secondary-menu:not(:defined) {
+  display: none;
+}
+
+@media screen and (min-width: 992px) {
+  rh-navigation-secondary:not(:defined) {
+    display: grid;
+    grid-template-areas: 'logo nav cta';
+    grid-template-rows: minmax(var(--_min-height), var(--_max-height)) max-content max-content;
+    grid-template-columns: max-content 1fr max-content;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  rh-navigation-secondary:not(:defined) > [slot='logo'] {
+    /** Navigation logo slot inline-start margin at viewport >= 2xl */
+    margin-inline-start: var(--rh-space-4xl, 64px);
+  }
+
+  rh-navigation-secondary:not(:defined) > [slot='cta'] {
+    /** Navigation CTA slot inline-end margin at viewport >= 2xl */
+    margin-inline-end: var(--rh-space-4xl, 64px);
+  }
+}

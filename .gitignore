@@ -38,6 +38,7 @@ rhds.min.js
 # copied lightdom shims
 rh-*/rh-*lightdom.css
 rh-*/rh-*lightdom-shim.css
+.stylelint/*
 
 # e2e
 test-results
