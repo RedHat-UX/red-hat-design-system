@@ -1,7 +1,14 @@
 /* Light DOM link styles for footer */
 :is(rh-footer, rh-footer-universal) a {
-  /** Footer link default color */
-  color: var(--rh-color-interactive-primary-default);
+  color:
+    /** Footer link default color; theme-adaptive */
+    var(--rh-color-interactive-primary-default,
+      light-dark(
+        /** Footer link default color for light color scheme */
+        var(--rh-color-interactive-primary-default-on-light, #0066cc),
+        /** Footer link default color for dark color scheme */
+        var(--rh-color-interactive-primary-default-on-dark, #92c5f9)
+      ));
   text-decoration: none;
 }
 
@@ -13,10 +20,10 @@
     dashed;
   text-decoration-color:
     light-dark(
-        /** Footer block link underline in light mode */
-        var(--rh-color-gray-50),
-        /** Footer block link underline in dark mode */
-        var(--rh-color-gray-40)
+        /** Footer block link underline in light color scheme */
+        var(--rh-color-gray-50, #707070),
+        /** Footer block link underline in dark color scheme */
+        var(--rh-color-gray-40, #a3a3a3)
       ) !important;
   text-underline-offset: max(5px, 0.28em);
   transition-timing-function: ease;
@@ -34,9 +41,15 @@ rh-footer [slot^='links'] a {
 
 :is(rh-footer, rh-footer-universal) [slot^='links'] a {
   display: block;
-
-  /** Footer link column text color */
-  color: var(--rh-color-text-primary) !important;
+  color:
+    /** Footer link column text color; theme-adaptive */
+    var(--rh-color-text-primary,
+      light-dark(
+        /** Footer link column text color for light color scheme */
+        var(--rh-color-text-primary-on-light, #151515),
+        /** Footer link column text color for dark color scheme */
+        var(--rh-color-text-primary-on-dark, #ffffff)
+      )) !important;
   font-size:
     /** Footer link size override */
     var(--rh-footer-link-font-size,
@@ -50,8 +63,15 @@ rh-footer-universal [slot^='links'] a {
 }
 
 :is(rh-footer, rh-footer-universal) a:hover {
-  /** Footer link hover color */
-  color: var(--rh-color-interactive-primary-hover);
+  color:
+    /** Footer link hover color; theme-adaptive */
+    var(--rh-color-interactive-primary-hover,
+      light-dark(
+        /** Footer link hover color for light color scheme */
+        var(--rh-color-interactive-primary-hover-on-light, #003366),
+        /** Footer link hover color for dark color scheme */
+        var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
+      ));
   text-decoration:
     underline
     /** Footer link hover underline width */
@@ -65,8 +85,15 @@ rh-footer-universal [slot^='links'] a {
 }
 
 :is(rh-footer, rh-footer-universal) a:is(:focus, :focus-within) {
-  /** Footer link focus color */
-  color: var(--rh-color-interactive-primary-hover);
+  color:
+    /** Footer link focus color; theme-adaptive */
+    var(--rh-color-interactive-primary-hover,
+      light-dark(
+        /** Footer link focus color for light color scheme */
+        var(--rh-color-interactive-primary-hover-on-light, #003366),
+        /** Footer link focus color for dark color scheme */
+        var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
+      ));
   text-decoration:
     underline
     dashed
@@ -80,8 +107,15 @@ rh-footer-universal [slot^='links'] a {
 }
 
 :is(rh-footer, rh-footer-universal) a:visited {
-  /** Footer link visited color */
-  color: var(--rh-color-interactive-primary-hover);
+  color:
+    /** Footer link visited color; theme-adaptive */
+    var(--rh-color-interactive-primary-hover,
+      light-dark(
+        /** Footer link visited color for light color scheme */
+        var(--rh-color-interactive-primary-hover-on-light, #003366),
+        /** Footer link visited color for dark color scheme */
+        var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
+      ));
   text-decoration: none;
 }
 
@@ -101,54 +135,92 @@ rh-footer-universal [slot^='links'] a {
   text-decoration-color: inherit;
 }
 
-/* Logo links wrap image content */
-:is(rh-footer, rh-footer-universal) a[slot^='logo'] {
+/* Slotted logo mark or text. The wrapping <a> lives in shadow DOM. */
+:is(rh-footer, rh-footer-universal) [slot^='logo'] {
   display: inline-block;
-}
 
-:is(rh-footer, rh-footer-universal) a[slot^='logo']:not(:has(img, svg, picture)) {
-  color: var(--rh-color-text-primary);
-  font-size: var(--rh-font-size-heading-xs, 1.25rem);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
-  font-weight: 800;
-  line-height: var(--rh-line-height-heading, 1.3);
-  text-decoration: underline;
-  text-decoration-style: dotted;
-  text-decoration-thickness: var(--rh-border-width-sm, 1px);
-  text-decoration-color: var(--rh-color-border-subtle);
-  text-underline-offset: max(5px, 0.28em);
-  transition: ease all 0.3s;
-}
+  /* Text logos (span, etc.) keep heading styles and a dotted underline. */
+  &:not(:is(img, svg, picture)) {
+    color:
+      /** Logo link text color; theme-adaptive */
+      var(--rh-color-text-primary,
+        light-dark(
+          /** Logo link text color for light color scheme */
+          var(--rh-color-text-primary-on-light, #151515),
+          /** Logo link text color for dark color scheme */
+          var(--rh-color-text-primary-on-dark, #ffffff)
+        ));
+    font-size: var(--rh-font-size-heading-xs, 1.25rem);
+    font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+    font-weight: 800;
+    line-height: var(--rh-line-height-heading, 1.3);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-thickness: var(--rh-border-width-sm, 1px);
+    text-decoration-color:
+      /** Logo link underline color; theme-adaptive */
+      var(--rh-color-border-subtle,
+        light-dark(
+          /** Logo link underline color for light color scheme */
+          var(--rh-color-border-subtle-on-light, #c7c7c7),
+          /** Logo link underline color for dark color scheme */
+          var(--rh-color-border-subtle-on-dark, #707070)
+        ));
+    text-underline-offset: max(5px, 0.28em);
+    transition: ease all 0.3s;
 
-:is(rh-footer, rh-footer-universal) a[slot^='logo']:not(:has(img, svg, picture)):hover {
-  color: var(--rh-color-text-primary);
-  text-decoration-color: inherit;
-  text-underline-offset: max(6px, 0.33em);
-}
+    &:hover {
+      color:
+        /** Logo link hover text color; theme-adaptive */
+        var(--rh-color-text-primary,
+          light-dark(
+            /** Logo link hover text color for light color scheme */
+            var(--rh-color-text-primary-on-light, #151515),
+            /** Logo link hover text color for dark color scheme */
+            var(--rh-color-text-primary-on-dark, #ffffff)
+          ));
+      text-decoration-color: inherit;
+      text-underline-offset: max(6px, 0.33em);
+    }
+  }
 
-:is(rh-footer, rh-footer-universal) a[slot^='logo'] > :is(img, svg) {
-  display: block;
-  width: auto;
+  &:is(img, svg, picture),
+  &:is(picture) > img,
+  & > :is(img, svg) {
+    display: block;
+    width: auto;
 
-  /** Logo image height */
-  height: var(--rh-size-icon-02, 24px);
+    /** Logo image height */
+    height: var(--rh-size-icon-02, 24px);
+  }
 }
 
 @media screen and (min-width: 576px) {
-  :is(rh-footer, rh-footer-universal) a[slot^='logo'] > :is(img, svg) {
-    /** Logo image height at viewport >= xs */
-    height: var(--rh-size-icon-03, 32px);
-  }
+  :is(rh-footer, rh-footer-universal) [slot^='logo'] {
+    &:is(img, svg, picture),
+    &:is(picture) > img,
+    & > :is(img, svg) {
+      /** Logo image height at viewport >= xs */
+      height: var(--rh-size-icon-03, 32px);
+    }
 
-  :is(rh-footer, rh-footer-universal) a[slot^='logo']:not(:has(img, svg, picture)) {
-    /** Subdomain name font size at viewport >= xs */
-    font-size: var(--rh-font-size-heading-sm, 1.5rem);
+    &:not(:is(img, svg, picture)) {
+      /** Subdomain name font size at viewport >= xs */
+      font-size: var(--rh-font-size-heading-sm, 1.5rem);
+    }
   }
 }
 
 :is(rh-footer, rh-footer-universal) :is(h1, h2, h3, h4, h5, h6) {
-  /** Footer heading text color */
-  color: var(--rh-color-text-primary);
+  color:
+    /** Footer heading text color; theme-adaptive */
+    var(--rh-color-text-primary,
+      light-dark(
+        /** Footer heading text color for light color scheme */
+        var(--rh-color-text-primary-on-light, #151515),
+        /** Footer heading text color for dark color scheme */
+        var(--rh-color-text-primary-on-dark, #ffffff)
+      ));
 
   /** Footer typeface */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
@@ -177,7 +249,6 @@ rh-footer [slot='links']:is(h1, h2, h3, h4, h5):nth-of-type(n+5) {
   /** Default footer horizontal gutter */
   --rh-footer-section-side-gap: var(--rh-space-lg, 16px);
 
-  color-scheme: only dark;
   overflow-y: auto;
 }
 
@@ -202,8 +273,13 @@ rh-footer:not(:defined) {
   /** No-JS section horizontal inset */
   --_section-side-gap: var(--rh-space-lg, 16px);
 
-  /** Footer surface without JS */
-  background-color: var(--rh-color-surface-darker, #1f1f1f);
+  background-color:
+    light-dark(
+        /** Domain footer surface without JS in light color scheme */
+        var(--rh-color-surface-lighter, #f2f2f2),
+        /** Domain footer surface without JS in dark color scheme */
+        var(--rh-color-surface-darker, #1f1f1f)
+      );
   width: 100%;
   display: grid;
   grid-template-areas:
@@ -211,14 +287,11 @@ rh-footer:not(:defined) {
     'global';
   grid-template-rows: 1fr auto;
 
-  /** Minimum height without JS; prefer `rh-footer:not(:defined)` in CSS */
-  min-height: var(--rh-footer-nojs-min-height);
-
   & > *:not(rh-footer-universal) {
     padding-inline: var(--_section-side-gap);
   }
 
-  a[slot='logo'] {
+  [slot='logo'] {
     /** Footer vertical spacing */
     padding-block: var(--rh-space-2xl, 32px);
   }
@@ -252,9 +325,24 @@ rh-footer:not(:defined) [slot='social-links'] {
 }
 
 :is(rh-footer, rh-footer-universal):not(:defined) {
+  &[color-palette^='dark'] {
+    color-scheme: only dark;
+  }
+
+  &[color-palette^='light'] {
+    color-scheme: only light;
+  }
+
   p {
-    /** Footer secondary text on dark */
-    color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
+    color:
+      /** Footer secondary text; theme-adaptive */
+      var(--rh-color-text-secondary,
+        light-dark(
+          /** Footer secondary text for light color scheme */
+          var(--rh-color-text-secondary-on-light, #4d4d4d),
+          /** Footer secondary text for dark color scheme */
+          var(--rh-color-text-secondary-on-dark, #c7c7c7)
+        ));
   }
 
   & :is(h1, h2, h3, h4, h5, h6) {
@@ -273,8 +361,13 @@ rh-footer:not(:defined) [slot='social-links'] {
 }
 
 rh-footer-universal:not(:defined) {
-  /** Universal footer surface without JS */
-  background-color: var(--rh-color-surface-darkest, #151515);
+  background-color:
+    light-dark(
+        /** Universal footer surface without JS in light color scheme */
+        var(--rh-color-surface-lightest, #ffffff),
+        /** Universal footer surface without JS in dark color scheme */
+        var(--rh-color-surface-darkest, #151515)
+      );
   display: block;
   width: 100%;
   padding:
@@ -324,9 +417,15 @@ rh-footer-universal:not(:defined) {
 
     /** Copyright text size */
     font-size: var(--rh-font-size-body-text-xs, 0.75rem);
-
-    /** Copyright text on dark */
-    color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
+    color:
+      /** Copyright text; theme-adaptive */
+      var(--rh-color-text-secondary,
+        light-dark(
+          /** Copyright text for light color scheme */
+          var(--rh-color-text-secondary-on-light, #4d4d4d),
+          /** Copyright text for dark color scheme */
+          var(--rh-color-text-secondary-on-dark, #c7c7c7)
+        ));
   }
 }
 
@@ -381,12 +480,19 @@ rh-footer:not(:defined) rh-footer-universal:not(:defined) {
       var(--rh-space-2xl, 32px);
     grid-template-columns: repeat(12, minmax(0, 1fr));
 
-    a[slot='logo'] {
+    [slot='logo'] {
       position: relative;
 
       &:before {
-        /** Logo divider color at viewport >= lg */
-        background-color: var(--rh-color-border-subtle-on-dark, #707070);
+        background-color:
+          /** Logo divider color at viewport >= lg; theme-adaptive */
+          var(--rh-color-border-subtle,
+            light-dark(
+              /** Logo divider color for light color scheme at viewport >= lg */
+              var(--rh-color-border-subtle-on-light, #c7c7c7),
+              /** Logo divider color for dark color scheme at viewport >= lg */
+              var(--rh-color-border-subtle-on-dark, #707070)
+            ));
 
         /** Logo divider thickness at viewport >= lg */
         block-size: var(--rh-length-4xs, 1px);
@@ -401,7 +507,7 @@ rh-footer:not(:defined) rh-footer-universal:not(:defined) {
       padding: 0;
     }
 
-    a[slot='logo'],
+    [slot='logo'],
     :is(h2, h3)[slot='links']:first-of-type,
     ul[slot='links']:first-of-type {
       padding-inline-start: var(--_section-side-gap);
@@ -427,7 +533,7 @@ rh-footer:not(:defined) rh-footer-universal:not(:defined) {
     }
   }
 
-  rh-footer:not(:defined) a[slot='logo'],
+  rh-footer:not(:defined) [slot='logo'],
   rh-footer-universal:not(:defined) {
     grid-column-start: span 12;
   }

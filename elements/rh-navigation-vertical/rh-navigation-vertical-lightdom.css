@@ -4,6 +4,11 @@ rh-navigation-vertical {
       light-dark(var(--rh-color-surface-lighter, #f2f2f2),
         var(--rh-color-surface-dark, #383838));
     --_navigation-link-before-border-inline-start-width: var(--rh-border-width-lg, 3px);
-    --_navigation-link-before-border-inline-start-color: var(--rh-color-brand-red);
+    --_navigation-link-before-border-inline-start-color:
+      var(--rh-color-brand-red,
+        light-dark(
+          var(--rh-color-brand-red-on-light, #ee0000),
+          var(--rh-color-brand-red-on-dark, #ee0000)
+        ));
   }
 }

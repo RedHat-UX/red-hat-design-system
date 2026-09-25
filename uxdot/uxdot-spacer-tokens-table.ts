@@ -12,6 +12,8 @@ import { StringListConverter } from '@patternfly/pfe-core';
 
 import '@rhds/elements/rh-table/rh-table.js';
 
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import './uxdot-copy-button.js';
 
 import styles from './uxdot-spacer-tokens-table.css';
@@ -43,6 +45,7 @@ const getToken = (name: string) => {
 /**
  * Reads token data from @rhds/tokens and outputs a table for specified tokens
  */
+@themable
 @customElement('uxdot-spacer-tokens-table')
 export class UxdotSpacerTokensTable extends LitElement {
   static styles = [styles];

@@ -13,6 +13,8 @@ import '@rhds/elements/rh-switch/rh-switch.js';
 import '@rhds/elements/rh-tabs/rh-tabs.js';
 import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
 
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 import { observes } from '@patternfly/pfe-core/decorators.js';
@@ -22,6 +24,7 @@ const dequote = (x: string) =>
 
 const ARRAY_OF_PAREN_TYPE_RE = /^\((.*)\)\[\]$/;
 
+@themable
 @customElement('uxdot-knob-attribute')
 export class UxdotKnobAttribute extends LitElement {
   static styles = [styles];

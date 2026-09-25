@@ -34,114 +34,13 @@ subnav:
   import '@rhds/elements/rh-switch/rh-switch.js';
   import '@rhds/elements/rh-tabs/rh-tabs.js';
   import '@rhds/elements/rh-tag/rh-tag.js';
+  import '@rhds/elements/rh-tile/rh-tile.js';
+  import '@rhds/elements/rh-tile/rh-tile-group.js';
 </script>
 
 <link rel="stylesheet" data-helmet href="/theming/themes/project-felt/preview/felt-theme-preview.css">
 
-<style>
-  #demos-nav {
-    display: block;
-    padding-block-end: var(--rh-space-2xl, 32px);
-  }
-
-  #demos-nav ul {
-    columns: 2;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  #demos-nav li {
-    break-inside: avoid;
-    margin: 0;
-    padding: 0;
-    padding-block-end: var(--rh-space-md, 8px);
-
-    &:before {
-      content: "•";
-      margin-inline-end: var(--rh-space-md, 8px);
-      color: var(--rh-color-interactive-primary-default);
-    }
-  }
-
-  #demos-nav a {
-    color: var(--rh-color-interactive-primary-default);
-    text-decoration: none;
-
-    &:hover {
-      color: var(--rh-color-interactive-primary-hover);
-      text-decoration: underline dashed 1px;
-      text-decoration-color: inherit;
-      text-underline-offset: max(5px, 0.28em);
-    }
-
-    &:focus-within {
-      color: var(--rh-color-interactive-primary-focus);
-      text-decoration: underline dashed 1px;
-      text-decoration-color: inherit;
-      text-underline-offset: max(5px, 0.28em);
-    }
-
-    &:visited {
-      color: var(--rh-color-interactive-primary-visited-default);
-      &:hover { color: var(--rh-color-interactive-primary-visited-hover); }
-    }
-  }
-
-  @container main (min-width: 768px) {
-    #demos-nav ul {
-      columns: 3;
-    }
-  }
-
-  @container main (min-width: 992px) {
-    #demos-nav ul {
-      columns: 4;
-    }
-  }
-
-  .back-to-demos,
-  .back-to-toc {
-    display: inline-block;
-    margin-block: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
-    color: var(--rh-color-interactive-primary-default);
-    text-decoration: none;
-    font-size: var(--rh-font-size-body-text-sm, 14px);
-
-    &:before {
-      display: inline-block;
-      content: '⌃';
-      margin-inline-end: var(--rh-space-md, 8px);
-      color: var(--rh-color-interactive-primary-default);
-    }
-
-    &:hover {
-      color: var(--rh-color-interactive-primary-hover);
-      text-decoration: underline dashed 1px;
-      text-decoration-color: inherit;
-      text-underline-offset: max(5px, 0.28em);
-    }
-  }
-
-  .back-to-toc {
-    display: none;
-  }
-
-  #page-toc:focus {
-    outline: none;
-  }
-
-  @container main (min-width: 1440px) {
-    #demos-nav,
-    .back-to-demos {
-      display: none;
-    }
-
-    .back-to-toc {
-      display: inline-block;
-    }
-  }
-</style>
+<link rel="stylesheet" href="../demos.css" data-helmet>
 
 ## Try it out
 
@@ -232,6 +131,10 @@ Preview the Project Felt theme on the elements below. Toggle the switch to compa
   <uxdot-copy-permalink slot="heading"><h3 id="tag"><a href="#tag">Tags</a></h3></uxdot-copy-permalink>
 </uxdot-pattern>
 
+<uxdot-pattern src="../../patterns/felt-preview-tile.html">
+  <uxdot-copy-permalink slot="heading"><h3 id="tile" class="toc"><a href="#tile">Tile</a></h3></uxdot-copy-permalink>
+</uxdot-pattern>
+
 <uxdot-feedback>
   <h2>Other available themes</h2>
   <p>If the Project Felt theme does not fit your user needs right now,
@@ -283,5 +186,24 @@ Preview the Project Felt theme on the elements below. Toggle the switch to compa
   const pageToc = document.querySelector('#page-toc');
   if (pageToc) {
     pageToc.setAttribute('tabindex', '-1');
+  }
+
+  // Fix radio tile groups in uxdot-pattern SSR context.
+  // Lit's hydration caches the initial input type="checkbox" and
+  // doesn't re-render when radioGroup changes post-hydration.
+  // Patch the shadow DOM input type directly.
+  await customElements.whenDefined('rh-tile-group');
+  await customElements.whenDefined('rh-tile');
+  await new Promise(r => setTimeout(r, 0));
+  for (const pattern of document.querySelectorAll('uxdot-pattern')) {
+    const root = pattern.shadowRoot;
+    if (!root) continue;
+    for (const group of root.querySelectorAll('rh-tile-group[radio]')) {
+      group.updateItems();
+      for (const tile of group.querySelectorAll('rh-tile')) {
+        const input = tile.shadowRoot?.querySelector('#input');
+        if (input) input.type = 'radio';
+      }
+    }
   }
 </script>

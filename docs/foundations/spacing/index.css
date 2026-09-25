@@ -1,0 +1,3 @@
+.page-spacing .container rh-table {
+  margin-block-end: var(--rh-space-3xl, 48px);
+}

@@ -14,15 +14,7 @@ tags:
   import '@rhds/elements/rh-tag/rh-tag.js';
 </script>
 
-<style data-helmet>
-  #contact-grid h3 {
-    display: flex;
-    gap: var(--rh-space-lg, 16px);
-  }
-  #support-footer-grid {
-    margin-block-start: var(--rh-space-6xl, 96px);
-  }
-</style>
+<link rel="stylesheet" href="index.css" data-helmet>
 
 ## Need help?
 
