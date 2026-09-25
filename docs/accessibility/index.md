@@ -9,13 +9,7 @@ order: 1
   import '@rhds/elements/rh-blockquote/rh-blockquote.js';
 </script>
 
-<style>
-  rh-blockquote {
-    display: block;
-    margin-block: 2rem;
-    margin-inline-start: 2.5rem;
-  }
-</style>
+<link rel="stylesheet" href="index.css" data-helmet>
 
 ## Overview
 

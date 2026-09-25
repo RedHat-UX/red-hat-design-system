@@ -3,8 +3,11 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import styles from './uxdot-best-practice.css';
 
+@themable
 @customElement('uxdot-best-practice')
 export class UxdotBestPractice extends LitElement {
   static styles = [styles];

@@ -2,7 +2,7 @@
   display: block;
   container-type: inline-size;
   container-name: host;
-  margin-block-end: var(--rh-space-2xl);
+  margin-block-end: var(--rh-space-2xl, 32px);
 }
 
 :host([transparent]) {
@@ -10,15 +10,15 @@
 }
 
 #container {
-  padding: var(--rh-space-2xl);
+  padding: var(--rh-space-2xl, 32px);
   display: flex;
   flex-direction: column;
   align-items: var(--_alignment, center);
   justify-content: center;
-  border-width: var(--rh-border-width-sm);
+  border-width: var(--rh-border-width-sm, 1px);
   border-style: solid;
   border-color: var(--rh-color-border-subtle);
-  border-radius: var(--rh-border-radius-default);
+  border-radius: var(--rh-border-radius-default, 3px);
   background-color: var(--rh-color-surface);
   color: var(--rh-color-text-primary);
 }
@@ -55,12 +55,12 @@
 
 @container host (min-width: 576px) {
   #container {
-    padding: var(--rh-space-3xl);
+    padding: var(--rh-space-3xl, 48px);
   }
 }
 
 @container host (min-width: 768px) {
   #container {
-    padding: var(--rh-space-4xl);
+    padding: var(--rh-space-4xl, 64px);
   }
 }

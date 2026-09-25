@@ -1,0 +1,10 @@
+.theme-cards {
+  display: grid;
+  gap: var(--rh-space-2xl, 32px);
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  margin-block-start: var(--rh-space-2xl, 32px);
+
+  rh-card {
+    height: 100%;
+  }
+}

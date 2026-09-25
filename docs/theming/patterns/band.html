@@ -35,7 +35,7 @@
 <style>
   rh-surface#band {
     container-type: inline-size;
-    padding: var(--rh-space-4xl);
+    padding: var(--rh-space-4xl, 64px);
 
     &.theme-bordeaux {
       --bordeaux-darkest: #19050a;
@@ -74,7 +74,7 @@
     grid-template-columns: 1fr;
     max-width: 992px;
     margin: 0 auto;
-    gap: var(--rh-space-2xl);
+    gap: var(--rh-space-2xl, 32px);
 
     @container (min-width: 567px) {
       grid-template-columns: repeat(3, 1fr);

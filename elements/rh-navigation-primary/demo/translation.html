@@ -174,16 +174,16 @@ description: Internationalization support using translated toggle and accessible
   .grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--rh-space-4xl);
+    gap: var(--rh-space-4xl, 64px);
     font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-    fon-size: var(--rh-font-size-body-text-md, 1rem);
+    font-size: var(--rh-font-size-body-text-md, 1rem);
 
     @container (min-width: 768px) {
       grid-template-columns: 1fr 1fr 1fr;
     }
 
     #profile {
-      margin-inline-start: var(--rh-space-4xl);
+      margin-inline-start: var(--rh-space-4xl, 64px);
       display: grid;
       grid-template-columns: max-content 1fr;
       grid-template-areas: 'avatar content';
