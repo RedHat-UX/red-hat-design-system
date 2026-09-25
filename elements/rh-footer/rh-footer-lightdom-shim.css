@@ -147,7 +147,6 @@ rh-footer-universal:not(:defined) {
 
     /** Copyright text size */
     font-size: var(--rh-font-size-body-text-xs, 0.75rem);
-
     color:
       /** Copyright text; theme-adaptive */
       var(--rh-color-text-secondary,
