@@ -10,13 +10,6 @@
 
   /** Tile line height */
   line-height: var(--rh-line-height-body-text, 1.5);
-  background-color:
-    light-dark(
-        /** Default surface for light scheme */
-        var(--rh-color-surface-lightest, #ffffff),
-        /** Default surface for dark scheme */
-        var(--rh-color-surface-darkest, #151515)
-      );
 }
 
 [hidden] {
@@ -68,6 +61,15 @@
   --_text-color-secondary:
     var(--rh-tile-text-color-secondary,
       var(--rh-color-text-secondary));
+  --_background-color:
+    /** Default surface color override; theme adaptive */
+    var(--rh-tile-background-color,
+      light-dark(
+        /** Default surface for light scheme */
+        var(--rh-color-surface-lightest, #ffffff),
+        /** Default surface for dark scheme */
+        var(--rh-color-surface-darkest, #151515))
+      );
   --_focus-background-color:
     light-dark(
         /** Focus/hover surface color override in light mode */
@@ -107,6 +109,7 @@
 
   position: relative;
   padding: var(--_padding);
+  background-color: var(--_background-color);
 
   /** Border color on hover */
   --_hover-border-color:
