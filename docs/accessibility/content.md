@@ -15,28 +15,7 @@ order: 40
   import '@rhds/elements/rh-table/rh-table.js';
 </script>
 
-<style data-helmet>
-  rh-blockquote {
-    display: block;
-    margin-block: 2rem;
-    margin-inline-start: 2.5rem;
-  }
-
-  .limit-width {
-    max-width: 56rem;
-  }
-
-  #func-img {
-    outline: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
-    width: 50%;
-  }
-
-  @container container (min-width: 576px) {
-    #func-img {
-      padding: var(--rh-space-3xl, 48px);
-    }
-  }
-</style>
+<link rel="stylesheet" href="../content.css" data-helmet>
 
 ## Overview
 

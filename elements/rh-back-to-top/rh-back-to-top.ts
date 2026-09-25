@@ -3,6 +3,8 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './rh-back-to-top.css' with { type: 'css' };
@@ -24,6 +26,7 @@ import styles from './rh-back-to-top.css' with { type: 'css' };
  * Custom values must maintain 4.5:1 contrast ratio with text.
  */
 @customElement('rh-back-to-top')
+@themable
 export class RhBackToTop extends LitElement {
   static readonly styles = [styles];
 

@@ -11,7 +11,7 @@
   display: block;
 
   /** Disclosure body font family */
-  font-family: var(--rh-font-family-body-text);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
 }
 
 summary {
@@ -71,7 +71,7 @@ summary {
 
   & ::slotted([slot='summary']) {
     /** Slotted summary font family */
-    font-family: var(--rh-font-family-body-text);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
 
     /** Slotted summary text size */
     font-size: var(--rh-font-size-body-text-md, 1rem) !important;

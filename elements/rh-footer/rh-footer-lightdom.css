@@ -21,9 +21,9 @@ rh-footer:not(:defined) {
 
   background-color:
     light-dark(
-        /** Domain footer surface without JS in light color schemes */
+        /** Domain footer surface without JS in light color scheme */
         var(--rh-color-surface-lighter, #f2f2f2),
-        /** Domain footer surface without JS in dark color schemes */
+        /** Domain footer surface without JS in dark color scheme */
         var(--rh-color-surface-darker, #1f1f1f)
       );
   width: 100%;
@@ -119,8 +119,15 @@ rh-footer-block:not(:defined) {
       grid-column-start: span 12;
 
       &:before {
-        /** Logo divider color at viewport >= lg */
-        background-color: var(--rh-color-border-subtle);
+        background-color:
+          /** Logo divider color at viewport >= lg; theme-adaptive */
+          var(--rh-color-border-subtle,
+            light-dark(
+              /** Logo divider color for light color scheme at viewport >= lg */
+              var(--rh-color-border-subtle-on-light, #c7c7c7),
+              /** Logo divider color for dark color scheme at viewport >= lg */
+              var(--rh-color-border-subtle-on-dark, #707070)
+            ));
 
         /** Logo divider thickness at viewport >= lg */
         block-size: var(--rh-length-4xs, 1px);

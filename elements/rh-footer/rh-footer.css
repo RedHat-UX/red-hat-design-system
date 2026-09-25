@@ -14,9 +14,9 @@
 .header {
   background-color:
     light-dark(
-        /** Domain footer surface in light color schemes */
+        /** Domain footer surface in light color scheme */
         var(--rh-color-surface-lighter, #f2f2f2),
-        /** Domain footer surface in dark color schemes */
+        /** Domain footer surface in dark color scheme */
         var(--rh-color-surface-darker, #1f1f1f)
       );
 
@@ -66,9 +66,9 @@
 .main {
   background-color:
     light-dark(
-        /** Domain footer surface in light color schemes */
+        /** Domain footer surface in light color scheme */
         var(--rh-color-surface-lighter, #f2f2f2),
-        /** Domain footer surface in dark color schemes */
+        /** Domain footer surface in dark color scheme */
         var(--rh-color-surface-darker, #1f1f1f)
       );
   display: grid;

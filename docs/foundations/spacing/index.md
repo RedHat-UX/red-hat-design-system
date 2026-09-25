@@ -17,11 +17,7 @@ tags:
   import '@rhds/elements/rh-table/rh-table.js';
 </script>
 
-<style data-helmet>
-  .page-spacing .container rh-table {
-    margin-block-end: var(--rh-space-3xl);
-  }
-</style>
+<link rel="stylesheet" href="index.css" data-helmet>
 
 <section aria-labelledby="overview">
 

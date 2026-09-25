@@ -1,19 +1,19 @@
 :host {
-  --_uxdot-header-padding: var(--rh-space-2xl);
+  --_uxdot-header-padding: var(--rh-space-2xl, 32px);
 
   display: block;
   container-type: inline-size;
   container-name: header;
   background-color:
-    light-dark(var(--rh-color-surface-lighter),
-      oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h));
+    light-dark(var(--rh-color-surface-lighter, #f2f2f2),
+      oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h));
 
   @container (min-width: 768px) {
-    --_uxdot-header-padding: var(--rh-space-3xl);
+    --_uxdot-header-padding: var(--rh-space-3xl, 48px);
   }
 
   @container (min-width: 992px) {
-    --_uxdot-header-padding: var(--rh-space-6xl);
+    --_uxdot-header-padding: var(--rh-space-6xl, 96px);
   }
 }
 
@@ -33,17 +33,19 @@
 }
 
 ::slotted(h1) {
-  font-family: var(--uxdot-heading-font-family, var(--rh-font-family-heading)) !important;
-  font-size: var(--uxdot-heading-heading-size, var(--rh-font-size-heading-2xl)) !important;
-  font-weight: var(--uxdot-heading-font-weight, var(--rh-font-weight-heading-regular)) !important;
-  line-height: var(--uxdot-heading-line-height, var(--rh-line-height-heading)) !important;
+  font-family: var(--uxdot-heading-font-family, var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif)) !important;
+  font-size: var(--uxdot-heading-heading-size, var(--rh-font-size-heading-2xl, 3rem)) !important;
+  font-weight:
+    var(--uxdot-heading-font-weight,
+      var(--rh-font-weight-heading-regular, 400)) !important;
+  line-height: var(--uxdot-heading-line-height, var(--rh-line-height-heading, 1.3)) !important;
   margin: 0 !important;
 }
 
 ::slotted([slot='subnav']) {
-  margin-block-start: var(--rh-space-2xl);
+  margin-block-start: var(--rh-space-2xl, 32px);
 
   /* take the header padding and minus the default padding (2xl), for mobile it should maximize
   soace for the subnav, but for larger viewports it will align the first button text with header */
-  padding-inline: calc(var(--_uxdot-header-padding) - var(--rh-space-2xl));
+  padding-inline: calc(var(--_uxdot-header-padding) - var(--rh-space-2xl, 32px));
 }

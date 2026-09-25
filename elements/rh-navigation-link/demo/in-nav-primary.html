@@ -344,17 +344,17 @@ description: Navigation links used within a primary navigation bar alongside dro
   .grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--rh-space-4xl);
+    gap: var(--rh-space-4xl, 64px);
     font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-size: var(--rh-font-size-body-text-md, 1rem);
-    
+
 
     @container (min-width: 768px) {
       grid-template-columns: 1fr 1fr 1fr;
     }
 
     #profile {
-      margin-inline-start: var(--rh-space-4xl);
+      margin-inline-start: var(--rh-space-4xl, 64px);
       display: grid;
       grid-template-columns: max-content 1fr;
       grid-template-areas: 'avatar content';
@@ -399,8 +399,8 @@ description: Navigation links used within a primary navigation bar alongside dro
 
     .content-column {
       max-width: 320px;
-      margin-block: var(--rh-space-md);
-      line-height: var(--rh-line-height-body-text);
+      margin-block: var(--rh-space-md, 8px);
+      line-height: var(--rh-line-height-body-text, 1.5);
     }
 
     & select {
@@ -410,7 +410,7 @@ description: Navigation links used within a primary navigation bar alongside dro
     & ul {
       display: flex;
       flex-direction: column;
-      gap: var(--rh-space-2xl);
+      gap: var(--rh-space-2xl, 32px);
       list-style: none;
       margin: 0;
       padding: 0;

@@ -361,7 +361,7 @@ button {
   /* Play variant: circular semi-transparent overlay for media playback */
   &.play {
     /** Play icon color */
-    --_color: var(--rh-color-icon-secondary-on-dark);
+    --_color: var(--rh-color-icon-secondary-on-dark, #ffffff);
     --_background-color:
       light-dark(
           /** Play overlay background in light mode */

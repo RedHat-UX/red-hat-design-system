@@ -6,23 +6,7 @@ tags:
   - about
 ---
 
-<style data-helmet>
-  .red-heading { 
-    color: var(--rh-color-text-brand-on-light);
-    font-size: var(--rh-font-size-heading-xl);
-  }
-
-  rh-card rh-icon { 
-    --rh-icon-size: var(--rh-size-icon-07);
-    color: var(--rh-color-icon-primary);
-    width: var(--rh-icon-size);
-  }
-
-  .intro h2 {
-    font-size: var(--rh-font-size-heading-xl);
-    color: var(--rh-color-text-brand);
-  }
-</style>
+<link rel="stylesheet" href="index.css" data-helmet>
 
 <script data-helmet type="module">
   import '@rhds/elements/rh-icon/rh-icon.js';

@@ -5,7 +5,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(var(--uxdot-grid-repeat, 1), 1fr);
-  gap: var(--rh-space-2xl);
+  gap: var(--rh-space-2xl, 32px);
 
   &.gapless {
     gap: 0;
