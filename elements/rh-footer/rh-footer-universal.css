@@ -38,8 +38,8 @@
 }
 
 .global-logo-image {
-  /** Red Hat fedora brand color */
-  fill: var(--rh-color-brand-red, #ee0000);
+  /** Red Hat fedora brand color; theme-adaptive */
+  fill: var(--rh-color-brand-red);
 }
 
 .global-logo ::slotted(:is(img, svg, picture)),
