@@ -29,34 +29,6 @@ rh-audio-player {
   }
 }
 
-rh-audio-player:not([expanded]) rh-transcript:not(:defined) {
-  display: none;
-}
-
-rh-cue[start]:not(:defined):before,
-rh-cue[voice]:not(:defined):before {
-  /** Pre-upgrade cue heading font family */
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
-
-  /** Pre-upgrade cue heading font size */
-  font-size: var(--rh-font-size-body-text-md, 1rem);
-
-  /** Pre-upgrade cue heading font weight */
-  font-weight: var(--rh-font-weight-heading-bold, 700);
-}
-
-rh-cue[voice]:not(:defined):before {
-  content: attr(voice);
-}
-
-rh-cue[start]:not(:defined):before {
-  content: attr(start);
-}
-
-rh-cue[voice][start]:not(:defined):before {
-  content: attr(start) ' - ' attr(voice);
-}
-
 rh-cue[voice][start]:empty {
   display: block;
 
