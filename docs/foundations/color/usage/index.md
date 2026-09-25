@@ -21,19 +21,7 @@ subnav:
       href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"
       data-helmet>
 
-<style>
-  td ul {
-    margin-block: 0;
-  }
-  figcaption { 
-    margin-block-start: var(--rh-space-lg);
-    color: var(--rh-color-text-secondary-on-light);
-    font-size: var(--rh-font-size-body-text-sm);
-  }
-  figure uxdot-example {
-    margin-block-start: var(--rh-space-2xl);
-  }
-</style>
+<link rel="stylesheet" href="index.css" data-helmet>
 
 ## Our color palette
 

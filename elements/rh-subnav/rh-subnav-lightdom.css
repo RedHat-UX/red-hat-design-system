@@ -1,20 +1,44 @@
 rh-subnav {
   & rh-navigation-link:not([current-page]):active:after {
     border-block-end-color:
+      /** Link not current-page page border color override */
       var(--rh-subnav-link-border-color-active,
-        var(--rh-color-brand-red)) !important;
+        /** Link not current-page border color */
+        var(--rh-color-brand-red,
+        light-dark(
+          /** Link not current-page border color on light scheme */
+          var(--rh-color-brand-red-on-light, #ee0000),
+          /** Link not current-page border color on dark scheme */
+          var(--rh-color-brand-red-on-dark, #ee0000))
+        )) !important;
   }
 
   & rh-navigation-link:not([current-page]):focus-visible:after,
   & rh-navigation-link:not([current-page]):has(a:focus-visible):after {
     border-block-end-color:
+      /** Link not current-page with focus border color override */
       var(--rh-subnav-link-border-color-hover,
-        var(--rh-color-border-subtle)) !important;
+        /** Link not current-page with focus border color */
+        var(--rh-color-border-subtle,
+        light-dark(
+          /** Link not current-page with focus border color on light scheme */
+          var(--rh-color-border-subtle-on-light, #c7c7c7),
+          /** Link not current-page with focus border color on dark scheme */
+          var(--rh-color-border-subtle-on-dark, #707070))
+        )) !important;
   }
 
   & rh-navigation-link:not([current-page]):focus-within:after {
     border-block-end-color:
+      /** Link not current-page hover border color override */
       var(--rh-subnav-link-border-color-hover,
-        var(--rh-color-border-subtle)) !important;
+        /** Link not current-page hover border color */
+        var(--rh-color-border-subtle,
+        light-dark(
+          /** Link not current-page hover border color on light scheme */
+          var(--rh-color-border-subtle-on-light, #c7c7c7),
+          /** Link not current-page hover border color on dark scheme */
+          var(--rh-color-border-subtle-on-dark, #707070))
+        )) !important;
   }
 }

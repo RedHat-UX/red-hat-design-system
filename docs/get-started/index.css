@@ -1,0 +1,8 @@
+#get-started-nav {
+  margin-block-start: var(--rh-space-2xl, 32px);
+
+  & figcaption {
+    font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+    font-size: var(--rh-font-size-heading-sm, 1.5rem);
+  }
+}

@@ -1,14 +1,14 @@
 .variants > td {
-  padding-block: var(--rh-space-md);
+  padding-block: var(--rh-space-md, 8px);
 }
 
 uxdot-copy-permalink ~ .token-category > uxdot-copy-permalink {
-  margin-block-start: var(--rh-space-2xl);
+  margin-block-start: var(--rh-space-2xl, 32px);
 }
 
 rh-card.swatches {
-  --rh-card-header-background-on-light: var(--rh-color-surface-light);
-  --rh-card-header-background-on-dark: var(--rh-color-surface-dark);
+  --rh-card-header-background-on-light: var(--rh-color-surface-light, #e0e0e0);
+  --rh-card-header-background-on-dark: var(--rh-color-surface-dark, #383838);
 
   display: block;
 
@@ -24,11 +24,11 @@ rh-card.swatches {
 
   &::part(header) {
     margin: 0;
-    padding: var(--rh-space-lg) var(--rh-space-2xl);
-    gap: var(--rh-space-lg);
-    font-weight: var(--rh-font-weight-heading-regular);
-    font-size: var(--rh-font-size-body-text-md);
-    font-family: var(--rh-font-family-body-text);
+    padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+    gap: var(--rh-space-lg, 16px);
+    font-weight: var(--rh-font-weight-heading-regular, 400);
+    font-size: var(--rh-font-size-body-text-md, 1rem);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     align-items: center;
     flex-flow: row wrap;
   }
@@ -44,13 +44,13 @@ rh-card.swatches {
   &::part(body) {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--rh-space-md);
+    gap: var(--rh-space-md, 8px);
   }
 
   & label {
     margin-inline-start: auto;
-    font-size: var(--rh-font-size-body-text-md);
-    font-weight: var(--rh-font-weight-body-text-regular);
+    font-size: var(--rh-font-size-body-text-md, 1rem);
+    font-weight: var(--rh-font-weight-body-text-regular, 400);
   }
 
   & figure {
@@ -59,5 +59,5 @@ rh-card.swatches {
 }
 
 rh-disclosure.deprecated-tokens {
-  margin-block-end: var(--rh-space-6xl);
+  margin-block-end: var(--rh-space-6xl, 96px);
 }

@@ -17,7 +17,7 @@
   }
 
   rh-tooltip {
-    --rh-color-interactive-primary-default: var(--rh-color-icon-subtle);
+    --rh-color-interactive-primary-default: var(--rh-color-icon-subtle, #707070);
 
     margin-block-start: var(--rh-space-sm, 6px);
   }
@@ -58,7 +58,7 @@
 }
 
 pf-option {
-  --rh-icon-size: var(--rh-size-icon-03);
+  --rh-icon-size: var(--rh-size-icon-03, 32px);
 }
 
 button.toggletip {

@@ -15,11 +15,7 @@ order: 100
       data-helmet
       href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
 
-<style data-helmet>
-  rh-tile [slot="headline"] {
-    font-weight: var(--rh-font-weight-heading-bold, 700);
-  }
-</style>
+<link rel="stylesheet" href="../screen-readers.css" data-helmet>
 
 ## Why test with screen readers?
 

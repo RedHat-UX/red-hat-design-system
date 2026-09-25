@@ -22,32 +22,7 @@ crayons:
   - purple
   - gray
 ---
-<style data-helmet>
-  #crayons-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    @container (min-width: 576px) and (max-width: 746px) {
-      grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
-    }
-   column-gap: var(--rh-space-2xl);
-   row-gap: var(--rh-space-4xl);
-    & .crayons-list {
-      margin: 0;
-      padding: 0;
-      list-style-type: none;
-      & li {
-        padding: 0;
-        margin: 0;
-        & samp {
-          display: block;
-          font-size: var(--rh-font-size-body-text-md);
-          font-family: var(--rh-font-family-code);
-          padding: var(--rh-space-md) var(--rh-space-lg);
-        }
-      }
-    }
-  }
-</style>
+<link rel="stylesheet" href="index.css" data-helmet>
 
 ## Introduction
 

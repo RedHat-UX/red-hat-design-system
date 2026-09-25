@@ -1,7 +1,14 @@
 /* Light DOM link styles for footer */
 :is(rh-footer, rh-footer-universal) a {
-  /** Footer link default color */
-  color: var(--rh-color-interactive-primary-default);
+  color:
+    /** Footer link default color; theme-adaptive */
+    var(--rh-color-interactive-primary-default,
+      light-dark(
+        /** Footer link default color for light color scheme */
+        var(--rh-color-interactive-primary-default-on-light, #0066cc),
+        /** Footer link default color for dark color scheme */
+        var(--rh-color-interactive-primary-default-on-dark, #92c5f9)
+      ));
   text-decoration: none;
 }
 
@@ -13,9 +20,9 @@
     dashed;
   text-decoration-color:
     light-dark(
-        /** Footer block link underline in light color schemes */
+        /** Footer block link underline in light color scheme */
         var(--rh-color-gray-50, #707070),
-        /** Footer block link underline in dark color schemes */
+        /** Footer block link underline in dark color scheme */
         var(--rh-color-gray-40, #a3a3a3)
       ) !important;
   text-underline-offset: max(5px, 0.28em);
@@ -34,9 +41,15 @@ rh-footer [slot^='links'] a {
 
 :is(rh-footer, rh-footer-universal) [slot^='links'] a {
   display: block;
-
-  /** Footer link column text color */
-  color: var(--rh-color-text-primary) !important;
+  color:
+    /** Footer link column text color; theme-adaptive */
+    var(--rh-color-text-primary,
+      light-dark(
+        /** Footer link column text color for light color scheme */
+        var(--rh-color-text-primary-on-light, #151515),
+        /** Footer link column text color for dark color scheme */
+        var(--rh-color-text-primary-on-dark, #ffffff)
+      )) !important;
   font-size:
     /** Footer link size override */
     var(--rh-footer-link-font-size,
@@ -50,8 +63,15 @@ rh-footer-universal [slot^='links'] a {
 }
 
 :is(rh-footer, rh-footer-universal) a:hover {
-  /** Footer link hover color */
-  color: var(--rh-color-interactive-primary-hover);
+  color:
+    /** Footer link hover color; theme-adaptive */
+    var(--rh-color-interactive-primary-hover,
+      light-dark(
+        /** Footer link hover color for light color scheme */
+        var(--rh-color-interactive-primary-hover-on-light, #003366),
+        /** Footer link hover color for dark color scheme */
+        var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
+      ));
   text-decoration:
     underline
     /** Footer link hover underline width */
@@ -65,8 +85,15 @@ rh-footer-universal [slot^='links'] a {
 }
 
 :is(rh-footer, rh-footer-universal) a:is(:focus, :focus-within) {
-  /** Footer link focus color */
-  color: var(--rh-color-interactive-primary-hover);
+  color:
+    /** Footer link focus color; theme-adaptive */
+    var(--rh-color-interactive-primary-hover,
+      light-dark(
+        /** Footer link focus color for light color scheme */
+        var(--rh-color-interactive-primary-hover-on-light, #003366),
+        /** Footer link focus color for dark color scheme */
+        var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
+      ));
   text-decoration:
     underline
     dashed
@@ -80,8 +107,15 @@ rh-footer-universal [slot^='links'] a {
 }
 
 :is(rh-footer, rh-footer-universal) a:visited {
-  /** Footer link visited color */
-  color: var(--rh-color-interactive-primary-hover);
+  color:
+    /** Footer link visited color; theme-adaptive */
+    var(--rh-color-interactive-primary-hover,
+      light-dark(
+        /** Footer link visited color for light color scheme */
+        var(--rh-color-interactive-primary-hover-on-light, #003366),
+        /** Footer link visited color for dark color scheme */
+        var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
+      ));
   text-decoration: none;
 }
 
@@ -107,7 +141,15 @@ rh-footer-universal [slot^='links'] a {
 
   /* Text logos (span, etc.) keep heading styles and a dotted underline. */
   &:not(:is(img, svg, picture)) {
-    color: var(--rh-color-text-primary);
+    color:
+      /** Logo link text color; theme-adaptive */
+      var(--rh-color-text-primary,
+        light-dark(
+          /** Logo link text color for light color scheme */
+          var(--rh-color-text-primary-on-light, #151515),
+          /** Logo link text color for dark color scheme */
+          var(--rh-color-text-primary-on-dark, #ffffff)
+        ));
     font-size: var(--rh-font-size-heading-xs, 1.25rem);
     font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
     font-weight: 800;
@@ -115,12 +157,28 @@ rh-footer-universal [slot^='links'] a {
     text-decoration: underline;
     text-decoration-style: dotted;
     text-decoration-thickness: var(--rh-border-width-sm, 1px);
-    text-decoration-color: var(--rh-color-border-subtle);
+    text-decoration-color:
+      /** Logo link underline color; theme-adaptive */
+      var(--rh-color-border-subtle,
+        light-dark(
+          /** Logo link underline color for light color scheme */
+          var(--rh-color-border-subtle-on-light, #c7c7c7),
+          /** Logo link underline color for dark color scheme */
+          var(--rh-color-border-subtle-on-dark, #707070)
+        ));
     text-underline-offset: max(5px, 0.28em);
     transition: ease all 0.3s;
 
     &:hover {
-      color: var(--rh-color-text-primary);
+      color:
+        /** Logo link hover text color; theme-adaptive */
+        var(--rh-color-text-primary,
+          light-dark(
+            /** Logo link hover text color for light color scheme */
+            var(--rh-color-text-primary-on-light, #151515),
+            /** Logo link hover text color for dark color scheme */
+            var(--rh-color-text-primary-on-dark, #ffffff)
+          ));
       text-decoration-color: inherit;
       text-underline-offset: max(6px, 0.33em);
     }
@@ -154,8 +212,15 @@ rh-footer-universal [slot^='links'] a {
 }
 
 :is(rh-footer, rh-footer-universal) :is(h1, h2, h3, h4, h5, h6) {
-  /** Footer heading text color */
-  color: var(--rh-color-text-primary);
+  color:
+    /** Footer heading text color; theme-adaptive */
+    var(--rh-color-text-primary,
+      light-dark(
+        /** Footer heading text color for light color scheme */
+        var(--rh-color-text-primary-on-light, #151515),
+        /** Footer heading text color for dark color scheme */
+        var(--rh-color-text-primary-on-dark, #ffffff)
+      ));
 
   /** Footer typeface */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);

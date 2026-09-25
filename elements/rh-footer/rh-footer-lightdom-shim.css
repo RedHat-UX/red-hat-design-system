@@ -5,9 +5,9 @@ rh-footer:not(:defined) {
 
   background-color:
     light-dark(
-        /** Domain footer surface without JS in light color schemes */
+        /** Domain footer surface without JS in light color scheme */
         var(--rh-color-surface-lighter, #f2f2f2),
-        /** Domain footer surface without JS in dark color schemes */
+        /** Domain footer surface without JS in dark color scheme */
         var(--rh-color-surface-darker, #1f1f1f)
       );
   width: 100%;
@@ -64,8 +64,15 @@ rh-footer:not(:defined) [slot='social-links'] {
   }
 
   p {
-    /** Footer secondary text */
-    color: var(--rh-color-text-secondary);
+    color:
+      /** Footer secondary text; theme-adaptive */
+      var(--rh-color-text-secondary,
+        light-dark(
+          /** Footer secondary text for light color scheme */
+          var(--rh-color-text-secondary-on-light, #4d4d4d),
+          /** Footer secondary text for dark color scheme */
+          var(--rh-color-text-secondary-on-dark, #c7c7c7)
+        ));
   }
 
   & :is(h1, h2, h3, h4, h5, h6) {
@@ -86,9 +93,9 @@ rh-footer:not(:defined) [slot='social-links'] {
 rh-footer-universal:not(:defined) {
   background-color:
     light-dark(
-        /** Universal footer surface without JS in light color schemes */
+        /** Universal footer surface without JS in light color scheme */
         var(--rh-color-surface-lightest, #ffffff),
-        /** Universal footer surface without JS in dark color schemes */
+        /** Universal footer surface without JS in dark color scheme */
         var(--rh-color-surface-darkest, #151515)
       );
   display: block;
@@ -141,8 +148,15 @@ rh-footer-universal:not(:defined) {
     /** Copyright text size */
     font-size: var(--rh-font-size-body-text-xs, 0.75rem);
 
-    /** Copyright text */
-    color: var(--rh-color-text-secondary);
+    color:
+      /** Copyright text; theme-adaptive */
+      var(--rh-color-text-secondary,
+        light-dark(
+          /** Copyright text for light color scheme */
+          var(--rh-color-text-secondary-on-light, #4d4d4d),
+          /** Copyright text for dark color scheme */
+          var(--rh-color-text-secondary-on-dark, #c7c7c7)
+        ));
   }
 }
 
@@ -201,8 +215,15 @@ rh-footer:not(:defined) rh-footer-universal:not(:defined) {
       position: relative;
 
       &:before {
-        /** Logo divider color at viewport >= lg */
-        background-color: var(--rh-color-border-subtle);
+        background-color:
+          /** Logo divider color at viewport >= lg; theme-adaptive */
+          var(--rh-color-border-subtle,
+            light-dark(
+              /** Logo divider color for light color scheme at viewport >= lg */
+              var(--rh-color-border-subtle-on-light, #c7c7c7),
+              /** Logo divider color for dark color scheme at viewport >= lg */
+              var(--rh-color-border-subtle-on-dark, #707070)
+            ));
 
         /** Logo divider thickness at viewport >= lg */
         block-size: var(--rh-length-4xs, 1px);
