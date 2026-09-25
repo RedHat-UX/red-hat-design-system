@@ -116,6 +116,7 @@ const KITCHEN_SINK_TEMPLATE = html`
     </rh-footer-universal>
   </rh-footer>
   <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css">
+  <link rel="stylesheet" href="/elements/rh-footer/rh-footer-universal-lightdom.css">
 `;
 
 const UNIVERSAL_FOOTER_TEMPLATE = html`
@@ -156,7 +157,7 @@ const UNIVERSAL_FOOTER_TEMPLATE = html`
                              accessible-label="X/Twitter"></rh-footer-social-link>
     </rh-footer-links>
   </rh-footer-universal>
-  <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css">
+  <link rel="stylesheet" href="/elements/rh-footer/rh-footer-universal-lightdom.css">
 `;
 
 /* Picture logos: ::slotted() cannot size the nested fallback img, so
@@ -188,6 +189,7 @@ const PICTURE_LOGO_TEMPLATE = html`
     </rh-footer-universal>
   </rh-footer>
   <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css">
+  <link rel="stylesheet" href="/elements/rh-footer/rh-footer-universal-lightdom.css">
 `;
 
 describe('<rh-footer>', function() {

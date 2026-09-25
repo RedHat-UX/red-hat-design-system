@@ -15,7 +15,10 @@ import '@rhds/elements/rh-footer/rh-footer.js';
 
 ```html
 <link rel="stylesheet" href="node_modules/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css" />
+<link rel="stylesheet" href="node_modules/@rhds/elements/elements/rh-footer/rh-footer-universal-lightdom.css" />
 ```
+
+Load both for `<rh-footer>`; load only `rh-footer-universal-lightdom.css` when using `<rh-footer-universal>` alone.
 
 The default Red Hat wordmark is built in. To slot a custom mark, copy the
 inline SVG from the [slotted logo demo][slotted-logo].
@@ -114,8 +117,10 @@ improve page loading performance.
 import '@rhds/elements/rh-footer/rh-footer-universal.js';
 ```
 ```html
-<link rel="stylesheet" href="node_modules/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css">
+<link rel="stylesheet" href="node_modules/@rhds/elements/elements/rh-footer/rh-footer-universal-lightdom.css">
 ```
+
+Load both for `<rh-footer>`; load only `rh-footer-universal-lightdom.css` when using `<rh-footer-universal>` alone.
 
 ```html
 <rh-footer-universal color-palette="darkest">

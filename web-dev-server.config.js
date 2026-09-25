@@ -1,7 +1,7 @@
 // @ts-check
 import { pfeDevServerConfig } from '@patternfly/pfe-tools/dev-server/config.js';
 import { deslugify } from '@patternfly/pfe-tools/config.js';
-import { glob, readFile } from 'node:fs/promises';
+import { access, glob, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { makeDemoEnv } from './scripts/environment.js';
 import { parse, serialize } from 'parse5';
@@ -17,6 +17,35 @@ import {
   setTextContent,
   spliceChildren,
 } from '@parse5/tools';
+
+/**
+ * Light DOM files usually live at `elements/{tag}/{tag}-lightdom.css`.
+ * A second sheet in that same directory, such as
+ * `rh-footer-universal-lightdom.css`, still belongs to `rh-footer`.
+ * Request paths treat the whole filename stem as the tag, so walk shorter
+ * directory names until the file is found.
+ * @param {string} elementName
+ * @param {string} suffix
+ */
+export async function resolveLightdomPath(elementName, suffix) {
+  const filename = `${elementName}-${suffix}.css`;
+  // `rh-footer-universal` → ['rh', 'footer', 'universal']
+  // The light DOM suffix is already separate, so the full name is the first directory to try.
+  const segments = elementName.split('-');
+
+  while (segments.length >= 2) {
+    const dir = segments.join('-');
+    const candidate = join(process.cwd(), 'elements', dir, filename);
+    try {
+      await access(candidate);
+      return candidate;
+    } catch {
+      // Try the next shorter element directory.
+      segments.pop();
+    }
+  }
+  return join(process.cwd(), 'elements', elementName, filename);
+}
 
 /**
  * Find all modules in a glob pattern, relative to the repo root, and resolve them as package paths
@@ -255,7 +284,7 @@ export default pfeDevServerConfig({
       }
 
       const [, elementName, suffix] = match;
-      const filePath = join(process.cwd(), 'elements', elementName, `${elementName}-${suffix}.css`);
+      const filePath = await resolveLightdomPath(elementName, suffix);
 
       try {
         ctx.type = 'text/css';

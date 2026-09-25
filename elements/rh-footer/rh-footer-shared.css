@@ -1,0 +1,90 @@
+/* Adopted by both rh-footer and rh-footer-universal. */
+:host {
+  /* apply sensible defaults based on redhat standards. */
+
+  /** Footer text color */
+  color: var(--rh-color-text-primary);
+
+  /** Footer typeface */
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+
+  /** Footer line height */
+  line-height: var(--rh-line-height-body-text, 1.5);
+  font-weight: var(--_font-weight);
+  font-size: initial;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer,
+.global-base {
+  --_icon-color:
+    /** Footer icon color override */
+    var(
+        --rh-footer-icon-color,
+        /** Footer icon color */
+        var(--rh-color-icon-subtle, #707070)
+      );
+  --_icon-color-hover:
+    /** Footer icon hover color override */
+    var(
+        --rh-footer-icon-color-hover,
+        /** Footer icon hover color */
+        var(--rh-color-icon-subtle-hover, #a3a3a3)
+      );
+  --_border-color:
+    /** Footer border color override */
+    var(
+        --rh-footer-border-color,
+        /** Footer border color */
+        var(--rh-color-border-subtle)
+      );
+  --_accent-color:
+    /** Footer accent color override */
+    var(
+        --rh-footer-accent-color,
+        /** Footer accent brand on light */
+        var(--rh-color-accent-brand-on-light, #ee0000)
+      );
+  --_section-side-gap:
+    /** Footer section horizontal margin override */
+    var(
+        --rh-footer-section-side-gap,
+        /** Footer section horizontal margin */
+        var(--rh-space-lg, 16px)
+      );
+
+  /* Accordion surface follows the footer color-scheme */
+  --_accordion-background:
+    light-dark(
+        /** Accordion surface in light color schemes */
+        var(--rh-color-surface-lightest, #ffffff),
+        /** Accordion surface in dark color schemes */
+        var(--rh-color-surface-darkest, #151515)
+      );
+
+  /** Footer logo width */
+  --_logo-width: var(--rh-size-icon-04, 40px);
+
+  /** Footer body text weight */
+  --_font-weight: var(--rh-font-weight-body-text-regular, 400);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  /** Footer typeface */
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif) !important;
+
+  /** Footer line height */
+  line-height: var(--rh-line-height-heading, 1.3) !important;
+}
+
+/* Regions */
+.section {
+  padding:
+    /** Footer section block padding */ var(--rh-space-2xl, 32px)
+    var(--_section-side-gap);
+}
