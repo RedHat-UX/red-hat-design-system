@@ -502,6 +502,8 @@
 
   /* Box shadows */
   --felt-preview-box-shadow-floating: 0 0 10px 0 rgba(41, 41, 41, 0.15);
+  --felt-preview-box-shadow-xs: 0 1px 3px rgba(41, 41, 41, 0.15);
+  --felt-preview-box-shadow-sm: 0 1px 6px rgba(41, 41, 41, 0.15);
 
   /* Brand accent */
   --felt-preview-color-brand-accent:
@@ -2494,6 +2496,46 @@
         calc(
             var(--felt-preview-border-radius-default) - 1px
           );
+    }
+  }
+
+  /* Element: Back to Top */
+  & rh-back-to-top {
+    /* Default-state background (component's own escape hatch) */
+    --rh-back-to-top-background-color: var(--felt-preview-color-interactive-primary-default);
+
+    &::part(trigger) {
+      /* Felt: 8px content gap (base theme uses 4px) */
+      gap: var(--felt-preview-space-md);
+
+      /* Resting elevation on default/hover/active; :focus-visible overrides below */
+      box-shadow: var(--felt-preview-box-shadow-xs);
+    }
+
+    /* Felt hover/active/focus don't get the base theme's border+outline ring;
+       only :focus-visible re-introduces a ring, further down. Colors (not
+       widths) are reset here to avoid layout shift when states change. */
+    &::part(trigger):is(:hover, :active, :focus) {
+      border-color: transparent;
+      outline-color: transparent;
+    }
+
+    &::part(trigger):hover {
+      background-color: var(--felt-preview-color-interactive-primary-hover);
+    }
+
+    &::part(trigger):active {
+      background-color: var(--felt-preview-color-interactive-primary-active);
+    }
+
+    &::part(trigger):focus-visible {
+      background-color: var(--felt-preview-color-interactive-primary-focus);
+      box-shadow: var(--felt-preview-box-shadow-sm);
+      outline:
+        var(--felt-preview-border-width-lg)
+        solid
+        var(--felt-preview-color-interactive-primary-default);
+      outline-offset: var(--felt-preview-border-width-lg);
     }
   }
 }
