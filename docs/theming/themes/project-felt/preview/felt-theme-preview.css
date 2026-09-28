@@ -2496,4 +2496,53 @@
           );
     }
   }
+
+  /* Element: Table
+     `<thead>`, `<th>`, `<td>`, and `<a>` are the author's own light-DOM
+     content (rh-table only wraps a slotted `<table>`), so these are
+     plain descendant selectors -- no `::part()` needed, matching the
+     structure already used in rh-table-lightdom.css. */
+  & rh-table {
+    /* Row hover: same subtle fill used for hover states across the theme */
+    --rh-table-row-background-hover-color: var(--felt-preview-color-interactive-fill-plain-hover);
+
+    & thead {
+      & th {
+        /* Felt: small, medium-weight header labels (base theme: inherited
+           body-md size, bold weight) */
+        font-size: var(--felt-preview-font-size-body-text-sm);
+        font-weight: var(--rh-font-weight-body-text-medium, 500);
+      }
+    }
+
+    /* stylelint-disable-next-line no-descending-specificity -- unrelated to rh-tile's headline link */
+    & a {
+      color: var(--felt-preview-color-interactive-primary-default);
+      text-decoration:
+        underline dotted
+        var(--felt-preview-border-width-sm)
+        var(--felt-preview-color-interactive-secondary-underline-default);
+
+      /* stylelint-disable-next-line no-descending-specificity -- unrelated to rh-tile's headline link */
+      &:hover {
+        color: var(--felt-preview-color-interactive-primary-hover);
+        text-decoration-color: currentcolor;
+      }
+    }
+  }
+
+  /* Sort buttons live inside `<th>` next to the header label; give them
+     the same rounded "plain action" hover/focus pill used for other
+     low-emphasis controls throughout the theme (e.g. rh-menu-dropdown
+     items, rh-jump-link). */
+  & rh-sort-button {
+    &::part(sort-button) {
+      padding: var(--felt-preview-space-xs) var(--felt-preview-space-md);
+      border-radius: var(--felt-preview-border-radius-action-plain);
+    }
+
+    &::part(sort-button):is(:hover, :focus-visible) {
+      background-color: var(--felt-preview-color-interactive-fill-plain-hover);
+    }
+  }
 }
