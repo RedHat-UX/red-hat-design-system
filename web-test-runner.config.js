@@ -1,7 +1,10 @@
 import { readFile } from 'node:fs/promises';
-import { join } from 'node:path';
 import { pfeTestRunnerConfig } from '@patternfly/pfe-tools/test/config.js';
-import { litcssOptions, stripCssImportAttributesPlugin } from './web-dev-server.config.js';
+import {
+  litcssOptions,
+  resolveLightdomPath,
+  stripCssImportAttributesPlugin,
+} from './web-dev-server.config.js';
 
 const baseConfig = pfeTestRunnerConfig({
   litcssOptions,
@@ -36,7 +39,7 @@ export default {
         return next();
       }
       const [, elementName, suffix] = match;
-      const filePath = join(process.cwd(), 'elements', elementName, `${elementName}-${suffix}.css`);
+      const filePath = await resolveLightdomPath(elementName, suffix);
       try {
         ctx.type = 'text/css';
         ctx.body = await readFile(filePath, 'utf-8');

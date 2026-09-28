@@ -1,12 +1,39 @@
 import type { UserConfig } from '@11ty/eleventy';
 import * as Parse5 from 'parse5';
 import * as Tools from '@parse5/tools';
-import { readFile } from 'node:fs/promises';
+import { access, readFile } from 'node:fs/promises';
+import { join } from 'node:path';
 import { stripFrontmatter } from '#11ty-plugins/frontmatter.js';
 
 // Match relative lightdom CSS paths (../rh-foo-lightdom.css),
 // but skip already-transformed asset paths (/assets/packages/...)
 const LIGHTDOM_HREF_RE = /href="((?!\/assets)[./].*-lightdom.*\.css)"/g;
+
+/**
+ * Light DOM files live in `elements/{tag}/`. A second sheet such as
+ * `rh-footer-universal-lightdom.css` still belongs in `elements/rh-footer/`.
+ * The filename stem is not always the directory name, so use the directory
+ * that actually contains the file.
+ * @param filename light DOM stylesheet filename
+ * @param guessed directory name taken from the request path, used when no file is found
+ */
+async function elementDirForLightdom(filename: string, guessed: string): Promise<string> {
+  // `rh-footer-universal-lightdom.css` → ['rh', 'footer', 'universal']
+  // The last segment is the sheet kind (`lightdom`), so it is not part of the tag.
+  const segments = filename.replace(/\.css$/, '').split('-').slice(0, -1);
+
+  while (segments.length >= 2) {
+    const dir = segments.join('-');
+    try {
+      await access(join(process.cwd(), 'elements', dir, filename));
+      return dir;
+    } catch {
+      // Try the next shorter element directory.
+      segments.pop();
+    }
+  }
+  return guessed;
+}
 
 /**
  * Eleventy plugin to handle demo page transformations
@@ -76,6 +103,9 @@ export default function(eleventyConfig: UserConfig) {
             // Extract from filename: "rh-foo-lightdom.css" -> "rh-foo"
             elementName = filename.replace(/-lightdom.*\.css$/, '');
           }
+
+          // `rh-footer-universal-lightdom.css` is stored beside `rh-footer-lightdom.css`.
+          elementName = await elementDirForLightdom(filename, elementName);
 
           const replacement = `/assets/packages/@rhds/elements/elements/${elementName}/${filename}`;
           content = content.replace(match, `href="${replacement}"`);
