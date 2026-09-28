@@ -11,15 +11,7 @@ title: Design/code status
   import '@rhds/elements/rh-icon/rh-icon.js';
 </script>
 
-<style data-helmet>
-  rh-tag {
-    text-transform: capitalize;
-  }
-
-  #web-component-status-table {
-    margin-block: var(--rh-space-3xl);
-  }
-</style>
+<link rel="stylesheet" href="index.css" data-helmet>
 
 <section aria-labelledby="overview">
 

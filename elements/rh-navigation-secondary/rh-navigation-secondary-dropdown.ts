@@ -4,6 +4,7 @@ import { state } from 'lit/decorators/state.js';
 import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
 
+import { themable } from '@rhds/elements/lib/themable.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { bound, observes } from '@patternfly/pfe-core/decorators.js';
@@ -45,6 +46,7 @@ import styles from './rh-navigation-secondary-dropdown.css' with { type: 'css' }
  * @slot menu - The dropdown menu. Expects `<rh-navigation-secondary-menu>` element.
  */
 @customElement('rh-navigation-secondary-dropdown')
+@themable
 export class RhNavigationSecondaryDropdown extends LitElement {
   static readonly styles = [styles];
 

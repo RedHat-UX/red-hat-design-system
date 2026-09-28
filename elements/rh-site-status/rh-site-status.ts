@@ -120,8 +120,8 @@ const isStatusPageResponse = (data: unknown): data is SummaryResponse => {
 
 /**
  * Provides live operational status for a website or domain using a status
- * icon and link. Authors SHOULD place this element in the footer. Screen
- * reader users receive updates via `aria-live="polite"`. Users MAY
+ * icon and link. Authors should place this element in the footer. Screen
+ * reader users receive updates via `aria-live="polite"`. Users may
  * activate the link with Enter or Tab to focus it.
  *
  * @summary Communicates operational status of a website or domain

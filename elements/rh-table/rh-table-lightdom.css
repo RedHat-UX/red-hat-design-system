@@ -47,10 +47,26 @@ rh-table {
   }
 
   & a {
-    color: var(--rh-color-interactive-primary-default);
+    color:
+      /** Table link color; theme-adaptive */
+      var(--rh-color-interactive-primary-default,
+        light-dark(
+          /** Table link color for light color schemes */
+          var(--rh-color-interactive-primary-default-on-light, #0066cc),
+          /** Table link color for dark color schemes */
+          var(--rh-color-interactive-primary-default-on-dark, #92c5f9)
+        ));
 
     &:hover {
-      color: var(--rh-color-interactive-primary-hover);
+      color:
+        /** Table link hover color; theme-adaptive */
+        var(--rh-color-interactive-primary-hover,
+          light-dark(
+            /** Table link hover color for light color schemes */
+            var(--rh-color-interactive-primary-hover-on-light, #003366),
+            /** Table link hover color for dark color schemes */
+            var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
+          ));
     }
   }
 

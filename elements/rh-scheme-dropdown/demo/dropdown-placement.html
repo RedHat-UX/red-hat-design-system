@@ -17,8 +17,18 @@ description: "Two scheme dropdowns demonstrating dropdown positioning aligning o
   }
 
   #container {
-    background-color: var(--rh-color-surface);
-    color: var(--rh-color-text-primary);
+    background-color:
+      var(--rh-color-surface,
+        light-dark(
+          var(--rh-color-surface-lightest, #ffffff),
+          var(--rh-color-surface-darkest, #151515)
+        ));
+    color:
+      var(--rh-color-text-primary,
+        light-dark(
+          var(--rh-color-text-primary-on-light, #151515),
+          var(--rh-color-text-primary-on-dark, #ffffff)
+        ));
     display: flex;
     block-size: 100svh;
     justify-content: space-between;

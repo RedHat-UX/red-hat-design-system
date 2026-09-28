@@ -10,18 +10,21 @@
 <style>
   .example-card-ordered-list {
     inline-size: 360px;
+
     & ol {
-      padding-inline-start: var(--rh-space-lg);
+      padding-inline-start: var(--rh-space-lg, 16px);
+
       & li {
-        margin-block-end: var(--rh-space-lg);
+        margin-block-end: var(--rh-space-lg, 16px);
+
         &:last-child {
           margin-block-end: 0;
         }
       }
     }
+
     & h3 {
-      margin-block-end: var(--rh-space-lg);
+      margin-block-end: var(--rh-space-lg, 16px);
     }
   }
 </style>
-

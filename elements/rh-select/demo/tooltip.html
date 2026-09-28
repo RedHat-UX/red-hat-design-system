@@ -36,7 +36,7 @@ description: Select paired with an rh-tooltip providing additional context about
 
   label {
     display: inline-block;
-    font-family: var(--rh-font-family-body-text);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-body-text-medium, 500);
     margin-block: var(--rh-space-md, 8px);
   }
@@ -56,11 +56,21 @@ description: Select paired with an rh-tooltip providing additional context about
     padding: 0;
 
     &:hover {
-      color: var(--rh-color-interactive-primary-hover);
+      color:
+        var(--rh-color-interactive-primary-hover,
+          light-dark(
+            var(--rh-color-interactive-primary-hover-on-light, #003366),
+            var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
+          ));
     }
 
     &:focus-visible {
-      outline-color: var(--rh-color-border-interactive);
+      outline-color:
+        var(--rh-color-border-interactive,
+          light-dark(
+            var(--rh-color-border-interactive-on-light, #0066cc),
+            var(--rh-color-border-interactive-on-dark, #92c5f9)
+          ));
     }
   }
 </style>

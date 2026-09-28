@@ -8,10 +8,13 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 
 import { ContextChangeEvent } from '../rh-context-picker/rh-context-picker.js';
 
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import style from './rh-context-demo.css';
 
 @customElement('rh-context-demo')
 @colorPalettes
+@themable
 export class RhContextDemo extends LitElement {
   static readonly styles = [style];
 

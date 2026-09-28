@@ -145,17 +145,17 @@ description: Responsive jump links switching between vertical and horizontal lay
 <style>
   #responsive-container {
     max-width: 100dvw;
-    margin: var(--rh-space-xl);
+    margin: var(--rh-space-xl, 24px);
 
     & p {
-      margin-block-end: var(--rh-space-md);
+      margin-block-end: var(--rh-space-md, 8px);
     }
 
     & h2 {
-      font-size: var(--rh-font-size-heading-xl);
-      font-weight: var(--rh-font-weight-heading-regular);
-      font-family: var(--rh-font-family-heading);
-      margin-block: var(--rh-space-md);
+      font-size: var(--rh-font-size-heading-xl, 2.5rem);
+      font-weight: var(--rh-font-weight-heading-regular, 400);
+      font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+      margin-block: var(--rh-space-md, 8px);
     }
 
     & .jump-links-title {
@@ -163,11 +163,11 @@ description: Responsive jump links switching between vertical and horizontal lay
         display: inline;
       }
 
-      font-weight: var(--rh-font-weight-heading-medium);
-      font-family: var(--rh-font-family-body-text);
-      font-size: var(--rh-font-size-body-text-md);
-      line-height: var(--rh-line-height-body-text);
-      margin-block-end: var(--rh-space-lg);
+      font-weight: var(--rh-font-weight-heading-medium, 500);
+      font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+      font-size: var(--rh-font-size-body-text-md, 1rem);
+      line-height: var(--rh-line-height-body-text, 1.5);
+      margin-block-end: var(--rh-space-lg, 16px);
     }
 
     & .desktop {
@@ -175,14 +175,14 @@ description: Responsive jump links switching between vertical and horizontal lay
     }
 
     & rh-disclosure {
-      margin-block-end: var(--rh-space-xl);
+      margin-block-end: var(--rh-space-xl, 24px);
     }
 
     /*--rh-media-md*/
     @media (width >=992px) {
       display: grid;
       grid-template-columns: auto 1fr;
-      gap: var(--rh-space-lg);
+      gap: var(--rh-space-lg, 16px);
       align-items: start;
 
       & .desktop {

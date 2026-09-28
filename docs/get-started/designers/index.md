@@ -29,14 +29,7 @@ order: 10
   import '@rhds/elements/rh-cta/rh-cta.js';
 </script>
 
-<style data-helmet>
-  #learn-about-grid {
-    margin-block-start: var(--rh-space-2xl, 32px);
-    & rh-tile > rh-icon {
-      color: var(--rh-color-brand-red);
-    }
-  }
-</style>
+<link rel="stylesheet" href="index.css" data-helmet>
 
 ## Introduction
 

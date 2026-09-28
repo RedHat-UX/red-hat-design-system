@@ -82,10 +82,11 @@ label {
 
   &:focus-within,
   &:hover {
-    /** Toggle button hover/focus background */
     background-color:
       light-dark(
+          /** Toggle button hover/focus background for light color schemes */
           var(--rh-color-surface-light, #e0e0e0),
+          /** Toggle button hover/focus background for dark color schemes */
           var(--rh-color-surface-dark, #383838)
         );
   }
@@ -98,9 +99,9 @@ label {
     border-color: var(--rh-color-border-interactive);
     color:
       light-dark(
-          /** Selected toggle button icon color in light mode */
+          /** Selected toggle button icon color for light color schemes */
           var(--rh-color-text-primary-on-dark, #ffffff),
-          /** Selected toggle button icon color in dark mode */
+          /** Selected toggle button icon color for dark color schemes */
           var(--rh-color-text-primary-on-light, #151515)
         );
     z-index: 1;

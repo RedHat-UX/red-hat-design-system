@@ -16,8 +16,15 @@
 }
 
 ::slotted(*) {
-  /** Block default text */
-  color: var(--rh-color-text-primary);
+  color:
+    /** Block default text; theme-adaptive */
+    var(--rh-color-text-primary,
+      light-dark(
+        /** Block default text for light color scheme */
+        var(--rh-color-text-primary-on-light, #151515),
+        /** Block default text for dark color scheme */
+        var(--rh-color-text-primary-on-dark, #ffffff)
+      ));
 
   /** Footer block default font size */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
@@ -35,9 +42,15 @@
     0
     /** Block heading bottom spacing */
     var(--rh-space-lg, 16px) !important;
-
-  /** Block heading text */
-  color: var(--rh-color-text-primary) !important;
+  color:
+    /** Block heading text; theme-adaptive */
+    var(--rh-color-text-primary,
+      light-dark(
+        /** Block heading text for light color scheme */
+        var(--rh-color-text-primary-on-light, #151515),
+        /** Block heading text for dark color scheme */
+        var(--rh-color-text-primary-on-dark, #ffffff)
+      )) !important;
 }
 
 ::slotted(:last-child) {
@@ -45,8 +58,15 @@
 }
 
 .content ::slotted(*) {
-  /** Block secondary text */
-  color: var(--rh-color-text-secondary);
+  color:
+    /** Block secondary text; theme-adaptive */
+    var(--rh-color-text-secondary,
+      light-dark(
+        /** Block secondary text for light color scheme */
+        var(--rh-color-text-secondary-on-light, #4d4d4d),
+        /** Block secondary text for dark color scheme */
+        var(--rh-color-text-secondary-on-dark, #c7c7c7)
+      ));
 
   /** Block body typeface */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
@@ -62,9 +82,15 @@
 
 .content ::slotted(ul) {
   list-style: none;
-
-  /** List text color */
-  color: var(--rh-color-text-primary);
+  color:
+    /** List text color; theme-adaptive */
+    var(--rh-color-text-primary,
+      light-dark(
+        /** List text color for light color scheme */
+        var(--rh-color-text-primary-on-light, #151515),
+        /** List text color for dark color scheme */
+        var(--rh-color-text-primary-on-dark, #ffffff)
+      ));
 
   /** List font size */
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);

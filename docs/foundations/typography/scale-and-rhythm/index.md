@@ -18,17 +18,7 @@ subnav:
   import '@rhds/elements/rh-table/rh-table.js';
 </script>
 
-<style data-helmet>
-  rh-table {
-    & td, & th { width: 20%; }
-    & td {
-      &:has(s) { color: var(--rh-color-text-brand); }
-      & span { color: var(--rh-color-green-60); }
-      & s { color: var(--rh-color-gray-40); }
-      & :is(s, span) { display: block; }
-    }
-  }
-</style>
+<link rel="stylesheet" href="index.css" data-helmet>
 
 
 ## Overview

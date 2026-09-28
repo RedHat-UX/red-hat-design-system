@@ -10,9 +10,12 @@ import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import styles from './uxdot-copy-button.css';
 import visuallyHidden from './visually-hidden.css';
 
+@themable
 @customElement('uxdot-copy-button')
 export class UxdotCopyButton extends LitElement {
   static styles = [styles, visuallyHidden];

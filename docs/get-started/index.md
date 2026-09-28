@@ -12,16 +12,7 @@ tags:
   import '@rhds/elements/rh-tile/rh-tile.js';
 </script>
 
-<style data-helmet>
-  #get-started-nav {
-    margin-block-start: var(--rh-space-2xl);
-  }
-
-  #get-started-nav figcaption {
-    font-family: var(--rh-font-family-heading);
-    font-size: var(--rh-font-size-heading-sm);
-  }
-</style>
+<link rel="stylesheet" href="index.css" data-helmet>
 
 ## Get started
 
