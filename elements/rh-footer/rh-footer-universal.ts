@@ -9,7 +9,8 @@ import { classMap } from 'lit/directives/class-map.js';
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import style from './rh-footer.css' with { type: 'css' };
+import shared from './rh-footer-shared.css' with { type: 'css' };
+import style from './rh-footer-universal.css' with { type: 'css' };
 
 import './rh-footer-copyright.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
@@ -31,7 +32,7 @@ export const DEFAULT_LOGO_HREF = 'https://www.redhat.com/en';
 @colorPalettes
 @themable
 export class RhFooterUniversal extends LitElement {
-  static readonly styles = [style];
+  static readonly styles = [shared, style];
 
   /**
    * Sets color palette, which affects the universal footer's styles and

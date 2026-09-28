@@ -18,6 +18,7 @@ import './rh-footer-links.js';
 import './rh-footer-social-link.js';
 import './rh-footer-block.js';
 
+import shared from './rh-footer-shared.css' with { type: 'css' };
 import style from './rh-footer.css' with { type: 'css' };
 
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
@@ -50,7 +51,7 @@ function isHeaderTagName(tagName: string) {
 export class RhFooter extends LitElement {
   static readonly version = '{{version}}';
 
-  static readonly styles = [style];
+  static readonly styles = [shared, style];
 
   /**
    * Accessible name for the default social links list (`slot="social-links"`).
