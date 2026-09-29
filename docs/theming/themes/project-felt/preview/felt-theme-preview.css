@@ -2503,8 +2503,15 @@
      plain descendant selectors -- no `::part()` needed, matching the
      structure already used in rh-table-lightdom.css. */
   & rh-table {
-    /* Row hover: same subtle fill used for hover states across the theme */
+    /* Row hover: same subtle fill used for hover states across the theme.
+       The public token only feeds the light branch of light-dark() in
+       rh-table.css, so dark mode still paints white at 10% opacity.
+       The tr:hover rule below beats rh-table-lightdom.css in both schemes. */
     --rh-table-row-background-hover-color: var(--felt-preview-color-interactive-fill-plain-hover);
+
+    & tr:hover {
+      background: var(--felt-preview-color-interactive-fill-plain-hover);
+    }
 
     & thead {
       & th {
@@ -2513,6 +2520,13 @@
         font-size: var(--felt-preview-font-size-body-text-sm);
         font-weight: var(--rh-font-weight-body-text-medium, 500);
       }
+    }
+
+    /* Felt body cells: 14px / 21px (0.875rem × 1.5). Block padding stays
+       at the component's 24px, so rows land a bit taller than Figma's 64px. */
+    & td {
+      font-size: var(--felt-preview-font-size-body-text-sm);
+      line-height: var(--felt-preview-line-height-body-text);
     }
 
     /* stylelint-disable-next-line no-descending-specificity -- unrelated to rh-tile's headline link */
