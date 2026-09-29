@@ -348,19 +348,20 @@ export default class ElementsPage extends Renderer<Context> {
     }
     if (ctx.doc.hasLightdomShim) {
       const isFooter = docsPage.tagName === 'rh-footer';
-      const shimLinks = isFooter ? html`
+      const undefinedStylesheetLinks = isFooter ? html`
           <link rel="stylesheet" href="/path/to/rh-footer/rh-footer-lightdom-undefined.css">
           <link rel="stylesheet" href="/path/to/rh-footer/rh-footer-universal-lightdom-undefined.css">` : html`
-          <link rel="stylesheet" href="/path/to/${docsPage.tagName}/${docsPage.tagName}-lightdom-shim.css">`;
+          <link rel="stylesheet" href="/path/to/${docsPage.tagName}/${docsPage.tagName}-lightdom-undefined.css">`;
       content += html`
-        ${this.#header('Lightdom CSS shim', 3)}
+        ${this.#header('Lightdom undefined CSS', 3)}
 
         <rh-alert state="warning">
           <h4 slot="header">Warning</h4>
-          <p>Lightdom CSS shims are an optional, temporary solution for reducing
+          <p>This optional stylesheet provides styles while the element is not yet defined
+             (<code>:not(:defined)</code>), which can reduce
              <abbr title="cumulative layout shift">CLS</abbr>.
-             <a href="/get-started/developers/installation/#lightdom-css-shims">
-               Learn more about lightdom CSS shims
+             <a href="/get-started/developers/installation/#lightdom-undefined-css">
+               Learn more about lightdom undefined CSS
              </a>.</p>
         </rh-alert>
 
@@ -369,7 +370,7 @@ export default class ElementsPage extends Renderer<Context> {
         ` : ''}
 
         <rh-code-block actions="copy" highlighting="prerendered">
-          ${this.highlight('html', dedent(shimLinks))}
+          ${this.highlight('html', dedent(undefinedStylesheetLinks))}
         </rh-code-block>
 
         <rh-alert state="info">
