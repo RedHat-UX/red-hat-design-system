@@ -349,8 +349,8 @@ export default class ElementsPage extends Renderer<Context> {
     if (ctx.doc.hasLightdomShim) {
       const isFooter = docsPage.tagName === 'rh-footer';
       const shimLinks = isFooter ? html`
-          <link rel="stylesheet" href="/path/to/rh-footer/rh-footer-lightdom-shim.css">
-          <link rel="stylesheet" href="/path/to/rh-footer/rh-footer-universal-lightdom-shim.css">` : html`
+          <link rel="stylesheet" href="/path/to/rh-footer/rh-footer-lightdom-undefined.css">
+          <link rel="stylesheet" href="/path/to/rh-footer/rh-footer-universal-lightdom-undefined.css">` : html`
           <link rel="stylesheet" href="/path/to/${docsPage.tagName}/${docsPage.tagName}-lightdom-shim.css">`;
       content += html`
         ${this.#header('Lightdom CSS shim', 3)}
@@ -365,7 +365,7 @@ export default class ElementsPage extends Renderer<Context> {
         </rh-alert>
 
         ${isFooter ? html`
-        <p>Load both shims for <code>&lt;rh-footer&gt;</code>; load only <code>rh-footer-universal-lightdom-shim.css</code> when using <code>&lt;rh-footer-universal&gt;</code> alone.</p>
+        <p>Load both undefined stylesheets for <code>&lt;rh-footer&gt;</code>; load only <code>rh-footer-universal-lightdom-undefined.css</code> when using <code>&lt;rh-footer-universal&gt;</code> alone.</p>
         ` : ''}
 
         <rh-code-block actions="copy" highlighting="prerendered">
