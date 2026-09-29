@@ -15,7 +15,19 @@ import '@rhds/elements/rh-footer/rh-footer.js';
 
 ```html
 <link rel="stylesheet" href="node_modules/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css" />
+<link rel="stylesheet" href="node_modules/@rhds/elements/elements/rh-footer/rh-footer-universal-lightdom.css" />
 ```
+
+Load both for `<rh-footer>`; load only `rh-footer-universal-lightdom.css` when using `<rh-footer-universal>` alone.
+
+To style the footer before JavaScript loads, also load the optional lightdom shims:
+
+```html
+<link rel="stylesheet" href="node_modules/@rhds/elements/elements/rh-footer/rh-footer-lightdom-shim.css" />
+<link rel="stylesheet" href="node_modules/@rhds/elements/elements/rh-footer/rh-footer-universal-lightdom-shim.css" />
+```
+
+When using `<rh-footer-universal>` alone, only its universal shim is needed.
 
 The default Red Hat wordmark is built in. To slot a custom mark, copy the
 inline SVG from the [slotted logo demo][slotted-logo].
@@ -114,8 +126,10 @@ improve page loading performance.
 import '@rhds/elements/rh-footer/rh-footer-universal.js';
 ```
 ```html
-<link rel="stylesheet" href="node_modules/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css">
+<link rel="stylesheet" href="node_modules/@rhds/elements/elements/rh-footer/rh-footer-universal-lightdom.css">
 ```
+
+Load both for `<rh-footer>`; load only `rh-footer-universal-lightdom.css` when using `<rh-footer-universal>` alone.
 
 ```html
 <rh-footer-universal color-palette="darkest">
