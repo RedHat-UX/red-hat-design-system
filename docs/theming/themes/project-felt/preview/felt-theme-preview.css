@@ -502,7 +502,6 @@
 
   /* Box shadows */
   --felt-preview-box-shadow-floating: 0 0 10px 0 rgba(41, 41, 41, 0.15);
-  --felt-preview-box-shadow-xs: 0 1px 3px rgba(41, 41, 41, 0.15);
   --felt-preview-box-shadow-sm: 0 1px 6px rgba(41, 41, 41, 0.15);
 
   /* Brand accent */
@@ -2508,8 +2507,8 @@
       /* Felt: 8px content gap (base theme uses 4px) */
       gap: var(--felt-preview-space-md);
 
-      /* Resting elevation on default/hover/active; :focus-visible overrides below */
-      box-shadow: var(--felt-preview-box-shadow-xs);
+      /* Elevation on default/hover/active; focus keeps the same shadow */
+      box-shadow: var(--felt-preview-box-shadow-sm);
     }
 
     /* Felt hover/active/focus don't get the base theme's border+outline ring;
