@@ -18,6 +18,7 @@ subnav:
   import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
   import '@rhds/elements/rh-accordion/rh-accordion.js';
   import '@rhds/elements/rh-alert/rh-alert.js';
+  import '@rhds/elements/rh-back-to-top/rh-back-to-top.js';
   import '@rhds/elements/rh-badge/rh-badge.js';
   import '@rhds/elements/rh-breadcrumb/rh-breadcrumb.js';
   import '@rhds/elements/rh-button/rh-button.js';
@@ -62,6 +63,10 @@ Preview the Project Felt theme on the elements below. Toggle the switch to compa
 
 <uxdot-pattern src="../../patterns/felt-preview-alert.html">
   <uxdot-copy-permalink slot="heading"><h3 id="alert" class="toc"><a href="#alert">Alerts</a></h3></uxdot-copy-permalink>
+</uxdot-pattern>
+
+<uxdot-pattern src="../../patterns/felt-preview-back-to-top.html">
+  <uxdot-copy-permalink slot="heading"><h3 id="back-to-top" class="toc"><a href="#back-to-top">Back to top</a></h3></uxdot-copy-permalink>
 </uxdot-pattern>
 
 <uxdot-pattern src="../../patterns/felt-preview-badge.html">
