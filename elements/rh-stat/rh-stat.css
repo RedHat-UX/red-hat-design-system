@@ -1,5 +1,38 @@
 :host {
   display: block;
+  container: stat / inline-size;
+
+  /** Title text size */
+  --_title-size: var(--rh-font-size-body-text-xl, 1.25rem);
+
+  /** Body text size */
+  --_body-size: var(--rh-font-size-body-text-lg, 1.125rem);
+
+  /** Statistic text size */
+  --_statistic-size: var(--rh-font-size-heading-lg, 2.25rem);
+}
+
+/* Large variant uses the desktop heading 2xl token. */
+:host([size='large']) {
+  /** Large variant statistic text size */
+  --_statistic-size: var(--rh-font-size-heading-2xl, 3rem);
+}
+
+/*
+ * Deprecated `is-mobile` forces the compact type scale even when the stat is
+ * wide. Same sizes as the container query below.
+ */
+:host([is-mobile]) {
+  /** Compact title text size */
+  --_title-size: var(--rh-font-size-body-text-lg, 1.125rem);
+
+  /** Compact body text size */
+  --_body-size: var(--rh-font-size-body-text-md, 1rem);
+  --_statistic-size: 1.625rem; /* 26px */
+}
+
+:host([is-mobile][size='large']) {
+  --_statistic-size: 2.1875rem; /* 35px */
 }
 
 div {
@@ -67,7 +100,7 @@ span,
   color: var(--_accent-color);
 
   /** Title text size */
-  font-size: var(--rh-font-size-body-text-xl, 1.25rem);
+  font-size: var(--_title-size);
 
   /** Title font family */
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
@@ -81,7 +114,7 @@ span,
   color: var(--_accent-color);
 
   /** Statistic text size */
-  font-size: var(--rh-font-size-heading-lg, 2.25rem);
+  font-size: var(--_statistic-size);
 
   /** Statistic font weight */
   font-weight: var(--rh-font-weight-heading-regular, 400);
@@ -94,13 +127,17 @@ span,
   order: 3;
 
   /** Body text size */
-  font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+  font-size: var(--_body-size);
 
   /** Body font family */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
 
   /** Margin above body text */
   margin-top: var(--rh-space-sm, 6px);
+}
+
+#content ::slotted(p) {
+  font-size: var(--_body-size) !important;
 }
 
 #cta {
@@ -123,18 +160,23 @@ div:not(.hasCta) #cta {
   display: none;
 }
 
-.isMobile #content {
-  /** Mobile body text size */
-  font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-}
+/*
+ * Compact type scale below the sm breakpoint (768px). The query cannot style
+ * :host, because the host is the container, so the sizes land on the inner div.
+ */
+@container stat (max-width: 767px) {
+  div {
+    /** Compact title text size */
+    --_title-size: var(--rh-font-size-body-text-lg, 1.125rem);
 
-.isMobile #statistic {
-  font-size: 32px;
-}
+    /** Compact body text size */
+    --_body-size: var(--rh-font-size-body-text-md, 1rem);
+    --_statistic-size: 1.625rem; /* 26px */
+  }
 
-:host([size='large']) #statistic {
-  /** Large variant statistic text size */
-  font-size: var(--rh-font-size-heading-2xl, 3rem);
+  :host([size='large']) div {
+    --_statistic-size: 2.1875rem; /* 35px */
+  }
 }
 
 :host([top='statistic']) #statistic {
