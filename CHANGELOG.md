@@ -1,5 +1,10 @@
 # @rhds/elements
 
+## 4.2.3
+### Patch Changes
+
+- 782c682: `<rh-footer>`: align heights of footer wordmark and universal footer fedora logo at different viewports
+
 ## 4.2.2
 ### Patch Changes
 
