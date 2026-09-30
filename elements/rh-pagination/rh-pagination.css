@@ -442,9 +442,7 @@ input {
  * BORDERLESS VARIANT
  *****************************************************************************/
 
-/* NOTE: the `open` variant is deprecated but aliased until the next major release. */
-
-:host(:is([variant|='borderless'], [variant|='open'])) {
+:host([variant|='borderless']) {
   & .stepper {
     --_stepper-bg-color: transparent;
 
