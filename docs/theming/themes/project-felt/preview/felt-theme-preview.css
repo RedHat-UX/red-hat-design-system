@@ -1616,7 +1616,9 @@
     --rh-border-width-md: var(--felt-preview-border-width-lg);
     --rh-color-interactive-primary-default: var(--felt-preview-color-interactive-primary-default);
     --rh-disclosure-summary-background-color-expanded:
-      var(--felt-preview-color-interactive-fill-plain-hover);
+      var(
+          --felt-preview-color-interactive-fill-plain-hover
+        );
     --rh-disclosure-padding-inline: var(--felt-preview-space-lg);
     --rh-disclosure-summary-outline-offset: calc(-1 * var(--felt-preview-border-width-lg));
 
