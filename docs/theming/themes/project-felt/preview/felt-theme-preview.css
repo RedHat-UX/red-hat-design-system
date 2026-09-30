@@ -1602,6 +1602,29 @@
     }
   }
 
+  /* Element: Disclosure
+     Borderless is unchanged. The Felt frames only show the default variant.
+     Active still draws the focus ring; Felt's active state is fill only. */
+  & rh-disclosure:not([variant~='borderless']) {
+    --rh-border-radius-default: var(--felt-preview-border-radius-action-plain);
+    --rh-box-shadow-sm: none;
+    --rh-color-brand-red: transparent;
+    --rh-color-border-subtle: transparent;
+    --rh-color-surface: transparent;
+    --rh-color-surface-lighter: var(--felt-preview-color-interactive-fill-plain-on-light);
+    --rh-color-surface-dark: var(--felt-preview-color-interactive-fill-plain-on-dark);
+    --rh-border-width-md: var(--felt-preview-border-width-lg);
+    --rh-color-interactive-primary-default: var(--felt-preview-color-interactive-primary-default);
+    --rh-disclosure-summary-background-color-expanded:
+      var(--felt-preview-color-interactive-fill-plain-hover);
+    --rh-disclosure-padding-inline: var(--felt-preview-space-lg);
+    --rh-disclosure-summary-outline-offset: calc(-1 * var(--felt-preview-border-width-lg));
+
+    /* !important needed to override shadow DOM :host border-width */
+    border-width: 0 !important;
+    line-height: var(--felt-preview-line-height-body-text);
+  }
+
   /* Element: Alert */
   & rh-alert {
     --felt-preview-alert-border-color: var(--rh-color-teal-50, #37a3a3);

@@ -15,8 +15,12 @@
 }
 
 summary {
-  /** Trigger surface color */
-  background-color: var(--rh-color-surface);
+  /**
+   * Trigger surface color.
+   * Open disclosures can replace this with
+   * `--rh-disclosure-summary-background-color-expanded`.
+   */
+  background-color: var(--_summary-background-color, var(--rh-color-surface));
 
   /** Trigger corner radius */
   border-radius: var(--rh-border-radius-default, 3px);
@@ -35,8 +39,13 @@ summary {
   /** Trigger block padding */
   padding-block: var(--rh-space-lg, 16px);
 
-  /** Trigger inline padding */
-  padding-inline: var(--rh-space-xl, 24px);
+  /**
+   * Inline padding for the trigger and the panel.
+   * Falls back to the 24px spacer.
+   * The compact size keeps its own inline padding.
+   * @cssprop --rh-disclosure-padding-inline
+   */
+  padding-inline: var(--rh-disclosure-padding-inline, var(--rh-space-xl, 24px));
 
   &::-webkit-details-marker,
   &::marker {
@@ -64,7 +73,14 @@ summary {
 
     /** Focus outline color */
     outline-color: var(--rh-color-interactive-primary-default);
-    outline-offset: -2px;
+
+    /**
+     * Offset of the outline on the trigger while focused or active.
+     * Defaults to `-2px`, which insets the ring.
+     * Borderless focus keeps its own outset.
+     * @cssprop --rh-disclosure-summary-outline-offset
+     */
+    outline-offset: var(--rh-disclosure-summary-outline-offset, -2px);
     position: relative;
     z-index: 2;
   }
@@ -121,8 +137,11 @@ summary {
     /** Panel block-end padding */
     var(--rh-space-xl, 24px);
 
-  /** Panel inline padding */
-  padding-inline: var(--rh-space-xl, 24px);
+  /**
+   * Inline padding for the panel.
+   * Same property as the trigger, with the same 24px fallback.
+   */
+  padding-inline: var(--rh-disclosure-padding-inline, var(--rh-space-xl, 24px));
 }
 
 ::slotted(:is(p, h1, h2, h3, h4, h5, h6):first-of-type) {
@@ -137,6 +156,20 @@ details[open] {
   /** Open disclosure elevation */
   box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
   position: relative;
+
+  /**
+   * Background of the open trigger at rest.
+   * Falls back to the trigger surface, so the panel can keep that color
+   * while the open summary uses another fill.
+   * Hover, focus, and active keep their own fills.
+   * The borderless variant keeps its own open fill.
+   * @cssprop --rh-disclosure-summary-background-color-expanded
+   */
+  --_summary-background-color:
+    var(
+        --rh-disclosure-summary-background-color-expanded,
+        var(--rh-color-surface)
+      );
 
   & #caret {
     transform: rotate(-180deg);
