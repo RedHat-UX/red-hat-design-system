@@ -26,6 +26,7 @@ subnav:
   import '@rhds/elements/rh-chip/rh-chip.js';
   import '@rhds/elements/rh-cta/rh-cta.js';
   import '@rhds/elements/rh-dialog/rh-dialog.js';
+  import '@rhds/elements/rh-disclosure/rh-disclosure.js';
   import '@rhds/elements/rh-jump-links/rh-jump-links.js';
   import '@rhds/elements/rh-menu-dropdown/rh-menu-dropdown.js';
   import '@rhds/elements/rh-navigation-vertical/rh-navigation-vertical.js';
@@ -94,6 +95,10 @@ Preview the Project Felt theme on the elements below. Toggle the switch to compa
 
 <uxdot-pattern src="../../patterns/felt-preview-dialog.html">
   <uxdot-copy-permalink slot="heading"><h3 id="dialog"><a href="#dialog">Dialog</a></h3></uxdot-copy-permalink>
+</uxdot-pattern>
+
+<uxdot-pattern src="../../patterns/felt-preview-disclosure.html">
+  <uxdot-copy-permalink slot="heading"><h3 id="disclosure" class="toc"><a href="#disclosure">Disclosure</a></h3></uxdot-copy-permalink>
 </uxdot-pattern>
 
 <uxdot-pattern src="../../patterns/felt-preview-jump-links.html">
