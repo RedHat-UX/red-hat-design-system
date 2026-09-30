@@ -1,8 +1,7 @@
 ---
-description: CTA rendering without JavaScript using lightdom undefined CSS.
+description: CTA rendering without JavaScript using declarative shadow DOM.
 ---
-<link rel="stylesheet" href="../rh-cta-lightdom-undefined.css">
-<p>&lt;rh-cta&gt; where JavaScript is not loaded, while loading a `lightdom-undefined.css`.</p>
+<p>&lt;rh-cta&gt; where JavaScript is not loaded.</p>
 
 <section id="variants">
   <h2>Variants</h2>
@@ -75,7 +74,6 @@ description: CTA rendering without JavaScript using lightdom undefined CSS.
   </header>
   <shadow-root>
     <template shadowrootmode="open">
-      <link rel="stylesheet" href="../rh-cta-lightdom-undefined.css">
       <style>
         :host {
           width: 100%;
