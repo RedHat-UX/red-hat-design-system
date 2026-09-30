@@ -2558,6 +2558,9 @@
 
     &::part(sort-button):is(:hover, :focus-visible) {
       background-color: var(--felt-preview-color-interactive-fill-plain-hover);
+    }
+  }
+
   /* Element: Back to Top */
   & rh-back-to-top {
     /* Default-state background (component's own escape hatch) */
