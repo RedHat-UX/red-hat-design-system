@@ -59,7 +59,7 @@ export class RhContextDemo extends LitElement {
     }
   }
 
-  #setValue(value: ColorPalette) {
+  #setValue(value: ColorPalette | null) {
     if (value) {
       this.#internals.setFormValue(value);
       if (this.colorPalette !== value) {
