@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
@@ -41,6 +41,33 @@ export class DialogOpenEvent extends Event {
 async function pauseYoutube(iframe: HTMLIFrameElement) {
   const { pauseVideo } = await import('./yt-api.js');
   await pauseVideo(iframe);
+}
+
+/**
+ * Lock scroll while an rh-dialog is open.
+ *
+ * Shadow CSS cannot style extenal html, so we add it here.
+ * Remove the attribute or rh-dialog element and the rule ends.
+ */
+const DOCUMENT_SCROLL_LOCK_CSS = `html:has(rh-dialog[open]) {
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}`;
+
+let documentScrollLock: CSSStyleSheet | undefined;
+
+function ensureDocumentScrollLock() {
+  // Only append these styles to the page once:
+  if (isServer || documentScrollLock) {
+    return;
+  }
+
+  documentScrollLock = new CSSStyleSheet();
+  documentScrollLock.replaceSync(DOCUMENT_SCROLL_LOCK_CSS);
+  document.adoptedStyleSheets = [
+    ...document.adoptedStyleSheets ?? [],
+    documentScrollLock,
+  ];
 }
 
 /**
@@ -120,6 +147,7 @@ export class RhDialog extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
+    ensureDocumentScrollLock();
     this.addEventListener('keydown', this.#onKeyDown);
     this.addEventListener('click', this.#onClick);
   }
@@ -243,14 +271,9 @@ export class RhDialog extends LitElement {
                || oldValue == open) {
       return;
     } else if (open) {
-      // This prevents background scroll
-      document.body.style.overflow = 'hidden';
       await this.updateComplete;
       this.dispatchEvent(new DialogOpenEvent(this.#triggerElement));
     } else {
-      // Return scrollability
-      document.body.style.overflow = 'auto';
-
       const event = this.#cancelling ? new DialogCancelEvent() : new DialogCloseEvent();
 
       await this.updateComplete;
