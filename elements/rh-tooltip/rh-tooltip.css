@@ -84,20 +84,20 @@
       var(--rh-tooltip__content--FontSize, var(--rh-font-size-body-text-sm, 0.875rem)));
   color:
     light-dark(
-        /** Tooltip text color in light mode */
+        /** Tooltip text color for light scheme */
         var(--rh-tooltip-content-color,
         /** @deprecated use --rh-tooltip-content-color */
         var(--rh-tooltip__content--Color, var(--rh-color-text-primary-on-light, #151515))),
-        /** Tooltip text color in dark mode */
+        /** Tooltip text color for dark scheme */
         var(--rh-tooltip-content-color, var(--rh-color-text-primary-on-dark, #ffffff))
       );
   background-color:
     light-dark(
-        /** Tooltip surface in light mode */
+        /** Tooltip surface for light scheme */
         var(--rh-tooltip-content-background-color,
         /** @deprecated use --rh-tooltip-content-background-color */
         var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-lightest, #ffffff))),
-        /** Tooltip surface in dark mode */
+        /** Tooltip surface for dark scheme */
         var(--rh-tooltip-content-background-color, var(--rh-color-surface-darkest, #151515))
       );
 
@@ -122,10 +122,10 @@
   will-change: left top right bottom;
   background-color:
     light-dark(
-        /** Arrow surface in light mode */
+        /** Arrow surface for light scheme */
         var(--rh-tooltip-content-background-color,
         var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-lightest, #ffffff))),
-        /** Arrow surface in dark mode */
+        /** Arrow surface for dark scheme */
         var(--rh-tooltip-content-background-color,
         var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)))
       );
