@@ -232,4 +232,94 @@ describe('<rh-dialog>', function() {
       expect(element.returnValue, `returnValue after clicking outside`).to.equal('');
     });
   });
+
+  describe('document scroll lock', function() {
+    // The lock is a document rule, html:has(rh-dialog[open]). It must not
+    // write an inline overflow onto body, or that style outlives the dialog
+    // on a client-side navigation.
+    function htmlOverflow() {
+      return getComputedStyle(document.documentElement).overflow;
+    }
+
+    async function openDialog(dialog: RhDialog) {
+      dialog.show();
+      await dialog.updateComplete;
+      await nextFrame();
+    }
+
+    it('locks document scroll while open without an inline body style', async function() {
+      const dialog = await createFixture<RhDialog>(html`<rh-dialog></rh-dialog>`);
+      await openDialog(dialog);
+
+      expect(document.body.style.overflow).to.equal('');
+      expect(htmlOverflow()).to.equal('hidden');
+    });
+
+    it('releases document scroll after close()', async function() {
+      const dialog = await createFixture<RhDialog>(html`<rh-dialog></rh-dialog>`);
+      await openDialog(dialog);
+      dialog.close();
+      await dialog.updateComplete;
+      await nextFrame();
+
+      expect(document.body.style.overflow).to.equal('');
+      expect(htmlOverflow()).to.not.equal('hidden');
+    });
+
+    it('releases document scroll when removed while open', async function() {
+      const dialog = await createFixture<RhDialog>(html`<rh-dialog></rh-dialog>`);
+      await openDialog(dialog);
+      dialog.remove();
+      await nextFrame();
+
+      expect(document.body.style.overflow).to.equal('');
+      expect(htmlOverflow()).to.not.equal('hidden');
+    });
+
+    it('keeps the lock until the last open dialog closes', async function() {
+      const first = await createFixture<RhDialog>(html`<rh-dialog></rh-dialog>`);
+      const second = await createFixture<RhDialog>(html`<rh-dialog></rh-dialog>`);
+      await openDialog(first);
+      await openDialog(second);
+
+      first.close();
+      await first.updateComplete;
+      await nextFrame();
+      expect(htmlOverflow()).to.equal('hidden');
+
+      second.close();
+      await second.updateComplete;
+      await nextFrame();
+      expect(htmlOverflow()).to.not.equal('hidden');
+      expect(document.body.style.overflow).to.equal('');
+    });
+
+    it('keeps the lock until the last open dialog is removed', async function() {
+      const first = await createFixture<RhDialog>(html`<rh-dialog></rh-dialog>`);
+      const second = await createFixture<RhDialog>(html`<rh-dialog></rh-dialog>`);
+      await openDialog(first);
+      await openDialog(second);
+
+      first.remove();
+      await nextFrame();
+      expect(htmlOverflow()).to.equal('hidden');
+
+      second.remove();
+      await nextFrame();
+      expect(htmlOverflow()).to.not.equal('hidden');
+    });
+
+    it('locks document scroll for a video dialog', async function() {
+      const dialog = await createFixture<RhDialog>(html`<rh-dialog type="video"></rh-dialog>`);
+      await openDialog(dialog);
+
+      expect(document.body.style.overflow).to.equal('');
+      expect(htmlOverflow()).to.equal('hidden');
+
+      dialog.close();
+      await dialog.updateComplete;
+      await nextFrame();
+      expect(htmlOverflow()).to.not.equal('hidden');
+    });
+  });
 });
