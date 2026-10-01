@@ -15,4 +15,23 @@ describe('<rh-blockquote>', function() {
         .and
         .to.be.an.instanceOf(RhBlockquote);
   });
+
+  it('renders the subtitle attribute', async function() {
+    const el = await createFixture<RhBlockquote>(html`
+      <rh-blockquote subtitle="Software Engineer"></rh-blockquote>
+    `);
+    expect(el.shadowRoot?.querySelector('#subtitle')?.textContent?.trim())
+        .to.equal('Software Engineer');
+  });
+
+  it('renders the subtitle slot', async function() {
+    const el = await createFixture<RhBlockquote>(html`
+      <rh-blockquote subtitle="Software Engineer">
+        <span slot="subtitle">Principal Engineer</span>
+      </rh-blockquote>
+    `);
+    const slot = el.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="subtitle"]');
+    expect(slot?.assignedElements()[0]?.textContent?.trim())
+        .to.equal('Principal Engineer');
+  });
 });
