@@ -62,7 +62,7 @@
     var(--rh-tile-text-color-secondary,
       var(--rh-color-text-secondary));
   --_background-color:
-    /** Default surface color override; theme adaptive */
+    /** Default surface color override; theme-adaptive */
     var(--rh-tile-background-color,
       light-dark(
         /** Default surface for light scheme */
@@ -72,24 +72,24 @@
       );
   --_focus-background-color:
     light-dark(
-        /** Focus/hover surface color override in light mode */
+        /** Focus/hover surface color override for light scheme */
         var(--rh-tile-focus-background-color,
-        /** Focus/hover surface color in light mode */
+        /** Focus/hover surface color for light scheme */
         var(--rh-color-surface-lighter, #f2f2f2)),
-        /** Focus/hover surface color override in dark mode */
+        /** Focus/hover surface color override for dark scheme */
         var(--rh-tile-focus-background-color,
-        /** Focus/hover surface color in dark mode */
+        /** Focus/hover surface color for dark scheme */
         var(--rh-color-surface-darker, #1f1f1f))
       );
   --_disabled-background-color:
     light-dark(
-        /** Disabled surface color override in light mode */
+        /** Disabled surface color override for light scheme */
         var(--rh-tile-disabled-background-color,
-        /** Disabled surface color in light mode */
+        /** Disabled surface color for light scheme */
         var(--rh-color-surface-light, #e0e0e0)),
-        /** Disabled surface color override in dark mode */
+        /** Disabled surface color override for dark scheme */
         var(--rh-tile-disabled-background-color,
-        /** Disabled surface color in dark mode */
+        /** Disabled surface color for dark scheme */
         var(--rh-color-surface-dark, #383838))
       );
 
