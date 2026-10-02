@@ -54,7 +54,7 @@ button {
   --_about-heading-display: flex;
   --_box-shadow:
     light-dark(
-        /** Player box shadow in light mode */
+        /** Player box shadow for light scheme */
         var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25)),
         none
       );
@@ -71,13 +71,13 @@ button {
   --_border-color: var(--rh-color-border-subtle);
   --_surface-color:
     light-dark(
-        /** Player surface in light mode override */
+        /** Player surface for light scheme override */
         var(--rh-audio-player-background-color,
-        /** Player surface in light mode */
+        /** Player surface for light scheme */
         var(--rh-color-surface-lightest, #ffffff)),
-        /** Player surface in dark mode override */
+        /** Player surface for dark scheme override */
         var(--rh-audio-player-background-color,
-        /** Player surface in dark mode */
+        /** Player surface for dark scheme */
         var(--rh-color-surface-darkest, #151515))
       );
   --_secondary-text-color:
@@ -93,9 +93,9 @@ button {
   --_static-text-color: var(--rh-color-text-primary);
   --_static-highlight-color:
     light-dark(
-        /** Active cue highlight in light mode */
+        /** Active cue highlight for light scheme */
         var(--rh-color-interactive-primary-hover),
-        /** Active cue highlight in dark mode */
+        /** Active cue highlight for dark scheme */
         var(--rh-color-surface-dark, #383838)
       );
 
@@ -103,16 +103,16 @@ button {
   --_static-undeline-color: var(--rh-color-border-subtle);
   --_static-surface-color:
     light-dark(
-        /** Static panel surface in light mode */
+        /** Static panel surface for light scheme */
         var(--rh-color-surface-lightest, #ffffff),
-        /** Static panel surface in dark mode */
+        /** Static panel surface for dark scheme */
         var(--rh-color-surface-darkest, #151515)
       );
   --_static-surface-focus-color:
     light-dark(
-        /** Panel focus surface in light mode */
+        /** Panel focus surface for light scheme */
         var(--rh-color-surface-light, #e0e0e0),
-        /** Panel focus surface in dark mode */
+        /** Panel focus surface for dark scheme */
         var(--rh-color-surface-dark, #383838)
       );
 
@@ -561,16 +561,16 @@ rh-menu > button:focus {
   border-radius: 50%;
   background-color:
     light-dark(
-        /** Play button fill in light mode */
+        /** Play button fill for light scheme */
         var(--rh-color-surface-darkest, #151515),
-        /** Play button fill in dark mode */
+        /** Play button fill for dark scheme */
         var(--rh-color-surface-lightest, #ffffff)
       );
   color:
     light-dark(
-        /** Play button icon in light mode */
+        /** Play button icon for light scheme */
         var(--rh-color-surface-lightest, #ffffff),
-        /** Play button icon in dark mode */
+        /** Play button icon for dark scheme */
         var(--rh-color-surface-darkest, #151515)
       );
 }
