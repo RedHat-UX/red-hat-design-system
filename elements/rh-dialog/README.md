@@ -17,7 +17,7 @@ Video dialogs have the `type=video` attribute, and take a single `<video>` eleme
 <rh-button id="video-modal-trigger"><button>Open</button></rh-button>
 <rh-dialog id="video-modal" type="video" trigger="video-modal-trigger">
   <video controls
-         src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"></video>
+         src="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4"></video>
 </rh-dialog>
 ```
 

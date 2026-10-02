@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
@@ -31,7 +31,7 @@ export class DialogCloseEvent extends Event {
 
 export class DialogOpenEvent extends Event {
   constructor(
-    /** The element that opened the dialog, or null if opened programmatically. */
+    /** Element from the `trigger` attribute or `setTrigger()`, or null if neither is set. */
     public trigger: HTMLElement | null
   ) {
     super('open', { bubbles: true, cancelable: true });
@@ -43,6 +43,63 @@ async function pauseYoutube(iframe: HTMLIFrameElement) {
   await pauseVideo(iframe);
 }
 
+const DOCUMENT_SCROLL_LOCK_CSS = `html[data-rh-dialog-scroll-lock] {
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}`;
+
+interface DocumentScrollLock {
+  sheet: CSSStyleSheet;
+  count: number;
+}
+
+const documentScrollLocks = new WeakMap<Document, DocumentScrollLock>();
+
+/**
+ * Count one more open dialog in `doc` and turn the lock on if it is the first.
+ * The sheet is installed once for that document. Later dialogs only bump the count.
+ * @param doc document that owns the open dialog
+ */
+function retainScrollLock(doc: Document) {
+  if (isServer) {
+    return;
+  }
+
+  let entry = documentScrollLocks.get(doc);
+  if (!entry) {
+    const sheet = new CSSStyleSheet();
+    sheet.replaceSync(DOCUMENT_SCROLL_LOCK_CSS);
+    doc.adoptedStyleSheets = [
+      ...doc.adoptedStyleSheets ?? [],
+      sheet,
+    ];
+    entry = { sheet, count: 0 };
+    documentScrollLocks.set(doc, entry);
+  }
+
+  entry.count++;
+  if (entry.count === 1) {
+    doc.documentElement?.setAttribute('data-rh-dialog-scroll-lock', '');
+  }
+}
+
+/**
+ * Count one fewer open dialog in `doc` and turn the lock off at zero.
+ * A release with no retained lock is ignored so close and disconnect can both run.
+ * @param doc document that owned the dialog being closed or removed
+ */
+function releaseScrollLock(doc: Document) {
+  const entry = documentScrollLocks.get(doc);
+  if (!entry || entry.count === 0) {
+    return;
+  }
+
+  entry.count--;
+  if (entry.count === 0) {
+    doc.documentElement?.removeAttribute('data-rh-dialog-scroll-lock');
+  }
+}
+
 /**
  * Modal overlay for confirming decisions or collecting input. Traps focus and
  * blocks page interaction. Must have a heading or `accessible-label` for screen
@@ -51,12 +108,22 @@ async function pauseYoutube(iframe: HTMLIFrameElement) {
  *
  * @summary Modal dialog for confirmations, errors, or required input
  *
- * @fires {DialogOpenEvent} open - Fires when the dialog opens. The event's `trigger`
- *   property (HTMLElement | null) holds the element that opened it.
- * @fires {DialogCloseEvent} close - Fires when the dialog closes via close button
- *   or programmatic `close()`. No detail properties.
- * @fires {DialogCancelEvent} cancel - Fires when the user dismisses via backdrop
- *   click or Escape. No detail properties.
+ * @fires {DialogOpenEvent} open - Fired when the dialog opens. The `trigger`
+ *   property is the element that opened the dialog, or null when no trigger
+ *   is set. Listen for this when you should move focus inside the dialog; the
+ *   close button takes focus by default. When the dialog closes, move focus
+ *   back to `trigger` for keyboard and screen reader users. You must handle a
+ *   null `trigger` when `show()` opens the dialog with no trigger set.
+ * @fires {DialogCloseEvent} close - Fired when the dialog closes from the close
+ *   button or `close()`. Use this when an action confirms a choice, and read
+ *   `returnValue` on the dialog. Enter or Space on the close button fires this
+ *   event; a screen reader announces that button as "Close Dialog". Escape
+ *   fires `cancel` instead. `preventDefault()` does not keep the dialog open.
+ * @fires {DialogCancelEvent} cancel - Fired when the user dismisses the dialog
+ *   with the Escape key, a backdrop click, or `cancel()`. Listen for this when
+ *   you should discard in-progress input. Screen reader and keyboard users both
+ *   dismiss with Escape. The close button and `close()` fire `close` instead.
+ *   `preventDefault()` does not keep the dialog open.
  */
 @customElement('rh-dialog')
 @themable
@@ -116,6 +183,13 @@ export class RhDialog extends LitElement {
   #headings: Element[] = [];
   #cancelling = false;
 
+  /**
+   * The document this instance currently holds a scroll lock for.
+   * Stored so a second close or disconnect cannot decrement twice, and so a
+   * dialog that moves documents unlocks the document it actually locked.
+   */
+  #lockedDocument: Document | null = null;
+
   #slots = new SlotController(this, null, 'header', 'description', 'footer');
 
   connectedCallback() {
@@ -125,8 +199,37 @@ export class RhDialog extends LitElement {
   }
 
   disconnectedCallback() {
-    super.disconnectedCallback();
+    // Release before Lit teardown. Removing an open dialog is what a route
+    // change does, and the lock must end without an inline body style.
+    this.#unlockScroll();
     this.#triggerElement?.removeEventListener('click', this.onTriggerClick);
+    super.disconnectedCallback();
+  }
+
+  /**
+   * Hold the document lock for this instance.
+   * Called from `show()` only, so a reflected `open` attribute does not lock
+   * the page until the native modal is actually shown.
+   */
+  #lockScroll() {
+    if (isServer || this.#lockedDocument) {
+      return;
+    }
+
+    const doc = this.ownerDocument;
+    retainScrollLock(doc);
+    this.#lockedDocument = doc;
+  }
+
+  /** Drop this instance's hold on the document it locked. */
+  #unlockScroll() {
+    const doc = this.#lockedDocument;
+    if (!doc) {
+      return;
+    }
+
+    this.#lockedDocument = null;
+    releaseScrollLock(doc);
   }
 
   render() {
@@ -243,14 +346,9 @@ export class RhDialog extends LitElement {
                || oldValue == open) {
       return;
     } else if (open) {
-      // This prevents background scroll
-      document.body.style.overflow = 'hidden';
       await this.updateComplete;
       this.dispatchEvent(new DialogOpenEvent(this.#triggerElement));
     } else {
-      // Return scrollability
-      document.body.style.overflow = 'auto';
-
       const event = this.#cancelling ? new DialogCancelEvent() : new DialogCloseEvent();
 
       await this.updateComplete;
@@ -287,7 +385,11 @@ export class RhDialog extends LitElement {
     }
   }
 
-  #onNativeDialogCancel() {
+  #onNativeDialogCancel(event: Event) {
+    if (event.target !== this.dialog) {
+      return;
+    }
+
     this.cancel();
   }
 
@@ -295,6 +397,8 @@ export class RhDialog extends LitElement {
     switch (event.key) {
       case 'Escape':
       case 'Esc':
+        event.stopPropagation(); // For nested dialogs
+        event.preventDefault();
         this.cancel();
         return;
       case 'Enter':
@@ -341,6 +445,7 @@ export class RhDialog extends LitElement {
   show() {
     this.dialog?.showModal();
     this.open = true;
+    this.#lockScroll();
   }
 
   /** Opens the dialog as a modal. */
@@ -362,6 +467,7 @@ export class RhDialog extends LitElement {
 
     this.dialog?.close();
     this.open = false;
+    this.#unlockScroll();
   }
 }
 
