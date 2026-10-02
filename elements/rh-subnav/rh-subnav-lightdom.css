@@ -6,9 +6,9 @@ rh-subnav {
         /** Link not current-page border color */
         var(--rh-color-brand-red,
         light-dark(
-          /** Link not current-page border color on light scheme */
+          /** Link not current-page border color for light scheme */
           var(--rh-color-brand-red-on-light, #ee0000),
-          /** Link not current-page border color on dark scheme */
+          /** Link not current-page border color for dark scheme */
           var(--rh-color-brand-red-on-dark, #ee0000))
         )) !important;
   }
@@ -21,9 +21,9 @@ rh-subnav {
         /** Link not current-page with focus border color */
         var(--rh-color-border-subtle,
         light-dark(
-          /** Link not current-page with focus border color on light scheme */
+          /** Link not current-page with focus border color for light scheme */
           var(--rh-color-border-subtle-on-light, #c7c7c7),
-          /** Link not current-page with focus border color on dark scheme */
+          /** Link not current-page with focus border color for dark scheme */
           var(--rh-color-border-subtle-on-dark, #707070))
         )) !important;
   }
@@ -35,9 +35,9 @@ rh-subnav {
         /** Link not current-page hover border color */
         var(--rh-color-border-subtle,
         light-dark(
-          /** Link not current-page hover border color on light scheme */
+          /** Link not current-page hover border color for light scheme */
           var(--rh-color-border-subtle-on-light, #c7c7c7),
-          /** Link not current-page hover border color on dark scheme */
+          /** Link not current-page hover border color for dark scheme */
           var(--rh-color-border-subtle-on-dark, #707070))
         )) !important;
   }
@@ -50,9 +50,9 @@ rh-subnav {
       /** Not defined surface color */
       var(--rh-color-surface,
         light-dark(
-          /** Not defined surface color on light scheme */
+          /** Not defined surface color for light scheme */
           var(--rh-color-surface-lightest, #ffffff),
-          /** Not defined surface color on dark scheme */
+          /** Not defined surface color for dark scheme */
           var(--rh-color-surface-darkest, #151515)
         ));
 
@@ -67,9 +67,9 @@ rh-subnav {
         /** Not defined font color */
         var(--rh-color-text-secondary,
           light-dark(
-            /** Not defined font color on light scheme */
+            /** Not defined font color for light scheme */
             var(--rh-color-text-secondary-on-light, #4d4d4d),
-            /** Not defined font color on dark scheme */
+            /** Not defined font color for dark scheme */
             var(--rh-color-text-secondary-on-dark, #c7c7c7)
           )) !important;
       position: relative !important;
@@ -87,9 +87,9 @@ rh-subnav {
           /** Not defined active or current page border-block-end color */
           var(--rh-color-accent-brand,
             light-dark(
-              /** Not defined active or current page border-block-end color on light scheme */
+              /** Not defined active or current page border-block-end color for light scheme */
               var(--rh-color-accent-brand-on-light, #ee0000),
-              /** Not defined active or current page border-block-end color on dark scheme */
+              /** Not defined active or current page border-block-end color for dark scheme */
               var(--rh-color-accent-brand-on-dark, #ee0000)
             )) !important;
       }

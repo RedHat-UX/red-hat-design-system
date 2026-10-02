@@ -7,9 +7,9 @@
   color: var(--rh-color-text-primary);
   background-color:
     light-dark(
-        /** Content panel background in light mode */
+        /** Content panel background for light scheme */
         var(--rh-color-surface-lightest, #ffffff),
-        /** Content panel background in dark mode */
+        /** Content panel background for dark scheme */
         var(--rh-color-surface-darkest, #151515)
       );
   padding-block:
