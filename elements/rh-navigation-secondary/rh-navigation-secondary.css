@@ -71,9 +71,9 @@ nav {
   z-index: var(--rh-navigation-secondary-z-index, 102);
   background-color:
     light-dark(
-        /** Navigation bar surface in light mode */
+        /** Navigation bar surface for light scheme */
         var(--rh-color-surface-lighter, #f2f2f2),
-        /** Navigation bar surface in dark mode */
+        /** Navigation bar surface for dark scheme */
         var(--rh-color-surface-dark, #383838)
       );
   gap:
