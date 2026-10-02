@@ -310,7 +310,11 @@ export class RhDialog extends LitElement {
     }
   }
 
-  #onNativeDialogCancel() {
+  #onNativeDialogCancel(event: Event) {
+    if (event.target !== this.dialog) {
+      return;
+    }
+
     this.cancel();
   }
 
@@ -318,6 +322,8 @@ export class RhDialog extends LitElement {
     switch (event.key) {
       case 'Escape':
       case 'Esc':
+        event.stopPropagation(); // For nested dialogs
+        event.preventDefault();
         this.cancel();
         return;
       case 'Enter':
