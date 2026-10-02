@@ -7,6 +7,7 @@ describe('<rh-scheme-dropdown>', function() {
   afterEach(function() {
     localStorage.removeItem('rhdsColorScheme'); // Clear between tests
     document.body.style.removeProperty('color-scheme');
+    document.body.style.removeProperty('--color-scheme');
   });
 
   describe('simply instantiating', function() {

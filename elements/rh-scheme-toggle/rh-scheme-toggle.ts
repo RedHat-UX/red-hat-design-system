@@ -6,6 +6,7 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 import { observes } from '@patternfly/pfe-core/decorators.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
+import { setDocumentColorScheme } from '@rhds/elements/lib/color-scheme.js';
 
 import styles from './rh-scheme-toggle.css' with { type: 'css' };
 
@@ -69,8 +70,9 @@ export class RhSchemeToggle extends LitElement {
   /**
    * Current color scheme setting. Reflects to the `scheme` attribute and
    * initializes from `localStorage.rhdsColorScheme` when available.
-   * When set, applies the value to `document.body.style.colorScheme`
-   * and persists it to `localStorage`.
+   * When set, applies the value to `document.body.style.colorScheme`, publishes
+   * the resolved light/dark value as `--color-scheme`, and persists it to
+   * `localStorage`.
    */
   @property({ reflect: true }) scheme?: Scheme = globalThis.localStorage
       ?.rhdsColorScheme as Scheme;
@@ -170,8 +172,8 @@ export class RhSchemeToggle extends LitElement {
 
   /**
    * Observes changes to the `scheme` property. Applies the selected
-   * color scheme to `document.body` and persists it to `localStorage`
-   * so the preference survives page reloads.
+   * color scheme and its resolved light/dark value to the document, and
+   * persists the preference to `localStorage` so it survives page reloads.
    */
   @observes('scheme')
   private schemeChanged() {
@@ -179,12 +181,15 @@ export class RhSchemeToggle extends LitElement {
       return;
     }
 
+    setDocumentColorScheme(this.scheme);
+
     if (this.scheme) {
-      document.body.style.setProperty('color-scheme', this.scheme);
       localStorage.rhdsColorScheme = this.scheme;
       if (this.#initialized) {
         this.dispatchEvent(new SchemeChangedEvent(this.scheme));
       }
+    } else {
+      localStorage.removeItem('rhdsColorScheme');
     }
   }
 }
