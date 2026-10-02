@@ -233,6 +233,37 @@ describe('<rh-dialog>', function() {
     });
   });
 
+  describe('nested dialogs', function() {
+    it('Escape closes only the inner dialog', async function() {
+      const outer = await createFixture<RhDialog>(html`
+        <rh-dialog>
+          <h2 slot="header">Outer</h2>
+          <rh-dialog id="inner-dialog">
+            <h2 slot="header">Inner</h2>
+            <p>Nested</p>
+          </rh-dialog>
+        </rh-dialog>
+      `);
+      const inner = outer.querySelector<RhDialog>('#inner-dialog')!;
+
+      outer.show();
+      await outer.updateComplete;
+      inner.show();
+      await inner.updateComplete;
+      await nextFrame();
+
+      // Focus inside the inner dialog so the key bubbles through both hosts.
+      inner.shadowRoot?.querySelector<HTMLElement>('[part="close-button"]')?.focus();
+      await press('Escape')();
+      await outer.updateComplete;
+      await inner.updateComplete;
+      await nextFrame();
+
+      expect(inner.open, 'inner dialog').to.be.false;
+      expect(outer.open, 'outer dialog').to.be.true;
+    });
+  });
+
   describe('document scroll lock', function() {
     // The lock is a document rule, html:has(rh-dialog[open]). It must not
     // write an inline overflow onto body, or that style outlives the dialog
