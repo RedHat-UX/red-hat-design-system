@@ -30,9 +30,9 @@ rh-announcement[color-palette*='dark']:not(:defined) {
     /** Not defined surface color */
     var(--rh-color-surface,
       light-dark(
-        /** Not defined Surface color on light scheme */
+        /** Not defined Surface color for light scheme */
         var(--rh-color-surface-lightest, #ffffff),
-        /** Not defined Surface color on dark scheme */
+        /** Not defined Surface color for dark scheme */
         var(--rh-color-surface-darkest, #151515)
       ));
 }
