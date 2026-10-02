@@ -28,21 +28,30 @@
 <style>
   .example-fast-facts-card {
     inline-size: 360px;
+
     & ul {
       display: flex;
       flex-flow: column;
-      gap: var(--rh-space-xl);
+      gap: var(--rh-space-xl, 24px);
       margin: 0;
       padding: 0;
       list-style-type: none;
+
       & li {
         margin-block: 0;
-        padding-block-end: var(--rh-space-xl);
-        border-block-end: 1px solid var(--rh-color-border-subtle);
+        padding-block-end: var(--rh-space-xl, 24px);
+        border-block-end:
+          1px solid
+          var(--rh-color-border-subtle,
+            light-dark(
+              var(--rh-color-border-subtle-on-light, #c7c7c7),
+              var(--rh-color-border-subtle-on-dark, #707070)));
+
         &:last-child {
           padding-block-end: 0;
           border-block-end: none;
         }
+
         & :first-child {
           margin-block-start: 0;
         }
@@ -52,12 +61,13 @@
         }
       }
     }
+
     & h4 {
-      margin-block-end: 0 var(--rh-space-lg);
-      font-weight: var(--rh-font-weight-heading-regular);
-      font-size: var(--rh-font-size-body-text-md);
-      font-family: var(--rh-font-family-body-text);
-      line-height: var(--rh-line-height-body-text);
+      margin-block-end: 0 var(--rh-space-lg, 16px);
+      font-weight: var(--rh-font-weight-heading-regular, 400);
+      font-size: var(--rh-font-size-body-text-md, 1rem);
+      font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+      line-height: var(--rh-line-height-body-text, 1.5);
     }
   }
 </style>

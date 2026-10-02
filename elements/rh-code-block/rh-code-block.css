@@ -78,9 +78,9 @@
 #container {
   --_code-background-color:
     light-dark(
-        /** Code surface in light mode */
+        /** Code surface for light scheme */
         var(--rh-color-surface-lighter, #f2f2f2),
-        /** Code surface in dark mode */
+        /** Code surface for dark scheme */
         oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h)
       );
 
@@ -103,205 +103,205 @@
   --_doctype-color: var(--rh-color-text-secondary);
   --_default-color:
     light-dark(
-        /** Default syntax token color in light mode */
+        /** Default syntax token color for light scheme */
         var(--rh-color-gray-95, #151515),
-        /** Default syntax token color in dark mode */
+        /** Default syntax token color for dark scheme */
         var(--rh-color-gray-20, #e0e0e0)
       );
   --_selected-text-background:
     light-dark(
-        /** Selected text background in light mode */
+        /** Selected text background for light scheme */
         var(--rh-color-blue-10, #e0f0ff),
-        /** Selected text background in dark mode */
+        /** Selected text background for dark scheme */
         var(--rh-color-gray-95, #151515)
       );
   --_punctuation-color:
     light-dark(
-        /** Punctuation token color in light mode */
+        /** Punctuation token color for light scheme */
         var(--rh-color-gray-40, #a3a3a3),
-        /** Punctuation token color in dark mode */
+        /** Punctuation token color for dark scheme */
         var(--rh-color-gray-20, #e0e0e0)
       );
   --_namespace-color:
     light-dark(
-        /** Namespace token color in light mode */
+        /** Namespace token color for light scheme */
         var(--rh-color-gray-95, #151515),
-        /** Namespace token color in dark mode */
+        /** Namespace token color for dark scheme */
         var(--rh-color-red-40, #f56e6e)
       );
   --_property-color:
     light-dark(
-        /** Property token color in light mode */
+        /** Property token color for light scheme */
         var(--rh-color-purple-50, #5e40be),
-        /** Property token color in dark mode */
+        /** Property token color for dark scheme */
         var(--rh-color-yellow-40, #dca614)
       );
   --_tag-color:
     light-dark(
-        /** Tag token color in light mode */
+        /** Tag token color for light scheme */
         var(--rh-color-purple-50, #5e40be),
-        /** Tag token color in dark mode */
+        /** Tag token color for dark scheme */
         var(--rh-color-red-10, #fce3e3)
       );
   --_boolean-color:
     light-dark(
-        /** Boolean token color in light mode */
+        /** Boolean token color for light scheme */
         var(--rh-color-purple-50, #5e40be),
-        /** Boolean token color in dark mode */
+        /** Boolean token color for dark scheme */
         var(--rh-color-orange-40, #f5921b)
       );
   --_number-color:
     light-dark(
-        /** Number token color in light mode */
+        /** Number token color for light scheme */
         var(--rh-color-purple-50, #5e40be),
-        /** Number token color in dark mode */
+        /** Number token color for dark scheme */
         var(--rh-color-orange-40, #f5921b)
       );
   --_constant-color:
     light-dark(
-        /** Constant token color in light mode */
+        /** Constant token color for light scheme */
         var(--rh-color-purple-50, #5e40be),
-        /** Constant token color in dark mode */
+        /** Constant token color for dark scheme */
         var(--rh-color-yellow-40, #dca614)
       );
   --_symbol-color:
     light-dark(
-        /** Symbol token color in light mode */
+        /** Symbol token color for light scheme */
         var(--rh-color-purple-50, #5e40be),
-        /** Symbol token color in dark mode */
+        /** Symbol token color for dark scheme */
         var(--rh-color-yellow-40, #dca614)
       );
   --_deleted-color:
     light-dark(
-        /** Deleted token color in light mode */
+        /** Deleted token color for light scheme */
         var(--rh-color-purple-50, #5e40be),
-        /** Deleted token color in dark mode */
+        /** Deleted token color for dark scheme */
         var(--rh-color-red-40, #f56e6e)
       );
   --_function-name-color:
     light-dark(
-        /** Function name token color in light mode */
+        /** Function name token color for light scheme */
         var(--rh-color-purple-50, #5e40be),
-        /** Function name token color in dark mode */
+        /** Function name token color for dark scheme */
         var(--rh-color-teal-20, #b9e5e5)
       );
   --_selector-color:
     light-dark(
-        /** Selector token color in light mode */
+        /** Selector token color for light scheme */
         var(--rh-color-teal-60, #147878),
-        /** Selector token color in dark mode */
+        /** Selector token color for dark scheme */
         var(--rh-color-purple-30, #b6a6e9)
       );
   --_attr-name-color:
     light-dark(
-        /** Attribute name token color in light mode */
+        /** Attribute name token color for light scheme */
         var(--rh-color-teal-60, #147878),
-        /** Attribute name token color in dark mode */
+        /** Attribute name token color for dark scheme */
         var(--rh-color-red-40, #f56e6e)
       );
   --_string-color:
     light-dark(
-        /** String token color in light mode */
+        /** String token color for light scheme */
         var(--rh-color-teal-60, #147878),
-        /** String token color in dark mode */
+        /** String token color for dark scheme */
         var(--rh-color-green-40, #87bb62)
       );
   --_character-color:
     light-dark(
-        /** Character token color in light mode */
+        /** Character token color for light scheme */
         var(--rh-color-teal-60, #147878),
-        /** Character token color in dark mode */
+        /** Character token color for dark scheme */
         var(--rh-color-green-40, #87bb62)
       );
   --_built-in-color:
     light-dark(
-        /** Built-in token color in light mode */
+        /** Built-in token color for light scheme */
         var(--rh-color-teal-60, #147878),
-        /** Built-in token color in dark mode */
+        /** Built-in token color for dark scheme */
         var(--rh-color-purple-30, #b6a6e9)
       );
   --_inserted-color:
     light-dark(
-        /** Inserted token color in light mode */
+        /** Inserted token color for light scheme */
         var(--rh-color-teal-60, #147878),
-        /** Inserted token color in dark mode */
+        /** Inserted token color for dark scheme */
         var(--rh-color-green-40, #87bb62)
       );
   --_operator-color:
     light-dark(
-        /** Operator token color in light mode */
+        /** Operator token color for light scheme */
         var(--rh-color-yellow-60, #96640f),
-        /** Operator token color in dark mode */
+        /** Operator token color for dark scheme */
         var(--rh-color-blue-40, #4394e5)
       );
   --_entity-color:
     light-dark(
-        /** Entity token color in light mode */
+        /** Entity token color for light scheme */
         var(--rh-color-yellow-60, #96640f),
-        /** Entity token color in dark mode */
+        /** Entity token color for dark scheme */
         var(--rh-color-blue-40, #4394e5)
       );
   --_url-color:
     light-dark(
-        /** URL token color in light mode */
+        /** URL token color for light scheme */
         var(--rh-color-yellow-60, #96640f),
-        /** URL token color in dark mode */
+        /** URL token color for dark scheme */
         var(--rh-color-blue-40, #4394e5)
       );
   --_at-rule-color:
     light-dark(
-        /** At-rule token color in light mode */
+        /** At-rule token color for light scheme */
         var(--rh-color-blue-60, #004d99),
-        /** At-rule token color in dark mode */
+        /** At-rule token color for dark scheme */
         var(--rh-color-purple-30, #b6a6e9)
       );
   --_attr-value-color:
     light-dark(
-        /** Attribute value token color in light mode */
+        /** Attribute value token color for light scheme */
         var(--rh-color-blue-60, #004d99),
-        /** Attribute value token color in dark mode */
+        /** Attribute value token color for dark scheme */
         var(--rh-color-green-40, #87bb62)
       );
   --_keyword-color:
     light-dark(
-        /** Keyword token color in light mode */
+        /** Keyword token color for light scheme */
         var(--rh-color-blue-60, #004d99),
-        /** Keyword token color in dark mode */
+        /** Keyword token color for dark scheme */
         var(--rh-color-purple-30, #b6a6e9)
       );
   --_function-color:
     light-dark(
-        /** Function token color in light mode */
+        /** Function token color for light scheme */
         var(--rh-color-red-60, #a60000),
-        /** Function token color in dark mode */
+        /** Function token color for dark scheme */
         var(--rh-color-orange-40, #f5921b)
       );
   --_class-name-color:
     light-dark(
-        /** Class name token color in light mode */
+        /** Class name token color for light scheme */
         var(--rh-color-red-60, #a60000),
-        /** Class name token color in dark mode */
+        /** Class name token color for dark scheme */
         var(--rh-color-yellow-40, #dca614)
       );
   --_regex-color:
     light-dark(
-        /** Regex token color in light mode */
+        /** Regex token color for light scheme */
         var(--rh-color-orange-60, #9e4a06),
-        /** Regex token color in dark mode */
+        /** Regex token color for dark scheme */
         var(--rh-color-green-40, #87bb62)
       );
   --_important-color:
     light-dark(
-        /** Important token color in light mode */
+        /** Important token color for light scheme */
         var(--rh-color-orange-60, #9e4a06),
-        /** Important token color in dark mode */
+        /** Important token color for dark scheme */
         var(--rh-color-purple-30, #b6a6e9)
       );
   --_variable-color:
     light-dark(
-        /** Variable token color in light mode */
+        /** Variable token color for light scheme */
         var(--rh-color-orange-60, #9e4a06),
-        /** Variable token color in dark mode */
+        /** Variable token color for dark scheme */
         var(--rh-color-green-40, #87bb62)
       );
 

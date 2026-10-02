@@ -157,16 +157,16 @@
 :host([state='warn']) {
   --_step-color:
     light-dark(
-        /** @summary Warning icon color in light mode */
+        /** @summary Warning icon color for light scheme */
         var(--rh-color-yellow-50, #b98412),
-        /** @summary Warning icon color in dark mode */
+        /** @summary Warning icon color for dark scheme */
         var(--rh-color-yellow-30, #ffcc17)
       );
   --_step-label-color:
     light-dark(
-        /** @summary Warning label color in light mode */
+        /** @summary Warning label color for light scheme */
         var(--rh-color-yellow-60, #96640f),
-        /** @summary Warning label color in dark mode */
+        /** @summary Warning label color for dark scheme */
         var(--rh-color-yellow-20, #ffe072)
       );
 }

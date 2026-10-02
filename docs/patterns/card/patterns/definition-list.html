@@ -31,14 +31,18 @@
         margin: 0;
         margin-block-end: var(--rh-space-md, 8px);
         padding-block-end: var(--rh-space-lg, 16px);
-        border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+        border-block-end:
+          var(--rh-border-width-sm, 1px) solid
+          var(--rh-color-border-subtle,
+            light-dark(
+              var(--rh-color-border-subtle-on-light, #c7c7c7),
+              var(--rh-color-border-subtle-on-dark, #707070)));
       }
     }
 
-    /* For this Pokémon example */   
+    /* For this Pokémon example */
     &::part(container) {
       gap: var(--rh-space-2xl, 32px);
     }
   }
 </style>
-

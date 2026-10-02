@@ -24,15 +24,18 @@
 <style>
   .example-logo-and-quote {
     inline-size: 360px;
+
     & h3 {
       margin-block-end: var(--rh-space-lg, 16px);
     }
-    & svg  {
-      color: var(--logo-type-fill, var(--rh-color-black, #000));
+
+    & svg {
+      color: var(--logo-type-fill, var(--rh-color-black, #000000));
     }
-    [color-palette^="dark"] &,
-    &[color-palette^="dark"] {
-      --logo-type-fill: var(--rh-color-white, #fff);
+
+    [color-palette^='dark'] &,
+    &[color-palette^='dark'] {
+      --logo-type-fill: var(--rh-color-white, #ffffff);
     }
   }
 </style>

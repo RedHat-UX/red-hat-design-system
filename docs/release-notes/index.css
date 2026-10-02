@@ -1,0 +1,18 @@
+rh-tile {
+  margin-block: var(--rh-space-3xl, 48px);
+  max-inline-size: 320px;
+}
+
+rh-tile [icon='github'] {
+  --rh-icon-size: var(--rh-size-icon-03, 32px);
+}
+
+@container host (max-width: 768px) {
+  rh-table thead ~ tbody tr :is(th, td) {
+    display: block;
+  }
+
+  rh-table thead ~ tbody tr :is(td,th):before {
+    margin-inline-end: var(--rh-length-2xs, 3px);
+  }
+}

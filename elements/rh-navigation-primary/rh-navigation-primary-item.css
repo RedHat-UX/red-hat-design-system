@@ -95,10 +95,10 @@
 
           color:
             light-dark(
-                /** Toggle caret color in light mode */
+                /** Toggle caret color for light scheme */
                 var(--rh-color-gray-40, #a3a3a3),
-                /** Toggle caret color in dark mode */
-                var(--rh-color-icon-subtle)
+                /** Toggle caret color for dark scheme */
+                var(--rh-color-icon-subtle, #707070)
               );
           transition: rotate 0.2s;
         }
@@ -240,10 +240,10 @@
               background-color:
                 light-dark(
                     /** Open hamburger dropdown content background
-                    in light mode at containers >= xl */
+                    for light scheme at containers >= xl */
                     var(--rh-color-surface-lightest, #ffffff),
                     /** Open hamburger dropdown content background
-                    in dark mode at containers >= xl */
+                    for dark scheme at containers >= xl */
                     var(--rh-color-surface-darkest, #151515)
                   );
               box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
@@ -328,9 +328,9 @@
           z-index: -1;
           background-color:
             light-dark(
-                /** Standalone dropdown content background in light mode */
+                /** Standalone dropdown content background for light scheme */
                 var(--rh-color-surface-lightest, #ffffff),
-                /** Standalone dropdown content background in dark mode */
+                /** Standalone dropdown content background for dark scheme */
                 var(--rh-color-surface-darkest, #151515)
               );
           box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
@@ -380,9 +380,9 @@
       text-decoration-color:
         var(--_navigation-link-text-decoration-color,
           light-dark(
-            /** Link variant hover decoration color in light mode */
+            /** Link variant hover decoration color for light scheme */
             var(--rh-color-gray-50, #707070),
-            /** Link variant hover decoration color in dark mode */
+            /** Link variant hover decoration color for dark scheme */
             var(--rh-color-gray-40, #a3a3a3))) !important;
       text-decoration-line: var(--_navigation-link-text-decoration-line, underline) !important;
       text-decoration-style: var(--_navigation-link-text-decoration-style, dashed) !important;

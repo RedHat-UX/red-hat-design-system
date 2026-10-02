@@ -1,0 +1,17 @@
+rh-table {
+  & td,
+  & th { width: 20%; }
+
+  & td {
+    &:has(s) {
+      color:
+        var(--rh-color-text-brand,
+          light-dark(
+            var(--rh-color-text-brand-on-light, #ee0000),
+            var(--rh-color-text-brand-on-dark, #ee0000)));
+    }
+    & span { color: var(--rh-color-green-60, #3d7317); }
+    & s { color: var(--rh-color-gray-40, #a3a3a3); }
+    & :is(s, span) { display: block; }
+  }
+}

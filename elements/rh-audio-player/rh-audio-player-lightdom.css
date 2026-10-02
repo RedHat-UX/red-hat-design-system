@@ -17,8 +17,14 @@ rh-audio-player {
   color:
     /** Player text color override */
     var(--rh-audio-player-text-color,
-      /** Player text color */
-      var(--rh-color-text-primary));
+      /** Player text color; theme-adaptive */
+      var(--rh-color-text-primary,
+      light-dark(
+        /** Player text color for light scheme */
+        var(--rh-color-text-primary-on-light, #151515),
+        /** Player text color for dark scheme */
+        var(--rh-color-text-primary-on-dark, #ffffff)
+      )));
 
   &[color-palette^='dark'] > * {
     background-color:
@@ -74,13 +80,13 @@ rh-audio-player-subscribe,
 rh-transcript {
   background-color:
     light-dark(
-        /** Panel surface in light mode override */
+        /** Panel surface for light scheme override */
         var(--rh-audio-player-background-color,
-        /** Panel surface in light mode */
+        /** Panel surface for light scheme */
         var(--rh-color-surface-lightest, #ffffff)),
-        /** Panel surface in dark mode override */
+        /** Panel surface for dark scheme override */
         var(--rh-audio-player-background-color,
-        /** Panel surface in dark mode */
+        /** Panel surface for dark scheme */
         var(--rh-color-surface-darkest, #151515))
       );
 }

@@ -13,18 +13,7 @@ tags:
   import '@rhds/elements/rh-cta/rh-cta.js';
 </script>
 
-<style>
-  .theme-cards {
-    display: grid;
-    gap: var(--rh-space-2xl, 32px);
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    margin-block-start: var(--rh-space-2xl, 32px);
-
-    rh-card {
-      height: 100%;
-    }
-  }
-</style>
+<link rel="stylesheet" href="index.css" data-helmet>
 
 ## What is theming?
 

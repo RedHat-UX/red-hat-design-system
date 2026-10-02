@@ -42,7 +42,7 @@ select {
   cursor: default;
 
   /** Select typeface */
-  font-family: var(--rh-font-family-body-text);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
 
   /** Select text size */
   font-size: var(--rh-font-size-body-text-md, 1rem);
@@ -68,18 +68,18 @@ select {
     var(--rh-space-lg, 16px);
 
   &:hover {
-    /** Hover border color; interactive theme color */
+    /** Hover border color; theme-adaptive */
     border-color: var(--rh-color-border-interactive);
   }
 
   &:focus {
-    /** Focus border color; interactive theme color */
+    /** Focus border color; theme-adaptive */
     border-color: var(--rh-color-border-interactive);
     outline:
       /** Focus outline width */
       var(--rh-border-width-lg, 3px)
       solid
-      /** Focus outline color; interactive theme color */
+      /** Focus outline color; theme-adaptive */
       var(--rh-color-border-interactive);
 
     /** Focus outline offset  */
@@ -133,7 +133,7 @@ select {
       border-radius: var(--rh-border-radius-default, 3px);
 
       /** Picker elevation shadow; depth cue for the overlay */
-      box-shadow: var(--rh-box-shadow-sm);
+      box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
 
       /** Picker top margin */
       margin-block-start: var(--rh-space-sm, 6px);
@@ -153,7 +153,7 @@ select {
         /** Open state outline width */
         var(--rh-border-width-md, 2px)
         solid
-        /** Open state outline color; interactive theme color */
+        /** Open state outline color; theme-adaptive */
         var(--rh-color-border-interactive);
     }
 
@@ -199,9 +199,9 @@ select {
     &:focus {
       background-color:
         light-dark(
-            /** Option hover surface in light color scheme */
+            /** Option hover surface for light scheme */
             var(--rh-color-surface-lighter, #f2f2f2),
-            /** Option hover surface in dark color scheme */
+            /** Option hover surface for dark scheme */
             var(--rh-color-surface-darker, #1f1f1f)
           );
     }
@@ -214,7 +214,7 @@ select {
         /** Option focus outline width */
         var(--rh-border-width-lg, 3px)
         solid
-        /** Option focus outline color; interactive theme color */
+        /** Option focus outline color; theme-adaptive */
         var(--rh-color-border-interactive);
       outline-offset: -3px;
     }
@@ -224,7 +224,7 @@ select {
     }
 
     & rh-icon.checkmark {
-      /** Checkmark icon color; interactive theme color for selected scheme */
+      /** Checkmark icon color; theme-adaptive for selected scheme */
       color: var(--rh-color-interactive-primary-default);
       display: none; /* Hide checkmark rh-icon by default, then show it when checked */
       position: absolute;

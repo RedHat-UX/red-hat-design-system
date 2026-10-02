@@ -15,7 +15,12 @@ description: Compact link tile with a desaturated heading and a slotted icon.
 
 <style>
   rh-tile rh-icon {
-    color: var(--rh-color-brand-red);
+    color:
+      var(--rh-color-brand-red,
+        light-dark(
+          var(--rh-color-brand-red-on-light, #ee0000),
+          var(--rh-color-brand-red-on-dark, #ee0000)
+        ));
   }
 </style>
 

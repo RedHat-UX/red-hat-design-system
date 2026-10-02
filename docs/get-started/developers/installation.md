@@ -10,12 +10,7 @@ subnav:
   order: 10
 ---
 
-<style data-helmet>
-  .code-tabs rh-tab-panel {
-    padding-block-end: 0;
-    padding-inline: 0;
-  }
-</style>
+<link rel="stylesheet" href="../installation.css" data-helmet>
 
 <script type="module" data-helmet>
   import '@uxdot/elements/uxdot-example.js';
@@ -219,7 +214,7 @@ themselves to prevent CLS.
 
 ```html rhcodeblock
 <link rel="stylesheet"
-      href="https://www.redhatstatic.com/dssf-001/v2/@rhds/elements@{{ pkg.version }}/rh-footer/rh-footer-lightdom.css">
+      href="https://www.redhatstatic.com/dssf-001/v2/@rhds/elements@{{ pkg.version }}/rh-breadcrumb/rh-breadcrumb-lightdom.css">
 ```
 
   </rh-tab-panel>
@@ -228,7 +223,7 @@ themselves to prevent CLS.
 
 ```html rhcodeblock
 <link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@rhds/elements@{{ pkg.version }}/elements/rh-footer/rh-footer-lightdom.css">
+      href="https://cdn.jsdelivr.net/npm/@rhds/elements@{{ pkg.version }}/elements/rh-breadcrumb/rh-breadcrumb-lightdom.css">
 ```
 
 If you're looking for lightdom stylesheets on a third party CDN, the URL patterns follow a similar

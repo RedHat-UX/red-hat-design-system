@@ -31,7 +31,7 @@ description: Required select within a form that validates on submit and shows a 
 
   label {
     display: block;
-    font-family: var(--rh-font-family-body-text);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-body-text-medium, 500);
     margin-block: var(--rh-space-md, 8px);
   }
@@ -41,6 +41,11 @@ description: Required select within a form that validates on submit and shows a 
   }
 
   .required {
-    color: var(--rh-color-status-danger);
+    color:
+      var(--rh-color-status-danger,
+        light-dark(
+          var(--rh-color-status-danger-on-light, #b1380b),
+          var(--rh-color-status-danger-on-dark, #f0561d)
+        ));
   }
 </style>
