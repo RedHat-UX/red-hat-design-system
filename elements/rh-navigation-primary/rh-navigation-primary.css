@@ -56,9 +56,9 @@
   grid-template-rows: var(--_navbar-height);
   background-color:
     light-dark(
-        /** Navigation bar background in light mode */
+        /** Navigation bar background for light scheme */
         var(--rh-color-surface-lightest, #ffffff),
-        /** Navigation bar background in dark mode */
+        /** Navigation bar background for dark scheme */
         var(--rh-color-surface-darkest, #151515)
       );
 
@@ -470,9 +470,9 @@
         gap: var(--rh-space-lg, 16px);
         background-color:
           light-dark(
-              /** Open Links menu background in light mode */
+              /** Open Links menu background for light scheme */
               var(--rh-color-surface-lightest, #ffffff),
-              /** Open Links menu background in dark mode */
+              /** Open Links menu background for dark scheme */
               var(--rh-color-surface-darkest, #151515)
             );
         box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
@@ -796,9 +796,9 @@
           flex-direction: column;
           background-color:
             light-dark(
-                /** Open compact hamburger content background in light mode */
+                /** Open compact hamburger content background for light scheme */
                 var(--rh-color-surface-lightest, #ffffff),
-                /** Open compact hamburger content background in dark mode */
+                /** Open compact hamburger content background for dark scheme */
                 var(--rh-color-surface-darkest, #151515)
               );
           inline-size: 100%;
@@ -894,9 +894,9 @@
             gap: var(--rh-space-lg, 16px);
             background-color:
               light-dark(
-                  /** Open compact links menu background in light mode at containers >= xl */
+                  /** Open compact links menu background for light scheme at containers >= xl */
                   var(--rh-color-surface-lightest, #ffffff),
-                  /** Open compact links menu background in dark mode at containers >= xl */
+                  /** Open compact links menu background for dark scheme at containers >= xl */
                   var(--rh-color-surface-darkest, #151515)
                 );
             box-shadow: 0 2px 4px 0 var(--_box-shadow-color);

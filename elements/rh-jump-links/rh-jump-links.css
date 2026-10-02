@@ -97,9 +97,9 @@
       pointer-events: none;
       color:
         light-dark(
-            /** Disabled scroll button text color in light mode */
+            /** Disabled scroll button text color for light scheme */
             var(--rh-color-gray-40, #a3a3a3),
-            /** Disabled scroll button text color in dark mode */
+            /** Disabled scroll button text color for dark scheme */
             var(--rh-color-gray-50, #707070)
           );
     }
