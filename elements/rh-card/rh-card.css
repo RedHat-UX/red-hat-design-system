@@ -60,9 +60,9 @@
 #container {
   --_header-bg:
     light-dark(
-        /** Header background in light mode */
+        /** Header background for light scheme */
         var(--rh-card-header-background-on-light, transparent),
-        /** Header background in dark mode */
+        /** Header background for dark scheme */
         var(--rh-card-header-background-on-dark, transparent)
       );
 
@@ -97,10 +97,10 @@
   background-color:
     light-dark(
         var(--_card-background,
-        /** Card surface in light mode */
+        /** Card surface for light scheme */
         var(--rh-color-surface-lightest, #ffffff)),
         var(--_card-background,
-        /** Card surface in dark mode */
+        /** Card surface for dark scheme */
         var(--rh-color-surface-darkest, #151515))
       );
 
@@ -273,9 +273,9 @@
 
   background-color:
     light-dark(
-        /** Promo surface in light mode */
+        /** Promo surface for light scheme */
         var(--rh-color-surface-lightest, #ffffff),
-        /** Promo surface in dark mode */
+        /** Promo surface for dark scheme */
         var(--rh-color-surface-darkest, #151515)
       );
   height: auto;
@@ -328,9 +328,9 @@
 #container.promo.standard {
   background-color:
     light-dark(
-        /** Promo standard surface in light mode */
+        /** Promo standard surface for light scheme */
         var(--rh-color-surface-lighter, #f2f2f2),
-        /** Promo standard surface in dark mode */
+        /** Promo standard surface for dark scheme */
         var(--rh-color-surface-darker, #1f1f1f)
       );
   display: flex;

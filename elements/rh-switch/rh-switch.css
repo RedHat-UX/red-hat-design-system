@@ -23,16 +23,16 @@
   --_switch-handle-size: 14px;
   --_switch-track-background-color:
     light-dark(
-        /** Unchecked track color in light mode */
+        /** Unchecked track color for light scheme */
         var(--rh-switch-unchecked, var(--rh-color-gray-60, #4d4d4d)),
-        /** Unchecked track color in dark mode */
+        /** Unchecked track color for dark scheme */
         var(--rh-switch-unchecked, var(--rh-color-gray-40, #a3a3a3))
       );
   --_switch-handle-color:
     light-dark(
-        /** Handle color in light mode */
+        /** Handle color for light scheme */
         var(--rh-color-surface-lightest, #ffffff),
-        /** Handle color in dark mode */
+        /** Handle color for dark scheme */
         oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h)
       );
 
@@ -40,7 +40,7 @@
     box-shadow:
       light-dark(
           none,
-          /** Handle shadow in dark mode */
+          /** Handle shadow for dark scheme */
           var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2))
         );
   }
@@ -95,9 +95,9 @@
     --_switch-track-background-color:
       var(--rh-switch-checked,
         light-dark(
-          /** Checked track color in light mode */
+          /** Checked track color for light scheme */
           var(--rh-color-accent-base-on-light, #0066cc),
-          /** Checked track color in dark mode */
+          /** Checked track color for dark scheme */
           var(--rh-color-accent-base-on-dark, #92c5f9)
         ));
 
@@ -170,9 +170,9 @@ rh-icon {
     & span {
       color:
         light-dark(
-            /** Disabled text color in light mode */
+            /** Disabled text color for light scheme */
             var(--rh-color-gray-60, #4d4d4d),
-            /** Disabled text color in dark mode */
+            /** Disabled text color for dark scheme */
             var(--rh-color-gray-40, #a3a3a3)
           );
     }
@@ -181,9 +181,9 @@ rh-icon {
     &:not(.checked) {
       --_switch-track-background-color:
         light-dark(
-            /** Disabled track color in light mode */
+            /** Disabled track color for light scheme */
             var(--rh-switch-disabled, var(--rh-color-gray-30, #c7c7c7)),
-            /** Disabled track color in dark mode */
+            /** Disabled track color for dark scheme */
             var(--rh-switch-disabled, var(--rh-color-gray-60, #4d4d4d))
           );
     }

@@ -132,46 +132,46 @@ a {
   &.red {
     --_fill-color:
       light-dark(
-          /** Red tag fill in light mode */
+          /** Red tag fill for light scheme */
           var(--rh-color-red-10, #fce3e3),
-          /** Red tag fill in dark mode */
+          /** Red tag fill for dark scheme */
           var(--rh-color-red-70, #5f0000)
         );
     --_border-color:
       light-dark(
-          /** Red tag border in light mode */
+          /** Red tag border for light scheme */
           var(--rh-color-red-30, #f9a8a8),
-          /** Red tag border in dark mode */
+          /** Red tag border for dark scheme */
           var(--rh-color-red-50, #ee0000)
         );
     --_icon-color:
       light-dark(
-          /** Red icon in light mode */
+          /** Red icon for light scheme */
           var(--rh-color-red-60, #a60000),
-          /** Red icon in dark mode */
+          /** Red icon for dark scheme */
           var(--rh-color-red-30, #f9a8a8)
         );
     --_text-color:
       light-dark(
-          /** Red text in light mode */
+          /** Red text for light scheme */
           var(--rh-color-red-70, #5f0000),
-          /** Red text in dark mode */
+          /** Red text for dark scheme */
           var(--rh-color-red-10, #fce3e3)
         );
 
     &.outline {
       --_icon-color:
         light-dark(
-            /** Red outline icon in light mode */
+            /** Red outline icon for light scheme */
             var(--rh-color-red-60, #a60000),
-            /** Red outline icon in dark mode */
+            /** Red outline icon for dark scheme */
             var(--rh-color-red-20, #fbc5c5)
           );
       --_text-color:
         light-dark(
-            /** Red outline text in light mode */
+            /** Red outline text for light scheme */
             var(--rh-color-red-60, #a60000),
-            /** Red outline text in dark mode */
+            /** Red outline text for dark scheme */
             var(--rh-color-red-30, #f9a8a8)
           );
     }
@@ -180,46 +180,46 @@ a {
   &.red-orange {
     --_fill-color:
       light-dark(
-          /** Red orange tag fill in light mode */
+          /** Red orange tag fill for light scheme */
           var(--rh-color-red-orange-10, #ffe3d9),
-          /** Red orange tag fill in dark mode */
+          /** Red orange tag fill for dark scheme */
           var(--rh-color-red-orange-70, #731f00)
         );
     --_border-color:
       light-dark(
-          /** Red orange tag border in light mode */
+          /** Red orange tag border for light scheme */
           var(--rh-color-red-orange-30, #f89b78),
-          /** Red orange tag border in dark mode */
+          /** Red orange tag border for dark scheme */
           var(--rh-color-red-orange-50, #f0561d)
         );
     --_icon-color:
       light-dark(
-          /** Red orange icon in light mode */
+          /** Red orange icon for light scheme */
           var(--rh-color-red-orange-60, #b1380b),
-          /** Red orange icon in dark mode */
+          /** Red orange icon for dark scheme */
           var(--rh-color-red-orange-30, #f89b78)
         );
     --_text-color:
       light-dark(
-          /** Red orange text in light mode */
+          /** Red orange text for light scheme */
           var(--rh-color-red-orange-70, #731f00),
-          /** Red orange text in dark mode */
+          /** Red orange text for dark scheme */
           var(--rh-color-red-orange-10, #ffe3d9)
         );
 
     &.outline {
       --_icon-color:
         light-dark(
-            /** Red orange outline icon in light mode */
+            /** Red orange outline icon for light scheme */
             var(--rh-color-red-orange-60, #b1380b),
-            /** Red orange outline icon in dark mode */
+            /** Red orange outline icon for dark scheme */
             var(--rh-color-red-orange-20, #fbbea8)
           );
       --_text-color:
         light-dark(
-            /** Red orange outline text in light mode */
+            /** Red orange outline text for light scheme */
             var(--rh-color-red-orange-60, #b1380b),
-            /** Red orange outline text in dark mode */
+            /** Red orange outline text for dark scheme */
             var(--rh-color-red-orange-30, #f89b78)
           );
     }
@@ -228,46 +228,46 @@ a {
   &.orange {
     --_fill-color:
       light-dark(
-          /** Orange tag fill in light mode */
+          /** Orange tag fill for light scheme */
           var(--rh-color-orange-10, #ffe8cc),
-          /** Orange tag fill in dark mode */
+          /** Orange tag fill for dark scheme */
           var(--rh-color-orange-70, #732e00)
         );
     --_border-color:
       light-dark(
-          /** Orange tag border in light mode */
+          /** Orange tag border for light scheme */
           var(--rh-color-orange-30, #f8ae54),
-          /** Orange tag border in dark mode */
+          /** Orange tag border for dark scheme */
           var(--rh-color-orange-50, #ca6c0f)
         );
     --_icon-color:
       light-dark(
-          /** Orange icon in light mode */
+          /** Orange icon for light scheme */
           var(--rh-color-orange-60, #9e4a06),
-          /** Orange icon in dark mode */
+          /** Orange icon for dark scheme */
           var(--rh-color-orange-30, #f8ae54)
         );
     --_text-color:
       light-dark(
-          /** Orange text in light mode */
+          /** Orange text for light scheme */
           var(--rh-color-orange-70, #732e00),
-          /** Orange text in dark mode */
+          /** Orange text for dark scheme */
           var(--rh-color-orange-10, #ffe8cc)
         );
 
     &.outline {
       --_icon-color:
         light-dark(
-            /** Orange outline icon in light mode */
+            /** Orange outline icon for light scheme */
             var(--rh-color-orange-60, #9e4a06),
-            /** Orange outline icon in dark mode */
+            /** Orange outline icon for dark scheme */
             var(--rh-color-orange-20, #fccb8f)
           );
       --_text-color:
         light-dark(
-            /** Orange outline text in light mode */
+            /** Orange outline text for light scheme */
             var(--rh-color-orange-60, #9e4a06),
-            /** Orange outline text in dark mode */
+            /** Orange outline text for dark scheme */
             var(--rh-color-orange-30, #f8ae54)
           );
     }
@@ -276,46 +276,46 @@ a {
   &.yellow {
     --_fill-color:
       light-dark(
-          /** Yellow tag fill in light mode */
+          /** Yellow tag fill for light scheme */
           var(--rh-color-yellow-10, #fff4cc),
-          /** Yellow tag fill in dark mode */
+          /** Yellow tag fill for dark scheme */
           var(--rh-color-yellow-70, #73480b)
         );
     --_border-color:
       light-dark(
-          /** Yellow tag border in light mode */
+          /** Yellow tag border for light scheme */
           var(--rh-color-yellow-30, #ffcc17),
-          /** Yellow tag border in dark mode */
+          /** Yellow tag border for dark scheme */
           var(--rh-color-yellow-50, #b98412)
         );
     --_icon-color:
       light-dark(
-          /** Yellow icon in light mode */
+          /** Yellow icon for light scheme */
           var(--rh-color-yellow-60, #96640f),
-          /** Yellow icon in dark mode */
+          /** Yellow icon for dark scheme */
           var(--rh-color-yellow-30, #ffcc17)
         );
     --_text-color:
       light-dark(
-          /** Yellow text in light mode */
+          /** Yellow text for light scheme */
           var(--rh-color-yellow-70, #73480b),
-          /** Yellow text in dark mode */
+          /** Yellow text for dark scheme */
           var(--rh-color-yellow-10, #fff4cc)
         );
 
     &.outline {
       --_icon-color:
         light-dark(
-            /** Yellow outline icon in light mode */
+            /** Yellow outline icon for light scheme */
             var(--rh-color-yellow-60, #96640f),
-            /** Yellow outline icon in dark mode */
+            /** Yellow outline icon for dark scheme */
             var(--rh-color-yellow-20, #ffe072)
           );
       --_text-color:
         light-dark(
-            /** Yellow outline text in light mode */
+            /** Yellow outline text for light scheme */
             var(--rh-color-yellow-60, #96640f),
-            /** Yellow outline text in dark mode */
+            /** Yellow outline text for dark scheme */
             var(--rh-color-yellow-30, #ffcc17)
           );
     }
@@ -324,46 +324,46 @@ a {
   &.green {
     --_fill-color:
       light-dark(
-          /** Green tag fill in light mode */
+          /** Green tag fill for light scheme */
           var(--rh-color-green-10, #e9f7df),
-          /** Green tag fill in dark mode */
+          /** Green tag fill for dark scheme */
           var(--rh-color-green-70, #204d00)
         );
     --_border-color:
       light-dark(
-          /** Green tag border in light mode */
+          /** Green tag border for light scheme */
           var(--rh-color-green-30, #afdc8f),
-          /** Green tag border in dark mode */
+          /** Green tag border for dark scheme */
           var(--rh-color-green-50, #63993d)
         );
     --_icon-color:
       light-dark(
-          /** Green icon in light mode */
+          /** Green icon for light scheme */
           var(--rh-color-green-60, #3d7317),
-          /** Green icon in dark mode */
+          /** Green icon for dark scheme */
           var(--rh-color-green-30, #afdc8f)
         );
     --_text-color:
       light-dark(
-          /** Green text in light mode */
+          /** Green text for light scheme */
           var(--rh-color-green-70, #204d00),
-          /** Green text in dark mode */
+          /** Green text for dark scheme */
           var(--rh-color-green-10, #e9f7df)
         );
 
     &.outline {
       --_icon-color:
         light-dark(
-            /** Green outline icon in light mode */
+            /** Green outline icon for light scheme */
             var(--rh-color-green-60, #3d7317),
-            /** Green outline icon in dark mode */
+            /** Green outline icon for dark scheme */
             var(--rh-color-green-20, #d1f1bb)
           );
       --_text-color:
         light-dark(
-            /** Green outline text in light mode */
+            /** Green outline text for light scheme */
             var(--rh-color-green-60, #3d7317),
-            /** Green outline text in dark mode */
+            /** Green outline text for dark scheme */
             var(--rh-color-green-30, #afdc8f)
           );
     }
@@ -372,46 +372,46 @@ a {
   &.teal {
     --_fill-color:
       light-dark(
-          /** Teal tag fill in light mode */
+          /** Teal tag fill for light scheme */
           var(--rh-color-teal-10, #daf2f2),
-          /** Teal tag fill in dark mode */
+          /** Teal tag fill for dark scheme */
           var(--rh-color-teal-70, #004d4d)
         );
     --_border-color:
       light-dark(
-          /** Teal tag border in light mode */
+          /** Teal tag border for light scheme */
           var(--rh-color-teal-30, #9ad8d8),
-          /** Teal tag border in dark mode */
+          /** Teal tag border for dark scheme */
           var(--rh-color-teal-50, #37a3a3)
         );
     --_icon-color:
       light-dark(
-          /** Teal icon in light mode */
+          /** Teal icon for light scheme */
           var(--rh-color-teal-60, #147878),
-          /** Teal icon in dark mode */
+          /** Teal icon for dark scheme */
           var(--rh-color-teal-30, #9ad8d8)
         );
     --_text-color:
       light-dark(
-          /** Teal text in light mode */
+          /** Teal text for light scheme */
           var(--rh-color-teal-70, #004d4d),
-          /** Teal text in dark mode */
+          /** Teal text for dark scheme */
           var(--rh-color-teal-10, #daf2f2)
         );
 
     &.outline {
       --_icon-color:
         light-dark(
-            /** Teal outline icon in light mode */
+            /** Teal outline icon for light scheme */
             var(--rh-color-teal-60, #147878),
-            /** Teal outline icon in dark mode */
+            /** Teal outline icon for dark scheme */
             var(--rh-color-teal-20, #b9e5e5)
           );
       --_text-color:
         light-dark(
-            /** Teal outline text in light mode */
+            /** Teal outline text for light scheme */
             var(--rh-color-teal-60, #147878),
-            /** Teal outline text in dark mode */
+            /** Teal outline text for dark scheme */
             var(--rh-color-teal-30, #9ad8d8)
           );
     }
@@ -420,46 +420,46 @@ a {
   &.blue {
     --_fill-color:
       light-dark(
-          /** Blue tag fill in light mode */
+          /** Blue tag fill for light scheme */
           var(--rh-color-blue-10, #e0f0ff),
-          /** Blue tag fill in dark mode */
+          /** Blue tag fill for dark scheme */
           var(--rh-color-blue-70, #003366)
         );
     --_border-color:
       light-dark(
-          /** Blue tag border in light mode */
+          /** Blue tag border for light scheme */
           var(--rh-color-blue-30, #92c5f9),
-          /** Blue tag border in dark mode */
+          /** Blue tag border for dark scheme */
           var(--rh-color-blue-50, #0066cc)
         );
     --_icon-color:
       light-dark(
-          /** Blue icon in light mode */
+          /** Blue icon for light scheme */
           var(--rh-color-blue-60, #004d99),
-          /** Blue icon in dark mode */
+          /** Blue icon for dark scheme */
           var(--rh-color-blue-30, #92c5f9)
         );
     --_text-color:
       light-dark(
-          /** Blue text in light mode */
+          /** Blue text for light scheme */
           var(--rh-color-blue-70, #003366),
-          /** Blue text in dark mode */
+          /** Blue text for dark scheme */
           var(--rh-color-blue-10, #e0f0ff)
         );
 
     &.outline {
       --_icon-color:
         light-dark(
-            /** Blue outline icon in light mode */
+            /** Blue outline icon for light scheme */
             var(--rh-color-blue-60, #004d99),
-            /** Blue outline icon in dark mode */
+            /** Blue outline icon for dark scheme */
             var(--rh-color-blue-20, #b9dafc)
           );
       --_text-color:
         light-dark(
-            /** Blue outline text in light mode */
+            /** Blue outline text for light scheme */
             var(--rh-color-blue-60, #004d99),
-            /** Blue outline text in dark mode */
+            /** Blue outline text for dark scheme */
             var(--rh-color-blue-30, #92c5f9)
           );
     }
@@ -468,46 +468,46 @@ a {
   &.purple {
     --_fill-color:
       light-dark(
-          /** Purple tag fill in light mode */
+          /** Purple tag fill for light scheme */
           var(--rh-color-purple-10, #ece6ff),
-          /** Purple tag fill in dark mode */
+          /** Purple tag fill for dark scheme */
           var(--rh-color-purple-70, #21134d)
         );
     --_border-color:
       light-dark(
-          /** Purple tag border in light mode */
+          /** Purple tag border for light scheme */
           var(--rh-color-purple-30, #b6a6e9),
-          /** Purple tag border in dark mode */
+          /** Purple tag border for dark scheme */
           var(--rh-color-purple-50, #5e40be)
         );
     --_icon-color:
       light-dark(
-          /** Purple icon in light mode */
+          /** Purple icon for light scheme */
           var(--rh-color-purple-60, #3d2785),
-          /** Purple icon in dark mode */
+          /** Purple icon for dark scheme */
           var(--rh-color-purple-30, #b6a6e9)
         );
     --_text-color:
       light-dark(
-          /** Purple text in light mode */
+          /** Purple text for light scheme */
           var(--rh-color-purple-70, #21134d),
-          /** Purple text in dark mode */
+          /** Purple text for dark scheme */
           var(--rh-color-purple-10, #ece6ff)
         );
 
     &.outline {
       --_icon-color:
         light-dark(
-            /** Purple outline icon in light mode */
+            /** Purple outline icon for light scheme */
             var(--rh-color-purple-60, #3d2785),
-            /** Purple outline icon in dark mode */
+            /** Purple outline icon for dark scheme */
             var(--rh-color-purple-20, #d0c5f4)
           );
       --_text-color:
         light-dark(
-            /** Purple outline text in light mode */
+            /** Purple outline text for light scheme */
             var(--rh-color-purple-60, #3d2785),
-            /** Purple outline text in dark mode */
+            /** Purple outline text for dark scheme */
             var(--rh-color-purple-30, #b6a6e9)
           );
     }
@@ -516,46 +516,46 @@ a {
   &.gray {
     --_fill-color:
       light-dark(
-          /** Gray tag fill in light mode */
+          /** Gray tag fill for light scheme */
           var(--rh-color-gray-10, #f2f2f2),
-          /** Gray tag fill in dark mode */
+          /** Gray tag fill for dark scheme */
           var(--rh-color-gray-70, #383838)
         );
     --_border-color:
       light-dark(
-          /** Gray tag border in light mode */
+          /** Gray tag border for light scheme */
           var(--rh-color-gray-30, #c7c7c7),
-          /** Gray tag border in dark mode */
+          /** Gray tag border for dark scheme */
           var(--rh-color-gray-50, #707070)
         );
     --_icon-color:
       light-dark(
-          /** Gray icon in light mode */
+          /** Gray icon for light scheme */
           var(--rh-color-gray-60, #4d4d4d),
-          /** Gray icon in dark mode */
+          /** Gray icon for dark scheme */
           var(--rh-color-gray-30, #c7c7c7)
         );
     --_text-color:
       light-dark(
-          /** Gray text in light mode */
+          /** Gray text for light scheme */
           var(--rh-color-gray-70, #383838),
-          /** Gray text in dark mode */
+          /** Gray text for dark scheme */
           var(--rh-color-gray-10, #f2f2f2)
         );
 
     &.outline {
       --_icon-color:
         light-dark(
-            /** Gray outline icon in light mode */
+            /** Gray outline icon for light scheme */
             var(--rh-color-gray-60, #4d4d4d),
-            /** Gray outline icon in dark mode */
+            /** Gray outline icon for dark scheme */
             var(--rh-color-gray-20, #e0e0e0)
           );
       --_text-color:
         light-dark(
-            /** Gray outline text in light mode */
+            /** Gray outline text for light scheme */
             var(--rh-color-gray-60, #4d4d4d),
-            /** Gray outline text in dark mode */
+            /** Gray outline text for dark scheme */
             var(--rh-color-gray-30, #c7c7c7)
           );
     }
@@ -564,16 +564,16 @@ a {
   &.outline {
     --_fill-color:
       light-dark(
-          /** Outline variant fill in light mode */
+          /** Outline variant fill for light scheme */
           var(--rh-color-white, #ffffff),
-          /** Outline variant fill in dark mode */
+          /** Outline variant fill for dark scheme */
           var(--rh-color-gray-95, #151515)
         );
     --_border-color:
       light-dark(
-          /** Outline variant border in light mode */
+          /** Outline variant border for light scheme */
           var(--rh-color-gray-30, #c7c7c7),
-          /** Outline variant border in dark mode */
+          /** Outline variant border for dark scheme */
           var(--rh-color-gray-50, #707070)
         );
   }
@@ -596,30 +596,30 @@ a {
 
     --_fill-color:
       light-dark(
-          /** Disabled fill in light mode */
+          /** Disabled fill for light scheme */
           var(--rh-color-gray-30, #c7c7c7),
-          /** Disabled fill in dark mode */
+          /** Disabled fill for dark scheme */
           var(--rh-color-gray-70, #383838)
         );
     --_border-color:
       light-dark(
-          /** Disabled border in light mode */
+          /** Disabled border for light scheme */
           var(--rh-color-gray-30, #c7c7c7),
-          /** Disabled border in dark mode */
+          /** Disabled border for dark scheme */
           var(--rh-color-gray-70, #383838)
         );
     --_icon-color:
       light-dark(
-          /** Disabled icon in light mode */
+          /** Disabled icon for light scheme */
           var(--rh-color-gray-60, #4d4d4d),
-          /** Disabled icon in dark mode */
+          /** Disabled icon for dark scheme */
           var(--rh-color-gray-40, #a3a3a3)
         );
     --_text-color:
       light-dark(
-          /** Disabled text in light mode */
+          /** Disabled text for light scheme */
           var(--rh-color-gray-60, #4d4d4d),
-          /** Disabled text in dark mode */
+          /** Disabled text for dark scheme */
           var(--rh-color-gray-40, #a3a3a3)
         );
 

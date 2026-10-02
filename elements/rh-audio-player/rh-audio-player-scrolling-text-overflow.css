@@ -21,13 +21,13 @@
 
   --_fade-color:
     light-dark(
-        /** Fade overlay color in light mode override */
+        /** Fade overlay color for light scheme override */
         var(--rh-audio-player-scrolling-text-overflow-background-color,
-        /** Fade overlay color in light mode */
+        /** Fade overlay color for light scheme */
         var(--rh-color-surface-lightest, #ffffff)),
-        /** Fade overlay color in dark mode override */
+        /** Fade overlay color for dark scheme override */
         var(--rh-audio-player-scrolling-text-overflow-background-color,
-        /** Fade overlay color in dark mode */
+        /** Fade overlay color for dark scheme */
         var(--rh-color-surface-darkest, #151515))
       );
 
