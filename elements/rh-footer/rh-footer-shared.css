@@ -57,9 +57,9 @@
   /* Accordion surface follows the footer color-scheme */
   --_accordion-background:
     light-dark(
-        /** Accordion surface in light color schemes */
+        /** Accordion surface for light scheme */
         var(--rh-color-surface-lightest, #ffffff),
-        /** Accordion surface in dark color schemes */
+        /** Accordion surface for dark scheme */
         var(--rh-color-surface-darkest, #151515)
       );
 

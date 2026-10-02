@@ -356,32 +356,32 @@ a:focus-within,
     var(--rh-cta-border-color, var(--rh-color-border-strong));
   --_color:
     light-dark(
-        /** Secondary variant text color on light color schemes */
+        /** Secondary variant text color for light scheme */
         var(--rh-cta-color, var(--rh-color-text-primary-on-light, #151515)),
-        /** Secondary variant text color on dark color schemes */
+        /** Secondary variant text color for dark scheme */
         var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff))
       );
   --_hover-background-color:
     light-dark(
-        /** Secondary variant hover background on light color schemes */
+        /** Secondary variant hover background for light scheme */
         var(--rh-cta-hover-background-color, var(--rh-color-surface-darkest, #151515)),
-        /** Secondary variant hover background on dark color schemes */
+        /** Secondary variant hover background for dark scheme */
         var(--rh-cta-hover-background-color, var(--rh-color-surface-lightest, #ffffff))
       );
   --_hover-border-color: /** Secondary variant hover border color */
     var(--rh-cta-hover-border-color, var(--rh-color-border-strong));
   --_hover-color:
     light-dark(
-        /** Secondary variant hover text color on light color schemes */
+        /** Secondary variant hover text color for light scheme */
         var(--rh-cta-hover-color, var(--rh-color-text-primary-on-dark, #ffffff)),
-        /** Secondary variant hover text color on dark color schemes */
+        /** Secondary variant hover text color for dark scheme */
         var(--rh-cta-hover-color, var(--rh-color-text-primary-on-light, #151515))
       );
   --_focus-background-color:
     light-dark(
-        /** Secondary variant focus background on light color schemes */
+        /** Secondary variant focus background for light scheme */
         var(--rh-cta-focus-background-color, var(--rh-color-surface-lighter, #f2f2f2)),
-        /** Secondary variant focus background on dark color schemes */
+        /** Secondary variant focus background for dark scheme */
         var(--rh-cta-focus-background-color, var(--rh-color-surface-dark, #383838))
       );
   --_focus-border-color: /** Secondary variant focus border color */
@@ -396,16 +396,16 @@ a:focus-within,
     var(--rh-cta-active-color, var(--rh-color-text-primary));
   --_active-background-color:
     light-dark(
-        /** Secondary variant active background on light color schemes */
+        /** Secondary variant active background for light scheme */
         var(--rh-cta-active-background-color, var(--rh-color-border-strong)),
-        /** Secondary variant active background on dark color schemes */
+        /** Secondary variant active background for dark scheme */
         var(--rh-cta-active-background-color, var(--rh-color-surface-lightest, #ffffff))
       );
   --_active-inner-border-color:
     light-dark(
-        /** Secondary variant active inner border on light color schemes */
+        /** Secondary variant active inner border for light scheme */
         var(--rh-cta-active-inner-border-color, var(--rh-color-surface-light, #e0e0e0)),
-        /** Secondary variant active inner border on dark color schemes */
+        /** Secondary variant active inner border for dark scheme */
         var(--rh-cta-active-inner-border-color, var(--rh-color-border-strong-on-light, #151515))
       );
 }
@@ -443,9 +443,9 @@ a:focus-within,
       var(--rh-cta-color, var(--rh-color-interactive-primary-default));
     --_hover-background-color:
       light-dark(
-          /** Brick variant hover background on light color schemes */
+          /** Brick variant hover background for light scheme */
           var(--rh-cta-hover-background-color, var(--rh-color-surface-lighter, #f2f2f2)),
-          /** Brick variant hover background on dark color schemes */
+          /** Brick variant hover background for dark scheme */
           var(--rh-cta-hover-background-color, var(--rh-color-surface-darker, #1f1f1f))
         );
     --_hover-border-color: /** Brick variant hover border color */
@@ -454,9 +454,9 @@ a:focus-within,
       var(--rh-cta-hover-color, var(--rh-color-interactive-primary-hover));
     --_hover-text-decoration:
       light-dark(
-          /** Brick variant hover text decoration on light color schemes */
+          /** Brick variant hover text decoration for light scheme */
           var(--rh-cta-hover-text-decoration, none),
-          /** Brick variant hover text decoration on dark color schemes */
+          /** Brick variant hover text decoration for dark scheme */
           var(--rh-cta-hover-text-decoration, underline)
         );
     --_focus-color: /** Brick variant focus text color */
@@ -468,16 +468,16 @@ a:focus-within,
         var(--rh-color-border-subtle));
     --_focus-text-decoration:
       light-dark(
-          /** Brick variant focus text decoration on light color schemes */
+          /** Brick variant focus text decoration for light scheme */
           var(--rh-cta-focus-text-decoration, none),
-          /** Brick variant focus text decoration on dark color schemes */
+          /** Brick variant focus text decoration for dark scheme */
           var(--rh-cta-focus-text-decoration, none)
         );
     --_active-background-color:
       light-dark(
-          /** Brick variant active background on light color schemes */
+          /** Brick variant active background for light scheme */
           var(--rh-cta-active-background-color, var(--rh-color-surface-lighter, #f2f2f2)),
-          /** Brick variant active background on dark color schemes */
+          /** Brick variant active background for dark scheme */
           var(--rh-cta-active-background-color, var(--rh-color-surface-darker, #1f1f1f))
         );
     --_active-inner-border-color: /** Brick variant active inner border color */
@@ -485,9 +485,9 @@ a:focus-within,
         var(--rh-color-border-subtle));
     --_active-text-decoration:
       light-dark(
-          /** Brick variant active text decoration on light color schemes */
+          /** Brick variant active text decoration for light scheme */
           var(--rh-cta-active-text-decoration, none),
-          /** Brick variant active text decoration on dark color schemes */
+          /** Brick variant active text decoration for dark scheme */
           var(--rh-cta-active-text-decoration, underline)
         );
 

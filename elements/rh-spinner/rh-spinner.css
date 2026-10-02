@@ -88,9 +88,9 @@ circle.track {
   display: var(--rh-spinner-track-display, revert);
   stroke:
     light-dark(
-        /** Track stroke color in light mode */
+        /** Track stroke color for light scheme */
         var(--rh-color-gray-10, #f2f2f2),
-        /** Track stroke color in dark mode */
+        /** Track stroke color for dark scheme */
         var(--rh-color-gray-70, #383838)
       );
   animation-duration: 0;

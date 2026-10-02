@@ -73,23 +73,23 @@ label {
   &:has(input[aria-disabled='true']:checked) {
     background-color:
       light-dark(
-          /** Disabled chip background in light mode */
+          /** Disabled chip background for light scheme */
           var(--rh-color-gray-30, #c7c7c7),
-          /** Disabled chip background in dark mode */
+          /** Disabled chip background for dark scheme */
           var(--rh-color-surface-dark, #383838)
         );
     color:
       light-dark(
-          /** Disabled chip text color in light mode */
+          /** Disabled chip text color for light scheme */
           var(--rh-color-text-secondary),
-          /** Disabled chip text color in dark mode */
+          /** Disabled chip text color for dark scheme */
           var(--rh-color-gray-40, #a3a3a3)
         );
     outline-color:
       light-dark(
-          /** Disabled chip outline in light mode */
+          /** Disabled chip outline for light scheme */
           var(--rh-color-gray-30, #c7c7c7),
-          /** Disabled chip outline in dark mode */
+          /** Disabled chip outline for dark scheme */
           var(--rh-color-surface-dark, #383838)
         );
     pointer-events: none;
@@ -98,32 +98,32 @@ label {
   &:has(input:checked) {
     background-color:
       light-dark(
-          /** Checked chip background in light mode */
+          /** Checked chip background for light scheme */
           var(--rh-color-blue-10, #e0f0ff),
-          /** Checked chip background in dark mode */
+          /** Checked chip background for dark scheme */
           var(--rh-color-blue-70, #003366)
         );
     color:
       light-dark(
-          /** Checked chip text color in light mode */
+          /** Checked chip text color for light scheme */
           var(--rh-color-blue-70, #003366),
-          /** Checked chip text color in dark mode */
+          /** Checked chip text color for dark scheme */
           var(--rh-color-blue-10, #e0f0ff)
         );
     outline-color:
       light-dark(
-          /** Checked chip outline in light mode */
+          /** Checked chip outline for light scheme */
           var(--rh-color-blue-30, #92c5f9),
-          /** Checked chip outline in dark mode */
+          /** Checked chip outline for dark scheme */
           var(--rh-color-blue-50, #0066cc)
         );
 
     &:hover {
       outline-color:
         light-dark(
-            /** Checked chip hover outline in light mode */
+            /** Checked chip hover outline for light scheme */
             var(--rh-color-blue-30, #92c5f9),
-            /** Checked chip hover outline in dark mode */
+            /** Checked chip hover outline for dark scheme */
             var(--rh-color-blue-50, #0066cc)
           );
     }
