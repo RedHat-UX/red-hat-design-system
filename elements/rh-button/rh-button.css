@@ -80,9 +80,9 @@ button {
   &.primary {
     --_color:
       light-dark(
-          /** Primary text color in light mode */
+          /** Primary text color for light scheme */
           var(--rh-color-text-primary-on-dark, #ffffff),
-          /** Primary text color in dark mode */
+          /** Primary text color for dark scheme */
           var(--rh-color-text-primary-on-light, #151515)
         );
 
@@ -112,9 +112,9 @@ button {
     --_focus-border-width: var(--rh-border-width-md, 2px);
     --_hover-color:
       light-dark(
-          /** Primary hover text color in light mode */
+          /** Primary hover text color for light scheme */
           var(--rh-color-text-primary-on-dark, #ffffff),
-          /** Primary hover text color in dark mode */
+          /** Primary hover text color for dark scheme */
           var(--rh-color-text-primary-on-light, #151515)
         );
 
@@ -129,9 +129,9 @@ button {
   &.danger {
     --_color:
       light-dark(
-          /** Danger text color in light mode */
+          /** Danger text color for light scheme */
           var(--rh-color-text-primary-on-dark, #ffffff),
-          /** Danger text color in dark mode */
+          /** Danger text color for dark scheme */
           var(--rh-color-text-primary-on-light, #151515)
         );
 
@@ -143,18 +143,18 @@ button {
     --_border-width: var(--rh-border-width-sm, 1px);
     --_active-color:
       light-dark(
-          /** Danger active text color in light mode */
+          /** Danger active text color for light scheme */
           var(--rh-color-text-primary-on-dark, #ffffff),
-          /** Danger active text color in dark mode */
+          /** Danger active text color for dark scheme */
           var(--rh-color-text-primary-on-light, #151515)
         );
     --_active-background-color: light-dark(#a30000, #ff7468); /* WARNING: non-token value */
     --_active-border-color: transparent;
     --_focus-color:
       light-dark(
-          /** Danger focus text color in light mode */
+          /** Danger focus text color for light scheme */
           var(--rh-color-text-primary-on-dark, #ffffff),
-          /** Danger focus text color in dark mode */
+          /** Danger focus text color for dark scheme */
           var(--rh-color-text-primary-on-light, #151515)
         );
     --_focus-background-color: light-dark(#a30000, #ff7468);  /* WARNING: non-token value */
@@ -164,9 +164,9 @@ button {
     --_focus-border-width: var(--rh-border-width-md, 2px);
     --_hover-color:
       light-dark(
-          /** Danger hover text color in light mode */
+          /** Danger hover text color for light scheme */
           var(--rh-color-text-primary-on-dark, #ffffff),
-          /** Danger hover text color in dark mode */
+          /** Danger hover text color for dark scheme */
           var(--rh-color-text-primary-on-light, #151515)
         );
     --_hover-background-color: light-dark(#a30000, #ff7468); /* WARNING: non-token value */
@@ -227,9 +227,9 @@ button {
       --_active-border-color: transparent;
       --_focus-color:
         light-dark(
-            /** Secondary danger focus text color in light mode */
+            /** Secondary danger focus text color for light scheme */
             var(--rh-color-red-60, #a60000),
-            /** Secondary danger focus text color in dark mode */
+            /** Secondary danger focus text color for dark scheme */
             var(--rh-color-red-30, #f9a8a8)
           );
       --_focus-background-color: transparent;
@@ -290,17 +290,17 @@ button {
     --_border-color: transparent;
     --_active-color:
       light-dark(
-          /** Link active text color in light mode */
+          /** Link active text color for light scheme */
           var(--rh-color-blue-70, #003366),
-          /** Link active text color in dark mode */
+          /** Link active text color for dark scheme */
           var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
         );
     --_active-background-color: transparent;
     --_focus-color:
       light-dark(
-          /** Link focus text color in light mode */
+          /** Link focus text color for light scheme */
           var(--rh-color-blue-70, #003366),
-          /** Link focus text color in dark mode */
+          /** Link focus text color for dark scheme */
           var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
         );
     --_focus-background-color: transparent;
@@ -309,9 +309,9 @@ button {
     --_focus-outline-color: var(--rh-color-interactive-primary-default);
     --_hover-color:
       light-dark(
-          /** Link hover text color in light mode */
+          /** Link hover text color for light scheme */
           var(--rh-color-blue-70, #003366),
-          /** Link hover text color in dark mode */
+          /** Link hover text color for dark scheme */
           var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
         );
     --_hover-background-color: transparent;
@@ -364,23 +364,23 @@ button {
     --_color: var(--rh-color-icon-secondary-on-dark, #ffffff);
     --_background-color:
       light-dark(
-          /** Play overlay background in light mode */
+          /** Play overlay background for light scheme */
           rgba(from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-50, 50%)),
-          /** Play overlay background in dark mode */
+          /** Play overlay background for dark scheme */
           rgba(from white r g b / var(--rh-opacity-50, 50%))
         );
     --_active-background-color:
       light-dark(
-          /** Play active overlay background in light mode */
+          /** Play active overlay background for light scheme */
           rgba(from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-80, 80%)),
-          /** Play active overlay background in dark mode */
+          /** Play active overlay background for dark scheme */
           rgba(from white r g b / var(--rh-opacity-80, 80%))
         );
     --_focus-background-color:
       light-dark(
-          /** Play focus overlay background in light mode */
+          /** Play focus overlay background for light scheme */
           rgba(from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-80, 80%)),
-          /** Play focus overlay background in dark mode */
+          /** Play focus overlay background for dark scheme */
           rgba(from white r g b / var(--rh-opacity-80, 80%))
         );
 
@@ -388,9 +388,9 @@ button {
     --_focus-outline-color: var(--rh-color-interactive-primary-default);
     --_hover-background-color:
       light-dark(
-          /** Play hover overlay background in light mode */
+          /** Play hover overlay background for light scheme */
           rgba(from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-80, 80%)),
-          /** Play hover overlay background in dark mode */
+          /** Play hover overlay background for dark scheme */
           rgba(from white r g b / var(--rh-opacity-80, 80%))
         );
 
@@ -407,9 +407,9 @@ button {
       translate: 10%; /* perceptually center play icon only */
       color:
         light-dark(
-            /** Play icon color in light mode */
+            /** Play icon color for light scheme */
             var(--rh-color-icon-secondary-on-dark, #ffffff),
-            /** Play icon color in dark mode */
+            /** Play icon color for dark scheme */
             var(--rh-color-icon-secondary-on-light, #151515)
           );
     }
@@ -509,16 +509,16 @@ button[disabled] {
   /* Remove these two re-declarations when the `status-disabled` variables are defined in tokens */
   --rh-color-text-status-disabled:
     light-dark(
-        /** Disabled text color in light mode */
+        /** Disabled text color for light scheme */
         var(--rh-color-gray-50, #707070),
-        /** Disabled text color in dark mode */
+        /** Disabled text color for dark scheme */
         var(--rh-color-gray-60, #4d4d4d)
       );
   --rh-color-status-disabled:
     light-dark(
-        /** Disabled background color in light mode */
+        /** Disabled background color for light scheme */
         var(--rh-color-gray-30, #c7c7c7),
-        /** Disabled background color in dark mode */
+        /** Disabled background color for dark scheme */
         var(--rh-color-gray-40, #a3a3a3)
       );
 
