@@ -1,4 +1,5 @@
 import { readFile } from 'node:fs/promises';
+import { Worker } from 'node:worker_threads';
 import { pfeTestRunnerConfig } from '@patternfly/pfe-tools/test/config.js';
 import {
   litcssOptions,
@@ -18,6 +19,27 @@ export default {
   plugins: [
     stripCssImportAttributesPlugin(),
     ...baseConfig.plugins || [],
+    {
+      name: 'ssr-fixture',
+      async executeCommand({ command, payload }) {
+        if (command !== 'render-ssr-fixture') {
+          return;
+        }
+        // SSR installs browser globals and registers custom elements in Node.
+        // Give each fixture a fresh worker so that state stays out of the test server and other fixtures.
+        const worker = new Worker(new URL('./scripts/ssr-test-worker.js', import.meta.url), {
+          workerData: payload,
+        });
+        try {
+          return await new Promise((resolve, reject) => {
+            worker.once('message', resolve);
+            worker.once('error', reject);
+          });
+        } finally {
+          await worker.terminate();
+        }
+      },
+    },
   ],
   middleware: [
     /** redirect requests for /(lib|elements)/*.js to *.ts */
@@ -49,4 +71,3 @@ export default {
     },
   ],
 };
-
