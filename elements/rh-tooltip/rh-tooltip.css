@@ -7,9 +7,8 @@
   position: relative;
   max-width: 100%;
 
-  --_floating-arrow-size:
-    /** Arrow indicator size */
-    var(--rh-tooltip-arrow-size, 11px);
+  /** Arrow indicator size */
+  --_floating-arrow-size: var(--rh-tooltip-arrow-size, 11px);
 }
 
 #tooltip,
@@ -48,9 +47,9 @@
 
   /** Tooltip panel shadow */
   box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
-  max-width:
-    /** Maximum inline size of the tooltip panel */
-    var(--rh-tooltip-max-width, 18.75rem);
+
+  /** Maximum inline size of the tooltip panel */
+  max-width: var(--rh-tooltip-max-width, 18.75rem);
 
   /** Tooltip panel border radius */
   border-radius: var(--rh-border-radius-default, 3px);
@@ -64,9 +63,9 @@
     var(--rh-tooltip-content-padding-inline-start, var(--rh-space-lg, 16px))
     /** Inline-end padding for tooltip content */
     var(--rh-tooltip-content-padding-inline-end, var(--rh-space-lg, 16px));
-  font-size:
-    /** Tooltip content font size */
-    var(--rh-tooltip-content-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+
+  /** Tooltip content font size */
+  font-size: var(--rh-tooltip-content-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
   color:
     light-dark(
         /** Tooltip text color for light scheme */
