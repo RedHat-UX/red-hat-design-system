@@ -12,6 +12,11 @@
 @import url('../fonts.css') layer(fonts);
 @import url('../typography.css') layer(typography);
 
+html,
+body {
+  color-scheme: light dark;
+}
+
 @layer base {
   /**
      * PFE based styles as we do not have control over the
@@ -27,22 +32,99 @@
   rh-surface,
   [data-demo] {
     display: block;
-    height: calc(100dvh - var(--pf-demo-header-height, 4.375rem));
+    height: 100%;
   }
 
   #sidebar {
     height: calc(100dvh - var(--pf-demo-header-height, 4.375rem));
   }
 
-  #main-header rh-context-picker {
-    margin-inline-start: auto;
-  }
+  #main-header {
+    color-scheme: only dark;
 
-  #main-header a img {
-    margin-inline-end: 0;
+    pf-icon {
+      color: var(--rh-color-surface-lightest, #ffffff) !important;
+    }
+
+    & rh-scheme-dropdown {
+      margin-inline-start: auto;
+    }
+
+    & a img {
+      margin-inline-end: 0;
+    }
   }
 }
 
 #source-control {
   margin-inline-start: unset;
+}
+
+pf-card {
+  --pf-c-card--BackgroundColor:
+    light-dark(
+        var(--rh-color-surface-lighter, #f2f2f2),
+        var(--rh-color-surface-darker, #1f1f1f)
+      );
+}
+
+#nav {
+  --_color:
+    light-dark(
+        var(--rh-color-surface-darkest, #151515),
+        var(--rh-color-surface-lightest, #ffffff)
+      ) !important;
+  --_color-hover:
+    light-dark(
+        var(--rh-color-surface-darkest, #151515),
+        var(--rh-color-surface-lightest, #ffffff)
+      ) !important;
+  --_background:
+    light-dark(
+        var(--rh-color-surface-lighter, #f2f2f2),
+        var(--rh-color-surface-darker, #1f1f1f)
+      ) !important;
+  --_background-hover:
+    light-dark(
+        var(--rh-color-surface-light, #e0e0e0),
+        var(--rh-color-surface-dark, #383838)
+      ) !important;
+
+  background: var(--_background);
+
+  summary {
+    color: var(--_color);
+
+    &:after {
+      color: var(--_color);
+      border-right-color: var(--_color);
+      border-top-color: var(--_color);
+    }
+
+    &:is(:focus, :hover) {
+      color: var(--_color-hover);
+      background-color: var(--_background-hover);
+
+      &:after {
+        color: var(--_color-hover);
+        border-right-color: var(--_color-hover);
+        border-top-color: var(--_color-hover);
+      }
+    }
+  }
+
+  a {
+    color: var(--_color);
+
+    &:is(:focus, :hover) {
+      color: var(--_color-hover);
+      background-color: var(--_background-hover);
+
+      &:after {
+        color: var(--_color-hover);
+        border-right-color: var(--_color-hover);
+        border-top-color: var(--_color-hover);
+      }
+    }
+  }
 }

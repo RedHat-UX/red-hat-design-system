@@ -109,11 +109,10 @@ function injectManuallyResolvedModulesToImportMap(document) {
 }
 
 /**
- * add context picker to dev sserver chrome
+ * add color scheme control to dev server chrome
  * @param {import('@parse5/tools').Document} document
  */
 function transformDevServerHTML(document) {
-  const surfaceId = 'rhds-dev-server-main';
   // replace the <main> element with a surface
   const main = query(document, x =>
     isElementNode(x)
@@ -121,25 +120,22 @@ function transformDevServerHTML(document) {
   if (main && isElementNode(main)) {
     main.tagName = 'rh-surface';
     removeAttribute(main, 'color-palette');
-    setAttribute(main, 'id', surfaceId);
     setAttribute(main, 'role', 'main');
   }
-  // add a context picker to header, targeting main
+  // add a color scheme dropdown to the header
   const header = query(document, x =>
     isElementNode(x)
       && getAttribute(x, 'id') === 'main-header');
   if (header && isElementNode(header)) {
-    const picker = createElement('rh-context-picker');
-    setAttribute(picker, 'target', surfaceId);
-    setAttribute(picker, 'value', '');
+    const dropdown = createElement('rh-scheme-dropdown');
     const logoBar = query(header, node =>
       isElementNode(node)
         && getAttribute(node, 'class') === 'logo-bar');
     if (logoBar) {
-      spliceChildren(logoBar, 4, 0, picker);
+      spliceChildren(logoBar, 4, 0, dropdown);
     }
   }
-  // import surface and picker
+  // import surface and color scheme dropdown
   const module = query(document, x =>
     isElementNode(x)
       && x.tagName === 'script'
@@ -147,8 +143,8 @@ function transformDevServerHTML(document) {
   if (module) {
     setTextContent(module, /* js */`${getTextContent(module)}
     import '@rhds/elements/rh-surface/rh-surface.js';
+    import '@rhds/elements/rh-scheme-dropdown/rh-scheme-dropdown.js';
     import '@rhds/elements/rh-tooltip/rh-tooltip.js';
-    import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
   `);
   }
 }
