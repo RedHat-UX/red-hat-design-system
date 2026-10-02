@@ -265,11 +265,16 @@ describe('<rh-dialog>', function() {
   });
 
   describe('document scroll lock', function() {
-    // The lock is a document rule, html:has(rh-dialog[open]). It must not
-    // write an inline overflow onto body, or that style outlives the dialog
-    // on a client-side navigation.
+    // The lock is a document attribute, html[data-rh-dialog-scroll-lock].
+    // It must not write an inline overflow onto body, or that style outlives
+    // the dialog on a client-side navigation. A shadow host is invisible to
+    // document :has(), so the attribute is what locks those dialogs too.
     function htmlOverflow() {
       return getComputedStyle(document.documentElement).overflow;
+    }
+
+    function scrollLockAttribute() {
+      return document.documentElement.hasAttribute('data-rh-dialog-scroll-lock');
     }
 
     async function openDialog(dialog: RhDialog) {
