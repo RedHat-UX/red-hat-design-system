@@ -119,3 +119,39 @@ index bf431df..81cf845 100644
                              if (expected === null && actual == null) {
                                  return;
                              }
+diff --git a/node_modules/@rhds/tokens/css/color-palette.css b/node_modules/@rhds/tokens/css/color-palette.css
+--- a/node_modules/@rhds/tokens/css/color-palette.css
++++ b/node_modules/@rhds/tokens/css/color-palette.css
+@@ -8,6 +8,6 @@
+ :host { color-scheme: inherit; }
+-:host([color-palette^="dark"]) { color-scheme: only dark; }
+-:host([color-palette^="light"]) { color-scheme: only light; }
++:host([color-palette^="dark"]) { color-scheme: only dark; --color-scheme: dark; }
++:host([color-palette^="light"]) { color-scheme: only light; --color-scheme: light; }
+ :host([color-palette="lightest"]) { --rh-color-surface: var(--rh-color-surface-lightest, #ffffff); }
+ :host([color-palette="lighter"]) { --rh-color-surface: var(--rh-color-surface-lighter, #f2f2f2); }
+ :host([color-palette="light"]) { --rh-color-surface: var(--rh-color-surface-light, #e0e0e0); }
+diff --git a/node_modules/@rhds/tokens/css/color-palette.css.js b/node_modules/@rhds/tokens/css/color-palette.css.js
+--- a/node_modules/@rhds/tokens/css/color-palette.css.js
++++ b/node_modules/@rhds/tokens/css/color-palette.css.js
+@@ -8,6 +8,6 @@
+ :host { color-scheme: inherit; }
+-:host([color-palette^="dark"]) { color-scheme: only dark; }
+-:host([color-palette^="light"]) { color-scheme: only light; }
++:host([color-palette^="dark"]) { color-scheme: only dark; --color-scheme: dark; }
++:host([color-palette^="light"]) { color-scheme: only light; --color-scheme: light; }
+ :host([color-palette="lightest"]) { --rh-color-surface: var(--rh-color-surface-lightest, #ffffff); }
+ :host([color-palette="lighter"]) { --rh-color-surface: var(--rh-color-surface-lighter, #f2f2f2); }
+ :host([color-palette="light"]) { --rh-color-surface: var(--rh-color-surface-light, #e0e0e0); }
+diff --git a/node_modules/@rhds/tokens/css/color-palette.css.ts b/node_modules/@rhds/tokens/css/color-palette.css.ts
+--- a/node_modules/@rhds/tokens/css/color-palette.css.ts
++++ b/node_modules/@rhds/tokens/css/color-palette.css.ts
+@@ -8,6 +8,6 @@
+ :host { color-scheme: inherit; }
+-:host([color-palette^="dark"]) { color-scheme: only dark; }
+-:host([color-palette^="light"]) { color-scheme: only light; }
++:host([color-palette^="dark"]) { color-scheme: only dark; --color-scheme: dark; }
++:host([color-palette^="light"]) { color-scheme: only light; --color-scheme: light; }
+ :host([color-palette="lightest"]) { --rh-color-surface: var(--rh-color-surface-lightest, #ffffff); }
+ :host([color-palette="lighter"]) { --rh-color-surface: var(--rh-color-surface-lighter, #f2f2f2); }
+ :host([color-palette="light"]) { --rh-color-surface: var(--rh-color-surface-light, #e0e0e0); }

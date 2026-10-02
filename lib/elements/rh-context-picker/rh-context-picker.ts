@@ -151,6 +151,10 @@ export class RhContextPicker extends LitElement {
   sync() {
     if (this.value) {
       this.#target?.setAttribute('color-palette', this.value);
+      this.#target?.style.setProperty(
+        '--color-scheme',
+        this.value.startsWith('dark') ? 'dark' : 'light',
+      );
     }
   }
 }
