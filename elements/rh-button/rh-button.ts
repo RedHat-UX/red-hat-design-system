@@ -120,9 +120,8 @@ export class RhButton extends LitElement {
   }
 
   override render() {
-    const { danger, variant } = this;
+    const { danger, variant, accessibleLabel } = this;
     const hasIcon = this.#hasIcon;
-    const accessibleLabel = this.accessibleLabel;
     return html`
       <!-- summary: internal button element
            description: |
@@ -149,12 +148,15 @@ export class RhButton extends LitElement {
                 part="icon"
                 name="icon">${this.#renderIcon()}</slot>
         </span>
-        <span aria-hidden=${String(!!accessibleLabel) as 'true' | 'false'}><!-- summary: button text label
+        <span aria-hidden="${String(!!accessibleLabel) as 'true' | 'false'}">
+          <!-- summary: button text label
                description: |
                  Expects inline text providing a concise, action-oriented label
                  (e.g. "Submit", "Delete"). Hidden from screen readers via
-                 aria-hidden when `accessible-label` is set. For close and play
-                 variants, text is visually hidden but remains accessible. --><slot id="text"></slot></span>
+                 aria-hidden when \`accessible-label\` is set. For close and play
+                 variants, text is visually hidden but remains accessible. -->
+          <slot id="text"></slot>
+        </span>
       </button>
     `;
   }
