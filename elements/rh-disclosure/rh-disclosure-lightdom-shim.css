@@ -70,9 +70,9 @@ rh-disclosure[variant~='compact']:not(:defined) {
 rh-disclosure[variant~='borderless']:not(:defined) {
   background-color:
     light-dark(
-        /** Borderless surface in light scheme */
+        /** Borderless surface for light scheme */
         var(--rh-color-surface-lighter, #f2f2f2),
-        /** Borderless surface in dark scheme */
+        /** Borderless surface for dark scheme */
         var(--rh-color-surface-darker, #1f1f1f)
       );
   border: 0;

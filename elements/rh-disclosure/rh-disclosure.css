@@ -48,9 +48,9 @@ summary {
   &:focus {
     background-color:
       light-dark(
-          /** Trigger hover surface in light mode */
+          /** Trigger hover surface for light scheme */
           var(--rh-color-surface-lighter, #f2f2f2),
-          /** Trigger hover surface in dark mode */
+          /** Trigger hover surface for dark scheme */
           var(--rh-color-surface-dark, #383838)
         );
   }
@@ -196,9 +196,9 @@ details[open] {
 :host([variant~='borderless']) {
   --_hover-background-color:
     light-dark(
-        /** Borderless hover surface in light mode */
+        /** Borderless hover surface for light scheme */
         var(--rh-color-surface-lighter, #f2f2f2),
-        /** Borderless hover surface in dark mode */
+        /** Borderless hover surface for dark scheme */
         var(--rh-color-surface-darker, #1f1f1f)
       );
   --_open-background-color: var(--_hover-background-color);
@@ -241,9 +241,9 @@ details[open] {
       &:focus {
         background-color:
           light-dark(
-              /** Borderless open hover surface in light mode */
+              /** Borderless open hover surface for light scheme */
               var(--rh-color-surface-light, #e0e0e0),
-              /** Borderless open hover surface in dark mode */
+              /** Borderless open hover surface for dark scheme */
               var(--rh-color-surface-dark, #383838)
             );
       }
