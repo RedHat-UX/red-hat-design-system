@@ -24,6 +24,7 @@ describe('<rh-scheme-toggle>', function() {
     afterEach(function() {
       localStorage.removeItem('rhdsColorScheme');
       document.body.style.removeProperty('color-scheme');
+      document.body.style.removeProperty('--color-scheme');
     });
 
     it('imperatively instantiates', function() {
@@ -57,6 +58,7 @@ describe('<rh-scheme-toggle>', function() {
     afterEach(function() {
       localStorage.removeItem('rhdsColorScheme');
       document.body.style.removeProperty('color-scheme');
+      document.body.style.removeProperty('--color-scheme');
     });
 
     describe('Tab', function() {
@@ -102,6 +104,7 @@ describe('<rh-scheme-toggle>', function() {
     afterEach(function() {
       localStorage.removeItem('rhdsColorScheme');
       document.body.style.removeProperty('color-scheme');
+      document.body.style.removeProperty('--color-scheme');
     });
 
     for (const scheme of ['light dark', 'light', 'dark'] as const) {
@@ -135,6 +138,7 @@ describe('<rh-scheme-toggle>', function() {
     afterEach(function() {
       localStorage.removeItem('rhdsColorScheme');
       document.body.style.removeProperty('color-scheme');
+      document.body.style.removeProperty('--color-scheme');
     });
 
     it('fires on user interaction via radio', async function() {
@@ -201,6 +205,7 @@ describe('<rh-scheme-toggle>', function() {
     afterEach(function() {
       localStorage.removeItem('rhdsColorScheme');
       document.body.style.removeProperty('color-scheme');
+      document.body.style.removeProperty('--color-scheme');
     });
 
     it('checks the Light radio after setting scheme to "light"', async function() {
