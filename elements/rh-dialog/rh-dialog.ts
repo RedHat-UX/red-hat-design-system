@@ -31,7 +31,7 @@ export class DialogCloseEvent extends Event {
 
 export class DialogOpenEvent extends Event {
   constructor(
-    /** The element that opened the dialog, or null if opened programmatically. */
+    /** Element from the `trigger` attribute or `setTrigger()`, or null if neither is set. */
     public trigger: HTMLElement | null
   ) {
     super('open', { bubbles: true, cancelable: true });
@@ -108,12 +108,22 @@ function releaseScrollLock(doc: Document) {
  *
  * @summary Modal dialog for confirmations, errors, or required input
  *
- * @fires {DialogOpenEvent} open - Fires when the dialog opens. The event's `trigger`
- *   property (HTMLElement | null) holds the element that opened it.
- * @fires {DialogCloseEvent} close - Fires when the dialog closes via close button
- *   or programmatic `close()`. No detail properties.
- * @fires {DialogCancelEvent} cancel - Fires when the user dismisses via backdrop
- *   click or Escape. No detail properties.
+ * @fires {DialogOpenEvent} open - Fired when the dialog opens. The `trigger`
+ *   property is the element that opened the dialog, or null when no trigger
+ *   is set. Listen for this when you should move focus inside the dialog; the
+ *   close button takes focus by default. When the dialog closes, move focus
+ *   back to `trigger` for keyboard and screen reader users. You must handle a
+ *   null `trigger` when `show()` opens the dialog with no trigger set.
+ * @fires {DialogCloseEvent} close - Fired when the dialog closes from the close
+ *   button or `close()`. Use this when an action confirms a choice, and read
+ *   `returnValue` on the dialog. Enter or Space on the close button fires this
+ *   event; a screen reader announces that button as "Close Dialog". Escape
+ *   fires `cancel` instead. `preventDefault()` does not keep the dialog open.
+ * @fires {DialogCancelEvent} cancel - Fired when the user dismisses the dialog
+ *   with the Escape key, a backdrop click, or `cancel()`. Listen for this when
+ *   you should discard in-progress input. Screen reader and keyboard users both
+ *   dismiss with Escape. The close button and `close()` fire `close` instead.
+ *   `preventDefault()` does not keep the dialog open.
  */
 @customElement('rh-dialog')
 @themable
