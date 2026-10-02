@@ -43,31 +43,61 @@ async function pauseYoutube(iframe: HTMLIFrameElement) {
   await pauseVideo(iframe);
 }
 
-/**
- * Lock scroll while an rh-dialog is open.
- *
- * Shadow CSS cannot style extenal html, so we add it here.
- * Remove the attribute or rh-dialog element and the rule ends.
- */
-const DOCUMENT_SCROLL_LOCK_CSS = `html:has(rh-dialog[open]) {
+const DOCUMENT_SCROLL_LOCK_CSS = `html[data-rh-dialog-scroll-lock] {
   overflow: hidden;
   scrollbar-gutter: stable;
 }`;
 
-let documentScrollLock: CSSStyleSheet | undefined;
+interface DocumentScrollLock {
+  sheet: CSSStyleSheet;
+  count: number;
+}
 
-function ensureDocumentScrollLock() {
-  // Only append these styles to the page once:
-  if (isServer || documentScrollLock) {
+const documentScrollLocks = new WeakMap<Document, DocumentScrollLock>();
+
+/**
+ * Count one more open dialog in `doc` and turn the lock on if it is the first.
+ * The sheet is installed once for that document. Later dialogs only bump the count.
+ * @param doc document that owns the open dialog
+ */
+function retainScrollLock(doc: Document) {
+  if (isServer) {
     return;
   }
 
-  documentScrollLock = new CSSStyleSheet();
-  documentScrollLock.replaceSync(DOCUMENT_SCROLL_LOCK_CSS);
-  document.adoptedStyleSheets = [
-    ...document.adoptedStyleSheets ?? [],
-    documentScrollLock,
-  ];
+  let entry = documentScrollLocks.get(doc);
+  if (!entry) {
+    const sheet = new CSSStyleSheet();
+    sheet.replaceSync(DOCUMENT_SCROLL_LOCK_CSS);
+    doc.adoptedStyleSheets = [
+      ...doc.adoptedStyleSheets ?? [],
+      sheet,
+    ];
+    entry = { sheet, count: 0 };
+    documentScrollLocks.set(doc, entry);
+  }
+
+  entry.count++;
+  if (entry.count === 1) {
+    doc.documentElement?.setAttribute('data-rh-dialog-scroll-lock', '');
+  }
+}
+
+/**
+ * Count one fewer open dialog in `doc` and turn the lock off at zero.
+ * A release with no retained lock is ignored so close and disconnect can both run.
+ * @param doc document that owned the dialog being closed or removed
+ */
+function releaseScrollLock(doc: Document) {
+  const entry = documentScrollLocks.get(doc);
+  if (!entry || entry.count === 0) {
+    return;
+  }
+
+  entry.count--;
+  if (entry.count === 0) {
+    doc.documentElement?.removeAttribute('data-rh-dialog-scroll-lock');
+  }
 }
 
 /**
@@ -143,18 +173,53 @@ export class RhDialog extends LitElement {
   #headings: Element[] = [];
   #cancelling = false;
 
+  /**
+   * The document this instance currently holds a scroll lock for.
+   * Stored so a second close or disconnect cannot decrement twice, and so a
+   * dialog that moves documents unlocks the document it actually locked.
+   */
+  #lockedDocument: Document | null = null;
+
   #slots = new SlotController(this, null, 'header', 'description', 'footer');
 
   connectedCallback() {
     super.connectedCallback();
-    ensureDocumentScrollLock();
     this.addEventListener('keydown', this.#onKeyDown);
     this.addEventListener('click', this.#onClick);
   }
 
   disconnectedCallback() {
-    super.disconnectedCallback();
+    // Release before Lit teardown. Removing an open dialog is what a route
+    // change does, and the lock must end without an inline body style.
+    this.#unlockScroll();
     this.#triggerElement?.removeEventListener('click', this.onTriggerClick);
+    super.disconnectedCallback();
+  }
+
+  /**
+   * Hold the document lock for this instance.
+   * Called from `show()` only, so a reflected `open` attribute does not lock
+   * the page until the native modal is actually shown.
+   */
+  #lockScroll() {
+    if (isServer || this.#lockedDocument) {
+      return;
+    }
+
+    const doc = this.ownerDocument;
+    retainScrollLock(doc);
+    this.#lockedDocument = doc;
+  }
+
+  /** Drop this instance's hold on the document it locked. */
+  #unlockScroll() {
+    const doc = this.#lockedDocument;
+    if (!doc) {
+      return;
+    }
+
+    this.#lockedDocument = null;
+    releaseScrollLock(doc);
   }
 
   render() {
@@ -370,6 +435,7 @@ export class RhDialog extends LitElement {
   show() {
     this.dialog?.showModal();
     this.open = true;
+    this.#lockScroll();
   }
 
   /** Opens the dialog as a modal. */
@@ -391,6 +457,7 @@ export class RhDialog extends LitElement {
 
     this.dialog?.close();
     this.open = false;
+    this.#unlockScroll();
   }
 }
 
