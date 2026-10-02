@@ -9,9 +9,9 @@ div {
 
   --_accent-color:
     light-dark(
-        /** Brand accent color in light mode */
+        /** Brand accent color for light scheme */
         var(--rh-color-text-brand-on-light, #ee0000),
-        /** Primary text accent color in dark mode */
+        /** Primary text accent color for dark scheme */
         var(--rh-color-text-primary-on-dark, #ffffff)
       );
 
