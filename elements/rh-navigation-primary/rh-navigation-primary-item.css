@@ -55,7 +55,22 @@
 }
 
 #container {
+  --_box-shadow-size-light: 0 2px 4px 0;
+  --_box-shadow-size-dark: 0 4px 6px 1px;
+  --_box-shadow-size: var(--_box-shadow-size-light);
   --_box-shadow-color: light-dark(rgba(21, 21, 21, 0.2), rgba(0, 0, 0, 0.6));
+
+  @media (prefers-color-scheme: dark) {
+    --_box-shadow-size: var(--_box-shadow-size-dark);
+  }
+
+  @container navigation-primary style(--color-scheme: light) {
+    --_box-shadow-size: var(--_box-shadow-size-light);
+  }
+
+  @container navigation-primary style(--color-scheme: dark) {
+    --_box-shadow-size: var(--_box-shadow-size-dark);
+  }
 
   display: block;
   block-size: 100%;
@@ -246,7 +261,7 @@
                     for dark scheme at containers >= xl */
                     var(--rh-color-surface-darkest, #151515)
                   );
-              box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
+              box-shadow: var(--_box-shadow-size) var(--_box-shadow-color);
               inset-block-start: 100%;
               inset-inline-start: 0;
               inline-size: 100%;
@@ -333,7 +348,7 @@
                 /** Standalone dropdown content background for dark scheme */
                 var(--rh-color-surface-darkest, #151515)
               );
-          box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
+          box-shadow: var(--_box-shadow-size) var(--_box-shadow-color);
           inset-block-start: 100%;
           inset-inline-end: 0;
           inline-size: 100%;

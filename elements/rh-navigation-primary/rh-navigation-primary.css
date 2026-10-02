@@ -7,6 +7,9 @@
 :host {
   --_navbar-height: 50px;
   --_nav-container-z-index: -1;
+  --_box-shadow-size-light: 0 2px 4px 0;
+  --_box-shadow-size-dark: 0 4px 6px 1px;
+  --_box-shadow-size: var(--_box-shadow-size-light);
   --_box-shadow-color: light-dark(rgba(21, 21, 21, 0.2), rgba(0, 0, 0, 0.6));
 
   display: block;
@@ -25,10 +28,14 @@
 
 :host([color-palette^='light']) {
   color-scheme: only light;
+
+  --color-scheme: light;
 }
 
 :host([color-palette^='dark']) {
   color-scheme: only dark;
+
+  --color-scheme: dark;
 }
 
 .hidden {
@@ -66,7 +73,19 @@
   color: var(--rh-color-text-primary);
   inline-size: 100%;
   max-block-size: var(--_navbar-height);
-  box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
+  box-shadow: var(--_box-shadow-size) var(--_box-shadow-color);
+
+  @media (prefers-color-scheme: dark) {
+    --_box-shadow-size: var(--_box-shadow-size-dark);
+  }
+
+  @container navigation-primary style(--color-scheme: light) {
+    --_box-shadow-size: var(--_box-shadow-size-light);
+  }
+
+  @container navigation-primary style(--color-scheme: dark) {
+    --_box-shadow-size: var(--_box-shadow-size-dark);
+  }
 
   /** Navigation bar inline padding */
   padding-inline: var(--rh-space-lg, 16px);
