@@ -6,9 +6,9 @@
   line-height: 100%;
   background-color:
     light-dark(
-        /** Universal footer surface in light color schemes */
+        /** Universal footer surface for light scheme */
         var(--rh-color-surface-lightest, #ffffff),
-        /** Universal footer surface in dark color schemes */
+        /** Universal footer surface for dark scheme */
         var(--rh-color-surface-darkest, #151515)
       );
   display: grid;
