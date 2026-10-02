@@ -79,7 +79,7 @@ export class RhSubnav extends LitElement {
     return this.#allLinkElements;
   }
 
-  set #allLinks(links: LinkElement[]) {
+  set #allLinks(links: RhNavigationLink[]) {
     this.#allLinkElements = links.filter(link => link);
   }
 
