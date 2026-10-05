@@ -69,9 +69,9 @@ span {
   &:is(:hover,:active,:focus) {
     background-color:
       light-dark(
-          /** Button interactive surface color in light schemes */
+          /** Button interactive surface color for light scheme */
           var(--rh-color-surface-lighter, #f2f2f2),
-          /** Button interactive surface color in dark schemes */
+          /** Button interactive surface color for dark scheme */
           oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h)
         );
 

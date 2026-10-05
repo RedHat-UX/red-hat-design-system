@@ -5,34 +5,34 @@ rh-navigation-secondary {
     /** Navigation link text color; theme-adaptive */
     var(--rh-color-text-primary,
       light-dark(
-        /** Navigation link text color on light scheme */
+        /** Navigation link text color for light scheme */
         var(--rh-color-text-primary-on-light, #151515),
-        /** Navigation link text color on dark scheme */
+        /** Navigation link text color for dark scheme */
         var(--rh-color-text-primary-on-dark, #ffffff)
       ));
   --_logo-link-color:
     /** Navigation logo link text color */
     var(--rh-color-text-primary,
       light-dark(
-        /** Navigation logo link text color on light scheme */
+        /** Navigation logo link text color for light scheme */
         var(--rh-color-text-primary-on-light, #151515),
-        /** Navigation logo link text color on dark scheme */
+        /** Navigation logo link text color for dark scheme */
         var(--rh-color-text-primary-on-dark, #ffffff)
       ));
   --_nav-chevron-color:
     /** Navigation dropdown chevron indicators */
     var(--rh-color-text-primary,
       light-dark(
-        /** Navigation dropdown chevron indicators on light scheme */
+        /** Navigation dropdown chevron indicators for light scheme */
         var(--rh-color-text-primary-on-light, #151515),
-        /** Navigation dropdown chevron indicators on dark scheme */
+        /** Navigation dropdown chevron indicators for dark scheme */
         var(--rh-color-text-primary-on-dark, #ffffff)
       ));
   --_nav-background:
     light-dark(
-        /** Navigation bar surface on light scheme  */
+        /** Navigation bar surface for light scheme  */
         var(--rh-color-surface-lighter, #f2f2f2),
-        /** Navigation bar surface in dark mode */
+        /** Navigation bar surface for dark scheme */
         var(--rh-color-surface-dark, #383838)
       );
 
@@ -97,9 +97,9 @@ rh-navigation-secondary {
         /** Navigation logo current-page block-start accent color */
         var(--rh-color-brand-red,
           light-dark(
-            /** Navigation logo current-page block-start accent color on light scheme */
+            /** Navigation logo current-page block-start accent color for light scheme */
             var(--rh-color-brand-red-on-light, #ee0000),
-            /** Navigation logo current-page block-start accent color on dark scheme */
+            /** Navigation logo current-page block-start accent color for dark scheme */
             var(--rh-color-brand-red-on-dark, #ee0000)
           ));
     }
@@ -212,9 +212,9 @@ rh-navigation-secondary [slot='nav'] > li > a[aria-current='page'] {
     /** Navigation current-page link block-start accent color */
     var(--rh-color-brand-red,
       light-dark(
-        /** Navigation current-page link block-start accent color on light scheme */
+        /** Navigation current-page link block-start accent color for light scheme */
         var(--rh-color-brand-red-on-light, #ee0000),
-        /** Navigation current-page link block-start accent color on dark scheme */
+        /** Navigation current-page link block-start accent color for dark scheme */
         var(--rh-color-brand-red-on-dark, #ee0000)
       ));
 }
@@ -225,9 +225,9 @@ rh-navigation-secondary [slot='nav'] > li > rh-navigation-link:has(a[aria-curren
     /** Navigation current-page link block-start accent color */
     var(--rh-color-brand-red,
       light-dark(
-        /** Navigation current-page link block-start accent color on light scheme */
+        /** Navigation current-page link block-start accent color for light scheme */
         var(--rh-color-brand-red-on-light, #ee0000),
-        /** Navigation current-page link block-start accent color on dark scheme */
+        /** Navigation current-page link block-start accent color for dark scheme */
         var(--rh-color-brand-red-on-dark, #ee0000)
       ));
 }
@@ -297,9 +297,9 @@ rh-navigation-secondary > [slot='nav'] > li > rh-navigation-link {
     /** Navigation slotted rh-navigation-link color */
     var(--rh-color-text-primary,
       light-dark(
-        /** Navigation slotted rh-navigation-link color on light scheme */
+        /** Navigation slotted rh-navigation-link color for light scheme */
         var(--rh-color-text-primary-on-light, #151515),
-        /** Navigation slotted rh-navigation-link color on dark scheme */
+        /** Navigation slotted rh-navigation-link color for dark scheme */
         var(--rh-color-text-primary-on-dark, #ffffff)
       ));
 
@@ -327,9 +327,9 @@ rh-navigation-secondary > [slot='nav'] > li > rh-navigation-link {
         /** Navigation link hovered block-start accent color at viewport >= lg */
         var(--rh-color-text-brand,
           light-dark(
-            /** Navigation link hovered block-start accent on light scheme at viewport >= lg */
+            /** Navigation link hovered block-start accent for light scheme at viewport >= lg */
             var(--rh-color-text-brand-on-light, #ee0000),
-            /** Navigation link hovered block-start accent on dark scheme at viewport >= lg */
+            /** Navigation link hovered block-start accent for dark scheme at viewport >= lg */
             var(--rh-color-text-brand-on-dark, #ee0000)
           ));
     }

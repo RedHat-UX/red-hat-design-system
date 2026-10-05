@@ -2,9 +2,9 @@
   display: block;
   background:
     light-dark(
-        /** Navigation surface color on light scheme */
+        /** Navigation surface color for light scheme */
         var(--rh-color-surface-lightest, #ffffff),
-        /** Navigation surface color on dark scheme */
+        /** Navigation surface color for dark scheme */
         var(--rh-color-surface-darker, #1f1f1f)
       );
 }

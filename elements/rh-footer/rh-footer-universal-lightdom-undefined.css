@@ -13,9 +13,9 @@
       /** Footer secondary text; theme-adaptive */
       var(--rh-color-text-secondary,
         light-dark(
-          /** Footer secondary text for light color scheme */
+          /** Footer secondary text for light scheme */
           var(--rh-color-text-secondary-on-light, #4d4d4d),
-          /** Footer secondary text for dark color scheme */
+          /** Footer secondary text for dark scheme */
           var(--rh-color-text-secondary-on-dark, #c7c7c7)
         ));
   }
@@ -38,9 +38,9 @@
 rh-footer-universal:not(:defined) {
   background-color:
     light-dark(
-        /** Universal footer surface without JS in light color schemes */
+        /** Universal footer surface without JS for light scheme */
         var(--rh-color-surface-lightest, #ffffff),
-        /** Universal footer surface without JS in dark color schemes */
+        /** Universal footer surface without JS for dark scheme */
         var(--rh-color-surface-darkest, #151515)
       );
   display: block;
@@ -96,9 +96,9 @@ rh-footer-universal:not(:defined) {
       /** Copyright text; theme-adaptive */
       var(--rh-color-text-secondary,
         light-dark(
-          /** Copyright text for light color scheme */
+          /** Copyright text for light scheme */
           var(--rh-color-text-secondary-on-light, #4d4d4d),
-          /** Copyright text for dark color scheme */
+          /** Copyright text for dark scheme */
           var(--rh-color-text-secondary-on-dark, #c7c7c7)
         ));
   }
