@@ -184,6 +184,13 @@ export class RhDialog extends LitElement {
   #cancelling = false;
 
   /**
+   * True while `close()` is inside the native `dialog.close()` call.
+   * That call fires `close` before `close()` sets `open` and releases the lock.
+   * The native handler uses this so it does not treat that event as a second close.
+   */
+  #closing = false;
+
+  /**
    * The document this instance currently holds a scroll lock for.
    * Stored so a second close or disconnect cannot decrement twice, and so a
    * dialog that moves documents unlocks the document it actually locked.
@@ -248,7 +255,8 @@ export class RhDialog extends LitElement {
                   part="dialog"
                   aria-labelledby=${ifDefined(this.accessibleLabel ? undefined : headerId)}
                   aria-label=${ifDefined(this.accessibleLabel ? this.accessibleLabel : (!headerId ? triggerLabel : undefined))}
-                  @cancel=${this.#onNativeDialogCancel}>
+                  @cancel=${this.#onNativeDialogCancel}
+                  @close=${this.#onNativeDialogClose}>
             <!-- The dialog's close button -->
             <rh-button variant="close"
                        id="close-button"
@@ -393,6 +401,32 @@ export class RhDialog extends LitElement {
     this.cancel();
   }
 
+  /**
+   * Syncs open state and releases the scroll lock when the native dialog closes.
+   * @param event close event from the inner dialog
+   */
+  #onNativeDialogClose(event: Event) {
+    if (event.target !== this.dialog) {
+      return;
+    }
+
+    // `close()` already stored returnValue, cleared `open`, and released
+    // the lock. This event is the queued echo of that call.
+    if (!this.open && !this.#lockedDocument) {
+      return;
+    }
+
+    // A synchronous `close` event inside `close()` still sees `#closing`.
+    // Leave returnValue and `open` to that method. Still release the lock;
+    // the later `#unlockScroll()` in `close()` no-ops.
+    if (!this.#closing) {
+      this.returnValue = this.dialog.returnValue;
+      this.open = false;
+    }
+
+    this.#unlockScroll();
+  }
+
   #onKeyDown(event: KeyboardEvent) {
     switch (event.key) {
       case 'Escape':
@@ -465,7 +499,16 @@ export class RhDialog extends LitElement {
       this.returnValue = '';
     }
 
-    this.dialog?.close();
+    // `#closing` covers a browser that fires `close` inside `dialog.close()`.
+    // Chromium queues that event instead, so the handler also ignores the
+    // echo after `open` is false and the lock is already released.
+    this.#closing = true;
+    try {
+      this.dialog?.close();
+    } finally {
+      this.#closing = false;
+    }
+
     this.open = false;
     this.#unlockScroll();
   }
