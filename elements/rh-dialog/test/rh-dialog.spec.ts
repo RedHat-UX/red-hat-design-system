@@ -484,6 +484,153 @@ describe('<rh-dialog>', function() {
       expect(scrollLockAttribute()).to.be.false;
     });
 
+    describe('show() before the first render', function() {
+      // `@query('#dialog')` is null until Lit renders. show() must not set
+      // `open` or keep the scroll lock until showModal() has succeeded.
+      async function cleanup(dialog: RhDialog) {
+        dialog.close();
+        dialog.remove();
+        await nextFrame();
+      }
+
+      it('opens the native dialog after connect, without locking early', async function() {
+        const dialog = document.createElement('rh-dialog') as RhDialog;
+        let opened = false;
+        dialog.addEventListener('open', () => {
+          opened = true;
+        });
+
+        try {
+          document.body.append(dialog);
+          // Shadow root exists, but the native <dialog> is not rendered yet.
+          dialog.show();
+          dialog.show();
+
+          expect(dialog.open, 'host open before render').to.be.false;
+          expect(dialog.shadowRoot?.querySelector('dialog'), 'native dialog before render').to.be.null;
+          expect(scrollLockAttribute(), 'lock before render').to.be.false;
+          expect(document.body.style.overflow).to.equal('');
+
+          await dialog.updateComplete;
+          await nextFrame();
+
+          const native = dialog.shadowRoot?.querySelector('dialog');
+          expect(dialog.open, 'host open').to.be.true;
+          expect(native?.open, 'native dialog open').to.be.true;
+          expect(opened, 'open event').to.be.true;
+          expect(scrollLockAttribute(), 'lock after open').to.be.true;
+          expect(htmlOverflow()).to.equal('hidden');
+          expect(document.body.style.overflow).to.equal('');
+
+          // Two early show() calls must take the lock only once.
+          dialog.close();
+          await dialog.updateComplete;
+          await nextFrame();
+          expect(dialog.open).to.be.false;
+          expect(native?.open, 'native dialog after close').to.be.false;
+          expect(scrollLockAttribute()).to.be.false;
+          expect(htmlOverflow()).to.not.equal('hidden');
+        } finally {
+          await cleanup(dialog);
+        }
+      });
+
+      it('opens when show() is called before the element is connected', async function() {
+        const dialog = document.createElement('rh-dialog') as RhDialog;
+
+        try {
+          dialog.show();
+          expect(dialog.open, 'open before connect').to.be.false;
+          expect(scrollLockAttribute(), 'lock before connect').to.be.false;
+
+          document.body.append(dialog);
+          expect(dialog.open, 'open before render').to.be.false;
+          expect(scrollLockAttribute(), 'lock before render').to.be.false;
+
+          await dialog.updateComplete;
+          await nextFrame();
+
+          expect(dialog.open).to.be.true;
+          expect(dialog.shadowRoot?.querySelector('dialog')?.open, 'native dialog').to.be.true;
+          expect(scrollLockAttribute()).to.be.true;
+          expect(htmlOverflow()).to.equal('hidden');
+        } finally {
+          await cleanup(dialog);
+        }
+      });
+
+      it('does not open or lock when removed before the first render', async function() {
+        const dialog = document.createElement('rh-dialog') as RhDialog;
+        const errors: unknown[] = [];
+        const onError = (event: ErrorEvent) => errors.push(event.message);
+        const onRejection = (event: PromiseRejectionEvent) => errors.push(String(event.reason));
+        window.addEventListener('error', onError);
+        window.addEventListener('unhandledrejection', onRejection);
+
+        try {
+          document.body.append(dialog);
+          dialog.show();
+          dialog.remove();
+          await nextFrame();
+
+          expect(dialog.open).to.be.false;
+          expect(scrollLockAttribute()).to.be.false;
+          expect(htmlOverflow()).to.not.equal('hidden');
+          expect(errors, 'showModal after removal').to.eql([]);
+        } finally {
+          window.removeEventListener('error', onError);
+          window.removeEventListener('unhandledrejection', onRejection);
+          dialog.remove();
+        }
+      });
+
+      it('does not open or lock when close() runs before the first render', async function() {
+        const dialog = document.createElement('rh-dialog') as RhDialog;
+
+        try {
+          dialog.show();
+          dialog.close('cancelled-early');
+          document.body.append(dialog);
+          await dialog.updateComplete;
+          await nextFrame();
+
+          expect(dialog.open).to.be.false;
+          expect(dialog.returnValue).to.equal('cancelled-early');
+          expect(dialog.shadowRoot?.querySelector('dialog')?.open, 'native dialog').to.not.equal(true);
+          expect(scrollLockAttribute()).to.be.false;
+          expect(htmlOverflow()).to.not.equal('hidden');
+          expect(document.body.style.overflow).to.equal('');
+        } finally {
+          await cleanup(dialog);
+        }
+      });
+
+      it('toggle() before the first render opens, and a second toggle cancels it', async function() {
+        const dialog = document.createElement('rh-dialog') as RhDialog;
+
+        try {
+          document.body.append(dialog);
+          dialog.toggle();
+          dialog.toggle();
+          await dialog.updateComplete;
+          await nextFrame();
+
+          expect(dialog.open, 'second toggle before render').to.be.false;
+          expect(dialog.shadowRoot?.querySelector('dialog')?.open, 'native dialog').to.not.equal(true);
+          expect(scrollLockAttribute()).to.be.false;
+
+          dialog.toggle();
+          await dialog.updateComplete;
+          await nextFrame();
+          expect(dialog.open, 'toggle after render').to.be.true;
+          expect(dialog.shadowRoot?.querySelector('dialog')?.open, 'native dialog after later toggle').to.be.true;
+          expect(scrollLockAttribute()).to.be.true;
+        } finally {
+          await cleanup(dialog);
+        }
+      });
+    });
+
     it('does not lock document scroll for markup open until show()', async function() {
       const dialog = await createFixture<RhDialog>(html`<rh-dialog open></rh-dialog>`);
       await dialog.updateComplete;
