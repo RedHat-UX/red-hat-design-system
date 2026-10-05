@@ -315,6 +315,27 @@ describe('<rh-dialog>', function() {
       expect(htmlOverflow()).to.not.equal('hidden');
     });
 
+    it('releases document scroll when open is set to false', async function() {
+      const dialog = await createFixture<RhDialog>(html`<rh-dialog></rh-dialog>`);
+      let closeCount = 0;
+      dialog.addEventListener('close', () => {
+        closeCount++;
+      });
+      await openDialog(dialog);
+
+      dialog.open = false;
+      await dialog.updateComplete;
+      await nextFrame();
+
+      const native = dialog.shadowRoot?.querySelector('dialog');
+      expect(dialog.open, 'open').to.be.false;
+      expect(native?.open, 'native dialog').to.be.false;
+      expect(closeCount, 'close event').to.equal(1);
+      expect(document.body.style.overflow).to.equal('');
+      expect(htmlOverflow()).to.not.equal('hidden');
+      expect(scrollLockAttribute()).to.be.false;
+    });
+
     it('releases document scroll when the native dialog closes', async function() {
       const dialog = await createFixture<RhDialog>(html`<rh-dialog></rh-dialog>`);
       let closed = false;
