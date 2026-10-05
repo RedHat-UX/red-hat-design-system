@@ -7,6 +7,7 @@
 /* Base-level "tokens" / CSS custom props */
 :root {
   /* Fonts/Type */
+  --felt-preview-font-size-body-text-xs: 0.75rem;
   --felt-preview-font-size-body-text-sm: 0.875rem;
   --felt-preview-font-size-body-text-md: 1rem;
   --felt-preview-line-height-body-text: 1.5;
@@ -2510,31 +2511,50 @@
        The tr:hover rule below beats rh-table-lightdom.css in both schemes. */
     --rh-table-row-background-hover-color: var(--felt-preview-color-interactive-fill-plain-hover);
 
+    /* Row border: the component's fallback (--rh-color-border-subtle-on-light)
+       doesn't adapt to dark mode, so it reads too bright there. Felt's
+       border-subtle token does. */
+    --rh-table-row-border:
+      var(--felt-preview-border-width-sm)
+      solid
+      var(--felt-preview-color-border-subtle);
+
     & tr:hover {
       background: var(--felt-preview-color-interactive-fill-plain-hover);
     }
 
     & thead {
       & th {
-        /* Felt: small, medium-weight header labels (base theme: inherited
-           body-md size, bold weight) */
-        font-size: var(--felt-preview-font-size-body-text-sm);
+        /* Felt: extra-small, medium-weight header labels (base theme:
+           inherited body-md size, bold weight) */
+        font-size: var(--felt-preview-font-size-body-text-xs);
         font-weight: var(--rh-font-weight-body-text-medium, 500);
+      }
+
+      & rh-sort-button {
+        /* Felt: 8px gap between the header label and the sort button */
+        margin-inline-start: var(--felt-preview-space-md);
       }
     }
 
-    /* Felt body cells: 14px / 21px (0.875rem × 1.5). Block padding stays
-       at the component's 24px, so rows land a bit taller than Figma's 64px. */
+    /* Felt body cells: 14px / 21px (0.875rem × 1.5), with 16px block
+       padding (base theme: 24px). */
     & td {
       font-size: var(--felt-preview-font-size-body-text-sm);
       line-height: var(--felt-preview-line-height-body-text);
+      padding-block: var(--felt-preview-space-lg);
+    }
+
+    & [slot='summary'] {
+      /* Felt: 14px summary text (base theme: body-md, 1rem) */
+      font-size: var(--felt-preview-font-size-body-text-sm);
     }
 
     /* stylelint-disable-next-line no-descending-specificity -- unrelated to rh-tile's headline link */
     & a {
       color: var(--felt-preview-color-interactive-primary-default);
       text-decoration:
-        underline dotted
+        underline dashed
         var(--felt-preview-border-width-sm)
         var(--felt-preview-color-interactive-secondary-underline-default);
 
@@ -2554,6 +2574,16 @@
     &::part(sort-button) {
       padding: var(--felt-preview-space-xs) var(--felt-preview-space-md);
       border-radius: var(--felt-preview-border-radius-action-plain);
+
+      /* Felt: muted icon color, matching other low-emphasis icons in the
+         theme. The sort icon has no color of its own -- rh-sort-button.css
+         sets it to `currentcolor`, inheriting from this part -- so setting
+         `color` here covers it without a second part selector. Reuses
+         --felt-preview-color-icon-subtle, which already carries the
+         gray-50/gray-40 pairing asked for in review --
+         --felt-preview-color-icon-secondary is a different, already-in-use
+         token (see rh-alert/rh-cta above), so it isn't repurposed here. */
+      color: var(--felt-preview-color-icon-subtle);
     }
 
     &::part(sort-button):is(:hover, :focus-visible) {
