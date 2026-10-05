@@ -380,6 +380,15 @@ export class RhDialog extends LitElement {
 
   @observes('open')
   protected async _openChanged(oldValue?: boolean, open?: boolean) {
+    // `open = false` hides the surface without calling `close()`. Drop the lock & the native modal.
+    // `#unlockScroll()` ignores a second call, so `close()` can unlock afterward.
+    if (oldValue === true && open === false) {
+      this.#unlockScroll();
+      if (this.dialog?.open) {
+        this.dialog.close();
+      }
+    }
+
     if (this.type === 'video') {
       if (oldValue === true && this.open === false) {
         this.querySelector('video')?.pause?.();
