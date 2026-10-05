@@ -305,12 +305,57 @@ describe('<rh-dialog>', function() {
     it('releases document scroll after close()', async function() {
       const dialog = await createFixture<RhDialog>(html`<rh-dialog></rh-dialog>`);
       await openDialog(dialog);
-      dialog.close();
+      dialog.close('kept');
       await dialog.updateComplete;
       await nextFrame();
 
+      expect(dialog.open).to.be.false;
+      expect(dialog.returnValue).to.equal('kept');
       expect(document.body.style.overflow).to.equal('');
       expect(htmlOverflow()).to.not.equal('hidden');
+    });
+
+    it('releases document scroll when the native dialog closes', async function() {
+      const dialog = await createFixture<RhDialog>(html`<rh-dialog></rh-dialog>`);
+      let closed = false;
+      dialog.addEventListener('close', () => {
+        closed = true;
+      });
+      await openDialog(dialog);
+
+      // Same path as HTMLDialogElement.close(), which does not enter RhDialog.close().
+      dialog.shadowRoot?.querySelector('dialog')?.close('native-close');
+      await dialog.updateComplete;
+      await nextFrame();
+
+      expect(dialog.open, 'open').to.be.false;
+      expect(dialog.returnValue, 'returnValue').to.equal('native-close');
+      expect(closed, 'close event').to.be.true;
+      expect(document.body.style.overflow).to.equal('');
+      expect(htmlOverflow()).to.not.equal('hidden');
+      expect(scrollLockAttribute()).to.be.false;
+    });
+
+    it('keeps the lock when a native close leaves another dialog open', async function() {
+      const first = await createFixture<RhDialog>(html`<rh-dialog></rh-dialog>`);
+      const second = await createFixture<RhDialog>(html`<rh-dialog></rh-dialog>`);
+      await openDialog(first);
+      await openDialog(second);
+
+      first.shadowRoot?.querySelector('dialog')?.close();
+      await first.updateComplete;
+      await nextFrame();
+
+      expect(first.open).to.be.false;
+      expect(second.open).to.be.true;
+      expect(htmlOverflow()).to.equal('hidden');
+      expect(scrollLockAttribute()).to.be.true;
+
+      second.close();
+      await second.updateComplete;
+      await nextFrame();
+      expect(htmlOverflow()).to.not.equal('hidden');
+      expect(scrollLockAttribute()).to.be.false;
     });
 
     it('releases document scroll when removed while open', async function() {
