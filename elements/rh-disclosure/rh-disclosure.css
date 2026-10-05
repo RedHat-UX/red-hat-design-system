@@ -113,11 +113,16 @@ summary {
 }
 
 #caret {
-  /** Caret icon inline size */
-  inline-size: var(--rh-space-lg, 16px);
+  /**
+   * Caret icon inline size.
+   * Reads the same `--rh-icon-size` the compact variant sets on this
+   * icon, so the host box shrinks along with the glyph instead of
+   * leaving the compact caret floating in an oversized box.
+   */
+  inline-size: var(--rh-icon-size, var(--rh-space-lg, 16px));
 
   /** Caret icon block size */
-  block-size: var(--rh-space-lg, 16px);
+  block-size: var(--rh-icon-size, var(--rh-space-lg, 16px));
   transition: 0.2s;
   will-change: rotate;
   position: relative;
