@@ -5,7 +5,7 @@ import chalk from 'chalk';
 
 for await (const srcFile of glob([
   'elements/*/*-lightdom.css',
-  'elements/*/*-shim.css',
+  'elements/*/*-lightdom-undefined.css',
 ])) {
   const destFile = srcFile.replace('elements/', '');
   await mkdir(dirname(destFile), { recursive: true });
