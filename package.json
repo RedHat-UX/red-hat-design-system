@@ -56,7 +56,7 @@
     "!*.{spec,e2e}.ts",
     "elements/*/*.{js,md,map,txt,d.ts}",
     "elements/*/*-lightdom.css",
-    "elements/*/*-lightdom-shim.css",
+    "elements/*/*-lightdom-undefined.css",
     "elements/rh-audio-player/i18n/*.json",
     "rh-*/*.css",
     "!elements/*/docs/**/*.{js,html,css,md}",
