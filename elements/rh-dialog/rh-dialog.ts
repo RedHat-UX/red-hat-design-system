@@ -1,4 +1,4 @@
-import { LitElement, html, isServer } from 'lit';
+import { LitElement, html, isServer, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
@@ -172,7 +172,12 @@ export class RhDialog extends LitElement {
 
   #screenSize = new ScreenSizeController(this);
 
-  @query('#dialog') private dialog!: HTMLDialogElement;
+  /**
+   * Native `<dialog>`. Null until the first render creates it.
+   * `show()` must not set `open` or take the scroll lock while this is null,
+   * or the page stays locked with no modal on screen.
+   */
+  @query('#dialog') private dialog!: HTMLDialogElement | null;
   @query('#content') private content!: HTMLElement;
   @query('#close-button') private closeButton!: HTMLElement;
 
@@ -197,6 +202,14 @@ export class RhDialog extends LitElement {
    */
   #lockedDocument: Document | null = null;
 
+  /**
+   * `show()` ran before the native `<dialog>` existed.
+   * `firstUpdated` opens it once that element is in the shadow root.
+   * `close()` clears it so a later render does not open a dialog the caller
+   * already closed.
+   */
+  #pendingShow = false;
+
   #slots = new SlotController(this, null, 'header', 'description', 'footer');
 
   connectedCallback() {
@@ -208,15 +221,43 @@ export class RhDialog extends LitElement {
   disconnectedCallback() {
     // Release before Lit teardown. Removing an open dialog is what a route
     // change does, and the lock must end without an inline body style.
+    // Also drop a show() that is still waiting for the first render, so it
+    // cannot call showModal() after the element is gone.
+    this.#pendingShow = false;
     this.#unlockScroll();
     this.#triggerElement?.removeEventListener('click', this.onTriggerClick);
     super.disconnectedCallback();
   }
 
   /**
+   * Finish a `show()` that ran before the native `<dialog>` existed.
+   * The element is in the shadow root by this point. `show()` runs on the
+   * next microtask so setting `open` is not inside this update. Lit warns
+   * when a property changes in `firstUpdated`. The microtask still runs
+   * before `updateComplete` resolves for the caller.
+   * @param changedProperties properties changed on the first update
+   */
+  protected override firstUpdated(changedProperties: PropertyValues<this>): void {
+    super.firstUpdated(changedProperties);
+    if (!this.#pendingShow) {
+      return;
+    }
+
+    queueMicrotask(() => {
+      // `close()` and disconnect clear the flag. A canceled request must not open.
+      if (!this.#pendingShow) {
+        return;
+      }
+      this.#pendingShow = false;
+      this.show();
+    });
+  }
+
+  /**
    * Hold the document lock for this instance.
-   * Called from `show()` only, so a reflected `open` attribute does not lock
-   * the page until the native modal is actually shown.
+   * Called from `show()` only after `showModal()` succeeds, so a reflected
+   * `open` attribute or an early `show()` does not lock the page until the
+   * native modal is actually shown.
    */
   #lockScroll() {
     if (isServer || this.#lockedDocument) {
@@ -406,7 +447,9 @@ export class RhDialog extends LitElement {
    * @param event close event from the inner dialog
    */
   #onNativeDialogClose(event: Event) {
-    if (event.target !== this.dialog) {
+    const { dialog } = this;
+    // Ignore closes from nested dialogs, and a close that arrives before render.
+    if (!dialog || event.target !== dialog) {
       return;
     }
 
@@ -420,7 +463,7 @@ export class RhDialog extends LitElement {
     // Leave returnValue and `open` to that method. Still release the lock;
     // the later `#unlockScroll()` in `close()` no-ops.
     if (!this.#closing) {
-      this.returnValue = this.dialog.returnValue;
+      this.returnValue = dialog.returnValue;
       this.open = false;
     }
 
@@ -467,17 +510,37 @@ export class RhDialog extends LitElement {
 
   /** Toggles the dialog open or closed. */
   toggle() {
-    if (!this.open) {
+    // `#pendingShow` is an open request that has not rendered yet.
+    // A second toggle cancels it, same as toggling a dialog that is already open.
+    // `open` is set only after `showModal()` succeeds, so it is not the signal here.
+    if (!this.open && !this.#pendingShow) {
       this.showModal();
-      this.open = true;
     } else {
       this.close();
     }
   }
 
-  /** Opens the dialog as a modal. */
+  /**
+   * Opens the dialog as a modal.
+   * `open` and the document scroll lock are set only after the native dialog
+   * exists and `showModal()` succeeds. A call before the first render is
+   * applied from `firstUpdated`.
+   */
   show() {
-    this.dialog?.showModal();
+    const { dialog } = this;
+    if (!dialog) {
+      // `@query('#dialog')` is null until the first render. Optional chaining
+      // would skip `showModal()` and still lock the page below.
+      if (!isServer && !this.hasUpdated) {
+        this.#pendingShow = true;
+      }
+      return;
+    }
+
+    this.#pendingShow = false;
+    // Throws if the dialog is not connected or is already modal.
+    // That throw skips `open` and the lock, so a failed show cannot stick.
+    dialog.showModal();
     this.open = true;
     this.#lockScroll();
   }
@@ -493,6 +556,9 @@ export class RhDialog extends LitElement {
    * @param [returnValue] dialog return value
    */
   close(returnValue?: string) {
+    // Drop a show() that is still waiting for the first render.
+    this.#pendingShow = false;
+
     if (typeof returnValue === 'string') {
       this.returnValue = returnValue;
     } else {
